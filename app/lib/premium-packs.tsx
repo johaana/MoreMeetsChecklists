@@ -1190,103 +1190,103 @@ const facility_management_blueprint: PremiumPack = {
     ],
     checklists: [
         {
-            title: "Daily Facility Walkthrough",
-            department: "Facilities",
-            frequency: "Daily",
-            role: "Facility Manager",
-            summary: "A proactive daily patrol to identify and rectify issues before they become major problems.",
-            icon: "clipboard-check",
-            tasks: [
-                { id: "FMB-DFW-01", description: "Check all common areas (lobbies, receptions) for cleanliness and order.", priority: "High", riskLevel: "Low", consequence: "Negative impression on visitors and employees.", proof: "Walkthrough log.", location: "Common Areas" },
-                { id: "FMB-DFW-02", description: "Inspect all restrooms for cleanliness, functionality, and stock levels.", priority: "High", riskLevel: "Medium", consequence: "Employee complaints, hygiene issues.", proof: "Restroom inspection log.", location: "Restrooms" },
-                { id: "FMB-DFW-03", description: "Verify temperature and air quality in all zones are comfortable.", priority: "Medium", riskLevel: "Low", consequence: "Reduced employee productivity and comfort.", proof: "BMS (Building Management System) reading.", location: "All Office Zones" },
-                { id: "FMB-DFW-04", description: "Check for any safety hazards (e.g., slip/trip hazards, blocked fire exits).", priority: "High", riskLevel: "High", consequence: "Employee/visitor injury, legal liability.", proof: "Hazard report log.", location: "All Areas" },
-                { id: "FMB-DFW-05", description: "Inspect exterior of the building for cleanliness, damage, or security concerns.", priority: "Medium", riskLevel: "Medium", consequence: "Poor curb appeal, potential security breaches.", proof: "Exterior inspection log.", location: "Building Perimeter" },
-                { id: "FMB-DFW-06", description: "Check functionality of a random sample of access control doors.", priority: "High", riskLevel: "Medium", consequence: "Security system failure.", proof: "Access control system event log.", location: "Various Doors" },
-                { id: "FMB-DFW-07", description: "Ensure all meeting rooms are tidy and equipment (projectors, phones) is functional.", priority: "Medium", riskLevel: "Low", consequence: "Meeting disruptions, lost productivity.", proof: "Meeting room checklist.", location: "Meeting Rooms" },
-                { id: "FMB-DFW-08", description: "Check pantries/cafeterias for cleanliness and functioning appliances.", priority: "Medium", riskLevel: "Low", consequence: "Employee dissatisfaction, hygiene risks.", proof: "Pantry inspection log.", location: "Pantry/Cafeteria" },
-                { id: "FMB-DFW-09", description: "Raise work orders for all identified issues in the CMMS/ticketing system.", priority: "High", riskLevel: "Low", consequence: "Issues are not tracked and resolved.", proof: "Copies of new work orders.", location: "Office" },
-                { id: "FMB-DFW-10", description: "Follow up on critical open work orders from the previous day.", priority: "High", riskLevel: "Medium", consequence: "Critical failures are not resolved promptly.", proof: "Updated notes in CMMS.", location: "Office" }
+            "title": "Daily Facility Walkthrough",
+            "department": "Facilities",
+            "frequency": "Daily",
+            "role": "Facility Manager",
+            "summary": "A proactive daily patrol to identify and rectify issues before they become major problems.",
+            "icon": "clipboard-check",
+            "tasks": [
+                { "id": "FMB-DFW-01", "description": "Check all common areas (lobbies, receptions) for cleanliness and order.", "priority": "High", "riskLevel": "Low", "consequence": "Negative impression on visitors and employees.", "proof": "Walkthrough log." },
+                { "id": "FMB-DFW-02", "description": "Inspect all restrooms for cleanliness, functionality, and stock levels.", "priority": "High", "riskLevel": "Medium", "consequence": "Employee complaints, hygiene issues.", "proof": "Restroom inspection log." },
+                { "id": "FMB-DFW-03", "description": "Verify temperature and air quality in all zones are comfortable.", "priority": "Medium", "riskLevel": "Low", "consequence": "Reduced employee productivity and comfort.", "proof": "BMS (Building Management System) reading." },
+                { "id": "FMB-DFW-04", "description": "Check for any safety hazards (e.g., slip/trip hazards, blocked fire exits).", "priority": "High", "riskLevel": "High", "consequence": "Employee/visitor injury, legal liability.", "proof": "Hazard report log." },
+                { "id": "FMB-DFW-05", "description": "Inspect exterior of the building for cleanliness, damage, or security concerns.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Poor curb appeal, potential security breaches.", "proof": "Exterior inspection log." },
+                { "id": "FMB-DFW-06", "description": "Check functionality of a random sample of access control doors.", "priority": "High", "riskLevel": "Medium", "consequence": "Security system failure.", "proof": "Access control system event log." },
+                { "id": "FMB-DFW-07", "description": "Ensure all meeting rooms are tidy and equipment (projectors, phones) is functional.", "priority": "Medium", "riskLevel": "Low", "consequence": "Meeting disruptions, lost productivity.", "proof": "Meeting room checklist." },
+                { "id": "FMB-DFW-08", "description": "Check pantries/cafeterias for cleanliness and functioning appliances.", "priority": "Medium", "riskLevel": "Low", "consequence": "Employee dissatisfaction, hygiene risks.", "proof": "Pantry inspection log." },
+                { "id": "FMB-DFW-09", "description": "Raise work orders for all identified issues in the CMMS/ticketing system.", "priority": "High", "riskLevel": "Low", "consequence": "Issues are not tracked and resolved.", "proof": "Copies of new work orders." },
+                { "id": "FMB-DFW-10", "description": "Follow up on critical open work orders from the previous day.", "priority": "High", "riskLevel": "Medium", "consequence": "Critical failures are not resolved promptly.", "proof": "Updated notes in CMMS." }
             ]
         },
         {
-            title: "Preventive Maintenance (MEP)",
-            department: "Engineering",
-            frequency: "Weekly/Monthly",
-            role: "Chief Engineer",
-            summary: "A scheduled checklist for maintaining critical Mechanical, Electrical, and Plumbing systems.",
-            icon: "wrench",
-            tasks: [
-                { id: "FMB-MEP-01", description: "HVAC: Inspect and clean/replace filters on all Air Handling Units (AHUs).", priority: "High", riskLevel: "Medium", consequence: "Poor air quality, increased energy costs, system failure.", proof: "Signed maintenance log for each AHU.", location: "AHU Rooms" },
-                { id: "FMB-MEP-02", description: "Electrical: Test backup generator under load for at least 30 minutes.", priority: "High", riskLevel: "High", consequence: "Business shutdown during a power outage.", proof: "Generator test log with load readings.", location: "Generator Yard" },
-                { id: "FMB-MEP-03", description: "Electrical: Test UPS systems and verify battery health.", priority: "High", riskLevel: "High", consequence: "Data corruption/loss in data centers during power flicker.", proof: "UPS test report.", location: "UPS/Server Rooms" },
-                { id: "FMB-MEP-04", description: "Plumbing: Check and test all water pumps (booster, transfer, sump).", priority: "Medium", riskLevel: "Medium", consequence: "No water supply, flooding.", proof: "Pump test log.", location: "Pump Rooms" },
-                { id: "FMB-MEP-05", description: "Fire Safety: Test a sample of fire alarm call points, sprinklers (flow switch), and smoke detectors.", priority: "High", riskLevel: "High", consequence: "Fire detection/suppression system failure.", proof: "Fire alarm test report.", location: "Various Locations" },
-                { id: "FMB-MEP-06", description: "Lifts: Perform a monthly safety and performance check (leveling, doors, emergency phone).", priority: "High", riskLevel: "High", consequence: "Entrapment, injury.", proof: "Internal lift check log.", location: "All Lifts" },
-                { id: "FMB-MEP-07", description: "Water Treatment: Check WTP/STP operation and water quality reports.", priority: "High", riskLevel: "Medium", consequence: "Environmental non-compliance, unsafe water.", proof: "Water quality test reports.", location: "WTP/STP" },
-                { id: "FMB-MEP-08", description: "Electrical: Conduct thermal imaging of main electrical panels to find hotspots (Quarterly).", priority: "High", riskLevel: "High", consequence: "Electrical fire.", proof: "Thermal imaging report.", location: "Electrical Panels" },
-                { id: "FMB-MEP-09", description: "Building Management System: Verify all critical system alarms are reporting correctly to the BMS.", priority: "Medium", riskLevel: "Medium", consequence: "Silent failures of critical equipment.", proof: "BMS alarm test log.", location: "Control Room" },
-                { id: "FMB-MEP-10", description: "Review and update the schedule of all OEM/vendor Annual Maintenance Contracts (AMCs).", priority: "High", riskLevel: "Low", consequence: "Lapse in critical equipment servicing.", proof: "AMC tracker spreadsheet.", location: "Office" }
+            "title": "Preventive Maintenance (MEP)",
+            "department": "Engineering",
+            "frequency": "Weekly/Monthly",
+            "role": "Chief Engineer",
+            "summary": "A scheduled checklist for maintaining critical Mechanical, Electrical, and Plumbing systems.",
+            "icon": "wrench",
+            "tasks": [
+                { "id": "FMB-MEP-01", "description": "HVAC: Inspect and clean/replace filters on all Air Handling Units (AHUs).", "priority": "High", "riskLevel": "Medium", "consequence": "Poor air quality, increased energy costs, system failure.", "proof": "Signed maintenance log for each AHU." },
+                { "id": "FMB-MEP-02", "description": "Electrical: Test backup generator under load for at least 30 minutes.", "priority": "High", "riskLevel": "High", "consequence": "Business shutdown during a power outage.", "proof": "Generator test log with load readings." },
+                { "id": "FMB-MEP-03", "description": "Electrical: Test UPS systems and verify battery health.", "priority": "High", "riskLevel": "High", "consequence": "Data corruption/loss in data centers during power flicker.", "proof": "UPS test report." },
+                { "id": "FMB-MEP-04", "description": "Plumbing: Check and test all water pumps (booster, transfer, sump).", "priority": "Medium", "riskLevel": "Medium", "consequence": "No water supply, flooding.", "proof": "Pump test log." },
+                { "id": "FMB-MEP-05", "description": "Fire Safety: Test a sample of fire alarm call points, sprinklers (flow switch), and smoke detectors.", "priority": "High", "riskLevel": "High", "consequence": "Fire detection/suppression system failure.", "proof": "Fire alarm test report." },
+                { "id": "FMB-MEP-06", "description": "Lifts: Perform a monthly safety and performance check (leveling, doors, emergency phone).", "priority": "High", "riskLevel": "High", "consequence": "Entrapment, injury.", "proof": "Internal lift check log." },
+                { "id": "FMB-MEP-07", "description": "Water Treatment: Check WTP/STP operation and water quality reports.", "priority": "High", "riskLevel": "Medium", "consequence": "Environmental non-compliance, unsafe water.", "proof": "Water quality test reports." },
+                { "id": "FMB-MEP-08", "description": "Electrical: Conduct thermal imaging of main electrical panels to find hotspots (Quarterly).", "priority": "High", "riskLevel": "High", "consequence": "Electrical fire.", "proof": "Thermal imaging report." },
+                { "id": "FMB-MEP-09", "description": "Building Management System: Verify all critical system alarms are reporting correctly to the BMS.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Silent failures of critical equipment.", "proof": "BMS alarm test log." },
+                { "id": "FMB-MEP-10", "description": "Review and update the schedule of all OEM/vendor Annual Maintenance Contracts (AMCs).", "priority": "High", "riskLevel": "Low", "consequence": "Lapse in critical equipment servicing.", "proof": "AMC tracker spreadsheet." }
             ]
         },
         {
-            title: "Housekeeping & Hygiene Audit",
-            department: "Soft Services",
-            frequency: "Weekly",
-            role: "Housekeeping Manager",
-            summary: "Ensures the highest standards of cleanliness and hygiene across the facility.",
-            icon: "sparkles",
-            tasks: [
-                { id: "FMB-HHA-01", description: "Restroom Audit: Check for cleanliness, odors, fixture functionality, and stock levels.", priority: "High", riskLevel: "Medium", consequence: "Major source of employee complaints.", proof: "Scored restroom audit form.", location: "All Restrooms" },
-                { id: "FMB-HHA-02", description: "Workstation Area: Check for dust on surfaces, clean carpets/floors, and empty bins.", priority: "Medium", riskLevel: "Low", consequence: "Untidy work environment.", proof: "Zone inspection checklist.", location: "Office Floors" },
-                { id: "FMB-HHA-03", description: "Pantry/Cafeteria: Check for food debris, clean appliances (microwaves, etc.), and sanitized tables.", priority: "High", riskLevel: "Medium", consequence: "Hygiene risk, pest attraction.", proof: "Pantry audit form.", location: "Pantry/Cafeteria" },
-                { id: "FMB-HHA-04", description: "Glass & Facade: Check for clean windows and facade, especially in public-facing areas.", priority: "Low", riskLevel: "Low", consequence: "Poor corporate image.", proof: "Visual inspection.", location: "Lobby/Exterior" },
-                { id: "FMB-HHA-05", description: "Waste Management: Check for proper segregation and timely disposal of waste.", priority: "Medium", riskLevel: "Medium", consequence: "Environmental non-compliance, odors.", proof: "Waste area inspection log.", location: "Waste Yard" },
-                { id: "FMB-HHA-06", description: "Pest Control: Review pest control logbook and check bait stations.", priority: "High", riskLevel: "High", consequence: "Infestation.", proof: "Pest control vendor's service report.", location: "All Areas" },
-                { id: "FMB-HHA-07", description: "Stock Check: Verify inventory of cleaning supplies and consumables.", priority: "Medium", riskLevel: "Low", consequence: "Running out of essential supplies.", proof: "Stock register.", location: "Janitor Stores" },
-                { id: "FMB-HHA-08", description: "Staff Uniform & PPE: Check that all housekeeping staff are in clean uniforms and using correct PPE.", priority: "Medium", riskLevel: "Low", consequence: "Unprofessionalism, safety risk to staff.", proof: "Staff inspection notes.", location: "Housekeeping Office" },
-                { id: "FMB-HHA-09", description: "Review cleaning equipment for functionality and cleanliness.", priority: "Medium", riskLevel: "Low", consequence: "Ineffective cleaning.", proof: "Equipment check log.", location: "Janitor Stores" },
-                { id: "FMB-HHA-10", description: "Follow up on any housekeeping-related complaints from the previous week.", priority: "High", riskLevel: "Medium", consequence: "Recurring service failures.", proof: "Complaint tracker update.", location: "Office" }
+            "title": "Housekeeping & Hygiene Audit",
+            "department": "Soft Services",
+            "frequency": "Weekly",
+            "role": "Housekeeping Manager",
+            "summary": "Ensures the highest standards of cleanliness and hygiene across the facility.",
+            "icon": "sparkles",
+            "tasks": [
+                { "id": "FMB-HHA-01", "description": "Restroom Audit: Check for cleanliness, odors, fixture functionality, and stock levels.", "priority": "High", "riskLevel": "Medium", "consequence": "Major source of employee complaints.", "proof": "Scored restroom audit form." },
+                { "id": "FMB-HHA-02", "description": "Workstation Area: Check for dust on surfaces, clean carpets/floors, and empty bins.", "priority": "Medium", "riskLevel": "Low", "consequence": "Untidy work environment.", "proof": "Zone inspection checklist." },
+                { "id": "FMB-HHA-03", "description": "Pantry/Cafeteria: Check for food debris, clean appliances (microwaves, etc.), and sanitized tables.", "priority": "High", "riskLevel": "Medium", "consequence": "Hygiene risk, pest attraction.", "proof": "Pantry audit form." },
+                { "id": "FMB-HHA-04", "description": "Glass & Facade: Check for clean windows and facade, especially in public-facing areas.", "priority": "Low", "riskLevel": "Low", "consequence": "Poor corporate image.", "proof": "Visual inspection." },
+                { "id": "FMB-HHA-05", "description": "Waste Management: Check for proper segregation and timely disposal of waste.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Environmental non-compliance, odors.", "proof": "Waste area inspection log." },
+                { "id": "FMB-HHA-06", "description": "Pest Control: Review pest control logbook and check bait stations.", "priority": "High", "riskLevel": "High", "consequence": "Infestation.", "proof": "Pest control vendor's service report." },
+                { "id": "FMB-HHA-07", "description": "Stock Check: Verify inventory of cleaning supplies and consumables.", "priority": "Medium", "riskLevel": "Low", "consequence": "Running out of essential supplies.", "proof": "Stock register." },
+                { "id": "FMB-HHA-08", "description": "Staff Uniform & PPE: Check that all housekeeping staff are in clean uniforms and using correct PPE.", "priority": "Medium", "riskLevel": "Low", "consequence": "Unprofessionalism, safety risk to staff.", "proof": "Staff inspection notes." },
+                { "id": "FMB-HHA-09", "description": "Review cleaning equipment for functionality and cleanliness.", "priority": "Medium", "riskLevel": "Low", "consequence": "Ineffective cleaning.", "proof": "Equipment check log." },
+                { "id": "FMB-HHA-10", "description": "Follow up on any housekeeping-related complaints from the previous week.", "priority": "High", "riskLevel": "Medium", "consequence": "Recurring service failures.", "proof": "Complaint tracker update." }
             ]
         },
         {
-            title: "Physical Security & Access Control",
-            department: "Security",
-            frequency: "Weekly",
-            role: "Security Manager",
-            summary: "An audit to ensure the physical security of the facility is robust and uncompromised.",
-            icon: "shield-check",
-            tasks: [
-                { id: "FMB-PSA-01", description: "Perimeter Audit: Walk the entire facility perimeter to check for breaches in fences/walls.", priority: "High", riskLevel: "High", consequence: "Unauthorized entry.", proof: "Perimeter patrol log.", location: "Perimeter" },
-                { id: "FMB-PSA-02", description: "CCTV Audit: Verify all cameras are recording, have clear views, and have adequate storage.", priority: "High", riskLevel: "High", consequence: "Inability to investigate incidents.", proof: "CCTV health check report.", location: "CCTV Control Room" },
-                { id: "FMB-PSA-03", description: "Access Control Audit: Review access logs for sensitive areas (e.g., server rooms) for unauthorized entries.", priority: "High", riskLevel: "High", consequence: "Data theft, sabotage.", proof: "Access control log audit report.", location: "Security Office" },
-                { id: "FMB-PSA-04", description: "Visitor Management: Audit visitor logs to ensure all visitors were signed in, issued a badge, and escorted.", priority: "Medium", riskLevel: "Medium", consequence: "Unauthorized individuals on premises.", proof: "Sample audit of visitor logs.", location: "Reception" },
-                { id: "FMB-PSA-05", description: "Key Management: Audit the key register to ensure all keys are accounted for.", priority: "High", riskLevel: "High", consequence: "Lost keys can compromise entire facility.", proof: "Key register audit sign-off.", location: "Security Office" },
-                { id: "FMB-PSA-06", description: "Lighting Check: Conduct a nighttime audit of all exterior and parking lot lighting.", priority: "Medium", riskLevel: "Medium", consequence: "Dark spots provide cover for criminals.", proof: "Night patrol report.", location: "Exterior" },
-                { id: "FMB-PSA-07", description: "Alarm System Test: Test a sample of door alarms, motion detectors, and panic buttons.", priority: "High", riskLevel: "High", consequence: "Alarm failure during a real incident.", proof: "Alarm test log.", location: "Various Locations" },
-                { id: "FMB-PSA-08", description: "Guard Tour Verification: Check that guard patrol tours are being completed on schedule.", priority: "High", riskLevel: "Medium", consequence: "Gaps in security coverage.", proof: "Guard tour system report.", location: "Security Office" },
-                { id: "FMB-PSA-09", description: "Review incident reports from the past week for any trends or required actions.", priority: "Medium", riskLevel: "Low", consequence: "Failure to learn from security incidents.", proof: "Incident report summary.", location: "Security Office" },
-                { id: "FMB-PSA-10", description: "Check that security staff have up-to-date licenses and training certifications.", priority: "High", riskLevel: "Medium", consequence: "Non-compliant or untrained security force.", proof: "Review of HR training records.", location: "HR Office" }
+            "title": "Physical Security & Access Control",
+            "department": "Security",
+            "frequency": "Weekly",
+            "role": "Security Manager",
+            "summary": "An audit to ensure the physical security of the facility is robust and uncompromised.",
+            "icon": "shield-check",
+            "tasks": [
+                { "id": "FMB-PSA-01", "description": "Perimeter Audit: Walk the entire facility perimeter to check for breaches in fences/walls.", "priority": "High", "riskLevel": "High", "consequence": "Unauthorized entry.", "proof": "Perimeter patrol log." },
+                { "id": "FMB-PSA-02", "description": "CCTV Audit: Verify all cameras are recording, have clear views, and have adequate storage.", "priority": "High", "riskLevel": "High", "consequence": "Inability to investigate incidents.", "proof": "CCTV health check report." },
+                { "id": "FMB-PSA-03", "description": "Access Control Audit: Review access logs for sensitive areas (e.g., server rooms) for unauthorized entries.", "priority": "High", "riskLevel": "High", "consequence": "Data theft, sabotage.", "proof": "Access control log audit report." },
+                { "id": "FMB-PSA-04", "description": "Visitor Management: Audit visitor logs to ensure all visitors were signed in, issued a badge, and escorted.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Unauthorized individuals on premises.", "proof": "Sample audit of visitor logs." },
+                { "id": "FMB-PSA-05", "description": "Key Management: Audit the key register to ensure all keys are accounted for.", "priority": "High", "riskLevel": "High", "consequence": "Lost keys can compromise entire facility.", "proof": "Key register audit sign-off." },
+                { "id": "FMB-PSA-06", "description": "Lighting Check: Conduct a nighttime audit of all exterior and parking lot lighting.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Dark spots provide cover for criminals.", "proof": "Night patrol report." },
+                { "id": "FMB-PSA-07", "description": "Alarm System Test: Test a sample of door alarms, motion detectors, and panic buttons.", "priority": "High", "riskLevel": "High", "consequence": "Alarm failure during a real incident.", "proof": "Alarm test log." },
+                { "id": "FMB-PSA-08", "description": "Guard Tour Verification: Check that guard patrol tours are being completed on schedule.", "priority": "High", "riskLevel": "Medium", "consequence": "Gaps in security coverage.", "proof": "Guard tour system report." },
+                { "id": "FMB-PSA-09", "description": "Review incident reports from the past week for any trends or required actions.", "priority": "Medium", "riskLevel": "Low", "consequence": "Failure to learn from security incidents.", "proof": "Incident report summary." },
+                { "id": "FMB-PSA-10", "description": "Check that security staff have up-to-date licenses and training certifications.", "priority": "High", "riskLevel": "Medium", "consequence": "Non-compliant or untrained security force.", "proof": "Review of HR training records." }
             ]
         },
         {
-            title: "Vendor & Contract Management",
-            department: "Administration",
-            frequency: "Monthly",
-            role: "Admin Manager",
-            summary: "Ensures all vendors are meeting their SLAs and contracts are up-to-date.",
-            icon: "handshake",
-            tasks: [
-                { id: "FMB-VCM-01", description: "Review performance of critical vendors (e.g., housekeeping, security, M&E) against their SLAs.", priority: "High", riskLevel: "Medium", consequence: "Paying for sub-par service.", proof: "Monthly vendor performance scorecard.", location: "Office" },
-                { id: "FMB-VCM-02", description: "Verify all vendor invoices against work orders or service reports before processing payment.", priority: "High", riskLevel: "High", consequence: "Paying for work not done or over-billing.", proof: "Signed-off invoices.", location: "Finance/Admin" },
-                { id: "FMB-VCM-03", description: "Ensure all vendors have submitted required compliance documents (e.g., insurance, licenses).", priority: "High", riskLevel: "High", consequence: "Liability risk from non-compliant vendors.", proof: "Vendor compliance file audit.", location: "Office" },
-                { id: "FMB-VCM-04", description: "Track all contract renewal dates and start renewal process 90 days in advance.", priority: "High", riskLevel: "Medium", consequence: "Lapse in critical services.", proof: "Contract management tracker.", location: "Office" },
-                { id: "FMB-VCM-05", description: "Conduct a monthly meeting with key vendor account managers.", priority: "Medium", riskLevel: "Low", consequence: "Poor relationship, unresolved issues fester.", proof: "Minutes of meeting.", location: "Office" },
-                { id: "FMB-VCM-06", description: "Issue formal non-conformance reports for any SLA failures.", priority: "Medium", riskLevel: "Medium", consequence: "SLA failures are not officially documented and penalized.", proof: "Copies of non-conformance reports.", location: "Office" },
-                { id: "FMB-VCM-07", description: "Onboard new vendors with a formal induction on site rules, safety, and procedures.", priority: "High", riskLevel: "Medium", consequence: "Vendors creating safety or security risks.", proof: "Signed vendor induction form.", location: "Office" },
-                { id: "FMB-VCM-08", description: "Review and approve all vendor work permits before allowing work to start.", priority: "High", riskLevel: "High", consequence: "Unsafe or disruptive work being carried out.", proof: "Signed work permit.", location: "Security/Facilities" }
+            "title": "Vendor & Contract Management",
+            "department": "Administration",
+            "frequency": "Monthly",
+            "role": "Admin Manager",
+            "summary": "Ensures all vendors are meeting their SLAs and contracts are up-to-date.",
+            "icon": "handshake",
+            "tasks": [
+                { "id": "FMB-VCM-01", "description": "Review performance of critical vendors (e.g., housekeeping, security, M&E) against their SLAs.", "priority": "High", "riskLevel": "Medium", "consequence": "Paying for sub-par service.", "proof": "Monthly vendor performance scorecard." },
+                { "id": "FMB-VCM-02", "description": "Verify all vendor invoices against work orders or service reports before processing payment.", "priority": "High", "riskLevel": "High", "consequence": "Paying for work not done or over-billing.", "proof": "Signed-off invoices." },
+                { "id": "FMB-VCM-03", "description": "Ensure all vendors have submitted required compliance documents (e.g., insurance, licenses).", "priority": "High", "riskLevel": "High", "consequence": "Liability risk from non-compliant vendors.", "proof": "Vendor compliance file audit." },
+                { "id": "FMB-VCM-04", "description": "Track all contract renewal dates and start renewal process 90 days in advance.", "priority": "High", "riskLevel": "Medium", "consequence": "Lapse in critical services.", "proof": "Contract management tracker." },
+                { "id": "FMB-VCM-05", "description": "Conduct a monthly meeting with key vendor account managers.", "priority": "Medium", "riskLevel": "Low", "consequence": "Poor relationship, unresolved issues fester.", "proof": "Minutes of meeting." },
+                { "id": "FMB-VCM-06", "description": "Issue formal non-conformance reports for any SLA failures.", "priority": "Medium", "riskLevel": "Medium", "consequence": "SLA failures are not officially documented and penalized.", "proof": "Copies of non-conformance reports." },
+                { "id": "FMB-VCM-07", "description": "Onboard new vendors with a formal induction on site rules, safety, and procedures.", "priority": "High", "riskLevel": "Medium", "consequence": "Vendors creating safety or security risks.", "proof": "Signed vendor induction form." },
+                { "id": "FMB-VCM-08", "description": "Review and approve all vendor work permits before allowing work to start.", "priority": "High", "riskLevel": "High", "consequence": "Unsafe or disruptive work being carried out.", "proof": "Signed work permit." }
             ]
-        },
+        }
     ]
 };
 
@@ -1361,123 +1361,125 @@ const healthcare_and_hospital_operations: PremiumPack = {
     ],
     checklists: [
         {
-            title: 'Patient Identification Protocol',
-            department: 'All Clinical Departments',
-            frequency: 'Per Patient Interaction',
-            role: 'All Clinical Staff',
-            summary: 'Ensures correct patient identification before any procedure, medication, or test to prevent errors.',
-            icon: 'user-check',
-            tasks: [
-              { id: 'HCO-PID-01', description: 'Use at least two patient identifiers (e.g., full name and MRN/hospital number).', priority: 'High', riskLevel: 'High', consequence: 'Wrong-patient procedure or medication error.', proof: 'Verbal confirmation documented in notes.', location: 'Bedside/Procedure Room' },
-              { id: 'HCO-PID-02', description: 'Ask the patient to state their full name and date of birth (if able).', priority: 'High', riskLevel: 'High', consequence: 'Treating the wrong patient.', proof: 'Patient verbal confirmation.', location: 'Bedside/Procedure Room' },
-              { id: 'HCO-PID-03', description: 'Cross-reference patient identifiers with the patient\'s wristband.', priority: 'High', riskLevel: 'High', consequence: 'Failure to catch an identification error.', proof: 'Visual check documented in chart.', location: 'Bedside' },
-              { id: 'HCO-PID-04', description: 'Verify patient ID before administering any medication.', priority: 'High', riskLevel: 'High', consequence: 'Medication error, adverse drug reaction.', proof: 'MAR (Medication Administration Record) sign-off.', location: 'Bedside' },
-              { id: 'HCO-PID-05', description: 'Verify patient ID before drawing blood or collecting specimens.', priority: 'High', riskLevel: 'High', consequence: 'Misdiagnosis, incorrect treatment.', proof: 'Specimen label cross-checked with wristband.', location: 'Bedside' },
-              { id: 'HCO-PID-06', description: 'Verify patient ID before any invasive procedure or surgery (part of "Time Out").', priority: 'High', riskLevel: 'High', consequence: 'Wrong-site or wrong-patient surgery.', proof: 'Surgical safety checklist sign-off.', location: 'Operating Room' },
-              { id: 'HCO-PID-07', description: 'Label all specimens in the presence of the patient.', priority: 'High', riskLevel: 'High', consequence: 'Specimen mix-up, incorrect lab results.', proof: 'Labeled specimen tube/container.', location: 'Bedside' },
-              { id: 'HCO-PID-08', description: 'Use barcode scanning for patient ID and medication where available.', priority: 'High', riskLevel: 'Medium', consequence: 'Reduces human error in identification.', proof: 'System log of barcode scan.', location: 'Bedside' },
-            ],
-          },
-          {
-            title: 'Surgical Safety Checklist (WHO Aligned)',
-            department: 'Surgery/Operating Room',
-            frequency: 'Per Surgical Procedure',
-            role: 'Entire Surgical Team',
-            summary: 'A three-phase checklist (Sign In, Time Out, Sign Out) to prevent common surgical errors.',
-            icon: 'file-check',
-            tasks: [
-              { id: 'HCO-SSC-01', description: 'SIGN IN (Before Induction): Confirm patient identity, procedure, site, and consent.', priority: 'High', riskLevel: 'High', consequence: 'Wrong-patient/wrong-site surgery.', proof: 'Signed checklist.', location: 'Pre-op/OR' },
-              { id: 'HCO-SSC-02', description: 'SIGN IN: Mark the surgical site.', priority: 'High', riskLevel: 'High', consequence: 'Wrong-site surgery.', proof: 'Visual confirmation of surgical mark.', location: 'Pre-op/OR' },
-              { id: 'HCO-SSC-03', description: 'SIGN IN: Anesthesia safety check completed.', priority: 'High', riskLevel: 'High', consequence: 'Anesthetic complications.', proof: 'Anesthesiologist confirmation.', location: 'OR' },
-              { id: 'HCO-SSC-04', description: 'TIME OUT (Before Incision): All team members introduce themselves by name and role.', priority: 'Medium', riskLevel: 'Low', consequence: 'Poor team communication.', proof: 'Verbal confirmation.', location: 'OR' },
-              { id: 'HCO-SSC-05', description: 'TIME OUT: Team verbally confirms patient name, procedure, and incision site.', priority: 'High', riskLevel: 'High', consequence: 'Catastrophic surgical error.', proof: 'Verbal confirmation documented by circulating nurse.', location: 'OR' },
-              { id: 'HCO-SSC-06', description: 'TIME OUT: Review critical events (anticipated blood loss, critical steps).', priority: 'High', riskLevel: 'Medium', consequence: 'Team unprepared for complications.', proof: 'Surgeon and Anesthesiologist verbal briefing.', location: 'OR' },
-              { id: 'HCO-SSC-07', description: 'SIGN OUT (Before Patient Leaves OR): Nurse verbally confirms instrument, sponge, and needle counts.', priority: 'High', riskLevel: 'High', consequence: 'Retained surgical item.', proof: 'Count sheet verified by two nurses.', location: 'OR' },
-              { id: 'HCO-SSC-08', description: 'SIGN OUT: Confirm specimen labeling (specimen name, patient name).', priority: "High", riskLevel: "High", consequence: "Incorrect diagnosis, wrong post-op treatment.", proof: "Visual confirmation of labeled specimen.", location: "OR" },
-              { id: 'HCO-SSC-09', description: 'SIGN OUT: Discuss key concerns for recovery and post-op care.', priority: 'Medium', riskLevel: 'Medium', consequence: 'Poor handover to recovery team.', proof: 'Surgeon/Anesthesiologist debrief.', location: 'OR' },
-            ],
-          },
-          {
-            title: 'High-Alert Medication Protocol',
-            department: 'Pharmacy/Nursing',
-            frequency: 'Per Administration',
-            role: 'Pharmacist/Nurse',
-            summary: 'Prevents errors with medications that have a high risk of causing significant patient harm.',
-            icon: 'pill',
-            tasks: [
-              { id: 'HCO-HAM-01', description: 'Independent Double-Check: Two qualified staff members must separately check the medication, dose, and patient ID.', priority: 'High', riskLevel: 'High', consequence: 'Overdose, underdose, or wrong medication, potentially fatal.', proof: 'Dual signature on the MAR.', location: 'Medication Room/Bedside' },
-              { id: 'HCO-HAM-02', description: 'Use standardized concentrations for all high-alert infusions.', priority: 'High', riskLevel: 'High', consequence: 'Calculation errors leading to massive overdose.', proof: 'Pharmacy compounding log.', location: 'Pharmacy' },
-              { id: 'HCO-HAM-03', description: 'Separate/segregate high-alert medications from other drugs in storage.', priority: 'Medium', riskLevel: 'Medium', consequence: 'Look-alike/sound-alike errors.', proof: 'Photo of segregated storage.', location: 'Medication Room' },
-              { id: 'HCO-HAM-04', description: 'Use "smart" infusion pumps with dose error reduction software (DERS).', priority: 'High', riskLevel: 'High', consequence: 'Programming errors leading to incorrect infusion rates.', proof: 'Pump programming log.', location: 'Bedside' },
-              { id: 'HCO-HAM-05', description: 'Provide enhanced patient education on their high-alert medication.', priority: 'Medium', riskLevel: 'Medium', consequence: 'Patient non-compliance or failure to report side effects.', proof: 'Patient education documentation.', location: 'Bedside' },
-              { id: 'HCO-HAM-06', description: 'Clearly label all high-alert medication lines from pump to patient.', priority: 'High', riskLevel: 'High', consequence: 'Accidental bolus or mixing of incompatible drugs.', proof: 'Visual check of labeled IV lines.', location: 'Bedside' },
-            ],
-          },
-          {
-            title: 'Infection Control (Hand Hygiene Audit)',
-            department: 'Quality/Infection Control',
-            frequency: 'Weekly',
-            role: 'Infection Control Nurse',
-            summary: 'Monitors hand hygiene compliance among staff to reduce Hospital-Acquired Infections (HAIs).',
-            icon: 'hand',
-            tasks: [
-              { id: 'HCO-HC-01', description: 'Observe a sample of 20 staff members for hand hygiene compliance before patient contact.', priority: 'High', riskLevel: 'High', consequence: 'Transmission of pathogens to patients.', proof: 'Hand hygiene audit tool entries.', location: 'Various Wards' },
-              { id: 'HCO-HC-02', description: 'Observe compliance after contact with patient surroundings.', priority: 'High', riskLevel: 'High', consequence: 'Contamination of the healthcare environment.', proof: 'Hand hygiene audit tool entries.', location: 'Various Wards' },
-              { id: 'HCO-HC-03', description: 'Observe compliance before an aseptic task (e.g., IV insertion).', priority: 'High', riskLevel: 'High', consequence: 'Introduction of infection into a sterile site.', proof: 'Hand hygiene audit tool entries.', location: 'Various Wards' },
-              { id: 'HCO-HC-04', description: 'Check that alcohol-based hand rub dispensers are available and functional at point of care.', priority: 'High', riskLevel: 'Medium', consequence: 'Staff unable to perform hand hygiene easily.', proof: 'Audit checklist.', location: 'All Patient Rooms/Corridors' },
-              { id: 'HCO-HC-05', description: 'Ensure staff are "bare below the elbows" (no watches, rings with stones).', priority: 'Medium', riskLevel: 'Medium', consequence: 'Jewelry harbors microorganisms.', proof: 'Direct observation.', location: 'All Clinical Areas' },
-              { id: 'HCO-HC-06', description: 'Calculate and post hand hygiene compliance rates for each ward.', priority: 'Medium', riskLevel: 'Low', consequence: 'Lack of feedback and accountability.', proof: 'Posted compliance dashboard.', location: 'Ward Notice Boards' },
-            ],
-          },
-          {
-            title: 'Emergency Code Management (Code Blue)',
-            department: 'Emergency/All',
-            frequency: 'Per Event/Mock Drill',
-            role: 'Code Blue Team',
-            summary: 'Ensures a rapid, coordinated, and effective response to a cardiac or respiratory arrest.',
-            icon: 'heart-pulse',
-            tasks: [
-              { id: 'HCO-EC-01', description: 'Check crash cart daily: defibrillator charge, medication expiry, and equipment integrity.', priority: 'High', riskLevel: 'High', consequence: 'Life-saving equipment fails during an emergency.', proof: 'Daily crash cart checklist.', location: 'All Wards/ICU' },
-              { id: 'HCO-EC-02', description: 'Conduct monthly mock Code Blue drills in different hospital locations.', priority: 'High', riskLevel: 'High', consequence: 'Disorganized response, delayed CPR/defibrillation.', proof: 'Mock drill debriefing report.', location: 'Varies' },
-              { id: 'HCO-EC-03', description: 'Verify that all clinical staff are certified in Basic Life Support (BLS).', priority: 'High', riskLevel: 'High', consequence: 'Inability to initiate immediate CPR.', proof: 'Staff training records.', location: 'HR/Education Dept' },
-              { id: 'HCO-EC-04', description: 'Team leader clearly assigns roles at the start of the code (e.g., compressor, airway, recorder).', priority: 'High', riskLevel: 'Medium', consequence: 'Chaotic scene, missed interventions.', proof: 'Post-code debrief form.', location: 'Code Location' },
-              { id: 'HCO-EC-05', description: 'Document all events, medications, and vitals on the Code Blue record.', priority: 'High', riskLevel: 'Medium', consequence: 'Inaccurate record for clinical review and legal purposes.', proof: 'Completed Code Blue record sheet.', location: 'Code Location' },
-              { id: 'HCO-EC-06', description: 'Ensure crowd control and that the patient\'s family is managed compassionately.', priority: 'Medium', riskLevel: 'Low', consequence: 'Added distress to family, interference with team.', proof: 'Social worker/security notes.', location: 'Code Location' },
-            ],
-          },
-          {
-            title: 'Biomedical Waste Management',
-            department: 'Housekeeping/Infection Control',
-            frequency: 'Daily',
-            role: 'Housekeeping Supervisor',
-            summary: 'Ensures safe and compliant segregation, collection, and disposal of biomedical waste.',
-            icon: 'recycle',
-            tasks: [
-              { id: 'HCO-BMW-01', description: 'Verify waste is correctly segregated into color-coded bins at the point of generation.', priority: 'High', riskLevel: "High", consequence: "Injury to staff, environmental contamination, legal penalties.", proof: "Daily round checklist.", location: "All Wards/OT/Labs" },
-              { id: 'HCO-BMW-02', description: 'Ensure all waste bags are sealed when 3/4 full.', priority: 'Medium', riskLevel: 'Medium', consequence: 'Spillage, exposure risk.', proof: 'Visual check.', location: 'All Wards' },
-              { id: 'HCO-BMW-03', description: 'Check that sharps containers are not overfilled and are properly sealed for disposal.', priority: 'High', riskLevel: 'High', consequence: 'Needlestick injuries.', proof: 'Daily round checklist.', location: 'All Wards' },
-              { id: 'HCO-BMW-04', description: 'Transport waste in dedicated, covered trolleys along designated routes.', priority: 'High', riskLevel: 'Medium', consequence: 'Contamination of public areas.', proof: 'CCTV review.', location: 'Hospital Corridors' },
-              { id: 'HCO-BMW-05', description: 'Weigh and log all waste bags before handing over to the disposal vendor.', priority: 'High', riskLevel: 'Medium', consequence: 'Inability to track waste generation, non-compliance.', proof: 'BMW disposal logbook.', location: 'Waste Collection Area' },
-              { id: 'HCO-BMW-06', description: 'Verify that the BMW storage area is secure, locked, and clean.', priority: 'High', riskLevel: 'High', consequence: 'Unauthorized access, pest infestation.', proof: 'Photo of secure storage area.', location: 'Waste Collection Area' },
-              { id: 'HCO-BMW-07', description: 'Ensure all staff handling waste wear appropriate Personal Protective Equipment (PPE).', priority: 'High', riskLevel: 'High', consequence: 'Occupational exposure to infectious agents.', proof: 'Direct observation during audit.', location: 'All Areas' },
-            ],
-          },
-          {
-            title: 'Central Sterile Supply Dept (CSSD) Audit',
-            department: 'CSSD/Infection Control',
-            frequency: 'Weekly',
-            role: 'CSSD Supervisor',
-            summary: 'Ensures surgical instruments are properly cleaned, sterilized, and stored to prevent infections.',
-            icon: 'microscope',
-            tasks: [
-              { id: 'HCO-CSSD-01', description: 'Verify washer-disinfector performance with daily cleaning efficacy tests.', priority: 'High', riskLevel: 'High', consequence: 'Instruments are not properly cleaned before sterilization.', proof: 'Test results log.', location: 'CSSD Decontamination Zone' },
-              { id: 'HCO-CSSD-02', description: 'Check autoclave performance using daily Bowie-Dick tests and biological indicators weekly.', priority: 'High', riskLevel: 'High', consequence: 'Sterilization failure, risk of surgical site infections.', proof: 'Autoclave logbook with test strips/results.', location: 'CSSD Sterilization Zone' },
-              { id: 'HCO-CSSD-03', description: 'Ensure sterile packs are correctly wrapped, labeled with expiry date, and stored in a clean, dry area.', priority: 'High', riskLevel: 'Medium', consequence: 'Compromised sterility, using expired packs.', proof: 'Audit of sterile storage shelves.', location: 'CSSD Sterile Storage' },
-              { id: 'HCO-CSSD-04', description: 'Maintain strict one-way workflow from dirty to clean to sterile zones.', priority: 'High', riskLevel: 'High', consequence: 'Cross-contamination of sterile instruments.', proof: 'Observation of staff movement.', location: 'CSSD' },
-              { id: "HCO-CSSD-05", "description": "Inspect instruments for cleanliness and damage before packing.", "priority": "High", "riskLevel": "Medium", "consequence": "Using damaged or dirty instruments in surgery.", "proof": "QC check log at packing station.", "location": "CSSD Assembly & Packing Zone" },
-              { id: "HCO-CSSD-06", "description": "Ensure staff wear appropriate PPE in decontamination area.", "priority": "High", "riskLevel": "High", "consequence": "Staff exposure to bloodborne pathogens.", "proof": "Direct observation.", "location": "CSSD Decontamination Zone" },
-            ],
-          }
+            "title": "Patient Identification Protocol",
+            "department": "All Clinical",
+            "frequency": "Per Interaction",
+            "role": "All Clinical Staff",
+            "summary": "Ensures correct patient identification before any procedure, medication, or test to prevent 'never events'. Aligned with JCI & NABH standards.",
+            "icon": "user-check",
+            "tasks": [
+                { "id": "HCO-PID-01", "description": "Use at least two patient identifiers (e.g., full name and MRN/hospital number). Do not use room number.", "priority": "High", "riskLevel": "High", "consequence": "Wrong-patient procedure or medication error.", "proof": "Verbal confirmation documented in notes." },
+                { "id": "HCO-PID-02", "description": "Ask the patient to state their full name and date of birth (if able). Do not ask leading questions like 'Are you Mr. Smith?'", "priority": "High", "riskLevel": "High", "consequence": "Treating the wrong patient due to patient confirmation bias.", "proof": "Patient verbal confirmation noted in chart." },
+                { "id": "HCO-PID-03", "description": "Cross-reference patient identifiers with the patient's wristband before any intervention.", "priority": "High", "riskLevel": "High", "consequence": "Failure to catch an identification error at the last moment.", "proof": "Visual check documented in chart (e.g., 'Wristband verified')." },
+                { "id": "HCO-PID-04", "description": "Verify patient ID before administering any medication, including IV fluids.", "priority": "High", "riskLevel": "High", "consequence": "Medication error, adverse drug reaction, potential fatality.", "proof": "MAR (Medication Administration Record) sign-off with witness for high-alert meds." },
+                { "id": "HCO-PID-05", "description": "Verify patient ID before drawing blood or collecting any other laboratory specimen.", "priority": "High", "riskLevel": "High", "consequence": "Misdiagnosis, incorrect treatment based on wrong lab results.", "proof": "Specimen label cross-checked and signed/initialed by phlebotomist." },
+                { "id": "HCO-PID-06", "description": "Verify patient ID before any diagnostic procedure (e.g., X-ray, CT scan, endoscopy).", "priority": "High", "riskLevel": "High", "consequence": "Performing a procedure on the wrong patient.", "proof": "Technician's log with patient verification check." },
+                { "id": "HCO-PID-07", "description": "Label all specimens in the presence of the patient, before leaving the bedside.", "priority": "High", "riskLevel": "High", "consequence": "Specimen mix-up, incorrect lab results, potentially catastrophic treatment decisions.", "proof": "Labeled specimen tube/container verified against wristband." },
+                { "id": "HCO-PID-08", "description": "Use barcode scanning for patient ID, medication, and specimen administration where available.", "priority": "High", "riskLevel": "Medium", "consequence": "Reduces human error in identification, but does not replace verbal checks.", "proof": "System log of barcode scan." }
+            ]
+        },
+        {
+            "title": "Surgical Safety Checklist (WHO Aligned)",
+            "department": "Surgery/OT",
+            "frequency": "Per Procedure",
+            "role": "Surgical Team",
+            "summary": "A three-phase checklist (Sign In, Time Out, Sign Out) to prevent common surgical errors and improve teamwork.",
+            "icon": "file-check",
+            "tasks": [
+                { "id": "HCO-SSC-01", "description": "SIGN IN (Before Induction): Confirm patient identity, procedure, site, and consent form.", "priority": "High", "riskLevel": "High", "consequence": "Wrong-patient or wrong-site surgery.", "proof": "Signed checklist." },
+                { "id": "HCO-SSC-02", "description": "SIGN IN: Mark the surgical site (must be done by the operating surgeon).", "priority": "High", "riskLevel": "High", "consequence": "Wrong-site surgery.", "proof": "Visual confirmation of surgical mark on patient." },
+                { "id": "HCO-SSC-03", "description": "SIGN IN: Anesthesia safety check (machine, medications, airway equipment) completed.", "priority": "High", "riskLevel": "High", "consequence": "Anesthetic complications, patient harm.", "proof": "Anesthesiologist confirmation on checklist." },
+                { "id": "HCO-SSC-04", "description": "TIME OUT (Before Incision): All team members introduce themselves by name and role.", "priority": "Medium", "riskLevel": "Low", "consequence": "Poor team communication and situational awareness.", "proof": "Verbal confirmation." },
+                { "id": "HCO-SSC-05", "description": "TIME OUT: Entire team verbally confirms patient name, procedure, and incision site.", "priority": "High", "riskLevel": "High", "consequence": "Final opportunity to prevent a catastrophic error.", "proof": "Verbal confirmation documented by circulating nurse." },
+                { "id": "HCO-SSC-06", "description": "TIME OUT: Review of critical events, anticipated blood loss, and antibiotic prophylaxis.", "priority": "High", "riskLevel": "Medium", "consequence": "Team unprepared for complications or known patient risks.", "proof": "Surgeon and Anesthesiologist verbal briefing." },
+                { "id": "HCO-SSC-07", "description": "SIGN OUT (Before Patient Leaves OR): Nurse verbally confirms instrument, sponge, and needle counts are correct.", "priority": "High", "riskLevel": "High", "consequence": "Retained surgical item, requiring re-operation.", "proof": "Count sheet verified and signed by two nurses." },
+                { "id": "HCO-SSC-08", "description": "SIGN OUT: Confirm specimen labeling (specimen name, patient name).", "priority": "High", "riskLevel": "High", "consequence": "Incorrect diagnosis, wrong post-op treatment.", "proof": "Visual confirmation of labeled specimen by surgeon and nurse." },
+                { "id": "HCO-SSC-09", "description": "SIGN OUT: Discuss key concerns for recovery and post-operative care.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Poor handover to recovery team, post-op complications.", "proof": "Surgeon/Anesthesiologist debrief documented." }
+            ]
+        },
+        {
+            "title": "High-Alert Medication Protocol",
+            "department": "Pharmacy/Nursing",
+            "frequency": "Per Administration",
+            "role": "Pharmacist/Nurse",
+            "summary": "Prevents errors with medications that have a high risk of causing significant patient harm if misused (e.g., Insulin, Heparin, Chemotherapy).",
+            "icon": "pill",
+            "tasks": [
+                { "id": "HCO-HAM-01", "description": "Independent Double-Check: Two qualified staff members must separately check the medication, dose, and patient ID before administration.", "priority": "High", "riskLevel": "High", "consequence": "Potentially fatal medication error.", "proof": "Dual signature on the MAR." },
+                { "id": "HCO-HAM-02", "description": "Use standardized concentrations and labeling for all high-alert infusions.", "priority": "High", "riskLevel": "High", "consequence": "Calculation errors leading to massive overdose.", "proof": "Pharmacy compounding log and final product label." },
+                { "id": "HCO-HAM-03", "description": "Separate/segregate high-alert medications from other drugs in storage (e.g., dedicated shelf, 'High-Alert' sticker).", "priority": "Medium", "riskLevel": "Medium", "consequence": "Look-alike/sound-alike errors during drug retrieval.", "proof": "Photo of segregated storage." },
+                { "id": "HCO-HAM-04", "description": "Use 'smart' infusion pumps with dose error reduction software (DERS) and hard limits enabled.", "priority": "High", "riskLevel": "High", "consequence": "Programming errors leading to incorrect infusion rates.", "proof": "Pump programming log/screenshot." },
+                { "id": "HCO-HAM-05", "description": "Provide enhanced patient and family education on their high-alert medication, including side effects to watch for.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Patient non-compliance or failure to report side effects.", "proof": "Signed patient education form." },
+                { "id": "HCO-HAM-06", "description": "Clearly label all high-alert medication lines from pump to patient to avoid misconnections.", "priority": "High", "riskLevel": "High", "consequence": "Accidental bolus or mixing of incompatible drugs via IV lines.", "proof": "Visual check of labeled IV lines by two nurses." }
+            ]
+        },
+        {
+            "title": "Infection Control (Hand Hygiene Audit)",
+            "department": "Quality/Infection Control",
+            "frequency": "Weekly",
+            "role": "Infection Control Nurse",
+            "summary": "Monitors and improves hand hygiene compliance among staff to reduce Hospital-Acquired Infections (HAIs), following WHO's '5 Moments'.",
+            "icon": "hand",
+            "tasks": [
+                { "id": "HCO-HC-01", "description": "Observe a sample of 20 staff members for hand hygiene compliance before touching a patient.", "priority": "High", "riskLevel": "High", "consequence": "Transmission of environmental pathogens to patients.", "proof": "Hand hygiene audit tool entries." },
+                { "id": "HCO-HC-02", "description": "Observe compliance before a clean/aseptic procedure (e.g., IV insertion, wound dressing).", "priority": "High", "riskLevel": "High", "consequence": "Introduction of infection into a sterile site.", "proof": "Hand hygiene audit tool entries." },
+                { "id": "HCO-HC-03", "description": "Observe compliance after body fluid exposure risk.", "priority": "High", "riskLevel": "High", "consequence": "Self-contamination of healthcare worker.", "proof": "Hand hygiene audit tool entries." },
+                { "id": "HCO-HC-04", "description": "Observe compliance after touching a patient.", "priority": "High", "riskLevel": "High", "consequence": "Spread of patient's flora to the environment.", "proof": "Hand hygiene audit tool entries." },
+                { "id": "HCO-HC-05", "description": "Observe compliance after touching patient surroundings.", "priority": "High", "riskLevel": "High", "consequence": "Contamination of the healthcare environment and other patients.", "proof": "Hand hygiene audit tool entries." },
+                { "id": "HCO-HC-06", "description": "Check that alcohol-based hand rub dispensers are available, functional, and not expired at all points of care.", "priority": "High", "riskLevel": "Medium", "consequence": "Staff unable to perform hand hygiene easily, leading to non-compliance.", "proof": "Audit checklist of dispenser locations." },
+                { "id": "HCO-HC-07", "description": "Ensure staff are 'bare below the elbows' (no watches, rings with stones) in all clinical areas.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Jewelry harbors microorganisms and impedes effective hand hygiene.", "proof": "Direct observation during audit." },
+                { "id": "HCO-HC-08", "description": "Calculate and post hand hygiene compliance rates for each ward to provide feedback.", "priority": "Medium", "riskLevel": "Low", "consequence": "Lack of feedback and accountability for wards.", "proof": "Posted compliance dashboard/report." }
+            ]
+        },
+        {
+            "title": "Emergency Code Management (Code Blue)",
+            "department": "Emergency/All",
+            "frequency": "Daily (Checks) / Monthly (Drills)",
+            "role": "Code Blue Team/Nurse Supervisor",
+            "summary": "Ensures a rapid, coordinated, and effective response to a cardiac or respiratory arrest.",
+            "icon": "heart-pulse",
+            "tasks": [
+                { "id": "HCO-EC-01", "description": "Check crash cart daily: defibrillator charge, medication expiry, and integrity of all equipment.", "priority": "High", "riskLevel": "High", "consequence": "Life-saving equipment fails during an emergency, leading to patient death.", "proof": "Daily crash cart checklist signed by nurse." },
+                { "id": "HCO-EC-02", "description": "Conduct monthly mock Code Blue drills in different hospital locations (e.g., ward, cafeteria, lobby).", "priority": "High", "riskLevel": "High", "consequence": "Disorganized response, delayed CPR/defibrillation in a real event.", "proof": "Mock drill debriefing report with timings and corrective actions." },
+                { "id": "HCO-EC-03", "description": "Verify that all clinical staff hold a valid Basic Life Support (BLS) and/or Advanced Cardiac Life Support (ACLS) certification.", "priority": "High", "riskLevel": "High", "consequence": "Inability to initiate immediate and effective CPR.", "proof": "Review of staff training records in HR." },
+                { "id": "HCO-EC-04", "description": "During a code, team leader clearly assigns roles (e.g., compressor, airway manager, recorder, medication nurse).", "priority": "High", "riskLevel": "Medium", "consequence": "Chaotic scene, missed interventions, poor team dynamics.", "proof": "Post-code debrief form." },
+                { "id": "HCO-EC-05", "description": "Document all events, medications, timings, and vital signs on the official Code Blue record.", "priority": "High", "riskLevel": "Medium", "consequence": "Inaccurate record for clinical review and medico-legal purposes.", "proof": "Completed Code Blue record sheet." },
+                { "id": "HCO-EC-06", "description": "Ensure crowd control is implemented and the patient's family is managed compassionately by a designated person.", "priority": "Medium", "riskLevel": "Low", "consequence": "Added distress to family, interference with medical team.", "proof": "Notes from social worker/security in the patient file." }
+            ]
+        },
+        {
+            "title": "Biomedical Waste Management",
+            "department": "Housekeeping/Infection Control",
+            "frequency": "Daily",
+            "role": "Housekeeping Supervisor",
+            "summary": "Ensures safe and compliant segregation, collection, and disposal of biomedical waste as per national and international guidelines.",
+            "icon": "recycle",
+            "tasks": [
+                { "id": "HCO-BMW-01", "description": "Verify waste is correctly segregated into color-coded bins (Yellow, Red, Blue, White) at the point of generation.", "priority": "High", "riskLevel": "High", "consequence": "Needlestick injury, environmental contamination, severe legal penalties.", "proof": "Daily round checklist with photos of bins." },
+                { "id": "HCO-BMW-02", "description": "Ensure all waste bags are sealed securely (e.g., with a zip-tie) when 3/4 full.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Spillage during transport, exposure risk to staff.", "proof": "Visual check during collection rounds." },
+                { "id": "HCO-BMW-03", "description": "Check that sharps containers are not overfilled (below the marked line) and are properly sealed for disposal.", "priority": "High", "riskLevel": "High", "consequence": "High risk of needlestick injuries to housekeeping staff.", "proof": "Daily round checklist." },
+                { "id": "HCO-BMW-04", "description": "Transport waste in dedicated, covered trolleys along designated routes and service elevators.", "priority": "High", "riskLevel": "Medium", "consequence": "Contamination of public areas and elevators.", "proof": "CCTV review of waste transport." },
+                { "id": "HCO-BMW-05", "description": "Weigh and log all waste bags by category before handing over to the disposal vendor.", "priority": "High", "riskLevel": "Medium", "consequence": "Inability to track waste generation, non-compliance with regulatory reporting.", "proof": "BMW disposal logbook signed by vendor." },
+                { "id": "HCO-BMW-06", "description": "Verify that the central BMW storage area is secure, locked, clean, and accessible only to authorized personnel.", "priority": "High", "riskLevel": "High", "consequence": "Unauthorized access, pest infestation, public health risk.", "proof": "Photo of secure storage area." },
+                { "id": "HCO-BMW-07", "description": "Ensure all staff handling waste wear appropriate Personal Protective Equipment (PPE), including heavy-duty gloves, masks, and boots.", "priority": "High", "riskLevel": "High", "consequence": "Occupational exposure to infectious agents and injuries.", "proof": "Direct observation during audit." }
+            ]
+        },
+        {
+            "title": "Central Sterile Supply Dept (CSSD) Audit",
+            "department": "CSSD/Infection Control",
+            "frequency": "Weekly",
+            "role": "CSSD Supervisor",
+            "summary": "Ensures surgical instruments are properly cleaned, disinfected, sterilized, and stored to prevent Surgical Site Infections (SSIs).",
+            "icon": "microscope",
+            "tasks": [
+                { "id": "HCO-CSSD-01", "description": "Verify washer-disinfector performance with daily cleaning efficacy tests (e.g., TOSI strips).", "priority": "High", "riskLevel": "High", "consequence": "Bioburden remains on instruments, sterilization failure.", "proof": "Test results logbook." },
+                { "id": "HCO-CSSD-02", "description": "Check autoclave performance using daily Bowie-Dick tests (for pre-vacuum sterilizers) and weekly biological indicators.", "priority": "High", "riskLevel": "High", "consequence": "Catastrophic sterilization failure, high risk of SSIs.", "proof": "Autoclave logbook with attached test strips/results." },
+                { "id": "HCO-CSSD-03", "description": "Ensure sterile packs are correctly wrapped, sealed, and labeled with sterilizer number, cycle number, and expiry date.", "priority": "High", "riskLevel": "Medium", "consequence": "Compromised sterility, inability to trace a faulty batch.", "proof": "Audit of sterile packs in storage." },
+                { "id": "HCO-CSSD-04", "description": "Maintain strict one-way workflow from dirty (decontamination) to clean (assembly) to sterile (storage) zones.", "priority": "High", "riskLevel": "High", "consequence": "Cross-contamination of sterile instruments.", "proof": "Observation of staff movement and workflow." },
+                { "id": "HCO-CSSD-05", "description": "Inspect instruments under magnification for cleanliness and damage before packing.", "priority": "High", "riskLevel": "Medium", "consequence": "Using damaged or dirty instruments in surgery.", "proof": "QC check log at packing station." },
+                { "id": "HCO-CSSD-06", "description": "Ensure staff in decontamination area wear full PPE (fluid-resistant gown, gloves, face shield).", "priority": "High", "riskLevel": "High", "consequence": "Staff exposure to bloodborne pathogens.", "proof": "Direct observation during audit." }
+            ]
+        }
     ]
 };
 
@@ -1589,7 +1591,7 @@ const sports_clubs_stadium_operations_pack: PremiumPack = {
     sampleItems: [
         { text: "Ensure venue safety with crowd management, ticketing, and emergency evacuation SOPs.", icon: "users" },
         { text: "Maintain world-class turf and pitches with a structured ground maintenance schedule.", icon: "sprout" },
-        { text: "Prevent accidents and liability with daily inspections of gym and sports equipment.", icon: "dumbbell" },
+        { text: "Prevent accidents and misuse with daily inspections of gym and sports equipment.", icon: "dumbbell" },
         { text: "Guarantee a safe environment with fire safety audits and medical emergency response plans.", icon: "siren" },
         { text: "Protect members with robust hygiene protocols for pools, changing rooms, and F&B areas.", icon: "sparkles" },
         { text: "Manage your team effectively with checklists for staff training, scheduling, and performance.", icon: "clipboard-list" }
@@ -1689,7 +1691,99 @@ const manufacturing_operations_ehs_pack: PremiumPack = {
         { text: "Mitigate fire and explosion risks with strict chemical handling and storage protocols.", icon: "siren" },
         { text: "Maintain compliance with a robust system for environmental monitoring and statutory reporting.", icon: "leaf" }
     ],
-    checklists: []
+    checklists: [
+        {
+            "title": "Daily Production Kick-off",
+            "department": "Production",
+            "frequency": "Daily",
+            "role": "Shift Supervisor",
+            "summary": "Ensures the production line is ready, safe, and aligned with the day's targets before starting operations.",
+            "icon": "clipboard-check",
+            "tasks": [
+                { "id": "MFG-DPK-01", "description": "Review shift handover log from the previous shift for any issues or pending actions.", "priority": "High", "riskLevel": "Medium", "consequence": "Recurring issues are not resolved, leading to repeated downtime or quality deviations.", "proof": "Signed handover logbook." },
+                { "id": "MFG-DPK-02", "description": "Conduct a toolbox talk covering the day's production targets, safety focus, and quality alerts.", "priority": "High", "riskLevel": "Low", "consequence": "Team is misaligned on priorities, increased risk of accidents or quality errors.", "proof": "Toolbox talk attendance sheet and topic notes." },
+                { "id": "MFG-DPK-03", "description": "Verify that raw material availability for the first 4 hours of production is confirmed.", "priority": "High", "riskLevel": "High", "consequence": "Line stoppage due to material shortage, impacting entire day's output.", "proof": "Material staging confirmation from stores." },
+                { "id": "MFG-DPK-04", "description": "Check that all machine safety guards are in place and emergency stops are functional.", "priority": "High", "riskLevel": "High", "consequence": "Catastrophic injury or fatality.", "proof": "Pre-startup safety checklist signed by operator and supervisor." },
+                { "id": "MFG-DPK-05", "description": "Ensure all operators are at their assigned stations and wearing the correct Personal Protective Equipment (PPE).", "priority": "High", "riskLevel": "Medium", "consequence": "Workplace injuries, non-compliance with safety regulations.", "proof": "Supervisor's visual inspection." },
+                { "id": "MFG-DPK-06", "description": "Review the day's production schedule and ensure the first job's parameters are correctly set on the machines.", "priority": "High", "riskLevel": "Medium", "consequence": "Production of non-conforming product, significant rework or scrap.", "proof": "First-off inspection report." },
+                { "id": "MFG-DPK-07", "description": "Confirm that the quality control station is ready with the required gauges, checklists, and sample containers.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Inability to perform in-process quality checks, leading to defect production.", "proof": "QC station readiness checklist." },
+                { "id": "MFG-DPK-08", "description": "Check that the area is clean, well-lit, and free from slip, trip, or fall hazards.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Workplace accidents, reduced efficiency.", "proof": "5S audit checklist for the area." }
+            ]
+        },
+        {
+            "title": "Lock-Out Tag-Out (LOTO)",
+            "department": "Maintenance/EHS",
+            "frequency": "Per Maintenance Task",
+            "role": "Maintenance Technician",
+            "summary": "A safety procedure to ensure dangerous machines are properly shut off and not started up again prior to the completion of maintenance or servicing work.",
+            "icon": "lock",
+            "tasks": [
+                { "id": "MFG-LOTO-01", "description": "Notify all affected employees of the impending shutdown and the LOTO procedure.", "priority": "High", "riskLevel": "High", "consequence": "Unexpected shutdown causes process issues; employees unaware of maintenance work.", "proof": "Log of communication." },
+                { "id": "MFG-LOTO-02", "description": "Shut down the machine or equipment using the normal stopping procedure.", "priority": "High", "riskLevel": "High", "consequence": "Unsafe shutdown could damage equipment or leave it in a hazardous state.", "proof": "Operator confirmation." },
+                { "id": "MFG-LOTO-03", "description": "Isolate all energy sources (electrical, hydraulic, pneumatic, etc.) as per the machine-specific LOTO chart.", "priority": "High", "riskLevel": "High", "consequence": "Stored energy can cause unexpected movement, leading to fatal injury.", "proof": "LOTO checklist with each energy source ticked off." },
+                { "id": "MFG-LOTO-04", "description": "Apply assigned, individual locks and tags to each energy isolating device.", "priority": "High", "riskLevel": "High", "consequence": "Another worker could accidentally re-energize the machine.", "proof": "Photo of the applied locks and tags." },
+                { "id": "MFG-LOTO-05", "description": "Release or restrain all stored energy (e.g., bleed pneumatic lines, block elevated parts).", "priority": "High", "riskLevel": "High", "consequence": "Injury from unexpected release of residual energy.", "proof": "LOTO checklist verification." },
+                { "id": "MFG-LOTO-06", "description": "VERIFY isolation by attempting to start the machine using the normal start button. This is the most critical step.", "priority": "High", "riskLevel": "High", "consequence": "Assuming the machine is de-energized when it is not, leading to fatality.", "proof": "Signature on the LOTO permit confirming verification." },
+                { "id": "MFG-LOTO-07", "description": "Upon work completion, inspect the area and remove all tools.", "priority": "High", "riskLevel": "Medium", "consequence": "Tools left in machine can cause damage on startup.", "proof": "Work area clearance check." },
+                { "id": "MFG-LOTO-08", "description": "Notify all affected employees that LOTO is being removed and the machine will be re-energized.", "priority": "High", "riskLevel": "Medium", "consequence": "Unexpected startup injures someone not directly involved in maintenance.", "proof": "Log of communication." },
+                { "id": "MFG-LOTO-09", "description": "Remove LOTO devices. Each worker must remove their own lock.", "priority": "High", "riskLevel": "High", "consequence": "A lock removed by someone else could lead to startup while a worker is still inside.", "proof": "LOTO permit close-out signatures." }
+            ]
+        },
+        {
+            "title": "Permit to Work (PTW) - Hot Work",
+            "department": "EHS/Maintenance",
+            "frequency": "Per Hot Work Task",
+            "role": "Area In-charge/Safety Officer",
+            "summary": "A formal documented process to control high-risk activities like welding, grinding, or cutting in non-designated areas.",
+            "icon": "file-check",
+            "tasks": [
+                { "id": "MFG-PTW-01", "description": "Identify all combustible materials within a 35-foot (11-meter) radius of the hot work.", "priority": "High", "riskLevel": "High", "consequence": "Fire and explosion.", "proof": "Signed PTW form." },
+                { "id": "MFG-PTW-02", "description": "Move combustibles to a safe distance or cover them with fire-retardant blankets.", "priority": "High", "riskLevel": "High", "consequence": "Sparks igniting nearby materials.", "proof": "Photo of the prepared work area." },
+                { "id": "MFG-PTW-03", "description": "Ensure a trained fire watch is assigned and present for the duration of the work and for 30 minutes after.", "priority": "High", "riskLevel": "High", "consequence": "Inability to extinguish a small fire before it spreads.", "proof": "Fire watch named on the PTW." },
+                { "id": "MFG-PTW-04", "description": "Ensure a fully charged fire extinguisher of the correct type is immediately available.", "priority": "High", "riskLevel": "High", "consequence": "Fire cannot be controlled at inception.", "proof": "Visual check documented on PTW." },
+                { "id": "MFG-PTW-05", "description": "Seal all floor and wall openings to prevent sparks from traveling to other areas.", "priority": "High", "riskLevel": "Medium", "consequence": "Fire starting in an unseen area.", "proof": "Photo of sealed openings." },
+                { "id": "MFG-PTW-06", "description": "Verify that any sprinkler systems in the area are operational.", "priority": "High", "riskLevel": "High", "consequence": "Primary fire suppression system is not ready.", "proof": "Check with engineering department." },
+                { "id": "MFG-PTW-07", "description": "Authorize and issue the permit for a specific time frame only.", "priority": "High", "riskLevel": "Low", "consequence": "Work continues without re-assessment of changing conditions.", "proof": "Signed and dated PTW with start/end times." },
+                { "id": "MFG-PTW-08", "description": "Upon completion, the fire watch and permit issuer must inspect the area for smoldering fires before closing the permit.", "priority": "High", "riskLevel": "High", "consequence": "A fire starting after the work crew has left.", "proof": "Final sign-off on the PTW." }
+            ]
+        },
+        {
+            "title": "In-Process Quality Control (IPQC)",
+            "department": "Quality",
+            "frequency": "Hourly/Per Batch",
+            "role": "QC Inspector",
+            "summary": "Verifies that products meet quality standards at various stages of the production process to prevent large-scale defects.",
+            "icon": "clipboard-check",
+            "tasks": [
+                { "id": "MFG-QC-01", "description": "First-Off Approval: Inspect the first part produced after any new setup against all drawing specifications.", "priority": "High", "riskLevel": "High", "consequence": "Entire batch produced with a defect from the start.", "proof": "Signed First-Off Inspection Report." },
+                { "id": "MFG-QC-02", "description": "Random Sampling: Collect and inspect a random sample of products from the line at a set frequency (e.g., 5 pieces per hour).", "priority": "High", "riskLevel": "Medium", "consequence": "Process deviations go undetected, leading to large amounts of scrap.", "proof": "IPQC log sheet with measurements." },
+                { "id": "MFG-QC-03", "description": "Verify machine parameters (e.g., temperature, pressure, speed) match the approved process sheet.", "priority": "High", "riskLevel": "Medium", "consequence": "Product produced outside of validated process window.", "proof": "Parameter check log." },
+                { "id": "MFG-QC-04", "description": "Check calibration status of all measuring instruments and gauges being used.", "priority": "High", "riskLevel": "High", "consequence": "Making decisions based on faulty measurements.", "proof": "Valid calibration stickers on all instruments." },
+                { "id": "MFG-QC-05", "description": "If a non-conformance is found, immediately hold the batch and escalate to the Production Supervisor.", "priority": "High", "riskLevel": "High", "consequence": "Defective products are mixed with good products or shipped to customer.", "proof": "Hold tag on the material and entry in the NC log." },
+                { "id": "MFG-QC-06", "description": "Document all inspection results, including measurements and pass/fail status.", "priority": "High", "riskLevel": "Medium", "consequence": "No data for traceability, root cause analysis, or process improvement.", "proof": "Completed IPQC records." },
+                { "id": "MFG-QC-07", "description": "Verify that operators are following the standard operating procedures (SOPs) for their process.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Process variations due to operator error.", "proof": "Operator audit checklist." },
+                { "id": "MFG-QC-08", "description": "Ensure all non-conforming material is clearly identified and moved to a designated quarantine area.", "priority": "High", "riskLevel": "High", "consequence": "Accidental use of defective parts.", "proof": "Photo of quarantined material with hold tag." }
+            ]
+        },
+        {
+            "title": "Chemical Handling & Storage",
+            "department": "EHS",
+            "frequency": "Weekly",
+            "role": "EHS Officer",
+            "summary": "Ensures safe handling and storage of hazardous chemicals to prevent spills, fires, and employee exposure.",
+            "icon": "test-tube",
+            "tasks": [
+                { "id": "MFG-CHS-01", "description": "Verify all chemical containers are correctly labeled with name, hazard symbols, and PPE requirements.", "priority": "High", "riskLevel": "High", "consequence": "Misidentification of chemical leading to incorrect use or dangerous reaction.", "proof": "Photo audit of chemical storage area." },
+                { "id": "MFG-CHS-02", "description": "Ensure Safety Data Sheets (SDS/MSDS) are readily available for all chemicals on site.", "priority": "High", "riskLevel": "High", "consequence": "Inability to respond correctly to a spill or exposure incident.", "proof": "Index of available SDS files." },
+                { "id": "MFG-CHS-03", "description": "Check that incompatible chemicals (e.g., acids and bases) are stored in separate, designated areas.", "priority": "High", "riskLevel": "High", "consequence": "Violent chemical reaction, fire, or toxic gas release.", "proof": "Inspection of chemical storage cabinets/rooms." },
+                { "id": "MFG-CHS-04", "description": "Inspect chemical storage areas for leaks, spills, and proper ventilation.", "priority": "High", "riskLevel": "Medium", "consequence": "Employee exposure to fumes, slip hazards, environmental contamination.", "proof": "Weekly storage area inspection log." },
+                { "id": "MFG-CHS-05", "description": "Verify that appropriate spill kits are available, fully stocked, and accessible.", "priority": "High", "riskLevel": "High", "consequence": "A small spill becomes a major incident.", "proof": "Spill kit inventory checklist." },
+                { "id": "MFG-CHS-06", "description": "Ensure that emergency eyewash stations and safety showers are unobstructed and tested weekly.", "priority": "High", "riskLevel": "High", "consequence": "Inability to decontaminate after a chemical splash, leading to severe injury.", "proof": "Weekly test log for eyewash/showers." },
+                { "id": "MFG-CHS-07", "description": "Confirm all employees handling chemicals have received specific training and are using correct PPE.", "priority": "High", "riskLevel": "High", "consequence": "Chemical burns, respiratory damage, long-term health effects.", "proof": "Review of training records and direct observation." },
+                { "id": "MFG-CHS-08", "description": "Ensure all chemical waste is accumulated in properly labeled, closed containers for disposal by an authorized vendor.", "priority": "High", "riskLevel": "High", "consequence": "Environmental violations, fines, danger to waste handlers.", "proof": "Inspection of hazardous waste accumulation point." }
+            ]
+        }
+    ]
 };
 
 const pharmacy_ops_pack: PremiumPack = {
@@ -1797,10 +1891,10 @@ const animal_shelter_pack: PremiumPack = {
                 { id: "AI-IQ-04", description: "Administer initial vaccinations and deworming as per shelter protocol.", priority: "High", riskLevel: "High", consequence: "Vulnerability to preventable diseases like distemper or rabies.", proof: "Medical record updated with administered treatments.", location: "Intake Room" },
                 { id: "AI-IQ-05", description: "Place new animal in a designated quarantine enclosure for the required period (e.g., 7-14 days).", priority: "High", riskLevel: "High", consequence: "Introduction of contagious disease to the general population.", proof: "Quarantine placement logged in shelter software.", location: "Quarantine Zone" },
                 { id: "AI-IQ-06", "description": "Perform a basic temperament test to assess aggression, fear, and sociability.", "priority": "High", "riskLevel": "Medium", "consequence": "Safety risk to staff and other animals.", "proof": "Temperament test score sheet.", "location": "Intake/Assessment Room" },
-                { id: "AI-IQ-07", "description": "Create a unique identification collar and record for the animal.", "priority": "High", "riskLevel": "Low", "consequence": "Animal mix-ups.", "proof": "ID collar and record in software.", "location": "Intake Room" },
-                { id: "AI-IQ-08", "description": "Provide food, clean water, and comfortable bedding upon arrival.", "priority": "High", "riskLevel": "Low", "consequence": "Animal distress and dehydration.", "proof": "Intake checklist sign-off.", "location": "Quarantine Enclosure" },
-                { id: "AI-IQ-09", "description": "Schedule a full veterinary examination within 24 hours of intake.", "priority": "High", "riskLevel": "High", "consequence": "Delayed treatment of serious conditions.", "proof": "Vet schedule/appointment log.", "location": "Intake Room" },
-                { id: "AI-IQ-10", "description": "Log all information from the finder/previous owner, if available.", "priority": "Medium", "riskLevel": "Low", "consequence": "Loss of valuable behavioral or medical history.", "proof": "Intake form with owner surrender section.", "location": "Intake Room" }
+                { id: "AI-IQ-07", "description": "Create a unique identification collar and record for the animal.", "priority": "High", "riskLevel": "Low", consequence: "Animal mix-ups.", "proof": "ID collar and record in software.", "location": "Intake Room" },
+                { id: "AI-IQ-08", "description": "Provide food, clean water, and comfortable bedding upon arrival.", "priority": "High", "riskLevel": "Low", consequence: "Animal distress and dehydration.", "proof": "Intake checklist sign-off.", "location": "Quarantine Enclosure" },
+                { id: "AI-IQ-09", "description": "Schedule a full veterinary examination within 24 hours of intake.", "priority": "High", "riskLevel": "High", consequence: "Delayed treatment of serious conditions.", "proof": "Vet schedule/appointment log.", "location": "Intake Room" },
+                { id: "AI-IQ-10", "description": "Log all information from the finder/previous owner, if available.", "priority": "Medium", "riskLevel": "Low", consequence: "Loss of valuable behavioral or medical history.", "proof": "Intake form with owner surrender section.", "location": "Intake Room" }
             ]
         },
         {
@@ -1816,11 +1910,11 @@ const animal_shelter_pack: PremiumPack = {
                 { id: "AH-DF-03", description: "Observe each animal during feeding for changes in appetite, behavior, or stool quality.", priority: "High", riskLevel: "High", consequence: "Missed early signs of illness, leading to delayed treatment.", proof: "Daily observation log completed for each animal.", location: "All Enclosures" },
                 { id: "AH-DF-04", description: "Report any abnormalities (lethargy, vomiting, coughing, etc.) to the vet team immediately.", priority: "High", riskLevel: "High", consequence: "A sick animal's condition could deteriorate rapidly without intervention.", proof: "Entry in medical communication log or direct report.", location: "All Enclosures" },
                 { id: "AH-DF-05", "description": "Ensure animals with special feeding needs (e.g., puppies, seniors) are fed separately.", "priority": "High", "riskLevel": "Medium", "consequence": "Competition for food, incorrect diet consumption.", "proof": "Feeding log.", "location": "Special Needs Area" },
-                { id: "AH-DF-06", "description": "Check for and clean up any uneaten food after a set period to prevent pests.", "priority": "Medium", "riskLevel": "Low", "consequence": "Pest infestation.", "proof": "Visual check.", "location": "All Enclosures" },
-                { id: "AH-DF-07", "description": "Update the whiteboards or kennel cards with any relevant observations for the next shift.", "priority": "High", "riskLevel": "Low", "consequence": "Loss of critical information between shifts.", "proof": "Photo of updated kennel card.", "location": "Enclosure fronts" },
-                { id: "AH-DF-08", "description": "Monitor animals in quarantine/isolation areas last to prevent cross-contamination.", "priority": "High", "riskLevel": "High", "consequence": "Spreading disease to the general population.", "proof": "Workflow observation.", "location": "Quarantine/Isolation" },
-                { id: "AH-DF-09", "description": "Ensure enrichment items (e.g., toys) are clean and safe.", "priority": "Low", "riskLevel": "Low", "consequence": "Boredom, stress, potential for swallowing foreign objects.", "proof": "Visual check.", "location": "All Enclosures" },
-                { id: "AH-DF-10", "description": "Top up water bowls during afternoon checks.", "priority": "High", "riskLevel": "Medium", "consequence": "Dehydration.", "proof": "Visual check.", "location": "All Enclosures" }
+                { id: "AH-DF-06", "description": "Check for and clean up any uneaten food after a set period to prevent pests.", "priority": "Medium", "riskLevel": "Low", consequence: "Pest infestation.", "proof": "Visual check.", "location": "All Enclosures" },
+                { id: "AH-DF-07", "description": "Update the whiteboards or kennel cards with any relevant observations for the next shift.", "priority": "High", "riskLevel": "Low", consequence: "Loss of critical information between shifts.", "proof": "Photo of updated kennel card.", "location": "Enclosure fronts" },
+                { id: "AH-DF-08", "description": "Monitor animals in quarantine/isolation areas last to prevent cross-contamination.", "priority": "High", "riskLevel": "High", consequence: "Spreading disease to the general population.", "proof": "Workflow observation.", "location": "Quarantine/Isolation" },
+                { id: "AH-DF-09", "description": "Ensure enrichment items (e.g., toys) are clean and safe.", "priority": "Low", "riskLevel": "Low", consequence: "Boredom, stress, potential for swallowing foreign objects.", "proof": "Visual check.", "location": "All Enclosures" },
+                { id: "AH-DF-10", "description": "Top up water bowls during afternoon checks.", "priority": "High", "riskLevel": "Medium", consequence: "Dehydration.", "proof": "Visual check.", "location": "All Enclosures" }
             ]
         },
             {
@@ -1835,12 +1929,12 @@ const animal_shelter_pack: PremiumPack = {
                 { id: "AM-MA-02", description: "Document the time and date of every medication given in the animal's medical record.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate medical history, risk of double-dosing.", proof: "Signed MAR sheet.", location: "Medical Records" },
                 { id: "AM-MA-03", description: "Observe animal post-administration for any adverse reactions.", priority: "Medium", riskLevel: "High", consequence: "Untreated allergic reaction or side effect could be fatal.", proof: "Note in daily observation log.", location: "Enclosures" },
                 { id: "AM-MA-04", description: "Securely store all medications, especially controlled substances, in a locked cabinet.", priority: "High", riskLevel: "High", consequence: "Theft, misuse, accidental ingestion, regulatory violations.", proof: "Weekly controlled substance inventory log.", location: "Pharmacy/Storage" },
-                { id: "AM-MA-05", "description": "Never leave medication unattended or in an animal's food bowl if consumption is not observed.", "priority": "High", "riskLevel": "High", "consequence": "Animal may not receive medication; other animals might eat it.", "proof": "Direct observation of administration.", "location": "Enclosures" },
-                { id: "AM-MA-06", "description": "Dispose of used needles and syringes in a designated sharps container.", "priority": "High", "riskLevel": "High", "consequence": "Needlestick injuries to staff.", "proof": "Visual check of sharps container.", "location": "Medical Room" },
-                { id: "AM-MA-07", "description": "Check medication inventory and report any drugs running low.", "priority": "Medium", "riskLevel": "Medium", "consequence": "Running out of essential medication.", "proof": "Inventory sheet.", "location": "Pharmacy/Storage" },
-                { id: "AM-MA-08", "description": "Use a pill-giver or disguise medication in a treat as approved by the vet.", "priority": "Low", "riskLevel": "Low", "consequence": "Animal refuses to take medication.", "proof": "N/A", "location": "Enclosures" },
-                { id: "AM-MA-09", "description": "Verify with a second trained staff member for all controlled drug administrations.", "priority": "High", "riskLevel": "High", "consequence": "Dosing errors or drug diversion.", "proof": "Dual signature on MAR.", "location": "Treatment Area" },
-                { id: "AM-MA-10", "description": "Clean any spills of liquid medication immediately.", "priority": "Medium", "riskLevel": "Low", "consequence": "Incorrect dosing, skin absorption by staff.", "proof": "Visual check.", "location": "Treatment Area" }
+                { id: "AM-MA-05", "description": "Never leave medication unattended or in an animal's food bowl if consumption is not observed.", "priority": "High", "riskLevel": "High", consequence: "Animal may not receive medication; other animals might eat it.", "proof": "Direct observation of administration.", "location": "Enclosures" },
+                { id: "AM-MA-06", "description": "Dispose of used needles and syringes in a designated sharps container.", "priority": "High", "riskLevel": "High", consequence: "Needlestick injuries to staff.", "proof": "Visual check of sharps container.", "location": "Medical Room" },
+                { id: "AM-MA-07", "description": "Check medication inventory and report any drugs running low.", "priority": "Medium", "riskLevel": "Medium", consequence: "Running out of essential medication.", "proof": "Inventory sheet.", "location": "Pharmacy/Storage" },
+                { id: "AM-MA-08", "description": "Use a pill-giver or disguise medication in a treat as approved by the vet.", "priority": "Low", "riskLevel": "Low", consequence: "Animal refuses to take medication.", "proof": "N/A", "location": "Enclosures" },
+                { id: "AM-MA-09", "description": "Verify with a second trained staff member for all controlled drug administrations.", "priority": "High", "riskLevel": "High", consequence: "Dosing errors or drug diversion.", "proof": "Dual signature on MAR.", "location": "Treatment Area" },
+                { id: "AM-MA-10", "description": "Clean any spills of liquid medication immediately.", "priority": "Medium", "riskLevel": "Low", consequence: "Incorrect dosing, skin absorption by staff.", "proof": "Visual check.", "location": "Treatment Area" }
             ]
         },
         {
@@ -1856,11 +1950,11 @@ const animal_shelter_pack: PremiumPack = {
                 { id: "AP-AC-03", description: "Facilitate a supervised meet-and-greet between the animal and all family members (including other pets).", priority: "High", riskLevel: "Medium", consequence: "Conflicts between pets or family members after adoption.", proof: "Check-off on adoption process form.", location: "Meet-and-Greet Area" },
                 { id: "AP-AC-04", description: "Verify adopter's identity and address (e.g., via ID and utility bill).", priority: "Medium", riskLevel: "Low", consequence: "Inability to follow up post-adoption; potential for fraudulent adoption.", proof: "Copies of ID/address proof in adoption file.", location: "Adoption Center" },
                 { id: "AP-AC-05", description: "Complete all adoption paperwork, including transfer of ownership and microchip registration.", priority: "High", riskLevel: "Low", consequence: "Legal ambiguity over ownership.", proof: "Signed adoption contract and microchip form.", location: "Adoption Center" },
-                { id: "AP-AC-06", "description": "Provide post-adoption support information (e.g., vet recommendations, trainer contacts).", "priority": "Medium", "riskLevel": "Low", "consequence": "Adopter feels abandoned, small issues become big problems.", "proof": "Copy of adoption packet.", "location": "Adoption Center" },
-                { id: "AP-AC-07", "description": "Explain the shelter's return policy.", "priority": "High", "riskLevel": "Low", "consequence": "Misunderstanding about what to do if the adoption doesn't work out.", "proof": "Signed adoption contract.", "location": "Adoption Center" },
-                { id: "AP-AC-08", "description": "Ensure adoption fees are collected and processed correctly.", "priority": "High", "riskLevel": "Low", "consequence": "Financial loss.", "proof": "Payment receipt.", "location": "Adoption Center" },
-                { id: "AP-AC-09", "description": "Schedule a post-adoption follow-up call or email (e.g., at 3 days, 3 weeks).", "priority": "Medium", "riskLevel": "Low", "consequence": "Missed opportunity to solve early problems.", "proof": "Entry in shelter management software.", "location": "Adoption Center" },
-                { id: "AP-AC-10", "description": "Update the animal's record to 'Adopted' and move them out of the 'Available' list.", "priority": "High", "riskLevel": "Low", "consequence": "Animal still shows as available, causing confusion.", "proof": "Shelter management software log.", "location": "Adoption Center" }
+                { id: "AP-AC-06", "description": "Provide post-adoption support information (e.g., vet recommendations, trainer contacts).", "priority": "Medium", "riskLevel": "Low", consequence: "Adopter feels abandoned, small issues become big problems.", "proof": "Copy of adoption packet.", "location": "Adoption Center" },
+                { id: "AP-AC-07", "description": "Explain the shelter's return policy.", "priority": "High", "riskLevel": "Low", consequence: "Misunderstanding about what to do if the adoption doesn't work out.", "proof": "Signed adoption contract.", "location": "Adoption Center" },
+                { id: "AP-AC-08", "description": "Ensure adoption fees are collected and processed correctly.", "priority": "High", "riskLevel": "Low", consequence: "Financial loss.", "proof": "Payment receipt.", "location": "Adoption Center" },
+                { id: "AP-AC-09", "description": "Schedule a post-adoption follow-up call or email (e.g., at 3 days, 3 weeks).", "priority": "Medium", "riskLevel": "Low", consequence: "Missed opportunities to solve early problems.", "proof": "Entry in shelter management software.", "location": "Adoption Center" },
+                { id: "AP-AC-10", "description": "Update the animal's record to 'Adopted' and move them out of the 'Available' list.", "priority": "High", "riskLevel": "Low", consequence: "Animal still shows as available, causing confusion.", "proof": "Shelter management software log.", "location": "Adoption Center" }
             ]
         },
         {
@@ -1875,12 +1969,12 @@ const animal_shelter_pack: PremiumPack = {
                 { id: "AV-VM-02", description: "Maintain an up-to-date volunteer schedule to ensure all shifts are covered.", priority: "Medium", riskLevel: "Low", consequence: "Staffing shortages leading to compromised animal care.", proof: "Published weekly schedule.", location: "Office" },
                 { id: "AV-VM-03", description: "Provide clear task lists for different volunteer roles (e.g., dog walking, cat socialization, cleaning).", priority: "Medium", riskLevel: "Low", consequence: "Inefficient use of volunteer time, confusion about duties.", proof: "Posted task lists in relevant areas.", location: "All Areas" },
                 { id: "AV-VM-04", description: "Ensure all volunteers sign in and out for every shift.", priority: "Low", riskLevel: "Low", consequence: "Inaccurate tracking of volunteer hours, security risk.", proof: "Daily sign-in/out sheet.", location: "Reception" },
-                { id: "AV-VM-05", "description": "Provide specific training for handling fearful or reactive animals.", "priority": "High", "riskLevel": "High", "consequence": "Bite risk to volunteers, increased stress for animals.", "proof": "Advanced handling training log.", "location": "Training Area" },
-                { id: "AV-VM-06", "description": "Regularly communicate shelter news, needs, and successes to volunteers.", "priority": "Low", "riskLevel": "Low", "consequence": "Volunteers feel unappreciated and disconnected.", "proof": "Copy of volunteer newsletter or email.", "location": "Office" },
-                { id: "AV-VM-07", "description": "Ensure all volunteers working with animals have signed a liability waiver.", "priority": "High", "riskLevel": "Medium", "consequence": "Legal risk to the shelter in case of injury.", "proof": "File of signed waivers.", "location": "Office" },
-                { id: "AV-VM-08", "description": "Recognize outstanding volunteers (e.g., 'Volunteer of the Month').", "priority": "Low", "riskLevel": "Low", "consequence": "Poor volunteer retention.", "proof": "Photo or announcement.", "location": "Common Area/Social Media" },
-                { id: "AV-VM-09", "description": "Supervise volunteers and provide constructive feedback.", "priority": "Medium", "riskLevel": "Low", "consequence": "Tasks performed incorrectly.", "proof": "Supervisor observation notes.", "location": "All Areas" },
-                { id: "AV-VM-10", "description": "Gather feedback from volunteers on their experience and suggestions.", "priority": "Low", "riskLevel": "Low", "consequence": "Missed opportunities for process improvement.", "proof": "Volunteer suggestion box or survey results.", "location": "Office" }
+                { id: "AV-VM-05", "description": "Provide specific training for handling fearful or reactive animals.", "priority": "High", "riskLevel": "High", consequence: "Bite risk to volunteers, increased stress for animals.", "proof": "Advanced handling training log.", "location": "Training Area" },
+                { id: "AV-VM-06", "description": "Regularly communicate shelter news, needs, and successes to volunteers.", "priority": "Low", "riskLevel": "Low", consequence: "Volunteers feel unappreciated and disconnected.", "proof": "Copy of volunteer newsletter or email.", "location": "Office" },
+                { id: "AV-VM-07", "description": "Ensure all volunteers working with animals have signed a liability waiver.", "priority": "High", "riskLevel": "Medium", consequence: "Legal risk to the shelter in case of injury.", "proof": "File of signed waivers.", "location": "Office" },
+                { id: "AV-VM-08", "description": "Recognize outstanding volunteers (e.g., 'Volunteer of the Month').", "priority": "Low", "riskLevel": "Low", consequence: "Poor volunteer retention.", "proof": "Photo or announcement.", "location": "Common Area/Social Media" },
+                { id: "AV-VM-09", "description": "Supervise volunteers and provide constructive feedback.", "priority": "Medium", "riskLevel": "Low", consequence: "Tasks performed incorrectly.", "proof": "Supervisor observation notes.", "location": "All Areas" },
+                { id: "AV-VM-10", "description": "Gather feedback from volunteers on their experience and suggestions.", "priority": "Low", "riskLevel": "Low", consequence: "Missed opportunities for process improvement.", "proof": "Volunteer suggestion box or survey results.", "location": "Office" }
             ]
         }
     ]
@@ -1980,3 +2074,7 @@ export const premiumPacks: PremiumPack[] = [
 });
 
     
+
+    
+
+
