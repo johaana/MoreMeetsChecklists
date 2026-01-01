@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -41,7 +42,7 @@ export const HeroSection = () => (
                 </p>
                 
                 <div className="flex flex-col items-start gap-4 pt-6">
-                    <Button size="lg" asChild className="group" variant="primary">
+                    <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))' }}>
                         <Link href="/library">
                            View Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Link>
