@@ -125,7 +125,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                         </div>
                         
                         {/* Filters */}
-                        <div className="max-w-4xl mx-auto mb-12 sticky top-20 z-40 bg-background/80 backdrop-blur-sm p-4 rounded-lg border shadow-sm">
+                        <div className="max-w-4xl mx-auto mb-12 sticky top-20 z-40 bg-background p-4 rounded-lg border shadow-sm">
                             <div className="grid sm:grid-cols-2 gap-4">
                                 <div className="relative">
                                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
