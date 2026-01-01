@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -41,12 +42,12 @@ export const HeroSection = () => (
                 </p>
                 
                 <div className="flex flex-col items-start gap-4 pt-6">
-                    <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--accent-authority))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
+                    <Button size="lg" asChild className="group" variant="accent" style={{ color: 'hsl(var(--accent-foreground))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
                         <Link href="/library">
                            View Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
-                    <Button asChild variant="link" className="p-0 h-auto text-sm text-accent">
+                    <Button asChild variant="link" className="p-0 h-auto text-sm text-muted-foreground">
                          <Link href="#how-it-works">See how it works &rarr;</Link>
                     </Button>
                 </div>
