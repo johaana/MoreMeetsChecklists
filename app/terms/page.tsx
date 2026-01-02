@@ -5,8 +5,8 @@ import type { Metadata } from 'next';
 import { SiteHeader } from "@/components/layout/header";
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | MoreMeets',
-  description: 'Please read the MoreMeets Terms of Service. By using our site and purchasing our products, you agree to these terms.',
+  title: 'Terms of Service | MoreMeets™',
+  description: 'Please read the MoreMeets™ Terms of Service. By using our site and purchasing our products, you agree to these terms.',
 };
 
 
@@ -45,7 +45,7 @@ export default function TermsOfServicePage() {
 
                     <LegalSection title="2. Intellectual Property Rights">
                         <p>
-                            The Site and its original content, features, functionality, and all digital products (including but not limited to checklists, templates, and SOPs in Excel format) are and will remain the exclusive property of MoreMeets and its licensors. Our Products are protected by copyright, trademark, and other laws of both the India and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of MoreMeets. You are granted a limited, non-exclusive, non-transferable license to use the purchased Products for your internal business or personal use. You may not resell, redistribute, or share the Products in any form.
+                            The Site and its original content, features, functionality, and all digital products (including but not limited to checklists, templates, and SOPs in Excel format) are and will remain the exclusive property of MoreMeets™ and its licensors. Our Products are protected by copyright, trademark, and other laws of both the India and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of MoreMeets™. You are granted a limited, non-exclusive, non-transferable license to use the purchased Products for your internal business or personal use. You may not resell, redistribute, or share the Products in any form.
                         </p>
                     </LegalSection>
 
@@ -78,15 +78,15 @@ export default function TermsOfServicePage() {
                     </LegalSection>
 
                     <LegalSection title="7. Disclaimer of Warranties">
-                        <p>The Site and our Products are provided on an "AS IS" and "AS AVAILABLE" basis. MoreMeets makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. The checklists are provided for guidance and are not a substitute for professional, legal, or safety advice.</p>
+                        <p>The Site and our Products are provided on an "AS IS" and "AS AVAILABLE" basis. MoreMeets™ makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. The checklists are provided for guidance and are not a substitute for professional, legal, or safety advice.</p>
                     </LegalSection>
 
                     <LegalSection title="8. Limitation of Liability">
-                        <p>In no event shall MoreMeets, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any content obtained from the Service; and (iv) unauthorized access, use or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory.</p>
+                        <p>In no event shall MoreMeets™, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any content obtained from the Service; and (iv) unauthorized access, use or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory.</p>
                     </LegalSection>
                     
                     <LegalSection title="9. Legal Disclaimer">
-                        <p><strong>This document was generated by an AI language model. It is intended for informational purposes only and does not constitute legal advice.</strong> The content is not guaranteed to be complete, accurate, or up-to-date. You should not act or refrain from acting based on this information without seeking professional legal counsel in your jurisdiction. Your use of this document does not create an attorney-client relationship. MoreMeets and its AI provider assume no liability for the use or interpretation of this information.</p>
+                        <p><strong>This document was generated by an AI language model. It is intended for informational purposes only and does not constitute legal advice.</strong> The content is not guaranteed to be complete, accurate, or up-to-date. You should not act or refrain from acting based on this information without seeking professional legal counsel in your jurisdiction. Your use of this document does not create an attorney-client relationship. MoreMeets™ and its AI provider assume no liability for the use or interpretation of this information.</p>
                     </LegalSection>
 
                     <LegalSection title="10. Governing Law">

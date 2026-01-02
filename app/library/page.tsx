@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 
 export const metadata: Metadata = {
-  title: 'SOP & Checklist Library | MoreMeets',
+  title: 'SOP & Checklist Library | MoreMeets™',
   description: 'Browse our complete library of professional operational checklists and SOP packs. Find toolkits for hospitality, healthcare, manufacturing, retail, and more.',
 };
 

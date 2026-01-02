@@ -52,7 +52,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         const merge = { s: { r: lastRow + 2, c: 0 }, e: { r: lastRow + 2, c: numCols - 1 } };
         if (!ws['!merges']) ws['!merges'] = [];
         ws['!merges'].push(merge);
-        const footerCell: CellObject = { v: "For support, contact more@moremeets.com | © 2025 MoreMeets - The Professional Standard for Operational Checklists.", t: 's', s: footerStyle };
+        const footerCell: CellObject = { v: "For support, contact more@moremeets.com | © 2025 MoreMeets™ - The Professional Standard for Operational Checklists.", t: 's', s: footerStyle };
         utils.sheet_add_aoa(ws, [[footerCell]], { origin: { r: lastRow + 2, c: 0 } });
     };
 
@@ -77,7 +77,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     // --- INSTRUCTIONS & LEGEND SHEET ---
     const instructionsData = [
-        [{ v: `MoreMeets Operations Pack: ${packTitle}`, t: 's', s: titleStyle }, null, null, null],
+        [{ v: `MoreMeets™ Operations Pack: ${packTitle}`, t: 's', s: titleStyle }, null, null, null],
         [],
         [{ v: 'Quick Start Guide', t: 's', s: sectionHeaderStyle }, null, null, null],
         [{ v: '1. Update ONLY ONE Column', t: 's', s: instructionTitleStyle }, { v: "Find your task. When it's done, enter the completion date in the 'Date Completed (dd-mm-yyyy)' column. This is the only column you ever need to edit.", t: 's', s: instructionBodyStyle }],
@@ -217,7 +217,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     });
     wb.SheetNames = sortedSheetNames;
 
-    const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
+    const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets™.xlsx';
     
     const writeOptions: WritingOptions = {};
     if (type === 'pack' && (item as PremiumPack).id === 'master_access') {

@@ -50,15 +50,15 @@ export async function generateMetadata(
 
   if (!pack) {
     return {
-      title: 'Package Not Found | MoreMeets',
+      title: 'Package Not Found | MoreMeets™',
       description: 'The requested checklist package could not be found.',
     };
   }
   
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
   const checklistsCount = pack.checklists ? pack.checklists.length : 0;
-  const title = `${pack.title} - Excel SOP Templates | MoreMeets`;
-  const description = `Download the complete ${pack.title}. Includes ${checklistsCount}+ expert-crafted SOP checklists in Excel for ${pack.category} professionals. One-time purchase, instant download.`;
+  const title = `${pack.title} - Excel SOP Templates | MoreMeets™`;
+  const description = `Download the complete ${pack.title} checklist pack. Includes ${checklistsCount}+ expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`;
   
   const ogUrl = new URL(`${siteUrl}/api/og`);
   ogUrl.searchParams.set('type', 'pack');
@@ -112,7 +112,7 @@ export default function Page({ params }: { params: { id: string } }) {
     image: ogUrl.toString(),
     brand: {
       '@type': 'Brand',
-      name: 'MoreMeets',
+      name: 'MoreMeets™',
     },
     offers: {
         '@type': 'Offer',

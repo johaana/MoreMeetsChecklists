@@ -5,7 +5,7 @@ import MasterAccessClient from './master-access-client';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Master Access | MoreMeets',
+  title: 'Master Access | MoreMeets™',
   description: 'Get lifetime access to all current and future operational checklists with a single purchase.',
   robots: {
     index: false,

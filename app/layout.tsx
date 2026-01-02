@@ -8,7 +8,7 @@ import { LayoutScript } from '@/components/layout/layout-script';
 
 
 const siteUrl = 'https://www.moremeets.com';
-const siteTitle = 'MoreMeets: Professional Operational Checklists & SOPs';
+const siteTitle = 'MoreMeets™: Professional Operational Checklists & SOPs';
 const siteDescription = 'Downloadable, expert-crafted operational checklists for hotels, retail, healthcare, and more. Achieve compliance and excellence with our one-time purchase SOP templates.';
 const ogImageUrl = `${siteUrl}/api/og`;
 

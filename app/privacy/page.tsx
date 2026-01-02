@@ -5,8 +5,8 @@ import type { Metadata } from 'next';
 import { SiteHeader } from "@/components/layout/header";
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | MoreMeets',
-  description: 'Learn how MoreMeets collects, uses, and protects your personal information when you use our website and purchase our products.',
+  title: 'Privacy Policy | MoreMeets™',
+  description: 'Learn how MoreMeets™ collects, uses, and protects your personal information when you use our website and purchase our products.',
 };
 
 const LegalSection = ({ title, children }: { title: string, children: React.ReactNode }) => (
@@ -37,7 +37,7 @@ export default function PrivacyPolicyPage() {
 
                 <div className="max-w-3xl mx-auto space-y-8">
                     <p className="text-muted-foreground">
-                        MoreMeets ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website www.moremeets.com (the "Site") and purchase our digital products. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
+                        MoreMeets™ ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website www.moremeets.com (the "Site") and purchase our digital products. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
                     </p>
 
                     <LegalSection title="Collection of Your Information">

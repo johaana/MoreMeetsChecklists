@@ -5,8 +5,8 @@ import type { Metadata } from 'next';
 import { SiteHeader } from "@/components/layout/header";
 
 export const metadata: Metadata = {
-  title: 'Cancellation & Refund Policy | MoreMeets',
-  description: 'Read the MoreMeets cancellation and refund policy for our instantly downloadable digital checklist products.',
+  title: 'Cancellation & Refund Policy | MoreMeets™',
+  description: 'Read the MoreMeets™ cancellation and refund policy for our instantly downloadable digital checklist products.',
 };
 
 const LegalSection = ({ title, children }: { title: string, children: React.ReactNode }) => (
@@ -38,7 +38,7 @@ export default function RefundPolicyPage() {
                 <div className="max-w-3xl mx-auto space-y-8">
                     <LegalSection title="Our Policy on Digital Products">
                         <p>
-                           At MoreMeets, we specialize in providing high-quality, instantly downloadable digital products in the form of operational checklists and Standard Operating Procedures (SOPs).
+                           At MoreMeets™, we specialize in providing high-quality, instantly downloadable digital products in the form of operational checklists and Standard Operating Procedures (SOPs).
                         </p>
                          <p className="font-bold text-foreground">
                            Due to the digital nature of our products and the fact that they are delivered instantly upon purchase, we have a strict no-refund policy.
@@ -87,5 +87,3 @@ export default function RefundPolicyPage() {
     </div>
   );
 }
-
-    

@@ -5,8 +5,8 @@ import type { Metadata } from 'next';
 import { SiteHeader } from "@/components/layout/header";
 
 export const metadata: Metadata = {
-  title: 'Shipping & Delivery Policy | MoreMeets',
-  description: 'Learn about the instant digital delivery of your purchased checklist packs from MoreMeets.',
+  title: 'Shipping & Delivery Policy | MoreMeets™',
+  description: 'Learn about the instant digital delivery of your purchased checklist packs from MoreMeets™.',
 };
 
 const LegalSection = ({ title, children }: { title: string, children: React.ReactNode }) => (
@@ -38,7 +38,7 @@ export default function ShippingPolicyPage() {
                 <div className="max-w-3xl mx-auto space-y-8">
                     <LegalSection title="Product Format">
                         <p>
-                           All products available on MoreMeets are digital files (Microsoft Excel .xlsx format). There are no physical products, and nothing will be shipped to your physical address.
+                           All products available on MoreMeets™ are digital files (Microsoft Excel .xlsx format). There are no physical products, and nothing will be shipped to your physical address.
                         </p>
                     </LegalSection>
 

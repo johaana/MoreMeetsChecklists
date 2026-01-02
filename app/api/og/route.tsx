@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
 
     const type = searchParams.get('type') || 'default';
-    let title = searchParams.get('title') || 'MoreMeets';
+    let title = searchParams.get('title') || 'MoreMeets™';
     let description = searchParams.get('description') || 'The Professional Standard for Compliance & Operations Checklists.';
     const id = searchParams.get('id');
     const slug = searchParams.get('slug');
@@ -85,7 +85,7 @@ export async function GET(req: NextRequest) {
                         <Lucide.CheckSquare size={28} color="white" />
                     </div>
                     <div style={{ marginLeft: 20, fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em' }}>
-                        MoreMeets
+                        MoreMeets™
                     </div>
                 </div>
 
@@ -124,4 +124,3 @@ export async function GET(req: NextRequest) {
         }
     );
 }
-

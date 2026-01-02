@@ -24,7 +24,7 @@ export async function generateMetadata(
 
   if (!post) {
     return {
-      title: 'Blog Post Not Found | MoreMeets',
+      title: 'Blog Post Not Found | MoreMeets™',
       description: 'The blog post you are looking for does not exist.',
     };
   }
@@ -36,16 +36,16 @@ export async function generateMetadata(
 
   return {
     metadataBase: new URL(siteUrl),
-    title: `${post.title} | MoreMeets Blog`,
+    title: `${post.title} | MoreMeets™ Blog`,
     description: post.description,
     openGraph: {
-      title: `${post.title} | MoreMeets Blog`,
+      title: `${post.title} | MoreMeets™ Blog`,
       description: post.description,
       images: [{ url: ogUrl.toString(), width: 1200, height: 630, alt: post.title }],
     },
      twitter: {
       card: 'summary_large_image',
-      title: `${post.title} | MoreMeets Blog`,
+      title: `${post.title} | MoreMeets™ Blog`,
       description: post.description,
       images: [ogUrl.toString()],
     },
@@ -82,11 +82,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     image: ogUrl.toString(),
     author: {
       '@type': 'Organization',
-      name: 'MoreMeets',
+      name: 'MoreMeets™',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'MoreMeets',
+      name: 'MoreMeets™',
        logo: {
         '@type': 'ImageObject',
         url: `${siteUrl}/icon.png`,

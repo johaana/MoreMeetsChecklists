@@ -10,7 +10,7 @@ export function Footer() {
                 <div className="flex flex-col items-center md:items-start gap-2">
                     <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
                         <Logo className="h-6 w-6 text-authority-green" />
-                        <span className="font-headline text-lg font-bold text-primary-text">MoreMeets</span>
+                        <span className="font-headline text-lg font-bold text-primary-text">MoreMeets™</span>
                     </Link>
                     <p className="text-xs md:text-sm text-muted-text max-w-xs">
                         Audit-Ready Operational Standards for modern teams.
@@ -51,7 +51,7 @@ export function Footer() {
                 </div>
             </div>
              <div className="border-t border-border py-4">
-                <p className="text-xs text-muted-text text-center">&copy; 2025 MoreMeets. All rights reserved.</p>
+                <p className="text-xs text-muted-text text-center">&copy; 2025 MoreMeets™. All rights reserved.</p>
             </div>
         </footer>
     );

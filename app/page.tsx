@@ -51,7 +51,7 @@ const WhatItIsSection = () => (
     <Section id="what-it-is" className="bg-alternate-background">
         <div className="container px-4 md:px-6 max-w-4xl mx-auto">
             <div className="text-center mb-12">
-                <SectionHeadline>MoreMeets is not software people need to “remember to use.”</SectionHeadline>
+                <SectionHeadline>MoreMeets™ is not software people need to “remember to use.”</SectionHeadline>
             </div>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 text-primary-text">
                 <div className="space-y-4">
@@ -75,7 +75,7 @@ const WhatItIsSection = () => (
                     </ul>
                 </div>
             </div>
-            <p className="text-center text-lg font-medium mt-12 text-primary-text">MoreMeets doesn’t control people. It removes ambiguity from work.</p>
+            <p className="text-center text-lg font-medium mt-12 text-primary-text">MoreMeets™ doesn’t control people. It removes ambiguity from work.</p>
         </div>
     </Section>
 );
@@ -91,7 +91,7 @@ const HowTeamsUseItSection = () => {
     <Section id="how-it-works">
         <div className="container px-4 md:px-6">
             <div className="text-center mb-12 max-w-2xl mx-auto">
-                <SectionHeadline>How MoreMeets fits into real operations</SectionHeadline>
+                <SectionHeadline>How MoreMeets™ fits into real operations</SectionHeadline>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
                 {cards.map(card => (
@@ -120,7 +120,7 @@ const ComplianceSection = () => (
     <Section id="compliance" className="bg-alternate-background">
         <div className="container px-4 md:px-6 max-w-3xl mx-auto text-center space-y-8">
             <SectionHeadline>Built for global compliance — without complexity</SectionHeadline>
-            <p className="text-lg text-secondary-text">MoreMeets is designed to support regulated environments where consistency matters more than intent.</p>
+            <p className="text-lg text-secondary-text">MoreMeets™ is designed to support regulated environments where consistency matters more than intent.</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-left text-sm pt-4 text-primary-text">
                 <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>ISO standards</p>
                 <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>OSHA & safety frameworks</p>
@@ -162,7 +162,7 @@ const FinalCTASection = () => (
     <Section id="final-cta" className="bg-card">
         <div className="container px-4 md:px-6 text-center max-w-2xl mx-auto space-y-6">
             <SectionHeadline>If work lives in people’s heads, it will fail under pressure.</SectionHeadline>
-            <p className="text-lg text-secondary-text">MoreMeets gives your business a system, not another tool.</p>
+            <p className="text-lg text-secondary-text">MoreMeets™ gives your business a system, not another tool.</p>
             <div className="flex flex-col items-center gap-3 pt-4">
                 <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
                     <Link href="/library">

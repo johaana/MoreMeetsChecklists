@@ -93,7 +93,7 @@ export function SiteHeader() {
          <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
             <Logo className={cn("h-6 w-6", isHomepage ? "text-white" : "text-primary")} />
             <div className="flex flex-col">
-                <span className={cn("font-headline text-lg font-bold leading-tight", isHomepage ? "text-white" : "text-foreground")}>MoreMeets</span>
+                <span className={cn("font-headline text-lg font-bold leading-tight", isHomepage ? "text-white" : "text-foreground")}>MoreMeets™</span>
                 <span className={cn("text-xs leading-tight -mt-0.5", isHomepage ? "text-white/70" : "text-muted-foreground")}>Less misses.</span>
             </div>
         </Link>
