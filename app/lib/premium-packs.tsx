@@ -1501,7 +1501,7 @@ const healthcare_and_hospital_operations: PremiumPack = {
                 { id: "HCO-SSC-05", description: "TIME OUT: Entire team verbally confirms patient name, procedure, and incision site.", priority: "High", riskLevel: "High", consequence: "Final opportunity to prevent a catastrophic error.", proof: "Verbal confirmation documented by circulating nurse." },
                 { id: "HCO-SSC-06", description: "TIME OUT: Review of critical events, anticipated blood loss, and antibiotic prophylaxis.", priority: "High", riskLevel: "Medium", consequence: "Team unprepared for complications or known patient risks.", proof: "Surgeon and Anesthesiologist verbal briefing." },
                 { id: "HCO-SSC-07", description: "SIGN OUT (Before Patient Leaves OR): Nurse verbally confirms instrument, sponge, and needle counts are correct.", priority: "High", riskLevel: "High", consequence: "Retained surgical item, requiring re-operation.", proof: "Count sheet verified and signed by two nurses." },
-                { id: "HCO-SSC-08", description: "SIGN OUT: Confirm specimen labeling (specimen name, patient name).", priority: "High", riskLevel: "High", consequence: "Incorrect diagnosis, wrong post-op treatment.", proof: "Visual confirmation of labeled specimen by surgeon and nurse." },
+                { id: "HCO-SSC-08", description: "Confirm specimen labeling (specimen name, patient name).", priority: "High", riskLevel: "High", consequence: "Incorrect diagnosis, wrong post-op treatment.", proof: "Visual confirmation of labeled specimen by surgeon and nurse." },
                 { id: "HCO-SSC-09", description: "SIGN OUT: Discuss key concerns for recovery and post-operative care.", priority: "Medium", riskLevel: "Medium", consequence: "Poor handover to recovery team, post-op complications.", proof: "Surgeon/Anesthesiologist debrief documented." }
             ]
         },
@@ -1708,7 +1708,74 @@ const university_college_ops: PremiumPack = {
         { text: "Mitigate foodborne illness risks in large messes with HACCP-aligned kitchen hygiene SOPs.", icon: "utensils" },
         { text: "Protect against cyber threats with IT policies for network access, data privacy, and acceptable use.", icon: "shield" }
     ],
-    checklists: []
+    checklists: [
+        {
+            title: "Hostel Entry, Exit & Room Inspection",
+            department: "Hostel Administration",
+            frequency: "Daily/Weekly",
+            role: "Chief Warden/Floor Warden",
+            summary: "Ensures student safety, hostel security, and room maintenance.",
+            icon: "home",
+            tasks: [
+                { id: "UCO-HR-01", description: "Verify identity of all non-resident visitors at hostel entrance.", priority: "High", riskLevel: "High", consequence: "Unauthorized access, theft, student safety incidents.", proof: "Visitor Logbook." },
+                { id: "UCO-HR-02", description: "Conduct nightly attendance checks against the in-out register.", priority: "High", riskLevel: "Medium", consequence: "Inability to account for a student in an emergency.", proof: "Signed nightly attendance sheet." },
+                { id: "UCO-HR-03", description: "Perform weekly random room inspections for cleanliness, illegal appliances, and safety hazards.", priority: "Medium", riskLevel: "Medium", consequence: "Fire hazards, hygiene issues, violation of hostel rules.", proof: "Room inspection reports." },
+                { id: "UCO-HR-04", description: "Ensure all hostel fire exits are unblocked and exit signs are illuminated.", priority: "High", riskLevel: "High", consequence: "Blocked escape route during a fire.", proof: "Weekly fire safety walkthrough log." },
+                { id: "UCO-HR-05", description: "Check hostel CCTV cameras for functionality and clear coverage.", priority: "High", riskLevel: "Medium", consequence: "Inability to investigate security incidents.", proof: "Daily CCTV status log." },
+                { id: "UCO-HR-06", description: "Address and log all student maintenance complaints (plumbing, electrical) within 24 hours.", priority: "Medium", riskLevel: "Low", consequence: "Student dissatisfaction, worsening of maintenance issues.", proof: "Complaint resolution log/system." }
+            ]
+        },
+        {
+            title: "Lab Safety & Chemical Management",
+            department: "Academics/Lab Staff",
+            frequency: "Weekly",
+            role: "Lab Technician/Safety Officer",
+            summary: "Ensures a safe environment in science and engineering labs.",
+            icon: "test-tube",
+            tasks: [
+                { id: "UCO-LS-01", description: "Test emergency eyewash stations and safety showers for functionality.", priority: "High", riskLevel: "High", consequence: "Inability to treat chemical exposure, severe injury.", proof: "Weekly test log." },
+                { id: "UCO-LS-02", description: "Audit chemical storage for proper labeling, segregation of incompatibles, and secure cabinets.", priority: "High", riskLevel: "High", consequence: "Chemical spills, fire, toxic reactions.", proof: "Chemical storage audit checklist." },
+                { id: "UCO-LS-03", description: "Ensure Safety Data Sheets (SDS) are available for all chemicals.", priority: "High", riskLevel: "Medium", consequence: "Lack of information in an emergency.", proof: "SDS binder/digital index check." },
+                { id: "UCO-LS-04", description: "Verify fume hoods are functional and their annual certification is valid.", priority: "High", riskLevel: "High", consequence: "Exposure to hazardous fumes.", proof: "Certification sticker on fume hood." },
+                { id: "UCO-LS-05", description: "Check availability and condition of Personal Protective Equipment (PPE).", priority: "High", riskLevel: "Medium", consequence: "Student/staff injury during experiments.", proof: "PPE inventory checklist." },
+                { id: "UCO-LS-06", description: "Ensure a certified fire extinguisher is present and accessible in each lab.", priority: "High", riskLevel: "High", consequence: "Inability to control a lab fire.", proof: "Fire extinguisher inspection tag." },
+                { id: "UCO-LS-07", description: "Manage and log all hazardous waste for compliant disposal.", priority: "High", riskLevel: "High", consequence: "Environmental violations, legal penalties.", proof: "Hazardous waste disposal log." }
+            ]
+        },
+        {
+            title: "Campus Event Management & Safety",
+            department: "Student Affairs/Security",
+            frequency: "Per Event",
+            role: "Event Coordinator",
+            summary: "A checklist to safely plan and execute campus events like festivals and concerts.",
+            icon: "theater",
+            tasks: [
+                { id: "UCO-EM-01", description: "Obtain all necessary internal and external (e.g., police, fire) permissions for the event.", priority: "High", riskLevel: "High", consequence: "Event shut down by authorities, legal issues.", proof: "File of all permits and permissions." },
+                { id: "UCO-EM-02", description: "Conduct a pre-event risk assessment for the venue (e.g., crowd flow, electrical safety, stage stability).", priority: "High", riskLevel: "High", consequence: "Stampede, structural collapse, fire.", proof: "Signed risk assessment form." },
+                { id: "UCO-EM-03", description: "Develop a crowd management and emergency evacuation plan.", priority: "High", riskLevel: "High", consequence: "Inability to manage crowd or evacuate in an emergency.", proof: "Evacuation plan document." },
+                { id: "UCO-EM-04", description: "Ensure adequate security personnel and medical staff (with ambulance) are booked and briefed.", priority: "High", riskLevel: "High", consequence: "Public order issues, delayed medical response.", proof: "Contracts and briefing sheets for security/medical." },
+                { id: "UCO-EM-05", description: "Verify all third-party vendors (sound, lighting, food) have required licenses and insurance.", priority: "High", riskLevel: "Medium", consequence: "Liability issues from vendor negligence.", proof: "Vendor compliance file." },
+                { id: "UCO-EM-06", description: "Establish clear and accessible entry/exit points.", priority: "High", riskLevel: "High", consequence: "Crush risk at entry/exit.", proof: "Venue layout map." }
+            ]
+        },
+        {
+            title: "Mess/Canteen Hygiene & Food Safety",
+            department: "Hospitality/Admin",
+            frequency: "Daily",
+            role: "Mess Manager",
+            summary: "Ensures food served in campus messes is safe, hygienic, and of good quality.",
+            icon: "utensils-crossed",
+            tasks: [
+                { id: "UCO-M-01", description: "Check and log temperatures of all refrigerators, freezers, and hot-holding bain-maries.", priority: "High", riskLevel: "High", consequence: "Food poisoning outbreak affecting hundreds of students.", proof: "Daily temperature log." },
+                { id: "UCO-M-02", description: "Inspect raw materials (vegetables, meats, grains) for quality and freshness upon delivery.", priority: "High", riskLevel: "High", consequence: "Use of substandard or spoiled ingredients.", proof: "Inbound goods inspection log." },
+                { id: "UCO-M-03", description: "Ensure all kitchen staff adhere to personal hygiene standards (uniform, caps, handwashing).", priority: "High", riskLevel: "Medium", consequence: "Spread of foodborne illness.", proof: "Daily supervisor inspection." },
+                { id: "UCO-M-04", description: "Verify all food preparation surfaces and equipment are cleaned and sanitized.", priority: "High", riskLevel: "High", consequence: "Cross-contamination.", proof: "Kitchen cleaning schedule sign-off." },
+                { id: "UCO-M-05", description: "Check for pests and review the pest control vendor's service reports.", priority: "High", riskLevel: "High", consequence: "Pest infestation, regulatory action.", proof: "Pest control logbook." },
+                { id: "UCO-M-06", description: "Ensure water used for cooking and drinking is from a safe, tested source.", priority: "High", riskLevel: "High", consequence: "Waterborne disease outbreak.", proof: "Water quality test reports." },
+                { id: "UCO-M-07", description: "Manage food waste through proper segregation and timely disposal.", priority: "Medium", riskLevel: "Low", consequence: "Odor and pest issues.", proof: "Waste management log." }
+            ]
+        }
+    ]
 };
 
 const film_production_pack: PremiumPack = {
@@ -2629,6 +2696,7 @@ export const premiumPacks: PremiumPack[] = [
 
 
     
+
 
 
 
