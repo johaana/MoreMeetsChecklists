@@ -21,7 +21,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, name, t
               key={i}
               className={cn(
                 'w-5 h-5',
-                i < stars ? 'text-accent fill-accent' : 'text-gray-300 dark:text-gray-600'
+                i < stars ? 'text-yellow-500 fill-yellow-500' : 'text-gray-300 dark:text-gray-600'
               )}
             />
           ))}
