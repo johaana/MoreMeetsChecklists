@@ -2000,95 +2000,163 @@ const theme_park_ops_pack: PremiumPack = {
     ],
     checklists: [
         {
-            title: "Daily Ride Opening & Safety Checks",
-            department: "Ride Operations",
-            frequency: "Daily",
-            role: "Ride Operator / Supervisor",
+            title: "Ride Safety & Maintenance",
+            department: "Maintenance/Operations",
+            frequency: "Daily/Scheduled",
+            role: "Ride Engineer",
             summary: "Ensures every ride is safe for operation before the first guest boards.",
-            icon: "check-circle",
+            icon: "wrench",
             tasks: [
-                { id: "TP-RO-01", description: "Perform a full cycle of the ride with no passengers (empty run).", priority: "High", riskLevel: "High", consequence: "Failure to detect major mechanical or control system faults.", proof: "Ride logbook entry." },
-                { id: "TP-RO-02", description: "Physically check every restraint (lap bar, harness, seatbelt) for proper locking and release.", priority: "High", riskLevel: "High", consequence: "Catastrophic failure of restraint system, rider ejection.", proof: "Signed daily ride inspection sheet." },
-                { id: "TP-RO-03", description: "Test all ride operator controls, including emergency stop buttons.", priority: "High", riskLevel: "High", consequence: "Inability to stop ride in an emergency.", proof: "Control panel function test log." },
-                { id: "TP-RO-04", description: "Inspect the ride structure for any visible cracks, loose bolts, or damage.", priority: "High", riskLevel: "High", consequence: "Structural failure during operation.", proof: "Visual inspection checklist." },
-                { id: "TP-RO-05", description: "Check all ride sensors and proximity switches for correct operation.", priority: "High", riskLevel: "High", consequence: "Block system failure, train collision.", proof: "Sensor test log." },
-                { id: "TP-RO-06", description: "Ensure all ride signage (height restrictions, safety warnings) is in place and legible.", priority: "Medium", riskLevel: "Medium", consequence: "Guests ignoring safety rules, potential for injury.", proof: "Photo of signage at queue entrance." },
-                { id: "TP-RO-07", description: "Clean all ride vehicles and queue areas.", priority: "Low", riskLevel: "Low", consequence: "Poor guest experience.", proof: "Visual confirmation." },
-                { id: "TP-RO-08", description: "Verify communication systems between ride operator stations are working.", priority: "High", riskLevel: "Medium", consequence: "Poor coordination during normal or emergency operations.", proof: "Radio check log." },
-                { id: "TP-RO-09", description: "Review ride's maintenance log for any overnight work or outstanding issues.", priority: "High", riskLevel: "Medium", consequence: "Unaware of recent repairs or known faults.", proof: "Maintenance logbook sign-off." },
-                { id: "TP-RO-10", description: "Ensure the ride area is free of any foreign objects or debris.", priority: "Medium", riskLevel: "Low", consequence: "Debris could interfere with ride mechanism.", proof: "Visual sweep of ride envelope." }
+                { id: "RIDE-SAFETY-01", description: "Perform a daily pre-opening operational test of each ride.", priority: "High", riskLevel: "High", consequence: "The most critical check to identify any faults before guests are onboard.", proof: "Test Log" },
+                { id: "RIDE-SAFETY-02", description: "Inspect all safety harnesses, lap bars, and restraints.", priority: "High", riskLevel: "High", consequence: "A failed restraint can lead to a fatal accident.", proof: "Restraint Inspection Log" },
+                { id: "RIDE-SAFETY-03", description: "Check all emergency stop buttons and systems.", priority: "High", riskLevel: "High", consequence: "In an emergency, the E-stop must work flawlessly.", proof: "E-Stop Test Log" },
+                { id: "RIDE-SAFETY-04", description: "Follow a scheduled preventive maintenance plan based on manufacturer guidelines.", priority: "High", riskLevel: "High", consequence: "Prevents catastrophic failures caused by metal fatigue or wear and tear.", proof: "PM Records" },
+                { id: "RIDE-SAFETY-05", description: "Log all maintenance activities, repairs, and part replacements.", priority: "High", riskLevel: "High", consequence: "Provides a legal record of due diligence and helps track part life.", proof: "Maintenance Logbook" },
+                { id: "RIDE-SAFETY-06", description: "Train and certify all ride operators.", priority: "High", riskLevel: "High", consequence: "An untrained operator can make a fatal error under pressure.", proof: "Training Certificates" },
+                { id: "RIDE-SAFETY-07", description: "Have a documented procedure for ride evacuation.", priority: "High", riskLevel: "High", consequence: "A chaotic, unplanned evacuation can cause injuries and panic.", proof: "Evacuation SOP" },
+                { id: "RIDE-SAFETY-08", description: "Conduct non-destructive testing (NDT) on critical components annually.", priority: "High", riskLevel: "High", consequence: "Identifies microscopic cracks in welds or metal before they lead to a catastrophic failure.", proof: "NDT Report" },
+                { id: "RIDE-SAFETY-09", description: "Lock out and tag out any ride that is undergoing maintenance.", priority: "High", riskLevel: "High", consequence: "Prevents the ride from being accidentally started while someone is working on it.", proof: "LOTO Log" },
+                { id: "RIDE-SAFETY-10", description: "Review ride incident reports to identify trends and potential issues.", priority: "High", riskLevel: "High", consequence: "Helps to identify if a particular ride or component is having recurring problems.", proof: "Incident Analysis Report" }
             ]
         },
         {
-            title: "Crowd & Queue Management",
-            department: "Park Operations",
-            frequency: "Ongoing",
-            role: "Area Supervisor",
-            summary: "Manages guest flow to ensure safety and a positive experience in queue lines.",
-            icon: "users",
-            tasks: [
-                { id: "TP-CQ-01", description: "Monitor queue lines to ensure they do not block emergency access routes.", priority: "High", riskLevel: "High", consequence: "Inability for emergency services to access an area.", proof: "Hourly patrol log." },
-                { id: "TP-CQ-02", description: "Deploy additional queue stanchions or staff if wait times exceed a set threshold.", priority: "Medium", riskLevel: "Low", consequence: "Guest dissatisfaction, queue jumping.", proof: "Operations log entry." },
-                { id: "TP-CQ-03", description: "Ensure posted wait times are accurate and updated regularly.", priority: "Medium", riskLevel: "Low", consequence: "Guest frustration and complaints.", proof: "Wait time update log." },
-                { id: "TP-CQ-04", description: "Have staff actively manage merge points and fast-pass lanes to prevent disputes.", priority: "Low", riskLevel: "Low", consequence: "Guest conflicts.", proof: "Direct observation." },
-                { id: "TP-CQ-05", description: "Ensure queue line entertainment or theming is operational.", priority: "Low", riskLevel: "Low", consequence: "Poor guest experience.", proof: "Daily check." },
-                { id: "TP-CQ-06", description: "Provide shade and water fountains in long, outdoor queues.", priority: "Medium", riskLevel: "Medium", consequence: "Heat exhaustion, guest complaints.", proof: "Facility check." },
-                { id: "TP-CQ-07", description: "Handle guests with accessibility needs according to park policy (e.g., alternative access).", priority: "High", riskLevel: "Medium", consequence: "Non-compliance with disability laws, poor guest experience.", proof: "Observation log." },
-                { id: "TP-CQ-08", description: "Communicate any ride delays or closures to guests in the queue.", priority: "High", riskLevel: "Low", consequence: "Guest frustration.", proof: "Log of announcements made." }
-            ]
-        },
-        {
-            title: "Emergency Response Protocol",
+            title: "Emergency Response & Evacuation",
             department: "Safety/Security",
-            frequency: "Per Incident / Monthly Drills",
-            role: "Incident Commander",
+            frequency: "Quarterly",
+            role: "Emergency Commander",
             summary: "A plan for managing common park emergencies like ride stoppages or medical incidents.",
             icon: "siren",
             tasks: [
-                { id: "TP-ER-01", description: "Ride Stoppage: Operator to make immediate announcement to guests on ride.", priority: "High", riskLevel: "Medium", consequence: "Guest panic.", proof: "Incident report." },
-                { id: "TP-ER-02", description: "Ride Stoppage: Maintenance team dispatched to location within 3 minutes.", priority: "High", riskLevel: "High", consequence: "Delayed resolution, increased guest anxiety.", proof: "Dispatch log." },
-                { id: "TP-ER-03", description: "Ride Stoppage: If evacuation is needed, follow ride-specific evacuation procedure.", priority: "High", riskLevel: "High", consequence: "Unsafe evacuation, injury to guests or staff.", proof: "Evacuation drill report." },
-                { id: "TP-ER-04", description: "Medical Emergency: First aid team dispatched to location with AED.", priority: "High", riskLevel: "High", consequence: "Delayed medical care.", proof: "First aid dispatch log." },
-                { id: "TP-ER-05", description: "Medical Emergency: Secure the area to provide patient privacy and crowd control.", priority: "Medium", riskLevel: "Low", consequence: "Interference with medical team.", proof: "Security officer's report." },
-                { id: "TP-ER-06", description: "Lost Child: Immediately implement 'Code Adam' or park-specific lost child protocol.", priority: "High", riskLevel: "High", consequence: "Delayed search, potential for child to be harmed.", proof: "Incident report." },
-                { id: "TP-ER-07", description: "Power Failure: Verify backup generators have started for critical rides and lighting.", priority: "High", riskLevel: "High", consequence: "Stuck rides in unsafe positions, park-wide panic.", proof: "Generator log." },
-                { id: "TP-ER-08", description: "Conduct a drill for a different emergency scenario each month.", priority: "High", riskLevel: "Medium", consequence: "Team is unprepared for real events.", proof: "Monthly drill schedule and reports." }
+                { id: "EMG-RESP-01", description: "Conduct quarterly mock drills for different emergency scenarios.", priority: "High", riskLevel: "High", consequence: "Drills build muscle memory and expose weaknesses in your emergency plan.", proof: "Drill Report" },
+                { id: "EMG-RESP-02", description: "Ensure a clear chain of command is established for any emergency.", priority: "High", riskLevel: "High", consequence: "Without a clear command structure, response becomes chaotic and ineffective.", proof: "Emergency Command Structure" },
+                { id: "EMG-RESP-03", description: "Have a trained first-response team on-site at all times.", priority: "High", riskLevel: "High", consequence: "Rapid medical response in the first few minutes is critical.", proof: "Team Roster & Certifications" },
+                { id: "EMG-RESP-04", description: "Maintain clear and accessible evacuation routes and assembly points.", priority: "High", riskLevel: "High", consequence: "Blocked routes can trap guests during an evacuation.", proof: "Evacuation Map" },
+                { id: "EMG-RESP-05", description: "Test park-wide public address and alarm systems weekly.", priority: "High", riskLevel: "High", consequence: "The primary means of communicating with thousands of guests in an emergency.", proof: "System Test Log" },
+                { id: "EMG-RESP-06", description: "Coordinate with local fire, police, and medical services.", priority: "High", riskLevel: "High", consequence: "Ensures a seamless handover to external emergency services when they arrive.", proof: "Coordination Meeting Minutes" },
+                { id: "EMG-RESP-07", description: "Have backup power for all critical systems.", priority: "High", riskLevel: "High", consequence: "A power failure can disable communication, lighting, and ride safety systems.", proof: "Generator Test Log" },
+                { id: "EMG-RESP-08", description: "Provide emergency communication devices (radios) to all key staff.", priority: "High", riskLevel: "High", consequence: "Mobile networks can fail during a major incident; radios are more reliable.", proof: "Radio Inventory" },
+                { id: "EMG-RESP-09", description: "Train all staff on their roles during an emergency.", priority: "High", riskLevel: "High", consequence: "Every employee, from ride operator to food seller, has a role to play in guest safety.", proof: "Training Records" },
+                { id: "EMG-RESP-10", description: "Review and update the emergency response plan annually.", priority: "High", riskLevel: "High", consequence: "An outdated plan is a dangerous liability.", proof: "Updated Plan Document" }
             ]
         },
         {
-            title: "Park Cleanliness & Landscaping",
-            department: "Housekeeping/Horticulture",
+            title: "Guest Services & Complaint Handling",
+            department: "Guest Services",
             frequency: "Daily",
-            role: "Area Supervisor",
+            role: "Guest Services Manager",
+            summary: "Manages guest interactions, ensuring a positive experience even when issues arise.",
+            icon: "smile-plus",
+            tasks: [
+                { id: "GUEST-SVC-01", description: "Have a clear and practiced Lost Child Protocol.", priority: "High", riskLevel: "High", consequence: "A lost child is a parent's worst nightmare; a swift, professional response is critical.", proof: "Lost Child SOP" },
+                { id: "GUEST-SVC-02", description: "Log and track every guest complaint to resolution.", priority: "High", riskLevel: "Medium", consequence: "Unresolved complaints lead to negative social media posts and damage brand reputation.", proof: "Complaint Log" },
+                { id: "GUEST-SVC-03", description: "Empower front-line staff to resolve minor issues on the spot.", priority: "High", riskLevel: "Low", consequence: "Reduces escalations and shows guests that you value their time.", proof: "Empowerment Policy" },
+                { id: "GUEST-SVC-04", description: "Provide services for guests with disabilities (wheelchairs, accessibility maps).", priority: "High", riskLevel: "Medium", consequence: "A legal requirement in many places and essential for an inclusive experience.", proof: "Accessibility Plan" },
+                { id: "GUEST-SVC-05", description: "Have a protocol for providing assistance to guests affected by a ride stoppage or other incident.", priority: "High", riskLevel: "High", consequence: "How you handle a negative experience can turn a detractor into a promoter.", proof: "Incident Guest Handling SOP" },
+                { id: "GUEST-SVC-06", description: "Train staff on empathetic communication and de-escalation techniques.", priority: "High", riskLevel: "Medium", consequence: "Helps to calm angry guests and find a positive resolution.", proof: "Training Records" },
+                { id: "GUEST-SVC-07", description: "Monitor social media and review sites for guest feedback.", priority: "High", riskLevel: "Medium", consequence: "Allows you to respond to public complaints and manage your online reputation.", proof: "Social Media Monitoring Report" },
+                { id: "GUEST-SVC-08", description: "Collect and analyze guest feedback to identify areas for improvement.", priority: "High", riskLevel: "Medium", consequence: "Guest feedback is a free source of valuable business intelligence.", proof: "Feedback Analysis Report" },
+                { id: "GUEST-SVC-09", description: "Maintain a lost and found system.", priority: "High", riskLevel: "Low", consequence: "A well-run lost and found is a key part of good customer service.", proof: "Lost & Found Log" },
+                { id: "GUEST-SVC-10", description: "Ensure all guest-facing staff are knowledgeable about the park.", priority: "High", riskLevel: "Low", consequence: "Staff who can't answer basic questions seem unprofessional.", proof: "Staff Quiz Results" }
+            ]
+        },
+        {
+            title: "Crowd Management & Queuing",
+            department: "Operations",
+            frequency: "Daily",
+            role: "Operations Manager",
+            summary: "Manages guest flow to ensure safety and a positive experience in queue lines.",
+            icon: "users",
+            tasks: [
+                { id: "CROWD-MGMT-01", description: "Monitor queue lengths at all major attractions and post wait times.", priority: "High", riskLevel: "Medium", consequence: "Managing expectations with accurate wait times reduces guest frustration.", proof: "Wait Time Board" },
+                { id: "CROWD-MGMT-02", description: "Use stanchions and ropes to create organized queue lines.", priority: "High", riskLevel: "Medium", consequence: "Prevents queue-jumping and disorganized crowding.", proof: "Visual Check" },
+                { id: "CROWD-MGMT-03", description: "Deploy staff to manage queues during peak periods.", priority: "High", riskLevel: "High", consequence: "Staff can manage flow, answer questions, and spot problems.", proof: "Staff Roster" },
+                { id: "CROWD-MGMT-04", description: "Provide entertainment or shade in long queue lines.", priority: "Medium", riskLevel: "Low", consequence: "Improves the guest experience while waiting.", proof: "Queue Entertainment Schedule" },
+                { id: "CROWD-MGMT-05", description: "Have a plan for managing park capacity and temporarily closing entry if full.", priority: "High", riskLevel: "High", consequence: "Overcrowding the park is a major safety risk.", proof: "Capacity Management Plan" },
+                { id: "CROWD-MGMT-06", description: "Manage crowd flow during parades and shows.", priority: "High", riskLevel: "High", consequence: "Prevents dangerous crushes and ensures good viewing for everyone.", proof: "Parade Route Plan" },
+                { id: "CROWD-MGMT-07", description: "Use signage and announcements to direct guests.", priority: "High", riskLevel: "Medium", consequence: "Clear directions are essential in a large, confusing space.", proof: "Signage & Announcement Log" },
+                { id: "CROWD-MGMT-08", description: "Analyze guest flow data to optimize park layout.", priority: "High", riskLevel: "Medium", consequence: "Data can reveal bottlenecks and help improve the park design over time.", proof: "Guest Flow Report" },
+                { id: "CROWD-MGMT-09", description: "Handle crowd-related incidents calmly and professionally.", priority: "High", riskLevel: "High", consequence: "Panic is contagious; a calm response from staff is crucial.", proof: "Incident Report" },
+                { id: "CROWD-MGMT-10", description: "Train all staff on their roles in crowd management.", priority: "High", riskLevel: "High", consequence: "Every staff member is a part of the crowd management system.", proof: "Training Records" }
+            ]
+        },
+        {
+            title: "Park Housekeeping & Presentation",
+            department: "Housekeeping",
+            frequency: "Hourly",
+            role: "Housekeeping Supervisor",
             summary: "Maintains the aesthetic appeal and safety of the park's common areas.",
-            icon: "leaf",
+            icon: "sparkles",
             tasks: [
-                { id: "TP-PC-01", description: "Empty all trash and recycling bins before they overflow.", priority: "High", riskLevel: "Low", consequence: "Negative guest perception, pest attraction.", proof: "Hourly rounds log." },
-                { id: "TP-PC-02", description: "Clean and sanitize all restrooms hourly.", priority: "High", riskLevel: "Medium", consequence: "Hygiene complaints, disease transmission.", proof: "Restroom cleaning log." },
-                { id: "TP-PC-03", description: "Sweep all main pathways and clear any debris or spills.", priority: "High", riskLevel: "Medium", consequence: "Slip and fall hazards.", proof: "Area cleaning log." },
-                { id: "TP-PC-04", description: "Inspect landscaping for any hazards (e.g., low-hanging branches, thorns).", priority: "Medium", riskLevel: "Low", consequence: "Minor guest injuries.", proof: "Horticulture daily report." },
-                { id: "TP-PC-05", description: "Check all water fountains are clean and functional.", priority: "Medium", riskLevel: "Low", consequence: "Guest complaints.", proof: "Daily check." },
-                { id: "TP-PC-06", description: "Wipe down all benches and tables in seating areas.", priority: "Low", riskLevel: "Low", consequence: "Dirty seating.", proof: "Cleaning log." },
-                { id: "TP-PC-07", description: "Check for and remove any graffiti or vandalism.", priority: "Medium", riskLevel: "Low", consequence: "Poor park appearance.", proof: "Incident report." },
-                { id: "TP-PC-08", description: "Ensure irrigation systems are not creating puddles or slip hazards on pathways.", priority: "Medium", riskLevel: "Medium", consequence: "Slip and fall risk.", proof: "Morning walkthrough check." }
+                { id: "PARK-HK-01", description: "Conduct hourly cleaning sweeps of all public areas.", priority: "High", riskLevel: "Medium", consequence: "A dirty park leads to a poor guest experience and negative reviews.", proof: "Cleaning Log" },
+                { id: "PARK-HK-02", description: "Inspect and clean restrooms every 30 minutes during peak hours.", priority: "High", riskLevel: "High", consequence: "Restroom cleanliness is a top driver of guest satisfaction.", proof: "Restroom Cleaning Log" },
+                { id: "PARK-HK-03", description: "Empty trash bins before they overflow.", priority: "High", riskLevel: "Medium", consequence: "Overflowing bins are unsightly and unhygienic.", proof: "Waste Bin Check Log" },
+                { id: "PARK-HK-04", description: "Clean up spills immediately.", priority: "High", riskLevel: "High", consequence: "Spills are a slip-and-fall hazard, a major liability.", proof: "Spill Response Log" },
+                { id: "PARK-HK-05", description: "Maintain landscaping and gardens.", priority: "High", riskLevel: "Low", consequence: "A well-maintained landscape is key to the park's aesthetic appeal.", proof: "Landscaping Schedule" },
+                { id: "PARK-HK-06", description: "Check and repair any damaged park furniture or fixtures.", priority: "High", riskLevel: "Medium", consequence: "Broken benches or signs are a safety hazard.", proof: "Damage Report" },
+                { id: "PARK-HK-07", description: "Power wash walkways and high-traffic areas regularly.", priority: "Medium", riskLevel: "Low", consequence: "Removes gum and deep-seated dirt.", proof: "Power Wash Schedule" },
+                { id: "PARK-HK-08", description: "Ensure all signage is clean and legible.", priority: "High", riskLevel: "Low", consequence: "Dirty or broken signs make navigation difficult.", proof: "Signage Cleaning Log" },
+                { id: "PARK-HK-09", description: "Manage a lost and found for the park.", priority: "High", riskLevel: "Low", consequence: "An efficient lost and found is a key part of good guest service.", proof: "Lost & Found System" },
+                { id: "PARK-HK-10", description: "Conduct a final deep clean of the park after closing.", priority: "High", riskLevel: "Medium", consequence: "Ensures the park is ready for guests the next day.", proof: "End-of-Day Cleaning Report" }
             ]
         },
         {
-            title: "F&B Outlet Food Safety (HACCP)",
-            department: "Food & Beverage",
+            title: "F&B and Retail Operations",
+            department: "F&B/Retail",
             frequency: "Daily",
-            role: "Outlet Manager",
-            summary: "Ensures all food outlets in the park comply with food safety standards.",
-            icon: "utensils-crossed",
+            role: "F&B Manager",
+            summary: "Ensures all food and retail outlets in the park are safe, profitable, and offer a great guest experience.",
+            icon: "utensils",
             tasks: [
-                { id: "TP-FB-01", description: "Check and log temperatures of all refrigerators, freezers, and hot-holding units.", priority: "High", riskLevel: "High", consequence: "Foodborne illness outbreak.", proof: "Temperature logs." },
-                { id: "TP-FB-02", description: "Ensure all food handlers are following handwashing and glove-use policies.", priority: "High", riskLevel: "High", consequence: "Cross-contamination.", proof: "Manager observation." },
-                { id: "TP-FB-03", description: "Check for correct storage of raw and cooked foods.", priority: "High", riskLevel: "High", consequence: "Cross-contamination.", proof: "Visual check of coolers." },
-                { id: "TP-FB-04", description: "Verify all food items are correctly labeled with 'use by' dates.", priority: "High", riskLevel: "Medium", consequence: "Serving expired food.", proof: "Date check audit." },
-                { id: "TP-FB-05", description: "Sanitize all food-contact surfaces.", priority: "High", riskLevel: "High", consequence: "Cross-contamination.", proof: "Sanitization log." },
-                { id: "TP-FB-06", description: "Ensure pest control measures are in place and effective.", priority: "High", riskLevel: "High", consequence: "Pest infestation, health code violations.", proof: "Pest control logbook." },
-                { id: "TP-FB-07", description: "Check that staff with any illness are not handling food.", priority: "High", riskLevel: "High", consequence: "Spreading of infectious diseases like Norovirus.", proof: "Daily staff wellness check." },
-                { id: "TP-FB-08", description: "Ensure all F&B waste is disposed of correctly in covered bins.", priority: "Medium", riskLevel: "Low", consequence: "Pest attraction.", proof: "Visual check." }
+                { id: "FNB-RETAIL-01", description: "Conduct daily food safety and hygiene audits of all F&B outlets.", priority: "High", riskLevel: "High", consequence: "A food poisoning outbreak can sicken thousands of guests and cause a PR disaster.", proof: "Hygiene Audit Report" },
+                { id: "FNB-RETAIL-02", description: "Manage inventory levels to meet demand without excessive waste.", priority: "High", riskLevel: "High", consequence: "Running out of popular items is a major source of lost revenue.", proof: "Inventory Management System" },
+                { id: "FNB-RETAIL-03", description: "Reconcile cash and sales for each outlet at the end of the day.", priority: "High", riskLevel: "High", consequence: "Essential for tracking profitability and preventing cash theft.", proof: "Sales Reconciliation Report" },
+                { id: "FNB-RETAIL-04", description: "Ensure all staff are trained in food handling and customer service.", priority: "High", riskLevel: "High", consequence: "Untrained staff are a food safety and customer service liability.", proof: "Training Records" },
+                { id: "FNB-RETAIL-05", description: "Maintain consistent pricing and promotions across all outlets.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent pricing confuses and frustrates guests.", proof: "Pricing Audit" },
+                { id: "FNB-RETAIL-06", description: "Manage supplier relationships and deliveries.", priority: "High", riskLevel: "High", consequence: "Ensures a steady supply of quality ingredients and merchandise.", proof: "Supplier Contracts" },
+                { id: "FNB-RETAIL-07", description: "Handle customer complaints related to F&B or retail purchases.", priority: "High", riskLevel: "High", consequence: "Poor complaint handling can lead to negative online reviews.", proof: "Complaint Log" },
+                { id: "FNB-RETAIL-08", description: "Ensure all outlets comply with local health and safety regulations.", priority: "High", riskLevel: "High", consequence: "Non-compliance can lead to fines or closure.", proof: "Compliance Certificates" },
+                { id: "FNB-RETAIL-09", description: "Monitor sales data to optimize menus and product offerings.", priority: "High", riskLevel: "Medium", consequence: "Data-driven decisions help to maximize revenue.", proof: "Sales Analysis Report" },
+                { id: "FNB-RETAIL-10", description: "Implement loss prevention measures for retail merchandise.", priority: "High", riskLevel: "High", consequence: "Reduces shrinkage from customer and employee theft.", proof: "Loss Prevention Plan" }
+            ]
+        },
+        {
+            title: "Staff Training & Performance",
+            department: "HR",
+            frequency: "Ongoing",
+            role: "HR Manager",
+            summary: "A framework for developing a well-trained, motivated, and guest-focused team.",
+            icon: "users",
+            tasks: [
+                { id: "STAFF-TRAIN-01", description: "Provide comprehensive orientation for all new hires.", priority: "High", riskLevel: "Medium", consequence: "Ensures new staff understand the park's culture and safety standards from day one.", proof: "Orientation Schedule" },
+                { id: "STAFF-TRAIN-02", description: "Conduct job-specific training for all roles (ride operator, F&B, etc.).", priority: "High", riskLevel: "High", consequence: "Untrained staff are unsafe and provide poor service.", proof: "Training Modules" },
+                { id: "STAFF-TRAIN-03", description: "Provide mandatory safety and emergency response training.", priority: "High", riskLevel: "High", consequence: "The most important training to ensure guest and staff safety.", proof: "Safety Training Records" },
+                { id: "STAFF-TRAIN-04", description: "Train staff on customer service standards and guest interaction.", priority: "High", riskLevel: "High", consequence: "Friendly, helpful staff are key to a positive guest experience.", proof: "Customer Service Training Log" },
+                { id: "STAFF-TRAIN-05", description: "Conduct regular performance reviews and provide feedback.", priority: "High", riskLevel: "Medium", consequence: "Helps employees to grow and improve.", proof: "Performance Review Forms" },
+                { id: "STAFF-TRAIN-06", description: "Maintain a skills matrix for all employees.", priority: "High", riskLevel: "Medium", consequence: "Helps to identify training needs and plan for succession.", proof: "Skills Matrix" },
+                { id: "STAFF-TRAIN-07", description: "Offer opportunities for cross-training and career development.", priority: "Medium", riskLevel: "Low", consequence: "Improves employee morale and retention.", proof: "Development Plans" },
+                { id: "STAFF-TRAIN-08", description: "Recognize and reward excellent performance.", priority: "High", riskLevel: "Low", consequence: "Motivates staff to go above and beyond.", proof: "Recognition Program" },
+                { id: "STAFF-TRAIN-09", description: "Handle disciplinary issues consistently and fairly.", priority: "High", riskLevel: "High", consequence: "An unfair process can lead to low morale and legal issues.", proof: "Disciplinary Process" },
+                { id: "STAFF-TRAIN-10", description: "Conduct exit interviews to gather feedback from departing employees.", priority: "High", riskLevel: "Medium", consequence: "A valuable source of information for improving the work environment.", proof: "Exit Interview Notes" }
+            ]
+        },
+        {
+            title: "Ticketing & Entry Operations",
+            department: "Admissions",
+            frequency: "Daily",
+            role: "Admissions Manager",
+            summary: "Ensures a smooth, efficient, and secure entry process for all guests.",
+            icon: "ticket",
+            tasks: [
+                { id: "TICKET-ENTRY-01", description: "Ensure all ticketing counters and self-service kiosks are operational.", priority: "High", riskLevel: "High", consequence: "A system failure can lead to massive queues and guest frustration at the entrance.", proof: "System Health Check" },
+                { id: "TICKET-ENTRY-02", description: "Reconcile ticket sales and cash at the end of each day.", priority: "High", riskLevel: "High", consequence: "Essential for financial accounting and fraud detection.", proof: "Sales Report" },
+                { id: "TICKET-ENTRY-03", description: "Manage online ticket sales and redemptions.", priority: "High", riskLevel: "High", consequence: "A smooth online process is crucial for modern guest experience.", proof: "Online Sales Dashboard" },
+                { id: "TICKET-ENTRY-04", description: "Train staff on identifying and handling counterfeit tickets.", priority: "High", riskLevel: "High", consequence: "Counterfeit tickets lead to direct revenue loss.", proof: "Fraud Detection Training" },
+                { id: "TICKET-ENTRY-05", description: "Manage entry turnstiles and access control.", priority: "High", riskLevel: "High", consequence: "Prevents unauthorized entry and helps manage park capacity.", proof: "Access Control System" },
+                { id: "TICKET-ENTRY-06", description: "Handle group bookings and school trips.", priority: "High", riskLevel: "Medium", consequence: "A major revenue stream that requires efficient coordination.", proof: "Group Booking System" },
+                { id: "TICKET-ENTRY-07", description: "Provide clear pricing and information at the ticket counters.", priority: "High", riskLevel: "Low", consequence: "Ambiguous pricing leads to customer confusion and disputes.", proof: "Signage" },
+                { id: "TICKET-ENTRY-08", description: "Manage season pass holder entries and benefits.", priority: "High", riskLevel: "Medium", consequence: "A smooth process is key to retaining loyal customers.", proof: "Season Pass System" },
+                { id: "TICKET-ENTRY-09", description: "Analyze attendance data to forecast future demand.", priority: "High", riskLevel: "High", consequence: "Essential for staffing, inventory, and operational planning.", proof: "Attendance Report" },
+                { id: "TICKET-ENTRY-10", description: "Have a clear process for handling ticketing disputes.", priority: "High", riskLevel: "Medium", consequence: "A fair and quick resolution process improves guest satisfaction.", proof: "Dispute Resolution SOP" }
             ]
         }
     ]
@@ -2809,3 +2877,6 @@ export const premiumPacks: PremiumPack[] = [
 
 
 
+
+
+    
