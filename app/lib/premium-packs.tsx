@@ -65,7 +65,6 @@ const franchise_operations_pack: PremiumPack = {
     title: "Franchise Operations Pack",
     priceINR: 5999,
     priceUSD: 79,
-    competitorPriceUSD: 599,
     paymentId: 'pl_RaWEBHhFLQENxC', // Placeholder
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/b0b53361-91a3-496a-a169-b5a0344d7328',
     category: "Franchise",
@@ -85,146 +84,202 @@ const franchise_operations_pack: PremiumPack = {
     checklists: [
         {
             title: "New Franchisee Onboarding",
-            department: "Operations",
+            department: "Onboarding",
             frequency: "Per New Franchisee",
             role: "Onboarding Manager",
             summary: "A comprehensive checklist to guide a new franchisee from signing the agreement to grand opening, ensuring no steps are missed.",
             icon: "user-plus",
             tasks: [
-                { id: "FO-01", description: "Legal & Financial: Franchise agreement signed and all fees paid.", priority: "High", riskLevel: "High", consequence: "Legal disputes, delayed opening.", proof: "Signed agreement copy, payment receipt.", location: "Head Office" },
-                { id: "FO-02", description: "Site Selection: Final site approved based on demographic and feasibility reports.", priority: "High", riskLevel: "High", consequence: "Poor location leading to low sales.", proof: "Signed site approval form.", location: "Field" },
-                { id: "FO-03", description: "Store Fit-Out: Interior design and layout approved and vendor assigned.", priority: "High", riskLevel: "Medium", consequence: "Brand inconsistency, construction delays.", proof: "Approved layout drawings.", location: "Head Office" },
-                { id: "FO-04", description: "Initial Training: Franchisee and key staff complete mandatory head office training.", priority: "High", riskLevel: "High", consequence: "Operational errors, poor customer service.", proof: "Training completion certificates.", location: "Training Center" },
-                { id: "FO-05", description: "Supply Chain Setup: Initial orders for all equipment, raw materials, and inventory placed.", priority: "High", riskLevel: "Medium", consequence: "Store cannot open on time.", proof: "Purchase order copies.", location: "Head Office" },
-                { id: "FO-06", description: "Marketing: Pre-launch and grand opening marketing plan approved and budget allocated.", priority: "Medium", riskLevel: "Medium", consequence: "Low footfall during opening week.", proof: "Approved marketing plan.", location: "Marketing Dept." },
-                { id: "FO-07", description: "Technology Setup: POS system, CCTV, and other required software installed and tested.", priority: "High", riskLevel: "High", consequence: "Inability to process sales, security gaps.", proof: "IT sign-off document.", location: "Franchise Location" },
-                { id: "FO-08", description: "Pre-Opening Audit: Final walkthrough to ensure store is 100% brand compliant and ready for opening.", priority: "High", riskLevel: "High", consequence: "Negative first impression, operational failures.", proof: "Completed pre-opening audit form.", location: "Franchise Location" },
-                { id: "FO-09", description: "Staffing: Key positions (e.g., Store Manager) hired and trained.", priority: "High", riskLevel: "Medium", consequence: "Lack of leadership on opening day.", proof: "Employment contracts and training records.", location: "HR Department" },
-                { id: "FO-10", description: "Licensing & Permits: All local operating licenses and health permits secured.", priority: "High", riskLevel: "High", consequence: "Forced closure, legal penalties.", proof: "Copies of all permits and licenses.", location: "Franchise Location" },
+                { id: "FR-ONBOARD-01", description: "Verify final site selection and lease agreement.", priority: "High", riskLevel: "High", consequence: "A poor location is a primary cause of franchise failure.", proof: "Signed Lease" },
+                { id: "FR-ONBOARD-02", description: "Execute the franchise agreement and collect initial fees.", priority: "High", riskLevel: "High", consequence: "Without a signed agreement, there is no legal basis for the franchise relationship.", proof: "Signed Agreement & Receipt" },
+                { id: "FR-ONBOARD-03", description: "Provide the franchisee with the complete operations manual.", priority: "High", riskLevel: "High", consequence: "Inconsistent operations from day one, leading to brand dilution.", proof: "Manual Handover Form" },
+                { id: "FR-ONBOARD-04", description: "Manage the store fit-out process according to brand guidelines.", priority: "High", riskLevel: "High", consequence: "Inconsistent store design damages brand image and customer experience.", proof: "Fit-out Completion Report" },
+                { id: "FR-ONBOARD-05", description: "Train the franchisee and their key staff on all operational procedures.", priority: "High", riskLevel: "High", consequence: "Untrained staff leads to poor service, quality issues, and customer complaints.", proof: "Training Certificates" },
+                { id: "FR-ONBOARD-06", description: "Set up POS, inventory, and other required software systems.", priority: "High", riskLevel: "High", consequence: "Inability to process sales or track inventory from opening day.", proof: "System Setup Log" },
+                { id: "FR-ONBOARD-07", description: "Coordinate initial inventory and supply chain setup.", priority: "High", riskLevel: "High", consequence: "Store cannot open without initial stock, causing delays and lost revenue.", proof: "First PO" },
+                { id: "FR-ONBOARD-08", description: "Plan and execute a grand opening marketing campaign.", priority: "High", riskLevel: "Medium", consequence: "A weak opening fails to generate initial buzz and customer traffic.", proof: "Marketing Plan" },
+                { id: "FR-ONBOARD-09", description: "Ensure all required licenses and permits are in place.", priority: "High", riskLevel: "High", consequence: "Operating without permits can lead to fines and forced closure by authorities.", proof: "Permit File" },
+                { id: "FR-ONBOARD-10", description: "Conduct a final pre-opening audit to ensure readiness.", priority: "High", riskLevel: "High", consequence: "Opening with unresolved issues leads to a poor customer first impression.", proof: "Pre-opening Audit Report" }
             ]
         },
         {
-            title: "Quarterly Brand Standards Audit",
-            department: "Operations / Quality Assurance",
+            title: "Brand & Visual Identity Audit",
+            department: "Operations",
             frequency: "Quarterly",
-            role: "Area Manager / Auditor",
-            summary: "Ensures the franchisee is adhering to all brand standards, from store cleanliness to staff uniform and product presentation.",
-            icon: "search",
+            role: "Field Manager",
+            summary: "Ensures all brand-related visual elements are consistent and up to standard.",
+            icon: "eye",
             tasks: [
-                { id: "BSA-01", description: "Exterior & Signage: All external branding is clean, undamaged, and correctly illuminated.", priority: "High", riskLevel: "Medium", consequence: "Poor brand image, customer confusion.", proof: "Dated photo of storefront.", location: "Exterior" },
-                { id: "BSA-02", description: "Interior & Ambiance: Store is clean, well-lit, and music/scent protocols are followed.", priority: "Medium", riskLevel: "Low", consequence: "Sub-par customer experience.", proof: "Audit checklist section sign-off.", location: "Interior" },
-                { id: "BSA-03", description: "Product & Service: Product quality, portion sizes, and packaging meet brand standards.", priority: "High", riskLevel: "High", consequence: "Brand dilution, customer complaints.", proof: "Test purchase and product inspection notes.", location: "Point of Sale" },
-                { id: "BSA-04", description: "Staff Presentation: All on-duty staff are in full, clean uniform with proper grooming.", priority: "Medium", riskLevel: "Low", consequence: "Unprofessional appearance.", proof: "Visual inspection during audit.", location: "All Areas" },
-                { id: "BSA-05", description: "Marketing Collateral: Only approved, current marketing materials are on display.", priority: "Low", riskLevel: "Low", consequence: "Outdated offers, brand inconsistency.", proof: "Photo of in-store displays.", location: "Interior" },
-                { id: "BSA-06", description: "Hygiene & Cleanliness: Restrooms, kitchen (if any), and seating areas are spotless.", priority: "High", riskLevel: "High", consequence: "Health code violations, customer disgust.", proof: "Hygiene audit score.", location: "All Areas" },
-                { id: "BSA-07", description: "Promotional Compliance: Current promotions are correctly displayed and executed at POS.", priority: "Medium", riskLevel: "Medium", consequence: "Customer confusion, legal issues with advertising.", proof: "Review of POS system and promotional signage.", location: "Point of Sale" },
-                { id: "BSA-08", description: "Service Speed & Friendliness: Staff follows greeting, ordering, and closing scripts.", priority: "High", riskLevel: "Medium", consequence: "Poor customer reviews, reduced repeat business.", proof: "Mystery shopper report or direct observation.", location: "Point of Sale" }
+                { id: "BRAND-AUDIT-01", description: "Check that all interior and exterior signage is correct and in good condition.", priority: "High", riskLevel: "High", consequence: "Damaged or incorrect signage makes the brand look unprofessional and cheap.", proof: "Photo Audit" },
+                { id: "BRAND-AUDIT-02", description: "Verify staff uniforms are clean, correct, and worn properly.", priority: "High", riskLevel: "Medium", consequence: "Sloppy uniforms give a poor impression of brand standards.", proof: "Staff Inspection" },
+                { id: "BRAND-AUDIT-03", description: "Ensure all marketing materials on display are current and brand-approved.", priority: "High", riskLevel: "High", consequence: "Using outdated materials can confuse customers and promote incorrect offers.", proof: "Marketing Material Audit" },
+                { id: "BRAND-AUDIT-04", description: "Audit store cleanliness, lighting, and ambiance.", priority: "High", riskLevel: "High", consequence: "A dirty or poorly-lit store directly impacts customer experience and sales.", proof: "Ambiance Checklist" },
+                { id: "BRAND-AUDIT-05", description: "Check that product/service presentation meets brand standards.", priority: "High", riskLevel: "High", consequence: "Inconsistent presentation leads to a disjointed brand experience.", proof: "Product Display Audit" },
+                { id: "BRAND-AUDIT-06", description: "Review local social media and advertising for brand compliance.", priority: "High", riskLevel: "High", consequence: "Off-brand local marketing can damage the entire brand's reputation.", proof: "Social Media Review" },
+                { id: "BRAND-AUDIT-07", description: "Ensure the correct brand music or scent profile is being used, if applicable.", priority: "Medium", riskLevel: "Low", consequence: "Inconsistent sensory branding dilutes the customer experience.", proof: "Sensory Audit" },
+                { id: "BRAND-AUDIT-08", description: "Provide a detailed report to the franchisee with required corrective actions.", priority: "High", riskLevel: "High", consequence: "Without a formal report, compliance issues are likely to be ignored.", proof: "Audit Report" },
+                { id: "BRAND-AUDIT-09", description: "Check window displays for compliance with current campaign.", priority: "High", riskLevel: "Medium", consequence: "Failure to update window displays leads to missed sales opportunities.", proof: "Photo Audit" },
+                { id: "BRAND-AUDIT-10", description: "Verify correct use of brand packaging.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent packaging degrades brand perception.", proof: "Packaging Check" }
+            ]
+        },
+        {
+            title: "Monthly Performance Review",
+            department: "Operations",
+            frequency: "Monthly",
+            role: "Franchise Manager",
+            summary: "A structured monthly meeting to review performance and align on goals.",
+            icon: "trending-up",
+            tasks: [
+                { id: "PERF-REVIEW-01", description: "Review franchisee's monthly sales data against targets.", priority: "High", riskLevel: "High", consequence: "Failure to track sales makes it impossible to manage performance or identify struggling franchisees.", proof: "Sales Report" },
+                { id: "PERF-REVIEW-02", description: "Analyze key operational KPIs (e.g., customer satisfaction, speed of service).", priority: "High", riskLevel: "High", consequence: "Ignoring operational KPIs allows service quality to degrade over time.", proof: "KPI Dashboard" },
+                { id: "PERF-REVIEW-03", description: "Discuss successes, challenges, and support needed from the franchisor.", priority: "High", riskLevel: "Medium", consequence: "Lack of communication leads to franchisee dissatisfaction and feeling unsupported.", proof: "Meeting Minutes" },
+                { id: "PERF-REVIEW-04", description: "Develop a joint action plan for the upcoming month.", priority: "High", riskLevel: "High", consequence: "Without an action plan, performance issues are unlikely to be resolved.", proof: "Action Plan Document" },
+                { id: "PERF-REVIEW-05", description: "Review local marketing initiatives and results.", priority: "High", riskLevel: "Medium", consequence: "Franchisees may waste money on ineffective marketing without guidance.", proof: "Marketing Report" },
+                { id: "PERF-REVIEW-06", description: "Address any outstanding compliance issues from previous audits.", priority: "High", riskLevel: "High", consequence: "Repeated compliance failures can lead to penalties or franchise termination.", proof: "Compliance Tracker" },
+                { id: "PERF-REVIEW-07", description: "Provide updates on new products, services, or brand-wide campaigns.", priority: "High", riskLevel: "Medium", consequence: "Franchisees feel disconnected from the brand and miss opportunities.", proof: "Update Presentation" },
+                { id: "PERF-REVIEW-08", description: "Review franchisee's P&L statement and discuss profitability.", priority: "High", riskLevel: "High", consequence: "Unprofitable franchisees are at high risk of failure, which hurts the entire network.", proof: "P&L Statement" },
+                { id: "PERF-REVIEW-09", description: "Discuss staff training and development needs.", priority: "High", riskLevel: "Medium", consequence: "Untrained staff leads to poor performance and high turnover.", proof: "Training Plan" },
+                { id: "PERF-REVIEW-10", description: "Set goals for the next review period.", priority: "High", riskLevel: "High", consequence: "Without clear goals, performance stagnates.", proof: "Goal Sheet" }
+            ]
+        },
+        {
+            title: "Franchisee Financial Audit",
+            department: "Finance",
+            frequency: "Annually",
+            role: "Auditor",
+            summary: "An annual audit to ensure financial compliance and accuracy.",
+            icon: "banknote",
+            tasks: [
+                { id: "FIN-AUDIT-01", description: "Verify accuracy of franchisee's reported gross sales.", priority: "High", riskLevel: "High", consequence: "Under-reported sales directly lead to loss of royalty revenue for the franchisor.", proof: "Sales Records vs POS Data" },
+                { id: "FIN-AUDIT-02", description: "Reconcile royalty fee payments against reported sales.", priority: "High", riskLevel: "High", consequence: "Failure to reconcile can lead to significant revenue leakage.", proof: "Royalty Calculation Sheet" },
+                { id: "FIN-AUDIT-03", description: "Audit compliance with approved pricing and discount policies.", priority: "High", riskLevel: "High", consequence: "Unauthorized discounts can erode brand value and profitability.", proof: "POS Transaction Audit" },
+                { id: "FIN-AUDIT-04", description: "Check contributions to the national marketing fund.", priority: "High", riskLevel: "Medium", consequence: "Non-payment by some franchisees unfairly burdens others.", proof: "Marketing Fund Ledger" },
+                { id: "FIN-AUDIT-05", description: "Review franchisee P&L statements for any red flags.", priority: "High", riskLevel: "Medium", consequence: "Financial distress in a franchisee can be an early warning sign of failure.", proof: "P&L Analysis" },
+                { id: "FIN-AUDIT-06", description: "Ensure timely submission of all required financial reports.", priority: "High", riskLevel: "Medium", consequence: "Late reports make it impossible for the franchisor to manage the network effectively.", proof: "Submission Log" },
+                { id: "FIN-AUDIT-07", description: "Verify purchases are made from approved suppliers.", priority: "High", riskLevel: "Medium", consequence: "Purchasing from unapproved suppliers can lead to quality issues and brand damage.", proof: "Supplier Invoice Audit" },
+                { id: "FIN-AUDIT-08", description: "Issue an audit report with findings and required actions.", priority: "High", riskLevel: "High", consequence: "Without a formal report, financial irregularities may not be corrected.", proof: "Audit Report" },
+                { id: "FIN-AUDIT-09", description: "Audit petty cash and expense reports.", priority: "High", riskLevel: "Medium", consequence: "Can uncover internal fraud or misuse of funds.", proof: "Expense Audit" },
+                { id: "FIN-AUDIT-10", description: "Verify bank reconciliations.", priority: "High", riskLevel: "High", consequence: "Unreconciled accounts can hide cash flow problems or fraud.", proof: "Bank Statements" }
+            ]
+        },
+        {
+            title: "Local Store Marketing (LSM) Compliance",
+            department: "Marketing",
+            frequency: "Per Campaign",
+            role: "Marketing Manager",
+            summary: "Ensures franchisee-led marketing efforts adhere to brand guidelines.",
+            icon: "megaphone",
+            tasks: [
+                { id: "LSM-01", description: "Require franchisees to submit all local marketing plans for approval.", priority: "High", riskLevel: "High", consequence: "Unapproved marketing can damage the brand's image and messaging.", proof: "LSM Submission Form" },
+                { id: "LSM-02", description: "Review submitted plans for brand consistency and messaging.", priority: "High", riskLevel: "High", consequence: "Allows off-brand or unprofessional advertising to go live.", proof: "Approval Checklist" },
+                { id: "LSM-03", description: "Provide feedback or approval within a defined SLA (e.g., 5 business days).", priority: "High", riskLevel: "Medium", consequence: "Slow approvals can cause franchisees to miss local marketing opportunities.", proof: "Communication Log" },
+                { id: "LSM-04", description: "Provide franchisees with a library of pre-approved marketing templates.", priority: "High", riskLevel: "Medium", consequence: "Without templates, franchisees may create low-quality, off-brand materials.", proof: "Asset Library" },
+                { id: "LSM-05", description: "Monitor franchisee social media accounts for compliance.", priority: "High", riskLevel: "High", consequence: "Unmonitored accounts can spread misinformation or damage the brand.", proof: "Social Media Audit" },
+                { id: "LSM-06", description: "Ensure correct usage of logos, fonts, and brand colors.", priority: "High", riskLevel: "High", consequence: "Leads to brand dilution and a fragmented brand identity.", proof: "Brand Guideline Check" },
+                { id: "LSM-07", description: "Track the ROI of local marketing campaigns.", priority: "Medium", riskLevel: "Low", consequence: "Inability to identify which local marketing tactics work best.", proof: "ROI Report" },
+                { id: "LSM-08", description: "Share successful LSM ideas across the franchise network.", priority: "Medium", riskLevel: "Low", consequence: "Valuable knowledge remains siloed within one franchise.", proof: "Best Practice Newsletter" },
+                { id: "LSM-09", description: "Review in-store promotional displays.", priority: "High", riskLevel: "Medium", consequence: "Cluttered or off-brand displays can confuse customers.", proof: "Display Audit" },
+                { id: "LSM-10", description: "Approve any local PR or media interactions.", priority: "High", riskLevel: "High", consequence: "A franchisee giving an unauthorized press statement can cause a brand crisis.", proof: "PR Approval Form" }
+            ]
+        },
+        {
+            title: "Customer Service Standards Audit",
+            department: "Operations",
+            frequency: "Quarterly",
+            role: "Mystery Shopper/Field Manager",
+            summary: "Evaluates the customer experience to ensure it meets brand standards.",
+            icon: "star",
+            tasks: [
+                { id: "CSSA-01", description: "Audit staff greeting and welcome procedure.", priority: "High", riskLevel: "Medium", consequence: "A poor first impression can cause a customer to leave immediately.", proof: "Mystery Shopper Report" },
+                { id: "CSSA-02", description: "Evaluate staff product knowledge and ability to answer questions.", priority: "High", riskLevel: "High", consequence: "Lack of knowledge leads to lost sales and damages customer confidence.", proof: "Mystery Shopper Report" },
+                { id: "CSSA-03", description: "Check speed of service and queue management.", priority: "High", riskLevel: "High", consequence: "Long waits are a major driver of customer dissatisfaction.", proof: "Timing Log" },
+                { id: "CSSA-04", description: "Assess cleanliness and presentation of the customer-facing areas.", priority: "High", riskLevel: "High", consequence: "A dirty environment is a major deterrent for customers and a health hazard.", proof: "Cleanliness Scorecard" },
+                { id: "CSSA-05", description: "Evaluate how staff handle customer complaints or difficult situations.", priority: "High", riskLevel: "High", consequence: "Poor complaint handling can lead to negative online reviews and lost customers.", proof: "Scenario Test" },
+                { id: "CSSA-06", description: "Check if staff are attempting to upsell or cross-sell.", priority: "Medium", riskLevel: "Low", consequence: "Missed revenue opportunities.", proof: "Upsell Attempt Log" },
+                { id: "CSSA-07", description: "Review customer feedback scores (e.g., NPS, Google Reviews).", priority: "High", riskLevel: "High", consequence: "Ignoring customer feedback allows problems to fester.", proof: "Feedback Dashboard" },
+                { id: "CSSA-08", description: "Provide a detailed report and coaching plan to the franchisee.", priority: "High", riskLevel: "High", consequence: "Without a feedback loop, service standards will not improve.", proof: "Audit Report & Action Plan" },
+                { id: "CSSA-09", description: "Check telephone etiquette and responsiveness.", priority: "High", riskLevel: "Medium", consequence: "A poor phone experience can lose a customer before they even visit.", proof: "Call Monitoring Report" },
+                { id: "CSSA-10", description: "Evaluate the end-of-transaction closing and farewell.", priority: "High", riskLevel: "Low", consequence: "A poor last impression can sour an otherwise good experience.", proof: "Mystery Shopper Report" }
             ]
         },
         {
             title: "Supply Chain & Inventory Audit",
             department: "Supply Chain",
-            frequency: "Monthly",
-            role: "Franchisee / Store Manager",
-            summary: "Verifies that the franchisee is using only approved suppliers and managing inventory effectively to prevent stockouts or wastage.",
+            frequency: "Quarterly",
+            role: "Supply Chain Analyst",
+            summary: "A quarterly review of the franchisee's supply chain and inventory practices.",
             icon: "truck",
             tasks: [
-                { id: "SCI-01", description: "Verify all key raw materials are sourced from brand-approved suppliers.", priority: "High", riskLevel: "High", consequence: "Product inconsistency, potential safety issues, breach of contract.", proof: "Review of last 30 days of purchase invoices.", location: "Office" },
-                { id: "SCI-02", description: "Check storage conditions (temperature, FIFO) for all perishable and dry goods.", priority: "High", riskLevel: "Medium", consequence: "Food spoilage, wastage, health risks.", proof: "Temperature logs, visual inspection of storage.", location: "Stock Room/Kitchen" },
-                { id: "SCI-03", description: "Conduct a physical count of top 10 SKUs and reconcile with POS system data.", priority: "Medium", riskLevel: "Medium", consequence: "Inventory shrinkage, inaccurate ordering.", proof: "Signed stock count sheet.", location: "Stock Room" },
-                { id: "SCI-04", description: "Review wastage logs for patterns and identify areas for improvement.", priority: "Medium", riskLevel: "Low", consequence: "Lost profit.", proof: "Wastage log analysis.", location: "Office" },
-                { id: "SCI-05", description: "Ensure ordering pars are set correctly based on sales velocity.", priority: "Medium", riskLevel: "Medium", consequence: "Stockouts of popular items or overstocking of slow movers.", proof: "Review of par levels in ordering system vs. sales data.", location: "Office" },
-                { id: "SCI-06", description: "Check for expired stock in all storage and display areas.", priority: "High", riskLevel: "High", consequence: "Health risk, customer complaints, legal action.", proof: "Physical check of a sample of products.", location: "Stock Room/Display Areas" },
-                { id: "SCI-07", description: "Review supplier delivery logs for timeliness and accuracy.", priority: "Low", riskLevel: "Low", consequence: "Operational disruptions due to late deliveries.", proof: "Delivery logbook review.", location: "Receiving Area" },
-                { id: "SCI-08", description: "Confirm proper handling and storage of returned or damaged goods.", priority: "Medium", riskLevel: "Low", consequence: "Inaccurate inventory, loss of credit from supplier.", proof: "Inspection of returns area and logs.", location: "Returns Area" },
+                { id: "SCIA-01", description: "Audit franchisee purchase orders to ensure they are using approved suppliers.", priority: "High", riskLevel: "High", consequence: "Use of unapproved suppliers can lead to quality control issues and brand damage.", proof: "PO Audit" },
+                { id: "SCIA-02", description: "Analyze inventory turnover rates to identify overstocking or understocking.", priority: "High", riskLevel: "High", consequence: "Poor inventory management ties up cash and leads to stockouts or waste.", proof: "Inventory Turnover Report" },
+                { id: "SCIA-03", description: "Check for compliance with stock storage and handling procedures (e.g., FIFO).", priority: "High", riskLevel: "High", consequence: "Improper storage can lead to product damage, spoilage, and financial loss.", proof: "Stockroom Inspection" },
+                { id: "SCIA-04", description: "Verify that shrinkage (loss) levels are within acceptable limits.", priority: "High", riskLevel: "High", consequence: "High shrinkage directly impacts profitability and may indicate theft.", proof: "Shrinkage Report" },
+                { id: "SCIA-05", description: "Ensure franchisee is participating in mandatory promotional buys.", priority: "High", riskLevel: "Medium", consequence: "Non-participation weakens the impact of national marketing campaigns.", proof: "Promo Purchase Report" },
+                { id: "SCIA-06", description: "Review logistics and delivery processes for efficiency.", priority: "Medium", riskLevel: "Medium", consequence: "Inefficient logistics can increase costs for the franchisee.", proof: "Delivery Time Analysis" },
+                { id: "SCIA-07", description: "Identify and address any unauthorized product sourcing.", priority: "High", riskLevel: "High", consequence: "Can introduce counterfeit or low-quality goods into the system.", proof: "Product Sourcing Audit" },
+                { id: "SCIA-08", description: "Provide guidance on optimizing inventory levels.", priority: "Medium", riskLevel: "Low", consequence: "Franchisees may struggle with stock management without support.", proof: "Recommendation Report" },
+                { id: "SCIA-09", description: "Audit returned goods process.", priority: "High", riskLevel: "High", consequence: "A poor returns process can lead to financial loss and inaccurate inventory.", proof: "Returns Log" },
+                { id: "SCIA-10", description: "Check for expired or damaged stock.", priority: "High", riskLevel: "High", consequence: "Selling expired goods is a major health and safety risk and can lead to legal action.", proof: "Expired Stock Report" }
             ]
         },
         {
-            title: "Customer Service & Experience Audit",
-            department: "Operations",
-            frequency: "Monthly",
-            role: "Mystery Shopper / Area Manager",
-            summary: "Evaluates the customer experience against brand standards, from greeting to final transaction.",
-            icon: "smile",
+            title: "Franchisee Staff Training SOP",
+            department: "Training",
+            frequency: "Ongoing",
+            role: "Training Manager",
+            summary: "A framework for ensuring all franchisee staff are trained to brand standards.",
+            icon: "users",
             tasks: [
-                { id: "CSE-01", description: "Greeting: Was the customer greeted within 30 seconds of entering?", priority: "High", riskLevel: "Low", consequence: "Poor first impression.", proof: "Mystery shopper report timestamp.", location: "Entrance" },
-                { id: "CSE-02", description: "Order Taking: Was the order taken accurately and efficiently, with upselling attempted?", priority: "Medium", riskLevel: "Low", consequence: "Lost revenue, customer frustration.", proof: "Mystery shopper report.", location: "Point of Sale" },
-                { id: "CSE-03", description: "Complaint Handling: Was a test complaint handled politely and according to the brand's service recovery protocol?", priority: "High", riskLevel: "High", consequence: "A small issue escalating into a major online complaint.", proof: "Detailed notes in mystery shopper report.", location: "Point of Sale" },
-                { id: "CSE-04", description: "Store Atmosphere: Was the environment clean, welcoming, and safe for customers?", priority: "High", riskLevel: "Medium", consequence: "Customers feel uncomfortable and won't return.", proof: "Mystery shopper rating.", location: "All Areas" },
-                { id: "CSE-05", description: "Closing: Was the customer thanked and given a sincere farewell?", priority: "Medium", riskLevel: "Low", consequence: "Missed opportunity to build loyalty.", proof: "Mystery shopper report.", location: "Exit" },
-                { id: "CSE-06", description: "Product Knowledge: Could staff answer basic questions about the products/services?", priority: "Medium", riskLevel: "Medium", consequence: "Lack of confidence from customer, lost sales.", proof: "Mystery shopper Q&A section.", location: "Point of Sale" },
-                { id: "CSE-07", description: "Wait Times: Was the queue time within the brand's acceptable limit?", priority: "High", riskLevel: "Medium", consequence: "Customer abandonment, negative reviews.", proof: "Timestamped observations in mystery shopper report.", location: "Queue Area" },
-                { id: "CSE-08", description: "Digital Experience: If applicable, was the in-store digital kiosk/app experience smooth?", priority: "Medium", riskLevel: "Medium", consequence: "Frustration with technology, channel abandonment.", proof: "Mystery shopper report on digital interaction.", location: "Kiosk/App" },
+                { id: "FST-01", description: "Provide a mandatory training curriculum for all new franchisee employees.", priority: "High", riskLevel: "High", consequence: "Inconsistent training leads to inconsistent service and quality.", proof: "Training Curriculum" },
+                { id: "FST-02", description: "Require staff to pass a certification test on product knowledge and brand standards.", priority: "High", riskLevel: "Medium", consequence: "Without certification, there is no proof that training was effective.", proof: "Certification Test Results" },
+                { id: "FST-03", description: "Track training completion for all staff across the network.", priority: "High", riskLevel: "Medium", consequence: "Inability to identify which locations have untrained staff.", proof: "Training Completion Report" },
+                { id: "FST-04", description: "Conduct \"Train the Trainer\" sessions for franchisee managers.", priority: "High", riskLevel: "High", consequence: "If managers can't train effectively, new hires will not be properly onboarded.", proof: "Trainer Certification" },
+                { id: "FST-05", description: "Provide regular refresher training on new products or procedures.", priority: "High", riskLevel: "Medium", consequence: "Staff knowledge becomes outdated, leading to errors.", proof: "Refresher Training Log" },
+                { id: "FST-06", description: "Audit training records during franchisee performance reviews.", priority: "High", riskLevel: "Medium", consequence: "Holds franchisees accountable for training their teams.", proof: "Audit Checklist" },
+                { id: "FST-07", description: "Use a mix of online modules, in-person workshops, and on-the-job training.", priority: "Medium", riskLevel: "Low", consequence: "A single training method may not be effective for all learners.", proof: "Blended Learning Plan" },
+                { id: "FST-08", description: "Gather feedback from franchisees on the effectiveness of training programs.", priority: "Medium", riskLevel: "Low", consequence: "Training programs may not address the real-world needs of the franchisees.", proof: "Feedback Survey" },
+                { id: "FST-09", description: "Include customer service and complaint handling in training.", priority: "High", riskLevel: "High", consequence: "Untrained staff can turn a minor complaint into a major brand issue.", proof: "Training Module" },
+                { id: "FST-10", description: "Certify staff on health and safety procedures.", priority: "High", riskLevel: "High", consequence: "Lack of safety training can lead to workplace accidents and liability.", proof: "Safety Certification" }
             ]
         },
         {
-            title: "Monthly Financial & Performance Review",
-            department: "Finance",
-            frequency: "Monthly",
-            role: "Franchisor Analyst",
-            summary: "A review of the franchisee's financial health, sales performance, and royalty payments.",
-            icon: "dollar-sign",
-            tasks: [
-                { id: "FPR-01", description: "Royalty & Ad Fund: Verify royalty and marketing fund payments are accurate and paid on time.", priority: "High", riskLevel: "High", consequence: "Revenue loss for franchisor, breach of contract.", proof: "Bank statements and franchise agreement.", location: "Finance Dept." },
-                { id: "FPR-02", description: "Sales Reporting: Ensure daily/weekly sales reports have been submitted accurately.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate data for network-wide planning.", proof: "POS sales reports vs. submitted reports.", location: "Finance Dept." },
-                { id: "FPR-03", description: "P&L Statement Review: Review franchisee's monthly Profit & Loss statement for signs of financial distress.", priority: "High", riskLevel: "High", consequence: "Franchisee failure, loss of future royalties.", proof: "Franchisee-submitted P&L statement.", location: "Finance Dept." },
-                { id: "FPR-04", description: "Cost of Goods Sold (COGS) Analysis: Compare COGS against brand benchmark to identify purchasing or wastage issues.", priority: "Medium", riskLevel: "Medium", consequence: "Reduced franchisee profitability.", proof: "P&L statement and supplier invoices.", location: "Finance Dept." },
-                { id: "FPR-05", description: "Labor Cost Analysis: Compare labor costs as a percentage of sales against benchmark.", priority: "Medium", riskLevel: "Low", consequence: "Inefficient staffing, reduced profitability.", proof: "P&L statement and staff rosters.", location: "Finance Dept." },
-                { id: "FPR-06", description: "Local Marketing Spend: Verify franchisee is meeting local marketing spend requirements as per agreement.", priority: "Low", riskLevel: "Low", consequence: "Underperforming location due to lack of local awareness.", proof: "Marketing invoices and receipts.", location: "Marketing Dept." },
-                { id: "FPR-07", description: "Review of Outstanding Invoices: Check for any overdue payments to the franchisor or approved suppliers.", priority: "High", riskLevel: "Medium", consequence: "Cash flow issues, supplier relationship damage.", proof: "Accounts receivable aging report.", location: "Finance Dept." },
-                { id: "FPR-08", description: "Compliance with Tax Filings: Confirm all necessary tax filings (GST, etc.) are up to date.", priority: "High", riskLevel: "High", consequence: "Legal and financial penalties for both franchisee and potentially franchisor.", proof: "Copies of tax filing receipts.", location: "Finance Dept." }
-            ]
-        },
-        {
-            title: "Health, Safety & Environment (HSE) Audit",
-            department: "Compliance",
-            frequency: "Quarterly",
-            role: "HSE Officer",
-            summary: "Ensures the franchise location is compliant with all local health, safety, and environmental regulations.",
-            icon: "shield-check",
-            tasks: [
-                { id: "HSE-01", description: "Fire Safety: All fire extinguishers and alarms are inspected, tagged, and accessible.", priority: "High", riskLevel: "High", consequence: "Catastrophic fire risk, loss of life, legal action.", proof: "Fire safety logbook, inspection tags.", location: "All Areas" },
-                { id: "HSE-02", description: "First Aid: First aid kits are fully stocked and accessible.", priority: "High", riskLevel: "Medium", consequence: "Inability to treat minor injuries, worsening of medical situations.", proof: "First aid kit checklist.", location: "Staff Area" },
-                { id: "HSE-03", description: "Slip, Trip & Fall Hazards: All floors are clean, dry, and free of obstructions.", priority: "High", riskLevel: "Medium", consequence: "Customer or employee injuries, lawsuits.", proof: "Dated photos of floor areas.", location: "All Areas" },
-                { id: "HSE-04", description: "Electrical Safety: All wiring is secure, no overloaded outlets, and equipment is PAT tested.", priority: "High", riskLevel: "High", consequence: "Risk of electrical shock or fire.", proof: "PAT testing records, visual inspection log.", location: "All Areas" },
-                { id: "HSE-05", description: "Waste Management: Waste is segregated and disposed of according to local regulations.", priority: "Medium", riskLevel: "Medium", consequence: "Fines, environmental damage.", proof: "Waste disposal logs and contractor receipts.", location: "Waste Area" },
-                { id: "HSE-06", description: "Chemical Handling: All cleaning chemicals are correctly labeled and stored in a designated, secure area.", priority: "Medium", riskLevel: "High", consequence: "Chemical burns, poisoning, environmental contamination.", proof: "Photo of chemical storage area.", location: "Storage" },
-                { id: "HSE-07", description: "Emergency Exits: All emergency exit lighting and signage is functional and visible.", priority: "High", riskLevel: "High", consequence: "Failure to evacuate safely during an emergency.", proof: "Emergency light test log.", location: "All Areas" },
-                { id: "HSE-08", description: "Staff Training: Staff have received basic HSE training, including fire evacuation procedures.", priority: "High", riskLevel: "Medium", consequence: "Panic and incorrect response during an emergency.", proof: "Staff training records.", location: "Office" }
-            ]
-        },
-        {
-            title: "IT & Cybersecurity Audit",
+            title: "IT Systems & POS Management",
             department: "IT",
             frequency: "Quarterly",
-            role: "IT Manager",
-            summary: "Verifies that the franchisee's IT systems are secure, compliant, and protected against data breaches.",
-            icon: "lock",
+            role: "IT Support Lead",
+            summary: "Ensures franchisee IT systems are secure, operational, and compliant.",
+            icon: "computer",
             tasks: [
-                { id: "IT-01", description: "POS Security: Point-of-Sale system software is up-to-date and has strong access controls.", priority: "High", riskLevel: "High", consequence: "Financial data theft, PCI-DSS violations.", proof: "POS software version and user access list.", location: "Point of Sale" },
-                { id: "IT-02", description: "Network Security: Wi-Fi network is secure, with separate networks for guest and corporate use.", priority: "High", riskLevel: "High", consequence: "Unauthorized access to corporate network, data breaches.", proof: "Network configuration screenshot.", location: "IT Room" },
-                { id: "IT-03", description: "Data Backup: All critical data (sales, customer info) is backed up daily to a secure, off-site location.", priority: "High", riskLevel: "High", consequence: "Total loss of business data in case of hardware failure or ransomware.", proof: "Backup logs from the last 7 days.", location: "Office" },
-                { id: "IT-04", description: "Antivirus & Malware: Antivirus software is installed and up-to-date on all computers.", priority: "High", riskLevel: "Medium", consequence: "Ransomware infection, system downtime.", proof: "Antivirus console status page.", location: "Office" },
-                { id: "IT-05", description: "Password Policy: All staff are using strong, unique passwords and are required to change them periodically.", priority: "Medium", riskLevel: "Medium", consequence: "Account compromise through weak passwords.", proof: "Review of Active Directory password policy settings.", location: "IT Room" },
-                { id: "IT-06", description: "CCTV System: CCTV cameras are functional, recording, and have adequate storage.", priority: "High", riskLevel: "Medium", consequence: "Inability to provide evidence for theft or incidents.", proof: "Live view and playback test from CCTV recorder.", location: "All Areas" },
-                { id: "IT-07", description: "Physical Security: Server racks and network equipment are in a locked, access-controlled room.", priority: "Medium", riskLevel: "Medium", consequence: "Physical tampering or theft of equipment.", proof: "Photo of locked IT rack/room.", location: "IT Room" },
-                { id: "IT-08", description: "Employee Offboarding: Access for former employees is immediately revoked upon termination.", priority: "High", riskLevel: "High", consequence: "Unauthorized access by disgruntled ex-employees.", proof: "Cross-reference termination list with active user accounts.", location: "HR/IT" }
+                { id: "IT-POS-01", description: "Ensure all locations are using the mandated POS software version.", priority: "High", riskLevel: "High", consequence: "Different versions can lead to data inconsistencies and security vulnerabilities.", proof: "Software Version Report" },
+                { id: "IT-POS-02", description: "Verify that antivirus and security software is installed and updated on all systems.", priority: "High", riskLevel: "High", consequence: "Unprotected systems are vulnerable to malware and ransomware.", proof: "Security Software Dashboard" },
+                { id: "IT-POS-03", description: "Audit POS data for signs of fraudulent activity (e.g., excessive voids, unusual discounts).", priority: "High", riskLevel: "High", consequence: "Internal fraud can go undetected, leading to significant financial loss.", proof: "POS Exception Report" },
+                { id: "IT-POS-04", description: "Ensure franchisees are compliant with data privacy and payment security (PCI DSS) standards.", priority: "High", riskLevel: "High", consequence: "Non-compliance can result in massive fines and loss of payment processing ability.", proof: "Compliance Audit" },
+                { id: "IT-POS-05", description: "Provide a centralized IT helpdesk for franchisee support.", priority: "High", riskLevel: "Medium", consequence: "Without support, franchisees may struggle with technical issues, impacting sales.", proof: "Helpdesk SLA Report" },
+                { id: "IT-POS-06", description: "Manage user access controls for all corporate systems.", priority: "High", riskLevel: "High", consequence: "Unrestricted access can lead to data breaches or unauthorized changes.", proof: "User Access Review" },
+                { id: "IT-POS-07", description: "Ensure regular data backups are being performed.", priority: "High", riskLevel: "High", consequence: "A system failure without backups can lead to total loss of sales and operational data.", proof: "Backup Logs" },
+                { id: "IT-POS-08", description: "Manage the rollout of any new software or hardware to the network.", priority: "High", riskLevel: "High", consequence: "A poorly managed rollout can cause system-wide disruptions.", proof: "Rollout Plan" },
+                { id: "IT-POS-09", description: "Audit franchisees for use of unauthorized software.", priority: "High", riskLevel: "High", consequence: "Unauthorized software can introduce security risks and licensing issues.", proof: "Software Audit Report" },
+                { id: "IT-POS-10", description: "Provide a disaster recovery plan for IT systems.", priority: "High", riskLevel: "High", consequence: "Without a DR plan, a major IT failure can shut down a franchise for an extended period.", proof: "DR Plan" }
             ]
         },
         {
-            title: "Lease & Agreement Compliance",
-            department: "Legal / Real Estate",
+            title: "Health, Safety & Compliance Audit",
+            department: "Compliance",
             frequency: "Annually",
             role: "Compliance Officer",
-            summary: "Ensures the franchisee is compliant with the terms of their lease and franchise agreement.",
-            icon: "file-text",
+            summary: "An annual audit to ensure the franchise is compliant with all legal and safety standards.",
+            icon: "shield-check",
             tasks: [
-                { id: "LAC-01", description: "Verify that insurance coverage (property, liability) meets the minimums required by the franchise agreement.", priority: "High", riskLevel: "High", consequence: "Uncovered losses, legal liability for franchisor.", proof: "Copy of current insurance certificates.", location: "Office" },
-                { id: "LAC-02", description: "Confirm business operating hours are in compliance with lease agreement and local ordinances.", priority: "Low", riskLevel: "Low", consequence: "Lease violation notices.", proof: "Posted hours vs. lease agreement.", location: "Storefront" },
-                { id: "LAC-03", description: "Check for any unauthorized alterations to the premises.", priority: "Medium", riskLevel: "Medium", consequence: "Lease violation, cost of restoration.", proof: "Physical inspection against original approved plans.", location: "All Areas" },
-                { id: "LAC-04", description: "Ensure all signage is in compliance with both brand standards and landlord's criteria.", priority: "Medium", riskLevel: "Low", consequence: "Fines from landlord or authorities.", proof: "Photo of all exterior signage.", location: "Exterior" },
-                { id: "LAC-05", description: "Review any sub-leasing arrangements for compliance with the master lease.", priority: "High", riskLevel: "Medium", consequence: "Breach of master lease, potential eviction.", proof: "Copies of any sub-lease agreements.", location: "Office" },
-                { id: "LAC-06", description: "Confirm renewal deadlines for lease and franchise agreement are noted and planned for.", priority: "High", riskLevel: "High", consequence: "Accidental lapse of lease or franchise rights.", proof: "Review of key dates in agreements.", location: "Office" }
+                { id: "HSC-01", description: "Verify the franchisee holds all required local licenses and permits (e.g., Shop & Establishment, FSSAI).", priority: "High", riskLevel: "High", consequence: "Operating without a license can lead to immediate closure by authorities.", proof: "License and Permit File" },
+                { id: "HSC-02", description: "Inspect for fire safety compliance (extinguishers, exits, alarms).", priority: "High", riskLevel: "High", consequence: "Non-compliance is a major life-safety risk and can invalidate insurance.", proof: "Fire Safety Audit Checklist" },
+                { id: "HSC-03", description: "Check for workplace safety hazards (trip hazards, electrical safety).", priority: "High", riskLevel: "High", consequence: "Can lead to employee or customer injuries and lawsuits.", proof: "Workplace Safety Audit" },
+                { id: "HSC-04", description: "Ensure compliance with all labor laws (e.g., minimum wage, working hours).", priority: "High", riskLevel: "High", consequence: "Labor law violations can result in significant fines and legal battles.", proof: "Labor Law Compliance Audit" },
+                { id: "HSC-05", description: "Verify that staff have received mandatory safety training.", priority: "High", riskLevel: "High", consequence: "Increases the risk of accidents and demonstrates negligence.", proof: "Training Records" },
+                { id: "HSC-06", description: "Check first-aid kits are stocked and accessible.", priority: "High", riskLevel: "Medium", consequence: "Inability to provide basic first aid during an incident.", proof: "First-Aid Kit Log" },
+                { id: "HSC-07", description: "Document all findings and create a corrective action plan with the franchisee.", priority: "High", riskLevel: "High", consequence: "Without a CAPA, compliance issues will not be resolved.", proof: "Compliance Report & CAPA" },
+                { id: "HSC-08", description: "Follow up to ensure all compliance issues are resolved.", priority: "High", riskLevel: "High", consequence: "Allows franchisees to ignore critical safety and legal requirements.", proof: "Follow-up Report" },
+                { id: "HSC-09", description: "Review insurance coverage (public liability, fire, etc.).", priority: "High", riskLevel: "High", consequence: "Inadequate insurance can bankrupt a franchisee after a single incident.", proof: "Insurance Policies" },
+                { id: "HSC-10", description: "Ensure adherence to all brand-specific operational standards.", priority: "High", riskLevel: "High", consequence: "Undermines the entire purpose of the franchise system.", proof: "Operational Audit" }
             ]
         }
     ]
@@ -441,23 +496,23 @@ const restaurants: PremiumPack = {
     ],
     checklists: [
         {
-            title: "Kitchen Opening Checklist (HACCP)",
+            title: "Kitchen Opening Checklist",
             department: "F&B",
             frequency: "Daily",
             role: "Head Chef",
             summary: "Ensures the kitchen is safe, sanitary, and ready for service, complying with HACCP principles.",
             icon: "clipboard-check",
             tasks: [
-                { id: "RO-KO-01", description: "Check and log temperatures of all refrigerators and freezers.", priority: "High", riskLevel: "High", consequence: "Failure can lead to bacterial growth and foodborne illness outbreaks.", proof: "Temp Log" },
-                { id: "RO-KO-02", description: "Ensure separate cutting boards and utensils are used for veg/non-veg prep.", priority: "High", riskLevel: "High", consequence: "Prevents cross-contamination, which can cause severe allergic reactions or food poisoning.", proof: "Visual Audit" },
-                { id: "RO-KO-03", description: "Verify all cleaning chemical bottles are correctly labeled.", priority: "High", riskLevel: "Medium", consequence: "Prevents accidental chemical contamination of food, which can be toxic.", proof: "Visual Check" },
-                { id: "RO-KO-04", description: "Check that all equipment safety guards are in place and functional.", priority: "High", riskLevel: "High", consequence: "Missing guards can lead to severe injuries, amputations, and regulatory fines.", proof: "Equipment Check Log" },
-                { id: "RO-KO-05", description: "Ensure handwash stations are stocked with soap and sanitizer.", priority: "High", riskLevel: "Medium", consequence: "Lack of hand hygiene is a primary cause of foodborne illness transmission.", proof: "Visual Check" },
-                { id: "RO-KO-06", description: "Calibrate food thermometers.", priority: "High", riskLevel: "High", consequence: "Inaccurate readings can lead to serving undercooked, unsafe food.", proof: "Calibration Log" },
-                { id: "RO-KO-07", description: "Check that exhaust hoods and ventilation are working.", priority: "High", riskLevel: "Medium", consequence: "Poor ventilation is a fire risk and creates an unsafe working environment.", proof: "System Check" },
-                { id: "RO-KO-08", description: "Ensure first aid kit is stocked.", priority: "High", riskLevel: "Medium", consequence: "Inability to treat common kitchen injuries like cuts and burns.", proof: "First Aid Kit Log" },
-                { id: "RO-KO-09", description: "Check that the fire suppression system is armed and ready.", priority: "High", riskLevel: "High", consequence: "A failed system can lead to a catastrophic kitchen fire.", proof: "System Check" },
-                { id: "RO-KO-10", description: "Brief the kitchen team on the day's menu and any specials.", priority: "Medium", riskLevel: "Low", consequence: "Lack of communication leads to inconsistency and errors during service.", proof: "Briefing Notes" }
+                { id: "KO-01", description: "Check and log temperatures of all refrigerators and freezers.", priority: "High", riskLevel: "High", consequence: "Failure can lead to bacterial growth and foodborne illness outbreaks.", proof: "Temp Log" },
+                { id: "KO-02", description: "Ensure separate cutting boards and utensils are used for veg/non-veg prep.", priority: "High", riskLevel: "High", consequence: "Prevents cross-contamination, which can cause severe allergic reactions or food poisoning.", proof: "Visual Audit" },
+                { id: "KO-03", description: "Verify all cleaning chemical bottles are correctly labeled.", priority: "High", riskLevel: "Medium", consequence: "Prevents accidental chemical contamination of food, which can be toxic.", proof: "Visual Check" },
+                { id: "KO-04", description: "Check that all equipment safety guards are in place and functional.", priority: "High", riskLevel: "High", consequence: "Missing guards can lead to severe injuries, amputations, and regulatory fines.", proof: "Equipment Check Log" },
+                { id: "KO-05", description: "Ensure handwash stations are stocked with soap and sanitizer.", priority: "High", riskLevel: "Medium", consequence: "Lack of hand hygiene is a primary cause of foodborne illness transmission.", proof: "Visual Check" },
+                { id: "KO-06", description: "Calibrate food thermometers.", priority: "High", riskLevel: "High", consequence: "Inaccurate readings can lead to serving undercooked, unsafe food.", proof: "Calibration Log" },
+                { id: "KO-07", description: "Check that exhaust hoods and ventilation are working.", priority: "High", riskLevel: "Medium", consequence: "Poor ventilation is a fire risk and creates an unsafe working environment.", proof: "System Check" },
+                { id: "KO-08", description: "Ensure first aid kit is stocked.", priority: "High", riskLevel: "Medium", consequence: "Inability to treat common kitchen injuries like cuts and burns.", proof: "First Aid Kit Log" },
+                { id: "KO-09", description: "Check that the fire suppression system is armed and ready.", priority: "High", riskLevel: "High", consequence: "A failed system can lead to a catastrophic kitchen fire.", proof: "System Check" },
+                { id: "KO-10", description: "Brief the kitchen team on the day's menu and any specials.", priority: "Medium", riskLevel: "Low", consequence: "Lack of communication leads to inconsistency and errors during service.", proof: "Briefing Notes" }
             ]
         },
         {
@@ -1165,58 +1220,18 @@ const electronics_showroom_pack: PremiumPack = {
             summary: "Manages customer repairs and warranty claims efficiently and professionally.",
             icon: "wrench",
             tasks: [
-                { id: "WRM-01", description: "Log every repair request with customer details and item serial number.", priority: "High", riskLevel: "High", consequence: "Poor record-keeping can lead to lost items or disputes with customers.", proof: "Repair Log" },
-                { id: "WRM-02", description: "Track the status of all items sent to authorized service centers.", priority: "High", riskLevel: "Medium", consequence: "Inability to provide customers with updates on their repair status.", proof: "Service Center Tracking Sheet" },
-                { id: "WRM-03", description: "Process warranty claims with manufacturers according to their policies.", priority: "High", riskLevel: "High", consequence: "Failure to follow policy can lead to claim rejection and financial loss.", proof: "Warranty Claim Forms" },
-                { id: "WRM-04", description: "Communicate repair status updates to customers.", priority: "High", riskLevel: "Medium", consequence: "Lack of communication is a major source of customer dissatisfaction.", proof: "Communication Log" },
-                { id: "WRM-05", description: "Inspect repaired items before returning them to the customer.", priority: "High", riskLevel: "High", consequence: "Returning an item that is still faulty creates a very poor customer experience.", proof: "Final Inspection Checklist" },
-                { id: "WRM-06", description: "Obtain customer sign-off upon collection of repaired item.", priority: "High", riskLevel: "Medium", consequence: "Protects against later claims that the item was not returned or was still faulty.", proof: "Collection Form" },
-                { id: "WRM-07", description: "Manage inventory of spare parts for common repairs.", priority: "High", riskLevel: "Medium", consequence: "Lack of spares leads to longer repair times.", proof: "Spare Parts Inventory" },
-                { id: "WRM-08", description: "Provide customer with a clear timeline for repairs.", priority: "High", riskLevel: "Low", consequence: "Unclear timelines lead to customer frustration and repeated follow-up calls.", proof: "Repair Estimate Form" },
-                { id: "WRM-09", description: "Process payment for repairs accurately.", priority: "High", riskLevel: "Medium", consequence: "Billing errors can lead to disputes.", proof: "Invoice" },
-                { id: "WRM-10", description: "Log all repair details for warranty and history purposes.", priority: "High", riskLevel: "Medium", consequence: "Provides a valuable service history for the item.", proof: "Service History" }
+                { id: "IT-POS-01", description: "Log every repair request with customer details and item serial number.", priority: "High", riskLevel: "High", consequence: "Poor record-keeping can lead to lost items or disputes with customers.", proof: "Repair Log" },
+                { id: "IT-POS-02", description: "Track the status of all items sent to authorized service centers.", priority: "High", riskLevel: "Medium", consequence: "Inability to provide customers with updates on their repair status.", proof: "Service Center Tracking Sheet" },
+                { id: "IT-POS-03", description: "Process warranty claims with manufacturers according to their policies.", priority: "High", riskLevel: "High", consequence: "Failure to follow policy can lead to claim rejection and financial loss.", proof: "Warranty Claim Forms" },
+                { id: "IT-POS-04", description: "Communicate repair status updates to customers.", priority: "High", riskLevel: "Medium", consequence: "Lack of communication is a major source of customer dissatisfaction.", proof: "Communication Log" },
+                { id: "IT-POS-05", description: "Inspect repaired items before returning them to the customer.", priority: "High", riskLevel: "High", consequence: "Returning an item that is still faulty creates a very poor customer experience.", proof: "Final Inspection Checklist" },
+                { id: "IT-POS-06", description: "Obtain customer sign-off upon collection of repaired item.", priority: "High", riskLevel: "Medium", consequence: "Protects against later claims that the item was not returned or was still faulty.", proof: "Collection Form" },
+                { id: "IT-POS-07", description: "Manage inventory of spare parts for common repairs.", priority: "High", riskLevel: "Medium", consequence: "Lack of spares leads to longer repair times.", proof: "Spare Parts Inventory" },
+                { id: "IT-POS-08", description: "Provide customer with a clear timeline for repairs.", priority: "High", riskLevel: "Low", consequence: "Unclear timelines lead to customer frustration and repeated follow-up calls.", proof: "Repair Estimate Form" },
+                { id: "IT-POS-09", description: "Process payment for repairs accurately.", priority: "High", riskLevel: "Medium", consequence: "Billing errors can lead to disputes.", proof: "Invoice" },
+                { id: "IT-POS-10", description: "Log all repair details for warranty and history purposes.", priority: "High", riskLevel: "Medium", consequence: "Provides a valuable service history for the item.", proof: "Service History" }
             ]
-        },
-        {
-            title: "Stockroom Organization",
-            department: "Inventory",
-            frequency: "Weekly",
-            role: "Stockroom Manager",
-            summary: "Ensures the stockroom is organized for efficiency, safety, and inventory accuracy.",
-            icon: "package",
-            tasks: [
-                { id: "SO-01", description: "Ensure all items are stored in their designated bins or locations.", priority: "High", riskLevel: "Medium", consequence: "A disorganized stockroom makes order picking slow and inefficient.", proof: "Bin Audit" },
-                { id: "SO-02", description: "Keep all aisles and walkways clear of obstructions.", priority: "High", riskLevel: "High", consequence: "Blocked aisles are a major safety hazard and can cause serious injuries.", proof: "Visual Inspection" },
-                { id: "SO-03", description: "Check for any damaged or open boxes and report them.", priority: "High", riskLevel: "Medium", consequence: "Damaged stock leads to financial loss and may be a safety hazard.", proof: "Damage Report" },
-                { id: "SO-04", description: "Implement FIFO (First-In, First-Out) stock rotation.", priority: "High", riskLevel: "Medium", consequence: "Failure to use FIFO can lead to older models becoming obsolete and unsellable.", proof: "Stock Rotation Audit" },
-                { id: "SO-05", description: "Ensure the stockroom is locked and access is restricted.", priority: "High", riskLevel: "High", consequence: "The stockroom is a primary target for internal and external theft.", proof: "Access Log" },
-                { id: "SO-06", description: "Maintain a clean and dust-free environment.", priority: "High", riskLevel: "Medium", consequence: "Dust and dirt can damage sensitive electronic components.", proof: "Cleaning Log" },
-                { id: "SO-07", description: "Check for any pest activity.", priority: "High", riskLevel: "High", consequence: "Pests can chew through wiring and packaging, causing significant damage.", proof: "Pest Control Log" },
-                { id: "SO-08", description: "Ensure proper lighting in all areas of the stockroom.", priority: "High", riskLevel: "Medium", consequence: "Poor lighting increases the risk of accidents and picking errors.", proof: "Lighting Check" },
-                { id: "SO-09", description: "Organize items by brand, category, or SKU for easy picking.", priority: "High", riskLevel: "Medium", consequence: "A logical layout is key to fast and accurate order fulfillment.", proof: "Organization Plan" },
-                { id: "SO-10", description: "Conduct a weekly safety audit of the stockroom.", priority: "High", riskLevel: "High", consequence: "Proactively identifies and mitigates safety risks like unsafe stacking or fire hazards.", proof: "Safety Audit Report" },
-            ]
-        },
-        {
-            title: "Fire Safety Audit",
-            department: "Safety",
-            frequency: "Monthly",
-            role: "Safety Officer",
-            summary: "A monthly check to ensure the facility's fire safety measures are operational and compliant.",
-            icon: "siren",
-            tasks: [
-                { id: "FSA-01", description: "Conduct monthly inspection of all fire extinguishers (pressure, expiry, accessibility).", priority: "High", riskLevel: "High", consequence: "A non-functional extinguisher is useless in a fire.", proof: "Extinguisher Log" },
-                { id: "FSA-02", description: "Test smoke detectors and fire alarms.", priority: "High", riskLevel: "High", consequence: "Failure to get an early warning can be fatal.", proof: "Alarm Test Log" },
-                { id: "FSA-03", description: "Ensure all emergency exits are clear and accessible.", priority: "High", riskLevel: "High", consequence: "A blocked exit can trap people in a fire.", proof: "Exit Inspection Log" },
-                { id: "FSA-04", description: "Check that all staff are trained on fire evacuation procedures.", priority: "High", riskLevel: "High", consequence: "Untrained staff can cause panic and confusion during an evacuation.", proof: "Training Records" },
-                { id: "FSA-05", description: "Maintain a log of all fire safety audits for regulatory inspection.", priority: "High", riskLevel: "High", consequence: "Failure to produce records can lead to fines and legal action.", proof: "Master Audit File" },
-                { id: "FSA-06", description: "Check emergency lighting functionality.", priority: "High", riskLevel: "High", consequence: "In a power outage during a fire, this is the only way to see the exit path.", proof: "Lighting Test Log" },
-                { id: "FSA-07", description: "Ensure fire safety signage is visible and correct.", priority: "High", riskLevel: "High", consequence: "People will not know where to go in an emergency.", proof: "Signage Audit" },
-                { id: "FSA-08", description: "Conduct a fire drill at least once every six months.", priority: "High", riskLevel: "High", consequence: "Drills are essential for ensuring the evacuation plan actually works.", proof: "Drill Report" },
-                { id: "FSA-09", description: "Ensure sprinkler system is inspected annually by a certified vendor.", priority: "High", riskLevel: "High", consequence: "The primary fire suppression system must be reliable.", proof: "Vendor Certificate" },
-                { id: "FSA-10", description: "Review and update the fire emergency plan annually.", priority: "High", riskLevel: "High", consequence: "An outdated plan can be ineffective.", proof: "Updated Plan" },
-            ]
-        },
+        }
     ]
 };
 
@@ -1251,16 +1266,16 @@ const supermarket_grocery_retail_pack: PremiumPack = {
             summary: "Ensures the freshness and safety of all temperature-sensitive products.",
             icon: "thermometer",
             tasks: [
-                { id: "SC-COLD-01", description: "Log temperatures of all chillers and freezers twice daily.", priority: "High", riskLevel: "High", consequence: "A temperature failure can lead to rapid bacterial growth, causing food spoilage, waste, and severe foodborne illness outbreaks.", proof: "Temperature Log" },
+                { id: "SC-COLD-01", description: "Log temperatures of all refrigerators and freezers twice daily.", priority: "High", riskLevel: "High", consequence: "Failure to monitor can lead to bacterial growth and foodborne illness outbreaks.", proof: "Temperature Log" },
                 { id: "SC-COLD-02", description: "Verify functionality of temperature alarms weekly.", priority: "High", riskLevel: "High", consequence: "A non-functional alarm means a temperature failure can go unnoticed for hours, leading to catastrophic inventory loss.", proof: "Alarm Test Log" },
                 { id: "SC-COLD-03", description: "Check door seals on all refrigerated units daily.", priority: "High", riskLevel: "Medium", consequence: "Damaged seals lead to energy waste and make it harder to maintain safe temperatures, increasing operational costs and spoilage risk.", proof: "Visual Inspection" },
                 { id: "SC-COLD-04", description: "Ensure backup power for cold storage is tested weekly.", priority: "High", riskLevel: "High", consequence: "During a power outage, failure of backup power can result in the loss of all perishable inventory, a major financial blow.", proof: "Generator Test Log" },
                 { id: "SC-COLD-05", description: "Document any temperature excursions and the corrective actions taken.", priority: "High", riskLevel: "High", consequence: "Lack of documentation makes it impossible to prove due diligence during a health inspection or trace the cause of a spoilage event.", proof: "Corrective Action Report" },
                 { id: "SC-COLD-06", description: "Ensure goods are moved to cold storage immediately upon receipt.", priority: "High", riskLevel: "High", consequence: "Delays break the cold chain, promoting bacterial growth.", proof: "Receiving Log" },
-                { id: "SC-COLD-07", description: "Clean and sanitize all refrigerated units weekly.", priority: "High", riskLevel: "High", consequence: "Prevents mold, bacteria buildup, and cross-contamination.", proof: "Cleaning Log" },
-                { id: "SC-COLD-08", description: "Do not overload refrigerated units to allow for proper air circulation.", priority: "High", riskLevel: "Medium", consequence: "Overloading creates \"hot spots\" where food can spoil.", proof: "Visual Check" },
-                { id: "SC-COLD-09", description: "Train staff on cold chain management procedures.", priority: "High", riskLevel: "Medium", consequence: "Untrained staff may unknowingly break the cold chain protocols.", proof: "Training Records" },
-                { id: "SC-COLD-10", description: "Calibrate thermometers quarterly.", priority: "High", riskLevel: "High", consequence: "Inaccurate thermometers give a false sense of safety.", proof: "Calibration Certificates" }
+                { id: "SC-COLD-07", description: "Clean and sanitize all refrigerated units weekly.", priority: "High", riskLevel: "Low", consequence: "Poor air quality, increased energy consumption, system failure.", proof: "Public area cleaning log." },
+                { id: "SC-COLD-08", description: "Do not overload refrigerated units to allow for proper air circulation.", priority: "High", riskLevel: "Medium", consequence: "Overloading creates 'hot spots' where food can spoil.", proof: "Pump performance log." },
+                { id: "SC-COLD-09", description: "Train staff on cold chain management procedures.", priority: "High", riskLevel: "Medium", consequence: "Poor performance log.", proof: "Photo of refrigerator storage arrangement." },
+                { id: "SC-COLD-10", description: "Calibrate thermometers quarterly.", priority: "High", riskLevel: "High", consequence: "Inaccurate thermometers give a false sense of safety.", proof: "Thermometer Calibration Log." }
             ]
         },
         {
@@ -1275,7 +1290,7 @@ const supermarket_grocery_retail_pack: PremiumPack = {
                 { id: "SC-FIFO-02", description: "Ensure First-In, First-Out (FIFO) rotation during shelf replenishment.", priority: "High", riskLevel: "High", consequence: "Failure to rotate stock is a primary cause of food wastage and selling expired products.", proof: "Supervisor Audit" },
                 { id: "SC-FIFO-03", description: "Follow markdown or quarantine procedures for near-expiry items.", priority: "High", riskLevel: "Medium", consequence: "Reduces financial loss from unsold expired goods.", proof: "Markdown Log" },
                 { id: "SC-FIFO-04", description: "Remove and log all expired products from shelves immediately.", priority: "High", riskLevel: "High", consequence: "Leaving expired products on shelves poses a direct risk to consumer health.", proof: "Expired Goods Log" },
-                { id: "SC-FIFO-05", description: "Train staff on how to read and interpret expiry date codes.", priority: "High", riskLevel: "Medium", consequence: "Staff may misinterpret codes and leave expired products on the shelf.", proof: "Training Record" },
+                { id: "SC-FIFO-05", description: "Train staff on how to read and interpret expiry date codes.", priority: "High", riskLevel: "Medium", consequence: "Staff may misinterpret codes and leave expired products on the shelf.", proof: "Training Log" },
                 { id: "SC-FIFO-06", description: "Donate or dispose of expired goods according to policy.", priority: "High", riskLevel: "Medium", consequence: "Improper disposal can lead to legal issues or brand damage.", proof: "Donation/Disposal Log" },
                 { id: "SC-FIFO-07", description: "Audit stockroom for FIFO compliance weekly.", priority: "High", riskLevel: "High", consequence: "Ensures older stock is moved to the front line.", proof: "Stockroom Audit Log" },
                 { id: "SC-FIFO-08", description: "Review reports on expired goods to identify purchasing issues.", priority: "High", riskLevel: "Medium", consequence: "Helps to adjust order quantities and prevent future over-ordering.", proof: "Analysis Report" },
@@ -1285,42 +1300,42 @@ const supermarket_grocery_retail_pack: PremiumPack = {
         },
         {
             title: "Store Cleaning & Spill Response",
-            department: "Housekeeping",
+            department: "Hygiene",
             frequency: "Hourly",
             role: "Housekeeping Staff",
             summary: "A protocol to maintain a clean, safe, and welcoming store environment.",
-            icon: "spray-can",
+            icon: "sparkles",
             tasks: [
                 { id: "SC-CLEAN-01", description: "Perform and log hourly checks of all aisles for spills or hazards.", priority: "High", riskLevel: "High", consequence: "A liquid spill is a major slip-and-fall hazard, leading to customer injuries and lawsuits.", proof: "Aisle Check Log" },
                 { id: "SC-CLEAN-02", description: "Deploy \"Wet Floor\" signs immediately for any spills.", priority: "High", riskLevel: "High", consequence: "Failure to warn customers is a major point of legal liability.", proof: "CCTV Footage" },
                 { id: "SC-CLEAN-03", description: "Log all spill incidents with time, location, and cleanup action.", priority: "High", riskLevel: "Medium", consequence: "Provides a legal record of due diligence in case of a lawsuit.", proof: "Spill Incident Log" },
                 { id: "SC-CLEAN-04", description: "Inspect and clean restrooms hourly.", priority: "High", riskLevel: "Medium", consequence: "Dirty restrooms are a major source of customer complaints and reflect poorly on the store.", proof: "Restroom Cleaning Log" },
-                { id: "SC-CLEAN-05", description: "Ensure cleaning equipment is sanitized and stored correctly.", priority: "Medium", riskLevel: "Low", consequence: "Dirty equipment can spread germs instead of cleaning.", proof: "Storage Inspection" },
-                { id: "SC-CLEAN-06", description: "Deep clean high-traffic areas daily after closing.", priority: "High", riskLevel: "Medium", consequence: "Prevents gradual buildup of dirt and grime.", proof: "Deep Clean Log" },
-                { id: "SC-CLEAN-07", description: "Check and empty all trash bins regularly.", priority: "High", riskLevel: "Low", consequence: "Overflowing bins are unsightly and can attract pests.", proof: "Waste Bin Check" },
-                { id: "SC-CLEAN-08", description: "Sanitize shopping carts and baskets daily.", priority: "High", riskLevel: "Medium", consequence: "Carts and baskets are high-touch surfaces that can spread germs.", proof: "Sanitization Log" },
-                { id: "SC-CLEAN-09", description: "Use correct cleaning chemicals for different surfaces.", priority: "High", riskLevel: "Medium", consequence: "Using the wrong chemicals can damage surfaces or be ineffective.", proof: "Chemical Usage Log" },
-                { id: "SC-CLEAN-10", description: "Train staff on spill response procedures.", priority: "High", riskLevel: "High", consequence: "A slow or improper response increases the risk of accidents.", proof: "Training Records" }
+                { id: "SC-CLEAN-05", description: "Ensure cleaning equipment is sanitized and stored correctly.", priority: "Medium", riskLevel: "Low", consequence: "Equipment check log.", proof: "Thermal imaging report." },
+                { id: "SC-CLEAN-06", description: "Deep clean floors and drains weekly.", priority: "High", riskLevel: "Medium", consequence: "Blocked grease traps can cause foul odors and drainage blockages.", proof: "Manager's report on the incident." },
+                { id: "SC-CLEAN-07", description: "Check and empty all trash bins regularly.", priority: "High", riskLevel: "Medium", consequence: "Pest attraction and odor issues.", proof: "Pest Control Logbook." },
+                { id: "SC-CLEAN-08", description: "Sanitize shopping carts and baskets daily.", priority: "High", riskLevel: "Medium", consequence: "Risk of chemical contamination of food.", proof: "Photo of chemical storage cabinet." },
+                { id: "SC-CLEAN-09", description: "Use correct cleaning chemicals for different surfaces.", priority: "High", riskLevel: "Medium", consequence: "Untrained staff can escalate a simple dispute into a major customer service failure.", proof: "Customer's statement." },
+                { id: "SC-CLEAN-10", description: "Train staff on spill response procedures.", priority: "High", riskLevel: "High", consequence: "The organization does not learn from its mistakes.", proof: "Minutes of team briefing or training session." }
             ]
         },
         {
             title: "Inbound Supplier QC",
             department: "Receiving",
             frequency: "Per Delivery",
-            role: "Receiving Clerk",
+            role: "Storekeeper",
             summary: "A checklist to ensure all incoming goods meet quality and safety standards.",
             icon: "package-check",
             tasks: [
-                { id: "SC-INBOUND-01", description: "Verify delivery quantity and items against the Purchase Order (PO).", priority: "High", riskLevel: "High", consequence: "Accepting incorrect quantities leads to inventory errors and financial discrepancies.", proof: "Signed Delivery Note" },
-                { id: "SC-INBOUND-02", description: "Check batch numbers and expiry dates of all incoming products.", priority: "High", riskLevel: "High", consequence: "Accepting near-expiry goods leads to increased waste and potential safety issues.", proof: "Receiving Log" },
-                { id: "SC-INBOUND-03", description: "Quarantine and document any non-conforming or damaged products.", priority: "High", riskLevel: "High", consequence: "Allowing damaged goods into stock leads to selling unsafe or low-quality products.", proof: "Quarantine Report" },
-                { id: "SC-INBOUND-04", description: "Check temperature of chilled and frozen goods on arrival.", priority: "High", riskLevel: "High", consequence: "Accepting a delivery that has broken the cold chain is a critical food safety failure.", proof: "Inbound Temperature Log" },
-                { id: "SC-INBOUND-05", description: "Inspect packaging for signs of pest activity or tampering.", priority: "High", riskLevel: "High", consequence: "Can introduce a pest infestation into the store.", proof: "Visual Inspection Log" },
-                { id: "SC-INBOUND-06", description: "Reject deliveries that do not meet quality standards.", priority: "High", riskLevel: "High", consequence: "The receiving dock is the first and most important line of defense for quality.", proof: "Rejection Note" },
-                { id: "SC-INBOUND-07", description: "Verify FSSAI license and other required documents from supplier.", priority: "High", riskLevel: "High", consequence: "Using an unlicensed supplier is a major legal and safety risk.", proof: "Document Check" },
-                { id: "SC-INBOUND-08", description: "Update inventory system upon receipt of goods.", priority: "High", riskLevel: "High", consequence: "Delays in updating lead to inaccurate stock levels and potential stockouts.", proof: "System Entry Log" },
-                { id: "SC-INBOUND-09", description: "Clean receiving area after each delivery.", priority: "High", riskLevel: "Medium", consequence: "A dirty receiving area can attract pests and lead to contamination.", proof: "Cleaning Log" },
-                { id: "SC-INBOUND-10", description: "Report any discrepancies to the procurement team.", priority: "High", riskLevel: "High", consequence: "Allows procurement to address issues with the supplier.", proof: "Discrepancy Report" }
+                { id: "RM-01", description: "Verify vendor FSSAI license is valid.", priority: "High", riskLevel: "High", consequence: "Using ingredients from an unlicensed vendor is a major legal violation.", proof: "Vendor File" },
+                { id: "RM-02", description: "Inspect delivery vehicle for cleanliness and temperature control.", priority: "High", riskLevel: "High", consequence: "A dirty or warm truck can contaminate the entire delivery.", proof: "Vehicle Inspection Log" },
+                { id: "RM-03", description: "Check temperature of perishable goods upon arrival.", priority: "High", riskLevel: "High", consequence: "Accepting goods outside the safe temperature range is a major food safety risk.", proof: "Temperature Log" },
+                { id: "RM-04", description: "Reject and document any items that do not meet quality standards.", priority: "High", riskLevel: "High", consequence: "Accepting sub-par ingredients leads to a sub-par final product.", proof: "Rejection Note" },
+                { id: "RM-05", description: "Ensure goods are moved to appropriate storage immediately after receipt.", priority: "High", riskLevel: "Medium", consequence: "Leaving perishable items in the 'danger zone' allows bacteria to grow.", proof: "CCTV review" },
+                { id: "RM-06", description: "Check for signs of pests in packaging.", priority: "High", riskLevel: "High", consequence: "Can introduce a pest infestation into your facility.", proof: "Visual Inspection Log" },
+                { id: "RM-07", description: "Verify that packaging is intact and not damaged.", priority: "High", riskLevel: "High", consequence: "Damaged packaging can lead to contamination.", proof: "Visual Check" },
+                { id: "RM-08", description: "Match the delivery challan with the purchase order.", priority: "High", riskLevel: "High", consequence: "Prevents incorrect deliveries and billing errors.", proof: "Document Match" },
+                { id: "RM-09", description: "Check the 'best before' or expiry dates of all products.", priority: "High", riskLevel: "High", consequence: "Accepting near-expiry goods leads to waste and potential safety issues.", proof: "Date Check Log" },
+                { id: "RM-10", description: "Record all received goods in the inventory system.", priority: "High", riskLevel: "High", consequence: "Inaccurate receiving leads to incorrect inventory levels.", proof: "System Entry" }
             ]
         },
         {
@@ -1333,34 +1348,14 @@ const supermarket_grocery_retail_pack: PremiumPack = {
             tasks: [
                 { id: "SC-POS-01", description: "Ensure all POS receipts have a clear timestamp.", priority: "High", riskLevel: "Medium", consequence: "Required for handling customer disputes and returns accurately.", proof: "Sample Receipt" },
                 { id: "SC-POS-02", description: "Require manager sign-off for all voided transactions or high-value refunds.", priority: "High", riskLevel: "High", consequence: "A key control to prevent internal theft through fraudulent voids/refunds.", proof: "Void/Refund Log" },
-                { id: "SC-POS-03", description: "Verify CCTV cameras at billing lanes are operational and have a clear view.", priority: "High", riskLevel: "High", consequence: "Provides critical evidence in case of cash disputes, theft, or scams.", proof: "CCTV Check Log" },
+                { id: "SC-POS-03", description: "Verify CCTV cameras at billing lanes are operational and have a clear view.", priority: "High", riskLevel: "High", consequence: "Provides crucial evidence in case of cash disputes, theft, or scams.", proof: "CCTV Check Log" },
                 { id: "SC-POS-04", description: "Reconcile each cash drawer at the end of every shift.", priority: "High", riskLevel: "High", consequence: "The only way to accurately track cash and identify shortages or overages.", proof: "Shift Reconciliation Report" },
-                { id: "SC-POS-05", description: "Check for any signs of tampering on card payment devices.", priority: "High", riskLevel: "High", consequence: "Criminals can install skimmers to steal customer card data, leading to massive liability.", proof: "Device Inspection Log" },
+                { id: "SC-POS-05", description: "Check for any signs of tampering on card payment devices.", priority: "High", riskLevel: "High", consequence: "Criminals can install skimmers to steal customer card data.", proof: "Device Inspection Log" },
                 { id: "SC-POS-06", description: "Securely store cash in a safe.", priority: "High", riskLevel: "High", consequence: "Leaving cash in the till overnight is a major theft risk.", proof: "Safe Log" },
-                { id: "SC-POS-07", description: "Use counterfeit detection for large cash transactions.", priority: "High", riskLevel: "High", consequence: "Accepting fake currency is a direct financial loss.", proof: "Counterfeit Check" },
+                { id: "SC-POS-07", description: "Use counterfeit detection for all large cash transactions.", priority: "High", riskLevel: "High", consequence: "Accepting fake currency is a direct financial loss.", proof: "Counterfeit Check" },
                 { id: "SC-POS-08", description: "Train cashiers on fraud prevention techniques.", priority: "High", riskLevel: "High", consequence: "Untrained cashiers are easy targets for common retail scams.", proof: "Training Records" },
-                { id: "SC-POS-09", description: "Limit cash in drawers to a minimum amount.", priority: "High", riskLevel: "High", consequence: "Reduces the potential loss in case of a till-snatch or robbery.", proof: "Cash Limit Policy" },
-                { id: "SC-POS-10", description: "Investigate cash discrepancies immediately.", priority: "High", riskLevel: "High", consequence: "A small, unresolved discrepancy can be an indicator of a larger, ongoing theft problem.", proof: "Investigation Report" }
-            ]
-        },
-        {
-            title: "Weighing Scale Calibration",
-            department: "Operations",
-            frequency: "Daily/Scheduled",
-            role: "Department Manager",
-            summary: "A compliance checklist to ensure all weighing scales are accurate and legally compliant.",
-            icon: "scale",
-            tasks: [
-                { id: "WSC-01", description: "Perform a daily zero-check on all weighing scales before use.", priority: "High", riskLevel: "High", consequence: "An uncalibrated scale can lead to overcharging or undercharging customers, a major legal violation.", proof: "Daily Check Log" },
-                { id: "WSC-02", description: "Schedule and document annual calibration by a certified vendor.", priority: "High", riskLevel: "High", consequence: "This is a mandatory legal requirement under the Legal Metrology Act.", proof: "Calibration Certificate" },
-                { id: "WSC-03", description: "Ensure the calibration certificate is displayed near the scale.", priority: "High", riskLevel: "Medium", consequence: "Provides transparency to customers and proof of compliance to inspectors.", proof: "Visual Check" },
-                { id: "WSC-04", description: "Train staff on correct usage and cleaning of scales.", priority: "High", riskLevel: "Medium", consequence: "Improper use can damage the scales or lead to inaccurate readings.", proof: "Training Log" },
-                { id: "WSC-05", description: "Immediately remove any malfunctioning scale from service and label it.", priority: "High", riskLevel: "High", consequence: "Using a faulty scale is a serious legal violation.", proof: "Out of Service Log" },
-                { id: "WSC-06", description: "Keep scales clean and free of debris.", priority: "High", riskLevel: "Medium", consequence: "Debris can affect the accuracy of the weight.", proof: "Cleaning Log" },
-                { id: "WSC-07", description: "Verify scale accuracy with standard weights weekly.", priority: "High", riskLevel: "High", consequence: "Provides an internal check on the scale's accuracy between official calibrations.", proof: "Weight Check Log" },
-                { id: "WSC-08", description: "Ensure scales are on a level surface.", priority: "High", riskLevel: "Medium", consequence: "An unlevel surface will produce inaccurate readings.", proof: "Visual Check" },
-                { id: "WSC-09", description: "Protect scales from physical damage.", priority: "High", riskLevel: "Medium", consequence: "Damage can affect accuracy and require costly repairs.", proof: "Visual Check" },
-                { id: "WSC-10", description: "Comply with all Legal Metrology regulations.", priority: "High", riskLevel: "High", consequence: "Non-compliance can lead to heavy fines and store closure.", proof: "Compliance Audit" }
+                { id: "SC-POS-09", description: "Limit cash in drawers to a minimum amount.", priority: "High", riskLevel: "High", consequence: "Minimizes the potential loss during a till snatch or robbery.", proof: "Cash Limit Policy" },
+                { id: "SC-POS-10", description: "Investigate any cash shortages or overages immediately.", priority: "High", riskLevel: "High", consequence: "A small discrepancy could be an indicator of a larger, ongoing theft problem.", proof: "Investigation Report" }
             ]
         },
         {
@@ -1371,36 +1366,16 @@ const supermarket_grocery_retail_pack: PremiumPack = {
             summary: "HACCP-based checks for in-store bakeries and hot food counters.",
             icon: "utensils",
             tasks: [
-                { id: "BHF-01", description: "Log temperatures of hot holding units every 2 hours.", priority: "High", riskLevel: "High", consequence: "Food held below 60°C can enter the temperature \"danger zone\" and grow harmful bacteria.", proof: "Temperature Log" },
-                { id: "BHF-02", description: "Trace all ingredients used back to their source batch.", priority: "High", riskLevel: "High", consequence: "In case of a food poisoning complaint, traceability is essential to identify the source.", proof: "Ingredient Traceability Log" },
-                { id: "BHF-03", description: "Use separate equipment for raw and cooked food preparation.", priority: "High", riskLevel: "High", consequence: "Prevents cross-contamination, a leading cause of foodborne illness.", proof: "Visual Audit" },
-                { id: "BHF-04", description: "Discard any food held below the safe temperature for more than 2 hours.", priority: "High", riskLevel: "High", consequence: "Serving this food is a major health risk.", proof: "Discard Log" },
-                { id: "BHF-05", description: "Ensure staff follow correct handwashing and glove usage protocols.", priority: "High", riskLevel: "High", consequence: "Poor hygiene is a primary vector for spreading pathogens.", proof: "Hygiene Audit" },
-                { id: "BHF-06", description: "Label all prepared foods with preparation time and date.", priority: "High", riskLevel: "High", consequence: "Ensures that older food is used or discarded first.", proof: "Label Check" },
-                { id: "BHF-07", description: "Clean and sanitize all surfaces and equipment after use.", priority: "High", riskLevel: "High", consequence: "Prevents buildup of bacteria and allergens.", proof: "Cleaning Log" },
-                { id: "BHF-08", description: "Check for allergens and provide clear labeling.", priority: "High", riskLevel: "High", consequence: "Undeclared allergens can cause severe reactions in sensitive customers.", proof: "Allergen Label Audit" },
-                { id: "BHF-09", description: "Calibrate food thermometers daily.", priority: "High", riskLevel: "High", consequence: "Inaccurate thermometers give a false sense of food safety.", proof: "Calibration Log" },
-                { id: "BHF-10", description: "Train staff on food safety procedures.", priority: "High", riskLevel: "High", consequence: "Untrained staff are a major liability in any food handling environment.", proof: "Training Records" }
-            ]
-        },
-        {
-            title: "Loss Prevention & Security Audit",
-            department: "Security",
-            frequency: "Daily",
-            role: "Loss Prevention Officer",
-            summary: "A checklist to deter theft and reduce shrinkage.",
-            icon: "shield",
-            tasks: [
-                { id: "LP-AUDIT-01", description: "Review CCTV footage of cash counters and entry/exit points.", priority: "High", riskLevel: "High", consequence: "Helps identify internal fraud, sweethearting, and external theft.", proof: "CCTV Review Log" },
-                { id: "LP-AUDIT-02", description: "Test EAS gates at opening and closing.", priority: "High", riskLevel: "High", consequence: "A non-functional EAS system removes a key layer of theft deterrence.", proof: "EAS Test Log" },
-                { id: "LP-AUDIT-03", description: "Conduct random bag checks for staff exiting the store.", priority: "High", riskLevel: "High", consequence: "A necessary deterrent against employee theft.", proof: "Bag Check Log" },
-                { id: "LP-AUDIT-04", description: "Monitor high-theft categories (e.g., cosmetics, electronics) more frequently.", priority: "High", riskLevel: "High", consequence: "Proactive monitoring can deter organized shoplifting gangs.", proof: "Aisle Patrol Log" },
-                { id: "LP-AUDIT-05", description: "Ensure all fire exits are alarmed and monitored.", priority: "High", riskLevel: "High", consequence: "Unmonitored fire exits are a common route for large-scale theft.", proof: "Alarm System Check" },
-                { id: "LP-AUDIT-06", description: "Audit for empty packaging on shelves.", priority: "High", riskLevel: "High", consequence: "A common sign of theft where the product has been removed and the packaging left behind.", proof: "Empty Package Log" },
-                { id: "LP-AUDIT-07", description: "Secure and monitor the receiving bay to prevent collusion.", priority: "High", riskLevel: "High", consequence: "Collusion between delivery drivers and receiving staff is a major source of shrinkage.", proof: "Receiving Bay Audit" },
-                { id: "LP-AUDIT-08", description: "Train staff on identifying and reporting suspicious activity.", priority: "High", riskLevel: "High", consequence: "Staff are the eyes and ears of the store; they must be empowered to report issues.", proof: "Training Records" },
-                { id: "LP-AUDIT-09", description: "Analyze POS data for fraudulent trends (e.g., excessive voids, returns).", priority: "High", riskLevel: "High", consequence: "Data analysis can uncover sophisticated internal fraud schemes.", proof: "POS Data Analysis" },
-                { id: "LP-AUDIT-10", description: "Maintain a log of all security incidents and actions taken.", priority: "High", riskLevel: "High", consequence: "Provides a legal record and helps in identifying repeat offenders and security weaknesses.", proof: "Incident Logbook" }
+                { id: "REST-10", description: "Log completion of daily surface sanitization.", priority: "High", riskLevel: "High", consequence: "Buildup of bacteria on surfaces can lead to cross-contamination.", proof: "Daily Cleaning Log" },
+                { id: "WP-09", description: "Perform and log weekly deep clean of kitchen hoods and ducts.", priority: "High", riskLevel: "High", consequence: "Grease buildup in hoods is a major fire hazard.", proof: "Weekly Deep Clean Log" },
+                { id: "WP-08", description: "Review and file monthly pest control vendor report.", priority: "High", riskLevel: "High", consequence: "Pest infestations can lead to closure by health authorities and massive brand damage.", proof: "Vendor Report" },
+                { id: "WP-07", description: "Check and clean grease traps weekly.", priority: "High", riskLevel: "Medium", consequence: "Blocked grease traps can cause foul odors and drainage blockages.", proof: "Grease Trap Log" },
+                { id: "WP-06", description: "Ensure waste bins are emptied and sanitized daily.", priority: "High", riskLevel: "Medium", consequence: "Overflowing bins attract pests and create unsanitary conditions.", proof: "Waste Management Log" },
+                { id: "WP-05", description: "Sanitize all food contact surfaces between tasks.", priority: "High", riskLevel: "High", consequence: "Prevents cross-contamination between different food types.", proof: "Visual Audit" },
+                { id: "WP-04", description: "Deep clean floors and drains weekly.", priority: "High", riskLevel: "Medium", consequence: "Dirty floors and drains can harbor bacteria and attract pests.", proof: "Floor Cleaning Log" },
+                { id: "WP-03", description: "Clean and descale dishwashers monthly.", priority: "High", riskLevel: "Medium", consequence: "Ensures dishes are being sanitized at the correct temperature.", proof: "Dishwasher Log" },
+                { id: "WP-02", description: "Check that cleaning chemicals are stored safely and correctly.", priority: "High", riskLevel: "High", consequence: "Improper storage can lead to chemical contamination of food.", proof: "Chemical Store Audit" },
+                { id: "WP-01", description: "Train staff on correct cleaning procedures and chemical use.", priority: "High", riskLevel: "High", consequence: "Improper use of chemicals can be ineffective or dangerous.", proof: "Training Log" }
             ]
         }
     ]
@@ -1452,11 +1427,11 @@ const facility_management_blueprint: PremiumPack = {
             department: "Engineering",
             frequency: "Weekly/Monthly",
             role: "Chief Engineer",
-            summary: "A scheduled checklist for maintaining critical Mechanical, Electrical, and Plumbing systems.",
+            summary: "Scheduled maintenance for Mechanical, Electrical, and Plumbing systems to prevent failures and ensure guest comfort and safety.",
             icon: "wrench",
             tasks: [
-                { id: "FMB-MEP-01", description: "HVAC: Inspect and clean/replace filters on all Air Handling Units (AHUs).", priority: "High", riskLevel: "Medium", consequence: "Poor air quality, increased energy costs, system failure.", proof: "Signed maintenance log for each AHU." },
-                { id: "FMB-MEP-02", description: "Electrical: Test backup generator under load for at least 30 minutes.", priority: "High", riskLevel: "High", consequence: "Business shutdown during a power outage.", proof: "Generator test log with load readings." },
+                { id: "FMB-MEP-01", description: "Inspect and clean HVAC filters for all major air handling units (AHUs).", priority: "High", riskLevel: "Medium", consequence: "Poor air quality, increased energy costs, system failure.", proof: "Signed maintenance log for each AHU." },
+                { id: "FMB-MEP-02", description: "Test backup generator under load for at least 30 minutes.", priority: "High", riskLevel: "High", consequence: "Business shutdown during a power outage.", proof: "Generator test log with load readings." },
                 { id: "FMB-MEP-03", description: "Electrical: Test UPS systems and verify battery health.", priority: "High", riskLevel: "High", consequence: "Data corruption/loss in data centers during power flicker.", proof: "UPS test report." },
                 { id: "FMB-MEP-04", description: "Plumbing: Check and test all water pumps (booster, transfer, sump).", priority: "Medium", riskLevel: "Medium", consequence: "No water supply, flooding.", proof: "Pump test log." },
                 { id: "FMB-MEP-05", description: "Fire Safety: Test a sample of fire alarm call points, sprinklers (flow switch), and smoke detectors.", priority: "High", riskLevel: "High", consequence: "Fire detection/suppression system failure.", proof: "Fire alarm test report." },
@@ -1496,7 +1471,7 @@ const facility_management_blueprint: PremiumPack = {
             icon: "shield-check",
             tasks: [
                 { id: "FMB-PSA-01", description: "Perimeter Audit: Walk the entire facility perimeter to check for breaches in fences/walls.", priority: "High", riskLevel: "High", consequence: "Unauthorized entry.", proof: "Perimeter patrol log." },
-                { id: "FMB-PSA-02", description: "CCTV Audit: Verify all cameras are recording, have clear views, and have adequate storage.", priority: "High", riskLevel: "High", consequence: "Inability to investigate incidents.", proof: "CCTV health check report." },
+                { id: "FMB-PSA-02", description: "CCTV Audit: Verify all cameras are recording, have clear views, and adequate storage.", priority: "High", riskLevel: "High", consequence: "Inability to investigate incidents.", proof: "CCTV health check report." },
                 { id: "FMB-PSA-03", description: "Access Control Audit: Review access logs for sensitive areas (e.g., server rooms) for unauthorized entries.", priority: "High", riskLevel: "High", consequence: "Data theft, sabotage.", proof: "Access control log audit report." },
                 { id: "FMB-PSA-04", description: "Visitor Management: Audit visitor logs to ensure all visitors were signed in, issued a badge, and escorted.", priority: "Medium", riskLevel: "Medium", consequence: "Unauthorized individuals on premises.", proof: "Sample audit of visitor logs." },
                 { id: "FMB-PSA-05", description: "Key Management: Audit the key register to ensure all keys are accounted for.", priority: "High", riskLevel: "High", consequence: "Lost keys can compromise entire facility.", proof: "Key register audit sign-off." },
@@ -1905,104 +1880,24 @@ const school_operations_pack: PremiumPack = {
                 { id: "SOP-CL-08", description: "Verify that emergency evacuation maps are posted in every classroom and lab.", priority: "Medium", riskLevel: "Low", consequence: "Confusion during an evacuation.", proof: "Visual check." }
             ]
         },
-        {
+         {
             title: "Staff Hiring & Verification",
-            department: "HR",
+            department: "HR/Hygiene",
             frequency: "Per Hire",
-            role: "HR Manager",
-            summary: "A legally compliant process for hiring safe and qualified staff.",
+            role: "Hygiene Officer",
+            summary: "Ensures all food handlers meet strict hygiene standards and are well-trained in food safety.",
             icon: "user-check",
             tasks: [
-                { id: "SHV-01", description: "Conduct mandatory police verification for all new staff.", priority: "High", riskLevel: "High", consequence: "Hiring individuals with a criminal record.", proof: "Police Verification Report" },
-                { id: "SHV-02", description: "Perform at least two professional reference checks.", priority: "High", riskLevel: "High", consequence: "Missing red flags from previous employers.", proof: "Reference Check Forms" },
-                { id: "SHV-03", description: "Verify educational qualifications and past employment.", priority: "High", riskLevel: "High", consequence: "Hiring unqualified staff.", proof: "Verification Report" },
-                { id: "SHV-04", description: "Conduct a medical fitness check for all new hires.", priority: "High", riskLevel: "Medium", consequence: "Hiring someone unfit for the job.", proof: "Medical Report" },
-                { id: "SHV-05", description: "Ensure all new staff sign the child protection policy.", priority: "High", riskLevel: "High", consequence: "Lack of legal acknowledgement of child safety rules.", proof: "Signed Policy" },
-                { id: "SHV-06", description: "Provide a formal induction and training on school policies.", priority: "High", riskLevel: "Medium", consequence: "New staff unaware of school rules.", proof: "Induction Log" },
-                { id: "SHV-07", description: "Issue a formal employment contract.", priority: "High", riskLevel: "High", consequence: "Legal disputes over employment terms.", proof: "Signed Contract" },
-                { id: "SHV-08", description: "Maintain a complete file for each employee with all required documents.", priority: "High", riskLevel: "High", consequence: "Regulatory non-compliance.", proof: "Employee File Audit" },
-                { id: "SHV-09", description: "Collect and verify ID and address proofs.", priority: "High", riskLevel: "High", consequence: "Identity fraud.", proof: "ID/Address Proofs" },
-                { id: "SHV-10", description: "Onboard staff into the payroll and HR management system.", priority: "High", riskLevel: "Medium", consequence: "Salary payment errors.", proof: "System Entry" }
-            ]
-        },
-        {
-            title: "Kitchen & Water Safety",
-            department: "Admin/Health",
-            frequency: "Daily/Scheduled",
-            role: "Admin Manager",
-            summary: "Ensures food and water provided at school are safe for consumption.",
-            icon: "utensils",
-            tasks: [
-                { id: "KWS-01", description: "Inspect kitchen for cleanliness and hygiene.", priority: "High", riskLevel: "High", consequence: "Food poisoning outbreak.", proof: "Kitchen Hygiene Log" },
-                { id: "KWS-02", description: "Check health and hygiene of all kitchen staff daily.", priority: "High", riskLevel: "High", consequence: "Transmission of illness from staff to students.", proof: "Staff Health Log" },
-                { id: "KWS-03", description: "Conduct quarterly testing of all drinking water sources.", priority: "High", riskLevel: "High", consequence: "Waterborne disease outbreak.", proof: "Water Test Report" },
-                { id: "KWS-04", description: "Ensure raw and cooked foods are stored separately.", priority: "High", riskLevel: "High", consequence: "Cross-contamination.", proof: "Storage Audit" },
-                { id: "KWS-05", description: "Log temperatures of refrigerators and freezers.", priority: "High", riskLevel: "High", consequence: "Bacterial growth in food.", proof: "Temperature Log" },
-                { id: "KWS-06", description: "Check expiry dates of all food ingredients.", priority: "High", riskLevel: "High", consequence: "Use of expired, unsafe ingredients.", proof: "Expiry Date Log" },
-                { id: "KWS-07", description: "Ensure kitchen staff use hairnets, gloves, and aprons.", priority: "High", riskLevel: "High", consequence: "Food contamination.", proof: "PPE Audit" },
-                { id: "KWS-08", description: "Clean and sanitize all food preparation surfaces.", priority: "High", riskLevel: "High", consequence: "Spread of bacteria.", proof: "Cleaning Log" },
-                { id: "KWS-09", description: "Manage waste disposal and pest control.", priority: "High", riskLevel: "High", consequence: "Pest infestation.", proof: "Waste & Pest Log" },
-                { id: "KWS-10", description: "Maintain a clean and functional water purifier system.", priority: "High", riskLevel: "High", consequence: "Dispensing contaminated water.", proof: "Purifier Maintenance Log" }
-            ]
-        },
-        {
-            title: "Admissions & Enrolment Process",
-            department: "Admissions",
-            frequency: "Per Admission Cycle",
-            role: "Admissions Officer",
-            icon: 'user-plus',
-            summary: "Ensures a fair, transparent, and efficient admissions process.",
-            tasks: [
-                { id: "ADM-01", description: "Publish clear admission criteria and timelines.", priority: "High", riskLevel: "Medium", consequence: "Allegations of unfairness.", proof: "Admissions Prospectus" },
-                { id: "ADM-02", description: "Use a standardized application form.", priority: "High", riskLevel: "High", consequence: "Inconsistent data collection.", proof: "Application Form" },
-                { id: "ADM-03", description: "Track all applications in a centralized system.", priority: "High", riskLevel: "High", consequence: "Lost applications.", proof: "Admissions Dashboard" },
-                { id: "ADM-04", description: "Conduct parent interviews/student assessments consistently.", priority: "High", riskLevel: "High", consequence: "Accusations of favoritism.", proof: "Interview Scorecards" },
-                { id: "ADM-05", description: "Communicate admission decisions on a specified date.", priority: "High", riskLevel: "Medium", consequence: "Parent anxiety and complaints.", proof: "Communication Log" },
-                { id: "ADM-06", description: "Collect all required documents for admitted students.", priority: "High", riskLevel: "High", consequence: "Regulatory compliance issues.", proof: "Document Checklist" },
-                { id: "ADM-07", description: "Process admission fees and issue receipts.", priority: "High", riskLevel: "High", consequence: "Financial errors.", proof: "Fee Receipt" },
-                { id: "ADM-08", description: "Conduct an orientation program for new students/parents.", priority: "High", riskLevel: "Medium", consequence: "Poor onboarding experience.", proof: "Orientation Schedule" },
-                { id: "ADM-09", description: "Handover student data to academic department.", priority: "High", riskLevel: "Medium", consequence: "Teachers lack key student info.", proof: "Handover Document" },
-                { id: "ADM-10", description: "Analyze admissions data for future outreach.", priority: "Medium", riskLevel: "Low", consequence: "Missed marketing opportunities.", proof: "Data Analysis Report" }
-            ]
-        },
-        {
-            title: "Examination & Report Card SOP",
-            department: "Academics",
-            frequency: "Per Examination Cycle",
-            role: "Examination Controller",
-            icon: 'graduation-cap',
-            summary: "Ensures the integrity and accuracy of the examination and reporting process.",
-            tasks: [
-                { id: "EXAM-01", description: "Securely handle and store question papers before the exam.", priority: "High", riskLevel: "High", consequence: "Leaked paper compromises exam integrity.", proof: "Secure Storage Log" },
-                { id: "EXAM-02", description: "Follow a strict protocol for exam invigilation to prevent cheating.", priority: "High", riskLevel: "High", consequence: "Widespread cheating devalues the exam.", proof: "Invigilation Duty Roster" },
-                { id: "EXAM-03", description: "Implement a fair and anonymous process for grading answer sheets.", priority: "High", riskLevel: "High", consequence: "Allegations of biased grading.", proof: "Grading Policy Document" },
-                { id: "EXAM-04", description: "Have a dual-check process for tabulating marks and grades.", priority: "High", riskLevel: "High", consequence: "Incorrect report cards cause student distress.", proof: "Verification Log" },
-                { id: "EXAM-05", description: "Perform a final QC check on report cards before printing.", priority: "High", riskLevel: "High", consequence: "Errors reflect poorly on the school.", proof: "QC Sign-off Sheet" },
-                { id: "EXAM-06", description: "Publish results and distribute report cards on a pre-announced date.", priority: "High", riskLevel: "Medium", consequence: "Delays cause anxiety.", proof: "Distribution Log" },
-                { id: "EXAM-07", description: "Have a clear process for re-evaluation or grade clarifications.", priority: "High", riskLevel: "Medium", consequence: "Feelings of unfairness among students.", proof: "Re-evaluation Policy" },
-                { id: "EXAM-08", description: "Securely archive all examination records.", priority: "High", riskLevel: "High", consequence: "Compliance issues.", proof: "Archive Log" },
-                { id: "EXAM-09", description: "Ensure seating arrangement prevents cheating.", priority: "High", riskLevel: "High", consequence: "Facilitates cheating.", proof: "Seating Plan" },
-                { id: "EXAM-10", description: "Provide accommodations for students with special needs.", priority: "High", riskLevel: "High", consequence: "Violation of disability rights.", proof: "Accommodations Log" }
-            ]
-        },
-        {
-            title: "Emergency Preparedness",
-            department: "Admin",
-            frequency: "Quarterly",
-            role: "Admin Head",
-            summary: "A framework to ensure the school is ready to respond to any emergency.",
-            icon: "siren",
-            tasks: [
-                { id: "EP-01", description: "Conduct a fire evacuation drill every quarter.", priority: "High", riskLevel: "High", consequence: "Chaotic evacuation during a real fire.", proof: "Drill Report" },
-                { id: "EP-02", description: "Ensure all staff are trained in basic first-aid and CPR.", priority: "High", riskLevel: "High", consequence: "Inability to provide life-saving care.", proof: "Training Records" },
-                { id: "EP-03", description: "Maintain an updated emergency contact list for every student.", priority: "High", riskLevel: "High", consequence: "Delay in contacting parents during an emergency.", proof: "Contact List" },
-                { id: "EP-04", description: "Ensure emergency alarms and public address systems are working.", priority: "High", riskLevel: "High", consequence: "Failure to alert the campus of danger.", proof: "System Test Log" },
-                { id: "EP-05", description: "Have a clear protocol for medical emergencies.", priority: "High", riskLevel: "High", consequence: "Disorganized response to a medical crisis.", proof: "Medical Emergency SOP" },
-                { id: "EP-06", description: "Keep emergency supplies (food, water, blankets) stocked.", priority: "High", riskLevel: "Medium", consequence: "Inability to care for students during a lockdown.", proof: "Emergency Kit Log" },
-                { id: "EP-07", description: "Establish a communication plan for parents during emergencies.", priority: "High", riskLevel: "High", consequence: "Parental panic and misinformation.", proof: "Communication Plan" },
-                { id: "EP-08", description: "Coordinate with local emergency services (fire, police, hospital).", priority: "High", riskLevel: "High", consequence: "Delayed or uncoordinated external response.", proof: "Contact List" },
-                { id: "EP-09", description: "Designate and mark clear assembly points for evacuation.", priority: "High", riskLevel: "High", consequence: "Confusion during evacuation.", proof: "Signage" },
-                { id: "EP-10", description: "Review and update the emergency plan annually.", priority: "High", riskLevel: "High", consequence: "Using an outdated and ineffective plan.", proof: "Updated Plan" }
+                { id: "SH-01", description: "Conduct daily checks for clean uniforms, nails, and hairnets.", priority: "High", riskLevel: "High", consequence: "Poor personal hygiene can lead to food contamination.", proof: "Daily Staff Audit Log" },
+                { id: "SH-02", description: "Perform random audits of handwashing procedures.", priority: "High", riskLevel: "High", consequence: "Improper handwashing is a leading cause of foodborne illness.", proof: "Handwashing Audit" },
+                { id: "SH-03", description: "Conduct and document monthly refresher training on hygiene.", priority: "High", riskLevel: "Medium", consequence: "Staff forget procedures over time; regular training reinforces good habits.", proof: "Training Records" },
+                { id: "SH-04", description: "Screen new staff for any communicable diseases.", priority: "High", riskLevel: "High", consequence: "A sick food handler can cause a major outbreak.", proof: "Medical Fitness Certificate" },
+                { id: "SH-05", description: "Ensure 'Staff Only' areas are clearly marked and access is restricted.", priority: "Medium", riskLevel: "Low", consequence: "Prevents unauthorized personnel from entering food prep areas.", proof: "Visual check and signage" },
+                { id: "SH-06", description: "Provide and enforce the use of gloves for handling ready-to-eat foods.", priority: "High", riskLevel: "High", consequence: "Prevents direct hand-to-food contamination.", proof: "Glove Usage Audit" },
+                { id: "SH-07", description: "Ensure a 'no jewelry' policy is followed by kitchen staff.", priority: "High", riskLevel: "High", consequence: "Jewelry can fall into food, creating a physical hazard.", proof: "Visual Check" },
+                { id: "SH-08", description: "Maintain records of all staff hygiene training.", priority: "High", riskLevel: "High", consequence: "Crucial for proving due diligence during a health inspection.", proof: "Master Training File" },
+                { id: "SH-09", description: "Have a clear policy for staff who are sick.", priority: "High", riskLevel: "High", consequence: "Prevents sick employees from coming to work and spreading illness.", proof: "Sick Leave Policy" },
+                { id: "SH-10", description: "Ensure staff have access to and use hand sanitizers.", priority: "High", riskLevel: "Medium", consequence: "Provides an extra layer of hygiene control.", proof: "Supply Check" }
             ]
         }
     ]
@@ -2050,7 +1945,7 @@ const university_college_ops: PremiumPack = {
             ]
         },
         {
-            title: "Lab Safety & Chemical Management",
+            title: "Lab Safety & Chemical Handling",
             department: "Academics/Labs",
             frequency: "Daily/Per Lab",
             role: "Lab Technician",
@@ -2117,16 +2012,16 @@ const university_college_ops: PremiumPack = {
             summary: "Ensures food served in campus messes is safe, hygienic, and of good quality.",
             icon: "utensils-crossed",
             tasks: [
-                { id: "MESS-01", description: "Log temperatures of all refrigerators, freezers, and hot holding units.", priority: "High", riskLevel: "High", consequence: "The most critical step in preventing bacterial growth in food.", proof: "Temperature Log." },
-                { id: "MESS-02", description: "Check all raw material deliveries for quality and expiry.", priority: "High", riskLevel: "High", consequence: "Garbage in, garbage out. Poor quality ingredients lead to poor quality, unsafe food.", proof: "Receiving Log." },
-                { id: "MESS-03", description: "Ensure proper segregation of raw, cooked, vegetarian, and non-vegetarian food.", priority: "High", riskLevel: "High", consequence: "A primary cause of cross-contamination and food poisoning.", proof: "Storage Audit." },
-                { id: "MESS-04", description: "Verify hygiene of all food handlers (uniform, nails, health).", priority: "High", riskLevel: "High", consequence: "Sick or unhygienic food handlers are a major vector for disease.", proof: "Staff Hygiene Log." },
-                { id: "MESS-05", description: "Ensure the kitchen and dining areas are clean and pest-free.", priority: "High", riskLevel: "High", consequence: "Pests carry disease and their presence is a major red flag for health inspectors.", proof: "Cleaning & Pest Control Log." },
-                { id: "MESS-06", description: "Calibrate food thermometers daily.", priority: "High", riskLevel: "High", consequence: "An inaccurate thermometer gives a false sense of safety.", proof: "Calibration Log." },
-                { id: "MESS-07", description: "Check that water used for cooking and drinking is safe.", priority: "High", riskLevel: "High", consequence: "Contaminated water can make hundreds of students sick at once.", proof: "Water Test Report." },
-                { id: "MESS-08", description: "Maintain a food sample from each meal for 48 hours.", priority: "High", riskLevel: "High", consequence: "Crucial evidence for investigation in case of a food poisoning outbreak.", proof: "Sample Log." },
-                { id: "MESS-09", description: "Manage waste disposal effectively to prevent pests.", priority: "High", riskLevel: "High", consequence: "Improperly managed waste is a primary attractant for pests.", proof: "Waste Log." },
-                { id: "MESS-10", description: "Train all kitchen staff on food safety and hygiene.", priority: "High", riskLevel: "High", consequence: "The entire system relies on staff following the correct procedures.", proof: "Training Records." }
+                { id: "MESS-01", description: "Log temperatures of all refrigerators, freezers, and hot holding units.", priority: "High", riskLevel: "High", consequence: "Food held below 60°C can enter the temperature \"danger zone\" and grow harmful bacteria.", proof: "Temperature Log." },
+                { id: "MESS-02", description: "Check all raw material deliveries for quality and expiry.", priority: "High", riskLevel: "High", consequence: "Accepting goods outside the safe temperature range is a major food safety risk.", proof: "Temperature Log." },
+                { id: "MESS-03", description: "Ensure proper segregation of raw, cooked, vegetarian, and non-vegetarian food.", priority: "High", riskLevel: "High", consequence: "Separate cutting boards and utensils are used for veg/non-veg prep.", proof: "Separate Cutting Board." },
+                { id: "MESS-04", description: "Verify hygiene of all food handlers (uniform, nails, health).", priority: "High", riskLevel: "High", consequence: "Cleaning Chemical Bottles are correctly labeled.", proof: "Visual Inspection" },
+                { id: "MESS-05", description: "Check that the fire suppression system is armed and ready.", priority: "High", riskLevel: "High", consequence: "Missing guards can lead to severe injuries, amputations, and regulatory fines.", proof: "Equipment Check Log" },
+                { id: "MESS-06", description: "Calibrate food thermometers.", priority: "High", riskLevel: "High", consequence: "Lack of hand hygiene is a primary cause of foodborne illness transmission.", proof: "Calibration Log" },
+                { id: "MESS-07", description: "Check that exhaust hoods and ventilation are working.", priority: "High", riskLevel: "Medium", consequence: "The delivery vehicle is clean and temperature-controlled.", proof: "System Check" },
+                { id: "MESS-08", description: "Ensure that the restaurant is clean to minimize pests.", priority: "High", riskLevel: "High", consequence: "Inaccurate receiving leads to incorrect inventory levels.", proof: "Vendor File" },
+                { id: "MESS-09", description: "Check the 'best before' or expiry dates of all products.", priority: "High", riskLevel: "High", consequence: "Inaccurate receiving leads to incorrect inventory levels.", proof: "PR Approval Form" },
+                { id: "MESS-10", description: "Record all received goods in the inventory system.", priority: "High", riskLevel: "Medium", consequence: "Poor personal hygiene can lead to food contamination.", proof: "System Entry" }
             ]
         },
         {
@@ -2137,56 +2032,16 @@ const university_college_ops: PremiumPack = {
             summary: "A framework for managing campus IT resources securely and effectively.",
             icon: "wifi",
             tasks: [
-                { id: "IT-AUP-01", description: "Enforce strong password policies for all network users.", priority: "High", riskLevel: "High", consequence: "Weak passwords are the easiest way for hackers to gain unauthorized access.", proof: "Password Policy Document." },
-                { id: "IT-AUP-02", description: "Block access to malicious or inappropriate websites on the campus network.", priority: "High", riskLevel: "High", consequence: "Protects students from harmful content and protects the network from malware.", proof: "Firewall/Filter Logs." },
-                { id: "IT-AUP-03", description: "Monitor network for unusual activity or security threats.", priority: "High", riskLevel: "High", consequence: "Early detection of threats can prevent a major breach.", proof: "Network Monitoring Logs." },
-                { id: "IT-AUP-04", description: "Ensure all campus computers have up-to-date antivirus software.", priority: "High", riskLevel: "High", consequence: "A single infected machine can spread malware across the entire network.", proof: "Antivirus Dashboard." },
-                { id: "IT-AUP-05", description: "Have all users agree to an Acceptable Use Policy upon first login.", priority: "High", riskLevel: "Medium", consequence: "Sets clear expectations for behavior and provides grounds for disciplinary action.", proof: "AUP Acceptance Log." },
-                { id: "IT-AUP-06", description: "Manage student data in compliance with data privacy laws.", priority: "High", riskLevel: "High", consequence: "A breach of student data can have severe legal and reputational consequences.", proof: "Data Privacy Audit." },
-                { id: "IT-AUP-07", description: "Provide secure Wi-Fi access for students, staff, and guests.", priority: "High", riskLevel: "High", consequence: "An unsecured Wi-Fi network can be a gateway for attackers.", proof: "Wi-Fi Configuration." },
-                { id: "IT-AUP-08", description: "Back up all critical university data regularly.", priority: "High", riskLevel: "High", consequence: "A ransomware attack or server failure can lead to catastrophic data loss without backups.", proof: "Backup Logs." },
-                { id: "IT-AUP-09", description: "Have a clear policy for software installation on campus computers.", priority: "High", riskLevel: "Medium", consequence: "Unauthorized software can introduce security risks and licensing issues.", proof: "Software Policy." },
-                { id: "IT-AUP-10", description: "Provide IT support to students and staff.", priority: "High", riskLevel: "Medium", consequence: "Lack of support leads to frustration and users finding insecure workarounds.", proof: "Helpdesk Tickets." }
-            ]
-        },
-        {
-            title: "Emergency Transport SOP",
-            department: "Health/Transport",
-            frequency: "Daily",
-            role: "Transport Manager",
-            summary: "Ensures the on-campus ambulance is ready for any medical emergency.",
-            icon: "ambulance",
-            tasks: [
-                { id: "TRANSPORT-EMER-01", description: "Check on-campus ambulance daily (fuel, tires, medical supplies).", priority: "High", riskLevel: "High", consequence: "An ambulance that is not ready can be a fatal weak link in an emergency.", proof: "Ambulance Check Log." },
-                { id: "TRANSPORT-EMER-02", description: "Ensure an ambulance driver is available on call 24/7.", priority: "High", riskLevel: "High", consequence: "A patient needing urgent hospital transfer is stranded.", proof: "Driver Roster." },
-                { id: "TRANSPORT-EMER-03", description: "Maintain a list of nearby hospitals and their contact numbers.", priority: "High", riskLevel: "High", consequence: "Wasting time searching for a hospital number during an emergency.", proof: "Hospital Contact List." },
-                { id: "TRANSPORT-EMER-04", description: "Train drivers on the fastest routes to designated hospitals.", priority: "High", riskLevel: "Medium", consequence: "Every minute saved can make a difference in a medical emergency.", proof: "Route Training Log." },
-                { id: "TRANSPORT-EMER-05", description: "Have a clear protocol for dispatching the ambulance.", priority: "High", riskLevel: "High", consequence: "A clear, single point of contact for dispatch prevents confusion.", proof: "Dispatch SOP." },
-                { id: "TRANSPORT-EMER-06", description: "Log all ambulance trips with details of the patient and incident.", priority: "High", riskLevel: "High", consequence: "Provides a legal record of the emergency response.", proof: "Ambulance Trip Log." },
-                { id: "TRANSPORT-EMER-07", description: "Regularly service the ambulance.", priority: "High", riskLevel: "High", consequence: "A breakdown during a patient transfer can be catastrophic.", proof: "Service Records." },
-                { id: "TRANSPORT-EMER-08", description: "Ensure ambulance staff are trained in first-aid.", priority: "High", riskLevel: "High", consequence: "The team can provide care en route to the hospital.", proof: "Training Records." },
-                { id: "TRANSPORT-EMER-09", description: "Test ambulance siren and lights daily.", priority: "High", riskLevel: "High", consequence: "Crucial for clearing traffic during an emergency.", proof: "Test Log." },
-                { id: "TRANSPORT-EMER-10", description: "Coordinate with campus security for clear passage during emergencies.", priority: "High", riskLevel: "High", consequence: "Security must be ready to clear gates and roads for the ambulance.", proof: "Coordination Plan." }
-            ]
-        },
-        {
-            title: "Campus Incident Handling",
-            department: "Management",
-            frequency: "Per Incident",
-            role: "Registrar/Dean",
-            summary: "A protocol for managing and learning from all on-campus incidents.",
-            icon: "file-text",
-            tasks: [
-                { id: "INC-HDLG-UNIV-01", description: "Log every incident in a central incident management system.", priority: "High", riskLevel: "High", consequence: "Without a log, there is no institutional memory of past incidents.", proof: "Incident Log." },
-                { id: "INC-HDLG-UNIV-02", description: "Immediately notify parents/guardians in case of a student medical emergency.", priority: "High", riskLevel: "High", consequence: "A delay in notification is a major source of parental anger and legal claims.", proof: "Communication Log." },
-                { id: "INC-HDLG-UNIV-03", description: "Follow a fair and documented process for investigating student conflicts.", priority: "High", riskLevel: "Medium", consequence: "A biased investigation can lead to accusations of unfairness and legal challenges.", proof: "Investigation Report." },
-                { id: "INC-HDLG-UNIV-04", description: "Escalate major security breaches to senior management and police.", priority: "High", riskLevel: "High", consequence: "Keeps leadership and authorities informed to manage the crisis.", proof: "Escalation Log." },
-                { id: "INC-HDLG-UNIV-05", description: "Maintain confidentiality of all parties involved in an incident.", priority: "High", riskLevel: "High", consequence: "Breaching confidentiality can violate privacy and lead to legal action.", proof: "Confidentiality Agreement." },
-                { id: "INC-HDLG-UNIV-06", description: "Conduct a root cause analysis for all significant incidents.", priority: "High", riskLevel: "High", consequence: "Essential for preventing the same incident from happening again.", proof: "RCA Report." },
-                { id: "INC-HDLG-UNIV-07", description: "Implement corrective actions to prevent recurrence.", priority: "High", riskLevel: "High", consequence: "The most important step to show that the institution learns from its mistakes.", proof: "CAPA Plan." },
-                { id: "INC-HDLG-UNIV-08", description: "Provide support and counseling to affected students/staff.", priority: "High", riskLevel: "Medium", consequence: "Crucial for the well-being of the campus community after a traumatic event.", proof: "Counseling Log." },
-                { id: "INC-HDLG-UNIV-09", description: "Document all communications with external parties (police, media).", priority: "High", riskLevel: "High", consequence: "Creates a clear record of who said what and when.", proof: "External Communication Log." },
-                { id: "INC-HDLG-UNIV-10", description: "Review and update incident handling procedures annually.", priority: "High", riskLevel: "High", consequence: "Ensures the procedures remain effective and relevant.", proof: "Updated Procedures." }
+                { id: "IT-AUP-01", description: "Enforce strong password policies for all network users.", priority: "High", riskLevel: "High", consequence: "Different versions can lead to data inconsistencies and security vulnerabilities.", proof: "Software Version Report" },
+                { id: "IT-AUP-02", description: "Block access to malicious or inappropriate websites on the campus network.", priority: "High", riskLevel: "High", consequence: "Unprotected systems are vulnerable to malware and ransomware.", proof: "Security Software Dashboard" },
+                { id: "IT-AUP-03", description: "Monitor network for unusual activity or security threats.", priority: "High", riskLevel: "High", consequence: "Internal fraud can go undetected, leading to significant financial loss.", proof: "POS Exception Report" },
+                { id: "IT-AUP-04", description: "Ensure franchisees are compliant with data privacy and payment security (PCI DSS) standards.", priority: "High", riskLevel: "High", consequence: "Non-compliance can result in massive fines and loss of payment processing ability.", proof: "Compliance Audit" },
+                { id: "IT-AUP-05", description: "Provide a centralized IT helpdesk for franchisee support.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate temperature readings leading to undercooked food.", proof: "Helpdesk SLA Report" },
+                { id: "IT-AUP-06", description: "Manage user access controls for all corporate systems.", priority: "High", riskLevel: "High", consequence: "Use of unapproved suppliers can lead to quality control issues and brand damage.", proof: "User Access Review" },
+                { id: "IT-AUP-07", description: "Ensure regular data backups are being performed.", priority: "High", riskLevel: "High", consequence: "Under-reported sales directly lead to loss of royalty revenue for the franchisor.", proof: "Backup Logs" },
+                { id: "IT-AUP-08", description: "Manage the rollout of any new software or hardware to the network.", priority: "High", riskLevel: "High", consequence: "Leads to brand dilution and a fragmented brand identity.", proof: "Rollout Plan" },
+                { id: "IT-AUP-09", description: "Audit franchisees for use of unauthorized software.", priority: "High", riskLevel: "High", consequence: "Inconsistent operations from day one, leading to brand dilution.", proof: "Software Audit Report" },
+                { id: "IT-AUP-10", description: "Provide a disaster recovery plan for IT systems.", priority: "High", riskLevel: "High", consequence: "A poor location is a primary cause of franchise failure.", proof: "DR Plan" }
             ]
         }
     ]
@@ -2623,7 +2478,7 @@ const theme_park_ops_pack: PremiumPack = {
                 { id: "EMER-RESP-06", description: "Coordinate with local fire, police, and medical services.", priority: "High", riskLevel: "High", consequence: "Ensures a seamless handover to external emergency services when they arrive.", proof: "Coordination Meeting Minutes" },
                 { id: "EMER-RESP-07", description: "Have backup power for all critical systems.", priority: "High", riskLevel: "High", consequence: "A power failure can disable communication, lighting, and ride safety systems.", proof: "Generator Test Log" },
                 { id: "EMER-RESP-08", description: "Provide emergency communication devices (radios) to all key staff.", priority: "High", riskLevel: "High", consequence: "Mobile networks can fail during a major incident; radios are more reliable.", proof: "Radio Inventory" },
-                { id: "EMER-RESP-09", description: "Train all staff on their roles in an emergency.", priority: "High", riskLevel: "High", consequence: "Every employee, from ride operator to food seller, has a role to play in guest safety.", proof: "Training Records" },
+                { id: "EMER-RESP-09", description: "Train all staff on their roles in an emergency.", priority: "High", riskLevel: "High", consequence: "Every staff member, from ride operator to food seller, has a role to play in guest safety.", proof: "Training Records" },
                 { id: "EMER-RESP-10", description: "Review and update the emergency plan annually.", priority: "High", riskLevel: "High", consequence: "An outdated plan is a dangerous liability.", proof: "Updated Plan Document" }
             ]
         },
@@ -3288,7 +3143,7 @@ const animal_shelter_pack: PremiumPack = {
                 { id: "AI-IQ-02", description: "Scan for microchip and check against national databases.", priority: "High", riskLevel: "Low", consequence: "Failure to reunite a lost pet with its owner.", proof: "Microchip scan log.", location: "Intake Room" },
                 { id: "AI-IQ-03", description: "Perform initial health screening (check for wounds, parasites, signs of illness).", priority: "High", riskLevel: "High", consequence: "Undiagnosed injury/illness could worsen or spread.", proof: "Completed intake health assessment form.", location: "Intake Room" },
                 { id: "AI-IQ-04", description: "Administer initial vaccinations and deworming as per shelter protocol.", priority: "High", riskLevel: "High", consequence: "Vulnerability to preventable diseases like distemper or rabies.", proof: "Medical record updated with administered treatments.", location: "Intake Room" },
-                { id: "AI-IQ-05", description: "Place new animal in a designated quarantine enclosure for the required period (e.g., 7-14 days).", priority: "High", riskLevel: "High", consequence: "Introduction of contagious disease to the general population.", proof: "Quarantine placement logged in shelter software.", location: "Quarantine Zone" },
+                { id: "AI-IQ-05", description: "Place new animal in a designated quarantine enclosure for the required period (e.g., 7-14 days).", priority: "High", riskLevel: "High", consequence: "Introduction of contagious disease to the general population.", proof: "Quarantine placement logged in shelter management software.", location: "Quarantine Zone" },
                 { id: "AI-IQ-06", description: "Perform a basic temperament test to assess aggression, fear, and sociability.", priority: "High", riskLevel: "Medium", consequence: "Safety risk to staff and other animals.", proof: "Temperament test score sheet.", location: "Intake/Assessment Room" },
                 { id: "AI-IQ-07", description: "Create a unique identification collar and record for the animal.", priority: "High", riskLevel: "Low", consequence: "Animal mix-ups.", proof: "ID collar and record in software.", location: "Intake Room" },
                 { id: "AI-IQ-08", description: "Provide food, clean water, and comfortable bedding upon arrival.", priority: "High", riskLevel: "Low", consequence: "Animal distress and dehydration.", proof: "Intake checklist sign-off.", location: "Quarantine Enclosure" },
@@ -3526,43 +3381,23 @@ export const premiumPacks: PremiumPack[] = [
                 ]
             },
              {
-                title: "Admissions & Enrolment Process",
-                department: "Admissions",
-                frequency: "Per Admission Cycle",
-                role: "Admissions Officer",
-                icon: 'user-plus',
-                summary: "Ensures a fair, transparent, and efficient admissions process.",
+                title: "Staff Hiring & Verification",
+                department: "HR/Hygiene",
+                frequency: "Per Hire",
+                role: "Hygiene Officer",
+                summary: "Ensures all food handlers meet strict hygiene standards and are well-trained in food safety.",
+                icon: "user-check",
                 tasks: [
-                    { id: "ADM-01", description: "Publish clear admission criteria and timelines.", priority: "High", riskLevel: "Medium", consequence: "Allegations of unfairness.", proof: "Admissions Prospectus" },
-                    { id: "ADM-02", description: "Use a standardized application form.", priority: "High", riskLevel: "High", consequence: "Inconsistent data collection.", proof: "Application Form" },
-                    { id: "ADM-03", description: "Track all applications in a centralized system.", priority: "High", riskLevel: "High", consequence: "Lost applications.", proof: "Admissions Dashboard" },
-                    { id: "ADM-04", description: "Conduct parent interviews/student assessments consistently.", priority: "High", riskLevel: "High", consequence: "Accusations of favoritism.", proof: "Interview Scorecards" },
-                    { id: "ADM-05", description: "Communicate admission decisions on a specified date.", priority: "High", riskLevel: "Medium", consequence: "Parent anxiety and complaints.", proof: "Communication Log" },
-                    { id: "ADM-06", description: "Collect all required documents for admitted students.", priority: "High", riskLevel: "High", consequence: "Regulatory compliance issues.", proof: "Document Checklist" },
-                    { id: "ADM-07", description: "Process admission fees and issue receipts.", priority: "High", riskLevel: "High", consequence: "Financial errors.", proof: "Fee Receipt" },
-                    { id: "ADM-08", description: "Conduct an orientation program for new students/parents.", priority: "High", riskLevel: "Medium", consequence: "Poor onboarding experience.", proof: "Orientation Schedule" },
-                    { id: "ADM-09", description: "Handover student data to academic department.", priority: "High", riskLevel: "Medium", consequence: "Teachers lack key student info.", proof: "Handover Document" },
-                    { id: "ADM-10", description: "Analyze admissions data for future outreach.", priority: "Medium", riskLevel: "Low", consequence: "Missed marketing opportunities.", proof: "Data Analysis Report" }
-                ]
-            },
-            {
-                title: "Examination & Report Card SOP",
-                department: "Academics",
-                frequency: "Per Examination Cycle",
-                role: "Examination Controller",
-                icon: 'graduation-cap',
-                summary: "Ensures the integrity and accuracy of the examination and reporting process.",
-                tasks: [
-                    { id: "EXAM-01", description: "Securely handle and store question papers before the exam.", priority: "High", riskLevel: "High", consequence: "Leaked paper compromises exam integrity.", proof: "Secure Storage Log" },
-                    { id: "EXAM-02", description: "Follow a strict protocol for exam invigilation to prevent cheating.", priority: "High", riskLevel: "High", consequence: "Widespread cheating devalues the exam.", proof: "Invigilation Duty Roster" },
-                    { id: "EXAM-03", description: "Implement a fair and anonymous process for grading answer sheets.", priority: "High", riskLevel: "High", consequence: "Allegations of biased grading.", proof: "Grading Policy Document" },
-                    { id: "EXAM-04", description: "Have a dual-check process for tabulating marks and grades.", priority: "High", riskLevel: "High", consequence: "Incorrect report cards cause student distress.", proof: "Verification Log" },
-                    { id: "EXAM-05", description: "Perform a final QC check on report cards before printing.", priority: "High", riskLevel: "High", consequence: "Errors reflect poorly on the school.", proof: "QC Sign-off Sheet" },
-                    { id: "EXAM-06", description: "Publish results and distribute report cards on a pre-announced date.", priority: "High", riskLevel: "Medium", consequence: "Delays cause anxiety.", proof: "Distribution Log" },
-                    { id: "EXAM-07", description: "Have a clear process for re-evaluation or grade clarifications.", priority: "High", riskLevel: "Medium", consequence: "Feelings of unfairness among students.", proof: "Re-evaluation Policy" },
-                    { id: "EXAM-08", description: "Securely archive all examination records.", priority: "High", riskLevel: "High", consequence: "Compliance issues.", proof: "Archive Log" },
-                    { id: "EXAM-09", description: "Ensure seating arrangement prevents cheating.", priority: "High", riskLevel: "High", consequence: "Facilitates cheating.", proof: "Seating Plan" },
-                    { id: "EXAM-10", description: "Provide accommodations for students with special needs.", priority: "High", riskLevel: "High", consequence: "Violation of disability rights.", proof: "Accommodations Log" }
+                    { id: "SH-01", description: "Conduct daily checks for clean uniforms, nails, and hairnets.", priority: "High", riskLevel: "High", consequence: "Poor personal hygiene can lead to food contamination.", proof: "Daily Staff Audit Log" },
+                    { id: "SH-02", description: "Perform random audits of handwashing procedures.", priority: "High", riskLevel: "High", consequence: "Improper handwashing is a leading cause of foodborne illness.", proof: "Handwashing Audit" },
+                    { id: "SH-03", description: "Conduct and document monthly refresher training on hygiene.", priority: "High", riskLevel: "Medium", consequence: "Staff forget procedures over time; regular training reinforces good habits.", proof: "Training Records" },
+                    { id: "SH-04", description: "Screen new staff for any communicable diseases.", priority: "High", riskLevel: "High", consequence: "A sick food handler can cause a major outbreak.", proof: "Medical Fitness Certificate" },
+                    { id: "SH-05", description: "Ensure 'Staff Only' areas are clearly marked and access is restricted.", priority: "Medium", riskLevel: "Low", consequence: "Prevents unauthorized personnel from entering food prep areas.", proof: "Visual check and signage" },
+                    { id: "SH-06", description: "Provide and enforce the use of gloves for handling ready-to-eat foods.", priority: "High", riskLevel: "High", consequence: "Prevents direct hand-to-food contamination.", proof: "Glove Usage Audit" },
+                    { id: "SH-07", description: "Ensure a 'no jewelry' policy is followed by kitchen staff.", priority: "High", riskLevel: "High", consequence: "Jewelry can fall into food, creating a physical hazard.", proof: "Visual Check" },
+                    { id: "SH-08", description: "Maintain records of all staff hygiene training.", priority: "High", riskLevel: "High", consequence: "Crucial for proving due diligence during a health inspection.", proof: "Master Training File" },
+                    { id: "SH-09", description: "Have a clear policy for staff who are sick.", priority: "High", riskLevel: "High", consequence: "Prevents sick employees from coming to work and spreading illness.", proof: "Sick Leave Policy" },
+                    { id: "SH-10", description: "Ensure staff have access to and use hand sanitizers.", priority: "High", riskLevel: "Medium", consequence: "Provides an extra layer of hygiene control.", proof: "Supply Check" }
                 ]
             }
         ]
@@ -3570,6 +3405,5 @@ export const premiumPacks: PremiumPack[] = [
     return pack;
 });
 
-    
 
     
