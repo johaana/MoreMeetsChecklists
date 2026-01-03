@@ -972,7 +972,7 @@ const electronics_showroom_pack: PremiumPack = {
                 { id: "ES-SO-05", description: "Ensure all price tags and promotional offers are accurate and up-to-date.", priority: "High", riskLevel: "Medium", consequence: "Pricing disputes with customers, legal non-compliance.", proof: "Spot check of 10 random items against master price list.", location: "Sales Floor" },
                 { id: "ES-SO-06", description: "Conduct a team briefing on daily targets, promotions, and new products.", priority: "High", riskLevel: "Low", consequence: "Misaligned team, poor sales performance.", proof: "Briefing sheet.", location: "Staff Area" },
                 { id: "ES-SO-07", description: "Check that all security tethers and locks on high-value demo units are secure.", priority: "High", riskLevel: "High", consequence: "High risk of theft for expensive demo items.", proof: "Physical check of 10 high-value items.", location: "Sales Floor" },
-                { id: "ES-SO-08", description: "Restock any depleted accessory displays (e.g., chargers, cases).", priority: "Low", riskLevel: "Low", consequence: "Missed incremental sales.", proof: "Visual check.", location: "Accessory Section" },
+                { id: "ES-SO-08", description: "Replenish any depleted accessory displays (e.g., chargers, cases).", priority: "Low", riskLevel: "Low", consequence: "Missed incremental sales.", proof: "Visual check.", location: "Accessory Section" },
                 { id: "ES-SO-09", description: "Ensure service desk is ready for customer inquiries and repairs.", priority: "Medium", riskLevel: "Low", consequence: "Poor after-sales service experience.", proof: "Service desk readiness checklist.", location: "Service Desk" },
                 { id: "ES-SO-10", description: "Verify float cash at each register.", priority: "High", riskLevel: "Medium", consequence: "Cash handling errors.", proof: "Signed float verification forms.", location: "Cash/Checkout Area" }
             ]
@@ -1952,7 +1952,20 @@ const sports_clubs_stadium_operations_pack: PremiumPack = {
         { text: "Protect members with robust hygiene protocols for pools, changing rooms, and F&B areas.", icon: "sparkles" },
         { text: "Manage your team effectively with checklists for staff training, scheduling, and performance.", icon: "clipboard-list" }
     ],
-    checklists: []
+     checklists:  [
+       {
+            title: "Venue Safety with crowd management",
+            department: "Test",
+            frequency: "Test",
+            role: "Test",
+            summary: "Test",
+            icon: "users",
+            tasks: [
+          {id: 'sports_clubs_stadium_operations_pack-1', description: 'desc1', priority: 'High', riskLevel: 'High', consequence: 'cons1', proof: 'proof1'},
+          {id: 'sports_clubs_stadium_operations_pack-2', description: 'desc2', priority: 'High', riskLevel: 'High', consequence: 'cons2', proof: 'proof2'},
+            ]
+        }
+    ]
 };
 
 const cinema_operations_pack: PremiumPack = {
@@ -2071,7 +2084,7 @@ const cinema_operations_pack: PremiumPack = {
                 { id: "AUD-CLEAN-05", description: "Ensure 3D glasses (if any) are collected and sanitized.", priority: "High", riskLevel: "Medium", consequence: "Dirty 3D glasses are a hygiene risk and a major source of complaints.", proof: "Sanitization Log" },
                 { id: "AUD-CLEAN-06", description: "Check and clean auditorium restrooms.", priority: "High", riskLevel: "Medium", consequence: "Restroom cleanliness is a key driver of overall guest satisfaction.", proof: "Restroom Cleaning Log" },
                 { id: "AUD-CLEAN-07", description: "Verify that the auditorium is at a comfortable temperature.", priority: "High", riskLevel: "Low", consequence: "An auditorium that is too hot or cold is a common complaint.", proof: "Temperature Check" },
-                { id: "AUD-CLEAN-08", description: "Deep clean all auditoriums weekly.", priority: "High", riskLevel: "Medium", consequence: "Prevents long-term buildup of dirt and grime.", proof: "Deep Clean Schedule" },
+                { id: "AUD-CLEAN-08", description: "Deep clean all auditoriums weekly.", priority: "High", riskLevel: "Medium", consequence: "Prevents long-term buildup of dirt and grime.", proof: "Deep Cleaning Schedule" },
                 { id: "AUD-CLEAN-09", description: "Ensure cleaning supplies are stocked.", priority: "High", riskLevel: "Low", consequence: "Lack of supplies can bring cleaning operations to a halt.", proof: "Supply Inventory" },
                 { id: "AUD-CLEAN-10", description: "Supervisor to sign off on cleanliness before the next show.", priority: "High", riskLevel: "Medium", consequence: "Provides a final quality check and ensures standards are met.", proof: "Supervisor Sign-off" }
             ]
@@ -2197,7 +2210,7 @@ const theme_park_ops_pack: PremiumPack = {
                 { id: "EMER-RESP-07", description: "Have backup power for all critical systems.", priority: "High", riskLevel: "High", consequence: "A power failure can disable communication, lighting, and ride safety systems.", proof: "Generator Test Log" },
                 { id: "EMER-RESP-08", description: "Provide emergency communication devices (radios) to all key staff.", priority: "High", riskLevel: "High", consequence: "Mobile networks can fail during a major incident; radios are more reliable.", proof: "Radio Inventory" },
                 { id: "EMER-RESP-09", description: "Train all staff on their roles during an emergency.", priority: "High", riskLevel: "High", consequence: "Every employee, from ride operator to food seller, has a role to play in guest safety.", proof: "Training Records" },
-                { id: "EMER-RESP-10", description: "Review and update the emergency response plan annually.", priority: "High", riskLevel: "High", consequence: "An outdated plan is a dangerous liability.", proof: "Updated Plan Document" }
+                { id: "EMER-RESP-10", description: "Review and update the emergency plan annually.", priority: "High", riskLevel: "High", consequence: "An outdated plan is a dangerous liability.", proof: "Updated Plan Document" }
             ]
         },
         {
@@ -2728,7 +2741,7 @@ const food_manufacturing_ops: PremiumPack = {
                 { id: "CAPA-03", description: "Develop a corrective action plan to address the immediate issue.", priority: "High", riskLevel: "High", consequence: "The immediate fix to contain the problem.", proof: "Corrective Action Plan" },
                 { id: "CAPA-04", description: "Develop a preventive action plan to prevent recurrence.", priority: "High", riskLevel: "High", consequence: "The long-term fix that addresses the root cause.", proof: "Preventive Action Plan" },
                 { id: "CAPA-05", description: "Assign owners and due dates for all actions.", priority: "High", riskLevel: "High", consequence: "Without ownership and deadlines, actions are never implemented.", proof: "CAPA Tracker" },
-                { id: "CAPA-06", description: "Track all CAPA items to completion.", priority: "High", riskLevel: "High", consequence: "The most critical part of the process, ensuring the loop is closed.", proof: "CAPA Status Report" },
+                { id: "CAPA-06", description: "Track all CAPA actions to completion.", priority: "High", riskLevel: "High", consequence: "The most critical part of the process, ensuring the loop is closed.", proof: "CAPA Status Report" },
                 { id: "CAPA-07", description: "Verify the effectiveness of the implemented actions.", priority: "High", riskLevel: "High", consequence: "Ensures the fix was not just a temporary patch.", proof: "Effectiveness Check Log" },
                 { id: "CAPA-08", description: "Close out the CAPA once effectiveness is verified.", priority: "Medium", riskLevel: "High", consequence: "The formal end to the improvement cycle for that issue.", proof: "Closed CAPA Report" },
                 { id: "CAPA-09", description: "Share learnings from CAPAs across the organization.", priority: "Medium", riskLevel: "Medium", consequence: "Helps to build a culture of continuous improvement.", proof: "Lessons Learned Document" },
@@ -3105,3 +3118,4 @@ export const premiumPacks: PremiumPack[] = [
 });
 
     
+
