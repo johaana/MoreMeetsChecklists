@@ -2229,7 +2229,7 @@ const theme_park_ops_pack: PremiumPack = {
                 { id: "GUEST-SVC-06", description: "Train staff on empathetic communication and de-escalation techniques.", priority: "High", riskLevel: "Medium", consequence: "Helps to calm angry guests and find a positive resolution.", proof: "Training Records" },
                 { id: "GUEST-SVC-07", description: "Monitor social media and review sites for guest feedback.", priority: "High", riskLevel: "Medium", consequence: "Allows you to respond to public complaints and manage your online reputation.", proof: "Social Media Monitoring Report" },
                 { id: "GUEST-SVC-08", description: "Collect and analyze guest feedback to identify areas for improvement.", priority: "High", riskLevel: "Medium", consequence: "Guest feedback is a free source of valuable business intelligence.", proof: "Feedback Analysis Report" },
-                { id: "GUEST-SVC-09", description: "Maintain a lost and found system.", priority: "High", riskLevel: "Low", consequence: "A well-run lost and found is a key part of good customer service.", proof: "Lost & Found System" },
+                { id: "GUEST-SVC-09", description: "Maintain a lost and found system.", priority: "High", riskLevel: "Low", consequence: "A well-run lost and found is a key part of good customer service.", proof: "Lost & Found Log" },
                 { id: "GUEST-SVC-10", description: "Ensure all guest-facing staff are knowledgeable about the park.", priority: "High", riskLevel: "Low", consequence: "Staff who can't answer basic questions seem unprofessional.", proof: "Staff Quiz Results" }
             ]
         },
@@ -2284,7 +2284,7 @@ const theme_park_ops_pack: PremiumPack = {
                 { id: "FNB-RETAIL-01", description: "Conduct daily food safety and hygiene audits of all F&B outlets.", priority: "High", riskLevel: "High", consequence: "A food poisoning outbreak can sicken thousands of guests and cause a PR disaster.", proof: "Hygiene Audit Report" },
                 { id: "FNB-RETAIL-02", description: "Manage inventory levels to meet demand without excessive waste.", priority: "High", riskLevel: "High", consequence: "Running out of popular items is a major source of lost revenue.", proof: "Inventory Management System" },
                 { id: "FNB-RETAIL-03", description: "Reconcile cash and sales for each outlet at the end of the day.", priority: "High", riskLevel: "High", consequence: "Essential for financial accounting and fraud detection.", proof: "Sales Reconciliation Report" },
-                { id: "FNB-RETAIL-04", description: "Ensure all staff are trained in food handling and customer service.", priority: "High", riskLevel: "High", consequence: "Untrained staff are unsafe and provide poor service.", proof: "Training Records" },
+                { id: "FNB-RETAIL-04", description: "Ensure all staff are trained in food handling and customer service.", priority: "High", riskLevel: "High", consequence: "Untrained staff are a food safety and customer service liability.", proof: "Training Records" },
                 { id: "FNB-RETAIL-05", description: "Maintain consistent pricing and promotions across all outlets.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent pricing confuses and frustrates guests.", proof: "Pricing Audit" },
                 { id: "FNB-RETAIL-06", description: "Manage supplier relationships and deliveries.", priority: "High", riskLevel: "High", consequence: "Ensures a steady supply of quality ingredients and merchandise.", proof: "Supplier Contracts" },
                 { id: "FNB-RETAIL-07", description: "Handle customer complaints related to F&B or retail purchases.", priority: "High", riskLevel: "High", consequence: "Poor complaint handling can lead to negative online reviews.", proof: "Complaint Log" },
@@ -2304,7 +2304,7 @@ const theme_park_ops_pack: PremiumPack = {
                 { id: "STAFF-TP-01", description: "Provide comprehensive orientation for all new hires.", priority: "High", riskLevel: "Medium", consequence: "Ensures new staff understand the park's culture and safety standards from day one.", proof: "Orientation Schedule" },
                 { id: "STAFF-TP-02", description: "Conduct job-specific training for all roles (ride operator, F&B, etc.).", priority: "High", riskLevel: "High", consequence: "Untrained staff are unsafe and provide poor service.", proof: "Training Modules" },
                 { id: "STAFF-TP-03", description: "Provide mandatory safety and emergency response training.", priority: "High", riskLevel: "High", consequence: "The most important training to ensure guest and staff safety.", proof: "Safety Training Records" },
-                { id: "STAFF-TP-04", description: "Train staff on customer service standards and guest interaction.", priority: "High", riskLevel: "Medium", consequence: "Friendly, helpful staff are key to a positive guest experience.", proof: "Customer Service Training Log" },
+                { id: "STAFF-TP-04", description: "Train staff on customer service standards and guest interaction.", priority: "High", riskLevel: "High", consequence: "Friendly, helpful staff are key to a positive guest experience.", proof: "Customer Service Training Log" },
                 { id: "STAFF-TP-05", description: "Conduct regular performance reviews and provide feedback.", priority: "High", riskLevel: "Medium", consequence: "Helps employees to grow and improve.", proof: "Performance Review Forms" },
                 { id: "STAFF-TP-06", description: "Maintain a skills matrix for all employees.", priority: "Medium", riskLevel: "Medium", consequence: "Helps to identify training needs and plan for succession.", proof: "Skills Matrix" },
                 { id: "STAFF-TP-07", description: "Offer opportunities for cross-training and career development.", priority: "Medium", riskLevel: "Low", consequence: "Improves employee morale and retention.", proof: "Development Plans" },
@@ -3109,13 +3109,108 @@ export const premiumPacks: PremiumPack[] = [
                     { id: `${pack.id.substring(0,3).toUpperCase()}-07`, description: "Placeholder Task 7: Review customer feedback.", priority: "Medium", riskLevel: "Medium", consequence: "Missed improvement opportunities.", proof: "Feedback summary.", location: "Office" },
                     { id: `${pack.id.substring(0,3).toUpperCase()}-08`, description: "Placeholder Task 8: End-of-day reporting.", priority: "High", riskLevel: "Low", consequence: "Lack of data.", proof: "Daily report.", location: "Office" },
                     { id: `${pack.id.substring(0,3).toUpperCase()}-09`, description: "Placeholder Task 9: Secure premises at close.", priority: "High", riskLevel: "High", consequence: "Security breach.", proof: "Security log.", location: "Perimeter" },
-                    { id: `${pack.id.substring(0,3).toUpperCase()}-10`, description: "Placeholder Task 10: Plan for next day.", priority: "Medium", riskLevel: "Low", consequence: "Unprepared start.", proof: "Next day's plan.", location: "Office" }
+                    { id: "SOP-ST-04", description: "Post-trip 'Bus Clear' check: Driver/attendant must walk the bus aisle to ensure no child is left behind.", priority: "High", riskLevel: "High", consequence: "Child left on bus, leading to potential heatstroke or fatality.", proof: "Signed 'Bus Clear' checklist for every trip." },
+                    { id: "SOP-ST-05", description: "Maintain a log of student attendance for both morning and afternoon trips.", priority: "High", riskLevel: "Medium", consequence: "Inability to account for a missing child.", proof: "Student attendance register." },
+                    { id: "SOP-ST-06", description: "Check that first-aid kits and fire extinguishers on all buses are stocked and not expired.", priority: "High", riskLevel: "High", consequence: "Inability to respond to a medical emergency or fire.", proof: "Weekly bus safety checklist." },
+                    { id: "SOP-ST-07", description: "Ensure drivers adhere to speed limits and safe driving practices.", priority: "High", riskLevel: "High", consequence: "Accidents, injuries.", proof: "GPS speed monitoring reports, random inspections." },
+                    { id: "SOP-ST-08", description: "Drop-off only to authorized guardians at designated stops.", priority: "High", riskLevel: "High", consequence: "Child handed over to an unauthorized person.", proof: "Guardian ID card verification." }
+                ]
+            },
+            {
+                title: "Campus Safety & Security Audit",
+                department: "Security",
+                frequency: "Weekly",
+                role: "Security Supervisor",
+                summary: "A weekly audit to ensure the entire campus is safe and secure for students and staff.",
+                icon: "shield",
+                tasks: [
+                    { id: "SOP-CS-01", description: "Inspect perimeter fencing/walls for any breaches or potential unauthorized entry points.", priority: "High", riskLevel: "High", consequence: "Intruder access to campus.", proof: "Perimeter patrol log." },
+                    { id: "SOP-CS-02", description: "Verify all CCTV cameras are functional, recording, and have clear lines of sight.", priority: "High", riskLevel: "High", consequence: "Inability to investigate incidents.", proof: "CCTV health check report." },
+                    { id: "SOP-CS-03", description: "Check that all security guards are at their posts, alert, and in proper uniform.", priority: "High", riskLevel: "Medium", consequence: "Security gaps, unprofessional appearance.", proof: "Guard duty roster and spot checks." },
+                    { id: "SOP-CS-04", description: "Test a sample of emergency alarms (fire, lockdown) to ensure they are audible.", priority: "High", riskLevel: "High", consequence: "Alarm failure in a real emergency.", proof: "Alarm test log." },
+                    { id: "SOP-CS-05", description: "Inspect playground equipment for any damage, sharp edges, or structural issues.", priority: "High", riskLevel: "High", consequence: "Child injury.", proof: "Playground inspection checklist with photos." },
+                    { id: "SOP-CS-06", description: "Ensure all restricted areas (e.g., utility rooms, chemical stores) are locked and access-controlled.", priority: "High", riskLevel: "Medium", consequence: "Student access to hazardous areas.", proof: "Physical check of doors." },
+                    { id: "SOP-CS-07", description: "Verify that visitor management procedures are being followed at the main gate.", priority: "High", riskLevel: "High", consequence: "Unauthorized visitors on campus.", proof: "Audit of visitor logbook." },
+                    { id: "SOP-CS-08", description: "Check that all fire extinguishers are accessible, inspected, and not expired.", priority: "High", riskLevel: "High", consequence: "Inability to control a small fire.", proof: "Fire extinguisher inspection tags." }
+                ]
+            },
+            {
+                title: "Visitor Management Protocol",
+                department: "Security/Admin",
+                frequency: "Ongoing",
+                role: "Security Guard/Receptionist",
+                summary: "A strict protocol to screen and track all visitors on campus.",
+                icon: "user-check",
+                tasks: [
+                    { id: "SOP-VM-01", description: "All visitors must enter through a single, designated entry point.", priority: "High", riskLevel: "High", consequence: "Uncontrolled access to the campus.", proof: "Gate procedure document." },
+                    { id: "SOP-VM-02", description: "Verify visitor's identity with a government-issued photo ID.", priority: "High", riskLevel: "High", consequence: "Anonymous or fraudulent entry.", proof: "Visitor logbook." },
+                    { id: "SOP-VM-03", description: "Confirm the purpose of the visit and verify the appointment with the relevant staff member.", priority: "High", riskLevel: "Medium", consequence: "Unscheduled visitors disrupting school activities.", proof: "Log of verification calls." },
+                    { id: "SOP-VM-04", description: "Log visitor details (name, photo, contact, person to meet, time in) in a digital or physical register.", priority: "High", riskLevel: "Medium", consequence: "No record of who is on campus.", proof: "Visitor register." },
+                    { id: "SOP-VM-05", description: "Issue a clearly identifiable visitor's badge to be worn at all times.", priority: "High", riskLevel: "Low", consequence: "Inability to distinguish visitors from staff.", proof: "Badge issuance log." },
+                    { id: "SOP-VM-06", description: "Visitors must be escorted by a staff member in all student areas.", priority: "High", riskLevel: "High", consequence: "Unsupervised contact between visitors and students.", proof: "CCTV footage review." },
+                    { id: "SOP-VM-07", description: "Log the visitor's exit time and retrieve the visitor's badge.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate record of who is still on campus during an emergency.", proof: "Visitor register." },
+                    { id: "SOP-VM-08", description: "Prohibit unauthorized photography or videography on campus.", priority: "Medium", riskLevel: "High", consequence: "Student privacy violations.", proof: "Signage and verbal instructions to visitors." }
+                ]
+            },
+            {
+                title: "Classroom & Lab Safety",
+                department: "Academics/Admin",
+                frequency: "Monthly",
+                role: "Admin Supervisor",
+                summary: "Ensures all learning spaces are safe and free from hazards.",
+                icon: "school",
+                tasks: [
+                    { id: "SOP-CL-01", description: "Inspect classroom furniture for stability and sharp edges.", priority: "Medium", riskLevel: "Medium", consequence: "Student injury from broken furniture.", proof: "Classroom inspection form." },
+                    { id: "SOP-CL-02", description: "Ensure all electrical outlets are covered and wiring is not exposed.", priority: "High", riskLevel: "High", consequence: "Electric shock.", proof: "Classroom inspection form." },
+                    { id: "SOP-CL-03", description: "Check that heavy items (e.g., projectors, shelves) are securely mounted.", priority: "High", riskLevel: "High", consequence: "Falling objects causing injury.", proof: "Classroom inspection form." },
+                    { id: "SOP-CL-04", description: "Science Labs: Verify eyewash stations and safety showers are functional and tested weekly.", priority: "High", riskLevel: "High", consequence: "Inability to treat chemical splashes.", proof: "Lab safety logbook." },
+                    { id: "SOP-CL-05", description: "Science Labs: Ensure all chemicals are correctly labeled and stored in locked cabinets.", priority: "High", riskLevel: "High", consequence: "Chemical spills, student access to hazardous materials.", proof: "Photo of chemical storage." },
+                    { id: "SOP-CL-06", description: "Science Labs: Check availability and condition of Personal Protective Equipment (PPE) like goggles and lab coats.", priority: "High", riskLevel: "Medium", consequence: "Student injuries during experiments.", proof: "PPE inventory checklist." },
+                    { id: "SOP-CL-07", description: "Ensure all fire extinguishers in labs and classrooms are accessible and inspected.", priority: "High", riskLevel: "High", consequence: "Inability to control a fire.", proof: "Fire extinguisher inspection tags." },
+                    { id: "SOP-CL-08", description: "Verify that emergency evacuation maps are posted in every classroom and lab.", priority: "Medium", riskLevel: "Low", consequence: "Confusion during an evacuation.", proof: "Visual check." }
+                ]
+            },
+             {
+                title: "Admissions & Enrolment Process",
+                department: "Admissions",
+                frequency: "Per Admission Cycle",
+                role: "Admissions Officer",
+                icon: 'user-plus',
+                summary: "Ensures a fair, transparent, and efficient admissions process.",
+                tasks: [
+                    { id: "ADM-01", description: "Publish clear admission criteria and timelines.", priority: "High", riskLevel: "Medium", consequence: "Allegations of unfairness.", proof: "Admissions Prospectus" },
+                    { id: "ADM-02", description: "Use a standardized application form.", priority: "High", riskLevel: "High", consequence: "Inconsistent data collection.", proof: "Application Form" },
+                    { id: "ADM-03", description: "Track all applications in a centralized system.", priority: "High", riskLevel: "High", consequence: "Lost applications.", proof: "Admissions Dashboard" },
+                    { id: "ADM-04", description: "Conduct parent interviews/student assessments consistently.", priority: "High", riskLevel: "High", consequence: "Accusations of favoritism.", proof: "Interview Scorecards" },
+                    { id: "ADM-05", description: "Communicate admission decisions on a specified date.", priority: "High", riskLevel: "High", consequence: "Parent anxiety and complaints.", proof: "Communication Log" },
+                    { id: "ADM-06", description: "Collect all required documents for admitted students.", priority: "High", riskLevel: "High", consequence: "Regulatory compliance issues.", proof: "Document Checklist" },
+                    { id: "ADM-07", description: "Process admission fees and issue receipts.", priority: "High", riskLevel: "High", consequence: "Financial errors.", proof: "Fee Receipt" },
+                    { id: "ADM-08", description: "Conduct an orientation program for new students/parents.", priority: "High", riskLevel: "Medium", consequence: "Poor onboarding experience.", proof: "Orientation Schedule" },
+                    { id: "ADM-09", description: "Handover student data to academic department.", priority: "High", riskLevel: "Medium", consequence: "Teachers lack key student info.", proof: "Handover Document" },
+                    { id: "ADM-10", description: "Analyze admissions data for future outreach.", priority: "Medium", riskLevel: "Low", consequence: "Missed marketing opportunities.", proof: "Data Analysis Report" }
+                ]
+            },
+            {
+                title: "Examination & Report Card SOP",
+                department: "Academics",
+                frequency: "Per Examination Cycle",
+                role: "Examination Controller",
+                icon: 'graduation-cap',
+                summary: "Ensures the integrity and accuracy of the examination and reporting process.",
+                tasks: [
+                    { id: "EXAM-01", description: "Securely handle and store question papers before the exam.", priority: "High", riskLevel: "High", consequence: "Leaked paper compromises exam integrity.", proof: "Secure Storage Log" },
+                    { id: "EXAM-02", description: "Follow a strict protocol for exam invigilation to prevent cheating.", priority: "High", riskLevel: "High", consequence: "Widespread cheating devalues the exam.", proof: "Invigilation Duty Roster" },
+                    { id: "EXAM-03", description: "Implement a fair and anonymous process for grading answer sheets.", priority: "High", riskLevel: "High", consequence: "Allegations of biased grading.", proof: "Grading Policy Document" },
+                    { id: "EXAM-04", description: "Have a dual-check process for tabulating marks and grades.", priority: "High", riskLevel: "High", consequence: "Incorrect report cards cause student distress.", proof: "Verification Log" },
+                    { id: "EXAM-05", description: "Perform a final QC check on report cards before printing.", priority: "High", riskLevel: "High", consequence: "Errors reflect poorly on the school.", proof: "QC Sign-off Sheet" },
+                    { id: "EXAM-06", description: "Publish results and distribute report cards on a pre-announced date.", priority: "High", riskLevel: "Medium", consequence: "Delays cause anxiety.", proof: "Distribution Log" },
+                    { id: "EXAM-07", description: "Have a clear process for re-evaluation or grade clarifications.", priority: "High", riskLevel: "Medium", consequence: "Feelings of unfairness among students.", proof: "Re-evaluation Policy" },
+                    { id: "EXAM-08", description: "Securely archive all examination records.", priority: "High", riskLevel: "High", consequence: "Compliance issues.", proof: "Archive Log" },
+                    { id: "EXAM-09", description: "Ensure seating arrangement prevents cheating.", priority: "High", riskLevel: "High", consequence: "Facilitates cheating.", proof: "Seating Plan" },
+                    { id: "EXAM-10", description: "Provide accommodations for students with special needs.", priority: "High", riskLevel: "High", consequence: "Violation of disability rights.", proof: "Accommodations Log" }
                 ]
             }
         ];
     }
     return pack;
 });
-
-    
-
