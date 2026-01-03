@@ -756,7 +756,7 @@ const fashion_and_apparel_retail: PremiumPack = {
             tasks: [
                 { id: "CH-01", description: "Reconcile cash drawer against POS report at end of shift.", priority: "High", riskLevel: "High", consequence: "Unreconciled drawers can hide cash theft or major accounting errors.", proof: "Shift Reconciliation Form" },
                 { id: "CH-02", description: "Prepare and log daily cash deposits for bank.", priority: "High", riskLevel: "High", consequence: "Delays in deposits increase the risk of theft from the store.", proof: "Deposit Slip" },
-                { id: "CH-03", description: "Use counterfeit detection methods for all large bills.", priority: "High", riskLevel: "High", consequence: "Accepting counterfeit currency is a direct financial loss.", proof: "Counterfeit Check" },
+                { id: "CH-03", description: "Use counterfeit detection methods for all large bills.", priority: "High", riskLevel: "High", consequence: "Accepting fake currency is a direct financial loss.", proof: "Counterfeit Check" },
                 { id: "CH-04", description: "Store cash securely in a locked safe.", priority: "High", riskLevel: "High", consequence: "Leaving cash unsecured is a major theft risk.", proof: "Safe Access Log" },
                 { id: "CH-05", description: "Manager to verify and sign off on all daily cash reports.", priority: "High", riskLevel: "High", consequence: "Provides a second layer of accountability for all cash handling.", proof: "Signed Report" },
                 { id: "CH-06", description: "Limit the amount of cash kept in the POS drawer.", priority: "High", riskLevel: "High", consequence: "Minimizes the potential loss during a till snatch or robbery.", proof: "Cash Limit Policy" },
@@ -832,7 +832,188 @@ const jewelry_and_luxury_retail: PremiumPack = {
         { text: "Ensure regulatory compliance with robust customer verification (KYC) processes.", icon: "user-check" },
         { text: "Build customer trust with a secure and transparent repair and service intake process.", icon: "wrench" }
     ],
-    checklists: []
+    checklists: [
+        {
+            title: "Opening & Closing Security Protocol",
+            department: "Security/Operations",
+            frequency: "Daily",
+            role: "Store Manager",
+            summary: "Ensures the store is secure before opening and after closing.",
+            icon: "shield",
+            tasks: [
+                { id: "JLR-SEC-01", description: "Perform dual-person vault opening and closing procedure.", priority: "High", riskLevel: "High", consequence: "Prevents single-person access to high-value inventory, drastically reducing the risk of internal theft.", proof: "Vault Access Log" },
+                { id: "JLR-SEC-02", description: "Log deactivation and activation of the main security alarm.", priority: "High", riskLevel: "High", consequence: "Creates a clear audit trail for any after-hours security events and ensures the store is never left unprotected.", proof: "Alarm Log" },
+                { id: "JLR-SEC-03", description: "Conduct a full inventory count of all display cases at opening and closing.", priority: "High", riskLevel: "High", consequence: "Immediately identifies any missing items, allowing for rapid investigation before evidence is lost or CCTV footage is overwritten.", proof: "Display Inventory Sheet" },
+                { id: "JLR-SEC-04", description: "Verify all CCTV cameras are recording and have unobstructed views.", priority: "High", riskLevel: "High", consequence: "Ensures that in the event of a robbery or theft, there is clear, usable evidence for law enforcement and insurance claims.", proof: "CCTV Check Log" },
+                { id: "JLR-SEC-05", description: "Test silent panic alarms daily before opening.", priority: "High", riskLevel: "High", consequence: "Guarantees that staff can silently alert security or police during a robbery without escalating the situation.", proof: "Panic Alarm Test Log" },
+                { id: "JLR-SEC-06", description: "Check entry/exit logs from previous day.", priority: "Medium", riskLevel: "Medium", consequence: "Helps identify any unusual after-hours activity.", proof: "Log Review" },
+                { id: "JLR-SEC-07", description: "Confirm all display cases are locked and secure.", priority: "High", riskLevel: "High", consequence: "An unlocked case is an easy target for a smash-and-grab theft.", proof: "Visual Confirmation" },
+                { id: "JLR-SEC-08", description: "Ensure all staff have their IDs visible.", priority: "Medium", riskLevel: "Low", consequence: "Helps quickly identify any unauthorized individuals on the floor.", proof: "Visual Check" },
+                { id: "JLR-SEC-09", description: "Verify alarm system communication with monitoring center.", priority: "High", riskLevel: "High", consequence: "A system that isn't communicating provides a false sense of security.", proof: "System Test" },
+                { id: "JLR-SEC-10", description: "Document any security anomalies from the previous night.", priority: "High", riskLevel: "Medium", consequence: "Provides data for identifying patterns or recurring security weaknesses.", proof: "Incident Report" }
+            ]
+        },
+        {
+            title: "High-Value Transaction SOP",
+            department: "Sales",
+            frequency: "Per Transaction",
+            role: "Senior Sales Associate",
+            summary: "A strict protocol for handling high-value sales to prevent fraud.",
+            icon: "circle-dollar-sign",
+            tasks: [
+                { id: "JLR-SALE-01", description: "Verify government-issued ID for any purchase over a set threshold.", priority: "High", riskLevel: "High", consequence: "A primary defense against the use of stolen credit cards or fraudulent identities.", proof: "ID Scan/Copy" },
+                { id: "JLR-SALE-02", description: "Require secondary manager approval for very large or unusual transactions.", priority: "High", riskLevel: "High", consequence: "Provides a second set of eyes to spot red flags that a junior employee might miss under pressure.", proof: "Manager Sign-off" },
+                { id: "JLR-SALE-03", description: "Use counterfeit detection pens/machines for all large cash transactions.", priority: "High", riskLevel: "High", consequence: "Accepting counterfeit currency is a direct and unrecoverable financial loss.", proof: "Counterfeit Check Log" },
+                { id: "JLR-SALE-04", description: "Follow specific protocols for verifying digital payments and flagging potential fraud.", priority: "High", riskLevel: "High", consequence: "Digital payment fraud is sophisticated; a checklist ensures all verification steps are taken.", proof: "Payment Verification Checklist" },
+                { id: "JLR-SALE-05", description: "Log details of any suspicious transaction attempts.", priority: "High", riskLevel: "High", consequence: "This data is invaluable for training staff and sharing with other stores or law enforcement.", proof: "Suspicious Activity Report" },
+                { id: "JLR-SALE-06", description: "Confirm customer contact information for high-value sales.", priority: "Medium", riskLevel: "Medium", consequence: "Essential for follow-up, clienteling, and in case of any transaction issues.", proof: "CRM Entry" },
+                { id: "JLR-SALE-07", description: "For international cards, call for authorization.", priority: "High", riskLevel: "High", consequence: "A common vector for high-value credit card fraud.", proof: "Call Log" },
+                { id: "JLR-SALE-08", description: "Ensure proper documentation for tax-free sales.", priority: "High", riskLevel: "Medium", consequence: "Failure to do so can lead to tax penalties.", proof: "Tax Form" },
+                { id: "JLR-SALE-09", description: "Double-check packaging and boxing in front of customer.", priority: "High", riskLevel: "Low", consequence: "Prevents claims that the wrong item was boxed.", proof: "Visual Confirmation" },
+                { id: "JLR-SALE-10", description: "Provide customer with all necessary certificates and warranty cards.", priority: "High", riskLevel: "Low", consequence: "Essential for customer satisfaction and future service needs.", proof: "Document Handover" }
+            ]
+        },
+        {
+            title: "Serialized Item & Watch Management",
+            department: "Inventory",
+            frequency: "Ongoing",
+            role: "Inventory Manager",
+            summary: "Tracks every unique high-value item to prevent theft and swapping.",
+            icon: "watch",
+            tasks: [
+                { id: "JLR-INV-01", description: "Log the unique serial number of every watch and serialized item upon receipt.", priority: "High", riskLevel: "High", consequence: "Without this, inventory tracking is impossible and theft is easy to conceal.", proof: "GRN Serial Log" },
+                { id: "JLR-INV-02", description: "Store high-value watches and items in a separate, access-controlled area.", priority: "High", riskLevel: "High", consequence: "Leaving high-value items in general storage increases theft risk.", proof: "Secure Storage Log" },
+                { id: "JLR-INV-03", description: "Maintain a detailed chain-of-custody log for items sent out for repair or certification.", priority: "High", riskLevel: "High", consequence: "An item can be \"lost\" or swapped while outside the store without a clear log.", proof: "Chain of Custody Form" },
+                { id: "JLR-INV-04", description: "Conduct weekly audits of serialized inventory against system records.", priority: "High", riskLevel: "High", consequence: "Allows for rapid detection of missing items.", proof: "Audit Report" },
+                { id: "JLR-INV-05", description: "Match serial number at point of sale to prevent swapping.", priority: "High", riskLevel: "High", consequence: "The final check to ensure a customer is not leaving with a swapped, fake item.", proof: "POS Scan Log" },
+                { id: "JLR-INV-06", description: "Photograph each serialized item upon receipt.", priority: "High", riskLevel: "Medium", consequence: "Provides a visual record of condition to prevent fraudulent damage claims.", proof: "Photo Log" },
+                { id: "JLR-INV-07", description: "Update inventory system immediately upon sale.", priority: "High", riskLevel: "High", consequence: "A delay can lead to the system showing stock that has already been sold.", proof: "System Entry" },
+                { id: "JLR-INV-08", description: "Report any serial number discrepancies immediately.", priority: "High", riskLevel: "High", consequence: "Delay allows a thief to get away or evidence to be lost.", proof: "Incident Report" },
+                { id: "JLR-INV-09", description: "Verify serial number matches on box, certificate, and item.", priority: "High", riskLevel: "High", consequence: "A mismatch can indicate a counterfeit item or a swapped component.", proof: "Triple Check Log" },
+                { id: "JLR-INV-10", description: "Securely destroy old serial number records after statutory period.", priority: "Medium", riskLevel: "Low", consequence: "Old records can pose a data privacy risk if not handled correctly.", proof: "Destruction Log" }
+            ]
+        },
+        {
+            title: "Display Case & Vault Security",
+            department: "Security",
+            frequency: "Daily",
+            role: "Security Supervisor",
+            summary: "Daily checks to ensure physical security measures are in place and functional.",
+            icon: "lock",
+            tasks: [
+                { id: "JLR-DISP-01", description: "Physically check the locks on every display case at the end of the day.", priority: "High", riskLevel: "High", consequence: "An unlocked case is the single biggest vulnerability to a simple \"smash and grab\" theft.", proof: "Lock Check Log" },
+                { id: "JLR-DISP-02", description: "Verify the vault door is properly locked and secured after closing.", priority: "High", riskLevel: "High", consequence: "The final and most critical security layer; failure here is catastrophic.", proof: "Vault Security Log" },
+                { id: "JLR-DISP-03", description: "Test motion sensors and panic buttons weekly.", priority: "High", riskLevel: "High", consequence: "A malfunctioning sensor or button provides a false sense of security and will fail when needed most.", proof: "Alarm Test Log" },
+                { id: "JLR-DISP-04", description: "Ensure all keys are accounted for and stored securely.", priority: "High", riskLevel: "High", consequence: "A missing key can compromise the entire store's security.", proof: "Key Log" },
+                { id: "JLR-DISP-05", description: "Audit display lighting to ensure all items are well-illuminated.", priority: "Medium", riskLevel: "Low", consequence: "Poor lighting not only hurts sales but can also obscure the view of CCTV cameras.", proof: "Lighting Check" },
+                { id: "JLR-DISP-06", description: "Ensure display case glass is clean and free of cracks.", priority: "Medium", riskLevel: "Medium", consequence: "A crack can compromise the integrity of the glass, making it easier to break.", proof: "Visual Check" },
+                { id: "JLR-DISP-07", description: "Check for any signs of tampering with display cases.", priority: "High", riskLevel: "High", consequence: "Thieves may attempt to subtly disable locks or alarms before a robbery attempt.", proof: "Tamper Check Log" },
+                { id: "JLR-DISP-08", description: "Verify that vault combination is changed periodically.", priority: "High", riskLevel: "High", consequence: "Old combinations known by former employees pose a major internal threat.", proof: "Combination Change Log" },
+                { id: "JLR-DISP-09", description: "Ensure vault is clean and organized.", priority: "Medium", riskLevel: "Low", consequence: "A disorganized vault can lead to misplaced or damaged inventory.", proof: "Visual Check" },
+                { id: "JLR-DISP-10", description: "Review vault access logs for any unauthorized entries.", priority: "High", riskLevel: "High", consequence: "Helps detect internal security breaches or unauthorized access attempts.", proof: "Log Review" }
+            ]
+        },
+        {
+            title: "Inventory Auditing (Cycle Count)",
+            department: "Inventory",
+            frequency: "Daily",
+            role: "Auditor",
+            summary: "Regular, targeted inventory counts to ensure accuracy and deter theft.",
+            icon: "clipboard-check",
+            tasks: [
+                { id: "JA-AUDIT-01", description: "Perform daily random cycle counts on selected high-value categories.", priority: "High", riskLevel: "High", consequence: "Allows for the immediate detection of theft or loss of the most valuable items.", proof: "Cycle Count Sheets" },
+                { id: "JA-AUDIT-02", description: "Investigate and resolve any discrepancies within 24 hours.", priority: "High", riskLevel: "High", consequence: "The trail goes cold quickly; immediate investigation is key to recovery or identifying the cause.", proof: "Discrepancy Report" },
+                { id: "JA-AUDIT-03", description: "Conduct counts in teams of two for high-value areas.", priority: "High", riskLevel: "High", consequence: "The two-person rule prevents a single individual from falsifying count records to conceal theft.", proof: "Count Team Roster" },
+                { id: "JA-AUDIT-04", description: "Secure the area being audited to prevent stock movement.", priority: "High", riskLevel: "Medium", consequence: "Items being moved during a count can lead to inaccurate results.", proof: "Audit Procedure" },
+                { id: "JA-AUDIT-05", description: "Reconcile physical counts with system inventory and report to management.", priority: "High", riskLevel: "High", consequence: "Provides management with an accurate picture of inventory health and shrinkage.", proof: "Final Audit Report" },
+                { id: "JA-AUDIT-06", description: "Use barcode scanners for accuracy during counts.", priority: "High", riskLevel: "High", consequence: "Manual counting is prone to human error.", proof: "Scan Logs" },
+                { id: "JA-AUDIT-07", description: "Freeze system inventory during full stock takes.", priority: "High", riskLevel: "High", consequence: "Transactions during a count will lead to incorrect final numbers.", proof: "System Setting" },
+                { id: "JA-AUDIT-08", description: "Document reasons for all inventory adjustments.", priority: "High", riskLevel: "High", consequence: "An undocumented adjustment can be a way to hide theft.", proof: "Adjustment Notes" },
+                { id: "JA-AUDIT-09", description: "Rotate audit locations and categories regularly.", priority: "Medium", riskLevel: "Medium", consequence: "Predictable audits can be exploited by knowledgeable thieves.", proof: "Audit Schedule" },
+                { id: "JA-AUDIT-10", description: "Manager to sign off on all final audit reports.", priority: "High", riskLevel: "High", consequence: "Ensures management accountability for inventory accuracy.", proof: "Signed Report" }
+            ]
+        },
+        {
+            title: "Customer Verification (KYC)",
+            department: "Sales",
+            frequency: "Per High-Value Transaction",
+            role: "Senior Sales Associate",
+            summary: "A protocol to verify customer identity for large transactions, preventing fraud and ensuring compliance.",
+            icon: "user-check",
+            tasks: [
+                { id: "CV-01", description: "Collect and verify government-issued photo ID for purchases over the KYC threshold.", priority: "High", riskLevel: "High", consequence: "A legal requirement for high-value transactions to prevent money laundering.", proof: "ID Scan/Copy" },
+                { id: "CV-02", description: "Match the name on the credit card to the customer's ID.", priority: "High", riskLevel: "High", consequence: "The most basic and effective check against credit card fraud.", proof: "Visual Check" },
+                { id: "CV-03", description: "For large transactions, perform a quick online search to verify customer profile.", priority: "Medium", riskLevel: "Medium", consequence: "Can help spot red flags or inconsistencies in a customer's story.", proof: "Search Log" },
+                { id: "CV-04", description: "Document all verification steps in the customer's transaction record.", priority: "High", riskLevel: "High", consequence: "Creates an audit trail to prove due diligence was performed.", proof: "Transaction Notes" },
+                { id: "CV-05", description: "Flag any suspicious behavior for a manager's review before proceeding.", priority: "High", riskLevel: "High", consequence: "Empowers staff to pause a transaction they feel is suspicious.", proof: "Manager Alert" },
+                { id: "CV-06", description: "Follow AML (Anti-Money Laundering) guidelines for large cash transactions.", priority: "High", riskLevel: "High", consequence: "Non-compliance can lead to severe legal penalties for the business.", proof: "AML Form" },
+                { id: "CV-07", description: "Record customer details accurately for future communication.", priority: "High", riskLevel: "Medium", consequence: "Critical for building a long-term client relationship.", proof: "CRM Entry" },
+                { id: "CV-08", description: "Check against any internal watchlists for known fraudsters.", priority: "High", riskLevel: "High", consequence: "Prevents repeat fraud attempts by known individuals.", proof: "Watchlist Check" },
+                { id: "CV-09", description: "For corporate purchases, verify business registration details.", priority: "High", riskLevel: "High", consequence: "Ensures the purchase is legitimate and authorized by the company.", proof: "Business Document Copy" },
+                { id: "CV-10", description: "Retain verification documents securely and in compliance with privacy laws.", priority: "High", riskLevel: "High", consequence: "Mishandling high-net-worth individual data is a major legal risk.", proof: "Secure Storage Log" }
+            ]
+        },
+        {
+            title: "Repair & Service Management",
+            department: "After-Sales",
+            frequency: "Per Item",
+            role: "Service Manager",
+            summary: "A secure process for handling customer items for repair or servicing.",
+            icon: "wrench",
+            tasks: [
+                { id: "RSM-01", description: "Photograph and document the condition of every item received for repair.", priority: "High", riskLevel: "High", consequence: "Prevents fraudulent claims that the store damaged the item.", proof: "Intake Form with Photos" },
+                { id: "RSM-02", description: "Create a detailed job sheet with estimated costs and timeline.", priority: "High", riskLevel: "Medium", consequence: "Prevents disputes over repair costs and duration.", proof: "Job Sheet" },
+                { id: "RSM-03", description: "Obtain written customer approval before proceeding with any work.", priority: "High", riskLevel: "High", consequence: "Protects the store from claims of unauthorized repairs.", proof: "Signed Approval" },
+                { id: "RSM-04", description: "Store all customer items in a dedicated, secure, and insured location.", priority: "High", riskLevel: "High", consequence: "Losing or having a customer's high-value item stolen is a major financial and reputational disaster.", proof: "Storage Log" },
+                { id: "RSM-05", description: "Verify customer identity upon collection of the serviced item.", priority: "High", riskLevel: "High", consequence: "Prevents handing over a valuable item to the wrong person.", proof: "ID Check Log" },
+                { id: "RSM-06", description: "Track repair status and provide updates to the customer.", priority: "High", riskLevel: "Medium", consequence: "Lack of communication leads to customer frustration.", proof: "Communication Log" },
+                { id: "RSM-07", description: "Inspect the item after repair to ensure quality.", priority: "High", riskLevel: "High", consequence: "Returning an item that is still faulty leads to extreme customer dissatisfaction.", proof: "QC Check" },
+                { id: "RSM-08", description: "Securely package the item for return to the customer.", priority: "High", riskLevel: "Low", consequence: "Protects the item from damage after it leaves the store.", proof: "Packaging Check" },
+                { id: "RSM-09", description: "Process payment for repairs accurately.", priority: "High", riskLevel: "Medium", consequence: "Billing errors can lead to disputes.", proof: "Invoice" },
+                { id: "RSM-10", description: "Log all repair details for future reference and warranty claims.", priority: "High", riskLevel: "Medium", consequence: "Provides a valuable service history for the item.", proof: "Service History" }
+            ]
+        },
+        {
+            title: "Staff Training on Security Protocols",
+            department: "HR/Security",
+            frequency: "Quarterly",
+            role: "Security Manager",
+            summary: "Regular training to ensure all staff are vigilant and prepared for security threats.",
+            icon: "user-check",
+            tasks: [
+                { id: "STSP-01", description: "Conduct quarterly training on robbery response procedures.", priority: "High", riskLevel: "High", consequence: "In a robbery, untrained staff can panic and make dangerous mistakes.", proof: "Training Attendance Sheet" },
+                { id: "STSP-02", description: "Train staff to identify common signs of suspicious customer behavior.", priority: "High", riskLevel: "High", consequence: "Staff are the first line of defense; if they can't spot a threat, the store is vulnerable.", proof: "Training Module" },
+                { id: "STSP-03", description: "Drill staff on the correct procedure for showing high-value items to customers.", priority: "High", riskLevel: "High", consequence: "Prevents common theft tactics like \"swap\" or \"grab and run\".", proof: "Drill Log" },
+                { id: "STSP-04", description: "Review recent security incidents or attempts with the team.", priority: "Medium", riskLevel: "Medium", consequence: "Sharing information helps everyone learn and stay vigilant.", proof: "Meeting Minutes" },
+                { id: "STSP-05", description: "Test staff knowledge with quizzes on security protocols.", priority: "Medium", riskLevel: "Medium", consequence: "Verifies that training has been understood and retained.", proof: "Quiz Results" },
+                { id: "STSP-06", description: "Train staff on the use of panic buttons.", priority: "High", riskLevel: "High", consequence: "Ensures a rapid and silent call for help during an emergency.", proof: "Training Log" },
+                { id: "STSP-07", description: "Role-play different security scenarios with staff.", priority: "High", riskLevel: "High", consequence: "Builds muscle memory for how to react in a crisis.", proof: "Role-play Log" },
+                { id: "STSP-08", description: "Ensure all staff know the emergency contact numbers.", priority: "High", riskLevel: "High", consequence: "Critical for a fast response from police or management.", proof: "Contact List Check" },
+                { id: "STSP-09", description: "Provide training on handling difficult customers.", priority: "Medium", riskLevel: "Medium", consequence: "Helps de-escalate situations before they become security incidents.", proof: "Training Log" },
+                { id: "STSP-10", description: "Update training materials based on new threats or incidents.", priority: "High", riskLevel: "Medium", consequence: "Training must evolve as criminal tactics change.", proof: "Updated Materials" }
+            ]
+        },
+        {
+            title: "Insurance & Compliance",
+            department: "Finance/Legal",
+            frequency: "Annually",
+            role: "Compliance Officer",
+            summary: "Annual review of legal, regulatory, and insurance compliance.",
+            icon: "file-check",
+            tasks: [
+                { id: "IC-01", description: "Review all insurance policies annually to ensure adequate coverage.", priority: "High", riskLevel: "High", consequence: "Being underinsured can lead to financial ruin after a major theft or incident.", proof: "Insurance Policy Review" },
+                { id: "IC-02", description: "Verify compliance with all local laws regarding the sale of precious metals and gems.", priority: "High", riskLevel: "High", consequence: "Non-compliance can lead to heavy fines and loss of license.", proof: "Legal Compliance Checklist" },
+                { id: "IC-03", description: "Maintain all necessary documentation for potential police or tax audits.", priority: "High", riskLevel: "High", consequence: "Disorganized records can create major problems during an audit.", proof: "Audit File" },
+                { id: "IC-04", description: "Ensure BIS hallmarking compliance for all relevant jewelry.", priority: "High", riskLevel: "High", consequence: "A legal requirement in India that proves the purity of gold.", proof: "Hallmarking Records" },
+                { id: "IC-05", description: "Track and comply with any changes in import/export regulations.", priority: "High", riskLevel: "High", consequence: "Can lead to shipments being seized by customs.", proof: "Regulatory Update Log" },
+                { id: "IC-06", description: "Ensure compliance with anti-money laundering (AML) regulations.", priority: "High", riskLevel: "High", consequence: "High-value retail is a target for money laundering; non-compliance carries severe penalties.", proof: "AML Policy Review" },
+                { id: "IC-07", description: "Review data privacy policies for customer data.", priority: "High", riskLevel: "High", consequence: "Mishandling high-net-worth individual data is a major legal risk.", proof: "Privacy Policy Review" },
+                { id: "IC-08", description: "Verify compliance with labor laws for all staff.", priority: "High", riskLevel: "High", consequence: "Can lead to lawsuits and fines.", proof: "Labor Law Audit" },
+                { id: "IC-09", description: "Maintain records of all compliance-related training.", priority: "High", riskLevel: "High", consequence: "Proves due diligence to regulators.", proof: "Training Records" },
+                { id: "IC-10", description: "Conduct an annual compliance risk assessment.", priority: "High", riskLevel: "High", consequence: "Helps to proactively identify and mitigate new legal and regulatory risks.", proof: "Risk Assessment Report" }
+            ]
+        }
+    ]
 };
 
 const electronics_showroom_pack: PremiumPack = {
@@ -1611,60 +1792,126 @@ const school_operations_pack: PremiumPack = {
             ]
         },
         {
-            title: "Campus Safety & Security Audit",
+            title: "Visitor Management & Security",
             department: "Security",
-            frequency: "Weekly",
-            role: "Security Supervisor",
-            summary: "A weekly audit to ensure the entire campus is safe and secure for students and staff.",
-            icon: "shield",
-            tasks: [
-                { id: "SOP-CS-01", description: "Inspect perimeter fencing/walls for any breaches or potential unauthorized entry points.", priority: "High", riskLevel: "High", consequence: "Intruder access to campus.", proof: "Perimeter patrol log." },
-                { id: "SOP-CS-02", description: "Verify all CCTV cameras are functional, recording, and have clear lines of sight.", priority: "High", riskLevel: "High", consequence: "Inability to investigate incidents.", proof: "CCTV health check report." },
-                { id: "SOP-CS-03", description: "Check that all security guards are at their posts, alert, and in proper uniform.", priority: "High", riskLevel: "Medium", consequence: "Security gaps, unprofessional appearance.", proof: "Guard duty roster and spot checks." },
-                { id: "SOP-CS-04", description: "Test a sample of emergency alarms (fire, lockdown) to ensure they are audible.", priority: "High", riskLevel: "High", consequence: "Alarm failure in a real emergency.", proof: "Alarm test log." },
-                { id: "SOP-CS-05", description: "Inspect playground equipment for any damage, sharp edges, or structural issues.", priority: "High", riskLevel: "High", consequence: "Child injury.", proof: "Playground inspection checklist with photos." },
-                { id: "SOP-CS-06", description: "Ensure all restricted areas (e.g., utility rooms, chemical stores) are locked and access-controlled.", priority: "High", riskLevel: "Medium", consequence: "Student access to hazardous areas.", proof: "Physical check of doors." },
-                { id: "SOP-CS-07", description: "Verify that visitor management procedures are being followed at the main gate.", priority: "High", riskLevel: "High", consequence: "Unauthorized visitors on campus.", proof: "Audit of visitor logbook." },
-                { id: "SOP-CS-08", description: "Check that all fire extinguishers are accessible, inspected, and not expired.", priority: "High", riskLevel: "High", consequence: "Inability to control a small fire.", proof: "Fire extinguisher inspection tags." }
-            ]
-        },
-        {
-            title: "Visitor Management Protocol",
-            department: "Security/Admin",
             frequency: "Ongoing",
-            role: "Security Guard/Receptionist",
+            role: "Security Head",
             summary: "A strict protocol to screen and track all visitors on campus.",
             icon: "user-check",
             tasks: [
-                { id: "SOP-VM-01", description: "All visitors must enter through a single, designated entry point.", priority: "High", riskLevel: "High", consequence: "Uncontrolled access to the campus.", proof: "Gate procedure document." },
-                { id: "SOP-VM-02", description: "Verify visitor's identity with a government-issued photo ID.", priority: "High", riskLevel: "High", consequence: "Anonymous or fraudulent entry.", proof: "Visitor logbook." },
-                { id: "SOP-VM-03", description: "Confirm the purpose of the visit and verify the appointment with the relevant staff member.", priority: "High", riskLevel: "Medium", consequence: "Unscheduled visitors disrupting school activities.", proof: "Log of verification calls." },
-                { id: "SOP-VM-04", description: "Log visitor details (name, photo, contact, person to meet, time in) in a digital or physical register.", priority: "High", riskLevel: "Medium", consequence: "No record of who is on campus.", proof: "Visitor register." },
-                { id: "SOP-VM-05", description: "Issue a clearly identifiable visitor's badge to be worn at all times.", priority: "High", riskLevel: "Low", consequence: "Inability to distinguish visitors from staff.", proof: "Badge issuance log." },
-                { id: "SOP-VM-06", description: "Visitors must be escorted by a staff member in all student areas.", priority: "High", riskLevel: "High", consequence: "Unsupervised contact between visitors and students.", proof: "CCTV footage review." },
-                { id: "SOP-VM-07", description: "Log the visitor's exit time and retrieve the visitor's badge.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate record of who is still on campus during an emergency.", proof: "Visitor register." },
-                { id: "SOP-VM-08", description: "Prohibit unauthorized photography or videography on campus.", priority: "Medium", riskLevel: "High", consequence: "Student privacy violations.", proof: "Signage and verbal instructions to visitors." }
+                { id: "VIS-MG-01", description: "Verify government-issued ID for every visitor.", priority: "High", riskLevel: "High", consequence: "Unauthorized entry.", proof: "Visitor Logbook" },
+                { id: "VIS-MG-02", description: "Issue a visitor pass and ensure it is worn at all times.", priority: "High", riskLevel: "Medium", consequence: "Inability to identify authorized visitors.", proof: "Pass Issue Log" },
+                { id: "VIS-MG-03", description: "Check visitor against a pre-approved pickup list for student pickups.", priority: "High", riskLevel: "High", consequence: "Child picked up by unauthorized person.", proof: "Approved List" },
+                { id: "VIS-MG-04", description: "Escort all maintenance staff and vendors within the school premises.", priority: "High", riskLevel: "High", consequence: "Unsupervised access to student areas.", proof: "Escort Log" },
+                { id: "VIS-MG-05", description: "Conduct background checks for all long-term vendors and contractors.", priority: "High", riskLevel: "High", consequence: "Hiring individuals with criminal backgrounds.", proof: "Background Check Report" },
+                { id: "VIS-MG-06", description: "Monitor CCTV cameras covering entry/exit points.", priority: "High", riskLevel: "High", consequence: "No record of entries/exits.", proof: "CCTV Log" },
+                { id: "VIS-MG-07", description: "Ensure all visitors sign out upon leaving.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate record of who is on campus.", proof: "Visitor Logbook" },
+                { id: "VIS-MG-08", description: "Secure all gates and entrances after school hours.", priority: "High", riskLevel: "High", consequence: "Trespassing, vandalism.", proof: "Gate Lock Log" },
+                { id: "VIS-MG-09", description: "Train security staff on handling unauthorized entry attempts.", priority: "High", riskLevel: "High", consequence: "Incorrect response to security threats.", proof: "Training Records" },
+                { id: "VIS-MG-10", description: "Maintain a lost and found register.", priority: "Medium", riskLevel: "Low", consequence: "Poor handling of lost items.", proof: "Lost & Found Log" }
             ]
         },
         {
-            title: "Classroom & Lab Safety",
-            department: "Academics/Admin",
-            frequency: "Monthly",
-            role: "Admin Supervisor",
-            summary: "Ensures all learning spaces are safe and free from hazards.",
-            icon: "school",
+            title: "Campus & Playground Safety",
+            department: "Facilities",
+            frequency: "Daily",
+            role: "Facility Manager",
+            summary: "Ensures a safe physical environment across the entire campus.",
+            icon: "shield",
             tasks: [
-                { id: "SOP-CL-01", description: "Inspect classroom furniture for stability and sharp edges.", priority: "Medium", riskLevel: "Medium", consequence: "Student injury from broken furniture.", proof: "Classroom inspection form." },
-                { id: "SOP-CL-02", description: "Ensure all electrical outlets are covered and wiring is not exposed.", priority: "High", riskLevel: "High", consequence: "Electric shock.", proof: "Classroom inspection form." },
-                { id: "SOP-CL-03", description: "Check that heavy items (e.g., projectors, shelves) are securely mounted.", priority: "High", riskLevel: "High", consequence: "Falling objects causing injury.", proof: "Classroom inspection form." },
-                { id: "SOP-CL-04", description: "Science Labs: Verify eyewash stations and safety showers are functional and tested weekly.", priority: "High", riskLevel: "High", consequence: "Inability to treat chemical splashes.", proof: "Lab safety logbook." },
-                { id: "SOP-CL-05", description: "Science Labs: Ensure all chemicals are correctly labeled and stored in locked cabinets.", priority: "High", riskLevel: "High", consequence: "Chemical spills, student access to hazardous materials.", proof: "Photo of chemical storage." },
-                { id: "SOP-CL-06", description: "Science Labs: Check availability and condition of Personal Protective Equipment (PPE) like goggles and lab coats.", priority: "High", riskLevel: "Medium", consequence: "Student injuries during experiments.", proof: "PPE inventory checklist." },
-                { id: "SOP-CL-07", description: "Ensure all fire extinguishers in labs and classrooms are accessible and inspected.", priority: "High", riskLevel: "High", consequence: "Inability to control a fire.", proof: "Fire extinguisher inspection tags." },
-                { id: "SOP-CL-08", description: "Verify that emergency evacuation maps are posted in every classroom and lab.", priority: "Medium", riskLevel: "Low", consequence: "Confusion during an evacuation.", proof: "Visual check." }
+                { id: "CPS-01", description: "Inspect playground equipment for sharp edges, rust, or loose parts.", priority: "High", riskLevel: "High", consequence: "Child injury.", proof: "Playground Inspection Log" },
+                { id: "CPS-02", description: "Check classroom furniture for stability and any defects.", priority: "High", riskLevel: "Medium", consequence: "Student injury from broken furniture.", proof: "Classroom Furniture Log" },
+                { id: "CPS-03", description: "Inspect all campus areas for trip hazards, water logging, or other dangers.", priority: "High", riskLevel: "High", consequence: "Slip and fall accidents.", proof: "Campus Walkthrough Log" },
+                { id: "CPS-04", description: "Ensure all electrical sockets are covered and wires are concealed.", priority: "High", riskLevel: "High", consequence: "Electrical shocks.", proof: "Electrical Safety Log" },
+                { id: "CPS-05", description: "Check that all chemicals in labs are stored safely and labeled.", priority: "High", riskLevel: "High", consequence: "Chemical spills, accidental ingestion.", proof: "Lab Safety Audit" },
+                { id: "CPS-06", description: "Verify that first-aid kits are available in designated areas.", priority: "High", riskLevel: "Medium", consequence: "Delayed first aid.", proof: "First-Aid Kit Check" },
+                { id: "CPS-07", description: "Inspect fire extinguishers and alarms.", priority: "High", riskLevel: "High", consequence: "Failure of fire safety equipment.", proof: "Fire Safety Log" },
+                { id: "CPS-08", description: "Ensure all areas are adequately lit.", priority: "High", riskLevel: "Medium", consequence: "Accidents in poorly lit areas.", proof: "Lighting Check" },
+                { id: "CPS-09", description: "Check water coolers for hygiene and functionality.", priority: "High", riskLevel: "Medium", consequence: "Waterborne illnesses.", proof: "Water Cooler Log" },
+                { id: "CPS-10", description: "Report and cordon off any unsafe areas immediately.", priority: "High", riskLevel: "High", consequence: "Students entering hazardous zones.", proof: "Incident Report" }
             ]
         },
-         {
+        {
+            title: "Emergency Preparedness",
+            department: "Admin",
+            frequency: "Quarterly",
+            role: "Admin Head",
+            summary: "A framework to ensure the school is ready to respond to any emergency.",
+            icon: "siren",
+            tasks: [
+                { id: "EP-01", description: "Conduct a fire evacuation drill every quarter.", priority: "High", riskLevel: "High", consequence: "Chaotic evacuation during a real fire.", proof: "Drill Report" },
+                { id: "EP-02", description: "Ensure all staff are trained in basic first-aid and CPR.", priority: "High", riskLevel: "High", consequence: "Inability to provide life-saving care.", proof: "Training Records" },
+                { id: "EP-03", description: "Maintain an updated emergency contact list for every student.", priority: "High", riskLevel: "High", consequence: "Delay in contacting parents during an emergency.", proof: "Contact List" },
+                { id: "EP-04", description: "Ensure emergency alarms and public address systems are working.", priority: "High", riskLevel: "High", consequence: "Failure to alert the campus of danger.", proof: "System Test Log" },
+                { id: "EP-05", description: "Have a clear protocol for medical emergencies.", priority: "High", riskLevel: "High", consequence: "Disorganized response to a medical crisis.", proof: "Medical Emergency SOP" },
+                { id: "EP-06", description: "Keep emergency supplies (food, water, blankets) stocked.", priority: "High", riskLevel: "Medium", consequence: "Inability to care for students during a lockdown.", proof: "Emergency Kit Log" },
+                { id: "EP-07", description: "Establish a communication plan for parents during emergencies.", priority: "High", riskLevel: "High", consequence: "Parental panic and misinformation.", proof: "Communication Plan" },
+                { id: "EP-08", description: "Coordinate with local emergency services (fire, police, hospital).", priority: "High", riskLevel: "High", consequence: "Delayed or uncoordinated external response.", proof: "Contact List" },
+                { id: "EP-09", description: "Designate and mark clear assembly points for evacuation.", priority: "High", riskLevel: "High", consequence: "Confusion during evacuation.", proof: "Signage" },
+                { id: "EP-10", description: "Review and update the emergency plan annually.", priority: "High", riskLevel: "High", consequence: "Using an outdated and ineffective plan.", proof: "Updated Plan" }
+            ]
+        },
+        {
+            title: "Staff Hiring & Verification",
+            department: "HR",
+            frequency: "Per Hire",
+            role: "HR Manager",
+            summary: "A legally compliant process for hiring safe and qualified staff.",
+            icon: "user-check",
+            tasks: [
+                { id: "SHV-01", description: "Conduct mandatory police verification for all new staff.", priority: "High", riskLevel: "High", consequence: "Hiring individuals with a criminal record.", proof: "Police Verification Report" },
+                { id: "SHV-02", description: "Perform at least two professional reference checks.", priority: "High", riskLevel: "High", consequence: "Missing red flags from previous employers.", proof: "Reference Check Forms" },
+                { id: "SHV-03", description: "Verify educational qualifications and past employment.", priority: "High", riskLevel: "High", consequence: "Hiring unqualified staff.", proof: "Verification Report" },
+                { id: "SHV-04", description: "Conduct a medical fitness check for all new hires.", priority: "High", riskLevel: "Medium", consequence: "Hiring someone unfit for the job.", proof: "Medical Report" },
+                { id: "SHV-05", description: "Ensure all new staff sign the child protection policy.", priority: "High", riskLevel: "High", consequence: "Lack of legal acknowledgement of child safety rules.", proof: "Signed Policy" },
+                { id: "SHV-06", description: "Provide a formal induction and training on school policies.", priority: "High", riskLevel: "Medium", consequence: "New staff unaware of school rules.", proof: "Induction Log" },
+                { id: "SHV-07", description: "Issue a formal employment contract.", priority: "High", riskLevel: "High", consequence: "Legal disputes over employment terms.", proof: "Signed Contract" },
+                { id: "SHV-08", description: "Maintain a complete file for each employee with all required documents.", priority: "High", riskLevel: "High", consequence: "Regulatory non-compliance.", proof: "Employee File Audit" },
+                { id: "SHV-09", description: "Collect and verify ID and address proofs.", priority: "High", riskLevel: "High", consequence: "Identity fraud.", proof: "ID/Address Proofs" },
+                { id: "SHV-10", description: "Onboard staff into the payroll and HR management system.", priority: "High", riskLevel: "Medium", consequence: "Salary payment errors.", proof: "System Entry" }
+            ]
+        },
+        {
+            title: "Kitchen & Water Safety",
+            department: "Admin/Health",
+            frequency: "Daily/Scheduled",
+            role: "Admin Manager",
+            summary: "Ensures food and water provided at school are safe for consumption.",
+            icon: "utensils",
+            tasks: [
+                { id: "KWS-01", description: "Inspect kitchen for cleanliness and hygiene.", priority: "High", riskLevel: "High", consequence: "Food poisoning outbreak.", proof: "Kitchen Hygiene Log" },
+                { id: "KWS-02", description: "Check health and hygiene of all kitchen staff daily.", priority: "High", riskLevel: "High", consequence: "Transmission of illness from staff to students.", proof: "Staff Health Log" },
+                { id: "KWS-03", description: "Conduct quarterly testing of all drinking water sources.", priority: "High", riskLevel: "High", consequence: "Waterborne disease outbreak.", proof: "Water Test Report" },
+                { id: "KWS-04", description: "Ensure raw and cooked foods are stored separately.", priority: "High", riskLevel: "High", consequence: "Cross-contamination.", proof: "Storage Audit" },
+                { id: "KWS-05", description: "Log temperatures of refrigerators and freezers.", priority: "High", riskLevel: "High", consequence: "Bacterial growth in food.", proof: "Temperature Log" },
+                { id: "KWS-06", description: "Check expiry dates of all food ingredients.", priority: "High", riskLevel: "High", consequence: "Use of expired, unsafe ingredients.", proof: "Expiry Date Log" },
+                { id: "KWS-07", description: "Ensure kitchen staff use hairnets, gloves, and aprons.", priority: "High", riskLevel: "High", consequence: "Food contamination.", proof: "PPE Audit" },
+                { id: "KWS-08", description: "Clean and sanitize all food preparation surfaces.", priority: "High", riskLevel: "High", consequence: "Spread of bacteria.", proof: "Cleaning Log" },
+                { id: "KWS-09", description: "Manage waste disposal and pest control.", priority: "High", riskLevel: "High", consequence: "Pest infestation.", proof: "Waste & Pest Log" },
+                { id: "KWS-10", description: "Maintain a clean and functional water purifier system.", priority: "High", riskLevel: "High", consequence: "Dispensing contaminated water.", proof: "Purifier Maintenance Log" }
+            ]
+        },
+        {
+            title: "Incident Handling Protocol",
+            department: "Management",
+            frequency: "Per Incident",
+            role: "Principal",
+            summary: "A systematic approach to managing and learning from any safety or security incident.",
+            icon: "siren",
+            tasks: [
+                { id: "INC-HDLG-01", description: "Provide immediate first aid and notify parents.", priority: "High", riskLevel: "High", consequence: "Delayed care, parental anger, legal issues.", proof: "First Aid & Notification Log" },
+                { id: "INC-HDLG-02", description: "Document the incident in detail with witness statements.", priority: "High", riskLevel: "High", consequence: "Inability to investigate or defend against claims.", proof: "Incident Report Form" },
+                { id: "INC-HDLG-03", description: "Escalate the incident to senior management or trustees if required.", priority: "High", riskLevel: "High", consequence: "Leadership unaware of major risks.", proof: "Escalation Communication" },
+                { id: "INC-HDLG-04", description: "Conduct a root cause analysis to prevent recurrence.", priority: "High", riskLevel: "High", consequence: "Problem happens again.", proof: "RCA Report" },
+                { id: "INC-HDLG-05", description: "Implement corrective and preventive actions (CAPA).", priority: "High", riskLevel: "High", consequence: "No action taken to fix the root cause.", proof: "CAPA Plan" },
+                { id: "INC-HDLG-06", description: "Preserve any CCTV footage or other evidence.", priority: "High", riskLevel: "High", consequence: "Loss of evidence for investigation.", proof: "Evidence Log" },
+                { id: "INC-HDLG-07", description: "Communicate with parents transparently and empathetically.", priority: "High", riskLevel: "High", consequence: "Loss of trust, reputational damage.", proof: "Communication Log" },
+                { id: "INC-HDLG-08", description: "File any required reports with regulatory bodies.", priority: "High", riskLevel: "High", consequence: "Legal penalties.", proof: "Regulatory Filing" },
+                { id: "INC-HDLG-09", description: "Debrief with involved staff to learn from the incident.", priority: "High", riskLevel: "Medium", consequence: "Organizational failure to learn.", proof: "Debrief Meeting Minutes" },
+                { id: "INC-HDLG-10", description: "Review and update relevant policies based on the incident.", priority: "High", riskLevel: "High", consequence: "Safety systems do not improve.", proof: "Policy Update Log" }
+            ]
+        },
+        {
             title: "Admissions & Enrolment Process",
             department: "Admissions",
             frequency: "Per Admission Cycle",
@@ -3066,7 +3313,7 @@ const allPacks: PremiumPack[] = [
     logistics_warehouse_pack,
     manufacturing_operations_ehs_pack,
     bakery_confectionery_pack,
-    animal_shelter_pack
+    animal_shelter_pack,
 ];
 
 const master_access_pack: PremiumPack = {
@@ -3237,3 +3484,5 @@ export const premiumPacks: PremiumPack[] = [
       
 
     
+
+  
