@@ -1644,6 +1644,66 @@ const healthcare_and_hospital_operations: PremiumPack = {
     ],
     checklists: [
         {
+            title: "Surgical Safety Checklist (WHO Aligned)",
+            department: "Surgery",
+            frequency: "Per Procedure",
+            role: "Surgeon/Nurse",
+            summary: "A three-phase checklist (Sign In, Time Out, Sign Out) to prevent common surgical errors and improve teamwork.",
+            icon: "file-check",
+            tasks: [
+                { id: "H-SSC-01", description: "Confirm patient identity, surgical site, procedure, and consent before anesthesia.", priority: "High", riskLevel: "High", consequence: "Failure to confirm is the primary cause of 'never events' like wrong-site surgery, leading to patient harm, lawsuits, and loss of accreditation.", proof: "Verbal confirmation log" },
+                { id: "H-SSC-02", description: "Mark the surgical site.", priority: "High", riskLevel: "High", consequence: "An unmarked or incorrectly marked site can lead to catastrophic error in the operating room.", proof: "Visual check" },
+                { id: "H-SSC-03", description: "Review critical patient history, including allergies and airway risks.", priority: "High", riskLevel: "High", consequence: "Missing a known allergy can lead to anaphylactic shock and death during surgery.", proof: "Anesthesia record" },
+                { id: "H-SSC-04", description: "Confirm instrument, sponge, and needle counts before closing.", priority: "High", riskLevel: "High", consequence: "A retained foreign object can lead to severe post-operative complications, infection, and requires a second surgery to remove.", proof: "Count sheet" },
+                { id: "H-SSC-05", description: "Verbally confirm the name of the procedure recorded and specimen labeling.", priority: "High", riskLevel: "High", consequence: "Incorrectly labeled specimens can lead to a misdiagnosis (e.g., of cancer), with life-altering consequences for the patient.", proof: "Sign-out log" },
+                { id: "H-SSC-06", description: "Ensure all team members have introduced themselves by name and role.", priority: "High", riskLevel: "Medium", consequence: "Promotes teamwork and psychological safety, empowering any team member to speak up if they see a problem.", proof: "Time-out log" },
+                { id: "H-SSC-07", description: "Confirm antibiotic prophylaxis has been given within the last 60 minutes.", priority: "High", riskLevel: "High", consequence: "Greatly increases the risk of surgical site infections (SSIs).", proof: "Medication Administration Record (MAR)" },
+                { id: "H-SSC-08", description: "Review anticipated critical events with the surgeon and anesthesia team.", priority: "High", riskLevel: "High", consequence: "The team is unprepared for potential complications like major blood loss.", proof: "Verbal confirmation" },
+                { id: "H-SSC-09", description: "Verify availability of essential imaging.", priority: "High", riskLevel: "High", consequence: "Proceeding without necessary scans can lead to surgical errors.", proof: "Imaging Display" },
+                { id: "H-SSC-10", description: "Check for equipment issues or concerns before starting.", priority: "High", riskLevel: "High", consequence: "Equipment malfunction during surgery can have disastrous consequences.", proof: "Equipment Check Log" }
+            ]
+        },
+        {
+            title: "Infection Control & Sterilization (CSSD)",
+            department: "Infection Control",
+            frequency: "Daily/Per Cycle",
+            role: "CSSD Technician",
+            summary: "Ensures surgical instruments are properly cleaned, disinfected, sterilized, and stored to prevent Surgical Site Infections (SSIs).",
+            icon: "syringe",
+            tasks: [
+                { id: "H-IC-01", description: "Run biological indicator tests in each autoclave load.", priority: "High", riskLevel: "High", consequence: "The only way to be certain that the sterilization process was effective at killing all microbial life.", proof: "Test strip log" },
+                { id: "H-IC-02", description: "Verify autoclave cycle parameters (time, temp, pressure) for each run.", priority: "High", riskLevel: "High", consequence: "Incorrect parameters mean the instruments are not sterile, posing a major infection risk.", proof: "Autoclave printout" },
+                { id: "H-IC-03", description: "Check sterile packages for integrity, dryness, and expiry date before dispatch.", priority: "High", riskLevel: "High", consequence: "A compromised package (tear, moisture) means the contents are no longer sterile.", proof: "Package inspection log" },
+                { id: "H-IC-04", description: "Monitor hand hygiene compliance in clinical areas.", priority: "High", riskLevel: "High", consequence: "Poor hand hygiene is the number one cause of hospital-acquired infections (HAIs).", proof: "Audit Form" },
+                { id: "H-IC-05", description: "Maintain a log for environmental cleaning and disinfection.", priority: "High", riskLevel: "High", consequence: "Contaminated surfaces are a major vector for spreading pathogens between patients.", proof: "Cleaning Log" },
+                { id: "H-IC-06", description: "Track hospital-acquired infection (HAI) rates.", priority: "High", riskLevel: "High", consequence: "If you don't track HAI rates, you cannot identify outbreaks or measure the effectiveness of your infection control program.", proof: "HAI Data Report" },
+                { id: "H-IC-07", description: "Ensure staff use appropriate PPE in isolation rooms.", priority: "High", riskLevel: "High", consequence: "Failure to use PPE can lead to staff contracting the illness and spreading it to other patients.", proof: "PPE Audit" },
+                { id: "H-IC-08", description: "Manage biomedical waste segregation and disposal.", priority: "High", riskLevel: "High", consequence: "Improper disposal can spread disease and lead to severe environmental and legal penalties.", proof: "Waste Log" },
+                { id: "H-IC-09", description: "Audit antibiotic stewardship program compliance.", priority: "High", riskLevel: "High", consequence: "Overuse of antibiotics leads to the development of drug-resistant \"superbugs\".", proof: "Stewardship Audit" },
+                { id: "H-IC-10", description: "Provide regular infection control training to all staff.", priority: "High", riskLevel: "High", consequence: "Infection control is everyone's responsibility; untrained staff are a weak link.", proof: "Training Records" }
+            ]
+        },
+        {
+            title: "High-Alert Medication SOP",
+            department: "Pharmacy/Nursing",
+            frequency: "Per Administration",
+            role: "Nurse",
+            summary: "A process to prevent medication errors involving high-risk drugs like insulin, heparin, and chemotherapy agents.",
+            icon: "pill",
+            tasks: [
+                { id: "H-MED-01", description: "Require two licensed nurses to independently verify dosage calculations for high-alert medications.", priority: "High", riskLevel: "High", consequence: "A simple decimal point error in a dosage calculation can be fatal. A second check is a critical safeguard.", proof: "Dual sign-off on MAR" },
+                { id: "H-MED-02", description: "Store Look-Alike, Sound-Alike (LASA) drugs in separate, labeled bins.", priority: "High", riskLevel: "High", consequence: "LASA drugs are a common source of medication errors; physical separation is key to prevention.", proof: "Storage audit photo" },
+                { id: "H-MED-03", description: "Use smart infusion pumps with dose error reduction software for IV high-alert drugs.", priority: "High", riskLevel: "High", consequence: "Helps to prevent accidental overdoses from incorrect pump programming.", proof: "Pump Log" },
+                { id: "H-MED-04", description: "Patient education on high-alert medications before discharge.", priority: "High", riskLevel: "Medium", consequence: "Patients who do not understand their medication (e.g., insulin) are at high risk of self-administering it incorrectly at home.", proof: "Patient Education Form" },
+                { id: "H-MED-05", description: "Quarterly audit of high-alert medication incidents and near-misses.", priority: "High", riskLevel: "High", consequence: "Analyzing near-misses helps to identify and fix system flaws before they cause actual harm.", proof: "Audit Report" },
+                { id: "H-MED-06", description: "Reconcile medications at every transition of care (admission, transfer, discharge).", priority: "High", riskLevel: "High", consequence: "This is a major point where errors occur, such as a drug being accidentally discontinued or double-dosed.", proof: "Medication Reconciliation Form" },
+                { id: "H-MED-07", description: "Label all medications, including those in syringes and basins.", priority: "High", riskLevel: "High", consequence: "An unlabeled syringe is a major patient safety risk.", proof: "Labeling Audit" },
+                { id: "H-MED-08", description: "Report all medication errors and near misses.", priority: "High", riskLevel: "High", consequence: "A culture of reporting is essential for learning and improvement.", proof: "Incident Report" },
+                { id: "H-MED-09", description: "Ensure concentrated electrolytes are stored only in the pharmacy.", priority: "High", riskLevel: "High", consequence: "Accidental injection of a concentrated electrolyte like potassium chloride is fatal.", proof: "Storage Audit" },
+                { id: "H-MED-10", description: "Verify patient allergies before administering any medication.", priority: "High", riskLevel: "High", consequence: "Administering a drug to an allergic patient can cause anaphylactic shock.", proof: "Allergy Check in MAR" }
+            ]
+        },
+        {
             title: "Patient Identification Protocol",
             department: "All Clinical",
             frequency: "Per Interaction",
@@ -1651,116 +1711,96 @@ const healthcare_and_hospital_operations: PremiumPack = {
             summary: "Ensures correct patient identification before any procedure, medication, or test to prevent 'never events'. Aligned with JCI & NABH standards.",
             icon: "user-check",
             tasks: [
-                { id: "HCO-PID-01", description: "Use at least two patient identifiers (e.g., full name and MRN/hospital number). Do not use room number.", priority: "High", riskLevel: "High", consequence: "Wrong-patient procedure or medication error.", proof: "Verbal confirmation documented in notes." },
-                { id: "HCO-PID-02", description: "Ask the patient to state their full name and date of birth (if able). Do not ask leading questions like 'Are you Mr. Smith?'", priority: "High", riskLevel: "High", consequence: "Treating the wrong patient due to patient confirmation bias.", proof: "Patient verbal confirmation noted in chart." },
-                { id: "HCO-PID-03", description: "Cross-reference patient identifiers with the patient's wristband before any intervention.", priority: "High", riskLevel: "High", consequence: "Failure to catch an identification error at the last moment.", proof: "Visual check documented in chart (e.g., 'Wristband verified')." },
-                { id: "HCO-PID-04", description: "Verify patient ID before administering any medication, including IV fluids.", priority: "High", riskLevel: "High", consequence: "Medication error, adverse drug reaction, potential fatality.", proof: "MAR (Medication Administration Record) sign-off with witness for high-alert meds." },
-                { id: "HCO-PID-05", description: "Verify patient ID before drawing blood or collecting any other laboratory specimen.", priority: "High", riskLevel: "High", consequence: "Misdiagnosis, incorrect treatment based on wrong lab results.", proof: "Specimen label cross-checked and signed/initialed by phlebotomist." },
-                { id: "HCO-PID-06", description: "Verify patient ID before any diagnostic procedure (e.g., X-ray, CT scan, endoscopy).", priority: "High", riskLevel: "High", consequence: "Performing a procedure on the wrong patient.", proof: "Technician's log with patient verification check." },
-                { id: "HCO-PID-07", description: "Label all specimens in the presence of the patient, before leaving the bedside.", priority: "High", riskLevel: "High", consequence: "Specimen mix-up, incorrect lab results, potentially catastrophic treatment decisions.", proof: "Labeled specimen tube/container verified against wristband." },
-                { id: "HCO-PID-08", description: "Use barcode scanning for patient ID, medication, and specimen administration where available.", priority: "High", riskLevel: "Medium", consequence: "Reduces human error in identification, but does not replace verbal checks.", proof: "System log of barcode scan." }
-            ]
-        },
-        {
-            title: "Surgical Safety Checklist (WHO Aligned)",
-            department: "Surgery/OT",
-            frequency: "Per Procedure",
-            role: "Surgical Team",
-            summary: "A three-phase checklist (Sign In, Time Out, Sign Out) to prevent common surgical errors and improve teamwork.",
-            icon: "file-check",
-            tasks: [
-                { id: "HCO-SSC-01", description: "SIGN IN (Before Induction): Confirm patient identity, procedure, site, and consent form.", priority: "High", riskLevel: "High", consequence: "Wrong-patient or wrong-site surgery.", proof: "Signed checklist." },
-                { id: "HCO-SSC-02", description: "SIGN IN: Mark the surgical site (must be done by the operating surgeon).", priority: "High", riskLevel: "High", consequence: "Wrong-site surgery.", proof: "Visual confirmation of surgical mark on patient." },
-                { id: "HCO-SSC-03", description: "SIGN IN: Anesthesia safety check (machine, medications, airway equipment) completed.", priority: "High", riskLevel: "High", consequence: "Anesthetic complications, patient harm.", proof: "Anesthesiologist confirmation on checklist." },
-                { id: "HCO-SSC-04", description: "TIME OUT (Before Incision): All team members introduce themselves by name and role.", priority: "Medium", riskLevel: "Low", consequence: "Poor team communication and situational awareness.", proof: "Verbal confirmation." },
-                { id: "HCO-SSC-05", description: "TIME OUT: Entire team verbally confirms patient name, procedure, and incision site.", priority: "High", riskLevel: "High", consequence: "Final opportunity to prevent a catastrophic error.", proof: "Verbal confirmation documented by circulating nurse." },
-                { id: "HCO-SSC-06", description: "TIME OUT: Review of critical events, anticipated blood loss, and antibiotic prophylaxis.", priority: "High", riskLevel: "Medium", consequence: "Team unprepared for complications or known patient risks.", proof: "Surgeon and Anesthesiologist verbal briefing." },
-                { id: "HCO-SSC-07", description: "SIGN OUT (Before Patient Leaves OR): Nurse verbally confirms instrument, sponge, and needle counts are correct.", priority: "High", riskLevel: "High", consequence: "Retained surgical item, requiring re-operation.", proof: "Count sheet verified and signed by two nurses." },
-                { id: "HCO-SSC-08", description: "Confirm specimen labeling (specimen name, patient name).", priority: "High", riskLevel: "High", consequence: "Incorrect diagnosis, wrong post-op treatment.", proof: "Visual confirmation of labeled specimen by surgeon and nurse." },
-                { id: "HCO-SSC-09", description: "SIGN OUT: Discuss key concerns for recovery and post-operative care.", priority: "Medium", riskLevel: "Medium", consequence: "Poor handover to recovery team, post-op complications.", proof: "Surgeon/Anesthesiologist debrief documented." }
-            ]
-        },
-        {
-            title: "High-Alert Medication Protocol",
-            department: "Pharmacy/Nursing",
-            frequency: "Per Administration",
-            role: "Duty Manager / GR Executive",
-            summary: "A structured process to handle guest complaints effectively, turning negative experiences into opportunities for loyalty.",
-            icon: "pill",
-            tasks: [
-                { id: "HCO-HAM-01", description: "Independent Double-Check: Two qualified staff members must separately check the medication, dose, and patient ID before administration.", priority: "High", riskLevel: "High", consequence: "Potentially fatal medication error.", proof: "Dual signature on the MAR." },
-                { id: "HCO-HAM-02", description: "Use standardized concentrations and labeling for all high-alert infusions.", priority: "High", riskLevel: "High", consequence: "Calculation errors leading to massive overdose.", proof: "Pharmacy compounding log and final product label." },
-                { id: "HCO-HAM-03", description: "Separate/segregate high-alert medications from other drugs in storage (e.g., dedicated shelf, 'High-Alert' sticker).", priority: "Medium", riskLevel: "Medium", consequence: "Look-alike/sound-alike errors during drug retrieval.", proof: "Photo of segregated storage." },
-                { id: "HCO-HAM-04", description: "Use 'smart' infusion pumps with dose error reduction software (DERS) and hard limits enabled.", priority: "High", riskLevel: "High", consequence: "Programming errors leading to incorrect infusion rates.", proof: "Pump programming log/screenshot." },
-                { id: "HCO-HAM-05", description: "Provide enhanced patient and family education on their high-alert medication, including side effects to watch for.", priority: "Medium", riskLevel: "Medium", consequence: "Patient non-compliance or failure to report side effects.", proof: "Signed patient education form." },
-                { id: "HCO-HAM-06", description: "Clearly label all high-alert medication lines from pump to patient to avoid misconnections.", priority: "High", riskLevel: "High", consequence: "Accidental bolus or mixing of incompatible drugs via IV lines.", proof: "Visual check of labeled IV lines by two nurses." }
-            ]
-        },
-        {
-            title: "Infection Control (Hand Hygiene Audit)",
-            department: "Quality/Infection Control",
-            frequency: "Weekly",
-            role: "Duty Manager / GR Executive",
-            summary: "A structured process to handle guest complaints effectively, turning negative experiences into opportunities for loyalty.",
-            icon: "shield",
-            tasks: [
-                { id: "HCO-HC-01", description: "Observe a sample of 20 staff members for hand hygiene compliance before touching a patient.", priority: "High", riskLevel: "High", consequence: "Transmission of environmental pathogens to patients.", proof: "Hand hygiene audit tool entries." },
-                { id: "HCO-HC-02", description: "Observe compliance before a clean/aseptic procedure (e.g., IV insertion, wound dressing).", priority: "High", riskLevel: "High", consequence: "Introduction of infection into a sterile site.", proof: "Hand hygiene audit tool entries." },
-                { id: "HCO-HC-03", description: "Observe compliance after body fluid exposure risk.", priority: "High", riskLevel: "High", consequence: "Self-contamination of healthcare worker.", proof: "Hand hygiene audit tool entries." },
-                { id: "HCO-HC-04", description: "Observe compliance after touching a patient.", priority: "High", riskLevel: "High", consequence: "Spread of patient's flora to the environment.", proof: "Hand hygiene audit tool entries." },
-                { id: "HCO-HC-05", description: "Observe compliance after touching patient surroundings.", priority: "High", riskLevel: "High", consequence: "Contamination of the healthcare environment and other patients.", proof: "Hand hygiene audit tool entries." },
-                { id: "HCO-HC-06", description: "Check that alcohol-based hand rub dispensers are available, functional, and not expired at all points of care.", priority: "High", riskLevel: "Medium", consequence: "Staff unable to perform hand hygiene easily, leading to non-compliance.", proof: "Audit checklist of dispenser locations." },
-                { id: "HCO-HC-07", description: "Ensure staff are 'bare below the elbows' (no watches, rings with stones) in all clinical areas.", priority: "Medium", riskLevel: "Medium", consequence: "Jewelry harbors microorganisms and impedes effective hand hygiene.", proof: "Direct observation during audit." },
-                { id: "HCO-HC-08", description: "Calculate and post hand hygiene compliance rates for each ward to provide feedback.", priority: "Medium", riskLevel: "Low", consequence: "Lack of feedback and accountability for wards.", proof: "Posted compliance dashboard/report." }
-            ]
-        },
-        {
-            title: "Emergency Code Management (Code Blue)",
-            department: "Emergency/All",
-            frequency: "Daily (Checks) / Monthly (Drills)",
-            role: "Duty Manager / GR Executive",
-            summary: "A structured process to handle guest complaints effectively, turning negative experiences into opportunities for loyalty.",
-            icon: "heart-pulse",
-            tasks: [
-                { id: "SEC-FS-01", description: "Check crash cart daily: defibrillator charge, medication expiry, and integrity of all equipment.", priority: "High", riskLevel: "High", consequence: "Life-saving equipment fails during an emergency, leading to patient death.", proof: "Daily crash cart checklist signed by nurse." },
-                { id: "SEC-FS-02", description: "Conduct monthly mock Code Blue drills in different hospital locations (e.g., ward, cafeteria, lobby).", priority: "High", riskLevel: "High", consequence: "Disorganized response, delayed CPR/defibrillation in a real event.", proof: "Mock drill debriefing report with timings and corrective actions." },
-                { id: "SEC-FS-03", description: "Verify that all clinical staff hold a valid Basic Life Support (BLS) and/or Advanced Cardiac Life Support (ACLS) certification.", priority: "High", riskLevel: "High", consequence: "Inability to initiate immediate and effective CPR.", proof: "Review of staff training records in HR." },
-                { id: "SEC-FS-04", description: "During a code, team leader clearly assigns roles (e.g., compressor, airway manager, recorder, medication nurse).", priority: "High", riskLevel: "Medium", consequence: "Chaotic scene, missed interventions, poor team dynamics.", proof: "Post-code debrief form." },
-                { id: "SEC-FS-05", description: "Document all events, medications, timings, and vital signs on the official Code Blue record.", priority: "High", riskLevel: "Medium", consequence: "Inaccurate record for clinical review and medico-legal purposes.", proof: "Completed Code Blue record sheet." },
-                { id: "SEC-FS-06", description: "Ensure crowd control is implemented and the patient's family is managed compassionately by a designated person.", priority: "Medium", riskLevel: "Low", consequence: "Added distress to family, interference with medical team.", proof: "Notes from social worker/security in the patient file." }
+                { id: "H-PID-01", description: "Verify patient identity using at least two identifiers (e.g., full name and date of birth) before drawing blood.", priority: "High", riskLevel: "High", consequence: "A mislabeled blood sample can lead to a catastrophic transfusion reaction or misdiagnosis.", proof: "Verbal confirmation" },
+                { id: "H-PID-02", description: "Match the patient ID band with the medication chart before administering any drug.", priority: "High", riskLevel: "High", consequence: "Giving the wrong medication to a patient can have serious or fatal consequences.", proof: "MAR sign-off" },
+                { id: "H-PID-03", description: "Label all laboratory samples in the presence of the patient.", priority: "High", riskLevel: "High", consequence: "Prevents mix-ups where one patient's sample is labeled with another patient's name.", proof: "Procedure Adherence Audit" },
+                { id: "H-PID-04", description: "Cross-check patient identifiers before any blood transfusion.", priority: "High", riskLevel: "High", consequence: "A blood transfusion mismatch is a life-threatening medical emergency.", proof: "Transfusion Checklist" },
+                { id: "H-PID-05", description: "Use barcode scanning for patient ID and medication verification where available.", priority: "High", riskLevel: "High", consequence: "Technology can help to reduce human error in the identification process.", proof: "Scan Log" },
+                { id: "H-PID-06", description: "Verify patient identity before any diagnostic procedure (e.g., X-ray, MRI).", priority: "High", riskLevel: "High", consequence: "Performing a procedure on the wrong patient exposes them to unnecessary radiation or risk.", proof: "Procedure Checklist" },
+                { id: "H-PID-07", description: "Ensure all patients have a clear and accurate ID band.", priority: "High", riskLevel: "High", consequence: "A missing or illegible ID band is a major risk factor for identification errors.", proof: "ID Band Audit" },
+                { id: "H-PID-08", description: "For non-verbal patients, use alternative identification methods.", priority: "High", riskLevel: "High", consequence: "Extra care must be taken for patients who cannot confirm their own identity.", proof: "Alternative ID Protocol" },
+                { id: "H-PID-09", description: "Train all clinical staff on the patient identification policy.", priority: "High", riskLevel: "High", consequence: "This is a fundamental patient safety skill for all healthcare workers.", proof: "Training Records" },
+                { id: "H-PID-10", description: "Audit compliance with the patient identification policy monthly.", priority: "High", riskLevel: "High", consequence: "Regular audits are needed to ensure the policy is being followed consistently.", proof: "Audit Report" }
             ]
         },
         {
             title: "Biomedical Waste Management",
-            department: "Housekeeping/Infection Control",
+            department: "Housekeeping/Compliance",
             frequency: "Daily",
-            role: "Duty Manager / GR Executive",
-            summary: "A structured process to handle guest complaints effectively, turning negative experiences into opportunities for loyalty.",
+            role: "Bio-medical Waste Officer",
+            summary: "A systematic process for safe handling and disposal of hazardous medical waste, as per regulatory guidelines.",
             icon: "recycle",
             tasks: [
-                { id: "LOTO-01", description: "Verify waste is correctly segregated into color-coded bins (Yellow, Red, Blue, White) at the point of generation.", priority: "High", riskLevel: "High", consequence: "Needlestick injury, environmental contamination, severe legal penalties.", proof: "Daily round checklist with photos of bins." },
-                { id: "LOTO-02", description: "Ensure all waste bags are sealed securely (e.g., with a zip-tie) when 3/4 full.", priority: "Medium", riskLevel: "Medium", consequence: "Spillage during transport, exposure risk to staff.", proof: "Visual check during collection rounds." },
-                { id: "LOTO-03", description: "Check that sharps containers are not overfilled (below the marked line) and are properly sealed for disposal.", priority: "High", riskLevel: "High", consequence: "High risk of needlestick injuries to housekeeping staff.", proof: "Daily round checklist." },
-                { id: "LOTO-04", description: "Transport waste in dedicated, covered trolleys along designated routes and service elevators.", priority: "High", riskLevel: "Medium", consequence: "Contamination of public areas and elevators.", proof: "CCTV review of waste transport." },
-                { id: "LOTO-05", description: "Weigh and log all waste bags by category before handing over to the disposal vendor.", priority: "High", riskLevel: "Medium", consequence: "Inability to track waste generation, non-compliance with regulatory reporting.", proof: "BMW disposal logbook signed by vendor." },
-                { id: "LOTO-06", description: "Verify that the central BMW storage area is secure, locked, clean, and accessible only to authorized personnel.", priority: "High", riskLevel: "High", consequence: "Unauthorized access, pest infestation, public health risk.", proof: "Photo of secure storage area." },
-                { id: "LOTO-07", description: "Ensure all staff handling waste wear appropriate Personal Protective Equipment (PPE), including heavy-duty gloves, masks, and boots.", priority: "High", riskLevel: "High", consequence: "Occupational exposure to infectious agents and injuries.", proof: "Direct observation during audit." }
+                { id: "BMW-01", description: "Audit waste segregation into designated color-coded bins at point of generation.", priority: "High", riskLevel: "High", consequence: "Improper segregation can expose waste handlers to infectious materials and is a major legal violation.", proof: "Segregation Audit Log" },
+                { id: "BMW-02", description: "Ensure sharps are disposed of in puncture-proof containers.", priority: "High", riskLevel: "High", consequence: "Needlestick injuries can transmit diseases like HIV and Hepatitis B to staff.", proof: "Sharps Container Check" },
+                { id: "BMW-03", description: "Maintain a log of all biomedical waste collected, including weight and category.", priority: "High", riskLevel: "High", consequence: "This is a legal requirement for regulatory reporting and proves due diligence.", proof: "Waste Collection Log" },
+                { id: "BMW-04", description: "Hand over waste to authorized disposal vendors and obtain receipts.", priority: "High", riskLevel: "High", consequence: "The hospital is legally responsible for the waste until it is properly destroyed.", proof: "Disposal Manifest/Receipt" },
+                { id: "BMW-05", description: "Train all staff on correct biomedical waste segregation and handling.", priority: "High", riskLevel: "High", consequence: "Untrained staff are a primary cause of segregation errors.", proof: "Training Records" },
+                { id: "BMW-06", description: "Ensure waste storage area is secure and access-controlled.", priority: "High", riskLevel: "High", consequence: "Prevents unauthorized access and potential misuse of medical waste.", proof: "Storage Area Inspection" },
+                { id: "BMW-07", description: "Check that all waste containers are properly labeled with the biohazard symbol.", priority: "High", riskLevel: "High", consequence: "Clear labeling is crucial to prevent accidental exposure.", proof: "Label Audit" },
+                { id: "BMW-08", description: "Conduct regular audits of the entire waste management process.", priority: "High", riskLevel: "High", consequence: "Ensures ongoing compliance with complex environmental laws.", proof: "BMW Audit Report" },
+                { id: "BMW-09", description: "Have a spill management plan for biomedical waste.", priority: "High", riskLevel: "High", consequence: "A spill of infectious waste must be handled correctly to prevent exposure.", proof: "Spill SOP" },
+                { id: "BMW-10", description: "File annual returns as per regulatory requirements.", priority: "High", riskLevel: "High", consequence: "Failure to file can lead to fines and legal action.", proof: "Annual Return Filing" }
             ]
         },
         {
-            title: "Central Sterile Supply Dept (CSSD) Audit",
-            department: "CSSD/Infection Control",
-            frequency: "Weekly",
-            role: "CSSD Supervisor",
-            summary: "Ensures surgical instruments are properly cleaned, disinfected, sterilized, and stored to prevent Surgical Site Infections (SSIs).",
-            icon: "gear",
+            title: "Medical Equipment Maintenance",
+            department: "Biomedical Engineering",
+            frequency: "Scheduled",
+            role: "Biomedical Engineer",
+            summary: "A preventive maintenance program to ensure all medical equipment is safe, accurate, and reliable.",
+            icon: "wrench",
             tasks: [
-                { id: "HSE-01", description: "Verify washer-disinfector performance with daily cleaning efficacy tests (e.g., TOSI strips).", priority: "High", riskLevel: "High", consequence: "Bioburden remains on instruments, sterilization failure.", proof: "Test results logbook." },
-                { id: "HSE-02", description: "Check autoclave performance using daily Bowie-Dick tests (for pre-vacuum sterilizers) and weekly biological indicators.", priority: "High", riskLevel: "High", consequence: "Catastrophic sterilization failure, high risk of SSIs.", proof: "Autoclave logbook with attached test strips/results." },
-                { id: "HSE-03", description: "Ensure sterile packs are correctly wrapped, sealed, and labeled with sterilizer number, cycle number, and expiry date.", priority: "High", riskLevel: "Medium", consequence: "Compromised sterility, inability to trace a faulty batch.", proof: "Audit of sterile packs in storage." },
-                { id: "HSE-04", description: "Maintain strict one-way workflow from dirty (decontamination) to clean (assembly) to sterile (storage) zones.", priority: "High", riskLevel: "High", consequence: "Cross-contamination of sterile instruments.", proof: "Observation of staff movement and workflow." },
-                { id: "HSE-05", description: "Inspect instruments under magnification for cleanliness and damage before packing.", priority: "High", riskLevel: "Medium", consequence: "Using damaged or dirty instruments in surgery.", proof: "QC check log at packing station." },
-                { id: "HSE-06", description: "Ensure staff in decontamination area wear full PPE (fluid-resistant gown, gloves, face shield).", priority: "High", riskLevel: "High", consequence: "Staff exposure to bloodborne pathogens.", proof: "Direct observation during audit." }
+                { id: "MEM-01", description: "Follow a preventive maintenance schedule for all medical equipment.", priority: "High", riskLevel: "High", consequence: "Equipment failure during a critical procedure can be fatal.", proof: "PM Schedule" },
+                { id: "MEM-02", description: "Calibrate all diagnostic and therapeutic equipment as per manufacturer guidelines.", priority: "High", riskLevel: "High", consequence: "An uncalibrated device can lead to misdiagnosis or incorrect treatment.", proof: "Calibration Certificates" },
+                { id: "MEM-03", description: "Log all maintenance and repair activities for each piece of equipment.", priority: "High", riskLevel: "High", consequence: "Provides a legal record of maintenance and helps track equipment reliability.", proof: "Equipment History Card" },
+                { id: "MEM-04", description: "Test defibrillators and ventilators daily.", priority: "High", riskLevel: "High", consequence: "These are life-support devices; they must be ready to use at a moment's notice.", proof: "Daily Check Log" },
+                { id: "MEM-05", description: "Ensure backup equipment is available for critical devices.", priority: "High", riskLevel: "High", consequence: "Lack of a backup can be catastrophic if a primary device fails.", proof: "Backup Inventory" },
+                { id: "MEM-06", description: "Train clinical staff on the basic use and cleaning of equipment.", priority: "High", riskLevel: "Medium", consequence: "Improper use can damage expensive equipment or cause patient harm.", proof: "Training Records" },
+                { id: "MEM-07", description: "Tag and remove any faulty equipment from service immediately.", priority: "High", riskLevel: "High", consequence: "Using faulty equipment is a major patient safety risk.", proof: "Out of Service Tag" },
+                { id: "MEM-08", description: "Maintain a stock of critical spare parts.", priority: "High", riskLevel: "High", consequence: "Can significantly reduce downtime for critical equipment.", proof: "Spare Part Inventory" },
+                { id: "MEM-09", description: "Review equipment performance and plan for replacement.", priority: "High", riskLevel: "Medium", consequence: "Prevents using outdated technology and helps in capital planning.", proof: "Replacement Plan" },
+                { id: "MEM-10", description: "Maintain all equipment manuals and service contracts.", priority: "High", riskLevel: "Medium", consequence: "Essential for troubleshooting and managing vendor SLAs.", proof: "Document Library" }
+            ]
+        },
+        {
+            title: "Medical Record & Data Privacy",
+            department: "Medical Records Dept.",
+            frequency: "Ongoing",
+            role: "MRD Officer",
+            summary: "A protocol to ensure patient confidentiality and compliance with data privacy laws.",
+            icon: "file-lock",
+            tasks: [
+                { id: "MRD-01", description: "Ensure all patient records are stored in a secure, access-controlled area.", priority: "High", riskLevel: "High", consequence: "Unauthorized access can lead to a major breach of patient confidentiality.", proof: "Access Log" },
+                { id: "MRD-02", description: "Audit who is accessing electronic health records (EHR).", priority: "High", riskLevel: "High", consequence: "Helps to detect unauthorized snooping into patient files by staff.", proof: "EHR Access Audit Trail" },
+                { id: "MRD-03", description: "Follow a strict protocol for releasing patient information to third parties.", priority: "High", riskLevel: "High", consequence: "Improper release of information is a major legal and ethical violation.", proof: "Information Release Form" },
+                { id: "MRD-04", description: "Train all staff on patient confidentiality and data privacy.", priority: "High", riskLevel: "High", consequence: "Human error is a leading cause of data breaches.", proof: "Training Records" },
+                { id: "MRD-05", description: "Ensure all records are complete and accurately coded.", priority: "High", riskLevel: "High", consequence: "Inaccurate coding can lead to insurance claim denials and revenue loss.", proof: "Coding Audit Report" },
+                { id: "MRD-06", description: "Manage the archival and retrieval of old records.", priority: "High", riskLevel: "Medium", consequence: "A disorganized archive can make it impossible to find critical records when needed.", proof: "Archival Log" },
+                { id: "MRD-07", description: "Comply with all legal requirements for medical record retention.", priority: "High", riskLevel: "High", consequence: "Premature destruction of records can have legal consequences.", proof: "Retention Policy" },
+                { id: "MRD-08", description: "Use strong passwords and MFA for EHR access.", priority: "High", riskLevel: "High", consequence: "A compromised EHR password can lead to a massive data breach.", proof: "System Security Settings" },
+                { id: "MRD-09", description: "Have a plan for downtime of the EHR system.", priority: "High", riskLevel: "High", consequence: "During downtime, a clear paper-based process is needed to maintain patient care.", proof: "Downtime Procedure" },
+                { id: "MRD-10", description: "Conduct regular risk assessments for data privacy.", priority: "High", riskLevel: "High", consequence: "Helps to proactively identify and mitigate new privacy risks.", proof: "Risk Assessment Report" }
+            ]
+        },
+        {
+            title: "Emergency Code Management",
+            department: "Management/Security",
+            frequency: "Quarterly",
+            role: "Emergency Commander",
+            summary: "A systematic approach to managing in-hospital emergencies like cardiac arrest or fire.",
+            icon: "siren",
+            tasks: [
+                { id: "ECM-01", description: "Conduct mock drills for different emergency codes (e.g., Code Blue for cardiac arrest, Code Red for fire).", priority: "High", riskLevel: "High", consequence: "In a real emergency, an untrained team will be slow and disorganized, with fatal consequences.", proof: "Drill Report" },
+                { id: "ECM-02", description: "Ensure all staff know the meaning of each code and their specific role.", priority: "High", riskLevel: "High", consequence: "Confusion over codes can lead to the wrong response or no response at all.", proof: "Code Training Log" },
+                { id: "ECM-03", description: "Test the emergency code announcement system weekly.", priority: "High", riskLevel: "High", consequence: "If the team is not alerted, they cannot respond.", proof: "System Test Log" },
+                { id: "ECM-04", description: "Ensure crash carts are stocked and checked daily.", priority: "High", riskLevel: "High", consequence: "Missing or expired medication on a crash cart during a Code Blue can be fatal.", proof: "Crash Cart Checklist" },
+                { id: "ECM-05", description: "Debrief after every real or mock code to identify areas for improvement.", priority: "High", riskLevel: "High", consequence: "The best way to learn and improve response times and effectiveness.", proof: "Debrief Minutes" },
+                { id: "ECM-06", description: "Maintain a log of all emergency code activations.", priority: "High", riskLevel: "High", consequence: "Provides data for quality improvement and regulatory review.", proof: "Code Logbook" },
+                { id: "ECM-07", description: "Coordinate with local emergency services for external support.", priority: "High", riskLevel: "High", consequence: "Ensures a smooth handover for patients requiring transfer.", proof: "Coordination Plan" },
+                { id: "ECM-08", description: "Ensure clear roles are defined for the code team.", priority: "High", riskLevel: "High", consequence: "In a crisis, a clear command structure is essential to avoid chaos.", proof: "Team Role Cards" },
+                { id: "ECM-09", description: "Update emergency code protocols annually.", priority: "High", riskLevel: "High", consequence: "Protocols must be updated based on the latest clinical guidelines.", proof: "Updated Protocol Document" },
+                { id: "ECM-10", description: "Provide psychological first aid or debriefing for staff after traumatic events.", priority: "High", riskLevel: "Medium", consequence: "Helps staff cope with the stress of emergencies and prevents burnout.", proof: "Debriefing Schedule" }
             ]
         }
     ]
@@ -2065,6 +2105,86 @@ const university_college_ops: PremiumPack = {
                 { id: "CISA-08", description: "Maintain records of all maintenance and repair work.", priority: "High", riskLevel: "Medium", consequence: "Provides a legal record of due diligence and helps track recurring issues.", proof: "Maintenance Log." },
                 { id: "CISA-09", description: "Manage waste disposal and recycling programs.", priority: "High", riskLevel: "Medium", consequence: "Improper waste management is an environmental and health hazard.", proof: "Waste Management Audit." },
                 { id: "CISA-10", description: "Address any safety concerns raised by students or staff.", priority: "High", riskLevel: "High", consequence: "Ignoring safety concerns creates a culture of negligence.", proof: "Concern Resolution Log" }
+            ]
+        },
+        {
+            title: "Mess/Canteen Food Safety (HACCP)",
+            department: "Hospitality/Admin",
+            frequency: "Daily",
+            role: "Mess Manager",
+            summary: "Ensures that food served in campus dining facilities is safe, hygienic, and meets FSSAI/HACCP standards.",
+            icon: "utensils-crossed",
+            tasks: [
+                { id: "MESS-01", description: "Log temperatures of all refrigerators, freezers, and hot holding units.", priority: "High", riskLevel: "High", consequence: "The most critical step in preventing bacterial growth in food.", proof: "Temperature Log" },
+                { id: "MESS-02", description: "Check all raw material deliveries for quality and expiry.", priority: "High", riskLevel: "High", consequence: "Garbage in, garbage out. Poor quality ingredients lead to poor quality, unsafe food.", proof: "Receiving Log" },
+                { id: "MESS-03", description: "Ensure proper segregation of raw, cooked, vegetarian, and non-vegetarian food.", priority: "High", riskLevel: "High", consequence: "A primary cause of cross-contamination and food poisoning.", proof: "Storage Audit" },
+                { id: "MESS-04", description: "Verify hygiene of all food handlers (uniform, nails, health).", priority: "High", riskLevel: "High", consequence: "Sick or unhygienic food handlers are a major vector for disease.", proof: "Staff Hygiene Log" },
+                { id: "MESS-05", description: "Ensure the kitchen and dining areas are clean and pest-free.", priority: "High", riskLevel: "High", consequence: "Pests carry disease and their presence is a major red flag for health inspectors.", proof: "Cleaning & Pest Control Log" },
+                { id: "MESS-06", description: "Calibrate food thermometers daily.", priority: "High", riskLevel: "High", consequence: "An inaccurate thermometer gives a false sense of safety.", proof: "Calibration Log" },
+                { id: "MESS-07", description: "Check that water used for cooking and drinking is safe.", priority: "High", riskLevel: "High", consequence: "Contaminated water can make hundreds of students sick at once.", proof: "Water Test Report" },
+                { id: "MESS-08", description: "Maintain a food sample from each meal for 48 hours.", priority: "High", riskLevel: "High", consequence: "Crucial evidence for investigation in case of a food poisoning outbreak.", proof: "Sample Log" },
+                { id: "MESS-09", description: "Manage waste disposal effectively to prevent pests.", priority: "High", riskLevel: "High", consequence: "Improperly managed waste is a primary attractant for pests.", proof: "Waste Log" },
+                { id: "MESS-10", description: "Train all kitchen staff on food safety and hygiene.", priority: "High", riskLevel: "High", consequence: "The entire system relies on staff following the correct procedures.", proof: "Training Records" }
+            ]
+        },
+        {
+            title: "IT & Network Acceptable Use Policy",
+            department: "IT",
+            frequency: "Ongoing",
+            role: "IT Administrator",
+            summary: "Manages campus network security and ensures appropriate use by students and staff.",
+            icon: "wifi",
+            tasks: [
+                { id: "IT-AUP-01", description: "Enforce strong password policies for all network users.", priority: "High", riskLevel: "High", consequence: "Weak passwords are the easiest way for hackers to gain unauthorized access.", proof: "Password Policy Document" },
+                { id: "IT-AUP-02", description: "Block access to malicious or inappropriate websites on the campus network.", priority: "High", riskLevel: "High", consequence: "Protects students from harmful content and protects the network from malware.", proof: "Firewall/Filter Logs" },
+                { id: "IT-AUP-03", description: "Monitor network for unusual activity or security threats.", priority: "High", riskLevel: "High", consequence: "Early detection of threats can prevent a major breach.", proof: "Network Monitoring Logs" },
+                { id: "IT-AUP-04", description: "Ensure all campus computers have up-to-date antivirus software.", priority: "High", riskLevel: "High", consequence: "A single infected machine can spread malware across the entire network.", proof: "Antivirus Dashboard" },
+                { id: "IT-AUP-05", description: "Have all users agree to an Acceptable Use Policy upon first login.", priority: "High", riskLevel: "Medium", consequence: "Sets clear expectations for behavior and provides grounds for disciplinary action.", proof: "AUP Acceptance Log" },
+                { id: "IT-AUP-06", description: "Manage student data in compliance with data privacy laws.", priority: "High", riskLevel: "High", consequence: "A breach of student data can have severe legal and reputational consequences.", proof: "Data Privacy Audit" },
+                { id: "IT-AUP-07", description: "Provide secure Wi-Fi access for students, staff, and guests.", priority: "High", riskLevel: "High", consequence: "An unsecured Wi-Fi network can be a gateway for attackers.", proof: "Wi-Fi Configuration" },
+                { id: "IT-AUP-08", description: "Back up all critical university data regularly.", priority: "High", riskLevel: "High", consequence: "A ransomware attack or server failure can lead to catastrophic data loss without backups.", proof: "Backup Logs" },
+                { id: "IT-AUP-09", description: "Have a clear policy for software installation on campus computers.", priority: "High", riskLevel: "Medium", consequence: "Unauthorized software can introduce security risks and licensing issues.", proof: "Software Policy" },
+                { id: "IT-AUP-10", description: "Provide IT support to students and staff.", priority: "High", riskLevel: "Medium", consequence: "Lack of support leads to frustration and users finding insecure workarounds.", proof: "Helpdesk Tickets" }
+            ]
+        },
+        {
+            title: "Emergency Transport SOP",
+            department: "Health/Transport",
+            frequency: "Daily",
+            role: "Transport Manager",
+            summary: "Ensures the on-campus ambulance is always ready for a medical emergency.",
+            icon: "ambulance",
+            tasks: [
+                { id: "TRANSPORT-EMER-01", description: "Check on-campus ambulance daily (fuel, tires, medical supplies).", priority: "High", riskLevel: "High", consequence: "An ambulance that is not ready can be a fatal weak link in an emergency.", proof: "Ambulance Check Log" },
+                { id: "TRANSPORT-EMER-02", description: "Ensure an ambulance driver is available on call 24/7.", priority: "High", riskLevel: "High", consequence: "A patient needing urgent hospital transfer is stranded.", proof: "Driver Roster" },
+                { id: "TRANSPORT-EMER-03", description: "Maintain a list of nearby hospitals and their contact numbers.", priority: "High", riskLevel: "High", consequence: "Wasting time searching for a hospital number during an emergency.", proof: "Hospital Contact List" },
+                { id: "TRANSPORT-EMER-04", description: "Train drivers on the fastest routes to designated hospitals.", priority: "High", riskLevel: "Medium", consequence: "Every minute saved can make a difference in a medical emergency.", proof: "Route Training Log" },
+                { id: "TRANSPORT-EMER-05", description: "Have a clear protocol for dispatching the ambulance.", priority: "High", riskLevel: "High", consequence: "A clear, single point of contact for dispatch prevents confusion.", proof: "Dispatch SOP" },
+                { id: "TRANSPORT-EMER-06", description: "Log all ambulance trips with details of the patient and incident.", priority: "High", riskLevel: "High", consequence: "Provides a legal record of the emergency response.", proof: "Ambulance Trip Log" },
+                { id: "TRANSPORT-EMER-07", description: "Regularly service the ambulance.", priority: "High", riskLevel: "High", consequence: "A breakdown during a patient transfer can be catastrophic.", proof: "Service Records" },
+                { id: "TRANSPORT-EMER-08", description: "Ensure ambulance staff are trained in first-aid.", priority: "High", riskLevel: "High", consequence: "The team can provide care en route to the hospital.", proof: "Training Records" },
+                { id: "TRANSPORT-EMER-09", description: "Test ambulance siren and lights daily.", priority: "High", riskLevel: "High", consequence: "Crucial for clearing traffic during an emergency.", proof: "Test Log" },
+                { id: "TRANSPORT-EMER-10", description: "Coordinate with campus security for clear passage during emergencies.", priority: "High", riskLevel: "High", consequence: "Security must be ready to clear gates and roads for the ambulance.", proof: "Coordination Plan" }
+            ]
+        },
+        {
+            title: "Campus Incident Handling",
+            department: "Management",
+            frequency: "Per Incident",
+            role: "Registrar/Dean",
+            summary: "A framework for managing major campus incidents, from security breaches to student protests.",
+            icon: "siren",
+            tasks: [
+                { id: "INC-HDLG-UNIV-01", description: "Log every incident in a central incident management system.", priority: "High", riskLevel: "High", consequence: "Without a log, there is no institutional memory of past incidents.", proof: "Incident Log" },
+                { id: "INC-HDLG-UNIV-02", description: "Immediately notify parents/guardians in case of a student medical emergency.", priority: "High", riskLevel: "High", consequence: "A delay in notification is a major source of parental anger and legal claims.", proof: "Communication Log" },
+                { id: "INC-HDLG-UNIV-03", description: "Follow a fair and documented process for investigating student conflicts.", priority: "High", riskLevel: "Medium", consequence: "A biased investigation can lead to accusations of unfairness and legal challenges.", proof: "Investigation Report" },
+                { id: "INC-HDLG-UNIV-04", description: "Escalate major security breaches to senior management and police.", priority: "High", riskLevel: "High", consequence: "Keeps leadership and authorities informed to manage the crisis.", proof: "Escalation Log" },
+                { id: "INC-HDLG-UNIV-05", description: "Maintain confidentiality of all parties involved in an incident.", priority: "High", riskLevel: "High", consequence: "Breaching confidentiality can violate privacy and lead to legal action.", proof: "Confidentiality Agreement" },
+                { id: "INC-HDLG-UNIV-06", description: "Conduct a root cause analysis for all significant incidents.", priority: "High", riskLevel: "High", consequence: "Essential for preventing the same incident from happening again.", proof: "RCA Report" },
+                { id: "INC-HDLG-UNIV-07", description: "Implement corrective actions to prevent recurrence.", priority: "High", riskLevel: "High", consequence: "The most important step to show that the institution learns from its mistakes.", proof: "CAPA Plan" },
+                { id: "INC-HDLG-UNIV-08", description: "Provide support and counseling to affected students/staff.", priority: "High", riskLevel: "Medium", consequence: "Crucial for the well-being of the campus community after a traumatic event.", proof: "Counseling Log" },
+                { id: "INC-HDLG-UNIV-09", description: "Document all communications with external parties (police, media).", priority: "High", riskLevel: "High", consequence: "Creates a clear record of who said what and when.", proof: "External Communication Log" },
+                { id: "INC-HDLG-UNIV-10", description: "Review and update incident handling procedures annually.", priority: "High", riskLevel: "High", consequence: "Ensures the procedures remain effective and relevant.", proof: "Updated Procedures" }
             ]
         }
     ]
@@ -2652,21 +2772,21 @@ const logistics_warehouse_pack: PremiumPack = {
         {
             title: "Inbound & Receiving",
             department: "Receiving",
-            frequency: "Per Delivery",
+            frequency: "Per Shipment",
             role: "Receiving Clerk",
             summary: "Ensures all incoming goods are accurately received, inspected, and documented.",
             icon: "clipboard-check",
             tasks: [
-                { id: "LW-IR-01", description: "Schedule and confirm delivery appointment with carrier.", priority: "Medium", riskLevel: "Low", consequence: "Dock congestion, delays.", proof: "Appointment log." },
-                { id: "LW-IR-02", description: "Inspect truck/container for signs of tampering or damage before unloading.", priority: "High", riskLevel: "Medium", consequence: "Accepting damaged goods, security risk.", proof: "Inbound inspection form." },
-                { id: "LW-IR-03", description: "Verify shipment against packing list and purchase order.", priority: "High", riskLevel: "High", consequence: "Inventory discrepancies, paying for incorrect goods.", proof: "Signed packing list with discrepancies noted." },
-                { id: "LW-IR-04", description: "Conduct quality inspection on a sample of goods (e.g., check for damage, expiry dates).", priority: "High", riskLevel: "Medium", consequence: "Accepting defective products into inventory.", proof: "Inbound QC report." },
-                { id: "LW-IR-05", description: "Record all received items into the Warehouse Management System (WMS).", priority: "High", riskLevel: "High", consequence: "Phantom stock, inability to locate goods.", proof: "WMS receiving entry." },
-                { id: "LW-IR-06", description: "Label all pallets/items with internal tracking barcodes.", priority: "High", riskLevel: "Low", consequence: "Inefficient putaway and picking.", proof: "Photo of labeled pallet." },
-                { id: "LW-IR-07", description: "Segregate and move goods to the appropriate staging or putaway area.", priority: "Medium", riskLevel: "Low", consequence: "Delays in putaway, dock congestion.", proof: "Visual confirmation." },
-                { id: "LW-IR-08", description: "Process and document any returns to vendor (RTV) for damaged or incorrect goods.", priority: "Medium", riskLevel: "Medium", consequence: "Financial loss, holding unwanted stock.", proof: "RTV documentation." },
-                { id: "LW-IR-09", description: "Clean receiving area after each delivery.", priority: "Medium", riskLevel: "Low", consequence: "A messy receiving area is a safety hazard.", proof: "Housekeeping Log." },
-                { id: "LW-IR-10", description: "Sign and stamp the delivery driver's paperwork.", priority: "High", riskLevel: "Medium", consequence: "Legal confirmation that the shipment was received.", proof: "Signed Proof of Delivery." }
+                { id: "LW-IR-01", description: "Verify physical shipment against the Purchase Order (PO).", priority: "High", riskLevel: "High", consequence: "Accepting an incorrect shipment leads to major inventory and payment discrepancies.", proof: "PO & Delivery Note Match" },
+                { id: "LW-IR-02", description: "Inspect all incoming packages for damage or tampering.", priority: "High", riskLevel: "High", consequence: "Accepting damaged goods results in a financial loss that should be claimed from the transporter or supplier.", proof: "Damage Report" },
+                { id: "LW-IR-03", description: "Count and verify the quantity of items received.", priority: "High", riskLevel: "High", consequence: "Short-shipments that are not caught at receiving are a direct financial loss.", proof: "Count Sheet" },
+                { id: "LW-IR-04", description: "Update the Warehouse Management System (WMS) with received quantities.", priority: "High", riskLevel: "High", consequence: "A delay or error in updating the WMS means the inventory system is inaccurate, affecting order fulfillment.", proof: "WMS Entry Log" },
+                { id: "LW-IR-05", description: "Assign items to a putaway location in the WMS.", priority: "High", riskLevel: "Medium", consequence: "Slow putaway clogs the receiving area and makes items unavailable for picking.", proof: "Putaway Ticket" },
+                { id: "LW-IR-06", description: "Generate and apply labels/barcodes if required.", priority: "High", riskLevel: "Medium", consequence: "Unlabeled inventory is impossible to track and manage effectively.", proof: "Labeling Log" },
+                { id: "LW-IR-07", description: "Move goods from receiving to the putaway or staging area promptly.", priority: "High", riskLevel: "Medium", consequence: "A cluttered receiving bay is inefficient and a safety hazard.", proof: "Movement Log" },
+                { id: "LW-IR-08", description: "Handle and document any discrepancies or short shipments.", priority: "High", riskLevel: "High", consequence: "Provides the necessary documentation to file a claim with the supplier.", proof: "Discrepancy Report" },
+                { id: "LW-IR-09", description: "Keep the receiving area clean and clear of obstructions.", priority: "High", riskLevel: "Medium", consequence: "A messy receiving area is a major safety hazard.", proof: "Housekeeping Log" },
+                { id: "LW-IR-10", description: "Sign and stamp the delivery driver's paperwork.", priority: "High", riskLevel: "Medium", consequence: "The legal confirmation that the shipment was received.", proof: "Signed Proof of Delivery" }
             ]
         },
         {
