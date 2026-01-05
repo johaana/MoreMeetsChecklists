@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function TempDesignPreviewPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-background temp-design-page">
+    <div className="flex flex-col min-h-screen bg-background temp-design-page" style={{'--bg-primary': 'hsl(212 40% 4%)'} as React.CSSProperties}>
       <SiteHeader />
        <Suspense fallback={
         <main className="flex-1 flex items-center justify-center h-screen">

@@ -112,3 +112,29 @@ html {
 .slow-zoom-video {
   animation: slow-zoom 30s ease-in-out infinite alternate;
 }
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.shimmer-button:disabled {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-button:disabled::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-image: linear-gradient(
+    100deg,
+    transparent 20%,
+    hsla(var(--accent-authority), 0.3) 50%,
+    transparent 80%
+  );
+  animation: shimmer 3s infinite linear;
+}

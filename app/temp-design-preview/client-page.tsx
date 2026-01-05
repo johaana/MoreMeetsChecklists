@@ -3,10 +3,12 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, X } from "lucide-react";
-import React from 'react';
+import { ArrowRight, Check, X, Lock, Unlock } from "lucide-react";
+import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { cn } from "@/lib/utils";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const Section = ({ className, id, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
     <section id={id} className={cn("w-full py-20 md:py-28 lg:py-32", className)} {...props} />
@@ -69,170 +71,108 @@ const HeroSection = () => (
 );
 
 
-const CoreProblemSection = () => (
-    <Section id="core-problem">
-        <div className="container px-4 md:px-6 text-center max-w-3xl mx-auto space-y-10">
-            <SectionHeadline>Memory fails. Systems don’t.</SectionHeadline>
-            <div className="space-y-4 text-lg" style={{color: 'hsl(var(--text-secondary))'}}>
-                <p>People don’t fail because they don’t care.<br/>They fail because the business expects them to remember too much.</p>
-                <p>When processes are undocumented, inconsistently trained, explained verbally, or just “understood” but not written...</p>
-            </div>
-            <div className="flex flex-wrap items-center justify-center gap-3 text-center text-sm font-medium">
-                {['Steps are skipped', 'Standards drift', 'Training fades', 'Audits are stressful', 'Managers chase'].map(item => (
-                    <div key={item} className="p-2 px-4 rounded-full border" style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))', color: 'hsl(var(--text-secondary))'}}>
-                        {item}
+const ButtonExplorationSection = () => {
+    const [agreed, setAgreed] = useState(false);
+
+    const ButtonExample = ({ variant, children, disabled, className }: { variant: 'default' | 'destructive' | 'accent', children: React.ReactNode, disabled?: boolean, className?: string }) => (
+        <Button variant={variant} disabled={disabled} className={cn('w-full', className)}>
+            {children}
+        </Button>
+    );
+
+    return (
+        <Section id="button-exploration" style={{ backgroundColor: 'hsl(var(--bg-secondary))' }}>
+            <div className="container px-4 md:px-6">
+                <div className="text-center mb-12 max-w-2xl mx-auto">
+                    <SectionHeadline>Button Style Exploration</SectionHeadline>
+                    <p className="text-lg mt-4" style={{color: 'hsl(var(--text-secondary))'}}>
+                        Interactive examples of different button styles for the primary Call-to-Action. Toggle the checkbox to see enabled/disabled states.
+                    </p>
+                </div>
+
+                <div className="flex items-center space-x-2 max-w-sm mx-auto mb-12 p-4 rounded-lg border" style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
+                    <Checkbox id="terms" checked={agreed} onCheckedChange={(checked) => setAgreed(checked as boolean)} />
+                    <Label htmlFor="terms" className="text-sm" style={{color: 'hsl(var(--text-on-light))'}}>I agree to the terms and conditions</Label>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-8">
+                    {/* Column 1: Base Colors */}
+                    <div className="space-y-8">
+                        <h3 className="text-xl font-bold text-center" style={{color: 'hsl(var(--text-primary))'}}>Option 1: Base Colors</h3>
+                        <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
+                            <CardHeader>
+                                <CardTitle style={{color: 'hsl(var(--accent-authority))'}}>Green (Authority)</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <ButtonExample variant="default" disabled={!agreed}>Buy Now</ButtonExample>
+                            </CardContent>
+                        </Card>
+                        <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
+                            <CardHeader>
+                                <CardTitle style={{color: 'hsl(var(--accent-urgency))'}}>Red (Urgency)</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <ButtonExample variant="destructive" disabled={!agreed}>Buy Now</ButtonExample>
+                            </CardContent>
+                        </Card>
+                        <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
+                            <CardHeader>
+                                <CardTitle style={{color: 'hsl(var(--accent))'}}>Gold (Premium)</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <ButtonExample variant="accent" disabled={!agreed}>Buy Now</ButtonExample>
+                            </CardContent>
+                        </Card>
                     </div>
-                ))}
-            </div>
-             <p className="text-xl font-medium pt-4" style={{color: 'hsl(var(--accent-urgency))'}}>If your process isn’t written clearly, it will be rewritten differently by every person.</p>
-        </div>
-    </Section>
-);
 
-const WhatItIsSection = () => (
-    <Section id="what-it-is" style={{backgroundColor: 'hsl(var(--bg-secondary))'}}>
-        <div className="container px-4 md:px-6 max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-[40px] !leading-tight" style={{ color: 'hsl(var(--text-primary))'}}>MoreMeets is not software people need to “remember to use.”</h2>
-            </div>
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12" style={{color: 'hsl(var(--text-primary))'}}>
-                <div className="space-y-4">
-                    <h3 className="text-xl font-bold flex items-center gap-2" style={{color: 'hsl(var(--accent-authority))'}}><Check className="w-5 h-5"/>What it IS</h3>
-                    <ul className="space-y-3 pl-2 text-base" style={{color: 'hsl(var(--text-on-light))'}}>
-                        <li>A structured SOP framework</li>
-                        <li>A library of best-practice operational standards</li>
-                        <li>A way to turn experience into clear, repeatable steps</li>
-                        <li>Designed to work offline, in Excel, or on paper</li>
-                        <li>Easy to update as operations change</li>
-                        <li>Built for real work, not dashboards</li>
-                    </ul>
-                </div>
-                 <div className="space-y-4">
-                    <h3 className="text-xl font-bold flex items-center gap-2" style={{color: 'hsl(var(--accent-risk))'}}><X className="w-5 h-5"/>What it’s NOT</h3>
-                     <ul className="space-y-3 pl-2 text-base" style={{color: 'hsl(var(--text-on-light))'}}>
-                        <li>Not task enforcement</li>
-                        <li>Not monitoring employees</li>
-                        <li>Not reminders or notifications</li>
-                        <li>Not another tool to “manage people”</li>
-                    </ul>
-                </div>
-            </div>
-            <p className="text-center text-lg font-medium mt-12" style={{color: 'hsl(var(--text-primary))'}}>MoreMeets doesn’t control people. It removes ambiguity from work.</p>
-        </div>
-    </Section>
-);
+                    {/* Column 2: Disabled Effects */}
+                    <div className="space-y-8">
+                        <h3 className="text-xl font-bold text-center" style={{color: 'hsl(var(--text-primary))'}}>Option 2: Disabled Effects</h3>
+                         <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
+                            <CardHeader>
+                                <CardTitle>Greyscale to Color</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <Button disabled={!agreed} className="w-full transition-all duration-300 disabled:filter disabled:grayscale disabled:opacity-70" variant="accent">Buy Now</Button>
+                            </CardContent>
+                        </Card>
+                         <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
+                            <CardHeader>
+                                <CardTitle>Subtle Shimmer</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <Button disabled={!agreed} className="w-full shimmer-button" variant="accent">Buy Now</Button>
+                            </CardContent>
+                        </Card>
+                    </div>
 
-const HowTeamsUseItSection = () => {
-    const cards = [
-        { title: "SOP Creation", content: ["Clear steps", "Clear ownership", "Clear frequency", "Clear outcomes"], closing: "No long documents. Only what matters.", subClosing: "Everyone knows what to do, how to do it, and when." },
-        { title: "Training & Onboarding", content: ["Faster", "Consistent", "Less dependent on people"], closing: "Training that doesn’t fade.", subClosing: "New hires don’t guess. They follow the same standards as experienced staff." },
-        { title: "Daily Operations", content: ["What needs to be done", "How it should be done", "What “right” looks like"], closing: "Execution without follow-ups.", subClosing: "Managers stop chasing. Work runs the same on every shift." },
-        { title: "Continuous Improvement", content: ["SOPs are updated", "Mistakes are removed once — permanently", "Best practices are locked in"], closing: "Your system gets smarter over time.", subClosing: "Experience becomes process. Not tribal knowledge." }
-    ];
-    return(
-    <Section id="how-it-works">
-        <div className="container px-4 md:px-6">
-            <div className="text-center mb-12 max-w-2xl mx-auto">
-                <SectionHeadline>How MoreMeets fits into real operations</SectionHeadline>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                {cards.map(card => (
-                    <Card key={card.title} className="flex flex-col" style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-2" style={{color: 'hsl(var(--accent-authority))'}}>
-                                <span className="text-2xl">🟩</span>
-                                <span>{card.title}</span>
-                            </CardTitle>
-                        </CardHeader>
-                        <CardContent className="text-sm flex-1 space-y-4" style={{color: 'hsl(var(--text-secondary))'}}>
-                             <ul className="space-y-1">
-                                {card.content.map(item => <li key={item} className="flex items-start"><span className="mr-2 mt-1">∙</span><span>{item}</span></li>)}
-                            </ul>
-                            <p className="font-semibold pt-2" style={{color: 'hsl(var(--text-primary))'}}>{card.closing}</p>
-                            <p>{card.subClosing}</p>
-                        </CardContent>
-                    </Card>
-                ))}
-            </div>
-        </div>
-    </Section>
-)};
-
-const ComplianceSection = () => (
-    <Section id="compliance" style={{backgroundColor: 'hsl(var(--bg-secondary))'}}>
-        <div className="container px-4 md:px-6 max-w-3xl mx-auto text-center space-y-8">
-            <SectionHeadline>Built for global compliance — without complexity</SectionHeadline>
-            <p className="text-lg" style={{color: 'hsl(var(--text-secondary))'}}>MoreMeets is designed to support regulated environments where consistency matters more than intent.</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-left text-sm pt-4" style={{color: 'hsl(var(--text-primary))'}}>
-                <p className="flex items-center gap-2"><Check className="w-4 h-4" style={{color: 'hsl(var(--accent-authority))'}}/>ISO standards</p>
-                <p className="flex items-center gap-2"><Check className="w-4 h-4" style={{color: 'hsl(var(--accent-authority))'}}/>OSHA & safety frameworks</p>
-                <p className="flex items-center gap-2"><Check className="w-4 h-4" style={{color: 'hsl(var(--accent-authority))'}}/>HACCP</p>
-                <p className="flex items-center gap-2"><Check className="w-4 h-4" style={{color: 'hsl(var(--accent-authority))'}}/>SOC & internal audits</p>
-                <p className="flex items-center gap-2"><Check className="w-4 h-4" style={{color: 'hsl(var(--accent-authority))'}}/>Multi-location consistency</p>
-                <p className="flex items-center gap-2"><Check className="w-4 h-4" style={{color: 'hsl(var(--accent-authority))'}}/>Role-based SOPs</p>
-            </div>
-             <p className="text-xl font-medium pt-4" style={{color: 'hsl(var(--text-primary))'}}>You don’t “prepare” for audits. You operate in a way that naturally passes them.</p>
-        </div>
-    </Section>
-);
-
-const WhoIsItForSection = () => (
-    <Section id="who-is-it-for" style={{backgroundColor: 'hsl(var(--bg-primary))'}}>
-        <div className="container px-4 md:px-6 max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tight font-headline sm:text-4xl md:text-[40px] !leading-tight" style={{ color: 'hsl(var(--text-primary))'}}>Built for operators who are tired of firefighting</h2>
-            </div>
-            <div className="grid md:grid-cols-3 gap-8 text-center" style={{color: 'hsl(var(--text-primary))'}}>
-                <div className="space-y-2">
-                    <h3 className="text-xl font-bold">Founders & COOs</h3>
-                    <p className="text-sm" style={{color: 'hsl(var(--text-secondary))'}}>Scaling without chaos. Less dependency on individuals. Predictable execution.</p>
-                </div>
-                <div className="space-y-2">
-                    <h3 className="text-xl font-bold">Operations & Quality Heads</h3>
-                    <p className="text-sm" style={{color: 'hsl(var(--text-secondary))'}}>Clear standards. Easier audits. Less follow-up.</p>
-                </div>
-                <div className="space-y-2">
-                    <h3 className="text-xl font-bold">Multi-location Teams</h3>
-                    <p className="text-sm" style={{color: 'hsl(var(--text-secondary))'}}>Same standards everywhere. Faster onboarding. Fewer surprises.</p>
+                    {/* Column 3: Icon-based */}
+                     <div className="space-y-8">
+                        <h3 className="text-xl font-bold text-center" style={{color: 'hsl(var(--text-primary))'}}>Option 3: Icon-based</h3>
+                        <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
+                            <CardHeader>
+                                <CardTitle>Lock & Key</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <Button disabled={!agreed} className="w-full" variant="accent">
+                                    {agreed ? <Unlock className="w-4 h-4 mr-2"/> : <Lock className="w-4 h-4 mr-2"/> }
+                                    Buy Now
+                                </Button>
+                            </CardContent>
+                        </Card>
+                    </div>
                 </div>
             </div>
-        </div>
-    </Section>
-);
-
-const FinalCTASection = () => (
-    <Section id="final-cta" style={{backgroundColor: 'hsl(var(--surface-card))'}}>
-        <div className="container px-4 md:px-6 text-center max-w-2xl mx-auto space-y-6">
-            <SectionHeadline>If work lives in people’s heads, it will fail under pressure.</SectionHeadline>
-            <p className="text-lg" style={{color: 'hsl(var(--text-secondary))'}}>MoreMeets gives your business a system, not another tool.</p>
-            <div className="flex flex-col items-center gap-3 pt-4">
-                <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--accent-authority))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
-                    <Link href="/library">
-                        View the SOP Framework <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                </Button>
-                <Button variant="link" asChild className="text-xs" style={{ color: 'hsl(var(--text-secondary))'}}>
-                    <Link href="/library">Explore industry examples</Link>
-                </Button>
-                 <div className="pt-4 text-xs" style={{ color: 'hsl(var(--text-secondary))', opacity: 0.7 }}>
-                    Offline • Excel-based • One-time purchase • Lifetime updates
-                </div>
-            </div>
-        </div>
-    </Section>
-);
+        </Section>
+    );
+};
 
 
 export default function TempDesignClientPage() {
   return (
     <main className="flex-1">
       <HeroSection />
-      <CoreProblemSection />
-      <WhatItIsSection />
-      <HowTeamsUseItSection />
-      <ComplianceSection />
-      <WhoIsItForSection />
-      <FinalCTASection />
+      <ButtonExplorationSection />
     </main>
   );
 }
