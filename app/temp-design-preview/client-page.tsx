@@ -74,30 +74,44 @@ const HeroSection = () => (
 const ButtonExplorationSection = () => {
     const [agreed, setAgreed] = useState(false);
 
-    const AnimatedButton = ({ color, agreed }: { color: string, agreed: boolean }) => {
-        const colorVar = `var(--${color})`;
-        const bgColor = agreed ? `hsl(${colorVar})` : `hsl(var(--surface-card))`;
-        let textColor = agreed ? 'hsl(var(--primary-foreground))' : `hsl(var(--text-on-light))`;
-        if (agreed && color === 'accent') {
-            textColor = `hsl(var(--accent-foreground))`
-        } else if (agreed) {
-            textColor = `hsl(var(--bg-primary))`
-        }
+    const AnimatedButton = ({ 
+        enabledBg, 
+        enabledText,
+        disabledBorder, 
+        disabledText, 
+        chasingColor,
+        agreed 
+    }: { 
+        enabledBg: string, 
+        enabledText: string,
+        disabledBorder: string,
+        disabledText: string,
+        chasingColor: string,
+        agreed: boolean 
+    }) => {
+        const enabledBgColor = `hsl(var(--${enabledBg}))`;
+        const enabledTextColor = `hsl(var(--${enabledText}))`;
+        const disabledBorderColor = `hsl(var(--${disabledBorder}))`;
+        const disabledTextColor = `hsl(var(--${disabledText}))`;
+        const chasingColorValue = `hsl(var(--${chasingColor}))`;
 
         return (
-             <button
+            <button
                 disabled={!agreed}
                 className={cn(
-                    "w-full h-10 rounded-md transition-all duration-300",
+                    "w-full h-10 rounded-md transition-all duration-300 font-semibold",
                     !agreed && "chasing-border-button"
                 )}
                 style={{
-                    '--button-color': `hsl(${colorVar})`,
-                    backgroundColor: bgColor,
-                    color: textColor
+                    '--chasing-color': chasingColorValue,
+                    backgroundColor: agreed ? enabledBgColor : 'transparent',
+                    color: agreed ? enabledTextColor : disabledTextColor,
+                    borderColor: agreed ? 'transparent' : disabledBorderColor,
+                    borderWidth: agreed ? '2px' : '2px',
+                    borderStyle: 'solid'
                 } as React.CSSProperties}
             >
-                <span className="font-semibold">Buy Now</span>
+                Buy Now
             </button>
         )
     };
@@ -120,26 +134,47 @@ const ButtonExplorationSection = () => {
                 <div className="grid md:grid-cols-3 gap-8">
                     <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
                         <CardHeader>
-                            <CardTitle style={{color: 'hsl(var(--accent-authority))'}}>Green (Authority)</CardTitle>
+                            <CardTitle style={{color: 'hsl(var(--text-primary))'}}>White & Green</CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <AnimatedButton color="accent-authority" agreed={agreed} />
+                            <AnimatedButton 
+                                enabledBg="authority-green"
+                                enabledText="bg-primary"
+                                disabledBorder="text-primary"
+                                disabledText="text-primary"
+                                chasingColor="authority-green"
+                                agreed={agreed}
+                            />
                         </CardContent>
                     </Card>
                     <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
                         <CardHeader>
-                            <CardTitle style={{color: 'hsl(var(--accent-urgency))'}}>Red (Urgency)</CardTitle>
+                            <CardTitle style={{color: 'hsl(var(--text-primary))'}}>Yellow & Green</CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <AnimatedButton color="risk-accent" agreed={agreed} />
+                             <AnimatedButton 
+                                enabledBg="authority-green"
+                                enabledText="bg-primary"
+                                disabledBorder="accent"
+                                disabledText="accent"
+                                chasingColor="authority-green"
+                                agreed={agreed}
+                            />
                         </CardContent>
                     </Card>
                     <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
                         <CardHeader>
-                           <CardTitle style={{color: 'hsl(var(--accent))'}}>Gold (Premium)</CardTitle>
+                           <CardTitle style={{color: 'hsl(var(--text-primary))'}}>Red & Yellow</CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <AnimatedButton color="accent" agreed={agreed} />
+                           <AnimatedButton 
+                                enabledBg="risk-accent"
+                                enabledText="text-primary"
+                                disabledBorder="risk-accent"
+                                disabledText="risk-accent"
+                                chasingColor="accent"
+                                agreed={agreed}
+                            />
                         </CardContent>
                     </Card>
                 </div>
@@ -157,3 +192,4 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
+

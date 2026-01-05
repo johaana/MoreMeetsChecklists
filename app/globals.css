@@ -117,11 +117,10 @@ html {
 }
 
 .chasing-border-button {
-    position: relative;
-    background-color: hsl(var(--surface-card));
-    color: hsl(var(--text-on-light));
-    border: 2px solid transparent;
-    background-clip: padding-box;
+  position: relative;
+  background-color: transparent;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 .chasing-border-button::before {
@@ -129,12 +128,12 @@ html {
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
     z-index: -1;
-    margin: -2px;
+    margin: -2px; 
     border-radius: inherit;
     background: conic-gradient(
         from var(--gradient-angle),
         hsl(var(--surface-card)),
-        hsl(var(--button-color)),
+        hsl(var(--chasing-color)),
         hsl(var(--surface-card)) 25%,
         hsl(var(--surface-card))
     );
@@ -144,3 +143,4 @@ html {
 .chasing-border-button:disabled {
     cursor: not-allowed;
 }
+
