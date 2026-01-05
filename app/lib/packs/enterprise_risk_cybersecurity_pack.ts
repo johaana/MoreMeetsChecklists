@@ -37,7 +37,9 @@ export const enterprise_risk_cybersecurity_pack: PremiumPack = {
                 {id: 'ERC-UAR-05', description: 'Revoke all unnecessary or unapproved access within 48 hours.', priority: 'High', riskLevel: 'High', consequence: 'Known unnecessary access is not removed promptly.', proof: 'Service desk tickets showing access revocation.'},
                 {id: 'ERC-UAR-06', description: 'Audit third-party vendor access to internal systems.', priority: 'High', riskLevel: 'High', consequence: 'A vendor breach becomes an internal breach.', proof: 'Vendor access review checklist.'},
                 {id: 'ERC-UAR-07', description: 'Ensure all terminated employee accounts were disabled on their last day of employment.', priority: 'High', riskLevel: 'High', consequence: 'Disgruntled ex-employees retain access.', proof: 'Cross-reference termination list with HR.'},
-                {id: 'ERC-UAR-08', description: 'Document the completion of the access review cycle.', priority: 'Medium', riskLevel: 'Low', consequence: 'No audit trail for compliance.', proof: 'Signed summary report of the access review.'}
+                {id: 'ERC-UAR-08', description: 'Document the completion of the access review cycle.', priority: 'Medium', riskLevel: 'Low', consequence: 'No audit trail for compliance.', proof: 'Signed summary report of the access review.'},
+                {id: 'ERC-UAR-09', description: 'Review access to shared mailboxes and distribution lists.', priority: 'Medium', riskLevel: 'Low', consequence: 'Former employees receiving confidential information.', proof: 'Review of group memberships.'},
+                {id: 'ERC-UAR-10', description: 'Ensure a formal process for requesting new access is in place.', priority: 'High', riskLevel: 'Medium', consequence: 'Ad-hoc access grants lead to privilege creep.', proof: 'Access request form and process document.'}
             ]
         },
         {
@@ -55,7 +57,9 @@ export const enterprise_risk_cybersecurity_pack: PremiumPack = {
                 {id: 'ERC-VPM-05', description: 'Deploy patches for critical vulnerabilities within the defined SLA (e.g., 14 days).', priority: 'High', riskLevel: 'High', consequence: 'Leaving a known critical entry point open for too long.', proof: 'Patch deployment logs.'},
                 {id: 'ERC-VPM-06', description: 'Run a follow-up scan to verify that patches were successfully applied.', priority: 'High', riskLevel: 'Medium', consequence: 'Assuming a patch was successful when it failed.', proof: 'Post-patch verification scan report.'},
                 {id: 'ERC-VPM-07', description: 'Document any exceptions where a patch cannot be applied and implement mitigating controls.', priority: 'High', riskLevel: 'High', consequence: 'Unpatched legacy systems without any other protection.', proof: 'Risk acceptance form signed by CISO.'},
-                {id: 'ERC-VPM-08', description: 'Report on patching status and vulnerability trends to management.', priority: 'Medium', riskLevel: 'Low', consequence: 'Lack of visibility into the security posture.', proof: 'Monthly patch compliance report.'}
+                {id: 'ERC-VPM-08', description: 'Report on patching status and vulnerability trends to management.', priority: 'Medium', riskLevel: 'Low', consequence: 'Lack of visibility into the security posture.', proof: 'Monthly patch compliance report.'},
+                {id: 'ERC-VPM-09', description: 'Subscribe to vendor security mailing lists and threat intelligence feeds.', priority: 'High', riskLevel: 'Medium', consequence: 'Being unaware of a newly disclosed zero-day vulnerability.', proof: 'Subscription confirmation.'},
+                {id: 'ERC-VPM-10', description: 'Patch third-party applications (e.g., Adobe, Java, Chrome) in addition to operating systems.', priority: 'High', riskLevel: 'High', consequence: 'Third-party apps are a common entry point for malware.', proof: 'Patch management system report.'}
             ]
         },
         {
