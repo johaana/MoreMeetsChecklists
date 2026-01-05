@@ -71,30 +71,6 @@ const GlobalStandardsSection = ({ pack }: { pack: PremiumPack }) => {
 };
 
 export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPack, heroImageUrl: string }) {
-  const pricingSectionRef = React.useRef<HTMLDivElement>(null);
-  const [showStickyBar, setShowStickyBar] = React.useState(false);
-  const isMobile = useIsMobile();
-  
-  React.useEffect(() => {
-    if (!isMobile) return;
-    
-    const pricingEl = document.getElementById('pricing');
-    if (!pricingEl) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setShowStickyBar(!entry.isIntersecting);
-      },
-      { rootMargin: "0px 0px -100% 0px", threshold: 0 }
-    );
-  
-    observer.observe(pricingEl);
-  
-    return () => {
-      observer.unobserve(pricingEl);
-    };
-  }, [isMobile]);
-
   const audience = pack.whoIsItFor || ["Industry Professionals"];
   const totalChecklists = pack.checklists?.length || 0;
   const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
@@ -172,21 +148,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
         </main>
       </div>
-      {pack.priceINR > 0 && (
-         <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm p-4 border-t transition-transform duration-300 ${showStickyBar ? 'translate-y-0' : 'translate-y-full'}`}>
-            <div className='flex items-center justify-between gap-4'>
-                 <div className='flex-1'>
-                    <p className='font-bold text-sm truncate'>{pack.title}</p>
-                    <p className='text-lg font-extrabold'>₹{pack.priceINR}</p>
-                </div>
-                <div className="flex-shrink-0">
-                     <Button asChild>
-                        <Link href="#pricing">Buy Now</Link>
-                    </Button>
-                </div>
-            </div>
-        </div>
-      )}
     </>
   );
 }
