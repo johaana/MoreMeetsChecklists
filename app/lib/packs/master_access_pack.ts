@@ -23,7 +23,7 @@ export const master_access_pack: PremiumPack = {
         { text: "A one-time purchase for a lifetime of operational knowledge and compliance.", icon: "shield-check" }
     ],
     checklists: allPacks.flatMap(pack => {
-        if (pack.id === 'master_access' || pack.id === 'animal_shelter_pack') return [];
+        if (pack.id === 'master_access') return [];
         return pack.checklists.map(checklist => ({
             ...checklist,
             tasks: checklist.tasks.map(task => ({
@@ -35,5 +35,3 @@ export const master_access_pack: PremiumPack = {
         }))
     }),
 };
-
-  
