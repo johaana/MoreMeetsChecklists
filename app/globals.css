@@ -133,7 +133,7 @@ html {
     background: conic-gradient(
         from var(--gradient-angle),
         hsl(var(--surface-card)),
-        hsl(var(--chasing-color)),
+        var(--chasing-color),
         hsl(var(--surface-card)) 25%,
         hsl(var(--surface-card))
     );
@@ -142,5 +142,16 @@ html {
 
 .chasing-border-button:disabled {
     cursor: not-allowed;
+    border-color: var(--border-color, hsl(var(--border)));
+    color: var(--text-color, hsl(var(--muted-foreground)));
 }
 
+.chasing-border-button:disabled::before {
+    background: conic-gradient(
+        from var(--gradient-angle),
+        hsl(var(--surface-card)),
+        var(--chasing-color),
+        hsl(var(--surface-card)) 25%,
+        hsl(var(--surface-card))
+    );
+}

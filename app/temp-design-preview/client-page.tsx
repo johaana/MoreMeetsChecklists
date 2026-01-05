@@ -99,16 +99,15 @@ const ButtonExplorationSection = () => {
             <button
                 disabled={!agreed}
                 className={cn(
-                    "w-full h-10 rounded-md transition-all duration-300 font-semibold",
-                    !agreed && "chasing-border-button"
+                    "w-full h-10 rounded-md transition-all duration-300 font-semibold chasing-border-button"
                 )}
                 style={{
                     '--chasing-color': chasingColorValue,
+                    '--border-color': disabledBorderColor,
+                    '--text-color': disabledTextColor,
                     backgroundColor: agreed ? enabledBgColor : 'transparent',
                     color: agreed ? enabledTextColor : disabledTextColor,
                     borderColor: agreed ? 'transparent' : disabledBorderColor,
-                    borderWidth: agreed ? '2px' : '2px',
-                    borderStyle: 'solid'
                 } as React.CSSProperties}
             >
                 Buy Now
@@ -120,7 +119,7 @@ const ButtonExplorationSection = () => {
         <Section id="button-exploration" style={{ backgroundColor: 'hsl(var(--bg-secondary))' }}>
             <div className="container px-4 md:px-6">
                 <div className="text-center mb-12 max-w-2xl mx-auto">
-                    <SectionHeadline>Dynamic Animated Border Buttons</SectionHeadline>
+                    <SectionHeadline>Engaging Button States</SectionHeadline>
                     <p className="text-lg mt-4" style={{color: 'hsl(var(--text-secondary))'}}>
                         An animated border draws the eye to the disabled button, encouraging the user to complete the required action. Ticking the box activates the button with a satisfying fill.
                     </p>
@@ -192,4 +191,3 @@ export default function TempDesignClientPage() {
     </main>
   );
 }
-
