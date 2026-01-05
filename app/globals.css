@@ -140,3 +140,40 @@ html {
   );
   animation: shimmer 3s infinite linear;
 }
+
+@keyframes fill-in {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.fill-in-button {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.fill-in-button .text-content {
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease-out;
+}
+
+.fill-in-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--fill-color, hsl(var(--primary)));
+    transition: width 0.4s ease-out;
+    z-index: 0;
+}
+
+.fill-in-button:not(:disabled)::before {
+    width: 100%;
+}

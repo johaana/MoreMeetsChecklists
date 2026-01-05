@@ -90,31 +90,49 @@ const ButtonExplorationSection = () => {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8">
-                    {/* Column 1: Greyscale to Color */}
+                    {/* Column 1: Fill-Up Effect */}
                     <div className="space-y-8">
-                        <h3 className="text-xl font-bold text-center" style={{color: 'hsl(var(--text-primary))'}}>Greyscale to Color</h3>
+                        <h3 className="text-xl font-bold text-center" style={{color: 'hsl(var(--text-primary))'}}>Fill-Up Effect</h3>
                         <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
                             <CardHeader>
                                 <CardTitle style={{color: 'hsl(var(--accent-authority))'}}>Green (Authority)</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <Button disabled={!agreed} className="w-full transition-all duration-300 disabled:grayscale disabled:opacity-70" variant="default">Buy Now</Button>
+                                <Button 
+                                    disabled={!agreed} 
+                                    className="w-full fill-in-button" 
+                                    variant={agreed ? "default" : "outline"}
+                                    style={{'--fill-color': 'hsl(var(--accent-authority))'} as React.CSSProperties}>
+                                    <span className={cn("text-content", agreed ? "text-primary-foreground" : "text-primary")}>Buy Now</span>
+                                </Button>
                             </CardContent>
                         </Card>
-                        <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
+                         <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
                             <CardHeader>
                                 <CardTitle style={{color: 'hsl(var(--accent-urgency))'}}>Red (Urgency)</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <Button disabled={!agreed} className="w-full transition-all duration-300 disabled:grayscale disabled:opacity-70" variant="destructive">Buy Now</Button>
+                               <Button 
+                                    disabled={!agreed} 
+                                    className="w-full fill-in-button" 
+                                    variant={agreed ? "destructive" : "outline"}
+                                    style={{'--fill-color': 'hsl(var(--accent-urgency))'} as React.CSSProperties}>
+                                    <span className={cn("text-content", agreed ? "text-destructive-foreground" : "text-destructive")}>Buy Now</span>
+                                </Button>
                             </CardContent>
                         </Card>
                         <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
                             <CardHeader>
-                                <CardTitle style={{color: 'hsl(var(--accent))'}}>Gold (Premium)</CardTitle>
+                               <CardTitle style={{color: 'hsl(var(--accent))'}}>Gold (Premium)</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <Button disabled={!agreed} className="w-full transition-all duration-300 disabled:grayscale disabled:opacity-70" variant="accent">Buy Now</Button>
+                                <Button 
+                                    disabled={!agreed} 
+                                    className="w-full fill-in-button" 
+                                    variant={agreed ? "accent" : "outline"}
+                                    style={{'--fill-color': 'hsl(var(--accent))'} as React.CSSProperties}>
+                                    <span className={cn("text-content", agreed ? "text-accent-foreground" : "text-accent")}>Buy Now</span>
+                                </Button>
                             </CardContent>
                         </Card>
                     </div>
@@ -127,7 +145,7 @@ const ButtonExplorationSection = () => {
                                 <CardTitle style={{color: 'hsl(var(--accent-authority))'}}>Green (Authority)</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <Button disabled={!agreed} className="w-full shimmer-button" variant="default">Buy Now</Button>
+                                <Button disabled={!agreed} className="w-full shimmer-button" style={{backgroundColor: agreed ? 'hsl(var(--accent-authority))' : undefined, color: agreed ? 'hsl(var(--primary-foreground))' : undefined}}>Buy Now</Button>
                             </CardContent>
                         </Card>
                          <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
@@ -135,7 +153,7 @@ const ButtonExplorationSection = () => {
                                 <CardTitle style={{color: 'hsl(var(--accent-urgency))'}}>Red (Urgency)</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <Button disabled={!agreed} className="w-full shimmer-button" variant="destructive">Buy Now</Button>
+                                <Button disabled={!agreed} className="w-full shimmer-button" style={{backgroundColor: agreed ? 'hsl(var(--accent-urgency))' : undefined, color: agreed ? 'hsl(var(--destructive-foreground))' : undefined}}>Buy Now</Button>
                             </CardContent>
                         </Card>
                         <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
@@ -143,7 +161,7 @@ const ButtonExplorationSection = () => {
                                 <CardTitle style={{color: 'hsl(var(--accent))'}}>Gold (Premium)</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <Button disabled={!agreed} className="w-full shimmer-button" variant="accent">Buy Now</Button>
+                                <Button disabled={!agreed} className="w-full shimmer-button" style={{backgroundColor: agreed ? 'hsl(var(--accent))' : undefined, color: agreed ? 'hsl(var(--accent-foreground))' : undefined}}>Buy Now</Button>
                             </CardContent>
                         </Card>
                     </div>
