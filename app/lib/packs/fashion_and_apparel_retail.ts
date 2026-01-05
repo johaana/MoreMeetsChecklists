@@ -160,7 +160,7 @@ export const fashion_and_apparel_retail: PremiumPack = {
                 { id: "CH-06", description: "Limit the amount of cash kept in the POS drawer.", priority: "High", riskLevel: "High", consequence: "Minimizes the potential loss during a till snatch or robbery.", proof: "Cash Limit Policy" },
                 { id: "CH-07", description: "Handle credit card transactions securely according to PCI DSS standards.", priority: "High", riskLevel: "High", consequence: "Non-compliance can lead to massive fines and loss of ability to accept cards.", proof: "PCI Compliance Audit" },
                 { id: "CH-08", description: "Process gift card transactions correctly.", priority: "High", riskLevel: "Medium", consequence: "Errors can lead to customer disputes and financial loss.", proof: "Gift Card Log" },
-                { id: "CH-09", description: "Train cashiers on all payment handling procedures.", priority: "High", riskLevel: "High", consequence: "Untrained cashiers are more likely to make errors or fall victim to scams.", proof: "Training Log" },
+                { id: "CH-09", description: "Train cashiers on all payment handling procedures.", priority: "High", riskLevel: "High", consequence: "Untrained cashiers are more likely to make errors or fall for scams.", proof: "Training Log" },
                 { id: "CH-10", description: "Investigate any cash shortages or overages immediately.", priority: "High", riskLevel: "High", consequence: "Uninvestigated discrepancies can be a sign of ongoing theft.", proof: "Investigation Report" },
             ]
         },
@@ -207,4 +207,4 @@ export const fashion_and_apparel_retail: PremiumPack = {
     ]
 };
 
-  
+    
