@@ -141,8 +141,48 @@ export const electronics_showroom_pack: PremiumPack = {
                 { id: "IT-POS-09", description: "Process payment for repairs accurately.", priority: "High", riskLevel: "Medium", consequence: "Billing errors can lead to disputes.", proof: "Invoice" },
                 { id: "IT-POS-10", description: "Log all repair details for warranty and history purposes.", priority: "High", riskLevel: "Medium", consequence: "Provides a valuable service history for the item.", proof: "Service History" }
             ]
+        },
+        {
+            title: "Stockroom Management & Safety",
+            department: "Inventory",
+            frequency: "Weekly",
+            role: "Stockroom Manager",
+            summary: "Ensures the stockroom is organized, efficient, and safe.",
+            icon: "package",
+            tasks: [
+                { id: "STOCK-01", description: "Ensure all aisles are clear and unobstructed.", priority: "High", riskLevel: "High", consequence: "Blocked aisles are a major trip hazard and fire risk.", proof: "Weekly Inspection Log" },
+                { id: "STOCK-02", description: "Store heavy items on lower shelves and lighter items on top.", priority: "High", riskLevel: "High", consequence: "Prevents crushing injuries from falling items.", proof: "Visual Audit" },
+                { id: "STOCK-03", description: "Follow FIFO (First-In, First-Out) for all stock.", priority: "High", riskLevel: "Medium", consequence: "Prevents old stock from becoming obsolete and unsellable.", proof: "FIFO Audit" },
+                { id: "STOCK-04", description: "Maintain a clean and dust-free environment.", priority: "High", riskLevel: "Medium", consequence: "Dust can damage sensitive electronics.", proof: "Cleaning Log" },
+                { id: "STOCK-05", description: "Check that all fire suppression systems and extinguishers are clear.", priority: "High", riskLevel: "High", consequence: "An obstructed sprinkler can fail to control a fire.", proof: "Safety Inspection Log" },
+                { id: "STOCK-06", description: "Ensure adequate lighting in all areas of the stockroom.", priority: "High", riskLevel: "Medium", consequence: "Poor lighting can lead to picking errors and accidents.", proof: "Lighting Check" },
+                { id: "STOCK-07", description: "Restrict stockroom access to authorized personnel only.", priority: "High", riskLevel: "High", consequence: "The number one way to prevent internal theft.", proof: "Access Control Log" },
+                { id: "STOCK-08", description: "Use appropriate MHE (Material Handling Equipment) for moving heavy items.", priority: "High", riskLevel: "High", consequence: "Improper lifting is a leading cause of back injuries.", proof: "MHE Usage Log" },
+                { id: "STOCK-09", description: "Maintain a logical bin location system.", priority: "High", riskLevel: "Low", consequence: "A disorganized stockroom makes it slow and difficult to find items.", proof: "Bin Location Map" },
+                { id: "STOCK-10", description: "Conduct regular pest control checks.", priority: "High", riskLevel: "High", consequence: "Pests can damage packaging and products.", proof: "Pest Control Report" }
+            ]
+        },
+        {
+            title: "Sales & Customer Service Process",
+            department: "Sales",
+            frequency: "Ongoing",
+            role: "Sales Manager",
+            summary: "A process to ensure a professional and effective sales experience.",
+            icon: "user-check",
+            tasks: [
+                { id: "SALES-01", description: "Train staff on the features and benefits of all key products.", priority: "High", riskLevel: "Medium", consequence: "Staff who can't answer questions seem unprofessional and lose sales.", proof: "Training Records" },
+                { id: "SALES-02", description: "Use a structured sales process (e.g., greet, qualify, demo, close).", priority: "High", riskLevel: "Medium", consequence: "An inconsistent sales process leads to inconsistent results.", proof: "Sales Process Document" },
+                { id: "SALES-03", description: "Handle customer queries and complaints effectively.", priority: "High", riskLevel: "High", consequence: "A poorly handled complaint can lead to negative online reviews.", proof: "Complaint Handling SOP" },
+                { id: "SALES-04", description: "Offer and explain extended warranties and accessories.", priority: "High", riskLevel: "Medium", consequence: "A major source of additional revenue and profit margin.", proof: "Upsell Training" },
+                { id: "SALES-05", description: "Maintain a clean and professional appearance.", priority: "High", riskLevel: "Low", consequence: "Staff appearance is part of the brand image.", proof: "Grooming Policy" },
+                { id: "SALES-06", description: "Follow up with customers after a high-value purchase.", priority: "High", riskLevel: "Low", consequence: "Builds customer loyalty and can lead to future sales.", proof: "Follow-up Log" },
+                { id: "SALES-07", description: "Maintain a customer database for future marketing.", priority: "High", riskLevel: "Medium", consequence: "Allows for targeted marketing and building long-term relationships.", proof: "CRM System" },
+                { id: "SALES-08", description: "Track sales performance against targets.", priority: "High", riskLevel: "High", consequence: "Allows for performance management and identification of top performers.", proof: "Sales Dashboard" },
+                { id: "SALES-09", description: "Conduct regular sales team meetings.", priority: "High", riskLevel: "Medium", consequence: "A key way to share best practices and motivate the team.", proof: "Meeting Minutes" },
+                { id: "SALES-10", description: "Role-play different customer scenarios with staff.", priority: "High", riskLevel: "Medium", consequence: "Builds confidence and prepares staff for difficult customer interactions.", proof: "Role-play Log" }
+            ]
         }
     ]
 };
 
-  
+    
