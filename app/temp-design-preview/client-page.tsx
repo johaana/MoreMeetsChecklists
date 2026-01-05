@@ -127,7 +127,7 @@ const ButtonExplorationSection = () => {
                                 <CardTitle style={{color: 'hsl(var(--accent-authority))'}}>Green (Authority)</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <Button disabled={!agreed} className="w-full shimmer-button" style={!agreed ? {backgroundImage: 'linear-gradient(to right, hsl(var(--primary-foreground)), hsl(var(--primary-foreground)))'} : {}} variant="default">Buy Now</Button>
+                                <Button disabled={!agreed} className="w-full shimmer-button" variant="default">Buy Now</Button>
                             </CardContent>
                         </Card>
                          <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
@@ -135,7 +135,7 @@ const ButtonExplorationSection = () => {
                                 <CardTitle style={{color: 'hsl(var(--accent-urgency))'}}>Red (Urgency)</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <Button disabled={!agreed} className="w-full shimmer-button" style={!agreed ? {backgroundImage: 'linear-gradient(to right, hsl(var(--destructive-foreground)), hsl(var(--destructive-foreground)))'} : {}} variant="destructive">Buy Now</Button>
+                                <Button disabled={!agreed} className="w-full shimmer-button" variant="destructive">Buy Now</Button>
                             </CardContent>
                         </Card>
                         <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>

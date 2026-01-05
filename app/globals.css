@@ -121,6 +121,8 @@ html {
 .shimmer-button:disabled {
   position: relative;
   overflow: hidden;
+  background-color: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
 }
 
 .shimmer-button:disabled::after {
