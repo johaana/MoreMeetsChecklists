@@ -242,7 +242,7 @@ export default function BlogClientPage() {
                         Black Box Debrief
                     </h1>
                     <p className="max-w-[800px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-                        Deconstructing the world's most costly operational disasters to build more resilient organizations. An insights hub by MoreMeets™.
+                        Deconstructing the world's most costly operational disasters to build more resilient organizations. An insights hub by MoreMeets.
                     </p>
                 </div>
 
