@@ -182,5 +182,3 @@ export const facility_management_blueprint: PremiumPack = {
         }
     ]
 };
-
-    
