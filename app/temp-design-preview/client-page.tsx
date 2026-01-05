@@ -119,9 +119,9 @@ const ButtonExplorationSection = () => {
         <Section id="button-exploration" style={{ backgroundColor: 'hsl(var(--bg-secondary))' }}>
             <div className="container px-4 md:px-6">
                 <div className="text-center mb-12 max-w-2xl mx-auto">
-                    <SectionHeadline>Engaging Button States</SectionHeadline>
+                    <SectionHeadline>The "Unlock" Moment</SectionHeadline>
                     <p className="text-lg mt-4" style={{color: 'hsl(var(--text-secondary))'}}>
-                        An animated border draws the eye to the disabled button, encouraging the user to complete the required action. Ticking the box activates the button with a satisfying fill.
+                        The call-to-action should feel alive, not dead. The animated border draws the eye, guiding the user to agree to the terms. This simple action provides satisfying visual feedback, transforming the button into a confident, clickable state.
                     </p>
                 </div>
 
