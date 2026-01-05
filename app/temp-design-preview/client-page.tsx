@@ -74,13 +74,41 @@ const HeroSection = () => (
 const ButtonExplorationSection = () => {
     const [agreed, setAgreed] = useState(false);
 
+    const AnimatedButton = ({ color, agreed }: { color: string, agreed: boolean }) => {
+        const colorVar = `var(--${color})`;
+        const bgColor = agreed ? `hsl(${colorVar})` : `hsl(var(--surface-card))`;
+        let textColor = agreed ? 'hsl(var(--primary-foreground))' : `hsl(var(--text-on-light))`;
+        if (agreed && color === 'accent') {
+            textColor = `hsl(var(--accent-foreground))`
+        } else if (agreed) {
+            textColor = `hsl(var(--bg-primary))`
+        }
+
+        return (
+             <button
+                disabled={!agreed}
+                className={cn(
+                    "w-full h-10 rounded-md transition-all duration-300",
+                    !agreed && "chasing-border-button"
+                )}
+                style={{
+                    '--button-color': `hsl(${colorVar})`,
+                    backgroundColor: bgColor,
+                    color: textColor
+                } as React.CSSProperties}
+            >
+                <span className="font-semibold">Buy Now</span>
+            </button>
+        )
+    };
+
     return (
         <Section id="button-exploration" style={{ backgroundColor: 'hsl(var(--bg-secondary))' }}>
             <div className="container px-4 md:px-6">
                 <div className="text-center mb-12 max-w-2xl mx-auto">
-                    <SectionHeadline>Button Style Exploration</SectionHeadline>
+                    <SectionHeadline>Dynamic Animated Border Buttons</SectionHeadline>
                     <p className="text-lg mt-4" style={{color: 'hsl(var(--text-secondary))'}}>
-                        Interactive examples of different button styles for the primary Call-to-Action. Toggle the checkbox to see enabled/disabled states.
+                        An animated border draws the eye to the disabled button, encouraging the user to complete the required action. Ticking the box activates the button with a satisfying fill.
                     </p>
                 </div>
 
@@ -90,119 +118,30 @@ const ButtonExplorationSection = () => {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8">
-                    {/* Column 1: Fill-Up Effect */}
-                    <div className="space-y-8">
-                        <h3 className="text-xl font-bold text-center" style={{color: 'hsl(var(--text-primary))'}}>Fill-Up Effect</h3>
-                        <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
-                            <CardHeader>
-                                <CardTitle style={{color: 'hsl(var(--accent-authority))'}}>Green (Authority)</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <Button 
-                                    disabled={!agreed} 
-                                    className={cn("w-full", agreed && "fill-in-button")}
-                                    variant={"outline"}
-                                    style={{'--fill-color': 'hsl(var(--authority-green))'} as React.CSSProperties}>
-                                    <span className={cn("text-content", agreed ? "text-primary-text" : "text-muted-text")}>Buy Now</span>
-                                </Button>
-                            </CardContent>
-                        </Card>
-                         <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
-                            <CardHeader>
-                                <CardTitle style={{color: 'hsl(var(--accent-urgency))'}}>Red (Urgency)</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                               <Button 
-                                    disabled={!agreed} 
-                                    className={cn("w-full", agreed && "fill-in-button")} 
-                                    variant={"outline"}
-                                    style={{'--fill-color': 'hsl(var(--risk-accent))'} as React.CSSProperties}>
-                                    <span className={cn("text-content", agreed ? "text-primary-text" : "text-muted-text")}>Buy Now</span>
-                                </Button>
-                            </CardContent>
-                        </Card>
-                        <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
-                            <CardHeader>
-                               <CardTitle style={{color: 'hsl(var(--accent))'}}>Gold (Premium)</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <Button 
-                                    disabled={!agreed} 
-                                    className={cn("w-full", agreed && "fill-in-button")}
-                                    variant={"outline"}
-                                    style={{'--fill-color': 'hsl(var(--accent))'} as React.CSSProperties}>
-                                    <span className={cn("text-content", agreed ? "text-accent-foreground" : "text-muted-text")}>Buy Now</span>
-                                </Button>
-                            </CardContent>
-                        </Card>
-                    </div>
-
-                    {/* Column 2: Subtle Shimmer */}
-                    <div className="space-y-8">
-                        <h3 className="text-xl font-bold text-center" style={{color: 'hsl(var(--text-primary))'}}>Subtle Shimmer</h3>
-                         <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
-                            <CardHeader>
-                                <CardTitle style={{color: 'hsl(var(--accent-authority))'}}>Green (Authority)</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <Button disabled={!agreed} className="w-full shimmer-button" style={{backgroundColor: agreed ? 'hsl(var(--accent-authority))' : undefined, color: agreed ? 'hsl(var(--primary-foreground))' : undefined}}>Buy Now</Button>
-                            </CardContent>
-                        </Card>
-                         <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
-                            <CardHeader>
-                                <CardTitle style={{color: 'hsl(var(--accent-urgency))'}}>Red (Urgency)</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <Button disabled={!agreed} className="w-full shimmer-button" variant={agreed ? "destructive" : "outline"}>Buy Now</Button>
-                            </CardContent>
-                        </Card>
-                        <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
-                            <CardHeader>
-                                <CardTitle style={{color: 'hsl(var(--accent))'}}>Gold (Premium)</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <Button disabled={!agreed} className="w-full shimmer-button" variant={agreed ? "accent" : "outline"}>Buy Now</Button>
-                            </CardContent>
-                        </Card>
-                    </div>
-
-                    {/* Column 3: Icon-based */}
-                     <div className="space-y-8">
-                        <h3 className="text-xl font-bold text-center" style={{color: 'hsl(var(--text-primary))'}}>Icon-based</h3>
-                        <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
-                             <CardHeader>
-                                <CardTitle style={{color: 'hsl(var(--accent-authority))'}}>Green (Authority)</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <Button disabled={!agreed} className="w-full" style={{backgroundColor: agreed ? 'hsl(var(--accent-authority))' : undefined}}>
-                                    {agreed ? <Unlock className="w-4 h-4 mr-2"/> : <Lock className="w-4 h-4 mr-2"/> }
-                                    Buy Now
-                                </Button>
-                            </CardContent>
-                        </Card>
-                        <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
-                             <CardHeader>
-                                <CardTitle style={{color: 'hsl(var(--accent-urgency))'}}>Red (Urgency)</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <Button disabled={!agreed} className="w-full" variant="destructive">
-                                    {agreed ? <Unlock className="w-4 h-4 mr-2"/> : <Lock className="w-4 h-4 mr-2"/> }
-                                    Buy Now
-                                </Button>
-                            </CardContent>
-                        </Card>
-                        <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
-                            <CardHeader>
-                                <CardTitle style={{color: 'hsl(var(--accent))'}}>Gold (Premium)</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <Button disabled={!agreed} className="w-full" variant="accent">
-                                    {agreed ? <Unlock className="w-4 h-4 mr-2"/> : <Lock className="w-4 h-4 mr-2"/> }
-                                    Buy Now
-                                </Button>
-                            </CardContent>
-                        </Card>
-                    </div>
+                    <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
+                        <CardHeader>
+                            <CardTitle style={{color: 'hsl(var(--accent-authority))'}}>Green (Authority)</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <AnimatedButton color="accent-authority" agreed={agreed} />
+                        </CardContent>
+                    </Card>
+                    <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
+                        <CardHeader>
+                            <CardTitle style={{color: 'hsl(var(--accent-urgency))'}}>Red (Urgency)</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <AnimatedButton color="risk-accent" agreed={agreed} />
+                        </CardContent>
+                    </Card>
+                    <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
+                        <CardHeader>
+                           <CardTitle style={{color: 'hsl(var(--accent))'}}>Gold (Premium)</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <AnimatedButton color="accent" agreed={agreed} />
+                        </CardContent>
+                    </Card>
                 </div>
             </div>
         </Section>
