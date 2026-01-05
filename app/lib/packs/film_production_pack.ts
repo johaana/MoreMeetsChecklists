@@ -89,10 +89,85 @@ export const film_production_pack: PremiumPack = {
                 { id: "FP-PP-04", description: "VFX Turnover: Shots for VFX are identified, logged, and turned over to the VFX vendor with all necessary data.", priority: "High", riskLevel: "Medium", consequence: "VFX delays, incorrect work.", proof: "VFX turnover sheet." },
                 { id: "FP-PP-05", description: "Sound Design & Mix: Audio is synced, edited, and prepared for sound design and mixing.", priority: "Medium", riskLevel: "Low", consequence: "Post-production sound delays.", proof: "Audio turnover to sound department." },
                 { id: "FP-PP-06", description: "Color Grading: Picture lock is achieved and files are prepared for color grading.", priority: "High", riskLevel: "Low", consequence: "Color grading cannot start on time.", proof: "Picture lock sign-off." },
-                { id: "FP-PP-07", description: "QC & Delivery: Final master file undergoes a full technical Quality Control check before delivery.", priority: "High", riskLevel: "High", consequence: "Delivery rejected by broadcaster/distributor.", proof: "Final QC report." }
+                { id: "FP-PP-07", description: "QC & Delivery: Final master file undergoes a full technical Quality Control check before delivery.", priority: "High", riskLevel: "High", consequence: "Delivery rejected by broadcaster/distributor.", proof: "Final QC report." },
+                 { id: "FP-PP-08", description: "Review post-production schedule and track progress against milestones.", priority: "High", riskLevel: "Medium", consequence: "Delays in post-production can impact the release date.", proof: "Post-production schedule tracker." }
+            ]
+        },
+        {
+            title: "Cast & Crew Management",
+            department: "Production",
+            frequency: "Daily",
+            role: "Production Manager",
+            summary: "Manages all logistical aspects related to the cast and crew.",
+            icon: "users",
+            tasks: [
+                { id: "FP-CCM-01", description: "Prepare and distribute daily call sheets with schedule, location, and contact information.", priority: "High", riskLevel: "High", consequence: "Crew arrives late or at the wrong location, causing major delays.", proof: "Copy of daily call sheet." },
+                { id: "FP-CCM-02", description: "Arrange and confirm all cast and crew transport to and from set.", priority: "High", riskLevel: "Medium", consequence: "Key talent or crew unable to get to set on time.", proof: "Transport schedule." },
+                { id: "FP-CCM-03", description: "Arrange and confirm accommodation for out-of-town cast and crew.", priority: "High", riskLevel: "Low", consequence: "Crew dissatisfaction, logistical issues.", proof: "Hotel booking confirmations." },
+                { id: "FP-CCM-04", description: "Ensure cast and crew payroll is processed accurately and on time.", priority: "High", riskLevel: "High", consequence: "Legal issues, crew dissatisfaction and potential walk-outs.", proof: "Payroll processing confirmation." },
+                { id: "FP-CCM-05", description: "Manage per diems and other expense reimbursements.", priority: "Medium", riskLevel: "Medium", consequence: "Disputes over expenses, poor morale.", proof: "Expense reimbursement records." },
+                { id: "FP-CCM-06", description: "Ensure vanity vans and green rooms are clean, stocked, and ready for talent.", priority: "High", riskLevel: "Low", consequence: "Unhappy lead actors can cause significant delays.", proof: "Green room checklist." },
+                { id: "FP-CCM-07", description: "Coordinate with agents and managers regarding artist schedules and requirements.", priority: "High", riskLevel: "Medium", consequence: "Scheduling conflicts, misunderstandings.", proof: "Communication log." },
+                { id: "FP-CCM-08", description: "Ensure compliance with all union agreements and labor laws.", priority: "High", riskLevel: "High", consequence: "Fines, penalties, and production shutdowns.", proof: "Union compliance checklist." }
+            ]
+        },
+        {
+            title: "Production Budget & Cost Control",
+            department: "Production/Finance",
+            frequency: "Weekly",
+            role: "Line Producer",
+            summary: "Tracks all production spending to ensure the project stays on budget.",
+            icon: "banknote",
+            tasks: [
+                { id: "FP-BCC-01", description: "Generate a weekly cost report comparing actual spend vs. budget.", priority: "High", riskLevel: "High", consequence: "Inability to control overspending until it's too late.", proof: "Weekly cost report." },
+                { id: "FP-BCC-02", description: "Approve all purchase orders (POs) before any spending occurs.", priority: "High", riskLevel: "High", consequence: "Unauthorized spending by departments.", proof: "Signed POs." },
+                { id: "FP-BCC-03", description: "Process and verify all vendor and supplier invoices.", priority: "High", riskLevel: "Medium", consequence: "Paying incorrect or fraudulent invoices.", proof: "Invoice payment records." },
+                { id: "FP-BCC-04", description: "Manage the production's petty cash float and reconcile it weekly.", priority: "High", riskLevel: "Medium", consequence: "Petty cash theft or misuse.", proof: "Petty cash reconciliation form." },
+                { id: "FP-BCC-05", description: "Forecast final cost to completion (EFC) weekly.", priority: "High", riskLevel: "High", consequence: "Leadership is unaware of a potential budget overrun until the end.", proof: "EFC report." },
+                { id: "FP-BCC-06", description: "Review departmental spending and identify areas of overspend.", priority: "High", riskLevel: "Medium", consequence: "Inability to take corrective action on departmental budgets.", proof: "Departmental budget review minutes." },
+                { id: "FP-BCC-07", description: "Negotiate deals with all major vendors and rental houses.", priority: "High", riskLevel: "Low", consequence: "Paying more than necessary for equipment and services.", proof: "Vendor contracts." },
+                { id: "FP-BCC-08", description: "Provide all necessary documentation for production insurance claims.", priority: "High", riskLevel: "High", consequence: "Inability to recover costs after an insured event.", proof: "Insurance claim file." }
+            ]
+        },
+        {
+            title: "Art Department & Set Design",
+            department: "Art",
+            frequency: "Per Set",
+            role: "Production Designer",
+            summary: "Manages the creation of all sets and props for the production.",
+            icon: "brush",
+            tasks: [
+                { id: "FP-AD-01", description: "Finalize set designs and get approval from the director.", priority: "High", riskLevel: "Low", consequence: "Building a set that doesn't meet the director's creative vision.", proof: "Signed set design drawings." },
+                { id: "FP-AD-02", description: "Create a budget for the art department.", priority: "High", riskLevel: "Medium", consequence: "Overspending on set construction and props.", proof: "Art department budget." },
+                { id: "FP-AD-03", description: "Source and/or construct all props required for each scene.", priority: "High", riskLevel: "Medium", consequence: "Missing props can halt filming.", proof: "Props list." },
+                { id: "FP-AD-04", description: "Oversee set construction to ensure it is safe and built to standard.", priority: "High", riskLevel: "High", consequence: "A poorly constructed set can collapse, causing injury.", proof: "Set construction safety sign-off." },
+                { id: "FP-AD-05", description: "Manage a props inventory and continuity log.", priority: "High", riskLevel: "Medium", consequence: "Continuity errors (e.g., a prop disappearing between shots).", proof: "Props continuity photos and log." },
+                { id: "FP-AD-06", description: "Ensure all sets are dressed and ready before the shooting crew arrives.", priority: "High", riskLevel: "High", consequence: "Delays in shooting.", proof: "Set readiness sign-off." },
+                { id: "FP-AD-07", description: "Manage the 'striking' (dismantling) of sets after use.", priority: "High", riskLevel: "Low", consequence: "Delays in vacating a location, potential penalties.", proof: "Set strike schedule." },
+                { id: "FP-AD-08", description: "Ensure any rented props or set pieces are returned in good condition.", priority: "Medium", riskLevel: "Medium", consequence: "Financial loss from damaged rentals.", proof: "Rental return form." }
+            ]
+        },
+        {
+            title: "Catering & Craft Services",
+            department: "Administration",
+            frequency: "Daily",
+            role: "Catering Manager",
+            summary: "Ensures the cast and crew are provided with safe, hygienic, and timely meals.",
+            icon: "utensils",
+            tasks: [
+                { id: "FP-CCS-01", description: "Ensure all meals are served on time according to the shoot schedule.", priority: "High", riskLevel: "Medium", consequence: "A delay in lunch break can cause major shooting delays.", proof: "Service time log." },
+                { id: "FP-CCS-02", description: "Verify food safety and hygiene standards of the catering vendor.", priority: "High", riskLevel: "High", consequence: "A food poisoning outbreak can shut down the entire production.", proof: "Catering vendor's food license and kitchen audit." },
+                { id: "FP-CCS-03", description: "Provide options for all dietary requirements (e.g., vegetarian, vegan, allergies).", priority: "High", riskLevel: "Medium", consequence: "Crew dissatisfaction, potential allergic reactions.", proof: "Menu plan." },
+                { id: "FP-CCS-04", description: "Ensure drinking water is always available on set.", priority: "High", riskLevel: "High", consequence: "Dehydration, especially on outdoor shoots.", proof: "Visual check of water stations." },
+                { id: "FP-CCS-05", description: "Maintain cleanliness of the dining and craft service areas.", priority: "High", riskLevel: "Medium", consequence: "Pest attraction, unhygienic conditions.", proof: "Cleaning log." },
+                { id: "FP-CCS-06", description: "Manage waste disposal from catering services.", priority: "Medium", riskLevel: "Low", consequence: "Environmental issues, unclean set.", proof: "Waste disposal plan." },
+                { id: "FP-CCS-07", description: "Get feedback from cast and crew on food quality.", priority: "Low", riskLevel: "Low", consequence: "Poor morale due to bad food.", proof: "Feedback forms." },
+                { id: "FP-CCS-08", description: "Reconcile catering bills against the number of meals served.", priority: "High", riskLevel: "Medium", consequence: "Overpaying for catering services.", proof: "Catering invoice reconciliation." }
             ]
         }
     ]
 };
 
   
+
+    
