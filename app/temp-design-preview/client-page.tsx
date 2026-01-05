@@ -99,7 +99,7 @@ const ButtonExplorationSection = () => {
             <button
                 disabled={!agreed}
                 className={cn(
-                    "w-full h-10 rounded-md transition-all duration-300 font-semibold chasing-border-button"
+                    "w-full h-12 rounded-md transition-all duration-300 font-semibold text-base chasing-border-button"
                 )}
                 style={{
                     '--chasing-color': chasingColorValue,
@@ -130,28 +130,13 @@ const ButtonExplorationSection = () => {
                     <Label htmlFor="terms" className="text-sm" style={{color: 'hsl(var(--text-on-light))'}}>I agree to the terms and conditions</Label>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                     <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
                         <CardHeader>
-                            <CardTitle style={{color: 'hsl(var(--text-primary))'}}>White & Green</CardTitle>
+                            <CardTitle style={{color: 'hsl(var(--text-primary))'}}>Yellow Border to Green</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <AnimatedButton 
-                                enabledBg="authority-green"
-                                enabledText="bg-primary"
-                                disabledBorder="text-primary"
-                                disabledText="text-primary"
-                                chasingColor="authority-green"
-                                agreed={agreed}
-                            />
-                        </CardContent>
-                    </Card>
-                    <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
-                        <CardHeader>
-                            <CardTitle style={{color: 'hsl(var(--text-primary))'}}>Yellow & Green</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                             <AnimatedButton 
                                 enabledBg="authority-green"
                                 enabledText="bg-primary"
                                 disabledBorder="accent"
@@ -163,15 +148,30 @@ const ButtonExplorationSection = () => {
                     </Card>
                     <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
                         <CardHeader>
-                           <CardTitle style={{color: 'hsl(var(--text-primary))'}}>Red & Yellow</CardTitle>
+                            <CardTitle style={{color: 'hsl(var(--text-primary))'}}>Yellow Border to Yellow</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                             <AnimatedButton 
+                                enabledBg="accent"
+                                enabledText="bg-primary"
+                                disabledBorder="accent"
+                                disabledText="accent"
+                                chasingColor="text-primary"
+                                agreed={agreed}
+                            />
+                        </CardContent>
+                    </Card>
+                    <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
+                        <CardHeader>
+                           <CardTitle style={{color: 'hsl(var(--text-primary))'}}>Yellow Border to White</CardTitle>
                         </CardHeader>
                         <CardContent>
                            <AnimatedButton 
-                                enabledBg="risk-accent"
-                                enabledText="text-primary"
-                                disabledBorder="risk-accent"
-                                disabledText="risk-accent"
-                                chasingColor="accent"
+                                enabledBg="text-primary"
+                                enabledText="bg-primary"
+                                disabledBorder="accent"
+                                disabledText="accent"
+                                chasingColor="authority-green"
                                 agreed={agreed}
                             />
                         </CardContent>

@@ -155,3 +155,8 @@ html {
         hsl(var(--surface-card))
     );
 }
+
+.chasing-border-button:disabled {
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
