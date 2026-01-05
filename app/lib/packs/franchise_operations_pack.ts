@@ -6,6 +6,7 @@ export const franchise_operations_pack: PremiumPack = {
     title: "Franchise Operations Pack",
     priceINR: 5999,
     priceUSD: 79,
+    competitorPriceUSD: 599,
     paymentId: 'pl_RaWEBHhFLQENxC', // Placeholder
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/b0b53361-91a3-496a-a169-b5a0344d7328',
     category: "Franchise",
