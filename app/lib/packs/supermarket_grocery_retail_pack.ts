@@ -123,8 +123,55 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
                 { id: "SC-POS-09", description: "Limit cash in drawers to a minimum amount.", priority: "High", riskLevel: "High", consequence: "Reduces the potential loss in case of a till-snatch or robbery.", proof: "Cash Limit Policy" },
                 { id: "SC-POS-10", description: "Investigate cash discrepancies immediately.", priority: "High", riskLevel: "High", consequence: "A small, unresolved discrepancy can be an indicator of a larger, ongoing theft problem.", proof: "Investigation Report" }
             ]
+        },
+        {
+            title: "Weighing Scale & Legal Metrology",
+            department: "Compliance/Operations",
+            frequency: "Daily/Scheduled",
+            role: "Store Manager",
+            summary: "Ensures all weighing scales are accurate and compliant with legal standards.",
+            icon: "scale",
+            tasks: [
+                { id: "SC-WM-01", description: "Calibrate all weighing scales daily using standard weights before opening.", priority: "High", riskLevel: "High", consequence: "Inaccurate scales can lead to overcharging or undercharging customers, causing disputes and financial loss.", proof: "Scale Calibration Log" },
+                { id: "SC-WM-02", description: "Ensure the scale display is clear and visible to the customer.", priority: "High", riskLevel: "Medium", consequence: "A legal requirement for transparency.", proof: "Visual Check" },
+                { id: "SC-WM-03", description: "Verify that the annual stamping and certification from the Legal Metrology department is valid.", priority: "High", riskLevel: "High", consequence: "Using an uncertified scale is a serious legal violation and can lead to heavy fines and store closure.", proof: "Valid Stamping Certificate" },
+                { id: "SC-WM-04", description: "Train staff on the correct use of the weighing scales.", priority: "High", riskLevel: "Medium", consequence: "Improper use can lead to inaccurate weights.", proof: "Training Log" },
+                { id: "SC-WM-05", description: "Keep scales clean and free from debris.", priority: "High", riskLevel: "Low", consequence: "Debris can affect the accuracy of the scale.", proof: "Cleaning Log" }
+            ]
+        },
+        {
+            title: "Planogram & Merchandising Compliance",
+            department: "Merchandising",
+            frequency: "Weekly",
+            role: "Merchandiser",
+            summary: "Ensures products are displayed according to the company's planogram to maximize sales and brand consistency.",
+            icon: "layout-grid",
+            tasks: [
+                { id: "SC-PM-01", description: "Audit shelves to ensure products are in their designated locations as per the planogram.", priority: "High", riskLevel: "Medium", consequence: "A messy layout makes it hard for customers to find products, leading to lost sales.", proof: "Planogram Compliance Audit" },
+                { id: "SC-PM-02", description: "Ensure promotional displays are set up correctly and in high-traffic areas.", priority: "High", riskLevel: "Medium", consequence: "Poorly placed promotions are ineffective and waste marketing spend.", proof: "Photo of Display" },
+                { id: "SC-PM-03", description: "Check that all products have a clear and correct price tag.", priority: "High", riskLevel: "High", consequence: "Missing or incorrect prices lead to customer frustration and disputes at the checkout.", proof: "Price Tag Audit" },
+                { id: "SC-PM-04", description: "Ensure shelves are well-stocked and front-faced.", priority: "High", riskLevel: "Low", consequence: "An empty-looking shelf gives a poor impression and can deter sales.", proof: "Visual Check" },
+                { id: "SC-PM-05", description: "Remove any damaged or dirty products from the shelves.", priority: "High", riskLevel: "Medium", consequence: "Selling damaged goods can lead to complaints and returns.", proof: "Damaged Goods Log" }
+            ]
+        },
+        {
+            title: "Home Delivery & Online Order Fulfillment",
+            department: "E-commerce",
+            frequency: "Per Order",
+            role: "Picker/Packer",
+            summary: "A process to ensure online orders are picked, packed, and delivered accurately and on time.",
+            icon: "shopping-cart",
+            tasks: [
+                { id: "SC-HD-01", description: "Pick items for online orders with an accuracy check.", priority: "High", riskLevel: "High", consequence: "Delivering the wrong items is a major cause of customer dissatisfaction and costly returns.", proof: "Picking Slip Sign-off" },
+                { id: "SC-HD-02", description: "Pack orders securely, especially fragile and frozen items.", priority: "High", riskLevel: "High", consequence: "Damaged goods in transit lead to refunds and unhappy customers.", proof: "Packing Check" },
+                { id: "SC-HD-03", description: "Ensure cold chain is maintained for perishable deliveries.", priority: "High", riskLevel: "High", consequence: "A critical food safety requirement; failure can lead to food poisoning.", proof: "Temperature Log for Delivery" },
+                { id: "SC-HD-04", description: "Generate accurate invoices and delivery documents.", priority: "High", riskLevel: "High", consequence: "Incorrect invoices lead to payment disputes.", proof: "Invoice and Delivery Note" },
+                { id: "SC-HD-05", description: "Plan efficient delivery routes to ensure on-time delivery.", priority: "High", riskLevel: "Medium", consequence: "Late deliveries are a major source of customer complaints.", proof: "Route Plan" }
+            ]
         }
     ]
 };
 
   
+
+    
