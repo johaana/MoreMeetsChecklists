@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -67,7 +66,7 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
                 required
                 className="w-full"
             />
-            <Button size="lg" type="submit" className="w-full" disabled={loading}>
+            <Button size="lg" type="submit" className="w-full" disabled={loading} variant="accent">
                 {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
                 Get Your Free Pack
             </Button>
@@ -227,7 +226,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 )}
                                 {currency === 'USD' && hasUSD && pack.lemonSqueezyUrl && (
                                      <div className={!agreedToTerms ? 'pointer-events-none opacity-50' : ''}>
-                                        <Button asChild size="lg" className="w-full max-w-xs" disabled={!agreedToTerms}>
+                                        <Button asChild size="lg" className="w-full max-w-xs" disabled={!agreedToTerms} variant="accent">
                                             <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
                                                 Buy Now
                                             </Link>
