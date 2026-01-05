@@ -47,7 +47,7 @@ export const facility_management_blueprint: PremiumPack = {
             department: "Engineering",
             frequency: "Weekly/Monthly",
             role: "Chief Engineer",
-            summary: "Scheduled maintenance for Mechanical, Electrical, and Plumbing systems to prevent failures and ensure guest comfort and safety.",
+            summary: "Scheduled maintenance for Mechanical, Electrical, and Plumbing systems to prevent failures.",
             icon: "wrench",
             tasks: [
                 { id: "FMB-MEP-01", description: "Inspect and clean HVAC filters for all major air handling units (AHUs).", priority: "High", riskLevel: "Medium", consequence: "Poor air quality, increased energy costs, system failure.", proof: "Signed maintenance log for each AHU." },
@@ -119,8 +119,68 @@ export const facility_management_blueprint: PremiumPack = {
                 { id: "FMB-VCM-07", description: "Onboard new vendors with a formal induction on site rules, safety, and procedures.", priority: "High", riskLevel: "Medium", consequence: "Vendors creating safety or security risks.", proof: "Signed vendor induction form." },
                 { id: "FMB-VCM-08", description: "Review and approve all vendor work permits before allowing work to start.", priority: "High", riskLevel: "High", consequence: "Unsafe or disruptive work being carried out.", proof: "Signed work permit." }
             ]
+        },
+        {
+            title: "Environment, Health & Safety (EHS) Compliance",
+            department: "EHS",
+            frequency: "Monthly",
+            role: "EHS Officer",
+            summary: "Ensures the facility complies with all environmental and workplace safety regulations.",
+            icon: "leaf",
+            tasks: [
+                { id: "FMB-EHS-01", description: "Review and update the site's environmental compliance register.", priority: "High", riskLevel: "High", consequence: "Non-compliance with environmental laws, leading to fines.", proof: "Compliance register." },
+                { id: "FMB-EHS-02", description: "Conduct a workplace safety inspection.", priority: "High", riskLevel: "High", consequence: "Employee injuries, lost workdays.", proof: "Safety inspection report." },
+                { id: "FMB-EHS-03", description: "Ensure all hazardous material is stored and handled correctly.", priority: "High", riskLevel: "High", consequence: "Chemical spills, employee exposure.", proof: "Hazardous material storage audit." },
+                { id: "FMB-EHS-04", description: "Verify that all employees have received mandatory safety training.", priority: "High", riskLevel: "Medium", consequence: "Untrained employees are a safety risk.", proof: "Training records." },
+                { id: "FMB-EHS-05", description: "Check that all Personal Protective Equipment (PPE) is available and in good condition.", priority: "High", riskLevel: "Medium", consequence: "Inability to perform tasks safely.", proof: "PPE inventory." },
+                { id: "FMB-EHS-06", description: "Review the log of workplace accidents and near-misses.", priority: "High", riskLevel: "High", consequence: "Failure to learn from past mistakes.", proof: "Incident log." },
+                { id: "FMB-EHS-07", description: "Check emergency preparedness (first aid kits, evacuation plans).", priority: "High", riskLevel: "High", consequence: "Disorganized response to an emergency.", proof: "Emergency prep checklist." },
+                { id: "FMB-EHS-08", description: "Monitor air and water quality as per regulatory requirements.", priority: "High", riskLevel: "High", consequence: "Pollution, regulatory action.", proof: "Quality test reports." },
+                { id: "FMB-EHS-09", description: "Manage the disposal of all types of waste.", priority: "High", riskLevel: "Medium", consequence: "Improper waste disposal can lead to fines.", proof: "Waste disposal records." },
+                { id: "FMB-EHS-10", description: "File all necessary environmental and safety reports with regulatory bodies.", priority: "High", riskLevel: "High", consequence: "Legal penalties for non-filing.", proof: "Copies of filed reports." }
+            ]
+        },
+        {
+            title: "Space & Occupancy Management",
+            department: "Admin/Real Estate",
+            frequency: "Quarterly",
+            role: "Admin Manager",
+            summary: "Optimizes the use of office space and manages employee seating.",
+            icon: "layout-grid",
+            tasks: [
+                { id: "FMB-SOM-01", description: "Conduct an occupancy study to determine space utilization.", priority: "Medium", riskLevel: "Low", consequence: "Inefficient use of expensive real estate.", proof: "Occupancy study report." },
+                { id: "FMB-SOM-02", description: "Plan and manage departmental moves or re-stacking.", priority: "High", riskLevel: "Medium", consequence: "Disruption to business operations.", proof: "Move plan." },
+                { id: "FMB-SOM-03", description: "Maintain an up-to-date seating plan or 'stacking plan'.", priority: "High", riskLevel: "Low", consequence: "Inability to locate employees, inefficient seat allocation.", proof: "Updated seating chart." },
+                { id: "FMB-SOM-04", description: "Manage the booking system for meeting rooms and other shared spaces.", priority: "Medium", riskLevel: "Low", consequence: "Conflicts and confusion over room bookings.", proof: "Booking system utilization report." },
+                { id: "FMB-SOM-05", description: "Ensure all workstations are ergonomic and correctly set up.", priority: "High", riskLevel: "Medium", consequence: "Employee health issues like repetitive strain injury (RSI).", proof: "Ergonomic assessment checklist." },
+                { id: "FMB-SOM-06", description: "Plan for future space requirements based on headcount projections.", priority: "High", riskLevel: "Medium", consequence: "Lack of space for new hires.", proof: "Space forecast report." },
+                { id: "FMB-SOM-07", description: "Manage the allocation and use of storage space.", priority: "Medium", riskLevel: "Low", consequence: "Cluttered offices, lost documents.", proof: "Storage plan." },
+                { id: "FMB-SOM-08", description: "Coordinate with IT for data and power requirements for new seating.", priority: "High", riskLevel: "Medium", consequence: "New employees cannot start work.", proof: "IT coordination checklist." },
+                { id: "FMB-SOM-09", description: "Gather feedback from employees on the workspace environment.", priority: "Low", riskLevel: "Low", consequence: "Missed opportunity to improve employee satisfaction.", proof: "Employee survey." },
+                { id: "FMB-SOM-10", description: "Ensure signage and wayfinding are clear throughout the facility.", priority: "Medium", riskLevel: "Low", consequence: "Employees and visitors get lost.", proof: "Signage audit." }
+            ]
+        },
+        {
+            title: "Mailroom & Logistics Operations",
+            department: "Admin",
+            frequency: "Daily",
+            role: "Mailroom Supervisor",
+            summary: "Manages all incoming and outgoing mail and courier services.",
+            icon: "mailbox",
+            tasks: [
+                { id: "FMB-MLO-01", description: "Receive and log all incoming mail and packages.", priority: "High", riskLevel: "Medium", consequence: "Lost or delayed mail.", proof: "Inward mail register." },
+                { id: "FMB-MLO-02", description: "Sort and distribute internal mail to the correct departments.", priority: "High", riskLevel: "Low", consequence: "Delays in internal communication.", proof: "Distribution log." },
+                { id: "FMB-MLO-03", description: "Process all outgoing mail and courier shipments.", priority: "High", riskLevel: "Medium", consequence: "Delays in sending important documents.", proof: "Outward mail register." },
+                { id: "FMB-MLO-04", description: "Use a franking machine or postage system correctly.", priority: "Medium", riskLevel: "Low", consequence: "Incorrect postage can delay mail.", proof: "Postage log." },
+                { id: "FMB-MLO-05", description: "Track high-value or urgent shipments.", priority: "High", riskLevel: "High", consequence: "Loss of critical documents or items.", proof: "Courier tracking numbers." },
+                { id: "FMB-MLO-06", description: "Manage relationships with courier vendors.", priority: "Medium", riskLevel: "Medium", consequence: "Poor service, high costs.", proof: "Vendor performance review." },
+                { id: "FMB-MLO-07", description: "Ensure the mailroom is secure and access is restricted.", priority: "High", riskLevel: "High", consequence: "Theft of valuable packages.", proof: "Access log." },
+                { id: "FMB-MLO-08", description: "Handle suspicious packages according to security protocol.", priority: "High", riskLevel: "High", consequence: "Safety risk to mailroom staff.", proof: "Suspicious package SOP." },
+                { id: "FMB-MLO-09", description: "Reconcile courier invoices.", priority: "High", riskLevel: "Medium", consequence: "Over-billing by vendors.", proof: "Invoice reconciliation." },
+                { id: "FMB-MLO-10", description: "Keep the mailroom organized.", priority: "Medium", riskLevel: "Low", consequence: "Inefficient operations.", proof: "Visual check." }
+            ]
         }
     ]
 };
 
-  
+    
