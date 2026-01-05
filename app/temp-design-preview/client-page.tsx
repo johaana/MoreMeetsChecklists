@@ -46,6 +46,7 @@ const AnimatedButton = ({
             disabled={!agreed}
             className={cn(
                 "w-full h-12 rounded-md transition-all duration-300 font-semibold text-base chasing-border-button",
+                 agreed && "font-bold",
                 className
             )}
             style={{
@@ -65,43 +66,20 @@ export default function TempDesignClientPage() {
     const [agreed, setAgreed] = useState(false);
 
     return (
-        <main className="flex-1" style={{ backgroundColor: 'hsl(var(--bg-secondary))' }}>
-             <Section id="before">
+        <main className="flex-1" style={{ backgroundColor: 'hsl(var(--bg-primary))' }}>
+            <Section id="after" style={{ backgroundColor: 'hsl(var(--bg-primary))' }}>
                 <div className="container px-4 md:px-6">
                     <div className="text-center mb-12 max-w-3xl mx-auto">
-                        <SectionHeadline>The User Journey: From Consideration to Action</SectionHeadline>
+                         <SectionHeadline>The User Journey: From Consideration to Action</SectionHeadline>
                         <p className="text-lg mt-4" style={{color: 'hsl(var(--text-secondary))'}}>
                            A button isn't just a button; it's the final step in a user's decision. A disabled button shouldn't be a dead end. It should be an invitation—a visual guide that shows the user exactly what to do next to complete their journey.
                         </p>
                     </div>
 
-                     <Card className="max-w-sm mx-auto" style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-2" style={{color: 'hsl(var(--text-primary))'}}><X className="text-risk-accent"/> The Old Way: A Visual Dead End</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                            <button className="w-full h-12 rounded-md bg-muted text-muted-foreground" disabled={true}>Buy Now</button>
-                             <div className="flex items-center space-x-2">
-                                <Checkbox id="terms-before" />
-                                <Label htmlFor="terms-before" className="text-sm" style={{color: 'hsl(var(--text-on-light))'}}>I agree to the terms and conditions</Label>
-                            </div>
-                        </CardContent>
-                    </Card>
-                </div>
-            </Section>
-
-            <Section id="after" style={{ backgroundColor: 'hsl(var(--bg-primary))' }}>
-                <div className="container px-4 md:px-6">
-                    <div className="text-center mb-12 max-w-3xl mx-auto">
-                         <SectionHeadline>The MoreMeets Way: An Interactive Invitation</SectionHeadline>
-                        <p className="text-lg mt-4" style={{color: 'hsl(var(--text-secondary))'}}>
-                           Our buttons use a dynamic, animated border to draw the eye and signal interactivity. They feel premium and alive, encouraging the user to complete the action. When the condition is met, the button transforms, providing clear, satisfying feedback that the final step is unlocked.
-                        </p>
-                    </div>
-
-                    <Card className="max-w-2xl mx-auto" style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
+                    <Card className="max-w-3xl mx-auto" style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
                         <CardHeader>
                             <CardTitle className="flex items-center gap-2" style={{color: 'hsl(var(--text-primary))'}}><Check className="text-authority-green"/> The Interactive Experience</CardTitle>
+                             <p className="text-sm" style={{color: 'hsl(var(--text-on-light))'}}>Our buttons use a dynamic, animated border to draw the eye and signal interactivity. When the condition is met, the button transforms, providing clear, satisfying feedback that the final step is unlocked.</p>
                         </CardHeader>
                         <CardContent className="space-y-8">
                              <div className="flex items-center space-x-2 justify-center">
@@ -116,6 +94,7 @@ export default function TempDesignClientPage() {
                                     disabledText="authority-green"
                                     chasingColor="high-contrast-green"
                                     agreed={agreed}
+                                    className="text-white"
                                 />
                                 <AnimatedButton
                                     enabledBg="accent"
