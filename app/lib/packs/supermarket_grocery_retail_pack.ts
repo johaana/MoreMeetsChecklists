@@ -38,9 +38,9 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
                 { id: "SC-COLD-04", description: "Ensure backup power for cold storage is tested weekly.", priority: "High", riskLevel: "High", consequence: "During a power outage, failure of backup power can result in the loss of all perishable inventory, a major financial blow.", proof: "Generator Test Log" },
                 { id: "SC-COLD-05", description: "Document any temperature excursions and the corrective actions taken.", priority: "High", riskLevel: "High", consequence: "Lack of documentation makes it impossible to prove due diligence during a health inspection or trace the cause of a spoilage event.", proof: "Corrective Action Report" },
                 { id: "SC-COLD-06", description: "Ensure goods are moved to cold storage immediately upon receipt.", priority: "High", riskLevel: "High", consequence: "Delays break the cold chain, promoting bacterial growth.", proof: "Receiving Log" },
-                { id: "SC-COLD-07", description: "Clean and sanitize all refrigerated units weekly.", priority: "High", riskLevel: "Low", consequence: "Poor air quality, increased energy consumption, system failure.", proof: "Public area cleaning log." },
-                { id: "SC-COLD-08", description: "Do not overload refrigerated units to allow for proper air circulation.", priority: "High", riskLevel: "Medium", consequence: "Overloading creates 'hot spots' where food can spoil.", proof: "Pump performance log." },
-                { id: "SC-COLD-09", description: "Train staff on cold chain management procedures.", priority: "High", riskLevel: "Medium", consequence: "Poor performance log.", proof: "Photo of refrigerator storage arrangement." },
+                { id: "SC-COLD-07", description: "Clean and sanitize all refrigerated units weekly.", priority: "High", riskLevel: "Medium", consequence: "Prevents mold and bacteria buildup which can contaminate food.", proof: "Cleaning Log" },
+                { id: "SC-COLD-08", description: "Do not overload refrigerated units to allow for proper air circulation.", priority: "High", riskLevel: "Medium", consequence: "Overloading creates 'hot spots' where food can spoil.", proof: "Visual Audit" },
+                { id: "SC-COLD-09", description: "Train staff on cold chain management procedures.", priority: "High", riskLevel: "High", consequence: "Untrained staff are the weak link in food safety.", proof: "Training Records" },
                 { id: "SC-COLD-10", description: "Calibrate thermometers quarterly.", priority: "High", riskLevel: "High", consequence: "Inaccurate thermometers give a false sense of safety.", proof: "Thermometer Calibration Log." }
             ]
         },
@@ -136,7 +136,12 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
                 { id: "SC-WM-02", description: "Ensure the scale display is clear and visible to the customer.", priority: "High", riskLevel: "Medium", consequence: "A legal requirement for transparency.", proof: "Visual Check" },
                 { id: "SC-WM-03", description: "Verify that the annual stamping and certification from the Legal Metrology department is valid.", priority: "High", riskLevel: "High", consequence: "Using an uncertified scale is a serious legal violation and can lead to heavy fines and store closure.", proof: "Valid Stamping Certificate" },
                 { id: "SC-WM-04", description: "Train staff on the correct use of the weighing scales.", priority: "High", riskLevel: "Medium", consequence: "Improper use can lead to inaccurate weights.", proof: "Training Log" },
-                { id: "SC-WM-05", description: "Keep scales clean and free from debris.", priority: "High", riskLevel: "Low", consequence: "Debris can affect the accuracy of the scale.", proof: "Cleaning Log" }
+                { id: "SC-WM-05", description: "Keep scales clean and free from debris.", priority: "High", riskLevel: "Low", consequence: "Debris can affect the accuracy of the scale.", proof: "Cleaning Log" },
+                { id: "SC-WM-06", description: "Ensure the scale is on a level, stable surface.", priority: "High", riskLevel: "Medium", consequence: "An unstable surface can cause inaccurate readings.", proof: "Visual Inspection" },
+                { id: "SC-WM-07", description: "Check for 'TARE' function being used correctly to zero out container weight.", priority: "High", riskLevel: "Medium", consequence: "Incorrect tare weight leads to inaccurate pricing.", proof: "Spot Check" },
+                { id: "SC-WM-08", description: "Have a clear procedure for handling a malfunctioning scale.", priority: "High", riskLevel: "High", consequence: "Using a faulty scale is illegal and unfair to customers.", proof: "Malfunction SOP" },
+                { id: "SC-WM-09", description: "Maintain all calibration and certification records for inspection.", priority: "High", riskLevel: "High", consequence: "Failure to produce records during an inspection can lead to penalties.", proof: "Record File" },
+                { id:- "SC-WM-10", description: "Report any scale damage or malfunction to maintenance immediately.", priority: "High", riskLevel: "High", consequence: "Delays in repair can lead to extended use of a faulty scale.", proof: "Maintenance Request Log" }
             ]
         },
         {
@@ -151,7 +156,12 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
                 { id: "SC-PM-02", description: "Ensure promotional displays are set up correctly and in high-traffic areas.", priority: "High", riskLevel: "Medium", consequence: "Poorly placed promotions are ineffective and waste marketing spend.", proof: "Photo of Display" },
                 { id: "SC-PM-03", description: "Check that all products have a clear and correct price tag.", priority: "High", riskLevel: "High", consequence: "Missing or incorrect prices lead to customer frustration and disputes at the checkout.", proof: "Price Tag Audit" },
                 { id: "SC-PM-04", description: "Ensure shelves are well-stocked and front-faced.", priority: "High", riskLevel: "Low", consequence: "An empty-looking shelf gives a poor impression and can deter sales.", proof: "Visual Check" },
-                { id: "SC-PM-05", description: "Remove any damaged or dirty products from the shelves.", priority: "High", riskLevel: "Medium", consequence: "Selling damaged goods can lead to complaints and returns.", proof: "Damaged Goods Log" }
+                { id: "SC-PM-05", description: "Remove any damaged or dirty products from the shelves.", priority: "High", riskLevel: "Medium", consequence: "Selling damaged goods can lead to complaints and returns.", proof: "Damaged Goods Log" },
+                { id: "SC-PM-06", description: "Implement category management principles for shelf layout.", priority: "High", riskLevel: "Medium", consequence: "Illogical product placement confuses customers.", proof: "Category Adjacency Check" },
+                { id: "SC-PM-07", description: "Verify that Point-of-Sale (POS) materials are current and correctly placed.", priority: "High", riskLevel: "Medium", consequence: "Outdated promotional material is misleading.", proof: "POS Material Audit" },
+                { id: "SC-PM-08", description: "Ensure proper lighting on all shelves and displays.", priority: "High", riskLevel: "Low", consequence: "Poor lighting can make products look unappealing.", proof: "Lighting Check" },
+                { id: "SC-PM-09", description: "Train staff on planogram basics and replenishment.", priority: "High", riskLevel: "Medium", consequence: "If staff don't understand the planogram, the store will quickly become disorganized.", proof: "Training Log" },
+                { id: "SC-PM-10", description: "Get feedback from department managers on planogram effectiveness.", priority: "Medium", riskLevel: "Low", consequence: "Merchandising plans must be practical for the store to execute.", proof: "Feedback Form" }
             ]
         },
         {
@@ -166,12 +176,15 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
                 { id: "SC-HD-02", description: "Pack orders securely, especially fragile and frozen items.", priority: "High", riskLevel: "High", consequence: "Damaged goods in transit lead to refunds and unhappy customers.", proof: "Packing Check" },
                 { id: "SC-HD-03", description: "Ensure cold chain is maintained for perishable deliveries.", priority: "High", riskLevel: "High", consequence: "A critical food safety requirement; failure can lead to food poisoning.", proof: "Temperature Log for Delivery" },
                 { id: "SC-HD-04", description: "Generate accurate invoices and delivery documents.", priority: "High", riskLevel: "High", consequence: "Incorrect invoices lead to payment disputes.", proof: "Invoice and Delivery Note" },
-                { id: "SC-HD-05", description: "Plan efficient delivery routes to ensure on-time delivery.", priority: "High", riskLevel: "Medium", consequence: "Late deliveries are a major source of customer complaints.", proof: "Route Plan" }
+                { id: "SC-HD-05", description: "Plan efficient delivery routes to ensure on-time delivery.", priority: "High", riskLevel: "Medium", consequence: "Late deliveries are a major source of customer complaints.", proof: "Route Plan" },
+                { id: "SC-HD-06", description: "Check delivery vehicle for cleanliness and temperature control.", priority: "High", riskLevel: "High", consequence: "A dirty or warm vehicle can contaminate or spoil food.", proof: "Vehicle Inspection Log" },
+                { id: "SC-HD-07", description: "Communicate with customer about delivery status.", priority: "High", riskLevel: "Medium", consequence: "Lack of communication leads to customer anxiety and support calls.", proof: "Communication Log" },
+                { id: "SC-HD-08", description: "Handle 'not at home' delivery scenarios according to policy.", priority: "High", riskLevel: "Medium", consequence: "Leaving perishables unattended can lead to spoilage and theft.", proof: "Delivery Attempt Log" },
+                { id: "SC-HD-09", description: "Process payments for cash-on-delivery orders securely.", priority: "High", riskLevel: "High", consequence: "Risk of cash theft or discrepancies.", proof: "Cash Reconciliation" },
+                { id: "SC-HD-10", description: "Have a clear process for handling delivery complaints.", priority: "High", riskLevel: "High", consequence: "Poor complaint handling leads to lost customers.", proof: "Complaint Handling SOP" }
             ]
         }
     ]
 };
-
-  
 
     
