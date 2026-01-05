@@ -184,5 +184,3 @@ export const electronics_showroom_pack: PremiumPack = {
         }
     ]
 };
-
-    
