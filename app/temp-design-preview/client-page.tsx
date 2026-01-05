@@ -100,10 +100,10 @@ const ButtonExplorationSection = () => {
                             <CardContent>
                                 <Button 
                                     disabled={!agreed} 
-                                    className="w-full fill-in-button" 
-                                    variant={agreed ? "default" : "outline"}
-                                    style={{'--fill-color': 'hsl(var(--accent-authority))'} as React.CSSProperties}>
-                                    <span className={cn("text-content", agreed ? "text-primary-foreground" : "text-primary")}>Buy Now</span>
+                                    className={cn("w-full", agreed && "fill-in-button")}
+                                    variant={"outline"}
+                                    style={{'--fill-color': 'hsl(var(--authority-green))'} as React.CSSProperties}>
+                                    <span className={cn("text-content", agreed ? "text-primary-text" : "text-muted-text")}>Buy Now</span>
                                 </Button>
                             </CardContent>
                         </Card>
@@ -114,10 +114,10 @@ const ButtonExplorationSection = () => {
                             <CardContent>
                                <Button 
                                     disabled={!agreed} 
-                                    className="w-full fill-in-button" 
-                                    variant={agreed ? "destructive" : "outline"}
-                                    style={{'--fill-color': 'hsl(var(--accent-urgency))'} as React.CSSProperties}>
-                                    <span className={cn("text-content", agreed ? "text-destructive-foreground" : "text-destructive")}>Buy Now</span>
+                                    className={cn("w-full", agreed && "fill-in-button")} 
+                                    variant={"outline"}
+                                    style={{'--fill-color': 'hsl(var(--risk-accent))'} as React.CSSProperties}>
+                                    <span className={cn("text-content", agreed ? "text-primary-text" : "text-muted-text")}>Buy Now</span>
                                 </Button>
                             </CardContent>
                         </Card>
@@ -128,10 +128,10 @@ const ButtonExplorationSection = () => {
                             <CardContent>
                                 <Button 
                                     disabled={!agreed} 
-                                    className="w-full fill-in-button" 
-                                    variant={agreed ? "accent" : "outline"}
+                                    className={cn("w-full", agreed && "fill-in-button")}
+                                    variant={"outline"}
                                     style={{'--fill-color': 'hsl(var(--accent))'} as React.CSSProperties}>
-                                    <span className={cn("text-content", agreed ? "text-accent-foreground" : "text-accent")}>Buy Now</span>
+                                    <span className={cn("text-content", agreed ? "text-accent-foreground" : "text-muted-text")}>Buy Now</span>
                                 </Button>
                             </CardContent>
                         </Card>
@@ -153,7 +153,7 @@ const ButtonExplorationSection = () => {
                                 <CardTitle style={{color: 'hsl(var(--accent-urgency))'}}>Red (Urgency)</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <Button disabled={!agreed} className="w-full shimmer-button" style={{backgroundColor: agreed ? 'hsl(var(--accent-urgency))' : undefined, color: agreed ? 'hsl(var(--destructive-foreground))' : undefined}}>Buy Now</Button>
+                                <Button disabled={!agreed} className="w-full shimmer-button" variant={agreed ? "destructive" : "outline"}>Buy Now</Button>
                             </CardContent>
                         </Card>
                         <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
@@ -161,7 +161,7 @@ const ButtonExplorationSection = () => {
                                 <CardTitle style={{color: 'hsl(var(--accent))'}}>Gold (Premium)</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <Button disabled={!agreed} className="w-full shimmer-button" style={{backgroundColor: agreed ? 'hsl(var(--accent))' : undefined, color: agreed ? 'hsl(var(--accent-foreground))' : undefined}}>Buy Now</Button>
+                                <Button disabled={!agreed} className="w-full shimmer-button" variant={agreed ? "accent" : "outline"}>Buy Now</Button>
                             </CardContent>
                         </Card>
                     </div>
@@ -174,7 +174,7 @@ const ButtonExplorationSection = () => {
                                 <CardTitle style={{color: 'hsl(var(--accent-authority))'}}>Green (Authority)</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <Button disabled={!agreed} className="w-full" variant="default">
+                                <Button disabled={!agreed} className="w-full" style={{backgroundColor: agreed ? 'hsl(var(--accent-authority))' : undefined}}>
                                     {agreed ? <Unlock className="w-4 h-4 mr-2"/> : <Lock className="w-4 h-4 mr-2"/> }
                                     Buy Now
                                 </Button>
