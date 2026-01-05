@@ -15,6 +15,12 @@ export const FaqSection = () => (
                            Most SOPs are outdated, inconsistent, or not audit-ready. MoreMeets upgrades your existing system into a <strong>globally compliant, structured, and inspection-ready framework</strong>. It delivers a complete operational system—policies, risk controls, and workflows—that strengthens, not just replaces, what you have.
                         </AccordionContent>
                     </AccordionItem>
+                     <AccordionItem value="item-2">
+                        <AccordionTrigger>Can't I just use AI like ChatGPT to create these checklists?</AccordionTrigger>
+                        <AccordionContent>
+                          You can, but it's a significant risk. Think of AI like a brilliant but inexperienced intern. It can generate a generic, plausible-sounding list. However, our checklists are more like a seasoned COO's playbook. They are not just 'written'; they are <strong>engineered based on deep research into global best practices, industry-specific compliance standards (like ISO and HACCP), and analysis of real-world operational failures.</strong> An AI-generated checklist doesn't know what it doesn't know. It can miss critical safety steps, create non-compliant workflows, and has no concept of legal or financial liability. Our packs provide a verified, audit-ready framework that you can trust when it matters most.
+                        </AccordionContent>
+                    </AccordionItem>
                      <AccordionItem value="item-3">
                         <AccordionTrigger>Are these SOPs globally compliant and audit-ready?</AccordionTrigger>
                         <AccordionContent>
