@@ -221,7 +221,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                            </div>
                             <div className="text-center mt-3">
                                 <p className="text-xs text-muted-foreground">
-                                    By clicking “Buy Now”, you agree to our<br />
+                                    By purchasing, you agree to our<br />
                                     <Link href="/terms" target="_blank" className="underline hover:text-primary">
                                     Terms of Service
                                     </Link>{" "}
