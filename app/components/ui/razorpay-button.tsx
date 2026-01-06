@@ -12,13 +12,12 @@ interface RazorpayButtonProps {
 
 export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, className }) => {
     const formRef = useRef<HTMLFormElement>(null);
-    const scriptRef = useRef<HTMLScriptElement | null>(null);
+    const scriptLoaded = useRef(false);
 
     useEffect(() => {
-        if (!paymentId) return;
-
-        // Ensure the script is added only once
-        if (scriptRef.current) return;
+        if (!paymentId || scriptLoaded.current || formRef.current?.querySelector('script')) {
+            return;
+        }
 
         const script = document.createElement('script');
         script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
@@ -28,30 +27,14 @@ export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, class
         const currentForm = formRef.current;
         if (currentForm) {
             currentForm.appendChild(script);
-            scriptRef.current = script;
+            scriptLoaded.current = true;
         }
 
-        return () => {
-            // Clean up the script when the component unmounts
-            if (currentForm && scriptRef.current && currentForm.contains(scriptRef.current)) {
-                try {
-                    currentForm.removeChild(scriptRef.current);
-                } catch (e) {
-                    console.warn("Failed to remove Razorpay script on cleanup.", e);
-                }
-            }
-            scriptRef.current = null;
-        };
     }, [paymentId]);
 
-    // Apply button styling directly to a wrapper or the form
-    // The Razorpay script will replace the form content with its own button.
-    // The key is that the Razorpay script creates a button with the class `razorpay-payment-button`.
-    // We can style this form to look like a button, and the Razorpay button will inherit some of it.
-    // To be more explicit, we can let Razorpay do its thing and just wrap it.
+    // This component now only renders the form which Razorpay's script will target.
+    // All styling and surrounding text is handled by the parent component.
     return (
-      <div className={cn(buttonVariants({ size: 'lg' }), "w-full max-w-xs", className)}>
-        <form ref={formRef} />
-      </div>
+        <form ref={formRef} className={cn("w-full", className)} />
     );
 };
