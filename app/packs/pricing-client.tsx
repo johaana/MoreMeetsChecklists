@@ -15,8 +15,6 @@ import { ValueProposition } from '../components/ui/value-proposition';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
 import { ComplianceIcon } from '../components/icons';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Label } from '@/components/ui/label';
 
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
@@ -206,9 +204,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
                              <div className="w-full max-w-xs text-center space-y-4">
-                                {currency === 'INR' && hasINR && pack.paymentId ? (
-                                    <RazorpayButton paymentId={pack.paymentId} />
+                               {currency === 'INR' ? (
+                                    hasINR && pack.paymentId && <RazorpayButton paymentId={pack.paymentId} />
                                 ) : (
+                                    hasUSD && pack.lemonSqueezyUrl && 
                                     <Button asChild size="lg" className="w-full" style={{backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))'}}>
                                         <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
                                             Buy Now – Instant Download

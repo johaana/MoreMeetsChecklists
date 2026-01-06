@@ -2,7 +2,6 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { Button } from './button';
 import { cn } from '@/lib/utils';
 
 interface RazorpayButtonProps {
@@ -19,7 +18,6 @@ export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, class
         script.async = true;
         script.dataset.payment_button_id = paymentId;
 
-        // Custom styling for the Razorpay button
         const style = document.createElement('style');
         style.innerHTML = `
           .razorpay-payment-button {
@@ -49,6 +47,14 @@ export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, class
             currentFormRef.appendChild(script);
         }
 
+        const interval = setInterval(() => {
+            const button = formRef.current?.querySelector('.razorpay-payment-button');
+            if (button) {
+                button.textContent = 'Buy Now – Instant Download';
+                clearInterval(interval);
+            }
+        }, 100);
+
         return () => {
           if (currentFormRef && currentFormRef.contains(script)) {
               try {
@@ -57,33 +63,14 @@ export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, class
                   // This can happen on fast navigations, it's safe to ignore.
               }
           }
-          document.head.removeChild(style);
+          if (document.head.contains(style)) {
+            document.head.removeChild(style);
+          }
+          clearInterval(interval);
         };
     }, [paymentId]);
 
-    // Set the button text when JS is enabled
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const button = formRef.current?.querySelector('.razorpay-payment-button');
-            if (button) {
-                button.textContent = 'Buy Now – Instant Download';
-                clearInterval(interval);
-            }
-        }, 100);
-        return () => clearInterval(interval);
-    }, []);
-
-
     return (
-      <form ref={formRef} className={cn("w-full", className)}>
-        {/* Fallback for when JavaScript is disabled */}
-        <noscript>
-          <Button asChild size="lg" className="w-full">
-            <a href={`https://rzp.io/l/${paymentId}`} target="_blank" rel="noopener noreferrer">
-              Buy Now
-            </a>
-          </Button>
-        </noscript>
-      </form>
+      <form ref={formRef} className={cn("w-full", className)} />
     );
 };
