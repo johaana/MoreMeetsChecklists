@@ -204,16 +204,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
                              <div className="w-full max-w-xs text-center space-y-4">
-                               {currency === 'INR' ? (
-                                    hasINR && pack.paymentId && <RazorpayButton paymentId={pack.paymentId} />
-                                ) : (
-                                    hasUSD && pack.lemonSqueezyUrl && 
+                                {currency === 'INR' && hasINR && pack.paymentId ? (
+                                    <RazorpayButton paymentId={pack.paymentId} />
+                                ) : currency === 'USD' && hasUSD && pack.lemonSqueezyUrl ? (
                                     <Button asChild size="lg" className="w-full" style={{backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))'}}>
                                         <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
                                             Buy Now – Instant Download
                                         </Link>
                                     </Button>
-                                )}
+                                ) : null}
                             </div>
                            <div className="text-xs text-muted-foreground mt-2 text-center">
                                 By clicking “Buy Now”, you agree to our <Link href="/terms" className="underline hover:text-primary">Terms of Service</Link> & <Link href="/refund" className="underline hover:text-primary">Refund Policy</Link>.
