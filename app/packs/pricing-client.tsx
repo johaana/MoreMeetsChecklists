@@ -169,7 +169,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </p>
                                     <p className="text-sm text-muted-foreground">/ One-time payment</p>
                                 </div>
-                               <div className="bg-accent/20 text-accent-foreground text-sm font-semibold px-3 py-1 rounded-md">
+                                <div className="bg-accent/20 text-amber-200 text-sm font-semibold px-3 py-1 rounded-md">
                                     🎁 New Year Offer: Includes 1 free customization
                                 </div>
                                 {currency === 'USD' && <p className="text-xs text-center text-muted-foreground">(inclusive of all taxes)</p>}
@@ -207,7 +207,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             />
                             
                             <div className="p-4 border-l-4 border-accent bg-accent/10 rounded-r-lg">
-                                <h4 className="font-bold text-accent-foreground flex items-center gap-2">🎉 New Year Launch Bonus</h4>
+                                <h4 className="font-bold text-amber-200 flex items-center gap-2">🎉 New Year Launch Bonus</h4>
                                 <p className="text-sm text-muted-foreground mt-2">
                                     Get one free customization of this pack to match your brand, format, or internal workflow.
                                     <br/>
@@ -218,15 +218,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
                            <div className="w-full max-w-sm">
-                            {currency === 'USD' ? (
-                                <div className="text-center space-y-4">
-                                     <Button asChild size="lg" className="w-full bg-authority-green text-bg-primary hover:bg-authority-green/90">
-                                        <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
-                                            Buy Now – Instant Download
-                                        </Link>
-                                    </Button>
-                                </div>
-                            ) : (
+                            {currency === 'INR' ? (
                                 <div className="text-center space-y-4 p-4 rounded-lg bg-background/50 border border-border">
                                     <div className="text-center">
                                         <p className="font-bold text-lg text-primary-text">Get Instant Access</p>
@@ -234,6 +226,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </div>
                                     <RazorpayButton paymentId={pack.paymentId} />
                                 </div>
+                            ) : (
+                                <Button asChild size="lg" className="w-full bg-authority-green text-bg-primary hover:bg-authority-green/90">
+                                    <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
+                                        Buy Now – Instant Download
+                                    </Link>
+                                </Button>
                             )}
                             </div>
 
