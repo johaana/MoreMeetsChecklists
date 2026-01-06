@@ -15,8 +15,6 @@ import { ValueProposition } from '../components/ui/value-proposition';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
 import { ComplianceIcon } from '../components/icons';
-import { Label } from '@/components/ui/label';
-import { Checkbox } from '@/components/ui/checkbox';
 
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
@@ -216,7 +214,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </Button>
                                 )}
                             </div>
-                             <p className="text-xs text-muted-foreground mt-2 text-center">
+                            <p className="text-xs text-muted-foreground mt-2 text-center">
                                 By clicking “Buy Now”, you agree to our <Link href="/terms" className="underline hover:text-primary">Terms of Service</Link> & <Link href="/refund" className="underline hover:text-primary">Refund Policy</Link>.
                             </p>
                            <p className="text-xs text-muted-foreground">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>
@@ -232,3 +230,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
