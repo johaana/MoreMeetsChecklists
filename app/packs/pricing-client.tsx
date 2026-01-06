@@ -14,8 +14,6 @@ import { Input } from '../components/ui/input';
 import { ValueProposition } from '../components/ui/value-proposition';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
-import { Checkbox } from '../components/ui/checkbox';
-import { Label } from '../components/ui/label';
 import { ComplianceIcon } from '../components/icons';
 
 
@@ -81,7 +79,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
     
     const [currency, setCurrency] = React.useState(hasUSD ? 'USD' : 'INR');
-    const [agreedToTerms, setAgreedToTerms] = React.useState(false);
     
     const totalChecklists = pack.checklists?.length || 0;
     const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
@@ -206,40 +203,35 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
-                            <div className="flex items-center space-x-2">
-                                <Checkbox id="terms" checked={agreedToTerms} onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)} />
-                                <Label htmlFor="terms" className="text-xs text-muted-foreground">
-                                    I agree to the{" "}
-                                    <Link href="/terms" target="_blank" className="underline hover:text-primary">
-                                    Terms
-                                    </Link>{" "}
-                                    &{" "}
-                                    <Link href="/refund" target="_blank" className="underline hover:text-primary">
-                                    Refund Policy
-                                    </Link>.
-                                </Label>
-                            </div>
                            <div className="w-full flex justify-center">
                                 {currency === 'INR' && hasINR && pack.paymentId && (
                                      <div className="w-full max-w-xs">
-                                        {agreedToTerms ? (
-                                            <RazorpayButton paymentId={pack.paymentId} className="w-full" />
-                                        ) : (
-                                            <Button size="lg" disabled className="w-full">Continue to Checkout</Button>
-                                        )}
+                                        <RazorpayButton paymentId={pack.paymentId} className="w-full" />
                                      </div>
                                 )}
                                 {currency === 'USD' && hasUSD && pack.lemonSqueezyUrl && (
                                      <div className="w-full max-w-xs">
-                                        <Button asChild size="lg" className="w-full" disabled={!agreedToTerms} style={agreedToTerms ? {backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))'} : {}}>
+                                        <Button asChild size="lg" className="w-full" style={{backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))'}}>
                                             <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
-                                                {agreedToTerms ? 'Buy Now – Instant Download' : 'Continue to Checkout'}
+                                                Buy Now – Instant Download
                                             </Link>
                                         </Button>
                                     </div>
                                 )}
                            </div>
-                           <p className="text-xs text-muted-foreground">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>
+                            <div className="text-center mt-3">
+                                <p className="text-xs text-muted-foreground">
+                                    By clicking “Buy Now”, you agree to our<br />
+                                    <Link href="/terms" target="_blank" className="underline hover:text-primary">
+                                    Terms of Service
+                                    </Link>{" "}
+                                    &{" "}
+                                    <Link href="/refund" target="_blank" className="underline hover:text-primary">
+                                    Refund Policy
+                                    </Link>.
+                                </p>
+                                 <p className="text-xs text-muted-foreground mt-2">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>
+                            </div>
                            <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
                                 <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
                                     Need this pack tailored to your brand's specific needs? Schedule a call.
