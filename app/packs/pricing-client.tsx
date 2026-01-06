@@ -169,10 +169,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </p>
                                     <p className="text-sm text-muted-foreground">/ One-time payment</p>
                                 </div>
-                                <p className="text-sm font-semibold text-accent-foreground bg-accent/20 px-3 py-1 rounded-full">
+                               <div className="bg-accent/20 text-accent-foreground text-sm font-semibold px-3 py-1 rounded-md">
                                     🎁 New Year Offer: Includes 1 free customization
-                                </p>
-                                {currency === 'USD' && <p className="text-xs text-center text-muted-foreground -mt-4">(inclusive of all taxes)</p>}
+                                </div>
+                                {currency === 'USD' && <p className="text-xs text-center text-muted-foreground">(inclusive of all taxes)</p>}
                             </div>
                            
                             <div className='space-y-4'>
@@ -253,3 +253,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
