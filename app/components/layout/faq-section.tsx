@@ -33,6 +33,12 @@ export const FaqSection = () => (
                             Yes. Over 80% of operational best practices are universal. We provide the <strong>globally benchmarked structure</strong>, and you can easily customize the last 20% to fit your specific organizational needs.
                         </AccordionContent>
                     </AccordionItem>
+                    <AccordionItem value="item-9">
+                        <AccordionTrigger>How does the free customization work?</AccordionTrigger>
+                        <AccordionContent>
+                          After payment, your file downloads instantly. For customization, you'll receive an email requesting more info for custom.
+                        </AccordionContent>
+                    </AccordionItem>
                      <AccordionItem value="item-5">
                         <AccordionTrigger>What ROI can we expect from implementing this?</AccordionTrigger>
                         <AccordionContent>
@@ -62,4 +68,3 @@ export const FaqSection = () => (
         </div>
     </section>
 );
-

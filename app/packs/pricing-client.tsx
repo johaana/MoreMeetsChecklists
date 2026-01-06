@@ -6,7 +6,7 @@ import type { PremiumPack } from '../lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
-import { Check, Download, Loader2, Banknote } from 'lucide-react';
+import { Check, Download, Loader2, Banknote, FileText, CheckCircle, Package } from 'lucide-react';
 import { Badge } from '../components/ui/badge';
 import { useToast } from '../hooks/use-toast';
 import { addContact } from './actions';
@@ -162,20 +162,25 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </div>
                              )}
 
-                            <div className="flex items-baseline justify-center gap-2">
-                                <p className="text-5xl font-extrabold">
-                                    {currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                            <div className="flex flex-col items-center justify-center gap-2">
+                                <div className="flex items-baseline justify-center gap-2">
+                                    <p className="text-5xl font-extrabold">
+                                        {currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                                    </p>
+                                    <p className="text-sm text-muted-foreground">/ One-time payment</p>
+                                </div>
+                                <p className="text-sm font-semibold text-accent-foreground bg-accent/20 px-3 py-1 rounded-full">
+                                    🎁 New Year Offer: Includes 1 free customization
                                 </p>
-                                <p className="text-sm text-muted-foreground">/ One-time payment</p>
+                                {currency === 'USD' && <p className="text-xs text-center text-muted-foreground -mt-4">(inclusive of all taxes)</p>}
                             </div>
-                            {currency === 'USD' && <p className="text-xs text-center text-muted-foreground -mt-4">(inclusive of all taxes)</p>}
                            
                             <div className='space-y-4'>
                                 <h4 className="font-semibold text-center text-primary/90">WHAT'S INCLUDED:</h4>
                                 <ul className="space-y-3 text-sm text-foreground/90">
                                     {features.map((feature, index) => (
                                         <li key={index} className="flex items-start">
-                                            <Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/>
+                                            <CheckCircle className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/>
                                             <span dangerouslySetInnerHTML={{ __html: feature.text }} />
                                         </li>
                                     ))}
@@ -200,27 +205,36 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 competitorPrice={currency === 'INR' ? "₹50,000+" : `$${pack.competitorPriceUSD || 599}+`}
                                 valueStatement="For a comparable enterprise compliance toolkit."
                             />
+                            
+                            <div className="p-4 border-l-4 border-accent bg-accent/10 rounded-r-lg">
+                                <h4 className="font-bold text-accent-foreground flex items-center gap-2">🎉 New Year Launch Bonus</h4>
+                                <p className="text-sm text-muted-foreground mt-2">
+                                    Get one free customization of this pack to match your brand, format, or internal workflow.
+                                    <br/>
+                                    Your file downloads instantly after payment. Customization instructions are included inside the downloaded file.
+                                </p>
+                            </div>
 
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
-                            <div className="w-full max-w-sm">
-                                {currency === 'USD' ? (
-                                    <div className="text-center space-y-4">
-                                        <Button asChild size="lg" className="w-full" style={{backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))'}}>
-                                            <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
-                                                Buy Now – Instant Download
-                                            </Link>
-                                        </Button>
+                           <div className="w-full max-w-sm">
+                            {currency === 'USD' ? (
+                                <div className="text-center space-y-4">
+                                     <Button asChild size="lg" className="w-full bg-authority-green text-bg-primary hover:bg-authority-green/90">
+                                        <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
+                                            Buy Now – Instant Download
+                                        </Link>
+                                    </Button>
+                                </div>
+                            ) : (
+                                <div className="text-center space-y-4 p-4 rounded-lg bg-background/50 border border-border">
+                                    <div className="text-center">
+                                        <p className="font-bold text-lg text-primary-text">Get Instant Access</p>
+                                        <p className="text-xs text-muted-foreground">Secure checkout • UPI, Cards, NetBanking</p>
                                     </div>
-                                ) : (
-                                    <div className="text-center space-y-4 p-4 rounded-lg bg-background/50 border border-border">
-                                        <div className="text-center">
-                                            <p className="font-bold text-lg text-primary-text">Get Instant Access — ₹{pack.priceINR}</p>
-                                            <p className="text-xs text-muted-foreground">Secure checkout • UPI, Cards, NetBanking</p>
-                                        </div>
-                                        <RazorpayButton paymentId={pack.paymentId} />
-                                    </div>
-                                )}
+                                    <RazorpayButton paymentId={pack.paymentId} />
+                                </div>
+                            )}
                             </div>
 
                             <div className="text-xs text-muted-foreground mt-2 text-center">
