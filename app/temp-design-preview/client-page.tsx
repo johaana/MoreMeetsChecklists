@@ -6,7 +6,6 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/com
 import { cn } from '@/lib/utils';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Check } from 'lucide-react';
 
 const Section = ({ className, id, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
     <section id={id} className={cn("w-full py-16 md:py-24", className)} {...props} />
@@ -42,7 +41,7 @@ const AnimatedButton = ({
         <button
             disabled={!agreed}
             className={cn(
-                "w-full h-12 rounded-md transition-all duration-300 font-semibold text-base",
+                "w-full h-12 rounded-md transition-all duration-300 font-bold text-base",
                  agreed ? "" : "chasing-border-button",
                 className
             )}
@@ -62,41 +61,93 @@ const AnimatedButton = ({
     )
 };
 
-export default function TempDesignClientPage() {
+const ButtonShowcaseCard = ({
+    title,
+    description,
+    enabledBg,
+    enabledText,
+    disabledBorder,
+    chasingColor
+}: {
+    title: string,
+    description: string,
+    enabledBg: string,
+    enabledText: string,
+    disabledBorder: string,
+    chasingColor: string
+}) => {
     const [agreed, setAgreed] = useState(false);
 
     return (
+        <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
+            <CardHeader>
+                <CardTitle style={{color: 'hsl(var(--text-primary))'}}>{title}</CardTitle>
+                <CardDescription style={{color: 'hsl(var(--text-on-light))'}}>{description}</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-8 p-6 pt-0">
+                <AnimatedButton
+                    enabledBg={enabledBg}
+                    enabledText={enabledText}
+                    disabledBorder={disabledBorder}
+                    chasingColor={chasingColor}
+                    agreed={agreed}
+                />
+                <div className="flex items-center space-x-2 justify-center">
+                    <Checkbox id={`terms-${title.replace(/\s+/g, '-')}`} checked={agreed} onCheckedChange={(checked) => setAgreed(checked as boolean)} />
+                    <Label htmlFor={`terms-${title.replace(/\s+/g, '-')}`} className="text-sm" style={{color: 'hsl(var(--text-on-light))'}}>I agree to the terms</Label>
+                </div>
+            </CardContent>
+        </Card>
+    );
+};
+
+
+export default function TempDesignClientPage() {
+    return (
         <main className="flex-1" style={{ backgroundColor: 'hsl(var(--bg-primary))' }}>
-            <Section id="after" style={{ backgroundColor: 'hsl(var(--bg-primary))' }}>
+            <Section id="buttons">
                 <div className="container px-4 md:px-6">
                     <div className="text-center mb-12 max-w-3xl mx-auto">
-                         <SectionHeadline>The Interactive Button: A Guided Journey</SectionHeadline>
+                         <SectionHeadline>Interactive Button Showcase</SectionHeadline>
                         <p className="text-lg mt-4" style={{color: 'hsl(var(--text-secondary))'}}>
-                           A disabled button shouldn't be a dead end. This animated border draws the user's eye, signaling that an action is required. When the condition is met, the button transforms into a clear, confident call to action.
+                           A disabled button shouldn't be a dead end. Explore how different color transitions can guide the user and create a more satisfying call to action. Click each checkbox to see the effect.
                         </p>
                     </div>
 
-                    <Card className="max-w-md mx-auto" style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
-                        <CardHeader className="text-center">
-                            <CardTitle className="flex items-center gap-2 justify-center" style={{color: 'hsl(var(--text-primary))'}}><Check className="text-authority-green"/> The Recommended Experience</CardTitle>
-                             <CardDescription className="text-sm" style={{color: 'hsl(var(--text-on-light))'}}>Click the checkbox to see the button transition from an attention-grabbing disabled state to a clear, actionable enabled state.</CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-8 p-6">
-                             <div className="flex items-center space-x-2 justify-center">
-                                <Checkbox id="terms-after" checked={agreed} onCheckedChange={(checked) => setAgreed(checked as boolean)} />
-                                <Label htmlFor="terms-after" className="text-sm" style={{color: 'hsl(var(--text-on-light))'}}>I agree to the terms and conditions</Label>
-                            </div>
-                            <div className="grid grid-cols-1 gap-6">
-                                <AnimatedButton
-                                    enabledBg="authority-green"
-                                    enabledText="bg-primary"
-                                    disabledBorder="accent"
-                                    chasingColor="high-contrast-green"
-                                    agreed={agreed}
-                                />
-                            </div>
-                        </CardContent>
-                    </Card>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        <ButtonShowcaseCard 
+                            title="Recommended: Yellow to Green"
+                            description="Draws attention with a vibrant yellow border, then confirms the action with a solid green 'Go' state. The most intuitive journey for the user."
+                            enabledBg="authority-green"
+                            enabledText="bg-primary"
+                            disabledBorder="accent"
+                            chasingColor="high-contrast-green"
+                        />
+                         <ButtonShowcaseCard 
+                            title="Monochromatic: Yellow to Yellow"
+                            description="A bold, brand-consistent option. The yellow border 'powers up' to a solid yellow fill, keeping the focus on your primary accent color."
+                            enabledBg="accent"
+                            enabledText="bg-primary"
+                            disabledBorder="accent"
+                            chasingColor="high-contrast-green"
+                        />
+                        <ButtonShowcaseCard 
+                            title="High-Contrast: White"
+                            description="A clean and modern aesthetic. The button fills with solid white, creating a crisp, high-contrast element that stands out."
+                            enabledBg="text-primary"
+                            enabledText="bg-primary"
+                            disabledBorder="text-primary"
+                            chasingColor="high-contrast-green"
+                        />
+                        <ButtonShowcaseCard 
+                            title="Urgent: Red to Red"
+                            description="Uses the 'risk' accent color to signal importance or a final warning. Best for critical actions like 'Delete Account'."
+                            enabledBg="risk-accent"
+                            enabledText="text-primary"
+                            disabledBorder="risk-accent"
+                            chasingColor="risk-accent"
+                        />
+                    </div>
                 </div>
             </Section>
         </main>
