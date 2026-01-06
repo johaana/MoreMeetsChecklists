@@ -203,30 +203,24 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
+                            <p className="text-muted-foreground text-sm">By clicking “Buy Now”, you agree to our <Link href="/terms" className="underline hover:text-primary">Terms of Service</Link> & <Link href="/refund" className="underline hover:text-primary">Refund Policy</Link>.</p>
+                           
                            <div className="w-full max-w-xs text-center">
-                                {currency === 'INR' && hasINR && pack.paymentId ? (
-                                    <RazorpayButton paymentId={pack.paymentId} className="w-full" />
-                                ) : currency === 'USD' && hasUSD && pack.lemonSqueezyUrl ? (
-                                    <Button asChild size="lg" className="w-full" style={{backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))'}}>
-                                        <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
-                                            Buy Now – Instant Download
-                                        </Link>
-                                    </Button>
-                                ) : null}
+                                {currency === 'INR' ? (
+                                    hasINR && pack.paymentId && <RazorpayButton paymentId={pack.paymentId} className="w-full" />
+                                ) : (
+                                    hasUSD && pack.lemonSqueezyUrl && (
+                                        <Button asChild size="lg" className="w-full" style={{backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))'}}>
+                                            <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
+                                                Buy Now – Instant Download
+                                            </Link>
+                                        </Button>
+                                    )
+                                )}
                             </div>
-                             <div className="text-center mt-3">
-                                <p className="text-xs text-muted-foreground">
-                                    By clicking “Buy Now”, you agree to our<br />
-                                    <Link href="/terms" target="_blank" className="underline hover:text-primary">
-                                    Terms of Service
-                                    </Link>{" "}
-                                    &{" "}
-                                    <Link href="/refund" target="_blank" className="underline hover:text-primary">
-                                    Refund Policy
-                                    </Link>.
-                                </p>
-                                <p className="text-xs text-muted-foreground mt-2">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>
-                            </div>
+
+                           <p className="text-xs text-muted-foreground mt-2">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>
+                           
                            <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
                                 <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
                                     Need this pack tailored to your brand's specific needs? Schedule a call.
@@ -239,4 +233,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
