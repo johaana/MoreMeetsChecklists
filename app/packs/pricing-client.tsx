@@ -15,6 +15,8 @@ import { ValueProposition } from '../components/ui/value-proposition';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
 import { ComplianceIcon } from '../components/icons';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
 
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
@@ -203,7 +205,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
-                            <div className="w-full max-w-md">
+                            
+                           <div className="w-full max-w-xs">
                                 {currency === 'INR' && hasINR && pack.paymentId ? (
                                     <RazorpayButton paymentId={pack.paymentId} />
                                 ) : (
@@ -213,10 +216,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         </Link>
                                     </Button>
                                 )}
-                            </div>
-                            <p className="text-xs text-muted-foreground mt-2 text-center">
+                           </div>
+                           <div className="text-xs text-muted-foreground mt-2 text-center">
                                 By clicking “Buy Now”, you agree to our <Link href="/terms" className="underline hover:text-primary">Terms of Service</Link> & <Link href="/refund" className="underline hover:text-primary">Refund Policy</Link>.
-                            </p>
+                           </div>
                            <p className="text-xs text-muted-foreground">Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}</p>
                            <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
                                 <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
@@ -230,4 +233,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
