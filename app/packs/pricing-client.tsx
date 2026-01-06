@@ -205,8 +205,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
-                            
-                           <div className="w-full max-w-xs">
+                             <div className="w-full max-w-xs text-center space-y-4">
                                 {currency === 'INR' && hasINR && pack.paymentId ? (
                                     <RazorpayButton paymentId={pack.paymentId} />
                                 ) : (
@@ -216,7 +215,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         </Link>
                                     </Button>
                                 )}
-                           </div>
+                            </div>
                            <div className="text-xs text-muted-foreground mt-2 text-center">
                                 By clicking “Buy Now”, you agree to our <Link href="/terms" className="underline hover:text-primary">Terms of Service</Link> & <Link href="/refund" className="underline hover:text-primary">Refund Policy</Link>.
                            </div>
