@@ -1,12 +1,11 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Check } from 'lucide-react';
 
 const Section = ({ className, id, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
     <section id={id} className={cn("w-full py-16 md:py-24", className)} {...props} />
@@ -39,9 +38,9 @@ const AnimatedButton = ({
     const buttonStyles: React.CSSProperties = {
         '--chasing-color': chasingColorValue,
         '--border-color': disabledBorderColor,
-        '--text-color': `hsl(var(--${disabledBorder}))`,
+        '--text-color': `hsl(var(--text-primary))`,
         backgroundColor: agreed ? enabledBgColor : 'transparent',
-        color: agreed ? enabledTextColor : `hsl(var(--${disabledBorder}))`,
+        color: agreed ? enabledTextColor : `hsl(var(--text-primary))`,
         borderColor: agreed ? enabledBgColor : disabledBorderColor,
         borderWidth: '2px',
         borderStyle: 'solid',
@@ -76,31 +75,10 @@ export default function TempDesignClientPage() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                        {/* Before */}
-                        <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}}>
+                    <div className="flex justify-center">
+                        <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}} className="w-full max-w-sm border-2 border-accent/50 shadow-lg shadow-accent/10">
                           <CardHeader>
-                            <CardTitle style={{color: 'hsl(var(--text-primary))'}}>The Old Way: A Visual Dead End</CardTitle>
-                            <CardDescription style={{color: 'hsl(var(--text-on-light))'}}>A standard disabled button feels like a wall. It's unclear what the user should do next, creating hesitation.</CardDescription>
-                          </CardHeader>
-                          <CardContent className="space-y-8 p-6 pt-0">
-                               <button
-                                disabled
-                                className="w-full h-12 rounded-md transition-all duration-300 font-bold text-base bg-gray-500/20 text-gray-500/70 border-2 border-gray-500/30 cursor-not-allowed"
-                            >
-                                Buy Now
-                            </button>
-                            <div className="flex items-center space-x-2 justify-center">
-                                <Checkbox id="terms-old" />
-                                <Label htmlFor="terms-old" className="text-sm" style={{color: 'hsl(var(--text-on-light))'}}>I agree to the terms</Label>
-                            </div>
-                          </CardContent>
-                        </Card>
-
-                        {/* After */}
-                        <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}} className="border-2 border-accent/50 shadow-lg shadow-accent/10">
-                          <CardHeader>
-                            <CardTitle style={{color: 'hsl(var(--text-primary))'}}>The MoreMeets Way: A Clear Path</CardTitle>
+                            <CardTitle style={{color: 'hsl(var(--text-primary))'}}>The 'Go' Signal</CardTitle>
                             <CardDescription style={{color: 'hsl(var(--text-on-light))'}}>An engaging border invites action. Checking the box gives a satisfying green 'Go' signal, creating a confident path to purchase.</CardDescription>
                           </CardHeader>
                           <CardContent className="space-y-8 p-6 pt-0">
