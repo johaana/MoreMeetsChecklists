@@ -3,6 +3,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Button } from './button';
+import { cn } from '@/lib/utils';
 
 interface RazorpayButtonProps {
     paymentId: string;
@@ -18,29 +19,66 @@ export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, class
         script.async = true;
         script.dataset.payment_button_id = paymentId;
 
+        // Custom styling for the Razorpay button
+        const style = document.createElement('style');
+        style.innerHTML = `
+          .razorpay-payment-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 1rem; /* text-lg */
+            font-weight: 500;
+            height: 3rem; /* h-12 -> lg */
+            padding-left: 2rem; /* px-8 -> lg */
+            padding-right: 2rem; /* px-8 -> lg */
+            width: 100%;
+            background-color: hsl(var(--authority-green)) !important;
+            color: hsl(var(--bg-primary)) !important;
+            transition: background-color 0.3s;
+          }
+           .razorpay-payment-button:hover {
+             background-color: hsl(var(--authority-green) / 0.9) !important;
+          }
+        `;
+        document.head.appendChild(style);
+
         const currentFormRef = formRef.current;
         if (currentFormRef) {
             currentFormRef.appendChild(script);
         }
 
         return () => {
-          if (currentFormRef) {
-            // Check if the script is still a child before removing
-            if (currentFormRef.contains(script)) {
+          if (currentFormRef && currentFormRef.contains(script)) {
               try {
                   currentFormRef.removeChild(script);
               } catch (e) {
                   // This can happen on fast navigations, it's safe to ignore.
               }
-            }
           }
+          document.head.removeChild(style);
         };
     }, [paymentId]);
 
+    // Set the button text when JS is enabled
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const button = formRef.current?.querySelector('.razorpay-payment-button');
+            if (button) {
+                button.textContent = 'Buy Now – Instant Download';
+                clearInterval(interval);
+            }
+        }, 100);
+        return () => clearInterval(interval);
+    }, []);
+
+
     return (
-      <form ref={formRef} className={className}>
+      <form ref={formRef} className={cn("w-full", className)}>
+        {/* Fallback for when JavaScript is disabled */}
         <noscript>
-          <Button asChild size="lg">
+          <Button asChild size="lg" className="w-full">
             <a href={`https://rzp.io/l/${paymentId}`} target="_blank" rel="noopener noreferrer">
               Buy Now
             </a>

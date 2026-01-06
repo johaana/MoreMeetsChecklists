@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -34,7 +35,7 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
             setSubmitted(true);
             toast({
                 title: "Check Your Inbox!",
-                description: "Your free checklist pack has been sent to your email.",
+                description: `Your free checklist pack for "${pack.title}" has been sent.`,
             });
         } else {
             toast({
@@ -208,9 +209,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <div className="flex items-center space-x-2">
                                 <Checkbox id="terms" checked={agreedToTerms} onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)} />
                                 <Label htmlFor="terms" className="text-xs text-muted-foreground">
-                                    I have read and agree to the{" "}
+                                    I agree to the{" "}
                                     <Link href="/terms" target="_blank" className="underline hover:text-primary">
-                                    Terms of Service
+                                    Terms
                                     </Link>{" "}
                                     &{" "}
                                     <Link href="/refund" target="_blank" className="underline hover:text-primary">
@@ -220,15 +221,19 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </div>
                            <div className="w-full flex justify-center">
                                 {currency === 'INR' && hasINR && pack.paymentId && (
-                                    <div className={!agreedToTerms ? 'pointer-events-none opacity-50' : ''}>
-                                        <RazorpayButton paymentId={pack.paymentId} />
-                                    </div>
+                                     <div className="w-full max-w-xs">
+                                        {agreedToTerms ? (
+                                            <RazorpayButton paymentId={pack.paymentId} className="w-full" />
+                                        ) : (
+                                            <Button size="lg" disabled className="w-full">Continue to Checkout</Button>
+                                        )}
+                                     </div>
                                 )}
                                 {currency === 'USD' && hasUSD && pack.lemonSqueezyUrl && (
-                                     <div className={!agreedToTerms ? 'pointer-events-none opacity-50' : ''}>
-                                        <Button asChild size="lg" className="w-full max-w-xs" disabled={!agreedToTerms} variant="accent">
+                                     <div className="w-full max-w-xs">
+                                        <Button asChild size="lg" className="w-full" disabled={!agreedToTerms} style={agreedToTerms ? {backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))'} : {}}>
                                             <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
-                                                Buy Now
+                                                {agreedToTerms ? 'Buy Now – Instant Download' : 'Continue to Checkout'}
                                             </Link>
                                         </Button>
                                     </div>
