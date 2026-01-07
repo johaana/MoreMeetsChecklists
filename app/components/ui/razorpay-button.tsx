@@ -15,7 +15,7 @@ export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, class
     const scriptLoaded = useRef(false);
 
     useEffect(() => {
-        if (!paymentId || scriptLoaded.current || formRef.current?.querySelector('script')) {
+        if (formRef.current?.querySelector('script')) {
             return;
         }
 
@@ -27,7 +27,6 @@ export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, class
         const currentForm = formRef.current;
         if (currentForm) {
             currentForm.appendChild(script);
-            scriptLoaded.current = true;
         }
 
     }, [paymentId]);

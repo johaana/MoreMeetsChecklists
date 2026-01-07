@@ -162,14 +162,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </div>
                              )}
 
-                            <div className="flex flex-col items-center justify-center gap-2">
+                            <div className="text-center space-y-2">
                                 <div className="flex items-baseline justify-center gap-2">
                                     <p className="text-5xl font-extrabold">
                                         {currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
                                     </p>
                                     <p className="text-sm text-muted-foreground">/ One-time payment</p>
                                 </div>
-                                <div className="bg-accent/20 text-amber-200 text-sm font-semibold px-3 py-1 rounded-md">
+                                <div className="bg-accent/20 text-amber-200 text-sm font-semibold px-3 py-1 rounded-md inline-block">
                                     🎁 New Year Offer: Includes 1 free customization
                                 </div>
                                 {currency === 'USD' && <p className="text-xs text-center text-muted-foreground">(inclusive of all taxes)</p>}
@@ -205,8 +205,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 competitorPrice={currency === 'INR' ? "₹50,000+" : `$${pack.competitorPriceUSD || 599}+`}
                                 valueStatement="For a comparable enterprise compliance toolkit."
                             />
-                            
-                            <div className="p-4 border-l-4 border-accent bg-accent/10 rounded-r-lg">
+                             <div className="p-4 border-l-4 border-accent bg-accent/10 rounded-r-lg">
                                 <h4 className="font-bold text-amber-200 flex items-center gap-2">🎉 New Year Launch Bonus</h4>
                                 <p className="text-sm text-muted-foreground mt-2">
                                     Get one free customization of this pack to match your brand, format, or internal workflow.
@@ -214,7 +213,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     Your file downloads instantly after payment. Customization instructions are included inside the downloaded file.
                                 </p>
                             </div>
-
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
                            <div className="w-full max-w-sm">
@@ -229,7 +227,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             ) : (
                                 <Button asChild size="lg" className="w-full bg-authority-green text-bg-primary hover:bg-authority-green/90">
                                     <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
-                                        Buy Now – Instant Download
+                                        Buy Now - Instant Download
                                     </Link>
                                 </Button>
                             )}
@@ -251,4 +249,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-

@@ -34,7 +34,7 @@ export const HeroSection = () => (
                     shouldn’t pay for it.
                 </h1>
                 <p className="text-lg max-w-[520px] text-secondary-text" style={{lineHeight: 1.5}}>
-                    Everyone knows the work until memory and judgment take over. That’s when execution breaks: audits, shift changes, growth, and emergencies.
+                    When work depends on memory or judgment, execution changes with people. Audits, shift changes, growth, and emergencies expose the gaps.
                 </p>
                 <p className="text-lg font-bold text-red-500" style={{ letterSpacing: '0.01em'}}>
                    Consistency can’t depend on memory.
