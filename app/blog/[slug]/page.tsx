@@ -144,7 +144,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <div className="container px-4 md:px-6 py-12 md:py-16">
               <div className="grid lg:grid-cols-4 gap-12">
                 
-                <div className="lg:col-span-3 prose prose-lg dark:prose-invert max-w-full prose-headings:font-headline prose-headings:text-primary prose-p:text-muted-foreground prose-a:text-accent prose-strong:text-foreground">
+                <div className="lg:col-span-3 prose prose-lg dark:prose-invert max-w-full prose-headings:font-headline prose-headings:text-primary prose-p:text-muted-foreground prose-a:text-accent prose-strong:text-foreground prose-p:my-6 prose-headings:my-10">
                   <div dangerouslySetInnerHTML={{ __html: post.content }} />
                 </div>
                 

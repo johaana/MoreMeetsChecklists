@@ -238,7 +238,7 @@ export default function BlogClientPage() {
         <section className="w-full pt-12 md:pt-20 pb-12 md:pb-24 lg:pb-32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary">
+                    <h1 className="text-3xl md:text-5xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary">
                         Black Box Debrief
                     </h1>
                     <p className="max-w-[800px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
@@ -251,7 +251,6 @@ export default function BlogClientPage() {
                     <div className="mb-16">
                         <Link href={`/blog/${currentFeaturedPost.slug}`} className="block group">
                              <Card className="overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
-                                {/* Mobile Layout: Image on top */}
                                 <div className="md:hidden">
                                     <div className="relative w-full h-auto aspect-[16/9]">
                                      {currentFeaturedPost.imageUrl && (
@@ -279,7 +278,6 @@ export default function BlogClientPage() {
                                     </div>
                                 </div>
                                 
-                                {/* Desktop Layout: Image overlay */}
                                 <div className="hidden md:block relative min-h-[400px]">
                                     <div className="grid md:grid-cols-2 items-center h-full">
                                         <div className="absolute inset-0 z-0">
