@@ -36,7 +36,7 @@ export const FaqSection = () => (
                     <AccordionItem value="item-9">
                         <AccordionTrigger>How does the free customization work?</AccordionTrigger>
                         <AccordionContent>
-                          After payment, your file downloads instantly. For customization, you'll receive an email requesting more info for custom.
+                          After payment, your file downloads instantly. Our team will then send you a welcome email within one business day to collect your requirements and begin the free customization process.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-5">

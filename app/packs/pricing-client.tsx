@@ -209,8 +209,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <h4 className="font-bold text-amber-200 flex items-center gap-2">🎉 New Year Launch Bonus</h4>
                                 <p className="text-sm text-muted-foreground mt-2">
                                     Get one free customization of this pack to match your brand, format, or internal workflow.
-                                    <br/>
-                                    Your file downloads instantly after payment. Customization instructions are included inside the downloaded file.
+                                </p>
+                                <p className="text-sm text-muted-foreground mt-2">
+                                   After payment, your file downloads instantly. Our team will email you within one business day to arrange your free customization.
                                 </p>
                             </div>
                         </CardContent>
@@ -225,9 +226,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     <RazorpayButton paymentId={pack.paymentId} />
                                 </div>
                             ) : (
-                                <Button asChild size="lg" className="w-full bg-authority-green text-bg-primary hover:bg-authority-green/90">
+                                <Button asChild size="lg" className="w-full" variant="accent">
                                     <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
-                                        Buy Now - Instant Download
+                                        Buy Now — Instant Download
                                     </Link>
                                 </Button>
                             )}
