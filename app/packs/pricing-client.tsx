@@ -163,12 +163,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                              )}
 
                             <div className="text-center space-y-2">
-                                <div className="flex items-baseline justify-center gap-2">
-                                    <p className="text-5xl font-extrabold">
-                                        {currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
-                                    </p>
-                                    <p className="text-sm text-muted-foreground">/ One-time payment</p>
-                                </div>
+                                <p className="text-5xl font-extrabold">
+                                    {currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                                </p>
+                                <p className="text-sm text-muted-foreground">One-time payment</p>
                                 <div className="bg-accent/20 text-amber-200 text-sm font-semibold px-3 py-1 rounded-md inline-block">
                                     🎁 New Year Offer: Includes 1 free customization
                                 </div>
@@ -205,33 +203,33 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 competitorPrice={currency === 'INR' ? "₹50,000+" : `$${pack.competitorPriceUSD || 599}+`}
                                 valueStatement="For a comparable enterprise compliance toolkit."
                             />
-                             <div className="p-4 border-l-4 border-accent bg-accent/10 rounded-r-lg">
-                                <h4 className="font-bold text-amber-200 flex items-center gap-2">🎉 New Year Launch Bonus</h4>
+                             <div className="p-4 bg-background/50 rounded-lg border border-accent/30">
+                                <h4 className="font-bold text-accent flex items-center gap-2">🎉 New Year Launch Bonus</h4>
                                 <p className="text-sm text-muted-foreground mt-2">
                                     Get one free customization of this pack to match your brand, format, or internal workflow.
                                 </p>
                                 <p className="text-sm text-muted-foreground mt-2">
-                                   After payment, your file downloads instantly. Our team will email you within one business day to arrange your free customization.
+                                   After payment, your file downloads instantly. Our team will then send you a welcome email within one business day to collect your requirements and begin the free customization process.
                                 </p>
                             </div>
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
-                           <div className="w-full max-w-sm">
-                            {currency === 'INR' ? (
-                                <div className="text-center space-y-4 p-4 rounded-lg bg-background/50 border border-border">
-                                    <div className="text-center">
-                                        <p className="font-bold text-lg text-primary-text">Get Instant Access</p>
-                                        <p className="text-xs text-muted-foreground">Secure checkout • UPI, Cards, NetBanking</p>
+                            <div className="w-full max-w-sm text-center">
+                                {currency === 'INR' ? (
+                                    <div className="p-4 rounded-lg bg-background/50 border border-border">
+                                        <div className="text-center mb-4">
+                                            <p className="font-bold text-lg text-primary-text">Get Instant Access</p>
+                                            <p className="text-xs text-muted-foreground">Secure checkout • UPI, Cards, NetBanking</p>
+                                        </div>
+                                        <RazorpayButton paymentId={pack.paymentId} />
                                     </div>
-                                    <RazorpayButton paymentId={pack.paymentId} />
-                                </div>
-                            ) : (
-                                <Button asChild size="lg" className="w-full" variant="accent">
-                                    <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
-                                        Buy Now — Instant Download
-                                    </Link>
-                                </Button>
-                            )}
+                                ) : (
+                                    <Button asChild size="lg" className="w-full" variant="accent">
+                                        <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
+                                            Buy Now — Instant Download
+                                        </Link>
+                                    </Button>
+                                )}
                             </div>
 
                             <div className="text-xs text-muted-foreground mt-2 text-center">
@@ -250,3 +248,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
