@@ -6,14 +6,13 @@ import type { PremiumPack } from '../lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
-import { Check, Download, Loader2, Banknote, CheckCircle, Info, FileText, TrendingUp, KeyRound, Handshake } from 'lucide-react';
+import { Check, Download, Loader2, Banknote, Gift } from 'lucide-react';
 import { Badge } from '../components/ui/badge';
 import { useToast } from '../hooks/use-toast';
 import { addContact } from './actions';
 import { Input } from '../components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
-import { ComplianceIcon } from '../components/icons';
 import { ValueProposition } from '../components/ui/value-proposition';
 
 
@@ -89,7 +88,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         { text: `<strong>${totalChecklists} expert-built checklists</strong> (${totalTasks}+ tasks)`},
         { text: "<strong>Audit-ready & globally compliant</strong> framework"},
         { text: "<strong>Fully editable Excel format</strong>"},
-        { text: "<strong>Lifetime access</strong> to all future updates for this pack."}
+        { text: "<strong>Lifetime access</strong> to all future updates for this pack."},
+        { text: "<strong>1 Free Customization Included</strong>"}
     ];
 
      const featuresUSD = [
@@ -97,7 +97,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         { text: "Audit-ready task framework (daily / weekly / monthly)"},
         { text: "Globally aligned best practices"},
         { text: "Fully editable Excel files (offline)"},
-        { text: "Lifetime updates"}
+        { text: "Lifetime updates"},
+        { text: "1 Free Customization Included"}
     ];
 
 
@@ -166,7 +167,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                              )}
                             
                             <div className="text-center space-y-2">
-                                <Badge variant="secondary">✔️ 1 Free Customization Included</Badge>
+                                <Badge variant="outline">✔️ 1 Free Customization Included</Badge>
                                 <p className="text-5xl font-extrabold text-primary-text">
                                     {currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
                                 </p>
@@ -183,10 +184,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                             <span dangerouslySetInnerHTML={{ __html: feature.text }} />
                                         </li>
                                     ))}
-                                     <li className="flex items-start">
-                                        <Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-authority-green"/>
-                                        <span>1 Free Customization Included</span>
-                                    </li>
                                 </ul>
                             </div>
                              
@@ -204,12 +201,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                              )}
 
                              <div className="p-4 bg-background/50 rounded-lg border border-accent/30">
-                                <h4 className="font-bold text-accent flex items-center gap-2"><FileText className="w-4 h-4"/> 1 Free Customization Included</h4>
+                                <h4 className="font-bold text-accent flex items-center gap-2"><Gift className="w-4 h-4"/> Included Customization Benefit</h4>
                                 <p className="text-sm text-muted-foreground mt-2">
                                    Get one free customization of this pack to match your brand, format, or internal workflow.
                                 </p>
                                  <p className="text-sm text-muted-foreground mt-2">
-                                   Your file downloads instantly after payment. Our team will then send you a welcome email within one business day to collect your requirements and begin the free customization process.
+                                   Your file downloads instantly after payment. Our team will reach out within 1 business day to collect requirements and begin customization.
                                 </p>
                             </div>
                         </CardContent>
@@ -218,10 +215,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 {currency === 'INR' && hasINR && pack.paymentId && (
                                     <div className="p-4 rounded-lg bg-background/50 border border-border">
                                         <div className="text-center mb-4">
-                                            <p className="font-bold text-lg text-primary-text">Get Instant Access — ₹{pack.priceINR}</p>
+                                            <p className="font-bold text-lg text-primary-text">Get Instant Access</p>
                                         </div>
                                         <RazorpayButton paymentId={pack.paymentId} packId={pack.id} />
-                                         <p className="text-xs text-muted-foreground mt-2">Built from real-world audit & operations experience.</p>
                                     </div>
                                 )}
                                 {currency === 'USD' && hasUSD && pack.lemonSqueezyUrl && (
@@ -231,23 +227,24 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         </div>
                                         <Button asChild size="lg" className="w-full font-bold" variant="accent">
                                             <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
-                                                Get Instant Access — ${pack.priceUSD}
+                                                Get Instant Access
                                             </Link>
                                         </Button>
-                                        <p className="text-xs text-muted-foreground mt-2">Built from real-world audit & operations experience.</p>
                                      </div>
                                 )}
                            </div>
-
+                             <p className="text-xs text-muted-foreground mt-2">Built from real-world audit &amp; operations experience.</p>
                             <div className="text-xs text-muted-foreground text-center">
                                 Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}.
                                 <br />
                                 By purchasing, you agree to our <Link href="/terms" className="underline hover:text-primary">Terms of Service</Link> & <Link href="/refund" className="underline hover:text-primary">Refund Policy</Link>.
+                                <br />
+                                Taxes, if applicable, are applied automatically at checkout as per local regulations.
                            </div>
                            
                            <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
                                 <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
-                                   Need this tailored beyond one customization? Schedule a call
+                                   Need additional customization? Schedule a call &rarr;
                                 </Link>
                             </Button>
                         </CardFooter>
@@ -257,4 +254,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
