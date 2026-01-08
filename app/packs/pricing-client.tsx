@@ -6,7 +6,7 @@ import type { PremiumPack } from '../lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
-import { Check, Download, Loader2, Banknote, CheckCircle, Info } from 'lucide-react';
+import { Check, Download, Loader2, Banknote, CheckCircle, Info, FileText, TrendingUp, KeyRound, Handshake } from 'lucide-react';
 import { Badge } from '../components/ui/badge';
 import { useToast } from '../hooks/use-toast';
 import { addContact } from './actions';
@@ -85,25 +85,19 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
     const isEmptyPack = totalChecklists === 0 || (totalChecklists === 1 && pack.checklists[0].title.includes("Placeholder"));
 
-    const featuresINR = isEmptyPack ? [
-        { text: "This pack is currently under development. Purchase now at a special price and receive all updates as they are released."}
-    ] : [
+    const featuresINR = [
         { text: `<strong>${totalChecklists} expert-built checklists</strong> (${totalTasks}+ tasks)`},
         { text: "<strong>Audit-ready & globally compliant</strong> framework"},
         { text: "<strong>Fully editable Excel format</strong>"},
-        { text: "<strong>Lifetime access</strong> to all future updates for this pack."},
-        { text: "<strong>1 Free Customization Included</strong>"}
+        { text: "<strong>Lifetime access</strong> to all future updates for this pack."}
     ];
 
-     const featuresUSD = isEmptyPack ? [
-        { text: "This pack is currently under development. Purchase now at a special price and receive all updates as they are released."}
-    ] : [
-        { text: "<strong>Industry-specific operational standards</strong>"},
-        { text: "<strong>Audit-ready task framework</strong> (daily / weekly / monthly)"},
-        { text: "<strong>Globally aligned best practices</strong>"},
-        { text: "<strong>Fully editable Excel files</strong> (offline)"},
-        { text: "<strong>Lifetime updates</strong>"},
-        { text: "<strong>1 Free Customization Included</strong>"}
+     const featuresUSD = [
+        { text: "Industry-specific operational standards"},
+        { text: "Audit-ready task framework (daily / weekly / monthly)"},
+        { text: "Globally aligned best practices"},
+        { text: "Fully editable Excel files (offline)"},
+        { text: "Lifetime updates"}
     ];
 
 
@@ -168,34 +162,35 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
                                       </TabsList>
                                     </Tabs>
-                                     <p className="text-xs text-center text-muted-foreground mt-2">Prices shown are final. Taxes included.</p>
                                 </div>
                              )}
                             
                             <div className="text-center space-y-2">
-                                <div className="flex justify-center">
-                                    <Badge variant="secondary">✔️ 1 Free Customization Included</Badge>
-                                </div>
+                                <Badge variant="secondary">✔️ 1 Free Customization Included</Badge>
                                 <p className="text-5xl font-extrabold text-primary-text">
                                     {currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
                                 </p>
-                                <p className="text-sm text-secondary-text">One-time payment · Instant download · No subscriptions. No hidden costs.</p>
-                                 { currency === 'USD' && <p className="text-xs text-muted-foreground">Less than the cost of one compliance review call.</p>}
+                                <p className="text-sm text-secondary-text font-semibold">One-time payment · Instant download · No subscriptions</p>
+                                { currency === 'USD' && <p className="text-xs text-muted-foreground">Less than the cost of one compliance review call.</p>}
                             </div>
                            
                             <div className='space-y-4'>
                                 <h4 className="font-semibold text-center text-secondary-text/80 text-sm uppercase">What's included</h4>
                                 <ul className="space-y-3 text-sm text-primary-text">
-                                    {(currency === 'INR' ? featuresINR : featuresUSD).map((feature, index) => (
+                                     {(currency === 'INR' ? featuresINR : featuresUSD).map((feature, index) => (
                                         <li key={index} className="flex items-start">
                                             <Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-authority-green"/>
                                             <span dangerouslySetInnerHTML={{ __html: feature.text }} />
                                         </li>
                                     ))}
+                                     <li className="flex items-start">
+                                        <Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-authority-green"/>
+                                        <span>1 Free Customization Included</span>
+                                    </li>
                                 </ul>
                             </div>
                              
-                             {currency === 'INR' ? (
+                            {currency === 'INR' ? (
                                 <ValueProposition 
                                     ourPrice={`₹${pack.priceINR}`}
                                     competitorPrice="₹50,000+"
@@ -209,9 +204,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                              )}
 
                              <div className="p-4 bg-background/50 rounded-lg border border-accent/30">
-                                <h4 className="font-bold text-accent flex items-center gap-2"><Info className="w-4 h-4"/> 1 Free Customization Included</h4>
+                                <h4 className="font-bold text-accent flex items-center gap-2"><FileText className="w-4 h-4"/> 1 Free Customization Included</h4>
                                 <p className="text-sm text-muted-foreground mt-2">
-                                   Get one free customization of this pack to match your brand, format, or internal workflow. After payment, your file downloads instantly. Our team will reach out within 1 business day to collect details and deliver your customization.
+                                   Get one free customization of this pack to match your brand, format, or internal workflow.
+                                </p>
+                                 <p className="text-sm text-muted-foreground mt-2">
+                                   Your file downloads instantly after payment. Our team will then send you a welcome email within one business day to collect your requirements and begin the free customization process.
                                 </p>
                             </div>
                         </CardContent>
@@ -220,9 +218,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 {currency === 'INR' && hasINR && pack.paymentId && (
                                     <div className="p-4 rounded-lg bg-background/50 border border-border">
                                         <div className="text-center mb-4">
-                                            <p className="font-bold text-lg text-primary-text">Get Instant Access</p>
+                                            <p className="font-bold text-lg text-primary-text">Get Instant Access — ₹{pack.priceINR}</p>
                                         </div>
-                                        <RazorpayButton paymentId={pack.paymentId} />
+                                        <RazorpayButton paymentId={pack.paymentId} packId={pack.id} />
                                          <p className="text-xs text-muted-foreground mt-2">Built from real-world audit & operations experience.</p>
                                     </div>
                                 )}
@@ -242,7 +240,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                            </div>
 
                             <div className="text-xs text-muted-foreground text-center">
-                                Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}. Instant download after payment.
+                                Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}.
                                 <br />
                                 By purchasing, you agree to our <Link href="/terms" className="underline hover:text-primary">Terms of Service</Link> & <Link href="/refund" className="underline hover:text-primary">Refund Policy</Link>.
                            </div>
@@ -259,3 +257,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+

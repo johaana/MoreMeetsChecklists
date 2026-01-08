@@ -45,6 +45,12 @@ export const FaqSection = () => (
                             Clients report <strong>fewer operational mistakes, faster onboarding, improved audit scores, and reduced compliance risk</strong>. Ultimately, preventing a single major safety or compliance failure can save more than the cost of our entire library.
                         </AccordionContent>
                     </AccordionItem>
+                     <AccordionItem value="item-10">
+                        <AccordionTrigger>Will I be charged tax?</AccordionTrigger>
+                        <AccordionContent>
+                          Taxes, if applicable, are applied automatically at checkout by our payment processor as per local regulations. Prices shown may be inclusive or exclusive of tax depending on your region.
+                        </AccordionContent>
+                    </AccordionItem>
                     <AccordionItem value="item-6">
                         <AccordionTrigger>Will our team actually use this?</AccordionTrigger>
                         <AccordionContent>
