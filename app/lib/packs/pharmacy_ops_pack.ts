@@ -23,6 +23,15 @@ export const pharmacy_ops_pack: PremiumPack = {
         { text: "Maintain a sterile and professional environment with SOPs for pharmacy hygiene and sanitation.", icon: "sparkles" },
         { text: "Secure your operations with cash handling, reconciliation, and fraud prevention protocols.", icon: "shield" }
     ],
+    globalStandards: {
+        title: "Aligned with Global & National Standards",
+        standards: [
+            { name: "NABH", description: "National Accreditation Board for Hospitals & Healthcare Providers standards for medication management and patient safety." },
+            { name: "JCI", description: "Joint Commission International standards for medication safety and infection control." },
+            { name: "WHO", description: "World Health Organization guidelines for Good Pharmacy Practice (GPP)." },
+            { name: "CDSCO", description: "Central Drugs Standard Control Organization (India) regulations for drug storage, dispensing, and record-keeping." }
+        ]
+    },
     checklists: [
         {
             title: "Prescription Dispensing & Verification",
@@ -142,5 +151,3 @@ export const pharmacy_ops_pack: PremiumPack = {
         }
     ]
 };
-
-    
