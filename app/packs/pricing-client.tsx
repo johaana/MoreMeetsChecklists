@@ -88,8 +88,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         { text: `<strong>${totalChecklists} expert-built checklists</strong> (${totalTasks}+ tasks)`},
         { text: "<strong>Audit-ready & globally compliant</strong> framework"},
         { text: "<strong>Fully editable Excel format</strong>"},
-        { text: "<strong>Lifetime access</strong> to all future updates for this pack."},
-        { text: "<strong>1 Free Customization Included</strong>"}
+        { text: "<strong>Lifetime access</strong> to all future updates for this pack."}
     ];
 
      const featuresUSD = [
@@ -97,8 +96,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         { text: "Audit-ready task framework (daily / weekly / monthly)"},
         { text: "Globally aligned best practices"},
         { text: "Fully editable Excel files (offline)"},
-        { text: "Lifetime updates"},
-        { text: "1 Free Customization Included"}
+        { text: "Lifetime updates"}
     ];
 
 
@@ -184,6 +182,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                             <span dangerouslySetInnerHTML={{ __html: feature.text }} />
                                         </li>
                                     ))}
+                                    <li className="flex items-start">
+                                        <Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-authority-green"/>
+                                        <span><strong>1 Free Customization Included</strong></span>
+                                    </li>
                                 </ul>
                             </div>
                              
@@ -203,10 +205,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                              <div className="p-4 bg-background/50 rounded-lg border border-accent/30">
                                 <h4 className="font-bold text-accent flex items-center gap-2"><Gift className="w-4 h-4"/> Included Customization Benefit</h4>
                                 <p className="text-sm text-muted-foreground mt-2">
-                                   Get one free customization of this pack to match your brand, format, or internal workflow.
-                                </p>
-                                 <p className="text-sm text-muted-foreground mt-2">
-                                   Your file downloads instantly after payment. Our team will reach out within 1 business day to collect requirements and begin customization.
+                                   Your file downloads instantly after payment. Our team will reach out within 1 business day to collect requirements and begin your free customization.
                                 </p>
                             </div>
                         </CardContent>

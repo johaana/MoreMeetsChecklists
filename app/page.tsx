@@ -3,19 +3,14 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, Check, X, Zap, ShieldCheck, BookOpen, Gem, Globe } from "lucide-react";
+import { ArrowRight, Check, Gem, Zap, CheckCircle, Globe } from "lucide-react";
 import React from 'react';
-import { Footer } from "@/components/layout/footer";
-import { SiteHeader } from "@/components/layout/header";
-import { HeroSection } from "@/components/layout/hero-section";
+import { cn } from "@/lib/utils";
 import { TestimonialsSection } from "@/components/layout/testimonials-section";
 import { FaqSection } from "@/components/layout/faq-section";
-import { philosophyCards } from "@/lib/homepage-content";
-import { ValueCard } from "@/components/ui/value-card";
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { cn } from "@/lib/utils";
+import { HeroSection } from "@/components/layout/hero-section";
+import { SiteHeader } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 
 const Section = ({ className, id, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
     <section id={id} className={cn("w-full py-20 md:py-28 lg:py-32", className)} {...props} />
@@ -56,7 +51,7 @@ const HowItWorksSection = () => (
             <div className="grid md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
                 <div className="flex flex-col items-center">
                     <div className="flex items-center justify-center w-24 h-24 rounded-full bg-card mb-4 border">
-                        <FileText className="w-12 h-12 text-accent"/>
+                        <ArrowRight className="w-12 h-12 text-accent"/>
                     </div>
                     <h3 className="text-xl font-bold font-headline text-primary-text">Step 1: Choose a Standard</h3>
                     <p className="text-secondary-text mt-2 text-sm">Industry-specific, audit-ready operational packs.</p>
@@ -105,7 +100,6 @@ const FeatureStripSection = () => (
     </Section>
 );
 
-
 const WhatItIsSection = () => (
     <Section id="what-it-is" className="bg-alternate-background">
         <div className="container px-4 md:px-6 max-w-4xl mx-auto">
@@ -125,7 +119,7 @@ const WhatItIsSection = () => (
                     </ul>
                 </div>
                  <div className="space-y-4">
-                    <h3 className="text-xl font-bold flex items-center gap-2 text-risk-accent"><X className="w-5 h-5"/>What it’s NOT</h3>
+                    <h3 className="text-xl font-bold flex items-center gap-2 text-risk-accent"><ArrowRight className="w-5 h-5 rotate-45"/>What it’s NOT</h3>
                      <ul className="space-y-3 pl-2 text-base text-muted-text">
                         <li>Not task enforcement</li>
                         <li>Not monitoring employees</li>
@@ -154,21 +148,14 @@ const HowTeamsUseItSection = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
                 {cards.map(card => (
-                    <Card key={card.title} className="flex flex-col bg-card border-border">
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-2 text-authority-green">
-                                <span className="text-2xl">🟩</span>
-                                <span>{card.title}</span>
-                            </CardTitle>
-                        </CardHeader>
-                        <CardContent className="text-sm flex-1 space-y-4 text-secondary-text">
-                             <ul className="space-y-1">
-                                {card.content.map(item => <li key={item} className="flex items-start"><span className="mr-2 mt-1">∙</span><span>{item}</span></li>)}
-                            </ul>
-                            <p className="font-semibold pt-2 text-primary-text">{card.closing}</p>
-                            <p>{card.subClosing}</p>
-                        </CardContent>
-                    </Card>
+                    <div key={card.title} className="p-6 rounded-lg border bg-card text-card-foreground">
+                        <h3 className="text-lg font-bold text-authority-green mb-3">{card.title}</h3>
+                        <ul className="space-y-1 text-sm text-muted-text">
+                            {card.content.map(item => <li key={item} className="flex items-start"><span className="mr-2 mt-1">∙</span><span>{item}</span></li>)}
+                        </ul>
+                        <p className="font-semibold pt-4 text-sm text-primary-text">{card.closing}</p>
+                        <p className="text-xs">{card.subClosing}</p>
+                    </div>
                 ))}
             </div>
         </div>
@@ -220,26 +207,25 @@ const WhoIsItForSection = () => (
 const FinalCTASection = () => (
     <Section id="final-cta" className="bg-card">
         <div className="container px-4 md:px-6 text-center max-w-2xl mx-auto space-y-6">
-            <SectionHeadline>Stop firefighting. Start building a system that runs itself.</SectionHeadline>
-            <p className="text-lg text-secondary-text">Ready to build a resilient operation?</p>
+            <SectionHeadline>Ready to build a resilient operation?</SectionHeadline>
+            <p className="text-lg text-secondary-text">Stop firefighting. Start building a system that runs itself.</p>
             <div className="flex flex-col items-center gap-3 pt-4">
                 <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
                     <Link href="/library">
                         Explore the Library <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                 </Button>
-                 <div className="pt-4 text-xs text-secondary-text opacity-70">
-                    Instant download • One-time purchase • Lifetime updates
+                 <div className="pt-4 text-xs text-muted-foreground pl-1">
+                    Includes 1 free customization per pack
                 </div>
             </div>
         </div>
     </Section>
 );
 
-
 export default function Home() {
   return (
-     <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1">
         <HeroSection />
@@ -258,5 +244,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
