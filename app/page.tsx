@@ -108,7 +108,7 @@ const WhatItIsSection = () => (
             </div>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 text-primary-text">
                 <div className="space-y-4">
-                    <h3 className="text-xl font-bold flex items-center gap-2 text-authority-green"><Check className="w-5 h-5"/>What it IS</h3>
+                    <h3 className="text-xl font-bold flex items-center gap-2 text-authority-green"><Check className="w-5 h-5"/>What It IS</h3>
                     <ul className="space-y-3 pl-2 text-base text-muted-text">
                         <li>A structured SOP framework</li>
                         <li>A library of best-practice operational standards</li>
@@ -207,8 +207,8 @@ const WhoIsItForSection = () => (
 const FinalCTASection = () => (
     <Section id="final-cta" className="bg-card">
         <div className="container px-4 md:px-6 text-center max-w-2xl mx-auto space-y-6">
-            <SectionHeadline>Ready to build a resilient operation?</SectionHeadline>
-            <p className="text-lg text-secondary-text">Stop firefighting. Start building a system that runs itself.</p>
+            <SectionHeadline>Stop firefighting. Start building.</SectionHeadline>
+            <p className="text-lg text-secondary-text">Explore the library to find the right operational standard for your business.</p>
             <div className="flex flex-col items-center gap-3 pt-4">
                 <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
                     <Link href="/library">

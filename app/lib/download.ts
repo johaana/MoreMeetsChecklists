@@ -219,7 +219,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets™.xlsx';
     
-    const writeOptions: WritingOptions = {};
-    
-    writeFile(wb, fileName, writeOptions);
+    writeFile(wb, fileName);
 }

@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -13,6 +14,7 @@ import { Input } from '../components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
 import { ValueProposition } from '../components/ui/value-proposition';
+import { ComplianceIcon } from '../components/icons';
 
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
@@ -65,7 +67,7 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
             />
             <Button size="lg" type="submit" className="w-full" disabled={loading} variant="accent">
                 {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
-                Get Your Free Pack
+                Get Your Free Toolkit
             </Button>
         </form>
     )
