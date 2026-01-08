@@ -220,19 +220,16 @@ const WhoIsItForSection = () => (
 const FinalCTASection = () => (
     <Section id="final-cta" className="bg-card">
         <div className="container px-4 md:px-6 text-center max-w-2xl mx-auto space-y-6">
-            <SectionHeadline>If work lives in people’s heads, it will fail under pressure.</SectionHeadline>
-            <p className="text-lg text-secondary-text">MoreMeets™ gives your business a system, not another tool.</p>
+            <SectionHeadline>Stop firefighting. Start building a system that runs itself.</SectionHeadline>
+            <p className="text-lg text-secondary-text">Ready to build a resilient operation?</p>
             <div className="flex flex-col items-center gap-3 pt-4">
                 <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
                     <Link href="/library">
-                        View the SOP Framework <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        Explore the Library <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                 </Button>
-                <Button variant="link" asChild className="text-xs text-secondary-text">
-                    <Link href="/library">Explore industry examples</Link>
-                </Button>
                  <div className="pt-4 text-xs text-secondary-text opacity-70">
-                    Offline • Excel-based • One-time purchase • Lifetime updates
+                    Instant download • One-time purchase • Lifetime updates
                 </div>
             </div>
         </div>
@@ -261,3 +258,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
