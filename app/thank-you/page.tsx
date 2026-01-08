@@ -22,6 +22,8 @@ import {
   AlertDialogFooter,
 } from '@/components/ui/alert-dialog';
 import { Suspense } from "react";
+import { premiumPacks } from "@/lib/premium-packs";
+import { individualChecklists } from "@/lib/individual-checklists";
 
 
 function ThankYouContent() {
@@ -34,50 +36,28 @@ function ThankYouContent() {
   const hasTriggeredDownload = React.useRef(false);
 
   React.useEffect(() => {
-    const rzpPaymentId = searchParams.get('razorpay_payment_id');
     const packId = searchParams.get('pack_id');
-    const checklistId = searchParams.get('checklist_id');
-    
-    // Check session storage first
-    if (typeof window !== 'undefined') {
-        const storedPurchase = sessionStorage.getItem('lastPurchase');
-        if (storedPurchase) {
-          try {
-            const { item, type } = JSON.parse(storedPurchase);
-            setVerifiedItem(item);
-            setItemType(type);
-            setIsLoading(false);
-            if (!hasTriggeredDownload.current) {
-                handleDownload(item as (PremiumPack | IndividualChecklist), type as 'pack' | 'individual');
-                setShowDownloadConfirm(true);
-                hasTriggeredDownload.current = true;
-            }
-            return;
-          } catch (e) {
-            sessionStorage.removeItem('lastPurchase');
-          }
-        }
-    }
+    const rzpPaymentId = searchParams.get('razorpay_payment_id');
+    // Lemon Squeezy uses `checkout_id` for successful purchases in its redirect
+    const lsSuccess = searchParams.get('checkout_id'); 
 
-    if (!rzpPaymentId) {
-      setError("Payment ID not found. Please check your email from Razorpay or contact support.");
-      setIsLoading(false);
-      return;
-    }
-
-    const verify = async () => {
+    const verify = async (paymentId: string) => {
       setIsLoading(true);
       setError(null);
       setVerifiedItem(null);
 
-      const result = await verifyRazorpayPayment(rzpPaymentId, packId, checklistId);
+      // We assume pack_id is always present for now.
+      if (!packId) {
+        setError("Product ID not found in the URL. Cannot verify purchase.");
+        setIsLoading(false);
+        return;
+      }
+      
+      const result = await verifyRazorpayPayment(paymentId, packId, null);
       
       if (result.success) {
         setVerifiedItem(result.item);
         setItemType(result.type);
-        if (typeof window !== 'undefined') {
-            sessionStorage.setItem('lastPurchase', JSON.stringify({ item: result.item, type: result.type }));
-        }
         if (!hasTriggeredDownload.current) {
             handleDownload(result.item as (PremiumPack | IndividualChecklist), result.type as 'pack' | 'individual');
             setShowDownloadConfirm(true);
@@ -89,8 +69,33 @@ function ThankYouContent() {
       
       setIsLoading(false);
     };
+    
+    // Logic for Lemon Squeezy (USD)
+    if (lsSuccess && packId) {
+        const item = premiumPacks.find(p => p.id === packId);
+        if (item) {
+            setVerifiedItem(item);
+            setItemType('pack');
+             if (!hasTriggeredDownload.current) {
+                handleDownload(item, 'pack');
+                setShowDownloadConfirm(true);
+                hasTriggeredDownload.current = true;
+            }
+        } else {
+            setError("Purchased product could not be found.");
+        }
+        setIsLoading(false);
+    }
+    // Logic for Razorpay (INR)
+    else if (rzpPaymentId) {
+        verify(rzpPaymentId);
+    }
+    // No payment ID found
+    else {
+        setError("Payment information not found in URL. Please check your email for a download link or contact support.");
+        setIsLoading(false);
+    }
 
-    verify();
   }, [searchParams]);
 
   const renderContent = () => {
@@ -102,7 +107,7 @@ function ThankYouContent() {
             Verifying your payment...
           </h1>
           <p className="max-w-[600px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-            Please wait while we confirm your transaction.
+            Please wait while we confirm your transaction. This won't take long.
           </p>
         </div>
       );
@@ -160,7 +165,7 @@ function ThankYouContent() {
       );
     }
 
-    return null; // Should not be reached
+    return null;
   }
 
   return (
