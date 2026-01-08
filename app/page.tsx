@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, Check, X, Zap, ShieldCheck, BookOpen, Gem } from "lucide-react";
+import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, Check, X, Zap, ShieldCheck, BookOpen, Gem, Globe } from "lucide-react";
 import React from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
