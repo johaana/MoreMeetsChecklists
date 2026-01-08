@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -170,7 +169,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     {currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
                                 </p>
                                 <p className="text-sm text-secondary-text font-semibold">One-time payment · Instant download · No subscriptions</p>
-                                { currency === 'USD' && <p className="text-xs text-muted-foreground">Less than the cost of one compliance review call.</p>}
                             </div>
                            
                             <div className='space-y-4'>
@@ -189,18 +187,16 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </ul>
                             </div>
                              
-                            {currency === 'INR' ? (
-                                <ValueProposition 
-                                    ourPrice={`₹${pack.priceINR}`}
-                                    competitorPrice="₹50,000+"
-                                    valueStatement="For a comparable enterprise compliance toolkit."
-                                />
-                             ) : (
-                                <div className="text-center p-4 border border-dashed rounded-lg bg-secondary/30">
-                                    <h4 className="font-semibold text-sm text-secondary-text/80">BUILT FOR REGULATED, PEOPLE-DEPENDENT OPERATIONS</h4>
-                                    <p className="text-xs text-muted-text mt-1">Aligned with how global compliance frameworks actually work: ISO · OSHA · WHO · NABH · Local regulators. Not a certification. A system that helps you meet them.</p>
-                                </div>
-                             )}
+                             <ValueProposition 
+                                ourPrice={currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD || 'N/A'}`}
+                                competitorPrice={currency === 'INR' ? "₹50,000+" : `$${pack.competitorPriceUSD || 599}+`}
+                                valueStatement="For a comparable enterprise compliance toolkit."
+                            />
+                            
+                            <div className="text-center p-4 border border-dashed rounded-lg bg-secondary/30">
+                                <h4 className="font-semibold text-sm text-secondary-text/80">BUILT FOR REGULATED, PEOPLE-DEPENDENT OPERATIONS</h4>
+                                <p className="text-xs text-muted-text mt-1">Aligned with how global compliance frameworks actually work: ISO · OSHA · WHO · NABH · Local regulators. Not a certification. A system that helps you meet them.</p>
+                            </div>
 
                              <div className="p-4 bg-background/50 rounded-lg border border-accent/30">
                                 <h4 className="font-bold text-accent flex items-center gap-2"><Gift className="w-4 h-4"/> Included Customization Benefit</h4>
