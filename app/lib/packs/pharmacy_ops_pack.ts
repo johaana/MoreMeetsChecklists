@@ -103,6 +103,42 @@ export const pharmacy_ops_pack: PremiumPack = {
                 { id: "PHARM-COUNSEL-09", description: "Document that counseling was provided.", priority: "High", riskLevel: "Medium", consequence: "A professional and legal record of care provided.", proof: "Entry in Pharmacy System" },
                 { id: "PHARM-COUNSEL-10", description: "Provide contact information for any follow-up questions.", priority: "High", riskLevel: "Low", consequence: "Shows ongoing support and care for the patient.", proof: "Pharmacy Contact Card" }
             ]
+        },
+        {
+            title: "Pharmacy Hygiene & Sanitation",
+            department: "Housekeeping",
+            frequency: "Daily",
+            role: "Pharmacist/Technician",
+            summary: "Ensures a clean and sterile environment to prevent contamination of medications.",
+            icon: "sparkles",
+            tasks: [
+                { id: "PHARM-HYGIENE-01", description: "Clean and sanitize all dispensing counters and work surfaces before starting work and between tasks.", priority: "High", riskLevel: "High", consequence: "Cross-contamination of medications.", proof: "Cleaning Log" },
+                { id: "PHARM-HYGIENE-02", description: "Sweep and mop floors daily.", priority: "High", riskLevel: "Medium", consequence: "Dust and dirt can contaminate sterile areas.", proof: "Housekeeping Log" },
+                { id: "PHARM-HYGIENE-03", description: "Dispose of all waste, including expired medications and packaging, according to regulations.", priority: "High", riskLevel: "High", consequence: "Environmental and legal violations.", proof: "Waste Disposal Log" },
+                { id: "PHARM-HYGIENE-04", description: "Ensure handwashing facilities are always stocked and accessible.", priority: "High", riskLevel: "High", consequence: "Poor staff hygiene leading to contamination.", proof: "Restroom/Sink Check Log" },
+                { id: "PHARM-HYGIENE-05", description: "Maintain a pest control program and check for any signs of pests weekly.", priority: "High", riskLevel: "High", consequence: "Pests can damage and contaminate stock.", proof: "Pest Control Log" },
+                { id: "PHARM-HYGIENE-06", description: "Clean shelves and storage areas weekly.", priority: "Medium", riskLevel: "Low", consequence: "Dust accumulation on medication packaging.", proof: "Cleaning Schedule" },
+                { id: "PHARM-HYGIENE-07", description: "Wipe down computers, phones, and other high-touch surfaces daily.", priority: "Medium", riskLevel: "Low", consequence: "Reduces spread of germs among staff.", proof: "Surface Cleaning Log" },
+                { id: "PHARM-HYGIENE-08", description: "Ensure proper ventilation in the pharmacy.", priority: "Medium", riskLevel: "Medium", consequence: "Poor air quality can affect staff health and drug stability.", proof: "Ventilation System Check" }
+            ]
+        },
+        {
+            title: "Cash Handling & Reconciliation",
+            department: "Finance/Front-desk",
+            frequency: "Daily",
+            role: "Head Cashier/Pharmacist",
+            summary: "Ensures all financial transactions are handled securely and accurately.",
+            icon: "shield",
+            tasks: [
+                { id: "PHARM-CASH-01", description: "Reconcile cash drawer against POS report at the end of each shift.", priority: "High", riskLevel: "High", consequence: "Unidentified cash shortages or overages, potential for theft.", proof: "Shift Reconciliation Report" },
+                { id: "PHARM-CASH-02", description: "Manager/Pharmacist-in-charge to verify and sign off on all daily cash reports.", priority: "High", riskLevel: "High", consequence: "Lack of oversight on cash handling.", proof: "Signed Daily Sales Report" },
+                { id: "PHARM-CASH-03", description: "Deposit daily cash collections to the bank.", priority: "High", riskLevel: "High", consequence: "Holding large amounts of cash is a security risk.", proof: "Bank Deposit Slip" },
+                { id: "PHARM-CASH-04", description: "Require manager approval for all refunds and voided transactions.", priority: "High", riskLevel: "High", consequence: "Prevents fraudulent refunds by staff.", proof: "Void/Refund Log" },
+                { id: "PHARM-CASH-05", description: "Check payment terminals for any signs of tampering daily.", priority: "High", riskLevel: "High", consequence: "Protects customers from credit card skimming.", proof: "Device Inspection Log" },
+                { id: "PHARM-CASH-06", description: "Reconcile card, UPI, and other digital payments daily.", priority: "High", riskLevel: "High", consequence: "Ensures all digital transactions have been successfully settled.", proof: "Settlement Reports" },
+                { id: "PHARM-CASH-07", description: "Ensure compliance with PCI DSS standards for card payments.", priority: "High", riskLevel: "High", consequence: "Heavy fines for non-compliance in case of a data breach.", proof: "PCI Compliance Certificate/SAQ" },
+                { id: "PHARM-CASH-08", description: "Train all cash-handling staff on security procedures.", priority: "High", riskLevel: "High", consequence: "Untrained staff are more likely to make errors or fall for scams.", proof: "Training Records" }
+            ]
         }
     ]
 };
