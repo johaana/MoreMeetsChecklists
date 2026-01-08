@@ -1,39 +1,81 @@
 
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { Button } from './button';
 import { cn } from '@/lib/utils';
-import { buttonVariants } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 
 interface RazorpayButtonProps {
     paymentId: string;
     className?: string;
+    packId: string;
 }
 
-export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, className }) => {
-    const formRef = useRef<HTMLFormElement>(null);
-    const scriptLoaded = useRef(false);
+declare global {
+    interface Window {
+        Razorpay: any;
+    }
+}
 
-    useEffect(() => {
-        if (formRef.current?.querySelector('script')) {
+export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, className, packId }) => {
+    const { toast } = useToast();
+    const [isScriptLoaded, setIsScriptLoaded] = React.useState(false);
+
+    React.useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+        script.async = true;
+        script.onload = () => setIsScriptLoaded(true);
+        script.onerror = () => {
+             toast({
+                variant: "destructive",
+                title: "Payment Error",
+                description: "Could not load the payment gateway. Please check your network or try again.",
+            });
+        }
+        document.body.appendChild(script);
+
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, [toast]);
+
+
+    const displayRazorpay = () => {
+        if (!isScriptLoaded) {
+             toast({
+                variant: "destructive",
+                title: "Payment Gateway Not Ready",
+                description: "Please wait a moment for the payment gateway to load.",
+            });
             return;
         }
+        
+         const options = {
+            key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, 
+            "payment_button_id": paymentId,
+            "prefill": {
+                "name": "",
+                "email": "",
+                "contact": ""
+            },
+            "callback_url": `${window.location.origin}/thank-you?pack_id=${packId}`,
+            "redirect": true,
+        };
 
-        const script = document.createElement('script');
-        script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
-        script.async = true;
-        script.dataset.payment_button_id = paymentId;
+        const rzp = new window.Razorpay(options);
+        rzp.open();
+    };
 
-        const currentForm = formRef.current;
-        if (currentForm) {
-            currentForm.appendChild(script);
-        }
-
-    }, [paymentId]);
-
-    // This component now only renders the form which Razorpay's script will target.
-    // All styling and surrounding text is handled by the parent component.
     return (
-        <form ref={formRef} className={cn("w-full", className)} />
+        <Button 
+            onClick={displayRazorpay} 
+            className={cn("w-full font-bold", className)} 
+            size="lg"
+            variant="accent"
+        >
+            Get Instant Access
+        </Button>
     );
 };

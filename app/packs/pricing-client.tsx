@@ -14,6 +14,7 @@ import { Input } from '../components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
 import { ComplianceIcon } from '../components/icons';
+import { ValueProposition } from '../components/ui/value-proposition';
 
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
@@ -72,25 +73,6 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     )
 }
 
-const ValueProposition = ({ ourPrice, competitorPrice, valueStatement }: { ourPrice: string, competitorPrice: string, valueStatement: string }) => (
-    <div className="rounded-lg bg-secondary/30 p-4 text-center border-2 border-dashed border-primary/20">
-        <h4 className="text-sm font-semibold mb-2">THE MOREMEETS ADVANTAGE</h4>
-        <div className="grid grid-cols-2 gap-4 items-center">
-            <div className="flex flex-col items-center p-2 rounded-md bg-background/50">
-                <p className="text-xs text-muted-foreground">Typical Enterprise Solution</p>
-                <p className="text-lg font-bold text-destructive line-through">{competitorPrice}</p>
-                 <p className="text-xs text-muted-foreground">Long setup · Contracts · Consultants</p>
-            </div>
-            <div className="flex flex-col items-center p-2 rounded-md bg-green-100 dark:bg-green-900/50">
-                 <p className="text-xs text-green-800 dark:text-green-200">MoreMeets</p>
-                <p className="text-lg font-bold text-green-700 dark:text-green-300">{ourPrice}</p>
-                 <p className="text-xs text-muted-foreground">Ready today · Practical · Proven</p>
-            </div>
-        </div>
-         <p className="text-xs text-muted-foreground mt-2">{valueStatement}</p>
-    </div>
-);
-
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
@@ -108,9 +90,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     ] : [
         { text: `<strong>${totalChecklists} expert-built checklists</strong> (${totalTasks}+ tasks)`},
         { text: "<strong>Audit-ready & globally compliant</strong> framework"},
-        { text: "<strong>Fully editable Excel format</strong> (offline)"},
+        { text: "<strong>Fully editable Excel format</strong>"},
         { text: "<strong>Lifetime access</strong> to all future updates for this pack."},
-        { text: "<strong>Included customization credit</strong>"}
+        { text: "<strong>1 Free Customization Included</strong>"}
     ];
 
      const featuresUSD = isEmptyPack ? [
@@ -121,7 +103,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         { text: "<strong>Globally aligned best practices</strong>"},
         { text: "<strong>Fully editable Excel files</strong> (offline)"},
         { text: "<strong>Lifetime updates</strong>"},
-        { text: "<strong>Included customization credit</strong>"}
+        { text: "<strong>1 Free Customization Included</strong>"}
     ];
 
 
@@ -168,7 +150,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <div className="flex justify-center">
                     <Card className="flex flex-col max-w-2xl w-full border-2 border-border/50 shadow-xl overflow-hidden rounded-2xl">
                         <CardHeader className="p-6 bg-secondary/30 text-center">
-                            <div className="flex justify-center items-center gap-4">
+                             <div className="flex justify-center items-center gap-4">
                                 <Banknote className="w-10 h-10 text-accent" />
                                 <div>
                                     <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary-text text-left">
@@ -186,22 +168,23 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
                                       </TabsList>
                                     </Tabs>
+                                     <p className="text-xs text-center text-muted-foreground mt-2">Prices shown are final. Taxes included.</p>
                                 </div>
                              )}
                             
                             <div className="text-center space-y-2">
                                 <div className="flex justify-center">
-                                    <Badge variant="secondary">✔️ Customization Included</Badge>
+                                    <Badge variant="secondary">✔️ 1 Free Customization Included</Badge>
                                 </div>
                                 <p className="text-5xl font-extrabold text-primary-text">
                                     {currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
                                 </p>
-                                <p className="text-sm text-secondary-text">One-time payment · Instant download</p>
-                                <p className="text-xs text-secondary-text">No subscriptions. No hidden costs.</p>
+                                <p className="text-sm text-secondary-text">One-time payment · Instant download · No subscriptions. No hidden costs.</p>
+                                 { currency === 'USD' && <p className="text-xs text-muted-foreground">Less than the cost of one compliance review call.</p>}
                             </div>
                            
                             <div className='space-y-4'>
-                                <h4 className="font-semibold text-center text-secondary-text/80 text-sm">WHAT'S INCLUDED</h4>
+                                <h4 className="font-semibold text-center text-secondary-text/80 text-sm uppercase">What's included</h4>
                                 <ul className="space-y-3 text-sm text-primary-text">
                                     {(currency === 'INR' ? featuresINR : featuresUSD).map((feature, index) => (
                                         <li key={index} className="flex items-start">
@@ -220,15 +203,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 />
                              ) : (
                                 <div className="text-center p-4 border border-dashed rounded-lg bg-secondary/30">
-                                    <h4 className="font-semibold text-sm text-secondary-text/80">BUILT FOR GLOBAL COMPLIANCE</h4>
-                                    <p className="text-xs text-muted-text mt-1">Aligned with how global frameworks work: ISO, OSHA, WHO, NABH, & local regulators. Not a certification, but a system to help you meet them.</p>
+                                    <h4 className="font-semibold text-sm text-secondary-text/80">BUILT FOR REGULATED, PEOPLE-DEPENDENT OPERATIONS</h4>
+                                    <p className="text-xs text-muted-text mt-1">Aligned with how global compliance frameworks actually work: ISO · OSHA · WHO · NABH · Local regulators. Not a certification. A system that helps you meet them.</p>
                                 </div>
                              )}
 
                              <div className="p-4 bg-background/50 rounded-lg border border-accent/30">
-                                <h4 className="font-bold text-accent flex items-center gap-2"><Info className="w-4 h-4"/> Included Customization Credit</h4>
+                                <h4 className="font-bold text-accent flex items-center gap-2"><Info className="w-4 h-4"/> 1 Free Customization Included</h4>
                                 <p className="text-sm text-muted-foreground mt-2">
-                                   Get one free customization of this pack to match your brand, format, or internal workflow. After payment, your file downloads instantly. Our team will then send you a welcome email within one business day to collect your requirements and begin the free customization process.
+                                   Get one free customization of this pack to match your brand, format, or internal workflow. After payment, your file downloads instantly. Our team will reach out within 1 business day to collect details and deliver your customization.
                                 </p>
                             </div>
                         </CardContent>
@@ -238,28 +221,30 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     <div className="p-4 rounded-lg bg-background/50 border border-border">
                                         <div className="text-center mb-4">
                                             <p className="font-bold text-lg text-primary-text">Get Instant Access</p>
-                                            <p className="text-xs text-muted-foreground">Secure checkout · UPI, Cards, NetBanking</p>
                                         </div>
-                                        <RazorpayButton paymentId={pack.paymentId} className="w-full" />
+                                        <RazorpayButton paymentId={pack.paymentId} />
+                                         <p className="text-xs text-muted-foreground mt-2">Built from real-world audit & operations experience.</p>
                                     </div>
                                 )}
                                 {currency === 'USD' && hasUSD && pack.lemonSqueezyUrl && (
                                      <div className="p-4 rounded-lg bg-background/50 border border-border w-full">
                                          <div className="text-center mb-4">
                                             <p className="font-bold text-lg text-primary-text">Get Instant Access</p>
-                                            <p className="text-xs text-muted-foreground">Secure checkout · Cards · International payments</p>
                                         </div>
                                         <Button asChild size="lg" className="w-full font-bold" variant="accent">
                                             <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
-                                                Buy Now — ${pack.priceUSD}
+                                                Get Instant Access — ${pack.priceUSD}
                                             </Link>
                                         </Button>
+                                        <p className="text-xs text-muted-foreground mt-2">Built from real-world audit & operations experience.</p>
                                      </div>
                                 )}
                            </div>
 
                             <div className="text-xs text-muted-foreground text-center">
-                                By purchasing, you agree to our <Link href="/terms" className="underline hover:text-primary">Terms of Service</Link> & <Link href="/refund" className="underline hover:text-primary">Refund Policy</Link>. Instant download after payment.
+                                Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}. Instant download after payment.
+                                <br />
+                                By purchasing, you agree to our <Link href="/terms" className="underline hover:text-primary">Terms of Service</Link> & <Link href="/refund" className="underline hover:text-primary">Refund Policy</Link>.
                            </div>
                            
                            <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
