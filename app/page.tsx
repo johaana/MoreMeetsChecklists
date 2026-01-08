@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Gem, Zap, CheckCircle, Globe } from "lucide-react";
+import { ArrowRight, Check, Gem, Zap, CheckCircle, Globe, Download } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
 import { TestimonialsSection } from "@/components/layout/testimonials-section";
@@ -51,23 +51,23 @@ const HowItWorksSection = () => (
             <div className="grid md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
                 <div className="flex flex-col items-center">
                     <div className="flex items-center justify-center w-24 h-24 rounded-full bg-card mb-4 border">
-                        <ArrowRight className="w-12 h-12 text-accent"/>
+                        <span className="text-5xl font-bold text-accent">1</span>
                     </div>
-                    <h3 className="text-xl font-bold font-headline text-primary-text">Step 1: Choose a Standard</h3>
+                    <h3 className="text-xl font-bold font-headline text-primary-text">Choose a Standard</h3>
                     <p className="text-secondary-text mt-2 text-sm">Industry-specific, audit-ready operational packs.</p>
                 </div>
                  <div className="flex flex-col items-center">
                     <div className="flex items-center justify-center w-24 h-24 rounded-full bg-card mb-4 border">
-                        <Zap className="w-12 h-12 text-accent"/>
+                        <span className="text-5xl font-bold text-accent">2</span>
                     </div>
-                    <h3 className="text-xl font-bold font-headline text-primary-text">Step 2: Instant Download</h3>
+                    <h3 className="text-xl font-bold font-headline text-primary-text">Instant Download</h3>
                     <p className="text-secondary-text mt-2 text-sm">Get editable files immediately after purchase.</p>
                 </div>
                  <div className="flex flex-col items-center">
                     <div className="flex items-center justify-center w-24 h-24 rounded-full bg-card mb-4 border">
-                        <Gem className="w-12 h-12 text-accent"/>
+                        <span className="text-5xl font-bold text-accent">3</span>
                     </div>
-                    <h3 className="text-xl font-bold font-headline text-primary-text">Step 3: We Customize It</h3>
+                    <h3 className="text-xl font-bold font-headline text-primary-text">We Customize It</h3>
                     <p className="text-secondary-text mt-2 text-sm">One free customization to match your brand, format, or internal workflow.</p>
                 </div>
             </div>
@@ -80,7 +80,7 @@ const FeatureStripSection = () => (
         <div className="container px-4 md:px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-5xl mx-auto">
                 <div className="flex flex-col items-center gap-2">
-                    <Zap className="w-8 h-8 text-accent"/>
+                    <Download className="w-8 h-8 text-accent"/>
                     <p className="font-semibold text-primary-text text-sm">Instant download</p>
                 </div>
                 <div className="flex flex-col items-center gap-2">
