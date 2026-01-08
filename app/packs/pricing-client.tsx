@@ -6,12 +6,11 @@ import type { PremiumPack } from '../lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
-import { Check, Download, Loader2, Banknote, FileText, CheckCircle, Package } from 'lucide-react';
+import { Check, Download, Loader2, Banknote, CheckCircle, Info } from 'lucide-react';
 import { Badge } from '../components/ui/badge';
 import { useToast } from '../hooks/use-toast';
 import { addContact } from './actions';
 import { Input } from '../components/ui/input';
-import { ValueProposition } from '../components/ui/value-proposition';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
 import { ComplianceIcon } from '../components/icons';
@@ -73,6 +72,26 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     )
 }
 
+const ValueProposition = ({ ourPrice, competitorPrice, valueStatement }: { ourPrice: string, competitorPrice: string, valueStatement: string }) => (
+    <div className="rounded-lg bg-secondary/30 p-4 text-center border-2 border-dashed border-primary/20">
+        <h4 className="text-sm font-semibold mb-2">THE MOREMEETS ADVANTAGE</h4>
+        <div className="grid grid-cols-2 gap-4 items-center">
+            <div className="flex flex-col items-center p-2 rounded-md bg-background/50">
+                <p className="text-xs text-muted-foreground">Typical Enterprise Solution</p>
+                <p className="text-lg font-bold text-destructive line-through">{competitorPrice}</p>
+                 <p className="text-xs text-muted-foreground">Long setup · Contracts · Consultants</p>
+            </div>
+            <div className="flex flex-col items-center p-2 rounded-md bg-green-100 dark:bg-green-900/50">
+                 <p className="text-xs text-green-800 dark:text-green-200">MoreMeets</p>
+                <p className="text-lg font-bold text-green-700 dark:text-green-300">{ourPrice}</p>
+                 <p className="text-xs text-muted-foreground">Ready today · Practical · Proven</p>
+            </div>
+        </div>
+         <p className="text-xs text-muted-foreground mt-2">{valueStatement}</p>
+    </div>
+);
+
+
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
     const hasINR = !!(pack.paymentId && pack.paymentId.length > 0 && pack.priceINR >= 0);
@@ -84,13 +103,25 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
     const isEmptyPack = totalChecklists === 0 || (totalChecklists === 1 && pack.checklists[0].title.includes("Placeholder"));
 
-    const features = isEmptyPack ? [
+    const featuresINR = isEmptyPack ? [
         { text: "This pack is currently under development. Purchase now at a special price and receive all updates as they are released."}
     ] : [
-        { text: `<strong>${totalChecklists} Expert-Built Checklists</strong> (${totalTasks}+ total tasks)`},
-        { text: "<strong>Audit-Ready & Globally Compliant</strong> framework."},
-        { text: "<strong>Instant Download</strong> in fully editable Excel format."},
-        { text: "<strong>Lifetime Access</strong> to all future updates for this pack."}
+        { text: `<strong>${totalChecklists} expert-built checklists</strong> (${totalTasks}+ tasks)`},
+        { text: "<strong>Audit-ready & globally compliant</strong> framework"},
+        { text: "<strong>Fully editable Excel format</strong> (offline)"},
+        { text: "<strong>Lifetime access</strong> to all future updates for this pack."},
+        { text: "<strong>Included customization credit</strong>"}
+    ];
+
+     const featuresUSD = isEmptyPack ? [
+        { text: "This pack is currently under development. Purchase now at a special price and receive all updates as they are released."}
+    ] : [
+        { text: "<strong>Industry-specific operational standards</strong>"},
+        { text: "<strong>Audit-ready task framework</strong> (daily / weekly / monthly)"},
+        { text: "<strong>Globally aligned best practices</strong>"},
+        { text: "<strong>Fully editable Excel files</strong> (offline)"},
+        { text: "<strong>Lifetime updates</strong>"},
+        { text: "<strong>Included customization credit</strong>"}
     ];
 
 
@@ -135,22 +166,18 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         <section className="w-full py-12 md:py-16" id="pricing">
             <div className="container px-2 md:px-6">
                 <div className="flex justify-center">
-                    <Card className="flex flex-col max-w-2xl w-full border-2 border-accent shadow-2xl overflow-hidden rounded-2xl">
+                    <Card className="flex flex-col max-w-2xl w-full border-2 border-border/50 shadow-xl overflow-hidden rounded-2xl">
                         <CardHeader className="p-6 bg-secondary/30 text-center">
-                             <div className="flex justify-center items-center gap-4">
+                            <div className="flex justify-center items-center gap-4">
                                 <Banknote className="w-10 h-10 text-accent" />
                                 <div>
-                                    <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary text-left">
+                                    <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary-text text-left">
                                         Global Compliance Pack
                                     </h3>
-                                    {pack.badgeText && (
-                                        <Badge variant="accent" className="mt-1">{pack.badgeText}</Badge>
-                                    )}
                                 </div>
                             </div>
-                             <p className="text-muted-foreground pt-2 text-sm md:text-base">{pack.description}</p>
                         </CardHeader>
-                        <CardContent className="p-6 flex-1 flex flex-col gap-6">
+                        <CardContent className="p-6 flex-1 flex flex-col gap-8">
                              {hasINR && hasUSD && (
                                 <div className="flex justify-center">
                                     <Tabs defaultValue={currency} onValueChange={setCurrency} className="w-full max-w-xs">
@@ -161,84 +188,83 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </Tabs>
                                 </div>
                              )}
-
+                            
                             <div className="text-center space-y-2">
-                                <p className="text-5xl font-extrabold">
+                                <div className="flex justify-center">
+                                    <Badge variant="secondary">✔️ Customization Included</Badge>
+                                </div>
+                                <p className="text-5xl font-extrabold text-primary-text">
                                     {currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
                                 </p>
-                                <p className="text-sm text-muted-foreground">One-time payment</p>
-                                <div className="bg-accent/20 text-amber-200 text-sm font-semibold px-3 py-1 rounded-md inline-block">
-                                    🎁 New Year Offer: Includes 1 free customization
-                                </div>
-                                {currency === 'USD' && <p className="text-xs text-center text-muted-foreground">(inclusive of all taxes)</p>}
+                                <p className="text-sm text-secondary-text">One-time payment · Instant download</p>
+                                <p className="text-xs text-secondary-text">No subscriptions. No hidden costs.</p>
                             </div>
                            
                             <div className='space-y-4'>
-                                <h4 className="font-semibold text-center text-primary/90">WHAT'S INCLUDED:</h4>
-                                <ul className="space-y-3 text-sm text-foreground/90">
-                                    {features.map((feature, index) => (
+                                <h4 className="font-semibold text-center text-secondary-text/80 text-sm">WHAT'S INCLUDED</h4>
+                                <ul className="space-y-3 text-sm text-primary-text">
+                                    {(currency === 'INR' ? featuresINR : featuresUSD).map((feature, index) => (
                                         <li key={index} className="flex items-start">
-                                            <CheckCircle className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-green-500"/>
+                                            <Check className="h-5 w-5 mr-2 mt-0.5 shrink-0 text-authority-green"/>
                                             <span dangerouslySetInnerHTML={{ __html: feature.text }} />
                                         </li>
                                     ))}
                                 </ul>
                             </div>
-                             {pack.globalStandards && (
-                                <div className="text-center">
-                                    <h4 className="font-semibold text-center text-sm mb-3 text-primary/90">ALIGNED WITH:</h4>
-                                    <div className="flex justify-center flex-wrap gap-x-4 gap-y-2">
-                                        {pack.globalStandards.standards.map(standard => (
-                                            <div key={standard.name} className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
-                                                <ComplianceIcon standard={standard.name} />
-                                                <span>{standard.name}</span>
-                                            </div>
-                                        ))}
-                                    </div>
+                             
+                             {currency === 'INR' ? (
+                                <ValueProposition 
+                                    ourPrice={`₹${pack.priceINR}`}
+                                    competitorPrice="₹50,000+"
+                                    valueStatement="For a comparable enterprise compliance toolkit."
+                                />
+                             ) : (
+                                <div className="text-center p-4 border border-dashed rounded-lg bg-secondary/30">
+                                    <h4 className="font-semibold text-sm text-secondary-text/80">BUILT FOR GLOBAL COMPLIANCE</h4>
+                                    <p className="text-xs text-muted-text mt-1">Aligned with how global frameworks work: ISO, OSHA, WHO, NABH, & local regulators. Not a certification, but a system to help you meet them.</p>
                                 </div>
-                            )}
+                             )}
 
-                             <ValueProposition 
-                                ourPrice={currency === 'INR' ? `₹${pack.priceINR}` : `$${pack.priceUSD || 'N/A'}`}
-                                competitorPrice={currency === 'INR' ? "₹50,000+" : `$${pack.competitorPriceUSD || 599}+`}
-                                valueStatement="For a comparable enterprise compliance toolkit."
-                            />
                              <div className="p-4 bg-background/50 rounded-lg border border-accent/30">
-                                <h4 className="font-bold text-accent flex items-center gap-2">🎉 New Year Launch Bonus</h4>
+                                <h4 className="font-bold text-accent flex items-center gap-2"><Info className="w-4 h-4"/> Included Customization Credit</h4>
                                 <p className="text-sm text-muted-foreground mt-2">
-                                    Get one free customization of this pack to match your brand, format, or internal workflow.
-                                </p>
-                                <p className="text-sm text-muted-foreground mt-2">
-                                   After payment, your file downloads instantly. Our team will then send you a welcome email within one business day to collect your requirements and begin the free customization process.
+                                   Get one free customization of this pack to match your brand, format, or internal workflow. After payment, your file downloads instantly. Our team will then send you a welcome email within one business day to collect your requirements and begin the free customization process.
                                 </p>
                             </div>
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
-                            <div className="w-full max-w-sm text-center">
-                                {currency === 'INR' ? (
+                           <div className="w-full max-w-sm text-center">
+                                {currency === 'INR' && hasINR && pack.paymentId && (
                                     <div className="p-4 rounded-lg bg-background/50 border border-border">
                                         <div className="text-center mb-4">
                                             <p className="font-bold text-lg text-primary-text">Get Instant Access</p>
-                                            <p className="text-xs text-muted-foreground">Secure checkout • UPI, Cards, NetBanking</p>
+                                            <p className="text-xs text-muted-foreground">Secure checkout · UPI, Cards, NetBanking</p>
                                         </div>
-                                        <RazorpayButton paymentId={pack.paymentId} />
+                                        <RazorpayButton paymentId={pack.paymentId} className="w-full" />
                                     </div>
-                                ) : (
-                                    <Button asChild size="lg" className="w-full" variant="accent">
-                                        <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
-                                            Buy Now — Instant Download
-                                        </Link>
-                                    </Button>
                                 )}
-                            </div>
+                                {currency === 'USD' && hasUSD && pack.lemonSqueezyUrl && (
+                                     <div className="p-4 rounded-lg bg-background/50 border border-border w-full">
+                                         <div className="text-center mb-4">
+                                            <p className="font-bold text-lg text-primary-text">Get Instant Access</p>
+                                            <p className="text-xs text-muted-foreground">Secure checkout · Cards · International payments</p>
+                                        </div>
+                                        <Button asChild size="lg" className="w-full font-bold" variant="accent">
+                                            <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
+                                                Buy Now — ${pack.priceUSD}
+                                            </Link>
+                                        </Button>
+                                     </div>
+                                )}
+                           </div>
 
-                            <div className="text-xs text-muted-foreground mt-2 text-center">
-                                By clicking “Buy Now”, you agree to our <Link href="/terms" className="underline hover:text-primary">Terms of Service</Link> & <Link href="/refund" className="underline hover:text-primary">Refund Policy</Link>. Instant download after payment.
+                            <div className="text-xs text-muted-foreground text-center">
+                                By purchasing, you agree to our <Link href="/terms" className="underline hover:text-primary">Terms of Service</Link> & <Link href="/refund" className="underline hover:text-primary">Refund Policy</Link>. Instant download after payment.
                            </div>
                            
                            <Button asChild variant="link" size="sm" className="w-full text-xs mt-2">
                                 <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
-                                    Need this pack tailored to your brand's specific needs? Schedule a call.
+                                   Need this tailored beyond one customization? Schedule a call
                                 </Link>
                             </Button>
                         </CardFooter>
@@ -248,4 +274,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-

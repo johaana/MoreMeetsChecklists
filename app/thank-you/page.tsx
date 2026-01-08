@@ -134,16 +134,16 @@ function ThankYouContent() {
     if (verifiedItem) {
       return (
          <div className="flex flex-col items-center justify-center space-y-6 text-center">
-            <CheckCircle className="h-20 w-20 text-green-500" />
+            <CheckCircle className="h-20 w-20 text-authority-green" />
             <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                     Thank You! Your download has started.
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground text-base md:text-lg/relaxed mx-auto">
-                    Your file for <strong>{verifiedItem.title}</strong> is being downloaded. Please check your browser's download folder. If the download doesn't start automatically, use the button below.
+                    Your file for <strong>{verifiedItem.title}</strong> is being downloaded. Please check your browser's download folder.
                 </p>
-                 <p className="text-sm text-muted-foreground pt-2">
-                    If you face any difficulty downloading your pack, please email us at <a href="mailto:more@moremeets.com" className="font-semibold text-primary underline">more@moremeets.com</a> for immediate assistance.
+                 <p className="text-sm text-muted-foreground pt-4">
+                    If you face any difficulty, please email us at <a href="mailto:more@moremeets.com" className="font-semibold text-primary underline">more@moremeets.com</a> for immediate assistance. For customization requests, our team will be in touch within one business day.
                 </p>
             </div>
             <Button size="lg" className="group mt-4 text-lg py-7 px-10" onClick={() => handleDownload(verifiedItem, itemType!)}>
