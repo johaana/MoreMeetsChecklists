@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, Check, X } from "lucide-react";
+import { ArrowRight, Frown, Smile, CheckCircle, BrainCircuit, FileText, Users, Check, X, Zap, ShieldCheck, BookOpen, Gem } from "lucide-react";
 import React from 'react';
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
@@ -47,6 +47,65 @@ const CoreProblemSection = () => (
     </Section>
 );
 
+const HowItWorksSection = () => (
+    <Section id="how-it-works" className="bg-alternate-background">
+        <div className="container px-4 md:px-6">
+            <div className="text-center mb-12 max-w-2xl mx-auto">
+                <SectionHeadline>How it works</SectionHeadline>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
+                <div className="flex flex-col items-center">
+                    <div className="flex items-center justify-center w-24 h-24 rounded-full bg-card mb-4 border">
+                        <FileText className="w-12 h-12 text-accent"/>
+                    </div>
+                    <h3 className="text-xl font-bold font-headline text-primary-text">Step 1: Choose a Standard</h3>
+                    <p className="text-secondary-text mt-2 text-sm">Industry-specific, audit-ready operational packs.</p>
+                </div>
+                 <div className="flex flex-col items-center">
+                    <div className="flex items-center justify-center w-24 h-24 rounded-full bg-card mb-4 border">
+                        <Zap className="w-12 h-12 text-accent"/>
+                    </div>
+                    <h3 className="text-xl font-bold font-headline text-primary-text">Step 2: Instant Download</h3>
+                    <p className="text-secondary-text mt-2 text-sm">Get editable files immediately after purchase.</p>
+                </div>
+                 <div className="flex flex-col items-center">
+                    <div className="flex items-center justify-center w-24 h-24 rounded-full bg-card mb-4 border">
+                        <Gem className="w-12 h-12 text-accent"/>
+                    </div>
+                    <h3 className="text-xl font-bold font-headline text-primary-text">Step 3: We Customize It</h3>
+                    <p className="text-secondary-text mt-2 text-sm">One free customization to match your brand, format, or internal workflow.</p>
+                </div>
+            </div>
+        </div>
+    </Section>
+);
+
+const FeatureStripSection = () => (
+    <Section id="feature-strip" className="py-12 md:py-16">
+        <div className="container px-4 md:px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-5xl mx-auto">
+                <div className="flex flex-col items-center gap-2">
+                    <Zap className="w-8 h-8 text-accent"/>
+                    <p className="font-semibold text-primary-text text-sm">Instant download</p>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                    <Gem className="w-8 h-8 text-accent"/>
+                    <p className="font-semibold text-primary-text text-sm">1 Free Customization Included</p>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                    <CheckCircle className="w-8 h-8 text-accent"/>
+                    <p className="font-semibold text-primary-text text-sm">Lifetime updates</p>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                    <Globe className="w-8 h-8 text-accent"/>
+                    <p className="font-semibold text-primary-text text-sm">Globally aligned frameworks</p>
+                </div>
+            </div>
+        </div>
+    </Section>
+);
+
+
 const WhatItIsSection = () => (
     <Section id="what-it-is" className="bg-alternate-background">
         <div className="container px-4 md:px-6 max-w-4xl mx-auto">
@@ -88,7 +147,7 @@ const HowTeamsUseItSection = () => {
         { title: "Continuous Improvement", content: ["SOPs are updated", "Mistakes are removed once — permanently", "Best practices are locked in"], closing: "Your system gets smarter over time.", subClosing: "Experience becomes process. Not tribal knowledge." }
     ];
     return(
-    <Section id="how-it-works">
+    <Section id="how-it-works-old">
         <div className="container px-4 md:px-6">
             <div className="text-center mb-12 max-w-2xl mx-auto">
                 <SectionHeadline>How MoreMeets™ fits into real operations</SectionHeadline>
@@ -188,6 +247,8 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <CoreProblemSection />
+        <HowItWorksSection />
+        <FeatureStripSection />
         <WhatItIsSection />
         <HowTeamsUseItSection />
         <ComplianceSection />

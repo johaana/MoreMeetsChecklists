@@ -34,9 +34,9 @@ export const FaqSection = () => (
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-9">
-                        <AccordionTrigger>How does the free customization work?</AccordionTrigger>
+                        <AccordionTrigger>What does "free customization" mean?</AccordionTrigger>
                         <AccordionContent>
-                          After payment, your file downloads instantly. Our team will then send you a welcome email within one business day to collect your requirements and begin the free customization process.
+                          Each pack includes one free customization to align it with your brand, format, or internal workflow. Your files are available instantly after purchase, and our team coordinates customization separately.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-5">

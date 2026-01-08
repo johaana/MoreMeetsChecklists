@@ -149,7 +149,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <Banknote className="w-10 h-10 text-accent" />
                                 <div>
                                     <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary-text text-left">
-                                        Global Compliance Pack
+                                        {pack.title}
                                     </h3>
                                 </div>
                             </div>
@@ -214,17 +214,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                            <div className="w-full max-w-sm text-center">
                                 {currency === 'INR' && hasINR && pack.paymentId && (
                                     <div className="p-4 rounded-lg bg-background/50 border border-border">
-                                        <div className="text-center mb-4">
-                                            <p className="font-bold text-lg text-primary-text">Get Instant Access</p>
-                                        </div>
                                         <RazorpayButton paymentId={pack.paymentId} packId={pack.id} />
                                     </div>
                                 )}
                                 {currency === 'USD' && hasUSD && pack.lemonSqueezyUrl && (
                                      <div className="p-4 rounded-lg bg-background/50 border border-border w-full">
-                                         <div className="text-center mb-4">
-                                            <p className="font-bold text-lg text-primary-text">Get Instant Access</p>
-                                        </div>
                                         <Button asChild size="lg" className="w-full font-bold" variant="accent">
                                             <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
                                                 Get Instant Access
@@ -233,7 +227,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                      </div>
                                 )}
                            </div>
-                             <p className="text-xs text-muted-foreground mt-2">Built from real-world audit &amp; operations experience.</p>
+                           <p className="text-xs text-muted-foreground mt-2">Built from real-world audit &amp; operations experience.</p>
                             <div className="text-xs text-muted-foreground text-center">
                                 Secure payment via {currency === 'INR' ? 'Razorpay' : 'Lemon Squeezy'}.
                                 <br />

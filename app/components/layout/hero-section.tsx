@@ -40,15 +40,13 @@ export const HeroSection = () => (
                    Consistency can’t depend on memory.
                 </p>
                 
-                <div className="flex flex-col items-start gap-4 pt-6">
+                <div className="flex flex-col items-start gap-2 pt-6">
                     <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))' }}>
                         <Link href="/library">
                            View Operational Standards <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
-                    <Button asChild variant="link" className="p-0 h-auto text-sm text-muted-foreground">
-                         <Link href="#how-it-works">See how it works &rarr;</Link>
-                    </Button>
+                    <p className="text-xs text-muted-foreground pl-1">Includes 1 free customization per pack</p>
                 </div>
             </div>
         </div>
