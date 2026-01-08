@@ -14,6 +14,16 @@ type PainPointContent = {
 };
 
 export const painPointsContent: Record<string, PainPointContent> = {
+    pharmacy_ops_pack: {
+        title: "Anatomy of a Pharmacy Failure",
+        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
+        points: [
+            { icon: "Pill", title: "Emily's Law: The Fatal Dispensing Error (Ohio, 2006)", description: "A two-year-old girl, Emily Jerry, died after receiving a chemotherapy solution mixed with a fatal concentration of saline by an untrained pharmacy technician. This tragedy led to 'Emily's Law' in Ohio. Our 'Dispensing & Verification' SOP, which mandates a dual-check by a licensed pharmacist, is designed to prevent such a catastrophic error." },
+            { icon: "Thermometer", title: "The Ineffective Vaccine Crisis (Global, Ongoing)", description: "Countless vaccine doses are rendered ineffective globally due to breaks in the cold chain during storage or transport. Our 'Cold Chain Management' checklist, with its mandatory temperature logs, provides a verifiable system to ensure vaccine integrity from receipt to patient." },
+            { icon: "Lock", title: "The Opioid Diversion Epidemic (USA, Ongoing)", description: "Thousands of pharmacies have been implicated in the opioid crisis for failing to prevent the diversion of controlled substances. Our 'Narcotics Control' SOP, with its strict register and dual-verification protocols, creates a robust defense against internal theft and fraudulent prescriptions." },
+            { icon: "FileCheck", title: "The Look-Alike, Sound-Alike Tragedy (Global, Frequent)", description: "A patient dies after being dispensed 'Metadate' (for ADHD) instead of 'Methadone' (for addiction). LASA (Look-Alike, Sound-Alike) errors are common and deadly. Our checklists mandate segregation of LASA drugs and a triple-check process (pharmacist, technician, and final check) to prevent these specific, known risks." }
+        ]
+    },
     bakery_confectionery_pack: {
         title: "Anatomy of a Bakery Failure",
         disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
@@ -258,3 +268,5 @@ export const painPointsContent: Record<string, PainPointContent> = {
 
 type PainPoints = typeof painPointsContent;
 export type PainPointCategory = keyof PainPoints;
+
+    

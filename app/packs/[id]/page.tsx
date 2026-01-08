@@ -1,9 +1,9 @@
 
-import PackClientPage from "@/packs/pack-client-page";
+import PackClientPage from "./pack-client-page";
 import { premiumPacks } from '@/lib/premium-packs';
 import { notFound } from 'next/navigation';
 import type { Metadata, ResolvingMetadata } from 'next';
-import PricingClient from "@/packs/pricing-client";
+import PricingClient from "./pricing-client";
 import { FaqSection } from "@/components/layout/faq-section";
 import { Footer } from "@/components/layout/footer";
 
@@ -135,3 +135,5 @@ export default function Page({ params }: { params: { id: string } }) {
     </>
   );
 }
+
+    
