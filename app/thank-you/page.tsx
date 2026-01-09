@@ -55,11 +55,11 @@ function ThankYouContent() {
       
       const result = await verifyRazorpayPayment(paymentId, packId, null);
       
-      if (result.success) {
+      if (result.success && result.item && result.type) {
         setVerifiedItem(result.item);
         setItemType(result.type);
         if (!hasTriggeredDownload.current) {
-            handleDownload(result.item as (PremiumPack | IndividualChecklist), result.type as 'pack' | 'individual');
+            handleDownload(result.item as (PremiumPack | IndividualChecklist), result.type);
             setShowDownloadConfirm(true);
             hasTriggeredDownload.current = true;
         }
