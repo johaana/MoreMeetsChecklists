@@ -10,24 +10,27 @@ import { handleDownload } from '@/lib/download';
 import { allPacks } from '@/lib/packs/all_packs';
 import { Download, KeyRound, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-
-const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "moremeets_admin_2024";
+import { verifyPassword } from './actions';
 
 export default function MasterAccessClient() {
     const [password, setPassword] = React.useState('');
     const [isAuthenticated, setIsAuthenticated] = React.useState(false);
     const [error, setError] = React.useState('');
+    const [isVerifying, setIsVerifying] = React.useState(false);
     const [downloadingPack, setDownloadingPack] = React.useState<string | null>(null);
     const { toast } = useToast();
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (password === ADMIN_PASSWORD) {
+        setIsVerifying(true);
+        setError('');
+        const result = await verifyPassword({ password });
+        if (result.success) {
             setIsAuthenticated(true);
-            setError('');
         } else {
             setError('Incorrect password. Please try again.');
         }
+        setIsVerifying(false);
     };
 
     const triggerDownload = (pack: PremiumPack) => {
@@ -66,7 +69,8 @@ export default function MasterAccessClient() {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                             {error && <p className="text-sm text-destructive">{error}</p>}
-                            <Button type="submit" className="w-full">
+                            <Button type="submit" className="w-full" disabled={isVerifying}>
+                                {isVerifying && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                                 Unlock
                             </Button>
                         </form>
