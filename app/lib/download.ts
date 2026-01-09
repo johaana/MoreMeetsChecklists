@@ -1,5 +1,5 @@
 
-import { writeFile, utils, type WorkSheet, type CellObject, type WritingOptions } from 'xlsx-js-style';
+import { writeFile, utils, type WorkSheet, type CellObject } from 'xlsx-js-style';
 import type { PremiumPack, Checklist as PackChecklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
@@ -95,30 +95,56 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [{v: 'Risk Level', s: instructionTitleStyle}, {v: 'High: Carries a significant safety, legal, or financial risk if not performed correctly.\nMedium: Carries a moderate risk.\nLow: Carries a low risk.', s: instructionBodyStyle}],
     ];
     
-    const instructionsWs = utils.aoa_to_sheet(instructionsData);
-    instructionsWs['!merges'] = [
-        { s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }, 
-        { s: { r: 2, c: 0 }, e: { r: 2, c: 3 } }, 
-        { s: { r: 7, c: 0 }, e: { r: 7, c: 3 } }, 
-        { s: { r: 12, c: 0 }, e: { r: 12, c: 3 } },
-        { s: { r: 3, c: 1 }, e: { r: 3, c: 3 } }, { s: { r: 4, c: 1 }, e: { r: 4, c: 3 } }, { s: { r: 5, c: 1 }, e: { r: 5, c: 3 } },
-        { s: { r: 8, c: 1 }, e: { r: 8, c: 3 } }, { s: { r: 9, c: 1 }, e: { r: 9, c: 3 } }, { s: { r: 10, c: 1 }, e: { r: 10, c: 3 } },
-        { s: { r: 13, c: 1 }, e: { r: 13, c: 3 } }, { s: { r: 14, c: 1 }, e: { r: 14, c: 3 } }, { s: { r: 15, c: 1 }, e: { r: 15, c: 3 } }
-    ];
+    const instructionsWs = utils.aoa_to_sheet([]);
+    
+    utils.sheet_add_aoa(instructionsWs, [[instructionsData[0][0]]], { origin: 'A1' });
+    instructionsWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
+    utils.sheet_add_aoa(instructionsWs, [[instructionsData[2][0]]], { origin: 'A3' });
+    instructionsWs['!merges'].push({ s: { r: 2, c: 0 }, e: { r: 2, c: 3 } });
+
+    let currentRow = 4;
+    instructionsData.slice(3, 6).forEach(row => {
+        utils.sheet_add_aoa(instructionsWs, [[row[0]]], { origin: { r: currentRow - 1, c: 0 } });
+        utils.sheet_add_aoa(instructionsWs, [[row[1]]], { origin: { r: currentRow - 1, c: 1 } });
+        if (!instructionsWs['!merges']) instructionsWs['!merges'] = [];
+        instructionsWs['!merges'].push({ s: { r: currentRow - 1, c: 1 }, e: { r: currentRow - 1, c: 3 } });
+        currentRow++;
+    });
+
+    currentRow++;
+    utils.sheet_add_aoa(instructionsWs, [[instructionsData[7][0]]], { origin: {r: currentRow-1, c: 0} });
+    instructionsWs['!merges'].push({ s: { r: currentRow - 1, c: 0 }, e: { r: currentRow - 1, c: 3 } });
+    currentRow++;
+
+    instructionsData.slice(8, 11).forEach(row => {
+        utils.sheet_add_aoa(instructionsWs, [[row[0]]], { origin: { r: currentRow - 1, c: 0 } });
+        utils.sheet_add_aoa(instructionsWs, [[row[1]]], { origin: { r: currentRow - 1, c: 1 } });
+        instructionsWs['!merges'].push({ s: { r: currentRow - 1, c: 1 }, e: { r: currentRow - 1, c: 3 } });
+        currentRow++;
+    });
+
+    currentRow++;
+    utils.sheet_add_aoa(instructionsWs, [[instructionsData[12][0]]], { origin: { r: currentRow - 1, c: 0 } });
+    instructionsWs['!merges'].push({ s: { r: currentRow - 1, c: 0 }, e: { r: currentRow - 1, c: 3 } });
+    currentRow++;
+
+    instructionsData.slice(13).forEach(row => {
+        utils.sheet_add_aoa(instructionsWs, [[row[0]]], { origin: { r: currentRow - 1, c: 0 } });
+        const cell = row[1] as CellObject;
+        cell.s = { ...cell.s, alignment: { ...cell.s?.alignment, wrapText: true } };
+        utils.sheet_add_aoa(instructionsWs, [[cell]], { origin: { r: currentRow - 1, c: 1 } });
+        instructionsWs['!merges'].push({ s: { r: currentRow - 1, c: 1 }, e: { r: currentRow - 1, c: 3 } });
+        currentRow++;
+    });
+
     setColumnWidths(instructionsWs, [30, 30, 30, 30]);
     instructionsWs['!rows'] = [ 
         { hpt: 30 }, null, { hpt: 25 }, { hpt: 50 }, { hpt: 50 }, { hpt: 50 }, null, 
         { hpt: 25 }, { hpt: 80 }, { hpt: 80 }, { hpt: 80 }, null,
         { hpt: 25 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }
     ];
-    instructionsData.forEach((row, r) => {
-        const cell = instructionsWs[utils.encode_cell({r:r, c:1})];
-        if (cell && typeof cell.v === 'string') {
-            cell.s = { ...cell.s, ...instructionBodyStyle };
-        }
-    });
-
-    addFooter(instructionsWs, 17, 4);
+    
+    addFooter(instructionsWs, currentRow, 4);
     utils.book_append_sheet(wb, instructionsWs, "Instructions & Legend");
 
 
@@ -169,8 +195,15 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             const statusFormula = `IF(ISBLANK(${dateCell}),"Pending",IF(OR(${isEventDrivenFormula}, ${nextDueDateCell}="N/A"),"Completed",IF(TODAY()>${nextDueDateCell},"ACTION REQUIRED - OVERDUE","Completed")))`;
             
             wsData.push([
-                task.id, task.description, task.priority, task.riskLevel, task.consequence, task.proof, 
-                task.frequency || checklist.frequency, task.department || checklist.department, task.role || checklist.role,
+                task.id, 
+                task.description, 
+                task.priority, 
+                task.riskLevel, 
+                task.consequence, 
+                task.proof, 
+                task.frequency || checklist.frequency, 
+                task.department || checklist.department, 
+                task.role || checklist.role,
                 null, 
                 { t: 'f', f: statusFormula }, 
                 { t: 'f', f: nextDueDateFormula }, 
