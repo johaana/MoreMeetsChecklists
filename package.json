@@ -1,10 +1,9 @@
-
 {
   "name": "nextn",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npm exec next dev -p 9002 -H 0.0.0.0",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
