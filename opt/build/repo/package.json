@@ -1,3 +1,1 @@
-{
-  "comment": "This file is located inside a redundant directory structure that mirrors the Netlify build path. It must be kept empty to prevent Webpack module resolution loops."
-}
+{}

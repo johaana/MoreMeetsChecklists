@@ -53,11 +53,11 @@ export default function MasterAccessClient() {
 
     if (!isAuthenticated) {
         return (
-            <div className="flex items-center justify-center min-h-[calc(100vh-200px)]">
+            <div className="flex items-center justify-center min-h-[calc(100vh-200px)] px-4">
                 <Card className="w-full max-w-sm">
                     <CardHeader>
-                        <CardTitle className="flex items-center gap-2"><KeyRound className="w-5 h-5"/> Admin Access</CardTitle>
-                        <CardDescription>Please enter the password to access the download portal.</CardDescription>
+                        <CardTitle className="flex items-center gap-2 text-primary"><KeyRound className="w-5 h-5"/> Admin Access</CardTitle>
+                        <CardDescription>Enter the master password to access all operational toolkits.</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <form onSubmit={handleLogin} className="space-y-4">
@@ -67,10 +67,10 @@ export default function MasterAccessClient() {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
-                            {error && <p className="text-sm text-destructive">{error}</p>}
-                            <Button type="submit" className="w-full" disabled={isVerifying}>
+                            {error && <p className="text-sm text-destructive font-medium">{error}</p>}
+                            <Button type="submit" className="w-full" disabled={isVerifying} variant="accent">
                                 {isVerifying && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                                Unlock
+                                Unlock Master Access
                             </Button>
                         </form>
                     </CardContent>
@@ -83,20 +83,31 @@ export default function MasterAccessClient() {
 
     return (
         <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold font-headline mb-8 text-primary">Master Pack Download Portal</h1>
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-12">
+                <div>
+                    <h1 className="text-3xl font-bold font-headline text-primary">Master Download Portal</h1>
+                    <p className="text-muted-foreground mt-1">Direct access to the entire MoreMeets™ library.</p>
+                </div>
+                <Badge variant="outline" className="w-fit h-fit">Authenticated Session</Badge>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {validPacks.map(pack => (
-                    <Card key={pack.id} className="flex flex-col">
+                    <Card key={pack.id} className="flex flex-col border-2 border-transparent hover:border-primary/20 transition-all shadow-sm hover:shadow-md">
                         <CardHeader>
-                            <CardTitle>{pack.title}</CardTitle>
+                            <CardTitle className="text-lg">{pack.title}</CardTitle>
                             <CardDescription>{pack.category}</CardDescription>
                         </CardHeader>
                         <CardContent className="flex-1">
-                            <p className="text-sm text-muted-foreground">{pack.checklists.length} Checklists • {pack.checklists.reduce((acc, c) => acc + c.tasks.length, 0)} Tasks</p>
+                            <div className="text-xs space-y-1 text-muted-foreground">
+                                <p>{pack.checklists.length} Checklists</p>
+                                <p>{pack.checklists.reduce((acc, c) => acc + c.tasks.length, 0)} Professional Tasks</p>
+                            </div>
                         </CardContent>
-                        <CardContent>
+                        <CardContent className="pt-0">
                            <Button 
-                                className="w-full" 
+                                variant="secondary"
+                                className="w-full font-bold" 
                                 onClick={() => triggerDownload(pack)}
                                 disabled={downloadingPack === pack.id}
                             >
@@ -105,7 +116,7 @@ export default function MasterAccessClient() {
                                 ) : (
                                     <Download className="mr-2 h-4 w-4" />
                                 )}
-                                Download Pack
+                                Download .xlsx
                             </Button>
                         </CardContent>
                     </Card>
