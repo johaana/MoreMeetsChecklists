@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const facility_management_blueprint: PremiumPack = {
@@ -117,7 +116,9 @@ export const facility_management_blueprint: PremiumPack = {
                 { id: "FMB-VCM-05", description: "Conduct a monthly meeting with key vendor account managers.", priority: "Medium", riskLevel: "Low", consequence: "Poor relationship, unresolved issues fester.", proof: "Minutes of meeting." },
                 { id: "FMB-VCM-06", description: "Issue formal non-conformance reports for any SLA failures.", priority: "Medium", riskLevel: "Medium", consequence: "SLA failures are not officially documented and penalized.", proof: "Copies of non-conformance reports." },
                 { id: "FMB-VCM-07", description: "Onboard new vendors with a formal induction on site rules, safety, and procedures.", priority: "High", riskLevel: "Medium", consequence: "Vendors creating safety or security risks.", proof: "Signed vendor induction form." },
-                { id: "FMB-VCM-08", description: "Review and approve all vendor work permits before allowing work to start.", priority: "High", riskLevel: "High", consequence: "Unsafe or disruptive work being carried out.", proof: "Signed work permit." }
+                { id: "FMB-VCM-08", description: "Review and approve all vendor work permits before allowing work to start.", priority: "High", riskLevel: "High", consequence: "Unsafe or disruptive work being carried out.", proof: "Signed work permit." },
+                { id: "FMB-VCM-09", description: "Maintain a centralized repository of all active vendor contracts and performance scorecards.", priority: "High", riskLevel: "Low", consequence: "Inability to retrieve contract details or track performance history.", proof: "Link to contract management system." },
+                { id: "FMB-VCM-10", description: "Conduct an annual review of vendor risk assessments and update the approved vendor list.", priority: "High", riskLevel: "High", consequence: "Continuing to use high-risk or non-compliant vendors.", proof: "Minutes of annual vendor review meeting." }
             ]
         },
         {
