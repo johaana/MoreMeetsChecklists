@@ -1,1 +1,3 @@
-{}
+{
+  "comment": "Redundant package.json removed to prevent build-time resolution loops."
+}

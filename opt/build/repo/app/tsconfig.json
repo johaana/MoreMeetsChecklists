@@ -1,2 +1,3 @@
-
-    
+{
+  "comment": "Deactivated redundant config file to prevent build loops."
+}
