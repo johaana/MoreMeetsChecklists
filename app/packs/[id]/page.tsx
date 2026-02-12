@@ -1,3 +1,4 @@
+
 import PackClientPage from "./pack-client-page";
 import { premiumPacks } from '@/lib/premium-packs';
 import { notFound } from 'next/navigation';
@@ -80,7 +81,7 @@ export async function generateMetadata(
   }
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return premiumPacks.map((pack) => ({
     id: pack.id,
   }));

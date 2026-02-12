@@ -1,3 +1,4 @@
+
 import { blogPosts } from '@/lib/blog-posts';
 import { notFound } from 'next/navigation';
 import { SiteHeader } from '@/components/layout/header';
@@ -7,7 +8,7 @@ import Link from 'next/link';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, FileCheck2 } from 'lucide-react';
 import Image from 'next/image';
 
 type Props = {
@@ -51,7 +52,7 @@ export async function generateMetadata(
   }
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return blogPosts.map((post) => ({
     slug: post.slug,
   }));
@@ -124,15 +125,15 @@ export default async function BlogPostPage({ params }: Props) {
                 <div className="max-w-3xl mx-auto space-y-4">
                   <div className="flex flex-wrap items-center justify-center gap-2">
                     {post.tags.map(tag => (
-                       <Badge key={tag} variant="secondary" className="bg-white/10 text-white backdrop-blur-sm">
+                       <Badge key={tag} variant="secondary" className="bg-white/10 text-white backdrop-blur-sm" asChild>
                         <Link href={`/blog?tag=${tag}`}>{tag}</Link>
                       </Badge>
                     ))}
                   </div>
-                  <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary-foreground drop-shadow-md">
+                  <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl font-headline text-white drop-shadow-md">
                     {post.title}
                   </h1>
-                  <div className="flex items-center justify-center gap-4 text-sm text-primary-foreground/80">
+                  <div className="flex items-center justify-center gap-4 text-sm text-white/80">
                      <p>By {post.author}</p>
                     <p>{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                      <p>{readingTime} min read</p>
