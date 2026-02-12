@@ -1,3 +1,3 @@
 {
-  "comment": "Nullified redundant build-machine path file to prevent infinite loops."
+  "comment": "Redundant machine-path file deactivated to prevent recursive loops."
 }

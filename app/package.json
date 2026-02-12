@@ -1,3 +1,3 @@
 {
-  "comment": "Nullified redundant package file to prevent Netlify build loops."
+  "comment": "Redundant package file deactivated to prevent recursive path loops on Netlify."
 }

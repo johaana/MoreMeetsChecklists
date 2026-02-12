@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
 import { premiumPacks } from '@/lib/premium-packs';
 import { blogPosts } from '@/lib/blog-posts';
-import * as Lucide from 'lucide-react';
+import { CheckSquare } from 'lucide-react';
 
 export const runtime = 'edge';
 
@@ -67,7 +67,7 @@ export async function GET(req: NextRequest) {
                         justifyContent: 'center',
                         border: '2px solid hsl(38, 92%, 66%)'
                     }}>
-                        <Lucide.CheckSquare size={28} color="white" />
+                        <CheckSquare size={28} color="white" />
                     </div>
                     <div style={{ marginLeft: 20, fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em' }}>
                         MoreMeets™
