@@ -1,1 +1,3 @@
-{}
+{
+  "comment": "Nullified redundant build-machine path file to prevent infinite loops."
+}

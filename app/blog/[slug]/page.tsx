@@ -7,7 +7,7 @@ import Link from 'next/link';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, FileCheck2 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
 type Props = {
@@ -124,9 +124,11 @@ export default async function BlogPostPage({ params }: Props) {
                 <div className="max-w-3xl mx-auto space-y-4">
                   <div className="flex flex-wrap items-center justify-center gap-2">
                     {post.tags.map(tag => (
-                       <Badge key={tag} variant="secondary" className="bg-white/10 text-white backdrop-blur-sm" asChild>
-                        <Link href={`/blog?tag=${encodeURIComponent(tag)}`}>{tag}</Link>
-                      </Badge>
+                       <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`}>
+                        <Badge variant="secondary" className="bg-white/10 text-white backdrop-blur-sm">
+                          {tag}
+                        </Badge>
+                      </Link>
                     ))}
                   </div>
                   <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl font-headline text-white drop-shadow-md">
@@ -166,9 +168,11 @@ export default async function BlogPostPage({ params }: Props) {
                             <h3 className="font-bold mb-4">Explore More Topics</h3>
                              <div className="flex flex-wrap gap-2">
                                 {Array.from(new Set(blogPosts.flatMap(p => p.tags))).map(tag => (
-                                <Badge key={tag} variant="outline" asChild>
-                                  <Link href={`/blog?tag=${encodeURIComponent(tag)}`}>{tag}</Link>
-                                </Badge>
+                                  <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`}>
+                                    <Badge variant="outline">
+                                      {tag}
+                                    </Badge>
+                                  </Link>
                                 ))}
                             </div>
                         </div>

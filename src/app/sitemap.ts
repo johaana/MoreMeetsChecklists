@@ -1,1 +1,1 @@
-// Redundant metadata route deactivated.
+// This file is disabled because it conflicts with the root app/sitemap.ts
