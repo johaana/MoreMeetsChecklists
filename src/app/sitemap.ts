@@ -1,1 +1,1 @@
-// This file is disabled because it conflicts with the root app/sitemap.ts
+// Conflict resolution: Sitemap is handled by the root app/sitemap.ts
