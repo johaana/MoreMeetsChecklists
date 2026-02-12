@@ -1,1 +1,1 @@
-// Conflicting metadata route deactivated.
+export default function sitemap() { return []; }
