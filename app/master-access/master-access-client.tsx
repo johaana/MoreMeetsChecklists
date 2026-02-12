@@ -10,6 +10,7 @@ import { allPacks } from '@/lib/packs/all_packs';
 import { Download, KeyRound, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { verifyPassword } from './actions';
+import { Badge } from '@/components/ui/badge';
 
 export default function MasterAccessClient() {
     const [password, setPassword] = React.useState('');

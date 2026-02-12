@@ -1,1 +1,4 @@
-// Redundant file deactivated to prevent Netlify build loops.
+// Redundant file nullified to prevent build conflicts.
+export default function sitemap() {
+  return [];
+}

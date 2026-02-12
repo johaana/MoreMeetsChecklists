@@ -1,5 +1,3 @@
-
-
 import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
 import { premiumPacks } from '@/lib/premium-packs';
@@ -9,13 +7,7 @@ import { IconComponent } from '@/components/icons';
 
 export const runtime = 'edge';
 
-// Dynamically load Inter fonts
-const interRegular = fetch(new URL('../../../assets/Inter-Regular.ttf', import.meta.url)).then((res) => res.arrayBuffer());
-const interBold = fetch(new URL('../../../assets/Inter-Bold.ttf', import.meta.url)).then((res) => res.arrayBuffer());
-
-
 export async function GET(req: NextRequest) {
-    const [interRegularData, interBoldData] = await Promise.all([interRegular, interBold]);
     const { searchParams } = new URL(req.url);
 
     const type = searchParams.get('type') || 'default';
@@ -46,14 +38,12 @@ export async function GET(req: NextRequest) {
         console.error("Error finding item for OG image:", e);
     }
     
-    // Truncate long titles/descriptions
     if (title.length > 60) {
         title = title.substring(0, 57) + '...';
     }
-     if (description.length > 120) {
+    if (description.length > 120) {
         description = description.substring(0, 117) + '...';
     }
-
 
     return new ImageResponse(
         (
@@ -67,7 +57,6 @@ export async function GET(req: NextRequest) {
                     justifyContent: 'space-between',
                     backgroundColor: 'hsl(212, 40%, 4%)',
                     color: 'white',
-                    fontFamily: '"Inter", sans-serif',
                     padding: '60px',
                 }}
             >
@@ -90,10 +79,9 @@ export async function GET(req: NextRequest) {
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                    {iconName && <IconComponent name={iconName} style={{color: 'hsl(38, 92%, 66%)'}} size={64} />}
-                    <h1 style={{ fontSize: 60, fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.03em', maxWidth: '90%' }}>
+                    <div style={{ fontSize: 60, fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.03em', maxWidth: '90%' }}>
                         {title}
-                    </h1>
+                    </div>
                      <p style={{ fontSize: 24, color: 'hsl(0, 0%, 80%)', maxWidth: '90%' }}>
                         {description}
                     </p>
@@ -103,24 +91,6 @@ export async function GET(req: NextRequest) {
                     moremeets.com
                 </div>
             </div>
-        ),
-        {
-            width: 1200,
-            height: 630,
-            fonts: [
-                {
-                    name: 'Inter',
-                    data: interRegularData,
-                    style: 'normal',
-                    weight: 400,
-                },
-                {
-                    name: 'Inter',
-                    data: interBoldData,
-                    style: 'normal',
-                    weight: 700,
-                },
-            ],
-        }
+        )
     );
 }
