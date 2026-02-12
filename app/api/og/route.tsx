@@ -53,6 +53,7 @@ export async function GET(req: NextRequest) {
                     backgroundColor: 'hsl(212, 40%, 4%)',
                     color: 'white',
                     padding: '60px',
+                    fontFamily: 'sans-serif',
                 }}
             >
                 <div style={{ display: 'flex', alignItems: 'center' }}>

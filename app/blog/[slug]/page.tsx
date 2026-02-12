@@ -1,4 +1,3 @@
-
 import { blogPosts } from '@/lib/blog-posts';
 import { notFound } from 'next/navigation';
 import { SiteHeader } from '@/components/layout/header';
@@ -126,7 +125,7 @@ export default async function BlogPostPage({ params }: Props) {
                   <div className="flex flex-wrap items-center justify-center gap-2">
                     {post.tags.map(tag => (
                        <Badge key={tag} variant="secondary" className="bg-white/10 text-white backdrop-blur-sm" asChild>
-                        <Link href={`/blog?tag=${tag}`}>{tag}</Link>
+                        <Link href={`/blog?tag=${encodeURIComponent(tag)}`}>{tag}</Link>
                       </Badge>
                     ))}
                   </div>
@@ -168,7 +167,7 @@ export default async function BlogPostPage({ params }: Props) {
                              <div className="flex flex-wrap gap-2">
                                 {Array.from(new Set(blogPosts.flatMap(p => p.tags))).map(tag => (
                                 <Badge key={tag} variant="outline" asChild>
-                                  <Link href={`/blog?tag=${tag}`}>{tag}</Link>
+                                  <Link href={`/blog?tag=${encodeURIComponent(tag)}`}>{tag}</Link>
                                 </Badge>
                                 ))}
                             </div>
