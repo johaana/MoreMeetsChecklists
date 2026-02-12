@@ -3,7 +3,6 @@ import { NextRequest } from 'next/server';
 import { premiumPacks } from '@/lib/premium-packs';
 import { blogPosts } from '@/lib/blog-posts';
 import * as Lucide from 'lucide-react';
-import { IconComponent } from '@/components/icons';
 
 export const runtime = 'edge';
 
@@ -16,22 +15,18 @@ export async function GET(req: NextRequest) {
     const id = searchParams.get('id');
     const slug = searchParams.get('slug');
 
-    let iconName: string | undefined;
-
     try {
         if (type === 'pack' && id) {
             const item = premiumPacks.find(p => p.id === id);
             if (item) {
                 title = item.title;
                 description = item.description;
-                iconName = item.icon;
             }
         } else if (type === 'blog' && slug) {
             const item = blogPosts.find(b => b.slug === slug);
             if (item) {
                 title = item.title;
                 description = item.description;
-                iconName = 'BookOpen';
             }
         }
     } catch (e) {

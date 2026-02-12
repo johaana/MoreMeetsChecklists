@@ -138,7 +138,7 @@ export const facility_management_blueprint: PremiumPack = {
                 { id: "FMB-EHS-07", description: "Check emergency preparedness (first aid kits, evacuation plans).", priority: "High", riskLevel: "High", consequence: "Disorganized response to an emergency.", proof: "Emergency prep checklist." },
                 { id: "FMB-EHS-08", description: "Monitor air and water quality as per regulatory requirements.", priority: "High", riskLevel: "High", consequence: "Pollution, regulatory action.", proof: "Quality test reports." },
                 { id: "FMB-EHS-09", description: "Manage the disposal of all types of waste.", priority: "High", riskLevel: "Medium", consequence: "Improper waste disposal can lead to fines.", proof: "Waste disposal records." },
-                { id: "FMB-EHS-10", description: "File all necessary environmental and safety reports with regulatory bodies.", priority: "High", riskLevel: "High", consequence: "Legal penalties for non-filing.", proof: "Copies of filed reports." }
+                { id: "FMB-EHS-10", description: "File all required environmental statements and returns before statutory due dates.", priority: "High", riskLevel: "High", consequence: "Legal penalties for non-filing.", proof: "Copies of filed reports." }
             ]
         },
         {
