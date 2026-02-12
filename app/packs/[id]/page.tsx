@@ -8,7 +8,7 @@ import { FaqSection } from "@/components/layout/faq-section";
 import { Footer } from "@/components/layout/footer";
 
 type Props = {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 const defaultHeroImageUrl = 'https://i.postimg.cc/L6yNW7JK/Emirates-Palace-Abu-Dhabi.jpg';
@@ -45,7 +45,7 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const id = params.id;
+  const { id } = await params;
   const pack = premiumPacks.find((p) => p.id === id);
 
   if (!pack) {
@@ -88,14 +88,15 @@ export function generateStaticParams() {
   }));
 }
 
-export default function Page({ params }: { params: { id: string } }) {
-  const pack = premiumPacks.find((p) => p.id === params.id);
+export default async function Page({ params }: Props) {
+  const { id } = await params;
+  const pack = premiumPacks.find((p) => p.id === id);
 
   if (!pack) {
     notFound();
   }
   
-  const heroImageUrl = packImageMap[params.id] || defaultHeroImageUrl;
+  const heroImageUrl = packImageMap[id] || defaultHeroImageUrl;
   const checklistsCount = pack.checklists ? pack.checklists.length : 0;
   const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
 
