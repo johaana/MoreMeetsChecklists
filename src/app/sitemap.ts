@@ -1,1 +1,1 @@
-// Conflict resolution: Sitemap is handled by the root app/sitemap.ts
+// Redundant metadata route deactivated.

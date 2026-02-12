@@ -1,2 +1,1 @@
-
-    
+// Redundant component deactivated to prevent shadowing root component.

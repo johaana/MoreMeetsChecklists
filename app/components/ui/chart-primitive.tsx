@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -54,31 +53,30 @@ const ChartContainer = React.forwardRef<
   }
 >(({ id, className, children, config, ...props }, ref) => {
   const containerRef = React.useRef<HTMLDivElement>(null)
-  const [activeChart, setActiveChart] = React.useState<string | null>(null)
 
   const chartConfig = React.useMemo(
-    () =>
-      Object.entries(config).reduce(
-        (prev, [key, value]) => {
-          const newTheme: Record<keyof typeof THEMES, string> =
+    () => {
+      return Object.fromEntries(
+        Object.entries(config).map(([key, value]) => {
+          const newTheme =
             value.theme ??
             Object.fromEntries(
-              Object.entries(THEMES).map(([theme, prefix]) => [
+              Object.entries(THEMES).map(([theme]) => [
                 theme,
                 `var(--color-${key})`,
               ])
             )
 
-          return {
-            ...prev,
-            [key]: {
+          return [
+            key,
+            {
               ...value,
               theme: newTheme,
             },
-          }
-        },
-        {} as ChartConfig
-      ),
+          ]
+        })
+      ) as ChartConfig
+    },
     [config]
   )
 
@@ -107,11 +105,8 @@ const ChartStyle = React.forwardRef<
   React.ComponentProps<"style"> & { config: ChartConfig }
 >(({ config }, ref) => {
   const [isMounted, setIsMounted] = React.useState(false)
-  const { theme } = (
-    ChartContext.displayName ? useChart() : { theme: config }
-  ) as {
-    theme: ChartConfig
-  }
+  const context = React.useContext(ChartContext)
+  const theme = context?.config ?? config
 
   React.useEffect(() => {
     setIsMounted(true)
@@ -122,8 +117,8 @@ const ChartStyle = React.forwardRef<
       return ""
     }
     const styles = Object.entries(theme).map(([key, value]) => {
-      const color = value.color
-      const theme = value.theme
+      const color = (value as any).color
+      const themeData = value.theme
 
       if (color) {
         return `
@@ -133,8 +128,8 @@ const ChartStyle = React.forwardRef<
 `
       }
 
-      if (theme) {
-        return Object.entries(theme)
+      if (themeData) {
+        return Object.entries(themeData)
           .map(([name, color]) => {
             const prefix = THEMES[name as keyof typeof THEMES]
             return `
@@ -145,6 +140,7 @@ ${prefix} [data-chart] .color-${key} {
           })
           .join("\n")
       }
+      return ""
     })
 
     return styles.join("\n")
@@ -158,53 +154,7 @@ ${prefix} [data-chart] .color-${key} {
 })
 ChartStyle.displayName = "ChartStyle"
 
-const ChartLegend = React.forwardRef<
-  React.ComponentRef<typeof RechartsPrimitive.Legend>,
-  React.ComponentProps<typeof RechartsPrimitive.Legend> & {
-    hide?: boolean
-    onChartLegendItemEnter?: (payload: any) => void
-    onChartLegendItemLeave?: (payload: any) => void
-    onChartLegendItemClick?: (payload: any) => void
-  }
->(
-  (
-    {
-      className,
-      hide,
-      onChartLegendItemEnter,
-      onChartLegendItemLeave,
-      onChartLegendItemClick,
-      ...props
-    },
-    ref
-  ) => {
-    const { config } = useChart()
-    const [_, setActiveChart] = React.useState(null)
-
-    if (hide) {
-      return null
-    }
-
-    return (
-      <RechartsPrimitive.Legend
-        ref={ref}
-        verticalAlign="bottom"
-        height={36}
-        content={
-          <ChartLegendContent
-            className={className}
-            onClick={onChartLegendItemClick}
-            onMouseEnter={onChartLegendItemEnter}
-            onMouseLeave={onChartLegendItemLeave}
-            {...props}
-          />
-        }
-        {...props}
-      />
-    )
-  }
-)
-ChartLegend.displayName = "ChartLegend"
+const ChartLegend = RechartsPrimitive.Legend
 
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
@@ -219,7 +169,6 @@ const ChartLegendContent = React.forwardRef<
     ref
   ) => {
     const { config } = useChart()
-    const [_, setActiveChart] = React.useState(null)
 
     if (!payload.length) {
       return null
@@ -430,4 +379,3 @@ export {
   ChartTooltipContent,
   type ChartConfig,
 }
-

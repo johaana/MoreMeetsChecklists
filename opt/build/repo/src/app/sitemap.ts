@@ -1,2 +1,1 @@
-
-    
+// Redundant metadata route deactivated.
