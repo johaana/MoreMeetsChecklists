@@ -7,7 +7,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, FileCheck2 } from 'lucide-react';
 import Image from 'next/image';
 
 type Props = {
@@ -67,11 +67,6 @@ export default async function BlogPostPage({ params }: Props) {
   const relatedPack = post.relatedPackId ? premiumPacks.find(p => p.id === post.relatedPackId) : null;
   const wordCount = post.content.split(' ').length;
   const readingTime = Math.ceil(wordCount / 200);
-
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
-  const ogUrl = new URL(`${siteUrl}/api/og`);
-  ogUrl.searchParams.set('type', 'blog');
-  ogUrl.searchParams.set('slug', post.slug);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">

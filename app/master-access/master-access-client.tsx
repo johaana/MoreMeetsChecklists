@@ -3,7 +3,7 @@
 import * as React from 'react';
 import type { PremiumPack } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { handleDownload } from '@/lib/download';
 import { allPacks } from '@/lib/packs/all_packs';
@@ -80,7 +80,11 @@ export default function MasterAccessClient() {
         );
     }
     
-    const validPacks = allPacks.filter(p => p.id !== 'master_access' && p.checklists.length > 0 && !(p.checklists.length === 1 && p.checklists[0].title.includes("Placeholder")));
+    const validPacks = allPacks.filter(p => 
+        p.id !== 'master_access' && 
+        p.checklists.length > 0 && 
+        !(p.checklists.length === 1 && p.checklists[0].title.includes("Placeholder"))
+    );
 
     return (
         <div className="container mx-auto px-4 py-8">
@@ -105,7 +109,7 @@ export default function MasterAccessClient() {
                                 <p>{pack.checklists.reduce((acc, c) => acc + c.tasks.length, 0)} Professional Tasks</p>
                             </div>
                         </CardContent>
-                        <CardContent className="pt-0">
+                        <CardFooter className="pt-0 mt-auto">
                            <Button 
                                 variant="secondary"
                                 className="w-full font-bold" 
