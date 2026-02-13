@@ -99,13 +99,14 @@ ChartContainer.displayName = "Chart"
 
 const ChartLegend = RechartsPrimitive.Legend
 
-const ChartLegendContent = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div"> &
-    React.ComponentProps<typeof RechartsPrimitive.Legend> & {
-      payload?: any[]
-    }
->(
+interface ChartLegendContentProps
+  extends React.ComponentProps<"div">,
+    Omit<React.ComponentProps<typeof RechartsPrimitive.Legend>, "formatter"> {
+  payload?: any[]
+  formatter?: (value: any, entry: any, index?: number) => React.ReactNode
+}
+
+const ChartLegendContent = React.forwardRef<HTMLDivElement, ChartLegendContentProps>(
   (
     { className, formatter, payload = [], onMouseEnter, onMouseLeave, onClick },
     ref
@@ -125,7 +126,7 @@ const ChartLegendContent = React.forwardRef<
         )}
         onMouseLeave={() => onMouseLeave?.({} as any)}
       >
-        {payload.map((item) => {
+        {payload.map((item, i) => {
           const key = item.dataKey as string
           const entry = config[key]
           const color = entry?.color ?? item.color
@@ -156,7 +157,7 @@ const ChartLegendContent = React.forwardRef<
                   }}
                 />
               )}
-              {formatter ? formatter(label, [item]) : label}
+              {formatter ? formatter(label, item, i) : label}
             </div>
           )
         })}
