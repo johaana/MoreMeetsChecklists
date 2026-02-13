@@ -7,7 +7,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, FileCheck2 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
 type Props = {
@@ -69,11 +69,11 @@ export default async function BlogPostPage({ params }: Props) {
   const readingTime = Math.ceil(wordCount / 200);
 
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       <SiteHeader />
       <main className="flex-1">
         <article>
-          <header className="relative w-full py-24 md:py-32 lg:py-48 bg-secondary/50">
+          <header className="relative w-full py-24 md:py-32 lg:py-48 bg-secondary/50 overflow-hidden">
             <div className="absolute inset-0">
               {post.imageUrl && (
                 <>

@@ -32,11 +32,18 @@ export interface BadgeProps
   asChild?: boolean
 }
 
-function Badge({ className, variant, asChild = false, ...props }: BadgeProps) {
-  const Comp = asChild ? Slot : "div"
-  return (
-    <Comp className={cn(badgeVariants({ variant }), className)} {...props} />
-  )
-}
+const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
+  ({ className, variant, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "div"
+    return (
+      <Comp
+        ref={ref}
+        className={cn(badgeVariants({ variant }), className)}
+        {...props}
+      />
+    )
+  }
+)
+Badge.displayName = "Badge"
 
 export { Badge, badgeVariants }
