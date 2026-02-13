@@ -80,11 +80,7 @@ export default function MasterAccessClient() {
         );
     }
     
-    const validPacks = allPacks.filter(p => 
-        p.id !== 'master_access' && 
-        p.checklists.length > 0 && 
-        !(p.checklists.length === 1 && p.checklists[0].title.includes("Placeholder"))
-    );
+    const validPacks = allPacks.filter(p => p.id !== 'master_access' && p.checklists.length > 0);
 
     return (
         <div className="container mx-auto px-4 py-8">

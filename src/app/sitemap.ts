@@ -1,1 +1,1 @@
-export default function sitemap() { return []; }
+// redundant file deactivated
