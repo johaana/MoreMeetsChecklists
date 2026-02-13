@@ -87,6 +87,10 @@ export async function GET(req: NextRequest) {
                     moremeets.com
                 </div>
             </div>
-        )
+        ),
+        {
+            width: 1200,
+            height: 630,
+        }
     );
 }

@@ -119,7 +119,7 @@ export default function MasterAccessClient() {
                                 )}
                                 Download .xlsx
                             </Button>
-                        </CardContent>
+                        </CardFooter>
                     </Card>
                 ))}
             </div>

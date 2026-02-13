@@ -5,7 +5,6 @@ import * as RechartsPrimitive from "recharts"
 
 import { cn } from "@/lib/utils"
 
-// Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = {
   light: "",
   dark: ".dark",
@@ -14,7 +13,7 @@ const THEMES = {
 export type ChartConfig = {
   [k in string]: {
     label?: React.ReactNode
-    icon?: React.ComponentType<any>
+    icon?: React.ComponentType<{ className?: string; style?: React.CSSProperties }>
   } & (
     | {
         color?: string
@@ -52,8 +51,6 @@ const ChartContainer = React.forwardRef<
     >["children"]
   }
 >(({ id, className, children, config, ...props }, ref) => {
-  const containerRef = React.useRef<HTMLDivElement>(null)
-
   const chartConfig = React.useMemo(
     () => {
       return Object.fromEntries(
@@ -84,11 +81,11 @@ const ChartContainer = React.forwardRef<
     <ChartContext.Provider value={{ config: chartConfig }}>
       <div
         data-chart
-        ref={containerRef}
         className={cn(
           "flex aspect-video justify-center gap-4 [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke-width='1']]:stroke-transparent [&_.recharts-layer:focus-visible]:outline-none [&_.recharts-polar-axis-tick_text]:fill-muted-foreground [&_.recharts-polar-grid-concentric-polygon]:stroke-border/50 [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-responsive-container]:-mx-2 [&_.recharts-sector[stroke-width='1']]:stroke-transparent [&_.recharts-surface]:outline-none [&_.recharts-tooltip-wrapper]:z-50 [&_.recharts-tooltip-wrapper]:rounded-lg [&_.recharts-tooltip-wrapper]:border [&_.recharts-tooltip-wrapper]:bg-background/95 [&_.recharts-tooltip-wrapper]:text-sm [&_.recharts-tooltip-wrapper]:shadow-lg [&_.recharts-tooltip-wrapper]:backdrop-blur-sm",
           className
         )}
+        ref={ref}
         {...props}
       >
         <RechartsPrimitive.ResponsiveContainer>
@@ -100,67 +97,12 @@ const ChartContainer = React.forwardRef<
 })
 ChartContainer.displayName = "Chart"
 
-const ChartStyle = React.forwardRef<
-  HTMLStyleElement,
-  React.ComponentProps<"style"> & { config: ChartConfig }
->(({ config }, ref) => {
-  const [isMounted, setIsMounted] = React.useState(false)
-  const context = React.useContext(ChartContext)
-  const theme = context?.config ?? config
-
-  React.useEffect(() => {
-    setIsMounted(true)
-  }, [])
-
-  const css = React.useMemo(() => {
-    if (!theme) {
-      return ""
-    }
-    const styles = Object.entries(theme).map(([key, value]) => {
-      const color = (value as any).color
-      const themeData = value.theme
-
-      if (color) {
-        return `
-[data-chart] .color-${key} {
---color-${key}: ${color};
-}
-`
-      }
-
-      if (themeData) {
-        return Object.entries(themeData)
-          .map(([name, color]) => {
-            const prefix = THEMES[name as keyof typeof THEMES]
-            return `
-${prefix} [data-chart] .color-${key} {
---color-${key}: ${color};
-}
-`
-          })
-          .join("\n")
-      }
-      return ""
-    })
-
-    return styles.join("\n")
-  }, [theme])
-
-  if (!css || !isMounted) {
-    return null
-  }
-
-  return <style ref={ref} dangerouslySetInnerHTML={{ __html: css }} />
-})
-ChartStyle.displayName = "ChartStyle"
-
 const ChartLegend = RechartsPrimitive.Legend
 
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> &
     React.ComponentProps<typeof RechartsPrimitive.Legend> & {
-      // payload is not in the types
       payload?: any[]
     }
 >(
@@ -230,7 +172,6 @@ const ChartTooltipContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
     React.ComponentProps<"div"> & {
-      // payload is not in the types
       payload?: any[]
       hideLabel?: boolean
       hideIndicator?: boolean
@@ -374,7 +315,6 @@ export {
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
-  ChartStyle,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,

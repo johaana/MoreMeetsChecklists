@@ -1,7 +1,7 @@
 import PackClientPage from "./pack-client-page";
 import { premiumPacks } from '@/lib/premium-packs';
 import { notFound } from 'next/navigation';
-import type { Metadata, ResolvingMetadata } from 'next';
+import type { Metadata } from 'next';
 import PricingClient from "../pricing-client";
 import { FaqSection } from "@/components/layout/faq-section";
 import { Footer } from "@/components/layout/footer";
@@ -16,7 +16,6 @@ const packImageMap: Record<string, string> = {
   'film_production_pack': 'https://i.postimg.cc/zvqmVdT5/movie-production-1.jpg',
   'ott_platform_pack': 'https://i.postimg.cc/90c3rxyh/ott-platforms.webp',
   'sports_clubs_stadium_operations_pack': 'https://i.postimg.cc/WpYSfqRk/sports-club-management.jpg',
-  'fitness_centers_gyms_pack': 'https://i.postimg.cc/mDyrvM7x/gym-2.jpg',
   'cinema_operations_pack': 'https://i.postimg.cc/nrn8Cdqj/cinema-hall-1.jpg',
   'pharmacy_ops_pack': 'https://i.postimg.cc/MHzkvsV4/pharmacy.jpg',
   'healthcare_and_hospital_operations': 'https://i.postimg.cc/Gtb0HMvR/hospital1.webp',
@@ -41,8 +40,7 @@ const packImageMap: Record<string, string> = {
 };
 
 export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
+  { params }: Props
 ): Promise<Metadata> {
   const { id } = await params;
   const pack = premiumPacks.find((p) => p.id === id);
@@ -96,35 +94,8 @@ export default async function Page({ params }: Props) {
   
   const heroImageUrl = packImageMap[id] || defaultHeroImageUrl;
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
-  const ogUrl = new URL(`${siteUrl}/api/og`);
-  ogUrl.searchParams.set('type', 'pack');
-  ogUrl.searchParams.set('id', pack.id);
-  
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: pack.title,
-    description: `Download the complete ${pack.title} checklist pack. One-time purchase.`,
-    image: ogUrl.toString(),
-    brand: {
-      '@type': 'Brand',
-      name: 'MoreMeets™',
-    },
-    offers: {
-        '@type': 'Offer',
-        price: pack.priceINR.toString(),
-        priceCurrency: 'INR',
-        availability: 'https://schema.org/InStock',
-      },
-  };
-  
   return (
     <>
-       <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <PackClientPage pack={pack} heroImageUrl={heroImageUrl} />
       <PricingClient pack={pack} />
       <FaqSection />
