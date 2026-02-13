@@ -1,1 +1,1 @@
-// Redundant metadata route deactivated.
+// Redundant sitemap path deactivated.

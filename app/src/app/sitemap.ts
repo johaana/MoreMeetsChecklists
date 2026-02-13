@@ -1,1 +1,1 @@
-// redundant file deactivated
+// Redundant sitemap path deactivated.

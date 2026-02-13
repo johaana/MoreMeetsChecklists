@@ -1,1 +1,3 @@
-{}
+{
+  "comment": "Redundant package file deactivated to prevent build recursion."
+}

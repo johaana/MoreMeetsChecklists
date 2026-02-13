@@ -1,5 +1,5 @@
 import { ImageResponse } from 'next/og';
-import { NextRequest } from 'next/request';
+import { NextRequest } from 'next/server';
 import { premiumPacks } from '@/lib/premium-packs';
 import { blogPosts } from '@/lib/blog-posts';
 import { CheckSquare } from 'lucide-react';
