@@ -2,218 +2,164 @@
 [
   {
     "id": "pack-enterprise_risk_cybersecurity_pack",
-    "description": "High-tech cybersecurity data center.",
-    "imageUrl": "https://picsum.photos/seed/cyber_security_99/1200/800",
+    "description": "Enterprise Risk & Cybersecurity Pack",
+    "imageUrl": "https://i.postimg.cc/bJynvr9B/Cybersecurity.webp",
     "imageHint": "cybersecurity server"
   },
   {
     "id": "pack-hotels_and_resorts",
-    "description": "Luxury hotel room and housekeeping excellence.",
-    "imageUrl": "https://picsum.photos/seed/hotel_luxury_88/1200/800",
+    "description": "Hotels & Resorts Operations Pack",
+    "imageUrl": "https://picsum.photos/seed/hotel_ops_pro/1200/800",
     "imageHint": "luxury suite"
   },
   {
     "id": "pack-restaurants",
-    "description": "Professional commercial kitchen.",
-    "imageUrl": "https://picsum.photos/seed/kitchen_pro_77/1200/800",
+    "description": "Restaurant Operations Pack",
+    "imageUrl": "https://i.postimg.cc/gjH9T235/arpora1.jpg",
     "imageHint": "chef kitchen"
   },
   {
     "id": "pack-fashion_and_apparel_retail",
-    "description": "Modern fashion retail store floor.",
-    "imageUrl": "https://picsum.photos/seed/retail_fashion_66/1200/800",
+    "description": "Fashion & Apparel Retail Operations Pack",
+    "imageUrl": "https://picsum.photos/seed/fashion_retail_66/1200/800",
     "imageHint": "clothing rack"
   },
   {
     "id": "pack-jewelry_and_luxury_retail",
-    "description": "High-end luxury jewelry display.",
-    "imageUrl": "https://picsum.photos/seed/luxury_jewel_55/1200/800",
+    "description": "Jewelry & Luxury Retail Pack",
+    "imageUrl": "https://i.postimg.cc/Hnr6vBRV/pink-panther1.avif",
     "imageHint": "diamond jewelry"
   },
   {
     "id": "pack-electronics_showroom_pack",
-    "description": "Modern electronics showroom.",
+    "description": "Electronics Showroom Operations Pack",
     "imageUrl": "https://picsum.photos/seed/electronic_pro_44/1200/800",
     "imageHint": "modern television"
   },
   {
     "id": "pack-supermarket_grocery_retail_pack",
-    "description": "Organized supermarket aisles.",
+    "description": "Supermarket & Grocery Retail Operations Pack",
     "imageUrl": "https://picsum.photos/seed/grocery_pro_33/1200/800",
     "imageHint": "grocery shelf"
   },
   {
     "id": "pack-facility_management_blueprint",
-    "description": "Modern corporate office building.",
-    "imageUrl": "https://picsum.photos/seed/office_pro_22/1200/800",
+    "description": "Facility Management Blueprint",
+    "imageUrl": "https://picsum.photos/seed/facility_pro_22/1200/800",
     "imageHint": "modern skyscraper"
   },
   {
     "id": "pack-corporate_legal_compliance_starter_kit",
-    "description": "Professional corporate boardroom.",
+    "description": "Corporate Legal & Compliance Starter Kit",
     "imageUrl": "https://picsum.photos/seed/legal_pro_11/1200/800",
     "imageHint": "corporate boardroom"
   },
   {
     "id": "pack-healthcare_and_hospital_operations",
-    "description": "Professional hospital ward and equipment.",
+    "description": "Healthcare & Hospital Operations Pack",
     "imageUrl": "https://picsum.photos/seed/hospital_pro_00/1200/800",
     "imageHint": "medical ward"
   },
   {
     "id": "pack-pharmacy_ops_pack",
-    "description": "Clean and organized pharmacy store.",
+    "description": "Pharmacy Operations Pack",
     "imageUrl": "https://picsum.photos/seed/pharmacy_pro_99/1200/800",
     "imageHint": "pharmacy counter"
   },
   {
     "id": "pack-school_operations_pack",
-    "description": "Modern school building and campus.",
-    "imageUrl": "https://picsum.photos/seed/school_pro_91/1200/800",
+    "description": "School Operations Pack",
+    "imageUrl": "https://i.postimg.cc/hGC6S2JD/school1.jpg",
     "imageHint": "school hallway"
   },
   {
     "id": "pack-university_college_ops",
-    "description": "University campus and lecture hall.",
-    "imageUrl": "https://picsum.photos/seed/university_pro_82/1200/800",
+    "description": "University & College Operations Pack",
+    "imageUrl": "https://i.postimg.cc/9FJnXwtj/kota-student-crisis.avif",
     "imageHint": "university library"
   },
   {
     "id": "pack-film_production_pack",
-    "description": "Professional film production set.",
-    "imageUrl": "https://picsum.photos/seed/film_pro_73/1200/800",
+    "description": "Film & OTT Production Pack",
+    "imageUrl": "https://i.postimg.cc/ZRFZzbXT/sardar-2.webp",
     "imageHint": "film camera"
   },
   {
     "id": "pack-ott_platform_pack",
-    "description": "Streaming data infrastructure.",
+    "description": "OTT Streaming Platform Operations Pack",
     "imageUrl": "https://picsum.photos/seed/data_pro_64/1200/800",
     "imageHint": "server rack"
   },
   {
     "id": "pack-sports_clubs_stadium_operations_pack",
-    "description": "Modern sports stadium and pitch.",
-    "imageUrl": "https://picsum.photos/seed/stadium_pro_55/1200/800",
+    "description": "Sports Clubs & Stadium Operations Pack",
+    "imageUrl": "https://i.postimg.cc/FRWPx2PW/hillsborough-disaster2.webp",
     "imageHint": "stadium pitch"
   },
   {
     "id": "pack-cinema_operations_pack",
-    "description": "Movie theater auditorium.",
-    "imageUrl": "https://picsum.photos/seed/cinema_pro_46/1200/800",
+    "description": "Cinema & Multiplex Operations Pack",
+    "imageUrl": "https://i.postimg.cc/brgxqbnV/Uphaar-Cinema-Hall.avif",
     "imageHint": "movie theater"
   },
   {
     "id": "pack-theme_park_ops_pack",
-    "description": "Amusement park rides and safety.",
-    "imageUrl": "https://picsum.photos/seed/amuse_pro_37/1200/800",
+    "description": "Theme Park Operations Pack",
+    "imageUrl": "https://i.postimg.cc/XqjWjM04/stardust-racers.webp",
     "imageHint": "amusement ride"
   },
   {
     "id": "pack-logistics_warehouse_pack",
-    "description": "Busy logistics warehouse racks.",
-    "imageUrl": "https://picsum.photos/seed/logistics_pro_28/1200/800",
+    "description": "Logistics & Warehouse Operations Pack",
+    "imageUrl": "https://i.postimg.cc/6q8MbYgW/kfc.jpg",
     "imageHint": "warehouse shelves"
   },
   {
     "id": "pack-manufacturing_operations_ehs_pack",
-    "description": "Manufacturing factory floor.",
-    "imageUrl": "https://picsum.photos/seed/factory_pro_19/1200/800",
+    "description": "Manufacturing Operations & EHS Pack",
+    "imageUrl": "https://i.postimg.cc/C5RcrmXp/boeing-door-plug.avif",
     "imageHint": "factory machine"
   },
   {
     "id": "pack-food_manufacturing_ops",
-    "description": "Food production facility.",
+    "description": "Food Manufacturing Operations Pack",
     "imageUrl": "https://picsum.photos/seed/food_pro_01/1200/800",
     "imageHint": "food processing"
   },
   {
     "id": "pack-bakery_confectionery_pack",
-    "description": "Professional bakery and ovens.",
+    "description": "Bakery & Confectionery Operations Pack",
     "imageUrl": "https://picsum.photos/seed/bakery_pro_92/1200/800",
     "imageHint": "bakery display"
   },
   {
     "id": "pack-animal_shelter_pack",
-    "description": "Compassionate animal shelter care.",
+    "description": "Animal Shelter Operations Pack",
     "imageUrl": "https://picsum.photos/seed/shelter_pro_83/1200/800",
     "imageHint": "puppy shelter"
   },
   {
     "id": "pack-franchise_operations_pack",
-    "description": "Standardized franchise storefront.",
+    "description": "Franchise Operations Pack",
     "imageUrl": "https://picsum.photos/seed/franchise_pro_74/1200/800",
     "imageHint": "franchise storefront"
   },
   {
     "id": "blog-goa-fire",
-    "description": "Fire emergency and safety analysis.",
-    "imageUrl": "https://picsum.photos/seed/fire_safe_65/1200/800",
+    "description": "Goa Fire Analysis",
+    "imageUrl": "https://i.postimg.cc/vTtRNZ5W/arpora2-birch.webp",
     "imageHint": "fire emergency"
   },
   {
     "id": "blog-boeing",
-    "description": "Aviation manufacturing quality control.",
-    "imageUrl": "https://picsum.photos/seed/aviation_safe_56/1200/800",
+    "description": "Boeing QC Issues",
+    "imageUrl": "https://i.postimg.cc/C5RcrmXp/boeing-door-plug.avif",
     "imageHint": "airplane assembly"
   },
   {
     "id": "blog-deepfake",
-    "description": "Cybersecurity and digital fraud concept.",
-    "imageUrl": "https://picsum.photos/seed/fraud_safe_47/1200/800",
+    "description": "Deepfake Fraud Analysis",
+    "imageUrl": "https://i.postimg.cc/90DLgJK4/deepfake-web.webp",
     "imageHint": "digital security"
-  },
-  {
-    "id": "blog-pink-panther",
-    "description": "Luxury jewelry store heist concept.",
-    "imageUrl": "https://picsum.photos/seed/pink_panther_11/1200/800",
-    "imageHint": "jewelry store"
-  },
-  {
-    "id": "blog-kfc",
-    "description": "Fast food logistics and supply chain.",
-    "imageUrl": "https://picsum.photos/seed/kfc_supply_22/1200/800",
-    "imageHint": "chicken restaurant"
-  },
-  {
-    "id": "blog-dominoz",
-    "description": "Digital data security and privacy.",
-    "imageUrl": "https://picsum.photos/seed/dominoz_data_33/1200/800",
-    "imageHint": "pizza shop"
-  },
-  {
-    "id": "blog-kota",
-    "description": "Student wellness and education pressure.",
-    "imageUrl": "https://picsum.photos/seed/student_well_44/1200/800",
-    "imageHint": "student study"
-  },
-  {
-    "id": "blog-change-healthcare",
-    "description": "Healthcare data and cybersecurity.",
-    "imageUrl": "https://picsum.photos/seed/healthcare_sec_55/1200/800",
-    "imageHint": "medical computer"
-  },
-  {
-    "id": "blog-hillsborough",
-    "description": "Stadium crowd management analysis.",
-    "imageUrl": "https://picsum.photos/seed/hillsborough_safe_66/1200/800",
-    "imageHint": "stadium crowd"
-  },
-  {
-    "id": "blog-forgotten-child",
-    "description": "School bus safety inspection.",
-    "imageUrl": "https://picsum.photos/seed/school_bus_77/1200/800",
-    "imageHint": "school bus"
-  },
-  {
-    "id": "blog-red-sea",
-    "description": "Global maritime shipping crisis.",
-    "imageUrl": "https://picsum.photos/seed/red_sea_ship_88/1200/800",
-    "imageHint": "cargo ship"
-  },
-  {
-    "id": "blog-uphaar",
-    "description": "Cinema fire safety investigation.",
-    "imageUrl": "https://picsum.photos/seed/uphaar_cinema_99/1200/800",
-    "imageHint": "cinema fire"
   }
 ]
