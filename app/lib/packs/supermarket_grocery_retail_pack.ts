@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const supermarket_grocery_retail_pack: PremiumPack = {

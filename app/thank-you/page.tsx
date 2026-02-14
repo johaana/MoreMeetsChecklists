@@ -10,7 +10,7 @@ import { verifyRazorpayPayment } from '@/packs/actions';
 import { SiteHeader } from "@/components/layout/header";
 import { handleDownload } from '@/lib/download';
 import type { PremiumPack } from "@/lib/premium-packs";
-import type { IndividualChecklist } from "@/lib/individual-checklists";
+import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,7 +22,6 @@ import {
 } from '@/components/ui/alert-dialog';
 import { Suspense } from "react";
 import { premiumPacks } from "@/lib/premium-packs";
-import { individualChecklists } from "@/lib/individual-checklists";
 
 
 function ThankYouContent() {
@@ -61,8 +60,7 @@ function ThankYouContent() {
             hasTriggeredDownload.current = true;
         }
       } else {
-        // Corrected nullish coalescing to satisfy string | null requirement
-        setError(result.error ?? "An unexpected verification error occurred.");
+        setError(result.error ?? "Verification failed. Please contact support.");
       }
       
       setIsLoading(false);
