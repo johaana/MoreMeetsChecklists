@@ -98,7 +98,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const instructionsWs = utils.aoa_to_sheet([]);
     
     utils.sheet_add_aoa(instructionsWs, [[instructionsData[0][0]]], { origin: 'A1' });
-    instructionsWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
+    if (!instructionsWs['!merges']) instructionsWs['!merges'] = [];
+    instructionsWs['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } });
+    
     utils.sheet_add_aoa(instructionsWs, [[instructionsData[2][0]]], { origin: 'A3' });
     instructionsWs['!merges'].push({ s: { r: 2, c: 0 }, e: { r: 2, c: 3 } });
 
@@ -113,18 +115,21 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     currentRow++;
     utils.sheet_add_aoa(instructionsWs, [[instructionsData[7][0]]], { origin: {r: currentRow-1, c: 0} });
+    if (!instructionsWs['!merges']) instructionsWs['!merges'] = [];
     instructionsWs['!merges'].push({ s: { r: currentRow - 1, c: 0 }, e: { r: currentRow - 1, c: 3 } });
     currentRow++;
 
     instructionsData.slice(8, 11).forEach(row => {
         utils.sheet_add_aoa(instructionsWs, [[row[0]]], { origin: { r: currentRow - 1, c: 0 } });
         utils.sheet_add_aoa(instructionsWs, [[row[1]]], { origin: { r: currentRow - 1, c: 1 } });
+        if (!instructionsWs['!merges']) instructionsWs['!merges'] = [];
         instructionsWs['!merges'].push({ s: { r: currentRow - 1, c: 1 }, e: { r: currentRow - 1, c: 3 } });
         currentRow++;
     });
 
     currentRow++;
     utils.sheet_add_aoa(instructionsWs, [[instructionsData[12][0]]], { origin: { r: currentRow - 1, c: 0 } });
+    if (!instructionsWs['!merges']) instructionsWs['!merges'] = [];
     instructionsWs['!merges'].push({ s: { r: currentRow - 1, c: 0 }, e: { r: currentRow - 1, c: 3 } });
     currentRow++;
 
@@ -133,6 +138,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         const cell = row[1] as CellObject;
         cell.s = { ...cell.s, alignment: { ...cell.s?.alignment, wrapText: true } };
         utils.sheet_add_aoa(instructionsWs, [[cell]], { origin: { r: currentRow - 1, c: 1 } });
+        if (!instructionsWs['!merges']) instructionsWs['!merges'] = [];
         instructionsWs['!merges'].push({ s: { r: currentRow - 1, c: 1 }, e: { r: currentRow - 1, c: 3 } });
         currentRow++;
     });
