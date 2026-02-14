@@ -141,7 +141,7 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
                 { id: "SC-WM-07", description: "Check for 'TARE' function being used correctly to zero out container weight.", priority: "High", riskLevel: "Medium", consequence: "Incorrect tare weight leads to inaccurate pricing.", proof: "Spot Check" },
                 { id: "SC-WM-08", description: "Have a clear procedure for handling a malfunctioning scale.", priority: "High", riskLevel: "High", consequence: "Using a faulty scale is illegal and unfair to customers.", proof: "Malfunction SOP" },
                 { id: "SC-WM-09", description: "Maintain all calibration and certification records for inspection.", priority: "High", riskLevel: "High", consequence: "Failure to produce records during an inspection can lead to penalties.", proof: "Record File" },
-                { id:- "SC-WM-10", description: "Report any scale damage or malfunction to maintenance immediately.", priority: "High", riskLevel: "High", consequence: "Delays in repair can lead to extended use of a faulty scale.", proof: "Maintenance Request Log" }
+                { id: "SC-WM-10", description: "Report any scale damage or malfunction to maintenance immediately.", priority: "High", riskLevel: "High", consequence: "Delays in repair can lead to extended use of a faulty scale.", proof: "Maintenance Request Log" }
             ]
         },
         {
@@ -186,5 +186,3 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
         }
     ]
 };
-
-    
