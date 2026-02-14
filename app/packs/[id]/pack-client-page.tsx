@@ -70,7 +70,7 @@ const GlobalStandardsSection = ({ pack }: { pack: PremiumPack }) => {
     );
 };
 
-export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPack, heroImageUrl: string }) {
+export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack: PremiumPack, heroImageUrl: string, imageHint: string }) {
   const audience = pack.whoIsItFor || ["Industry Professionals"];
   const totalChecklists = pack.checklists?.length || 0;
   const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
@@ -106,6 +106,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                   <img
                     src={heroImageUrl}
                     alt={pack.title}
+                    data-ai-hint={imageHint}
                     className="rounded-2xl shadow-2xl object-cover aspect-[3/2] w-full h-auto"
                   />
                 </div>

@@ -10,17 +10,16 @@ interface RazorpayButtonProps {
 
 export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, className }) => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const initializedRef = useRef<string | null>(null);
+    const scriptInjectedRef = useRef<boolean>(false);
 
     useEffect(() => {
         if (!containerRef.current || !paymentId) return;
         
-        // Prevent re-initialization if the paymentId hasn't changed
-        // This is critical to avoid "Too many requests" errors from Razorpay
-        if (initializedRef.current === paymentId) return;
+        // Prevent redundant script injection
+        if (scriptInjectedRef.current) return;
 
         const container = containerRef.current;
-        container.innerHTML = ''; // Clear previous button content
+        container.innerHTML = ''; 
 
         const form = document.createElement('form');
         const script = document.createElement('script');
@@ -29,21 +28,21 @@ export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, class
         script.setAttribute('data-payment_button_id', paymentId);
         script.async = true;
 
+        // Script will automatically render the button inside the form
         form.appendChild(script);
         container.appendChild(form);
         
-        initializedRef.current = paymentId;
+        scriptInjectedRef.current = true;
 
         return () => {
-            // Optional: Cleanup logic if needed when component unmounts
-            // initializedRef.current = null;
+            // Optional: container.innerHTML = '';
         };
     }, [paymentId]);
 
     return (
         <div 
             ref={containerRef} 
-            className={className || "w-full flex justify-center min-h-[60px]"} 
+            className={className || "w-full flex justify-center min-h-[60px] razorpay-container"} 
         />
     );
 };

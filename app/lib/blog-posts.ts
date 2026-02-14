@@ -1,5 +1,6 @@
 
 import { FileCheck2 } from 'lucide-react';
+import images from './placeholder-images.json';
 
 export type BlogPost = {
   slug: string;
@@ -12,7 +13,11 @@ export type BlogPost = {
   relatedChecklistId?: string;
   content: string;
   imageUrl?: string;
+  imageHint?: string;
 };
+
+const getImageUrl = (id: string) => images.find(img => img.id === id)?.imageUrl;
+const getImageHint = (id: string) => images.find(img => img.id === id)?.imageHint;
 
 export const blogPosts: BlogPost[] = [
     {
@@ -22,7 +27,8 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Fire Safety", "Event Safety", "Hospitality", "Restaurants", "Risk Management"],
       relatedPackId: "restaurants",
-      imageUrl: "https://picsum.photos/seed/fire-99/1200/630",
+      imageUrl: getImageUrl('blog-goa-fire'),
+      imageHint: getImageHint('blog-goa-fire'),
       description: "A devastating fire at Birch by Romeo Lane in Goa claimed 25 lives. This was not fate. It was a catastrophic, preventable failure. We have a moral obligation to deconstruct how this happened.",
       content: `
         <p class="lead">At 12:30 a.m. on December 7, 2025, a packed nightclub in Arpora, Goa — Birch by Romeo Lane — went from celebration to catastrophe in under 90 seconds. A gas cylinder reportedly ignited a fast-spreading fire. Music stopped. Lights went out. Panic erupted. Staff and guests struggled to escape through narrow, blocked or poorly marked exits. By the time firefighters fought their way in, 25 people were dead — among them tourists, staff members, young adults out for a weekend, families, and visitors who simply wanted a night of joy. This was not an accident. This was a system failure — operational, structural, managerial, and cultural.</p>
@@ -88,7 +94,8 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Film Production", "Safety", "Risk Management", "Stunts"],
       relatedPackId: "film_production_pack",
-      imageUrl: "https://picsum.photos/seed/film-ops-99/1200/630",
+      imageUrl: getImageUrl('pack-film_production_pack'),
+      imageHint: "film set stunt",
       description: "The recent death of a stuntman on the set of Sardar 2 was not a freak accident; it was a preventable tragedy. We break down the professional-grade stunt safety SOPs that every production, big or small, must implement to protect lives and their bottom line.",
       content: `
         <p class="lead">The Indian film industry was recently rocked by the tragic death of a stuntman during the filming of "Sardar 2". While the investigation is ongoing, such incidents are rarely a matter of bad luck. They are almost always the result of a catastrophic breakdown in process. For every high-flying action sequence that wows audiences, there must be a grounded, rigorous, and verifiable safety protocol. When that chain of procedure is broken, the consequences are devastating.</p>
@@ -151,7 +158,8 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Theme Parks", "Ride Safety", "Risk Management", "Operations"],
       relatedPackId: "theme_park_ops_pack",
-      imageUrl: "https://picsum.photos/seed/park-ops-99/1200/630",
+      imageUrl: getImageUrl('pack-theme_park_ops_pack'),
+      imageHint: "roller coaster safety",
       description: "Universal's decision to reopen the Stardust Racers ride after a fatality puts a spotlight on safety. Reopening isn't enough. Operators need a new playbook. Here are the technical, operational, and human factor SOPs that must be implemented.",
       content: `
         <p class="lead">The reopening of the Stardust Racers ride at Universal's Epic Universe, following a tragic guest fatality, is a moment of critical importance for the entire theme park industry. The incident, and the subsequent investigation, underscores a vital truth: reopening a ride is not just a technical fix. It requires a comprehensive overhaul of the operational and human systems surrounding the attraction to restore public trust and prevent a repeat incident.</p>
@@ -193,96 +201,6 @@ export const blogPosts: BlogPost[] = [
         <p>In the aftermath of an incident, your park's greatest defense—legally and reputationally—is its ability to produce clear, verifiable records that prove due diligence. Every check, every drill, every piece of training must be logged. Reopening a ride is a promise to the public that you have not just fixed a part, but have improved the entire system. Our <a href="/packs/theme_park_ops_pack" class="text-accent underline">Theme Park Operations Pack</a> provides the audit-ready Excel templates to build and prove that system.</p>
       `
     },
-     {
-      slug: 'delhi-fun-n-food-park-tragedy-ride-sops',
-      title: "Delhi Rollercoaster Death: A Seatbelt Failure and a Devastating Lesson in Ride Safety SOPs",
-      publishedDate: "2025-12-04",
-      author: "MoreMeets Team",
-      tags: ["Theme Parks", "Ride Safety", "Maintenance", "Compliance"],
-      relatedPackId: "theme_park_ops_pack",
-      imageUrl: "https://picsum.photos/seed/park-ops-99/1200/630",
-      description: "A fatal accident at Delhi's Fun N Food Village was caused by a seatbelt failure. This was not a 'freak accident'. It was a maintenance failure. Learn the critical ride inspection SOPs that every amusement park must operate to prevent these 'never events'.",
-      content: `
-        <p class="lead">A day of fun at Delhi's Fun N Food Village turned to tragedy when a rider was flung from a rollercoaster, an incident attributed to a seatbelt and fastener failure. This heartbreaking event is a stark reminder that in the world of amusement parks, safety is not a suggestion; it is an absolute, non-negotiable requirement. Incidents like this are rarely 'freak accidents' but are almost always the final, tragic outcome of a chain of procedural failures.</p>
-        <p>For park operators, engineers, and state regulators, this incident is a critical case study. The difference between a thrilling ride and a fatal one lies in the rigor of a park's daily operations and maintenance culture. The key to preventing these 'never events' is a system of verifiable, checklist-driven Standard Operating Procedures (SOPs).</p>
-        
-        <div class="failure-analysis-section">
-          <h3>The 5 Pillars of a World-Class Ride Safety System</h3>
-          <p>A safe ride is not an accident. It is the result of a disciplined, multi-layered system of checks and balances. Here are the five pillars that form the foundation of that system.</p>
-        </div>
-
-        <div class="intervention-box">
-          <h4><FileCheck2 className="w-5 h-5"/> 1. Daily Operator Pre-Start Checks</h4>
-          <p>Before the first guest ever boards, the ride operator must perform a tactile, physical inspection of every single safety restraint. This includes pulling on every seatbelt, checking every buckle, and verifying that all sensors are functional. This is not a quick glance; it is a logged, signed-off procedure. Our 'Top 15 Seatbelt & Restraint Tests' checklist is a direct implementation of this pillar.</p>
-        </div>
-
-        <div class="intervention-box">
-          <h4><FileCheck2 className="w-5 h-5"/> 2. The Preventive Maintenance Calendar</h4>
-          <p>Metal fatigues, bolts loosen, and hydraulic lines wear out. A Preventive Maintenance SOP schedules regular, detailed inspections of all mechanical and structural components based on manufacturer guidelines and ride usage. This moves maintenance from 'fix it when it breaks' to 'fix it before it breaks'.</p>
-        </div>
-
-        <div class="intervention-box">
-          <h4><FileCheck2 className="w-5 h-5"/> 3. Incident Investigation & Root Cause Protocol</h4>
-          <p>When a near-miss occurs—a restraint that briefly jams, a sensor that flickers—it must be logged, investigated, and a root cause identified. Ignoring these small warnings is how large accidents happen. A formal protocol ensures that every 'small' problem is treated as a potential catastrophe in waiting.</p>
-        </div>
-
-        <div class="intervention-box">
-          <h4><FileCheck2 className="w-5 h-5"/> 4. Vendor & Parts Traceability</h4>
-          <p>If a bolt fails, was it an authentic part from the manufacturer or a cheaper, uncertified replacement? A robust SOP requires logging the serial numbers and certificates for all critical spare parts, creating a clear chain of custody and accountability in your supply chain.</p>
-        </div>
-
-         <div class="intervention-box">
-          <h4><FileCheck2 className="w-5 h-5"/> 5. Operator Training & Certification</h4>
-          <p>A ride operator must be more than a button-pusher. They must be trained and certified on emergency stop procedures, guest screening, and identifying unusual ride noises or vibrations. Regular drills ensure this knowledge is fresh and instantly accessible in a crisis.</p>
-           <div class="embedded-cta">Our <strong>Theme Park & Amusement Park Operations Pack</strong> includes detailed Excel checklists for all five of these pillars. <a href="/packs/theme_park_ops_pack">Download a sample inspection log now &rarr;</a></div>
-        </div>
-
-        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">The ROI of Safety: Risk vs. Ruin</h3>
-        <p>The cost of implementing a robust SOP program is negligible compared to the cost of a single major incident: multi-crore lawsuits, permanent brand damage, and the immeasurable cost of a human life. As states like Gujarat rightly tighten regulations, having a documented, auditable safety system is not just best practice—it is the price of your license to operate.</p>
-      `
-    },
-    {
-      slug: 'anupamaa-set-fire-production-safety-post-mortem',
-      title: "Could a Checklist Have Prevented the Anupamaa Set Fire? A Production Safety Post-Mortem",
-      publishedDate: "2025-12-03",
-      author: "MoreMeets Team",
-      tags: ["Film Production", "Safety", "Risk Management", "Fire Safety"],
-      relatedPackId: "film_production_pack",
-      imageUrl: "https://picsum.photos/seed/fire-99/1200/630",
-      description: "Fire on TV sets is avoidable. We break down the Anupamaa set fire, what went wrong, and the simple SOPs every production unit should adopt today to prevent shoot delays, insurance claims, and reputational damage.",
-      content: `
-        <p class="lead">In early 2023, a major fire broke out on the set of the popular TV show "Anupamaa." While thankfully no casualties were reported, the incident resulted in significant financial loss and production delays. For production houses and line producers, this event serves as a critical case study. Set fires are not a random act of fate; they are almost always a predictable outcome of gaps in operational safety procedures.</p>
-        
-        <div class="failure-analysis-section">
-          <h3>Why Studio Fires Are a Systemic Risk</h3>
-          <p>A film set is a perfect storm of fire risk. High-wattage lighting, temporary and often flammable set decorations, overloaded electrical circuits, and exhausted crews create an environment where a small spark can become an inferno in minutes. The key to prevention is not hope, but a disciplined, checklist-driven safety culture.</p>
-        </div>
-
-        <div class="intervention-box">
-          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 1: Electrical Overload & Faulty Wiring</h4>
-          <p>The most common cause of set fires. Temporary wiring, daisy-chained extension cords, and generators not correctly rated for the load create a massive fire hazard. A simple SOP like a <strong>Daily Electrical Safety Walk</strong>, where a gaffer or safety officer physically inspects and signs off on the electrical setup before crew arrival, is the first line of defense.</p>
-        </div>
-
-        <div class="intervention-box">
-          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 2: Flammable Set Materials</h4>
-          <p>Plywood, fabrics, and plastics used in set construction are highly flammable. A professional production requires a <strong>Temporary Decoration Certification</strong> process. This means all materials must either be inherently flame-retardant or treated with a fire-retardant spray, with certificates kept on file for fire marshal inspection.</p>
-        </div>
-
-        <div class="intervention-box">
-          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 3: No "Fire Lockdown" Protocol</h4>
-          <p>At the end of a long shoot day, who is responsible for powering down the main lighting grid? Who ensures all high-powered equipment is unplugged? A <strong>Set Opening & Closing Fire Lockdown SOP</strong> assigns this responsibility to specific roles (e.g., Gaffer, Key Grip), creating a verifiable chain of command for powering down the set safely.</p>
-        </div>
-
-         <div class="intervention-box">
-          <h4><FileCheck2 className="w-5 h-5"/> Failure Point 4: Poor Emergency Access</h4>
-          <p>Can a fire engine actually get to your set? Are fire exits clearly marked and, more importantly, unobstructed by equipment or props? An <strong>Emergency Access & Contact Map</strong>, posted at every entrance, ensures that in the chaos of a real fire, first responders know exactly where to go and who to contact.</p>
-          <div class="embedded-cta">Our <strong>Film, TV & OTT Production Pack</strong> includes ready-to-use Excel templates for all these critical safety checklists. <a href="/packs/film_production_pack">Protect your production now &rarr;</a></div>
-        </div>
-
-        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">The Real-World Benefits of SOPs</h4>
-        <p>Implementing these checklists isn't just about preventing a fire. It has direct financial benefits. Insurance providers often offer lower premiums for productions that can demonstrate a robust, documented safety program. More importantly, it ensures business continuity. The cost of a single day's shoot being cancelled due to a preventable incident far exceeds the cost of implementing these simple, effective procedures.</p>
-      `
-    },
     {
       slug: 'deepfake-cfo-scam-arup',
       title: `"I Thought It Was My Boss." How an AI Ghost Stole $25 Million Over a Single Video Call.`,
@@ -290,7 +208,8 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Cybersecurity", "Finance", "Fraud", "Risk Management"],
       relatedPackId: "enterprise_risk_cybersecurity_pack",
-      imageUrl: "https://picsum.photos/seed/cyber-fraud-99/1200/630",
+      imageUrl: getImageUrl('blog-deepfake'),
+      imageHint: "digital security fraud",
       description: "In early 2024, a finance worker at multinational firm Arup was tricked into sending $25.6 million by a sophisticated deepfake video call of his CFO. This new-age fraud bypasses traditional security, and only robust, human-centric financial SOPs can stop it.",
       content: `
         <p class="lead">In February 2024, the business world was shaken by a story straight out of a science fiction movie. A finance employee at the multinational firm Arup received an email from his Chief Financial Officer, requesting his presence on a video call to discuss a confidential transaction. When he joined, he saw his CFO and other colleagues on the screen. They looked and sounded exactly as they should. They instructed him to process a series of urgent transfers totaling HK$200 million (US$25.6 million). He complied.</p>
@@ -317,51 +236,6 @@ export const blogPosts: BlogPost[] = [
 
         <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">Conclusion: Process is Your Best Defense Against Advanced Threats</h3>
         <p>As technology evolves, so do the threats. The emergence of convincing deepfakes means that "seeing is believing" is no longer a safe assumption in business. The only true defense is a robust, disciplined, and consistently enforced operational process that removes single points of failure and builds a culture of verification. Explore the control principles in our <a href="/packs/enterprise_risk_cybersecurity_pack" class="text-accent underline">Enterprise Risk & Cybersecurity Pack</a> to build a financial system resilient enough for the AI age.</p>
-      `
-    },
-    {
-      slug: 'pink-panther-gang-luxury-heist',
-      title: "The Three-Second Distraction That Costs Jewelers a Fortune. How the Pink Panthers Use Your Own Staff to Steal Millions.",
-      publishedDate: "2025-12-01",
-      author: "MoreMeets Team",
-      tags: ["Security", "Luxury Retail", "Theft Prevention", "Risk Management"],
-      relatedPackId: "jewelry_and_luxury_retail",
-      imageUrl: "https://picsum.photos/seed/luxury-99/1200/630",
-      description: "The legendary Pink Panther gang doesn't use brute force; they use intelligence to exploit human behavior and procedural loopholes in luxury stores. This analysis reveals how their methods work and why simple, rigid checklists are their kryptonite.",
-      content: `
-        <p class="lead">They are the stuff of legend: the Pink Panthers, a network of audacious jewel thieves responsible for over a billion dollars in heists from Dubai to Tokyo. Their methods are cinematic, intelligent, and famously non-violent. They don't blow up vaults; they exploit the single greatest vulnerability in any luxury retail store: human process.</p>
-        <p>The Pink Panthers are masters of social engineering. They "case" a store for days, observing how staff handle high-value items, when they are distracted, and where the blind spots in the process lie. They rely on the fact that busy employees under pressure may skip a step. This makes them a perfect case study for why a rigid, checklist-driven security culture is the only effective defense.</p>
-        
-        <div class="failure-analysis-section">
-          <h3>Failure Point 1: The Swap</h3>
-          <p>An employee, eager to make a large commission, is pressured by a seemingly wealthy client into showing multiple high-value items at once. In a moment of created distraction, the thief uses sleight of hand to swap a genuine diamond with a worthless, but identical-looking, counterfeit.</p>
-          <div class="intervention-box">
-            <h4><FileCheck2 className="w-5 h-5"/> Procedural Intervention: "One Item Out" Rule</h4>
-            <p>Our <code>High-Value Transaction SOP</code> mandates a strict "one item out at a time" rule for any item over a certain value. This isn't a suggestion; it's a non-negotiable policy that removes the opportunity for sleight of hand entirely and gives the employee a simple, powerful reason to control the interaction.</p>
-            <div class="embedded-cta">This exact rule is a core component of our <strong>Jewelry & Luxury Retail Pack</strong>. <a href="/packs/jewelry_and_luxury_retail">See the Full Pack &rarr;</a></div>
-          </div>
-        </div>
-
-        <div class="failure-analysis-section">
-          <h3>Failure Point 2: The Distraction</h3>
-          <p>One member of the gang creates a scene or asks a series of complex, time-consuming questions, pulling all staff attention towards them. While all eyes are diverted, an accomplice pockets an item from a momentarily unsecured display case.</p>
-          <div class="intervention-box">
-            <h4><FileCheck2 className="w-5 h-5"/> Procedural Intervention: The "Buddy System"</h4>
-            <p>Our <code>Staff Training on Security Protocols</code> checklist includes training staff to recognize common diversion tactics and to always maintain a "buddy system." During a high-value viewing, one employee is designated as the "asset guardian" whose sole focus is the item, no matter what else is happening in the store. This breaks the distraction tactic.</p>
-          </div>
-        </div>
-
-        <div class="failure-analysis-section">
-          <h3>Failure Point 3: The Verification Skip</h3>
-          <p>After a viewing, a busy employee returns a luxury watch to the vault without re-verifying the serial number, assuming it's the same one. The swap is only discovered days later during a routine inventory count, by which time the trail is cold.</p>
-          <div class="intervention-box">
-            <h4><FileCheck2 className="w-5 h-5"/> Procedural Intervention: Post-Viewing Verification</h4>
-            <p>Our <code>Serialized Item & Watch Management</code> SOP mandates that the serial number of any high-value item must be scanned and verified against the record *immediately* after it is returned from a customer viewing, *before* it is placed back in storage. The swap is detected instantly, while the suspect may still be in or near the store.</p>
-          </div>
-        </div>
-
-        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">Conclusion: Build a Culture of Security, Not Just a Wall</h3>
-        <p>The lesson from the Pink Panthers is that your most valuable assets are not protected by your vault, but by your procedures. A disciplined team that follows a simple, repeatable, and verifiable checklist for every single transaction is more secure than a store with a dozen security guards who are prone to distraction and human error. Implement the checklists from our <a href="/packs/jewelry_and_luxury_retail" class="text-accent underline">Jewelry & Luxury Retail Pack</a> to build a culture of security that even the world's most notorious thieves can't penetrate.</p>
       `
     }
 ];
