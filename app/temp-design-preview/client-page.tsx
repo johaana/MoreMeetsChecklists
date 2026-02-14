@@ -5,7 +5,7 @@ import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
-import { Check, ShieldCheck, Zap, CreditCard, Landmark, Globe, ArrowRight, Sparkles, Info, MapPin, Smartphone } from 'lucide-react';
+import { Check, ShieldCheck, Zap, Globe, ArrowRight, Sparkles, MapPin, Smartphone, CreditCard, Landmark, Shield, Info, Activity } from 'lucide-react';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
 import { Button } from '@/components/ui/button';
 
@@ -50,207 +50,272 @@ const UpiIcon = () => (
 );
 
 export default function TempDesignClientPage() {
-    const [simulatedRegion, setSimulatedRegion] = React.useState<'INDIA' | 'USA'>('INDIA');
+    const [region, setRegion] = React.useState<'INDIA' | 'USA'>('INDIA');
+
+    const IndiaMethods = () => (
+        <div className="flex items-center justify-center gap-3 opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 py-2">
+            <div className="flex flex-col items-center gap-1">
+                <Smartphone className="w-3 h-3" />
+                <span className="text-[7px] font-black uppercase">UPI / GPay</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+                <CreditCard className="w-3 h-3" />
+                <span className="text-[7px] font-black uppercase">Local Cards</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+                <Landmark className="w-3 h-3" />
+                <span className="text-[7px] font-black uppercase">Netbanking</span>
+            </div>
+        </div>
+    );
+
+    const GlobalMethods = () => (
+        <div className="flex items-center justify-center gap-3 opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 py-2">
+            <div className="flex flex-col items-center gap-1">
+                <CreditCard className="w-3 h-3" />
+                <span className="text-[7px] font-black uppercase">Stripe / Cards</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+                <Globe className="w-3 h-3" />
+                <span className="text-[7px] font-black uppercase">PayPal</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+                <ShieldCheck className="w-3 h-3" />
+                <span className="text-[7px] font-black uppercase">Secure Global</span>
+            </div>
+        </div>
+    );
 
     return (
         <main className="flex-1 pb-20" style={{ backgroundColor: 'hsl(var(--bg-primary))' }}>
             {/* INTRO */}
-            <Section id="intro" className="relative overflow-hidden">
+            <Section id="intro" className="relative overflow-hidden border-none">
                 <div className="container px-4 md:px-6 relative z-10">
                     <div className="text-center max-w-4xl mx-auto space-y-6">
                         <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 mb-2">
                             <Sparkles className="w-4 h-4 text-primary" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">V7 Payment Intelligence</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">V7.1 Smart Concierge Lab</span>
                         </div>
-                        <SectionHeadline>The "Smart Gateway" Logic</SectionHeadline>
+                        <SectionHeadline>Refining the "Smart Gateway" Logic</SectionHeadline>
                         <p className="text-xl max-w-2xl mx-auto" style={{color: 'hsl(var(--text-secondary))'}}>
-                           Refining 7.1 to prioritize location detection. The system confirms the region and automatically surfaces the correct payment tools (UPI vs. Global Cards).
+                           Testing 5 variations of the 7.1 architecture. One global product, dynamic payment pipes based on zero-click location detection.
                         </p>
+                        
+                        {/* GLOBAL TOGGLE */}
+                        <div className="flex justify-center items-center gap-4 pt-4">
+                            <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Simulate Detection:</span>
+                            <div className="flex p-1 bg-white/5 rounded-lg border border-white/10">
+                                <Button 
+                                    size="sm" 
+                                    variant={region === 'INDIA' ? 'default' : 'ghost'} 
+                                    onClick={() => setRegion('INDIA')}
+                                    className="text-[10px] h-8 px-4 font-black uppercase tracking-tighter"
+                                >
+                                    India (INR)
+                                </Button>
+                                <Button 
+                                    size="sm" 
+                                    variant={region === 'USA' ? 'default' : 'ghost'} 
+                                    onClick={() => setRegion('USA')}
+                                    className="text-[10px] h-8 px-4 font-black uppercase tracking-tighter"
+                                >
+                                    Global (USD)
+                                </Button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </Section>
 
-            {/* V7 PRIMARY CONCEPTS */}
-            <Section id="v7-concepts" className="bg-alternate-background/20">
+            {/* VARIATIONS GRID */}
+            <Section id="variations" className="bg-alternate-background/20">
                 <div className="container px-4 md:px-6">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                         
-                        {/* 7.1 Refined: The Smart Concierge */}
+                        {/* 7.1.1 The Institutional Guard */}
                         <ConceptCard 
-                            title="7.1 Smart Concierge" 
-                            subtitle="Dynamic detection logic with method-aware trust bar."
-                            badge="Recommended"
+                            title="Variation 7.1.1" 
+                            subtitle="The Institutional Guard"
                             variant="highlight"
+                            badge="High Trust"
                         >
-                            <div className="space-y-6 py-2">
-                                {/* Simulation Toggle */}
-                                <div className="flex justify-center gap-2 mb-4">
-                                    <Button 
-                                        size="sm" 
-                                        variant={simulatedRegion === 'INDIA' ? 'default' : 'outline'} 
-                                        onClick={() => setSimulatedRegion('INDIA')}
-                                        className="text-[9px] h-7 px-2 font-black uppercase tracking-widest"
-                                    >
-                                        Simulate India
-                                    </Button>
-                                    <Button 
-                                        size="sm" 
-                                        variant={simulatedRegion === 'USA' ? 'default' : 'outline'} 
-                                        onClick={() => setSimulatedRegion('USA')}
-                                        className="text-[9px] h-7 px-2 font-black uppercase tracking-widest"
-                                    >
-                                        Simulate USA
-                                    </Button>
-                                </div>
-
-                                <div className="flex items-center gap-2 bg-authority-green/5 border border-authority-green/20 rounded-lg px-3 py-2 animate-pulse">
-                                    <MapPin className="w-3 h-3 text-authority-green" />
-                                    <span className="text-[9px] font-black text-authority-green uppercase tracking-wider">
-                                        Location Detected — Local Payment Enabled: {simulatedRegion === 'INDIA' ? 'India' : 'USA'}
+                            <div className="space-y-6">
+                                <div className="bg-authority-green/10 border border-authority-green/20 rounded-lg p-3 flex items-center gap-3">
+                                    <Shield className="w-4 h-4 text-authority-green" />
+                                    <span className="text-[10px] font-black text-authority-green uppercase tracking-wider">
+                                        Location Verified: {region === 'INDIA' ? 'India Gateway Active' : 'Global Gateway Active'}
                                     </span>
                                 </div>
-
-                                <div className="text-center">
-                                    <p className="text-5xl font-black text-primary-text tracking-tighter">
-                                        {simulatedRegion === 'INDIA' ? '₹5,999' : '$79'}
-                                    </p>
-                                    <p className="text-[10px] text-muted-foreground font-bold mt-1 uppercase tracking-widest">Global Professional License</p>
-                                </div>
-
-                                <div className="space-y-3">
-                                    <ValueCheck text="<strong>Instant Excel Download</strong> (Offline Ready)" />
-                                    <ValueCheck text="<strong>1 Free Expert Customization</strong>" />
-                                </div>
-
-                                <div className="pt-4 space-y-4">
-                                    {/* Trust Bar with Icons */}
-                                    <div className="flex items-center justify-center gap-4 py-2 border-y border-white/5 grayscale opacity-60">
-                                        {simulatedRegion === 'INDIA' ? (
-                                            <>
-                                                <div className="flex items-center gap-1.5">
-                                                    <Smartphone className="w-3 h-3" />
-                                                    <span className="text-[8px] font-black uppercase tracking-tighter">UPI / GPay</span>
-                                                </div>
-                                                <div className="flex items-center gap-1.5">
-                                                    <CreditCard className="w-3 h-3" />
-                                                    <span className="text-[8px] font-black uppercase tracking-tighter">Local Cards</span>
-                                                </div>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <div className="flex items-center gap-1.5">
-                                                    <CreditCard className="w-3 h-3" />
-                                                    <span className="text-[8px] font-black uppercase tracking-tighter">Stripe / Cards</span>
-                                                </div>
-                                                <div className="flex items-center gap-1.5">
-                                                    <Globe className="w-3 h-3" />
-                                                    <span className="text-[8px] font-black uppercase tracking-tighter">PayPal</span>
-                                                </div>
-                                            </>
-                                        )}
-                                    </div>
-
-                                    {simulatedRegion === 'INDIA' ? (
-                                        <div className="relative">
-                                            <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" />
-                                        </div>
-                                    ) : (
-                                        <Button className="w-full h-14 text-lg font-black bg-accent text-bg-primary hover:bg-accent/90">
-                                            Secure Global Checkout <ArrowRight className="ml-2 w-5 h-5" />
-                                        </Button>
-                                    )}
-                                </div>
-
-                                <div className="pt-4 border-t border-white/5 flex flex-col gap-2">
-                                    <div className="flex justify-between items-center">
-                                        <span className="text-[9px] font-bold text-muted-foreground uppercase">Incorrect Region?</span>
-                                        <button className="text-[9px] font-black text-primary underline uppercase tracking-tighter">
-                                            Switch to {simulatedRegion === 'INDIA' ? 'USD ($)' : 'INR (₹)'}
-                                        </button>
-                                    </div>
-                                    <p className="text-[8px] text-muted-foreground leading-tight italic">
-                                        {simulatedRegion === 'INDIA' 
-                                            ? "Using a non-Indian card? Switch to USD for Stripe/PayPal support." 
-                                            : "Paying from India? Switch to INR for local UPI/Netbanking support."
-                                        }
-                                    </p>
-                                </div>
-                            </div>
-                        </ConceptCard>
-
-                        {/* 7.2 Method-Visual Anchor */}
-                        <ConceptCard 
-                            title="7.2 Method-First" 
-                            subtitle="Visual cues for payment apps before the action."
-                        >
-                            <div className="space-y-8 py-2">
                                 <div className="text-center space-y-1">
-                                    <p className="text-6xl font-black text-primary tracking-tighter">₹5,999</p>
-                                    <Badge variant="outline" className="text-[9px] border-primary/20 text-muted-foreground uppercase font-black">Professional License</Badge>
-                                </div>
-                                <div className="grid grid-cols-4 gap-2 opacity-40 grayscale group-hover:opacity-80 group-hover:grayscale-0 transition-all duration-700">
-                                    <div className="flex flex-col items-center gap-1">
-                                        <Smartphone className="w-4 h-4" />
-                                        <span className="text-[8px] font-bold">UPI</span>
-                                    </div>
-                                    <div className="flex flex-col items-center gap-1">
-                                        <CreditCard className="w-4 h-4" />
-                                        <span className="text-[8px] font-bold">CARDS</span>
-                                    </div>
-                                    <div className="flex flex-col items-center gap-1">
-                                        <Landmark className="w-4 h-4" />
-                                        <span className="text-[8px] font-bold">BANKING</span>
-                                    </div>
-                                    <div className="flex flex-col items-center gap-1">
-                                        <Globe className="w-4 h-4" />
-                                        <span className="text-[8px] font-bold">GLOBAL</span>
-                                    </div>
-                                </div>
-                                <div className="space-y-4">
-                                    <div className="relative group/btn p-1 bg-gradient-to-b from-primary/20 to-transparent rounded-xl border border-primary/10">
-                                        <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" />
-                                    </div>
-                                    <div className="p-3 bg-alternate-background/50 rounded-lg border border-border/50 flex items-center justify-between">
-                                        <div className="flex items-center gap-2">
-                                            <Info className="w-3 h-3 text-primary" />
-                                            <span className="text-[9px] font-bold text-secondary-text">Non-Indian Card?</span>
-                                        </div>
-                                        <button className="text-[9px] font-black text-primary underline uppercase tracking-tighter">Switch to USD ($)</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </ConceptCard>
-
-                        {/* 7.3 Rescue-First Layout */}
-                        <ConceptCard 
-                            title="7.3 The Concierge" 
-                            subtitle="Solves the 'International Friction' at the last mile."
-                        >
-                            <div className="space-y-6 py-2">
-                                <div className="text-center">
-                                    <p className="text-5xl font-black text-primary-text tracking-tighter">₹5,999</p>
-                                    <div className="flex items-center justify-center gap-2 mt-1">
-                                        <ShieldCheck className="w-3 h-3 text-authority-green" />
-                                        <span className="text-[10px] font-bold text-authority-green uppercase tracking-widest">Safe Local Checkout</span>
-                                    </div>
+                                    <p className="text-5xl font-black text-primary-text tracking-tighter">
+                                        {region === 'INDIA' ? '₹5,999' : '$79'}
+                                    </p>
+                                    <p className="text-[9px] text-muted-foreground font-bold uppercase tracking-widest">Full Professional License</p>
                                 </div>
                                 <div className="space-y-2">
-                                    <ValueCheck text="Audit-Ready Excel Content" />
+                                    <ValueCheck text="Audit-Ready Excel Standards" />
                                     <ValueCheck text="Lifetime Access & Updates" />
                                 </div>
-                                
-                                <div className="mt-6 space-y-4">
-                                    <div className="flex flex-col gap-2 p-3 bg-background/40 rounded-xl border border-border/50">
-                                        <div className="flex justify-between items-center">
-                                            <span className="text-[9px] font-black text-muted-foreground uppercase">Outside India?</span>
-                                            <button className="text-[9px] font-black text-primary hover:underline transition-all">SWITCH TO USD ($)</button>
-                                        </div>
-                                        <p className="text-[8px] text-muted-foreground leading-tight">Use this link for US/EU/Global cards or PayPal via our international gateway.</p>
-                                    </div>
-                                    <div className="relative">
+                                <div className="pt-4 space-y-4">
+                                    {region === 'INDIA' ? <IndiaMethods /> : <GlobalMethods />}
+                                    {region === 'INDIA' ? (
                                         <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" />
+                                    ) : (
+                                        <Button className="w-full h-12 bg-accent text-bg-primary font-black uppercase text-xs">Secure Global Checkout <ArrowRight className="ml-2 w-4 h-4"/></Button>
+                                    )}
+                                </div>
+                                <div className="text-center">
+                                    <button className="text-[9px] font-black text-primary underline uppercase">
+                                        Switch to {region === 'INDIA' ? 'USD ($)' : 'INR (₹)'}
+                                    </button>
+                                </div>
+                            </div>
+                        </ConceptCard>
+
+                        {/* 7.1.2 The Value Inset */}
+                        <ConceptCard 
+                            title="Variation 7.1.2" 
+                            subtitle="The Value-First Inset"
+                        >
+                            <div className="space-y-6">
+                                <div className="text-center space-y-4">
+                                    <div className="inline-flex items-center gap-2 px-2 py-1 bg-white/5 border border-white/10 rounded-md">
+                                        <MapPin className="w-3 h-3 text-primary" />
+                                        <span className="text-[9px] font-bold text-primary-text/70 uppercase">Route: {region === 'INDIA' ? 'Local' : 'International'}</span>
                                     </div>
-                                    <p className="text-[9px] text-center text-muted-foreground uppercase font-bold tracking-tighter">All local payment methods supported</p>
+                                    <p className="text-6xl font-black text-primary tracking-tighter">
+                                        {region === 'INDIA' ? '₹5,999' : '$79'}
+                                    </p>
+                                </div>
+                                <div className="p-4 bg-background/40 rounded-xl border border-white/5 space-y-3">
+                                    <p className="text-[10px] font-black text-muted-foreground uppercase text-center border-b border-white/5 pb-2">Supported Methods</p>
+                                    {region === 'INDIA' ? <IndiaMethods /> : <GlobalMethods />}
+                                </div>
+                                <div className="space-y-4">
+                                    {region === 'INDIA' ? (
+                                        <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" />
+                                    ) : (
+                                        <Button className="w-full h-12 bg-primary text-bg-primary font-black uppercase text-xs">Instant Download <ArrowRight className="ml-2 w-4 h-4"/></Button>
+                                    )}
+                                    <div className="flex items-center justify-center gap-2">
+                                        <Info className="w-3 h-3 text-muted-foreground" />
+                                        <span className="text-[8px] text-muted-foreground italic">
+                                            Not in {region === 'INDIA' ? 'India' : 'USA'}? <button className="underline font-bold text-primary">Change Currency</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </ConceptCard>
+
+                        {/* 7.1.3 The Minimalist Pulse */}
+                        <ConceptCard 
+                            title="Variation 7.1.3" 
+                            subtitle="The Verification Pulse"
+                            badge="Sleek"
+                        >
+                            <div className="space-y-8 py-4">
+                                <div className="flex justify-between items-start">
+                                    <div className="space-y-1">
+                                        <p className="text-4xl font-black text-primary-text">
+                                            {region === 'INDIA' ? '₹5,999' : '$79'}
+                                        </p>
+                                        <div className="flex items-center gap-2">
+                                            <Activity className="w-3 h-3 text-authority-green animate-pulse" />
+                                            <span className="text-[9px] font-bold text-authority-green uppercase">Local detected</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-1">
+                                        <div className="w-6 h-6 rounded bg-white/5 flex items-center justify-center"><Smartphone className="w-3 h-3 opacity-50" /></div>
+                                        <div className="w-6 h-6 rounded bg-white/5 flex items-center justify-center"><CreditCard className="w-3 h-3 opacity-50" /></div>
+                                    </div>
+                                </div>
+                                
+                                <div className="space-y-2">
+                                    <ValueCheck text="<strong>One-Time</strong> License Fee" />
+                                    <ValueCheck text="<strong>Audit-Ready</strong> Content" />
+                                </div>
+
+                                <div className="space-y-4 pt-4">
+                                    <div className="relative">
+                                        {region === 'INDIA' ? (
+                                            <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" />
+                                        ) : (
+                                            <Button className="w-full h-14 bg-white text-black font-black uppercase text-sm rounded-xl">Buy Now <ArrowRight className="ml-2 w-4 h-4"/></Button>
+                                        )}
+                                    </div>
+                                    <p className="text-[8px] text-center text-muted-foreground leading-tight">
+                                        Need a non-{region === 'INDIA' ? 'Indian' : 'US'} payment gateway? <button className="text-primary font-black underline">Click Here</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </ConceptCard>
+
+                        {/* 7.1.4 The Method-First Anchor */}
+                        <ConceptCard 
+                            title="Variation 7.1.4" 
+                            subtitle="Method-Relief Focus"
+                        >
+                            <div className="space-y-6 flex flex-col items-center">
+                                <div className="w-full py-2 border-b border-white/5 text-center">
+                                    <span className="text-[9px] font-black text-primary/60 uppercase tracking-widest">Optimized for {region === 'INDIA' ? 'UPI & Local Banking' : 'Global Cards & PayPal'}</span>
+                                </div>
+                                <div className="text-center py-4">
+                                    <p className="text-5xl font-black text-primary-text mb-1">{region === 'INDIA' ? '₹5,999' : '$79'}</p>
+                                    <Badge variant="outline" className="text-[8px] border-white/10 text-muted-foreground uppercase">Lifetime Access License</Badge>
+                                </div>
+                                <div className="w-full space-y-4">
+                                    {region === 'INDIA' ? <IndiaMethods /> : <GlobalMethods />}
+                                    <div className="p-1 bg-gradient-to-b from-white/10 to-transparent rounded-xl">
+                                        {region === 'INDIA' ? (
+                                            <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" />
+                                        ) : (
+                                            <Button className="w-full h-14 bg-accent text-bg-primary font-black uppercase">Start Download</Button>
+                                        )}
+                                    </div>
+                                </div>
+                                <button className="text-[9px] font-black text-primary/80 uppercase hover:text-primary transition-all">
+                                    Outside {region === 'INDIA' ? 'India' : 'the USA'}? Switch Gateway
+                                </button>
+                            </div>
+                        </ConceptCard>
+
+                        {/* 7.1.5 The Concierge Footer */}
+                        <ConceptCard 
+                            title="Variation 7.1.5" 
+                            subtitle="The Concierge Footer"
+                        >
+                            <div className="space-y-6 flex flex-col h-full">
+                                <div className="text-center py-6">
+                                    <p className="text-6xl font-black text-primary-text tracking-tighter">
+                                        {region === 'INDIA' ? '₹5,999' : '$79'}
+                                    </p>
+                                    <p className="text-[10px] text-muted-foreground font-black uppercase mt-2">Professional Standard License</p>
+                                </div>
+                                <div className="flex-1 space-y-3 px-2">
+                                    <ValueCheck text="Unlimited use for 1 organization" />
+                                    <ValueCheck text="1 Free custom branding" />
+                                    <ValueCheck text="Excel & PDF delivery" />
+                                </div>
+                                <div className="mt-auto pt-6 space-y-4">
+                                    <div className="relative">
+                                        {region === 'INDIA' ? (
+                                            <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" />
+                                        ) : (
+                                            <Button className="w-full h-14 bg-primary text-bg-primary font-black uppercase text-sm">Secure Checkout</Button>
+                                        )}
+                                    </div>
+                                    <div className="bg-white/[0.03] border border-white/5 rounded-xl p-3 flex flex-col gap-2">
+                                        <div className="flex justify-between items-center">
+                                            <div className="flex items-center gap-2">
+                                                <Activity className="w-2.5 h-2.5 text-authority-green" />
+                                                <span className="text-[8px] font-black text-muted-foreground uppercase">detected: {region}</span>
+                                            </div>
+                                            <button className="text-[8px] font-black text-primary underline uppercase">Switch to {region === 'INDIA' ? 'USD' : 'INR'}</button>
+                                        </div>
+                                        <p className="text-[7px] text-muted-foreground leading-tight italic">
+                                            {region === 'INDIA' ? "Use this link for non-Indian cards or PayPal." : "Use this link for local UPI or Netbanking support."}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </ConceptCard>
@@ -260,7 +325,7 @@ export default function TempDesignClientPage() {
             </Section>
 
             {/* DESIGNER NOTES */}
-            <Section className="bg-bg-primary">
+            <Section className="border-none">
                 <div className="container px-4 md:px-6">
                     <div className="max-w-5xl mx-auto p-10 rounded-[2.5rem] border-2 border-dashed border-primary/20 bg-surface-card/50 relative overflow-hidden">
                         <h3 className="text-2xl md:text-3xl font-bold mb-8 flex items-center gap-4 text-primary">
@@ -274,17 +339,17 @@ export default function TempDesignClientPage() {
                                 </div>
                                 <div className="space-y-2">
                                     <p className="text-primary-text font-headline font-bold text-lg">2. Visual Relief Row</p>
-                                    <p className="leading-relaxed">Seeing text like "UPI / GPay" near the button answers the user's biggest checkout question without them having to read through a long feature list.</p>
+                                    <p className="leading-relaxed">Seeing subtle icons like "UPI / GPay" near the button answers the user's biggest checkout question without them having to read through a long feature list.</p>
                                 </div>
                             </div>
                             <div className="space-y-6">
                                 <div className="space-y-2">
                                     <p className="text-primary-text font-headline font-bold text-lg">3. Frictionless "Rescue"</p>
-                                    <p className="leading-relaxed">We assume India is correct (our primary market), but provide a highly readable "Concierge" exit at the bottom for global buyers, ensuring no one bounces due to technical confusion.</p>
+                                    <p className="leading-relaxed">We assume the local detection is correct, but provide a highly readable "Concierge" exit at the bottom for global buyers, ensuring no one bounces due to technical confusion.</p>
                                 </div>
                                 <div className="space-y-2">
                                     <p className="text-primary-text font-headline font-bold text-lg">4. One Product, Two Pipes</p>
-                                    <p className="leading-relaxed">The UI emphasizes that this is the same "Global Professional License" regardless of whether they pay in INR or USD, maintaining the premium brand value.</p>
+                                    <p className="leading-relaxed">The UI emphasizes that this is the same "Global Professional License" regardless of the gateway, maintaining the premium brand value across all regions.</p>
                                 </div>
                             </div>
                         </div>
@@ -294,3 +359,4 @@ export default function TempDesignClientPage() {
         </main>
     );
 }
+    
