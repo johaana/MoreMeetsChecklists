@@ -99,9 +99,11 @@ ChartContainer.displayName = "Chart"
 
 const ChartLegend = RechartsPrimitive.Legend
 
-interface ChartLegendContentProps
-  extends React.ComponentProps<"div">,
-    Omit<React.ComponentProps<typeof RechartsPrimitive.Legend>, "formatter"> {
+type ChartLegendContentProps = Omit<
+  React.ComponentProps<typeof RechartsPrimitive.Legend>,
+  "formatter" | "content"
+> & {
+  className?: string
   payload?: any[]
   formatter?: (value: any, entry: any, index?: number) => React.ReactNode
 }
