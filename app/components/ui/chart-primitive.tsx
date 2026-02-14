@@ -329,5 +329,4 @@ export {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-  type ChartConfig,
 }
