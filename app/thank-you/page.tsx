@@ -38,7 +38,6 @@ function ThankYouContent() {
   React.useEffect(() => {
     const packId = searchParams.get('pack_id');
     const rzpPaymentId = searchParams.get('razorpay_payment_id');
-    // Lemon Squeezy uses `checkout_id` for successful purchases in its redirect
     const lsSuccess = searchParams.get('checkout_id'); 
 
     const verify = async (paymentId: string) => {
@@ -46,7 +45,6 @@ function ThankYouContent() {
       setError(null);
       setVerifiedItem(null);
 
-      // We assume pack_id is always present for now.
       if (!packId) {
         setError("Product ID not found in the URL. Cannot verify purchase.");
         setIsLoading(false);
@@ -64,13 +62,12 @@ function ThankYouContent() {
             hasTriggeredDownload.current = true;
         }
       } else {
-        setError(result.error);
+        setError(result.error ?? "An unexpected verification error occurred.");
       }
       
       setIsLoading(false);
     };
     
-    // Logic for Lemon Squeezy (USD)
     if (lsSuccess && packId) {
         const item = premiumPacks.find(p => p.id === packId);
         if (item) {
@@ -86,11 +83,9 @@ function ThankYouContent() {
         }
         setIsLoading(false);
     }
-    // Logic for Razorpay (INR)
     else if (rzpPaymentId) {
         verify(rzpPaymentId);
     }
-    // No payment ID found
     else {
         setError("Payment information not found in URL. Please check your email for a download link or contact support.");
         setIsLoading(false);

@@ -1,3 +1,4 @@
+
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const restaurants: PremiumPack = {

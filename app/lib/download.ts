@@ -1,3 +1,6 @@
+
+'use client';
+
 import { writeFile, utils, type WorkSheet, type CellObject } from 'xlsx-js-style';
 import type { PremiumPack, Checklist as PackChecklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
@@ -220,7 +223,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     });
     wb.SheetNames = sortedSheetNames;
 
-    const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets™.xlsx';
+    const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets.xlsx';
     
     writeFile(wb, fileName);
 }
