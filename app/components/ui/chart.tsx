@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -23,7 +22,6 @@ import {
 } from "recharts"
 import {
   type ChartConfig,
-  type ChartContainerProps,
   ChartContainer,
   ChartLegend,
   ChartLegendContent,

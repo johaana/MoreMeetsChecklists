@@ -103,21 +103,21 @@ type ChartLegendContentProps = Omit<
   React.ComponentProps<typeof RechartsPrimitive.Legend>,
   "formatter" | "content"
 > & {
-  className?: string;
-  payload?: any[];
-  formatter?: (label: string, entry: any, index?: number) => React.ReactNode;
-  onMouseEnter?: (data: any, index: number, event: React.MouseEvent) => void;
-  onClick?: (data: any, index: number, event: React.MouseEvent) => void;
+  className?: string
+  payload?: any[]
 }
 
-const ChartLegendContent = React.forwardRef<HTMLDivElement, ChartLegendContentProps>(
+const ChartLegendContent = React.forwardRef<
+  HTMLDivElement,
+  ChartLegendContentProps
+>(
   (
-    { className, formatter, payload = [], onMouseEnter, onClick },
+    { className, hideIcon = false, payload, verticalAlign, onMouseEnter, onClick },
     ref
   ) => {
     const { config } = useChart()
 
-    if (!payload.length) {
+    if (!payload?.length) {
       return null
     }
 
@@ -125,7 +125,8 @@ const ChartLegendContent = React.forwardRef<HTMLDivElement, ChartLegendContentPr
       <div
         ref={ref}
         className={cn(
-          "flex items-center justify-center gap-4 text-xs text-muted-foreground",
+          "flex items-center justify-center gap-4",
+          verticalAlign === "top" ? "pb-3" : "pt-3",
           className
         )}
         onMouseEnter={(e) => {
@@ -143,22 +144,19 @@ const ChartLegendContent = React.forwardRef<HTMLDivElement, ChartLegendContentPr
           const key = item.dataKey as string
           const entry = config[key]
           const color = entry?.color ?? item.color
-          const label = entry?.label ?? item.value
           const Icon = entry?.icon
 
           return (
             <div
               key={item.value}
-              className="flex items-center gap-1.5"
+              className={cn(
+                "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground"
+              )}
             >
-              {Icon ? (
+              {Icon && !hideIcon ? (
                 <Icon
                   className="mr-1 h-3 w-3"
-                  style={
-                    {
-                      color,
-                    } as React.CSSProperties
-                  }
+                  style={{ color }}
                 />
               ) : (
                 <div
@@ -168,7 +166,7 @@ const ChartLegendContent = React.forwardRef<HTMLDivElement, ChartLegendContentPr
                   }}
                 />
               )}
-              {formatter ? formatter(label, item, i) : label}
+              {item.value}
             </div>
           )
         })}
@@ -184,12 +182,12 @@ const ChartTooltipContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
     React.ComponentProps<"div"> & {
-      payload?: any[]
       hideLabel?: boolean
       hideIndicator?: boolean
       indicator?: "line" | "dot" | "dashed"
       nameKey?: string
       labelKey?: string
+      formatter?: (label: string, items: any[], index?: number) => React.ReactNode
     }
 >(
   (
@@ -277,8 +275,8 @@ const ChartTooltipContent = React.forwardRef<
                   indicator === "dot" && "items-center"
                 )}
               >
-                {formatter && item.value !== undefined && item.name ? (
-                  formatter(item.value, item.name, item, index, payload)
+                {formatter ? (
+                  formatter(label as string, [item], index)
                 ) : (
                   <>
                     {!hideIndicator && (
@@ -323,10 +321,43 @@ const ChartTooltipContent = React.forwardRef<
 )
 ChartTooltipContent.displayName = "ChartTooltipContent"
 
+const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
+  const colorConfig = Object.entries(config).filter(
+    ([, config]) => config.theme || config.color
+  )
+
+  if (!colorConfig.length) {
+    return null
+  }
+
+  return (
+    <style
+      dangerouslySetInnerHTML={{
+        __html: Object.entries(THEMES)
+          .map(
+            ([theme, prefix]) => `
+${prefix} [data-chart="${id}"] {
+${colorConfig
+  .map(([key, itemConfig]) => {
+    const color =
+      itemConfig.theme?.[theme as keyof typeof THEMES] || itemConfig.color
+    return color ? `  --color-${key}: ${color};` : null
+  })
+  .join("\n")}
+}
+`
+          )
+          .join("\n"),
+      }}
+    />
+  )
+}
+
 export {
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
+  ChartStyle,
 }
