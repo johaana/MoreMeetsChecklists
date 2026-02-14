@@ -12,7 +12,7 @@ type Props = {
   params: Promise<{ id: string }>
 }
 
-const defaultHeroImageUrl = 'https://picsum.photos/seed/compliance1/1200/800';
+const defaultHeroImageUrl = 'https://picsum.photos/seed/operational_pro_1/1200/800';
 
 export async function generateMetadata(
   { params }: Props
@@ -67,6 +67,7 @@ export default async function Page({ params }: Props) {
     notFound();
   }
   
+  // Single source of truth for imagery
   const imageData = images.find(img => img.id === `pack-${id}`);
   const heroImageUrl = imageData?.imageUrl || defaultHeroImageUrl;
   const imageHint = imageData?.imageHint || "operational checklist";
