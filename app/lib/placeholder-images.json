@@ -3,157 +3,157 @@
   {
     "id": "pack-enterprise_risk_cybersecurity_pack",
     "description": "High-tech cybersecurity data center.",
-    "imageUrl": "https://picsum.photos/seed/cyber1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/cybersecurity_server_99/1200/800",
     "imageHint": "cybersecurity server"
   },
   {
     "id": "pack-hotels_and_resorts",
     "description": "Luxury hotel room and housekeeping excellence.",
-    "imageUrl": "https://picsum.photos/seed/hotel1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/luxury_hotel_88/1200/800",
     "imageHint": "luxury hotel"
   },
   {
     "id": "pack-restaurants",
     "description": "Professional commercial kitchen.",
-    "imageUrl": "https://picsum.photos/seed/kitchen1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/commercial_kitchen_77/1200/800",
     "imageHint": "commercial kitchen"
   },
   {
     "id": "pack-fashion_and_apparel_retail",
     "description": "Modern fashion retail store floor.",
-    "imageUrl": "https://picsum.photos/seed/fashion1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/fashion_retail_66/1200/800",
     "imageHint": "clothing store"
   },
   {
     "id": "pack-jewelry_and_luxury_retail",
     "description": "High-end luxury jewelry display.",
-    "imageUrl": "https://picsum.photos/seed/jewelry1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/jewelry_luxury_55/1200/800",
     "imageHint": "jewelry store"
   },
   {
     "id": "pack-electronics_showroom_pack",
     "description": "Modern electronics showroom.",
-    "imageUrl": "https://picsum.photos/seed/electronics1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/electronics_store_44/1200/800",
     "imageHint": "electronics store"
   },
   {
     "id": "pack-supermarket_grocery_retail_pack",
     "description": "Organized supermarket aisles.",
-    "imageUrl": "https://picsum.photos/seed/supermarket1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/supermarket_aisle_33/1200/800",
     "imageHint": "supermarket aisle"
   },
   {
     "id": "pack-facility_management_blueprint",
     "description": "Modern corporate office building.",
-    "imageUrl": "https://picsum.photos/seed/facility1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/office_facility_22/1200/800",
     "imageHint": "office building"
   },
   {
     "id": "pack-corporate_legal_compliance_starter_kit",
     "description": "Professional corporate boardroom.",
-    "imageUrl": "https://picsum.photos/seed/legal1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/legal_corporate_11/1200/800",
     "imageHint": "boardroom"
   },
   {
     "id": "pack-healthcare_and_hospital_operations",
     "description": "Professional hospital ward and equipment.",
-    "imageUrl": "https://picsum.photos/seed/hospital1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/hospital_ward_00/1200/800",
     "imageHint": "hospital ward"
   },
   {
     "id": "pack-school_operations_pack",
     "description": "Modern school building and campus.",
-    "imageUrl": "https://picsum.photos/seed/school1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/school_campus_91/1200/800",
     "imageHint": "school building"
   },
   {
     "id": "pack-university_college_ops",
     "description": "University campus and lecture hall.",
-    "imageUrl": "https://picsum.photos/seed/university1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/university_hall_82/1200/800",
     "imageHint": "university campus"
   },
   {
     "id": "pack-film_production_pack",
     "description": "Professional film production set.",
-    "imageUrl": "https://picsum.photos/seed/film1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/movie_set_73/1200/800",
     "imageHint": "movie set"
   },
   {
     "id": "pack-ott_platform_pack",
     "description": "Streaming data infrastructure.",
-    "imageUrl": "https://picsum.photos/seed/ott1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/data_server_64/1200/800",
     "imageHint": "data server"
   },
   {
     "id": "pack-sports_clubs_stadium_operations_pack",
     "description": "Modern sports stadium and pitch.",
-    "imageUrl": "https://picsum.photos/seed/stadium1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/sports_stadium_55/1200/800",
     "imageHint": "sports stadium"
   },
   {
     "id": "pack-cinema_operations_pack",
     "description": "Movie theater auditorium.",
-    "imageUrl": "https://picsum.photos/seed/cinema1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/movie_theater_46/1200/800",
     "imageHint": "movie theater"
   },
   {
     "id": "pack-theme_park_ops_pack",
     "description": "Amusement park rides and safety.",
-    "imageUrl": "https://picsum.photos/seed/themepark1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/amusement_park_37/1200/800",
     "imageHint": "amusement park"
   },
   {
     "id": "pack-logistics_warehouse_pack",
     "description": "Busy logistics warehouse racks.",
-    "imageUrl": "https://picsum.photos/seed/logistics1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/warehouse_logistics_28/1200/800",
     "imageHint": "warehouse storage"
   },
   {
     "id": "pack-manufacturing_operations_ehs_pack",
     "description": "Manufacturing factory floor.",
-    "imageUrl": "https://picsum.photos/seed/factory1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/factory_floor_19/1200/800",
     "imageHint": "factory floor"
   },
   {
     "id": "pack-food_manufacturing_ops",
     "description": "Food production facility.",
-    "imageUrl": "https://picsum.photos/seed/foodfactory1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/food_factory_01/1200/800",
     "imageHint": "food factory"
   },
   {
     "id": "pack-bakery_confectionery_pack",
     "description": "Professional bakery and ovens.",
-    "imageUrl": "https://picsum.photos/seed/bakery1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/bakery_kitchen_92/1200/800",
     "imageHint": "bakery kitchen"
   },
   {
     "id": "pack-animal_shelter_pack",
     "description": "Compassionate animal shelter care.",
-    "imageUrl": "https://picsum.photos/seed/animalshelter1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/animal_shelter_83/1200/800",
     "imageHint": "animal shelter"
   },
   {
     "id": "pack-franchise_operations_pack",
     "description": "Standardized franchise storefront.",
-    "imageUrl": "https://picsum.photos/seed/franchise1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/franchise_store_74/1200/800",
     "imageHint": "franchise store"
   },
   {
     "id": "blog-goa-fire",
     "description": "Fire emergency and safety analysis.",
-    "imageUrl": "https://picsum.photos/seed/goafire/1200/800",
+    "imageUrl": "https://picsum.photos/seed/fire_emergency_65/1200/800",
     "imageHint": "fire emergency"
   },
   {
     "id": "blog-boeing",
     "description": "Aviation manufacturing quality control.",
-    "imageUrl": "https://picsum.photos/seed/boeing1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/airplane_assembly_56/1200/800",
     "imageHint": "airplane assembly"
   },
   {
     "id": "blog-deepfake",
     "description": "Cybersecurity and digital fraud concept.",
-    "imageUrl": "https://picsum.photos/seed/deepfake1/1200/800",
+    "imageUrl": "https://picsum.photos/seed/digital_security_47/1200/800",
     "imageHint": "digital security"
   }
 ]

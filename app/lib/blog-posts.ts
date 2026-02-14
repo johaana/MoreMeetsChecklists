@@ -1,3 +1,4 @@
+
 import { FileCheck2 } from 'lucide-react';
 import images from './placeholder-images.json';
 
@@ -208,7 +209,7 @@ export const blogPosts: BlogPost[] = [
       tags: ["Cybersecurity", "Finance", "Fraud", "Risk Management"],
       relatedPackId: "enterprise_risk_cybersecurity_pack",
       imageUrl: getImageUrl('blog-deepfake'),
-      imageHint: getHint('blog-deepfake'),
+      imageHint: "digital security",
       description: "In early 2024, a finance worker at multinational firm Arup was tricked into sending $25.6 million by a sophisticated deepfake video call of his CFO. This new-age fraud bypasses traditional security, and only robust, human-centric financial SOPs can stop it.",
       content: `
         <p class="lead">In February 2024, the business world was shaken by a story straight out of a science fiction movie. A finance employee at the multinational firm Arup received an email from his Chief Financial Officer, requesting his presence on a video call to discuss a confidential transaction. When he joined, he saw his CFO and other colleagues on the screen. They looked and sounded exactly as they should. They instructed him to process a series of urgent transfers totaling HK$200 million (US$25.6 million). He complied.</p>
@@ -238,7 +239,3 @@ export const blogPosts: BlogPost[] = [
       `
     }
 ];
-
-function getHint(id: string) {
-    return images.find(img => img.id === id)?.imageHint || "operational blog";
-}
