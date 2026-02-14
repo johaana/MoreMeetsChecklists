@@ -101,7 +101,7 @@ const ChartLegend = RechartsPrimitive.Legend
 
 type ChartLegendContentProps = Omit<
   React.ComponentProps<typeof RechartsPrimitive.Legend>,
-  "formatter" | "content"
+  "content"
 > &
   React.ComponentProps<"div"> & {
     payload?: any[]
