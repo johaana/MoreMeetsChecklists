@@ -92,9 +92,9 @@ export default async function BlogPostPage({ params }: Props) {
               <div className="max-w-3xl mx-auto space-y-4">
                 <div className="flex flex-wrap items-center justify-center gap-2">
                   {post.tags.map(tag => (
-                     <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`}>
-                      <Badge variant="secondary" className="bg-white/10 text-white backdrop-blur-sm">
-                        {tag}
+                     <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`} passHref legacyBehavior>
+                      <Badge variant="secondary" className="bg-white/10 text-white backdrop-blur-sm cursor-pointer" asChild>
+                        <a>{tag}</a>
                       </Badge>
                     </Link>
                   ))}
@@ -136,9 +136,9 @@ export default async function BlogPostPage({ params }: Props) {
                           <h3 className="font-bold mb-4">Explore More Topics</h3>
                            <div className="flex flex-wrap gap-2">
                               {Array.from(new Set(blogPosts.flatMap(p => p.tags))).map(tag => (
-                                <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`}>
-                                  <Badge variant="outline">
-                                    {tag}
+                                <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`} passHref legacyBehavior>
+                                  <Badge variant="outline" className="cursor-pointer" asChild>
+                                    <a>{tag}</a>
                                   </Badge>
                                 </Link>
                               ))}

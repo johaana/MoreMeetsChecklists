@@ -78,7 +78,7 @@ const ChartContainer = React.forwardRef<
   )
 
   return (
-    ChartContext.Provider value={{ config: chartConfig }}>
+    <ChartContext.Provider value={{ config: chartConfig }}>
       <div
         data-chart
         className={cn(
@@ -105,7 +105,7 @@ type ChartLegendContentProps = Omit<
 > & {
   className?: string
   payload?: any[]
-  formatter?: (value: any, entry: any, index?: number) => React.ReactNode
+  formatter?: (label: string, entry: any, index?: number) => React.ReactNode
 }
 
 const ChartLegendContent = React.forwardRef<HTMLDivElement, ChartLegendContentProps>(
@@ -126,6 +126,8 @@ const ChartLegendContent = React.forwardRef<HTMLDivElement, ChartLegendContentPr
           "flex items-center justify-center gap-4 text-xs text-muted-foreground",
           className
         )}
+        onMouseEnter={onMouseEnter}
+        onClick={onClick}
       >
         {payload.map((item, i) => {
           const key = item.dataKey as string
@@ -138,8 +140,6 @@ const ChartLegendContent = React.forwardRef<HTMLDivElement, ChartLegendContentPr
             <div
               key={item.value}
               className="flex items-center gap-1.5"
-              onMouseEnter={() => onMouseEnter?.(item as any)}
-              onClick={() => onClick?.(item as any)}
             >
               {Icon ? (
                 <Icon
