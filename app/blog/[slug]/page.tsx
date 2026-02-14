@@ -93,8 +93,8 @@ export default async function BlogPostPage({ params }: Props) {
                 <div className="flex flex-wrap items-center justify-center gap-2">
                   {post.tags.map(tag => (
                      <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`} passHref legacyBehavior>
-                      <Badge variant="secondary" className="bg-white/10 text-white backdrop-blur-sm cursor-pointer" asChild>
-                        <a>{tag}</a>
+                      <Badge variant="secondary" className="bg-white/10 text-white backdrop-blur-sm cursor-pointer">
+                        {tag}
                       </Badge>
                     </Link>
                   ))}
@@ -137,8 +137,8 @@ export default async function BlogPostPage({ params }: Props) {
                            <div className="flex flex-wrap gap-2">
                               {Array.from(new Set(blogPosts.flatMap(p => p.tags))).map(tag => (
                                 <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`} passHref legacyBehavior>
-                                  <Badge variant="outline" className="cursor-pointer" asChild>
-                                    <a>{tag}</a>
+                                  <Badge variant="outline" className="cursor-pointer">
+                                    {tag}
                                   </Badge>
                                 </Link>
                               ))}

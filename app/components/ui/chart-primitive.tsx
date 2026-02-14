@@ -126,8 +126,16 @@ const ChartLegendContent = React.forwardRef<HTMLDivElement, ChartLegendContentPr
           "flex items-center justify-center gap-4 text-xs text-muted-foreground",
           className
         )}
-        onMouseEnter={onMouseEnter}
-        onClick={onClick}
+        onMouseEnter={(e) => {
+          if (onMouseEnter) {
+            onMouseEnter(undefined as any, 0, e as any)
+          }
+        }}
+        onClick={(e) => {
+          if (onClick) {
+            onClick(undefined as any, 0, e as any)
+          }
+        }}
       >
         {payload.map((item, i) => {
           const key = item.dataKey as string
