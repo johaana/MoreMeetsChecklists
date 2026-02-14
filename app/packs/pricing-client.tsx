@@ -6,7 +6,7 @@ import type { PremiumPack } from '../lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
-import { Check, Download, Loader2, Banknote, Gift } from 'lucide-react';
+import { Check, Download, Loader2, Banknote, Gift, Info } from 'lucide-react';
 import { Badge } from '../components/ui/badge';
 import { useToast } from '../hooks/use-toast';
 import { addContact } from './actions';
@@ -14,7 +14,6 @@ import { Input } from '../components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
 import { ValueProposition } from '../components/ui/value-proposition';
-import { ComplianceIcon } from '../components/icons';
 
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
@@ -155,11 +154,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardHeader>
                         <CardContent className="p-6 flex-1 flex flex-col gap-8">
                              {hasINR && hasUSD && (
-                                <div className="flex justify-center">
+                                <div className="flex flex-col items-center gap-2">
+                                    <p className="text-xs font-semibold text-accent uppercase tracking-wider">Select Currency</p>
                                     <Tabs defaultValue={currency} onValueChange={setCurrency} className="w-full max-w-xs">
                                       <TabsList className="grid w-full grid-cols-2">
-                                        <TabsTrigger value="USD">Pay in USD ($)</TabsTrigger>
-                                        <TabsTrigger value="INR">Pay in INR (₹)</TabsTrigger>
+                                        <TabsTrigger value="USD">USD ($)</TabsTrigger>
+                                        <TabsTrigger value="INR">INR (₹)</TabsTrigger>
                                       </TabsList>
                                     </Tabs>
                                 </div>
@@ -208,7 +208,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </div>
                         </CardContent>
                          <CardFooter className="bg-secondary/30 mt-auto p-6 flex flex-col gap-4 items-center">
-                           <div className="w-full max-w-sm text-center">
+                           <div className="w-full max-w-sm text-center space-y-4">
                                 {currency === 'INR' && hasINR && pack.paymentId && (
                                     <div className="p-4 rounded-lg bg-background/50 border border-border">
                                         <RazorpayButton paymentId={pack.paymentId} packId={pack.id} />
@@ -223,6 +223,16 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         </Button>
                                      </div>
                                 )}
+                                
+                                <div className="flex items-center justify-center gap-2 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                                    <Info className="w-4 h-4 text-primary shrink-0" />
+                                    <p className="text-[10px] md:text-xs text-secondary-text text-left leading-tight">
+                                        {currency === 'INR' 
+                                            ? "International cards? Switch to USD at the top for Stripe/Paypal." 
+                                            : "Paying from India? Switch to INR at the top for local payment methods like UPI/Rupay."
+                                        }
+                                    </p>
+                                </div>
                            </div>
                            <p className="text-xs text-muted-foreground mt-2">Built from real-world audit &amp; operations experience.</p>
                             <div className="text-xs text-muted-foreground text-center">

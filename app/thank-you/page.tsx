@@ -1,10 +1,11 @@
+
 'use client';
 
 import Link from "next/link";
 import * as React from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Download, ArrowRight, AlertTriangle, Loader2 } from "lucide-react";
+import { CheckCircle, Download, ArrowRight, AlertTriangle, Loader2, HelpCircle } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { verifyRazorpayPayment } from '@/packs/actions';
 import { SiteHeader } from "@/components/layout/header";
@@ -135,25 +136,44 @@ function ThankYouContent() {
             <CheckCircle className="h-20 w-20 text-authority-green" />
             <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
-                    Thank You! Your download has started.
+                    Success! Your download is ready.
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground text-base md:text-lg/relaxed mx-auto">
-                    Your file for <strong>{verifiedItem.title}</strong> is being downloaded. Please check your browser's download folder.
-                </p>
-                 <p className="text-sm text-muted-foreground pt-4">
-                    If you face any difficulty, please email us at <a href="mailto:more@moremeets.com" className="font-semibold text-primary underline">more@moremeets.com</a> for immediate assistance. For customization requests, our team will be in touch within one business day.
+                    Your file for <strong>{verifiedItem.title}</strong> has been generated.
                 </p>
             </div>
-            <Button size="lg" className="group mt-4 text-lg py-7 px-10" onClick={() => handleDownload(verifiedItem, itemType!)}>
-                <Download className="mr-2 h-5 w-5" />
-                Download Again
-            </Button>
-            <Button size="lg" asChild className="group mt-4" variant="outline">
-                <Link href="/library">
-                    Explore More Packages
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Link>
-            </Button>
+            
+            <div className="flex flex-col items-center gap-4 w-full max-w-sm">
+                <Button size="lg" className="w-full text-lg py-7" onClick={() => handleDownload(verifiedItem, itemType!)} variant="accent">
+                    <Download className="mr-2 h-6 w-6" />
+                    Download .XLSX
+                </Button>
+                
+                <div className="p-4 bg-secondary/30 rounded-lg border border-border/50 text-left w-full">
+                    <div className="flex items-start gap-3">
+                        <HelpCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                        <div className="space-y-1">
+                            <p className="text-sm font-bold">Having trouble on mobile?</p>
+                            <p className="text-xs text-muted-foreground leading-tight">
+                                If you are using WhatsApp or Instagram browser, downloads might be blocked. 
+                                <span className="font-semibold text-foreground"> Tap the three dots (...) and select "Open in System Browser" (Safari/Chrome)</span> to download.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="space-y-4 pt-8">
+                <p className="text-sm text-muted-foreground">
+                    If you face any difficulty, email us at <a href="mailto:more@moremeets.com" className="font-semibold text-primary underline">more@moremeets.com</a>. Our team will reach out within one business day for your included customization.
+                </p>
+                <Button asChild variant="outline">
+                    <Link href="/library">
+                        Explore More Toolkits
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                </Button>
+            </div>
         </div>
       );
     }
@@ -171,11 +191,11 @@ function ThankYouContent() {
                 <AlertDialogHeader>
                     <AlertDialogTitle className="flex items-center gap-2"><Download className="w-5 h-5"/> Download Started</AlertDialogTitle>
                     <AlertDialogDescription>
-                        Your checklist has started downloading. Please check your downloads folder.
+                        Your checklist has started downloading. Please check your downloads folder. If you are on mobile, use a browser like Chrome or Safari for the best experience.
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogAction onClick={() => setShowDownloadConfirm(false)}>OK</AlertDialogAction>
+                    <AlertDialogAction onClick={() => setShowDownloadConfirm(false)}>Got it</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
