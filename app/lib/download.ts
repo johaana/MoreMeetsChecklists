@@ -102,6 +102,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     instructionsWs['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } });
     
     utils.sheet_add_aoa(instructionsWs, [[instructionsData[2][0]]], { origin: 'A3' });
+    if (!instructionsWs['!merges']) instructionsWs['!merges'] = [];
     instructionsWs['!merges'].push({ s: { r: 2, c: 0 }, e: { r: 2, c: 3 } });
 
     let currentRow = 4;
@@ -145,8 +146,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     setColumnWidths(instructionsWs, [30, 30, 30, 30]);
     instructionsWs['!rows'] = [ 
-        { hpt: 30 }, null, { hpt: 25 }, { hpt: 50 }, { hpt: 50 }, { hpt: 50 }, null, 
-        { hpt: 25 }, { hpt: 80 }, { hpt: 80 }, { hpt: 80 }, null,
+        { hpt: 30 }, {}, { hpt: 25 }, { hpt: 50 }, { hpt: 50 }, { hpt: 50 }, {}, 
+        { hpt: 25 }, { hpt: 80 }, { hpt: 80 }, { hpt: 80 }, {},
         { hpt: 25 }, { hpt: 60 }, { hpt: 60 }, { hpt: 60 }
     ];
     
