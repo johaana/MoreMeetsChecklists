@@ -135,7 +135,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         const coverWs = utils.aoa_to_sheet(coverPageData);
         setColumnWidths(coverWs, [60, 25, 20, 25]);
         coverWs['!rows'] = [{ hpt: 30 }];
-        coverWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }, { s: { r: 2, c: 0 }, e: { r: 2, c: 3 } }];
+        if (!coverWs['!merges']) coverWs['!merges'] = [];
+        coverWs['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }, { s: { r: 2, c: 0 }, e: { r: 2, c: 3 } });
         addFooter(coverWs, coverPageData.length, 4);
         utils.book_append_sheet(wb, coverWs, "Cover Page");
     }
@@ -180,7 +181,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         });
         
         const ws = utils.aoa_to_sheet(wsData);
-        ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 12 } }];
+        if (!ws['!merges']) ws['!merges'] = [];
+        ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: 12 } });
         ws['!rows'] = [{ hpt: 30 }];
         setColumnWidths(ws, [10, 50, 10, 10, 30, 25, 15, 20, 20, 25, 25, 25, 30]);
         const headerCells = ['A3', 'B3', 'C3', 'D3', 'E3', 'F3', 'G3', 'H3', 'I3', 'J3', 'K3', 'L3', 'M3'];
