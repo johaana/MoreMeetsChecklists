@@ -224,12 +224,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                      </div>
                                 )}
                                 
-                                <div className="flex items-center justify-center gap-2 p-3 bg-primary/5 rounded-lg border border-primary/10">
-                                    <Info className="w-4 h-4 text-primary shrink-0" />
-                                    <p className="text-[10px] md:text-xs text-secondary-text text-left leading-tight">
+                                <div className="flex items-center justify-center gap-2 p-3 bg-primary/10 rounded-lg border border-primary/20">
+                                    <Info className="w-5 h-5 text-primary shrink-0" />
+                                    <p className="text-xs text-primary-text font-medium text-left leading-tight">
                                         {currency === 'INR' 
-                                            ? "International cards? Switch to USD at the top for Stripe/Paypal." 
-                                            : "Paying from India? Switch to INR at the top for local payment methods like UPI/Rupay."
+                                            ? "International card? Switch to USD at the top for Stripe/Paypal." 
+                                            : "Paying from India? Switch to INR at the top for UPI/Rupay."
                                         }
                                     </p>
                                 </div>

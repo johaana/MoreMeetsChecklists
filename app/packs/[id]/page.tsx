@@ -11,33 +11,34 @@ type Props = {
   params: Promise<{ id: string }>
 }
 
-const defaultHeroImageUrl = 'https://picsum.photos/seed/standard/1200/800';
+const defaultHeroImageUrl = 'https://picsum.photos/seed/compliance-standard/1200/800';
 
+// Operational-focused images for each industry
 const packImageMap: Record<string, string> = {
-  'film_production_pack': 'https://picsum.photos/seed/film/1200/800',
-  'ott_platform_pack': 'https://picsum.photos/seed/ott/1200/800',
-  'sports_clubs_stadium_operations_pack': 'https://picsum.photos/seed/sports/1200/800',
-  'cinema_operations_pack': 'https://picsum.photos/seed/cinema/1200/800',
-  'pharmacy_ops_pack': 'https://picsum.photos/seed/pharmacy/1200/800',
-  'healthcare_and_hospital_operations': 'https://picsum.photos/seed/hospital/1200/800',
-  'facility_management_blueprint': 'https://picsum.photos/seed/facility/1200/800',
-  'animal_shelter_pack': 'https://picsum.photos/seed/shelter/1200/800',
-  'hotels_and_resorts': 'https://picsum.photos/seed/hotel/1200/800',
-  'restaurants': 'https://picsum.photos/seed/restaurant/1200/800',
-  'jewelry_and_luxury_retail': 'https://picsum.photos/seed/jewelry/1200/800',
-  'fashion_and_apparel_retail': 'https://picsum.photos/seed/fashion/1200/800',
-  'school_operations_pack': 'https://picsum.photos/seed/school/1200/800',
-  'university_college_ops': 'https://picsum.photos/seed/university/1200/800',
-  'logistics_warehouse_pack': 'https://picsum.photos/seed/warehouse/1200/800',
-  'manufacturing_operations_ehs_pack': 'https://picsum.photos/seed/factory/1200/800',
-  'food_manufacturing_ops': 'https://picsum.photos/seed/food-factory/1200/800',
-  'supermarket_grocery_retail_pack': 'https://picsum.photos/seed/grocery/1200/800',
-  'electronics_showroom_pack': 'https://picsum.photos/seed/electronics/1200/800',
-  'theme_park_ops_pack': 'https://picsum.photos/seed/themepark/1200/800',
-  'corporate_legal_compliance_starter_kit': 'https://picsum.photos/seed/legal/1200/800',
-  'enterprise_risk_cybersecurity_pack': 'https://picsum.photos/seed/security/1200/800',
-  'bakery_confectionery_pack': 'https://picsum.photos/seed/bakery/1200/800',
-  'franchise_operations_pack': 'https://picsum.photos/seed/franchise/1200/800'
+  'film_production_pack': 'https://picsum.photos/seed/movie-set-ops/1200/800',
+  'ott_platform_pack': 'https://picsum.photos/seed/streaming-server-ops/1200/800',
+  'sports_clubs_stadium_operations_pack': 'https://picsum.photos/seed/stadium-crowd-mgmt/1200/800',
+  'cinema_operations_pack': 'https://picsum.photos/seed/cinema-projection-ops/1200/800',
+  'pharmacy_ops_pack': 'https://picsum.photos/seed/pharmacy-dispensing-standard/1200/800',
+  'healthcare_and_hospital_operations': 'https://picsum.photos/seed/hospital-clinical-ops/1200/800',
+  'facility_management_blueprint': 'https://picsum.photos/seed/building-facility-mgmt/1200/800',
+  'animal_shelter_pack': 'https://picsum.photos/seed/animal-welfare-ops/1200/800',
+  'hotels_and_resorts': 'https://picsum.photos/seed/hotel-housekeeping-ops/1200/800',
+  'restaurants': 'https://picsum.photos/seed/restaurant-kitchen-haccp/1200/800',
+  'jewelry_and_luxury_retail': 'https://picsum.photos/seed/luxury-vault-security/1200/800',
+  'fashion_and_apparel_retail': 'https://picsum.photos/seed/fashion-retail-inventory/1200/800',
+  'school_operations_pack': 'https://picsum.photos/seed/school-bus-safety-ops/1200/800',
+  'university_college_ops': 'https://picsum.photos/seed/university-campus-mgmt/1200/800',
+  'logistics_warehouse_pack': 'https://picsum.photos/seed/warehouse-logistics-ops/1200/800',
+  'manufacturing_operations_ehs_pack': 'https://picsum.photos/seed/factory-safety-loto/1200/800',
+  'food_manufacturing_ops': 'https://picsum.photos/seed/food-factory-hygiene/1200/800',
+  'supermarket_grocery_retail_pack': 'https://picsum.photos/seed/supermarket-cold-chain/1200/800',
+  'electronics_showroom_pack': 'https://picsum.photos/seed/electronics-store-safety/1200/800',
+  'theme_park_ops_pack': 'https://picsum.photos/seed/theme-park-ride-safety/1200/800',
+  'corporate_legal_compliance_starter_kit': 'https://picsum.photos/seed/corporate-legal-compliance/1200/800',
+  'enterprise_risk_cybersecurity_pack': 'https://picsum.photos/seed/enterprise-it-security/1200/800',
+  'bakery_confectionery_pack': 'https://picsum.photos/seed/bakery-production-hygiene/1200/800',
+  'franchise_operations_pack': 'https://picsum.photos/seed/franchise-store-audit/1200/800'
 };
 
 export async function generateMetadata(
