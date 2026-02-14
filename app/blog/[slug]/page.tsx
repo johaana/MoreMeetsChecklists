@@ -1,3 +1,4 @@
+
 import { blogPosts } from '@/lib/blog-posts';
 import { notFound } from 'next/navigation';
 import { SiteHeader } from '@/components/layout/header';
@@ -82,6 +83,7 @@ export default async function BlogPostPage({ params }: Props) {
                   alt={post.title}
                   fill
                   className="object-cover"
+                  data-ai-hint={post.imageHint || "operational blog"}
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />

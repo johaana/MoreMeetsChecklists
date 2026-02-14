@@ -56,7 +56,7 @@ function SubscriptionForm() {
     return (
         <div className="flex items-center justify-center p-4 rounded-lg bg-green-100 border border-green-200 text-green-800 dark:bg-green-900/50 dark:text-green-200 dark:border-green-800">
             <CheckCircle className="w-5 h-5 mr-3" />
-            <p className="font-semibold">Thank you for subscribing!</p>
+            <p className="font-semibold">Thank you! Your pack is on its way.</p>
         </div>
     );
   }
@@ -259,6 +259,7 @@ export default function BlogClientPage() {
                                             alt={currentFeaturedPost.title}
                                             fill
                                             className="object-cover"
+                                            data-ai-hint={currentFeaturedPost.imageHint || "operational blog"}
                                         />
                                     )}
                                     </div>
@@ -288,6 +289,7 @@ export default function BlogClientPage() {
                                                         alt={currentFeaturedPost.title}
                                                         fill
                                                         className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                                        data-ai-hint={currentFeaturedPost.imageHint || "operational blog"}
                                                     />
                                                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent md:bg-gradient-to-r md:from-black/90 md:via-black/70 md:to-transparent" />
                                                 </>
@@ -338,6 +340,7 @@ export default function BlogClientPage() {
                                         alt={post.title}
                                         fill
                                         className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                        data-ai-hint={post.imageHint || "operational blog"}
                                     />
                             ): (
                                <div className="w-full h-full bg-secondary flex items-center justify-center">
