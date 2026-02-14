@@ -10,6 +10,7 @@ import { facility_management_blueprint } from "./facility_management_blueprint";
 import { corporate_legal_compliance_starter_kit } from "./corporate_legal_compliance_starter_kit";
 import { enterprise_risk_cybersecurity_pack } from "./enterprise_risk_cybersecurity_pack";
 import { healthcare_and_hospital_operations } from "./healthcare_and_hospital_operations";
+import { pharmacy_ops_pack } from "./pharmacy_ops_pack";
 import { school_operations_pack } from "./school_operations_pack";
 import { university_college_ops } from "./university_college_ops";
 import { film_production_pack } from "./film_production_pack";
@@ -36,6 +37,7 @@ export const allPacks: PremiumPack[] = [
     corporate_legal_compliance_starter_kit,
     enterprise_risk_cybersecurity_pack,
     healthcare_and_hospital_operations,
+    pharmacy_ops_pack,
     school_operations_pack,
     university_college_ops,
     film_production_pack,
@@ -49,7 +51,3 @@ export const allPacks: PremiumPack[] = [
     bakery_confectionery_pack,
     animal_shelter_pack,
 ];
-
-  
-
-    
