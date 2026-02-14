@@ -61,6 +61,7 @@ function ThankYouContent() {
             hasTriggeredDownload.current = true;
         }
       } else {
+        // Corrected nullish coalescing to satisfy string | null requirement
         setError(result.error ?? "An unexpected verification error occurred.");
       }
       

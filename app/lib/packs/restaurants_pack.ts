@@ -32,16 +32,16 @@ export const restaurants: PremiumPack = {
             summary: "Ensures the kitchen is ready and safe for service.",
             icon: "sunrise",
             tasks: [
-                { id: "REST-OPEN-01", description: "Log temperatures of all refrigerators and freezers.", priority: "High", riskLevel: "High", consequence: "Spoilage of ingredients, foodborne illness outbreak, loss of inventory.", proof: "Temperature Logbook" },
-                { id: "REST-OPEN-02", description: "Calibrate food thermometers.", priority: "High", riskLevel: "High", consequence: "Incorrect cooking temperatures, leading to unsafe food.", proof: "Calibration Log" },
-                { id: "REST-OPEN-03", description: "Sanitize all food preparation surfaces.", priority: "High", riskLevel: "High", consequence: "Cross-contamination, foodborne illness.", proof: "Sanitization Log" },
-                { id: "REST-OPEN-04", description: "Check availability of all ingredients for the day's menu.", priority: "High", riskLevel: "Medium", consequence: "Menu items unavailable, customer dissatisfaction.", proof: "Stock Check Sheet" },
-                { id: "REST-OPEN-05", description: "Inspect all equipment for cleanliness and functionality.", priority: "High", riskLevel: "Medium", consequence: "Equipment failure during service, delays.", proof: "Equipment Check Log" },
-                { id: "REST-OPEN-06", description: "Ensure handwashing stations are stocked.", priority: "High", riskLevel: "High", consequence: "Poor hand hygiene among staff, spread of germs.", proof: "Visual Check" },
-                { id: "REST-OPEN-07", description: "Brief kitchen staff on daily specials and expected volume.", priority: "High", riskLevel: "Low", consequence: "Kitchen unprepared for service, inconsistency.", proof: "Briefing Notes" },
-                { id: "REST-OPEN-08", description: "Check that fire suppression systems are armed and clear.", priority: "High", riskLevel: "High", consequence: "Inability to control a kitchen fire.", proof: "Safety System Log" },
-                { id: "REST-OPEN-09", description: "Verify that all gas lines are secure and free of leaks.", priority: "High", riskLevel: "High", consequence: "Gas leak can lead to explosion or fire.", proof: "Leak Test Log" },
-                { id: "REST-OPEN-10", description: "Set up mise en place for all stations.", priority: "High", riskLevel: "Low", consequence: "Slow service and chaos during peak hours.", proof: "Station Check" }
+                { id: "REST-OPEN-01", description: "Pre-heat all ovens to their required temperatures for the first bake.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent baking results, wasted product.", proof: "Oven Temperature Log" },
+                { id: "REST-OPEN-02", description: "Inspect mixers and other equipment for cleanliness and functionality.", priority: "High", riskLevel: "High", consequence: "Equipment malfunction causes downtime; poor hygiene is a food safety risk.", proof: "Equipment Check Log" },
+                { id: "REST-OPEN-03", description: "Review the day's production schedule and special orders.", priority: "High", riskLevel: "High", consequence: "Missing a special order or producing wrong quantities leads to customer dissatisfaction.", proof: "Production Sheet" },
+                { id: "REST-OPEN-04", description: "Pull all required ingredients from storage based on the production plan.", priority: "High", riskLevel: "Medium", consequence: "Production delays due to missing ingredients.", proof: "Ingredient Pull Sheet" },
+                { id: "REST-OPEN-05", description: "Calibrate food thermometers.", priority: "High", riskLevel: "High", consequence: "Incorrect cooking temperatures, leading to unsafe food.", proof: "Calibration Log" },
+                { id: "REST-OPEN-06", description: "Sanitize all food preparation surfaces.", priority: "High", riskLevel: "High", consequence: "Cross-contamination, foodborne illness.", proof: "Sanitization Log" },
+                { id: "REST-OPEN-07", description: "Ensure handwashing stations are stocked.", priority: "High", riskLevel: "High", consequence: "Poor hand hygiene among staff, spread of germs.", proof: "Visual Check" },
+                { id: "REST-OPEN-08", description: "Brief kitchen staff on daily specials and expected volume.", priority: "High", riskLevel: "Low", consequence: "Kitchen unprepared for service, inconsistency.", proof: "Briefing Notes" },
+                { id: "REST-OPEN-09", description: "Check that fire suppression systems are armed and clear.", priority: "High", riskLevel: "High", consequence: "Inability to control a kitchen fire.", proof: "Safety System Log" },
+                { id: "REST-OPEN-10", description: "Verify that all gas lines are secure and free of leaks.", priority: "High", riskLevel: "High", consequence: "Gas leak can lead to explosion or fire.", proof: "Leak Test Log" }
             ]
         },
         {

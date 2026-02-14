@@ -44,7 +44,7 @@ const AnimatedButton = ({
         borderWidth: '2px',
         borderStyle: 'solid',
         position: 'relative'
-    } as React.CSSProperties;
+    } as any; // Cast to any to allow custom CSS variables in React inline styles
 
     return (
         <button
