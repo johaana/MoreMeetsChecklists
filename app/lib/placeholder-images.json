@@ -1,111 +1,135 @@
 
 [
   {
-    "id": "hero-wedding",
-    "description": "A beautiful destination wedding setup.",
-    "imageUrl": "https://picsum.photos/seed/wedding/1200/800",
-    "imageHint": "destination wedding"
+    "id": "pack-cybersecurity",
+    "description": "A high-tech secure server room.",
+    "imageUrl": "https://picsum.photos/seed/cyber-ops-99/1200/800",
+    "imageHint": "server room"
   },
   {
-    "id": "feature-ai",
-    "description": "A corporate product launch event with a focus on technology.",
-    "imageUrl": "https://picsum.photos/seed/corporate/1200/800",
-    "imageHint": "corporate event"
+    "id": "pack-hotel",
+    "description": "A luxury hotel lobby and reception.",
+    "imageUrl": "https://picsum.photos/seed/hotel-ops-99/1200/800",
+    "imageHint": "hotel lobby"
   },
   {
-    "id": "testimonial-elena",
-    "description": "Professional headshot of Elena Petrova.",
-    "imageUrl": "https://picsum.photos/seed/elena/200/200",
-    "imageHint": "woman ceo"
+    "id": "pack-restaurant",
+    "description": "A clean, professional restaurant kitchen.",
+    "imageUrl": "https://picsum.photos/seed/kitchen-ops-99/1200/800",
+    "imageHint": "commercial kitchen"
   },
   {
-    "id": "testimonial-marcus",
-    "description": "Professional headshot of Marcus Thorne.",
-    "imageUrl": "https://picsum.photos/seed/marcus/200/200",
-    "imageHint": "male professional"
+    "id": "pack-retail",
+    "description": "A modern fashion retail store.",
+    "imageUrl": "https://picsum.photos/seed/retail-ops-99/1200/800",
+    "imageHint": "clothing store"
   },
   {
-    "id": "testimonial-priya",
-    "description": "Professional headshot of Priya Singh.",
-    "imageUrl": "https://picsum.photos/seed/priya/200/200",
-    "imageHint": "female founder"
+    "id": "pack-school",
+    "description": "A school bus and educational building.",
+    "imageUrl": "https://picsum.photos/seed/school-ops-99/1200/800",
+    "imageHint": "school bus"
   },
   {
-    "id": "showcase-award-ceremony",
-    "description": "An elegant award ceremony event.",
-    "imageUrl": "https://picsum.photos/seed/award/1200/800",
-    "imageHint": "award ceremony"
+    "id": "pack-factory",
+    "description": "A large-scale manufacturing factory floor.",
+    "imageUrl": "https://picsum.photos/seed/factory-ops-99/1200/800",
+    "imageHint": "factory floor"
   },
   {
-    "id": "showcase-hotel-exterior",
-    "description": "The stunning exterior of a 7-star hotel.",
-    "imageUrl": "https://picsum.photos/seed/luxury-hotel/1200/800",
-    "imageHint": "luxury hotel"
+    "id": "pack-logistics",
+    "description": "A busy logistics warehouse with racks.",
+    "imageUrl": "https://picsum.photos/seed/logistics-ops-99/1200/800",
+    "imageHint": "warehouse storage"
   },
   {
-    "id": "showcase-product-launch-samsung",
-    "description": "A product launch event.",
-    "imageUrl": "https://picsum.photos/seed/launch/1200/800",
-    "imageHint": "product launch"
+    "id": "pack-pharmacy",
+    "description": "A modern pharmacy with organized medicine shelves.",
+    "imageUrl": "https://picsum.photos/seed/pharmacy-ops-99/1200/800",
+    "imageHint": "pharmacy store"
   },
   {
-    "id": "showcase-corporate-hospitality",
-    "description": "A corporate hospitality setting.",
-    "imageUrl": "https://picsum.photos/seed/hospitality/1200/800",
-    "imageHint": "corporate hospitality"
+    "id": "pack-hospital",
+    "description": "A clean hospital ward and medical equipment.",
+    "imageUrl": "https://picsum.photos/seed/hospital-ops-99/1200/800",
+    "imageHint": "hospital ward"
   },
   {
-    "id": "showcase-chauffeur",
-    "description": "A luxury chauffeur service.",
-    "imageUrl": "https://picsum.photos/seed/chauffeur/1200/800",
-    "imageHint": "luxury service"
+    "id": "pack-cinema",
+    "description": "A movie theater auditorium.",
+    "imageUrl": "https://picsum.photos/seed/cinema-ops-99/1200/800",
+    "imageHint": "movie theater"
   },
   {
-    "id": "showcase-food",
-    "description": "A high-quality food platter.",
-    "imageUrl": "https://picsum.photos/seed/food/1200/800",
-    "imageHint": "gourmet food"
+    "id": "pack-theme-park",
+    "description": "An amusement park roller coaster.",
+    "imageUrl": "https://picsum.photos/seed/park-ops-99/1200/800",
+    "imageHint": "roller coaster"
   },
   {
-    "id": "for-event-planners",
-    "description": "An image of a grand wedding event.",
-    "imageUrl": "https://picsum.photos/seed/events/1200/800",
-    "imageHint": "grand event"
+    "id": "pack-bakery",
+    "description": "A bakery with ovens and fresh products.",
+    "imageUrl": "https://picsum.photos/seed/bakery-ops-99/1200/800",
+    "imageHint": "bakery shop"
   },
   {
-    "id": "for-hospitality",
-    "description": "An image of the luxurious hotel reception.",
-    "imageUrl": "https://picsum.photos/seed/hotel-reception/1200/800",
-    "imageHint": "hotel reception"
+    "id": "pack-film",
+    "description": "A professional film production set.",
+    "imageUrl": "https://picsum.photos/seed/film-ops-99/1200/800",
+    "imageHint": "movie set"
   },
   {
-    "id": "for-startups",
-    "description": "A dynamic product launch event.",
-    "imageUrl": "https://picsum.photos/seed/startup/1200/800",
-    "imageHint": "team collaboration"
+    "id": "pack-ott",
+    "description": "A data center supporting streaming services.",
+    "imageUrl": "https://picsum.photos/seed/data-ops-99/1200/800",
+    "imageHint": "data center"
   },
   {
-    "id": "break-reception",
-    "description": "A clean, modern hotel reception area.",
-    "imageUrl": "https://picsum.photos/seed/reception/1200/800",
-    "imageHint": "hotel reception"
+    "id": "pack-sports",
+    "description": "A modern sports stadium.",
+    "imageUrl": "https://picsum.photos/seed/stadium-ops-99/1200/800",
+    "imageHint": "sports stadium"
   },
   {
-    "id": "break-facility",
-    "description": "A modern facility management setting.",
-    "imageUrl": "https://picsum.photos/seed/facility/1200/800",
-    "imageHint": "facility management"
+    "id": "pack-franchise",
+    "description": "A standardized franchise retail outlet.",
+    "imageUrl": "https://picsum.photos/seed/franchise-ops-99/1200/800",
+    "imageHint": "franchise store"
   },
   {
-    "id": "chaos-desk",
-    "description": "A messy desk representing operational chaos.",
-    "imageUrl": "https://picsum.photos/seed/chaos/1200/800",
-    "imageHint": "messy desk"
+    "id": "pack-legal",
+    "description": "A corporate boardroom.",
+    "imageUrl": "https://picsum.photos/seed/legal-ops-99/1200/800",
+    "imageHint": "corporate boardroom"
   },
   {
-    "id": "control-desk",
-    "description": "An organized desk representing operational control.",
-    "imageUrl": "https://picsum.photos/seed/control/1200/800",
-    "imageHint": "organized desk"
+    "id": "pack-facility",
+    "description": "A modern building exterior.",
+    "imageUrl": "https://picsum.photos/seed/facility-ops-99/1200/800",
+    "imageHint": "office building"
+  },
+  {
+    "id": "blog-goa-fire",
+    "description": "Fire emergency services.",
+    "imageUrl": "https://picsum.photos/seed/fire-99/1200/800",
+    "imageHint": "fire emergency"
+  },
+  {
+    "id": "blog-boeing",
+    "description": "Aircraft manufacturing facility.",
+    "imageUrl": "https://picsum.photos/seed/aviation-99/1200/800",
+    "imageHint": "aircraft manufacturing"
+  },
+  {
+    "id": "blog-deepfake",
+    "description": "Digital security and fraud concept.",
+    "imageUrl": "https://picsum.photos/seed/cyber-fraud-99/1200/800",
+    "imageHint": "cyber fraud"
+  },
+  {
+    "id": "blog-luxury",
+    "description": "Luxury jewelry store interior.",
+    "imageUrl": "https://picsum.photos/seed/luxury-99/1200/800",
+    "imageHint": "jewelry store"
   }
 ]

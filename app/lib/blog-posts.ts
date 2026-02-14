@@ -22,7 +22,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Fire Safety", "Event Safety", "Hospitality", "Restaurants", "Risk Management"],
       relatedPackId: "restaurants",
-      imageUrl: "https://picsum.photos/seed/fire-tragedy-report/1200/630",
+      imageUrl: "https://picsum.photos/seed/fire-99/1200/630",
       description: "A devastating fire at Birch by Romeo Lane in Goa claimed 25 lives. This was not fate. It was a catastrophic, preventable failure. We have a moral obligation to deconstruct how this happened.",
       content: `
         <p class="lead">At 12:30 a.m. on December 7, 2025, a packed nightclub in Arpora, Goa — Birch by Romeo Lane — went from celebration to catastrophe in under 90 seconds. A gas cylinder reportedly ignited a fast-spreading fire. Music stopped. Lights went out. Panic erupted. Staff and guests struggled to escape through narrow, blocked or poorly marked exits. By the time firefighters fought their way in, 25 people were dead — among them tourists, staff members, young adults out for a weekend, families, and visitors who simply wanted a night of joy. This was not an accident. This was a system failure — operational, structural, managerial, and cultural.</p>
@@ -88,7 +88,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Film Production", "Safety", "Risk Management", "Stunts"],
       relatedPackId: "film_production_pack",
-      imageUrl: "https://picsum.photos/seed/movie-stunt-ops/1200/630",
+      imageUrl: "https://picsum.photos/seed/film-ops-99/1200/630",
       description: "The recent death of a stuntman on the set of Sardar 2 was not a freak accident; it was a preventable tragedy. We break down the professional-grade stunt safety SOPs that every production, big or small, must implement to protect lives and their bottom line.",
       content: `
         <p class="lead">The Indian film industry was recently rocked by the tragic death of a stuntman during the filming of "Sardar 2". While the investigation is ongoing, such incidents are rarely a matter of bad luck. They are almost always the result of a catastrophic breakdown in process. For every high-flying action sequence that wows audiences, there must be a grounded, rigorous, and verifiable safety protocol. When that chain of procedure is broken, the consequences are devastating.</p>
@@ -151,7 +151,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Theme Parks", "Ride Safety", "Risk Management", "Operations"],
       relatedPackId: "theme_park_ops_pack",
-      imageUrl: "https://picsum.photos/seed/roller-coaster-ops/1200/630",
+      imageUrl: "https://picsum.photos/seed/park-ops-99/1200/630",
       description: "Universal's decision to reopen the Stardust Racers ride after a fatality puts a spotlight on safety. Reopening isn't enough. Operators need a new playbook. Here are the technical, operational, and human factor SOPs that must be implemented.",
       content: `
         <p class="lead">The reopening of the Stardust Racers ride at Universal's Epic Universe, following a tragic guest fatality, is a moment of critical importance for the entire theme park industry. The incident, and the subsequent investigation, underscores a vital truth: reopening a ride is not just a technical fix. It requires a comprehensive overhaul of the operational and human systems surrounding the attraction to restore public trust and prevent a repeat incident.</p>
@@ -200,7 +200,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Theme Parks", "Ride Safety", "Maintenance", "Compliance"],
       relatedPackId: "theme_park_ops_pack",
-      imageUrl: "https://picsum.photos/seed/park-ride-safety/1200/630",
+      imageUrl: "https://picsum.photos/seed/park-ops-99/1200/630",
       description: "A fatal accident at Delhi's Fun N Food Village was caused by a seatbelt failure. This was not a 'freak accident'. It was a maintenance failure. Learn the critical ride inspection SOPs that every amusement park must operate to prevent these 'never events'.",
       content: `
         <p class="lead">A day of fun at Delhi's Fun N Food Village turned to tragedy when a rider was flung from a rollercoaster, an incident attributed to a seatbelt and fastener failure. This heartbreaking event is a stark reminder that in the world of amusement parks, safety is not a suggestion; it is an absolute, non-negotiable requirement. Incidents like this are rarely 'freak accidents' but are almost always the final, tragic outcome of a chain of procedural failures.</p>
@@ -248,7 +248,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Film Production", "Safety", "Risk Management", "Fire Safety"],
       relatedPackId: "film_production_pack",
-      imageUrl: "https://picsum.photos/seed/set-fire-ops/1200/630",
+      imageUrl: "https://picsum.photos/seed/fire-99/1200/630",
       description: "Fire on TV sets is avoidable. We break down the Anupamaa set fire, what went wrong, and the simple SOPs every production unit should adopt today to prevent shoot delays, insurance claims, and reputational damage.",
       content: `
         <p class="lead">In early 2023, a major fire broke out on the set of the popular TV show "Anupamaa." While thankfully no casualties were reported, the incident resulted in significant financial loss and production delays. For production houses and line producers, this event serves as a critical case study. Set fires are not a random act of fate; they are almost always a predictable outcome of gaps in operational safety procedures.</p>
@@ -290,7 +290,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Cybersecurity", "Finance", "Fraud", "Risk Management"],
       relatedPackId: "enterprise_risk_cybersecurity_pack",
-      imageUrl: "https://picsum.photos/seed/cyber-fraud-ops/1200/630",
+      imageUrl: "https://picsum.photos/seed/cyber-fraud-99/1200/630",
       description: "In early 2024, a finance worker at multinational firm Arup was tricked into sending $25.6 million by a sophisticated deepfake video call of his CFO. This new-age fraud bypasses traditional security, and only robust, human-centric financial SOPs can stop it.",
       content: `
         <p class="lead">In February 2024, the business world was shaken by a story straight out of a science fiction movie. A finance employee at the multinational firm Arup received an email from his Chief Financial Officer, requesting his presence on a video call to discuss a confidential transaction. When he joined, he saw his CFO and other colleagues on the screen. They looked and sounded exactly as they should. They instructed him to process a series of urgent transfers totaling HK$200 million (US$25.6 million). He complied.</p>
@@ -326,7 +326,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Security", "Luxury Retail", "Theft Prevention", "Risk Management"],
       relatedPackId: "jewelry_and_luxury_retail",
-      imageUrl: "https://picsum.photos/seed/luxury-jewelry-ops/1200/630",
+      imageUrl: "https://picsum.photos/seed/luxury-99/1200/630",
       description: "The legendary Pink Panther gang doesn't use brute force; they use intelligence to exploit human behavior and procedural loopholes in luxury stores. This analysis reveals how their methods work and why simple, rigid checklists are their kryptonite.",
       content: `
         <p class="lead">They are the stuff of legend: the Pink Panthers, a network of audacious jewel thieves responsible for over a billion dollars in heists from Dubai to Tokyo. Their methods are cinematic, intelligent, and famously non-violent. They don't blow up vaults; they exploit the single greatest vulnerability in any luxury retail store: human process.</p>

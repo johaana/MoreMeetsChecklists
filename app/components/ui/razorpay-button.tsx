@@ -20,7 +20,7 @@ export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, class
         if (initializedRef.current === paymentId) return;
 
         const container = containerRef.current;
-        container.innerHTML = ''; // Clear previous button
+        container.innerHTML = ''; // Clear previous button content
 
         const form = document.createElement('form');
         const script = document.createElement('script');
@@ -35,7 +35,7 @@ export const RazorpayButton: React.FC<RazorpayButtonProps> = ({ paymentId, class
         initializedRef.current = paymentId;
 
         return () => {
-            // Optional: Cleanup if needed, but usually the form handles its own removal
+            // Optional: Cleanup logic if needed when component unmounts
             // initializedRef.current = null;
         };
     }, [paymentId]);
