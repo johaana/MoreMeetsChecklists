@@ -103,9 +103,11 @@ type ChartLegendContentProps = Omit<
   React.ComponentProps<typeof RechartsPrimitive.Legend>,
   "formatter" | "content"
 > & {
-  className?: string
-  payload?: any[]
-  formatter?: (label: string, entry: any, index?: number) => React.ReactNode
+  className?: string;
+  payload?: any[];
+  formatter?: (label: string, entry: any, index?: number) => React.ReactNode;
+  onMouseEnter?: (data: any, index: number, event: React.MouseEvent) => void;
+  onClick?: (data: any, index: number, event: React.MouseEvent) => void;
 }
 
 const ChartLegendContent = React.forwardRef<HTMLDivElement, ChartLegendContentProps>(
