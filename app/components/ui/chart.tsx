@@ -37,9 +37,9 @@ export {
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
+  ChartStyle,
   ChartTooltip,
   ChartTooltipContent,
-  ChartStyle,
   type ChartConfig,
 }
 export {

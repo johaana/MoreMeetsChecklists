@@ -80,7 +80,7 @@ const ChartContainer = React.forwardRef<
   return (
     <ChartContext.Provider value={{ config: chartConfig }}>
       <div
-        data-chart
+        data-chart={id}
         className={cn(
           "flex aspect-video justify-center gap-4 [z-index:0] [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke-width='1']]:stroke-transparent [&_.recharts-layer:focus-visible]:outline-none [&_.recharts-polar-axis-tick_text]:fill-muted-foreground [&_.recharts-polar-grid-concentric-polygon]:stroke-border/50 [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-responsive-container]:-mx-2 [&_.recharts-surface]:outline-none [&_.recharts-tooltip-wrapper]:z-50 [&_.recharts-tooltip-wrapper]:rounded-lg [&_.recharts-tooltip-wrapper]:border [&_.recharts-tooltip-wrapper]:bg-background/95 [&_.recharts-tooltip-wrapper]:text-sm [&_.recharts-tooltip-wrapper]:shadow-lg [&_.recharts-tooltip-wrapper]:backdrop-blur-sm",
           className
@@ -95,17 +95,18 @@ const ChartContainer = React.forwardRef<
     </ChartContext.Provider>
   )
 })
-ChartContainer.displayName = "Chart"
+ChartContainer.displayName = "ChartContainer"
 
 const ChartLegend = RechartsPrimitive.Legend
 
 type ChartLegendContentProps = Omit<
   React.ComponentProps<typeof RechartsPrimitive.Legend>,
-  "formatter" | "content"
-> & {
-  className?: string
-  payload?: any[]
-}
+  "content" | "formatter"
+> &
+  React.ComponentProps<"div"> & {
+    payload?: any[]
+    hideIcon?: boolean
+  }
 
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
@@ -140,7 +141,7 @@ const ChartLegendContent = React.forwardRef<
           }
         }}
       >
-        {payload.map((item, i) => {
+        {payload.map((item) => {
           const key = item.dataKey as string
           const entry = config[key]
           const color = entry?.color ?? item.color
