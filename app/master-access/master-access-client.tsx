@@ -1,17 +1,16 @@
-
 'use client';
 
 import * as React from 'react';
-import type { PremiumPack } from '@/lib/premium-packs';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { handleDownload } from '@/lib/download';
-import { allPacks } from '@/lib/packs/all_packs';
+import type { PremiumPack } from '@/app/lib/premium-packs';
+import { Button } from '@/app/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/app/components/ui/card';
+import { Input } from '@/app/components/ui/input';
+import { handleDownload } from '@/app/lib/download';
+import { allPacks } from '@/app/lib/packs/all_packs';
 import { Download, KeyRound, Loader2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@/app/hooks/use-toast';
 import { verifyPassword } from './actions';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from '@/app/components/ui/badge';
 
 export default function MasterAccessClient() {
     const [password, setPassword] = React.useState('');

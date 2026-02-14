@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -29,7 +28,7 @@ import {
   ChartStyle,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart-primitive"
+} from "@/app/components/ui/chart-primitive"
 
 const Chart = ChartContainer
 

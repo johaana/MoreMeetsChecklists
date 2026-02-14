@@ -1,7 +1,6 @@
-
 import { writeFile, utils, type WorkSheet, type CellObject } from 'xlsx-js-style';
-import type { PremiumPack, Checklist as PackChecklist } from "@/lib/premium-packs";
-import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
+import type { PremiumPack, Checklist as PackChecklist } from "@/app/lib/premium-packs";
+import { individualChecklists, type IndividualChecklist } from '@/app/lib/individual-checklists';
 
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
