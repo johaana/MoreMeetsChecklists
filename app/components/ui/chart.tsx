@@ -28,7 +28,7 @@ import {
   ChartStyle,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/app/components/ui/chart-primitive"
+} from "@/components/ui/chart-primitive"
 
 const Chart = ChartContainer
 

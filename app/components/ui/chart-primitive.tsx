@@ -188,7 +188,7 @@ const ChartTooltipContent = React.forwardRef<
       indicator?: "line" | "dot" | "dashed"
       nameKey?: string
       labelKey?: string
-      formatter?: (label: string, items: any[], index?: number) => React.ReactNode
+      formatter?: (value: any, name: any, item: any, index?: number) => React.ReactNode
     }
 >(
   (
@@ -277,7 +277,7 @@ const ChartTooltipContent = React.forwardRef<
                 )}
               >
                 {formatter ? (
-                  formatter(label as string, [item], index)
+                  formatter(item.value, item.name, item, index)
                 ) : (
                   <>
                     {!hideIndicator && (
