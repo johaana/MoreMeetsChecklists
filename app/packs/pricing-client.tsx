@@ -224,8 +224,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                      </div>
                                 )}
                                 
-                                <div className="flex items-center justify-center gap-2 p-3 bg-primary/10 rounded-lg border border-primary/20">
-                                    <Info className="w-5 h-5 text-primary shrink-0" />
+                                <div className="flex items-center justify-center gap-2 p-3 bg-alternate-background rounded-lg border border-authority-green/50">
+                                    <Info className="w-5 h-5 text-authority-green shrink-0" />
                                     <p className="text-xs text-primary-text font-medium text-left leading-tight">
                                         {currency === 'INR' 
                                             ? "International card? Switch to USD at the top for Stripe/Paypal." 
@@ -255,3 +255,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+    
