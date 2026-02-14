@@ -50,8 +50,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     };
     
     const addFooter = (ws: WorkSheet, lastRow: number, numCols: number) => {
-        const merge = { s: { r: lastRow + 2, c: 0 }, e: { r: lastRow + 2, c: numCols - 1 } };
         if (!ws['!merges']) ws['!merges'] = [];
+        const merge = { s: { r: lastRow + 2, c: 0 }, e: { r: lastRow + 2, c: numCols - 1 } };
         ws['!merges'].push(merge);
         const footerCell: CellObject = { v: "For support, contact more@moremeets.com | © 2025 MoreMeets™ - The Professional Standard for Operational Checklists.", t: 's', s: footerStyle };
         utils.sheet_add_aoa(ws, [[footerCell]], { origin: { r: lastRow + 2, c: 0 } });
