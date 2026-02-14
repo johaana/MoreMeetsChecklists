@@ -82,7 +82,7 @@ const ChartContainer = React.forwardRef<
       <div
         data-chart
         className={cn(
-          "flex aspect-video justify-center gap-4 [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke-width='1']]:stroke-transparent [&_.recharts-layer:focus-visible]:outline-none [&_.recharts-polar-axis-tick_text]:fill-muted-foreground [&_.recharts-polar-grid-concentric-polygon]:stroke-border/50 [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-responsive-container]:-mx-2 [&_.recharts-sector[stroke-width='1']]:stroke-transparent [&_.recharts-surface]:outline-none [&_.recharts-tooltip-wrapper]:z-50 [&_.recharts-tooltip-wrapper]:rounded-lg [&_.recharts-tooltip-wrapper]:border [&_.recharts-tooltip-wrapper]:bg-background/95 [&_.recharts-tooltip-wrapper]:text-sm [&_.recharts-tooltip-wrapper]:shadow-lg [&_.recharts-tooltip-wrapper]:backdrop-blur-sm",
+          "flex aspect-video justify-center gap-4 [z-index:0] [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke-width='1']]:stroke-transparent [&_.recharts-layer:focus-visible]:outline-none [&_.recharts-polar-axis-tick_text]:fill-muted-foreground [&_.recharts-polar-grid-concentric-polygon]:stroke-border/50 [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-responsive-container]:-mx-2 [&_.recharts-sector[stroke-width='1']]:stroke-transparent [&_.recharts-surface]:outline-none [&_.recharts-tooltip-wrapper]:z-50 [&_.recharts-tooltip-wrapper]:rounded-lg [&_.recharts-tooltip-wrapper]:border [&_.recharts-tooltip-wrapper]:bg-background/95 [&_.recharts-tooltip-wrapper]:text-sm [&_.recharts-tooltip-wrapper]:shadow-lg [&_.recharts-tooltip-wrapper]:backdrop-blur-sm",
           className
         )}
         ref={ref}
@@ -110,7 +110,7 @@ type ChartLegendContentProps = Omit<
 
 const ChartLegendContent = React.forwardRef<HTMLDivElement, ChartLegendContentProps>(
   (
-    { className, formatter, payload = [], onMouseEnter, onMouseLeave, onClick },
+    { className, formatter, payload = [], onMouseEnter, onClick },
     ref
   ) => {
     const { config } = useChart()
@@ -126,7 +126,6 @@ const ChartLegendContent = React.forwardRef<HTMLDivElement, ChartLegendContentPr
           "flex items-center justify-center gap-4 text-xs text-muted-foreground",
           className
         )}
-        onMouseLeave={() => onMouseLeave?.({} as any)}
       >
         {payload.map((item, i) => {
           const key = item.dataKey as string
