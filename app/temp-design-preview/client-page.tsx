@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -35,7 +34,7 @@ const AnimatedButton = ({
     const disabledBorderColor = `hsl(var(--${disabledBorder}))`;
     const chasingColorValue = `hsl(var(--${chasingColor}))`;
 
-    const buttonStyles: React.CSSProperties = {
+    const buttonStyles = {
         '--chasing-color': chasingColorValue,
         '--border-color': disabledBorderColor,
         '--text-color': `hsl(var(--text-primary))`,
@@ -45,7 +44,7 @@ const AnimatedButton = ({
         borderWidth: '2px',
         borderStyle: 'solid',
         position: 'relative'
-    };
+    } as React.CSSProperties;
 
     return (
         <button

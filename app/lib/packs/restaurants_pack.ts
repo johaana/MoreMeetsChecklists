@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const restaurants: PremiumPack = {
@@ -138,7 +137,7 @@ export const restaurants: PremiumPack = {
                 { id: "CASH-03", description: "Prepare and log daily bank deposits.", priority: "High", riskLevel: "High", consequence: "Holding large amounts of cash on-site is a major security risk.", proof: "Bank Deposit Slip" },
                 { id: "CASH-04", description: "Require manager approval for all voided bills and discounts.", priority: "High", riskLevel: "High", consequence: "A common method of internal fraud is to void a cash transaction and pocket the money.", proof: "Void/Discount Log" },
                 { id: "CASH-05", description: "Use counterfeit detection pens/machines for all large bills.", priority: "High", riskLevel: "High", consequence: "Accepting counterfeit currency is a direct financial loss.", proof: "Counterfeit Check Log" },
-                { id: "CASH-06", description: "Limit the amount of cash in each POS drawer.", priority: "High", riskLevel: "High", consequence: "Reduces the potential loss in case of a robbery.", proof: "Cash Drawer Limit Policy" },
+                { id: "CASH-06", description: "Limit the amount of cash in each POS drawer.", priority: "High", riskLevel: "High", consequence: "Reduces the potential_loss in case of a robbery.", proof: "Cash Drawer Limit Policy" },
                 { id: "CASH-07", description: "Ensure CCTV cameras are covering all cash handling points.", priority: "High", riskLevel: "High", consequence: "Provides crucial evidence in case of a theft or discrepancy.", proof: "CCTV Check Log" },
                 { id: "CASH-08", description: "Reconcile credit card settlements daily.", priority: "High", riskLevel: "High", consequence: "Ensures that all card transactions have been correctly processed and settled by the bank.", proof: "Settlement Report" },
                 { id: "CASH-09", description: "Train all cashiers on cash handling procedures and fraud prevention.", priority: "High", riskLevel: "High", consequence: "Untrained cashiers are more likely to make errors or fall for scams.", proof: "Training Records" },
