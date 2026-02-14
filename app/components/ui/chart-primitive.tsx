@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -359,7 +358,7 @@ export {
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
+  ChartStyle,
   ChartTooltip,
   ChartTooltipContent,
-  ChartStyle,
 }

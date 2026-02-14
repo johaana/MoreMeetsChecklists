@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const restaurants: PremiumPack = {
@@ -143,66 +142,6 @@ export const restaurants: PremiumPack = {
                 { id: "CASH-08", description: "Reconcile credit card settlements daily.", priority: "High", riskLevel: "High", consequence: "Ensures that all card transactions have been correctly processed and settled by the bank.", proof: "Settlement Report" },
                 { id: "CASH-09", description: "Train all cashiers on cash handling procedures and fraud prevention.", priority: "High", riskLevel: "High", consequence: "Untrained cashiers are more likely to make errors or fall for scams.", proof: "Training Records" },
                 { id: "CASH-10", description: "Securely store all financial records.", priority: "High", riskLevel: "High", consequence: "Protects sensitive financial data from theft or misuse.", proof: "Secure Storage" }
-            ]
-        },
-        {
-            title: "Incident Reporting & Management",
-            department: "Management",
-            frequency: "Per Incident",
-            role: "Duty Manager",
-            summary: "A structured way to handle any incidents, from a guest complaint to a safety issue.",
-            icon: "siren",
-            tasks: [
-                { id: "INC-01", description: "Log every incident with date, time, location, and description.", priority: "High", riskLevel: "High", consequence: "An undocumented incident is a major legal liability.", proof: "Incident Report Form" },
-                { id: "INC-02", description: "Take photos and witness statements for any significant incident.", priority: "High", riskLevel: "High", consequence: "Provides crucial evidence for insurance claims or legal defense.", proof: "Photos & Statements" },
-                { id: "INC-03", description: "Escalate serious incidents to senior management immediately.", priority: "High", riskLevel: "High", consequence: "Delay can worsen the situation and hinder effective crisis management.", proof: "Escalation Log" },
-                { id: "INC-04", description: "Conduct a root cause analysis for all major incidents.", priority: "High", riskLevel: "High", consequence: "If you don't find the root cause, the same incident is likely to happen again.", proof: "RCA Report" },
-                { id: "INC-05", description: "Implement corrective and preventive actions (CAPA).", priority: "High", riskLevel: "High", consequence: "The most important step to prevent recurrence.", proof: "CAPA Plan" },
-                { id: "INC-06", description: "Preserve any relevant CCTV footage.", priority: "High", riskLevel: "High", consequence: "Loss of footage can cripple an investigation.", proof: "Footage Saved Confirmation" },
-                { id: "INC-07", description: "Follow up with any affected guests or staff.", priority: "High", riskLevel: "High", consequence: "Shows that the management is concerned and taking action.", proof: "Follow-up Log" },
-                { id: "INC-08", description: "Report incidents to authorities or insurance as required.", priority: "High", riskLevel: "High", consequence: "A legal and contractual requirement.", proof: "Report Filing" },
-                { id: "INC-09", description: "Review incident reports weekly to identify trends.", priority: "High", riskLevel: "High", consequence: "Helps to identify recurring problems that need a systemic fix.", proof: "Weekly Review Meeting" },
-                { id: "INC-10", description: "Use incident data to update training and procedures.", priority: "High", riskLevel: "High", consequence: "Turns incidents into learning opportunities.", proof: "Updated SOPs" }
-            ]
-        },
-        {
-            title: "Staff Hygiene & Training",
-            department: "HR/Hygiene",
-            frequency: "Ongoing",
-            role: "HR Manager",
-            summary: "Ensures all staff are trained and compliant with hygiene standards.",
-            icon: "user-check",
-            tasks: [
-                { id: "HYG-TRAIN-01", description: "Conduct daily checks for clean uniforms, nails, and hairnets.", priority: "High", riskLevel: "High", consequence: "Poor personal hygiene is a major food safety risk.", proof: "Daily Staff Audit Log" },
-                { id: "HYG-TRAIN-02", description: "Enforce strict handwashing protocols.", priority: "High", riskLevel: "High", consequence: "The primary way to prevent the spread of foodborne illness.", proof: "Handwashing Audit" },
-                { id: "HYG-TRAIN-03", description: "Ensure all new hires complete FSSAI FoSTaC training.", priority: "High", riskLevel: "High", consequence: "A legal requirement and a baseline for food safety knowledge.", proof: "FoSTaC Certificates" },
-                { id: "HYG-TRAIN-04", description: "Provide documented refresher training on food safety annually.", priority: "High", riskLevel: "High", consequence: "Keeps knowledge fresh and reinforces good habits.", proof: "Refresher Training Log" },
-                { id: "HYG-TRAIN-05", description: "Maintain training records for all employees.", priority: "High", riskLevel: "High", consequence: "Essential for proving due diligence during a health inspection.", proof: "Master Training File" },
-                { id: "HYG-TRAIN-06", description: "Have a clear policy for sick employees not to handle food.", priority: "High", riskLevel: "High", consequence: "A sick employee can cause a major outbreak.", proof: "Sick Leave Policy" },
-                { id: "HYG-TRAIN-07", description: "Post hygiene reminders in staff areas.", priority: "Medium", riskLevel: "Low", consequence: "Helps to keep food safety top-of-mind.", proof: "Visual Check" },
-                { id: "HYG-TRAIN-08", description: "Audit staff compliance with hygiene rules.", priority: "High", riskLevel: "High", consequence: "Policies are useless without enforcement.", proof: "Hygiene Compliance Report" },
-                { id: "HYG-TRAIN-09", description: "Conduct pre-employment medical checks for food handlers.", priority: "High", riskLevel: "High", consequence: "Prevents hiring individuals with communicable diseases.", proof: "Medical Reports" },
-                { id: "HYG-TRAIN-10", description: "Train staff on allergen management.", priority: "High", riskLevel: "High", consequence: "Can prevent a life-threatening allergic reaction in a customer.", proof: "Allergen Training Log" }
-            ]
-        },
-        {
-            title: "Regulatory Compliance (FSSAI)",
-            department: "Compliance",
-            frequency: "Ongoing",
-            role: "Owner/Manager",
-            summary: "A checklist to ensure compliance with FSSAI and other local regulations.",
-            icon: "file-check-2",
-            tasks: [
-                { id: "FSSAI-01", description: "Ensure the FSSAI license is valid and displayed prominently.", priority: "High", riskLevel: "High", consequence: "A legal requirement; failure can lead to closure.", proof: "Displayed License" },
-                { id: "FSSAI-02", description: "Maintain all required records for FSSAI inspections.", priority: "High", riskLevel: "High", consequence: "Lack of records is a major red flag for inspectors.", proof: "Compliance File" },
-                { id: "FSSAI-03", description: "Use only FSSAI-approved suppliers for raw materials.", priority: "High", riskLevel: "High", consequence: "Using unapproved suppliers can introduce unsafe ingredients.", proof: "Supplier Approval List" },
-                { id: "FSSAI-04", description: "Ensure all food handlers have completed FoSTaC training.", priority: "High", riskLevel: "High", consequence: "A mandatory training for all food handlers in India.", proof: "FoSTaC Certificates" },
-                { id: "FSSAI-05", description: "Ensure potable water is used for all cooking and cleaning.", priority: "High", riskLevel: "High", consequence: "Contaminated water can cause widespread illness.", proof: "Water Test Report" },
-                { id: "FSSAI-06", description: "Comply with labeling regulations for any packaged products.", priority: "High", riskLevel: "High", consequence: "Incorrect labeling is a legal violation.", proof: "Label Audit" },
-                { id: "FSSAI-07", description: "Cooperate fully with any food safety inspections.", priority: "High", riskLevel: "High", consequence: "Lack of cooperation can lead to harsher penalties.", proof: "Inspection Report" },
-                { id: "FSSAI-08", description: "Maintain a pest control program and records.", priority: "High", riskLevel: "High", consequence: "A key requirement for FSSAI licensing.", proof: "Pest Control Records" },
-                { id: "FSSAI-09", description: "Implement a product recall plan.", priority: "High", riskLevel: "High", consequence: "Necessary for managing a food safety incident effectively.", proof: "Recall Plan" },
-                { id: "FSSAI-10", description: "Stay updated on any changes to FSSAI regulations.", priority: "High", riskLevel: "High", consequence: "Ignorance of the law is not an excuse for non-compliance.", proof: "Regulatory Update Log" }
             ]
         }
     ]

@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -7,7 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Download, ArrowRight, AlertTriangle, Loader2 } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
-import { verifyRazorpayPayment } from '../packs/actions';
+import { verifyRazorpayPayment } from '@/packs/actions';
 import { SiteHeader } from "@/components/layout/header";
 import { handleDownload } from '@/lib/download';
 import type { PremiumPack } from "@/lib/premium-packs";
