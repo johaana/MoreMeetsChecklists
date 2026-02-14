@@ -35,13 +35,6 @@ const ConceptCard = ({ title, description, children, badge }: { title: string, d
     </Card>
 );
 
-const RazorpaySimulator = ({ className }: { className?: string }) => (
-    <button className={cn("w-full py-4 bg-[#3395FF] text-white font-bold rounded-lg flex items-center justify-center gap-2 shadow-lg hover:bg-[#2d84e6] transition-colors", className)}>
-        <span className="text-sm">Pay via UPI / Local Card (Razorpay)</span>
-        <ArrowRight className="w-4 h-4" />
-    </button>
-);
-
 export default function TempDesignClientPage() {
     return (
         <main className="flex-1 pb-20" style={{ backgroundColor: 'hsl(var(--bg-primary))' }}>
@@ -64,7 +57,7 @@ export default function TempDesignClientPage() {
                         {/* Version 3.1: The Local-First Banner */}
                         <ConceptCard 
                             title="3.1 The 'Concierge' Banner" 
-                            description="Focuses on trust via explicit region detection. The rescue box is a separate visual unit."
+                            description="Focuses on trust via explicit region detection. Now updated with value checkmarks and method sub-text."
                         >
                             <div className="space-y-8 py-4">
                                 <div className="flex justify-center">
@@ -88,8 +81,22 @@ export default function TempDesignClientPage() {
                                             </button>
                                         </div>
                                     </div>
-                                    <div className="bg-background/50 rounded-lg p-2 border border-border/50">
-                                        <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" />
+
+                                    {/* New elements from screenshot */}
+                                    <div className="space-y-2 px-1">
+                                        <div className="flex items-center gap-2 text-sm text-secondary-text">
+                                            <Check className="w-4 h-4 text-authority-green" /> Instant Excel Download
+                                        </div>
+                                        <div className="flex items-center gap-2 text-sm text-secondary-text">
+                                            <Check className="w-4 h-4 text-authority-green" /> 1 Free Customization
+                                        </div>
+                                    </div>
+
+                                    <div className="space-y-3">
+                                        <div className="bg-background/50 rounded-lg p-2 border border-border/50">
+                                            <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" />
+                                        </div>
+                                        <p className="text-[10px] text-center text-muted-foreground italic">UPI, GPay, PhonePe, Cards, Netbanking</p>
                                     </div>
                                 </div>
                             </div>
