@@ -211,7 +211,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                            <div className="w-full max-w-sm text-center space-y-4">
                                 {currency === 'INR' && hasINR && pack.paymentId && (
                                     <div className="p-4 rounded-lg bg-background/50 border border-border">
-                                        <RazorpayButton paymentId={pack.paymentId} packId={pack.id} />
+                                        <RazorpayButton paymentId={pack.paymentId} />
                                     </div>
                                 )}
                                 {currency === 'USD' && hasUSD && pack.lemonSqueezyUrl && (
