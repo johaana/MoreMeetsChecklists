@@ -5,10 +5,9 @@ import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { Label } from '@/components/ui/label';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Info, Globe, CreditCard, Wallet, ArrowRight, Zap, ShieldCheck } from 'lucide-react';
+import { Info, Globe, ArrowRight, Zap, ShieldCheck, MapPin, Check } from 'lucide-react';
 
 const Section = ({ className, id, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
     <section id={id} className={cn("w-full py-16 md:py-24", className)} {...props} />
@@ -21,33 +20,39 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 );
 
 const ConceptCard = ({ title, description, children, badge }: { title: string, description: string, children: React.ReactNode, badge?: string }) => (
-    <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}} className="w-full border-2 shadow-lg flex flex-col">
+    <Card style={{backgroundColor: 'hsl(var(--surface-card))', borderColor: 'hsl(var(--border-color))'}} className="w-full border-2 shadow-lg flex flex-col h-full">
         <CardHeader>
             <div className="flex justify-between items-start mb-2">
                 <CardTitle className="text-xl" style={{color: 'hsl(var(--text-primary))'}}>{title}</CardTitle>
                 {badge && <Badge variant="accent" className="bg-primary/20 text-primary border-primary/30">{badge}</Badge>}
             </div>
-            <CardDescription style={{color: 'hsl(var(--text-on-light))'}}>{description}</CardDescription>
+            <CardDescription style={{color: 'hsl(var(--text-on-light))'}} className="text-xs">{description}</CardDescription>
         </CardHeader>
-        <CardContent className="flex-1 space-y-6">
+        <CardContent className="flex-1 flex flex-col justify-between">
             {children}
         </CardContent>
     </Card>
 );
 
+const RazorpaySimulator = ({ className }: { className?: string }) => (
+    <button className={cn("w-full py-4 bg-[#3395FF] text-white font-bold rounded-lg flex items-center justify-center gap-2 shadow-lg hover:bg-[#2d84e6] transition-colors", className)}>
+        <span className="text-sm">Pay via UPI / Local Card (Razorpay)</span>
+        <ArrowRight className="w-4 h-4" />
+    </button>
+);
+
 export default function TempDesignClientPage() {
     const [currency, setCurrency] = useState('INR');
-    const [agreed, setAgreed] = useState(false);
 
     return (
         <main className="flex-1 pb-20" style={{ backgroundColor: 'hsl(var(--bg-primary))' }}>
             <Section id="intro">
                 <div className="container px-4 md:px-6">
                     <div className="text-center max-w-3xl mx-auto space-y-4">
-                        <Badge variant="outline" className="border-primary text-primary">UX EXPERT REVIEW</Badge>
-                        <SectionHeadline>Conversion Optimization Lab</SectionHeadline>
+                        <Badge variant="outline" className="border-primary text-primary">UI/UX LAB: CURRENCY RESCUE</Badge>
+                        <SectionHeadline>Location-Aware Checkout Variations</SectionHeadline>
                         <p className="text-lg" style={{color: 'hsl(var(--text-secondary))'}}>
-                           Friction at checkout is the #1 killer of digital sales. Here are three high-fidelity concepts designed to simplify the INR/USD choice and increase purchase confidence.
+                           Focusing on the <strong>"Last-Mile" Switch</strong>. These versions show how to present the direct Razorpay (INR) path as the local default while elegantly handling international overrides.
                         </p>
                     </div>
                 </div>
@@ -55,81 +60,23 @@ export default function TempDesignClientPage() {
 
             <Section className="pt-0">
                 <div className="container px-4 md:px-6">
-                    <div className="grid lg:grid-cols-3 gap-8 items-stretch">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
                         
-                        {/* Concept 1: Behavioral Choice */}
+                        {/* Version 3.1: The Local-First Banner */}
                         <ConceptCard 
-                            title="1. Behavioral Logic" 
-                            description="Users don't think in 'Currencies'; they think in 'How am I paying?'. These tabs focus on the behavior."
-                            badge="Recommended"
+                            title="3.1 The 'Concierge' Banner" 
+                            description="Establishes local context at the very top. Uses a blue Razorpay-branded button for immediate familiarity."
                         >
-                            <div className="space-y-4">
-                                <Label className="text-xs uppercase tracking-widest text-muted-foreground">Select Payment Region</Label>
-                                <Tabs defaultValue="INR" onValueChange={setCurrency} className="w-full">
-                                    <TabsList className="grid w-full grid-cols-2 bg-background/50 border">
-                                        <TabsTrigger value="INR" className="data-[state=active]:bg-primary data-[state=active]:text-bg-primary">
-                                            <div className="flex flex-col items-center py-1">
-                                                <span className="text-xs font-bold">INDIA</span>
-                                                <span className="text-[10px] opacity-70">UPI / QR / Local Card</span>
-                                            </div>
-                                        </TabsTrigger>
-                                        <TabsTrigger value="USD" className="data-[state=active]:bg-primary data-[state=active]:text-bg-primary">
-                                            <div className="flex flex-col items-center py-1">
-                                                <span className="text-xs font-bold">INTERNATIONAL</span>
-                                                <span className="text-[10px] opacity-70">Credit Card / PayPal</span>
-                                            </div>
-                                        </TabsTrigger>
-                                    </TabsList>
-                                </Tabs>
-                                <div className="p-4 rounded-lg bg-background/30 border border-dashed border-border flex items-center justify-center">
-                                    <p className="text-2xl font-bold">{currency === 'INR' ? '₹5,999' : '$79'}</p>
-                                </div>
-                            </div>
-                        </ConceptCard>
-
-                        {/* Concept 2: Visual Trust Anchors */}
-                        <ConceptCard 
-                            title="2. Visual Trust Anchors" 
-                            description="Icons are processed 60,000x faster than text. Showing local logos reduces 'Is this for me?' anxiety."
-                        >
-                            <div className="space-y-6">
-                                <div className="flex flex-col items-center text-center space-y-2">
-                                    <p className="text-4xl font-extrabold text-primary-text">₹5,999</p>
-                                    <div className="flex items-center gap-2 text-xs text-secondary-text">
-                                        <ShieldCheck className="w-3 h-3 text-authority-green" />
-                                        Verified Indian Merchant
-                                    </div>
+                            <div className="space-y-8 py-4">
+                                <div className="flex justify-center">
+                                    <Badge className="bg-authority-green/10 text-authority-green border-authority-green/20 py-1 px-3">
+                                        <MapPin className="w-3 h-3 mr-2" /> Detected: Mumbai, India
+                                    </Badge>
                                 </div>
                                 
-                                <div className="space-y-3">
-                                    <Label className="text-xs text-muted-foreground">Accepted Methods:</Label>
-                                    <div className="grid grid-cols-4 gap-2">
-                                        {[1,2,3,4].map(i => (
-                                            <div key={i} className="aspect-video bg-background/50 rounded border border-border flex items-center justify-center">
-                                                <span className="text-[10px] font-mono text-muted-foreground">LOGO</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <p className="text-[10px] text-center text-muted-foreground italic">UPI • Google Pay • PhonePe • RuPay • Cards</p>
-                                </div>
-
-                                <button className="w-full py-3 bg-authority-green text-bg-primary font-bold rounded-md flex items-center justify-center gap-2">
-                                    Pay via UPI / Local Card <ArrowRight className="w-4 h-4" />
-                                </button>
-                            </div>
-                        </ConceptCard>
-
-                        {/* Concept 3: The Last-Mile Switcher */}
-                        <ConceptCard 
-                            title="3. The 'Last-Mile' Switch" 
-                            description="Captures the user right at the point of action. If they see the wrong price, the fix is exactly where they are looking."
-                        >
-                            <div className="space-y-8 h-full flex flex-col justify-between">
                                 <div className="text-center">
-                                    <Badge className="bg-authority-green/10 text-authority-green border-authority-green/20 mb-4">
-                                        <Globe className="w-3 h-3 mr-1" /> Detected: Mumbai, India
-                                    </Badge>
                                     <p className="text-5xl font-black">₹5,999</p>
+                                    <p className="text-[10px] text-muted-foreground mt-2 uppercase tracking-tighter">One-time payment • Lifetime updates</p>
                                 </div>
 
                                 <div className="space-y-4">
@@ -138,14 +85,107 @@ export default function TempDesignClientPage() {
                                         <div className="space-y-1">
                                             <p className="text-[11px] font-bold">Outside India?</p>
                                             <button className="text-[10px] text-primary underline font-medium hover:text-primary/80">
-                                                Switch to USD ($) for International Cards
+                                                Switch to USD ($) for PayPal/Stripe
                                             </button>
                                         </div>
                                     </div>
+                                    <RazorpaySimulator />
+                                </div>
+                            </div>
+                        </ConceptCard>
 
-                                    <button className="w-full py-4 bg-primary text-bg-primary font-bold rounded-lg shadow-xl shadow-primary/10">
-                                        Get Instant Access
+                        {/* Version 3.2: The Inline Pricing Switcher */}
+                        <ConceptCard 
+                            title="3.2 The Inline Switch" 
+                            description="Tighter visual hierarchy. The switch link is right under the price, where users look for value validation."
+                        >
+                            <div className="space-y-8 py-4">
+                                <div className="text-center space-y-2">
+                                    <div className="flex items-center justify-center gap-2 text-[10px] text-authority-green font-bold">
+                                        <Globe className="w-3 h-3" /> LOCALIZED PRICING
+                                    </div>
+                                    <p className="text-6xl font-black">₹5,999</p>
+                                    <button className="text-[11px] text-primary hover:text-primary/80 flex items-center justify-center gap-1 mx-auto bg-primary/5 px-2 py-1 rounded">
+                                        Not in India? <span className="underline">Change to USD ($)</span>
                                     </button>
+                                </div>
+
+                                <div className="space-y-4 pt-4">
+                                    <div className="flex flex-col gap-2">
+                                        <div className="flex items-center gap-2 text-[10px] text-muted-foreground px-1">
+                                            <Check className="w-3 h-3 text-authority-green" /> Instant Excel Download
+                                        </div>
+                                        <div className="flex items-center gap-2 text-[10px] text-muted-foreground px-1">
+                                            <Check className="w-3 h-3 text-authority-green" /> 1 Free Customization
+                                        </div>
+                                    </div>
+                                    <RazorpaySimulator className="bg-primary text-bg-primary" />
+                                    <p className="text-[9px] text-center text-muted-foreground italic">Pay via UPI, GPay, PhonePe, Cards, or Netbanking</p>
+                                </div>
+                            </div>
+                        </ConceptCard>
+
+                        {/* Version 3.3: The Single-View Stack */}
+                        <ConceptCard 
+                            title="3.3 The 'Zero-Decision' Stack" 
+                            description="Shows both paths but with clear hierarchy. No 'switching' needed, just choose your button."
+                        >
+                            <div className="space-y-8 py-4">
+                                <div className="text-center">
+                                    <p className="text-4xl font-black text-primary">₹5,999</p>
+                                    <p className="text-xs text-secondary-text">India Edition</p>
+                                </div>
+
+                                <div className="space-y-6">
+                                    <div className="space-y-3">
+                                        <Label className="text-[10px] uppercase text-muted-foreground tracking-widest pl-1">Primary Payment (India)</Label>
+                                        <RazorpaySimulator />
+                                    </div>
+
+                                    <div className="relative flex py-2 items-center">
+                                        <div className="flex-grow border-t border-border/50"></div>
+                                        <span className="flex-shrink mx-4 text-[10px] text-muted-foreground uppercase">or</span>
+                                        <div className="flex-grow border-t border-border/50"></div>
+                                    </div>
+
+                                    <div className="text-center space-y-2">
+                                        <p className="text-sm font-bold text-muted-foreground">$79 USD</p>
+                                        <button className="text-[11px] text-muted-foreground underline hover:text-foreground transition-colors">
+                                            International Checkout (Stripe/PayPal)
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </ConceptCard>
+
+                        {/* Version 3.4: The Minimalist Concierge */}
+                        <ConceptCard 
+                            title="3.4 The 'Floating' Guard" 
+                            description="Detection badge floats above the button. Extremely clean and professional, focusing purely on the action."
+                        >
+                            <div className="space-y-12 py-4 h-full flex flex-col justify-between">
+                                <div className="text-center">
+                                    <p className="text-6xl font-black tracking-tighter">₹5,999</p>
+                                    <div className="flex items-center justify-center gap-2 mt-4">
+                                        <ShieldCheck className="w-4 h-4 text-authority-green" />
+                                        <span className="text-xs font-medium text-secondary-text">Expert Verified Standards</span>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-4">
+                                    <div className="flex items-center justify-between px-1">
+                                        <div className="flex items-center gap-1.5 text-[10px] text-authority-green font-bold">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-authority-green animate-pulse" />
+                                            Region: Mumbai, IN
+                                        </div>
+                                        <button className="text-[10px] text-primary underline">Wrong?</button>
+                                    </div>
+                                    
+                                    <RazorpaySimulator />
+                                    
+                                    <p className="text-[10px] text-center text-muted-foreground">
+                                        International cards? <button className="underline text-foreground">Switch to USD ($)</button>
+                                    </p>
                                 </div>
                             </div>
                         </ConceptCard>
@@ -154,16 +194,16 @@ export default function TempDesignClientPage() {
 
                     <div className="mt-16 p-8 rounded-2xl border-2 border-dashed border-primary/20 bg-background/20 max-w-4xl mx-auto">
                         <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                            <Zap className="text-accent" /> Why these work:
+                            <Zap className="text-accent" /> Why these focus on Razorpay:
                         </h3>
                         <div className="grid md:grid-cols-2 gap-6 text-sm text-secondary-text">
                             <div className="space-y-2">
-                                <p><strong className="text-primary-text">Context over Choice:</strong> By detecting location or naming payment methods (UPI vs PayPal), we do the thinking for the user.</p>
-                                <p><strong className="text-primary-text">Immediate Recognition:</strong> Seeing a UPI logo provides instant psychological safety to an Indian user.</p>
+                                <p><strong className="text-primary-text">Implicit Localization:</strong> By identifying the user as "Mumbai, India" and showing "₹", you validate their identity and make them feel safe.</p>
+                                <p><strong className="text-primary-text">Action Labels:</strong> Naming the button "Pay via UPI (Razorpay)" answers the technical question immediately.</p>
                             </div>
                             <div className="space-y-2">
-                                <p><strong className="text-primary-text">Proximity:</strong> Putting the "International card? Switch here" link near the button prevents them from scrolling back up to find the toggle.</p>
-                                <p><strong className="text-primary-text">Transparency:</strong> Showing both options (or making the switch effortless) creates a sense of a global, professional brand.</p>
+                                <p><strong className="text-primary-text">Rescue Logic:</strong> The "Outside India?" box is a safety valve. It ensures the 5% of non-Indian traffic isn't confused, without cluttering the 95% primary path.</p>
+                                <p><strong className="text-primary-text">Brand Consistency:</strong> These layouts maintain the professional "Black Box" aesthetic while improving functional speed.</p>
                             </div>
                         </div>
                     </div>
