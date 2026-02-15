@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -23,7 +22,10 @@ import {
     Sparkles,
     Briefcase,
     QrCode,
-    CreditCard as CardIcon
+    CreditCard as CardIcon,
+    History,
+    PackageCheck,
+    PenTool
 } from 'lucide-react';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
 import { Button } from '@/components/ui/button';
@@ -109,7 +111,7 @@ const GlobalMethods = () => (
 );
 
 export default function TempDesignClientPage() {
-    const [region, setRegion] = React.useState<'INDIA' | 'GLOBAL'>('INDIA');
+    const [region, setRegion] = React.useState<'INDIA' | 'GLOBAL'>('GLOBAL');
 
     const coreBenefits = [
         { icon: FileSpreadsheet, title: "Instant Excel Delivery", subText: "Fully editable .xlsx file" },
@@ -130,22 +132,13 @@ export default function TempDesignClientPage() {
                         </div>
                         <SectionHeadline>One Standard. Universal Access.</SectionHeadline>
                         <p className="text-xl max-w-2xl mx-auto" style={{color: 'hsl(var(--text-secondary))'}}>
-                           Refining the professional procurement environment. Comparing the most effective "Intelligent Gateway" architectures.
+                           Comparing the most effective "Intelligent Gateway" architectures. Global ($) is currently the anchor default.
                         </p>
                         
                         {/* GLOBAL REGION SELECTOR (Simulator Controls) */}
                         <div className="flex flex-col justify-center items-center gap-4 pt-8">
                             <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">Lab Simulator: Change Region View</span>
                             <div className="flex p-1 bg-white/5 rounded-xl border border-white/10 shadow-2xl">
-                                <button 
-                                    onClick={() => setRegion('INDIA')}
-                                    className={cn(
-                                        "flex items-center gap-2 px-6 py-2.5 rounded-lg text-[11px] font-black uppercase tracking-tighter transition-all",
-                                        region === 'INDIA' ? "bg-primary text-bg-primary shadow-lg" : "text-muted-foreground hover:text-primary-text"
-                                    )}
-                                >
-                                    <span className="text-base leading-none">🇮🇳</span> India Path
-                                </button>
                                 <button 
                                     onClick={() => setRegion('GLOBAL')}
                                     className={cn(
@@ -154,6 +147,15 @@ export default function TempDesignClientPage() {
                                     )}
                                 >
                                     <span className="text-base leading-none">🌎</span> Global Path
+                                </button>
+                                <button 
+                                    onClick={() => setRegion('INDIA')}
+                                    className={cn(
+                                        "flex items-center gap-2 px-6 py-2.5 rounded-lg text-[11px] font-black uppercase tracking-tighter transition-all",
+                                        region === 'INDIA' ? "bg-primary text-bg-primary shadow-lg" : "text-muted-foreground hover:text-primary-text"
+                                    )}
+                                >
+                                    <span className="text-base leading-none">🇮🇳</span> India Path
                                 </button>
                             </div>
                         </div>
@@ -171,37 +173,33 @@ export default function TempDesignClientPage() {
                             title="Variation 9.1" 
                             subtitle="Institutional Asset Hub"
                             variant="highlight"
-                            badge="High Utility"
+                            badge="Premium Logic"
                         >
                             <div className="flex-1 flex flex-col space-y-6">
-                                {/* Asset Spec Block */}
-                                <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
-                                    <div className="flex items-center gap-2 border-b border-white/5 pb-2 mb-2">
-                                        <Briefcase className="w-3 h-3 text-primary/60" />
-                                        <p className="text-[9px] font-black uppercase text-primary/60 tracking-widest">Licensed Operational Asset</p>
+                                {/* Asset Spec Block with Watermark */}
+                                <div className="relative p-4 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4 overflow-hidden">
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none rotate-[-15deg]">
+                                        <span className="text-4xl font-black whitespace-nowrap tracking-tighter">LICENSED ASSET</span>
                                     </div>
-                                    <div className="space-y-3">
-                                        {coreBenefits.slice(0, 3).map((b, i) => (
-                                            <BenefitItem key={i} icon={b.icon} title={b.title} />
-                                        ))}
+                                    <div className="relative z-10">
+                                        <div className="flex items-center gap-2 border-b border-white/5 pb-2 mb-4">
+                                            <Briefcase className="w-3 h-3 text-primary/60" />
+                                            <p className="text-[9px] font-black uppercase text-primary/60 tracking-widest">Asset Specifications</p>
+                                        </div>
+                                        <div className="space-y-3">
+                                            {coreBenefits.slice(0, 3).map((b, i) => (
+                                                <BenefitItem key={i} icon={b.icon} title={b.title} />
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
 
-                                {/* Procurement Zone with Internal Switcher */}
+                                {/* Procurement Zone */}
                                 <div className="mt-auto pt-6 border-t border-white/5">
                                     <div className="flex justify-between items-end mb-6 bg-white/[0.03] p-3 rounded-xl border border-white/5">
                                         <div className="space-y-1.5">
-                                            <p className="text-[8px] font-black uppercase text-primary tracking-tighter">Procurement Gateway</p>
+                                            <p className="text-[8px] font-black uppercase text-primary tracking-tighter">Gateway Pipe</p>
                                             <div className="flex gap-1 bg-black/40 p-0.5 rounded-md">
-                                                <button 
-                                                    onClick={() => setRegion('INDIA')} 
-                                                    className={cn(
-                                                        "px-2 py-1 rounded text-[9px] font-black uppercase transition-all", 
-                                                        region === 'INDIA' ? "bg-primary text-bg-primary shadow-sm" : "text-muted-foreground hover:text-primary-text"
-                                                    )}
-                                                >
-                                                    🇮🇳 India
-                                                </button>
                                                 <button 
                                                     onClick={() => setRegion('GLOBAL')} 
                                                     className={cn(
@@ -211,13 +209,22 @@ export default function TempDesignClientPage() {
                                                 >
                                                     🌎 Global
                                                 </button>
+                                                <button 
+                                                    onClick={() => setRegion('INDIA')} 
+                                                    className={cn(
+                                                        "px-2 py-1 rounded text-[9px] font-black uppercase transition-all", 
+                                                        region === 'INDIA' ? "bg-primary text-bg-primary shadow-sm" : "text-muted-foreground hover:text-primary-text"
+                                                    )}
+                                                >
+                                                    🇮🇳 India
+                                                </button>
                                             </div>
                                         </div>
                                         <div className="text-right">
                                             <p className="text-3xl font-black text-primary-text tracking-tighter leading-none">
                                                 {region === 'INDIA' ? '₹5,999' : '$79'}
                                             </p>
-                                            <p className="text-[8px] text-muted-foreground font-bold uppercase mt-1">One-Time Acquisition</p>
+                                            <p className="text-[8px] text-muted-foreground font-bold uppercase mt-1">Single License</p>
                                         </div>
                                     </div>
                                     
@@ -230,11 +237,29 @@ export default function TempDesignClientPage() {
                                         ) : (
                                             <>
                                                 <Button className="w-full h-14 bg-primary text-bg-primary font-black uppercase text-xs rounded-xl shadow-xl hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-[0.98]">
-                                                    Acquire Asset (USD) <ArrowRight className="ml-2 w-4 h-4"/>
+                                                    Procure Asset (USD) <ArrowRight className="ml-2 w-4 h-4"/>
                                                 </Button>
                                                 <GlobalMethods />
                                             </>
                                         )}
+                                    </div>
+
+                                    {/* Procurement Timeline */}
+                                    <div className="mt-8 pt-4 border-t border-white/5 flex justify-between items-center px-2">
+                                        <div className="flex flex-col items-center gap-1 opacity-40 grayscale group hover:opacity-100 hover:grayscale-0 transition-all">
+                                            <PackageCheck className="w-3 h-3 text-primary" />
+                                            <span className="text-[7px] font-black uppercase">Acquire</span>
+                                        </div>
+                                        <div className="h-px flex-1 bg-white/10 mx-2" />
+                                        <div className="flex flex-col items-center gap-1 opacity-40 grayscale group hover:opacity-100 hover:grayscale-0 transition-all">
+                                            <History className="w-3 h-3 text-primary" />
+                                            <span className="text-[7px] font-black uppercase">Deliver</span>
+                                        </div>
+                                        <div className="h-px flex-1 bg-white/10 mx-2" />
+                                        <div className="flex flex-col items-center gap-1 opacity-40 grayscale group hover:opacity-100 hover:grayscale-0 transition-all">
+                                            <PenTool className="w-3 h-3 text-primary" />
+                                            <span className="text-[7px] font-black uppercase">Tailor</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -299,7 +324,9 @@ export default function TempDesignClientPage() {
                                 </div>
 
                                 <div className="text-center">
-                                    <p className="text-5xl font-black text-primary-text tracking-tighter">{region === 'INDIA' ? '₹5,999' : '$79'}</p>
+                                    <p className="text-5xl font-extrabold text-primary-text tracking-tighter leading-none">
+                                        {region === 'INDIA' ? '₹5,999' : '$79'}
+                                    </p>
                                 </div>
 
                                 <div className="space-y-4">
@@ -320,27 +347,27 @@ export default function TempDesignClientPage() {
                 <div className="container px-4 md:px-6">
                     <div className="max-w-5xl mx-auto p-10 rounded-[2.5rem] border-2 border-dashed border-primary/20 bg-surface-card/50 relative overflow-hidden">
                         <h3 className="text-2xl md:text-3xl font-bold mb-8 flex items-center gap-4 text-primary">
-                            <Zap className="text-accent w-8 h-8" /> V9.1 "Elite Gateway" Principles:
+                            <Zap className="text-accent w-8 h-8" /> Implementation Strategy:
                         </h3>
                         <div className="grid md:grid-cols-2 gap-12 text-base text-secondary-text">
                             <div className="space-y-6">
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">1. Bi-Lateral Payment Color Logic</p>
-                                    <p className="leading-relaxed">India uses the Razorpay Blue path, while Global uses the Brand Green path. This color-coding differentiates the "Payment Pipe" visually, reducing user confusion.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">1. Global Default Anchoring</p>
+                                    <p className="leading-relaxed">Variation 9.1 now loads with the $79 Global path. This establishes the product as an "International Standard" before an Indian user toggles to the localized pricing, making the INR cost feel like a regional benefit.</p>
                                 </div>
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">2. Expanded Method Relief</p>
-                                    <p className="leading-relaxed">Explicitly mentioning GPay and PhonePe for Indian users removes the mental friction of wondering if their specific app is supported by the "Razorpay" label.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">2. Institutional Framing</p>
+                                    <p className="leading-relaxed">The "Licensed Asset" watermark and "Asset Specifications" label move the buyer from a consumer mindset to a professional procurement mindset.</p>
                                 </div>
                             </div>
                             <div className="space-y-6">
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">3. The Asset Hub Framing</p>
-                                    <p className="leading-relaxed">By grouping Excel, Offline, and Customization as "Specifications," we move the user from a "Buying a File" mindset to an "Acquiring a Licensed Asset" mindset.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">3. Visualization of the "Customization" Process</p>
+                                    <p className="leading-relaxed">The 3-step timeline at the bottom of 9.1 makes the "1 Free Customization" benefit tangible. It signals that this isn't just an automated download, but a service-backed asset.</p>
                                 </div>
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">4. Verification Trust Bar</p>
-                                    <p className="leading-relaxed">The method-bar changes icons based on the region, confirming that the checkout has been fully localized for their banking standard.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">4. Bi-Lateral Visual Distinction</p>
+                                    <p className="leading-relaxed">The button colors are split: Razorpay Blue for localized Indian banking and Brand Green for the Global premium path.</p>
                                 </div>
                             </div>
                         </div>
