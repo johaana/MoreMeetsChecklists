@@ -175,11 +175,8 @@ export default function TempDesignClientPage() {
                             badge="Recommended"
                         >
                             <div className="flex-1 flex flex-col space-y-6">
-                                {/* Asset Spec Block with Subtle Watermark */}
+                                {/* Asset Spec Block */}
                                 <div className="relative p-5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-5 overflow-hidden">
-                                    <div className="absolute inset-0 flex items-center justify-center opacity-[0.02] pointer-events-none rotate-[-15deg]">
-                                        <span className="text-5xl font-black whitespace-nowrap tracking-tighter">LICENSED ASSET</span>
-                                    </div>
                                     <div className="relative z-10">
                                         <div className="flex justify-between items-center border-b border-white/5 pb-3 mb-5">
                                             <div className="flex items-center gap-2">
