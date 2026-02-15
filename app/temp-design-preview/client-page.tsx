@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -20,7 +21,9 @@ import {
     ShieldCheck,
     Lock,
     Sparkles,
-    Briefcase
+    Briefcase,
+    QrCode,
+    CreditCard as CardIcon
 } from 'lucide-react';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
 import { Button } from '@/components/ui/button';
@@ -66,36 +69,42 @@ const BenefitItem = ({ icon: Icon, title, subText }: { icon: any, title: string,
 );
 
 const IndiaMethods = () => (
-    <div className="flex items-center justify-center gap-4 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500">
-        <div className="flex flex-col items-center gap-1">
-            <Smartphone className="w-3 h-3" />
-            <span className="text-[7px] font-black uppercase">UPI</span>
+    <div className="flex flex-col items-center gap-3">
+        <div className="flex items-center justify-center gap-4 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500">
+            <div className="flex flex-col items-center gap-1">
+                <QrCode className="w-3.5 h-3.5" />
+                <span className="text-[7px] font-black uppercase">UPI / GPAY</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+                <CardIcon className="w-3.5 h-3.5" />
+                <span className="text-[7px] font-black uppercase">CARDS</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+                <Landmark className="w-3.5 h-3.5" />
+                <span className="text-[7px] font-black uppercase">NETBANKING</span>
+            </div>
         </div>
-        <div className="flex flex-col items-center gap-1">
-            <CreditCard className="w-3 h-3" />
-            <span className="text-[7px] font-black uppercase">Cards</span>
-        </div>
-        <div className="flex flex-col items-center gap-1">
-            <Landmark className="w-3 h-3" />
-            <span className="text-[7px] font-black uppercase">Netbanking</span>
-        </div>
+        <p className="text-[9px] text-muted-foreground font-medium italic">Supports GPay, PhonePe, Paytm, UPI & All Indian Cards</p>
     </div>
 );
 
 const GlobalMethods = () => (
-    <div className="flex items-center justify-center gap-4 opacity-50 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500">
-        <div className="flex flex-col items-center gap-1">
-            <CreditCard className="w-3 h-3" />
-            <span className="text-[7px] font-black uppercase">Stripe</span>
+    <div className="flex flex-col items-center gap-3">
+        <div className="flex items-center justify-center gap-4 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500">
+            <div className="flex flex-col items-center gap-1">
+                <CreditCard className="w-3.5 h-3.5" />
+                <span className="text-[7px] font-black uppercase">STRIPE</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+                <Globe className="w-3.5 h-3.5" />
+                <span className="text-[7px] font-black uppercase">PAYPAL</span>
+            </div>
+            <div className="flex flex-col items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span className="text-[7px] font-black uppercase">GLOBAL CARDS</span>
+            </div>
         </div>
-        <div className="flex flex-col items-center gap-1">
-            <Globe className="w-3 h-3" />
-            <span className="text-[7px] font-black uppercase">PayPal</span>
-        </div>
-        <div className="flex flex-col items-center gap-1">
-            <ShieldCheck className="w-3 h-3" />
-            <span className="text-[7px] font-black uppercase">Global Cards</span>
-        </div>
+        <p className="text-[9px] text-muted-foreground font-medium italic">Secure International Checkout via Stripe / PayPal</p>
     </div>
 );
 
@@ -117,16 +126,16 @@ export default function TempDesignClientPage() {
                     <div className="text-center max-w-4xl mx-auto space-y-6">
                         <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 mb-2">
                             <Zap className="w-4 h-4 text-primary" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">V9 Intelligent Gateway Lab</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">V9.1 Elite Gateway Lab</span>
                         </div>
                         <SectionHeadline>One Standard. Universal Access.</SectionHeadline>
                         <p className="text-xl max-w-2xl mx-auto" style={{color: 'hsl(var(--text-secondary))'}}>
-                           Refining the professional procurement environment. Comparing 5 Variations of the "Intelligent Gateway" Architecture.
+                           Refining the professional procurement environment. Comparing the most effective "Intelligent Gateway" architectures.
                         </p>
                         
                         {/* GLOBAL REGION SELECTOR (Simulator Controls) */}
                         <div className="flex flex-col justify-center items-center gap-4 pt-8">
-                            <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">Lab Simulator: Current Session Region</span>
+                            <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">Lab Simulator: Change Region View</span>
                             <div className="flex p-1 bg-white/5 rounded-xl border border-white/10 shadow-2xl">
                                 <button 
                                     onClick={() => setRegion('INDIA')}
@@ -212,7 +221,7 @@ export default function TempDesignClientPage() {
                                         </div>
                                     </div>
                                     
-                                    <div className="space-y-4">
+                                    <div className="space-y-6">
                                         {region === 'INDIA' ? (
                                             <>
                                                 <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" />
@@ -220,7 +229,7 @@ export default function TempDesignClientPage() {
                                             </>
                                         ) : (
                                             <>
-                                                <Button className="w-full h-14 bg-accent text-bg-primary font-black uppercase text-xs rounded-xl shadow-xl hover:bg-accent/90">
+                                                <Button className="w-full h-14 bg-primary text-bg-primary font-black uppercase text-xs rounded-xl shadow-xl hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-[0.98]">
                                                     Acquire Asset (USD) <ArrowRight className="ml-2 w-4 h-4"/>
                                                 </Button>
                                                 <GlobalMethods />
@@ -254,7 +263,7 @@ export default function TempDesignClientPage() {
                                         <p className="text-[9px] text-muted-foreground font-bold uppercase mt-1">No Subscription • Lifetime Updates</p>
                                     </div>
 
-                                    {region === 'INDIA' ? <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" /> : <Button className="w-full h-14 bg-primary text-bg-primary font-black uppercase rounded-xl">Unlock Full Toolkit</Button>}
+                                    {region === 'INDIA' ? <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" /> : <Button className="w-full h-14 bg-accent text-bg-primary font-black uppercase rounded-xl">Unlock Full Toolkit</Button>}
                                     
                                     <div className="flex items-center justify-center gap-2">
                                         <CloudOff className="w-3 h-3 text-muted-foreground" />
@@ -302,84 +311,6 @@ export default function TempDesignClientPage() {
                             </div>
                         </ConceptCard>
 
-                        {/* 9.4 The Enterprise Procurement */}
-                        <ConceptCard 
-                            title="Variation 9.4" 
-                            subtitle="Professional Asset"
-                        >
-                            <div className="flex-1 flex flex-col justify-between">
-                                <div className="space-y-6">
-                                    <p className="text-xs text-muted-foreground leading-relaxed">
-                                        Procure the world's most comprehensive operational standard. One-time licensing for internal distribution.
-                                    </p>
-                                    <div className="space-y-3">
-                                        <div className="flex items-center gap-2 text-xs text-primary-text font-bold">
-                                            <Check className="w-4 h-4 text-authority-green" />
-                                            <span>One-Time Licensing Fee</span>
-                                        </div>
-                                        <div className="flex items-center gap-2 text-xs text-primary-text font-bold">
-                                            <Check className="w-4 h-4 text-authority-green" />
-                                            <span>100% Offline Utility</span>
-                                        </div>
-                                        <div className="flex items-center gap-2 text-xs text-primary-text font-bold">
-                                            <Check className="w-4 h-4 text-authority-green" />
-                                            <span>1 Free Branding Personalization</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="pt-10 space-y-4">
-                                    <div className="flex justify-between items-center px-2">
-                                        <span className="text-[10px] font-black uppercase text-muted-foreground">Asset Price</span>
-                                        <span className="text-2xl font-black text-primary-text">{region === 'INDIA' ? '₹5,999' : '$79'}</span>
-                                    </div>
-                                    {region === 'INDIA' ? <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" /> : <Button variant="outline" className="w-full h-12 font-black uppercase rounded-lg">Secure Checkout</Button>}
-                                </div>
-                            </div>
-                        </ConceptCard>
-
-                        {/* 9.5 The Signature Pulse */}
-                        <ConceptCard 
-                            title="Variation 9.5" 
-                            subtitle="Signature Minimalist"
-                        >
-                            <div className="flex-1 flex flex-col">
-                                <div className="space-y-6 flex-1">
-                                    <div className="text-center py-4">
-                                        <div className="w-16 h-1 bg-primary/20 mx-auto rounded-full mb-6" />
-                                        <p className="text-6xl font-black text-primary-text tracking-tighter mb-2">
-                                            {region === 'INDIA' ? '₹5,999' : '$79'}
-                                        </p>
-                                        <Badge variant="outline" className="text-[8px] border-white/10 text-muted-foreground uppercase font-black px-3">Lifetime License</Badge>
-                                    </div>
-
-                                    <div className="grid grid-cols-1 gap-4 px-2">
-                                        <div className="flex items-start gap-3">
-                                            <Sparkles className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                                            <p className="text-xs font-bold text-primary-text leading-tight">Included: 1 Customization Session</p>
-                                        </div>
-                                        <div className="flex items-start gap-3">
-                                            <FileSpreadsheet className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                                            <p className="text-xs font-bold text-primary-text leading-tight">Editable Offline Excel Tool</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="mt-auto pt-8 space-y-4">
-                                    <div className="p-1 bg-gradient-to-br from-primary/20 via-transparent to-transparent rounded-xl">
-                                        {region === 'INDIA' ? (
-                                            <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" />
-                                        ) : (
-                                            <Button className="w-full h-14 bg-primary text-bg-primary font-black uppercase rounded-lg">Get Instant Access</Button>
-                                        )}
-                                    </div>
-                                    <div className="text-center">
-                                        <p className="text-[8px] font-black text-muted-foreground uppercase tracking-widest">Trusted by 1,200+ Organizations</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </ConceptCard>
-
                     </div>
                 </div>
             </Section>
@@ -389,27 +320,27 @@ export default function TempDesignClientPage() {
                 <div className="container px-4 md:px-6">
                     <div className="max-w-5xl mx-auto p-10 rounded-[2.5rem] border-2 border-dashed border-primary/20 bg-surface-card/50 relative overflow-hidden">
                         <h3 className="text-2xl md:text-3xl font-bold mb-8 flex items-center gap-4 text-primary">
-                            <Zap className="text-accent w-8 h-8" /> V9 "Intelligent Gateway" Principles:
+                            <Zap className="text-accent w-8 h-8" /> V9.1 "Elite Gateway" Principles:
                         </h3>
                         <div className="grid md:grid-cols-2 gap-12 text-base text-secondary-text">
                             <div className="space-y-6">
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">1. Explicit Benefit Stacking</p>
-                                    <p className="leading-relaxed">By listing "Excel Delivery" and "Offline Use" alongside "1 Free Customization," we justify the price as a professional asset acquisition rather than just a file download.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">1. Bi-Lateral Payment Color Logic</p>
+                                    <p className="leading-relaxed">India uses the Razorpay Blue path, while Global uses the Brand Green path. This color-coding differentiates the "Payment Pipe" visually, reducing user confusion.</p>
                                 </div>
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">2. Honest Choice Architecture</p>
-                                    <p className="leading-relaxed">Removed "Location Detected" text. The user is now given agency via a high-end toggle, which feels like a professional "Gateway Selector."</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">2. Expanded Method Relief</p>
+                                    <p className="leading-relaxed">Explicitly mentioning GPay and PhonePe for Indian users removes the mental friction of wondering if their specific app is supported by the "Razorpay" label.</p>
                                 </div>
                             </div>
                             <div className="space-y-6">
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">3. Method Reassurance</p>
-                                    <p className="leading-relaxed">Subtle descriptors for UPI, GPay, and Stripe answer the "Can I pay?" question at the point of decision, reducing final-step anxiety.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">3. The Asset Hub Framing</p>
+                                    <p className="leading-relaxed">By grouping Excel, Offline, and Customization as "Specifications," we move the user from a "Buying a File" mindset to an "Acquiring a Licensed Asset" mindset.</p>
                                 </div>
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">4. Clean Hierarchy</p>
-                                    <p className="leading-relaxed">The UI moves from Benefits → Region Selection → Pricing → Action. It is a logical, persuasive funnel contained within a single card.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">4. Verification Trust Bar</p>
+                                    <p className="leading-relaxed">The method-bar changes icons based on the region, confirming that the checkout has been fully localized for their banking standard.</p>
                                 </div>
                             </div>
                         </div>
