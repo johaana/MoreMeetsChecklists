@@ -84,7 +84,7 @@ const HeroContent = ({ variant }: { variant: number | string }) => {
                     <h1 className="text-3xl font-black text-white leading-tight tracking-tighter">{headline}</h1>
                     <p className="text-sm text-zinc-400 leading-relaxed">{subtext}</p>
                     <Button className="w-full h-14 bg-primary text-black font-black uppercase rounded-none tracking-widest">
-                        PROCURE ASSET
+                        ACQUIRE STANDARD <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
                 </div>
             </div>
@@ -96,7 +96,6 @@ const HeroContent = ({ variant }: { variant: number | string }) => {
             <div className="h-full bg-zinc-950 flex flex-col">
                 <div className="h-[50%] relative overflow-hidden">
                     <video src={videoUrl} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover contrast-110 brightness-110" />
-                    {/* Smoother, more gradual gradient transition */}
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/20 to-zinc-950" />
                 </div>
                 <div className="flex-1 p-8 pt-6 space-y-6">
@@ -104,7 +103,6 @@ const HeroContent = ({ variant }: { variant: number | string }) => {
                         <h1 className="text-3xl font-black text-white leading-tight tracking-tighter uppercase">{headline}</h1>
                         <p className="text-[10px] font-black text-red-500 uppercase tracking-widest">{urgency}</p>
                     </div>
-                    {/* text-sm matches v4 text size */}
                     <p className="text-sm text-zinc-400 leading-relaxed font-medium">{subtext}</p>
                     <Button className="w-full h-14 bg-primary text-black font-black uppercase rounded-lg shadow-xl shadow-primary/10">
                         SECURE COMPLIANCE <ArrowRight className="ml-2 w-4 h-4" />
@@ -114,7 +112,7 @@ const HeroContent = ({ variant }: { variant: number | string }) => {
         );
     }
 
-    if (variant === '4.2') { // V4 Variant: Catchy Button (Procurement Focus)
+    if (variant === '4.2') { // V8: V4 Variant: Catchy Button (Procurement Focus)
         return (
             <div className="h-full bg-zinc-950 flex flex-col">
                 <div className="h-1/2 relative">
@@ -128,6 +126,29 @@ const HeroContent = ({ variant }: { variant: number | string }) => {
                     </div>
                     <Button className="w-full h-16 bg-white text-black font-black uppercase text-base rounded-none tracking-tighter hover:bg-primary transition-colors">
                         DEPLOY BLUEPRINT <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                </div>
+            </div>
+        );
+    }
+
+    if (variant === '4.3') { // V9: V4 + Red Highlight
+        return (
+            <div className="h-full bg-zinc-950 flex flex-col">
+                <div className="h-1/2 relative">
+                    <video src={videoUrl} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-80" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-950" />
+                </div>
+                <div className="flex-1 p-8 pt-4 space-y-6">
+                    <div className="space-y-3">
+                        <h1 className="text-3xl font-black text-white leading-tight tracking-tighter uppercase">{headline}</h1>
+                        <p className="text-xs font-bold text-red-500 uppercase tracking-widest border-y border-red-500/20 py-2 inline-block">
+                            {urgency}
+                        </p>
+                    </div>
+                    <p className="text-sm text-zinc-400 leading-relaxed">{subtext}</p>
+                    <Button className="w-full h-14 bg-primary text-black font-black uppercase rounded-none tracking-widest">
+                        SECURE COMPLIANCE <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
                 </div>
             </div>
@@ -174,7 +195,7 @@ export default function TempDesignClientPage() {
                 <div className="container px-4 md:px-6 relative z-10">
                     <SectionHeadline>Refined Mobile Hero Variations</SectionHeadline>
                     <p className="text-xl max-w-2xl mx-auto mt-4 text-zinc-400 font-medium">
-                       Focused iteration on the V1 and V4 directions based on legibility, impact, and procurement psychology.
+                       Iterating on the V4 family with catchy button names and high-impact red urgency text.
                     </p>
                 </div>
             </Section>
@@ -184,10 +205,11 @@ export default function TempDesignClientPage() {
                 <div className="container px-4 md:px-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 justify-items-center">
                         <MobileFrame title="V1: Visual Overlay"><HeroContent variant={1} /></MobileFrame>
-                        <MobileFrame title="V6: V1 + Red Highlight (High Impact)"><HeroContent variant="1.1" /></MobileFrame>
-                        <MobileFrame title="V4: Clean Split"><HeroContent variant={4} /></MobileFrame>
+                        <MobileFrame title="V6: V1 + Red Highlight"><HeroContent variant="1.1" /></MobileFrame>
+                        <MobileFrame title="V4: Clean Split (New Button)"><HeroContent variant={4} /></MobileFrame>
                         <MobileFrame title="V7: V4 + Split Gradient (Light Top)"><HeroContent variant="4.1" /></MobileFrame>
                         <MobileFrame title="V8: V4 + Catchy Action Button"><HeroContent variant="4.2" /></MobileFrame>
+                        <MobileFrame title="V9: V4 + Red Urgency (High Impact)"><HeroContent variant="4.3" /></MobileFrame>
                         <MobileFrame title="V5: Content-First List"><HeroContent variant={5} /></MobileFrame>
                     </div>
                 </div>
