@@ -16,38 +16,38 @@ export const HeroSection = () => (
                 loop
                 muted
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover contrast-[1.1] brightness-[1.1] md:contrast-100 md:brightness-100"
+                className="absolute inset-0 w-full h-full object-cover contrast-[1.15] brightness-[1.15] md:contrast-100 md:brightness-100"
             />
             {/* Desktop Gradient Overlay (Left to Right) */}
             <div className="hidden md:block absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.8)_40%,rgba(10,15,25,0.3)_70%,rgba(10,15,25,0.05)_100%)]" />
             
             {/* Mobile Gradient Overlay (Gradual Top-to-Bottom transition to solid background) */}
-            <div className="md:hidden absolute inset-0 z-10 bg-gradient-to-b from-transparent via-background/20 to-background" />
+            <div className="md:hidden absolute inset-0 z-10 bg-gradient-to-b from-transparent via-background/10 to-background" />
         </div>
 
         {/* Content Layer: Normal flow on mobile, Absolute container on desktop */}
         <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-start md:justify-center py-10 md:py-0">
             <div className="max-w-2xl space-y-6 md:space-y-4">
-                {/* Headline: Mobile aggressive uppercase vs Desktop professional mixed */}
+                {/* Headline: Fixed spacing for mobile concatenations */}
                 <h1 className="text-3xl sm:text-5xl md:text-6xl font-headline font-bold tracking-tighter !leading-[1.1] md:!leading-[1.05] text-primary-text drop-shadow-lg uppercase md:normal-case">
-                    People forget.<br className="hidden md:block"/>Your business<br className="hidden md:block"/>shouldn’t pay for it.
+                    People forget. <br className="hidden md:block"/>Your business <br className="hidden md:block"/>shouldn’t pay for it.
                 </h1>
                 
-                {/* Red Urgency Line: Highlighted on Mobile with Borders */}
+                {/* Red Urgency Line: High Impact V7 Style */}
                 <div className="py-2 border-y border-red-500/20 w-fit inline-block md:border-none md:p-0">
                     <p className="text-xs md:text-base lg:text-lg font-bold text-red-500 uppercase tracking-widest md:normal-case md:tracking-normal">
                         Consistency can’t depend on memory.
                     </p>
                 </div>
 
-                {/* Subtext: Optimized for reading below the fold on mobile */}
-                <p className="text-sm md:text-lg max-w-[520px] text-secondary-text leading-relaxed md:leading-[1.5]">
+                {/* Subtext: Optimized V4/V7 text size */}
+                <p className="text-sm md:text-lg max-w-[520px] text-secondary-text leading-relaxed md:leading-[1.5] font-medium md:font-normal">
                     When work depends on memory or judgment, execution changes with people. Audits, shift changes, growth, and emergencies expose the gaps.
                 </p>
                 
                 {/* Action Area: Catchy B2B Label for Mobile */}
                 <div className="flex flex-col items-start gap-3 pt-4 md:pt-6">
-                    <Button size="lg" asChild className="group w-full sm:w-auto h-14 md:h-auto" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))' }}>
+                    <Button size="lg" asChild className="group w-full sm:w-auto h-14 md:h-auto rounded-xl md:rounded-md shadow-xl md:shadow-none" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))' }}>
                         <Link href="/library" className="flex items-center justify-center font-black uppercase tracking-widest md:font-semibold md:normal-case md:tracking-normal">
                            <span className="md:hidden">SECURE COMPLIANCE</span>
                            <span className="hidden md:inline">View Operational Standards</span>
