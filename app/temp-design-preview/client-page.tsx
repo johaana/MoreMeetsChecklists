@@ -1,18 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { Badge } from '@/components/ui/badge';
 import { 
     ArrowRight, 
     ShieldCheck, 
-    Shield, 
-    Landmark, 
-    FileCheck,
-    Download,
-    Lock,
-    Zap
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -40,13 +32,13 @@ const MobileFrame = ({ children, title }: { children: React.ReactNode, title: st
     </div>
 );
 
-const HeroContent = ({ variant }: { variant: number }) => {
+const HeroContent = ({ variant }: { variant: number | string }) => {
     const videoUrl = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
     const headline = <>People forget.<br/>Your business<br/>shouldn’t pay for it.</>;
     const subtext = "When work depends on memory or judgment, execution changes with people. Audits, shift changes, and emergencies expose the gaps.";
     const urgency = "Consistency can’t depend on memory.";
 
-    if (variant === 1) { // Standard Overlay (Streamlined - Subtext removed as per request)
+    if (variant === 1) { // Standard Overlay (Original Refined)
         return (
             <div className="h-full relative flex flex-col justify-end">
                 <video src={videoUrl} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" />
@@ -62,7 +54,26 @@ const HeroContent = ({ variant }: { variant: number }) => {
         );
     }
 
-    if (variant === 4) { // Split Screen (Cleaned - "Operational Blueprint" removed)
+    if (variant === '1.1') { // V1 Variant: Smaller Text + Red Highlight
+        return (
+            <div className="h-full relative flex flex-col justify-end">
+                <video src={videoUrl} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10" />
+                <div className="relative z-20 p-8 pb-12 space-y-4">
+                    <div className="px-2 py-1 bg-red-600 w-fit rounded-sm mb-2">
+                        <span className="text-[10px] font-black text-white uppercase tracking-widest">SYSTEMS OVER MEMORY</span>
+                    </div>
+                    <h1 className="text-2xl font-black text-white leading-tight tracking-tight uppercase">{headline}</h1>
+                    <p className="text-[10px] font-bold text-white/60 uppercase tracking-[0.2em]">{urgency}</p>
+                    <Button className="w-full h-12 bg-white text-black font-black uppercase text-xs rounded-none mt-4">
+                        PROCURE ASSET <ArrowRight className="ml-2 w-3 h-3" />
+                    </Button>
+                </div>
+            </div>
+        );
+    }
+
+    if (variant === 4) { // Split Screen (Original Refined)
         return (
             <div className="h-full bg-zinc-950 flex flex-col">
                 <div className="h-1/2 relative">
@@ -80,7 +91,48 @@ const HeroContent = ({ variant }: { variant: number }) => {
         );
     }
 
-    if (variant === 5) { // Dark List Focus (Content approved)
+    if (variant === '4.1') { // V4 Variant: Split Gradient (Light Top)
+        return (
+            <div className="h-full bg-zinc-950 flex flex-col">
+                <div className="h-[45%] relative overflow-hidden">
+                    <video src={videoUrl} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover contrast-125 brightness-110" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-zinc-950" />
+                </div>
+                <div className="flex-1 p-8 pt-6 space-y-6">
+                    <div className="space-y-2">
+                        <h1 className="text-3xl font-black text-white leading-[0.95] tracking-tighter uppercase">{headline}</h1>
+                        <p className="text-[10px] font-black text-red-500 uppercase tracking-widest">{urgency}</p>
+                    </div>
+                    <p className="text-xs text-zinc-500 leading-relaxed font-medium">{subtext}</p>
+                    <Button className="w-full h-14 bg-primary text-black font-black uppercase rounded-lg shadow-xl shadow-primary/10">
+                        ACQUIRE STANDARD <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                </div>
+            </div>
+        );
+    }
+
+    if (variant === '4.2') { // V4 Variant: Catchy Button (Procurement Focus)
+        return (
+            <div className="h-full bg-zinc-950 flex flex-col">
+                <div className="h-1/2 relative">
+                    <video src={videoUrl} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-70 grayscale" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-950" />
+                </div>
+                <div className="flex-1 p-8 pt-4 flex flex-col justify-between pb-10">
+                    <div className="space-y-4">
+                        <h1 className="text-3xl font-black text-white leading-tight tracking-tighter uppercase">{headline}</h1>
+                        <p className="text-sm text-zinc-400 leading-relaxed italic border-l-2 border-primary pl-4">"Because consistency cannot depend on human memory."</p>
+                    </div>
+                    <Button className="w-full h-16 bg-white text-black font-black uppercase text-base rounded-none tracking-tighter hover:bg-primary transition-colors">
+                        DEPLOY BLUEPRINT <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                </div>
+            </div>
+        );
+    }
+
+    if (variant === 5) { // Dark List Focus
         return (
             <div className="h-full relative p-8 flex flex-col justify-center gap-10">
                 <video src={videoUrl} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-30" />
@@ -118,9 +170,9 @@ export default function TempDesignClientPage() {
             {/* INTRO */}
             <Section id="intro" className="relative overflow-hidden border-none pt-24 pb-12 text-center">
                 <div className="container px-4 md:px-6 relative z-10">
-                    <SectionHeadline>Refined Mobile Hero Selections</SectionHeadline>
-                    <p className="text-xl max-w-2xl mx-auto mt-4 text-zinc-400">
-                       Three specific variations optimized for hierarchy, clarity, and authority on small screens.
+                    <SectionHeadline>Refined Mobile Hero Variations</SectionHeadline>
+                    <p className="text-xl max-w-2xl mx-auto mt-4 text-zinc-400 font-medium">
+                       Focused iteration on the V1 and V4 directions based on legibility, impact, and procurement psychology.
                     </p>
                 </div>
             </Section>
@@ -129,8 +181,11 @@ export default function TempDesignClientPage() {
             <Section id="mobile-heroes" className="bg-zinc-900/30 border-none">
                 <div className="container px-4 md:px-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 justify-items-center">
-                        <MobileFrame title="V1: Visual Overlay (Reduced Text)"><HeroContent variant={1} /></MobileFrame>
-                        <MobileFrame title="V4: Clean Split (No blueprint tag)"><HeroContent variant={4} /></MobileFrame>
+                        <MobileFrame title="V1: Visual Overlay"><HeroContent variant={1} /></MobileFrame>
+                        <MobileFrame title="V6: V1 + Red Highlight (High Impact)"><HeroContent variant="1.1" /></MobileFrame>
+                        <MobileFrame title="V4: Clean Split"><HeroContent variant={4} /></MobileFrame>
+                        <MobileFrame title="V7: V4 + Split Gradient (Light Top)"><HeroContent variant="4.1" /></MobileFrame>
+                        <MobileFrame title="V8: V4 + Catchy Action Button"><HeroContent variant="4.2" /></MobileFrame>
                         <MobileFrame title="V5: Content-First List"><HeroContent variant={5} /></MobileFrame>
                     </div>
                 </div>
