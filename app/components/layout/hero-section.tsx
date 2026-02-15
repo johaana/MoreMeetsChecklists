@@ -9,7 +9,7 @@ import React from 'react';
 export const HeroSection = () => (
     <section className="relative w-full flex flex-col md:flex-row md:items-center md:h-screen md:min-h-[700px] overflow-hidden bg-background">
         {/* Visual Brand Layer - Top half on mobile, Full-screen overlay on desktop */}
-        <div className="relative h-[45vh] md:absolute md:top-0 md:left-0 md:h-full md:w-full z-0 overflow-hidden shrink-0">
+        <div className="relative h-[40vh] md:absolute md:top-0 md:left-0 md:h-full md:w-full z-0 overflow-hidden shrink-0">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
                 autoPlay
@@ -29,10 +29,10 @@ export const HeroSection = () => (
         </div>
 
         {/* Content Layer: Normal flow on mobile, Absolute container on desktop */}
-        <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-start md:justify-center py-10 md:py-0">
+        <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-start md:justify-center py-6 md:py-0">
             <div className="max-w-2xl space-y-4 md:space-y-6">
-                {/* Headline: Optimized for mobile/desktop line breaks */}
-                <h1 className="text-3xl sm:text-5xl md:text-6xl font-headline font-bold tracking-tighter !leading-[1.1] md:!leading-[1.05] text-primary-text drop-shadow-lg uppercase md:normal-case">
+                {/* Headline: Optimized for mobile/desktop line breaks. Normal case on mobile for a premium feel. */}
+                <h1 className="text-3xl sm:text-5xl md:text-6xl font-headline font-bold tracking-tighter !leading-[1.1] md:!leading-[1.05] text-primary-text drop-shadow-lg normal-case">
                     People forget. <br />
                     Your business <span className="md:hidden"> </span><br className="hidden md:block"/>shouldn’t pay for it.
                 </h1>
@@ -51,8 +51,8 @@ export const HeroSection = () => (
                 
                 {/* Action Area: Catchy B2B Label for Mobile */}
                 <div className="flex flex-col items-start gap-3 pt-2 md:pt-6">
-                    <Button size="lg" asChild className="group w-full sm:w-auto h-14 md:h-16 rounded-xl md:rounded-lg shadow-xl md:shadow-2xl transition-all active:scale-95" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))' }}>
-                        <Link href="/library" className="flex items-center justify-center font-black uppercase tracking-widest md:font-bold md:normal-case md:tracking-tight md:text-lg px-8">
+                    <Button size="lg" asChild className="group w-full sm:w-auto h-14 md:h-14 rounded-xl md:rounded-lg shadow-xl md:shadow-2xl transition-all active:scale-95" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))' }}>
+                        <Link href="/library" className="flex items-center justify-center font-black uppercase tracking-widest md:font-bold md:normal-case md:tracking-tight md:text-base px-8">
                            <span className="md:hidden">SECURE COMPLIANCE</span>
                            <span className="hidden md:inline">View Operational Standards</span>
                            <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
