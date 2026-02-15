@@ -19,7 +19,8 @@ import {
     Gift,
     ShieldCheck,
     Lock,
-    Sparkles
+    Sparkles,
+    Briefcase
 } from 'lucide-react';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
 import { Button } from '@/components/ui/button';
@@ -123,9 +124,9 @@ export default function TempDesignClientPage() {
                            Refining the professional procurement environment. Comparing 5 Variations of the "Intelligent Gateway" Architecture.
                         </p>
                         
-                        {/* GLOBAL REGION SELECTOR */}
+                        {/* GLOBAL REGION SELECTOR (Simulator Controls) */}
                         <div className="flex flex-col justify-center items-center gap-4 pt-8">
-                            <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">Select Payment Region</span>
+                            <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">Lab Simulator: Current Session Region</span>
                             <div className="flex p-1 bg-white/5 rounded-xl border border-white/10 shadow-2xl">
                                 <button 
                                     onClick={() => setRegion('INDIA')}
@@ -134,7 +135,7 @@ export default function TempDesignClientPage() {
                                         region === 'INDIA' ? "bg-primary text-bg-primary shadow-lg" : "text-muted-foreground hover:text-primary-text"
                                     )}
                                 >
-                                    <span className="text-base leading-none">🇮🇳</span> India
+                                    <span className="text-base leading-none">🇮🇳</span> India Path
                                 </button>
                                 <button 
                                     onClick={() => setRegion('GLOBAL')}
@@ -143,7 +144,7 @@ export default function TempDesignClientPage() {
                                         region === 'GLOBAL' ? "bg-primary text-bg-primary shadow-lg" : "text-muted-foreground hover:text-primary-text"
                                     )}
                                 >
-                                    <span className="text-base leading-none">🌎</span> International
+                                    <span className="text-base leading-none">🌎</span> Global Path
                                 </button>
                             </div>
                         </div>
@@ -156,26 +157,59 @@ export default function TempDesignClientPage() {
                 <div className="container px-4 md:px-6">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
                         
-                        {/* 9.1 The Executive Value Stack */}
+                        {/* 9.1 The Executive Asset Hub */}
                         <ConceptCard 
                             title="Variation 9.1" 
-                            subtitle="Executive Value Stack"
+                            subtitle="Institutional Asset Hub"
                             variant="highlight"
-                            badge="High Conversion"
+                            badge="High Utility"
                         >
-                            <div className="flex-1 space-y-8">
-                                <div className="space-y-4">
-                                    {coreBenefits.slice(0, 3).map((b, i) => (
-                                        <BenefitItem key={i} icon={b.icon} title={b.title} subText={b.subText} />
-                                    ))}
+                            <div className="flex-1 flex flex-col space-y-6">
+                                {/* Asset Spec Block */}
+                                <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 space-y-4">
+                                    <div className="flex items-center gap-2 border-b border-white/5 pb-2 mb-2">
+                                        <Briefcase className="w-3 h-3 text-primary/60" />
+                                        <p className="text-[9px] font-black uppercase text-primary/60 tracking-widest">Licensed Operational Asset</p>
+                                    </div>
+                                    <div className="space-y-3">
+                                        {coreBenefits.slice(0, 3).map((b, i) => (
+                                            <BenefitItem key={i} icon={b.icon} title={b.title} />
+                                        ))}
+                                    </div>
                                 </div>
 
-                                <div className="pt-6 border-t border-white/5">
-                                    <div className="text-center mb-6">
-                                        <p className="text-5xl font-black text-primary-text tracking-tighter">
-                                            {region === 'INDIA' ? '₹5,999' : '$79'}
-                                        </p>
-                                        <p className="text-[9px] text-muted-foreground font-bold uppercase mt-1">Professional License • One-Time Payment</p>
+                                {/* Procurement Zone with Internal Switcher */}
+                                <div className="mt-auto pt-6 border-t border-white/5">
+                                    <div className="flex justify-between items-end mb-6 bg-white/[0.03] p-3 rounded-xl border border-white/5">
+                                        <div className="space-y-1.5">
+                                            <p className="text-[8px] font-black uppercase text-primary tracking-tighter">Procurement Gateway</p>
+                                            <div className="flex gap-1 bg-black/40 p-0.5 rounded-md">
+                                                <button 
+                                                    onClick={() => setRegion('INDIA')} 
+                                                    className={cn(
+                                                        "px-2 py-1 rounded text-[9px] font-black uppercase transition-all", 
+                                                        region === 'INDIA' ? "bg-primary text-bg-primary shadow-sm" : "text-muted-foreground hover:text-primary-text"
+                                                    )}
+                                                >
+                                                    🇮🇳 India
+                                                </button>
+                                                <button 
+                                                    onClick={() => setRegion('GLOBAL')} 
+                                                    className={cn(
+                                                        "px-2 py-1 rounded text-[9px] font-black uppercase transition-all", 
+                                                        region === 'GLOBAL' ? "bg-primary text-bg-primary shadow-sm" : "text-muted-foreground hover:text-primary-text"
+                                                    )}
+                                                >
+                                                    🌎 Global
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div className="text-right">
+                                            <p className="text-3xl font-black text-primary-text tracking-tighter leading-none">
+                                                {region === 'INDIA' ? '₹5,999' : '$79'}
+                                            </p>
+                                            <p className="text-[8px] text-muted-foreground font-bold uppercase mt-1">One-Time Acquisition</p>
+                                        </div>
                                     </div>
                                     
                                     <div className="space-y-4">
@@ -186,7 +220,9 @@ export default function TempDesignClientPage() {
                                             </>
                                         ) : (
                                             <>
-                                                <Button className="w-full h-14 bg-accent text-bg-primary font-black uppercase text-xs rounded-xl shadow-xl hover:bg-accent/90">Secure USD Checkout <ArrowRight className="ml-2 w-4 h-4"/></Button>
+                                                <Button className="w-full h-14 bg-accent text-bg-primary font-black uppercase text-xs rounded-xl shadow-xl hover:bg-accent/90">
+                                                    Acquire Asset (USD) <ArrowRight className="ml-2 w-4 h-4"/>
+                                                </Button>
                                                 <GlobalMethods />
                                             </>
                                         )}
@@ -203,7 +239,7 @@ export default function TempDesignClientPage() {
                             <div className="flex-1 flex flex-col">
                                 <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-5 mb-8">
                                     <div className="flex justify-between items-center mb-4">
-                                        <h4 className="text-[10px] font-black text-primary uppercase tracking-widest">Gateway Ready</h4>
+                                        <h4 className="text-[10px] font-black text-primary uppercase tracking-widest">Available Methods</h4>
                                         {region === 'INDIA' ? <IndiaMethods /> : <GlobalMethods />}
                                     </div>
                                     <div className="space-y-4">
@@ -235,19 +271,19 @@ export default function TempDesignClientPage() {
                         >
                             <div className="flex-1 space-y-8">
                                 <div className="grid grid-cols-2 gap-3">
-                                    <div className="p-4 bg-white/5 rounded-xl border border-white/10 space-y-2 flex flex-col items-center text-center">
+                                    <div className="p-4 bg-white/5 rounded-xl border border-white/10 space-y-2 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
                                         <FileSpreadsheet className="w-5 h-5 text-accent" />
                                         <p className="text-[9px] font-black text-primary-text leading-tight uppercase">Excel<br/>Standard</p>
                                     </div>
-                                    <div className="p-4 bg-white/5 rounded-xl border border-white/10 space-y-2 flex flex-col items-center text-center">
+                                    <div className="p-4 bg-white/5 rounded-xl border border-white/10 space-y-2 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
                                         <CloudOff className="w-5 h-5 text-accent" />
                                         <p className="text-[9px] font-black text-primary-text leading-tight uppercase">Privacy<br/>Offline</p>
                                     </div>
-                                    <div className="p-4 bg-white/5 rounded-xl border border-white/10 space-y-2 flex flex-col items-center text-center">
+                                    <div className="p-4 bg-white/5 rounded-xl border border-white/10 space-y-2 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
                                         <Gift className="w-5 h-5 text-accent" />
                                         <p className="text-[9px] font-black text-primary-text leading-tight uppercase">Free<br/>Custom</p>
                                     </div>
-                                    <div className="p-4 bg-white/5 rounded-xl border border-white/10 space-y-2 flex flex-col items-center text-center">
+                                    <div className="p-4 bg-white/5 rounded-xl border border-white/10 space-y-2 flex flex-col items-center text-center hover:bg-white/10 transition-colors">
                                         <ShieldCheck className="w-5 h-5 text-accent" />
                                         <p className="text-[9px] font-black text-primary-text leading-tight uppercase">Audit<br/>Ready</p>
                                     </div>
@@ -258,7 +294,7 @@ export default function TempDesignClientPage() {
                                 </div>
 
                                 <div className="space-y-4">
-                                    {region === 'INDIA' ? <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" /> : <Button className="w-full h-14 bg-white text-black font-black uppercase">Get Instant Access</Button>}
+                                    {region === 'INDIA' ? <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" /> : <Button className="w-full h-14 bg-white text-black font-black uppercase rounded-xl">Get Instant Access</Button>}
                                     <div className="text-center">
                                         <span className="text-[10px] text-muted-foreground font-bold">Pay via {region === 'INDIA' ? 'UPI, GPay or Local Cards' : 'Stripe or Global PayPal'}</span>
                                     </div>
@@ -297,7 +333,7 @@ export default function TempDesignClientPage() {
                                         <span className="text-[10px] font-black uppercase text-muted-foreground">Asset Price</span>
                                         <span className="text-2xl font-black text-primary-text">{region === 'INDIA' ? '₹5,999' : '$79'}</span>
                                     </div>
-                                    {region === 'INDIA' ? <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" /> : <Button variant="outline" className="w-full h-12 font-black uppercase">Secure Checkout</Button>}
+                                    {region === 'INDIA' ? <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" /> : <Button variant="outline" className="w-full h-12 font-black uppercase rounded-lg">Secure Checkout</Button>}
                                 </div>
                             </div>
                         </ConceptCard>
