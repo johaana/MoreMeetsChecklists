@@ -152,7 +152,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         { title: "Instant Excel Delivery", subText: "Fully editable professional .xlsx file", iconColor: "text-primary" },
         { title: "100% Offline Use", subText: "Internal data privacy & zero exposure", iconColor: "text-primary" },
         { title: "Unlimited Internal Rights", subText: "Deploy across your entire organization", iconColor: "text-primary" },
-        { title: "1 Free Customization", subText: "The 'Gold Standard' tailoring service", iconColor: "text-accent" }
+        { title: "1 Free Customization", subText: "The 'Gold Standard' tailoring service", iconColor: "text-primary" }
     ];
 
     if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
@@ -218,7 +218,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <div className="w-full flex justify-between items-center mb-2">
                                 <div className="flex items-center gap-2">
                                     <Shield className="w-4 h-4 text-primary" />
-                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">ELITE SPECIFICATION</span>
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">INSTITUTIONAL STANDARD</span>
                                 </div>
                                 <Badge variant="outline" className="text-[9px] font-black border-primary/30 text-primary">AUDIT READY</Badge>
                             </div>
