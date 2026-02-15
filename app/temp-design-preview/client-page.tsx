@@ -20,7 +20,8 @@ import {
     UserCheck,
     Search,
     Lock,
-    Scale
+    Scale,
+    Map
 } from 'lucide-react';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
 import { Button } from '@/components/ui/button';
@@ -141,18 +142,18 @@ export default function TempDesignClientPage() {
     const CurrencySelector = () => (
         <div className="flex justify-center mb-8">
             <Tabs value={region} onValueChange={(v) => setRegion(v as any)} className="w-fit">
-                <TabsList className="bg-white/5 border border-white/10 h-7 p-0.5 rounded-full px-1">
+                <TabsList className="bg-white/5 border border-white/10 h-8 p-0.5 rounded-full px-1">
                     <TabsTrigger 
                         value="GLOBAL" 
-                        className="text-[9px] font-black uppercase px-4 h-6 rounded-full data-[state=active]:bg-white/10 data-[state=active]:text-primary"
+                        className="text-[9px] font-black uppercase px-4 h-7 rounded-full data-[state=active]:bg-white/10 data-[state=active]:text-primary flex items-center gap-2"
                     >
-                        USD ($)
+                        <Globe className="w-3.5 h-3.5" /> GLOBAL ($)
                     </TabsTrigger>
                     <TabsTrigger 
                         value="INDIA" 
-                        className="text-[9px] font-black uppercase px-4 h-6 rounded-full data-[state=active]:bg-white/10 data-[state=active]:text-primary"
+                        className="text-[9px] font-black uppercase px-4 h-7 rounded-full data-[state=active]:bg-white/10 data-[state=active]:text-primary flex items-center gap-2"
                     >
-                        INR (₹)
+                        <Landmark className="w-3.5 h-3.5" /> INDIA (₹)
                     </TabsTrigger>
                 </TabsList>
             </Tabs>
@@ -167,11 +168,11 @@ export default function TempDesignClientPage() {
                     <div className="text-center max-w-4xl mx-auto space-y-6">
                         <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 mb-2">
                             <Zap className="w-4 h-4 text-primary" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">V9.5 Stealth Lab</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">V9.6 Authority Lab</span>
                         </div>
-                        <SectionHeadline>Executive Asset Acquisition.</SectionHeadline>
+                        <SectionHeadline>Enterprise Asset Acquisition.</SectionHeadline>
                         <p className="text-xl max-w-2xl mx-auto" style={{color: 'hsl(var(--text-secondary))'}}>
-                           Testing low-profile currency toggles, institutional seals, and authority-first trust signals.
+                           Refining institutional trust signals, localized currency pipes, and high-fidelity procurement workflows.
                         </p>
                     </div>
                 </div>
@@ -182,11 +183,11 @@ export default function TempDesignClientPage() {
                 <div className="container px-4 md:px-6">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto items-start">
                         
-                        {/* 9.1 Improvised: The Institutional Standard */}
+                        {/* 9.1 Improvised: The Executive Standard */}
                         <ConceptCard 
                             title="Variation 9.1" 
-                            subtitle="Executive Vault"
-                            badge="Audit Ready"
+                            subtitle="Licensed B2B Asset"
+                            badge="Institutional"
                             variant="highlight"
                         >
                             <CurrencySelector />
@@ -197,9 +198,9 @@ export default function TempDesignClientPage() {
                                             <Shield className="w-4 h-4 text-primary" />
                                             <p className="text-[10px] font-black uppercase text-primary tracking-widest">Elite Specification</p>
                                         </div>
-                                        <Scale className="w-4 h-4 text-primary/40" />
+                                        <Badge variant="outline" className="text-[8px] border-primary/30 text-primary">AUDIT READY</Badge>
                                     </div>
-                                    <BenefitList items={coreBenefits} type="bullet" />
+                                    <BenefitList items={coreBenefits} type="green-check" />
                                 </div>
 
                                 <div className="mt-auto pt-6 border-t border-white/5 space-y-6">
@@ -207,11 +208,14 @@ export default function TempDesignClientPage() {
                                         <p className="text-4xl font-black text-primary-text tracking-tighter">
                                             {region === 'INDIA' ? '₹5,999' : '$79'}
                                         </p>
-                                        <div className="flex items-center justify-center gap-2 mt-1">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                                            <p className="text-[8px] text-primary font-black uppercase tracking-[0.15em] leading-none">
-                                                LIFETIME ORGANIZATION LICENSE
-                                            </p>
+                                        <div className="flex flex-col items-center gap-1 mt-1">
+                                            <div className="flex items-center gap-2">
+                                                <span className="w-1 h-1 rounded-full bg-primary animate-pulse" />
+                                                <p className="text-[8px] text-primary font-black uppercase tracking-[0.15em] leading-none">
+                                                    LIFETIME ORGANIZATION LICENSE
+                                                </p>
+                                            </div>
+                                            <p className="text-[8px] text-muted-foreground uppercase font-black tracking-widest">• Unlimited Internal Rights</p>
                                         </div>
                                     </div>
                                     
@@ -233,19 +237,19 @@ export default function TempDesignClientPage() {
                             </div>
                         </ConceptCard>
 
-                        {/* 9.2 Improvised: Authority Confidence */}
+                        {/* 9.2 Improvised: Compliance Confidence */}
                         <ConceptCard 
                             title="Variation 9.2" 
-                            subtitle="Compliance Framework"
+                            subtitle="Security Standard"
                         >
                             <CurrencySelector />
                             <div className="flex-1 flex flex-col space-y-6">
                                 <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-5">
                                     <div className="flex justify-between items-center border-b border-white/5 pb-3">
                                         <p className="text-[10px] font-black uppercase text-primary tracking-widest flex items-center gap-2">
-                                            <UserCheck className="w-3.5 h-3.5" /> Verified Implementation
+                                            <Lock className="w-3.5 h-3.5" /> Zero Data Exposure
                                         </p>
-                                        <Lock className="w-3.5 h-3.5 text-primary/40" />
+                                        <Scale className="w-3.5 h-3.5 text-primary/40" />
                                     </div>
                                     <BenefitList items={coreBenefits} type="green-check" />
                                 </div>
@@ -255,7 +259,7 @@ export default function TempDesignClientPage() {
                                         <p className="text-4xl font-black text-primary-text tracking-tighter">
                                             {region === 'INDIA' ? '₹5,999' : '$79'}
                                         </p>
-                                        <Badge variant="outline" className="border-white/10 text-[8px] font-black uppercase tracking-widest text-muted-foreground">Unlimited Internal Deployment</Badge>
+                                        <Badge variant="outline" className="border-white/10 text-[8px] font-black uppercase tracking-widest text-muted-foreground">Internal Implementation Only</Badge>
                                     </div>
 
                                     {region === 'INDIA' ? (
@@ -286,7 +290,7 @@ export default function TempDesignClientPage() {
                                 <div className="p-5 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent border border-accent/20 space-y-5">
                                     <div className="flex justify-between items-center border-b border-accent/10 pb-3">
                                         <p className="text-[10px] font-black uppercase text-accent tracking-widest flex items-center gap-2">
-                                            <Trophy className="w-3.5 h-3.5" /> Service-Backed Asset
+                                            <Trophy className="w-3.5 h-3.5" /> Elite Service Model
                                         </p>
                                         <Award className="w-4 h-4 text-accent" />
                                     </div>
@@ -298,7 +302,7 @@ export default function TempDesignClientPage() {
                                         <p className="text-5xl font-black text-primary-text tracking-tighter">
                                             {region === 'INDIA' ? '₹5,999' : '$79'}
                                         </p>
-                                        <p className="text-[8px] font-black uppercase tracking-[0.2em] text-accent">Gold Specification Standard</p>
+                                        <p className="text-[8px] font-black uppercase tracking-[0.2em] text-accent">Service-Backed Premium Asset</p>
                                     </div>
 
                                     {region === 'INDIA' ? (
@@ -331,27 +335,27 @@ export default function TempDesignClientPage() {
                 <div className="container px-4 md:px-6">
                     <div className="max-w-5xl mx-auto p-10 rounded-[2.5rem] border-2 border-dashed border-primary/20 bg-surface-card/50 relative overflow-hidden">
                         <h3 className="text-2xl md:text-3xl font-bold mb-8 flex items-center gap-4 text-primary">
-                            <Search className="text-accent w-8 h-8" /> V9.5 Optimization Audit:
+                            <Search className="text-accent w-8 h-8" /> V9.6 Authority Audit:
                         </h3>
                         <div className="grid md:grid-cols-2 gap-12 text-base text-secondary-text">
                             <div className="space-y-6">
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">1. Stealth Segmented Control</p>
-                                    <p className="leading-relaxed">Replaced bulky tabs with a high-density "pill" switcher. It reduces visual noise at the top of the card and aligns with professional hardware/software UI patterns.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">1. Institutional Locality</p>
+                                    <p className="leading-relaxed">Renamed currency pipes to "GLOBAL" and "INDIA" with corresponding iconography. This shifts the focus from "money" to "territorial alignment."</p>
                                 </div>
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">2. Institutional Framing (9.1)</p>
-                                    <p className="leading-relaxed">Used a recessed "technical block" for specifications and added an active pulse near the license to signal a "live" verified standard.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">2. Executive Affirmation (9.1)</p>
+                                    <p className="leading-relaxed">Implemented checkmarks in the baseline variation. Psychologically, ticks signal "Requirements Met," which is critical for B2B procurement confidence.</p>
                                 </div>
                             </div>
                             <div className="space-y-6">
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">3. Method Trust Logic</p>
-                                    <p className="leading-relaxed">India path micro-copy updated to mention "Tax Invoice for GST input credit"—this is the #1 psychological trigger for Indian B2B buyers.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">3. Rights-First Anchoring</p>
+                                    <p className="leading-relaxed">Explicitly added "Unlimited Internal Rights" micro-copy. In large organizations, the legal right to deploy is the primary barrier to purchase.</p>
                                 </div>
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">4. Rights-First Subtitle</p>
-                                    <p className="leading-relaxed">Elevated the "Deployment Rights" badge. In corporate procurement, the permission to scale the asset internally is as valuable as the asset itself.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">4. Service-Level Separation (9.3)</p>
+                                    <p className="leading-relaxed">Used gold specifically for the "1 Free Customization" point. This visually justifies the price by separating the human service from the technical tool.</p>
                                 </div>
                             </div>
                         </div>
