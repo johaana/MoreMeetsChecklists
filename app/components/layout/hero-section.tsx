@@ -23,19 +23,23 @@ export const HeroSection = () => (
             
             {/* Mobile Gradient Overlay (Gradual Top-to-Bottom transition to solid background) */}
             <div className="md:hidden absolute inset-0 z-10 bg-gradient-to-b from-transparent via-background/10 to-background" />
+            
+            {/* Expert Atmospheric Bleed: Softens the transition between video and content on mobile */}
+            <div className="md:hidden absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-15" />
         </div>
 
         {/* Content Layer: Normal flow on mobile, Absolute container on desktop */}
         <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-start md:justify-center py-10 md:py-0">
             <div className="max-w-2xl space-y-6 md:space-y-4">
-                {/* Headline: Fixed spacing for mobile concatenations */}
+                {/* Headline: Optimized for mobile/desktop line breaks */}
                 <h1 className="text-3xl sm:text-5xl md:text-6xl font-headline font-bold tracking-tighter !leading-[1.1] md:!leading-[1.05] text-primary-text drop-shadow-lg uppercase md:normal-case">
-                    People forget. <br className="hidden md:block"/>Your business <br className="hidden md:block"/>shouldn’t pay for it.
+                    People forget. <br />
+                    Your business <span className="md:hidden"> </span><br className="hidden md:block"/>shouldn’t pay for it.
                 </h1>
                 
-                {/* Red Urgency Line: High Impact V7 Style */}
-                <div className="py-2 border-y border-red-500/20 w-fit inline-block md:border-none md:p-0">
-                    <p className="text-xs md:text-base lg:text-lg font-bold text-red-500 uppercase tracking-widest md:normal-case md:tracking-normal">
+                {/* Red Urgency Line: High Impact V7/V9 Style */}
+                <div className="py-2 border-y border-red-500/40 w-fit inline-block md:border-none md:p-0">
+                    <p className="text-xs md:text-base lg:text-lg font-bold text-red-500 uppercase tracking-[0.15em] md:normal-case md:tracking-normal">
                         Consistency can’t depend on memory.
                     </p>
                 </div>
@@ -47,7 +51,7 @@ export const HeroSection = () => (
                 
                 {/* Action Area: Catchy B2B Label for Mobile */}
                 <div className="flex flex-col items-start gap-3 pt-4 md:pt-6">
-                    <Button size="lg" asChild className="group w-full sm:w-auto h-14 md:h-auto rounded-xl md:rounded-md shadow-xl md:shadow-none" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))' }}>
+                    <Button size="lg" asChild className="group w-full sm:w-auto h-14 md:h-auto rounded-xl md:rounded-md shadow-xl md:shadow-none transition-all active:scale-95" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))' }}>
                         <Link href="/library" className="flex items-center justify-center font-black uppercase tracking-widest md:font-semibold md:normal-case md:tracking-normal">
                            <span className="md:hidden">SECURE COMPLIANCE</span>
                            <span className="hidden md:inline">View Operational Standards</span>
