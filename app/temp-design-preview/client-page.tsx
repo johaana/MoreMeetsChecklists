@@ -17,7 +17,8 @@ import {
     CreditCard as CardIcon,
     ShieldAlert,
     PackageCheck,
-    Lock
+    Lock,
+    Medal
 } from 'lucide-react';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
 import { Button } from '@/components/ui/button';
@@ -50,7 +51,7 @@ const ConceptCard = ({ title, subtitle, children, badge, variant = "default" }: 
     </Card>
 );
 
-const BenefitList = ({ items, type }: { items: any[], type: 'bullet' | 'green-check' | 'gold-check' }) => (
+const BenefitList = ({ items, type }: { items: any[], type: 'bullet' | 'green-check' | 'gold-check' | 'mixed-check' }) => (
     <div className="space-y-4">
         {items.map((item, i) => (
             <div key={i} className="flex items-start gap-3 group">
@@ -58,6 +59,9 @@ const BenefitList = ({ items, type }: { items: any[], type: 'bullet' | 'green-ch
                     {type === 'bullet' && <div className="w-1.5 h-1.5 rounded-full bg-primary/40 mt-1" />}
                     {type === 'green-check' && <Check className="w-4 h-4 text-primary" />}
                     {type === 'gold-check' && <Check className="w-4 h-4 text-accent" />}
+                    {type === 'mixed-check' && (
+                        i === 2 ? <Check className="w-4 h-4 text-accent" /> : <Check className="w-4 h-4 text-primary" />
+                    )}
                 </div>
                 <div className="space-y-0.5">
                     <p className="text-xs font-bold text-primary-text leading-tight">{item.title}</p>
@@ -140,7 +144,7 @@ export default function TempDesignClientPage() {
                         </div>
                         <SectionHeadline>Global Anchoring. Executive Verification.</SectionHeadline>
                         <p className="text-xl max-w-2xl mx-auto" style={{color: 'hsl(var(--text-secondary))'}}>
-                           Comparing elite specifications vs authority green vs elite gold verification signals.
+                           Comparing baseline bullets vs authority green vs mixed elite gold verification signals.
                         </p>
                         
                         {/* GLOBAL REGION SELECTOR */}
@@ -179,7 +183,7 @@ export default function TempDesignClientPage() {
                         {/* 9.1 Baseline: The Elite Asset */}
                         <ConceptCard 
                             title="Variation 9.1" 
-                            subtitle="Baseline: The Institutional Hub"
+                            subtitle="Baseline: Institutional Hub"
                             badge="Premium Asset"
                             variant="highlight"
                         >
@@ -191,7 +195,7 @@ export default function TempDesignClientPage() {
                                         </p>
                                         <div className="flex gap-1">
                                             <span className="text-[7px] font-black bg-white/5 px-1.5 py-0.5 rounded text-muted-foreground uppercase">ISO</span>
-                                            <span className="text-[7px] font-black bg-white/5 px-1.5 py-0.5 rounded text-muted-foreground uppercase">HACCP</span>
+                                            <span className="text-[7px] font-black bg-white/5 px-1.5 py-0.5 rounded text-muted-foreground uppercase">OSHA</span>
                                         </div>
                                     </div>
                                     <BenefitList items={coreBenefits} type="bullet" />
@@ -234,7 +238,7 @@ export default function TempDesignClientPage() {
                                 <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-5">
                                     <div className="flex justify-between items-center border-b border-white/5 pb-3">
                                         <p className="text-[9px] font-black uppercase text-primary tracking-widest">Verified Standards</p>
-                                        <ShieldAlert className="w-3 h-3 text-primary" />
+                                        <ShieldCheck className="w-3 h-3 text-primary" />
                                     </div>
                                     <BenefitList items={coreBenefits} type="green-check" />
                                 </div>
@@ -244,7 +248,7 @@ export default function TempDesignClientPage() {
                                         <p className="text-4xl font-black text-primary-text tracking-tighter">
                                             {region === 'INDIA' ? '₹5,999' : '$79'}
                                         </p>
-                                        <p className="text-[8px] text-muted-foreground font-black uppercase mt-1 tracking-widest leading-none">Instant Asset Delivery • Unlimited Internal Rights</p>
+                                        <p className="text-[8px] text-muted-foreground font-black uppercase mt-1 tracking-widest leading-none">Lifetime Organization License • Unlimited Internal Rights</p>
                                     </div>
 
                                     {region === 'INDIA' ? (
@@ -265,18 +269,20 @@ export default function TempDesignClientPage() {
                             </div>
                         </ConceptCard>
 
-                        {/* 9.3 Refinement B: Gold Premium */}
+                        {/* 9.3 Refinement B: Mixed Gold Path */}
                         <ConceptCard 
                             title="Variation 9.3" 
-                            subtitle="Premium: Elite Gold Path"
+                            subtitle="Mixed: Elite Gold Standard"
                         >
                             <div className="flex-1 flex flex-col space-y-6">
                                 <div className="p-5 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent border border-accent/20 space-y-5">
                                     <div className="flex justify-between items-center border-b border-accent/10 pb-3">
-                                        <p className="text-[9px] font-black uppercase text-accent tracking-widest">Elite Specifications</p>
+                                        <p className="text-[9px] font-black uppercase text-accent tracking-widest flex items-center gap-2">
+                                            <Medal className="w-3 h-3" /> Elite Specifications
+                                        </p>
                                         <Award className="w-3 h-3 text-accent" />
                                     </div>
-                                    <BenefitList items={coreBenefits} type="gold-check" />
+                                    <BenefitList items={coreBenefits} type="mixed-check" />
                                 </div>
 
                                 <div className="mt-auto pt-6 border-t border-white/5 space-y-6">
@@ -284,7 +290,7 @@ export default function TempDesignClientPage() {
                                         <p className="text-5xl font-black text-primary-text tracking-tighter">
                                             {region === 'INDIA' ? '₹5,999' : '$79'}
                                         </p>
-                                        <Badge variant="outline" className="border-accent/30 text-accent text-[8px] font-black px-2 uppercase tracking-widest">Service-Backed Procurement</Badge>
+                                        <Badge variant="outline" className="border-accent/30 text-accent text-[8px] font-black px-2 uppercase tracking-widest">Lifetime Organization License</Badge>
                                     </div>
 
                                     {region === 'INDIA' ? (
@@ -312,27 +318,27 @@ export default function TempDesignClientPage() {
                 <div className="container px-4 md:px-6">
                     <div className="max-w-5xl mx-auto p-10 rounded-[2.5rem] border-2 border-dashed border-primary/20 bg-surface-card/50 relative overflow-hidden">
                         <h3 className="text-2xl md:text-3xl font-bold mb-8 flex items-center gap-4 text-primary">
-                            <PackageCheck className="text-accent w-8 h-8" /> V9.3 Institutional Evolution:
+                            <PackageCheck className="text-accent w-8 h-8" /> V9.3 Visual Authority Evolution:
                         </h3>
                         <div className="grid md:grid-cols-2 gap-12 text-base text-secondary-text">
                             <div className="space-y-6">
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">1. The "Elite Asset" Framing</p>
-                                    <p className="leading-relaxed">Variation 9.1 now explicitly brands the contents as "Elite Specifications" and adds an "Unlimited Internal Rights" clause, removing purchase friction for corporate buyers.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">1. The Mixed-Icon Psychology (9.3)</p>
+                                    <p className="leading-relaxed">Variation 9.3 uses Authority Green for technical specs and Premium Gold for the "1 Free Customization." This tells the user that the software is reliable, but the human service is elite.</p>
                                 </div>
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">2. Journey Contextualization</p>
-                                    <p className="leading-relaxed">The bottom timeline now highlights the "Acquire" stage, visually telling the user that they are initiating a professional onboarding process.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">2. Baseline Continuity (9.1)</p>
+                                    <p className="leading-relaxed">Variation 9.1 is preserved as the clean control version, using neutral bullets to let the "Elite Specifications" copy do the work.</p>
                                 </div>
                             </div>
                             <div className="space-y-6">
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">3. Global-First Anchor</p>
-                                    <p className="leading-relaxed">By defaulting to $79, we establish the international value benchmark before allowing the user to discover their localized payment path.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">3. Global-First Default</p>
+                                    <p className="leading-relaxed">All variations now load with the $79 anchor, establishing the international value before allowing the user to discover their localized Indian path.</p>
                                 </div>
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">4. Verification Logic</p>
-                                    <p className="leading-relaxed">Variations 9.2 and 9.3 test different icon-based trust signals (Authority Green vs Elite Gold) to see which resonates more with the target audience.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">4. Licensing Clarity</p>
+                                    <p className="leading-relaxed">Replaced "Single License" with "Lifetime Organization License" across all variants to better align with the B2B procurement mindset.</p>
                                 </div>
                             </div>
                         </div>
