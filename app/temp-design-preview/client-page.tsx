@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { 
@@ -19,7 +19,6 @@ import {
     Gift,
     ShieldCheck,
     Lock,
-    MonitorPlay,
     Sparkles
 } from 'lucide-react';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
