@@ -32,12 +32,14 @@ export const HeroSection = () => (
         <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-start md:justify-center py-6 md:py-0">
             <div className="max-w-2xl space-y-4 md:space-y-6">
                 {/* Headline: Optimized for mobile/desktop line breaks. Normal case on mobile for a premium feel. */}
-                <h1 className="text-3xl sm:text-5xl md:text-6xl font-headline font-bold tracking-tighter !leading-[1.1] md:!leading-[1.05] text-primary-text drop-shadow-lg normal-case">
+                {/* Point 1: Increased leading to 1.3 on mobile for a distinct "beat" between lines */}
+                <h1 className="text-3xl sm:text-5xl md:text-6xl font-headline font-bold tracking-tighter !leading-[1.3] md:!leading-[1.05] text-primary-text drop-shadow-lg normal-case">
                     People forget. <br />
                     Your business <span className="md:hidden"> </span><br className="hidden md:block"/>shouldn’t pay for it.
                 </h1>
                 
                 {/* Red Urgency Line: High Impact V7/V9 Style */}
+                {/* Point 2: Ensuring uppercase remains for the technical alert look on mobile */}
                 <div className="py-2 border-y border-red-500/40 w-fit inline-block md:border-none md:p-0">
                     <p className="text-xs md:text-base lg:text-lg font-black text-red-500 uppercase tracking-[0.15em] md:normal-case md:tracking-normal">
                         Consistency can’t depend on memory.
