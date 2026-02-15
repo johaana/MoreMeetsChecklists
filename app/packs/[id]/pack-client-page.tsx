@@ -11,6 +11,7 @@ import { PainPoint } from '@/components/ui/pain-point';
 import type { PremiumPack } from "@/lib/premium-packs";
 import { Button } from '@/components/ui/button';
 import { IconComponent, ComplianceIcon } from '@/components/icons';
+import { cn } from '@/lib/utils';
 
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
@@ -70,11 +71,13 @@ const GlobalStandardsSection = ({ pack }: { pack: PremiumPack }) => {
     );
 };
 
-export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack: PremiumPack, heroImageUrl: string, imageHint: string }) {
+export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack: PremiumPack, heroImageUrl: string | null, imageHint: string }) {
   const audience = pack.whoIsItFor || ["Industry Professionals"];
   const totalChecklists = pack.checklists?.length || 0;
   const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
   const isEmptyPack = totalChecklists === 0 || (totalChecklists === 1 && pack.checklists[0].title.includes("Placeholder"));
+  
+  const hasValidHeroImage = heroImageUrl && heroImageUrl !== '' && !heroImageUrl.includes('picsum.photos');
 
   return (
     <>
@@ -84,7 +87,7 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
         <main className="flex-1">
           <section className="w-full pt-12 pb-6 md:pt-20 md:pb-10 bg-secondary/30">
             <div className="container px-4 md:px-6">
-              <div className="grid gap-6 lg:grid-cols-[1fr,400px] lg:gap-12 xl:gap-16 items-center">
+              <div className={cn("grid gap-6 lg:gap-12 xl:gap-16 items-center", hasValidHeroImage ? "lg:grid-cols-[1fr,400px]" : "grid-cols-1 max-w-4xl mx-auto")}>
                 <div className="space-y-4">
                   <h1 className="text-3xl font-extrabold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl font-headline text-primary">
                     {pack.title}
@@ -102,14 +105,16 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
                     <p className="text-sm text-muted-foreground">{audience.join(' • ')}</p>
                   </div>
                 </div>
-                <div className="flex justify-center">
-                  <img
-                    src={heroImageUrl}
-                    alt={pack.title}
-                    data-ai-hint={imageHint}
-                    className="rounded-2xl shadow-2xl object-cover aspect-[3/2] w-full h-auto"
-                  />
-                </div>
+                {hasValidHeroImage && (
+                    <div className="flex justify-center">
+                    <img
+                        src={heroImageUrl!}
+                        alt={pack.title}
+                        data-ai-hint={imageHint}
+                        className="rounded-2xl shadow-2xl object-cover aspect-[3/2] w-full h-auto"
+                    />
+                    </div>
+                )}
               </div>
             </div>
           </section>

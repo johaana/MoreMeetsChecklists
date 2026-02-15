@@ -3,146 +3,146 @@
   {
     "id": "pack-enterprise_risk_cybersecurity_pack",
     "description": "Enterprise Risk & Cybersecurity Pack",
-    "imageUrl": "https://i.postimg.cc/bJynvr9B/Cybersecurity.webp",
-    "imageHint": "cybersecurity server"
+    "imageUrl": "https://i.postimg.cc/9MyScQY9/Enterprise-Risk-and-Cybersecurity-Pack.png",
+    "imageHint": "cybersecurity product"
   },
   {
     "id": "pack-hotels_and_resorts",
     "description": "Hotels & Resorts Operations Pack",
-    "imageUrl": "https://picsum.photos/seed/hotel_ops_pro/1200/800",
-    "imageHint": "luxury suite"
+    "imageUrl": "https://i.postimg.cc/Lscwd1LF/18-Hotels-and-Resorts-Pack.png",
+    "imageHint": "hotel operations"
   },
   {
     "id": "pack-restaurants",
     "description": "Restaurant Operations Pack",
-    "imageUrl": "https://i.postimg.cc/gjH9T235/arpora1.jpg",
-    "imageHint": "chef kitchen"
+    "imageUrl": "https://i.postimg.cc/d0bpMyrw/19-Restaurant-Operations-Pack.png",
+    "imageHint": "restaurant operations"
   },
   {
     "id": "pack-fashion_and_apparel_retail",
     "description": "Fashion & Apparel Retail Operations Pack",
-    "imageUrl": "https://picsum.photos/seed/fashion_retail_66/1200/800",
-    "imageHint": "clothing rack"
+    "imageUrl": "https://i.postimg.cc/YSGZy34J/14-Fashion-and-Apparel-Retail-Operations-Pack.png",
+    "imageHint": "fashion retail"
   },
   {
     "id": "pack-jewelry_and_luxury_retail",
     "description": "Jewelry & Luxury Retail Pack",
-    "imageUrl": "https://i.postimg.cc/Hnr6vBRV/pink-panther1.avif",
-    "imageHint": "diamond jewelry"
+    "imageUrl": "https://i.postimg.cc/jjpmV7N3/16-Jewelry-and-Luxury-Retail-Pack.png",
+    "imageHint": "luxury jewelry"
   },
   {
     "id": "pack-electronics_showroom_pack",
     "description": "Electronics Showroom Operations Pack",
-    "imageUrl": "https://picsum.photos/seed/electronic_pro_44/1200/800",
-    "imageHint": "modern television"
+    "imageUrl": "https://i.postimg.cc/W4BCRkrf/17-Electronics-Showroom-Operations-Pack.png",
+    "imageHint": "electronics retail"
   },
   {
     "id": "pack-supermarket_grocery_retail_pack",
     "description": "Supermarket & Grocery Retail Operations Pack",
-    "imageUrl": "https://picsum.photos/seed/grocery_pro_33/1200/800",
-    "imageHint": "grocery shelf"
+    "imageUrl": "https://i.postimg.cc/d1WCk8Bx/Supermarket-and-Grocery-Retail-Operations-Pack.png",
+    "imageHint": "supermarket retail"
   },
   {
     "id": "pack-facility_management_blueprint",
     "description": "Facility Management Blueprint",
-    "imageUrl": "https://picsum.photos/seed/facility_pro_22/1200/800",
-    "imageHint": "modern skyscraper"
+    "imageUrl": "https://i.postimg.cc/cJp2qnw6/22-Facility-Management-Blueprint-Enterprise-Edition.png",
+    "imageHint": "facility management"
   },
   {
     "id": "pack-corporate_legal_compliance_starter_kit",
     "description": "Corporate Legal & Compliance Starter Kit",
-    "imageUrl": "https://picsum.photos/seed/legal_pro_11/1200/800",
-    "imageHint": "corporate boardroom"
+    "imageUrl": "https://i.postimg.cc/HxbKTk9y/Corporate-Legal-and-Compliance-Starter-Kit.png",
+    "imageHint": "corporate legal"
   },
   {
     "id": "pack-healthcare_and_hospital_operations",
     "description": "Healthcare & Hospital Operations Pack",
-    "imageUrl": "https://picsum.photos/seed/hospital_pro_00/1200/800",
-    "imageHint": "medical ward"
+    "imageUrl": "https://i.postimg.cc/7LFdv20D/20-Healthcare-and-Hospital-Operations-Pack.png",
+    "imageHint": "hospital operations"
   },
   {
     "id": "pack-pharmacy_ops_pack",
     "description": "Pharmacy Operations Pack",
-    "imageUrl": "https://picsum.photos/seed/pharmacy_pro_99/1200/800",
-    "imageHint": "pharmacy counter"
+    "imageUrl": "https://i.postimg.cc/Lscwd1LH/21-Pharmacy-Operations-Pack.png",
+    "imageHint": "pharmacy operations"
   },
   {
     "id": "pack-school_operations_pack",
     "description": "School Operations Pack",
-    "imageUrl": "https://i.postimg.cc/hGC6S2JD/school1.jpg",
-    "imageHint": "school hallway"
+    "imageUrl": "https://i.postimg.cc/1tTt1MMw/1-School-Operations-Pack.png",
+    "imageHint": "school operations"
   },
   {
     "id": "pack-university_college_ops",
     "description": "University & College Operations Pack",
-    "imageUrl": "https://i.postimg.cc/9FJnXwtj/kota-student-crisis.avif",
-    "imageHint": "university library"
+    "imageUrl": "https://i.postimg.cc/8c6CpWnY/2-University-and-College-Operations-Pack.png",
+    "imageHint": "university operations"
   },
   {
     "id": "pack-film_production_pack",
     "description": "Film & OTT Production Pack",
-    "imageUrl": "https://i.postimg.cc/ZRFZzbXT/sardar-2.webp",
-    "imageHint": "film camera"
+    "imageUrl": "https://i.postimg.cc/596nV3br/Film-Production-Operations-Pack.png",
+    "imageHint": "film production"
   },
   {
     "id": "pack-ott_platform_pack",
     "description": "OTT Streaming Platform Operations Pack",
-    "imageUrl": "https://picsum.photos/seed/data_pro_64/1200/800",
-    "imageHint": "server rack"
+    "imageUrl": "https://i.postimg.cc/Df8BTg7k/OTT-Platform-Operations-Pack.png",
+    "imageHint": "streaming operations"
   },
   {
     "id": "pack-sports_clubs_stadium_operations_pack",
     "description": "Sports Clubs & Stadium Operations Pack",
-    "imageUrl": "https://i.postimg.cc/FRWPx2PW/hillsborough-disaster2.webp",
-    "imageHint": "stadium pitch"
+    "imageUrl": "https://i.postimg.cc/xjct2R91/Sports-Clubs-and-Stadium-Operations-Pack.png",
+    "imageHint": "stadium operations"
   },
   {
     "id": "pack-cinema_operations_pack",
     "description": "Cinema & Multiplex Operations Pack",
-    "imageUrl": "https://i.postimg.cc/brgxqbnV/Uphaar-Cinema-Hall.avif",
-    "imageHint": "movie theater"
+    "imageUrl": "https://i.postimg.cc/PNn5Pxgj/Cinema-and-Multiplex-Operations-Pack.png",
+    "imageHint": "cinema operations"
   },
   {
     "id": "pack-theme_park_ops_pack",
     "description": "Theme Park Operations Pack",
-    "imageUrl": "https://i.postimg.cc/XqjWjM04/stardust-racers.webp",
-    "imageHint": "amusement ride"
+    "imageUrl": "https://i.postimg.cc/N09SP4yr/11.png",
+    "imageHint": "amusement operations"
   },
   {
     "id": "pack-logistics_warehouse_pack",
     "description": "Logistics & Warehouse Operations Pack",
-    "imageUrl": "https://i.postimg.cc/6q8MbYgW/kfc.jpg",
-    "imageHint": "warehouse shelves"
+    "imageUrl": "https://i.postimg.cc/hhRtfjkG/5-Logistics-and-Warehouse-Operations-Pack.png",
+    "imageHint": "warehouse operations"
   },
   {
     "id": "pack-manufacturing_operations_ehs_pack",
     "description": "Manufacturing Operations & EHS Pack",
-    "imageUrl": "https://i.postimg.cc/C5RcrmXp/boeing-door-plug.avif",
-    "imageHint": "factory machine"
+    "imageUrl": "https://i.postimg.cc/0jwNkmHt/4-Manufacturing-and-EHS-Pack.png",
+    "imageHint": "factory operations"
   },
   {
     "id": "pack-food_manufacturing_ops",
     "description": "Food Manufacturing Operations Pack",
-    "imageUrl": "https://picsum.photos/seed/food_pro_01/1200/800",
-    "imageHint": "food processing"
+    "imageUrl": "https://i.postimg.cc/QNH03bhP/Food-Manufacturing-Operations-Pack.png",
+    "imageHint": "food production"
   },
   {
     "id": "pack-bakery_confectionery_pack",
     "description": "Bakery & Confectionery Operations Pack",
-    "imageUrl": "https://picsum.photos/seed/bakery_pro_92/1200/800",
-    "imageHint": "bakery display"
+    "imageUrl": "https://i.postimg.cc/TwnST3JK/Bakery-and-Confectionery-Operations-Pack.png",
+    "imageHint": "bakery operations"
   },
   {
     "id": "pack-animal_shelter_pack",
     "description": "Animal Shelter Operations Pack",
-    "imageUrl": "https://picsum.photos/seed/shelter_pro_83/1200/800",
-    "imageHint": "puppy shelter"
+    "imageUrl": "",
+    "imageHint": ""
   },
   {
     "id": "pack-franchise_operations_pack",
     "description": "Franchise Operations Pack",
-    "imageUrl": "https://picsum.photos/seed/franchise_pro_74/1200/800",
-    "imageHint": "franchise storefront"
+    "imageUrl": "https://i.postimg.cc/nzV7hdvg/Franchise-Operations-Pack.png",
+    "imageHint": "franchise operations"
   },
   {
     "id": "blog-goa-fire",
