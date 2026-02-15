@@ -121,7 +121,7 @@ export function SiteHeader() {
             <nav className="ml-auto hidden md:flex gap-4 sm:gap-6 items-center">
                 {!isSalesPage && (
                     <>
-                        <Link href="/about" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>About</Link>
+                        <Link href="/about" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>About Us</Link>
                         <Link href="/library" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>SOP Library</Link>
                         <div 
                             className="group relative"
@@ -188,7 +188,7 @@ export function SiteHeader() {
                                 <Accordion type="multiple" className="w-full">
                                     <div className="border-b">
                                         <Link href="/about" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors p-2 flex" prefetch={false}>
-                                            About
+                                            About Us
                                         </Link>
                                     </div>
                                     <div className="border-b">

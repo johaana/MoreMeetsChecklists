@@ -66,7 +66,7 @@ export default function AboutPage() {
                 <section className="w-full pt-20 pb-12 md:pt-32 md:pb-24 border-b border-white/5">
                     <div className="container px-4 md:px-6">
                         <div className="max-w-4xl space-y-6">
-                            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 mb-4">OUR PHILOSOPHY</Badge>
+                            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 mb-4 uppercase tracking-widest">About Us</Badge>
                             <h1 className="text-4xl md:text-6xl font-black font-headline !leading-[1.1] text-primary-text tracking-tighter">
                                 Every business believes <br className="hidden md:block" /> it has systems. <br />
                                 <span className="text-primary italic">Until something goes wrong.</span>
