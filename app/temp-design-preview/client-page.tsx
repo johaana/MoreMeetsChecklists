@@ -91,21 +91,23 @@ const HeroContent = ({ variant }: { variant: number | string }) => {
         );
     }
 
-    if (variant === '4.1') { // V4 Variant: Split Gradient (Light Top)
+    if (variant === '4.1') { // V7: V4 + Split Gradient (Light Top)
         return (
             <div className="h-full bg-zinc-950 flex flex-col">
-                <div className="h-[45%] relative overflow-hidden">
-                    <video src={videoUrl} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover contrast-125 brightness-110" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-zinc-950" />
+                <div className="h-[50%] relative overflow-hidden">
+                    <video src={videoUrl} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover contrast-110 brightness-110" />
+                    {/* Smoother, more gradual gradient transition */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/20 to-zinc-950" />
                 </div>
                 <div className="flex-1 p-8 pt-6 space-y-6">
                     <div className="space-y-2">
-                        <h1 className="text-3xl font-black text-white leading-[0.95] tracking-tighter uppercase">{headline}</h1>
+                        <h1 className="text-3xl font-black text-white leading-tight tracking-tighter uppercase">{headline}</h1>
                         <p className="text-[10px] font-black text-red-500 uppercase tracking-widest">{urgency}</p>
                     </div>
-                    <p className="text-xs text-zinc-500 leading-relaxed font-medium">{subtext}</p>
+                    {/* text-sm matches v4 text size */}
+                    <p className="text-sm text-zinc-400 leading-relaxed font-medium">{subtext}</p>
                     <Button className="w-full h-14 bg-primary text-black font-black uppercase rounded-lg shadow-xl shadow-primary/10">
-                        ACQUIRE STANDARD <ArrowRight className="ml-2 w-4 h-4" />
+                        SECURE COMPLIANCE <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
                 </div>
             </div>
