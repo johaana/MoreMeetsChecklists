@@ -4,7 +4,6 @@
 import React from 'react';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { SectionHeadline } from '@/components/ui/section-headline';
 import { 
     AlertTriangle, 
     CheckCircle2, 
@@ -20,10 +19,15 @@ import {
     Store,
     Building2,
     Scale,
-    Lock
+    Lock,
+    Stethoscope,
+    FileWarning,
+    Briefcase
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
     <section id={id} className={cn("w-full py-16 md:py-24", className)}>
@@ -89,6 +93,7 @@ export default function AboutPage() {
                                 <MissedTaskItem text="Compliance not updated" />
                                 <MissedTaskItem text="Shift handover undocumented" />
                                 <MissedTaskItem text="Safety check assumed complete" />
+                                <MissedTaskItem text="Training step not verified" />
                             </div>
                         </div>
                         <div className="p-8 md:p-12 rounded-3xl bg-red-500/5 border border-red-500/20 space-y-6">
@@ -101,14 +106,14 @@ export default function AboutPage() {
                                     "Legal disputes", "License suspension", "Franchise conflicts", 
                                     "Insurance complications", "Brand damage", "Operational shutdown"
                                 ].map(item => (
-                                    <li key={item} className="flex items-center gap-2">
+                                    <li key={item} className="flex items-center gap-2 text-sm">
                                         <ArrowRight className="w-4 h-4 text-red-500" />
                                         {item}
                                     </li>
                                 ))}
                             </ul>
                             <p className="pt-4 text-sm text-secondary-text italic border-t border-white/10">
-                                In safety-critical industries, a single missed step can endanger lives. That is not dramatic. That is documented reality.
+                                In healthcare, manufacturing, and safety-critical industries, a single missed step can endanger lives. That is not dramatic. That is documented reality.
                             </p>
                         </div>
                     </div>
@@ -128,12 +133,12 @@ export default function AboutPage() {
                             <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01] space-y-4">
                                 <History className="w-8 h-8 text-accent" />
                                 <h4 className="text-xl font-bold text-primary-text">Dependency on Memory</h4>
-                                <p className="text-sm text-secondary-text">Critical know-how lived inside experienced staff. "Everyone thought someone else did it." When one person left, clarity left with them.</p>
+                                <p className="text-sm text-secondary-text leading-relaxed">Critical know-how lived inside experienced staff. "Everyone thought someone else did it." When one person left, clarity left with them.</p>
                             </div>
                             <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01] space-y-4">
                                 <Zap className="w-8 h-8 text-primary" />
                                 <h4 className="text-xl font-bold text-primary-text">The Lack of Control</h4>
-                                <p className="text-sm text-secondary-text">Businesses didn’t lack documents. They lacked structured, role-based, frequency-driven operational control.</p>
+                                <p className="text-sm text-secondary-text leading-relaxed">Businesses didn’t lack documents. They lacked structured, role-based, frequency-driven operational control.</p>
                             </div>
                         </div>
                     </div>
@@ -159,8 +164,8 @@ export default function AboutPage() {
                                 icon={ClipboardList} 
                             />
                             <DifferencePoint 
-                                title="Impact Awareness" 
-                                description="Explicit consequences if a task is missed, increasing intentional compliance." 
+                                title="Consequences If Missed" 
+                                description="Team understands why a step matters, turning mechanical ticking into intentional compliance." 
                                 icon={AlertTriangle} 
                             />
                             <DifferencePoint 
@@ -175,33 +180,26 @@ export default function AboutPage() {
                             />
                             <DifferencePoint 
                                 title="Institutional Memory" 
-                                description="Converts tribal knowledge into structured, transferable frameworks that stay when staff leave." 
+                                description="Converts tribal knowledge into structured frameworks that stay when staff leave." 
                                 icon={History} 
                             />
                         </div>
                     </div>
                 </Section>
 
-                {/* CORE BELIEF */}
+                {/* RESIGNATION RISK */}
                 <Section>
-                    <div className="max-w-4xl mx-auto text-center p-12 md:p-20 rounded-[3rem] bg-primary text-bg-primary space-y-8 shadow-2xl relative overflow-hidden">
-                        <div className="absolute top-0 right-0 p-10 opacity-10">
-                            <ShieldCheck className="w-64 h-64" />
-                        </div>
-                        <h2 className="text-3xl md:text-5xl font-black font-headline tracking-tighter uppercase leading-[0.9]">
-                            Our Core Belief
-                        </h2>
-                        <div className="space-y-4 text-lg md:text-xl font-bold max-w-2xl mx-auto opacity-90">
-                            <p>You cannot manually supervise everything.</p>
-                            <p>You cannot scale through reminders.</p>
-                            <p>You cannot rely on memory.</p>
-                            <p>You cannot afford preventable errors.</p>
-                        </div>
-                        <div className="pt-8 space-y-4">
-                            <p className="text-sm font-black uppercase tracking-[0.3em] opacity-60">The Mission</p>
-                            <p className="text-2xl md:text-3xl font-bold leading-tight">
-                                To protect businesses from preventable operational failure.
-                            </p>
+                    <div className="max-w-4xl mx-auto p-8 md:p-16 rounded-[2rem] border border-white/5 bg-white/[0.02] space-y-8">
+                        <div className="flex flex-col md:flex-row gap-8 items-center">
+                            <div className="space-y-4 flex-1">
+                                <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary-text">When Someone Resigns — The System Stays</h3>
+                                <p className="text-secondary-text leading-relaxed">
+                                    This is one of the biggest silent risks in operations. When experienced staff leave, unwritten shortcuts disappear and undocumented practices break. MoreMeets™ ensures the process is owned by the business, not the individual.
+                                </p>
+                            </div>
+                            <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-primary/5 flex items-center justify-center border border-primary/10">
+                                <History className="w-16 h-16 md:w-24 md:h-24 text-primary opacity-20" />
+                            </div>
                         </div>
                     </div>
                 </Section>
@@ -209,8 +207,8 @@ export default function AboutPage() {
                 {/* INDUSTRIES */}
                 <Section className="bg-alternate-background">
                     <div className="text-center mb-16 space-y-4">
-                        <h2 className="text-3xl font-bold font-headline text-primary-text">Built for Serious Environments</h2>
-                        <p className="text-secondary-text">Structured execution across high-stakes industries.</p>
+                        <h2 className="text-3xl font-bold font-headline text-primary-text">Built for Real Operational Environments</h2>
+                        <p className="text-secondary-text">Structured execution across industries where failure is not an option.</p>
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
                         {[
@@ -225,9 +223,33 @@ export default function AboutPage() {
                         ].map(industry => (
                             <div key={industry.name} className="p-6 rounded-2xl border border-white/5 bg-background flex flex-col items-center gap-4 text-center hover:border-primary/30 transition-all group">
                                 <industry.icon className="w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors" />
-                                <span className="font-bold text-primary-text">{industry.name}</span>
+                                <span className="font-bold text-primary-text text-sm md:text-base">{industry.name}</span>
                             </div>
                         ))}
+                    </div>
+                </Section>
+
+                {/* CORE BELIEF */}
+                <Section>
+                    <div className="max-w-4xl mx-auto text-center p-12 md:p-20 rounded-[3rem] bg-primary text-primary-foreground space-y-8 shadow-2xl relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-10 opacity-10">
+                            <ShieldCheck className="w-64 h-64" />
+                        </div>
+                        <h2 className="text-3xl md:text-5xl font-black font-headline tracking-tighter uppercase leading-[0.9]">
+                            Our Core Belief
+                        </h2>
+                        <div className="space-y-4 text-lg md:text-xl font-bold max-w-2xl mx-auto opacity-90">
+                            <p>You cannot manually supervise everything.</p>
+                            <p>You cannot scale through reminders.</p>
+                            <p>You cannot rely on memory.</p>
+                            <p>You cannot afford preventable errors.</p>
+                        </div>
+                        <div className="pt-8 space-y-4">
+                            <p className="text-xs font-black uppercase tracking-[0.3em] opacity-60">The Mission</p>
+                            <p className="text-2xl md:text-3xl font-bold leading-tight">
+                                To protect businesses from preventable operational failure.
+                            </p>
+                        </div>
                     </div>
                 </Section>
 
