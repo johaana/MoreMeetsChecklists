@@ -16,7 +16,8 @@ import {
     ArrowRight,
     QrCode,
     CreditCard as CardIcon,
-    ShieldCheck
+    ShieldCheck,
+    Lock
 } from 'lucide-react';
 import { Badge } from '../components/ui/badge';
 import { useToast } from '../hooks/use-toast';
@@ -86,12 +87,16 @@ const Timeline = ({ activeStep }: { activeStep: number }) => (
     <div className="mt-8 pt-5 border-t border-white/5 flex justify-between items-center px-2">
         <div className="flex flex-col gap-1 items-center">
             <span className={cn("text-[8px] font-black uppercase tracking-widest", activeStep === 1 ? "text-primary" : "text-muted-foreground opacity-40")}>1. Acquire</span>
-            {activeStep === 1 && <div className="w-full h-0.5 bg-primary rounded-full" />}
+            {activeStep === 1 && <div className="w-full h-0.5 bg-primary rounded-full mt-0.5" />}
         </div>
         <div className="h-px flex-1 bg-white/10 mx-2" />
-        <span className="text-[8px] font-black uppercase text-muted-foreground opacity-40 tracking-widest">2. Deliver</span>
+        <div className="flex flex-col gap-1 items-center">
+            <span className={cn("text-[8px] font-black uppercase tracking-widest text-muted-foreground opacity-40")}>2. Deliver</span>
+        </div>
         <div className="h-px flex-1 bg-white/10 mx-2" />
-        <span className="text-[8px] font-black uppercase text-muted-foreground opacity-40 tracking-widest">3. Tailor</span>
+        <div className="flex flex-col gap-1 items-center">
+            <span className={cn("text-[8px] font-black uppercase tracking-widest text-muted-foreground opacity-40")}>3. Tailor</span>
+        </div>
     </div>
 );
 
@@ -111,7 +116,7 @@ const IndiaMethods = () => (
                 <span className="text-[8px] font-black uppercase">NETBANKING</span>
             </div>
         </div>
-        <p className="text-[10px] text-muted-foreground font-medium italic">Secure checkout via Razorpay</p>
+        <p className="text-[10px] text-muted-foreground font-medium italic">Tax Invoice provided for GST input credit</p>
     </div>
 );
 
@@ -142,13 +147,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const [region, setRegion] = React.useState<'GLOBAL' | 'INDIA'>(hasUSD ? 'GLOBAL' : 'INDIA');
     
     const totalChecklists = pack.checklists?.length || 0;
-    const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
 
     const coreBenefits = [
-        { title: "Instant Excel Delivery", subText: "Fully editable professional .xlsx file" },
-        { title: "100% Offline Use", subText: "Internal data privacy & security" },
-        { title: "Unlimited Internal Rights", subText: "Deploy across your entire organization" },
-        { title: "1 Free Customization", subText: "Tailored to your specific brand/workflow" }
+        { title: "Instant Excel Delivery", subText: "Fully editable professional .xlsx file", iconColor: "text-primary" },
+        { title: "100% Offline Use", subText: "Internal data privacy & zero exposure", iconColor: "text-primary" },
+        { title: "Unlimited Internal Rights", subText: "Deploy across your entire organization", iconColor: "text-primary" },
+        { title: "1 Free Customization", subText: "The 'Gold Standard' tailoring service", iconColor: "text-accent" }
     ];
 
     if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
@@ -223,8 +227,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <CardContent className="flex-1 p-8 flex flex-col space-y-8">
                             <div className="space-y-5 bg-white/[0.02] p-6 rounded-2xl border border-white/5">
                                 {coreBenefits.map((item, i) => (
-                                    <div key={i} className="flex items-start gap-4">
-                                        <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                                    <div key={i} className="flex items-start gap-4 group">
+                                        <Check className={cn("w-5 h-5 mt-0.5 shrink-0", item.iconColor)} />
                                         <div className="space-y-0.5">
                                             <p className="text-sm font-bold text-primary-text leading-tight">{item.title}</p>
                                             <p className="text-xs text-muted-foreground leading-tight">{item.subText}</p>
