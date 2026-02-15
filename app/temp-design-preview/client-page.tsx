@@ -81,7 +81,7 @@ const HeroContent = ({ variant }: { variant: number | string }) => {
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-950" />
                 </div>
                 <div className="flex-1 p-8 pt-4 space-y-6">
-                    <h1 className="text-3xl font-black text-white leading-tight tracking-tighter">{headline}</h1>
+                    <h1 className="text-3xl font-black text-white leading-tight tracking-tighter uppercase">{headline}</h1>
                     <p className="text-sm text-zinc-400 leading-relaxed">{subtext}</p>
                     <Button className="w-full h-14 bg-primary text-black font-black uppercase rounded-none tracking-widest">
                         ACQUIRE STANDARD <ArrowRight className="ml-2 w-4 h-4" />
@@ -99,9 +99,11 @@ const HeroContent = ({ variant }: { variant: number | string }) => {
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/20 to-zinc-950" />
                 </div>
                 <div className="flex-1 p-8 pt-6 space-y-6">
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                         <h1 className="text-3xl font-black text-white leading-tight tracking-tighter uppercase">{headline}</h1>
-                        <p className="text-[10px] font-black text-red-500 uppercase tracking-widest">{urgency}</p>
+                        <p className="text-xs font-bold text-red-500 uppercase tracking-widest border-y border-red-500/20 py-2 inline-block">
+                            {urgency}
+                        </p>
                     </div>
                     <p className="text-sm text-zinc-400 leading-relaxed font-medium">{subtext}</p>
                     <Button className="w-full h-14 bg-primary text-black font-black uppercase rounded-lg shadow-xl shadow-primary/10">
