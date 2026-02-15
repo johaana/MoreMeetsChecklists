@@ -246,10 +246,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         <div className="flex items-center gap-2">
                                             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                                             <p className="text-[10px] text-primary font-black uppercase tracking-[0.15em] leading-none">
-                                                OWN AUDIT-READY ASSET
+                                                LIFETIME ORGANIZATION LICENSE
                                             </p>
                                         </div>
-                                        <p className="text-[9px] text-muted-foreground uppercase font-black tracking-widest">• Unlimited Internal Rights</p>
+                                        <p className="text-[9px] text-muted-foreground uppercase font-black tracking-widest">• Unlimited Internal Deployment</p>
                                     </div>
                                 </div>
 
