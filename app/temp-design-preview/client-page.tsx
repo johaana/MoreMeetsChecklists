@@ -2,7 +2,7 @@
 'use client';
 
 import React from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { 
@@ -18,10 +18,16 @@ import {
     ShieldAlert,
     PackageCheck,
     Lock,
-    Medal
+    Medal,
+    Shield,
+    Banknote,
+    Trophy,
+    UserCheck,
+    Search
 } from 'lucide-react';
 import { RazorpayButton } from '@/components/ui/razorpay-button';
 import { Button } from '@/components/ui/button';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Section = ({ className, id, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
     <section id={id} className="w-full py-16 md:py-24 border-b border-white/5" {...props} />
@@ -60,7 +66,7 @@ const BenefitList = ({ items, type }: { items: any[], type: 'bullet' | 'green-ch
                     {type === 'green-check' && <Check className="w-4 h-4 text-primary" />}
                     {type === 'gold-check' && <Check className="w-4 h-4 text-accent" />}
                     {type === 'mixed-check' && (
-                        i === 2 ? <Check className="w-4 h-4 text-accent" /> : <Check className="w-4 h-4 text-primary" />
+                        i === 3 ? <Check className="w-4 h-4 text-accent" /> : <Check className="w-4 h-4 text-primary" />
                     )}
                 </div>
                 <div className="space-y-0.5">
@@ -73,12 +79,15 @@ const BenefitList = ({ items, type }: { items: any[], type: 'bullet' | 'green-ch
 );
 
 const Timeline = ({ activeStep }: { activeStep: number }) => (
-    <div className="mt-10 pt-5 border-t border-white/5 flex justify-between items-center">
-        <span className={cn("text-[7px] font-black uppercase transition-colors tracking-widest", activeStep === 1 ? "text-primary" : "text-muted-foreground opacity-40")}>1. Acquire</span>
+    <div className="mt-8 pt-5 border-t border-white/5 flex justify-between items-center">
+        <div className="flex flex-col gap-1 items-center">
+            <span className={cn("text-[7px] font-black uppercase tracking-widest", activeStep === 1 ? "text-primary" : "text-muted-foreground opacity-40")}>1. Acquire</span>
+            {activeStep === 1 && <div className="w-full h-0.5 bg-primary rounded-full" />}
+        </div>
         <div className="h-px flex-1 bg-white/10 mx-2" />
-        <span className={cn("text-[7px] font-black uppercase transition-colors tracking-widest", activeStep === 2 ? "text-primary" : "text-muted-foreground opacity-40")}>2. Deliver</span>
+        <span className="text-[7px] font-black uppercase text-muted-foreground opacity-40 tracking-widest">2. Deliver</span>
         <div className="h-px flex-1 bg-white/10 mx-2" />
-        <span className={cn("text-[7px] font-black uppercase transition-colors tracking-widest", activeStep === 3 ? "text-primary" : "text-muted-foreground opacity-40")}>3. Tailor</span>
+        <span className="text-[7px] font-black uppercase text-muted-foreground opacity-40 tracking-widest">3. Tailor</span>
     </div>
 );
 
@@ -98,7 +107,7 @@ const IndiaMethods = () => (
                 <span className="text-[7px] font-black uppercase">NETBANKING</span>
             </div>
         </div>
-        <p className="text-[9px] text-muted-foreground font-medium italic">Supports GPay, PhonePe, Paytm, UPI & All Indian Cards</p>
+        <p className="text-[9px] text-muted-foreground font-medium italic">Supports GPay, PhonePe, Paytm & All Indian Cards</p>
     </div>
 );
 
@@ -128,9 +137,20 @@ export default function TempDesignClientPage() {
     const coreBenefits = [
         { title: "Instant Excel Delivery", subText: "Fully editable professional .xlsx file" },
         { title: "100% Offline Use", subText: "Internal data privacy & security" },
-        { title: "1 Free Customization", subText: "Tailored to your specific brand/workflow" },
-        { title: "Lifetime Access", subText: "One-time purchase, all future updates" }
+        { title: "Unlimited Internal Rights", subText: "Deploy across your entire organization" },
+        { title: "1 Free Customization", subText: "Tailored to your specific brand/workflow" }
     ];
+
+    const CurrencySelector = () => (
+        <div className="flex justify-center mb-6">
+            <Tabs value={region} onValueChange={(v) => setRegion(v as any)} className="w-full max-w-[200px]">
+                <TabsList className="grid w-full grid-cols-2 bg-white/5 border border-white/10 h-8">
+                    <TabsTrigger value="GLOBAL" className="text-[10px] font-black uppercase">USD ($)</TabsTrigger>
+                    <TabsTrigger value="INDIA" className="text-[10px] font-black uppercase">INR (₹)</TabsTrigger>
+                </TabsList>
+            </Tabs>
+        </div>
+    );
 
     return (
         <main className="flex-1 pb-20" style={{ backgroundColor: 'hsl(var(--bg-primary))' }}>
@@ -140,62 +160,39 @@ export default function TempDesignClientPage() {
                     <div className="text-center max-w-4xl mx-auto space-y-6">
                         <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 mb-2">
                             <Zap className="w-4 h-4 text-primary" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">V9.3 Intelligent Gateway Lab</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">V9.4 Global Asset Lab</span>
                         </div>
-                        <SectionHeadline>Global Anchoring. Executive Verification.</SectionHeadline>
+                        <SectionHeadline>Improvised B2B Procurement Hubs.</SectionHeadline>
                         <p className="text-xl max-w-2xl mx-auto" style={{color: 'hsl(var(--text-secondary))'}}>
-                           Comparing baseline bullets vs authority green vs mixed elite gold verification signals.
+                           Testing per-card currency conversion, chasing border glow, and institutional seal framing.
                         </p>
-                        
-                        {/* GLOBAL REGION SELECTOR */}
-                        <div className="flex flex-col justify-center items-center gap-4 pt-8">
-                            <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">Select Payment Region</span>
-                            <div className="flex p-1 bg-white/5 rounded-xl border border-white/10 shadow-2xl">
-                                <button 
-                                    onClick={() => setRegion('GLOBAL')}
-                                    className={cn(
-                                        "flex items-center gap-2 px-6 py-2.5 rounded-lg text-[11px] font-black uppercase tracking-tighter transition-all",
-                                        region === 'GLOBAL' ? "bg-primary text-bg-primary shadow-lg" : "text-muted-foreground hover:text-primary-text"
-                                    )}
-                                >
-                                    <span className="text-base leading-none">🌎</span> Global Pipe
-                                </button>
-                                <button 
-                                    onClick={() => setRegion('INDIA')}
-                                    className={cn(
-                                        "flex items-center gap-2 px-6 py-2.5 rounded-lg text-[11px] font-black uppercase tracking-tighter transition-all",
-                                        region === 'INDIA' ? "bg-primary text-bg-primary shadow-lg" : "text-muted-foreground hover:text-primary-text"
-                                    )}
-                                >
-                                    <span className="text-base leading-none">🇮🇳</span> India Pipe
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </Section>
 
             {/* VARIATIONS GRID */}
-            <Section id="variations" className="bg-alternate-background/20">
+            <Section id="variations" className="bg-alternate-background/20 border-none">
                 <div className="container px-4 md:px-6">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto items-start">
                         
-                        {/* 9.1 Baseline: The Elite Asset */}
+                        {/* 9.1 Improvised: The Institutional Standard */}
                         <ConceptCard 
                             title="Variation 9.1" 
-                            subtitle="Baseline: Institutional Hub"
-                            badge="Premium Asset"
+                            subtitle="Institutional Hub"
+                            badge="Certified Standard"
                             variant="highlight"
                         >
+                            <CurrencySelector />
                             <div className="flex-1 flex flex-col space-y-6">
                                 <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-5 relative overflow-hidden">
                                     <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                                        <p className="text-[9px] font-black uppercase text-primary tracking-widest flex items-center gap-2">
-                                            <Award className="w-3 h-3" /> Elite Specifications
-                                        </p>
+                                        <div className="flex items-center gap-2">
+                                            <Shield className="w-4 h-4 text-primary" />
+                                            <p className="text-[10px] font-black uppercase text-primary tracking-widest">Elite Specification</p>
+                                        </div>
                                         <div className="flex gap-1">
-                                            <span className="text-[7px] font-black bg-white/5 px-1.5 py-0.5 rounded text-muted-foreground uppercase">ISO</span>
-                                            <span className="text-[7px] font-black bg-white/5 px-1.5 py-0.5 rounded text-muted-foreground uppercase">OSHA</span>
+                                            <span className="text-[7px] font-black bg-primary/20 text-primary px-1.5 py-0.5 rounded uppercase">ISO-9001</span>
+                                            <span className="text-[7px] font-black bg-primary/20 text-primary px-1.5 py-0.5 rounded uppercase">OSHA</span>
                                         </div>
                                     </div>
                                     <BenefitList items={coreBenefits} type="bullet" />
@@ -206,39 +203,42 @@ export default function TempDesignClientPage() {
                                         <p className="text-4xl font-black text-primary-text tracking-tighter">
                                             {region === 'INDIA' ? '₹5,999' : '$79'}
                                         </p>
-                                        <p className="text-[8px] text-muted-foreground font-black uppercase mt-1 tracking-widest leading-none">
-                                            Lifetime Organization License • Unlimited Internal Rights
+                                        <p className="text-[8px] text-primary font-black uppercase mt-1 tracking-[0.15em] leading-none">
+                                            LIFETIME ORGANIZATION LICENSE
                                         </p>
                                     </div>
                                     
                                     {region === 'INDIA' ? (
-                                        <>
+                                        <div className="space-y-4">
                                             <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" />
                                             <IndiaMethods />
-                                        </>
+                                        </div>
                                     ) : (
-                                        <>
-                                            <Button className="w-full h-14 bg-primary text-bg-primary font-black uppercase text-xs rounded-xl shadow-xl hover:bg-primary/90">
-                                                Procure Asset (USD) <ArrowRight className="ml-2 w-4 h-4"/>
+                                        <div className="space-y-4">
+                                            <Button className="w-full h-14 bg-primary text-bg-primary font-black uppercase text-xs rounded-xl shadow-xl hover:bg-primary/90 transition-all active:scale-95">
+                                                PROCURE ASSET <ArrowRight className="ml-2 w-4 h-4"/>
                                             </Button>
                                             <GlobalMethods />
-                                        </>
+                                        </div>
                                     )}
                                     <Timeline activeStep={1} />
                                 </div>
                             </div>
                         </ConceptCard>
 
-                        {/* 9.2 Refinement A: Green Authority */}
+                        {/* 9.2 Improvised: Authority Confidence */}
                         <ConceptCard 
                             title="Variation 9.2" 
-                            subtitle="Authority: Green Checkmarks"
+                            subtitle="Authority Trail"
                         >
+                            <CurrencySelector />
                             <div className="flex-1 flex flex-col space-y-6">
                                 <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-5">
                                     <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                                        <p className="text-[9px] font-black uppercase text-primary tracking-widest">Verified Standards</p>
-                                        <ShieldCheck className="w-3 h-3 text-primary" />
+                                        <p className="text-[10px] font-black uppercase text-primary tracking-widest flex items-center gap-2">
+                                            <UserCheck className="w-3.5 h-3.5" /> Verified Framework
+                                        </p>
+                                        <ShieldCheck className="w-4 h-4 text-primary" />
                                     </div>
                                     <BenefitList items={coreBenefits} type="green-check" />
                                 </div>
@@ -248,39 +248,40 @@ export default function TempDesignClientPage() {
                                         <p className="text-4xl font-black text-primary-text tracking-tighter">
                                             {region === 'INDIA' ? '₹5,999' : '$79'}
                                         </p>
-                                        <p className="text-[8px] text-muted-foreground font-black uppercase mt-1 tracking-widest leading-none">Lifetime Organization License • Unlimited Internal Rights</p>
+                                        <p className="text-[8px] text-muted-foreground font-black uppercase mt-1 tracking-widest leading-none">Unlimited Internal Deployment Rights</p>
                                     </div>
 
                                     {region === 'INDIA' ? (
-                                        <>
+                                        <div className="space-y-4">
                                             <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" />
                                             <IndiaMethods />
-                                        </>
+                                        </div>
                                     ) : (
-                                        <>
-                                            <Button className="w-full h-14 bg-primary text-bg-primary font-black uppercase text-xs rounded-xl hover:bg-primary/90">
-                                                Unlock Asset Path
+                                        <div className="space-y-4">
+                                            <Button className="w-full h-14 bg-primary text-bg-primary font-black uppercase text-xs rounded-xl hover:bg-primary/90 transition-all active:scale-95">
+                                                UNLOCK ASSET PATH
                                             </Button>
                                             <GlobalMethods />
-                                        </>
+                                        </div>
                                     )}
                                     <Timeline activeStep={1} />
                                 </div>
                             </div>
                         </ConceptCard>
 
-                        {/* 9.3 Refinement B: Mixed Gold Path */}
+                        {/* 9.3 Improvised: Elite Premium */}
                         <ConceptCard 
                             title="Variation 9.3" 
-                            subtitle="Mixed: Elite Gold Standard"
+                            subtitle="Elite Gold Standard"
                         >
+                            <CurrencySelector />
                             <div className="flex-1 flex flex-col space-y-6">
                                 <div className="p-5 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent border border-accent/20 space-y-5">
                                     <div className="flex justify-between items-center border-b border-accent/10 pb-3">
-                                        <p className="text-[9px] font-black uppercase text-accent tracking-widest flex items-center gap-2">
-                                            <Medal className="w-3 h-3" /> Elite Specifications
+                                        <p className="text-[10px] font-black uppercase text-accent tracking-widest flex items-center gap-2">
+                                            <Trophy className="w-3.5 h-3.5" /> Gold Specification
                                         </p>
-                                        <Award className="w-3 h-3 text-accent" />
+                                        <Award className="w-4 h-4 text-accent" />
                                     </div>
                                     <BenefitList items={coreBenefits} type="mixed-check" />
                                 </div>
@@ -294,15 +295,20 @@ export default function TempDesignClientPage() {
                                     </div>
 
                                     {region === 'INDIA' ? (
-                                        <>
+                                        <div className="space-y-4">
                                             <RazorpayButton paymentId="pl_RaWEBHhFLQENxC" />
                                             <IndiaMethods />
-                                        </>
+                                        </div>
                                     ) : (
-                                        <>
-                                            <Button className="w-full h-14 bg-white text-black font-black uppercase rounded-xl hover:bg-white/90">Secure Checkout</Button>
+                                        <div className="space-y-4">
+                                            <Button 
+                                                className="w-full h-14 bg-white text-black font-black uppercase rounded-xl hover:bg-white/90 transition-all active:scale-95 chasing-border-button"
+                                                style={{'--chasing-color': 'hsl(var(--accent))'} as any}
+                                            >
+                                                SECURE CHECKOUT
+                                            </Button>
                                             <GlobalMethods />
-                                        </>
+                                        </div>
                                     )}
                                     <Timeline activeStep={1} />
                                 </div>
@@ -318,27 +324,27 @@ export default function TempDesignClientPage() {
                 <div className="container px-4 md:px-6">
                     <div className="max-w-5xl mx-auto p-10 rounded-[2.5rem] border-2 border-dashed border-primary/20 bg-surface-card/50 relative overflow-hidden">
                         <h3 className="text-2xl md:text-3xl font-bold mb-8 flex items-center gap-4 text-primary">
-                            <PackageCheck className="text-accent w-8 h-8" /> V9.3 Visual Authority Evolution:
+                            <Search className="text-accent w-8 h-8" /> V9.4 Optimization Audit:
                         </h3>
                         <div className="grid md:grid-cols-2 gap-12 text-base text-secondary-text">
                             <div className="space-y-6">
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">1. The Mixed-Icon Psychology (9.3)</p>
-                                    <p className="leading-relaxed">Variation 9.3 uses Authority Green for technical specs and Premium Gold for the "1 Free Customization." This tells the user that the software is reliable, but the human service is elite.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">1. Integrated Currency Logic</p>
+                                    <p className="leading-relaxed">By moving the converter into each card, we treat the currency choice as part of the specific "product fit" discovery, rather than a global setting. This feels more helpful and less like a configuration step.</p>
                                 </div>
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">2. Baseline Continuity (9.1)</p>
-                                    <p className="leading-relaxed">Variation 9.1 is preserved as the clean control version, using neutral bullets to let the "Elite Specifications" copy do the work.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">2. Visual Tension (9.3)</p>
+                                    <p className="leading-relaxed">Variation 9.3 uses the <code>chasing-border-button</code> logic to create a subtle gold glow. This provides "Visual Weight" to the CTA without using loud, flashing animations.</p>
                                 </div>
                             </div>
                             <div className="space-y-6">
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">3. Global-First Default</p>
-                                    <p className="leading-relaxed">All variations now load with the $79 anchor, establishing the international value before allowing the user to discover their localized Indian path.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">3. Monochromatic B2B Discipline</p>
+                                    <p className="leading-relaxed">All versions have been tightened to a "Discipline-First" monochromatic palette. We only use color (Green/Gold) when it signals a high-value specification or trust mark.</p>
                                 </div>
                                 <div className="space-y-2">
-                                    <p className="text-primary-text font-headline font-bold text-lg">4. Licensing Clarity</p>
-                                    <p className="leading-relaxed">Replaced "Single License" with "Lifetime Organization License" across all variants to better align with the B2B procurement mindset.</p>
+                                    <p className="text-primary-text font-headline font-bold text-lg">4. Rights-Based Value</p>
+                                    <p className="leading-relaxed">Included "Unlimited Internal Rights" as a core specification. In B2B, buying the right to *use* the asset is as important as the asset itself.</p>
                                 </div>
                             </div>
                         </div>
