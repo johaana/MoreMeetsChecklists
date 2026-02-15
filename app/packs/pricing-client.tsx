@@ -249,7 +249,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                                 LIFETIME ORGANIZATION LICENSE
                                             </p>
                                         </div>
-                                        <p className="text-[9px] text-muted-foreground uppercase font-black tracking-widest">• Unlimited Internal Deployment</p>
+                                        <p className="text-[9px] text-muted-foreground uppercase font-black tracking-widest">• Unlimited Deployment + All Future Versions</p>
                                     </div>
                                 </div>
 
