@@ -5,7 +5,7 @@ import * as React from 'react';
 import type { PremiumPack } from '../lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '../components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '../components/ui/card';
 import { 
     Check, 
     Download, 
@@ -149,10 +149,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const totalChecklists = pack.checklists?.length || 0;
 
     const coreBenefits = [
-        { title: "Instant Excel Delivery", subText: "Fully editable professional .xlsx file", iconColor: "text-primary" },
-        { title: "100% Offline Use", subText: "Internal data privacy & zero exposure", iconColor: "text-primary" },
-        { title: "Unlimited Internal Rights", subText: "Deploy across your entire organization", iconColor: "text-primary" },
-        { title: "1 Free Customization", subText: "The 'Gold Standard' tailoring service", iconColor: "text-primary" }
+        { title: "Instant Excel Delivery", subText: "Fully editable professional .xlsx file" },
+        { title: "100% Offline Use", subText: "Internal data privacy & zero exposure" },
+        { title: "Unlimited Internal Rights", subText: "Deploy across your entire organization" },
+        { title: "1 Free Customization", subText: "Tailored to your specific brand/workflow" }
     ];
 
     if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
@@ -218,7 +218,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <div className="w-full flex justify-between items-center mb-2">
                                 <div className="flex items-center gap-2">
                                     <Shield className="w-4 h-4 text-primary" />
-                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">INSTITUTIONAL STANDARD</span>
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">COMPLIANCE GRADE</span>
                                 </div>
                                 <Badge variant="outline" className="text-[9px] font-black border-primary/30 text-primary">AUDIT READY</Badge>
                             </div>
@@ -228,7 +228,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <div className="space-y-5 bg-white/[0.02] p-6 rounded-2xl border border-white/5">
                                 {coreBenefits.map((item, i) => (
                                     <div key={i} className="flex items-start gap-4 group">
-                                        <Check className={cn("w-5 h-5 mt-0.5 shrink-0", item.iconColor)} />
+                                        <Check className="w-5 h-5 mt-0.5 shrink-0 text-primary" />
                                         <div className="space-y-0.5">
                                             <p className="text-sm font-bold text-primary-text leading-tight">{item.title}</p>
                                             <p className="text-xs text-muted-foreground leading-tight">{item.subText}</p>
@@ -246,7 +246,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         <div className="flex items-center gap-2">
                                             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                                             <p className="text-[10px] text-primary font-black uppercase tracking-[0.15em] leading-none">
-                                                LIFETIME ORGANIZATION LICENSE
+                                                OWN AUDIT-READY ASSET
                                             </p>
                                         </div>
                                         <p className="text-[9px] text-muted-foreground uppercase font-black tracking-widest">• Unlimited Internal Rights</p>
