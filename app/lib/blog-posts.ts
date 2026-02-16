@@ -20,6 +20,91 @@ const getImageHint = (id: string) => images.find(img => img.id === id)?.imageHin
 
 export const blogPosts: BlogPost[] = [
     {
+      slug: 'the-day-the-process-left-with-him',
+      title: "The Day the Process Left With Him",
+      publishedDate: "2026-02-16",
+      author: "MoreMeets Team",
+      tags: ["Operations", "Risk Management", "HR", "Institutional Memory"],
+      imageUrl: getImageUrl('blog-resignation'),
+      imageHint: getImageHint('blog-resignation'),
+      description: "When a key employee resigns, does your process leave with them? Deconstructing the hidden cost of personality-dependent operations.",
+      content: `
+        <p class="lead">When Raj resigned, nothing seemed wrong. He had been the operations manager for eight years. He knew the vendors. He handled inspections calmly. He always “just knew” what to check before audits. He remembered which regulator preferred what documentation format.</p>
+        <p>There was a 120-page SOP manual in the shared drive. Everyone believed the system was safe. Three months later, the first inspection happened without him. Two temperature logs were incomplete. A compliance file was outdated. A cleaning schedule had gaps. No one knew the specific escalation procedure he used to follow.</p>
+        <p>The audit report wasn’t catastrophic — but it wasn’t clean either. And suddenly the leadership team realized something uncomfortable: <strong>The real process had lived inside Raj.</strong></p>
+        
+        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">This Isn’t Rare. It’s Common.</h3>
+        <p>Across industries, turnover has remained elevated since 2022. Gallup continues to report disengagement levels that directly correlate with resignations. Most companies calculate the cost of replacing an employee. Few calculate the cost of losing operational knowledge.</p>
+        <p>McKinsey estimates replacing skilled employees can cost up to 2x their annual salary. But what about the compliance gaps? The safety oversights? The audit risks? The operational slowdown? Those don’t appear in HR metrics. They show up later — quietly.</p>
+        
+        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">Healthcare Learned This the Hard Way</h3>
+        <p>The Joint Commission has repeatedly identified communication breakdown during handoffs as a major contributor to serious safety events. Not because hospitals lack policies. Because execution consistency varies between people. One nurse double-checks. Another assumes. One supervisor escalates. Another postpones.</p>
+        <p>When processes aren’t embedded structurally, outcomes depend on personality. And personality is not a system.</p>
+        
+        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">The Real Question</h3>
+        <p>If your most experienced employee resigns tomorrow — will your standards remain identical next month? Or will they drift? Institutional memory should not depend on individuals. It should be embedded in clearly defined roles, frequency-based task mapping, and trainer-guided onboarding.</p>
+        <p>Resignations are inevitable. Operational fragility is optional.</p>
+        <div class="embedded-cta">
+          Stop relying on memory. Explore our <strong><a href="/library">Complete SOP Library</a></strong> to build institutional continuity today.
+        </div>
+      `
+    },
+    {
+      slug: 'chipotle-25-million-food-safety-fine',
+      title: "The $25 Million Lesson in a Missed Step",
+      publishedDate: "2026-02-16",
+      author: "MoreMeets Team",
+      tags: ["Food Safety", "Restaurants", "Compliance", "Risk Management"],
+      relatedPackId: "restaurants",
+      imageUrl: getImageUrl('blog-chipotle'),
+      imageHint: getImageHint('blog-chipotle'),
+      description: "How a small missed temperature log cost Chipotle $25 million and brand trust. A deep dive into operational drift and the difference between policy and protection.",
+      content: `
+        <p class="lead">In 2015, customers at several Chipotle locations began reporting illness. Within months, over 1,100 people were affected across multiple states. Stores were closed. Investigations began. The brand’s stock dropped significantly.</p>
+        <p>In 2020, Chipotle agreed to pay a $25 million federal fine related to food safety violations — one of the largest ever in a food safety case. <strong>The issue wasn’t lack of food safety knowledge. It was a breakdown in consistent process execution.</strong></p>
+        
+        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">How Outbreaks Really Begin</h3>
+        <p>Food safety failures rarely start dramatically. They begin quietly: A temperature log skipped during a busy shift. A refrigeration check assumed complete. A cleaning checklist signed without verification. A supplier deviation not escalated.</p>
+        <p>The CDC estimates 48 million Americans suffer foodborne illnesses annually. Behind many outbreaks, investigators find the same pattern: Procedures existed. Execution drifted.</p>
+        
+        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">Drift Is the Real Enemy</h3>
+        <p>In food operations, even a small temperature deviation — just a few degrees — can accelerate bacterial growth. When daily logs are not assigned clear ownership, reviewed systematically, or tied to consequences, they become routine paperwork. And routine paperwork becomes complacency. Until it becomes a headline.</p>
+        
+        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">The Difference Between Policy and Protection</h3>
+        <p>Many restaurants have HACCP frameworks. But HACCP on paper is not protection. Protection comes from defined responsibility, daily discipline, and evidence retention. Food safety is not about avoiding fines. It’s about preventing harm. And preventing harm starts with structured execution — not good intentions.</p>
+        <div class="embedded-cta">
+          Protect your brand and your guests. Get the <strong><a href="/packs/restaurants">Restaurant Operations Pack</a></strong> for a complete, audit-ready HACCP framework.
+        </div>
+      `
+    },
+    {
+      slug: 'aviation-discipline-the-sacred-checklist',
+      title: "A Door Plug at 16,000 Feet: Why Verification Is Sacred",
+      publishedDate: "2026-02-16",
+      author: "MoreMeets Team",
+      tags: ["Manufacturing", "Aviation", "Quality Control", "Checklists"],
+      relatedPackId: "manufacturing_operations_ehs_pack",
+      imageUrl: getImageUrl('blog-boeing'),
+      imageHint: getImageHint('blog-boeing'),
+      description: "The Boeing 737 MAX door plug blowout was a verification failure. Learn why aviation discipline is the gold standard for operational safety across all industries.",
+      content: `
+        <p class="lead">In early 2024, Alaska Airlines Flight 1282 experienced a mid-air incident when a door plug detached from a Boeing 737 MAX 9 shortly after takeoff. The aircraft made an emergency landing. Passengers survived. The aviation world froze. Investigations pointed toward issues in assembly and verification processes.</p>
+        <p>In aviation, checklists are sacred. And yet, when verification layers weaken, even highly regulated industries experience failure. <strong>The hundred-and-first time you perform a task is the one that matters most.</strong></p>
+        
+        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">Why Aviation Relies on Checklists</h3>
+        <p>Pilots use pre-flight checklists every time — even after thousands of flights. Not because they don’t know what to do. Because humans are fallible. The World Health Organization introduced its Surgical Safety Checklist after studies showed structured checklists reduced surgical complications and mortality by more than 30%. Not better surgeons. Better systems.</p>
+        
+        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">The Cost of Missing One Verification</h3>
+        <p>In aviation, a missed step risks lives immediately. In other industries, consequences accumulate: Fines, brand erosion, regulatory scrutiny, and customer distrust. The timeline is slower, but the damage is just as real. Post-incident investigations almost always reveal: The procedure existed, but ownership wasn’t clear and verification wasn’t structured.</p>
+        
+        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">The Bigger Pattern Across 2025–26</h3>
+        <p>As operations grow more complex, regulations tighten and public scrutiny spreads instantly. Operational resilience is no longer optional. It is structural. The organizations that survive turbulence are not the smartest; they are the most systemized. Because memory is not a safeguard. Structure is.</p>
+        <div class="embedded-cta">
+          Implement aviation-grade discipline in your plant. Download the <strong><a href="/packs/manufacturing_operations_ehs_pack">Manufacturing Operations & EHS Pack</a></strong> today.
+        </div>
+      `
+    },
+    {
       slug: 'goa-romeo-lane-birch-fire-safety-sop',
       title: "🔥 25 Lives Lost in Goa. A Data-Driven Analysis of India’s Latest SOP Failure.",
       publishedDate: "2025-12-07",
@@ -107,7 +192,7 @@ export const blogPosts: BlogPost[] = [
         </div>
         <div class="intervention-box">
           <h4>6. Independent Safety Officer Sign-Off</h4>
-          <p>An independent safety officer must have the ultimate authority to stop the stunt at any time. This "stop-work authority" is the final and most important safety net, removing creative pressure.</p>
+          <p>An independent safety officer must have the ultimate authority to stop the stunt at any time. This "stop-work authority" is the final and most important safety net, removing the creative pressure.</p>
         </div>
         <div class="intervention-box">
           <h4>7. Post-Stunt Post-Mortem</h4>

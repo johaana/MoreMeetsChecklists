@@ -63,7 +63,7 @@
   {
     "id": "pack-pharmacy_ops_pack",
     "description": "Pharmacy Operations Pack",
-    "imageUrl": "https://i.postimg.cc/Lscwd1LH/21-Pharmacy-Operations-Pack.png",
+    "imageUrl": "https://i.postimg.cc/Lscwd1LF/21-Pharmacy-Operations-Pack.png",
     "imageHint": "pharmacy operations"
   },
   {
@@ -161,5 +161,17 @@
     "description": "Deepfake Fraud Analysis",
     "imageUrl": "https://i.postimg.cc/90DLgJK4/deepfake-web.webp",
     "imageHint": "digital security"
+  },
+  {
+    "id": "blog-resignation",
+    "description": "The Day Process Left",
+    "imageUrl": "https://picsum.photos/seed/resign/1200/630",
+    "imageHint": "empty office"
+  },
+  {
+    "id": "blog-chipotle",
+    "description": "Chipotle Food Safety",
+    "imageUrl": "https://picsum.photos/seed/chipotle/1200/630",
+    "imageHint": "restaurant kitchen"
   }
 ]
