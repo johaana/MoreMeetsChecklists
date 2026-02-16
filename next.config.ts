@@ -4,6 +4,16 @@ const nextConfig: NextConfig = {
   /* config options here */
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.postimg.cc',
+      },
+    ],
   },
 };
 
