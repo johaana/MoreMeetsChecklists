@@ -133,45 +133,9 @@
     "imageHint": "bakery operations"
   },
   {
-    "id": "pack-animal_shelter_pack",
-    "description": "Animal Shelter Operations Pack",
-    "imageUrl": "",
-    "imageHint": ""
-  },
-  {
     "id": "pack-franchise_operations_pack",
     "description": "Franchise Operations Pack",
     "imageUrl": "https://i.postimg.cc/nzV7hdvg/Franchise-Operations-Pack.png",
     "imageHint": "franchise operations"
-  },
-  {
-    "id": "blog-goa-fire",
-    "description": "Goa Fire Analysis",
-    "imageUrl": "https://i.postimg.cc/vTtRNZ5W/arpora2-birch.webp",
-    "imageHint": "fire emergency"
-  },
-  {
-    "id": "blog-boeing",
-    "description": "Boeing QC Issues",
-    "imageUrl": "https://i.postimg.cc/C5RcrmXp/boeing-door-plug.avif",
-    "imageHint": "airplane assembly"
-  },
-  {
-    "id": "blog-deepfake",
-    "description": "Deepfake Fraud Analysis",
-    "imageUrl": "https://i.postimg.cc/90DLgJK4/deepfake-web.webp",
-    "imageHint": "digital security"
-  },
-  {
-    "id": "blog-resignation",
-    "description": "The Day Process Left",
-    "imageUrl": "https://picsum.photos/seed/resign/1200/630",
-    "imageHint": "empty office"
-  },
-  {
-    "id": "blog-chipotle",
-    "description": "Chipotle Food Safety",
-    "imageUrl": "https://picsum.photos/seed/chipotle/1200/630",
-    "imageHint": "restaurant kitchen"
   }
 ]
