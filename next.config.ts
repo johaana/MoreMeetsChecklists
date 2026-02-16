@@ -3,15 +3,21 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'picsum.photos',
+        protocol: "https",
+        hostname: "picsum.photos",
+        pathname: "/**",
       },
       {
-        protocol: 'https',
-        hostname: 'i.postimg.cc',
+        protocol: "https",
+        hostname: "*.postimg.cc",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "i.postimg.cc",
+        pathname: "/**",
       },
     ],
   },
