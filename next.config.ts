@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
     remotePatterns: [
       {
@@ -11,12 +10,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "*.postimg.cc",
+        hostname: "i.postimg.cc",
         pathname: "/**",
       },
       {
         protocol: "https",
-        hostname: "i.postimg.cc",
+        hostname: "postimg.cc",
         pathname: "/**",
       },
     ],
