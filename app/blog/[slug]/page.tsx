@@ -149,7 +149,7 @@ export default async function BlogPostPage({ params }: Props) {
                             </div>
                             <div className="flex flex-col gap-4 shrink-0 w-full md:w-64">
                                 <Button asChild size="lg" className="w-full h-14 bg-primary text-black font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform rounded-sm">
-                                    <Link href={`/packs/${relatedPack.id}`}>Procure Asset <ArrowRight className="ml-2 w-4 h-4"/></Link>
+                                    <Link href={`/packs/${relatedPack.id}`}>Procure Asset <ArrowRight className="ml-2 h-4 w-4"/></Link>
                                 </Button>
                                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-center opacity-40 italic">MMA-2025 Standard</p>
                             </div>
