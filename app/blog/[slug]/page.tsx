@@ -8,7 +8,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Clock, User, Tag } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
+import { ArrowRight, Clock, User } from 'lucide-react';
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -164,7 +165,7 @@ export default async function BlogPostPage({ params }: Props) {
                       </div>
 
                       <div className="p-8 border border-white/5 rounded-3xl bg-card space-y-4">
-                          <h4 className="font-bold text-lg">About Black Box Debrief</h4>
+                          <h4 className="font-bold text-lg text-primary-text">Black Box Debrief</h4>
                           <p className="text-sm text-secondary-text leading-relaxed">
                               An investigative series by MoreMeets™ deconstructing systemic operational failures to build more resilient organizations.
                           </p>
