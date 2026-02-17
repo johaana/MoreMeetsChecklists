@@ -173,17 +173,17 @@ export const blogPosts: BlogPost[] = [
           
           <p class="mb-6">In 2009, Dr. Atul Gawande published *The Checklist Manifesto*. He demonstrated that a simple 19-item checklist could reduce surgical deaths by nearly half. It wasn't because the surgeons didn't know their craft. It was because the complexity of modern medicine exceeds the capacity of the human brain to remember every step, every time, under pressure.</p>
 
-          <h2 class="text-3xl font-bold mt-12 mb-6 font-headline text-primary">Anatomy of a "Never Event"</h2>
-          <p class="mb-6">A "Never Event" is exactly what it sounds like—a medical error that is so shocking and preventable that it should never happen. Wrong-site surgery is the classic example. Despite strict policies, these events still occur because of a breakdown in communication during handoffs. One nurse double-checks. Another assumes. One supervisor escalates. Another postpones. When processes aren’t embedded structurally, outcomes depend on personality. <strong>And personality is not a system.</strong></p>
+          <h2 class="text-3xl font-bold mt-12 mb-6 font-headline text-primary">Anatomy of a \"Never Event\"</h2>
+          <p class="mb-6">A \"Never Event\" is exactly what it sounds like—a medical error that is so shocking and preventable that it should never happen. Wrong-site surgery is the classic example. Despite strict policies, these events still occur because of a breakdown in communication during handoffs. One nurse double-checks. Another assumes. One supervisor escalates. Another postpones. When processes aren’t embedded structurally, outcomes depend on personality. <strong>And personality is not a system.</strong></p>
           
           <blockquote class="border-l-4 border-destructive pl-6 py-4 my-10 bg-secondary/5 italic text-xl text-foreground">
             "We are all fallible. The checklist is not a replacement for medical expertise; it is a safeguard against the cognitive load that causes experts to make simple, fatal mistakes."
           </blockquote>
 
           <h2 class="text-3xl font-bold mt-12 mb-6 font-headline text-primary">Systemic Reliability vs. Individual Brilliance</h2>
-          <p class="mb-6">Healthcare has long relied on the "Hero Model"—the idea that a brilliant doctor will catch every error. But modern medicine is a team sport. It requires a system that supports the team. This means moving from "Checklist as a Document" to "Checklist as a Discipline."</p>
+          <p class="mb-6">Healthcare has long relied on the \"Hero Model\"—the idea that a brilliant doctor will catch every error. But modern medicine is a team sport. It requires a system that supports the team. This means moving from \"Checklist as a Document\" to \"Checklist as a Discipline.\"</p>
           <ul class="list-disc pl-8 mb-8 space-y-4 text-secondary-text">
-            <li><strong>Patient Identification:</strong> Moving beyond "asking for a name" to a rigid, two-identifier protocol at every touchpoint.</li>
+            <li><strong>Patient Identification:</strong> Moving beyond \"asking for a name\" to a rigid, two-identifier protocol at every touchpoint.</li>
             <li><strong>Infection Control:</strong> Validating sterilization (CSSD) with scientific proof (ATP swabs) rather than visual inspection.</li>
             <li><strong>Medication Safety:</strong> Independent double-checks for high-alert drugs to catch decimal point errors.</li>
           </ul>
@@ -216,30 +216,30 @@ export const blogPosts: BlogPost[] = [
       imageHint: "corporate financial growth",
       content: `
         <article class="max-w-4xl mx-auto">
-          <p class="lead text-2xl font-medium text-foreground mb-8">Most COOs and CEOs view SOPs as a "compliance tax"—something required by regulators, insurance, or auditors, but otherwise a drain on time and resources. This is a fundamental misunderstanding of operational leverage. Structured operations are not a cost; they are a high-yield profit center.</p>
+          <p class="lead text-2xl font-medium text-foreground mb-8">Most COOs and CEOs view SOPs as a \"compliance tax\"—something required by regulators, insurance, or auditors, but otherwise a drain on time and resources. This is a fundamental misunderstanding of operational leverage. Structured operations are not a cost; they are a high-yield profit center.</p>
           
-          <p class="mb-6">In a world of high turnover and tightening margins, the organizations that thrive are those that have commoditized their knowledge. They don't rely on the "brilliance" of individuals; they rely on the "reliability" of their systems. This reliability translates directly into the bottom line.</p>
+          <p class="mb-6">In a world of high turnover and tightening margins, the organizations that thrive are those that have commoditized their knowledge. They don't rely on the \"brilliance\" of individuals; they rely on the \"reliability\" of their systems. This reliability translates directly into the bottom line.</p>
 
           <h2 class="text-3xl font-bold mt-12 mb-6 font-headline text-primary">1. Slashed Onboarding Timelines</h2>
-          <p class="mb-6">When you hire a new manager, how long does it take for them to be 100% effective? In an un-systemized business, it takes months of "shadowing" and absorbing tribal knowledge. With a structured MoreMeets™ toolkit, that time is typically reduced by 60%. This isn't just about speed; it's about direct savings on payroll for employees who are currently in "learning mode."</p>
+          <p class="mb-6">When you hire a new manager, how long does it take for them to be 100% effective? In an un-systemized business, it takes months of \"shadowing\" and absorbing tribal knowledge. With a structured MoreMeets™ toolkit, that time is typically reduced by 60%. This isn't just about speed; it's about direct savings on payroll for employees who are currently in \"learning mode.\"</p>
 
           <div class="my-16 grid md:grid-cols-2 gap-8">
             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-lg group">
               <img src="https://i.postimg.cc/dVXFhrJN/sop-benefits-illustrated.png" alt="SOP ROI Metrics" class="w-full h-auto transition-transform group-hover:scale-105 duration-500" />
-              <div class="p-4 bg-secondary/5 text-xs text-muted-foreground text-center italic">The "Process Profit" Curve: How systems reduce the time-to-value for new hires.</div>
+              <div class="p-4 bg-secondary/5 text-xs text-muted-foreground text-center italic">The \"Process Profit\" Curve: How systems reduce the time-to-value for new hires.</div>
             </div>
             <div class="rounded-2xl overflow-hidden border border-white/10 shadow-lg group">
               <img src="https://i.postimg.cc/L8hR4NFV/cost-of-no-sops-comparison.png" alt="Cost of failure vs cost of systems" class="w-full h-auto transition-transform group-hover:scale-105 duration-500" />
-              <div class="p-4 bg-secondary/5 text-xs text-muted-foreground text-center italic">The "Fragility Cost" Analysis: Comparing the low cost of systems vs. the high cost of failure.</div>
+              <div class="p-4 bg-secondary/5 text-xs text-muted-foreground text-center italic">The \"Fragility Cost\" Analysis: Comparing the low cost of systems vs. the high cost of failure.</div>
             </div>
           </div>
 
-          <h2 class="text-3xl font-bold mt-12 mb-6 font-headline text-primary">2. The "Always Audit-Ready" Advantage</h2>
-          <p class="mb-6">Think about the frantic week before a major audit. The overtime, the stress, the hunting for missing files. This "Audit Panic" is a massive operational disruption that costs businesses thousands in lost productivity. A business running on MoreMeets™ is *always* audit-ready. The evidence is collected daily, as part of the work.</p>
+          <h2 class="text-3xl font-bold mt-12 mb-6 font-headline text-primary">2. The \"Always Audit-Ready\" Advantage</h2>
+          <p class="mb-6">Think about the frantic week before a major audit. The overtime, the stress, the hunting for missing files. This \"Audit Panic\" is a massive operational disruption that costs businesses thousands in lost productivity. A business running on MoreMeets™ is *always* audit-ready. The evidence is collected daily, as part of the work.</p>
 
           <div class="p-12 my-16 bg-accent/5 border-2 border-accent/20 rounded-[3rem] space-y-8 relative overflow-hidden shadow-2xl">
             <h4 class="text-3xl font-bold text-accent font-headline">Invest in Operational Assets</h4>
-            <p class="text-xl leading-relaxed max-w-2xl">Stop paying the "Memory Tax." Build a business that runs on standards, not constant supervision. Transform your operational knowledge into a permanent, scalable asset.</p>
+            <p class="text-xl leading-relaxed max-w-2xl">Stop paying the \"Memory Tax.\" Build a business that runs on standards, not constant supervision. Transform your operational knowledge into a permanent, scalable asset.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <a href="/library" class="px-8 py-5 bg-accent text-accent-foreground rounded-xl font-black uppercase text-sm tracking-widest text-center">Explore the Library</a>
               <a href="/packs/enterprise_risk_cybersecurity_pack" class="px-8 py-5 bg-background border-2 border-accent/30 text-accent rounded-xl font-black uppercase text-sm tracking-widest text-center">Risk & Security Pack</a>
