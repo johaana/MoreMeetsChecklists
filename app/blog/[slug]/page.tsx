@@ -72,7 +72,6 @@ export default async function BlogPostPage({ params }: Props) {
         return {
             title: "Secure Your Institutional Memory Before It Walks Out",
             description: "Convert individual brilliance into permanent infrastructure. Mapped to ISO 9001 and ISO 41001 standards for instant organizational audit-readiness and continuity.",
-            button: "Deploy Resilience Framework",
             icon: Users,
             compliance: "ISO 9001 • ISO 41001"
         };
@@ -81,7 +80,6 @@ export default async function BlogPostPage({ params }: Props) {
         return {
             title: "Eliminate Operational Drift Before It Becomes A Headline",
             description: "Deploy the verified, HACCP and FSSAI-aligned institutional backbone designed to eliminate the exact failure points analyzed in this debrief.",
-            button: "Secure Forensic Blueprint",
             icon: Shield,
             compliance: "HACCP • FSSAI • ISO 22000"
         };
@@ -90,7 +88,6 @@ export default async function BlogPostPage({ params }: Props) {
         return {
             title: "Build Systems That Protect Lives — Not Just Brands",
             description: "Deploy an institutional-grade JCI and NABH aligned control protocol designed for zero-ambiguity execution in high-risk environments.",
-            button: "Implement Control Protocol",
             icon: HeartPulse,
             compliance: "JCI • NABH • WHO"
         };
@@ -99,7 +96,6 @@ export default async function BlogPostPage({ params }: Props) {
         return {
             title: "Turn Operational Structure Into a Profit Multiplier",
             description: "ISO 27001 and SOC2 mapped protocols for organizational scalability. Reduce onboarding time by 40% and lower error rates instantly.",
-            button: "Activate Profit Multiplier",
             icon: TrendingUp,
             compliance: "ISO 27001 • SOC2 • Statutory"
         };
@@ -107,7 +103,6 @@ export default async function BlogPostPage({ params }: Props) {
     return {
         title: "Deploy Professional Operational Standards",
         description: "ISO, HACCP, and OSHA mapped protocols for instant organizational audit-readiness and brand protection. Ready for immediate organizational deployment.",
-        button: "Explore Full Library",
         icon: ShieldCheck,
         compliance: "ISO • HACCP • OSHA"
     };
@@ -127,7 +122,7 @@ export default async function BlogPostPage({ params }: Props) {
       <SiteHeader />
       <main className="flex-1">
         <article className="pb-24 md:pb-32">
-          {/* Executive Hero Header - Rectangular News Style */}
+          {/* Executive News Hero Header */}
           <header className="w-full pt-12 pb-12 md:pt-16 md:pb-16 border-b border-white/5 bg-alternate-background/30">
             <div className="container px-4 md:px-6">
               <div className="max-w-6xl mx-auto">
@@ -178,7 +173,7 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           </header>
 
-          {/* Expansive Executive Flow Layout */}
+          {/* Expansive Executive Flow Narrative */}
           <div className="container px-4 md:px-6 mt-12 md:mt-24 relative z-20">
             <div className="max-w-4xl mx-auto">
               <div 
@@ -186,14 +181,14 @@ export default async function BlogPostPage({ params }: Props) {
                   prose-headings:font-headline prose-headings:text-primary-text prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase prose-headings:mt-16 md:prose-headings:mt-24 prose-headings:mb-8 md:prose-headings:mb-12 prose-headings:italic
                   prose-p:text-secondary-text prose-p:leading-[1.6] md:prose-p:leading-[1.8] prose-p:mb-8 md:prose-p:mb-12
                   prose-strong:text-primary-text prose-strong:font-black
-                  prose-img:max-w-full md:prose-img:max-w-3xl prose-img:mx-auto prose-img:rounded-lg md:prose-img:rounded-xl prose-img:shadow-2xl prose-img:my-12 md:prose-img:my-32 prose-img:border prose-img:border-white/10
+                  prose-img:max-w-full md:prose-img:max-w-xl md:prose-img:mx-auto prose-img:rounded-lg md:prose-img:rounded-xl prose-img:shadow-2xl prose-img:my-16 md:prose-img:my-32 prose-img:border prose-img:border-white/10
                   prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-white/[0.02] prose-blockquote:px-6 md:prose-blockquote:px-12 prose-blockquote:py-6 md:prose-blockquote:py-10 prose-blockquote:rounded-r-xl md:prose-blockquote:rounded-r-2xl prose-blockquote:italic prose-blockquote:text-xl md:prose-blockquote:text-2xl prose-blockquote:text-primary-text prose-blockquote:my-12 md:prose-blockquote:my-24 prose-blockquote:font-medium
                   prose-ul:space-y-4 md:prose-ul:space-y-6 prose-li:text-secondary-text
                   "
                 dangerouslySetInnerHTML={{ __html: post.content }} 
               />
 
-              {/* Dynamic Pack-Specific Procurement Asset */}
+              {/* Resolution Procurement Asset */}
               <div className="mt-24 md:mt-48 pt-12 md:pt-24 border-t border-white/5 relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl md:rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
                   <Card className="overflow-hidden bg-black border border-white/10 rounded-2xl md:rounded-[2rem] p-6 md:p-16 relative z-10 shadow-2xl">
@@ -201,7 +196,7 @@ export default async function BlogPostPage({ params }: Props) {
                           <cta.icon className="w-32 h-32 md:w-64 md:h-64" />
                       </div>
                       <div className="flex flex-col lg:flex-row gap-8 md:gap-16 items-center justify-between">
-                          <div className="space-y-4 md:space-y-6 flex-1 w-full">
+                          <div className="space-y-4 md:space-y-6 flex-1 w-full text-left">
                               <div className="flex flex-wrap items-center gap-3 md:gap-4">
                                   <Badge variant="outline" className="text-[8px] md:text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] md:tracking-[0.3em] px-3 md:px-4 py-1.5 rounded-none">Strategic Solution</Badge>
                                   <span className="text-[8px] md:text-[10px] text-white/30 font-black uppercase tracking-widest italic">Includes 1 Tailored Customization</span>
@@ -229,12 +224,15 @@ export default async function BlogPostPage({ params }: Props) {
                           <div className="flex flex-col gap-4 md:gap-6 shrink-0 w-full md:w-72">
                               <Button asChild size="lg" className="w-full h-14 md:h-16 bg-primary text-black font-black uppercase text-[10px] md:text-xs tracking-[0.2em] shadow-2xl hover:scale-[1.02] transition-transform rounded-sm">
                                   <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'}>
-                                    {cta.button} <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5"/>
+                                    Eliminate Operational Risk <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5"/>
                                   </Link>
                               </Button>
-                              <div className="flex items-center justify-center gap-2 opacity-40">
-                                <Lock className="w-3 h-3" />
-                                <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em] text-center italic">No SaaS lock-in</p>
+                              <div className="flex flex-col items-center gap-2 opacity-40">
+                                <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] text-center italic">Before small failures become costly.</p>
+                                <div className="flex items-center gap-2">
+                                    <Lock className="w-3 h-3" />
+                                    <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] text-center italic">No SaaS lock-in</p>
+                                </div>
                               </div>
                           </div>
                       </div>
