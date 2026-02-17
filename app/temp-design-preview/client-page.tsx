@@ -8,44 +8,44 @@ import {
     ShieldCheck, 
     Check,
     FileText,
-    Download,
-    Lock,
-    Scale,
-    FileSearch,
     Zap,
     Globe,
-    Cpu
+    Cpu,
+    Sparkles
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card } from '@/components/ui/card';
 
-/* --- IMPROVISED CTA A: THE STRATEGIC SOLUTION (High-End Glass) --- */
+/* --- IMPROVISED CTA A: THE STRATEGIC SOLUTION (Narrative & Trust) --- */
 const CTA_Strategic_Refined = () => (
     <div className="mt-20 relative group max-w-4xl mx-auto">
         <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/30 to-accent/30 rounded-2xl blur opacity-10 group-hover:opacity-40 transition duration-1000"></div>
-        <div className="relative p-10 rounded-2xl border border-white/10 bg-black flex flex-col md:flex-row items-center gap-12 justify-between">
-            <div className="space-y-4">
+        <div className="relative p-10 rounded-2xl border border-white/10 bg-black flex flex-col md:flex-row items-center gap-12 justify-between overflow-hidden">
+            <div className="absolute top-0 right-0 p-4 opacity-[0.03] pointer-events-none">
+                <Sparkles className="w-32 h-32" />
+            </div>
+            <div className="space-y-4 relative z-10">
                 <div className="flex items-center gap-3">
                     <Badge variant="outline" className="text-[9px] font-black tracking-[0.2em] uppercase border-primary/30 text-primary px-3 py-1 rounded-none">Structural Fix</Badge>
-                    <span className="text-[9px] text-white/30 font-black uppercase tracking-widest">ASSET ID: MM-REST-V4</span>
+                    <span className="text-[9px] text-white/40 font-black uppercase tracking-widest italic">Includes 1 Free Tailored Customization</span>
                 </div>
-                <h3 className="text-2xl font-black text-white font-headline tracking-tighter uppercase italic">Operational Resilience Framework</h3>
+                <h3 className="text-3xl font-black text-white font-headline tracking-tighter uppercase italic leading-none">Operational Resilience Framework</h3>
                 <p className="text-sm text-zinc-400 max-w-md leading-relaxed">
                     Deploy the verified, audit-ready toolkit designed to eliminate the exact failure points analyzed in this debrief. 
                 </p>
                 <div className="flex items-center gap-6 text-[8px] font-black uppercase tracking-widest text-white/40">
-                    <span className="flex items-center gap-1.5"><Check className="w-2.5 h-2.5 text-primary"/> 120+ TASKS</span>
-                    <span className="flex items-center gap-1.5"><Check className="w-2.5 h-2.5 text-primary"/> HACCP ALIGNED</span>
+                    <span className="flex items-center gap-1.5"><Check className="w-2.5 h-2.5 text-primary"/> 120+ VERIFIED TASKS</span>
+                    <span className="flex items-center gap-1.5"><Check className="w-2.5 h-2.5 text-primary"/> REGULATORY ALIGNED</span>
                     <span className="flex items-center gap-1.5"><Check className="w-2.5 h-2.5 text-primary"/> EXCEL FORMAT</span>
                 </div>
             </div>
-            <div className="flex flex-col gap-4 w-full md:w-auto">
+            <div className="flex flex-col gap-4 w-full md:w-auto relative z-10">
                 <Button className="h-14 bg-primary text-black font-black uppercase text-xs px-10 rounded-sm shadow-2xl hover:scale-105 transition-all">
                     Procure Full Asset <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
-                <p className="text-[9px] text-center text-zinc-600 uppercase font-black tracking-[0.3em] italic">Instant Secure Delivery</p>
+                <p className="text-[9px] text-center text-zinc-600 uppercase font-black tracking-[0.3em] italic">Ready for Instant Deployment</p>
             </div>
         </div>
     </div>
@@ -59,9 +59,9 @@ const CTA_Industrial_Spec = () => (
                 <Cpu className="w-6 h-6" />
                 <span className="text-xs font-black uppercase tracking-[0.3em]">System Specification: MMA-2025</span>
             </div>
-            <h3 className="text-4xl font-black font-headline text-white tracking-tighter uppercase">Operations <br />Control Pack</h3>
+            <h3 className="text-4xl font-black font-headline text-white tracking-tighter uppercase leading-none">Operations <br />Control Pack</h3>
             <p className="text-zinc-500 text-sm font-medium leading-relaxed max-w-sm">
-                A non-SaaS, offline-first infrastructure for businesses where consistency is a non-negotiable legal requirement.
+                A non-SaaS, offline-first infrastructure for businesses where consistency is a non-negotiable requirement. Includes 1 free brand-alignment customization.
             </p>
         </div>
         <div className="bg-white/5 p-8 rounded-none border-l-4 border-primary w-full md:w-72 space-y-6">
@@ -70,7 +70,7 @@ const CTA_Industrial_Spec = () => (
                 <p className="text-4xl font-black text-white tracking-tighter">₹5,999</p>
             </div>
             <ul className="space-y-2">
-                {['Audit-Ready', 'Fully Editable', 'Lifetime Access'].map(item => (
+                {['Audit-Ready', 'Fully Editable', 'Unlimited Internal Use'].map(item => (
                     <li key={item} className="text-[9px] font-black uppercase text-white/40 flex items-center gap-2 tracking-tighter">
                         <div className="w-1 h-1 bg-primary" /> {item}
                     </li>
@@ -83,25 +83,29 @@ const CTA_Industrial_Spec = () => (
     </div>
 );
 
-/* --- IMPROVISED CTA C: THE EXECUTIVE ACCESS (Minimalist/Prestige) --- */
+/* --- IMPROVISED CTA C: THE EXECUTIVE ACCESS (Minimalist/Direct) --- */
 const CTA_Minimalist_Prestige = () => (
     <div className="mt-20 py-16 px-10 bg-zinc-900 border border-white/5 flex flex-col items-center text-center space-y-8 max-w-3xl mx-auto rounded-[2rem]">
         <Globe className="w-10 h-10 text-primary opacity-20" />
         <div className="space-y-3">
-            <h3 className="text-3xl font-black font-headline text-white tracking-tighter uppercase">The Professional Standard</h3>
+            <div className="flex items-center justify-center gap-2 mb-2">
+                <ShieldCheck className="w-4 h-4 text-primary" />
+                <span className="text-[9px] font-black uppercase text-primary tracking-[0.2em]">Institutional Standard</span>
+            </div>
+            <h3 className="text-3xl font-black font-headline text-white tracking-tighter uppercase italic">The Professional Standard</h3>
             <p className="text-zinc-400 text-sm max-w-md mx-auto leading-relaxed">
-                Join 500+ organizations running on MoreMeets™ verified standards. One-time purchase. Unlimited internal deployment.
+                Join 500+ organizations running on MoreMeets™ verified standards. One-time purchase. Includes one free tailored customization for your unique workflow.
             </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
             <Button variant="outline" className="h-12 border-white/10 text-white font-black uppercase text-[10px] px-8 rounded-full">
-                View Pack Library
+                View Library
             </Button>
             <Button className="h-12 bg-primary text-black font-black uppercase text-[10px] px-8 rounded-full shadow-xl">
-                Download Restaurant Pack
+                Procure Pack
             </Button>
         </div>
-        <p className="text-[9px] text-zinc-600 font-black uppercase tracking-[0.2em]">Validated for ISO & HACCP Compliance</p>
+        <p className="text-[9px] text-zinc-600 font-black uppercase tracking-[0.2em]">Validated for Global Compliance</p>
     </div>
 );
 
@@ -122,10 +126,10 @@ export default function TempDesignClientPage() {
         <main className="flex-1 pb-32 bg-zinc-950">
             {/* LAB HEADER */}
             <Section className="text-center pt-24 pb-12">
-                <Badge variant="outline" className="text-primary border-primary/30 mb-4 px-4 py-1 rounded-full text-[10px] font-black tracking-[0.2em] uppercase">Editorial Lab V4</Badge>
+                <Badge variant="outline" className="text-primary border-primary/30 mb-4 px-4 py-1 rounded-full text-[10px] font-black tracking-[0.2em] uppercase">Editorial Lab V5</Badge>
                 <h1 className="text-4xl md:text-6xl font-black font-headline text-white tracking-tighter uppercase mb-4 italic leading-none">The Outset Engine</h1>
                 <p className="text-lg text-zinc-400 max-w-2xl mx-auto font-medium">
-                    Showcase of "Outset Evidence" layout + Refined Strategic CTAs.
+                    Showcase of "Outset Evidence" layout with enhanced breathing room and improvised B2B CTAs.
                 </p>
             </Section>
 
@@ -149,9 +153,9 @@ export default function TempDesignClientPage() {
                                     <p className="text-lg text-zinc-300 leading-relaxed font-medium">{mockText}</p>
                                 </div>
 
-                                {/* OUTSET IMAGE: Bleeds into margins */}
-                                <div className="-mx-4 md:-mx-32 my-12">
-                                    <figure className="space-y-3">
+                                {/* OUTSET IMAGE: Bleeds into margins with INCREASED vertical spacing */}
+                                <div className="-mx-4 md:-mx-32 my-20 md:my-32">
+                                    <figure className="space-y-4">
                                         <img 
                                             src="https://i.postimg.cc/NjLYGpvy/chipotle1.jpg" 
                                             alt="Outset Data" 
@@ -162,11 +166,11 @@ export default function TempDesignClientPage() {
                                 </div>
 
                                 <div className="space-y-6">
-                                    <p className="text-lg text-zinc-300 leading-relaxed">Well-documented operations increase valuation multiples and improve investor confidence. Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine.</p>
+                                    <p className="text-lg text-zinc-300 leading-relaxed">Well-documented operations increase valuation multiples and improve investor confidence. Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine. Complexity without documentation is exposure.</p>
                                 </div>
 
-                                <div className="-mx-4 md:-mx-32 my-12">
-                                    <figure className="space-y-3">
+                                <div className="-mx-4 md:-mx-32 my-20 md:my-32">
+                                    <figure className="space-y-4">
                                         <img 
                                             src="https://i.postimg.cc/L8hR4NFV/cost-of-no-sops-comparison.png" 
                                             alt="Benefit Logic" 
@@ -187,8 +191,8 @@ export default function TempDesignClientPage() {
                                 <div className="space-y-8">
                                     <div className="text-center">
                                         <Badge variant="secondary" className="mb-2">Improvisation 1</Badge>
-                                        <h4 className="text-white font-bold uppercase tracking-widest text-xs">The "Refined Strategic Solution"</h4>
-                                        <p className="text-[10px] text-zinc-500 uppercase mt-1">High-End • Narrative • Trust-based</p>
+                                        <h4 className="text-white font-bold uppercase tracking-widest text-xs italic font-headline">The "Strategic Solution"</h4>
+                                        <p className="text-[10px] text-zinc-500 uppercase mt-1">High-End • Trust-based • Customization Focus</p>
                                     </div>
                                     <CTA_Strategic_Refined />
                                 </div>
@@ -196,8 +200,8 @@ export default function TempDesignClientPage() {
                                 <div className="space-y-8">
                                     <div className="text-center">
                                         <Badge variant="secondary" className="mb-2">Improvisation 2</Badge>
-                                        <h4 className="text-white font-bold uppercase tracking-widest text-xs">The "Technical Spec Sheet"</h4>
-                                        <p className="text-[10px] text-zinc-500 uppercase mt-1">Industrial • Authoritative • Utility-based</p>
+                                        <h4 className="text-white font-bold uppercase tracking-widest text-xs italic font-headline">The "Industrial Blueprint"</h4>
+                                        <p className="text-[10px] text-zinc-500 uppercase mt-1">Technical • Authoritative • Compliance Focus</p>
                                     </div>
                                     <CTA_Industrial_Spec />
                                 </div>
@@ -205,8 +209,8 @@ export default function TempDesignClientPage() {
                                 <div className="space-y-8">
                                     <div className="text-center">
                                         <Badge variant="secondary" className="mb-2">Improvisation 3</Badge>
-                                        <h4 className="text-white font-bold uppercase tracking-widest text-xs">The "Executive Minimalist"</h4>
-                                        <p className="text-[10px] text-zinc-500 uppercase mt-1">Clean • Modern • Direct Access</p>
+                                        <h4 className="text-white font-bold uppercase tracking-widest text-xs italic font-headline">The "Executive Access"</h4>
+                                        <p className="text-[10px] text-zinc-500 uppercase mt-1">Minimalist • Prestige • Direct Procurement</p>
                                     </div>
                                     <CTA_Minimalist_Prestige />
                                 </div>
