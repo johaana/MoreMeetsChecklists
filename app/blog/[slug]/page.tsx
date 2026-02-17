@@ -9,7 +9,6 @@ import type { Metadata } from 'next';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import Image from 'next/image';
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -66,7 +65,7 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   const relatedPack = post.relatedPackId ? premiumPacks.find(p => p.id === post.relatedPackId) : null;
-  const wordCount = post.content.split(' ').length;
+  const wordCount = post.content.replace(/<[^>]*>/g, '').split(/\s+/).length;
   const readingTime = Math.ceil(wordCount / 200);
 
   return (
@@ -78,13 +77,11 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="absolute inset-0">
               {post.imageUrl && (
                 <>
-                <Image
+                <img
                   src={post.imageUrl}
                   alt={post.title}
-                  fill
-                  className="object-cover"
-                  data-ai-hint={post.imageHint || "operational blog"}
-                  priority
+                  className="object-cover w-full h-full"
+                  style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
                 </>
