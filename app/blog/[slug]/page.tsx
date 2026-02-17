@@ -1,4 +1,3 @@
-
 import { blogPosts } from '@/lib/blog-posts';
 import { notFound } from 'next/navigation';
 import { SiteHeader } from '@/components/layout/header';
@@ -159,7 +158,7 @@ export default async function BlogPostPage({ params }: Props) {
                       {post.description}
                     </p>
 
-                    <div className="flex flex-wrap items-center gap-8 text-[10px] font-black text-white/30 uppercase tracking-[0.3em] pt-6">
+                    <div className="flex wrap items-center gap-8 text-[10px] font-black text-white/30 uppercase tracking-[0.3em] pt-6">
                        <span className="flex items-center gap-2 border-r border-white/10 pr-8"><User className="w-3 h-3 text-primary" /> {post.author}</span>
                        <span className="flex items-center gap-2 border-r border-white/10 pr-8"><Clock className="w-3 h-3 text-primary" /> {readingTime} MIN READ</span>
                        <span>{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
