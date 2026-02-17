@@ -17,7 +17,6 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { subscribeToBlog } from './actions';
-import Image from 'next/image';
 
 
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
@@ -211,8 +210,12 @@ export default function BlogClientPage() {
     }
     const newUrl = `${window.location.pathname}?${params.toString()}`;
     window.history.pushState({ ...window.history.state, as: newUrl, url: newUrl }, '', newUrl);
-    setActiveFilter(tag);
+    setActiveCategory(tag);
   };
+
+  const setActiveCategory = (tag: string | null) => {
+      setActiveFilter(tag);
+  }
   
   const handleTagClick = (e: React.MouseEvent, tag: string) => {
     e.stopPropagation();
@@ -232,7 +235,7 @@ export default function BlogClientPage() {
   
 
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       <SiteHeader />
       <main className="flex-1">
         <section className="w-full pt-12 md:pt-20 pb-12 md:pb-24 lg:pb-32">
@@ -250,20 +253,18 @@ export default function BlogClientPage() {
                 {currentFeaturedPost && (
                     <div className="mb-16">
                         <Link href={`/blog/${currentFeaturedPost.slug}`} className="block group">
-                             <Card className="overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                             <Card className="overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/5 bg-black">
                                 <div className="md:hidden">
-                                    <div className="relative w-full h-auto aspect-[16/9]">
+                                    <div className="relative w-full h-auto aspect-[16/9] overflow-hidden">
                                      {currentFeaturedPost.imageUrl && (
-                                        <Image
+                                        <img
                                             src={currentFeaturedPost.imageUrl}
                                             alt={currentFeaturedPost.title}
-                                            fill
-                                            className="object-cover"
-                                            data-ai-hint={currentFeaturedPost.imageHint || "operational blog"}
+                                            className="object-cover w-full h-full"
                                         />
                                     )}
                                     </div>
-                                    <div className="p-6 bg-card">
+                                    <div className="p-6">
                                         <div className="flex flex-wrap gap-2 mb-2">
                                             {currentFeaturedPost.tags.map(tag => ( 
                                                 <Badge key={tag} variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
@@ -271,9 +272,9 @@ export default function BlogClientPage() {
                                                 </Badge>
                                             ))}
                                         </div>
-                                        <CardTitle className="text-2xl font-headline">{currentFeaturedPost.title}</CardTitle>
-                                        <CardDescription className="mt-2 text-base">{currentFeaturedPost.description}</CardDescription>
-                                        <Button variant="outline" className="mt-4">
+                                        <CardTitle className="text-2xl font-headline text-white">{currentFeaturedPost.title}</CardTitle>
+                                        <CardDescription className="mt-2 text-base text-zinc-400">{currentFeaturedPost.description}</CardDescription>
+                                        <Button variant="outline" className="mt-4 border-white/20 text-white">
                                             Read The Full Story <ArrowRight className="ml-2 h-4 w-4" />
                                         </Button>
                                     </div>
@@ -284,12 +285,10 @@ export default function BlogClientPage() {
                                         <div className="absolute inset-0 z-0">
                                              {currentFeaturedPost.imageUrl && (
                                                 <>
-                                                    <Image
+                                                    <img
                                                         src={currentFeaturedPost.imageUrl}
                                                         alt={currentFeaturedPost.title}
-                                                        fill
-                                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                                                        data-ai-hint={currentFeaturedPost.imageHint || "operational blog"}
+                                                        className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                                                     />
                                                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent md:bg-gradient-to-r md:from-black/90 md:via-black/70 md:to-transparent" />
                                                 </>
@@ -309,11 +308,11 @@ export default function BlogClientPage() {
                                             <CardDescription className="text-lg text-white/90">
                                                 {currentFeaturedPost.description}
                                             </CardDescription>
-                                            <div className="flex justify-between items-center text-xs text-white/80">
+                                            <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-white/60">
                                                 <span>{new Date(currentFeaturedPost.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                                                 <span>{Math.ceil(currentFeaturedPost.content.split(' ').length / 200)} min read</span>
                                             </div>
-                                            <Button variant="outline" className="bg-transparent text-white border-white mt-4 group-hover:bg-white group-hover:text-primary transition-colors">
+                                            <Button variant="outline" className="bg-transparent text-white border-white mt-4 group-hover:bg-white group-hover:text-black transition-colors font-black uppercase tracking-widest">
                                                 Read The Full Story <ArrowRight className="ml-2 h-4 w-4" />
                                             </Button>
                                         </div>
@@ -331,55 +330,53 @@ export default function BlogClientPage() {
                 {/* Other Posts */}
                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {postsForGrid.map((post) => (
-                        <Card key={post.slug} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
+                        <Card key={post.slug} className="flex flex-col rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/5 bg-black/40">
                            <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
-                            <div className="relative w-full h-auto aspect-[16/9]">
+                            <div className="relative w-full h-auto aspect-[16/9] overflow-hidden">
                             {post.imageUrl ? (
-                                    <Image
+                                    <img
                                         src={post.imageUrl}
                                         alt={post.title}
-                                        fill
                                         className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                                        data-ai-hint={post.imageHint || "operational blog"}
                                     />
                             ): (
-                               <div className="w-full h-full bg-secondary flex items-center justify-center">
+                               <div className="w-full h-full bg-zinc-900 flex items-center justify-center">
                                  <p className="text-muted-foreground text-sm">No Image</p>
                                </div>
                             )}
                             </div>
                             </Link>
-                            <CardHeader>
-                                <div className="flex flex-wrap gap-2 mb-2">
+                            <CardHeader className="space-y-4">
+                                <div className="flex flex-wrap gap-2">
                                      {post.tags.map(tag => (
-                                         <Badge key={tag} variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
+                                         <Badge key={tag} variant="secondary" className="bg-primary/10 text-primary border-none hover:bg-primary/20 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
                                             {tag}
                                         </Badge>
                                     ))}
                                 </div>
-                                <CardTitle className="text-xl font-headline">
-                                    <Link href={`/blog/${post.slug}`} className="hover:text-primary transition-colors">
+                                <CardTitle className="text-xl font-headline leading-tight">
+                                    <Link href={`/blog/${post.slug}`} className="text-white hover:text-primary transition-colors">
                                         {post.title}
                                     </Link>
                                 </CardTitle>
                             </CardHeader>
                             <CardContent className="flex-1">
-                                <CardDescription>{post.description}</CardDescription>
+                                <CardDescription className="text-zinc-400 line-clamp-3">{post.description}</CardDescription>
                             </CardContent>
                              <CardFooter className="flex flex-col items-start gap-4 p-4 md:p-6 mt-auto">
-                                <div className="w-full flex justify-between items-center text-xs text-muted-foreground">
+                                <div className="w-full flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-zinc-500">
                                     <p>{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                                     <span>{Math.ceil(post.content.split(' ').length / 200)} min read</span>
                                 </div>
-                                <Button asChild variant="secondary" size="sm" className="w-full mt-2">
+                                <Button asChild variant="secondary" size="sm" className="w-full mt-2 font-black uppercase tracking-widest bg-zinc-800 text-white hover:bg-zinc-700">
                                   <Link href={`/blog/${post.slug}`}>Read Full Story <ArrowRight className="ml-2 h-4 w-4" /></Link>
                                 </Button>
                             </CardFooter>
                         </Card>
                     ))}
                 </div>
-                 <div className="max-w-xl mx-auto mt-24 flex flex-col items-center gap-4 p-6 border rounded-2xl bg-secondary/50">
-                    <h3 className="font-bold text-center">Get the analysis behind the headlines.</h3>
+                 <div className="max-w-xl mx-auto mt-24 flex flex-col items-center gap-4 p-8 border border-white/5 rounded-2xl bg-zinc-900/50 backdrop-blur-sm">
+                    <h3 className="font-black text-center uppercase tracking-widest text-white">Get the analysis behind the headlines.</h3>
                     <SubscriptionForm />
                 </div>
             </div>
