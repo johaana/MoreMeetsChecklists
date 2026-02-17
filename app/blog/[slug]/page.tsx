@@ -8,7 +8,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { ArrowRight, Clock, User, ChevronLeft } from 'lucide-react';
 
 type Props = {
@@ -50,7 +50,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   const relatedPack = post.relatedPackId ? premiumPacks.find(p => p.id === post.relatedPackId) : null;
   const wordCount = post.content.replace(/<[^>]*>/g, '').split(/\s+/).length;
-  const readingTime = Math.max(12, Math.ceil(wordCount / 200));
+  const readingTime = Math.max(15, Math.ceil(wordCount / 200));
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
@@ -70,11 +70,11 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
             )}
             <div className="container px-4 md:px-6 relative z-10">
-              <div className="max-w-4xl mx-auto space-y-8">
+              <div className="max-w-4xl mx-auto space-y-8 text-center md:text-left">
                 <Link href="/blog" className="inline-flex items-center text-primary text-xs font-black uppercase tracking-[0.2em] hover:opacity-70 transition-opacity">
                     <ChevronLeft className="w-4 h-4 mr-1" /> Back to Debriefs
                 </Link>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap justify-center md:justify-start gap-2">
                   {post.tags.map(tag => (
                     <Badge key={tag} variant="secondary" className="bg-primary/10 text-primary border-primary/20 backdrop-blur-md px-3 py-1 font-black uppercase text-[10px] tracking-widest">
                       {tag}
@@ -84,7 +84,7 @@ export default async function BlogPostPage({ params }: Props) {
                 <h1 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white leading-[1.05] drop-shadow-2xl">
                   {post.title}
                 </h1>
-                <div className="flex flex-wrap items-center gap-8 text-[10px] font-black text-white/50 uppercase tracking-[0.3em] border-t border-white/10 pt-8">
+                <div className="flex flex-wrap justify-center md:justify-start items-center gap-8 text-[10px] font-black text-white/50 uppercase tracking-[0.3em] border-t border-white/10 pt-8">
                    <span className="flex items-center gap-2"><User className="w-3 h-3 text-primary" /> {post.author}</span>
                    <span className="flex items-center gap-2"><Clock className="w-3 h-3 text-primary" /> {readingTime} MIN ANALYSIS</span>
                    <span>{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
@@ -96,7 +96,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="container px-4 md:px-6 mt-16 relative z-20">
             <div className="max-w-4xl mx-auto">
               {/* Main Editorial Content */}
-              <div className="bg-transparent rounded-[2rem] p-0 md:p-4">
+              <div className="bg-transparent rounded-[2rem]">
                 <div 
                   className="prose prose-xl dark:prose-invert max-w-none 
                     prose-headings:font-headline prose-headings:text-primary-text prose-headings:font-black prose-headings:tracking-tighter
@@ -109,7 +109,7 @@ export default async function BlogPostPage({ params }: Props) {
                 />
               </div>
 
-              {/* Related Pack - Strategic Call-to-Action at the BOTTOM */}
+              {/* Strategic CTA - ALWAYS AT THE BOTTOM */}
               {relatedPack && (
                 <div className="mt-32 pt-20 border-t border-white/5">
                     <div className="max-w-3xl mx-auto">

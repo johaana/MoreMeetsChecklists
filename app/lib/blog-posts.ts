@@ -25,11 +25,11 @@ export const blogPosts: BlogPost[] = [
         <section class="mb-20">
           <p class="lead text-2xl font-black !leading-tight text-white mb-12 uppercase tracking-tighter">It didn’t feel dramatic. No alarms. No lawsuit. No media coverage. Just a resignation email. Subject line: <em>“Moving On.”</em></p>
           
-          <p>Raj had been the Operations Manager for eleven years. He knew the vendors by their first names. He handled inspections with a calm that bordered on the supernatural. He always “just knew” what to check before an audit. He remembered which regulator preferred what documentation format, and he knew which freezer in the back warehouse tended to fluctuate during the monsoon season.</p>
+          <p>He had been there eleven years. He knew the vendors by their first names. He handled inspections with a calm that bordered on the supernatural. He always “just knew” what to check before an audit. He remembered which regulator preferred what documentation format, and he knew which freezer in the back warehouse tended to fluctuate during the monsoon season.</p>
           
-          <p>On paper, the company was secure. There was a 120-page SOP manual sitting in the shared drive, gathering digital dust. Everyone — from the CEO to the floor staff — believed the system was safe. They weren't running on a system, though. They were running on Raj.</p>
+          <p>On paper, the company was secure. There was a 120-page SOP manual sitting in the shared drive, gathering digital dust. Everyone — from the CEO to the floor staff — believed the system was safe. They weren't running on a system, though. They were running on an individual. When that person walked out, the company didn't just lose an employee. It lost its operating system.</p>
           
-          <p>When Raj walked out, the company didn't just lose an employee. It lost its operating system. This is the hidden crisis of the modern enterprise: <strong>The Resignation Risk.</strong></p>
+          <p>This is the hidden crisis of the modern enterprise: <strong>The Resignation Risk.</strong></p>
         </section>
 
         <h2 class="text-4xl md:text-5xl font-black font-headline text-primary-text tracking-tight uppercase border-b-4 border-primary pb-4 mb-12">The Myth of Experience</h2>
@@ -83,7 +83,7 @@ export const blogPosts: BlogPost[] = [
           <p>By 2015, Chipotle Mexican Grill had transformed itself from a fast-casual chain into a cultural symbol. It wasn’t merely selling burritos. It was selling moral reassurance. “Food With Integrity” wasn’t a slogan — it was a promise. It implied that ingredients were cleaner, sourcing was ethical, and operations were superior to traditional fast food.</p>
         </section>
 
-        <img src="https://cdn.hswstatic.com/gif/restaurant-inspect-1.jpg" alt="Kitchen safety inspection" />
+        <img src="https://cdn.hswstatic.com/gif/restaurant-inspect-1.jpg" alt="Kitchen safety inspection" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
 
         <h2 class="text-4xl md:text-5xl font-black font-headline text-primary-text tracking-tight uppercase border-b-4 border-primary pb-4 mb-12">The Anatomy of Operational Drift</h2>
         
@@ -99,7 +99,7 @@ export const blogPosts: BlogPost[] = [
           <p>Multiply that across thousands of stores, and small deviations compound into systemic exposure. A busy Friday night leads to a delayed refrigeration log. A short-staffed shift leads to an assumption that “someone already checked.” Bacteria don't exploit your intentions; they exploit your gaps.</p>
         </section>
 
-        <img src="https://s.abcnews.com/images/International/coronavirus-sf-2-rt-rc-200317_hpEmbed_3x2_992.jpg" alt="Operational gaps" />
+        <img src="https://s.abcnews.com/images/International/coronavirus-sf-2-rt-rc-200317_hpEmbed_3x2_992.jpg" alt="Operational gaps" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
 
         <h2 class="text-3xl md:text-4xl font-bold font-headline text-primary-text uppercase tracking-tight mb-8">Scale Amplifies Small Weaknesses</h2>
         <section class="space-y-8">
@@ -108,7 +108,7 @@ export const blogPosts: BlogPost[] = [
           <p>The CDC estimates that approximately 128,000 hospitalizations and 3,000 deaths occur each year in the U.S. due to foodborne diseases. For a brand built on integrity, an outbreak threatens identity. Consumer trust, once fractured, does not return with a marketing campaign. It returns only when structural improvements restore confidence.</p>
         </section>
 
-        <img src="https://eu-images.contentstack.com/v3/assets/bltea7aee2fca050a19/blt70dc3926080cb3bd/6725011d02f25f5ba889e165/Empty-Restaurant-Coronavirus.jpg?auto=webp&disable=upscale&format=jpg&quality=80&width=1280" alt="Operational stillness" />
+        <img src="https://eu-images.contentstack.com/v3/assets/bltea7aee2fca050a19/blt70dc3926080cb3bd/6725011d02f25f5ba889e165/Empty-Restaurant-Coronavirus.jpg?auto=webp&disable=upscale&format=jpg&quality=80&width=1280" alt="Operational stillness" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
 
         <h2 class="text-3xl md:text-4xl font-bold font-headline text-primary-text uppercase tracking-tight mb-8">The Masterclass Lesson</h2>
         <section class="space-y-8">
@@ -176,7 +176,7 @@ export const blogPosts: BlogPost[] = [
           <p>Turnover alone costs U.S. businesses over $1 trillion annually. Much of it is tied to unclear expectations and poor systems. McKinsey research suggests that nearly 20% of a worker's time is spent looking for internal information or tracking down how to do a task. This is the <strong>Inefficiency Tax</strong> that every unorganized business pays.</p>
         </section>
 
-        <img src="https://www.learnow.live/storage/uploads/1669966535-5-reasons-to-track-employee-training-in-the-onboarding-process-01.jpg" alt="Training metrics" />
+        <img src="https://www.learnow.live/storage/uploads/1669966535-5-reasons-to-track-employee-training-in-the-onboarding-process-01.jpg" alt="Training metrics" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
 
         <h2 class="text-4xl md:text-5xl font-black font-headline text-primary-text tracking-tight uppercase border-b-4 border-primary pb-4 mb-12">The Profit Equation</h2>
         
@@ -190,7 +190,7 @@ export const blogPosts: BlogPost[] = [
           </blockquote>
         </section>
 
-        <img src="https://www.geckoboard.com/uploads/IT-dashboard-example.png" alt="Performance dashboard" />
+        <img src="https://www.geckoboard.com/uploads/IT-dashboard-example.png" alt="Performance dashboard" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
 
         <h2 class="text-3xl md:text-4xl font-bold font-headline text-primary-text uppercase tracking-tight mb-8">From Compliance to Valuation</h2>
         <section class="space-y-8">
@@ -199,7 +199,7 @@ export const blogPosts: BlogPost[] = [
           <p>If your business relies on you (or a few key people) being there to make it work, you don't own a business—you own a high-stress job. A business with an embedded operating system can be handed over, scaled, or franchised. That is where the real wealth is created.</p>
         </section>
 
-        <img src="https://images.klipfolio.com/website/public/6412f9a1-528f-438b-bb21-77df8b66433b/operations-dashboard.png" alt="Ops dashboard" />
+        <img src="https://images.klipfolio.com/website/public/6412f9a1-528f-438b-bb21-77df8b66433b/operations-dashboard.png" alt="Ops dashboard" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
 
         <h2 class="text-3xl md:text-4xl font-bold font-headline text-primary-text uppercase tracking-tight mb-8">Invest in Architecture</h2>
         <section class="space-y-8">
