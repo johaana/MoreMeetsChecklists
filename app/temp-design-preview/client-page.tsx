@@ -9,119 +9,160 @@ import {
     Sparkles,
     Shield,
     FileCheck,
-    Lock
+    Lock,
+    Users,
+    TrendingUp,
+    ShieldAlert,
+    Zap,
+    HeartPulse
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Card } from '@/components/ui/card';
 
-/* --- IMPROVISATION 1: THE STRATEGIC SOLUTION (Focus: Tailoring & Resilience) --- */
-const CTA_Improv_1 = () => (
-    <div className="mt-20 relative group max-w-5xl mx-auto">
+/* --- RESOLUTION 1: THE RESILIENCE FRAMEWORK (Resignation Risk) --- */
+const CTA_Resignation = () => (
+    <div className="relative group w-full">
         <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/30 to-accent/30 rounded-[2rem] blur opacity-10 group-hover:opacity-40 transition duration-1000"></div>
-        <div className="relative p-12 md:p-16 rounded-[2rem] border border-white/10 bg-black flex flex-col md:flex-row items-center gap-16 justify-between overflow-hidden shadow-2xl">
+        <div className="relative p-10 md:p-16 rounded-[2rem] border border-white/10 bg-black flex flex-col md:flex-row items-center gap-12 justify-between overflow-hidden shadow-2xl">
             <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none">
-                <Sparkles className="w-48 h-48" />
+                <Users className="w-48 h-48" />
             </div>
             <div className="space-y-6 relative z-10 flex-1">
                 <div className="flex items-center gap-4">
                     <Badge variant="outline" className="text-[10px] font-black tracking-[0.3em] uppercase border-primary/30 text-primary px-4 py-1.5 rounded-none">Strategic Solution</Badge>
                     <span className="text-[10px] text-white/40 font-black uppercase tracking-[0.2em] italic">Includes 1 Free Tailored Customization</span>
                 </div>
-                <h3 className="text-4xl md:text-5xl font-black text-white font-headline tracking-tighter uppercase italic leading-none">Operational Resilience <br className="hidden md:block" /> Framework</h3>
+                <h3 className="text-3xl md:text-5xl font-black text-white font-headline tracking-tighter uppercase italic leading-none">Secure Your Institutional <br /> Memory Before It Walks Out</h3>
                 <p className="text-base text-zinc-400 max-w-lg leading-relaxed">
-                    Deploy the verified, audit-ready toolkit designed to eliminate the exact failure points analyzed in this debrief. 
+                    Convert individual brilliance into permanent infrastructure. Deploy the framework built to eliminate resignation risk through role-based task mapping.
                 </p>
                 <div className="flex flex-wrap items-center gap-8 text-[9px] font-black uppercase tracking-[0.2em] text-white/40 pt-2">
                     <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-primary"/> 120+ VERIFIED TASKS</span>
-                    <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-primary"/> REGULATORY ALIGNED</span>
+                    <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-primary"/> ROLE-BASED LOGIC</span>
                     <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-primary"/> EXCEL FORMAT</span>
                 </div>
             </div>
             <div className="flex flex-col gap-6 w-full md:w-auto relative z-10 shrink-0">
                 <Button className="h-16 bg-primary text-black font-black uppercase text-xs px-12 rounded-sm shadow-2xl hover:scale-105 transition-all tracking-[0.2em]">
-                    Procure Full Asset <ArrowRight className="ml-2 w-5 h-5" />
+                    Deploy Resilience Framework <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <p className="text-[10px] text-center text-zinc-600 uppercase font-black tracking-[0.4em] italic">Ready for Instant Deployment</p>
+                <p className="text-[9px] text-center text-zinc-600 uppercase font-black tracking-[0.4em] italic">One-time Procurement • No SaaS fees</p>
             </div>
         </div>
     </div>
 );
 
-/* --- IMPROVISATION 2: THE INSTITUTIONAL BACKBONE (Focus: Control & Authority) --- */
-const CTA_Improv_2 = () => (
-    <div className="mt-20 border-t-2 border-primary pt-16 flex flex-col md:flex-row gap-20 items-center justify-between max-w-5xl mx-auto bg-white/[0.01] p-12 rounded-3xl border border-white/5 shadow-2xl">
+/* --- RESOLUTION 2: THE FORENSIC BLUEPRINT (Operational Drift) --- */
+const CTA_Drift = () => (
+    <div className="w-full p-1 border-2 border-white/5 rounded-sm bg-zinc-900/50">
+        <div className="border border-white/10 p-10 md:p-16 flex flex-col md:flex-row items-start gap-12">
+            <div className="flex-1 space-y-10">
+                <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-accent">
+                        <ShieldAlert className="w-5 h-5" />
+                        <span className="text-[10px] font-black uppercase tracking-[0.4em]">Audit Verification Standard</span>
+                    </div>
+                    <h3 className="text-3xl md:text-5xl font-black font-headline text-white uppercase tracking-tighter leading-none italic">Eliminate Operational Drift <br /> Before It Becomes A Headline</h3>
+                </div>
+                
+                <div className="grid sm:grid-cols-2 gap-8 border-t border-white/10 pt-10">
+                    <div className="space-y-2">
+                        <p className="text-[10px] font-black uppercase text-zinc-500 tracking-widest">Regulatory Alignment</p>
+                        <p className="text-sm text-zinc-300 font-medium leading-relaxed">ISO, HACCP, and OSHA mapped protocols for instant organizational audit-readiness and brand protection.</p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="text-[10px] font-black uppercase text-zinc-500 tracking-widest">Verification Protocol</p>
+                        <p className="text-sm text-zinc-300 font-medium leading-relaxed">Mandatory accountability logs and consequence tracking designed to stop deviations at the source.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="w-full md:w-72 space-y-6 pt-2 shrink-0">
+                <div className="p-8 border border-white/10 bg-black/40 space-y-6 text-center md:text-left">
+                    <div className="space-y-1">
+                        <p className="text-[11px] font-black text-accent uppercase tracking-[0.3em]">Institutional Procurement</p>
+                        <p className="text-xs text-zinc-500 font-medium">Verified for Multi-Location Chains</p>
+                    </div>
+                    <Button className="w-full h-14 bg-accent text-black font-black uppercase text-[10px] tracking-[0.2em] rounded-none hover:bg-white transition-all shadow-xl">
+                        Secure Forensic Blueprint
+                    </Button>
+                    <div className="flex items-center justify-center gap-2 opacity-40">
+                        <Lock className="w-3 h-3" />
+                        <span className="text-[8px] font-black uppercase tracking-widest">LIFETIME LICENSE ISSUED INSTANTLY</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+);
+
+/* --- RESOLUTION 3: THE INSTITUTIONAL BACKBONE (Safety/Healthcare) --- */
+const CTA_Safety = () => (
+    <div className="border-t-2 border-primary pt-16 flex flex-col md:flex-row gap-16 items-center justify-between w-full bg-white/[0.01] p-12 rounded-3xl border border-white/5 shadow-2xl">
         <div className="space-y-8 flex-1">
             <div className="flex items-center gap-4 text-primary">
                 <Shield className="w-8 h-8" />
                 <span className="text-sm font-black uppercase tracking-[0.4em]">Institutional Control Protocol</span>
             </div>
-            <h3 className="text-5xl md:text-6xl font-black font-headline text-white tracking-tighter uppercase leading-none italic">Operations <br />Control Backbone</h3>
-            <p className="text-zinc-500 text-lg font-medium leading-relaxed max-w-md">
-                A non-SaaS, offline-first infrastructure for organizations where consistency is a non-negotiable requirement. 
+            <h3 className="text-4xl md:text-6xl font-black font-headline text-white tracking-tighter uppercase leading-none italic">Build Systems That Protect <br /> Lives — Not Just Brands</h3>
+            <p className="text-zinc-500 text-lg font-medium leading-relaxed max-w-xl">
+                Deploy an institutional-grade operational control system designed for zero-ambiguity execution in high-risk environments. Policy doesn't save lives. Execution does.
             </p>
             <div className="grid grid-cols-2 gap-x-12 gap-y-4">
-                {['Audit-Ready Standard', 'Fully Editable .xlsx', 'Unlimited Usage Rights', 'Offline Resilience'].map(item => (
+                {['Audit-Ready Standards', 'Fully Editable .xlsx', 'Unlimited Usage Rights', 'Offline Resilience'].map(item => (
                     <div key={item} className="flex items-center gap-3 text-[10px] font-black uppercase text-white/40 tracking-widest">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary" /> {item}
                     </div>
                 ))}
             </div>
         </div>
-        <div className="bg-white/5 p-12 rounded-none border-l-4 border-primary w-full md:w-80 space-y-8 shrink-0">
-            <div className="space-y-2 text-center md:text-left">
-                <p className="text-[11px] text-zinc-500 uppercase font-black tracking-[0.3em]">Institutional Procurement</p>
-                <p className="text-5xl font-black text-white tracking-tighter">₹5,999</p>
+        <div className="bg-white/5 p-12 rounded-none border-l-4 border-primary w-full md:w-80 space-y-8 shrink-0 text-center md:text-left">
+            <div className="space-y-2">
+                <p className="text-[11px] text-zinc-500 uppercase font-black tracking-[0.3em]">Procurement Access</p>
+                <div className="flex items-center gap-2 text-primary">
+                    <HeartPulse className="w-4 h-4" />
+                    <span className="text-[10px] font-black uppercase tracking-widest">Clinical Grade Standard</span>
+                </div>
             </div>
             <Button className="w-full h-14 bg-white text-black font-black uppercase text-[11px] tracking-[0.2em] hover:bg-primary transition-colors rounded-none shadow-xl">
-                Secure Asset Access
+                Implement Control Protocol
             </Button>
-            <p className="text-[9px] text-zinc-600 text-center uppercase font-bold tracking-widest">One-time Procurement • No SaaS fees</p>
+            <p className="text-[9px] text-zinc-600 text-center uppercase font-bold tracking-widest">Unlimited Internal Deployment Rights</p>
         </div>
     </div>
 );
 
-/* --- IMPROVISATION 3: THE FORENSIC SPECIFICATION (Focus: Standards & Verification) --- */
-const CTA_Improv_3 = () => (
-    <div className="mt-20 max-w-5xl mx-auto p-1 border-2 border-white/5 rounded-sm bg-zinc-900/50">
-        <div className="border border-white/10 p-10 md:p-16 flex flex-col md:flex-row items-start gap-16">
-            <div className="flex-1 space-y-10">
-                <div className="space-y-4">
-                    <div className="flex items-center gap-2 text-accent">
-                        <FileCheck className="w-5 h-5" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.4em]">Audit Verification Standard</span>
-                    </div>
-                    <h3 className="text-4xl md:text-5xl font-black font-headline text-white uppercase tracking-tighter leading-none italic">Forensic Operational <br /> Blueprint</h3>
+/* --- RESOLUTION 4: THE PROFIT MULTIPLIER (ROI/Founder) --- */
+const CTA_ROI = () => (
+    <div className="w-full bg-zinc-900 border border-white/10 rounded-3xl p-10 md:p-20 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-primary to-accent opacity-50" />
+        <div className="grid lg:grid-cols-[1fr,350px] gap-16 items-center relative z-10">
+            <div className="space-y-8">
+                <div className="flex items-center gap-3">
+                    <TrendingUp className="w-6 h-6 text-accent" />
+                    <span className="text-xs font-black uppercase tracking-[0.5em] text-accent">Operations Control Backbone</span>
                 </div>
-                
-                <div className="grid sm:grid-cols-2 gap-8 border-t border-white/10 pt-10">
-                    <div className="space-y-2">
-                        <p className="text-[10px] font-black uppercase text-zinc-500 tracking-widest">Regulatory Alignment</p>
-                        <p className="text-sm text-zinc-300 font-medium">ISO 9001, HACCP, and OSHA mapped protocols for instant organizational audit-readiness.</p>
-                    </div>
-                    <div className="space-y-2">
-                        <p className="text-[10px] font-black uppercase text-zinc-500 tracking-widest">Tailoring Protocol</p>
-                        <p className="text-sm text-zinc-300 font-medium">Includes 1 priority customization session to align the asset with your internal brand identity.</p>
-                    </div>
-                </div>
+                <h3 className="text-4xl md:text-6xl font-black font-headline text-white uppercase tracking-tighter italic leading-[0.9]">Turn Operational Structure <br /> Into a Profit Multiplier</h3>
+                <p className="text-xl text-zinc-400 font-medium leading-relaxed max-w-2xl">
+                    Transformation from undocumented effort into scalable, audit-ready execution architecture. Reduce onboarding time by 40% and lower error rates instantly.
+                </p>
             </div>
-
-            <div className="w-full md:w-72 space-y-6 pt-2">
-                <div className="p-8 border border-white/10 bg-black/40 space-y-6">
-                    <div className="space-y-1">
-                        <p className="text-[9px] font-black text-zinc-500 uppercase tracking-[0.3em]">System Access Fee</p>
-                        <p className="text-4xl font-black text-white italic">₹5,999</p>
-                    </div>
-                    <Button className="w-full h-14 bg-accent text-black font-black uppercase text-[10px] tracking-[0.2em] rounded-none hover:bg-white transition-all shadow-xl">
-                        Procure Standard
-                    </Button>
-                    <div className="flex items-center justify-center gap-2 opacity-40">
-                        <Lock className="w-3 h-3" />
-                        <span className="text-[8px] font-black uppercase tracking-widest">Secure Infrastructure</span>
-                    </div>
+            <div className="bg-black/60 backdrop-blur-xl border border-white/10 p-10 rounded-2xl space-y-8">
+                <div className="space-y-4">
+                    {['Onboarding Acceleration', 'Error-Rate Reduction', 'Valuation Protection'].map(item => (
+                        <div key={item} className="flex items-center gap-3">
+                            <Zap className="w-4 h-4 text-accent" />
+                            <span className="text-[10px] font-black uppercase text-white/60 tracking-widest">{item}</span>
+                        </div>
+                    ))}
                 </div>
-                <p className="text-[10px] text-zinc-600 uppercase font-bold tracking-widest text-center italic">Lifetime License Issued Instantly</p>
+                <Button className="w-full h-16 bg-accent text-black font-black uppercase text-xs tracking-[0.2em] rounded-sm hover:scale-[1.02] transition-transform">
+                    Activate Profit Multiplier
+                </Button>
+                <p className="text-[9px] text-zinc-500 text-center uppercase font-bold tracking-widest leading-relaxed">
+                    Ready for Instant Deployment • No SaaS lock-in
+                </p>
             </div>
         </div>
     </div>
@@ -135,93 +176,101 @@ const Section = ({ children, className }: { children: React.ReactNode, className
     </section>
 );
 
-const mockText = `Operational drift is the silent killer of enterprise value. It begins when a busy manager skips a single refrigeration log on a Friday night. It continues when a sick employee is pressured to "power through" a short shift. It normalizes when shortcuts become the standard. Individually, these lapses are minor. Collectively, they become a multi-million dollar exposure.
-
-By 2020, the penalty for this acceleration was a $25 million federal fine—the largest in U.S. history for a food safety case. The real cost lived in billions of lost market capitalization and the erosion of customer trust. True leadership is building a machine that thrives even when the operators change. Documentation is defense—and defense must be systemic, not reactive.`;
-
 export default function TempDesignClientPage() {
     return (
         <main className="flex-1 pb-48 bg-zinc-950">
             {/* LAB HEADER */}
-            <Section className="text-center pt-24 pb-16">
-                <Badge variant="outline" className="text-primary border-primary/30 mb-6 px-6 py-2 rounded-full text-[11px] font-black tracking-[0.3em] uppercase">Editorial Lab V9</Badge>
+            <Section className="text-center pt-24 pb-16 border-b border-white/5">
+                <Badge variant="outline" className="text-primary border-primary/30 mb-6 px-6 py-2 rounded-full text-[11px] font-black tracking-[0.3em] uppercase">Editorial Strategy V10</Badge>
                 <h1 className="text-5xl md:text-7xl font-black font-headline text-white tracking-tighter uppercase mb-6 italic leading-none">The Executive Flow</h1>
                 <p className="text-xl text-zinc-400 max-w-3xl mx-auto font-medium leading-relaxed">
-                    Final refinement of hero aspect ratios (16:9 News Style) and a comparison of three executive procurement CTAs.
+                    Comparing four Psychologically-Driven CTAs. No pricing displayed to maintain authority framing.
                 </p>
             </Section>
 
             {/* PREVIEW CONTAINER */}
-            <Section className="pt-0">
-                <Tabs defaultValue="layout" className="w-full">
+            <Section className="pt-16">
+                <Tabs defaultValue="ctas" className="w-full">
                     <div className="flex justify-center mb-16">
                         <TabsList className="bg-white/5 border border-white/10 p-2 h-16 rounded-full">
-                            <TabsTrigger value="layout" className="rounded-full px-10 data-[state=active]:bg-white/10 data-[state=active]:text-primary font-bold uppercase text-[11px] tracking-[0.2em]">1. News Layout</TabsTrigger>
-                            <TabsTrigger value="ctas" className="rounded-full px-10 data-[state=active]:bg-white/10 data-[state=active]:text-accent font-bold uppercase text-[11px] tracking-[0.2em]">2. CTA Comparisons</TabsTrigger>
+                            <TabsTrigger value="ctas" className="rounded-full px-10 data-[state=active]:bg-white/10 data-[state=active]:text-primary font-bold uppercase text-[11px] tracking-[0.2em]">1. Resolution CTAs</TabsTrigger>
+                            <TabsTrigger value="layout" className="rounded-full px-10 data-[state=active]:bg-white/10 data-[state=active]:text-accent font-bold uppercase text-[11px] tracking-[0.2em]">2. News Layout</TabsTrigger>
                         </TabsList>
                     </div>
 
                     <div className="bg-black/40 border border-white/5 rounded-[4rem] p-10 md:p-24 shadow-2xl min-h-[1000px]">
                         
-                        {/* FINAL LAYOUT SELECTION: EXECUTIVE NARRATIVE */}
-                        <TabsContent value="layout" className="mt-0 outline-none">
-                            <div className="max-w-4xl mx-auto space-y-16">
-                                <div className="space-y-8">
-                                    <h3 className="text-4xl font-black font-headline text-white tracking-tighter uppercase italic">The Forensic Standard</h3>
-                                    <p className="text-2xl text-zinc-300 leading-[1.8] font-medium">{mockText}</p>
+                        {/* TAB 1: STRATEGIC RESOLUTIONS */}
+                        <TabsContent value="ctas" className="mt-0 outline-none space-y-40">
+                            
+                            {/* CASE 1 */}
+                            <div className="space-y-12">
+                                <div className="text-center">
+                                    <Badge variant="secondary" className="mb-4 px-4 py-1">Case: Resignation Risk</Badge>
+                                    <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">Target: Founders & SME Owners</h4>
                                 </div>
-
-                                {/* EXHIBIT IMAGE: Rectangular "News Report" format (16:9) */}
-                                <div className="py-40 text-center space-y-6">
-                                    <figure className="inline-block max-w-3xl">
-                                        <img 
-                                            src="https://i.postimg.cc/NjLYGpvy/chipotle1.jpg" 
-                                            alt="Forensic Evidence" 
-                                            className="w-full aspect-video object-cover rounded-2xl border border-white/10 shadow-2xl"
-                                        />
-                                        <figcaption className="mt-8 text-[11px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit A: Visualized Operational Decay (16:9 Aspect Ratio)</figcaption>
-                                    </figure>
-                                </div>
-
-                                <div className="space-y-8">
-                                    <p className="text-2xl text-zinc-300 leading-[1.8]">Well-documented operations increase valuation multiples and improve investor confidence. Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine. Complexity without documentation is exposure.</p>
-                                </div>
-                                
-                                <CTA_Improv_1 />
+                                <CTA_Resignation />
                             </div>
+
+                            {/* CASE 2 */}
+                            <div className="space-y-12">
+                                <div className="text-center">
+                                    <Badge variant="secondary" className="mb-4 px-4 py-1">Case: Operational Drift</Badge>
+                                    <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">Target: Compliance & Quality Heads</h4>
+                                </div>
+                                <CTA_Drift />
+                            </div>
+
+                            {/* CASE 3 */}
+                            <div className="space-y-12">
+                                <div className="text-center">
+                                    <Badge variant="secondary" className="mb-4 px-4 py-1">Case: Patient Safety</Badge>
+                                    <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">Target: Healthcare & High-Risk Institutional</h4>
+                                </div>
+                                <CTA_Safety />
+                            </div>
+
+                            {/* CASE 4 */}
+                            <div className="space-y-12">
+                                <div className="text-center">
+                                    <Badge variant="secondary" className="mb-4 px-4 py-1">Case: Operational ROI</Badge>
+                                    <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">Target: CFOs & Investors</h4>
+                                </div>
+                                <CTA_ROI />
+                            </div>
+
                         </TabsContent>
 
-                        {/* OPTION 2: CTA COMPARISONS */}
-                        <TabsContent value="ctas" className="mt-0 outline-none space-y-48 py-16">
-                            <div className="max-w-5xl mx-auto space-y-48">
-                                
-                                <div className="space-y-12">
-                                    <div className="text-center">
-                                        <Badge variant="secondary" className="mb-4 px-4 py-1">Concept A</Badge>
-                                        <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">The "Strategic Solution"</h4>
-                                        <p className="text-[11px] text-zinc-500 uppercase mt-2 tracking-widest">Focus: No Price / Curiosity & Tailoring</p>
-                                    </div>
-                                    <CTA_Improv_1 />
+                        {/* TAB 2: NEWS LAYOUT PREVIEW */}
+                        <TabsContent value="layout" className="mt-0 outline-none max-w-4xl mx-auto space-y-16">
+                            <div className="space-y-8">
+                                <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.3em] text-primary">
+                                    <FileCheck className="w-4 h-4" /> Technical Analysis
                                 </div>
+                                <h3 className="text-5xl md:text-7xl font-black font-headline text-white tracking-tighter uppercase italic leading-none">The $25 Million Burrito</h3>
+                                <p className="text-2xl text-zinc-300 leading-[1.8] font-medium border-l-2 border-primary/20 pl-8">
+                                    Operational drift is the silent killer of enterprise value. It begins when a busy manager skips a single refrigeration log on a Friday night. 
+                                </p>
+                            </div>
 
-                                <div className="space-y-12">
-                                    <div className="text-center">
-                                        <Badge variant="secondary" className="mb-4 px-4 py-1">Concept B</Badge>
-                                        <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">The "Institutional Backbone"</h4>
-                                        <p className="text-[11px] text-zinc-500 uppercase mt-2 tracking-widest">Focus: With Price / Infrastructure & Authority</p>
-                                    </div>
-                                    <CTA_Improv_2 />
-                                </div>
+                            {/* EXHIBIT IMAGE: Rectangular "News Report" format (16:9) */}
+                            <div className="py-40 text-center space-y-6">
+                                <figure className="inline-block max-w-3xl">
+                                    <img 
+                                        src="https://i.postimg.cc/NjLYGpvy/chipotle1.jpg" 
+                                        alt="Forensic Evidence" 
+                                        className="w-full aspect-video object-cover rounded-2xl border border-white/10 shadow-2xl"
+                                    />
+                                    <figcaption className="mt-8 text-[11px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit A: Visualized Operational Decay (16:9 Aspect Ratio)</figcaption>
+                                </figure>
+                            </div>
 
-                                <div className="space-y-12">
-                                    <div className="text-center">
-                                        <Badge variant="secondary" className="mb-4 px-4 py-1">Concept C</Badge>
-                                        <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">The "Forensic Blueprint"</h4>
-                                        <p className="text-[11px] text-zinc-500 uppercase mt-2 tracking-widest">Focus: With Price / Audit Standards & Verification</p>
-                                    </div>
-                                    <CTA_Improv_3 />
-                                </div>
-
+                            <div className="space-y-8">
+                                <p className="text-2xl text-zinc-300 leading-[1.8]">Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine. Complexity without documentation is exposure.</p>
+                            </div>
+                            
+                            <div className="pt-24">
+                                <CTA_Drift />
                             </div>
                         </TabsContent>
 
