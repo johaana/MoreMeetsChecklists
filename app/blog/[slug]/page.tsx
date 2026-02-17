@@ -9,7 +9,7 @@ import type { Metadata } from 'next';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { ArrowRight, Clock, User, ChevronLeft, ShieldCheck, FileText } from 'lucide-react';
+import { ArrowRight, Clock, User, ChevronLeft, ShieldCheck, FileText, FileSearch } from 'lucide-react';
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -57,12 +57,12 @@ export default async function BlogPostPage({ params }: Props) {
       <SiteHeader />
       <main className="flex-1">
         <article className="pb-24">
-          {/* Magazine Journalistic Header */}
+          {/* Journalistic Hero Header */}
           <header className="w-full pt-12 pb-12 border-b border-white/5 bg-alternate-background/50">
             <div className="container px-4 md:px-6">
               <div className="max-w-6xl mx-auto">
                 <Link href="/blog" className="inline-flex items-center text-primary/60 text-[10px] font-black uppercase tracking-[0.3em] mb-10 hover:text-primary transition-colors">
-                    <ChevronLeft className="w-3 h-3 mr-1" /> Back to Intelligence Hub
+                    <ChevronLeft className="w-3 h-3 mr-1" /> Intelligence Hub
                 </Link>
                 
                 <div className="grid lg:grid-cols-[1fr,450px] gap-12 items-start">
@@ -76,11 +76,11 @@ export default async function BlogPostPage({ params }: Props) {
                       </span>
                     </div>
                     
-                    <h1 className="text-4xl md:text-6xl font-black font-headline text-primary-text leading-[1.05] tracking-tighter">
+                    <h1 className="text-4xl md:text-6xl font-black font-headline text-primary-text leading-[1.05] tracking-tighter uppercase italic">
                       {post.title}
                     </h1>
                     
-                    <p className="text-lg md:text-xl text-secondary-text leading-relaxed font-medium max-w-2xl">
+                    <p className="text-lg md:text-xl text-secondary-text leading-relaxed font-medium max-w-2xl border-l-2 border-primary/20 pl-6">
                       {post.description}
                     </p>
 
@@ -93,7 +93,7 @@ export default async function BlogPostPage({ params }: Props) {
 
                   {post.imageUrl && (
                     <div className="relative">
-                      <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-white/10 shadow-xl bg-black">
+                      <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-white/10 shadow-2xl bg-black">
                         <img
                           src={post.imageUrl}
                           alt={post.title}
@@ -109,42 +109,55 @@ export default async function BlogPostPage({ params }: Props) {
           </header>
 
           <div className="container px-4 md:px-6 mt-16 relative z-20">
-            <div className="max-w-3xl mx-auto">
-              {/* Main Editorial Content */}
+            <div className="max-w-2xl mx-auto">
               <div className="bg-transparent">
+                {/* 
+                    "OUTSET EVIDENCE" LAYOUT:
+                    Images in the dangerouslySetInnerHTML will have styles 
+                    targeting '-mx-4 md:-mx-32' to bleed into the margins.
+                */}
                 <div 
                   className="prose prose-lg dark:prose-invert max-w-none 
                     prose-headings:font-headline prose-headings:text-primary-text prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase prose-headings:mt-16 prose-headings:mb-8
-                    prose-p:text-secondary-text prose-p:leading-[1.7] prose-p:mb-8 prose-p:text-lg
-                    prose-strong:text-primary-text prose-strong:font-bold
-                    prose-img:rounded-sm prose-img:shadow-lg prose-img:my-12 prose-img:border prose-img:border-white/10
-                    prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-white/[0.02] prose-blockquote:px-8 prose-blockquote:py-6 prose-blockquote:rounded-r-lg prose-blockquote:italic prose-blockquote:text-xl prose-blockquote:text-primary-text prose-blockquote:my-12
-                    prose-ul:space-y-3 prose-li:text-secondary-text
+                    prose-p:text-secondary-text prose-p:leading-[1.8] prose-p:mb-10 prose-p:text-lg
+                    prose-strong:text-primary-text prose-strong:font-black
+                    prose-img:w-screen prose-img:max-w-[calc(100%+2rem)] md:prose-img:max-w-[calc(100%+16rem)] prose-img:-mx-4 md:prose-img:-mx-32 prose-img:rounded-sm prose-img:shadow-2xl prose-img:my-16 prose-img:border prose-img:border-white/10
+                    prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-white/[0.02] prose-blockquote:px-10 prose-blockquote:py-8 prose-blockquote:rounded-r-lg prose-blockquote:italic prose-blockquote:text-2xl prose-blockquote:text-primary-text prose-blockquote:my-16 prose-blockquote:font-medium
+                    prose-ul:space-y-4 prose-li:text-secondary-text
                     "
                   dangerouslySetInnerHTML={{ __html: post.content }} 
                 />
               </div>
 
-              {/* Strategic CTA - Refined & Compact */}
+              {/* Refined Option 2: The Strategic Solution CTA */}
               {relatedPack && (
-                <div className="mt-24 pt-16 border-t border-white/5">
-                    <Card className="overflow-hidden bg-white/[0.02] border border-white/5 rounded-xl p-8 relative group hover:border-primary/20 transition-all duration-500">
-                        <div className="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity">
-                            <ShieldCheck className="w-32 h-32" />
+                <div className="mt-32 pt-16 border-t border-white/5 relative group">
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
+                    <Card className="overflow-hidden bg-black border border-white/10 rounded-2xl p-8 md:p-12 relative z-10">
+                        <div className="absolute top-0 right-0 p-8 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity pointer-events-none">
+                            <ShieldCheck className="w-48 h-48" />
                         </div>
-                        <div className="grid md:grid-cols-[1fr,240px] gap-8 items-center relative z-10">
-                            <div className="space-y-4">
-                                <Badge variant="outline" className="text-[9px] font-black border-primary/30 text-primary uppercase tracking-widest px-2 py-0.5 rounded-none">Structural Reference</Badge>
-                                <h2 className="text-2xl font-black font-headline tracking-tighter text-primary-text">{relatedPack.title}</h2>
+                        <div className="flex flex-col md:flex-row gap-12 items-center justify-between">
+                            <div className="space-y-4 flex-1">
+                                <Badge variant="outline" className="text-[9px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] px-3 py-1 rounded-none">Structural Reference</Badge>
+                                <h2 className="text-3xl font-black font-headline tracking-tighter text-primary-text uppercase italic">{relatedPack.title}</h2>
                                 <p className="text-sm text-secondary-text leading-relaxed max-w-md">
-                                    The expert-built framework designed to prevent the exact failure points analyzed in this debrief. Procure the full audit-ready toolkit below.
+                                    Deploy the verified, audit-ready framework designed to eliminate the exact failure points analyzed in this debrief. Procure the full technical asset below.
                                 </p>
+                                <div className="flex items-center gap-4 pt-2">
+                                    <div className="flex items-center gap-2 text-[10px] font-black uppercase text-white/30 tracking-widest">
+                                        <div className="w-1 h-1 rounded-full bg-primary" /> Excel Format
+                                    </div>
+                                    <div className="flex items-center gap-2 text-[10px] font-black uppercase text-white/30 tracking-widest">
+                                        <div className="w-1 h-1 rounded-full bg-primary" /> Instant Delivery
+                                    </div>
+                                </div>
                             </div>
-                            <div className="flex flex-col gap-4">
-                                <Button asChild size="lg" className="w-full h-12 bg-primary text-black font-black uppercase text-xs tracking-widest shadow-lg hover:scale-[1.02] transition-transform">
-                                    <Link href={`/packs/${relatedPack.id}`}>Procure Toolkit <ArrowRight className="ml-2 w-4 h-4"/></Link>
+                            <div className="flex flex-col gap-4 shrink-0 w-full md:w-64">
+                                <Button asChild size="lg" className="w-full h-14 bg-primary text-black font-black uppercase text-xs tracking-widest shadow-xl hover:scale-[1.02] transition-transform">
+                                    <Link href={`/packs/${relatedPack.id}`}>Procure Asset <ArrowRight className="ml-2 w-4 h-4"/></Link>
                                 </Button>
-                                <p className="text-[9px] font-bold uppercase tracking-widest text-center opacity-40">Excel Format • Instant Access</p>
+                                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-center opacity-40 italic">MMA-2025 Standard</p>
                             </div>
                         </div>
                     </Card>

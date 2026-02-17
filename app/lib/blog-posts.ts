@@ -81,7 +81,7 @@ export const blogPosts: BlogPost[] = [
           
           <p>Foodborne illness is not rare. The CDC estimates that roughly 48 million Americans experience foodborne illnesses each year. For most brands, incidents are isolated and quickly forgotten. But this wasn’t most brands. This was Chipotle.</p>
           
-          <p>By 2015, Chipotle had transformed itself from a fast-casual chain into a cultural symbol. “Food With Integrity” wasn’t a slogan — it was a promise. It implied that ingredients were cleaner, sourcing was ethical, and operations were superior to traditional fast food. The brand had scaled rapidly. Revenue was climbing. Investors admired the narrative. And then the illnesses multiplied.</p>
+          <p>By 2015, Chipotle had transformed itself from a fast-casual chain into a cultural symbol. “Food With Integrity” wasn’t a slogan — it was a promise. It implied that ingredients were cleaner, sourcing was ethical, and operations were superior to traditional fast food.</p>
         </section>
 
         <img src="https://i.postimg.cc/MpXxZdJf/chipotle2.png" alt="Forensic inspection" />
@@ -163,12 +163,12 @@ export const blogPosts: BlogPost[] = [
       tags: ["Efficiency", "Asset Valuation"],
       relatedPackId: "corporate_legal_compliance_starter_kit",
       description: "Most executives view SOPs as a 'compliance tax'. They are wrong. This is the financial study of how structured operations drive enterprise value.",
-      imageUrl: "https://i.postimg.cc/nXvg5sjG/ROI.png",
+      imageUrl: "https://i.postimg.cc/qvYrNypS/ROI.png",
       content: `
         <section>
           <p class="lead font-bold text-xl text-primary mb-10 italic">Most founders see SOPs as compliance. CFOs see them as overhead. But structured operations are revenue multipliers. Chaos has a measurable cost.</p>
           
-          <p>Turnover alone costs U.S. businesses over $1 trillion annually. Much of it is tied to unclear expectations and poor systems. McKinsey research suggests that nearly 20% of a worker's time is spent looking for internal information or tracking down how to do a task. This is the <strong>Inefficiency Tax</strong> that every unorganized business pays every single day.</p>
+          <p>Turnover alone costs U.S. businesses over $1 trillion annually. Much of it is tied to unclear expectations and poor systems. McKinsey research suggests that nearly 20% of a worker's time is spent looking for internal information or tracking down how to do a task.</p>
         </section>
 
         <img src="https://i.postimg.cc/L8hR4NFV/cost-of-no-sops-comparison.png" alt="The Inefficiency Tax" />
