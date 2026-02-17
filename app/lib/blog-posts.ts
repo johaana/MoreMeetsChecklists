@@ -75,7 +75,7 @@ export const blogPosts: BlogPost[] = [
           <p>Foodborne illness is not rare. The CDC estimates that roughly 48 million Americans experience it each year. For most brands, incidents are isolated. But this wasn’t most brands. This was Chipotle—the poster child for "Food With Integrity." The crisis was not just a failure of biology; it was a failure of <strong>systems</strong>.</p>
         </section>
 
-        <img src="https://i.postimg.cc/MpXxZdJf/chipotle2.png" alt="Forensic inspection of kitchen" />
+        <img src="https://i.postimg.cc/MpXxZdJf/chipotle2.png" alt="Forensic Inspection Exhibit" />
 
         <h2>The Anatomy of Operational Drift</h2>
         
@@ -89,14 +89,14 @@ export const blogPosts: BlogPost[] = [
           </blockquote>
         </section>
 
-        <img src="https://i.postimg.cc/g2rdcNb6/chipotle3.jpg" alt="Kitchen compliance and preparation" />
+        <img src="https://i.postimg.cc/g2rdcNb6/chipotle3.jpg" alt="Kitchen Protocol Audit" />
 
         <h2>The Compound Cost of Routine Lapses</h2>
         <section>
           <p>Pathogens exploit inconsistency. They do not care about branding or "integrity" slogans. Chipotle’s growth model relied on decentralized execution. That worked when discipline was tight. It became fragile when verification weakened. In 2020, Chipotle agreed to pay a $25 million federal fine — one of the largest ever imposed in a U.S. food safety case. Sales dropped nearly 30% in early 2016. The recovery cost years of marketing spend and trust-building.</p>
         </section>
 
-        <img src="https://i.postimg.cc/15vsZb2f/chipotle4.jpg" alt="The empty storefront following the crisis" />
+        <img src="https://i.postimg.cc/15vsZb2f/chipotle4.jpg" alt="Market Impact Visual" />
 
         <h2>Masterclass Lesson: Drift Prevention</h2>
         <section>
@@ -146,7 +146,7 @@ export const blogPosts: BlogPost[] = [
       tags: ["Efficiency", "Asset Valuation"],
       relatedPackId: "corporate_legal_compliance_starter_kit",
       description: "Most executives view SOPs as a 'compliance tax'. They are wrong. This is the financial study of how structured operations drive enterprise value.",
-      imageUrl: "https://i.postimg.cc/nXvg5sjG/ROI.png",
+      imageUrl: "https://i.postimg.cc/qvYrNypS/ROI.png",
       content: `
         <section>
           <p class="lead font-black text-2xl text-primary mb-12 italic">Most founders see SOPs as compliance. CFOs see them as overhead. But structured operations are revenue multipliers. Chaos has a measurable cost.</p>
@@ -154,7 +154,7 @@ export const blogPosts: BlogPost[] = [
           <p>Turnover alone costs U.S. businesses over $1 trillion annually. Much of it is tied to unclear expectations and poor systems. McKinsey research suggests that nearly 20% of a worker's time is spent looking for internal information or tracking down how to do a task. This is the "Inefficiency Tax" that kills margins in growing companies.</p>
         </section>
 
-        <img src="https://i.postimg.cc/L8hR4NFV/cost-of-no-sops-comparison.png" alt="The financial comparison of no-SOP environments" />
+        <img src="https://i.postimg.cc/L8hR4NFV/cost-of-no-sops-comparison.png" alt="Operational Margin Comparison" />
 
         <h2>The Profit Equation</h2>
         
@@ -164,7 +164,7 @@ export const blogPosts: BlogPost[] = [
           <p>Data-driven onboarding reduces the time-to-competency for new hires by 30-50%. Every day a new hire is "guessing" is a day your margin is leaking. In a scaled environment, these fractions of a percent compound into massive bottom-line gains. Systemization turns a variable cost (training) into a fixed asset (process).</p>
         </section>
 
-        <img src="https://i.postimg.cc/dVXFhrJN/sop-benefits-illustrated.png" alt="Graphic illustrating the systemic benefits of SOPs" />
+        <img src="https://i.postimg.cc/dVXFhrJN/sop-benefits-illustrated.png" alt="Systemic Advantage Mapping" />
 
         <h2>From Compliance to Valuation</h2>
         <section>
