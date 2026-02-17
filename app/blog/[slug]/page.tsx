@@ -57,15 +57,15 @@ export default async function BlogPostPage({ params }: Props) {
       <SiteHeader />
       <main className="flex-1">
         <article className="pb-32">
-          {/* Executive Hero Header */}
+          {/* Executive Hero Header - Journalistic News Style */}
           <header className="w-full pt-16 pb-16 border-b border-white/5 bg-alternate-background/30">
             <div className="container px-4 md:px-6">
-              <div className="max-w-5xl mx-auto">
+              <div className="max-w-6xl mx-auto">
                 <Link href="/blog" className="inline-flex items-center text-primary/60 text-[10px] font-black uppercase tracking-[0.3em] mb-12 hover:text-primary transition-colors">
                     <ChevronLeft className="w-3 h-3 mr-1" /> Intelligence Hub
                 </Link>
                 
-                <div className="grid lg:grid-cols-[1fr,450px] gap-16 items-center">
+                <div className="grid lg:grid-cols-[1fr,550px] gap-16 items-center">
                   <div className="space-y-8">
                     <div className="flex items-center gap-4">
                       <Badge variant="outline" className="text-primary border-primary/30 py-1 px-4 uppercase tracking-[0.2em] text-[9px] font-black rounded-full">
@@ -93,7 +93,8 @@ export default async function BlogPostPage({ params }: Props) {
 
                   {post.imageUrl && (
                     <div className="relative group hidden lg:block">
-                      <div className="relative aspect-square overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-black">
+                      {/* Rectangular "News Report" Aspect Ratio */}
+                      <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-black">
                         <img
                           src={post.imageUrl}
                           alt={post.title}
@@ -108,6 +109,7 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           </header>
 
+          {/* Expansive Executive Flow Layout */}
           <div className="container px-4 md:px-6 mt-24 relative z-20">
             <div className="max-w-4xl mx-auto">
               <div 
@@ -115,14 +117,14 @@ export default async function BlogPostPage({ params }: Props) {
                   prose-headings:font-headline prose-headings:text-primary-text prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase prose-headings:mt-24 prose-headings:mb-12 prose-headings:italic
                   prose-p:text-secondary-text prose-p:leading-[1.8] prose-p:mb-12 prose-p:text-xl
                   prose-strong:text-primary-text prose-strong:font-black
-                  prose-img:max-w-xl prose-img:mx-auto prose-img:rounded-xl prose-img:shadow-2xl prose-img:my-32 prose-img:border prose-img:border-white/10
+                  prose-img:max-w-2xl prose-img:mx-auto prose-img:rounded-xl prose-img:shadow-2xl prose-img:my-32 prose-img:border prose-img:border-white/10
                   prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-white/[0.02] prose-blockquote:px-12 prose-blockquote:py-10 prose-blockquote:rounded-r-2xl prose-blockquote:italic prose-blockquote:text-2xl prose-blockquote:text-primary-text prose-blockquote:my-24 prose-blockquote:font-medium
                   prose-ul:space-y-6 prose-li:text-secondary-text prose-li:text-lg
                   "
                 dangerouslySetInnerHTML={{ __html: post.content }} 
               />
 
-              {/* Refined Institutional Access CTA */}
+              {/* Dynamic Pack-Specific Procurement Asset */}
               <div className="mt-48 pt-24 border-t border-white/5 relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
                   <Card className="overflow-hidden bg-black border border-white/10 rounded-3xl p-10 md:p-16 relative z-10">
@@ -135,7 +137,9 @@ export default async function BlogPostPage({ params }: Props) {
                                   <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.3em] px-4 py-1.5 rounded-none">Structural Solution</Badge>
                                   <span className="text-[10px] text-white/30 font-black uppercase tracking-widest italic">Includes 1 Tailored Customization</span>
                               </div>
-                              <h2 className="text-4xl md:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-none">{relatedPack ? relatedPack.title : 'Standard library'}</h2>
+                              <h2 className="text-4xl md:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-none">
+                                {relatedPack ? relatedPack.title : 'Operational Standard Library'}
+                              </h2>
                               <p className="text-base text-secondary-text leading-relaxed max-w-lg">
                                   Deploy the verified, audit-ready institutional backbone designed to eliminate the exact failure points analyzed in this debrief. Procure the technical infrastructure below.
                               </p>

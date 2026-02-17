@@ -24,7 +24,7 @@ const CTA_Improv_1 = () => (
             </div>
             <div className="space-y-6 relative z-10 flex-1">
                 <div className="flex items-center gap-4">
-                    <Badge variant="outline" className="text-[10px] font-black tracking-[0.3em] uppercase border-primary/30 text-primary px-4 py-1.5 rounded-none">Structural Fix</Badge>
+                    <Badge variant="outline" className="text-[10px] font-black tracking-[0.3em] uppercase border-primary/30 text-primary px-4 py-1.5 rounded-none">Strategic Solution</Badge>
                     <span className="text-[10px] text-white/40 font-black uppercase tracking-[0.2em] italic">Includes 1 Free Tailored Customization</span>
                 </div>
                 <h3 className="text-4xl md:text-5xl font-black text-white font-headline tracking-tighter uppercase italic leading-none">Operational Resilience <br className="hidden md:block" /> Framework</h3>
@@ -57,7 +57,7 @@ const CTA_Improv_2 = () => (
             </div>
             <h3 className="text-5xl md:text-6xl font-black font-headline text-white tracking-tighter uppercase leading-none italic">Operations <br />Control Backbone</h3>
             <p className="text-zinc-500 text-lg font-medium leading-relaxed max-w-md">
-                A non-SaaS, offline-first infrastructure for organizations where consistency is a non-negotiable requirement. Includes mandatory brand-alignment protocol.
+                A non-SaaS, offline-first infrastructure for organizations where consistency is a non-negotiable requirement. 
             </p>
             <div className="grid grid-cols-2 gap-x-12 gap-y-4">
                 {['Audit-Ready Standard', 'Fully Editable .xlsx', 'Unlimited Usage Rights', 'Offline Resilience'].map(item => (
@@ -97,10 +97,10 @@ export default function TempDesignClientPage() {
         <main className="flex-1 pb-48 bg-zinc-950">
             {/* LAB HEADER */}
             <Section className="text-center pt-24 pb-16">
-                <Badge variant="outline" className="text-primary border-primary/30 mb-6 px-6 py-2 rounded-full text-[11px] font-black tracking-[0.3em] uppercase">Editorial Lab V7</Badge>
+                <Badge variant="outline" className="text-primary border-primary/30 mb-6 px-6 py-2 rounded-full text-[11px] font-black tracking-[0.3em] uppercase">Editorial Lab V8</Badge>
                 <h1 className="text-5xl md:text-7xl font-black font-headline text-white tracking-tighter uppercase mb-6 italic leading-none">The Executive Flow</h1>
                 <p className="text-xl text-zinc-400 max-w-3xl mx-auto font-medium leading-relaxed">
-                    Showcasing the expansive reading width, isolated exhibit images, and high-impact CTA comparisons.
+                    Refined hero imagery (rectangular) and side-by-side executive CTA comparisons.
                 </p>
             </Section>
 
@@ -109,7 +109,7 @@ export default function TempDesignClientPage() {
                 <Tabs defaultValue="layout" className="w-full">
                     <div className="flex justify-center mb-16">
                         <TabsList className="bg-white/5 border border-white/10 p-2 h-16 rounded-full">
-                            <TabsTrigger value="layout" className="rounded-full px-10 data-[state=active]:bg-white/10 data-[state=active]:text-primary font-bold uppercase text-[11px] tracking-[0.2em]">1. Executive Layout</TabsTrigger>
+                            <TabsTrigger value="layout" className="rounded-full px-10 data-[state=active]:bg-white/10 data-[state=active]:text-primary font-bold uppercase text-[11px] tracking-[0.2em]">1. News Layout</TabsTrigger>
                             <TabsTrigger value="ctas" className="rounded-full px-10 data-[state=active]:bg-white/10 data-[state=active]:text-accent font-bold uppercase text-[11px] tracking-[0.2em]">2. CTA Comparisons</TabsTrigger>
                         </TabsList>
                     </div>
@@ -124,13 +124,13 @@ export default function TempDesignClientPage() {
                                     <p className="text-2xl text-zinc-300 leading-[1.8] font-medium">{mockText}</p>
                                 </div>
 
-                                {/* EXHIBIT IMAGE: Smaller, centered, with massive vertical room */}
+                                {/* EXHIBIT IMAGE: Rectangular "News Report" format */}
                                 <div className="py-40 text-center space-y-6">
-                                    <figure className="inline-block max-w-xl">
+                                    <figure className="inline-block max-w-2xl">
                                         <img 
                                             src="https://i.postimg.cc/NjLYGpvy/chipotle1.jpg" 
                                             alt="Forensic Evidence" 
-                                            className="w-full h-auto rounded-2xl border border-white/10 shadow-2xl"
+                                            className="w-full aspect-video object-cover rounded-2xl border border-white/10 shadow-2xl"
                                         />
                                         <figcaption className="mt-8 text-[11px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit A: Visualized Operational Decay</figcaption>
                                     </figure>
@@ -138,17 +138,6 @@ export default function TempDesignClientPage() {
 
                                 <div className="space-y-8">
                                     <p className="text-2xl text-zinc-300 leading-[1.8]">Well-documented operations increase valuation multiples and improve investor confidence. Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine. Complexity without documentation is exposure.</p>
-                                </div>
-
-                                <div className="py-40 text-center space-y-6">
-                                    <figure className="inline-block max-w-xl">
-                                        <img 
-                                            src="https://i.postimg.cc/L8hR4NFV/cost-of-no-sops-comparison.png" 
-                                            alt="Financial Logic" 
-                                            className="w-full h-auto rounded-2xl border border-white/10 shadow-2xl"
-                                        />
-                                        <figcaption className="mt-8 text-[11px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit B: The Cost of Undocumented Risk</figcaption>
-                                    </figure>
                                 </div>
                                 
                                 <CTA_Improv_1 />
@@ -161,16 +150,16 @@ export default function TempDesignClientPage() {
                                 
                                 <div className="space-y-12">
                                     <div className="text-center">
-                                        <Badge variant="secondary" className="mb-4 px-4 py-1">Improvisation 1</Badge>
-                                        <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">The "Strategic Narrative"</h4>
-                                        <p className="text-[11px] text-zinc-500 uppercase mt-2 tracking-widest">Focus: Customization & Resilience</p>
+                                        <Badge variant="secondary" className="mb-4 px-4 py-1">Strategy A</Badge>
+                                        <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">The "Strategic Solution"</h4>
+                                        <p className="text-[11px] text-zinc-500 uppercase mt-2 tracking-widest">Focus: Customization & Tailoring</p>
                                     </div>
                                     <CTA_Improv_1 />
                                 </div>
 
                                 <div className="space-y-12">
                                     <div className="text-center">
-                                        <Badge variant="secondary" className="mb-4 px-4 py-1">Improvisation 2</Badge>
+                                        <Badge variant="secondary" className="mb-4 px-4 py-1">Strategy B</Badge>
                                         <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">The "Control Backbone"</h4>
                                         <p className="text-[11px] text-zinc-500 uppercase mt-2 tracking-widest">Focus: Institutional Infrastructure</p>
                                     </div>
