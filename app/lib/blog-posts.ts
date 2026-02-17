@@ -22,7 +22,7 @@ export const blogPosts: BlogPost[] = [
       imageUrl: "https://i.postimg.cc/QdPDF1XM/resignation1.jpg",
       content: `
         <section>
-          <p class="lead font-black text-2xl text-primary mb-12 italic">It didn’t feel dramatic. No sirens. No lawsuits. No media coverage. Just a resignation email. Subject line: “Moving On.”</p>
+          <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">It didn’t feel dramatic. No sirens. No lawsuits. No media coverage. Just a resignation email. Subject line: “Moving On.”</p>
           
           <p>He had been there eleven years. He knew the vendors by their first names. He handled inspections with a calm that bordered on the supernatural. He always “just knew” what to check before an audit. He remembered which regulator preferred what documentation format, and he knew which freezer in the back warehouse tended to fluctuate during the monsoon season. Everyone — from the CEO to the floor staff — believed the system was safe. They weren't running on a system, though. They were running on an individual. When that person walked out, the company didn't just lose an employee. It lost its operating system.</p>
           
@@ -69,14 +69,14 @@ export const blogPosts: BlogPost[] = [
       imageUrl: "https://i.postimg.cc/NjLYGpvy/chipotle1.jpg",
       content: `
         <section>
-          <p class="lead font-black text-2xl text-primary mb-12 italic">On a chilly autumn afternoon in 2015, a handful of customers began reporting something that, at first glance, didn’t seem unusual. They felt sick. Within weeks, Chipotle's market value would drop by billions.</p>
+          <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">On a chilly autumn afternoon in 2015, a handful of customers began reporting something that, at first glance, didn’t seem unusual. They felt sick. Within weeks, Chipotle's market value would drop by billions.</p>
           
           <p>Foodborne illness is not rare. The CDC estimates that roughly 48 million Americans experience it each year. For most brands, incidents are isolated. But this wasn’t most brands. This was Chipotle—the poster child for "Food With Integrity." The crisis was not just a failure of biology; it was a failure of <strong>systems</strong>.</p>
         </section>
 
-        <figure class="my-32 text-center">
-          <img src="https://i.postimg.cc/MpXxZdJf/chipotle2.png" alt="Forensic Inspection Exhibit" class="max-w-3xl mx-auto rounded-xl border border-white/10 shadow-2xl" />
-          <figcaption class="mt-6 text-[10px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit A: Visualized Operational Decay</figcaption>
+        <figure class="my-16 md:my-32 text-center">
+          <img src="https://i.postimg.cc/MpXxZdJf/chipotle2.png" alt="Forensic Inspection Exhibit" class="w-full max-w-3xl mx-auto rounded-lg md:rounded-xl border border-white/10 shadow-2xl" />
+          <figcaption class="mt-4 md:mt-6 text-[8px] md:text-[10px] text-zinc-500 uppercase tracking-[0.2em] md:tracking-[0.3em] font-black italic">Exhibit A: Visualized Operational Decay</figcaption>
         </figure>
 
         <h2>The Anatomy of Operational Drift</h2>
@@ -91,9 +91,9 @@ export const blogPosts: BlogPost[] = [
           </blockquote>
         </section>
 
-        <figure class="my-32 text-center">
-          <img src="https://i.postimg.cc/g2rdcNb6/chipotle3.jpg" alt="Kitchen Protocol Audit" class="max-w-3xl mx-auto rounded-xl border border-white/10 shadow-2xl" />
-          <figcaption class="mt-6 text-[10px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit B: Evidence of Protocol Variance</figcaption>
+        <figure class="my-16 md:my-32 text-center">
+          <img src="https://i.postimg.cc/g2rdcNb6/chipotle3.jpg" alt="Kitchen Protocol Audit" class="w-full max-w-3xl mx-auto rounded-lg md:rounded-xl border border-white/10 shadow-2xl" />
+          <figcaption class="mt-4 md:mt-6 text-[8px] md:text-[10px] text-zinc-500 uppercase tracking-[0.2em] md:tracking-[0.3em] font-black italic">Exhibit B: Evidence of Protocol Variance</figcaption>
         </figure>
 
         <h2>The Compound Cost of Routine Lapses</h2>
@@ -101,9 +101,9 @@ export const blogPosts: BlogPost[] = [
           <p>Pathogens exploit inconsistency. They do not care about branding or "integrity" slogans. Chipotle’s growth model relied on decentralized execution. That worked when discipline was tight. It became fragile when verification weakened. In 2020, Chipotle agreed to pay a $25 million federal fine — one of the largest ever imposed in a U.S. food safety case.</p>
         </section>
 
-        <figure class="my-32 text-center">
-          <img src="https://i.postimg.cc/15vsZb2f/chipotle4.jpg" alt="Financial Consequence Mapping" class="max-w-3xl mx-auto rounded-xl border border-white/10 shadow-2xl" />
-          <figcaption class="mt-6 text-[10px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit C: Financial Consequence Mapping</figcaption>
+        <figure class="my-16 md:my-32 text-center">
+          <img src="https://i.postimg.cc/15vsZb2f/chipotle4.jpg" alt="Financial Consequence Mapping" class="w-full max-w-3xl mx-auto rounded-lg md:rounded-xl border border-white/10 shadow-2xl" />
+          <figcaption class="mt-4 md:mt-6 text-[8px] md:text-[10px] text-zinc-500 uppercase tracking-[0.2em] md:tracking-[0.3em] font-black italic">Exhibit C: Financial Consequence Mapping</figcaption>
         </figure>
 
         <h2>Masterclass Lesson: Drift Prevention</h2>
@@ -123,7 +123,7 @@ export const blogPosts: BlogPost[] = [
       imageUrl: "https://i.postimg.cc/HkKmrXTf/patient-safety1.jpg",
       content: `
         <section>
-          <p class="lead font-black text-2xl text-primary mb-12 italic">Healthcare doesn’t fail because doctors are careless. It fails because systems are inconsistent. The gap between policy and practice is where harm lives.</p>
+          <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">Healthcare doesn’t fail because doctors are careless. It fails because systems are inconsistent. The gap between policy and practice is where harm lives.</p>
           
           <p>Medical error has been cited in research as potentially the third leading cause of death in the United States. Not lack of intelligence—process variability. Hospitals are complex machines where thousands of tiny tasks must align perfectly to ensure a safe outcome. This is the core challenge of modern clinical quality: <strong>Standardizing brilliance.</strong> In a high-stakes environment, brilliance is a variable; a structured system is a constant.</p>
         </section>
@@ -157,14 +157,14 @@ export const blogPosts: BlogPost[] = [
       imageUrl: "https://i.postimg.cc/qvYrNypS/ROI.png",
       content: `
         <section>
-          <p class="lead font-black text-2xl text-primary mb-12 italic">Most founders see SOPs as compliance. CFOs see them as overhead. But structured operations are revenue multipliers. Chaos has a measurable cost.</p>
+          <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">Most founders see SOPs as compliance. CFOs see them as overhead. But structured operations are revenue multipliers. Chaos has a measurable cost.</p>
           
           <p>Turnover alone costs U.S. businesses over $1 trillion annually. Much of it is tied to unclear expectations and poor systems. McKinsey research suggests that nearly 20% of a worker's time is spent looking for internal information or tracking down how to do a task. This is the "Inefficiency Tax" that kills margins in growing companies.</p>
         </section>
 
-        <figure class="my-32 text-center">
-          <img src="https://i.postimg.cc/L8hR4NFV/cost-of-no-sops-comparison.png" alt="Operational Margin Comparison" class="max-w-3xl mx-auto rounded-xl border border-white/10 shadow-2xl" />
-          <figcaption class="mt-6 text-[10px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit A: The Cost of Undocumented Risk</figcaption>
+        <figure class="my-16 md:my-32 text-center">
+          <img src="https://i.postimg.cc/L8hR4NFV/cost-of-no-sops-comparison.png" alt="Operational Margin Comparison" class="w-full max-w-3xl mx-auto rounded-lg md:rounded-xl border border-white/10 shadow-2xl" />
+          <figcaption class="mt-4 md:mt-6 text-[8px] md:text-[10px] text-zinc-500 uppercase tracking-[0.2em] md:tracking-[0.3em] font-black italic">Exhibit A: The Cost of Undocumented Risk</figcaption>
         </figure>
 
         <h2>The Profit Equation</h2>
@@ -175,9 +175,9 @@ export const blogPosts: BlogPost[] = [
           <p>Data-driven onboarding reduces the time-to-competency for new hires by 30-50%. Every day a new hire is "guessing" is a day your margin is leaking. In a scaled environment, these fractions of a percent compound into massive bottom-line gains. Systemization turns a variable cost (training) into a fixed asset (process).</p>
         </section>
 
-        <figure class="my-32 text-center">
-          <img src="https://i.postimg.cc/dVXFhrJN/sop-benefits-illustrated.png" alt="Systemic Advantage Mapping" class="max-w-3xl mx-auto rounded-xl border border-white/10 shadow-2xl" />
-          <figcaption class="mt-6 text-[10px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit B: Structural Advantage Hierarchy</figcaption>
+        <figure class="my-16 md:my-32 text-center">
+          <img src="https://i.postimg.cc/dVXFhrJN/sop-benefits-illustrated.png" alt="Systemic Advantage Mapping" class="max-w-3xl mx-auto rounded-lg md:rounded-xl border border-white/10 shadow-2xl" />
+          <figcaption class="mt-4 md:mt-6 text-[8px] md:text-[10px] text-zinc-500 uppercase tracking-[0.2em] md:tracking-[0.3em] font-black italic">Exhibit B: Structural Advantage Hierarchy</figcaption>
         </figure>
 
         <h2>From Compliance to Valuation</h2>
