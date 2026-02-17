@@ -123,38 +123,36 @@ export default async function BlogPostPage({ params }: Props) {
               />
 
               {/* Refined Institutional Access CTA */}
-              {relatedPack && (
-                <div className="mt-48 pt-24 border-t border-white/5 relative group">
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
-                    <Card className="overflow-hidden bg-black border border-white/10 rounded-3xl p-10 md:p-16 relative z-10">
-                        <div className="absolute top-0 right-0 p-10 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity pointer-events-none">
-                            <Sparkles className="w-64 h-64" />
-                        </div>
-                        <div className="flex flex-col md:flex-row gap-16 items-center justify-between">
-                            <div className="space-y-6 flex-1">
-                                <div className="flex items-center gap-4">
-                                    <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.3em] px-4 py-1.5 rounded-none">Structural Solution</Badge>
-                                    <span className="text-[10px] text-white/30 font-black uppercase tracking-widest italic">Includes 1 Tailored Customization</span>
-                                </div>
-                                <h2 className="text-4xl md:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-none">{relatedPack.title}</h2>
-                                <p className="text-base text-secondary-text leading-relaxed max-w-lg">
-                                    Deploy the verified, audit-ready institutional backbone designed to eliminate the exact failure points analyzed in this debrief. Procure the technical infrastructure below.
-                                </p>
-                                <div className="flex items-center gap-8 text-[9px] font-black uppercase tracking-[0.2em] text-white/40 pt-4">
-                                    <span className="flex items-center gap-2"><Check className="w-4 h-4 text-primary"/> EXCEL FORMAT</span>
-                                    <span className="flex items-center gap-2"><Check className="w-4 h-4 text-primary"/> LIFETIME LICENSE</span>
-                                </div>
-                            </div>
-                            <div className="flex flex-col gap-6 shrink-0 w-full md:w-72">
-                                <Button asChild size="lg" className="w-full h-16 bg-primary text-black font-black uppercase text-xs tracking-[0.2em] shadow-2xl hover:scale-[1.02] transition-transform rounded-sm">
-                                    <Link href={`/packs/${relatedPack.id}`}>Procure Full Asset <ArrowRight className="ml-2 h-5 w-5"/></Link>
-                                </Button>
-                                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-center opacity-30 italic">Ready for Deployment</p>
-                            </div>
-                        </div>
-                    </Card>
-                </div>
-              )}
+              <div className="mt-48 pt-24 border-t border-white/5 relative group">
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
+                  <Card className="overflow-hidden bg-black border border-white/10 rounded-3xl p-10 md:p-16 relative z-10">
+                      <div className="absolute top-0 right-0 p-10 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity pointer-events-none">
+                          <Sparkles className="w-64 h-64" />
+                      </div>
+                      <div className="flex flex-col md:flex-row gap-16 items-center justify-between">
+                          <div className="space-y-6 flex-1">
+                              <div className="flex items-center gap-4">
+                                  <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.3em] px-4 py-1.5 rounded-none">Structural Solution</Badge>
+                                  <span className="text-[10px] text-white/30 font-black uppercase tracking-widest italic">Includes 1 Tailored Customization</span>
+                              </div>
+                              <h2 className="text-4xl md:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-none">{relatedPack ? relatedPack.title : 'Standard library'}</h2>
+                              <p className="text-base text-secondary-text leading-relaxed max-w-lg">
+                                  Deploy the verified, audit-ready institutional backbone designed to eliminate the exact failure points analyzed in this debrief. Procure the technical infrastructure below.
+                              </p>
+                              <div className="flex items-center gap-8 text-[9px] font-black uppercase tracking-[0.2em] text-white/40 pt-4">
+                                  <span className="flex items-center gap-2"><Check className="w-4 h-4 text-primary"/> EXCEL FORMAT</span>
+                                  <span className="flex items-center gap-2"><Check className="w-4 h-4 text-primary"/> LIFETIME LICENSE</span>
+                              </div>
+                          </div>
+                          <div className="flex flex-col gap-6 shrink-0 w-full md:w-72">
+                              <Button asChild size="lg" className="w-full h-16 bg-primary text-black font-black uppercase text-xs tracking-[0.2em] shadow-2xl hover:scale-[1.02] transition-transform rounded-sm">
+                                  <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'}>Procure Full Asset <ArrowRight className="ml-2 h-5 w-5"/></Link>
+                              </Button>
+                              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-center opacity-30 italic">Ready for Deployment</p>
+                          </div>
+                      </div>
+                  </Card>
+              </div>
             </div>
           </div>
         </article>
