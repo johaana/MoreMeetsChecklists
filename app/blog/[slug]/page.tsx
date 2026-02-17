@@ -8,7 +8,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Clock, User, Tag } from 'lucide-react';
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -34,7 +34,7 @@ export async function generateMetadata(
 
   return {
     metadataBase: new URL(siteUrl),
-    title: `${post.title} | MoreMeets™ Blog`,
+    title: `${post.title} | Black Box Debrief by MoreMeets™`,
     description: post.description,
     openGraph: {
       title: `${post.title} | MoreMeets™ Blog`,
@@ -72,76 +72,102 @@ export default async function BlogPostPage({ params }: Props) {
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <SiteHeader />
       <main className="flex-1">
-        <article>
-          <header className="relative w-full py-24 md:py-32 lg:py-48 bg-secondary/50 overflow-hidden">
-            <div className="absolute inset-0">
-              {post.imageUrl && (
-                <>
+        <article className="pb-24">
+          <header className="relative w-full py-24 md:py-32 lg:py-48 bg-black overflow-hidden">
+            {post.imageUrl && (
+              <div className="absolute inset-0 z-0">
                 <img
                   src={post.imageUrl}
                   alt={post.title}
-                  className="object-cover w-full h-full"
-                  style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}
+                  className="object-cover w-full h-full opacity-40 brightness-50"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
-                </>
-              )}
-            </div>
-            <div className="container px-4 md:px-6 relative z-10 text-center">
-              <div className="max-w-3xl mx-auto space-y-4">
-                <div className="flex flex-wrap items-center justify-center gap-2">
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+              </div>
+            )}
+            <div className="container px-4 md:px-6 relative z-10">
+              <div className="max-w-4xl mx-auto space-y-6">
+                <div className="flex flex-wrap gap-2">
                   {post.tags.map(tag => (
-                     <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`} className="inline-block">
-                      <Badge variant="secondary" className="bg-white/10 text-white backdrop-blur-sm cursor-pointer">
-                        {tag}
-                      </Badge>
-                    </Link>
+                    <Badge key={tag} variant="secondary" className="bg-primary/20 text-primary border-primary/30 backdrop-blur-md">
+                      {tag}
+                    </Badge>
                   ))}
                 </div>
-                <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl font-headline text-white drop-shadow-md">
+                <h1 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl font-headline text-white leading-[1.1]">
                   {post.title}
                 </h1>
-                <div className="flex items-center justify-center gap-4 text-sm text-white/80">
-                   <p>By {post.author}</p>
-                  <p>{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                   <p>{readingTime} min read</p>
+                <div className="flex flex-wrap items-center gap-6 text-sm font-bold text-white/60 uppercase tracking-widest">
+                   <span className="flex items-center gap-2"><User className="w-4 h-4 text-primary" /> {post.author}</span>
+                   <span className="flex items-center gap-2"><Clock className="w-4 h-4 text-primary" /> {readingTime} min read</span>
+                   <span>{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                 </div>
               </div>
             </div>
           </header>
 
-          <div className="container px-4 md:px-6 py-12 md:py-16">
-            <div className="grid lg:grid-cols-4 gap-12">
+          <div className="container px-4 md:px-6 -mt-12 relative z-20">
+            <div className="grid lg:grid-cols-12 gap-12 max-w-7xl mx-auto">
               
-              <div className="lg:col-span-3 prose prose-lg dark:prose-invert max-w-full prose-headings:font-headline prose-headings:text-primary prose-p:text-muted-foreground prose-a:text-accent prose-strong:text-foreground prose-p:my-6 prose-headings:my-10">
-                <div dangerouslySetInnerHTML={{ __html: post.content }} />
+              <div className="lg:col-span-8 bg-card border border-white/5 rounded-[2rem] p-8 md:p-12 shadow-2xl">
+                <div 
+                  className="prose prose-lg dark:prose-invert max-w-none 
+                    prose-headings:font-headline prose-headings:text-primary-text prose-headings:font-black prose-headings:tracking-tighter
+                    prose-p:text-secondary-text prose-p:leading-relaxed prose-p:mb-8
+                    prose-strong:text-primary-text prose-strong:font-black
+                    prose-img:rounded-3xl prose-img:shadow-2xl prose-img:my-16 prose-img:border prose-img:border-white/10
+                    prose-blockquote:border-l-8 prose-blockquote:border-primary prose-blockquote:bg-white/5 prose-blockquote:p-10 prose-blockquote:rounded-r-2xl prose-blockquote:italic prose-blockquote:text-2xl prose-blockquote:font-medium prose-blockquote:text-primary-text
+                    "
+                  dangerouslySetInnerHTML={{ __html: post.content }} 
+                />
               </div>
               
-              <aside className="lg:col-span-1 lg:sticky top-24 self-start">
-                  <div className="space-y-6">
+              <aside className="lg:col-span-4 space-y-8">
+                  <div className="sticky top-24 space-y-8">
                       {relatedPack && (
-                          <div className="p-6 border rounded-2xl bg-secondary/50">
-                              <h3 className="font-bold mb-4">Related Toolkit</h3>
-                              <div className="space-y-4">
-                                <h4 className="font-semibold">{relatedPack.title}</h4>
-                                <p className="text-sm text-muted-foreground">{relatedPack.description}</p>
-                                <Button asChild className="w-full">
-                                  <Link href={`/packs/${relatedPack.id}`}>View Pack <ArrowRight className="ml-2 w-4 h-4"/></Link>
+                          <Card className="overflow-hidden bg-primary text-primary-foreground border-none shadow-2xl rounded-3xl">
+                              <CardHeader className="pb-4">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <Badge variant="outline" className="text-[10px] font-black border-primary-foreground/30 text-primary-foreground">STRATEGIC ASSET</Badge>
+                                </div>
+                                <CardTitle className="text-2xl font-black font-headline tracking-tight">{relatedPack.title}</CardTitle>
+                              </CardHeader>
+                              <CardContent className="space-y-4">
+                                <p className="text-sm font-medium opacity-90">{relatedPack.description}</p>
+                                <div className="space-y-2">
+                                    {relatedPack.sampleItems.slice(0, 3).map((item, i) => (
+                                        <div key={i} className="flex items-start gap-2 text-xs font-bold">
+                                            <ArrowRight className="w-3 h-3 mt-0.5 shrink-0" />
+                                            <span>{item.text}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                              </CardContent>
+                              <CardFooter>
+                                <Button asChild className="w-full bg-white text-primary font-black uppercase hover:bg-white/90">
+                                  <Link href={`/packs/${relatedPack.id}`}>Procure toolkit <ArrowRight className="ml-2 w-4 h-4"/></Link>
                                 </Button>
-                              </div>
-                          </div>
+                              </CardFooter>
+                          </Card>
                       )}
-                      <div className="p-6 border rounded-2xl bg-secondary/50">
-                          <h3 className="font-bold mb-4">Explore More Topics</h3>
+
+                      <div className="p-8 border border-white/5 rounded-3xl bg-secondary/30 space-y-6">
+                          <h3 className="font-black font-headline text-xl text-primary-text uppercase tracking-tighter">Series Navigation</h3>
                            <div className="flex flex-wrap gap-2">
                               {Array.from(new Set(blogPosts.flatMap(p => p.tags))).map(tag => (
                                 <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`}>
-                                  <Badge variant="outline" className="cursor-pointer">
+                                  <Badge variant="outline" className="cursor-pointer hover:bg-primary/10 hover:border-primary/30 transition-colors">
                                     {tag}
                                   </Badge>
                                 </Link>
                               ))}
                           </div>
+                      </div>
+
+                      <div className="p-8 border border-white/5 rounded-3xl bg-card space-y-4">
+                          <h4 className="font-bold text-lg">About Black Box Debrief</h4>
+                          <p className="text-sm text-secondary-text leading-relaxed">
+                              An investigative series by MoreMeets™ deconstructing systemic operational failures to build more resilient organizations.
+                          </p>
                       </div>
                   </div>
               </aside>
