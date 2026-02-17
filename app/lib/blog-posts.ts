@@ -20,7 +20,7 @@ export const blogPosts: BlogPost[] = [
       tags: ["Operations", "Risk Management", "HR", "Institutional Memory"],
       relatedPackId: "facility_management_blueprint",
       description: "A psychological and financial study of Resignation Risk. When a key manager leaves, most companies lose their operating system. This is the analysis of personality-driven operations vs. institutional memory.",
-      imageUrl: "https://st2.depositphotos.com/1010613/7611/i/450/depositphotos_76114769-stock-photo-businessman-packing-plant-and-folders.jpg",
+      imageUrl: "https://i.postimg.cc/QdPDF1XM/resignation1.jpg",
       content: `
         <section class="mb-20">
           <p class="lead text-2xl font-black !leading-tight text-white mb-12 uppercase tracking-tighter">It didn’t feel dramatic. No alarms. No lawsuit. No media coverage. Just a resignation email. Subject line: <em>“Moving On.”</em></p>
@@ -72,9 +72,9 @@ export const blogPosts: BlogPost[] = [
         <section class="space-y-8">
           <p>The solution is not more "experience." The solution is <strong>Institutional Memory</strong>. This requires converting individual brilliance into permanent institutional infrastructure. It means moving from "Raj knows" to "The System knows."</p>
           
-          <p>This is where MoreMeets™ differentiates itself. We don't just list tasks; we build the logic of the role into the file. We include the *why* (the consequence) and the *how* (the trainer notes). We ensure that even if the person changes, the standard remains identical. By embedding these standards, you are creating an insurance policy against the inevitable day when your top talent moves on.</p>
+          <p>By embedding standards through clearly defined roles, frequency-based task mapping, and documented consequences, you create an insurance policy against the inevitable day when your top talent moves on.</p>
           
-          <p>Resignations are inevitable. Operational fragility is optional. Institutional memory should be embedded in clearly defined roles, frequency-based task mapping, and documented consequences. Don't wait for the resignation email to realize you were running on luck. True leadership is building a machine that thrives even when the operators change.</p>
+          <p>Resignations are inevitable. Operational fragility is optional. Don't wait for the resignation email to realize you were running on luck. True leadership is building a machine that thrives even when the operators change.</p>
         </section>
       `
     },
@@ -86,19 +86,21 @@ export const blogPosts: BlogPost[] = [
       tags: ["Food Safety", "Restaurants", "Compliance", "F&B"],
       relatedPackId: "restaurants",
       description: "A forensic analysis of Chipotle’s food safety crisis and the science of Operational Drift. Discover how billion-dollar brands collapse through small, routine lapses.",
-      imageUrl: "https://www.thespectrum.com/gcdn/-mm-/cb2f7de7de3cda377d4c3edad5573eee8cc9c04d/c%3D0-606-3261-2448/local/-/media/2015/12/08/StGeorge/StGeorge/635851705452865109-Chipotle-3.JPG",
+      imageUrl: "https://i.postimg.cc/NjLYGpvy/chipotle1.jpg",
       content: `
         <section class="mb-20">
           <p class="lead text-2xl font-black !leading-tight text-white mb-12 uppercase tracking-tighter">On a chilly autumn afternoon in 2015, a handful of customers in the Pacific Northwest began reporting something that, at first glance, didn’t seem unusual. They felt sick.</p>
           
-          <p>Foodborne illness is not rare in America. The CDC estimates that roughly 48 million Americans experience foodborne illnesses each year. For most brands, incidents are isolated, localized, and quickly forgotten. But this wasn’t most brands. This was Chipotle.</p>
+          <p>Foodborne illness is not rare in America. The CDC estimates that roughly 48 million Americans experience foodborne illnesses each year. For most brands, incidents are isolated, localized, and quickly forgotten.</p>
+          
+          <p>But this wasn’t most brands. This was Chipotle.</p>
           
           <p>By 2015, Chipotle Mexican Grill had transformed itself from a fast-casual chain into a cultural symbol. It wasn’t merely selling burritos. It was selling moral reassurance. “Food With Integrity” wasn’t a slogan — it was a promise. It implied that ingredients were cleaner, sourcing was ethical, and operations were superior to traditional fast food.</p>
           
           <p>The brand had scaled rapidly. Revenue was climbing. Investors admired the narrative. Customers trusted the philosophy. And then the illnesses multiplied. Reports spread across multiple states. E. coli. Norovirus. Salmonella. By the time the investigations concluded, more than 1,100 illnesses were linked to various outbreaks between 2015 and 2018.</p>
         </section>
 
-        <img src="https://cdn.hswstatic.com/gif/restaurant-inspect-1.jpg" alt="Kitchen safety inspection" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
+        <img src="https://i.postimg.cc/MpXxZdJf/chipotle2.png" alt="Operational gaps" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
 
         <h2 class="text-4xl md:text-5xl font-black font-headline text-primary-text tracking-tight uppercase border-b-4 border-primary pb-4 mb-12">The Anatomy of Operational Drift</h2>
         
@@ -111,25 +113,25 @@ export const blogPosts: BlogPost[] = [
             "Organizations rarely collapse because they lack rules. They falter because enforcement varies. Drift doesn't feel like negligence—it feels like adaptation."
           </blockquote>
 
-          <p>Multiply that across thousands of stores, and small deviations compound into systemic exposure. A busy Friday night leads to a delayed refrigeration log. A short-staffed shift leads to an assumption that “someone already checked.” Bacteria don't exploit your intentions; they exploit your gaps.</p>
+          <p>Multiply that across thousands of stores, and small deviations compound into systemic exposure. A busy Friday night. A short-staffed shift. A delayed refrigeration log. An assumption that “someone already checked.” Bacteria don't exploit your intentions; they exploit your gaps.</p>
         </section>
 
-        <img src="https://s.abcnews.com/images/International/coronavirus-sf-2-rt-rc-200317_hpEmbed_3x2_992.jpg" alt="Operational gaps" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
+        <img src="https://i.postimg.cc/g2rdcNb6/chipotle3.jpg" alt="Kitchen safety inspection" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
 
         <h2 class="text-3xl md:text-4xl font-bold font-headline text-primary-text uppercase tracking-tight mb-8">Scale Amplifies Small Weaknesses</h2>
         <section class="space-y-8">
           <p>When a company operates 2,000+ locations, even a 3% compliance deviation creates dozens of vulnerable environments. Foodborne pathogens are opportunistic—they do not care about your mission statement. Chipotle’s growth model relied on decentralized execution. That worked beautifully when discipline was tight. It became fragile when verification weakened.</p>
           
-          <p>In 2020, Chipotle agreed to pay a $25 million fine — one of the largest ever in a U.S. food safety case. The cost beyond the fine was billions in lost market capitalization and customer trust erosion. Recovery required centralized monitoring, DNA-based testing, and comprehensive retraining. Process discipline restored confidence eventually, but at enormous cost.</p>
+          <p>In 2020, Chipotle agreed to pay a $25 million fine — one of the largest ever in a U.S. food safety case. The cost beyond the fine was billions in lost market capitalization and customer trust erosion. Recovery required centralized monitoring, DNA-based testing, and comprehensive retraining.</p>
         </section>
 
-        <img src="https://eu-images.contentstack.com/v3/assets/bltea7aee2fca050a19/blt70dc3926080cb3bd/6725011d02f25f5ba889e165/Empty-Restaurant-Coronavirus.jpg?auto=webp&disable=upscale&format=jpg&quality=80&width=1280" alt="Operational stillness" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
+        <img src="https://i.postimg.cc/15vsZb2f/chipotle4.jpg" alt="Operational stillness" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
 
         <h2 class="text-3xl md:text-4xl font-bold font-headline text-primary-text uppercase tracking-tight mb-8">The Masterclass Lesson</h2>
         <section class="space-y-8">
-          <p>Food safety is not a compliance box. It is a daily discipline. The most dangerous sentence in operations is: “We’ve always done it this way.” High-performing brands fail not because they don’t know standards, but because they assume standards are self-executing. They are not. Execution requires clear ownership, relentless documentation, and frequent verification.</p>
+          <p>Food safety is not a compliance box. It is a daily discipline. The most dangerous sentence in operations is: “We’ve always done it this way.” High-performing brands fail not because they don’t know standards, but because they assume standards are self-executing. They are not.</p>
           
-          <p>In 2026, the risk is greater. A single incident spreads globally in hours. Documentation is defense—and defense must be systemic, not reactive. MoreMeets™ designs operational systems assuming humans drift and shortcuts happen. Our systems define every micro-task and state the consequence of omission, because one missed checklist item can cost millions more than the entire system investment.</p>
+          <p>Execution requires clear ownership, relentless documentation, and frequent verification. In 2026, the risk is greater. A single incident spreads globally in hours. Documentation is defense—and defense must be systemic, not reactive.</p>
         </section>
       `
     },
@@ -141,7 +143,7 @@ export const blogPosts: BlogPost[] = [
       tags: ["Healthcare", "Patient Safety", "Clinical Quality", "SOPs"],
       relatedPackId: "healthcare_and_hospital_operations",
       description: "Clinical excellence requires more than brilliant minds; it requires foolproof systems. Discover how the 'Checklist Manifesto' transformed medicine and why policy-practice gaps cost lives.",
-      imageUrl: "https://www.checklistboards.com/Images_products/Pre-Operative-Checklist-Thumb.jpg",
+      imageUrl: "https://i.postimg.cc/HkKmrXTf/patient-safety1.jpg",
       content: `
         <section class="mb-20">
           <p class="lead text-2xl font-black !leading-tight text-white mb-12 uppercase tracking-tighter">Healthcare doesn’t fail because doctors are careless. It fails because systems are inconsistent. The gap between policy and practice is where harm lives.</p>
@@ -169,8 +171,6 @@ export const blogPosts: BlogPost[] = [
         <section class="space-y-8">
           <p>In healthcare, missed tasks harm people. Documentation isn’t bureaucracy. It’s protection. MALPRACTICE exposure drops when you can provide a verifiable log of every safety check performed. It moves the hospital from a defensive posture to a proactive one. Reducing complications lowers length of stay and improves reimbursement outcomes while protecting brand reputation.</p>
           
-          <p>A structured SOP pack doesn't just pass an audit; it builds a culture where the 'Standard' is the baseline, not the goal. MoreMeets™ toolkits for healthcare are built on this 'Manifesto' philosophy, providing the structural framework—NABH and JCI aligned—that turns policy into practice. We clarify micro-tasks and embed trainer notes to prevent dependency on senior staff memory, ensuring operational failure doesn't become life-altering.</p>
-          
           <p>Ultimately, clinical excellence is the byproduct of relentless process discipline. Because in healthcare, the most dangerous thing you can do is assume the process is being followed without having the daily proof to back it up.</p>
         </section>
       `
@@ -183,17 +183,17 @@ export const blogPosts: BlogPost[] = [
       tags: ["Business Value", "ROI", "Efficiency", "COOs"],
       relatedPackId: "facility_management_blueprint",
       description: "Most executives view SOPs as a 'compliance tax'. They are wrong. This is the financial study of how structured operations drive enterprise value and exit multiples.",
-      imageUrl: "https://storage.googleapis.com/cdn-website-bolddesk/2024/08/ebdb19dd-minimalist-5-cycle-diagram-graph-1.webp",
+      imageUrl: "https://i.postimg.cc/qvYrNypS/ROI.png",
       content: `
         <section class="mb-20">
           <p class="lead text-2xl font-black !leading-tight text-white mb-12 uppercase tracking-tighter">Most founders see SOPs as compliance. CFOs see them as overhead. But structured operations are revenue multipliers. Chaos has a measurable cost.</p>
           
           <p>Turnover alone costs U.S. businesses over $1 trillion annually. Much of it is tied to unclear expectations and poor systems. McKinsey research suggests that nearly 20% of a worker's time is spent looking for internal information or tracking down how to do a task. This is the <strong>Inefficiency Tax</strong> that every unorganized business pays every single day.</p>
           
-          <p>When operations are undocumented, you're paying your most expensive employees—your managers—to act as "human reminders." This is a catastrophic misallocation of capital. A manager's time should be spent on growth and strategy, not on chasing tasks that should be self-executing.</p>
+          <p>When operations are undocumented, you're paying your most expensive employees—your managers—to act as "human reminders." This is a catastrophic misallocation of capital.</p>
         </section>
 
-        <img src="https://www.learnow.live/storage/uploads/1669966535-5-reasons-to-track-employee-training-in-the-onboarding-process-01.jpg" alt="Training metrics" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
+        <img src="https://i.postimg.cc/L8hR4NFV/cost-of-no-sops-comparison.png" alt="Cost comparison" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
 
         <h2 class="text-4xl md:text-5xl font-black font-headline text-primary-text tracking-tight uppercase border-b-4 border-primary pb-4 mb-12">The Profit Equation</h2>
         
@@ -207,18 +207,16 @@ export const blogPosts: BlogPost[] = [
           </blockquote>
         </section>
 
-        <img src="https://www.geckoboard.com/uploads/IT-dashboard-example.png" alt="Performance dashboard" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
+        <img src="https://i.postimg.cc/dVXFhrJN/sop-benefits-illustrated.png" alt="SOP benefits" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
 
         <h2 class="text-3xl md:text-4xl font-bold font-headline text-primary-text uppercase tracking-tight mb-8">From Compliance to Valuation</h2>
         <section class="space-y-8">
-          <p>Well-documented operations increase valuation multiples and improve investor confidence. They shorten acquisition due diligence and reduce founder dependency. Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine. If your business relies on you being there to make it work, you don't own a business—you own a high-stress job.</p>
+          <p>Well-documented operations increase valuation multiples and improve investor confidence. They shorten acquisition due diligence and reduce founder dependency. Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine.</p>
         </section>
-
-        <img src="https://images.klipfolio.com/website/public/6412f9a1-528f-438b-bb21-77df8b66433b/operations-dashboard.png" alt="Ops dashboard" class="w-full h-auto rounded-[2.5rem] my-20 shadow-2xl" />
 
         <h2 class="text-3xl md:text-4xl font-bold font-headline text-primary-text uppercase tracking-tight mb-8">Invest in Architecture</h2>
         <section class="space-y-8">
-          <p>Structure prevents silent failure. Move from reactive firefighting to structural resilience today. Predictability is the new competitive advantage. In an era of AI and automation, the business that wins is the one with the cleanest process data and the most consistent execution. MoreMeets™ systems include task-level breakdowns and trainer notes because this isn't paperwork—it's operational architecture.</p>
+          <p>Structure prevents silent failure. Move from reactive firefighting to structural resilience today. Predictability is the new competitive advantage. In an era of AI and automation, the business that wins is the one with the cleanest process data and the most consistent execution.</p>
           
           <p>Stop paying the Memory Tax and start building a legacy. By systemizing your operations, you're not just achieving compliance; you're building a fortress around your profitability. The ROI of an SOP is simple: it ensures that the work is done right the first time, every time, regardless of who is doing it.</p>
         </section>
