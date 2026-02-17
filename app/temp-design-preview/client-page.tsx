@@ -17,14 +17,15 @@ import {
     HeartPulse,
     FileSpreadsheet,
     Globe,
-    Infinity
+    Infinity,
+    ShieldCheck
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const CORE_METADATA = [
-    { label: 'Audit-Ready Standards', icon: Shield },
+    { label: 'Audit-Ready Standards', icon: ShieldCheck },
     { label: 'Fully Editable .xlsx', icon: FileSpreadsheet },
     { label: 'Unlimited Usage Rights', icon: Infinity },
     { label: 'Offline Resilience', icon: Zap }
@@ -45,9 +46,9 @@ const CTA_Resignation = () => (
                 </div>
                 <h3 className="text-3xl md:text-5xl font-black text-white font-headline tracking-tighter uppercase italic leading-none">Secure Your Institutional <br /> Memory Before It Walks Out</h3>
                 <p className="text-base text-zinc-400 max-w-lg leading-relaxed">
-                    Convert individual brilliance into permanent infrastructure. ISO, HACCP, and OSHA mapped protocols for instant organizational audit-readiness and brand protection.
+                    Convert individual brilliance into permanent infrastructure. ISO 9001 and 41001 mapped protocols for organizational audit-readiness and continuity.
                 </p>
-                <div className="grid grid-cols-2 gap-x-8 gap-y-3 pt-4">
+                <div className="grid grid-cols-2 gap-x-8 gap-y-3 pt-4 border-t border-white/5 mt-6">
                     {CORE_METADATA.map(item => (
                         <div key={item.label} className="flex items-center gap-2 text-[9px] font-black uppercase text-white/40 tracking-[0.1em]">
                             <item.icon className="w-3 h-3 text-primary" /> {item.label}
@@ -59,7 +60,10 @@ const CTA_Resignation = () => (
                 <Button className="h-16 bg-primary text-black font-black uppercase text-xs px-12 rounded-sm shadow-2xl hover:scale-105 transition-all tracking-[0.2em]">
                     Deploy Resilience Framework <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <p className="text-[9px] text-center text-zinc-600 uppercase font-black tracking-[0.4em] italic">Ready for Instant Deployment • No SaaS lock-in</p>
+                <div className="flex items-center justify-center gap-2 opacity-40">
+                    <Lock className="w-3 h-3" />
+                    <p className="text-[9px] text-center text-zinc-600 uppercase font-black tracking-[0.4em] italic">No SaaS lock-in</p>
+                </div>
             </div>
         </div>
     </div>
@@ -67,45 +71,36 @@ const CTA_Resignation = () => (
 
 /* --- CONCEPT 2: THE FORENSIC BLUEPRINT (Operational Drift) --- */
 const CTA_Drift = () => (
-    <div className="w-full p-1 border-2 border-white/5 rounded-sm bg-zinc-900/50">
-        <div className="border border-white/10 p-10 md:p-16 flex flex-col md:flex-row items-start gap-12">
-            <div className="flex-1 space-y-10">
-                <div className="space-y-4">
-                    <div className="flex items-center gap-2 text-accent">
-                        <ShieldAlert className="w-5 h-5" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.4em]">Audit Verification Standard</span>
-                    </div>
-                    <h3 className="text-3xl md:text-5xl font-black font-headline text-white uppercase tracking-tighter leading-none italic">Eliminate Operational Drift <br /> Before It Becomes A Headline</h3>
+    <div className="relative group w-full">
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-accent/30 to-primary/30 rounded-[2rem] blur opacity-10 group-hover:opacity-40 transition duration-1000"></div>
+        <div className="relative p-10 md:p-16 rounded-[2rem] border border-white/10 bg-zinc-950 flex flex-col md:flex-row items-center gap-12 justify-between overflow-hidden shadow-2xl">
+            <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none">
+                <ShieldAlert className="w-48 h-48" />
+            </div>
+            <div className="space-y-6 relative z-10 flex-1">
+                <div className="flex items-center gap-4 text-accent">
+                    <ShieldCheck className="w-5 h-5" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.4em]">Audit Verification Standard</span>
                 </div>
-                
-                <div className="grid sm:grid-cols-2 gap-8 border-t border-white/10 pt-10">
-                    <div className="space-y-2">
-                        <p className="text-[10px] font-black uppercase text-zinc-500 tracking-widest">Regulatory Alignment</p>
-                        <p className="text-sm text-zinc-300 font-medium leading-relaxed">ISO, HACCP, and OSHA mapped protocols for instant organizational audit-readiness and brand protection.</p>
-                    </div>
-                    <div className="grid grid-cols-1 gap-3">
-                        {CORE_METADATA.map(item => (
-                            <div key={item.label} className="flex items-center gap-2 text-[9px] font-black uppercase text-white/40 tracking-[0.1em]">
-                                <Check className="w-3 h-3 text-accent" /> {item.label}
-                            </div>
-                        ))}
-                    </div>
+                <h3 className="text-3xl md:text-5xl font-black text-white font-headline tracking-tighter uppercase italic leading-none">Eliminate Operational Drift <br /> Before It Becomes A Headline</h3>
+                <p className="text-base text-zinc-400 max-w-lg leading-relaxed">
+                    HACCP, FSSAI, and ISO 22000 mapped protocols for instant organizational audit-readiness and brand protection. 
+                </p>
+                <div className="grid grid-cols-2 gap-x-8 gap-y-3 pt-4 border-t border-white/5 mt-6">
+                    {CORE_METADATA.map(item => (
+                        <div key={item.label} className="flex items-center gap-2 text-[9px] font-black uppercase text-white/40 tracking-[0.1em]">
+                            <item.icon className="w-3 h-3 text-accent" /> {item.label}
+                        </div>
+                    ))}
                 </div>
             </div>
-
-            <div className="w-full md:w-72 space-y-6 pt-2 shrink-0">
-                <div className="p-8 border border-white/10 bg-black/40 space-y-6 text-center md:text-left">
-                    <div className="space-y-1">
-                        <p className="text-[11px] font-black text-accent uppercase tracking-[0.3em]">Institutional Procurement</p>
-                        <p className="text-xs text-zinc-500 font-medium">Verified for Multi-Location Chains</p>
-                    </div>
-                    <Button className="w-full h-14 bg-accent text-black font-black uppercase text-[10px] tracking-[0.2em] rounded-none hover:bg-white transition-all shadow-xl">
-                        Secure Forensic Blueprint
-                    </Button>
-                    <div className="flex items-center justify-center gap-2 opacity-40">
-                        <Lock className="w-3 h-3" />
-                        <span className="text-[8px] font-black uppercase tracking-[0.2em]">Ready for Deployment • No SaaS lock-in</span>
-                    </div>
+            <div className="flex flex-col gap-6 w-full md:w-auto relative z-10 shrink-0">
+                <Button className="h-16 bg-accent text-black font-black uppercase text-xs px-12 rounded-sm shadow-2xl hover:scale-105 transition-all tracking-[0.2em]">
+                    Secure Forensic Blueprint <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <div className="flex items-center justify-center gap-2 opacity-40">
+                    <Lock className="w-3 h-3" />
+                    <p className="text-[9px] text-center text-zinc-600 uppercase font-black tracking-[0.4em] italic">No SaaS lock-in</p>
                 </div>
             </div>
         </div>
@@ -114,36 +109,38 @@ const CTA_Drift = () => (
 
 /* --- CONCEPT 3: THE INSTITUTIONAL BACKBONE (Safety/Healthcare) --- */
 const CTA_Safety = () => (
-    <div className="border-t-2 border-primary pt-16 flex flex-col md:flex-row gap-16 items-center justify-between w-full bg-white/[0.01] p-12 rounded-3xl border border-white/5 shadow-2xl">
-        <div className="space-y-8 flex-1">
-            <div className="flex items-center gap-4 text-primary">
-                <Shield className="w-8 h-8" />
-                <span className="text-sm font-black uppercase tracking-[0.4em]">Institutional Control Protocol</span>
+    <div className="relative group w-full">
+        <div className="relative p-10 md:p-16 rounded-[2rem] border-t-4 border-primary bg-white/[0.02] flex flex-col md:flex-row items-center gap-12 justify-between overflow-hidden shadow-2xl">
+            <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none">
+                <HeartPulse className="w-48 h-48" />
             </div>
-            <h3 className="text-4xl md:text-6xl font-black font-headline text-white tracking-tighter uppercase leading-none italic">Build Systems That Protect <br /> Lives — Not Just Brands</h3>
-            <p className="text-zinc-500 text-lg font-medium leading-relaxed max-w-xl">
-                Deploy an institutional-grade operational control system. ISO, HACCP, and OSHA mapped protocols for instant organizational audit-readiness and brand protection.
-            </p>
-            <div className="grid grid-cols-2 gap-x-12 gap-y-4">
-                {CORE_METADATA.map(item => (
-                    <div key={item.label} className="flex items-center gap-3 text-[10px] font-black uppercase text-white/40 tracking-widest">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" /> {item.label}
-                    </div>
-                ))}
-            </div>
-        </div>
-        <div className="bg-white/5 p-12 rounded-none border-l-4 border-primary w-full md:w-80 space-y-8 shrink-0 text-center md:text-left">
-            <div className="space-y-2">
-                <p className="text-[11px] text-zinc-500 uppercase font-black tracking-[0.3em]">Procurement Access</p>
-                <div className="flex items-center gap-2 text-primary">
-                    <HeartPulse className="w-4 h-4" />
-                    <span className="text-[10px] font-black uppercase tracking-widest">Clinical Grade Standard</span>
+            <div className="space-y-6 relative z-10 flex-1">
+                <div className="flex items-center gap-4 text-primary">
+                    <Shield className="w-6 h-6" />
+                    <span className="text-sm font-black uppercase tracking-[0.4em]">Institutional Control Protocol</span>
+                </div>
+                <h3 className="text-3xl md:text-5xl font-black text-white font-headline tracking-tighter uppercase italic leading-none">Build Systems That Protect <br /> Lives — Not Just Brands</h3>
+                <p className="text-lg text-zinc-500 max-w-lg leading-relaxed">
+                    Deploy an institutional-grade system. JCI, NABH, and WHO mapped protocols for environments where consistency is non-negotiable.
+                </p>
+                <div className="grid grid-cols-2 gap-x-8 gap-y-3 pt-4 border-t border-white/5 mt-6">
+                    {CORE_METADATA.map(item => (
+                        <div key={item.label} className="flex items-center gap-3 text-[10px] font-black uppercase text-white/40 tracking-widest">
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary" /> {item.label}
+                        </div>
+                    ))}
                 </div>
             </div>
-            <Button className="w-full h-14 bg-white text-black font-black uppercase text-[11px] tracking-[0.2em] hover:bg-primary transition-colors rounded-none shadow-xl">
-                Implement Control Protocol
-            </Button>
-            <p className="text-[9px] text-zinc-600 text-center uppercase font-bold tracking-[0.2em]">Ready for Deployment • No SaaS lock-in</p>
+            <div className="bg-white/5 p-10 rounded-xl border border-white/10 w-full md:w-80 space-y-6 shrink-0 relative z-10">
+                <div className="space-y-1">
+                    <p className="text-[11px] text-zinc-500 uppercase font-black tracking-[0.3em]">Procurement Access</p>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-primary">Clinical Grade Standard</p>
+                </div>
+                <Button className="w-full h-14 bg-white text-black font-black uppercase text-[11px] tracking-[0.2em] hover:bg-primary transition-colors rounded-none shadow-xl">
+                    Implement Protocol
+                </Button>
+                <p className="text-[9px] text-zinc-600 text-center uppercase font-bold tracking-[0.2em]">No SaaS lock-in</p>
+            </div>
         </div>
     </div>
 );
@@ -160,7 +157,7 @@ const CTA_ROI = () => (
                 </div>
                 <h3 className="text-4xl md:text-6xl font-black font-headline text-white uppercase tracking-tighter italic leading-[0.9]">Turn Operational Structure <br /> Into a Profit Multiplier</h3>
                 <p className="text-xl text-zinc-400 font-medium leading-relaxed max-w-2xl">
-                    ISO, HACCP, and OSHA mapped protocols for instant organizational audit-readiness and brand protection. Reduce onboarding time by 40% and lower error rates instantly.
+                    ISO 27001 and SOC2 mapped protocols for organizational scalability. Reduce onboarding time by 40% and lower error rates instantly.
                 </p>
             </div>
             <div className="bg-black/60 backdrop-blur-xl border border-white/10 p-10 rounded-2xl space-y-8">
@@ -175,9 +172,10 @@ const CTA_ROI = () => (
                 <Button className="w-full h-16 bg-accent text-black font-black uppercase text-xs tracking-[0.2em] rounded-sm hover:scale-[1.02] transition-transform">
                     Activate Profit Multiplier
                 </Button>
-                <p className="text-[9px] text-zinc-500 text-center uppercase font-bold tracking-widest leading-relaxed">
-                    Ready for Instant Deployment • No SaaS lock-in
-                </p>
+                <div className="flex items-center justify-center gap-2 opacity-40">
+                    <Lock className="w-3 h-3" />
+                    <p className="text-[9px] text-zinc-500 text-center uppercase font-bold tracking-widest leading-relaxed">No SaaS lock-in</p>
+                </div>
             </div>
         </div>
     </div>
@@ -196,10 +194,10 @@ export default function TempDesignClientPage() {
         <main className="flex-1 pb-48 bg-zinc-950">
             {/* LAB HEADER */}
             <Section className="text-center pt-24 pb-16 border-b border-white/5">
-                <Badge variant="outline" className="text-primary border-primary/30 mb-6 px-6 py-2 rounded-full text-[11px] font-black tracking-[0.3em] uppercase">Editorial Strategy V11</Badge>
-                <h1 className="text-5xl md:text-7xl font-black font-headline text-white tracking-tighter uppercase mb-6 italic leading-none">The Executive Flow</h1>
+                <Badge variant="outline" className="text-primary border-primary/30 mb-6 px-6 py-2 rounded-full text-[11px] font-black tracking-[0.3em] uppercase">Psychological Strategy V12</Badge>
+                <h1 className="text-5xl md:text-7xl font-black font-headline text-white tracking-tighter uppercase mb-6 italic leading-none">The Resolution Path</h1>
                 <p className="text-xl text-zinc-400 max-w-3xl mx-auto font-medium leading-relaxed">
-                    Comparing four Psychologically-Driven CTAs. Featuring ISO/HACCP/OSHA mapping and core technical metadata.
+                    Four distinct psychological resolutions for the Black Box Debrief series. Each CTA features tailored compliance mapping and technical metadata.
                 </p>
             </Section>
 
@@ -209,7 +207,7 @@ export default function TempDesignClientPage() {
                     <div className="flex justify-center mb-16">
                         <TabsList className="bg-white/5 border border-white/10 p-2 h-16 rounded-full">
                             <TabsTrigger value="ctas" className="rounded-full px-10 data-[state=active]:bg-white/10 data-[state=active]:text-primary font-bold uppercase text-[11px] tracking-[0.2em]">1. Resolution CTAs</TabsTrigger>
-                            <TabsTrigger value="layout" className="rounded-full px-10 data-[state=active]:bg-white/10 data-[state=active]:text-accent font-bold uppercase text-[11px] tracking-[0.2em]">2. News Layout</TabsTrigger>
+                            <TabsTrigger value="layout" className="rounded-full px-10 data-[state=active]:bg-white/10 data-[state=active]:text-accent font-bold uppercase text-[11px] tracking-[0.2em]">2. News Spacing</TabsTrigger>
                         </TabsList>
                     </div>
 
@@ -221,8 +219,8 @@ export default function TempDesignClientPage() {
                             {/* CASE 1 */}
                             <div className="space-y-12">
                                 <div className="text-center">
-                                    <Badge variant="secondary" className="mb-4 px-4 py-1">Case: Resignation Risk</Badge>
-                                    <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">Target: Founders & SME Owners</h4>
+                                    <Badge variant="secondary" className="mb-4 px-4 py-1">Resolution: Resignation Risk</Badge>
+                                    <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">Linked: Facility Blueprint</h4>
                                 </div>
                                 <CTA_Resignation />
                             </div>
@@ -230,8 +228,8 @@ export default function TempDesignClientPage() {
                             {/* CASE 2 */}
                             <div className="space-y-12">
                                 <div className="text-center">
-                                    <Badge variant="secondary" className="mb-4 px-4 py-1">Case: Operational Drift</Badge>
-                                    <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">Target: Compliance & Quality Heads</h4>
+                                    <Badge variant="secondary" className="mb-4 px-4 py-1">Resolution: Operational Drift</Badge>
+                                    <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">Linked: Restaurant Pack</h4>
                                 </div>
                                 <CTA_Drift />
                             </div>
@@ -239,8 +237,8 @@ export default function TempDesignClientPage() {
                             {/* CASE 3 */}
                             <div className="space-y-12">
                                 <div className="text-center">
-                                    <Badge variant="secondary" className="mb-4 px-4 py-1">Case: Patient Safety</Badge>
-                                    <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">Target: Healthcare & High-Risk Institutional</h4>
+                                    <Badge variant="secondary" className="mb-4 px-4 py-1">Resolution: Patient Safety</Badge>
+                                    <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">Linked: Healthcare Pack</h4>
                                 </div>
                                 <CTA_Safety />
                             </div>
@@ -248,8 +246,8 @@ export default function TempDesignClientPage() {
                             {/* CASE 4 */}
                             <div className="space-y-12">
                                 <div className="text-center">
-                                    <Badge variant="secondary" className="mb-4 px-4 py-1">Case: Operational ROI</Badge>
-                                    <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">Target: CFOs & Investors</h4>
+                                    <Badge variant="secondary" className="mb-4 px-4 py-1">Resolution: Operational ROI</Badge>
+                                    <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">Linked: Corporate Pack</h4>
                                 </div>
                                 <CTA_ROI />
                             </div>
@@ -268,7 +266,7 @@ export default function TempDesignClientPage() {
                                 </p>
                             </div>
 
-                            {/* EXHIBIT IMAGE: Rectangular "News Report" format (16:9) */}
+                            {/* EXHIBIT IMAGE: SMALLER (max-w-3xl) with MASSIVE breathing room (py-40) */}
                             <div className="py-40 text-center space-y-6">
                                 <figure className="inline-block max-w-3xl">
                                     <img 
@@ -276,7 +274,7 @@ export default function TempDesignClientPage() {
                                         alt="Forensic Evidence" 
                                         className="w-full aspect-video object-cover rounded-2xl border border-white/10 shadow-2xl"
                                     />
-                                    <figcaption className="mt-8 text-[11px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit A: Visualized Operational Decay (16:9 Aspect Ratio)</figcaption>
+                                    <figcaption className="mt-8 text-[11px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit A: Visualized Operational Decay (16:9 Aspect Ratio • Expansive Spacing)</figcaption>
                                 </figure>
                             </div>
 

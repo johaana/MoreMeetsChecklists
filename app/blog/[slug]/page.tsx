@@ -9,7 +9,26 @@ import type { Metadata } from 'next';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { ArrowRight, Clock, User, ChevronLeft, FileText, Check, Sparkles, Shield } from 'lucide-react';
+import { 
+    ArrowRight, 
+    Clock, 
+    User, 
+    ChevronLeft, 
+    FileText, 
+    Check, 
+    Sparkles, 
+    Shield, 
+    FileSpreadsheet, 
+    Infinity, 
+    Zap, 
+    Lock,
+    Scale,
+    ShieldCheck,
+    Users,
+    TrendingUp,
+    HeartPulse
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -52,12 +71,68 @@ export default async function BlogPostPage({ params }: Props) {
   const wordCount = post.content.replace(/<[^>]*>/g, '').split(/\s+/).length;
   const readingTime = Math.max(12, Math.ceil(wordCount / 225));
 
+  // Psychological CTA Mapping Logic
+  const getCTAConfig = () => {
+    if (slug === 'the-day-the-process-left-with-him') {
+        return {
+            title: "Secure Your Institutional Memory Before It Walks Out",
+            description: "Convert individual brilliance into permanent infrastructure. Mapped to ISO 9001 and ISO 41001 standards for instant organizational audit-readiness and continuity.",
+            button: "Deploy Resilience Framework",
+            icon: Users,
+            compliance: "ISO 9001 • ISO 41001"
+        };
+    }
+    if (slug === 'the-25-million-burrito') {
+        return {
+            title: "Eliminate Operational Drift Before It Becomes A Headline",
+            description: "Deploy the verified, HACCP and FSSAI-aligned institutional backbone designed to eliminate the exact failure points analyzed in this debrief.",
+            button: "Secure Forensic Blueprint",
+            icon: Shield,
+            compliance: "HACCP • FSSAI • ISO 22000"
+        };
+    }
+    if (slug === 'patient-safety-process-discipline') {
+        return {
+            title: "Build Systems That Protect Lives — Not Just Brands",
+            description: "Deploy an institutional-grade JCI and NABH aligned control protocol designed for zero-ambiguity execution in high-risk environments.",
+            button: "Implement Control Protocol",
+            icon: HeartPulse,
+            compliance: "JCI • NABH • WHO"
+        };
+    }
+    if (slug === 'hidden-roi-of-sops') {
+        return {
+            title: "Turn Operational Structure Into a Profit Multiplier",
+            description: "ISO 27001 and SOC2 mapped protocols for organizational scalability. Reduce onboarding time by 40% and lower error rates instantly.",
+            button: "Activate Profit Multiplier",
+            icon: TrendingUp,
+            compliance: "ISO 27001 • SOC2 • Statutory"
+        };
+    }
+    return {
+        title: "Deploy Professional Operational Standards",
+        description: "ISO, HACCP, and OSHA mapped protocols for instant organizational audit-readiness and brand protection. Ready for immediate organizational deployment.",
+        button: "Explore Full Library",
+        icon: Sparkles,
+        compliance: "ISO • HACCP • OSHA"
+    };
+  };
+
+  const cta = getCTAConfig();
+
+  const CORE_METADATA = [
+    { label: 'Audit-Ready Standards', icon: ShieldCheck },
+    { label: 'Fully Editable .xlsx', icon: FileSpreadsheet },
+    { label: 'Unlimited Usage Rights', icon: Infinity },
+    { label: 'Offline Resilience', icon: Zap }
+  ];
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <SiteHeader />
       <main className="flex-1">
         <article className="pb-32">
-          {/* Executive Hero Header - Journalistic News Style */}
+          {/* Executive Hero Header - Rectangular News Style */}
           <header className="w-full pt-16 pb-16 border-b border-white/5 bg-alternate-background/30">
             <div className="container px-4 md:px-6">
               <div className="max-w-6xl mx-auto">
@@ -93,7 +168,6 @@ export default async function BlogPostPage({ params }: Props) {
 
                   {post.imageUrl && (
                     <div className="relative group hidden lg:block">
-                      {/* Rectangular "News Report" Aspect Ratio */}
                       <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-black">
                         <img
                           src={post.imageUrl}
@@ -117,7 +191,7 @@ export default async function BlogPostPage({ params }: Props) {
                   prose-headings:font-headline prose-headings:text-primary-text prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase prose-headings:mt-24 prose-headings:mb-12 prose-headings:italic
                   prose-p:text-secondary-text prose-p:leading-[1.8] prose-p:mb-12 prose-p:text-xl
                   prose-strong:text-primary-text prose-strong:font-black
-                  prose-img:max-w-2xl prose-img:mx-auto prose-img:rounded-xl prose-img:shadow-2xl prose-img:my-32 prose-img:border prose-img:border-white/10
+                  prose-img:max-w-3xl prose-img:mx-auto prose-img:rounded-xl prose-img:shadow-2xl prose-img:my-32 prose-img:border prose-img:border-white/10
                   prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-white/[0.02] prose-blockquote:px-12 prose-blockquote:py-10 prose-blockquote:rounded-r-2xl prose-blockquote:italic prose-blockquote:text-2xl prose-blockquote:text-primary-text prose-blockquote:my-24 prose-blockquote:font-medium
                   prose-ul:space-y-6 prose-li:text-secondary-text prose-li:text-lg
                   "
@@ -126,33 +200,47 @@ export default async function BlogPostPage({ params }: Props) {
 
               {/* Dynamic Pack-Specific Procurement Asset */}
               <div className="mt-48 pt-24 border-t border-white/5 relative group">
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
-                  <Card className="overflow-hidden bg-black border border-white/10 rounded-3xl p-10 md:p-16 relative z-10">
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
+                  <Card className="overflow-hidden bg-black border border-white/10 rounded-[2rem] p-10 md:p-16 relative z-10 shadow-2xl">
                       <div className="absolute top-0 right-0 p-10 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity pointer-events-none">
-                          <Sparkles className="w-64 h-64" />
+                          <cta.icon className="w-64 h-64" />
                       </div>
                       <div className="flex flex-col md:flex-row gap-16 items-center justify-between">
                           <div className="space-y-6 flex-1">
                               <div className="flex items-center gap-4">
-                                  <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.3em] px-4 py-1.5 rounded-none">Structural Solution</Badge>
+                                  <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.3em] px-4 py-1.5 rounded-none">Strategic Solution</Badge>
                                   <span className="text-[10px] text-white/30 font-black uppercase tracking-widest italic">Includes 1 Tailored Customization</span>
                               </div>
                               <h2 className="text-4xl md:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-none">
-                                {relatedPack ? relatedPack.title : 'Operational Standard Library'}
+                                {cta.title}
                               </h2>
                               <p className="text-base text-secondary-text leading-relaxed max-w-lg">
-                                  Deploy the verified, audit-ready institutional backbone designed to eliminate the exact failure points analyzed in this debrief. Procure the technical infrastructure below.
+                                  {cta.description}
                               </p>
-                              <div className="flex items-center gap-8 text-[9px] font-black uppercase tracking-[0.2em] text-white/40 pt-4">
-                                  <span className="flex items-center gap-2"><Check className="w-4 h-4 text-primary"/> EXCEL FORMAT</span>
-                                  <span className="flex items-center gap-2"><Check className="w-4 h-4 text-primary"/> LIFETIME LICENSE</span>
+                              
+                              <div className="grid grid-cols-2 gap-x-8 gap-y-3 pt-4 border-t border-white/5 mt-6">
+                                {CORE_METADATA.map(item => (
+                                    <div key={item.label} className="flex items-center gap-2 text-[9px] font-black uppercase text-white/40 tracking-[0.1em]">
+                                        <item.icon className="w-3 h-3 text-primary" /> {item.label}
+                                    </div>
+                                ))}
+                              </div>
+
+                              <div className="flex items-center gap-3 pt-2">
+                                <Shield className="w-3 h-3 text-accent" />
+                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent">Aligned: {cta.compliance}</span>
                               </div>
                           </div>
                           <div className="flex flex-col gap-6 shrink-0 w-full md:w-72">
                               <Button asChild size="lg" className="w-full h-16 bg-primary text-black font-black uppercase text-xs tracking-[0.2em] shadow-2xl hover:scale-[1.02] transition-transform rounded-sm">
-                                  <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'}>Procure Full Asset <ArrowRight className="ml-2 h-5 w-5"/></Link>
+                                  <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'}>
+                                    {cta.button} <ArrowRight className="ml-2 h-5 w-5"/>
+                                  </Link>
                               </Button>
-                              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-center opacity-30 italic">Ready for Deployment</p>
+                              <div className="flex items-center justify-center gap-2 opacity-40">
+                                <Lock className="w-3 h-3" />
+                                <p className="text-[9px] font-black uppercase tracking-[0.4em] text-center italic">No SaaS lock-in</p>
+                              </div>
                           </div>
                       </div>
                   </Card>
