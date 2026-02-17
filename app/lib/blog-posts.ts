@@ -1,4 +1,3 @@
-
 export type BlogPost = {
   slug: string;
   title: string;
@@ -20,8 +19,15 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Team",
       tags: ["Operations", "Risk Management", "HR", "Institutional Memory"],
       description: "When a key employee resigns, does your process leave with them? Deconstructing the hidden cost of personality-dependent operations.",
+      imageUrl: "https://i.postimg.cc/QdPDF1XM/resignation1.jpg",
+      imageHint: "employee resignation",
       content: `
         <p class="lead">When Raj resigned, nothing seemed wrong. He had been the operations manager for eight years. He knew the vendors. He handled inspections calmly. He always “just knew” what to check before audits.</p>
+        
+        <div class="my-8">
+          <img src="https://i.postimg.cc/pL7vmzPw/resignation2.webp" alt="Impact of resignation on operations" class="rounded-2xl shadow-lg w-full h-auto" />
+        </div>
+
         <p>There was a 120-page SOP manual in the shared drive. Everyone believed the system was safe. Three months later, the first inspection happened without him. Two temperature logs were incomplete. A compliance file was outdated. A cleaning schedule had gaps. No one knew the specific escalation procedure he used to follow.</p>
         <p>The audit report wasn’t catastrophic — but it wasn’t clean either. And suddenly the leadership team realized something uncomfortable: <strong>The real process had lived inside Raj.</strong></p>
         
@@ -45,35 +51,6 @@ export const blogPosts: BlogPost[] = [
       `
     },
     {
-      slug: 'aviation-discipline-the-sacred-checklist',
-      title: "A Door Plug at 16,000 Feet: Why Verification Is Sacred",
-      publishedDate: "2026-02-16",
-      author: "MoreMeets Team",
-      tags: ["Manufacturing", "Aviation", "Quality Control", "Resilience"],
-      relatedPackId: "manufacturing_operations_ehs_pack",
-      description: "The Boeing 737 MAX door plug blowout was a verification failure. Learn why aviation discipline is the gold standard for operational safety.",
-      content: `
-        <p class="lead">In early 2024, Alaska Airlines Flight 1282 experienced a mid-air incident when a door plug detached from a Boeing 737 MAX 9. Passengers survived, but the aviation world froze. Investigations pointed toward a simple, devastating cause: issues in assembly and verification processes.</p>
-        <p>In aviation, checklists are sacred. And yet, when verification layers weaken, even highly regulated industries experience failure. <strong>The hundred-and-first time you perform a task is the one that matters most.</strong></p>
-        
-        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">Systems Over Surgeons</h3>
-        <p>Pilots use pre-flight checklists every time—even after thousands of flights. Not because they don’t know what to do, but because humans are fallible. The World Health Organization introduced its Surgical Safety Checklist after studies showed structured checklists reduced surgical complications and mortality by more than 30%. Not better surgeons. Better systems.</p>
-        
-        <div class="p-6 my-8 border-l-4 border-primary bg-secondary/20 rounded-r-xl">
-          <p class="font-bold text-primary mb-2">Build Structural Resilience</p>
-          <p class="text-sm mb-4">Turn global lessons into structured operational resilience with audit-ready frameworks.</p>
-          <div class="flex flex-wrap gap-3">
-            <a href="/packs/manufacturing_operations_ehs_pack" class="text-xs font-bold uppercase tracking-wider underline hover:text-accent">Manufacturing & EHS Pack</a>
-            <a href="/packs/enterprise_risk_cybersecurity_pack" class="text-xs font-bold uppercase tracking-wider underline hover:text-accent">Cybersecurity & Risk Pack</a>
-          </div>
-        </div>
-
-        <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">The Common Thread</h3>
-        <p>Post-incident investigations almost always reveal: the procedure existed, but ownership wasn’t clear, frequency wasn’t enforced, and consequences weren’t internalized. The issue wasn’t knowledge—it was discipline embedded into systems.</p>
-        <p>The organizations that survive turbulence are not the smartest; they are the most systemized. Because memory is not a safeguard. Structure is.</p>
-      `
-    },
-    {
       slug: 'patient-safety-process-discipline',
       title: "Patient Safety Isn’t About Policy — It’s About Process Discipline",
       publishedDate: "2026-02-16",
@@ -81,8 +58,16 @@ export const blogPosts: BlogPost[] = [
       tags: ["Healthcare", "Patient Safety", "Clinical Quality", "SOPs"],
       relatedPackId: "healthcare_and_hospital_operations",
       description: "A deep dive into clinical quality. Learn why policies alone don't save lives, but structured process discipline does.",
+      imageUrl: "https://i.postimg.cc/HkKmrXTf/patient-safety1.jpg",
+      imageHint: "healthcare safety",
       content: `
         <p class="lead">Walk into any modern hospital and you’ll find a library of clinical policies. But if you look at the incident reports, the same 'never events' recur: medication errors, misidentified patients, and surgical site infections.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+          <img src="https://i.postimg.cc/7Zc450qj/patient-safety-2.webp" alt="Clinical process discipline" class="rounded-xl shadow-md w-full h-auto" />
+          <img src="https://i.postimg.cc/rwbTDxqf/patient-safety3.jpg" alt="Patient safety monitoring" class="rounded-xl shadow-md w-full h-auto" />
+        </div>
+
         <p>The gap isn't in the <em>what</em> (the policy). It's in the <em>how</em> (the process discipline). In high-stakes environments, the difference between a successful outcome and a sentinel event is often a single, skipped verification step.</p>
         
         <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">The 'Checklist Manifesto' in Action</h3>
@@ -109,8 +94,19 @@ export const blogPosts: BlogPost[] = [
       tags: ["Food Safety", "Restaurants", "Compliance", "F&B"],
       relatedPackId: "restaurants",
       description: "How a small missed temperature log cost Chipotle $25 million and brand trust. A deep dive into operational drift.",
+      imageUrl: "https://i.postimg.cc/NjLYGpvy/chipotle1.jpg",
+      imageHint: "food safety crisis",
       content: `
         <p class="lead">In 2015, customers at several Chipotle locations began reporting illness. Within months, over 1,100 people were affected. In 2020, the company agreed to pay a $25 million federal fine—the largest ever in a food safety case.</p>
+        
+        <div class="my-8 space-y-4">
+          <img src="https://i.postimg.cc/MpXxZdJf/chipotle2.png" alt="Chipotle outbreak impact" class="rounded-2xl shadow-lg w-full h-auto" />
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <img src="https://i.postimg.cc/g2rdcNb6/chipotle3.jpg" alt="Kitchen safety checks" class="rounded-xl shadow-md w-full h-auto" />
+            <img src="https://i.postimg.cc/15vsZb2f/chipotle4.jpg" alt="Food safety investigation" class="rounded-xl shadow-md w-full h-auto" />
+          </div>
+        </div>
+
         <p>The issue wasn’t lack of food safety knowledge. It was a breakdown in consistent process execution. <strong>Drift is the real enemy.</strong></p>
         
         <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">How Outbreaks Really Begin</h3>
@@ -138,8 +134,16 @@ export const blogPosts: BlogPost[] = [
       tags: ["Business Value", "ROI", "Efficiency", "COOs"],
       relatedPackId: "facility_management_blueprint",
       description: "Business value of SOPs beyond compliance — training, risk, and audit readiness. Why systems are a profit center.",
+      imageUrl: "https://i.postimg.cc/qvYrNypS/ROI.png",
+      imageHint: "business roi graph",
       content: `
         <p class="lead">Most executives view SOPs as a 'compliance tax'—something required by regulators, but otherwise a drain on time. This is a fundamental misunderstanding of operational leverage.</p>
+        
+        <div class="my-8 space-y-6">
+          <img src="https://i.postimg.cc/dVXFhrJN/sop-benefits-illustrated.png" alt="SOP benefits breakdown" class="rounded-2xl shadow-xl w-full h-auto" />
+          <img src="https://i.postimg.cc/L8hR4NFV/cost-of-no-sops-comparison.png" alt="Cost of no SOPs vs structured operations" class="rounded-2xl shadow-xl w-full h-auto" />
+        </div>
+
         <p>Structured operations are not a cost. They are an asset that pays dividends in training speed, audit readiness, and risk reduction.</p>
         
         <h3 class="text-xl font-bold mt-12 mb-4 font-headline text-primary">Training as a Profit Center</h3>
