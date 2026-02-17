@@ -102,45 +102,6 @@ export const blogPosts: BlogPost[] = [
       `
     },
     {
-      slug: 'a-door-plug-at-16000-feet',
-      title: "A Door Plug at 16,000 Feet: The Sacred Checklist",
-      publishedDate: "2026-02-16",
-      author: "MoreMeets Editorial",
-      tags: ["Manufacturing", "Aviation", "Safety", "EHS"],
-      relatedPackId: "manufacturing_operations_ehs_pack",
-      description: "Aviation is the gold standard for operational discipline. What happens when those layers of verification weaken?",
-      imageUrl: "https://i.postimg.cc/C5RcrmXp/boeing-door-plug.avif",
-      imageHint: "aircraft manufacturing safety",
-      content: `
-        <p class="lead text-xl font-medium">In early 2024, Alaska Airlines Flight 1282 experienced a mid-air incident when a door plug detached from a Boeing 737 MAX 9 shortly after takeoff. The aircraft made an emergency landing. Passengers survived. The aviation world froze.</p>
-        
-        <p>Investigations pointed toward issues in assembly and verification processes. In aviation, checklists are sacred. And yet, when verification layers weaken, even highly regulated industries experience failure.</p>
-
-        <div class="my-12 p-1 bg-white/5 rounded-3xl">
-           <img src="https://i.postimg.cc/C5RcrmXp/boeing-door-plug.avif" alt="Boeing 737 MAX 9 door plug incident" class="rounded-[calc(1.5rem-4px)] w-full h-auto" />
-        </div>
-
-        <h3 class="text-2xl font-bold mt-12 mb-6 font-headline text-primary">The Logic of the 101st Time</h3>
-        <p>Manufacturing plants skip routine inspections during busy periods. Retail stores bypass reconciliation checks during peak sales. The logic is always the same: <em>“We’ve done this a hundred times.”</em> But the hundred-and-first time is the one that matters.</p>
-        
-        <div class="my-12 p-8 border-y border-white/10 bg-alternate-background text-center">
-          <p class="text-xl font-bold text-foreground">The Cost of Missing One Verification:</p>
-          <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mt-6 text-xs font-black uppercase text-red-500 tracking-widest">
-            <span>Fines</span> <span>Brand Erosion</span> <span>Regulatory Scrutiny</span> <span>Lawsuits</span> <span>Trust Loss</span>
-          </div>
-        </div>
-
-        <h3 class="text-2xl font-bold mt-12 mb-6 font-headline text-primary text-center">Operational Resilience is Structural</h3>
-        <p class="text-center max-w-2xl mx-auto">As operations grow more complex, the organizations that survive turbulence are not the smartest—they are the most systemized. Because memory is not a safeguard. Structure is.</p>
-
-        <div class="mt-12 flex justify-center">
-          <Button asChild size="lg" variant="accent" class="h-16 px-10">
-            <a href="/packs/manufacturing_operations_ehs_pack">Deploy Manufacturing Standards <ArrowRight class="ml-2 w-5 h-5"/></a>
-          </Button>
-        </div>
-      `
-    },
-    {
       slug: 'patient-safety-process-discipline',
       title: "Patient Safety Isn’t About Policy — It’s About Discipline",
       publishedDate: "2026-02-16",
