@@ -5,12 +5,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import { 
     ArrowRight, 
-    ShieldCheck, 
     Check,
-    FileText,
-    Zap,
-    Globe,
-    Cpu,
     Sparkles,
     Shield
 } from 'lucide-react';
@@ -23,7 +18,7 @@ import { Card } from '@/components/ui/card';
 const CTA_Improv_1 = () => (
     <div className="mt-20 relative group max-w-5xl mx-auto">
         <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/30 to-accent/30 rounded-[2rem] blur opacity-10 group-hover:opacity-40 transition duration-1000"></div>
-        <div className="relative p-12 md:p-16 rounded-[2rem] border border-white/10 bg-black flex flex-col md:flex-row items-center gap-16 justify-between overflow-hidden">
+        <div className="relative p-12 md:p-16 rounded-[2rem] border border-white/10 bg-black flex flex-col md:flex-row items-center gap-16 justify-between overflow-hidden shadow-2xl">
             <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none">
                 <Sparkles className="w-48 h-48" />
             </div>
@@ -52,9 +47,9 @@ const CTA_Improv_1 = () => (
     </div>
 );
 
-/* --- IMPROVISATION 2: THE INSTITUTIONAL PROTOCOL (Focus: Control & Authority) --- */
+/* --- IMPROVISATION 2: THE INSTITUTIONAL BACKBONE (Focus: Control & Authority) --- */
 const CTA_Improv_2 = () => (
-    <div className="mt-20 border-t-2 border-primary pt-16 flex flex-col md:flex-row gap-20 items-center justify-between max-w-5xl mx-auto">
+    <div className="mt-20 border-t-2 border-primary pt-16 flex flex-col md:flex-row gap-20 items-center justify-between max-w-5xl mx-auto bg-white/[0.01] p-12 rounded-3xl border border-white/5 shadow-2xl">
         <div className="space-y-8 flex-1">
             <div className="flex items-center gap-4 text-primary">
                 <Shield className="w-8 h-8" />
@@ -74,11 +69,11 @@ const CTA_Improv_2 = () => (
         </div>
         <div className="bg-white/5 p-12 rounded-none border-l-4 border-primary w-full md:w-80 space-y-8 shrink-0">
             <div className="space-y-2 text-center md:text-left">
-                <p className="text-[11px] text-zinc-500 uppercase font-black tracking-[0.3em]">Standard Issue Price</p>
+                <p className="text-[11px] text-zinc-500 uppercase font-black tracking-[0.3em]">Institutional Procurement</p>
                 <p className="text-5xl font-black text-white tracking-tighter">₹5,999</p>
             </div>
             <Button className="w-full h-14 bg-white text-black font-black uppercase text-[11px] tracking-[0.2em] hover:bg-primary transition-colors rounded-none shadow-xl">
-                Procure Asset
+                Secure Asset Access
             </Button>
             <p className="text-[9px] text-zinc-600 text-center uppercase font-bold tracking-widest">One-time Procurement • No SaaS fees</p>
         </div>
@@ -102,10 +97,10 @@ export default function TempDesignClientPage() {
         <main className="flex-1 pb-48 bg-zinc-950">
             {/* LAB HEADER */}
             <Section className="text-center pt-24 pb-16">
-                <Badge variant="outline" className="text-primary border-primary/30 mb-6 px-6 py-2 rounded-full text-[11px] font-black tracking-[0.3em] uppercase">Editorial Lab V6</Badge>
+                <Badge variant="outline" className="text-primary border-primary/30 mb-6 px-6 py-2 rounded-full text-[11px] font-black tracking-[0.3em] uppercase">Editorial Lab V7</Badge>
                 <h1 className="text-5xl md:text-7xl font-black font-headline text-white tracking-tighter uppercase mb-6 italic leading-none">The Executive Flow</h1>
                 <p className="text-xl text-zinc-400 max-w-3xl mx-auto font-medium leading-relaxed">
-                    Comparison of Executive Layout (Wide narrative, small centered exhibits) and Strategic B2B CTA improvisations.
+                    Showcasing the expansive reading width, isolated exhibit images, and high-impact CTA comparisons.
                 </p>
             </Section>
 
@@ -123,36 +118,36 @@ export default function TempDesignClientPage() {
                         
                         {/* FINAL LAYOUT SELECTION: EXECUTIVE NARRATIVE */}
                         <TabsContent value="layout" className="mt-0 outline-none">
-                            <div className="max-w-3xl mx-auto space-y-16">
+                            <div className="max-w-4xl mx-auto space-y-16">
                                 <div className="space-y-8">
                                     <h3 className="text-4xl font-black font-headline text-white tracking-tighter uppercase italic">The Forensic Standard</h3>
-                                    <p className="text-xl text-zinc-300 leading-[1.8] font-medium">{mockText}</p>
+                                    <p className="text-2xl text-zinc-300 leading-[1.8] font-medium">{mockText}</p>
                                 </div>
 
                                 {/* EXHIBIT IMAGE: Smaller, centered, with massive vertical room */}
-                                <div className="my-32 text-center space-y-6">
-                                    <figure className="inline-block max-w-lg">
+                                <div className="py-40 text-center space-y-6">
+                                    <figure className="inline-block max-w-xl">
                                         <img 
                                             src="https://i.postimg.cc/NjLYGpvy/chipotle1.jpg" 
                                             alt="Forensic Evidence" 
                                             className="w-full h-auto rounded-2xl border border-white/10 shadow-2xl"
                                         />
-                                        <figcaption className="mt-6 text-[11px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit A: Visualized Operational Decay</figcaption>
+                                        <figcaption className="mt-8 text-[11px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit A: Visualized Operational Decay</figcaption>
                                     </figure>
                                 </div>
 
                                 <div className="space-y-8">
-                                    <p className="text-xl text-zinc-300 leading-[1.8]">Well-documented operations increase valuation multiples and improve investor confidence. Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine. Complexity without documentation is exposure.</p>
+                                    <p className="text-2xl text-zinc-300 leading-[1.8]">Well-documented operations increase valuation multiples and improve investor confidence. Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine. Complexity without documentation is exposure.</p>
                                 </div>
 
-                                <div className="my-32 text-center space-y-6">
-                                    <figure className="inline-block max-w-lg">
+                                <div className="py-40 text-center space-y-6">
+                                    <figure className="inline-block max-w-xl">
                                         <img 
                                             src="https://i.postimg.cc/L8hR4NFV/cost-of-no-sops-comparison.png" 
                                             alt="Financial Logic" 
                                             className="w-full h-auto rounded-2xl border border-white/10 shadow-2xl"
                                         />
-                                        <figcaption className="mt-6 text-[11px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit B: The Cost of Undocumented Risk</figcaption>
+                                        <figcaption className="mt-8 text-[11px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit B: The Cost of Undocumented Risk</figcaption>
                                     </figure>
                                 </div>
                                 
@@ -167,8 +162,8 @@ export default function TempDesignClientPage() {
                                 <div className="space-y-12">
                                     <div className="text-center">
                                         <Badge variant="secondary" className="mb-4 px-4 py-1">Improvisation 1</Badge>
-                                        <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">The "Strategic Debrief"</h4>
-                                        <p className="text-[11px] text-zinc-500 uppercase mt-2 tracking-widest">Glassmorphism • High-Trust • Tailoring Hook</p>
+                                        <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">The "Strategic Narrative"</h4>
+                                        <p className="text-[11px] text-zinc-500 uppercase mt-2 tracking-widest">Focus: Customization & Resilience</p>
                                     </div>
                                     <CTA_Improv_1 />
                                 </div>
@@ -176,8 +171,8 @@ export default function TempDesignClientPage() {
                                 <div className="space-y-12">
                                     <div className="text-center">
                                         <Badge variant="secondary" className="mb-4 px-4 py-1">Improvisation 2</Badge>
-                                        <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">The "Control Protocol"</h4>
-                                        <p className="text-[11px] text-zinc-500 uppercase mt-2 tracking-widest">Industrial • Infrastructure Focus • Bold Authority</p>
+                                        <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">The "Control Backbone"</h4>
+                                        <p className="text-[11px] text-zinc-500 uppercase mt-2 tracking-widest">Focus: Institutional Infrastructure</p>
                                     </div>
                                     <CTA_Improv_2 />
                                 </div>
