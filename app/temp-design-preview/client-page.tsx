@@ -14,13 +14,23 @@ import {
     TrendingUp,
     ShieldAlert,
     Zap,
-    HeartPulse
+    HeartPulse,
+    FileSpreadsheet,
+    Globe,
+    Infinity
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-/* --- RESOLUTION 1: THE RESILIENCE FRAMEWORK (Resignation Risk) --- */
+const CORE_METADATA = [
+    { label: 'Audit-Ready Standards', icon: Shield },
+    { label: 'Fully Editable .xlsx', icon: FileSpreadsheet },
+    { label: 'Unlimited Usage Rights', icon: Infinity },
+    { label: 'Offline Resilience', icon: Zap }
+];
+
+/* --- CONCEPT 1: THE RESILIENCE FRAMEWORK (Resignation Risk) --- */
 const CTA_Resignation = () => (
     <div className="relative group w-full">
         <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/30 to-accent/30 rounded-[2rem] blur opacity-10 group-hover:opacity-40 transition duration-1000"></div>
@@ -35,25 +45,27 @@ const CTA_Resignation = () => (
                 </div>
                 <h3 className="text-3xl md:text-5xl font-black text-white font-headline tracking-tighter uppercase italic leading-none">Secure Your Institutional <br /> Memory Before It Walks Out</h3>
                 <p className="text-base text-zinc-400 max-w-lg leading-relaxed">
-                    Convert individual brilliance into permanent infrastructure. Deploy the framework built to eliminate resignation risk through role-based task mapping.
+                    Convert individual brilliance into permanent infrastructure. ISO, HACCP, and OSHA mapped protocols for instant organizational audit-readiness and brand protection.
                 </p>
-                <div className="flex flex-wrap items-center gap-8 text-[9px] font-black uppercase tracking-[0.2em] text-white/40 pt-2">
-                    <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-primary"/> 120+ VERIFIED TASKS</span>
-                    <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-primary"/> ROLE-BASED LOGIC</span>
-                    <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-primary"/> EXCEL FORMAT</span>
+                <div className="grid grid-cols-2 gap-x-8 gap-y-3 pt-4">
+                    {CORE_METADATA.map(item => (
+                        <div key={item.label} className="flex items-center gap-2 text-[9px] font-black uppercase text-white/40 tracking-[0.1em]">
+                            <item.icon className="w-3 h-3 text-primary" /> {item.label}
+                        </div>
+                    ))}
                 </div>
             </div>
             <div className="flex flex-col gap-6 w-full md:w-auto relative z-10 shrink-0">
                 <Button className="h-16 bg-primary text-black font-black uppercase text-xs px-12 rounded-sm shadow-2xl hover:scale-105 transition-all tracking-[0.2em]">
                     Deploy Resilience Framework <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <p className="text-[9px] text-center text-zinc-600 uppercase font-black tracking-[0.4em] italic">One-time Procurement • No SaaS fees</p>
+                <p className="text-[9px] text-center text-zinc-600 uppercase font-black tracking-[0.4em] italic">Ready for Instant Deployment • No SaaS lock-in</p>
             </div>
         </div>
     </div>
 );
 
-/* --- RESOLUTION 2: THE FORENSIC BLUEPRINT (Operational Drift) --- */
+/* --- CONCEPT 2: THE FORENSIC BLUEPRINT (Operational Drift) --- */
 const CTA_Drift = () => (
     <div className="w-full p-1 border-2 border-white/5 rounded-sm bg-zinc-900/50">
         <div className="border border-white/10 p-10 md:p-16 flex flex-col md:flex-row items-start gap-12">
@@ -71,9 +83,12 @@ const CTA_Drift = () => (
                         <p className="text-[10px] font-black uppercase text-zinc-500 tracking-widest">Regulatory Alignment</p>
                         <p className="text-sm text-zinc-300 font-medium leading-relaxed">ISO, HACCP, and OSHA mapped protocols for instant organizational audit-readiness and brand protection.</p>
                     </div>
-                    <div className="space-y-2">
-                        <p className="text-[10px] font-black uppercase text-zinc-500 tracking-widest">Verification Protocol</p>
-                        <p className="text-sm text-zinc-300 font-medium leading-relaxed">Mandatory accountability logs and consequence tracking designed to stop deviations at the source.</p>
+                    <div className="grid grid-cols-1 gap-3">
+                        {CORE_METADATA.map(item => (
+                            <div key={item.label} className="flex items-center gap-2 text-[9px] font-black uppercase text-white/40 tracking-[0.1em]">
+                                <Check className="w-3 h-3 text-accent" /> {item.label}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -89,7 +104,7 @@ const CTA_Drift = () => (
                     </Button>
                     <div className="flex items-center justify-center gap-2 opacity-40">
                         <Lock className="w-3 h-3" />
-                        <span className="text-[8px] font-black uppercase tracking-widest">LIFETIME LICENSE ISSUED INSTANTLY</span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em]">Ready for Deployment • No SaaS lock-in</span>
                     </div>
                 </div>
             </div>
@@ -97,7 +112,7 @@ const CTA_Drift = () => (
     </div>
 );
 
-/* --- RESOLUTION 3: THE INSTITUTIONAL BACKBONE (Safety/Healthcare) --- */
+/* --- CONCEPT 3: THE INSTITUTIONAL BACKBONE (Safety/Healthcare) --- */
 const CTA_Safety = () => (
     <div className="border-t-2 border-primary pt-16 flex flex-col md:flex-row gap-16 items-center justify-between w-full bg-white/[0.01] p-12 rounded-3xl border border-white/5 shadow-2xl">
         <div className="space-y-8 flex-1">
@@ -107,12 +122,12 @@ const CTA_Safety = () => (
             </div>
             <h3 className="text-4xl md:text-6xl font-black font-headline text-white tracking-tighter uppercase leading-none italic">Build Systems That Protect <br /> Lives — Not Just Brands</h3>
             <p className="text-zinc-500 text-lg font-medium leading-relaxed max-w-xl">
-                Deploy an institutional-grade operational control system designed for zero-ambiguity execution in high-risk environments. Policy doesn't save lives. Execution does.
+                Deploy an institutional-grade operational control system. ISO, HACCP, and OSHA mapped protocols for instant organizational audit-readiness and brand protection.
             </p>
             <div className="grid grid-cols-2 gap-x-12 gap-y-4">
-                {['Audit-Ready Standards', 'Fully Editable .xlsx', 'Unlimited Usage Rights', 'Offline Resilience'].map(item => (
-                    <div key={item} className="flex items-center gap-3 text-[10px] font-black uppercase text-white/40 tracking-widest">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" /> {item}
+                {CORE_METADATA.map(item => (
+                    <div key={item.label} className="flex items-center gap-3 text-[10px] font-black uppercase text-white/40 tracking-widest">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary" /> {item.label}
                     </div>
                 ))}
             </div>
@@ -128,12 +143,12 @@ const CTA_Safety = () => (
             <Button className="w-full h-14 bg-white text-black font-black uppercase text-[11px] tracking-[0.2em] hover:bg-primary transition-colors rounded-none shadow-xl">
                 Implement Control Protocol
             </Button>
-            <p className="text-[9px] text-zinc-600 text-center uppercase font-bold tracking-widest">Unlimited Internal Deployment Rights</p>
+            <p className="text-[9px] text-zinc-600 text-center uppercase font-bold tracking-[0.2em]">Ready for Deployment • No SaaS lock-in</p>
         </div>
     </div>
 );
 
-/* --- RESOLUTION 4: THE PROFIT MULTIPLIER (ROI/Founder) --- */
+/* --- CONCEPT 4: THE PROFIT MULTIPLIER (ROI/Founder) --- */
 const CTA_ROI = () => (
     <div className="w-full bg-zinc-900 border border-white/10 rounded-3xl p-10 md:p-20 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-primary to-accent opacity-50" />
@@ -145,15 +160,15 @@ const CTA_ROI = () => (
                 </div>
                 <h3 className="text-4xl md:text-6xl font-black font-headline text-white uppercase tracking-tighter italic leading-[0.9]">Turn Operational Structure <br /> Into a Profit Multiplier</h3>
                 <p className="text-xl text-zinc-400 font-medium leading-relaxed max-w-2xl">
-                    Transformation from undocumented effort into scalable, audit-ready execution architecture. Reduce onboarding time by 40% and lower error rates instantly.
+                    ISO, HACCP, and OSHA mapped protocols for instant organizational audit-readiness and brand protection. Reduce onboarding time by 40% and lower error rates instantly.
                 </p>
             </div>
             <div className="bg-black/60 backdrop-blur-xl border border-white/10 p-10 rounded-2xl space-y-8">
                 <div className="space-y-4">
-                    {['Onboarding Acceleration', 'Error-Rate Reduction', 'Valuation Protection'].map(item => (
-                        <div key={item} className="flex items-center gap-3">
-                            <Zap className="w-4 h-4 text-accent" />
-                            <span className="text-[10px] font-black uppercase text-white/60 tracking-widest">{item}</span>
+                    {CORE_METADATA.map(item => (
+                        <div key={item.label} className="flex items-center gap-3">
+                            <item.icon className="w-4 h-4 text-accent" />
+                            <span className="text-[10px] font-black uppercase text-white/60 tracking-widest">{item.label}</span>
                         </div>
                     ))}
                 </div>
@@ -181,10 +196,10 @@ export default function TempDesignClientPage() {
         <main className="flex-1 pb-48 bg-zinc-950">
             {/* LAB HEADER */}
             <Section className="text-center pt-24 pb-16 border-b border-white/5">
-                <Badge variant="outline" className="text-primary border-primary/30 mb-6 px-6 py-2 rounded-full text-[11px] font-black tracking-[0.3em] uppercase">Editorial Strategy V10</Badge>
+                <Badge variant="outline" className="text-primary border-primary/30 mb-6 px-6 py-2 rounded-full text-[11px] font-black tracking-[0.3em] uppercase">Editorial Strategy V11</Badge>
                 <h1 className="text-5xl md:text-7xl font-black font-headline text-white tracking-tighter uppercase mb-6 italic leading-none">The Executive Flow</h1>
                 <p className="text-xl text-zinc-400 max-w-3xl mx-auto font-medium leading-relaxed">
-                    Comparing four Psychologically-Driven CTAs. No pricing displayed to maintain authority framing.
+                    Comparing four Psychologically-Driven CTAs. Featuring ISO/HACCP/OSHA mapping and core technical metadata.
                 </p>
             </Section>
 
