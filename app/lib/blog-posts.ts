@@ -75,7 +75,10 @@ export const blogPosts: BlogPost[] = [
           <p>Foodborne illness is not rare. The CDC estimates that roughly 48 million Americans experience it each year. For most brands, incidents are isolated. But this wasn’t most brands. This was Chipotle—the poster child for "Food With Integrity." The crisis was not just a failure of biology; it was a failure of <strong>systems</strong>.</p>
         </section>
 
-        <img src="https://i.postimg.cc/MpXxZdJf/chipotle2.png" alt="Forensic Inspection Exhibit" />
+        <figure class="my-32 text-center">
+          <img src="https://i.postimg.cc/MpXxZdJf/chipotle2.png" alt="Forensic Inspection Exhibit" class="max-w-xl mx-auto rounded-xl border border-white/10 shadow-2xl" />
+          <figcaption class="mt-6 text-[10px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit A: Visualized Operational Decay</figcaption>
+        </figure>
 
         <h2>The Anatomy of Operational Drift</h2>
         
@@ -89,14 +92,20 @@ export const blogPosts: BlogPost[] = [
           </blockquote>
         </section>
 
-        <img src="https://i.postimg.cc/g2rdcNb6/chipotle3.jpg" alt="Kitchen Protocol Audit" />
+        <figure class="my-32 text-center">
+          <img src="https://i.postimg.cc/g2rdcNb6/chipotle3.jpg" alt="Kitchen Protocol Audit" class="max-w-xl mx-auto rounded-xl border border-white/10 shadow-2xl" />
+          <figcaption class="mt-6 text-[10px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit B: Evidence of Protocol Variance</figcaption>
+        </figure>
 
         <h2>The Compound Cost of Routine Lapses</h2>
         <section>
           <p>Pathogens exploit inconsistency. They do not care about branding or "integrity" slogans. Chipotle’s growth model relied on decentralized execution. That worked when discipline was tight. It became fragile when verification weakened. In 2020, Chipotle agreed to pay a $25 million federal fine — one of the largest ever imposed in a U.S. food safety case. Sales dropped nearly 30% in early 2016. The recovery cost years of marketing spend and trust-building.</p>
         </section>
 
-        <img src="https://i.postimg.cc/15vsZb2f/chipotle4.jpg" alt="Market Impact Visual" />
+        <figure class="my-32 text-center">
+          <img src="https://i.postimg.cc/15vsZb2f/chipotle4.jpg" alt="Market Impact Visual" class="max-w-xl mx-auto rounded-xl border border-white/10 shadow-2xl" />
+          <figcaption class="mt-6 text-[10px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit C: Financial Consequence Mapping</figcaption>
+        </figure>
 
         <h2>Masterclass Lesson: Drift Prevention</h2>
         <section>
@@ -154,7 +163,10 @@ export const blogPosts: BlogPost[] = [
           <p>Turnover alone costs U.S. businesses over $1 trillion annually. Much of it is tied to unclear expectations and poor systems. McKinsey research suggests that nearly 20% of a worker's time is spent looking for internal information or tracking down how to do a task. This is the "Inefficiency Tax" that kills margins in growing companies.</p>
         </section>
 
-        <img src="https://i.postimg.cc/L8hR4NFV/cost-of-no-sops-comparison.png" alt="Operational Margin Comparison" />
+        <figure class="my-32 text-center">
+          <img src="https://i.postimg.cc/L8hR4NFV/cost-of-no-sops-comparison.png" alt="Operational Margin Comparison" class="max-w-xl mx-auto rounded-xl border border-white/10 shadow-2xl" />
+          <figcaption class="mt-6 text-[10px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit A: The Cost of Undocumented Risk</figcaption>
+        </figure>
 
         <h2>The Profit Equation</h2>
         
@@ -164,7 +176,10 @@ export const blogPosts: BlogPost[] = [
           <p>Data-driven onboarding reduces the time-to-competency for new hires by 30-50%. Every day a new hire is "guessing" is a day your margin is leaking. In a scaled environment, these fractions of a percent compound into massive bottom-line gains. Systemization turns a variable cost (training) into a fixed asset (process).</p>
         </section>
 
-        <img src="https://i.postimg.cc/dVXFhrJN/sop-benefits-illustrated.png" alt="Systemic Advantage Mapping" />
+        <figure class="my-32 text-center">
+          <img src="https://i.postimg.cc/dVXFhrJN/sop-benefits-illustrated.png" alt="Systemic Advantage Mapping" class="max-w-xl mx-auto rounded-xl border border-white/10 shadow-2xl" />
+          <figcaption class="mt-6 text-[10px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit B: Structural Advantage Hierarchy</figcaption>
+        </figure>
 
         <h2>From Compliance to Valuation</h2>
         <section>
