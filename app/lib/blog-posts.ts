@@ -60,7 +60,7 @@ export const blogPosts: BlogPost[] = [
 
         <h2>The Anatomy of Transition Shock</h2>
         <section class="space-y-8">
-          <p>When memory walks out, companies enter <strong>transition shock</strong> — a measurable productivity drop lasting 3–9 months. SHRM estimates that 50% of new hires fail within 18 months due to unclear expectations. The root cause? Undefined roles and undocumented micro-processes. It’s not just tasks that leave; it’s decision criteria, escalation logic, and regulatory interpretation.</p>
+          <p>When memory walks out, companies enter <strong>transition shock</strong> — a measurable productivity drop lasting 3–9 months. SHRM estimates that 50% of new hires fail within 18 months due to unclear expectations and poor undocumented micro-processes. It’s not just tasks that leave; it’s decision criteria, escalation logic, and regulatory interpretation.</p>
         </section>
 
         <h2>The Domino Effect</h2>
@@ -93,7 +93,9 @@ export const blogPosts: BlogPost[] = [
           
           <p>Foodborne illness is not rare. The CDC estimates that roughly 48 million Americans experience foodborne illnesses each year. Approximately 128,000 hospitalizations and 3,000 deaths occur each year in the U.S. due to these diseases. For most brands, incidents are isolated and quickly forgotten. But this wasn’t most brands. This was Chipotle.</p>
           
-          <p>By 2015, Chipotle had transformed itself from a fast-casual chain into a cultural symbol. “Food With Integrity” wasn’t a slogan — it was a promise. The brand had scaled rapidly. Revenue was climbing. Investors admired the narrative. And then the illnesses multiplied. Reports spread across multiple states. E. coli. Norovirus. Salmonella. By the time the investigations concluded, more than 1,100 illnesses were linked to various outbreaks between 2015 and 2018.</p>
+          <p>By 2015, Chipotle had transformed itself from a fast-casual chain into a cultural symbol. “Food With Integrity” wasn’t a slogan — it was a promise. It implied that ingredients were cleaner, sourcing was ethical, and operations were superior to traditional fast food.</p>
+          
+          <p>The brand had scaled rapidly. Revenue was climbing. Investors admired the narrative. And then the illnesses multiplied. Reports spread across multiple states. E. coli. Norovirus. Salmonella. By the time the investigations concluded, more than 1,100 illnesses were linked to various outbreaks between 2015 and 2018.</p>
         </section>
 
         <img src="https://i.postimg.cc/MpXxZdJf/chipotle2.png" alt="Forensic inspection" />
