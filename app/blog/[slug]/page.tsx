@@ -9,7 +9,7 @@ import type { Metadata } from 'next';
 import { premiumPacks } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { ArrowRight, Clock, User, ChevronLeft, FileText, Check, Sparkles } from 'lucide-react';
+import { ArrowRight, Clock, User, ChevronLeft, FileText, Check, Sparkles, Shield } from 'lucide-react';
 
 type Props = {
   params: Promise<{ slug: string }>

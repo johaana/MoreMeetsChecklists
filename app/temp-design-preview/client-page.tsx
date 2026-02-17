@@ -7,7 +7,9 @@ import {
     ArrowRight, 
     Check,
     Sparkles,
-    Shield
+    Shield,
+    FileCheck,
+    Lock
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -80,6 +82,51 @@ const CTA_Improv_2 = () => (
     </div>
 );
 
+/* --- IMPROVISATION 3: THE FORENSIC SPECIFICATION (Focus: Standards & Verification) --- */
+const CTA_Improv_3 = () => (
+    <div className="mt-20 max-w-5xl mx-auto p-1 border-2 border-white/5 rounded-sm bg-zinc-900/50">
+        <div className="border border-white/10 p-10 md:p-16 flex flex-col md:flex-row items-start gap-16">
+            <div className="flex-1 space-y-10">
+                <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-accent">
+                        <FileCheck className="w-5 h-5" />
+                        <span className="text-[10px] font-black uppercase tracking-[0.4em]">Audit Verification Standard</span>
+                    </div>
+                    <h3 className="text-4xl md:text-5xl font-black font-headline text-white uppercase tracking-tighter leading-none italic">Forensic Operational <br /> Blueprint</h3>
+                </div>
+                
+                <div className="grid sm:grid-cols-2 gap-8 border-t border-white/10 pt-10">
+                    <div className="space-y-2">
+                        <p className="text-[10px] font-black uppercase text-zinc-500 tracking-widest">Regulatory Alignment</p>
+                        <p className="text-sm text-zinc-300 font-medium">ISO 9001, HACCP, and OSHA mapped protocols for instant organizational audit-readiness.</p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="text-[10px] font-black uppercase text-zinc-500 tracking-widest">Tailoring Protocol</p>
+                        <p className="text-sm text-zinc-300 font-medium">Includes 1 priority customization session to align the asset with your internal brand identity.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="w-full md:w-72 space-y-6 pt-2">
+                <div className="p-8 border border-white/10 bg-black/40 space-y-6">
+                    <div className="space-y-1">
+                        <p className="text-[9px] font-black text-zinc-500 uppercase tracking-[0.3em]">System Access Fee</p>
+                        <p className="text-4xl font-black text-white italic">₹5,999</p>
+                    </div>
+                    <Button className="w-full h-14 bg-accent text-black font-black uppercase text-[10px] tracking-[0.2em] rounded-none hover:bg-white transition-all shadow-xl">
+                        Procure Standard
+                    </Button>
+                    <div className="flex items-center justify-center gap-2 opacity-40">
+                        <Lock className="w-3 h-3" />
+                        <span className="text-[8px] font-black uppercase tracking-widest">Secure Infrastructure</span>
+                    </div>
+                </div>
+                <p className="text-[10px] text-zinc-600 uppercase font-bold tracking-widest text-center italic">Lifetime License Issued Instantly</p>
+            </div>
+        </div>
+    </div>
+);
+
 const Section = ({ children, className }: { children: React.ReactNode, className?: string }) => (
     <section className={cn("w-full py-20 md:py-32", className)}>
         <div className="container px-4 md:px-6">
@@ -97,10 +144,10 @@ export default function TempDesignClientPage() {
         <main className="flex-1 pb-48 bg-zinc-950">
             {/* LAB HEADER */}
             <Section className="text-center pt-24 pb-16">
-                <Badge variant="outline" className="text-primary border-primary/30 mb-6 px-6 py-2 rounded-full text-[11px] font-black tracking-[0.3em] uppercase">Editorial Lab V8</Badge>
+                <Badge variant="outline" className="text-primary border-primary/30 mb-6 px-6 py-2 rounded-full text-[11px] font-black tracking-[0.3em] uppercase">Editorial Lab V9</Badge>
                 <h1 className="text-5xl md:text-7xl font-black font-headline text-white tracking-tighter uppercase mb-6 italic leading-none">The Executive Flow</h1>
                 <p className="text-xl text-zinc-400 max-w-3xl mx-auto font-medium leading-relaxed">
-                    Refined hero imagery (rectangular) and side-by-side executive CTA comparisons.
+                    Final refinement of hero aspect ratios (16:9 News Style) and a comparison of three executive procurement CTAs.
                 </p>
             </Section>
 
@@ -124,15 +171,15 @@ export default function TempDesignClientPage() {
                                     <p className="text-2xl text-zinc-300 leading-[1.8] font-medium">{mockText}</p>
                                 </div>
 
-                                {/* EXHIBIT IMAGE: Rectangular "News Report" format */}
+                                {/* EXHIBIT IMAGE: Rectangular "News Report" format (16:9) */}
                                 <div className="py-40 text-center space-y-6">
-                                    <figure className="inline-block max-w-2xl">
+                                    <figure className="inline-block max-w-3xl">
                                         <img 
                                             src="https://i.postimg.cc/NjLYGpvy/chipotle1.jpg" 
                                             alt="Forensic Evidence" 
                                             className="w-full aspect-video object-cover rounded-2xl border border-white/10 shadow-2xl"
                                         />
-                                        <figcaption className="mt-8 text-[11px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit A: Visualized Operational Decay</figcaption>
+                                        <figcaption className="mt-8 text-[11px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit A: Visualized Operational Decay (16:9 Aspect Ratio)</figcaption>
                                     </figure>
                                 </div>
 
@@ -150,20 +197,29 @@ export default function TempDesignClientPage() {
                                 
                                 <div className="space-y-12">
                                     <div className="text-center">
-                                        <Badge variant="secondary" className="mb-4 px-4 py-1">Strategy A</Badge>
+                                        <Badge variant="secondary" className="mb-4 px-4 py-1">Concept A</Badge>
                                         <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">The "Strategic Solution"</h4>
-                                        <p className="text-[11px] text-zinc-500 uppercase mt-2 tracking-widest">Focus: Customization & Tailoring</p>
+                                        <p className="text-[11px] text-zinc-500 uppercase mt-2 tracking-widest">Focus: No Price / Curiosity & Tailoring</p>
                                     </div>
                                     <CTA_Improv_1 />
                                 </div>
 
                                 <div className="space-y-12">
                                     <div className="text-center">
-                                        <Badge variant="secondary" className="mb-4 px-4 py-1">Strategy B</Badge>
-                                        <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">The "Control Backbone"</h4>
-                                        <p className="text-[11px] text-zinc-500 uppercase mt-2 tracking-widest">Focus: Institutional Infrastructure</p>
+                                        <Badge variant="secondary" className="mb-4 px-4 py-1">Concept B</Badge>
+                                        <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">The "Institutional Backbone"</h4>
+                                        <p className="text-[11px] text-zinc-500 uppercase mt-2 tracking-widest">Focus: With Price / Infrastructure & Authority</p>
                                     </div>
                                     <CTA_Improv_2 />
+                                </div>
+
+                                <div className="space-y-12">
+                                    <div className="text-center">
+                                        <Badge variant="secondary" className="mb-4 px-4 py-1">Concept C</Badge>
+                                        <h4 className="text-white font-black uppercase tracking-[0.3em] text-sm italic font-headline">The "Forensic Blueprint"</h4>
+                                        <p className="text-[11px] text-zinc-500 uppercase mt-2 tracking-widest">Focus: With Price / Audit Standards & Verification</p>
+                                    </div>
+                                    <CTA_Improv_3 />
                                 </div>
 
                             </div>
