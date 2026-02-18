@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -12,7 +11,11 @@ import {
     ShieldCheck, 
     FileSpreadsheet, 
     Infinity, 
-    Lock 
+    Lock,
+    Target,
+    Activity,
+    Cpu,
+    Workflow
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -27,16 +30,20 @@ const CustomButtonVariant = ({
     variantLabel,
     buttonClass,
     innerWrapperClass,
-    showShimmer = false,
-    showGlow = false,
-    showBorderFlow = false
+    showTargetBrackets = false,
+    showScanline = false,
+    showGrid = false,
+    showTerminalFlicker = false,
+    showSlotAnimation = false
 }: { 
     variantLabel: string, 
     buttonClass?: string,
     innerWrapperClass?: string,
-    showShimmer?: boolean,
-    showGlow?: boolean,
-    showBorderFlow?: boolean
+    showTargetBrackets?: boolean,
+    showScanline?: boolean,
+    showGrid?: boolean,
+    showTerminalFlicker?: boolean,
+    showSlotAnimation?: boolean
 }) => (
     <div className="space-y-6 mb-24">
         <div className="flex items-center gap-3 px-4">
@@ -67,7 +74,6 @@ const CustomButtonVariant = ({
                     </div>
 
                     <div className="flex flex-col items-center gap-6">
-                        {/* ELITE TRACKED PILL (PRESERVED) */}
                         <div className="flex items-center justify-center">
                             <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 transition-none">
                                 <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
@@ -75,33 +81,45 @@ const CustomButtonVariant = ({
                         </div>
                         
                         <div className="relative group/btn w-full md:w-96">
-                            {/* GLOW EFFECT */}
-                            {showGlow && (
-                                <div className="absolute -inset-1 bg-primary/40 rounded-sm blur-lg group-hover/btn:blur-xl transition-all duration-500 opacity-0 group-hover/btn:opacity-100 animate-pulse-soft" />
+                            {/* TARGET BRACKETS */}
+                            {showTargetBrackets && (
+                                <>
+                                    <div className="absolute -top-3 -left-3 w-4 h-4 border-t-2 border-l-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:top-[-12px] group-hover/btn:left-[-12px] transition-all duration-300" />
+                                    <div className="absolute -top-3 -right-3 w-4 h-4 border-t-2 border-r-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:top-[-12px] group-hover/btn:right-[-12px] transition-all duration-300" />
+                                    <div className="absolute -bottom-3 -left-3 w-4 h-4 border-b-2 border-l-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:bottom-[-12px] group-hover/btn:left-[-12px] transition-all duration-300" />
+                                    <div className="absolute -bottom-3 -right-3 w-4 h-4 border-b-2 border-r-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:bottom-[-12px] group-hover/btn:right-[-12px] transition-all duration-300" />
+                                </>
                             )}
 
-                            {/* BORDER FLOW WRAPPER */}
                             <div className={cn(
-                                "relative overflow-hidden rounded-sm p-[1px]",
-                                showBorderFlow ? "bg-white/10" : ""
+                                "relative overflow-hidden rounded-sm",
+                                showTerminalFlicker ? "group-hover/btn:animate-[pulse_0.1s_ease-in-out_infinite]" : ""
                             )}>
-                                {showBorderFlow && (
-                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-[conic-gradient(transparent,transparent,transparent,hsl(var(--primary)))] animate-border-rotate" />
-                                )}
-
                                 <Button size="lg" className={cn(
-                                    "w-full h-16 bg-primary text-black font-black uppercase italic text-sm tracking-[0.1em] shadow-2xl rounded-sm border-none relative overflow-hidden group/shimmer",
+                                    "w-full h-16 bg-primary text-black font-black uppercase italic text-sm tracking-[0.1em] shadow-2xl rounded-sm border-none relative overflow-hidden",
                                     buttonClass
                                 )}>
                                     <span className={cn("flex items-center justify-center gap-2 relative z-10", innerWrapperClass)}>
-                                        Protect Your Operations <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1"/>
+                                        Protect Your Operations 
+                                        <div className={cn(
+                                            "transition-all duration-300",
+                                            showSlotAnimation ? "group-hover/btn:translate-x-1 group-hover/btn:scale-110" : ""
+                                        )}>
+                                            <ArrowRight className="w-5 h-5"/>
+                                        </div>
                                     </span>
 
-                                    {/* SHIMMER EFFECT */}
-                                    {showShimmer && (
-                                        <div className="absolute inset-0 z-0">
-                                            <div className="absolute top-0 -left-[100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] animate-shimmer" />
+                                    {/* SCANLINE EFFECT */}
+                                    {showScanline && (
+                                        <div className="absolute inset-0 pointer-events-none z-20">
+                                            <div className="w-full h-[2px] bg-white/40 absolute top-0 animate-[scanline_2s_linear_infinite]" />
                                         </div>
+                                    )}
+
+                                    {/* GRID OVERLAY */}
+                                    {showGrid && (
+                                        <div className="absolute inset-0 opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300 pointer-events-none" 
+                                             style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '10px 10px' }} />
                                     )}
                                 </Button>
                             </div>
@@ -124,32 +142,43 @@ const CustomButtonVariant = ({
 export default function DesignPreviewClient() {
     return (
         <div className="space-y-12 pb-32">
+            <style dangerouslySetInnerHTML={{ __html: `
+                @keyframes scanline {
+                    0% { top: -10%; opacity: 0; }
+                    10% { opacity: 1; }
+                    90% { opacity: 1; }
+                    100% { top: 110%; opacity: 0; }
+                }
+            `}} />
+
             <CustomButtonVariant 
-                variantLabel="Variant 1: Shimmering Command (The Catch)"
-                showShimmer={true}
+                variantLabel="Variant 1: Target Lock (Precision RETICLE)"
+                showTargetBrackets={true}
+                buttonClass="hover:bg-primary transition-colors"
             />
 
             <CustomButtonVariant 
-                variantLabel="Variant 2: Shadow Pulse (The Magnet)"
-                showGlow={true}
-                buttonClass="hover:shadow-[0_0_30px_-5px_rgba(var(--primary),0.5)] transition-shadow duration-500"
+                variantLabel="Variant 2: Live Scanning Feed (Verification)"
+                showScanline={true}
+                buttonClass="bg-primary/90 hover:bg-primary"
             />
 
             <CustomButtonVariant 
-                variantLabel="Variant 3: Satisfying Depth (3D Press)"
-                buttonClass="border-b-4 border-black/20 hover:border-b-0 hover:translate-y-[2px] transition-all active:scale-95"
+                variantLabel="Variant 3: Terminal Handshake (Purposeful Jitter)"
+                showTerminalFlicker={true}
+                buttonClass="hover:shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all"
             />
 
             <CustomButtonVariant 
-                variantLabel="Variant 4: Magnetic Scale (Responsive)"
-                buttonClass="transition-transform duration-300 hover:scale-105 active:scale-95"
+                variantLabel="Variant 4: Logic Slot (Mechanical Lock)"
+                showSlotAnimation={true}
                 innerWrapperClass="group-hover/btn:gap-4 transition-all duration-300"
             />
 
             <CustomButtonVariant 
-                variantLabel="Variant 5: The Edge Chase (High Tech)"
-                showBorderFlow={true}
-                buttonClass="bg-primary/95 group-hover/btn:bg-primary transition-colors"
+                variantLabel="Variant 5: Identity Grid (Architectural Blueprint)"
+                showGrid={true}
+                buttonClass="transition-all duration-500"
             />
         </div>
     );
