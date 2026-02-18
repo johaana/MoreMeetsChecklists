@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -235,7 +236,7 @@ export default function Home() {
         <CoreProblemSection />
         <HowItWorksSection />
         <FeatureStripSection />
-        <WhatItIsSection />
+        WhatItIsSection />
         <HowTeamsUseItSection />
         <ComplianceSection />
         <WhoIsItForSection />

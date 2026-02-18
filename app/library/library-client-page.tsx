@@ -119,7 +119,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
             <CardFooter>
                 <Button asChild className="w-full" variant="secondary">
                     <Link href={`/packs/${pack.id}`}>
-                        View Details <ArrowRight className="ml-2 h-4 w-4" />
+                        Eliminate Operational Risk <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                 </Button>
             </CardFooter>
@@ -141,8 +141,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                             </p>
                         </div>
                         
-                        {/* Filters */}
-                         <div className="max-w-4xl mx-auto mb-12 p-4 rounded-lg border bg-background/95 shadow-sm">
+                        <div className="max-w-4xl mx-auto mb-12 p-4 rounded-lg border bg-background/95 shadow-sm">
                              <div className="flex flex-col md:flex-row gap-4 items-center">
                                 <div className="relative w-full md:flex-1">
                                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
@@ -165,7 +164,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                         <DropdownMenuContent className="w-56 max-h-96 overflow-y-auto">
                                             <DropdownMenuItem onSelect={() => handleCategoryChange('All')}>All Industries</DropdownMenuItem>
                                             {categories.map(category => (
-                                                <DropdownMenuItem key={category} onSelect={() => handleCategoryChange(category)}>
+                                                <DropdownMenuItem key={category} onValueChange={() => handleCategoryChange(category)}>
                                                     {category}
                                                 </DropdownMenuItem>
                                             ))}
@@ -186,7 +185,6 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                             </div>
                         </div>
 
-                        {/* Mobile Filter Button */}
                         <div className="md:hidden fixed bottom-4 right-4 z-40">
                              <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
                                 <SheetTrigger asChild>
@@ -250,4 +248,3 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
         </div>
     );
 }
-

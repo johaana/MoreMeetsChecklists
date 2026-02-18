@@ -7,8 +7,8 @@ import Script from 'next/script';
 export function LayoutScript() {
   const pathname = usePathname();
 
-  // Do not load Brevo script on the blog page or temp design page
-  if (pathname === '/blog' || pathname.startsWith('/temp-design-preview')) {
+  // Do not load Brevo script on the blog page
+  if (pathname === '/blog') {
     return null;
   }
 

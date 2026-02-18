@@ -1,3 +1,4 @@
+
 import { blogPosts } from '@/lib/blog-posts';
 import { notFound } from 'next/navigation';
 import { SiteHeader } from '@/components/layout/header';
@@ -66,7 +67,6 @@ export default async function BlogPostPage({ params }: Props) {
   const wordCount = post.content.replace(/<[^>]*>/g, '').split(/\s+/).length;
   const readingTime = Math.max(12, Math.ceil(wordCount / 225));
 
-  // Psychological CTA Mapping Logic
   const getCTAConfig = () => {
     if (slug === 'the-day-the-process-left-with-him') {
         return {
@@ -122,7 +122,6 @@ export default async function BlogPostPage({ params }: Props) {
       <SiteHeader />
       <main className="flex-1">
         <article className="pb-24 md:pb-32">
-          {/* Executive News Hero Header */}
           <header className="w-full pt-12 pb-12 md:pt-16 md:pb-16 border-b border-white/5 bg-alternate-background/30">
             <div className="container px-4 md:px-6">
               <div className="max-w-6xl mx-auto">
@@ -173,7 +172,6 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           </header>
 
-          {/* Expansive Executive Flow Narrative */}
           <div className="container px-4 md:px-6 mt-12 md:mt-24 relative z-20">
             <div className="max-w-4xl mx-auto">
               <div 
@@ -188,7 +186,6 @@ export default async function BlogPostPage({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: post.content }} 
               />
 
-              {/* Resolution Procurement Asset */}
               <div className="mt-12 md:mt-16 pt-8 md:pt-12 border-t border-white/5 relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl md:rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
                   <Card className="overflow-hidden bg-black border border-white/10 rounded-2xl md:rounded-[2rem] p-6 md:p-16 relative z-10 shadow-2xl">
