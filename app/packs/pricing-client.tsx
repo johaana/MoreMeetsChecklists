@@ -86,23 +86,6 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     )
 }
 
-const Timeline = ({ activeStep }: { activeStep: number }) => (
-    <div className="mt-8 pt-5 border-t border-white/5 flex justify-between items-center px-2">
-        <div className="flex flex-col gap-1 items-center">
-            <span className={cn("text-[8px] font-black uppercase tracking-widest", activeStep === 1 ? "text-primary" : "text-muted-foreground opacity-40")}>1. Acquire</span>
-            {activeStep === 1 && <div className="w-full h-0.5 bg-primary rounded-full mt-0.5" />}
-        </div>
-        <div className="h-px flex-1 bg-white/10 mx-2" />
-        <div className="flex flex-col gap-1 items-center">
-            <span className={cn("text-[8px] font-black uppercase tracking-widest text-muted-foreground opacity-40")}>2. Deliver</span>
-        </div>
-        <div className="h-px flex-1 bg-white/10 mx-2" />
-        <div className="flex flex-col gap-1 items-center">
-            <span className={cn("text-[8px] font-black uppercase tracking-widest text-muted-foreground opacity-40")}>3. Tailor</span>
-        </div>
-    </div>
-);
-
 const IndiaMethods = () => (
     <div className="flex flex-col items-center gap-3">
         <div className="flex items-center justify-center gap-4 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500">
@@ -150,11 +133,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const [region, setRegion] = React.useState<'GLOBAL' | 'INDIA'>(hasUSD ? 'GLOBAL' : 'INDIA');
     
     const totalChecklists = pack.checklists?.length || 0;
+    const totalTasks = pack.checklists?.reduce((acc, c) => acc + c.tasks.length, 0) || 0;
 
     const coreBenefits = [
-        { title: "Standard Operating Procedures", subText: `Complete pack with all ${totalChecklists} institutional checklists` },
-        { title: "100% Offline Use", subText: "Internal data privacy & zero data exposure" },
-        { title: "Unlimited Internal Rights", subText: "Deploy across your entire organization forever" }
+        { title: `${totalChecklists} Institutional Checklists`, subText: `${totalTasks}+ Professional Action Items` },
+        { title: "100% Offline Infrastructure", subText: "Zero data exposure • Internal privacy" },
+        { title: "Enterprise-Wide License", subText: "Unlimited internal deployment rights" }
     ];
 
     const PROOFS = [
@@ -202,7 +186,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             <div className="container px-4 md:px-6">
                 <div className="flex justify-center">
                     <Card 
-                        className="w-full max-w-[550px] bg-surface-card border-primary shadow-[0_0_50px_-12px_rgba(var(--primary),0.3)] flex flex-col h-full overflow-hidden ring-1 ring-primary/20 relative"
+                        className="w-full max-w-[550px] bg-surface-card border-primary shadow-[0_0_60px_-12px_rgba(var(--primary),0.2)] flex flex-col h-full overflow-hidden ring-1 ring-primary/20 relative"
                     >
                         {/* THE AUDIT STAMP */}
                         <div className="absolute top-6 right-6 z-20">
@@ -241,18 +225,18 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardHeader>
 
                         <CardContent className="flex-1 p-8 md:p-12 flex flex-col space-y-10">
-                            <div className="space-y-6 text-center">
+                            <div className="space-y-8 text-center">
                                 {coreBenefits.map((item, i) => (
                                     <div key={i} className="flex flex-col items-center gap-1 group">
-                                        <p className="text-base font-black text-primary-text tracking-tight uppercase">{item.title}</p>
-                                        <p className="text-xs text-muted-foreground italic">{item.subText}</p>
+                                        <p className="text-lg font-black text-primary-text tracking-tight uppercase leading-tight">{item.title}</p>
+                                        <p className="text-xs text-muted-foreground italic font-medium">{item.subText}</p>
                                     </div>
                                 ))}
                             </div>
 
                             <div className="text-center space-y-8">
                                 <div>
-                                    <p className="text-6xl font-black text-primary-text tracking-tighter">
+                                    <p className="text-7xl font-black text-primary-text tracking-tighter">
                                         {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
                                     </p>
                                     <div className="flex flex-col items-center gap-1 mt-2">
@@ -265,9 +249,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </div>
                                 </div>
 
-                                <div className="space-y-6">
-                                    {/* THE VALUE PILL */}
-                                    <div className="flex items-center gap-2.5 text-primary font-black uppercase text-[10px] tracking-[0.25em] bg-primary/5 px-6 py-3 rounded-full border border-primary/20 shadow-[0_0_20px_rgba(var(--primary),0.05)] w-fit mx-auto">
+                                <div className="space-y-6 pt-4">
+                                    {/* THE VALUE PILL - GOLD FOR MAXIMUM POP */}
+                                    <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/30 shadow-[0_0_25px_rgba(var(--accent),0.05)] w-fit mx-auto transition-transform hover:scale-105">
                                         <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                                     </div>
 
@@ -280,7 +264,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         </div>
                                     ) : (
                                         <div className="w-full flex flex-col items-center gap-6">
-                                            <Button asChild size="lg" className="w-full h-16 bg-primary text-bg-primary font-black uppercase italic text-base rounded-xl shadow-xl hover:scale-105 transition-all active:scale-95 border-none">
+                                            <Button asChild size="lg" className="w-full h-16 bg-primary text-bg-primary font-black uppercase italic text-base rounded-xl shadow-2xl hover:scale-105 transition-all active:scale-95 border-none">
                                                 <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
                                                     ELIMINATE OPERATIONAL RISK <ArrowRight className="ml-2 h-5 w-5"/>
                                                 </Link>
@@ -289,8 +273,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         </div>
                                     )}
                                 </div>
-
-                                <Timeline activeStep={1} />
                             </div>
                         </CardContent>
 
