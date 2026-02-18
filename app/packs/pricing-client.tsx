@@ -158,8 +158,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <CardDescription>Get the complete, fully-editable Excel file for the {pack.title}.</CardDescription>
                                 <p className="text-5xl font-extrabold pt-4 text-primary-text">Free</p>
                             </CardHeader>
-                            <CardContent className="flex-1 p-6">
-                                <ul className="space-y-4 text-muted-foreground text-sm">
+                            <CardContent className="flex-1 p-6 text-center">
+                                <ul className="space-y-4 text-muted-foreground text-sm flex flex-col items-center">
                                     <li className="flex items-start"><Check className="h-5 w-5 mr-3 mt-0.5 shrink-0 text-primary"/><span>Complete pack with all {totalChecklists} checklists.</span></li>
                                     <li className="flex items-start"><Check className="h-5 w-5 mr-3 mt-0.5 shrink-0 text-primary"/><span>Fully editable Excel format.</span></li>
                                 </ul>
@@ -218,8 +218,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </div>
                         </CardHeader>
 
-                        <CardContent className="flex-1 p-8 md:p-12 flex flex-col space-y-10">
-                            <div className="space-y-8 text-center">
+                        <CardContent className="flex-1 p-8 md:p-12 flex flex-col space-y-10 text-center">
+                            <div className="space-y-8">
                                 <div className="flex flex-col items-center gap-1 group">
                                     <p className="text-lg md:text-xl font-black text-primary-text tracking-tight uppercase leading-tight">
                                         {totalChecklists} Institutional Checklists • {totalTasks}+ Tasks
@@ -236,7 +236,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </div>
                             </div>
 
-                            <div className="text-center space-y-8">
+                            <div className="space-y-8">
                                 <div>
                                     <p className="text-7xl font-black text-primary-text tracking-tighter">
                                         {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
@@ -279,7 +279,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </CardContent>
 
                         {/* THE DELIVERABLE BAR - FORCED TO SINGLE LINE */}
-                        <div className="bg-white/[0.03] border-t border-white/5 py-6 px-4 md:px-8 flex flex-nowrap items-center justify-between overflow-x-auto gap-4 no-scrollbar">
+                        <div className="bg-white/[0.03] border-t border-white/5 py-6 px-4 md:px-8 flex flex-nowrap items-center justify-center overflow-x-auto gap-8 no-scrollbar">
                             {PROOFS.map(item => (
                                 <div key={item.label} className="flex items-center gap-1.5 text-[8px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.1em] shrink-0 whitespace-nowrap">
                                     <item.icon className="w-3 h-3 text-primary/40" /> {item.label}

@@ -20,11 +20,7 @@ import {
     Infinity, 
     Lock,
     ShieldCheck,
-    Users,
-    TrendingUp,
-    HeartPulse,
-    Gift,
-    Star
+    Gift
 } from 'lucide-react';
 
 type Props = {
@@ -71,34 +67,34 @@ export default async function BlogPostPage({ params }: Props) {
   const getCTAConfig = () => {
     if (slug === 'the-day-the-process-left-with-him') {
         return {
-            title: "Secure Your Institutional Memory",
+            title: "SECURE YOUR INSTITUTIONAL MEMORY",
             description: "Convert individual brilliance into permanent infrastructure. Mapped to ISO 9001 and ISO 41001 standards for instant organizational audit-readiness and continuity.",
             compliance: "ISO 9001 • ISO 41001"
         };
     }
     if (slug === 'the-25-million-burrito') {
         return {
-            title: "Eliminate Operational Drift",
+            title: "ELIMINATE OPERATIONAL DRIFT",
             description: "Deploy the verified, HACCP and FSSAI-aligned institutional backbone designed to eliminate the exact failure points analyzed in this debrief.",
             compliance: "HACCP • FSSAI • ISO 22000"
         };
     }
     if (slug === 'patient-safety-process-discipline') {
         return {
-            title: "Build Systems That Protect Lives",
+            title: "BUILD SYSTEMS THAT PROTECT LIVES",
             description: "Deploy an institutional-grade JCI and NABH aligned control protocol designed for zero-ambiguity execution in high-risk environments.",
             compliance: "JCI • NABH • WHO"
         };
     }
     if (slug === 'hidden-roi-of-sops') {
         return {
-            title: "Turn Structure Into Profit",
+            title: "TURN STRUCTURE INTO PROFIT",
             description: "ISO 27001 and SOC2 mapped protocols for organizational scalability. Reduce onboarding time by 40% and lower error rates instantly.",
             compliance: "ISO 27001 • SOC2 • Statutory"
         };
     }
     return {
-        title: "Deploy Professional Standards",
+        title: "DEPLOY PROFESSIONAL STANDARDS",
         description: "ISO, HACCP, and OSHA mapped protocols for instant organizational audit-readiness and brand protection. Ready for immediate organizational deployment.",
         compliance: "ISO • HACCP • OSHA"
     };
@@ -180,7 +176,7 @@ export default async function BlogPostPage({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: post.content }} 
               />
 
-              {/* RESOLUTION PROTOCOL CARD - CENTERED EXPERT LAYOUT */}
+              {/* WINNING RESOLUTION PROTOCOL CARD - CENTERED HIGH GRAVITY */}
               <div className="mt-12 md:mt-16 pt-8 md:pt-12 relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl md:rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
                   <Card className="overflow-hidden bg-black border border-white/10 rounded-2xl md:rounded-[2rem] relative z-10 shadow-2xl">
@@ -193,9 +189,11 @@ export default async function BlogPostPage({ params }: Props) {
                             <p className="text-base md:text-lg text-secondary-text leading-relaxed">
                                 {cta.description}
                             </p>
+                            
+                            {/* THE SLATE STANDARD - DE-SATURATED RECOGNITION */}
                             <div className="flex items-center justify-center gap-3 pt-2">
-                                <Shield className="w-3.5 h-3.5 text-accent" />
-                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent">Aligned: {cta.compliance}</span>
+                                <Shield className="w-3.5 h-3.5 text-[#4A5568]" />
+                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#4A5568]">Aligned: {cta.compliance}</span>
                             </div>
                         </div>
 
@@ -213,8 +211,8 @@ export default async function BlogPostPage({ params }: Props) {
                         </div>
                       </div>
                       
-                      {/* THE DELIVERABLE BAR - SINGLE LINE */}
-                      <div className="bg-white/[0.03] border-t border-white/5 py-5 px-4 md:px-12 flex flex-nowrap items-center justify-between overflow-x-auto gap-4 no-scrollbar">
+                      {/* THE DELIVERABLE BAR - FORCED SINGLE LINE */}
+                      <div className="bg-white/[0.03] border-t border-white/5 py-5 px-4 md:px-12 flex flex-nowrap items-center justify-center overflow-x-auto gap-8 no-scrollbar">
                         {PROOFS.map(item => (
                             <div key={item.label} className="flex items-center gap-1.5 text-[8px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.1em] shrink-0 whitespace-nowrap">
                                 <item.icon className="w-3.5 h-3.5 text-primary/40" /> {item.label}
