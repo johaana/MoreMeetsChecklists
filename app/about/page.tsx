@@ -63,7 +63,7 @@ export default function AboutPage() {
                                 <span className="text-primary italic">Until something goes wrong.</span>
                             </h1>
                             <p className="text-xl md:text-2xl text-secondary-text max-w-2xl font-medium leading-relaxed">
-                                An audit uncovers gaps. A regulator asks for proof. A safety step is skipped. Suddenly you realize: You weren’t running on systems. You were running on people.
+                                An audit uncovers gaps. A regulator asks for proof. A safety step is skipped. Suddenly you realize: You weren’t running on systems. You were running on individual heroics.
                             </p>
                         </div>
                     </div>
@@ -88,7 +88,7 @@ export default function AboutPage() {
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             {[
-                                { label: "Cumulative Experience", value: "30+ Years", icon: History },
+                                { label: "Forensic Experience", value: "30+ Years", icon: History },
                                 { label: "Industries Audited", value: "12+", icon: ShieldCheck },
                                 { label: "Critical Procedures", value: "5,000+", icon: ClipboardList },
                                 { label: "Compliance Alignment", value: "ISO/HACCP", icon: Scale }
@@ -138,7 +138,7 @@ export default function AboutPage() {
                                 ))}
                             </ul>
                             <p className="pt-4 text-sm text-secondary-text italic border-t border-white/10">
-                                In healthcare, manufacturing, and safety-critical industries, a single missed step can endanger lives. That is not dramatic. That is documented reality.
+                                In healthcare, manufacturing, and safety-critical industries, a single missed step can endanger lives. That is documented reality.
                             </p>
                         </div>
                     </div>
