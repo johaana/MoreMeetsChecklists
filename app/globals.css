@@ -100,62 +100,29 @@ html {
   scroll-behavior: smooth;
 }
 
-@property --gradient-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
-@keyframes a-chasing-border {
-  0% {
-    --gradient-angle: 0deg;
-  }
-  100% {
-    --gradient-angle: 360deg;
-  }
+.animate-shimmer {
+  animation: shimmer 3s infinite;
 }
 
-.chasing-border-button {
-  position: relative;
-  background-color: transparent;
-  border: 2px solid transparent;
-  background-clip: padding-box;
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.05); }
 }
 
-.chasing-border-button::before {
-    content: "";
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    z-index: -1;
-    margin: -2px; 
-    border-radius: inherit;
-    background: conic-gradient(
-        from var(--gradient-angle),
-        hsl(var(--surface-card)),
-        var(--chasing-color),
-        hsl(var(--surface-card)) 25%,
-        hsl(var(--surface-card))
-    );
-    animation: a-chasing-border 2s linear infinite;
+.animate-pulse-soft {
+  animation: pulse-soft 2s infinite ease-in-out;
 }
 
-.chasing-border-button:disabled {
-    cursor: not-allowed;
-    border-color: var(--border-color, hsl(var(--border)));
-    color: var(--text-color, hsl(var(--muted-foreground)));
+@keyframes border-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-.chasing-border-button:disabled::before {
-    background: conic-gradient(
-        from var(--gradient-angle),
-        hsl(var(--surface-card)),
-        var(--chasing-color),
-        hsl(var(--surface-card)) 25%,
-        hsl(var(--surface-card))
-    );
-}
-
-.chasing-border-button:disabled {
-    border-color: var(--border-color);
-    color: var(--text-color);
+.animate-border-rotate {
+  animation: border-rotate 4s linear infinite;
 }
