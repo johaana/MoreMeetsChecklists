@@ -198,8 +198,8 @@ export default async function BlogPostPage({ params }: Props) {
                         </div>
 
                         <div className="flex flex-col items-center gap-6">
-                            {/* THE VALUE PILL - GOLD CONTRAST */}
-                            <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] md:text-[12px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 shadow-[0_0_20px_rgba(var(--accent),0.05)] transition-transform hover:scale-105">
+                            {/* THE VALUE PILL - ELITE TRACKED */}
+                            <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] md:text-[12px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 transition-none">
                                 <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                             </div>
                             

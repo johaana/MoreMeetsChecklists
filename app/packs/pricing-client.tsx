@@ -160,8 +160,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </CardHeader>
                             <CardContent className="flex-1 p-6 text-center">
                                 <ul className="space-y-4 text-muted-foreground text-sm flex flex-col items-center">
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-3 mt-0.5 shrink-0 text-primary"/><span>Complete pack with all {totalChecklists} checklists.</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-3 mt-0.5 shrink-0 text-primary"/><span>Fully editable Excel format.</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-3 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {totalChecklists} checklists.</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-3 mt-0.5 shrink-0 text-green-500"/><span>Fully editable Excel format.</span></li>
                                 </ul>
                             </CardContent>
                             <CardFooter className="mt-auto flex flex-col justify-center w-full gap-4 p-6 pt-0">
@@ -257,8 +257,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </div>
 
                                 <div className="space-y-6 pt-4">
-                                    {/* THE VALUE PILL - GOLD FOR MAXIMUM POP */}
-                                    <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/30 shadow-[0_0_25px_rgba(var(--accent),0.05)] w-fit mx-auto transition-transform hover:scale-105">
+                                    {/* THE VALUE PILL - ELITE TRACKED */}
+                                    <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto transition-none">
                                         <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                                     </div>
 
