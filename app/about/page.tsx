@@ -66,7 +66,7 @@ export default function AboutPage() {
                 <section className="w-full pt-20 pb-12 md:pt-32 md:pb-24 border-b border-white/5">
                     <div className="container px-4 md:px-6">
                         <div className="max-w-4xl space-y-6">
-                            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 mb-4 uppercase tracking-widest">About Us</Badge>
+                            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 mb-4 uppercase tracking-widest">Pedigree & Purpose</Badge>
                             <h1 className="text-4xl md:text-6xl font-black font-headline !leading-[1.1] text-primary-text tracking-tighter">
                                 Every business believes <br className="hidden md:block" /> it has systems. <br />
                                 <span className="text-primary italic">Until something goes wrong.</span>
@@ -78,7 +78,7 @@ export default function AboutPage() {
                     </div>
                 </section>
 
-                {/* THE PEDIGREE - NEW */}
+                {/* THE PEDIGREE */}
                 <Section className="bg-alternate-background">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="space-y-8">
@@ -91,7 +91,7 @@ export default function AboutPage() {
                                     Our founders have spent three decades auditing, directing, and optimizing complex, high-stakes environments across hospitality, healthcare, and industrial sectors. They realized a recurring, dangerous pattern: Most businesses don't actually have "systems"—they have heroes who remember how things work. 
                                 </p>
                                 <p className="text-lg text-secondary-text leading-relaxed">
-                                    When those heroes leave, resign, or simply have a bad day, the standard leaves with them. We built MoreMeets™ to convert individual brilliance into permanent organizational infrastructure.
+                                    When those heroes leave, the standard leaves with them. We built MoreMeets™ to convert individual brilliance into permanent organizational infrastructure.
                                 </p>
                             </div>
                         </div>
@@ -157,7 +157,7 @@ export default function AboutPage() {
                 <Section className="bg-alternate-background">
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
-                            <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary-text">MoreMeets™ is Operational Infrastructure</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary-text">Institutional Memory as a Service</h2>
                             <p className="text-lg text-secondary-text">We transform experience into structured execution frameworks.</p>
                         </div>
 
@@ -188,7 +188,7 @@ export default function AboutPage() {
                                 icon={ShieldCheck} 
                             />
                             <DifferencePoint 
-                                title="Institutional Memory" 
+                                title="Permanent Infrastructure" 
                                 description="Converts tribal knowledge into structured frameworks that stay when staff leave." 
                                 icon={History} 
                             />
@@ -210,31 +210,6 @@ export default function AboutPage() {
                                 <History className="w-16 h-16 md:w-24 md:h-24 text-primary opacity-20" />
                             </div>
                         </div>
-                    </div>
-                </Section>
-
-                {/* INDUSTRIES */}
-                <Section className="bg-alternate-background">
-                    <div className="text-center mb-16 space-y-4">
-                        <h2 className="text-3xl font-bold font-headline text-primary-text">Built for Real Operational Environments</h2>
-                        <p className="text-secondary-text">Structured execution across industries where failure is not an option.</p>
-                    </div>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
-                        {[
-                            { name: "Hospitality", icon: Building2 },
-                            { name: "Healthcare", icon: HeartPulse },
-                            { name: "Manufacturing", icon: Factory },
-                            { name: "Retail", icon: Store },
-                            { name: "Logistics", icon: ArrowRight },
-                            { name: "Education", icon: GraduationCap },
-                            { name: "Compliance", icon: Scale },
-                            { name: "Cybersecurity", icon: Lock },
-                        ].map(industry => (
-                            <div key={industry.name} className="p-6 rounded-2xl border border-white/5 bg-background flex flex-col items-center gap-4 text-center hover:border-primary/30 transition-all group">
-                                <industry.icon className="w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors" />
-                                <span className="font-bold text-primary-text text-sm md:text-base">{industry.name}</span>
-                            </div>
-                        ))}
                     </div>
                 </Section>
 
