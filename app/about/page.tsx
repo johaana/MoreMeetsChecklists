@@ -6,14 +6,15 @@ import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { 
     AlertTriangle, 
-    CheckCircle2, 
-    Users, 
     ShieldCheck, 
     History, 
     ArrowRight,
     ClipboardList,
     GraduationCap,
     Scale,
+    Binary,
+    Zap,
+    Fingerprint
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
@@ -57,13 +58,13 @@ export default function AboutPage() {
                 <section className="w-full pt-20 pb-12 md:pt-32 md:pb-24 border-b border-white/5">
                     <div className="container px-4 md:px-6">
                         <div className="max-w-4xl space-y-6">
-                            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 mb-4 uppercase tracking-widest">Pedigree & Purpose</Badge>
-                            <h1 className="text-4xl md:text-6xl font-black font-headline !leading-[1.1] text-primary-text tracking-tighter">
-                                Every business believes <br className="hidden md:block" /> it has systems. <br />
-                                <span className="text-primary italic">Until something goes wrong.</span>
+                            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 mb-4 uppercase tracking-[0.3em] font-black text-[10px]">Forensic Pedigree</Badge>
+                            <h1 className="text-4xl md:text-6xl font-black font-headline !leading-[1.1] text-primary-text tracking-tighter uppercase italic">
+                                Systems are not suggestions. <br />
+                                <span className="text-primary">They are infrastructure.</span>
                             </h1>
-                            <p className="text-xl md:text-2xl text-secondary-text max-w-2xl font-medium leading-relaxed">
-                                An audit uncovers gaps. A regulator asks for proof. A safety step is skipped. Suddenly you realize: You weren’t running on systems. You were running on individual heroics.
+                            <p className="text-xl md:text-2xl text-secondary-text max-w-2xl font-medium leading-relaxed italic border-l-2 border-primary/20 pl-6">
+                                Over 30 years of cumulative exposure to high-stakes operational failure has taught us one thing: Consistency is either engineered, or it is non-existent.
                             </p>
                         </div>
                     </div>
@@ -75,26 +76,26 @@ export default function AboutPage() {
                         <div className="space-y-8">
                             <div className="space-y-4">
                                 <h2 className="text-3xl md:text-4xl font-black font-headline text-primary-text uppercase italic tracking-tighter">The Engineering of Reliability</h2>
-                                <p className="text-xl text-secondary-text leading-relaxed font-medium italic border-l-2 border-primary/20 pl-6">
-                                    MoreMeets™ was born from over <span className="text-primary font-black">30 years of cumulative operational exposure.</span>
+                                <p className="text-lg text-secondary-text leading-relaxed">
+                                    MoreMeets™ was born from over <span className="text-primary font-black">30 years of cumulative operational exposure.</span> Our founders have spent three decades auditing, directing, and optimizing complex environments across hospitality, healthcare, and industrial sectors. 
                                 </p>
                                 <p className="text-lg text-secondary-text leading-relaxed">
-                                    Our founders have spent three decades auditing, directing, and optimizing complex, high-stakes environments across hospitality, healthcare, and industrial sectors. They realized a recurring, dangerous pattern: Most businesses don't actually have "systems"—they have heroes who remember how things work. 
+                                    We realized a recurring, dangerous pattern: Most businesses don't actually have "systems"—they have heroes who remember how things work. When those heroes leave, the standard leaves with them. 
                                 </p>
-                                <p className="text-lg text-secondary-text leading-relaxed">
-                                    When those heroes leave, the standard leaves with them. We built MoreMeets™ to convert individual brilliance into permanent organizational infrastructure.
+                                <p className="text-lg text-secondary-text leading-relaxed font-bold text-primary-text">
+                                    We built MoreMeets™ to convert individual brilliance into permanent organizational infrastructure.
                                 </p>
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             {[
-                                { label: "Forensic Experience", value: "30+ Years", icon: History },
+                                { label: "Forensic Experience", value: "30+ Years", icon: Binary },
                                 { label: "Industries Audited", value: "12+", icon: ShieldCheck },
                                 { label: "Critical Procedures", value: "5,000+", icon: ClipboardList },
                                 { label: "Compliance Alignment", value: "ISO/HACCP", icon: Scale }
                             ].map((stat, i) => (
-                                <div key={i} className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] flex flex-col gap-2">
-                                    <stat.icon className="w-6 h-6 text-primary/50" />
+                                <div key={i} className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] flex flex-col gap-2 group hover:border-primary/20 transition-colors">
+                                    <stat.icon className="w-6 h-6 text-primary/50 group-hover:text-primary transition-colors" />
                                     <p className="text-2xl font-black text-primary-text">{stat.value}</p>
                                     <p className="text-[10px] uppercase font-black tracking-widest text-secondary-text">{stat.label}</p>
                                 </div>
@@ -148,7 +149,7 @@ export default function AboutPage() {
                 <Section className="bg-alternate-background">
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
-                            <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary-text">Institutional Memory as a Service</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary-text uppercase italic tracking-tighter">Institutional Memory as a Service</h2>
                             <p className="text-lg text-secondary-text">We transform experience into structured execution frameworks.</p>
                         </div>
 
@@ -156,7 +157,7 @@ export default function AboutPage() {
                             <DifferencePoint 
                                 title="Role-Based Control" 
                                 description="Clearly defined roles and assigned task ownership for every action." 
-                                icon={Users} 
+                                icon={Zap} 
                             />
                             <DifferencePoint 
                                 title="Frequency Mapping" 
@@ -189,10 +190,13 @@ export default function AboutPage() {
 
                 {/* RESIGNATION RISK */}
                 <Section>
-                    <div className="max-w-4xl mx-auto p-8 md:p-16 rounded-[2rem] border border-white/5 bg-white/[0.02] space-y-8">
-                        <div className="flex flex-col md:flex-row gap-8 items-center">
+                    <div className="max-w-4xl mx-auto p-8 md:p-16 rounded-[2rem] border border-white/5 bg-white/[0.02] space-y-8 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-10 opacity-5">
+                            <Fingerprint className="w-64 h-64" />
+                        </div>
+                        <div className="flex flex-col md:flex-row gap-8 items-center relative z-10">
                             <div className="space-y-4 flex-1">
-                                <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary-text">When Someone Resigns — The System Stays</h3>
+                                <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary-text uppercase italic">When Someone Resigns — The System Stays</h3>
                                 <p className="text-secondary-text leading-relaxed">
                                     This is one of the biggest silent risks in operations. When experienced staff leave, unwritten shortcuts disappear and undocumented practices break. MoreMeets™ ensures the process is owned by the business, not the individual.
                                 </p>
@@ -204,39 +208,15 @@ export default function AboutPage() {
                     </div>
                 </Section>
 
-                {/* CORE BELIEF */}
-                <Section>
-                    <div className="max-w-4xl mx-auto text-center p-12 md:p-20 rounded-[3rem] bg-primary text-primary-foreground space-y-8 shadow-2xl relative overflow-hidden">
-                        <div className="absolute top-0 right-0 p-10 opacity-10">
-                            <ShieldCheck className="w-64 h-64" />
-                        </div>
-                        <h2 className="text-3xl md:text-5xl font-black font-headline tracking-tighter uppercase leading-[0.9]">
-                            Our Core Belief
-                        </h2>
-                        <div className="space-y-4 text-lg md:text-xl font-bold max-w-2xl mx-auto opacity-90">
-                            <p>You cannot manually supervise everything.</p>
-                            <p>You cannot scale through reminders.</p>
-                            <p>You cannot rely on memory.</p>
-                            <p>You cannot afford preventable errors.</p>
-                        </div>
-                        <div className="pt-8 space-y-4">
-                            <p className="text-xs font-black uppercase tracking-[0.3em] opacity-60">The Mission</p>
-                            <p className="text-2xl md:text-3xl font-bold leading-tight">
-                                To protect businesses from preventable operational failure.
-                            </p>
-                        </div>
-                    </div>
-                </Section>
-
                 {/* FINAL CTA */}
                 <Section className="text-center py-24 md:py-32">
                     <div className="max-w-2xl mx-auto space-y-8">
-                        <h2 className="text-4xl md:text-5xl font-black font-headline text-primary-text tracking-tighter">
+                        <h2 className="text-4xl md:text-5xl font-black font-headline text-primary-text tracking-tighter uppercase italic">
                             Less misses. <br /> More standards.
                         </h2>
-                        <button className="text-lg text-secondary-text">
+                        <p className="text-lg text-secondary-text max-w-lg mx-auto">
                             Because memory is not a system. And serious operations deserve more than improvisation.
-                        </button>
+                        </p>
                         <Button size="lg" asChild className="h-16 px-10 rounded-xl bg-primary text-black font-black uppercase text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all">
                             <Link href="/library">Explore Operational Standards <ArrowRight className="ml-2 w-5 h-5"/></Link>
                         </Button>
