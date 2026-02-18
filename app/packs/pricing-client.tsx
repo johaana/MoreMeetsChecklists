@@ -270,7 +270,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 ) : (
                                     <div className="space-y-6">
                                         <div className="flex flex-col items-center gap-3">
-                                            <Button asChild className="w-full h-14 bg-primary text-bg-primary font-black uppercase text-sm rounded-xl shadow-xl hover:bg-primary/90 transition-all active:scale-95">
+                                            <Button asChild size="lg" className="w-full h-14 bg-primary text-bg-primary font-black uppercase text-sm rounded-xl shadow-xl hover:bg-primary/90 transition-all active:scale-95">
                                                 <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
                                                     Eliminate Operational Risk <ArrowRight className="ml-2 h-5 w-5"/>
                                                 </Link>

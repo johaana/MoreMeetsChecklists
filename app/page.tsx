@@ -219,7 +219,7 @@ const FinalCTASection = () => (
                     <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Built to prevent costly oversight.</p>
                 </div>
                  <div className="pt-4 text-[9px] font-black uppercase tracking-[0.2em] text-accent">
-                    1 Expert Customization Included per pack
+                    1 Expert Customization Included • Aligned to your brand and workflow
                 </div>
             </div>
         </div>

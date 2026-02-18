@@ -189,7 +189,7 @@ export default async function BlogPostPage({ params }: Props) {
               />
 
               {/* Resolution Procurement Asset */}
-              <div className="mt-24 md:mt-48 pt-12 md:pt-24 border-t border-white/5 relative group">
+              <div className="mt-12 md:mt-16 pt-8 md:pt-12 border-t border-white/5 relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl md:rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
                   <Card className="overflow-hidden bg-black border border-white/10 rounded-2xl md:rounded-[2rem] p-6 md:p-16 relative z-10 shadow-2xl">
                       <div className="absolute top-0 right-0 p-6 md:p-10 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity pointer-events-none">
