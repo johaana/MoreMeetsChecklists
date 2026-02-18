@@ -16,8 +16,7 @@ import {
     ArrowRight,
     QrCode,
     CreditCard as CardIcon,
-    ShieldCheck,
-    Lock
+    ShieldCheck
 } from 'lucide-react';
 import { Badge } from '../components/ui/badge';
 import { useToast } from '../hooks/use-toast';
@@ -152,7 +151,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         { title: "Instant Excel Delivery", subText: "Fully editable professional .xlsx file" },
         { title: "100% Offline Use", subText: "Internal data privacy & zero exposure" },
         { title: "Unlimited Internal Rights", subText: "Deploy across your entire organization" },
-        { title: "1 Free Customization", subText: "Tailored to your specific brand/workflow" }
+        { title: "1 Expert Customization Included", subText: "Aligned to your brand and workflow" }
     ];
 
     if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
@@ -255,18 +254,28 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                                 {region === 'INDIA' && hasINR ? (
                                     <div className="space-y-6">
-                                        <div className="min-h-[60px] flex items-center justify-center">
+                                        <div className="min-h-[60px] flex items-center justify-center relative flex-col gap-2">
                                             <RazorpayButton paymentId={pack.paymentId} className="w-full" />
+                                            <div className="text-center space-y-0.5">
+                                                <p className="text-[9px] font-black uppercase tracking-widest text-white/40">So nothing critical is missed.</p>
+                                                <p className="text-[9px] font-black uppercase tracking-widest text-white/40">Built to prevent costly oversight.</p>
+                                            </div>
                                         </div>
                                         <IndiaMethods />
                                     </div>
                                 ) : (
                                     <div className="space-y-6">
-                                        <Button asChild className="w-full h-14 bg-primary text-bg-primary font-black uppercase text-sm rounded-xl shadow-xl hover:bg-primary/90 transition-all active:scale-95">
-                                            <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
-                                                PROCURE ASSET <ArrowRight className="ml-2 h-5 w-5"/>
-                                            </Link>
-                                        </Button>
+                                        <div className="flex flex-col items-center gap-3">
+                                            <Button asChild className="w-full h-14 bg-primary text-bg-primary font-black uppercase text-sm rounded-xl shadow-xl hover:bg-primary/90 transition-all active:scale-95">
+                                                <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
+                                                    Eliminate Operational Risk <ArrowRight className="ml-2 h-5 w-5"/>
+                                                </Link>
+                                            </Button>
+                                            <div className="text-center space-y-0.5">
+                                                <p className="text-[9px] font-black uppercase tracking-widest text-white/40">So nothing critical is missed.</p>
+                                                <p className="text-[9px] font-black uppercase tracking-widest text-white/40">Built to prevent costly oversight.</p>
+                                            </div>
+                                        </div>
                                         <GlobalMethods />
                                     </div>
                                 )}

@@ -68,7 +68,7 @@ const HowItWorksSection = () => (
                         <span className="text-5xl font-bold text-accent">3</span>
                     </div>
                     <h3 className="text-xl font-bold font-headline text-primary-text">We Customize It</h3>
-                    <p className="text-secondary-text mt-2 text-sm">One free customization to match your brand, format, or internal workflow.</p>
+                    <p className="text-secondary-text mt-2 text-sm">1 Expert Customization Included to match your brand and workflow.</p>
                 </div>
             </div>
         </div>
@@ -85,7 +85,7 @@ const FeatureStripSection = () => (
                 </div>
                 <div className="flex flex-col items-center gap-2">
                     <Gem className="w-8 h-8 text-accent"/>
-                    <p className="font-semibold text-primary-text text-sm">1 Free Customization Included</p>
+                    <p className="font-semibold text-primary-text text-sm">1 Expert Customization Included</p>
                 </div>
                 <div className="flex flex-col items-center gap-2">
                     <CheckCircle className="w-8 h-8 text-accent"/>
@@ -216,7 +216,7 @@ const FinalCTASection = () => (
                     </Link>
                 </Button>
                  <div className="pt-4 text-xs text-muted-foreground pl-1">
-                    Includes 1 free customization per pack
+                    1 Expert Customization Included per pack
                 </div>
             </div>
         </div>

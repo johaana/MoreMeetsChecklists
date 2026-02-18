@@ -1,3 +1,4 @@
+
 import { blogPosts } from '@/lib/blog-posts';
 import { notFound } from 'next/navigation';
 import { SiteHeader } from '@/components/layout/header';
@@ -198,8 +199,8 @@ export default async function BlogPostPage({ params }: Props) {
                       <div className="flex flex-col lg:flex-row gap-8 md:gap-16 items-center justify-between">
                           <div className="space-y-4 md:space-y-6 flex-1 w-full text-left">
                               <div className="flex flex-wrap items-center gap-3 md:gap-4">
-                                  <Badge variant="outline" className="text-[8px] md:text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] md:tracking-[0.3em] px-3 md:px-4 py-1.5 rounded-none">Strategic Solution</Badge>
-                                  <span className="text-[8px] md:text-[10px] text-white/30 font-black uppercase tracking-widest italic">Includes 1 Tailored Customization</span>
+                                  <Badge variant="outline" className="text-[8px] md:text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] md:tracking-[0.3em] px-3 md:px-4 py-1.5 rounded-none">Resolution Protocol</Badge>
+                                  <span className="text-[8px] md:text-[10px] text-white/30 font-black uppercase tracking-widest italic">1 Expert Customization Included</span>
                               </div>
                               <h2 className="text-2xl md:text-4xl lg:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-tight">
                                 {cta.title}
@@ -222,13 +223,19 @@ export default async function BlogPostPage({ params }: Props) {
                               </div>
                           </div>
                           <div className="flex flex-col gap-4 md:gap-6 shrink-0 w-full md:w-72">
-                              <Button asChild size="lg" className="w-full h-14 md:h-16 bg-primary text-black font-black uppercase text-[10px] md:text-xs tracking-[0.2em] shadow-2xl hover:scale-[1.02] transition-transform rounded-sm">
-                                  <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'}>
-                                    Eliminate Operational Risk <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5"/>
-                                  </Link>
-                              </Button>
+                              <div className="flex flex-col items-center gap-3">
+                                  <Button asChild size="lg" className="w-full h-14 md:h-16 bg-primary text-black font-black uppercase text-[10px] md:text-xs tracking-[0.2em] shadow-2xl hover:scale-[1.02] transition-transform rounded-sm">
+                                      <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'}>
+                                        Eliminate Operational Risk <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5"/>
+                                      </Link>
+                                  </Button>
+                                  <div className="text-center space-y-0.5">
+                                      <p className="text-[8px] font-black uppercase tracking-widest text-white/40">So nothing critical is missed.</p>
+                                      <p className="text-[8px] font-black uppercase tracking-widest text-white/40">Built to prevent costly oversight.</p>
+                                  </div>
+                              </div>
                               <div className="flex flex-col items-center gap-2 opacity-40">
-                                <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] text-center italic">Before small failures become costly.</p>
+                                <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] text-center italic">Aligned to your brand and workflow</p>
                                 <div className="flex items-center gap-2">
                                     <Lock className="w-3 h-3" />
                                     <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] text-center italic">No SaaS lock-in</p>

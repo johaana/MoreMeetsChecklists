@@ -60,7 +60,7 @@ export const HeroSection = () => (
                            <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
-                    <p className="text-[10px] md:text-xs text-muted-foreground pl-1 opacity-70">Includes 1 free customization per pack</p>
+                    <p className="text-[10px] md:text-xs text-muted-foreground pl-1 opacity-70">1 Expert Customization Included</p>
                 </div>
             </div>
         </div>
