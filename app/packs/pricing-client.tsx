@@ -151,7 +151,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="text-foreground/80 text-base md:text-lg">As part of our commitment to social impact, this entire pack is available as a free, instant download.</p>
                     </div>
                     <div className="flex justify-center">
-                        <Card className="flex flex-col max-w-md w-full bg-surface-card border-border-color">
+                        <Card className="flex flex-col max-w-md w-full bg-surface-card border-border-color shadow-2xl">
                             <CardHeader className="text-center border-b border-white/5 bg-white/[0.01]">
                                 <Download className="w-10 h-10 text-primary mx-auto mb-4" />
                                 <CardTitle className="text-2xl font-headline">Instant Download</CardTitle>
@@ -180,7 +180,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
             <div className="container px-4 md:px-6">
                 <div className="flex justify-center">
                     <Card 
-                        className="w-full max-w-[550px] bg-surface-card border-primary shadow-[0_0_60px_-12px_rgba(var(--primary),0.2)] flex flex-col h-full overflow-hidden ring-1 ring-primary/20 relative"
+                        className="w-full max-w-[650px] bg-surface-card border-white/10 shadow-[0_0_60px_-12px_rgba(0,0,0,0.5)] flex flex-col h-full overflow-hidden relative"
                     >
                         {/* THE AUDIT STAMP */}
                         <div className="absolute top-6 right-6 z-20">
@@ -210,34 +210,29 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </Tabs>
                             </div>
                             
-                            <div className="w-full flex justify-center items-center mb-2">
+                            <div className="w-full flex flex-col items-center gap-4">
+                                <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Resolution Protocol</Badge>
                                 <div className="flex items-center gap-2">
-                                    <Shield className="w-4 h-4 text-primary" />
-                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">INSTITUTIONAL COMPLIANCE GRADE</span>
+                                    <Shield className="w-4 h-4 text-white/40" />
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">INSTITUTIONAL COMPLIANCE GRADE</span>
                                 </div>
                             </div>
                         </CardHeader>
 
                         <CardContent className="flex-1 p-8 md:p-12 flex flex-col space-y-10 text-center">
                             <div className="space-y-8">
-                                <div className="flex flex-col items-center gap-1 group">
-                                    <p className="text-lg md:text-xl font-black text-primary-text tracking-tight uppercase leading-tight">
+                                <div className="flex flex-col items-center gap-1">
+                                    <p className="text-xl md:text-2xl font-black text-primary-text tracking-tight uppercase leading-tight italic">
                                         {totalChecklists} Institutional Checklists • {totalTasks}+ Tasks
                                     </p>
-                                    <p className="text-xs text-muted-foreground italic font-medium">Complete Operational Payload</p>
+                                    <p className="text-xs text-secondary-text italic font-medium">Complete Operational Payload</p>
                                 </div>
                                 
-                                {/* THE MUTED WHITE STANDARD */}
                                 <div className="flex items-center justify-center gap-2 opacity-100">
                                     <ShieldCheck className="w-3.5 h-3.5 text-white/40" />
-                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic">
                                         Aligned: ISO • HACCP • OSHA • Industry Standards
                                     </span>
-                                </div>
-
-                                <div className="flex flex-col items-center gap-1 group">
-                                    <p className="text-lg font-black text-primary-text tracking-tight uppercase leading-tight">100% Offline Infrastructure</p>
-                                    <p className="text-xs text-muted-foreground italic font-medium">Zero data exposure • Internal privacy</p>
                                 </div>
                             </div>
 
@@ -271,8 +266,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         </div>
                                     ) : (
                                         <div className="w-full flex flex-col items-center gap-6">
-                                            <Button asChild size="lg" className="w-full h-16 bg-primary text-bg-primary font-black uppercase italic text-base rounded-xl shadow-2xl hover:scale-105 transition-all active:scale-95 border-none">
-                                                <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`}>
+                                            <Button asChild size="lg" className="w-full md:w-96 h-16 bg-primary text-black font-black uppercase italic text-base rounded-sm shadow-2xl hover:scale-105 transition-all active:scale-95 border-none">
+                                                <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center justify-center">
                                                     ELIMINATE OPERATIONAL RISK <ArrowRight className="ml-2 h-5 w-5"/>
                                                 </Link>
                                             </Button>
@@ -283,11 +278,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </div>
                         </CardContent>
 
-                        {/* THE DELIVERABLE BAR - FORCED TO SINGLE LINE */}
-                        <div className="bg-white/[0.03] border-t border-white/5 py-6 px-4 md:px-8 flex flex-nowrap items-center justify-center overflow-x-auto gap-8 no-scrollbar">
+                        {/* THE DELIVERABLE BAR - NO SCROLLBAR, CLEAN WRAP IF NEEDED */}
+                        <div className="bg-white/[0.03] border-t border-white/5 py-6 px-4 md:px-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
                             {PROOFS.map(item => (
                                 <div key={item.label} className="flex items-center gap-1.5 text-[8px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.1em] shrink-0 whitespace-nowrap">
-                                    <item.icon className="w-3 h-3 text-primary/40" /> {item.label}
+                                    <item.icon className="w-3.5 h-3.5 text-primary/40" /> {item.label}
                                 </div>
                             ))}
                         </div>
