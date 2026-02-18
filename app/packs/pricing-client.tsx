@@ -226,13 +226,18 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </p>
                                     <p className="text-xs text-muted-foreground italic font-medium">Complete Operational Payload</p>
                                 </div>
+                                
+                                {/* THE MUTED WHITE STANDARD */}
+                                <div className="flex items-center justify-center gap-2 opacity-100">
+                                    <ShieldCheck className="w-3.5 h-3.5 text-white/40" />
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">
+                                        Aligned: ISO • HACCP • OSHA • Industry Standards
+                                    </span>
+                                </div>
+
                                 <div className="flex flex-col items-center gap-1 group">
                                     <p className="text-lg font-black text-primary-text tracking-tight uppercase leading-tight">100% Offline Infrastructure</p>
                                     <p className="text-xs text-muted-foreground italic font-medium">Zero data exposure • Internal privacy</p>
-                                </div>
-                                <div className="flex flex-col items-center gap-1 group">
-                                    <p className="text-lg font-black text-primary-text tracking-tight uppercase leading-tight">Enterprise-Wide License</p>
-                                    <p className="text-xs text-muted-foreground italic font-medium">Unlimited internal deployment rights</p>
                                 </div>
                             </div>
 

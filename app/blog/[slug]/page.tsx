@@ -176,7 +176,7 @@ export default async function BlogPostPage({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: post.content }} 
               />
 
-              {/* WINNING RESOLUTION PROTOCOL CARD - CENTERED HIGH GRAVITY */}
+              {/* RESOLUTION PROTOCOL CARD - CENTERED HIGH GRAVITY */}
               <div className="mt-12 md:mt-16 pt-8 md:pt-12 relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl md:rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
                   <Card className="overflow-hidden bg-black border border-white/10 rounded-2xl md:rounded-[2rem] relative z-10 shadow-2xl">
@@ -190,10 +190,10 @@ export default async function BlogPostPage({ params }: Props) {
                                 {cta.description}
                             </p>
                             
-                            {/* THE SLATE STANDARD - DE-SATURATED RECOGNITION */}
+                            {/* THE MUTED WHITE STANDARD */}
                             <div className="flex items-center justify-center gap-3 pt-2">
-                                <Shield className="w-3.5 h-3.5 text-[#4A5568]" />
-                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#4A5568]">Aligned: {cta.compliance}</span>
+                                <Shield className="w-3.5 h-3.5 text-white/40" />
+                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Aligned: {cta.compliance}</span>
                             </div>
                         </div>
 
