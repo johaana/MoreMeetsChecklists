@@ -23,18 +23,14 @@ const PROOFS = [
     { label: 'No SaaS lock-in', icon: Lock }
 ];
 
-const CTAVariant = ({ 
-    title, 
-    description, 
-    alignedClass,
-    alignedStyle,
-    variantLabel 
+const CustomPillVariant = ({ 
+    variantLabel,
+    pillClass,
+    showPill = true
 }: { 
-    title: string, 
-    description: string, 
-    alignedClass?: string,
-    alignedStyle?: React.CSSProperties,
-    variantLabel: string 
+    variantLabel: string, 
+    pillClass: string,
+    showPill?: boolean
 }) => (
     <div className="space-y-6 mb-24">
         <div className="flex items-center gap-3 px-4">
@@ -43,42 +39,38 @@ const CTAVariant = ({
             <div className="h-px flex-1 bg-white/10" />
         </div>
 
-        <div className="relative group max-w-4xl mx-auto">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
+        <div className="relative max-w-4xl mx-auto">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-[2rem] blur opacity-5"></div>
             <Card className="overflow-hidden bg-black border border-white/10 rounded-[2rem] relative z-10 shadow-2xl">
                 <div className="p-8 md:p-16 text-center space-y-10">
                     <div className="space-y-4 max-w-2xl mx-auto">
                         <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Resolution Protocol</Badge>
                         <h2 className="text-3xl md:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-[1.1]">
-                            {title}
+                            Secure Your Institutional Memory
                         </h2>
                         <p className="text-base md:text-lg text-secondary-text leading-relaxed">
-                            {description}
+                            Convert individual brilliance into permanent infrastructure. Mapped to ISO 9001 and ISO 41001 standards.
                         </p>
                         <div className="flex items-center justify-center gap-3 pt-2">
-                            <Shield className="w-3.5 h-3.5" style={alignedStyle} className={cn("w-3.5 h-3.5", alignedClass)} />
-                            <span 
-                                style={alignedStyle}
-                                className={cn("text-[10px] font-black uppercase tracking-[0.2em]", alignedClass)}
-                            >
+                            <Shield className="w-3.5 h-3.5 text-white/40" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">
                                 Aligned: ISO 9001 • ISO 41001 • HACCP
                             </span>
                         </div>
                     </div>
 
                     <div className="flex flex-col items-center gap-6">
-                        {/* THE GIFT PILL - GOLD CONTRAST */}
-                        <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] md:text-[11px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 shadow-[0_0_20px_rgba(var(--accent),0.05)] transition-transform hover:scale-105">
+                        {/* THE PILL UNDER TEST */}
+                        <div className={cn("flex items-center gap-2.5 text-accent font-black uppercase text-[10px] md:text-[11px] tracking-[0.25em] transition-all", pillClass)}>
                             <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                         </div>
                         
-                        <Button size="lg" className="w-full md:w-96 h-16 bg-primary text-black font-black uppercase italic text-sm tracking-[0.1em] shadow-2xl rounded-sm border-none transition-all hover:scale-105 active:scale-95">
+                        <Button size="lg" className="w-full md:w-96 h-16 bg-primary text-black font-black uppercase italic text-sm tracking-[0.1em] shadow-2xl rounded-sm border-none">
                             Protect Your Operations <ArrowRight className="ml-2 h-5 w-5"/>
                         </Button>
                     </div>
                 </div>
                 
-                {/* THE DELIVERABLE BAR - FORCED SINGLE LINE */}
                 <div className="bg-white/[0.03] border-t border-white/5 py-5 px-4 md:px-12 flex flex-nowrap items-center justify-center overflow-x-auto gap-8 no-scrollbar">
                     {PROOFS.map(item => (
                         <div key={item.label} className="flex items-center gap-1.5 text-[8px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.1em] shrink-0 whitespace-nowrap">
@@ -92,58 +84,31 @@ const CTAVariant = ({
 );
 
 export default function DesignPreviewClient() {
-    const title = "Secure Your Institutional Memory";
-    const description = "Convert individual brilliance into permanent infrastructure. Mapped to ISO 9001 and ISO 41001 standards for instant organizational audit-readiness and continuity.";
-
     return (
         <div className="space-y-12 pb-32">
-            <CTAVariant 
-                variantLabel="Variant 1: Muted White"
-                title={title}
-                description={description}
-                alignedClass="text-white/40"
+            <CustomPillVariant 
+                variantLabel="Variant 1: Standard Authority (Static)"
+                pillClass="bg-accent/5 px-6 py-3 rounded-full border border-accent/30"
             />
 
-            <CTAVariant 
-                variantLabel="Variant 2: Bright White"
-                title={title}
-                description={description}
-                alignedClass="text-white/90"
+            <CustomPillVariant 
+                variantLabel="Variant 2: Ghost Border (Technical)"
+                pillClass="bg-transparent px-6 py-3 rounded-full border border-accent/40"
             />
 
-            <CTAVariant 
-                variantLabel="Variant 3: Muted Orange"
-                title={title}
-                description={description}
-                alignedClass="text-orange-500/50"
+            <CustomPillVariant 
+                variantLabel="Variant 3: Dark Inset (Prestige)"
+                pillClass="bg-white/5 px-6 py-3 rounded-full border border-white/10 ring-1 ring-accent/20"
             />
 
-            <CTAVariant 
-                variantLabel="Variant 4: Muted Grey"
-                title={title}
-                description={description}
-                alignedClass="text-zinc-500"
+            <CustomPillVariant 
+                variantLabel="Variant 4: Minimalist Meta (No Pill)"
+                pillClass="bg-transparent px-0 py-0 border-none shadow-none"
             />
 
-            <CTAVariant 
-                variantLabel="Variant 5: Deep Slate (#4A5568)"
-                title={title}
-                description={description}
-                alignedStyle={{ color: '#4A5568' }}
-            />
-
-            <CTAVariant 
-                variantLabel="Variant 6: Charcoal (#3F4752)"
-                title={title}
-                description={description}
-                alignedStyle={{ color: '#3F4752' }}
-            />
-
-            <CTAVariant 
-                variantLabel="Variant 7: 70% Heading Tone"
-                title={title}
-                description={description}
-                alignedClass="text-primary-text/70"
+            <CustomPillVariant 
+                variantLabel="Variant 5: Soft Glow (Static)"
+                pillClass="bg-accent/10 px-6 py-3 rounded-full shadow-[0_0_20px_rgba(var(--accent),0.1)] border-none"
             />
         </div>
     );

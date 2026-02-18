@@ -236,7 +236,7 @@ export default function Home() {
         <CoreProblemSection />
         <HowItWorksSection />
         <FeatureStripSection />
-        WhatItIsSection />
+        <WhatItIsSection />
         <HowTeamsUseItSection />
         <ComplianceSection />
         <WhoIsItForSection />
