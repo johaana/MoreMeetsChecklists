@@ -224,7 +224,7 @@ export default async function BlogPostPage({ params }: Props) {
                           <div className="flex flex-col gap-4 md:gap-6 shrink-0 w-full md:w-72">
                               <div className="flex flex-col items-center gap-3">
                                   <Button asChild size="lg" className="w-full h-14 md:h-16 bg-primary text-black font-black uppercase text-[10px] md:text-xs tracking-[0.2em] shadow-2xl hover:scale-[1.02] transition-transform rounded-sm border-none">
-                                      <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} className="flex items-center justify-center">
+                                      <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} className="flex items-center justify-center text-center">
                                         Protect Your Operations <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5"/>
                                       </Link>
                                   </Button>

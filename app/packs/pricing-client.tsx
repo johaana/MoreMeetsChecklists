@@ -15,7 +15,8 @@ import {
     ArrowRight,
     QrCode,
     CreditCard as CardIcon,
-    ShieldCheck
+    ShieldCheck,
+    Lock
 } from 'lucide-react';
 import { Badge } from '../components/ui/badge';
 import { useToast } from '../hooks/use-toast';
@@ -253,11 +254,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                                 {region === 'INDIA' && hasINR ? (
                                     <div className="space-y-6">
-                                        <div className="min-h-[60px] flex items-center justify-center relative flex-col gap-2">
-                                            <RazorpayButton paymentId={pack.paymentId} className="w-full" />
-                                            <div className="text-center space-y-0.5">
-                                                <p className="text-[9px] font-black uppercase tracking-widest text-white/40">So nothing critical is missed.</p>
-                                                <p className="text-[9px] font-black uppercase tracking-widest text-white/40">Built to prevent costly oversight.</p>
+                                        <div className="min-h-[60px] flex items-center justify-center relative flex-col gap-3">
+                                            <div className="w-full flex flex-col items-center gap-3">
+                                                <div className="w-full razorpay-container-wrapper">
+                                                    <RazorpayButton paymentId={pack.paymentId} className="w-full" />
+                                                </div>
+                                                <div className="text-center space-y-0.5">
+                                                    <p className="text-[9px] font-black uppercase tracking-widest text-white/40">So nothing critical is missed.</p>
+                                                    <p className="text-[9px] font-black uppercase tracking-widest text-white/40">Built to prevent costly oversight.</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <IndiaMethods />
@@ -279,6 +284,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </div>
                                 )}
                                 
+                                <div className="flex flex-col items-center gap-2 opacity-40 mt-4">
+                                    <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] text-center italic">Aligned to your brand and workflow</p>
+                                    <div className="flex items-center justify-center gap-2">
+                                        <Lock className="w-3 h-3" />
+                                        <p className="text-[8px] md:text-[9px] text-center text-zinc-600 uppercase font-black tracking-[0.3em] italic">No SaaS lock-in</p>
+                                    </div>
+                                </div>
+
                                 <Timeline activeStep={1} />
                             </div>
                         </CardContent>

@@ -54,7 +54,9 @@ export const blogPosts: BlogPost[] = [
 
         <h2>Final Debrief: Capturing the Intangible</h2>
         <section>
-          <p>The solution is not more "experience." The solution is <strong>Institutional Memory</strong>. This requires converting individual brilliance into permanent institutional infrastructure. It means moving from "He knows" to "The System knows."</p>
+          <p>The solution is not more "experience." The solution is <strong>Institutional Memory</strong>. This requires converting individual brilliance into permanent institutional infrastructure.</p>
+          
+          <p>It means moving from <span class="text-primary font-black uppercase italic">"He knows"</span> to <span class="text-primary font-black uppercase italic">"The System knows."</span></p>
           
           <p>By embedding standards through clearly defined roles and documented consequences, you create an <strong>insurance policy</strong> against the day your top talent moves on.</p>
         </section>
@@ -81,32 +83,30 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p>The real story wasn't about bacteria. It was about <strong>Drift</strong>. Operational drift occurs when small deviations from procedure gradually normalize. A missed log entry. A delayed temperature check. An employee working while ill due to cultural pressure.</p>
           
-          <p>Investigations revealed a pattern: <strong>inconsistencies at the store level.</strong> Employees reportedly worked while sick. Temperature controls were not uniformly documented. Food handling practices varied across locations.</p>
-          
           <blockquote class="border-l-4 border-primary bg-white/[0.02] px-6 py-4 my-8 italic text-lg text-primary-text">
             "Operational drift is subtle. It doesn’t feel like negligence. It feels like adaptation. A busy Friday night. A short-staffed shift. An assumption that 'someone already checked.'"
           </blockquote>
         </section>
 
         <h2>Exhibit B: Financial Mapping of Systemic Failure</h2>
-        <section class="bg-secondary/10 p-6 rounded-xl border border-white/5 my-12">
-          <h4 class="text-primary font-black uppercase tracking-widest text-xs mb-4">Forensic Cost Analysis</h4>
-          <ul class="space-y-4">
-            <li class="flex justify-between border-b border-white/5 pb-2">
-              <span class="text-zinc-400">Federal Fine (Criminal)</span>
-              <span class="text-risk-accent font-bold">$25,000,000</span>
+        <section class="bg-secondary/10 p-6 md:p-12 rounded-xl border border-white/5 my-12">
+          <h4 class="text-primary font-black uppercase tracking-widest text-xs mb-6">Forensic Cost Analysis</h4>
+          <ul class="space-y-6">
+            <li class="flex flex-col md:flex-row md:justify-between border-b border-white/5 pb-4 gap-2">
+              <span class="text-zinc-400 font-medium">Federal Fine (Criminal)</span>
+              <span class="text-risk-accent font-black text-xl">$25,000,000</span>
             </li>
-            <li class="flex justify-between border-b border-white/5 pb-2">
-              <span class="text-zinc-400">Stock Value Loss (Market Cap)</span>
-              <span class="text-risk-accent font-bold">-$10,000,000,000+</span>
+            <li class="flex flex-col md:flex-row md:justify-between border-b border-white/5 pb-4 gap-2">
+              <span class="text-zinc-400 font-medium">Stock Value Loss (Market Cap)</span>
+              <span class="text-risk-accent font-black text-xl">-$10,000,000,000+</span>
             </li>
-            <li class="flex justify-between border-b border-white/5 pb-2">
-              <span class="text-zinc-400">Sales Decline (Comp Store)</span>
-              <span class="text-risk-accent font-bold">-30% (2016 Q1)</span>
+            <li class="flex flex-col md:flex-row md:justify-between border-b border-white/5 pb-4 gap-2">
+              <span class="text-zinc-400 font-medium">Sales Decline (Comp Store)</span>
+              <span class="text-risk-accent font-black text-xl">-30% (2016 Q1)</span>
             </li>
-            <li class="flex justify-between">
-              <span class="text-zinc-400">Publicity & Brand Damage</span>
-              <span class="text-risk-accent font-bold">Immeasurable</span>
+            <li class="flex flex-col md:flex-row md:justify-between gap-2">
+              <span class="text-zinc-400 font-medium">Publicity & Brand Damage</span>
+              <span class="text-risk-accent font-black text-xl uppercase italic tracking-tighter">IMMEASURABLE</span>
             </li>
           </ul>
         </section>
@@ -115,14 +115,18 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p>Organizations rarely collapse because they lack rules—they falter because <strong>enforcement varies.</strong> When you operate 2,000+ locations, even a 3% compliance deviation creates vulnerable environments.</p>
           
-          <p>In 2020, Chipotle agreed to pay a <span class="text-risk-accent font-bold">$25 million federal fine</span> — one of the largest ever imposed in a U.S. food safety case.</p>
+          <p>In 2020, Chipotle agreed to pay a <span class="text-risk-accent font-black">$25 million federal fine</span> — one of the largest ever imposed in a U.S. food safety case.</p>
         </section>
 
         <h2>Masterclass Lesson: Drift Prevention</h2>
         <section>
-          <p>Sustainable protection requires: <strong>Mandatory documentation tied to shift accountability</strong>, independent audits, and clear sick-leave enforcement. High-performing brands fail not because they don’t know standards, but because they assume standards are self-executing.</p>
+          <p>Sustainable protection requires: <strong>Mandatory documentation tied to shift accountability</strong>, independent audits, and clear sick-leave enforcement.</p>
           
-          <p><span class="text-primary font-black uppercase">Documentation is defense</span> — and defense must be systemic, not reactive.</p>
+          <p>High-performing brands fail not because they don’t know standards, but because they assume standards are self-executing.</p>
+          
+          <p class="text-xl font-bold italic text-primary-text border-l-2 border-primary/30 pl-6 py-2 mt-8">
+            <span class="text-primary font-black uppercase">Documentation is defense</span> — and defense must be systemic, not reactive.
+          </p>
         </section>
       `
     },
@@ -159,6 +163,8 @@ export const blogPosts: BlogPost[] = [
         <h2>The ROI of Clinical Safety</h2>
         <section>
           <p>In healthcare, missed tasks harm people. Malpractice exposure drops when you can provide a <strong>verifiable log</strong> of every safety check performed. It moves the hospital from a defensive posture to a proactive one.</p>
+          
+          <p class="text-xl font-black text-primary uppercase italic tracking-tighter mt-12 mb-4">Verification is the proof of care.</p>
           
           <p><span class="text-primary font-bold">Documentation is the only daily proof of care.</span> Assume nothing. Verify everything.</p>
         </section>
@@ -198,7 +204,10 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p>Well-documented operations increase valuation multiples and improve investor confidence. They shorten acquisition due diligence. In a scaled environment, these fractions of a percent compound into massive gains.</p>
           
-          <p><span class="text-primary font-bold">Systemization turns a variable cost (training) into a fixed asset (process).</span> Stop paying the Memory Tax and start building a legacy.</p>
+          <p class="mt-8 text-lg font-bold text-primary-text italic border-l-2 border-primary/20 pl-6">
+            <span class="text-primary font-black uppercase">Systemization turns a variable cost (training) into a fixed asset (process).</span> 
+            Stop paying the Memory Tax and start building a legacy.
+          </p>
         </section>
       `
     }
