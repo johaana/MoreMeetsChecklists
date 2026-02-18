@@ -48,9 +48,9 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p>In 2012, Knight Capital deployed new software. One obsolete function wasn’t removed. It triggered rogue trades. In 45 minutes, the company lost <span class="text-risk-accent font-black">$440,000,000</span>.</p>
           
-          <p>The issue wasn’t intelligence. It was <strong>undocumented legacy process assumptions</strong>. A single developer who knew the "quirks" of the old system had left, and the institutional memory of *why* that function existed was gone. Operational memory gaps cost nearly half a billion dollars.</p>
+          <p>The issue wasn’t intelligence. It was <strong>undocumented legacy process assumptions</strong>. A single developer who knew the "quirks" of the old system had left, and the institutional memory of *why* that function existed was gone. <span class="text-risk-accent font-black">Operational memory gaps cost nearly half a billion dollars.</span></p>
           
-          <p>The lesson is universal: <strong>Complexity without documentation is exposure.</strong> Whether it is a trading algorithm or a hotel's fire safety protocol, if the knowledge isn't institutionalized, it will eventually fail. You are one resignation away from operational blindness.</p>
+          <p>The lesson is universal: <strong>Complexity without documentation is exposure.</strong> Whether it is a trading algorithm or a hotel's fire safety protocol, if the knowledge isn't institutionalized, it will eventually fail. <span class="text-risk-accent font-bold">You are one resignation away from operational blindness.</span></p>
         </section>
 
         <h2>Final Debrief: Capturing the Intangible</h2>
@@ -114,7 +114,7 @@ export const blogPosts: BlogPost[] = [
 
         <h2>The Compound Cost of Routine Lapses</h2>
         <section>
-          <p>Organizations rarely collapse because they lack rules—they falter because <strong>enforcement varies.</strong> When you operate 2,000+ locations, even a 3% compliance deviation creates a massive target for litigation. The "burrito problem" was actually a "documentation problem."</p>
+          <p>Organizations rarely collapse because they lack rules—they falter because <strong>enforcement varies.</strong> When you operate 2,000+ locations, even a <span class="text-risk-accent font-bold">3% compliance deviation</span> creates a massive target for litigation. The "burrito problem" was actually a "documentation problem."</p>
           
           <p>In 2020, Chipotle agreed to pay a <span class="text-risk-accent font-black">$25,000,000 federal fine</span> — the largest ever imposed in a U.S. food safety case — specifically for failing to maintain <span class="text-primary font-bold">rigorous, verifiable safety protocols</span> across its footprint.</p>
         </section>
@@ -146,7 +146,7 @@ export const blogPosts: BlogPost[] = [
           
           <p>Medical error is cited as the <span class="text-risk-accent font-black">third leading cause of death</span> in the United States. This isn't a lack of intelligence—it is process variability. Hospitals are complex machines where thousands of tiny tasks must align perfectly, every time, across three shifts and dozens of departments.</p>
           
-          <p>The core challenge of modern clinical quality is <span class="text-primary font-bold">standardizing brilliance</span>. In a high-stakes environment, brilliance is a variable; a structured system is a constant.</p>
+          <p>The core challenge of modern clinical quality is <span class="text-primary font-bold">standardizing brilliance</span>. In a high-stakes environment, brilliance is a variable; a <span class="text-primary font-black">structured system is a constant</span>.</p>
         </section>
 
         <h2>The Checklist Manifesto</h2>
@@ -198,7 +198,7 @@ export const blogPosts: BlogPost[] = [
             "Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine that works regardless of who is in the room."
           </blockquote>
 
-          <p>Manufacturing firms report <span class="text-primary font-black">15-25% productivity gains</span> after standardizing work. Data-driven onboarding reduces time-to-competency by 30-50%. Every day a new hire is "guessing" is a day your margin is leaking into the floor.</p>
+          <p>Manufacturing firms report <span class="text-primary font-black">15-25% productivity gains</span> after standardizing work. Data-driven onboarding reduces time-to-competency by <span class="text-primary font-bold">30-50%</span>. Every day a new hire is "guessing" is a day your margin is leaking into the floor.</p>
         </section>
 
         <h2>From Compliance to Valuation</h2>

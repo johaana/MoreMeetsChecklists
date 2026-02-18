@@ -73,7 +73,6 @@ export default async function BlogPostPage({ params }: Props) {
         return {
             title: "Secure Your Institutional Memory",
             description: "Convert individual brilliance into permanent infrastructure. Mapped to ISO 9001 and ISO 41001 standards for instant organizational audit-readiness and continuity.",
-            icon: Users,
             compliance: "ISO 9001 • ISO 41001"
         };
     }
@@ -81,7 +80,6 @@ export default async function BlogPostPage({ params }: Props) {
         return {
             title: "Eliminate Operational Drift",
             description: "Deploy the verified, HACCP and FSSAI-aligned institutional backbone designed to eliminate the exact failure points analyzed in this debrief.",
-            icon: Shield,
             compliance: "HACCP • FSSAI • ISO 22000"
         };
     }
@@ -89,7 +87,6 @@ export default async function BlogPostPage({ params }: Props) {
         return {
             title: "Build Systems That Protect Lives",
             description: "Deploy an institutional-grade JCI and NABH aligned control protocol designed for zero-ambiguity execution in high-risk environments.",
-            icon: HeartPulse,
             compliance: "JCI • NABH • WHO"
         };
     }
@@ -97,14 +94,12 @@ export default async function BlogPostPage({ params }: Props) {
         return {
             title: "Turn Structure Into Profit",
             description: "ISO 27001 and SOC2 mapped protocols for organizational scalability. Reduce onboarding time by 40% and lower error rates instantly.",
-            icon: TrendingUp,
             compliance: "ISO 27001 • SOC2 • Statutory"
         };
     }
     return {
         title: "Deploy Professional Standards",
         description: "ISO, HACCP, and OSHA mapped protocols for instant organizational audit-readiness and brand protection. Ready for immediate organizational deployment.",
-        icon: ShieldCheck,
         compliance: "ISO • HACCP • OSHA"
     };
   };
@@ -185,7 +180,7 @@ export default async function BlogPostPage({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: post.content }} 
               />
 
-              {/* RESOLUTION PROTOCOL CARD */}
+              {/* RESOLUTION PROTOCOL CARD - CENTERED EXPERT LAYOUT */}
               <div className="mt-12 md:mt-16 pt-8 md:pt-12 relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl md:rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
                   <Card className="overflow-hidden bg-black border border-white/10 rounded-2xl md:rounded-[2rem] relative z-10 shadow-2xl">
@@ -205,11 +200,12 @@ export default async function BlogPostPage({ params }: Props) {
                         </div>
 
                         <div className="flex flex-col items-center gap-6">
-                            <div className="flex items-center gap-2.5 text-primary font-black uppercase text-[10px] md:text-[12px] tracking-[0.25em] bg-primary/5 px-6 py-3 rounded-full border border-primary/20 shadow-[0_0_20px_rgba(var(--primary),0.05)]">
+                            {/* THE VALUE PILL - GOLD CONTRAST */}
+                            <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] md:text-[12px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 shadow-[0_0_20px_rgba(var(--accent),0.05)] transition-transform hover:scale-105">
                                 <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                             </div>
                             
-                            <Button asChild size="lg" className="w-full md:w-96 h-16 bg-primary text-black font-black uppercase text-xs md:text-sm tracking-[0.2em] shadow-2xl rounded-sm border-none transition-all hover:scale-105 active:scale-95">
+                            <Button asChild size="lg" className="w-full md:w-96 h-16 bg-primary text-black font-black uppercase italic text-sm tracking-[0.1em] shadow-2xl rounded-sm border-none transition-all hover:scale-105 active:scale-95">
                                 <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} className="flex items-center justify-center text-center">
                                     Protect Your Operations <ArrowRight className="ml-2 h-5 w-5"/>
                                 </Link>
@@ -217,10 +213,10 @@ export default async function BlogPostPage({ params }: Props) {
                         </div>
                       </div>
                       
-                      {/* THE DELIVERABLE BAR */}
-                      <div className="bg-white/[0.03] border-t border-white/5 py-5 px-6 md:px-12 flex flex-wrap justify-center gap-x-10 gap-y-3">
+                      {/* THE DELIVERABLE BAR - SINGLE LINE */}
+                      <div className="bg-white/[0.03] border-t border-white/5 py-5 px-4 md:px-12 flex flex-nowrap items-center justify-between overflow-x-auto gap-4 no-scrollbar">
                         {PROOFS.map(item => (
-                            <div key={item.label} className="flex items-center gap-2 text-[9px] font-black uppercase text-white/30 tracking-[0.15em]">
+                            <div key={item.label} className="flex items-center gap-1.5 text-[8px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.1em] shrink-0 whitespace-nowrap">
                                 <item.icon className="w-3.5 h-3.5 text-primary/40" /> {item.label}
                             </div>
                         ))}

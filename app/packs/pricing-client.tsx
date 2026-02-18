@@ -135,12 +135,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const totalChecklists = pack.checklists?.length || 0;
     const totalTasks = pack.checklists?.reduce((acc, c) => acc + c.tasks.length, 0) || 0;
 
-    const coreBenefits = [
-        { title: `${totalChecklists} Institutional Checklists`, subText: `${totalTasks}+ Professional Action Items` },
-        { title: "100% Offline Infrastructure", subText: "Zero data exposure • Internal privacy" },
-        { title: "Enterprise-Wide License", subText: "Unlimited internal deployment rights" }
-    ];
-
     const PROOFS = [
         { label: 'Audit-Ready', icon: ShieldCheck },
         { label: 'Editable .xlsx', icon: FileSpreadsheet },
@@ -226,12 +220,20 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                         <CardContent className="flex-1 p-8 md:p-12 flex flex-col space-y-10">
                             <div className="space-y-8 text-center">
-                                {coreBenefits.map((item, i) => (
-                                    <div key={i} className="flex flex-col items-center gap-1 group">
-                                        <p className="text-lg font-black text-primary-text tracking-tight uppercase leading-tight">{item.title}</p>
-                                        <p className="text-xs text-muted-foreground italic font-medium">{item.subText}</p>
-                                    </div>
-                                ))}
+                                <div className="flex flex-col items-center gap-1 group">
+                                    <p className="text-lg md:text-xl font-black text-primary-text tracking-tight uppercase leading-tight">
+                                        {totalChecklists} Institutional Checklists • {totalTasks}+ Tasks
+                                    </p>
+                                    <p className="text-xs text-muted-foreground italic font-medium">Complete Operational Payload</p>
+                                </div>
+                                <div className="flex flex-col items-center gap-1 group">
+                                    <p className="text-lg font-black text-primary-text tracking-tight uppercase leading-tight">100% Offline Infrastructure</p>
+                                    <p className="text-xs text-muted-foreground italic font-medium">Zero data exposure • Internal privacy</p>
+                                </div>
+                                <div className="flex flex-col items-center gap-1 group">
+                                    <p className="text-lg font-black text-primary-text tracking-tight uppercase leading-tight">Enterprise-Wide License</p>
+                                    <p className="text-xs text-muted-foreground italic font-medium">Unlimited internal deployment rights</p>
+                                </div>
                             </div>
 
                             <div className="text-center space-y-8">
@@ -276,11 +278,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </div>
                         </CardContent>
 
-                        {/* THE DELIVERABLE BAR */}
-                        <div className="bg-white/[0.03] border-t border-white/5 py-6 px-6 md:px-12 flex flex-wrap justify-center gap-x-8 gap-y-3">
+                        {/* THE DELIVERABLE BAR - FORCED TO SINGLE LINE */}
+                        <div className="bg-white/[0.03] border-t border-white/5 py-6 px-4 md:px-8 flex flex-nowrap items-center justify-between overflow-x-auto gap-4 no-scrollbar">
                             {PROOFS.map(item => (
-                                <div key={item.label} className="flex items-center gap-2 text-[9px] font-black uppercase text-white/30 tracking-[0.15em]">
-                                    <item.icon className="w-3.5 h-3.5 text-primary/40" /> {item.label}
+                                <div key={item.label} className="flex items-center gap-1.5 text-[8px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.1em] shrink-0 whitespace-nowrap">
+                                    <item.icon className="w-3 h-3 text-primary/40" /> {item.label}
                                 </div>
                             ))}
                         </div>
