@@ -26,16 +26,20 @@ const PROOFS = [
 const CustomPillVariant = ({ 
     variantLabel,
     pillClass,
-    showPill = true
+    textClass,
+    showLine = false,
+    useMono = false
 }: { 
     variantLabel: string, 
-    pillClass: string,
-    showPill?: boolean
+    pillClass?: string,
+    textClass?: string,
+    showLine?: boolean,
+    useMono?: boolean
 }) => (
     <div className="space-y-6 mb-24">
         <div className="flex items-center gap-3 px-4">
             <div className="h-px flex-1 bg-white/10" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent">{variantLabel}</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent/60">{variantLabel}</span>
             <div className="h-px flex-1 bg-white/10" />
         </div>
 
@@ -51,6 +55,8 @@ const CustomPillVariant = ({
                         <p className="text-base md:text-lg text-secondary-text leading-relaxed">
                             Convert individual brilliance into permanent infrastructure. Mapped to ISO 9001 and ISO 41001 standards.
                         </p>
+                        
+                        {/* THE MUTED WHITE STANDARDS AS REQUESTED */}
                         <div className="flex items-center justify-center gap-3 pt-2">
                             <Shield className="w-3.5 h-3.5 text-white/40" />
                             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">
@@ -60,9 +66,17 @@ const CustomPillVariant = ({
                     </div>
 
                     <div className="flex flex-col items-center gap-6">
-                        {/* THE PILL UNDER TEST */}
-                        <div className={cn("flex items-center gap-2.5 text-accent font-black uppercase text-[10px] md:text-[11px] tracking-[0.25em] transition-all", pillClass)}>
-                            <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
+                        {/* THE EXPERT PILL VARIANTS */}
+                        <div className="flex items-center justify-center">
+                            {showLine && <div className="h-8 w-0.5 bg-accent/40 mr-4" />}
+                            <div className={cn(
+                                "flex items-center gap-2.5 text-accent font-black uppercase leading-none",
+                                useMono ? "font-mono" : "font-headline",
+                                pillClass,
+                                textClass
+                            )}>
+                                <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
+                            </div>
                         </div>
                         
                         <Button size="lg" className="w-full md:w-96 h-16 bg-primary text-black font-black uppercase italic text-sm tracking-[0.1em] shadow-2xl rounded-sm border-none">
@@ -71,6 +85,7 @@ const CustomPillVariant = ({
                     </div>
                 </div>
                 
+                {/* SINGLE LINE DELIVERABLE BAR */}
                 <div className="bg-white/[0.03] border-t border-white/5 py-5 px-4 md:px-12 flex flex-nowrap items-center justify-center overflow-x-auto gap-8 no-scrollbar">
                     {PROOFS.map(item => (
                         <div key={item.label} className="flex items-center gap-1.5 text-[8px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.1em] shrink-0 whitespace-nowrap">
@@ -87,28 +102,35 @@ export default function DesignPreviewClient() {
     return (
         <div className="space-y-12 pb-32">
             <CustomPillVariant 
-                variantLabel="Variant 1: Standard Authority (Static)"
-                pillClass="bg-accent/5 px-6 py-3 rounded-full border border-accent/30"
+                variantLabel="Variant 1: Elite Tracked (Recommended)"
+                pillClass="bg-accent/5 px-6 py-3 rounded-full border border-accent/20"
+                textClass="text-[9px] md:text-[10px] tracking-[0.25em]"
             />
 
             <CustomPillVariant 
-                variantLabel="Variant 2: Ghost Border (Technical)"
-                pillClass="bg-transparent px-6 py-3 rounded-full border border-accent/40"
+                variantLabel="Variant 2: Architectural Accent"
+                pillClass="bg-transparent"
+                textClass="text-[10px] md:text-[11px] tracking-[0.15em] text-left"
+                showLine={true}
             />
 
             <CustomPillVariant 
-                variantLabel="Variant 3: Dark Inset (Prestige)"
-                pillClass="bg-white/5 px-6 py-3 rounded-full border border-white/10 ring-1 ring-accent/20"
+                variantLabel="Variant 3: Technical Inset"
+                pillClass="bg-white/5 px-6 py-3 rounded-full ring-1 ring-accent/30"
+                textClass="text-[10px] tracking-wider"
             />
 
             <CustomPillVariant 
-                variantLabel="Variant 4: Minimalist Meta (No Pill)"
-                pillClass="bg-transparent px-0 py-0 border-none shadow-none"
+                variantLabel="Variant 4: Monospaced Spec"
+                pillClass="bg-accent/5 px-6 py-3 rounded-md border border-accent/10"
+                textClass="text-[10px] tracking-[0.2em]"
+                useMono={true}
             />
 
             <CustomPillVariant 
-                variantLabel="Variant 5: Soft Glow (Static)"
-                pillClass="bg-accent/10 px-6 py-3 rounded-full shadow-[0_0_20px_rgba(var(--accent),0.1)] border-none"
+                variantLabel="Variant 5: Minimalist Metadata"
+                pillClass="bg-transparent"
+                textClass="text-[10px] md:text-[11px] tracking-[0.25em]"
             />
         </div>
     );
