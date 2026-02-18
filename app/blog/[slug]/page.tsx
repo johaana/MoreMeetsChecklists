@@ -70,7 +70,7 @@ export default async function BlogPostPage({ params }: Props) {
   const getCTAConfig = () => {
     if (slug === 'the-day-the-process-left-with-him') {
         return {
-            title: "Secure Your Institutional Memory Before It Walks Out",
+            title: "Secure Your Institutional Memory",
             description: "Convert individual brilliance into permanent infrastructure. Mapped to ISO 9001 and ISO 41001 standards for instant organizational audit-readiness and continuity.",
             icon: Users,
             compliance: "ISO 9001 • ISO 41001"
@@ -78,7 +78,7 @@ export default async function BlogPostPage({ params }: Props) {
     }
     if (slug === 'the-25-million-burrito') {
         return {
-            title: "Eliminate Operational Drift Before It Becomes A Headline",
+            title: "Eliminate Operational Drift",
             description: "Deploy the verified, HACCP and FSSAI-aligned institutional backbone designed to eliminate the exact failure points analyzed in this debrief.",
             icon: Shield,
             compliance: "HACCP • FSSAI • ISO 22000"
@@ -86,7 +86,7 @@ export default async function BlogPostPage({ params }: Props) {
     }
     if (slug === 'patient-safety-process-discipline') {
         return {
-            title: "Build Systems That Protect Lives — Not Just Brands",
+            title: "Build Systems That Protect Lives",
             description: "Deploy an institutional-grade JCI and NABH aligned control protocol designed for zero-ambiguity execution in high-risk environments.",
             icon: HeartPulse,
             compliance: "JCI • NABH • WHO"
@@ -94,14 +94,14 @@ export default async function BlogPostPage({ params }: Props) {
     }
     if (slug === 'hidden-roi-of-sops') {
         return {
-            title: "Turn Operational Structure Into a Profit Multiplier",
+            title: "Turn Structure Into Profit",
             description: "ISO 27001 and SOC2 mapped protocols for organizational scalability. Reduce onboarding time by 40% and lower error rates instantly.",
             icon: TrendingUp,
             compliance: "ISO 27001 • SOC2 • Statutory"
         };
     }
     return {
-        title: "Deploy Professional Operational Standards",
+        title: "Deploy Professional Standards",
         description: "ISO, HACCP, and OSHA mapped protocols for instant organizational audit-readiness and brand protection. Ready for immediate organizational deployment.",
         icon: ShieldCheck,
         compliance: "ISO • HACCP • OSHA"
@@ -110,11 +110,11 @@ export default async function BlogPostPage({ params }: Props) {
 
   const cta = getCTAConfig();
 
-  const CORE_METADATA = [
-    { label: 'Audit-Ready Standards', icon: ShieldCheck },
-    { label: 'Fully Editable .xlsx', icon: FileSpreadsheet },
-    { label: 'Unlimited Usage Rights', icon: Infinity },
-    { label: 'Offline Resilience', icon: Zap }
+  const PROOFS = [
+    { label: 'Audit-Ready', icon: ShieldCheck },
+    { label: 'Editable .xlsx', icon: FileSpreadsheet },
+    { label: 'Lifetime Updates', icon: Infinity },
+    { label: 'No SaaS lock-in', icon: Lock }
   ];
 
   return (
@@ -186,60 +186,45 @@ export default async function BlogPostPage({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: post.content }} 
               />
 
-              <div className="mt-12 md:mt-16 pt-8 md:pt-12 border-t border-white/5 relative group">
+              <div className="mt-12 md:mt-16 pt-8 md:pt-12 relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl md:rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
-                  <Card className="overflow-hidden bg-black border border-white/10 rounded-2xl md:rounded-[2rem] p-6 md:p-16 relative z-10 shadow-2xl">
-                      <div className="absolute top-0 right-0 p-6 md:p-10 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity pointer-events-none">
-                          <cta.icon className="w-32 h-32 md:w-64 md:h-64" />
-                      </div>
-                      <div className="flex flex-col lg:flex-row gap-8 md:gap-16 items-center justify-between">
-                          <div className="space-y-4 md:space-y-6 flex-1 w-full text-left">
-                              <div className="flex flex-wrap items-center gap-3 md:gap-4">
-                                  <Badge variant="outline" className="text-[8px] md:text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] md:tracking-[0.3em] px-3 md:px-4 py-1.5 rounded-none">Resolution Protocol</Badge>
-                              </div>
-                              <h2 className="text-2xl md:text-4xl lg:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-tight">
-                                {cta.title}
-                              </h2>
-                              <p className="text-sm md:text-base text-secondary-text leading-relaxed max-w-lg">
-                                  {cta.description}
-                              </p>
-                              
-                              <div className="grid grid-cols-2 gap-x-4 md:gap-x-8 gap-y-3 pt-4 border-t border-white/5 mt-4 md:mt-6">
-                                {CORE_METADATA.map(item => (
-                                    <div key={item.label} className="flex items-center gap-2 text-[7px] md:text-[9px] font-black uppercase text-white/40 tracking-[0.1em]">
-                                        <item.icon className="w-2.5 h-2.5 md:w-3 h-3 text-primary" /> {item.label}
-                                    </div>
-                                ))}
-                              </div>
-
-                              <div className="flex items-center gap-3 pt-2">
-                                <Shield className="w-3 h-3 text-accent" />
-                                <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-accent">Aligned: {cta.compliance}</span>
-                              </div>
-                          </div>
-                          <div className="flex flex-col gap-4 md:gap-6 shrink-0 w-full md:w-72">
-                              <div className="flex flex-col items-center gap-3">
-                                  <Button asChild size="lg" className="w-full h-14 md:h-16 bg-primary text-black font-black uppercase text-[10px] md:text-xs tracking-[0.2em] shadow-2xl hover:scale-[1.02] transition-transform rounded-sm border-none">
-                                      <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} className="flex items-center justify-center text-center">
+                  <Card className="overflow-hidden bg-black border border-white/10 rounded-2xl md:rounded-[2rem] relative z-10 shadow-2xl">
+                      <div className="p-6 md:p-12">
+                        <div className="flex flex-col lg:flex-row gap-8 md:gap-16 items-center justify-between">
+                            <div className="space-y-4 flex-1">
+                                <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none">Resolution Protocol</Badge>
+                                <h2 className="text-2xl md:text-4xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-tight">
+                                    {cta.title}
+                                </h2>
+                                <p className="text-sm md:text-base text-secondary-text leading-relaxed max-w-lg">
+                                    {cta.description}
+                                </p>
+                                <div className="flex items-center gap-3 pt-2">
+                                    <Shield className="w-3 h-3 text-accent" />
+                                    <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-accent">Aligned: {cta.compliance}</span>
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-4 shrink-0 w-full md:w-72">
+                                <Button asChild size="lg" className="w-full h-16 bg-primary text-black font-black uppercase text-[10px] md:text-xs tracking-[0.2em] shadow-2xl rounded-sm border-none">
+                                    <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} className="flex items-center justify-center text-center">
                                         Protect Your Operations <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5"/>
-                                      </Link>
-                                  </Button>
-                                  <div className="text-center space-y-0.5">
-                                      <p className="text-[8px] font-black uppercase tracking-widest text-white/40">So nothing critical is missed.</p>
-                                      <p className="text-[8px] font-black uppercase tracking-widest text-white/40">Built to prevent the failures analyzed in this debrief.</p>
-                                  </div>
-                              </div>
-                              <div className="flex flex-col items-center gap-2">
-                                <div className="text-center">
-                                    <p className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-primary">1 Expert Customization Included</p>
-                                    <p className="text-[8px] md:text-[9px] font-medium text-white/40 uppercase tracking-[0.1em] italic">Aligned to your brand and workflow</p>
+                                    </Link>
+                                </Button>
+                                <div className="text-center space-y-1">
+                                    <p className="text-[9px] font-black uppercase tracking-widest text-white/40">Built to prevent the failures analyzed in this debrief.</p>
+                                    <p className="text-[10px] font-black uppercase tracking-[0.1em] text-primary">1 Expert Customization Included</p>
                                 </div>
-                                <div className="flex items-center gap-2 opacity-40 mt-1">
-                                    <Lock className="w-2.5 h-2.5" />
-                                    <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] text-center italic">No SaaS lock-in</p>
-                                </div>
-                              </div>
-                          </div>
+                            </div>
+                        </div>
+                      </div>
+                      
+                      {/* THE DELIVERABLE BAR */}
+                      <div className="bg-white/[0.03] border-t border-white/5 py-4 px-6 md:px-12 flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-2">
+                        {PROOFS.map(item => (
+                            <div key={item.label} className="flex items-center gap-2 text-[8px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.1em]">
+                                <item.icon className="w-3 h-3 text-primary/50" /> {item.label}
+                            </div>
+                        ))}
                       </div>
                   </Card>
               </div>

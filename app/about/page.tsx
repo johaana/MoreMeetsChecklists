@@ -78,8 +78,42 @@ export default function AboutPage() {
                     </div>
                 </section>
 
-                {/* THE REALITY CHECK */}
+                {/* THE PEDIGREE - NEW */}
                 <Section className="bg-alternate-background">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        <div className="space-y-8">
+                            <div className="space-y-4">
+                                <h2 className="text-3xl md:text-4xl font-black font-headline text-primary-text uppercase italic tracking-tighter">The Engineering of Reliability</h2>
+                                <p className="text-xl text-secondary-text leading-relaxed font-medium italic border-l-2 border-primary/20 pl-6">
+                                    MoreMeets™ was born from over <span className="text-primary font-black">30 years of cumulative operational exposure.</span>
+                                </p>
+                                <p className="text-lg text-secondary-text leading-relaxed">
+                                    Our founders have spent three decades auditing, directing, and optimizing complex, high-stakes environments across hospitality, healthcare, and industrial sectors. They realized a recurring, dangerous pattern: Most businesses don't actually have "systems"—they have heroes who remember how things work. 
+                                </p>
+                                <p className="text-lg text-secondary-text leading-relaxed">
+                                    When those heroes leave, resign, or simply have a bad day, the standard leaves with them. We built MoreMeets™ to convert individual brilliance into permanent organizational infrastructure.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            {[
+                                { label: "Cumulative Experience", value: "30+ Years", icon: History },
+                                { label: "Industries Audited", value: "12+", icon: ShieldCheck },
+                                { label: "Critical Procedures", value: "5,000+", icon: ClipboardList },
+                                { label: "Compliance Alignment", value: "ISO/HACCP", icon: Scale }
+                            ].map((stat, i) => (
+                                <div key={i} className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] flex flex-col gap-2">
+                                    <stat.icon className="w-6 h-6 text-primary/50" />
+                                    <p className="text-2xl font-black text-primary-text">{stat.value}</p>
+                                    <p className="text-[10px] uppercase font-black tracking-widest text-secondary-text">{stat.label}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+
+                {/* THE REALITY CHECK */}
+                <Section>
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="space-y-8">
                             <div className="space-y-4">
@@ -115,31 +149,6 @@ export default function AboutPage() {
                             <p className="pt-4 text-sm text-secondary-text italic border-t border-white/10">
                                 In healthcare, manufacturing, and safety-critical industries, a single missed step can endanger lives. That is not dramatic. That is documented reality.
                             </p>
-                        </div>
-                    </div>
-                </Section>
-
-                {/* THE GAP */}
-                <Section>
-                    <div className="max-w-3xl mx-auto space-y-12 text-center">
-                        <div className="space-y-4">
-                            <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary-text">The Gap Our Founders Identified</h2>
-                            <p className="text-lg text-secondary-text leading-relaxed">
-                                Our founders worked closely with real operational teams. On paper, everything looked structured—SOP manuals, policy files, audit folders.
-                            </p>
-                        </div>
-                        
-                        <div className="grid md:grid-cols-2 gap-8 text-left">
-                            <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01] space-y-4">
-                                <History className="w-8 h-8 text-accent" />
-                                <h4 className="text-xl font-bold text-primary-text">Dependency on Memory</h4>
-                                <p className="text-sm text-secondary-text leading-relaxed">Critical know-how lived inside experienced staff. "Everyone thought someone else did it." When one person left, clarity left with them.</p>
-                            </div>
-                            <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.01] space-y-4">
-                                <Zap className="w-8 h-8 text-primary" />
-                                <h4 className="text-xl font-bold text-primary-text">The Lack of Control</h4>
-                                <p className="text-sm text-secondary-text leading-relaxed">Businesses didn’t lack documents. They lacked structured, role-based, frequency-driven operational control.</p>
-                            </div>
                         </div>
                     </div>
                 </Section>
