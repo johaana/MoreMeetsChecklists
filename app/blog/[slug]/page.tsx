@@ -176,7 +176,6 @@ export default async function BlogPostPage({ params }: Props) {
 
           <div className="container px-4 md:px-6 mt-12 md:mt-24 relative z-20">
             <div className="max-w-4xl mx-auto">
-              {/* CONTENT AREA WITH MANUALLY ENFORCED SPACINGS */}
               <div 
                 className="prose-custom max-w-none 
                   [&_h2]:font-headline [&_h2]:text-primary-text [&_h2]:font-black [&_h2]:tracking-tighter [&_h2]:uppercase [&_h2]:mt-16 [&_h2]:md:mt-24 [&_h2]:mb-8 [&_h2]:md:mb-12 [&_h2]:italic [&_h2]:text-2xl [&_h2]:md:text-4xl
@@ -205,18 +204,16 @@ export default async function BlogPostPage({ params }: Props) {
                                     <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-accent">Aligned: {cta.compliance}</span>
                                 </div>
                             </div>
-                            <div className="flex flex-col gap-4 shrink-0 w-full md:w-72">
-                                <Button asChild size="lg" className="w-full h-16 bg-primary text-black font-black uppercase text-[10px] md:text-xs tracking-[0.2em] shadow-2xl rounded-sm border-none transition-all hover:scale-105">
+                            <div className="flex flex-col gap-6 shrink-0 w-full md:w-80 items-center lg:items-end">
+                                <div className="flex items-center gap-2 text-accent font-black uppercase text-[9px] md:text-[11px] tracking-[0.2em] bg-accent/5 px-4 py-2.5 rounded-full border border-accent/20 shadow-[0_0_15px_rgba(245,166,35,0.1)]">
+                                    <Star className="w-3.5 h-3.5 fill-accent" /> VIP INCLUSION: 1 EXPERT CUSTOMIZATION
+                                </div>
+                                
+                                <Button asChild size="lg" className="w-full h-16 bg-primary text-black font-black uppercase text-[10px] md:text-xs tracking-[0.2em] shadow-2xl rounded-sm border-none transition-all hover:scale-105 active:scale-95">
                                     <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} className="flex items-center justify-center text-center">
                                         Protect Your Operations <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5"/>
                                     </Link>
                                 </Button>
-                                <div className="flex flex-col gap-2">
-                                    <div className="flex items-center gap-2 text-primary font-black uppercase text-[9px] md:text-[10px] tracking-[0.1em]">
-                                        <Gift className="w-3 h-3" /> Included Benefit: 1 Expert Customization
-                                    </div>
-                                    <p className="text-[8px] italic text-white/30">So nothing critical is missed. Built to prevent the failures analyzed in this debrief.</p>
-                                </div>
                             </div>
                         </div>
                       </div>

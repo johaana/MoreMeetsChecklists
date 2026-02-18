@@ -184,7 +184,7 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">Most founders see SOPs as compliance. CFOs see them as overhead. But structured operations are revenue multipliers. Chaos has a measurable, compounding cost.</p>
           
-          <p>Employee turnover costs U.S. businesses over <span class="text-risk-accent font-black">$1 trillion annually.</span> Much of this is tied to unclear expectations and the resulting frustration. Research suggests that nearly <strong>20% of a worker's time</strong> is spent looking for internal information or waiting for verbal instructions.</p>
+          <p>Employee turnover costs U.S. businesses over <span class="text-risk-accent font-black">$1 trillion annually.</span> Much of this is tied to unclear expectations and the resulting frustration. Research suggests that nearly <span class="text-risk-accent font-black">20% of a worker's time</span> is spent looking for internal information or waiting for verbal instructions.</p>
           
           <p>This is the <span class="text-risk-accent font-black">"Inefficiency Tax"</span> that kills margins in growing companies and destroys investor confidence.</p>
         </section>

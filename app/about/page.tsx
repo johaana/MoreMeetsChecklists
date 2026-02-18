@@ -22,7 +22,8 @@ import {
     Lock,
     Stethoscope,
     FileWarning,
-    Briefcase
+    Briefcase,
+    Shield
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
