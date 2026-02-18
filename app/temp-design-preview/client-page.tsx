@@ -60,7 +60,7 @@ const CTAVariant = ({
                     </div>
 
                     <div className="flex flex-col items-center gap-6">
-                        {/* THE GIFT PILL - ANCHORED AS THE CLOSER */}
+                        {/* THE GIFT PILL - GOLD CONTRAST */}
                         <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] md:text-[12px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 shadow-[0_0_20px_rgba(var(--accent),0.05)] transition-transform hover:scale-105">
                             <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                         </div>
@@ -102,10 +102,10 @@ export default function DesignPreviewClient() {
             />
 
             <CTAVariant 
-                variantLabel="Option 3: Institutional Authority"
+                variantLabel="Option 3: Muted Authority"
                 title="Build Systems That Protect Lives"
                 description="Deploy an institutional-grade JCI and NABH aligned control protocol designed for zero-ambiguity execution in high-risk environments."
-                alignedColor="text-blue-400/60"
+                alignedColor="text-accent/40"
             />
         </div>
     );
