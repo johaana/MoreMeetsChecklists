@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -32,7 +31,7 @@ const CoreProblemSection = () => (
             </div>
             <div className="flex flex-wrap items-center justify-center gap-3 text-center text-sm font-medium">
                 {['Steps are skipped', 'Standards drift', 'Training fades', 'Audits are stressful', 'Managers chase'].map(item => (
-                    <div key={item} className="p-2 px-4 rounded-full border bg-card text-muted-text">
+                    <div key={item} className="p-2 px-4 rounded-full border border-white/10 bg-white/[0.02] text-secondary-text">
                         {item}
                     </div>
                 ))}
@@ -50,25 +49,25 @@ const HowItWorksSection = () => (
             </div>
             <div className="grid md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
                 <div className="flex flex-col items-center">
-                    <div className="flex items-center justify-center w-24 h-24 rounded-full bg-card mb-4 border">
-                        <span className="text-5xl font-bold text-accent">1</span>
+                    <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl">
+                        <span className="text-5xl font-black text-accent">1</span>
                     </div>
-                    <h3 className="text-xl font-bold font-headline text-primary-text">Choose a Standard</h3>
-                    <p className="text-secondary-text mt-2 text-sm">Industry-specific, audit-ready operational packs.</p>
+                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">Choose a Standard</h3>
+                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">Industry-specific, audit-ready operational packs.</p>
                 </div>
                  <div className="flex flex-col items-center">
-                    <div className="flex items-center justify-center w-24 h-24 rounded-full bg-card mb-4 border">
-                        <span className="text-5xl font-bold text-accent">2</span>
+                    <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl">
+                        <span className="text-5xl font-black text-accent">2</span>
                     </div>
-                    <h3 className="text-xl font-bold font-headline text-primary-text">Instant Download</h3>
-                    <p className="text-secondary-text mt-2 text-sm">Get editable files immediately after purchase.</p>
+                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">Instant Download</h3>
+                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">Get editable files immediately after purchase.</p>
                 </div>
                  <div className="flex flex-col items-center">
-                    <div className="flex items-center justify-center w-24 h-24 rounded-full bg-card mb-4 border">
-                        <span className="text-5xl font-bold text-accent">3</span>
+                    <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl">
+                        <span className="text-5xl font-black text-accent">3</span>
                     </div>
-                    <h3 className="text-xl font-bold font-headline text-primary-text">We Customize It</h3>
-                    <p className="text-secondary-text mt-2 text-sm">1 Expert Customization Included to match your brand and workflow.</p>
+                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">We Customize It</h3>
+                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">1 Expert Customization Included to match your brand and workflow.</p>
                 </div>
             </div>
         </div>
@@ -81,19 +80,19 @@ const FeatureStripSection = () => (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-5xl mx-auto">
                 <div className="flex flex-col items-center gap-2">
                     <Download className="w-8 h-8 text-accent"/>
-                    <p className="font-semibold text-primary-text text-sm">Instant download</p>
+                    <p className="font-black uppercase tracking-widest text-[10px] text-primary-text">Instant download</p>
                 </div>
                 <div className="flex flex-col items-center gap-2">
                     <Gem className="w-8 h-8 text-accent"/>
-                    <p className="font-semibold text-primary-text text-sm">1 Expert Customization Included</p>
+                    <p className="font-black uppercase tracking-widest text-[10px] text-primary-text">Expert Customization</p>
                 </div>
                 <div className="flex flex-col items-center gap-2">
                     <CheckCircle className="w-8 h-8 text-accent"/>
-                    <p className="font-semibold text-primary-text text-sm">Lifetime updates</p>
+                    <p className="font-black uppercase tracking-widest text-[10px] text-primary-text">Lifetime updates</p>
                 </div>
                 <div className="flex flex-col items-center gap-2">
                     <Globe className="w-8 h-8 text-accent"/>
-                    <p className="font-semibold text-primary-text text-sm">Globally aligned frameworks</p>
+                    <p className="font-black uppercase tracking-widest text-[10px] text-primary-text">Globally Aligned</p>
                 </div>
             </div>
         </div>
@@ -108,8 +107,8 @@ const WhatItIsSection = () => (
             </div>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 text-primary-text">
                 <div className="space-y-4">
-                    <h3 className="text-xl font-bold flex items-center gap-2 text-authority-green"><Check className="w-5 h-5"/>What It IS</h3>
-                    <ul className="space-y-3 pl-2 text-base text-muted-text">
+                    <h3 className="text-xl font-black uppercase italic flex items-center gap-2 text-authority-green"><Check className="w-5 h-5"/>What It IS</h3>
+                    <ul className="space-y-3 pl-2 text-base text-secondary-text">
                         <li>A structured SOP framework</li>
                         <li>A library of best-practice operational standards</li>
                         <li>A way to turn experience into clear, repeatable steps</li>
@@ -119,8 +118,8 @@ const WhatItIsSection = () => (
                     </ul>
                 </div>
                  <div className="space-y-4">
-                    <h3 className="text-xl font-bold flex items-center gap-2 text-risk-accent"><ArrowRight className="w-5 h-5 rotate-45"/>What it’s NOT</h3>
-                     <ul className="space-y-3 pl-2 text-base text-muted-text">
+                    <h3 className="text-xl font-black uppercase italic flex items-center gap-2 text-risk-accent"><ArrowRight className="w-5 h-5 rotate-45"/>What it’s NOT</h3>
+                     <ul className="space-y-3 pl-2 text-base text-secondary-text">
                         <li>Not task enforcement</li>
                         <li>Not monitoring employees</li>
                         <li>Not reminders or notifications</li>
@@ -128,7 +127,7 @@ const WhatItIsSection = () => (
                     </ul>
                 </div>
             </div>
-            <p className="text-center text-lg font-medium mt-12 text-primary-text">MoreMeets™ doesn’t control people. It removes ambiguity from work.</p>
+            <p className="text-center text-lg font-medium mt-12 text-primary-text italic">MoreMeets™ doesn’t control people. It removes ambiguity from work.</p>
         </div>
     </Section>
 );
@@ -148,13 +147,13 @@ const HowTeamsUseItSection = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
                 {cards.map(card => (
-                    <div key={card.title} className="p-6 rounded-lg border bg-card text-card-foreground">
-                        <h3 className="text-lg font-bold text-authority-green mb-3">{card.title}</h3>
-                        <ul className="space-y-1 text-sm text-muted-text">
-                            {card.content.map(item => <li key={item} className="flex items-start"><span className="mr-2 mt-1">∙</span><span>{item}</span></li>)}
+                    <div key={card.title} className="p-6 rounded-2xl border border-white/5 bg-black/40 text-secondary-text shadow-xl">
+                        <h3 className="text-lg font-black uppercase italic text-authority-green mb-3">{card.title}</h3>
+                        <ul className="space-y-1 text-sm">
+                            {card.content.map(item => <li key={item} className="flex items-start"><span className="mr-2 mt-1 text-primary">∙</span><span>{item}</span></li>)}
                         </ul>
-                        <p className="font-semibold pt-4 text-sm text-primary-text">{card.closing}</p>
-                        <p className="text-xs">{card.subClosing}</p>
+                        <p className="font-bold pt-4 text-sm text-primary-text leading-tight">{card.closing}</p>
+                        <p className="text-[10px] mt-1 opacity-60 uppercase tracking-widest">{card.subClosing}</p>
                     </div>
                 ))}
             </div>
@@ -166,16 +165,16 @@ const ComplianceSection = () => (
     <Section id="compliance" className="bg-alternate-background">
         <div className="container px-4 md:px-6 max-w-3xl mx-auto text-center space-y-8">
             <SectionHeadline>Built for global compliance — without complexity</SectionHeadline>
-            <p className="text-lg text-secondary-text">MoreMeets™ is designed to support regulated environments where consistency matters more than intent.</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-left text-sm pt-4 text-primary-text">
+            <p className="text-lg text-secondary-text leading-relaxed">MoreMeets™ is designed to support regulated environments where consistency matters more than intent.</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-left text-[10px] font-black uppercase tracking-widest pt-4 text-primary-text">
                 <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>ISO standards</p>
-                <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>OSHA & safety frameworks</p>
-                <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>HACCP</p>
-                <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>SOC & internal audits</p>
-                <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>Multi-location consistency</p>
+                <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>OSHA safety</p>
+                <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>HACCP protocols</p>
+                <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>SOC audits</p>
+                <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>Multi-location</p>
                 <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>Role-based SOPs</p>
             </div>
-             <p className="text-xl font-medium pt-4 text-primary-text">You don’t “prepare” for audits. You operate in a way that naturally passes them.</p>
+             <p className="text-xl font-medium pt-4 text-primary-text italic">You don’t “prepare” for audits. You operate in a way that naturally passes them.</p>
         </div>
     </Section>
 );
@@ -186,18 +185,18 @@ const WhoIsItForSection = () => (
             <div className="text-center mb-12">
                 <SectionHeadline>Built for operators who are tired of firefighting</SectionHeadline>
             </div>
-            <div className="grid md:grid-cols-3 gap-8 text-center text-primary-text">
+            <div className="grid md:grid-cols-3 gap-12 text-center text-primary-text">
                 <div className="space-y-2">
-                    <h3 className="text-xl font-bold">Founders & COOs</h3>
-                    <p className="text-sm text-secondary-text">Scaling without chaos. Less dependency on individuals. Predictable execution.</p>
+                    <h3 className="text-xl font-black uppercase italic tracking-tighter">Founders & COOs</h3>
+                    <p className="text-sm text-secondary-text leading-relaxed">Scaling without chaos. Less dependency on individuals. Predictable execution.</p>
                 </div>
                 <div className="space-y-2">
-                    <h3 className="text-xl font-bold">Operations & Quality Heads</h3>
-                    <p className="text-sm text-secondary-text">Clear standards. Easier audits. Less follow-up.</p>
+                    <h3 className="text-xl font-black uppercase italic tracking-tighter">Operations Heads</h3>
+                    <p className="text-sm text-secondary-text leading-relaxed">Clear standards. Easier audits. Less follow-up. Permanent institutional memory.</p>
                 </div>
                 <div className="space-y-2">
-                    <h3 className="text-xl font-bold">Multi-location Teams</h3>
-                    <p className="text-sm text-secondary-text">Same standards everywhere. Faster onboarding. Fewer surprises.</p>
+                    <h3 className="text-xl font-black uppercase italic tracking-tighter">Multi-location Teams</h3>
+                    <p className="text-sm text-secondary-text leading-relaxed">Same standards everywhere. Faster onboarding. Fewer surprises across outlets.</p>
                 </div>
             </div>
         </div>
@@ -205,17 +204,21 @@ const WhoIsItForSection = () => (
 );
 
 const FinalCTASection = () => (
-    <Section id="final-cta" className="bg-card">
-        <div className="container px-4 md:px-6 text-center max-w-2xl mx-auto space-y-6">
+    <Section id="final-cta" className="bg-black border-t border-white/5">
+        <div className="container px-4 md:px-6 text-center max-w-2xl mx-auto space-y-8">
             <SectionHeadline>Stop firefighting. Start building.</SectionHeadline>
             <p className="text-lg text-secondary-text">Explore the library to find the right operational standard for your business.</p>
-            <div className="flex flex-col items-center gap-3 pt-4">
-                <Button size="lg" asChild className="group" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))', fontWeight: 600, padding: '16px 24px', borderRadius: '6px' }}>
-                    <Link href="/library">
-                        Explore the Library <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <div className="flex flex-col items-center gap-4 pt-4">
+                <Button size="lg" asChild className="group h-16 px-10 rounded-xl bg-primary text-black font-black uppercase text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all">
+                    <Link href="/library" className="flex items-center">
+                        Eliminate Operational Risk <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Link>
                 </Button>
-                 <div className="pt-4 text-xs text-muted-foreground pl-1">
+                <div className="text-center space-y-0.5 opacity-60">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-primary">So nothing critical is missed.</p>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Built to prevent costly oversight.</p>
+                </div>
+                 <div className="pt-4 text-[9px] font-black uppercase tracking-[0.2em] text-accent">
                     1 Expert Customization Included per pack
                 </div>
             </div>

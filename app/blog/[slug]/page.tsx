@@ -181,7 +181,7 @@ export default async function BlogPostPage({ params }: Props) {
                   prose-headings:font-headline prose-headings:text-primary-text prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase prose-headings:mt-16 md:prose-headings:mt-24 prose-headings:mb-8 md:prose-headings:mb-12 prose-headings:italic
                   prose-p:text-secondary-text prose-p:leading-[1.6] md:prose-p:leading-[1.8] prose-p:mb-8 md:prose-p:mb-12
                   prose-strong:text-primary-text prose-strong:font-black
-                  prose-img:max-w-full md:prose-img:max-w-xl md:prose-img:mx-auto prose-img:rounded-lg md:prose-img:rounded-xl prose-img:shadow-2xl prose-img:my-16 md:prose-img:my-32 prose-img:border prose-img:border-white/10
+                  prose-img:max-w-full md:prose-img:max-w-3xl md:prose-img:mx-auto prose-img:rounded-lg md:prose-img:rounded-xl prose-img:shadow-2xl prose-img:my-16 md:prose-img:my-32 prose-img:border prose-img:border-white/10
                   prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-white/[0.02] prose-blockquote:px-6 md:prose-blockquote:px-12 prose-blockquote:py-6 md:prose-blockquote:py-10 prose-blockquote:rounded-r-xl md:prose-blockquote:rounded-r-2xl prose-blockquote:italic prose-blockquote:text-xl md:prose-blockquote:text-2xl prose-blockquote:text-primary-text prose-blockquote:my-12 md:prose-blockquote:my-24 prose-blockquote:font-medium
                   prose-ul:space-y-4 md:prose-ul:space-y-6 prose-li:text-secondary-text
                   "
@@ -230,7 +230,7 @@ export default async function BlogPostPage({ params }: Props) {
                                   </Button>
                                   <div className="text-center space-y-0.5">
                                       <p className="text-[8px] font-black uppercase tracking-widest text-white/40">So nothing critical is missed.</p>
-                                      <p className="text-[8px] font-black uppercase tracking-widest text-white/40">Built to prevent costly oversight.</p>
+                                      <p className="text-[8px] font-black uppercase tracking-widest text-white/40">Built to prevent the failures analyzed in this debrief.</p>
                                   </div>
                               </div>
                               <div className="flex flex-col items-center gap-2 opacity-40">

@@ -62,7 +62,7 @@ const CTACard = ({ title, description, icon: Icon, compliance, variant = "primar
                     <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-accent">Aligned: {compliance}</span>
                 </div>
             </div>
-            <div className="flex flex-col gap-4 md:gap-6 w-full md:w-auto relative z-10 shrink-0">
+            <div className="flex flex-col gap-4 md:gap-6 w-full md:w-72 relative z-10 shrink-0">
                 <div className="flex flex-col items-center gap-3">
                     <Button className={cn(
                         "h-14 md:h-16 text-black font-black uppercase text-[10px] md:text-xs px-8 md:px-12 rounded-sm shadow-2xl hover:scale-105 transition-all tracking-[0.2em] border-none w-full",
@@ -72,7 +72,7 @@ const CTACard = ({ title, description, icon: Icon, compliance, variant = "primar
                     </Button>
                     <div className="text-center space-y-0.5">
                         <p className="text-[8px] font-black uppercase tracking-widest text-white/40">So nothing critical is missed.</p>
-                        {!isBlog && <p className="text-[8px] font-black uppercase tracking-widest text-white/40">Built to prevent costly oversight.</p>}
+                        <p className="text-[8px] font-black uppercase tracking-widest text-white/40">{isBlog ? "Built to prevent the failures analyzed in this debrief." : "Built to prevent costly oversight."}</p>
                     </div>
                 </div>
                 <div className="flex flex-col items-center gap-2 opacity-40">
@@ -102,17 +102,17 @@ export default function TempDesignClientPage() {
                 <Badge variant="outline" className="text-primary border-primary/30 mb-4 md:mb-6 px-4 md:px-6 py-1.5 md:py-2 rounded-full text-[9px] md:text-[11px] font-black tracking-[0.2em] md:tracking-[0.3em] uppercase">Executive Resolution Matrix</Badge>
                 <h1 className="text-4xl md:text-7xl font-black font-headline text-white tracking-tighter uppercase mb-4 md:mb-6 italic leading-tight">The Resolution Path</h1>
                 <p className="text-base md:text-xl text-zinc-400 max-w-3xl mx-auto font-medium leading-relaxed px-4">
-                    Refined B2B conversion hooks with risk elimination framing.
+                    Differentiated B2B conversion hooks for Blog vs Pricing states.
                 </p>
             </header>
 
             <Section>
                 <div className="grid gap-12 max-w-6xl mx-auto">
-                    {/* Concept 1 */}
+                    {/* Blog State */}
                     <div className="space-y-6">
                         <div className="flex items-center gap-4">
-                            <Badge variant="secondary">Blog-Style CTA (Protect Your Operations)</Badge>
-                            <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest">Resolves: Resignation Risk</span>
+                            <Badge variant="secondary">Blog State (Protect Your Operations)</Badge>
+                            <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest">Resolves: Failure Analysis</span>
                         </div>
                         <CTACard 
                             title="Secure Your Institutional Memory Before It Walks Out"
@@ -124,14 +124,14 @@ export default function TempDesignClientPage() {
                         />
                     </div>
 
-                    {/* Concept 2 */}
+                    {/* Pricing State */}
                     <div className="space-y-6">
                         <div className="flex items-center gap-4">
-                            <Badge variant="secondary">Pack-Style CTA (Eliminate Operational Risk)</Badge>
-                            <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest">Resolves: Operational Drift</span>
+                            <Badge variant="secondary">Pricing State (Eliminate Operational Risk)</Badge>
+                            <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest">Focus: Outcome Procurement</span>
                         </div>
                         <CTACard 
-                            title="Eliminate Operational Drift Before It Becomes A Headline"
+                            title="Establish Absolute Operational Control"
                             description="Deploy the verified, HACCP and FSSAI-aligned institutional backbone designed to eliminate the exact failure points analyzed in this debrief."
                             icon={ShieldAlert}
                             compliance="HACCP • FSSAI • ISO 22000"
@@ -166,7 +166,7 @@ export default function TempDesignClientPage() {
                     <div className="py-16 md:py-32 text-center">
                         <figure className="inline-block w-full max-w-xl">
                             <div className="aspect-video bg-zinc-900 rounded-xl border border-white/10 flex items-center justify-center text-zinc-700 text-xs uppercase font-black tracking-[0.3em]">
-                                16:9 Forensic Exhibit Exhibit
+                                16:9 Forensic Exhibit
                             </div>
                             <figcaption className="mt-4 text-[9px] text-zinc-500 uppercase tracking-[0.3em] font-black italic">Exhibit C: Financial Consequence Mapping</figcaption>
                         </figure>

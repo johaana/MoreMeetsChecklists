@@ -1,4 +1,3 @@
-
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const FaqSection = () => (
@@ -34,9 +33,9 @@ export const FaqSection = () => (
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-9">
-                        <AccordionTrigger>What does "free customization" mean?</AccordionTrigger>
+                        <AccordionTrigger>What does "expert customization" mean?</AccordionTrigger>
                         <AccordionContent>
-                          Each pack includes one free customization to align it with your brand, format, or internal workflow. Your files are available instantly after purchase, and our team coordinates customization separately.
+                          Each pack includes one <strong>Expert Customization</strong> session to align it with your specific brand, format, or unique internal workflow. Your files are available instantly after purchase, and our team coordinates the alignment session separately to ensure the toolkit fits your organization perfectly.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-5">
