@@ -46,7 +46,7 @@ export const blogPosts: BlogPost[] = [
 
         <h2>Case Analysis: The Knight Capital Collapse</h2>
         <section>
-          <p>In 2012, Knight Capital deployed new software. One obsolete function wasn’t removed. It triggered rogue trades. In 45 minutes, the company lost <span class="text-risk-accent font-black">$440 million</span>.</p>
+          <p>In 2012, Knight Capital deployed new software. One obsolete function wasn’t removed. It triggered rogue trades. In 45 minutes, the company lost <span class="text-risk-accent font-black">$440,000,000</span>.</p>
           
           <p>The issue wasn’t intelligence. It was <strong>undocumented legacy process assumptions</strong>. A single developer who knew the "quirks" of the old system had left, and the institutional memory of *why* that function existed was gone. Operational memory gaps cost nearly half a billion dollars.</p>
           
@@ -116,7 +116,7 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p>Organizations rarely collapse because they lack rules—they falter because <strong>enforcement varies.</strong> When you operate 2,000+ locations, even a 3% compliance deviation creates a massive target for litigation. The "burrito problem" was actually a "documentation problem."</p>
           
-          <p>In 2020, Chipotle agreed to pay a <span class="text-risk-accent font-black">$25 million federal fine</span> — the largest ever imposed in a U.S. food safety case — specifically for failing to maintain <span class="text-primary font-bold">rigorous, verifiable safety protocols</span> across its footprint.</p>
+          <p>In 2020, Chipotle agreed to pay a <span class="text-risk-accent font-black">$25,000,000 federal fine</span> — the largest ever imposed in a U.S. food safety case — specifically for failing to maintain <span class="text-primary font-bold">rigorous, verifiable safety protocols</span> across its footprint.</p>
         </section>
 
         <h2>Masterclass Lesson: Drift Prevention</h2>
@@ -184,7 +184,7 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">Most founders see SOPs as compliance. CFOs see them as overhead. But structured operations are revenue multipliers. Chaos has a measurable, compounding cost.</p>
           
-          <p>Employee turnover costs U.S. businesses over <span class="text-risk-accent font-black">$1 trillion annually.</span> Much of this is tied to unclear expectations and the resulting frustration. Research suggests that nearly <span class="text-risk-accent font-black">20% of a worker's time</span> is spent looking for internal information or waiting for verbal instructions.</p>
+          <p>Employee turnover costs U.S. businesses over <span class="text-risk-accent font-black">$1,000,000,000,000 annually.</span> Much of this is tied to unclear expectations and the resulting frustration. Research suggests that nearly <span class="text-risk-accent font-black">20% of a worker's time</span> is spent looking for internal information or waiting for verbal instructions.</p>
           
           <p>This is the <span class="text-risk-accent font-black">"Inefficiency Tax"</span> that kills margins in growing companies and destroys investor confidence.</p>
         </section>

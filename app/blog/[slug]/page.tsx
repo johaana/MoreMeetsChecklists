@@ -18,7 +18,6 @@ import {
     Shield, 
     FileSpreadsheet, 
     Infinity, 
-    Zap, 
     Lock,
     ShieldCheck,
     Users,
@@ -186,43 +185,43 @@ export default async function BlogPostPage({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: post.content }} 
               />
 
+              {/* RESOLUTION PROTOCOL CARD */}
               <div className="mt-12 md:mt-16 pt-8 md:pt-12 relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl md:rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
                   <Card className="overflow-hidden bg-black border border-white/10 rounded-2xl md:rounded-[2rem] relative z-10 shadow-2xl">
-                      <div className="p-6 md:p-12">
-                        <div className="flex flex-col lg:flex-row gap-8 md:gap-16 items-center justify-between">
-                            <div className="space-y-4 flex-1">
-                                <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none">Resolution Protocol</Badge>
-                                <h2 className="text-2xl md:text-4xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-tight">
-                                    {cta.title}
-                                </h2>
-                                <p className="text-sm md:text-base text-secondary-text leading-relaxed max-w-lg">
-                                    {cta.description}
-                                </p>
-                                <div className="flex items-center gap-3 pt-2">
-                                    <Shield className="w-3 h-3 text-accent" />
-                                    <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-accent">Aligned: {cta.compliance}</span>
-                                </div>
+                      <div className="p-8 md:p-16 text-center space-y-10">
+                        <div className="space-y-4 max-w-2xl mx-auto">
+                            <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Resolution Protocol</Badge>
+                            <h2 className="text-3xl md:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-[1.1]">
+                                {cta.title}
+                            </h2>
+                            <p className="text-base md:text-lg text-secondary-text leading-relaxed">
+                                {cta.description}
+                            </p>
+                            <div className="flex items-center justify-center gap-3 pt-2">
+                                <Shield className="w-3.5 h-3.5 text-accent" />
+                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent">Aligned: {cta.compliance}</span>
                             </div>
-                            <div className="flex flex-col gap-6 shrink-0 w-full md:w-80 items-center lg:items-end">
-                                <div className="flex items-center gap-2 text-accent font-black uppercase text-[9px] md:text-[11px] tracking-[0.2em] bg-accent/5 px-4 py-2.5 rounded-full border border-accent/20 shadow-[0_0_15px_rgba(245,166,35,0.1)]">
-                                    <Star className="w-3.5 h-3.5 fill-accent" /> VIP INCLUSION: 1 EXPERT CUSTOMIZATION
-                                </div>
-                                
-                                <Button asChild size="lg" className="w-full h-16 bg-primary text-black font-black uppercase text-[10px] md:text-xs tracking-[0.2em] shadow-2xl rounded-sm border-none transition-all hover:scale-105 active:scale-95">
-                                    <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} className="flex items-center justify-center text-center">
-                                        Protect Your Operations <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5"/>
-                                    </Link>
-                                </Button>
+                        </div>
+
+                        <div className="flex flex-col items-center gap-6">
+                            <div className="flex items-center gap-2.5 text-primary font-black uppercase text-[10px] md:text-[12px] tracking-[0.25em] bg-primary/5 px-6 py-3 rounded-full border border-primary/20 shadow-[0_0_20px_rgba(var(--primary),0.05)]">
+                                <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                             </div>
+                            
+                            <Button asChild size="lg" className="w-full md:w-96 h-16 bg-primary text-black font-black uppercase text-xs md:text-sm tracking-[0.2em] shadow-2xl rounded-sm border-none transition-all hover:scale-105 active:scale-95">
+                                <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} className="flex items-center justify-center text-center">
+                                    Protect Your Operations <ArrowRight className="ml-2 h-5 w-5"/>
+                                </Link>
+                            </Button>
                         </div>
                       </div>
                       
                       {/* THE DELIVERABLE BAR */}
-                      <div className="bg-white/[0.03] border-t border-white/5 py-4 px-6 md:px-12 flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-2">
+                      <div className="bg-white/[0.03] border-t border-white/5 py-5 px-6 md:px-12 flex flex-wrap justify-center gap-x-10 gap-y-3">
                         {PROOFS.map(item => (
-                            <div key={item.label} className="flex items-center gap-2 text-[8px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.1em]">
-                                <item.icon className="w-3 h-3 text-primary/50" /> {item.label}
+                            <div key={item.label} className="flex items-center gap-2 text-[9px] font-black uppercase text-white/30 tracking-[0.15em]">
+                                <item.icon className="w-3.5 h-3.5 text-primary/40" /> {item.label}
                             </div>
                         ))}
                       </div>

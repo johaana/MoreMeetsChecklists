@@ -8,22 +8,12 @@ import {
     AlertTriangle, 
     CheckCircle2, 
     Users, 
-    Zap, 
     ShieldCheck, 
     History, 
     ArrowRight,
     ClipboardList,
     GraduationCap,
-    HeartPulse,
-    Factory,
-    Store,
-    Building2,
     Scale,
-    Lock,
-    Stethoscope,
-    FileWarning,
-    Briefcase,
-    Shield
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
@@ -244,9 +234,9 @@ export default function AboutPage() {
                         <h2 className="text-4xl md:text-5xl font-black font-headline text-primary-text tracking-tighter">
                             Less misses. <br /> More standards.
                         </h2>
-                        <p className="text-lg text-secondary-text">
+                        <button className="text-lg text-secondary-text">
                             Because memory is not a system. And serious operations deserve more than improvisation.
-                        </p>
+                        </button>
                         <Button size="lg" asChild className="h-16 px-10 rounded-xl bg-primary text-black font-black uppercase text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all">
                             <Link href="/library">Explore Operational Standards <ArrowRight className="ml-2 w-5 h-5"/></Link>
                         </Button>
