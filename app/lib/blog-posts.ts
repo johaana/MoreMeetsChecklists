@@ -41,7 +41,7 @@ export const blogPosts: BlogPost[] = [
             "If your standards drift the moment your best employee steps out of the room, you don't have a business—you have a group of people working hard to keep a house of cards from collapsing."
           </blockquote>
 
-          <p>A study found that <span class="text-primary font-bold">42% of institutional knowledge</span> is unique to specific employees. When they leave, the organization stops knowing how to execute. Replacement costs are often calculated in salary terms, but the real cost is the <strong>Memory Tax</strong>: the period where the business stops performing at its baseline while the successor "guesses" their way through the role.</p>
+          <p>A study found that <span class="text-primary font-bold">42% of institutional knowledge</span> is unique to specific employees. When they leave, the organization stops knowing how to execute. Replacement costs are often calculated in salary terms, but the real cost is the <span class="text-risk-accent font-black">Memory Tax</span>: the period where the business stops performing at its baseline while the successor "guesses" their way through the role.</p>
         </section>
 
         <h2>Case Analysis: The Knight Capital Collapse</h2>
@@ -144,7 +144,7 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">Healthcare doesn’t fail because doctors are careless. It fails because systems are inconsistent. The gap between policy and practice is where harm lives.</p>
           
-          <p>Medical error is cited as the <strong>third leading cause of death</strong> in the United States. This isn't a lack of intelligence—it is process variability. Hospitals are complex machines where thousands of tiny tasks must align perfectly, every time, across three shifts and dozens of departments.</p>
+          <p>Medical error is cited as the <span class="text-risk-accent font-black">third leading cause of death</span> in the United States. This isn't a lack of intelligence—it is process variability. Hospitals are complex machines where thousands of tiny tasks must align perfectly, every time, across three shifts and dozens of departments.</p>
           
           <p>The core challenge of modern clinical quality is <span class="text-primary font-bold">standardizing brilliance</span>. In a high-stakes environment, brilliance is a variable; a structured system is a constant.</p>
         </section>
@@ -152,7 +152,7 @@ export const blogPosts: BlogPost[] = [
         <h2>The Checklist Manifesto</h2>
         
         <section>
-          <p>Atul Gawande’s research demonstrated that surgical checklists <strong>reduced complications by over 30%</strong>. These were simple checklists, not complex AI or proprietary dashboards. Why? Because even world-class experts forget critical steps under cognitive load.</p>
+          <p>Atul Gawande’s research demonstrated that surgical checklists <span class="text-primary font-black">reduced complications by over 30%</span>. These were simple checklists, not complex AI or proprietary dashboards. Why? Because even world-class experts forget critical steps under cognitive load.</p>
           
           <blockquote class="border-l-4 border-primary bg-white/[0.02] px-6 py-4 my-8 italic text-lg text-primary-text">
             "The checklist is not a replacement for expertise; it is a safeguard against the cognitive load that causes experts to make simple, fatal mistakes. It forces the team to pause and verify the invisible."
@@ -184,9 +184,9 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">Most founders see SOPs as compliance. CFOs see them as overhead. But structured operations are revenue multipliers. Chaos has a measurable, compounding cost.</p>
           
-          <p>Employee turnover costs U.S. businesses over <span class="text-risk-accent font-bold">$1 trillion annually.</span> Much of this is tied to unclear expectations and the resulting frustration. Research suggests that nearly <strong>20% of a worker's time</strong> is spent looking for internal information or waiting for verbal instructions.</p>
+          <p>Employee turnover costs U.S. businesses over <span class="text-risk-accent font-black">$1 trillion annually.</span> Much of this is tied to unclear expectations and the resulting frustration. Research suggests that nearly <strong>20% of a worker's time</strong> is spent looking for internal information or waiting for verbal instructions.</p>
           
-          <p>This is the <span class="text-risk-accent font-bold">"Inefficiency Tax"</span> that kills margins in growing companies and destroys investor confidence.</p>
+          <p>This is the <span class="text-risk-accent font-black">"Inefficiency Tax"</span> that kills margins in growing companies and destroys investor confidence.</p>
         </section>
 
         <h2>The Profit Equation</h2>
@@ -198,7 +198,7 @@ export const blogPosts: BlogPost[] = [
             "Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine that works regardless of who is in the room."
           </blockquote>
 
-          <p>Manufacturing firms report <span class="text-primary font-bold">15-25% productivity gains</span> after standardizing work. Data-driven onboarding reduces time-to-competency by 30-50%. Every day a new hire is "guessing" is a day your margin is leaking into the floor.</p>
+          <p>Manufacturing firms report <span class="text-primary font-black">15-25% productivity gains</span> after standardizing work. Data-driven onboarding reduces time-to-competency by 30-50%. Every day a new hire is "guessing" is a day your margin is leaking into the floor.</p>
         </section>
 
         <h2>From Compliance to Valuation</h2>
