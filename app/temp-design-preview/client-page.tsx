@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -29,13 +28,13 @@ const CORE_METADATA = [
     { label: 'Offline Resilience', icon: Zap }
 ];
 
-const CTACard = ({ title, description, icon: Icon, compliance, variant = "primary" }: any) => (
+const CTACard = ({ title, description, icon: Icon, compliance, variant = "primary", isBlog = false }: any) => (
     <div className="relative group w-full">
         <div className={cn(
             "absolute -inset-0.5 rounded-2xl md:rounded-[2rem] blur opacity-10 group-hover:opacity-40 transition duration-1000",
             variant === "primary" ? "bg-gradient-to-r from-primary/30 to-accent/30" : "bg-gradient-to-r from-accent/30 to-primary/30"
         )}></div>
-        <Card className="relative p-6 md:p-12 rounded-2xl md:rounded-[2rem] border border-white/10 bg-black flex flex-col md:flex-row items-center gap-8 md:gap-12 justify-between overflow-hidden shadow-2xl">
+        <Card className="relative p-6 md:p-12 rounded-2xl md:rounded-[2rem] border border-white/10 bg-black flex flex-col lg:flex-row items-center gap-8 md:gap-12 justify-between overflow-hidden shadow-2xl">
             <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none">
                 <Icon className="w-32 h-32 md:w-48 md:h-48" />
             </div>
@@ -66,14 +65,14 @@ const CTACard = ({ title, description, icon: Icon, compliance, variant = "primar
             <div className="flex flex-col gap-4 md:gap-6 w-full md:w-auto relative z-10 shrink-0">
                 <div className="flex flex-col items-center gap-3">
                     <Button className={cn(
-                        "h-14 md:h-16 text-black font-black uppercase text-[10px] md:text-xs px-8 md:px-12 rounded-sm shadow-2xl hover:scale-105 transition-all tracking-[0.2em]",
+                        "h-14 md:h-16 text-black font-black uppercase text-[10px] md:text-xs px-8 md:px-12 rounded-sm shadow-2xl hover:scale-105 transition-all tracking-[0.2em] border-none w-full",
                         variant === "primary" ? "bg-primary" : "bg-accent"
                     )}>
-                        Eliminate Operational Risk <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
+                        {isBlog ? "Protect Your Operations" : "Eliminate Operational Risk"} <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                     </Button>
                     <div className="text-center space-y-0.5">
                         <p className="text-[8px] font-black uppercase tracking-widest text-white/40">So nothing critical is missed.</p>
-                        <p className="text-[8px] font-black uppercase tracking-widest text-white/40">Built to prevent costly oversight.</p>
+                        {!isBlog && <p className="text-[8px] font-black uppercase tracking-widest text-white/40">Built to prevent costly oversight.</p>}
                     </div>
                 </div>
                 <div className="flex flex-col items-center gap-2 opacity-40">
@@ -112,7 +111,7 @@ export default function TempDesignClientPage() {
                     {/* Concept 1 */}
                     <div className="space-y-6">
                         <div className="flex items-center gap-4">
-                            <Badge variant="secondary">Concept 1: The Continuity Shield</Badge>
+                            <Badge variant="secondary">Blog-Style CTA (Protect Your Operations)</Badge>
                             <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest">Resolves: Resignation Risk</span>
                         </div>
                         <CTACard 
@@ -121,13 +120,14 @@ export default function TempDesignClientPage() {
                             icon={History}
                             compliance="ISO 9001 • ISO 41001"
                             variant="primary"
+                            isBlog={true}
                         />
                     </div>
 
                     {/* Concept 2 */}
                     <div className="space-y-6">
                         <div className="flex items-center gap-4">
-                            <Badge variant="secondary">Concept 2: The Drift Defense</Badge>
+                            <Badge variant="secondary">Pack-Style CTA (Eliminate Operational Risk)</Badge>
                             <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest">Resolves: Operational Drift</span>
                         </div>
                         <CTACard 
@@ -136,36 +136,7 @@ export default function TempDesignClientPage() {
                             icon={ShieldAlert}
                             compliance="HACCP • FSSAI • ISO 22000"
                             variant="accent"
-                        />
-                    </div>
-
-                    {/* Concept 3 */}
-                    <div className="space-y-6">
-                        <div className="flex items-center gap-4">
-                            <Badge variant="secondary">Concept 3: The Safety Protocol</Badge>
-                            <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest">Resolves: Life-Safety Risk</span>
-                        </div>
-                        <CTACard 
-                            title="Build Systems That Protect Lives — Not Just Brands"
-                            description="Implement clinical-grade, JCI and NABH mapped control protocols for zero-ambiguity execution in high-risk environments."
-                            icon={HeartPulse}
-                            compliance="JCI • NABH • WHO"
-                            variant="primary"
-                        />
-                    </div>
-
-                    {/* Concept 4 */}
-                    <div className="space-y-6">
-                        <div className="flex items-center gap-4">
-                            <Badge variant="secondary">Concept 4: The Profit Standard</Badge>
-                            <span className="text-[10px] text-zinc-500 uppercase font-black tracking-widest">Resolves: Financial Leakage</span>
-                        </div>
-                        <CTACard 
-                            title="Turn Operational Structure Into a Profit Multiplier"
-                            description="ISO 27001 and SOC2 mapped protocols for organizational scalability. Reduce onboarding time by 40% and lower error rates instantly."
-                            icon={TrendingUp}
-                            compliance="ISO 27001 • SOC2 • Statutory"
-                            variant="accent"
+                            isBlog={false}
                         />
                     </div>
                 </div>
@@ -178,11 +149,19 @@ export default function TempDesignClientPage() {
                         <div className="flex items-center gap-4 text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-primary">
                             <FileText className="w-4 h-4" /> Technical Analysis
                         </div>
-                        <h3 className="text-3xl md:text-7xl font-black font-headline text-white tracking-tighter uppercase italic leading-tight">The $25 Million Burrito</h3>
-                        <p className="text-lg md:text-2xl text-zinc-300 leading-relaxed italic border-l-2 border-primary/20 pl-6 md:pl-8">
-                            Operational drift begins when a busy manager skips a single refrigeration log on a Friday night. 
+                        <h3 className="text-3xl md:text-7xl font-black font-headline text-white tracking-tighter uppercase italic leading-tight">Forensic Readability</h3>
+                        <p className="text-lg md:text-2xl text-primary leading-relaxed italic border-l-2 border-primary/20 pl-6 md:pl-8">
+                            This is a lead paragraph. It uses the brand color to guide the reader into the forensic depth of the analysis.
                         </p>
                     </div>
+
+                    <p className="text-lg md:text-xl text-zinc-300 leading-relaxed">
+                        Investors value predictable systems, not heroic individuals. <strong>Complexity without documentation is exposure.</strong> By using bold weights strategically, we allow executives to skim the core arguments while maintaining narrative flow.
+                    </p>
+
+                    <blockquote className="border-l-4 border-primary bg-white/[0.02] px-6 md:px-12 py-6 md:py-10 rounded-r-xl italic text-xl md:text-2xl text-primary-text font-medium">
+                        "If your standards drift the moment your best employee steps out of the room, you don't have a business."
+                    </blockquote>
 
                     <div className="py-16 md:py-32 text-center">
                         <figure className="inline-block w-full max-w-xl">
@@ -193,8 +172,6 @@ export default function TempDesignClientPage() {
                         </figure>
                     </div>
 
-                    <p className="text-lg md:text-2xl text-zinc-300 leading-relaxed">Investors value predictable systems, not heroic individuals. Complexity without documentation is exposure.</p>
-                    
                     <div className="pt-16">
                         <CTACard 
                             title="Establish Absolute Operational Control"
@@ -202,6 +179,7 @@ export default function TempDesignClientPage() {
                             icon={ShieldCheck}
                             compliance="ISO • OSHA • Statutory"
                             variant="primary"
+                            isBlog={true}
                         />
                     </div>
                 </div>
