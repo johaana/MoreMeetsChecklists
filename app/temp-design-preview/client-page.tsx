@@ -55,13 +55,15 @@ const CTAVariant = ({
                         </p>
                         <div className="flex items-center justify-center gap-3 pt-2">
                             <Shield className={cn("w-3.5 h-3.5", alignedColor)} />
-                            <span className={cn("text-[10px] font-black uppercase tracking-[0.2em]", alignedColor)}>Aligned: ISO 9001 • ISO 41001</span>
+                            <span className={cn("text-[10px] font-black uppercase tracking-[0.2em]", alignedColor)}>
+                                Aligned: ISO 9001 • ISO 41001 • HACCP
+                            </span>
                         </div>
                     </div>
 
                     <div className="flex flex-col items-center gap-6">
                         {/* THE GIFT PILL - GOLD CONTRAST */}
-                        <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] md:text-[12px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 shadow-[0_0_20px_rgba(var(--accent),0.05)] transition-transform hover:scale-105">
+                        <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] md:text-[11px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 shadow-[0_0_20px_rgba(var(--accent),0.05)] transition-transform hover:scale-105">
                             <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                         </div>
                         
@@ -88,24 +90,38 @@ export default function DesignPreviewClient() {
     return (
         <div className="space-y-12">
             <CTAVariant 
-                variantLabel="Option 1: Technical Metadata (Recommended)"
+                variantLabel="Variant 1: Muted White"
                 title="Secure Your Institutional Memory"
                 description="Convert individual brilliance into permanent infrastructure. Mapped to ISO 9001 and ISO 41001 standards for instant organizational audit-readiness and continuity."
                 alignedColor="text-white/40"
             />
 
             <CTAVariant 
-                variantLabel="Option 2: System Integrity"
+                variantLabel="Variant 2: Bright White"
                 title="Eliminate Operational Drift"
                 description="Deploy the verified, HACCP and FSSAI-aligned institutional backbone designed to eliminate the exact failure points analyzed in this debrief."
-                alignedColor="text-primary"
+                alignedColor="text-white/90"
             />
 
             <CTAVariant 
-                variantLabel="Option 3: Muted Authority"
-                title="Build Systems That Protect Lives"
-                description="Deploy an institutional-grade JCI and NABH aligned control protocol designed for zero-ambiguity execution in high-risk environments."
-                alignedColor="text-accent/40"
+                variantLabel="Variant 3: Muted Orange"
+                title="Industrial Safety Standard"
+                description="Deploy an institutional-grade protocol designed for zero-ambiguity execution in high-risk environments."
+                alignedColor="text-orange-500/50"
+            />
+
+            <CTAVariant 
+                variantLabel="Variant 4: Muted Grey"
+                title="The Governance Protocol"
+                description="Standardize compliance across all departments with a verified framework built for large-scale operations."
+                alignedColor="text-zinc-500"
+            />
+
+            <CTAVariant 
+                variantLabel="Variant 5: Forensic Blue"
+                title="High-Integrity Systems"
+                description="Harden your operational defenses with a standards-mapped framework that prevents human error at the source."
+                alignedColor="text-sky-400/50"
             />
         </div>
     );
