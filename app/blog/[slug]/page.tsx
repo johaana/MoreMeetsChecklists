@@ -199,7 +199,6 @@ export default async function BlogPostPage({ params }: Props) {
                           <div className="space-y-4 md:space-y-6 flex-1 w-full text-left">
                               <div className="flex flex-wrap items-center gap-3 md:gap-4">
                                   <Badge variant="outline" className="text-[8px] md:text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] md:tracking-[0.3em] px-3 md:px-4 py-1.5 rounded-none">Resolution Protocol</Badge>
-                                  <span className="text-[8px] md:text-[10px] text-white/30 font-black uppercase tracking-widest italic">1 Expert Customization Included</span>
                               </div>
                               <h2 className="text-2xl md:text-4xl lg:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-tight">
                                 {cta.title}
@@ -233,10 +232,13 @@ export default async function BlogPostPage({ params }: Props) {
                                       <p className="text-[8px] font-black uppercase tracking-widest text-white/40">Built to prevent the failures analyzed in this debrief.</p>
                                   </div>
                               </div>
-                              <div className="flex flex-col items-center gap-2 opacity-40">
-                                <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] text-center italic">Aligned to your brand and workflow</p>
-                                <div className="flex items-center gap-2">
-                                    <Lock className="w-3 h-3" />
+                              <div className="flex flex-col items-center gap-2">
+                                <div className="text-center">
+                                    <p className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-primary">1 Expert Customization Included</p>
+                                    <p className="text-[8px] md:text-[9px] font-medium text-white/40 uppercase tracking-[0.1em] italic">Aligned to your brand and workflow</p>
+                                </div>
+                                <div className="flex items-center gap-2 opacity-40 mt-1">
+                                    <Lock className="w-2.5 h-2.5" />
                                     <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] text-center italic">No SaaS lock-in</p>
                                 </div>
                               </div>

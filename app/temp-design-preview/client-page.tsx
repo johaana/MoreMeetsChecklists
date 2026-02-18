@@ -44,7 +44,6 @@ const CTACard = ({ title, description, icon: Icon, compliance, variant = "primar
                         "text-[8px] md:text-[10px] font-black tracking-[0.2em] md:tracking-[0.3em] uppercase px-3 md:px-4 py-1.5 rounded-none",
                         variant === "primary" ? "border-primary/30 text-primary" : "border-accent/30 text-accent"
                     )}>Resolution Protocol</Badge>
-                    <span className="text-[8px] md:text-[10px] text-white/40 font-black uppercase tracking-[0.2em] italic">1 Expert Customization Included</span>
                 </div>
                 <h3 className="text-2xl md:text-4xl font-black text-white font-headline tracking-tighter uppercase italic leading-tight">{title}</h3>
                 <p className="text-sm md:text-base text-zinc-400 max-w-lg leading-relaxed">{description}</p>
@@ -75,10 +74,16 @@ const CTACard = ({ title, description, icon: Icon, compliance, variant = "primar
                         <p className="text-[8px] font-black uppercase tracking-widest text-white/40">{isBlog ? "Built to prevent the failures analyzed in this debrief." : "Built to prevent costly oversight."}</p>
                     </div>
                 </div>
-                <div className="flex flex-col items-center gap-2 opacity-40">
-                    <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] text-center italic">Aligned to your brand and workflow</p>
-                    <div className="flex items-center justify-center gap-2">
-                        <Lock className="w-3 h-3" />
+                <div className="flex flex-col items-center gap-2">
+                    <div className="text-center">
+                        <p className={cn(
+                            "text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em]",
+                            variant === "primary" ? "text-primary" : "text-accent"
+                        )}>1 Expert Customization Included</p>
+                        <p className="text-[8px] md:text-[9px] font-medium text-white/40 uppercase tracking-[0.1em] italic">Aligned to your brand and workflow</p>
+                    </div>
+                    <div className="flex items-center justify-center gap-2 opacity-40 mt-1">
+                        <Lock className="w-2.5 h-2.5" />
                         <p className="text-[8px] md:text-[9px] text-center text-zinc-600 uppercase font-black tracking-[0.3em] italic">No SaaS lock-in</p>
                     </div>
                 </div>
