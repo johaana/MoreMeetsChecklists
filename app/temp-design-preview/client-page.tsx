@@ -26,12 +26,14 @@ const PROOFS = [
 const CTAVariant = ({ 
     title, 
     description, 
-    alignedColor, 
+    alignedClass,
+    alignedStyle,
     variantLabel 
 }: { 
     title: string, 
     description: string, 
-    alignedColor: string, 
+    alignedClass?: string,
+    alignedStyle?: React.CSSProperties,
     variantLabel: string 
 }) => (
     <div className="space-y-6 mb-24">
@@ -54,8 +56,11 @@ const CTAVariant = ({
                             {description}
                         </p>
                         <div className="flex items-center justify-center gap-3 pt-2">
-                            <Shield className={cn("w-3.5 h-3.5", alignedColor)} />
-                            <span className={cn("text-[10px] font-black uppercase tracking-[0.2em]", alignedColor)}>
+                            <Shield className="w-3.5 h-3.5" style={alignedStyle} className={cn("w-3.5 h-3.5", alignedClass)} />
+                            <span 
+                                style={alignedStyle}
+                                className={cn("text-[10px] font-black uppercase tracking-[0.2em]", alignedClass)}
+                            >
                                 Aligned: ISO 9001 • ISO 41001 • HACCP
                             </span>
                         </div>
@@ -74,7 +79,7 @@ const CTAVariant = ({
                 </div>
                 
                 {/* THE DELIVERABLE BAR - FORCED SINGLE LINE */}
-                <div className="bg-white/[0.03] border-t border-white/5 py-5 px-4 md:px-12 flex flex-nowrap items-center justify-between overflow-x-auto gap-4 no-scrollbar">
+                <div className="bg-white/[0.03] border-t border-white/5 py-5 px-4 md:px-12 flex flex-nowrap items-center justify-center overflow-x-auto gap-8 no-scrollbar">
                     {PROOFS.map(item => (
                         <div key={item.label} className="flex items-center gap-1.5 text-[8px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.1em] shrink-0 whitespace-nowrap">
                             <item.icon className="w-3.5 h-3.5 text-primary/40" /> {item.label}
@@ -87,41 +92,58 @@ const CTAVariant = ({
 );
 
 export default function DesignPreviewClient() {
+    const title = "Secure Your Institutional Memory";
+    const description = "Convert individual brilliance into permanent infrastructure. Mapped to ISO 9001 and ISO 41001 standards for instant organizational audit-readiness and continuity.";
+
     return (
-        <div className="space-y-12">
+        <div className="space-y-12 pb-32">
             <CTAVariant 
                 variantLabel="Variant 1: Muted White"
-                title="Secure Your Institutional Memory"
-                description="Convert individual brilliance into permanent infrastructure. Mapped to ISO 9001 and ISO 41001 standards for instant organizational audit-readiness and continuity."
-                alignedColor="text-white/40"
+                title={title}
+                description={description}
+                alignedClass="text-white/40"
             />
 
             <CTAVariant 
                 variantLabel="Variant 2: Bright White"
-                title="Eliminate Operational Drift"
-                description="Deploy the verified, HACCP and FSSAI-aligned institutional backbone designed to eliminate the exact failure points analyzed in this debrief."
-                alignedColor="text-white/90"
+                title={title}
+                description={description}
+                alignedClass="text-white/90"
             />
 
             <CTAVariant 
                 variantLabel="Variant 3: Muted Orange"
-                title="Industrial Safety Standard"
-                description="Deploy an institutional-grade protocol designed for zero-ambiguity execution in high-risk environments."
-                alignedColor="text-orange-500/50"
+                title={title}
+                description={description}
+                alignedClass="text-orange-500/50"
             />
 
             <CTAVariant 
                 variantLabel="Variant 4: Muted Grey"
-                title="The Governance Protocol"
-                description="Standardize compliance across all departments with a verified framework built for large-scale operations."
-                alignedColor="text-zinc-500"
+                title={title}
+                description={description}
+                alignedClass="text-zinc-500"
             />
 
             <CTAVariant 
-                variantLabel="Variant 5: Forensic Blue"
-                title="High-Integrity Systems"
-                description="Harden your operational defenses with a standards-mapped framework that prevents human error at the source."
-                alignedColor="text-sky-400/50"
+                variantLabel="Variant 5: Deep Slate (#4A5568)"
+                title={title}
+                description={description}
+                alignedStyle={{ color: '#4A5568' }}
+            />
+
+            <CTAVariant 
+                variantLabel="Variant 6: Charcoal (#3F4752)"
+                title={title}
+                description={description}
+                alignedStyle={{ color: '#3F4752' }}
+            />
+
+            <CTAVariant 
+                variantLabel="Variant 7: 70% Heading Tone"
+                title={title}
+                description={description}
+                alignedClass="text-primary-text/70"
             />
         </div>
     );
