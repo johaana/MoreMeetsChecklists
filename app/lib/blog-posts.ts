@@ -41,7 +41,7 @@ export const blogPosts: BlogPost[] = [
             "If your standards drift the moment your best employee steps out of the room, you don't have a business—you have a group of people working hard to keep a house of cards from collapsing."
           </blockquote>
 
-          <p>A study found that <strong>42% of institutional knowledge</strong> is unique to specific employees. When they leave, the organization stops knowing how to execute. Replacement costs are often calculated in salary terms, but the real cost is the <strong>Memory Tax</strong>: the period where the business stops performing at its baseline while the successor "guesses" their way through the role.</p>
+          <p>A study found that <span class="text-primary font-bold">42% of institutional knowledge</span> is unique to specific employees. When they leave, the organization stops knowing how to execute. Replacement costs are often calculated in salary terms, but the real cost is the <strong>Memory Tax</strong>: the period where the business stops performing at its baseline while the successor "guesses" their way through the role.</p>
         </section>
 
         <h2>Case Analysis: The Knight Capital Collapse</h2>
@@ -59,7 +59,7 @@ export const blogPosts: BlogPost[] = [
           
           <p>It means moving from <span class="text-primary font-black uppercase italic">"He knows"</span> to <span class="text-primary font-black uppercase italic">"The System knows."</span></p>
           
-          <p>By embedding standards through clearly defined roles, mapped frequencies, and documented consequences, you create an <strong>insurance policy</strong> against the day your top talent moves on. When the person resigns, the system stays behind.</p>
+          <p>By embedding standards through clearly defined roles, mapped frequencies, and documented consequences, you create an <span class="text-primary font-bold">insurance policy</span> against the day your top talent moves on. When the person resigns, the system stays behind.</p>
         </section>
       `
     },
@@ -116,7 +116,7 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p>Organizations rarely collapse because they lack rules—they falter because <strong>enforcement varies.</strong> When you operate 2,000+ locations, even a 3% compliance deviation creates a massive target for litigation. The "burrito problem" was actually a "documentation problem."</p>
           
-          <p>In 2020, Chipotle agreed to pay a <span class="text-risk-accent font-black">$25 million federal fine</span> — the largest ever imposed in a U.S. food safety case — specifically for failing to maintain rigorous, verifiable safety protocols across its footprint.</p>
+          <p>In 2020, Chipotle agreed to pay a <span class="text-risk-accent font-black">$25 million federal fine</span> — the largest ever imposed in a U.S. food safety case — specifically for failing to maintain <span class="text-primary font-bold">rigorous, verifiable safety protocols</span> across its footprint.</p>
         </section>
 
         <h2>Masterclass Lesson: Drift Prevention</h2>
@@ -163,9 +163,9 @@ export const blogPosts: BlogPost[] = [
 
         <h2>The ROI of Clinical Safety</h2>
         <section>
-          <p>In healthcare, missed tasks harm people and destroy institutions. Malpractice exposure drops significantly when you can provide a <strong>verifiable, timestamped log</strong> of every safety check performed. It moves the organization from a defensive, reactive posture to a proactive, audit-ready one.</p>
+          <p>In healthcare, missed tasks harm people and destroy institutions. Malpractice exposure drops significantly when you can provide a <span class="text-primary font-bold italic">verifiable, timestamped log</span> of every safety check performed. It moves the organization from a defensive, reactive posture to a proactive, audit-ready one.</p>
           
-          <p class="text-xl font-black text-primary uppercase italic tracking-tighter mt-12 mb-4">Verification is the proof of care.</p>
+          <p class="text-2xl font-black text-primary uppercase italic tracking-tighter mt-12 mb-4">Verification is the proof of care.</p>
           
           <p>Without a structured system, your "policy" is just a wish. <span class="text-primary font-bold">Documentation is the only daily proof of care.</span> Assume nothing. Verify everything. Protect your patients by removing the variable of human memory.</p>
         </section>
@@ -184,7 +184,7 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">Most founders see SOPs as compliance. CFOs see them as overhead. But structured operations are revenue multipliers. Chaos has a measurable, compounding cost.</p>
           
-          <p>Employee turnover costs U.S. businesses over <strong>$1 trillion annually.</strong> Much of this is tied to unclear expectations and the resulting frustration. Research suggests that nearly <strong>20% of a worker's time</strong> is spent looking for internal information or waiting for verbal instructions.</p>
+          <p>Employee turnover costs U.S. businesses over <span class="text-risk-accent font-bold">$1 trillion annually.</span> Much of this is tied to unclear expectations and the resulting frustration. Research suggests that nearly <strong>20% of a worker's time</strong> is spent looking for internal information or waiting for verbal instructions.</p>
           
           <p>This is the <span class="text-risk-accent font-bold">"Inefficiency Tax"</span> that kills margins in growing companies and destroys investor confidence.</p>
         </section>
@@ -198,14 +198,14 @@ export const blogPosts: BlogPost[] = [
             "Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine that works regardless of who is in the room."
           </blockquote>
 
-          <p>Manufacturing firms report <strong>15-25% productivity gains</strong> after standardizing work. Data-driven onboarding reduces time-to-competency by 30-50%. Every day a new hire is "guessing" is a day your margin is leaking into the floor.</p>
+          <p>Manufacturing firms report <span class="text-primary font-bold">15-25% productivity gains</span> after standardizing work. Data-driven onboarding reduces time-to-competency by 30-50%. Every day a new hire is "guessing" is a day your margin is leaking into the floor.</p>
         </section>
 
         <h2>From Compliance to Valuation</h2>
         <section>
           <p>Well-documented operations increase valuation multiples and improve buyer confidence during M&A. They shorten due diligence periods and reduce transition risks. In a scaled environment, these fractions of a percent compound into massive institutional gains.</p>
           
-          <p class="mt-8 text-lg font-bold text-primary-text italic border-l-2 border-primary/20 pl-6">
+          <p class="mt-8 text-xl font-bold text-primary-text italic border-l-2 border-primary/20 pl-6">
             <span class="text-primary font-black uppercase">Systemization turns a variable cost (training) into a fixed asset (process).</span> 
             Stop paying the Memory Tax and start building a legacy of structured execution.
           </p>
