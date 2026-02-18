@@ -12,10 +12,10 @@ import {
     FileSpreadsheet, 
     Infinity, 
     Lock,
-    Target,
-    Activity,
+    Terminal,
+    Radio,
     Cpu,
-    Workflow
+    ArrowRightCircle
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -31,29 +31,31 @@ const CustomButtonVariant = ({
     buttonClass,
     innerWrapperClass,
     showTargetBrackets = false,
-    showScanline = false,
-    showGrid = false,
-    showTerminalFlicker = false,
-    showSlotAnimation = false
+    showSlotAnimation = false,
+    showCommandLine = false,
+    showRadarPulse = false,
+    showDataStream = false,
+    description
 }: { 
     variantLabel: string, 
     buttonClass?: string,
     innerWrapperClass?: string,
     showTargetBrackets?: boolean,
-    showScanline?: boolean,
-    showGrid?: boolean,
-    showTerminalFlicker?: boolean,
-    showSlotAnimation?: boolean
+    showSlotAnimation?: boolean,
+    showCommandLine?: boolean,
+    showRadarPulse?: boolean,
+    showDataStream?: boolean,
+    description: string
 }) => (
     <div className="space-y-6 mb-24">
-        <div className="flex items-center gap-3 px-4">
-            <div className="h-px flex-1 bg-white/10" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent/60">{variantLabel}</span>
-            <div className="h-px flex-1 bg-white/10" />
+        <div className="flex flex-col items-center gap-2 px-4">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent/80">{variantLabel}</span>
+            <p className="text-xs text-secondary-text max-w-md text-center">{description}</p>
+            <div className="h-px w-32 bg-white/10 mt-2" />
         </div>
 
         <div className="relative max-w-4xl mx-auto">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-[2rem] blur opacity-5"></div>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/10 to-accent/10 rounded-[2rem] blur opacity-5"></div>
             <Card className="overflow-hidden bg-black border border-white/10 rounded-[2rem] relative z-10 shadow-2xl">
                 <div className="p-8 md:p-16 text-center space-y-10">
                     <div className="space-y-4 max-w-2xl mx-auto">
@@ -84,23 +86,31 @@ const CustomButtonVariant = ({
                             {/* TARGET BRACKETS */}
                             {showTargetBrackets && (
                                 <>
-                                    <div className="absolute -top-3 -left-3 w-4 h-4 border-t-2 border-l-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:top-[-12px] group-hover/btn:left-[-12px] transition-all duration-300" />
-                                    <div className="absolute -top-3 -right-3 w-4 h-4 border-t-2 border-r-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:top-[-12px] group-hover/btn:right-[-12px] transition-all duration-300" />
-                                    <div className="absolute -bottom-3 -left-3 w-4 h-4 border-b-2 border-l-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:bottom-[-12px] group-hover/btn:left-[-12px] transition-all duration-300" />
-                                    <div className="absolute -bottom-3 -right-3 w-4 h-4 border-b-2 border-r-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:bottom-[-12px] group-hover/btn:right-[-12px] transition-all duration-300" />
+                                    <div className="absolute -top-3 -left-3 w-4 h-4 border-t-2 border-l-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:top-[-8px] group-hover/btn:left-[-8px] transition-all duration-300" />
+                                    <div className="absolute -top-3 -right-3 w-4 h-4 border-t-2 border-r-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:top-[-8px] group-hover/btn:right-[-8px] transition-all duration-300" />
+                                    <div className="absolute -bottom-3 -left-3 w-4 h-4 border-b-2 border-l-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:bottom-[-8px] group-hover/btn:left-[-8px] transition-all duration-300" />
+                                    <div className="absolute -bottom-3 -right-3 w-4 h-4 border-b-2 border-r-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:bottom-[-8px] group-hover/btn:right-[-8px] transition-all duration-300" />
                                 </>
                             )}
 
+                            {/* RADAR PULSE EFFECT */}
+                            {showRadarPulse && (
+                                <div className="absolute inset-0 z-0">
+                                    <div className="absolute inset-0 bg-primary/20 rounded-sm animate-[ping_2s_linear_infinite]" />
+                                </div>
+                            )}
+
                             <div className={cn(
-                                "relative overflow-hidden rounded-sm",
-                                showTerminalFlicker ? "group-hover/btn:animate-[pulse_0.1s_ease-in-out_infinite]" : ""
+                                "relative overflow-hidden rounded-sm z-10",
+                                showDataStream ? "border-2 border-dashed border-primary/30 group-hover/btn:border-primary transition-colors" : ""
                             )}>
                                 <Button size="lg" className={cn(
-                                    "w-full h-16 bg-primary text-black font-black uppercase italic text-sm tracking-[0.1em] shadow-2xl rounded-sm border-none relative overflow-hidden",
+                                    "w-full h-16 bg-primary text-black font-black uppercase italic text-sm tracking-[0.1em] shadow-2xl rounded-sm border-none relative overflow-hidden group",
                                     buttonClass
                                 )}>
                                     <span className={cn("flex items-center justify-center gap-2 relative z-10", innerWrapperClass)}>
                                         Protect Your Operations 
+                                        {showCommandLine && <span className="animate-[pulse_1s_infinite] ml-[-4px]">_</span>}
                                         <div className={cn(
                                             "transition-all duration-300",
                                             showSlotAnimation ? "group-hover/btn:translate-x-1 group-hover/btn:scale-110" : ""
@@ -108,18 +118,10 @@ const CustomButtonVariant = ({
                                             <ArrowRight className="w-5 h-5"/>
                                         </div>
                                     </span>
-
-                                    {/* SCANLINE EFFECT */}
-                                    {showScanline && (
-                                        <div className="absolute inset-0 pointer-events-none z-20">
-                                            <div className="w-full h-[2px] bg-white/40 absolute top-0 animate-[scanline_2s_linear_infinite]" />
-                                        </div>
-                                    )}
-
-                                    {/* GRID OVERLAY */}
-                                    {showGrid && (
-                                        <div className="absolute inset-0 opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300 pointer-events-none" 
-                                             style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '10px 10px' }} />
+                                    
+                                    {/* DATA STREAM EFFECT */}
+                                    {showDataStream && (
+                                        <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.1)_50%,transparent_100%)] w-1/2 -skew-x-12 -translate-x-full group-hover/btn:translate-x-[250%] transition-transform duration-1000 ease-in-out" />
                                     )}
                                 </Button>
                             </div>
@@ -142,42 +144,46 @@ const CustomButtonVariant = ({
 export default function DesignPreviewClient() {
     return (
         <div className="space-y-12 pb-32">
-            <style dangerouslySetInnerHTML={{ __html: `
-                @keyframes scanline {
-                    0% { top: -10%; opacity: 0; }
-                    10% { opacity: 1; }
-                    90% { opacity: 1; }
-                    100% { top: 110%; opacity: 0; }
-                }
-            `}} />
+            {/* HEAD-TO-HEAD COMPARISON */}
+            <div className="grid lg:grid-cols-2 gap-8 mb-32">
+                <CustomButtonVariant 
+                    variantLabel="Variant 1: Target Lock"
+                    description="Reticles tighten on hover. Metaphor: Precision, Focus, Tactical selection."
+                    showTargetBrackets={true}
+                    buttonClass="hover:bg-primary transition-colors"
+                />
+                <CustomButtonVariant 
+                    variantLabel="Variant 4: Logic Slot"
+                    description="Mechanical gap closers. Metaphor: Connection, System Integration, Lock-in."
+                    showSlotAnimation={true}
+                    innerWrapperClass="group-hover/btn:gap-4 transition-all duration-300"
+                />
+            </div>
+
+            <div className="flex items-center gap-4 py-12">
+                <div className="h-px flex-1 bg-primary/20" />
+                <h3 className="text-xl font-bold font-headline text-primary uppercase italic">New Forensic Directions</h3>
+                <div className="h-px flex-1 bg-primary/20" />
+            </div>
 
             <CustomButtonVariant 
-                variantLabel="Variant 1: Target Lock (Precision RETICLE)"
-                showTargetBrackets={true}
-                buttonClass="hover:bg-primary transition-colors"
+                variantLabel="Variant 6: The Command Line"
+                description="Blinking terminal cursor. Metaphor: Operational Input, Executing a command."
+                showCommandLine={true}
+                buttonClass="bg-primary/95 hover:bg-primary"
             />
 
             <CustomButtonVariant 
-                variantLabel="Variant 2: Live Scanning Feed (Verification)"
-                showScanline={true}
-                buttonClass="bg-primary/90 hover:bg-primary"
+                variantLabel="Variant 7: The Radar Pulse"
+                description="Concentric expansion ping. Metaphor: Awareness, Scanning, System Presence."
+                showRadarPulse={true}
+                buttonClass="hover:shadow-[0_0_30px_rgba(var(--primary),0.4)] transition-all"
             />
 
             <CustomButtonVariant 
-                variantLabel="Variant 3: Terminal Handshake (Purposeful Jitter)"
-                showTerminalFlicker={true}
-                buttonClass="hover:shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all"
-            />
-
-            <CustomButtonVariant 
-                variantLabel="Variant 4: Logic Slot (Mechanical Lock)"
-                showSlotAnimation={true}
-                innerWrapperClass="group-hover/btn:gap-4 transition-all duration-300"
-            />
-
-            <CustomButtonVariant 
-                variantLabel="Variant 5: Identity Grid (Architectural Blueprint)"
-                showGrid={true}
+                variantLabel="Variant 8: The Data Stream"
+                description="Animated light sweep + Dashed border. Metaphor: Information flow, Instant delivery, Pipeline."
+                showDataStream={true}
                 buttonClass="transition-all duration-500"
             />
         </div>
