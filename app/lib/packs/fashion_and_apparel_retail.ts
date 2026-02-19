@@ -10,18 +10,22 @@ export const fashion_and_apparel_retail: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/35c743f7-333a-4fe6-9866-3334172e144b',
     category: "Retail",
-    description: "A specialized toolkit for fashion retailers to manage seasonal inventory, optimize visual merchandising, and prevent shrinkage.",
+    description: "Stop the $10B inventory bleed, seasonal margin erosion, and brand-eroding inconsistency—before they destroy your retail profitability.",
+    heroHeadline: "Stop the $10B inventory bleed and brand dilution.",
+    heroSubheadline: "Built for fashion retailers who take zero-risk inventory control and visual excellence seriously.",
+    pricingUrgency: "A single season of unchecked shrinkage or one brand-damaging customer incident costs 100x more than this system.",
+    consultingAnchor: 5000,
     icon: "shirt",
-    badgeText: "New!",
+    badgeText: "High Volume",
     badgeVariant: "accent",
     whoIsItFor: ["Fashion Retail Owners", "Store Managers", "Merchandisers", "Heads of Retail", "Head of Visual Merchandising", "COO"],
     sampleItems: [
-        { text: "Streamline inventory turnover with a seasonal stock & markdown management system.", icon: "recycle" },
-        { text: "Create stunning, brand-aligned stores with visual merchandising and display audits.", icon: "gallery-vertical" },
-        { text: "Reduce theft with secure fitting room operations and security protocols.", icon: "door-closed" },
-        { text: "Master modern retail with seamless omni-channel operations (Click-and-Collect, Returns).", icon: "link" },
-        { text: "Protect your assets through rigorous store safety and loss prevention audits.", icon: "shield" },
-        { text: "Ensure financial accuracy with daily cash handling and POS reconciliation procedures.", icon: "banknote" }
+        { text: "<strong>Streamline</strong> inventory turnover with a seasonal stock & markdown management system.", icon: "recycle" },
+        { text: "<strong>Create</strong> stunning, brand-aligned stores with visual merchandising and display audits.", icon: "gallery-vertical" },
+        { text: "<strong>Reduce</strong> theft with secure fitting room operations and security protocols.", icon: "door-closed" },
+        { text: "<strong>Master</strong> modern retail with seamless omni-channel operations (Click-and-Collect, Returns).", icon: "link" },
+        { text: "<strong>Protect</strong> your assets through rigorous store safety and loss prevention audits.", icon: "shield" },
+        { text: "<strong>Ensure</strong> financial accuracy with daily cash handling and POS reconciliation procedures.", icon: "banknote" }
     ],
     checklists: [
         {
@@ -154,13 +158,13 @@ export const fashion_and_apparel_retail: PremiumPack = {
             tasks: [
                 { id: "CH-01", description: "Reconcile cash drawer against POS report at end of shift.", priority: "High", riskLevel: "High", consequence: "Unreconciled drawers can hide cash theft or major accounting errors.", proof: "Shift Reconciliation Form" },
                 { id: "CH-02", description: "Prepare and log daily cash deposits for bank.", priority: "High", riskLevel: "High", consequence: "Delays in deposits increase the risk of theft from the store.", proof: "Deposit Slip" },
-                { id: "CH-03", description: "Use counterfeit detection methods for all large bills.", priority: "High", riskLevel: "High", consequence: "Accepting fake currency is a direct financial loss.", proof: "Counterfeit Check" },
+                { id: "CH-03", description: "Use counterfeit detection methods for all large bills.", priority: "High", riskLevel: "High", consequence: "Accepting counterfeit currency is a direct financial loss.", proof: "Counterfeit Check" },
                 { id: "CH-04", description: "Store cash securely in a locked safe.", priority: "High", riskLevel: "High", consequence: "Leaving cash unsecured is a major theft risk.", proof: "Safe Access Log" },
                 { id: "CH-05", description: "Manager to verify and sign off on all daily cash reports.", priority: "High", riskLevel: "High", consequence: "Provides a second layer of accountability for all cash handling.", proof: "Signed Report" },
                 { id: "CH-06", description: "Limit the amount of cash kept in the POS drawer.", priority: "High", riskLevel: "High", consequence: "Minimizes the potential loss during a till snatch or robbery.", proof: "Cash Limit Policy" },
                 { id: "CH-07", description: "Handle credit card transactions securely according to PCI DSS standards.", priority: "High", riskLevel: "High", consequence: "Non-compliance can lead to massive fines and loss of ability to accept cards.", proof: "PCI Compliance Audit" },
                 { id: "CH-08", description: "Process gift card transactions correctly.", priority: "High", riskLevel: "Medium", consequence: "Errors can lead to customer disputes and financial loss.", proof: "Gift Card Log" },
-                { id: "CH-09", description: "Train cashiers on all payment handling procedures.", priority: "High", riskLevel: "High", consequence: "Untrained cashiers are more likely to make errors or fall for scams.", proof: "Training Log" },
+                { id: "CH-09", description: "Train cashiers on all payment handling procedures.", priority: "High", riskLevel: "High", consequence: "Untrained cashiers are more likely to make errors or fall victim to scams.", proof: "Training Log" },
                 { id: "CH-10", description: "Investigate any cash shortages or overages immediately.", priority: "High", riskLevel: "High", consequence: "Uninvestigated discrepancies can be a sign of ongoing theft.", proof: "Investigation Report" },
             ]
         },
@@ -206,5 +210,3 @@ export const fashion_and_apparel_retail: PremiumPack = {
         }
     ]
 };
-
-    
