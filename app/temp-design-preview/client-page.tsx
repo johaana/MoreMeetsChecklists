@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -27,18 +26,18 @@ const PROOFS = [
 export default function DesignPreviewClient() {
     return (
         <div className="space-y-24 pb-32">
-            {/* INSTITUTIONAL AUTHORITY AUDIT SECTION */}
+            {/* AUDIT-READY REFINEMENT SECTION */}
             <div className="max-w-4xl mx-auto space-y-8 px-4">
                 <div className="p-8 border-l-4 border-primary bg-primary/5 rounded-r-xl space-y-4">
-                    <h2 className="text-2xl font-black text-primary uppercase italic tracking-tight">The Institutional Compact Standard</h2>
+                    <h2 className="text-2xl font-black text-primary uppercase italic tracking-tight">The Audit-Ready Standard</h2>
                     <div className="grid md:grid-cols-2 gap-8 text-sm text-secondary-text leading-relaxed">
                         <div className="space-y-4">
-                            <p><strong className="text-white">Vertical Compression:</strong> Height reduced from 64px to 56px. This "tightens" the UI, making the button feel like a deliberate control in a professional system rather than a generic web element.</p>
-                            <p><strong className="text-white">Moderate Radii:</strong> A 10px radius replaces sharper corners. This signals "Sophisticated Product" energy—balanced between friendly SaaS and cold industrialism.</p>
+                            <p><strong className="text-white">Outcome Focus:</strong> "Audit-Ready" is a practical signal. It moves the conversation from how big the product is to what it actually *does* for the buyer (solving inspection anxiety).</p>
+                            <p><strong className="text-white">Functional Separation:</strong> By separating "Compliance Grade" (Quality) from "Audit-Ready Checklists" (Execution), we provide a clear, non-repetitive hierarchy.</p>
                         </div>
                         <div className="space-y-4">
-                            <p><strong className="text-white">Restrained Weight:</strong> Font weight shifted to Semibold at Base size. It communicates authority without the "shouting" vibration of heavy bolding.</p>
-                            <p><strong className="text-white">Zero Friction:</strong> The trust microcopy remains static and centered, ensuring the buyer's eye remains focused on the primary path to acquisition.</p>
+                            <p><strong className="text-white">Technical Punctuation:</strong> The middle dot (·) replaces standard bullets to reinforce the engineering/infrastructure metaphor.</p>
+                            <p><strong className="text-white">Confidence Optimized:</strong> Title case buttons feel more institutional and high-trust compared to promotional all-caps.</p>
                         </div>
                     </div>
                 </div>
@@ -46,6 +45,7 @@ export default function DesignPreviewClient() {
                 <div className="relative group/card">
                     {/* THE INSTITUTIONAL TERMINAL */}
                     <Card className="w-full max-w-[650px] mx-auto bg-surface-card border-white/10 shadow-[0_0_60px_-12px_rgba(0,0,0,0.5)] flex flex-col h-full overflow-hidden relative">
+                        {/* THE AUDIT STAMP */}
                         <div className="absolute top-6 right-6 z-20">
                             <div className="bg-accent/10 border border-accent/20 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-sm backdrop-blur-sm">
                                 <ShieldCheck className="w-3 h-3 text-accent" />
@@ -70,7 +70,7 @@ export default function DesignPreviewClient() {
                             <div className="space-y-8">
                                 <div className="flex flex-col items-center gap-1">
                                     <p className="text-xl md:text-2xl font-black text-primary-text tracking-tight uppercase leading-tight italic">
-                                        12 Compliance-Ready Checklists • 120+ Tasks
+                                        12 AUDIT-READY CHECKLISTS · 120+ TASKS
                                     </p>
                                     <p className="text-xs text-secondary-text italic font-medium">Complete Operational Payload</p>
                                 </div>
@@ -78,14 +78,14 @@ export default function DesignPreviewClient() {
                                 <div className="flex items-center justify-center gap-2 opacity-100">
                                     <ShieldCheck className="w-3.5 h-3.5 text-white/40" />
                                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic">
-                                        Aligned: ISO • HACCP • OSHA • Industry Standards
+                                        Aligned: ISO · HACCP · OSHA · Industry Standards
                                     </span>
                                 </div>
                             </div>
 
                             <div className="space-y-8">
-                                <div className="space-y-6">
-                                    {/* ELITE TRACKED BENEFIT */}
+                                <div className="space-y-6 pt-4">
+                                    {/* THE VALUE PILL - ELITE TRACKED */}
                                     <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto transition-none">
                                         <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                                     </div>
@@ -114,6 +114,7 @@ export default function DesignPreviewClient() {
                             </div>
                         </CardContent>
 
+                        {/* THE DELIVERABLE BAR */}
                         <div className="bg-white/[0.03] border-t border-white/5 py-6 px-4 md:px-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
                             {PROOFS.map(item => (
                                 <div key={item.label} className="flex items-center gap-1.5 text-[8px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.1em] shrink-0 whitespace-nowrap">
@@ -126,7 +127,7 @@ export default function DesignPreviewClient() {
             </div>
 
             <div className="text-center py-12">
-                <p className="text-sm text-white/20 italic uppercase tracking-[0.3em]">Institutional Design Review</p>
+                <p className="text-sm text-white/20 italic uppercase tracking-[0.3em]">Audit-Ready Refinement Preview</p>
             </div>
         </div>
     );
