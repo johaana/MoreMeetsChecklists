@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -125,6 +126,35 @@ const GlobalMethods = () => (
     </div>
 );
 
+function getIndustryWording(packId: string): string {
+    const map: Record<string, string> = {
+        'hotels_and_resorts': 'Hospitality Operations Checklists',
+        'restaurants': 'Restaurant Operations Checklists',
+        'fashion_and_apparel_retail': 'Apparel Retail Checklists',
+        'jewelry_and_luxury_retail': 'High-Value Retail Checklists',
+        'electronics_showroom_pack': 'Showroom & Asset Protection Checklists',
+        'supermarket_grocery_retail_pack': 'Grocery Retail Checklists',
+        'facility_management_blueprint': 'Facility Control Framework',
+        'corporate_legal_compliance_starter_kit': 'Corporate Governance & Checklist Framework',
+        'enterprise_risk_cybersecurity_pack': 'Comprehensive Risk & Security Checklists',
+        'healthcare_and_hospital_operations': 'Clinical & Safety Checklists',
+        'school_operations_pack': 'School Safety & Operations Checklists',
+        'university_college_ops': 'Higher-Ed Operations Checklists',
+        'manufacturing_operations_ehs_pack': 'Safety & EHS Checklists',
+        'food_manufacturing_ops': 'Food Safety & Manufacturing Checklists',
+        'logistics_warehouse_pack': 'Warehouse & Logistics Checklists',
+        'franchise_operations_pack': 'Franchise Performance & Compliance Checklists',
+        'film_production_pack': 'Film & Production Checklists',
+        'ott_platform_pack': 'Streaming & Platform Control Checklists',
+        'sports_clubs_stadium_operations_pack': 'Sports & Stadium Operations Checklists',
+        'cinema_operations_pack': 'Cinema Operations Checklists',
+        'theme_park_ops_pack': 'Theme Park Safety Checklists',
+        'bakery_confectionery_pack': 'Bakery & Confectionery Checklists',
+        'animal_shelter_pack': 'Animal Welfare & Operations Checklists',
+    };
+    return map[packId] || 'Operational Checklists';
+}
+
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const hasINR = !!(pack.paymentId && pack.paymentId.length > 0 && pack.priceINR >= 0);
     const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
@@ -133,6 +163,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
     const totalChecklists = pack.checklists?.length || 0;
     const totalTasks = pack.checklists?.reduce((acc, c) => acc + c.tasks.length, 0) || 0;
+    const industryWording = getIndustryWording(pack.id);
 
     const PROOFS = [
         { label: 'Audit-Ready', icon: ShieldCheck },
@@ -225,7 +256,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <div className="space-y-8">
                                 <div className="flex flex-col items-center gap-1">
                                     <p className="text-xl md:text-2xl font-black text-primary-text tracking-tight uppercase leading-tight italic">
-                                        {totalChecklists} Institutional Checklists • {totalTasks}+ Tasks
+                                        {totalChecklists} {industryWording} · {totalTasks}+ Tasks
                                     </p>
                                     <p className="text-xs text-secondary-text italic font-medium">Complete Operational Payload</p>
                                 </div>
@@ -233,7 +264,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <div className="flex items-center justify-center gap-2 opacity-100">
                                     <ShieldCheck className="w-3.5 h-3.5 text-white/40" />
                                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic">
-                                        Aligned: ISO • HACCP • OSHA • Industry Standards
+                                        Aligned: ISO · HACCP · OSHA · Industry Standards
                                     </span>
                                 </div>
                             </div>
@@ -255,7 +286,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                             </div>
                                         ) : (
                                             <div className="w-full flex flex-col items-center gap-6">
-                                                <Button asChild size="lg" className="w-full md:w-96 h-16 bg-primary text-black font-bold text-lg rounded-sm shadow-md hover:shadow-xl hover:brightness-95 hover:-translate-y-0.5 active:translate-y-0 active:brightness-90 transition-all duration-200 ease-in-out border-none relative z-10">
+                                                <Button asChild size="lg" className="w-full md:w-96 h-14 bg-primary text-black font-semibold text-base rounded-[10px] shadow-md hover:shadow-xl hover:brightness-95 hover:-translate-y-0.5 active:translate-y-0 active:brightness-90 transition-all duration-200 ease-in-out border-none relative z-10 px-8">
                                                     <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center justify-center">
                                                         Buy Full Pack – ${pack.priceUSD} <ArrowRight className="ml-2 h-5 w-5"/>
                                                     </Link>
