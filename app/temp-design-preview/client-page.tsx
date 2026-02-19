@@ -30,15 +30,15 @@ export default function DesignPreviewClient() {
             {/* INSTITUTIONAL AUTHORITY AUDIT SECTION */}
             <div className="max-w-4xl mx-auto space-y-8 px-4">
                 <div className="p-8 border-l-4 border-primary bg-primary/5 rounded-r-xl space-y-4">
-                    <h2 className="text-2xl font-black text-primary uppercase italic tracking-tight">The Institutional Authority Standard</h2>
+                    <h2 className="text-2xl font-black text-primary uppercase italic tracking-tight">The Institutional Compact Standard</h2>
                     <div className="grid md:grid-cols-2 gap-8 text-sm text-secondary-text leading-relaxed">
                         <div className="space-y-4">
-                            <p><strong className="text-white">Controlled Feedback:</strong> We move away from "marketing glows" toward a disciplined 2px lift and 5% darken. This signals that the system is reactive but professional—essential for high-trust B2B transactions.</p>
-                            <p><strong className="text-white">Title Case Transaction:</strong> `Buy Full Pack – $79` replaces all-caps urgency. It feels like an entry in a ledger or a procurement line item, which institutional buyers find inherently more credible.</p>
+                            <p><strong className="text-white">Vertical Compression:</strong> Height reduced from 64px to 56px. This "tightens" the UI, making the button feel like a deliberate control in a professional system rather than a generic web element.</p>
+                            <p><strong className="text-white">Moderate Radii:</strong> A 10px radius replaces sharper corners. This signals "Sophisticated Product" energy—balanced between friendly SaaS and cold industrialism.</p>
                         </div>
                         <div className="space-y-4">
-                            <p><strong className="text-white">Friction Dissolution:</strong> The `✔ Instant Digital Delivery` microcopy directly answers the primary operational concern: "How fast can we deploy?"</p>
-                            <p><strong className="text-white">Tactile Feedback:</strong> The 1px "press" on active state provides the user with clear confirmation of intent, mimicking the feedback of industrial hardware switches.</p>
+                            <p><strong className="text-white">Restrained Weight:</strong> Font weight shifted to Semibold at Base size. It communicates authority without the "shouting" vibration of heavy bolding.</p>
+                            <p><strong className="text-white">Zero Friction:</strong> The trust microcopy remains static and centered, ensuring the buyer's eye remains focused on the primary path to acquisition.</p>
                         </div>
                     </div>
                 </div>
@@ -94,14 +94,14 @@ export default function DesignPreviewClient() {
                                         <div className="w-full md:w-96">
                                             <Button 
                                                 size="lg" 
-                                                className="w-full h-16 bg-primary text-black font-bold text-lg rounded-sm shadow-md hover:shadow-xl hover:brightness-95 hover:-translate-y-0.5 active:translate-y-0 active:brightness-90 transition-all duration-200 ease-in-out border-none relative z-10"
+                                                className="w-full h-14 bg-primary text-black font-semibold text-base rounded-[10px] shadow-md hover:shadow-xl hover:brightness-95 hover:-translate-y-0.5 active:translate-y-0 active:brightness-90 transition-all duration-200 ease-in-out border-none relative z-10 px-8"
                                             >
                                                 Buy Full Pack – $79 <ArrowRight className="ml-2 h-5 w-5"/>
                                             </Button>
                                         </div>
                                         
                                         {/* FRICTION DISSOLUTION MICROCOPY */}
-                                        <div className="space-y-1">
+                                        <div className="space-y-1 text-center">
                                             <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest flex items-center justify-center gap-2">
                                                 <Check className="w-3 h-3 text-primary" /> Instant Digital Delivery
                                             </p>
