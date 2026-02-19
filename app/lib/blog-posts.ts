@@ -1,4 +1,3 @@
-
 export type BlogPost = {
   slug: string;
   title: string;
@@ -13,60 +12,90 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
     {
-      slug: 'the-day-the-process-left-with-him',
-      title: "The Day the Process Left With Him",
-      publishedDate: "2026-02-16",
+      slug: 'hidden-roi-of-sops',
+      title: "The Hidden ROI of SOPs",
+      publishedDate: "2026-02-19",
       author: "MoreMeets Editorial",
-      tags: ["Risk Management", "Institutional Memory"],
-      relatedPackId: "facility_management_blueprint",
-      description: "A forensic study of Resignation Risk. When a key manager leaves, most companies lose their operating system. This is the analysis of personality-driven operations vs. institutional resilience.",
-      imageUrl: "https://i.postimg.cc/QdPDF1XM/resignation1.jpg",
+      tags: ["Efficiency", "Asset Valuation"],
+      relatedPackId: "corporate_legal_compliance_starter_kit",
+      description: "Most executives view SOPs as a 'compliance tax'. They are wrong. This is the financial study of how structured operations drive enterprise value.",
+      imageUrl: "https://i.postimg.cc/qvYrNypS/ROI.png",
       content: `
         <section>
-          <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">It didn’t feel dramatic. No sirens. No lawsuits. No media coverage. Just a resignation email. Subject line: “Moving On.”</p>
+          <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">Most founders see SOPs as compliance. CFOs see them as overhead. But structured operations are revenue multipliers. Chaos has a measurable, compounding cost.</p>
           
-          <p>He had been there eleven years. He knew the vendors by their first names. He handled inspections with a calm that bordered on the supernatural. He always <strong>“just knew”</strong> what to check before an audit.</p>
+          <p>Employee turnover costs U.S. businesses over <span class="text-risk-accent font-black">$1,000,000,000,000 annually.</span> Much of this is tied to unclear expectations and the resulting frustration. Research suggests that nearly <span class="text-risk-accent font-black">20% of a worker's time</span> is spent looking for internal information or waiting for verbal instructions.</p>
           
-          <p>Everyone — from the CEO to the floor staff — believed the system was safe. They weren't running on a system, though. They were running on an individual. When that person walked out, <span class="text-primary font-bold">the company didn't just lose an employee. It lost its operating system.</span></p>
-          
-          <p>This is the hidden crisis of the modern enterprise: <strong>The Resignation Risk.</strong> It is the silent killer of consistency. In high-stakes environments, this gap isn't just a financial nuisance; it is a safety catastrophe waiting for a trigger.</p>
+          <p>This is the <span class="text-risk-accent font-black">"Inefficiency Tax"</span> that kills margins in growing companies and destroys investor confidence.</p>
         </section>
 
-        <h2>The Myth of Experience</h2>
+        <h2>The Profit Equation</h2>
         
         <section>
-          <p>Most companies believe they have processes. What they actually have is <strong>people who remember how things work</strong>. This is called <em>tribal knowledge</em> — undocumented institutional memory carried in human heads. It feels safe because it’s familiar. But it is the ultimate hidden liability.</p>
+          <p>Structured operations reduce error rates, improve training speed, and lower the supervision load on expensive managers. If a system reduces one regulatory penalty or prevents one resignation shock—<strong>the ROI is exponential.</strong></p>
           
           <blockquote class="border-l-4 border-primary bg-white/[0.02] px-6 py-4 my-8 italic text-lg text-primary-text">
-            "If your standards drift the moment your best employee steps out of the room, you don't have a business—you have a group of people working hard to keep a house of cards from collapsing."
+            "Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine that works regardless of who is in the room."
           </blockquote>
 
-          <p>A study found that <span class="text-primary font-bold">42% of institutional knowledge</span> is unique to specific employees. When they leave, the organization stops knowing how to execute. Replacement costs are often calculated in salary terms, but the real cost is the <span class="text-risk-accent font-black">Memory Tax</span>: the period where the business stops performing at its baseline while the successor "guesses" their way through the role.</p>
+          <p>Manufacturing firms report <span class="text-primary font-black">15-25% productivity gains</span> after standardizing work. Data-driven onboarding reduces time-to-competency by <span class="text-primary font-bold">30-50%</span>. Every day a new hire is "guessing" is a day your margin is leaking into the floor.</p>
         </section>
 
-        <h2>Case Analysis: The Knight Capital Collapse</h2>
+        <h2>From Compliance to Valuation</h2>
         <section>
-          <p>In 2012, Knight Capital deployed new software. One obsolete function wasn’t removed. It triggered rogue trades. In 45 minutes, the company lost <span class="text-risk-accent font-black">$440,000,000</span>.</p>
+          <p>Well-documented operations increase valuation multiples and improve buyer confidence during M&A. They shorten due diligence periods and reduce transition risks. In a scaled environment, these fractions of a percent compound into massive institutional gains.</p>
           
-          <p>The issue wasn’t intelligence. It was <strong>undocumented legacy process assumptions</strong>. A single developer who knew the "quirks" of the old system had left, and the institutional memory of *why* that function existed was gone. <span class="text-risk-accent font-black">Operational memory gaps cost nearly half a billion dollars.</span></p>
+          <p class="mt-8 text-xl font-bold text-primary-text italic border-l-2 border-primary/20 pl-6">
+            <span class="text-primary font-black uppercase">Systemization turns a variable cost (training) into a fixed asset (process).</span> 
+            Stop paying the Memory Tax and start building a legacy of structured execution.
+          </p>
+        </section>
+      `
+    },
+    {
+      slug: 'patient-safety-process-discipline',
+      title: "Patient Safety Isn’t About Policy",
+      publishedDate: "2026-02-18",
+      author: "MoreMeets Editorial",
+      tags: ["Healthcare", "Patient Safety"],
+      relatedPackId: "healthcare_and_hospital_operations",
+      description: "Clinical excellence requires more than brilliant minds; it requires foolproof systems. Discover how the 'Checklist Manifesto' transformed medicine.",
+      imageUrl: "https://i.postimg.cc/HkKmrXTf/patient-safety1.jpg",
+      content: `
+        <section>
+          <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">Healthcare doesn’t fail because doctors are careless. It fails because systems are inconsistent. The gap between policy and practice is where harm lives.</p>
           
-          <p>The lesson is universal: <strong>Complexity without documentation is exposure.</strong> Whether it is a trading algorithm or a hotel's fire safety protocol, if the knowledge isn't institutionalized, it will eventually fail. <span class="text-risk-accent font-bold">You are one resignation away from operational blindness.</span></p>
+          <p>Medical error is cited as the <span class="text-risk-accent font-black">third leading cause of death</span> in the United States. This isn't a lack of intelligence—it is process variability. Hospitals are complex machines where thousands of tiny tasks must align perfectly, every time, across three shifts and dozens of departments.</p>
+          
+          <p>The core challenge of modern clinical quality is <span class="text-primary font-bold">standardizing brilliance</span>. In a high-stakes environment, brilliance is a variable; a <span class="text-primary font-black">structured system is a constant</span>.</p>
         </section>
 
-        <h2>Final Debrief: Capturing the Intangible</h2>
+        <h2>The Checklist Manifesto</h2>
+        
         <section>
-          <p>The solution is not more "experience." The solution is <strong>Institutional Memory</strong>. This requires converting individual brilliance into permanent institutional infrastructure. You must move from a culture of heroes to a culture of systems.</p>
+          <p>Atul Gawande’s research demonstrated that surgical checklists <span class="text-primary font-black">reduced complications by over 30%</span>. These were simple checklists, not complex AI or proprietary dashboards. Why? Because even world-class experts forget critical steps under cognitive load.</p>
           
-          <p>It means moving from <span class="text-primary font-black uppercase italic">"He knows"</span> to <span class="text-primary font-black uppercase italic">"The System knows."</span></p>
+          <blockquote class="border-l-4 border-primary bg-white/[0.02] px-6 py-4 my-8 italic text-lg text-primary-text">
+            "The checklist is not a replacement for expertise; it is a safeguard against the cognitive load that causes experts to make simple, fatal mistakes. It forces the team to pause and verify the invisible."
+          </blockquote>
+
+          <p>Checklists reduce cognitive overload and convert individual brilliance into systemic reliability. When you transition from a 'Hero Model' where safety depends on one person's memory to a <strong>'System Model'</strong> where safety is embedded in the workflow, the results are immediate and life-saving.</p>
+        </section>
+
+        <h2>The ROI of Clinical Safety</h2>
+        <section>
+          <p>In healthcare, missed tasks harm people and destroy institutions. Malpractice exposure drops significantly when you can provide a <span class="text-primary font-bold italic">verifiable, timestamped log</span> of every safety check performed. It moves the organization from a defensive, reactive posture to a proactive, audit-ready one.</p>
           
-          <p>By embedding standards through clearly defined roles, mapped frequencies, and documented consequences, you create an <span class="text-primary font-bold">insurance policy</span> against the day your top talent moves on. When the person resigns, the system stays behind.</p>
+          <p class="text-2xl font-black text-primary uppercase italic tracking-tighter mt-12 mb-4">Verification is the proof of care.</p>
+          
+          <p>Without a structured system, your "policy" is just a wish. <span class="text-primary font-bold">Documentation is the only daily proof of care.</span> Assume nothing. Verify everything. Protect your patients by removing the variable of human memory.</p>
         </section>
       `
     },
     {
       slug: 'the-25-million-burrito',
       title: "The $25 Million Burrito",
-      publishedDate: "2026-02-16",
+      publishedDate: "2026-02-17",
       author: "MoreMeets Editorial",
       tags: ["Food Safety", "Operational Drift"],
       relatedPackId: "restaurants",
@@ -132,83 +161,53 @@ export const blogPosts: BlogPost[] = [
       `
     },
     {
-      slug: 'patient-safety-process-discipline',
-      title: "Patient Safety Isn’t About Policy",
+      slug: 'the-day-the-process-left-with-him',
+      title: "The Day the Process Left With Him",
       publishedDate: "2026-02-16",
       author: "MoreMeets Editorial",
-      tags: ["Healthcare", "Patient Safety"],
-      relatedPackId: "healthcare_and_hospital_operations",
-      description: "Clinical excellence requires more than brilliant minds; it requires foolproof systems. Discover how the 'Checklist Manifesto' transformed medicine.",
-      imageUrl: "https://i.postimg.cc/HkKmrXTf/patient-safety1.jpg",
+      tags: ["Risk Management", "Institutional Memory"],
+      relatedPackId: "facility_management_blueprint",
+      description: "A forensic study of Resignation Risk. When a key manager leaves, most companies lose their operating system. This is the analysis of personality-driven operations vs. institutional resilience.",
+      imageUrl: "https://i.postimg.cc/QdPDF1XM/resignation1.jpg",
       content: `
         <section>
-          <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">Healthcare doesn’t fail because doctors are careless. It fails because systems are inconsistent. The gap between policy and practice is where harm lives.</p>
+          <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">It didn’t feel dramatic. No sirens. No lawsuits. No media coverage. Just a resignation email. Subject line: “Moving On.”</p>
           
-          <p>Medical error is cited as the <span class="text-risk-accent font-black">third leading cause of death</span> in the United States. This isn't a lack of intelligence—it is process variability. Hospitals are complex machines where thousands of tiny tasks must align perfectly, every time, across three shifts and dozens of departments.</p>
+          <p>He had been there eleven years. He knew the vendors by their first names. He handled inspections with a calm that bordered on the supernatural. He always <strong>“just knew”</strong> what to check before an audit.</p>
           
-          <p>The core challenge of modern clinical quality is <span class="text-primary font-bold">standardizing brilliance</span>. In a high-stakes environment, brilliance is a variable; a <span class="text-primary font-black">structured system is a constant</span>.</p>
+          <p>Everyone — from the CEO to the floor staff — believed the system was safe. They weren't running on a system, though. They were running on an individual. When that person walked out, <span class="text-primary font-bold">the company didn't just lose an employee. It lost its operating system.</span></p>
+          
+          <p>This is the hidden crisis of the modern enterprise: <strong>The Resignation Risk.</strong> It is the silent killer of consistency. In high-stakes environments, this gap isn't just a financial nuisance; it is a safety catastrophe waiting for a trigger.</p>
         </section>
 
-        <h2>The Checklist Manifesto</h2>
+        <h2>The Myth of Experience</h2>
         
         <section>
-          <p>Atul Gawande’s research demonstrated that surgical checklists <span class="text-primary font-black">reduced complications by over 30%</span>. These were simple checklists, not complex AI or proprietary dashboards. Why? Because even world-class experts forget critical steps under cognitive load.</p>
+          <p>Most companies believe they have processes. What they actually have is <strong>people who remember how things work</strong>. This is called <em>tribal knowledge</em> — undocumented institutional memory carried in human heads. It feels safe because it’s familiar. But it is the ultimate hidden liability.</p>
           
           <blockquote class="border-l-4 border-primary bg-white/[0.02] px-6 py-4 my-8 italic text-lg text-primary-text">
-            "The checklist is not a replacement for expertise; it is a safeguard against the cognitive load that causes experts to make simple, fatal mistakes. It forces the team to pause and verify the invisible."
+            "If your standards drift the moment your best employee steps out of the room, you don't have a business—you have a group of people working hard to keep a house of cards from collapsing."
           </blockquote>
 
-          <p>Checklists reduce cognitive overload and convert individual brilliance into systemic reliability. When you transition from a 'Hero Model' where safety depends on one person's memory to a <strong>'System Model'</strong> where safety is embedded in the workflow, the results are immediate and life-saving.</p>
+          <p>A study found that <span class="text-primary font-bold">42% of institutional knowledge</span> is unique to specific employees. When they leave, the organization stops knowing how to execute. Replacement costs are often calculated in salary terms, but the real cost is the <span class="text-risk-accent font-black">Memory Tax</span>: the period where the business stops performing at its baseline while the successor "guesses" their way through the role.</p>
         </section>
 
-        <h2>The ROI of Clinical Safety</h2>
+        <h2>Case Analysis: The Knight Capital Collapse</h2>
         <section>
-          <p>In healthcare, missed tasks harm people and destroy institutions. Malpractice exposure drops significantly when you can provide a <span class="text-primary font-bold italic">verifiable, timestamped log</span> of every safety check performed. It moves the organization from a defensive, reactive posture to a proactive, audit-ready one.</p>
+          <p>In 2012, Knight Capital deployed new software. One obsolete function wasn’t removed. It triggered rogue trades. In 45 minutes, the company lost <span class="text-risk-accent font-black">$440,000,000</span>.</p>
           
-          <p class="text-2xl font-black text-primary uppercase italic tracking-tighter mt-12 mb-4">Verification is the proof of care.</p>
+          <p>The issue wasn’t intelligence. It was <strong>undocumented legacy process assumptions</strong>. A single developer who knew the "quirks" of the old system had left, and the institutional memory of *why* that function existed was gone. <span class="text-risk-accent font-black">Operational memory gaps cost nearly half a billion dollars.</span></p>
           
-          <p>Without a structured system, your "policy" is just a wish. <span class="text-primary font-bold">Documentation is the only daily proof of care.</span> Assume nothing. Verify everything. Protect your patients by removing the variable of human memory.</p>
-        </section>
-      `
-    },
-    {
-      slug: 'hidden-roi-of-sops',
-      title: "The Hidden ROI of SOPs",
-      publishedDate: "2026-02-16",
-      author: "MoreMeets Editorial",
-      tags: ["Efficiency", "Asset Valuation"],
-      relatedPackId: "corporate_legal_compliance_starter_kit",
-      description: "Most executives view SOPs as a 'compliance tax'. They are wrong. This is the financial study of how structured operations drive enterprise value.",
-      imageUrl: "https://i.postimg.cc/qvYrNypS/ROI.png",
-      content: `
-        <section>
-          <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">Most founders see SOPs as compliance. CFOs see them as overhead. But structured operations are revenue multipliers. Chaos has a measurable, compounding cost.</p>
-          
-          <p>Employee turnover costs U.S. businesses over <span class="text-risk-accent font-black">$1,000,000,000,000 annually.</span> Much of this is tied to unclear expectations and the resulting frustration. Research suggests that nearly <span class="text-risk-accent font-black">20% of a worker's time</span> is spent looking for internal information or waiting for verbal instructions.</p>
-          
-          <p>This is the <span class="text-risk-accent font-black">"Inefficiency Tax"</span> that kills margins in growing companies and destroys investor confidence.</p>
+          <p>The lesson is universal: <strong>Complexity without documentation is exposure.</strong> Whether it is a trading algorithm or a hotel's fire safety protocol, if the knowledge isn't institutionalized, it will eventually fail. <span class="text-risk-accent font-bold">You are one resignation away from operational blindness.</span></p>
         </section>
 
-        <h2>The Profit Equation</h2>
-        
+        <h2>Final Debrief: Capturing the Intangible</h2>
         <section>
-          <p>Structured operations reduce error rates, improve training speed, and lower the supervision load on expensive managers. If a system reduces one regulatory penalty or prevents one resignation shock—<strong>the ROI is exponential.</strong></p>
+          <p>The solution is not more "experience." The solution is <strong>Institutional Memory</strong>. This requires converting individual brilliance into permanent institutional infrastructure. You must move from a culture of heroes to a culture of systems.</p>
           
-          <blockquote class="border-l-4 border-primary bg-white/[0.02] px-6 py-4 my-8 italic text-lg text-primary-text">
-            "Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine that works regardless of who is in the room."
-          </blockquote>
-
-          <p>Manufacturing firms report <span class="text-primary font-black">15-25% productivity gains</span> after standardizing work. Data-driven onboarding reduces time-to-competency by <span class="text-primary font-bold">30-50%</span>. Every day a new hire is "guessing" is a day your margin is leaking into the floor.</p>
-        </section>
-
-        <h2>From Compliance to Valuation</h2>
-        <section>
-          <p>Well-documented operations increase valuation multiples and improve buyer confidence during M&A. They shorten due diligence periods and reduce transition risks. In a scaled environment, these fractions of a percent compound into massive institutional gains.</p>
+          <p>It means moving from <span class="text-primary font-black uppercase italic">"He knows"</span> to <span class="text-primary font-black uppercase italic">"The System knows."</span></p>
           
-          <p class="mt-8 text-xl font-bold text-primary-text italic border-l-2 border-primary/20 pl-6">
-            <span class="text-primary font-black uppercase">Systemization turns a variable cost (training) into a fixed asset (process).</span> 
-            Stop paying the Memory Tax and start building a legacy of structured execution.
-          </p>
+          <p>By embedding standards through clearly defined roles, mapped frequencies, and documented consequences, you create an <span class="text-primary font-bold">insurance policy</span> against the day your top talent moves on. When the person resigns, the system stays behind.</p>
         </section>
       `
     }
