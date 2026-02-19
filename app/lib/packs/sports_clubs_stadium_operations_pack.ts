@@ -10,24 +10,28 @@ export const sports_clubs_stadium_operations_pack: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f290d8a5-d913-485e-9905-59b922a01490',
     category: "Entertainment & Events",
-    description: "A comprehensive operational toolkit for sports clubs, gyms, and stadium managers to ensure safety, compliance, and an excellent member experience.",
+    description: "Stop venue accidents, crowd disasters, and member churn—before they destroy your reputation and bottom line.",
+    heroHeadline: "Eliminate venue accidents and crowd disasters.",
+    heroSubheadline: "Built for stadium managers and sports club owners who take zero-risk operational integrity seriously.",
+    pricingUrgency: "A single crowd-control incident or a fatal equipment failure costs 100x more than this entire system.",
+    consultingAnchor: 5000,
     icon: "trophy",
-    whoIsItFor: ["Sports Club GMs", "Stadium Managers", "Heads of Operations", "Gym Owners"],
+    whoIsItFor: ["Sports Club GMs", "Stadium Managers", "Heads of Operations", "Gym Owners", "Venue Safety Officers"],
     sampleItems: [
-        { text: "Ensure venue safety with crowd management, ticketing, and emergency evacuation SOPs.", icon: "users" },
-        { text: "Maintain world-class turf and pitches with a structured ground maintenance schedule.", icon: "sprout" },
-        { text: "Prevent accidents and misuse with daily inspections of gym and sports equipment.", icon: "dumbbell" },
-        { text: "Guarantee a safe environment with fire safety audits and medical emergency response plans.", icon: "siren" },
-        { text: "Protect members with robust hygiene protocols for pools, changing rooms, and F&B areas.", icon: "sparkles" },
-        { text: "Manage your team effectively with checklists for staff training, scheduling, and performance.", icon: "clipboard-list" }
+        { text: "<strong>Ensure</strong> venue safety with robust crowd management, ticketing, and exit SOPs.", icon: "users" },
+        { text: "<strong>Maintain</strong> world-class turf and pitches with a structured ground maintenance schedule.", icon: "sprout" },
+        { text: "<strong>Prevent</strong> equipment-related injuries with daily fitness and gym safety audits.", icon: "dumbbell" },
+        { text: "<strong>Guarantee</strong> a safe aquatic environment with pool hygiene and rescue readiness checklists.", icon: "waves" },
+        { text: "<strong>Protect</strong> member data and revenue with a structured membership management system.", icon: "user-check" },
+        { text: "<strong>Manage</strong> your team effectively with checklists for staff onboarding and safety training.", icon: "clipboard-list" }
     ],
-     checklists: [
-       {
+    checklists: [
+        {
             title: "Crowd Management & Safety",
             department: "Security/Operations",
             frequency: "Per Event",
             role: "Head of Security",
-            summary: "A comprehensive plan to manage crowds safely and effectively during events.",
+            summary: "A comprehensive plan to manage crowds safely and effectively during high-traffic events.",
             icon: "users",
             tasks: [
                 { id: "CROWD-01", description: "Develop a crowd management plan based on expected attendance.", priority: "High", riskLevel: "High", consequence: "Failure to plan can lead to dangerous overcrowding and stampedes.", proof: "Crowd Management Plan" },
@@ -107,7 +111,7 @@ export const sports_clubs_stadium_operations_pack: PremiumPack = {
             department: "Admin",
             frequency: "Ongoing",
             role: "Membership Coordinator",
-            summary: "Manages the member lifecycle from registration to renewal.",
+            summary: "Manages the member lifecycle from registration to renewal, ensuring data integrity.",
             icon: "user-check",
             tasks: [
                 { id: "MEM-01", description: "Process new member registrations and collect all required information.", priority: "High", riskLevel: "Medium", consequence: "Incomplete information can lead to billing or communication issues later.", proof: "Registration Form" },
@@ -127,8 +131,8 @@ export const sports_clubs_stadium_operations_pack: PremiumPack = {
             department: "F&B",
             frequency: "Daily",
             role: "Concession Manager",
-            summary: "Ensures food safety and efficient service at all food and beverage outlets.",
-            icon: "utensils-crossed",
+            summary: "Ensures food safety and efficient service at all food and beverage outlets within the venue.",
+            icon: "utensils",
             tasks: [
                 { id: "CONC-01", description: "Follow HACCP principles for all food handling and preparation.", priority: "High", riskLevel: "High", consequence: "A food poisoning outbreak can sicken hundreds and lead to major legal action.", proof: "HACCP Plan" },
                 { id: "CONC-02", description: "Log temperatures of all hot and cold holding units.", priority: "High", riskLevel: "High", consequence: "Food held at incorrect temperatures is a major food safety risk.", proof: "Temperature Log" },
@@ -147,7 +151,7 @@ export const sports_clubs_stadium_operations_pack: PremiumPack = {
             department: "Housekeeping",
             frequency: "Daily",
             role: "Housekeeping Supervisor",
-            summary: "Ensures the venue is clean, presentable, and safe for guests.",
+            summary: "Ensures the venue is clean, presentable, and safe for guests and members.",
             icon: "sparkles",
             tasks: [
                 { id: "HK-VP-01", description: "Inspect and clean all public restrooms hourly during events.", priority: "High", riskLevel: "Medium", consequence: "Dirty restrooms are the number one complaint of spectators.", proof: "Restroom Log" },
@@ -159,7 +163,7 @@ export const sports_clubs_stadium_operations_pack: PremiumPack = {
                 { id: "HK-VP-07", description: "Ensure all cleaning supplies and equipment are stocked and maintained.", priority: "High", riskLevel: "Low", consequence: "Lack of supplies can halt cleaning operations.", proof: "Supply Inventory" },
                 { id: "HK-VP-08", description: "Train housekeeping staff on cleaning standards and safety.", priority: "High", riskLevel: "High", consequence: "Untrained staff can use chemicals incorrectly or miss key areas.", proof: "Training Log" },
                 { id: "HK-VP-09", description: "Inspect the exterior of the venue for cleanliness.", priority: "High", riskLevel: "Medium", consequence: "The exterior is the first thing a visitor sees.", proof: "Exterior Inspection Log" },
-                { id: "HK-VP-10", description: "Report any maintenance issues found during cleaning.", priority: "High", riskLevel: "High", consequence: "Housekeeping staff are the 'eyes and ears' of the maintenance team.", proof: "Maintenance Request" }
+                { id: "HK-VP-10", description: "Report any maintenance issues found during cleaning.", priority: "High", riskLevel: "High", consequence: "Housekeeping staff are the \"eyes and ears\" of the maintenance team.", proof: "Maintenance Request" }
             ]
         },
         {
@@ -167,7 +171,7 @@ export const sports_clubs_stadium_operations_pack: PremiumPack = {
             department: "HR/Operations",
             frequency: "Ongoing",
             role: "HR Manager",
-            summary: "A framework for managing the workforce effectively.",
+            summary: "A framework for managing the workforce effectively and ensuring compliance with safety standards.",
             icon: "clipboard-list",
             tasks: [
                 { id: "SMT-01", description: "Recruit and onboard new staff according to a standardized process.", priority: "High", riskLevel: "Medium", consequence: "A poor onboarding experience leads to early employee turnover.", proof: "Onboarding Checklist" },
@@ -184,5 +188,3 @@ export const sports_clubs_stadium_operations_pack: PremiumPack = {
         }
     ]
 };
-
-    
