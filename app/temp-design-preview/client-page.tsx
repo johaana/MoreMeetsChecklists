@@ -65,7 +65,7 @@ const PricingCardVariation = ({
             </CardHeader>
 
             <CardContent className={cn("flex-1 p-8 md:p-12 flex flex-col text-center", contentGap)}>
-                <div className={cn("flex flex-col gap-1", sectionGap)}>
+                <div className={cn("flex flex-col", sectionGap)}>
                     <div className="flex flex-col items-center gap-1">
                         <p className="text-xl md:text-2xl font-black text-primary-text tracking-tight uppercase leading-tight italic">
                             8 CLINICAL & SAFETY CHECKLISTS · 80+ TASKS
@@ -140,37 +140,37 @@ export default function DesignPreviewClient() {
                 <div className="p-6 border-l-2 border-primary/30 bg-primary/5 rounded-r-xl">
                     <h3 className="text-primary font-black uppercase text-xs tracking-widest mb-2">Micro-Tuning Audit</h3>
                     <p className="text-sm text-secondary-text leading-relaxed italic">
-                        Auditing the "Institutional Balanced" standard. We are fine-tuning the vertical rhythm to maximize the psychological "tether" between the purchase action and its safety guarantees.
+                        Auditing the "Unified Decision" standard (Variation 2). We are comparing three 2px increments to find the exact vertical rhythm that maximizes the "Atomic Proximity" of the checkout action.
                     </p>
                 </div>
 
-                {/* VARIATION 1: BALANCED */}
+                {/* VARIATION 2A: 8px (The Current Winner) */}
                 <PricingCardVariation 
-                    title="Variation 1: The Balanced (12px Cluster)"
+                    title="Variation 2A: 8px Standard (The Baseline)"
                     contentGap="space-y-10"
                     sectionGap="gap-8"
-                    buttonGap="gap-3"
-                />
-
-                {/* VARIATION 2: UNIFIED (BEST FOR CONVERSION) */}
-                <PricingCardVariation 
-                    title="Variation 2: Unified Decision (8px Cluster)"
-                    contentGap="space-y-8"
-                    sectionGap="gap-6"
                     buttonGap="gap-2"
                 />
 
-                {/* VARIATION 3: COMPACT ASSET (16px CLUSTER) */}
+                {/* VARIATION 2B: 6px (Ultra Dense) */}
                 <PricingCardVariation 
-                    title="Variation 3: Asset Focus (16px Cluster - 10% Compact)"
+                    title="Variation 2B: 6px Precision (Atomic Proximity)"
+                    contentGap="space-y-8"
+                    sectionGap="gap-6"
+                    buttonGap="gap-1.5"
+                />
+
+                {/* VARIATION 2C: 10px (Refined Unified) */}
+                <PricingCardVariation 
+                    title="Variation 2C: 10px Refined (Balanced Flow)"
                     contentGap="space-y-12"
                     sectionGap="gap-8"
-                    buttonGap="gap-4"
+                    buttonGap="gap-2.5"
                 />
             </div>
 
             <div className="text-center py-12">
-                <p className="text-[10px] text-white/20 italic uppercase tracking-[0.3em]">Vertical Rhythm Audit · Resolution Protocol V6</p>
+                <p className="text-[10px] text-white/20 italic uppercase tracking-[0.3em]">Precision Spacing Audit · Resolution Protocol V7</p>
             </div>
         </div>
     );
