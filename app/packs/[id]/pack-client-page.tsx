@@ -32,7 +32,14 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                         <Card key={index} className="flex flex-col h-full bg-background border-border shadow-sm">
                             <CardHeader className="flex flex-row items-center gap-4 space-y-0">
                                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
-                                    <IconComponent name={point.icon as string} className="h-6 w-6 text-accent"/>
+                                    {/* Handle both SVG elements and icon name strings */}
+                                    {typeof point.icon === 'string' ? (
+                                        <IconComponent name={point.icon as string} className="h-6 w-6 text-accent"/>
+                                    ) : (
+                                        <span className="h-6 w-6 text-accent flex items-center justify-center">
+                                            {point.icon}
+                                        </span>
+                                    )}
                                 </div>
                                 <CardTitle className="text-lg font-bold">{point.title}</CardTitle>
                             </CardHeader>
