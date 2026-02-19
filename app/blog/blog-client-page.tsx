@@ -18,10 +18,16 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { subscribeToBlog } from './actions';
 
-
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
 const primaryTags = ["Cybersecurity", "Risk Management", "Safety", "Supply Chain"];
 const secondaryTags = allTags.filter(tag => !primaryTags.includes(tag));
+
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+function formatDate(dateStr: string) {
+  const [year, month, day] = dateStr.split('-');
+  return `${months[parseInt(month) - 1]} ${parseInt(day)}, ${year}`;
+}
 
 function SubscriptionForm() {
   const [email, setEmail] = React.useState('');
@@ -187,16 +193,17 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
 
 export default function BlogClientPage() {
   const searchParams = useSearchParams();
-  const tagFilterFromUrl = searchParams.get('tag');
   
   const allPostsSorted = React.useMemo(() => 
     [...blogPosts].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()), 
     []
   );
 
-  const [activeFilter, setActiveFilter] = React.useState<string | null>(tagFilterFromUrl);
+  const [activeFilter, setActiveFilter] = React.useState<string | null>(null);
+  const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
+    setMounted(true);
     setActiveFilter(searchParams.get('tag'));
   }, [searchParams]);
 
@@ -210,17 +217,7 @@ export default function BlogClientPage() {
     }
     const newUrl = `${window.location.pathname}?${params.toString()}`;
     window.history.pushState({ ...window.history.state, as: newUrl, url: newUrl }, '', newUrl);
-    setActiveCategory(tag);
-  };
-
-  const setActiveCategory = (tag: string | null) => {
-      setActiveFilter(tag);
-  }
-  
-  const handleTagClick = (e: React.MouseEvent, tag: string) => {
-    e.stopPropagation();
-    e.preventDefault();
-    handleSetFilter(tag);
+    setActiveFilter(tag);
   };
 
   const displayedPosts = React.useMemo(() => {
@@ -233,6 +230,7 @@ export default function BlogClientPage() {
   const currentFeaturedPost = !activeFilter ? displayedPosts[0] : null;
   const postsForGrid = activeFilter ? displayedPosts : displayedPosts.slice(1);
   
+  if (!mounted) return null;
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
@@ -267,7 +265,7 @@ export default function BlogClientPage() {
                                     <div className="p-6">
                                         <div className="flex flex-wrap gap-2 mb-2">
                                             {currentFeaturedPost.tags.map(tag => ( 
-                                                <Badge key={tag} variant="secondary" className="hover:bg-primary/10 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
+                                                <Badge key={tag} variant="secondary">
                                                     {tag}
                                                 </Badge>
                                             ))}
@@ -297,7 +295,7 @@ export default function BlogClientPage() {
                                         <div className="relative z-10 p-10 space-y-4 text-white">
                                             <div className="flex flex-wrap gap-2">
                                                 {currentFeaturedPost.tags.map(tag => (
-                                                    <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-none hover:bg-white/30 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
+                                                    <Badge key={tag} variant="secondary" className="bg-white/20 text-white border-none">
                                                         {tag}
                                                     </Badge>
                                                 ))}
@@ -309,7 +307,7 @@ export default function BlogClientPage() {
                                                 {currentFeaturedPost.description}
                                             </CardDescription>
                                             <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-white/60">
-                                                <span>{new Date(currentFeaturedPost.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                                                <span>{formatDate(currentFeaturedPost.publishedDate)}</span>
                                                 <span>{Math.ceil(currentFeaturedPost.content.split(' ').length / 200)} min read</span>
                                             </div>
                                             <Button variant="outline" className="bg-transparent text-white border-white mt-4 group-hover:bg-white group-hover:text-black transition-colors font-black uppercase tracking-widest">
@@ -349,7 +347,7 @@ export default function BlogClientPage() {
                             <CardHeader className="space-y-4">
                                 <div className="flex flex-wrap gap-2">
                                      {post.tags.map(tag => (
-                                         <Badge key={tag} variant="secondary" className="bg-primary/10 text-primary border-none hover:bg-primary/20 transition-colors cursor-pointer" onClick={(e) => handleTagClick(e, tag)}>
+                                         <Badge key={tag} variant="secondary" className="bg-primary/10 text-primary border-none">
                                             {tag}
                                         </Badge>
                                     ))}
@@ -365,7 +363,7 @@ export default function BlogClientPage() {
                             </CardContent>
                              <CardFooter className="flex flex-col items-start gap-4 p-4 md:p-6 mt-auto">
                                 <div className="w-full flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-zinc-500">
-                                    <p>{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                                    <p>{formatDate(post.publishedDate)}</p>
                                     <span>{Math.ceil(post.content.split(' ').length / 200)} min read</span>
                                 </div>
                                 <Button asChild variant="secondary" size="sm" className="w-full mt-2 font-black uppercase tracking-widest bg-zinc-800 text-white hover:bg-zinc-700">

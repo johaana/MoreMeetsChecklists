@@ -28,6 +28,44 @@ const allPacksByCategory = (packs: PremiumPack[]) => {
     }, {} as Record<string, typeof packs>);
 };
 
+const PackCard = ({ pack }: { pack: PremiumPack }) => (
+    <Card key={pack.id} className="flex flex-col h-full overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
+        <CardHeader>
+            <div className='flex justify-between items-start'>
+                <IconComponent name={pack.icon} className="h-8 w-8 text-accent mb-2" />
+                {pack.badgeText && <Badge variant={pack.badgeVariant || 'default'}>{pack.badgeText}</Badge>}
+            </div>
+            <CardTitle className="text-xl font-headline">
+                <Link href={`/packs/${pack.id}`} className="hover:text-primary transition-colors">{pack.title}</Link>
+            </CardTitle>
+        </CardHeader>
+        <CardContent className="flex-1">
+            <CardDescription>{pack.description}</CardDescription>
+        </CardContent>
+        <CardFooter>
+            <Button asChild className="w-full" variant="secondary">
+                <Link href={`/packs/${pack.id}`}>
+                    Eliminate Operational Risk <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+            </Button>
+        </CardFooter>
+    </Card>
+);
+
+const Bestsellers = ({ packs }: { packs: PremiumPack[] }) => {
+    const bestsellerPacks = packs.filter(p => p.bestseller);
+    if (bestsellerPacks.length === 0) return null;
+
+    return (
+        <div className="mb-16">
+            <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl font-headline text-primary mb-6 text-center">Bestsellers</h2>
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+                {bestsellerPacks.map(pack => <PackCard key={pack.id} pack={pack} />)}
+            </div>
+            <hr className="my-12 border-dashed" />
+        </div>
+    )
+}
 
 export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
     const searchParams = useSearchParams();
@@ -36,15 +74,13 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
     const packsByCategory = React.useMemo(() => allPacksByCategory(packs), [packs]);
     const categories = Object.keys(packsByCategory).sort();
 
-    const initialSearch = searchParams.get('q') || '';
-    const initialCategory = searchParams.get('category') || 'All';
-    
-    const [searchTerm, setSearchTerm] = React.useState(initialSearch);
-    const [activeCategory, setActiveCategory] = React.useState(initialCategory);
+    const [searchTerm, setSearchTerm] = React.useState('');
+    const [activeCategory, setActiveCategory] = React.useState('All');
     const [isSheetOpen, setSheetOpen] = React.useState(false);
-
+    const [mounted, setMounted] = React.useState(false);
 
     React.useEffect(() => {
+      setMounted(true);
       setSearchTerm(searchParams.get('q') || '');
       setActiveCategory(searchParams.get('category') || 'All');
     }, [searchParams]);
@@ -87,44 +123,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
         });
     }, [packs, activeCategory, searchTerm]);
 
-    const Bestsellers = ({ packs }: { packs: PremiumPack[] }) => {
-        const bestsellerPacks = packs.filter(p => p.bestseller);
-        if (bestsellerPacks.length === 0) return null;
-
-        return (
-            <div className="mb-16">
-                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl font-headline text-primary mb-6 text-center">Bestsellers</h2>
-                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
-                    {bestsellerPacks.map(pack => <PackCard key={pack.id} pack={pack} />)}
-                </div>
-                <hr className="my-12 border-dashed" />
-            </div>
-        )
-    }
-
-    const PackCard = ({ pack }: { pack: PremiumPack }) => (
-        <Card key={pack.id} className="flex flex-col h-full overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
-            <CardHeader>
-                <div className='flex justify-between items-start'>
-                    <IconComponent name={pack.icon} className="h-8 w-8 text-accent mb-2" />
-                    {pack.badgeText && <Badge variant={pack.badgeVariant || 'default'}>{pack.badgeText}</Badge>}
-                </div>
-                <CardTitle className="text-xl font-headline">
-                    <Link href={`/packs/${pack.id}`} className="hover:text-primary transition-colors">{pack.title}</Link>
-                </CardTitle>
-            </CardHeader>
-            <CardContent className="flex-1">
-                <CardDescription>{pack.description}</CardDescription>
-            </CardContent>
-            <CardFooter>
-                <Button asChild className="w-full" variant="secondary">
-                    <Link href={`/packs/${pack.id}`}>
-                        Eliminate Operational Risk <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                </Button>
-            </CardFooter>
-        </Card>
-    );
+    if (!mounted) return null;
 
     return (
         <div className="flex flex-col min-h-screen bg-background">
@@ -164,7 +163,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                         <DropdownMenuContent className="w-56 max-h-96 overflow-y-auto">
                                             <DropdownMenuItem onSelect={() => handleCategoryChange('All')}>All Industries</DropdownMenuItem>
                                             {categories.map(category => (
-                                                <DropdownMenuItem key={category} onValueChange={() => handleCategoryChange(category)}>
+                                                <DropdownMenuItem key={category} onSelect={() => handleCategoryChange(category)}>
                                                     {category}
                                                 </DropdownMenuItem>
                                             ))}

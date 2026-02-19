@@ -27,6 +27,13 @@ type Props = {
   params: Promise<{ slug: string }>
 }
 
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+function formatDate(dateStr: string) {
+  const [year, month, day] = dateStr.split('-');
+  return `${months[parseInt(month) - 1]} ${parseInt(day)}, ${year}`;
+}
+
 export async function generateMetadata(
   { params }: Props
 ): Promise<Metadata> {
@@ -140,10 +147,10 @@ export default async function BlogPostPage({ params }: Props) {
                       {post.description}
                     </p>
 
-                    <div className="flex flex-wrap items-center gap-4 md:gap-8 text-[8px] md:text-[10px] font-black text-white/30 uppercase tracking-[0.2em] md:tracking-[0.3em] pt-4 md:pt-6">
+                    <div className="flex wrap items-center gap-4 md:gap-8 text-[8px] md:text-[10px] font-black text-white/30 uppercase tracking-[0.2em] md:tracking-[0.3em] pt-4 md:pt-6">
                        <span className="flex items-center gap-2 border-r border-white/10 pr-4 md:pr-8"><User className="w-3 h-3 text-primary" /> {post.author}</span>
                        <span className="flex items-center gap-2 border-r border-white/10 pr-4 md:pr-8"><Clock className="w-3 h-3 text-primary" /> {readingTime} MIN READ</span>
-                       <span>{new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                       <span>{formatDate(post.publishedDate)}</span>
                     </div>
                   </div>
 
