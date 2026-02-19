@@ -106,7 +106,7 @@ export default function DesignPreviewClient() {
                                         {/* TRUST: SOURCE (LemonSqueezy Badge Logic) */}
                                         <div className="flex items-center justify-center gap-2 opacity-40 grayscale hover:opacity-80 transition-all duration-500">
                                             <Globe className="w-3 h-3" />
-                                            <span className="text-[10px] font-black uppercase tracking-[0.15em]">SECURE CHECKOUT VIA LEMON SQUEEZY</span>
+                                            <span className="text-[10px] font-black uppercase tracking-[0.15em]">SECURE INTERNATIONAL CHECKOUT VIA LEMON SQUEEZY</span>
                                         </div>
 
                                         {/* SAFETY: ASSURANCE (Combined Block) */}
