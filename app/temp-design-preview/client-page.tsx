@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -16,6 +15,7 @@ import {
     Check
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 const PROOFS = [
     { label: 'Audit-Ready', icon: ShieldCheck },
@@ -26,15 +26,9 @@ const PROOFS = [
 
 const PricingCardVariation = ({ 
     title, 
-    sectionGap, 
-    clusterGap,
-    textGap,
     description 
 }: { 
     title: string, 
-    sectionGap: string, 
-    clusterGap: string,
-    textGap: string,
     description: string
 }) => (
     <div className="space-y-6">
@@ -85,12 +79,12 @@ const PricingCardVariation = ({
                     </div>
                 </div>
 
-                <div className={cn("flex flex-col items-center", sectionGap)}>
+                <div className="flex flex-col items-center">
                     <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto transition-none">
                         <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                     </div>
 
-                    <div className="flex flex-col items-center w-full">
+                    <div className="flex flex-col items-center w-full pt-8">
                         {/* PRIMARY ACTION */}
                         <div className="w-full md:w-96">
                             <Button 
@@ -101,17 +95,22 @@ const PricingCardVariation = ({
                             </Button>
                         </div>
                         
-                        {/* THE CLUSTER UNDER AUDIT */}
-                        <div className="flex flex-col items-center w-full">
-                            <div className={cn("flex items-center justify-center gap-2 opacity-40 grayscale", clusterGap)}>
-                                <Lock className="w-3 h-3" />
-                                <span className="text-[11px] font-semibold tracking-tight">Secure International Checkout</span>
-                            </div>
-                            <div className={cn("flex items-center justify-center gap-2 tracking-tight", textGap)}>
-                                <Check className="w-3.5 h-3.5 text-primary opacity-80" /> 
-                                <span className="text-[13px] text-muted-foreground font-medium">Instant Digital Delivery · Lifetime Organization License</span>
-                            </div>
+                        {/* THE HIGH-TRUST BOND (6px) */}
+                        <div className="mt-1.5 flex items-center justify-center gap-2 opacity-40 grayscale">
+                            <Lock className="w-3 h-3" />
+                            <span className="text-[11px] font-semibold tracking-tight">Secure International Checkout</span>
                         </div>
+
+                        {/* THE RELIEF GAP (12px) */}
+                        <div className="mt-3 flex items-center justify-center gap-2 tracking-tight">
+                            <Check className="w-3.5 h-3.5 text-primary opacity-80" /> 
+                            <span className="text-[13px] text-muted-foreground font-medium">Instant Digital Delivery · Lifetime Organization License</span>
+                        </div>
+
+                        {/* IMPLICIT CONSENT */}
+                        <p className="mt-6 text-[10px] text-white/20 font-medium">
+                            By purchasing, you agree to our <Link href="/terms" className="underline underline-offset-2 hover:text-white/40">Terms</Link> & <Link href="/refund" className="underline underline-offset-2 hover:text-white/40">Refund Policy</Link>
+                        </p>
                     </div>
                 </div>
             </CardContent>
@@ -139,31 +138,9 @@ export default function DesignPreviewClient() {
     return (
         <div className="space-y-32 pb-32">
             <div className="max-w-4xl mx-auto space-y-12 px-4">
-                {/* 2B BASELINE (Cluttered) */}
                 <PricingCardVariation 
-                    title="Variation 2B: Atomic Density"
-                    description="6px bond everywhere. High conversion logic but creates a heavy block of small text."
-                    sectionGap="gap-6"
-                    clusterGap="mt-1.5"
-                    textGap="mt-1.5"
-                />
-
-                {/* 2D BREATHING BOND (Recommended) */}
-                <PricingCardVariation 
-                    title="Variation 2D: The Breathing Bond"
-                    description="Asymmetric rhythm. 6px bond to button, but 12px gap between text lines. More space above button (32px)."
-                    sectionGap="gap-8"
-                    clusterGap="mt-1.5"
-                    textGap="mt-3"
-                />
-
-                {/* 2E HIERARCHICAL REASSURANCE */}
-                <PricingCardVariation 
-                    title="Variation 2E: Hierarchical Relief"
-                    description="10px bond to button, 16px between text lines. Maximum vertical space for a relaxed, high-trust feel."
-                    sectionGap="gap-10"
-                    clusterGap="mt-2.5"
-                    textGap="mt-4"
+                    title="Variation 2D (Standard): Breathing Bond + Implicit Consent"
+                    description="Finalized standard. 6px bond to button, 12px relief before fulfillment, 24px/32px arrival space. Consent moved to footer disclaimer."
                 />
             </div>
 

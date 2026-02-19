@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -29,8 +28,6 @@ import { Input } from '../components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
 import { cn } from '@/lib/utils';
-import { Checkbox } from '../components/ui/checkbox';
-import { Label } from '../components/ui/label';
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     const { toast } = useToast();
@@ -162,7 +159,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
     
     const [region, setRegion] = React.useState<'GLOBAL' | 'INDIA'>(hasUSD ? 'GLOBAL' : 'INDIA');
-    const [agreedToTerms, setAgreedToTerms] = React.useState(false);
     
     const totalChecklists = pack.checklists?.length || 0;
     const totalTasks = pack.checklists?.reduce((acc, c) => acc + c.tasks.length, 0) || 0;
@@ -271,63 +267,54 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </div>
                             </div>
 
-                            <div className="space-y-8">
-                                <div className="space-y-8 pt-4">
-                                    {/* THE VALUE PILL */}
-                                    <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto">
-                                        <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
-                                    </div>
-
-                                    <div className="flex flex-col items-center gap-8">
-                                        <div className="w-full flex flex-col items-center gap-4">
-                                            <div className="flex flex-col items-center gap-3 w-full">
-                                                <div className="flex items-center space-x-2 mb-2">
-                                                    <Checkbox 
-                                                        id="terms" 
-                                                        checked={agreedToTerms} 
-                                                        onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)} 
-                                                        className="border-white/20 data-[state=checked]:bg-primary data-[state=checked]:text-black"
-                                                    />
-                                                    <Label htmlFor="terms" className="text-[11px] text-white/40 font-medium leading-none cursor-pointer hover:text-white/60 transition-colors">
-                                                        I agree to the <Link href="/terms" target="_blank" className="underline underline-offset-2">Terms</Link> & <Link href="/refund" target="_blank" className="underline underline-offset-2">Refund Policy</Link>
-                                                    </Label>
-                                                </div>
-
-                                                {region === 'INDIA' && hasINR ? (
-                                                    <div className={cn("w-full md:w-96 transition-all duration-300", !agreedToTerms ? "opacity-40 grayscale pointer-events-none" : "hover:brightness-110")}>
-                                                        <RazorpayButton paymentId={pack.paymentId} className="w-full" />
-                                                    </div>
-                                                ) : (
-                                                    <Button 
-                                                        asChild 
-                                                        size="lg" 
-                                                        disabled={!agreedToTerms}
-                                                        className={cn(
-                                                            "w-full md:w-96 h-14 bg-primary text-black font-semibold text-base rounded-[10px] shadow-md transition-all border-none relative z-10 px-8",
-                                                            !agreedToTerms ? "opacity-40 grayscale pointer-events-none" : "hover:shadow-xl hover:brightness-105"
-                                                        )}
-                                                    >
-                                                        <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center justify-center">
-                                                            Buy Full Pack – ${pack.priceUSD} <ArrowRight className="ml-2 h-5 w-5"/>
-                                                        </Link>
-                                                    </Button>
-                                                )}
-                                            </div>
-
-                                            <div className="flex flex-col items-center gap-1.5">
-                                                <div className="flex items-center justify-center gap-2 opacity-40 grayscale">
-                                                    <Lock className="w-3 h-3" />
-                                                    <span className="text-[11px] font-semibold tracking-tight">{region === 'INDIA' ? 'Secure Payment' : 'Secure International Checkout'}</span>
-                                                </div>
-                                                <p className="text-[13px] text-muted-foreground font-medium flex items-center justify-center gap-2 tracking-tight">
-                                                    <Check className="w-3.5 h-3.5 text-primary opacity-80" /> 
-                                                    <span>Instant Digital Delivery · Lifetime Organization License</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        {region === 'INDIA' ? <IndiaMethods /> : null}
-                                    </div>
+                            <div className="flex flex-col items-center">
+                                {/* THE VALUE PILL */}
+                                <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto transition-none">
+                                    <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                                 </div>
+
+                                <div className="w-full flex flex-col items-center pt-8">
+                                    {/* PRIMARY ACTION */}
+                                    <div className="w-full md:w-96">
+                                        {region === 'INDIA' && hasINR ? (
+                                            <div className="w-full">
+                                                <RazorpayButton paymentId={pack.paymentId} className="w-full" />
+                                            </div>
+                                        ) : (
+                                            <Button 
+                                                asChild 
+                                                size="lg" 
+                                                className="w-full h-14 bg-primary text-black font-semibold text-base rounded-[10px] shadow-md hover:shadow-xl hover:brightness-105 transition-all border-none relative z-10 px-8"
+                                            >
+                                                <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center justify-center">
+                                                    Buy Full Pack – ${pack.priceUSD} <ArrowRight className="ml-2 h-5 w-5"/>
+                                                </Link>
+                                            </Button>
+                                        )}
+                                    </div>
+                                    
+                                    {/* THE HIGH-TRUST BOND (6px) */}
+                                    <div className="mt-1.5 flex items-center justify-center gap-2 opacity-40 grayscale">
+                                        <Lock className="w-3 h-3" />
+                                        <span className="text-[11px] font-semibold tracking-tight">
+                                            {region === 'INDIA' ? 'Secure Payment' : 'Secure International Checkout'}
+                                        </span>
+                                    </div>
+
+                                    {/* THE RELIEF GAP (12px) */}
+                                    <div className="mt-3 flex items-center justify-center gap-2 tracking-tight">
+                                        <Check className="w-3.5 h-3.5 text-primary opacity-80" /> 
+                                        <span className="text-[13px] text-muted-foreground font-medium">
+                                            Instant Digital Delivery · Lifetime Organization License
+                                        </span>
+                                    </div>
+
+                                    {/* IMPLICIT CONSENT (Lowest point) */}
+                                    <p className="mt-6 text-[10px] text-white/20 font-medium">
+                                        By purchasing, you agree to our <Link href="/terms" target="_blank" className="underline underline-offset-2 hover:text-white/40">Terms</Link> & <Link href="/refund" target="_blank" className="underline underline-offset-2 hover:text-white/40">Refund Policy</Link>
+                                    </p>
+                                </div>
+                                {region === 'INDIA' ? <div className="mt-8"><IndiaMethods /></div> : null}
                             </div>
                         </CardContent>
 
