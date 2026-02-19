@@ -10,16 +10,22 @@ export const electronics_showroom_pack: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/a05cb9ef-51b3-454a-a389-609b314b8338',
     category: "Retail",
-    description: "A comprehensive operational pack for electronics retailers to ensure safety, asset security, and a superior customer experience.",
+    description: "Stop demo fires, nine-figure inventory theft, and data breaches—before they destroy your showroom's reputation and asset value.",
+    heroHeadline: "Stop demo fires and nine-figure inventory theft.",
+    heroSubheadline: "Built for showroom managers who take zero-risk asset protection and electrical safety seriously.",
+    pricingUrgency: "A single lithium-ion fire or one major stock discrepancy costs 100x more than this entire system.",
+    consultingAnchor: 5000,
     icon: "tv",
-    whoIsItFor: ["Electronics Store Owners", "Showroom Managers", "Heads of Retail Operations", "Asset Protection Managers"],
+    badgeText: "High Asset Value",
+    badgeVariant: "accent",
+    whoIsItFor: ["Electronics Store Owners", "Showroom Managers", "Heads of Retail Operations", "Asset Protection Managers", "Facilities Leads"],
     sampleItems: [
-        { text: "Prevent fires and damage with meticulous demo unit safety and electrical load audits.", icon: "zap" },
-        { text: "Secure high-value assets with serialized tagging, warranty management, and inventory control.", icon: "barcode" },
-        { text: "Ensure environmental compliance with a formal e-waste handling and disposal process.", icon: "recycle" },
-        { text: "Protect customer data and prevent fraud with PCI-DSS compliant payment security.", icon: "shield-check" },
-        { text: "Enhance customer trust through a standardized and professional demo and returns process.", icon: "user-check" },
-        { text: "Optimize your back-of-house with safe and efficient stockroom organization checklists.", icon: "package" }
+        { text: "<strong>Prevent</strong> catastrophic demo fires with daily thermal checks and electrical load audits.", icon: "zap" },
+        { text: "<strong>Secure</strong> high-value inventory with serialized tagging and multi-person vault protocols.", icon: "barcode" },
+        { text: "<strong>Ensure</strong> environmental compliance with a formal, auditable E-waste handling SOP.", icon: "recycle" },
+        { text: "<strong>Protect</strong> your revenue with rigorous POS security and daily digital payment reconciliation.", icon: "shield-check" },
+        { text: "<strong>Enhance</strong> customer trust with a secure, documented repair and warranty intake process.", icon: "wrench" },
+        { text: "<strong>Optimize</strong> back-of-house safety with structured stockroom organization and hazard audits.", icon: "package" }
     ],
     checklists: [
         {
@@ -39,7 +45,7 @@ export const electronics_showroom_pack: PremiumPack = {
                 { id: "DEMO-07", description: "Verify all demo units are powered on and functional.", priority: "High", riskLevel: "Medium", consequence: "A non-working demo unit is a lost sales opportunity.", proof: "Functionality Check" },
                 { id: "DEMO-08", description: "Check for any signs of overheating on charging stations.", priority: "High", riskLevel: "High", consequence: "Overheating is a major fire risk, especially with lithium-ion batteries.", proof: "Thermal Check" },
                 { id: "DEMO-09", description: "Ensure all pricing and feature labels are correct and visible.", priority: "High", riskLevel: "Low", consequence: "Incorrect information can mislead customers and cause disputes.", proof: "Label Audit" },
-                { id: "DEMO-10", description: "Report any faulty demo units for immediate replacement.", priority: "High", riskLevel: "Medium", consequence: "A broken demo unit reflects poorly on the brand and the store.", proof: "Fault Report" },
+                { id: "DEMO-10", description: "Report any faulty demo units for immediate replacement.", priority: "High", riskLevel: "Medium", consequence: "A broken demo unit reflects poorly on the brand and the store.", proof: "Fault Report" }
             ]
         },
         {
@@ -59,7 +65,7 @@ export const electronics_showroom_pack: PremiumPack = {
                 { id: "ELEC-07", description: "Ensure all electrical panels are accessible and not blocked.", priority: "High", riskLevel: "High", consequence: "In an emergency, access to the panel is critical to shut off power.", proof: "Visual Check" },
                 { id: "ELEC-08", description: "Train staff on basic electrical safety and how to report issues.", priority: "High", riskLevel: "Medium", consequence: "Untrained staff may not recognize or report dangerous electrical hazards.", proof: "Training Log" },
                 { id: "ELEC-09", description: "Use only certified electricians for any repair work.", priority: "High", riskLevel: "High", consequence: "Improper electrical work can create hidden fire hazards.", proof: "Vendor Certification" },
-                { id: "ELEC-10", description: "Conduct an annual thermal imaging audit of electrical panels.", priority: "High", riskLevel: "High", consequence: "Identifies 'hot spots' that are invisible to the naked eye but indicate a potential fire risk.", proof: "Thermal Imaging Report" },
+                { id: "ELEC-10", description: "Conduct an annual thermal imaging audit of electrical panels.", priority: "High", riskLevel: "High", consequence: "Identifies 'hot spots' that are invisible to the naked eye but indicate a potential fire risk.", proof: "Thermal Imaging Report" }
             ]
         },
         {
@@ -79,7 +85,7 @@ export const electronics_showroom_pack: PremiumPack = {
                 { id: "ASSET-07", description: "Secure the stockroom with restricted access.", priority: "High", riskLevel: "High", consequence: "An open stockroom is the number one source of inventory shrinkage.", proof: "Access Log" },
                 { id: "ASSET-08", description: "Track items sent for repair or to other locations.", priority: "High", riskLevel: "High", consequence: "Items can easily get 'lost' in transit without a clear chain of custody.", proof: "Movement Log" },
                 { id: "ASSET-09", description: "Investigate root causes of inventory discrepancies.", priority: "High", riskLevel: "High", consequence: "Failing to investigate means the underlying problem (theft, process error) will continue.", proof: "Investigation Report" },
-                { id: "ASSET-10", description: "Manager to sign off on all inventory adjustments.", priority: "High", riskLevel: "High", consequence: "Prevents fraudulent adjustments to cover up theft.", proof: "Signed Adjustment Form" },
+                { id: "ASSET-10", description: "Manager to sign off on all inventory adjustments.", priority: "High", riskLevel: "High", consequence: "Prevents fraudulent adjustments to cover up theft.", proof: "Signed Adjustment Form" }
             ]
         },
         {
@@ -91,7 +97,7 @@ export const electronics_showroom_pack: PremiumPack = {
             icon: "circle-dollar-sign",
             tasks: [
                 { id: "POS-RECON-01", description: "Perform end-of-day reconciliation of cash, card, and digital payments against POS reports.", priority: "High", riskLevel: "High", consequence: "Unreconciled tills can hide cash theft or payment processing errors.", proof: "Reconciliation Report" },
-                { id: "POS-RECON-02", description: "Check payment terminals daily for signs of tampering.", priority: "High", riskLevel: "High", consequence: "Criminals can install skimmers to steal customer card data.", proof: "Device Inspection Log" },
+                { id: "POS-RECON-02", description: "Check payment terminals daily for signs of tampering.", priority: "High", riskLevel: "High", consequence: "Criminals may install skimmers to steal customer card data.", proof: "Device Inspection Log" },
                 { id: "POS-RECON-03", description: "Verify CCTV cameras at billing lanes are operational and have a clear view.", priority: "High", riskLevel: "High", consequence: "Provides crucial evidence in case of cash disputes or fraudulent transactions.", proof: "CCTV Check Log" },
                 { id: "POS-RECON-04", description: "Require dual approval from a manager for all refunds.", priority: "High", riskLevel: "High", consequence: "A common method for internal fraud is processing fake refunds.", proof: "Refund Approval Log" },
                 { id: "POS-RECON-05", description: "Securely store and transport daily cash deposits.", priority: "High", riskLevel: "High", consequence: "Reduces the risk of robbery or internal theft of cash.", proof: "Cash Deposit Log" },
@@ -99,7 +105,7 @@ export const electronics_showroom_pack: PremiumPack = {
                 { id: "POS-RECON-07", description: "Verify cashier logins and logouts for each shift.", priority: "High", riskLevel: "Medium", consequence: "Ensures accountability for all transactions processed on a specific till.", proof: "Shift Log" },
                 { id: "POS-RECON-08", description: "Report any cash discrepancies immediately.", priority: "High", riskLevel: "High", consequence: "A small discrepancy could be a test for a larger theft.", proof: "Discrepancy Report" },
                 { id: "POS-RECON-09", description: "Follow PCI DSS guidelines for all card transactions.", priority: "High", riskLevel: "High", consequence: "Non-compliance can lead to massive fines and reputational damage.", proof: "PCI Compliance Certificate" },
-                { id: "POS-RECON-10", description: "Use counterfeit detection on all cash transactions.", priority: "High", riskLevel: "High", consequence: "Accepting fake currency is a direct financial loss.", proof: "Counterfeit Check" },
+                { id: "POS-RECON-10", description: "Use counterfeit detection on all cash transactions.", priority: "High", riskLevel: "High", consequence: "Accepting fake currency is a direct financial loss.", proof: "Counterfeit Check" }
             ]
         },
         {
@@ -116,10 +122,10 @@ export const electronics_showroom_pack: PremiumPack = {
                 { id: "EWaste-04", description: "Obtain and file disposal/destruction certificates from the vendor.", priority: "High", riskLevel: "High", consequence: "This is the legal proof that your e-waste was handled correctly.", proof: "Disposal Certificates" },
                 { id: "EWaste-05", description: "Train staff on identifying and segregating e-waste correctly.", priority: "Medium", riskLevel: "Medium", consequence: "Untrained staff may incorrectly dispose of hazardous materials.", proof: "Training Log" },
                 { id: "EWaste-06", description: "Securely wipe data from all devices before disposal.", priority: "High", riskLevel: "High", consequence: "Failure to wipe data can lead to major data breaches from discarded hard drives.", proof: "Data Wipe Log" },
-                { id: "EWaste-07", description: "Store e-waste in a secure, designated area.", priority: "High", riskLevel: "Medium", consequence: "Chemical spills, unauthorized access, toxic fumes.", proof: "Photo of secured chemical store.", location: "Chemical Storage" },
+                { id: "EWaste-07", description: "Store e-waste in a secure, designated area.", priority: "High", riskLevel: "Medium", consequence: "Prevents theft or scavenging of discarded electronics.", proof: "Storage Area Check" },
                 { id: "EWaste-08", description: "Follow all local environmental regulations for e-waste.", priority: "High", riskLevel: "High", consequence: "Non-compliance can result in large fines and brand damage.", proof: "Regulatory Checklist" },
                 { id: "EWaste-09", description: "Schedule regular pickups with the e-waste vendor.", priority: "High", riskLevel: "Medium", consequence: "Prevents accumulation of hazardous materials on site.", proof: "Pickup Schedule" },
-                { id: "EWaste-10", description: "Audit the e-waste process annually for compliance.", priority: "High", riskLevel: "High", consequence: "Ensures the process remains compliant with changing regulations.", proof: "Annual Audit Report" },
+                { id: "EWaste-10", description: "Audit the e-waste process annually for compliance.", priority: "High", riskLevel: "High", consequence: "Ensures the process remains compliant with changing regulations.", proof: "Annual Audit Report" }
             ]
         },
         {
@@ -130,56 +136,56 @@ export const electronics_showroom_pack: PremiumPack = {
             summary: "Manages customer repairs and warranty claims efficiently and professionally.",
             icon: "wrench",
             tasks: [
-                { id: "IT-POS-01", description: "Log every repair request with customer details and item serial number.", priority: "High", riskLevel: "High", consequence: "Poor record-keeping can lead to lost items or disputes with customers.", proof: "Repair Log" },
-                { id: "IT-POS-02", description: "Track the status of all items sent to authorized service centers.", priority: "High", riskLevel: "Medium", consequence: "Inability to provide customers with updates on their repair status.", proof: "Service Center Tracking Sheet" },
-                { id: "IT-POS-03", description: "Process warranty claims with manufacturers according to their policies.", priority: "High", riskLevel: "High", consequence: "Failure to follow policy can lead to claim rejection and financial loss.", proof: "Warranty Claim Forms" },
-                { id: "IT-POS-04", description: "Communicate repair status updates to customers.", priority: "High", riskLevel: "Medium", consequence: "Lack of communication is a major source of customer dissatisfaction.", proof: "Communication Log" },
-                { id: "IT-POS-05", description: "Inspect repaired items before returning them to the customer.", priority: "High", riskLevel: "High", consequence: "Returning an item that is still faulty creates a very poor customer experience.", proof: "Final Inspection Checklist" },
-                { id: "IT-POS-06", description: "Obtain customer sign-off upon collection of repaired item.", priority: "High", riskLevel: "Medium", consequence: "Protects against later claims that the item was not returned or was still faulty.", proof: "Collection Form" },
-                { id: "IT-POS-07", description: "Manage inventory of spare parts for common repairs.", priority: "High", riskLevel: "Medium", consequence: "Lack of spares leads to longer repair times.", proof: "Spare Parts Inventory" },
-                { id: "IT-POS-08", description: "Provide customer with a clear timeline for repairs.", priority: "High", riskLevel: "Low", consequence: "Unclear timelines lead to customer frustration and repeated follow-up calls.", proof: "Repair Estimate Form" },
-                { id: "IT-POS-09", description: "Process payment for repairs accurately.", priority: "High", riskLevel: "Medium", consequence: "Billing errors can lead to disputes.", proof: "Invoice" },
-                { id: "IT-POS-10", description: "Log all repair details for warranty and history purposes.", priority: "High", riskLevel: "Medium", consequence: "Provides a valuable service history for the item.", proof: "Service History" }
+                { id: "WRM-01", description: "Log every repair request with customer details and item serial number.", priority: "High", riskLevel: "High", consequence: "Poor record-keeping can lead to lost items or disputes with customers.", proof: "Repair Log" },
+                { id: "WRM-02", description: "Track the status of all items sent to authorized service centers.", priority: "High", riskLevel: "Medium", consequence: "Inability to provide customers with updates on their repair status.", proof: "Service Center Tracking Sheet" },
+                { id: "WRM-03", description: "Process warranty claims with manufacturers according to their policies.", priority: "High", riskLevel: "High", consequence: "Failure to follow policy can lead to claim rejection and financial loss.", proof: "Warranty Claim Forms" },
+                { id: "WRM-04", description: "Communicate repair status updates to customers.", priority: "High", riskLevel: "Medium", consequence: "Lack of communication is a major source of customer dissatisfaction.", proof: "Communication Log" },
+                { id: "WRM-05", description: "Inspect repaired items before returning them to the customer.", priority: "High", riskLevel: "High", consequence: "Returning an item that is still faulty creates a very poor customer experience.", proof: "Final Inspection Checklist" },
+                { id: "WRM-06", description: "Obtain customer sign-off upon collection of repaired item.", priority: "High", riskLevel: "Medium", consequence: "Protects against later claims that the item was not returned or was still faulty.", proof: "Collection Form" },
+                { id: "WRM-07", description: "Manage inventory of spare parts for common repairs.", priority: "High", riskLevel: "Medium", consequence: "Lack of spares leads to longer repair times.", proof: "Spare Parts Inventory" },
+                { id: "WRM-08", description: "Provide customer with a clear timeline for repairs.", priority: "High", riskLevel: "Low", consequence: "Unclear timelines lead to customer frustration and repeated follow-up calls.", proof: "Repair Estimate Form" },
+                { id: "WRM-09", description: "Process payment for repairs accurately.", priority: "High", riskLevel: "Medium", consequence: "Billing errors can lead to customer disputes.", proof: "Invoice" },
+                { id: "WRM-10", description: "Log all repair details for warranty and history purposes.", priority: "High", riskLevel: "Medium", consequence: "A detailed service history is valuable for diagnosing future problems.", proof: "Service History" }
             ]
         },
         {
-            title: "Stockroom Management & Safety",
+            title: "Stockroom Organization",
             department: "Inventory",
             frequency: "Weekly",
             role: "Stockroom Manager",
             summary: "Ensures the stockroom is organized, efficient, and safe.",
             icon: "package",
             tasks: [
-                { id: "STOCK-01", description: "Ensure all aisles are clear and unobstructed.", priority: "High", riskLevel: "High", consequence: "Blocked aisles are a major trip hazard and fire risk.", proof: "Weekly Inspection Log" },
-                { id: "STOCK-02", description: "Store heavy items on lower shelves and lighter items on top.", priority: "High", riskLevel: "High", consequence: "Prevents crushing injuries from falling items.", proof: "Visual Audit" },
-                { id: "STOCK-03", description: "Follow FIFO (First-In, First-Out) for all stock.", priority: "High", riskLevel: "Medium", consequence: "Prevents old stock from becoming obsolete and unsellable.", proof: "FIFO Audit" },
-                { id: "STOCK-04", description: "Maintain a clean and dust-free environment.", priority: "High", riskLevel: "Medium", consequence: "Dust can damage sensitive electronics.", proof: "Cleaning Log" },
-                { id: "STOCK-05", description: "Check that all fire suppression systems and extinguishers are clear.", priority: "High", riskLevel: "High", consequence: "An obstructed sprinkler can fail to control a fire.", proof: "Safety Inspection Log" },
-                { id: "STOCK-06", description: "Ensure adequate lighting in all areas of the stockroom.", priority: "High", riskLevel: "Medium", consequence: "Poor lighting can lead to picking errors and accidents.", proof: "Lighting Check" },
-                { id: "STOCK-07", description: "Restrict stockroom access to authorized personnel only.", priority: "High", riskLevel: "High", consequence: "The number one way to prevent internal theft.", proof: "Access Control Log" },
-                { id: "STOCK-08", description: "Use appropriate MHE (Material Handling Equipment) for moving heavy items.", priority: "High", riskLevel: "High", consequence: "Improper lifting is a leading cause of back injuries.", proof: "MHE Usage Log" },
-                { id: "STOCK-09", description: "Maintain a logical bin location system.", priority: "High", riskLevel: "Low", consequence: "A disorganized stockroom makes it slow and difficult to find items.", proof: "Bin Location Map" },
-                { id: "STOCK-10", description: "Conduct regular pest control checks.", priority: "High", riskLevel: "High", consequence: "Pests can damage packaging and products.", proof: "Pest Control Report" }
+                { id: "SO-01", description: "Ensure all items are stored in their designated bins or locations.", priority: "High", riskLevel: "Medium", consequence: "A disorganized stockroom makes order picking slow and inefficient.", proof: "Bin Audit" },
+                { id: "SO-02", description: "Keep all aisles and walkways clear of obstructions.", priority: "High", riskLevel: "High", consequence: "Blocked aisles are a major safety hazard and can cause serious injuries.", proof: "Visual Inspection" },
+                { id: "SO-03", description: "Check for any damaged or open boxes and report them.", priority: "High", riskLevel: "High", consequence: "Damaged stock leads to financial loss and may be a safety hazard.", proof: "Damage Report" },
+                { id: "SO-04", description: "Implement FIFO (First-In, First-Out) stock rotation.", priority: "High", riskLevel: "Medium", consequence: "Failure to use FIFO can lead to older models becoming obsolete and unsellable.", proof: "Stock rotation audit" },
+                { id: "SO-05", description: "Ensure the stockroom is locked and access is restricted.", priority: "High", riskLevel: "High", consequence: "The stockroom is a primary target for internal and external theft.", proof: "Access log" },
+                { id: "SO-06", description: "Maintain a clean and dust-free environment.", priority: "High", riskLevel: "Medium", consequence: "Dust and dirt can damage sensitive electronic components.", proof: "Cleaning log" },
+                { id: "SO-07", description: "Check for any pest activity.", priority: "High", riskLevel: "High", consequence: "Pests can chew through wiring and packaging, causing significant damage.", proof: "Pest control log" },
+                { id: "SO-08", description: "Ensure proper lighting in all areas of the stockroom.", priority: "High", riskLevel: "Medium", consequence: "Poor lighting increases the risk of accidents and picking errors.", proof: "Lighting check" },
+                { id: "SO-09", description: "Organize items by brand, category, or SKU for easy picking.", priority: "High", riskLevel: "Medium", consequence: "A logical layout is key to fast and accurate order fulfillment.", proof: "Organization plan" },
+                { id: "SO-10", description: "Conduct a weekly safety audit of the stockroom.", priority: "High", riskLevel: "High", consequence: "Proactively identifies and mitigates safety risks like unsafe stacking or fire hazards.", proof: "Safety audit report" }
             ]
         },
         {
-            title: "Sales & Customer Service Process",
-            department: "Sales",
-            frequency: "Ongoing",
-            role: "Sales Manager",
-            summary: "A process to ensure a professional and effective sales experience.",
-            icon: "user-check",
+            title: "Fire Safety Audit",
+            department: "Safety",
+            frequency: "Monthly",
+            role: "Safety Officer",
+            summary: "Regular audit to ensure fire prevention and suppression systems are functional.",
+            icon: "siren",
             tasks: [
-                { id: "SALES-01", description: "Train staff on the features and benefits of all key products.", priority: "High", riskLevel: "Medium", consequence: "Staff who can't answer questions seem unprofessional and lose sales.", proof: "Training Records" },
-                { id: "SALES-02", description: "Use a structured sales process (e.g., greet, qualify, demo, close).", priority: "High", riskLevel: "Medium", consequence: "An inconsistent sales process leads to inconsistent results.", proof: "Sales Process Document" },
-                { id: "SALES-03", description: "Handle customer queries and complaints effectively.", priority: "High", riskLevel: "High", consequence: "A poorly handled complaint can lead to negative online reviews.", proof: "Complaint Handling SOP" },
-                { id: "SALES-04", description: "Offer and explain extended warranties and accessories.", priority: "High", riskLevel: "Medium", consequence: "A major source of additional revenue and profit margin.", proof: "Upsell Training" },
-                { id: "SALES-05", description: "Maintain a clean and professional appearance.", priority: "High", riskLevel: "Low", consequence: "Staff appearance is part of the brand image.", proof: "Grooming Policy" },
-                { id: "SALES-06", description: "Follow up with customers after a high-value purchase.", priority: "High", riskLevel: "Low", consequence: "Builds customer loyalty and can lead to future sales.", proof: "Follow-up Log" },
-                { id: "SALES-07", description: "Maintain a customer database for future marketing.", priority: "High", riskLevel: "Medium", consequence: "Allows for targeted marketing and building long-term relationships.", proof: "CRM System" },
-                { id: "SALES-08", description: "Track sales performance against targets.", priority: "High", riskLevel: "High", consequence: "Allows for performance management and identification of top performers.", proof: "Sales Dashboard" },
-                { id: "SALES-09", description: "Conduct regular sales team meetings.", priority: "High", riskLevel: "Medium", consequence: "A key way to share best practices and motivate the team.", proof: "Meeting Minutes" },
-                { id: "SALES-10", description: "Role-play different customer scenarios with staff.", priority: "High", riskLevel: "Medium", consequence: "Builds confidence and prepares staff for difficult customer interactions.", proof: "Role-play Log" }
+                { id: "FSA-01", description: "Conduct monthly inspection of all fire extinguishers (pressure, expiry, accessibility).", priority: "High", riskLevel: "High", consequence: "A non-functional extinguisher is useless in a fire.", proof: "Extinguisher log" },
+                { id: "FSA-02", description: "Test smoke detectors and fire alarms.", priority: "High", riskLevel: "High", consequence: "Failure to get an early warning can be fatal.", proof: "Alarm test log" },
+                { id: "FSA-03", description: "Ensure all emergency exits are clear and accessible.", priority: "High", riskLevel: "High", consequence: "A blocked exit can trap people in a fire.", proof: "Exit inspection log" },
+                { id: "FSA-04", description: "Check that all staff are trained on fire evacuation procedures.", priority: "High", riskLevel: "High", consequence: "Untrained staff can cause panic and confusion during an evacuation.", proof: "Training records" },
+                { id: "FSA-05", description: "Maintain a log of all fire safety audits for regulatory inspection.", priority: "High", riskLevel: "High", consequence: "Failure to produce records can lead to fines and legal action.", proof: "Master audit file" },
+                { id: "FSA-06", description: "Check emergency lighting functionality.", priority: "High", riskLevel: "High", consequence: "In a power outage during a fire, this is the only way to see the exit path.", proof: "Lighting test log" },
+                { id: "FSA-07", description: "Ensure fire safety signage is visible and correct.", priority: "High", riskLevel: "High", consequence: "People will not know where to go in an emergency.", proof: "Signage audit" },
+                { id: "FSA-08", description: "Conduct a fire drill at least once every six months.", priority: "High", riskLevel: "High", consequence: "Drills are essential for ensuring the evacuation plan actually works.", proof: "Drill report" },
+                { id: "FSA-09", description: "Ensure sprinkler system is inspected annually by a certified vendor.", priority: "High", riskLevel: "High", consequence: "The primary fire suppression system must be reliable.", proof: "Vendor certificate" },
+                { id: "FSA-10", description: "Review and update the fire emergency plan annually.", priority: "High", riskLevel: "High", consequence: "An outdated plan can be ineffective.", proof: "Updated plan" }
             ]
         }
     ]
