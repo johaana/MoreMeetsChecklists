@@ -10,19 +10,23 @@ export const jewelry_and_luxury_retail: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/bf8a35c9-991d-4471-95f6-e0c7ce285981',
     category: "Retail",
-    description: "A specialized toolkit for high-value retail, focusing on vault security, inventory control, and preventing sophisticated fraud.",
+    description: "Stop sophisticated heists, high-value 'swap' thefts, and fraud—before they destroy your brand's standing and financial stability.",
+    heroHeadline: "Stop sophisticated heists and high-value 'swap' thefts.",
+    heroSubheadline: "Built for luxury store owners and asset protection directors who take zero-risk security and fraud prevention seriously.",
+    pricingUrgency: "A single 'swap' theft or one major security breach costs 1,000x more than this entire system.",
+    consultingAnchor: 5000,
     icon: "gem",
     badgeText: "High Value",
     badgeVariant: "accent",
     bestseller: true,
-    whoIsItFor: ["Jewelry Store Owners", "Luxury Brand Managers", "Asset Protection Directors", "Heads of Retail"],
+    whoIsItFor: ["Jewelry Store Owners", "Luxury Brand Managers", "Asset Protection Directors", "Heads of Retail", "Security Managers"],
     sampleItems: [
-        { text: "Enforce Fort-Knox level security with vault access control and dual verification SOPs.", icon: "lock" },
-        { text: "Protect your most valuable assets with display case and overnight security protocols.", icon: "shield" },
-        { text: "Prevent fraud in high-value transactions with rigorous payment verification steps.", icon: "circle-dollar-sign" },
-        { text: "Eliminate swap theft and inventory loss with serialized item and watch management.", icon: "watch" },
-        { text: "Ensure regulatory compliance with robust customer verification (KYC) processes.", icon: "user-check" },
-        { text: "Build customer trust with a secure and transparent repair and service intake process.", icon: "wrench" }
+        { text: "<strong>Enforce</strong> Fort-Knox level security with vault access control and dual verification SOPs.", icon: "lock" },
+        { text: "<strong>Protect</strong> your most valuable assets with display case and overnight security protocols.", icon: "shield" },
+        { text: "<strong>Prevent</strong> fraud in high-value transactions with rigorous payment and ID verification steps.", icon: "circle-dollar-sign" },
+        { text: "<strong>Eliminate</strong> swap theft and inventory loss with serialized item and watch management.", icon: "watch" },
+        { text: "<strong>Ensure</strong> regulatory compliance with robust customer verification (KYC) and AML processes.", icon: "user-check" },
+        { text: "<strong>Build</strong> customer trust with a secure and transparent repair and service intake process.", icon: "wrench" }
     ],
     checklists: [
         {
@@ -35,9 +39,9 @@ export const jewelry_and_luxury_retail: PremiumPack = {
             tasks: [
                 { id: "JLR-SEC-01", description: "Perform dual-person vault opening and closing procedure.", priority: "High", riskLevel: "High", consequence: "Prevents single-person access to high-value inventory, drastically reducing the risk of internal theft.", proof: "Vault Access Log" },
                 { id: "JLR-SEC-02", description: "Log deactivation and activation of the main security alarm.", priority: "High", riskLevel: "High", consequence: "Creates a clear audit trail for any after-hours security events and ensures the store is never left unprotected.", proof: "Alarm Log" },
-                { id: "JLR-SEC-03", description: "Conduct a full inventory count of all display cases at opening and closing.", priority: "High", riskLevel: "High", consequence: "Immediately identifies any missing items, allowing for rapid investigation before evidence is lost or CCTV footage is overwritten.", proof: "Display Inventory Sheet" },
-                { id: "JLR-SEC-04", description: "Verify all CCTV cameras are recording and have unobstructed views.", priority: "High", riskLevel: "High", consequence: "Ensures that in the event of a robbery or theft, there is clear, usable evidence for law enforcement and insurance claims.", proof: "CCTV Check Log" },
-                { id: "JLR-SEC-05", description: "Test silent panic alarms daily before opening.", priority: "High", riskLevel: "High", consequence: "Guarantees that staff can silently alert security or police during a robbery without escalating the situation.", proof: "Panic Alarm Test Log" },
+                { id: "JLR-SEC-03", description: "Conduct a full inventory count of all display cases at opening and closing.", priority: "High", riskLevel: "High", consequence: "Immediately identifies any missing items, allowing for rapid investigation before evidence is lost.", proof: "Display Inventory Sheet" },
+                { id: "JLR-SEC-04", description: "Verify all CCTV cameras are recording and have unobstructed views.", priority: "High", riskLevel: "High", consequence: "Ensures clear, usable evidence for law enforcement and insurance claims in case of a robbery.", proof: "CCTV Check Log" },
+                { id: "JLR-SEC-05", description: "Test silent panic alarms daily before opening.", priority: "High", riskLevel: "High", consequence: "Guarantees staff can silently alert security or police during a robbery without escalating the situation.", proof: "Panic Alarm Test Log" },
                 { id: "JLR-SEC-06", description: "Check entry/exit logs from previous day.", priority: "Medium", riskLevel: "Medium", consequence: "Helps identify any unusual after-hours activity.", proof: "Log Review" },
                 { id: "JLR-SEC-07", description: "Confirm all display cases are locked and secure.", priority: "High", riskLevel: "High", consequence: "An unlocked case is an easy target for a smash-and-grab theft.", proof: "Visual Confirmation" },
                 { id: "JLR-SEC-08", description: "Ensure all staff have their IDs visible.", priority: "Medium", riskLevel: "Low", consequence: "Helps quickly identify any unauthorized individuals on the floor.", proof: "Visual Check" },
@@ -93,7 +97,7 @@ export const jewelry_and_luxury_retail: PremiumPack = {
             summary: "Daily checks to ensure physical security measures are in place and functional.",
             icon: "lock",
             tasks: [
-                { id: "JLR-DISP-01", description: "Physically check the locks on every display case at the end of the day.", priority: "High", riskLevel: "High", consequence: "An unlocked case is the single biggest vulnerability to a simple \"smash and grab\" theft.", proof: "Lock Check Log" },
+                { id: "JLR-DISP-01", description: "Physically check the locks on every display case at the end of the day.", priority: "High", riskLevel: "High", consequence: "An unlocked case is the single biggest vulnerability to a simple 'smash and grab' theft.", proof: "Lock Check Log" },
                 { id: "JLR-DISP-02", description: "Verify the vault door is properly locked and secured after closing.", priority: "High", riskLevel: "High", consequence: "The final and most critical security layer; failure here is catastrophic.", proof: "Vault Security Log" },
                 { id: "JLR-DISP-03", description: "Test motion sensors and panic buttons weekly.", priority: "High", riskLevel: "High", consequence: "A malfunctioning sensor or button provides a false sense of security and will fail when needed most.", proof: "Alarm Test Log" },
                 { id: "JLR-DISP-04", description: "Ensure all keys are accounted for and stored securely.", priority: "High", riskLevel: "High", consequence: "A missing key can compromise the entire store's security.", proof: "Key Log" },
@@ -142,7 +146,7 @@ export const jewelry_and_luxury_retail: PremiumPack = {
                 { id: "CV-07", description: "Record customer details accurately for future communication.", priority: "High", riskLevel: "Medium", consequence: "Critical for building a long-term client relationship.", proof: "CRM Entry" },
                 { id: "CV-08", description: "Check against any internal watchlists for known fraudsters.", priority: "High", riskLevel: "High", consequence: "Prevents repeat fraud attempts by known individuals.", proof: "Watchlist Check" },
                 { id: "CV-09", description: "For corporate purchases, verify business registration details.", priority: "High", riskLevel: "High", consequence: "Ensures the purchase is legitimate and authorized by the company.", proof: "Business Document Copy" },
-                { id: "CV-10", description: "Retain verification documents securely and in compliance with privacy laws.", priority: "High", riskLevel: "High", consequence: "Mishandling high-net-worth individual data is a major legal risk.", proof: "Secure Storage Log" }
+                { id: "CV-10", description: "Retain verification documents securely and in compliance with privacy laws.", priority: "High", riskLevel: "High", consequence: "Mishandling customer data can lead to privacy violations and fines.", proof: "Secure Storage Log" }
             ]
         },
         {
@@ -175,7 +179,7 @@ export const jewelry_and_luxury_retail: PremiumPack = {
             tasks: [
                 { id: "STSP-01", description: "Conduct quarterly training on robbery response procedures.", priority: "High", riskLevel: "High", consequence: "In a robbery, untrained staff can panic and make dangerous mistakes.", proof: "Training Attendance Sheet" },
                 { id: "STSP-02", description: "Train staff to identify common signs of suspicious customer behavior.", priority: "High", riskLevel: "High", consequence: "Staff are the first line of defense; if they can't spot a threat, the store is vulnerable.", proof: "Training Module" },
-                { id: "STSP-03", description: "Drill staff on the correct procedure for showing high-value items to customers.", priority: "High", riskLevel: "High", consequence: "Prevents common theft tactics like \"swap\" or \"grab and run\".", proof: "Drill Log" },
+                { id: "STSP-03", description: "Drill staff on the correct procedure for showing high-value items to customers.", priority: "High", riskLevel: "High", consequence: "Prevents common theft tactics like 'swap' or 'grab and run'.", proof: "Drill Log" },
                 { id: "STSP-04", description: "Review recent security incidents or attempts with the team.", priority: "Medium", riskLevel: "Medium", consequence: "Sharing information helps everyone learn and stay vigilant.", proof: "Meeting Minutes" },
                 { id: "STSP-05", description: "Test staff knowledge with quizzes on security protocols.", priority: "Medium", riskLevel: "Medium", consequence: "Verifies that training has been understood and retained.", proof: "Quiz Results" },
                 { id: "STSP-06", description: "Train staff on the use of panic buttons.", priority: "High", riskLevel: "High", consequence: "Ensures a rapid and silent call for help during an emergency.", proof: "Training Log" },
@@ -207,7 +211,5 @@ export const jewelry_and_luxury_retail: PremiumPack = {
         }
     ]
 };
-
-  
 
     
