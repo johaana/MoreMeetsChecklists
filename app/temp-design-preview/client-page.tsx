@@ -144,25 +144,25 @@ export default function DesignPreviewClient() {
                     </p>
                 </div>
 
-                {/* VARIATION 1: BALANCED (THE CURRENT GOLD STANDARD) */}
+                {/* VARIATION 1: BALANCED */}
                 <PricingCardVariation 
-                    title="Variation 1: The Baseline (Balanced Institutional)"
+                    title="Variation 1: The Balanced (12px Cluster)"
                     contentGap="space-y-10"
                     sectionGap="gap-8"
                     buttonGap="gap-3"
                 />
 
-                {/* VARIATION 2: UNIFIED DECISION (SLIGHTLY TIGHTER) */}
+                {/* VARIATION 2: UNIFIED (BEST FOR CONVERSION) */}
                 <PricingCardVariation 
-                    title="Variation 2: Unified Decision (Tight Decision Zone)"
+                    title="Variation 2: Unified Decision (8px Cluster)"
                     contentGap="space-y-8"
                     sectionGap="gap-6"
                     buttonGap="gap-2"
                 />
 
-                {/* VARIATION 3: ASSET FOCUS (SLIGHTLY MORE BREATHING ROOM) */}
+                {/* VARIATION 3: COMPACT ASSET (16px CLUSTER) */}
                 <PricingCardVariation 
-                    title="Variation 3: Asset Focus (Pro Rhythm)"
+                    title="Variation 3: Asset Focus (16px Cluster - 10% Compact)"
                     contentGap="space-y-12"
                     sectionGap="gap-8"
                     buttonGap="gap-4"
