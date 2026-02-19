@@ -211,9 +211,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             
                             <div className="w-full flex flex-col items-center gap-4">
                                 <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Resolution Protocol</Badge>
+                                <h2 className="text-3xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-[1.1]">
+                                    ELIMINATE OPERATIONAL RISK
+                                </h2>
                                 <div className="flex items-center gap-2">
                                     <Shield className="w-4 h-4 text-white/40" />
-                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">INSTITUTIONAL COMPLIANCE GRADE</span>
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic">INSTITUTIONAL COMPLIANCE GRADE</span>
                                 </div>
                             </div>
                         </CardHeader>
@@ -236,43 +239,41 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </div>
 
                             <div className="space-y-8">
-                                <div>
-                                    <p className="text-7xl font-black text-primary-text tracking-tighter">
-                                        {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
-                                    </p>
-                                    <div className="flex flex-col items-center gap-1 mt-2">
-                                        <div className="flex items-center gap-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                                            <p className="text-[10px] text-primary font-black uppercase tracking-[0.15em] leading-none">
-                                                LIFETIME ORGANIZATION LICENSE
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div className="space-y-6 pt-4">
                                     {/* THE VALUE PILL - ELITE TRACKED */}
                                     <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto transition-none">
                                         <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                                     </div>
 
-                                    {region === 'INDIA' && hasINR ? (
-                                        <div className="w-full flex flex-col items-center gap-6">
-                                            <div className="w-full razorpay-container-wrapper">
-                                                <RazorpayButton paymentId={pack.paymentId} className="w-full" />
+                                    <div className="flex flex-col items-center gap-4">
+                                        {region === 'INDIA' && hasINR ? (
+                                            <div className="w-full flex flex-col items-center gap-6">
+                                                <div className="w-full md:w-96 razorpay-container-wrapper hover:brightness-95 hover:-translate-y-0.5 active:translate-y-0 active:brightness-90 transition-all duration-200 ease-in-out">
+                                                    <RazorpayButton paymentId={pack.paymentId} className="w-full" />
+                                                </div>
+                                                <IndiaMethods />
                                             </div>
-                                            <IndiaMethods />
+                                        ) : (
+                                            <div className="w-full flex flex-col items-center gap-6">
+                                                <Button asChild size="lg" className="w-full md:w-96 h-16 bg-primary text-black font-bold text-lg rounded-sm shadow-md hover:shadow-xl hover:brightness-95 hover:-translate-y-0.5 active:translate-y-0 active:brightness-90 transition-all duration-200 ease-in-out border-none relative z-10">
+                                                    <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center justify-center">
+                                                        Buy Full Pack – ${pack.priceUSD} <ArrowRight className="ml-2 h-5 w-5"/>
+                                                    </Link>
+                                                </Button>
+                                                <GlobalMethods />
+                                            </div>
+                                        )}
+
+                                        {/* FRICTION DISSOLUTION MICROCOPY */}
+                                        <div className="space-y-1">
+                                            <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest flex items-center justify-center gap-2">
+                                                <Check className="w-3 h-3 text-primary" /> Instant Digital Delivery
+                                            </p>
+                                            <p className="text-[10px] text-white/30 uppercase tracking-widest">
+                                                Lifetime Organization License
+                                            </p>
                                         </div>
-                                    ) : (
-                                        <div className="w-full flex flex-col items-center gap-6">
-                                            <Button asChild size="lg" className="w-full md:w-96 h-16 bg-primary text-black font-black uppercase italic text-base rounded-sm shadow-2xl hover:scale-105 transition-all active:scale-95 border-none">
-                                                <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center justify-center">
-                                                    ELIMINATE OPERATIONAL RISK <ArrowRight className="ml-2 h-5 w-5"/>
-                                                </Link>
-                                            </Button>
-                                            <GlobalMethods />
-                                        </div>
-                                    )}
+                                    </div>
                                 </div>
                             </div>
                         </CardContent>
