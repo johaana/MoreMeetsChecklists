@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -12,7 +13,6 @@ import {
     FileSpreadsheet, 
     Infinity, 
     Lock,
-    Download,
     Check
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -27,24 +27,24 @@ const PROOFS = [
 export default function DesignPreviewClient() {
     return (
         <div className="space-y-24 pb-32">
-            {/* CONVERSION PSYCHOLOGY AUDIT SECTION */}
+            {/* INSTITUTIONAL AUTHORITY AUDIT SECTION */}
             <div className="max-w-4xl mx-auto space-y-8 px-4">
                 <div className="p-8 border-l-4 border-primary bg-primary/5 rounded-r-xl space-y-4">
-                    <h2 className="text-2xl font-black text-primary uppercase italic tracking-tight">The Institutional Restraint Upgrade</h2>
+                    <h2 className="text-2xl font-black text-primary uppercase italic tracking-tight">The Institutional Authority Standard</h2>
                     <div className="grid md:grid-cols-2 gap-8 text-sm text-secondary-text leading-relaxed">
                         <div className="space-y-4">
-                            <p><strong className="text-white">Restrained Typography:</strong> Moving from ALL CAPS to Title Case (`Buy Full Pack – $79`) removes "salesy" vibration. It signals a sophisticated, transactional outcome rather than an emotional marketing pitch.</p>
-                            <p><strong className="text-white">The Transaction Trigger:</strong> Using the word "Buy" explicitly defines the action. In high-stakes B2B, clarity beats elegance every time. The user knows exactly what happens next.</p>
+                            <p><strong className="text-white">Controlled Feedback:</strong> We move away from "marketing glows" toward a disciplined 2px lift and 5% darken. This signals that the system is reactive but professional—essential for high-trust B2B transactions.</p>
+                            <p><strong className="text-white">Title Case Transaction:</strong> `Buy Full Pack – $79` replaces all-caps urgency. It feels like an entry in a ledger or a procurement line item, which institutional buyers find inherently more credible.</p>
                         </div>
                         <div className="space-y-4">
-                            <p><strong className="text-white">Friction Reduction:</strong> The microcopy below the button specifically targets the biggest B2B hesitations: "When do I get it?" and "How long can I use it?"</p>
-                            <p><strong className="text-white">Target Lock Branding:</strong> The brackets remain to anchor the button in the world of precision tools and operational systems.</p>
+                            <p><strong className="text-white">Friction Dissolution:</strong> The `✔ Instant Digital Delivery` microcopy directly answers the primary operational concern: "How fast can we deploy?"</p>
+                            <p><strong className="text-white">Tactile Feedback:</strong> The 1px "press" on active state provides the user with clear confirmation of intent, mimicking the feedback of industrial hardware switches.</p>
                         </div>
                     </div>
                 </div>
 
                 <div className="relative group/card">
-                    {/* THE TARGET LOCK CARD (CONVERSION UPGRADED) */}
+                    {/* THE INSTITUTIONAL TERMINAL */}
                     <Card className="w-full max-w-[650px] mx-auto bg-surface-card border-white/10 shadow-[0_0_60px_-12px_rgba(0,0,0,0.5)] flex flex-col h-full overflow-hidden relative">
                         <div className="absolute top-6 right-6 z-20">
                             <div className="bg-accent/10 border border-accent/20 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-sm backdrop-blur-sm">
@@ -85,23 +85,22 @@ export default function DesignPreviewClient() {
 
                             <div className="space-y-8">
                                 <div className="space-y-6">
-                                    <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto">
+                                    {/* ELITE TRACKED BENEFIT */}
+                                    <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto transition-none">
                                         <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                                     </div>
 
                                     <div className="flex flex-col items-center gap-4">
-                                        <div className="relative group/btn w-full md:w-96">
-                                            {/* TARGET LOCK BRACKETS */}
-                                            <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:-top-2 group-hover/btn:-left-2 transition-all duration-300" />
-                                            <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:-top-2 group-hover/btn:-right-2 transition-all duration-300" />
-                                            <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:-bottom-2 group-hover/btn:-left-2 transition-all duration-300" />
-                                            <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:-bottom-2 group-hover/btn:-right-2 transition-all duration-300" />
-
-                                            <Button size="lg" className="w-full h-16 bg-primary text-black font-bold text-lg rounded-sm shadow-2xl transition-all active:scale-95 border-none relative z-10">
+                                        <div className="w-full md:w-96">
+                                            <Button 
+                                                size="lg" 
+                                                className="w-full h-16 bg-primary text-black font-bold text-lg rounded-sm shadow-md hover:shadow-xl hover:brightness-95 hover:-translate-y-0.5 active:translate-y-0 active:brightness-90 transition-all duration-200 ease-in-out border-none relative z-10"
+                                            >
                                                 Buy Full Pack – $79 <ArrowRight className="ml-2 h-5 w-5"/>
                                             </Button>
                                         </div>
                                         
+                                        {/* FRICTION DISSOLUTION MICROCOPY */}
                                         <div className="space-y-1">
                                             <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest flex items-center justify-center gap-2">
                                                 <Check className="w-3 h-3 text-primary" /> Instant Digital Delivery
