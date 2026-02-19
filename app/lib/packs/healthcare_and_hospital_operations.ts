@@ -7,23 +7,36 @@ export const healthcare_and_hospital_operations: PremiumPack = {
     priceINR: 5999,
     priceUSD: 79,
     competitorPriceUSD: 599,
-    paymentId: 'pl_OfhYpYqLzL0zZz',
+    paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/129cb25a-b177-4a6d-a1bf-d8fafc24a09d',
     category: "Healthcare",
-    description: "A comprehensive NABH & JCI-aligned toolkit for hospital administrators to ensure patient safety, clinical quality, and operational excellence.",
+    description: "Stop audit failures, patient safety incidents, and compliance gaps—before they cost you accreditation or reputation.",
+    heroHeadline: "Prevent audit failures and patient safety incidents.",
+    heroSubheadline: "Built for NABH & JCI-aligned hospitals that take zero-risk clinical operations seriously.",
+    pricingUrgency: "One clinical incident or audit failure costs 100x more than this entire system.",
+    consultingAnchor: 5000,
     icon: "hospital",
     badgeText: "Clinical Grade",
     badgeVariant: "destructive",
     bestseller: true,
-    whoIsItFor: ["Hospital COOs & CEOs", "Medical Directors", "Quality Assurance Heads", "Nursing Superintendents"],
+    whoIsItFor: ["Hospital COOs & CEOs", "Medical Directors", "Quality Assurance Heads", "Nursing Superintendents", "Accreditation Managers"],
     sampleItems: [
-        { text: "Prevent 'never events' with a WHO-aligned Surgical Safety Checklist.", icon: "stethoscope" },
-        { text: "Combat hospital-acquired infections (HAIs) with rigorous infection control and sterilization (CSSD) audits.", icon: "syringe" },
-        { text: "Eliminate medication errors using SOPs for high-alert medication dispensing and administration.", icon: "pill" },
-        { text: "Enhance patient safety with a robust protocol for patient identification at every touchpoint.", icon: "user-check" },
-        { text: "Ensure regulatory compliance with a systematic process for biomedical waste management.", icon: "recycle" },
-        { text: "Prepare for any crisis with emergency code management and mock drill scenarios.", icon: "ambulance" }
+        { text: "Stop catastrophic surgical errors with a WHO-aligned Surgical Safety checklist.", icon: "stethoscope" },
+        { text: "Combat hospital-acquired infections (HAIs) with rigorous sterilization (CSSD) audits.", icon: "syringe" },
+        { text: "Eliminate medication errors with high-alert medication dispensing protocols.", icon: "pill" },
+        { text: "Enhance patient safety with a bulletproof identification protocol at every touchpoint.", icon: "user-check" },
+        { text: "Ensure regulatory compliance with a systematic biomedical waste management process.", icon: "recycle" },
+        { text: "Prepare for any crisis with drilled emergency code and ambulance response SOPs.", icon: "ambulance" }
     ],
+    globalStandards: {
+        title: "NABH, JCI & WHO ALIGNED",
+        standards: [
+            { name: "NABH", description: "National Accreditation Board for Hospitals & Healthcare Providers compliance." },
+            { name: "JCI", description: "Joint Commission International standards for clinical quality." },
+            { name: "WHO", description: "World Health Organization Safe Surgery guidelines." },
+            { name: "ISO 15189", description: "Quality and competence in medical laboratories." }
+        ]
+    },
     checklists: [
         {
             title: "Surgical Safety Checklist (WHO Aligned)",
@@ -33,7 +46,7 @@ export const healthcare_and_hospital_operations: PremiumPack = {
             summary: "A three-phase checklist (Sign In, Time Out, Sign Out) to prevent common surgical errors and improve teamwork.",
             icon: "file-check",
             tasks: [
-                { id: "H-SSC-01", description: "Confirm patient identity, surgical site, procedure, and consent before anesthesia.", priority: "High", riskLevel: "High", consequence: "Failure to confirm is the primary cause of 'never events' like wrong-site surgery, leading to patient harm, lawsuits, and loss of accreditation.", proof: "Verbal confirmation log" },
+                { id: "H-SSC-01", description: "Confirm patient identity, surgical site, procedure, and consent before anesthesia.", priority: "High", riskLevel: "High", consequence: "Failure to confirm is the primary cause of \"never events\" like wrong-site surgery, leading to patient harm, lawsuits, and loss of accreditation.", proof: "Verbal confirmation log" },
                 { id: "H-SSC-02", description: "Mark the surgical site.", priority: "High", riskLevel: "High", consequence: "An unmarked or incorrectly marked site can lead to catastrophic error in the operating room.", proof: "Visual check" },
                 { id: "H-SSC-03", description: "Review critical patient history, including allergies and airway risks.", priority: "High", riskLevel: "High", consequence: "Missing a known allergy can lead to anaphylactic shock and death during surgery.", proof: "Anesthesia record" },
                 { id: "H-SSC-04", description: "Confirm instrument, sponge, and needle counts before closing.", priority: "High", riskLevel: "High", consequence: "A retained foreign object can lead to severe post-operative complications, infection, and requires a second surgery to remove.", proof: "Count sheet" },
@@ -90,7 +103,7 @@ export const healthcare_and_hospital_operations: PremiumPack = {
             department: "All Clinical",
             frequency: "Per Interaction",
             role: "All Clinical Staff",
-            summary: "Ensures correct patient identification before any procedure, medication, or test to prevent 'never events'. Aligned with JCI & NABH standards.",
+            summary: "Ensures correct patient identification before any procedure, medication, or test to prevent 'never events'.",
             icon: "user-check",
             tasks: [
                 { id: "H-PID-01", description: "Verify patient identity using at least two identifiers (e.g., full name and date of birth) before drawing blood.", priority: "High", riskLevel: "High", consequence: "A mislabeled blood sample can lead to a catastrophic transfusion reaction or misdiagnosis.", proof: "Verbal confirmation" },
@@ -187,5 +200,3 @@ export const healthcare_and_hospital_operations: PremiumPack = {
         }
     ]
 };
-
-  
