@@ -138,39 +138,39 @@ export default function DesignPreviewClient() {
         <div className="space-y-32 pb-32">
             <div className="max-w-4xl mx-auto space-y-12 px-4">
                 <div className="p-6 border-l-2 border-primary/30 bg-primary/5 rounded-r-xl">
-                    <h3 className="text-primary font-black uppercase text-xs tracking-widest mb-2">Overall Layout Audit</h3>
+                    <h3 className="text-primary font-black uppercase text-xs tracking-widest mb-2">Micro-Tuning Audit</h3>
                     <p className="text-sm text-secondary-text leading-relaxed italic">
-                        Comparing the vertical "Atmosphere" of the decision zone. We are auditing how the spacing between the content blocks affects the perceived technical authority and B2B gravity of the pack.
+                        Auditing the "Institutional Balanced" standard. We are fine-tuning the vertical rhythm to maximize the psychological "tether" between the purchase action and its safety guarantees.
                     </p>
                 </div>
 
-                {/* VARIATION 1: BALANCED (RECOMMENDED) */}
+                {/* VARIATION 1: BALANCED (THE CURRENT GOLD STANDARD) */}
                 <PricingCardVariation 
-                    title="Variation 1: Balanced Institutional (10px Sections / 8px Buttons)"
+                    title="Variation 1: The Baseline (Balanced Institutional)"
                     contentGap="space-y-10"
                     sectionGap="gap-8"
                     buttonGap="gap-3"
                 />
 
-                {/* VARIATION 2: TECHNICAL HIGH-DENSITY */}
+                {/* VARIATION 2: UNIFIED DECISION (SLIGHTLY TIGHTER) */}
                 <PricingCardVariation 
-                    title="Variation 2: Technical High-Density (6px Sections / 4px Buttons)"
-                    contentGap="space-y-6"
-                    sectionGap="gap-4"
-                    buttonGap="gap-1.5"
+                    title="Variation 2: Unified Decision (Tight Decision Zone)"
+                    contentGap="space-y-8"
+                    sectionGap="gap-6"
+                    buttonGap="gap-2"
                 />
 
-                {/* VARIATION 3: PREMIUM ATMOSPHERIC */}
+                {/* VARIATION 3: ASSET FOCUS (SLIGHTLY MORE BREATHING ROOM) */}
                 <PricingCardVariation 
-                    title="Variation 3: Premium Atmospheric (16px Sections / 12px Buttons)"
-                    contentGap="space-y-16"
-                    sectionGap="gap-12"
-                    buttonGap="gap-6"
+                    title="Variation 3: Asset Focus (Pro Rhythm)"
+                    contentGap="space-y-12"
+                    sectionGap="gap-8"
+                    buttonGap="gap-4"
                 />
             </div>
 
             <div className="text-center py-12">
-                <p className="text-[10px] text-white/20 italic uppercase tracking-[0.3em]">Vertical Rhythm Audit · Resolution Protocol V5</p>
+                <p className="text-[10px] text-white/20 italic uppercase tracking-[0.3em]">Vertical Rhythm Audit · Resolution Protocol V6</p>
             </div>
         </div>
     );
