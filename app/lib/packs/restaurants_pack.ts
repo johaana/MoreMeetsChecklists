@@ -1,15 +1,20 @@
+
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const restaurants: PremiumPack = {
     id: 'restaurants',
     title: "Restaurant Operations Pack",
+    category: "Hospitality",
+    description: "Stop Health Department closures, viral food-safety scandals, and inconsistent service—before they destroy your restaurant's reputation and bottom line.",
+    heroHeadline: "Stop Health Department closures and viral food-safety scandals.",
+    heroSubheadline: "Built for FSSAI-aligned establishments that take zero-risk food safety seriously.",
+    pricingUrgency: "One food-safety incident or negative viral review costs 100x more than this entire system.",
+    consultingAnchor: 5000,
     priceINR: 5999,
     priceUSD: 79,
     competitorPriceUSD: 599,
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f4e6b12a-4422-48a0-a198-154332822a27',
-    category: "Hospitality",
-    description: "Stop Health Department closures, viral food-safety scandals, and inconsistent service—before they destroy your restaurant's reputation and bottom line.",
     icon: "utensils-crossed",
     badgeText: "Bestseller",
     badgeVariant: "default",

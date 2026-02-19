@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -27,7 +28,6 @@ import { addContact } from './actions';
 import { Input } from '../components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
-import { cn } from '@/lib/utils';
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     const { toast } = useToast();
@@ -105,26 +105,6 @@ const IndiaMethods = () => (
     </div>
 );
 
-const GlobalMethods = () => (
-    <div className="flex flex-col items-center gap-3">
-        <div className="flex items-center justify-center gap-4 opacity-40 grayscale hover:opacity-80 transition-all duration-500">
-            <div className="flex flex-col items-center gap-1">
-                <CardIcon className="w-4 h-4" />
-                <span className="text-[8px] font-black uppercase">STRIPE</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-                <Globe className="w-4 h-4" />
-                <span className="text-[8px] font-black uppercase">PAYPAL</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-                <ShieldCheck className="w-4 h-4" />
-                <span className="text-[8px] font-black uppercase">GLOBAL CARDS</span>
-            </div>
-        </div>
-        <p className="text-[10px] text-muted-foreground font-medium italic">Secure International Checkout</p>
-    </div>
-);
-
 function getIndustryWording(packId: string): string {
     const map: Record<string, string> = {
         'hotels_and_resorts': 'Hospitality Operations Checklists',
@@ -134,15 +114,15 @@ function getIndustryWording(packId: string): string {
         'electronics_showroom_pack': 'Showroom & Asset Protection Checklists',
         'supermarket_grocery_retail_pack': 'Grocery Retail Checklists',
         'facility_management_blueprint': 'Facility Control Framework',
-        'corporate_legal_compliance_starter_kit': 'Corporate Governance & Checklist Framework',
-        'enterprise_risk_cybersecurity_pack': 'Comprehensive Risk & Security Checklists',
+        'corporate_legal_compliance_starter_kit': 'Corporate Governance Framework',
+        'enterprise_risk_cybersecurity_pack': 'Risk & Security Checklists',
         'healthcare_and_hospital_operations': 'Clinical & Safety Checklists',
         'school_operations_pack': 'School Safety & Operations Checklists',
         'university_college_ops': 'Higher-Ed Operations Checklists',
         'manufacturing_operations_ehs_pack': 'Safety & EHS Checklists',
         'food_manufacturing_ops': 'Food Safety & Manufacturing Checklists',
         'logistics_warehouse_pack': 'Warehouse & Logistics Checklists',
-        'franchise_operations_pack': 'Franchise Performance & Compliance Checklists',
+        'franchise_operations_pack': 'Franchise Performance Checklists',
         'film_production_pack': 'Film & Production Checklists',
         'ott_platform_pack': 'Streaming & Platform Control Checklists',
         'sports_clubs_stadium_operations_pack': 'Sports & Stadium Operations Checklists',
@@ -261,20 +241,29 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 
                                 <div className="flex items-center justify-center gap-2 opacity-100">
                                     <ShieldCheck className="w-3.5 h-3.5 text-white/40" />
-                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic">
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic text-center">
                                         ALIGNED: ISO · HACCP · OSHA · Industry Standards
                                     </span>
                                 </div>
                             </div>
 
                             <div className="flex flex-col items-center">
-                                {/* THE VALUE PILL */}
+                                <div className="space-y-2 mb-8">
+                                    {pack.pricingUrgency && (
+                                        <p className="text-sm font-bold text-accent italic">
+                                            "{pack.pricingUrgency}"
+                                        </p>
+                                    )}
+                                    <p className="text-xs text-muted-foreground line-through opacity-50">
+                                        Equivalent consulting cost: {region === 'INDIA' ? '₹4,00,000+' : `$${pack.consultingAnchor || 5000}+`}
+                                    </p>
+                                </div>
+
                                 <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto transition-none">
                                     <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                                 </div>
 
                                 <div className="w-full flex flex-col items-center pt-8">
-                                    {/* PRIMARY ACTION */}
                                     <div className="w-full md:w-96">
                                         {region === 'INDIA' && hasINR ? (
                                             <div className="w-full">
@@ -293,7 +282,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         )}
                                     </div>
                                     
-                                    {/* THE HIGH-TRUST BOND (6px) */}
                                     <div className="mt-1.5 flex items-center justify-center gap-2 opacity-40 grayscale">
                                         <Lock className="w-3 h-3" />
                                         <span className="text-[11px] font-semibold tracking-tight">
@@ -301,20 +289,17 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         </span>
                                     </div>
 
-                                    {/* THE RELIEF GAP (12px) */}
                                     <div className="mt-3 flex items-center justify-center gap-2 tracking-tight">
                                         <Check className="w-3.5 h-3.5 text-primary opacity-80" /> 
-                                        <span className="text-[13px] text-muted-foreground font-medium">
-                                            Instant Digital Delivery · Lifetime Organization License
+                                        <span className="text-[13px] text-muted-foreground font-medium text-center">
+                                            Instant Digital Delivery · 100% Alignment Guarantee
                                         </span>
                                     </div>
 
-                                    {/* IMPLICIT CONSENT (Lowest point) */}
                                     <p className="mt-6 text-[10px] text-white/20 font-medium">
                                         By purchasing, you agree to our <Link href="/terms" target="_blank" className="underline underline-offset-2 hover:text-white/40">Terms</Link> & <Link href="/refund" target="_blank" className="underline underline-offset-2 hover:text-white/40">Refund Policy</Link>
                                     </p>
                                 </div>
-                                {region === 'INDIA' ? <div className="mt-8"><IndiaMethods /></div> : null}
                             </div>
                         </CardContent>
 

@@ -1,10 +1,11 @@
+
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const FaqSection = () => (
     <section id="faq" className="w-full py-16 md:py-24">
         <div className="container px-4 md:px-6">
             <div className="text-center max-w-3xl mx-auto mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold font-headline">Frequently Asked Questions</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-headline uppercase italic">Frequently Asked Questions</h2>
             </div>
             <div className="max-w-3xl mx-auto">
                 <Accordion type="single" collapsible className="w-full" defaultValue="item-1">
