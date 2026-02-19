@@ -24,7 +24,17 @@ const PROOFS = [
     { label: 'No SaaS lock-in', icon: Lock }
 ];
 
-const PricingCardVariation = ({ title, spacingClass, buttonGap }: { title: string, spacingClass: string, buttonGap: string }) => (
+const PricingCardVariation = ({ 
+    title, 
+    contentGap, 
+    sectionGap, 
+    buttonGap 
+}: { 
+    title: string, 
+    contentGap: string, 
+    sectionGap: string, 
+    buttonGap: string 
+}) => (
     <div className="space-y-6">
         <div className="flex items-center gap-3">
             <div className="h-px flex-1 bg-white/10" />
@@ -54,8 +64,8 @@ const PricingCardVariation = ({ title, spacingClass, buttonGap }: { title: strin
                 </div>
             </CardHeader>
 
-            <CardContent className="flex-1 p-8 md:p-12 flex flex-col space-y-10 text-center">
-                <div className="space-y-8">
+            <CardContent className={cn("flex-1 p-8 md:p-12 flex flex-col text-center", contentGap)}>
+                <div className={cn("flex flex-col gap-1", sectionGap)}>
                     <div className="flex flex-col items-center gap-1">
                         <p className="text-xl md:text-2xl font-black text-primary-text tracking-tight uppercase leading-tight italic">
                             8 CLINICAL & SAFETY CHECKLISTS · 80+ TASKS
@@ -71,9 +81,9 @@ const PricingCardVariation = ({ title, spacingClass, buttonGap }: { title: strin
                     </div>
                 </div>
 
-                <div className={cn("flex flex-col items-center", spacingClass)}>
+                <div className={cn("flex flex-col items-center", sectionGap)}>
                     {/* THE VALUE PILL */}
-                    <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto transition-none mb-6">
+                    <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto transition-none">
                         <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                     </div>
 
@@ -88,14 +98,12 @@ const PricingCardVariation = ({ title, spacingClass, buttonGap }: { title: strin
                             </Button>
                         </div>
                         
-                        {/* TRUST: CONFIDENCE SIGNAL */}
-                        <div className="flex items-center justify-center gap-2 opacity-40 grayscale hover:opacity-80 transition-all duration-500">
-                            <Lock className="w-3 h-3" />
-                            <span className="text-[11px] font-semibold tracking-tight">Secure International Checkout</span>
-                        </div>
-
-                        {/* SAFETY: REASSURANCE */}
-                        <div className="mt-1">
+                        {/* TRUST & SAFETY STACK */}
+                        <div className="flex flex-col items-center gap-1.5">
+                            <div className="flex items-center justify-center gap-2 opacity-40 grayscale hover:opacity-80 transition-all duration-500">
+                                <Lock className="w-3 h-3" />
+                                <span className="text-[11px] font-semibold tracking-tight">Secure International Checkout</span>
+                            </div>
                             <p className="text-[13px] text-muted-foreground font-medium flex items-center justify-center gap-2 tracking-tight">
                                 <Check className="w-3.5 h-3.5 text-primary opacity-80" /> 
                                 <span>Instant Digital Delivery · Lifetime Organization License</span>
@@ -130,36 +138,39 @@ export default function DesignPreviewClient() {
         <div className="space-y-32 pb-32">
             <div className="max-w-4xl mx-auto space-y-12 px-4">
                 <div className="p-6 border-l-2 border-primary/30 bg-primary/5 rounded-r-xl">
-                    <h3 className="text-primary font-black uppercase text-xs tracking-widest mb-2">Refinement Protocol</h3>
+                    <h3 className="text-primary font-black uppercase text-xs tracking-widest mb-2">Overall Layout Audit</h3>
                     <p className="text-sm text-secondary-text leading-relaxed italic">
-                        Auditing vertical rhythm in the "Decision Zone." The goal is to maximize the tether between the purchase action and its trust anchors while maintaining a premium B2B weight.
+                        Comparing the vertical "Atmosphere" of the decision zone. We are auditing how the spacing between the content blocks affects the perceived technical authority and B2B gravity of the pack.
                     </p>
                 </div>
 
                 {/* VARIATION 1: BALANCED (RECOMMENDED) */}
                 <PricingCardVariation 
-                    title="Variation 1: Balanced (10px Gaps)"
-                    spacingClass="pt-4"
-                    buttonGap="gap-2.5"
+                    title="Variation 1: Balanced Institutional (10px Sections / 8px Buttons)"
+                    contentGap="space-y-10"
+                    sectionGap="gap-8"
+                    buttonGap="gap-3"
                 />
 
                 {/* VARIATION 2: TECHNICAL HIGH-DENSITY */}
                 <PricingCardVariation 
-                    title="Variation 2: Technical (4px Gaps)"
-                    spacingClass="pt-2"
-                    buttonGap="gap-1"
+                    title="Variation 2: Technical High-Density (6px Sections / 4px Buttons)"
+                    contentGap="space-y-6"
+                    sectionGap="gap-4"
+                    buttonGap="gap-1.5"
                 />
 
-                {/* VARIATION 3: ATMOSPHERIC */}
+                {/* VARIATION 3: PREMIUM ATMOSPHERIC */}
                 <PricingCardVariation 
-                    title="Variation 3: Atmospheric (20px Gaps)"
-                    spacingClass="pt-8"
-                    buttonGap="gap-5"
+                    title="Variation 3: Premium Atmospheric (16px Sections / 12px Buttons)"
+                    contentGap="space-y-16"
+                    sectionGap="gap-12"
+                    buttonGap="gap-6"
                 />
             </div>
 
             <div className="text-center py-12">
-                <p className="text-[10px] text-white/20 italic uppercase tracking-[0.3em]">Precision Spacing Audit · Resolution Protocol V4</p>
+                <p className="text-[10px] text-white/20 italic uppercase tracking-[0.3em]">Vertical Rhythm Audit · Resolution Protocol V5</p>
             </div>
         </div>
     );
