@@ -34,12 +34,12 @@ export default function DesignPreviewClient() {
                     <h2 className="text-2xl font-black text-primary uppercase italic tracking-tight">Precision Decision Zone</h2>
                     <div className="grid md:grid-cols-2 gap-8 text-sm text-secondary-text leading-relaxed">
                         <div className="space-y-4">
-                            <p><strong className="text-white">Primary Action Flow:</strong> The hierarchy follows a logical "Command → Source → Assurance" sequence. The eye moves from the green action to the secure processor, then to the delivery safety.</p>
-                            <p><strong className="text-white">Combined Microcopy:</strong> By merging delivery and license into one line with a technical dot (·), we reduce "Decision Fatigue" and make the card feel more like a professional instrument.</p>
+                            <p><strong className="text-white">Primary Action Flow:</strong> The hierarchy follows a logical "Command → Confidence → Safety" sequence. The eye moves from the green action to the security guarantee, then to the delivery terms.</p>
+                            <p><strong className="text-white">Restrained Typography:</strong> By using Title Case for both the button and the checkout label, we reduce "sales friction" and make the terminal feel like professional infrastructure.</p>
                         </div>
                         <div className="space-y-4">
                             <p><strong className="text-white">Calibrated Spacing:</strong> Vertical gaps are tightened (8-12px) to keep trust signals visually "sticky" to the main button, preventing them from feeling like detached footers.</p>
-                            <p><strong className="text-white">Muted Trust:</strong> The Lemon Squeezy badge is treated as a subtle validation rather than a marketing hero, maintaining the "Internal Tool" aesthetic.</p>
+                            <p><strong className="text-white">Institutional Minimal:</strong> The checkout label focuses on "Secure" rather than naming a processor, maintaining a high-scale, premium brand image.</p>
                         </div>
                     </div>
                 </div>
@@ -103,13 +103,13 @@ export default function DesignPreviewClient() {
                                             </Button>
                                         </div>
                                         
-                                        {/* TRUST: SOURCE (LemonSqueezy Badge Logic) */}
+                                        {/* TRUST: CONFIDENCE SIGNAL */}
                                         <div className="flex items-center justify-center gap-2 opacity-40 grayscale hover:opacity-80 transition-all duration-500">
-                                            <Globe className="w-3 h-3" />
-                                            <span className="text-[10px] font-black uppercase tracking-[0.15em]">SECURE INTERNATIONAL CHECKOUT VIA LEMON SQUEEZY</span>
+                                            <Lock className="w-3 h-3" />
+                                            <span className="text-[11px] font-semibold tracking-tight">Secure International Checkout</span>
                                         </div>
 
-                                        {/* SAFETY: ASSURANCE (Combined Block) */}
+                                        {/* SAFETY: REASSURANCE */}
                                         <div className="mt-1">
                                             <p className="text-[13px] text-muted-foreground font-medium flex items-center justify-center gap-2 tracking-tight">
                                                 <Check className="w-3.5 h-3.5 text-primary opacity-80" /> 
@@ -136,7 +136,7 @@ export default function DesignPreviewClient() {
             </div>
 
             <div className="text-center py-12">
-                <p className="text-sm text-white/20 italic uppercase tracking-[0.3em]">Decision Zone Spacing Audit (Healthcare Example)</p>
+                <p className="text-sm text-white/20 italic uppercase tracking-[0.3em]">Institutional Spacing Audit (Secure Checkout Update)</p>
             </div>
         </div>
     );
