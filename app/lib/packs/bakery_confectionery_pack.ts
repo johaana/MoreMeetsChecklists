@@ -10,18 +10,22 @@ export const bakery_confectionery_pack: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
     category: "Food & Beverage",
-    description: "A specialized toolkit for bakery and confectionery owners to ensure product consistency, food safety, and operational efficiency.",
+    description: "Stop production shutdowns, fatal allergen incidents, and brand-eroding inconsistency—before they destroy your reputation and margins.",
+    heroHeadline: "Stop production shutdowns and fatal allergen incidents.",
+    heroSubheadline: "Built for artisanal and industrial bakeries that take zero-risk quality and FSSAI compliance seriously.",
+    pricingUrgency: "A single mislabeled allergen or one health department closure costs 100x more than this entire system.",
+    consultingAnchor: 5000,
     icon: "cake-slice",
-    badgeText: "Special Offer",
+    badgeText: "Bestseller",
     badgeVariant: "accent",
-    whoIsItFor: ["Bakery Owners", "Head Bakers", "Pastry Chefs", "Cafe Owners with in-house baking"],
+    whoIsItFor: ["Bakery Owners", "Head Bakers", "Pastry Chefs", "Production Managers", "Quality Control (QA/QC) Heads"],
     sampleItems: [
-        { text: "Achieve perfect results every time with recipe scaling and dough management checklists.", icon: "clipboard-list" },
-        { text: "Ensure food safety with HACCP-aligned protocols for ingredient handling and allergen control.", icon: "shield-check" },
-        { text: "Maintain equipment precision with SOPs for oven calibration and mixer maintenance.", icon: "wrench" },
-        { text: "Maximize freshness and minimize waste with a structured display and stock rotation system.", icon: "recycle" },
-        { text: "Guarantee compliance with FSSAI regulations for packaging, labeling, and expiry dates.", icon: "file-check" },
-        { text: "Streamline your custom order process from client briefing to final delivery.", icon: "package" }
+        { text: "<strong>Achieve</strong> perfect results every time with recipe scaling and dough management checklists.", icon: "clipboard-list" },
+        { text: "<strong>Ensure</strong> food safety with HACCP-aligned protocols for ingredient handling and allergen control.", icon: "shield-check" },
+        { text: "<strong>Maintain</strong> equipment precision with SOPs for oven calibration and mixer maintenance.", icon: "wrench" },
+        { text: "<strong>Maximize</strong> freshness and minimize waste with a structured display and stock rotation system.", icon: "recycle" },
+        { text: "<strong>Guarantee</strong> compliance with FSSAI regulations for packaging, labeling, and expiry dates.", icon: "file-check" },
+        { text: "<strong>Streamline</strong> your custom order process from client briefing to final delivery.", icon: "package" }
     ],
     checklists: [
         {
@@ -32,12 +36,12 @@ export const bakery_confectionery_pack: PremiumPack = {
             summary: "Ensures the kitchen is ready and safe for service, aligning with daily production goals.",
             icon: "sunrise",
             tasks: [
-                { id: "BAKE-OPEN-01", description: "Pre-heat all ovens to their required temperatures for the first bake.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent baking results, wasted product.", proof: "Oven Temperature Log" },
-                { id: "BAKE-OPEN-02", description: "Inspect mixers and other equipment for cleanliness and functionality.", priority: "High", riskLevel: "High", consequence: "Equipment malfunction causes downtime; poor hygiene is a food safety risk.", proof: "Equipment Check Log" },
-                { id: "BAKE-OPEN-03", description: "Review the day's production schedule and special orders.", priority: "High", riskLevel: "High", consequence: "Missing a special order or producing wrong quantities leads to customer dissatisfaction.", proof: "Production Sheet" },
+                { id: "BAKE-OPEN-01", description: "Pre-heat all ovens to their required temperatures for the first bake.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent baking results, leading to wasted product and poor quality.", proof: "Oven Temperature Log" },
+                { id: "BAKE-OPEN-02", description: "Inspect mixers and other equipment for cleanliness and functionality.", priority: "High", riskLevel: "High", consequence: "Equipment malfunction can cause downtime; lack of cleanliness is a food safety risk.", proof: "Equipment Check Log" },
+                { id: "BAKE-OPEN-03", description: "Review the day's production schedule and special orders.", priority: "High", riskLevel: "High", consequence: "Missing a special order or producing the wrong quantities leads to customer dissatisfaction and waste.", proof: "Production Sheet" },
                 { id: "BAKE-OPEN-04", description: "Pull all required ingredients from storage based on the production plan.", priority: "High", riskLevel: "Medium", consequence: "Production delays due to missing ingredients.", proof: "Ingredient Pull Sheet" },
                 { id: "BAKE-OPEN-05", description: "Calibrate weighing scales.", priority: "High", riskLevel: "High", consequence: "Inaccurate measurements lead to inconsistent product quality and recipe failure.", proof: "Scale Calibration Log" },
-                { id: "BAKE-OPEN-06", description: "Ensure all staff are present and in correct uniform (hairnets, aprons).", priority: "High", riskLevel: "Medium", consequence: "Hygiene violations and foreign object risk.", proof: "Staff Hygiene Check" },
+                { id: "BAKE-OPEN-06", description: "Ensure all staff are present and have their hairnets and aprons on.", priority: "High", riskLevel: "Medium", consequence: "Hygiene violations and potential for hair or foreign objects in food.", proof: "Staff Hygiene Check" },
                 { id: "BAKE-OPEN-07", description: "Check that all work surfaces are sanitized before starting.", priority: "High", riskLevel: "High", consequence: "Risk of cross-contamination and foodborne illness.", proof: "Sanitization Log" },
                 { id: "BAKE-OPEN-08", description: "Prepare and scale out base doughs and batters for the day.", priority: "High", riskLevel: "High", consequence: "Inefficient workflow and delays during peak production.", proof: "Scaling Sheets" },
                 { id: "BAKE-OPEN-09", description: "Verify availability of all required packaging materials.", priority: "Medium", riskLevel: "Low", consequence: "Delays in packaging finished goods.", proof: "Packaging Inventory" },
@@ -52,16 +56,16 @@ export const bakery_confectionery_pack: PremiumPack = {
             summary: "A critical safety protocol to prevent allergen cross-contamination.",
             icon: "file-warning",
             tasks: [
-                { id: "ALLERGEN-BAKE-01", description: "Store allergenic ingredients (nuts, soy, dairy) in separate, clearly labeled containers.", priority: "High", riskLevel: "High", consequence: "Primary cause of fatal allergen cross-contamination.", proof: "Storage Audit Photo" },
+                { id: "ALLERGEN-BAKE-01", description: "Store allergenic ingredients (nuts, soy, dairy) in separate, clearly labeled containers.", priority: "High", riskLevel: "High", consequence: "The primary cause of allergen cross-contamination, which can be fatal to customers.", proof: "Storage Audit Photo" },
                 { id: "ALLERGEN-BAKE-02", description: "Use color-coded utensils and equipment for preparing allergen-free items.", priority: "High", riskLevel: "High", consequence: "Mixing utensils can transfer allergens to 'safe' products.", proof: "Visual Audit" },
                 { id: "ALLERGEN-BAKE-03", description: "Thoroughly clean and sanitize surfaces between batches with and without allergens.", priority: "High", riskLevel: "High", consequence: "Residual allergens can contaminate the next batch.", proof: "Cleaning Log" },
-                { id: "ALLERGEN-BAKE-04", description: "Schedule production of allergen-free items first thing in the morning after a deep clean.", priority: "High", riskLevel: "High", consequence: "Reduces risk of airborne flour or nut dust contamination.", proof: "Production Schedule" },
+                { id: "ALLERGEN-BAKE-04", description: "Schedule production of allergen-free items first thing in the morning after a deep clean.", priority: "High", riskLevel: "High", consequence: "Reduces the risk of airborne flour or nut dust contaminating allergen-free products.", proof: "Production Schedule" },
                 { id: "ALLERGEN-BAKE-05", description: "Maintain an accurate, updated allergen matrix for all products.", priority: "High", riskLevel: "High", consequence: "Inability to provide accurate allergen information to customers.", proof: "Allergen Matrix Document" },
                 { id: "ALLERGEN-BAKE-06", description: "Train all staff on cross-contamination risks and handling allergen queries.", priority: "High", riskLevel: "High", consequence: "Untrained staff may give incorrect information, with potentially fatal results.", proof: "Training Records" },
-                { id: "ALLERGEN-BAKE-07", description: "Clearly label all finished products with allergen warnings as per regulations.", priority: "High", riskLevel: "High", consequence: "Legal violation and a major health risk (e.g., Natasha's Law).", proof: "Label Check" },
-                { id: "ALLERGEN-BAKE-08", description: "Have a clear procedure for handling a customer allergen reaction incident.", priority: "High", riskLevel: "High", consequence: "Chaotic response worsens medical outcome and increases legal liability.", proof: "Incident SOP" },
+                { id: "ALLERGEN-BAKE-07", description: "Clearly label all finished products with allergen warnings.", priority: "High", riskLevel: "High", consequence: "Failure to label is a legal violation and a major health risk (e.g., Natasha's Law).", proof: "Label Check" },
+                { id: "ALLERGEN-BAKE-08", description: "Have a clear procedure for handling a customer allergen reaction incident.", priority: "High", riskLevel: "High", consequence: "A chaotic response can worsen the medical outcome and increase legal liability.", proof: "Incident SOP" },
                 { id: "ALLERGEN-BAKE-09", description: "Review supplier allergen information for all raw materials.", priority: "High", riskLevel: "High", consequence: "Hidden allergens in raw materials can be passed on to the final product.", proof: "Supplier Document Review" },
-                { id: "ALLERGEN-BAKE-10", description: "Conduct periodic allergen testing on surfaces and finished products.", priority: "High", riskLevel: "High", consequence: "Verifies that cleaning procedures are effective.", proof: "Allergen Test Report" }
+                { id: "ALLERGEN-BAKE-10", description: "Conduct periodic allergen testing on surfaces and finished products.", priority: "High", riskLevel: "High", consequence: "Without testing, there is no verification that cleaning procedures are effective.", proof: "Allergen Test Report" }
             ]
         },
         {
@@ -77,7 +81,7 @@ export const bakery_confectionery_pack: PremiumPack = {
                 { id: "LABEL-03", description: "Check that manufacturing and 'Best Before' dates are correctly printed.", priority: "High", riskLevel: "High", consequence: "Selling expired products can cause illness and lead to legal action.", proof: "Date Code Verification" },
                 { id: "LABEL-04", description: "Ensure nutritional information is accurate and formatted correctly.", priority: "High", riskLevel: "Medium", consequence: "Misleading nutritional claims can result in regulatory fines.", proof: "Nutritional Panel Audit" },
                 { id: "LABEL-05", description: "Verify the FSSAI license number is correctly displayed on the package.", priority: "High", riskLevel: "High", consequence: "Mandatory legal requirement in India.", proof: "FSSAI License Check" },
-                { id: "LABEL-06", description: "Check for the vegetarian/non-vegetarian logo.", priority: "High", riskLevel: "High", consequence: "Incorrect labeling is a serious cultural and legal offense.", proof: "Logo Check" },
+                { id: "LABEL-06", description: "Check for the vegetarian/non-vegetarian logo.", priority: "High", riskLevel: "High", consequence: "Incorrectly labeling a non-veg item as veg is a serious cultural and legal offense.", proof: "Logo Check" },
                 { id: "LABEL-07", description: "Ensure the net weight is correctly stated.", priority: "High", riskLevel: "High", consequence: "Violation of Legal Metrology laws, leading to fines.", proof: "Weight Check" },
                 { id: "LABEL-08", description: "Inspect packaging for tears, correct sealing, and overall quality.", priority: "High", riskLevel: "Medium", consequence: "Poor packaging can lead to product contamination and spoilage.", proof: "Package Integrity Check" },
                 { id: "LABEL-09", description: "Ensure manufacturer's name and address are correctly printed.", priority: "High", riskLevel: "High", consequence: "Mandatory FSSAI labeling requirement.", proof: "Address Check" },
@@ -93,12 +97,12 @@ export const bakery_confectionery_pack: PremiumPack = {
             icon: "shopping-basket",
             tasks: [
                 { id: "BAKE-QC-01", description: "Verify supplier's FSSAI license and COA (Certificate of Analysis).", priority: "High", riskLevel: "High", consequence: "Using ingredients from an unlicensed vendor is a major compliance violation.", proof: "Supplier Documents" },
-                { id: "BAKE-QC-02", description: "Check raw materials for freshness, signs of pests, or damage upon receipt.", priority: "High", riskLevel: "High", consequence: "Poor quality ingredients lead to a poor quality final product.", proof: "Receiving Log" },
+                { id: "BAKE-QC-02", description: "Check raw materials for freshness, signs of pests, or damage upon receipt.", priority: "High", riskLevel: "High", consequence: "Poor quality ingredients directly lead to a poor quality final product.", proof: "Receiving Log" },
                 { id: "BAKE-QC-03", description: "Verify ingredient expiry dates and reject any near-expiry stock.", priority: "High", riskLevel: "High", consequence: "Using expired ingredients is a food safety risk.", proof: "Expiry Check Log" },
                 { id: "BAKE-QC-04", description: "Store ingredients at correct temperatures (e.g., cold chain for dairy).", priority: "High", riskLevel: "High", consequence: "Improper storage can cause spoilage and bacterial growth.", proof: "Storage Temp Log" },
                 { id: "BAKE-QC-05", description: "Ensure traceability with batch numbers for all key ingredients.", priority: "High", riskLevel: "High", consequence: "Makes it impossible to trace the source of a contamination.", proof: "Batch Log" },
                 { id: "BAKE-QC-06", description: "Use FIFO (First-In, First-Out) for all ingredient usage.", priority: "High", riskLevel: "Medium", consequence: "Leads to ingredient wastage due to expiry.", proof: "Stock Rotation Audit" },
-                { id: "BAKE-QC-07", description: "Maintain a register of approved suppliers.", priority: "High", riskLevel: "Medium", consequence: "Allows purchasing from unvetted, potentially unsafe sources.", proof: "Approved Supplier List" },
+                { id: "BAKE-QC-07", description: "Maintain a register of approved suppliers.", priority: "High", riskLevel: "Medium", consequence: "Allows for purchasing from unvetted, potentially unsafe sources.", proof: "Approved Supplier List" },
                 { id: "BAKE-QC-08", description: "Check for any signs of adulteration in raw materials.", priority: "High", riskLevel: "High", consequence: "Adulterated ingredients can be a major health hazard.", proof: "Visual/Sensory Check" },
                 { id: "BAKE-QC-09", description: "Verify weight of incoming goods against the invoice.", priority: "High", riskLevel: "Medium", consequence: "Can lead to financial loss from short-weight deliveries.", proof: "Weight Check Log" },
                 { id: "BAKE-QC-10", description: "Reject any delivery that does not meet temperature requirements.", priority: "High", riskLevel: "High", consequence: "Accepting a compromised cold chain delivery is a major food safety risk.", proof: "Temperature Log" }
@@ -109,7 +113,7 @@ export const bakery_confectionery_pack: PremiumPack = {
             department: "Production",
             frequency: "Daily",
             role: "Baker",
-            summary: "Ensures consistent dough quality through proper handling, fermentation, and proofing.",
+            summary: "Ensures consistent dough quality through proper handling and fermentation.",
             icon: "wind",
             tasks: [
                 { id: "BAKE-DOUGH-01", description: "Log dough mixing times and final dough temperature.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent dough temperature affects fermentation and final product texture.", proof: "Dough Log" },
@@ -132,7 +136,7 @@ export const bakery_confectionery_pack: PremiumPack = {
             summary: "A preventive maintenance schedule to keep ovens accurate and reliable.",
             icon: "wrench",
             tasks: [
-                { id: "BAKE-OVEN-01", description: "Calibrate oven thermostats weekly with an independent thermometer.", priority: "High", riskLevel: "High", consequence: "Inaccurate oven thermostat is a primary cause of burnt or undercooked product.", proof: "Calibration Log" },
+                { id: "BAKE-OVEN-01", description: "Calibrate oven thermostats weekly with an independent thermometer.", priority: "High", riskLevel: "High", consequence: "An inaccurate oven thermostat is a primary cause of burnt or undercooked product.", proof: "Calibration Log" },
                 { id: "BAKE-OVEN-02", description: "Check for even heat distribution by test-baking a tray of products.", priority: "High", riskLevel: "Medium", consequence: "Uneven baking leads to inconsistent quality and high levels of waste.", proof: "Test Bake Photos" },
                 { id: "BAKE-OVEN-03", description: "Clean oven interiors and doors daily to prevent carbon buildup.", priority: "High", riskLevel: "Medium", consequence: "Carbon buildup can create off-flavors and is a fire hazard.", proof: "Cleaning Log" },
                 { id: "BAKE-OVEN-04", description: "Inspect door seals for leaks that can cause temperature fluctuations.", priority: "High", riskLevel: "High", consequence: "Leaky seals waste energy and make baking times unpredictable.", proof: "Seal Inspection Log" },
@@ -150,7 +154,7 @@ export const bakery_confectionery_pack: PremiumPack = {
             frequency: "Daily",
             role: "Sales Associate",
             summary: "Manages product display to maximize sales and ensure freshness.",
-            icon: "cake",
+            icon: "cake-slice",
             tasks: [
                 { id: "BAKE-DISP-01", description: "Follow FIFO (First-In, First-Out) when arranging the display counter.", priority: "High", riskLevel: "Medium", consequence: "Failure to rotate stock is a major cause of food waste.", proof: "Visual Audit" },
                 { id: "BAKE-DISP-02", description: "Remove any products that appear stale or damaged from display.", priority: "High", riskLevel: "Medium", consequence: "Selling stale products damages brand reputation.", proof: "Removal Log" },
@@ -209,7 +213,7 @@ export const bakery_confectionery_pack: PremiumPack = {
             department: "Hygiene",
             frequency: "Weekly",
             role: "Hygiene Supervisor",
-            summary: "A preventive program to keep the bakery free of pests like rodents and insects.",
+            summary: "A preventive program to keep the facility free of pests like rodents and insects.",
             icon: "bug",
             tasks: [
                 { id: "BAKE-PEST-01", description: "Inspect for signs of pests (droppings, gnaw marks) weekly.", priority: "High", riskLevel: "High", consequence: "A pest infestation can lead to closure by health authorities and severe brand damage.", proof: "Pest Inspection Log" },
@@ -226,5 +230,3 @@ export const bakery_confectionery_pack: PremiumPack = {
         }
     ]
 };
-
-    
