@@ -10,18 +10,24 @@ export const cinema_operations_pack: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/0acf829c-e492-4f66-ae74-0231bfe0bc82',
     category: "Entertainment & Events",
-    description: "A complete operational pack for cinema managers to ensure a safe, clean, and high-quality movie-going experience.",
+    description: "Stop catastrophic fire tragedies, projection failures, and viral hygiene scandals—before they destroy your brand.",
+    heroHeadline: "Stop catastrophic fire tragedies and projection failures.",
+    heroSubheadline: "Built for multiplex managers who take zero-risk technical and operational integrity seriously.",
+    pricingUrgency: "A single blocked exit or one technical failure during a blockbuster opening costs 100x more than this entire system.",
+    consultingAnchor: 5000,
     icon: "popcorn",
+    badgeText: "High Traffic",
+    badgeVariant: "accent",
     whoIsItFor: ["Cinema Owners", "Multiplex Managers", "Heads of Operations", "F&B Managers (Cinema)"],
     sampleItems: [
-        { text: "Guarantee a perfect show with pre-screening checklists for projection, sound, and lighting.", icon: "projector" },
-        { text: "Prevent fire tragedies with rigorous audits for emergency exits, fire alarms, and staff evacuation training.", icon: "siren" },
-        { text: "Serve safe and quality food with F&B concession stand hygiene and inventory management SOPs.", icon: "utensils" },
-        { text: "Improve profitability with checklists for ticketing, cash handling, and daily sales reconciliation.", icon: "ticket" },
-        { text: "Enhance the guest experience with protocols for auditorium cleaning, seat maintenance, and restroom hygiene.", icon: "sparkles" },
-        { text: "Manage your facility effectively with SOPs for housekeeping, security, and preventive maintenance.", icon: "building" }
+        { text: "<strong>Guarantee</strong> a perfect show with pre-screening checklists for projection, sound, and lighting.", icon: "projector" },
+        { text: "<strong>Prevent</strong> fire tragedies with rigorous audits for emergency exits, alarms, and evacuation drills.", icon: "siren" },
+        { text: "<strong>Serve</strong> safe and quality food with F&B concession stand hygiene and inventory SOPs.", icon: "utensils" },
+        { text: "<strong>Improve</strong> profitability with checklists for ticketing, cash handling, and reconciliation.", icon: "ticket" },
+        { text: "<strong>Enhance</strong> guest experience with protocols for auditorium cleaning and seat maintenance.", icon: "sparkles" },
+        { text: "<strong>Manage</strong> your facility effectively with SOPs for housekeeping, security, and maintenance.", icon: "building" }
     ],
-     checklists: [
+    checklists: [
         {
             title: "Projection & Sound QC",
             department: "Technical",
@@ -55,7 +61,7 @@ export const cinema_operations_pack: PremiumPack = {
                 { id: "FIRE-CIN-03", description: "Conduct a staff evacuation drill quarterly.", priority: "High", riskLevel: "High", consequence: "Untrained staff can cause panic and confusion during a real evacuation.", proof: "Drill Report" },
                 { id: "FIRE-CIN-04", description: "Check all fire extinguishers for pressure and accessibility monthly.", priority: "High", riskLevel: "High", consequence: "An expired or inaccessible extinguisher is useless.", proof: "Extinguisher Log" },
                 { id: "FIRE-CIN-05", description: "Ensure evacuation maps are displayed and accurate.", priority: "High", riskLevel: "High", consequence: "Confused patrons will not know where to go in an emergency.", proof: "Map Audit" },
-                { id: "FIRE-CIN-06", description: "Test emergency lighting daily.", priority: "High", riskLevel: "High", consequence: "In a power outage during a fire, this is the only way for people to see the exit paths.", proof: "Lighting Test Log" },
+                { id: "FIRE-CIN-06", description: "Test emergency lighting daily.", priority: "High", riskLevel: "High", consequence: "In a power failure, this is the only way for people to see the exit paths.", proof: "Lighting Test Log" },
                 { id: "FIRE-CIN-07", description: "Train staff on their roles during an evacuation.", priority: "High", riskLevel: "High", consequence: "Clear roles prevent chaos and ensure an orderly evacuation.", proof: "Training Records" },
                 { id: "FIRE-CIN-08", description: "Keep fire lanes and access for fire trucks clear.", priority: "High", riskLevel: "High", consequence: "A blocked fire lane can delay the fire brigade by critical minutes.", proof: "Exterior Inspection" },
                 { id: "FIRE-CIN-09", description: "Inspect kitchen fire suppression systems monthly.", priority: "High", riskLevel: "High", consequence: "A kitchen fire can quickly get out of control without a working suppression system.", proof: "Suppression System Log" },
@@ -117,7 +123,7 @@ export const cinema_operations_pack: PremiumPack = {
                 { id: "AUD-CLEAN-05", description: "Ensure 3D glasses (if any) are collected and sanitized.", priority: "High", riskLevel: "Medium", consequence: "Dirty 3D glasses are a hygiene risk and a major source of complaints.", proof: "Sanitization Log" },
                 { id: "AUD-CLEAN-06", description: "Check and clean auditorium restrooms.", priority: "High", riskLevel: "Medium", consequence: "Restroom cleanliness is a key driver of overall guest satisfaction.", proof: "Restroom Cleaning Log" },
                 { id: "AUD-CLEAN-07", description: "Verify that the auditorium is at a comfortable temperature.", priority: "High", riskLevel: "Low", consequence: "An auditorium that is too hot or cold is a common complaint.", proof: "Temperature Check" },
-                { id: "AUD-CLEAN-08", description: "Deep clean all auditoriums weekly.", priority: "High", riskLevel: "Medium", consequence: "Prevents long-term buildup of dirt and grime.", proof: "Deep Cleaning Schedule" },
+                { id: "AUD-CLEAN-08", description: "Deep clean all auditoriums weekly.", priority: "High", riskLevel: "Medium", consequence: "Prevents long-term buildup of dirt and grime.", proof: "Deep Clean Schedule" },
                 { id: "AUD-CLEAN-09", description: "Ensure cleaning supplies are stocked.", priority: "High", riskLevel: "Low", consequence: "Lack of supplies can bring cleaning operations to a halt.", proof: "Supply Inventory" },
                 { id: "AUD-CLEAN-10", description: "Supervisor to sign off on cleanliness before the next show.", priority: "High", riskLevel: "Medium", consequence: "Provides a final quality check and ensures standards are met.", proof: "Supervisor Sign-off" }
             ]
@@ -184,9 +190,3 @@ export const cinema_operations_pack: PremiumPack = {
         }
     ]
 };
-
-  
-
-    
-
-    
