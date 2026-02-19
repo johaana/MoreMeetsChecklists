@@ -30,21 +30,21 @@ export default function DesignPreviewClient() {
             {/* CONVERSION PSYCHOLOGY AUDIT SECTION */}
             <div className="max-w-4xl mx-auto space-y-8 px-4">
                 <div className="p-8 border-l-4 border-primary bg-primary/5 rounded-r-xl space-y-4">
-                    <h2 className="text-2xl font-black text-primary uppercase italic tracking-tight">The Conversion Recommendation</h2>
+                    <h2 className="text-2xl font-black text-primary uppercase italic tracking-tight">The Institutional Restraint Upgrade</h2>
                     <div className="grid md:grid-cols-2 gap-8 text-sm text-secondary-text leading-relaxed">
                         <div className="space-y-4">
-                            <p><strong className="text-white">The Problem:</strong> "Eliminate Operational Risk" sounds like a feature or a promise. It doesn't signal a transaction. It creates micro-uncertainty at the point of sale.</p>
-                            <p><strong className="text-white">The Solution:</strong> Shorter, unmistakable trigger text. "BUY FULL PACK — $79" scans faster and signals that the user is moving into a professional transaction.</p>
+                            <p><strong className="text-white">Restrained Typography:</strong> Moving from ALL CAPS to Title Case (`Buy Full Pack – $79`) removes "salesy" vibration. It signals a sophisticated, transactional outcome rather than an emotional marketing pitch.</p>
+                            <p><strong className="text-white">The Transaction Trigger:</strong> Using the word "Buy" explicitly defines the action. In high-stakes B2B, clarity beats elegance every time. The user knows exactly what happens next.</p>
                         </div>
                         <div className="space-y-4">
-                            <p><strong className="text-white">Confidence Microcopy:</strong> Adding "Instant digital delivery" reduces hesitation by confirming immediate utility.</p>
-                            <p><strong className="text-white">Institutional Look:</strong> A structured, confident button that doesn't need to scream. It positions the product as infrastructure.</p>
+                            <p><strong className="text-white">Friction Reduction:</strong> The microcopy below the button specifically targets the biggest B2B hesitations: "When do I get it?" and "How long can I use it?"</p>
+                            <p><strong className="text-white">Target Lock Branding:</strong> The brackets remain to anchor the button in the world of precision tools and operational systems.</p>
                         </div>
                     </div>
                 </div>
 
                 <div className="relative group/card">
-                    {/* THE TARGET LOCK CARD (RECOMMENDED) */}
+                    {/* THE TARGET LOCK CARD (CONVERSION UPGRADED) */}
                     <Card className="w-full max-w-[650px] mx-auto bg-surface-card border-white/10 shadow-[0_0_60px_-12px_rgba(0,0,0,0.5)] flex flex-col h-full overflow-hidden relative">
                         <div className="absolute top-6 right-6 z-20">
                             <div className="bg-accent/10 border border-accent/20 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-sm backdrop-blur-sm">
@@ -97,17 +97,17 @@ export default function DesignPreviewClient() {
                                             <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:-bottom-2 group-hover/btn:-left-2 transition-all duration-300" />
                                             <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary/0 group-hover/btn:border-primary group-hover/btn:-bottom-2 group-hover/btn:-right-2 transition-all duration-300" />
 
-                                            <Button size="lg" className="w-full h-16 bg-primary text-black font-black uppercase italic text-base rounded-sm shadow-2xl transition-all active:scale-95 border-none relative z-10">
-                                                BUY FULL PACK — $79 <ArrowRight className="ml-2 h-5 w-5"/>
+                                            <Button size="lg" className="w-full h-16 bg-primary text-black font-bold text-lg rounded-sm shadow-2xl transition-all active:scale-95 border-none relative z-10">
+                                                Buy Full Pack – $79 <ArrowRight className="ml-2 h-5 w-5"/>
                                             </Button>
                                         </div>
                                         
                                         <div className="space-y-1">
                                             <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest flex items-center justify-center gap-2">
-                                                <Check className="w-3 h-3 text-primary" /> Instant digital delivery
+                                                <Check className="w-3 h-3 text-primary" /> Instant Digital Delivery
                                             </p>
                                             <p className="text-[10px] text-white/30 uppercase tracking-widest">
-                                                Lifetime organization license
+                                                Lifetime Organization License
                                             </p>
                                         </div>
                                     </div>
