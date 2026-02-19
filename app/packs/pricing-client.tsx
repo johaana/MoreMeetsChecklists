@@ -253,7 +253,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <CardContent className="flex-1 p-8 md:p-12 flex flex-col space-y-10 text-center">
                             <div className="space-y-8">
                                 <div className="flex flex-col items-center gap-1">
-                                    <p className="text-xl md:text-2xl font-black text-primary-text tracking-tight uppercase leading-tight italic">
+                                    <p className="text-xl md:text-2xl font-black text-primary-text tracking-tight uppercase leading-tight">
                                         {totalChecklists} {industryWording} · {totalTasks}+ Tasks
                                     </p>
                                     <p className="text-xs text-secondary-text italic font-medium">Complete Operational Payload</p>
