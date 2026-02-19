@@ -12,7 +12,9 @@ import {
     FileSpreadsheet, 
     Infinity, 
     Lock,
-    Check
+    Check,
+    Globe,
+    ShieldAlert
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -26,24 +28,24 @@ const PROOFS = [
 export default function DesignPreviewClient() {
     return (
         <div className="space-y-24 pb-32">
-            {/* AUDIT-READY REFINEMENT SECTION */}
+            {/* SPACING & HIERARCHY REFINEMENT SECTION */}
             <div className="max-w-4xl mx-auto space-y-8 px-4">
                 <div className="p-8 border-l-4 border-primary bg-primary/5 rounded-r-xl space-y-4">
-                    <h2 className="text-2xl font-black text-primary uppercase italic tracking-tight">The Audit-Ready Standard</h2>
+                    <h2 className="text-2xl font-black text-primary uppercase italic tracking-tight">Precision Decision Zone</h2>
                     <div className="grid md:grid-cols-2 gap-8 text-sm text-secondary-text leading-relaxed">
                         <div className="space-y-4">
-                            <p><strong className="text-white">Outcome Focus:</strong> "Audit-Ready" is a practical signal. It moves the conversation from how big the product is to what it actually *does* for the buyer (solving inspection anxiety).</p>
-                            <p><strong className="text-white">Functional Separation:</strong> By separating "Compliance Grade" (Quality) from "Audit-Ready Checklists" (Execution), we provide a clear, non-repetitive hierarchy.</p>
+                            <p><strong className="text-white">Primary Action Flow:</strong> The hierarchy follows a logical "Command → Source → Assurance" sequence. The eye moves from the green action to the secure processor, then to the delivery safety.</p>
+                            <p><strong className="text-white">Combined Microcopy:</strong> By merging delivery and license into one line with a technical dot (·), we reduce "Decision Fatigue" and make the card feel more like a professional instrument.</p>
                         </div>
                         <div className="space-y-4">
-                            <p><strong className="text-white">Technical Punctuation:</strong> The middle dot (·) replaces standard bullets to reinforce the engineering/infrastructure metaphor.</p>
-                            <p><strong className="text-white">Confidence Optimized:</strong> Title case buttons feel more institutional and high-trust compared to promotional all-caps.</p>
+                            <p><strong className="text-white">Calibrated Spacing:</strong> Vertical gaps are tightened (8-12px) to keep trust signals visually "sticky" to the main button, preventing them from feeling like detached footers.</p>
+                            <p><strong className="text-white">Muted Trust:</strong> The Lemon Squeezy badge is treated as a subtle validation rather than a marketing hero, maintaining the "Internal Tool" aesthetic.</p>
                         </div>
                     </div>
                 </div>
 
                 <div className="relative group/card">
-                    {/* THE INSTITUTIONAL TERMINAL */}
+                    {/* THE INSTITUTIONAL TERMINAL - HEALTHCARE CASE STUDY */}
                     <Card className="w-full max-w-[650px] mx-auto bg-surface-card border-white/10 shadow-[0_0_60px_-12px_rgba(0,0,0,0.5)] flex flex-col h-full overflow-hidden relative">
                         {/* THE AUDIT STAMP */}
                         <div className="absolute top-6 right-6 z-20">
@@ -70,7 +72,7 @@ export default function DesignPreviewClient() {
                             <div className="space-y-8">
                                 <div className="flex flex-col items-center gap-1">
                                     <p className="text-xl md:text-2xl font-black text-primary-text tracking-tight uppercase leading-tight italic">
-                                        12 AUDIT-READY CHECKLISTS · 120+ TASKS
+                                        8 CLINICAL & SAFETY CHECKLISTS · 80+ TASKS
                                     </p>
                                     <p className="text-xs text-secondary-text italic font-medium">Complete Operational Payload</p>
                                 </div>
@@ -78,19 +80,20 @@ export default function DesignPreviewClient() {
                                 <div className="flex items-center justify-center gap-2 opacity-100">
                                     <ShieldCheck className="w-3.5 h-3.5 text-white/40" />
                                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic">
-                                        Aligned: ISO · HACCP · OSHA · Industry Standards
+                                        Aligned: JCI · NABH · WHO · Industry Standards
                                     </span>
                                 </div>
                             </div>
 
                             <div className="space-y-8">
                                 <div className="space-y-6 pt-4">
-                                    {/* THE VALUE PILL - ELITE TRACKED */}
+                                    {/* THE VALUE PILL */}
                                     <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto transition-none">
                                         <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                                     </div>
 
-                                    <div className="flex flex-col items-center gap-4">
+                                    <div className="flex flex-col items-center gap-2.5">
+                                        {/* PRIMARY ACTION */}
                                         <div className="w-full md:w-96">
                                             <Button 
                                                 size="lg" 
@@ -100,13 +103,19 @@ export default function DesignPreviewClient() {
                                             </Button>
                                         </div>
                                         
-                                        {/* FRICTION DISSOLUTION MICROCOPY */}
-                                        <div className="space-y-1 text-center">
-                                            <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest flex items-center justify-center gap-2">
-                                                <Check className="w-3 h-3 text-primary" /> Instant Digital Delivery
-                                            </p>
-                                            <p className="text-[10px] text-white/30 uppercase tracking-widest">
-                                                Lifetime Organization License
+                                        {/* TRUST: SOURCE (LemonSqueezy Badge Logic) */}
+                                        <div className="flex items-center justify-center gap-2 opacity-40 grayscale hover:opacity-80 transition-all duration-500">
+                                            <Globe className="w-3 h-3" />
+                                            <span className="text-[10px] font-black uppercase tracking-[0.15em]">SECURE CHECKOUT VIA LEMON SQUEEZY</span>
+                                        </div>
+
+                                        {/* SAFETY: ASSURANCE (Combined Block) */}
+                                        <div className="mt-1">
+                                            <p className="text-[13px] text-muted-foreground font-medium flex items-center justify-center gap-2 tracking-tight">
+                                                <Check className="w-3.5 h-3.5 text-primary opacity-80" /> 
+                                                <span>Instant Digital Delivery</span>
+                                                <span className="opacity-30">·</span>
+                                                <span>Lifetime Organization License</span>
                                             </p>
                                         </div>
                                     </div>
@@ -127,7 +136,7 @@ export default function DesignPreviewClient() {
             </div>
 
             <div className="text-center py-12">
-                <p className="text-sm text-white/20 italic uppercase tracking-[0.3em]">Audit-Ready Refinement Preview</p>
+                <p className="text-sm text-white/20 italic uppercase tracking-[0.3em]">Decision Zone Spacing Audit (Healthcare Example)</p>
             </div>
         </div>
     );
