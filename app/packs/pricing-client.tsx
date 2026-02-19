@@ -262,7 +262,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <div className="flex items-center justify-center gap-2 opacity-100">
                                     <ShieldCheck className="w-3.5 h-3.5 text-white/40" />
                                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic">
-                                        Aligned: ISO · HACCP · OSHA · Industry Standards
+                                        ALIGNED: ISO · HACCP · OSHA · Industry Standards
                                     </span>
                                 </div>
                             </div>

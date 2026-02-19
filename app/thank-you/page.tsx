@@ -10,6 +10,7 @@ import { verifyRazorpayPayment } from '@/packs/actions';
 import { SiteHeader } from "@/components/layout/header";
 import { handleDownload } from '@/lib/download';
 import type { PremiumPack } from "@/lib/premium-packs";
+import { premiumPacks } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 import {
   AlertDialog,
@@ -21,7 +22,6 @@ import {
   AlertDialogFooter,
 } from '@/components/ui/alert-dialog';
 import { Suspense } from "react";
-import { premiumPacks } from "@/lib/premium-packs";
 
 
 function ThankYouContent() {
