@@ -120,7 +120,7 @@ function ThankYouContent() {
                 </p>
                 <p className="font-semibold text-destructive">{error}</p>
                 <p className="text-muted-foreground text-sm pt-4">
-                    Please contact our support team with your Payment ID for assistance.
+                    Please check your email for a receipt and download link. If you still need help, contact our support team.
                 </p>
                  <Button asChild className="mt-4">
                     <Link href="/contact">Contact Support</Link>
@@ -163,14 +163,17 @@ function ThankYouContent() {
                 </div>
             </div>
 
-            <div className="space-y-6 pt-10 border-t border-white/10 w-full max-w-2xl">
-                <div className="space-y-2">
+            <div className="space-y-6 pt-10 border-t border-white/10 w-full max-w-2xl text-center">
+                <div className="space-y-3">
                     <h3 className="text-xl font-bold font-headline text-primary">What Happens Next?</h3>
+                    <p className="text-base text-secondary-text leading-relaxed">
+                        Our team will reach out to you within <span className="font-bold text-primary-text">48 hours (two business days)</span> to initiate your included expert customization session.
+                    </p>
                     <p className="text-base text-secondary-text">
-                        Our team will reach out to you within <span className="font-bold text-primary-text">48 hours (two business days)</span> to initiate your included expert customization session. Alternatively, you can contact us immediately on WhatsApp for any urgent requirements.
+                        Alternatively, you can contact us immediately on WhatsApp for any urgent requirements.
                     </p>
                 </div>
-                <div className="flex flex-wrap justify-center gap-4">
+                <div className="flex flex-wrap justify-center gap-4 pt-4">
                     <Button asChild variant="outline">
                         <Link href="/library">
                             Explore More Toolkits
