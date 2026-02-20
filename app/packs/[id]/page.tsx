@@ -1,4 +1,3 @@
-
 import PackClientPage from "./pack-client-page";
 import { premiumPacks } from '@/lib/premium-packs';
 import { notFound } from 'next/navigation';
@@ -25,13 +24,13 @@ export async function generateMetadata(
     };
   }
   
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.moremeets.com';
+  const siteUrl = 'https://www.moremeets.com';
   const title = `${pack.title} - Excel SOP Templates | MoreMeets™`;
   const description = `Download the complete ${pack.title} checklist pack. Expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`;
   
-  const ogUrl = new URL(`${siteUrl}/api/og`);
-  ogUrl.searchParams.set('type', 'pack');
-  ogUrl.searchParams.set('id', pack.id);
+  // Single source of truth for imagery
+  const imageData = images.find(img => img.id === `pack-${id}`);
+  const ogImage = imageData?.imageUrl || `${siteUrl}/api/og?type=pack&id=${pack.id}`;
 
   return {
     metadataBase: new URL(siteUrl),
@@ -40,13 +39,14 @@ export async function generateMetadata(
     openGraph: {
       title: title,
       description: description,
-      images: [{ url: ogUrl.toString(), width: 1200, height: 630, alt: title }],
+      url: `${siteUrl}/packs/${pack.id}`,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
     },
      twitter: {
       card: 'summary_large_image',
       title: title,
       description: description,
-      images: [ogUrl.toString()],
+      images: [ogImage],
     },
   }
 }
