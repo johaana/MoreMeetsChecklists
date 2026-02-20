@@ -50,7 +50,7 @@ const HowItWorksSection = () => (
             </div>
             <div className="grid md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
                 <div className="flex flex-col items-center">
-                    <Link href="/library" className="group/step">
+                    <Link href="/library" className="group/step w-full flex flex-col items-center">
                         <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl group-hover/step:border-primary/40 transition-all duration-300 group-hover/step:scale-105">
                             <span className="text-5xl font-black text-accent block translate-x-0.5">1</span>
                         </div>
