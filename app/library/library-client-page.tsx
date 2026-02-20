@@ -133,10 +133,10 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                     <div className="container px-4 md:px-6">
                         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary">
-                                SOP & Checklist Library
+                                Industry-Specific Operational Systems
                             </h1>
-                            <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-                                Browse our complete library of professional operational checklists and SOP packs. Find toolkits for hospitality, healthcare, manufacturing, retail, and more.
+                            <p className="max-w-[750px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
+                                Ready-to-implement operational standards designed for consistent execution. Each pack includes editable SOPs, checklists, and one expert customization.
                             </p>
                         </div>
                         
@@ -232,7 +232,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                 {activeCategory === 'All' && searchTerm === '' && <Bestsellers packs={packs} />}
                                 
                                 <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl font-headline text-primary mb-8 text-center">
-                                    {activeCategory === 'All' ? 'All Packs' : activeCategory}
+                                    {activeCategory === 'All' ? 'All Systems' : activeCategory}
                                 </h2>
                                 
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
