@@ -37,7 +37,7 @@ export const allPacks: PremiumPack[] = [
     corporate_legal_compliance_starter_kit,
     enterprise_risk_cybersecurity_pack,
     healthcare_and_hospital_operations,
-    pharmacy_ops_pack,
+    // pharmacy_ops_pack, // Hidden for now as per user request
     school_operations_pack,
     university_college_ops,
     film_production_pack,
