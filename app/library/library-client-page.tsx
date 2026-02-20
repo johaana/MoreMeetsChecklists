@@ -45,7 +45,7 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => (
         <CardFooter>
             <Button asChild className="w-full" variant="secondary">
                 <Link href={`/packs/${pack.id}`}>
-                    Eliminate Operational Risk <ArrowRight className="ml-2 h-4 w-4" />
+                    See What’s Included <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
             </Button>
         </CardFooter>
