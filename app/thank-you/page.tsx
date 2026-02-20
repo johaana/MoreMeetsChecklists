@@ -167,7 +167,7 @@ function ThankYouContent() {
                 <div className="space-y-2">
                     <h3 className="text-xl font-bold font-headline text-primary">What Happens Next?</h3>
                     <p className="text-base text-secondary-text">
-                        Our team will reach out to you within <span className="font-bold text-primary-text">one business day</span> to initiate your included expert customization session. Alternatively, you can contact us immediately on WhatsApp for any urgent requirements.
+                        Our team will reach out to you within <span className="font-bold text-primary-text">48 hours (two business days)</span> to initiate your included expert customization session. Alternatively, you can contact us immediately on WhatsApp for any urgent requirements.
                     </p>
                 </div>
                 <div className="flex flex-wrap justify-center gap-4">
