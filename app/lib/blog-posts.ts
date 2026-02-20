@@ -13,15 +13,18 @@ export type BlogPost = {
 export const blogPosts: BlogPost[] = [
     {
       slug: 'kfc-chicken-shortage-supply-chain-risk',
-      title: "The KFC Chicken Shortage",
+      title: "The Day KFC Ran Out of Chicken",
       publishedDate: "2026-02-20",
       author: "MoreMeets Editorial",
       tags: ["Supply Chain", "Risk Management"],
       relatedPackId: "logistics_warehouse_pack",
-      description: "A forensic analysis of the 2018 KFC logistics collapse. How a single warehouse failure paralyzed 900 restaurants and cost millions in revenue.",
+      description: "A masterclass forensic analysis of the 2018 KFC logistics collapse. How a single warehouse failure paralyzed 900 restaurants and cost millions in revenue.",
       imageUrl: "https://i.postimg.cc/0jdT720g/kfc.webp",
       content: `
         <section>
+          <div class="bg-primary/10 border-l-4 border-primary p-4 mb-8">
+            <p class="text-primary font-black uppercase tracking-widest text-[10px]">Supply Chain Masterclass</p>
+          </div>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">In February 2018, 900 KFC outlets across the UK did the unthinkable. They closed. Not because of a lack of customers, but because they ran out of the one thing they sell: Chicken.</p>
           
           <p>The "Great Chicken Crisis" wasn't a failure of farming; <span class="text-primary font-bold">it was a failure of logistics architecture.</span> KFC had just switched its distribution contract from Bidvest Logistics to DHL. What followed was a masterclass in the dangers of centralized risk and unverified transition protocols.</p>
@@ -71,7 +74,7 @@ export const blogPosts: BlogPost[] = [
           <p>The "Rugby hub" became a bottleneck because the <span class="text-primary font-bold italic">Inbound QC and Slot Management</span> protocols were not calibrated for the volume of a national rollout. It was an inventory management error at an industrial scale.</p>
         </section>
 
-        <h2>Final Debrief: Resilience over Lean</h2>
+        <h2>Final Masterclass Lesson: Resilience over Lean</h2>
         <section>
           <p>Supply chain resilience requires <strong>Distributed Redundancy.</strong> It requires every warehouse node to have independent, verifiable audit protocols for receiving, picking, and dispatch. If you depend on a single warehouse management system without a manual fallback or a secondary node, you aren't optimizing—you are gambling.</p>
           
@@ -268,16 +271,9 @@ export const blogPosts: BlogPost[] = [
           
           <p>The issue wasn’t intelligence. It was <strong>undocumented legacy process assumptions</strong>. A single developer who knew the "quirks" of the old system had left, and the institutional memory of *why* that function existed was gone. <span class="text-risk-accent font-black">Operational memory gaps cost nearly half a billion dollars.</span></p>
           
-          <p>The lesson is universal: <strong>Complexity without documentation is exposure.</strong> Whether it is a trading algorithm or a hotel's fire safety protocol, if the knowledge isn't institutionalized, it will eventually fail. <span class="text-risk-accent font-bold">You are one resignation away from operational blindness.</span></p>
-        </section>
-
-        <h2>Final Debrief: Capturing the Intangible</h2>
-        <section>
-          <p>The solution is not more "experience." The solution is <strong>Institutional Memory</strong>. This requires converting individual brilliance into permanent institutional infrastructure. You must move from a culture of heroes to a culture of systems.</p>
-          
-          <p>It means moving from <span class="text-primary font-black uppercase italic">"He knows"</span> to <span class="text-primary font-black uppercase italic">"The System knows."</span></p>
-          
-          <p>By embedding standards through clearly defined roles, mapped frequencies, and documented consequences, you create an <span class="text-primary font-bold">insurance policy</span> against the day your top talent moves on. When the person resigns, the system stays behind.</p>
+          <p class="text-xl font-bold italic text-primary-text border-l-2 border-primary/30 pl-6 py-2 mt-8">
+            By embedding standards through clearly defined roles, mapped frequencies, and documented consequences, you create an <span class="text-primary font-bold">insurance policy</span> against the day your top talent moves on. When the person resigns, the system stays behind.
+          </p>
         </section>
       `
     }
