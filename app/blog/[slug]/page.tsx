@@ -205,7 +205,7 @@ export default async function BlogPostPage({ params }: Props) {
                             <div className="space-y-8 w-full flex flex-col items-center">
                                 <Link 
                                     href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} 
-                                    className="group/link inline-flex items-center gap-3 text-[13px] sm:text-lg md:text-2xl font-bold text-accent hover:brightness-110 transition-all tracking-tight text-center leading-tight whitespace-nowrap"
+                                    className="group/link inline-flex items-center gap-3 text-[15px] sm:text-lg md:text-2xl font-bold text-accent hover:brightness-110 transition-all tracking-tight text-center leading-tight whitespace-nowrap"
                                 >
                                     <span>{cta.buttonText}</span>
                                     <ArrowRight className="shrink-0 w-4 h-4 md:w-6 md:h-6 transition-transform group-hover/link:translate-x-2" />
