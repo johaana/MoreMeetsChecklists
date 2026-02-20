@@ -1,2 +1,6 @@
-// Redundant design preview nullified for deployment.
-export default function Page() { return null; }
+
+import ClientPage from './client-page';
+
+export default function Page() {
+  return <ClientPage />;
+}
