@@ -53,23 +53,28 @@ const HowItWorksSection = () => (
                     <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl">
                         <span className="text-5xl font-black text-accent">1</span>
                     </div>
-                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">Choose a Standard</h3>
-                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">Industry-specific, audit-ready operational packs.</p>
+                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">Select Your Industry</h3>
+                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">Choose a ready-to-implement operational system designed for your business type.</p>
                 </div>
                  <div className="flex flex-col items-center">
                     <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl">
                         <span className="text-5xl font-black text-accent">2</span>
                     </div>
-                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">Instant Download</h3>
-                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">Get editable files immediately after purchase.</p>
+                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">Implement Immediately</h3>
+                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">Download fully editable checklists and SOPs instantly — no waiting, no delays.</p>
                 </div>
                  <div className="flex flex-col items-center">
                     <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl">
                         <span className="text-5xl font-black text-accent">3</span>
                     </div>
-                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">We Customize It</h3>
-                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">1 Expert Customization Included to match your brand and workflow.</p>
+                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">Tailored To Your Workflow</h3>
+                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">1 expert customization included to match your brand, process, and compliance needs.</p>
                 </div>
+            </div>
+            <div className="mt-16 text-center">
+                <p className="text-lg md:text-xl font-medium text-primary-text italic border-t border-white/5 pt-8 max-w-3xl mx-auto">
+                    Move from inconsistent execution to standardized, audit-ready operations in days — not months.
+                </p>
             </div>
         </div>
     </Section>
