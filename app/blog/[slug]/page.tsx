@@ -202,13 +202,14 @@ export default async function BlogPostPage({ params }: Props) {
                         </div>
 
                         <div className="flex flex-col items-center gap-6 md:gap-8">
-                            <div className="space-y-6 w-full flex flex-col items-center">
-                                <Button asChild size="lg" className="w-full md:w-auto md:min-w-[22rem] px-8 h-auto min-h-14 py-4 bg-primary text-black font-bold text-sm md:text-base tracking-tight shadow-2xl rounded-sm border-none transition-all hover:scale-105 active:scale-95 leading-snug">
-                                    <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} className="flex items-center justify-center text-center gap-2">
-                                        <span className="flex-1">{cta.buttonText}</span>
-                                        <ArrowRight className="shrink-0 w-5 h-5"/>
-                                    </Link>
-                                </Button>
+                            <div className="space-y-8 w-full flex flex-col items-center">
+                                <Link 
+                                    href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} 
+                                    className="group/link inline-flex items-center gap-2 text-xl md:text-3xl font-black text-accent hover:brightness-110 transition-all uppercase italic tracking-tighter"
+                                >
+                                    <span>{cta.buttonText}</span>
+                                    <ArrowRight className="shrink-0 w-6 h-6 md:w-8 md:h-8 transition-transform group-hover/link:translate-x-2" />
+                                </Link>
                                 
                                 <div className="grid grid-cols-2 gap-x-8 gap-y-3 max-w-md mx-auto text-[10px] font-black uppercase text-white/30 tracking-widest text-left">
                                     {REASSURANCES.map(item => (

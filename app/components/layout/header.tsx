@@ -56,10 +56,10 @@ const SolutionsList = () => (
 
 const BrandLogo = ({ isHomepage, isScrolled }: { isHomepage: boolean, isScrolled: boolean }) => (
      <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-        <Logo className={cn("h-6 w-6 text-primary", isHomepage && !isScrolled && "md:text-white")} />
+        <Logo className={cn("h-6 w-6 text-primary")} />
         <div className="flex flex-col">
-            <span className={cn("font-headline text-lg font-bold leading-tight text-foreground", isHomepage && !isScrolled && "md:text-white")}>MoreMeets™</span>
-            <span className={cn("text-xs leading-tight -mt-0.5 text-muted-foreground", isHomepage && !isScrolled && "md:text-white/70")}>Less misses.</span>
+            <span className={cn("font-headline text-lg font-bold leading-tight text-foreground")}>MoreMeets™</span>
+            <span className={cn("text-xs leading-tight -mt-0.5 text-muted-foreground")}>Less misses.</span>
         </div>
     </Link>
 );

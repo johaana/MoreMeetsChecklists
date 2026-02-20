@@ -32,7 +32,7 @@ export const blogPosts: BlogPost[] = [
         </section>
 
         <div class="my-12 overflow-hidden rounded-xl md:rounded-2xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/0jdT720g/kfc.webp" alt="KFC Closed Sign" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
+            <img src="https://i.postimg.cc/D0d91ydR/kfc1.webp" alt="KFC Out of Chicken Sign" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
         </div>
 
         <h2>The Single Point of Failure (SPOF)</h2>
@@ -50,7 +50,7 @@ export const blogPosts: BlogPost[] = [
         </div>
 
         <div class="my-12 overflow-hidden rounded-xl md:rounded-2xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/D0d91ydR/kfc1.webp" alt="KFC Out of Chicken Sign" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
+            <img src="https://i.postimg.cc/0jdT720g/kfc.webp" alt="KFC Closed Sign" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
         </div>
 
         <h2>Forensic Cost Mapping</h2>
