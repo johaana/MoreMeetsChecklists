@@ -191,7 +191,7 @@ export default async function BlogPostPage({ params }: Props) {
                             <h2 className="text-[1.4rem] sm:text-3xl md:text-5xl font-black font-headline tracking-tight text-primary-text uppercase italic leading-[1.15]">
                                 {cta.title}
                             </h2>
-                            <p className="text-base md:text-lg text-secondary-text leading-relaxed">
+                            <p className="text-sm md:text-lg text-secondary-text leading-relaxed">
                                 {cta.description}
                             </p>
                             

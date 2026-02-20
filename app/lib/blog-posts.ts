@@ -49,10 +49,6 @@ export const blogPosts: BlogPost[] = [
             Organizations scaling beyond manual oversight typically deploy <a href="/library" class="text-primary font-bold underline">Operational Systems</a> at this stage to identify hub-level vulnerabilities before they trigger regional shutdowns.
         </div>
 
-        <div class="my-12 overflow-hidden rounded-xl md:rounded-2xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/D0d91ydR/kfc1.webp" alt="KFC Out of Chicken Sign" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
-        </div>
-
         <h2>Forensic Cost Mapping</h2>
         <section class="bg-secondary/10 p-6 md:p-12 rounded-xl border border-white/5 my-12">
           <h4 class="text-primary font-black uppercase tracking-widest text-xs mb-6">Impact Analysis (2018)</h4>
@@ -125,7 +121,7 @@ export const blogPosts: BlogPost[] = [
 
         <h2>From Compliance to Valuation</h2>
         <section>
-          <p>Well-documented operations increase valuation multiples and improve buyer confidence during M&A. They shorten due diligence periods and reduce transition risks. In a scaled environment, these fractions of a percent compound into massive institutional gains.</p>
+          <p>Well-documented operations increase valuation multiples and improve buyer confidence during M&A. They shorten due diligence periods and reduce transition risks. In a scaled environment, these fractions of a percent can compound into massive institutional gains.</p>
           
           <p class="mt-8 text-xl font-bold text-primary-text italic border-l-2 border-primary/20 pl-6">
             <span class="text-primary font-black uppercase">Systemization turns a variable cost (training) into a fixed asset (process).</span> 
