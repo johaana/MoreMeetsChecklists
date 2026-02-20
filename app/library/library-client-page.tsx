@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -132,7 +131,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                 <section className="w-full pt-12 md:pt-20 pb-12 md:pb-24 lg:pb-32">
                     <div className="container px-4 md:px-6">
                         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary">
+                            <h1 className="text-[1.65rem] sm:text-5xl md:text-6xl font-bold tracking-tighter font-headline text-primary leading-tight">
                                 Industry-Specific Operational Systems
                             </h1>
                             <p className="max-w-[750px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">

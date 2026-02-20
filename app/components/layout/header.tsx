@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -121,7 +120,7 @@ export function SiteHeader() {
                 {!isSalesPage && (
                     <>
                         <Link href="/about" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>About Us</Link>
-                        <Link href="/library" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>SOP Library</Link>
+                        <Link href="/library" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Operational Systems</Link>
                         <div 
                             className="group relative"
                             onMouseEnter={() => setIsDropdownOpen(true)}
@@ -192,7 +191,7 @@ export function SiteHeader() {
                                     </div>
                                     <div className="border-b">
                                         <Link href="/library" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors p-2 flex" prefetch={false}>
-                                            SOP Library
+                                            Operational Systems
                                         </Link>
                                     </div>
                                     <AccordionItem value="packs" className="border-b-0">
