@@ -19,13 +19,17 @@ export const blogPosts: BlogPost[] = [
       tags: ["Supply Chain", "Risk Management"],
       relatedPackId: "logistics_warehouse_pack",
       description: "A forensic analysis of the 2018 KFC logistics collapse. How a single warehouse failure paralyzed 900 restaurants and cost millions in revenue.",
-      imageUrl: "https://i.postimg.cc/vTNRvQpx/KFC.png",
+      imageUrl: "https://i.postimg.cc/0jdT720g/kfc.webp",
       content: `
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">In February 2018, 900 KFC outlets across the UK did the unthinkable. They closed. Not because of a lack of customers, but because they ran out of the one thing they sell: Chicken.</p>
           
           <p>The "Great Chicken Crisis" wasn't a failure of farming; <span class="text-primary font-bold">it was a failure of logistics architecture.</span> KFC had just switched its distribution contract from Bidvest Logistics to DHL. What followed was a masterclass in the dangers of centralized risk and unverified transition protocols.</p>
         </section>
+
+        <div class="my-12 overflow-hidden rounded-xl md:rounded-2xl border border-white/10 shadow-2xl">
+            <img src="https://i.postimg.cc/0jdT720g/kfc.webp" alt="KFC Closed Sign" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
+        </div>
 
         <h2>The Single Point of Failure (SPOF)</h2>
         
@@ -36,6 +40,10 @@ export const blogPosts: BlogPost[] = [
             "Efficiency is often the enemy of resilience. In the pursuit of a lean supply chain, KFC removed the safety buffers that allowed for local deviations. When the center failed, the periphery died instantly."
           </blockquote>
         </section>
+
+        <div class="my-12 overflow-hidden rounded-xl md:rounded-2xl border border-white/10 shadow-2xl">
+            <img src="https://i.postimg.cc/D0d91ydR/kfc1.webp" alt="KFC Out of Chicken" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
+        </div>
 
         <h2>Forensic Cost Mapping</h2>
         <section class="bg-secondary/10 p-6 md:p-12 rounded-xl border border-white/5 my-12">
