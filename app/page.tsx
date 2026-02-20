@@ -52,7 +52,7 @@ const HowItWorksSection = () => (
                 <div className="flex flex-col items-center">
                     <Link href="/library" className="group/step">
                         <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl group-hover/step:border-primary/40 transition-all duration-300 group-hover/step:scale-105">
-                            <span className="text-5xl font-black text-accent">1</span>
+                            <span className="text-5xl font-black text-accent block translate-x-0.5">1</span>
                         </div>
                         <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter group-hover/step:text-primary transition-colors flex items-center justify-center gap-2">
                             Select Your Industry <ArrowRight className="w-4 h-4" />
@@ -62,23 +62,23 @@ const HowItWorksSection = () => (
                 </div>
                  <div className="flex flex-col items-center">
                     <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl">
-                        <span className="text-5xl font-black text-accent">2</span>
+                        <span className="text-5xl font-black text-accent block">2</span>
                     </div>
-                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter flex items-center gap-2">
-                        Implement Immediately <FileSpreadsheet className="w-5 h-5 text-primary/40" />
+                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">
+                        Implement Immediately
                     </h3>
                     <p className="text-secondary-text mt-2 text-sm leading-relaxed">Download fully editable checklists and SOPs instantly — no waiting, no delays.</p>
                 </div>
                  <div className="flex flex-col items-center">
                     <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl">
-                        <span className="text-5xl font-black text-accent">3</span>
+                        <span className="text-5xl font-black text-accent block">3</span>
                     </div>
                     <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">Tailored To Your Workflow</h3>
                     <p className="text-secondary-text mt-2 text-sm leading-relaxed">1 expert customization included to match your brand, process, and compliance needs.</p>
                 </div>
             </div>
             <div className="mt-16 text-center">
-                <p className="text-lg md:text-xl font-medium text-primary-text italic border-t border-white/5 pt-8 max-w-3xl mx-auto">
+                <p className="text-lg md:text-xl font-bold text-primary italic border-t border-white/5 pt-8 max-w-3xl mx-auto">
                     Move from inconsistent execution to standardized, audit-ready operations in days — not months.
                 </p>
             </div>
