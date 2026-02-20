@@ -46,7 +46,7 @@ export const blogPosts: BlogPost[] = [
         </section>
 
         <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Organizations scaling beyond manual oversight typically deploy <a href="/library" class="text-primary font-bold underline">structured operational systems</a> at this stage to identify hub-level vulnerabilities before they trigger regional shutdowns.
+            Organizations scaling beyond manual oversight typically deploy <a href="/library" class="text-primary font-bold underline">Operational Systems</a> at this stage to identify hub-level vulnerabilities before they trigger regional shutdowns.
         </div>
 
         <div class="my-12 overflow-hidden rounded-xl md:rounded-2xl border border-white/10 shadow-2xl">
@@ -67,7 +67,7 @@ export const blogPosts: BlogPost[] = [
             </li>
             <li class="flex flex-col md:flex-row md:justify-between gap-2">
               <span class="text-zinc-400 font-medium">Brand Sentiment Drop</span>
-              <span class="text-risk-accent font-black text-xl uppercase italic tracking-tighter">CRITICAL</span>
+              <span class="text-risk-accent font-black text-xl uppercase italic tracking-tighter">IMMEASURABLE</span>
             </li>
           </ul>
         </section>
@@ -108,7 +108,7 @@ export const blogPosts: BlogPost[] = [
         </section>
 
         <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            High-valuation organizations move from reactive compliance to <a href="/library" class="text-primary font-bold underline">structured operational systems</a> to protect their multiples during exit or expansion.
+            High-valuation organizations move from reactive compliance to <a href="/library" class="text-primary font-bold underline">Operational Systems</a> to protect their multiples during exit or expansion.
         </div>
 
         <h2>The Profit Equation</h2>
@@ -153,7 +153,7 @@ export const blogPosts: BlogPost[] = [
         </section>
 
         <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Ensuring clinical reliability requires <a href="/library" class="text-primary font-bold underline">pre-mapped operational standards</a> aligned with global JCI and NABH frameworks.
+            Ensuring clinical reliability requires <a href="/library" class="text-primary font-bold underline">Operational Systems</a> aligned with global JCI and NABH frameworks.
         </div>
 
         <h2>The Checklist Manifesto</h2>
@@ -195,7 +195,7 @@ export const blogPosts: BlogPost[] = [
         </section>
 
         <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Zero-risk food operations deploy <a href="/library" class="text-primary font-bold underline">HACCP-aligned execution protocols</a> to detect temperature drift before it becomes a public health incident.
+            Zero-risk food operations deploy <a href="/library" class="text-primary font-bold underline">Operational Systems</a> to detect temperature drift before it becomes a public health incident.
         </div>
 
         <h2>The Anatomy of Operational Drift</h2>
@@ -271,7 +271,7 @@ export const blogPosts: BlogPost[] = [
         </section>
 
         <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Convert individual brilliance into <a href="/library" class="text-primary font-bold underline">permanent institutional infrastructure</a> to neutralize the Resignation Risk.
+            Convert individual brilliance into <a href="/library" class="text-primary font-bold underline">Operational Systems</a> to neutralize the Resignation Risk.
         </div>
 
         <h2>The Myth of Experience</h2>

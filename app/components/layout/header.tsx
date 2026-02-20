@@ -95,7 +95,7 @@ export function SiteHeader() {
 
         window.addEventListener('scroll', handleScroll);
         handleScroll(); 
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
