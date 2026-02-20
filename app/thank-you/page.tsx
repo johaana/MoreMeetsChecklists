@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -137,8 +138,8 @@ function ThankYouContent() {
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
                     Success! Your download is ready.
                 </h1>
-                <p className="max-w-[600px] text-muted-foreground text-base md:text-lg/relaxed mx-auto">
-                    Your file for <strong>{verifiedItem.title}</strong> has been generated.
+                <p className="max-w-[600px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
+                    Your file for <strong>{verifiedItem.title}</strong> has been generated and should start downloading automatically.
                 </p>
             </div>
             
@@ -155,23 +156,33 @@ function ThankYouContent() {
                             <p className="text-sm font-bold">Having trouble on mobile?</p>
                             <p className="text-xs text-muted-foreground leading-tight">
                                 If you are using WhatsApp or Instagram browser, downloads might be blocked. 
-                                <span className="font-semibold text-foreground"> Tap the three dots (...) and select "Open in System Browser" (Safari/Chrome)</span> to download.
+                                <span className="font-semibold text-foreground"> Tap the three dots (...) and select "Open in System Browser"</span> (Safari/Chrome) to download your file.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="space-y-4 pt-8">
-                <p className="text-sm text-muted-foreground">
-                    If you face any difficulty, email us at <a href="mailto:more@moremeets.com" className="font-semibold text-primary underline">more@moremeets.com</a>. Our team will reach out within one business day for your included customization.
-                </p>
-                <Button asChild variant="outline">
-                    <Link href="/library">
-                        Explore More Toolkits
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                </Button>
+            <div className="space-y-6 pt-10 border-t border-white/10 w-full max-w-2xl">
+                <div className="space-y-2">
+                    <h3 className="text-xl font-bold font-headline text-primary">What Happens Next?</h3>
+                    <p className="text-base text-secondary-text">
+                        Our team will reach out to you within <span className="font-bold text-primary-text">one business day</span> to initiate your included expert customization session. Alternatively, you can contact us immediately on WhatsApp for any urgent requirements.
+                    </p>
+                </div>
+                <div className="flex flex-wrap justify-center gap-4">
+                    <Button asChild variant="outline">
+                        <Link href="/library">
+                            Explore More Toolkits
+                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </Button>
+                    <Button asChild variant="secondary">
+                        <Link href="https://wa.me/919860997711" target="_blank">
+                            Chat on WhatsApp
+                        </Link>
+                    </Button>
+                </div>
             </div>
         </div>
       );
@@ -188,7 +199,7 @@ function ThankYouContent() {
          <AlertDialog open={showDownloadConfirm} onOpenChange={setShowDownloadConfirm}>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle className="flex items-center gap-2"><Download className="w-5 h-5"/> Download Started</AlertDialogTitle>
+                    <AlertDialogTitle className="flex items-center gap-2 text-primary"><Download className="w-5 h-5"/> Download Started</AlertDialogTitle>
                     <AlertDialogDescription>
                         Your checklist has started downloading. Please check your downloads folder. If you are on mobile, use a browser like Chrome or Safari for the best experience.
                     </AlertDialogDescription>

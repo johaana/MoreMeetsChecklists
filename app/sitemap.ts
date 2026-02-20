@@ -1,3 +1,4 @@
+
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -8,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/library',
     '/blog',
     '/contact',
+    '/about',
     '/terms',
     '/privacy',
     '/refund',
