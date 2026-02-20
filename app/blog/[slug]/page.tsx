@@ -98,7 +98,7 @@ export default async function BlogPostPage({ params }: Props) {
       title: "OPERATIONAL DISCIPLINE REQUIRES STRUCTURE",
       description: "Deploy ISO, HACCP, and OSHA-aligned protocols built for real-world execution — not just documentation.",
       compliance: relatedPack ? relatedPack.category : "Global Standards",
-      buttonText: relatedPack ? `Explore — ${relatedPack.title}` : "Explore — Operational Systems"
+      buttonText: relatedPack ? `Explore - ${relatedPack.title}` : "Explore - Operational Systems"
   };
 
   const PROOFS = [
@@ -205,10 +205,10 @@ export default async function BlogPostPage({ params }: Props) {
                             <div className="space-y-8 w-full flex flex-col items-center">
                                 <Link 
                                     href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} 
-                                    className="group/link inline-flex items-center gap-2 text-xl md:text-3xl font-black text-accent hover:brightness-110 transition-all uppercase italic tracking-tighter"
+                                    className="group/link inline-flex items-center gap-3 text-lg md:text-2xl font-bold text-accent hover:brightness-110 transition-all tracking-tight text-center leading-tight"
                                 >
                                     <span>{cta.buttonText}</span>
-                                    <ArrowRight className="shrink-0 w-6 h-6 md:w-8 md:h-8 transition-transform group-hover/link:translate-x-2" />
+                                    <ArrowRight className="shrink-0 w-5 h-5 md:w-6 md:h-6 transition-transform group-hover/link:translate-x-2" />
                                 </Link>
                                 
                                 <div className="grid grid-cols-2 gap-x-8 gap-y-3 max-w-md mx-auto text-[10px] font-black uppercase text-white/30 tracking-widest text-left">

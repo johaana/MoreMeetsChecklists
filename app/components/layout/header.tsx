@@ -54,7 +54,7 @@ const SolutionsList = () => (
     </div>
 );
 
-const BrandLogo = ({ isHomepage, isScrolled }: { isHomepage: boolean, isScrolled: boolean }) => (
+const BrandLogo = () => (
      <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
         <Logo className={cn("h-6 w-6 text-primary")} />
         <div className="flex flex-col">
@@ -107,7 +107,7 @@ export function SiteHeader() {
         )}>
             <div className="flex items-center">
                 <div className="flex">
-                  <BrandLogo isHomepage={isHomepage} isScrolled={isScrolled} />
+                  <BrandLogo />
                 </div>
             </div>
 
@@ -158,7 +158,7 @@ export function SiteHeader() {
                     <SheetContent side="right" className="w-full max-w-sm flex flex-col p-0">
                          <SheetHeader className="p-4 border-b">
                             <SheetTitle>
-                                <BrandLogo isHomepage={isHomepage} isScrolled={isScrolled} />
+                                <BrandLogo />
                             </SheetTitle>
                         </SheetHeader>
                         <ScrollArea className="flex-1">
