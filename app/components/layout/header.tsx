@@ -55,10 +55,10 @@ const SolutionsList = () => (
 
 const BrandLogo = ({ isHomepage, isScrolled }: { isHomepage: boolean, isScrolled: boolean }) => (
      <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-        <Logo className={cn("h-6 w-6", isHomepage && !isScrolled ? "text-white" : "text-primary")} />
+        <Logo className={cn("h-6 w-6 text-primary", isHomepage && !isScrolled && "md:text-white")} />
         <div className="flex flex-col">
-            <span className={cn("font-headline text-lg font-bold leading-tight", isHomepage && !isScrolled ? "text-white" : "text-foreground")}>MoreMeets™</span>
-            <span className={cn("text-xs leading-tight -mt-0.5", isHomepage && !isScrolled ? "text-white/70" : "text-muted-foreground")}>Less misses.</span>
+            <span className={cn("font-headline text-lg font-bold leading-tight text-foreground", isHomepage && !isScrolled && "md:text-white")}>MoreMeets™</span>
+            <span className={cn("text-xs leading-tight -mt-0.5 text-muted-foreground", isHomepage && !isScrolled && "md:text-white/70")}>Less misses.</span>
         </div>
     </Link>
 );
@@ -105,13 +105,9 @@ export function SiteHeader() {
                 : "bg-background/95 backdrop-blur-sm border-b"
         )}>
             <div className="flex items-center">
-                <div className="hidden md:flex">
+                <div className="flex">
                   <BrandLogo isHomepage={isHomepage} isScrolled={isScrolled} />
                 </div>
-            </div>
-            
-            <div className="md:hidden flex-1">
-                 <BrandLogo isHomepage={isHomepage} isScrolled={isScrolled} />
             </div>
 
             <nav className="ml-auto hidden md:flex gap-4 sm:gap-6 items-center">
