@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { Logo, WhatsAppIcon } from "@/components/icons";
 import { Mail } from "lucide-react";
@@ -19,8 +18,8 @@ export function Footer() {
                 <div className="flex flex-col gap-2 items-center text-sm md:items-start md:mx-auto">
                     <h3 className="font-semibold mb-2 text-primary-text">Navigation</h3>
                     <Link href="/about" className="text-secondary-text hover:text-primary-text" prefetch={false}>About Us</Link>
-                    <Link href="/library" className="text-secondary-text hover:text-primary-text" prefetch={false}>SOP Library</Link>
-                    <Link href="/blog" className="text-secondary-text hover:text-primary-text" prefetch={false}>Black Box Debrief</Link>
+                    <Link href="/library" className="text-secondary-text hover:text-primary-text" prefetch={false}>Operational Systems</Link>
+                    <Link href="/blog" className="text-secondary-text hover:text-primary-text" prefetch={false}>Intelligence Hub</Link>
                     <Link href="/contact" className="text-secondary-text hover:text-primary-text" prefetch={false}>Contact</Link>
                 </div>
                 <div className="flex flex-col gap-2 items-center md:items-start text-sm">

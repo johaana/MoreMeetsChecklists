@@ -25,8 +25,15 @@ export async function generateMetadata(
   }
   
   const siteUrl = 'https://www.moremeets.com';
-  const title = `${pack.title} - Excel SOP Templates | MoreMeets™`;
-  const description = `Download the complete ${pack.title} checklist pack. Expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`;
+  
+  // SEO Optimization for Animal Shelter specifically
+  let title = `${pack.title} - Excel SOP Templates | MoreMeets™`;
+  let description = `Download the complete ${pack.title} checklist pack. Expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`;
+  
+  if (id === 'animal_shelter_pack') {
+      title = "Free Animal Shelter Operations Framework & SOPs | MoreMeets™";
+      description = "Download our comprehensive, free operational framework for animal shelters. Includes hygiene, medical intake, and welfare SOPs in editable Excel format.";
+  }
   
   // Single source of truth for imagery
   const imageData = images.find(img => img.id === `pack-${id}`);

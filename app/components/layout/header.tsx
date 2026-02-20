@@ -153,7 +153,7 @@ export function SiteHeader() {
             <div className="md:hidden ml-auto">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" className={cn(isHomepage && !isScrolled && "text-white/80 hover:text-white hover:bg-white/10")}>
+                        <Button variant="ghost" size="icon" className={cn(isHomepage && !isScrolled ? "text-white/80 hover:text-white hover:bg-white/10" : "text-foreground")}>
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>

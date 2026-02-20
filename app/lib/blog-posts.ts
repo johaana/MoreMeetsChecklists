@@ -19,7 +19,7 @@ export const blogPosts: BlogPost[] = [
       tags: ["Supply Chain", "Risk Management"],
       relatedPackId: "logistics_warehouse_pack",
       description: "A masterclass forensic analysis of the 2018 KFC logistics collapse. How a single warehouse failure paralyzed 900 restaurants and cost millions in revenue.",
-      imageUrl: "https://i.postimg.cc/0jdT720g/kfc.webp",
+      imageUrl: "https://i.postimg.cc/D0d91ydR/kfc1.webp",
       content: `
         <section>
           <div class="bg-primary/10 border-l-4 border-primary p-4 mb-8">
@@ -31,7 +31,7 @@ export const blogPosts: BlogPost[] = [
         </section>
 
         <div class="my-12 overflow-hidden rounded-xl md:rounded-2xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/0jdT720g/kfc.webp" alt="KFC Closed Sign" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
+            <img src="https://i.postimg.cc/D0d91ydR/kfc1.webp" alt="KFC Out of Chicken Sign" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
         </div>
 
         <h2>The Single Point of Failure (SPOF)</h2>
@@ -44,8 +44,12 @@ export const blogPosts: BlogPost[] = [
           </blockquote>
         </section>
 
+        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
+            Organizations scaling beyond manual oversight typically deploy <a href="/library" class="text-primary font-bold underline">structured audit protocols</a> at this stage to identify hub-level vulnerabilities before they trigger regional shutdowns.
+        </div>
+
         <div class="my-12 overflow-hidden rounded-xl md:rounded-2xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/D0d91ydR/kfc1.webp" alt="KFC Out of Chicken" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
+            <img src="https://i.postimg.cc/0jdT720g/kfc.webp" alt="KFC Closed Sign" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
         </div>
 
         <h2>Forensic Cost Mapping</h2>
@@ -102,6 +106,10 @@ export const blogPosts: BlogPost[] = [
           <p>This is the <span class="text-risk-accent font-black">"Inefficiency Tax"</span> that kills margins in growing companies and destroys investor confidence.</p>
         </section>
 
+        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
+            High-valuation organizations move from reactive compliance to <a href="/library" class="text-primary font-bold underline">structured operational governance</a> to protect their multiples during exit or expansion.
+        </div>
+
         <h2>The Profit Equation</h2>
         
         <section>
@@ -143,6 +151,10 @@ export const blogPosts: BlogPost[] = [
           <p>The core challenge of modern clinical quality is <span class="text-primary font-bold">standardizing brilliance</span>. In a high-stakes environment, brilliance is a variable; a <span class="text-primary font-black">structured system is a constant</span>.</p>
         </section>
 
+        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
+            Ensuring clinical reliability requires <a href="/library" class="text-primary font-bold underline">pre-mapped operational standards</a> aligned with global JCI and NABH frameworks.
+        </div>
+
         <h2>The Checklist Manifesto</h2>
         
         <section>
@@ -180,6 +192,10 @@ export const blogPosts: BlogPost[] = [
           
           <p>Foodborne illness is not rare. But this wasn’t just a failure of biology; <span class="text-primary font-bold">it was a failure of systems.</span> Chipotle—the poster child for "Food With Integrity"—was brought to its knees by its own operational success and the resulting complexity that outpaced its controls.</p>
         </section>
+
+        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
+            Zero-risk food operations deploy <a href="/library" class="text-primary font-bold underline">HACCP-aligned execution protocols</a> to detect temperature drift before it becomes a public health incident.
+        </div>
 
         <h2>The Anatomy of Operational Drift</h2>
         
@@ -252,6 +268,10 @@ export const blogPosts: BlogPost[] = [
           
           <p>This is the hidden crisis of the modern enterprise: <strong>The Resignation Risk.</strong> It is the silent killer of consistency. In high-stakes environments, this gap isn't just a financial nuisance; it is a safety catastrophe waiting for a trigger.</p>
         </section>
+
+        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
+            Convert individual brilliance into <a href="/library" class="text-primary font-bold underline">permanent institutional infrastructure</a> to neutralize the Resignation Risk.
+        </div>
 
         <h2>The Myth of Experience</h2>
         

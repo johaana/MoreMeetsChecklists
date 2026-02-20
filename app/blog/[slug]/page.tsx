@@ -19,7 +19,8 @@ import {
     Infinity, 
     Lock,
     ShieldCheck,
-    Gift
+    Gift,
+    Check
 } from 'lucide-react';
 
 type Props = {
@@ -94,38 +95,10 @@ export default async function BlogPostPage({ params }: Props) {
   const readingTime = Math.max(12, Math.ceil(wordCount / 225));
 
   const getCTAConfig = () => {
-    if (slug === 'the-day-the-process-left-with-him') {
-        return {
-            title: "SECURE YOUR INSTITUTIONAL MEMORY",
-            description: "Convert individual brilliance into permanent infrastructure. Mapped to ISO 9001 and ISO 41001 standards for instant organizational audit-readiness and continuity.",
-            compliance: "ISO 9001 • ISO 41001"
-        };
-    }
-    if (slug === 'the-25-million-burrito') {
-        return {
-            title: "ELIMINATE OPERATIONAL DRIFT",
-            description: "Deploy the verified, HACCP and FSSAI-aligned institutional backbone designed to eliminate the exact failure points analyzed in this debrief.",
-            compliance: "HACCP • FSSAI • ISO 22000"
-        };
-    }
-    if (slug === 'patient-safety-process-discipline') {
-        return {
-            title: "BUILD SYSTEMS THAT PROTECT LIVES",
-            description: "Deploy an institutional-grade JCI and NABH aligned control protocol designed for zero-ambiguity execution in high-risk environments.",
-            compliance: "JCI • NABH • WHO"
-        };
-    }
-    if (slug === 'hidden-roi-of-sops') {
-        return {
-            title: "TURN STRUCTURE INTO PROFIT",
-            description: "ISO 27001 and SOC2 mapped protocols for organizational scalability. Reduce onboarding time by 40% and lower error rates instantly.",
-            compliance: "ISO 27001 • SOC2 • Statutory"
-        };
-    }
     return {
-        title: "DEPLOY PROFESSIONAL STANDARDS",
-        description: "ISO, HACCP, and OSHA mapped protocols for instant organizational audit-readiness and brand protection. Ready for immediate organizational deployment.",
-        compliance: "ISO • HACCP • OSHA"
+        title: "OPERATIONAL DISCIPLINE REQUIRES STRUCTURE",
+        description: "Deploy ISO, HACCP, and OSHA-aligned protocols built for real-world execution — not just documentation.",
+        compliance: relatedPack ? relatedPack.category : "Global Standards"
     };
   };
 
@@ -136,6 +109,13 @@ export default async function BlogPostPage({ params }: Props) {
     { label: 'Editable .xlsx', icon: FileSpreadsheet },
     { label: 'Lifetime Updates', icon: Infinity },
     { label: 'No SaaS lock-in', icon: Lock }
+  ];
+
+  const REASSURANCES = [
+    "No SaaS lock-in",
+    "Editable formats",
+    "Immediate deployment",
+    "Expert customization included"
   ];
 
   return (
@@ -222,7 +202,7 @@ export default async function BlogPostPage({ params }: Props) {
                             {/* THE MUTED WHITE STANDARD */}
                             <div className="flex items-center justify-center gap-3 pt-2">
                                 <Shield className="w-3.5 h-3.5 text-white/40" />
-                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Aligned: {cta.compliance}</span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Aligned Sector: {cta.compliance}</span>
                             </div>
                         </div>
 
@@ -232,11 +212,22 @@ export default async function BlogPostPage({ params }: Props) {
                                 <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
                             </div>
                             
-                            <Button asChild size="lg" className="w-full md:w-96 h-16 bg-primary text-black font-black uppercase italic text-sm tracking-[0.1em] shadow-2xl rounded-sm border-none transition-all hover:scale-105 active:scale-95">
-                                <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} className="flex items-center justify-center text-center">
-                                    Protect Your Operations <ArrowRight className="ml-2 h-5 w-5"/>
-                                </Link>
-                            </Button>
+                            <div className="space-y-4 w-full flex flex-col items-center">
+                                <Button asChild size="lg" className="w-full md:w-96 h-16 bg-primary text-black font-black uppercase italic text-sm tracking-[0.1em] shadow-2xl rounded-sm border-none transition-all hover:scale-105 active:scale-95">
+                                    <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} className="flex items-center justify-center text-center">
+                                        Explore the Operational Standards <ArrowRight className="ml-2 h-5 w-5"/>
+                                    </Link>
+                                </Button>
+                                
+                                {/* CONVERSION REASSURANCE LAYER */}
+                                <div className="grid grid-cols-2 gap-x-6 gap-y-2 max-w-md mx-auto text-[9px] font-black uppercase text-white/30 tracking-widest text-left">
+                                    {REASSURANCES.map(item => (
+                                        <div key={item} className="flex items-center gap-1.5">
+                                            <Check className="w-3 h-3 text-primary/50" /> {item}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                       </div>
                       

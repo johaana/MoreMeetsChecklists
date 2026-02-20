@@ -28,23 +28,23 @@ const allPacksByCategory = (packs: PremiumPack[]) => {
 };
 
 const PackCard = ({ pack }: { pack: PremiumPack }) => (
-    <Card key={pack.id} className="flex flex-col h-full overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20">
+    <Card key={pack.id} className="flex flex-col h-full overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20 bg-black/40 backdrop-blur-sm">
         <CardHeader>
             <div className='flex justify-between items-start'>
                 <IconComponent name={pack.icon} className="h-8 w-8 text-accent mb-2" />
-                {pack.badgeText && <Badge variant={pack.badgeVariant || 'default'}>{pack.badgeText}</Badge>}
+                {pack.badgeText && <Badge variant={pack.badgeVariant || 'default'} className="uppercase tracking-widest text-[8px] font-black">{pack.badgeText}</Badge>}
             </div>
-            <CardTitle className="text-xl font-headline">
+            <CardTitle className="text-xl font-headline italic uppercase tracking-tighter">
                 <Link href={`/packs/${pack.id}`} className="hover:text-primary transition-colors">{pack.title}</Link>
             </CardTitle>
         </CardHeader>
         <CardContent className="flex-1">
-            <CardDescription>{pack.description}</CardDescription>
+            <CardDescription className="text-secondary-text leading-relaxed">{pack.description}</CardDescription>
         </CardContent>
         <CardFooter>
-            <Button asChild className="w-full" variant="secondary">
+            <Button asChild className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-black font-black uppercase italic text-xs tracking-widest transition-all" variant="secondary">
                 <Link href={`/packs/${pack.id}`}>
-                    See What’s Included <ArrowRight className="ml-2 h-4 w-4" />
+                    Analyze Implementation <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
             </Button>
         </CardFooter>
@@ -57,11 +57,11 @@ const Bestsellers = ({ packs }: { packs: PremiumPack[] }) => {
 
     return (
         <div className="mb-16">
-            <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl font-headline text-primary mb-6 text-center">Bestsellers</h2>
+            <h2 className="text-xl font-black tracking-[0.3em] uppercase text-primary mb-10 text-center opacity-60">Field-Tested Benchmarks</h2>
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
                 {bestsellerPacks.map(pack => <PackCard key={pack.id} pack={pack} />)}
             </div>
-            <hr className="my-12 border-dashed" />
+            <div className="mt-16 border-b border-white/5" />
         </div>
     )
 }
@@ -131,22 +131,23 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                 <section className="w-full pt-12 md:pt-20 pb-12 md:pb-24 lg:pb-32">
                     <div className="container px-4 md:px-6">
                         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                            <h1 className="text-[1.65rem] sm:text-5xl md:text-6xl font-bold tracking-tighter font-headline text-primary leading-tight">
-                                Industry-Specific Operational Systems
+                            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Operational Infrastructure</Badge>
+                            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter font-headline text-primary-text leading-tight uppercase italic">
+                                Operational Systems Hub
                             </h1>
-                            <p className="max-w-[750px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-                                Ready-to-implement operational standards designed for consistent execution. Each pack includes editable SOPs, checklists, and one expert customization.
+                            <p className="max-w-[750px] text-secondary-text text-lg md:text-xl font-medium leading-relaxed mx-auto italic border-l-2 border-primary/20 pl-6">
+                                Industry-grade execution frameworks designed for zero-ambiguity governance. Deploy editable SOPs and technical checklists instantly.
                             </p>
                         </div>
                         
-                        <div className="max-w-4xl mx-auto mb-12 p-4 rounded-lg border bg-background/95 shadow-sm">
+                        <div className="max-w-4xl mx-auto mb-16 p-4 rounded-2xl border border-white/5 bg-white/[0.02] shadow-2xl">
                              <div className="flex flex-col md:flex-row gap-4 items-center">
                                 <div className="relative w-full md:flex-1">
                                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                                     <Input 
                                         type="search" 
-                                        placeholder="Search by title or keyword..." 
-                                        className="pl-10 w-full"
+                                        placeholder="Search by sector or keyword..." 
+                                        className="pl-10 w-full bg-black/40 border-white/10"
                                         value={searchTerm}
                                         onChange={handleSearchChange}
                                     />
@@ -154,15 +155,15 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                 <div className="hidden md:block">
                                     <DropdownMenu>
                                         <DropdownMenuTrigger asChild>
-                                            <Button variant="outline" className="w-full md:w-[240px] justify-between">
-                                                {activeCategory === 'All' ? 'Filter by Industry' : activeCategory}
+                                            <Button variant="outline" className="w-full md:w-[240px] justify-between border-white/10 font-bold uppercase text-[10px] tracking-widest">
+                                                {activeCategory === 'All' ? 'Select Industry' : activeCategory}
                                                 <ChevronDown className="w-4 h-4 ml-2" />
                                             </Button>
                                         </DropdownMenuTrigger>
-                                        <DropdownMenuContent className="w-56 max-h-96 overflow-y-auto">
-                                            <DropdownMenuItem onSelect={() => handleCategoryChange('All')}>All Industries</DropdownMenuItem>
+                                        <DropdownMenuContent className="w-56 max-h-96 overflow-y-auto bg-alternate-background border-white/10">
+                                            <DropdownMenuItem onSelect={() => handleCategoryChange('All')} className="uppercase text-[10px] font-bold tracking-widest">All Industries</DropdownMenuItem>
                                             {categories.map(category => (
-                                                <DropdownMenuItem key={category} onSelect={() => handleCategoryChange(category)}>
+                                                <DropdownMenuItem key={category} onSelect={() => handleCategoryChange(category)} className="uppercase text-[10px] font-bold tracking-widest">
                                                     {category}
                                                 </DropdownMenuItem>
                                             ))}
@@ -174,10 +175,10 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                         variant="ghost"
                                         size="sm"
                                         onClick={clearFilters}
-                                        className="w-full md:w-auto"
+                                        className="w-full md:w-auto text-primary uppercase font-black text-[10px] tracking-widest"
                                     >
                                         <X className="h-4 w-4 mr-2" />
-                                        Clear
+                                        Reset Filters
                                     </Button>
                                 )}
                             </div>
@@ -186,20 +187,20 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                         <div className="md:hidden fixed bottom-4 right-4 z-40">
                              <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
                                 <SheetTrigger asChild>
-                                    <Button size="icon" className="rounded-full w-14 h-14 shadow-lg">
+                                    <Button size="icon" className="rounded-full w-14 h-14 shadow-2xl bg-primary text-black">
                                         <Filter className="w-6 h-6" />
                                     </Button>
                                 </SheetTrigger>
-                                <SheetContent side="bottom" className="rounded-t-2xl">
-                                    <SheetHeader className="mb-4">
-                                        <SheetTitle>Filter by Industry</SheetTitle>
+                                <SheetContent side="bottom" className="rounded-t-[2rem] bg-alternate-background border-t border-white/10">
+                                    <SheetHeader className="mb-6">
+                                        <SheetTitle className="uppercase font-black tracking-widest text-xs">Filter by Sector</SheetTitle>
                                     </SheetHeader>
                                     <ScrollArea className="h-[60vh]">
                                         <div className="flex flex-col gap-2 pr-4">
                                              <Button
                                                 variant={activeCategory === 'All' ? 'default' : 'ghost'}
                                                 onClick={() => handleCategoryChange('All')}
-                                                className="justify-start text-lg"
+                                                className="justify-start text-base font-bold uppercase tracking-widest italic"
                                             >
                                                 All Industries
                                             </Button>
@@ -208,7 +209,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                                     key={tag}
                                                     variant={activeCategory === tag ? 'default' : 'ghost'}
                                                     onClick={() => handleCategoryChange(tag)}
-                                                    className="justify-start text-lg"
+                                                    className="justify-start text-base font-bold uppercase tracking-widest italic"
                                                 >
                                                     {tag}
                                                 </Button>
@@ -216,22 +217,22 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                         </div>
                                     </ScrollArea>
                                 </SheetContent>
-                            </Sheet>
+                             </Sheet>
                         </div>
 
 
                         {filteredPacks.length === 0 ? (
-                            <div className="text-center py-16">
-                                <p className="text-lg font-semibold">No packs found.</p>
-                                <p className="text-muted-foreground">Try adjusting your search or filter.</p>
-                                <Button onClick={clearFilters} variant="link" className="mt-4">Clear all filters</Button>
+                            <div className="text-center py-24 bg-white/[0.02] rounded-3xl border border-dashed border-white/10">
+                                <p className="text-lg font-bold text-primary-text uppercase tracking-widest">No matching systems found.</p>
+                                <p className="text-secondary-text mt-2">Adjust your forensic criteria or reset filters.</p>
+                                <Button onClick={clearFilters} variant="link" className="mt-6 text-primary">Clear all filters</Button>
                             </div>
                         ) : (
                             <>
                                 {activeCategory === 'All' && searchTerm === '' && <Bestsellers packs={packs} />}
                                 
-                                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl font-headline text-primary mb-8 text-center">
-                                    {activeCategory === 'All' ? 'All Systems' : activeCategory}
+                                <h2 className="text-lg font-black tracking-[0.3em] uppercase text-white/30 mb-10 text-center">
+                                    {activeCategory === 'All' ? 'Full Inventory' : `${activeCategory} Systems`}
                                 </h2>
                                 
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
