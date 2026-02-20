@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -134,14 +135,14 @@ export function SiteHeader() {
                                         <PawPrint className="w-4 h-4" /> Social Cause (Free Pack)
                                     </Link>
                                     <Link href="/library" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
-                                        View All Premium Packs &rarr;
+                                        View All Operational Systems &rarr;
                                     </Link>
                                 </div>
                             </div>
                         </div>
                     )}
                 </div>
-                <Link href="/blog" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Blog</Link>
+                <Link href="/blog" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Intelligence Hub</Link>
                 <Link href="/contact" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Contact</Link>
             </nav>
 
@@ -204,7 +205,7 @@ export function SiteHeader() {
                                     </AccordionItem>
                                     <div className="border-b">
                                         <Link href="/blog" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors p-2 flex" prefetch={false}>
-                                            Blog
+                                            Intelligence Hub
                                         </Link>
                                     </div>
                                     <div>

@@ -94,16 +94,12 @@ export default async function BlogPostPage({ params }: Props) {
   const wordCount = post.content.replace(/<[^>]*>/g, '').split(/\s+/).length;
   const readingTime = Math.max(12, Math.ceil(wordCount / 225));
 
-  const getCTAConfig = () => {
-    return {
-        title: "OPERATIONAL DISCIPLINE REQUIRES STRUCTURE",
-        description: "Deploy ISO, HACCP, and OSHA-aligned protocols built for real-world execution — not just documentation.",
-        compliance: relatedPack ? relatedPack.category : "Global Standards",
-        buttonText: relatedPack ? "Explore this System" : "Explore the Operational Systems"
-    };
+  const cta = {
+      title: "OPERATIONAL DISCIPLINE REQUIRES STRUCTURE",
+      description: "Deploy ISO, HACCP, and OSHA-aligned protocols built for real-world execution — not just documentation.",
+      compliance: relatedPack ? relatedPack.category : "Global Standards",
+      buttonText: relatedPack ? `Explore — ${relatedPack.title}` : "Explore — Operational Systems"
   };
-
-  const cta = getCTAConfig();
 
   const PROOFS = [
     { label: 'Audit-Ready', icon: ShieldCheck },
@@ -186,7 +182,6 @@ export default async function BlogPostPage({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: post.content }} 
               />
 
-              {/* RESOLUTION PROTOCOL CARD - CENTERED HIGH GRAVITY */}
               <div className="mt-12 md:mt-16 pt-8 md:pt-12 relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl md:rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
                   <Card className="overflow-hidden bg-black border border-white/10 rounded-2xl md:rounded-[2rem] relative z-10 shadow-2xl">
@@ -208,13 +203,13 @@ export default async function BlogPostPage({ params }: Props) {
 
                         <div className="flex flex-col items-center gap-6 md:gap-8">
                             <div className="space-y-6 w-full flex flex-col items-center">
-                                <Button asChild size="lg" className="w-full md:w-auto md:min-w-[20rem] px-10 h-14 bg-primary text-black font-bold text-sm md:text-base tracking-tight shadow-2xl rounded-sm border-none transition-all hover:scale-105 active:scale-95">
-                                    <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} className="flex items-center justify-center text-center">
-                                        {cta.buttonText} <ArrowRight className="ml-2 h-5 w-5"/>
+                                <Button asChild size="lg" className="w-full md:w-auto md:min-w-[22rem] px-8 h-auto min-h-14 py-4 bg-primary text-black font-bold text-sm md:text-base tracking-tight shadow-2xl rounded-sm border-none transition-all hover:scale-105 active:scale-95 leading-snug">
+                                    <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} className="flex items-center justify-center text-center gap-2">
+                                        <span className="flex-1">{cta.buttonText}</span>
+                                        <ArrowRight className="shrink-0 w-5 h-5"/>
                                     </Link>
                                 </Button>
                                 
-                                {/* CONVERSION REASSURANCE LAYER */}
                                 <div className="grid grid-cols-2 gap-x-8 gap-y-3 max-w-md mx-auto text-[10px] font-black uppercase text-white/30 tracking-widest text-left">
                                     {REASSURANCES.map(item => (
                                         <div key={item} className="flex items-center gap-2">
@@ -226,7 +221,6 @@ export default async function BlogPostPage({ params }: Props) {
                         </div>
                       </div>
                       
-                      {/* THE DELIVERABLE BAR - FORCED SINGLE LINE */}
                       <div className="bg-white/[0.03] border-t border-white/5 py-5 px-4 md:px-12 flex flex-nowrap items-center justify-center overflow-x-auto gap-8 no-scrollbar">
                         {PROOFS.map(item => (
                             <div key={item.label} className="flex items-center gap-1.5 text-[8px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.1em] shrink-0 whitespace-nowrap">
