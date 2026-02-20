@@ -220,7 +220,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             
                             <div className="w-full flex flex-col items-center gap-4">
                                 <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Resolution Protocol</Badge>
-                                <h2 className="text-3xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-[1.1]">
+                                <h2 className="text-[1.3rem] sm:text-3xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-[1.1]">
                                     ELIMINATE OPERATIONAL RISK
                                 </h2>
                                 <div className="flex items-center gap-2">

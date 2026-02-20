@@ -144,7 +144,7 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
           <section id="checklists" className="w-full py-12 md:py-16">
               <div className="container px-2 md:px-6">
                   <div className="max-w-4xl mx-auto text-center mb-12">
-                      <h2 className="text-3xl md:text-4xl font-black tracking-tighter font-headline uppercase italic">
+                      <h2 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tighter font-headline uppercase italic">
                           ZERO-AMBIGUITY EXECUTION FRAMEWORK
                       </h2>
                       <p className="max-w-[700px] text-secondary-text text-base md:text-lg/relaxed mx-auto mt-4 font-medium">

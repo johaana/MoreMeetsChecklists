@@ -190,7 +190,7 @@ export default async function BlogPostPage({ params }: Props) {
                       <div className="p-8 md:p-16 text-center space-y-10">
                         <div className="space-y-4 max-w-2xl mx-auto">
                             <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Resolution Protocol</Badge>
-                            <h2 className="text-3xl md:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-[1.1]">
+                            <h2 className="text-[1.3rem] sm:text-3xl md:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-[1.1]">
                                 {cta.title}
                             </h2>
                             <p className="text-base md:text-lg text-secondary-text leading-relaxed">
