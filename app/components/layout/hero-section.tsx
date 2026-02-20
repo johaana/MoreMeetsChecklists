@@ -7,9 +7,9 @@ import { ArrowRight } from "lucide-react";
 import React from 'react';
 
 export const HeroSection = () => (
-    <section className="relative w-full flex flex-col md:flex-row md:items-center h-[100dvh] md:h-screen md:min-h-[700px] overflow-hidden bg-background">
+    <section className="relative w-full flex flex-col md:flex-row md:items-center h-[calc(100dvh-64px)] md:h-screen md:min-h-[700px] overflow-hidden bg-background">
         {/* Visual Brand Layer */}
-        <div className="relative h-[35vh] md:absolute md:top-0 md:left-0 md:h-full md:w-full z-0 overflow-hidden shrink-0">
+        <div className="relative h-[28vh] md:absolute md:top-0 md:left-0 md:h-full md:w-full z-0 overflow-hidden shrink-0">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
                 autoPlay
@@ -28,9 +28,9 @@ export const HeroSection = () => (
             <div className="md:hidden absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-15" />
         </div>
 
-        {/* Content Layer: Pulling text up for mobile efficiency */}
-        <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-start md:justify-center pt-6 md:pt-0">
-            <div className="max-w-2xl space-y-5 md:space-y-6">
+        {/* Content Layer: Highly optimized for mobile "above the fold" visibility */}
+        <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-start md:justify-center pt-2 md:pt-0">
+            <div className="max-w-2xl space-y-4 md:space-y-6">
                 <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl font-headline font-bold tracking-tighter !leading-[1.1] md:!leading-[1.05] text-primary-text drop-shadow-lg normal-case">
                     People forget. <br />
                     Your business <span className="md:hidden"> </span><br className="hidden md:block"/>shouldn’t pay for it.
@@ -43,7 +43,7 @@ export const HeroSection = () => (
                 </div>
 
                 <p className="text-sm md:text-lg max-w-[520px] text-secondary-text leading-relaxed md:leading-[1.5] font-medium md:font-normal">
-                    When work depends on memory or judgment, execution changes with people. Audits, shift changes, growth, and emergencies expose the gaps.
+                    When work depends on memory or judgment, execution changes with people. Audits, shift changes, and emergencies expose the gaps.
                 </p>
                 
                 <div className="flex flex-col items-start gap-4 pt-2 md:pt-8">
