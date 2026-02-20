@@ -19,7 +19,6 @@ import {
     Infinity, 
     Lock,
     ShieldCheck,
-    Gift,
     Check
 } from 'lucide-react';
 
@@ -208,13 +207,8 @@ export default async function BlogPostPage({ params }: Props) {
                         </div>
 
                         <div className="flex flex-col items-center gap-6">
-                            {/* THE VALUE PILL - ELITE TRACKED */}
-                            <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] md:text-[12px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 transition-none">
-                                <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
-                            </div>
-                            
                             <div className="space-y-4 w-full flex flex-col items-center">
-                                <Button asChild size="lg" className="w-full md:w-[28rem] h-16 bg-primary text-black font-black uppercase italic text-sm tracking-[0.1em] shadow-2xl rounded-sm border-none transition-all hover:scale-105 active:scale-95">
+                                <Button asChild size="lg" className="w-full md:w-auto md:min-w-[24rem] px-10 h-16 bg-primary text-black font-black uppercase italic text-sm tracking-[0.1em] shadow-2xl rounded-sm border-none transition-all hover:scale-105 active:scale-95">
                                     <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} className="flex items-center justify-center text-center">
                                         {cta.buttonText} <ArrowRight className="ml-2 h-5 w-5"/>
                                     </Link>
