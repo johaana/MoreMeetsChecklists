@@ -105,7 +105,7 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
           <div className="container px-4 md:px-6">
             <div className={cn("grid gap-6 lg:gap-12 xl:gap-16 items-center", hasValidHeroImage ? "lg:grid-cols-[1fr,400px]" : "grid-cols-1 max-w-4xl mx-auto")}>
               <div className="space-y-6">
-                <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.2em] font-black text-[10px]">Institutional Infrastructure</Badge>
+                <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.2em] font-black text-[10px]">{pack.category} • {pack.title}</Badge>
                 <h1 className="text-3xl font-black tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl font-headline text-primary-text uppercase italic leading-[1.1]">
                   {pack.heroHeadline || pack.title}
                 </h1>
