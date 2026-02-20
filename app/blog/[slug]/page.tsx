@@ -1,3 +1,4 @@
+
 import { blogPosts } from '@/lib/blog-posts';
 import { notFound } from 'next/navigation';
 import { SiteHeader } from '@/components/layout/header';
@@ -98,7 +99,7 @@ export default async function BlogPostPage({ params }: Props) {
         title: "OPERATIONAL DISCIPLINE REQUIRES STRUCTURE",
         description: "Deploy ISO, HACCP, and OSHA-aligned protocols built for real-world execution — not just documentation.",
         compliance: relatedPack ? relatedPack.category : "Global Standards",
-        buttonText: relatedPack ? `Explore the ${relatedPack.title}` : "Explore the Compliance Packs"
+        buttonText: relatedPack ? `Explore the ${relatedPack.title}` : "Explore the Operational Systems"
     };
   };
 
@@ -189,36 +190,35 @@ export default async function BlogPostPage({ params }: Props) {
               <div className="mt-12 md:mt-16 pt-8 md:pt-12 relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl md:rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
                   <Card className="overflow-hidden bg-black border border-white/10 rounded-2xl md:rounded-[2rem] relative z-10 shadow-2xl">
-                      <div className="p-8 md:p-16 text-center space-y-10">
-                        <div className="space-y-4 max-w-2xl mx-auto">
+                      <div className="p-8 md:p-16 text-center space-y-10 md:space-y-12">
+                        <div className="space-y-4 md:space-y-6 max-w-2xl mx-auto">
                             <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Resolution Protocol</Badge>
-                            <h2 className="text-[1.3rem] sm:text-3xl md:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-[1.1]">
+                            <h2 className="text-[1.4rem] sm:text-3xl md:text-5xl font-black font-headline tracking-tight text-primary-text uppercase italic leading-[1.15]">
                                 {cta.title}
                             </h2>
                             <p className="text-base md:text-lg text-secondary-text leading-relaxed">
                                 {cta.description}
                             </p>
                             
-                            {/* THE MUTED WHITE STANDARD */}
                             <div className="flex items-center justify-center gap-3 pt-2">
                                 <Shield className="w-3.5 h-3.5 text-white/40" />
-                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Aligned Sector: {cta.compliance}</span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Sector: {cta.compliance}</span>
                             </div>
                         </div>
 
-                        <div className="flex flex-col items-center gap-6">
-                            <div className="space-y-4 w-full flex flex-col items-center">
-                                <Button asChild size="lg" className="w-full md:w-auto md:min-w-[24rem] px-10 h-16 bg-primary text-black font-black uppercase italic text-sm tracking-[0.1em] shadow-2xl rounded-sm border-none transition-all hover:scale-105 active:scale-95">
+                        <div className="flex flex-col items-center gap-6 md:gap-8">
+                            <div className="space-y-6 w-full flex flex-col items-center">
+                                <Button asChild size="lg" className="w-full md:w-auto md:min-w-[24rem] px-8 h-16 bg-primary text-black font-black uppercase italic text-sm md:text-base tracking-[0.05em] shadow-2xl rounded-sm border-none transition-all hover:scale-105 active:scale-95">
                                     <Link href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} className="flex items-center justify-center text-center">
                                         {cta.buttonText} <ArrowRight className="ml-2 h-5 w-5"/>
                                     </Link>
                                 </Button>
                                 
                                 {/* CONVERSION REASSURANCE LAYER */}
-                                <div className="grid grid-cols-2 gap-x-6 gap-y-2 max-w-md mx-auto text-[9px] font-black uppercase text-white/30 tracking-widest text-left">
+                                <div className="grid grid-cols-2 gap-x-8 gap-y-3 max-w-md mx-auto text-[10px] font-black uppercase text-white/30 tracking-widest text-left">
                                     {REASSURANCES.map(item => (
-                                        <div key={item} className="flex items-center gap-1.5">
-                                            <Check className="w-3 h-3 text-primary/50" /> {item}
+                                        <div key={item} className="flex items-center gap-2">
+                                            <Check className="w-3.5 h-3.5 text-primary/50" /> {item}
                                         </div>
                                     ))}
                                 </div>

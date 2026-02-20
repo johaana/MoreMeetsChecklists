@@ -1,3 +1,4 @@
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -31,7 +32,7 @@ export const blogPosts: BlogPost[] = [
         </section>
 
         <div class="my-12 overflow-hidden rounded-xl md:rounded-2xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/D0d91ydR/kfc1.webp" alt="KFC Out of Chicken Sign" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
+            <img src="https://i.postimg.cc/0jdT720g/kfc.webp" alt="KFC Closed Sign" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
         </div>
 
         <h2>The Single Point of Failure (SPOF)</h2>
@@ -45,11 +46,11 @@ export const blogPosts: BlogPost[] = [
         </section>
 
         <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Organizations scaling beyond manual oversight typically deploy <a href="/library" class="text-primary font-bold underline">structured audit protocols</a> at this stage to identify hub-level vulnerabilities before they trigger regional shutdowns.
+            Organizations scaling beyond manual oversight typically deploy <a href="/library" class="text-primary font-bold underline">structured operational systems</a> at this stage to identify hub-level vulnerabilities before they trigger regional shutdowns.
         </div>
 
         <div class="my-12 overflow-hidden rounded-xl md:rounded-2xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/0jdT720g/kfc.webp" alt="KFC Closed Sign" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
+            <img src="https://i.postimg.cc/D0d91ydR/kfc1.webp" alt="KFC Out of Chicken Sign" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
         </div>
 
         <h2>Forensic Cost Mapping</h2>
