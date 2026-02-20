@@ -47,10 +47,10 @@ export const HeroSection = () => (
                 </p>
                 
                 <div className="flex flex-col items-start gap-4 pt-2 md:pt-8">
-                    <Button size="lg" asChild className="group w-full sm:w-auto h-14 md:h-16 rounded-xl shadow-xl md:shadow-2xl transition-all active:scale-95 px-8 bg-authority-green text-bg-primary hover:brightness-110 border-none">
+                    <Button size="lg" asChild className="group w-full sm:w-auto h-14 md:h-16 rounded-xl shadow-xl md:shadow-2xl transition-all active:scale-95 px-8 bg-authority-green text-black hover:brightness-110 border-none">
                         <Link href="/library" className="flex items-center justify-center font-black uppercase text-sm tracking-widest">
                            Standardize My Operations
-                           <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+                           <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
                     <div className="space-y-2.5 pl-1">
