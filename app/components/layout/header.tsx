@@ -97,8 +97,6 @@ export function SiteHeader() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const isSalesPage = pathname === '/sales-consultancy';
-    
     return (
         <header className={cn(
             "px-4 lg:px-6 h-16 flex items-center sticky top-0 z-50 transition-colors duration-300",
@@ -117,50 +115,38 @@ export function SiteHeader() {
             </div>
 
             <nav className="ml-auto hidden md:flex gap-4 sm:gap-6 items-center">
-                {!isSalesPage && (
-                    <>
-                        <Link href="/about" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>About Us</Link>
-                        <Link href="/library" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Operational Systems</Link>
-                        <div 
-                            className="group relative"
-                            onMouseEnter={() => setIsDropdownOpen(true)}
-                            onMouseLeave={() => setIsDropdownOpen(false)}
-                        >
-                            <button className={cn("text-sm font-medium transition-colors flex items-center gap-1", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")}>
-                                Industries <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
-                            </button>
-                            {isDropdownOpen && (
-                                <div className="absolute top-full right-0 w-screen max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
-                                    <div className="bg-background rounded-lg shadow-2xl border flex flex-col">
-                                         <ScrollArea className="max-h-[75vh] overflow-y-auto">
-                                            <div className="p-6">
-                                                <SolutionsList />
-                                            </div>
-                                        </ScrollArea>
-                                        <div className="bg-secondary/50 p-3 border-t grid grid-cols-2 gap-4">
-                                             <Link href="/packs/animal_shelter_pack" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50 flex items-center gap-2">
-                                                <PawPrint className="w-4 h-4" /> Social Cause (Free Pack)
-                                            </Link>
-                                            <Link href="/library" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
-                                                View All Premium Packs &rarr;
-                                            </Link>
-                                        </div>
+                <Link href="/about" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>About Us</Link>
+                <Link href="/library" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Operational Systems</Link>
+                <div 
+                    className="group relative"
+                    onMouseEnter={() => setIsDropdownOpen(true)}
+                    onMouseLeave={() => setIsDropdownOpen(false)}
+                >
+                    <button className={cn("text-sm font-medium transition-colors flex items-center gap-1", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")}>
+                        Industries <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                    </button>
+                    {isDropdownOpen && (
+                        <div className="absolute top-full right-0 w-screen max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
+                            <div className="bg-background rounded-lg shadow-2xl border flex flex-col">
+                                    <ScrollArea className="max-h-[75vh] overflow-y-auto">
+                                    <div className="p-6">
+                                        <SolutionsList />
                                     </div>
+                                </ScrollArea>
+                                <div className="bg-secondary/50 p-3 border-t grid grid-cols-2 gap-4">
+                                        <Link href="/packs/animal_shelter_pack" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50 flex items-center gap-2">
+                                        <PawPrint className="w-4 h-4" /> Social Cause (Free Pack)
+                                    </Link>
+                                    <Link href="/library" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
+                                        View All Premium Packs &rarr;
+                                    </Link>
                                 </div>
-                            )}
+                            </div>
                         </div>
-                        <Link href="/blog" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Blog</Link>
-                        <Link href="/contact" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Contact</Link>
-                    </>
-                )}
-                 {isSalesPage && (
-                    <Button variant="ghost" asChild>
-                        <Link href="/" prefetch={false}>
-                            Back to Main Site
-                            <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                    </Button>
-                 )}
+                    )}
+                </div>
+                <Link href="/blog" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Blog</Link>
+                <Link href="/contact" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Contact</Link>
             </nav>
 
             {/* Mobile Navigation */}
@@ -180,9 +166,6 @@ export function SiteHeader() {
                         </SheetHeader>
                         <ScrollArea className="flex-1">
                             <div className="flex flex-col p-2">
-                                {isSalesPage ? (
-                                    <Link href="/" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors p-2">Back to Main Site</Link>
-                                ) : (
                                 <Accordion type="multiple" className="w-full">
                                     <div className="border-b">
                                         <Link href="/about" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors p-2 flex" prefetch={false}>
@@ -234,7 +217,6 @@ export function SiteHeader() {
                                         </Link>
                                     </div>
                                 </Accordion>
-                                )}
                             </div>
                          </ScrollArea>
                     </SheetContent>

@@ -1,4 +1,3 @@
-
 import { MetadataRoute } from 'next';
 import { premiumPacks } from '@/lib/premium-packs';
 import { blogPosts } from '@/lib/blog-posts';
@@ -16,7 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/privacy',
     '/refund',
     '/shipping',
-    '/sales-consultancy',
   ];
 
   const staticSitemap = staticRoutes.map((route) => ({
