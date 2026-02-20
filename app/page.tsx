@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Gem, Zap, CheckCircle, Globe, Download } from "lucide-react";
+import { ArrowRight, Check, Gem, Zap, CheckCircle, Globe, Download, FileSpreadsheet } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
 import { TestimonialsSection } from "@/components/layout/testimonials-section";
@@ -50,17 +50,23 @@ const HowItWorksSection = () => (
             </div>
             <div className="grid md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
                 <div className="flex flex-col items-center">
-                    <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl">
-                        <span className="text-5xl font-black text-accent">1</span>
-                    </div>
-                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">Select Your Industry</h3>
+                    <Link href="/library" className="group/step">
+                        <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl group-hover/step:border-primary/40 transition-all duration-300 group-hover/step:scale-105">
+                            <span className="text-5xl font-black text-accent">1</span>
+                        </div>
+                        <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter group-hover/step:text-primary transition-colors flex items-center justify-center gap-2">
+                            Select Your Industry <ArrowRight className="w-4 h-4" />
+                        </h3>
+                    </Link>
                     <p className="text-secondary-text mt-2 text-sm leading-relaxed">Choose a ready-to-implement operational system designed for your business type.</p>
                 </div>
                  <div className="flex flex-col items-center">
                     <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl">
                         <span className="text-5xl font-black text-accent">2</span>
                     </div>
-                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">Implement Immediately</h3>
+                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter flex items-center gap-2">
+                        Implement Immediately <FileSpreadsheet className="w-5 h-5 text-primary/40" />
+                    </h3>
                     <p className="text-secondary-text mt-2 text-sm leading-relaxed">Download fully editable checklists and SOPs instantly — no waiting, no delays.</p>
                 </div>
                  <div className="flex flex-col items-center">

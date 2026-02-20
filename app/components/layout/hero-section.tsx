@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import React from 'react';
 
 export const HeroSection = () => (
@@ -55,7 +55,7 @@ export const HeroSection = () => (
                     </Button>
                     <div className="space-y-2.5 pl-1">
                         <Link href="#how-it-works" className="text-xs font-bold text-secondary-text/80 hover:text-primary transition-colors flex items-center gap-1 group/link w-fit underline underline-offset-4 decoration-white/10 hover:decoration-primary/40">
-                            See how it works <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                            See how it works <ChevronRight className="w-3 h-3 transition-transform group-hover/link:translate-x-0.5" />
                         </Link>
                         <p className="text-[9px] md:text-[10px] text-muted-foreground/40 font-normal leading-tight uppercase tracking-widest">
                             Includes 1 Complimentary Expert Customization (Limited Time)
