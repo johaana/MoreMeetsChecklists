@@ -7,9 +7,9 @@ import { ArrowRight } from "lucide-react";
 import React from 'react';
 
 export const HeroSection = () => (
-    <section className="relative w-full flex flex-col md:flex-row md:items-center md:h-screen md:min-h-[700px] overflow-hidden bg-background">
+    <section className="relative w-full flex flex-col md:flex-row md:items-center h-[100dvh] md:h-screen md:min-h-[700px] overflow-hidden bg-background">
         {/* Visual Brand Layer */}
-        <div className="relative h-[30vh] md:absolute md:top-0 md:left-0 md:h-full md:w-full z-0 overflow-hidden shrink-0">
+        <div className="relative h-[40vh] md:absolute md:top-0 md:left-0 md:h-full md:w-full z-0 overflow-hidden shrink-0">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
                 autoPlay
@@ -28,8 +28,8 @@ export const HeroSection = () => (
             <div className="md:hidden absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-15" />
         </div>
 
-        {/* Content Layer: Pulling text up for mobile "One-Glance" */}
-        <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-start md:justify-center pt-2 pb-8 md:py-0 -translate-y-4 md:translate-y-0">
+        {/* Content Layer: Centered vertically for better space utilization */}
+        <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center py-8 md:py-0">
             <div className="max-w-2xl space-y-4 md:space-y-6">
                 <h1 className="text-3xl sm:text-5xl md:text-6xl font-headline font-bold tracking-tighter !leading-[1.2] md:!leading-[1.05] text-primary-text drop-shadow-lg normal-case">
                     People forget. <br />
@@ -46,18 +46,18 @@ export const HeroSection = () => (
                     When work depends on memory or judgment, execution changes with people. Audits, shift changes, growth, and emergencies expose the gaps.
                 </p>
                 
-                <div className="flex flex-col items-start gap-3 pt-2 md:pt-8">
+                <div className="flex flex-col items-start gap-4 pt-2 md:pt-8">
                     <Button size="lg" asChild className="group w-full sm:w-auto h-12 md:h-14 rounded-xl shadow-xl md:shadow-2xl transition-all active:scale-95 px-8" style={{ backgroundColor: 'hsl(var(--authority-green))', color: 'hsl(var(--bg-primary))' }}>
                         <Link href="/library" className="flex items-center justify-center font-bold text-base">
                            Standardize My Operations
                            <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
-                    <div className="space-y-1.5 pl-1">
-                        <Link href="#how-it-works" className="text-sm font-medium text-secondary-text hover:text-primary transition-colors flex items-center gap-1 group/link">
+                    <div className="space-y-2 pl-1">
+                        <Link href="#how-it-works" className="text-sm font-medium text-secondary-text hover:text-primary transition-colors flex items-center gap-1 group/link w-fit">
                             See how it works <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </Link>
-                        <p className="text-[10px] text-muted-foreground/50 font-normal">
+                        <p className="text-[10px] text-muted-foreground/50 font-normal leading-tight">
                             Includes 1 Complimentary Expert Customization (Limited Time)
                         </p>
                     </div>
