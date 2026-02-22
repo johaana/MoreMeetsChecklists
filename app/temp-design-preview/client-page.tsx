@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Shield, ShieldCheck, FileSpreadsheet, Infinity, Lock } from "lucide-react";
+import { ArrowRight, Check, ShieldCheck, FileSpreadsheet, Infinity, Lock } from "lucide-react";
 import React from 'react';
 import { SiteHeader } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -34,8 +34,8 @@ const ProposedBlogCTA = () => (
                     <h2 className="text-[1.4rem] sm:text-3xl md:text-5xl font-black font-headline tracking-tight text-primary-text uppercase italic leading-[1.15]">
                         OPERATIONAL DISCIPLINE REQUIRES STRUCTURE
                     </h2>
-                    <p className="text-sm md:text-lg text-secondary-text leading-relaxed">
-                        Deploy ISO, HACCP, and OSHA-aligned protocols built for real-world execution — not just documentation.
+                    <p className="text-sm md:text-lg text-secondary-text leading-relaxed font-medium">
+                        Deploy ISO, HACCP, and OSHA-aligned protocols built for execution — not documentation.
                     </p>
                     
                     <p className="text-sm md:text-base font-bold text-accent italic opacity-90 pt-2 border-t border-white/5 max-w-lg mx-auto">
@@ -43,13 +43,13 @@ const ProposedBlogCTA = () => (
                     </p>
                 </div>
 
-                <div className="flex flex-col items-center gap-6 md:gap-8">
+                <div className="flex flex-col items-center gap-6">
                     <div className="space-y-6 w-full flex flex-col items-center">
-                        {/* SUBTLE BUTTON IMPLEMENTATION */}
+                        {/* HIGH-CONVERSION OUTCOME-DRIVEN CTA */}
                         <Button 
                             asChild 
                             variant="secondary" 
-                            className="h-auto py-4 px-6 md:px-10 bg-white/[0.03] border border-white/10 hover:bg-white/[0.08] hover:border-white/20 text-accent transition-all rounded-xl shadow-inner group/btn"
+                            className="h-auto py-4 px-6 md:px-10 bg-white/[0.03] border border-white/20 hover:bg-white/[0.08] hover:border-accent/30 text-accent transition-all rounded-xl shadow-inner group/btn hover:shadow-[0_0_20px_-5px_rgba(245,166,35,0.2)]"
                         >
                             <Link 
                                 href="/packs/logistics_warehouse_pack" 
@@ -60,10 +60,11 @@ const ProposedBlogCTA = () => (
                             </Link>
                         </Button>
                         
-                        <div className="grid grid-cols-2 gap-x-8 gap-y-3 max-w-md mx-auto text-[10px] font-black uppercase text-white/30 tracking-widest text-left">
+                        {/* TIGHTER PROXIMITY FOR REASSURANCE */}
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-3 max-w-md mx-auto text-[10px] font-black uppercase text-white/20 tracking-widest text-left">
                             {REASSURANCES.map(item => (
                                 <div key={item} className="flex items-center gap-2">
-                                    <Check className="w-3.5 h-3.5 text-primary/50" /> {item}
+                                    <Check className="w-3.5 h-3.5 text-primary/40" /> {item}
                                 </div>
                             ))}
                         </div>
@@ -102,9 +103,9 @@ export default function ClientPage() {
                         <h3 className="font-bold text-primary">Strategic Refinements:</h3>
                         <ul className="space-y-2 text-sm text-secondary-text list-disc pl-5">
                             <li><strong>Outcome-Driven:</strong> "Strengthen Controls" converts higher than "Access Pack" because it promises a result.</li>
-                            <li><strong>Urgency Bridge:</strong> The shorter quote focus on "Structure" as the solution to "Disruption."</li>
-                            <li><strong>Proximity:</strong> Reduced the gap between the button and reassurance points to support the "Click" intent.</li>
-                            <li><strong>Mobile Precision:</strong> `text-[15px]` ensures readability on small screens without breaking the single-line constraint.</li>
+                            <li><strong>Tighter Subtext:</strong> Removed "real-world" and "just" to make the standard feel more absolute and premium.</li>
+                            <li><strong>Visual Pull:</strong> Increased button border weight and added a localized gold glow on hover.</li>
+                            <li><strong>Hierarchy Shift:</strong> Muted the checkmarks to ensure the CTA remains the absolute visual focal point.</li>
                         </ul>
                     </div>
                 </div>
