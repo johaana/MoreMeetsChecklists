@@ -94,11 +94,33 @@ export default async function BlogPostPage({ params }: Props) {
   const wordCount = post.content.replace(/<[^>]*>/g, '').split(/\s+/).length;
   const readingTime = Math.max(12, Math.ceil(wordCount / 225));
 
-  const cta = {
-      title: "OPERATIONAL DISCIPLINE REQUIRES STRUCTURE",
-      description: "Deploy ISO, HACCP, and OSHA-aligned protocols built for real-world execution — not just documentation.",
-      compliance: relatedPack ? relatedPack.category : "Global Standards",
-      buttonText: relatedPack ? `Explore - ${relatedPack.title}` : "Explore - Operational Systems"
+  // High-Conversion CTA Mapping
+  const ctaMapping: Record<string, { bridge: string, button: string }> = {
+    'logistics_warehouse_pack': {
+        bridge: "Disruptions expose weak systems. Structure prevents them.",
+        button: "Strengthen Your Logistics Controls"
+    },
+    'corporate_legal_compliance_starter_kit': {
+        bridge: "Consistency is an asset. Chaos is a liability.",
+        button: "Secure Your Corporate Governance"
+    },
+    'healthcare_and_hospital_operations': {
+        bridge: "In healthcare, systems are the only constant.",
+        button: "Strengthen Your Clinical Controls"
+    },
+    'restaurants': {
+        bridge: "Brand trust is built on verifiable safety.",
+        button: "Strengthen Your Restaurant Controls"
+    },
+    'facility_management_blueprint': {
+        bridge: "People move on. The system must stay.",
+        button: "Secure Your Facility Infrastructure"
+    }
+  };
+
+  const currentCta = relatedPack ? ctaMapping[relatedPack.id] : {
+      bridge: "Operational risk isn't an option. It's a variable you control.",
+      button: "Explore Operational Systems"
   };
 
   const PROOFS = [
@@ -189,32 +211,37 @@ export default async function BlogPostPage({ params }: Props) {
                         <div className="space-y-4 md:space-y-6 max-w-2xl mx-auto">
                             <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Resolution Protocol</Badge>
                             <h2 className="text-[1.4rem] sm:text-3xl md:text-5xl font-black font-headline tracking-tight text-primary-text uppercase italic leading-[1.15]">
-                                {cta.title}
+                                OPERATIONAL DISCIPLINE REQUIRES STRUCTURE
                             </h2>
-                            <p className="text-sm md:text-lg text-secondary-text leading-relaxed">
-                                {cta.description}
+                            <p className="text-sm md:text-lg text-secondary-text leading-relaxed font-medium">
+                                Deploy ISO, HACCP, and OSHA-aligned protocols built for execution — not documentation.
                             </p>
                             
-                            <div className="flex items-center justify-center gap-3 pt-2">
-                                <Shield className="w-3.5 h-3.5 text-white/40" />
-                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">Sector: {cta.compliance}</span>
-                            </div>
+                            <p className="text-sm md:text-base font-bold text-accent/70 italic pt-2 border-t border-white/5 max-w-lg mx-auto">
+                                "{currentCta.bridge}"
+                            </p>
                         </div>
 
-                        <div className="flex flex-col items-center gap-6 md:gap-8">
-                            <div className="space-y-8 w-full flex flex-col items-center">
-                                <Link 
-                                    href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} 
-                                    className="group/link inline-flex items-center gap-3 text-[15px] sm:text-lg md:text-2xl font-bold text-accent hover:brightness-110 transition-all tracking-tight text-center leading-tight whitespace-nowrap"
+                        <div className="flex flex-col items-center gap-6">
+                            <div className="space-y-6 w-full flex flex-col items-center">
+                                <Button 
+                                    asChild 
+                                    variant="secondary" 
+                                    className="h-auto py-4 px-6 md:px-10 bg-white/[0.03] border border-white/20 hover:bg-white/[0.08] hover:border-accent/30 text-accent transition-all rounded-xl shadow-inner group/btn hover:shadow-[0_0_20px_-5px_rgba(245,166,35,0.2)]"
                                 >
-                                    <span>{cta.buttonText}</span>
-                                    <ArrowRight className="shrink-0 w-4 h-4 md:w-6 md:h-6 transition-transform group-hover/link:translate-x-2" />
-                                </Link>
+                                    <Link 
+                                        href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} 
+                                        className="inline-flex items-center gap-2 md:gap-3 text-[15px] sm:text-lg md:text-2xl font-bold tracking-tight leading-tight whitespace-nowrap"
+                                    >
+                                        <span>{currentCta.button}</span>
+                                        <ArrowRight className="shrink-0 w-3.5 h-3.5 md:w-6 md:h-6 transition-transform group-hover/btn:translate-x-1.5" />
+                                    </Link>
+                                </Button>
                                 
-                                <div className="grid grid-cols-2 gap-x-8 gap-y-3 max-w-md mx-auto text-[10px] font-black uppercase text-white/30 tracking-widest text-left">
+                                <div className="grid grid-cols-2 gap-x-8 gap-y-3 max-w-md mx-auto text-[10px] font-black uppercase text-white/20 tracking-widest text-left">
                                     {REASSURANCES.map(item => (
                                         <div key={item} className="flex items-center gap-2">
-                                            <Check className="w-3.5 h-3.5 text-primary/50" /> {item}
+                                            <Check className="w-3.5 h-3.5 text-primary/40" /> {item}
                                         </div>
                                     ))}
                                 </div>
