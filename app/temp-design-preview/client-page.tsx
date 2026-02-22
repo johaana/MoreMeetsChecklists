@@ -39,12 +39,12 @@ const ProposedBlogCTA = () => (
                     </p>
                     
                     <p className="text-sm md:text-base font-bold text-accent italic opacity-90 pt-2 border-t border-white/5 max-w-lg mx-auto">
-                        "If your operations cannot withstand a disruption, audit, or supply shock — they are not structured enough."
+                        "Disruptions expose weak systems. Structure prevents them."
                     </p>
                 </div>
 
                 <div className="flex flex-col items-center gap-6 md:gap-8">
-                    <div className="space-y-8 w-full flex flex-col items-center">
+                    <div className="space-y-6 w-full flex flex-col items-center">
                         {/* SUBTLE BUTTON IMPLEMENTATION */}
                         <Button 
                             asChild 
@@ -52,10 +52,10 @@ const ProposedBlogCTA = () => (
                             className="h-auto py-4 px-6 md:px-10 bg-white/[0.03] border border-white/10 hover:bg-white/[0.08] hover:border-white/20 text-accent transition-all rounded-xl shadow-inner group/btn"
                         >
                             <Link 
-                                href="#" 
-                                className="inline-flex items-center gap-2 md:gap-3 text-[13px] sm:text-lg md:text-2xl font-bold tracking-tight leading-tight whitespace-nowrap"
+                                href="/packs/logistics_warehouse_pack" 
+                                className="inline-flex items-center gap-2 md:gap-3 text-[15px] sm:text-lg md:text-2xl font-bold tracking-tight leading-tight whitespace-nowrap"
                             >
-                                <span>Access the Logistics & Warehouse Operations Pack</span>
+                                <span>Strengthen Your Logistics & Warehouse Controls</span>
                                 <ArrowRight className="shrink-0 w-3.5 h-3.5 md:w-6 md:h-6 transition-transform group-hover/btn:translate-x-1.5" />
                             </Link>
                         </Button>
@@ -90,8 +90,8 @@ export default function ClientPage() {
                 <section className="py-12 bg-secondary/10 border-b border-white/5">
                     <div className="container px-4 md:px-6 text-center">
                         <Badge variant="outline" className="mb-4">Design Lab</Badge>
-                        <h1 className="text-3xl md:text-4xl font-black font-headline uppercase italic">Subtle Action Preview</h1>
-                        <p className="text-secondary-text mt-2">Testing the "Subtle Button" variant for higher conversion with premium aesthetics.</p>
+                        <h1 className="text-3xl md:text-4xl font-black font-headline uppercase italic">Conversion Refinement Preview</h1>
+                        <p className="text-secondary-text mt-2">Testing "Outcome-Driven" CTA language and tighter reassurance proximity.</p>
                     </div>
                 </section>
 
@@ -101,9 +101,10 @@ export default function ClientPage() {
                     <div className="mt-16 p-8 rounded-2xl bg-secondary/20 border-2 border-dashed border-primary/20 space-y-4 max-w-2xl mx-auto">
                         <h3 className="font-bold text-primary">Strategic Refinements:</h3>
                         <ul className="space-y-2 text-sm text-secondary-text list-disc pl-5">
-                            <li><strong>Defined Target:</strong> The subtle grey background provides a clear "hit area" without the aggressive commercial look of a bright button.</li>
-                            <li><strong>One-Line Constraint:</strong> Using `text-[13px]` on mobile ensures even the longest titles fit on a single line, maintaining professional symmetry.</li>
-                            <li><strong>Visual Depth:</strong> The button uses `bg-white/[0.03]` and a subtle border to feel like an integrated part of the card's infrastructure.</li>
+                            <li><strong>Outcome-Driven:</strong> "Strengthen Controls" converts higher than "Access Pack" because it promises a result.</li>
+                            <li><strong>Urgency Bridge:</strong> The shorter quote focus on "Structure" as the solution to "Disruption."</li>
+                            <li><strong>Proximity:</strong> Reduced the gap between the button and reassurance points to support the "Click" intent.</li>
+                            <li><strong>Mobile Precision:</strong> `text-[15px]` ensures readability on small screens without breaking the single-line constraint.</li>
                         </ul>
                     </div>
                 </div>
