@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronRight, Check, Shield, ShieldCheck, FileSpreadsheet, Infinity, Lock } from "lucide-react";
+import { ArrowRight, Check, Shield, ShieldCheck, FileSpreadsheet, Infinity, Lock } from "lucide-react";
 import React from 'react';
 import { SiteHeader } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -38,7 +38,6 @@ const ProposedBlogCTA = () => (
                         Deploy ISO, HACCP, and OSHA-aligned protocols built for real-world execution — not just documentation.
                     </p>
                     
-                    {/* NEW: Bridge Line for Urgency */}
                     <p className="text-sm md:text-base font-bold text-accent italic opacity-90 pt-2 border-t border-white/5 max-w-lg mx-auto">
                         "If your operations cannot withstand a disruption, audit, or supply shock — they are not structured enough."
                     </p>
@@ -46,16 +45,21 @@ const ProposedBlogCTA = () => (
 
                 <div className="flex flex-col items-center gap-6 md:gap-8">
                     <div className="space-y-8 w-full flex flex-col items-center">
-                        {/* Improved Action Link with stronger verb */}
-                        <Link 
-                            href="#" 
-                            className="group/link inline-flex items-center gap-3 text-[15px] sm:text-lg md:text-2xl font-bold text-accent hover:brightness-110 transition-all tracking-tight text-center leading-tight whitespace-nowrap"
+                        {/* SUBTLE BUTTON IMPLEMENTATION */}
+                        <Button 
+                            asChild 
+                            variant="secondary" 
+                            className="h-auto py-4 px-6 md:px-10 bg-white/[0.03] border border-white/10 hover:bg-white/[0.08] hover:border-white/20 text-accent transition-all rounded-xl shadow-inner group/btn"
                         >
-                            <span>Access the Logistics & Warehouse Operations Pack</span>
-                            <ArrowRight className="shrink-0 w-4 h-4 md:w-6 md:h-6 transition-transform group-hover/link:translate-x-2" />
-                        </Link>
+                            <Link 
+                                href="#" 
+                                className="inline-flex items-center gap-2 md:gap-3 text-[13px] sm:text-lg md:text-2xl font-bold tracking-tight leading-tight whitespace-nowrap"
+                            >
+                                <span>Access the Logistics & Warehouse Operations Pack</span>
+                                <ArrowRight className="shrink-0 w-3.5 h-3.5 md:w-6 md:h-6 transition-transform group-hover/btn:translate-x-1.5" />
+                            </Link>
+                        </Button>
                         
-                        {/* Benefits moved closer to Action */}
                         <div className="grid grid-cols-2 gap-x-8 gap-y-3 max-w-md mx-auto text-[10px] font-black uppercase text-white/30 tracking-widest text-left">
                             {REASSURANCES.map(item => (
                                 <div key={item} className="flex items-center gap-2">
@@ -86,8 +90,8 @@ export default function ClientPage() {
                 <section className="py-12 bg-secondary/10 border-b border-white/5">
                     <div className="container px-4 md:px-6 text-center">
                         <Badge variant="outline" className="mb-4">Design Lab</Badge>
-                        <h1 className="text-3xl md:text-4xl font-black font-headline uppercase italic">Conversion Optimization Preview</h1>
-                        <p className="text-secondary-text mt-2">Testing the high-converting "Authority Bridge" CTA for the Intelligence Hub.</p>
+                        <h1 className="text-3xl md:text-4xl font-black font-headline uppercase italic">Subtle Action Preview</h1>
+                        <p className="text-secondary-text mt-2">Testing the "Subtle Button" variant for higher conversion with premium aesthetics.</p>
                     </div>
                 </section>
 
@@ -95,12 +99,11 @@ export default function ClientPage() {
                     <ProposedBlogCTA />
                     
                     <div className="mt-16 p-8 rounded-2xl bg-secondary/20 border-2 border-dashed border-primary/20 space-y-4 max-w-2xl mx-auto">
-                        <h3 className="font-bold text-primary">Strategic Improvisations:</h3>
+                        <h3 className="font-bold text-primary">Strategic Refinements:</h3>
                         <ul className="space-y-2 text-sm text-secondary-text list-disc pl-5">
-                            <li><strong>Verb Strength:</strong> "Access" creates a sense of immediate availability vs "Explore" (browsing).</li>
-                            <li><strong>The Bridge:</strong> The italicized quote adds a layer of expert commentary that justifies the product as infrastructure.</li>
-                            <li><strong>Proximity:</strong> Reassurances are now tied directly to the action link to minimize last-second hesitation.</li>
-                            <li><strong>Mobile Lock:</strong> The link remains on a single line with `whitespace-nowrap` while the card container handles the padding.</li>
+                            <li><strong>Defined Target:</strong> The subtle grey background provides a clear "hit area" without the aggressive commercial look of a bright button.</li>
+                            <li><strong>One-Line Constraint:</strong> Using `text-[13px]` on mobile ensures even the longest titles fit on a single line, maintaining professional symmetry.</li>
+                            <li><strong>Visual Depth:</strong> The button uses `bg-white/[0.03]` and a subtle border to feel like an integrated part of the card's infrastructure.</li>
                         </ul>
                     </div>
                 </div>
