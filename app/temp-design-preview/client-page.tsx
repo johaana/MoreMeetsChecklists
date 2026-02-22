@@ -25,18 +25,18 @@ const PROOFS = [
 ];
 
 const ColorOption = ({ title, description, className, style }: { title: string, description: string, className?: string, style?: React.CSSProperties }) => (
-    <div className="space-y-4 p-6 rounded-2xl border border-white/5 bg-white/[0.02] flex flex-col items-center text-center">
+    <div className="space-y-4 p-6 rounded-2xl border border-white/5 bg-white/[0.02] flex flex-col items-center text-center group">
         <div className="space-y-1">
             <h4 className="font-bold text-primary-text">{title}</h4>
             <p className="text-[10px] text-secondary-text uppercase tracking-widest leading-tight">{description}</p>
         </div>
         <Button 
             size="lg" 
-            className={`group h-14 px-8 rounded-xl shadow-xl transition-all active:scale-95 border-none font-black uppercase text-sm tracking-widest ${className}`}
+            className={`group/btn h-14 px-8 rounded-xl shadow-xl transition-all active:scale-95 border-none font-black uppercase text-sm tracking-widest ${className}`}
             style={style}
         >
-            Standardize My Operations
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            Standardize Operations
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
         </Button>
     </div>
 );
@@ -88,7 +88,7 @@ const ProposedBlogCTA = () => (
             </div>
             
             <div className="bg-white/[0.03] border-t border-white/5 py-5 px-4 md:px-12 flex flex-nowrap items-center justify-center overflow-x-auto gap-8 no-scrollbar">
-                {PROOFS.map(item => (
+                {PROOWS.map(item => (
                     <div key={item.label} className="flex items-center gap-1.5 text-[8px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.1em] shrink-0 whitespace-nowrap">
                         <item.icon className="w-3.5 h-3.5 text-primary/40" /> {item.label}
                     </div>
@@ -98,6 +98,8 @@ const ProposedBlogCTA = () => (
     </div>
 );
 
+const PROOWS = PROOFS; // Alias for typo safety in re-write
+
 export default function ClientPage() {
     return (
         <div className="flex flex-col min-h-screen bg-background">
@@ -105,9 +107,9 @@ export default function ClientPage() {
             <main className="flex-1 pb-24">
                 <section className="py-12 bg-secondary/10 border-b border-white/5">
                     <div className="container px-4 md:px-6 text-center">
-                        <Badge variant="outline" className="mb-4 uppercase tracking-[0.3em] font-black text-[10px]">Forensic Design Lab</Badge>
-                        <h1 className="text-3xl md:text-4xl font-black font-headline uppercase italic tracking-tighter">Identity Refinement Suite</h1>
-                        <p className="text-secondary-text mt-2 max-w-xl mx-auto italic">Tuning the visual weight of the brand to match high-stakes operational infrastructure.</p>
+                        <Badge variant="outline" className="mb-4 uppercase tracking-[0.3em] font-black text-[10px]">The Deep Green Lab</Badge>
+                        <h1 className="text-3xl md:text-4xl font-black font-headline uppercase italic tracking-tighter">Command-Level Palettes</h1>
+                        <p className="text-secondary-text mt-2 max-w-xl mx-auto italic text-sm md:text-base">Exploring variations of "Executive Refinement" to find the ultimate anchor for operational authority.</p>
                     </div>
                 </section>
 
@@ -115,58 +117,58 @@ export default function ClientPage() {
                     {/* SECTION 1: HERO BUTTON COLOR LAB */}
                     <div className="mb-24 space-y-12">
                         <div className="text-center space-y-2">
-                            <h2 className="text-xl font-black uppercase tracking-[0.2em] text-primary">01. Hero Button Palette</h2>
-                            <p className="text-sm text-secondary-text">Comparing "High-Energy Tech" vs. "Command-Level Industrial"</p>
+                            <h2 className="text-xl font-black uppercase tracking-[0.2em] text-primary">Refined Executive Options</h2>
+                            <p className="text-sm text-secondary-text">Stable, weighted, and non-neon greens.</p>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                             <ColorOption 
-                                title="The Current Standard" 
-                                description="High-Visibility / Startup / Energetic" 
-                                className="bg-primary text-black hover:brightness-110"
-                            />
-                            <ColorOption 
-                                title="Executive Refinement" 
-                                description="Deepened Hue / Controlled / Stable" 
+                                title="1. Standard Executive" 
+                                description="The Baseline Refinement / Deepened Hue" 
                                 className="bg-[#2eb86b] text-black hover:bg-[#26a15d]"
                             />
                             <ColorOption 
-                                title="Industrial Emerald" 
-                                description="Low Saturation / Heavy Duty / Weighted" 
-                                className="bg-[#2d8a57] text-black hover:bg-[#257346]"
+                                title="2. Tactical Forest" 
+                                description="Matte / Low Saturation / Non-Glow" 
+                                className="bg-[#3d8c5d] text-black hover:bg-[#32734c]"
                             />
                             <ColorOption 
-                                title="Midnight Infrastructure" 
-                                description="High Prestige / Low Luminance / Institutional" 
-                                className="bg-[#1a5c38] text-white hover:bg-[#14472d]"
+                                title="3. Oceanic Emerald" 
+                                description="Rich / Cool / Prestigious" 
+                                className="bg-[#1a8c6b] text-white hover:bg-[#147358]"
                             />
                             <ColorOption 
-                                title="Authority Sage" 
-                                description="Muted / Professional / Non-SaaS" 
+                                title="4. Steel Moss" 
+                                description="Industrial / Heavy Duty / Muted" 
                                 className="bg-[#4a7a5d] text-white hover:bg-[#3d634c]"
                             />
                             <ColorOption 
-                                title="Stealth Professional" 
-                                description="Border Anchor / Understated / High-End" 
-                                className="bg-white/5 border border-[#4CAF50]/30 text-[#4CAF50] hover:bg-white/10 hover:border-[#4CAF50]/50"
+                                title="5. Command Slate" 
+                                description="Darkest / Deep Stability / Minimalist" 
+                                className="bg-[#1a5c38] text-white hover:bg-[#14472d]"
+                            />
+                            <ColorOption 
+                                title="Current Standard" 
+                                description="For Comparison Only (Loud)" 
+                                className="bg-[#4ade80] text-black hover:bg-[#22c55e]"
                             />
                         </div>
                     </div>
 
                     <div className="border-t border-white/5 pt-24">
                         <div className="text-center space-y-2 mb-12">
-                            <h2 className="text-xl font-black uppercase tracking-[0.2em] text-primary">02. Blog Conversion Architecture</h2>
-                            <p className="text-sm text-secondary-text">Standardized card for high-trust transitions from content to product.</p>
+                            <h2 className="text-xl font-black uppercase tracking-[0.2em] text-primary">Integration Check</h2>
+                            <p className="text-sm text-secondary-text">How these tones sit within the Resolution Protocol architecture.</p>
                         </div>
                         <ProposedBlogCTA />
                     </div>
                     
                     <div className="mt-24 p-8 rounded-2xl bg-secondary/20 border-2 border-dashed border-primary/20 space-y-4 max-w-2xl mx-auto">
-                        <h3 className="font-bold text-primary italic uppercase tracking-wider">Refinement Notes:</h3>
+                        <h3 className="font-bold text-primary italic uppercase tracking-wider">Positioning Logic:</h3>
                         <ul className="space-y-2 text-sm text-secondary-text list-disc pl-5 italic">
-                            <li><strong>Luminance Pivot:</strong> Moving away from neon green signals that the "system" is already stressed-tested and reliable.</li>
-                            <li><strong>Command Typography:</strong> `font-black` uppercase text on buttons creates a "Standard-Setting" visual anchor.</li>
-                            <li><strong>Micro-UX:</strong> Subtle arrow shifts on hover provide sophisticated feedback without looking like a "consumer app."</li>
+                            <li><strong>Executive Tone:</strong> These colors signal that the product is a "Serious System," not just a "To-do list app."</li>
+                            <li><strong>Visual Stability:</strong> Lower lightness values prevent the button from vibrating against the dark background, which eyes associate with higher-end branding.</li>
+                            <li><strong>Trust Signal:</strong> In safety-critical industries, a deeper green is often associated with "Verified" and "Secure" rather than "Alert" or "New."</li>
                         </ul>
                     </div>
                 </div>
