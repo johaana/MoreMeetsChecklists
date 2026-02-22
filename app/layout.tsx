@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from '@/lib/utils';
 import { Inter, IBM_Plex_Sans } from 'next/font/google';
 import { LayoutScript } from '@/components/layout/layout-script';
+import Script from 'next/script';
 
 const siteUrl = 'https://www.moremeets.com';
 const siteTitle = 'MoreMeets™: Professional Operational Checklists & SOPs';
@@ -61,6 +62,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" style={{colorScheme: 'dark'}} suppressHydrationWarning>
+      <head>
+        {/* Google tag (gtag.js) */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZE6F71Y2CM"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-ZE6F71Y2CM');
+          `}
+        </Script>
+      </head>
       <body className={cn(
         "min-h-screen bg-background font-body antialiased",
         mainFont.variable,
