@@ -38,7 +38,8 @@ const ProposedBlogCTA = () => (
                         Deploy ISO, HACCP, and OSHA-aligned protocols built for execution — not documentation.
                     </p>
                     
-                    <p className="text-sm md:text-base font-bold text-accent italic opacity-90 pt-2 border-t border-white/5 max-w-lg mx-auto">
+                    {/* MUTED BRIDGE LINE: Reduced color weight to prioritize CTA button */}
+                    <p className="text-sm md:text-base font-bold text-accent/70 italic pt-2 border-t border-white/5 max-w-lg mx-auto">
                         "Disruptions expose weak systems. Structure prevents them."
                     </p>
                 </div>
@@ -92,7 +93,7 @@ export default function ClientPage() {
                     <div className="container px-4 md:px-6 text-center">
                         <Badge variant="outline" className="mb-4">Design Lab</Badge>
                         <h1 className="text-3xl md:text-4xl font-black font-headline uppercase italic">Conversion Refinement Preview</h1>
-                        <p className="text-secondary-text mt-2">Testing "Outcome-Driven" CTA language and tighter reassurance proximity.</p>
+                        <p className="text-secondary-text mt-2">Finalizing visual hierarchy and color de-confliction.</p>
                     </div>
                 </section>
 
@@ -100,12 +101,12 @@ export default function ClientPage() {
                     <ProposedBlogCTA />
                     
                     <div className="mt-16 p-8 rounded-2xl bg-secondary/20 border-2 border-dashed border-primary/20 space-y-4 max-w-2xl mx-auto">
-                        <h3 className="font-bold text-primary">Strategic Refinements:</h3>
+                        <h3 className="font-bold text-primary">Strategic Refinements (Phase 2):</h3>
                         <ul className="space-y-2 text-sm text-secondary-text list-disc pl-5">
-                            <li><strong>Outcome-Driven:</strong> "Strengthen Controls" converts higher than "Access Pack" because it promises a result.</li>
-                            <li><strong>Tighter Subtext:</strong> Removed "real-world" and "just" to make the standard feel more absolute and premium.</li>
-                            <li><strong>Visual Pull:</strong> Increased button border weight and added a localized gold glow on hover.</li>
-                            <li><strong>Hierarchy Shift:</strong> Muted the checkmarks to ensure the CTA remains the absolute visual focal point.</li>
+                            <li><strong>Color De-confliction:</strong> Bridge line muted to 70% opacity so the primary CTA button remains the absolute visual anchor.</li>
+                            <li><strong>Tactile Pull:</strong> Increased button fill and border contrast to signal decisiveness.</li>
+                            <li><strong>Outcome Framing:</strong> Kept "Strengthen Controls" as it targets the executive's desire for operational resilience.</li>
+                            <li><strong>Conversion Proximity:</strong> Reassurance layer pulled tighter to the action button to minimize cognitive gap at the point of click.</li>
                         </ul>
                     </div>
                 </div>
