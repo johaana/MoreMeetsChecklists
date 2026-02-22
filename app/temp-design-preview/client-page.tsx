@@ -46,7 +46,7 @@ const ProposedBlogCTA = () => (
 
                 <div className="flex flex-col items-center gap-6">
                     <div className="space-y-6 w-full flex flex-col items-center">
-                        {/* HIGH-CONVERSION OUTCOME-DRIVEN CTA */}
+                        {/* HIGH-CONVERSION OUTCOME-DRIVEN CTA (Shorter wording for higher action pull) */}
                         <Button 
                             asChild 
                             variant="secondary" 
@@ -56,7 +56,7 @@ const ProposedBlogCTA = () => (
                                 href="/packs/logistics_warehouse_pack" 
                                 className="inline-flex items-center gap-2 md:gap-3 text-[15px] sm:text-lg md:text-2xl font-bold tracking-tight leading-tight whitespace-nowrap"
                             >
-                                <span>Strengthen Your Logistics & Warehouse Controls</span>
+                                <span>Strengthen Your Logistics Controls</span>
                                 <ArrowRight className="shrink-0 w-3.5 h-3.5 md:w-6 md:h-6 transition-transform group-hover/btn:translate-x-1.5" />
                             </Link>
                         </Button>
@@ -105,7 +105,7 @@ export default function ClientPage() {
                         <ul className="space-y-2 text-sm text-secondary-text list-disc pl-5">
                             <li><strong>Color De-confliction:</strong> Bridge line muted to 70% opacity so the primary CTA button remains the absolute visual anchor.</li>
                             <li><strong>Tactile Pull:</strong> Increased button fill and border contrast to signal decisiveness.</li>
-                            <li><strong>Outcome Framing:</strong> Kept "Strengthen Controls" as it targets the executive's desire for operational resilience.</li>
+                            <li><strong>Outcome Framing:</strong> "Strengthen Logistics Controls" - shortened for faster action pull while keeping the executive tone.</li>
                             <li><strong>Conversion Proximity:</strong> Reassurance layer pulled tighter to the action button to minimize cognitive gap at the point of click.</li>
                         </ul>
                     </div>
