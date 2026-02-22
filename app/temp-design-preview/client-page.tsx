@@ -24,6 +24,23 @@ const PROOFS = [
     { label: 'No SaaS lock-in', icon: Lock }
 ];
 
+const ColorOption = ({ title, description, className, style }: { title: string, description: string, className?: string, style?: React.CSSProperties }) => (
+    <div className="space-y-4 p-6 rounded-2xl border border-white/5 bg-white/[0.02] flex flex-col items-center text-center">
+        <div className="space-y-1">
+            <h4 className="font-bold text-primary-text">{title}</h4>
+            <p className="text-[10px] text-secondary-text uppercase tracking-widest leading-tight">{description}</p>
+        </div>
+        <Button 
+            size="lg" 
+            className={`group h-14 px-8 rounded-xl shadow-xl transition-all active:scale-95 border-none font-black uppercase text-sm tracking-widest ${className}`}
+            style={style}
+        >
+            Standardize My Operations
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+        </Button>
+    </div>
+);
+
 const ProposedBlogCTA = () => (
     <div className="max-w-4xl mx-auto mt-12 md:mt-16 pt-8 md:pt-12 relative group">
         <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl md:rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
@@ -38,7 +55,6 @@ const ProposedBlogCTA = () => (
                         Deploy ISO, HACCP, and OSHA-aligned protocols built for execution — not documentation.
                     </p>
                     
-                    {/* MUTED BRIDGE LINE: Reduced color weight to prioritize CTA button */}
                     <p className="text-sm md:text-base font-bold text-accent/70 italic pt-2 border-t border-white/5 max-w-lg mx-auto">
                         "Disruptions expose weak systems. Structure prevents them."
                     </p>
@@ -46,7 +62,6 @@ const ProposedBlogCTA = () => (
 
                 <div className="flex flex-col items-center gap-6">
                     <div className="space-y-6 w-full flex flex-col items-center">
-                        {/* HIGH-CONVERSION OUTCOME-DRIVEN CTA (Shorter wording for higher action pull) */}
                         <Button 
                             asChild 
                             variant="secondary" 
@@ -61,7 +76,6 @@ const ProposedBlogCTA = () => (
                             </Link>
                         </Button>
                         
-                        {/* TIGHTER PROXIMITY FOR REASSURANCE */}
                         <div className="grid grid-cols-2 gap-x-8 gap-y-3 max-w-md mx-auto text-[10px] font-black uppercase text-white/20 tracking-widest text-left">
                             {REASSURANCES.map(item => (
                                 <div key={item} className="flex items-center gap-2">
@@ -91,22 +105,68 @@ export default function ClientPage() {
             <main className="flex-1 pb-24">
                 <section className="py-12 bg-secondary/10 border-b border-white/5">
                     <div className="container px-4 md:px-6 text-center">
-                        <Badge variant="outline" className="mb-4">Design Lab</Badge>
-                        <h1 className="text-3xl md:text-4xl font-black font-headline uppercase italic">Conversion Refinement Preview</h1>
-                        <p className="text-secondary-text mt-2">Finalizing visual hierarchy and color de-confliction.</p>
+                        <Badge variant="outline" className="mb-4 uppercase tracking-[0.3em] font-black text-[10px]">Forensic Design Lab</Badge>
+                        <h1 className="text-3xl md:text-4xl font-black font-headline uppercase italic tracking-tighter">Identity Refinement Suite</h1>
+                        <p className="text-secondary-text mt-2 max-w-xl mx-auto italic">Tuning the visual weight of the brand to match high-stakes operational infrastructure.</p>
                     </div>
                 </section>
 
                 <div className="container py-12 px-4 md:px-6">
-                    <ProposedBlogCTA />
+                    {/* SECTION 1: HERO BUTTON COLOR LAB */}
+                    <div className="mb-24 space-y-12">
+                        <div className="text-center space-y-2">
+                            <h2 className="text-xl font-black uppercase tracking-[0.2em] text-primary">01. Hero Button Palette</h2>
+                            <p className="text-sm text-secondary-text">Comparing "High-Energy Tech" vs. "Command-Level Industrial"</p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                            <ColorOption 
+                                title="The Current Standard" 
+                                description="High-Visibility / Startup / Energetic" 
+                                className="bg-primary text-black hover:brightness-110"
+                            />
+                            <ColorOption 
+                                title="Executive Refinement" 
+                                description="Deepened Hue / Controlled / Stable" 
+                                className="bg-[#2eb86b] text-black hover:bg-[#26a15d]"
+                            />
+                            <ColorOption 
+                                title="Industrial Emerald" 
+                                description="Low Saturation / Heavy Duty / Weighted" 
+                                className="bg-[#2d8a57] text-black hover:bg-[#257346]"
+                            />
+                            <ColorOption 
+                                title="Midnight Infrastructure" 
+                                description="High Prestige / Low Luminance / Institutional" 
+                                className="bg-[#1a5c38] text-white hover:bg-[#14472d]"
+                            />
+                            <ColorOption 
+                                title="Authority Sage" 
+                                description="Muted / Professional / Non-SaaS" 
+                                className="bg-[#4a7a5d] text-white hover:bg-[#3d634c]"
+                            />
+                            <ColorOption 
+                                title="Stealth Professional" 
+                                description="Border Anchor / Understated / High-End" 
+                                className="bg-white/5 border border-[#4CAF50]/30 text-[#4CAF50] hover:bg-white/10 hover:border-[#4CAF50]/50"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="border-t border-white/5 pt-24">
+                        <div className="text-center space-y-2 mb-12">
+                            <h2 className="text-xl font-black uppercase tracking-[0.2em] text-primary">02. Blog Conversion Architecture</h2>
+                            <p className="text-sm text-secondary-text">Standardized card for high-trust transitions from content to product.</p>
+                        </div>
+                        <ProposedBlogCTA />
+                    </div>
                     
-                    <div className="mt-16 p-8 rounded-2xl bg-secondary/20 border-2 border-dashed border-primary/20 space-y-4 max-w-2xl mx-auto">
-                        <h3 className="font-bold text-primary">Strategic Refinements (Phase 2):</h3>
-                        <ul className="space-y-2 text-sm text-secondary-text list-disc pl-5">
-                            <li><strong>Color De-confliction:</strong> Bridge line muted to 70% opacity so the primary CTA button remains the absolute visual anchor.</li>
-                            <li><strong>Tactile Pull:</strong> Increased button fill and border contrast to signal decisiveness.</li>
-                            <li><strong>Outcome Framing:</strong> "Strengthen Logistics Controls" - shortened for faster action pull while keeping the executive tone.</li>
-                            <li><strong>Conversion Proximity:</strong> Reassurance layer pulled tighter to the action button to minimize cognitive gap at the point of click.</li>
+                    <div className="mt-24 p-8 rounded-2xl bg-secondary/20 border-2 border-dashed border-primary/20 space-y-4 max-w-2xl mx-auto">
+                        <h3 className="font-bold text-primary italic uppercase tracking-wider">Refinement Notes:</h3>
+                        <ul className="space-y-2 text-sm text-secondary-text list-disc pl-5 italic">
+                            <li><strong>Luminance Pivot:</strong> Moving away from neon green signals that the "system" is already stressed-tested and reliable.</li>
+                            <li><strong>Command Typography:</strong> `font-black` uppercase text on buttons creates a "Standard-Setting" visual anchor.</li>
+                            <li><strong>Micro-UX:</strong> Subtle arrow shifts on hover provide sophisticated feedback without looking like a "consumer app."</li>
                         </ul>
                     </div>
                 </div>
