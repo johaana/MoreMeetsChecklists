@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,7 +10,7 @@
     --card-foreground: 212 88% 13%;
     --popover: 0 0% 100%;
     --popover-foreground: 212 88% 13%;
-    --primary: 145 58% 55%; /* Green */
+    --primary: 145 58% 48%; /* Refined Executive Green */
     --primary-foreground: 212 40% 4%;
     --secondary: 35 92% 90%;
     --secondary-foreground: 212 88% 13%;
@@ -23,10 +22,9 @@
     --destructive-foreground: 0 0% 98%;
     --border: 212 40% 15%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 145 58% 55%;
+    --ring: 145 58% 48%;
     --radius: 0.75rem;
 
-    /* New theme variables from temp design */
     --bg-primary: 212 40% 4%;
     --bg-secondary: 212 40% 10%;
     --surface-card: 212 40% 8%;
@@ -34,13 +32,13 @@
     --text-primary: 0 0% 98%;
     --text-secondary: 215.4 16.3% 70%;
     --text-on-light: 215.4 16.3% 56.9%;
-    --authority-green: 145 58% 55%;
+    --authority-green: 145 58% 48%;
     --accent-urgency: 0 59% 54%;
     --alternate-background: 218 20% 6%;
     --primary-text: 215 25% 95%;
     --secondary-text: 220 15% 65%;
     --muted-text: 220 15% 65%;
-    --high-contrast-green: 145 58% 55%;
+    --high-contrast-green: 145 58% 48%;
     --risk-accent: 0 59% 54%;
   }
 
@@ -51,8 +49,8 @@
     --card-foreground: 0 0% 98%;
     --popover: 212 40% 4%;
     --popover-foreground: 0 0% 98%;
-    --primary: 145 58% 55%; /* Green */
-    --primary-foreground: 212 40% 4%; /* Dark background for green button text */
+    --primary: 145 58% 48%; /* Refined Executive Green */
+    --primary-foreground: 212 40% 4%;
     --secondary: 212 40% 10%;
     --secondary-foreground: 0 0% 98%;
     --muted: 212 40% 10%;
@@ -63,9 +61,8 @@
     --destructive-foreground: 0 0% 98%;
     --border: 212 40% 15%;
     --input: 212 40% 15%;
-    --ring: 145 58% 55%;
+    --ring: 145 58% 48%;
     
-    /* New theme variables from temp design */
     --bg-primary: 212 40% 4%;
     --bg-secondary: 212 40% 10%;
     --surface-card: 212 40% 8%;
@@ -73,14 +70,14 @@
     --text-primary: 0 0% 98%;
     --text-secondary: 215.4 16.3% 70%;
     --text-on-light: 215.4 16.3% 56.9%;
-    --accent-authority: 145 58% 55%;
+    --accent-authority: 145 58% 48%;
     --accent-urgency: 0 59% 54%;
     --alternate-background: 218 20% 6%;
     --primary-text: 215 25% 95%;
     --secondary-text: 220 15% 65%;
     --muted-text: 220 15% 65%;
-    --authority-green: 145 58% 55%;
-    --high-contrast-green: 145 58% 55%;
+    --authority-green: 145 58% 48%;
+    --high-contrast-green: 145 58% 48%;
     --risk-accent: 0 59% 54%;
   }
 }

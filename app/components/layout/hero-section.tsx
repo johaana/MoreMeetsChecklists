@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -28,7 +27,7 @@ export const HeroSection = () => (
             <div className="md:hidden absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-15" />
         </div>
 
-        {/* Content Layer: Vertically Centered for balanced mobile view */}
+        {/* Content Layer */}
         <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center md:justify-center">
             <div className="max-w-2xl space-y-4 md:space-y-6">
                 <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl font-headline font-bold tracking-tighter !leading-[1.1] md:!leading-[1.05] text-primary-text drop-shadow-lg normal-case">
@@ -47,7 +46,7 @@ export const HeroSection = () => (
                 </p>
                 
                 <div className="flex flex-col items-start gap-5 pt-2 md:pt-8">
-                    <Button size="lg" asChild className="group w-full sm:w-auto h-14 md:h-16 rounded-xl shadow-xl md:shadow-2xl transition-all active:scale-95 px-8 bg-authority-green text-black hover:brightness-110 border-none">
+                    <Button size="lg" asChild className="group w-full sm:w-auto h-14 md:h-16 rounded-xl shadow-xl md:shadow-2xl transition-all active:scale-95 px-8 bg-primary text-primary-foreground hover:brightness-90 border-none">
                         <Link href="/library" className="flex items-center justify-center font-black uppercase text-sm tracking-widest">
                            Standardize My Operations
                            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />

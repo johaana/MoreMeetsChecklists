@@ -1,4 +1,3 @@
-
 import { blogPosts } from '@/lib/blog-posts';
 import { notFound } from 'next/navigation';
 import { SiteHeader } from '@/components/layout/header';
@@ -15,7 +14,6 @@ import {
     User, 
     ChevronLeft, 
     FileText, 
-    Shield, 
     FileSpreadsheet, 
     Infinity, 
     Lock,
@@ -94,7 +92,6 @@ export default async function BlogPostPage({ params }: Props) {
   const wordCount = post.content.replace(/<[^>]*>/g, '').split(/\s+/).length;
   const readingTime = Math.max(12, Math.ceil(wordCount / 225));
 
-  // High-Conversion CTA Mapping
   const ctaMapping: Record<string, { bridge: string, button: string }> = {
     'logistics_warehouse_pack': {
         bridge: "Disruptions expose weak systems. Structure prevents them.",
@@ -120,7 +117,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   const currentCta = relatedPack ? ctaMapping[relatedPack.id] : {
       bridge: "Operational risk isn't an option. It's a variable you control.",
-      button: "Explore Operational Systems"
+      button: "Strengthen Your Operations"
   };
 
   const PROOFS = [
@@ -145,46 +142,46 @@ export default async function BlogPostPage({ params }: Props) {
           <header className="w-full pt-12 pb-12 md:pt-16 md:pb-16 border-b border-white/5 bg-alternate-background/30">
             <div className="container px-4 md:px-6">
               <div className="max-w-6xl mx-auto">
-                <Link href="/blog" className="inline-flex items-center text-primary/60 text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] mb-8 md:mb-12 hover:text-primary transition-colors">
+                <Link href="/blog" className="inline-flex items-center text-primary/60 text-[10px] font-black uppercase tracking-[0.3em] mb-12 hover:text-primary transition-colors">
                     <ChevronLeft className="w-3 h-3 mr-1" /> Intelligence Hub
                 </Link>
                 
-                <div className="grid lg:grid-cols-[1fr,550px] gap-8 md:gap-16 items-center">
-                  <div className="space-y-6 md:space-y-8">
+                <div className="grid lg:grid-cols-[1fr,550px] gap-16 items-center">
+                  <div className="space-y-8">
                     <div className="flex items-center gap-4">
-                      <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 md:px-4 uppercase tracking-[0.2em] text-[8px] md:text-[9px] font-black rounded-full">
+                      <Badge variant="outline" className="text-primary border-primary/30 py-1 px-4 uppercase tracking-[0.2em] text-[9px] font-black rounded-full">
                         {post.tags[0]}
                       </Badge>
-                      <span className="text-[8px] md:text-[10px] font-bold text-white/20 uppercase tracking-[0.2em] flex items-center gap-2">
+                      <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em] flex items-center gap-2">
                         <FileText className="w-3 h-3" /> Technical Analysis
                       </span>
                     </div>
                     
-                    <h1 className="text-3xl md:text-6xl lg:text-7xl font-black font-headline text-primary-text leading-[1.1] md:leading-[1.05] tracking-tighter uppercase italic">
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-black font-headline text-primary-text leading-[1.05] tracking-tighter uppercase italic">
                       {post.title}
                     </h1>
                     
-                    <p className="text-lg md:text-2xl text-secondary-text leading-relaxed font-medium max-w-2xl border-l-2 border-primary/20 pl-6 md:pl-8 italic">
+                    <p className="text-xl md:text-2xl text-secondary-text leading-relaxed font-medium max-w-2xl border-l-2 border-primary/20 pl-8 italic">
                       {post.description}
                     </p>
 
-                    <div className="flex wrap items-center gap-4 md:gap-8 text-[8px] md:text-[10px] font-black text-white/30 uppercase tracking-[0.2em] md:tracking-[0.3em] pt-4 md:pt-6">
-                       <span className="flex items-center gap-2 border-r border-white/10 pr-4 md:pr-8"><User className="w-3 h-3 text-primary" /> {post.author}</span>
-                       <span className="flex items-center gap-2 border-r border-white/10 pr-4 md:pr-8"><Clock className="w-3 h-3 text-primary" /> {readingTime} MIN READ</span>
+                    <div className="flex items-center gap-8 text-[10px] font-black text-white/30 uppercase tracking-[0.3em] pt-6">
+                       <span className="flex items-center gap-2 border-r border-white/10 pr-8"><User className="w-3 h-3 text-primary" /> {post.author}</span>
+                       <span className="flex items-center gap-2 border-r border-white/10 pr-8"><Clock className="w-3 h-3 text-primary" /> {readingTime} MIN READ</span>
                        <span>{formatDate(post.publishedDate)}</span>
                     </div>
                   </div>
 
                   {post.imageUrl && (
                     <div className="relative group">
-                      <div className="relative aspect-video overflow-hidden rounded-xl md:rounded-2xl border border-white/10 shadow-2xl bg-black">
+                      <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-black">
                         <img
                           src={post.imageUrl}
                           alt={post.title}
                           className="object-cover w-full h-full grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
                         />
                       </div>
-                      <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-16 h-16 md:w-24 md:h-24 border-r-2 border-b-2 border-primary/20 pointer-events-none" />
+                      <div className="absolute -bottom-6 -right-6 w-24 h-24 border-r-2 border-b-2 border-primary/20 pointer-events-none" />
                     </div>
                   )}
                 </div>
@@ -192,32 +189,32 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           </header>
 
-          <div className="container px-4 md:px-6 mt-12 md:mt-24 relative z-20">
+          <div className="container px-4 md:px-6 mt-24 relative z-20">
             <div className="max-w-4xl mx-auto">
               <div 
                 className="prose-custom max-w-none 
-                  [&_h2]:font-headline [&_h2]:text-primary-text [&_h2]:font-black [&_h2]:tracking-tighter [&_h2]:uppercase [&_h2]:mt-16 [&_h2]:md:mt-24 [&_h2]:mb-8 [&_h2]:md:mb-12 [&_h2]:italic [&_h2]:text-2xl [&_h2]:md:text-4xl
-                  [&_p]:text-secondary-text [&_p]:leading-[1.6] [&_p]:md:leading-[1.8] [&_p]:mb-12 [&_p]:md:mb-16 [&_p]:text-base [&_p]:md:text-lg
+                  [&_h2]:font-headline [&_h2]:text-primary-text [&_h2]:font-black [&_h2]:tracking-tighter [&_h2]:uppercase [&_h2]:mt-24 [&_h2]:mb-12 [&_h2]:italic [&_h2]:text-4xl
+                  [&_p]:text-secondary-text [&_p]:leading-[1.8] [&_p]:mb-16 [&_p]:text-lg
                   [&_strong]:text-primary-text [&_strong]:font-black
-                  [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:bg-white/[0.02] [&_blockquote]:px-6 [&_blockquote]:md:px-12 [&_blockquote]:py-6 [&_blockquote]:md:py-10 [&_blockquote]:rounded-r-xl [&_blockquote]:md:rounded-r-2xl [&_blockquote]:italic [&_blockquote]:text-xl [&_blockquote]:md:text-2xl [&_blockquote]:text-primary-text [&_blockquote]:my-12 [&_blockquote]:md:my-24 [&_blockquote]:font-medium
+                  [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:bg-white/[0.02] [&_blockquote]:px-12 [&_blockquote]:py-10 [&_blockquote]:rounded-r-2xl [&_blockquote]:italic [&_blockquote]:text-2xl [&_blockquote]:text-primary-text [&_blockquote]:my-24 [&_blockquote]:font-medium
                   "
                 dangerouslySetInnerHTML={{ __html: post.content }} 
               />
 
-              <div className="mt-12 md:mt-16 pt-8 md:pt-12 relative group">
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl md:rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
-                  <Card className="overflow-hidden bg-black border border-white/10 rounded-2xl md:rounded-[2rem] relative z-10 shadow-2xl">
-                      <div className="p-8 md:p-16 text-center space-y-10 md:space-y-12">
-                        <div className="space-y-4 md:space-y-6 max-w-2xl mx-auto">
+              <div className="mt-16 pt-12 relative group">
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
+                  <Card className="overflow-hidden bg-black border border-white/10 rounded-[2rem] relative z-10 shadow-2xl">
+                      <div className="p-16 text-center space-y-12">
+                        <div className="space-y-6 max-w-2xl mx-auto">
                             <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Resolution Protocol</Badge>
-                            <h2 className="text-[1.4rem] sm:text-3xl md:text-5xl font-black font-headline tracking-tight text-primary-text uppercase italic leading-[1.15]">
+                            <h2 className="text-3xl md:text-5xl font-black font-headline tracking-tight text-primary-text uppercase italic leading-[1.15]">
                                 OPERATIONAL DISCIPLINE REQUIRES STRUCTURE
                             </h2>
-                            <p className="text-sm md:text-lg text-secondary-text leading-relaxed font-medium">
+                            <p className="text-lg text-secondary-text leading-relaxed font-medium">
                                 Deploy ISO, HACCP, and OSHA-aligned protocols built for execution — not documentation.
                             </p>
                             
-                            <p className="text-sm md:text-base font-bold text-accent/70 italic pt-2 border-t border-white/5 max-w-lg mx-auto">
+                            <p className="text-base font-bold text-accent/70 italic pt-2 border-t border-white/5 max-w-lg mx-auto">
                                 "{currentCta.bridge}"
                             </p>
                         </div>
@@ -227,14 +224,14 @@ export default async function BlogPostPage({ params }: Props) {
                                 <Button 
                                     asChild 
                                     variant="secondary" 
-                                    className="h-auto py-4 px-6 md:px-10 bg-white/[0.03] border border-white/20 hover:bg-white/[0.08] hover:border-accent/30 text-accent transition-all rounded-xl shadow-inner group/btn hover:shadow-[0_0_20px_-5px_rgba(245,166,35,0.2)]"
+                                    className="h-auto py-4 px-10 bg-white/[0.03] border border-white/20 hover:bg-white/[0.08] hover:border-accent/30 text-accent transition-all rounded-xl shadow-inner group/btn hover:shadow-[0_0_20px_-5px_rgba(245,166,35,0.2)]"
                                 >
                                     <Link 
                                         href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} 
-                                        className="inline-flex items-center gap-2 md:gap-3 text-[15px] sm:text-lg md:text-2xl font-bold tracking-tight leading-tight whitespace-nowrap"
+                                        className="inline-flex items-center gap-3 text-lg md:text-2xl font-black tracking-tight leading-tight whitespace-nowrap"
                                     >
                                         <span>{currentCta.button}</span>
-                                        <ArrowRight className="shrink-0 w-3.5 h-3.5 md:w-6 md:h-6 transition-transform group-hover/btn:translate-x-1.5" />
+                                        <ArrowRight className="shrink-0 w-6 h-6 transition-transform group-hover/btn:translate-x-1.5" />
                                     </Link>
                                 </Button>
                                 
@@ -249,9 +246,9 @@ export default async function BlogPostPage({ params }: Props) {
                         </div>
                       </div>
                       
-                      <div className="bg-white/[0.03] border-t border-white/5 py-5 px-4 md:px-12 flex flex-nowrap items-center justify-center overflow-x-auto gap-8 no-scrollbar">
+                      <div className="bg-white/[0.03] border-t border-white/5 py-5 px-12 flex flex-nowrap items-center justify-center overflow-x-auto gap-8 no-scrollbar">
                         {PROOFS.map(item => (
-                            <div key={item.label} className="flex items-center gap-1.5 text-[8px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.1em] shrink-0 whitespace-nowrap">
+                            <div key={item.label} className="flex items-center gap-1.5 text-[9px] font-black uppercase text-white/30 tracking-[0.1em] shrink-0 whitespace-nowrap">
                                 <item.icon className="w-3.5 h-3.5 text-primary/40" /> {item.label}
                             </div>
                         ))}
