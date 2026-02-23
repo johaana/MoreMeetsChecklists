@@ -204,7 +204,7 @@ export default async function BlogPostPage({ params }: Props) {
               <div className="mt-16 pt-12 relative group">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
                   <Card className="overflow-hidden bg-black border border-white/10 rounded-[2rem] relative z-10 shadow-2xl">
-                      <div className="p-16 text-center space-y-12">
+                      <div className="p-8 md:p-16 text-center space-y-12">
                         <div className="space-y-6 max-w-2xl mx-auto">
                             <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Resolution Protocol</Badge>
                             <h2 className="text-3xl md:text-5xl font-black font-headline tracking-tight text-primary-text uppercase italic leading-[1.15]">

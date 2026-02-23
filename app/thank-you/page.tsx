@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -97,10 +96,10 @@ function ThankYouContent() {
       return (
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <Loader2 className="h-16 w-16 text-primary animate-spin" />
-          <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+          <h1 className="text-3xl font-black tracking-tighter sm:text-4xl font-headline italic uppercase">
             Verifying your payment...
           </h1>
-          <p className="max-w-[600px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
+          <p className="max-w-[600px] text-muted-foreground text-base md:text-xl/relaxed mx-auto italic font-medium">
             Please wait while we confirm your transaction. This won't take long.
           </p>
         </div>
@@ -112,17 +111,17 @@ function ThankYouContent() {
          <div className="flex flex-col items-center justify-center space-y-6 text-center">
             <AlertTriangle className="h-20 w-20 text-destructive" />
             <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                <h1 className="text-3xl font-black tracking-tighter sm:text-4xl md:text-5xl font-headline italic uppercase">
                     Verification Failed
                 </h1>
-                <p className="max-w-[600px] text-muted-foreground text-base md:text-lg/relaxed mx-auto">
+                <p className="max-w-[600px] text-muted-foreground text-base md:text-lg/relaxed mx-auto italic font-medium">
                     There was an issue verifying your payment:
                 </p>
-                <p className="font-semibold text-destructive">{error}</p>
-                <p className="text-muted-foreground text-sm pt-4">
+                <p className="font-black text-destructive uppercase tracking-widest">{error}</p>
+                <p className="text-muted-foreground text-sm pt-4 font-medium italic">
                     Please check your email for a receipt and download link. If you still need help, contact our support team.
                 </p>
-                 <Button asChild className="mt-4">
+                 <Button asChild className="mt-4" variant="outline">
                     <Link href="/contact">Contact Support</Link>
                 </Button>
             </div>
@@ -133,18 +132,18 @@ function ThankYouContent() {
     if (verifiedItem) {
       return (
          <div className="flex flex-col items-center justify-center space-y-6 text-center">
-            <CheckCircle className="h-20 w-20 text-authority-green" />
+            <CheckCircle className="h-20 w-20 text-primary" />
             <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline">
+                <h1 className="text-3xl font-black tracking-tighter sm:text-4xl md:text-5xl font-headline italic uppercase">
                     Success! Your download is ready.
                 </h1>
-                <p className="max-w-[600px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
+                <p className="max-w-[600px] text-muted-foreground text-base md:text-xl/relaxed mx-auto italic font-medium">
                     Your file for <strong>{verifiedItem.title}</strong> has been generated and should start downloading automatically.
                 </p>
             </div>
             
             <div className="flex flex-col items-center gap-4 w-full max-w-sm">
-                <Button size="lg" className="w-full text-lg py-7" onClick={() => handleDownload(verifiedItem, itemType!)} variant="accent">
+                <Button size="lg" className="w-full text-lg py-7 font-black uppercase italic" onClick={() => handleDownload(verifiedItem, itemType!)} variant="accent">
                     <Download className="mr-2 h-6 w-6" />
                     Download .XLSX
                 </Button>
@@ -153,10 +152,10 @@ function ThankYouContent() {
                     <div className="flex items-start gap-3">
                         <HelpCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                         <div className="space-y-1">
-                            <p className="text-sm font-bold">Having trouble on mobile?</p>
-                            <p className="text-xs text-muted-foreground leading-tight">
+                            <p className="text-sm font-black uppercase tracking-tight">Having trouble on mobile?</p>
+                            <p className="text-xs text-muted-foreground leading-tight italic font-medium">
                                 If you are using WhatsApp or Instagram browser, downloads might be blocked. 
-                                <span className="font-semibold text-foreground"> Tap the three dots (...) and select "Open in System Browser"</span> (Safari/Chrome) to download your file.
+                                <span className="font-black text-foreground uppercase"> Tap the three dots (...) and select "Open in System Browser"</span> (Safari/Chrome) to download your file.
                             </p>
                         </div>
                     </div>
@@ -165,22 +164,22 @@ function ThankYouContent() {
 
             <div className="space-y-6 pt-10 border-t border-white/10 w-full max-w-2xl text-center">
                 <div className="space-y-3">
-                    <h3 className="text-xl font-bold font-headline text-primary">What Happens Next?</h3>
-                    <p className="text-base text-secondary-text leading-relaxed">
-                        Our team will reach out to you within <span className="font-bold text-primary-text">48 hours (two business days)</span> to initiate your included expert customization session.
+                    <h3 className="text-xl font-black font-headline text-primary uppercase italic">What Happens Next?</h3>
+                    <p className="text-base text-secondary-text leading-relaxed font-medium italic">
+                        Our team will reach out to you within <span className="font-black text-primary-text uppercase">48 hours (two business days)</span> to initiate your included expert customization session.
                     </p>
-                    <p className="text-base text-secondary-text">
+                    <p className="text-base text-secondary-text font-medium italic">
                         Alternatively, you can contact us immediately on WhatsApp for any urgent requirements.
                     </p>
                 </div>
                 <div className="flex flex-wrap justify-center gap-4 pt-4">
-                    <Button asChild variant="outline">
-                        <Link href="/library">
+                    <Button asChild variant="outline" className="font-black uppercase italic">
+                        <Link href="/library" className="flex items-center">
                             Explore More Toolkits
                             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
-                    <Button asChild variant="secondary">
+                    <Button asChild variant="secondary" className="font-black uppercase italic">
                         <Link href="https://wa.me/919860997711" target="_blank">
                             Chat on WhatsApp
                         </Link>
@@ -200,15 +199,15 @@ function ThankYouContent() {
 
       <main className="flex-1 flex items-center justify-center">
          <AlertDialog open={showDownloadConfirm} onOpenChange={setShowDownloadConfirm}>
-            <AlertDialogContent>
+            <AlertDialogContent className="rounded-[2rem] border-white/10 bg-black">
                 <AlertDialogHeader>
-                    <AlertDialogTitle className="flex items-center gap-2 text-primary"><Download className="w-5 h-5"/> Download Started</AlertDialogTitle>
-                    <AlertDialogDescription>
+                    <AlertDialogTitle className="flex items-center gap-2 text-primary font-black uppercase italic"><Download className="w-5 h-5"/> Download Started</AlertDialogTitle>
+                    <AlertDialogDescription className="font-medium italic">
                         Your checklist has started downloading. Please check your downloads folder. If you are on mobile, use a browser like Chrome or Safari for the best experience.
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogAction onClick={() => setShowDownloadConfirm(false)}>Got it</AlertDialogAction>
+                    <AlertDialogAction onClick={() => setShowDownloadConfirm(false)} className="bg-primary text-black font-black uppercase italic">Got it</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
@@ -232,7 +231,7 @@ export default function ThankYouPageWrapper() {
            <main className="flex-1 flex items-center justify-center">
                <div className="flex flex-col items-center justify-center space-y-4 text-center">
                 <Loader2 className="h-16 w-16 text-primary animate-spin" />
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
+                <h1 className="text-3xl font-black tracking-tighter sm:text-4xl font-headline uppercase italic">
                     Loading...
                 </h1>
                 </div>

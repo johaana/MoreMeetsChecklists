@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -77,33 +76,13 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
                 required
                 className="w-full bg-background/50"
             />
-            <Button size="lg" type="submit" className="w-full font-bold" disabled={loading} variant="accent">
+            <Button size="lg" type="submit" className="w-full font-black uppercase" disabled={loading} variant="accent">
                 {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
                 Get Your Free Toolkit
             </Button>
         </form>
     )
 }
-
-const IndiaMethods = () => (
-    <div className="flex flex-col items-center gap-3">
-        <div className="flex items-center justify-center gap-4 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500">
-            <div className="flex flex-col items-center gap-1">
-                <QrCode className="w-4 h-4" />
-                <span className="text-[8px] font-black uppercase">UPI / GPAY</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-                <CardIcon className="w-4 h-4" />
-                <span className="text-[8px] font-black uppercase">CARDS</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-                <Landmark className="w-4 h-4" />
-                <span className="text-[8px] font-black uppercase">NETBANKING</span>
-            </div>
-        </div>
-        <p className="text-[10px] text-muted-foreground font-medium italic">Tax Invoice provided for GST input credit</p>
-    </div>
-);
 
 function getIndustryWording(packId: string): string {
     const map: Record<string, string> = {
@@ -156,26 +135,26 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
              <section className="w-full py-12 md:py-16" id="pricing">
                 <div className="container px-2 md:px-6">
                     <div className="max-w-3xl mx-auto mb-10 text-center">
-                        <h2 className="text-3xl font-bold font-headline mb-2 text-primary">Institutional Access</h2>
-                        <p className="text-foreground/80 text-base md:text-lg">As part of our commitment to social impact, this entire pack is available as a free, instant download.</p>
+                        <h2 className="text-3xl font-black font-headline mb-2 text-primary uppercase italic">Institutional Access</h2>
+                        <p className="text-foreground/80 text-base md:text-lg italic font-medium">As part of our commitment to social impact, this entire pack is available as a free, instant download.</p>
                     </div>
                     <div className="flex justify-center">
-                        <Card className="flex flex-col max-w-md w-full bg-surface-card border-border-color shadow-2xl">
+                        <Card className="flex flex-col max-w-md w-full bg-surface-card border-white/10 shadow-2xl">
                             <CardHeader className="text-center border-b border-white/5 bg-white/[0.01]">
                                 <Download className="w-10 h-10 text-primary mx-auto mb-4" />
-                                <CardTitle className="text-2xl font-headline">Instant Download</CardTitle>
+                                <CardTitle className="text-2xl font-black uppercase italic">Instant Download</CardTitle>
                                 <CardDescription>Get the complete, fully-editable Excel file for the {pack.title}.</CardDescription>
-                                <p className="text-5xl font-extrabold pt-4 text-primary-text">Free</p>
+                                <p className="text-5xl font-black pt-4 text-primary">Free</p>
                             </CardHeader>
                             <CardContent className="flex-1 p-6 text-center">
                                 <ul className="space-y-4 text-muted-foreground text-sm flex flex-col items-center">
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-3 mt-0.5 shrink-0 text-green-500"/><span>Complete pack with all {totalChecklists} checklists.</span></li>
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-3 mt-0.5 shrink-0 text-green-500"/><span>Fully editable Excel format.</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-3 mt-0.5 shrink-0 text-primary"/><span>Complete pack with all {totalChecklists} checklists.</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-3 mt-0.5 shrink-0 text-primary"/><span>Fully editable Excel format.</span></li>
                                 </ul>
                             </CardContent>
                             <CardFooter className="mt-auto flex flex-col justify-center w-full gap-4 p-6 pt-0">
                                 <FreeDownloadForm pack={pack} />
-                                <p className="text-[10px] text-muted-foreground text-center uppercase tracking-widest">PRO BONO PUBLICO LICENSE</p>
+                                <p className="text-[10px] text-muted-foreground text-center uppercase tracking-widest font-black">PRO BONO PUBLICO LICENSE</p>
                             </CardFooter>
                         </Card>
                     </div>
@@ -254,7 +233,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                             "{pack.pricingUrgency}"
                                         </p>
                                     )}
-                                    <p className="text-xs text-muted-foreground line-through opacity-50">
+                                    <p className="text-xs text-muted-foreground line-through opacity-50 font-bold uppercase tracking-widest">
                                         Equivalent consulting cost: {region === 'INDIA' ? '₹4,00,000+' : `$${pack.consultingAnchor || 5000}+`}
                                     </p>
                                 </div>
@@ -273,7 +252,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                             <Button 
                                                 asChild 
                                                 size="lg" 
-                                                className="w-full h-14 bg-primary text-black font-semibold text-base rounded-[10px] shadow-md hover:shadow-xl hover:brightness-105 transition-all border-none relative z-10 px-8"
+                                                className="w-full h-14 bg-primary text-black font-black text-base rounded-[10px] shadow-md hover:shadow-xl hover:brightness-105 transition-all border-none relative z-10 px-8"
                                             >
                                                 <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center justify-center">
                                                     Buy Full Pack – ${pack.priceUSD} <ArrowRight className="ml-2 h-5 w-5"/>
@@ -284,19 +263,19 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     
                                     <div className="mt-1.5 flex items-center justify-center gap-2 opacity-40 grayscale">
                                         <Lock className="w-3 h-3" />
-                                        <span className="text-[11px] font-semibold tracking-tight">
+                                        <span className="text-[11px] font-black tracking-widest uppercase">
                                             {region === 'INDIA' ? 'Secure Payment' : 'Secure International Checkout'}
                                         </span>
                                     </div>
 
                                     <div className="mt-3 flex items-center justify-center gap-2 tracking-tight">
                                         <Check className="w-3.5 h-3.5 text-primary opacity-80" /> 
-                                        <span className="text-[13px] text-muted-foreground font-medium text-center">
+                                        <span className="text-[13px] text-muted-foreground font-bold uppercase tracking-tight text-center">
                                             Instant Digital Delivery · 100% Alignment Guarantee
                                         </span>
                                     </div>
 
-                                    <p className="mt-6 text-[10px] text-white/20 font-medium">
+                                    <p className="mt-6 text-[10px] text-white/20 font-black uppercase tracking-widest">
                                         By purchasing, you agree to our <Link href="/terms" target="_blank" className="underline underline-offset-2 hover:text-white/40">Terms</Link> & <Link href="/refund" target="_blank" className="underline underline-offset-2 hover:text-white/40">Refund Policy</Link>
                                     </p>
                                 </div>
