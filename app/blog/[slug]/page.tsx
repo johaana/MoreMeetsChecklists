@@ -1,3 +1,4 @@
+
 import { blogPosts } from '@/lib/blog-posts';
 import { notFound } from 'next/navigation';
 import { SiteHeader } from '@/components/layout/header';
@@ -108,6 +109,10 @@ export default async function BlogPostPage({ params }: Props) {
     'restaurants': {
         bridge: "Brand trust is built on verifiable safety.",
         button: "Strengthen Your Restaurant Controls"
+    },
+    'hotels_and_resorts': {
+        bridge: "Institutional standards require physical anchors.",
+        button: "Strengthen Your Hotel Controls"
     },
     'facility_management_blueprint': {
         bridge: "People move on. The system must stay.",

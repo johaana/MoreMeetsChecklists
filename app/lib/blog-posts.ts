@@ -17,7 +17,7 @@ export const blogPosts: BlogPost[] = [
       title: "Hospitality Staff Forget 70% of Training Within Days — Here’s Why Your Hotel Needs Structured SOP Sheets",
       publishedDate: "2026-02-21",
       author: "MoreMeets Editorial",
-      tags: ["Training", "Cognitive Science"],
+      tags: ["Training", "Cognitive Science", "Hospitality"],
       relatedPackId: "hotels_and_resorts",
       description: "Science proves that 70% of verbal training is lost within 48 hours. Discover why your hotel's 'verbal standard' is actually a high-risk operational gap.",
       imageUrl: "https://i.postimg.cc/NMr414z6/housekeeping-hotel-1.avif",
@@ -31,10 +31,6 @@ export const blogPosts: BlogPost[] = [
           <p>The <strong>Ebbinghaus Forgetting Curve</strong> suggests that without constant reinforcement or a physical reference point, human memory decays at a predictable, devastating rate. In the high-pressure environment of a hotel, this decay translates directly into skipped cleaning steps, guest complaints, and safety lapses.</p>
         </section>
 
-        <div class="my-12 overflow-hidden rounded-xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/NMr414z6/housekeeping-hotel-1.avif" alt="Hotel Housekeeping Training" class="w-full h-auto object-cover grayscale-[0.2]" />
-        </div>
-
         <h2>The 'Verbal Standard' Trap</h2>
         <section>
           <p>Most boutique hotels run on what we call the "Verbal Standard." A manager explains a task, the employee nods, and the manager assumes the system is now "active."</p>
@@ -43,7 +39,7 @@ export const blogPosts: BlogPost[] = [
             "Verbal instructions are not systems. They are suggestions that expire the moment the manager walks out of the room."
           </blockquote>
           
-          <p>Without an <strong>Excel-based SOP sheet</strong> that acts as a physical anchor, your standards will inevitably drift. Within a month, the 'standard' is no longer what you taught; it is whatever the employee happens to remember that day.</p>
+          <p>Without an <strong>Excel-based SOP sheet</strong> that acts as a physical anchor, your standards will inevitably drift. Within a month, the 'standard' is no longer what you taught; it is whatever the employee happens to remember that day. This is how 5-star properties slip into 3-star realities.</p>
         </section>
 
         <h2>Why Excel SOPs Solve Cognitive Decay</h2>
@@ -51,13 +47,9 @@ export const blogPosts: BlogPost[] = [
           <p>A structured, downloadable checklist removes the burden of memory. It turns a "learned behavior" into a "verifiable task." When a housekeeper has a physical sheet (or a digital one) that mandates a check for <em>'dust on high-ledges'</em> and <em>'remote control sanitization,'</em> the decision-making is removed. Execution becomes binary: Done or Not Done.</p>
         </section>
 
-        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Stop relying on memory. Deploy the <a href="/packs/hotels_and_resorts" class="text-primary font-bold underline">Hotels & Resorts Operations System</a> to anchor your standards in structure.
-        </div>
-
         <h2>Final Resolution</h2>
         <section>
-          <p>Institutional memory shouldn't live in your employees' heads. It should live in your spreadsheets. By moving from verbal training to <strong>Structured SOP Infrastructure</strong>, you neutralize the Forgetting Curve and ensure that your 5-star standard remains a 5-star reality every single shift.</p>
+          <p>Institutional memory shouldn't live in your employees' heads. It should live in your spreadsheets. By moving from verbal training to <strong>Structured SOP Infrastructure</strong>, you neutralize the Forgetting Curve and ensure that your operational standard remains a permanent reality every single shift.</p>
         </section>
       `
     },
@@ -66,7 +58,7 @@ export const blogPosts: BlogPost[] = [
       title: "Cognitive Overload in Hotels: Why Staff Forget What To Do During Emergencies",
       publishedDate: "2026-02-22",
       author: "MoreMeets Editorial",
-      tags: ["Crisis Management", "Safety"],
+      tags: ["Crisis Management", "Safety", "Hospitality"],
       relatedPackId: "hotels_and_resorts",
       description: "In a crisis, the human brain freezes. Learn why 'mental training' fails during hotel emergencies and why physical systems are the only cure.",
       imageUrl: "https://i.postimg.cc/430P7MBJ/hotel-operations-keys.webp",
@@ -74,16 +66,12 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">When the fire alarm rings at 3 AM or a guest collapses in the lobby, your staff’s IQ drops by 30 points. It’s called Cognitive Overload.</p>
           
-          <p>Hospitality staff are trained to be multi-taskers. They handle billing, calls, and guest requests simultaneously. But in a true emergency, the brain's 'working memory' becomes saturated. The result? They forget where the manual overrides are, they skip notification protocols, and panic sets in.</p>
+          <p>Hospitality staff are trained to be professional multi-taskers. They handle billing, calls, and guest requests simultaneously. But in a true emergency, the brain's 'working memory' becomes saturated. The result? They forget where the manual overrides are, they skip notification protocols, and panic sets in.</p>
         </section>
-
-        <div class="my-12 overflow-hidden rounded-xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/k5Hs6Zf2/hotel-maintenance-SOP.webp" alt="Hotel Emergency Maintenance" class="w-full h-auto object-cover" />
-        </div>
 
         <h2>Memory vs. Systems</h2>
         <section>
-          <p>In a crisis, instructions that live in someone’s head are inaccessible. The brain defaults to 'Fight or Flight,' not 'Retrieve SOP from 3 months ago.'</p>
+          <p>In a crisis, instructions that live in someone’s head are inaccessible. The brain defaults to 'Fight or Flight,' not 'Retrieve SOP from 3 months ago.' This is why even long-term employees can freeze when smoke enters the corridor.</p>
           
           <blockquote class="border-l-4 border-primary bg-white/[0.02] px-6 py-4 my-8 italic text-lg text-primary-text">
             "In high-stakes environments, you do not rise to the level of your goals. You fall to the level of your systems."
@@ -95,12 +83,10 @@ export const blogPosts: BlogPost[] = [
           <p>Every emergency protocol must be accessible and actionable within 60 seconds. This is why <strong>Excel SOP sheets</strong> are superior to thick manuals or complex SaaS apps that require logins. A printed or easily accessible spreadsheet provides a 'Flow-State' guide that tells the employee exactly what to do next, regardless of their stress level.</p>
         </section>
 
-        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Zero-risk safety requires <a href="/packs/hotels_and_resorts" class="text-primary font-bold underline">Operational Infrastructure</a> designed for the reality of human stress.
-        </div>
-
         <h2>Summary for Founders</h2>
-        <p>Your team isn't incompetent—they are human. Protect your guests and your legal standing by removing the variable of 'Memory' from your emergency response. Build systems that work when the brain doesn't.</p>
+        <section>
+          <p>Your team isn't incompetent—they are human. Protect your guests and your legal standing by removing the variable of 'Memory' from your emergency response. Build systems that work when the brain doesn't.</p>
+        </section>
       `
     },
     {
@@ -108,7 +94,7 @@ export const blogPosts: BlogPost[] = [
       title: "Hotels That Run on WhatsApp Lose Operational Memory — Here’s What Happens When Crisis Hits",
       publishedDate: "2026-02-23",
       author: "MoreMeets Editorial",
-      tags: ["Technology", "Risk Management"],
+      tags: ["Technology", "Risk Management", "Communication"],
       relatedPackId: "hotels_and_resorts",
       description: "WhatsApp is a communication tool, not an operating system. Discover why relying on chat for hotel operations is a massive hidden liability.",
       imageUrl: "https://i.postimg.cc/3wq146n3/hotel-manager-operation.webp",
@@ -118,10 +104,6 @@ export const blogPosts: BlogPost[] = [
           
           <p>While chat is great for quick updates, it is a graveyard for operational memory. Instructions are buried in hundreds of messages, there is no audit trail for compliance, and when an employee leaves, your 'system' leaves with their phone.</p>
         </section>
-
-        <div class="my-12 overflow-hidden rounded-xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/3wq146n3/hotel-manager-operation.webp" alt="Hotel Manager analyzing data" class="w-full h-auto object-cover" />
-        </div>
 
         <h2>The Liability of the 'Seen' Receipt</h2>
         <section>
@@ -137,12 +119,10 @@ export const blogPosts: BlogPost[] = [
           <p>Excel-based SOPs provide what WhatsApp cannot: <strong>Permanent, Searchable, and Auditable Structure.</strong> They create a fixed record of what was supposed to happen versus what actually happened. This is the difference between 'guessing' if a task was done and 'knowing' it was.</p>
         </section>
 
-        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Move from chat-chaos to <a href="/library" class="text-primary font-bold underline">Structured Governance</a>. Own your institutional memory.
-        </div>
-
         <h2>Conclusion</h2>
-        <p>Don't let your operational standards get lost in a group chat. Use WhatsApp for the 'When' but use <strong>MoreMeets SOPs</strong> for the 'How' and the 'Proof.' Your future self (and your auditors) will thank you.</p>
+        <section>
+          <p>Don't let your operational standards get lost in a group chat. Use WhatsApp for the 'When' but use <strong>Structured SOPs</strong> for the 'How' and the 'Proof.' Your future self (and your auditors) will thank you.</p>
+        </section>
       `
     },
     {
@@ -150,7 +130,7 @@ export const blogPosts: BlogPost[] = [
       title: "The Hidden Revenue Leak: How Undocumented SOPs Destroy Guest Experience",
       publishedDate: "2026-02-24",
       author: "MoreMeets Editorial",
-      tags: ["Guest Experience", "Revenue"],
+      tags: ["Guest Experience", "Revenue", "Profitability"],
       relatedPackId: "hotels_and_resorts",
       description: "Every service inconsistency is a withdrawal from your brand equity. Learn the financial cost of 'winging it' in hospitality.",
       imageUrl: "https://i.postimg.cc/W4y8FKXV/happy-hotel-guests.webp",
@@ -160,10 +140,6 @@ export const blogPosts: BlogPost[] = [
           
           <p>In hospitality, consistency is the product. When a guest receives 5-star service on Monday but 3-star service on Friday because a different shift was on duty, your brand is broken. Inconsistency is the #1 driver of negative reviews, and negative reviews are the #1 driver of lower ADR (Average Daily Rate).</p>
         </section>
-
-        <div class="my-12 overflow-hidden rounded-xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/W4y8FKXV/happy-hotel-guests.webp" alt="Satisfied hotel guests" class="w-full h-auto object-cover" />
-        </div>
 
         <h2>Confusion Kills Profit</h2>
         <section>
@@ -176,15 +152,13 @@ export const blogPosts: BlogPost[] = [
 
         <h2>Engineering the Guest Experience</h2>
         <section>
-          <p>By implementing <strong>MoreMeets Operational Frameworks</strong>, you remove the variable of 'intuition.' You ensure that every guest, regardless of who is on shift, experiences the same rigorous standard. This consistency builds trust, drives repeat bookings, and eliminates the 'Memory Tax' that eats your margins.</p>
+          <p>By implementing <strong>Structured Operational Frameworks</strong>, you remove the variable of 'intuition.' You ensure that every guest, regardless of who is on shift, experiences the same rigorous standard. This consistency builds trust, drives repeat bookings, and eliminates the 'Memory Tax' that eats your margins.</p>
         </section>
 
-        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Protect your reputation. Deploy <a href="/packs/hotels_and_resorts" class="text-primary font-bold underline">Institutional Standards</a> today.
-        </div>
-
         <h2>Resolution</h2>
-        <p>Guest experience isn't about smiles; it's about <strong>systems</strong>. Smile all you want, but if the room isn't ready or the bill is wrong, the guest is leaving a 1-star review. Standardize the basics so your team can focus on the extras.</p>
+        <section>
+          <p>Guest experience isn't about smiles; it's about <strong>systems</strong>. Smile all you want, but if the room isn't ready or the bill is wrong, the guest is leaving a 1-star review. Standardize the basics so your team can focus on the extras.</p>
+        </section>
       `
     },
     {
@@ -192,7 +166,7 @@ export const blogPosts: BlogPost[] = [
       title: "When the Head Chef Left, Revenue Dropped 28% — Here’s Why",
       publishedDate: "2026-02-25",
       author: "MoreMeets Editorial",
-      tags: ["Restaurant Management", "Staff Turnover"],
+      tags: ["Restaurant Management", "Staff Turnover", "Risk"],
       relatedPackId: "restaurants",
       description: "A case study in key-person dependency. Learn why losing a 'hero' employee can cripple a restaurant that lacks documented infrastructure.",
       imageUrl: "https://i.postimg.cc/TwW9r94C/food-cooking.avif",
@@ -200,12 +174,8 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">He was a culinary genius. He knew the recipes by heart. He knew the vendor quirks. And when he quit, he took the restaurant's operating system with him.</p>
           
-          <p>This is the <strong>'Hero Model'</strong> of management, and it is a fatal risk. In this restaurant, there were no written SOPs for recipe costing, kitchen prep, or vendor negotiation. It all lived in the Chef's head. When he walked out, the consistency vanished, food costs spiked, and within three months, revenue plummeted.</p>
+          <p>This is the <strong>'Hero Model'</strong> of management, and it is a fatal risk. In this restaurant, there were no written SOPs for recipe costing, kitchen prep, or vendor negotiation. It all lived in the Chef's head. When he walked out, the consistency vanished, food costs spiked, and within three months, revenue plummeted by 28%.</p>
         </section>
-
-        <div class="my-12 overflow-hidden rounded-xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/TwW9r94C/food-cooking.avif" alt="Restaurant kitchen operations" class="w-full h-auto object-cover" />
-        </div>
 
         <h2>The Danger of Tribal Knowledge</h2>
         <section>
@@ -218,15 +188,13 @@ export const blogPosts: BlogPost[] = [
 
         <h2>Converting Individual Brilliance into Process</h2>
         <section>
-          <p>By using <strong>Restaurant SOP Checklists</strong>, you capture the 'Brilliance' of your top performers and turn it into a permanent asset. New hires don't have to guess how to prep the signature sauce or how to handle a busy Friday night—they just follow the framework.</p>
+          <p>By using <strong>Restaurant SOP Checklists</strong>, you capture the 'Brilliance' of your top performers and turn it into a permanent asset. New hires don't have to guess how to prep the signature sauce or how to handle a busy Friday night—they just follow the framework provided by the brand.</p>
         </section>
 
-        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Neutralize the Resignation Risk. Implement the <a href="/packs/restaurants" class="text-primary font-bold underline">Restaurant Operations System</a>.
-        </div>
-
         <h2>Conclusion</h2>
-        <p>Don’t wait for your 'hero' to resign to realize you have no system. Document your recipes, your costs, and your workflows today. Ensure that your brand's excellence is independent of any single person's presence.</p>
+        <section>
+          <p>Don’t wait for your 'hero' to resign to realize you have no system. Document your recipes, your costs, and your workflows today. Ensure that your brand's excellence is independent of any single person's presence.</p>
+        </section>
       `
     },
     {
@@ -234,7 +202,7 @@ export const blogPosts: BlogPost[] = [
       title: "Why 60% of Emergency Drills Fail in Hotels — Because Teams Rely on Memory, Not Systems",
       publishedDate: "2026-02-26",
       author: "MoreMeets Editorial",
-      tags: ["Safety", "Operations"],
+      tags: ["Safety", "Operations", "Audit"],
       relatedPackId: "hotels_and_resorts",
       description: "Audit reports show that most hotel emergency drills fail due to simple memory lapses. Discover how to build a drill-proof safety culture.",
       imageUrl: "https://i.postimg.cc/k5Hs6Zf2/hotel-maintenance-SOP.webp",
@@ -244,10 +212,6 @@ export const blogPosts: BlogPost[] = [
           
           <p>Internal audits suggest that over 60% of 'mental-only' emergency drills fail to meet time or safety benchmarks. The reason is simple: <strong>Cognitive degradation.</strong> If safety protocols are not part of a weekly, verifiable checklist system, they become 'dormant knowledge' that is impossible to retrieve during a crisis.</p>
         </section>
-
-        <div class="my-12 overflow-hidden rounded-xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/k5Hs6Zf2/hotel-maintenance-SOP.webp" alt="Safety and Maintenance Check" class="w-full h-auto object-cover" />
-        </div>
 
         <h2>Memory Is Not a Safety Device</h2>
         <section>
@@ -260,15 +224,13 @@ export const blogPosts: BlogPost[] = [
 
         <h2>Building a Drill-Proof Culture</h2>
         <section>
-          <p>The solution is <strong>Frequence-Mapped Checklists.</strong> Instead of one big drill a year, integrate micro-checks into daily operations. Use the <strong>MoreMeets Safety Modules</strong> to ensure that every exit, every alarm, and every role is verified weekly. When the real emergency happens, the team isn't 'remembering'—they are just following the daily routine.</p>
+          <p>The solution is <strong>Frequency-Mapped Checklists.</strong> Instead of one big drill a year, integrate micro-checks into daily operations. Use <strong>Safety Modules</strong> to ensure that every exit, every alarm, and every role is verified weekly. When the real emergency happens, the team isn't 'remembering'—they are just following the daily routine.</p>
         </section>
 
-        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Standardize your safety. Get the <a href="/packs/hotels_and_resorts" class="text-primary font-bold underline">Hotels & Resorts Safety Framework</a>.
-        </div>
-
         <h2>Resolution</h2>
-        <p>Audit readiness is a byproduct of daily discipline. Stop treating safety as a special event and start treating it as part of your core infrastructure. Remove memory from the equation, and your drills will stop failing.</p>
+        <section>
+          <p>Audit readiness is a byproduct of daily discipline. Stop treating safety as a special event and start treating it as part of your core infrastructure. Remove memory from the equation, and your drills will stop failing.</p>
+        </section>
       `
     },
     {
@@ -276,7 +238,7 @@ export const blogPosts: BlogPost[] = [
       title: "Why High Staff Turnover Is Destroying Operational Memory in Hospitality",
       publishedDate: "2026-02-27",
       author: "MoreMeets Editorial",
-      tags: ["HR", "Operational Continuity"],
+      tags: ["HR", "Operational Continuity", "Staffing"],
       relatedPackId: "hotels_and_resorts",
       description: "Hospitality turnover is a fact of life. But losing your 'how-to' knowledge every time someone leaves is a choice. Learn to build turnover-proof operations.",
       imageUrl: "https://i.postimg.cc/1zdBnTJ5/hotel-ops.webp",
@@ -286,10 +248,6 @@ export const blogPosts: BlogPost[] = [
           
           <p>Every time an experienced employee leaves, they take a piece of your <strong>Operational Memory</strong> with them. The 'shortcut' to fixing the laundry machine, the 'trick' to handling a specific regular guest—this tribal knowledge is the lifeblood of your service. Without documentation, you are constantly restarting your business from scratch.</p>
         </section>
-
-        <div class="my-12 overflow-hidden rounded-xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/1zdBnTJ5/hotel-ops.webp" alt="Hotel Staff Team" class="w-full h-auto object-cover" />
-        </div>
 
         <h2>The Guesswork Tax</h2>
         <section>
@@ -302,15 +260,13 @@ export const blogPosts: BlogPost[] = [
 
         <h2>Turnover-Proof Onboarding</h2>
         <section>
-          <p>By using <strong>MoreMeets SOP Sheets</strong>, you reduce onboarding time by 50%. A new hire doesn't need to 'learn' the system over months; they just need to follow the sheet from Day 1. This turns a variable cost (training) into a fixed asset (process).</p>
+          <p>By using <strong>Standardized SOP Sheets</strong>, you reduce onboarding time by 50%. A new hire doesn't need to 'learn' the system over months; they just need to follow the sheet from Day 1. This turns a variable cost (training) into a fixed asset (process).</p>
         </section>
 
-        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Stop starting from scratch. Build <a href="/library" class="text-primary font-bold underline">Permanent Infrastructure</a> for your team.
-        </div>
-
         <h2>Final Assessment</h2>
-        <p>Your business should be a machine that works regardless of who is operating it. If a resignation causes a crisis, you have a system failure, not a personnel failure. Lock in your memory today.</p>
+        <section>
+          <p>Your business should be a machine that works regardless of who is operating it. If a resignation causes a crisis, you have a system failure, not a personnel failure. Lock in your memory today.</p>
+        </section>
       `
     },
     {
@@ -318,7 +274,7 @@ export const blogPosts: BlogPost[] = [
       title: "When Employees Don’t Know What To Do During a Crisis — It’s Not Their Fault",
       publishedDate: "2026-02-28",
       author: "MoreMeets Editorial",
-      tags: ["Leadership", "Crisis Management"],
+      tags: ["Leadership", "Crisis Management", "Responsibility"],
       relatedPackId: "restaurants",
       description: "Leadership is about removing ambiguity before the storm hits. Learn why system gaps, not staff errors, are the root cause of most restaurant crises.",
       imageUrl: "https://i.postimg.cc/v8fhT09w/restaurant-chaos.jpg",
@@ -328,10 +284,6 @@ export const blogPosts: BlogPost[] = [
           
           <p>Most managers blame the employee. But forensic analysis of restaurant disasters usually reveals a different culprit: <strong>System Gaps.</strong> If an employee hasn't been given a clear, binary set of instructions for that specific event, their failure is a leadership failure. You cannot expect 'common sense' to prevail during a crisis.</p>
         </section>
-
-        <div class="my-12 overflow-hidden rounded-xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/v8fhT09w/restaurant-chaos.jpg" alt="Busy, chaotic restaurant kitchen" class="w-full h-auto object-cover" />
-        </div>
 
         <h2>The Myth of 'Common Sense'</h2>
         <section>
@@ -347,12 +299,10 @@ export const blogPosts: BlogPost[] = [
           <p>By providing <strong>Structured SOPs</strong>, you are giving your team the gift of clarity. You are removing the guilt of 'making the wrong choice' because the choice has already been made for them by the system. This is how you build a high-trust, low-stress operation.</p>
         </section>
 
-        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Remove the guesswork. Deploy the <a href="/packs/restaurants" class="text-primary font-bold underline">Restaurant Safety & Recovery System</a>.
-        </div>
-
         <h2>Conclusion</h2>
-        <p>Stop blaming your staff for the gaps in your infrastructure. Take responsibility for the 'How' so they can take responsibility for the 'Do.' Standardize the response, and you eliminate the crisis.</p>
+        <section>
+          <p>Stop blaming your staff for the gaps in your infrastructure. Take responsibility for the 'How' so they can take responsibility for the 'Do.' Standardize the response, and you eliminate the crisis.</p>
+        </section>
       `
     },
     {
@@ -374,12 +324,7 @@ export const blogPosts: BlogPost[] = [
           <p>The "Great Chicken Crisis" wasn't a failure of farming; <span class="text-primary font-bold">it was a failure of logistics architecture.</span> KFC had just switched its distribution contract from Bidvest Logistics to DHL. What followed was a masterclass in the dangers of centralized risk and unverified transition protocols.</p>
         </section>
 
-        <div class="my-12 overflow-hidden rounded-xl md:rounded-2xl border border-white/10 shadow-2xl">
-            <img src="https://i.postimg.cc/0jdT720g/kfc.webp" alt="KFC Closed Sign" class="w-full h-auto object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500" />
-        </div>
-
         <h2>The Single Point of Failure (SPOF)</h2>
-        
         <section>
           <p>At the heart of the collapse was a single warehouse in Rugby. DHL attempted to manage the entire UK distribution network from one massive, automated hub. When the software "glitched" and trucks were delayed, there was no redundant infrastructure. No Plan B.</p>
           
@@ -387,10 +332,6 @@ export const blogPosts: BlogPost[] = [
             "Efficiency is often the enemy of resilience. In the pursuit of a lean supply chain, KFC removed the safety buffers that allowed for local deviations. When the center failed, the periphery died instantly."
           </blockquote>
         </section>
-
-        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Organizations scaling beyond manual oversight typically deploy <a href="/library" class="text-primary font-bold underline">Operational Systems</a> at this stage to identify hub-level vulnerabilities before they trigger regional shutdowns.
-        </div>
 
         <h2>Forensic Cost Mapping</h2>
         <section class="bg-secondary/10 p-6 md:p-12 rounded-xl border border-white/5 my-12">
@@ -411,20 +352,9 @@ export const blogPosts: BlogPost[] = [
           </ul>
         </section>
 
-        <h2>The Transition Risk Trap</h2>
-        <section>
-          <p>The KFC incident highlights the <span class="text-primary font-black uppercase">Transition Risk</span>. Organizations often assume that a new vendor's "system" is ready on Day 1. In reality, complex integrations require phased rollouts and "Shadow Operations" where the old system remains active until the new one is stress-tested under live load.</p>
-          
-          <p>The "Rugby hub" became a bottleneck because the <span class="text-primary font-bold italic">Inbound QC and Slot Management</span> protocols were not calibrated for the volume of a national rollout. It was an inventory management error at an industrial scale.</p>
-        </section>
-
         <h2>Final Masterclass Lesson: Resilience over Lean</h2>
         <section>
-          <p>Supply chain resilience requires <strong>Distributed Redundancy.</strong> It requires every warehouse node to have independent, verifiable audit protocols for receiving, picking, and dispatch. If you depend on a single warehouse management system without a manual fallback or a secondary node, you aren't optimizing—you are gambling.</p>
-          
-          <p class="text-xl font-bold italic text-primary-text border-l-2 border-primary/30 pl-6 py-2 mt-8">
-            <span class="text-primary font-black uppercase">Resilience is an asset.</span> Gaps in logistics documentation aren't just inconveniences; they are existential threats to high-volume brands.
-          </p>
+          <p>Supply chain resilience requires <strong>Distributed Redundancy.</strong> It requires every warehouse node to have independent, verifiable audit protocols for receiving, picking, and dispatch. If you depend on a single warehouse management system without a manual fallback, you aren't optimizing—you are gambling.</p>
         </section>
       `
     },
@@ -442,34 +372,20 @@ export const blogPosts: BlogPost[] = [
           <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">Most founders see SOPs as compliance. CFOs see them as overhead. But structured operations are revenue multipliers. Chaos has a measurable, compounding cost.</p>
           
           <p>Employee turnover costs U.S. businesses over <span class="text-risk-accent font-black">$1,000,000,000,000 annually.</span> Much of this is tied to unclear expectations and the resulting frustration. Research suggests that nearly <span class="text-risk-accent font-black">20% of a worker's time</span> is spent looking for internal information or waiting for verbal instructions.</p>
-          
-          <p>This is the <span class="text-risk-accent font-black">"Inefficiency Tax"</span> that kills margins in growing companies and destroys investor confidence.</p>
         </section>
 
-        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            High-valuation organizations move from reactive compliance to <a href="/library" class="text-primary font-bold underline">Operational Systems</a> to protect their multiples during exit or expansion.
-        </div>
-
         <h2>The Profit Equation</h2>
-        
         <section>
           <p>Structured operations reduce error rates, improve training speed, and lower the supervision load on expensive managers. If a system reduces one regulatory penalty or prevents one resignation shock—<strong>the ROI is exponential.</strong></p>
           
           <blockquote class="border-l-4 border-primary bg-white/[0.02] px-6 py-4 my-8 italic text-lg text-primary-text">
             "Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine that works regardless of who is in the room."
           </blockquote>
-
-          <p>Manufacturing firms report <span class="text-primary font-black">15-25% productivity gains</span> after standardizing work. Data-driven onboarding reduces time-to-competency by <span class="text-primary font-bold">30-50%</span>. Every day a new hire is "guessing" is a day your margin is leaking into the floor.</p>
         </section>
 
         <h2>From Compliance to Valuation</h2>
         <section>
           <p>Well-documented operations increase valuation multiples and improve buyer confidence during M&A. They shorten due diligence periods and reduce transition risks. In a scaled environment, these fractions of a percent can compound into massive institutional gains.</p>
-          
-          <p class="mt-8 text-xl font-bold text-primary-text italic border-l-2 border-primary/20 pl-6">
-            <span class="text-primary font-black uppercase">Systemization turns a variable cost (training) into a fixed asset (process).</span> 
-            Stop paying the Memory Tax and start building a legacy of structured execution.
-          </p>
         </section>
       `
     },
@@ -486,34 +402,21 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">Healthcare doesn’t fail because doctors are careless. It fails because systems are inconsistent. The gap between policy and practice is where harm lives.</p>
           
-          <p>Medical error is cited as the <span class="text-risk-accent font-black">third leading cause of death</span> in the United States. This isn't a lack of intelligence—it is process variability. Hospitals are complex machines where thousands of tiny tasks must align perfectly, every time, across three shifts and dozens of departments.</p>
-          
-          <p>The core challenge of modern clinical quality is <span class="text-primary font-bold">standardizing brilliance</span>. In a high-stakes environment, brilliance is a variable; a <span class="text-primary font-black">structured system is a constant</span>.</p>
+          <p>Medical error is cited as the <span class="text-risk-accent font-black">third leading cause of death</span> in the United States. This isn't a lack of intelligence—it is process variability. Hospitals are complex machines where thousands of tiny tasks must align perfectly, every time.</p>
         </section>
 
-        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Ensuring clinical reliability requires <a href="/library" class="text-primary font-bold underline">Operational Systems</a> aligned with global JCI and NABH frameworks.
-        </div>
-
         <h2>The Checklist Manifesto</h2>
-        
         <section>
-          <p>Atul Gawande’s research demonstrated that surgical checklists <span class="text-primary font-black">reduced complications by over 30%</span>. These were simple checklists, not complex AI or proprietary dashboards. Why? Because even world-class experts forget critical steps under cognitive load.</p>
+          <p>Atul Gawande’s research demonstrated that surgical checklists <span class="text-primary font-black">reduced complications by over 30%</span>. Why? Because even world-class experts forget critical steps under cognitive load.</p>
           
           <blockquote class="border-l-4 border-primary bg-white/[0.02] px-6 py-4 my-8 italic text-lg text-primary-text">
             "The checklist is not a replacement for expertise; it is a safeguard against the cognitive load that causes experts to make simple, fatal mistakes. It forces the team to pause and verify the invisible."
           </blockquote>
-
-          <p>Checklists reduce cognitive overload and convert individual brilliance into systemic reliability. When you transition from a 'Hero Model' where safety depends on one person's memory to a <strong>'System Model'</strong> where safety is embedded in the workflow, the results are immediate and life-saving.</p>
         </section>
 
         <h2>The ROI of Clinical Safety</h2>
         <section>
-          <p>In healthcare, missed tasks harm people and destroy institutions. Malpractice exposure drops significantly when you can provide a <span class="text-primary font-bold italic">verifiable, timestamped log</span> of every safety check performed. It moves the organization from a defensive, reactive posture to a proactive, audit-ready one.</p>
-          
-          <p class="text-2xl font-black text-primary uppercase italic tracking-tighter mt-12 mb-4">Verification is the proof of care.</p>
-          
-          <p>Without a structured system, your "policy" is just a wish. <span class="text-primary font-bold">Documentation is the only daily proof of care.</span> Assume nothing. Verify everything. Protect your patients by removing the variable of human memory.</p>
+          <p>In healthcare, missed tasks harm people and destroy institutions. Malpractice exposure drops significantly when you can provide a <span class="text-primary font-bold italic">verifiable, timestamped log</span> of every safety check performed. It moves the organization from defensive to proactive.</p>
         </section>
       `
     },
@@ -530,62 +433,21 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">On a chilly autumn afternoon in 2015, a handful of customers reported something common. They felt sick. Within weeks, Chipotle's market value dropped by billions.</p>
           
-          <p>Foodborne illness is not rare. But this wasn’t just a failure of biology; <span class="text-primary font-bold">it was a failure of systems.</span> Chipotle—the poster child for "Food With Integrity"—was brought to its knees by its own operational success and the resulting complexity that outpaced its controls.</p>
+          <p>Foodborne illness is not rare. But this wasn’t just a failure of biology; <span class="text-primary font-bold">it was a failure of systems.</span> Chipotle was brought to its knees by its own operational success and the resulting complexity that outpaced its controls.</p>
         </section>
 
-        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Zero-risk food operations deploy <a href="/library" class="text-primary font-bold underline">Operational Systems</a> to detect temperature drift before it becomes a public health incident.
-        </div>
-
         <h2>The Anatomy of Operational Drift</h2>
-        
         <section>
-          <p>The real story wasn't about bacteria. It was about <strong>Drift</strong>. Operational drift occurs when small deviations from procedure gradually become the "new normal." A missed log entry. A delayed temperature check. An employee working while ill because "the team is short-staffed."</p>
+          <p>The real story wasn't about bacteria. It was about <strong>Drift</strong>. Operational drift occurs when small deviations from procedure gradually become the "new normal." A missed log entry. A delayed temperature check.</p>
           
           <blockquote class="border-l-4 border-primary bg-white/[0.02] px-6 py-4 my-8 italic text-lg text-primary-text">
-            "Operational drift is subtle. It doesn’t feel like negligence. It feels like adaptation. A busy Friday night. A short-staffed shift. An assumption that 'someone already checked.' This is the gap where disasters are born."
+            "Operational drift is subtle. It doesn’t feel like negligence. It feels like adaptation. A busy Friday night. A short-staffed shift. This is the gap where disasters are born."
           </blockquote>
         </section>
 
-        <h2>Taking Stock: Financial Consequence Mapping</h2>
-        <section class="bg-secondary/10 p-6 md:p-12 rounded-xl border border-white/5 my-12">
-          <h4 class="text-primary font-black uppercase tracking-widest text-xs mb-6">Forensic Cost Analysis (2015-2020)</h4>
-          <ul class="space-y-6">
-            <li class="flex flex-col md:flex-row md:justify-between border-b border-white/5 pb-4 gap-2">
-              <span class="text-zinc-400 font-medium">Federal Fine (Criminal Liability)</span>
-              <span class="text-risk-accent font-black text-xl">$25,000,000</span>
-            </li>
-            <li class="flex flex-col md:flex-row md:justify-between border-b border-white/5 pb-4 gap-2">
-              <span class="text-zinc-400 font-medium">Stock Value Loss (Market Cap Erosion)</span>
-              <span class="text-risk-accent font-black text-xl">-$10,000,000,000+</span>
-            </li>
-            <li class="flex flex-col md:flex-row md:justify-between border-b border-white/5 pb-4 gap-2">
-              <span class="text-zinc-400 font-medium">Sales Decline (Comp Store Revenue)</span>
-              <span class="text-risk-accent font-black text-xl">-30% (2016 Q1)</span>
-            </li>
-            <li class="flex flex-col md:flex-row md:justify-between gap-2">
-              <span class="text-zinc-400 font-medium">Publicity & Brand Trust Damage</span>
-              <span class="text-risk-accent font-black text-xl uppercase italic tracking-tighter">IMMEASURABLE</span>
-            </li>
-          </ul>
-        </section>
-
-        <h2>The Compound Cost of Routine Lapses</h2>
+        <h2>Final Masterclass Lesson: Drift Prevention</h2>
         <section>
-          <p>Organizations rarely collapse because they lack rules—they falter because <strong>enforcement varies.</strong> When you operate 2,000+ locations, even a <span class="text-risk-accent font-bold">3% compliance deviation</span> creates a massive target for litigation. The "burrito problem" was actually a "documentation problem."</p>
-          
-          <p>In 2020, Chipotle agreed to pay a <span class="text-risk-accent font-black">$25,000,000 federal fine</span> — the largest ever imposed in a U.S. food safety case — specifically for failing to maintain <span class="text-primary font-bold">rigorous, verifiable safety protocols</span> across its footprint.</p>
-        </section>
-
-        <h2>Masterclass Lesson: Drift Prevention</h2>
-        <section>
-          <p>Sustainable protection requires more than policy; it requires <strong>Mandatory documentation tied to shift accountability.</strong> You need independent audits, clear sick-leave enforcement, and a system that makes the *status* of every task visible to management instantly.</p>
-          
-          <p>High-performing brands fail not because they don’t know standards, but because they assume standards are self-executing. They are not.</p>
-          
-          <p class="text-xl font-bold italic text-primary-text border-l-2 border-primary/30 pl-6 py-2 mt-8">
-            <span class="text-primary font-black uppercase">Documentation is defense</span> — and in a high-risk operational environment, defense must be systemic, proactive, and permanent.
-          </p>
+          <p>Sustainable protection requires more than policy; it requires <strong>Mandatory documentation tied to shift accountability.</strong> You need independent audits and a system that makes the *status* of every task visible to management instantly.</p>
         </section>
       `
     },
@@ -602,38 +464,21 @@ export const blogPosts: BlogPost[] = [
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-8 md:mb-12 italic">It didn’t feel dramatic. No sirens. No lawsuits. No media coverage. Just a resignation email. Subject line: “Moving On.”</p>
           
-          <p>He had been there eleven years. He knew the vendors by their first names. He handled inspections with a calm that bordered on the supernatural. He always <strong>“just knew”</strong> what to check before an audit.</p>
-          
-          <p>Everyone — from the CEO to the floor staff — believed the system was safe. They weren't running on a system, though. They were running on an individual. When that person walked out, <span class="text-primary font-bold">the company didn't just lose an employee. It lost its operating system.</span></p>
-          
-          <p>This is the hidden crisis of the modern enterprise: <strong>The Resignation Risk.</strong> It is the silent killer of consistency. In high-stakes environments, this gap isn't just a financial nuisance; it is a safety catastrophe waiting for a trigger.</p>
+          <p>He had been there eleven years. He knew the vendors by their first names. He handled inspections with a calm that bordered on the supernatural. Everyone believed the system was safe. They weren't running on a system, though. They were running on an individual.</p>
         </section>
 
-        <div class="my-12 p-6 rounded-xl border border-primary/20 bg-primary/5 italic text-sm text-center">
-            Convert individual brilliance into <a href="/library" class="text-primary font-bold underline">Operational Systems</a> to neutralize the Resignation Risk.
-        </div>
-
         <h2>The Myth of Experience</h2>
-        
         <section>
-          <p>Most companies believe they have processes. What they actually have is <strong>people who remember how things work</strong>. This is called <em>tribal knowledge</em> — undocumented institutional memory carried in human heads. It feels safe because it’s familiar. But it is the ultimate hidden liability.</p>
+          <p>Most companies believe they have processes. What they actually have is <strong>people who remember how things work</strong>. This is called <em>tribal knowledge</em> — undocumented institutional memory carried in human heads.</p>
           
           <blockquote class="border-l-4 border-primary bg-white/[0.02] px-6 py-4 my-8 italic text-lg text-primary-text">
             "If your standards drift the moment your best employee steps out of the room, you don't have a business—you have a group of people working hard to keep a house of cards from collapsing."
           </blockquote>
-
-          <p>A study found that <span class="text-primary font-bold">42% of institutional knowledge</span> is unique to specific employees. When they leave, the organization stops knowing how to execute. Replacement costs are often calculated in salary terms, but the real cost is the <span class="text-risk-accent font-black">Memory Tax</span>: the period where the business stops performing at its baseline while the successor "guesses" their way through the role.</p>
         </section>
 
         <h2>Case Analysis: The Knight Capital Collapse</h2>
         <section>
-          <p>In 2012, Knight Capital deployed new software. One obsolete function wasn’t removed. It triggered rogue trades. In 45 minutes, the company lost <span class="text-risk-accent font-black">$440,000,000</span>.</p>
-          
-          <p>The issue wasn’t intelligence. It was <strong>undocumented legacy process assumptions</strong>. A single developer who knew the "quirks" of the old system had left, and the institutional memory of *why* that function existed was gone. <span class="text-risk-accent font-black">Operational memory gaps cost nearly half a billion dollars.</span></p>
-          
-          <p class="text-xl font-bold italic text-primary-text border-l-2 border-primary/30 pl-6 py-2 mt-8">
-            By embedding standards through clearly defined roles, mapped frequencies, and documented consequences, you create an <span class="text-primary font-bold">insurance policy</span> against the day your top talent moves on. When the person resigns, the system stays behind.
-          </p>
+          <p>In 2012, Knight Capital deployed new software. One obsolete function wasn’t removed. It triggered rogue trades. In 45 minutes, the company lost <span class="text-risk-accent font-black">$440,000,000</span>. The issue wasn’t intelligence. It was <strong>undocumented legacy process assumptions</strong>.</p>
         </section>
       `
     }
