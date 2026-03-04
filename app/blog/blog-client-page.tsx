@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { blogPosts } from '@/lib/blog-posts';
+import { blogPosts, type BlogPost } from '@/lib/blog-posts';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
@@ -166,7 +166,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                     </SheetTrigger>
                     <SheetContent side="bottom" className="rounded-t-[2rem] bg-alternate-background border-t border-white/10">
                         <SheetHeader className="mb-6">
-                            <SheetTitle className="uppercase font-black tracking-widest text-xs">Operational Intelligence Silos</SheetTitle>
+                            <SheetTitle className="uppercase font-black tracking-widest text-xs">Technical Verticals</SheetTitle>
                         </SheetHeader>
                         <ScrollArea className="h-[50vh]">
                             <div className="flex flex-col gap-2 pr-4 pb-8">
@@ -175,7 +175,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                                     onClick={() => handleFilterClick(null)}
                                     className="justify-start text-sm font-black uppercase tracking-widest"
                                 >
-                                    All Industries
+                                    All Reports
                                 </Button>
                                 {allTags.map(tag => (
                                      <Button
@@ -195,6 +195,53 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
         </>
     );
 }
+
+const BlogCard = ({ post }: { post: BlogPost }) => (
+    <Card className="flex flex-col rounded-[1.5rem] overflow-hidden shadow-lg hover:shadow-primary/5 transition-all duration-500 border border-white/5 bg-black group/card">
+        <Link href={`/blog/${post.slug}`} className="block overflow-hidden relative aspect-[16/10]">
+            {post.imageUrl ? (
+                <img
+                    src={post.imageUrl}
+                    alt={post.title}
+                    className="w-full h-full object-cover grayscale-[0.4] group-hover/card:grayscale-0 group-hover/card:scale-105 transition-all duration-700"
+                />
+            ) : (
+                <div className="w-full h-full bg-zinc-900 flex items-center justify-center">
+                    <p className="text-muted-foreground text-[8px] uppercase font-black tracking-widest">No signal detected</p>
+                </div>
+            )}
+            <div className="absolute top-4 left-4">
+                <Badge className="bg-black/60 backdrop-blur-md text-white/70 border-white/10 text-[8px] font-black uppercase tracking-widest px-3 py-1">
+                    Protocol: {post.protocol || "Standard"}
+                </Badge>
+            </div>
+        </Link>
+        <CardHeader className="space-y-3 p-8">
+            <div className="space-y-1">
+                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-primary">
+                    Sector: {post.tags[0]}
+                </p>
+                <CardTitle className="text-xl font-headline leading-tight italic uppercase tracking-tighter">
+                    <Link href={`/blog/${post.slug}`} className="text-white hover:text-primary transition-colors">
+                        {post.title}
+                    </Link>
+                </CardTitle>
+            </div>
+            <CardDescription className="text-secondary-text line-clamp-3 italic font-medium text-sm leading-relaxed">
+                {post.description}
+            </CardDescription>
+        </CardHeader>
+        <CardFooter className="flex flex-col items-start gap-6 p-8 pt-0 mt-auto">
+            <div className="w-full flex justify-between items-center text-[9px] font-black uppercase tracking-widest text-white/20">
+                <p>{formatDate(post.publishedDate)}</p>
+                <span>{Math.ceil(post.content.split(' ').length / 200)} min read</span>
+            </div>
+            <Button asChild variant="secondary" size="sm" className="w-full h-12 font-black uppercase tracking-widest text-[10px] bg-white/5 text-white hover:bg-primary hover:text-black rounded-xl border border-white/5">
+                <Link href={`/blog/${post.slug}`}>Review Analysis <ArrowRight className="ml-2 h-3.5 w-3.5" /></Link>
+            </Button>
+        </CardFooter>
+    </Card>
+);
 
 export default function BlogClientPage() {
   const searchParams = useSearchParams();
@@ -268,13 +315,19 @@ export default function BlogClientPage() {
                                         />
                                     )}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                                    <div className="absolute top-4 left-4">
+                                        <Badge className="bg-black/60 backdrop-blur-md text-white/70 border-white/10 text-[8px] font-black uppercase tracking-widest px-3 py-1">
+                                            Protocol: {currentFeaturedPost.protocol || "Standard"}
+                                        </Badge>
+                                    </div>
                                     </div>
                                     <div className="p-8 space-y-4">
-                                        <div className="flex flex-wrap gap-2">
-                                            <Badge variant="outline" className="text-[9px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-3">Protocol: {currentFeaturedPost.protocol || "Operational Standard"}</Badge>
-                                            <Badge variant="secondary" className="bg-white/5 text-white/40 border-none uppercase tracking-widest text-[8px] font-black">{currentFeaturedPost.tags[0]}</Badge>
+                                        <div className="space-y-1">
+                                            <p className="text-[9px] font-black uppercase tracking-[0.2em] text-primary">
+                                                Sector: {currentFeaturedPost.tags[0]}
+                                            </p>
+                                            <CardTitle className="text-2xl font-headline text-white italic uppercase tracking-tighter">{currentFeaturedPost.title}</CardTitle>
                                         </div>
-                                        <CardTitle className="text-2xl font-headline text-white italic uppercase tracking-tighter">{currentFeaturedPost.title}</CardTitle>
                                         <CardDescription className="text-secondary-text italic line-clamp-3">{currentFeaturedPost.description}</CardDescription>
                                         <Button variant="outline" className="mt-4 border-white/10 text-white font-black uppercase text-[10px] tracking-widest h-12 w-full rounded-xl">
                                             Initiate Full Debrief <ArrowRight className="ml-2 h-4 w-4 text-primary" />
@@ -293,16 +346,22 @@ export default function BlogClientPage() {
                                                 />
                                             )}
                                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black" />
+                                            <div className="absolute top-8 left-8">
+                                                <Badge className="bg-black/60 backdrop-blur-md text-white/70 border-white/10 text-[9px] font-black uppercase tracking-widest px-4 py-1.5">
+                                                    Protocol: {currentFeaturedPost.protocol || "Standard"}
+                                                </Badge>
+                                            </div>
                                         </div>
                                         <div className="relative z-10 p-16 flex flex-col justify-center space-y-8 bg-black">
                                             <div className="space-y-4">
-                                                <div className="flex items-center gap-4">
-                                                    <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Protocol: {currentFeaturedPost.protocol || "Operational Standard"}</Badge>
-                                                    <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.3em] flex items-center gap-2"><FileText className="w-3 h-3 text-primary" /> Forensic Level 01</span>
+                                                <div className="space-y-1">
+                                                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">
+                                                        Sector: {currentFeaturedPost.tags[0]}
+                                                    </p>
+                                                    <CardTitle className="text-4xl lg:text-5xl font-headline text-white italic uppercase tracking-tighter leading-[1.05]">
+                                                        {currentFeaturedPost.title}
+                                                    </CardTitle>
                                                 </div>
-                                                <CardTitle className="text-4xl lg:text-5xl font-headline text-white italic uppercase tracking-tighter leading-[1.05]">
-                                                    {currentFeaturedPost.title}
-                                                </CardTitle>
                                                 <p className="text-xl text-secondary-text font-medium italic border-l-2 border-primary/20 pl-8 leading-relaxed">
                                                     {currentFeaturedPost.description}
                                                 </p>
@@ -330,41 +389,7 @@ export default function BlogClientPage() {
                 {/* Other Posts */}
                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {postsForGrid.map((post) => (
-                        <Card key={post.slug} className="flex flex-col rounded-[1.5rem] overflow-hidden shadow-lg hover:shadow-primary/5 transition-all duration-500 border border-white/5 bg-black group/card">
-                           <Link href={`/blog/${post.slug}`} className="block overflow-hidden relative aspect-[16/10]">
-                            {post.imageUrl ? (
-                                    <img
-                                        src={post.imageUrl}
-                                        alt={post.title}
-                                        className="w-full h-full object-cover grayscale-[0.4] group-hover/card:grayscale-0 group-hover/card:scale-105 transition-all duration-700"
-                                    />
-                            ): (
-                               <div className="w-full h-full bg-zinc-900 flex items-center justify-center">
-                                 <p className="text-muted-foreground text-xs uppercase font-black tracking-widest">No visual signal</p>
-                               </div>
-                            )}
-                            <div className="absolute top-4 left-4">
-                                <Badge className="bg-black/80 backdrop-blur-md text-primary border border-primary/20 text-[8px] font-black uppercase tracking-widest">Protocol: {post.protocol || "Standard"}</Badge>
-                            </div>
-                            </Link>
-                            <CardHeader className="space-y-4 p-8">
-                                <CardTitle className="text-xl font-headline leading-tight italic uppercase tracking-tighter">
-                                    <Link href={`/blog/${post.slug}`} className="text-white hover:text-primary transition-colors">
-                                        {post.title}
-                                    </Link>
-                                </CardTitle>
-                                <CardDescription className="text-secondary-text line-clamp-3 italic font-medium">{post.description}</CardDescription>
-                            </CardHeader>
-                             <CardFooter className="flex flex-col items-start gap-6 p-8 pt-0 mt-auto">
-                                <div className="w-full flex justify-between items-center text-[9px] font-black uppercase tracking-widest text-white/20">
-                                    <p>{formatDate(post.publishedDate)}</p>
-                                    <span>{Math.ceil(post.content.split(' ').length / 200)} min read</span>
-                                </div>
-                                <Button asChild variant="secondary" size="sm" className="w-full h-12 font-black uppercase tracking-widest text-[10px] bg-white/5 text-white hover:bg-primary hover:text-black rounded-xl border border-white/5">
-                                  <Link href={`/blog/${post.slug}`}>Review Analysis <ArrowRight className="ml-2 h-3.5 w-3.5" /></Link>
-                                </Button>
-                            </CardFooter>
-                        </Card>
+                        <BlogCard key={post.slug} post={post} />
                     ))}
                 </div>
 

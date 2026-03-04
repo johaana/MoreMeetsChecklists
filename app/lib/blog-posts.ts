@@ -466,15 +466,8 @@ export const blogPosts: BlogPost[] = [
       description: "Deconstructing the 2018 KFC logistics failure. How a single point of failure (SPOF) paralyzed 900 restaurants and the cost of centralized risk.",
       imageUrl: "https://i.postimg.cc/D0d91ydR/kfc1.webp",
       content: `
-        <section>
-          <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
-            In February 2018, 900 KFC outlets closed. Not because of a lack of customers, but because of a failure in logistics architecture.
-          </p>
-          <p>The "Great Chicken Crisis" was a failure of <strong>Centralized Risk</strong>. KFC switched distribution to a single, automated hub. When the software glitched, there was no redundant infrastructure. No Plan B.</p>
-        </section>
-        <h2>The Single Point of Failure (SPOF)</h2>
-        <p>Efficiency is often the enemy of resilience. In pursuit of a 'lean' chain, KFC removed the safety buffers that allowed for local deviations. When the center failed, the periphery died instantly.</p>
-        <blockquote class="my-16">"A system without redundancy is a trap waiting for a glitch."</blockquote>
+        <p>In February 2018, 900 KFC outlets closed. Not because of a lack of customers, but because of a failure in logistics architecture.</p>
+        <p>The "Great Chicken Crisis" was a failure of <strong>Centralized Risk</strong>. KFC switched distribution to a single, automated hub. When the software glitched, there was no redundant infrastructure. No Plan B.</p>
       `
     },
     {
@@ -505,21 +498,6 @@ export const blogPosts: BlogPost[] = [
       content: `
         <p>Healthcare doesn’t fail because doctors are careless. It fails because systems are inconsistent. The gap between policy and practice is where harm lives.</p>
         <p>Atul Gawande’s research demonstrated that surgical checklists reduced complications by over 30%. Why? Because even world-class experts forget critical steps under cognitive load.</p>
-      `
-    },
-    {
-      slug: 'the-day-the-process-left-with-him',
-      title: "The Resignation Risk Debrief: Personality-Driven vs. System-Driven Ops",
-      publishedDate: "2026-02-16",
-      author: "MoreMeets Editorial",
-      tags: ["Corporate & Tech"],
-      protocol: "Institutional Memory",
-      relatedPackId: "facility_management_blueprint",
-      description: "A forensic study of Tribal Knowledge. When a key manager leaves, most companies lose their operating system. How to build institutional resilience.",
-      imageUrl: "https://i.postimg.cc/QdPDF1XM/resignation1.jpg",
-      content: `
-        <p>He had been there eleven years. He handled inspections with a calm that bordered on the supernatural. Everyone believed the system was safe. They weren't running on a system, though. They were running on an individual.</p>
-        <p>If your standards drift the moment your best employee steps out of the room, you don't have a business—you have a group of people working hard to keep a house of cards from collapsing.</p>
       `
     },
     {

@@ -156,18 +156,18 @@ export default async function BlogPostPage({ params }: Props) {
                 
                 <div className="grid lg:grid-cols-[1fr,550px] gap-16 items-center">
                   <div className="space-y-8">
-                    <div className="flex items-center gap-4">
-                      <Badge variant="outline" className="text-primary border-primary/30 py-1 px-4 uppercase tracking-[0.2em] text-[9px] font-black rounded-full">
-                        Protocol: {post.protocol || "Operational Standard"}
-                      </Badge>
-                      <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em] flex items-center gap-2">
-                        <ShieldAlert className="w-3 h-3 text-primary" /> Technical Analysis
-                      </span>
-                      {post.tags[0] && (
-                        <span className="text-[9px] font-black text-accent uppercase tracking-[0.2em] border-l border-white/10 pl-4">
-                          Sector: {post.tags[0]}
+                    <div className="space-y-2">
+                      <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">
+                        Sector: {post.tags[0]}
+                      </p>
+                      <div className="flex items-center gap-4">
+                        <Badge variant="outline" className="text-white/50 border-white/10 py-1 px-4 uppercase tracking-[0.2em] text-[9px] font-black rounded-full bg-white/5">
+                          Protocol: {post.protocol || "Operational Standard"}
+                        </Badge>
+                        <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em] flex items-center gap-2">
+                          <ShieldAlert className="w-3 h-3 text-primary" /> Technical Analysis
                         </span>
-                      )}
+                      </div>
                     </div>
                     
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-black font-headline text-primary-text leading-[1.05] tracking-tighter uppercase italic">
