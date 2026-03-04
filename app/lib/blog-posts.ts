@@ -19,7 +19,7 @@ export const blogPosts: BlogPost[] = [
       publishedDate: "2026-02-21",
       author: "MoreMeets Editorial",
       tags: ["Hotel & Resort Operations"],
-      protocol: "Institutional Memory",
+      protocol: "Training Retention",
       relatedPackId: "hotels_and_resorts",
       description: "A technical debrief on the Ebbinghaus Forgetting Curve in hospitality. Why verbal training leads to 70% knowledge loss and how Excel SOPs prevent operational drift.",
       imageUrl: "https://i.postimg.cc/NMr414z6/housekeeping-hotel-1.avif",
@@ -286,7 +286,7 @@ export const blogPosts: BlogPost[] = [
         <ul class="space-y-4 my-8">
           <li><strong>Week 1:</strong> Initial chaos. New staff struggle to find "the usual" vendor contacts.</li>
           <li><strong>Week 2:</strong> Quality drift. Signature dishes start tasting "different."</li>
-          <li><strong>Week 4:</strong> Financial leakage. Food cost % spikes by 5-8% due to guesswork in prep.</li>
+          <li><strong>Week 4:</strong> Guest complaints. Food cost % spikes by 5-8% due to guesswork in prep.</li>
           <li><strong>Month 2:</strong> Revenue contraction. Repeat guests stop visiting.</li>
         </ul>
 
@@ -366,8 +366,8 @@ export const blogPosts: BlogPost[] = [
       title: "Staff Turnover & Operational Amnesia: Protecting Institutional Memory",
       publishedDate: "2026-02-27",
       author: "MoreMeets Editorial",
-      tags: ["Institutional Memory"],
-      protocol: "Operational Continuity",
+      tags: ["Hotel & Resort Operations"],
+      protocol: "Institutional Memory",
       relatedPackId: "hotels_and_resorts",
       description: "Hospitality turnover is a fact of life. Learn how to build turnover-proof operations by converting individual knowledge into permanent organizational infrastructure.",
       imageUrl: "https://i.postimg.cc/1zdBnTJ5/hotel-ops.webp",

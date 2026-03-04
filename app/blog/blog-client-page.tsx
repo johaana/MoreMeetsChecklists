@@ -20,8 +20,7 @@ import { subscribeToBlog } from './actions';
 
 const primaryTags = [
     "Hotel & Resort Operations", 
-    "Restaurant & F&B Operations", 
-    "Institutional Memory"
+    "Restaurant & F&B Operations"
 ];
 
 const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
