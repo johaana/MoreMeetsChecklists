@@ -6,7 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import { blogPosts } from '@/lib/blog-posts';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Mail, Loader2, CheckCircle, Filter, ChevronDown, X, FileText, ShieldAlert } from 'lucide-react';
@@ -21,7 +21,6 @@ import { subscribeToBlog } from './actions';
 const primaryTags = [
     "Hotel & Resort Operations", 
     "Restaurant & F&B Operations", 
-    "Operational Risk & Safety", 
     "Institutional Memory"
 ];
 
@@ -272,7 +271,7 @@ export default function BlogClientPage() {
                                     </div>
                                     <div className="p-8 space-y-4">
                                         <div className="flex flex-wrap gap-2">
-                                            <Badge variant="outline" className="text-[9px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-3">Featured Analysis</Badge>
+                                            <Badge variant="outline" className="text-[9px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-3">Protocol: {currentFeaturedPost.protocol || "Operational Standard"}</Badge>
                                             <Badge variant="secondary" className="bg-white/5 text-white/40 border-none uppercase tracking-widest text-[8px] font-black">{currentFeaturedPost.tags[0]}</Badge>
                                         </div>
                                         <CardTitle className="text-2xl font-headline text-white italic uppercase tracking-tighter">{currentFeaturedPost.title}</CardTitle>
@@ -298,7 +297,7 @@ export default function BlogClientPage() {
                                         <div className="relative z-10 p-16 flex flex-col justify-center space-y-8 bg-black">
                                             <div className="space-y-4">
                                                 <div className="flex items-center gap-4">
-                                                    <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Featured Analysis</Badge>
+                                                    <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Protocol: {currentFeaturedPost.protocol || "Operational Standard"}</Badge>
                                                     <span className="text-[9px] font-bold text-white/20 uppercase tracking-[0.3em] flex items-center gap-2"><FileText className="w-3 h-3 text-primary" /> Forensic Level 01</span>
                                                 </div>
                                                 <CardTitle className="text-4xl lg:text-5xl font-headline text-white italic uppercase tracking-tighter leading-[1.05]">
@@ -345,7 +344,7 @@ export default function BlogClientPage() {
                                </div>
                             )}
                             <div className="absolute top-4 left-4">
-                                <Badge className="bg-black/80 backdrop-blur-md text-primary border border-primary/20 text-[8px] font-black uppercase tracking-widest">{post.tags[0]}</Badge>
+                                <Badge className="bg-black/80 backdrop-blur-md text-primary border border-primary/20 text-[8px] font-black uppercase tracking-widest">{post.protocol || "Standard"}</Badge>
                             </div>
                             </Link>
                             <CardHeader className="space-y-4 p-8">
