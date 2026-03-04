@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -135,7 +136,7 @@ function ThankYouContent() {
             <CheckCircle className="h-20 w-20 text-primary" />
             <div className="space-y-2">
                 <h1 className="text-3xl font-black tracking-tighter sm:text-4xl md:text-5xl font-headline italic uppercase">
-                    Success! Your download is ready.
+                    Success: Your download is ready.
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground text-base md:text-xl/relaxed mx-auto italic font-medium">
                     Your file for <strong>{verifiedItem.title}</strong> has been generated and should start downloading automatically.

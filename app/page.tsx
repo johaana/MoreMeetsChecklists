@@ -28,7 +28,7 @@ const CoreProblemSection = () => (
             <SectionHeadline>Memory fails. Systems don’t.</SectionHeadline>
             <div className="space-y-4 text-lg text-secondary-text">
                 <p>People don’t fail because they don’t care.<br/>They fail because the business expects them to remember too much.</p>
-                <p>When processes are undocumented, inconsistently trained, explained verbally, or just “understood” but not written...</p>
+                <p>When processes are undocumented, inconsistently trained, explained verbally, or just “understood” but not written:</p>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-3 text-center text-sm font-medium">
                 {['Steps are skipped', 'Standards drift', 'Training fades', 'Audits are stressful', 'Managers chase'].map(item => (
@@ -67,7 +67,7 @@ const HowItWorksSection = () => (
                     <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">
                         Implement Immediately
                     </h3>
-                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">Download fully editable checklists and SOPs instantly — no waiting, no delays.</p>
+                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">Download fully editable checklists and SOPs instantly: no waiting, no delays.</p>
                 </div>
                  <div className="flex flex-col items-center">
                     <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl">
@@ -79,7 +79,7 @@ const HowItWorksSection = () => (
             </div>
             <div className="mt-16 text-center">
                 <p className="text-lg md:text-xl font-bold text-primary italic border-t border-white/5 pt-8 max-w-3xl mx-auto">
-                    Move from inconsistent execution to standardized, audit-ready operations in days — not months.
+                    Move from inconsistent execution to standardized, audit-ready operations in days: not months.
                 </p>
             </div>
         </div>
@@ -149,7 +149,7 @@ const HowTeamsUseItSection = () => {
         { title: "SOP Creation", content: ["Clear steps", "Clear ownership", "Clear frequency", "Clear outcomes"], closing: "No long documents. Only what matters.", subClosing: "Everyone knows what to do, how to do it, and when." },
         { title: "Training & Onboarding", content: ["Faster", "Consistent", "Less dependent on people"], closing: "Training that doesn’t fade.", subClosing: "New hires don’t guess. They follow the same standards as experienced staff." },
         { title: "Daily Operations", content: ["What needs to be done", "How it should be done", "What “right” looks like"], closing: "Execution without follow-ups.", subClosing: "Managers stop chasing. Work runs the same on every shift." },
-        { title: "Continuous Improvement", content: ["SOPs are updated", "Mistakes are removed once — permanently", "Best practices are locked in"], closing: "Your system gets smarter over time.", subClosing: "Experience becomes process. Not tribal knowledge." }
+        { title: "Continuous Improvement", content: ["SOPs are updated", "Mistakes are removed once: permanently", "Best practices are locked in"], closing: "Your system gets smarter over time.", subClosing: "Experience becomes process. Not tribal knowledge." }
     ];
     return(
     <Section id="how-it-works-old">
@@ -176,7 +176,7 @@ const HowTeamsUseItSection = () => {
 const ComplianceSection = () => (
     <Section id="compliance" className="bg-alternate-background">
         <div className="container px-4 md:px-6 max-w-3xl mx-auto text-center space-y-8">
-            <SectionHeadline>Built for global compliance — without complexity</SectionHeadline>
+            <SectionHeadline>Built for global compliance: without complexity</SectionHeadline>
             <p className="text-lg text-secondary-text leading-relaxed">MoreMeets™ is designed to support regulated environments where consistency matters more than intent.</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-left text-[10px] font-black uppercase tracking-widest pt-4 text-primary-text">
                 <p className="flex items-center gap-2"><Check className="w-4 h-4 text-authority-green"/>ISO standards</p>
@@ -231,7 +231,7 @@ const FinalCTASection = () => (
                     <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Built to prevent costly oversight.</p>
                 </div>
                  <div className="pt-4 text-[9px] font-black uppercase tracking-[0.2em] text-accent">
-                    1 Expert Customization Included • Aligned to your brand and workflow
+                    1 Expert Customization Included: Aligned to your brand and workflow
                 </div>
             </div>
         </div>

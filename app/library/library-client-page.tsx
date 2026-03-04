@@ -45,7 +45,7 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => (
         <CardFooter>
             <Button asChild className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-black font-black uppercase italic text-xs tracking-widest transition-all" variant="secondary">
                 <Link href={`/packs/${pack.id}`}>
-                    View System <ArrowRight className="ml-2 h-4 w-4" />
+                    Access System <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
             </Button>
         </CardFooter>

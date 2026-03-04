@@ -19,30 +19,30 @@ export const blogPosts: BlogPost[] = [
       publishedDate: "2026-02-21",
       author: "MoreMeets Editorial",
       tags: ["Hotel & Resort Operations"],
-      protocol: "Training Retention",
+      protocol: "Institutional Memory",
       relatedPackId: "hotels_and_resorts",
-      description: "A technical debrief on the Ebbinghaus Forgetting Curve in hospitality. Why verbal training leads to 70% knowledge loss and how Excel SOPs prevent operational drift.",
+      description: "A technical debrief on the Ebbinghaus Forgetting Curve in hospitality. Why verbal training leads to 70% knowledge loss. Discover how Excel SOPs prevent operational drift.",
       imageUrl: "https://i.postimg.cc/NMr414z6/housekeeping-hotel-1.avif",
       content: `
         <section>
           <div class="bg-primary/10 border-l-4 border-primary p-6 mb-12 rounded-r-xl">
             <p class="text-primary font-black uppercase tracking-widest text-[10px] mb-2">Forensic Analysis: Cognitive Decay</p>
-            <p class="text-secondary-text text-sm italic">"The greatest operational risk isn't a lack of effort; it is the predictable biological failure of human memory."</p>
+            <p class="text-secondary-text text-sm italic">"The greatest operational risk isn't a lack of effort: it is the predictable biological failure of human memory."</p>
           </div>
           
           <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
-            You spend weeks training a new housekeeper or front-desk agent. By next Tuesday, they’ve already forgotten 70% of it. This isn't a performance issue—it's an infrastructure failure.
+            You spend weeks training a new housekeeper or front-desk agent. By next Tuesday, they’ve already forgotten 70% of it. This isn't a performance issue: it's an infrastructure failure.
           </p>
           
           <h2>1. The Science: The Ebbinghaus Forgetting Curve</h2>
           <p>Psychologist Hermann Ebbinghaus’ research into the <strong>Forgetting Curve</strong> demonstrates that without structured reinforcement, memory retention drops sharply within 24 to 48 hours. In the high-interruption environment of a hotel, this decay is accelerated. When instructions are purely verbal, they are effectively "expired" the moment the manager leaves the floor.</p>
           
-          <p>The brain is optimized to prune information it doesn't use immediately. In hospitality, where a staff member is bombarded with guest requests, phone calls, and system alerts, the "pruning" happens faster. Without a physical anchor—a structured SOP sheet—training is a sunk cost.</p>
+          <p>The brain is optimized to prune information it doesn't use immediately. In hospitality, where a staff member is bombarded with guest requests, phone calls, and system alerts, the "pruning" happens faster. Without a physical anchor (a structured SOP sheet), training is a sunk cost.</p>
         </section>
 
         <section class="my-16">
           <h3 class="text-primary-text font-black uppercase tracking-tighter italic mb-6">The "Verbal Standard" Trap</h3>
-          <p>Most boutique operations run on what we call the <em>Verbal Standard</em>. A manager explains a task, the employee nods, and the manager assumes the system is active. In reality, you haven't built a system; you've shared a suggestion. Without an <strong>Excel-based SOP sheet</strong> that acts as a permanent reference, your standards will inevitably drift.</p>
+          <p>Most boutique operations run on what we call the <em>Verbal Standard</em>. A manager explains a task, the employee nods, and the manager assumes the system is active. In reality, you haven't built a system: you've shared a suggestion. Without an <strong>Excel-based SOP sheet</strong> that acts as a permanent reference, your standards will inevitably drift.</p>
           
           <div class="grid md:grid-cols-2 gap-8 my-16">
             <div class="p-8 bg-white/[0.02] border border-white/10 rounded-2xl">
@@ -72,7 +72,7 @@ export const blogPosts: BlogPost[] = [
 
         <section class="bg-white/[0.02] border border-white/5 p-8 md:p-12 rounded-[2rem] my-16">
           <h2 class="text-red-500 !mt-0">The Financial Impact: The Guesswork Tax</h2>
-          <p>When training fades, "Guesswork" fills the gap. This leads to what we call <strong>The Guesswork Tax</strong>—a recurring cost manifesting as:</p>
+          <p>When training fades, "Guesswork" fills the gap. This leads to what we call <strong>The Guesswork Tax</strong>: a recurring cost manifesting as:</p>
           <ul class="grid md:grid-cols-2 gap-6 mt-8">
             <li class="flex items-start gap-3">
               <span class="text-red-500 font-black">01.</span>
@@ -95,7 +95,7 @@ export const blogPosts: BlogPost[] = [
 
         <h2>2. Resolution: Moving from Memory to Infrastructure</h2>
         <section>
-          <p>The solution is not more training; it is better <strong>Infrastructure</strong>. A structured, downloadable Excel checklist removes the burden of memory. It turns a "learned behavior" into a "verifiable task." When a staff member has a physical sheet that mandates a binary 'Check' for specific control points, execution becomes predictable.</p>
+          <p>The solution is not more training: it is better <strong>Infrastructure</strong>. A structured, downloadable Excel checklist removes the burden of memory. It turns a "learned behavior" into a "verifiable task." When a staff member has a physical sheet that mandates a binary 'Check' for specific control points, execution becomes predictable.</p>
           <p>By moving from verbal orientation to <strong>Structured SOP Infrastructure</strong>, you neutralize the Forgetting Curve and ensure that your operational standard remains a permanent reality every single shift.</p>
         </section>
       `
@@ -108,7 +108,7 @@ export const blogPosts: BlogPost[] = [
       tags: ["Hotel & Resort Operations"],
       protocol: "Life Safety",
       relatedPackId: "hotels_and_resorts",
-      description: "Forensic analysis of the 'Amygdala Hijack' in hospitality. Why even high-performing staff fail during crises and why physical systems are the only cure.",
+      description: "Forensic analysis of the 'Amygdala Hijack' in hospitality. Why even high-performing staff fail during crises. Why physical systems are the only cure.",
       imageUrl: "https://i.postimg.cc/430P7MBJ/hotel-operations-keys.webp",
       content: `
         <section>
@@ -116,7 +116,7 @@ export const blogPosts: BlogPost[] = [
             When the fire alarm rings at 3 AM or a guest collapses in the lobby, your staff’s IQ effectively drops by 30 points. This is the physiological reality of Cognitive Overload.
           </p>
           
-          <p>Human working memory is designed to hold 4–7 items at a time. In a crisis, the <strong>Amygdala Hijack</strong> occurs—the brain's logical pre-frontal cortex shuts down to prioritize survival. In this state, "common sense" and "previous training" become inaccessible. The brain enters a loop of confusion unless it is provided with an external, binary guide.</p>
+          <p>Human working memory is designed to hold 4-7 items at a time. In a crisis, the <strong>Amygdala Hijack</strong> occurs: the brain's logical pre-frontal cortex shuts down to prioritize survival. In this state, "common sense" and "previous training" become inaccessible. The brain enters a loop of confusion unless it is provided with an external, binary guide.</p>
         </section>
 
         <h2>1. The "First 5 Minutes" Framework</h2>
@@ -149,7 +149,7 @@ export const blogPosts: BlogPost[] = [
 
         <h2>2. Final Assessment</h2>
         <section>
-          <p>Your team isn't incompetent—they are human. Protect your guests and your legal standing by removing the variable of 'Memory' from your emergency response. Build systems that work when the brain doesn't.</p>
+          <p>Your team isn't incompetent: they are human. Protect your guests and your legal standing by removing the variable of 'Memory' from your emergency response. Build systems that work when the brain doesn't.</p>
         </section>
       `
     },
@@ -161,7 +161,7 @@ export const blogPosts: BlogPost[] = [
       tags: ["Hotel & Resort Operations"],
       protocol: "Audit Readiness",
       relatedPackId: "hotels_and_resorts",
-      description: "WhatsApp is a communication tool, not an operating system. Discover why relying on chat for hotel operations creates massive hidden liabilities and audit failures.",
+      description: "WhatsApp is a communication tool, not an operating system. Discover why relying on chat for hotel operations creates massive hidden liabilities.",
       imageUrl: "https://i.postimg.cc/3wq146n3/hotel-manager-operation.webp",
       content: `
         <section>
@@ -176,10 +176,10 @@ export const blogPosts: BlogPost[] = [
         <p>Just because an employee 'saw' a message doesn't mean they've followed the standard. WhatsApp lacks the <strong>binary accountability</strong> of a structured checklist. You cannot audit a group chat for ISO or HACCP compliance. You cannot prove to an inspector that a fridge temperature was checked because 'it's somewhere in the chat history.'</p>
         
         <h3>Communication vs. Documentation</h3>
-        <p>In a professional audit, "I told them on WhatsApp" is zero defense. Inspectors require <strong>timestamped, role-based logs</strong> that prove a specific control point was verified. WhatsApp is a stream of consciousness; a professional operation requires a structure of record.</p>
+        <p>In a professional audit, "I told them on WhatsApp" is zero defense. Inspectors require <strong>timestamped, role-based logs</strong> that prove a specific control point was verified. WhatsApp is a stream of consciousness: a professional operation requires a structure of record.</p>
 
         <blockquote class="my-16">
-          "Chat is for noise. SOPs are for signal. If your business depends on a scrolling feed to maintain standards, you aren't running a system—you're running a conversation."
+          "Chat is for noise. SOPs are for signal. If your business depends on a scrolling feed to maintain standards, you aren't running a system: you're running a conversation."
         </blockquote>
 
         <section class="bg-white/[0.02] border border-white/5 p-8 md:p-12 rounded-[2rem] my-16">
@@ -214,7 +214,7 @@ export const blogPosts: BlogPost[] = [
       tags: ["Hotel & Resort Operations"],
       protocol: "Brand Consistency",
       relatedPackId: "hotels_and_resorts",
-      description: "Undocumented SOPs cost the average hotel up to 30% in operational efficiency. Learn how inconsistency leads to reputation damage and revenue leaks.",
+      description: "Undocumented SOPs cost the average hotel up to 30% in operational efficiency. Learn how inconsistency leads to reputation damage.",
       imageUrl: "https://i.postimg.cc/W4y8FKXV/happy-hotel-guests.webp",
       content: `
         <section>
@@ -222,14 +222,14 @@ export const blogPosts: BlogPost[] = [
             In hospitality, consistency is the product. When service varies by shift, your brand is effectively broken.
           </p>
           
-          <p>Guests do not pay a premium for luxury; they pay a premium for <strong>Reduced Anxiety</strong>. They want to know exactly how their check-in will feel and how their room will look. Without documented SOPs, you are selling a "Lottery Experience"—sometimes it's great, sometimes it's not. Research shows that 86% of customers will leave a brand after just two poor experiences.</p>
+          <p>Guests do not pay a premium for luxury: they pay a premium for <strong>Reduced Anxiety</strong>. They want to know exactly how their check-in will feel and how their room will look. Without documented SOPs, you are selling a "Lottery Experience": sometimes it's great, sometimes it's not. Research shows that 86% of customers will leave a brand after just two poor experiences.</p>
         </section>
 
         <h2>1. The Financial Penalty of Inconsistency</h2>
-        <p>This shows up in the <strong>TripAdvisor Tax</strong>—the hidden cost of negative reviews that force you to lower your ADR (Average Daily Rate) to stay competitive. Inconsistency is the #1 driver of these reviews. If one shift follows the 'standard' and the next 'wings it,' your reputation is at the mercy of individual discretion.</p>
+        <p>This shows up in the <strong>TripAdvisor Tax</strong>: the hidden cost of negative reviews that force you to lower your ADR (Average Daily Rate) to stay competitive. Inconsistency is the #1 driver of these reviews. If one shift follows the 'standard' and the next 'wings it,' your reputation is at the mercy of individual discretion.</p>
         
         <h3>The Mathematics of Loss</h3>
-        <p>If 5 guests per week choose not to return due to an inconsistent experience, at an average LTV (Lifetime Value) of $1,200, your annual revenue leak is over $300,000. This isn't a customer service problem; it's a documentation problem.</p>
+        <p>If 5 guests per week choose not to return due to an inconsistent experience, at an average LTV (Lifetime Value) of $1,200, your annual revenue leak is over $300,000. This isn't a customer service problem: it's a documentation problem.</p>
 
         <blockquote class="my-16">
           "A hotel without written SOPs is just a building where people are improvising. And improvisation is expensive."
@@ -256,7 +256,7 @@ export const blogPosts: BlogPost[] = [
 
         <h2>2. Resolution</h2>
         <section>
-          <p>Guest experience isn't about smiles; it's about <strong>systems</strong>. Standardize the basics so your team can focus on the extras. By implementing a structured framework, you remove the variable of intuition and replace it with the certainty of a professional standard.</p>
+          <p>Guest experience isn't about smiles: it's about <strong>systems</strong>. Standardize the basics so your team can focus on the extras. By implementing a structured framework, you remove the variable of intuition and replace it with the certainty of a professional standard.</p>
         </section>
       `
     },
@@ -268,7 +268,7 @@ export const blogPosts: BlogPost[] = [
       tags: ["Restaurant & F&B Operations"],
       protocol: "Institutional Memory",
       relatedPackId: "restaurants",
-      description: "A case study in key-person dependency. Why losing a 'hero' chef cripples restaurants that lack documented recipe costing and prep infrastructure.",
+      description: "A case study in key-person dependency. Why losing a 'hero' chef cripples restaurants that lack documented recipe costing.",
       imageUrl: "https://i.postimg.cc/TwW9r94C/food-cooking.avif",
       content: `
         <section>
@@ -276,7 +276,7 @@ export const blogPosts: BlogPost[] = [
             He was a culinary genius. He knew the recipes by heart. He knew the vendor quirks. And when he quit, he took the restaurant's operating system with him.
           </p>
           
-          <p>This is the <strong>'Hero Model'</strong> of management, and it is a fatal concentration risk. If your restaurant’s success depends on the specific knowledge of one individual, you don’t own a business; you own a liability.</p>
+          <p>This is the <strong>'Hero Model'</strong> of management, and it is a fatal concentration risk. If your restaurant’s success depends on the specific knowledge of one individual, you don’t own a business: you own a liability.</p>
         </section>
 
         <h2>1. The Danger of Tribal Knowledge</h2>
@@ -318,9 +318,9 @@ export const blogPosts: BlogPost[] = [
       publishedDate: "2026-02-26",
       author: "MoreMeets Editorial",
       tags: ["Hotel & Resort Operations"],
-      protocol: "Emergency Response",
+      protocol: "Audit Readiness",
       relatedPackId: "hotels_and_resorts",
-      description: "Forensic audit reports show that most hotel drills fail due to memory lapses. How to move from annual symbolic drills to binary checklist compliance.",
+      description: "Forensic audit reports show that most hotel drills fail due to memory lapses. How to move to binary checklist compliance.",
       imageUrl: "https://i.postimg.cc/k5Hs6Zf2/hotel-maintenance-SOP.webp",
       content: `
         <section>
@@ -332,7 +332,7 @@ export const blogPosts: BlogPost[] = [
         </section>
 
         <h2>1. Memory Is Not a Safety Device</h2>
-        <p>In an emergency, seconds matter. If a night manager has to 'try and remember' which staircase leads to the fire pump room, they have already failed. Safety requires <strong>Binary Compliance</strong>—instructions so clear and accessible that they can be followed by a terrified person in a dark hallway.</p>
+        <p>In an emergency, seconds matter. If a night manager has to 'try and remember' which staircase leads to the fire pump room, they have already failed. Safety requires <strong>Binary Compliance</strong>: instructions so clear and accessible that they can be followed by a terrified person in a dark hallway.</p>
         
         <h3>Symbolic Drills vs. Structural Readiness</h3>
         <p>Aviation and Healthcare have reduced fatal errors by over 30% by assuming that <strong>humans will always forget</strong> under pressure. They replace memory with mandatory checklists. Hospitality must do the same to achieve 'Audit-Ready' status.</p>
@@ -369,7 +369,7 @@ export const blogPosts: BlogPost[] = [
       tags: ["Hotel & Resort Operations"],
       protocol: "Institutional Memory",
       relatedPackId: "hotels_and_resorts",
-      description: "Hospitality turnover is a fact of life. Learn how to build turnover-proof operations by converting individual knowledge into permanent organizational infrastructure.",
+      description: "Hospitality turnover is a fact of life. Learn how to build turnover-proof operations by converting knowledge into permanent infrastructure.",
       imageUrl: "https://i.postimg.cc/1zdBnTJ5/hotel-ops.webp",
       content: `
         <section>
@@ -377,14 +377,14 @@ export const blogPosts: BlogPost[] = [
             The hospitality industry faces turnover rates between 30% and 70% annually. This means your operational memory is being deleted every single year.
           </p>
           
-          <p>Every time an experienced employee leaves, they take a piece of your <strong>Institutional Memory</strong> with them. The 'trick' to fixing the laundry machine, the specific way a VIP guest prefers their room—this tribal knowledge is the lifeblood of your service. Without documentation, you are effectively restarting your business from scratch every 12 months.</p>
+          <p>Every time an experienced employee leaves, they take a piece of your <strong>Institutional Memory</strong> with them. The 'trick' to fixing the laundry machine, the specific way a VIP guest prefers their room: this tribal knowledge is the lifeblood of your service. Without documentation, you are effectively restarting your business from scratch every 12 months.</p>
         </section>
 
         <h2>1. The Onboarding Debt</h2>
         <p>When you hire a new person, you pay an <strong>Onboarding Debt</strong>. For the first 90 days, that employee is guessing. They work slowly, make mistakes, and irritate guests. If you multiply this by a 50% turnover rate, your hotel is operating at permanent, compounding inefficiency.</p>
         
         <h3>The turnover-proof Audit</h3>
-        <p>If your operations manager disappeared tomorrow, could your hotel run smoothly for 30 days? If the answer is "no," you don't have a system; you have a dependency.</p>
+        <p>If your operations manager disappeared tomorrow, could your hotel run smoothly for 30 days? If the answer is "no," you don't have a system: you have a dependency.</p>
 
         <blockquote class="my-16">
           "Staff turnover is inevitable. The loss of operational memory is optional."
@@ -414,7 +414,7 @@ export const blogPosts: BlogPost[] = [
       tags: ["Restaurant & F&B Operations"],
       protocol: "Risk Management",
       relatedPackId: "restaurants",
-      description: "When employees don't know what to do during a crisis, it's not their fault—it's a system gap. Learn to lead by removing ambiguity.",
+      description: "When employees don't know what to do during a crisis, it's not their fault: it's a system gap. Learn to lead by removing ambiguity.",
       imageUrl: "https://i.postimg.cc/v8fhT09w/restaurant-chaos.jpg",
       content: `
         <section>
@@ -432,7 +432,7 @@ export const blogPosts: BlogPost[] = [
         <p>Employees do not freeze because they lack intelligence. They freeze because systems lack clarity. In a crisis, the human brain cannot process complex instructions. It needs <strong>Aviation-grade checklists</strong> that mandate simple, sequential actions.</p>
 
         <blockquote class="my-16">
-          "Leadership is the act of removing ambiguity. If your team doesn't know the next step during a crisis, you haven't led them—you've just given them a job."
+          "Leadership is the act of removing ambiguity. If your team doesn't know the next step during a crisis, you haven't led them: you've just given them a job."
         </blockquote>
 
         <section class="bg-white/[0.02] border border-white/5 p-8 md:p-12 rounded-[2rem] my-16">
@@ -463,7 +463,7 @@ export const blogPosts: BlogPost[] = [
       tags: ["Industrial & Transport"],
       protocol: "Supply Chain Risk",
       relatedPackId: "logistics_warehouse_pack",
-      description: "Deconstructing the 2018 KFC logistics failure. How a single point of failure (SPOF) paralyzed 900 restaurants and the cost of centralized risk.",
+      description: "Deconstructing the 2018 KFC logistics failure. How a single point of failure (SPOF) paralyzed 900 restaurants.",
       imageUrl: "https://i.postimg.cc/D0d91ydR/kfc1.webp",
       content: `
         <p>In February 2018, 900 KFC outlets closed. Not because of a lack of customers, but because of a failure in logistics architecture.</p>
@@ -478,11 +478,11 @@ export const blogPosts: BlogPost[] = [
       tags: ["Corporate & Tech"],
       protocol: "Asset Valuation",
       relatedPackId: "corporate_legal_compliance_starter_kit",
-      description: "Why structured operations are revenue multipliers. A financial study on how SOPs increase enterprise value and reduce turnover debt.",
+      description: "Why structured operations are revenue multipliers. A financial study on how SOPs increase enterprise value.",
       imageUrl: "https://i.postimg.cc/qvYrNypS/ROI.png",
       content: `
         <p>Most founders see SOPs as compliance. CFOs see them as overhead. But structured operations are <strong>Revenue Multipliers</strong>. Chaos has a measurable, compounding cost.</p>
-        <p>Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people—you are selling a recurring profit engine that works regardless of who is in the room.</p>
+        <p>Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people: you are selling a recurring profit engine that works regardless of who is in the room.</p>
       `
     },
     {
@@ -493,7 +493,7 @@ export const blogPosts: BlogPost[] = [
       tags: ["Healthcare"],
       protocol: "Life Safety",
       relatedPackId: "healthcare_and_hospital_operations",
-      description: "Medical error is the 3rd leading cause of death. Learn how the 'Checklist Manifesto' principles transform clinical safety and liability.",
+      description: "Medical error is the 3rd leading cause of death. Learn how the 'Checklist Manifesto' principles transform clinical safety.",
       imageUrl: "https://i.postimg.cc/HkKmrXTf/patient-safety1.jpg",
       content: `
         <p>Healthcare doesn’t fail because doctors are careless. It fails because systems are inconsistent. The gap between policy and practice is where harm lives.</p>
@@ -508,7 +508,7 @@ export const blogPosts: BlogPost[] = [
       tags: ["Restaurant & F&B Operations"],
       protocol: "Food Safety",
       relatedPackId: "restaurants",
-      description: "A forensic study of the gap between policy and practice. How small, routine lapses compounded into a billion-dollar brand collapse.",
+      description: "A forensic study of the gap between policy and practice. How small lapses compounded into a brand collapse.",
       imageUrl: "https://i.postimg.cc/NjLYGpvy/chipotle1.jpg",
       content: `
         <p>The real story wasn't about bacteria. It was about <strong>Operational Drift</strong>. Drift occurs when small deviations from procedure gradually become the 'new normal.' A missed log entry. A delayed temperature check. These micro-failures compound until the entire barrier system collapses.</p>

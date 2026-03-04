@@ -80,7 +80,7 @@ export default function AboutPage() {
                                     MoreMeets™ was born from over <span className="text-primary font-black">30 years of cumulative operational exposure.</span> Our founders have spent three decades auditing, directing, and optimizing complex environments across hospitality, healthcare, and industrial sectors. 
                                 </p>
                                 <p className="text-lg text-secondary-text leading-relaxed">
-                                    We realized a recurring, dangerous pattern: Most businesses don't actually have "systems"—they have heroes who remember how things work. When those heroes leave, the standard leaves with them. 
+                                    We realized a recurring, dangerous pattern: Most businesses don't actually have "systems" — they have heroes who remember how things work. When those heroes leave, the standard leaves with them. 
                                 </p>
                                 <p className="text-lg text-secondary-text leading-relaxed font-bold text-primary-text">
                                     We built MoreMeets™ to convert individual brilliance into permanent organizational infrastructure.
@@ -196,7 +196,7 @@ export default function AboutPage() {
                         </div>
                         <div className="flex flex-col md:flex-row gap-8 items-center relative z-10">
                             <div className="space-y-4 flex-1">
-                                <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary-text uppercase italic">When Someone Resigns — The System Stays</h3>
+                                <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary-text uppercase italic">When Someone Resigns: The System Stays</h3>
                                 <p className="text-secondary-text leading-relaxed">
                                     This is one of the biggest silent risks in operations. When experienced staff leave, unwritten shortcuts disappear and undocumented practices break. MoreMeets™ ensures the process is owned by the business, not the individual.
                                 </p>
