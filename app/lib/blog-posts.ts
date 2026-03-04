@@ -42,6 +42,27 @@ export const blogPosts: BlogPost[] = [
           <h3 class="text-primary-text font-black uppercase tracking-tighter italic mb-6">The "Verbal Standard" Trap</h3>
           <p>Most boutique operations run on what we call the <em>Verbal Standard</em>. A manager explains a task, the employee nods, and the manager assumes the system is active. In reality, you haven't built a system; you've shared a suggestion. Without an <strong>Excel-based SOP sheet</strong> that acts as a physical anchor, your standards will inevitably drift.</p>
           
+          <div class="grid md:grid-cols-2 gap-8 my-16">
+            <div class="p-8 bg-white/[0.02] border border-white/10 rounded-2xl">
+                <h4 class="font-black uppercase text-red-500 mb-4">Verbal Suggestion</h4>
+                <ul class="space-y-3 text-sm italic opacity-70">
+                    <li>Decays within 48 hours</li>
+                    <li>Open to individual interpretation</li>
+                    <li>Zero audit trail for liability</li>
+                    <li>Dependent on manager presence</li>
+                </ul>
+            </div>
+            <div class="p-8 bg-primary/5 border border-primary/20 rounded-2xl">
+                <h4 class="font-black uppercase text-primary mb-4">Structural Memory</h4>
+                <ul class="space-y-3 text-sm font-bold text-primary-text">
+                    <li>Permanent physical reference</li>
+                    <li>Binary 'Done/Not Done' check</li>
+                    <li>Verifiable timestamped evidence</li>
+                    <li>Independent of the trainer</li>
+                </ul>
+            </div>
+          </div>
+
           <blockquote class="my-16">
             "Verbal instructions are suggestions that expire. Only documented protocols are infrastructure."
           </blockquote>
@@ -309,12 +330,12 @@ export const blogPosts: BlogPost[] = [
           <p class="mb-8">Aviation and Healthcare have reduced fatal errors by over 30% by assuming that <strong>humans will always forget</strong> under pressure. They replace memory with mandatory checklists. Hospitality must do the same to achieve 'Audit-Ready' status.</p>
           <div class="grid md:grid-cols-2 gap-8">
             <div class="p-6 bg-black rounded-xl">
-              <h4 class="font-black text-xs uppercase text-secondary-text mb-2">Symbolic Drills</h4>
-              <p class="text-xs italic leading-relaxed">Annual, expected, memory-based, no measurable metrics, zero role clarity.</p>
+                <h4 class="font-black text-xs uppercase text-secondary-text mb-2">Symbolic Drills</h4>
+                <p class="text-xs italic leading-relaxed">Annual, expected, memory-based, no measurable metrics, zero role clarity.</p>
             </div>
             <div class="p-6 bg-primary/5 rounded-xl border border-primary/20">
-              <h4 class="font-black text-xs uppercase text-primary mb-2">Structural Readiness</h4>
-              <p class="text-xs italic leading-relaxed text-primary-text">Weekly, surprise-based, checklist-driven, logged metrics, clear binary outcomes.</p>
+                <h4 class="font-black text-xs uppercase text-primary mb-2">Structural Readiness</h4>
+                <p class="text-xs italic leading-relaxed text-primary-text">Weekly, surprise-based, checklist-driven, logged metrics, clear binary outcomes.</p>
             </div>
           </div>
         </section>
@@ -374,7 +395,7 @@ export const blogPosts: BlogPost[] = [
       title: "Crisis Failure: Why Staff Gaps Are Leadership Infrastructure Failures",
       publishedDate: "2026-02-28",
       author: "MoreMeets Editorial",
-      tags: ["Operational Risk & Safety"],
+      tags: ["Restaurant & F&B Operations"],
       protocol: "Risk Management",
       relatedPackId: "restaurants",
       description: "When employees don't know what to do during a crisis, it's not their fault—it's a system gap. Learn to lead by removing ambiguity.",
@@ -401,12 +422,12 @@ export const blogPosts: BlogPost[] = [
           <h2 class="text-primary !mt-0">Infrastructure vs. Blame</h2>
           <div class="grid md:grid-cols-2 gap-12 mt-8">
             <div class="space-y-4">
-              <h4 class="font-black uppercase text-red-500">The Blame Culture</h4>
-              <p class="text-sm text-secondary-text italic">"Why didn't you know the fire exit was blocked?" (Reactive / Personal / Low Retention)</p>
+                <h4 class="font-black uppercase text-red-500">The Blame Culture</h4>
+                <p class="text-sm text-secondary-text italic">"Why didn't you know the fire exit was blocked?" (Reactive / Personal / Low Retention)</p>
             </div>
             <div class="space-y-4">
-              <h4 class="font-black uppercase text-authority-green">The System Culture</h4>
-              <p class="text-sm text-secondary-text italic">"Show me the signed-off daily exit check log." (Proactive / Structural / High Accountability)</p>
+                <h4 class="font-black uppercase text-authority-green">The System Culture</h4>
+                <p class="text-sm text-secondary-text italic">"Show me the signed-off daily exit check log." (Proactive / Structural / High Accountability)</p>
             </div>
           </div>
         </section>
@@ -444,7 +465,7 @@ export const blogPosts: BlogPost[] = [
       title: "The Financial ROI of SOPs: Asset Valuation & Operational Efficiency",
       publishedDate: "2026-02-19",
       author: "MoreMeets Editorial",
-      tags: ["Specialized Operations"],
+      tags: ["Corporate & Tech"],
       protocol: "Asset Valuation",
       relatedPackId: "corporate_legal_compliance_starter_kit",
       description: "Why structured operations are revenue multipliers. A financial study on how SOPs increase enterprise value and reduce turnover debt.",
@@ -459,7 +480,7 @@ export const blogPosts: BlogPost[] = [
       title: "Patient Safety Architecture: Why Clinical Excellence Requires Systems",
       publishedDate: "2026-02-18",
       author: "MoreMeets Editorial",
-      tags: ["Specialized Operations"],
+      tags: ["Healthcare"],
       protocol: "Life Safety",
       relatedPackId: "healthcare_and_hospital_operations",
       description: "Medical error is the 3rd leading cause of death. Learn how the 'Checklist Manifesto' principles transform clinical safety and liability.",
@@ -474,7 +495,7 @@ export const blogPosts: BlogPost[] = [
       title: "The Resignation Risk Debrief: Personality-Driven vs. System-Driven Ops",
       publishedDate: "2026-02-16",
       author: "MoreMeets Editorial",
-      tags: ["Specialized Operations"],
+      tags: ["Corporate & Tech"],
       protocol: "Institutional Memory",
       relatedPackId: "facility_management_blueprint",
       description: "A forensic study of Tribal Knowledge. When a key manager leaves, most companies lose their operating system. How to build institutional resilience.",
@@ -489,7 +510,7 @@ export const blogPosts: BlogPost[] = [
       title: "Operational Drift Analysis: The Chipotle Food Safety Crisis",
       publishedDate: "2026-02-17",
       author: "MoreMeets Editorial",
-      tags: ["Specialized Operations"],
+      tags: ["Restaurant & F&B Operations"],
       protocol: "Food Safety",
       relatedPackId: "restaurants",
       description: "A forensic study of the gap between policy and practice. How small, routine lapses compounded into a billion-dollar brand collapse.",

@@ -14,7 +14,6 @@ import {
     Clock, 
     User, 
     ChevronLeft, 
-    FileText, 
     FileSpreadsheet, 
     Infinity, 
     Lock,
