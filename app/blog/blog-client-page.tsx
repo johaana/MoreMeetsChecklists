@@ -125,7 +125,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline" className="rounded-full font-black uppercase text-[10px] tracking-widest h-9 px-6">
-                           {activeFilter && secondaryTags.includes(activeFilter) ? activeFilter : "Specialized Sectors"}
+                           {activeFilter && secondaryTags.includes(activeFilter) ? activeFilter : "Operational Intelligence"}
                            <ChevronDown className="w-4 h-4 ml-2" />
                         </Button>
                     </DropdownMenuTrigger>
@@ -166,7 +166,7 @@ const FilterControls = ({ activeFilter, setActiveFilter }: { activeFilter: strin
                     </SheetTrigger>
                     <SheetContent side="bottom" className="rounded-t-[2rem] bg-alternate-background border-t border-white/10">
                         <SheetHeader className="mb-6">
-                            <SheetTitle className="uppercase font-black tracking-widest text-xs">Filter by Sector</SheetTitle>
+                            <SheetTitle className="uppercase font-black tracking-widest text-xs">Operational Intelligence Silos</SheetTitle>
                         </SheetHeader>
                         <ScrollArea className="h-[50vh]">
                             <div className="flex flex-col gap-2 pr-4 pb-8">
@@ -244,7 +244,7 @@ export default function BlogClientPage() {
         <section className="w-full pt-12 md:pt-20 pb-12 md:pb-24 lg:pb-32">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
-                    <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Technical Analysis Hub</Badge>
+                    <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Forensic Intelligence Hub</Badge>
                     <h1 className="text-4xl md:text-7xl font-black tracking-tighter font-headline text-primary italic uppercase">
                         Black Box Debrief
                     </h1>
@@ -344,7 +344,7 @@ export default function BlogClientPage() {
                                </div>
                             )}
                             <div className="absolute top-4 left-4">
-                                <Badge className="bg-black/80 backdrop-blur-md text-primary border border-primary/20 text-[8px] font-black uppercase tracking-widest">{post.protocol || "Standard"}</Badge>
+                                <Badge className="bg-black/80 backdrop-blur-md text-primary border border-primary/20 text-[8px] font-black uppercase tracking-widest">Protocol: {post.protocol || "Standard"}</Badge>
                             </div>
                             </Link>
                             <CardHeader className="space-y-4 p-8">
