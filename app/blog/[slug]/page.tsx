@@ -19,7 +19,8 @@ import {
     Infinity, 
     Lock,
     ShieldCheck,
-    Check
+    Check,
+    ShieldAlert
 } from 'lucide-react';
 
 type Props = {
@@ -49,8 +50,11 @@ export async function generateMetadata(
   const siteUrl = 'https://www.moremeets.com';
   const ogImage = post.imageUrl || `${siteUrl}/api/og?type=blog&slug=${post.slug}`;
 
+  // SEO Optimized technical titles
+  const seoTitle = `${post.title} | Operational Intelligence Debrief`;
+
   return {
-    title: `${post.title} | Operational Intelligence`,
+    title: seoTitle,
     description: post.description,
     openGraph: {
       title: post.title,
@@ -91,32 +95,32 @@ export default async function BlogPostPage({ params }: Props) {
 
   const relatedPack = post.relatedPackId ? premiumPacks.find(p => p.id === post.relatedPackId) : null;
   const wordCount = post.content.replace(/<[^>]*>/g, '').split(/\s+/).length;
-  const readingTime = Math.max(12, Math.ceil(wordCount / 225));
+  const readingTime = Math.ceil(wordCount / 225);
 
   const ctaMapping: Record<string, { bridge: string, button: string }> = {
     'logistics_warehouse_pack': {
         bridge: "Disruptions expose weak systems. Structure prevents them.",
-        button: "Strengthen Your Logistics Controls"
+        button: "Strengthen Logistics Controls"
     },
     'corporate_legal_compliance_starter_kit': {
         bridge: "Consistency is an asset. Chaos is a liability.",
-        button: "Secure Your Corporate Governance"
+        button: "Secure Corporate Governance"
     },
     'healthcare_and_hospital_operations': {
         bridge: "In healthcare, systems are the only constant.",
-        button: "Strengthen Your Clinical Controls"
+        button: "Strengthen Clinical Controls"
     },
     'restaurants': {
         bridge: "Brand trust is built on verifiable safety.",
-        button: "Strengthen Your Restaurant Controls"
+        button: "Strengthen Restaurant Controls"
     },
     'hotels_and_resorts': {
         bridge: "Institutional standards require physical anchors.",
-        button: "Strengthen Your Hotel Controls"
+        button: "Strengthen Hotel Controls"
     },
     'facility_management_blueprint': {
         bridge: "People move on. The system must stay.",
-        button: "Secure Your Facility Infrastructure"
+        button: "Secure Facility Infrastructure"
     }
   };
 
@@ -148,7 +152,7 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="container px-4 md:px-6">
               <div className="max-w-6xl mx-auto">
                 <Link href="/blog" className="inline-flex items-center text-primary/60 text-[10px] font-black uppercase tracking-[0.3em] mb-12 hover:text-primary transition-colors">
-                    <ChevronLeft className="w-3 h-3 mr-1" /> Intelligence Hub
+                    <ChevronLeft className="w-3 h-3 mr-1" /> Back to Intelligence Hub
                 </Link>
                 
                 <div className="grid lg:grid-cols-[1fr,550px] gap-16 items-center">
@@ -158,8 +162,13 @@ export default async function BlogPostPage({ params }: Props) {
                         {post.tags[0]}
                       </Badge>
                       <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em] flex items-center gap-2">
-                        <FileText className="w-3 h-3" /> Technical Analysis
+                        <ShieldAlert className="w-3 h-3 text-primary" /> Technical Analysis
                       </span>
+                      {post.protocol && (
+                        <span className="text-[9px] font-black text-accent uppercase tracking-[0.2em] border-l border-white/10 pl-4">
+                          Protocol: {post.protocol}
+                        </span>
+                      )}
                     </div>
                     
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-black font-headline text-primary-text leading-[1.05] tracking-tighter uppercase italic">
@@ -179,14 +188,14 @@ export default async function BlogPostPage({ params }: Props) {
 
                   {post.imageUrl && (
                     <div className="relative group">
-                      <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-black">
+                      <div className="relative aspect-video overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl bg-black">
                         <img
                           src={post.imageUrl}
                           alt={post.title}
                           className="object-cover w-full h-full grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
                         />
                       </div>
-                      <div className="absolute -bottom-6 -right-6 w-24 h-24 border-r-2 border-b-2 border-primary/20 pointer-events-none" />
+                      <div className="absolute -bottom-6 -right-6 w-24 h-24 border-r-2 border-b-2 border-primary/20 pointer-events-none rounded-br-[2rem]" />
                     </div>
                   )}
                 </div>
@@ -199,16 +208,17 @@ export default async function BlogPostPage({ params }: Props) {
               <div 
                 className="prose-custom max-w-none 
                   [&_h2]:font-headline [&_h2]:text-primary-text [&_h2]:font-black [&_h2]:tracking-tighter [&_h2]:uppercase [&_h2]:mt-24 [&_h2]:mb-12 [&_h2]:italic [&_h2]:text-4xl
-                  [&_p]:text-secondary-text [&_p]:leading-[1.8] [&_p]:mb-16 [&_p]:text-lg
+                  [&_h3]:font-headline [&_h3]:text-primary [&_h3]:font-black [&_h3]:uppercase [&_h3]:text-xl [&_h3]:tracking-widest [&_h3]:mt-16 [&_h3]:mb-6
+                  [&_p]:text-secondary-text [&_p]:leading-[1.8] [&_p]:mb-12 [&_p]:text-lg
                   [&_strong]:text-primary-text [&_strong]:font-black
                   [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:bg-white/[0.02] [&_blockquote]:px-12 [&_blockquote]:py-10 [&_blockquote]:rounded-r-2xl [&_blockquote]:italic [&_blockquote]:text-2xl [&_blockquote]:text-primary-text [&_blockquote]:my-24 [&_blockquote]:font-medium
                   "
                 dangerouslySetInnerHTML={{ __html: post.content }} 
               />
 
-              <div className="mt-16 pt-12 relative group">
+              <div className="mt-24 pt-12 relative group" id="resolution-protocol">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-[2rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
-                  <Card className="overflow-hidden bg-black border border-white/10 rounded-[2rem] relative z-10 shadow-2xl">
+                  <Card className="overflow-hidden bg-black border border-white/10 rounded-[2.5rem] relative z-10 shadow-2xl">
                       <div className="p-8 md:p-16 text-center space-y-12">
                         <div className="space-y-6 max-w-2xl mx-auto">
                             <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Resolution Protocol</Badge>
@@ -229,7 +239,7 @@ export default async function BlogPostPage({ params }: Props) {
                                 <Button 
                                     asChild 
                                     variant="secondary" 
-                                    className="h-auto py-4 px-10 bg-white/[0.03] border border-white/20 hover:bg-white/[0.08] hover:border-accent/30 text-accent transition-all rounded-xl shadow-inner group/btn hover:shadow-[0_0_20px_-5px_rgba(245,166,35,0.2)]"
+                                    className="h-auto py-5 px-10 bg-white/[0.03] border border-white/20 hover:bg-white/[0.08] hover:border-accent/30 text-accent transition-all rounded-2xl shadow-inner group/btn hover:shadow-[0_0_30px_-5px_rgba(245,166,35,0.3)]"
                                 >
                                     <Link 
                                         href={relatedPack ? `/packs/${relatedPack.id}` : '/library'} 
@@ -240,7 +250,7 @@ export default async function BlogPostPage({ params }: Props) {
                                     </Link>
                                 </Button>
                                 
-                                <div className="grid grid-cols-2 gap-x-8 gap-y-3 max-w-md mx-auto text-[10px] font-black uppercase text-white/20 tracking-widest text-left">
+                                <div className="grid grid-cols-2 gap-x-12 gap-y-4 max-w-lg mx-auto text-[10px] font-black uppercase text-white/20 tracking-widest text-left">
                                     {REASSURANCES.map(item => (
                                         <div key={item} className="flex items-center gap-2">
                                             <Check className="w-3.5 h-3.5 text-primary/40" /> {item}
@@ -251,10 +261,10 @@ export default async function BlogPostPage({ params }: Props) {
                         </div>
                       </div>
                       
-                      <div className="bg-white/[0.03] border-t border-white/5 py-5 px-12 flex flex-nowrap items-center justify-center overflow-x-auto gap-8 no-scrollbar">
+                      <div className="bg-white/[0.03] border-t border-white/5 py-6 px-12 flex flex-nowrap items-center justify-center overflow-x-auto gap-12 no-scrollbar">
                         {PROOFS.map(item => (
-                            <div key={item.label} className="flex items-center gap-1.5 text-[9px] font-black uppercase text-white/30 tracking-[0.1em] shrink-0 whitespace-nowrap">
-                                <item.icon className="w-3.5 h-3.5 text-primary/40" /> {item.label}
+                            <div key={item.label} className="flex items-center gap-2 text-[9px] font-black uppercase text-white/30 tracking-[0.15em] shrink-0 whitespace-nowrap">
+                                <item.icon className="w-4 h-4 text-primary/40" /> {item.label}
                             </div>
                         ))}
                       </div>
