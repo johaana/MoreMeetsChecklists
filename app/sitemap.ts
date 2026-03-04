@@ -29,14 +29,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter(p => p.id !== 'master_access')
     .map(p => ({
       url: `${siteUrl}/packs/${p.id}`,
-      lastModified: new Date(),
+      lastModified: p.updatedAt ? new Date(p.updatedAt) : new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     }));
 
   const blogsSitemap = blogPosts.map(post => ({
     url: `${siteUrl}/blog/${post.slug}`,
-    lastModified: new Date(),
+    lastModified: post.updatedAt ? new Date(post.updatedAt) : new Date(post.publishedDate),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));

@@ -7,10 +7,11 @@ export const healthcare_and_hospital_operations: PremiumPack = {
     priceINR: 5999,
     priceUSD: 79,
     competitorPriceUSD: 599,
+    updatedAt: "2025-02-24",
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/129cb25a-b177-4a6d-a1bf-d8fafc24a09d',
     category: "Healthcare",
-    description: "Stop audit failures, patient safety incidents, and compliance gaps—before they cost you accreditation or reputation.",
+    description: "Stop audit failures, patient safety incidents, and compliance gaps: before they cost you accreditation or reputation.",
     heroHeadline: "Prevent audit failures and patient safety incidents.",
     heroSubheadline: "Built for NABH & JCI-aligned hospitals that take zero-risk clinical operations seriously.",
     pricingUrgency: "One clinical incident or audit failure costs 100x more than this entire system.",
@@ -31,10 +32,10 @@ export const healthcare_and_hospital_operations: PremiumPack = {
     globalStandards: {
         title: "NABH, JCI & WHO ALIGNED",
         standards: [
-            { name: "NABH", description: "National Accreditation Board for Hospitals & Healthcare Providers compliance." },
-            { name: "JCI", description: "Joint Commission International standards for clinical quality." },
-            { name: "WHO", description: "World Health Organization Safe Surgery guidelines." },
-            { name: "ISO 15189", description: "Quality and competence in medical laboratories." }
+            { name: "FSSAI", description: "Food Safety and Standards Authority of India manufacturing compliance." },
+            { name: "HACCP", description: "Hazard Analysis and Critical Control Points system integration." },
+            { name: "ISO 22000", description: "International standard for food safety management systems." },
+            { name: "GMP", description: "Good Manufacturing Practices for food and health products." }
         ]
     },
     checklists: [

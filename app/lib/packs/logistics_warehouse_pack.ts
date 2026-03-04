@@ -7,10 +7,11 @@ export const logistics_warehouse_pack: PremiumPack = {
     priceINR: 5999,
     priceUSD: 79,
     competitorPriceUSD: 599,
+    updatedAt: "2025-02-24",
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f48201fb-a708-43ac-a508-7381c32f55c5',
     category: "Industrial & Transport",
-    description: "Stop warehouse accidents, inventory shrinkage, and supply chain delays—before they destroy your operational margins and contract reliability.",
+    description: "Stop warehouse accidents, inventory shrinkage, and supply chain delays: before they destroy your operational margins and contract reliability.",
     heroHeadline: "Eliminate warehouse accidents and inventory shrinkage.",
     heroSubheadline: "Built for 3PL partners and warehouse managers who take zero-risk inventory integrity seriously.",
     pricingUrgency: "A single warehouse accident or a total supply chain halt costs 100x more than this entire system.",
@@ -23,7 +24,7 @@ export const logistics_warehouse_pack: PremiumPack = {
         { text: "<strong>Ensure</strong> order accuracy and speed with a structured picking and dispatch workflow.", icon: "truck" },
         { text: "<strong>Maintain</strong> a safe workplace with Material Handling Equipment (MHE) safety audits.", icon: "hard-hat" },
         { text: "<strong>Protect</strong> your inventory with robust security, access control, and cycle counting.", icon: "shield" },
-        { text: "<strong>Build</strong> a resilient supply chain with formal vendor performance management.", icon: "link" }
+        { text: "<strong>Build</strong> a resilient supply chain with formal vendor performance management.", icon: "handshake" }
     ],
     checklists: [
         {

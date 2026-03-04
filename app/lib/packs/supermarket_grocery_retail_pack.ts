@@ -7,10 +7,11 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
     priceINR: 5999,
     priceUSD: 79,
     competitorPriceUSD: 599,
+    updatedAt: "2025-02-24",
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d6d4dd85-3fb9-4c26-8ec3-cb021ddebfdc',
     category: "Retail",
-    description: "Stop inventory shrinkage, cold-chain failures, and regulatory fines—before they destroy your retail margins and brand reputation.",
+    description: "Stop inventory shrinkage, cold-chain failures, and regulatory fines: before they destroy your retail margins and brand reputation.",
     heroHeadline: "Eliminate food spoilage and health department closures.",
     heroSubheadline: "Built for high-volume grocery chains that take zero-risk inventory and safety protocols seriously.",
     pricingUrgency: "A single refrigeration failure or expired item lawsuit costs 100x more than this entire system.",
@@ -109,7 +110,7 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
             ]
         },
         {
-            title: "POS Security & Reconciliation",
+            title: "POS & Payment Reconciliation",
             department: "Cash/Finance",
             frequency: "Daily",
             role: "Head Cashier",
@@ -145,7 +146,7 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
                 { id: "WSC-07", description: "Verify scale accuracy with standard weights weekly.", priority: "High", riskLevel: "High", consequence: "Provides an internal check on the scale's accuracy between official calibrations.", proof: "Weight Check Log" },
                 { id: "WSC-08", description: "Ensure scales are on a level surface.", priority: "High", riskLevel: "Medium", consequence: "An unlevel surface will produce inaccurate readings.", proof: "Visual Check" },
                 { id: "WSC-09", description: "Protect scales from physical damage.", priority: "High", riskLevel: "Medium", consequence: "Damage can affect accuracy and require costly repairs.", proof: "Visual Check" },
-                { id: "WSC-10", description: "Comply with all Legal Metrology regulations.", priority: "High", riskLevel: "High", consequence: "Non-compliance can lead to heavy fines and store closure.", proof: "Compliance Audit" }
+                { id: "WSC-10", description: "Comply with all Legal Metrology regulations.", priority: "High", riskLevel: "High", consequence: "Non-compliance can lead to heavy fines and store closure.", proof: "Compliance audit" }
             ]
         },
         {
@@ -160,7 +161,7 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
                 { id: "BHF-02", description: "Trace all ingredients used back to their source batch.", priority: "High", riskLevel: "High", consequence: "In case of a food poisoning complaint, traceability is essential to identify the source.", proof: "Ingredient Traceability Log" },
                 { id: "BHF-03", description: "Use separate equipment for raw and cooked food preparation.", priority: "High", riskLevel: "High", consequence: "Prevents cross-contamination, a leading cause of foodborne illness.", proof: "Visual Audit" },
                 { id: "BHF-04", description: "Discard any food held below the safe temperature for more than 2 hours.", priority: "High", riskLevel: "High", consequence: "Serving this food is a major health risk.", proof: "Discard Log" },
-                { id: "BHF-05", description: "Ensure staff follow correct handwashing and glove usage protocols.", priority: "High", riskLevel: "High", consequence: "Poor hygiene is a primary vector for spreading pathogens.", proof: "Hygiene Audit" },
+                { id: "BHF-05", description: "Ensure staff follow correct handwashing and glove usage protocols.", priority: "High", riskLevel: "High", consequence: "Poor hygiene is a primary vector for spreading pathogens.", proof: "Hygiene audit" },
                 { id: "BHF-06", description: "Label all prepared foods with preparation time and date.", priority: "High", riskLevel: "High", consequence: "Ensures that older food is used or discarded first.", proof: "Label Check" },
                 { id: "BHF-07", description: "Clean and sanitize all surfaces and equipment after use.", priority: "High", riskLevel: "High", consequence: "Prevents buildup of bacteria and allergens.", proof: "Cleaning Log" },
                 { id: "BHF-08", description: "Check for allergens and provide clear labeling.", priority: "High", riskLevel: "High", consequence: "Undeclared allergens can cause severe reactions in sensitive customers.", proof: "Allergen Label Audit" },

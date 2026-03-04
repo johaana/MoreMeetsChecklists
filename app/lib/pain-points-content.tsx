@@ -88,19 +88,9 @@ export const painPointsContent = {
         disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
         points: [
             { icon: <Siren />, title: "The Smiler Crash at Alton Towers (UK, 2015)", description: "Two carriages collided, causing life-changing injuries. The cause was human error overriding a safety system. Our 'Ride Safety' SOP includes a mandatory 'no-override' policy and dual-operator verification, preventing this exact failure." },
-            { icon: <Shield />, title: "The Mindbender Derailment (Canada, 1986)", description: "A roller coaster derailed, killing three people, because of missing bolts on a wheel assembly—a clear maintenance failure. Our 'Daily Pre-Opening Inspection' checklist mandates a multi-point physical check of critical components, catching such issues before the first guest arrives." },
+            { icon: <Shield />, title: "The Mindbender Derailment (Canada, 1986)", description: "A roller coaster derailed, killing three people, because of missing bolts on a wheel assembly: a clear maintenance failure. Our 'Daily Pre-Opening Inspection' checklist mandates a multi-point physical check of critical components, catching such issues before the first guest arrives." },
             { icon: <Bug />, title: "Action Park (USA, 1980s-90s)", description: "Dubbed 'Class Action Park,' this venue was notorious for poorly designed rides and untrained staff, leading to multiple deaths. Our checklists for ride design, operator training, and daily safety audits are the antidote to such a catastrophic operational culture." },
             { icon: <FerrisWheel />, title: "Dreamworld River Rapids Tragedy (Australia, 2016)", description: "Four people died on a river rapids ride due to a conveyor belt malfunction that was a known issue. Our 'Preventive Maintenance' checklists ensure that every component is regularly inspected, logged, and repaired before it can cause a disaster." }
-        ]
-    },
-    fitness_centers_gyms_pack: {
-        title: "Anatomy of a Fitness Center Failure",
-        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
-        points: [
-            { icon: <Siren />, title: "Jabalpur Gym Accident (India, 2023)", description: "A youth died after gym equipment snapped due to poor maintenance; the machine had not been serviced in 14 months. Prevented by: Our 'Monthly Equipment Inspection' and preventive maintenance SOP, which creates a mandatory, verifiable service log." },
-            { icon: <Stethoscope />, title: "Anytime Fitness AED Failure (Delhi, 2022)", description: "A member suffered a heart attack, but the gym's AED was not functional. Our 'First Aid & AED Readiness' SOP includes weekly checks of emergency equipment, ensuring it works when needed most." },
-            { icon: <Bug />, title: "California Gym Infection Outbreak (USA, 2020)", description: "A bacterial infection spread via unclean exercise mats. Our 'Hygiene & Disinfection Schedule' provides a verifiable log that all equipment is sanitized daily." },
-            { icon: <Building />, title: "Bangalore Gym Ceiling Fan Collapse (India, 2023)", description: "A member was injured by a falling ceiling fan due to poor facility maintenance. Our checklists include regular facility audits to spot and fix such hidden dangers." }
         ]
     },
     facility_management_blueprint: {

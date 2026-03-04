@@ -4,6 +4,7 @@ export type BlogPost = {
   title: string;
   description: string;
   publishedDate: string;
+  updatedAt?: string;
   author: string;
   tags: string[];
   protocol?: string;
@@ -17,6 +18,7 @@ export const blogPosts: BlogPost[] = [
       slug: 'hospitality-training-forgetting-curve',
       title: "Hospitality Training Retention: Why Hotels Need Structured SOP Sheets",
       publishedDate: "2026-02-21",
+      updatedAt: "2025-02-24",
       author: "MoreMeets Editorial",
       tags: ["Hotel & Resort Operations"],
       protocol: "Institutional Memory",
@@ -104,6 +106,7 @@ export const blogPosts: BlogPost[] = [
       slug: 'hotel-emergency-cognitive-overload',
       title: "Cognitive Overload in Hotels: Why Staff Freeze During Emergencies",
       publishedDate: "2026-02-22",
+      updatedAt: "2025-02-24",
       author: "MoreMeets Editorial",
       tags: ["Hotel & Resort Operations"],
       protocol: "Life Safety",
@@ -157,6 +160,7 @@ export const blogPosts: BlogPost[] = [
       slug: 'dangers-of-running-hotels-on-whatsapp',
       title: "Hotels Running on WhatsApp: The Dangers of Chat-Based Operations",
       publishedDate: "2026-02-23",
+      updatedAt: "2025-02-24",
       author: "MoreMeets Editorial",
       tags: ["Hotel & Resort Operations"],
       protocol: "Audit Readiness",
@@ -210,6 +214,7 @@ export const blogPosts: BlogPost[] = [
       slug: 'cost-of-undocumented-sops-hospitality',
       title: "The TripAdvisor Tax: How Undocumented SOPs Destroy Guest Experience",
       publishedDate: "2026-02-24",
+      updatedAt: "2025-02-24",
       author: "MoreMeets Editorial",
       tags: ["Hotel & Resort Operations"],
       protocol: "Brand Consistency",
@@ -264,6 +269,7 @@ export const blogPosts: BlogPost[] = [
       slug: 'head-chef-exit-revenue-drop',
       title: "Chef Resignation Risk: Why Restaurant Revenue Drops When the 'Hero' Leaves",
       publishedDate: "2026-02-25",
+      updatedAt: "2025-02-24",
       author: "MoreMeets Editorial",
       tags: ["Restaurant & F&B Operations"],
       protocol: "Institutional Memory",
@@ -316,6 +322,7 @@ export const blogPosts: BlogPost[] = [
       slug: 'why-hotel-emergency-drills-fail',
       title: "Why 60% of Hotel Emergency Drills Fail: The Memory Dependence Problem",
       publishedDate: "2026-02-26",
+      updatedAt: "2025-02-24",
       author: "MoreMeets Editorial",
       tags: ["Hotel & Resort Operations"],
       protocol: "Audit Readiness",
@@ -365,6 +372,7 @@ export const blogPosts: BlogPost[] = [
       slug: 'staff-turnover-hospitality-operational-memory',
       title: "Staff Turnover & Operational Amnesia: Protecting Institutional Memory",
       publishedDate: "2026-02-27",
+      updatedAt: "2025-02-24",
       author: "MoreMeets Editorial",
       tags: ["Hotel & Resort Operations"],
       protocol: "Institutional Memory",
@@ -410,6 +418,7 @@ export const blogPosts: BlogPost[] = [
       slug: 'crisis-response-system-gaps-not-staff',
       title: "Crisis Failure: Why Staff Gaps Are Leadership Infrastructure Failures",
       publishedDate: "2026-02-28",
+      updatedAt: "2025-02-24",
       author: "MoreMeets Editorial",
       tags: ["Restaurant & F&B Operations"],
       protocol: "Risk Management",
@@ -459,6 +468,7 @@ export const blogPosts: BlogPost[] = [
       slug: 'kfc-chicken-shortage-supply-chain-risk',
       title: "KFC Logistics Collapse: A Forensic Analysis of Supply Chain SPOFs",
       publishedDate: "2026-02-20",
+      updatedAt: "2025-02-24",
       author: "MoreMeets Editorial",
       tags: ["Industrial & Transport"],
       protocol: "Supply Chain Risk",
@@ -474,6 +484,7 @@ export const blogPosts: BlogPost[] = [
       slug: 'hidden-roi-of-sops',
       title: "The Financial ROI of SOPs: Asset Valuation & Operational Efficiency",
       publishedDate: "2026-02-19",
+      updatedAt: "2025-02-24",
       author: "MoreMeets Editorial",
       tags: ["Corporate & Tech"],
       protocol: "Asset Valuation",
@@ -489,6 +500,7 @@ export const blogPosts: BlogPost[] = [
       slug: 'patient-safety-process-discipline',
       title: "Patient Safety Architecture: Why Clinical Excellence Requires Systems",
       publishedDate: "2026-02-18",
+      updatedAt: "2025-02-24",
       author: "MoreMeets Editorial",
       tags: ["Healthcare"],
       protocol: "Life Safety",
@@ -504,6 +516,7 @@ export const blogPosts: BlogPost[] = [
       slug: 'the-25-million-burrito',
       title: "Operational Drift Analysis: The Chipotle Food Safety Crisis",
       publishedDate: "2026-02-17",
+      updatedAt: "2025-02-24",
       author: "MoreMeets Editorial",
       tags: ["Restaurant & F&B Operations"],
       protocol: "Food Safety",

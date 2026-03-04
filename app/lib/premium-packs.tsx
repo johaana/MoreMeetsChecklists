@@ -32,6 +32,7 @@ export type PremiumPack = {
     paymentId: string;
     lemonSqueezyUrl?: string;
     listId?: number; 
+    updatedAt?: string;
     category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production" | "Food & Beverage" | "Franchise" | "Master Access";
     description: string;
     heroHeadline?: string;
