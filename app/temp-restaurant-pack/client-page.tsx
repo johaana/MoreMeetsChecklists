@@ -4,25 +4,25 @@
 import React from 'react';
 import type { PremiumPack } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { handleDownload } from '@/lib/download';
-import { Download, ShieldCheck, FileSpreadsheet, CheckCircle, ArrowRight } from 'lucide-react';
+import { Download, ShieldCheck, CheckCircle, Lock, Users } from 'lucide-react';
 
 export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
-  const totalTasks = pack.checklists.reduce((acc, c) => acc + c.tasks.length, 0);
+  const totalTasks = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
 
   return (
-    <section className="py-20 bg-alternate-background">
+    <section className="py-20 bg-alternate-background min-h-screen">
       <div className="container px-4 md:px-6 max-w-4xl mx-auto">
         <div className="space-y-8 text-center">
           <div className="space-y-4">
-            <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-widest font-black text-[10px]">Technical Sandbox v2.1</Badge>
+            <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-widest font-black text-[10px]">Governance Sandbox v2.1</Badge>
             <h1 className="text-4xl md:text-6xl font-black font-headline text-primary-text italic uppercase tracking-tighter">
-              Restaurant Pack Prototype
+              Accountability Prototype
             </h1>
             <p className="text-xl text-secondary-text italic max-w-2xl mx-auto">
-              Experimenting with the "Simple, Stable, Sellable" Excel structure. This download contains the full restaurant data in our new minimalist governance format.
+              Testing the "Two-Layer Role Mapping" architecture. This download separates <strong>Fixed Responsibilities</strong> from <strong>Fluid Designations</strong>.
             </p>
           </div>
 
@@ -30,28 +30,28 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
             <Card className="bg-black border-white/10">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-primary">
-                  <ShieldCheck className="w-5 h-5" /> 2.1 Logic Check
+                  <Lock className="w-5 h-5" /> Layer 1: Structural
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2 text-sm text-secondary-text">
-                <p>• Role Mapping Matrix (Sheet 3)</p>
-                <p>• Weighted Risk Scoring (3, 2, 1)</p>
-                <p>• SPOF Concentration Detection</p>
-                <p>• Minimalist 5-Column Checklist</p>
+                <p>• <strong>Fixed Structural Roles</strong> (Locked logic)</p>
+                <p>• <strong>Dynamic Name Pulling</strong> (XLOOKUP)</p>
+                <p>• No manual role typing in checklists</p>
+                <p>• Automated Escalation Mapping</p>
               </CardContent>
             </Card>
 
             <Card className="bg-black border-white/10">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-accent">
-                  <CheckCircle className="w-5 h-5" /> System Payload
+                  <Users className="w-5 h-5" /> Layer 2: Mapped
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2 text-sm text-secondary-text">
-                <p>• {pack.checklists.length} Checklist Modules</p>
-                <p>• {totalTasks} Technical Tasks</p>
-                <p>• FSSAI / HACCP Integration</p>
-                <p>• Emergency Escalation Matrix</p>
+                <p>• <strong>Editable Designations</strong> (Local titles)</p>
+                <p>• <strong>Assigned Person</strong> Control Center</p>
+                <p>• Single Point of Update for all sheets</p>
+                <p>• Unassigned Task detection</p>
               </CardContent>
             </Card>
           </div>
@@ -63,9 +63,12 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
               className="h-16 px-12 bg-primary text-black font-black uppercase italic text-lg shadow-2xl hover:scale-105 transition-all"
             >
               <Download className="mr-3 w-6 h-6" />
-              Download Test .XLSX
+              Download v2.1 Framework
             </Button>
-            <p className="mt-4 text-[10px] text-white/20 uppercase font-black tracking-widest">Version 2.1 Governance Standard • Audit-Ready</p>
+            <div className="mt-6 space-y-1">
+                <p className="text-[10px] text-white/20 uppercase font-black tracking-widest">Version 2.1 Stability Patch: XLOOKUP Logic Integration</p>
+                <p className="text-[9px] text-white/10 italic">Experimental Build: Verify formula performance across 30+ sheets.</p>
+            </div>
           </div>
         </div>
       </div>

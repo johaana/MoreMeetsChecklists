@@ -24,7 +24,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const instructionTitleStyle = { font: { bold: true, sz: 11 }, alignment: { vertical: 'top' } };
     const instructionBodyStyle = { font: { sz: 10, color: {rgb: "4A4A4A"} }, alignment: { wrapText: true, vertical: 'top' } };
     const footerStyle = { font: { italic: true, sz: 8, color: { rgb: "808080" } }, alignment: { horizontal: 'center' } };
-    const alertStyle = { font: { bold: true, color: { rgb: "9C0006" } }, fill: { fgColor: { rgb: "FFC7CE" } } };
+    const redAlertStyle = { font: { bold: true, color: { rgb: "9C0006" } }, fill: { fgColor: { rgb: "FFC7CE" } } };
     const stableStyle = { font: { bold: true, color: { rgb: "006100" } }, fill: { fgColor: { rgb: "C6EFCE" } } };
 
     let checklists: PackChecklist[] = [];
@@ -45,6 +45,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
+    // Identify unique structural roles from the pack
+    const uniqueStructuralRoles = Array.from(new Set(checklists.flatMap(c => c.tasks.map(t => t.role || c.role)))).sort();
+
     // --- 1. COVER PAGE ---
     const coverData = [
         [{ v: `OPERATIONAL GOVERNANCE SYSTEM: ${packTitle}`, s: titleStyle }],
@@ -52,64 +55,82 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [{ v: "Purpose: To standardize execution and remove key-person dependency." }],
         [{ v: `Vertical: ${item.category} Operations` }],
         [],
-        [{ v: "Structure: 1. Mapping | 2. Dashboard | 3. Checklists" }],
+        [{ v: "Structure: 1. Instructions | 2. Role Mapping | 3. Dashboard | 4. Checklists" }],
         [],
         [{ v: "Support & Customization: more@moremeets.com" }],
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     coverWs['!cols'] = [{ wch: 80 }];
+    coverWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 0 } }];
     utils.book_append_sheet(wb, coverWs, "1. Cover Page");
 
     // --- 2. INSTRUCTIONS & LEGEND ---
     const instructionsData = [
         [{ v: "HOW TO USE THIS SYSTEM (15 MINUTES)", s: titleStyle }],
         [],
-        [{ v: "Step 1", s: instructionTitleStyle }, { v: "Go to the 'Role Mapping' sheet and enter names for each role.", s: instructionBodyStyle }],
-        [{ v: "Step 2", s: instructionTitleStyle }, { v: "Review the 'Load Dashboard' to identify risk concentration.", s: instructionBodyStyle }],
-        [{ v: "Step 3", s: instructionTitleStyle }, { v: "Distribute tasks if any one person is flagged as 'High Concentration'.", s: instructionBodyStyle }],
-        [{ v: "Step 4", s: instructionTitleStyle }, { v: "Use the checklist modules for daily operational verification.", s: instructionBodyStyle }],
+        [{ v: "Step 1", s: instructionTitleStyle }, { v: "Go to the 'Role Mapping' sheet. Do not rename 'Structural Roles'.", s: instructionBodyStyle }],
+        [{ v: "Step 2", s: instructionTitleStyle }, { v: "Enter your local Designation and the Assigned Person's name for each role.", s: instructionBodyStyle }],
+        [{ v: "Step 3", s: instructionTitleStyle }, { v: "Review the 'Load Dashboard' to identify risk concentration.", s: instructionBodyStyle }],
+        [{ v: "Step 4", s: instructionTitleStyle }, { v: "Use checklist modules for daily verification. Names will pull automatically.", s: instructionBodyStyle }],
         [],
-        [{ v: "LEGEND & WEIGHTING", s: instructionTitleStyle }],
+        [{ v: "RISK LEGEND", s: instructionTitleStyle }],
         [{ v: "Safety Critical", s: { font: { bold: true } } }, { v: "3 Points (High Liability / Life Safety)" }],
         [{ v: "Regulatory", s: { font: { bold: true } } }, { v: "2 Points (Compliance / Legal)" }],
         [{ v: "Operational", s: { font: { bold: true } } }, { v: "1 Point (Efficiency / Quality)" }],
     ];
     const instructionsWs = utils.aoa_to_sheet(instructionsData);
     instructionsWs['!cols'] = [{ wch: 20 }, { wch: 60 }];
+    instructionsWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
     utils.book_append_sheet(wb, instructionsWs, "2. Instructions");
 
-    // --- 3. ROLE MAPPING ---
-    const allRoles = Array.from(new Set(checklists.flatMap(c => c.tasks.map(t => t.role || c.role)))).sort();
+    // --- 3. ROLE MAPPING MATRIX ---
     const mappingData = [
-        [{ v: "ROLE MAPPING MATRIX", s: titleStyle }],
+        [{ v: "ROLE MAPPING MATRIX (CONTROL CENTER)", s: titleStyle }],
         [{ v: "Total Personnel Count at Location:", s: { bold: true } }, { v: 10 }],
         [],
-        [{ v: "Template Role", s: headerStyle }, { v: "Assigned Person", s: headerStyle }, { v: "Reports To", s: headerStyle }, { v: "Backup Assigned (Y/N)", s: headerStyle }]
+        [{ v: "Structural Role (Fixed)", s: headerStyle }, { v: "Local Designation (Editable)", s: headerStyle }, { v: "Assigned Person", s: headerStyle }, { v: "Backup Assigned", s: headerStyle }, { v: "Reports To", s: headerStyle }]
     ];
-    allRoles.forEach(role => mappingData.push([{ v: role }, { v: "" }, { v: "General Manager" }, { v: "N" }]));
+    uniqueStructuralRoles.forEach(role => mappingData.push([
+        { v: role }, 
+        { v: role }, // Default designation is the role itself
+        { v: "" }, 
+        { v: "N" },
+        { v: "General Manager" }
+    ]));
     const mappingWs = utils.aoa_to_sheet(mappingData);
-    mappingWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 30 }, { wch: 20 }];
+    mappingWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 30 }, { wch: 20 }, { wch: 30 }];
+    mappingWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 4 } }];
     utils.book_append_sheet(wb, mappingWs, "3. Role Mapping");
 
     // --- 4. GOVERNANCE LOAD DASHBOARD ---
-    // Logic: Weighting Safety=3, Reg=2, Op=1
-    // We will pre-calculate global stats for the dashboard demo
     const dashboardData = [
         [{ v: "GOVERNANCE LOAD DASHBOARD", s: titleStyle }],
         [],
-        [{ v: "Mapped Role", s: headerStyle }, { v: "Total Tasks", s: headerStyle }, { v: "Risk Score", s: headerStyle }, { v: "Critical Count", s: headerStyle }, { v: "Status", s: headerStyle }]
+        [{ v: "Structural Role", s: headerStyle }, { v: "Assigned Person", s: headerStyle }, { v: "Total Tasks", s: headerStyle }, { v: "Risk Score", s: headerStyle }, { v: "Status", s: headerStyle }]
     ];
     
-    // We add a few sample rows or empty rows for the client to see
-    allRoles.forEach(role => {
-        dashboardData.push([{ v: role }, { v: 0 }, { v: 0 }, { v: 0 }, { v: "STABLE", s: stableStyle }]);
+    uniqueStructuralRoles.forEach((role, idx) => {
+        const row = 4 + idx;
+        const mappingRef = `'3. Role Mapping'!A${row+1}`;
+        const personRef = `'3. Role Mapping'!C${row+1}`;
+        
+        // We'll leave the math logic for Excel to calculate based on counts in checklists
+        // For simplicity in the generated file, we populate the names via reference
+        dashboardData.push([
+            { v: role }, 
+            { f: personRef },
+            { v: 0 }, // Placeholder for Total Tasks
+            { v: 0 }, // Placeholder for Risk Score
+            { v: "STABLE", s: stableStyle }
+        ]);
     });
     
     dashboardData.push([]);
     dashboardData.push([{ v: "Note: If one role carries > 50% of total risk score, review task distribution for SPOF risk.", s: { italic: true, sz: 9 } }]);
 
     const dashboardWs = utils.aoa_to_sheet(dashboardData);
-    dashboardWs['!cols'] = [{ wch: 30 }, { wch: 15 }, { wch: 15 }, { wch: 15 }, { wch: 25 }];
+    dashboardWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 15 }, { wch: 15 }, { wch: 25 }];
+    dashboardWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 4 } }];
     utils.book_append_sheet(wb, dashboardWs, "4. Load Dashboard");
 
     // --- 5. CHECKLIST SHEETS ---
@@ -118,24 +139,33 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         const wsData: any[][] = [
             [{ v: checklist.title, s: titleStyle }],
             [],
-            [{ v: 'Task ID', s: headerStyle }, { v: 'Operational Task', s: headerStyle }, { v: 'Control Type', s: headerStyle }, { v: 'Assigned Role', s: headerStyle }, { v: 'Escalation', s: headerStyle }, { v: 'Frequency', s: headerStyle }, { v: 'Status', s: headerStyle }],
+            [{ v: 'Task ID', s: headerStyle }, { v: 'Operational Task', s: headerStyle }, { v: 'Control Type', s: headerStyle }, { v: 'Structural Role (Fixed)', s: headerStyle }, { v: 'Assigned Person (Mapped)', s: headerStyle }, { v: 'Escalation Role', s: headerStyle }, { v: 'Frequency', s: headerStyle }, { v: 'Status', s: headerStyle }],
         ];
 
-        checklist.tasks.forEach((task) => {
-            const weight = task.riskLevel === 'High' ? 'Safety Critical' : (task.priority === 'High' ? 'Regulatory' : 'Operational');
+        checklist.tasks.forEach((task, tIdx) => {
+            const rowNum = 4 + tIdx;
+            const structuralRole = task.role || checklist.role;
+            const controlType = task.riskLevel === 'High' ? 'Safety Critical' : (task.priority === 'High' ? 'Regulatory' : 'Operational');
+            
+            // Formula to pull Assigned Person from Mapping Matrix
+            const personLookupFormula = `IFERROR(XLOOKUP(D${rowNum},'3. Role Mapping'!A:A,'3. Role Mapping'!C:C),"Unassigned Responsibility")`;
+            const escalationLookupFormula = `IFERROR(XLOOKUP(D${rowNum},'3. Role Mapping'!A:A,'3. Role Mapping'!E:E),"General Manager")`;
+
             wsData.push([
-                task.id, 
-                task.description, 
-                weight,
-                task.role || checklist.role,
-                "General Manager",
-                task.frequency || checklist.frequency,
-                "Pending"
+                { v: task.id }, 
+                { v: task.description }, 
+                { v: controlType },
+                { v: structuralRole },
+                { f: personLookupFormula },
+                { f: escalationLookupFormula },
+                { v: task.frequency || checklist.frequency },
+                { v: "Pending" }
             ]);
         });
         
         const ws = utils.aoa_to_sheet(wsData);
-        ws['!cols'] = [{ wch: 10 }, { wch: 60 }, { wch: 20 }, { wch: 25 }, { wch: 25 }, { wch: 15 }, { wch: 15 }];
+        ws['!cols'] = [{ wch: 10 }, { wch: 60 }, { wch: 20 }, { wch: 25 }, { wch: 30 }, { wch: 25 }, { wch: 15 }, { wch: 15 }];
+        ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 7 } }];
         utils.book_append_sheet(wb, ws, sName);
     });
 
