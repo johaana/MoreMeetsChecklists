@@ -1,4 +1,3 @@
-
 'use client';
 
 import { writeFile, utils, type WorkSheet, type CellObject } from 'xlsx-js-style';
@@ -45,8 +44,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
-    // Identify unique structural roles from the pack
-    const uniqueStructuralRoles = Array.from(new Set(checklists.flatMap(c => c.tasks.map(t => t.role || c.role)))).sort();
+    // Identify unique structural roles from the pack and ensure they are trimmed
+    const uniqueStructuralRoles = Array.from(new Set(checklists.flatMap(c => c.tasks.map(t => (t.role || c.role).trim())))).sort();
 
     // --- 1. COVER PAGE ---
     const coverData = [
@@ -114,8 +113,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         const mappingRef = `'3. Role Mapping'!A${row+1}`;
         const personRef = `'3. Role Mapping'!C${row+1}`;
         
-        // We'll leave the math logic for Excel to calculate based on counts in checklists
-        // For simplicity in the generated file, we populate the names via reference
+        // Populate the names via reference to the mapping sheet
         dashboardData.push([
             { v: role }, 
             { f: personRef },
@@ -144,12 +142,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
         checklist.tasks.forEach((task, tIdx) => {
             const rowNum = 4 + tIdx;
-            const structuralRole = task.role || checklist.role;
+            const structuralRole = (task.role || checklist.role).trim();
             const controlType = task.riskLevel === 'High' ? 'Safety Critical' : (task.priority === 'High' ? 'Regulatory' : 'Operational');
             
-            // Formula to pull Assigned Person from Mapping Matrix
-            const personLookupFormula = `IFERROR(XLOOKUP(D${rowNum},'3. Role Mapping'!A:A,'3. Role Mapping'!C:C),"Unassigned Responsibility")`;
-            const escalationLookupFormula = `IFERROR(XLOOKUP(D${rowNum},'3. Role Mapping'!A:A,'3. Role Mapping'!E:E),"General Manager")`;
+            // Bulletproof Formula: TRIM and CLEAN handle hidden spaces/chars. No '@' symbol used.
+            const personLookupFormula = `IFERROR(XLOOKUP(TRIM(CLEAN(D${rowNum})),'3. Role Mapping'!A:A,'3. Role Mapping'!C:C,"Unassigned Responsibility",0),"Unassigned Responsibility")`;
+            const escalationLookupFormula = `IFERROR(XLOOKUP(TRIM(CLEAN(D${rowNum})),'3. Role Mapping'!A:A,'3. Role Mapping'!E:E,"General Manager",0),"General Manager")`;
 
             wsData.push([
                 { v: task.id }, 
