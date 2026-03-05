@@ -118,7 +118,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             if(cell) cell.s = navStyle;
         }
         ws['!merges'] = ws['!merges'] || [];
-        // Optional: specific mapping links
+        ws['!views'] = [{ state: 'frozen', ySplit: 1 }];
     };
 
     // --- 1. COVER PAGE (Institutional) ---
@@ -163,6 +163,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     // --- 3. ROLE MAPPING MATRIX ---
     const lastMappingRow = 5 + uniqueStructuralRoles.length;
+    // Personnel count formula: counts unique non-blank names in Column C
     const personnelCountFormula = `SUMPRODUCT((C6:C${lastMappingRow+1}<>\"\")/COUNTIF(C6:C${lastMappingRow+1},C6:C${lastMappingRow+1}&\"\"))`;
 
     const mappingData = [
@@ -187,13 +188,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     // --- 4. LOAD DASHBOARD (The Console) ---
     const totalTasksFormula = `COUNTA('Master Task Register'!B:B)-1`;
-    const highestLoadFormula = `INDEX('3. Role Mapping'!C:C, MATCH(MAX(H10:H30), H10:H30, 0)+9)`; // Rough estimate logic for demo
+    // For "Highest Load Person", we look at the Person-based load table below
+    const highestLoadFormula = `INDEX(A20:A30, MATCH(MAX(B20:B30), B20:B30, 0))`; 
 
     const dashboardData = [
         [], // Nav
         // KPI STRIP
         [{ v: "TOTAL CONTROL POINTS", s: kpiTitleStyle }, { v: "ACTIVE PERSONNEL", s: kpiTitleStyle }, { v: "HIGHEST LOAD PERSON", s: kpiTitleStyle }, { v: "GOVERNANCE STATUS", s: kpiTitleStyle }],
-        [{ f: totalTasksFormula, s: kpiBoxStyle }, { f: `'3. Role Mapping'!B2`, s: kpiBoxStyle }, { v: "CALCULATING...", s: { ...kpiBoxStyle, font: { sz: 10 } } }, { v: "STABLE", s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.GREEN } } } }],
+        [{ f: totalTasksFormula, s: kpiBoxStyle }, { f: `'3. Role Mapping'!B2`, s: kpiBoxStyle }, { f: highestLoadFormula, s: { ...kpiBoxStyle, font: { sz: 10 } } }, { v: "STABLE", s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.GREEN } } } }],
         [],
         [{ v: "SECTION A: GOVERNANCE LOAD (BY STRUCTURAL ROLE)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
         [{ v: "Structural Role", s: headerStyle }, { v: "Assigned Person", s: headerStyle }, { v: "Total Tasks", s: headerStyle }, { v: "Risk Score", s: headerStyle }, { v: "Structural Status", s: headerStyle }],
@@ -221,12 +223,17 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     dashboardData.push([{ v: "SECTION B: HUMAN RISK (AGGREGATED BY INDIVIDUAL)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }]);
     dashboardData.push([{ v: "Staff Member Name", s: headerStyle }, { v: "Total Task Load", s: headerStyle }, { v: "Risk Weighting", s: headerStyle }, { v: "Critical Ratio", s: headerStyle }, { v: "Governance Alert", s: headerStyle }]);
 
-    // Section B: Unique Person Logic (Simulated for demo stability)
-    uniqueStructuralRoles.slice(0, 5).forEach((_, idx) => {
-        const rowNum = spofRow + 2 + idx;
-        const personNameRef = `'3. Role Mapping'!C${6 + idx}`;
-        const taskSum = `COUNTIF('Master Task Register'!E:E, A${rowNum})`;
-        const riskSum = `SUMIF('Master Task Register'!E:E, A${rowNum}, 'Master Task Register'!F:F)`;
+    // Section B: Personnel Load Logic
+    // We list names from the Mapping sheet once. In a real Excel we'd use UNIQUE(), 
+    // but for generation stability we'll map them 1:1 to the mapping sheet entries.
+    uniqueStructuralRoles.slice(0, 10).forEach((_, idx) => {
+        const rowInMapping = 6 + idx;
+        const rowInDashboard = spofRow + 3 + idx;
+        const personNameRef = `'3. Role Mapping'!C${rowInMapping}`;
+        
+        // Sum tasks where "Assigned Person" matches this name
+        const taskSum = `IF(${personNameRef}="", 0, COUNTIF('Master Task Register'!E:E, ${personNameRef}))`;
+        const riskSum = `IF(${personNameRef}="", 0, SUMIF('Master Task Register'!E:E, ${personNameRef}, 'Master Task Register'!F:F))`;
         
         dashboardData.push([
             { f: personNameRef, s: dataCellStyle },
@@ -245,9 +252,11 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addNavBar(dashboardWs, 5);
     setColumnWidths(dashboardWs, [35, 30, 15, 15, 40]);
     dashboardWs['!rows'] = [{ hpt: 20 }, { hpt: 20 }, { hpt: 45 }, { hpt: 15 }];
-    dashboardWs['!merges'] = [
-        { s: { r: spofRow + 8, c: 0 }, e: { r: spofRow + 8, c: 4 } } // Insight box merge
-    ];
+    
+    // Merge the insight box
+    const insightRow = dashboardData.length - 1;
+    dashboardWs['!merges'].push({ s: { r: insightRow, c: 0 }, e: { r: insightRow, c: 4 } });
+
     utils.book_append_sheet(wb, dashboardWs, "4. Load Dashboard");
 
     // --- 5. MASTER TASK REGISTER (The Database) ---
@@ -267,7 +276,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const masterWs = utils.aoa_to_sheet(masterData);
     setColumnWidths(masterWs, [12, 60, 20, 25, 25, 12]);
     utils.book_append_sheet(wb, masterWs, "Master Task Register");
-    wb.Workbook = { Views: [{ hidden: 0 }] }; // Ensure Register can be hidden
+    wb.Workbook = { Views: [{ hidden: 0 }] }; // Registry can be hidden
 
     // --- 6. CHECKLIST SHEETS ---
     checklists.forEach((checklist) => {
