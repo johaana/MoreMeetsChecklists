@@ -164,16 +164,19 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [{ v: "Follow these 3 steps to turn tribal knowledge into permanent infrastructure.", s: { font: { italic: true } } }],
         [],
         [{ v: "STEP 1: Set up your team", s: { font: { bold: true } } }],
-        [{ v: "Head to the '2. Role Mapping' tab. In Section A, list your unique staff members once. If you manage multiple units, use the 'Location' column to tag them (e.g., 'Downtown Branch' or 'Cluster GM').", s: { alignment: { wrapText: true } } }],
+        [{ v: "Head to the '2. Role Mapping' tab. In Section A, list your human staff members once (e.g., 'Chef Rahul', 'Sarah'). If you manage multiple units, use the 'Location' column to tag them (e.g., 'Downtown Branch' or 'Regional GM').", s: { alignment: { wrapText: true } } }],
         [],
         [{ v: "STEP 2: Assign heroes and backups", s: { font: { bold: true } } }],
         [{ v: "In Section B of the same tab, map your team to the structural roles. Choose a 'Primary' person and a 'Backup'. Our system will instantly push these names into every single checklist module.", s: { alignment: { wrapText: true } } }],
         [],
         [{ v: "STEP 3: The only rule - update the date", s: { font: { bold: true } } }],
-        [{ v: "When a task is done, simply drop the date in Column J of any checklist. That's it. If it turns GREEN, you're safe. If it turns RED, it's time for an executive check-in.", s: { alignment: { wrapText: true } } }],
+        [{ v: "When a task is done, your staff simply drops the date in Column J of any checklist. That's it. If it turns GREEN, you're safe. If it turns RED, it's time for an executive check-in.", s: { alignment: { wrapText: true } } }],
         [],
-        [{ v: "Operational Workflow Tip for CEOs & COOs", s: { font: { bold: true, color: { rgb: COLORS.GREEN } } } }],
-        [{ v: "You don't need to do this everyday. You manage the 'Dashboard'. Delegate specific checklists (e.g., 'Kitchen_Op') to your managers. You can even 'Protect' the Dashboard sheet with a password in Excel to keep sensitive resource data private.", s: { alignment: { wrapText: true } } }],
+        [{ v: "How to delegate effectively (For CEOs & COOs)", s: { font: { bold: true, color: { rgb: COLORS.GREEN } } } }],
+        [{ v: "You don't need to do the data entry. You manage the 'Dashboard'. Share this file on OneDrive/Google Drive. Lock the Dashboard tab with a password (Review > Protect Sheet) so only you can see the risk load. Your team only updates their respective checklists.", s: { alignment: { wrapText: true } } }],
+        [],
+        [{ v: "Want automated Mobile or Email alerts?", s: { font: { bold: true, color: { rgb: COLORS.SUB_NAVY } } } }],
+        [{ v: "If this file is hosted on OneDrive, you can use 'Microsoft Power Automate' to watch for 'RED' status changes and send you an instant push notification or email summary of missed tasks.", s: { alignment: { wrapText: true } } }],
     ];
     const introWs = utils.aoa_to_sheet(introData);
     addNavBar(introWs);
@@ -240,7 +243,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const dashboardData = [
         [], // Nav
         [{ v: "TOTAL CONTROL POINTS", s: kpiTitleStyle }, { v: "ACTIVE PERSONNEL", s: kpiTitleStyle }, { v: "HIGHEST LOAD PERSON", s: kpiTitleStyle }, { v: "GOVERNANCE STATUS", s: kpiTitleStyle }],
-        [{ f: totalTasksFormula, s: kpiBoxStyle }, { f: activeStaffFormula, s: kpiBoxStyle }, { v: "DETECTING...", s: { ...kpiBoxStyle, font: { sz: 10 } } }, { f: spofFormula, s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.GREEN }, sz: 10 } } }],
+        [{ f: totalTasksFormula, s: kpiBoxStyle }, { f: `IFERROR(${activeStaffFormula}, 0)`, s: kpiBoxStyle }, { v: "DETECTING...", s: { ...kpiBoxStyle, font: { sz: 10 } } }, { f: spofFormula, s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.GREEN }, sz: 10 } } }],
         [],
         [{ v: "PERSPECTIVE 1: HUMAN RISK AGGREGATION (BY UNIQUE PERSON & LOCATION)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
         [{ v: "Personnel Name", s: headerStyle }, { v: "Primary Location / Unit", s: headerStyle }, { v: "Total Tasks Across Roles", s: headerStyle }, { v: "Risk Load Score", s: headerStyle }, { v: "Load Alert", s: headerStyle }],
@@ -300,29 +303,41 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             [], // Nav
             [{ v: checklist.title.toUpperCase(), s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
             [],
-            ["Task Description", "Control Type", "Primary Assigned", "Backup Personnel", "Frequency", "Evidence / Proof"]
+            ["Task Description", "Control Type", "Primary Assigned", "Backup Personnel", "Frequency", "Evidence / Proof", "Date Completed", "Status"]
         ];
 
         checklist.tasks.forEach((task, tIdx) => {
             const roleKey = (task.role || checklist.role).trim();
+            const rowIdx = 5 + tIdx;
+            const dateCell = `G${rowIdx}`;
+            const statusFormula = `IF(ISBLANK(${dateCell}), "Pending", "Completed")`;
+
             wsData.push([
                 { v: task.description, s: { ...dataCellStyle, wrapText: true } },
                 { v: task.riskLevel === 'High' ? 'Safety Critical' : 'Operational', s: centerCellStyle },
                 { f: `IFERROR(VLOOKUP("${roleKey}", '2. Role Mapping'!G:H, 2, FALSE), "Unassigned")`, s: { ...dataCellStyle, fill: { fgColor: { rgb: COLORS.BG_LIGHT } } } },
                 { f: `IFERROR(VLOOKUP("${roleKey}", '2. Role Mapping'!G:I, 3, FALSE), "None")`, s: dataCellStyle },
                 { v: task.frequency || checklist.frequency, s: centerCellStyle },
-                { v: task.proof || "Not Specified", s: dataCellStyle }
+                { v: task.proof || "Not Specified", s: dataCellStyle },
+                { v: null, s: { ...dataCellStyle, fill: { fgColor: { rgb: "FFFFE0" } } } },
+                { f: statusFormula, s: centerCellStyle }
             ]);
         });
 
         const ws = utils.aoa_to_sheet(wsData);
         addNavBar(ws);
-        setColumnWidths(ws, [65, 20, 25, 25, 15, 30]);
+        setColumnWidths(ws, [65, 20, 25, 25, 15, 30, 15, 15]);
         ws['!rows'] = [{ hpt: 20 }, { hpt: 30 }, { hpt: 10 }, { hpt: 25 }];
-        ["A4", "B4", "C4", "D4", "E4", "F4"].forEach(cell => { if(ws[cell]) ws[cell].s = headerStyle; });
-        ws['!autofilter'] = { ref: `A4:F${wsData.length}` };
+        ["A4", "B4", "C4", "D4", "E4", "F4", "G4", "H4"].forEach(cell => { if(ws[cell]) ws[cell].s = headerStyle; });
+        ws['!autofilter'] = { ref: `A4:H${wsData.length}` };
         utils.book_append_sheet(wb, ws, sName);
     });
+
+    // Re-order sheets
+    const finalSheetNames = ["1. Cover Page", "Quick Start Guide", "2. Role Mapping", "3. Module Index", "4. Dashboard"];
+    checklists.forEach(c => finalSheetNames.push(safeSheetName(c.title)));
+    finalSheetNames.push("Master Task Register");
+    wb.SheetNames = finalSheetNames;
 
     const fileName = packTitle.replace(/[^a-z0-9]/gi, '_') + '_Governance_v2.10.xlsx';
     writeFile(wb, fileName);
