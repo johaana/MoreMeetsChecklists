@@ -19,12 +19,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     
     // --- STYLES ---
     const titleStyle = { font: { sz: 14, bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', horizontal: 'center' } };
-    const headerStyle = { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 10 }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', wrapText: true, horizontal: 'center' } };
+    const headerStyle = { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 10 }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', horizontal: 'center', wrapText: true } };
     const instructionTitleStyle = { font: { bold: true, sz: 11 }, alignment: { vertical: 'top' } };
     const instructionBodyStyle = { font: { sz: 10, color: {rgb: "4A4A4A"} }, alignment: { wrapText: true, vertical: 'top' } };
     const redAlertStyle = { font: { bold: true, color: { rgb: "9C0006" } }, fill: { fgColor: { rgb: "FFC7CE" } } };
     const stableStyle = { font: { bold: true, color: { rgb: "006100" } }, fill: { fgColor: { rgb: "C6EFCE" } } };
-    const lockedColStyle = { fill: { fgColor: { rgb: "F9FAFB" } }, font: { color: { rgb: "6B7280" } } };
+    const lockedColStyle = { fill: { fgColor: { rgb: "F9FAFB" } }, font: { color: { rgb: "6B7280" } }, alignment: { vertical: 'center' } };
+    const dataCellStyle = { alignment: { vertical: 'center' } };
 
     let checklists: PackChecklist[] = [];
     const packTitle = item.title;
@@ -50,15 +51,16 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const coverData = [
         [{ v: `OPERATIONAL GOVERNANCE SYSTEM: ${packTitle}`, s: titleStyle }],
         [],
-        [{ v: "Purpose: To standardize execution and remove key-person dependency." }],
-        [{ v: `Vertical: ${item.category} Operations` }],
+        [{ v: "Purpose: To standardize execution and remove key-person dependency.", s: dataCellStyle }],
+        [{ v: `Vertical: ${item.category} Operations`, s: dataCellStyle }],
         [],
-        [{ v: "Structure: 1. Instructions | 2. Role Mapping | 3. Dashboard | 4. Checklists" }],
+        [{ v: "Structure: 1. Instructions | 2. Role Mapping | 3. Dashboard | 4. Checklists", s: dataCellStyle }],
         [],
-        [{ v: "Support & Customization: more@moremeets.com" }],
+        [{ v: "Support & Customization: more@moremeets.com", s: dataCellStyle }],
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     coverWs['!cols'] = [{ wch: 80 }];
+    coverWs['!rows'] = [{ hpt: 30 }];
     coverWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 0 } }];
     utils.book_append_sheet(wb, coverWs, "1. Cover Page");
 
@@ -78,6 +80,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const instructionsWs = utils.aoa_to_sheet(instructionsData);
     instructionsWs['!cols'] = [{ wch: 20 }, { wch: 60 }];
+    instructionsWs['!rows'] = [{ hpt: 25 }];
     instructionsWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
     utils.book_append_sheet(wb, instructionsWs, "2. Instructions");
 
@@ -89,14 +92,15 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [{ v: "Structural Role (Fixed)", s: headerStyle }, { v: "Local Designation (Editable)", s: headerStyle }, { v: "Assigned Person", s: headerStyle }, { v: "Backup Assigned (Y/N)", s: headerStyle }, { v: "Reports To (Escalation)", s: headerStyle }]
     ];
     uniqueStructuralRoles.forEach(role => mappingData.push([
-        { v: role.trim() }, 
-        { v: role.trim() }, 
-        { v: "" }, 
-        { v: "N" },
-        { v: "General Manager" }
+        { v: role.trim(), s: dataCellStyle }, 
+        { v: role.trim(), s: dataCellStyle }, 
+        { v: "", s: dataCellStyle }, 
+        { v: "N", s: dataCellStyle },
+        { v: "General Manager", s: dataCellStyle }
     ]));
     const mappingWs = utils.aoa_to_sheet(mappingData);
     mappingWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 30 }, { wch: 20 }, { wch: 30 }];
+    mappingWs['!rows'] = [{ hpt: 25 }, null, null, { hpt: 20 }];
     mappingWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 4 } }];
     utils.book_append_sheet(wb, mappingWs, "3. Role Mapping");
 
@@ -110,23 +114,18 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     uniqueStructuralRoles.forEach((role, idx) => {
         const rowInMapping = 5 + idx;
         const personRef = `'3. Role Mapping'!C${rowInMapping}`;
-        
-        // Dynamic summary formulas that work across all sheets
-        const sheetList = checklists.map(c => `'${safeSheetName(c.title)}'`).join(',');
-        
-        // Since cross-sheet SUMIF is complex in simple strings, we aggregate in hidden columns in Mapping and pull here
-        // For the prototype, we provide the clean structure.
         dashboardData.push([
-            { v: role }, 
-            { f: personRef },
-            { v: 0 }, 
-            { v: 0 }, 
+            { v: role, s: dataCellStyle }, 
+            { f: personRef, s: dataCellStyle },
+            { v: 0, s: dataCellStyle }, 
+            { v: 0, s: dataCellStyle }, 
             { v: "STABLE", s: stableStyle }
         ]);
     });
     
     const dashboardWs = utils.aoa_to_sheet(dashboardData);
     dashboardWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 15 }, { wch: 15 }, { wch: 25 }];
+    dashboardWs['!rows'] = [{ hpt: 25 }, null, { hpt: 20 }];
     dashboardWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 4 } }];
     utils.book_append_sheet(wb, dashboardWs, "4. Load Dashboard");
 
@@ -136,7 +135,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         const wsData: any[][] = [
             [{ v: checklist.title, s: titleStyle }],
             [],
-            [{ v: 'Operational Task', s: headerStyle }, { v: 'Control Type', s: headerStyle }, { v: 'Structural Role (Fixed)', s: headerStyle }, { v: 'Assigned Person (Mapped)', s: headerStyle }, { v: 'Escalation Role', s: headerStyle }, { v: 'Frequency', s: headerStyle }, { v: 'RiskPoints (Hidden)', s: headerStyle }],
+            [{ v: 'Operational Task', s: headerStyle }, { v: 'Control Type', s: headerStyle }, { v: 'Structural Role (Fixed)', s: headerStyle }, { v: 'Assigned Person (Mapped)', s: headerStyle }, { v: 'Escalation Role', s: headerStyle }, { v: 'Frequency', s: headerStyle }, { v: 'RiskPoints', s: headerStyle }],
         ];
 
         checklist.tasks.forEach((task, tIdx) => {
@@ -145,28 +144,42 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             const controlType = task.riskLevel === 'High' ? 'Safety Critical' : (task.priority === 'High' ? 'Regulatory' : 'Operational');
             const points = controlType === 'Safety Critical' ? 3 : (controlType === 'Regulatory' ? 2 : 1);
             
-            // COMPATIBILITY: VLOOKUP is safer for broad Excel version support than XLOOKUP.
-            // Wrapping in T() or IF checks handles the "Found but Empty" returning 0 issue.
+            // Bulletproof VLOOKUP formula without @
             const lookupFormula = (colIndex: number) => 
                 `IFERROR(IF(VLOOKUP(TRIM(CLEAN(C${rowNum})),'3. Role Mapping'!$A:$E,${colIndex},FALSE)=0,"Unassigned Responsibility",VLOOKUP(TRIM(CLEAN(C${rowNum})),'3. Role Mapping'!$A:$E,${colIndex},FALSE)),"Unassigned Responsibility")`;
 
             wsData.push([
-                { v: task.description }, 
-                { v: controlType },
+                { v: task.description, s: dataCellStyle }, 
+                { v: controlType, s: dataCellStyle },
                 { v: structuralRole, s: lockedColStyle },
-                { f: lookupFormula(3) }, // Col C in Mapping
-                { f: lookupFormula(5) }, // Col E in Mapping
-                { v: task.frequency || checklist.frequency },
-                { v: points }
+                { f: lookupFormula(3), s: dataCellStyle }, // Col C in Mapping
+                { f: lookupFormula(5), s: dataCellStyle }, // Col E in Mapping
+                { v: task.frequency || checklist.frequency, s: dataCellStyle },
+                { v: points, s: dataCellStyle }
             ]);
         });
         
         const ws = utils.aoa_to_sheet(wsData);
-        ws['!cols'] = [{ wch: 60 }, { wch: 20 }, { wch: 25 }, { wch: 30 }, { wch: 25 }, { wch: 15 }, { wch: 0.1 }]; // Hidden RiskPoints
+        // Explicit Column Widths and Hiding column G (RiskPoints)
+        ws['!cols'] = [
+            { wch: 60 }, // A
+            { wch: 20 }, // B
+            { wch: 25 }, // C
+            { wch: 30 }, // D
+            { wch: 25 }, // E
+            { wch: 15 }, // F
+            { hidden: true, wch: 0 }  // G - Genuinely hidden
+        ];
+        // Explicit Row Heights to prevent "Blue Block" expansion
+        ws['!rows'] = [
+            { hpt: 25 }, // Row 1 (Title)
+            { hpt: 10 }, // Row 2 (Spacer)
+            { hpt: 20 }  // Row 3 (Headers)
+        ];
         ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 5 } }];
         utils.book_append_sheet(wb, ws, sName);
     });
 
-    const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets_v2.2.xlsx';
+    const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets_v2.3.xlsx';
     writeFile(wb, fileName);
 }
