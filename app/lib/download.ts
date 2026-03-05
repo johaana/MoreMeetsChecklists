@@ -141,7 +141,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [{ v: "SYSTEM ONBOARDING GUIDE (15 MINUTE SETUP)", s: titleStyle }, null],
         [],
         [{ v: "Step 1", s: instructionTitleStyle }, { v: "Go to '3. Role Mapping'. Enter the names of staff members for each structural responsibility.", s: instructionBodyStyle }],
-        [{ v: "Step 2", s: instructionTitleStyle }, { v: "Enter the 'Total Personnel Count' at the top of the Mapping sheet to calibrate risk math.", s: instructionBodyStyle }],
+        [{ v: "Step 2", s: instructionTitleStyle }, { v: "The 'Total Personnel Count' at the top of the Mapping sheet will update automatically to calibrate risk interpretation.", s: instructionBodyStyle }],
         [{ v: "Step 3", s: instructionTitleStyle }, { v: "Check '4. Load Dashboard' to identify Single Point of Failure (SPOF) risks.", s: instructionBodyStyle }],
         [{ v: "Step 4", s: instructionTitleStyle }, { v: "Use the filter arrows on checklist headers to generate personal daily to-do lists.", s: instructionBodyStyle }],
         [],
@@ -157,9 +157,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     utils.book_append_sheet(wb, instructionsWs, "2. Instructions");
 
     // --- 3. ROLE MAPPING MATRIX ---
+    const lastMappingRow = 4 + uniqueStructuralRoles.length;
+    // Bulletproof unique count formula for Column C (Assigned Person)
+    const personnelCountFormula = `SUMPRODUCT((C5:C${lastMappingRow}<>\"\")/COUNTIF(C5:C${lastMappingRow},C5:C${lastMappingRow}&\"\"))`;
+
     const mappingData = [
         [{ v: "CENTRAL ROLE MAPPING (GOVERNANCE CONTROL)", s: titleStyle }, null, null, null, null],
-        [{ v: "Total Personnel Count at Location:", s: { font: { bold: true } } }, { v: 10, s: { font: { bold: true, sz: 12 }, alignment: { horizontal: 'center' } } }, null, null, null],
+        [{ v: "Total Personnel Count at Location:", s: { font: { bold: true } } }, { f: personnelCountFormula, s: { font: { bold: true, sz: 12 }, alignment: { horizontal: 'center' } } }, null, null, null],
         [],
         [{ v: "Structural Role", s: headerStyle }, { v: "Local Designation", s: headerStyle }, { v: "Assigned Person", s: headerStyle }, { v: "Backup Assigned?", s: headerStyle }, { v: "Escalation Authority", s: headerStyle }]
     ];
@@ -206,6 +210,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const personnelHeaderRow = dashboardData.length + 1;
     dashboardData.push([{ v: "Staff Member Name", s: headerStyle }, { v: "Total Tasks Held", s: headerStyle }, { v: "Risk Load", s: headerStyle }, { v: "Critical Controls %", s: headerStyle }, { v: "Structural Status", s: headerStyle }]);
 
+    const totalPersonnelRef = `'3. Role Mapping'!$B$2`;
+
     uniqueStructuralRoles.forEach((_, idx) => {
         const rowInMapping = 5 + idx;
         const personNameRef = `'3. Role Mapping'!C${rowInMapping}`;
@@ -217,8 +223,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         const totalCriticalGlobal = `COUNTIF('Master Task Register'!C:C, "Safety Critical")`;
         const criticalRatioByPerson = `IF(${totalCriticalGlobal}=0, 0, ${criticalCountByPerson}/${totalCriticalGlobal})`;
         
-        // SPOF Alert Logic
-        const spofLogic = `IF(A${rowInDashboard}="", "N/A", IF(${criticalRatioByPerson} > 0.5, "HIGH CONCENTRATION", "STABLE"))`;
+        // Intelligent SPOF Alert Logic with Soft Interpretation for small teams
+        const spofLogic = `IF(A${rowInDashboard}="", "N/A", IF(${criticalRatioByPerson} > 0.5, IF(${totalPersonnelRef} < 10, "STRUCTURAL CONCENTRATION (OWNER-LED)", "CRITICAL CONTROL CONCENTRATION DETECTED"), "STABLE"))`;
 
         dashboardData.push([
             { f: personNameRef, s: dataCellStyle },
@@ -230,7 +236,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     });
     
     const dashboardWs = utils.aoa_to_sheet(dashboardData);
-    dashboardWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 15 }, { wch: 20 }, { wch: 35 }];
+    dashboardWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 15 }, { wch: 20 }, { wch: 45 }];
     dashboardWs['!rows'] = [{ hpt: 35 }, null, { hpt: 25 }, { hpt: 25 }];
     dashboardWs['!merges'] = [
         { s: { r: 0, c: 0 }, e: { r: 0, c: 4 } },
