@@ -22,8 +22,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const headerStyle = { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 10 }, fill: { fgColor: { rgb: "0A2540" } }, alignment: { vertical: 'center', horizontal: 'center', wrapText: true } };
     const instructionTitleStyle = { font: { bold: true, sz: 11 }, alignment: { vertical: 'top' } };
     const instructionBodyStyle = { font: { sz: 10, color: {rgb: "4A4A4A"} }, alignment: { wrapText: true, vertical: 'top' } };
-    const redAlertStyle = { font: { bold: true, color: { rgb: "9C0006" } }, fill: { fgColor: { rgb: "FFC7CE" } } };
-    const stableStyle = { font: { bold: true, color: { rgb: "006100" } }, fill: { fgColor: { rgb: "C6EFCE" } } };
+    const redAlertStyle = { font: { bold: true, color: { rgb: "9C0006" } }, fill: { fgColor: { rgb: "FFC7CE" } }, alignment: { horizontal: 'center' } };
+    const stableStyle = { font: { bold: true, color: { rgb: "006100" } }, fill: { fgColor: { rgb: "C6EFCE" } }, alignment: { horizontal: 'center' } };
     const lockedColStyle = { fill: { fgColor: { rgb: "F9FAFB" } }, font: { color: { rgb: "6B7280" } }, alignment: { vertical: 'center' } };
     const dataCellStyle = { alignment: { vertical: 'center' } };
 
@@ -46,6 +46,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
 
     const uniqueStructuralRoles = Array.from(new Set(checklists.flatMap(c => c.tasks.map(t => (t.role || c.role).trim())))).sort();
+    const sheetNames = checklists.map(c => safeSheetName(c.title));
 
     // --- 1. COVER PAGE ---
     const coverData = [
@@ -87,7 +88,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     // --- 3. ROLE MAPPING MATRIX ---
     const mappingData = [
         [{ v: "ROLE MAPPING MATRIX (CONTROL CENTER)", s: titleStyle }],
-        [{ v: "Total Personnel Count at Location:", s: { bold: true } }, { v: 10 }],
+        [{ v: "Total Personnel Count at Location:", s: { font: { bold: true } } }, { v: 10 }],
         [],
         [{ v: "Structural Role (Fixed)", s: headerStyle }, { v: "Local Designation (Editable)", s: headerStyle }, { v: "Assigned Person", s: headerStyle }, { v: "Backup Assigned (Y/N)", s: headerStyle }, { v: "Reports To (Escalation)", s: headerStyle }]
     ];
@@ -100,7 +101,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ]));
     const mappingWs = utils.aoa_to_sheet(mappingData);
     mappingWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 30 }, { wch: 20 }, { wch: 30 }];
-    mappingWs['!rows'] = [{ hpt: 25 }, null, null, { hpt: 20 }];
+    mappingWs['!rows'] = [{ hpt: 25 }, { hpt: 20 }, null, { hpt: 20 }];
     mappingWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 4 } }];
     utils.book_append_sheet(wb, mappingWs, "3. Role Mapping");
 
@@ -113,18 +114,28 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     
     uniqueStructuralRoles.forEach((role, idx) => {
         const rowInMapping = 5 + idx;
+        const rowInDashboard = 4 + idx;
         const personRef = `'3. Role Mapping'!C${rowInMapping}`;
+        
+        // Build dynamic SUM strings across all checklist sheets
+        const totalTasksFormula = "SUM(" + sheetNames.map(s => `COUNTIF('${s}'!$C:$C, $A${rowInDashboard})`).join(",") + ")";
+        const riskScoreFormula = "SUM(" + sheetNames.map(s => `SUMIF('${s}'!$C:$C, $A${rowInDashboard}, '${s}'!$G:$G)`).join(",") + ")";
+        
+        // Status Logic: 50% threshold check + Personnel count context
+        const totalSystemScore = `SUM($D$4:$D$${4 + uniqueStructuralRoles.length})`;
+        const statusFormula = `IF(D${rowInDashboard} > (${totalSystemScore} * 0.5), IF('3. Role Mapping'!$B$2 < 10, "STRUCTURAL CONCENTRATION (OWNER-LED)", "CRITICAL CONTROL CONCENTRATION DETECTED"), "STABLE")`;
+
         dashboardData.push([
             { v: role, s: dataCellStyle }, 
             { f: personRef, s: dataCellStyle },
-            { v: 0, s: dataCellStyle }, 
-            { v: 0, s: dataCellStyle }, 
-            { v: "STABLE", s: stableStyle }
+            { f: totalTasksFormula, s: dataCellStyle }, 
+            { f: riskScoreFormula, s: dataCellStyle }, 
+            { f: statusFormula, s: stableStyle } // We'll apply conditional styles in a real environment, for now default to stable style
         ]);
     });
     
     const dashboardWs = utils.aoa_to_sheet(dashboardData);
-    dashboardWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 15 }, { wch: 15 }, { wch: 25 }];
+    dashboardWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 15 }, { wch: 15 }, { wch: 45 }];
     dashboardWs['!rows'] = [{ hpt: 25 }, null, { hpt: 20 }];
     dashboardWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 4 } }];
     utils.book_append_sheet(wb, dashboardWs, "4. Load Dashboard");
@@ -144,7 +155,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             const controlType = task.riskLevel === 'High' ? 'Safety Critical' : (task.priority === 'High' ? 'Regulatory' : 'Operational');
             const points = controlType === 'Safety Critical' ? 3 : (controlType === 'Regulatory' ? 2 : 1);
             
-            // Bulletproof VLOOKUP formula without @
             const lookupFormula = (colIndex: number) => 
                 `IFERROR(IF(VLOOKUP(TRIM(CLEAN(C${rowNum})),'3. Role Mapping'!$A:$E,${colIndex},FALSE)=0,"Unassigned Responsibility",VLOOKUP(TRIM(CLEAN(C${rowNum})),'3. Role Mapping'!$A:$E,${colIndex},FALSE)),"Unassigned Responsibility")`;
 
@@ -152,15 +162,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: task.description, s: dataCellStyle }, 
                 { v: controlType, s: dataCellStyle },
                 { v: structuralRole, s: lockedColStyle },
-                { f: lookupFormula(3), s: dataCellStyle }, // Col C in Mapping
-                { f: lookupFormula(5), s: dataCellStyle }, // Col E in Mapping
+                { f: lookupFormula(3), s: dataCellStyle }, 
+                { f: lookupFormula(5), s: dataCellStyle },
                 { v: task.frequency || checklist.frequency, s: dataCellStyle },
                 { v: points, s: dataCellStyle }
             ]);
         });
         
         const ws = utils.aoa_to_sheet(wsData);
-        // Explicit Column Widths and Hiding column G (RiskPoints)
         ws['!cols'] = [
             { wch: 60 }, // A
             { wch: 20 }, // B
@@ -168,14 +177,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { wch: 30 }, // D
             { wch: 25 }, // E
             { wch: 15 }, // F
-            { hidden: true, wch: 0 }  // G - Genuinely hidden
+            { hidden: true, wch: 0 }  // G - Hidden risk score
         ];
-        // Explicit Row Heights to prevent "Blue Block" expansion
-        ws['!rows'] = [
-            { hpt: 25 }, // Row 1 (Title)
-            { hpt: 10 }, // Row 2 (Spacer)
-            { hpt: 20 }  // Row 3 (Headers)
-        ];
+        ws['!rows'] = [{ hpt: 25 }, { hpt: 10 }, { hpt: 20 }];
         ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 5 } }];
         utils.book_append_sheet(wb, ws, sName);
     });
