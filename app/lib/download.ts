@@ -126,7 +126,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             ]
         ];
         utils.sheet_add_aoa(ws, navData, { origin: "A1" });
-        // Style the nav bar
         for(let i=0; i<5; i++) {
             const cell = ws[utils.encode_cell({r:0, c:i})];
             if(cell) cell.s = linkStyle;
@@ -141,7 +140,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [], // Nav Space
         [],
         [{ v: "OPERATIONAL GOVERNANCE ARCHITECTURE", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `System Version 2.8 Stable Build`, s: { font: { sz: 10, italic: true }, alignment: { horizontal: 'center' } } }],
+        [{ v: `System Version 2.9 Multi-Unit Build`, s: { font: { sz: 10, italic: true }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: `Industry Sector: ${item.category}`, s: { alignment: { horizontal: 'center' } } }],
         [{ v: `Organization Entity: __________________________`, s: { alignment: { horizontal: 'center' } } }],
@@ -162,10 +161,15 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const mappingData = [
         [], // Nav
         [{ v: "SECTION A: PERSONNEL REGISTER (LIST ALL UNIQUE STAFF ONCE)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
-        [{ v: "Personnel Name", s: headerStyle }, { v: "ID / Employee Code", s: headerStyle }, { v: "Department", s: headerStyle }, { v: "Current Status", s: headerStyle }],
+        [{ v: "Personnel Name", s: headerStyle }, { v: "ID / Employee Code", s: headerStyle }, { v: "Department", s: headerStyle }, { v: "Assigned Unit / Location", s: headerStyle }, { v: "Current Status", s: headerStyle }],
     ];
-    // Add 15 blank lines for user to fill out their staff
-    for(let i=0; i<15; i++) mappingData.push([ {v:"", s: { ...dataCellStyle, fill: {fgColor:{rgb:"FFFFE0"}}}}, {v:"", s:dataCellStyle}, {v:"", s:dataCellStyle}, {v:"Active", s:centerCellStyle} ]);
+    for(let i=0; i<15; i++) mappingData.push([ 
+        {v:"", s: { ...dataCellStyle, fill: {fgColor:{rgb:"FFFFE0"}}}}, 
+        {v:"", s:dataCellStyle}, 
+        {v:"", s:dataCellStyle}, 
+        {v:"", s: { ...dataCellStyle, fill: {fgColor:{rgb:"E0F2F1"}}}},
+        {v:"Active", s:centerCellStyle} 
+    ]);
     
     mappingData.push([]);
     mappingData.push([{ v: "SECTION B: STRUCTURAL ROLE ALLOCATION", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }]);
@@ -180,7 +184,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     const mappingWs = utils.aoa_to_sheet(mappingData);
     addNavBar(mappingWs);
-    setColumnWidths(mappingWs, [35, 25, 25, 20]);
+    setColumnWidths(mappingWs, [30, 20, 20, 25, 15]);
     mappingWs['!rows'] = [{ hpt: 20 }, { hpt: 25 }, { hpt: 25 }];
     utils.book_append_sheet(wb, mappingWs, "2. Role Mapping");
 
@@ -207,41 +211,40 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     // --- 4. DASHBOARD (The Intelligence Console) ---
     const totalTasksFormula = `COUNTA('Master Task Register'!B:B)-1`;
-    const activeStaffFormula = `COUNTA('2. Role Mapping'!A3:A17)`;
-    const spofFormula = `IF(${activeStaffFormula}<10, "OWNER-LED CONCENTRATION", "INSTITUTIONAL STABLE")`;
+    const activeStaffFormula = `SUMPRODUCT(('2. Role Mapping'!A3:A17<>"")/COUNTIF('2. Role Mapping'!A3:A17,'2. Role Mapping'!A3:A17&""))-1`;
+    const spofFormula = `IF(${activeStaffFormula}<10, "CONCENTRATED (OWNER-LED)", "INSTITUTIONAL STABLE")`;
 
     const dashboardData = [
         [], // Nav
-        // KPI STRIP
-        [{ v: "TOTAL CONTROL POINTS", s: kpiTitleStyle }, { v: "ACTIVE PERSONNEL", s: kpiTitleStyle }, { v: "HIGHEST LOAD PERSON", s: kpiTitleStyle }, { v: "GOVERNANCE STATUS", s: kpiTitleStyle }],
+        [{ v: "TOTAL CONTROL POINTS", s: kpiTitleStyle }, { v: "UNIQUE PERSONNEL", s: kpiTitleStyle }, { v: "HIGHEST LOAD PERSON", s: kpiTitleStyle }, { v: "GOVERNANCE STATUS", s: kpiTitleStyle }],
         [{ f: totalTasksFormula, s: kpiBoxStyle }, { f: activeStaffFormula, s: kpiBoxStyle }, { v: "DETECTING...", s: { ...kpiBoxStyle, font: { sz: 10 } } }, { f: spofFormula, s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.GREEN }, sz: 10 } } }],
         [],
-        [{ v: "PERSPECTIVE 1: HUMAN RISK AGGREGATION (BY UNIQUE PERSON)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
-        [{ v: "Personnel Name", s: headerStyle }, { v: "Total Tasks Across All Roles", s: headerStyle }, { v: "Risk Load Score", s: headerStyle }, { v: "Safety Critical %", s: headerStyle }, { v: "Load Alert", s: headerStyle }],
+        [{ v: "PERSPECTIVE 1: HUMAN RISK AGGREGATION (BY UNIQUE PERSON & LOCATION)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
+        [{ v: "Personnel Name", s: headerStyle }, { v: "Primary Location / Unit", s: headerStyle }, { v: "Total Tasks Across Roles", s: headerStyle }, { v: "Risk Load Score", s: headerStyle }, { v: "Load Alert", s: headerStyle }],
     ];
 
-    // Person aggregation rows
     for(let i=0; i<15; i++) {
         const rowInMapping = 3 + i;
         const rowInDash = 7 + i;
         const nameRef = `'2. Role Mapping'!A${rowInMapping}`;
+        const locRef = `'2. Role Mapping'!D${rowInMapping}`;
         
         dashboardData.push([
             { f: nameRef, s: { ...dataCellStyle, font: { bold: true } } },
+            { f: locRef, s: centerCellStyle },
             { f: `IF(${nameRef}="", 0, COUNTIF('Master Task Register'!E:E, ${nameRef}))`, s: centerCellStyle },
             { f: `IF(${nameRef}="", 0, SUMIF('Master Task Register'!E:E, ${nameRef}, 'Master Task Register'!F:F))`, s: centerCellStyle },
-            { v: "0%", s: centerCellStyle },
-            { f: `IF(B${rowInDash}>20, "HIGH LOAD", "STABLE")`, s: centerCellStyle }
+            { f: `IF(C${rowInDash}>20, "HIGH LOAD", "STABLE")`, s: centerCellStyle }
         ]);
     }
 
     dashboardData.push([]);
-    dashboardData.push([{ v: "SPOF INTERPRETATION & INSIGHTS", s: { font: { bold: true } } }]);
-    dashboardData.push([{ v: "The 'Load Alert' identifies individuals holding a disproportionate number of control points. In multi-unit setups, this identifies potential burnout or single points of failure (SPOF) that require immediate delegation or backup assignment.", s: insightBoxStyle }]);
+    dashboardData.push([{ v: "MULTI-UNIT SPOF INTERPRETATION", s: { font: { bold: true } } }]);
+    dashboardData.push([{ v: "This dashboard identifies individuals holding a disproportionate number of control points across multiple units. In a multi-location model, this highlights potential burnout or single points of failure (SPOF) where critical knowledge is concentrated in one person rather than distributed throughout the unit's local management.", s: insightBoxStyle }]);
 
     const dashboardWs = utils.aoa_to_sheet(dashboardData);
     addNavBar(dashboardWs);
-    setColumnWidths(dashboardWs, [35, 25, 15, 15, 25]);
+    setColumnWidths(dashboardWs, [30, 25, 20, 15, 20]);
     dashboardWs['!rows'] = [{ hpt: 20 }, { hpt: 20 }, { hpt: 45 }, { hpt: 15 }];
     const insightRow = dashboardData.length - 1;
     dashboardWs['!merges'].push({ s: { r: insightRow, c: 0 }, e: { r: insightRow, c: 4 } });
@@ -257,7 +260,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             const points = task.riskLevel === 'High' ? 3 : (task.priority === 'High' ? 2 : 1);
             masterData.push([
                 task.id, task.description, task.riskLevel === 'High' ? 'Safety Critical' : 'Operational',
-                role, { f: `VLOOKUP(D${masterData.length + 1}, '2. Role Mapping'!A:B, 2, FALSE)` }, points
+                role, { f: `IFERROR(VLOOKUP(D${masterData.length + 1}, '2. Role Mapping'!G:H, 2, FALSE), "Unassigned")` }, points
             ]);
         });
     });
@@ -278,13 +281,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ];
 
         checklist.tasks.forEach((task, tIdx) => {
-            const rowNum = tIdx + 5;
             const roleKey = (task.role || checklist.role).trim();
             wsData.push([
                 { v: task.description, s: { ...dataCellStyle, wrapText: true } },
                 { v: task.riskLevel === 'High' ? 'Safety Critical' : 'Operational', s: centerCellStyle },
-                { f: `VLOOKUP("${roleKey}", '2. Role Mapping'!A:B, 2, FALSE)`, s: { ...dataCellStyle, fill: { fgColor: { rgb: COLORS.BG_LIGHT } } } },
-                { f: `VLOOKUP("${roleKey}", '2. Role Mapping'!A:C, 3, FALSE)`, s: dataCellStyle },
+                { f: `IFERROR(VLOOKUP("${roleKey}", '2. Role Mapping'!G:H, 2, FALSE), "Unassigned")`, s: { ...dataCellStyle, fill: { fgColor: { rgb: COLORS.BG_LIGHT } } } },
+                { f: `IFERROR(VLOOKUP("${roleKey}", '2. Role Mapping'!G:I, 3, FALSE), "None")`, s: dataCellStyle },
                 { v: task.frequency || checklist.frequency, s: centerCellStyle },
                 { v: task.proof || "Not Specified", s: dataCellStyle }
             ]);
@@ -299,7 +301,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         utils.book_append_sheet(wb, ws, sName);
     });
 
-    const fileName = packTitle.replace(/[^a-z0-9]/gi, '_') + '_Architecture_v2.8.xlsx';
+    const fileName = packTitle.replace(/[^a-z0-9]/gi, '_') + '_Governance_v2.9.xlsx';
     writeFile(wb, fileName);
 }
 
