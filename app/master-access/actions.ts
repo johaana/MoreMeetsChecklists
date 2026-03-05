@@ -1,4 +1,3 @@
-
 "use server";
 
 import { z } from "zod";
@@ -12,7 +11,7 @@ export async function verifyPassword(input: { password: string }): Promise<{ suc
     const validatedInput = PasswordSchema.parse(input);
     const { password } = validatedInput;
 
-    const adminPassword = process.env.ADMIN_PASSWORD || "moremeets_admin_2024";
+    const adminPassword = process.env.ADMIN_PASSWORD || "Johaana@2319";
 
     if (password === adminPassword) {
       return { success: true };
