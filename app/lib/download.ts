@@ -135,12 +135,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ws['!showGridlines'] = false;
     };
 
-    // --- 1. COVER PAGE (Institutional Multi-Location) ---
+    // --- 1. COVER PAGE (Deployment Certificate) ---
     const coverData = [
         [], // Nav Space
         [],
         [{ v: "OPERATIONAL GOVERNANCE ARCHITECTURE", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `System Version 2.9 Multi-Unit Build`, s: { font: { sz: 10, italic: true }, alignment: { horizontal: 'center' } } }],
+        [{ v: `System Version 2.10 Partner Build`, s: { font: { sz: 10, italic: true }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: `Industry Sector: ${item.category}`, s: { alignment: { horizontal: 'center' } } }],
         [{ v: `Organization Entity: __________________________`, s: { alignment: { horizontal: 'center' } } }],
@@ -156,6 +156,29 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     coverWs['!cols'] = [{ wch: 90 }];
     coverWs['!rows'] = [{ hpt: 20 }, null, { hpt: 40 }];
     utils.book_append_sheet(wb, coverWs, "1. Cover Page");
+
+    // --- SUCCESS PARTNER INSTRUCTIONS ---
+    const introData = [
+        [], // Nav
+        [{ v: "Hey there! Let's get your operations audit-ready.", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
+        [{ v: "Follow these 3 steps to turn tribal knowledge into permanent infrastructure.", s: { font: { italic: true } } }],
+        [],
+        [{ v: "STEP 1: Set up your team", s: { font: { bold: true } } }],
+        [{ v: "Head to the '2. Role Mapping' tab. In Section A, list your unique staff members once. If you manage multiple units, use the 'Location' column to tag them (e.g., 'Downtown Branch' or 'Cluster GM').", s: { alignment: { wrapText: true } } }],
+        [],
+        [{ v: "STEP 2: Assign heroes and backups", s: { font: { bold: true } } }],
+        [{ v: "In Section B of the same tab, map your team to the structural roles. Choose a 'Primary' person and a 'Backup'. Our system will instantly push these names into every single checklist module.", s: { alignment: { wrapText: true } } }],
+        [],
+        [{ v: "STEP 3: The only rule - update the date", s: { font: { bold: true } } }],
+        [{ v: "When a task is done, simply drop the date in Column J of any checklist. That's it. If it turns GREEN, you're safe. If it turns RED, it's time for an executive check-in.", s: { alignment: { wrapText: true } } }],
+        [],
+        [{ v: "Operational Workflow Tip for CEOs & COOs", s: { font: { bold: true, color: { rgb: COLORS.GREEN } } } }],
+        [{ v: "You don't need to do this everyday. You manage the 'Dashboard'. Delegate specific checklists (e.g., 'Kitchen_Op') to your managers. You can even 'Protect' the Dashboard sheet with a password in Excel to keep sensitive resource data private.", s: { alignment: { wrapText: true } } }],
+    ];
+    const introWs = utils.aoa_to_sheet(introData);
+    addNavBar(introWs);
+    introWs['!cols'] = [{ wch: 100 }];
+    utils.book_append_sheet(wb, introWs, "Quick Start Guide");
 
     // --- 2. ROLE MAPPING & STAFF REGISTER ---
     const mappingData = [
@@ -216,7 +239,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     const dashboardData = [
         [], // Nav
-        [{ v: "TOTAL CONTROL POINTS", s: kpiTitleStyle }, { v: "UNIQUE PERSONNEL", s: kpiTitleStyle }, { v: "HIGHEST LOAD PERSON", s: kpiTitleStyle }, { v: "GOVERNANCE STATUS", s: kpiTitleStyle }],
+        [{ v: "TOTAL CONTROL POINTS", s: kpiTitleStyle }, { v: "ACTIVE PERSONNEL", s: kpiTitleStyle }, { v: "HIGHEST LOAD PERSON", s: kpiTitleStyle }, { v: "GOVERNANCE STATUS", s: kpiTitleStyle }],
         [{ f: totalTasksFormula, s: kpiBoxStyle }, { f: activeStaffFormula, s: kpiBoxStyle }, { v: "DETECTING...", s: { ...kpiBoxStyle, font: { sz: 10 } } }, { f: spofFormula, s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.GREEN }, sz: 10 } } }],
         [],
         [{ v: "PERSPECTIVE 1: HUMAN RISK AGGREGATION (BY UNIQUE PERSON & LOCATION)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
@@ -301,7 +324,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         utils.book_append_sheet(wb, ws, sName);
     });
 
-    const fileName = packTitle.replace(/[^a-z0-9]/gi, '_') + '_Governance_v2.9.xlsx';
+    const fileName = packTitle.replace(/[^a-z0-9]/gi, '_') + '_Governance_v2.10.xlsx';
     writeFile(wb, fileName);
 }
 
