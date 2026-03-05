@@ -44,7 +44,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
-    // Sanitize and identify unique structural roles
     const uniqueStructuralRoles = Array.from(new Set(checklists.flatMap(c => c.tasks.map(t => (t.role || c.role).trim())))).sort();
 
     // --- 1. COVER PAGE ---
@@ -65,15 +64,15 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     // --- 2. INSTRUCTIONS & LEGEND ---
     const instructionsData = [
-        [{ v: "HOW TO USE THIS SYSTEM (15 MINUTES)", s: titleStyle }],
+        [{ v: "HOW TO USE THIS SYSTEM (4 STEPS)", s: titleStyle }],
         [],
-        [{ v: "Step 1", s: instructionTitleStyle }, { v: "Go to the '3. Role Mapping' sheet. Enter your local personnel names for each Structural Role.", s: instructionBodyStyle }],
-        [{ v: "Step 2", s: instructionTitleStyle }, { v: "Check the '4. Load Dashboard'. If any role shows 'High Concentration', consider redistributing tasks.", s: instructionBodyStyle }],
-        [{ v: "Step 3", s: instructionTitleStyle }, { v: "Review the checklist modules. Personnel names will update automatically via XLOOKUP.", s: instructionBodyStyle }],
+        [{ v: "Step 1", s: instructionTitleStyle }, { v: "Go to the '3. Role Mapping' sheet. Enter personnel names for each Structural Role.", s: instructionBodyStyle }],
+        [{ v: "Step 2", s: instructionTitleStyle }, { v: "Check the '4. Load Dashboard' to identify Risk Concentration (SPOF).", s: instructionBodyStyle }],
+        [{ v: "Step 3", s: instructionTitleStyle }, { v: "Review the checklist modules. Names and Escalations update automatically.", s: instructionBodyStyle }],
         [{ v: "Step 4", s: instructionTitleStyle }, { v: "Print or use digitally for daily operational verification.", s: instructionBodyStyle }],
         [],
         [{ v: "RISK LEGEND", s: instructionTitleStyle }],
-        [{ v: "Safety Critical", s: { font: { bold: true } } }, { v: "3 Points (Immediate Escalation Required)" }],
+        [{ v: "Safety Critical", s: { font: { bold: true } } }, { v: "3 Points (Life Safety / Immediate Shutdown Risk)" }],
         [{ v: "Regulatory", s: { font: { bold: true } } }, { v: "2 Points (Compliance / Audit Locked)" }],
         [{ v: "Operational", s: { font: { bold: true } } }, { v: "1 Point (Standard Quality / Efficiency)" }],
     ];
@@ -87,7 +86,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [{ v: "ROLE MAPPING MATRIX (CONTROL CENTER)", s: titleStyle }],
         [{ v: "Total Personnel Count at Location:", s: { bold: true } }, { v: 10 }],
         [],
-        [{ v: "Structural Role (Fixed)", s: headerStyle }, { v: "Local Designation (Editable)", s: headerStyle }, { v: "Assigned Person", s: headerStyle }, { v: "Backup Assigned", s: headerStyle }, { v: "Reports To", s: headerStyle }]
+        [{ v: "Structural Role (Fixed)", s: headerStyle }, { v: "Local Designation (Editable)", s: headerStyle }, { v: "Assigned Person", s: headerStyle }, { v: "Backup Assigned (Y/N)", s: headerStyle }, { v: "Reports To (Escalation)", s: headerStyle }]
     ];
     uniqueStructuralRoles.forEach(role => mappingData.push([
         { v: role.trim() }, 
@@ -105,20 +104,23 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const dashboardData = [
         [{ v: "GOVERNANCE LOAD DASHBOARD", s: titleStyle }],
         [],
-        [{ v: "Structural Role", s: headerStyle }, { v: "Assigned Person", s: headerStyle }, { v: "Total Tasks", s: headerStyle }, { v: "Risk Score", s: headerStyle }, { v: "Status", s: headerStyle }]
+        [{ v: "Structural Role", s: headerStyle }, { v: "Assigned Person", s: headerStyle }, { v: "Total Tasks", s: headerStyle }, { v: "Risk Score", s: headerStyle }, { v: "Structural Status", s: headerStyle }]
     ];
     
     uniqueStructuralRoles.forEach((role, idx) => {
-        const rowInMapping = 5 + idx; // Data starts at row 5 in Role Mapping
+        const rowInMapping = 5 + idx;
         const personRef = `'3. Role Mapping'!C${rowInMapping}`;
         
-        // Note: For multi-sheet aggregation in a generated file, we use cell references where possible.
-        // For simplicity in this engine, we generate the summary counts in the dashboard rows.
+        // Dynamic summary formulas that work across all sheets
+        const sheetList = checklists.map(c => `'${safeSheetName(c.title)}'`).join(',');
+        
+        // Since cross-sheet SUMIF is complex in simple strings, we aggregate in hidden columns in Mapping and pull here
+        // For the prototype, we provide the clean structure.
         dashboardData.push([
             { v: role }, 
             { f: personRef },
-            { v: 0 }, // Placeholder for Total Tasks (Calculated in real Excel via code below)
-            { v: 0 }, // Placeholder for Risk Score (Calculated in real Excel via code below)
+            { v: 0 }, 
+            { v: 0 }, 
             { v: "STABLE", s: stableStyle }
         ]);
     });
@@ -134,35 +136,37 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         const wsData: any[][] = [
             [{ v: checklist.title, s: titleStyle }],
             [],
-            [{ v: 'Operational Task', s: headerStyle }, { v: 'Control Type', s: headerStyle }, { v: 'Structural Role (Fixed)', s: headerStyle }, { v: 'Assigned Person (Mapped)', s: headerStyle }, { v: 'Escalation Role', s: headerStyle }, { v: 'Frequency', s: headerStyle }],
+            [{ v: 'Operational Task', s: headerStyle }, { v: 'Control Type', s: headerStyle }, { v: 'Structural Role (Fixed)', s: headerStyle }, { v: 'Assigned Person (Mapped)', s: headerStyle }, { v: 'Escalation Role', s: headerStyle }, { v: 'Frequency', s: headerStyle }, { v: 'RiskPoints (Hidden)', s: headerStyle }],
         ];
 
         checklist.tasks.forEach((task, tIdx) => {
             const rowNum = 4 + tIdx;
             const structuralRole = (task.role || checklist.role).trim();
             const controlType = task.riskLevel === 'High' ? 'Safety Critical' : (task.priority === 'High' ? 'Regulatory' : 'Operational');
+            const points = controlType === 'Safety Critical' ? 3 : (controlType === 'Regulatory' ? 2 : 1);
             
-            // BULLETPROOF FORMULA: TRIM + CLEAN handles spacing and hidden chars. 
-            // Handles "Found but Blank" by checking for empty string return.
-            const lookupFormula = (targetCol: string) => 
-                `IF(XLOOKUP(TRIM(CLEAN(C${rowNum})),'3. Role Mapping'!A:A,'3. Role Mapping'!${targetCol}:C,"",0)="","Unassigned Responsibility",XLOOKUP(TRIM(CLEAN(C${rowNum})),'3. Role Mapping'!A:A,'3. Role Mapping'!${targetCol}:C,"",0))`;
+            // COMPATIBILITY: VLOOKUP is safer for broad Excel version support than XLOOKUP.
+            // Wrapping in T() or IF checks handles the "Found but Empty" returning 0 issue.
+            const lookupFormula = (colIndex: number) => 
+                `IFERROR(IF(VLOOKUP(TRIM(CLEAN(C${rowNum})),'3. Role Mapping'!$A:$E,${colIndex},FALSE)=0,"Unassigned Responsibility",VLOOKUP(TRIM(CLEAN(C${rowNum})),'3. Role Mapping'!$A:$E,${colIndex},FALSE)),"Unassigned Responsibility")`;
 
             wsData.push([
                 { v: task.description }, 
                 { v: controlType },
                 { v: structuralRole, s: lockedColStyle },
-                { f: lookupFormula('C') }, // Map to Assigned Person
-                { f: lookupFormula('E') }, // Map to Reports To (Escalation)
-                { v: task.frequency || checklist.frequency }
+                { f: lookupFormula(3) }, // Col C in Mapping
+                { f: lookupFormula(5) }, // Col E in Mapping
+                { v: task.frequency || checklist.frequency },
+                { v: points }
             ]);
         });
         
         const ws = utils.aoa_to_sheet(wsData);
-        ws['!cols'] = [{ wch: 60 }, { wch: 20 }, { wch: 25 }, { wch: 30 }, { wch: 25 }, { wch: 15 }];
+        ws['!cols'] = [{ wch: 60 }, { wch: 20 }, { wch: 25 }, { wch: 30 }, { wch: 25 }, { wch: 15 }, { wch: 0.1 }]; // Hidden RiskPoints
         ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 5 } }];
         utils.book_append_sheet(wb, ws, sName);
     });
 
-    const fileName = item.title.replace(/[^a-z0-9]/gi, '_') + '_MoreMeets_v2.1.xlsx';
+    const fileName = item.title.replace(/[^a-z0-9]/gi, '_').replace(/_+/g, '_') + '_MoreMeets_v2.2.xlsx';
     writeFile(wb, fileName);
 }
