@@ -29,7 +29,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         AMBER: "F4B400",
         RED: "C62828",
         BAR_BLUE: "2F75B5",
-        BORDER: "D1D5DB"
+        BORDER: "D1D5DB",
+        INPUT_YELLOW: "FFFFE0"
     };
 
     // --- REFINED STYLES ---
@@ -79,6 +80,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const centerCellStyle = {
         ...dataCellStyle,
         alignment: { vertical: 'center', horizontal: 'center' }
+    };
+
+    const setColumnWidths = (ws: WorkSheet, widths: number[]) => {
+        ws['!cols'] = widths.map(wch => ({ wch }));
     };
 
     let checklists: PackChecklist[] = [];
@@ -150,7 +155,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [{ v: "Follow these 3 steps to transform tribal knowledge into permanent infrastructure.", s: { font: { italic: true } } }],
         [],
         [{ v: "STEP 1: Register Your Personnel (The 'Who')", s: { font: { bold: true } } }],
-        [{ v: "Head to the '2. Configuration & Mapping' tab. List your team members (e.g., Chef Rahul, Sarah). Add their Location/Unit if you manage multiple sites.", s: { alignment: { wrapText: true } } }],
+        [{ v: "Head to the '2. Configuration & Mapping' tab. List your team members (e.g., Chef Rahul, Sarah). Add their Location/Unit if you manage multiple sites. If someone like 'Sarah' manages 3 units, tag her scope accordingly.", s: { alignment: { wrapText: true } } }],
         [],
         [{ v: "STEP 2: Set Your Scope (The 'What')", s: { font: { bold: true } } }],
         [{ v: "Don't have a pool or a bar? No problem. In Section B of the mapping sheet, set non-applicable modules to 'N/A'. The Dashboard will instantly adjust your stats.", s: { alignment: { wrapText: true } } }],
@@ -159,10 +164,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [{ v: "Map your humans to the structural roles. If a role is empty, the system will flag a 'VACANT' alert in the checklists and dashboard.", s: { alignment: { wrapText: true } } }],
         [],
         [{ v: "Need Setup Assistance?", s: { font: { bold: true, color: { rgb: COLORS.SUB_NAVY } } } }],
-        [{ v: "Your purchase includes a 30-minute 'Command Console' strategy session. We'll help you map your roles and set up your portfolio dashboard.", s: { alignment: { wrapText: true } } }],
+        [{ v: "Your purchase includes a 30-minute 'Command Console' setup call. We'll help you map your roles, set up your alerts, and configure the dashboard.", s: { alignment: { wrapText: true } } }],
         [{ v: "BOOK YOUR SESSION: [ CALENDLY LINK PLACEHOLDER ]", l: { Target: "https://calendly.com" }, s: { font: { bold: true, color: { rgb: COLORS.GREEN }, underline: true } } }],
         [],
-        [{ v: "Privacy Tip: Use 'Review > Protect Sheet' to lock the Dashboard and Mapping tabs so staff can only edit their specific checklists.", s: { font: { italic: true, color: { rgb: "808080" } } } }],
+        [{ v: "Mobile Tip: Double-tap date cells in the Excel app to trigger the calendar picker. Use 'Review > Protect Sheet' to lock the Dashboard from staff.", s: { font: { italic: true, color: { rgb: "808080" }, sz: 9 } } }],
     ];
     const introWs = utils.aoa_to_sheet(introData);
     addNavBar(introWs);
@@ -170,12 +175,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     utils.book_append_sheet(wb, introWs, "Quick Start Guide");
 
     // --- 2. CONFIGURATION & MAPPING ---
-    const mappingData = [
+    const mappingData: any[][] = [
         [], // Nav
         [{ v: "SECTION A: PERSONNEL REGISTER (DEFINE UNIQUE STAFF)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
         [{ v: "Personnel Name", s: headerStyle }, { v: "Internal Designation", s: headerStyle }, { v: "Primary Unit/Location", s: headerStyle }, { v: "Management Scope", s: headerStyle }, { v: "Status", s: headerStyle }],
     ];
-    for(let i=0; i<15; i++) mappingData.push([ {v:"", s: { ...dataCellStyle, fill: {fgColor:{rgb:"FFFFE0"}}}}, {v:"", s:dataCellStyle}, {v:"", s:dataCellStyle}, {v:"Single Unit", s:dataCellStyle}, {v:"Active", s:centerCellStyle} ]);
+    // Add some empty rows for personnel
+    for(let i=0; i<15; i++) mappingData.push([ {v:"", s: { ...dataCellStyle, fill: {fgColor:{rgb:COLORS.INPUT_YELLOW}}}}, {v:"", s:dataCellStyle}, {v:"", s:dataCellStyle}, {v:"Single Unit", s:dataCellStyle}, {v:"Active", s:centerCellStyle} ]);
     
     mappingData.push([]);
     mappingData.push([{ v: "SECTION B: MODULE SCOPE CONTROL (ON/OFF)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }]);
@@ -185,20 +191,24 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     mappingData.push([]);
     mappingData.push([{ v: "SECTION C: ROLE ALLOCATION (ASSIGNMENT)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }]);
     mappingData.push([{ v: "Structural Role", s: headerStyle }, { v: "Primary Human Assigned", s: headerStyle }, { v: "Backup Personnel", s: headerStyle }, { v: "Assignment Alert", s: headerStyle }]);
-    uniqueStructuralRoles.forEach(role => mappingData.push([
-        { v: role.trim(), s: { ...dataCellStyle, font: { bold: true } } }, 
-        { v: "", s: { ...dataCellStyle, fill: { fgColor: { rgb: "FFFFE0" } } } }, 
-        { v: "", s: { ...dataCellStyle, fill: { fgColor: { rgb: "E0F2F1" } } } },
-        { f: `IF(OR(B${mappingData.length+1}="", B${mappingData.length+1}="VACANT"), "RE-ASSIGN REQUIRED", "LOCKED")`, s: centerCellStyle }
-    ]));
+    
+    uniqueStructuralRoles.forEach((role, idx) => {
+        const rowIdx = mappingData.length + 1;
+        mappingData.push([
+            { v: role.trim(), s: { ...dataCellStyle, font: { bold: true } } }, 
+            { v: "", s: { ...dataCellStyle, fill: { fgColor: { rgb: COLORS.INPUT_YELLOW } } } }, 
+            { v: "", s: { ...dataCellStyle, fill: { fgColor: { rgb: "E0F2F1" } } } },
+            { f: `IF(OR(B${rowIdx}="", B${rowIdx}="VACANT"), "RE-ASSIGN REQUIRED", "LOCKED")`, s: { ...centerCellStyle, font: { bold: true } } }
+        ]);
+    });
 
     const mappingWs = utils.aoa_to_sheet(mappingData);
     addNavBar(mappingWs);
-    setColumnWidths(mappingWs, [30, 25, 25, 20, 15]);
+    setColumnWidths(mappingWs, [35, 25, 25, 25, 15]);
     utils.book_append_sheet(wb, mappingWs, "2. Configuration & Mapping");
 
     // --- 3. MODULE INDEX ---
-    const indexData = [
+    const indexData: any[][] = [
         [], // Nav
         [{ v: "OPERATIONAL MODULE DIRECTORY", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
         [],
@@ -206,7 +216,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     checklists.forEach((c, idx) => {
         const sName = safeSheetName(c.title);
-        const scopeRef = `'2. Configuration & Mapping'!B${21+idx}`;
+        // Point to the Scope toggle in Sheet 2. Section B starts after Section A (15 rows) + headers + spacing.
+        const scopeRow = 21 + idx; 
+        const scopeRef = `'2. Configuration & Mapping'!B${scopeRow}`;
         indexData.push([
             { v: c.title, l: { Target: `#'${sName}'!A1` }, s: { ...dataCellStyle, font: { color: { rgb: "0000FF" }, underline: true, bold: true } } },
             { v: c.department, s: centerCellStyle },
@@ -220,61 +232,84 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     utils.book_append_sheet(wb, indexWs, "3. Module Index");
 
     // --- 4. DASHBOARD (The Intelligence Console) ---
-    const dashboardData = [
+    const dashboardData: any[][] = [
         [], // Nav
         [{ v: "TOTAL CONTROL POINTS", s: kpiTitleStyle }, { v: "ACTIVE PERSONNEL", s: kpiTitleStyle }, { v: "HIGHEST LOAD PERSON", s: kpiTitleStyle }, { v: "UNIT GOVERNANCE STATUS", s: kpiTitleStyle }],
-        [{ f: `COUNTA('Master Task Register'!B:B)-1`, s: kpiBoxStyle }, { f: `COUNTIF('2. Configuration & Mapping'!A3:A17, "*?")`, s: kpiBoxStyle }, { f: `IFERROR(INDEX('2. Configuration & Mapping'!A3:A17, MATCH(MAX(C7:C21), C7:C21, 0)), "N/A")`, s: { ...kpiBoxStyle, font: { sz: 10 } } }, { v: "STABLE", s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.GREEN }, sz: 10 } } }],
+        [
+            { f: `COUNTA('Master Task Register'!B:B)-1`, s: kpiBoxStyle }, 
+            { f: `COUNTIF('2. Configuration & Mapping'!A3:A17, "*?")`, s: kpiBoxStyle }, 
+            { f: `IFERROR(INDEX('2. Configuration & Mapping'!A3:A17, MATCH(MAX(C7:C21), C7:C21, 0)), "UNASSIGNED")`, s: { ...kpiBoxStyle, font: { sz: 10 } } }, 
+            { v: "STABLE", s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.GREEN }, sz: 10 } } }
+        ],
         [],
-        [{ v: "SECTION A: HUMAN RESOURCE RISK & BURNOUT ALERT", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
-        [{ v: "Personnel Name", s: headerStyle }, { v: "Assigned Unit", s: headerStyle }, { v: "Total Task Load", s: headerStyle }, { v: "Portfolio Reach", s: headerStyle }, { v: "Load Intensity", s: headerStyle }],
+        [{ v: "SECTION A: HUMAN RESOURCE RISK & LOAD ALERT", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
+        [{ v: "Personnel Name", s: headerStyle }, { v: "Assigned Unit / Scope", s: headerStyle }, { v: "Total Task Load", s: headerStyle }, { v: "Risk Intensity", s: headerStyle }, { v: "Load Alert", s: headerStyle }],
     ];
 
-    for(let i=0; i<10; i++) {
-        const rowInMapping = 3 + i;
-        const nameRef = `'2. Configuration & Mapping'!A${rowInMapping}`;
-        const locRef = `'2. Configuration & Mapping'!C${rowInMapping}`;
+    // Map through the personnel register
+    for(let i=0; i<15; i++) {
+        const mappingRow = 3 + i;
+        const nameRef = `'2. Configuration & Mapping'!A${mappingRow}`;
+        const scopeRef = `'2. Configuration & Mapping'!D${mappingRow}`;
+        const loadRow = 7 + i;
         dashboardData.push([
             { f: nameRef, s: dataCellStyle },
-            { f: locRef, s: centerCellStyle },
+            { f: scopeRef, s: centerCellStyle },
             { f: `IF(${nameRef}="", 0, COUNTIF('Master Task Register'!E:E, ${nameRef}))`, s: centerCellStyle },
-            { f: `IF(${nameRef}="", 0, 1)`, s: centerCellStyle },
-            { f: `IF(C${7+i}>40, "CRITICAL", IF(C${7+i}>20, "HIGH", "STABLE"))`, s: centerCellStyle }
+            { v: "||||||||||||||||||", s: { font: { color: {rgb: COLORS.BAR_BLUE}, name: 'Consolas' } }},
+            { f: `IF(C${loadRow}>40, "CRITICAL", IF(C${loadRow}>20, "HIGH", "STABLE"))`, s: centerCellStyle }
         ]);
     }
 
     dashboardData.push([], [{ v: "SECTION B: PORTFOLIO BENCHMARKING (MULTI-UNIT VIEW)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }]);
-    dashboardData.push([{ v: "Comparison Entity", s: headerStyle }, { v: "Compliance Score", s: headerStyle }, { v: "Visual Benchmark", s: headerStyle }, { v: "Gap vs. Best", s: headerStyle }]);
+    dashboardData.push([{ v: "Comparison Entity", s: headerStyle }, { v: "Compliance Score", s: headerStyle }, { v: "Visual Performance", s: headerStyle }, { v: "Gap vs. Best", s: headerStyle }]);
     dashboardData.push([ {v: "Current Unit", s: dataCellStyle}, {v: "88%", s: centerCellStyle}, {v: "||||||||||||||||||", s: { font: { color: {rgb: COLORS.BAR_BLUE}, name: 'Consolas' } }}, {v: "-4%", s: centerCellStyle} ]);
     dashboardData.push([ {v: "Regional Average", s: dataCellStyle}, {v: "82%", s: centerCellStyle}, {v: "|||||||||||||||", s: { font: { color: {rgb: COLORS.GRAY_TEXT}, name: 'Consolas' } }}, {v: "-10%", s: centerCellStyle} ]);
     dashboardData.push([ {v: "Top Performing Unit", s: dataCellStyle}, {v: "92%", s: centerCellStyle}, {v: "||||||||||||||||||||", s: { font: { color: {rgb: COLORS.GREEN}, name: 'Consolas' } }}, {v: "0%", s: centerCellStyle} ]);
 
     const dashboardWs = utils.aoa_to_sheet(dashboardData);
     addNavBar(dashboardWs);
-    setColumnWidths(dashboardWs, [30, 25, 15, 15, 20]);
+    setColumnWidths(dashboardWs, [30, 30, 15, 20, 15]);
     utils.book_append_sheet(wb, dashboardWs, "4. Dashboard");
 
     // --- MASTER TASK REGISTER & CHECKLISTS ---
     const masterData: any[][] = [["Task ID", "Operational Task", "Control Type", "Structural Role", "Assigned Person", "Scope Status"]];
     checklists.forEach((checklist, cIdx) => {
         const sName = safeSheetName(checklist.title);
-        const scopeRef = `'2. Configuration & Mapping'!B${21+cIdx}`;
+        const scopeRow = 21 + cIdx;
+        const scopeRef = `'2. Configuration & Mapping'!B${scopeRow}`;
         
         const wsData: any[][] = [[], [{ v: checklist.title.toUpperCase(), s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center' } } }], [], ["Task Description", "Primary Assigned", "Backup Personnel", "Frequency", "Proof Required", "Date Completed", "Status"]];
 
         checklist.tasks.forEach((task, tIdx) => {
             const roleKey = (task.role || checklist.role).trim();
-            const rowInMap = 21 + uniqueStructuralRoles.indexOf(roleKey); // Placeholder logic for finding role row
+            // Section C in Mapping sheet starts after Section A (15) + Section B (checklists.length) + headers/spacers.
+            const sectionCStart = 21 + checklists.length + 3;
+            const roleIdx = uniqueStructuralRoles.indexOf(roleKey);
+            const lookupRow = sectionCStart + roleIdx;
             
-            masterData.push([task.id, task.description, "Safety", roleKey, { f: `IFERROR(VLOOKUP("${roleKey}", '2. Configuration & Mapping'!G:I, 2, FALSE), "VACANT")` }, { f: scopeRef }]);
+            // Formula to pull from Section C of Mapping sheet
+            const primaryLookup = `IFERROR(VLOOKUP("${roleKey}", '2. Configuration & Mapping'!G:I, 2, FALSE), "VACANT")`;
+            const backupLookup = `IFERROR(VLOOKUP("${roleKey}", '2. Configuration & Mapping'!G:I, 3, FALSE), "NONE")`;
+
+            masterData.push([
+                task.id, 
+                task.description, 
+                "Standard", 
+                roleKey, 
+                { f: `'2. Configuration & Mapping'!B${lookupRow}` }, 
+                { f: scopeRef }
+            ]);
             
+            const rowInSheet = 5 + tIdx;
             wsData.push([
                 { v: task.description, s: { ...dataCellStyle, wrapText: true } },
-                { f: `IFERROR(VLOOKUP("${roleKey}", '2. Configuration & Mapping'!G:I, 2, FALSE), "VACANT")`, s: centerCellStyle },
-                { f: `IFERROR(VLOOKUP("${roleKey}", '2. Configuration & Mapping'!G:I, 3, FALSE), "NONE")`, s: centerCellStyle },
+                { f: `'2. Configuration & Mapping'!B${lookupRow}`, s: { ...centerCellStyle, font: { bold: true } } },
+                { f: `'2. Configuration & Mapping'!C${lookupRow}`, s: centerCellStyle },
                 { v: task.frequency || checklist.frequency, s: centerCellStyle },
-                { v: task.proof || "Not Specified", s: dataCellStyle },
-                { v: null, s: { ...dataCellStyle, fill: { fgColor: { rgb: "FFFFE0" } } } },
-                { f: `IF(ISBLANK(F${5+tIdx}), "Pending", "Completed")`, s: centerCellStyle }
+                { v: task.proof || "Observation", s: dataCellStyle },
+                { v: null, s: { ...dataCellStyle, fill: { fgColor: { rgb: COLORS.INPUT_YELLOW } } } },
+                { f: `IF(ISBLANK(F${rowInSheet}), "Pending", "Completed")`, s: centerCellStyle }
             ]);
         });
 
