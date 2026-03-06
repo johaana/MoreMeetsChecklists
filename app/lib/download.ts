@@ -40,14 +40,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         right: { style: 'thin', color: { rgb: COLORS.BORDER } }
     };
 
-    const navStyle = {
-        font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 },
-        fill: { fgColor: { rgb: COLORS.PRIMARY_NAVY } },
-        alignment: { vertical: 'center', horizontal: 'center' }
-    };
-
     const linkStyle = {
-        font: { color: { rgb: COLORS.WHITE }, underline: true, sz: 9, bold: true },
+        font: { color: { rgb: COLORS.WHITE }, underline: true, sz: 10, bold: true },
         fill: { fgColor: { rgb: COLORS.PRIMARY_NAVY } },
         alignment: { vertical: 'center', horizontal: 'center' }
     };
@@ -131,16 +125,15 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             if(cell) cell.s = linkStyle;
         }
         ws['!merges'] = ws['!merges'] || [];
-        ws['!views'] = [{ state: 'frozen', ySplit: 1 }];
-        ws['!showGridlines'] = false;
+        ws['!views'] = [{ state: 'frozen', ySplit: 1, showGridLines: false }];
     };
 
     // --- 1. COVER PAGE (Deployment Certificate) ---
     const coverData = [
         [], // Nav Space
         [],
-        [{ v: "OPERATIONAL GOVERNANCE ARCHITECTURE", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `System Version 2.11 Enterprise Build`, s: { font: { sz: 10, italic: true }, alignment: { horizontal: 'center' } } }],
+        [{ v: "OPERATIONAL GOVERNANCE ARCHITECTURE", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
+        [{ v: `System Version 2.11 Enterprise Build`, s: { font: { sz: 10, italic: true }, alignment: { horizontal: 'center', vertical: 'center' } } }],
         [],
         [{ v: `Industry Sector: ${item.category}`, s: { alignment: { horizontal: 'center' } } }],
         [{ v: `Organization Entity: __________________________`, s: { alignment: { horizontal: 'center' } } }],
@@ -153,8 +146,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
-    coverWs['!cols'] = [{ wch: 90 }];
-    coverWs['!rows'] = [{ hpt: 20 }, null, { hpt: 40 }];
+    coverWs['!cols'] = [{ wch: 100 }];
+    coverWs['!rows'] = [{ hpt: 30 }, null, { hpt: 45 }];
     utils.book_append_sheet(wb, coverWs, "1. Cover Page");
 
     // --- SUCCESS PARTNER INSTRUCTIONS ---
@@ -163,33 +156,30 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [{ v: "Hey there! Let's get your operations audit-ready.", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
         [{ v: "Follow these steps to turn tribal knowledge into permanent infrastructure.", s: { font: { italic: true } } }],
         [],
-        [{ v: "STEP 1: Setup Your Team", s: { font: { bold: true } } }],
-        [{ v: "Head to the '2. Role Mapping' tab. In Section A, list your staff members once (e.g., 'Chef Rahul', 'Sarah'). This prevents typos and keeps your dashboard clean.", s: { alignment: { wrapText: true } } }],
+        [{ v: "STEP 1: Setup Your Team (Chef Rahul, Sarah, etc.)", s: { font: { bold: true } } }],
+        [{ v: "Head to the '2. Role Mapping' tab. In Section A, list your staff members once. This prevents typos and ensures your dashboard math is accurate.", s: { alignment: { wrapText: true } } }],
         [],
         [{ v: "STEP 2: Assigned Heroes & Backups", s: { font: { bold: true } } }],
-        [{ v: "In Section B, map your staff to the structural roles. Pick a 'Primary' person and a 'Backup'. Our system will instantly push these names into every single checklist module.", s: { alignment: { wrapText: true } } }],
+        [{ v: "In Section B, map your staff to the structural roles. Pick a 'Primary' person and a 'Backup'. Our system will instantly push these names into every module.", s: { alignment: { wrapText: true } } }],
         [],
-        [{ v: "STEP 3: Zero-Friction Updates", s: { font: { bold: true } } }],
-        [{ v: "When a task is done, staff simply drops the date in Column J. If it turns GREEN, you're safe. If it turns RED, it's time for a check-in.", s: { alignment: { wrapText: true } } }],
+        [{ v: "STEP 3: Delegation & Privacy", s: { font: { bold: true } } }],
+        [{ v: "Share this file via OneDrive or Google Drive. Your team only edits the 'Date Completed' column in their respective checklists. You manage the high-level Dashboard.", s: { alignment: { wrapText: true } } }],
         [],
         [{ v: "Automated Alerts & Notifications", s: { font: { bold: true, color: { rgb: COLORS.SUB_NAVY } } } }],
-        [{ v: "• THE MICROSOFT PATH: Host this file on OneDrive. Use 'Microsoft Power Automate' to watch for 'RED' status changes and send you an instant email or Teams alert.", s: { alignment: { wrapText: true } } }],
-        [{ v: "• THE GOOGLE PATH: Import this file to Google Sheets. Go to 'Tools > Notification Rules' to set up instant email alerts when a checklist is updated.", s: { alignment: { wrapText: true } } }],
+        [{ v: "• THE MICROSOFT PATH: Host on OneDrive. Use 'Power Automate' to watch for 'Pending' tasks and send you email alerts.", s: { alignment: { wrapText: true } } }],
+        [{ v: "• THE GOOGLE PATH: Import to Google Sheets. Use 'Tools > Notification Rules' for instant alerts upon any update.", s: { alignment: { wrapText: true } } }],
         [],
-        [{ v: "Power-User Tips", s: { font: { bold: true, color: { rgb: COLORS.GREEN } } } }],
-        [{ v: "• MOBILE: Double-tap the date cell in the Excel app to open the native calendar picker for fast updates.", s: { alignment: { wrapText: true } } }],
-        [{ v: "• SECURITY: Lock the 'Dashboard' tab (Review > Protect Sheet) with a password so only you see the resource risk metrics.", s: { alignment: { wrapText: true } } }],
-        [{ v: "• DROP-DOWNS: To prevent broken formulas, use 'Data > Data Validation' on the Assigned Person column and point it to your Personnel Register list.", s: { alignment: { wrapText: true } } }],
+        [{ v: "On the go? Double-tap the date cell in the Excel Mobile App to trigger the native calendar picker for fast updates.", s: { font: { italic: true, color: { rgb: COLORS.GREEN } }, alignment: { wrapText: true } } }],
     ];
     const introWs = utils.aoa_to_sheet(introData);
     addNavBar(introWs);
-    introWs['!cols'] = [{ wch: 100 }];
+    introWs['!cols'] = [{ wch: 110 }];
     utils.book_append_sheet(wb, introWs, "Quick Start Guide");
 
     // --- 2. ROLE MAPPING & STAFF REGISTER ---
     const mappingData = [
         [], // Nav
-        [{ v: "SECTION A: PERSONNEL REGISTER (LIST UNIQUE STAFF ONCE)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
+        [{ v: "SECTION A: PERSONNEL REGISTER (DEFINE UNIQUE STAFF)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
         [{ v: "Personnel Name", s: headerStyle }, { v: "ID / Employee Code", s: headerStyle }, { v: "Department", s: headerStyle }, { v: "Assigned Unit / Management Scope", s: headerStyle }, { v: "Current Status", s: headerStyle }],
     ];
     for(let i=0; i<15; i++) mappingData.push([ 
@@ -213,8 +203,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     const mappingWs = utils.aoa_to_sheet(mappingData);
     addNavBar(mappingWs);
-    setColumnWidths(mappingWs, [30, 20, 20, 30, 15]);
-    mappingWs['!rows'] = [{ hpt: 20 }, { hpt: 25 }, { hpt: 25 }];
+    setColumnWidths(mappingWs, [30, 20, 20, 35, 15]);
+    mappingWs['!rows'] = [{ hpt: 30 }, { hpt: 25 }, { hpt: 30 }];
     utils.book_append_sheet(wb, mappingWs, "2. Role Mapping");
 
     // --- 3. MODULE INDEX ---
@@ -240,15 +230,16 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     // --- 4. DASHBOARD (The Intelligence Console) ---
     const totalTasksFormula = `COUNTA('Master Task Register'!B:B)-1`;
-    const activeStaffFormula = `SUMPRODUCT(('2. Role Mapping'!A3:A17<>"")/COUNTIF('2. Role Mapping'!A3:A17,'2. Role Mapping'!A3:A17&""))-1`;
+    const activeStaffFormula = `COUNTIF('2. Role Mapping'!A3:A17, "*?")`;
+    const highestLoadFormula = `IFERROR(INDEX('2. Role Mapping'!A3:A17, MATCH(MAX(C7:C21), C7:C21, 0)), "N/A")`;
     
     const dashboardData = [
         [], // Nav
         [{ v: "TOTAL CONTROL POINTS", s: kpiTitleStyle }, { v: "ACTIVE PERSONNEL", s: kpiTitleStyle }, { v: "HIGHEST LOAD PERSON", s: kpiTitleStyle }, { v: "GOVERNANCE STATUS", s: kpiTitleStyle }],
-        [{ f: totalTasksFormula, s: kpiBoxStyle }, { f: `IFERROR(${activeStaffFormula}, 0)`, s: kpiBoxStyle }, { v: "DETECTING...", s: { ...kpiBoxStyle, font: { sz: 10 } } }, { v: "STABLE", s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.GREEN }, sz: 10 } } }],
+        [{ f: totalTasksFormula, s: kpiBoxStyle }, { f: activeStaffFormula, s: kpiBoxStyle }, { f: highestLoadFormula, s: { ...kpiBoxStyle, font: { sz: 10 } } }, { v: "STABLE", s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.GREEN }, sz: 10 } } }],
         [],
         [{ v: "PERSPECTIVE: HUMAN RESOURCE RISK & BURNOUT ALERT", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
-        [{ v: "Personnel Name", s: headerStyle }, { v: "Unit / Scope", s: headerStyle }, { v: "Total Tasks Across Roles", s: headerStyle }, { v: "Risk Load Score", s: headerStyle }, { v: "Burnout Alert", s: headerStyle }],
+        [{ v: "Personnel Name", s: headerStyle }, { v: "Unit / Scope", s: headerStyle }, { v: "Total Tasks Across Roles", s: headerStyle }, { v: "Portfolio Reach", s: headerStyle }, { v: "Burnout Alert", s: headerStyle }],
     ];
 
     for(let i=0; i<15; i++) {
@@ -261,19 +252,15 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { f: nameRef, s: { ...dataCellStyle, font: { bold: true } } },
             { f: locRef, s: centerCellStyle },
             { f: `IF(${nameRef}="", 0, COUNTIF('Master Task Register'!E:E, ${nameRef}))`, s: centerCellStyle },
-            { f: `IF(${nameRef}="", 0, SUMIF('Master Task Register'!E:E, ${nameRef}, 'Master Task Register'!F:F))`, s: centerCellStyle },
+            { f: `IF(${nameRef}="", 0, 1)`, s: centerCellStyle },
             { f: `IF(C${rowInDash}>40, "CRITICAL LOAD", IF(C${rowInDash}>20, "HIGH LOAD", "STABLE"))`, s: centerCellStyle }
         ]);
     }
 
-    dashboardData.push([]);
-    dashboardData.push([{ v: "BURNOUT & CONCENTRATION RISK INTERPRETATION", s: { font: { bold: true } } }]);
-    dashboardData.push([{ v: "This console identifies staff holding a disproportionate number of control points. AMBER (>20 tasks) indicates resource strain. RED (>40 tasks) indicates a Single Point of Failure (SPOF) where critical knowledge is dangerously concentrated in one person. Deploy backups or cross-train immediately.", s: insightBoxStyle }]);
-
     const dashboardWs = utils.aoa_to_sheet(dashboardData);
     addNavBar(dashboardWs);
-    setColumnWidths(dashboardWs, [30, 25, 20, 15, 20]);
-    dashboardWs['!rows'] = [{ hpt: 20 }, { hpt: 20 }, { hpt: 45 }, { hpt: 15 }];
+    setColumnWidths(dashboardWs, [30, 35, 20, 15, 20]);
+    dashboardWs['!rows'] = [{ hpt: 30 }, { hpt: 20 }, { hpt: 45 }, { hpt: 15 }];
     
     // Conditional Formatting for Burnout Alerts
     dashboardWs['!conditional_formatting'] = [
@@ -292,9 +279,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             ]
         }
     ];
-
-    const insightRow = dashboardData.length - 1;
-    dashboardWs['!merges'].push({ s: { r: insightRow, c: 0 }, e: { r: insightRow, c: 4 } });
     utils.book_append_sheet(wb, dashboardWs, "4. Dashboard");
 
     // --- 5. MASTER TASK REGISTER (The Database) ---
@@ -314,6 +298,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const masterWs = utils.aoa_to_sheet(masterData);
     setColumnWidths(masterWs, [12, 60, 20, 25, 25, 12]);
     ["A1", "B1", "C1", "D1", "E1", "F1"].forEach(cell => { if(masterWs[cell]) masterWs[cell].s = headerStyle; });
+    masterWs['!autofit'] = true;
     masterWs['!autofilter'] = { ref: `A1:F${masterData.length}` };
     utils.book_append_sheet(wb, masterWs, "Master Task Register");
 
@@ -322,7 +307,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         const sName = safeSheetName(checklist.title);
         const wsData: any[][] = [
             [], // Nav
-            [{ v: checklist.title.toUpperCase(), s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
+            [{ v: checklist.title.toUpperCase(), s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
             [],
             ["Task Description", "Control Type", "Primary Assigned", "Backup Personnel", "Frequency", "Evidence / Proof", "Date Completed", "Status"]
         ];
@@ -336,7 +321,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             wsData.push([
                 { v: task.description, s: { ...dataCellStyle, wrapText: true } },
                 { v: task.riskLevel === 'High' ? 'Safety Critical' : 'Operational', s: centerCellStyle },
-                { f: `IFERROR(VLOOKUP("${roleKey}", '2. Role Mapping'!G:H, 2, FALSE), "Unassigned")`, s: { ...dataCellStyle, fill: { fgColor: { rgb: COLORS.BG_LIGHT } } } },
+                { f: `IFERROR(VLOOKUP("${roleKey}", '2. Role Mapping'!G:I, 2, FALSE), "Unassigned")`, s: { ...dataCellStyle, fill: { fgColor: { rgb: COLORS.BG_LIGHT } } } },
                 { f: `IFERROR(VLOOKUP("${roleKey}", '2. Role Mapping'!G:I, 3, FALSE), "None")`, s: dataCellStyle },
                 { v: task.frequency || checklist.frequency, s: centerCellStyle },
                 { v: task.proof || "Not Specified", s: dataCellStyle },
@@ -348,11 +333,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         const ws = utils.aoa_to_sheet(wsData);
         addNavBar(ws);
         setColumnWidths(ws, [65, 20, 25, 25, 15, 30, 15, 15]);
-        ws['!rows'] = [{ hpt: 20 }, { hpt: 30 }, { hpt: 10 }, { hpt: 25 }];
+        ws['!rows'] = [{ hpt: 30 }, { hpt: 35 }, { hpt: 10 }, { hpt: 30 }];
         ["A4", "B4", "C4", "D4", "E4", "F4", "G4", "H4"].forEach(cell => { if(ws[cell]) ws[cell].s = headerStyle; });
         ws['!autofilter'] = { ref: `A4:H${wsData.length}` };
         
-        // Date format for mobile picker
         const range = utils.decode_range(ws['!ref'] || 'A1');
         for (let R = 4; R <= range.e.r; ++R) {
             const cell = ws[utils.encode_cell({r:R, c:6})];
@@ -362,7 +346,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         utils.book_append_sheet(wb, ws, sName);
     });
 
-    // Re-order sheets
     const finalSheetNames = ["1. Cover Page", "Quick Start Guide", "2. Role Mapping", "3. Module Index", "4. Dashboard"];
     checklists.forEach(c => finalSheetNames.push(safeSheetName(c.title)));
     finalSheetNames.push("Master Task Register");
