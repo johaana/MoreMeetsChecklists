@@ -98,6 +98,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             const cell = ws[utils.encode_cell({r:0, c:i})];
             if(cell) cell.s = linkStyle;
         }
+        // Set standard view: hide gridlines and freeze top row
         ws['!views'] = [{ state: 'frozen', ySplit: 1, showGridLines: false }];
     };
 
@@ -236,7 +237,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ],
         [],
         [{ v: "SECTION A: PERSONNEL LOAD & RESOURCE RISK", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
-        [{ v: "Personnel Name", s: headerStyle }, { v: "Assigned Scope", s: headerStyle }, { v: "Active Task Load", s: headerStyle }, { v: "Intensity Chart", s: headerStyle }, { v: "Action Required", s: headerStyle }],
+        [{ v: "Personnel Name", s: headerStyle }, { v: "Assigned Scope", s: headerStyle }, { v: "Active Task Load", s: headerStyle }, { v: "Visual Load Index", s: headerStyle }, { v: "Action Required", s: headerStyle }],
     ];
 
     for(let i=0; i<15; i++) {
@@ -247,20 +248,20 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { f: nameRef, s: dataCellStyle },
             { f: `'2. Configuration & Mapping'!D${mappingRow}`, s: centerCellStyle },
             { f: `IF(${nameRef}="", 0, COUNTIFS('Master Task Register'!E:E, ${nameRef}, 'Master Task Register'!F:F, "Applicable"))`, s: centerCellStyle },
-            { v: "||||||||||||||||||", s: { font: { color: {rgb: COLORS.BAR_BLUE}, name: 'Consolas' } }},
+            { f: `IF(C${loadRow}=0, "", REPT("█", MIN(10, ROUND(C${loadRow}/5, 0))))`, s: { font: { color: {rgb: COLORS.BAR_BLUE}, sz: 12 } }},
             { f: `IF(C${loadRow}>40, "RE-ALLOCATE", "STABLE")`, s: centerCellStyle }
         ]);
     }
 
     dashboardData.push([], [{ v: "SECTION B: REGIONAL PORTFOLIO LEADERBOARD", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }]);
-    dashboardData.push([{ v: "Comparison Entity", s: headerStyle }, { v: "Governance Score", s: headerStyle }, { v: "Performance Visual", s: headerStyle }, { v: "Gap vs. Target", s: headerStyle }]);
-    dashboardData.push([ {v: "THIS UNIT", s: { ...dataCellStyle, font: {bold: true}}}, {v: "88%", s: centerCellStyle}, {v: "||||||||||||||||||", s: { font: { color: {rgb: COLORS.GREEN}, name: 'Consolas' } }}, {v: "-2%", s: centerCellStyle} ]);
-    dashboardData.push([ {v: "Regional Average", s: dataCellStyle}, {v: "82%", s: centerCellStyle}, {v: "|||||||||||||||", s: { font: { color: {rgb: COLORS.BAR_BLUE}, name: 'Consolas' } }}, {v: "-8%", s: centerCellStyle} ]);
-    dashboardData.push([ {v: "Top Performing Unit", s: dataCellStyle}, {v: "92%", s: centerCellStyle}, {v: "||||||||||||||||||||", s: { font: { color: {rgb: COLORS.AMBER}, name: 'Consolas' } }}, {v: "0%", s: centerCellStyle} ]);
+    dashboardData.push([{ v: "Comparison Entity", s: headerStyle }, { v: "Governance Score", s: headerStyle }, { v: "Benchmark Progress", s: headerStyle }, { v: "Gap vs. Target", s: headerStyle }]);
+    dashboardData.push([ {v: "THIS UNIT", s: { ...dataCellStyle, font: {bold: true}}}, {v: "88%", s: centerCellStyle}, {v: "████████████", s: { font: { color: {rgb: COLORS.GREEN}, sz: 12 } }}, {v: "-2%", s: centerCellStyle} ]);
+    dashboardData.push([ {v: "Regional Average", s: dataCellStyle}, {v: "82%", s: centerCellStyle}, {v: "██████████", s: { font: { color: {rgb: COLORS.BAR_BLUE}, sz: 12 } }}, {v: "-8%", s: centerCellStyle} ]);
+    dashboardData.push([ {v: "Top Performing Unit", s: dataCellStyle}, {v: "92%", s: centerCellStyle}, {v: "█████████████", s: { font: { color: {rgb: COLORS.AMBER}, sz: 12 } }}, {v: "0%", s: centerCellStyle} ]);
 
     const dashboardWs = utils.aoa_to_sheet(dashboardData);
     addNavBar(dashboardWs);
-    dashboardWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 15 }, { wch: 20 }, { wch: 15 }];
+    dashboardWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 15 }, { wch: 25 }, { wch: 15 }];
     utils.book_append_sheet(wb, dashboardWs, "4. Dashboard");
 
     // --- 5. BRANCH CONNECTOR ---
