@@ -1,4 +1,3 @@
-
 'use client';
 
 import { writeFile, utils, type WorkSheet, type CellObject } from 'xlsx-js-style';
@@ -253,7 +252,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ]);
     }
 
-    dashboardData.push([], [{ v: "SECTION B: REGIONAL PORTFOLIO LEADERBOARD", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }]);
+    dashboardData.push([]);
+    dashboardData.push([{ v: "SECTION B: REGIONAL PORTFOLIO LEADERBOARD", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }]);
     dashboardData.push([{ v: "Comparison Entity", s: headerStyle }, { v: "Governance Score", s: headerStyle }, { v: "Benchmark Progress", s: headerStyle }, { v: "Gap vs. Target", s: headerStyle }]);
     dashboardData.push([ {v: "THIS UNIT", s: { ...dataCellStyle, font: {bold: true}}}, {v: "88%", s: centerCellStyle}, {v: "████████████", s: { font: { color: {rgb: COLORS.GREEN}, sz: 12 } }}, {v: "-2%", s: centerCellStyle} ]);
     dashboardData.push([ {v: "Regional Average", s: dataCellStyle}, {v: "82%", s: centerCellStyle}, {v: "██████████", s: { font: { color: {rgb: COLORS.BAR_BLUE}, sz: 12 } }}, {v: "-8%", s: centerCellStyle} ]);
