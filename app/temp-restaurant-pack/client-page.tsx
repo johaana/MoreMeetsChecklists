@@ -26,45 +26,45 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
       <div className="container px-4 md:px-6 max-w-6xl mx-auto">
         <div className="space-y-12">
           <div className="space-y-6 text-center">
-            <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Architecture: Governance v2.12</Badge>
+            <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Architecture: Portfolio Governance v2.12</Badge>
             <h1 className="text-4xl md:text-7xl font-black font-headline text-primary-text italic uppercase tracking-tighter leading-[1.05]">
-              The Portfolio <br/> <span className="text-primary">Governance Engine</span>
+              The Executive <br/> <span className="text-primary">Governance Engine</span>
             </h1>
             <p className="text-xl md:text-2xl text-secondary-text italic max-w-3xl mx-auto border-l-2 border-primary/20 pl-8">
-              A command-level framework designed for multi-unit operators. This system separates <strong>Structural Authority</strong> from <strong>Human Resource Load</strong>.
+              A command-level framework designed for scaling operators. This system separates <strong>Structural Authority</strong> from <strong>Human Resource Load</strong>.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             <FeatureItem 
                 icon={Settings2} 
-                title="Module Scope Control" 
-                description="Turn entire modules (Pool, Bar, Spa) on/off. The dashboard and completion math adapt instantly to your unit's specific profile."
+                title="Scope Toggle (Unit Config)" 
+                description="Turn entire modules (Bar, Valet, Spa) on/off. The dashboard math adapts instantly to your unit's specific profile for fair benchmarking."
             />
             <FeatureItem 
                 icon={Users} 
-                title="Personnel Register" 
-                description="Safe-Mapping Logic: If a staff member leaves, simply delete their name. The system flags 'VACANT' alerts in every relevant module automatically."
+                title="Satellite Distribution" 
+                description="Share unique 'Remote Control' links with your GMs. They execute locally; you oversee globally without needing a single email."
             />
             <FeatureItem 
                 icon={BarChart3} 
-                title="In-Cell Visualizations" 
-                description="McKinsey-style data bars built directly into cells using high-precision text logic. Institutional reporting without the instability of chart objects."
-            />
-            <FeatureItem 
-                icon={Globe} 
-                title="Regional Leaderboard" 
+                title="Portfolio Leaderboard" 
                 description="Compare your current unit's governance score against regional averages and top-performing locations in real-time."
             />
             <FeatureItem 
+                icon={Globe} 
+                title="Branch Connector" 
+                description="A dedicated CEO toolkit to link all 10 or 100 branches into one 'God-View' dashboard using live data pipelines."
+            />
+            <FeatureItem 
                 icon={Lock} 
-                title="Role-Based Security" 
-                description="Learn how to lock the intelligence layers (formulas/dashboard) from staff while keeping operational checklists 100% editable."
+                title="Safe Personnel Mapping" 
+                description="If a staff member leaves, deleting their name flags 'RE-ASSIGN REQUIRED' alerts globally, highlighting leadership gaps."
             />
             <FeatureItem 
                 icon={Zap} 
-                title="Automated Alerting" 
-                description="Step-by-step instructions for setting up mobile and email alerts using Microsoft Power Automate or Google Notification Rules."
+                title="Setup Assistance" 
+                description="Includes a post-sale 30-minute launch session to link your branches and configure your Command Console."
             />
           </div>
 
@@ -75,7 +75,7 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                 <div className="relative z-10 space-y-4 max-w-2xl mx-auto">
                     <h3 className="text-2xl md:text-4xl font-black font-headline uppercase italic text-primary-text">Ready for Deployment?</h3>
                     <p className="text-lg text-secondary-text italic font-medium leading-relaxed">
-                        Download the full v2.12 build. This version includes the Personnel Aggregator, the Scope Toggle, and the Success Partner Onboarding Guide.
+                        Download the v2.12 Build. This version includes the Branch Connector, the Scope Toggle, and the 100-location Leaderboard logic.
                     </p>
                 </div>
 
@@ -86,13 +86,13 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                         className="h-20 px-12 bg-primary text-black font-black uppercase italic text-xl shadow-2xl hover:scale-105 active:scale-95 transition-all w-full sm:w-auto"
                     >
                         <Download className="mr-3 w-7 h-7" />
-                        Download v2.12 Enterprise Build
+                        Download v2.12 Master Build
                     </Button>
                     
                     <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 opacity-40">
                         <div className="flex items-center gap-2">
                             <ShieldCheck className="w-4 h-4" />
-                            <span className="text-[10px] uppercase font-black tracking-widest">Clinical Integrity Verified</span>
+                            <span className="text-[10px] uppercase font-black tracking-widest">Multi-Unit Integrity Verified</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <Lock className="w-4 h-4" />
@@ -103,8 +103,8 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
             </div>
             
             <div className="mt-12 flex flex-col items-center gap-2 opacity-20 text-center">
-                <p className="text-[10px] text-white uppercase font-black tracking-widest">Build Signature: 2.12.PORTFOLIO.MASTER.RELATIONAL</p>
-                <p className="text-[9px] text-white italic max-w-lg">VLOOKUP ranges expanded to include Backup Personnel. INDEX/MATCH logic applied to Peak Load identification.</p>
+                <p className="text-[10px] text-white uppercase font-black tracking-widest">Build Signature: 2.12.GOVERNANCE.MASTER.PORTFOLIO</p>
+                <p className="text-[9px] text-white italic max-w-lg">Module Scope logic integrated. Regional Benchmarking enabled via Section C. Branch Connector sheet activated.</p>
             </div>
           </div>
         </div>
