@@ -37,16 +37,16 @@ export const restaurants: PremiumPack = {
             summary: "Ensures the kitchen is ready and safe for service.",
             icon: "sunrise",
             tasks: [
-                { id: "KO-01", description: "Check and log temperatures of all refrigerators and freezers.", priority: "High", riskLevel: "High", consequence: "Failure can lead to bacterial growth and foodborne illness outbreaks.", proof: "Temp Log" },
-                { id: "KO-02", description: "Ensure separate cutting boards and utensils are used for veg/non-veg prep.", priority: "High", riskLevel: "High", consequence: "Prevents cross-contamination, which can cause severe allergic reactions.", proof: "Visual Audit" },
-                { id: "KO-03", description: "Verify all cleaning chemical bottles are correctly labeled.", priority: "High", riskLevel: "Medium", consequence: "Prevents accidental chemical contamination of food.", proof: "Visual Check" },
-                { id: "KO-04", description: "Check that all equipment safety guards are in place and functional.", priority: "High", riskLevel: "High", consequence: "Missing guards can lead to severe injuries and regulatory fines.", proof: "Equipment Check Log" },
-                { id: "KO-05", description: "Ensure handwash stations are stocked with soap and sanitizer.", priority: "High", riskLevel: "Medium", consequence: "Lack of hand hygiene is a primary cause of foodborne illness.", proof: "Visual Check" },
-                { id: "KO-06", description: "Calibrate food thermometers.", priority: "High", riskLevel: "High", consequence: "Inaccurate readings lead to serving undercooked, unsafe food.", proof: "Calibration Log" },
-                { id: "KO-07", description: "Check that exhaust hoods and ventilation are working.", priority: "High", riskLevel: "Medium", consequence: "Poor ventilation is a fire risk and creates an unsafe environment.", proof: "System Check" },
-                { id: "KO-08", description: "Ensure first aid kit is stocked.", priority: "High", riskLevel: "Medium", consequence: "Inability to treat common kitchen injuries like cuts and burns.", proof: "First Aid Kit Log" },
-                { id: "KO-09", description: "Check that the fire suppression system is armed and ready.", priority: "High", riskLevel: "High", consequence: "A failed system can lead to a catastrophic kitchen fire.", proof: "System Check" },
-                { id: "KO-10", description: "Brief the kitchen team on the day's menu and any specials.", priority: "Medium", riskLevel: "Low", consequence: "Lack of communication leads to inconsistency and errors.", proof: "Briefing Notes" }
+                { id: "KO-01", description: "Check and log temperatures of all refrigerators and freezers.", priority: "High", riskLevel: "High", consequence: "Failure can lead to bacterial growth and foodborne illness outbreaks.", proof: "Temp Log", trainerNotes: "Check behind the rubber seals for mold buildup during this walkthrough." },
+                { id: "KO-02", description: "Ensure separate cutting boards and utensils are used for veg/non-veg prep.", priority: "High", riskLevel: "High", consequence: "Prevents cross-contamination, which can cause severe allergic reactions.", proof: "Visual Audit", trainerNotes: "Verify that the red boards are kept at least 2 feet away from green boards." },
+                { id: "KO-03", description: "Verify all cleaning chemical bottles are correctly labeled.", priority: "High", riskLevel: "Medium", consequence: "Prevents accidental chemical contamination of food.", proof: "Visual Check", trainerNotes: "Ensure labels are legible and not peeling off due to moisture." },
+                { id: "KO-04", description: "Check that all equipment safety guards are in place and functional.", priority: "High", riskLevel: "High", consequence: "Missing guards can lead to severe injuries and regulatory fines.", proof: "Equipment Check Log", trainerNotes: "Test the emergency stop button on the heavy-duty mixer." },
+                { id: "KO-05", description: "Ensure handwash stations are stocked with soap and sanitizer.", priority: "High", riskLevel: "Medium", consequence: "Lack of hand hygiene is a primary cause of foodborne illness.", proof: "Visual Check", trainerNotes: "If the dispenser is broken, raise a maintenance ticket immediately." },
+                { id: "KO-06", description: "Calibrate food thermometers.", priority: "High", riskLevel: "High", consequence: "Inaccurate readings lead to serving undercooked, unsafe food.", proof: "Calibration Log", trainerNotes: "Use the ice-point method (0°C) for maximum precision." },
+                { id: "KO-07", description: "Check that exhaust hoods and ventilation are working.", priority: "High", riskLevel: "Medium", consequence: "Poor ventilation is a fire risk and creates an unsafe environment.", proof: "System Check", trainerNotes: "Check for rattling sounds that indicate motor failure." },
+                { id: "KO-08", description: "Ensure first aid kit is stocked.", priority: "High", riskLevel: "Medium", consequence: "Inability to treat common kitchen injuries like cuts and burns.", proof: "First Aid Kit Log", trainerNotes: "Check expiry dates on burn gels and sterile wipes." },
+                { id: "KO-09", description: "Check that the fire suppression system is armed and ready.", priority: "High", riskLevel: "High", consequence: "A failed system can lead to a catastrophic kitchen fire.", proof: "System Check", trainerNotes: "Verify the pressure gauge is in the green zone." },
+                { id: "KO-10", description: "Brief the kitchen team on the day's menu and any specials.", priority: "Medium", riskLevel: "Low", consequence: "Lack of communication leads to inconsistency and errors.", proof: "Briefing Notes", trainerNotes: "Call out specific allergens in the 'Special of the Day'." }
             ]
         },
         {
@@ -57,156 +57,10 @@ export const restaurants: PremiumPack = {
             summary: "Ensures the freshness and safety of all temperature-sensitive inventory.",
             icon: "thermometer",
             tasks: [
-                { id: "CSM-01", description: "Log cold storage temperatures twice daily.", priority: "High", riskLevel: "High", consequence: "Failure to monitor can lead to thousands in spoiled inventory.", proof: "Temperature Log" },
-                { id: "CSM-02", description: "Verify digital logs if available.", priority: "High", riskLevel: "High", consequence: "Provides continuous records and identifies faults.", proof: "Digital Log Review" },
-                { id: "CSM-03", description: "Test temperature alarms weekly.", priority: "High", riskLevel: "High", consequence: "Failed alarms mean failures overnight go unnoticed.", proof: "Alarm Test Log" },
-                { id: "CSM-04", description: "Follow escalation procedure for any temperature deviations.", priority: "High", riskLevel: "High", consequence: "Slow response results in loss of all stock in the unit.", proof: "Incident Report" },
-                { id: "CSM-05", description: "Check for any signs of frost buildup or door seal damage.", priority: "Medium", riskLevel: "Medium", consequence: "Indicates poor efficiency and potential issues.", proof: "Visual Inspection Log" },
-                { id: "CSM-06", description: "Ensure cold storage units are clean and organized.", priority: "High", riskLevel: "Medium", consequence: "Disorganization leads to cross-contamination.", proof: "Cleaning Log" },
-                { id: "CSM-07", description: "Keep raw and cooked foods stored separately.", priority: "High", riskLevel: "High", consequence: "A primary cause of bacterial cross-contamination.", proof: "Storage Audit" },
-                { id: "CSM-08", description: "Ensure all items are labeled with date of receipt.", priority: "High", riskLevel: "Medium", consequence: "Makes it impossible to follow FIFO and increases spoilage.", proof: "Labeling Audit" },
-                { id: "CSM-09", description: "Do not overload shelves to allow for proper air circulation.", priority: "High", riskLevel: "Medium", consequence: "Overloading creates hot spots where food can spoil.", proof: "Visual Check" },
-                { id: "CSM-10", description: "Report any maintenance issues with the units immediately.", priority: "High", riskLevel: "High", consequence: "Delaying repairs leads to complete equipment failure.", proof: "Maintenance Request" }
-            ]
-        },
-        {
-            title: "Allergen & Special Diet Order Flow",
-            department: "Service/Kitchen",
-            frequency: "Per Order",
-            role: "Server/Chef",
-            summary: "A critical safety protocol to prevent fatal allergen incidents.",
-            icon: "file-warning",
-            tasks: [
-                { id: "ALLERGEN-01", description: "Server to clearly flag allergy on the order ticket (KOT).", priority: "High", riskLevel: "High", consequence: "If kitchen is not alerted, no special precautions are taken.", proof: "KOT with Allergy Flag" },
-                { id: "ALLERGEN-02", description: "Chef to use designated, sanitized utensils and prep area.", priority: "High", riskLevel: "High", consequence: "Cross-contamination is a primary cause of reactions.", proof: "CCTV/Visual Check" },
-                { id: "ALLERGEN-03", description: "Manager to double-check special diet plate before dispatch.", priority: "High", riskLevel: "High", consequence: "Final safety net to catch errors before reaching the guest.", proof: "Dispatch Log" },
-                { id: "ALLERGEN-04", description: "Maintain an up-to-date allergen matrix for all menu items.", priority: "High", riskLevel: "High", consequence: "Incorrect info to guests can have fatal consequences.", proof: "Allergen Matrix Document" },
-                { id: "ALLERGEN-05", description: "Server verbally confirms special meal with the guest at delivery.", priority: "High", riskLevel: "High", consequence: "Ensures the correct person receives the prepared meal.", proof: "Verbal Confirmation Protocol" },
-                { id: "ALLERGEN-06", description: "Change gloves and wash hands before handling allergen-free orders.", priority: "High", riskLevel: "High", consequence: "Prevents transfer of allergens from other dishes.", proof: "CCTV/Supervisor Audit" },
-                { id: "ALLERGEN-07", description: "Use a special plate or marker for allergy-safe dishes.", priority: "High", riskLevel: "Medium", consequence: "Provides a clear visual cue to all staff and the guest.", proof: "Special Plate Photo" },
-                { id: "ALLERGEN-08", description: "Train all FOH and BOH staff on the severity of allergies.", priority: "High", riskLevel: "High", consequence: "Lack of training leads to casual attitude and mistakes.", proof: "Training Log" },
-                { id: "ALLERGEN-09", description: "If unsure, assume allergen presence and inform the guest.", priority: "High", riskLevel: "High", consequence: "Guessing can be fatal. 'If in doubt, leave it out'.", proof: "Policy Document" },
-                { id: "ALLERGEN-10", description: "Document any incidents related to allergies for review.", priority: "High", riskLevel: "High", consequence: "Failure to learn from near-misses leads to major incidents.", proof: "Incident Report" }
-            ]
-        },
-        {
-            title: "Sanitation & Deep-Clean Schedule",
-            department: "Hygiene",
-            frequency: "Daily/Weekly",
-            role: "Hygiene Supervisor",
-            summary: "Ensures a sterile and compliant food environment.",
-            icon: "sparkles",
-            tasks: [
-                { id: "SANIT-01", description: "Log completion of daily surface sanitization.", priority: "High", riskLevel: "High", consequence: "Bacteria buildup leads to cross-contamination.", proof: "Daily Cleaning Log" },
-                { id: "SANIT-02", description: "Perform and log weekly deep clean of kitchen hoods and ducts.", priority: "High", riskLevel: "High", consequence: "Grease buildup in hoods is a major fire hazard.", proof: "Weekly Deep Clean Log" },
-                { id: "SANIT-03", description: "Review and file monthly pest control vendor report.", priority: "High", riskLevel: "High", consequence: "Infestations lead to closures and massive brand damage.", proof: "Vendor Report" },
-                { id: "SANIT-04", description: "Check and clean grease traps weekly.", priority: "High", riskLevel: "Medium", consequence: "Blocked traps cause foul odors and drainage blockages.", proof: "Grease Trap Log" },
-                { id: "SANIT-05", description: "Ensure waste bins are emptied and sanitized daily.", priority: "High", riskLevel: "Medium", consequence: "Overflowing bins attract pests.", proof: "Waste Management Log" },
-                { id: "SANIT-06", description: "Sanitize all food contact surfaces between tasks.", priority: "High", riskLevel: "High", consequence: "Prevents contamination between different food types.", proof: "Visual Audit" },
-                { id: "SANIT-07", description: "Deep clean floors and drains weekly.", priority: "High", riskLevel: "Medium", consequence: "Dirty floors harbor bacteria and attract pests.", proof: "Floor Cleaning Log" },
-                { id: "SANIT-08", description: "Clean and descale dishwashers monthly.", priority: "High", riskLevel: "Medium", consequence: "Ensures dishes are sanitized at correct temps.", proof: "Dishwasher Log" },
-                { id: "SANIT-09", description: "Check that cleaning chemicals are stored safely.", priority: "High", riskLevel: "High", consequence: "Improper storage leads to chemical contamination.", proof: "Chemical Store Audit" },
-                { id: "SANIT-10", description: "Train staff on correct cleaning procedures and chemical use.", priority: "High", riskLevel: "High", consequence: "Improper use can be ineffective or dangerous.", proof: "Training Log" }
-            ]
-        },
-        {
-            title: "Service Incident Procedure",
-            department: "Management",
-            frequency: "Per Incident",
-            role: "Restaurant Manager",
-            summary: "A structured process to handle customer complaints and prevent reputation loss.",
-            icon: "siren",
-            tasks: [
-                { id: "INC-REST-01", description: "Document customer complaint in the incident log.", priority: "High", riskLevel: "High", consequence: "Lack of docs makes it impossible to track trends or defend claims.", proof: "Incident Log" },
-                { id: "INC-REST-02", description: "Quarantine and label any suspected contaminated food batch.", priority: "High", riskLevel: "High", consequence: "Failure to quarantine leads to more affected customers.", proof: "Quarantine Log & Photo" },
-                { id: "INC-REST-03", description: "Notify health authority if incident is severe.", priority: "High", riskLevel: "High", consequence: "Failure to report leads to severe legal penalties.", proof: "Notification Record" },
-                { id: "INC-REST-04", description: "Offer resolution to guest and document it.", priority: "High", riskLevel: "Medium", consequence: "Poor handling escalates the situation.", proof: "Guest Resolution Log" },
-                { id: "INC-REST-05", description: "Conduct root cause analysis with the kitchen team.", priority: "High", riskLevel: "High", consequence: "Without RCA, the same mistake will repeat.", proof: "RCA Report" },
-                { id: "INC-REST-06", description: "Collect contact info from affected guest for follow-up.", priority: "High", riskLevel: "High", consequence: "Shows accountability and allows for follow-up.", proof: "Contact Form" },
-                { id: "INC-REST-07", description: "Preserve any food samples for testing if necessary.", priority: "High", riskLevel: "High", consequence: "Crucial evidence for determining the cause.", proof: "Sample Log" },
-                { id: "INC-REST-08", description: "Interview all staff involved in the incident.", priority: "High", riskLevel: "High", consequence: "Helps understand events and identify process gaps.", proof: "Interview Notes" },
-                { id: "INC-REST-09", description: "Implement corrective actions to prevent recurrence.", priority: "High", riskLevel: "High", consequence: "Turns negative incident into improvement opportunity.", proof: "CAPA Plan" },
-                { id: "INC-REST-10", description: "Review similar incidents to identify trends.", priority: "Medium", riskLevel: "Medium", consequence: "Helps to fix systemic problems.", proof: "Trend Analysis Report" }
-            ]
-        },
-        {
-            title: "Raw Material Receiving",
-            department: "Stores/Kitchen",
-            frequency: "Per Delivery",
-            role: "Storekeeper",
-            summary: "The first line of defense against poor quality and contaminated ingredients.",
-            icon: "package-check",
-            tasks: [
-                { id: "RM-01", description: "Verify vendor FSSAI license is valid.", priority: "High", riskLevel: "High", consequence: "Unlicensed vendors are a major legal violation.", proof: "Vendor File" },
-                { id: "RM-02", description: "Inspect delivery vehicle for cleanliness and temp control.", priority: "High", riskLevel: "High", consequence: "Dirty trucks contaminate the entire delivery.", proof: "Vehicle Inspection Log" },
-                { id: "RM-03", description: "Check temperature of perishable goods upon arrival.", priority: "High", riskLevel: "High", consequence: "Goods outside safe range are a major safety risk.", proof: "Temperature Log" },
-                { id: "RM-04", description: "Reject and document sub-par quality items.", priority: "High", riskLevel: "High", consequence: "Accepting poor ingredients leads to poor final products.", proof: "Rejection Note" },
-                { id: "RM-05", description: "Move goods to appropriate storage immediately.", priority: "High", riskLevel: "Medium", consequence: "Leaving items in 'danger zone' allows bacterial growth.", proof: "CCTV review" },
-                { id: "RM-06", description: "Check for signs of pests in packaging.", priority: "High", riskLevel: "High", consequence: "Can introduce infestation into your facility.", proof: "Visual Inspection Log" },
-                { id: "RM-07", description: "Verify that packaging is intact.", priority: "High", riskLevel: "High", consequence: "Damaged packaging leads to contamination.", proof: "Visual Check" },
-                { id: "RM-08", description: "Match delivery challan with purchase order.", priority: "High", riskLevel: "High", consequence: "Prevents incorrect deliveries and billing errors.", proof: "Document Match" },
-                { id: "RM-09", description: "Check 'best before' or expiry dates.", priority: "High", riskLevel: "High", consequence: "Accepting near-expiry goods leads to waste.", proof: "Date Check Log" },
-                { id: "RM-10", description: "Record all received goods in inventory system.", priority: "High", riskLevel: "High", consequence: "Inaccurate receiving leads to incorrect stock levels.", proof: "System Entry" }
-            ]
-        },
-        {
-            title: "Staff Hygiene & Training",
-            department: "HR/Hygiene",
-            frequency: "Ongoing",
-            role: "Hygiene Officer",
-            summary: "Ensures staff meet strict hygiene standards to prevent food contamination.",
-            icon: "user-check",
-            tasks: [
-                { id: "SH-01", description: "Conduct daily checks for clean uniforms, nails, and hairnets.", priority: "High", riskLevel: "Medium", consequence: "Poor personal hygiene can lead to contamination.", proof: "Daily Staff Audit Log" },
-                { id: "SH-02", description: "Perform random audits of handwashing procedures.", priority: "High", riskLevel: "High", consequence: "Improper handwashing is a leading cause of illness.", proof: "Handwashing Audit" },
-                { id: "SH-03", description: "Conduct monthly refresher training on hygiene.", priority: "High", riskLevel: "Medium", consequence: "Reinforces good habits over time.", proof: "Training Records" },
-                { id: "SH-04", description: "Screen new staff for any communicable diseases.", priority: "High", riskLevel: "High", consequence: "A sick food handler can cause a major outbreak.", proof: "Medical Fitness Certificate" },
-                { id: "SH-05", description: "Ensure 'Staff Only' areas are restricted.", priority: "Medium", riskLevel: "Low", consequence: "Prevents unauthorized entry to food prep areas.", proof: "Visual check" },
-                { id: "SH-06", description: "Enforce use of gloves for ready-to-eat foods.", priority: "High", riskLevel: "High", consequence: "Prevents direct hand-to-food contamination.", proof: "Glove Usage Audit" },
-                { id: "SH-07", description: "Ensure 'no jewelry' policy is followed.", priority: "High", riskLevel: "High", consequence: "Jewelry can create a physical hazard.", proof: "Visual Check" },
-                { id: "SH-08", description: "Maintain records of all staff hygiene training.", priority: "High", riskLevel: "Medium", consequence: "Crucial for proving due diligence during inspections.", proof: "Master Training File" },
-                { id: "SH-09", description: "Have a clear policy for sick staff.", priority: "High", riskLevel: "High", consequence: "Prevents employees from spreading illness.", proof: "Sick Leave Policy" },
-                { id: "SH-10", description: "Ensure staff use hand sanitizers properly.", priority: "High", riskLevel: "Medium", consequence: "Provides an extra layer of hygiene control.", proof: "Supply Check" }
-            ]
-        },
-        {
-            title: "Waste Management & Pest Control",
-            department: "Hygiene",
-            frequency: "Daily/Weekly",
-            role: "Supervisor",
-            summary: "Maintains a pest-free and sanitary facility.",
-            icon: "bug",
-            tasks: [
-                { id: "WP-01", description: "Ensure waste is segregated into designated bins.", priority: "High", riskLevel: "Medium", consequence: "Required by law and better for environment.", proof: "Waste Segregation Audit" },
-                { id: "WP-02", description: "Clean and sanitize all waste bins according to schedule.", priority: "High", riskLevel: "Medium", consequence: "Dirty bins attract pests and create odors.", proof: "Bin Cleaning Log" },
-                { id: "WP-03", description: "Inspect pest control traps and bait stations weekly.", priority: "High", riskLevel: "High", consequence: "Allows for early detection of pest activity.", proof: "Pest Trap Log" },
-                { id: "WP-04", description: "Review and file monthly pest control vendor reports.", priority: "High", riskLevel: "High", consequence: "Crucial for health audits and professional assessment.", proof: "Vendor Report" },
-                { id: "WP-05", description: "Keep external waste area clean.", priority: "High", riskLevel: "High", consequence: "Overflowing bins are an open invitation for rodents.", proof: "Photo Log" },
-                { id: "WP-06", description: "Ensure all drains are clean and free-flowing.", priority: "High", riskLevel: "Medium", consequence: "Blocked drains harbor bacteria.", proof: "Drain Cleaning Log" },
-                { id: "WP-07", description: "Check for any signs of pest activity daily.", priority: "High", riskLevel: "High", consequence: "Early detection is key to preventing infestation.", proof: "Pest Activity Log" },
-                { id: "WP-08", description: "Ensure doors and windows are sealed against pests.", priority: "High", riskLevel: "High", consequence: "Prevents pests from entering the premises.", proof: "Structural Audit" },
-                { id: "WP-09", description: "Train staff on pest awareness and reporting.", priority: "Medium", riskLevel: "Medium", consequence: "Staff are first line of defense in spotting issues.", proof: "Training Log" },
-                { id: "WP-10", description: "Dispose of waste timely to avoid accumulation.", priority: "High", riskLevel: "High", consequence: "Accumulated waste is a primary attractant.", proof: "Waste Disposal Log" }
-            ]
-        },
-        {
-            title: "Closing & End-of-Day Procedure",
-            department: "Management",
-            frequency: "Daily",
-            role: "Closing Manager",
-            summary: "Ensures restaurant is shut down safely and records are accurate.",
-            icon: "lock",
-            tasks: [
-                { id: "EOD-01", description: "Reconcile all cash and digital payments against POS sales.", priority: "High", riskLevel: "High", consequence: "Failure can hide theft or accounting errors.", proof: "Sales Reconciliation Report" },
-                { id: "EOD-02", description: "Ensure all kitchen equipment is shut down and cleaned.", priority: "High", riskLevel: "High", consequence: "Leaving equipment on is a fire hazard.", proof: "Kitchen Closing Checklist" },
-                { id: "EOD-03", description: "Verify main gas line is turned off.", priority: "High", riskLevel: "High", consequence: "Leaks overnight can lead to explosion.", proof: "Gas Valve Check Log" },
-                { id: "EOD-04", description: "Secure all doors and activate the security alarm.", priority: "High", riskLevel: "High", consequence: "Leaving premises unsecured is an invitation for burglary.", proof: "Security Log" },
-                { id: "EOD-05", description: "Complete manager's closing report.", priority: "High", riskLevel: "Medium", consequence: "Loses info for the next day's team.", proof: "Manager Logbook" },
-                { id: "EOD-06", description: "Store all perishable food items correctly.", priority: "High", riskLevel: "High", consequence: "Improper storage leads to spoilage.", proof: "Storage Check" },
-                { id: "EOD-07", description: "Empty trash and clean the waste area.", priority: "High", riskLevel: "Medium", consequence: "Prevents overnight pest activity.", proof: "Waste Area Log" },
-                { id: "EOD-08", description: "Turn off non-essential lights.", priority: "High", riskLevel: "Low", consequence: "Wastes energy.", proof: "Visual Check" },
-                { id: "EOD-09", description: "Lock up all alcoholic beverages.", priority: "High", riskLevel: "High", consequence: "Prevents theft of high-value stock.", proof: "Liquor Storage Log" },
-                { id: "EOD-10", description: "Check that all restrooms are stocked for next day.", priority: "Medium", riskLevel: "Low", consequence: "Ensures readiness for first customers.", proof: "Restroom Check" }
+                { id: "CSM-01", description: "Log cold storage temperatures twice daily.", priority: "High", riskLevel: "High", consequence: "Failure to monitor can lead to thousands in spoiled inventory.", proof: "Temperature Log", trainerNotes: "Log must be signed off by 10 AM and 10 PM daily." },
+                { id: "CSM-02", description: "Verify digital logs if available.", priority: "High", riskLevel: "High", consequence: "Provides continuous records and identifies faults.", proof: "Digital Log Review", trainerNotes: "Look for 'sawtooth' patterns indicating door left open." },
+                { id: "CSM-03", description: "Test temperature alarms weekly.", priority: "High", riskLevel: "High", consequence: "Failed alarms mean failures overnight go unnoticed.", proof: "Alarm Test Log", trainerNotes: "Hold the probe in warm water to verify trigger." },
+                { id: "CSM-04", description: "Follow escalation procedure for any temperature deviations.", priority: "High", riskLevel: "High", consequence: "Slow response results in loss of all stock in the unit.", proof: "Incident Report", trainerNotes: "Move high-value meats to backup freezer if temp exceeds 5°C for >1hr." }
             ]
         }
     ]
