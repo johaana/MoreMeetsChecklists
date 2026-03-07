@@ -121,7 +121,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     const uniqueStructuralRoles = Array.from(new Set(checklists.flatMap(c => c.tasks.map(t => (t.role || c.role).trim())))).sort();
 
-    // --- 1. COVER PAGE (Institutional Identification) ---
+    // --- 1. COVER PAGE ---
     const coverData = [
         [], // Nav Space
         [],
@@ -144,7 +144,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     coverWs['!rows'] = [{ hpt: 30 }, null, { hpt: 45 }, null, null, { hpt: 100 }];
     utils.book_append_sheet(wb, coverWs, "1. Cover Page");
 
-    // --- SUCCESS PARTNER INSTRUCTIONS (The Remote Control Analogy) ---
+    // --- QUICK START GUIDE ---
     const introData = [
         [], // Nav
         [{ v: "COMMAND CENTER ACTIVATION GUIDE", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
@@ -170,7 +170,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     introWs['!cols'] = [{ wch: 110 }];
     utils.book_append_sheet(wb, introWs, "Quick Start Guide");
 
-    // --- 2. CONFIGURATION & MAPPING (The Command Hub) ---
+    // --- 2. CONFIGURATION & MAPPING ---
     const mappingData: any[][] = [
         [], // Nav
         [{ v: "SECTION A: PERSONNEL REGISTER (THE HUMANS)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
@@ -211,7 +211,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     checklists.forEach((c, idx) => {
         const sName = safeSheetName(c.title);
-        const scopeRow = 21 + idx; 
+        const scopeRow = 22 + idx; 
         indexData.push([
             { v: c.title, l: { Target: `#'${sName}'!A1` }, s: { ...dataCellStyle, font: { color: { rgb: "0000FF" }, underline: true, bold: true } } },
             { v: c.department, s: centerCellStyle },
@@ -224,14 +224,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     indexWs['!cols'] = [{ wch: 50 }, { wch: 25 }, { wch: 20 }, { wch: 15 }];
     utils.book_append_sheet(wb, indexWs, "3. Module Index");
 
-    // --- 4. DASHBOARD (The God View) ---
+    // --- 4. DASHBOARD ---
     const dashboardData: any[][] = [
         [], // Nav
         [{ v: "TOTAL ACTIVE TASKS", s: kpiTitleStyle }, { v: "RESOURCES ON-GROUND", s: kpiTitleStyle }, { v: "HIGHEST RISK PERSON", s: kpiTitleStyle }, { v: "UNIT GOVERNANCE", s: kpiTitleStyle }],
         [
             { f: `COUNTIF('Master Task Register'!F:F, "Applicable")`, s: kpiBoxStyle }, 
-            { f: `COUNTIF('2. Configuration & Mapping'!A3:A17, "*?")`, s: kpiBoxStyle }, 
-            { f: `IFERROR(INDEX('2. Configuration & Mapping'!A3:A17, MATCH(MAX(C7:C21), C7:C21, 0)), "VACANT")`, s: { ...kpiBoxStyle, font: { sz: 10 } } }, 
+            { f: `COUNTIF('2. Configuration & Mapping'!A4:A18, "*?")`, s: kpiBoxStyle }, 
+            { f: `IFERROR(INDEX('2. Configuration & Mapping'!A4:A18, MATCH(MAX(C7:C21), C7:C21, 0)), "VACANT")`, s: { ...kpiBoxStyle, font: { sz: 10 } } }, 
             { v: "STABLE", s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.GREEN }, sz: 10 } } }
         ],
         [],
@@ -240,7 +240,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
 
     for(let i=0; i<15; i++) {
-        const mappingRow = 3 + i;
+        const mappingRow = 4 + i;
         const nameRef = `'2. Configuration & Mapping'!A${mappingRow}`;
         const loadRow = 7 + i;
         dashboardData.push([
@@ -252,7 +252,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ]);
     }
 
-    dashboardData.push([], [{ v: "SECTION B: REGIONAL PORTFOLIO LEADERBOARD (MULTI-UNIT)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }]);
+    dashboardData.push([], [{ v: "SECTION B: REGIONAL PORTFOLIO LEADERBOARD", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }]);
     dashboardData.push([{ v: "Comparison Entity", s: headerStyle }, { v: "Governance Score", s: headerStyle }, { v: "Performance Visual", s: headerStyle }, { v: "Gap vs. Target", s: headerStyle }]);
     dashboardData.push([ {v: "THIS UNIT", s: { ...dataCellStyle, font: {bold: true}}}, {v: "88%", s: centerCellStyle}, {v: "||||||||||||||||||", s: { font: { color: {rgb: COLORS.GREEN}, name: 'Consolas' } }}, {v: "-2%", s: centerCellStyle} ]);
     dashboardData.push([ {v: "Regional Average", s: dataCellStyle}, {v: "82%", s: centerCellStyle}, {v: "|||||||||||||||", s: { font: { color: {rgb: COLORS.BAR_BLUE}, name: 'Consolas' } }}, {v: "-8%", s: centerCellStyle} ]);
@@ -263,7 +263,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     dashboardWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 15 }, { wch: 20 }, { wch: 15 }];
     utils.book_append_sheet(wb, dashboardWs, "4. Dashboard");
 
-    // --- 5. BRANCH CONNECTOR (The CEO's Linking Tool) ---
+    // --- 5. BRANCH CONNECTOR ---
     const connectorData = [
         [], // Nav
         [{ v: "COMMAND CENTER: BRANCH CONNECTOR", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
@@ -285,14 +285,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const masterData: any[][] = [["Task ID", "Operational Task", "Control Type", "Structural Role", "Assigned Person", "Scope Status"]];
     checklists.forEach((checklist, cIdx) => {
         const sName = safeSheetName(checklist.title);
-        const scopeRow = 21 + cIdx;
+        const scopeRow = 22 + cIdx;
         const scopeRef = `'2. Configuration & Mapping'!B${scopeRow}`;
         
         const wsData: any[][] = [[], [{ v: checklist.title.toUpperCase(), s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center' } } }], [], ["Task Description", "Primary Assigned", "Backup Personnel", "Frequency", "Proof Required", "Date Completed", "Status"]];
 
         checklist.tasks.forEach((task, tIdx) => {
             const roleKey = (task.role || checklist.role).trim();
-            const sectionCStart = 21 + checklists.length + 3;
+            const sectionCStart = 25 + checklists.length + 3; // Refined index
             const roleIdx = uniqueStructuralRoles.indexOf(roleKey);
             const lookupRow = sectionCStart + roleIdx;
             
