@@ -93,7 +93,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const coverData = [
         [], [],
         [{ v: "OPERATIONAL GOVERNANCE ENGINE", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Build Version 2.12 (Executive)`, s: { font: { italic: true }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Build Version 2.12 (Executive Portfolio Build)`, s: { font: { italic: true }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "Organization Entity", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Name Here", s: inputCellStyle }],
         [{ v: "Unit Name / ID", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Unit ID Here", s: inputCellStyle }],
@@ -120,7 +120,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     checklists.forEach(c => mappingData.push([{ v: c.title, s: dataCellStyle }, { v: "Applicable", s: { ...inputCellStyle, alignment: { horizontal: 'center' } } }]));
 
     mappingData.push([], [{ v: "STEP 3: ASSIGN ROLES TO PEOPLE", s: { font: { bold: true, sz: 11 } } }], [{ v: "Specific Role", s: headerStyle }, { v: "Who is doing this?", s: headerStyle }]);
-    uniqueRoles.forEach(r => mappingData.push([{ v: r, s: { ...dataCellStyle, font: { bold: true } } }, { v: "Type Name", s: inputCellStyle }]));
+    uniqueRoles.forEach(r => mappingData.push([{ v: r, s: { ...dataCellStyle, font: { bold: true } } }, { v: "", s: inputCellStyle }]));
 
     const mappingWs = utils.aoa_to_sheet(mappingData);
     addNavBar(mappingWs);
@@ -169,7 +169,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             wsData.push([
                 { v: t.id, s: centerCellStyle },
                 { v: t.description, s: { ...dataCellStyle, wrapText: true } },
-                { v: t.trainerNotes || "No notes", s: { ...dataCellStyle, font: { italic: true, sz: 9, color: { rgb: "666666" } }, wrapText: true } },
+                { v: t.trainerNotes || "Coaching Tip: Verify execution personally before sign-off.", s: { ...dataCellStyle, font: { italic: true, sz: 9, color: { rgb: "666666" } }, wrapText: true } },
                 { v: t.role || c.role, s: centerCellStyle },
                 { v: t.frequency || c.frequency, s: centerCellStyle },
                 { v: t.proof, s: dataCellStyle },
@@ -198,5 +198,5 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const masterWs = utils.aoa_to_sheet(masterData);
     utils.book_append_sheet(wb, masterWs, "Master Task Register");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_v2.12_Friendly.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_v2.12_Hardened.xlsx`);
 }
