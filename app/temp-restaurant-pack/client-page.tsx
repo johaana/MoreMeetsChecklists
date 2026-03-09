@@ -44,7 +44,7 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
             <FeatureItem 
                 icon={Users} 
                 title="Trainer’s Coaching Notes" 
-                description="Column N provides specific 'How-to' coaching tips for every task, turning a simple checklist into a powerful staff training tool."
+                description="Specific 'How-to' coaching tips for every task are integrated, turning a simple checklist into a powerful staff training tool."
             />
             <FeatureItem 
                 icon={Settings2} 
@@ -104,7 +104,7 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
             
             <div className="mt-12 flex flex-col items-center gap-2 opacity-20 text-center">
                 <p className="text-[10px] text-white uppercase font-black tracking-widest">Build Signature: 2.12.EXECUTIVE.RESTAURANT.DEMO</p>
-                <p className="text-[9px] text-white italic max-w-lg">Formula Objects Enabled. Column N (Trainer Notes) Activated. Input-Yellow UX Standard applied.</p>
+                <p className="text-[9px] text-white italic max-w-lg">Formula Objects Enabled. Column C (How to Coach) Activated. Input-Yellow UX Standard applied.</p>
             </div>
           </div>
         </div>

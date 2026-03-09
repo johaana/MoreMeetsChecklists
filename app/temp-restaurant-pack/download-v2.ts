@@ -26,7 +26,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         INPUT_YELLOW: "FFFFE0", // The "Type Here" heat-map
         WHITE: "FFFFFF",
         GRAY_TEXT: "4D4D4D",
-        SUB_NAVY: "1F4E79"
+        SUB_NAVY: "1F4E79",
+        MUTED_BLUE: "F0F4F8"
     };
 
     const borderThin = {
@@ -172,7 +173,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
                 { v: t.role || c.role, s: centerCellStyle },
                 { v: t.frequency || c.frequency, s: centerCellStyle },
                 { v: t.proof, s: dataCellStyle },
-                { v: "", s: inputCellStyle },
+                { v: "", s: inputCellStyle }, // Date Done
                 { t: 'f', f: `IF(G${row}="", "Pending", "Completed")`, s: { ...centerCellStyle, font: { bold: true } } },
                 { v: t.consequence, s: { ...dataCellStyle, font: { italic: true, sz: 9 }, wrapText: true } }
             ]);
