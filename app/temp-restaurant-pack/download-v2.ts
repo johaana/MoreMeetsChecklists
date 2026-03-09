@@ -74,6 +74,11 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         }
     };
 
+    const addSheetBeautification = (ws: WorkSheet) => {
+        // Hide gridlines and freeze top row
+        ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
+    };
+
     const addNavBar = (ws: WorkSheet) => {
         const navData = [
             [
@@ -83,7 +88,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             ]
         ];
         utils.sheet_add_aoa(ws, navData, { origin: "A1" });
-        ws['!views'] = [{ state: 'frozen', ySplit: 1, showGridLines: false }];
+        addSheetBeautification(ws);
     };
 
     const checklists = item.checklists;
@@ -105,7 +110,9 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
-    coverWs['!cols'] = [{ wch: 30 }, { wch: 50 }];
+    // Hard-coded widths to prevent truncation seen in screenshot
+    coverWs['!cols'] = [{ wch: 40 }, { wch: 60 }];
+    coverWs['!rows'] = [null, null, { hpt: 40 }];
     utils.book_append_sheet(wb, coverWs, "1. Cover Page");
 
     // --- 2. MAPPING ---
@@ -124,7 +131,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
 
     const mappingWs = utils.aoa_to_sheet(mappingData);
     addNavBar(mappingWs);
-    mappingWs['!cols'] = [{ wch: 35 }, { wch: 35 }, { wch: 15 }];
+    mappingWs['!cols'] = [{ wch: 45 }, { wch: 45 }, { wch: 20 }];
     utils.book_append_sheet(wb, mappingWs, "2. Configuration & Mapping");
 
     // --- 4. DASHBOARD ---
@@ -151,7 +158,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     }
     const dashWs = utils.aoa_to_sheet(dashData);
     addNavBar(dashWs);
-    dashWs['!cols'] = [{ wch: 30 }, { wch: 20 }, { wch: 30 }];
+    dashWs['!cols'] = [{ wch: 40 }, { wch: 25 }, { wch: 40 }];
     utils.book_append_sheet(wb, dashWs, "4. Dashboard");
 
     // --- CHECKLIST SHEETS ---
@@ -170,8 +177,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
                 { v: t.id, s: centerCellStyle },
                 { v: t.description, s: { ...dataCellStyle, wrapText: true } },
                 { v: t.trainerNotes || "Coaching Tip: Verify execution personally before sign-off.", s: { ...dataCellStyle, font: { italic: true, sz: 9, color: { rgb: "666666" } }, wrapText: true } },
-                { v: t.role || c.role, s: centerCellStyle },
-                { v: t.frequency || c.frequency, s: centerCellStyle },
+                { v: (t.role || c.role), s: centerCellStyle },
+                { v: (t.frequency || c.frequency), s: centerCellStyle },
                 { v: t.proof, s: dataCellStyle },
                 { v: "", s: inputCellStyle }, // Date Done
                 { t: 'f', f: `IF(G${row}="", "Pending", "Completed")`, s: { ...centerCellStyle, font: { bold: true } } },
@@ -182,7 +189,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         const ws = utils.aoa_to_sheet(wsData);
         addNavBar(ws);
         ws['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 8 } }];
-        ws['!cols'] = [{ wch: 10 }, { wch: 45 }, { wch: 45 }, { wch: 20 }, { wch: 15 }, { wch: 25 }, { wch: 25 }, { wch: 15 }, { wch: 45 }];
+        // Clinical widths for zero-truncation
+        ws['!cols'] = [{ wch: 12 }, { wch: 65 }, { wch: 65 }, { wch: 25 }, { wch: 18 }, { wch: 30 }, { wch: 30 }, { wch: 18 }, { wch: 65 }];
         ["A4", "B4", "C4", "D4", "E4", "F4", "G4", "H4", "I4"].forEach(cell => { if(ws[cell]) ws[cell].s = headerStyle; });
         utils.book_append_sheet(wb, ws, sName);
     });
@@ -198,5 +206,5 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const masterWs = utils.aoa_to_sheet(masterData);
     utils.book_append_sheet(wb, masterWs, "Master Task Register");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_v2.12_Hardened.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_v2.12_Executive.xlsx`);
 }

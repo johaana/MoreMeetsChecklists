@@ -30,35 +30,95 @@ export const restaurants: PremiumPack = {
     ],
     checklists: [
         {
-            title: "Kitchen Opening Checklist",
-            department: "F&B",
+            title: "Kitchen Opening & Food Safety",
+            department: "Kitchen",
             frequency: "Daily",
             role: "Head Chef",
-            summary: "Ensures the kitchen is ready and safe for service.",
+            summary: "Critical start-up checks to ensure 100% food safety and operational readiness.",
             icon: "sunrise",
             tasks: [
-                { id: "KO-01", description: "Check and log temperatures of all refrigerators and freezers.", priority: "High", riskLevel: "High", consequence: "Prevents bacteria growth and food spoilage which leads to poisoning.", proof: "Temp Log Entry", trainerNotes: "Check the rubber seals for mold and ensure the internal thermometer matches the outside display." },
-                { id: "KO-02", description: "Ensure separate cutting boards are ready for Veg vs Non-Veg prep.", priority: "High", riskLevel: "High", consequence: "Avoids cross-contamination and respects guest dietary choices.", proof: "Visual Check", trainerNotes: "Green for Veg, Red for Raw Meat. Keep them separated by at least 2 feet." },
-                { id: "KO-03", description: "Verify all cleaning chemicals are clearly labeled.", priority: "High", riskLevel: "Medium", consequence: "Prevents accidental poisonings if a chemical is mistaken for an ingredient.", proof: "Visual Audit", trainerNotes: "If a label is peeling, replace it immediately. Never use handwritten labels." },
-                { id: "KO-04", description: "Check that all equipment safety guards are active.", priority: "High", riskLevel: "High", consequence: "Prevents severe finger and hand injuries during operation.", proof: "Safety Log", trainerNotes: "Physically press the Emergency Stop button on the mixer to confirm it works." },
-                { id: "KO-05", description: "Refill all handwash stations with soap and sanitizer.", priority: "High", riskLevel: "Medium", consequence: "Basic hygiene prevents the spread of Salmonella and E. coli.", proof: "Visual Check", trainerNotes: "If the dispenser is empty, it means the staff isn't washing hands. Fix the supply immediately." },
-                { id: "KO-06", description: "Calibrate food thermometers using the ice-point method.", priority: "High", riskLevel: "High", consequence: "Inaccurate tools lead to serving raw or unsafe food.", proof: "Calibration Log", trainerNotes: "Dip in ice water; it must show 0°C. If it's off by 1 degree, it's failed." },
-                { id: "KO-07", description: "Ensure fire suppression system pressure is in the green.", priority: "High", riskLevel: "High", consequence: "Failure could lead to a total loss of the building in a fire.", proof: "Gauge Check", trainerNotes: "Show the team where the manual pull station is located." },
-                { id: "KO-08", description: "Stock up the first-aid kit with burn gel and bandages.", priority: "Medium", riskLevel: "Medium", consequence: "Minor injuries can become infected if not treated on the spot.", proof: "Stock Check", trainerNotes: "Focus on burn treatments; they are the most common kitchen injury." }
+                { 
+                    id: "KO-01", 
+                    description: "Log temperatures of all refrigerators and freezers. Verify against external displays.", 
+                    priority: "High", 
+                    riskLevel: "High", 
+                    consequence: "Temperature abuse leads to rapid bacterial growth and mass food poisoning.", 
+                    proof: "Temperature Log Sign-off",
+                    trainerNotes: "Coach Tip: Physically touch the condenser coils. If they are dusty or hot, the fridge is struggling even if the display looks 'ok'."
+                },
+                { 
+                    id: "KO-02", 
+                    description: "Inspect dry storage for signs of pest activity (droppings, gnawed packaging).", 
+                    priority: "High", 
+                    riskLevel: "High", 
+                    consequence: "A single rodent sighting can lead to immediate health department closure and viral brand damage.", 
+                    proof: "Pest Inspection Log",
+                    trainerNotes: "Coach Tip: Check behind the bottom-most shelf. This is the first place pests hide where cleaners usually miss."
+                },
+                { 
+                    id: "KO-03", 
+                    description: "Ensure separate color-coded cutting boards are sanitized and ready for use.", 
+                    priority: "High", 
+                    riskLevel: "High", 
+                    consequence: "Cross-contamination of raw meat into veg or cooked food is a critical HACCP failure.", 
+                    proof: "Visual Station Audit",
+                    trainerNotes: "Coach Tip: Look for deep grooves in boards. Deep grooves harbor bacteria even after sanitizing; replace if found."
+                },
+                { 
+                    id: "KO-04", 
+                    description: "Test chemical concentration in 3-compartment sink using test strips.", 
+                    priority: "High", 
+                    riskLevel: "Medium", 
+                    consequence: "Ineffective sanitizer does not kill pathogens; too much is toxic. Both are major audit failures.", 
+                    proof: "Chemical Titration Log",
+                    trainerNotes: "Coach Tip: Ensure the water is lukewarm. Hot water breaks down many sanitizers, making them useless."
+                },
+                { 
+                    id: "KO-05", 
+                    description: "Check staff grooming: clean aprons, hairnets, and short/clean fingernails.", 
+                    priority: "High", 
+                    riskLevel: "Medium", 
+                    consequence: "Physical contaminants (hair) and bacterial transfer from hands are leading causes of complaints.", 
+                    proof: "Daily Staff Inspection",
+                    trainerNotes: "Coach Tip: Inspect the undersides of nails. That is the true measure of a staff member's hygiene standard."
+                }
             ]
         },
         {
-            title: "Cold Storage Monitoring SOP",
-            department: "F&B",
-            frequency: "Daily",
-            role: "Kitchen Manager",
-            summary: "Ensures the freshness and safety of all temperature-sensitive inventory.",
+            title: "Cold Chain & Inventory Integrity",
+            department: "Operations",
+            frequency: "Twice Daily",
+            role: "Inventory Manager",
+            summary: "Protecting margins and quality through rigorous temperature and rotation control.",
             icon: "thermometer",
             tasks: [
-                { id: "CSM-01", description: "Log cold storage temperatures twice daily (Morning/Night).", priority: "High", riskLevel: "High", consequence: "Saves thousands in profit by catching refrigeration failure early.", proof: "Temperature Log", trainerNotes: "Sign-off must happen by 10 AM. Don't let staff 'pencil whip' (fake) the numbers." },
-                { id: "CSM-02", description: "Check for ice buildup on evaporator coils.", priority: "High", riskLevel: "Medium", consequence: "Ice buildup means the fridge is working too hard and will fail soon.", proof: "Visual Check", trainerNotes: "If you see ice, call the technician before the compressor dies." },
-                { id: "CSM-03", description: "Test the temperature alarm siren.", priority: "High", riskLevel: "High", consequence: "A silent failure at night means a total loss of expensive stock.", proof: "Alarm Test Log", trainerNotes: "Hold a warm cup near the sensor to trigger the siren and verify it's loud." },
-                { id: "CSM-04", description: "Follow the 'Safe Transfer' plan if temp stays above 5°C.", priority: "High", riskLevel: "High", consequence: "Critical limit for safety; failure results in food poisoning risk.", proof: "Transfer Log", trainerNotes: "Move high-value meats and dairy first. Don't wait for the temp to reach 10°C." }
+                { 
+                    id: "CSM-01", 
+                    description: "Verify FIFO rotation in all walk-ins. Check for 'use-by' labels on all prepped items.", 
+                    priority: "High", 
+                    riskLevel: "Medium", 
+                    consequence: "Failure to rotate stock leads to using expired ingredients, posing a health risk and eroding profit.", 
+                    proof: "Stock Rotation Audit",
+                    trainerNotes: "Coach Tip: If a container doesn't have a label, discard it immediately. Zero tolerance for 'mystery food' in the fridge."
+                },
+                { 
+                    id: "CSM-02", 
+                    description: "Perform 'Squeeze Test' on vacuum-packed meats to check for seal failures.", 
+                    priority: "Medium", 
+                    riskLevel: "Medium", 
+                    consequence: "A failed seal allows anaerobic bacteria to grow, causing spoilage before the official expiry date.", 
+                    proof: "Quality Check Log",
+                    trainerNotes: "Coach Tip: Look for excess liquid (purge) in the bag. High purge means the product was likely temperature-abused during transport."
+                },
+                { 
+                    id: "CSM-03", 
+                    description: "Check evaporator fans for ice buildup or restricted airflow.", 
+                    priority: "High", 
+                    riskLevel: "Medium", 
+                    consequence: "Restricted airflow causes uneven cooling, meaning food in the back could be in the danger zone.", 
+                    proof: "Mechanical Observation Log",
+                    trainerNotes: "Coach Tip: Ensure crates are stacked at least 2 inches away from walls to allow air to circulate around the food."
+                }
             ]
         }
     ]
