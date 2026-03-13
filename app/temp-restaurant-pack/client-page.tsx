@@ -5,7 +5,7 @@ import React from 'react';
 import type { PremiumPack } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { handleDownloadV2 } from './download-v2';
+import { handleDownload } from '@/lib/download';
 import { 
     Download, 
     BarChart3, 
@@ -18,7 +18,9 @@ import {
     Binary,
     Shield,
     Link as LinkIcon,
-    AlertCircle
+    AlertCircle,
+    UserCheck,
+    Stethoscope
 } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -59,28 +61,28 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                 <div className="space-y-6">
                     <div className="flex justify-center">
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-5 uppercase tracking-[0.5em] font-black text-[10px] bg-primary/5 rounded-full backdrop-blur-sm">
-                            Hardened Portfolio Build V2.15
+                            Hardened Portfolio Build V2.16
                         </Badge>
                     </div>
                     <h1 className="text-5xl md:text-8xl font-black font-headline text-primary-text italic uppercase tracking-tighter leading-[0.9] drop-shadow-2xl">
                         Execution <br/> <span className="text-primary underline decoration-primary/20 underline-offset-8">Infrastructure.</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-secondary-text italic max-w-2xl mx-auto font-medium leading-relaxed border-l-2 border-primary/20 pl-8">
-                        V2.15: Transitioning from checklists to an organizational nervous system. Featuring ID-based mapping, personnel status tracking, and CEO-level portfolio links.
+                        V2.16: Shifting from static checklists to a name-centric Governance Nervous System. Now featuring Name-Sync mapping, Personnel Status IQ, and Red Alert Resolution Protocols.
                     </p>
                 </div>
                 
                 <div className="flex flex-wrap justify-center gap-6">
                     <Button 
                         size="lg" 
-                        onClick={() => handleDownloadV2(pack)}
+                        onClick={() => handleDownload(pack, 'pack')}
                         className="h-20 px-12 bg-primary text-black font-black uppercase italic text-lg shadow-[0_0_50px_-12px_rgba(46,184,107,0.5)] hover:scale-105 active:scale-95 transition-all rounded-2xl"
                     >
                         <Download className="mr-3 w-6 h-6" />
-                        Download Hardened Build
+                        Download Portfolio Build V2.16
                     </Button>
                     <div className="flex items-center gap-3 text-white/20 font-black uppercase tracking-[0.3em] text-[10px] italic">
-                        <Shield className="w-4 h-4" /> SECURED PROTOCOL V2.15
+                        <Shield className="w-4 h-4" /> SECURED PROTOCOL V2.16
                     </div>
                 </div>
             </div>
@@ -90,41 +92,41 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
         <section className="py-32 bg-alternate-background">
             <div className="container px-4 md:px-6">
                 <div className="text-center mb-20 space-y-4">
-                    <Badge variant="outline" className="text-primary border-primary/20">Operational Intelligence</Badge>
+                    <Badge variant="outline" className="text-primary border-primary/20">Governance IQ</Badge>
                     <h2 className="text-4xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">Command-Ready Components</h2>
-                    <p className="text-secondary-text max-w-xl mx-auto italic font-medium">Technical specifications of the V2.15 Portfolio Build.</p>
+                    <p className="text-secondary-text max-w-xl mx-auto italic font-medium">Technical specifications of the V2.16 "Professional" Build.</p>
                 </div>
                 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <FeatureItem 
-                        icon={LinkIcon} 
-                        title="Hyperlinked Navigation" 
-                        description="Internal 'Jump Links' on every page. Move between Dashboard, Mapping, and Satellites with zero friction."
+                        icon={UserCheck} 
+                        title="Name-Sync Architecture" 
+                        description="Assign roles by Name, not ID. Validation formulas flag if a person is Resigned or On-Leave instantly."
                     />
                     <FeatureItem 
                         icon={AlertCircle} 
-                        title="Personnel Status IQ" 
-                        description="Track staff on leave, resigned, or holiday. Dashboard instantly flags risk when a role becomes unstaffed."
+                        title="Red Alert Protocol" 
+                        description="Dashboard guidance on resolving overdue tasks. Status changes to 'ACTION REQUIRED' to demand manager attention."
                     />
                     <FeatureItem 
-                        icon={Binary} 
-                        title="ID-Based Name Sync" 
-                        description="Type a name once in the register. Use their ID number to assign roles. The name flows to all checklists automatically."
+                        icon={Stethoscope} 
+                        title="Integrated Coaching" 
+                        description="Dedicated 'How to Coach' notes for every task turn your floor managers into expert field auditors."
                     />
                     <FeatureItem 
                         icon={BarChart3} 
-                        title="God-View Dashboard" 
-                        description="Real-time personnel load index. Identify single points of failure before they cause operational collapse."
+                        title="Visual Load Index" 
+                        description="Real-time personnel workload heatmap. Growing '█' blocks detect single points of failure in your team."
                     />
                     <FeatureItem 
-                        icon={Lock} 
-                        title="Single/Multi Toggle" 
-                        description="Switch between Single Unit and Portfolio mode. The 'Branch Connector' sheet acts as a CEO's registry."
+                        icon={LinkIcon} 
+                        title="Navigational Hyperlinks" 
+                        description="Functional 'Jump Links' built into the Guide. Move between Dashboard, Mapping, and Satellites with zero friction."
                     />
                     <FeatureItem 
-                        icon={ShieldCheck} 
-                        title="Integrated Coaching" 
-                        description="Specific Column C 'How to Coach' notes turn the file into a field manual for floor managers."
+                        icon={Settings2} 
+                        title="Scope Control Toggle" 
+                        description="Toggle modules like 'Bar' or 'Pool' to N/A. Dashboard math adapts instantly for fair unit scoring."
                     />
                 </div>
             </div>
@@ -143,9 +145,9 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                             </div>
                         </div>
                         <div className="space-y-4">
-                            <h3 className="text-4xl md:text-6xl font-black font-headline uppercase italic text-primary-text tracking-tighter leading-tight">V2.15 Portfolio Build</h3>
+                            <h3 className="text-4xl md:text-6xl font-black font-headline uppercase italic text-primary-text tracking-tighter leading-tight">V2.16 Executive Build</h3>
                             <p className="text-xl md:text-2xl text-secondary-text italic font-medium leading-relaxed max-w-2xl mx-auto">
-                                The final technical revision. Hardened formulas, personnel status logic, and integrated hyperlinking.
+                                Hardened formulas, Name-Sync logic, and the Integrated Red Alert Resolution Protocol.
                             </p>
                         </div>
                     </div>
@@ -153,11 +155,11 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                     <div className="relative z-10 flex flex-col items-center gap-10">
                         <Button 
                             size="lg" 
-                            onClick={() => handleDownloadV2(pack)}
+                            onClick={() => handleDownload(pack, 'pack')}
                             className="h-24 px-16 bg-primary text-black font-black uppercase italic text-2xl shadow-[0_0_60px_-15px_rgba(46,184,107,0.6)] hover:scale-105 active:scale-95 transition-all w-full sm:w-auto rounded-[2rem]"
                         >
                             <Download className="mr-4 w-8 h-8" />
-                            Download V2.15 Build
+                            Download V2.16 Build
                         </Button>
                     </div>
                 </div>

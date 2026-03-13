@@ -91,6 +91,15 @@ export const restaurants: PremiumPack = {
                     consequence: "Dirty restrooms are the #1 driver of negative reviews and suggest poor hygiene standards to guests.", 
                     proof: "Restroom Log",
                     trainerNotes: "Coaching Tip: Check the door handles and light switches. They are high-touch areas that accumulate grime fast."
+                },
+                { 
+                    id: "FOH-02", 
+                    description: "Inspect table settings and menus for stains or damage.", 
+                    priority: "Medium", 
+                    riskLevel: "Low", 
+                    consequence: "Poor presentation devalues the brand and suggests a lack of care in the kitchen as well.", 
+                    proof: "Pre-service Walkthrough",
+                    trainerNotes: "Coaching Tip: Check the bottom of the menus. This is where fingerprints and food drips often go unnoticed."
                 }
             ]
         }

@@ -16,7 +16,7 @@ export type Checklist = {
         riskLevel: 'High' | 'Medium' | 'Low';
         consequence: string;
         proof: string;
-        trainerNotes?: string; // Added field for Coaching Tips
+        trainerNotes?: string; 
         location?: string;
         department?: string;
         role?: string;
