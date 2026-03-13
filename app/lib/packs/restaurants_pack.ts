@@ -1,3 +1,4 @@
+
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const restaurants: PremiumPack = {
@@ -41,9 +42,9 @@ export const restaurants: PremiumPack = {
                     description: "Log temperatures of all refrigerators and freezers. Verify against external displays.", 
                     priority: "High", 
                     riskLevel: "High", 
-                    consequence: "Temperature abuse leads to rapid bacterial growth and mass food poisoning.", 
+                    consequence: "Temperature abuse leads to rapid bacterial growth and mass food poisoning. This is a primary cause of health department closure.", 
                     proof: "Temperature Log Sign-off",
-                    trainerNotes: "Coaching Tip: Physically touch the condenser coils. If they are dusty or hot, the fridge is struggling even if the display looks 'ok'."
+                    trainerNotes: "Coaching Tip: Physically touch the condenser coils. If they are dusty or hot, the unit is failing even if the display looks 'ok'."
                 },
                 { 
                     id: "KO-02", 
@@ -52,14 +53,14 @@ export const restaurants: PremiumPack = {
                     riskLevel: "High", 
                     consequence: "A single rodent sighting can lead to immediate health department closure and viral brand damage.", 
                     proof: "Pest Inspection Log",
-                    trainerNotes: "Coaching Tip: Check behind the bottom-most shelf. This is the first place pests hide where cleaners usually miss."
+                    trainerNotes: "Coaching Tip: Check behind the bottom-most shelf. This is the first place pests hide where standard cleaners usually miss."
                 },
                 { 
                     id: "KO-03", 
                     description: "Ensure separate color-coded cutting boards are sanitized and ready for use.", 
                     priority: "High", 
                     riskLevel: "High", 
-                    consequence: "Cross-contamination of raw meat into veg or cooked food is a critical HACCP failure.", 
+                    consequence: "Cross-contamination of raw meat pathogens into cooked food is a critical HACCP failure. Can be fatal for high-risk guests.", 
                     proof: "Visual Station Audit",
                     trainerNotes: "Coaching Tip: Look for deep grooves in boards. Deep grooves harbor bacteria even after sanitizing; replace if found."
                 },
@@ -68,83 +69,28 @@ export const restaurants: PremiumPack = {
                     description: "Test chemical concentration in 3-compartment sink using test strips.", 
                     priority: "High", 
                     riskLevel: "Medium", 
-                    consequence: "Ineffective sanitizer does not kill pathogens; too much is toxic. Both are major audit failures.", 
+                    consequence: "Ineffective sanitizer does not kill pathogens; too much is toxic. Both are major legal and safety failures.", 
                     proof: "Chemical Titration Log",
-                    trainerNotes: "Coaching Tip: Ensure the water is lukewarm. Hot water breaks down many sanitizers, making them useless."
-                },
-                { 
-                    id: "KO-05", 
-                    description: "Check staff grooming: clean aprons, hairnets, and short/clean fingernails.", 
-                    priority: "High", 
-                    riskLevel: "Medium", 
-                    consequence: "Physical contaminants (hair) and bacterial transfer from hands are leading causes of complaints.", 
-                    proof: "Daily Staff Inspection",
-                    trainerNotes: "Coaching Tip: Inspect the undersides of nails. That is the true measure of a staff member's hygiene standard."
+                    trainerNotes: "Coaching Tip: Ensure the water is lukewarm. Hot water breaks down many sanitizers (like Chlorine), making them useless."
                 }
             ]
         },
         {
-            title: "Cold Chain & Inventory Integrity",
-            department: "Operations",
-            frequency: "Twice Daily",
-            role: "Inventory Manager",
-            summary: "Protecting margins and quality through rigorous temperature and rotation control.",
-            icon: "thermometer",
-            tasks: [
-                { 
-                    id: "CSM-01", 
-                    description: "Verify FIFO rotation in all walk-ins. Check for 'use-by' labels on all prepped items.", 
-                    priority: "High", 
-                    riskLevel: "Medium", 
-                    consequence: "Failure to rotate stock leads to using expired ingredients, posing a health risk and eroding profit.", 
-                    proof: "Stock Rotation Audit",
-                    trainerNotes: "Coaching Tip: If a container doesn't have a label, discard it immediately. Zero tolerance for 'mystery food' in the fridge."
-                },
-                { 
-                    id: "CSM-02", 
-                    description: "Perform 'Squeeze Test' on vacuum-packed meats to check for seal failures.", 
-                    priority: "Medium", 
-                    riskLevel: "Medium", 
-                    consequence: "A failed seal allows anaerobic bacteria to grow, causing spoilage before the official expiry date.", 
-                    proof: "Quality Check Log",
-                    trainerNotes: "Coaching Tip: Look for excess liquid (purge) in the bag. High purge means the product was likely temperature-abused during transport."
-                },
-                { 
-                    id: "CSM-03", 
-                    description: "Check evaporator fans for ice buildup or restricted airflow.", 
-                    priority: "High", 
-                    riskLevel: "Medium", 
-                    consequence: "Restricted airflow causes uneven cooling, meaning food in the back could be in the danger zone.", 
-                    proof: "Mechanical Observation Log",
-                    trainerNotes: "Coaching Tip: Ensure crates are stacked at least 2 inches away from walls to allow air to circulate around the food."
-                }
-            ]
-        },
-        {
-            title: "Front of House Ambiance & Service",
-            department: "FOH",
+            title: "FOH Ambiance & Service Audit",
+            department: "Service",
             frequency: "Per Shift",
             role: "Restaurant Manager",
-            summary: "Ensures the dining environment is perfect for every guest.",
+            summary: "Ensures the guest environment is consistently perfect.",
             icon: "sparkles",
             tasks: [
                 { 
                     id: "FOH-01", 
-                    description: "Check all public restrooms for cleanliness and stock levels (soap, paper).", 
+                    description: "Check public restrooms for cleanliness, stock levels, and odors.", 
                     priority: "High", 
                     riskLevel: "Medium", 
-                    consequence: "Dirty restrooms are the #1 driver of negative Google reviews.", 
-                    proof: "Restroom Log Sign-off",
-                    trainerNotes: "Coaching Tip: Check the door handles and light switches. They are 'high-touch' areas that often look grimy."
-                },
-                { 
-                    id: "FOH-02", 
-                    description: "Test sound levels and music playlist for the current time of day.", 
-                    priority: "Low", 
-                    riskLevel: "Low", 
-                    consequence: "Poor volume management ruins the dining atmosphere.", 
-                    proof: "Visual Check",
-                    trainerNotes: "Coaching Tip: Stand in the furthest corner of the dining room. If you can't hear the person next to you whispering, the music is too loud."
+                    consequence: "Dirty restrooms are the #1 driver of negative reviews and suggest poor hygiene standards to guests.", 
+                    proof: "Restroom Log",
+                    trainerNotes: "Coaching Tip: Check the door handles and light switches. They are high-touch areas that accumulate grime fast."
                 }
             ]
         }

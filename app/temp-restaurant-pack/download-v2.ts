@@ -27,9 +27,10 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         WHITE: "FFFFFF",
         GRAY_TEXT: "4D4D4D",
         SUB_NAVY: "1F4E79",
-        MUTED_BG: "F8F9FA"
+        AMBER: "F4B400"
     };
 
+    // --- REFINED STYLES ---
     const borderThin = {
         top: { style: 'thin', color: { rgb: COLORS.BORDER } },
         bottom: { style: 'thin', color: { rgb: COLORS.BORDER } },
@@ -62,6 +63,11 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         alignment: { vertical: 'center', horizontal: 'center' }
     };
 
+    const linkStyle = {
+        font: { color: { rgb: "0000FF" }, underline: true, sz: 10 },
+        alignment: { vertical: 'center' }
+    };
+
     const kpiBoxStyle = {
         font: { bold: true, color: { rgb: COLORS.PRIMARY_NAVY }, sz: 14 },
         fill: { fgColor: { rgb: COLORS.WHITE } },
@@ -81,10 +87,10 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const addNavBar = (ws: WorkSheet) => {
         const navData = [
             [
-                { v: "HOME", l: { Target: "#'1. Cover Page'!A1" }, s: { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 9 }, fill: { fgColor: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center', vertical: 'center' } } },
-                { v: "DASHBOARD", l: { Target: "#'4. Dashboard'!A1" }, s: { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 9 }, fill: { fgColor: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center', vertical: 'center' } } },
-                { v: "MAPPING", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 9 }, fill: { fgColor: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center', vertical: 'center' } } },
-                { v: "CONNECT", l: { Target: "#'5. Branch Connector'!A1" }, s: { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 9 }, fill: { fgColor: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center', vertical: 'center' } } }
+                { v: "1. COVER PAGE", l: { Target: "#'1. Cover Page'!A1" }, s: { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 9 }, fill: { fgColor: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center', vertical: 'center' } } },
+                { v: "2. DASHBOARD", l: { Target: "#'4. Dashboard'!A1" }, s: { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 9 }, fill: { fgColor: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center', vertical: 'center' } } },
+                { v: "3. CONFIGURATION", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 9 }, fill: { fgColor: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center', vertical: 'center' } } },
+                { v: "4. CONNECTOR", l: { Target: "#'5. Branch Connector'!A1" }, s: { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 9 }, fill: { fgColor: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center', vertical: 'center' } } }
             ]
         ];
         utils.sheet_add_aoa(ws, navData, { origin: "A1" });
@@ -98,112 +104,124 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const coverData = [
         [], [],
         [{ v: "OPERATIONAL GOVERNANCE ENGINE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Version 2.13 Professional Build`, s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Build V2.15 Portfolio Infrastructure`, s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "Organization Entity", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Company Name", s: inputCellStyle }],
-        [{ v: "Unit Name / ID", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Branch Name", s: inputCellStyle }],
-        [{ v: "Portfolio Mode", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "SINGLE UNIT", s: { ...inputCellStyle, alignment: { horizontal: 'center' }, font: { bold: true } } }],
+        [{ v: "Deployment Mode:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "SINGLE UNIT (Type 'MULTI-UNIT' if required)", s: inputCellStyle }],
+        [{ v: "Organization Entity:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Company Name", s: inputCellStyle }],
+        [{ v: "Unit Identification:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Branch Name/ID", s: inputCellStyle }],
         [],
-        [{ v: "SYSTEM STATUS: STANDBY", s: { font: { bold: true, color: { rgb: COLORS.SUB_NAVY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "COMMAND CENTER ACTIVATION GUIDE:", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
+        [{ v: "Step 1: Register The Humans", s: { font: { bold: true } } }, { v: "Go to MAPPING. Type your staff names. Assign a Status (Active/Leave).", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: linkStyle }],
+        [{ v: "Step 2: Define Responsibility", s: { font: { bold: true } } }, { v: "In MAPPING (Step 3), type the ID number of the person next to each role.", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: linkStyle }],
+        [{ v: "Step 3: Toggle Your Scope", s: { font: { bold: true } } }, { v: "If a module doesn't apply (e.g. No Bar), type 'N/A' in Step 2 of MAPPING.", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: linkStyle }],
+        [{ v: "Step 4: Execute & Review", s: { font: { bold: true } } }, { v: "The DASHBOARD will now show a live 'God View' of your operation.", l: { Target: "#'4. Dashboard'!A1" }, s: linkStyle }],
         [],
-        [{ v: "SETUP GUIDE (AS EASY AS 1-2-3):", s: { font: { bold: true, sz: 11, color: {rgb: COLORS.PRIMARY_NAVY}} } }],
-        [{ v: "1. Go to 'MAPPING' sheet. Type your team members' names in Step 1.", s: { font: { sz: 10 } } }],
-        [{ v: "2. Assign those people to specific Roles in Step 3.", s: { font: { sz: 10 } } }],
-        [{ v: "3. Start ticking off tasks! Type the date in any YELLOW cell.", s: { font: { sz: 10 } } }],
+        [{ v: "VOCABULARY (THE EXECUTIVE GLOSSARY):", s: { font: { bold: true, sz: 11, color: {rgb: COLORS.SUB_NAVY}} } }],
+        [{ v: "Governance Score", s: { font: { bold: true } } }, { v: "Percentage of total assigned tasks across all modules completed on time." }],
+        [{ v: "Visual Load Index", s: { font: { bold: true } } }, { v: "Visual heatmap detection of single points of failure (overloaded staff)." }],
+        [{ v: "N/A Logic", s: { font: { bold: true } } }, { v: "Excludes modules from the denominator, ensuring fair scoring for different unit types." }],
         [],
-        [{ v: "Tip: Only touch the YELLOW cells. Everything else is automatic.", s: { font: { italic: true, sz: 9, color: {rgb: "808080"} } } }]
+        [{ v: "SYSTEM STATUS: SECURED", s: { font: { bold: true, color: { rgb: COLORS.GREEN } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
-    coverWs['!cols'] = [{ wch: 45 }, { wch: 65 }];
+    coverWs['!cols'] = [{ wch: 35 }, { wch: 85 }];
     coverWs['!rows'] = [null, null, { hpt: 45 }];
     utils.book_append_sheet(wb, coverWs, "1. Cover Page");
 
-    // --- 2. MAPPING ---
+    // --- 2. CONFIGURATION & MAPPING ---
     const mappingData: any[][] = [
         [],
-        [{ v: "STEP 1: REGISTER YOUR TEAM (THE HUMANS)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_NAVY }, sz: 11 } } }],
-        [{ v: "Human Name (Type Here)", s: headerStyle }, { v: "Primary Responsibility", s: headerStyle }, { v: "Status", s: headerStyle }]
+        [{ v: "SECTION A: PERSONNEL REGISTER (THE HUMANS)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_NAVY }, sz: 11 } } }],
+        [{ v: "ID", s: headerStyle }, { v: "Full Name (Type Here)", s: headerStyle }, { v: "Current Status (Active/Leave/Resigned)", s: headerStyle }, { v: "Capacity Notes", s: headerStyle }]
     ];
-    for(let i=0; i<20; i++) mappingData.push([{ v: "", s: inputCellStyle }, { v: "", s: dataCellStyle }, { v: "Active", s: centerCellStyle }]);
+    for(let i=1; i<=20; i++) mappingData.push([{ v: i, s: centerCellStyle }, { v: "", s: inputCellStyle }, { v: "ACTIVE", s: inputCellStyle }, { v: "", s: dataCellStyle }]);
     
-    mappingData.push([], [{ v: "STEP 2: CHOOSE YOUR MODULES (SCOPE TOGGLE)", s: { font: { bold: true, sz: 11 } } }], [{ v: "Operational Module", s: headerStyle }, { v: "Status (Type 'Applicable' or 'N/A')", s: headerStyle }]);
+    mappingData.push([], [{ v: "SECTION B: MODULE ACTIVATION (YES / N/A)", s: { font: { bold: true, sz: 11 } } }], [{ v: "Operational Module", s: headerStyle }, { v: "Applicability (Type 'Applicable' or 'N/A')", s: headerStyle }]);
     checklists.forEach(c => mappingData.push([{ v: c.title, s: dataCellStyle }, { v: "Applicable", s: inputCellStyle }]));
 
-    mappingData.push([], [{ v: "STEP 3: ROLE ASSIGNMENT (THE SATELLITES)", s: { font: { bold: true, sz: 11 } } }], [{ v: "Specific Role", s: headerStyle }, { v: "Assigned Human (Type Name Exactly as in Step 1)", s: headerStyle }]);
-    uniqueRoles.forEach(r => mappingData.push([{ v: r, s: { ...dataCellStyle, font: { bold: true } } }, { v: "", s: inputCellStyle }]));
+    mappingData.push([], [{ v: "SECTION C: ROLE-TO-HUMAN MAPPING (THE BRAIN)", s: { font: { bold: true, sz: 11 } } }], [{ v: "Structural Role", s: headerStyle }, { v: "Enter Human ID (from Section A)", s: headerStyle }, { v: "Auto-Resolved Name", s: headerStyle }]);
+    uniqueRoles.forEach((r, idx) => {
+        const row = 33 + checklists.length + idx; 
+        mappingData.push([
+            { v: r, s: { ...dataCellStyle, font: { bold: true } } }, 
+            { v: "", s: inputCellStyle }, 
+            { t: 'f', f: `IF(B${row}="", "VACANT", IFERROR(INDEX(B4:B23, MATCH(B${row}, A4:A23, 0)), "INVALID ID"))`, s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.SUB_NAVY } } } }
+        ]);
+    });
 
     const mappingWs = utils.aoa_to_sheet(mappingData);
     addNavBar(mappingWs);
-    mappingWs['!cols'] = [{ wch: 50 }, { wch: 50 }, { wch: 20 }];
+    mappingWs['!cols'] = [{ wch: 15 }, { wch: 50 }, { wch: 45 }, { wch: 30 }];
     utils.book_append_sheet(wb, mappingWs, "2. Configuration & Mapping");
 
     // --- 4. DASHBOARD ---
     const dashData: any[][] = [
         [],
-        [{ v: "TOTAL TASKS", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, { v: "TEAM SIZE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, { v: "HIGHEST LOAD PERSON", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }],
+        [{ v: "GOVERNANCE SCORE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, { v: "HUMAN RESOURCES", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, { v: "HIGHEST RISK PERSON", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }],
         [
-            { t: 'f', f: `COUNTIF('Master Task Register'!F:F, "Applicable")`, s: kpiBoxStyle },
-            { t: 'f', f: `COUNTA('2. Configuration & Mapping'!A4:A23)`, s: kpiBoxStyle },
-            { t: 'f', f: `IFERROR(INDEX('2. Configuration & Mapping'!A4:A23, MATCH(MAX(B7:B26), B7:B26, 0)), "VACANT")`, s: { ...kpiBoxStyle, font: { sz: 10 } } }
+            { t: 'f', f: `TEXT(COUNTIFS('Master Task Register'!F:F, "Applicable", 'Master Task Register'!E:E, "<>") / COUNTIF('Master Task Register'!F:F, "Applicable"), "0%")`, s: kpiBoxStyle },
+            { t: 'f', f: `COUNTA('2. Configuration & Mapping'!B4:B23)`, s: kpiBoxStyle },
+            { t: 'f', f: `IFERROR(INDEX('2. Configuration & Mapping'!B4:B23, MATCH(MAX(B7:B26), B7:B26, 0)), "NO DATA")`, s: { ...kpiBoxStyle, font: { sz: 10 } } }
         ],
         [],
-        [{ v: "PERSONNEL WORKLOAD HEATMAP", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
-        [{ v: "Person Name", s: headerStyle }, { v: "Tasks Assigned", s: headerStyle }, { v: "Visual Load Bar", s: headerStyle }]
+        [{ v: "PERSONNEL WORKLOAD & RISK HEATMAP", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
+        [{ v: "Name", s: headerStyle }, { v: "Tasks Assigned", s: headerStyle }, { v: "Visual Load Index", s: headerStyle }, { v: "Personnel Status", s: headerStyle }]
     ];
     for(let i=0; i<20; i++) {
         const row = i+7;
         const mapRow = i+4;
         dashData.push([
-            { t: 'f', f: `'2. Configuration & Mapping'!A${mapRow}`, s: dataCellStyle },
+            { t: 'f', f: `'2. Configuration & Mapping'!B${mapRow}`, s: dataCellStyle },
             { t: 'f', f: `IF(A${row}="", 0, COUNTIFS('Master Task Register'!D:D, A${row}, 'Master Task Register'!F:F, "Applicable"))`, s: centerCellStyle },
-            { t: 'f', f: `IF(B${row}=0, "", REPT("█", MIN(15, ROUND(B${row}/2, 0))))`, s: { font: { color: { rgb: COLORS.SUB_NAVY }, sz: 12 }, alignment: { vertical: 'center' } } }
+            { t: 'f', f: `IF(B${row}=0, "", REPT("█", MIN(15, ROUND(B${row}/2, 0))))`, s: { font: { color: { rgb: COLORS.SUB_NAVY }, sz: 12 } } },
+            { t: 'f', f: `IF(A${row}="", "", '2. Configuration & Mapping'!C${mapRow})`, s: centerCellStyle }
         ]);
     }
     const dashWs = utils.aoa_to_sheet(dashData);
     addNavBar(dashWs);
-    dashWs['!cols'] = [{ wch: 45 }, { wch: 25 }, { wch: 45 }];
+    dashWs['!cols'] = [{ wch: 45 }, { wch: 25 }, { wch: 45 }, { wch: 25 }];
     utils.book_append_sheet(wb, dashWs, "4. Dashboard");
 
     // --- 5. BRANCH CONNECTOR ---
     const connectData = [
         [],
         [{ v: "COMMAND CENTER: BRANCH CONNECTOR", s: { font: { bold: true, sz: 16, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
-        [{ v: "Paste your satellite branch Google/OneDrive links below to sync real-time data.", s: { font: { italic: true } } }],
+        [{ v: "For Multi-Unit Portfolio use: Paste your satellite branch links below to create your God-View registry.", s: { font: { italic: true } } }],
         [],
-        [{ v: "Unit / Location Name", s: headerStyle }, { v: "Satellite Link (Paste URL)", s: headerStyle }, { v: "Sync Status", s: headerStyle }],
-        [{ v: "Example: Mumbai East", s: dataCellStyle }, { v: "https://...", s: inputCellStyle }, { v: "CONNECTED", s: { ...centerCellStyle, font: { color: { rgb: COLORS.GREEN }, bold: true } } }]
+        [{ v: "Unit / Location Name", s: headerStyle }, { v: "Satellite Link (Paste Google/OneDrive URL)", s: headerStyle }, { v: "Sync Status", s: headerStyle }],
+        [{ v: "Example: High-End Bistro East", s: dataCellStyle }, { v: "https://...", s: inputCellStyle }, { v: "CONNECTED", s: { ...centerCellStyle, font: { color: { rgb: COLORS.GREEN }, bold: true } } }]
     ];
-    for(let i=0; i<10; i++) connectData.push([{ v: "", s: inputCellStyle }, { v: "", s: inputCellStyle }, { v: "DISCONNECTED", s: centerCellStyle }]);
+    for(let i=0; i<10; i++) connectData.push([{ v: "", s: inputCellStyle }, { v: "", s: inputCellStyle }, { v: "PENDING", s: centerCellStyle }]);
     const connectWs = utils.aoa_to_sheet(connectData);
     addNavBar(connectWs);
-    connectWs['!cols'] = [{ wch: 40 }, { wch: 70 }, { wch: 20 }];
+    connectWs['!cols'] = [{ wch: 45 }, { wch: 80 }, { wch: 20 }];
     utils.book_append_sheet(wb, connectWs, "5. Branch Connector");
 
     // --- CHECKLIST SHEETS ---
     checklists.forEach((c, cIdx) => {
         const sName = safeSheetName(c.title);
-        const configRowForModule = 27 + cIdx; // Step 2 start row
+        const configRowForModule = 27 + cIdx; 
         const wsData: any[][] = [
             [],
             [{ v: c.title.toUpperCase(), s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center' } } }],
             [],
-            ['Task ID', 'What needs to be done?', 'How to Coach (Management Tips)', 'Assigned To (Name)', 'Frequency', 'Proof Required', 'Date Done (dd-mm-yyyy)', 'Live Status', 'Why this matters']
+            ['Task ID', 'What needs to be done?', 'How to Coach (Management Tips)', 'Assigned To (Auto)', 'Frequency', 'Proof Required', 'Date Done (Type here)', 'Live Status', 'Why this matters']
         ];
 
         c.tasks.forEach((t, tIdx) => {
             const row = tIdx + 5;
             const roleIdx = uniqueRoles.indexOf((t.role || c.role).trim());
-            const roleConfigRow = 27 + checklists.length + 3 + roleIdx; // Step 3 start row
+            const roleMapRow = 33 + checklists.length + roleIdx;
 
             wsData.push([
                 { v: t.id, s: centerCellStyle },
                 { v: t.description, s: { ...dataCellStyle, wrapText: true } },
-                { v: t.trainerNotes || "Coaching Tip: Inspect the detail personally before signing off.", s: { ...dataCellStyle, font: { italic: true, sz: 9, color: { rgb: "666666" } }, wrapText: true } },
-                { t: 'f', f: `'2. Configuration & Mapping'!B${roleConfigRow}`, s: { ...centerCellStyle, font: { bold: true } } }, // NAME LOOKUP
+                { v: t.trainerNotes || "Inspect the detail personally before signing off.", s: { ...dataCellStyle, font: { italic: true, sz: 9, color: { rgb: "666666" } }, wrapText: true } },
+                { t: 'f', f: `'2. Configuration & Mapping'!C${roleMapRow}`, s: { ...centerCellStyle, font: { bold: true } } }, 
                 { v: (t.frequency || c.frequency), s: centerCellStyle },
                 { v: t.proof, s: dataCellStyle },
-                { v: "", s: inputCellStyle }, // Date Done
+                { v: "", s: inputCellStyle }, 
                 { t: 'f', f: `IF(G${row}="", "PENDING", "COMPLETED")`, s: { ...centerCellStyle, font: { bold: true } } },
                 { v: t.consequence, s: { ...dataCellStyle, font: { italic: true, sz: 9 }, wrapText: true } }
             ]);
@@ -223,13 +241,13 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         const configRow = 27 + cIdx;
         c.tasks.forEach((t, tIdx) => {
             const roleIdx = uniqueRoles.indexOf((t.role || c.role).trim());
-            const roleConfigRow = 27 + checklists.length + 3 + roleIdx;
+            const roleMapRow = 33 + checklists.length + roleIdx;
             const sheetRow = tIdx + 5;
             masterData.push([
                 t.id, 
                 t.description, 
                 (t.role || c.role), 
-                { t: 'f', f: `'2. Configuration & Mapping'!B${roleConfigRow}` }, 
+                { t: 'f', f: `'2. Configuration & Mapping'!C${roleMapRow}` }, 
                 { t: 'f', f: `'${safeSheetName(c.title)}'!G${sheetRow}` },
                 { t: 'f', f: `'2. Configuration & Mapping'!B${configRow}` }
             ]);
@@ -238,5 +256,5 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const masterWs = utils.aoa_to_sheet(masterData);
     utils.book_append_sheet(wb, masterWs, "Master Task Register");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_v2.13_EXECUTIVE.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.15_PORTFOLIO.xlsx`);
 }
