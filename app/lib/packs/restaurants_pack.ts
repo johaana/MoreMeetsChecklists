@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const restaurants: PremiumPack = {
@@ -44,7 +43,7 @@ export const restaurants: PremiumPack = {
                     riskLevel: "High", 
                     consequence: "Temperature abuse leads to rapid bacterial growth and mass food poisoning.", 
                     proof: "Temperature Log Sign-off",
-                    trainerNotes: "Coach Tip: Physically touch the condenser coils. If they are dusty or hot, the fridge is struggling even if the display looks 'ok'."
+                    trainerNotes: "Coaching Tip: Physically touch the condenser coils. If they are dusty or hot, the fridge is struggling even if the display looks 'ok'."
                 },
                 { 
                     id: "KO-02", 
@@ -53,7 +52,7 @@ export const restaurants: PremiumPack = {
                     riskLevel: "High", 
                     consequence: "A single rodent sighting can lead to immediate health department closure and viral brand damage.", 
                     proof: "Pest Inspection Log",
-                    trainerNotes: "Coach Tip: Check behind the bottom-most shelf. This is the first place pests hide where cleaners usually miss."
+                    trainerNotes: "Coaching Tip: Check behind the bottom-most shelf. This is the first place pests hide where cleaners usually miss."
                 },
                 { 
                     id: "KO-03", 
@@ -62,7 +61,7 @@ export const restaurants: PremiumPack = {
                     riskLevel: "High", 
                     consequence: "Cross-contamination of raw meat into veg or cooked food is a critical HACCP failure.", 
                     proof: "Visual Station Audit",
-                    trainerNotes: "Coach Tip: Look for deep grooves in boards. Deep grooves harbor bacteria even after sanitizing; replace if found."
+                    trainerNotes: "Coaching Tip: Look for deep grooves in boards. Deep grooves harbor bacteria even after sanitizing; replace if found."
                 },
                 { 
                     id: "KO-04", 
@@ -71,7 +70,7 @@ export const restaurants: PremiumPack = {
                     riskLevel: "Medium", 
                     consequence: "Ineffective sanitizer does not kill pathogens; too much is toxic. Both are major audit failures.", 
                     proof: "Chemical Titration Log",
-                    trainerNotes: "Coach Tip: Ensure the water is lukewarm. Hot water breaks down many sanitizers, making them useless."
+                    trainerNotes: "Coaching Tip: Ensure the water is lukewarm. Hot water breaks down many sanitizers, making them useless."
                 },
                 { 
                     id: "KO-05", 
@@ -80,7 +79,7 @@ export const restaurants: PremiumPack = {
                     riskLevel: "Medium", 
                     consequence: "Physical contaminants (hair) and bacterial transfer from hands are leading causes of complaints.", 
                     proof: "Daily Staff Inspection",
-                    trainerNotes: "Coach Tip: Inspect the undersides of nails. That is the true measure of a staff member's hygiene standard."
+                    trainerNotes: "Coaching Tip: Inspect the undersides of nails. That is the true measure of a staff member's hygiene standard."
                 }
             ]
         },
@@ -99,7 +98,7 @@ export const restaurants: PremiumPack = {
                     riskLevel: "Medium", 
                     consequence: "Failure to rotate stock leads to using expired ingredients, posing a health risk and eroding profit.", 
                     proof: "Stock Rotation Audit",
-                    trainerNotes: "Coach Tip: If a container doesn't have a label, discard it immediately. Zero tolerance for 'mystery food' in the fridge."
+                    trainerNotes: "Coaching Tip: If a container doesn't have a label, discard it immediately. Zero tolerance for 'mystery food' in the fridge."
                 },
                 { 
                     id: "CSM-02", 
@@ -108,7 +107,7 @@ export const restaurants: PremiumPack = {
                     riskLevel: "Medium", 
                     consequence: "A failed seal allows anaerobic bacteria to grow, causing spoilage before the official expiry date.", 
                     proof: "Quality Check Log",
-                    trainerNotes: "Coach Tip: Look for excess liquid (purge) in the bag. High purge means the product was likely temperature-abused during transport."
+                    trainerNotes: "Coaching Tip: Look for excess liquid (purge) in the bag. High purge means the product was likely temperature-abused during transport."
                 },
                 { 
                     id: "CSM-03", 
@@ -117,7 +116,35 @@ export const restaurants: PremiumPack = {
                     riskLevel: "Medium", 
                     consequence: "Restricted airflow causes uneven cooling, meaning food in the back could be in the danger zone.", 
                     proof: "Mechanical Observation Log",
-                    trainerNotes: "Coach Tip: Ensure crates are stacked at least 2 inches away from walls to allow air to circulate around the food."
+                    trainerNotes: "Coaching Tip: Ensure crates are stacked at least 2 inches away from walls to allow air to circulate around the food."
+                }
+            ]
+        },
+        {
+            title: "Front of House Ambiance & Service",
+            department: "FOH",
+            frequency: "Per Shift",
+            role: "Restaurant Manager",
+            summary: "Ensures the dining environment is perfect for every guest.",
+            icon: "sparkles",
+            tasks: [
+                { 
+                    id: "FOH-01", 
+                    description: "Check all public restrooms for cleanliness and stock levels (soap, paper).", 
+                    priority: "High", 
+                    riskLevel: "Medium", 
+                    consequence: "Dirty restrooms are the #1 driver of negative Google reviews.", 
+                    proof: "Restroom Log Sign-off",
+                    trainerNotes: "Coaching Tip: Check the door handles and light switches. They are 'high-touch' areas that often look grimy."
+                },
+                { 
+                    id: "FOH-02", 
+                    description: "Test sound levels and music playlist for the current time of day.", 
+                    priority: "Low", 
+                    riskLevel: "Low", 
+                    consequence: "Poor volume management ruins the dining atmosphere.", 
+                    proof: "Visual Check",
+                    trainerNotes: "Coaching Tip: Stand in the furthest corner of the dining room. If you can't hear the person next to you whispering, the music is too loud."
                 }
             ]
         }
