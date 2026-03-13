@@ -108,11 +108,11 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const coverData = [
         [], [],
         [{ v: "OPERATIONAL GOVERNANCE ENGINE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Version 2.18 Build: Executive Command Portfolio`, s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Version 2.18 Build: Executive Command Portfolio (TESTED DEMO)`, s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "Deployment Mode:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "MULTI-UNIT PORTFOLIO (Type 'SINGLE' if required)", s: inputCellStyle }],
-        [{ v: "Organization Entity:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Company Name", s: inputCellStyle }],
-        [{ v: "Unit Identification:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "MASTER HUB", s: inputCellStyle }],
+        [{ v: "Deployment Mode:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "MULTI-UNIT PORTFOLIO", s: inputCellStyle }],
+        [{ v: "Organization Entity:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "RestoGroup Global", s: inputCellStyle }],
+        [{ v: "Unit Identification:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "MASTER HUB (PORTFOLIO VIEW)", s: inputCellStyle }],
         [],
         [{ v: "RED ALERT CONTINUITY PROTOCOL:", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.RED } } } }],
         [{ v: "1. If tasks are RED, identify the assigned person on the Dashboard." }],
@@ -150,18 +150,22 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     guideWs['!cols'] = [{ wch: 40 }, { wch: 100 }];
     utils.book_append_sheet(wb, guideWs, "Quick Start Guide");
 
-    // --- 2. CONFIGURATION & MAPPING (THE SETTINGS SHEET) ---
+    // --- 2. CONFIGURATION & MAPPING ---
     const mappingData: any[][] = [
         [],
-        [{ v: "SECTION A: PERSONNEL REGISTER (THE HUMANS)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_NAVY }, sz: 11 } } }],
-        [{ v: "Full Name (Type Once)", s: headerStyle }, { v: "Position", s: headerStyle }, { v: "Branch/Unit", s: headerStyle }, { v: "Status (ACTIVE/LEAVE/RESIGNED)", s: headerStyle }, { v: "System Health", s: headerStyle }]
+        [{ v: "SECTION A: PERSONNEL REGISTER (DEMO EXAMPLES INCLUDED)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_NAVY }, sz: 11 } } }],
+        [{ v: "Full Name", s: headerStyle }, { v: "Position", s: headerStyle }, { v: "Branch/Unit", s: headerStyle }, { v: "Status (ACTIVE/LEAVE/RESIGNED)", s: headerStyle }, { v: "System Health", s: headerStyle }],
+        [{ v: "Chef Imran", s: inputCellStyle }, { v: "Head Chef", s: dataCellStyle }, { v: "Main Street", s: inputCellStyle }, { v: "ACTIVE", s: inputCellStyle }, { t: 'f', f: `IF(A4="", "", IF(D4="RESIGNED", "⚠️ RE-ASSIGN ROLES", "OK"))`, s: centerCellStyle }],
+        [{ v: "Sam Wilson", s: inputCellStyle }, { v: "Night Manager", s: dataCellStyle }, { v: "Main Street", s: inputCellStyle }, { v: "ACTIVE", s: inputCellStyle }, { t: 'f', f: `IF(A5="", "", IF(D5="RESIGNED", "⚠️ RE-ASSIGN ROLES", "OK"))`, s: centerCellStyle }],
+        [{ v: "Rajesh Kumar", s: inputCellStyle }, { v: "Kitchen Supervisor", s: dataCellStyle }, { v: "North Wing", s: inputCellStyle }, { v: "RESIGNED", s: inputCellStyle }, { t: 'f', f: `IF(A6="", "", IF(D6="RESIGNED", "⚠️ RE-ASSIGN ROLES", "OK"))`, s: centerCellStyle }],
+        [{ v: "Aditi Khan", s: inputCellStyle }, { v: "Floor Lead", s: dataCellStyle }, { v: "North Wing", s: inputCellStyle }, { v: "ON LEAVE", s: inputCellStyle }, { t: 'f', f: `IF(A7="", "", IF(D7="RESIGNED", "⚠️ RE-ASSIGN ROLES", "OK"))`, s: centerCellStyle }]
     ];
-    for(let i=0; i<30; i++) {
-        const row = i + 4;
+    for(let i=0; i<25; i++) {
+        const row = i + 8;
         mappingData.push([
             { v: "", s: inputCellStyle }, 
             { v: "", s: dataCellStyle }, 
-            { v: "Main Branch", s: inputCellStyle },
+            { v: "Main Street", s: inputCellStyle },
             { v: "ACTIVE", s: inputCellStyle }, 
             { t: 'f', f: `IF(A${row}="", "", IF(D${row}="RESIGNED", "⚠️ RE-ASSIGN ROLES", "OK"))`, s: centerCellStyle }
         ]);
@@ -170,12 +174,12 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     mappingData.push([], [{ v: "SECTION B: MODULE SCOPE (YES / N/A)", s: { font: { bold: true, sz: 11 } } }], [{ v: "Operational Module", s: headerStyle }, { v: "Applicability (YES or N/A)", s: headerStyle }]);
     checklists.forEach(c => mappingData.push([{ v: c.title, s: dataCellStyle }, { v: "YES", s: inputCellStyle }]));
 
-    mappingData.push([], [{ v: "SECTION C: ROLE-TO-NAME MAPPING (THE BRAIN)", s: { font: { bold: true, sz: 11 } } }], [{ v: "Structural Role", s: headerStyle }, { v: "Assigned Personnel Name (Type Here)", s: headerStyle }, { v: "Staff Health Status", s: headerStyle }]);
+    mappingData.push([], [{ v: "SECTION C: ROLE-TO-NAME MAPPING", s: { font: { bold: true, sz: 11 } } }], [{ v: "Structural Role", s: headerStyle }, { v: "Assigned Personnel Name", s: headerStyle }, { v: "Staff Health Status", s: headerStyle }]);
     uniqueRoles.forEach((r, idx) => {
         const row = 43 + checklists.length + idx; 
         mappingData.push([
             { v: r, s: { ...dataCellStyle, font: { bold: true } } }, 
-            { v: "", s: inputCellStyle }, 
+            { v: idx === 0 ? "Chef Imran" : idx === 1 ? "Sam Wilson" : idx === 2 ? "Rajesh Kumar" : "", s: inputCellStyle }, 
             { t: 'f', f: `IF(B${row}="", "VACANT", IFERROR(INDEX(D4:D33, MATCH(B${row}, A4:A33, 0)), "NOT IN REGISTER"))`, s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.SUB_NAVY } } } }
         ]);
     });
@@ -199,16 +203,30 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             { t: 'f', f: `TEXT(COUNTIFS('Master Task Register'!F:F, "YES", 'Master Task Register'!G:G, IF(C3="", "*", C3), 'Master Task Register'!E:E, "<>") / MAX(1, COUNTIFS('Master Task Register'!F:F, "YES", 'Master Task Register'!G:G, IF(C3="", "*", C3))), "0%")`, s: kpiBoxStyle },
             { t: 'f', f: `COUNTIFS('Master Task Register'!F:F, "YES", 'Master Task Register'!G:G, IF(C3="", "*", C3), 'Master Task Register'!E:E, "", 'Master Task Register'!H:H, "High")`, s: criticalKpiStyle },
             { v: "", s: inputCellStyle },
-            { v: "", s: inputCellStyle }, 
-            { v: "", s: inputCellStyle }  
+            { v: "01-01-2025", s: inputCellStyle }, 
+            { v: "31-12-2025", s: inputCellStyle }  
         ],
         [],
-        [{ v: "BIPOLAR PERFORMANCE HEATMAP (FILTERED VIEW)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
-        [{ v: "Personnel Name", s: headerStyle }, { v: "Status", s: headerStyle }, { v: "Execution Index (Completed)", s: headerStyle }, { v: "Risk Index (Overdue/Pending)", s: headerStyle }]
+        [{ v: "BIPOLAR PERFORMANCE HEATMAP (GREEN=EXECUTION / RED=RISK)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
+        [{ v: "Personnel Name", s: headerStyle }, { v: "Status", s: headerStyle }, { v: "Execution Index", s: headerStyle }, { v: "Risk Index", s: headerStyle }]
     ];
-    for(let i=0; i<20; i++) {
-        const row = i+7;
-        const mapRow = i+4;
+    
+    // Demo Personnel on Dashboard
+    const demoStaff = ["Chef Imran", "Sam Wilson", "Rajesh Kumar", "Aditi Khan"];
+    demoStaff.forEach((name, i) => {
+        const row = i + 7;
+        const mapRow = i + 4;
+        dashData.push([
+            { v: name, s: dataCellStyle },
+            { t: 'f', f: `'2. Configuration & Mapping'!D${mapRow}`, s: centerCellStyle },
+            { t: 'f', f: `REPT("█", MIN(15, ROUND(COUNTIFS('Master Task Register'!D:D, A${row}, 'Master Task Register'!F:F, "YES", 'Master Task Register'!G:G, IF($C$3="", "*", $C$3), 'Master Task Register'!E:E, "<>")/2, 0)))`, s: { font: { color: { rgb: COLORS.GREEN }, sz: 12 } } },
+            { t: 'f', f: `REPT("█", MIN(15, ROUND(COUNTIFS('Master Task Register'!D:D, A${row}, 'Master Task Register'!F:F, "YES", 'Master Task Register'!G:G, IF($C$3="", "*", $C$3), 'Master Task Register'!E:E, "")/2, 0)))`, s: { font: { color: { rgb: COLORS.RED }, sz: 12 } } }
+        ]);
+    });
+
+    for(let i=0; i<15; i++) {
+        const row = i + 11;
+        const mapRow = i + 8;
         dashData.push([
             { t: 'f', f: `'2. Configuration & Mapping'!A${mapRow}`, s: dataCellStyle },
             { t: 'f', f: `IF(A${row}="", "", '2. Configuration & Mapping'!D${mapRow})`, s: centerCellStyle },
@@ -220,13 +238,13 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     dashData.push([], [{ v: "PERSONNEL VACANCY TRACKER (RE-ASSIGN IMMEDIATELY)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.RED } } } }]);
     dashData.push([{ v: "Role Title", s: headerStyle }, { v: "Currently Mapped To", s: headerStyle }, { v: "Personnel Health", s: headerStyle }, { v: "Action Required", s: headerStyle }]);
     
-    uniqueRoles.slice(0, 8).forEach((r, idx) => {
+    uniqueRoles.slice(0, 10).forEach((r, idx) => {
         const mapRow = 43 + checklists.length + idx;
         dashData.push([
             { v: r, s: dataCellStyle },
             { t: 'f', f: `'2. Configuration & Mapping'!B${mapRow}`, s: dataCellStyle },
             { t: 'f', f: `'2. Configuration & Mapping'!C${mapRow}`, s: centerCellStyle },
-            { t: 'f', f: `IF(OR(C${dashData.length + 1}="RESIGNED", C${dashData.length + 1}="VACANT"), "⚠️ RE-ASSIGN", "OK")`, s: { ...centerCellStyle, font: { bold: true } } }
+            { t: 'f', f: `IF(OR(C${dashData.length + 1}="RESIGNED", C${dashData.length + 1}="VACANT", C${dashData.length + 1}="ON LEAVE"), "⚠️ RE-ASSIGN", "OK")`, s: { ...centerCellStyle, font: { bold: true } } }
         ]);
     });
 
@@ -257,7 +275,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
                 { t: 'f', f: `'2. Configuration & Mapping'!B${roleMapRow}`, s: { ...centerCellStyle, font: { bold: true } } }, 
                 { v: (t.frequency || c.frequency), s: centerCellStyle },
                 { v: t.proof, s: dataCellStyle },
-                { v: "", s: inputCellStyle }, 
+                { v: tIdx === 0 ? "24-02-2025" : "", s: inputCellStyle }, 
                 { t: 'f', f: `IF(G${row}="", "PENDING", "COMPLETED")`, s: { ...centerCellStyle, font: { bold: true } } },
                 { v: t.consequence, s: { ...dataCellStyle, font: { italic: true, sz: 9 }, wrapText: true } }
             ]);
@@ -271,7 +289,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         utils.book_append_sheet(wb, ws, sName);
     });
 
-    // --- MASTER REGISTER (Hidden Logic) ---
+    // --- MASTER REGISTER ---
     const masterData = [["Task ID", "Desc", "Role", "AssignedPerson", "DateDone", "ScopeStatus", "BranchLocation", "Priority"]];
     checklists.forEach((c, cIdx) => {
         const configRow = 37 + cIdx;
@@ -294,5 +312,5 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const masterWs = utils.aoa_to_sheet(masterData);
     utils.book_append_sheet(wb, masterWs, "Master Task Register");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.18_EXECUTIVE.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.18_EXECUTIVE_TESTED.xlsx`);
 }

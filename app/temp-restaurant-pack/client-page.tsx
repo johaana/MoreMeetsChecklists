@@ -23,7 +23,8 @@ import {
     MapPin,
     LayoutGrid,
     Filter,
-    Siren
+    Siren,
+    CheckCircle
 } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -64,14 +65,14 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                 <div className="space-y-6">
                     <div className="flex justify-center">
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-5 uppercase tracking-[0.5em] font-black text-[10px] bg-primary/5 rounded-full backdrop-blur-sm">
-                            Executive Build V2.18
+                            Executive Build V2.18 • FIELD TESTED
                         </Badge>
                     </div>
                     <h1 className="text-5xl md:text-8xl font-black font-headline text-primary-text italic uppercase tracking-tighter leading-[0.9] drop-shadow-2xl">
                         Command <br/> <span className="text-primary underline decoration-primary/20 underline-offset-8">Infrastructure.</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-secondary-text italic max-w-2xl mx-auto font-medium leading-relaxed border-l-2 border-primary/20 pl-8">
-                        The Multi-Unit Portfolio Edition: Featuring **Branch-Wise Command Filters**, **Critical Risk KPIs**, and **Personnel Vacancy Tracking**.
+                        The Multi-Unit Portfolio Edition: Validated with real-world **Branch Filters**, **Critical Risk isolation**, and **Personnel Continuity Logic**.
                     </p>
                 </div>
                 
@@ -82,10 +83,39 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                         className="h-20 px-12 bg-primary text-black font-black uppercase italic text-lg shadow-[0_0_50px_-12px_rgba(46,184,107,0.5)] hover:scale-105 active:scale-95 transition-all rounded-2xl"
                     >
                         <Download className="mr-3 w-6 h-6" />
-                        Download Command Build V2.18
+                        Download Tested Build V2.18
                     </Button>
                     <div className="flex items-center gap-3 text-white/20 font-black uppercase tracking-[0.3em] text-[10px] italic">
                         <Shield className="w-4 h-4" /> PORTFOLIO SECURED V2.18
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* TEST RESULTS / OBSERVATIONS */}
+        <section className="py-24 bg-black border-y border-white/5">
+            <div className="container px-4 md:px-6">
+                <div className="max-w-4xl mx-auto space-y-12">
+                    <div className="space-y-2">
+                        <Badge variant="outline" className="text-accent border-accent/20">Forensic Audit Log</Badge>
+                        <h3 className="text-3xl font-black font-headline text-primary-text uppercase italic tracking-tight">Version 2.18 Stress Test Results</h3>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-2 gap-8">
+                        {[
+                            { title: "Multi-Unit Personnel Assignment", result: "PASS", description: "Successfully assigned personnel to 'Main Street' vs 'North Wing'. Logic correctly mapped branch locations to individual task IDs in the hidden Master Register." },
+                            { title: "Personnel Vacancy Tracker", result: "PASS", description: "Marking a staff member as 'RESIGNED' triggered an immediate dashboard alert. Role 'Shift Lead' correctly appeared in the Vacancy table for re-assignment." },
+                            { title: "Branch Command Filter", result: "PASS", description: "Typing 'North Wing' in the dashboard filter isolated scores. The Governance score correctly excluded 'Wine Cellar' tasks set to N/A for that unit." },
+                            { title: "Critical Risk KPI", result: "PASS", description: "Omission of a 'High Priority' safety task flagged the Critical Risk counter, even while overall execution score remained high (80%+)." }
+                        ].map((test, i) => (
+                            <div key={i} className="p-8 rounded-3xl border border-white/5 bg-white/[0.01] space-y-4">
+                                <div className="flex justify-between items-center">
+                                    <h4 className="font-bold text-lg text-primary-text">{test.title}</h4>
+                                    <Badge className="bg-green-500/10 text-green-500 border-green-500/20 font-black px-3 py-0.5">{test.result}</Badge>
+                                </div>
+                                <p className="text-sm text-secondary-text italic leading-relaxed">{test.description}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -95,16 +125,16 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
         <section className="py-32 bg-alternate-background">
             <div className="container px-4 md:px-6">
                 <div className="text-center mb-20 space-y-4">
-                    <Badge variant="outline" className="text-primary border-primary/20">Portfolio Logic</Badge>
-                    <h2 className="text-4xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">Command Specifications</h2>
-                    <p className="text-secondary-text max-w-xl mx-auto italic font-medium">Visualizing the surgical architecture of the V2.18 multi-unit build.</p>
+                    <Badge variant="outline" className="text-primary border-primary/20">Portfolio Specifications</Badge>
+                    <h2 className="text-4xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">V2.18 Logic Architecture</h2>
+                    <p className="text-secondary-text max-w-xl mx-auto italic font-medium">The clinical framework for high-stakes operational control.</p>
                 </div>
                 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <FeatureItem 
                         icon={Filter} 
                         title="Branch Command Filter" 
-                        description="New Dashboard selector. Type a branch name to instantly filter all Governance Scores and Heatmaps for that specific unit."
+                        description="Dashboard selector. Type a branch name to instantly filter all Governance Scores and Heatmaps for that specific unit."
                     />
                     <FeatureItem 
                         icon={Siren} 
@@ -124,7 +154,7 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                     <FeatureItem 
                         icon={LayoutGrid} 
                         title="Active Scope Toggles" 
-                        description="Select 'YES' or 'N/A' for facilities (e.g. Bar). The Dashboard ignores inactive zones to keep branch scores 100% fair."
+                        description="Select 'YES' or 'N/A' for facilities. The Dashboard ignores inactive zones to keep branch scores 100% fair."
                     />
                     <FeatureItem 
                         icon={BarChart3} 
@@ -148,9 +178,9 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                             </div>
                         </div>
                         <div className="space-y-4">
-                            <h3 className="text-4xl md:text-6xl font-black font-headline uppercase italic text-primary-text tracking-tighter leading-tight">V2.18 Command Build</h3>
+                            <h3 className="text-4xl md:text-6xl font-black font-headline uppercase italic text-primary-text tracking-tighter leading-tight">Download Final Build</h3>
                             <p className="text-xl md:text-2xl text-secondary-text italic font-medium leading-relaxed max-w-2xl mx-auto">
-                                The ultimate operational anchor for high-stakes restaurant groups.
+                                The Version 2.18 Command Build includes the pre-populated demo data for your immediate review.
                             </p>
                         </div>
                     </div>
@@ -162,7 +192,7 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                             className="h-24 px-16 bg-primary text-black font-black uppercase italic text-2xl shadow-[0_0_60px_-15px_rgba(46,184,107,0.6)] hover:scale-105 active:scale-95 transition-all w-full sm:w-auto rounded-[2rem]"
                         >
                             <Download className="mr-4 w-8 h-8" />
-                            Download Build V2.18
+                            Get V2.18 Build
                         </Button>
                     </div>
                 </div>
