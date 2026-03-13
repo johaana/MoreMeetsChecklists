@@ -63,6 +63,24 @@ export const restaurants: PremiumPack = {
                     consequence: "Cross-contamination of raw meat pathogens into cooked food is a critical HACCP failure. Can be fatal for high-risk guests.", 
                     proof: "Visual Station Audit",
                     trainerNotes: "Coaching Tip: Look for deep grooves in boards. Deep grooves harbor bacteria even after sanitizing; replace if found."
+                },
+                {
+                    id: "KO-04",
+                    description: "Calibrate food thermometers using the ice-point method.",
+                    priority: "High",
+                    riskLevel: "Medium",
+                    consequence: "Inaccurate thermometers lead to false 'safe' readings, allowing undercooked food to be served.",
+                    proof: "Calibration Log",
+                    trainerNotes: "Coaching Tip: Ensure the probe is in the center of the ice slurry, not touching the container walls."
+                },
+                {
+                    id: "KO-05",
+                    description: "Verify that all cleaning chemicals are properly labeled and stored away from food.",
+                    priority: "High",
+                    riskLevel: "High",
+                    consequence: "Chemical contamination of food is a severe health hazard and legal liability.",
+                    proof: "Storage Audit",
+                    trainerNotes: "Coaching Tip: Check for 'hidden' chemicals under prep tables or near spice racks."
                 }
             ]
         },
@@ -91,6 +109,33 @@ export const restaurants: PremiumPack = {
                     consequence: "Poor presentation devalues the brand and suggests a lack of care in the kitchen as well.", 
                     proof: "Pre-service Walkthrough",
                     trainerNotes: "Coaching Tip: Check the bottom of the menus. This is where fingerprints and food drips often go unnoticed."
+                },
+                {
+                    id: "FOH-03",
+                    description: "Test music volume and lighting levels against the brand mood-guide.",
+                    priority: "Medium",
+                    riskLevel: "Low",
+                    consequence: "Incorrect ambiance (too loud/bright) makes guests uncomfortable, reducing linger time and dessert sales.",
+                    proof: "Manager Check",
+                    trainerNotes: "Coaching Tip: Stand at the quietest and loudest corner of the dining room to verify balance."
+                },
+                {
+                    id: "FOH-04",
+                    description: "Verify all FOH staff are wearing clean, pressed uniforms and name tags.",
+                    priority: "High",
+                    riskLevel: "Low",
+                    consequence: "Disorganized staff appearance damages guest trust in professional standards.",
+                    proof: "Grooming Check",
+                    trainerNotes: "Coaching Tip: Check shoes. Dirty shoes are the most common oversight in front-line grooming."
+                },
+                {
+                    id: "FOH-05",
+                    description: "Ensure all POS terminals are functional and have receipt paper stocked.",
+                    priority: "High",
+                    riskLevel: "Medium",
+                    consequence: "POS failure during peak hour causes chaotic queueing and potential lost revenue.",
+                    proof: "System Test",
+                    trainerNotes: "Coaching Tip: Re-boot the system 1 hour before opening to clear cache and prevent mid-service lag."
                 }
             ]
         }

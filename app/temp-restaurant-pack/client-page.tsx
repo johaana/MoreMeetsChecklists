@@ -5,7 +5,7 @@ import React from 'react';
 import type { PremiumPack } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { handleDownload } from '@/lib/download';
+import { handleDownloadV2 } from './download-v2';
 import { 
     Download, 
     BarChart3, 
@@ -19,7 +19,9 @@ import {
     AlertCircle,
     UserCheck,
     Stethoscope,
-    ArrowRight
+    ArrowRight,
+    MapPin,
+    LayoutGrid
 } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -60,28 +62,28 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                 <div className="space-y-6">
                     <div className="flex justify-center">
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-5 uppercase tracking-[0.5em] font-black text-[10px] bg-primary/5 rounded-full backdrop-blur-sm">
-                            Executive Command Build V2.17
+                            Portfolio Command V2.17
                         </Badge>
                     </div>
                     <h1 className="text-5xl md:text-8xl font-black font-headline text-primary-text italic uppercase tracking-tighter leading-[0.9] drop-shadow-2xl">
-                        Command <br/> <span className="text-primary underline decoration-primary/20 underline-offset-8">Intelligence.</span>
+                        Command <br/> <span className="text-primary underline decoration-primary/20 underline-offset-8">Infrastructure.</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-secondary-text italic max-w-2xl mx-auto font-medium leading-relaxed border-l-2 border-primary/20 pl-8">
-                        V2.17: Featuring the **Command Timeframe** dynamic filter and **Bipolar performance Heatmaps**. The standard for zero-ambiguity governance.
+                        The V2.17 Build: Featuring **Branch-Wise Personnel Mapping**, **Module Scope Toggles**, and the **Bipolar Risk Heatmap**.
                     </p>
                 </div>
                 
                 <div className="flex flex-wrap justify-center gap-6">
                     <Button 
                         size="lg" 
-                        onClick={() => handleDownload(pack, 'pack')}
+                        onClick={() => handleDownloadV2(pack)}
                         className="h-20 px-12 bg-primary text-black font-black uppercase italic text-lg shadow-[0_0_50px_-12px_rgba(46,184,107,0.5)] hover:scale-105 active:scale-95 transition-all rounded-2xl"
                     >
                         <Download className="mr-3 w-6 h-6" />
                         Download Executive Build V2.17
                     </Button>
                     <div className="flex items-center gap-3 text-white/20 font-black uppercase tracking-[0.3em] text-[10px] italic">
-                        <Shield className="w-4 h-4" /> SECURED COMMAND V2.17
+                        <Shield className="w-4 h-4" /> SECURED PORTFOLIO V2.17
                     </div>
                 </div>
             </div>
@@ -91,41 +93,41 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
         <section className="py-32 bg-alternate-background">
             <div className="container px-4 md:px-6">
                 <div className="text-center mb-20 space-y-4">
-                    <Badge variant="outline" className="text-primary border-primary/20">System Specs</Badge>
+                    <Badge variant="outline" className="text-primary border-primary/20">Build Specifications</Badge>
                     <h2 className="text-4xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">Governance Engine Components</h2>
-                    <p className="text-secondary-text max-w-xl mx-auto italic font-medium">Technical specifications of the V2.17 "Command" Build.</p>
+                    <p className="text-secondary-text max-w-xl mx-auto italic font-medium">Technical architecture of the V2.17 "Professional" Build.</p>
                 </div>
                 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <FeatureItem 
-                        icon={Calendar} 
-                        title="Command Timeframe" 
-                        description="Input a Start/End date on the Dashboard. All scores and heatmaps recalculate instantly for that specific Week or Month."
+                        icon={MapPin} 
+                        title="Branch Mapping" 
+                        description="New personnel register column allows you to assign staff to specific branches or units for multi-unit tracking."
+                    />
+                    <FeatureItem 
+                        icon={LayoutGrid} 
+                        title="Module Scope Toggle" 
+                        description="Type 'N/A' for any facility (e.g. Bar). The Dashboard math adjusts to ignore those tasks for fair branch scoring."
                     />
                     <FeatureItem 
                         icon={AlertCircle} 
                         title="Continuity Protocol" 
-                        description="If a person resigns, the Dashboard triggers a RED ALERT instructing the manager to RE-ASSIGN tasks immediately in Settings."
+                        description="If a person resigns, the system triggers a RED ALERT instructing the manager to RE-ASSIGN tasks in Settings immediately."
                     />
                     <FeatureItem 
                         icon={BarChart3} 
                         title="Bipolar Heatmap" 
-                        description="Visual '█' blocks in Green (Execution) and Red (Risk) show you exactly where the gaps are in your personnel load."
+                        description="Visual '█' blocks in Green (Execution) and Red (Risk) show exactly where the gaps are in your personnel load."
                     />
                     <FeatureItem 
                         icon={Stethoscope} 
                         title="Coaching Infrastructure" 
-                        description="Integrated 'How to Coach' notes turn your floor managers into field auditors during their rounds."
-                    />
-                    <FeatureItem 
-                        icon={Users} 
-                        title="Settings Brain" 
-                        description="A dedicated 'Configuration & Mapping' sheet. Put info here once; it flows to every checklist automatically."
+                        description="Integrated 'How to Coach' tips turn floor managers into field auditors during their daily rounds."
                     />
                     <FeatureItem 
                         icon={Settings2} 
-                        title="Dynamic Scope Toggle" 
-                        description="Type 'N/A' for any department (e.g. Bar). The Dashboard math adjusts to ignore those tasks for fair scoring."
+                        title="Configuration Brain" 
+                        description="A dedicated 'Settings' sheet. Enter personnel, branches, and roles once; it flows globally."
                     />
                 </div>
             </div>
@@ -154,7 +156,7 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                     <div className="relative z-10 flex flex-col items-center gap-10">
                         <Button 
                             size="lg" 
-                            onClick={() => handleDownload(pack, 'pack')}
+                            onClick={() => handleDownloadV2(pack)}
                             className="h-24 px-16 bg-primary text-black font-black uppercase italic text-2xl shadow-[0_0_60px_-15px_rgba(46,184,107,0.6)] hover:scale-105 active:scale-95 transition-all w-full sm:w-auto rounded-[2rem]"
                         >
                             <Download className="mr-4 w-8 h-8" />
