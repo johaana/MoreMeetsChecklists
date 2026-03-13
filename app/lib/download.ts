@@ -30,7 +30,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         RED: "C62828",
         BAR_BLUE: "2F75B5",
         BORDER: "D1D5DB",
-        INPUT_YELLOW: "FFFFE0" // Clinical "Type Here" color
+        INPUT_YELLOW: "FFFFE0" 
     };
 
     // --- REFINED STYLES ---
@@ -81,10 +81,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }
     };
 
-    // --- APPLICATION MODE: HIDE GRIDLINES ---
     const applyApplicationMode = (ws: WorkSheet) => {
         ws['!views'] = [{ 
-            showGridLines: false, // Hides gridlines for professional software feel
+            showGridLines: false,
             state: 'frozen', 
             ySplit: 1 
         }];
@@ -104,11 +103,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     };
 
     let checklists: PackChecklist[] = [];
-    const packTitle = item.title;
-
     if (type === 'pack') {
         checklists = (item as PremiumPack).checklists;
-    } else if (type === 'individual') {
+    } else {
         const checklist = item as IndividualChecklist;
         checklists = [{
             title: checklist.title,
@@ -169,7 +166,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     guideWs['!cols'] = [{ wch: 40 }, { wch: 100 }];
     utils.book_append_sheet(wb, guideWs, "Quick Start Guide");
 
-    // --- 2. CONFIGURATION & MAPPING ---
+    // --- 2. CONFIGURATION & MAPPING (THE SETTINGS SHEET) ---
     const mappingData: any[][] = [
         [],
         [{ v: "SECTION A: PERSONNEL REGISTER (THE HUMANS)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_NAVY }, sz: 11 } } }],
@@ -209,8 +206,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [{ v: "GOVERNANCE SCORE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, { v: "FILTER START DATE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, { v: "FILTER END DATE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }],
         [
             { t: 'f', f: `TEXT(COUNTIFS('Master Task Register'!F:F, "Applicable", 'Master Task Register'!E:E, "<>") / COUNTIF('Master Task Register'!F:F, "Applicable"), "0%")`, s: kpiBoxStyle },
-            { v: "", s: inputCellStyle }, // Start Date
-            { v: "", s: inputCellStyle }  // End Date
+            { v: "", s: inputCellStyle }, 
+            { v: "", s: inputCellStyle }  
         ],
         [],
         [{ v: "SECTION B: BIPOLAR EXECUTION & RISK HEATMAP", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
