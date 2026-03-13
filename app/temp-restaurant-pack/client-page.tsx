@@ -21,7 +21,9 @@ import {
     Stethoscope,
     ArrowRight,
     MapPin,
-    LayoutGrid
+    LayoutGrid,
+    Filter,
+    Siren
 } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -62,14 +64,14 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                 <div className="space-y-6">
                     <div className="flex justify-center">
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-5 uppercase tracking-[0.5em] font-black text-[10px] bg-primary/5 rounded-full backdrop-blur-sm">
-                            Executive Build V2.17
+                            Executive Build V2.18
                         </Badge>
                     </div>
                     <h1 className="text-5xl md:text-8xl font-black font-headline text-primary-text italic uppercase tracking-tighter leading-[0.9] drop-shadow-2xl">
                         Command <br/> <span className="text-primary underline decoration-primary/20 underline-offset-8">Infrastructure.</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-secondary-text italic max-w-2xl mx-auto font-medium leading-relaxed border-l-2 border-primary/20 pl-8">
-                        The Portfolio Edition: Featuring **Active Scope Toggles**, **Branch-Wise Mapping**, and the **Bipolar Continuity Heatmap**.
+                        The Multi-Unit Portfolio Edition: Featuring **Branch-Wise Command Filters**, **Critical Risk KPIs**, and **Personnel Vacancy Tracking**.
                     </p>
                 </div>
                 
@@ -80,10 +82,10 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                         className="h-20 px-12 bg-primary text-black font-black uppercase italic text-lg shadow-[0_0_50px_-12px_rgba(46,184,107,0.5)] hover:scale-105 active:scale-95 transition-all rounded-2xl"
                     >
                         <Download className="mr-3 w-6 h-6" />
-                        Download Portfolio Build V2.17
+                        Download Command Build V2.18
                     </Button>
                     <div className="flex items-center gap-3 text-white/20 font-black uppercase tracking-[0.3em] text-[10px] italic">
-                        <Shield className="w-4 h-4" /> SECURED PORTFOLIO V2.17
+                        <Shield className="w-4 h-4" /> PORTFOLIO SECURED V2.18
                     </div>
                 </div>
             </div>
@@ -93,41 +95,41 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
         <section className="py-32 bg-alternate-background">
             <div className="container px-4 md:px-6">
                 <div className="text-center mb-20 space-y-4">
-                    <Badge variant="outline" className="text-primary border-primary/20">Operational Logic</Badge>
-                    <h2 className="text-4xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">Engine Specifications</h2>
-                    <p className="text-secondary-text max-w-xl mx-auto italic font-medium">Visualizing the high-end architecture of the V2.17 build.</p>
+                    <Badge variant="outline" className="text-primary border-primary/20">Portfolio Logic</Badge>
+                    <h2 className="text-4xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">Command Specifications</h2>
+                    <p className="text-secondary-text max-w-xl mx-auto italic font-medium">Visualizing the surgical architecture of the V2.18 multi-unit build.</p>
                 </div>
                 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <FeatureItem 
+                        icon={Filter} 
+                        title="Branch Command Filter" 
+                        description="New Dashboard selector. Type a branch name to instantly filter all Governance Scores and Heatmaps for that specific unit."
+                    />
+                    <FeatureItem 
+                        icon={Siren} 
+                        title="Critical Risk KPI" 
+                        description="A surgical metric that counts only High-Priority overdue items. Prevents CEO distraction from minor operational noise."
+                    />
+                    <FeatureItem 
+                        icon={UserCheck} 
+                        title="Vacancy Tracker" 
+                        description="Dashboard automatically identifies roles mapped to Resigned or Absent personnel, mandating immediate re-assignment."
+                    />
+                    <FeatureItem 
                         icon={MapPin} 
-                        title="Branch Assignment" 
-                        description="Register staff members and assign them to specific branches. Formulas automatically filter personnel health by location."
+                        title="Unit Assignment" 
+                        description="Register staff members and assign them to specific branches once. All logic flows through the central nervous system."
                     />
                     <FeatureItem 
                         icon={LayoutGrid} 
-                        title="Module Scope Toggle" 
-                        description="Select 'YES' or 'N/A' for departments (e.g. Bar). The Dashboard math adjusts instantly to ignore inactive zones."
-                    />
-                    <FeatureItem 
-                        icon={AlertCircle} 
-                        title="Continuity Protocol" 
-                        description="If a staff member resigns, the system specifically mandates 'RE-ASSIGN ROLE' in the Settings brain to prevent lapses."
+                        title="Active Scope Toggles" 
+                        description="Select 'YES' or 'N/A' for facilities (e.g. Bar). The Dashboard ignores inactive zones to keep branch scores 100% fair."
                     />
                     <FeatureItem 
                         icon={BarChart3} 
                         title="Bipolar Heatmap" 
-                        description="Visual '█' blocks in Green (Execution) and Red (Risk) provide a boardroom-ready view of operational load."
-                    />
-                    <FeatureItem 
-                        icon={Stethoscope} 
-                        title="Coaching IQ" 
-                        description="Column C now contains 'How to Coach' notes, turning simple tasks into a professional field training manual."
-                    />
-                    <FeatureItem 
-                        icon={Settings2} 
-                        title="One-Time Config" 
-                        description="Enter personnel and unit data once in the 'Configuration' sheet; it flows through every module automatically."
+                        description="Visual '█' blocks in Green (Execution) and Red (Risk) provide a boardroom-ready view of personnel load."
                     />
                 </div>
             </div>
@@ -146,9 +148,9 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                             </div>
                         </div>
                         <div className="space-y-4">
-                            <h3 className="text-4xl md:text-6xl font-black font-headline uppercase italic text-primary-text tracking-tighter leading-tight">V2.17 Command Build</h3>
+                            <h3 className="text-4xl md:text-6xl font-black font-headline uppercase italic text-primary-text tracking-tighter leading-tight">V2.18 Command Build</h3>
                             <p className="text-xl md:text-2xl text-secondary-text italic font-medium leading-relaxed max-w-2xl mx-auto">
-                                The professional anchor for high-stakes operational reliability.
+                                The ultimate operational anchor for high-stakes restaurant groups.
                             </p>
                         </div>
                     </div>
@@ -160,7 +162,7 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                             className="h-24 px-16 bg-primary text-black font-black uppercase italic text-2xl shadow-[0_0_60px_-15px_rgba(46,184,107,0.6)] hover:scale-105 active:scale-95 transition-all w-full sm:w-auto rounded-[2rem]"
                         >
                             <Download className="mr-4 w-8 h-8" />
-                            Download Build V2.17
+                            Download Build V2.18
                         </Button>
                     </div>
                 </div>
