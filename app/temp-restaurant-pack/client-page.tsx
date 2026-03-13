@@ -9,18 +9,17 @@ import { handleDownload } from '@/lib/download';
 import { 
     Download, 
     BarChart3, 
-    Lock, 
     Users, 
     Settings2, 
     ShieldCheck, 
     Zap, 
-    ArrowRight,
     Binary,
     Shield,
     Link as LinkIcon,
     AlertCircle,
     UserCheck,
-    Stethoscope
+    Stethoscope,
+    ArrowRight
 } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -68,7 +67,7 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                         Execution <br/> <span className="text-primary underline decoration-primary/20 underline-offset-8">Infrastructure.</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-secondary-text italic max-w-2xl mx-auto font-medium leading-relaxed border-l-2 border-primary/20 pl-8">
-                        V2.16: Shifting from static checklists to a name-centric Governance Nervous System. Now featuring Name-Sync mapping, Personnel Status IQ, and Red Alert Resolution Protocols.
+                        V2.16: Shifting from static checklists to a name-centric Governance Nervous System. Featuring the **Red Alert Continuity Protocol** for instant re-assignment of high-risk tasks.
                     </p>
                 </div>
                 
@@ -99,34 +98,34 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <FeatureItem 
-                        icon={UserCheck} 
-                        title="Name-Sync Architecture" 
-                        description="Assign roles by Name, not ID. Validation formulas flag if a person is Resigned or On-Leave instantly."
+                        icon={AlertCircle} 
+                        title="Continuity Protocol" 
+                        description="If a staff member is 'Resigned', the Dashboard triggers a RED ALERT instructing the manager to RE-ASSIGN tasks immediately."
                     />
                     <FeatureItem 
-                        icon={AlertCircle} 
-                        title="Red Alert Protocol" 
-                        description="Dashboard guidance on resolving overdue tasks. Status changes to 'ACTION REQUIRED' to demand manager attention."
+                        icon={UserCheck} 
+                        title="Name-Sync Mapping" 
+                        description="Assign roles by Name, not ID. Validation formulas check if a person exists in the register and flag health status instantly."
                     />
                     <FeatureItem 
                         icon={Stethoscope} 
-                        title="Integrated Coaching" 
-                        description="Dedicated 'How to Coach' notes for every task turn your floor managers into expert field auditors."
+                        title="Field Coaching Notes" 
+                        description="Integrated management tips for every task turn your floor managers into expert field auditors during rounds."
                     />
                     <FeatureItem 
                         icon={BarChart3} 
                         title="Visual Load Index" 
-                        description="Real-time personnel workload heatmap. Growing '█' blocks detect single points of failure in your team."
+                        description="Real-time personnel workload heatmap. Visual '█' blocks detect single points of failure in your workforce."
                     />
                     <FeatureItem 
                         icon={LinkIcon} 
-                        title="Navigational Hyperlinks" 
-                        description="Functional 'Jump Links' built into the Guide. Move between Dashboard, Mapping, and Satellites with zero friction."
+                        title="Navigational Jump Links" 
+                        description="Functional hyperlinks built into the Handbook. Move between Command, Settings, and Satellites with zero friction."
                     />
                     <FeatureItem 
                         icon={Settings2} 
-                        title="Scope Control Toggle" 
-                        description="Toggle modules like 'Bar' or 'Pool' to N/A. Dashboard math adapts instantly for fair unit scoring."
+                        title="Scope Activation Toggle" 
+                        description="Toggle modules like 'Bar' or 'Pool' to N/A. Dashboard math adapts instantly for fair multi-unit scoring."
                     />
                 </div>
             </div>
@@ -145,9 +144,9 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                             </div>
                         </div>
                         <div className="space-y-4">
-                            <h3 className="text-4xl md:text-6xl font-black font-headline uppercase italic text-primary-text tracking-tighter leading-tight">V2.16 Executive Build</h3>
+                            <h3 className="text-4xl md:text-6xl font-black font-headline uppercase italic text-primary-text tracking-tighter leading-tight">V2.16 Professional Portfolio</h3>
                             <p className="text-xl md:text-2xl text-secondary-text italic font-medium leading-relaxed max-w-2xl mx-auto">
-                                Hardened formulas, Name-Sync logic, and the Integrated Red Alert Resolution Protocol.
+                                Deploy hardened Name-Sync logic and the integrated Red Alert Continuity Protocol.
                             </p>
                         </div>
                     </div>
