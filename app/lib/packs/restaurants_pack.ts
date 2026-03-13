@@ -72,6 +72,15 @@ export const restaurants: PremiumPack = {
                     consequence: "Ineffective sanitizer does not kill pathogens; too much is toxic. Both are major legal and safety failures.", 
                     proof: "Chemical Titration Log",
                     trainerNotes: "Coaching Tip: Ensure the water is lukewarm. Hot water breaks down many sanitizers (like Chlorine), making them useless."
+                },
+                { 
+                    id: "KO-05", 
+                    description: "Verify that all kitchen staff have completed their daily hygiene check (nails, uniform, hairnets).", 
+                    priority: "High", 
+                    riskLevel: "Medium", 
+                    consequence: "Physical contamination (hair) and bacterial transfer from staff to food.", 
+                    proof: "Daily Staff Hygiene Register",
+                    trainerNotes: "Coaching Tip: Conduct this check at the shift briefing. Make it a visible, non-negotiable standard."
                 }
             ]
         },
@@ -100,6 +109,43 @@ export const restaurants: PremiumPack = {
                     consequence: "Poor presentation devalues the brand and suggests a lack of care in the kitchen as well.", 
                     proof: "Pre-service Walkthrough",
                     trainerNotes: "Coaching Tip: Check the bottom of the menus. This is where fingerprints and food drips often go unnoticed."
+                },
+                { 
+                    id: "FOH-03", 
+                    description: "Verify that ambient music and lighting levels are set to the correct shift profile.", 
+                    priority: "Low", 
+                    riskLevel: "Low", 
+                    consequence: "Poor ambiance creates a disjointed guest experience and reduces dwell time.", 
+                    proof: "Manager Walkthrough",
+                    trainerNotes: "Coaching Tip: Sit in at least 3 different corners of the restaurant to check for 'dead spots' in sound or overly bright lights."
+                }
+            ]
+        },
+        {
+            title: "Bar & Beverage Safety",
+            department: "Bar",
+            frequency: "Daily",
+            role: "Bar Manager",
+            summary: "Ensures safety and hygiene at the beverage station.",
+            icon: "glass-water",
+            tasks: [
+                { 
+                    id: "BAR-01", 
+                    description: "Inspect ice machines for mold or slime buildup.", 
+                    priority: "High", 
+                    riskLevel: "High", 
+                    consequence: "Ice is food. Mold in ice machines is a major health violation and causes mass illness.", 
+                    proof: "Weekly Deep Clean Log",
+                    trainerNotes: "Coaching Tip: Check the underside of the internal ice chute. This is the most common place for mold to hide."
+                },
+                { 
+                    id: "BAR-02", 
+                    description: "Verify garnish storage temperatures and expiry.", 
+                    priority: "Medium", 
+                    riskLevel: "Medium", 
+                    consequence: "Spoiled garnishes cause off-flavors and gastrointestinal distress.", 
+                    proof: "Garnish Freshness Check",
+                    trainerNotes: "Coaching Tip: Ensure garnishes are kept in lidded containers when not in active use."
                 }
             ]
         }
