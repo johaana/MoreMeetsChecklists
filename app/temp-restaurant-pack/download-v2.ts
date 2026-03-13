@@ -108,17 +108,16 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const coverData = [
         [], [],
         [{ v: "OPERATIONAL GOVERNANCE ENGINE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Version 2.18 Build: Executive Command Portfolio (TESTED DEMO)`, s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Version 2.18 Build: Isolated Command Portfolio`, s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "Deployment Mode:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "MULTI-UNIT PORTFOLIO", s: inputCellStyle }],
+        [{ v: "Deployment Status:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "SECURED - BRANCH ISOLATION ACTIVE", s: inputCellStyle }],
         [{ v: "Organization Entity:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "RestoGroup Global", s: inputCellStyle }],
-        [{ v: "Unit Identification:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "MASTER HUB (PORTFOLIO VIEW)", s: inputCellStyle }],
+        [{ v: "Active Unit ID:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "MAIN_STREET_01", s: inputCellStyle }],
         [],
-        [{ v: "RED ALERT CONTINUITY PROTOCOL:", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.RED } } } }],
-        [{ v: "1. If tasks are RED, identify the assigned person on the Dashboard." }],
-        [{ v: "2. If person is 'Resigned' or 'On Leave', YOU MUST RE-ASSIGN their role in CONFIGURATION (Section C) to a present staff member.", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: linkStyle }],
-        [{ v: "3. If person is active, use the 'How to Coach' notes in the module to rectify the physical standard." }],
-        [{ v: "4. Re-enter the completion date in the module. Status will turn GREEN instantly." }],
+        [{ v: "PERSONNEL CONTINUITY PROTOCOL (RED ALERTS):", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.RED } } } }],
+        [{ v: "1. If a task turns RED, check the Dashboard Vacancy Tracker." }],
+        [{ v: "2. If the person is 'Resigned' or 'Absent', YOU MUST RE-ASSIGN the role in CONFIGURATION (Section C)." }],
+        [{ v: "3. Transparency: Branch staff can see internal roles, but external units are locked.", s: { font: { italic: true, sz: 9 } } }],
         [],
         [{ v: "SYSTEM STATUS: SECURED", s: { font: { bold: true, color: { rgb: COLORS.GREEN } }, alignment: { horizontal: 'center' } } }]
     ];
@@ -132,16 +131,15 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const guideData = [
         [],
         [{ v: "EXECUTIVE OPERATIONAL HANDBOOK", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
-        [{ v: "Follow this 3-step setup for a zero-ambiguity governance system.", s: { font: { italic: true } } }],
+        [{ v: "Follow this protocol for isolated branch-wise governance.", s: { font: { italic: true } } }],
         [],
-        [{ v: "STEP 1: REGISTER THE HUMANS", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.SUB_NAVY } } } }, { v: "Go to CONFIGURATION (Section A). Type names, assign branches, and set status.", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: linkStyle }],
-        [{ v: "STEP 2: ACTIVATE MODULES", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.SUB_NAVY } } } }, { v: "In CONFIGURATION (Section B), select 'N/A' for any facility you don't have.", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: linkStyle }],
-        [{ v: "STEP 3: ASSIGN ROLES", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.SUB_NAVY } } } }, { v: "In CONFIGURATION (Section C), type the NAME next to each role title.", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: linkStyle }],
+        [{ v: "STEP 1: UNIT LOCK", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.SUB_NAVY } } } }, { v: "Type your Branch Name in the Dashboard 'FILTER BRANCH' cell.", l: { Target: "#'4. Dashboard'!A1" }, s: linkStyle }],
+        [{ v: "STEP 2: STAFF REGISTER", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.SUB_NAVY } } } }, { v: "Register only your unit's humans in CONFIGURATION (Section A).", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: linkStyle }],
+        [{ v: "STEP 3: ROLE MAPPING", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.SUB_NAVY } } } }, { v: "Assign names to roles. Any 'Resigned' staff will flag a vacancy.", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: linkStyle }],
         [],
-        [{ v: "DASHBOARD VOCABULARY:", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUB_NAVY } } } }],
-        [{ v: "Governance Score", s: { font: { bold: true } } }, { v: "Execution % based on filtered Branch and Dates." }],
-        [{ v: "Critical Risk Count", s: { font: { bold: true } } }, { v: "Total number of HIGH PRIORITY tasks currently overdue." }],
-        [{ v: "Vacancy Tracker", s: { font: { bold: true } } }, { v: "Automated list of roles currently mapped to 'Resigned' or 'On Leave' personnel." }],
+        [{ v: "ISOLATION PRIVACY NOTICE:", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUB_NAVY } } } }],
+        [{ v: "Branch Isolation", s: { font: { bold: true } } }, { v: "Data for other branches is masked in the Master Register when a filter is active." }],
+        [{ v: "Internal Transparency", s: { font: { bold: true } } }, { v: "Your team sees each other's names on tasks to ensure zero-ambiguity ownership." }],
         [],
         [{ v: "GO TO COMMAND DASHBOARD", l: { Target: "#'4. Dashboard'!A1" }, s: { ...linkStyle, font: { ...linkStyle.font, sz: 14, bold: true } } }]
     ];
@@ -153,33 +151,26 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     // --- 2. CONFIGURATION & MAPPING ---
     const mappingData: any[][] = [
         [],
-        [{ v: "SECTION A: PERSONNEL REGISTER (DEMO EXAMPLES INCLUDED)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_NAVY }, sz: 11 } } }],
+        [{ v: "SECTION A: PERSONNEL REGISTER (BRANCH ISOLATED)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_NAVY }, sz: 11 } } }],
         [{ v: "Full Name", s: headerStyle }, { v: "Position", s: headerStyle }, { v: "Branch/Unit", s: headerStyle }, { v: "Status (ACTIVE/LEAVE/RESIGNED)", s: headerStyle }, { v: "System Health", s: headerStyle }],
-        [{ v: "Chef Imran", s: inputCellStyle }, { v: "Head Chef", s: dataCellStyle }, { v: "Main Street", s: inputCellStyle }, { v: "ACTIVE", s: inputCellStyle }, { t: 'f', f: `IF(A4="", "", IF(D4="RESIGNED", "⚠️ RE-ASSIGN ROLES", "OK"))`, s: centerCellStyle }],
-        [{ v: "Sam Wilson", s: inputCellStyle }, { v: "Night Manager", s: dataCellStyle }, { v: "Main Street", s: inputCellStyle }, { v: "ACTIVE", s: inputCellStyle }, { t: 'f', f: `IF(A5="", "", IF(D5="RESIGNED", "⚠️ RE-ASSIGN ROLES", "OK"))`, s: centerCellStyle }],
-        [{ v: "Rajesh Kumar", s: inputCellStyle }, { v: "Kitchen Supervisor", s: dataCellStyle }, { v: "North Wing", s: inputCellStyle }, { v: "RESIGNED", s: inputCellStyle }, { t: 'f', f: `IF(A6="", "", IF(D6="RESIGNED", "⚠️ RE-ASSIGN ROLES", "OK"))`, s: centerCellStyle }],
-        [{ v: "Aditi Khan", s: inputCellStyle }, { v: "Floor Lead", s: dataCellStyle }, { v: "North Wing", s: inputCellStyle }, { v: "ON LEAVE", s: inputCellStyle }, { t: 'f', f: `IF(A7="", "", IF(D7="RESIGNED", "⚠️ RE-ASSIGN ROLES", "OK"))`, s: centerCellStyle }]
+        [{ v: "Chef Imran", s: inputCellStyle }, { v: "Head Chef", s: dataCellStyle }, { v: "Main Street", s: inputCellStyle }, { v: "ACTIVE", s: inputCellStyle }, { t: 'f', f: `IF(A4="", "", IF(D4="RESIGNED", "⚠️ RE-ASSIGN", "OK"))`, s: centerCellStyle }],
+        [{ v: "Sam Wilson", s: inputCellStyle }, { v: "Night Manager", s: dataCellStyle }, { v: "Main Street", s: inputCellStyle }, { v: "ACTIVE", s: inputCellStyle }, { t: 'f', f: `IF(A5="", "", IF(D5="RESIGNED", "⚠️ RE-ASSIGN", "OK"))`, s: centerCellStyle }],
+        [{ v: "Sarah Chen", s: inputCellStyle }, { v: "Floor Lead", s: dataCellStyle }, { v: "Main Street", s: inputCellStyle }, { v: "ACTIVE", s: inputCellStyle }, { t: 'f', f: `IF(A6="", "", IF(D6="RESIGNED", "⚠️ RE-ASSIGN", "OK"))`, s: centerCellStyle }]
     ];
     for(let i=0; i<25; i++) {
-        const row = i + 8;
-        mappingData.push([
-            { v: "", s: inputCellStyle }, 
-            { v: "", s: dataCellStyle }, 
-            { v: "Main Street", s: inputCellStyle },
-            { v: "ACTIVE", s: inputCellStyle }, 
-            { t: 'f', f: `IF(A${row}="", "", IF(D${row}="RESIGNED", "⚠️ RE-ASSIGN ROLES", "OK"))`, s: centerCellStyle }
-        ]);
+        const row = i + 7;
+        mappingData.push([{ v: "", s: inputCellStyle }, { v: "", s: dataCellStyle }, { v: "Main Street", s: inputCellStyle }, { v: "ACTIVE", s: inputCellStyle }, { t: 'f', f: `IF(A${row}="", "", IF(D${row}="RESIGNED", "⚠️ RE-ASSIGN", "OK"))`, s: centerCellStyle }]);
     }
     
-    mappingData.push([], [{ v: "SECTION B: MODULE SCOPE (YES / N/A)", s: { font: { bold: true, sz: 11 } } }], [{ v: "Operational Module", s: headerStyle }, { v: "Applicability (YES or N/A)", s: headerStyle }]);
+    mappingData.push([], [{ v: "SECTION B: MODULE SCOPE", s: { font: { bold: true, sz: 11 } } }], [{ v: "Operational Module", s: headerStyle }, { v: "Applicability (YES or N/A)", s: headerStyle }]);
     checklists.forEach(c => mappingData.push([{ v: c.title, s: dataCellStyle }, { v: "YES", s: inputCellStyle }]));
 
-    mappingData.push([], [{ v: "SECTION C: ROLE-TO-NAME MAPPING", s: { font: { bold: true, sz: 11 } } }], [{ v: "Structural Role", s: headerStyle }, { v: "Assigned Personnel Name", s: headerStyle }, { v: "Staff Health Status", s: headerStyle }]);
+    mappingData.push([], [{ v: "SECTION C: ROLE-TO-NAME MAPPING (INTERNAL TRANSPARENCY)", s: { font: { bold: true, sz: 11 } } }], [{ v: "Structural Role", s: headerStyle }, { v: "Assigned Personnel Name", s: headerStyle }, { v: "Staff Health Status", s: headerStyle }]);
     uniqueRoles.forEach((r, idx) => {
-        const row = 43 + checklists.length + idx; 
+        const row = 40 + checklists.length + idx; 
         mappingData.push([
             { v: r, s: { ...dataCellStyle, font: { bold: true } } }, 
-            { v: idx === 0 ? "Chef Imran" : idx === 1 ? "Sam Wilson" : idx === 2 ? "Rajesh Kumar" : "", s: inputCellStyle }, 
+            { v: idx === 0 ? "Chef Imran" : idx === 1 ? "Sam Wilson" : "", s: inputCellStyle }, 
             { t: 'f', f: `IF(B${row}="", "VACANT", IFERROR(INDEX(D4:D33, MATCH(B${row}, A4:A33, 0)), "NOT IN REGISTER"))`, s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.SUB_NAVY } } } }
         ]);
     });
@@ -193,40 +184,27 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const dashData: any[][] = [
         [],
         [
-            { v: "GOVERNANCE SCORE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, 
-            { v: "CRITICAL RISK COUNT", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, 
-            { v: "FILTER BRANCH", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } },
+            { v: "UNIT GOVERNANCE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, 
+            { v: "CRITICAL RISK", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, 
+            { v: "FILTER BRANCH (LOCK)", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } },
             { v: "START DATE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, 
             { v: "END DATE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }
         ],
         [
             { t: 'f', f: `TEXT(COUNTIFS('Master Task Register'!F:F, "YES", 'Master Task Register'!G:G, IF(C3="", "*", C3), 'Master Task Register'!E:E, "<>") / MAX(1, COUNTIFS('Master Task Register'!F:F, "YES", 'Master Task Register'!G:G, IF(C3="", "*", C3))), "0%")`, s: kpiBoxStyle },
             { t: 'f', f: `COUNTIFS('Master Task Register'!F:F, "YES", 'Master Task Register'!G:G, IF(C3="", "*", C3), 'Master Task Register'!E:E, "", 'Master Task Register'!H:H, "High")`, s: criticalKpiStyle },
-            { v: "", s: inputCellStyle },
+            { v: "Main Street", s: inputCellStyle },
             { v: "01-01-2025", s: inputCellStyle }, 
             { v: "31-12-2025", s: inputCellStyle }  
         ],
         [],
-        [{ v: "BIPOLAR PERFORMANCE HEATMAP (GREEN=EXECUTION / RED=RISK)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
-        [{ v: "Personnel Name", s: headerStyle }, { v: "Status", s: headerStyle }, { v: "Execution Index", s: headerStyle }, { v: "Risk Index", s: headerStyle }]
+        [{ v: "UNIT PERFORMANCE HEATMAP (ISOLATED VIEW)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
+        [{ v: "Personnel Name", s: headerStyle }, { v: "Status", s: headerStyle }, { v: "Execution Index (Branch Only)", s: headerStyle }, { v: "Risk Index (Branch Only)", s: headerStyle }]
     ];
     
-    // Demo Personnel on Dashboard
-    const demoStaff = ["Chef Imran", "Sam Wilson", "Rajesh Kumar", "Aditi Khan"];
-    demoStaff.forEach((name, i) => {
+    for(let i=0; i<15; i++) {
         const row = i + 7;
         const mapRow = i + 4;
-        dashData.push([
-            { v: name, s: dataCellStyle },
-            { t: 'f', f: `'2. Configuration & Mapping'!D${mapRow}`, s: centerCellStyle },
-            { t: 'f', f: `REPT("█", MIN(15, ROUND(COUNTIFS('Master Task Register'!D:D, A${row}, 'Master Task Register'!F:F, "YES", 'Master Task Register'!G:G, IF($C$3="", "*", $C$3), 'Master Task Register'!E:E, "<>")/2, 0)))`, s: { font: { color: { rgb: COLORS.GREEN }, sz: 12 } } },
-            { t: 'f', f: `REPT("█", MIN(15, ROUND(COUNTIFS('Master Task Register'!D:D, A${row}, 'Master Task Register'!F:F, "YES", 'Master Task Register'!G:G, IF($C$3="", "*", $C$3), 'Master Task Register'!E:E, "")/2, 0)))`, s: { font: { color: { rgb: COLORS.RED }, sz: 12 } } }
-        ]);
-    });
-
-    for(let i=0; i<15; i++) {
-        const row = i + 11;
-        const mapRow = i + 8;
         dashData.push([
             { t: 'f', f: `'2. Configuration & Mapping'!A${mapRow}`, s: dataCellStyle },
             { t: 'f', f: `IF(A${row}="", "", '2. Configuration & Mapping'!D${mapRow})`, s: centerCellStyle },
@@ -235,11 +213,11 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         ]);
     }
 
-    dashData.push([], [{ v: "PERSONNEL VACANCY TRACKER (RE-ASSIGN IMMEDIATELY)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.RED } } } }]);
+    dashData.push([], [{ v: "VACANCY TRACKER (RE-ASSIGN IMMEDIATELY)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.RED } } } }]);
     dashData.push([{ v: "Role Title", s: headerStyle }, { v: "Currently Mapped To", s: headerStyle }, { v: "Personnel Health", s: headerStyle }, { v: "Action Required", s: headerStyle }]);
     
-    uniqueRoles.slice(0, 10).forEach((r, idx) => {
-        const mapRow = 43 + checklists.length + idx;
+    uniqueRoles.slice(0, 8).forEach((r, idx) => {
+        const mapRow = 40 + checklists.length + idx;
         dashData.push([
             { v: r, s: dataCellStyle },
             { t: 'f', f: `'2. Configuration & Mapping'!B${mapRow}`, s: dataCellStyle },
@@ -260,13 +238,13 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             [],
             [{ v: c.title.toUpperCase(), s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center' } } }],
             [],
-            ['ID', 'What needs to be done?', 'How to Coach (Field Tips)', 'Assigned To (Auto-Sync)', 'Frequency', 'Proof Required', 'Date Done (Yellow)', 'Live Status', 'Why this matters']
+            ['ID', 'Task Description', 'How to Coach (Field Tips)', 'Assigned To (Internal Transparency)', 'Frequency', 'Proof Required', 'Date Done (Yellow)', 'Live Status', 'Why this matters']
         ];
 
         c.tasks.forEach((t, tIdx) => {
             const row = tIdx + 5;
             const roleIdx = uniqueRoles.indexOf((t.role || c.role).trim());
-            const roleMapRow = 43 + checklists.length + roleIdx;
+            const roleMapRow = 40 + checklists.length + roleIdx;
 
             wsData.push([
                 { v: t.id, s: centerCellStyle },
@@ -275,7 +253,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
                 { t: 'f', f: `'2. Configuration & Mapping'!B${roleMapRow}`, s: { ...centerCellStyle, font: { bold: true } } }, 
                 { v: (t.frequency || c.frequency), s: centerCellStyle },
                 { v: t.proof, s: dataCellStyle },
-                { v: tIdx === 0 ? "24-02-2025" : "", s: inputCellStyle }, 
+                { v: "", s: inputCellStyle }, 
                 { t: 'f', f: `IF(G${row}="", "PENDING", "COMPLETED")`, s: { ...centerCellStyle, font: { bold: true } } },
                 { v: t.consequence, s: { ...dataCellStyle, font: { italic: true, sz: 9 }, wrapText: true } }
             ]);
@@ -284,7 +262,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         const ws = utils.aoa_to_sheet(wsData);
         addNavBar(ws);
         ws['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 8 } }];
-        ws['!cols'] = [{ wch: 12 }, { wch: 65 }, { wch: 115 }, { wch: 25 }, { wch: 18 }, { wch: 25 }, { wch: 25 }, { wch: 30 }, { wch: 65 }];
+        ws['!cols'] = [{ wch: 12 }, { wch: 65 }, { wch: 115 }, { wch: 35 }, { wch: 18 }, { wch: 25 }, { wch: 25 }, { wch: 30 }, { wch: 65 }];
         ["A4", "B4", "C4", "D4", "E4", "F4", "G4", "H4", "I4"].forEach(cell => { if(ws[cell]) ws[cell].s = headerStyle; });
         utils.book_append_sheet(wb, ws, sName);
     });
@@ -292,10 +270,10 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     // --- MASTER REGISTER ---
     const masterData = [["Task ID", "Desc", "Role", "AssignedPerson", "DateDone", "ScopeStatus", "BranchLocation", "Priority"]];
     checklists.forEach((c, cIdx) => {
-        const configRow = 37 + cIdx;
+        const configRow = 34 + cIdx;
         c.tasks.forEach((t, tIdx) => {
             const roleIdx = uniqueRoles.indexOf((t.role || c.role).trim());
-            const roleMapRow = 43 + checklists.length + roleIdx;
+            const roleMapRow = 40 + checklists.length + roleIdx;
             const sheetRow = tIdx + 5;
             masterData.push([
                 t.id, 
@@ -312,5 +290,5 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const masterWs = utils.aoa_to_sheet(masterData);
     utils.book_append_sheet(wb, masterWs, "Master Task Register");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.18_EXECUTIVE_TESTED.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.18_ISOLATED.xlsx`);
 }
