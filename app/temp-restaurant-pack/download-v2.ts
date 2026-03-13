@@ -20,13 +20,13 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     // --- EXECUTIVE COMMAND PALETTE ---
     const COLORS = {
         PRIMARY_NAVY: "0F2B46",
+        SUB_NAVY: "1F4E79",
         GREEN: "2E7D32",
         RED: "C62828",
         BORDER: "D1D5DB",
         INPUT_YELLOW: "FFFFE0", 
         WHITE: "FFFFFF",
         GRAY_TEXT: "4D4D4D",
-        SUB_NAVY: "1F4E79",
         AMBER: "F4B400"
     };
 
@@ -90,7 +90,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
                 { v: "1. COVER PAGE", l: { Target: "#'1. Cover Page'!A1" }, s: { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 9 }, fill: { fgColor: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center', vertical: 'center' } } },
                 { v: "2. DASHBOARD", l: { Target: "#'4. Dashboard'!A1" }, s: { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 9 }, fill: { fgColor: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center', vertical: 'center' } } },
                 { v: "3. CONFIGURATION", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 9 }, fill: { fgColor: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center', vertical: 'center' } } },
-                { v: "4. CONNECTOR", l: { Target: "#'5. Branch Connector'!A1" }, s: { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 9 }, fill: { fgColor: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center', vertical: 'center' } } }
+                { v: "4. QUICK START", l: { Target: "#'Quick Start Guide'!A1" }, s: { font: { bold: true, color: { rgb: "FFFFFF" }, sz: 9 }, fill: { fgColor: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center', vertical: 'center' } } }
             ]
         ];
         utils.sheet_add_aoa(ws, navData, { origin: "A1" });
@@ -110,9 +110,9 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [{ v: "Organization Entity:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Company Name", s: inputCellStyle }],
         [{ v: "Unit Identification:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Branch Name/ID", s: inputCellStyle }],
         [],
-        [{ v: "RED ALERT CONTINUITY PROTOCOL (IF TASKS ARE RED):", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.RED } } } }],
+        [{ v: "CONTINUITY PROTOCOL (IF STATUS IS RED):", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.RED } } } }],
         [{ v: "1. Identify the assigned person on the Dashboard." }],
-        [{ v: "2. If person is 'Resigned' or 'On Leave', YOU MUST RE-ASSIGN their role in CONFIGURATION (Section C) to an active name.", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: linkStyle }],
+        [{ v: "2. If person is 'Resigned' or 'On Leave', YOU MUST RE-ASSIGN their role in CONFIGURATION (Section C) immediately.", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: linkStyle }],
         [{ v: "3. If person is active, use the 'How to Coach' notes in the module to rectify the physical standard." }],
         [{ v: "4. Re-enter the completion date in the module. Status will turn GREEN instantly." }],
         [],
@@ -124,11 +124,33 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     coverWs['!rows'] = [null, null, { hpt: 45 }];
     utils.book_append_sheet(wb, coverWs, "1. Cover Page");
 
-    // --- 2. CONFIGURATION & MAPPING ---
+    // --- QUICK START GUIDE ---
+    const guideData = [
+        [],
+        [{ v: "EXECUTIVE OPERATIONAL HANDBOOK", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
+        [{ v: "Follow this 3-step setup for zero-ambiguity governance.", s: { font: { italic: true } } }],
+        [],
+        [{ v: "STEP 1: REGISTER THE HUMANS", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.SUB_NAVY } } } }, { v: "Go to CONFIGURATION (Section A). Type names and set status.", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: linkStyle }],
+        [{ v: "STEP 2: ACTIVATE MODULES", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.SUB_NAVY } } } }, { v: "In CONFIGURATION (Section B), select 'N/A' for any facility you don't have.", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: linkStyle }],
+        [{ v: "STEP 3: ASSIGN ROLES", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.SUB_NAVY } } } }, { v: "In CONFIGURATION (Section C), type the NAME next to each job title.", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: linkStyle }],
+        [],
+        [{ v: "DASHBOARD VOCABULARY:", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUB_NAVY } } } }],
+        [{ v: "Governance Score", s: { font: { bold: true } } }, { v: "Execution % based on the 'Command Timeframe' dates entered on the Dashboard." }],
+        [{ v: "Execution Index", s: { font: { bold: true } } }, { v: "Green '█' blocks representing successfully completed tasks." }],
+        [{ v: "Risk Index", s: { font: { bold: true } } }, { v: "Red '█' blocks representing overdue or pending critical items." }],
+        [],
+        [{ v: "GO TO COMMAND DASHBOARD", l: { Target: "#'4. Dashboard'!A1" }, s: { ...linkStyle, font: { ...linkStyle.font, sz: 14, bold: true } } }]
+    ];
+    const guideWs = utils.aoa_to_sheet(guideData);
+    addNavBar(guideWs);
+    guideWs['!cols'] = [{ wch: 40 }, { wch: 100 }];
+    utils.book_append_sheet(wb, guideWs, "Quick Start Guide");
+
+    // --- 2. CONFIGURATION & MAPPING (THE SETTINGS SHEET) ---
     const mappingData: any[][] = [
         [],
         [{ v: "SECTION A: PERSONNEL REGISTER (THE HUMANS)", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_NAVY }, sz: 11 } } }],
-        [{ v: "Full Name (Type Here)", s: headerStyle }, { v: "Position", s: headerStyle }, { v: "Branch/Location", s: headerStyle }, { v: "Status (Active/Leave/Resigned)", s: headerStyle }, { v: "System Health", s: headerStyle }]
+        [{ v: "Full Name (Type Once)", s: headerStyle }, { v: "Position", s: headerStyle }, { v: "Branch/Unit", s: headerStyle }, { v: "Status (ACTIVE/LEAVE/RESIGNED)", s: headerStyle }, { v: "System Health", s: headerStyle }]
     ];
     for(let i=0; i<20; i++) {
         const row = i + 4;
@@ -141,8 +163,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         ]);
     }
     
-    mappingData.push([], [{ v: "SECTION B: MODULE SCOPE (APPLICABLE / N/A)", s: { font: { bold: true, sz: 11 } } }], [{ v: "Operational Module", s: headerStyle }, { v: "Applicability (Type 'Applicable' or 'N/A')", s: headerStyle }]);
-    checklists.forEach(c => mappingData.push([{ v: c.title, s: dataCellStyle }, { v: "Applicable", s: inputCellStyle }]));
+    mappingData.push([], [{ v: "SECTION B: MODULE SCOPE (YES / N/A)", s: { font: { bold: true, sz: 11 } } }], [{ v: "Operational Module", s: headerStyle }, { v: "Applicability (YES or N/A)", s: headerStyle }]);
+    checklists.forEach(c => mappingData.push([{ v: c.title, s: dataCellStyle }, { v: "YES", s: inputCellStyle }]));
 
     mappingData.push([], [{ v: "SECTION C: ROLE-TO-NAME MAPPING (THE BRAIN)", s: { font: { bold: true, sz: 11 } } }], [{ v: "Structural Role", s: headerStyle }, { v: "Assigned Personnel Name (Type Here)", s: headerStyle }, { v: "Staff Health Status", s: headerStyle }]);
     uniqueRoles.forEach((r, idx) => {
@@ -164,7 +186,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [],
         [{ v: "GOVERNANCE SCORE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, { v: "FILTER START DATE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, { v: "FILTER END DATE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }],
         [
-            { t: 'f', f: `TEXT(COUNTIFS('Master Task Register'!F:F, "Applicable", 'Master Task Register'!E:E, "<>") / COUNTIF('Master Task Register'!F:F, "Applicable"), "0%")`, s: kpiBoxStyle },
+            { t: 'f', f: `TEXT(COUNTIFS('Master Task Register'!F:F, "YES", 'Master Task Register'!E:E, "<>") / COUNTIF('Master Task Register'!F:F, "YES"), "0%")`, s: kpiBoxStyle },
             { v: "", s: inputCellStyle }, 
             { v: "", s: inputCellStyle }  
         ],
@@ -178,8 +200,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         dashData.push([
             { t: 'f', f: `'2. Configuration & Mapping'!A${mapRow}`, s: dataCellStyle },
             { t: 'f', f: `IF(A${row}="", "", '2. Configuration & Mapping'!D${mapRow})`, s: centerCellStyle },
-            { t: 'f', f: `IF(A${row}="", "", REPT("█", MIN(15, ROUND(COUNTIFS('Master Task Register'!D:D, A${row}, 'Master Task Register'!F:F, "Applicable", 'Master Task Register'!E:E, "<>")/2, 0))))`, s: { font: { color: { rgb: COLORS.GREEN }, sz: 12 } } },
-            { t: 'f', f: `IF(A${row}="", "", REPT("█", MIN(15, ROUND(COUNTIFS('Master Task Register'!D:D, A${row}, 'Master Task Register'!F:F, "Applicable", 'Master Task Register'!E:E, "")/2, 0))))`, s: { font: { color: { rgb: COLORS.RED }, sz: 12 } } }
+            { t: 'f', f: `IF(A${row}="", "", REPT("█", MIN(15, ROUND(COUNTIFS('Master Task Register'!D:D, A${row}, 'Master Task Register'!F:F, "YES", 'Master Task Register'!E:E, "<>")/2, 0))))`, s: { font: { color: { rgb: COLORS.GREEN }, sz: 12 } } },
+            { t: 'f', f: `IF(A${row}="", "", REPT("█", MIN(15, ROUND(COUNTIFS('Master Task Register'!D:D, A${row}, 'Master Task Register'!F:F, "YES", 'Master Task Register'!E:E, "")/2, 0))))`, s: { font: { color: { rgb: COLORS.RED }, sz: 12 } } }
         ]);
     }
     const dashWs = utils.aoa_to_sheet(dashData);
@@ -218,7 +240,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         const ws = utils.aoa_to_sheet(wsData);
         addNavBar(ws);
         ws['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 8 } }];
-        ws['!cols'] = [{ wch: 12 }, { wch: 65 }, { wch: 75 }, { wch: 25 }, { wch: 18 }, { wch: 25 }, { wch: 25 }, { wch: 20 }, { wch: 65 }];
+        ws['!cols'] = [{ wch: 12 }, { wch: 65 }, { wch: 110 }, { wch: 25 }, { wch: 18 }, { wch: 25 }, { wch: 25 }, { wch: 30 }, { wch: 65 }];
         ["A4", "B4", "C4", "D4", "E4", "F4", "G4", "H4", "I4"].forEach(cell => { if(ws[cell]) ws[cell].s = headerStyle; });
         utils.book_append_sheet(wb, ws, sName);
     });

@@ -62,14 +62,14 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                 <div className="space-y-6">
                     <div className="flex justify-center">
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-5 uppercase tracking-[0.5em] font-black text-[10px] bg-primary/5 rounded-full backdrop-blur-sm">
-                            Portfolio Command V2.17
+                            Executive Build V2.17
                         </Badge>
                     </div>
                     <h1 className="text-5xl md:text-8xl font-black font-headline text-primary-text italic uppercase tracking-tighter leading-[0.9] drop-shadow-2xl">
                         Command <br/> <span className="text-primary underline decoration-primary/20 underline-offset-8">Infrastructure.</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-secondary-text italic max-w-2xl mx-auto font-medium leading-relaxed border-l-2 border-primary/20 pl-8">
-                        The V2.17 Build: Featuring **Branch-Wise Personnel Mapping**, **Module Scope Toggles**, and the **Bipolar Risk Heatmap**.
+                        The Portfolio Edition: Featuring **Active Scope Toggles**, **Branch-Wise Mapping**, and the **Bipolar Continuity Heatmap**.
                     </p>
                 </div>
                 
@@ -80,7 +80,7 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                         className="h-20 px-12 bg-primary text-black font-black uppercase italic text-lg shadow-[0_0_50px_-12px_rgba(46,184,107,0.5)] hover:scale-105 active:scale-95 transition-all rounded-2xl"
                     >
                         <Download className="mr-3 w-6 h-6" />
-                        Download Executive Build V2.17
+                        Download Portfolio Build V2.17
                     </Button>
                     <div className="flex items-center gap-3 text-white/20 font-black uppercase tracking-[0.3em] text-[10px] italic">
                         <Shield className="w-4 h-4" /> SECURED PORTFOLIO V2.17
@@ -93,41 +93,41 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
         <section className="py-32 bg-alternate-background">
             <div className="container px-4 md:px-6">
                 <div className="text-center mb-20 space-y-4">
-                    <Badge variant="outline" className="text-primary border-primary/20">Build Specifications</Badge>
-                    <h2 className="text-4xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">Governance Engine Components</h2>
-                    <p className="text-secondary-text max-w-xl mx-auto italic font-medium">Technical architecture of the V2.17 "Professional" Build.</p>
+                    <Badge variant="outline" className="text-primary border-primary/20">Operational Logic</Badge>
+                    <h2 className="text-4xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">Engine Specifications</h2>
+                    <p className="text-secondary-text max-w-xl mx-auto italic font-medium">Visualizing the high-end architecture of the V2.17 build.</p>
                 </div>
                 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <FeatureItem 
                         icon={MapPin} 
-                        title="Branch Mapping" 
-                        description="New personnel register column allows you to assign staff to specific branches or units for multi-unit tracking."
+                        title="Branch Assignment" 
+                        description="Register staff members and assign them to specific branches. Formulas automatically filter personnel health by location."
                     />
                     <FeatureItem 
                         icon={LayoutGrid} 
                         title="Module Scope Toggle" 
-                        description="Type 'N/A' for any facility (e.g. Bar). The Dashboard math adjusts to ignore those tasks for fair branch scoring."
+                        description="Select 'YES' or 'N/A' for departments (e.g. Bar). The Dashboard math adjusts instantly to ignore inactive zones."
                     />
                     <FeatureItem 
                         icon={AlertCircle} 
                         title="Continuity Protocol" 
-                        description="If a person resigns, the system triggers a RED ALERT instructing the manager to RE-ASSIGN tasks in Settings immediately."
+                        description="If a staff member resigns, the system specifically mandates 'RE-ASSIGN ROLE' in the Settings brain to prevent lapses."
                     />
                     <FeatureItem 
                         icon={BarChart3} 
                         title="Bipolar Heatmap" 
-                        description="Visual '█' blocks in Green (Execution) and Red (Risk) show exactly where the gaps are in your personnel load."
+                        description="Visual '█' blocks in Green (Execution) and Red (Risk) provide a boardroom-ready view of operational load."
                     />
                     <FeatureItem 
                         icon={Stethoscope} 
-                        title="Coaching Infrastructure" 
-                        description="Integrated 'How to Coach' tips turn floor managers into field auditors during their daily rounds."
+                        title="Coaching IQ" 
+                        description="Column C now contains 'How to Coach' notes, turning simple tasks into a professional field training manual."
                     />
                     <FeatureItem 
                         icon={Settings2} 
-                        title="Configuration Brain" 
-                        description="A dedicated 'Settings' sheet. Enter personnel, branches, and roles once; it flows globally."
+                        title="One-Time Config" 
+                        description="Enter personnel and unit data once in the 'Configuration' sheet; it flows through every module automatically."
                     />
                 </div>
             </div>
@@ -148,7 +148,7 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                         <div className="space-y-4">
                             <h3 className="text-4xl md:text-6xl font-black font-headline uppercase italic text-primary-text tracking-tighter leading-tight">V2.17 Command Build</h3>
                             <p className="text-xl md:text-2xl text-secondary-text italic font-medium leading-relaxed max-w-2xl mx-auto">
-                                The ultimate anchor for high-stakes operational reliability.
+                                The professional anchor for high-stakes operational reliability.
                             </p>
                         </div>
                     </div>
