@@ -127,7 +127,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const coverData = [
         [], [],
         [{ v: "OPERATIONAL GOVERNANCE ENGINE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Version 2.16 Build: Professional Portfolio Build`, s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Version 2.17 Build: Executive Command Portfolio`, s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "Deployment Mode:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "SINGLE UNIT (Type 'MULTI-UNIT' if required)", s: inputCellStyle }],
         [{ v: "Organization Entity:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Company Name", s: inputCellStyle }],
@@ -158,9 +158,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [{ v: "STEP 3: ASSIGN ROLES", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.SUB_NAVY } } } }, { v: "In SETTINGS (Section C), type the NAME of the person next to each role.", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: linkStyle }],
         [],
         [{ v: "DASHBOARD VOCABULARY:", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUB_NAVY } } } }],
-        [{ v: "Governance Score", s: { font: { bold: true } } }, { v: "The percentage of safety tasks completed across all active modules." }],
-        [{ v: "Visual Load Index", s: { font: { bold: true } } }, { v: "Heatmap of personnel capacity. If the bar is full, that person is a 'Single Point of Failure'." }],
-        [{ v: "Personnel Status", s: { font: { bold: true } } }, { v: "Syncs from the Register. Alerts you if a critical role is currently unstaffed." }],
+        [{ v: "Governance Score", s: { font: { bold: true } } }, { v: "Execution % based on the 'Command Timeframe' selected on the Dashboard." }],
+        [{ v: "Execution Index", s: { font: { bold: true } } }, { v: "Green '█' blocks representing successfully completed tasks." }],
+        [{ v: "Risk Index", s: { font: { bold: true } } }, { v: "Red '█' blocks representing overdue or pending critical items." }],
         [],
         [{ v: "GO TO DASHBOARD", l: { Target: "#'4. Dashboard'!A1" }, s: { ...linkStyle, font: { ...linkStyle.font, sz: 14, bold: true } } }]
     ];
@@ -206,29 +206,29 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     // --- 4. DASHBOARD ---
     const dashData: any[][] = [
         [],
-        [{ v: "GOVERNANCE SCORE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, { v: "ACTIVE PERSONNEL", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, { v: "HIGHEST LOAD PERSON", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }],
+        [{ v: "GOVERNANCE SCORE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, { v: "FILTER START DATE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }, { v: "FILTER END DATE", s: { font: { sz: 8, bold: true }, alignment: { horizontal: 'center' } } }],
         [
             { t: 'f', f: `TEXT(COUNTIFS('Master Task Register'!F:F, "Applicable", 'Master Task Register'!E:E, "<>") / COUNTIF('Master Task Register'!F:F, "Applicable"), "0%")`, s: kpiBoxStyle },
-            { t: 'f', f: `COUNTIFS('2. Configuration & Mapping'!C4:C23, "ACTIVE")`, s: kpiBoxStyle },
-            { t: 'f', f: `IFERROR(INDEX('2. Configuration & Mapping'!A4:A23, MATCH(MAX(B7:B26), B7:B26, 0)), "NO DATA")`, s: { ...kpiBoxStyle, font: { sz: 10 } } }
+            { v: "", s: inputCellStyle }, // Start Date
+            { v: "", s: inputCellStyle }  // End Date
         ],
         [],
-        [{ v: "PERSONNEL WORKLOAD & RISK HEATMAP", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
-        [{ v: "Name", s: headerStyle }, { v: "Tasks Assigned", s: headerStyle }, { v: "Visual Load Index", s: headerStyle }, { v: "Current Status", s: headerStyle }]
+        [{ v: "SECTION B: BIPOLAR EXECUTION & RISK HEATMAP", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIMARY_NAVY } } } }],
+        [{ v: "Personnel Name", s: headerStyle }, { v: "Status", s: headerStyle }, { v: "Execution Index (Completed)", s: headerStyle }, { v: "Risk Index (Overdue/Pending)", s: headerStyle }]
     ];
     for(let i=0; i<20; i++) {
         const row = i+7;
         const mapRow = i+4;
         dashData.push([
             { t: 'f', f: `'2. Configuration & Mapping'!A${mapRow}`, s: dataCellStyle },
-            { t: 'f', f: `IF(A${row}="", 0, COUNTIFS('Master Task Register'!D:D, A${row}, 'Master Task Register'!F:F, "Applicable"))`, s: centerCellStyle },
-            { t: 'f', f: `IF(B${row}=0, "", REPT("█", MIN(15, ROUND(B${row}/2, 0))))`, s: { font: { color: { rgb: COLORS.SUB_NAVY }, sz: 12 } } },
-            { t: 'f', f: `IF(A${row}="", "", '2. Configuration & Mapping'!C${mapRow})`, s: centerCellStyle }
+            { t: 'f', f: `IF(A${row}="", "", '2. Configuration & Mapping'!C${mapRow})`, s: centerCellStyle },
+            { t: 'f', f: `IF(A${row}="", "", REPT("█", MIN(15, ROUND(COUNTIFS('Master Task Register'!D:D, A${row}, 'Master Task Register'!F:F, "Applicable", 'Master Task Register'!E:E, "<>")/2, 0))))`, s: { font: { color: { rgb: COLORS.GREEN }, sz: 12 } } },
+            { t: 'f', f: `IF(A${row}="", "", REPT("█", MIN(15, ROUND(COUNTIFS('Master Task Register'!D:D, A${row}, 'Master Task Register'!F:F, "Applicable", 'Master Task Register'!E:E, "")/2, 0))))`, s: { font: { color: { rgb: COLORS.RED }, sz: 12 } } }
         ]);
     }
     const dashWs = utils.aoa_to_sheet(dashData);
     addNavBar(dashWs);
-    dashWs['!cols'] = [{ wch: 45 }, { wch: 25 }, { wch: 45 }, { wch: 25 }];
+    dashWs['!cols'] = [{ wch: 45 }, { wch: 25 }, { wch: 45 }, { wch: 45 }];
     utils.book_append_sheet(wb, dashWs, "4. Dashboard");
 
     // --- CHECKLIST SHEETS ---
@@ -288,5 +288,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const masterWs = utils.aoa_to_sheet(masterData);
     utils.book_append_sheet(wb, masterWs, "Master Task Register");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.16_PORTFOLIO.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.17_EXECUTIVE.xlsx`);
 }
