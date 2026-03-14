@@ -7,7 +7,10 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * Version 2.3 - Executive Command (Clinical Build)
  * Institutional Standard for Operational Governance
- * MULTI-LOCATION ENABLED: Includes Branch Master logic and Location ID hooks.
+ * FIX LOG: 
+ * - Status Code 1 fixed to ACTIVE via CHOOSE function.
+ * - Assigned Location fixed to map from Branch Code via CHOOSE.
+ * - Alignment re-enforced: Text (Left), Data (Center).
  */
 export const handleDownloadV2 = (item: PremiumPack) => {
     if (!item) {
@@ -29,6 +32,10 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         ACCENT_BLUE: "2563EB",
         DANGER_RED: "DC2626",
         SUCCESS_GREEN: "16A34A",
+        WARNING_AMBER: "D97706",
+        TRAINING_BLUE: "0284C7",
+        OFF_PURPLE: "7C3AED",
+        HOLIDAY_PINK: "DB2777",
         WHITE: "FFFFFF",
         SOFT_GREY: "F3F4F6",
         BORDER_LIGHT: "D1D5DB",
@@ -114,9 +121,9 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [{ v: "STATUS: DEPLOYED / ACTIVE", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, null, null, { v: "SYSTEM ID: [TYPE UNIQUE ID]", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }],
         [],
         [{ v: "BRANCH / LOCATION MASTER REGISTRY (Define Here)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Code 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 1 Name", s: inputCellStyle }, null, { v: "Code 4:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 4 Name", s: inputCellStyle }],
-        [{ v: "Code 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 2 Name", s: inputCellStyle }, null, { v: "Code 5:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 5 Name", s: inputCellStyle }],
-        [{ v: "Code 3:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 3 Name", s: inputCellStyle }],
+        [{ v: "Code 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Main Branch", s: inputCellStyle }, null, { v: "Code 4:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 4 Name", s: inputCellStyle }],
+        [{ v: "Code 2:", s: { alignment: { horizontal: 'right' } } }, { v: "East Annex", s: inputCellStyle }, null, { v: "Code 5:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 5 Name", s: inputCellStyle }],
+        [{ v: "Code 3:", s: { alignment: { horizontal: 'right' } } }, { v: "West Warehouse", s: inputCellStyle }],
         [],
         [{ v: "PROTOCOL: HIGH LIABILITY COMPLIANCE", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [],
@@ -141,17 +148,20 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     ];
     utils.book_append_sheet(wb, coverWs, "01_SYSTEM_OVERVIEW");
 
-    // --- 02. PERSONNEL SETUP (ZERO EYE-TRAVEL UI) ---
+    // --- 02. PERSONNEL SETUP (NUMERICAL COMMAND PICKER) ---
     const setupData: any[][] = [
         [],
         [{ v: "A: PERSONNEL REGISTER & BRANCH MAPPING", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [],
-        [null, null, null, { v: "1=ACTIVE, 2=LEAVE, 3=RESIGNED, 4=TRAINING, 5=WEEKLY OFF, 6=HOLIDAY", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }, { v: "1-5 = BRANCH CODE (FROM 01_OVERVIEW)", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
+        [null, null, null, 
+            { v: "1=ACTIVE, 2=LEAVE, 3=RESIGNED, 4=TRAINING, 5=WEEKLY OFF, 6=HOLIDAY", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }, 
+            { v: "BRANCH CODE (1-5 FROM 01_OVERVIEW)", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }
+        ],
         [{ v: "ID", s: headerBlockStyle }, { v: "Staff Name", s: headerBlockStyle }, { v: "Operational Role", s: headerBlockStyle }, { v: "Status Code (1-6)", s: headerBlockStyle }, { v: "Branch Code (1-5)", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }, { v: "Assigned Location", s: headerBlockStyle }],
-        [{ v: "1", s: centerCellStyle }, { v: "Imran Khan", s: leftCellStyle }, { v: "Head Chef", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D6=1,"ACTIVE",IF(D6=2,"LEAVE",IF(D6=3,"RESIGNED",IF(D6=4,"TRAINING",IF(D6=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }, { t: 'f', f: `IFERROR(VLOOKUP(E6,{1,'01_SYSTEM_OVERVIEW'!$B$9;2,'01_SYSTEM_OVERVIEW'!$B$10;3,'01_SYSTEM_OVERVIEW'!$B$11;4,'01_SYSTEM_OVERVIEW'!$E$9;5,'01_SYSTEM_OVERVIEW'!$E$10},2,FALSE),"N/A")`, s: centerCellStyle }],
-        [{ v: "2", s: centerCellStyle }, { v: "Aditi Sharma", s: leftCellStyle }, { v: "General Manager", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D7=1,"ACTIVE",IF(D7=2,"LEAVE",IF(D7=3,"RESIGNED",IF(D7=4,"TRAINING",IF(D7=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }, { t: 'f', f: `IFERROR(VLOOKUP(E7,{1,'01_SYSTEM_OVERVIEW'!$B$9;2,'01_SYSTEM_OVERVIEW'!$B$10;3,'01_SYSTEM_OVERVIEW'!$B$11;4,'01_SYSTEM_OVERVIEW'!$E$9;5,'01_SYSTEM_OVERVIEW'!$E$10},2,FALSE),"N/A")`, s: centerCellStyle }],
-        [{ v: "3", s: centerCellStyle }, { v: "Rahul V.", s: leftCellStyle }, { v: "Supervisor", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "2", s: greyInputStyle }, { t: 'f', f: `IF(D8=1,"ACTIVE",IF(D8=2,"LEAVE",IF(D8=3,"RESIGNED",IF(D8=4,"TRAINING",IF(D8=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }, { t: 'f', f: `IFERROR(VLOOKUP(E8,{1,'01_SYSTEM_OVERVIEW'!$B$9;2,'01_SYSTEM_OVERVIEW'!$B$10;3,'01_SYSTEM_OVERVIEW'!$B$11;4,'01_SYSTEM_OVERVIEW'!$E$9;5,'01_SYSTEM_OVERVIEW'!$E$10},2,FALSE),"N/A")`, s: centerCellStyle }],
-        [{ v: "4", s: centerCellStyle }, { v: "Karan S.", s: leftCellStyle }, { v: "Storekeeper", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "2", s: greyInputStyle }, { t: 'f', f: `IF(D9=1,"ACTIVE",IF(D9=2,"LEAVE",IF(D9=3,"RESIGNED",IF(D9=4,"TRAINING",IF(D9=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }, { t: 'f', f: `IFERROR(VLOOKUP(E9,{1,'01_SYSTEM_OVERVIEW'!$B$9;2,'01_SYSTEM_OVERVIEW'!$B$10;3,'01_SYSTEM_OVERVIEW'!$B$11;4,'01_SYSTEM_OVERVIEW'!$E$9;5,'01_SYSTEM_OVERVIEW'!$E$10},2,FALSE),"N/A")`, s: centerCellStyle }]
+        [{ v: "1", s: centerCellStyle }, { v: "Imran Khan", s: leftCellStyle }, { v: "Head Chef", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(D6, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "VACANT")`, s: centerCellStyle }, { t: 'f', f: `IFERROR(CHOOSE(E6, '01_SYSTEM_OVERVIEW'!$B$9, '01_SYSTEM_OVERVIEW'!$B$10, '01_SYSTEM_OVERVIEW'!$B$11, '01_SYSTEM_OVERVIEW'!$E$9, '01_SYSTEM_OVERVIEW'!$E$10), "N/A")`, s: centerCellStyle }],
+        [{ v: "2", s: centerCellStyle }, { v: "Aditi Sharma", s: leftCellStyle }, { v: "General Manager", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(D7, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "VACANT")`, s: centerCellStyle }, { t: 'f', f: `IFERROR(CHOOSE(E7, '01_SYSTEM_OVERVIEW'!$B$9, '01_SYSTEM_OVERVIEW'!$B$10, '01_SYSTEM_OVERVIEW'!$B$11, '01_SYSTEM_OVERVIEW'!$E$9, '01_SYSTEM_OVERVIEW'!$E$10), "N/A")`, s: centerCellStyle }],
+        [{ v: "3", s: centerCellStyle }, { v: "Rahul V.", s: leftCellStyle }, { v: "Supervisor", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "2", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(D8, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "VACANT")`, s: centerCellStyle }, { t: 'f', f: `IFERROR(CHOOSE(E8, '01_SYSTEM_OVERVIEW'!$B$9, '01_SYSTEM_OVERVIEW'!$B$10, '01_SYSTEM_OVERVIEW'!$B$11, '01_SYSTEM_OVERVIEW'!$E$9, '01_SYSTEM_OVERVIEW'!$E$10), "N/A")`, s: centerCellStyle }],
+        [{ v: "4", s: centerCellStyle }, { v: "Karan S.", s: leftCellStyle }, { v: "Storekeeper", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "2", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(D9, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "VACANT")`, s: centerCellStyle }, { t: 'f', f: `IFERROR(CHOOSE(E9, '01_SYSTEM_OVERVIEW'!$B$9, '01_SYSTEM_OVERVIEW'!$B$10, '01_SYSTEM_OVERVIEW'!$B$11, '01_SYSTEM_OVERVIEW'!$E$9, '01_SYSTEM_OVERVIEW'!$E$10), "N/A")`, s: centerCellStyle }]
     ];
     const setupWs = utils.aoa_to_sheet(setupData);
     addNavBar(setupWs);
