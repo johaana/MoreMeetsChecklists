@@ -9,11 +9,11 @@ import type { PremiumPack } from "@/lib/premium-packs";
  * Institutional Standard for Operational Governance
  * 
  * FINAL AUDIT REPAIRS:
- * - Fixed Assignment Logic: Duties now map to Staff Names, not Status words.
- * - Logical Pair Architecture: Code sits directly next to Result Label.
- * - Default status strictly set to ACTIVE (Code 1).
- * - Multi-Location Logic: Branch Registry on Overview maps correctly to Setup.
- * - Choose-Mode: Pre-enabled Auto-Filters for Search & Choose experience.
+ * - Dynamic Role Extraction: Setup sheet now auto-lists all roles found in the checklists.
+ * - Logical Pair Architecture: Input Code and Output Label are side-by-side.
+ * - Status 1 Fix: Strictly ACTIVE by default.
+ * - Branch Mapping: Links directly to the Branch Registry on Overview.
+ * - Path B Alignment: Descriptions Left / Data Center.
  */
 export const handleDownloadV2 = (item: PremiumPack) => {
     if (!item) {
@@ -110,14 +110,14 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
     };
 
-    // --- 01. OVERVIEW (CENTERED prestige) ---
+    // --- 01. OVERVIEW (Prestige Centering) ---
     const coverData = [
         [], [],
         [{ v: "MOREMEETS™ OPERATIONAL GOVERNANCE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
         [{ v: `Version 2.3 Executive Build: ${item.title}`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "BRANCH MASTER REGISTRY", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Code 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Main Branch Name", s: greyInputStyle }, null, { v: "Code 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 2 Name", s: greyInputStyle }],
+        [{ v: "Code 1:", s: { alignment: { horizontal: 'right' } } }, { v: "[ENTER MAIN BRANCH NAME]", s: greyInputStyle }, null, { v: "Code 2:", s: { alignment: { horizontal: 'right' } } }, { v: "[ENTER BRANCH 2 NAME]", s: greyInputStyle }],
         [],
         [{ v: "OPERATIONAL INSTRUCTIONS:", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "1. Update personnel names and branches in '02_SETUP' using Numerical Codes.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
@@ -129,18 +129,31 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     coverWs['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 5 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 5 } }, { s: { r: 5, c: 0 }, e: { r: 5, c: 5 } }, { s: { r: 8, c: 0 }, e: { r: 8, c: 5 } }, { s: { r: 9, c: 0 }, e: { r: 9, c: 5 } }, { s: { r: 10, c: 0 }, e: { r: 10, c: 5 } }];
     utils.book_append_sheet(wb, coverWs, "01_SYSTEM_OVERVIEW");
 
-    // --- 02. SETUP (ROLE BASED ASSIGNMENT) ---
+    // --- 02. SETUP (DYNAMIC ROLE LIST) ---
+    // Extract unique roles from the pack to build the profile list
+    const uniqueRoles = Array.from(new Set(item.checklists.map(c => c.role)));
+    
     const setupData: any[][] = [
         [],
-        [{ v: "A: PERSONNEL & ROLE ASSIGNMENT", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "A: PERSONNEL & ROLE ASSIGNMENT (ASSIGN NAMES HERE)", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [],
-        [null, null, null, { v: "1=ACTIVE, 2=LEAVE, 3=RESIGNED, 4=TRAINING, 5=WEEKLY OFF, 6=HOLIDAY", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }, null, { v: "1-2 = BRANCH CODE (FROM OVERVIEW)", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "ID", s: headerBlockStyle }, { v: "Operational Role", s: headerBlockStyle }, { v: "Assigned Staff Name", s: headerBlockStyle }, { v: "Status Code", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }, { v: "Branch Code", s: headerBlockStyle }, { v: "Assigned Location", s: headerBlockStyle }],
-        [{ v: "1", s: centerCellStyle }, { v: "Head Chef", s: centerCellStyle }, { v: "Type Name Here", s: greyInputStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(D6, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "ACTIVE")`, s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(F6, '01_SYSTEM_OVERVIEW'!$B$7, '01_SYSTEM_OVERVIEW'!$E$7), "N/A")`, s: centerCellStyle }],
-        [{ v: "2", s: centerCellStyle }, { v: "General Manager", s: centerCellStyle }, { v: "Type Name Here", s: greyInputStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(D7, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "ACTIVE")`, s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(F7, '01_SYSTEM_OVERVIEW'!$B$7, '01_SYSTEM_OVERVIEW'!$E$7), "N/A")`, s: centerCellStyle }],
-        [{ v: "3", s: centerCellStyle }, { v: "Shift Supervisor", s: centerCellStyle }, { v: "Type Name Here", s: greyInputStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(D8, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "ACTIVE")`, s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(F8, '01_SYSTEM_OVERVIEW'!$B$7, '01_SYSTEM_OVERVIEW'!$E$7), "N/A")`, s: centerCellStyle }],
-        [{ v: "4", s: centerCellStyle }, { v: "Floor Staff", s: centerCellStyle }, { v: "Type Name Here", s: greyInputStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(D9, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "ACTIVE")`, s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(F9, '01_SYSTEM_OVERVIEW'!$B$7, '01_SYSTEM_OVERVIEW'!$E$7), "N/A")`, s: centerCellStyle }]
+        [null, null, null, { v: "1=ACTIVE, 2=LEAVE, 3=RESIGNED, 4=TRAINING, 5=WEEKLY OFF, 6=HOLIDAY", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }, null, { v: "1-2 = BRANCH CODE", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "ID", s: headerBlockStyle }, { v: "Operational Role", s: headerBlockStyle }, { v: "Assigned Staff Name", s: headerBlockStyle }, { v: "Status Code", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }, { v: "Branch Code", s: headerBlockStyle }, { v: "Assigned Location", s: headerBlockStyle }]
     ];
+
+    uniqueRoles.forEach((role, idx) => {
+        const rNum = idx + 6;
+        setupData.push([
+            { v: (idx + 1).toString(), s: centerCellStyle },
+            { v: role, s: centerCellStyle },
+            { v: "", s: greyInputStyle }, // Empty name input for user
+            { v: "1", s: greyInputStyle }, // Default Status 1 (Active)
+            { t: 'f', f: `IF(D${rNum}="", "ACTIVE", IFERROR(CHOOSE(D${rNum}, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "ACTIVE"))`, s: centerCellStyle },
+            { v: "1", s: greyInputStyle }, // Default Branch 1
+            { t: 'f', f: `IFERROR(CHOOSE(F${rNum}, '01_SYSTEM_OVERVIEW'!$B$7, '01_SYSTEM_OVERVIEW'!$E$7), "N/A")`, s: centerCellStyle }
+        ]);
+    });
+
     const setupWs = utils.aoa_to_sheet(setupData);
     addNavBar(setupWs);
     setupWs['!cols'] = [{ wch: 10 }, { wch: 30 }, { wch: 30 }, { wch: 15 }, { wch: 20 }, { wch: 15 }, { wch: 30 }];
@@ -154,7 +167,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             { t: 'f', f: `TEXT(COUNTIF('99_MASTER_REGISTER'!I:I, "COMPLETED") / MAX(1, (COUNTA('99_MASTER_REGISTER'!B:B)-1)), "0%")`, s: kpiCardStyle },
             { t: 'f', f: `COUNTIFS('99_MASTER_REGISTER'!G:G, "CRITICAL", '99_MASTER_REGISTER'!I:I, "PENDING")`, l: { Target: "#'04_MANAGER_CONTROL_BOARD'!A1" }, s: linkStyle },
             { v: "STABLE", s: kpiCardStyle },
-            { t: 'f', f: `COUNTIF('02_PERSONNEL_SETUP'!C6:C25, "")`, s: kpiCardStyle }
+            { t: 'f', f: `COUNTIF('02_PERSONNEL_SETUP'!C6:C50, "")`, s: kpiCardStyle }
         ]
     ];
     const dashWs = utils.aoa_to_sheet(dashData);
@@ -162,7 +175,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     dashWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 30 }, { wch: 30 }];
     utils.book_append_sheet(wb, dashWs, "03_OPERATIONS_DASHBOARD");
 
-    // --- 04. MANAGER CONTROL (POPULATED) ---
+    // --- 04. MANAGER CONTROL ---
     const mgrData: any[][] = [
         [],
         [{ v: "TACTICAL CONTROL BOARD (PENDING TASKS)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
@@ -176,7 +189,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     mgrWs['!autofilter'] = { ref: "A5:D500" };
     utils.book_append_sheet(wb, mgrWs, "04_MANAGER_CONTROL_BOARD");
 
-    // --- 05. DAILY EXECUTION (POPULATED & SEARCHABLE) ---
+    // --- 05. DAILY EXECUTION (SEARCH & CHOOSE) ---
     const execData: any[][] = [
         [],
         [{ v: "DAILY TASK EXECUTION (SEARCH & CHOOSE)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
@@ -218,7 +231,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             wsData.push([
                 { v: t.id, s: centerCellStyle },
                 { v: t.description, s: leftCellStyle },
-                { t: 'f', f: `IFERROR(VLOOKUP("${c.role}", '02_PERSONNEL_SETUP'!$B$6:$C$50, 2, FALSE), "VACANT")`, s: centerCellStyle },
+                // Assign to specific name from setup sheet via role lookup
+                { t: 'f', f: `IFERROR(IF(VLOOKUP("${c.role}", '02_PERSONNEL_SETUP'!$B$6:$C$50, 2, FALSE)="", "VACANT", VLOOKUP("${c.role}", '02_PERSONNEL_SETUP'!$B$6:$C$50, 2, FALSE)), "VACANT")`, s: centerCellStyle },
                 { t: 'f', f: `IFERROR(VLOOKUP("${c.role}", '02_PERSONNEL_SETUP'!$B$6:$G$50, 6, FALSE), "N/A")`, s: centerCellStyle },
                 { v: t.frequency || c.frequency, s: centerCellStyle },
                 { v: t.priority === 'High' ? "CRITICAL" : "STANDARD", s: centerCellStyle },
@@ -226,7 +240,6 @@ export const handleDownloadV2 = (item: PremiumPack) => {
                 { t: 'f', f: `IF(G${rowNum}="", "PENDING", "COMPLETED")`, s: centerCellStyle }
             ]);
             
-            // Map refs for mirror population
             allTaskRefs.push([
                 { t: 'f', f: `'${sName}'!A${rowNum}` },
                 { t: 'f', f: `'${sName}'!B${rowNum}` },
@@ -243,17 +256,16 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         utils.book_append_sheet(wb, ws, sName);
     });
 
-    // POPULATE 04 & 05 WITH MIRROR FORMULAS
+    // Populate the 04 & 05 sheets using mirrors
     const mgrRows = allTaskRefs.map(ref => [ref[0], ref[1], ref[2], ref[3]]);
     utils.sheet_add_aoa(mgrWs, mgrRows, { origin: "A6" });
     
     const execRows = allTaskRefs.map(ref => [ref[0], ref[1], ref[2], ref[4], ref[3]]);
     utils.sheet_add_aoa(execWs, execRows, { origin: "A6" });
 
-    // --- 99. MASTER REGISTER (Hidden logic) ---
+    // --- 99. MASTER LOGIC ---
     const masterData: any[][] = [["ID", "Task", "Person", "Status", "Priority"]];
     allTaskRefs.forEach(ref => {
-        // Find the priority (CRITICAL/STANDARD) from the protocol sheet (Column F)
         const sheetPart = ref[0].f.split('!')[0];
         const rowPart = ref[0].f.split('!')[1].substring(1);
         masterData.push([
