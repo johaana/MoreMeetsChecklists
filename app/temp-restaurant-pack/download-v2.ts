@@ -7,7 +7,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * Version 2.3 - Executive Command (Clinical Build)
  * Institutional Standard for Operational Governance
- * INTERLINKING ENABLED: Includes Location ID hooks for Master Google Sheets aggregation.
+ * MULTI-LOCATION ENABLED: Includes Branch Master logic and Location ID hooks.
  */
 export const handleDownloadV2 = (item: PremiumPack) => {
     if (!item) {
@@ -105,51 +105,57 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
     };
 
-    // --- 01. SYSTEM OVERVIEW (PRESTIGIOUS CENTERING) ---
+    // --- 01. SYSTEM OVERVIEW (CENTERED PRESTIGE) ---
     const coverData = [
         [], [],
         [{ v: "MOREMEETS™ OPERATIONAL GOVERNANCE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
         [{ v: `Version 2.3 Executive Build: ${item.title}`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "STATUS: DEPLOYED / ACTIVE", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, null, null, { v: "LOCATION ID: [TYPE UNIQUE ID]", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }],
+        [{ v: "STATUS: DEPLOYED / ACTIVE", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, null, null, { v: "SYSTEM ID: [TYPE UNIQUE ID]", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }],
+        [],
+        [{ v: "BRANCH / LOCATION MASTER REGISTRY (Define Here)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Code 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 1 Name", s: inputCellStyle }, null, { v: "Code 4:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 4 Name", s: inputCellStyle }],
+        [{ v: "Code 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 2 Name", s: inputCellStyle }, null, { v: "Code 5:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 5 Name", s: inputCellStyle }],
+        [{ v: "Code 3:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 3 Name", s: inputCellStyle }],
         [],
         [{ v: "PROTOCOL: HIGH LIABILITY COMPLIANCE", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "SYSTEM INSTRUCTIONS:", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "1. Update personnel names and status in '02_SETUP'. Use the Numerical Code (1-6).", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "2. Staff click the filter arrow [v] on the 'Personnel' header in '05_EXECUTION' to choose their name.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3. Status flips to COMPLETED automatically when a date is entered in the yellow column.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }]
+        [{ v: "1. Update personnel names and status in '02_SETUP'. Use Numerical Codes.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "2. Assign every employee to a Branch Code (1-5) as defined in the registry above.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "3. Staff choose their name using the filter arrow [v] in '05_EXECUTION' to hide other noise.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
-    coverWs['!cols'] = [{ wch: 25 }, { wch: 25 }, { wch: 25 }, { wch: 25 }, { wch: 25 }, { wch: 25 }];
+    coverWs['!cols'] = [{ wch: 20 }, { wch: 30 }, { wch: 10 }, { wch: 20 }, { wch: 30 }, { wch: 20 }];
     coverWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 5 } }, 
         { s: { r: 3, c: 0 }, e: { r: 3, c: 5 } }, 
         { s: { r: 7, c: 0 }, e: { r: 7, c: 5 } }, 
-        { s: { r: 9, c: 0 }, e: { r: 9, c: 5 } },
-        { s: { r: 10, c: 0 }, e: { r: 10, c: 5 } },
-        { s: { r: 11, c: 0 }, e: { r: 11, c: 5 } },
         { s: { r: 12, c: 0 }, e: { r: 12, c: 5 } },
+        { s: { r: 14, c: 0 }, e: { r: 14, c: 5 } },
+        { s: { r: 15, c: 0 }, e: { r: 15, c: 5 } },
+        { s: { r: 16, c: 0 }, e: { r: 16, c: 5 } },
+        { s: { r: 17, c: 0 }, e: { r: 17, c: 5 } },
         { s: { r: 5, c: 0 }, e: { r: 5, c: 2 } }, { s: { r: 5, c: 3 }, e: { r: 5, c: 5 } }
     ];
     utils.book_append_sheet(wb, coverWs, "01_SYSTEM_OVERVIEW");
 
-    // --- 02. PERSONNEL SETUP (SURGICAL LEGEND ALIGNMENT) ---
+    // --- 02. PERSONNEL SETUP (ZERO EYE-TRAVEL UI) ---
     const setupData: any[][] = [
         [],
-        [{ v: "A: PERSONNEL REGISTER & ROLE MAPPING", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "A: PERSONNEL REGISTER & BRANCH MAPPING", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [],
-        [null, null, null, { v: "1=ACTIVE, 2=LEAVE, 3=RESIGNED, 4=TRAINING, 5=WEEKLY OFF, 6=HOLIDAY", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "ID", s: headerBlockStyle }, { v: "Staff Name", s: headerBlockStyle }, { v: "Operational Role", s: headerBlockStyle }, { v: "Status Code (1-6)", s: headerBlockStyle }, { v: "Live System Status", s: headerBlockStyle }],
-        [{ v: "1", s: centerCellStyle }, { v: "Imran Khan", s: leftCellStyle }, { v: "Head Chef", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D6=1,"ACTIVE",IF(D6=2,"LEAVE",IF(D6=3,"RESIGNED",IF(D6=4,"TRAINING",IF(D6=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }],
-        [{ v: "2", s: centerCellStyle }, { v: "Aditi Sharma", s: leftCellStyle }, { v: "General Manager", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D7=1,"ACTIVE",IF(D7=2,"LEAVE",IF(D7=3,"RESIGNED",IF(D7=4,"TRAINING",IF(D7=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }],
-        [{ v: "3", s: centerCellStyle }, { v: "Rahul V.", s: leftCellStyle }, { v: "Supervisor", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D8=1,"ACTIVE",IF(D8=2,"LEAVE",IF(D8=3,"RESIGNED",IF(D8=4,"TRAINING",IF(D8=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }],
-        [{ v: "4", s: centerCellStyle }, { v: "Karan S.", s: leftCellStyle }, { v: "Storekeeper", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D9=1,"ACTIVE",IF(D9=2,"LEAVE",IF(D9=3,"RESIGNED",IF(D9=4,"TRAINING",IF(D9=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }]
+        [null, null, null, { v: "1=ACTIVE, 2=LEAVE, 3=RESIGNED, 4=TRAINING, 5=WEEKLY OFF, 6=HOLIDAY", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }, { v: "1-5 = BRANCH CODE (FROM 01_OVERVIEW)", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "ID", s: headerBlockStyle }, { v: "Staff Name", s: headerBlockStyle }, { v: "Operational Role", s: headerBlockStyle }, { v: "Status Code (1-6)", s: headerBlockStyle }, { v: "Branch Code (1-5)", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }, { v: "Assigned Location", s: headerBlockStyle }],
+        [{ v: "1", s: centerCellStyle }, { v: "Imran Khan", s: leftCellStyle }, { v: "Head Chef", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D6=1,"ACTIVE",IF(D6=2,"LEAVE",IF(D6=3,"RESIGNED",IF(D6=4,"TRAINING",IF(D6=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }, { t: 'f', f: `IFERROR(VLOOKUP(E6,{1,'01_SYSTEM_OVERVIEW'!$B$9;2,'01_SYSTEM_OVERVIEW'!$B$10;3,'01_SYSTEM_OVERVIEW'!$B$11;4,'01_SYSTEM_OVERVIEW'!$E$9;5,'01_SYSTEM_OVERVIEW'!$E$10},2,FALSE),"N/A")`, s: centerCellStyle }],
+        [{ v: "2", s: centerCellStyle }, { v: "Aditi Sharma", s: leftCellStyle }, { v: "General Manager", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D7=1,"ACTIVE",IF(D7=2,"LEAVE",IF(D7=3,"RESIGNED",IF(D7=4,"TRAINING",IF(D7=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }, { t: 'f', f: `IFERROR(VLOOKUP(E7,{1,'01_SYSTEM_OVERVIEW'!$B$9;2,'01_SYSTEM_OVERVIEW'!$B$10;3,'01_SYSTEM_OVERVIEW'!$B$11;4,'01_SYSTEM_OVERVIEW'!$E$9;5,'01_SYSTEM_OVERVIEW'!$E$10},2,FALSE),"N/A")`, s: centerCellStyle }],
+        [{ v: "3", s: centerCellStyle }, { v: "Rahul V.", s: leftCellStyle }, { v: "Supervisor", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "2", s: greyInputStyle }, { t: 'f', f: `IF(D8=1,"ACTIVE",IF(D8=2,"LEAVE",IF(D8=3,"RESIGNED",IF(D8=4,"TRAINING",IF(D8=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }, { t: 'f', f: `IFERROR(VLOOKUP(E8,{1,'01_SYSTEM_OVERVIEW'!$B$9;2,'01_SYSTEM_OVERVIEW'!$B$10;3,'01_SYSTEM_OVERVIEW'!$B$11;4,'01_SYSTEM_OVERVIEW'!$E$9;5,'01_SYSTEM_OVERVIEW'!$E$10},2,FALSE),"N/A")`, s: centerCellStyle }],
+        [{ v: "4", s: centerCellStyle }, { v: "Karan S.", s: leftCellStyle }, { v: "Storekeeper", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "2", s: greyInputStyle }, { t: 'f', f: `IF(D9=1,"ACTIVE",IF(D9=2,"LEAVE",IF(D9=3,"RESIGNED",IF(D9=4,"TRAINING",IF(D9=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }, { t: 'f', f: `IFERROR(VLOOKUP(E9,{1,'01_SYSTEM_OVERVIEW'!$B$9;2,'01_SYSTEM_OVERVIEW'!$B$10;3,'01_SYSTEM_OVERVIEW'!$B$11;4,'01_SYSTEM_OVERVIEW'!$E$9;5,'01_SYSTEM_OVERVIEW'!$E$10},2,FALSE),"N/A")`, s: centerCellStyle }]
     ];
     const setupWs = utils.aoa_to_sheet(setupData);
     addNavBar(setupWs);
-    setupWs['!cols'] = [{ wch: 10 }, { wch: 30 }, { wch: 30 }, { wch: 35 }, { wch: 25 }];
+    setupWs['!cols'] = [{ wch: 10 }, { wch: 30 }, { wch: 30 }, { wch: 25 }, { wch: 25 }, { wch: 20 }, { wch: 30 }];
     utils.book_append_sheet(wb, setupWs, "02_PERSONNEL_SETUP");
 
     // --- 03. DASHBOARD (CLINICAL PRECISION) ---
@@ -157,10 +163,10 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [],
         [{ v: "GOVERNANCE HEALTH", s: centerCellStyle }, { v: "CRITICAL GAPS", s: centerCellStyle }, { v: "HUMAN RISK", s: centerCellStyle }, { v: "VACANT ROLES", s: centerCellStyle }],
         [
-            { t: 'f', f: `TEXT(COUNTIF('99_MASTER_REGISTER'!H:H, "COMPLETED") / (COUNTA('99_MASTER_REGISTER'!B:B)-1), "0%")`, s: kpiCardStyle },
-            { t: 'f', f: `COUNTIFS('99_MASTER_REGISTER'!F:F, "CRITICAL", '99_MASTER_REGISTER'!H:H, "PENDING")`, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.DANGER_RED } } } },
+            { t: 'f', f: `TEXT(COUNTIF('99_MASTER_REGISTER'!I:I, "COMPLETED") / (COUNTA('99_MASTER_REGISTER'!B:B)-1), "0%")`, s: kpiCardStyle },
+            { t: 'f', f: `COUNTIFS('99_MASTER_REGISTER'!G:G, "CRITICAL", '99_MASTER_REGISTER'!I:I, "PENDING")`, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.DANGER_RED } } } },
             { v: "STABLE", s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, sz: 14 } } },
-            { t: 'f', f: `COUNTIF('02_PERSONNEL_SETUP'!E6:E25, "VACANT")`, s: kpiCardStyle }
+            { t: 'f', f: `COUNTIF('02_PERSONNEL_SETUP'!F6:F25, "VACANT")`, s: kpiCardStyle }
         ]
     ];
     const dashWs = utils.aoa_to_sheet(dashData);
@@ -215,39 +221,41 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             [],
             [{ v: c.title.toUpperCase(), s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
             [{ v: "INSTRUCTION: Enter completion date in Yellow cell. Status updates automatically.", s: { font: { italic: true, sz: 9, color: { rgb: "808080" } }, alignment: { horizontal: 'center' } } }],
-            [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Assigned To", s: headerBlockStyle }, { v: "Freq", s: headerBlockStyle }, { v: "Type", s: headerBlockStyle }, { v: "Date Done", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }]
+            [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Assigned To", s: headerBlockStyle }, { v: "Branch", s: headerBlockStyle }, { v: "Freq", s: headerBlockStyle }, { v: "Type", s: headerBlockStyle }, { v: "Date Done", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }]
         ];
         c.tasks.forEach((t, i) => {
             const rowNum = i + 5;
             wsData.push([
                 { v: t.id, s: centerCellStyle },
                 { v: t.description, s: leftCellStyle },
-                { t: 'f', f: `IFERROR(VLOOKUP("${c.role}", '02_PERSONNEL_SETUP'!$C$6:$E$25, 3, FALSE), "VACANT")`, s: centerCellStyle },
+                { t: 'f', f: `IFERROR(VLOOKUP("${c.role}", '02_PERSONNEL_SETUP'!$C$6:$F$25, 4, FALSE), "VACANT")`, s: centerCellStyle },
+                { t: 'f', f: `IFERROR(VLOOKUP("${c.role}", '02_PERSONNEL_SETUP'!$C$6:$G$25, 5, FALSE), "N/A")`, s: centerCellStyle },
                 { v: t.frequency || c.frequency, s: centerCellStyle },
                 { v: t.priority === 'High' ? "CRITICAL" : "STANDARD", s: { ...centerCellStyle, font: { color: { rgb: t.priority === 'High' ? COLORS.DANGER_RED : "000000" } } } },
                 { v: "", s: inputCellStyle },
-                { t: 'f', f: `IF(F${rowNum}="", "PENDING", "COMPLETED")`, s: centerCellStyle }
+                { t: 'f', f: `IF(G${rowNum}="", "PENDING", "COMPLETED")`, s: centerCellStyle }
             ]);
         });
         const ws = utils.aoa_to_sheet(wsData);
         addNavBar(ws);
-        ws['!cols'] = [{ wch: 12 }, { wch: 80 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 20 }, { wch: 20 }];
-        ws['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 6 } }, { s: { r: 1, c: 0 }, e: { r: 1, c: 6 } }];
+        ws['!cols'] = [{ wch: 12 }, { wch: 80 }, { wch: 25 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 20 }, { wch: 20 }];
+        ws['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 7 } }, { s: { r: 1, c: 0 }, e: { r: 1, c: 7 } }];
         utils.book_append_sheet(wb, ws, sName);
     });
 
     // --- 99. MASTER REGISTER (INTERLINKING HOOKS) ---
-    const masterData: any[][] = [["LocationID", "Task ID", "Task", "Checklist", "AssignedPerson", "Type", "DateDone", "Status"]];
+    const masterData: any[][] = [["LocationID", "Task ID", "Task", "Checklist", "AssignedPerson", "BranchName", "Type", "DateDone", "Status"]];
     item.checklists.forEach(c => {
         const sheetName = safeSheetName(c.title);
         c.tasks.forEach((t, i) => {
             const sheetRow = i + 5;
             masterData.push([
-                { t: 'f', f: `'01_SYSTEM_OVERVIEW'!D6` }, // Location ID Hook
+                { t: 'f', f: `'01_SYSTEM_OVERVIEW'!D6` }, 
                 t.id, t.description, c.title, { t: 'f', f: `'${sheetName}'!C${sheetRow}` }, 
+                { t: 'f', f: `'${sheetName}'!D${sheetRow}` }, 
                 t.priority === 'High' ? 'CRITICAL' : 'STANDARD',
-                { t: 'f', f: `'${sheetName}'!F${sheetRow}` },
-                { t: 'f', f: `'${sheetName}'!G${sheetRow}` }
+                { t: 'f', f: `'${sheetName}'!G${sheetRow}` },
+                { t: 'f', f: `'${sheetName}'!H${sheetRow}` }
             ]);
         });
     });
