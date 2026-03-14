@@ -234,7 +234,6 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const masterData = [["Task ID", "Task"]];
     const masterWs = utils.aoa_to_sheet(masterData);
     utils.book_append_sheet(wb, masterWs, "99_Master_Register");
-    // (Hide logic would be here if xlsx-js-style supported it directly, usually handled by client side)
 
     writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.3_EXECUTIVE.xlsx`);
 }
