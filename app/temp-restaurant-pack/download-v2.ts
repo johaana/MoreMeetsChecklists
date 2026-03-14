@@ -31,6 +31,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         BORDER: "333333"
     };
 
+    // --- REFINED STYLES ---
     const borderThin = {
         top: { style: 'thin', color: { rgb: COLORS.BORDER } },
         bottom: { style: 'thin', color: { rgb: COLORS.BORDER } },
@@ -46,7 +47,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     };
 
     const titleStyle = {
-        font: { sz: 24, bold: true, color: { rgb: COLORS.GOLD_ACCENT }, name: 'Segoe UI' },
+        font: { sz: 22, bold: true, color: { rgb: COLORS.GOLD_ACCENT }, name: 'Segoe UI' },
         alignment: { horizontal: 'center' }
     };
 
@@ -57,13 +58,6 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         border: borderThin
     };
 
-    const inputCellStyle = {
-        fill: { fgColor: { rgb: COLORS.INPUT_YELLOW } },
-        border: borderThin,
-        alignment: { vertical: 'center' },
-        font: { sz: 10, name: 'Segoe UI' }
-    };
-
     const dataCellStyle = { 
         font: { sz: 10, color: { rgb: COLORS.WHITE }, name: 'Segoe UI' },
         fill: { fgColor: { rgb: COLORS.CHARCOAL_BG } },
@@ -71,8 +65,14 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         border: borderThin
     };
 
+    const inputCellStyle = {
+        ...dataCellStyle,
+        fill: { fgColor: { rgb: COLORS.INPUT_YELLOW } },
+        font: { ...dataCellStyle.font, color: { rgb: "000000" } }
+    };
+
     const kpiBoxStyle = {
-        font: { bold: true, color: { rgb: COLORS.GOLD_ACCENT }, sz: 14, name: 'Segoe UI' },
+        font: { bold: true, color: { rgb: COLORS.GOLD_ACCENT }, sz: 16, name: 'Segoe UI' },
         fill: { fgColor: { rgb: COLORS.DEEP_SLATE } },
         alignment: { vertical: 'center', horizontal: 'center' },
         border: {
@@ -104,21 +104,21 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const checklists = item.checklists;
     const uniqueRoles = Array.from(new Set(checklists.flatMap(c => c.tasks.map(t => (t.role || c.role).trim())))).sort();
 
-    // --- 01. COVER PAGE ---
+    // --- 01. COVER PAGE (Compact Software UI) ---
     const coverData = [
         [], [],
         [{ v: "MOREMEETS™ OPERATIONAL GOVERNANCE", s: titleStyle }],
-        [{ v: `Industry Build: ${item.title} | Version 2.2 Surgical`, s: { font: { italic: true, sz: 11, color: { rgb: COLORS.GRAY_TEXT }, name: 'Segoe UI' }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Industry Pack: ${item.title} | Version 2.2 Surgical`, s: { font: { italic: true, sz: 11, color: { rgb: COLORS.GRAY_TEXT }, name: 'Segoe UI' }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "Operational Integrity Status:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE }, name: 'Segoe UI' } } }, { v: "BRANCH ISOLATION ACTIVE", s: inputCellStyle }],
-        [{ v: "Licensed Organization:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE }, name: 'Segoe UI' } } }, { v: "Type Company Name", s: inputCellStyle }],
-        [{ v: "Unit Identification:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE }, name: 'Segoe UI' } } }, { v: "Type Branch Name/ID", s: inputCellStyle }],
+        [{ v: "System Status:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE } } } }, { v: "BRANCH ISOLATION ACTIVE", s: inputCellStyle }],
+        [{ v: "Organization Entity:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE } } } }, { v: "Type Company Name", s: inputCellStyle }],
+        [{ v: "Location Identifier:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE } } } }, { v: "Type Branch Name/ID", s: inputCellStyle }],
         [],
-        [{ v: "SYSTEM OVERVIEW:", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.GOLD_ACCENT }, name: 'Segoe UI' } } }],
-        [{ v: `Total Active Control Points: ${checklists.reduce((acc, c) => acc + c.tasks.length, 0)}`, s: { font: { color: { rgb: COLORS.WHITE }, name: 'Segoe UI' } } }],
-        [{ v: "Governance Protocol: HIGH LIABILITY STANDARDS", s: { font: { color: { rgb: COLORS.WHITE }, name: 'Segoe UI' } } }],
+        [{ v: "GOVERNANCE METRICS:", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.GOLD_ACCENT } } } }],
+        [{ v: `Total Active Control Points: ${checklists.reduce((acc, c) => acc + c.tasks.length, 0)}`, s: { font: { color: { rgb: COLORS.WHITE } } } }],
+        [{ v: "Protocol: HIGH LIABILITY COMPLIANCE", s: { font: { color: { rgb: COLORS.WHITE } } } }],
         [],
-        [{ v: "SYSTEM STATUS: SECURED", s: { font: { bold: true, color: { rgb: COLORS.SUCCESS_GREEN }, name: 'Segoe UI' }, alignment: { horizontal: 'center' } } }]
+        [{ v: "SYSTEM STATUS: SECURED", s: { font: { bold: true, color: { rgb: COLORS.SUCCESS_GREEN }, sz: 14 }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -128,8 +128,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     // --- 02. SETUP & MAPPING ---
     const mappingData: any[][] = [
         [],
-        [{ v: "SECTION A: PERSONNEL REGISTER", s: { font: { bold: true, color: { rgb: COLORS.GOLD_ACCENT }, sz: 11, name: 'Segoe UI' } } }],
-        [{ v: "Staff Name (Type Once)", s: headerStyle }, { v: "Primary Position", s: headerStyle }, { v: "Status (ACTIVE/LEAVE/RESIGNED)", s: headerStyle }, { v: "System Health", s: headerStyle }]
+        [{ v: "SECTION A: PERSONNEL REGISTER (THE HUMANS)", s: { font: { bold: true, color: { rgb: COLORS.GOLD_ACCENT }, sz: 11 } } }],
+        [{ v: "Staff Full Name", s: headerStyle }, { v: "Primary Position", s: headerStyle }, { v: "Employment Status", s: headerStyle }, { v: "System Audit", s: headerStyle }]
     ];
     for(let i=0; i<25; i++) {
         const row = i + 4;
@@ -137,17 +137,17 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             { v: "", s: inputCellStyle }, 
             { v: "", s: dataCellStyle }, 
             { v: "ACTIVE", s: inputCellStyle }, 
-            { t: 'f', f: `IF(A${row}="", "", IF(C${row}="RESIGNED", "⚠️ RE-ASSIGN ROLES", "OK"))`, s: { ...dataCellStyle, alignment: { horizontal: 'center' } } }
+            { t: 'f', f: `IF(A${row}="", "", IF(C${row}="RESIGNED", "⚠️ RE-ASSIGN", "OK"))`, s: { ...dataCellStyle, alignment: { horizontal: 'center' } } }
         ]);
     }
     
-    mappingData.push([], [{ v: "SECTION B: ROLE-TO-NAME MAPPING", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.GOLD_ACCENT }, name: 'Segoe UI' } } }], [{ v: "Structural Role", s: headerStyle }, { v: "Assigned Person", s: headerStyle }, { v: "Staff Availability", s: headerStyle }]);
+    mappingData.push([], [{ v: "SECTION B: ROLE MAPPING (THE BRAIN)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.GOLD_ACCENT } } } }], [{ v: "Structural Role", s: headerStyle }, { v: "Assigned Personnel", s: headerStyle }, { v: "Live Availability", s: headerStyle }]);
     uniqueRoles.forEach((r, idx) => {
         const row = 33 + checklists.length + idx; 
         mappingData.push([
             { v: r, s: { ...dataCellStyle, font: { bold: true } } }, 
             { v: "", s: inputCellStyle }, 
-            { t: 'f', f: `IF(B${row}="", "VACANT", IFERROR(INDEX(C4:C28, MATCH(B${row}, A4:A28, 0)), "NOT IN REGISTER"))`, s: { ...dataCellStyle, alignment: { horizontal: 'center' }, font: { bold: true } } }
+            { t: 'f', f: `IF(B${row}="", "VACANT", IFERROR(INDEX(C4:C28, MATCH(B${row}, A4:A28, 0)), "ERROR"))`, s: { ...dataCellStyle, alignment: { horizontal: 'center' }, font: { bold: true } } }
         ]);
     });
 
@@ -156,7 +156,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     mappingWs['!cols'] = [{ wch: 45 }, { wch: 35 }, { wch: 35 }, { wch: 25 }];
     utils.book_append_sheet(wb, mappingWs, "02_Setup_Mapping");
 
-    // --- 03. DASHBOARD ---
+    // --- 03. DASHBOARD (Executive Snapshot) ---
     const dashData: any[][] = [
         [],
         [
@@ -167,13 +167,13 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         ],
         [
             { t: 'f', f: `TEXT(COUNTIFS('06_Master_Register'!E:E, "<>") / MAX(1, COUNT('06_Master_Register'!A:A)), "0%")`, s: kpiBoxStyle },
-            { t: 'f', f: `COUNTIFS('06_Master_Register'!F:F, "CRITICAL", '06_Master_Register'!E:E, "FAILED")`, s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.CRITICAL_RED }, sz: 14, bold: true } } },
-            { t: 'f', f: `COUNTIFS('06_Master_Register'!E:E, "")`, s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.WARNING_AMBER }, sz: 14, bold: true } } },
+            { t: 'f', f: `COUNTIFS('06_Master_Register'!F:F, "CRITICAL", '06_Master_Register'!E:E, "FAILED")`, s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.CRITICAL_RED } } } },
+            { t: 'f', f: `COUNTIFS('06_Master_Register'!E:E, "")`, s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.WARNING_AMBER } } } },
             { t: 'f', f: `COUNTIF('02_Setup_Mapping'!C33:C60, "VACANT")`, s: kpiBoxStyle }
         ],
         [],
-        [{ v: "HUMAN RISK CONCENTRATION (CRITICAL LOAD)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.GOLD_ACCENT }, name: 'Segoe UI' } } }],
-        [{ v: "Staff Member", s: headerStyle }, { v: "Critical Task Load", s: headerStyle }, { v: "Vulnerability Status", s: headerStyle }]
+        [{ v: "HUMAN RISK CONCENTRATION (CRITICAL LOAD)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.GOLD_ACCENT } } } }],
+        [{ v: "Personnel Name", s: headerStyle }, { v: "Critical Task Count", s: headerStyle }, { v: "Vulnerability Radar", s: headerStyle }]
     ];
     for(let i=0; i<5; i++) {
         const row = i + 7;
@@ -192,25 +192,32 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     // --- 04. MY TASKS TODAY ---
     const todayData: any[][] = [
         [],
-        [{ v: "INDIVIDUAL OPERATIONAL DISPATCH", s: titleStyle }],
-        [{ v: "Select Name:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE } } } }, { v: "Staff Name Here", s: inputCellStyle }],
+        [{ v: "INDIVIDUAL SHIFT DISPATCH", s: titleStyle }],
+        [{ v: "1. Select Name:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE } } } }, { v: "Staff Name", s: inputCellStyle }],
+        [{ v: "2. Select Shift:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE } } } }, { v: "OPENING", s: inputCellStyle }],
         [],
-        [{ v: "Task ID", s: headerStyle }, { v: "Required Task", s: headerStyle }, { v: "Due Time", s: headerStyle }, { v: "Status", s: headerStyle }]
+        [{ v: "Task ID", s: headerStyle }, { v: "Required Execution Step", s: headerStyle }, { v: "Due By", s: headerStyle }, { v: "Priority", s: headerStyle }, { v: "Update Status", s: headerStyle }]
     ];
     for(let i=0; i<10; i++) {
-        todayData.push([{ v: "ID-001", s: dataCellStyle }, { v: "Example Task Description", s: dataCellStyle }, { v: "09:00", s: { ...dataCellStyle, alignment: { horizontal: 'center' } } }, { v: "PENDING", s: { ...dataCellStyle, font: { bold: true } } }]);
+        todayData.push([
+            { v: "ID-001", s: { ...dataCellStyle, alignment: { horizontal: 'center' } } }, 
+            { v: "Select name to see your tasks...", s: dataCellStyle }, 
+            { v: "09:00", s: { ...dataCellStyle, alignment: { horizontal: 'center' } } }, 
+            { v: "CRITICAL", s: { ...dataCellStyle, font: { color: { rgb: COLORS.GOLD_ACCENT } }, alignment: { horizontal: 'center' } } },
+            { v: "PENDING", s: { ...inputCellStyle, font: { bold: true } } }
+        ]);
     }
     const todayWs = utils.aoa_to_sheet(todayData);
     addNavBar(todayWs);
-    todayWs['!cols'] = [{ wch: 15 }, { wch: 65 }, { wch: 15 }, { wch: 25 }];
+    todayWs['!cols'] = [{ wch: 15 }, { wch: 65 }, { wch: 15 }, { wch: 20 }, { wch: 25 }];
     utils.book_append_sheet(wb, todayWs, "04_My_Tasks_Today");
 
     // --- 05. INCIDENT LOG ---
     const logData: any[][] = [
         [],
-        [{ v: "CRITICAL INCIDENT AUDIT TRAIL", s: titleStyle }],
+        [{ v: "CRITICAL INCIDENT AUDIT TRAIL (BLACK BOX)", s: titleStyle }],
         [],
-        [{ v: "Date", s: headerStyle }, { v: "Failed Critical Task", s: headerStyle }, { v: "Responsible Role", s: headerStyle }, { v: "Manager Sign-off", s: headerStyle }]
+        [{ v: "Incident Date", s: headerStyle }, { v: "Failed Control Point", s: headerStyle }, { v: "Responsible Personnel", s: headerStyle }, { v: "Resolution Sign-off", s: headerStyle }]
     ];
     const logWs = utils.aoa_to_sheet(logData);
     addNavBar(logWs);
@@ -224,7 +231,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             [],
             [{ v: c.title.toUpperCase(), s: titleStyle }],
             [],
-            ['ID', 'Task Description', 'How to Coach (Management Tips)', 'Assigned To', 'Freq', 'Type', 'Date Done', 'Status', 'Consequence']
+            ['ID', 'Operational Requirement', 'How to Coach (Manager Intelligence)', 'Assigned To', 'Freq', 'Priority', 'Date Done', 'Status', 'Why This Matters']
         ];
 
         c.tasks.forEach((t, tIdx) => {
@@ -236,9 +243,9 @@ export const handleDownloadV2 = (item: PremiumPack) => {
                 { v: t.id, s: { ...dataCellStyle, alignment: { horizontal: 'center' } } },
                 { v: t.description, s: { ...dataCellStyle, wrapText: true } },
                 { v: t.trainerNotes || "Inspect personally. Ensure zero debris.", s: { ...dataCellStyle, font: { italic: true, sz: 9, color: { rgb: COLORS.GRAY_TEXT } }, wrapText: true } },
-                { t: 'f', f: `'02_Setup_Mapping'!B${roleMapRow}`, s: { ...dataCellStyle, font: { bold: true } } }, 
+                { t: 'f', f: `'02_Setup_Mapping'!B${roleMapRow}`, s: { ...dataCellStyle, font: { bold: true }, alignment: { horizontal: 'center' } } }, 
                 { v: (t.frequency || c.frequency), s: { ...dataCellStyle, alignment: { horizontal: 'center' } } },
-                { v: t.priority === 'High' ? "CRITICAL" : "NORMAL", s: { ...dataCellStyle, font: { color: { rgb: t.priority === 'High' ? COLORS.GOLD_ACCENT : COLORS.WHITE } } } },
+                { v: t.priority === 'High' ? "CRITICAL" : "STANDARD", s: { ...dataCellStyle, font: { color: { rgb: t.priority === 'High' ? COLORS.GOLD_ACCENT : COLORS.WHITE } }, alignment: { horizontal: 'center' } } },
                 { v: "", s: inputCellStyle }, 
                 { t: 'f', f: `IF(G${rowNum}="", "PENDING", "COMPLETED")`, s: { ...dataCellStyle, alignment: { horizontal: 'center' }, font: { bold: true } } },
                 { v: t.consequence, s: { ...dataCellStyle, font: { italic: true, sz: 9, color: { rgb: COLORS.GRAY_TEXT } }, wrapText: true } }
@@ -248,12 +255,12 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         const ws = utils.aoa_to_sheet(wsData);
         addNavBar(ws);
         ws['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 8 } }];
-        ws['!cols'] = [{ wch: 12 }, { wch: 65 }, { wch: 110 }, { wch: 30 }, { wch: 15 }, { wch: 15 }, { wch: 20 }, { wch: 20 }, { wch: 65 }];
+        ws['!cols'] = [{ wch: 12 }, { wch: 60 }, { wch: 100 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 20 }, { wch: 20 }, { wch: 60 }];
         ["A4", "B4", "C4", "D4", "E4", "F4", "G4", "H4", "I4"].forEach(cell => { if(ws[cell]) ws[cell].s = headerStyle; });
         utils.book_append_sheet(wb, ws, sName);
     });
 
-    // --- 06. MASTER REGISTER (HIDDEN ENGINE) ---
+    // --- 06. MASTER REGISTER (HIDDEN DATA LAYER) ---
     const masterData = [["Task ID", "Task", "Checklist", "AssignedPerson", "DateDone", "Type"]];
     checklists.forEach((c) => {
         c.tasks.forEach((t, tIdx) => {
@@ -263,7 +270,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
                 t.id, t.description, c.title, 
                 { t: 'f', f: `'02_Setup_Mapping'!B${roleMapRow}` }, 
                 { t: 'f', f: `'${safeSheetName(c.title)}'!G${tIdx + 5}` },
-                t.priority === 'High' ? "CRITICAL" : "NORMAL"
+                t.priority === 'High' ? "CRITICAL" : "STANDARD"
             ]);
         });
     });
