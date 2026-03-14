@@ -5,14 +5,14 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * Version 2.3 - Executive Command (Logical Pair Build)
+ * Version 2.3 - Executive Command (Click-to-Detail Build)
  * Institutional Standard for Operational Governance
  * 
  * UX UPDATES:
- * - Code and Label now sit side-by-side (Logical Pairs).
- * - Code 1 fixed to ACTIVE.
- * - Default status set to ACTIVE if empty.
- * - Alignment: Text (Left), Metrics/Labels (Center).
+ * - Clickable "Critical Gaps" link on Dashboard jumps to Control Board.
+ * - Logical Pair Architecture: Code sits directly next to Result Label.
+ * - Default status strictly set to ACTIVE.
+ * - Alignment: Descriptions (Left), Metrics/Labels (Center).
  */
 export const handleDownloadV2 = (item: PremiumPack) => {
     if (!item) {
@@ -38,12 +38,11 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         WHITE: "FFFFFF",
         SOFT_GREY: "F3F4F6",
         BORDER_LIGHT: "D1D5DB",
-        INPUT_YELLOW: "FFFFE0",
         INPUT_GREY: "F2F2F2",
         TEXT_MUTED: "6B7280"
     };
 
-    // --- CLINICAL STYLES (ALIGNMENT PROTOCOL) ---
+    // --- CLINICAL STYLES ---
     const borderThin = {
         top: { style: 'thin', color: { rgb: COLORS.BORDER_LIGHT } },
         bottom: { style: 'thin', color: { rgb: COLORS.BORDER_LIGHT } },
@@ -91,6 +90,13 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         border: borderThin
     };
 
+    const linkStyle = {
+        font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true },
+        fill: { fgColor: { rgb: COLORS.SOFT_GREY } },
+        alignment: { vertical: 'center', horizontal: 'center' },
+        border: borderThin
+    };
+
     const addNavBar = (ws: WorkSheet) => {
         const navData = [
             [
@@ -106,25 +112,25 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
     };
 
-    // --- 01. SYSTEM OVERVIEW (CENTERED PRESTIGE) ---
+    // --- 01. SYSTEM OVERVIEW (CENTERED) ---
     const coverData = [
         [], [],
         [{ v: "MOREMEETS™ OPERATIONAL GOVERNANCE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
         [{ v: `Version 2.3 Executive Build: ${item.title}`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "STATUS: DEPLOYED / ACTIVE", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, null, null, { v: "SYSTEM ID: [TYPE UNIQUE ID]", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }],
+        [{ v: "STATUS: DEPLOYED / ACTIVE", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, null, null, { v: "SYSTEM ID: [INTERNAL]", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }],
         [],
-        [{ v: "BRANCH / LOCATION MASTER REGISTRY", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Code 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Main Branch", s: greyInputStyle }, null, { v: "Code 4:", s: { alignment: { horizontal: 'right' } } }, { v: "Branch 4", s: greyInputStyle }],
-        [{ v: "Code 2:", s: { alignment: { horizontal: 'right' } } }, { v: "East Annex", s: greyInputStyle }, null, { v: "Code 5:", s: { alignment: { horizontal: 'right' } } }, { v: "Branch 5", s: greyInputStyle }],
-        [{ v: "Code 3:", s: { alignment: { horizontal: 'right' } } }, { v: "West Warehouse", s: greyInputStyle }],
+        [{ v: "LOCATION MASTER REGISTRY", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Code 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Main Branch Name", s: greyInputStyle }, null, { v: "Code 4:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 4 Name", s: greyInputStyle }],
+        [{ v: "Code 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 2 Name", s: greyInputStyle }, null, { v: "Code 5:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 5 Name", s: greyInputStyle }],
+        [{ v: "Code 3:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 3 Name", s: greyInputStyle }],
         [],
         [{ v: "PROTOCOL: HIGH LIABILITY COMPLIANCE", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "SYSTEM INSTRUCTIONS:", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "1. Update personnel names and branch mapping in '02_SETUP'.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "2. Change Status using codes 1-6. Code 1 (ACTIVE) is the system default.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3. Staff choose their name using the filter arrow [v] in '05_EXECUTION' to view their specific tasks.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }]
+        [{ v: "1. Define branch names in the Registry above.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "2. Assign personnel, branch, and status codes in '02_SETUP'.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "3. Codes update labels instantly. Empty status code defaults to ACTIVE.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -149,7 +155,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [null, null, null, 
             { v: "1=ACTIVE, 2=LEAVE, 3=RESIGNED, 4=TRAINING, 5=WEEKLY OFF, 6=HOLIDAY", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }, 
             null,
-            { v: "BRANCH CODE (1-5 DEFINED IN 01_OVERVIEW)", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }
+            { v: "BRANCH CODE (1-5 FROM OVERVIEW)", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }
         ],
         [
             { v: "ID", s: headerBlockStyle }, 
@@ -184,16 +190,17 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     setupWs['!cols'] = [{ wch: 10 }, { wch: 30 }, { wch: 30 }, { wch: 15 }, { wch: 20 }, { wch: 15 }, { wch: 30 }];
     utils.book_append_sheet(wb, setupWs, "02_PERSONNEL_SETUP");
 
-    // --- 03. DASHBOARD (CLINICAL PRECISION) ---
+    // --- 03. DASHBOARD (CLICKABLE DRILL-DOWN) ---
     const dashData: any[][] = [
         [],
         [{ v: "GOVERNANCE HEALTH", s: centerCellStyle }, { v: "CRITICAL GAPS", s: centerCellStyle }, { v: "HUMAN RISK", s: centerCellStyle }, { v: "VACANT ROLES", s: centerCellStyle }],
         [
-            { t: 'f', f: `TEXT(COUNTIF('99_MASTER_REGISTER'!I:I, "COMPLETED") / (COUNTA('99_MASTER_REGISTER'!B:B)-1), "0%")`, s: kpiCardStyle },
-            { t: 'f', f: `COUNTIFS('99_MASTER_REGISTER'!G:G, "CRITICAL", '99_MASTER_REGISTER'!I:I, "PENDING")`, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.DANGER_RED } } } },
+            { t: 'f', f: `TEXT(COUNTIF('99_MASTER_REGISTER'!I:I, "COMPLETED") / MAX(1, (COUNTA('99_MASTER_REGISTER'!B:B)-1)), "0%")`, s: kpiCardStyle },
+            { t: 'f', f: `COUNTIFS('99_MASTER_REGISTER'!G:G, "CRITICAL", '99_MASTER_REGISTER'!I:I, "PENDING")`, l: { Target: "#'04_MANAGER_CONTROL_BOARD'!A1" }, s: linkStyle },
             { v: "STABLE", s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, sz: 14 } } },
             { t: 'f', f: `COUNTIF('02_PERSONNEL_SETUP'!E6:E25, "RESIGNED")`, s: kpiCardStyle }
-        ]
+        ],
+        [null, { v: "↑ Click to View Details", s: { font: { sz: 8, italic: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }]
     ];
     const dashWs = utils.aoa_to_sheet(dashData);
     addNavBar(dashWs);
@@ -204,28 +211,28 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const mgrData: any[][] = [
         [],
         [{ v: "TACTICAL CONTROL BOARD (PENDING TASKS)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "CHOOSE MODE: Click the arrow [v] on the Status header to filter for 'PENDING'.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.ACCENT_BLUE } } } }],
+        [{ v: "INSTRUCTION: Click the filter arrow [v] on 'Current Status' to view 'PENDING' only.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.ACCENT_BLUE } } } }],
         [],
         [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Responsible Personnel", s: headerBlockStyle }, { v: "Current Status", s: headerBlockStyle }]
     ];
     const mgrWs = utils.aoa_to_sheet(mgrData);
     addNavBar(mgrWs);
     mgrWs['!cols'] = [{ wch: 12 }, { wch: 80 }, { wch: 25 }, { wch: 25 }];
-    mgrWs['!autofilter'] = { ref: "D5:D500" };
+    mgrWs['!autofilter'] = { ref: "A5:D500" };
     utils.book_append_sheet(wb, mgrWs, "04_MANAGER_CONTROL_BOARD");
 
     // --- 05. EXECUTION (SEARCH & CHOOSE) ---
     const execData: any[][] = [
         [],
         [{ v: "DAILY TASK EXECUTION (SEARCH & CHOOSE)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "SEARCH & CHOOSE: Click the arrow [v] on the Personnel header to select your name.", s: { font: { italic: true, sz: 11, bold: true, color: { rgb: COLORS.ACCENT_BLUE } } } }],
+        [{ v: "CHOOSE MODE: Click the filter arrow [v] on the Personnel header to select your name.", s: { font: { italic: true, sz: 11, bold: true, color: { rgb: COLORS.ACCENT_BLUE } } } }],
         [],
         [{ v: "ID", s: headerBlockStyle }, { v: "Execution Step", s: headerBlockStyle }, { v: "Personnel (Filter Here)", s: headerBlockStyle }, { v: "Date Done", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }]
     ];
     const execWs = utils.aoa_to_sheet(execData);
     addNavBar(execWs);
     execWs['!cols'] = [{ wch: 12 }, { wch: 80 }, { wch: 30 }, { wch: 20 }, { wch: 20 }];
-    execWs['!autofilter'] = { ref: "C5:C500" };
+    execWs['!autofilter'] = { ref: "A5:E500" };
     utils.book_append_sheet(wb, execWs, "05_DAILY_TASK_EXECUTION");
 
     // --- 06. AUDIT LOG (BLACK BOX) ---
@@ -269,7 +276,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         utils.book_append_sheet(wb, ws, sName);
     });
 
-    // --- 99. MASTER REGISTER (INTERLINKING HOOKS) ---
+    // --- 99. MASTER REGISTER ---
     const masterData: any[][] = [["LocationID", "Task ID", "Task", "Checklist", "AssignedPerson", "BranchName", "Type", "DateDone", "Status"]];
     item.checklists.forEach(c => {
         const sheetName = safeSheetName(c.title);
