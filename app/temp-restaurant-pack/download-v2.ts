@@ -5,12 +5,14 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * Version 2.3 - Executive Command (Clinical Build)
+ * Version 2.3 - Executive Command (Logical Pair Build)
  * Institutional Standard for Operational Governance
- * FIX LOG: 
- * - Status Code 1 fixed to ACTIVE via CHOOSE function.
- * - Assigned Location fixed to map from Branch Code via CHOOSE.
- * - Alignment re-enforced: Text (Left), Data (Center).
+ * 
+ * UX UPDATES:
+ * - Code and Label now sit side-by-side (Logical Pairs).
+ * - Code 1 fixed to ACTIVE.
+ * - Default status set to ACTIVE if empty.
+ * - Alignment: Text (Left), Metrics/Labels (Center).
  */
 export const handleDownloadV2 = (item: PremiumPack) => {
     if (!item) {
@@ -33,9 +35,6 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         DANGER_RED: "DC2626",
         SUCCESS_GREEN: "16A34A",
         WARNING_AMBER: "D97706",
-        TRAINING_BLUE: "0284C7",
-        OFF_PURPLE: "7C3AED",
-        HOLIDAY_PINK: "DB2777",
         WHITE: "FFFFFF",
         SOFT_GREY: "F3F4F6",
         BORDER_LIGHT: "D1D5DB",
@@ -80,11 +79,6 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         border: borderThin
     };
 
-    const inputCellStyle = {
-        ...centerCellStyle,
-        fill: { fgColor: { rgb: COLORS.INPUT_YELLOW } }
-    };
-
     const greyInputStyle = {
         ...centerCellStyle,
         fill: { fgColor: { rgb: COLORS.INPUT_GREY } }
@@ -120,17 +114,17 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [],
         [{ v: "STATUS: DEPLOYED / ACTIVE", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, null, null, { v: "SYSTEM ID: [TYPE UNIQUE ID]", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }],
         [],
-        [{ v: "BRANCH / LOCATION MASTER REGISTRY (Define Here)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Code 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Main Branch", s: inputCellStyle }, null, { v: "Code 4:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 4 Name", s: inputCellStyle }],
-        [{ v: "Code 2:", s: { alignment: { horizontal: 'right' } } }, { v: "East Annex", s: inputCellStyle }, null, { v: "Code 5:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 5 Name", s: inputCellStyle }],
-        [{ v: "Code 3:", s: { alignment: { horizontal: 'right' } } }, { v: "West Warehouse", s: inputCellStyle }],
+        [{ v: "BRANCH / LOCATION MASTER REGISTRY", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Code 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Main Branch", s: greyInputStyle }, null, { v: "Code 4:", s: { alignment: { horizontal: 'right' } } }, { v: "Branch 4", s: greyInputStyle }],
+        [{ v: "Code 2:", s: { alignment: { horizontal: 'right' } } }, { v: "East Annex", s: greyInputStyle }, null, { v: "Code 5:", s: { alignment: { horizontal: 'right' } } }, { v: "Branch 5", s: greyInputStyle }],
+        [{ v: "Code 3:", s: { alignment: { horizontal: 'right' } } }, { v: "West Warehouse", s: greyInputStyle }],
         [],
         [{ v: "PROTOCOL: HIGH LIABILITY COMPLIANCE", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "SYSTEM INSTRUCTIONS:", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "1. Update personnel names and status in '02_SETUP'. Use Numerical Codes.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "2. Assign every employee to a Branch Code (1-5) as defined in the registry above.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3. Staff choose their name using the filter arrow [v] in '05_EXECUTION' to hide other noise.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }]
+        [{ v: "1. Update personnel names and branch mapping in '02_SETUP'.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "2. Change Status using codes 1-6. Code 1 (ACTIVE) is the system default.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "3. Staff choose their name using the filter arrow [v] in '05_EXECUTION' to view their specific tasks.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -143,29 +137,51 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         { s: { r: 14, c: 0 }, e: { r: 14, c: 5 } },
         { s: { r: 15, c: 0 }, e: { r: 15, c: 5 } },
         { s: { r: 16, c: 0 }, e: { r: 16, c: 5 } },
-        { s: { r: 17, c: 0 }, e: { r: 17, c: 5 } },
-        { s: { r: 5, c: 0 }, e: { r: 5, c: 2 } }, { s: { r: 5, c: 3 }, e: { r: 5, c: 5 } }
+        { s: { r: 17, c: 0 }, e: { r: 17, c: 5 } }
     ];
     utils.book_append_sheet(wb, coverWs, "01_SYSTEM_OVERVIEW");
 
-    // --- 02. PERSONNEL SETUP (NUMERICAL COMMAND PICKER) ---
+    // --- 02. PERSONNEL SETUP (LOGICAL PAIRS) ---
     const setupData: any[][] = [
         [],
-        [{ v: "A: PERSONNEL REGISTER & BRANCH MAPPING", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "A: PERSONNEL REGISTER & LOGICAL MAPPING", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [],
         [null, null, null, 
             { v: "1=ACTIVE, 2=LEAVE, 3=RESIGNED, 4=TRAINING, 5=WEEKLY OFF, 6=HOLIDAY", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }, 
-            { v: "BRANCH CODE (1-5 FROM 01_OVERVIEW)", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }
+            null,
+            { v: "BRANCH CODE (1-5 DEFINED IN 01_OVERVIEW)", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }
         ],
-        [{ v: "ID", s: headerBlockStyle }, { v: "Staff Name", s: headerBlockStyle }, { v: "Operational Role", s: headerBlockStyle }, { v: "Status Code (1-6)", s: headerBlockStyle }, { v: "Branch Code (1-5)", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }, { v: "Assigned Location", s: headerBlockStyle }],
-        [{ v: "1", s: centerCellStyle }, { v: "Imran Khan", s: leftCellStyle }, { v: "Head Chef", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(D6, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "VACANT")`, s: centerCellStyle }, { t: 'f', f: `IFERROR(CHOOSE(E6, '01_SYSTEM_OVERVIEW'!$B$9, '01_SYSTEM_OVERVIEW'!$B$10, '01_SYSTEM_OVERVIEW'!$B$11, '01_SYSTEM_OVERVIEW'!$E$9, '01_SYSTEM_OVERVIEW'!$E$10), "N/A")`, s: centerCellStyle }],
-        [{ v: "2", s: centerCellStyle }, { v: "Aditi Sharma", s: leftCellStyle }, { v: "General Manager", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(D7, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "VACANT")`, s: centerCellStyle }, { t: 'f', f: `IFERROR(CHOOSE(E7, '01_SYSTEM_OVERVIEW'!$B$9, '01_SYSTEM_OVERVIEW'!$B$10, '01_SYSTEM_OVERVIEW'!$B$11, '01_SYSTEM_OVERVIEW'!$E$9, '01_SYSTEM_OVERVIEW'!$E$10), "N/A")`, s: centerCellStyle }],
-        [{ v: "3", s: centerCellStyle }, { v: "Rahul V.", s: leftCellStyle }, { v: "Supervisor", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "2", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(D8, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "VACANT")`, s: centerCellStyle }, { t: 'f', f: `IFERROR(CHOOSE(E8, '01_SYSTEM_OVERVIEW'!$B$9, '01_SYSTEM_OVERVIEW'!$B$10, '01_SYSTEM_OVERVIEW'!$B$11, '01_SYSTEM_OVERVIEW'!$E$9, '01_SYSTEM_OVERVIEW'!$E$10), "N/A")`, s: centerCellStyle }],
-        [{ v: "4", s: centerCellStyle }, { v: "Karan S.", s: leftCellStyle }, { v: "Storekeeper", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { v: "2", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(D9, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "VACANT")`, s: centerCellStyle }, { t: 'f', f: `IFERROR(CHOOSE(E9, '01_SYSTEM_OVERVIEW'!$B$9, '01_SYSTEM_OVERVIEW'!$B$10, '01_SYSTEM_OVERVIEW'!$B$11, '01_SYSTEM_OVERVIEW'!$E$9, '01_SYSTEM_OVERVIEW'!$E$10), "N/A")`, s: centerCellStyle }]
+        [
+            { v: "ID", s: headerBlockStyle }, 
+            { v: "Staff Name", s: headerBlockStyle }, 
+            { v: "Operational Role", s: headerBlockStyle }, 
+            { v: "Status Code", s: headerBlockStyle }, 
+            { v: "Live Status", s: headerBlockStyle }, 
+            { v: "Branch Code", s: headerBlockStyle }, 
+            { v: "Assigned Location", s: headerBlockStyle }
+        ],
+        [
+            { v: "1", s: centerCellStyle }, { v: "Imran Khan", s: centerCellStyle }, { v: "Head Chef", s: centerCellStyle }, { v: "1", s: greyInputStyle }, 
+            { t: 'f', f: `IFERROR(CHOOSE(D6, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "ACTIVE")`, s: centerCellStyle }, 
+            { v: "1", s: greyInputStyle }, 
+            { t: 'f', f: `IFERROR(CHOOSE(F6, '01_SYSTEM_OVERVIEW'!$B$9, '01_SYSTEM_OVERVIEW'!$B$10, '01_SYSTEM_OVERVIEW'!$B$11, '01_SYSTEM_OVERVIEW'!$E$9, '01_SYSTEM_OVERVIEW'!$E$10), "N/A")`, s: centerCellStyle }
+        ],
+        [
+            { v: "2", s: centerCellStyle }, { v: "Aditi Sharma", s: centerCellStyle }, { v: "General Manager", s: centerCellStyle }, { v: "1", s: greyInputStyle }, 
+            { t: 'f', f: `IFERROR(CHOOSE(D7, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "ACTIVE")`, s: centerCellStyle }, 
+            { v: "1", s: greyInputStyle }, 
+            { t: 'f', f: `IFERROR(CHOOSE(F7, '01_SYSTEM_OVERVIEW'!$B$9, '01_SYSTEM_OVERVIEW'!$B$10, '01_SYSTEM_OVERVIEW'!$B$11, '01_SYSTEM_OVERVIEW'!$E$9, '01_SYSTEM_OVERVIEW'!$E$10), "N/A")`, s: centerCellStyle }
+        ],
+        [
+            { v: "3", s: centerCellStyle }, { v: "Rahul V.", s: centerCellStyle }, { v: "Supervisor", s: centerCellStyle }, { v: "1", s: greyInputStyle }, 
+            { t: 'f', f: `IFERROR(CHOOSE(D8, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "ACTIVE")`, s: centerCellStyle }, 
+            { v: "2", s: greyInputStyle }, 
+            { t: 'f', f: `IFERROR(CHOOSE(F8, '01_SYSTEM_OVERVIEW'!$B$9, '01_SYSTEM_OVERVIEW'!$B$10, '01_SYSTEM_OVERVIEW'!$B$11, '01_SYSTEM_OVERVIEW'!$E$9, '01_SYSTEM_OVERVIEW'!$E$10), "N/A")`, s: centerCellStyle }
+        ]
     ];
     const setupWs = utils.aoa_to_sheet(setupData);
     addNavBar(setupWs);
-    setupWs['!cols'] = [{ wch: 10 }, { wch: 30 }, { wch: 30 }, { wch: 25 }, { wch: 25 }, { wch: 20 }, { wch: 30 }];
+    setupWs['!cols'] = [{ wch: 10 }, { wch: 30 }, { wch: 30 }, { wch: 15 }, { wch: 20 }, { wch: 15 }, { wch: 30 }];
     utils.book_append_sheet(wb, setupWs, "02_PERSONNEL_SETUP");
 
     // --- 03. DASHBOARD (CLINICAL PRECISION) ---
@@ -176,7 +192,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             { t: 'f', f: `TEXT(COUNTIF('99_MASTER_REGISTER'!I:I, "COMPLETED") / (COUNTA('99_MASTER_REGISTER'!B:B)-1), "0%")`, s: kpiCardStyle },
             { t: 'f', f: `COUNTIFS('99_MASTER_REGISTER'!G:G, "CRITICAL", '99_MASTER_REGISTER'!I:I, "PENDING")`, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.DANGER_RED } } } },
             { v: "STABLE", s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, sz: 14 } } },
-            { t: 'f', f: `COUNTIF('02_PERSONNEL_SETUP'!F6:F25, "VACANT")`, s: kpiCardStyle }
+            { t: 'f', f: `COUNTIF('02_PERSONNEL_SETUP'!E6:E25, "RESIGNED")`, s: kpiCardStyle }
         ]
     ];
     const dashWs = utils.aoa_to_sheet(dashData);
@@ -188,7 +204,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const mgrData: any[][] = [
         [],
         [{ v: "TACTICAL CONTROL BOARD (PENDING TASKS)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "SEARCH & CHOOSE: Click the arrow [v] on the Status header to filter for 'PENDING'.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.ACCENT_BLUE } } } }],
+        [{ v: "CHOOSE MODE: Click the arrow [v] on the Status header to filter for 'PENDING'.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.ACCENT_BLUE } } } }],
         [],
         [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Responsible Personnel", s: headerBlockStyle }, { v: "Current Status", s: headerBlockStyle }]
     ];
@@ -201,8 +217,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     // --- 05. EXECUTION (SEARCH & CHOOSE) ---
     const execData: any[][] = [
         [],
-        [{ v: "DAILY TASK EXECUTION (STAFF VIEW)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "SEARCH & CHOOSE: Click the arrow [v] on the Personnel header to select your name and hide noise.", s: { font: { italic: true, sz: 11, bold: true, color: { rgb: COLORS.ACCENT_BLUE } } } }],
+        [{ v: "DAILY TASK EXECUTION (SEARCH & CHOOSE)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "SEARCH & CHOOSE: Click the arrow [v] on the Personnel header to select your name.", s: { font: { italic: true, sz: 11, bold: true, color: { rgb: COLORS.ACCENT_BLUE } } } }],
         [],
         [{ v: "ID", s: headerBlockStyle }, { v: "Execution Step", s: headerBlockStyle }, { v: "Personnel (Filter Here)", s: headerBlockStyle }, { v: "Date Done", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }]
     ];
@@ -230,7 +246,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         const wsData: any[][] = [
             [],
             [{ v: c.title.toUpperCase(), s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-            [{ v: "INSTRUCTION: Enter completion date in Yellow cell. Status updates automatically.", s: { font: { italic: true, sz: 9, color: { rgb: "808080" } }, alignment: { horizontal: 'center' } } }],
+            [{ v: "INSTRUCTION: Enter completion date in Grey cell. Status updates automatically.", s: { font: { italic: true, sz: 9, color: { rgb: "808080" } }, alignment: { horizontal: 'center' } } }],
             [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Assigned To", s: headerBlockStyle }, { v: "Branch", s: headerBlockStyle }, { v: "Freq", s: headerBlockStyle }, { v: "Type", s: headerBlockStyle }, { v: "Date Done", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }]
         ];
         c.tasks.forEach((t, i) => {
@@ -238,11 +254,11 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             wsData.push([
                 { v: t.id, s: centerCellStyle },
                 { v: t.description, s: leftCellStyle },
-                { t: 'f', f: `IFERROR(VLOOKUP("${c.role}", '02_PERSONNEL_SETUP'!$C$6:$F$25, 4, FALSE), "VACANT")`, s: centerCellStyle },
-                { t: 'f', f: `IFERROR(VLOOKUP("${c.role}", '02_PERSONNEL_SETUP'!$C$6:$G$25, 5, FALSE), "N/A")`, s: centerCellStyle },
+                { t: 'f', f: `IFERROR(VLOOKUP("${c.role}", '02_PERSONNEL_SETUP'!$C$6:$E$50, 3, FALSE), "VACANT")`, s: centerCellStyle },
+                { t: 'f', f: `IFERROR(VLOOKUP("${c.role}", '02_PERSONNEL_SETUP'!$C$6:$G$50, 5, FALSE), "N/A")`, s: centerCellStyle },
                 { v: t.frequency || c.frequency, s: centerCellStyle },
                 { v: t.priority === 'High' ? "CRITICAL" : "STANDARD", s: { ...centerCellStyle, font: { color: { rgb: t.priority === 'High' ? COLORS.DANGER_RED : "000000" } } } },
-                { v: "", s: inputCellStyle },
+                { v: "", s: greyInputStyle },
                 { t: 'f', f: `IF(G${rowNum}="", "PENDING", "COMPLETED")`, s: centerCellStyle }
             ]);
         });
@@ -260,7 +276,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         c.tasks.forEach((t, i) => {
             const sheetRow = i + 5;
             masterData.push([
-                { t: 'f', f: `'01_SYSTEM_OVERVIEW'!D6` }, 
+                { v: "STANDALONE", s: centerCellStyle }, 
                 t.id, t.description, c.title, { t: 'f', f: `'${sheetName}'!C${sheetRow}` }, 
                 { t: 'f', f: `'${sheetName}'!D${sheetRow}` }, 
                 t.priority === 'High' ? 'CRITICAL' : 'STANDARD',
