@@ -6,8 +6,8 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
  * Version 2.3 - Executive Command (Clinical Build)
- * Clinical Standard for Operational Governance
- * Optimized for UX: Numerical Command Codes & Auto-Filter Selectors
+ * Institutional Standard for Operational Governance
+ * INTERLINKING ENABLED: Includes Location ID hooks for Master Google Sheets aggregation.
  */
 export const handleDownloadV2 = (item: PremiumPack) => {
     if (!item) {
@@ -37,7 +37,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         TEXT_MUTED: "6B7280"
     };
 
-    // --- CLINICAL STYLES ---
+    // --- CLINICAL STYLES (ALIGNMENT PROTOCOL) ---
     const borderThin = {
         top: { style: 'thin', color: { rgb: COLORS.BORDER_LIGHT } },
         bottom: { style: 'thin', color: { rgb: COLORS.BORDER_LIGHT } },
@@ -111,7 +111,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [{ v: "MOREMEETS™ OPERATIONAL GOVERNANCE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
         [{ v: `Version 2.3 Executive Build: ${item.title}`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "STATUS: DEPLOYED / ACTIVE", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, null, null, { v: "LOCATION: [TYPE LOCATION ID]", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }],
+        [{ v: "STATUS: DEPLOYED / ACTIVE", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, null, null, { v: "LOCATION ID: [TYPE UNIQUE ID]", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }],
         [],
         [{ v: "PROTOCOL: HIGH LIABILITY COMPLIANCE", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [],
@@ -140,7 +140,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [],
         [{ v: "A: PERSONNEL REGISTER & ROLE MAPPING", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [],
-        [null, null, null, { v: "1=ACTIVE, 2=LEAVE, 3=RESIGN, 4=TRAIN, 5=WEEKLY OFF, 6=HOLIDAY", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
+        [null, null, null, { v: "1=ACTIVE, 2=LEAVE, 3=RESIGNED, 4=TRAINING, 5=WEEKLY OFF, 6=HOLIDAY", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [{ v: "ID", s: headerBlockStyle }, { v: "Staff Name", s: headerBlockStyle }, { v: "Operational Role", s: headerBlockStyle }, { v: "Status Code (1-6)", s: headerBlockStyle }, { v: "Live System Status", s: headerBlockStyle }],
         [{ v: "1", s: centerCellStyle }, { v: "Imran Khan", s: leftCellStyle }, { v: "Head Chef", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D6=1,"ACTIVE",IF(D6=2,"LEAVE",IF(D6=3,"RESIGNED",IF(D6=4,"TRAINING",IF(D6=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }],
         [{ v: "2", s: centerCellStyle }, { v: "Aditi Sharma", s: leftCellStyle }, { v: "General Manager", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D7=1,"ACTIVE",IF(D7=2,"LEAVE",IF(D7=3,"RESIGNED",IF(D7=4,"TRAINING",IF(D7=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }],
@@ -149,7 +149,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     ];
     const setupWs = utils.aoa_to_sheet(setupData);
     addNavBar(setupWs);
-    setupWs['!cols'] = [{ wch: 10 }, { wch: 30 }, { wch: 30 }, { wch: 25 }, { wch: 25 }];
+    setupWs['!cols'] = [{ wch: 10 }, { wch: 30 }, { wch: 30 }, { wch: 35 }, { wch: 25 }];
     utils.book_append_sheet(wb, setupWs, "02_PERSONNEL_SETUP");
 
     // --- 03. DASHBOARD (CLINICAL PRECISION) ---
@@ -157,8 +157,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [],
         [{ v: "GOVERNANCE HEALTH", s: centerCellStyle }, { v: "CRITICAL GAPS", s: centerCellStyle }, { v: "HUMAN RISK", s: centerCellStyle }, { v: "VACANT ROLES", s: centerCellStyle }],
         [
-            { t: 'f', f: `TEXT(COUNTIF('99_MASTER_REGISTER'!G:G, "COMPLETED") / (COUNTA('99_MASTER_REGISTER'!B:B)-1), "0%")`, s: kpiCardStyle },
-            { t: 'f', f: `COUNTIFS('99_MASTER_REGISTER'!E:E, "CRITICAL", '99_MASTER_REGISTER'!G:G, "PENDING")`, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.DANGER_RED } } } },
+            { t: 'f', f: `TEXT(COUNTIF('99_MASTER_REGISTER'!H:H, "COMPLETED") / (COUNTA('99_MASTER_REGISTER'!B:B)-1), "0%")`, s: kpiCardStyle },
+            { t: 'f', f: `COUNTIFS('99_MASTER_REGISTER'!F:F, "CRITICAL", '99_MASTER_REGISTER'!H:H, "PENDING")`, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.DANGER_RED } } } },
             { v: "STABLE", s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, sz: 14 } } },
             { t: 'f', f: `COUNTIF('02_PERSONNEL_SETUP'!E6:E25, "VACANT")`, s: kpiCardStyle }
         ]
@@ -208,7 +208,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     logWs['!cols'] = [{ wch: 20 }, { wch: 60 }, { wch: 40 }, { wch: 30 }];
     utils.book_append_sheet(wb, logWs, "06_INCIDENT_AUDIT_LOG");
 
-    // --- PROTOCOL SHEETS (STRICT ALIGNMENT) ---
+    // --- PROTOCOL SHEETS ---
     item.checklists.forEach(c => {
         const sName = safeSheetName(c.title);
         const wsData: any[][] = [
@@ -236,13 +236,14 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         utils.book_append_sheet(wb, ws, sName);
     });
 
-    // --- 99. MASTER REGISTER ---
-    const masterData: any[][] = [["Task ID", "Task", "Checklist", "AssignedPerson", "Type", "DateDone", "Status"]];
+    // --- 99. MASTER REGISTER (INTERLINKING HOOKS) ---
+    const masterData: any[][] = [["LocationID", "Task ID", "Task", "Checklist", "AssignedPerson", "Type", "DateDone", "Status"]];
     item.checklists.forEach(c => {
         const sheetName = safeSheetName(c.title);
         c.tasks.forEach((t, i) => {
             const sheetRow = i + 5;
             masterData.push([
+                { t: 'f', f: `'01_SYSTEM_OVERVIEW'!D6` }, // Location ID Hook
                 t.id, t.description, c.title, { t: 'f', f: `'${sheetName}'!C${sheetRow}` }, 
                 t.priority === 'High' ? 'CRITICAL' : 'STANDARD',
                 { t: 'f', f: `'${sheetName}'!F${sheetRow}` },
