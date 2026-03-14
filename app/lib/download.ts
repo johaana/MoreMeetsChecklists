@@ -18,7 +18,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         return sanitized.substring(0, 30);
     }
     
-    // --- CORPORATE CLINICAL PALETTE (SWISS STANDARD) ---
+    // --- CORPORATE CLINICAL PALETTE (V2.3 STANDARD) ---
     const COLORS = {
         PRIME_NAVY: "1F2937",
         SLATE_HEADER: "374151",
@@ -93,7 +93,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         const navData = [
             [
                 { v: "01 COVER", l: { Target: "#'01_Cover'!A1" }, s: navStyle },
-                { v: "02 SETUP", l: { Target: "#'02_Setup_Mapping'!A1" }, s: navStyle },
+                { v: "02 SETUP", l: { Target: "#'02_Setup'!A1" }, s: navStyle },
                 { v: "03 DASHBOARD", l: { Target: "#'03_Dashboard'!A1" }, s: navStyle },
                 { v: "04 MANAGER CONTROL", l: { Target: "#'04_Manager_Control'!A1" }, s: navStyle },
                 { v: "05 MY TASKS", l: { Target: "#'05_My_Tasks_Today'!A1" }, s: navStyle },
@@ -153,7 +153,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const mappingWs = utils.aoa_to_sheet(mappingData);
     addNavBar(mappingWs);
     mappingWs['!cols'] = [{ wch: 45 }, { wch: 35 }, { wch: 25 }, { wch: 25 }];
-    utils.book_append_sheet(wb, mappingWs, "02_Setup_Mapping");
+    utils.book_append_sheet(wb, mappingWs, "02_Setup");
 
     // --- 03. DASHBOARD (OWNER VIEW) ---
     const dashData: any[][] = [
