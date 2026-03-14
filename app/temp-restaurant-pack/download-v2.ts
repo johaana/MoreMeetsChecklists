@@ -7,7 +7,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * Version 2.3 - Executive Command & Control (Final Production Build)
  * Clinical Standard for Operational Governance
- * Optimized for Restaurant Owners - X-Selection Matrix, Centered Alignments, Persona Tiers
+ * Optimized for Restaurant Owners - Priority-Logic Selection Matrix, Centered Alignments, Persona Tiers
  */
 export const handleDownloadV2 = (item: PremiumPack) => {
     if (!item) {
@@ -46,28 +46,30 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         right: { style: 'thin', color: { rgb: COLORS.BORDER_LIGHT } }
     };
 
+    const baseFont = { name: 'Segoe UI', sz: 10 };
+
     const navStyle = {
-        font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9, name: 'Segoe UI' },
+        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 9 },
         fill: { fgColor: { rgb: COLORS.PRIME_NAVY } },
         alignment: { horizontal: 'center', vertical: 'center' },
         border: borderThin
     };
 
     const headerBlockStyle = {
-        font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 10, name: 'Segoe UI' },
+        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE } },
         fill: { fgColor: { rgb: COLORS.SLATE_HEADER } },
         alignment: { vertical: 'center', horizontal: 'center' },
         border: borderThin
     };
 
     const leftCellStyle = { 
-        font: { sz: 10, color: { rgb: "000000" }, name: 'Segoe UI' },
+        font: baseFont,
         alignment: { vertical: 'center', horizontal: 'left', wrapText: true },
         border: borderThin
     };
 
     const centerCellStyle = {
-        font: { sz: 10, color: { rgb: "000000" }, name: 'Segoe UI' },
+        font: baseFont,
         alignment: { vertical: 'center', horizontal: 'center' },
         border: borderThin
     };
@@ -77,15 +79,20 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         fill: { fgColor: { rgb: COLORS.INPUT_YELLOW } }
     };
 
+    const interactionCellStyle = {
+        ...centerCellStyle,
+        fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } }
+    };
+
     const kpiCardStyle = {
-        font: { bold: true, color: { rgb: COLORS.PRIME_NAVY }, sz: 22, name: 'Segoe UI' },
+        font: { ...baseFont, bold: true, color: { rgb: COLORS.PRIME_NAVY }, sz: 22 },
         fill: { fgColor: { rgb: COLORS.SOFT_GREY } },
         alignment: { vertical: 'center', horizontal: 'center' },
         border: borderThin
     };
 
     const alertBarStyle = {
-        font: { bold: true, color: { rgb: COLORS.DANGER_RED }, sz: 11, name: 'Segoe UI' },
+        font: { ...baseFont, bold: true, color: { rgb: COLORS.DANGER_RED }, sz: 11 },
         fill: { fgColor: { rgb: COLORS.ALERT_RED_BG } },
         alignment: { vertical: 'center', horizontal: 'center' },
         border: borderThin
@@ -109,19 +116,19 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     // --- 01. SYSTEM OVERVIEW (CENTERED COMMAND) ---
     const coverData = [
         [], [],
-        [{ v: "", s: {} }, { v: "MOREMEETS™ OPERATIONAL GOVERNANCE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "", s: {} }, { v: `Executive Build: ${item.title}`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "", s: {} }, { v: "MOREMEETS™ OPERATIONAL GOVERNANCE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY }, name: 'Segoe UI' }, alignment: { horizontal: 'center' } } }],
+        [{ v: "", s: {} }, { v: `Executive Build: ${item.title}`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER }, name: 'Segoe UI' }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "", s: {} }, { v: "SYSTEM STATUS:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "DEPLOYED / ACTIVE", s: centerCellStyle }],
-        [{ v: "", s: {} }, { v: "LOCATION ID:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "MUM-CENTRAL-01", s: inputCellStyle }],
-        [{ v: "", s: {} }, { v: "ORGANIZATION:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "[Enter Company Name]", s: inputCellStyle }],
+        [{ v: "", s: {} }, { v: "SYSTEM STATUS:", s: { alignment: { horizontal: 'right' }, font: { bold: true, name: 'Segoe UI' } } }, { v: "DEPLOYED / ACTIVE", s: centerCellStyle }],
+        [{ v: "", s: {} }, { v: "LOCATION ID:", s: { alignment: { horizontal: 'right' }, font: { bold: true, name: 'Segoe UI' } } }, { v: "MUM-CENTRAL-01", s: inputCellStyle }],
+        [{ v: "", s: {} }, { v: "ORGANIZATION:", s: { alignment: { horizontal: 'right' }, font: { bold: true, name: 'Segoe UI' } } }, { v: "[Enter Company Name]", s: inputCellStyle }],
         [],
-        [{ v: "", s: {} }, { v: "PROTOCOL: HIGH LIABILITY COMPLIANCE", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "", s: {} }, { v: "PROTOCOL: HIGH LIABILITY COMPLIANCE", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.ACCENT_BLUE }, name: 'Segoe UI' }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "", s: {} }, { v: "EXECUTIVE INSTRUCTIONS:", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "", s: {} }, { v: "1. Update personnel in '02_PERSONNEL_SETUP' using the X-Selection Grid.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "", s: {} }, { v: "2. Staff filter their own tasks in '05_DAILY_TASK_EXECUTION' by typing 'X' in the selector.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "", s: {} }, { v: "3. Enter completion date in Yellow cells. Status and Color update automatically.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }]
+        [{ v: "", s: {} }, { v: "EXECUTIVE INSTRUCTIONS:", s: { font: { bold: true, sz: 11, name: 'Segoe UI' }, alignment: { horizontal: 'center' } } }],
+        [{ v: "", s: {} }, { v: "1. Update personnel in '02_PERSONNEL_SETUP' using the X-Selection Grid.", s: { font: { sz: 10, name: 'Segoe UI' }, alignment: { horizontal: 'center' } } }],
+        [{ v: "", s: {} }, { v: "2. Staff filter their own tasks in '05_DAILY_TASK_EXECUTION' by clicking the header Filter Arrow [v].", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, name: 'Segoe UI' }, alignment: { horizontal: 'center' } } }],
+        [{ v: "", s: {} }, { v: "3. Enter completion date in Yellow cells. Status and Color update automatically.", s: { font: { sz: 10, name: 'Segoe UI' }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -137,18 +144,18 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     ];
     utils.book_append_sheet(wb, coverWs, "01_SYSTEM_OVERVIEW");
 
-    // --- 02. PERSONNEL SETUP (X-SELECTION GRID) ---
+    // --- 02. PERSONNEL SETUP (PRIORITY-LOGIC GRID) ---
     const setupData: any[][] = [
         [],
-        [{ v: "A: PERSONNEL REGISTER & STATUS SELECTION", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "INSTRUCTION: TYPE 'X' IN THE GREY BOX TO CHOOSE THE STATUS FOR EACH EMPLOYEE.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.ACCENT_BLUE } } } }],
+        [{ v: "A: PERSONNEL REGISTER & STATUS SELECTION", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY }, name: 'Segoe UI' } } }],
+        [{ v: "INSTRUCTION: TYPE 'X' IN THE GREY BOX TO CHOOSE THE STATUS. (PRIORITY: ACTIVE > LEAVE > RESIGNED)", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.ACCENT_BLUE }, name: 'Segoe UI' } } }],
         [],
-        [{ v: "Staff Name", s: headerBlockStyle }, { v: "Role Designation", s: headerBlockStyle }, { v: "[X] ACTIVE", s: headerBlockStyle }, { v: "[X] ON LEAVE", s: headerBlockStyle }, { v: "[X] RESIGNED", s: headerBlockStyle }, { v: "System Status", s: headerBlockStyle }],
-        [{ v: "Imran Khan", s: inputCellStyle }, { v: "Head Chef", s: centerCellStyle }, { v: "X", s: { ...centerCellStyle, fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } } } }, { v: "", s: { ...centerCellStyle, fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } } } }, { v: "", s: { ...centerCellStyle, fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } } } }, { t: 'f', f: `IF(C6="X","ACTIVE",IF(D6="X","ON LEAVE",IF(E6="X","RESIGNED","VACANT")))`, s: centerCellStyle }],
-        [{ v: "Rahul Sharma", s: inputCellStyle }, { v: "Supervisor", s: centerCellStyle }, { v: "", s: { ...centerCellStyle, fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } } } }, { v: "X", s: { ...centerCellStyle, fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } } } }, { v: "", s: { ...centerCellStyle, fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } } } }, { t: 'f', f: `IF(C7="X","ACTIVE",IF(D7="X","ON LEAVE",IF(E7="X","RESIGNED","VACANT")))`, s: centerCellStyle }],
-        [{ v: "Aditi", s: inputCellStyle }, { v: "Duty Manager", s: centerCellStyle }, { v: "X", s: { ...centerCellStyle, fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } } } }, { v: "", s: { ...centerCellStyle, fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } } } }, { v: "", s: { ...centerCellStyle, fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } } } }, { t: 'f', f: `IF(C8="X","ACTIVE",IF(D8="X","ON LEAVE",IF(E8="X","RESIGNED","VACANT")))`, s: centerCellStyle }],
+        [{ v: "Staff Name", s: headerBlockStyle }, { v: "Role Designation", s: headerBlockStyle }, { v: "[X] ACTIVE", s: headerBlockStyle }, { v: "[X] ON LEAVE", s: headerBlockStyle }, { v: "[X] RESIGNED", s: headerBlockStyle }, { v: "Current System Status", s: headerBlockStyle }],
+        [{ v: "Imran Khan", s: inputCellStyle }, { v: "Head Chef", s: centerCellStyle }, { v: "X", s: interactionCellStyle }, { v: "", s: interactionCellStyle }, { v: "", s: interactionCellStyle }, { t: 'f', f: `IF(UPPER(C6)="X","ACTIVE",IF(UPPER(D6)="X","ON LEAVE",IF(UPPER(E6)="X","RESIGNED","VACANT")))`, s: centerCellStyle }],
+        [{ v: "Rahul Sharma", s: inputCellStyle }, { v: "Supervisor", s: centerCellStyle }, { v: "", s: interactionCellStyle }, { v: "X", s: interactionCellStyle }, { v: "", s: interactionCellStyle }, { t: 'f', f: `IF(UPPER(C7)="X","ACTIVE",IF(UPPER(D7)="X","ON LEAVE",IF(UPPER(E7)="X","RESIGNED","VACANT")))`, s: centerCellStyle }],
+        [{ v: "Aditi", s: inputCellStyle }, { v: "Duty Manager", s: centerCellStyle }, { v: "X", s: interactionCellStyle }, { v: "", s: interactionCellStyle }, { v: "", s: interactionCellStyle }, { t: 'f', f: `IF(UPPER(C8)="X","ACTIVE",IF(UPPER(D8)="X","ON LEAVE",IF(UPPER(E8)="X","RESIGNED","VACANT")))`, s: centerCellStyle }],
         [],
-        [{ v: "B: ROLE MAPPING (AUTOMATED ENGINE)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "B: ROLE MAPPING (DYNAMIC PROPAGATION)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY }, name: 'Segoe UI' } } }],
         [{ v: "Operational Role", s: headerBlockStyle }, { v: "Assigned Person", s: headerBlockStyle }, { v: "Integrity Status", s: headerBlockStyle }]
     ];
 
@@ -164,7 +171,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
 
     const setupWs = utils.aoa_to_sheet(setupData);
     addNavBar(setupWs);
-    setupWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 15 }, { wch: 15 }, { wch: 15 }, { wch: 20 }];
+    setupWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 15 }, { wch: 15 }, { wch: 15 }, { wch: 25 }];
     utils.book_append_sheet(wb, setupWs, "02_PERSONNEL_SETUP");
 
     // --- 03. OPERATIONS DASHBOARD ---
@@ -175,15 +182,15 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             { t: 'f', f: `TEXT(COUNTIF('99_MASTER_REGISTER'!G:G, "COMPLETED") / (COUNTA('99_MASTER_REGISTER'!B:B)-1), "0%")`, s: kpiCardStyle },
             { t: 'f', f: `COUNTIF('06_INCIDENT_AUDIT_LOG'!B:B, "<>") - 1`, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.DANGER_RED } } } },
             { v: 0, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.WARNING_AMBER } } } },
-            { t: 'f', f: `COUNTIF('02_PERSONNEL_SETUP'!C12:C25, "VACANT")`, s: kpiCardStyle }
+            { t: 'f', f: `COUNTIF('02_PERSONNEL_SETUP'!F6:F25, "VACANT")`, s: kpiCardStyle }
         ],
         [],
         [{ v: "⚠ ALERT: SYSTEM RUNNING WITHIN NORMAL PARAMETERS", s: alertBarStyle }],
         [],
-        [{ v: "HUMAN RISK CONCENTRATION (CRITICAL LOAD)", s: { font: { bold: true, sz: 11 } } }],
+        [{ v: "HUMAN RISK CONCENTRATION (CRITICAL LOAD)", s: { font: { bold: true, sz: 11, name: 'Segoe UI' } } }],
         [{ v: "Personnel", s: headerBlockStyle }, { v: "Assigned Tasks", s: headerBlockStyle }, { v: "Risk Rating", s: headerBlockStyle }]
     ];
-    dashData.push([ { v: "Imran Khan", s: centerCellStyle }, { t: 'f', f: `COUNTIF('99_MASTER_REGISTER'!D:D, "Imran Khan")`, s: centerCellStyle }, { v: "STABLE", s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.SUCCESS_GREEN } } } } ]);
+    dashData.push([ { v: "Imran Khan", s: centerCellStyle }, { t: 'f', f: `COUNTIF('99_MASTER_REGISTER'!D:D, "Imran Khan")`, s: centerCellStyle }, { v: "STABLE", s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.SUCCESS_GREEN }, name: 'Segoe UI' } } } ]);
     
     const dashWs = utils.aoa_to_sheet(dashData);
     addNavBar(dashWs);
@@ -194,9 +201,9 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     // --- 04. MANAGER CONTROL BOARD (TACTICAL COCKPIT) ---
     const mgrData: any[][] = [
         [],
-        [{ v: "TACTICAL CONTROL BOARD (GM VIEW)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "TACTICAL CONTROL BOARD (GM VIEW)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY }, name: 'Segoe UI' } } }],
         [],
-        [{ v: "INSTRUCTION: USE THE FILTER ARROW [v] ON THE STATUS HEADER TO SEE ONLY 'PENDING' TASKS.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.ACCENT_BLUE } } } }],
+        [{ v: "INSTRUCTION: CLICK THE FILTER ARROW [v] ON THE STATUS HEADER TO SEE ONLY 'PENDING' TASKS.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.ACCENT_BLUE }, name: 'Segoe UI' } } }],
         [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Responsible Person", s: headerBlockStyle }, { v: "Status (Filter Today)", s: headerBlockStyle }]
     ];
     const mgrWs = utils.aoa_to_sheet(mgrData);
@@ -208,10 +215,10 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     // --- 05. DAILY TASK EXECUTION (STAFF SELECTOR) ---
     const todayData: any[][] = [
         [],
-        [{ v: "MY TASKS TODAY (STAFF VIEW)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "CHOOSE YOUR NAME BY CLICKING THE FILTER ARROW [v] BELOW:", s: { font: { italic: true, sz: 11, bold: true, color: { rgb: COLORS.ACCENT_BLUE } } } }],
+        [{ v: "DAILY TASK EXECUTION (STAFF VIEW)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY }, name: 'Segoe UI' } } }],
+        [{ v: "CHOOSE YOUR NAME BY CLICKING THE FILTER ARROW [v] BELOW:", s: { font: { italic: true, sz: 11, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, name: 'Segoe UI' } } }],
         [],
-        [{ v: "ID", s: headerBlockStyle }, { v: "Execution Step (Read Carefully)", s: headerBlockStyle }, { v: "Personnel (Filter Your Name)", s: headerBlockStyle }, { v: "Type", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }]
+        [{ v: "ID", s: headerBlockStyle }, { v: "Execution Step (Read Carefully)", s: headerBlockStyle }, { v: "Personnel (Click Arrow to Choose)", s: headerBlockStyle }, { v: "Type", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }]
     ];
     const todayWs = utils.aoa_to_sheet(todayData);
     addNavBar(todayWs);
@@ -222,7 +229,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     // --- 06. INCIDENT AUDIT LOG (BLACK BOX) ---
     const logData: any[][] = [
         [],
-        [{ v: "CRITICAL INCIDENT AUDIT TRAIL (BLACK BOX)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.DANGER_RED } } } }],
+        [{ v: "CRITICAL INCIDENT AUDIT TRAIL (BLACK BOX)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.DANGER_RED }, name: 'Segoe UI' } } }],
         [],
         [{ v: "Date", s: headerBlockStyle }, { v: "Requirement Failed", s: headerBlockStyle }, { v: "Responsible Person", s: headerBlockStyle }, { v: "Immediate Action Taken", s: headerBlockStyle }, { v: "Manager Sign-off", s: headerBlockStyle }]
     ];
@@ -236,8 +243,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         const sName = safeSheetName(c.title);
         const wsData: any[][] = [
             [],
-            [{ v: c.title.toUpperCase(), s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-            [{ v: "INSTRUCTION: Enter completion date in Yellow cell. Status calculates automatically.", s: { font: { italic: true, sz: 9, color: "808080" } } }],
+            [{ v: c.title.toUpperCase(), s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIME_NAVY }, name: 'Segoe UI' } } }],
+            [{ v: "INSTRUCTION: Enter completion date in Yellow cell. Status calculates automatically.", s: { font: { italic: true, sz: 9, color: "808080", name: 'Segoe UI' } } }],
             [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Assigned To", s: headerBlockStyle }, { v: "Freq", s: headerBlockStyle }, { v: "Type", s: headerBlockStyle }, { v: "Date Done", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }]
         ];
         c.tasks.forEach((t, i) => {
@@ -247,7 +254,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
                 { v: t.description, s: leftCellStyle },
                 { t: 'f', f: `IFERROR(VLOOKUP("${c.role}", '02_PERSONNEL_SETUP'!$A$12:$B$25, 2, FALSE), "VACANT")`, s: centerCellStyle },
                 { v: t.frequency || c.frequency, s: centerCellStyle },
-                { v: t.priority === 'High' ? "CRITICAL" : "STANDARD", s: { ...centerCellStyle, font: { color: { rgb: t.priority === 'High' ? COLORS.DANGER_RED : "000000" } } } },
+                { v: t.priority === 'High' ? "CRITICAL" : "STANDARD", s: { ...centerCellStyle, font: { color: { rgb: t.priority === 'High' ? COLORS.DANGER_RED : "000000" }, name: 'Segoe UI' } } },
                 { v: "", s: inputCellStyle },
                 { t: 'f', f: `IF(F${rowNum}="", "PENDING", "COMPLETED")`, s: centerCellStyle }
             ]);
