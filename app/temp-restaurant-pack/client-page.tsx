@@ -16,7 +16,9 @@ import {
     LayoutDashboard,
     Siren,
     EyeOff,
-    Briefcase
+    Briefcase,
+    UserCheck,
+    BarChart3
 } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -53,21 +55,21 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                     playsInline
                     className="absolute inset-0 w-full h-full object-cover grayscale brightness-[0.2] opacity-40"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-background" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-background" />
             </div>
 
             <div className="container px-4 md:px-6 relative z-10 text-center space-y-10">
                 <div className="space-y-6">
                     <div className="flex justify-center">
-                        <Badge variant="outline" className="text-accent border-accent/30 py-1 px-5 uppercase tracking-[0.5em] font-black text-[10px] bg-accent/5 rounded-full backdrop-blur-sm">
+                        <Badge variant="outline" className="text-primary border-primary/30 py-1 px-5 uppercase tracking-[0.5em] font-black text-[10px] bg-primary/5 rounded-full backdrop-blur-sm">
                             V2.3 Executive Build • CLINICAL SERIES
                         </Badge>
                     </div>
                     <h1 className="text-5xl md:text-8xl font-black font-headline text-primary-text italic uppercase tracking-tighter leading-[0.9] drop-shadow-2xl">
-                        Operational <br/> <span className="text-accent">Intelligence.</span>
+                        Operational <br/> <span className="text-primary">Intelligence.</span>
                     </h1>
-                    <p className="text-xl md:text-2xl text-secondary-text italic max-w-2xl mx-auto font-medium leading-relaxed border-l-2 border-accent/20 pl-8">
-                        The V2.3 "Executive Command" engine features Three-Tier Architecture, separating Owner Strategy from Daily Dispatch. Built for zero-risk multi-unit governance.
+                    <p className="text-xl md:text-2xl text-secondary-text italic max-w-2xl mx-auto font-medium leading-relaxed border-l-2 border-primary/20 pl-8">
+                        The V2.3 "Executive Command" engine separates Owner Strategy from Daily Dispatch. Built for the 1-File-1-Branch model using clinical-grade Excel logic.
                     </p>
                 </div>
                 
@@ -75,10 +77,10 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                     <Button 
                         size="lg" 
                         onClick={() => handleDownloadV2(pack)}
-                        className="h-20 px-12 bg-accent text-accent-foreground font-black uppercase italic text-lg shadow-[0_0_50px_-12px_rgba(212,175,55,0.5)] hover:scale-105 active:scale-95 transition-all rounded-2xl border-none"
+                        className="h-20 px-12 bg-primary text-black font-black uppercase italic text-lg shadow-[0_0_50px_-12px_rgba(46,184,107,0.5)] hover:scale-105 active:scale-95 transition-all rounded-2xl border-none"
                     >
                         <Download className="mr-3 w-6 h-6" />
-                        Download Executive V2.3
+                        Download V2.3 Executive .xlsx
                     </Button>
                 </div>
             </div>
@@ -88,47 +90,47 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
         <section className="py-32 bg-alternate-background">
             <div className="container px-4 md:px-6">
                 <div className="text-center mb-20 space-y-4">
-                    <Badge variant="outline" className="text-accent border-accent/20 uppercase tracking-widest text-[9px]">Aviation-Grade Logic</Badge>
+                    <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-widest text-[9px]">Aviation-Grade Logic</Badge>
                     <h2 className="text-4xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">Command Centre Refinements</h2>
-                    <p className="text-secondary-text max-w-xl mx-auto italic font-medium leading-relaxed">Redesigned from the ground up to support the "Isolated Command" 1-File-1-Branch model.</p>
+                    <p className="text-secondary-text max-w-xl mx-auto italic font-medium leading-relaxed">Redesigned from the ground up to support three distinct user personas.</p>
                 </div>
                 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <FeatureItem 
                         icon={Briefcase} 
                         title="Owner Dashboard" 
-                        badge="Strategy"
-                        description="Pure strategy. Governance Health, Critical Incident counts, and portfolio-wide risk mapping at a glance."
+                        badge="Strategic"
+                        description="Real-time Governance Health, Critical Incident alerts, and Human Risk Concentration mapping for the CEO."
                     />
                     <FeatureItem 
                         icon={Activity} 
-                        title="Manager Control" 
-                        badge="Operational"
-                        description="The GM's cockpit. Real-time lists of Pending and Failed tasks across every department in the building."
+                        title="Manager Cockpit" 
+                        badge="Tactical"
+                        description="One-click lists of Pending and Failed tasks across the entire facility. No more hunting through tabs."
                     />
                     <FeatureItem 
                         icon={LayoutDashboard} 
                         title="Shift Dispatch" 
-                        badge="Staff UX"
-                        description="Staff choose their name and shift. They see only 5-10 tasks, removing spreadsheet overwhelm."
+                        badge="Operator"
+                        description="Staff select Name and Shift. They see only their 5-10 tasks, removing 95% of spreadsheet clutter."
                     />
                     <FeatureItem 
                         icon={Siren} 
                         title="Black Box Log" 
-                        badge="Audit"
-                        description="Automatic escalation of CCP failures. Creates a signed evidence trail for legal and insurance audits."
+                        badge="Auditable"
+                        description="Failed CCPs are automatically routed to a signed Incident Log for legal and insurance protection."
                     />
                     <FeatureItem 
-                        icon={Database} 
-                        title="3-Layer Engine" 
+                        icon={UserCheck} 
+                        title="Personnel Mapping" 
                         badge="Harden"
-                        description="Separates UI, Logic, and Data. Virtually unbreakable core math even with heavy daily usage."
+                        description="Dynamically map roles to people. Detects vacancies immediately if a staff member resigns."
                     />
                     <FeatureItem 
-                        icon={EyeOff} 
-                        title="Isolated Privacy" 
-                        badge="Secure"
-                        description="1-File-1-Branch model prevents data lag and ensures internal transparency without cross-unit leakage."
+                        icon={BarChart3} 
+                        title="Readiness Scores" 
+                        badge="Metrics"
+                        description="Compare readiness between departments (Kitchen vs Service) to identify systemic weak points."
                     />
                 </div>
             </div>
@@ -143,7 +145,7 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                 <div className="space-y-4">
                     <h3 className="text-4xl md:text-6xl font-black font-headline uppercase italic text-primary-text tracking-tighter">Institutional Integrity</h3>
                     <p className="text-xl md:text-2xl text-secondary-text italic font-medium leading-relaxed max-w-2xl mx-auto">
-                        Ready to deploy the clinical standard for operational governance?
+                        Deploy the clinical standard for operational governance. Built for results, not just checklists.
                     </p>
                 </div>
 
@@ -151,10 +153,10 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                     <Button 
                         size="lg" 
                         onClick={() => handleDownloadV2(pack)}
-                        className="h-24 px-16 bg-accent text-accent-foreground font-black uppercase italic text-2xl shadow-2xl hover:scale-105 active:scale-95 transition-all rounded-[2rem]"
+                        className="h-24 px-16 bg-primary text-black font-black uppercase italic text-2xl shadow-2xl hover:scale-105 active:scale-95 transition-all rounded-[2rem]"
                     >
                         <Download className="mr-4 w-8 h-8" />
-                        Download Build V2.3
+                        Download Executive V2.3
                     </Button>
                     <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.4em]">One-Time Purchase • Lifetime Support • Clinical Grade</p>
                 </div>

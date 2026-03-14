@@ -17,7 +17,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         return sanitized.substring(0, 30);
     }
     
-    // --- EXECUTIVE COMMAND PALETTE (CLINICAL / SWISS) ---
+    // --- EXECUTIVE COMMAND PALETTE (CORPORATE CLINICAL) ---
     const COLORS = {
         PRIME_NAVY: "1F2937",
         SLATE_HEADER: "374151",
@@ -112,8 +112,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [{ v: `Version 2.3 Executive Build: ${item.title}`, s: { font: { italic: true, sz: 11, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "System Status:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "DEPLOYED / ACTIVE", s: dataCellStyle }],
-        [{ v: "Organization Entity:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Company Name", s: inputCellStyle }],
-        [{ v: "Location Identifier:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Branch Name", s: inputCellStyle }],
+        [{ v: "Organization Entity:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "MoreMeets Premium Dining", s: inputCellStyle }],
+        [{ v: "Location Identifier:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Mumbai Flagship", s: inputCellStyle }],
         [],
         [{ v: "PROTOCOL: HIGH LIABILITY COMPLIANCE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }]
     ];
@@ -128,7 +128,27 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [{ v: "SECTION A: PERSONNEL REGISTER", s: { font: { bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [{ v: "Staff Name", s: headerBlockStyle }, { v: "Position", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }, { v: "Verification", s: headerBlockStyle }]
     ];
-    for(let i=0; i<20; i++) {
+    
+    // Real World Personnel
+    const sampleStaff = [
+        ["Imran Khan", "Head Chef", "ACTIVE"],
+        ["Rahul Sharma", "Supervisor", "ACTIVE"],
+        ["Karan Singh", "Storekeeper", "ACTIVE"],
+        ["Amit Roy", "Server", "ACTIVE"],
+        ["Sita Devi", "Housekeeping", "ACTIVE"]
+    ];
+
+    sampleStaff.forEach((staff, i) => {
+        const row = i + 4;
+        mappingData.push([
+            { v: staff[0], s: inputCellStyle }, 
+            { v: staff[1], s: dataCellStyle }, 
+            { v: staff[2], s: inputCellStyle },
+            { t: 'f', f: `IF(A${row}="", "", "VERIFIED")`, s: centerCellStyle }
+        ]);
+    });
+
+    for(let i=sampleStaff.length; i<20; i++) {
         const row = i + 4;
         mappingData.push([
             { v: "", s: inputCellStyle }, { v: "", s: dataCellStyle }, { v: "ACTIVE", s: inputCellStyle },
@@ -145,18 +165,19 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [],
         [{ v: "GOVERNANCE HEALTH", s: centerCellStyle }, { v: "CRITICAL INCIDENTS", s: centerCellStyle }, { v: "OVERDUE CONTROLS", s: centerCellStyle }, { v: "ACTIVE STAFF", s: centerCellStyle }],
         [
-            { t: 'f', f: `TEXT(92/100, "0%")`, s: kpiCardStyle },
-            { v: 0, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.DANGER_RED } } } },
-            { v: 3, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.WARNING_AMBER } } } },
-            { v: 10, s: kpiCardStyle }
+            { t: 'f', f: `TEXT(94/100, "0%")`, s: kpiCardStyle },
+            { v: 0, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.SUCCESS_GREEN } } } },
+            { v: 2, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.WARNING_AMBER } } } },
+            { v: 5, s: kpiCardStyle }
         ],
         [],
-        [{ v: "⚠ ALERT: SYSTEM RUNNING WITHIN NORMAL PARAMETERS", s: alertBarStyle }],
+        [{ v: "✔ ALERT: SYSTEM RUNNING WITHIN NORMAL PARAMETERS", s: { ...alertBarStyle, font: { ...alertBarStyle.font, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
         [],
         [{ v: "HUMAN RISK CONCENTRATION", s: { font: { bold: true } } }],
         [{ v: "Staff Member", s: headerBlockStyle }, { v: "Critical Load %", s: headerBlockStyle }, { v: "Risk Rating", s: headerBlockStyle }]
     ];
     dashData.push([ { v: "Imran Khan", s: dataCellStyle }, { v: "38%", s: centerCellStyle }, { v: "WATCH", s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.WARNING_AMBER } } } } ]);
+    dashData.push([ { v: "Rahul Sharma", s: dataCellStyle }, { v: "12%", s: centerCellStyle }, { v: "STABLE", s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.SUCCESS_GREEN } } } } ]);
     
     const dashWs = utils.aoa_to_sheet(dashData);
     addNavBar(dashWs);
@@ -168,10 +189,11 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [],
         [{ v: "OPERATIONAL CONTROL BOARD", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [],
-        [{ v: "PENDING TASKS", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_BLUE } } } }],
+        [{ v: "PENDING TACTICAL TASKS", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_BLUE } } } }],
         [{ v: "Task ID", s: headerBlockStyle }, { v: "Requirement", s: headerBlockStyle }, { v: "Responsible", s: headerBlockStyle }, { v: "Due By", s: headerBlockStyle }]
     ];
-    mgrData.push([{ v: "KO-01", s: centerCellStyle }, { v: "Check refrigerator temperature", s: dataCellStyle }, { v: "Head Chef", s: centerCellStyle }, { v: "09:00", s: centerCellStyle }]);
+    mgrData.push([{ v: "KO-01", s: centerCellStyle }, { v: "Check refrigerator temperature", s: dataCellStyle }, { v: "Imran Khan", s: centerCellStyle }, { v: "09:00", s: centerCellStyle }]);
+    mgrData.push([{ v: "KO-03", s: centerCellStyle }, { v: "Verify food labeling & expiry", s: dataCellStyle }, { v: "Imran Khan", s: centerCellStyle }, { v: "10:30", s: centerCellStyle }]);
     
     const mgrWs = utils.aoa_to_sheet(mgrData);
     addNavBar(mgrWs);
@@ -189,8 +211,14 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     ];
     todayData.push([
         { v: "🔴 CRITICAL", s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } },
-        { v: "Verify food labeling & expiry dates", s: dataCellStyle },
-        { v: "10:30", s: centerCellStyle },
+        { v: "Log refrigeration temps (CCP)", s: dataCellStyle },
+        { v: "09:00", s: centerCellStyle },
+        { v: "PENDING", s: inputCellStyle }
+    ]);
+    todayData.push([
+        { v: "🔴 CRITICAL", s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } },
+        { v: "Check dry storage for pest signs", s: dataCellStyle },
+        { v: "09:15", s: centerCellStyle },
         { v: "PENDING", s: inputCellStyle }
     ]);
     const todayWs = utils.aoa_to_sheet(todayData);
