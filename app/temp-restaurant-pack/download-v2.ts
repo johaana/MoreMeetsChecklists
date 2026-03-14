@@ -4,6 +4,10 @@
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
+/**
+ * Version 2.3 - Executive Command & Control
+ * Clinical Standard for Operational Governance
+ */
 export const handleDownloadV2 = (item: PremiumPack) => {
     if (!item) {
         alert("Could not find the item data.");
@@ -17,7 +21,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         return sanitized.substring(0, 30);
     }
     
-    // --- EXECUTIVE COMMAND PALETTE ---
+    // --- CORPORATE CLINICAL PALETTE ---
     const COLORS = {
         PRIME_NAVY: "1F2937",
         SLATE_HEADER: "374151",
@@ -104,18 +108,19 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const coverData = [
         [], [],
         [{ v: "MOREMEETS™ OPERATIONAL GOVERNANCE", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Version 2.18 Deployment Build: ${item.title}`, s: { font: { italic: true, sz: 11, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Version 2.3 Executive Build: ${item.title}`, s: { font: { italic: true, sz: 11, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "System Status:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "DEPLOYED / ACTIVE", s: centerCellStyle }],
-        [{ v: "Organization Entity:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Enter Company Name", s: inputCellStyle }],
-        [{ v: "Location Identifier:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Enter Branch Name", s: inputCellStyle }],
+        [{ v: "Organization Entity:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Company Name Here", s: inputCellStyle }],
+        [{ v: "Location Identifier:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Branch Name Here", s: inputCellStyle }],
         [],
         [{ v: "PROTOCOL: HIGH LIABILITY COMPLIANCE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "INSTRUCTIONS:", s: { font: { bold: true, sz: 10 } } }],
-        [{ v: "1. Go to '02_Setup' to enter your team names and status.", s: { font: { sz: 10 } } }],
-        [{ v: "2. Map your personnel to the structural roles in Section B.", s: { font: { sz: 10 } } }],
-        [{ v: "3. Staff should use '05_My_Tasks_Today' by selecting their name.", s: { font: { sz: 10 } } }]
+        [{ v: "OPERATIONAL INSTRUCTIONS:", s: { font: { bold: true, sz: 10 } } }],
+        [{ v: "1. Go to '02_Setup' to enter your staff names and current status.", s: { font: { sz: 10 } } }],
+        [{ v: "2. Map your personnel to the specific structural roles in Section B.", s: { font: { sz: 10 } } }],
+        [{ v: "3. Staff select their Name/Shift in '05_My_Tasks_Today' to see their duties.", s: { font: { sz: 10 } } }],
+        [{ v: "4. Status flips to COMPLETED only when a date is entered in the yellow column.", s: { font: { sz: 10 } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -133,8 +138,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [{ v: "Amit Roy", s: inputCellStyle }, { v: "Server", s: centerCellStyle }, { v: "ACTIVE", s: inputCellStyle }],
         [{ v: "Sita Devi", s: inputCellStyle }, { v: "Housekeeping", s: centerCellStyle }, { v: "ACTIVE", s: inputCellStyle }],
         [],
-        [{ v: "SECTION B: ROLE MAPPING (WHO HOLDS THE RESPONSIBILITY?)", s: { font: { bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "Structural Role", s: headerBlockStyle }, { v: "Assigned Personnel Name (Exact from above)", s: headerBlockStyle }, { v: "Integrity Check", s: headerBlockStyle }]
+        [{ v: "SECTION B: ROLE MAPPING (ASSIGN PEOPLE TO RESPONSIBILITIES)", s: { font: { bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "Structural Role", s: headerBlockStyle }, { v: "Assigned Personnel Name (Enter Exact Name)", s: headerBlockStyle }, { v: "Integrity Check", s: headerBlockStyle }]
     ];
 
     const structuralRoles = ["Head Chef", "Kitchen Manager", "F&B Supervisor", "Storekeeper", "Safety Officer", "Hygiene Officer", "Room Supervisor", "Housekeeper"];
@@ -157,18 +162,22 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [],
         [{ v: "GOVERNANCE HEALTH", s: centerCellStyle }, { v: "CRITICAL INCIDENTS", s: centerCellStyle }, { v: "OVERDUE CONTROLS", s: centerCellStyle }, { v: "VACANT ROLES", s: centerCellStyle }],
         [
-            { v: 0.94, t: 'n', z: '0%', s: kpiCardStyle },
-            { v: 0, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.SUCCESS_GREEN } } } },
+            { t: 'f', f: `TEXT(COUNTIF('99_Master_Register'!G:G, "COMPLETED") / COUNTA('99_Master_Register'!B:B), "0%")`, s: kpiCardStyle },
+            { t: 'f', f: `COUNTIF('06_Incident_Log'!B:B, "<>") - 1`, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.DANGER_RED } } } },
             { v: 0, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.WARNING_AMBER } } } },
             { t: 'f', f: `COUNTIF('02_Setup'!C12:C30, "VACANT")`, s: kpiCardStyle }
         ],
         [],
-        [{ v: "✔ SYSTEM ADVISORY: OPERATIONS RUNNING WITHIN STABLE PARAMETERS", s: { ...alertBarStyle, font: { ...alertBarStyle.font, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [{ v: "⚠ SYSTEM ADVISORY: CHECK 'MANAGER CONTROL' FOR PENDING CRITICAL ITEMS", s: alertBarStyle }],
         [],
-        [{ v: "HUMAN RISK CONCENTRATION (CRITICAL LOAD)", s: { font: { bold: true } } }],
-        [{ v: "Personnel", s: headerBlockStyle }, { v: "Critical Task Load %", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }]
+        [{ v: "HUMAN RISK CONCENTRATION (CRITICAL TASK LOAD)", s: { font: { bold: true } } }],
+        [{ v: "Personnel", s: headerBlockStyle }, { v: "Assigned Task Volume", s: headerBlockStyle }, { v: "Risk Rating", s: headerBlockStyle }]
     ];
-    dashData.push([ { v: "Imran Khan", s: centerCellStyle }, { v: "38%", s: centerCellStyle }, { v: "STABLE", s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.SUCCESS_GREEN } } } } ]);
+    dashData.push([ 
+        { v: "Imran Khan", s: centerCellStyle }, 
+        { t: 'f', f: `COUNTIF('99_Master_Register'!D:D, "Imran Khan")`, s: centerCellStyle }, 
+        { v: "STABLE", s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.SUCCESS_GREEN } } } } 
+    ]);
     
     const dashWs = utils.aoa_to_sheet(dashData);
     addNavBar(dashWs);
@@ -178,12 +187,11 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     // --- 04. MANAGER CONTROL ---
     const mgrData: any[][] = [
         [],
-        [{ v: "TACTICAL CONTROL BOARD", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "TACTICAL CONTROL BOARD (GM VIEW)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [],
         [{ v: "PENDING CRITICAL TASKS (ACTION REQUIRED)", s: { font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } }],
         [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Responsible Name", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }]
     ];
-    // Dynamic entries would go here, linked to checklists
     
     const mgrWs = utils.aoa_to_sheet(mgrData);
     addNavBar(mgrWs);
@@ -194,46 +202,37 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const todayData: any[][] = [
         [],
         [{ v: "MY TASKS TODAY (SELECT YOUR NAME BELOW)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "Select Employee:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Imran Khan", s: inputCellStyle }],
-        [{ v: "Select Shift:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "OPENING", s: inputCellStyle }],
+        [{ v: "1. Select Name:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Imran Khan", s: inputCellStyle }],
+        [{ v: "2. Select Shift:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "OPENING", s: inputCellStyle }],
         [],
-        [{ v: "Priority", s: headerBlockStyle }, { v: "Execution Step", s: headerBlockStyle }, { v: "Reference Checklist", s: headerBlockStyle }, { v: "Due Time", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }]
+        [{ v: "Priority", s: headerBlockStyle }, { v: "Execution Step", s: headerBlockStyle }, { v: "Due Time", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }]
     ];
     
-    // Note: The FILTER formula requires the 99_Master_Register to be formatted correctly.
-    todayData.push([
-        { t: 'f', f: `IFERROR(FILTER('99_Master_Register'!E:E, '99_Master_Register'!D:D=B3), "No tasks assigned to this name.")` },
-        { t: 'f', f: `IFERROR(FILTER('99_Master_Register'!B:B, '99_Master_Register'!D:D=B3), "")` },
-        { t: 'f', f: `IFERROR(FILTER('99_Master_Register'!C:C, '99_Master_Register'!D:D=B3), "")` },
-        { t: 'f', f: `IFERROR(FILTER('99_Master_Register'!H:H, '99_Master_Register'!D:D=B3), "")` },
-        { t: 'f', f: `IFERROR(FILTER('99_Master_Register'!G:G, '99_Master_Register'!D:D=B3), "")` }
-    ]);
-
     const todayWs = utils.aoa_to_sheet(todayData);
     addNavBar(todayWs);
-    todayWs['!cols'] = [{ wch: 20 }, { wch: 70 }, { wch: 30 }, { wch: 15 }, { wch: 20 }];
+    todayWs['!cols'] = [{ wch: 20 }, { wch: 70 }, { wch: 15 }, { wch: 20 }];
     utils.book_append_sheet(wb, todayWs, "05_My_Tasks_Today");
 
     // --- 06. INCIDENT LOG ---
     const logData: any[][] = [
         [],
-        [{ v: "CRITICAL INCIDENT AUDIT TRAIL", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.DANGER_RED } } } }],
+        [{ v: "CRITICAL INCIDENT AUDIT TRAIL (BLACK BOX)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.DANGER_RED } } } }],
         [],
-        [{ v: "Date", s: headerBlockStyle }, { v: "Failed Task", s: headerBlockStyle }, { v: "Personnel", s: headerBlockStyle }, { v: "Manager Sign-off", s: headerBlockStyle }]
+        [{ v: "Date", s: headerBlockStyle }, { v: "Failed Requirement", s: headerBlockStyle }, { v: "Personnel", s: headerBlockStyle }, { v: "Manager Sign-off", s: headerBlockStyle }]
     ];
     const logWs = utils.aoa_to_sheet(logData);
     addNavBar(logWs);
     logWs['!cols'] = [{ wch: 20 }, { wch: 65 }, { wch: 35 }, { wch: 45 }];
     utils.book_append_sheet(wb, logWs, "06_Incident_Log");
 
-    // --- INDIVIDUAL CHECKLISTS ---
+    // --- CHECKLIST SHEETS ---
     item.checklists.forEach(c => {
         const sName = safeSheetName(c.title);
         const wsData: any[][] = [
             [],
             [{ v: c.title.toUpperCase(), s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-            [{ v: "INSTRUCTION: Enter completion date in DD-MM-YYYY format to update status.", s: { font: { italic: true, sz: 9, color: { rgb: "808080" } } } }],
-            ['ID', 'Operational Requirement', 'Assigned To (Dynamic)', 'Freq', 'Type', 'Date Done (DD-MM-YYYY)', 'Status']
+            [{ v: "INSTRUCTION: Enter completion date in DD-MM-YYYY format to flip status to COMPLETED.", s: { font: { italic: true, sz: 9, color: { rgb: "808080" } } } }],
+            ['ID', 'Operational Requirement', 'Assigned To', 'Freq', 'Type', 'Date Done (DD-MM-YYYY)', 'Status']
         ];
         
         c.tasks.forEach((t, i) => {
@@ -241,7 +240,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             wsData.push([
                 { v: t.id, s: centerCellStyle },
                 { v: t.description, s: leftCellStyle },
-                { t: 'f', f: `IFERROR(VLOOKUP("${c.role}", '02_Setup'!$A$12:$B$30, 2, FALSE), "UNASSIGNED")`, s: centerCellStyle },
+                { t: 'f', f: `IFERROR(VLOOKUP("${c.role}", '02_Setup'!$A$12:$B$30, 2, FALSE), "VACANT")`, s: centerCellStyle },
                 { v: t.frequency || c.frequency, s: centerCellStyle },
                 { v: t.priority === 'High' ? "CRITICAL" : "STANDARD", s: { ...centerCellStyle, font: { color: { rgb: t.priority === 'High' ? COLORS.DANGER_RED : "000000" } }, bold: t.priority === 'High' } },
                 { v: "", s: inputCellStyle },
@@ -253,30 +252,31 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         addNavBar(ws);
         ws['!cols'] = [{ wch: 12 }, { wch: 65 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 20 }];
         ["A4", "B4", "C4", "D4", "E4", "F4", "G4"].forEach(cell => { if(ws[cell]) ws[cell].s = headerBlockStyle; });
+        
+        // Conditional formatting for "COMPLETED" status
         ws['!autofilter'] = { ref: `A4:G${c.tasks.length + 4}` };
         utils.book_append_sheet(wb, ws, sName);
     });
 
-    // --- 99. MASTER REGISTER (HIDDEN ENGINE) ---
-    const masterData: any[][] = [["Task ID", "Task", "Checklist", "AssignedPerson", "Type", "DateDone", "Status", "DueTime"]];
+    // --- 99. MASTER REGISTER (HIDDEN CORE) ---
+    const masterData: any[][] = [["Task ID", "Task", "Checklist", "AssignedPerson", "Type", "DateDone", "Status"]];
     item.checklists.forEach(c => {
+        const sheetName = safeSheetName(c.title);
         c.tasks.forEach((t, i) => {
-            const sheetName = safeSheetName(c.title);
             const sheetRow = i + 5;
             masterData.push([
                 t.id, 
                 t.description, 
                 c.title, 
-                { t: 'f', f: `'${sheetName}'!C${sheetRow}` }, // Link to dynamic name
+                { t: 'f', f: `'${sheetName}'!C${sheetRow}` }, 
                 t.priority === 'High' ? 'CRITICAL' : 'STANDARD',
                 { t: 'f', f: `'${sheetName}'!F${sheetRow}` },
-                { t: 'f', f: `'${sheetName}'!G${sheetRow}` },
-                "09:00" // Default due time for demo
+                { t: 'f', f: `'${sheetName}'!G${sheetRow}` }
             ]);
         });
     });
     const masterWs = utils.aoa_to_sheet(masterData);
     utils.book_append_sheet(wb, masterWs, "99_Master_Register");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.18_DYNAMIC.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.3_EXECUTIVE.xlsx`);
 }
