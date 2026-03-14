@@ -5,9 +5,9 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * Version 2.3 - Executive Command & Control (Production Build)
+ * Version 2.3 - Executive Command & Control (Final Production Build)
  * Clinical Standard for Operational Governance
- * Optimized for Restaurant Owners - Dynamic Roster, Shift Filtering & Multi-Location Scaling
+ * Optimized for Restaurant Owners - Pre-configured Filters, Dynamic Roster & Shift Logic
  */
 export const handleDownloadV2 = (item: PremiumPack) => {
     if (!item) {
@@ -34,7 +34,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         SOFT_GREY: "F3F4F6",
         BORDER_LIGHT: "D1D5DB",
         INPUT_YELLOW: "FFFFE0",
-        ALERT_RED_BG: "FEF2F2"
+        ALERT_RED_BG: "FEF2F2",
+        INTERACTION_GREY: "F1F5F9"
     };
 
     // --- CLINICAL STYLES ---
@@ -105,11 +106,11 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
     };
 
-    // --- 01. SYSTEM OVERVIEW (COVER PAGE) - CENTERED ---
+    // --- 01. SYSTEM OVERVIEW (PRESTIGIOUS ALIGNMENT) ---
     const coverData = [
         [], [],
         [{ v: "", s: {} }, { v: "MOREMEETS™ OPERATIONAL GOVERNANCE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "", s: {} }, { v: `Version 2.3 Executive Build: ${item.title}`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "", s: {} }, { v: `Executive Build: ${item.title}`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "", s: {} }, { v: "SYSTEM STATUS:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "DEPLOYED / ACTIVE", s: centerCellStyle }],
         [{ v: "", s: {} }, { v: "LOCATION ID:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "MUM-CENTRAL-01", s: inputCellStyle }],
@@ -120,42 +121,40 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [{ v: "", s: {} }, { v: "EXECUTIVE INSTRUCTIONS:", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "", s: {} }, { v: "1. Update staff names in '02_PERSONNEL_SETUP' to map people to roles.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
         [{ v: "", s: {} }, { v: "2. Staff use '05_DAILY_TASK_EXECUTION' - click the arrow [v] on the Personnel header to choose your name.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "", s: {} }, { v: "3. Status flips to COMPLETED automatically when you enter a date in the yellow column.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "", s: {} }, { v: "4. Any missed Critical task escalates to '06_INCIDENT_AUDIT_LOG' for manager sign-off.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }]
+        [{ v: "", s: {} }, { v: "3. Status flips to COMPLETED automatically when you enter a date in the yellow column.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
-    coverWs['!cols'] = [{ wch: 10 }, { wch: 60 }, { wch: 30 }, { wch: 30 }, { wch: 30 }, { wch: 30 }];
+    coverWs['!cols'] = [{ wch: 10 }, { wch: 60 }, { wch: 35 }, { wch: 35 }, { wch: 35 }, { wch: 35 }];
     coverWs['!merges'] = [
-        { s: { r: 2, c: 1 }, e: { r: 2, c: 4 } }, // Title
-        { s: { r: 3, c: 1 }, e: { r: 3, c: 4 } }, // Subtitle
-        { s: { r: 9, c: 1 }, e: { r: 9, c: 4 } }, // Protocol
-        { s: { r: 11, c: 1 }, e: { r: 11, c: 4 } }, // Instr 1
-        { s: { r: 12, c: 1 }, e: { r: 12, c: 4 } }, // Instr 2
-        { s: { r: 13, c: 1 }, e: { r: 13, c: 4 } }, // Instr 3
-        { s: { r: 14, c: 1 }, e: { r: 14, c: 4 } }, // Instr 4
-        { s: { r: 15, c: 1 }, e: { r: 15, c: 4 } }  // Instr 5
+        { s: { r: 2, c: 1 }, e: { r: 2, c: 4 } }, 
+        { s: { r: 3, c: 1 }, e: { r: 3, c: 4 } }, 
+        { s: { r: 9, c: 1 }, e: { r: 9, c: 4 } }, 
+        { s: { r: 11, c: 1 }, e: { r: 11, c: 4 } },
+        { s: { r: 12, c: 1 }, e: { r: 12, c: 4 } },
+        { s: { r: 13, c: 1 }, e: { r: 13, c: 4 } },
+        { s: { r: 14, c: 1 }, e: { r: 14, c: 4 } }
     ];
     utils.book_append_sheet(wb, coverWs, "01_SYSTEM_OVERVIEW");
 
-    // --- 02. PERSONNEL SETUP (WITH CHOOSE FILTERS) ---
+    // --- 02. PERSONNEL SETUP (CHOOSE VIA FILTERS) ---
     const setupData: any[][] = [
         [],
         [{ v: "A: PERSONNEL REGISTER (OWNER VIEW)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "Staff Name", s: headerBlockStyle }, { v: "Role Designation", s: headerBlockStyle }, { v: "Current Status (Choose via Filter [v])", s: headerBlockStyle }],
-        [{ v: "Imran Khan", s: inputCellStyle }, { v: "Head Chef", s: centerCellStyle }, { v: "ACTIVE", s: centerCellStyle }],
-        [{ v: "Rahul Sharma", s: inputCellStyle }, { v: "F&B Supervisor", s: centerCellStyle }, { v: "ON LEAVE", s: centerCellStyle }],
-        [{ v: "Karan Singh", s: inputCellStyle }, { v: "Storekeeper", s: centerCellStyle }, { v: "ACTIVE", s: centerCellStyle }],
-        [{ v: "Aditi", s: inputCellStyle }, { v: "Duty Manager", s: centerCellStyle }, { v: "ACTIVE", s: centerCellStyle }],
-        [{ v: "[New Entry]", s: inputCellStyle }, { v: "TRAINING", s: centerCellStyle }, { v: "TRAINING", s: centerCellStyle }],
-        [{ v: "[Resigned]", s: inputCellStyle }, { v: "RESIGNED", s: centerCellStyle }, { v: "RESIGNED", s: centerCellStyle }],
+        [{ v: "Staff Name", s: headerBlockStyle }, { v: "Role Designation", s: headerBlockStyle }, { v: "Current Status (Click Arrow [v] to Choose)", s: headerBlockStyle }],
+        [{ v: "Imran Khan", s: inputCellStyle }, { v: "Head Chef", s: centerCellStyle }, { v: "ACTIVE", s: { ...centerCellStyle, fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } } } }],
+        [{ v: "Rahul Sharma", s: inputCellStyle }, { v: "F&B Supervisor", s: centerCellStyle }, { v: "ON LEAVE", s: { ...centerCellStyle, fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } } } }],
+        [{ v: "Karan Singh", s: inputCellStyle }, { v: "Storekeeper", s: centerCellStyle }, { v: "ACTIVE", s: { ...centerCellStyle, fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } } } }],
+        [{ v: "Aditi", s: inputCellStyle }, { v: "Duty Manager", s: centerCellStyle }, { v: "TRAINING", s: { ...centerCellStyle, fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } } } }],
+        [{ v: "[New Hire]", s: inputCellStyle }, { v: "[Role]", s: centerCellStyle }, { v: "HOLIDAY", s: { ...centerCellStyle, fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } } } }],
+        [{ v: "[Exit]", s: inputCellStyle }, { v: "[Role]", s: centerCellStyle }, { v: "RESIGNED", s: { ...centerCellStyle, fill: { fgColor: { rgb: COLORS.INTERACTION_GREY } } } }],
         [],
-        [{ v: "B: STRUCTURAL ROLE MAPPING (DYNAMIC ENGINE)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "B: ROLE MAPPING (AUTOMATED ENGINE)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [{ v: "Operational Role", s: headerBlockStyle }, { v: "Assigned Person", s: headerBlockStyle }, { v: "Integrity Status", s: headerBlockStyle }]
     ];
 
-    const roles = ["Head Chef", "F&B Supervisor", "Storekeeper", "Duty Manager", "Kitchen Porter", "Floor Manager"];
-    roles.forEach((role, i) => {
+    const structuralRoles = ["Head Chef", "F&B Supervisor", "Storekeeper", "Duty Manager", "Kitchen Porter", "Floor Manager"];
+    structuralRoles.forEach((role, i) => {
         const row = i + 12;
         setupData.push([
             { v: role, s: centerCellStyle },
@@ -166,8 +165,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
 
     const setupWs = utils.aoa_to_sheet(setupData);
     addNavBar(setupWs);
-    setupWs['!cols'] = [{ wch: 30 }, { wch: 35 }, { wch: 40 }, { wch: 20 }, { wch: 20 }, { wch: 20 }];
-    setupWs['!autofilter'] = { ref: "C3:C9" }; // Explicit status choice filter
+    setupWs['!cols'] = [{ wch: 30 }, { wch: 35 }, { wch: 45 }, { wch: 20 }, { wch: 20 }, { wch: 20 }];
+    setupWs['!autofilter'] = { ref: "C3:C9" }; // Pre-enabled filter for "Choosing" status
     utils.book_append_sheet(wb, setupWs, "02_PERSONNEL_SETUP");
 
     // --- 03. OPERATIONS DASHBOARD ---
@@ -194,32 +193,32 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     dashWs['!merges'] = [{ s: { r: 4, c: 0 }, e: { r: 4, c: 3 } }];
     utils.book_append_sheet(wb, dashWs, "03_OPERATIONS_DASHBOARD");
 
-    // --- 04. MANAGER CONTROL BOARD ---
+    // --- 04. MANAGER CONTROL BOARD (LIVE FILTER) ---
     const mgrData: any[][] = [
         [],
-        [{ v: "TACTICAL CONTROL BOARD (GM COCKPIT)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "TACTICAL CONTROL BOARD (GM VIEW)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [],
-        [{ v: "INSTRUCTION: Filter 'Live Status' to see 'PENDING' tasks across all departments.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.ACCENT_BLUE } } } }],
-        [{ v: "Task ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Responsible Personnel", s: headerBlockStyle }, { v: "Live Status (Filter to Action)", s: headerBlockStyle }]
+        [{ v: "INSTRUCTION: Filter 'Status' to see only 'PENDING' items for today.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.ACCENT_BLUE } } } }],
+        [{ v: "Task ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Personnel", s: headerBlockStyle }, { v: "Status (Click [v] to Filter)", s: headerBlockStyle }]
     ];
     const mgrWs = utils.aoa_to_sheet(mgrData);
     addNavBar(mgrWs);
-    mgrWs['!cols'] = [{ wch: 12 }, { wch: 70 }, { wch: 30 }, { wch: 25 }, { wch: 20 }, { wch: 20 }];
-    mgrWs['!autofilter'] = { ref: "A5:D500" };
+    mgrWs['!cols'] = [{ wch: 12 }, { wch: 75 }, { wch: 30 }, { wch: 30 }, { wch: 20 }, { wch: 20 }];
+    mgrWs['!autofilter'] = { ref: "D5:D500" };
     utils.book_append_sheet(wb, mgrWs, "04_MANAGER_CONTROL_BOARD");
 
-    // --- 05. DAILY TASK EXECUTION (STAFF FILTER) ---
+    // --- 05. DAILY TASK EXECUTION (STAFF CHOOSE NAME) ---
     const todayData: any[][] = [
         [],
-        [{ v: "MY TASKS TODAY (EXECUTION VIEW)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "INSTRUCTION: Click the arrow [v] on the 'Personnel' header to choose your name.", s: { font: { italic: true, sz: 11, bold: true, color: { rgb: COLORS.ACCENT_BLUE } } } }],
+        [{ v: "MY TASKS TODAY (STAFF VIEW)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "INSTRUCTION: Click the arrow [v] on the 'Personnel' header to SELECT your name and hide others.", s: { font: { italic: true, sz: 11, bold: true, color: { rgb: COLORS.ACCENT_BLUE } } } }],
         [],
-        [{ v: "ID", s: headerBlockStyle }, { v: "Execution Step (Read Carefully)", s: headerBlockStyle }, { v: "Personnel (Filter to Choose)", s: headerBlockStyle }, { v: "Shift", s: headerBlockStyle }, { v: "Completion Status", s: headerBlockStyle }]
+        [{ v: "ID", s: headerBlockStyle }, { v: "Execution Step (Read Carefully)", s: headerBlockStyle }, { v: "Personnel (Click [v] to Choose)", s: headerBlockStyle }, { v: "Type", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }]
     ];
     const todayWs = utils.aoa_to_sheet(todayData);
     addNavBar(todayWs);
-    todayWs['!cols'] = [{ wch: 12 }, { wch: 80 }, { wch: 35 }, { wch: 15 }, { wch: 20 }, { wch: 20 }];
-    todayWs['!autofilter'] = { ref: "C5:C500" }; // Filter enabled on Personnel header
+    todayWs['!cols'] = [{ wch: 12 }, { wch: 80 }, { wch: 40 }, { wch: 15 }, { wch: 20 }, { wch: 20 }];
+    todayWs['!autofilter'] = { ref: "C5:C500" }; // Staff "Choose" name via this filter
     utils.book_append_sheet(wb, todayWs, "05_DAILY_TASK_EXECUTION");
 
     // --- 06. INCIDENT AUDIT LOG ---
@@ -227,22 +226,21 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [],
         [{ v: "CRITICAL INCIDENT AUDIT TRAIL (BLACK BOX)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.DANGER_RED } } } }],
         [],
-        [{ v: "Date", s: headerBlockStyle }, { v: "Requirement Failed", s: headerBlockStyle }, { v: "Responsible Personnel", s: headerBlockStyle }, { v: "Immediate Action Taken", s: headerBlockStyle }, { v: "Manager Sign-off", s: headerBlockStyle }]
+        [{ v: "Date", s: headerBlockStyle }, { v: "Failed Requirement", s: headerBlockStyle }, { v: "Responsible Person", s: headerBlockStyle }, { v: "Immediate Action", s: headerBlockStyle }, { v: "Sign-off", s: headerBlockStyle }]
     ];
     const logWs = utils.aoa_to_sheet(logData);
     addNavBar(logWs);
-    logWs['!cols'] = [{ wch: 20 }, { wch: 70 }, { wch: 35 }, { wch: 45 }, { wch: 25 }, { wch: 20 }];
-    logWs['!autofilter'] = { ref: "A4:E500" };
+    logWs['!cols'] = [{ wch: 20 }, { wch: 75 }, { wch: 35 }, { wch: 45 }, { wch: 20 }, { wch: 20 }];
     utils.book_append_sheet(wb, logWs, "06_INCIDENT_AUDIT_LOG");
 
-    // --- CHECKLIST PROTOCOLS ---
+    // --- CHECKLIST PROTOCOLS (STRICT ALIGNMENT) ---
     item.checklists.forEach(c => {
         const sName = safeSheetName(c.title);
         const wsData: any[][] = [
             [],
             [{ v: c.title.toUpperCase(), s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
             [{ v: "INSTRUCTION: Enter completion date in DD-MM-YYYY format in the yellow cell. Status flips automatically.", s: { font: { italic: true, sz: 9, color: "808080" } } }],
-            [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Assigned To", s: headerBlockStyle }, { v: "Freq", s: headerBlockStyle }, { v: "Type", s: headerBlockStyle }, { v: "Date Done (DD-MM-YYYY)", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }]
+            [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Assigned To", s: headerBlockStyle }, { v: "Freq", s: headerBlockStyle }, { v: "Type", s: headerBlockStyle }, { v: "Date Done", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }]
         ];
         c.tasks.forEach((t, i) => {
             const rowNum = i + 5;
@@ -258,7 +256,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         });
         const ws = utils.aoa_to_sheet(wsData);
         addNavBar(ws);
-        ws['!cols'] = [{ wch: 12 }, { wch: 70 }, { wch: 30 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 20 }];
+        ws['!cols'] = [{ wch: 12 }, { wch: 75 }, { wch: 30 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 20 }];
         ws['!autofilter'] = { ref: `A4:G${c.tasks.length + 4}` };
         utils.book_append_sheet(wb, ws, sName);
     });
