@@ -35,7 +35,14 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         BORDER_LIGHT: "D1D5DB",
         INPUT_YELLOW: "FFFFE0",
         INPUT_GREY: "F2F2F2",
-        ALERT_RED_BG: "FEF2F2"
+        STATUS_GREEN_BG: "C6EFCE",
+        STATUS_GREEN_FONT: "006100",
+        STATUS_AMBER_BG: "FFEB9C",
+        STATUS_AMBER_FONT: "9C5700",
+        STATUS_RED_BG: "FFC7CE",
+        STATUS_RED_FONT: "9C0006",
+        STATUS_BLUE_BG: "DDEBF7",
+        STATUS_BLUE_FONT: "0000FF"
     };
 
     // --- CLINICAL STYLES ---
@@ -141,7 +148,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [],
         [{ v: "A: PERSONNEL REGISTER & STATUS COMMANDS", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [],
-        [null, null, null, { v: "1=ACTIVE, 2=LEAVE, 3=RESIGNED, 4=TRAINING", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
+        [null, null, null, { v: "1=ACTIVE, 2=LEAVE, 3=RESIGNED, 4=TRAINING", s: { font: { italic: true, sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [{ v: "ID", s: headerBlockStyle }, { v: "Staff Name", s: headerBlockStyle }, { v: "Operational Role", s: headerBlockStyle }, { v: "Status Code (1-4)", s: headerBlockStyle }, { v: "Live System Status", s: headerBlockStyle }],
         [{ v: "1", s: centerCellStyle }, { v: "Imran Khan", s: greyInputStyle }, { v: "Head Chef", s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D6=1,"ACTIVE",IF(D6=2,"ON LEAVE",IF(D6=3,"RESIGNED","TRAINING")))`, s: centerCellStyle }],
         [{ v: "2", s: centerCellStyle }, { v: "Aditi Sharma", s: greyInputStyle }, { v: "General Manager", s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D7=1,"ACTIVE",IF(D7=2,"ON LEAVE",IF(D7=3,"RESIGNED","TRAINING")))`, s: centerCellStyle }],
@@ -150,7 +157,20 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     ];
     const setupWs = utils.aoa_to_sheet(setupData);
     addNavBar(setupWs);
-    setupWs['!cols'] = [{ wch: 10 }, { wch: 30 }, { wch: 30 }, { wch: 20 }, { wch: 25 }];
+    setupWs['!cols'] = [{ wch: 10 }, { wch: 30 }, { wch: 30 }, { wch: 25 }, { wch: 25 }];
+    
+    // Apply Conditional Formatting for Status Colors in Setup
+    setupWs['!conditional_formatting'] = [
+        {
+            ref: "E6:E25",
+            rules: [
+                { type: "expression", formula: 'E6="ACTIVE"', style: { fill: { fgColor: { rgb: COLORS.STATUS_GREEN_BG } }, font: { color: { rgb: COLORS.STATUS_GREEN_FONT }, bold: true } } },
+                { type: "expression", formula: 'E6="ON LEAVE"', style: { fill: { fgColor: { rgb: COLORS.STATUS_AMBER_BG } }, font: { color: { rgb: COLORS.STATUS_AMBER_FONT }, bold: true } } },
+                { type: "expression", formula: 'E6="RESIGNED"', style: { fill: { fgColor: { rgb: COLORS.STATUS_RED_BG } }, font: { color: { rgb: COLORS.STATUS_RED_FONT }, bold: true } } },
+                { type: "expression", formula: 'E6="TRAINING"', style: { fill: { fgColor: { rgb: COLORS.STATUS_BLUE_BG } }, font: { color: { rgb: COLORS.STATUS_BLUE_FONT }, bold: true } } }
+            ]
+        }
+    ];
     utils.book_append_sheet(wb, setupWs, "02_PERSONNEL_SETUP");
 
     // --- 03. DASHBOARD (UX: CLINICAL KPI) ---
@@ -214,8 +234,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         const sName = safeSheetName(c.title);
         const wsData: any[][] = [
             [],
-            [{ v: c.title.toUpperCase(), s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-            [{ v: "INSTRUCTION: Enter completion date in Yellow cell. Status updates automatically.", s: { font: { italic: true, sz: 9, color: { rgb: "808080" } } } }],
+            [{ v: c.title.toUpperCase(), s: { font: { sz: 14, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
+            [{ v: "INSTRUCTION: Enter completion date in Yellow cell. Status updates automatically.", s: { font: { italic: true, sz: 9, color: { rgb: "808080" } }, alignment: { horizontal: 'center' } } }],
             [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Assigned To", s: headerBlockStyle }, { v: "Freq", s: headerBlockStyle }, { v: "Type", s: headerBlockStyle }, { v: "Date Done", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }]
         ];
         c.tasks.forEach((t, i) => {
@@ -233,6 +253,18 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         const ws = utils.aoa_to_sheet(wsData);
         addNavBar(ws);
         ws['!cols'] = [{ wch: 12 }, { wch: 80 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 20 }, { wch: 20 }];
+        ws['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 6 } }, { s: { r: 1, c: 0 }, e: { r: 1, c: 6 } }];
+        
+        // Add Conditional Formatting for Task Status
+        ws['!conditional_formatting'] = [
+            {
+                ref: `G5:G${wsData.length}`,
+                rules: [
+                    { type: "expression", formula: 'G5="COMPLETED"', style: { fill: { fgColor: { rgb: COLORS.STATUS_GREEN_BG } }, font: { color: { rgb: COLORS.STATUS_GREEN_FONT }, bold: true } } }
+                ]
+            }
+        ];
+        
         utils.book_append_sheet(wb, ws, sName);
     });
 
