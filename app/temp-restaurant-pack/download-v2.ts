@@ -17,7 +17,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         return sanitized.substring(0, 30);
     }
     
-    // --- PRESTIGE PALETTE (SWISS PRIVATE BANK / AVIATION CONTROL) ---
+    // --- EXECUTIVE PALETTE (SWISS PRIVATE BANK / AVIATION CONTROL) ---
     const COLORS = {
         CHARCOAL_BG: "1A1A1B",
         DEEP_SLATE: "2D2E2E",
@@ -39,19 +39,19 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     };
 
     const navStyle = {
-        font: { bold: true, color: { rgb: COLORS.GOLD_ACCENT }, sz: 9 },
+        font: { bold: true, color: { rgb: COLORS.GOLD_ACCENT }, sz: 9, name: 'Segoe UI' },
         fill: { fgColor: { rgb: COLORS.DEEP_SLATE } },
         alignment: { horizontal: 'center', vertical: 'center' },
         border: borderThin
     };
 
     const titleStyle = {
-        font: { sz: 24, bold: true, color: { rgb: COLORS.GOLD_ACCENT } },
+        font: { sz: 24, bold: true, color: { rgb: COLORS.GOLD_ACCENT }, name: 'Segoe UI' },
         alignment: { horizontal: 'center' }
     };
 
     const headerStyle = { 
-        font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 10 }, 
+        font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 10, name: 'Segoe UI' }, 
         fill: { fgColor: { rgb: COLORS.DEEP_SLATE } }, 
         alignment: { vertical: 'center', horizontal: 'center', wrapText: true },
         border: borderThin
@@ -61,18 +61,18 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         fill: { fgColor: { rgb: COLORS.INPUT_YELLOW } },
         border: borderThin,
         alignment: { vertical: 'center' },
-        font: { sz: 10 }
+        font: { sz: 10, name: 'Segoe UI' }
     };
 
     const dataCellStyle = { 
-        font: { sz: 10, color: { rgb: COLORS.WHITE } },
+        font: { sz: 10, color: { rgb: COLORS.WHITE }, name: 'Segoe UI' },
         fill: { fgColor: { rgb: COLORS.CHARCOAL_BG } },
         alignment: { vertical: 'center' },
         border: borderThin
     };
 
     const kpiBoxStyle = {
-        font: { bold: true, color: { rgb: COLORS.GOLD_ACCENT }, sz: 14 },
+        font: { bold: true, color: { rgb: COLORS.GOLD_ACCENT }, sz: 14, name: 'Segoe UI' },
         fill: { fgColor: { rgb: COLORS.DEEP_SLATE } },
         alignment: { vertical: 'center', horizontal: 'center' },
         border: {
@@ -90,11 +90,11 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const addNavBar = (ws: WorkSheet) => {
         const navData = [
             [
-                { v: "1. COVER PAGE", l: { Target: "#'1. Cover Page'!A1" }, s: navStyle },
-                { v: "2. DASHBOARD", l: { Target: "#'4. Dashboard'!A1" }, s: navStyle },
-                { v: "3. MY TASKS TODAY", l: { Target: "#'My Tasks Today'!A1" }, s: navStyle },
-                { v: "4. CONFIGURATION", l: { Target: "#'2. Configuration & Mapping'!A1" }, s: navStyle },
-                { v: "5. INCIDENT LOG", l: { Target: "#'Incident Log'!A1" }, s: navStyle }
+                { v: "01 COVER", l: { Target: "#'01_Cover'!A1" }, s: navStyle },
+                { v: "02 SETUP", l: { Target: "#'02_Setup_Mapping'!A1" }, s: navStyle },
+                { v: "03 DASHBOARD", l: { Target: "#'03_Dashboard'!A1" }, s: navStyle },
+                { v: "04 MY TASKS", l: { Target: "#'04_My_Tasks_Today'!A1" }, s: navStyle },
+                { v: "05 INCIDENT LOG", l: { Target: "#'05_Incident_Log'!A1" }, s: navStyle }
             ]
         ];
         utils.sheet_add_aoa(ws, navData, { origin: "A1" });
@@ -104,116 +104,118 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const checklists = item.checklists;
     const uniqueRoles = Array.from(new Set(checklists.flatMap(c => c.tasks.map(t => (t.role || c.role).trim())))).sort();
 
-    // --- 1. COVER PAGE ---
+    // --- 01. COVER PAGE ---
     const coverData = [
         [], [],
-        [{ v: "OPERATIONAL GOVERNANCE ENGINE", s: titleStyle }],
-        [{ v: `Version 2.18 Build: Surgical Command Portfolio`, s: { font: { italic: true, sz: 11, color: { rgb: COLORS.GRAY_TEXT } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "MOREMEETS™ OPERATIONAL GOVERNANCE", s: titleStyle }],
+        [{ v: `Industry Build: ${item.title} | Version 2.2 Surgical`, s: { font: { italic: true, sz: 11, color: { rgb: COLORS.GRAY_TEXT }, name: 'Segoe UI' }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "Status:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE } } } }, { v: "SECURED - BRANCH ISOLATION ACTIVE", s: inputCellStyle }],
-        [{ v: "Entity:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE } } } }, { v: "Type Organization Name", s: inputCellStyle }],
-        [{ v: "Unit ID:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE } } } }, { v: "Type Branch Name", s: inputCellStyle }],
+        [{ v: "Operational Integrity Status:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE }, name: 'Segoe UI' } } }, { v: "BRANCH ISOLATION ACTIVE", s: inputCellStyle }],
+        [{ v: "Licensed Organization:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE }, name: 'Segoe UI' } } }, { v: "Type Company Name", s: inputCellStyle }],
+        [{ v: "Unit Identification:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE }, name: 'Segoe UI' } } }, { v: "Type Branch Name/ID", s: inputCellStyle }],
         [],
-        [{ v: "GOVERNANCE PROTOCOL (FAILURE RECOVERY):", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.CRITICAL_RED } } } }],
-        [{ v: "1. If a 'CRITICAL' task fails, the system automatically logs a major incident." }],
-        [{ v: "2. If a role is 'VACANT', all tasks turn RED until re-assigned in Configuration (Section C)." }],
+        [{ v: "SYSTEM OVERVIEW:", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.GOLD_ACCENT }, name: 'Segoe UI' } } }],
+        [{ v: `Total Active Control Points: ${checklists.reduce((acc, c) => acc + c.tasks.length, 0)}`, s: { font: { color: { rgb: COLORS.WHITE }, name: 'Segoe UI' } } }],
+        [{ v: "Governance Protocol: HIGH LIABILITY STANDARDS", s: { font: { color: { rgb: COLORS.WHITE }, name: 'Segoe UI' } } }],
         [],
-        [{ v: "SYSTEM STATUS: SECURED", s: { font: { bold: true, color: { rgb: COLORS.SUCCESS_GREEN } }, alignment: { horizontal: 'center' } } }]
+        [{ v: "SYSTEM STATUS: SECURED", s: { font: { bold: true, color: { rgb: COLORS.SUCCESS_GREEN }, name: 'Segoe UI' }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
     coverWs['!cols'] = [{ wch: 45 }, { wch: 90 }];
-    utils.book_append_sheet(wb, coverWs, "1. Cover Page");
+    utils.book_append_sheet(wb, coverWs, "01_Cover");
 
-    // --- 2. CONFIGURATION & MAPPING ---
+    // --- 02. SETUP & MAPPING ---
     const mappingData: any[][] = [
         [],
-        [{ v: "SECTION A: PERSONNEL REGISTER (BRANCH ISOLATED)", s: { font: { bold: true, color: { rgb: COLORS.GOLD_ACCENT }, sz: 11 } } }],
-        [{ v: "Full Name", s: headerStyle }, { v: "Position", s: headerStyle }, { v: "Status (ACTIVE/LEAVE/RESIGNED)", s: headerStyle }, { v: "System Health", s: headerStyle }],
-        [{ v: "Imran Khan", s: inputCellStyle }, { v: "Head Chef", s: dataCellStyle }, { v: "ACTIVE", s: inputCellStyle }, { t: 'f', f: `IF(A4="", "", IF(C4="RESIGNED", "⚠️ RE-ASSIGN", "OK"))`, s: { ...dataCellStyle, alignment: { horizontal: 'center' } } }]
+        [{ v: "SECTION A: PERSONNEL REGISTER", s: { font: { bold: true, color: { rgb: COLORS.GOLD_ACCENT }, sz: 11, name: 'Segoe UI' } } }],
+        [{ v: "Staff Name (Type Once)", s: headerStyle }, { v: "Primary Position", s: headerStyle }, { v: "Status (ACTIVE/LEAVE/RESIGNED)", s: headerStyle }, { v: "System Health", s: headerStyle }]
     ];
     for(let i=0; i<25; i++) {
-        const row = i + 5;
-        mappingData.push([{ v: "", s: inputCellStyle }, { v: "", s: dataCellStyle }, { v: "ACTIVE", s: inputCellStyle }, { t: 'f', f: `IF(A${row}="", "", IF(C${row}="RESIGNED", "⚠️ RE-ASSIGN", "OK"))`, s: { ...dataCellStyle, alignment: { horizontal: 'center' } } }]);
+        const row = i + 4;
+        mappingData.push([
+            { v: "", s: inputCellStyle }, 
+            { v: "", s: dataCellStyle }, 
+            { v: "ACTIVE", s: inputCellStyle }, 
+            { t: 'f', f: `IF(A${row}="", "", IF(C${row}="RESIGNED", "⚠️ RE-ASSIGN ROLES", "OK"))`, s: { ...dataCellStyle, alignment: { horizontal: 'center' } } }
+        ]);
     }
     
-    mappingData.push([], [{ v: "SECTION B: MODULE SCOPE", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.GOLD_ACCENT } } } }], [{ v: "Operational Module", s: headerStyle }, { v: "Applicability (YES or N/A)", s: headerStyle }]);
-    checklists.forEach(c => mappingData.push([{ v: c.title, s: dataCellStyle }, { v: "YES", s: inputCellStyle }]));
-
-    mappingData.push([], [{ v: "SECTION C: ROLE-TO-NAME MAPPING", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.GOLD_ACCENT } } } }], [{ v: "Structural Role", s: headerStyle }, { v: "Assigned Personnel Name", s: headerStyle }, { v: "Staff Health Status", s: headerStyle }]);
+    mappingData.push([], [{ v: "SECTION B: ROLE-TO-NAME MAPPING", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.GOLD_ACCENT }, name: 'Segoe UI' } } }], [{ v: "Structural Role", s: headerStyle }, { v: "Assigned Person", s: headerStyle }, { v: "Staff Availability", s: headerStyle }]);
     uniqueRoles.forEach((r, idx) => {
-        const row = 38 + checklists.length + idx; 
+        const row = 33 + checklists.length + idx; 
         mappingData.push([
             { v: r, s: { ...dataCellStyle, font: { bold: true } } }, 
-            { v: idx === 0 ? "Imran Khan" : "", s: inputCellStyle }, 
-            { t: 'f', f: `IF(B${row}="", "VACANT", IFERROR(INDEX(D4:D33, MATCH(B${row}, A4:A33, 0)), "NOT IN REGISTER"))`, s: { ...dataCellStyle, alignment: { horizontal: 'center' }, font: { bold: true } } }
+            { v: "", s: inputCellStyle }, 
+            { t: 'f', f: `IF(B${row}="", "VACANT", IFERROR(INDEX(C4:C28, MATCH(B${row}, A4:A28, 0)), "NOT IN REGISTER"))`, s: { ...dataCellStyle, alignment: { horizontal: 'center' }, font: { bold: true } } }
         ]);
     });
 
     const mappingWs = utils.aoa_to_sheet(mappingData);
     addNavBar(mappingWs);
     mappingWs['!cols'] = [{ wch: 45 }, { wch: 35 }, { wch: 35 }, { wch: 25 }];
-    utils.book_append_sheet(wb, mappingWs, "2. Configuration & Mapping");
+    utils.book_append_sheet(wb, mappingWs, "02_Setup_Mapping");
 
-    // --- 4. DASHBOARD (COMMAND CENTER) ---
+    // --- 03. DASHBOARD ---
     const dashData: any[][] = [
         [],
         [
             { v: "GOVERNANCE HEALTH", s: { font: { sz: 8, bold: true, color: { rgb: COLORS.WHITE } }, alignment: { horizontal: 'center' } } }, 
             { v: "CRITICAL INCIDENTS", s: { font: { sz: 8, bold: true, color: { rgb: COLORS.WHITE } }, alignment: { horizontal: 'center' } } }, 
             { v: "OVERDUE CONTROLS", s: { font: { sz: 8, bold: true, color: { rgb: COLORS.WHITE } }, alignment: { horizontal: 'center' } } },
-            { v: "PERSONNEL COUNT", s: { font: { sz: 8, bold: true, color: { rgb: COLORS.WHITE } }, alignment: { horizontal: 'center' } } }
+            { v: "VACANT ROLES", s: { font: { sz: 8, bold: true, color: { rgb: COLORS.WHITE } }, alignment: { horizontal: 'center' } } }
         ],
         [
-            { t: 'f', f: `TEXT(COUNTIFS('Master Control Register'!E:E, "<>") / MAX(1, COUNT('Master Control Register'!A:A)), "0%")`, s: kpiBoxStyle },
-            { t: 'f', f: `COUNTIFS('Master Control Register'!F:F, "CRITICAL", 'Master Control Register'!E:E, "FAILED")`, s: { ...kpiBoxStyle, font: { ...kpiBoxStyle.font, color: { rgb: COLORS.CRITICAL_RED } } } },
-            { t: 'f', f: `COUNTIFS('Master Control Register'!E:E, "")`, s: { ...kpiBoxStyle, font: { ...kpiBoxStyle.font, color: { rgb: COLORS.WARNING_AMBER } } } },
-            { t: 'f', f: `COUNTA('2. Configuration & Mapping'!A4:A33)`, s: kpiBoxStyle }
+            { t: 'f', f: `TEXT(COUNTIFS('06_Master_Register'!E:E, "<>") / MAX(1, COUNT('06_Master_Register'!A:A)), "0%")`, s: kpiBoxStyle },
+            { t: 'f', f: `COUNTIFS('06_Master_Register'!F:F, "CRITICAL", '06_Master_Register'!E:E, "FAILED")`, s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.CRITICAL_RED }, sz: 14, bold: true } } },
+            { t: 'f', f: `COUNTIFS('06_Master_Register'!E:E, "")`, s: { ...kpiBoxStyle, font: { color: { rgb: COLORS.WARNING_AMBER }, sz: 14, bold: true } } },
+            { t: 'f', f: `COUNTIF('02_Setup_Mapping'!C33:C60, "VACANT")`, s: kpiBoxStyle }
         ],
         [],
-        [{ v: "RISK CONCENTRATION DETECTOR (HUMAN VULNERABILITY)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.GOLD_ACCENT } } } }],
-        [{ v: "Staff Member", s: headerStyle }, { v: "Critical Control Load", s: headerStyle }, { v: "Risk Concentration Status", s: headerStyle }],
-        [
-            { t: 'f', f: `'2. Configuration & Mapping'!A4`, s: dataCellStyle },
-            { t: 'f', f: `COUNTIFS('Master Control Register'!D:D, A7, 'Master Control Register'!F:F, "CRITICAL")`, s: { ...dataCellStyle, alignment: { horizontal: 'center' } } },
-            { t: 'f', f: `IF(B7>5, "⚠ HIGH CONCENTRATION", "STABLE")`, s: { ...dataCellStyle, alignment: { horizontal: 'center' }, font: { bold: true } } }
-        ],
-        [],
-        [{ v: "BIPOLAR EXECUTION HEATMAP", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.GOLD_ACCENT } } } }],
-        [{ v: "Personnel Name", s: headerStyle }, { v: "Execution Index (Completed)", s: headerStyle }, { v: "Risk Index (Overdue/Pending)", s: headerStyle }]
+        [{ v: "HUMAN RISK CONCENTRATION (CRITICAL LOAD)", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.GOLD_ACCENT }, name: 'Segoe UI' } } }],
+        [{ v: "Staff Member", s: headerStyle }, { v: "Critical Task Load", s: headerStyle }, { v: "Vulnerability Status", s: headerStyle }]
     ];
-    
-    for(let i=0; i<15; i++) {
-        const row = i + 11;
-        const mapRow = i + 4;
+    for(let i=0; i<5; i++) {
+        const row = i + 7;
         dashData.push([
-            { t: 'f', f: `'2. Configuration & Mapping'!A${mapRow}`, s: dataCellStyle },
-            { t: 'f', f: `IF(A${row}="", "", REPT("█", MIN(15, ROUND(COUNTIFS('Master Control Register'!D:D, A${row}, 'Master Control Register'!E:E, "<>")/2, 0))))`, s: { ...dataCellStyle, font: { color: { rgb: COLORS.SUCCESS_GREEN }, sz: 12 } } },
-            { t: 'f', f: `IF(A${row}="", "", REPT("█", MIN(15, ROUND(COUNTIFS('Master Control Register'!D:D, A${row}, 'Master Control Register'!E:E, "")/2, 0))))`, s: { ...dataCellStyle, font: { color: { rgb: COLORS.CRITICAL_RED }, sz: 12 } } }
+            { t: 'f', f: `'02_Setup_Mapping'!A${i+4}`, s: dataCellStyle },
+            { t: 'f', f: `COUNTIFS('06_Master_Register'!D:D, A${row}, '06_Master_Register'!F:F, "CRITICAL")`, s: { ...dataCellStyle, alignment: { horizontal: 'center' } } },
+            { t: 'f', f: `IF(B${row}>5, "⚠ HIGH CONCENTRATION", "STABLE")`, s: { ...dataCellStyle, alignment: { horizontal: 'center' }, font: { bold: true, color: { rgb: COLORS.WHITE } } } }
         ]);
     }
 
     const dashWs = utils.aoa_to_sheet(dashData);
     addNavBar(dashWs);
-    dashWs['!cols'] = [{ wch: 45 }, { wch: 45 }, { wch: 45 }, { wch: 25 }];
-    utils.book_append_sheet(wb, dashWs, "4. Dashboard");
+    dashWs['!cols'] = [{ wch: 45 }, { wch: 35 }, { wch: 35 }, { wch: 25 }];
+    utils.book_append_sheet(wb, dashWs, "03_Dashboard");
 
-    // --- MY TASKS TODAY ---
+    // --- 04. MY TASKS TODAY ---
     const todayData: any[][] = [
         [],
-        [{ v: "TODAY'S OPERATIONAL DISPATCH", s: titleStyle }],
-        [{ v: "Select Your Name:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE } } } }, { v: "Imran Khan", s: inputCellStyle }],
+        [{ v: "INDIVIDUAL OPERATIONAL DISPATCH", s: titleStyle }],
+        [{ v: "Select Name:", s: { alignment: { horizontal: 'right' }, font: { bold: true, color: { rgb: COLORS.WHITE } } } }, { v: "Staff Name Here", s: inputCellStyle }],
         [],
-        [{ v: "Task ID", s: headerStyle }, { v: "Priority", s: headerStyle }, { v: "Required Task", s: headerStyle }, { v: "Due Time", s: headerStyle }, { v: "Status", s: headerStyle }]
+        [{ v: "Task ID", s: headerStyle }, { v: "Required Task", s: headerStyle }, { v: "Due Time", s: headerStyle }, { v: "Status", s: headerStyle }]
     ];
-    // Formula to filter from Master Control Register (simulated)
     for(let i=0; i<10; i++) {
-        todayData.push([{ v: "KO-01", s: dataCellStyle }, { v: "High", s: { ...dataCellStyle, font: { color: { rgb: COLORS.CRITICAL_RED } } } }, { v: "Check Fridge Temperature", s: dataCellStyle }, { v: "09:00", s: { ...dataCellStyle, alignment: { horizontal: 'center' } } }, { v: "PENDING", s: { ...dataCellStyle, font: { bold: true } } }]);
+        todayData.push([{ v: "ID-001", s: dataCellStyle }, { v: "Example Task Description", s: dataCellStyle }, { v: "09:00", s: { ...dataCellStyle, alignment: { horizontal: 'center' } } }, { v: "PENDING", s: { ...dataCellStyle, font: { bold: true } } }]);
     }
     const todayWs = utils.aoa_to_sheet(todayData);
     addNavBar(todayWs);
-    todayWs['!cols'] = [{ wch: 15 }, { wch: 15 }, { wch: 65 }, { wch: 15 }, { wch: 25 }];
-    utils.book_append_sheet(wb, todayWs, "My Tasks Today");
+    todayWs['!cols'] = [{ wch: 15 }, { wch: 65 }, { wch: 15 }, { wch: 25 }];
+    utils.book_append_sheet(wb, todayWs, "04_My_Tasks_Today");
+
+    // --- 05. INCIDENT LOG ---
+    const logData: any[][] = [
+        [],
+        [{ v: "CRITICAL INCIDENT AUDIT TRAIL", s: titleStyle }],
+        [],
+        [{ v: "Date", s: headerStyle }, { v: "Failed Critical Task", s: headerStyle }, { v: "Responsible Role", s: headerStyle }, { v: "Manager Sign-off", s: headerStyle }]
+    ];
+    const logWs = utils.aoa_to_sheet(logData);
+    addNavBar(logWs);
+    logWs['!cols'] = [{ wch: 20 }, { wch: 65 }, { wch: 35 }, { wch: 45 }];
+    utils.book_append_sheet(wb, logWs, "05_Incident_Log");
 
     // --- CHECKLIST SHEETS ---
     checklists.forEach((c) => {
@@ -222,22 +224,23 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             [],
             [{ v: c.title.toUpperCase(), s: titleStyle }],
             [],
-            ['ID', 'Task Description', 'How to Coach (Management Script)', 'Assigned To', 'Freq', 'Control Type', 'Date Done', 'Status', 'Why this matters']
+            ['ID', 'Task Description', 'How to Coach (Management Tips)', 'Assigned To', 'Freq', 'Type', 'Date Done', 'Status', 'Consequence']
         ];
 
         c.tasks.forEach((t, tIdx) => {
+            const rowNum = tIdx + 5;
             const roleIdx = uniqueRoles.indexOf((t.role || c.role).trim());
-            const roleMapRow = 38 + checklists.length + roleIdx;
+            const roleMapRow = 33 + checklists.length + roleIdx;
 
             wsData.push([
                 { v: t.id, s: { ...dataCellStyle, alignment: { horizontal: 'center' } } },
                 { v: t.description, s: { ...dataCellStyle, wrapText: true } },
-                { v: t.trainerNotes || "Inspect personally. If temp is > 5°C, check door seals immediately.", s: { ...dataCellStyle, font: { italic: true, sz: 9, color: { rgb: COLORS.GRAY_TEXT } }, wrapText: true } },
-                { t: 'f', f: `'2. Configuration & Mapping'!B${roleMapRow}`, s: { ...dataCellStyle, font: { bold: true } } }, 
+                { v: t.trainerNotes || "Inspect personally. Ensure zero debris.", s: { ...dataCellStyle, font: { italic: true, sz: 9, color: { rgb: COLORS.GRAY_TEXT } }, wrapText: true } },
+                { t: 'f', f: `'02_Setup_Mapping'!B${roleMapRow}`, s: { ...dataCellStyle, font: { bold: true } } }, 
                 { v: (t.frequency || c.frequency), s: { ...dataCellStyle, alignment: { horizontal: 'center' } } },
-                { v: t.priority === 'High' ? "CRITICAL" : "STANDARD", s: { ...dataCellStyle, font: { color: { rgb: t.priority === 'High' ? COLORS.GOLD_ACCENT : COLORS.WHITE } } } },
+                { v: t.priority === 'High' ? "CRITICAL" : "NORMAL", s: { ...dataCellStyle, font: { color: { rgb: t.priority === 'High' ? COLORS.GOLD_ACCENT : COLORS.WHITE } } } },
                 { v: "", s: inputCellStyle }, 
-                { t: 'f', f: `IF(G${tIdx + 5}="", "PENDING", "COMPLETED")`, s: { ...dataCellStyle, alignment: { horizontal: 'center' }, font: { bold: true } } },
+                { t: 'f', f: `IF(G${rowNum}="", "PENDING", "COMPLETED")`, s: { ...dataCellStyle, alignment: { horizontal: 'center' }, font: { bold: true } } },
                 { v: t.consequence, s: { ...dataCellStyle, font: { italic: true, sz: 9, color: { rgb: COLORS.GRAY_TEXT } }, wrapText: true } }
             ]);
         });
@@ -245,27 +248,27 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         const ws = utils.aoa_to_sheet(wsData);
         addNavBar(ws);
         ws['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 8 } }];
-        ws['!cols'] = [{ wch: 12 }, { wch: 65 }, { wch: 110 }, { wch: 35 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 20 }, { wch: 65 }];
+        ws['!cols'] = [{ wch: 12 }, { wch: 65 }, { wch: 110 }, { wch: 30 }, { wch: 15 }, { wch: 15 }, { wch: 20 }, { wch: 20 }, { wch: 65 }];
         ["A4", "B4", "C4", "D4", "E4", "F4", "G4", "H4", "I4"].forEach(cell => { if(ws[cell]) ws[cell].s = headerStyle; });
         utils.book_append_sheet(wb, ws, sName);
     });
 
-    // --- MASTER CONTROL REGISTER (THE HIDDEN BRAIN) ---
-    const masterData = [["Task ID", "Task", "Checklist", "AssignedPerson", "Status", "Control Type"]];
+    // --- 06. MASTER REGISTER (HIDDEN ENGINE) ---
+    const masterData = [["Task ID", "Task", "Checklist", "AssignedPerson", "DateDone", "Type"]];
     checklists.forEach((c) => {
-        c.tasks.forEach((t) => {
+        c.tasks.forEach((t, tIdx) => {
             const roleIdx = uniqueRoles.indexOf((t.role || c.role).trim());
-            const roleMapRow = 38 + checklists.length + roleIdx;
+            const roleMapRow = 33 + checklists.length + roleIdx;
             masterData.push([
                 t.id, t.description, c.title, 
-                { t: 'f', f: `'2. Configuration & Mapping'!B${roleMapRow}` }, 
-                { t: 'f', f: `'${safeSheetName(c.title)}'!H${masterData.length + 4}` },
-                t.priority === 'High' ? "CRITICAL" : "STANDARD"
+                { t: 'f', f: `'02_Setup_Mapping'!B${roleMapRow}` }, 
+                { t: 'f', f: `'${safeSheetName(c.title)}'!G${tIdx + 5}` },
+                t.priority === 'High' ? "CRITICAL" : "NORMAL"
             ]);
         });
     });
     const masterWs = utils.aoa_to_sheet(masterData);
-    utils.book_append_sheet(wb, masterWs, "Master Control Register");
+    utils.book_append_sheet(wb, masterWs, "06_Master_Register");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.18_EXECUTIVE.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.2_SURGICAL.xlsx`);
 }
