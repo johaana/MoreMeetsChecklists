@@ -5,14 +5,15 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * Version 2.3 - Executive Command (Surgical Population Build)
+ * Version 2.3 - Executive Command (Surgical Standard Build)
  * Institutional Standard for Operational Governance
  * 
- * UPDATES:
- * - Populated 04 and 05 sheets with live task mirrors.
- * - Fixed Code 1 = ACTIVE indexing.
- * - Default status strictly set to ACTIVE.
+ * FINAL AUDIT FIXES:
  * - Logical Pair Architecture: Code sits directly next to Result Label.
+ * - Default status strictly set to ACTIVE (Code 1).
+ * - Multi-Location Logic: Branch Registry on Overview maps to Setup.
+ * - Populated Viewers: 04 and 05 are pre-filled with task mirrors.
+ * - Choose-Mode: Pre-enabled Auto-Filters for Search & Choose experience.
  */
 export const handleDownloadV2 = (item: PremiumPack) => {
     if (!item) {
@@ -109,18 +110,18 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
     };
 
-    // --- 01. OVERVIEW ---
+    // --- 01. OVERVIEW (CENTERED prestige) ---
     const coverData = [
         [], [],
         [{ v: "MOREMEETS™ OPERATIONAL GOVERNANCE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
         [{ v: `Version 2.3 Executive Build: ${item.title}`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "LOCATION MASTER REGISTRY", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "BRANCH MASTER REGISTRY", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "Code 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Main Branch Name", s: greyInputStyle }, null, { v: "Code 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Type Branch 2 Name", s: greyInputStyle }],
         [],
-        [{ v: "SYSTEM INSTRUCTIONS:", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "1. Define personnel and branches in '02_SETUP' using Numerical Codes.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "2. Search or Choose your name in '05_EXECUTION' using the filter arrows [v] on the header.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }]
+        [{ v: "OPERATIONAL INSTRUCTIONS:", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "1. Update personnel names and branches in '02_SETUP' using Numerical Codes.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "2. Staff simply click the filter arrow [v] on the Personnel header in '05_EXECUTION' to choose their name.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -128,13 +129,13 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     coverWs['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 5 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 5 } }, { s: { r: 5, c: 0 }, e: { r: 5, c: 5 } }, { s: { r: 8, c: 0 }, e: { r: 8, c: 5 } }, { s: { r: 9, c: 0 }, e: { r: 9, c: 5 } }, { s: { r: 10, c: 0 }, e: { r: 10, c: 5 } }];
     utils.book_append_sheet(wb, coverWs, "01_SYSTEM_OVERVIEW");
 
-    // --- 02. SETUP ---
+    // --- 02. SETUP (LOGICAL PAIRS) ---
     const setupData: any[][] = [
         [],
         [{ v: "A: PERSONNEL REGISTER (NUMERICAL COMMAND)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [],
-        [null, null, null, { v: "1=ACTIVE, 2=LEAVE, 3=RESIGNED, 4=TRAINING, 5=WEEKLY OFF, 6=HOLIDAY", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "ID", s: headerBlockStyle }, { v: "Staff Name", s: headerBlockStyle }, { v: "Operational Role", s: headerBlockStyle }, { v: "Status Code", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }, { v: "Branch Code", s: headerBlockStyle }, { v: "Location", s: headerBlockStyle }],
+        [null, null, null, { v: "1=ACTIVE, 2=LEAVE, 3=RESIGNED, 4=TRAINING, 5=WEEKLY OFF, 6=HOLIDAY", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }, { v: "1-2 = BRANCH CODE (PULLS FROM OVERVIEW)", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "ID", s: headerBlockStyle }, { v: "Staff Name", s: headerBlockStyle }, { v: "Operational Role", s: headerBlockStyle }, { v: "Status Code", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }, { v: "Branch Code", s: headerBlockStyle }, { v: "Assigned Location", s: headerBlockStyle }],
         [{ v: "1", s: centerCellStyle }, { v: "Imran Khan", s: centerCellStyle }, { v: "Head Chef", s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(D6, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "ACTIVE")`, s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(F6, '01_SYSTEM_OVERVIEW'!$B$7, '01_SYSTEM_OVERVIEW'!$E$7), "N/A")`, s: centerCellStyle }],
         [{ v: "2", s: centerCellStyle }, { v: "Aditi Sharma", s: centerCellStyle }, { v: "General Manager", s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(D7, "ACTIVE", "LEAVE", "RESIGNED", "TRAINING", "WEEKLY OFF", "HOLIDAY"), "ACTIVE")`, s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IFERROR(CHOOSE(F7, '01_SYSTEM_OVERVIEW'!$B$7, '01_SYSTEM_OVERVIEW'!$E$7), "N/A")`, s: centerCellStyle }]
     ];
@@ -159,13 +160,13 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     dashWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 30 }, { wch: 30 }];
     utils.book_append_sheet(wb, dashWs, "03_OPERATIONS_DASHBOARD");
 
-    // --- 04. MANAGER CONTROL ---
+    // --- 04. MANAGER CONTROL (POPULATED) ---
     const mgrData: any[][] = [
         [],
         [{ v: "TACTICAL CONTROL BOARD (PENDING TASKS)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "INSTRUCTION: Click the filter arrow [v] on 'Current Status' to view 'PENDING' only.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.ACCENT_BLUE } } } }],
+        [{ v: "CHOOSE MODE: Click the filter arrow [v] on 'Current Status' to select 'PENDING'.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.ACCENT_BLUE } } } }],
         [],
-        [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Responsible Personnel", s: headerBlockStyle }, { v: "Current Status", s: headerBlockStyle }]
+        [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Personnel", s: headerBlockStyle }, { v: "Current Status", s: headerBlockStyle }]
     ];
     const mgrWs = utils.aoa_to_sheet(mgrData);
     addNavBar(mgrWs);
@@ -173,13 +174,13 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     mgrWs['!autofilter'] = { ref: "A5:D500" };
     utils.book_append_sheet(wb, mgrWs, "04_MANAGER_CONTROL_BOARD");
 
-    // --- 05. EXECUTION ---
+    // --- 05. DAILY EXECUTION (POPULATED & SEARCHABLE) ---
     const execData: any[][] = [
         [],
         [{ v: "DAILY TASK EXECUTION (SEARCH & CHOOSE)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [{ v: "CHOOSE MODE: Click the filter arrow [v] on the Personnel header to select your name.", s: { font: { italic: true, sz: 11, bold: true, color: { rgb: COLORS.ACCENT_BLUE } } } }],
         [],
-        [{ v: "ID", s: headerBlockStyle }, { v: "Execution Step", s: headerBlockStyle }, { v: "Personnel (Filter Here)", s: headerBlockStyle }, { v: "Date Done", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }]
+        [{ v: "ID", s: headerBlockStyle }, { v: "Execution Step", s: headerBlockStyle }, { v: "Personnel", s: headerBlockStyle }, { v: "Date Done", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }]
     ];
     const execWs = utils.aoa_to_sheet(execData);
     addNavBar(execWs);
@@ -199,7 +200,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     logWs['!cols'] = [{ wch: 20 }, { wch: 60 }, { wch: 40 }, { wch: 30 }];
     utils.book_append_sheet(wb, logWs, "06_INCIDENT_AUDIT_LOG");
 
-    // --- PROTOCOL SHEETS & TASK INJECTION ---
+    // --- PROTOCOL SHEETS ---
     const allTaskRefs: any[][] = [];
     item.checklists.forEach(c => {
         const sName = safeSheetName(c.title);
@@ -223,13 +224,13 @@ export const handleDownloadV2 = (item: PremiumPack) => {
                 { t: 'f', f: `IF(G${rowNum}="", "PENDING", "COMPLETED")`, s: centerCellStyle }
             ]);
             
-            // Collect references for 04 and 05
+            // Map refs for mirror population
             allTaskRefs.push([
                 { t: 'f', f: `'${sName}'!A${rowNum}` },
                 { t: 'f', f: `'${sName}'!B${rowNum}` },
                 { t: 'f', f: `'${sName}'!C${rowNum}` },
                 { t: 'f', f: `'${sName}'!H${rowNum}` },
-                { t: 'f', f: `'${sName}'!G${rowNum}` } // Date Done
+                { t: 'f', f: `'${sName}'!G${rowNum}` } // Date Done for 05
             ]);
         });
         
@@ -240,14 +241,14 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         utils.book_append_sheet(wb, ws, sName);
     });
 
-    // --- POPULATE 04 & 05 WITH MIRROR DATA ---
+    // POPULATE 04 & 05 WITH MIRROR FORMULAS
     const mgrRows = allTaskRefs.map(ref => [ref[0], ref[1], ref[2], ref[3]]);
     utils.sheet_add_aoa(mgrWs, mgrRows, { origin: "A6" });
     
     const execRows = allTaskRefs.map(ref => [ref[0], ref[1], ref[2], ref[4], ref[3]]);
     utils.sheet_add_aoa(execWs, execRows, { origin: "A6" });
 
-    // --- 99. MASTER REGISTER ---
+    // --- 99. MASTER REGISTER (Hidden logic) ---
     const masterData: any[][] = [["ID", "Task", "Person", "Status"]];
     allTaskRefs.forEach(ref => masterData.push([ref[0], ref[1], ref[2], ref[3]]));
     const masterWs = utils.aoa_to_sheet(masterData);
