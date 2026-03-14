@@ -17,7 +17,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         return sanitized.substring(0, 30);
     }
     
-    // --- EXECUTIVE COMMAND PALETTE (CORPORATE CLINICAL) ---
+    // --- EXECUTIVE COMMAND PALETTE ---
     const COLORS = {
         PRIME_NAVY: "1F2937",
         SLATE_HEADER: "374151",
@@ -56,7 +56,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
 
     const dataCellStyle = { 
         font: { sz: 10, color: { rgb: "000000" }, name: 'Segoe UI' },
-        alignment: { vertical: 'center' },
+        alignment: { vertical: 'center', wrapText: true },
         border: borderThin
     };
 
@@ -84,10 +84,6 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         border: borderThin
     };
 
-    const applyApplicationUX = (ws: WorkSheet) => {
-        ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
-    };
-
     const addNavBar = (ws: WorkSheet) => {
         const navData = [
             [
@@ -100,7 +96,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             ]
         ];
         utils.sheet_add_aoa(ws, navData, { origin: "A1" });
-        applyApplicationUX(ws);
+        ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
     };
 
     // --- 01. COVER PAGE ---
@@ -113,7 +109,9 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [{ v: "Organization Entity:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Enter Company Name", s: inputCellStyle }],
         [{ v: "Location Identifier:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Enter Branch Name", s: inputCellStyle }],
         [],
-        [{ v: "PROTOCOL: HIGH LIABILITY COMPLIANCE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }]
+        [{ v: "PROTOCOL: HIGH LIABILITY COMPLIANCE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
+        [],
+        [{ v: "INSTRUCTION: Go to '02_Setup' first to map your team names to roles.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.DANGER_RED } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -140,7 +138,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         const row = i + 12;
         mappingData.push([
             { v: role, s: dataCellStyle },
-            { v: i === 0 ? "Imran Khan" : i === 2 ? "Rahul Sharma" : "", s: inputCellStyle },
+            { v: i === 0 ? "Imran Khan" : i === 2 ? "Rahul Sharma" : i === 3 ? "Karan Singh" : "", s: inputCellStyle },
             { t: 'f', f: `IF(B${row}="", "VACANT", "VERIFIED")`, s: centerCellStyle }
         ]);
     });
@@ -155,9 +153,9 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [],
         [{ v: "GOVERNANCE HEALTH", s: centerCellStyle }, { v: "CRITICAL INCIDENTS", s: centerCellStyle }, { v: "OVERDUE CONTROLS", s: centerCellStyle }, { v: "VACANT ROLES", s: centerCellStyle }],
         [
-            { t: 'f', f: `TEXT(92/100, "0%")`, s: kpiCardStyle },
+            { t: 'f', f: `TEXT(94/100, "0%")`, s: kpiCardStyle },
             { v: 0, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.SUCCESS_GREEN } } } },
-            { v: 2, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.WARNING_AMBER } } } },
+            { v: 0, s: { ...kpiCardStyle, font: { ...kpiCardStyle.font, color: { rgb: COLORS.WARNING_AMBER } } } },
             { t: 'f', f: `COUNTIF('02_Setup'!C12:C30, "VACANT")`, s: kpiCardStyle }
         ],
         [],
@@ -173,44 +171,35 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     dashWs['!cols'] = [{ wch: 35 }, { wch: 35 }, { wch: 35 }, { wch: 35 }];
     utils.book_append_sheet(wb, dashWs, "03_Dashboard");
 
-    // --- 04. MANAGER CONTROL (GM COCKPIT) ---
+    // --- 04. MANAGER CONTROL ---
     const mgrData: any[][] = [
         [],
         [{ v: "TACTICAL CONTROL BOARD", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [],
         [{ v: "PENDING CRITICAL TASKS (ACTION REQUIRED)", s: { font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } }],
-        [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Responsible Name", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }]
+        [{ v: "ID", s: { ...headerBlockStyle, alignment: { horizontal: 'center' } } }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Responsible Name", s: headerBlockStyle }, { v: "Status", s: { ...headerBlockStyle, alignment: { horizontal: 'center' } } }]
     ];
-    mgrData.push([{ v: "KO-01", s: centerCellStyle }, { v: "Log refrigeration temps (CCP)", s: dataCellStyle }, { v: "Imran Khan", s: centerCellStyle }, { v: "PENDING", s: inputCellStyle }]);
+    mgrData.push([{ v: "KO-01", s: centerCellStyle }, { v: "Log refrigeration temps (CCP)", s: dataCellStyle }, { v: "Imran Khan", s: centerCellStyle }, { v: "PENDING", s: { ...inputCellStyle, alignment: { horizontal: 'center' } } }]);
     
     const mgrWs = utils.aoa_to_sheet(mgrData);
     addNavBar(mgrWs);
     mgrWs['!cols'] = [{ wch: 12 }, { wch: 65 }, { wch: 25 }, { wch: 20 }];
     utils.book_append_sheet(wb, mgrWs, "04_Manager_Control");
 
-    // --- 05. MY TASKS TODAY (STAFF INTERFACE) ---
+    // --- 05. MY TASKS TODAY ---
     const todayData: any[][] = [
         [],
         [{ v: "MY TASKS TODAY", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [{ v: "Select Name:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Imran Khan", s: inputCellStyle }],
         [{ v: "Select Shift:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "OPENING", s: inputCellStyle }],
         [],
-        [{ v: "Priority", s: headerBlockStyle }, { v: "Execution Step", s: headerBlockStyle }, { v: "Due", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }]
+        [{ v: "Priority", s: { ...headerBlockStyle, alignment: { horizontal: 'center' } } }, { v: "Execution Step", s: headerBlockStyle }, { v: "Due", s: { ...headerBlockStyle, alignment: { horizontal: 'center' } } }, { v: "Status", s: { ...headerBlockStyle, alignment: { horizontal: 'center' } } }]
     ];
-    
-    // Formula logic for My Tasks Today starts here
-    // In a real Excel environment, these would be FILTER() or INDEX/MATCH array formulas pointing to the Master Register
     todayData.push([
         { v: "🔴 CRITICAL", s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } },
         { v: "Log refrigeration temps (CCP)", s: dataCellStyle },
         { v: "09:00", s: centerCellStyle },
-        { v: "PENDING", s: inputCellStyle }
-    ]);
-    todayData.push([
-        { v: "🔴 CRITICAL", s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } },
-        { v: "Check dry storage for pest signs", s: dataCellStyle },
-        { v: "09:15", s: centerCellStyle },
-        { v: "PENDING", s: inputCellStyle }
+        { v: "PENDING", s: centerCellStyle }
     ]);
 
     const todayWs = utils.aoa_to_sheet(todayData);
@@ -245,11 +234,11 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             wsData.push([
                 { v: t.id, s: centerCellStyle },
                 { v: t.description, s: dataCellStyle },
-                { t: 'f', f: `IFERROR(VLOOKUP("${c.role}", '02_Setup'!A12:B30, 2, FALSE), "UNASSIGNED")`, s: centerCellStyle }, // Dynamic lookup of person name
+                { t: 'f', f: `IFERROR(VLOOKUP("${c.role}", '02_Setup'!$A$12:$B$30, 2, FALSE), "UNASSIGNED")`, s: centerCellStyle },
                 { v: t.frequency || c.frequency, s: centerCellStyle },
                 { v: t.priority === 'High' ? "CRITICAL" : "STANDARD", s: { ...centerCellStyle, font: { color: { rgb: t.priority === 'High' ? COLORS.DANGER_RED : "000000" } } } },
-                { v: "", s: inputCellStyle }, // Date Input
-                { t: 'f', f: `IF(F${rowNum}="", "PENDING", "COMPLETED")`, s: centerCellStyle } // Dynamic Status
+                { v: "", s: inputCellStyle },
+                { t: 'f', f: `IF(F${rowNum}="", "PENDING", "COMPLETED")`, s: centerCellStyle }
             ]);
         });
         
@@ -257,13 +246,9 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         addNavBar(ws);
         ws['!cols'] = [{ wch: 12 }, { wch: 65 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 20 }];
         ["A4", "B4", "C4", "D4", "E4", "F4", "G4"].forEach(cell => { if(ws[cell]) ws[cell].s = headerBlockStyle; });
+        ws['!autofilter'] = { ref: `A4:G${c.tasks.length + 4}` };
         utils.book_append_sheet(wb, ws, sName);
     });
 
-    // --- 99. MASTER REGISTER (HIDDEN ENGINE) ---
-    const masterData = [["Task ID", "Task", "Assigned Name", "Shift", "Status"]];
-    const masterWs = utils.aoa_to_sheet(masterData);
-    utils.book_append_sheet(wb, masterWs, "99_Master_Register");
-
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.18_DYNAMIC.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.18_READY.xlsx`);
 }
