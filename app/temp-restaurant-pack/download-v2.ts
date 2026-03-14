@@ -5,7 +5,7 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * Version 2.3 - Executive Command (Surgical Build)
+ * Version 2.3 - Executive Command (Clinical Build)
  * Clinical Standard for Operational Governance
  * Optimized for UX: Numerical Command Codes & Auto-Filter Selectors
  */
@@ -135,24 +135,24 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     ];
     utils.book_append_sheet(wb, coverWs, "01_SYSTEM_OVERVIEW");
 
-    // --- 02. PERSONNEL SETUP (ZERO EYE TRAVEL LEGEND) ---
+    // --- 02. PERSONNEL SETUP (SURGICAL LEGEND ALIGNMENT) ---
     const setupData: any[][] = [
         [],
         [{ v: "A: PERSONNEL REGISTER & ROLE MAPPING", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [],
-        [null, null, null, { v: "1=ACTIVE, 2=LEAVE, 3=RESIGN, 4=TRAIN, 5=OFF, 6=HOLIDAY", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
+        [null, null, null, { v: "1=ACTIVE, 2=LEAVE, 3=RESIGN, 4=TRAIN, 5=WEEKLY OFF, 6=HOLIDAY", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [{ v: "ID", s: headerBlockStyle }, { v: "Staff Name", s: headerBlockStyle }, { v: "Operational Role", s: headerBlockStyle }, { v: "Status Code (1-6)", s: headerBlockStyle }, { v: "Live System Status", s: headerBlockStyle }],
-        [{ v: "1", s: centerCellStyle }, { v: "Imran Khan", s: leftCellStyle }, { v: "Head Chef", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D6=1,"ACTIVE",IF(D6=2,"LEAVE",IF(D6=3,"RESIGNED",IF(D6=4,"TRAINING",IF(D6=5,"OFF","HOLIDAY")))))`, s: centerCellStyle }],
-        [{ v: "2", s: centerCellStyle }, { v: "Aditi Sharma", s: leftCellStyle }, { v: "General Manager", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D7=1,"ACTIVE",IF(D7=2,"LEAVE",IF(D7=3,"RESIGNED",IF(D7=4,"TRAINING",IF(D7=5,"OFF","HOLIDAY")))))`, s: centerCellStyle }],
-        [{ v: "3", s: centerCellStyle }, { v: "Rahul V.", s: leftCellStyle }, { v: "Supervisor", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D8=1,"ACTIVE",IF(D8=2,"LEAVE",IF(D8=3,"RESIGNED",IF(D8=4,"TRAINING",IF(D8=5,"OFF","HOLIDAY")))))`, s: centerCellStyle }],
-        [{ v: "4", s: centerCellStyle }, { v: "Karan S.", s: leftCellStyle }, { v: "Storekeeper", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D9=1,"ACTIVE",IF(D9=2,"LEAVE",IF(D9=3,"RESIGNED",IF(D9=4,"TRAINING",IF(D9=5,"OFF","HOLIDAY")))))`, s: centerCellStyle }]
+        [{ v: "1", s: centerCellStyle }, { v: "Imran Khan", s: leftCellStyle }, { v: "Head Chef", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D6=1,"ACTIVE",IF(D6=2,"LEAVE",IF(D6=3,"RESIGNED",IF(D6=4,"TRAINING",IF(D6=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }],
+        [{ v: "2", s: centerCellStyle }, { v: "Aditi Sharma", s: leftCellStyle }, { v: "General Manager", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D7=1,"ACTIVE",IF(D7=2,"LEAVE",IF(D7=3,"RESIGNED",IF(D7=4,"TRAINING",IF(D7=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }],
+        [{ v: "3", s: centerCellStyle }, { v: "Rahul V.", s: leftCellStyle }, { v: "Supervisor", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D8=1,"ACTIVE",IF(D8=2,"LEAVE",IF(D8=3,"RESIGNED",IF(D8=4,"TRAINING",IF(D8=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }],
+        [{ v: "4", s: centerCellStyle }, { v: "Karan S.", s: leftCellStyle }, { v: "Storekeeper", s: leftCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D9=1,"ACTIVE",IF(D9=2,"LEAVE",IF(D9=3,"RESIGNED",IF(D9=4,"TRAINING",IF(D9=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }]
     ];
     const setupWs = utils.aoa_to_sheet(setupData);
     addNavBar(setupWs);
     setupWs['!cols'] = [{ wch: 10 }, { wch: 30 }, { wch: 30 }, { wch: 25 }, { wch: 25 }];
     utils.book_append_sheet(wb, setupWs, "02_PERSONNEL_SETUP");
 
-    // --- 03. DASHBOARD (CLINICAL ACCURACY) ---
+    // --- 03. DASHBOARD (CLINICAL PRECISION) ---
     const dashData: any[][] = [
         [],
         [{ v: "GOVERNANCE HEALTH", s: centerCellStyle }, { v: "CRITICAL GAPS", s: centerCellStyle }, { v: "HUMAN RISK", s: centerCellStyle }, { v: "VACANT ROLES", s: centerCellStyle }],
@@ -168,7 +168,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     dashWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 30 }, { wch: 30 }];
     utils.book_append_sheet(wb, dashWs, "03_OPERATIONS_DASHBOARD");
 
-    // --- 04. MANAGER CONTROL (TACTICAL COCKPIT) ---
+    // --- 04. MANAGER CONTROL (TACTICAL ALIGNMENT) ---
     const mgrData: any[][] = [
         [],
         [{ v: "TACTICAL CONTROL BOARD (PENDING TASKS)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
@@ -182,7 +182,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     mgrWs['!autofilter'] = { ref: "D5:D500" };
     utils.book_append_sheet(wb, mgrWs, "04_MANAGER_CONTROL_BOARD");
 
-    // --- 05. EXECUTION (ZERO NOISE) ---
+    // --- 05. EXECUTION (SEARCH & CHOOSE) ---
     const execData: any[][] = [
         [],
         [{ v: "DAILY TASK EXECUTION (STAFF VIEW)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
@@ -208,7 +208,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     logWs['!cols'] = [{ wch: 20 }, { wch: 60 }, { wch: 40 }, { wch: 30 }];
     utils.book_append_sheet(wb, logWs, "06_INCIDENT_AUDIT_LOG");
 
-    // --- PROTOCOL SHEETS ---
+    // --- PROTOCOL SHEETS (STRICT ALIGNMENT) ---
     item.checklists.forEach(c => {
         const sName = safeSheetName(c.title);
         const wsData: any[][] = [
