@@ -28,7 +28,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         WHITE: "FFFFFF",
         SOFT_GREY: "F3F4F6",
         BORDER_LIGHT: "D1D5DB",
-        INPUT_YELLOW: "FFFFE0"
+        INPUT_YELLOW: "FFFFE0",
+        ALERT_RED_BG: "FEF2F2"
     };
 
     // --- REFINED STYLES ---
@@ -76,6 +77,13 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         border: borderThin
     };
 
+    const alertBarStyle = {
+        font: { bold: true, color: { rgb: COLORS.DANGER_RED }, sz: 11, name: 'Segoe UI' },
+        fill: { fgColor: { rgb: COLORS.ALERT_RED_BG } },
+        alignment: { vertical: 'center', horizontal: 'center' },
+        border: borderThin
+    };
+
     const applyApplicationUX = (ws: WorkSheet) => {
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
     };
@@ -96,7 +104,6 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     };
 
     const checklists = item.checklists;
-    const uniqueRoles = Array.from(new Set(checklists.flatMap(c => c.tasks.map(t => (t.role || c.role).trim())))).sort();
 
     // --- 01. COVER PAGE ---
     const coverData = [
@@ -144,7 +151,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
             { v: 10, s: kpiCardStyle }
         ],
         [],
-        [{ v: "⚠ ALERT: SYSTEM RUNNING WITHIN NORMAL PARAMETERS", s: { font: { bold: true, color: { rgb: COLORS.SUCCESS_GREEN } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "⚠ ALERT: SYSTEM RUNNING WITHIN NORMAL PARAMETERS", s: alertBarStyle }],
         [],
         [{ v: "HUMAN RISK CONCENTRATION", s: { font: { bold: true } } }],
         [{ v: "Staff Member", s: headerBlockStyle }, { v: "Critical Load %", s: headerBlockStyle }, { v: "Risk Rating", s: headerBlockStyle }]
