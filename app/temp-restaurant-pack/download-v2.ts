@@ -7,7 +7,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * Version 2.3 - Executive Command (Surgical Build)
  * Clinical Standard for Operational Governance
- * Optimized for UX: Proximity-based Command Codes & Auto-Filter Selectors
+ * Optimized for UX: Numerical Command Codes & Auto-Filter Selectors
  */
 export const handleDownloadV2 = (item: PremiumPack) => {
     if (!item) {
@@ -30,11 +30,14 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         DANGER_RED: "DC2626",
         SUCCESS_GREEN: "16A34A",
         WARNING_AMBER: "F59E0B",
+        WEEKLY_OFF_PURPLE: "8B5CF6",
+        HOLIDAY_PINK: "EC4899",
         WHITE: "FFFFFF",
         SOFT_GREY: "F3F4F6",
         BORDER_LIGHT: "D1D5DB",
         INPUT_YELLOW: "FFFFE0",
         INPUT_GREY: "F2F2F2",
+        // Conditional Formatting Colors
         STATUS_GREEN_BG: "C6EFCE",
         STATUS_GREEN_FONT: "006100",
         STATUS_AMBER_BG: "FFEB9C",
@@ -42,7 +45,11 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         STATUS_RED_BG: "FFC7CE",
         STATUS_RED_FONT: "9C0006",
         STATUS_BLUE_BG: "DDEBF7",
-        STATUS_BLUE_FONT: "0000FF"
+        STATUS_BLUE_FONT: "0070C0",
+        STATUS_PURPLE_BG: "E2EFDA",
+        STATUS_PURPLE_FONT: "3B3838",
+        STATUS_PINK_BG: "FCE4D6",
+        STATUS_PINK_FONT: "A50021"
     };
 
     // --- CLINICAL STYLES ---
@@ -124,8 +131,8 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [{ v: "PROTOCOL: HIGH LIABILITY COMPLIANCE", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "SYSTEM INSTRUCTIONS:", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "1. Update personnel names and status in '02_SETUP'. Use the Numerical Code (1-4).", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "2. Staff simply click the filter arrow [v] on the 'Personnel' header in '05_EXECUTION' to choose their name.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "1. Update personnel names and status in '02_SETUP'. Use the Numerical Code (1-6).", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "2. Staff click the filter arrow [v] on the 'Personnel' header in '05_EXECUTION' to choose their name.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [{ v: "3. Status flips to COMPLETED automatically when a date is entered in the yellow column.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
@@ -143,23 +150,23 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     ];
     utils.book_append_sheet(wb, coverWs, "01_SYSTEM_OVERVIEW");
 
-    // --- 02. PERSONNEL SETUP (UX: PROXIMITY LEGEND) ---
+    // --- 02. PERSONNEL SETUP (UX: COMMAND LEGEND PROXIMITY) ---
     const setupData: any[][] = [
         [],
         [{ v: "A: PERSONNEL REGISTER & STATUS COMMANDS", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [],
-        [null, null, null, { v: "1=ACTIVE, 2=LEAVE, 3=RESIGNED, 4=TRAINING", s: { font: { italic: true, sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "ID", s: headerBlockStyle }, { v: "Staff Name", s: headerBlockStyle }, { v: "Operational Role", s: headerBlockStyle }, { v: "Status Code (1-4)", s: headerBlockStyle }, { v: "Live System Status", s: headerBlockStyle }],
-        [{ v: "1", s: centerCellStyle }, { v: "Imran Khan", s: greyInputStyle }, { v: "Head Chef", s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D6=1,"ACTIVE",IF(D6=2,"ON LEAVE",IF(D6=3,"RESIGNED","TRAINING")))`, s: centerCellStyle }],
-        [{ v: "2", s: centerCellStyle }, { v: "Aditi Sharma", s: greyInputStyle }, { v: "General Manager", s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D7=1,"ACTIVE",IF(D7=2,"ON LEAVE",IF(D7=3,"RESIGNED","TRAINING")))`, s: centerCellStyle }],
-        [{ v: "3", s: centerCellStyle }, { v: "Rahul V.", s: greyInputStyle }, { v: "Supervisor", s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D8=1,"ACTIVE",IF(D8=2,"ON LEAVE",IF(D8=3,"RESIGNED","TRAINING")))`, s: centerCellStyle }],
-        [{ v: "4", s: centerCellStyle }, { v: "Karan S.", s: greyInputStyle }, { v: "Storekeeper", s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D9=1,"ACTIVE",IF(D9=2,"ON LEAVE",IF(D9=3,"RESIGNED","TRAINING")))`, s: centerCellStyle }]
+        [null, null, null, { v: "1=ACTIVE, 2=LEAVE, 3=RESIGN, 4=TRAIN, 5=OFF, 6=HOL", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "ID", s: headerBlockStyle }, { v: "Staff Name", s: headerBlockStyle }, { v: "Operational Role", s: headerBlockStyle }, { v: "Status Code (1-6)", s: headerBlockStyle }, { v: "Live System Status", s: headerBlockStyle }],
+        [{ v: "1", s: centerCellStyle }, { v: "Imran Khan", s: leftCellStyle }, { v: "Head Chef", s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D6=1,"ACTIVE",IF(D6=2,"ON LEAVE",IF(D6=3,"RESIGNED",IF(D6=4,"TRAINING",IF(D6=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }],
+        [{ v: "2", s: centerCellStyle }, { v: "Aditi Sharma", s: leftCellStyle }, { v: "General Manager", s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D7=1,"ACTIVE",IF(D7=2,"ON LEAVE",IF(D7=3,"RESIGNED",IF(D7=4,"TRAINING",IF(D7=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }],
+        [{ v: "3", s: centerCellStyle }, { v: "Rahul V.", s: leftCellStyle }, { v: "Supervisor", s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D8=1,"ACTIVE",IF(D8=2,"ON LEAVE",IF(D8=3,"RESIGNED",IF(D8=4,"TRAINING",IF(D8=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }],
+        [{ v: "4", s: centerCellStyle }, { v: "Karan S.", s: leftCellStyle }, { v: "Storekeeper", s: centerCellStyle }, { v: "1", s: greyInputStyle }, { t: 'f', f: `IF(D9=1,"ACTIVE",IF(D9=2,"ON LEAVE",IF(D9=3,"RESIGNED",IF(D9=4,"TRAINING",IF(D9=5,"WEEKLY OFF","HOLIDAY")))))`, s: centerCellStyle }]
     ];
     const setupWs = utils.aoa_to_sheet(setupData);
     addNavBar(setupWs);
     setupWs['!cols'] = [{ wch: 10 }, { wch: 30 }, { wch: 30 }, { wch: 25 }, { wch: 25 }];
     
-    // Apply Conditional Formatting for Status Colors in Setup
+    // Conditional Formatting for Status Colors
     setupWs['!conditional_formatting'] = [
         {
             ref: "E6:E25",
@@ -167,7 +174,9 @@ export const handleDownloadV2 = (item: PremiumPack) => {
                 { type: "expression", formula: 'E6="ACTIVE"', style: { fill: { fgColor: { rgb: COLORS.STATUS_GREEN_BG } }, font: { color: { rgb: COLORS.STATUS_GREEN_FONT }, bold: true } } },
                 { type: "expression", formula: 'E6="ON LEAVE"', style: { fill: { fgColor: { rgb: COLORS.STATUS_AMBER_BG } }, font: { color: { rgb: COLORS.STATUS_AMBER_FONT }, bold: true } } },
                 { type: "expression", formula: 'E6="RESIGNED"', style: { fill: { fgColor: { rgb: COLORS.STATUS_RED_BG } }, font: { color: { rgb: COLORS.STATUS_RED_FONT }, bold: true } } },
-                { type: "expression", formula: 'E6="TRAINING"', style: { fill: { fgColor: { rgb: COLORS.STATUS_BLUE_BG } }, font: { color: { rgb: COLORS.STATUS_BLUE_FONT }, bold: true } } }
+                { type: "expression", formula: 'E6="TRAINING"', style: { fill: { fgColor: { rgb: COLORS.STATUS_BLUE_BG } }, font: { color: { rgb: COLORS.STATUS_BLUE_FONT }, bold: true } } },
+                { type: "expression", formula: 'E6="WEEKLY OFF"', style: { fill: { fgColor: { rgb: COLORS.STATUS_PURPLE_BG } }, font: { color: { rgb: COLORS.STATUS_PURPLE_FONT }, bold: true } } },
+                { type: "expression", formula: 'E6="HOLIDAY"', style: { fill: { fgColor: { rgb: COLORS.STATUS_PINK_BG } }, font: { color: { rgb: COLORS.STATUS_PINK_FONT }, bold: true } } }
             ]
         }
     ];
@@ -189,7 +198,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     dashWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 30 }, { wch: 30 }];
     utils.book_append_sheet(wb, dashWs, "03_OPERATIONS_DASHBOARD");
 
-    // --- 04. MANAGER CONTROL (UX: ZERO-GRID FILTER) ---
+    // --- 04. MANAGER CONTROL (UX: SEARCH & CHOOSE) ---
     const mgrData: any[][] = [
         [],
         [{ v: "TACTICAL CONTROL BOARD (PENDING TASKS)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
@@ -229,7 +238,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     logWs['!cols'] = [{ wch: 20 }, { wch: 60 }, { wch: 40 }, { wch: 30 }];
     utils.book_append_sheet(wb, logWs, "06_INCIDENT_AUDIT_LOG");
 
-    // --- PROTOCOL SHEETS (UX: STRICT ALIGNMENT) ---
+    // --- PROTOCOL SHEETS ---
     item.checklists.forEach(c => {
         const sName = safeSheetName(c.title);
         const wsData: any[][] = [
@@ -255,7 +264,6 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         ws['!cols'] = [{ wch: 12 }, { wch: 80 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 20 }, { wch: 20 }];
         ws['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 6 } }, { s: { r: 1, c: 0 }, e: { r: 1, c: 6 } }];
         
-        // Add Conditional Formatting for Task Status
         ws['!conditional_formatting'] = [
             {
                 ref: `G5:G${wsData.length}`,
