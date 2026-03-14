@@ -7,6 +7,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * Version 2.3 - Executive Command & Control
  * Clinical Standard for Operational Governance
+ * Optimized for Restaurant Owners - Zero-Typing Execution
  */
 export const handleDownloadV2 = (item: PremiumPack) => {
     if (!item) {
@@ -111,16 +112,16 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [{ v: `Version 2.3 Executive Build: ${item.title}`, s: { font: { italic: true, sz: 11, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "System Status:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "DEPLOYED / ACTIVE", s: centerCellStyle }],
-        [{ v: "Organization Entity:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Company Name Here", s: inputCellStyle }],
-        [{ v: "Location Identifier:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Type Branch Name Here", s: inputCellStyle }],
+        [{ v: "Organization Entity:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "ABC RESTAURANTS", s: inputCellStyle }],
+        [{ v: "Location Identifier:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "MUMBAI BRANCH", s: inputCellStyle }],
         [],
         [{ v: "PROTOCOL: HIGH LIABILITY COMPLIANCE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "OPERATIONAL INSTRUCTIONS:", s: { font: { bold: true, sz: 10 } } }],
-        [{ v: "1. Go to '02_Setup' to enter your staff names and current status.", s: { font: { sz: 10 } } }],
-        [{ v: "2. Map your personnel to the specific structural roles in Section B.", s: { font: { sz: 10 } } }],
-        [{ v: "3. Staff select their Name/Shift in '05_My_Tasks_Today' to see their duties.", s: { font: { sz: 10 } } }],
-        [{ v: "4. Status flips to COMPLETED only when a date is entered in the yellow column.", s: { font: { sz: 10 } } }]
+        [{ v: "1. Update staff names in '02_Setup'. Set status to ACTIVE or ON LEAVE.", s: { font: { sz: 10 } } }],
+        [{ v: "2. Tasks update to COMPLETED automatically when you enter a date in the yellow column.", s: { font: { sz: 10 } } }],
+        [{ v: "3. Use the Filter arrows on the headers to see specific names or roles.", s: { font: { sz: 10 } } }],
+        [{ v: "4. Status flips to RED (FAILED) if a date is missing after the deadline.", s: { font: { sz: 10 } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -131,18 +132,18 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     const mappingData: any[][] = [
         [],
         [{ v: "SECTION A: PERSONNEL REGISTER (EDIT NAMES & STATUS)", s: { font: { bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "Staff Name", s: headerBlockStyle }, { v: "Designation", s: headerBlockStyle }, { v: "Status (ACTIVE/LEAVE/RESIGNED/HOLIDAY)", s: headerBlockStyle }],
+        [{ v: "Staff Name", s: headerBlockStyle }, { v: "Designation", s: headerBlockStyle }, { v: "Current Status", s: headerBlockStyle }],
         [{ v: "Imran Khan", s: inputCellStyle }, { v: "Head Chef", s: centerCellStyle }, { v: "ACTIVE", s: inputCellStyle }],
         [{ v: "Rahul Sharma", s: inputCellStyle }, { v: "Supervisor", s: centerCellStyle }, { v: "ACTIVE", s: inputCellStyle }],
         [{ v: "Karan Singh", s: inputCellStyle }, { v: "Storekeeper", s: centerCellStyle }, { v: "ACTIVE", s: inputCellStyle }],
-        [{ v: "Amit Roy", s: inputCellStyle }, { v: "Server", s: centerCellStyle }, { v: "ACTIVE", s: inputCellStyle }],
+        [{ v: "Amit Roy", s: inputCellStyle }, { v: "Server", s: centerCellStyle }, { v: "ON LEAVE", s: inputCellStyle }],
         [{ v: "Sita Devi", s: inputCellStyle }, { v: "Housekeeping", s: centerCellStyle }, { v: "ACTIVE", s: inputCellStyle }],
         [],
-        [{ v: "SECTION B: ROLE MAPPING (ASSIGN PEOPLE TO RESPONSIBILITIES)", s: { font: { bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "Structural Role", s: headerBlockStyle }, { v: "Assigned Personnel Name (Enter Exact Name)", s: headerBlockStyle }, { v: "Integrity Check", s: headerBlockStyle }]
+        [{ v: "SECTION B: ROLE MAPPING (DYNAMIC LINKS)", s: { font: { bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "Structural Role", s: headerBlockStyle }, { v: "Assigned Name (From Register)", s: headerBlockStyle }, { v: "Integrity Check", s: headerBlockStyle }]
     ];
 
-    const structuralRoles = ["Head Chef", "Kitchen Manager", "F&B Supervisor", "Storekeeper", "Safety Officer", "Hygiene Officer", "Room Supervisor", "Housekeeper"];
+    const structuralRoles = ["Head Chef", "Kitchen Manager", "F&B Supervisor", "Storekeeper", "Safety Officer", "Hygiene Officer"];
     structuralRoles.forEach((role, i) => {
         const row = i + 12;
         mappingData.push([
@@ -190,7 +191,7 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         [{ v: "TACTICAL CONTROL BOARD (GM VIEW)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [],
         [{ v: "PENDING CRITICAL TASKS (ACTION REQUIRED)", s: { font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } }],
-        [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Responsible Name", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }]
+        [{ v: "ID", s: headerBlockStyle }, { v: "Operational Requirement", s: headerBlockStyle }, { v: "Responsible Personnel", s: headerBlockStyle }, { v: "Due Time", s: headerBlockStyle }]
     ];
     
     const mgrWs = utils.aoa_to_sheet(mgrData);
@@ -201,16 +202,16 @@ export const handleDownloadV2 = (item: PremiumPack) => {
     // --- 05. MY TASKS TODAY ---
     const todayData: any[][] = [
         [],
-        [{ v: "MY TASKS TODAY (SELECT YOUR NAME BELOW)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "1. Select Name:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "Imran Khan", s: inputCellStyle }],
-        [{ v: "2. Select Shift:", s: { alignment: { horizontal: 'right' }, font: { bold: true } } }, { v: "OPENING", s: inputCellStyle }],
+        [{ v: "MY TASKS TODAY (FILTER HEADERS TO SELECT NAME)", s: { font: { sz: 16, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "Use the filter arrows on the 'Personnel' header to see only your tasks.", s: { font: { italic: true, sz: 10 } } }],
         [],
-        [{ v: "Priority", s: headerBlockStyle }, { v: "Execution Step", s: headerBlockStyle }, { v: "Due Time", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }]
+        [{ v: "Priority", s: headerBlockStyle }, { v: "Execution Step", s: headerBlockStyle }, { v: "Personnel", s: headerBlockStyle }, { v: "Shift", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }]
     ];
     
     const todayWs = utils.aoa_to_sheet(todayData);
     addNavBar(todayWs);
-    todayWs['!cols'] = [{ wch: 20 }, { wch: 70 }, { wch: 15 }, { wch: 20 }];
+    todayWs['!cols'] = [{ wch: 20 }, { wch: 70 }, { wch: 25 }, { wch: 15 }, { wch: 20 }];
+    todayWs['!autofilter'] = { ref: "A5:E100" };
     utils.book_append_sheet(wb, todayWs, "05_My_Tasks_Today");
 
     // --- 06. INCIDENT LOG ---
@@ -252,13 +253,11 @@ export const handleDownloadV2 = (item: PremiumPack) => {
         addNavBar(ws);
         ws['!cols'] = [{ wch: 12 }, { wch: 65 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 25 }, { wch: 20 }];
         ["A4", "B4", "C4", "D4", "E4", "F4", "G4"].forEach(cell => { if(ws[cell]) ws[cell].s = headerBlockStyle; });
-        
-        // Conditional formatting for "COMPLETED" status
         ws['!autofilter'] = { ref: `A4:G${c.tasks.length + 4}` };
         utils.book_append_sheet(wb, ws, sName);
     });
 
-    // --- 99. MASTER REGISTER (HIDDEN CORE) ---
+    // --- 99. MASTER REGISTER (HIDDEN) ---
     const masterData: any[][] = [["Task ID", "Task", "Checklist", "AssignedPerson", "Type", "DateDone", "Status"]];
     item.checklists.forEach(c => {
         const sheetName = safeSheetName(c.title);
