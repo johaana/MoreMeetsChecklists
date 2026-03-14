@@ -9,16 +9,15 @@ import { handleDownloadV2 } from './download-v2';
 import { 
     Download, 
     Shield,
-    CheckCircle,
     Activity,
     Database,
     Zap,
     LayoutDashboard,
     Siren,
-    EyeOff,
     Briefcase,
     UserCheck,
-    BarChart3
+    BarChart3,
+    ArrowRight
 } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -62,14 +61,14 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                 <div className="space-y-6">
                     <div className="flex justify-center">
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-5 uppercase tracking-[0.5em] font-black text-[10px] bg-primary/5 rounded-full backdrop-blur-sm">
-                            V2.3 Executive Build • CLINICAL SERIES
+                            V2.3 Executive Build • X-SELECTION ENGINE
                         </Badge>
                     </div>
                     <h1 className="text-5xl md:text-8xl font-black font-headline text-primary-text italic uppercase tracking-tighter leading-[0.9] drop-shadow-2xl">
-                        Operational <br/> <span className="text-primary">Intelligence.</span>
+                        Operational <br/> <span className="text-primary">Governance.</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-secondary-text italic max-w-2xl mx-auto font-medium leading-relaxed border-l-2 border-primary/20 pl-8">
-                        The V2.3 "Executive Command" engine separates Owner Strategy from Daily Dispatch. Built for the 1-File-1-Branch model using clinical-grade Excel logic.
+                        The V2.3 "Executive Command" build solves the typing problem. Use the X-Selection Matrix to manage personnel and view tasks without manual data entry.
                     </p>
                 </div>
                 
@@ -91,46 +90,46 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
             <div className="container px-4 md:px-6">
                 <div className="text-center mb-20 space-y-4">
                     <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-widest text-[9px]">Aviation-Grade Logic</Badge>
-                    <h2 className="text-4xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">Command Centre Refinements</h2>
+                    <h2 className="text-4xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">Choose-Mode Interface</h2>
                     <p className="text-secondary-text max-w-xl mx-auto italic font-medium leading-relaxed">Redesigned from the ground up to support three distinct user personas.</p>
                 </div>
                 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <FeatureItem 
                         icon={Briefcase} 
-                        title="Owner Dashboard" 
-                        badge="Strategic"
-                        description="Real-time Governance Health, Critical Incident alerts, and Human Risk Concentration mapping for the CEO."
+                        title="X-Selection Grid" 
+                        badge="New"
+                        description="Owner simply types 'X' in the status column to choose Available, Leave, or Resigned. No typing words required."
                     />
                     <FeatureItem 
                         icon={Activity} 
                         title="Manager Cockpit" 
                         badge="Tactical"
-                        description="One-click lists of Pending and Failed tasks across the entire facility. No more hunting through tabs."
+                        description="One-click lists of Pending and Failed tasks across the entire facility. Powered by a live filter engine."
                     />
                     <FeatureItem 
                         icon={LayoutDashboard} 
-                        title="Shift Dispatch" 
+                        title="Staff Task Selector" 
                         badge="Operator"
-                        description="Staff select Name and Shift. They see only their 5-10 tasks, removing 95% of spreadsheet clutter."
+                        description="Employees choose their name using the built-in selector. They see only their tasks, removing 95% of the noise."
                     />
                     <FeatureItem 
                         icon={Siren} 
                         title="Black Box Log" 
                         badge="Auditable"
-                        description="Failed CCPs are automatically routed to a signed Incident Log for legal and insurance protection."
+                        description="Failed CCPs are automatically detectable for the signed Incident Log, providing legal and insurance armor."
                     />
                     <FeatureItem 
                         icon={UserCheck} 
-                        title="Personnel Mapping" 
+                        title="Human Risk Metric" 
                         badge="Harden"
-                        description="Dynamically map roles to people. Detects vacancies immediately if a staff member resigns."
+                        description="Identifies if you rely too heavily on one manager. Detects concentration of critical safety controls."
                     />
                     <FeatureItem 
                         icon={BarChart3} 
-                        title="Readiness Scores" 
-                        badge="Metrics"
-                        description="Compare readiness between departments (Kitchen vs Service) to identify systemic weak points."
+                        title="Clinical Formatting" 
+                        badge="Standard"
+                        description="Strict Left-Align for text and Center-Align for data. Zero-grid backgrounds for a professional application feel."
                     />
                 </div>
             </div>
