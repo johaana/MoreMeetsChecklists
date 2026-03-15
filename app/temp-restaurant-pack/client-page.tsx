@@ -5,54 +5,22 @@ import React from 'react';
 import type { PremiumPack } from '@/lib/premium-packs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { handleDownloadV2 } from './download-v2';
+import { handleDownloadMaster } from './download-master';
 import { 
     Download, 
-    Shield,
-    Activity,
-    Database,
-    Zap,
+    ShieldCheck,
     LayoutDashboard,
-    Siren,
-    Briefcase,
-    UserCheck,
-    BarChart3,
+    ClipboardList,
+    AlertCircle,
     ArrowRight,
-    Search,
-    Clock,
-    UserCircle,
-    MonitorCheck,
-    ShieldAlert,
-    Rocket,
-    LayoutList,
-    Gauge,
-    History
+    CheckCircle2,
+    Calendar,
+    MapPin,
+    User
 } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-
-const BuildCard = ({ title, description, icon: Icon, mode, pack }: { title: string, description: string, icon: any, mode: any, pack: any }) => (
-    <Card className="bg-black/40 border-white/5 hover:border-primary/30 transition-all group flex flex-col h-full">
-        <CardHeader className="flex flex-row items-center gap-4">
-            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                <Icon className="h-6 w-6" />
-            </div>
-            <div className="space-y-1">
-                <CardTitle className="text-sm font-black uppercase tracking-widest">{title}</CardTitle>
-                <p className="text-xs text-secondary-text italic">{description}</p>
-            </div>
-        </CardHeader>
-        <CardContent className="mt-auto">
-            <Button 
-                onClick={() => handleDownloadV2(pack, mode)} 
-                className="w-full h-12 bg-white/5 hover:bg-primary hover:text-black font-black uppercase italic text-[10px] tracking-widest border border-white/5"
-            >
-                Download This Version <Download className="ml-2 h-3.5 w-3.5" />
-            </Button>
-        </CardContent>
-    </Card>
-);
 
 export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
   return (
@@ -78,83 +46,77 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                 <div className="space-y-6">
                     <div className="flex justify-center">
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-5 uppercase tracking-[0.5em] font-black text-[10px] bg-primary/5 rounded-full backdrop-blur-sm">
-                            Architectural Lab • V2.4 Logbook suite
+                            V2.5 MASTER CONTROL SYSTEM
                         </Badge>
                     </div>
                     <h1 className="text-5xl md:text-8xl font-black font-headline text-primary-text italic uppercase tracking-tighter leading-[0.9] drop-shadow-2xl">
-                        Logbook <br/> <span className="text-primary">Protocols.</span>
+                        Operational <br/> <span className="text-primary">Discipline.</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-secondary-text italic max-w-2xl mx-auto font-medium leading-relaxed border-l-2 border-primary/20 pl-8">
-                        Explore 5 "Digital Logbook" variations. Featuring side-by-side branch mapping, staff profiles, and <strong>Auto-Trigger Status</strong>.
+                        The "Best-of-All" Build. A simplified, clinical ledger for high-accountability multi-unit operations.
                     </p>
+                </div>
+
+                <div className="flex flex-col items-center gap-4">
+                    <Button 
+                        size="lg"
+                        onClick={() => handleDownloadMaster(pack)} 
+                        className="h-16 px-12 bg-primary text-black hover:scale-105 transition-all font-black uppercase italic tracking-widest text-lg shadow-[0_0_40px_-5px_rgba(46,184,107,0.4)]"
+                    >
+                        Download Master System <Download className="ml-2 h-6 w-6" />
+                    </Button>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Includes 140+ Professional Control Tasks</p>
                 </div>
             </div>
         </section>
 
-        {/* VARIATIONS GRID */}
+        {/* CORE FEATURES */}
         <section className="py-24 bg-alternate-background">
             <div className="container px-4 md:px-6">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <BuildCard 
-                        title="1. Standard Ledger"
-                        description="Balanced workflow. Includes Personnel Profiles & Risk Maps."
-                        icon={LayoutList}
-                        mode="STANDARD_LOGBOOK"
-                        pack={pack}
-                    />
-                    <BuildCard 
-                        title="2. Audit-Shield Pro"
-                        description="Focus: Consequences, Proof & Auto-Flipping Status."
-                        icon={ShieldAlert}
-                        mode="AUDIT_SHIELD"
-                        pack={pack}
-                    />
-                    <BuildCard 
-                        title="3. Multi-Unit Command"
-                        description="Focus: Outlet Registry & Branch Name auto-mapping."
-                        icon={Rocket}
-                        mode="MULTI_UNIT"
-                        pack={pack}
-                    />
-                    <BuildCard 
-                        title="4. Rapid Tablet Entry"
-                        description="Focus: High-speed date entry with instant status updates."
-                        icon={Zap}
-                        mode="RAPID_SHIFT"
-                        pack={pack}
-                    />
-                    <BuildCard 
-                        title="5. Governance Scorecard"
-                        description="Focus: Compliance % & Real-time Gap Detection."
-                        icon={Gauge}
-                        mode="GOVERNANCE"
-                        pack={pack}
-                    />
+                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <Card className="bg-black/40 border-white/5 p-6">
+                        <CheckCircle2 className="h-8 w-8 text-primary mb-4" />
+                        <h3 className="font-black uppercase tracking-widest text-sm mb-2">Auto-Status Trigger</h3>
+                        <p className="text-xs text-secondary-text leading-relaxed italic">Status flips from PENDING to COMPLETED automatically the moment a user enters a date. Zero manual status typing.</p>
+                    </Card>
+                    <Card className="bg-black/40 border-white/5 p-6">
+                        <MapPin className="h-8 w-8 text-primary mb-4" />
+                        <h3 className="font-black uppercase tracking-widest text-sm mb-2">Multi-Unit Support</h3>
+                        <p className="text-xs text-secondary-text leading-relaxed italic">Built-in Branch Registry. Every entry is tagged to a specific location for easy filtering and central oversight.</p>
+                    </Card>
+                    <Card className="bg-black/40 border-white/5 p-6">
+                        <ShieldCheck className="h-8 w-8 text-primary mb-4" />
+                        <h3 className="font-black uppercase tracking-widest text-sm mb-2">Audit-Ready Ledger</h3>
+                        <p className="text-xs text-secondary-text leading-relaxed italic">Creates a permanent chronological history. Perfect for health inspections, internal audits, and insurance compliance.</p>
+                    </Card>
                 </div>
             </div>
         </section>
 
         {/* LOGIC SPECS */}
         <section className="py-24 border-t border-white/5">
-            <div className="container px-4 md:px-6 max-w-4xl mx-auto space-y-12">
+            <div className="container px-4 md:px-6 max-w-4xl mx-auto space-y-16">
                 <div className="text-center space-y-4">
-                    <h2 className="text-3xl font-black font-headline uppercase italic">Logbook Intelligence Specs</h2>
-                    <p className="text-secondary-text italic font-medium">Built to transform manual tracking into a verifiable Legal Record of Record.</p>
+                    <h2 className="text-3xl font-black font-headline uppercase italic">Clinical Ledger Order</h2>
+                    <p className="text-secondary-text italic font-medium">The natural workflow optimized for busy restaurant managers.</p>
                 </div>
-                <div className="grid sm:grid-cols-2 gap-12 text-sm">
-                    <div className="space-y-4">
-                        <div className="flex items-center gap-2 text-primary">
-                            <History className="h-4 w-4" />
-                            <span className="font-black uppercase tracking-widest">Auto-Status Trigger</span>
-                        </div>
-                        <p className="text-secondary-text leading-relaxed">The system now monitors the "Last Date Completed" column. As soon as a user types a date, the status column flips from PENDING to COMPLETED automatically. Zero manual typing for status.</p>
-                    </div>
-                    <div className="space-y-4">
-                        <div className="flex items-center gap-2 text-primary">
-                            <MonitorCheck className="h-4 w-4" />
-                            <span className="font-black uppercase tracking-widest">Personnel-Role Linking</span>
-                        </div>
-                        <p className="text-secondary-text leading-relaxed">Assign a name to a role (e.g. Rahul -> Head Chef) in the Setup sheet. The Logbook uses a VLOOKUP engine to auto-populate the person's name next to every task they are responsible for.</p>
+                
+                <div className="relative">
+                    <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-white/5 -translate-y-1/2 hidden md:block" />
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-8 relative z-10">
+                        {[
+                            { step: "01", label: "Date of Entry", sub: "Timestamp" },
+                            { step: "02", label: "Branch", sub: "Location" },
+                            { step: "03", label: "Personnel", sub: "Accountability" },
+                            { step: "04", label: "Date Done", sub: "The Trigger" },
+                            { step: "05", label: "Auto Status", sub: "Validation" }
+                        ].map((item, i) => (
+                            <div key={i} className="flex flex-col items-center text-center space-y-2">
+                                <div className="w-10 h-10 rounded-full bg-primary text-black flex items-center justify-center font-black text-xs">{item.step}</div>
+                                <p className="font-bold text-xs uppercase tracking-widest">{item.label}</p>
+                                <p className="text-[10px] text-muted-foreground italic">{item.sub}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
