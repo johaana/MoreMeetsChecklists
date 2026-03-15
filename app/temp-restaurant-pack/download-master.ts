@@ -5,8 +5,8 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * Version 3.1 - The Governance Dashboard (Surgical Refinement)
- * Features: Granular Departmental Metrics, Pie-Chart Guided Source, Clinical Number Formatting.
+ * Version 3.2 - Today-Forward Build (Surgical Refinement)
+ * Features: 365-Day Matrix starting from TODAY, Clinical Number Formatting, Action-First UI.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -110,7 +110,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const coverData = [
         [], [],
         [{ v: "RESTAURANT OPERATIONS CONTROL SYSTEM", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Version 3.1 | The Governance Dashboard (Unified Matrix)`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Version 3.2 | The Today-Forward Matrix Build`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "BRANCH MASTER REGISTRY", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "Branch 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Bandra Main", s: inputStyle }, null, { v: "Branch 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Colaba Hub", s: inputStyle }],
@@ -152,13 +152,13 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { v: "Consequence of Failure", s: headerBlockStyle } // J
     ];
 
-    const ledgerData: any[][] = [[], [{ v: "MASTER OPERATIONAL LEDGER (365-DAY AUDIT TRAIL)", s: titleStyle }], [], ledgerHeaders];
+    const ledgerData: any[][] = [[], [{ v: "MASTER OPERATIONAL LEDGER (TODAY-FORWARD AUDIT TRAIL)", s: titleStyle }], [], ledgerHeaders];
 
     const today = new Date();
     const branches = ["Bandra Main", "Colaba Hub"];
 
-    // Matrix Build: -30 days history to +335 days future
-    for (let d = -30; d <= 335; d++) {
+    // Matrix Build: Start from Today (d=0) to +364 days future
+    for (let d = 0; d <= 364; d++) {
         const entryDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + d);
 
         branches.forEach(branch => {
@@ -200,8 +200,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ledgerWs['!autofilter'] = { ref: `A4:J${ledgerData.length}` };
     utils.book_append_sheet(wb, ledgerWs, "03_MASTER_LEDGER");
 
-    // --- 02. DASHBOARD (Surgical Refinement) ---
-    const startOfPeriod = new Date(today.getFullYear(), today.getMonth(), 1);
+    // --- 02. DASHBOARD ---
+    const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
     const dashData: any[][] = [
         [],
         [{ v: "NETWORK COMPLIANCE SCORECARD (LIVE)", s: titleStyle }],
@@ -209,8 +209,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "REPORTING WINDOW SETTINGS", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIME_NAVY } } } }, { v: "START DATE", s: headerBlockStyle }, { v: "END DATE", s: headerBlockStyle }, { v: "SYSTEM CLOCK", s: headerBlockStyle }],
         [
             { v: "Audit Window:", s: { alignment: { horizontal: 'right' }, font: { italic: true } } }, 
-            { v: startOfPeriod, t: 'd', s: dateDisplayStyle }, 
-            { v: today, t: 'd', s: dateDisplayStyle },         
+            { v: today, t: 'd', s: dateDisplayStyle }, 
+            { v: endOfMonth, t: 'd', s: dateDisplayStyle },         
             { t: 'f', f: "TODAY()", s: dateDisplayStyle }                            
         ],
         [],
@@ -293,5 +293,5 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     riskWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
     utils.book_append_sheet(wb, riskWs, "04_RISK_MAP");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_V3.1_Governance_Ledger.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V3.2_TodayForward_Suite.xlsx`);
 }
