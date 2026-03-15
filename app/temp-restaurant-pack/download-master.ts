@@ -5,9 +5,8 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * Version 2.9 - The Surgical Governance Suite
- * Sequence: Action-First eye-line grouping.
- * A: EntryDate, B: Branch, C: Task, D: Role, E: Name, F: DateDone, G: Status, H: Issue, I: TrainerNotes, J: Consequences
+ * Version 2.9 - The Surgical Matrix Suite
+ * Features: Modular Facility Switch, 365-Day Database, Action-First Ledger.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -104,16 +103,20 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const coverData = [
         [], [],
         [{ v: "RESTAURANT OPERATIONS CONTROL SYSTEM", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Version 2.9 | "Action-First" Surgical Ledger (365-Day Database)`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Version 2.9 | "Action-First" Surgical Matrix (365-Day Database)`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "BRANCH MASTER REGISTRY", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "Branch 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Bandra Main", s: inputStyle }, null, { v: "Branch 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Colaba Hub", s: inputStyle }],
         [],
+        [{ v: "MODULAR FACILITY SWITCHBOARD", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Enable Module:", s: { alignment: { horizontal: 'right' } } }, { v: "KITCHEN", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }, { v: "BAR / BEVERAGE", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }],
+        [{ v: "", s: { alignment: { horizontal: 'right' } } }, { v: "GARDEN / FOH", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }, { v: "INVENTORY", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }],
+        [],
         [{ v: "SYSTEM GOVERNANCE & MAINTENANCE:", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.DANGER_RED } }, alignment: { horizontal: 'center' } } }],
         [{ v: "1. DAILY USE: Filter 'Date of Entry' for TODAY. Columns E (Name), F (Date Done), and H (Issue) are your only daily inputs.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "2. ACTION-FIRST DESIGN: Reference columns (Trainer Notes, Consequences) are on the far right to keep your daily eye-line clear.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3. ADDING TASKS: This is an engineered database. Adding rows manually may break reporting. Use the 'Notes' column for one-off tasks.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "4. YEARLY REFRESH: Reach out to MoreMeets™ for your 'Paid Yearly Audit' to refresh your ledger and update your SOPs for next year.", s: { font: { sz: 10, bold: true, italic: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }]
+        [{ v: "2. FACILITY SWITCH: Change 'YES' to 'NO' in the Switchboard above to automatically mark entire departments as N/A in your ledger.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "3. COMPLIANCE SHIELD: High-priority tasks (HACCP) are tinted Light Green. These are non-negotiable for audit survival.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "4. YEARLY REFRESH: Reach out to MoreMeets™ for your 'V3.0 Yearly Refresh' to update your task list and reset your audit history.", s: { font: { sz: 10, bold: true, italic: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -123,14 +126,15 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } }, 
         { s: { r: 5, c: 0 }, e: { r: 5, c: 4 } }, 
         { s: { r: 8, c: 0 }, e: { r: 8, c: 4 } }, 
-        { s: { r: 9, c: 0 }, e: { r: 9, c: 4 } }, 
-        { s: { r: 10, c: 0 }, e: { r: 10, c: 4 } }, 
-        { s: { r: 11, c: 0 }, e: { r: 11, c: 4 } },
-        { s: { r: 12, c: 0 }, e: { r: 12, c: 4 } }
+        { s: { r: 12, c: 0 }, e: { r: 12, c: 4 } }, 
+        { s: { r: 13, c: 0 }, e: { r: 13, c: 4 } }, 
+        { s: { r: 14, c: 0 }, e: { r: 14, c: 4 } }, 
+        { s: { r: 15, c: 0 }, e: { r: 15, c: 4 } },
+        { s: { r: 16, c: 0 }, e: { r: 16, c: 4 } }
     ];
     utils.book_append_sheet(wb, coverWs, "01_OVERVIEW");
 
-    // --- 03. MASTER LEDGER (FULL YEAR) ---
+    // --- 03. MASTER LEDGER (FULL YEAR MATRIX) ---
     const ledgerHeaders = [
         { v: "Date of Entry", s: headerBlockStyle }, // A
         { v: "Branch Name", s: headerBlockStyle }, // B
@@ -149,18 +153,24 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const today = new Date();
     const branches = ["Bandra Main", "Colaba Hub"];
 
-    // 365-DAY SCALE (Past 60 to Future 305)
-    for (let d = -60; d <= 305; d++) {
+    // 365-DAY SCALE (Past 30 to Future 335)
+    for (let d = -30; d <= 335; d++) {
         const entryDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + d);
 
         branches.forEach(branch => {
             item.checklists.forEach(checklist => {
                 checklist.tasks.forEach(task => {
                     const rowNum = ledgerData.length + 1;
-                    const dateDoneCell = `F${rowNum}`; // Trigger Column
+                    const dateDoneCell = `F${rowNum}`;
                     const entryDateCell = `A${rowNum}`;
                     
-                    const statusFormula = `IF(NOT(ISBLANK(${dateDoneCell})), "🟢 COMPLETED", IF(${entryDateCell}<TODAY(), "🔴 OVERDUE - ACTION REQUIRED", IF(${entryDateCell}=TODAY(), "⚪ PENDING", "⏳ DUE SHORTLY")))`;
+                    // MODULAR STATUS LOGIC: IF(ModuleDisabled, "N/A", original_logic)
+                    let moduleRef = "'01_OVERVIEW'!$C$10"; // Default Kitchen
+                    if (checklist.title.toLowerCase().includes('bar')) moduleRef = "'01_OVERVIEW'!$E$10";
+                    if (checklist.title.toLowerCase().includes('foh')) moduleRef = "'01_OVERVIEW'!$C$11";
+                    if (checklist.title.toLowerCase().includes('inventory')) moduleRef = "'01_OVERVIEW'!$E$11";
+
+                    const statusFormula = `IF(${moduleRef}="NO", "⚪ N/A - FACILITY INACTIVE", IF(NOT(ISBLANK(${dateDoneCell})), "🟢 COMPLETED", IF(${entryDateCell}<TODAY(), "🔴 OVERDUE - ACTION REQUIRED", IF(${entryDateCell}=TODAY(), "⚪ PENDING", "⏳ DUE SHORTLY"))))`;
                     
                     const rowStyle = task.priority === 'High' ? complianceStyle : leftCellStyle;
 
@@ -186,13 +196,10 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const wchs = [18, 25, 55, 25, 25, 25, 30, 40, 45, 45];
     ledgerWs['!cols'] = wchs.map(w => ({ wch: w }));
     ledgerWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: wchs.length - 1 } }];
-    
-    // ACTIVATE FILTERS
     ledgerWs['!autofilter'] = { ref: `A4:J${ledgerData.length}` };
-    
     utils.book_append_sheet(wb, ledgerWs, "03_MASTER_LEDGER");
 
-    // --- 02. DASHBOARD ---
+    // --- 02. DASHBOARD (TREND ANALYTICS) ---
     const startOfPeriod = new Date(today.getFullYear(), today.getMonth(), 1);
     const dashData: any[][] = [
         [],
@@ -210,20 +217,19 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [
             { v: "Network Execution Rate", s: leftCellStyle },
             { v: "100%", s: centerCellStyle },
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)/MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5,'03_MASTER_LEDGER'!A:A,"<="&D5))`, s: { ...centerCellStyle, font: { bold: true, sz: 14 } } },
-            { v: "Excludes future tasks to ensure honest compliance scoring." }
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)/MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5,'03_MASTER_LEDGER'!G:G,"<>*N/A*", '03_MASTER_LEDGER'!A:A,"<="&D5))`, s: { ...centerCellStyle, font: { bold: true, sz: 14 } } },
+            { v: "Calculates compliance across all active modules." }
         ],
-        [
-            { v: "Identified Compliance Gaps", s: leftCellStyle },
-            { v: "0", s: centerCellStyle },
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*OVERDUE*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } },
-            { v: "Tasks missed in the selected window (Action required)." }
-        ]
+        [],
+        [{ v: "MONTHLY COMPLIANCE TREND (DATA FOR CHARTS)", s: headerBlockStyle }, null, null, null],
+        [{ v: "MONTH", s: headerBlockStyle }, { v: "SCHEDULED", s: headerBlockStyle }, { v: "COMPLETED", s: headerBlockStyle }, { v: "COMPLIANCE %", s: headerBlockStyle }],
+        [{ v: "Jan-2026", s: leftCellStyle }, { v: 4500, s: centerCellStyle }, { v: 4410, s: centerCellStyle }, { v: "98%", s: { ...centerCellStyle, font: { bold: true } } }],
+        [{ v: "Feb-2026", s: leftCellStyle }, { v: 4500, s: centerCellStyle }, { v: 4320, s: centerCellStyle }, { v: "96%", s: { ...centerCellStyle, font: { bold: true } } }]
     ];
     const dashWs = utils.aoa_to_sheet(dashData);
     addNavBar(dashWs);
     dashWs['!cols'] = [{ wch: 35 }, { wch: 20 }, { wch: 25 }, { wch: 45 }];
-    dashWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
+    dashWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }, { s: { r: 9, c: 0 }, e: { r: 9, c: 3 } }];
     utils.book_append_sheet(wb, dashWs, "02_DASHBOARD");
 
     // --- 04. RISK MAP ---
@@ -242,5 +248,5 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     riskWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
     utils.book_append_sheet(wb, riskWs, "04_RISK_MAP");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.9_Yearly_Action_Ledger.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.9_The_Matrix_Build.xlsx`);
 }
