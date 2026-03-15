@@ -6,8 +6,8 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
  * Version 2.8 - The Yearly Governance Suite
- * Philosophy: 365-Day Operational Database (60 Days History / 305 Days Future).
- * Columns: A: EntryDate, B: Branch, C: TrainerNotes, D: Task, E: Role, F: Name, G: DateDone, H: Status, I: Issue/Notes
+ * Philosophy: 365-Day Operational Database.
+ * Sequence: A: EntryDate, B: Branch, C: Task, D: TrainerNotes, E: Role, F: Name, G: DateDone, H: Status, I: Issue/Notes
  * Logic:
  * 🔴 OVERDUE: Date passed & empty 'Date Done'.
  * ⚪ PENDING: Today & empty 'Date Done'.
@@ -117,7 +117,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "SYSTEM GOVERNANCE & YEARLY REFRESH:", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.DANGER_RED } }, alignment: { horizontal: 'center' } } }],
         [{ v: "1. The '03_MASTER_LEDGER' contains 365 days of rows. Use the Filter [v] on 'Date' to select specific months.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
         [{ v: "2. To see only today's tasks, filter 'Date of Entry' for TODAY only.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3. 'Trainer Notes' provide 'How-to' guidance. 'Issue / Action Taken' is where you record events.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "3. 'Trainer Notes' provide 'How-to' guidance. 'Issue / Action Taken / Notes' is where you record deviations.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
         [{ v: "4. SYSTEM MAINTENANCE: Reach out to MoreMeets™ for a 'Paid Yearly Audit & Refresh' to update your SOPs and receive a clean V3.0 ledger.", s: { font: { sz: 10, bold: true, italic: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
@@ -139,8 +139,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const ledgerHeaders = [
         { v: "Date of Entry", s: headerBlockStyle }, // A
         { v: "Branch Name", s: headerBlockStyle }, // B
-        { v: "Trainer Notes (How-to)", s: headerBlockStyle }, // C
-        { v: "Requirement / Control Step", s: headerBlockStyle }, // D
+        { v: "Requirement / Control Step", s: headerBlockStyle }, // C
+        { v: "Trainer Notes (How-to)", s: headerBlockStyle }, // D
         { v: "Responsible Role", s: headerBlockStyle }, // E
         { v: "Staff Member (Name)", s: headerBlockStyle }, // F
         { v: "Date Completed (Input)", s: headerBlockStyle }, // G
@@ -164,11 +164,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                     const dateDoneCell = `G${rowNum}`;
                     const entryDateCell = `A${rowNum}`;
                     
-                    // STATUS LOGIC V2.8:
-                    // 1. If Date Done exists -> COMPLETED
-                    // 2. Else if Entry Date < Today -> OVERDUE
-                    // 3. Else if Entry Date = Today -> PENDING
-                    // 4. Else -> DUE SHORTLY
                     const statusFormula = `IF(NOT(ISBLANK(${dateDoneCell})), "🟢 COMPLETED", IF(${entryDateCell}<TODAY(), "🔴 OVERDUE - ACTION REQUIRED", IF(${entryDateCell}=TODAY(), "⚪ PENDING", "⏳ DUE SHORTLY")))`;
                     
                     const rowStyle = task.priority === 'High' ? complianceStyle : leftCellStyle;
@@ -176,8 +171,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                     ledgerData.push([
                         { v: entryDate, t: 'd', s: { ...centerCellStyle, numFmt: 'dd-mmm-yyyy' } }, 
                         { v: branch, s: centerCellStyle }, 
+                        { v: task.description, s: rowStyle },
                         { v: task.trainerNotes || "Follow standard protocol.", s: { ...leftCellStyle, font: { italic: true, color: { rgb: COLORS.TEXT_MUTED }, sz: 9 } } },
-                        { v: task.description, s: rowStyle }, 
                         { v: checklist.role, s: centerCellStyle }, 
                         { v: "", s: inputStyle }, 
                         { v: "", s: inputStyle }, 
@@ -191,7 +186,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const ledgerWs = utils.aoa_to_sheet(ledgerData);
     addNavBar(ledgerWs);
-    const wchs = [18, 25, 35, 60, 25, 30, 25, 30, 45];
+    const wchs = [18, 25, 60, 35, 25, 30, 25, 30, 45];
     ledgerWs['!cols'] = wchs.map(w => ({ wch: w }));
     ledgerWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: wchs.length - 1 } }];
     
