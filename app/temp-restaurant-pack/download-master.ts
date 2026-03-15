@@ -7,7 +7,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * ROCS v4.2 - The Operational Operating System (Enterprise Continuity Edition)
  * Normalized Architecture: TASK_LIBRARY -> MASTER_LEDGER (Interface)
- * Features: Facility Switchboard, Multi-Branch Identity, Full-Name Accountability
+ * Features: Facility Switchboard, Multi-Branch Identity, Full-Name Accountability, Phased Start Dates
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -97,7 +97,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ];
         utils.sheet_add_aoa(ws, navData, { origin: "A1" });
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
-        ws['!cols'] = Array(8).fill({ wch: 20 });
+        ws['!cols'] = Array(8).fill({ wch: 25 }); // Expanded for readability
 
         // Add Subtle Watermark at bottom
         utils.sheet_add_aoa(ws, [[{ v: "MoreMeets™ | Operational Intelligence Standard v4.2", s: watermarkStyle }]], { origin: "H100" });
@@ -106,20 +106,20 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     // --- 00. START HERE ---
     const insData = [
         [], [],
-        [{ v: "WELCOME TO THE ROCS v4.2 GOVERNANCE SUITE", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "WELCOME TO THE ROCS v4.2 ENTERPRISE SUITE", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
         [{ v: "Follow these 4 steps to activate your operational infrastructure.", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } } } }],
         [],
-        [{ v: "STEP 1: ACTIVATE MODULES", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "Go to SETUP MATRIX to name your branches and toggle facilities (Bar, Pool, Valet, etc.)", l: { Target: "#'07_SETUP'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [{ v: "STEP 1: TELL US ABOUT YOUR BRANCH", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [null, { v: "Click here to name your branches and toggle facilities (Bar, Garden, etc.)", l: { Target: "#'07_SETUP'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
-        [{ v: "STEP 2: START DAILY MISSION", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "Staff opens TODAY'S MISSION to see their assigned tasks sorted by risk level.", l: { Target: "#'03_TODAY_MISSION'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [{ v: "STEP 2: ACTIVATE TODAY'S MISSION", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [null, { v: "Staff opens TODAY'S MISSION to see tasks sorted by Risk and Branch.", l: { Target: "#'03_TODAY_MISSION'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
         [{ v: "STEP 3: SHIFT CONTINUITY", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "Managers log handovers to ensure no issues vanish between shift changes.", l: { Target: "#'04_SHIFT_HANDOVER'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [null, { v: "Ensure morning/night teams are talking via the SHIFT HANDOVER log.", l: { Target: "#'04_SHIFT_HANDOVER'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
         [{ v: "STEP 4: COMMAND REVIEW", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "Owners review the DASHBOARD and ROI CALCULATOR to see compliance and money saved.", l: { Target: "#'02_DASHBOARD'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }]
+        [null, { v: "Review the DASHBOARD and ROI CALCULATOR to see money saved.", l: { Target: "#'02_DASHBOARD'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }]
     ];
     const insWs = utils.aoa_to_sheet(insData);
     addNavBar(insWs);
@@ -128,19 +128,18 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     // --- 07. SETUP (FACILITY MATRIX) ---
     const setupData = [
         [], [{ v: "FACILITY MATRIX & BRANCH SETUP", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }], 
-        [{ v: "Define your branches and toggle facility modules. NO = Tasks turn N/A.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [{ v: "Define branch identity and start dates. Set Module to NO to hide related tasks.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.TEXT_MUTED } } } }],
         [],
         [{ v: "CONFIG PROPERTY", s: headerBlockStyle }, { v: "BRANCH 1", s: headerBlockStyle }, { v: "BRANCH 2", s: headerBlockStyle }, { v: "HELPFUL NOTES", s: headerBlockStyle }],
-        [{ v: "Branch Nickname", s: leftCellStyle }, { v: "Bandra Main", s: inputStyle }, { v: "Ghatkopar West", s: inputStyle }, { v: "Used for reporting and logs." }],
-        [{ v: "Operational Year Start", s: leftCellStyle }, { v: new Date(), t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } }, { v: new Date(), t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } }, { v: "365-day cycle anchor." }],
-        [{ v: "View Tasks For Date", s: leftCellStyle }, { v: new Date(), t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } }, { v: new Date(), t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } }, { v: "Change this to view future/past missions." }],
+        [{ v: "Branch Nickname", s: leftCellStyle }, { v: "Bandra Main", s: inputStyle }, { v: "Ghatkopar West", s: inputStyle }, { v: "Enter the name of your outlets." }],
+        [{ v: "Operational Year Start", s: leftCellStyle }, { v: new Date(), t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } }, { v: new Date(), t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } }, { v: "Phased rollout support." }],
+        [{ v: "View Tasks For Date", s: leftCellStyle }, { v: new Date(), t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } }, { v: new Date(), t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } }, { v: "Manual date override." }],
         [],
-        [{ v: "FACILITY TOGGLES (YES/NO)", s: { font: { bold: true } } }],
+        [{ v: "MODULE TOGGLES (YES/NO)", s: { font: { bold: true } } }],
         [{ v: "Bar / Spirits Module", s: leftCellStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "Spirit counts, line cleaning." }],
         [{ v: "Outdoor / Garden Module", s: leftCellStyle }, { v: "NO", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "Landscaping, path safety." }],
         [{ v: "Valet / Parking Module", s: leftCellStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "Key security, driver audits." }],
-        [{ v: "Pool / Water Module", s: leftCellStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "Chemical logs, rescue gear." }],
-        [{ v: "Delivery / Dispatch Module", s: leftCellStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "Rider hygiene, packaging." }]
+        [{ v: "Pool / Water Module", s: leftCellStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "Chemical logs, rescue gear." }]
     ];
     const setupWs = utils.aoa_to_sheet(setupData);
     addNavBar(setupWs);
@@ -151,15 +150,15 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const cpData = [
         [], [],
         [{ v: "RESTAURANT COMMAND CENTER v4.2", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Certified Governance Framework by MoreMeets™", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Certified Operational Governance Framework", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "▶ OPEN TODAY'S MISSION", l: { Target: "#'03_TODAY_MISSION'!A1" }, s: { font: { sz: 14, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [{ v: "▶ VIEW COMPLIANCE DASHBOARD", l: { Target: "#'02_DASHBOARD'!A1" }, s: { font: { sz: 14, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [{ v: "▶ LOG INCIDENT OR LOSS", l: { Target: "#'05_INCIDENT_LOG'!A1" }, s: { font: { sz: 14, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "BRANCH SNAPSHOTS", s: { font: { bold: true }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Branch 1 (Today):", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "IFERROR(COUNTIFS('03_TODAY_MISSION'!A:A, TODAY(), '03_TODAY_MISSION'!B:B, '07_SETUP'!$B$6, '03_TODAY_MISSION'!I:I, \"<>\") / COUNTIF('03_TODAY_MISSION'!A:A, TODAY()), 0)", s: { font: { bold: true }, numFmt: '0%' } }],
-        [{ v: "Branch 2 (Today):", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "IFERROR(COUNTIFS('03_TODAY_MISSION'!A:A, TODAY(), '03_TODAY_MISSION'!B:B, '07_SETUP'!$C$6, '03_TODAY_MISSION'!I:I, \"<>\") / COUNTIF('03_TODAY_MISSION'!A:A, TODAY()), 0)", s: { font: { bold: true }, numFmt: '0%' } }]
+        [{ v: "Branch 1 (Today):", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "IFERROR(COUNTIFS('03_TODAY_MISSION'!A:A, '07_SETUP'!$B$6, '03_TODAY_MISSION'!I:I, \"<>\") / COUNTIF('03_TODAY_MISSION'!A:A, '07_SETUP'!$B$6), 0)", s: { font: { bold: true }, numFmt: '0%' } }],
+        [{ v: "Branch 2 (Today):", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "IFERROR(COUNTIFS('03_TODAY_MISSION'!A:A, '07_SETUP'!$C$6, '03_TODAY_MISSION'!I:I, \"<>\") / COUNTIF('03_TODAY_MISSION'!A:A, '07_SETUP'!$C$6), 0)", s: { font: { bold: true }, numFmt: '0%' } }]
     ];
     const cpWs = utils.aoa_to_sheet(cpData);
     addNavBar(cpWs);
@@ -168,15 +167,14 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     // --- 03. TODAY'S MISSION ---
     const missionHeaders = [
-        { v: "Branch", s: headerBlockStyle }, { v: "Date", s: headerBlockStyle }, { v: "Task ID", s: headerBlockStyle }, 
+        { v: "Branch Name", s: headerBlockStyle }, { v: "Date", s: headerBlockStyle }, { v: "Task ID", s: headerBlockStyle }, 
         { v: "Module", s: headerBlockStyle }, { v: "Task Description", s: headerBlockStyle }, { v: "Freq", s: headerBlockStyle },
         { v: "Risk", s: headerBlockStyle }, { v: "Verify?", s: headerBlockStyle }, 
-        { v: "Date Done", s: headerBlockStyle }, { v: "Actioned By (Name)", s: headerBlockStyle }, 
+        { v: "Date Done", s: headerBlockStyle }, { v: "Actioned By (Full Name)", s: headerBlockStyle }, 
         { v: "Verified By (Manager)", s: headerBlockStyle }, { v: "Trainer Notes", s: headerBlockStyle }
     ];
     const missionData: any[][] = [[], [{ v: "TODAY'S MISSION: OPERATIONAL EXECUTION LEDGER", s: { font: { sz: 18, bold: true } } }], [], missionHeaders];
     
-    // Generate tasks for 2 branches for 30 days (keep file size reasonable for demo)
     const startDate = new Date();
     for (let b = 1; b <= 2; b++) {
         for (let i = 0; i < 30; i++) {
@@ -205,7 +203,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     }
     const mWs = utils.aoa_to_sheet(missionData);
     addNavBar(mWs);
-    mWs['!cols'] = [15, 12, 10, 20, 50, 10, 12, 12, 15, 25, 20, 45].map(w => ({ wch: w }));
+    mWs['!cols'] = [18, 12, 10, 20, 50, 10, 12, 12, 15, 30, 20, 45].map(w => ({ wch: w }));
     mWs['!autofilter'] = { ref: "A4:L5000" };
     utils.book_append_sheet(wb, mWs, "03_TODAY_MISSION");
 
@@ -263,5 +261,5 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     dWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
     utils.book_append_sheet(wb, dWs, "02_DASHBOARD");
 
-    writeFile(wb, `ROCS_v4.2_Enterprise_Continuity.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V4.2_ENTERPRISE.xlsx`);
 }
