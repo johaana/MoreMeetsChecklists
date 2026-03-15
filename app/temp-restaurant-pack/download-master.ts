@@ -26,8 +26,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         WHITE: "FFFFFF",
         SOFT_GREY: "F3F4F6",
         BORDER_LIGHT: "D1D5DB",
-        INPUT_ZONE: "FFFFE0", // Light yellow for where staff must type
-        COMPLIANCE_GREEN: "E6FFFA", // Subtle green for High Priority tasks
+        INPUT_ZONE: "FFFFE0", 
+        COMPLIANCE_TINT: "E6FFFA", 
         TEXT_MUTED: "6B7280"
     };
 
@@ -73,7 +73,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const complianceStyle = {
         ...leftCellStyle,
-        fill: { fgColor: { rgb: COLORS.COMPLIANCE_GREEN } }
+        fill: { fgColor: { rgb: COLORS.COMPLIANCE_TINT } }
     };
 
     const titleStyle = { 
@@ -113,7 +113,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "SYSTEM PROTOCOL (ZERO-AMBIGUITY):", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "1. Use the '03_OPERATIONAL_LEDGER' for all daily entries.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
         [{ v: "2. Type your name and 'Date Done'. Status flips to COMPLETED automatically.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.SUCCESS_GREEN } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3. To see history or yesterday's gaps, use the Filter Arrow [v] on the 'Date of Entry' column.", s: { font: { sz: 10, italic: true }, alignment: { horizontal: 'center' } } }]
+        [{ v: "3. If a task was due yesterday and is blank, it will show 'OVERDUE'.", s: { font: { sz: 10, italic: true, color: { rgb: COLORS.DANGER_RED } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -136,22 +136,26 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const ledgerData: any[][] = [[], [{ v: "MASTER OPERATIONAL LEDGER (THE PERMANENT AUDIT TRAIL)", s: titleStyle }], [], ledgerHeaders];
 
-    // Pre-populate 3 Days of entries to show the ledger flow
-    const daysToPreFill = 3; 
     const today = new Date();
+    const historyRange = 3; 
+    const futureRange = 3; 
 
-    for (let d = 0; d < daysToPreFill; d++) {
+    for (let d = -historyRange; d <= futureRange; d++) {
         const entryDate = new Date(today);
-        entryDate.setDate(today.getDate() - (daysToPreFill - 1 - d)); // Show past 2 days + today
+        entryDate.setDate(today.getDate() + d);
         const dateStr = entryDate.toLocaleDateString('en-GB');
 
         item.checklists.forEach(checklist => {
             checklist.tasks.forEach(task => {
                 const dateDoneCell = `G${ledgerData.length + 1}`;
-                // Fixed Formula: Strictly Pending if cell G is blank
-                const statusFormula = `IF(ISBLANK(${dateDoneCell}), "PENDING", "COMPLETED")`;
+                const entryDateCell = `A${ledgerData.length + 1}`;
                 
-                // Compliance Motivation: Green tint for high-priority tasks
+                // RE-ENGINEERED LOGIC: 
+                // 1. If Date Done is NOT blank -> COMPLETED
+                // 2. If Date Done IS blank AND Entry Date < TODAY -> OVERDUE
+                // 3. Otherwise -> PENDING
+                const statusFormula = `IF(ISBLANK(${dateDoneCell}), IF(DATEVALUE("${dateStr}")<TODAY(), "OVERDUE - ACTION REQUIRED", "PENDING"), "COMPLETED")`;
+                
                 const rowStyle = task.priority === 'High' ? complianceStyle : leftCellStyle;
 
                 ledgerData.push([
@@ -171,23 +175,34 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const ledgerWs = utils.aoa_to_sheet(ledgerData);
     addNavBar(ledgerWs);
-    const wchs = [15, 25, 25, 60, 25, 30, 25, 20, 45];
+    const wchs = [15, 25, 25, 60, 25, 30, 25, 25, 45];
     ledgerWs['!cols'] = wchs.map(w => ({ wch: w }));
     ledgerWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: wchs.length - 1 } }];
     
-    // ACTIVATE ALL FILTERS on the Header row (Row 4)
+    // ACTIVATE FILTERS FOR THE ENTIRE RANGE
     ledgerWs['!autofilter'] = { ref: `A4:I${ledgerData.length}` };
     
     utils.book_append_sheet(wb, ledgerWs, "03_OPERATIONAL_LEDGER");
 
     // --- 02. DASHBOARD ---
+    // The Dashboard now uses COUNTIFS to only look at tasks where Entry Date <= TODAY
     const dashData: any[][] = [
         [],
         [{ v: "GOVERNANCE & SYSTEM HEALTH SCORECARD", s: titleStyle }],
         [],
         [{ v: "Operational Metric", s: headerBlockStyle }, { v: "Target", s: headerBlockStyle }, { v: "Live Compliance", s: headerBlockStyle }, { v: "Audit Analysis", s: headerBlockStyle }],
-        [{ v: "Overall Completion %", s: centerCellStyle }, { v: "100%", s: centerCellStyle }, { t: 'f', f: `TEXT(COUNTIF('03_OPERATIONAL_LEDGER'!H:H,"COMPLETED")/MAX(1,COUNTA('03_OPERATIONAL_LEDGER'!D:D)-1),"0%")`, s: { ...centerCellStyle, font: { bold: true } } }, { v: "Calculates across entire history" }],
-        [{ v: "Unresolved Issues", s: centerCellStyle }, { v: "Zero", s: centerCellStyle }, { t: 'f', f: `COUNTIF('03_OPERATIONAL_LEDGER'!I:I,"<>")`, s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } }, { v: "View 'Issue' column in Ledger" }]
+        [
+            { v: "Live Completion Rate", s: centerCellStyle }, 
+            { v: "100%", s: centerCellStyle }, 
+            { t: 'f', f: `TEXT(COUNTIFS('03_OPERATIONAL_LEDGER'!H:H,"COMPLETED",'03_OPERATIONAL_LEDGER'!A:A,"<="&TODAY())/MAX(1,COUNTIFS('03_OPERATIONAL_LEDGER'!A:A,"<="&TODAY())),"0%")`, s: { ...centerCellStyle, font: { bold: true } } }, 
+            { v: "Ignores future-dated tasks" }
+        ],
+        [
+            { v: "Unresolved Gaps", s: centerCellStyle }, 
+            { v: "Zero", s: centerCellStyle }, 
+            { t: 'f', f: `COUNTIFS('03_OPERATIONAL_LEDGER'!H:H,"OVERDUE*")`, s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } }, 
+            { v: "Tasks missed in the past" }
+        ]
     ];
     const dashWs = utils.aoa_to_sheet(dashData);
     addNavBar(dashWs);
