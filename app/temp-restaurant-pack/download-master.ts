@@ -7,6 +7,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * Version 2.8 - The Yearly Governance Suite
  * Philosophy: 365-Day Operational Database (60 Days History / 305 Days Future).
+ * Columns: A: EntryDate, B: Branch, C: TrainerNotes, D: Task, E: Role, F: Name, G: DateDone, H: Status, I: Issue/Notes
  * Logic:
  * 🔴 OVERDUE: Date passed & empty 'Date Done'.
  * ⚪ PENDING: Today & empty 'Date Done'.
@@ -113,11 +114,11 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "BRANCH MASTER REGISTRY", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "Branch 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Bandra Main", s: inputStyle }, null, { v: "Branch 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Colaba Hub", s: inputStyle }],
         [],
-        [{ v: "SYSTEM GOVERNANCE & YEARLY REFRESH:", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "SYSTEM GOVERNANCE & YEARLY REFRESH:", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.DANGER_RED } }, alignment: { horizontal: 'center' } } }],
         [{ v: "1. The '03_MASTER_LEDGER' contains 365 days of rows. Use the Filter [v] on 'Date' to select specific months.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
         [{ v: "2. To see only today's tasks, filter 'Date of Entry' for TODAY only.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3. 'Trainer Notes' provide the 'How-to' guidance. 'Action Taken' is where you record issues.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "4. For next year's ledger or system updates, contact MoreMeets™ for a V3.0 Refresh pack.", s: { font: { sz: 10, italic: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }]
+        [{ v: "3. 'Trainer Notes' provide 'How-to' guidance. 'Issue / Action Taken' is where you record events.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "4. SYSTEM MAINTENANCE: Reach out to MoreMeets™ for a 'Paid Yearly Audit & Refresh' to update your SOPs and receive a clean V3.0 ledger.", s: { font: { sz: 10, bold: true, italic: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -144,7 +145,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { v: "Staff Member (Name)", s: headerBlockStyle }, // F
         { v: "Date Completed (Input)", s: headerBlockStyle }, // G
         { v: "Live Status (Auto)", s: headerBlockStyle }, // H
-        { v: "Action Taken / Issue / Notes", s: headerBlockStyle } // I
+        { v: "Issue / Action Taken / Notes", s: headerBlockStyle } // I
     ];
 
     const ledgerData: any[][] = [[], [{ v: "MASTER OPERATIONAL LEDGER (ANNUAL AUDIT TRAIL)", s: titleStyle }], [], ledgerHeaders];
