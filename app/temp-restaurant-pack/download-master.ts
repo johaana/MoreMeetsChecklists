@@ -6,7 +6,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
  * Version 3.2 - Today-Forward Build (Surgical Refinement)
- * Features: 365-Day Matrix starting from TODAY, Clinical Number Formatting, Action-First UI.
+ * Features: 365-Day Matrix starting from TODAY, Executive Dashboard Redesign, Action-First UI.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -110,7 +110,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const coverData = [
         [], [],
         [{ v: "RESTAURANT OPERATIONS CONTROL SYSTEM", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Version 3.2 | The Today-Forward Matrix Build`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Version 3.2 | Today-Forward Architecture`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "BRANCH MASTER REGISTRY", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "Branch 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Bandra Main", s: inputStyle }, null, { v: "Branch 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Colaba Hub", s: inputStyle }],
@@ -119,10 +119,10 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "Enable Module:", s: { alignment: { horizontal: 'right' } } }, { v: "KITCHEN", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }, { v: "BAR / BEVERAGE", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }],
         [{ v: "", s: { alignment: { horizontal: 'right' } } }, { v: "GARDEN / FOH", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }, { v: "INVENTORY", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }],
         [],
-        [{ v: "SYSTEM GOVERNANCE & MAINTENANCE:", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.DANGER_RED } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "1. DASHBOARD: Go to '02_DASHBOARD' to see compliance rates and the colorful Pie Chart source.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "2. DAILY USE: Filter 'Date of Entry' for TODAY. Column F (Date Completed) is your primary daily input.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3. SYSTEM REFRESH: Reach out to MoreMeets™ for a yearly update to reset your ledger and add new compliance points.", s: { font: { sz: 10, bold: true, italic: true }, alignment: { horizontal: 'center' } } }]
+        [{ v: "SYSTEM GOVERNANCE NOTES:", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.DANGER_RED } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "1. DAILY USE: Filter Column A for TODAY. Fill Staff Name (Col E) and Date Completed (Col F).", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "2. PERFORMANCE: The Dashboard calculates compliance rate for your specified window.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "3. MAINTENANCE: Reach out to MoreMeets™ for a Yearly System Refresh to reset your ledger.", s: { font: { sz: 10, bold: true, italic: true }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -138,7 +138,79 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     utils.book_append_sheet(wb, coverWs, "01_OVERVIEW");
 
-    // --- 03. MASTER LEDGER (THE 365-DAY MATRIX) ---
+    // --- 02. DASHBOARD ---
+    const today = new Date();
+    const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+    const dashData: any[][] = [
+        [],
+        [{ v: "NETWORK COMPLIANCE PERFORMANCE SCORECARD", s: titleStyle }],
+        [],
+        [{ v: "AUDIT WINDOW SETTINGS", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIME_NAVY } } } }, { v: "START DATE", s: headerBlockStyle }, { v: "END DATE", s: headerBlockStyle }, { v: "SYSTEM CLOCK", s: headerBlockStyle }],
+        [
+            { v: "Configuration:", s: { alignment: { horizontal: 'right' }, font: { italic: true } } }, 
+            { v: today, t: 'd', s: dateDisplayStyle }, 
+            { v: endOfMonth, t: 'd', s: dateDisplayStyle },         
+            { t: 'f', f: "TODAY()", s: dateDisplayStyle }                            
+        ],
+        [],
+        [{ v: "EXECUTIVE PERFORMANCE INDICATOR", s: headerBlockStyle }, { v: "TARGET", s: headerBlockStyle }, { v: "CURRENT RATE", s: headerBlockStyle }, { v: "AUDIT COMMENTARY", s: headerBlockStyle }],
+        [
+            { v: "Network Execution Rate", s: leftCellStyle },
+            { v: "100%", s: centerCellStyle },
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)/MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5,'03_MASTER_LEDGER'!G:G,"<>*N/A*", '03_MASTER_LEDGER'!A:A,"<= TODAY()"))`, s: percentageStyle },
+            { v: "Excludes future and inactive modules." }
+        ],
+        [],
+        [{ v: "OPERATIONAL STATUS MIX", s: headerBlockStyle }, { v: "TOTAL COUNT", s: headerBlockStyle }, null, null],
+        [
+            { v: "🟢 COMPLETED", s: { ...leftCellStyle, fill: { fgColor: { rgb: "C6EFCE" } } } }, 
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
+            null, null
+        ],
+        [
+            { v: "🔴 OVERDUE", s: { ...leftCellStyle, fill: { fgColor: { rgb: "FFC7CE" } } } }, 
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*OVERDUE*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
+            null, null
+        ],
+        [
+            { v: "⚪ PENDING", s: { ...leftCellStyle, fill: { fgColor: { rgb: "F2F2F2" } } } }, 
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*PENDING*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
+            null, null
+        ],
+        [
+            { v: "⏳ DUE SHORTLY", s: { ...leftCellStyle, fill: { fgColor: { rgb: "E6F4FF" } } } }, 
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*SHORTLY*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
+            null, null
+        ],
+        [],
+        [{ v: "DEPARTMENTAL COMPLIANCE BREAKDOWN", s: headerBlockStyle }, null, null, null],
+        [{ v: "DEPARTMENT", s: headerBlockStyle }, { v: "TOTAL STEPS", s: headerBlockStyle }, { v: "COMPLETED", s: headerBlockStyle }, { v: "COMPLIANCE %", s: headerBlockStyle }],
+        [
+            { v: "Kitchen Operations", s: leftCellStyle }, 
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Kitchen*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Kitchen*",'03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
+            { t: 'f', f: `C18/B18`, s: percentageStyle }
+        ],
+        [
+            { v: "FOH / Dining Room", s: leftCellStyle }, 
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Dining*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Dining*",'03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
+            { t: 'f', f: `C19/B19`, s: percentageStyle }
+        ],
+        [
+            { v: "Bar & Beverage", s: leftCellStyle }, 
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Bar*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Bar*",'03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
+            { t: 'f', f: `C20/B20`, s: percentageStyle }
+        ]
+    ];
+    const dashWs = utils.aoa_to_sheet(dashData);
+    addNavBar(dashWs);
+    dashWs['!cols'] = [{ wch: 35 }, { wch: 20 }, { wch: 25 }, { wch: 45 }];
+    dashWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }, { s: { r: 9, c: 0 }, e: { r: 9, c: 1 } }, { s: { r: 15, c: 0 }, e: { r: 15, c: 3 } }];
+    utils.book_append_sheet(wb, dashWs, "02_DASHBOARD");
+
+    // --- 03. MASTER LEDGER ---
     const ledgerHeaders = [
         { v: "Date of Entry", s: headerBlockStyle }, // A
         { v: "Branch Name", s: headerBlockStyle }, // B
@@ -152,12 +224,10 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { v: "Consequence of Failure", s: headerBlockStyle } // J
     ];
 
-    const ledgerData: any[][] = [[], [{ v: "MASTER OPERATIONAL LEDGER (TODAY-FORWARD AUDIT TRAIL)", s: titleStyle }], [], ledgerHeaders];
+    const ledgerData: any[][] = [[], [{ v: "MASTER OPERATIONAL LEDGER (ANNUAL GOVERNANCE MATRIX)", s: titleStyle }], [], ledgerHeaders];
 
-    const today = new Date();
     const branches = ["Bandra Main", "Colaba Hub"];
 
-    // Matrix Build: Start from Today (d=0) to +364 days future
     for (let d = 0; d <= 364; d++) {
         const entryDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + d);
 
@@ -200,82 +270,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ledgerWs['!autofilter'] = { ref: `A4:J${ledgerData.length}` };
     utils.book_append_sheet(wb, ledgerWs, "03_MASTER_LEDGER");
 
-    // --- 02. DASHBOARD ---
-    const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-    const dashData: any[][] = [
-        [],
-        [{ v: "NETWORK COMPLIANCE SCORECARD (LIVE)", s: titleStyle }],
-        [],
-        [{ v: "REPORTING WINDOW SETTINGS", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIME_NAVY } } } }, { v: "START DATE", s: headerBlockStyle }, { v: "END DATE", s: headerBlockStyle }, { v: "SYSTEM CLOCK", s: headerBlockStyle }],
-        [
-            { v: "Audit Window:", s: { alignment: { horizontal: 'right' }, font: { italic: true } } }, 
-            { v: today, t: 'd', s: dateDisplayStyle }, 
-            { v: endOfMonth, t: 'd', s: dateDisplayStyle },         
-            { t: 'f', f: "TODAY()", s: dateDisplayStyle }                            
-        ],
-        [],
-        [{ v: "GOVERNANCE KPIS", s: headerBlockStyle }, { v: "BENCHMARK", s: headerBlockStyle }, { v: "WINDOW PERFORMANCE", s: headerBlockStyle }, { v: "AUDIT COMMENTARY", s: headerBlockStyle }],
-        [
-            { v: "Overall Execution Rate", s: leftCellStyle },
-            { v: "100%", s: centerCellStyle },
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)/MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5,'03_MASTER_LEDGER'!G:G,"<>*N/A*", '03_MASTER_LEDGER'!A:A,"<= TODAY()"))`, s: percentageStyle },
-            { v: "Excludes future and inactive modules." }
-        ],
-        [],
-        [{ v: "PIE CHART SOURCE: COMPLIANCE MIX", s: headerBlockStyle }, null, null, { v: "VISUAL GUIDE", s: headerBlockStyle }],
-        [{ v: "STATUS CATEGORY", s: headerBlockStyle }, { v: "COUNT", s: headerBlockStyle }, { v: "COLOR KEY", s: headerBlockStyle }, { v: "INSTRUCTIONS", s: headerBlockStyle }],
-        [
-            { v: "🟢 COMPLETED", s: { ...leftCellStyle, fill: { fgColor: { rgb: "C6EFCE" } } } }, 
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { v: "SUCCESS GREEN", s: { fill: { fgColor: { rgb: COLORS.SUCCESS_GREEN } } } },
-            { v: "1. Select cells A12:B15", s: { font: { sz: 9, italic: true } } }
-        ],
-        [
-            { v: "🔴 OVERDUE", s: { ...leftCellStyle, fill: { fgColor: { rgb: "FFC7CE" } } } }, 
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*OVERDUE*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { v: "DANGER RED", s: { fill: { fgColor: { rgb: COLORS.DANGER_RED } } } },
-            { v: "2. Click 'Insert' Menu", s: { font: { sz: 9, italic: true } } }
-        ],
-        [
-            { v: "⚪ PENDING", s: { ...leftCellStyle, fill: { fgColor: { rgb: "F2F2F2" } } } }, 
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*PENDING*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { v: "NEUTRAL GREY", s: { fill: { fgColor: { rgb: "D1D5DB" } } } },
-            { v: "3. Choose 'Pie Chart'", s: { font: { sz: 9, italic: true } } }
-        ],
-        [
-            { v: "⏳ DUE SHORTLY", s: { ...leftCellStyle, fill: { fgColor: { rgb: "E6F4FF" } } } }, 
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*SHORTLY*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { v: "FUTURE BLUE", s: { fill: { fgColor: { rgb: COLORS.ACCENT_BLUE } } } },
-            { v: "4. Done!", s: { font: { sz: 9, italic: true } } }
-        ],
-        [],
-        [{ v: "DEPARTMENTAL BREAKDOWN", s: headerBlockStyle }, null, null, null],
-        [{ v: "DEPARTMENT", s: headerBlockStyle }, { v: "TOTAL STEPS", s: headerBlockStyle }, { v: "COMPLETED", s: headerBlockStyle }, { v: "COMPLIANCE %", s: headerBlockStyle }],
-        [
-            { v: "Kitchen Operations", s: leftCellStyle }, 
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Kitchen*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Kitchen*",'03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { t: 'f', f: `C19/B19`, s: percentageStyle }
-        ],
-        [
-            { v: "FOH / Dining Room", s: leftCellStyle }, 
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Dining*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Dining*",'03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { t: 'f', f: `C20/B20`, s: percentageStyle }
-        ],
-        [
-            { v: "Bar & Beverage", s: leftCellStyle }, 
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Bar*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Bar*",'03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { t: 'f', f: `C21/B21`, s: percentageStyle }
-        ]
-    ];
-    const dashWs = utils.aoa_to_sheet(dashData);
-    addNavBar(dashWs);
-    dashWs['!cols'] = [{ wch: 35 }, { wch: 20 }, { wch: 25 }, { wch: 45 }];
-    dashWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }, { s: { r: 9, c: 0 }, e: { r: 9, c: 2 } }, { s: { r: 17, c: 0 }, e: { r: 17, c: 3 } }];
-    utils.book_append_sheet(wb, dashWs, "02_DASHBOARD");
-
     // --- 04. RISK MAP ---
     const riskData = [
         [],
@@ -293,5 +287,5 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     riskWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
     utils.book_append_sheet(wb, riskWs, "04_RISK_MAP");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_V3.2_TodayForward_Suite.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V3.2_Executive_Control.xlsx`);
 }
