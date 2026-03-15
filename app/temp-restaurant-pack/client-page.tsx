@@ -25,7 +25,8 @@ import {
     ShieldAlert,
     Rocket,
     LayoutList,
-    Gauge
+    Gauge,
+    History
 } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -84,7 +85,7 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                         Logbook <br/> <span className="text-primary">Protocols.</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-secondary-text italic max-w-2xl mx-auto font-medium leading-relaxed border-l-2 border-primary/20 pl-8">
-                        Explore 5 "Logbook" variations of the Restaurant System. Built for history, auditability, and multi-location power.
+                        Explore 5 "Digital Logbook" variations. Featuring side-by-side branch mapping, staff profiles, and <strong>Auto-Trigger Status</strong>.
                     </p>
                 </div>
             </div>
@@ -95,36 +96,36 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
             <div className="container px-4 md:px-6">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <BuildCard 
-                        title="1. Standard Logbook"
-                        description="Consultant's Baseline. Includes Cadence & Risk Maps."
+                        title="1. Standard Ledger"
+                        description="Balanced workflow. Includes Personnel Profiles & Risk Maps."
                         icon={LayoutList}
                         mode="STANDARD_LOGBOOK"
                         pack={pack}
                     />
                     <BuildCard 
                         title="2. Audit-Shield Pro"
-                        description="Focus: Consequences & Evidence Required."
+                        description="Focus: Consequences, Proof & Auto-Flipping Status."
                         icon={ShieldAlert}
                         mode="AUDIT_SHIELD"
                         pack={pack}
                     />
                     <BuildCard 
                         title="3. Multi-Unit Command"
-                        description="Focus: Outlet Registry & Branch Aggregation."
+                        description="Focus: Outlet Registry & Branch Name auto-mapping."
                         icon={Rocket}
                         mode="MULTI_UNIT"
                         pack={pack}
                     />
                     <BuildCard 
-                        title="4. Rapid Shift Entry"
-                        description="Focus: Minimalist, tablet-optimized entry."
+                        title="4. Rapid Tablet Entry"
+                        description="Focus: High-speed date entry with instant status updates."
                         icon={Zap}
                         mode="RAPID_SHIFT"
                         pack={pack}
                     />
                     <BuildCard 
                         title="5. Governance Scorecard"
-                        description="Focus: Compliance % & Real-time KPIs."
+                        description="Focus: Compliance % & Real-time Gap Detection."
                         icon={Gauge}
                         mode="GOVERNANCE"
                         pack={pack}
@@ -137,23 +138,23 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
         <section className="py-24 border-t border-white/5">
             <div className="container px-4 md:px-6 max-w-4xl mx-auto space-y-12">
                 <div className="text-center space-y-4">
-                    <h2 className="text-3xl font-black font-headline uppercase italic">Operational Ledger Protocol</h2>
-                    <p className="text-secondary-text italic font-medium">These variations move from a "Status Tracker" to a "Legal Record" of work.</p>
+                    <h2 className="text-3xl font-black font-headline uppercase italic">Logbook Intelligence Specs</h2>
+                    <p className="text-secondary-text italic font-medium">Built to transform manual tracking into a verifiable Legal Record of Record.</p>
                 </div>
-                <div className="grid sm:grid-cols-2 gap-8 text-sm">
+                <div className="grid sm:grid-cols-2 gap-12 text-sm">
                     <div className="space-y-4">
                         <div className="flex items-center gap-2 text-primary">
-                            <ArrowRight className="h-4 w-4" />
-                            <span className="font-black uppercase tracking-widest">Audit Readiness</span>
+                            <History className="h-4 w-4" />
+                            <span className="font-black uppercase tracking-widest">Auto-Status Trigger</span>
                         </div>
-                        <p className="text-secondary-text leading-relaxed">Unlike trackers, Logbooks create a dated history. If an inspector asks for last Tuesday's data, the Logbook provides it instantly.</p>
+                        <p className="text-secondary-text leading-relaxed">The system now monitors the "Last Date Completed" column. As soon as a user types a date, the status column flips from PENDING to COMPLETED automatically. Zero manual typing for status.</p>
                     </div>
                     <div className="space-y-4">
                         <div className="flex items-center gap-2 text-primary">
-                            <ArrowRight className="h-4 w-4" />
-                            <span className="font-black uppercase tracking-widest">Enterprise Aggregation</span>
+                            <MonitorCheck className="h-4 w-4" />
+                            <span className="font-black uppercase tracking-widest">Personnel-Role Linking</span>
                         </div>
-                        <p className="text-secondary-text leading-relaxed">By tagging entries with Location IDs, a headquarters can pull data from 50 outlets into one master dashboard via Google Sheets.</p>
+                        <p className="text-secondary-text leading-relaxed">Assign a name to a role (e.g. Rahul -> Head Chef) in the Setup sheet. The Logbook uses a VLOOKUP engine to auto-populate the person's name next to every task they are responsible for.</p>
                     </div>
                 </div>
             </div>

@@ -9,6 +9,7 @@ type BuildMode = 'STANDARD_LOGBOOK' | 'AUDIT_SHIELD' | 'MULTI_UNIT' | 'RAPID_SHI
 /**
  * Version 2.4 - The Logbook Suite
  * Institutional Standard for Operational Governance
+ * Features: Auto-Status Trigger, Side-by-Side Validation, Active Filters
  */
 export const handleDownloadV2 = (item: PremiumPack, mode: BuildMode = 'STANDARD_LOGBOOK') => {
     if (!item) {
@@ -29,7 +30,8 @@ export const handleDownloadV2 = (item: PremiumPack, mode: BuildMode = 'STANDARD_
         BORDER_LIGHT: "D1D5DB",
         INPUT_GREY: "F2F2F2",
         TEXT_MUTED: "6B7280",
-        WARNING_AMBER: "F5A623"
+        WARNING_AMBER: "F5A623",
+        INPUT_YELLOW: "FFFFE0"
     };
 
     const borderThin = {
@@ -67,9 +69,9 @@ export const handleDownloadV2 = (item: PremiumPack, mode: BuildMode = 'STANDARD_
         border: borderThin
     };
 
-    const greyInputStyle = {
+    const inputStyle = {
         ...centerCellStyle,
-        fill: { fgColor: { rgb: COLORS.INPUT_GREY } }
+        fill: { fgColor: { rgb: COLORS.INPUT_YELLOW } }
     };
 
     const titleStyle = { 
@@ -80,9 +82,9 @@ export const handleDownloadV2 = (item: PremiumPack, mode: BuildMode = 'STANDARD_
     const addNavBar = (ws: WorkSheet) => {
         const navItems = [
             { v: "01 OVERVIEW", target: "01_SYSTEM_OVERVIEW" },
-            { v: "02 LOGBOOK", target: "05_DAILY_TASK_EXECUTION" },
-            { v: "03 DASHBOARD", target: "03_OPERATIONS_DASHBOARD" },
-            { v: "04 CADENCE", target: "07_OPERATIONAL_CADENCE" },
+            { v: "02 PERSONNEL", target: "02_PERSONNEL_PROFILES" },
+            { v: "03 LOGBOOK", target: "05_DAILY_TASK_EXECUTION" },
+            { v: "04 DASHBOARD", target: "03_OPERATIONS_DASHBOARD" },
             { v: "05 RISK MAP", target: "08_RISK_CONTROL_MAP" }
         ];
         
@@ -105,12 +107,12 @@ export const handleDownloadV2 = (item: PremiumPack, mode: BuildMode = 'STANDARD_
         [{ v: `System ID: ${item.title}`, s: { font: { sz: 10, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "BRANCH MASTER REGISTRY", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Code 1:", s: { alignment: { horizontal: 'right' } } }, { v: "[Main Branch Name]", s: greyInputStyle }, null, { v: "Code 2:", s: { alignment: { horizontal: 'right' } } }, { v: "[Secondary Branch Name]", s: greyInputStyle }],
+        [{ v: "Code 1:", s: { alignment: { horizontal: 'right' } } }, { v: "[Main Branch Name]", s: inputStyle }, null, { v: "Code 2:", s: { alignment: { horizontal: 'right' } } }, { v: "[Secondary Branch Name]", s: inputStyle }],
         [],
         [{ v: "SYSTEM INSTRUCTIONS:", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "1. Define your locations in the Registry above (Code 1, Code 2, etc.)", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "2. Update the DAILY LOGBOOK (05). Enter the DATE and BRANCH CODE (1 or 2).", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3. Status turns COMPLETED automatically when Date is filled.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.SUCCESS_GREEN } }, alignment: { horizontal: 'center' } } }]
+        [{ v: "2. Assign Staff to Roles in '02 PERSONNEL PROFILES'.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "3. Status turns COMPLETED automatically when Date is filled in '03 LOGBOOK'.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.SUCCESS_GREEN } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -118,51 +120,37 @@ export const handleDownloadV2 = (item: PremiumPack, mode: BuildMode = 'STANDARD_
     coverWs['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } }, { s: { r: 4, c: 0 }, e: { r: 4, c: 4 } }, { s: { r: 6, c: 0 }, e: { r: 6, c: 4 } }, { s: { r: 9, c: 0 }, e: { r: 9, c: 4 } }, { s: { r: 10, c: 0 }, e: { r: 10, c: 4 } }, { s: { r: 11, c: 0 }, e: { r: 11, c: 4 } }, { s: { r: 12, c: 0 }, e: { r: 12, c: 4 } }];
     utils.book_append_sheet(wb, coverWs, "01_SYSTEM_OVERVIEW");
 
-    // --- 07. OPERATIONAL CADENCE ---
-    const cadenceData = [
+    // --- 02. PERSONNEL PROFILES ---
+    const roles = Array.from(new Set(item.checklists.map(c => c.role)));
+    const personnelData: any[][] = [
         [],
-        [{ v: "OPERATIONAL CADENCE: THE MANAGER'S MAP", s: titleStyle }],
+        [{ v: "PERSONNEL PROFILES: ASSIGN STAFF TO ROLES", s: titleStyle }],
         [],
-        [{ v: "Frequency", s: headerBlockStyle }, { v: "Activity / Meeting", s: headerBlockStyle }, { v: "Responsible Role", s: headerBlockStyle }, { v: "Key Outcome", s: headerBlockStyle }],
-        [{ v: "Daily", s: centerCellStyle }, { v: "Pre-Shift Briefing", s: leftCellStyle }, { v: "Restaurant Manager", s: centerCellStyle }, { v: "Targets set & hygiene verified" }],
-        [{ v: "Daily", s: centerCellStyle }, { v: "Closing Safety Walkthrough", s: leftCellStyle }, { v: "Floor Supervisor", s: centerCellStyle }, { v: "Fire/Gas safety secured" }],
-        [{ v: "Weekly", s: centerCellStyle }, { v: "Inventory Reconciliation", s: leftCellStyle }, { v: "Store Manager", s: centerCellStyle }, { v: "Shrinkage detected & costs controlled" }],
-        [{ v: "Weekly", s: centerCellStyle }, { v: "Food Safety Audit", s: leftCellStyle }, { v: "Head Chef", s: centerCellStyle }, { v: "Compliance gaps fixed" }],
-        [{ v: "Monthly", s: centerCellStyle }, { v: "Performance Review", s: leftCellStyle }, { v: "Owner / Director", s: centerCellStyle }, { v: "System health verified" }]
+        [{ v: "Operational Role", s: headerBlockStyle }, { v: "Assigned Staff Name (Input)", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }],
     ];
-    const cadenceWs = utils.aoa_to_sheet(cadenceData);
-    addNavBar(cadenceWs);
-    cadenceWs['!cols'] = [{ wch: 15 }, { wch: 40 }, { wch: 30 }, { wch: 40 }];
-    cadenceWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
-    utils.book_append_sheet(wb, cadenceWs, "07_OPERATIONAL_CADENCE");
-
-    // --- 08. RISK CONTROL MAP ---
-    const riskData = [
-        [],
-        [{ v: "RISK CONTROL MAP: THE 'WHY' BEHIND THE WORK", s: titleStyle }],
-        [],
-        [{ v: "Potential Risk", s: headerBlockStyle }, { v: "Financial/Legal Impact", s: headerBlockStyle }, { v: "Primary Control Module", s: headerBlockStyle }, { v: "Mitigation Action", s: headerBlockStyle }],
-        [{ v: "Food Poisoning", s: centerCellStyle }, { v: "Recalls, Lawsuits, Closure", s: leftCellStyle }, { v: "Food Safety Checklist", s: centerCellStyle }, { v: "Log Fridge Temps & Cross-Contamination" }],
-        [{ v: "Employee Theft", s: centerCellStyle }, { v: "Direct Profit Erosion", s: leftCellStyle }, { v: "Inventory Control", s: centerCellStyle }, { v: "Weekly Blind Stock Counts" }],
-        [{ v: "Customer Injury", s: centerCellStyle }, { v: "Slip & Fall Litigation", s: leftCellStyle }, { v: "Cleaning & Hygiene", s: centerCellStyle }, { v: "Hourly Bathroom & Spill Logs" }],
-        [{ v: "Fire Incident", s: centerCellStyle }, { v: "Loss of Life & Assets", s: leftCellStyle }, { v: "Kitchen Closing", s: centerCellStyle }, { v: "Mandatory Gas & Electrical Shutdown" }]
-    ];
-    const riskWs = utils.aoa_to_sheet(riskData);
-    addNavBar(riskWs);
-    riskWs['!cols'] = [{ wch: 25 }, { wch: 40 }, { wch: 30 }, { wch: 45 }];
-    riskWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
-    utils.book_append_sheet(wb, riskWs, "08_RISK_CONTROL_MAP");
+    roles.forEach(role => {
+        personnelData.push([
+            { v: role, s: leftCellStyle },
+            { v: "", s: inputStyle },
+            { v: "ACTIVE", s: centerCellStyle }
+        ]);
+    });
+    const personnelWs = utils.aoa_to_sheet(personnelData);
+    addNavBar(personnelWs);
+    personnelWs['!cols'] = [{ wch: 30 }, { wch: 35 }, { wch: 20 }];
+    personnelWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 2 } }];
+    utils.book_append_sheet(wb, personnelWs, "02_PERSONNEL_PROFILES");
 
     // --- 05. DAILY LOGBOOK (EXECUTION) ---
     const execHeaders = [
         { v: "ID", s: headerBlockStyle },
-        { v: "Date", s: headerBlockStyle },
+        { v: "Last Date Completed (Input)", s: headerBlockStyle },
         { v: "Branch Code (1-2)", s: headerBlockStyle },
         { v: "Branch Name (Auto)", s: headerBlockStyle },
         { v: "Requirement / Control Step", s: headerBlockStyle },
         { v: "Responsible Role", s: headerBlockStyle },
-        { v: "Responsible Person (Input)", s: headerBlockStyle },
-        { v: "Live Status (Auto)", s: headerBlockStyle },
+        { v: "Responsible Person (Auto)", s: headerBlockStyle },
+        { v: "Live Status (Auto-Trigger)", s: headerBlockStyle },
         { v: "Issue / Deviation", s: headerBlockStyle }
     ];
 
@@ -171,27 +159,29 @@ export const handleDownloadV2 = (item: PremiumPack, mode: BuildMode = 'STANDARD_
         execHeaders.push({ v: "Required Proof", s: headerBlockStyle });
     }
 
-    const execData: any[][] = [[], [{ v: "RESTAURANT OPERATIONAL LOGBOOK", s: titleStyle }], [], [], execHeaders];
+    const execData: any[][] = [[], [{ v: "OPERATIONAL LOGBOOK: DAILY EXECUTION LEDGER", s: titleStyle }], [], [], execHeaders];
 
     let rowIndex = 6;
     item.checklists.forEach(checklist => {
         checklist.tasks.forEach(task => {
             const dateCell = `B${rowIndex}`;
             const branchCodeCell = `C${rowIndex}`;
+            const roleCell = `F${rowIndex}`;
             
             const branchFormula = `IFERROR(CHOOSE(${branchCodeCell}, '01_SYSTEM_OVERVIEW'!$B$8, '01_SYSTEM_OVERVIEW'!$E$8), "N/A")`;
+            const staffFormula = `IFERROR(VLOOKUP(${roleCell}, '02_PERSONNEL_PROFILES'!A:B, 2, FALSE), "[ASSIGN STAFF]")`;
             const statusFormula = `IF(${dateCell}="", "PENDING", "COMPLETED")`;
 
             const row = [
                 { v: task.id, s: centerCellStyle },
-                { v: "", s: greyInputStyle }, // Date
-                { v: "", s: greyInputStyle }, // Branch Code
+                { v: "", s: inputStyle }, // Date Completed
+                { v: "", s: inputStyle }, // Branch Code
                 { t: 'f', f: branchFormula, s: centerCellStyle }, // Branch Name
                 { v: task.description, s: leftCellStyle },
                 { v: checklist.role, s: centerCellStyle },
-                { v: "", s: greyInputStyle }, // Responsible Person
+                { t: 'f', f: staffFormula, s: centerCellStyle }, // Responsible Person
                 { t: 'f', f: statusFormula, s: { ...centerCellStyle, font: { bold: true } } }, // Status
-                { v: "", s: greyInputStyle }, // Issue
+                { v: "", s: inputStyle }, // Issue
             ];
 
             if (mode === 'AUDIT_SHIELD') {
@@ -206,12 +196,12 @@ export const handleDownloadV2 = (item: PremiumPack, mode: BuildMode = 'STANDARD_
 
     const execWs = utils.aoa_to_sheet(execData);
     addNavBar(execWs);
-    const wchs = [10, 15, 15, 25, 60, 25, 25, 20, 35];
+    const wchs = [10, 25, 15, 25, 60, 25, 25, 25, 35];
     if (mode === 'AUDIT_SHIELD') wchs.push(40, 25);
     execWs['!cols'] = wchs.map(w => ({ wch: w }));
     execWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: wchs.length - 1 } }];
     
-    // Enable Auto-Filters
+    // Enable Auto-Filters on Header Row (Row 5)
     execWs['!autofilter'] = { ref: `A5:${String.fromCharCode(64 + wchs.length)}${rowIndex}` };
     
     utils.book_append_sheet(wb, execWs, "05_DAILY_TASK_EXECUTION");
@@ -230,6 +220,23 @@ export const handleDownloadV2 = (item: PremiumPack, mode: BuildMode = 'STANDARD_
     dashWs['!cols'] = [{ wch: 30 }, { wch: 15 }, { wch: 25 }, { wch: 35 }];
     dashWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
     utils.book_append_sheet(wb, dashWs, "03_OPERATIONS_DASHBOARD");
+
+    // --- 08. RISK CONTROL MAP ---
+    const riskData = [
+        [],
+        [{ v: "RISK CONTROL MAP: THE 'WHY' BEHIND THE WORK", s: titleStyle }],
+        [],
+        [{ v: "Potential Risk", s: headerBlockStyle }, { v: "Financial/Legal Impact", s: headerBlockStyle }, { v: "Primary Control Module", s: headerBlockStyle }, { v: "Mitigation Action", s: headerBlockStyle }],
+        [{ v: "Food Poisoning", s: centerCellStyle }, { v: "Recalls, Lawsuits, Closure", s: leftCellStyle }, { v: "Food Safety Checklist", s: centerCellStyle }, { v: "Log Fridge Temps & Cross-Contamination" }],
+        [{ v: "Employee Theft", s: centerCellStyle }, { v: "Direct Profit Erosion", s: leftCellStyle }, { v: "Inventory Control", s: centerCellStyle }, { v: "Weekly Blind Stock Counts" }],
+        [{ v: "Customer Injury", s: centerCellStyle }, { v: "Slip & Fall Litigation", s: leftCellStyle }, { v: "Cleaning & Hygiene", s: centerCellStyle }, { v: "Hourly Bathroom & Spill Logs" }],
+        [{ v: "Fire Incident", s: centerCellStyle }, { v: "Loss of Life & Assets", s: leftCellStyle }, { v: "Kitchen Closing", s: centerCellStyle }, { v: "Mandatory Gas & Electrical Shutdown" }]
+    ];
+    const riskWs = utils.aoa_to_sheet(riskData);
+    addNavBar(riskWs);
+    riskWs['!cols'] = [{ wch: 25 }, { wch: 40 }, { wch: 30 }, { wch: 45 }];
+    riskWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
+    utils.book_append_sheet(wb, riskWs, "08_RISK_CONTROL_MAP");
 
     writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.4_${mode}.xlsx`);
 }
