@@ -5,9 +5,12 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * Version 2.6 - The Governance Suite (On-Demand Reporting Build)
- * Philosophy: Total Historical Accountability + Time-Window Reporting.
- * Every entry is a permanent row. The Dashboard filters history on-demand.
+ * Version 2.7 - The Total Governance Suite
+ * Philosophy: Full-Year Scalability + Smart Status Logic.
+ * 🔴 OVERDUE: Date passed & empty.
+ * ⚪ PENDING: Today & empty.
+ * ⏳ DUE SHORTLY: Future date.
+ * 🟢 COMPLETED: Date entered.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -85,9 +88,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         const navItems = [
             { v: "01 OVERVIEW", target: "01_OVERVIEW" },
             { v: "02 DASHBOARD", target: "02_DASHBOARD" },
-            { v: "03 MASTER LEDGER", target: "03_OPERATIONAL_LEDGER" },
-            { v: "04 CADENCE", target: "04_CADENCE" },
-            { v: "05 RISK MAP", target: "05_RISK_MAP" }
+            { v: "03 MASTER LEDGER", target: "03_MASTER_LEDGER" },
+            { v: "04 RISK MAP", target: "04_RISK_MAP" }
         ];
         
         const navData = [
@@ -105,15 +107,16 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const coverData = [
         [], [],
         [{ v: "RESTAURANT OPERATIONS CONTROL SYSTEM", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Version 2.6 Governance Build | Professional Multi-Unit Ledger`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Version 2.7 | Unified Governance Ledger (Year-Scale Build)`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "BRANCH MASTER REGISTRY", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "Branch 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Bandra Main", s: inputStyle }, null, { v: "Branch 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Colaba Hub", s: inputStyle }],
         [],
-        [{ v: "ON-DEMAND REPORTING PROTOCOL:", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "1. Go to '02_DASHBOARD' to set your report date range (e.g., 01-02-2025 to 28-02-2025).", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "2. The Dashboard will automatically recalculate compliance for that specific month.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3. To fill data, use the filter [v] in '03_OPERATIONAL_LEDGER' to select 'Today'.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }]
+        [{ v: "SYSTEM GOVERNANCE INSTRUCTIONS:", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "1. The '03_MASTER_LEDGER' can store a full year of history. Use Filters [v] to select 'Today'.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "2. Entering a 'Date Done' automatically flips the status to COMPLETED.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.SUCCESS_GREEN } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "3. Past dates with no 'Date Done' will turn Red (OVERDUE). Future dates show as DUE SHORTLY.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "4. Use the Dashboard to set a Start/End date window for monthly compliance reporting.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -125,31 +128,31 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { s: { r: 8, c: 0 }, e: { r: 8, c: 4 } }, 
         { s: { r: 9, c: 0 }, e: { r: 9, c: 4 } }, 
         { s: { r: 10, c: 0 }, e: { r: 10, c: 4 } }, 
-        { s: { r: 11, c: 0 }, e: { r: 11, c: 4 } }
+        { s: { r: 11, c: 0 }, e: { r: 11, c: 4 } },
+        { s: { r: 12, c: 0 }, e: { r: 12, c: 4 } }
     ];
     utils.book_append_sheet(wb, coverWs, "01_OVERVIEW");
 
-    // --- 03. THE MASTER LEDGER ---
+    // --- 03. MASTER LEDGER ---
     const ledgerHeaders = [
         { v: "Date of Entry", s: headerBlockStyle }, // A
         { v: "Branch Name", s: headerBlockStyle }, // B
         { v: "Category", s: headerBlockStyle }, // C
         { v: "Control Task", s: headerBlockStyle }, // D
         { v: "Responsible Role", s: headerBlockStyle }, // E
-        { v: "Personnel Name (Input)", s: headerBlockStyle }, // F
+        { v: "Responsible Person (Input)", s: headerBlockStyle }, // F
         { v: "Date Done (Input)", s: headerBlockStyle }, // G
         { v: "Live Status (Auto)", s: headerBlockStyle }, // H
         { v: "Issue / Action Taken", s: headerBlockStyle } // I
     ];
 
-    const ledgerData: any[][] = [[], [{ v: "MASTER OPERATIONAL LEDGER (AUDIT TRAIL)", s: titleStyle }], [], ledgerHeaders];
+    const ledgerData: any[][] = [[], [{ v: "MASTER GOVERNANCE LEDGER (AUDIT TRAIL)", s: titleStyle }], [], ledgerHeaders];
 
     const today = new Date();
-    // Pre-populate a 14-day window (7 history, 7 future) to show logic
+    // Pre-populate a 14-day window (-7 history to +7 future)
     for (let d = -7; d <= 7; d++) {
         const entryDate = new Date(today);
         entryDate.setDate(today.getDate() + d);
-        const dateStr = entryDate.toLocaleDateString('en-GB');
 
         item.checklists.forEach(checklist => {
             checklist.tasks.forEach(task => {
@@ -157,16 +160,18 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                 const dateDoneCell = `G${rowNum}`;
                 const entryDateCell = `A${rowNum}`;
                 
-                // V2.6 LOGIC:
+                // V2.7 SMART STATUS LOGIC:
                 // 1. If Date Done is NOT blank -> COMPLETED
                 // 2. If Date Done IS blank AND Entry Date < TODAY -> OVERDUE
-                // 3. Otherwise -> PENDING
-                const statusFormula = `IF(ISBLANK(${dateDoneCell}), IF(${entryDateCell}<TODAY(), "OVERDUE - ACTION REQUIRED", "PENDING"), "COMPLETED")`;
+                // 3. If Date Done IS blank AND Entry Date > TODAY -> DUE SHORTLY
+                // 4. Otherwise (Entry Date = TODAY) -> PENDING
+                const statusFormula = `IF(ISBLANK(${dateDoneCell}), IF(${entryDateCell}<TODAY(), "OVERDUE - ACTION REQUIRED", IF(${entryDateCell}>TODAY(), "DUE SHORTLY", "PENDING")), "COMPLETED")`;
                 
+                // Compliance Motivation: High Priority tasks get a subtle green tint
                 const rowStyle = task.priority === 'High' ? complianceStyle : leftCellStyle;
 
                 ledgerData.push([
-                    { v: entryDate, t: 'd', s: centerCellStyle }, // A: Date of Entry (Formal Date Type for Month Filtering)
+                    { v: entryDate, t: 'd', s: centerCellStyle }, // A: Date of Entry
                     { v: "Bandra Main", s: inputStyle }, // B: Branch
                     { v: checklist.title, s: centerCellStyle }, // C: Category
                     { v: task.description, s: rowStyle }, // D: Task
@@ -189,81 +194,60 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     // ACTIVATE FILTERS - LOCKED TO RANGE
     ledgerWs['!autofilter'] = { ref: `A4:I${ledgerData.length}` };
     
-    utils.book_append_sheet(wb, ledgerWs, "03_OPERATIONAL_LEDGER");
+    utils.book_append_sheet(wb, ledgerWs, "03_MASTER_LEDGER");
 
     // --- 02. DASHBOARD (TIME-WINDOW REPORTING) ---
-    const yesterday = new Date(today);
-    yesterday.setDate(today.getDate() - 1);
+    const startOfPeriod = new Date(today);
+    startOfPeriod.setDate(today.getDate() - 7);
     
     const dashData: any[][] = [
         [],
         [{ v: "ON-DEMAND COMPLIANCE REPORTING", s: titleStyle }],
         [],
-        [{ v: "REPORTING WINDOW", s: { font: { bold: true }, fill: { fgColor: { rgb: COLORS.SOFT_GREY } } } }, { v: "START DATE", s: headerBlockStyle }, { v: "END DATE", s: headerBlockStyle }, { v: "CURRENT TIME", s: centerCellStyle }],
+        [{ v: "REPORTING WINDOW (CHOOSE DATES)", s: { font: { bold: true }, fill: { fgColor: { rgb: COLORS.SOFT_GREY } } } }, { v: "START DATE", s: headerBlockStyle }, { v: "END DATE", s: headerBlockStyle }, { v: "CURRENT TIME", s: centerCellStyle }],
         [
-            { v: "Select Dates:", s: { alignment: { horizontal: 'right' } } }, 
-            { v: yesterday, t: 'd', s: inputStyle }, // B5: Start Date
-            { v: today, t: 'd', s: inputStyle },     // C5: End Date
+            { v: "Set Month/Period:", s: { alignment: { horizontal: 'right' } } }, 
+            { v: startOfPeriod, t: 'd', s: inputStyle }, // B5: Start Date
+            { v: today, t: 'd', s: inputStyle },         // C5: End Date
             { t: 'f', f: "NOW()", s: centerCellStyle }
         ],
         [],
-        [{ v: "GOVERNANCE METRIC", s: headerBlockStyle }, { v: "TARGET", s: headerBlockStyle }, { v: "PERIOD PERFORMANCE", s: headerBlockStyle }, { v: "SYSTEM COMMENTARY", s: headerBlockStyle }],
+        [{ v: "GOVERNANCE METRIC", s: headerBlockStyle }, { v: "TARGET", s: headerBlockStyle }, { v: "PERIOD PERFORMANCE", s: headerBlockStyle }, { v: "AUDIT COMMENTARY", s: headerBlockStyle }],
         [
-            { v: "Compliance Score (Period)", s: leftCellStyle },
+            { v: "Compliance Score (Selected Period)", s: leftCellStyle },
             { v: "100%", s: centerCellStyle },
-            { t: 'f', f: `TEXT(COUNTIFS('03_OPERATIONAL_LEDGER'!H:H,"COMPLETED",'03_OPERATIONAL_LEDGER'!A:A,">="&B5,'03_OPERATIONAL_LEDGER'!A:A,"<="&C5)/MAX(1,COUNTIFS('03_OPERATIONAL_LEDGER'!A:A,">="&B5,'03_OPERATIONAL_LEDGER'!A:A,"<="&C5)),"0%")`, s: { ...centerCellStyle, font: { bold: true, sz: 14 } } },
-            { v: "Based strictly on selected dates." }
+            // V2.7 Dashboard Logic: Ignore future tasks. Only count tasks within Start/End window.
+            { t: 'f', f: `TEXT(COUNTIFS('03_MASTER_LEDGER'!H:H,"COMPLETED",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)/MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5,'03_MASTER_LEDGER'!A:A,"<=TODAY()")),"0%")`, s: { ...centerCellStyle, font: { bold: true, sz: 14 } } },
+            { v: "Only accounts for tasks due up to Today." }
         ],
         [
-            { v: "Outstanding Overdue (Total)", s: leftCellStyle },
+            { v: "Total Overdue Gaps (Historical)", s: leftCellStyle },
             { v: "0", s: centerCellStyle },
-            { t: 'f', f: `COUNTIF('03_OPERATIONAL_LEDGER'!H:H,"OVERDUE*")`, s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } },
-            { v: "Critical gaps across entire history." }
-        ],
-        [
-            { v: "Logged Issues", s: leftCellStyle },
-            { v: "Zero", s: centerCellStyle },
-            { t: 'f', f: `COUNTIFS('03_OPERATIONAL_LEDGER'!I:I,"<>",'03_OPERATIONAL_LEDGER'!A:A,">="&B5,'03_OPERATIONAL_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { v: "Problems identified in this period." }
+            { t: 'f', f: `COUNTIF('03_MASTER_LEDGER'!H:H,"OVERDUE*")`, s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } },
+            { v: "Critical gaps across entire ledger." }
         ]
     ];
     const dashWs = utils.aoa_to_sheet(dashData);
     addNavBar(dashWs);
-    dashWs['!cols'] = [{ wch: 30 }, { wch: 20 }, { wch: 25 }, { wch: 40 }];
+    dashWs['!cols'] = [{ wch: 35 }, { wch: 20 }, { wch: 25 }, { wch: 45 }];
     dashWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
     utils.book_append_sheet(wb, dashWs, "02_DASHBOARD");
 
-    // --- 04. CADENCE ---
-    const cadenceData = [
-        [],
-        [{ v: "OPERATIONAL CADENCE: THE FREQUENCY MAP", s: titleStyle }],
-        [],
-        [{ v: "Control Module", s: headerBlockStyle }, { v: "Frequency", s: headerBlockStyle }, { v: "Owner", s: headerBlockStyle }, { v: "Outcome", s: headerBlockStyle }],
-        [{ v: "Kitchen Startup", s: centerCellStyle }, { v: "Daily", s: centerCellStyle }, { v: "Head Chef", s: centerCellStyle }, { v: "Food Safety & Bio-security" }],
-        [{ v: "Inventory Audit", s: centerCellStyle }, { v: "Weekly", s: centerCellStyle }, { v: "Store Manager", s: centerCellStyle }, { v: "Margin & Cost Control" }],
-        [{ v: "Safety Drill", s: centerCellStyle }, { v: "Monthly", s: centerCellStyle }, { v: "Ops Manager", s: centerCellStyle }, { v: "Risk Mitigation & Compliance" }]
-    ];
-    const cadenceWs = utils.aoa_to_sheet(cadenceData);
-    addNavBar(cadenceWs);
-    cadenceWs['!cols'] = [{ wch: 25 }, { wch: 20 }, { wch: 25 }, { wch: 35 }];
-    cadenceWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
-    utils.book_append_sheet(wb, cadenceWs, "04_CADENCE");
-
-    // --- 05. RISK MAP ---
+    // --- 04. RISK MAP ---
     const riskData = [
         [],
-        [{ v: "RISK CONTROL MAP: THE VALUE OF DISCIPLINE", s: titleStyle }],
+        [{ v: "RISK CONTROL MAP: THE VALUE OF GOVERNANCE", s: titleStyle }],
         [],
         [{ v: "Operational Risk", s: headerBlockStyle }, { v: "Failure Impact", s: headerBlockStyle }, { v: "Primary Shield", s: headerBlockStyle }, { v: "Control Action", s: headerBlockStyle }],
-        [{ v: "Health Closure", s: centerCellStyle }, { v: "Revenue Zero / Legal Fine", s: leftCellStyle }, { v: "Daily HACCP Log", s: centerCellStyle }, { v: "Temp Logs & Cleaning Sign-offs" }],
-        [{ v: "Customer Injury", s: centerCellStyle }, { v: "Litigation / Brand Damage", s: leftCellStyle }, { v: "Spill & Hygiene Log", s: centerCellStyle }, { v: "Hourly Restroom & Floor Checks" }],
+        [{ v: "Health Closure", s: centerCellStyle }, { v: "Revenue Zero / Legal Fine", s: leftCellStyle }, { v: "HACCP Log", s: centerCellStyle }, { v: "Temp Logs & Cleaning Sign-offs" }],
+        [{ v: "Customer Injury", s: centerCellStyle }, { v: "Litigation / Brand Damage", s: leftCellStyle }, { v: "Hygiene Log", s: centerCellStyle }, { v: "Hourly Restroom & Floor Checks" }],
         [{ v: "Internal Theft", s: centerCellStyle }, { v: "EBITDA Erosion", s: leftCellStyle }, { v: "Inventory SOP", s: centerCellStyle }, { v: "Serialized Weekly Counts" }]
     ];
     const riskWs = utils.aoa_to_sheet(riskData);
     addNavBar(riskWs);
     riskWs['!cols'] = [{ wch: 25 }, { wch: 40 }, { wch: 30 }, { wch: 45 }];
     riskWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
-    utils.book_append_sheet(wb, riskWs, "05_RISK_MAP");
+    utils.book_append_sheet(wb, riskWs, "04_RISK_MAP");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.6_Governance_Ledger.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.7_Governance_Suite.xlsx`);
 }
