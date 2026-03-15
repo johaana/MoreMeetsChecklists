@@ -11,6 +11,8 @@ import type { PremiumPack } from "@/lib/premium-packs";
  * ⚪ PENDING: Today & empty.
  * ⏳ DUE SHORTLY: Future date.
  * 🟢 COMPLETED: Date entered in 'Date Done'.
+ * 
+ * Matrix Logic: Repeats the entire task list for every branch in the registry.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -107,15 +109,15 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const coverData = [
         [], [],
         [{ v: "RESTAURANT OPERATIONS CONTROL SYSTEM", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Version 2.7 | Unified Governance Ledger (Audit-Ready build)`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Version 2.7 | Multi-Unit Governance Ledger (Audit-Ready)`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "BRANCH MASTER REGISTRY", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "Branch 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Bandra Main", s: inputStyle }, null, { v: "Branch 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Colaba Hub", s: inputStyle }],
         [],
         [{ v: "SYSTEM GOVERNANCE INSTRUCTIONS:", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "1. The '03_MASTER_LEDGER' stores a continuous record. Use the Filter [v] on Column A to select 'Today'.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "2. Entering a 'Date Done' automatically flips the status to COMPLETED.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.SUCCESS_GREEN } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3. Empty rows from the past turn 🔴 OVERDUE. Future tasks are marked ⏳ DUE SHORTLY.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "1. The '03_MASTER_LEDGER' stores a continuous record. Use the Date Filter [v] to select months or days.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "2. Tasks are repeated for every Branch in the registry. Filter by Branch Name to see one location.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "3. Entering a 'Date Done' automatically flips the status to COMPLETED.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.SUCCESS_GREEN } }, alignment: { horizontal: 'center' } } }],
         [{ v: "4. The Dashboard allows you to set a custom window (e.g. Current Month) for compliance scoring.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
@@ -146,85 +148,85 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { v: "Issue / Action Taken", s: headerBlockStyle } // I
     ];
 
-    const ledgerData: any[][] = [[], [{ v: "MASTER GOVERNANCE LEDGER (HISTORICAL AUDIT TRAIL)", s: titleStyle }], [], ledgerHeaders];
+    const ledgerData: any[][] = [[], [{ v: "MASTER GOVERNANCE LEDGER (MULTI-BRANCH AUDIT TRAIL)", s: titleStyle }], [], ledgerHeaders];
 
     const today = new Date();
-    // Pre-populate a 14-day cycle (-7 days history, Today, +7 days future)
-    for (let d = -7; d <= 7; d++) {
+    const branches = ["Bandra Main", "Colaba Hub"];
+
+    // Pre-populate a 7-day window for demonstration (-3 days, Today, +3 days)
+    // Every day repeats for every branch
+    for (let d = -3; d <= 3; d++) {
         const entryDate = new Date(today);
         entryDate.setDate(today.getDate() + d);
 
-        item.checklists.forEach(checklist => {
-            checklist.tasks.forEach(task => {
-                const rowNum = ledgerData.length + 1;
-                const dateDoneCell = `G${rowNum}`;
-                const entryDateCell = `A${rowNum}`;
-                
-                // V2.7 MASTER STATUS FORMULA
-                // 1. If Date Done is not blank -> COMPLETED
-                // 2. If Date Done is blank:
-                //    a. If Entry Date < Today -> OVERDUE
-                //    b. If Entry Date > Today -> DUE SHORTLY
-                //    c. If Entry Date = Today -> PENDING
-                const statusFormula = `IF(NOT(ISBLANK(${dateDoneCell})), "COMPLETED", IF(${entryDateCell}<TODAY(), "OVERDUE - ACTION REQUIRED", IF(${entryDateCell}>TODAY(), "DUE SHORTLY", "PENDING")))`;
-                
-                const rowStyle = task.priority === 'High' ? complianceStyle : leftCellStyle;
+        branches.forEach(branch => {
+            item.checklists.forEach(checklist => {
+                checklist.tasks.forEach(task => {
+                    const rowNum = ledgerData.length + 1;
+                    const dateDoneCell = `G${rowNum}`;
+                    const entryDateCell = `A${rowNum}`;
+                    
+                    // V2.7 MASTER STATUS FORMULA
+                    const statusFormula = `IF(NOT(ISBLANK(${dateDoneCell})), "COMPLETED", IF(${entryDateCell}<TODAY(), "OVERDUE - ACTION REQUIRED", IF(${entryDateCell}>TODAY(), "DUE SHORTLY", "PENDING")))`;
+                    
+                    const rowStyle = task.priority === 'High' ? complianceStyle : leftCellStyle;
 
-                ledgerData.push([
-                    { v: entryDate, t: 'd', s: centerCellStyle }, // A: Scheduled Date
-                    { v: "Bandra Main", s: inputStyle }, // B: Branch
-                    { v: checklist.title, s: centerCellStyle }, // C: Category
-                    { v: task.description, s: rowStyle }, // D: Task
-                    { v: checklist.role, s: centerCellStyle }, // E: Role
-                    { v: "", s: inputStyle }, // F: Human Name
-                    { v: "", s: inputStyle }, // G: Actual Date Done
-                    { t: 'f', f: statusFormula, s: { ...centerCellStyle, font: { bold: true } } }, // H: Status
-                    { v: "", s: inputStyle } // I: Issue/Note
-                ]);
+                    ledgerData.push([
+                        { v: entryDate, t: 'd', s: { ...centerCellStyle, numFmt: 'dd-mmm-yyyy' } }, // A: Scheduled Date (True Date object for hierarchical filters)
+                        { v: branch, s: centerCellStyle }, // B: Branch Name
+                        { v: checklist.title, s: centerCellStyle }, // C: Category
+                        { v: task.description, s: rowStyle }, // D: Task
+                        { v: checklist.role, s: centerCellStyle }, // E: Role
+                        { v: "", s: inputStyle }, // F: Human Name (Manual Input)
+                        { v: "", s: inputStyle }, // G: Actual Date Done (Manual Input)
+                        { t: 'f', f: statusFormula, s: { ...centerCellStyle, font: { bold: true } } }, // H: Status (Formula)
+                        { v: "", s: inputStyle } // I: Issue (Manual Input)
+                    ]);
+                });
             });
         });
     }
 
     const ledgerWs = utils.aoa_to_sheet(ledgerData);
     addNavBar(ledgerWs);
-    const wchs = [15, 20, 25, 60, 25, 30, 20, 25, 45];
+    const wchs = [18, 25, 25, 60, 25, 30, 20, 25, 45];
     ledgerWs['!cols'] = wchs.map(w => ({ wch: w }));
     ledgerWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: wchs.length - 1 } }];
     
-    // ACTIVATE FILTERS - LOCKED TO DATA RANGE
+    // ACTIVATE FILTERS - EXPLICIT RANGE FOR ALL ROWS
     ledgerWs['!autofilter'] = { ref: `A4:I${ledgerData.length}` };
     
     utils.book_append_sheet(wb, ledgerWs, "03_MASTER_LEDGER");
 
-    // --- 02. DASHBOARD (TIME-WINDOW REPORTING) ---
+    // --- 02. DASHBOARD (WINDOW-BASED REPORTING) ---
     const startOfPeriod = new Date(today);
     startOfPeriod.setDate(today.getDate() - 7);
     
     const dashData: any[][] = [
         [],
-        [{ v: "ON-DEMAND COMPLIANCE REPORTING", s: titleStyle }],
+        [{ v: "NETWORK COMPLIANCE DASHBOARD", s: titleStyle }],
         [],
         [{ v: "STEP 1: SELECT REPORTING WINDOW", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIME_NAVY } } } }, { v: "START DATE", s: headerBlockStyle }, { v: "END DATE", s: headerBlockStyle }, { v: "CURRENT TIME", s: centerCellStyle }],
         [
             { v: "Define Period:", s: { alignment: { horizontal: 'right' } } }, 
-            { v: startOfPeriod, t: 'd', s: inputStyle }, // B5: Start
-            { v: today, t: 'd', s: inputStyle },         // C5: End
+            { v: startOfPeriod, t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } }, // B5: Start
+            { v: today, t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } },         // C5: End
             { t: 'f', f: "NOW()", s: centerCellStyle }
         ],
         [],
         [{ v: "GOVERNANCE METRIC", s: headerBlockStyle }, { v: "BENCHMARK", s: headerBlockStyle }, { v: "WINDOW PERFORMANCE", s: headerBlockStyle }, { v: "AUDIT COMMENTARY", s: headerBlockStyle }],
         [
-            { v: "Window Compliance Rate", s: leftCellStyle },
+            { v: "Global Compliance Rate", s: leftCellStyle },
             { v: "100%", s: centerCellStyle },
             // Denominator ignores future tasks. Only counts tasks that SHOULD be done within the user's window.
             { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!H:H,"COMPLETED",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)/MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5,'03_MASTER_LEDGER'!A:A,"<=TODAY()"))`, s: { ...centerCellStyle, font: { bold: true, sz: 14 } } },
-            { v: "Only accounts for tasks scheduled up to today." }
+            { v: "Aggregated performance across all branches." }
         ],
         [
-            { v: "Critical Overdue Gaps (Full Year)", s: leftCellStyle },
+            { v: "Network Overdue Count", s: leftCellStyle },
             { v: "0", s: centerCellStyle },
             { t: 'f', f: `COUNTIF('03_MASTER_LEDGER'!H:H,"OVERDUE*")`, s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } },
-            { v: "Outstanding safety risks in the ledger." }
+            { v: "Active safety gaps requiring immediate management intervention." }
         ]
     ];
     const dashWs = utils.aoa_to_sheet(dashData);
