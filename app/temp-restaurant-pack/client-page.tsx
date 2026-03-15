@@ -16,7 +16,9 @@ import {
     CheckCircle2,
     Calendar,
     MapPin,
-    User
+    User,
+    History,
+    Zap
 } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -53,7 +55,7 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                         Operational <br/> <span className="text-primary">Discipline.</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-secondary-text italic max-w-2xl mx-auto font-medium leading-relaxed border-l-2 border-primary/20 pl-8">
-                        The "Best-of-All" Build. A simplified, clinical ledger for high-accountability multi-unit operations.
+                        The "Best-of-All" Build. A high-accountability Vertical Ledger designed for zero-friction daily audit trails.
                     </p>
                 </div>
 
@@ -65,49 +67,53 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                     >
                         Download Master System <Download className="ml-2 h-6 w-6" />
                     </Button>
-                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Includes 140+ Professional Control Tasks</p>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Includes 140+ High-Gravity Control Tasks</p>
                 </div>
             </div>
         </section>
 
-        {/* CORE FEATURES */}
+        {/* CORE ARCHITECTURE */}
         <section className="py-24 bg-alternate-background">
             <div className="container px-4 md:px-6">
+                <div className="text-center mb-16 space-y-4">
+                    <h2 className="text-3xl font-black font-headline uppercase italic">Why the Vertical Ledger?</h2>
+                    <p className="text-secondary-text italic font-medium">Solving the "Copy-Paste" problem for real restaurant teams.</p>
+                </div>
                 <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <Card className="bg-black/40 border-white/5 p-6">
-                        <CheckCircle2 className="h-8 w-8 text-primary mb-4" />
-                        <h3 className="font-black uppercase tracking-widest text-sm mb-2">Auto-Status Trigger</h3>
-                        <p className="text-xs text-secondary-text leading-relaxed italic">Status flips from PENDING to COMPLETED automatically the moment a user enters a date. Zero manual status typing.</p>
+                    <Card className="bg-black/40 border-white/5 p-8 space-y-4">
+                        <Zap className="h-10 w-10 text-accent" />
+                        <h3 className="font-black uppercase tracking-widest text-sm">Chameleon Status</h3>
+                        <p className="text-xs text-secondary-text leading-relaxed italic">The "Status" column is hands-off. It flips from PENDING to COMPLETED the moment a staff member enters a date. No manual typing, no errors.</p>
                     </Card>
-                    <Card className="bg-black/40 border-white/5 p-6">
-                        <MapPin className="h-8 w-8 text-primary mb-4" />
-                        <h3 className="font-black uppercase tracking-widest text-sm mb-2">Multi-Unit Support</h3>
-                        <p className="text-xs text-secondary-text leading-relaxed italic">Built-in Branch Registry. Every entry is tagged to a specific location for easy filtering and central oversight.</p>
+                    <Card className="bg-black/40 border-white/5 p-8 space-y-4">
+                        <History className="h-10 w-10 text-primary" />
+                        <h3 className="font-black uppercase tracking-widest text-sm">Infinite Audit Trail</h3>
+                        <p className="text-xs text-secondary-text leading-relaxed italic">Instead of overwriting yesterday's data, the system creates a permanent history. Essential for health inspections, insurance, and performance audits.</p>
                     </Card>
-                    <Card className="bg-black/40 border-white/5 p-6">
-                        <ShieldCheck className="h-8 w-8 text-primary mb-4" />
-                        <h3 className="font-black uppercase tracking-widest text-sm mb-2">Audit-Ready Ledger</h3>
-                        <p className="text-xs text-secondary-text leading-relaxed italic">Creates a permanent chronological history. Perfect for health inspections, internal audits, and insurance compliance.</p>
+                    <Card className="bg-black/40 border-white/5 p-8 space-y-4">
+                        <CheckCircle2 className="h-10 w-10 text-primary" />
+                        <h3 className="font-black uppercase tracking-widest text-sm">Motivation Engine</h3>
+                        <p className="text-xs text-secondary-text leading-relaxed italic">Critical compliance points are highlighted in subtle green. Staff don't just "do chores"—they "Turn the Building Green" through disciplined execution.</p>
                     </Card>
                 </div>
             </div>
         </section>
 
-        {/* LOGIC SPECS */}
+        {/* WORKFLOW SPECS */}
         <section className="py-24 border-t border-white/5">
             <div className="container px-4 md:px-6 max-w-4xl mx-auto space-y-16">
                 <div className="text-center space-y-4">
-                    <h2 className="text-3xl font-black font-headline uppercase italic">Clinical Ledger Order</h2>
-                    <p className="text-secondary-text italic font-medium">The natural workflow optimized for busy restaurant managers.</p>
+                    <h2 className="text-3xl font-black font-headline uppercase italic">Clinical Workflow Order</h2>
+                    <p className="text-secondary-text italic font-medium">Engineered for one-handed operation on mobile or tablets.</p>
                 </div>
                 
                 <div className="relative">
                     <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-white/5 -translate-y-1/2 hidden md:block" />
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-8 relative z-10">
                         {[
-                            { step: "01", label: "Date of Entry", sub: "Timestamp" },
-                            { step: "02", label: "Branch", sub: "Location" },
-                            { step: "03", label: "Personnel", sub: "Accountability" },
+                            { step: "01", label: "Date of Entry", sub: "Shift Anchor" },
+                            { step: "02", label: "Branch", sub: "Multi-Unit" },
+                            { step: "03", label: "Personnel", sub: "Who's on duty" },
                             { step: "04", label: "Date Done", sub: "The Trigger" },
                             { step: "05", label: "Auto Status", sub: "Validation" }
                         ].map((item, i) => (
