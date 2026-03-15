@@ -5,9 +5,9 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * Version 3.5 - The Governance Suite
+ * Version 3.6 - The Governance Suite (Human-Centric)
  * Features: 
- * 1. 00_INSTRUCTIONS - Refined with Global Edit & Filter guidance.
+ * 1. 00_INSTRUCTIONS - Conversational tone, Interval-Aware explanation.
  * 2. Interval-Aware Matrix (Weekly/Monthly logic).
  * 3. Modular Facility Switchboard.
  */
@@ -97,26 +97,24 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
     };
 
-    // --- 00. INSTRUCTIONS ---
+    // --- 00. INSTRUCTIONS (CONVERSATIONAL) ---
     const insData = [
         [], [],
-        [{ v: "WELCOME TO YOUR OPERATIONAL COMMAND SYSTEM", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "Consistency is not an accident. It is engineered. This system turns your collective experience into permanent organizational infrastructure.", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [{ v: "WELCOME! LET'S BUILD YOUR SYSTEMS TOGETHER", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "Consistency is tough to maintain when life gets busy. We built this system to act as your business's permanent memory—so your team can focus on the work, not on 'remembering' what to do next.", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } } } }],
         [],
         [{ v: "HOW TO USE THIS SYSTEM", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } } } }],
-        [{ v: "1. The One-Column Rule:", s: { font: { bold: true } } }, { v: "Staff only edit ONE column in the '03_MASTER_LEDGER': the 'Date Done' column. Everything else is automatic.", s: { alignment: { wrapText: true } } }],
-        [{ v: "2. Visual Status Signals:", s: { font: { bold: true } } }, { v: "🟢 GREEN = Secure. 🔴 RED = Overdue (Immediate Risk). ⚪ PENDING = Today's Mission. ⏳ GREY = Upcoming.", s: { alignment: { wrapText: true } } }],
-        [{ v: "3. Interval Intelligence:", s: { font: { bold: true } } }, { v: "The Ledger is smart. Daily tasks appear every day. Weekly tasks appear on Mondays. Monthly tasks on the 1st.", s: { alignment: { wrapText: true } } }],
+        [{ v: "1. The One-Column Rule:", s: { font: { bold: true } } }, { v: "Staff only edit ONE column in the '03_MASTER_LEDGER': the 'Date Done' column. Everything else is automatic and logic-driven.", s: { alignment: { wrapText: true } } }],
+        [{ v: "2. Visual Status Signals:", s: { font: { bold: true } } }, { v: "🟢 GREEN = Secure. 🔴 RED = Overdue (Needs Action). ⚪ PENDING = Today's Mission. ⏳ GREY = Upcoming.", s: { alignment: { wrapText: true } } }],
+        [{ v: "3. Smart Timing (Interval-Aware):", s: { font: { bold: true } } }, { v: "We know you don't want to see a monthly audit every single day! This matrix is 'Interval-Aware'—Weekly tasks only show up on Mondays, and Monthly ones on the 1st of the month. It keeps your daily view nice and clean.", s: { alignment: { wrapText: true } } }],
         [],
-        [{ v: "MASTERING YOUR VIEW (FILTERS)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } } } }],
-        [{ v: "Today's Task List:", s: { font: { bold: true } } }, { v: "Go to Sheet 03, click the filter arrow [v] on the 'Date of Entry' header, and select 'Today'.", s: { alignment: { wrapText: true } } }],
-        [{ v: "Periodic Overviews:", s: { font: { bold: true } } }, { v: "Use the 'Frequency' filter to view only Monthly Audits or use the 'Branch' filter to audit a specific location.", s: { alignment: { wrapText: true } } }],
+        [{ v: "MASTERING YOUR VIEW", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } } } }],
+        [{ v: "See Today's Due Tasks:", s: { font: { bold: true } } }, { v: "To see just what's due right now, go to Sheet 03, click the filter arrow [v] on the 'Date of Entry' header, and select 'Today'. You can also use this to look back at previous months or audit a specific branch!", s: { alignment: { wrapText: true } } }],
         [],
-        [{ v: "GLOBAL MODIFICATIONS & INTEGRITY", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.DANGER_RED } } } }],
-        [{ v: "Modifying Task Text:", s: { font: { bold: true } } }, { v: "This file is a pre-populated matrix. Changing a task on one row will not update future dates. To update your SOPs globally, we recommend our 'Mid-Year System Alignment' service.", s: { alignment: { wrapText: true } } }],
-        [{ v: "Power User Tip:", s: { font: { bold: true } } }, { v: "You may use Excel's 'Find & Replace' (Ctrl+H) to change task names across the whole sheet, but do not insert or delete rows manually, as this will break the Dashboard formulas.", s: { font: { italic: true }, alignment: { wrapText: true } } }],
+        [{ v: "MAKING CHANGES GLOBALLY", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.DANGER_RED } } } }],
+        [{ v: "Modifying Task Text:", s: { font: { bold: true } } }, { v: "Since this is a pre-filled 365-day engine, changing a task on one row won't fix the others. If you want to change a standard globally, use Excel's 'Find & Replace' (Ctrl+H) to update it everywhere at once. For more complex changes, our 'Mid-Year System Alignment' service is always here to help!", s: { alignment: { wrapText: true } } }],
         [],
-        [{ v: "For technical support or a Yearly Refresh, contact: more@moremeets.com", s: { font: { sz: 9, italic: true } } }]
+        [{ v: "For technical support or a Yearly Refresh, just reach out: more@moremeets.com", s: { font: { sz: 9, italic: true } } }]
     ];
     const insWs = utils.aoa_to_sheet(insData);
     addNavBar(insWs);
@@ -127,7 +125,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const coverData = [
         [], [],
         [{ v: "OPERATIONAL GOVERNANCE & COMPLIANCE SYSTEM", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Version 3.5 | Governance Suite Build: ${item.title}`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Version 3.6 | Governance Suite Build: ${item.title}`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "BRANCH MASTER REGISTRY", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "Branch 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Bandra Main", s: inputStyle }, null, { v: "Branch 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Colaba Hub", s: inputStyle }],
@@ -154,20 +152,20 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [],
         [{ v: "EXECUTIVE GOVERNANCE SCORECARD", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "NETWORK COMPLIANCE RATE (LIVE)", s: headerBlockStyle }, { v: "WINDOW START", s: headerBlockStyle }, { v: "WINDOW END", s: headerBlockStyle }, { v: "SYSTEM CLOCK", s: headerBlockStyle }],
+        [{ v: "WINDOW START", s: headerBlockStyle }, { v: "WINDOW END", s: headerBlockStyle }, { v: "SYSTEM CLOCK", s: headerBlockStyle }, { v: "EXECUTION RATE", s: headerBlockStyle }],
         [
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!I:I,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B4,'03_MASTER_LEDGER'!A:A,"<="&C4)/MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,">="&B4,'03_MASTER_LEDGER'!A:A,"<=TODAY()",'03_MASTER_LEDGER'!I:I,"<>*N/A*"))`, s: { ...centerCellStyle, numFmt: '0%', font: { bold: true, sz: 14 } } },
             { v: today, t: 'd', s: dateStyle }, 
             { v: endOfYear, t: 'd', s: dateStyle },         
-            { t: 'f', f: "TODAY()", s: dateStyle }                            
+            { t: 'f', f: "TODAY()", s: dateStyle },
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!I:I,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&A5,'03_MASTER_LEDGER'!A:A,"<="&B5)/MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,">="&A5,'03_MASTER_LEDGER'!A:A,"<=TODAY()",'03_MASTER_LEDGER'!I:I,"<>*N/A*"))`, s: { ...centerCellStyle, numFmt: '0%', font: { bold: true, sz: 14 } } }
         ],
         [],
-        [{ v: "STATUS DISTRIBUTION", s: headerBlockStyle }, { v: "TASK COUNT", s: headerBlockStyle }],
-        [{ v: "🟢 COMPLETED", s: { ...leftCellStyle, fill: { fgColor: { rgb: "C6EFCE" } } } }, { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!I:I,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B4,'03_MASTER_LEDGER'!A:A,"<="&C4)`, s: centerCellStyle }],
-        [{ v: "🔴 OVERDUE (ACTION REQD)", s: { ...leftCellStyle, fill: { fgColor: { rgb: "FFC7CE" } } } }, { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!I:I,"*OVERDUE*",'03_MASTER_LEDGER'!A:A,">="&B4,'03_MASTER_LEDGER'!A:A,"<="&C4)`, s: centerCellStyle }],
-        [{ v: "⚪ PENDING / UPCOMING", s: { ...leftCellStyle, fill: { fgColor: { rgb: "F2F2F2" } } } }, { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!I:I,"*PENDING*", '03_MASTER_LEDGER'!A:A,">="&B4) + COUNTIFS('03_MASTER_LEDGER'!I:I,"*SHORTLY*", '03_MASTER_LEDGER'!A:A,">="&B4)`, s: centerCellStyle }],
+        [{ v: "STATUS SUMMARY", s: headerBlockStyle }, { v: "TASK COUNT", s: headerBlockStyle }],
+        [{ v: "🟢 COMPLETED", s: { ...leftCellStyle, fill: { fgColor: { rgb: "C6EFCE" } } } }, { t: 'f', f: `COUNTIF('03_MASTER_LEDGER'!I:I,"*COMPLETED*")`, s: centerCellStyle }],
+        [{ v: "🔴 OVERDUE (ACTION REQD)", s: { ...leftCellStyle, fill: { fgColor: { rgb: "FFC7CE" } } } }, { t: 'f', f: `COUNTIF('03_MASTER_LEDGER'!I:I,"*OVERDUE*")`, s: centerCellStyle }],
+        [{ v: "⚪ PENDING / UPCOMING", s: { ...leftCellStyle, fill: { fgColor: { rgb: "F2F2F2" } } } }, { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!I:I,"*PENDING*") + COUNTIFS('03_MASTER_LEDGER'!I:I,"*SHORTLY*")`, s: centerCellStyle }],
         [],
-        [{ v: "DEPARTMENT PERFORMANCE", s: headerBlockStyle }, { v: "COMPLIANCE %", s: headerBlockStyle }],
+        [{ v: "DEPARTMENTAL PERFORMANCE", s: headerBlockStyle }, { v: "COMPLIANCE %", s: headerBlockStyle }],
         [{ v: "KITCHEN MODULE", s: leftCellStyle }, { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Kitchen*",'03_MASTER_LEDGER'!I:I,"*COMPLETED*")/MAX(1,COUNTIFS('03_MASTER_LEDGER'!C:C,"*Kitchen*",'03_MASTER_LEDGER'!A:A,"<=TODAY()",'03_MASTER_LEDGER'!I:I,"<>*N/A*"))`, s: { ...centerCellStyle, numFmt: '0%' } }],
         [{ v: "BAR MODULE", s: leftCellStyle }, { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Bar*",'03_MASTER_LEDGER'!I:I,"*COMPLETED*")/MAX(1,COUNTIFS('03_MASTER_LEDGER'!C:C,"*Bar*",'03_MASTER_LEDGER'!A:A,"<=TODAY()",'03_MASTER_LEDGER'!I:I,"<>*N/A*"))`, s: { ...centerCellStyle, numFmt: '0%' } }],
         [{ v: "DINING / FOH", s: leftCellStyle }, { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*FOH*", '03_MASTER_LEDGER'!I:I,"*COMPLETED*")/MAX(1,COUNTIFS('03_MASTER_LEDGER'!C:C,"*FOH*",'03_MASTER_LEDGER'!A:A,"<=TODAY()",'03_MASTER_LEDGER'!I:I,"<>*N/A*"))`, s: { ...centerCellStyle, numFmt: '0%' } }]
@@ -200,7 +198,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     for (let d = 0; d <= 364; d++) {
         const entryDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + d);
-        const dayOfWeek = entryDate.getDay(); // 1 = Monday (check local settings)
+        const dayOfWeek = entryDate.getDay(); 
         const dayOfMonth = entryDate.getDate();
 
         branches.forEach(branch => {
@@ -208,16 +206,15 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                 checklist.tasks.forEach(task => {
                     const freq = (task.frequency || checklist.frequency || "Daily").toLowerCase();
                     
-                    // --- INTERVAL FILTERING ---
                     let shouldInclude = false;
                     if (freq === 'daily') shouldInclude = true;
-                    if (freq === 'weekly' && dayOfWeek === 1) shouldInclude = true; // Every Monday
-                    if (freq === 'monthly' && dayOfMonth === 1) shouldInclude = true; // 1st of every month
+                    if (freq === 'weekly' && dayOfWeek === 1) shouldInclude = true; 
+                    if (freq === 'monthly' && dayOfMonth === 1) shouldInclude = true; 
                     
                     if (!shouldInclude) return;
 
                     const rowNum = ledgerData.length + 1;
-                    let moduleRef = "'01_OVERVIEW'!$C$10"; // Default Kitchen
+                    let moduleRef = "'01_OVERVIEW'!$C$10"; 
                     if (checklist.title.toLowerCase().includes('bar')) moduleRef = "'01_OVERVIEW'!$E$10";
                     if (checklist.title.toLowerCase().includes('foh') || checklist.title.toLowerCase().includes('dining') || checklist.title.toLowerCase().includes('garden')) moduleRef = "'01_OVERVIEW'!$C$11";
                     if (checklist.title.toLowerCase().includes('inventory')) moduleRef = "'01_OVERVIEW'!$E$11";
@@ -251,5 +248,5 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ledgerWs['!autofilter'] = { ref: `A4:L${ledgerData.length}` };
     utils.book_append_sheet(wb, ledgerWs, "03_MASTER_LEDGER");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_V3.5_Governance_Suite.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V3.6_Governance_Suite.xlsx`);
 }
