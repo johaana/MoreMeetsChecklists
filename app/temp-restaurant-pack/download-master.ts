@@ -5,8 +5,9 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * Version 3.0 - The Analytics Matrix Build
+ * Version 3.0 - The Analytics Matrix Build (FIXED)
  * Features: Modular Facility Switch, 365-Day Database, Action-First Ledger, Pie-Chart Ready Data.
+ * Status Logic: Corrected to show PENDING/OVERDUE by default.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -113,10 +114,10 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "", s: { alignment: { horizontal: 'right' } } }, { v: "GARDEN / FOH", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }, { v: "INVENTORY", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }],
         [],
         [{ v: "SYSTEM GOVERNANCE & MAINTENANCE:", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.DANGER_RED } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "1. DAILY USE: Filter 'Date of Entry' for TODAY. Columns E (Name), F (Date Done), and H (Issue) are your only daily inputs.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "2. ANALYTICS: Go to Sheet 02_DASHBOARD to see your compliance mix. Use the source data table to insert a Pie Chart.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3. COMPLIANCE SHIELD: High-priority tasks (HACCP) are tinted Light Green. These are non-negotiable for audit survival.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "4. YEARLY REFRESH: Reach out to MoreMeets™ for your 'V4.0 Yearly Refresh' to update your task list and reset your audit history.", s: { font: { sz: 10, bold: true, italic: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }]
+        [{ v: "1. DAILY USE: Filter 'Date of Entry' for TODAY. Column F (Date Completed) is your primary daily input.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "2. STATUS: Rows are PENDING/OVERDUE by default. They only turn COMPLETED when you enter a date in Col F.", s: { font: { sz: 10, bold: true }, alignment: { horizontal: 'center' } } }],
+        [{ v: "3. ANALYTICS: Go to Sheet 02_DASHBOARD to see your compliance mix. Use the source data table to insert a Pie Chart.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "4. YEARLY REFRESH: Reach out to MoreMeets™ for your 'V4.0 Yearly Refresh' to update your task list and reset history.", s: { font: { sz: 10, bold: true, italic: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -169,7 +170,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                     if (checklist.title.toLowerCase().includes('foh')) moduleRef = "'01_OVERVIEW'!$C$11";
                     if (checklist.title.toLowerCase().includes('inventory')) moduleRef = "'01_OVERVIEW'!$E$11";
 
-                    const statusFormula = `IF(${moduleRef}="NO", "⚪ N/A - INACTIVE", IF(NOT(ISBLANK(${dateDoneCell})), "🟢 COMPLETED", IF(${entryDateCell}<TODAY(), "🔴 OVERDUE", IF(${entryDateCell}=TODAY(), "⚪ PENDING", "⏳ DUE SHORTLY"))))`;
+                    // FIXED: Using <>"" for robust empty check. Logic: Inactive > Completed > Overdue > Pending > Due Shortly
+                    const statusFormula = `IF(${moduleRef}="NO", "⚪ N/A - INACTIVE", IF(${dateDoneCell}<>"", "🟢 COMPLETED", IF(${entryDateCell}<TODAY(), "🔴 OVERDUE", IF(${entryDateCell}=TODAY(), "⚪ PENDING", "⏳ DUE SHORTLY"))))`;
                     
                     const rowStyle = task.priority === 'High' ? complianceStyle : leftCellStyle;
 
@@ -198,7 +200,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ledgerWs['!autofilter'] = { ref: `A4:J${ledgerData.length}` };
     utils.book_append_sheet(wb, ledgerWs, "03_MASTER_LEDGER");
 
-    // --- 02. DASHBOARD (TREND & CHART DATA) ---
+    // --- 02. DASHBOARD ---
     const startOfPeriod = new Date(today.getFullYear(), today.getMonth(), 1);
     const dashData: any[][] = [
         [],
@@ -216,8 +218,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [
             { v: "Overall Execution Rate", s: leftCellStyle },
             { v: "100%", s: centerCellStyle },
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)/MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5,'03_MASTER_LEDGER'!G:G,"<>*N/A*", '03_MASTER_LEDGER'!A:A,"<="&D5))`, s: { ...centerCellStyle, font: { bold: true, sz: 14 } } },
-            { v: "Calculates compliance across all active branches/modules." }
+            // Metric ignores future tasks and inactive facilities
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)/MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5,'03_MASTER_LEDGER'!G:G,"<>*N/A*", '03_MASTER_LEDGER'!A:A,"<= TODAY()"))`, s: { ...centerCellStyle, font: { bold: true, sz: 14 } } },
+            { v: "Excludes future roadmaps and inactive modules." }
         ],
         [],
         [{ v: "CHART SOURCE: COMPLIANCE STATUS MIX", s: headerBlockStyle }, null, null, null],
@@ -241,13 +244,13 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { v: "Today's tasks yet to be completed." }
         ],
         [
-            { v: "🔵 INACTIVE / NA", s: { ...leftCellStyle, fill: { fgColor: { rgb: "E6FFFA" } } } }, 
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*N/A*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { v: "PROTOCOL BLUE", s: { fill: { fgColor: { rgb: COLORS.ACCENT_BLUE } } } },
-            { v: "Modules toggled 'NO' on Overview." }
+            { v: "⏳ DUE SHORTLY", s: { ...leftCellStyle, fill: { fgColor: { rgb: "E6F4FF" } } } }, 
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*SHORTLY*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
+            { v: "FUTURE BLUE", s: { fill: { fgColor: { rgb: COLORS.ACCENT_BLUE } } } },
+            { v: "Future tasks in your roadmap." }
         ],
         [],
-        [{ v: "Note: Select cells A12:B15 and click 'Insert > Pie Chart' for a colorful visual report.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.ACCENT_BLUE } } } }]
+        [{ v: "PIE CHART TIP: Select cells A12:B15 and click 'Insert > Pie Chart' for a colorful visual audit.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.ACCENT_BLUE } } } }]
     ];
     const dashWs = utils.aoa_to_sheet(dashData);
     addNavBar(dashWs);
