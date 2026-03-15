@@ -107,12 +107,12 @@ export const handleDownloadV2 = (item: PremiumPack, mode: BuildMode = 'STANDARD_
         [{ v: `System ID: ${item.title}`, s: { font: { sz: 10, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "BRANCH MASTER REGISTRY", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Code 1:", s: { alignment: { horizontal: 'right' } } }, { v: "[Main Branch Name]", s: inputStyle }, null, { v: "Code 2:", s: { alignment: { horizontal: 'right' } } }, { v: "[Secondary Branch Name]", s: inputStyle }],
+        [{ v: "Code 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Bandra Main", s: inputStyle }, null, { v: "Code 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Ghatkopar West", s: inputStyle }],
         [],
         [{ v: "SYSTEM INSTRUCTIONS:", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "1. Define your locations in the Registry above (Code 1, Code 2, etc.)", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
         [{ v: "2. Assign Staff to Roles in '02 PERSONNEL PROFILES'.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3. Status turns COMPLETED automatically when Date is filled in '03 LOGBOOK'.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.SUCCESS_GREEN } }, alignment: { horizontal: 'center' } } }]
+        [{ v: "3. Status turns COMPLETED automatically when 'Last Date Done' is filled in '03 LOGBOOK'.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.SUCCESS_GREEN } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -143,51 +143,43 @@ export const handleDownloadV2 = (item: PremiumPack, mode: BuildMode = 'STANDARD_
 
     // --- 05. DAILY LOGBOOK (EXECUTION) ---
     const execHeaders = [
-        { v: "ID", s: headerBlockStyle },
-        { v: "Last Date Completed (Input)", s: headerBlockStyle },
-        { v: "Branch Code (1-2)", s: headerBlockStyle },
-        { v: "Branch Name (Auto)", s: headerBlockStyle },
-        { v: "Requirement / Control Step", s: headerBlockStyle },
-        { v: "Responsible Role", s: headerBlockStyle },
-        { v: "Responsible Person (Auto)", s: headerBlockStyle },
-        { v: "Live Status (Auto-Trigger)", s: headerBlockStyle },
-        { v: "Issue / Deviation", s: headerBlockStyle }
+        { v: "Date of Entry", s: headerBlockStyle }, // A
+        { v: "ID", s: headerBlockStyle }, // B
+        { v: "Branch Code (1-2)", s: headerBlockStyle }, // C
+        { v: "Branch Name (Auto)", s: headerBlockStyle }, // D
+        { v: "Requirement / Control Step", s: headerBlockStyle }, // E
+        { v: "Responsible Role", s: headerBlockStyle }, // F
+        { v: "Responsible Person (Auto)", s: headerBlockStyle }, // G
+        { v: "Last Date Completed (Input)", s: headerBlockStyle }, // H
+        { v: "Live Status (Auto)", s: headerBlockStyle }, // I
+        { v: "Issue / Deviation", s: headerBlockStyle } // J
     ];
-
-    if (mode === 'AUDIT_SHIELD') {
-        execHeaders.push({ v: "Consequence of Failure", s: headerBlockStyle });
-        execHeaders.push({ v: "Required Proof", s: headerBlockStyle });
-    }
 
     const execData: any[][] = [[], [{ v: "OPERATIONAL LOGBOOK: DAILY EXECUTION LEDGER", s: titleStyle }], [], [], execHeaders];
 
     let rowIndex = 6;
     item.checklists.forEach(checklist => {
         checklist.tasks.forEach(task => {
-            const dateCell = `B${rowIndex}`;
             const branchCodeCell = `C${rowIndex}`;
             const roleCell = `F${rowIndex}`;
+            const lastDateCell = `H${rowIndex}`;
             
             const branchFormula = `IFERROR(CHOOSE(${branchCodeCell}, '01_SYSTEM_OVERVIEW'!$B$8, '01_SYSTEM_OVERVIEW'!$E$8), "N/A")`;
             const staffFormula = `IFERROR(VLOOKUP(${roleCell}, '02_PERSONNEL_PROFILES'!A:B, 2, FALSE), "[ASSIGN STAFF]")`;
-            const statusFormula = `IF(${dateCell}="", "PENDING", "COMPLETED")`;
+            const statusFormula = `IF(${lastDateCell}="", "PENDING", "COMPLETED")`;
 
             const row = [
-                { v: task.id, s: centerCellStyle },
-                { v: "", s: inputStyle }, // Date Completed
-                { v: "", s: inputStyle }, // Branch Code
-                { t: 'f', f: branchFormula, s: centerCellStyle }, // Branch Name
-                { v: task.description, s: leftCellStyle },
-                { v: checklist.role, s: centerCellStyle },
-                { t: 'f', f: staffFormula, s: centerCellStyle }, // Responsible Person
-                { t: 'f', f: statusFormula, s: { ...centerCellStyle, font: { bold: true } } }, // Status
-                { v: "", s: inputStyle }, // Issue
+                { v: "", s: inputStyle }, // A: Date of Entry
+                { v: task.id, s: centerCellStyle }, // B: ID
+                { v: "1", s: inputStyle }, // C: Branch Code (Default 1)
+                { t: 'f', f: branchFormula, s: centerCellStyle }, // D: Branch Name
+                { v: task.description, s: leftCellStyle }, // E: Requirement
+                { v: checklist.role, s: centerCellStyle }, // F: Role
+                { t: 'f', f: staffFormula, s: centerCellStyle }, // G: Person
+                { v: "", s: inputStyle }, // H: Last Date Completed
+                { t: 'f', f: statusFormula, s: { ...centerCellStyle, font: { bold: true } } }, // I: Status
+                { v: "", s: inputStyle }, // J: Issue
             ];
-
-            if (mode === 'AUDIT_SHIELD') {
-                row.push({ v: task.consequence, s: { ...leftCellStyle, font: { ...baseFont, italic: true, sz: 9 } } });
-                row.push({ v: task.proof, s: { ...centerCellStyle, font: { ...baseFont, bold: true, sz: 9 } } });
-            }
 
             execData.push(row);
             rowIndex++;
@@ -196,13 +188,12 @@ export const handleDownloadV2 = (item: PremiumPack, mode: BuildMode = 'STANDARD_
 
     const execWs = utils.aoa_to_sheet(execData);
     addNavBar(execWs);
-    const wchs = [10, 25, 15, 25, 60, 25, 25, 25, 35];
-    if (mode === 'AUDIT_SHIELD') wchs.push(40, 25);
+    const wchs = [20, 10, 15, 25, 60, 25, 25, 25, 20, 35];
     execWs['!cols'] = wchs.map(w => ({ wch: w }));
     execWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: wchs.length - 1 } }];
     
     // Enable Auto-Filters on Header Row (Row 5)
-    execWs['!autofilter'] = { ref: `A5:${String.fromCharCode(64 + wchs.length)}${rowIndex}` };
+    execWs['!autofilter'] = { ref: `A5:J${rowIndex}` };
     
     utils.book_append_sheet(wb, execWs, "05_DAILY_TASK_EXECUTION");
 
@@ -212,8 +203,8 @@ export const handleDownloadV2 = (item: PremiumPack, mode: BuildMode = 'STANDARD_
         [{ v: "OPERATIONAL GOVERNANCE DASHBOARD", s: titleStyle }],
         [],
         [{ v: "Operational KPI", s: headerBlockStyle }, { v: "Target", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }, { v: "Action Required", s: headerBlockStyle }],
-        [{ v: "Task Completion Rate", s: centerCellStyle }, { v: "100%", s: centerCellStyle }, { t: 'f', f: `TEXT(COUNTIF('05_DAILY_TASK_EXECUTION'!H:H, "COMPLETED") / MAX(1, COUNTA('05_DAILY_TASK_EXECUTION'!E:E)-1), "0%")`, s: { ...centerCellStyle, font: { bold: true } } }, { v: "Review Pending Logs" }],
-        [{ v: "Identified Deviations", s: centerCellStyle }, { v: "Zero", s: centerCellStyle }, { t: 'f', f: `COUNTIF('05_DAILY_TASK_EXECUTION'!I:I, "<>")`, s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } }, { v: "Log in Incident Registry" }]
+        [{ v: "Task Completion Rate", s: centerCellStyle }, { v: "100%", s: centerCellStyle }, { t: 'f', f: `TEXT(COUNTIF('05_DAILY_TASK_EXECUTION'!I:I, "COMPLETED") / MAX(1, COUNTA('05_DAILY_TASK_EXECUTION'!E:E)-1), "0%")`, s: { ...centerCellStyle, font: { bold: true } } }, { v: "Review Pending Logs" }],
+        [{ v: "Identified Deviations", s: centerCellStyle }, { v: "Zero", s: centerCellStyle }, { t: 'f', f: `COUNTIF('05_DAILY_TASK_EXECUTION'!J:J, "<>")`, s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } }, { v: "Log in Incident Registry" }]
     ];
     const dashWs = utils.aoa_to_sheet(dashData);
     addNavBar(dashWs);
