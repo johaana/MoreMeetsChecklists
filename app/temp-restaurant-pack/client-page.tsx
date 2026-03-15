@@ -9,20 +9,18 @@ import { handleDownloadMaster } from './download-master';
 import { 
     Download, 
     ShieldCheck,
-    LayoutDashboard,
-    ClipboardList,
-    AlertCircle,
-    ArrowRight,
+    History,
+    Zap,
     CheckCircle2,
     Calendar,
-    MapPin,
-    User,
-    History,
-    Zap
+    ArrowRight,
+    Users,
+    Activity,
+    Lock
 } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 
 export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
   return (
@@ -48,14 +46,14 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                 <div className="space-y-6">
                     <div className="flex justify-center">
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-5 uppercase tracking-[0.5em] font-black text-[10px] bg-primary/5 rounded-full backdrop-blur-sm">
-                            V2.5 MASTER CONTROL SYSTEM
+                            V2.5 AUDIT-READY MASTER LEDGER
                         </Badge>
                     </div>
                     <h1 className="text-5xl md:text-8xl font-black font-headline text-primary-text italic uppercase tracking-tighter leading-[0.9] drop-shadow-2xl">
-                        Operational <br/> <span className="text-primary">Discipline.</span>
+                        Operational <br/> <span className="text-primary">Black Box.</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-secondary-text italic max-w-2xl mx-auto font-medium leading-relaxed border-l-2 border-primary/20 pl-8">
-                        The "Best-of-All" Build. A high-accountability Vertical Ledger designed for zero-friction daily audit trails.
+                        One interaction zone. Permanent history. Zero manual status updates. Engineered for the "Best-of-All" operational standard.
                     </p>
                 </div>
 
@@ -65,9 +63,9 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                         onClick={() => handleDownloadMaster(pack)} 
                         className="h-16 px-12 bg-primary text-black hover:scale-105 transition-all font-black uppercase italic tracking-widest text-lg shadow-[0_0_40px_-5px_rgba(46,184,107,0.4)]"
                     >
-                        Download Master System <Download className="ml-2 h-6 w-6" />
+                        Download V2.5 Master System <Download className="ml-2 h-6 w-6" />
                     </Button>
-                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Includes 140+ High-Gravity Control Tasks</p>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Includes 140+ restored technical tasks & 5 modular control sheets</p>
                 </div>
             </div>
         </section>
@@ -76,24 +74,24 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
         <section className="py-24 bg-alternate-background">
             <div className="container px-4 md:px-6">
                 <div className="text-center mb-16 space-y-4">
-                    <h2 className="text-3xl font-black font-headline uppercase italic">Why the Vertical Ledger?</h2>
-                    <p className="text-secondary-text italic font-medium">Solving the "Copy-Paste" problem for real restaurant teams.</p>
+                    <h2 className="text-3xl font-black font-headline uppercase italic">The Vertical Ledger Innovation</h2>
+                    <p className="text-secondary-text italic font-medium">Solving the "History Problem" without adding complexity.</p>
                 </div>
                 <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <Card className="bg-black/40 border-white/5 p-8 space-y-4">
-                        <Zap className="h-10 w-10 text-accent" />
-                        <h3 className="font-black uppercase tracking-widest text-sm">Chameleon Status</h3>
-                        <p className="text-xs text-secondary-text leading-relaxed italic">The "Status" column is hands-off. It flips from PENDING to COMPLETED the moment a staff member enters a date. No manual typing, no errors.</p>
+                        <History className="h-10 w-10 text-accent" />
+                        <h3 className="font-black uppercase tracking-widest text-sm">Permanent Audit Trail</h3>
+                        <p className="text-xs text-secondary-text leading-relaxed italic">Instead of overwriting yesterday's checks, every entry generates a new row. You can filter for "Tuesday" or "Branch Bandra" to see exactly what happened in the past.</p>
                     </Card>
                     <Card className="bg-black/40 border-white/5 p-8 space-y-4">
-                        <History className="h-10 w-10 text-primary" />
-                        <h3 className="font-black uppercase tracking-widest text-sm">Infinite Audit Trail</h3>
-                        <p className="text-xs text-secondary-text leading-relaxed italic">Instead of overwriting yesterday's data, the system creates a permanent history. Essential for health inspections, insurance, and performance audits.</p>
+                        <Zap className="h-10 w-10 text-primary" />
+                        <h3 className="font-black uppercase tracking-widest text-sm">Strict Pending Logic</h3>
+                        <p className="text-xs text-secondary-text leading-relaxed italic">Tasks are PENDING by default. Status flips to COMPLETED and turns green only when a completion date is entered. Zero manual typing for status.</p>
                     </Card>
                     <Card className="bg-black/40 border-white/5 p-8 space-y-4">
-                        <CheckCircle2 className="h-10 w-10 text-primary" />
-                        <h3 className="font-black uppercase tracking-widest text-sm">Motivation Engine</h3>
-                        <p className="text-xs text-secondary-text leading-relaxed italic">Critical compliance points are highlighted in subtle green. Staff don't just "do chores"—they "Turn the Building Green" through disciplined execution.</p>
+                        <ShieldCheck className="h-10 w-10 text-primary" />
+                        <h3 className="font-black uppercase tracking-widest text-sm">Compliance Motivation</h3>
+                        <p className="text-xs text-secondary-text leading-relaxed italic">High-risk tasks are tinted in seafoam green. Staff recognize these as the "Brand Defenders" that protect the business from legal and health failures.</p>
                     </Card>
                 </div>
             </div>
@@ -103,19 +101,19 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
         <section className="py-24 border-t border-white/5">
             <div className="container px-4 md:px-6 max-w-4xl mx-auto space-y-16">
                 <div className="text-center space-y-4">
-                    <h2 className="text-3xl font-black font-headline uppercase italic">Clinical Workflow Order</h2>
-                    <p className="text-secondary-text italic font-medium">Engineered for one-handed operation on mobile or tablets.</p>
+                    <h2 className="text-3xl font-black font-headline uppercase italic">Audit-Ready Column Order</h2>
+                    <p className="text-secondary-text italic font-medium">Following the clinical standard for operational governance.</p>
                 </div>
                 
                 <div className="relative">
                     <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-white/5 -translate-y-1/2 hidden md:block" />
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-8 relative z-10">
                         {[
-                            { step: "01", label: "Date of Entry", sub: "Shift Anchor" },
-                            { step: "02", label: "Branch", sub: "Multi-Unit" },
-                            { step: "03", label: "Personnel", sub: "Who's on duty" },
+                            { step: "01", label: "Entry Date", sub: "The Anchor" },
+                            { step: "02", label: "Branch Name", sub: "The Location" },
+                            { step: "03", label: "Task & Role", sub: "The Duty" },
                             { step: "04", label: "Date Done", sub: "The Trigger" },
-                            { step: "05", label: "Auto Status", sub: "Validation" }
+                            { step: "05", label: "Auto Status", sub: "The Proof" }
                         ].map((item, i) => (
                             <div key={i} className="flex flex-col items-center text-center space-y-2">
                                 <div className="w-10 h-10 rounded-full bg-primary text-black flex items-center justify-center font-black text-xs">{item.step}</div>
