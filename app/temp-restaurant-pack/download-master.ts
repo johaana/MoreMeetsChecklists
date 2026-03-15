@@ -5,8 +5,8 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * Version 3.2 - Today-Forward Build (Surgical Refinement)
- * Features: 365-Day Matrix starting from TODAY, Executive Dashboard Redesign, Action-First UI.
+ * Version 3.3 - Surgical Execution Build
+ * Features: Hardened Dashboard Formulas, dd-mm-yyyy format, Task Context (Module/Freq), 365-Day Matrix from Today.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -26,7 +26,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         SOFT_GREY: "F3F4F6",
         BORDER_LIGHT: "D1D5DB",
         INPUT_ZONE: "FFFFE0", 
-        COMPLIANCE_TINT: "E6FFFA", 
         TEXT_MUTED: "6B7280"
     };
 
@@ -76,9 +75,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         font: { bold: true, sz: 12 }
     };
 
-    const dateDisplayStyle = {
+    const dateStyle = {
         ...centerCellStyle,
-        numFmt: 'dd-mmm-yyyy',
+        numFmt: 'dd-mm-yyyy',
         font: { bold: true }
     };
 
@@ -91,8 +90,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         const navItems = [
             { v: "01 OVERVIEW", target: "01_OVERVIEW" },
             { v: "02 DASHBOARD", target: "02_DASHBOARD" },
-            { v: "03 MASTER LEDGER", target: "03_MASTER_LEDGER" },
-            { v: "04 RISK MAP", target: "04_RISK_MAP" }
+            { v: "03 MASTER LEDGER", target: "03_MASTER_LEDGER" }
         ];
         
         const navData = [
@@ -109,20 +107,19 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     // --- 01. OVERVIEW ---
     const coverData = [
         [], [],
-        [{ v: "RESTAURANT OPERATIONS CONTROL SYSTEM", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Version 3.2 | Today-Forward Architecture`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "OPERATIONAL GOVERNANCE & COMPLIANCE SYSTEM", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Version 3.3 | Technical Execution Infrastructure`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "BRANCH MASTER REGISTRY", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "Branch 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Bandra Main", s: inputStyle }, null, { v: "Branch 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Colaba Hub", s: inputStyle }],
         [],
-        [{ v: "MODULAR FACILITY SWITCHBOARD", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "FACILITY MODULE SWITCHBOARD", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "Enable Module:", s: { alignment: { horizontal: 'right' } } }, { v: "KITCHEN", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }, { v: "BAR / BEVERAGE", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }],
         [{ v: "", s: { alignment: { horizontal: 'right' } } }, { v: "GARDEN / FOH", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }, { v: "INVENTORY", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }],
         [],
-        [{ v: "SYSTEM GOVERNANCE NOTES:", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.DANGER_RED } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "1. DAILY USE: Filter Column A for TODAY. Fill Staff Name (Col E) and Date Completed (Col F).", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "2. PERFORMANCE: The Dashboard calculates compliance rate for your specified window.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3. MAINTENANCE: Reach out to MoreMeets™ for a Yearly System Refresh to reset your ledger.", s: { font: { sz: 10, bold: true, italic: true }, alignment: { horizontal: 'center' } } }]
+        [{ v: "SYSTEM MAINTENANCE SERVICE:", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.DANGER_RED } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "This file is a 365-day engineered matrix. To maintain audit integrity, do not insert rows manually.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Contact MoreMeets™ for a 'Yearly Refresh' to update your task list and receive a clean ledger.", s: { font: { sz: 10, bold: true }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -140,91 +137,65 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     // --- 02. DASHBOARD ---
     const today = new Date();
-    const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+    const endOfYear = new Date(today.getFullYear() + 1, today.getMonth(), today.getDate());
+    
     const dashData: any[][] = [
         [],
-        [{ v: "NETWORK COMPLIANCE PERFORMANCE SCORECARD", s: titleStyle }],
+        [{ v: "EXECUTIVE GOVERNANCE SCORECARD", s: titleStyle }],
         [],
-        [{ v: "AUDIT WINDOW SETTINGS", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIME_NAVY } } } }, { v: "START DATE", s: headerBlockStyle }, { v: "END DATE", s: headerBlockStyle }, { v: "SYSTEM CLOCK", s: headerBlockStyle }],
+        [{ v: "AUDIT SETTINGS", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIME_NAVY } } } }, { v: "WINDOW START", s: headerBlockStyle }, { v: "WINDOW END", s: headerBlockStyle }, { v: "CURRENT DATE", s: headerBlockStyle }],
         [
-            { v: "Configuration:", s: { alignment: { horizontal: 'right' }, font: { italic: true } } }, 
-            { v: today, t: 'd', s: dateDisplayStyle }, 
-            { v: endOfMonth, t: 'd', s: dateDisplayStyle },         
-            { t: 'f', f: "TODAY()", s: dateDisplayStyle }                            
+            { v: "Reporting Window:", s: { alignment: { horizontal: 'right' } } }, 
+            { v: today, t: 'd', s: dateStyle }, 
+            { v: endOfYear, t: 'd', s: dateStyle },         
+            { t: 'f', f: "TODAY()", s: dateStyle }                            
         ],
         [],
-        [{ v: "EXECUTIVE PERFORMANCE INDICATOR", s: headerBlockStyle }, { v: "TARGET", s: headerBlockStyle }, { v: "CURRENT RATE", s: headerBlockStyle }, { v: "AUDIT COMMENTARY", s: headerBlockStyle }],
+        [{ v: "KPI: NETWORK COMPLIANCE RATE", s: headerBlockStyle }, { v: "TARGET", s: headerBlockStyle }, { v: "LIVE RATE", s: headerBlockStyle }, { v: "AUDIT STATUS", s: headerBlockStyle }],
         [
-            { v: "Network Execution Rate", s: leftCellStyle },
+            { v: "Consolidated Execution", s: leftCellStyle },
             { v: "100%", s: centerCellStyle },
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)/MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5,'03_MASTER_LEDGER'!G:G,"<>*N/A*", '03_MASTER_LEDGER'!A:A,"<= TODAY()"))`, s: percentageStyle },
-            { v: "Excludes future and inactive modules." }
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!H:H,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)/MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<=TODAY()",'03_MASTER_LEDGER'!H:H,"<>*N/A*"))`, s: percentageStyle },
+            { v: "Automatic calculation based on completed dates." }
         ],
         [],
-        [{ v: "OPERATIONAL STATUS MIX", s: headerBlockStyle }, { v: "TOTAL COUNT", s: headerBlockStyle }, null, null],
+        [{ v: "STATUS DISTRIBUTION", s: headerBlockStyle }, { v: "TOTAL COUNT", s: headerBlockStyle }],
         [
             { v: "🟢 COMPLETED", s: { ...leftCellStyle, fill: { fgColor: { rgb: "C6EFCE" } } } }, 
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            null, null
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!H:H,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle }
         ],
         [
             { v: "🔴 OVERDUE", s: { ...leftCellStyle, fill: { fgColor: { rgb: "FFC7CE" } } } }, 
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*OVERDUE*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            null, null
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!H:H,"*OVERDUE*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle }
         ],
         [
-            { v: "⚪ PENDING", s: { ...leftCellStyle, fill: { fgColor: { rgb: "F2F2F2" } } } }, 
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*PENDING*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            null, null
-        ],
-        [
-            { v: "⏳ DUE SHORTLY", s: { ...leftCellStyle, fill: { fgColor: { rgb: "E6F4FF" } } } }, 
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*SHORTLY*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            null, null
-        ],
-        [],
-        [{ v: "DEPARTMENTAL COMPLIANCE BREAKDOWN", s: headerBlockStyle }, null, null, null],
-        [{ v: "DEPARTMENT", s: headerBlockStyle }, { v: "TOTAL STEPS", s: headerBlockStyle }, { v: "COMPLETED", s: headerBlockStyle }, { v: "COMPLIANCE %", s: headerBlockStyle }],
-        [
-            { v: "Kitchen Operations", s: leftCellStyle }, 
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Kitchen*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Kitchen*",'03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { t: 'f', f: `C18/B18`, s: percentageStyle }
-        ],
-        [
-            { v: "FOH / Dining Room", s: leftCellStyle }, 
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Dining*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Dining*",'03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { t: 'f', f: `C19/B19`, s: percentageStyle }
-        ],
-        [
-            { v: "Bar & Beverage", s: leftCellStyle }, 
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Bar*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Bar*",'03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle },
-            { t: 'f', f: `C20/B20`, s: percentageStyle }
+            { v: "⚪ PENDING / UPCOMING", s: { ...leftCellStyle, fill: { fgColor: { rgb: "F2F2F2" } } } }, 
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!H:H,"*PENDING*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5) + COUNTIFS('03_MASTER_LEDGER'!H:H,"*SHORTLY*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: centerCellStyle }
         ]
     ];
     const dashWs = utils.aoa_to_sheet(dashData);
     addNavBar(dashWs);
     dashWs['!cols'] = [{ wch: 35 }, { wch: 20 }, { wch: 25 }, { wch: 45 }];
-    dashWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }, { s: { r: 9, c: 0 }, e: { r: 9, c: 1 } }, { s: { r: 15, c: 0 }, e: { r: 15, c: 3 } }];
+    dashWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }, { s: { r: 9, c: 0 }, e: { r: 9, c: 1 } }];
     utils.book_append_sheet(wb, dashWs, "02_DASHBOARD");
 
     // --- 03. MASTER LEDGER ---
     const ledgerHeaders = [
         { v: "Date of Entry", s: headerBlockStyle }, // A
         { v: "Branch Name", s: headerBlockStyle }, // B
-        { v: "Requirement / Control Step", s: headerBlockStyle }, // C
-        { v: "Responsible Role", s: headerBlockStyle }, // D
-        { v: "Staff Member (Name)", s: headerBlockStyle }, // E
-        { v: "Date Completed (Input)", s: headerBlockStyle }, // F
-        { v: "Live Status (Auto)", s: headerBlockStyle }, // G
-        { v: "Issue / Action Taken / Notes", s: headerBlockStyle }, // H
-        { v: "Trainer Notes (How-to)", s: headerBlockStyle }, // I
-        { v: "Consequence of Failure", s: headerBlockStyle } // J
+        { v: "Module (Checklist)", s: headerBlockStyle }, // C
+        { v: "Requirement / Control Step", s: headerBlockStyle }, // D
+        { v: "Frequency", s: headerBlockStyle }, // E
+        { v: "Responsible Role", s: headerBlockStyle }, // F
+        { v: "Staff Name (Input)", s: headerBlockStyle }, // G
+        { v: "Date Done (DD-MM-YYYY)", s: headerBlockStyle }, // H
+        { v: "Live Status (Auto)", s: headerBlockStyle }, // I
+        { v: "Issue / Action Taken", s: headerBlockStyle }, // J
+        { v: "Trainer Notes (How-to)", s: headerBlockStyle }, // K
+        { v: "Consequence of Failure", s: headerBlockStyle } // L
     ];
 
-    const ledgerData: any[][] = [[], [{ v: "MASTER OPERATIONAL LEDGER (ANNUAL GOVERNANCE MATRIX)", s: titleStyle }], [], ledgerHeaders];
+    const ledgerData: any[][] = [[], [{ v: "MASTER OPERATIONAL LEDGER (365-DAY AUDIT TRAIL)", s: titleStyle }], [], ledgerHeaders];
 
     const branches = ["Bandra Main", "Colaba Hub"];
 
@@ -235,27 +206,27 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             item.checklists.forEach(checklist => {
                 checklist.tasks.forEach(task => {
                     const rowNum = ledgerData.length + 1;
-                    const dateDoneCell = `F${rowNum}`;
-                    const entryDateCell = `A${rowNum}`;
                     
                     let moduleRef = "'01_OVERVIEW'!$C$10"; // Kitchen
                     if (checklist.title.toLowerCase().includes('bar')) moduleRef = "'01_OVERVIEW'!$E$10";
                     if (checklist.title.toLowerCase().includes('foh')) moduleRef = "'01_OVERVIEW'!$C$11";
                     if (checklist.title.toLowerCase().includes('inventory')) moduleRef = "'01_OVERVIEW'!$E$11";
 
-                    const statusFormula = `IF(${moduleRef}="NO", "⚪ N/A - INACTIVE", IF(${dateDoneCell}<>"", "🟢 COMPLETED", IF(${entryDateCell}<TODAY(), "🔴 OVERDUE", IF(${entryDateCell}=TODAY(), "⚪ PENDING", "⏳ DUE SHORTLY"))))`;
+                    const statusFormula = `IF(${moduleRef}="NO", "⚪ N/A - INACTIVE", IF(H${rowNum}<>"", "🟢 COMPLETED", IF(A${rowNum}<TODAY(), "🔴 OVERDUE", IF(A${rowNum}=TODAY(), "⚪ PENDING", "⏳ DUE SHORTLY"))))`;
                     
                     ledgerData.push([
-                        { v: entryDate, t: 'd', s: { ...centerCellStyle, numFmt: 'dd-mmm-yyyy' } }, 
+                        { v: entryDate, t: 'd', s: { ...centerCellStyle, numFmt: 'dd-mm-yyyy' } }, 
                         { v: branch, s: centerCellStyle }, 
+                        { v: checklist.title, s: centerCellStyle },
                         { v: task.description, s: leftCellStyle },
+                        { v: checklist.frequency, s: centerCellStyle },
                         { v: checklist.role, s: centerCellStyle }, 
                         { v: "", s: inputStyle }, 
                         { v: "", s: inputStyle }, 
                         { t: 'f', f: statusFormula, s: { ...centerCellStyle, font: { bold: true } } }, 
                         { v: "", s: inputStyle },
-                        { v: task.trainerNotes || "Refer to SOP.", s: { ...leftCellStyle, font: { italic: true, color: COLORS.TEXT_MUTED, sz: 9 } } },
-                        { v: task.consequence || "Compliance Risk.", s: { ...leftCellStyle, font: { italic: true, color: COLORS.TEXT_MUTED, sz: 9 } } }
+                        { v: task.trainerNotes || "No notes available.", s: { ...leftCellStyle, font: { italic: true, color: COLORS.TEXT_MUTED, sz: 9 } } },
+                        { v: task.consequence || "Compliance risk.", s: { ...leftCellStyle, font: { italic: true, color: COLORS.TEXT_MUTED, sz: 9 } } }
                     ]);
                 });
             });
@@ -264,28 +235,11 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const ledgerWs = utils.aoa_to_sheet(ledgerData);
     addNavBar(ledgerWs);
-    const wchs = [18, 25, 55, 25, 25, 25, 30, 40, 45, 45];
+    const wchs = [15, 20, 25, 50, 15, 20, 25, 25, 25, 35, 45, 45];
     ledgerWs['!cols'] = wchs.map(w => ({ wch: w }));
     ledgerWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: wchs.length - 1 } }];
-    ledgerWs['!autofilter'] = { ref: `A4:J${ledgerData.length}` };
+    ledgerWs['!autofilter'] = { ref: `A4:L${ledgerData.length}` };
     utils.book_append_sheet(wb, ledgerWs, "03_MASTER_LEDGER");
 
-    // --- 04. RISK MAP ---
-    const riskData = [
-        [],
-        [{ v: "RISK CONTROL MAP: THE 'WHY' BEHIND THE SYSTEM", s: titleStyle }],
-        [],
-        [{ v: "Operational Risk", s: headerBlockStyle }, { v: "Failure Impact", s: headerBlockStyle }, { v: "Primary Shield", s: headerBlockStyle }, { v: "Control Action", s: headerBlockStyle }],
-        [{ v: "Health Closure", s: centerCellStyle }, { v: "Revenue Zero / Legal Fine", s: leftCellStyle }, { v: "HACCP Module", s: centerCellStyle }, { v: "Temp Logs & Sanitization Sign-offs" }],
-        [{ v: "Customer Injury", s: centerCellStyle }, { v: "Litigation / Brand Damage", s: leftCellStyle }, { v: "Hygiene Module", s: centerCellStyle }, { v: "Hourly Floor Hazard Checks" }],
-        [{ v: "Internal Theft", s: centerCellStyle }, { v: "EBITDA Erosion", s: leftCellStyle }, { v: "Inventory Module", s: centerCellStyle }, { v: "Weekly Blind Stock Counts" }],
-        [{ v: "Fire Incident", s: centerCellStyle }, { v: "Total Loss of Assets", s: leftCellStyle }, { v: "Closing Module", s: centerCellStyle }, { v: "Mandatory Gas & Electrical Shutdown" }]
-    ];
-    const riskWs = utils.aoa_to_sheet(riskData);
-    addNavBar(riskWs);
-    riskWs['!cols'] = [{ wch: 25 }, { wch: 40 }, { wch: 30 }, { wch: 45 }];
-    riskWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
-    utils.book_append_sheet(wb, riskWs, "04_RISK_MAP");
-
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_V3.2_Executive_Control.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V3.3_Surgical_Standard.xlsx`);
 }
