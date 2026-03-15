@@ -10,7 +10,7 @@ import {
     Download, 
     ShieldCheck,
     History,
-    Zap,
+    TrendingUp,
     LayoutGrid,
     ArrowRight,
     Activity,
@@ -20,7 +20,8 @@ import {
     TableProperties,
     BookOpen,
     MessageSquareQuote,
-    AlertCircle
+    AlertCircle,
+    CheckCircle2
 } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -50,14 +51,14 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                 <div className="space-y-6">
                     <div className="flex justify-center">
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-5 uppercase tracking-[0.5em] font-black text-[10px] bg-primary/5 rounded-full backdrop-blur-sm">
-                            V4.0 THE OPERATIONAL OS
+                            V4.0 MARKET READY EDITION
                         </Badge>
                     </div>
                     <h1 className="text-5xl md:text-8xl font-black font-headline text-primary-text italic uppercase tracking-tighter leading-[0.9] drop-shadow-2xl">
-                        Command <br/> <span className="text-primary">Center.</span>
+                        Operational <br/> <span className="text-primary">Software.</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-secondary-text italic max-w-3xl mx-auto font-medium leading-relaxed border-l-2 border-primary/20 pl-8">
-                        Beyond spreadsheets. A normalized operational database with software-style interface, shift handovers, and critical verification layers.
+                        The definitive Restaurant Operations Control System (ROCS). A high-performance governance database with interval-aware scheduling and ROI intelligence.
                     </p>
                 </div>
 
@@ -70,11 +71,11 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                         Download ROCS v4.0 System <Download className="ml-2 h-6 w-6" />
                     </Button>
                     <div className="flex flex-wrap justify-center items-center gap-4 text-[10px] text-muted-foreground uppercase tracking-widest font-bold bg-white/5 px-6 py-3 rounded-full border border-white/10 backdrop-blur-md">
-                        <span className="flex items-center gap-1.5 text-primary"><MessageSquareQuote className="w-3 h-3"/> Shift Handovers</span>
+                        <span className="flex items-center gap-1.5 text-primary"><TrendingUp className="w-3 h-3"/> ROI Calculator</span>
                         <span className="w-1 h-1 rounded-full bg-white/20" />
-                        <span className="flex items-center gap-1.5 text-accent"><AlertCircle className="w-3 h-3"/> Incident Tracking</span>
+                        <span className="flex items-center gap-1.5 text-accent"><History className="w-3 h-3"/> Shift Handovers</span>
                         <span className="w-1 h-1 rounded-full bg-white/20" />
-                        <span className="flex items-center gap-1.5 text-white/60"><Lock className="w-3 h-3"/> Hidden Database</span>
+                        <span className="flex items-center gap-1.5 text-white/60"><Lock className="w-3 h-3"/> Normalized Engine</span>
                     </div>
                 </div>
             </div>
@@ -84,24 +85,24 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
         <section className="py-24 bg-alternate-background">
             <div className="container px-4 md:px-6">
                 <div className="text-center mb-16 space-y-4">
-                    <h2 className="text-3xl font-black font-headline uppercase italic">Engineered for Human Speed</h2>
-                    <p className="text-secondary-text italic font-medium max-w-xl mx-auto">The "Software Illusion" makes industrial governance simple enough for a busy shift.</p>
+                    <h2 className="text-3xl font-black font-headline uppercase italic">Engineered Infrastructure</h2>
+                    <p className="text-secondary-text italic font-medium max-w-xl mx-auto">The "Software Illusion" hides 26,000 rows of data behind a clinical management interface.</p>
                 </div>
                 <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <Card className="bg-black/40 border-white/5 p-8 space-y-4 hover:border-primary/20 transition-colors group">
                         <TableProperties className="h-10 w-10 text-accent group-hover:scale-110 transition-transform" />
-                        <h3 className="font-black uppercase tracking-widest text-sm text-primary">Normalized Task Library</h3>
-                        <p className="text-xs text-secondary-text leading-relaxed italic">Tasks are defined once in a hidden library. Update a rule in one place, and the entire 365-day year is updated instantly. No more repetitive data entry.</p>
+                        <h3 className="font-black uppercase tracking-widest text-sm text-primary">Normalized Architecture</h3>
+                        <p className="text-xs text-secondary-text leading-relaxed italic">Task definitions are stored once in a hidden library. Update a SOP in one place, and the entire 365-day year updates instantly. No database fatigue.</p>
                     </Card>
                     <Card className="bg-black/40 border-white/5 p-8 space-y-4 hover:border-primary/20 transition-colors group">
                         <Activity className="h-10 w-10 text-primary group-hover:scale-110 transition-transform" />
-                        <h3 className="font-black uppercase tracking-widest text-sm text-primary">Verification Layer</h3>
-                        <p className="text-xs text-secondary-text leading-relaxed italic">High-risk tasks (like gas or fire checks) trigger a "Manager Verification" flag. Staff completes the work; the manager verifies the evidence. True audit integrity.</p>
+                        <h3 className="font-black uppercase tracking-widest text-sm text-primary">Liability Tracking</h3>
+                        <p className="text-xs text-secondary-text leading-relaxed italic">Integrated Incident Log with 'Estimated Loss' calculation. Quantify the financial impact of operational failures and protect your P&L.</p>
                     </Card>
                     <Card className="bg-black/40 border-white/5 p-8 space-y-4 hover:border-primary/20 transition-colors group">
-                        <History className="h-10 w-10 text-primary group-hover:scale-110 transition-transform" />
-                        <h3 className="font-black uppercase tracking-widest text-sm text-primary">Continuity Handover</h3>
-                        <p className="text-xs text-secondary-text leading-relaxed italic">Problems don't disappear between shifts. The Handover Log ensures issues like "fluctuating fridge temps" are logged and carried forward until resolved.</p>
+                        <TrendingUp className="h-10 w-10 text-primary group-hover:scale-110 transition-transform" />
+                        <h3 className="font-black uppercase tracking-widest text-sm text-primary">ROI Intelligence</h3>
+                        <p className="text-xs text-secondary-text leading-relaxed italic">A dedicated calculator sheet helps owners see the annual savings generated by reducing operational leakage. The system pays for itself.</p>
                     </Card>
                 </div>
             </div>
@@ -111,8 +112,8 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
         <section className="py-24 border-t border-white/5">
             <div className="container px-4 md:px-6 max-w-4xl mx-auto space-y-16">
                 <div className="text-center space-y-4">
-                    <h2 className="text-3xl font-black font-headline uppercase italic">The Governance Lifecycle</h2>
-                    <p className="text-secondary-text italic font-medium">Capture everything. Lose nothing.</p>
+                    <h2 className="text-3xl font-black font-headline uppercase italic">The Market-Ready Standard</h2>
+                    <p className="text-secondary-text italic font-medium">Enterprise grade. One-time purchase. Lifetime value.</p>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -120,37 +121,37 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                         <div className="flex gap-4">
                             <div className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-black text-xs shrink-0 mt-1">01</div>
                             <div>
-                                <h4 className="font-bold text-primary-text uppercase tracking-tight">Today's Mission</h4>
-                                <p className="text-sm text-secondary-text italic">Staff only sees Today's relevant tasks. High-risk items are automatically moved to the top of the list.</p>
+                                <h4 className="font-bold text-primary-text uppercase tracking-tight">Staff Workspace</h4>
+                                <p className="text-sm text-secondary-text italic">Dynamic 'Today's Mission' filters tasks by risk. Staff interacts with only one column to maintain speed.</p>
                             </div>
                         </div>
                         <div className="flex gap-4">
                             <div className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-black text-xs shrink-0 mt-1">02</div>
                             <div>
-                                <h4 className="font-bold text-primary-text uppercase tracking-tight">Liability Shield</h4>
-                                <p className="text-sm text-secondary-text italic">Every incident is logged with an Estimated Loss value, giving the owner immediate visibility into operational leakage.</p>
+                                <h4 className="font-bold text-primary-text uppercase tracking-tight">Audit Verification</h4>
+                                <p className="text-sm text-secondary-text italic">High-risk tasks require manager sign-off. Built-in compliance meter turns Red if critical steps are ignored.</p>
                             </div>
                         </div>
                         <div className="flex gap-4">
                             <div className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-black text-xs shrink-0 mt-1">03</div>
                             <div>
-                                <h4 className="font-bold text-primary-text uppercase tracking-tight">Executive Pulse</h4>
-                                <p className="text-sm text-secondary-text italic">The Dashboard turns Red if a High-Risk task is missed, acting as an industrial early-warning system.</p>
+                                <h4 className="font-bold text-primary-text uppercase tracking-tight">Reset Logic</h4>
+                                <p className="text-sm text-secondary-text italic">The system isn't static. Change the Start Date in Setup, and the entire matrix regenerates for the new year.</p>
                             </div>
                         </div>
                     </div>
                     <div className="p-1 rounded-[2rem] bg-gradient-to-br from-primary/20 to-accent/20">
                         <div className="bg-black rounded-[1.9rem] p-8 space-y-6">
                             <div className="flex items-center gap-3">
-                                <ShieldCheck className="text-primary w-6 h-6" />
-                                <h3 className="font-black uppercase tracking-widest text-xs">V4.0 Payload</h3>
+                                <CheckCircle2 className="text-primary w-6 h-6" />
+                                <h3 className="font-black uppercase tracking-widest text-xs">V4.0 Capabilities</h3>
                             </div>
                             <ul className="space-y-3 text-xs text-secondary-text italic font-medium">
-                                <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3 text-primary"/> Normalized Task Library</li>
-                                <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3 text-primary"/> 365-Day Master Ledger</li>
-                                <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3 text-primary"/> Incident & Loss Tracker</li>
+                                <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3 text-primary"/> ROI Intelligence Module</li>
+                                <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3 text-primary"/> Incident & Liability Log</li>
                                 <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3 text-primary"/> Shift Handover Bridge</li>
-                                <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3 text-primary"/> Verification & Audit Layer</li>
+                                <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3 text-primary"/> Compound Key Engine</li>
+                                <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3 text-primary"/> 140+ Technical SOPs</li>
                             </ul>
                         </div>
                     </div>

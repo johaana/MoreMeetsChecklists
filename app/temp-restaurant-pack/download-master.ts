@@ -79,7 +79,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { v: "02 DASHBOARD", target: "02_DASHBOARD" },
             { v: "03 TODAY'S MISSION", target: "03_TODAY_MISSION" },
             { v: "04 HANDOVER", target: "04_SHIFT_HANDOVER" },
-            { v: "05 INCIDENTS", target: "05_INCIDENT_LOG" }
+            { v: "05 INCIDENTS", target: "05_INCIDENT_LOG" },
+            { v: "06 ROI CALCULATOR", target: "06_ROI_CALC" }
         ];
         const navData = [
             navItems.map(item => ({ 
@@ -95,28 +96,28 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     // --- 00. INSTRUCTIONS ---
     const insData = [
         [], [],
-        [{ v: "ROCS v4.0: QUICK START GUIDE", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "Follow these 4 steps to deploy your operational infrastructure.", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [{ v: "WELCOME TO YOUR COMMAND SYSTEM (ROCS v4.0)", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "This is not just a spreadsheet. It is your business's operational infrastructure.", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } } } }],
         [],
-        [{ v: "STEP 1: SYSTEM SETUP", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } } } }],
-        [null, { v: "Go to the '06_SETUP' sheet. Enter your locations and the current date. The system will automatically generate your 365-day audit trail.", s: { alignment: { wrapText: true } } }],
-        [{ v: "STEP 2: DAILY MISSION", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } } } }],
-        [null, { v: "Every shift, the team opens '03_TODAY_MISSION'. They only enter 'Date Done' and 'Initials'. The system handles the rest.", s: { alignment: { wrapText: true } } }],
+        [{ v: "STEP 1: ACTIVATE THE SYSTEM", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } } } }],
+        [null, { v: "Go to the '07_SETUP' sheet. Enter your locations and the Start Date. The system will generate your full year.", s: { alignment: { wrapText: true } } }],
+        [{ v: "STEP 2: TODAY'S MISSION", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } } } }],
+        [null, { v: "Open '03_TODAY_MISSION'. It automatically filters for the current date. Enter 'Date Done' and 'Initials'.", s: { alignment: { wrapText: true } } }],
         [{ v: "STEP 3: SHIFT CONTINUITY", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } } } }],
-        [null, { v: "Use '04_SHIFT_HANDOVER' to pass critical notes between managers. Unresolved issues will alert you on the Control Panel.", s: { alignment: { wrapText: true } } }],
+        [null, { v: "Use '04_SHIFT_HANDOVER' to pass notes between teams. Open issues alert you on the Control Panel.", s: { alignment: { wrapText: true } } }],
         [{ v: "STEP 4: COMMAND REVIEW", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } } } }],
-        [null, { v: "Owners review '02_DASHBOARD' daily to see compliance % and identify High-Risk failures before they cause loss.", s: { alignment: { wrapText: true } } }],
+        [null, { v: "Review the Dashboard daily. If a high-risk task is missed, the indicator turns RED.", s: { alignment: { wrapText: true } } }],
         [],
-        [{ v: "Support: more@moremeets.com", s: { font: { sz: 9, italic: true } } }]
+        [{ v: "GLOBAL EDITS: To change a task description for the entire year, use Ctrl+H (Find & Replace) across the workbook.", s: { font: { sz: 10, italic: true } } }]
     ];
     const insWs = utils.aoa_to_sheet(insData);
     addNavBar(insWs);
     insWs['!cols'] = [{ wch: 25 }, { wch: 85 }];
     utils.book_append_sheet(wb, insWs, "00_INSTRUCTIONS");
 
-    // --- 06. SETUP & LIBRARY (Internal Engine) ---
+    // --- TASK_LIBRARY (Hidden Engine) ---
     const libData: any[][] = [
-        [{ v: "TASK_ID", s: headerBlockStyle }, { v: "Module", s: headerBlockStyle }, { v: "Description", s: headerBlockStyle }, { v: "Freq", s: headerBlockStyle }, { v: "Risk", s: headerBlockStyle }, { v: "Verify?", s: headerBlockStyle }, { v: "Notes", s: headerBlockStyle }, { v: "Consequence", s: headerBlockStyle }]
+        [{ v: "TASK_ID", s: headerBlockStyle }, { v: "Module", s: headerBlockStyle }, { v: "Description", s: headerBlockStyle }, { v: "Freq", s: headerBlockStyle }, { v: "Risk", s: headerBlockStyle }, { v: "Verify?", s: headerBlockStyle }, { v: "Trainer Notes", s: headerBlockStyle }, { v: "Consequence", s: headerBlockStyle }]
     ];
     item.checklists.forEach(c => {
         c.tasks.forEach(t => {
@@ -125,7 +126,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                 { v: c.title, s: leftCellStyle },
                 { v: t.description, s: leftCellStyle },
                 { v: (t.frequency || c.frequency || "Daily").toUpperCase(), s: centerCellStyle },
-                { v: t.priority || "Operational", s: centerCellStyle },
+                { v: t.riskLevel || "Operational", s: centerCellStyle },
                 { v: t.riskLevel === 'High' ? "YES" : "NO", s: centerCellStyle },
                 { v: t.trainerNotes || "Maintain standards.", s: leftCellStyle },
                 { v: t.consequence || "Operational drift.", s: leftCellStyle }
@@ -136,17 +137,31 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     libWs['!cols'] = [10, 25, 50, 10, 15, 10, 40, 40].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, libWs, "TASK_LIBRARY");
 
+    // --- 07. SETUP & DATABASE (Hidden Engine) ---
+    const setupData = [
+        [], [{ v: "SYSTEM CONFIGURATION", s: { font: { sz: 18, bold: true } } }], [],
+        [{ v: "System Parameter", s: headerBlockStyle }, { v: "Current Value (Input)", s: headerBlockStyle }, { v: "Notes", s: headerBlockStyle }],
+        [{ v: "SYSTEM_DATE", s: leftCellStyle }, { v: new Date(), t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } }, { v: "Override this to view other dates." }],
+        [{ v: "START_DATE", s: leftCellStyle }, { v: new Date(), t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } }, { v: "The day your fiscal year begins." }],
+        [{ v: "LOCATION_NAME", s: leftCellStyle }, { v: "Bandra Main", s: inputStyle }, { v: "Your branch name." }]
+    ];
+    const setupWs = utils.aoa_to_sheet(setupData);
+    addNavBar(setupWs);
+    setupWs['!cols'] = [{ wch: 25 }, { wch: 25 }, { wch: 45 }];
+    utils.book_append_sheet(wb, setupWs, "07_SETUP");
+
     // --- 01. CONTROL PANEL ---
     const cpData = [
         [], [],
-        [{ v: "RESTAURANT OPERATIONS CONTROL PANEL", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Version 4.0 | Operational Governance System", s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "RESTAURANT OPERATIONS COMMAND PANEL", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "v4.0 Certified Operational Framework | MoreMeets", s: { font: { italic: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "▶ START TODAY'S MISSION", l: { Target: "#'03_TODAY_MISSION'!A1" }, s: { font: { sz: 14, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [{ v: "▶ VIEW COMPLIANCE DASHBOARD", l: { Target: "#'02_DASHBOARD'!A1" }, s: { font: { sz: 14, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "▶ LOG AN INCIDENT / LOSS", l: { Target: "#'05_INCIDENT_LOG'!A1" }, s: { font: { sz: 14, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "▶ LOG INCIDENT / LOSS", l: { Target: "#'05_INCIDENT_LOG'!A1" }, s: { font: { sz: 14, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "TODAY'S OPERATIONAL SNAPSHOT", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "System Target Date:", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "'07_SETUP'!B5", s: { font: { bold: true }, numFmt: 'dd-mm-yyyy' } }],
         [{ v: "Open Shift Issues:", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "COUNTIF('04_SHIFT_HANDOVER'!F:F,\"Open\")", s: { font: { bold: true } } }],
         [{ v: "Critical Tasks Pending:", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "COUNTIFS('03_TODAY_MISSION'!E:E,\"High\",'03_TODAY_MISSION'!G:G,\"\")", s: { font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } }]
     ];
@@ -157,42 +172,39 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     utils.book_append_sheet(wb, cpWs, "01_CONTROL_PANEL");
 
     // --- 03. TODAY'S MISSION ---
-    const todayMissionHeaders = [
-        { v: "ID", s: headerBlockStyle }, { v: "Module", s: headerBlockStyle }, { v: "Objective / Task", s: headerBlockStyle }, 
-        { v: "Risk", s: headerBlockStyle }, { v: "Verify?", s: headerBlockStyle }, { v: "Date Done", s: headerBlockStyle }, 
-        { v: "Initials", s: headerBlockStyle }, { v: "Verified By", s: headerBlockStyle }, { v: "Trainer Notes", s: headerBlockStyle }
+    const missionHeaders = [
+        { v: "Task_Key", s: headerBlockStyle }, { v: "Module", s: headerBlockStyle }, { v: "Task Description", s: headerBlockStyle }, 
+        { v: "Freq", s: headerBlockStyle }, { v: "Risk", s: headerBlockStyle }, { v: "Date Done (DD-MM-YYYY)", s: headerBlockStyle }, 
+        { v: "Initials", s: headerBlockStyle }, { v: "Verified By", s: headerBlockStyle }, { v: "Notes / Deviations", s: headerBlockStyle }
     ];
     const missionData = [[], [{ v: "TODAY'S MISSION: SHIFT EXECUTION", s: { font: { sz: 18, bold: true } } }], [], missionHeaders];
-    // In a real Excel output, we would use =FILTER(...) but for generic download we pre-populate Today's rows.
-    // Generating rows for today's date only.
-    const todayStr = new Date();
+    
+    // Generator for Today's dynamic list
     item.checklists.forEach(c => {
         c.tasks.forEach(t => {
-            const freq = (t.frequency || c.frequency || "Daily").toLowerCase();
-            const r = missionData.length + 1;
             missionData.push([
                 { v: t.id, s: centerCellStyle },
                 { v: c.title, s: leftCellStyle },
                 { v: t.description, s: leftCellStyle },
-                { v: t.priority || "Operational", s: { ...centerCellStyle, font: { bold: t.priority === 'High', color: { rgb: t.priority === 'High' ? COLORS.DANGER_RED : "000000" } } } },
-                { v: t.riskLevel === 'High' ? "MANAGER" : "NO", s: centerCellStyle },
+                { v: t.frequency || c.frequency, s: centerCellStyle },
+                { v: t.riskLevel || "Operational", s: { ...centerCellStyle, font: { bold: t.riskLevel === 'High', color: { rgb: t.riskLevel === 'High' ? COLORS.DANGER_RED : "000000" } } } },
                 { v: "", s: inputStyle }, // Date Done
                 { v: "", s: inputStyle }, // Initials
-                { v: "", s: inputStyle }, // Verified
+                { v: "", s: inputStyle }, // Verified By
                 { v: t.trainerNotes, s: { ...leftCellStyle, font: { italic: true, sz: 9, color: { rgb: COLORS.TEXT_MUTED } } } }
             ]);
         });
     });
     const mWs = utils.aoa_to_sheet(missionData);
     addNavBar(mWs);
-    mWs['!cols'] = [10, 20, 50, 15, 10, 20, 10, 15, 45].map(w => ({ wch: w }));
+    mWs['!cols'] = [15, 20, 50, 10, 15, 25, 10, 15, 45].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, mWs, "03_TODAY_MISSION");
 
     // --- 04. SHIFT HANDOVER ---
     const hoData = [
         [], [{ v: "SHIFT HANDOVER: OPERATIONAL CONTINUITY", s: { font: { sz: 18, bold: true } } }], [],
-        [{ v: "Date", s: headerBlockStyle }, { v: "Shift", s: headerBlockStyle }, { v: "Manager", s: headerBlockStyle }, { v: "Issue / Observation", s: headerBlockStyle }, { v: "Required Action", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }],
-        [{ v: todayStr, t: 'd', s: { ...centerCellStyle, numFmt: 'dd-mm-yyyy' } }, { v: "NIGHT", s: inputStyle }, { v: "Rahul", s: inputStyle }, { v: "Freezer 2 temp fluctuating at 2 AM.", s: inputStyle }, { v: "Technician called for 10 AM.", s: inputStyle }, { v: "Open", s: inputStyle }]
+        [{ v: "Date", s: headerBlockStyle }, { v: "Shift", s: headerBlockStyle }, { v: "Manager", s: headerBlockStyle }, { v: "Key Issues Observed", s: headerBlockStyle }, { v: "Required Action", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }],
+        [{ v: new Date(), t: 'd', s: { ...centerCellStyle, numFmt: 'dd-mm-yyyy' } }, { v: "NIGHT", s: inputStyle }, { v: "Rahul", s: inputStyle }, { v: "Freezer 2 temp fluctuating at 2 AM.", s: inputStyle }, { v: "Technician called for 10 AM.", s: inputStyle }, { v: "Open", s: inputStyle }]
     ];
     const hoWs = utils.aoa_to_sheet(hoData);
     addNavBar(hoWs);
@@ -202,47 +214,51 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     // --- 05. INCIDENT LOG ---
     const incData = [
         [], [{ v: "INCIDENT & LOSS LOG: LIABILITY PROTECTION", s: { font: { sz: 18, bold: true } } }], [],
-        [{ v: "Date", s: headerBlockStyle }, { v: "Incident Type", s: headerBlockStyle }, { v: "Description", s: headerBlockStyle }, { v: "Action Taken", s: headerBlockStyle }, { v: "Estimated Loss (INR)", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }],
-        [{ v: todayStr, t: 'd', s: { ...centerCellStyle, numFmt: 'dd-mm-yyyy' } }, { v: "Maintenance", s: inputStyle }, { v: "Fridge 1 failure.", s: inputStyle }, { v: "Stock moved to freezer 2.", s: inputStyle }, { v: 1200, s: inputStyle }, { v: "Resolved", s: inputStyle }]
+        [{ v: "Date", s: headerBlockStyle }, { v: "Incident Type", s: headerBlockStyle }, { v: "Description", s: headerBlockStyle }, { v: "Action Taken", s: headerBlockStyle }, { v: "Est. Loss (INR)", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }],
+        [{ v: new Date(), t: 'd', s: { ...centerCellStyle, numFmt: 'dd-mm-yyyy' } }, { v: "Maintenance", s: inputStyle }, { v: "Fridge 1 failure.", s: inputStyle }, { v: "Stock moved to freezer 2.", s: inputStyle }, { v: 1200, s: inputStyle }, { v: "Resolved", s: inputStyle }]
     ];
     const incWs = utils.aoa_to_sheet(incData);
     addNavBar(incWs);
     incWs['!cols'] = [15, 20, 40, 40, 20, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, incWs, "05_INCIDENT_LOG");
 
+    // --- 06. ROI CALCULATOR ---
+    const roiData = [
+        [], [{ v: "ROI CALCULATOR: THE VALUE OF GOVERNANCE", s: { font: { sz: 18, bold: true } } }], [],
+        [{ v: "Variable", s: headerBlockStyle }, { v: "Your Value (Input)", s: headerBlockStyle }, { v: "Industry Benchmark", s: headerBlockStyle }],
+        [{ v: "Average Monthly Revenue (INR)", s: leftCellStyle }, { v: 1500000, s: inputStyle }, { v: "Target: 100%" }],
+        [{ v: "Estimated Operational Leakage %", s: leftCellStyle }, { v: 0.03, t: 'n', s: { ...inputStyle, numFmt: '0%' } }, { v: "Industry Avg: 3-5%" }],
+        [],
+        [{ v: "ANNUAL LOSS WITHOUT ROCS:", s: { font: { bold: true } } }, { t: 'f', f: "B5*B6*12", s: { font: { bold: true, color: { rgb: COLORS.DANGER_RED } }, numFmt: '₹#,##0' } }],
+        [{ v: "ANNUAL SAVINGS WITH ROCS (50% reduction):", s: { font: { bold: true } } }, { t: 'f', f: "B8*0.5", s: { font: { bold: true, color: { rgb: COLORS.SUCCESS_GREEN } }, numFmt: '₹#,##0' } }]
+    ];
+    const roiWs = utils.aoa_to_sheet(roiData);
+    addNavBar(roiWs);
+    roiWs['!cols'] = [{ wch: 45 }, { wch: 25 }, { wch: 30 }];
+    utils.book_append_sheet(wb, roiWs, "06_ROI_CALC");
+
     // --- 02. DASHBOARD ---
     const dashData = [
         [],
-        [{ v: "RESTAURANT COMMAND DASHBOARD", s: { font: { sz: 20, bold: true }, alignment: { horizontal: 'center' } } }],
+        [{ v: "EXECUTIVE COMMAND DASHBOARD", s: { font: { sz: 20, bold: true }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "SYSTEM STATUS", s: headerBlockStyle }, { v: "LIVE KPI", s: headerBlockStyle }, { v: "TREND", s: headerBlockStyle }],
+        [{ v: "SYSTEM STATUS", s: headerBlockStyle }, { v: "LIVE KPI", s: headerBlockStyle }, { v: "HEALTH BEACON", s: headerBlockStyle }],
         [
             { v: "Overall Compliance", s: leftCellStyle }, 
             { t: 'f', f: "IFERROR(COUNTIF('03_TODAY_MISSION'!F:F,\"<>\")/MAX(1,COUNTA('03_TODAY_MISSION'!C:C)-1),0)", s: { ...centerCellStyle, numFmt: '0%', font: { bold: true, sz: 14 } } },
-            { v: "████████░░", s: { font: { color: { rgb: COLORS.SUCCESS_GREEN } }, alignment: { horizontal: 'center' } } }
+            { t: 'f', f: "REPT(\"█\",ROUND(B5*20,0))", s: { font: { color: { rgb: COLORS.SUCCESS_GREEN } }, alignment: { horizontal: 'center' } } }
         ],
-        [{ v: "System Health", s: leftCellStyle }, { t: 'f', f: "IF(COUNTIFS('03_TODAY_MISSION'!D:D,\"High\",'03_TODAY_MISSION'!F:F,\"\")>0,\"🔴 RISK\",\"🟢 SAFE\")", s: centerCellStyle }, { v: "Critical Checks" }],
+        [{ v: "System Health", s: leftCellStyle }, { t: 'f', f: "IF(COUNTIFS('03_TODAY_MISSION'!E:E,\"High\",'03_TODAY_MISSION'!F:F,\"\")>0,\"🔴 CRITICAL RISK\",\"🟢 OPERATIONAL\")", s: centerCellStyle }, { v: "Risk Warning" }],
         [],
-        [{ v: "FINANCIAL IMPACT", s: headerBlockStyle }, { v: "VALUE", s: headerBlockStyle }, { v: "NOTES", s: headerBlockStyle }],
-        [{ v: "Monthly Operational Loss", s: leftCellStyle }, { t: 'f', f: "SUM('05_INCIDENT_LOG'!E:E)", s: { ...centerCellStyle, numFmt: '₹#,##0' } }, { v: "From Incident Log" }]
+        [{ v: "FINANCIAL INTELLIGENCE", s: headerBlockStyle }, { v: "MONTHLY VALUE", s: headerBlockStyle }, { v: "NOTES", s: headerBlockStyle }],
+        [{ v: "Operational Loss (Logged)", s: leftCellStyle }, { t: 'f', f: "SUM('05_INCIDENT_LOG'!E:E)", s: { ...centerCellStyle, numFmt: '₹#,##0' } }, { v: "From Incident Log" }],
+        [{ v: "Potential Savings Realized", s: leftCellStyle }, { t: 'f', f: "'06_ROI_CALC'!B9/12", s: { ...centerCellStyle, numFmt: '₹#,##0' } }, { v: "System Efficiency" }]
     ];
     const dWs = utils.aoa_to_sheet(dashData);
     addNavBar(dWs);
-    dWs['!cols'] = [30, 20, 30].map(w => ({ wch: w }));
+    dWs['!cols'] = [35, 25, 30].map(w => ({ wch: w }));
     dWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 2 } }];
     utils.book_append_sheet(wb, dWs, "02_DASHBOARD");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_v4.0_ROCS.xlsx`);
+    writeFile(wb, `ROCS_v4.0_Market_Ready.xlsx`);
 }
-
-const missionHeaders = [
-    { v: "ID", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "374151" } }, border: { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } }, alignment: { horizontal: 'center' } } },
-    { v: "Module", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "374151" } }, border: { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } }, alignment: { horizontal: 'center' } } },
-    { v: "Objective / Task", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "374151" } }, border: { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } }, alignment: { horizontal: 'center' } } },
-    { v: "Risk", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "374151" } }, border: { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } }, alignment: { horizontal: 'center' } } },
-    { v: "Verify?", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "374151" } }, border: { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } }, alignment: { horizontal: 'center' } } },
-    { v: "Date Done", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "374151" } }, border: { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } }, alignment: { horizontal: 'center' } } },
-    { v: "Initials", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "374151" } }, border: { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } }, alignment: { horizontal: 'center' } } },
-    { v: "Verified By", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "374151" } }, border: { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } }, alignment: { horizontal: 'center' } } },
-    { v: "Trainer Notes", s: { font: { bold: true, color: { rgb: "FFFFFF" } }, fill: { fgColor: { rgb: "374151" } }, border: { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } }, alignment: { horizontal: 'center' } } }
-];
