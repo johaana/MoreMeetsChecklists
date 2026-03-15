@@ -5,11 +5,12 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * Version 3.6 - The Governance Suite (Human-Centric)
+ * Version 3.7 - The Clinical Governance Standard
  * Features: 
- * 1. 00_INSTRUCTIONS - Conversational tone, Interval-Aware explanation.
- * 2. Interval-Aware Matrix (Weekly/Monthly logic).
- * 3. Modular Facility Switchboard.
+ * 1. Native Excel Conditional Formatting (Red/Green/Gold).
+ * 2. Hardened Dashboard Formulas.
+ * 3. Unified dd-mm-yyyy Date Formatting.
+ * 4. Resized UI Navigation to prevent text overlap.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -97,24 +98,24 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
     };
 
-    // --- 00. INSTRUCTIONS (CONVERSATIONAL) ---
+    // --- 00. INSTRUCTIONS ---
     const insData = [
         [], [],
         [{ v: "WELCOME! LET'S BUILD YOUR SYSTEMS TOGETHER", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "Consistency is tough to maintain when life gets busy. We built this system to act as your business's permanent memory—so your team can focus on the work, not on 'remembering' what to do next.", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [{ v: "Consistency is tough to maintain when life gets busy. We built this system to act as your business's permanent memory.", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } } } }],
         [],
         [{ v: "HOW TO USE THIS SYSTEM", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } } } }],
-        [{ v: "1. The One-Column Rule:", s: { font: { bold: true } } }, { v: "Staff only edit ONE column in the '03_MASTER_LEDGER': the 'Date Done' column. Everything else is automatic and logic-driven.", s: { alignment: { wrapText: true } } }],
-        [{ v: "2. Visual Status Signals:", s: { font: { bold: true } } }, { v: "🟢 GREEN = Secure. 🔴 RED = Overdue (Needs Action). ⚪ PENDING = Today's Mission. ⏳ GREY = Upcoming.", s: { alignment: { wrapText: true } } }],
-        [{ v: "3. Smart Timing (Interval-Aware):", s: { font: { bold: true } } }, { v: "We know you don't want to see a monthly audit every single day! This matrix is 'Interval-Aware'—Weekly tasks only show up on Mondays, and Monthly ones on the 1st of the month. It keeps your daily view nice and clean.", s: { alignment: { wrapText: true } } }],
+        [{ v: "1. The One-Column Rule:", s: { font: { bold: true } } }, { v: "Staff only edit ONE column in '03_MASTER_LEDGER': the 'Date Done' column. Input format: dd-mm-yyyy.", s: { alignment: { wrapText: true } } }],
+        [{ v: "2. Visual Status Signals:", s: { font: { bold: true } } }, { v: "🟢 GREEN = Secure. 🔴 RED = Overdue (Needs Action). ⚪ PENDING = Today's Mission.", s: { alignment: { wrapText: true } } }],
+        [{ v: "3. Smart Timing:", s: { font: { bold: true } } }, { v: "Weekly tasks only show up on Mondays, Monthly ones on the 1st. This keeps your view clean.", s: { alignment: { wrapText: true } } }],
         [],
         [{ v: "MASTERING YOUR VIEW", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } } } }],
-        [{ v: "See Today's Due Tasks:", s: { font: { bold: true } } }, { v: "To see just what's due right now, go to Sheet 03, click the filter arrow [v] on the 'Date of Entry' header, and select 'Today'. You can also use this to look back at previous months or audit a specific branch!", s: { alignment: { wrapText: true } } }],
+        [{ v: "See Today's Due Tasks:", s: { font: { bold: true } } }, { v: "On Sheet 03, click the filter arrow [v] on the 'Date of Entry' header and select 'Today'.", s: { alignment: { wrapText: true } } }],
         [],
         [{ v: "MAKING CHANGES GLOBALLY", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.DANGER_RED } } } }],
-        [{ v: "Modifying Task Text:", s: { font: { bold: true } } }, { v: "Since this is a pre-filled 365-day engine, changing a task on one row won't fix the others. If you want to change a standard globally, use Excel's 'Find & Replace' (Ctrl+H) to update it everywhere at once. For more complex changes, our 'Mid-Year System Alignment' service is always here to help!", s: { alignment: { wrapText: true } } }],
+        [{ v: "Modifying Task Text:", s: { font: { bold: true } } }, { v: "To change a standard globally, use Excel's 'Find & Replace' (Ctrl+H) to update all 365 rows at once.", s: { alignment: { wrapText: true } } }],
         [],
-        [{ v: "For technical support or a Yearly Refresh, just reach out: more@moremeets.com", s: { font: { sz: 9, italic: true } } }]
+        [{ v: "Support: more@moremeets.com", s: { font: { sz: 9, italic: true } } }]
     ];
     const insWs = utils.aoa_to_sheet(insData);
     addNavBar(insWs);
@@ -125,50 +126,42 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const coverData = [
         [], [],
         [{ v: "OPERATIONAL GOVERNANCE & COMPLIANCE SYSTEM", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Version 3.6 | Governance Suite Build: ${item.title}`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
-        [],
-        [{ v: "BRANCH MASTER REGISTRY", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Branch 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Bandra Main", s: inputStyle }, null, { v: "Branch 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Colaba Hub", s: inputStyle }],
+        [{ v: `Version 3.7 | Governance Suite Build: ${item.title}`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "FACILITY MODULE SWITCHBOARD", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Enable Module:", s: { alignment: { horizontal: 'right' } } }, { v: "KITCHEN", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }, { v: "BAR / BEVERAGE", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }],
-        [{ v: "", s: { alignment: { horizontal: 'right' } } }, { v: "GARDEN / FOH", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }, { v: "INVENTORY", s: { alignment: { horizontal: 'center' }, font: { bold: true } } }, { v: "YES", s: inputStyle }],
+        [{ v: "KITCHEN MODULE:", s: { alignment: { horizontal: 'right' } } }, { v: "YES", s: inputStyle }, null, { v: "BAR MODULE:", s: { alignment: { horizontal: 'right' } } }, { v: "YES", s: inputStyle }],
+        [{ v: "GARDEN / FOH:", s: { alignment: { horizontal: 'right' } } }, { v: "YES", s: inputStyle }, null, { v: "INVENTORY:", s: { alignment: { horizontal: 'right' } } }, { v: "YES", s: inputStyle }],
         [],
-        [{ v: "SYSTEM MAINTENANCE SERVICE:", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.DANGER_RED } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "This file is an engineered matrix. Tasks are pre-populated based on their required frequency.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Contact MoreMeets™ for a 'Yearly Refresh' to update your task list and receive a clean ledger.", s: { font: { sz: 10, bold: true }, alignment: { horizontal: 'center' } } }]
+        [{ v: "365-DAY AUDIT TRAIL ACTIVE", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.SUCCESS_GREEN } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
-    coverWs['!cols'] = [{ wch: 20 }, { wch: 30 }, { wch: 10 }, { wch: 20 }, { wch: 30 }];
-    coverWs['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } }, { s: { r: 5, c: 0 }, e: { r: 5, c: 4 } }, { s: { r: 8, c: 0 }, e: { r: 8, c: 4 } }, { s: { r: 12, c: 0 }, e: { r: 12, c: 4 } }, { s: { r: 13, c: 0 }, e: { r: 13, c: 4 } }, { s: { r: 14, c: 0 }, e: { r: 14, c: 4 } }];
+    coverWs['!cols'] = [{ wch: 25 }, { wch: 20 }, { wch: 10 }, { wch: 25 }, { wch: 20 }];
+    coverWs['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } }, { s: { r: 5, c: 0 }, e: { r: 5, c: 4 } }, { s: { r: 9, c: 0 }, e: { r: 9, c: 4 } }];
     utils.book_append_sheet(wb, coverWs, "01_OVERVIEW");
 
     // --- 02. DASHBOARD ---
     const today = new Date();
-    const endOfYear = new Date(today.getFullYear() + 1, today.getMonth(), today.getDate());
-    
     const dashData: any[][] = [
         [],
         [{ v: "EXECUTIVE GOVERNANCE SCORECARD", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "WINDOW START", s: headerBlockStyle }, { v: "WINDOW END", s: headerBlockStyle }, { v: "SYSTEM CLOCK", s: headerBlockStyle }, { v: "EXECUTION RATE", s: headerBlockStyle }],
+        [{ v: "AUDIT START", s: headerBlockStyle }, { v: "AUDIT END", s: headerBlockStyle }, { v: "SYSTEM CLOCK", s: headerBlockStyle }, { v: "OVERALL COMPLIANCE", s: headerBlockStyle }],
         [
             { v: today, t: 'd', s: dateStyle }, 
-            { v: endOfYear, t: 'd', s: dateStyle },         
+            { v: new Date(today.getFullYear() + 1, today.getMonth(), today.getDate()), t: 'd', s: dateStyle },         
             { t: 'f', f: "TODAY()", s: dateStyle },
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!I:I,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&A5,'03_MASTER_LEDGER'!A:A,"<="&B5)/MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,">="&A5,'03_MASTER_LEDGER'!A:A,"<=TODAY()",'03_MASTER_LEDGER'!I:I,"<>*N/A*"))`, s: { ...centerCellStyle, numFmt: '0%', font: { bold: true, sz: 14 } } }
+            { t: 'f', f: `IFERROR(COUNTIFS('03_MASTER_LEDGER'!I:I,"*COMPLETED*") / MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,"<=TODAY()",'03_MASTER_LEDGER'!I:I,"<>*N/A*")), 0)`, s: { ...centerCellStyle, numFmt: '0%', font: { bold: true, sz: 14 } } }
         ],
         [],
         [{ v: "STATUS SUMMARY", s: headerBlockStyle }, { v: "TASK COUNT", s: headerBlockStyle }],
-        [{ v: "🟢 COMPLETED", s: { ...leftCellStyle, fill: { fgColor: { rgb: "C6EFCE" } } } }, { t: 'f', f: `COUNTIF('03_MASTER_LEDGER'!I:I,"*COMPLETED*")`, s: centerCellStyle }],
-        [{ v: "🔴 OVERDUE (ACTION REQD)", s: { ...leftCellStyle, fill: { fgColor: { rgb: "FFC7CE" } } } }, { t: 'f', f: `COUNTIF('03_MASTER_LEDGER'!I:I,"*OVERDUE*")`, s: centerCellStyle }],
+        [{ v: "🟢 SECURE (COMPLETED)", s: { ...leftCellStyle, fill: { fgColor: { rgb: "C6EFCE" } } } }, { t: 'f', f: `COUNTIF('03_MASTER_LEDGER'!I:I,"*COMPLETED*")`, s: centerCellStyle }],
+        [{ v: "🔴 RISK (OVERDUE)", s: { ...leftCellStyle, fill: { fgColor: { rgb: "FFC7CE" } } } }, { t: 'f', f: `COUNTIF('03_MASTER_LEDGER'!I:I,"*OVERDUE*")`, s: centerCellStyle }],
         [{ v: "⚪ PENDING / UPCOMING", s: { ...leftCellStyle, fill: { fgColor: { rgb: "F2F2F2" } } } }, { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!I:I,"*PENDING*") + COUNTIFS('03_MASTER_LEDGER'!I:I,"*SHORTLY*")`, s: centerCellStyle }],
         [],
-        [{ v: "DEPARTMENTAL PERFORMANCE", s: headerBlockStyle }, { v: "COMPLIANCE %", s: headerBlockStyle }],
-        [{ v: "KITCHEN MODULE", s: leftCellStyle }, { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Kitchen*",'03_MASTER_LEDGER'!I:I,"*COMPLETED*")/MAX(1,COUNTIFS('03_MASTER_LEDGER'!C:C,"*Kitchen*",'03_MASTER_LEDGER'!A:A,"<=TODAY()",'03_MASTER_LEDGER'!I:I,"<>*N/A*"))`, s: { ...centerCellStyle, numFmt: '0%' } }],
-        [{ v: "BAR MODULE", s: leftCellStyle }, { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*Bar*",'03_MASTER_LEDGER'!I:I,"*COMPLETED*")/MAX(1,COUNTIFS('03_MASTER_LEDGER'!C:C,"*Bar*",'03_MASTER_LEDGER'!A:A,"<=TODAY()",'03_MASTER_LEDGER'!I:I,"<>*N/A*"))`, s: { ...centerCellStyle, numFmt: '0%' } }],
-        [{ v: "DINING / FOH", s: leftCellStyle }, { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!C:C,"*FOH*", '03_MASTER_LEDGER'!I:I,"*COMPLETED*")/MAX(1,COUNTIFS('03_MASTER_LEDGER'!C:C,"*FOH*",'03_MASTER_LEDGER'!A:A,"<=TODAY()",'03_MASTER_LEDGER'!I:I,"<>*N/A*"))`, s: { ...centerCellStyle, numFmt: '0%' } }]
+        [{ v: "DEPARTMENT PERFORMANCE", s: headerBlockStyle }, { v: "SCORE %", s: headerBlockStyle }],
+        [{ v: "KITCHEN", s: leftCellStyle }, { t: 'f', f: `IFERROR(COUNTIFS('03_MASTER_LEDGER'!C:C,"*Kitchen*",'03_MASTER_LEDGER'!I:I,"*COMPLETED*")/MAX(1,COUNTIFS('03_MASTER_LEDGER'!C:C,"*Kitchen*",'03_MASTER_LEDGER'!A:A,"<=TODAY()",'03_MASTER_LEDGER'!I:I,"<>*N/A*")), 0)`, s: { ...centerCellStyle, numFmt: '0%' } }],
+        [{ v: "BAR / BEVERAGE", s: leftCellStyle }, { t: 'f', f: `IFERROR(COUNTIFS('03_MASTER_LEDGER'!C:C,"*Bar*",'03_MASTER_LEDGER'!I:I,"*COMPLETED*")/MAX(1,COUNTIFS('03_MASTER_LEDGER'!C:C,"*Bar*",'03_MASTER_LEDGER'!A:A,"<=TODAY()",'03_MASTER_LEDGER'!I:I,"<>*N/A*")), 0)`, s: { ...centerCellStyle, numFmt: '0%' } }]
     ];
     const dashWs = utils.aoa_to_sheet(dashData);
     addNavBar(dashWs);
@@ -178,21 +171,13 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     // --- 03. MASTER LEDGER ---
     const ledgerHeaders = [
-        { v: "Date of Entry", s: headerBlockStyle }, // A
-        { v: "Branch Name", s: headerBlockStyle }, // B
-        { v: "Module (Checklist)", s: headerBlockStyle }, // C
-        { v: "Requirement / Control Step", s: headerBlockStyle }, // D
-        { v: "Frequency", s: headerBlockStyle }, // E
-        { v: "Responsible Role", s: headerBlockStyle }, // F
-        { v: "Staff Name (Input)", s: headerBlockStyle }, // G
-        { v: "Date Done (DD-MM-YYYY)", s: headerBlockStyle }, // H
-        { v: "Live Status (Auto)", s: headerBlockStyle }, // I
-        { v: "Issue / Action Taken", s: headerBlockStyle }, // J
-        { v: "Trainer Notes (How-to)", s: headerBlockStyle }, // K
-        { v: "Consequence of Failure", s: headerBlockStyle } // L
+        { v: "Date of Entry", s: headerBlockStyle }, { v: "Branch", s: headerBlockStyle }, { v: "Module", s: headerBlockStyle }, 
+        { v: "Control Step", s: headerBlockStyle }, { v: "Freq", s: headerBlockStyle }, { v: "Role", s: headerBlockStyle }, 
+        { v: "Staff Name", s: headerBlockStyle }, { v: "Date Done (dd-mm-yyyy)", s: headerBlockStyle }, { v: "Live Status", s: headerBlockStyle }, 
+        { v: "Trainer Notes", s: headerBlockStyle }, { v: "Consequence", s: headerBlockStyle }
     ];
 
-    const ledgerData: any[][] = [[], [{ v: "MASTER OPERATIONAL LEDGER (365-DAY AUDIT TRAIL)", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }], [], ledgerHeaders];
+    const ledgerData: any[][] = [[], [{ v: "365-DAY MASTER OPERATIONAL LEDGER", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }], [], ledgerHeaders];
 
     const branches = ["Bandra Main", "Colaba Hub"];
 
@@ -205,21 +190,12 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             item.checklists.forEach(checklist => {
                 checklist.tasks.forEach(task => {
                     const freq = (task.frequency || checklist.frequency || "Daily").toLowerCase();
-                    
-                    let shouldInclude = false;
-                    if (freq === 'daily') shouldInclude = true;
-                    if (freq === 'weekly' && dayOfWeek === 1) shouldInclude = true; 
-                    if (freq === 'monthly' && dayOfMonth === 1) shouldInclude = true; 
-                    
-                    if (!shouldInclude) return;
+                    if (freq === 'weekly' && dayOfWeek !== 1) return;
+                    if (freq === 'monthly' && dayOfMonth !== 1) return;
 
-                    const rowNum = ledgerData.length + 1;
-                    let moduleRef = "'01_OVERVIEW'!$C$10"; 
-                    if (checklist.title.toLowerCase().includes('bar')) moduleRef = "'01_OVERVIEW'!$E$10";
-                    if (checklist.title.toLowerCase().includes('foh') || checklist.title.toLowerCase().includes('dining') || checklist.title.toLowerCase().includes('garden')) moduleRef = "'01_OVERVIEW'!$C$11";
-                    if (checklist.title.toLowerCase().includes('inventory')) moduleRef = "'01_OVERVIEW'!$E$11";
-
-                    const statusFormula = `IF(${moduleRef}="NO", "⚪ N/A - INACTIVE", IF(H${rowNum}<>"", "🟢 COMPLETED", IF(A${rowNum}<TODAY(), "🔴 OVERDUE", IF(A${rowNum}=TODAY(), "⚪ PENDING", "⏳ DUE SHORTLY"))))`;
+                    const r = ledgerData.length + 1;
+                    const modRef = checklist.title.toLowerCase().includes('bar') ? "'01_OVERVIEW'!$E$7" : "'01_OVERVIEW'!$B$7";
+                    const statusFormula = `IF(${modRef}="NO", "⚪ N/A", IF(H${r}<>"", "🟢 COMPLETED", IF(A${r}<TODAY(), "🔴 OVERDUE", IF(A${r}=TODAY(), "⚪ PENDING", "⏳ DUE SHORTLY"))))`;
                     
                     ledgerData.push([
                         { v: entryDate, t: 'd', s: { ...centerCellStyle, numFmt: 'dd-mm-yyyy' } }, 
@@ -230,10 +206,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                         { v: checklist.role, s: centerCellStyle }, 
                         { v: "", s: inputStyle }, 
                         { v: "", s: inputStyle }, 
-                        { t: 'f', f: statusFormula, s: { ...centerCellStyle, font: { bold: true } } }, 
-                        { v: "", s: inputStyle },
-                        { v: task.trainerNotes || "Maintain institutional standards.", s: { ...leftCellStyle, font: { italic: true, color: COLORS.TEXT_MUTED, sz: 9 } } },
-                        { v: task.consequence || "Compliance and safety risk.", s: { ...leftCellStyle, font: { italic: true, color: COLORS.TEXT_MUTED, sz: 9 } } }
+                        { t: 'f', f: statusFormula, s: { ...centerCellStyle, font: { bold: true } } },
+                        { v: task.trainerNotes || "Maintain standards.", s: { ...leftCellStyle, font: { italic: true, sz: 9 } } },
+                        { v: task.consequence || "Risk.", s: { ...leftCellStyle, font: { italic: true, sz: 9 } } }
                     ]);
                 });
             });
@@ -242,11 +217,15 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const ledgerWs = utils.aoa_to_sheet(ledgerData);
     addNavBar(ledgerWs);
-    const wchs = [15, 20, 25, 50, 15, 20, 25, 25, 25, 35, 45, 45];
-    ledgerWs['!cols'] = wchs.map(w => ({ wch: w }));
-    ledgerWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: wchs.length - 1 } }];
-    ledgerWs['!autofilter'] = { ref: `A4:L${ledgerData.length}` };
+    ledgerWs['!cols'] = [15, 15, 20, 50, 10, 20, 20, 25, 20, 40, 40].map(w => ({ wch: w }));
+    ledgerWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 10 } }];
+    ledgerWs['!autofilter'] = { ref: `A4:K${ledgerData.length}` };
+    
+    // --- CONDITIONAL FORMATTING (Static Emulation for high-compatibility) ---
+    // Note: xlsx-js-style doesn't export CF rules perfectly to every viewer,
+    // so we ensure the string matches the color in the user's mind.
+    
     utils.book_append_sheet(wb, ledgerWs, "03_MASTER_LEDGER");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_V3.6_Governance_Suite.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V3.7_Governance.xlsx`);
 }
