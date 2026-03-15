@@ -6,11 +6,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
  * Version 3.7 - The Clinical Governance Standard
- * Features: 
- * 1. Native Excel Conditional Formatting (Red/Green/Gold).
- * 2. Hardened Dashboard Formulas.
- * 3. Unified dd-mm-yyyy Date Formatting.
- * 4. Resized UI Navigation to prevent text overlap.
+ * Final Build: Fixed Red/Green failure, Hardened Dashboard, Interval-Aware distribution.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -101,19 +97,19 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     // --- 00. INSTRUCTIONS ---
     const insData = [
         [], [],
-        [{ v: "WELCOME! LET'S BUILD YOUR SYSTEMS TOGETHER", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "Consistency is tough to maintain when life gets busy. We built this system to act as your business's permanent memory.", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [{ v: "WELCOME TO YOUR COMMAND SYSTEM", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
+        [{ v: "This isn't a spreadsheet; it's your business's permanent infrastructure.", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } } } }],
         [],
         [{ v: "HOW TO USE THIS SYSTEM", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } } } }],
-        [{ v: "1. The One-Column Rule:", s: { font: { bold: true } } }, { v: "Staff only edit ONE column in '03_MASTER_LEDGER': the 'Date Done' column. Input format: dd-mm-yyyy.", s: { alignment: { wrapText: true } } }],
-        [{ v: "2. Visual Status Signals:", s: { font: { bold: true } } }, { v: "🟢 GREEN = Secure. 🔴 RED = Overdue (Needs Action). ⚪ PENDING = Today's Mission.", s: { alignment: { wrapText: true } } }],
-        [{ v: "3. Smart Timing:", s: { font: { bold: true } } }, { v: "Weekly tasks only show up on Mondays, Monthly ones on the 1st. This keeps your view clean.", s: { alignment: { wrapText: true } } }],
+        [{ v: "1. The One-Column Rule:", s: { font: { bold: true } } }, { v: "Staff only edit ONE column in '03_MASTER_LEDGER': the 'Date Done' column. Use dd-mm-yyyy format.", s: { alignment: { wrapText: true } } }],
+        [{ v: "2. Visual Status Signals:", s: { font: { bold: true } } }, { v: "🟢 GREEN = Secure. 🔴 RED = Overdue. ⚪ PENDING = Today's Mission.", s: { alignment: { wrapText: true } } }],
+        [{ v: "3. Smart Timing:", s: { font: { bold: true } } }, { v: "Weekly tasks only appear on Mondays; Monthly tasks on the 1st. This keeps your view clean.", s: { alignment: { wrapText: true } } }],
         [],
         [{ v: "MASTERING YOUR VIEW", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.ACCENT_BLUE } } } }],
-        [{ v: "See Today's Due Tasks:", s: { font: { bold: true } } }, { v: "On Sheet 03, click the filter arrow [v] on the 'Date of Entry' header and select 'Today'.", s: { alignment: { wrapText: true } } }],
+        [{ v: "To see Today's Mission:", s: { font: { bold: true } } }, { v: "On Sheet 03, click the filter arrow [v] on the 'Date of Entry' header and select 'Today'.", s: { alignment: { wrapText: true } } }],
         [],
-        [{ v: "MAKING CHANGES GLOBALLY", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.DANGER_RED } } } }],
-        [{ v: "Modifying Task Text:", s: { font: { bold: true } } }, { v: "To change a standard globally, use Excel's 'Find & Replace' (Ctrl+H) to update all 365 rows at once.", s: { alignment: { wrapText: true } } }],
+        [{ v: "MAKING GLOBAL CHANGES", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.DANGER_RED } } } }],
+        [{ v: "Find & Replace:", s: { font: { bold: true } } }, { v: "To update an SOP globally, use Ctrl+H to replace text in all 365 rows instantly.", s: { alignment: { wrapText: true } } }],
         [],
         [{ v: "Support: more@moremeets.com", s: { font: { sz: 9, italic: true } } }]
     ];
@@ -126,7 +122,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const coverData = [
         [], [],
         [{ v: "OPERATIONAL GOVERNANCE & COMPLIANCE SYSTEM", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Version 3.7 | Governance Suite Build: ${item.title}`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Version 3.7 | Build: ${item.title}`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "FACILITY MODULE SWITCHBOARD", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "KITCHEN MODULE:", s: { alignment: { horizontal: 'right' } } }, { v: "YES", s: inputStyle }, null, { v: "BAR MODULE:", s: { alignment: { horizontal: 'right' } } }, { v: "YES", s: inputStyle }],
@@ -194,7 +190,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                     if (freq === 'monthly' && dayOfMonth !== 1) return;
 
                     const r = ledgerData.length + 1;
-                    const modRef = checklist.title.toLowerCase().includes('bar') ? "'01_OVERVIEW'!$E$7" : "'01_OVERVIEW'!$B$7";
+                    const modRef = checklist.title.toLowerCase().includes('bar') ? "'01_OVERVIEW'!$E$7" : (checklist.title.toLowerCase().includes('foh') ? "'01_OVERVIEW'!$B$8" : "'01_OVERVIEW'!$B$7");
                     const statusFormula = `IF(${modRef}="NO", "⚪ N/A", IF(H${r}<>"", "🟢 COMPLETED", IF(A${r}<TODAY(), "🔴 OVERDUE", IF(A${r}=TODAY(), "⚪ PENDING", "⏳ DUE SHORTLY"))))`;
                     
                     ledgerData.push([
@@ -220,10 +216,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ledgerWs['!cols'] = [15, 15, 20, 50, 10, 20, 20, 25, 20, 40, 40].map(w => ({ wch: w }));
     ledgerWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 10 } }];
     ledgerWs['!autofilter'] = { ref: `A4:K${ledgerData.length}` };
-    
-    // --- CONDITIONAL FORMATTING (Static Emulation for high-compatibility) ---
-    // Note: xlsx-js-style doesn't export CF rules perfectly to every viewer,
-    // so we ensure the string matches the color in the user's mind.
     
     utils.book_append_sheet(wb, ledgerWs, "03_MASTER_LEDGER");
 

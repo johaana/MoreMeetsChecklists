@@ -61,12 +61,7 @@ export const restaurants: PremiumPack = {
                 { id: "FOH-02", description: "Inspect every menu cover and page for smudges or damage.", priority: "Medium", riskLevel: "Low", consequence: "Poor presentation devalues the brand.", proof: "Menu Check", trainerNotes: "Wipe down every menu cover with a sanitized cloth before the shift." },
                 { id: "FOH-03", description: "Calibrate dining room music volume and lighting dimmers.", priority: "Medium", riskLevel: "Low", consequence: "Incorrect ambiance makes guests uncomfortable.", proof: "Ambiance Check", trainerNotes: "Lights should be dimmed 20% further for dinner service." },
                 { id: "FOH-04", description: "Verify POS connectivity and receipt paper stock levels.", priority: "High", riskLevel: "Medium", consequence: "POS failure during peak hours causes chaotic billing.", proof: "System Test", trainerNotes: "Keep two spare rolls of paper under every terminal." },
-                { id: "FOH-05", description: "Inspect entrance mats and flooring for trip hazards.", priority: "High", riskLevel: "High", consequence: "Customer slip and fall accidents leading to litigation.", proof: "Visual Check", trainerNotes: "Ensure no edges are curling up." },
-                { id: "FOH-06", description: "Check salt/pepper shakers and condiments for cleanliness.", priority: "Low", riskLevel: "Low", consequence: "Sticky containers give a poor impression.", proof: "Visual Check", trainerNotes: "Shakers must be wiped daily. Replace empty ones with clean ones." },
-                { id: "FOH-07", description: "Verify reservation list and table assignments.", priority: "High", riskLevel: "Low", consequence: "Double-bookings and frustrated VIP guests.", proof: "Reservation Log", trainerNotes: "Ensure high-chair or special request notes are clearly marked." },
-                { id: "FOH-08", description: "Inspect cutlery and glassware for water spots or chips.", priority: "Medium", riskLevel: "Low", consequence: "Perception of low-grade hygiene.", proof: "Polish Log", trainerNotes: "Use steam and a lint-free microfiber cloth for all wine glasses." },
-                { id: "FOH-09", description: "Wipe down high-chairs and booster seats.", priority: "High", riskLevel: "Medium", consequence: "Spread of germs to vulnerable infants.", proof: "Cleaning Log", trainerNotes: "Use a baby-safe sanitizer." },
-                { id: "FOH-10", description: "Check sidewalk/entrance curb appeal.", priority: "Low", riskLevel: "Low", consequence: "Lost walk-in traffic due to poor first impression.", proof: "Visual Check", trainerNotes: "Sweep the entrance every 2 hours." }
+                { id: "FOH-05", description: "Inspect entrance mats and flooring for trip hazards.", priority: "High", riskLevel: "High", consequence: "Customer slip and fall accidents leading to litigation.", proof: "Visual Check", trainerNotes: "Ensure no edges are curling up." }
             ]
         },
         {
@@ -81,12 +76,37 @@ export const restaurants: PremiumPack = {
                 { id: "BAR-02", description: "Inspect and clean ice machine bin. Check for slime or mold.", priority: "High", riskLevel: "High", consequence: "Contaminated ice is a major health risk.", proof: "Ice Bin Audit", trainerNotes: "Empty the bin weekly for a full deep clean." },
                 { id: "BAR-03", description: "Reconcile high-value spirits against previous night's closing.", priority: "High", riskLevel: "High", consequence: "Internal theft and 'free-pouring' leaks profit.", proof: "Spirit Inventory", trainerNotes: "Use a weighing scale for open bottles to calculate exact pour cost." },
                 { id: "BAR-04", description: "Clean coffee machine group heads and steam wands.", priority: "High", riskLevel: "Medium", consequence: "Bitter coffee quality and bacterial growth.", proof: "Cleaning Log", trainerNotes: "Backflush with detergent every night." },
-                { id: "BAR-05", description: "Check expiry of juices and dairy in bar fridges.", priority: "High", riskLevel: "Medium", consequence: "Sour drinks and health risk.", proof: "Visual Label Check", trainerNotes: "Open juices only stay fresh for 48 hours." },
-                { id: "BAR-06", description: "Sanitize garnish containers and cutting boards.", priority: "Medium", riskLevel: "Medium", consequence: "Fruit flies and cross-contamination.", proof: "Visual Check", trainerNotes: "Cut garnishes fresh daily." },
-                { id: "BAR-07", description: "Test glasswasher chemical levels.", priority: "High", riskLevel: "High", consequence: "Bacterial spread via glasses.", proof: "Chemical Log", trainerNotes: "Verify that rinse aid and detergent levels are sufficient." },
-                { id: "BAR-08", description: "Inventory check of wine cellar/cooler.", priority: "Medium", riskLevel: "Low", consequence: "Running out of top-selling varietals.", proof: "Stock Sheet", trainerNotes: "Ensure white wines are at 8-10°C." },
-                { id: "BAR-09", description: "Check for fruit flies/pests under bar counters.", priority: "Medium", riskLevel: "Medium", consequence: "Infestation and closure risk.", proof: "Pest Audit", trainerNotes: "Pour boiling water down drains nightly to kill larvae." },
-                { id: "BAR-10", description: "Verify bar mat and counter sanitization.", priority: "Low", riskLevel: "Low", consequence: "Odors and sticky surfaces.", proof: "Visual Check", trainerNotes: "Scrub mats and air-dry overnight." }
+                { id: "BAR-05", description: "Check expiry of juices and dairy in bar fridges.", priority: "High", riskLevel: "Medium", consequence: "Sour drinks and health risk.", proof: "Visual Label Check", trainerNotes: "Open juices only stay fresh for 48 hours." }
+            ]
+        },
+        {
+            title: "Inventory & Receiving Control",
+            department: "Stores",
+            frequency: "Daily",
+            role: "Store Keeper",
+            summary: "Protects profit margins by ensuring raw materials enter the building accurately.",
+            icon: "package-search",
+            tasks: [
+                { id: "INV-01", description: "Verify item weights against delivery invoices.", priority: "High", riskLevel: "Medium", consequence: "Short-shipment and hidden cost of goods increase.", proof: "Weight Check Log", trainerNotes: "Always weigh high-value items like meats and cheeses individually." },
+                { id: "INV-02", description: "Inspect produce for signs of wilt, mold, or pests.", priority: "High", riskLevel: "High", consequence: "Accepting low-quality stock that will spoil within 24 hours.", proof: "Receiving QC Log", trainerNotes: "Check the bottom of crates for trapped moisture or rotten items." },
+                { id: "INV-03", description: "Check temp of chilled/frozen items on arrival.", priority: "High", riskLevel: "High", consequence: "Broken cold chain leading to rapid bacterial spoilage.", proof: "Inbound Temp Log", trainerNotes: "Reject any frozen items that show signs of thawing and re-freezing." },
+                { id: "INV-04", description: "Update 'Out of Stock' list for FOH.", priority: "Medium", riskLevel: "Low", consequence: "Customer disappointment after ordering unavailable items.", proof: "Communication Log", trainerNotes: "Send a group text/WhatsApp to all servers by 11:30 AM." },
+                { id: "INV-05", description: "Reconcile daily linen count (dirty vs clean returned).", priority: "Low", riskLevel: "Medium", consequence: "Theft or loss of expensive napkins and tablecloths.", proof: "Linen Log", trainerNotes: "Count bags before the vendor leaves the site." }
+            ]
+        },
+        {
+            title: "Safety & EHS Compliance",
+            department: "Engineering",
+            frequency: "Daily",
+            role: "Maintenance Lead",
+            summary: "Life-safety checks to prevent fire, explosion, or injury.",
+            icon: "shield-alert",
+            tasks: [
+                { id: "EHS-01", description: "Test fire alarm call points and check exit clarity.", priority: "High", riskLevel: "High", consequence: "Catastrophic loss of life during an emergency.", proof: "Safety Walkthrough", trainerNotes: "Walk the entire path. A single chair blocking a fire door is a fatal flaw." },
+                { id: "EHS-02", description: "Perform Soap Test on gas line junctions.", priority: "High", riskLevel: "High", consequence: "Undetected gas leaks and explosion risk.", proof: "Leak Test Log", trainerNotes: "Apply soapy water to valves. If bubbles form, shut off the main valve immediately." },
+                { id: "EHS-03", description: "Inspect first-aid kit stock levels and expiry.", priority: "Medium", riskLevel: "Medium", consequence: "Inability to treat minor burns or cuts on the floor.", proof: "Kit Audit", trainerNotes: "Ensure burn gel and antiseptic wipes are always available." },
+                { id: "EHS-04", description: "Verify functionality of emergency lighting.", priority: "High", riskLevel: "High", consequence: "Panic and injuries during a power failure.", proof: "Battery Test Log", trainerNotes: "Trip the local breaker to ensure auto-activation." },
+                { id: "EHS-05", description: "Check fire extinguisher pressure gauges.", priority: "High", riskLevel: "High", consequence: "Equipment failure when needed most.", proof: "Tag Check", trainerNotes: "Gauge must be in the green zone. If not, notify vendor for recharge." }
             ]
         },
         {
@@ -97,16 +117,11 @@ export const restaurants: PremiumPack = {
             summary: "Ensures the facility is secure and fire-safe before the team departs.",
             icon: "moon",
             tasks: [
-                { id: "CLOSE-01", description: "Verify all kitchen gas valves are shut off manually.", priority: "High", riskLevel: "High", consequence: "Overnight gas buildup and catastrophic explosion risk.", proof: "Safety Log", trainerNotes: "Physically check each station knob." },
+                { id: "CLOSE-01", description: "Verify all kitchen gas valves are shut off manually.", priority: "High", riskLevel: "High", consequence: "Overnight gas buildup and explosion risk.", proof: "Safety Log", trainerNotes: "Physically check each station knob." },
                 { id: "CLOSE-02", description: "Inspect all external doors and windows for secure locking.", priority: "High", riskLevel: "High", consequence: "Unsecured premises vulnerable to burglary.", proof: "Security Walkthrough", trainerNotes: "Don't just check the main door; verify back-of-house exits." },
-                { id: "CLOSE-03", description: "Ensure all high-heat equipment (fryers, ovens) is powered down.", priority: "High", riskLevel: "High", consequence: "Electrical fire risk from unattended appliances.", proof: "Power Log", trainerNotes: "Fryers must be turned off at the main switch." },
-                { id: "CLOSE-04", description: "Reconcile daily cash and digital payments against POS.", priority: "High", riskLevel: "High", consequence: "Unreconciled tills hide internal theft or billing errors.", proof: "Reconciliation Report", trainerNotes: "Dual sign-off required for any variance over 500 INR." },
-                { id: "CLOSE-05", description: "Audit trash area for unauthorized items (hidden stock).", priority: "Medium", riskLevel: "High", consequence: "Common method for employee theft of inventory.", proof: "Visual Audit", trainerNotes: "Check large bags for sealed product before disposal." },
-                { id: "CLOSE-06", description: "Turn off all non-essential lighting and HVAC.", priority: "Medium", riskLevel: "Low", consequence: "Excessive energy costs and equipment wear.", proof: "Energy Log", trainerNotes: "Dining room AC should be off 15 mins after last guest leaves." },
-                { id: "CLOSE-07", description: "Final walk of restrooms to ensure no guests remain.", priority: "High", riskLevel: "High", consequence: "Safety and security risk if a guest is locked inside.", proof: "Walkthrough Log", trainerNotes: "Check individual stalls and disabled units." },
-                { id: "CLOSE-08", description: "Set the security alarm system.", priority: "High", riskLevel: "High", consequence: "Insurance voided if alarm is not set during an incident.", proof: "Alarm System Code", trainerNotes: "Verify the 'Ready' light is green before entering code." },
-                { id: "CLOSE-09", description: "Ensure all staff have safely exited or have transport.", priority: "Medium", riskLevel: "Medium", consequence: "Staff safety and welfare liability.", proof: "Attendance Log", trainerNotes: "Verify late-shift transport has arrived for female staff." },
-                { id: "CLOSE-10", description: "Log any operational issues for the morning shift.", priority: "Medium", riskLevel: "Low", consequence: "Loss of continuity and delayed morning repairs.", proof: "Handover Log", trainerNotes: "Note any equipment that acted up during peak service." }
+                { id: "CLOSE-03", description: "Reconcile daily cash and digital payments against POS.", priority: "High", riskLevel: "High", consequence: "Unreconciled tills hide internal theft.", proof: "Reconciliation Report", trainerNotes: "Dual sign-off required for any variance over 500 INR." },
+                { id: "CLOSE-04", description: "Set the security alarm system.", priority: "High", riskLevel: "High", consequence: "Insurance voided if alarm is not set.", proof: "Alarm System Code", trainerNotes: "Verify the 'Ready' light is green before entering code." },
+                { id: "CLOSE-05", description: "Final walk of restrooms to ensure no guests remain.", priority: "High", riskLevel: "High", consequence: "Safety and security risk if a guest is locked inside.", proof: "Walkthrough Log", trainerNotes: "Check individual stalls and disabled units." }
             ]
         },
         {
@@ -114,19 +129,12 @@ export const restaurants: PremiumPack = {
             department: "Operations",
             frequency: "Weekly",
             role: "Sanitation Lead",
-            summary: "Beyond daily hygiene; focusing on hard-to-reach areas and heavy grease buildup.",
+            summary: "Intensive cleaning of hard-to-reach areas.",
             icon: "bucket",
             tasks: [
                 { id: "WEEK-DEEP-01", description: "Scrub and sanitize walk-in fridge floors and walls.", priority: "High", riskLevel: "Medium", consequence: "Listeria growth and food safety audit failure.", proof: "Cleaning Log", trainerNotes: "Use a heavy-duty degreaser then a food-grade sanitizer." },
                 { id: "WEEK-DEEP-02", description: "Clean behind and under heavy line equipment (fryers/ovens).", priority: "High", riskLevel: "High", consequence: "Primary attractant for rodents and cockroach infestations.", proof: "Visual Audit", trainerNotes: "Pull equipment forward to expose the wall-floor junction." },
-                { id: "WEEK-DEEP-03", description: "Wash and sanitize all dry-store shelving units.", priority: "Medium", riskLevel: "Low", consequence: "Dust and pest attraction in storage areas.", proof: "Visual Check", trainerNotes: "Remove all stock before wiping shelves." },
-                { id: "WEEK-DEEP-04", description: "Deep clean and de-scale all FOH restroom floor drains.", priority: "Medium", riskLevel: "Low", consequence: "Foul odors deterring guests from returning.", proof: "Cleaning Log", trainerNotes: "Use an enzyme-based drain cleaner to break down organic matter." },
-                { id: "WEEK-DEEP-05", description: "Clean and polish all decorative lighting and ceiling fans.", priority: "Low", riskLevel: "Low", consequence: "Visible dust falling on guest food; poor brand image.", proof: "Visual Check", trainerNotes: "Use a damp cloth to prevent dust from flying." },
-                { id: "WEEK-DEEP-06", description: "Sanitize high-touch back-of-house surfaces (phones, handles).", priority: "Medium", riskLevel: "Medium", consequence: "Internal spread of illness among staff.", proof: "Sanitization Log", trainerNotes: "Wipe all door handles and computer keyboards." },
-                { id: "WEEK-DEEP-07", description: "Flush and sanitize all floor drains with boiling water.", priority: "High", riskLevel: "High", consequence: "Infestation of fruit flies and drain gnats.", proof: "Pest Prevention Log", trainerNotes: "Mix 1 cup of bleach per gallon of water." },
-                { id: "WEEK-DEEP-08", description: "Clean the exterior signage and entrance glass.", priority: "Low", riskLevel: "Low", consequence: "Poor first impression for walk-in guests.", proof: "Photo of entrance", trainerNotes: "Focus on cobwebs in the top corners of the doorway." },
-                { id: "WEEK-DEEP-09", description: "Deep clean the ice machine following manufacturer SOP.", priority: "High", riskLevel: "High", consequence: "Slime buildup in ice; FSSAI violation.", proof: "Maintenance Log", trainerNotes: "Empty ice, use de-scaler, then sanitize twice." },
-                { id: "WEEK-DEEP-10", description: "Inventory check of all cleaning chemicals.", priority: "Medium", riskLevel: "Low", consequence: "Running out of essential sanitizers mid-week.", proof: "Chemical Stock Sheet", trainerNotes: "Order if levels are below 25%." }
+                { id: "WEEK-DEEP-03", description: "Flush all floor drains with boiling water and bleach.", priority: "High", riskLevel: "High", consequence: "Infestation of fruit flies and drain gnats.", proof: "Pest Prevention Log", trainerNotes: "Mix 1 cup of bleach per gallon of water." }
             ]
         },
         {
@@ -134,19 +142,12 @@ export const restaurants: PremiumPack = {
             department: "Engineering",
             frequency: "Monthly",
             role: "Maintenance Lead",
-            summary: "Proactive engineering checks to extend asset life and prevent failures.",
+            summary: "Proactive checks to extend asset life.",
             icon: "settings",
             tasks: [
                 { id: "MAIN-01", description: "Clean condenser coils on all refrigeration units.", priority: "High", riskLevel: "High", consequence: "Compressor burnout and total stock loss.", proof: "Maintenance Log", trainerNotes: "Use a soft brush or vacuum. Do not bend the fins." },
-                { id: "MAIN-02", description: "Inspect and lubricate commercial mixer planetary gears.", priority: "Medium", riskLevel: "Medium", consequence: "Gear failure halting prep operations.", proof: "Maintenance Log", trainerNotes: "Use only food-grade grease." },
-                { id: "MAIN-03", description: "Test fire suppression system pressure and nozzles.", priority: "High", riskLevel: "High", consequence: "Failure to control a kitchen fire automatically.", proof: "Safety Tag", trainerNotes: "Ensure nozzles are not blocked by grease buildup." },
-                { id: "MAIN-04", description: "Calibrate oven thermostats using an external probe.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent cooking results and wasted product.", proof: "Calibration Log", trainerNotes: "Wait for oven to stabilize for 20 mins before reading." },
-                { id: "MAIN-05", description: "Check gas lines for leaks using soapy water test.", priority: "High", riskLevel: "High", consequence: "Undetected gas leaks and explosion risk.", proof: "Safety Log", trainerNotes: "Check all flexible hose connections." },
-                { id: "MAIN-06", description: "Inspect dishwashers for scale buildup and clear nozzles.", priority: "Medium", riskLevel: "Low", consequence: "Poor wash quality and heater element failure.", proof: "Visual Audit", trainerNotes: "Run a de-scaling cycle if white powder is visible." },
-                { id: "MAIN-07", description: "Verify emergency lighting battery backup (30 min test).", priority: "High", riskLevel: "High", consequence: "Panic during a power outage or fire.", proof: "Battery Test Log", trainerNotes: "Tripping the breaker should activate lights immediately." },
-                { id: "MAIN-08", description: "Check all fire extinguisher expiry dates and pressures.", priority: "High", riskLevel: "High", consequence: "Non-functional safety equipment during an emergency.", proof: "Inspection Tag", trainerNotes: "Gauge must be in the green zone." },
-                { id: "MAIN-09", description: "Inspect POS hardware and wiring for rodent damage.", priority: "Low", riskLevel: "Medium", consequence: "System outage during peak service.", proof: "Visual Check", trainerNotes: "Check wires behind the server station." },
-                { id: "MAIN-10", description: "Audit spare parts inventory (bulbs, fuses, filters).", priority: "Medium", riskLevel: "Low", consequence: "Extended downtime for simple repairs.", proof: "Inventory List", trainerNotes: "Keep 2 spare bulbs for every type of FOH light." }
+                { id: "MAIN-02", description: "Test fire suppression system pressure and nozzles.", priority: "High", riskLevel: "High", consequence: "Failure to control a kitchen fire automatically.", proof: "Safety Tag", trainerNotes: "Ensure nozzles are not blocked by grease buildup." },
+                { id: "MAIN-03", description: "Calibrate oven thermostats using an external probe.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent cooking results and wasted product.", proof: "Calibration Log", trainerNotes: "Wait for oven to stabilize for 20 mins before reading." }
             ]
         }
     ]
