@@ -5,14 +5,9 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * Version 2.8 - The Yearly Governance Suite
- * Philosophy: 365-Day Operational Database.
- * Sequence: A: EntryDate, B: Branch, C: Task, D: TrainerNotes, E: Role, F: Name, G: DateDone, H: Status, I: Issue/Notes
- * Logic:
- * 🔴 OVERDUE: Date passed & empty 'Date Done'.
- * ⚪ PENDING: Today & empty 'Date Done'.
- * ⏳ DUE SHORTLY: Future date.
- * 🟢 COMPLETED: 'Date Done' is entered.
+ * Version 2.9 - The Surgical Governance Suite
+ * Sequence: Action-First eye-line grouping.
+ * A: EntryDate, B: Branch, C: Task, D: Role, E: Name, F: DateDone, G: Status, H: Issue, I: TrainerNotes, J: Consequences
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -109,16 +104,16 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const coverData = [
         [], [],
         [{ v: "RESTAURANT OPERATIONS CONTROL SYSTEM", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `Version 2.8 | Full-Year Governance Build (365-Day Database)`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Version 2.9 | "Action-First" Surgical Ledger (365-Day Database)`, s: { font: { italic: true, sz: 12, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "BRANCH MASTER REGISTRY", s: { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } } }],
         [{ v: "Branch 1:", s: { alignment: { horizontal: 'right' } } }, { v: "Bandra Main", s: inputStyle }, null, { v: "Branch 2:", s: { alignment: { horizontal: 'right' } } }, { v: "Colaba Hub", s: inputStyle }],
         [],
-        [{ v: "SYSTEM GOVERNANCE & YEARLY REFRESH:", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.DANGER_RED } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "1. The '03_MASTER_LEDGER' contains 365 days of rows. Use the Filter [v] on 'Date' to select specific months.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "2. To see only today's tasks, filter 'Date of Entry' for TODAY only.", s: { font: { sz: 10, bold: true, color: { rgb: COLORS.ACCENT_BLUE } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3. 'Trainer Notes' provide 'How-to' guidance. 'Issue / Action Taken / Notes' is where you record deviations.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "4. SYSTEM MAINTENANCE: Reach out to MoreMeets™ for a 'Paid Yearly Audit & Refresh' to update your SOPs and receive a clean V3.0 ledger.", s: { font: { sz: 10, bold: true, italic: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }]
+        [{ v: "SYSTEM GOVERNANCE & MAINTENANCE:", s: { font: { bold: true, sz: 11, color: { rgb: COLORS.DANGER_RED } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "1. DAILY USE: Filter 'Date of Entry' for TODAY. Columns E (Name), F (Date Done), and H (Issue) are your only daily inputs.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "2. ACTION-FIRST DESIGN: Reference columns (Trainer Notes, Consequences) are on the far right to keep your daily eye-line clear.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "3. ADDING TASKS: This is an engineered database. Adding rows manually may break reporting. Use the 'Notes' column for one-off tasks.", s: { font: { sz: 10 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "4. YEARLY REFRESH: Reach out to MoreMeets™ for your 'Paid Yearly Audit' to refresh your ledger and update your SOPs for next year.", s: { font: { sz: 10, bold: true, italic: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }]
     ];
     const coverWs = utils.aoa_to_sheet(coverData);
     addNavBar(coverWs);
@@ -140,12 +135,13 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { v: "Date of Entry", s: headerBlockStyle }, // A
         { v: "Branch Name", s: headerBlockStyle }, // B
         { v: "Requirement / Control Step", s: headerBlockStyle }, // C
-        { v: "Trainer Notes (How-to)", s: headerBlockStyle }, // D
-        { v: "Responsible Role", s: headerBlockStyle }, // E
-        { v: "Staff Member (Name)", s: headerBlockStyle }, // F
-        { v: "Date Completed (Input)", s: headerBlockStyle }, // G
-        { v: "Live Status (Auto)", s: headerBlockStyle }, // H
-        { v: "Issue / Action Taken / Notes", s: headerBlockStyle } // I
+        { v: "Responsible Role", s: headerBlockStyle }, // D
+        { v: "Staff Member (Name)", s: headerBlockStyle }, // E
+        { v: "Date Completed (Input)", s: headerBlockStyle }, // F
+        { v: "Live Status (Auto)", s: headerBlockStyle }, // G
+        { v: "Issue / Action Taken / Notes", s: headerBlockStyle }, // H
+        { v: "Trainer Notes (How-to)", s: headerBlockStyle }, // I
+        { v: "Consequence of Failure", s: headerBlockStyle } // J
     ];
 
     const ledgerData: any[][] = [[], [{ v: "MASTER OPERATIONAL LEDGER (ANNUAL AUDIT TRAIL)", s: titleStyle }], [], ledgerHeaders];
@@ -153,7 +149,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const today = new Date();
     const branches = ["Bandra Main", "Colaba Hub"];
 
-    // 365-DAY SCALE LOOP
+    // 365-DAY SCALE (Past 60 to Future 305)
     for (let d = -60; d <= 305; d++) {
         const entryDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + d);
 
@@ -161,7 +157,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             item.checklists.forEach(checklist => {
                 checklist.tasks.forEach(task => {
                     const rowNum = ledgerData.length + 1;
-                    const dateDoneCell = `G${rowNum}`;
+                    const dateDoneCell = `F${rowNum}`; // Trigger Column
                     const entryDateCell = `A${rowNum}`;
                     
                     const statusFormula = `IF(NOT(ISBLANK(${dateDoneCell})), "🟢 COMPLETED", IF(${entryDateCell}<TODAY(), "🔴 OVERDUE - ACTION REQUIRED", IF(${entryDateCell}=TODAY(), "⚪ PENDING", "⏳ DUE SHORTLY")))`;
@@ -172,12 +168,13 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                         { v: entryDate, t: 'd', s: { ...centerCellStyle, numFmt: 'dd-mmm-yyyy' } }, 
                         { v: branch, s: centerCellStyle }, 
                         { v: task.description, s: rowStyle },
-                        { v: task.trainerNotes || "Follow standard protocol.", s: { ...leftCellStyle, font: { italic: true, color: { rgb: COLORS.TEXT_MUTED }, sz: 9 } } },
                         { v: checklist.role, s: centerCellStyle }, 
                         { v: "", s: inputStyle }, 
                         { v: "", s: inputStyle }, 
                         { t: 'f', f: statusFormula, s: { ...centerCellStyle, font: { bold: true } } }, 
-                        { v: "", s: inputStyle } 
+                        { v: "", s: inputStyle },
+                        { v: task.trainerNotes || "Refer to manual.", s: { ...leftCellStyle, font: { italic: true, color: COLORS.TEXT_MUTED, sz: 9 } } },
+                        { v: task.consequence || "Operational Risk.", s: { ...leftCellStyle, font: { italic: true, color: COLORS.TEXT_MUTED, sz: 9 } } }
                     ]);
                 });
             });
@@ -186,12 +183,12 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const ledgerWs = utils.aoa_to_sheet(ledgerData);
     addNavBar(ledgerWs);
-    const wchs = [18, 25, 60, 35, 25, 30, 25, 30, 45];
+    const wchs = [18, 25, 55, 25, 25, 25, 30, 40, 45, 45];
     ledgerWs['!cols'] = wchs.map(w => ({ wch: w }));
     ledgerWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: wchs.length - 1 } }];
     
     // ACTIVATE FILTERS
-    ledgerWs['!autofilter'] = { ref: `A4:I${ledgerData.length}` };
+    ledgerWs['!autofilter'] = { ref: `A4:J${ledgerData.length}` };
     
     utils.book_append_sheet(wb, ledgerWs, "03_MASTER_LEDGER");
 
@@ -199,11 +196,11 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const startOfPeriod = new Date(today.getFullYear(), today.getMonth(), 1);
     const dashData: any[][] = [
         [],
-        [{ v: "ANNUAL COMPLIANCE DASHBOARD", s: titleStyle }],
+        [{ v: "ANNUAL NETWORK COMPLIANCE SCORECARD", s: titleStyle }],
         [],
-        [{ v: "REPORTING WINDOW SETTINGS", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIME_NAVY } } } }, { v: "START DATE", s: headerBlockStyle }, { v: "END DATE", s: headerBlockStyle }, { v: "CURRENT SYSTEM DATE", s: centerCellStyle }],
+        [{ v: "REPORTING WINDOW SETTINGS", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIME_NAVY } } } }, { v: "START DATE", s: headerBlockStyle }, { v: "END DATE", s: headerBlockStyle }, { v: "TODAY (LOCKED)", s: centerCellStyle }],
         [
-            { v: "Audit Period:", s: { alignment: { horizontal: 'right' } } }, 
+            { v: "Set Audit Window:", s: { alignment: { horizontal: 'right' } } }, 
             { v: startOfPeriod, t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } }, 
             { v: today, t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } },         
             { t: 'f', f: "TODAY()", s: centerCellStyle }                            
@@ -211,16 +208,16 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [],
         [{ v: "GOVERNANCE METRIC", s: headerBlockStyle }, { v: "BENCHMARK", s: headerBlockStyle }, { v: "WINDOW PERFORMANCE", s: headerBlockStyle }, { v: "AUDIT COMMENTARY", s: headerBlockStyle }],
         [
-            { v: "Compliance Execution Rate", s: leftCellStyle },
+            { v: "Network Execution Rate", s: leftCellStyle },
             { v: "100%", s: centerCellStyle },
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!H:H,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)/MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5,'03_MASTER_LEDGER'!A:A,"<="&D5))`, s: { ...centerCellStyle, font: { bold: true, sz: 14 } } },
-            { v: "Ignores future tasks to ensure honest reporting." }
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*COMPLETED*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)/MAX(1,COUNTIFS('03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5,'03_MASTER_LEDGER'!A:A,"<="&D5))`, s: { ...centerCellStyle, font: { bold: true, sz: 14 } } },
+            { v: "Excludes future tasks to ensure honest compliance scoring." }
         ],
         [
-            { v: "Critical Overdue Gaps", s: leftCellStyle },
+            { v: "Identified Compliance Gaps", s: leftCellStyle },
             { v: "0", s: centerCellStyle },
-            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!H:H,"*OVERDUE*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } },
-            { v: "Failed compliance points in selected window." }
+            { t: 'f', f: `COUNTIFS('03_MASTER_LEDGER'!G:G,"*OVERDUE*",'03_MASTER_LEDGER'!A:A,">="&B5,'03_MASTER_LEDGER'!A:A,"<="&C5)`, s: { ...centerCellStyle, font: { bold: true, color: { rgb: COLORS.DANGER_RED } } } },
+            { v: "Tasks missed in the selected window (Action required)." }
         ]
     ];
     const dashWs = utils.aoa_to_sheet(dashData);
@@ -245,5 +242,5 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     riskWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
     utils.book_append_sheet(wb, riskWs, "04_RISK_MAP");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.8_Yearly_Governance.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_V2.9_Yearly_Action_Ledger.xlsx`);
 }
