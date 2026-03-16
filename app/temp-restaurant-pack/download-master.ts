@@ -8,6 +8,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
  * ROCS v4.2 - THE HIGH-SPEED ADOPTION SUITE
  * Optimized for Restaurant Floors: Remove Time/Issue friction.
  * Maker-Checker Workflow: Completed By (Staff) | Verified By (Manager).
+ * Refined Status: Clean text, N/A prompts for Managers.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -104,7 +105,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
-    const addSoftwareHeader = (ws: WorkSheet, endCol: string = 'M') => {
+    const addSoftwareHeader = (ws: WorkSheet, endCol: string = 'K') => {
         utils.sheet_add_aoa(ws, [[{ 
             v: "◀ BACK TO HOME CONSOLE", 
             l: { Target: "#'HOME_CONSOLE'!A1" }, 
@@ -168,7 +169,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "TODAY'S STATUS", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'left' } } }],
         [
             { v: "Shift Progress:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
-            { t: 'f', f: `IFERROR(TEXT(COUNTIFS('TODAYS_TASKS'!F:F,"<>", 'TODAYS_TASKS'!D:D, "<>N/A*")/MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }
+            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!E:E, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }
         ],
         [
             { v: "Open Incidents:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
@@ -207,7 +208,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     const branchSetupData = [
         [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
-        [{ v: "Toggle YES/NO per branch. Today's Tasks updates automatically.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [],
         [], facilityHeaders,
         [{ v: 1, s: dataStyleCenter }, { v: "Bandra Main", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }],
         [{ v: 2, s: dataStyleCenter }, { v: "Ghatkopar West", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }]
@@ -217,74 +218,75 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(setupWs, 'L');
     utils.book_append_sheet(wb, setupWs, "BRANCH_SETUP");
 
-    // --- 03. TODAYS_TASKS (Optimized High-Speed) ---
+    // --- 03. TODAYS_TASKS (Refined Clean Log) ---
     const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, { v: "ID", s: headerStyle },
         { v: "Task", s: headerStyle }, 
         { v: "Status", s: headerStyle }, 
         { v: "Completed By (Initials)", s: headerStyle }, 
         { v: "Verified By (Manager)", s: headerStyle },
-        { v: "MGR REQ?", s: headerStyle },
         { v: "Frequency", s: intelStyle }, { v: "Risk Level", s: intelStyle },
         { v: "Consequence of Failure", s: intelStyle }, { v: "Trainer Notes", s: intelStyle }
     ];
-    const mData: any[][] = [[], [{ v: "TODAY'S TASKS: HIGH-SPEED ADOPTION LOG", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
+    const mData: any[][] = [[], [{ v: "TODAY'S TASKS: HIGH-SPEED EXECUTION LOG", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
     
     const moduleMap: Record<number, string> = {
         0: "C", 1: "C", 2: "D", 3: "D", 4: "E", 5: "F", 6: "G", 7: "H", 8: "I", 9: "J", 10: "K", 11: "L"
     };
 
-    const startDate = new Date(2025, 2, 16); 
-    for (let i = 0; i < 7; i++) {
-        const d = new Date(startDate); d.setDate(startDate.getDate() + i);
-        const is1stOfMonth = d.getDate() === 1;
-        const isMonday = d.getDay() === 1;
+    const startDate = new Date(); 
+    [1].forEach(bCode => {
+        const bRow = 6;
+        item.checklists.forEach((c, cIdx) => {
+            const switchCol = moduleMap[cIdx] || "C";
+            const activeFormula = `'BRANCH_SETUP'!$${switchCol}$${bRow}`;
+            const moduleName = c.title.split(' ')[0].toUpperCase();
 
-        [1, 2].forEach(bCode => {
-            const bRow = bCode === 1 ? 6 : 7;
-            item.checklists.forEach((c, cIdx) => {
-                const switchCol = moduleMap[cIdx] || "C";
-                const activeFormula = `'BRANCH_SETUP'!$${switchCol}$${bRow}`;
-                const moduleName = c.title.split(' ')[0].toUpperCase();
+            c.tasks.forEach(t => {
+                const rowIdx = mData.length + 1;
+                const riskCell = `I${rowIdx}`;
+                const completedByCell = `F${rowIdx}`;
+                const verifiedByCell = `G${rowIdx}`;
                 
-                const isMonthlyModule = c.frequency === 'Monthly';
-                const isWeeklyModule = c.frequency === 'Weekly';
+                // Status logic: 
+                // If Completed By is empty -> PENDING
+                // If Risk is High and Verified is empty -> AWAITING MGR
+                // Else -> COMPLETED
+                const statusFormula = `IF(ISBLANK(${completedByCell}), "PENDING", IF(AND(${riskCell}="High", ISBLANK(${verifiedByCell})), "AWAITING MGR", "COMPLETED"))`;
                 
-                if (isMonthlyModule && !is1stOfMonth) return;
-                if (isWeeklyModule && !isMonday) return;
+                // Verification pre-fill logic:
+                // If Risk is NOT High -> N/A
+                // Else -> Blank (to be filled)
+                const verifiedByValue = t.priority === 'High' || t.riskLevel === 'High' ? "" : "N/A";
 
-                c.tasks.forEach(t => {
-                    const isHighRisk = t.priority === 'High' || t.riskLevel === 'High';
-                    const rowIdx = mData.length + 1;
-                    mData.push([
-                        { v: d, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
-                        { t: 'f', f: `'BRANCH_SETUP'!$B$${bRow}`, s: dataStyleCenter },
-                        { v: t.id, s: dataStyleCenter },
-                        { t: 'f', f: `IF(${activeFormula}="NO", "N/A - [${moduleName}] NOT AT THIS LOCATION", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 3, FALSE))`, s: dataStyleLeft },
-                        { t: 'f', f: `IF(ISBLANK(F${rowIdx}), "🟡 PENDING", "🟢 COMPLETED")`, s: { ...dataStyleCenter, font: { bold: true } } },
-                        { v: "", s: inputStyle }, // Completed By
-                        { v: "", s: inputStyle }, // Verified By
-                        { v: isHighRisk ? "⚠️ MGR REQ" : "-", s: { ...dataStyleCenter, font: { bold: isHighRisk, color: { rgb: isHighRisk ? COLORS.RISK_RED : COLORS.TEXT_MUTED } } } },
-                        { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 6, FALSE))`, s: intelStyle },
-                        { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 7, FALSE))`, s: intelStyle },
-                        { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 4, FALSE))`, s: intelStyle },
-                        { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 5, FALSE))`, s: intelStyle }
-                    ]);
-                });
+                mData.push([
+                    { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
+                    { t: 'f', f: `'BRANCH_SETUP'!$B$${bRow}`, s: dataStyleCenter },
+                    { v: t.id, s: dataStyleCenter },
+                    { t: 'f', f: `IF(${activeFormula}="NO", "N/A - [${moduleName}] NOT AT THIS LOCATION", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 3, FALSE))`, s: dataStyleLeft },
+                    { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true } } },
+                    { v: "", s: inputStyle },
+                    { v: verifiedByValue, s: verifiedByValue === "N/A" ? dataStyleCenter : inputStyle },
+                    { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 6, FALSE))`, s: intelStyle },
+                    { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 7, FALSE))`, s: intelStyle },
+                    { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 4, FALSE))`, s: intelStyle },
+                    { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 5, FALSE))`, s: intelStyle }
+                ]);
             });
         });
-    }
+    });
+
     const mWs = utils.aoa_to_sheet(mData);
-    mWs['!cols'] = [15, 25, 10, 65, 20, 25, 25, 15, 15, 15, 45, 50].map(w => ({ wch: w }));
-    addSoftwareHeader(mWs, 'L');
-    mWs['!autofilter'] = { ref: `A4:L${mData.length}` };
+    mWs['!cols'] = [15, 25, 10, 65, 20, 25, 25, 15, 15, 45, 50].map(w => ({ wch: w }));
+    addSoftwareHeader(mWs, 'K');
+    mWs['!autofilter'] = { ref: `A4:K${mData.length}` };
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
 
     // --- 04. BUSINESS_HEALTH ---
     const dashData = [
         [], [{ v: "BUSINESS HEALTH: PERFORMANCE HUB", s: { font: { sz: 20, bold: true } } }], [],
         [{ v: "Operational KPI", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Target Threshold", s: headerStyle }],
-        [{ v: "Shift Completion Rate", s: dataStyleLeft }, { t:'f', f:`COUNTIF('TODAYS_TASKS'!F:F,"<>")/MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>"))`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
+        [{ v: "Shift Completion Rate", s: dataStyleLeft }, { t:'f', f:`COUNTIF('TODAYS_TASKS'!E:E, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>"))`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
         [{ v: "Active Operational Incidents", s: dataStyleLeft }, { t:'f', f:`COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
     ];
     const dWs = utils.aoa_to_sheet(dashData);
