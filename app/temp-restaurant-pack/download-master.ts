@@ -7,7 +7,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * ROCS v4.2 - THE TOTAL GOVERNANCE SUITE (Commercial Grade)
  * Final Build: 2025-03-16
- * UI: Simplified Naming + Live Status Widget.
+ * UI: Simplified Naming + Live Status Footer.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -127,25 +127,19 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const homeData: any[][] = [
         [], [],
         [{ 
-            v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", 
+            v: "MOREMEETS™ RESTAURANT OPERATIONS CONSOLE", 
             s: { 
                 font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } }, 
                 fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } },
                 alignment: { horizontal: 'center', vertical: 'center' } 
             } 
         }],
-        [{ v: "Enterprise Continuity & Governance Suite v4.2", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Operations Control System", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
+        [],
         [
-            { v: "TODAY'S STATUS:", s: { font: { bold: true, sz: 9, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'right', vertical: 'center' } } },
-            null,
-            { t: 'f', f: `IFERROR("CHECKLIST COMPLETION: " & TEXT(COUNTIF('DAILY_CHECKLISTS'!E:E,"<>")/MAX(1, COUNTIFS('DAILY_CHECKLISTS'!D:D, "<>N/A*", 'DAILY_CHECKLISTS'!D:D, "<>")), "0%"), "0%")`, l: { Target: "#'DAILY_CHECKLISTS'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left', vertical: 'center' } } },
-            null,
-            { t: 'f', f: `"OPEN INCIDENTS: " & COUNTIF('INCIDENT_TRACKER'!E:E, "<>")`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'left', vertical: 'center' } } }
-        ],
-        [
-            { v: "SYSTEM SETUP", s: groupHeaderStyle }, null, 
+            { v: "ADMIN & SETUP", s: groupHeaderStyle }, null, 
             { v: "DAILY OPERATIONS", s: groupHeaderStyle }, null, 
-            { v: "EXECUTIVE INTEL", s: groupHeaderStyle }
+            { v: "MANAGEMENT INTEL", s: groupHeaderStyle }
         ],
         [
             { v: "▶ BRANCH SETUP", l: { Target: "#'SETUP'!A1" }, s: tileStyle }, null, 
@@ -158,7 +152,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [
             { v: "▶ TEAM HUB", l: { Target: "#'PERSONNEL'!A1" }, s: tileStyle }, null, 
             { v: "▶ SHIFT HANDOVER", l: { Target: "#'HANDOVER'!A1" }, s: tileStyle }, null, 
-            { v: "▶ COST & SAVINGS TRACKER", l: { Target: "#'ROI_ENGINE'!A1" }, s: tileStyle }
+            { v: "▶ COST TRACKER", l: { Target: "#'ROI_ENGINE'!A1" }, s: tileStyle }
         ],
         [null, null, null, null, null],
         [null, null, null, null, null],
@@ -170,17 +164,27 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ],
         [null, null, null, null, null],
         [null, null, null, null, null],
+        [],
+        [{ v: "TODAY'S STATUS", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'center' } } }],
+        [
+            { v: "Checklist Completion:", s: { font: { bold: true, sz: 10 }, alignment: { horizontal: 'right' } } },
+            { t: 'f', f: `IFERROR(TEXT(COUNTIF('DAILY_CHECKLISTS'!E:E,"<>")/MAX(1, COUNTIFS('DAILY_CHECKLISTS'!D:D, "<>N/A*", 'DAILY_CHECKLISTS'!D:D, "<>")), "0%"), "0%")`, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } } } },
+            null,
+            { v: "Open Incidents:", s: { font: { bold: true, sz: 10 }, alignment: { horizontal: 'right' } } },
+            { t: 'f', f: `COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")`, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.RISK_RED } } } }
+        ],
         [], [],
-        [{ v: "SYSTEM STATUS: ✅ INSTITUTIONAL GRADE ENCRYPTED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `REGISTERED TO: ${BUYER_EMAIL} | ORDER ID: ${ORDER_ID}`, s: { font: { sz: 8, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }]
+        [{ v: "SYSTEM STATUS: ✅ VERIFIED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `REGISTERED TO: ${BUYER_EMAIL}`, s: { font: { sz: 8, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }]
     ];
 
     const homeWs = utils.aoa_to_sheet(homeData);
-    homeWs['!cols'] = [35, 5, 35, 5, 35].map(w => ({ wch: w }));
+    homeWs['!cols'] = [35, 15, 35, 15, 35].map(w => ({ wch: w }));
     
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
-        { s: { r: 19, c: 0 }, e: { r: 19, c: 4 } }, { s: { r: 20, c: 0 }, e: { r: 20, c: 4 } },
+        { s: { r: 19, c: 0 }, e: { r: 19, c: 4 } },
+        { s: { r: 23, c: 0 }, e: { r: 23, c: 4 } }, { s: { r: 24, c: 0 }, e: { r: 24, c: 4 } },
         { s: { r: 6, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 8, c: 4 } },
         { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
         { s: { r: 14, c: 0 }, e: { r: 16, c: 0 } }, { s: { r: 14, c: 2 }, e: { r: 16, c: 2 } }, { s: { r: 14, c: 4 }, e: { r: 16, c: 4 } }
@@ -198,7 +202,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     const setupData = [
         [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
-        [{ v: "Toggle YES/NO per branch. Daily Checklist logic updates automatically.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [{ v: "Toggle YES/NO per branch. Today's Tasks updates automatically.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
         [], facilityHeaders,
         [{ v: 1, s: dataStyleCenter }, { v: "Bandra Main", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }],
         [{ v: 2, s: dataStyleCenter }, { v: "Ghatkopar West", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }]
@@ -218,7 +222,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { v: "Frequency", s: intelStyle }, { v: "Risk Level", s: intelStyle },
         { v: "Consequence of Failure", s: intelStyle }, { v: "Trainer Notes", s: intelStyle }
     ];
-    const mData: any[][] = [[], [{ v: "DAILY CHECKLISTS: OPERATIONAL EXECUTION LOG", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
+    const mData: any[][] = [[], [{ v: "TODAY'S TASKS: OPERATIONAL LOGBOOK", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
     
     const moduleMap: Record<number, string> = {
         0: "C", 1: "C", 2: "D", 3: "D", 4: "E", 5: "F", 6: "G", 7: "H", 8: "I", 9: "J", 10: "K", 11: "L"
@@ -271,10 +275,10 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     // --- 04. DASHBOARD ---
     const dashData = [
-        [], [{ v: "BUSINESS HEALTH: LIVE COMPLIANCE", s: { font: { sz: 20, bold: true } } }], [],
-        [{ v: "Operational Metric", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Target Threshold", s: headerStyle }],
-        [{ v: "Group Compliance Achievement %", s: dataStyleLeft }, { t:'f', f:`COUNTIF('DAILY_CHECKLISTS'!E:E,"<>")/MAX(1, COUNTIFS('DAILY_CHECKLISTS'!D:D, "<>N/A*", 'DAILY_CHECKLISTS'!D:D, "<>"))`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
-        [{ v: "Active Operational Risks / Failures", s: dataStyleLeft }, { t:'f', f:`COUNTIF('DAILY_CHECKLISTS'!I:I, "<>")`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
+        [], [{ v: "BUSINESS HEALTH: LIVE DASHBOARD", s: { font: { sz: 20, bold: true } } }], [],
+        [{ v: "Operational KPI", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Target Threshold", s: headerStyle }],
+        [{ v: "Group Completion %", s: dataStyleLeft }, { t:'f', f:`COUNTIF('DAILY_CHECKLISTS'!E:E,"<>")/MAX(1, COUNTIFS('DAILY_CHECKLISTS'!D:D, "<>N/A*", 'DAILY_CHECKLISTS'!D:D, "<>"))`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
+        [{ v: "Active Operational Incidents", s: dataStyleLeft }, { t:'f', f:`COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
     ];
     const dWs = utils.aoa_to_sheet(dashData);
     dWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
@@ -293,16 +297,16 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(rWs, 'E');
     utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
 
-    // --- 06. INCIDENT LOG ---
-    const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Category (Theft / Maintenance / Safety)", s:headerStyle}, {v:"Forensic Description", s:headerStyle}, {v:"Estimated Financial Impact (₹)", s:headerStyle}, {v:"Resolution", s:headerStyle}];
-    const iData = [[], [{v:"INCIDENT TRACKER & LIABILITY REGISTRY", s:{font:{sz:18, bold:true}}}], [], iHeaders];
+    // --- 06. INCIDENT TRACKER ---
+    const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Category", s:headerStyle}, {v:"Description", s:headerStyle}, {v:"Impact (₹)", s:headerStyle}, {v:"Status (OPEN/CLOSED)", s:headerStyle}, {v:"Resolution", s:headerStyle}];
+    const iData = [[], [{v:"INCIDENT TRACKER: LIABILITY LOG", s:{font:{sz:18, bold:true}}}], [], iHeaders];
     const iWs = utils.aoa_to_sheet(iData);
-    iWs['!cols'] = [15, 12, 25, 35, 60, 30, 25].map(w => ({ wch: w }));
-    addSoftwareHeader(iWs, 'G');
+    iWs['!cols'] = [15, 12, 25, 35, 60, 30, 20, 35].map(w => ({ wch: w }));
+    addSoftwareHeader(iWs, 'H');
     utils.book_append_sheet(wb, iWs, "INCIDENT_TRACKER");
 
     // --- 07. HANDOVER ---
-    const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Handover Details", s:headerStyle}, {v:"Outstanding Tasks", s:headerStyle}, {v:"Proof (Digital Acknowledgement & Manager ID)", s:headerStyle}];
+    const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Handover Details", s:headerStyle}, {v:"Outstanding Tasks", s:headerStyle}, {v:"Proof (Digital Acknowledgement)", s:headerStyle}];
     const hData = [[], [{v:"SHIFT HANDOVER BRIDGE", s:{font:{sz:18, bold:true}}}], [], hHeaders];
     const hWs = utils.aoa_to_sheet(hData);
     hWs['!cols'] = [15, 25, 25, 60, 60, 45].map(w => ({ wch: w }));
@@ -310,11 +314,11 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     utils.book_append_sheet(wb, hWs, "HANDOVER");
 
     // --- 08. PERSONNEL ---
-    const pHeaders = [{v:"Staff ID", s:headerStyle}, {v:"Full Name", s:headerStyle}, {v:"Primary Role", s:headerStyle}, {v:"Assigned Branch", s:headerStyle}, {v:"Contact Number", s:headerStyle}, {v:"Institutional Email", s:headerStyle}, {v:"Status (Active/Inactive)", s:headerStyle}];
-    const pData = [[], [{v:"STAFF DIRECTORY", s:{font:{sz:18, bold:true}}}], [], pHeaders];
+    const pHeaders = [{v:"Staff ID", s:headerStyle}, {v:"Full Name", s:headerStyle}, {v:"Primary Role", s:headerStyle}, {v:"Assigned Branch", s:headerStyle}, {v:"Contact Number", s:headerStyle}, {v:"Status (Active/Inactive)", s:headerStyle}];
+    const pData = [[], [{v:"TEAM HUB: STAFF DIRECTORY", s:{font:{sz:18, bold:true}}}], [], pHeaders];
     const pWs = utils.aoa_to_sheet(pData);
-    pWs['!cols'] = [12, 35, 30, 25, 20, 35, 25].map(w => ({ wch: w }));
-    addSoftwareHeader(pWs, 'G');
+    pWs['!cols'] = [12, 35, 30, 25, 20, 25].map(w => ({ wch: w }));
+    addSoftwareHeader(pWs, 'F');
     utils.book_append_sheet(wb, pWs, "PERSONNEL");
 
     // --- 09. MASTER PROTOCOL ---
@@ -338,7 +342,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     utils.book_append_sheet(wb, mpWs, "MASTER_PROTOCOL");
 
     // --- 10. ARCHIVE ---
-    const archWs = utils.aoa_to_sheet([[], [{v: "ARCHIVE: COMPLETED HISTORICAL RECORDS", s: { font: { sz: 18, bold: true } } }]]);
+    const archWs = utils.aoa_to_sheet([[], [{v: "ARCHIVE: HISTORICAL RECORDS", s: { font: { sz: 18, bold: true } } }]]);
     addSoftwareHeader(archWs, 'E');
     utils.book_append_sheet(wb, archWs, "ARCHIVE");
 
@@ -367,5 +371,5 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ]
     };
 
-    writeFile(wb, `MOREMEETS_RESTAURANT_OPERATIONAL_CONSOLE_v4.2.xlsx`);
+    writeFile(wb, `MOREMEETS_RESTAURANT_OPERATIONS_CONSOLE_v4.2.xlsx`);
 }
