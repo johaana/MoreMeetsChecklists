@@ -32,6 +32,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         INPUT_ZONE: "FEFCE8",    
         BORDER: "CBD5E1",
         HEADER_BG: "1E293B",
+        SUCCESS_TEAL: "14B8A6", // Green-Blue for Wow factor
         CONSOLE_BG: "F1F5F9" 
     };
 
@@ -169,7 +170,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "TODAY'S STATUS", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'left' } } }],
         [
             { v: "Shift Progress:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
-            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!E:E, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }
+            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }
         ],
         [
             { v: "Open Incidents:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
@@ -222,9 +223,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, { v: "ID", s: headerStyle },
         { v: "Task", s: headerStyle }, 
-        { v: "Status", s: headerStyle }, 
         { v: "Completed By (Initials)", s: headerStyle }, 
         { v: "Verified By (Manager)", s: headerStyle },
+        { v: "Status", s: headerStyle }, 
         { v: "Frequency", s: intelStyle }, { v: "Risk Level", s: intelStyle },
         { v: "Consequence of Failure", s: intelStyle }, { v: "Trainer Notes", s: intelStyle }
     ];
@@ -244,11 +245,14 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
             c.tasks.forEach(t => {
                 const rowIdx = mData.length + 1;
-                const riskCell = `I${rowIdx}`;
-                const completedByCell = `F${rowIdx}`;
-                const verifiedByCell = `G${rowIdx}`;
+                const completedByCell = `E${rowIdx}`;
+                const verifiedByCell = `F${rowIdx}`;
                 
-                const statusFormula = `IF(ISBLANK(${completedByCell}), "PENDING", IF(AND(${riskCell}="High", ISBLANK(${verifiedByCell})), "AWAITING MGR", "COMPLETED"))`;
+                // Status logic: 
+                // 1. If Completed By is blank -> PENDING
+                // 2. If Verified By is blank AND not N/A -> AWAITING MGR
+                // 3. Else -> COMPLETED
+                const statusFormula = `IF(ISBLANK(${completedByCell}), "PENDING", IF(${verifiedByCell}="", "AWAITING MGR", "COMPLETED"))`;
                 const verifiedByValue = t.priority === 'High' || t.riskLevel === 'High' ? "" : "N/A";
 
                 mData.push([
@@ -256,9 +260,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                     { t: 'f', f: `'BRANCH_SETUP'!$B$${bRow}`, s: dataStyleCenter },
                     { v: t.id, s: dataStyleCenter },
                     { t: 'f', f: `IF(${activeFormula}="NO", "N/A - [${moduleName}] NOT AT THIS LOCATION", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 3, FALSE))`, s: dataStyleLeft },
-                    { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true } } },
                     { v: "", s: inputStyle },
                     { v: verifiedByValue, s: verifiedByValue === "N/A" ? dataStyleCenter : inputStyle },
+                    { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true } } },
                     { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 6, FALSE))`, s: intelStyle },
                     { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 7, FALSE))`, s: intelStyle },
                     { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 4, FALSE))`, s: intelStyle },
@@ -269,16 +273,34 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     });
 
     const mWs = utils.aoa_to_sheet(mData);
-    mWs['!cols'] = [15, 25, 10, 65, 20, 25, 25, 15, 15, 45, 50].map(w => ({ wch: w }));
+    mWs['!cols'] = [15, 25, 10, 65, 25, 25, 20, 15, 15, 45, 50].map(w => ({ wch: w }));
     addSoftwareHeader(mWs, 'K');
     mWs['!autofilter'] = { ref: `A4:K${mData.length}` };
+
+    // WOW factor: Conditional formatting for status column (Column G)
+    mWs['!conditional_formatting'] = [
+        {
+            ref: `G5:G${mData.length}`,
+            rules: [
+                {
+                    type: "expression",
+                    formula: `G5="COMPLETED"`,
+                    style: {
+                        fill: { fgColor: { rgb: COLORS.SUCCESS_TEAL } },
+                        font: { color: { rgb: COLORS.WHITE }, bold: true }
+                    }
+                }
+            ]
+        }
+    ];
+
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
 
     // --- 04. BUSINESS_HEALTH ---
     const dashData = [
         [], [{ v: "BUSINESS HEALTH: PERFORMANCE HUB", s: { font: { sz: 20, bold: true } } }], [],
         [{ v: "Operational KPI", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Target Threshold", s: headerStyle }],
-        [{ v: "Shift Completion Rate", s: dataStyleLeft }, { t:'f', f:`IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!E:E, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
+        [{ v: "Shift Progress Rate", s: dataStyleLeft }, { t:'f', f:`IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
         [{ v: "Active Operational Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }],
         [{ v: "Risk Coverage (Active Modules)", s: dataStyleLeft }, { t:'f', f:`COUNTIF('BRANCH_SETUP'!C6:L6, "YES") & " / 10"`, s: dataStyleCenter }, { v: "ADAPTIVE", s: dataStyleCenter }]
     ];
