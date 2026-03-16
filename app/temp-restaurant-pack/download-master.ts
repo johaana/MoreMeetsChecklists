@@ -5,9 +5,9 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * ROCS v4.2 - THE TOTAL GOVERNANCE SUITE (Unified Identity)
- * Final Build: 2025-03-16
- * Synchronized Sheet Names + Corrected Formulas.
+ * ROCS v4.2 - THE HIGH-SPEED ADOPTION SUITE
+ * Optimized for Restaurant Floors: Remove Time/Issue friction.
+ * Maker-Checker Workflow: Completed By (Staff) | Verified By (Manager).
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -168,7 +168,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "TODAY'S STATUS", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'left' } } }],
         [
             { v: "Shift Progress:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
-            { t: 'f', f: `IFERROR(TEXT(COUNTIFS('TODAYS_TASKS'!E:E,"<>", 'TODAYS_TASKS'!D:D, "<>N/A*")/MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Requirement Description")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }
+            { t: 'f', f: `IFERROR(TEXT(COUNTIFS('TODAYS_TASKS'!F:F,"<>", 'TODAYS_TASKS'!D:D, "<>N/A*")/MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }
         ],
         [
             { v: "Open Incidents:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
@@ -205,29 +205,30 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { v: "Takeaway/Pickup", s: headerStyle }, { v: "Valet", s: headerStyle }, { v: "Garden", s: headerStyle },
         { v: "Staff Qtr", s: headerStyle }
     ];
-    const setupData = [
+    const branchSetupData = [
         [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
         [{ v: "Toggle YES/NO per branch. Today's Tasks updates automatically.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
         [], facilityHeaders,
         [{ v: 1, s: dataStyleCenter }, { v: "Bandra Main", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }],
         [{ v: 2, s: dataStyleCenter }, { v: "Ghatkopar West", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }]
     ];
-    const setupWs = utils.aoa_to_sheet(setupData);
+    const setupWs = utils.aoa_to_sheet(branchSetupData);
     setupWs['!cols'] = [12, 35, 10, 10, 10, 10, 10, 10, 15, 10, 10, 10].map(w => ({ wch: w }));
     addSoftwareHeader(setupWs, 'L');
     utils.book_append_sheet(wb, setupWs, "BRANCH_SETUP");
 
-    // --- 03. TODAYS_TASKS ---
+    // --- 03. TODAYS_TASKS (Optimized High-Speed) ---
     const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, { v: "ID", s: headerStyle },
-        { v: "Requirement Description", s: headerStyle }, 
-        { v: "Actioned By", s: headerStyle }, { v: "Time Done", s: headerStyle }, 
-        { v: "Sign-Off Req?", s: headerStyle }, { v: "Manager Sign-Off", s: headerStyle },
-        { v: "Issue / Deviation", s: headerStyle },
+        { v: "Task", s: headerStyle }, 
+        { v: "Status", s: headerStyle }, 
+        { v: "Completed By (Initials)", s: headerStyle }, 
+        { v: "Verified By (Manager)", s: headerStyle },
+        { v: "MGR REQ?", s: headerStyle },
         { v: "Frequency", s: intelStyle }, { v: "Risk Level", s: intelStyle },
         { v: "Consequence of Failure", s: intelStyle }, { v: "Trainer Notes", s: intelStyle }
     ];
-    const mData: any[][] = [[], [{ v: "TODAY'S TASKS: OPERATIONAL LOGBOOK", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
+    const mData: any[][] = [[], [{ v: "TODAY'S TASKS: HIGH-SPEED ADOPTION LOG", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
     
     const moduleMap: Record<number, string> = {
         0: "C", 1: "C", 2: "D", 3: "D", 4: "E", 5: "F", 6: "G", 7: "H", 8: "I", 9: "J", 10: "K", 11: "L"
@@ -253,16 +254,17 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                 if (isWeeklyModule && !isMonday) return;
 
                 c.tasks.forEach(t => {
-                    const isHighRisk = t.riskLevel === 'High';
+                    const isHighRisk = t.priority === 'High' || t.riskLevel === 'High';
+                    const rowIdx = mData.length + 1;
                     mData.push([
                         { v: d, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
                         { t: 'f', f: `'BRANCH_SETUP'!$B$${bRow}`, s: dataStyleCenter },
                         { v: t.id, s: dataStyleCenter },
-                        { t: 'f', f: `IF(${activeFormula}="NO", "N/A - [${moduleName}] NOT CONFIGURED FOR THIS BRANCH", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 3, FALSE))`, s: dataStyleLeft },
-                        { v: "", s: inputStyle }, { v: "", s: inputStyle },
-                        { v: isHighRisk ? "MGR SIGN" : "NONE", s: { ...dataStyleCenter, font: { bold: isHighRisk, color: { rgb: isHighRisk ? COLORS.RISK_RED : COLORS.TEXT_MUTED } } } },
-                        { v: "", s: inputStyle },
-                        { v: "", s: inputStyle },
+                        { t: 'f', f: `IF(${activeFormula}="NO", "N/A - [${moduleName}] NOT AT THIS LOCATION", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 3, FALSE))`, s: dataStyleLeft },
+                        { t: 'f', f: `IF(ISBLANK(F${rowIdx}), "🟡 PENDING", "🟢 COMPLETED")`, s: { ...dataStyleCenter, font: { bold: true } } },
+                        { v: "", s: inputStyle }, // Completed By
+                        { v: "", s: inputStyle }, // Verified By
+                        { v: isHighRisk ? "⚠️ MGR REQ" : "-", s: { ...dataStyleCenter, font: { bold: isHighRisk, color: { rgb: isHighRisk ? COLORS.RISK_RED : COLORS.TEXT_MUTED } } } },
                         { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 6, FALSE))`, s: intelStyle },
                         { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 7, FALSE))`, s: intelStyle },
                         { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'SOP_LIBRARY'!A:G, 4, FALSE))`, s: intelStyle },
@@ -273,16 +275,16 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         });
     }
     const mWs = utils.aoa_to_sheet(mData);
-    mWs['!cols'] = [15, 25, 10, 65, 25, 12, 15, 20, 30, 15, 15, 45, 50].map(w => ({ wch: w }));
-    addSoftwareHeader(mWs, 'M');
-    mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
+    mWs['!cols'] = [15, 25, 10, 65, 20, 25, 25, 15, 15, 15, 45, 50].map(w => ({ wch: w }));
+    addSoftwareHeader(mWs, 'L');
+    mWs['!autofilter'] = { ref: `A4:L${mData.length}` };
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
 
     // --- 04. BUSINESS_HEALTH ---
     const dashData = [
-        [], [{ v: "BUSINESS HEALTH: LIVE DASHBOARD", s: { font: { sz: 20, bold: true } } }], [],
+        [], [{ v: "BUSINESS HEALTH: PERFORMANCE HUB", s: { font: { sz: 20, bold: true } } }], [],
         [{ v: "Operational KPI", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Target Threshold", s: headerStyle }],
-        [{ v: "Group Completion %", s: dataStyleLeft }, { t:'f', f:`COUNTIF('TODAYS_TASKS'!E:E,"<>")/MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>"))`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
+        [{ v: "Shift Completion Rate", s: dataStyleLeft }, { t:'f', f:`COUNTIF('TODAYS_TASKS'!F:F,"<>")/MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>"))`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
         [{ v: "Active Operational Incidents", s: dataStyleLeft }, { t:'f', f:`COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
     ];
     const dWs = utils.aoa_to_sheet(dashData);
