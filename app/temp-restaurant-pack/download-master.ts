@@ -129,7 +129,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const homeData: any[][] = [
         [], [],
         [{ 
-            v: "MOREMEETS™ RESTAURANT OPERATIONS CONSOLE", 
+            v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", 
             s: { 
                 font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } }, 
                 fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } },
@@ -173,6 +173,14 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }
         ],
         [
+            { v: "Pending Criticals:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
+            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!G:G, "<>COMPLETED", 'TODAYS_TASKS'!I:I, "High", 'TODAYS_TASKS'!D:D, "<>N/A*")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'left' } } }
+        ],
+        [
+            { v: "Manager Verified:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
+            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>N/A", 'TODAYS_TASKS'!F:F, "<>Verified By*")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.ACCENT_GOLD } }, alignment: { horizontal: 'left' } } }
+        ],
+        [
             { v: "Open Incidents:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
             { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'left' } } }
         ],
@@ -180,9 +188,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { v: "Active Branch:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
             { t: 'f', f: `'BRANCH_SETUP'!B6`, l: { Target: "#'BRANCH_SETUP'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'left' } } }
         ],
-        [], [],
-        [{ v: "SYSTEM STATUS: ✅ INSTITUTIONAL GRADE VERIFIED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `REGISTERED TO: ${BUYER_EMAIL} | LICENSE: ENTERPRISE`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }]
+        [],
+        [{ v: "SYSTEM STATUS: ✅ INSTITUTIONAL GRADE VERIFIED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }],
+        [{ v: `REGISTERED TO: ${BUYER_EMAIL} | LICENSE: ENTERPRISE`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'left' } } }]
     ];
 
     const homeWs = utils.aoa_to_sheet(homeData);
@@ -190,7 +198,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
-        { s: { r: 19, c: 0 }, e: { r: 19, c: 1 } },
         { s: { r: 25, c: 0 }, e: { r: 25, c: 4 } }, { s: { r: 26, c: 0 }, e: { r: 26, c: 4 } },
         { s: { r: 6, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 8, c: 4 } },
         { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
@@ -277,7 +284,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(mWs, 'K');
     mWs['!autofilter'] = { ref: `A4:K${mData.length}` };
 
-    // WOW factor: Conditional formatting for status column (Column G)
+    // Conditional formatting for status column (Column G)
     mWs['!conditional_formatting'] = [
         {
             ref: `G5:G${mData.length}`,
@@ -360,7 +367,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             ]);
         });
     });
-    const mpWs = utils.aoa_to_sheet(mpData);
+    const mpWs = utils.aoa_to_sheet(MPData);
     mpWs['!cols'] = [12, 25, 65, 45, 50, 12, 10].map(w => ({ wch: w }));
     addSoftwareHeader(mpWs, 'G');
     utils.book_append_sheet(wb, mpWs, "SOP_LIBRARY");
