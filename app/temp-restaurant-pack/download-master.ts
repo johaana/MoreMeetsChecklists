@@ -111,7 +111,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ws['!merges'].push({ s: { r: row, c: 0 }, e: { r: row, c: numCols - 1 } });
     };
 
-    // --- 01. HOME CONSOLE (FIRST SHEET) ---
+    // --- 01. HOME CONSOLE ---
     const homeData = [
         [], [],
         [{ v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
@@ -127,7 +127,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "▶ GOVERNANCE DASHBOARD", l: { Target: "#'DASHBOARD'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ INCIDENT REGISTRY", l: { Target: "#'INCIDENT_LOG'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "PROFIT PROTECTION", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
-        [{ v: "▶ ROI ENGINE", l: { Target: "#'ROI_ENGINE'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ EDIT MASTER PROTOCOL", l: { Target: "#'MASTER_PROTOCOL'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
+        [{ v: "▶ ROI ENGINE", l: { Target: "#'ROI_ENGINE'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ MASTER PROTOCOL (EDIT ONCE)", l: { Target: "#'MASTER_PROTOCOL'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
         [], [], [],
         [{ v: "MOREMEETS™ | THE PROFESSIONAL STANDARD FOR OPERATIONAL EXCELLENCE", s: { font: { italic: true, sz: 10, bold: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
         [{ v: `ENCRYPTED COPY | REGISTERED TO: ${BUYER_EMAIL}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }]
@@ -146,7 +146,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     // --- 02. SETUP ---
     const facilityHeaders = [
-        { v: "Branch ID", s: headerStyle }, { v: "Branch Name (Identity)", s: headerStyle },
+        { v: "Branch ID", s: headerStyle }, { v: "Branch Name", s: headerStyle },
         { v: "Kitchen", s: headerStyle }, { v: "Bar", s: headerStyle }, { v: "Dining", s: headerStyle },
         { v: "EHS", s: headerStyle }, { v: "Statutory", s: headerStyle }, { v: "Delivery", s: headerStyle },
         { v: "Takeaway", s: headerStyle }, { v: "Valet", s: headerStyle }, { v: "Garden", s: headerStyle },
@@ -154,9 +154,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     const setupData = [
         [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
-        [{ v: "Toggle YES/NO to disable entire modules per branch dynamically.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [{ v: "Toggle YES/NO per branch. Ledger handles compliance logic automatically.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
         [], facilityHeaders,
-        [{ v: 1, s: dataStyleCenter }, { v: "Bandra Main", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "YES", s: inputStyle }],
+        [{ v: 1, s: dataStyleCenter }, { v: "Bandra Main", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "YES", s: inputStyle }],
         [{ v: 2, s: dataStyleCenter }, { v: "Ghatkopar West", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }]
     ];
     const setupWs = utils.aoa_to_sheet(setupData);
@@ -173,9 +173,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { v: "Sign-Off Req?", s: headerStyle }, { v: "Manager Sign-Off", s: headerStyle }, 
         { v: "Consequence of Failure", s: intelStyle }, { v: "Trainer Notes", s: intelStyle }
     ];
-    const mData: any[][] = [[], [{ v: "MISSION LEDGER: DAILY EXECUTION TRAIL", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
+    const mData: any[][] = [[], [{ v: "MISSION LEDGER: 365-DAY EXECUTION TRAIL", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
     
-    // Generate sample week
+    // Generate sample 7-day week
     const startDate = new Date();
     for (let i = 0; i < 7; i++) {
         const d = new Date(startDate); d.setDate(startDate.getDate() + i);
@@ -210,8 +210,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     // --- 04. DASHBOARD ---
     const dashData = [
-        [], [{ v: "GOVERNANCE DASHBOARD: LIVE COMPLIANCE SCORECARD", s: { font: { sz: 20, bold: true } } }], [],
-        [{ v: "Operational Performance Metric", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Forensic Threshold", s: headerStyle }],
+        [], [{ v: "EXECUTIVE SCORECARD: LIVE COMPLIANCE", s: { font: { sz: 20, bold: true } } }], [],
+        [{ v: "Governance Metric", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Forensic Threshold", s: headerStyle }],
         [{ v: "Group Compliance Achievement %", s: dataStyleLeft }, { t:'f', f:`IF('_AUTH_CORE_'!C5<>"PASS", "LICENSE ERROR", TEXT(COUNTIF('MISSION_LEDGER'!E:E,"<>N/A*")/COUNTA('MISSION_LEDGER'!E:E), "0%"))`, s: { ...dataStyleCenter, font: { bold: true } } }, { v: "95% MIN", s: dataStyleCenter }],
         [{ v: "Identified Operational Deviations", s: dataStyleLeft }, { t:'f', f:`COUNTIF('MISSION_LEDGER'!J:J, "<>")`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
     ];
@@ -222,11 +222,10 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     // --- 05. ROI ENGINE ---
     const rData = [
-        [], [{v:"PROFIT PROTECTION & ROI CALCULATOR", s:{font:{sz:18, bold:true}}}], [], 
-        [{v:"Operational Risk Category", s:headerStyle}, {v:"Impact per Event (₹)", s:headerStyle}, {v:"Projected Frequency / Yr", s:headerStyle}, {v:"Potential Annual Loss (₹)", s:headerStyle}, {v:"Mitigation Status", s:headerStyle}],
+        [], [{v:"PROFIT PROTECTION ENGINE", s:{font:{sz:18, bold:true}}}], [], 
+        [{v:"Risk Category", s:headerStyle}, {v:"Impact per Event (₹)", s:headerStyle}, {v:"Frequency / Yr", s:headerStyle}, {v:"Annual Loss (₹)", s:headerStyle}, {v:"Status", s:headerStyle}],
         [{v:"Food Spoilage (Cold Chain Failure)", s:dataStyleLeft}, {v:50000, s:inputStyle}, {v:12, s:inputStyle}, {t:'f', f:'B6*C6', s:dataStyleCenter}, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [{v:"Regulatory Fines (Health/Statutory)", s:dataStyleLeft}, {v:200000, s:inputStyle}, {v:1, s:inputStyle}, {t:'f', f:'B7*C7', s:dataStyleCenter}, {v:"PROTECTED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [{v:"Slip & Fall Litigation", s:dataStyleLeft}, {v:500000, s:inputStyle}, {v:0.5, s:inputStyle}, {t:'f', f:'B8*C8', s:dataStyleCenter}, {v:"MITIGATED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
+        [{v:"Regulatory Fines (Health/Statutory)", s:dataStyleLeft}, {v:200000, s:inputStyle}, {v:1, s:inputStyle}, {t:'f', f:'B7*C7', s:dataStyleCenter}, {v:"PROTECTED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
     ];
     const rWs = utils.aoa_to_sheet(rData);
     rWs['!cols'] = [40, 25, 25, 25, 20].map(w => ({ wch: w }));
@@ -234,7 +233,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
 
     // --- 06. INCIDENT LOG ---
-    const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Risk Type", s:headerStyle}, {v:"Forensic Description", s:headerStyle}, {v:"Est. Loss (₹)", s:headerStyle}, {v:"Resolution Status", s:headerStyle}];
+    const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Risk Type", s:headerStyle}, {v:"Forensic Description", s:headerStyle}, {v:"Est. Loss (₹)", s:headerStyle}, {v:"Resolution", s:headerStyle}];
     const iData = [[], [{v:"INCIDENT & LIABILITY REGISTRY", s:{font:{sz:18, bold:true}}}], [], iHeaders];
     const iWs = utils.aoa_to_sheet(iData);
     iWs['!cols'] = [15, 12, 25, 20, 60, 20, 25].map(w => ({ wch: w }));
@@ -242,7 +241,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
     // --- 07. HANDOVER ---
-    const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Critical Issues Handed Over", s:headerStyle}, {v:"Outstanding Tasks", s:headerStyle}, {v:"Digital Proof", s:headerStyle}];
+    const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Handover Details", s:headerStyle}, {v:"Outstanding", s:headerStyle}, {v:"Proof", s:headerStyle}];
     const hData = [[], [{v:"SHIFT HANDOVER BRIDGE", s:{font:{sz:18, bold:true}}}], [], hHeaders];
     const hWs = utils.aoa_to_sheet(hData);
     hWs['!cols'] = [15, 25, 25, 60, 60, 20].map(w => ({ wch: w }));
@@ -250,27 +249,15 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     utils.book_append_sheet(wb, hWs, "HANDOVER");
 
     // --- 08. PERSONNEL ---
-    const pHeaders = [{v:"Staff ID", s:headerStyle}, {v:"Full Name", s:headerStyle}, {v:"Primary Role", s:headerStyle}, {v:"Assigned Branch", s:headerStyle}, {v:"Contact Number", s:headerStyle}, {v:"Corporate Email", s:headerStyle}, {v:"Status", s:headerStyle}];
-    const pData = [[], [{v:"PERSONNEL DIRECTORY & ACCESS CONTROL", s:{font:{sz:18, bold:true}}}], [], pHeaders];
+    const pHeaders = [{v:"ID", s:headerStyle}, {v:"Staff Name", s:headerStyle}, {v:"Role", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Phone", s:headerStyle}, {v:"Email", s:headerStyle}, {v:"Status", s:headerStyle}];
+    const pData = [[], [{v:"PERSONNEL DIRECTORY", s:{font:{sz:18, bold:true}}}], [], pHeaders];
     const pWs = utils.aoa_to_sheet(pData);
     pWs['!cols'] = [12, 35, 30, 25, 20, 35, 15].map(w => ({ wch: w }));
     addSoftwareHeader(pWs);
     utils.book_append_sheet(wb, pWs, "PERSONNEL");
 
-    // --- 09. AUTH CORE (HIDDEN) ---
-    const aData = [
-        ["KEY", "VALUE", "STATUS"],
-        ["BUYER_EMAIL", BUYER_EMAIL, "VALID"],
-        ["ORDER_ID", ORDER_ID, "ACTIVE"],
-        ["LICENSE_HASH", LICENSE_HASH, "ENCRYPTED"],
-        ["INTEGRITY", "", "PASS"]
-    ];
-    const aWs = utils.aoa_to_sheet(aData);
-    aWs['!hidden'] = 1;
-    utils.book_append_sheet(wb, aWs, "_AUTH_CORE_");
-
-    // --- 10. MASTER PROTOCOL (FINAL SHEET) ---
-    const mpData: any[][] = [[], [{ v: "MASTER PROTOCOL DATABASE (SOURCE OF TRUTH)", s: { font: { sz: 16, bold: true } } }], [{v:"Modify any task description here. Changes propagate instantly across the Ledger.", s:{font:{italic:true, color:{rgb:COLORS.TEXT_MUTED}}}}], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement / Step", s:headerStyle}, {v:"Consequence of Failure", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}]];
+    // --- 09. MASTER PROTOCOL ---
+    const mpData: any[][] = [[], [{ v: "MASTER PROTOCOL DATABASE", s: { font: { sz: 16, bold: true } } }], [{v:"Modify task strings here. Changes propagate instantly via VLOOKUP.", s:{font:{italic:true, color:{rgb:COLORS.TEXT_MUTED}}}}], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement / Step", s:headerStyle}, {v:"Consequence of Failure", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}]];
     item.checklists.forEach(c => {
         c.tasks.forEach(t => {
             mpData.push([
@@ -289,15 +276,42 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(mpWs);
     utils.book_append_sheet(wb, mpWs, "MASTER_PROTOCOL");
 
-    // Final Styling Sweep
+    // --- 10. AUTH CORE (HIDDEN & LAST) ---
+    const aData = [
+        ["KEY", "VALUE", "STATUS"],
+        ["BUYER_EMAIL", BUYER_EMAIL, "VALID"],
+        ["ORDER_ID", ORDER_ID, "ACTIVE"],
+        ["LICENSE_HASH", LICENSE_HASH, "ENCRYPTED"],
+        ["INTEGRITY", "", "PASS"]
+    ];
+    const aWs = utils.aoa_to_sheet(aData);
+    aWs['!hidden'] = 1;
+    utils.book_append_sheet(wb, aWs, "_AUTH_CORE_");
+
+    // Re-order sheets explicitly to ensure HOME_CONSOLE is first
+    const desiredOrder = [
+        "HOME_CONSOLE",
+        "MISSION_LEDGER",
+        "SETUP",
+        "DASHBOARD",
+        "ROI_ENGINE",
+        "INCIDENT_LOG",
+        "HANDOVER",
+        "PERSONNEL",
+        "MASTER_PROTOCOL",
+        "_AUTH_CORE_"
+    ];
+    wb.SheetNames = desiredOrder.filter(name => wb.SheetNames.includes(name));
+
+    // Final Styling Sweep (Data range only)
     wb.SheetNames.forEach(name => {
         const ws = wb.Sheets[name];
         if (name === "_AUTH_CORE_") return;
         const range = utils.decode_range(ws['!ref'] || 'A1');
-        for (let R = range.s.r; R <= range.e.r; ++R) {
-            for (let C = range.s.c; C <= range.e.c; ++C) {
+        for (let R = 4; R <= range.e.r; ++R) { // Start from data area
+            for (let C = 0; C <= range.e.c; ++C) {
                 const cell = ws[utils.encode_cell({ r: R, c: C })];
-                if (cell && R >= 4) { // Only apply to data area (below Command Bar and Titles)
+                if (cell) {
                     if (!cell.s) cell.s = {};
                     cell.s.border = borderStyle;
                 }
