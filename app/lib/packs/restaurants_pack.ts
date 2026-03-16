@@ -46,6 +46,29 @@ export const restaurants: PremiumPack = {
             ]
         },
         {
+            title: "Safety & Compliance Audits",
+            department: "Management",
+            frequency: "Weekly",
+            role: "General Manager",
+            summary: "Executive-level verification of safety infrastructure.",
+            icon: "shield-check",
+            tasks: [
+                { id: "SEC-01", description: "Inspect all fire exits for obstructions and functional panic bars.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment in fire emergency.", proof: "Exit Audit Sign-off", trainerNotes: "Ensure no boxes are stored in stairwells." },
+                { id: "SEC-02", description: "Full audit of First Aid kits and AED battery status.", priority: "High", riskLevel: "High", consequence: "Inability to respond to guest cardiac event.", proof: "Medical Kit Log", trainerNotes: "Replace any expired dressings immediately." }
+            ]
+        },
+        {
+            title: "Pest & Environment Control",
+            department: "Facilities",
+            frequency: "Monthly",
+            role: "Maintenance",
+            summary: "Deep-level infrastructure sanitization.",
+            icon: "bug",
+            tasks: [
+                { id: "PEST-01", description: "Audit all external bait stations and perimeter seals.", priority: "High", riskLevel: "Medium", consequence: "Structural infestation and closure.", proof: "Vendor Verification Log", trainerNotes: "Look for new gnaw marks on back-door sweeps." }
+            ]
+        },
+        {
             title: "Bar & Spirits Control",
             department: "Bar",
             frequency: "Daily",
@@ -56,42 +79,6 @@ export const restaurants: PremiumPack = {
                 { id: "BAR-01", description: "Reconcile physical high-value spirit stock against POS opening sales.", priority: "High", riskLevel: "High", consequence: "Internal theft and revenue leakage.", proof: "Liquor Inventory Sheet", trainerNotes: "Measure open bottles using a weight scale or jigger." },
                 { id: "BAR-02", description: "Clean and sanitize all beer tap lines.", priority: "High", riskLevel: "Medium", consequence: "Bacterial growth and off-flavor beer.", proof: "Cleaning Log", trainerNotes: "Flush with food-grade line cleaner for 15 mins." },
                 { id: "BAR-03", description: "Inspect ice machines for mold or scale buildup.", priority: "High", riskLevel: "High", consequence: "Contaminated ice causing guest illness.", proof: "Cleaning Audit", trainerNotes: "Discard ice once a week for deep bin sanitation." }
-            ]
-        },
-        {
-            title: "Garden & Outdoor Safety",
-            department: "Facilities",
-            frequency: "Daily",
-            role: "Maintenance",
-            summary: "Ensuring guest comfort and safety in outdoor areas.",
-            icon: "sprout",
-            tasks: [
-                { id: "GRD-01", description: "Check all outdoor lighting and paths for trip hazards.", priority: "High", riskLevel: "Medium", consequence: "Guest slip and fall liability.", proof: "Walkthrough Log", trainerNotes: "Focus on uneven tiles or loose wiring in garden beds." },
-                { id: "GRD-02", description: "Inspect outdoor furniture for stability and cleanliness.", priority: "Medium", riskLevel: "Low", consequence: "Poor guest experience.", proof: "Visual Check", trainerNotes: "Tighten screws on wooden benches every month." }
-            ]
-        },
-        {
-            title: "Valet & Parking Logistics",
-            department: "Security",
-            frequency: "Daily",
-            role: "Valet Supervisor",
-            summary: "Secure vehicle handling and key management.",
-            icon: "car",
-            tasks: [
-                { id: "VAL-01", description: "Inventory check of the secure key locker.", priority: "High", riskLevel: "High", consequence: "Unauthorized vehicle access or lost keys.", proof: "Key Inventory Log", trainerNotes: "Locker must be under CCTV coverage at all times." },
-                { id: "VAL-02", description: "Verify valet staff driving licenses and uniform grooming.", priority: "High", riskLevel: "High", consequence: "Legal liability and brand damage.", proof: "Staff Roster Audit", trainerNotes: "Breathalyzer test mandatory for night shift starts." }
-            ]
-        },
-        {
-            title: "Pool & Water Safety",
-            department: "Facilities",
-            frequency: "Daily",
-            role: "Pool Operator",
-            summary: "Chemical and life safety for aquatic facilities.",
-            icon: "waves",
-            tasks: [
-                { id: "POOL-01", description: "Test and log pH and Chlorine levels.", priority: "High", riskLevel: "High", consequence: "Skin irritation or bacterial transmission.", proof: "Water Quality Log", trainerNotes: "Target pH: 7.2 - 7.6. Target Chlorine: 1-3 ppm." },
-                { id: "POOL-02", description: "Verify availability of functional lifebuoys and first aid kit.", priority: "High", riskLevel: "High", consequence: "Fatal drowning incident.", proof: "Safety Equipment Audit", trainerNotes: "Ropes must be tangle-free and attached to buoys." }
             ]
         }
     ]
