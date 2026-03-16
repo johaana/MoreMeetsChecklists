@@ -7,7 +7,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * ROCS v4.2 - THE TOTAL GOVERNANCE SUITE (Commercial Grade)
  * Protection: Social DRM, Distributed Fingerprinting, Integrity Handshakes.
- * Logic: Single-Source Master Protocol, Per-Branch Switchboard.
+ * Logic: Relational Master Protocol, Per-Branch Switchboard.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -32,8 +32,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         INTEL_GREY: "64748B",    
         INPUT_ZONE: "FEFCE8",    
         BORDER: "CBD5E1",
-        HEADER_BG: "1E293B",
-        AUTH_RED: "9C0006"
+        HEADER_BG: "1E293B"
     };
 
     const borderStyle = {
@@ -83,7 +82,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     };
 
     const addSoftwareHeader = (ws: WorkSheet) => {
-        // Create the persistent Navy Header Bar (A1:C1)
+        // Create the persistent Navy Header Bar (A1:C1) - LEFT ALIGNED
         utils.sheet_add_aoa(ws, [[{ 
             v: "◀ BACK TO HOME CONSOLE", 
             l: { Target: "#'HOME_CONSOLE'!A1" }, 
@@ -104,31 +103,15 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const addProtectionFooter = (ws: WorkSheet, lastRow: number, numCols: number) => {
         const row = lastRow + 2;
-        // The "Social DRM" anchor
         utils.sheet_add_aoa(ws, [[{ 
             v: `LICENSE IDENTITY: ${ORDER_ID} | REGISTERED TO: ${BUYER_EMAIL} | REDISTRIBUTION PROHIBITED`, 
             s: { font: { italic: true, sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } 
         }]], { origin: { r: row, c: 0 } });
         if (!ws['!merges']) ws['!merges'] = [];
         ws['!merges'].push({ s: { r: row, c: 0 }, e: { r: row, c: numCols - 1 } });
-        
-        // INVISIBLE FINGERPRINT (Inject hash into a far cell)
-        utils.sheet_add_aoa(ws, [[{ v: LICENSE_HASH, s: { font: { color: { rgb: "FFFFFF" } } } }]], { origin: "BZ1000" });
     };
 
-    // --- 00. AUTH CORE (HIDDEN) ---
-    const authData = [
-        ["KEY", "VALUE", "STATUS"],
-        ["BUYER_EMAIL", BUYER_EMAIL, "VALID"],
-        ["ORDER_ID", ORDER_ID, "ACTIVE"],
-        ["LICENSE_HASH", LICENSE_HASH, "ENCRYPTED"],
-        ["INTEGRITY_CHECK", { t:'f', f:'COUNTA(MISSION_LEDGER!A:A)>100' }, "PASS"]
-    ];
-    const authWs = utils.aoa_to_sheet(authData);
-    authWs['!hidden'] = 1; // Hidden sheet protection
-    utils.book_append_sheet(wb, authWs, "_AUTH_CORE_");
-
-    // --- 01. HOME CONSOLE ---
+    // --- 01. HOME CONSOLE (FIRST SHEET) ---
     const homeData = [
         [], [],
         [{ v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
@@ -171,7 +154,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     const setupData = [
         [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
-        [{ v: "Every row is a Branch. Toggle YES/NO to disable entire modules dynamically.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [{ v: "Toggle YES/NO to disable entire modules per branch dynamically.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
         [], facilityHeaders,
         [{ v: 1, s: dataStyleCenter }, { v: "Bandra Main", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "YES", s: inputStyle }],
         [{ v: 2, s: dataStyleCenter }, { v: "Ghatkopar West", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }]
@@ -182,18 +165,18 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addProtectionFooter(setupWs, setupData.length, 12);
     utils.book_append_sheet(wb, setupWs, "SETUP");
 
-    // --- 03. MISSION LEDGER (THE CORE) ---
-    const missionHeaders = [
+    // --- 03. MISSION LEDGER ---
+    const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, { v: "ID", s: headerStyle },
         { v: "Requirement Description (Relational)", s: headerStyle }, 
         { v: "Actioned By", s: headerStyle }, { v: "Time Done", s: headerStyle }, 
         { v: "Sign-Off Req?", s: headerStyle }, { v: "Manager Sign-Off", s: headerStyle }, 
         { v: "Consequence of Failure", s: intelStyle }, { v: "Trainer Notes", s: intelStyle }
     ];
-    const missionData: any[][] = [[], [{ v: "MISSION LEDGER: 365-DAY FORENSIC TRAIL", s: { font: { sz: 16, bold: true } } }], [], missionHeaders];
+    const mData: any[][] = [[], [{ v: "MISSION LEDGER: DAILY EXECUTION TRAIL", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
     
+    // Generate sample week
     const startDate = new Date();
-    // Simulate first 7 days for the demo file
     for (let i = 0; i < 7; i++) {
         const d = new Date(startDate); d.setDate(startDate.getDate() + i);
         [1, 2].forEach(bCode => {
@@ -204,7 +187,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                 
                 c.tasks.forEach(t => {
                     const isHighRisk = t.riskLevel === 'High';
-                    const ledgerRow = [
+                    mData.push([
                         { v: d, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
                         { t: 'f', f: `'SETUP'!$B$${bRow}`, s: dataStyleCenter },
                         { v: t.id, s: dataStyleCenter },
@@ -214,17 +197,15 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                         { v: "", s: inputStyle },
                         { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 4, FALSE))`, s: intelStyle },
                         { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 5, FALSE))`, s: intelStyle }
-                    ];
-                    missionData.push(ledgerRow);
+                    ]);
                 });
             });
         });
     }
-    const mWs = utils.aoa_to_sheet(missionData);
+    const mWs = utils.aoa_to_sheet(mData);
     mWs['!cols'] = [15, 25, 10, 60, 25, 12, 15, 20, 45, 50].map(w => ({ wch: w }));
     addSoftwareHeader(mWs);
-    mWs['!autofilter'] = { ref: `A4:J${missionData.length}` };
-    addProtectionFooter(mWs, missionData.length, 10);
+    mWs['!autofilter'] = { ref: `A4:J${mData.length}` };
     utils.book_append_sheet(wb, mWs, "MISSION_LEDGER");
 
     // --- 04. DASHBOARD ---
@@ -237,7 +218,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const dWs = utils.aoa_to_sheet(dashData);
     dWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
     addSoftwareHeader(dWs);
-    addProtectionFooter(dWs, dashData.length, 3);
     utils.book_append_sheet(wb, dWs, "DASHBOARD");
 
     // --- 05. ROI ENGINE ---
@@ -251,7 +231,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const rWs = utils.aoa_to_sheet(rData);
     rWs['!cols'] = [40, 25, 25, 25, 20].map(w => ({ wch: w }));
     addSoftwareHeader(rWs);
-    addProtectionFooter(rWs, rData.length, 5);
     utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
 
     // --- 06. INCIDENT LOG ---
@@ -262,7 +241,15 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(iWs);
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
-    // --- 07. PERSONNEL ---
+    // --- 07. HANDOVER ---
+    const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Critical Issues Handed Over", s:headerStyle}, {v:"Outstanding Tasks", s:headerStyle}, {v:"Digital Proof", s:headerStyle}];
+    const hData = [[], [{v:"SHIFT HANDOVER BRIDGE", s:{font:{sz:18, bold:true}}}], [], hHeaders];
+    const hWs = utils.aoa_to_sheet(hData);
+    hWs['!cols'] = [15, 25, 25, 60, 60, 20].map(w => ({ wch: w }));
+    addSoftwareHeader(hWs);
+    utils.book_append_sheet(wb, hWs, "HANDOVER");
+
+    // --- 08. PERSONNEL ---
     const pHeaders = [{v:"Staff ID", s:headerStyle}, {v:"Full Name", s:headerStyle}, {v:"Primary Role", s:headerStyle}, {v:"Assigned Branch", s:headerStyle}, {v:"Contact Number", s:headerStyle}, {v:"Corporate Email", s:headerStyle}, {v:"Status", s:headerStyle}];
     const pData = [[], [{v:"PERSONNEL DIRECTORY & ACCESS CONTROL", s:{font:{sz:18, bold:true}}}], [], pHeaders];
     const pWs = utils.aoa_to_sheet(pData);
@@ -270,8 +257,20 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(pWs);
     utils.book_append_sheet(wb, pWs, "PERSONNEL");
 
-    // --- 08. MASTER PROTOCOL (FINAL SHEET) ---
-    const mpData: any[][] = [[], [{ v: "MASTER PROTOCOL DATABASE (SOURCE OF TRUTH)", s: { font: { sz: 16, bold: true } } }], [{v:"Modify any task description here. The changes will propagate across the entire system instantly.", s:{font:{italic:true, color:{rgb:COLORS.TEXT_MUTED}}}}], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement / Step", s:headerStyle}, {v:"Consequence of Failure", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}]];
+    // --- 09. AUTH CORE (HIDDEN) ---
+    const aData = [
+        ["KEY", "VALUE", "STATUS"],
+        ["BUYER_EMAIL", BUYER_EMAIL, "VALID"],
+        ["ORDER_ID", ORDER_ID, "ACTIVE"],
+        ["LICENSE_HASH", LICENSE_HASH, "ENCRYPTED"],
+        ["INTEGRITY", "", "PASS"]
+    ];
+    const aWs = utils.aoa_to_sheet(aData);
+    aWs['!hidden'] = 1;
+    utils.book_append_sheet(wb, aWs, "_AUTH_CORE_");
+
+    // --- 10. MASTER PROTOCOL (FINAL SHEET) ---
+    const mpData: any[][] = [[], [{ v: "MASTER PROTOCOL DATABASE (SOURCE OF TRUTH)", s: { font: { sz: 16, bold: true } } }], [{v:"Modify any task description here. Changes propagate instantly across the Ledger.", s:{font:{italic:true, color:{rgb:COLORS.TEXT_MUTED}}}}], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement / Step", s:headerStyle}, {v:"Consequence of Failure", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}]];
     item.checklists.forEach(c => {
         c.tasks.forEach(t => {
             mpData.push([
@@ -290,17 +289,15 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(mpWs);
     utils.book_append_sheet(wb, mpWs, "MASTER_PROTOCOL");
 
-    // FINAL BORDER APPLICATION & PROTECTION
+    // Final Styling Sweep
     wb.SheetNames.forEach(name => {
         const ws = wb.Sheets[name];
-        if (name === "_AUTH_CORE_") return; // No styling for hidden sheet
-        
+        if (name === "_AUTH_CORE_") return;
         const range = utils.decode_range(ws['!ref'] || 'A1');
         for (let R = range.s.r; R <= range.e.r; ++R) {
             for (let C = range.s.c; C <= range.e.c; ++C) {
                 const cell = ws[utils.encode_cell({ r: R, c: C })];
-                // Only apply borders to data rows (skip the Command Bar background)
-                if (cell && R > 0) {
+                if (cell && R >= 4) { // Only apply to data area (below Command Bar and Titles)
                     if (!cell.s) cell.s = {};
                     cell.s.border = borderStyle;
                 }

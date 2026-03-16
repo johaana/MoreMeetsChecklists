@@ -186,12 +186,12 @@ export const restaurants: PremiumPack = {
                 { id: "EHS-06", description: "Kitchen Fire Suppression (Ansul) Audit.", priority: "High", riskLevel: "High", consequence: "Unstoppable grease fire.", proof: "Gage Check", trainerNotes: "Check pin and pressure." },
                 { id: "EHS-07", description: "CO2 Gas Storage & Leak Audit (Bar).", priority: "High", riskLevel: "High", consequence: "Asphyxiation risk.", proof: "Visual Check", trainerNotes: "Must be upright and chained." },
                 { id: "EHS-08", description: "Stairwell Treads & Handrail Audit.", priority: "High", riskLevel: "Medium", consequence: "Fall injuries.", proof: "Visual Check", trainerNotes: "Must be firm and non-slip." },
-                { id: "EHS-09", description: "Hazardous Chemical (MSDS) Registry.", priority: "Medium", riskLevel: "High", consequence: "Emergency treatment delay.", proof: "Document File", trainerNotes: "Must be accessible to all." },
+                { id: "EHS-09", description: "Hazardous Chemical (MSDS) Registry.", priority: "Medium", riskLevel: "High", consequence: "Emergency treatment delay.", proof: "Document File", trainerNotes: "MSDS must be accessible to all." },
                 { id: "EHS-10", description: "Electrical Cable Management Audit (Office).", priority: "Low", riskLevel: "Medium", consequence: "Fire hazard/Trip hazard.", proof: "Visual Check", trainerNotes: "Remove daisy-chained strips." },
                 { id: "EHS-11", description: "Kitchen Ventilation Belt/Motor Health.", priority: "Medium", riskLevel: "Medium", consequence: "Heat/Smoke buildup.", proof: "Maintenance Log", trainerNotes: "Listen for squealing sounds." },
                 { id: "EHS-12", description: "Pest Exclusion (Gaps/Holes) Audit.", priority: "High", riskLevel: "High", consequence: "Infestation/Compliance fail.", proof: "Structural Audit", trainerNotes: "Check pipe entry points." },
                 { id: "EHS-13", description: "Staff Lifting Technique Observation.", priority: "Medium", riskLevel: "Medium", consequence: "Back injuries.", proof: "Training Log", trainerNotes: "Correction provided on-site." },
-                { id: "EHS-14", description: "Roof Drain/Gutter Clearanc Check.", priority: "Low", riskLevel: "Low", consequence: "Leakage/Infrastructure damage.", proof: "Visual Check", trainerNotes: "Focus before monsoon/rain." },
+                { id: "EHS-14", description: "Roof Drain/Gutter Clearance Check.", priority: "Low", riskLevel: "Low", consequence: "Leakage/Infrastructure damage.", proof: "Visual Check", trainerNotes: "Focus before monsoon/rain." },
                 { id: "EHS-15", description: "CCTV Camera Angle & Cleaning Audit.", priority: "High", riskLevel: "Medium", consequence: "Investigation failure.", proof: "Screen Check", trainerNotes: "Wipe lenses with microfibre." },
                 { id: "EHS-16", description: "Waste Compactor/Area Hygiene Check.", priority: "Medium", riskLevel: "Medium", consequence: "Pest attraction.", proof: "Visual Audit", trainerNotes: "Sanitize concrete pad weekly." },
                 { id: "EHS-17", description: "Staff Canteen/Locker Safety Walk.", priority: "Low", riskLevel: "Low", consequence: "Internal fire/Safety risk.", proof: "Walkthrough", trainerNotes: "No loose wiring in lockers." },
@@ -322,7 +322,12 @@ export const restaurants: PremiumPack = {
                 { id: "SQ-02", description: "Uniform Laundry Sanitization Check.", priority: "Medium", riskLevel: "Low", consequence: "Staff cross-contamination.", proof: "Laundry Log", trainerNotes: "Wash temp must be >60°C." },
                 { id: "SQ-03", description: "Staff Drinking Water Filter Audit.", priority: "High", riskLevel: "High", consequence: "Mass staff illness.", proof: "TDS Reading", trainerNotes: "Filter change every 3 months." },
                 { id: "SQ-04", description: "Inspect staff toilets for hygiene.", priority: "High", riskLevel: "High", consequence: "Poor morale/Infection.", proof: "Cleaning Log", trainerNotes: "Must match FOH standards." },
-                { id: "SQ-05", description: "Verify staff meal hygiene & temp.", priority: "High", riskLevel: "High", consequence: "Team-wide food poisoning.", proof: "Temp Log", trainerNotes: "Serve above 65°C." }
+                { id: "SQ-05", description: "Verify staff meal hygiene & temp.", priority: "High", riskLevel: "High", consequence: "Team-wide food poisoning.", proof: "Temp Log", trainerNotes: "Serve above 65°C." },
+                { id: "SQ-06", description: "Check fire alarm in staff quarters.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment.", proof: "Test Log", trainerNotes: "Weekly battery check." },
+                { id: "SQ-07", description: "Inspect beds for bugs/pests.", priority: "Medium", riskLevel: "Medium", consequence: "Employee health/morale.", proof: "Visual Check", trainerNotes: "Report to pest vendor." },
+                { id: "SQ-08", description: "Verify adequate lighting in hallways.", priority: "Low", riskLevel: "Low", consequence: "Trip hazards.", proof: "Visual Check", trainerNotes: "Replace tubes promptly." },
+                { id: "SQ-09", description: "Audit personal item storage policy.", priority: "Low", riskLevel: "Low", consequence: "Clutter/Fire hazard.", proof: "Walkthrough", trainerNotes: "No cooking in quarters." },
+                { id: "SQ-10", description: "Manager 1-on-1 Welfare Check.", priority: "Medium", riskLevel: "Low", consequence: "High staff turnover.", proof: "Meeting Notes", trainerNotes: "Ask about rest quality." }
             ]
         }
     ]
