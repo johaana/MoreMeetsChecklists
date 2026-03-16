@@ -8,6 +8,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
  * ROCS v4.2 - THE TOTAL GOVERNANCE SUITE (Commercial Grade)
  * Final Build: 2025-03-16
  * Logic: Interval-Aware Scheduling (Monthly=1st, Weekly=Mon), Fixed Pickup Mapping, Full 240-task Deep Load.
+ * UI: Replicated Pro-Tile Console Layout.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -19,7 +20,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     
     const BUYER_EMAIL = "RAHUL@RESTAURANTGROUP.COM";
     const ORDER_ID = "MM-ORD-7721-REST";
-    const LICENSE_HASH = "8A6C9F2D-AUTH-2025";
 
     const COLORS = {
         NAVY_BAR: "0A0F19",      
@@ -31,7 +31,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         INTEL_GREY: "64748B",    
         INPUT_ZONE: "FEFCE8",    
         BORDER: "CBD5E1",
-        HEADER_BG: "1E293B"
+        HEADER_BG: "1E293B",
+        TILE_BG: "111827"
     };
 
     const borderStyle = {
@@ -48,6 +49,24 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         fill: { fgColor: { rgb: COLORS.NAVY_BAR } },
         alignment: { horizontal: 'left', vertical: 'center' },
         border: borderStyle
+    };
+
+    const tileStyle = {
+        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 11 },
+        fill: { fgColor: { rgb: COLORS.HEADER_BG } },
+        alignment: { horizontal: 'center', vertical: 'center' },
+        border: { 
+            top: { style: 'thin', color: { rgb: COLORS.PRIMARY_GREEN } },
+            left: { style: 'thin', color: { rgb: COLORS.PRIMARY_GREEN } },
+            bottom: { style: 'medium', color: { rgb: "000000" } },
+            right: { style: 'medium', color: { rgb: "000000" } }
+        }
+    };
+
+    const groupHeaderStyle = {
+        font: { ...baseFont, bold: true, color: { rgb: "000000" }, sz: 12 },
+        fill: { fgColor: { rgb: COLORS.ACCENT_GOLD } },
+        alignment: { horizontal: 'center', vertical: 'center' }
     };
 
     const headerStyle = {
@@ -81,7 +100,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     };
 
     const addSoftwareHeader = (ws: WorkSheet) => {
-        // Clinical App Bar: Merged A1:C1, Navy, Left-Aligned Green Text
         utils.sheet_add_aoa(ws, [[{ 
             v: "◀ BACK TO HOME CONSOLE", 
             l: { Target: "#'HOME_CONSOLE'!A1" }, 
@@ -99,37 +117,56 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
     };
 
-    // --- 01. HOME CONSOLE ---
-    const homeData = [
+    // --- 01. HOME CONSOLE (TILE-BASED REPLICATION) ---
+    const homeData: any[][] = [
         [], [],
-        [{ v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Enterprise Continuity & Governance Suite v4.2", s: { font: { italic: true, sz: 12, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Enterprise Continuity & Governance Suite v4.2", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "INITIALIZATION ZONE", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
-        [{ v: "▶ SETUP BRANCHES & FACILITIES", l: { Target: "#'SETUP'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ ASSIGN PERSONNEL", l: { Target: "#'PERSONNEL'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
+        [
+            { v: "ADMIN & SETUP", s: groupHeaderStyle }, null, 
+            { v: "DAILY OPERATIONS", s: groupHeaderStyle }, null, 
+            { v: "EXECUTIVE INTEL", s: groupHeaderStyle }
+        ],
+        [
+            { v: "▶ SETUP BRANCHES", l: { Target: "#'SETUP'!A1" }, s: tileStyle }, null, 
+            { v: "▶ MISSION LEDGER", l: { Target: "#'MISSION_LEDGER'!A1" }, s: tileStyle }, null, 
+            { v: "▶ DASHBOARD", l: { Target: "#'DASHBOARD'!A1" }, s: tileStyle }
+        ],
+        [null, null, null, null, null], 
+        [null, null, null, null, null], 
         [],
-        [{ v: "DAILY MISSION ZONE", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
-        [{ v: "▶ MISSION LEDGER (365 DAYS)", l: { Target: "#'MISSION_LEDGER'!A1" }, s: { ...navStyle, fill: { fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ SHIFT HANDOVER BRIDGE", l: { Target: "#'HANDOVER'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
+        [
+            { v: "▶ PERSONNEL", l: { Target: "#'PERSONNEL'!A1" }, s: tileStyle }, null, 
+            { v: "▶ SHIFT HANDOVER", l: { Target: "#'HANDOVER'!A1" }, s: tileStyle }, null, 
+            { v: "▶ ROI ENGINE", l: { Target: "#'ROI_ENGINE'!A1" }, s: tileStyle }
+        ],
+        [null, null, null, null, null],
+        [null, null, null, null, null],
         [],
-        [{ v: "EXECUTIVE SUITE", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
-        [{ v: "▶ GOVERNANCE DASHBOARD", l: { Target: "#'DASHBOARD'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ INCIDENT REGISTRY", l: { Target: "#'INCIDENT_LOG'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
-        [],
-        [{ v: "PROFIT PROTECTION", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
-        [{ v: "▶ ROI ENGINE", l: { Target: "#'ROI_ENGINE'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ MASTER PROTOCOL (240+ SOPs)", l: { Target: "#'MASTER_PROTOCOL'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
-        [], [], [],
-        [{ v: "MOREMEETS™ | THE PROFESSIONAL STANDARD FOR OPERATIONAL EXCELLENCE", s: { font: { italic: true, sz: 10, bold: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `ENCRYPTED COPY | REGISTERED TO: ${BUYER_EMAIL}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }]
+        [
+            { v: "▶ ARCHIVE", s: { ...tileStyle, fill: { fgColor: { rgb: "334155" } } } }, null, 
+            { v: "▶ MASTER PROTOCOL", l: { Target: "#'MASTER_PROTOCOL'!A1" }, s: tileStyle }, null, 
+            { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_LOG'!A1" }, s: tileStyle }
+        ],
+        [null, null, null, null, null],
+        [null, null, null, null, null],
+        [], [],
+        [{ v: "SYSTEM STATUS: ✅ INSTITUTIONAL GRADE ENCRYPTED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `REGISTERED TO: ${BUYER_EMAIL} | ORDER ID: ${ORDER_ID}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }]
     ];
+
     const homeWs = utils.aoa_to_sheet(homeData);
-    homeWs['!cols'] = [35, 30, 10, 30].map(w => ({ wch: w }));
+    homeWs['!cols'] = [35, 5, 35, 5, 35].map(w => ({ wch: w }));
+    
     homeWs['!merges'] = [
-        { s: { r: 2, c: 0 }, e: { r: 2, c: 3 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 3 } },
-        { s: { r: 6, c: 0 }, e: { r: 6, c: 1 } }, { s: { r: 6, c: 3 }, e: { r: 6, c: 3 } },
-        { s: { r: 9, c: 0 }, e: { r: 9, c: 1 } }, { s: { r: 9, c: 3 }, e: { r: 9, c: 3 } },
-        { s: { r: 12, c: 0 }, e: { r: 12, c: 1 } }, { s: { r: 12, c: 3 }, e: { r: 12, c: 3 } },
-        { s: { r: 15, c: 0 }, e: { r: 15, c: 1 } }, { s: { r: 15, c: 3 }, e: { r: 15, c: 3 } },
-        { s: { r: 19, c: 0 }, e: { r: 19, c: 3 } }, { s: { r: 20, c: 0 }, e: { r: 20, c: 3 } }
+        { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
+        { s: { r: 19, c: 0 }, e: { r: 19, c: 4 } }, { s: { r: 20, c: 0 }, e: { r: 20, c: 4 } },
+        { s: { r: 6, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 8, c: 4 } },
+        { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
+        { s: { r: 14, c: 0 }, e: { r: 16, c: 0 } }, { s: { r: 14, c: 2 }, e: { r: 16, c: 2 } }, { s: { r: 14, c: 4 }, e: { r: 16, c: 4 } }
     ];
+    homeWs['!views'] = [{ showGridLines: false }];
     utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
 
     // --- 02. SETUP ---
@@ -284,8 +321,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const aData = [
         ["KEY", "VALUE", "STATUS"],
         ["BUYER_EMAIL", BUYER_EMAIL, "VALID"],
-        ["ORDER_ID", ORDER_ID, "ACTIVE"],
-        ["LICENSE_HASH", LICENSE_HASH, "ENCRYPTED"]
+        ["ORDER_ID", ORDER_ID, "ACTIVE"]
     ];
     const aWs = utils.aoa_to_sheet(aData);
     utils.book_append_sheet(wb, aWs, "_AUTH_CORE_");
