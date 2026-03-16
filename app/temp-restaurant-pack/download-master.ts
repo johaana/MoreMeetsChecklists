@@ -16,7 +16,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const wb = utils.book_new();
     
-    // --- COMMAND CENTER PALETTE ---
     const COLORS = {
         NAVY_BAR: "0A0F19",      
         PRIMARY_GREEN: "2EB86B", 
@@ -120,7 +119,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
 
-    // --- 02. SETUP (Multi-Branch Switchboard) ---
+    // --- 02. SETUP ---
     const facilityHeaders = [
         { v: "Branch Code", s: headerStyle }, { v: "Branch Name", s: headerStyle },
         { v: "Kitchen", s: headerStyle }, { v: "Bar", s: headerStyle }, { v: "Dining", s: headerStyle },
@@ -140,10 +139,10 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(setupWs);
     utils.book_append_sheet(wb, setupWs, "SETUP");
 
-    // --- 03. MISSION LEDGER (Action-First Flow) ---
+    // --- 03. MISSION LEDGER ---
     const missionHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, { v: "ID", s: headerStyle },
-        { v: "Requirement Description (Live Link)", s: headerStyle },
+        { v: "Requirement Description", s: headerStyle },
         { v: "Actioned By", s: headerStyle }, { v: "Time Done", s: headerStyle },
         { v: "Sign-Off Req?", s: headerStyle }, { v: "Manager Sign-Off", s: headerStyle },
         { v: "Consequence of Failure", s: intelStyle }, { v: "Trainer Notes", s: intelStyle }
@@ -183,7 +182,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     mWs['!autofilter'] = { ref: "A4:J10000" };
     utils.book_append_sheet(wb, mWs, "MISSION_LEDGER");
 
-    // --- 04. DASHBOARD (Executive Brain) ---
+    // --- 04. DASHBOARD ---
     const dashData = [
         [], [{ v: "EXECUTIVE GOVERNANCE DASHBOARD", s: { font: { sz: 20, bold: true } } }], [],
         [{ v: "Metric", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Risk Threshold", s: headerStyle }],
@@ -196,7 +195,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(dWs);
     utils.book_append_sheet(wb, dWs, "DASHBOARD");
 
-    // --- 05. HANDOVER (AM/PM Bridge) ---
+    // --- 05. HANDOVER ---
     const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Critical Issues Handed Over", s:headerStyle}, {v:"Outstanding Tasks", s:headerStyle}, {v:"MGR Verify", s:headerStyle}];
     const hData = [[], [{v:"SHIFT HANDOVER BRIDGE: AM TO PM ACCOUNTABILITY", s:{font:{sz:18, bold:true}}}], [], hHeaders];
     const hWs = utils.aoa_to_sheet(hData);
@@ -204,7 +203,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(hWs);
     utils.book_append_sheet(wb, hWs, "HANDOVER");
 
-    // --- 06. INCIDENT LOG (Forensic) ---
+    // --- 06. INCIDENT LOG ---
     const iHeaders = [
         {v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, 
         {v:"Type (Theft/Safety/Food)", s:headerStyle}, {v:"Forensic Description", s:headerStyle}, 
@@ -216,7 +215,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(iWs);
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
-    // --- 07. PERSONNEL (Forensic) ---
+    // --- 07. PERSONNEL ---
     const pHeaders = [
         {v:"Staff ID", s:headerStyle}, {v:"Full Name", s:headerStyle}, {v:"Primary Role", s:headerStyle}, 
         {v:"Assigned Branch", s:headerStyle}, {v:"Phone", s:headerStyle}, {v:"Email", s:headerStyle}, 
@@ -240,9 +239,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(rWs);
     utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
 
-    // --- 09. MASTER PROTOCOL (Full Technical Load) ---
+    // --- 09. MASTER PROTOCOL ---
     const mpHeaders = [{v:"Task ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement Description", s:headerStyle}, {v:"Consequence of Failure", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}];
-    const mpData: any[][] = [[], [{ v: "MASTER PROTOCOL DATABASE: 155+ TECHNICAL SOPs", s: { font: { sz: 16, bold: true } } }], [], mpHeaders];
+    const mpData: any[][] = [[], [{ v: "MASTER PROTOCOL DATABASE: 165+ TECHNICAL SOPs", s: { font: { sz: 16, bold: true } } }], [], mpHeaders];
     item.checklists.forEach(c => {
         c.tasks.forEach(t => {
             mpData.push([
@@ -258,7 +257,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(mpWs);
     utils.book_append_sheet(wb, mpWs, "MASTER_PROTOCOL");
 
-    // Apply Borders to Active Data Ranges across all sheets
+    // Apply Borders to Active Data Ranges
     wb.SheetNames.forEach(name => {
         const ws = wb.Sheets[name];
         const range = utils.decode_range(ws['!ref'] || 'A1');
@@ -272,3 +271,5 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     writeFile(wb, `${item.title.replace(/ /g, '_')}_V4.2_ENTERPRISE.xlsx`);
 }
+
+    
