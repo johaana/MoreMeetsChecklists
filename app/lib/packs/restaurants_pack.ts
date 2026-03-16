@@ -5,7 +5,7 @@ export const restaurants: PremiumPack = {
     id: 'restaurants',
     title: "Restaurant Operations Control System (ROCS)",
     category: "Hospitality",
-    description: "The definitive governance framework for 5-star restaurant reliability. Includes 175+ technical SOPs, Shift Handovers, and ROI tracking.",
+    description: "The definitive governance framework for 5-star restaurant reliability. Includes 180+ technical SOPs, Shift Handovers, and ROI tracking.",
     heroHeadline: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE",
     heroSubheadline: "Built for COOs and Owners who take zero-risk governance and P&L protection seriously.",
     pricingUrgency: "One health department closure or a single 'never event' costs 100x more than this entire system.",
@@ -27,7 +27,7 @@ export const restaurants: PremiumPack = {
         { text: "<strong>Ensure</strong> continuity with a Shift Handover Bridge between Morning and Night teams.", icon: "history" },
         { text: "<strong>Facility Switchboard</strong>: Toggle Bar, Garden, Valet, and Pool modules ON/OFF per branch.", icon: "layout-grid" },
         { text: "<strong>Harden</strong> compliance with high-risk Verification layers for managers and chefs.", icon: "shield-check" },
-        { text: "<strong>Standardize</strong> training with 175+ technical SOPs and expert Trainer's Notes.", icon: "graduation-cap" }
+        { text: "<strong>Standardize</strong> training with 180+ technical SOPs and expert Trainer's Notes.", icon: "graduation-cap" }
     ],
     checklists: [
         {
@@ -300,7 +300,7 @@ export const restaurants: PremiumPack = {
             tasks: [
                 { id: "GAR-01", description: "Outdoor Pest Boundary Treatment Log.", priority: "High", riskLevel: "High", consequence: "Guest bites/Infestation.", proof: "Vendor Log", trainerNotes: "Focus on standing water." },
                 { id: "GAR-02", description: "Weatherproofing & Umbrella Anchor Audit.", priority: "High", riskLevel: "High", consequence: "Wind-related injury.", proof: "Visual Check", trainerNotes: "Check weights on base." },
-                { id: "GAR-03", description: "Stone/Pathway Trip Hazard Walkthrough.", priority: "High", riskLevel: "High", consequence: "Slip & Fall lawsuit.", proof: "Visual Audit", trainerNotes: "Check loose pavers." },
+                { id: "GAR-03", description: "Stone/Pathway Trip hazard Walkthrough.", priority: "High", riskLevel: "High", consequence: "Slip & Fall lawsuit.", proof: "Visual Audit", trainerNotes: "Check loose pavers." },
                 { id: "GAR-04", description: "Outdoor Lighting & Dimmer Functional Test.", priority: "Medium", riskLevel: "Low", consequence: "Atmosphere fail.", proof: "Visual Check", trainerNotes: "Check after sunset." },
                 { id: "GAR-05", description: "Plant Health & Irrigation Audit.", priority: "Low", riskLevel: "Low", consequence: "Poor visual ambiance.", proof: "Visual Check", trainerNotes: "Remove dead leaves." },
                 { id: "GAR-06", description: "Check for beehives/wasp nests.", priority: "High", riskLevel: "High", consequence: "Sting injuries to guests.", proof: "Visual Walkthrough", trainerNotes: "Remove safely via vendor." },
