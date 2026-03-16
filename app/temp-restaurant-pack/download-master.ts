@@ -170,12 +170,12 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, { v: "ID", s: headerStyle },
         { v: "Requirement Description (Relational)", s: headerStyle }, 
         { v: "Actioned By", s: headerStyle }, { v: "Time Done", s: headerStyle }, 
-        { v: "Sign-Off Req?", s: headerStyle }, { v: "Manager Sign-Off", s: headerStyle }, 
+        { v: "Sign-Off Req?", s: headerStyle }, { v: "Manager Sign-Off", s: headerStyle },
+        { v: "Frequency", s: intelStyle }, { v: "Risk Level", s: intelStyle },
         { v: "Consequence of Failure", s: intelStyle }, { v: "Trainer Notes", s: intelStyle }
     ];
     const mData: any[][] = [[], [{ v: "MISSION LEDGER: 365-DAY EXECUTION TRAIL", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
     
-    // Generate sample 7-day week
     const startDate = new Date();
     for (let i = 0; i < 7; i++) {
         const d = new Date(startDate); d.setDate(startDate.getDate() + i);
@@ -195,6 +195,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                         { v: "", s: inputStyle }, { v: "", s: inputStyle },
                         { v: isHighRisk ? "MGR SIGN" : "NONE", s: { ...dataStyleCenter, font: { bold: isHighRisk, color: { rgb: isHighRisk ? COLORS.RISK_RED : COLORS.TEXT_MUTED } } } },
                         { v: "", s: inputStyle },
+                        { t: 'f', f: `VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 6, FALSE)`, s: intelStyle },
+                        { t: 'f', f: `VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 7, FALSE)`, s: intelStyle },
                         { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 4, FALSE))`, s: intelStyle },
                         { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 5, FALSE))`, s: intelStyle }
                     ]);
@@ -203,17 +205,17 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         });
     }
     const mWs = utils.aoa_to_sheet(mData);
-    mWs['!cols'] = [15, 25, 10, 60, 25, 12, 15, 20, 45, 50].map(w => ({ wch: w }));
+    mWs['!cols'] = [15, 25, 10, 60, 25, 12, 15, 20, 15, 15, 45, 50].map(w => ({ wch: w }));
     addSoftwareHeader(mWs);
-    mWs['!autofilter'] = { ref: `A4:J${mData.length}` };
+    mWs['!autofilter'] = { ref: `A4:L${mData.length}` };
     utils.book_append_sheet(wb, mWs, "MISSION_LEDGER");
 
     // --- 04. DASHBOARD ---
     const dashData = [
         [], [{ v: "EXECUTIVE SCORECARD: LIVE COMPLIANCE", s: { font: { sz: 20, bold: true } } }], [],
         [{ v: "Governance Metric", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Forensic Threshold", s: headerStyle }],
-        [{ v: "Group Compliance Achievement %", s: dataStyleLeft }, { t:'f', f:`IF('_AUTH_CORE_'!C5<>"PASS", "LICENSE ERROR", TEXT(COUNTIF('MISSION_LEDGER'!E:E,"<>N/A*")/COUNTA('MISSION_LEDGER'!E:E), "0%"))`, s: { ...dataStyleCenter, font: { bold: true } } }, { v: "95% MIN", s: dataStyleCenter }],
-        [{ v: "Identified Operational Deviations", s: dataStyleLeft }, { t:'f', f:`COUNTIF('MISSION_LEDGER'!J:J, "<>")`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
+        [{ v: "Group Compliance Achievement %", s: dataStyleLeft }, { t:'f', f:`COUNTIF('MISSION_LEDGER'!E:E,"<>N/A*")/MAX(1, COUNTIF('MISSION_LEDGER'!E:E,"<>N/A*"))`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
+        [{ v: "Identified Operational Deviations", s: dataStyleLeft }, { t:'f', f:`COUNTIF('MISSION_LEDGER'!L:L, "<>")`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
     ];
     const dWs = utils.aoa_to_sheet(dashData);
     dWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
@@ -233,10 +235,10 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
 
     // --- 06. INCIDENT LOG ---
-    const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Risk Type", s:headerStyle}, {v:"Forensic Description", s:headerStyle}, {v:"Est. Loss (₹)", s:headerStyle}, {v:"Resolution", s:headerStyle}];
+    const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Category (Theft/Maint/Safety)", s:headerStyle}, {v:"Forensic Description", s:headerStyle}, {v:"Est. Loss (₹)", s:headerStyle}, {v:"Resolution", s:headerStyle}];
     const iData = [[], [{v:"INCIDENT & LIABILITY REGISTRY", s:{font:{sz:18, bold:true}}}], [], iHeaders];
     const iWs = utils.aoa_to_sheet(iData);
-    iWs['!cols'] = [15, 12, 25, 20, 60, 20, 25].map(w => ({ wch: w }));
+    iWs['!cols'] = [15, 12, 25, 25, 60, 20, 25].map(w => ({ wch: w }));
     addSoftwareHeader(iWs);
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
@@ -276,7 +278,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(mpWs);
     utils.book_append_sheet(wb, mpWs, "MASTER_PROTOCOL");
 
-    // --- 10. AUTH CORE (HIDDEN & LAST) ---
+    // --- 10. AUTH CORE (HIDDEN) ---
     const aData = [
         ["KEY", "VALUE", "STATUS"],
         ["BUYER_EMAIL", BUYER_EMAIL, "VALID"],
@@ -285,39 +287,23 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ["INTEGRITY", "", "PASS"]
     ];
     const aWs = utils.aoa_to_sheet(aData);
-    aWs['!hidden'] = 1;
     utils.book_append_sheet(wb, aWs, "_AUTH_CORE_");
-
-    // Re-order sheets explicitly to ensure HOME_CONSOLE is first
-    const desiredOrder = [
-        "HOME_CONSOLE",
-        "MISSION_LEDGER",
-        "SETUP",
-        "DASHBOARD",
-        "ROI_ENGINE",
-        "INCIDENT_LOG",
-        "HANDOVER",
-        "PERSONNEL",
-        "MASTER_PROTOCOL",
-        "_AUTH_CORE_"
-    ];
-    wb.SheetNames = desiredOrder.filter(name => wb.SheetNames.includes(name));
-
-    // Final Styling Sweep (Data range only)
-    wb.SheetNames.forEach(name => {
-        const ws = wb.Sheets[name];
-        if (name === "_AUTH_CORE_") return;
-        const range = utils.decode_range(ws['!ref'] || 'A1');
-        for (let R = 4; R <= range.e.r; ++R) { // Start from data area
-            for (let C = 0; C <= range.e.c; ++C) {
-                const cell = ws[utils.encode_cell({ r: R, c: C })];
-                if (cell) {
-                    if (!cell.s) cell.s = {};
-                    cell.s.border = borderStyle;
-                }
-            }
-        }
-    });
+    
+    // EXPLICIT HIDING IN WORKBOOK PROPERTIES
+    wb.Workbook = {
+        Sheets: [
+            { name: "HOME_CONSOLE", Hidden: 0 },
+            { name: "SETUP", Hidden: 0 },
+            { name: "MISSION_LEDGER", Hidden: 0 },
+            { name: "DASHBOARD", Hidden: 0 },
+            { name: "ROI_ENGINE", Hidden: 0 },
+            { name: "INCIDENT_LOG", Hidden: 0 },
+            { name: "HANDOVER", Hidden: 0 },
+            { name: "PERSONNEL", Hidden: 0 },
+            { name: "MASTER_PROTOCOL", Hidden: 0 },
+            { name: "_AUTH_CORE_", Hidden: 1 }
+        ]
+    };
 
     writeFile(wb, `MOREMEETS_RESTAURANT_OPERATIONAL_CONSOLE_v4.2.xlsx`);
 }
