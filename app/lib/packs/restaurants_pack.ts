@@ -6,7 +6,7 @@ export const restaurants: PremiumPack = {
     title: "Restaurant Operations Control System (ROCS)",
     category: "Hospitality",
     description: "The definitive governance framework for 5-star restaurant reliability. Includes 175+ technical SOPs, Shift Handovers, and ROI tracking.",
-    heroHeadline: "Stop operational leakage and viral food-safety scandals.",
+    heroHeadline: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE",
     heroSubheadline: "Built for COOs and Owners who take zero-risk governance and P&L protection seriously.",
     pricingUrgency: "One health department closure or a single 'never event' costs 100x more than this entire system.",
     consultingAnchor: 5000,
@@ -52,7 +52,12 @@ export const restaurants: PremiumPack = {
                 { id: "KO-12", description: "Verify pest control bait station placement.", priority: "High", riskLevel: "High", consequence: "Infestation risks.", proof: "Pest Log", trainerNotes: "Do not move stations." },
                 { id: "KO-13", description: "Check water filter pressure for ice machine.", priority: "Medium", riskLevel: "Low", consequence: "Poor ice quality.", proof: "Pressure Gauge", trainerNotes: "Filter change req every 6 months." },
                 { id: "KO-14", description: "Inspect grease trap for capacity/odors.", priority: "Medium", riskLevel: "Medium", consequence: "Drainage blockages.", proof: "Maintenance Log", trainerNotes: "Schedule pump out if >75% full." },
-                { id: "KO-15", description: "Check oven gaskets for heat leaks.", priority: "Medium", riskLevel: "Low", consequence: "Energy waste/Uneven cooking.", proof: "Visual Check", trainerNotes: "Seals must be supple and intact." }
+                { id: "KO-15", description: "Check oven gaskets for heat leaks.", priority: "Medium", riskLevel: "Low", consequence: "Energy waste/Uneven cooking.", proof: "Visual Check", trainerNotes: "Seals must be supple and intact." },
+                { id: "KO-16", description: "Verify raw protein date labeling.", priority: "High", riskLevel: "High", consequence: "Expired food service.", proof: "Date Stamp", trainerNotes: "Discard anything past 48h prep." },
+                { id: "KO-17", description: "Audit knife magnet for count integrity.", priority: "Medium", riskLevel: "Low", consequence: "Weapon/Safety risk.", proof: "Visual Count", trainerNotes: "Check at shift start and end." },
+                { id: "KO-18", description: "Inspect ceiling for leaks/mold.", priority: "High", riskLevel: "High", consequence: "Contamination from infrastructure.", proof: "Visual Check", trainerNotes: "Report any damp spots immediately." },
+                { id: "KO-19", description: "Verify staff handwashing station temp (Min 38°C).", priority: "High", riskLevel: "Medium", consequence: "Poor hand hygiene.", proof: "Temp Log", trainerNotes: "Must have hot water for effective cleaning." },
+                { id: "KO-20", description: "Check vegetable wash chemical ppm.", priority: "High", riskLevel: "High", consequence: "Chemical poisoning or bacteria.", proof: "Test Strip", trainerNotes: "Maintain between 50-100 ppm." }
             ]
         },
         {
@@ -72,7 +77,17 @@ export const restaurants: PremiumPack = {
                 { id: "KC-07", description: "Check all pilot lights are extinguished.", priority: "High", riskLevel: "High", consequence: "Gas buildup.", proof: "Visual Check", trainerNotes: "Blow out manually if needed." },
                 { id: "KC-08", description: "Sanitize meat slicer and disassemble.", priority: "High", riskLevel: "High", consequence: "Listeria growth.", proof: "Visual Audit", trainerNotes: "Blades require specialized care." },
                 { id: "KC-09", description: "Secure all knife magnets and sharpen.", priority: "Medium", riskLevel: "Low", consequence: "Theft or dull-blade injury.", proof: "Visual Check", trainerNotes: "Check count against board." },
-                { id: "KC-10", description: "Final walk-in door seal verification.", priority: "High", riskLevel: "Medium", consequence: "Overnight stock spoilage.", proof: "Temp Log", trainerNotes: "Listen for the 'hiss' of the seal." }
+                { id: "KC-10", description: "Final walk-in door seal verification.", priority: "High", riskLevel: "Medium", consequence: "Overnight stock spoilage.", proof: "Temp Log", trainerNotes: "Listen for the 'hiss' of the seal." },
+                { id: "KC-11", description: "Discard all open dairy past expiry.", priority: "High", riskLevel: "High", consequence: "Spoilage.", proof: "Discard Log", trainerNotes: "Do not risk 'one more day'." },
+                { id: "KC-12", description: "Turn off all hood lights and fans.", priority: "Low", riskLevel: "Low", consequence: "Energy waste.", proof: "Visual Check", trainerNotes: "Saves ₹500/night in utility." },
+                { id: "KC-13", description: "Wipe down all door handles with 70% alcohol.", priority: "Medium", riskLevel: "Medium", consequence: "Virus transmission.", proof: "Cleaning Log", trainerNotes: "Focus on walk-in and entrance." },
+                { id: "KC-14", description: "Mop floors with degreaser.", priority: "Medium", riskLevel: "High", consequence: "Slip hazard for morning crew.", proof: "Visual Audit", trainerNotes: "Use hot water for grease." },
+                { id: "KC-15", description: "Secure all prep fridge lids.", priority: "Medium", riskLevel: "Low", consequence: "Dehydration of ingredients.", proof: "Visual Check", trainerNotes: "Preserves prep quality." },
+                { id: "KC-16", description: "Check dishwasher for food debris.", priority: "Medium", riskLevel: "Medium", consequence: "Drainage failure.", proof: "Visual Check", trainerNotes: "Clean the filter tray daily." },
+                { id: "KC-17", description: "Verify all staff have clocked out.", priority: "High", riskLevel: "Low", consequence: "Payroll inaccuracies.", proof: "Shift Report", trainerNotes: "Do not allow 'ghost' hours." },
+                { id: "KC-18", description: "Empty and dry bain-marie wells.", priority: "Medium", riskLevel: "Medium", consequence: "Bacteria breeding.", proof: "Visual Check", trainerNotes: "Leave wells dry overnight." },
+                { id: "KC-19", description: "Lock dry store and wine cellar.", priority: "High", riskLevel: "High", consequence: "Internal theft.", proof: "Key Registry", trainerNotes: "Double-check the padlock." },
+                { id: "KC-20", description: "Review morning prep list for next day.", priority: "High", riskLevel: "Medium", consequence: "Morning chaos/Service lag.", proof: "Prep Sheet", trainerNotes: "Focus on thaw-items." }
             ]
         },
         {
@@ -87,7 +102,17 @@ export const restaurants: PremiumPack = {
                 { id: "BO-02", description: "Reconcile spirit inventory against previous closing.", priority: "High", riskLevel: "Medium", consequence: "Internal theft/leakage.", proof: "Stock Sheet", trainerNotes: "Check seals on rare malts." },
                 { id: "BO-03", description: "Date-code all fresh fruit garnishes.", priority: "Medium", riskLevel: "Medium", consequence: "Food poisoning risk.", proof: "Date Tags", trainerNotes: "Discard after 24 hours." },
                 { id: "BO-04", description: "Check draft beer line pressure (12-14 PSI).", priority: "High", riskLevel: "Medium", consequence: "Waste/Poor pour.", proof: "Pressure Log", trainerNotes: "Check gas tank level." },
-                { id: "BO-05", description: "Sanitize all jiggers and speed pours.", priority: "High", riskLevel: "Medium", consequence: "Cross-contamination.", proof: "Visual Check", trainerNotes: "Soak in hot sanitizer." }
+                { id: "BO-05", description: "Sanitize all jiggers and speed pours.", priority: "High", riskLevel: "Medium", consequence: "Cross-contamination.", proof: "Visual Check", trainerNotes: "Soak in hot sanitizer." },
+                { id: "BO-06", description: "Verify coffee machine group head pressure.", priority: "Medium", riskLevel: "Low", consequence: "Poor extraction quality.", proof: "Gauge Check", trainerNotes: "Must hit 9 bars during pull." },
+                { id: "BO-07", description: "Check inventory of tonic/soda mixers.", priority: "Low", riskLevel: "Low", consequence: "Lost sales on cocktails.", proof: "Stock Sheet", trainerNotes: "Maintain par level of 2 cases." },
+                { id: "BO-08", description: "Inspect glassware for chips or cracks.", priority: "High", riskLevel: "High", consequence: "Guest mouth injury.", proof: "Visual Audit", trainerNotes: "Discard chipped glass immediately." },
+                { id: "BO-09", description: "Verify functionality of bar POS printer.", priority: "High", riskLevel: "Low", consequence: "Service lag.", proof: "Test Print", trainerNotes: "Ensure spare rolls are on hand." },
+                { id: "BO-10", description: "Check wine chiller temp (Red: 14°C, White: 7°C).", priority: "Medium", riskLevel: "Low", consequence: "Spoiled wine inventory.", proof: "Temp Log", trainerNotes: "High-value loss risk." },
+                { id: "BO-11", description: "Sanitize bar counter and stools.", priority: "Medium", riskLevel: "Low", consequence: "Poor guest first impression.", proof: "Visual Check", trainerNotes: "Use streak-free cleaner." },
+                { id: "BO-12", description: "Test cocktail station refrigeration.", priority: "High", riskLevel: "Medium", consequence: "Warm fruit/Dairy spoilage.", proof: "Temp Log", trainerNotes: "Check after pre-chill cycle." },
+                { id: "BO-13", description: "Verify availability of tamper-proof seals.", priority: "High", riskLevel: "High", consequence: "Legal liability on spirits.", proof: "Stock Check", trainerNotes: "Used for high-value malts." },
+                { id: "BO-14", description: "Check floor mat placement at bar wells.", priority: "Medium", riskLevel: "High", consequence: "Staff slip & fall.", proof: "Visual Check", trainerNotes: "Mats must be flush to ground." },
+                { id: "BO-15", description: "Brief team on 'Drink of the Month' specs.", priority: "Low", riskLevel: "Low", consequence: "Inconsistent flavor.", proof: "Briefing Log", trainerNotes: "Run a sample tasting." }
             ]
         },
         {
@@ -100,7 +125,19 @@ export const restaurants: PremiumPack = {
             tasks: [
                 { id: "BC-01", description: "Perform blind-count of high-value malts.", priority: "High", riskLevel: "High", consequence: "Inventory theft.", proof: "Stock Sheet", trainerNotes: "Manager to verify deviations >2%." },
                 { id: "BC-02", description: "Deep-clean and sanitize all bar wells and drains.", priority: "Medium", riskLevel: "Medium", consequence: "Fruit fly infestation.", proof: "Visual Audit", trainerNotes: "Drains require boiling water." },
-                { id: "BC-03", description: "Lock spirit cages and secure key in safe.", priority: "High", riskLevel: "High", consequence: "Unauthorised access/Theft.", proof: "Visual Check", trainerNotes: "Double-lock the premium shelf." }
+                { id: "BC-03", description: "Lock spirit cages and secure key in safe.", priority: "High", riskLevel: "High", consequence: "Unauthorised access/Theft.", proof: "Visual Check", trainerNotes: "Double-lock the premium shelf." },
+                { id: "BC-04", description: "Disconnect beer line couplers (if per SOP).", priority: "Low", riskLevel: "Low", consequence: "Line spoilage.", proof: "Visual Check", trainerNotes: "Prevents overnight gas leaks." },
+                { id: "BC-05", description: "Wash and dry all shaker tins and tools.", priority: "Medium", riskLevel: "Low", consequence: "Rust/Bacteria buildup.", proof: "Visual Audit", trainerNotes: "Store inverted on clean mats." },
+                { id: "BC-06", description: "Empty all bar waste and sanitize bins.", priority: "Low", riskLevel: "Low", consequence: "Odor buildup.", proof: "Visual Check", trainerNotes: "Crucial for morning opening." },
+                { id: "BC-07", description: "Check under-counter fridge door seals.", priority: "Medium", riskLevel: "Medium", consequence: "Overnight spoilage.", proof: "Visual Check", trainerNotes: "Check for cracks in rubber." },
+                { id: "BC-08", description: "Verify all open wines are vacuum sealed.", priority: "Medium", riskLevel: "Low", consequence: "Oxidation/Revenue loss.", proof: "Visual Check", trainerNotes: "Preserves for 48 hours max." },
+                { id: "BC-09", description: "Clean coffee machine backflush.", priority: "High", riskLevel: "Low", consequence: "Bitter coffee service.", proof: "Maintenance Log", trainerNotes: "Use specialized cleaning tabs." },
+                { id: "BC-10", description: "Reconcile POS cash vs reports.", priority: "High", riskLevel: "High", consequence: "Financial fraud.", proof: "Cash Report", trainerNotes: "Report any variance > ₹100." },
+                { id: "BC-11", description: "Lock bar entrance and secure gate.", priority: "High", riskLevel: "High", consequence: "Vandalism/Theft.", proof: "Visual Check", trainerNotes: "Manager to verify lockdown." },
+                { id: "BC-12", description: "Clean soda gun holsters.", priority: "Medium", riskLevel: "Medium", consequence: "Fruit fly breeding.", proof: "Visual Check", trainerNotes: "Holsters must be empty and dry." },
+                { id: "BC-13", description: "Record total wastage for shift.", priority: "High", riskLevel: "Medium", consequence: "P&L inaccuracy.", proof: "Waste Sheet", trainerNotes: "Include broken glass/spills." },
+                { id: "BC-14", description: "Turn off bar music and dimmers.", priority: "Low", riskLevel: "Low", consequence: "Energy waste.", proof: "Visual Check", trainerNotes: "Shutdown procedure." },
+                { id: "BC-15", description: "Hand over keys to Duty Manager.", priority: "High", riskLevel: "High", consequence: "Security breach.", proof: "Key Registry", trainerNotes: "Do not take keys home." }
             ]
         },
         {
@@ -115,7 +152,22 @@ export const restaurants: PremiumPack = {
                 { id: "FOH-02", description: "Restroom 10-Point Audit (Paper, Scent, Water).", priority: "High", riskLevel: "Medium", consequence: "Low Google/NPS scores.", proof: "Restroom Log", trainerNotes: "Mirror must be streak-free." },
                 { id: "FOH-03", description: "Verify Menu & Table Talker pricing accuracy.", priority: "High", riskLevel: "Medium", consequence: "Legal billing disputes.", proof: "Menu Audit", trainerNotes: "Remove stained menus." },
                 { id: "FOH-04", description: "Check ambient lighting/Dimmer presets.", priority: "Medium", riskLevel: "Low", consequence: "Wrong ambiance.", proof: "Visual Check", trainerNotes: "Level 4 for dinner." },
-                { id: "FOH-05", description: "Test Playlist & Volume Levels.", priority: "Low", riskLevel: "Low", consequence: "Atmosphere mismatch.", proof: "Audio Audit", trainerNotes: "Background, not foreground." }
+                { id: "FOH-05", description: "Test Playlist & Volume Levels.", priority: "Low", riskLevel: "Low", consequence: "Atmosphere mismatch.", proof: "Audio Audit", trainerNotes: "Background, not foreground." },
+                { id: "FOH-06", description: "Inspect host stand for guest wait-list readiness.", priority: "Medium", riskLevel: "Low", consequence: "Service chaos at peak.", proof: "Visual Check", trainerNotes: "Table map must be updated." },
+                { id: "FOH-07", description: "Verify server uniform/grooming (Nails, Hair).", priority: "High", riskLevel: "Medium", consequence: "Brand dilution.", proof: "Staff Log", trainerNotes: "Appearance is part of service." },
+                { id: "FOH-08", description: "Check functionality of credit card machines.", priority: "High", riskLevel: "Low", consequence: "Delayed checkout/Lost sales.", proof: "Test Charge", trainerNotes: "Charge batteries overnight." },
+                { id: "FOH-09", description: "Inspect high-chairs for safety/cleanliness.", priority: "High", riskLevel: "High", consequence: "Infant injury/Infection.", proof: "Visual Audit", trainerNotes: "Must be sanitized after every use." },
+                { id: "FOH-10", description: "Verify water TDS levels for guest service.", priority: "High", riskLevel: "High", consequence: "Health safety risk.", proof: "TDS Meter", trainerNotes: "Maintain below 100 TDS." },
+                { id: "FOH-11", description: "Audit server product knowledge (Specials).", priority: "Medium", riskLevel: "Low", consequence: "Poor guest experience.", proof: "Briefing Quiz", trainerNotes: "Randomly ask for ingredients." },
+                { id: "FOH-12", description: "Check for any burnt-out light bulbs.", priority: "Low", riskLevel: "Low", consequence: "Poor ambiance.", proof: "Visual Check", trainerNotes: "Replace before 6 PM." },
+                { id: "FOH-13", description: "Verify AC temperature (Goal: 22-24°C).", priority: "Medium", riskLevel: "Low", consequence: "Guest discomfort.", proof: "Thermometer", trainerNotes: "Adjust based on occupancy." },
+                { id: "FOH-14", description: "Inspect upholstery for stains/damage.", priority: "Medium", riskLevel: "Low", consequence: "Negative perception.", proof: "Visual Check", trainerNotes: "Report for steam cleaning." },
+                { id: "FOH-15", description: "Check salt/pepper shaker levels and cleanliness.", priority: "Low", riskLevel: "Low", consequence: "Service lag.", proof: "Visual Check", trainerNotes: "Wipe caps daily." },
+                { id: "FOH-16", description: "Audit cutlery for water spots/smudges.", priority: "Medium", riskLevel: "Low", consequence: "Poor hygiene perception.", proof: "Spot Check", trainerNotes: "Use hot water & lemon." },
+                { id: "FOH-17", description: "Verify fire extinguisher accessibility in FOH.", priority: "High", riskLevel: "High", consequence: "Life safety risk.", proof: "Visual Check", trainerNotes: "Must be unblocked." },
+                { id: "FOH-18", description: "Check emergency exit signage illumination.", priority: "High", riskLevel: "High", consequence: "Evacuation fail.", proof: "Visual Check", trainerNotes: "Must be visible in blackout." },
+                { id: "FOH-19", description: "Monitor speed of service (Target: 15m Apps).", priority: "High", riskLevel: "Medium", consequence: "Customer churn.", proof: "Service Log", trainerNotes: "Alert kitchen if lag > 5m." },
+                { id: "FOH-20", description: "Confirm manager password for voids is secure.", priority: "High", riskLevel: "High", consequence: "Internal theft.", proof: "Policy Audit", trainerNotes: "Never share passwords." }
             ]
         },
         {
@@ -130,7 +182,22 @@ export const restaurants: PremiumPack = {
                 { id: "EHS-02", description: "First Aid & AED Battery/Stock Audit.", priority: "High", riskLevel: "High", consequence: "Medical response failure.", proof: "Medical Log", trainerNotes: "Check expiry on pads." },
                 { id: "EHS-03", description: "Electrical Panel Hotspot/Odor Audit.", priority: "High", riskLevel: "High", consequence: "Structural fire.", proof: "Electrical Log", trainerNotes: "Use thermal gun." },
                 { id: "EHS-04", description: "Floor Slip-Resistance & Mat Audit.", priority: "High", riskLevel: "Medium", consequence: "Slip & Fall litigation.", proof: "Walkthrough", trainerNotes: "Check kitchen thresholds." },
-                { id: "EHS-05", description: "Emergency Lighting Backup Test.", priority: "High", riskLevel: "High", consequence: "Blackout panic.", proof: "Test Log", trainerNotes: "10-second hold test." }
+                { id: "EHS-05", description: "Emergency Lighting Backup Test.", priority: "High", riskLevel: "High", consequence: "Blackout panic.", proof: "Test Log", trainerNotes: "10-second hold test." },
+                { id: "EHS-06", description: "Kitchen Fire Suppression (Ansul) Audit.", priority: "High", riskLevel: "High", consequence: "Unstoppable grease fire.", proof: "Gage Check", trainerNotes: "Check pin and pressure." },
+                { id: "EHS-07", description: "CO2 Gas Storage & Leak Audit (Bar).", priority: "High", riskLevel: "High", consequence: "Asphyxiation risk.", proof: "Visual Check", trainerNotes: "Must be upright and chained." },
+                { id: "EHS-08", description: "Stairwell Treads & Handrail Audit.", priority: "High", riskLevel: "Medium", consequence: "Fall injuries.", proof: "Visual Check", trainerNotes: "Must be firm and non-slip." },
+                { id: "EHS-09", description: "Hazardous Chemical (MSDS) Registry.", priority: "Medium", riskLevel: "High", consequence: "Emergency treatment delay.", proof: "Document File", trainerNotes: "Must be accessible to all." },
+                { id: "EHS-10", description: "Electrical Cable Management Audit (Office).", priority: "Low", riskLevel: "Medium", consequence: "Fire hazard/Trip hazard.", proof: "Visual Check", trainerNotes: "Remove daisy-chained strips." },
+                { id: "EHS-11", description: "Kitchen Ventilation Belt/Motor Health.", priority: "Medium", riskLevel: "Medium", consequence: "Heat/Smoke buildup.", proof: "Maintenance Log", trainerNotes: "Listen for squealing sounds." },
+                { id: "EHS-12", description: "Pest Exclusion (Gaps/Holes) Audit.", priority: "High", riskLevel: "High", consequence: "Infestation/Compliance fail.", proof: "Structural Audit", trainerNotes: "Check pipe entry points." },
+                { id: "EHS-13", description: "Staff Lifting Technique Observation.", priority: "Medium", riskLevel: "Medium", consequence: "Back injuries.", proof: "Training Log", trainerNotes: "Correction provided on-site." },
+                { id: "EHS-14", description: "Roof Drain/Gutter Clearanc Check.", priority: "Low", riskLevel: "Low", consequence: "Leakage/Infrastructure damage.", proof: "Visual Check", trainerNotes: "Focus before monsoon/rain." },
+                { id: "EHS-15", description: "CCTV Camera Angle & Cleaning Audit.", priority: "High", riskLevel: "Medium", consequence: "Investigation failure.", proof: "Screen Check", trainerNotes: "Wipe lenses with microfibre." },
+                { id: "EHS-16", description: "Waste Compactor/Area Hygiene Check.", priority: "Medium", riskLevel: "Medium", consequence: "Pest attraction.", proof: "Visual Audit", trainerNotes: "Sanitize concrete pad weekly." },
+                { id: "EHS-17", description: "Staff Canteen/Locker Safety Walk.", priority: "Low", riskLevel: "Low", consequence: "Internal fire/Safety risk.", proof: "Walkthrough", trainerNotes: "No loose wiring in lockers." },
+                { id: "EHS-18", description: "Backup Generator Fuel & Oil Level.", priority: "High", riskLevel: "High", consequence: "Power fail service halt.", proof: "Gage Log", trainerNotes: "Maintain min 50% fuel." },
+                { id: "EHS-19", description: "Kitchen Sinks Drain Speed Check.", priority: "Low", riskLevel: "Low", consequence: "Backflow/Hygiene risk.", proof: "Visual Check", trainerNotes: "Use enzymatic cleaner weekly." },
+                { id: "EHS-20", description: "Manager Safety SOP Knowledge Test.", priority: "High", riskLevel: "High", consequence: "Leadership failure in crisis.", proof: "Oral Exam", trainerNotes: "Check 1-on-1 monthly." }
             ]
         },
         {
@@ -145,7 +212,17 @@ export const restaurants: PremiumPack = {
                 { id: "STAT-02", description: "Alcohol Excise Register Reconciliation.", priority: "High", riskLevel: "High", consequence: "Loss of bar license.", proof: "Register vs Stock", trainerNotes: "Zero error tolerance." },
                 { id: "STAT-03", description: "Weights & Measures (Scales) Calibration Audit.", priority: "High", riskLevel: "Medium", consequence: "Consumer court fines.", proof: "Calibration Cert", trainerNotes: "Use govt-approved labs." },
                 { id: "STAT-04", description: "Financial P&L Review vs Budget.", priority: "High", riskLevel: "Low", consequence: "Margin erosion.", proof: "P&L Analysis", trainerNotes: "Focus on COGS." },
-                { id: "STAT-05", description: "Labour Law / PF Compliance Audit.", priority: "High", riskLevel: "High", consequence: "Litigation risk.", proof: "Payroll Audit", trainerNotes: "Verify bank transfers." }
+                { id: "STAT-05", description: "Labour Law / PF Compliance Audit.", priority: "High", riskLevel: "High", consequence: "Litigation risk.", proof: "Payroll Audit", trainerNotes: "Verify bank transfers." },
+                { id: "STAT-06", description: "Fire NOC Renewal Status Check.", priority: "High", riskLevel: "High", consequence: "Operational closure/Insurance fail.", proof: "Certificate File", trainerNotes: "Review yearly requirements." },
+                { id: "STAT-07", description: "Pest Control Contract & Service Log Audit.", priority: "High", riskLevel: "High", consequence: "Health code violations.", proof: "Vendor Log", trainerNotes: "Match log dates to invoice." },
+                { id: "STAT-08", description: "Lift License & Safety Certificate.", priority: "High", riskLevel: "High", consequence: "Liability risk.", proof: "Valid Cert", trainerNotes: "Must be displayed in lift." },
+                { id: "STAT-09", description: "GST Filing Confirmation (Previous Month).", priority: "High", riskLevel: "Medium", consequence: "Legal penalties.", proof: "Filed Status", trainerNotes: "Confirm with CA/Finance." },
+                { id: "STAT-10", description: "Property Tax / Lease Payment Review.", priority: "Medium", riskLevel: "Low", consequence: "Eviction/Legal dispute.", proof: "Receipts", trainerNotes: "Verify bank clearance." },
+                { id: "STAT-11", description: "Music License (PPL/IPRS) Confirmation.", priority: "Medium", riskLevel: "Medium", consequence: "IP infringement lawsuits.", proof: "Certificates", trainerNotes: "Required for commercial audio." },
+                { id: "STAT-12", description: "Signage/Hoarding License Audit.", priority: "Low", riskLevel: "Low", consequence: "Municipal fines.", proof: "Permit Copy", trainerNotes: "Verify dimensions vs permit." },
+                { id: "STAT-13", description: "Water Quality Lab Report (Annual).", priority: "High", riskLevel: "High", consequence: "Health safety risk.", proof: "Lab Report", trainerNotes: "Test for E.coli/Total coliform." },
+                { id: "STAT-14", description: "Staff Medical Fitness Records Audit.", priority: "High", riskLevel: "Medium", consequence: "Compliance fail.", proof: "HR File Audit", trainerNotes: "FSSAI requirement for handlers." },
+                { id: "STAT-15", description: "Insurance Policy Expiry Check.", priority: "High", riskLevel: "High", consequence: "Financial ruin in disaster.", proof: "Policy File", trainerNotes: "Cover Public Liability & Fire." }
             ]
         },
         {
@@ -160,7 +237,17 @@ export const restaurants: PremiumPack = {
                 { id: "DEL-02", description: "Verify Tamper-Evident Seal Inventory.", priority: "High", riskLevel: "High", consequence: "Tampering risks.", proof: "Stock Sheet", trainerNotes: "Min 500 on hand." },
                 { id: "DEL-03", description: "Driver Grooming & Vehicle Cleanliness Check.", priority: "Medium", riskLevel: "Low", consequence: "Brand damage.", proof: "Driver Log", trainerNotes: "Helmets must be clean." },
                 { id: "DEL-04", description: "Order ID Handoff Procedure (3-Point Match).", priority: "High", riskLevel: "Medium", consequence: "Wrong orders/Financial loss.", proof: "Order Log", trainerNotes: "Receipt, Bag, System." },
-                { id: "DEL-05", description: "Packaging Heat-Retention Integrity Check.", priority: "Medium", riskLevel: "Low", consequence: "Cold food delivery.", proof: "Visual Check", trainerNotes: "Lids must be airtight." }
+                { id: "DEL-05", description: "Packaging Heat-Retention Integrity Check.", priority: "Medium", riskLevel: "Low", consequence: "Cold food delivery.", proof: "Visual Check", trainerNotes: "Lids must be airtight." },
+                { id: "DEL-06", description: "Audit dispatch area surface sanitation.", priority: "Medium", riskLevel: "Low", consequence: "Bacterial cross-over.", proof: "Cleaning Log", trainerNotes: "Wipe every 60 mins." },
+                { id: "DEL-07", description: "Check availability of driver sanitizers.", priority: "Low", riskLevel: "Low", consequence: "Poor hygiene perception.", proof: "Visual Check", trainerNotes: "Mandatory for all 3PL drivers." },
+                { id: "DEL-08", description: "Verify route-optimization efficiency.", priority: "Low", riskLevel: "Low", consequence: "Late delivery/Cold food.", proof: "System Report", trainerNotes: "Target < 15m dispatch." },
+                { id: "DEL-09", description: "Track 3PL driver wait times.", priority: "Medium", riskLevel: "Low", consequence: "Aggregator penalties.", proof: "Wait Time Log", trainerNotes: "Target < 5m wait." },
+                { id: "DEL-10", description: "Inspect delivery vehicle branding/signage.", priority: "Low", riskLevel: "Low", consequence: "Poor brand visibility.", proof: "Photo Audit", trainerNotes: "Ensure logos are intact." },
+                { id: "DEL-11", description: "Review guest feedback on delivery packing.", priority: "High", riskLevel: "Low", consequence: "Leakage complaints.", proof: "Feedback Log", trainerNotes: "Double-wrap liquids." },
+                { id: "DEL-12", description: "Verify cold-chain items stay chilled in bag.", priority: "High", riskLevel: "High", consequence: "Spoilage of salads/desserts.", proof: "Temp Test", trainerNotes: "Use separate compartments." },
+                { id: "DEL-13", description: "Check driver safety gear (Gloves/Boots).", priority: "Medium", riskLevel: "High", consequence: "Accident liability.", proof: "Visual Check", trainerNotes: "No open-toe sandals." },
+                { id: "DEL-14", description: "Audit takeaway cutlery inclusion rate.", priority: "Low", riskLevel: "Low", consequence: "Guest frustration.", proof: "Spot Check", trainerNotes: "Crucial for office deliveries." },
+                { id: "DEL-15", description: "Reconcile aggregator tabs vs POS daily.", priority: "High", riskLevel: "High", consequence: "Unreconciled revenue loss.", proof: "Finance Report", trainerNotes: "Close batch by 11 PM." }
             ]
         },
         {
@@ -173,7 +260,14 @@ export const restaurants: PremiumPack = {
             tasks: [
                 { id: "PICK-01", description: "Counter Sanitization & Napkin/Cutlery Stock.", priority: "Medium", riskLevel: "Low", consequence: "Poor hygiene/Service lag.", proof: "Visual Check", trainerNotes: "Wipe every 30 mins." },
                 { id: "PICK-02", description: "Order Accuracy Double-Check at Counter.", priority: "High", riskLevel: "High", consequence: "Frustrated returns.", proof: "Tick List", trainerNotes: "Open bag for guest view." },
-                { id: "PICK-03", description: "Pickup Lane Clearance Walkthrough.", priority: "Medium", riskLevel: "Medium", consequence: "Traffic congestion.", proof: "Visual Check", trainerNotes: "Keep entrance clear." }
+                { id: "PICK-03", description: "Pickup Lane Clearance Walkthrough.", priority: "Medium", riskLevel: "Medium", consequence: "Traffic congestion.", proof: "Visual Check", trainerNotes: "Keep entrance clear." },
+                { id: "PICK-04", description: "Check availability of pre-printed bills.", priority: "Medium", riskLevel: "Low", consequence: "Checkout delay.", proof: "Visual Check", trainerNotes: "Avoid wait-times." },
+                { id: "PICK-05", description: "Verify packaging lid-tightness.", priority: "High", riskLevel: "Low", consequence: "Liquid spill in cars.", proof: "Physical Check", trainerNotes: "The 'Invert' test." },
+                { id: "PICK-06", description: "Audit guest wait area cleanliness.", priority: "Low", riskLevel: "Low", consequence: "Poor brand perception.", proof: "Visual Check", trainerNotes: "Check every 2 hours." },
+                { id: "PICK-07", description: "Check loyalty point enrolment procedure.", priority: "Low", riskLevel: "Low", consequence: "Lost marketing data.", proof: "System Entry", trainerNotes: "Ask every guest." },
+                { id: "PICK-08", description: "Test counter POS card tap functionality.", priority: "High", riskLevel: "Low", consequence: "Payment fail at pickup.", proof: "Test Charge", trainerNotes: "Check Wi-Fi signal strength." },
+                { id: "PICK-09", description: "Verify condiment stock (Ketchup/Salt).", priority: "Low", riskLevel: "Low", consequence: "Guest annoyance.", proof: "Visual Check", trainerNotes: "Maintain min 100 sachets." },
+                { id: "PICK-10", description: "Manager check of high-value takeaway orders.", priority: "High", riskLevel: "Medium", consequence: "Theft/Accuracy risk.", proof: "Sign-off", trainerNotes: "Verify orders > ₹5000." }
             ]
         },
         {
@@ -186,7 +280,14 @@ export const restaurants: PremiumPack = {
             tasks: [
                 { id: "VAL-01", description: "Log existing vehicle damage at intake.", priority: "High", riskLevel: "Medium", consequence: "Fraudulent repair claims.", proof: "Damage Card", trainerNotes: "Circle all dents on arrival." },
                 { id: "VAL-02", description: "Key Safe 2-Person Verification.", priority: "High", riskLevel: "High", consequence: "Vehicle theft.", proof: "Safe Log", trainerNotes: "Never leave keys on board." },
-                { id: "VAL-03", description: "CCTV Blindspot & Night-Lighting Check.", priority: "Medium", riskLevel: "Medium", consequence: "Unrecorded theft/vandalism.", proof: "Visual Audit", trainerNotes: "Check after 7 PM." }
+                { id: "VAL-03", description: "CCTV Blindspot & Night-Lighting Check.", priority: "Medium", riskLevel: "Medium", consequence: "Unrecorded theft/vandalism.", proof: "Visual Audit", trainerNotes: "Check after 7 PM." },
+                { id: "VAL-04", description: "Verify driver license validity.", priority: "High", riskLevel: "High", consequence: "Unlicensed driving liability.", proof: "License Audit", trainerNotes: "Check yearly renewals." },
+                { id: "VAL-05", description: "Check valet parking area surface safety.", priority: "Medium", riskLevel: "Medium", consequence: "Trip & Fall claims.", proof: "Visual Check", trainerNotes: "Fill potholes immediately." },
+                { id: "VAL-06", description: "Audit key retrieval time (Target: < 5m).", priority: "Medium", riskLevel: "Low", consequence: "Guest frustration.", proof: "Timing Log", trainerNotes: "Measure at peak closing." },
+                { id: "VAL-07", description: "Inspect valet uniform & flashlight stock.", priority: "Low", riskLevel: "Low", consequence: "Unprofessionalism.", proof: "Visual Check", trainerNotes: "Required for night ops." },
+                { id: "VAL-08", description: "Verify insurance validity for valet parking.", priority: "High", riskLevel: "High", consequence: "Total financial liability.", proof: "Policy File", trainerNotes: "Cover third-party damage." },
+                { id: "VAL-09", description: "Check parking permit area compliance.", priority: "High", riskLevel: "High", consequence: "Towing/Police fines.", proof: "Visual Check", trainerNotes: "Stay within markings." },
+                { id: "VAL-10", description: "Perform key safe inventory count.", priority: "High", riskLevel: "High", consequence: "Internal theft risk.", proof: "Count Sheet", trainerNotes: "Match keys to tags." }
             ]
         },
         {
@@ -199,7 +300,14 @@ export const restaurants: PremiumPack = {
             tasks: [
                 { id: "GAR-01", description: "Outdoor Pest Boundary Treatment Log.", priority: "High", riskLevel: "High", consequence: "Guest bites/Infestation.", proof: "Vendor Log", trainerNotes: "Focus on standing water." },
                 { id: "GAR-02", description: "Weatherproofing & Umbrella Anchor Audit.", priority: "High", riskLevel: "High", consequence: "Wind-related injury.", proof: "Visual Check", trainerNotes: "Check weights on base." },
-                { id: "GAR-03", description: "Stone/Pathway Trip Hazard Walkthrough.", priority: "High", riskLevel: "High", consequence: "Slip & Fall lawsuit.", proof: "Visual Audit", trainerNotes: "Check loose pavers." }
+                { id: "GAR-03", description: "Stone/Pathway Trip Hazard Walkthrough.", priority: "High", riskLevel: "High", consequence: "Slip & Fall lawsuit.", proof: "Visual Audit", trainerNotes: "Check loose pavers." },
+                { id: "GAR-04", description: "Outdoor Lighting & Dimmer Functional Test.", priority: "Medium", riskLevel: "Low", consequence: "Atmosphere fail.", proof: "Visual Check", trainerNotes: "Check after sunset." },
+                { id: "GAR-05", description: "Plant Health & Irrigation Audit.", priority: "Low", riskLevel: "Low", consequence: "Poor visual ambiance.", proof: "Visual Check", trainerNotes: "Remove dead leaves." },
+                { id: "GAR-06", description: "Check for beehives/wasp nests.", priority: "High", riskLevel: "High", consequence: "Sting injuries to guests.", proof: "Visual Walkthrough", trainerNotes: "Remove safely via vendor." },
+                { id: "GAR-07", description: "Verify outdoor AC/Misting system pressure.", priority: "Medium", riskLevel: "Low", consequence: "Guest heat discomfort.", proof: "Gauge Log", trainerNotes: "Clean nozzles weekly." },
+                { id: "GAR-08", description: "Inspect outdoor furniture for rust/splinters.", priority: "High", riskLevel: "Medium", consequence: "Customer injury.", proof: "Visual Check", trainerNotes: "Focus on chair edges." },
+                { id: "GAR-09", description: "Clean outdoor debris and dust.", priority: "Medium", riskLevel: "Low", consequence: "Negative perception.", proof: "Cleaning Log", trainerNotes: "Wipe tables every 30 mins." },
+                { id: "GAR-10", description: "Audit outdoor music volume levels.", priority: "Low", riskLevel: "Low", consequence: "Noise complaints.", proof: "Decibel Log", trainerNotes: "Comply with local norms." }
             ]
         },
         {
@@ -212,7 +320,9 @@ export const restaurants: PremiumPack = {
             tasks: [
                 { id: "SQ-01", description: "Staff Locker & Changing Room Deep Clean.", priority: "Medium", riskLevel: "Medium", consequence: "Internal infection spread.", proof: "Cleaning Log", trainerNotes: "Flush floor drains daily." },
                 { id: "SQ-02", description: "Uniform Laundry Sanitization Check.", priority: "Medium", riskLevel: "Low", consequence: "Staff cross-contamination.", proof: "Laundry Log", trainerNotes: "Wash temp must be >60°C." },
-                { id: "SQ-03", description: "Staff Drinking Water Filter Audit.", priority: "High", riskLevel: "High", consequence: "Mass staff illness.", proof: "TDS Reading", trainerNotes: "Filter change every 3 months." }
+                { id: "SQ-03", description: "Staff Drinking Water Filter Audit.", priority: "High", riskLevel: "High", consequence: "Mass staff illness.", proof: "TDS Reading", trainerNotes: "Filter change every 3 months." },
+                { id: "SQ-04", description: "Inspect staff toilets for hygiene.", priority: "High", riskLevel: "High", consequence: "Poor morale/Infection.", proof: "Cleaning Log", trainerNotes: "Must match FOH standards." },
+                { id: "SQ-05", description: "Verify staff meal hygiene & temp.", priority: "High", riskLevel: "High", consequence: "Team-wide food poisoning.", proof: "Temp Log", trainerNotes: "Serve above 65°C." }
             ]
         }
     ]

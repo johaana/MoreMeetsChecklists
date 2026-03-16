@@ -6,7 +6,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
  * ROCS v4.2 - THE TOTAL GOVERNANCE SUITE (Commercial Grade)
- * Relational Architecture: Master Protocol source pulling, Per-Branch Switchboard, Software Header UI.
+ * Features: Single Source relational logic, Per-Branch Switchboard, Software Header UI.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -76,7 +76,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     };
 
     const addSoftwareHeader = (ws: WorkSheet) => {
-        // Merged A1:C1 for Software Command Bar
         utils.sheet_add_aoa(ws, [[{ 
             v: "◀ BACK TO HOME CONSOLE", 
             l: { Target: "#'HOME_CONSOLE'!A1" }, 
@@ -85,6 +84,16 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         if (!ws['!merges']) ws['!merges'] = [];
         ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: 2 } }); 
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
+    };
+
+    const addProtectionFooter = (ws: WorkSheet, lastRow: number, numCols: number) => {
+        const row = lastRow + 2;
+        utils.sheet_add_aoa(ws, [[{ 
+            v: "LICENSE IDENTITY: MM-ORDER-7721-REST | REGISTERED TO: [PURCHASER_IDENTITY] | REDISTRIBUTION PROHIBITED", 
+            s: { font: { italic: true, sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } 
+        }]], { origin: { r: row, c: 0 } });
+        if (!ws['!merges']) ws['!merges'] = [];
+        ws['!merges'].push({ s: { r: row, c: 0 }, e: { r: row, c: numCols - 1 } });
     };
 
     // --- 01. HOME CONSOLE ---
@@ -138,15 +147,16 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const setupWs = utils.aoa_to_sheet(setupData);
     setupWs['!cols'] = [12, 35, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10].map(w => ({ wch: w }));
     addSoftwareHeader(setupWs);
+    addProtectionFooter(setupWs, setupData.length, 12);
     utils.book_append_sheet(wb, setupWs, "SETUP");
 
     // --- 03. MISSION LEDGER ---
     const missionHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, { v: "ID", s: headerStyle },
-        { v: "Requirement Description", s: headerStyle }, { v: "Actioned By", s: headerStyle }, 
-        { v: "Time Done", s: headerStyle }, { v: "Sign-Off Req?", s: headerStyle }, 
-        { v: "Manager Sign-Off", s: headerStyle }, { v: "Consequence of Failure", s: intelStyle }, 
-        { v: "Trainer Notes", s: intelStyle }
+        { v: "Section", s: headerStyle }, { v: "Requirement Description", s: headerStyle }, 
+        { v: "Actioned By", s: headerStyle }, { v: "Time Done", s: headerStyle }, 
+        { v: "Sign-Off Req?", s: headerStyle }, { v: "Manager Sign-Off", s: headerStyle }, 
+        { v: "Consequence of Failure", s: intelStyle }, { v: "Trainer Notes", s: intelStyle }
     ];
     const missionData: any[][] = [[], [{ v: "OPERATIONAL MISSION LEDGER: 365-DAY AUDIT TRAIL", s: { font: { sz: 16, bold: true } } }], [], missionHeaders];
     
@@ -165,6 +175,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                         { v: d, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
                         { t: 'f', f: `'SETUP'!$B$${bRow}`, s: dataStyleCenter },
                         { v: t.id, s: dataStyleCenter },
+                        { v: c.title, s: dataStyleCenter },
                         { t: 'f', f: `IF(${activeFormula}="NO", "N/A - MODULE DISABLED", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 3, FALSE))`, s: dataStyleLeft },
                         { v: "", s: inputStyle }, { v: "", s: inputStyle },
                         { v: isHighRisk ? "MGR SIGN" : "NONE", s: { ...dataStyleCenter, font: { bold: isHighRisk, color: { rgb: isHighRisk ? COLORS.RISK_RED : COLORS.TEXT_MUTED } } } },
@@ -178,25 +189,31 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         });
     }
     const mWs = utils.aoa_to_sheet(missionData);
-    mWs['!cols'] = [15, 25, 10, 60, 25, 12, 15, 20, 45, 50].map(w => ({ wch: w }));
+    mWs['!cols'] = [15, 25, 10, 20, 60, 25, 12, 15, 20, 45, 50].map(w => ({ wch: w }));
     addSoftwareHeader(mWs);
-    mWs['!autofilter'] = { ref: `A4:J${missionData.length}` };
+    mWs['!autofit'] = true;
+    mWs['!autofilter'] = { ref: `A4:K${missionData.length}` };
+    addProtectionFooter(mWs, missionData.length, 11);
     utils.book_append_sheet(wb, mWs, "MISSION_LEDGER");
 
     // --- 04. DASHBOARD ---
     const dashData = [
         [], [{ v: "EXECUTIVE GOVERNANCE DASHBOARD", s: { font: { sz: 20, bold: true } } }], [],
         [{ v: "Metric Scorecard", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Risk Threshold", s: headerStyle }],
-        [{ v: "Group Compliance Score %", s: dataStyleLeft }, { t:'f', f:`TEXT(COUNTIF('MISSION_LEDGER'!E:E,"<>")/COUNTA('MISSION_LEDGER'!D:D), "0%")`, s: { ...dataStyleCenter, font: { bold: true } } }, { v: "95% MIN", s: dataStyleCenter }],
-        [{ v: "Identified Deviations", s: dataStyleLeft }, { t:'f', f:`COUNTIF('MISSION_LEDGER'!J:J, "<>")`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
+        [{ v: "Group Compliance Score %", s: dataStyleLeft }, { t:'f', f:`TEXT(COUNTIF('MISSION_LEDGER'!F:F,"<>")/COUNTA('MISSION_LEDGER'!E:E), "0%")`, s: { ...dataStyleCenter, font: { bold: true } } }, { v: "95% MIN", s: dataStyleCenter }],
+        [{ v: "Identified Deviations", s: dataStyleLeft }, { t:'f', f:`COUNTIF('MISSION_LEDGER'!K:K, "<>")`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
     ];
     const dWs = utils.aoa_to_sheet(dashData);
     dWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
     addSoftwareHeader(dWs);
+    addProtectionFooter(dWs, dashData.length, 3);
     utils.book_append_sheet(wb, dWs, "DASHBOARD");
 
     // --- 05. HANDOVER ---
-    const hData = [[], [{v:"SHIFT HANDOVER BRIDGE", s:{font:{sz:18, bold:true}}}], [], [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Critical Handover Notes", s:headerStyle}, {v:"Outstanding Tasks", s:headerStyle}]];
+    const hData = [
+        [], [{v:"SHIFT HANDOVER BRIDGE", s:{font:{sz:18, bold:true}}}], [], 
+        [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Critical Handover Notes", s:headerStyle}, {v:"Outstanding Tasks", s:headerStyle}]
+    ];
     const hWs = utils.aoa_to_sheet(hData);
     hWs['!cols'] = [15, 25, 25, 50, 50].map(w => ({ wch: w }));
     addSoftwareHeader(hWs);
@@ -219,17 +236,30 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     utils.book_append_sheet(wb, pWs, "PERSONNEL");
 
     // --- 08. ROI ENGINE ---
-    const rData = [[], [{v:"PROFIT PROTECTION & ROI ENGINE", s:{font:{sz:18, bold:true}}}], [], [{v:"Risk Category", s:headerStyle}, {v:"Impact (₹)", s:headerStyle}, {v:"Projected Annual Risk (₹)", s:headerStyle}, {v:"Mitigation Status", s:headerStyle}]];
+    const rData = [
+        [], [{v:"PROFIT PROTECTION & ROI ENGINE", s:{font:{sz:18, bold:true}}}], [], 
+        [{v:"Risk Category", s:headerStyle}, {v:"Impact per Event (₹)", s:headerStyle}, {v:"Projected Annual Risk (₹)", s:headerStyle}, {v:"Mitigation Status", s:headerStyle}],
+        [{v:"Food Spoilage (Cold Chain)", s:dataStyleLeft}, {v:50000, s:inputStyle}, {v:600000, s:dataStyleCenter}, {v:"SECURED", s:dataStyleCenter}],
+        [{v:"Regulatory Fines (Health)", s:dataStyleLeft}, {v:200000, s:inputStyle}, {v:200000, s:dataStyleCenter}, {v:"SECURED", s:dataStyleCenter}]
+    ];
     const rWs = utils.aoa_to_sheet(rData);
     rWs['!cols'] = [40, 25, 30, 20].map(w => ({ wch: w }));
     addSoftwareHeader(rWs);
     utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
 
-    // --- 09. MASTER PROTOCOL ---
+    // --- 09. MASTER PROTOCOL (FINAL SHEET) ---
     const mpData: any[][] = [[], [{ v: "MASTER PROTOCOL DATABASE (EDIT ONCE)", s: { font: { sz: 16, bold: true } } }], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement", s:headerStyle}, {v:"Consequence", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}]];
     item.checklists.forEach(c => {
         c.tasks.forEach(t => {
-            mpData.push([{ v: t.id, s: dataStyleCenter }, { v: c.title, s: dataStyleCenter }, { v: t.description, s: dataStyleLeft }, { v: t.consequence, s: dataStyleLeft }, { v: t.trainerNotes || "-", s: dataStyleLeft }, { v: c.frequency, s: dataStyleCenter }, { v: t.priority, s: dataStyleCenter }]);
+            mpData.push([
+                { v: t.id, s: dataStyleCenter }, 
+                { v: c.title, s: dataStyleCenter }, 
+                { v: t.description, s: dataStyleLeft }, 
+                { v: t.consequence, s: dataStyleLeft }, 
+                { v: t.trainerNotes || "-", s: dataStyleLeft }, 
+                { v: c.frequency, s: dataStyleCenter }, 
+                { v: t.priority, s: dataStyleCenter }
+            ]);
         });
     });
     const mpWs = utils.aoa_to_sheet(mpData);
@@ -237,7 +267,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(mpWs);
     utils.book_append_sheet(wb, mpWs, "MASTER_PROTOCOL");
 
-    // BORDER CLEANUP: Apply to active ranges only
+    // APPLY BORDERS to active ranges
     wb.SheetNames.forEach(name => {
         const ws = wb.Sheets[name];
         const range = utils.decode_range(ws['!ref'] || 'A1');
@@ -249,5 +279,5 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         }
     });
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_V4.2_ENTERPRISE.xlsx`);
+    writeFile(wb, `MOREMEETS_RESTAURANT_OPERATIONAL_CONSOLE_v4.2.xlsx`);
 }
