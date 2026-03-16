@@ -6,9 +6,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
  * ROCS v4.2 - The Operational Operating System (Enterprise Continuity Edition)
- * Version: Software Lobby (Option A)
- * Features: Central Hub Navigation, Identity Pillars (Date First), Interval-Aware Scheduling
- * Branding: Subtle Above-the-Fold Watermarking (Row 20)
+ * Refined for Alignment, Accountability Flow, and GM Practicality.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -107,26 +105,27 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const insData = [
         [], [],
         [{ v: "WELCOME TO THE ROCS v4.2 ENTERPRISE SUITE", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Your daily home page for operational governance.", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Your interactive lobby for operational governance.", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "GOVERNANCE INITIALIZATION", s: { font: { bold: true, sz: 10, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "1. CONFIGURE YOUR FLEET", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "▶ CLICK HERE TO SET NICKNAMES & START DATES", l: { Target: "#'07_SETUP'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [{ v: "STEP 1: CONFIGURE YOUR FLEET", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [null, { v: "▶ CLICK TO SET NICKNAMES & FACILITY MATRIX", l: { Target: "#'07_SETUP'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
-        [{ v: "2. ACCESS YOUR COMMAND CENTER", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "▶ CLICK HERE TO OPEN CONTROL PANEL (APP LOBBY)", l: { Target: "#'01_CONTROL_PANEL'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [{ v: "STEP 2: ACCESS THE CONTROL HUB", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [null, { v: "▶ CLICK TO OPEN COMMAND CENTER DASHBOARDS", l: { Target: "#'01_CONTROL_PANEL'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
-        [{ v: "3. EXECUTE DAILY MISSIONS", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "▶ CLICK HERE TO VIEW TODAY'S TECHNICAL TASKS", l: { Target: "#'03_TODAY_MISSION'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [{ v: "STEP 3: START TODAY'S MISSION", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [null, { v: "▶ CLICK TO EXECUTE DAILY TECHNICAL TASKS", l: { Target: "#'03_TODAY_MISSION'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
-        [{ v: "4. MEASURE SAVINGS & VALUE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "▶ CLICK HERE TO CALCULATE OPERATIONAL VALUE SAVED", l: { Target: "#'06_ROI_CALC'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [{ v: "STEP 4: MEASURE VALUE & ROI", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [null, { v: "▶ CLICK TO CALCULATE OPERATIONAL SAVINGS", l: { Target: "#'06_ROI_CALC'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
         [{ v: "--------------------------------------------------------------------------------------------------", s: { font: { color: { rgb: COLORS.BORDER_LIGHT } } } }],
         [{ v: "SUPPORT: more@moremeets.com | © 2025 MoreMeets", s: { font: { sz: 9, italic: true }, alignment: { horizontal: 'center' } } }]
     ];
     const insWs = utils.aoa_to_sheet(insData);
+    insWs['!cols'] = [{ wch: 25 }, { wch: 40 }, { wch: 10 }, { wch: 20 }, { wch: 30 }];
     insWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 5 } }, 
         { s: { r: 3, c: 0 }, e: { r: 3, c: 5 } },
@@ -175,12 +174,12 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     // --- 07_SETUP ---
     const setupData = [
         [], [{ v: "BRANCH MASTER REGISTRY & FACILITY MATRIX", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }], 
-        [{ v: "Add a new row for each branch. Toggle Facility columns to NO to hide related tasks.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [{ v: "Define nicknames and rollout dates per row. Toggle Facility columns to NO to hide specific modules.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.TEXT_MUTED } } } }],
         [],
         [
             { v: "ID", s: headerBlockStyle }, 
             { v: "BRANCH NICKNAME", s: headerBlockStyle }, 
-            { v: "YEAR START", s: headerBlockStyle }, 
+            { v: "ROLLOUT DATE", s: headerBlockStyle }, 
             { v: "VIEW MISSION FOR", s: headerBlockStyle }, 
             { v: "BAR?", s: headerBlockStyle }, 
             { v: "GARDEN?", s: headerBlockStyle }, 
@@ -197,7 +196,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { v: "NO", s: inputStyle },
             { v: "YES", s: inputStyle },
             { v: "NO", s: inputStyle },
-            { v: "Primary high-volume flagship.", s: leftCellStyle }
+            { v: "Flagship / High-Volume Zone.", s: leftCellStyle }
         ],
         [
             { v: 2, s: centerCellStyle },
@@ -208,29 +207,29 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { v: "YES", s: inputStyle },
             { v: "YES", s: inputStyle },
             { v: "NO", s: inputStyle },
-            { v: "Boutique garden seating focus.", s: leftCellStyle }
+            { v: "Boutique / Garden Seating Focus.", s: leftCellStyle }
         ]
     ];
     const setupWs = utils.aoa_to_sheet(setupData);
     addBackButton(setupWs);
     addWatermark(setupWs, 15);
-    setupWs['!cols'] = [{ wch: 5 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 40 }];
+    setupWs['!cols'] = [{ wch: 25 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 40 }];
     utils.book_append_sheet(wb, setupWs, "07_SETUP");
 
     // --- 03_TODAY_MISSION ---
     const missionHeaders = [
-        { v: "Date", s: headerBlockStyle }, 
-        { v: "Branch Name", s: headerBlockStyle }, 
-        { v: "Task ID", s: headerBlockStyle }, 
-        { v: "Module", s: headerBlockStyle }, 
-        { v: "Task Description", s: headerBlockStyle }, 
-        { v: "Risk", s: headerBlockStyle }, 
-        { v: "Freq", s: headerBlockStyle },
-        { v: "Verify?", s: headerBlockStyle }, 
-        { v: "Date Done", s: headerBlockStyle }, 
-        { v: "Actioned By (Name)", s: headerBlockStyle }, 
-        { v: "Verified By (Manager)", s: headerBlockStyle }, 
-        { v: "Trainer Notes", s: headerBlockStyle }
+        { v: "Date", s: headerBlockStyle }, // A
+        { v: "Branch Name", s: headerBlockStyle }, // B
+        { v: "Task ID", s: headerBlockStyle }, // C
+        { v: "Module / Sector", s: headerBlockStyle }, // D
+        { v: "Instruction / Control Step", s: headerBlockStyle }, // E
+        { v: "Risk", s: headerBlockStyle }, // F
+        { v: "Freq", s: headerBlockStyle }, // G
+        { v: "Actioned By (Name)", s: headerBlockStyle }, // H
+        { v: "Date Done", s: headerBlockStyle }, // I
+        { v: "Sign-Off Required?", s: headerBlockStyle }, // J
+        { v: "Manager Sign-Off", s: headerBlockStyle }, // K
+        { v: "Trainer Notes", s: headerBlockStyle } // L
     ];
     const missionData: any[][] = [[], [{ v: "DAILY MISSION LEDGER: ZERO-AMBIGUITY EXECUTION", s: { font: { sz: 18, bold: true } } }], [], missionHeaders];
     
@@ -258,8 +257,10 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                             { v: t.description, s: leftCellStyle },
                             { v: t.riskLevel || "Operational", s: centerCellStyle },
                             { v: freq.toUpperCase(), s: centerCellStyle },
-                            { v: t.riskLevel === 'High' ? "MGR SIGN" : "NONE", s: centerCellStyle },
-                            { v: "", s: inputStyle }, { v: "", s: inputStyle }, { v: "", s: inputStyle },
+                            { v: "", s: inputStyle }, // Actioned By
+                            { v: "", s: inputStyle }, // Date Done
+                            { v: t.riskLevel === 'High' ? "MGR SIGN" : "NONE", s: centerCellStyle }, // Sign-off Instruction
+                            { v: "", s: inputStyle }, // Manager Sign-off
                             { v: t.trainerNotes, s: { ...leftCellStyle, font: { italic: true, sz: 9, color: { rgb: COLORS.TEXT_MUTED } } } }
                         ]);
                     }
@@ -270,7 +271,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const mWs = utils.aoa_to_sheet(missionData);
     addBackButton(mWs);
     addWatermark(mWs, 20);
-    mWs['!cols'] = [12, 18, 10, 20, 50, 12, 10, 12, 15, 30, 20, 45].map(w => ({ wch: w }));
+    mWs['!cols'] = [25, 18, 10, 20, 50, 12, 10, 25, 15, 18, 20, 45].map(w => ({ wch: w }));
     mWs['!autofilter'] = { ref: "A4:L10000" };
     utils.book_append_sheet(wb, mWs, "03_TODAY_MISSION");
 
@@ -295,6 +296,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const dWs = utils.aoa_to_sheet(dashData);
     addBackButton(dWs);
     addWatermark(dWs, 20);
+    dWs['!cols'] = [25, 20, 20, 25].map(w => ({ wch: w }));
     dWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
     utils.book_append_sheet(wb, dWs, "02_DASHBOARD");
 
@@ -305,6 +307,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const hoWs = utils.aoa_to_sheet(hoData);
     addBackButton(hoWs);
     addWatermark(hoWs, 20);
+    hoWs['!cols'] = [25, 20, 15, 25, 45, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, hoWs, "04_SHIFT_HANDOVER");
 
     // --- 05_INCIDENT_LOG ---
@@ -314,6 +317,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const incWs = utils.aoa_to_sheet(incData);
     addBackButton(incWs);
     addWatermark(incWs, 20);
+    incWs['!cols'] = [25, 20, 20, 45, 20, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, incWs, "05_INCIDENT_LOG");
 
     // --- 06_ROI_CALC ---
@@ -329,6 +333,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const roiWs = utils.aoa_to_sheet(roiData);
     addBackButton(roiWs);
     addWatermark(roiWs, 20);
+    roiWs['!cols'] = [25, 25, 45].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, roiWs, "06_ROI_CALC");
 
     writeFile(wb, `${item.title.replace(/ /g, '_')}_V4.2_ENTERPRISE.xlsx`);
