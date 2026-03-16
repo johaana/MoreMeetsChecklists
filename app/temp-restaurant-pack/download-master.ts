@@ -10,6 +10,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
  * Logic: Interval-Aware Scheduling (Monthly=1st, Weekly=Mon), Fixed Pickup Mapping, Full 240-task Deep Load.
  * UI: Replicated Pro-Tile Console Layout with Descriptive N/A logic.
  * Branding: High-Prestige Software Header (White on Green).
+ * Visuals: Matte Background (Software-esque Canvas).
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -33,7 +34,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         INPUT_ZONE: "FEFCE8",    
         BORDER: "CBD5E1",
         HEADER_BG: "1E293B",
-        TILE_BG: "111827"
+        TILE_BG: "111827",
+        CONSOLE_BG: "F1F5F9" // Subtle Slate Grey for matte effect
     };
 
     const borderStyle = {
@@ -54,7 +56,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const tileStyle = {
         font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 11 },
-        fill: { fgColor: { rgb: COLORS.HEADER_BG } },
+        fill: { fgColor: { rgb: COLORS.NAVY_BAR } },
         alignment: { horizontal: 'center', vertical: 'center' },
         border: { 
             top: { style: 'thin', color: { rgb: COLORS.PRIMARY_GREEN } },
@@ -100,6 +102,10 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
+    const bgStyle = {
+        fill: { fgColor: { rgb: COLORS.CONSOLE_BG } }
+    };
+
     const addSoftwareHeader = (ws: WorkSheet, endCol: string = 'M') => {
         utils.sheet_add_aoa(ws, [[{ 
             v: "◀ BACK TO HOME CONSOLE", 
@@ -119,7 +125,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
     };
 
-    // --- 01. HOME CONSOLE (TILE MENU) ---
+    // --- 01. HOME CONSOLE ---
     const homeData: any[][] = [
         [], [],
         [{ 
@@ -130,7 +136,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                 alignment: { horizontal: 'center', vertical: 'center' } 
             } 
         }],
-        [{ v: "Enterprise Continuity & Governance Suite v4.2", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Enterprise Continuity & Governance Suite v4.2", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
         [],
         [
             { v: "ADMIN & SETUP", s: groupHeaderStyle }, null, 
@@ -162,12 +168,25 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [null, null, null, null, null],
         [], [],
         [{ v: "SYSTEM STATUS: ✅ INSTITUTIONAL GRADE ENCRYPTED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `REGISTERED TO: ${BUYER_EMAIL} | ORDER ID: ${ORDER_ID}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }]
+        [{ v: `REGISTERED TO: ${BUYER_EMAIL} | ORDER ID: ${ORDER_ID}`, s: { font: { sz: 8, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }]
     ];
 
     const homeWs = utils.aoa_to_sheet(homeData);
     homeWs['!cols'] = [35, 5, 35, 5, 35].map(w => ({ wch: w }));
     
+    // Fill the background matte
+    const hRange = utils.decode_range(homeWs['!ref'] || 'A1:E22');
+    for (let R = hRange.s.r; R <= hRange.e.r; ++R) {
+        for (let C = hRange.s.c; C <= hRange.e.c; ++C) {
+            const c_ref = utils.encode_cell({c: C, r: R});
+            if (!homeWs[c_ref]) homeWs[c_ref] = { v: "", t: 's' };
+            if (!homeWs[c_ref].s) homeWs[c_ref].s = {};
+            if (!homeWs[c_ref].s.fill) {
+                homeWs[c_ref].s.fill = { fgColor: { rgb: COLORS.CONSOLE_BG } };
+            }
+        }
+    }
+
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
         { s: { r: 19, c: 0 }, e: { r: 19, c: 4 } }, { s: { r: 20, c: 0 }, e: { r: 20, c: 4 } },
@@ -188,7 +207,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     const setupData = [
         [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
-        [{ v: "Toggle YES/NO per branch. Ledger handles compliance logic automatically.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [{ v: "Toggle YES/NO per branch. Mission Ledger handles logic automatically.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
         [], facilityHeaders,
         [{ v: 1, s: dataStyleCenter }, { v: "Bandra Main", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }],
         [{ v: 2, s: dataStyleCenter }, { v: "Ghatkopar West", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }]
@@ -198,7 +217,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(setupWs, 'L');
     utils.book_append_sheet(wb, setupWs, "SETUP");
 
-    // --- 03. MISSION LEDGER (Interval-Aware + Descriptive N/A) ---
+    // --- 03. MISSION LEDGER ---
     const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, { v: "ID", s: headerStyle },
         { v: "Requirement Description", s: headerStyle }, 
@@ -308,7 +327,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     utils.book_append_sheet(wb, pWs, "PERSONNEL");
 
     // --- 09. MASTER PROTOCOL ---
-    const mpData: any[][] = [[], [{ v: "MASTER PROTOCOL DATABASE", s: { font: { sz: 16, bold: true } } }], [{v:"Modify task strings here. Changes propagate instantly via VLOOKUP.", s:{font:{italic:true, color:{rgb:COLORS.TEXT_MUTED}}}}], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement / Step", s:headerStyle}, {v:"Consequence of Failure", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}]];
+    const mpData: any[][] = [[], [{ v: "MASTER PROTOCOL DATABASE", s: { font: { sz: 16, bold: true } } }], [{v:"Modify task strings here. Changes propagate instantly via VLOOKUP.", s:{font:{italic:true, color:{rgb:COLORS.INTEL_GREY}}}}], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement / Step", s:headerStyle}, {v:"Consequence of Failure", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}]];
     item.checklists.forEach(c => {
         c.tasks.forEach(t => {
             mpData.push([
