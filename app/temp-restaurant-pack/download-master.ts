@@ -7,15 +7,15 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * ROCS v4.2 - THE TOTAL GOVERNANCE SUITE (Enterprise Edition)
  * Architecture:
- * 00_HOME - The Hub
- * 01_MISSION - 365 Day Relational Ledger
- * 02_SETUP - Branch Identity & Facility Switchboard (YES/NO per Branch)
- * 03_DASHBOARD - Analytics
- * 04_HANDOVER - Comms
- * 05_INCIDENT - Risk
- * 06_ROI - Financials
- * 07_PERSONNEL - Roles
- * 08_MASTER_PROTOCOL - Edit-Once Database (At the End)
+ * HOME_CONSOLE - The Lobby
+ * MISSION_LEDGER - 365 Day Relational Ledger
+ * SETUP - Branch Identity & Facility Switchboard (YES/NO per Branch)
+ * DASHBOARD - Analytics
+ * HANDOVER - Comms
+ * INCIDENT_LOG - Risk
+ * ROI_ENGINE - Financials
+ * PERSONNEL - Roles
+ * MASTER_PROTOCOL - Edit-Once Database (At the End)
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -101,7 +101,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const addBackButton = (ws: WorkSheet) => {
         utils.sheet_add_aoa(ws, [[{ 
             v: "◀ BACK TO HOME CONSOLE", 
-            l: { Target: "#'00_HOME_CONSOLE'!A1" }, 
+            l: { Target: "#'HOME_CONSOLE'!A1" }, 
             s: navStyle 
         }]], { origin: "A1" });
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
@@ -114,19 +114,19 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "Enterprise Continuity & Governance Suite v4.2", s: { font: { italic: true, sz: 12, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "1. INITIALIZATION", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
-        [{ v: "▶ CONFIGURE BRANCHES & FACILITIES", l: { Target: "#'02_SETUP'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ ASSIGN PERSONNEL", l: { Target: "#'07_PERSONNEL'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
+        [{ v: "▶ CONFIGURE BRANCHES & FACILITIES", l: { Target: "#'SETUP'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ ASSIGN PERSONNEL", l: { Target: "#'PERSONNEL'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "2. DAILY EXECUTION", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
-        [{ v: "▶ ACCESS MISSION LEDGER", l: { Target: "#'01_MISSION_LEDGER'!A1" }, s: { ...navStyle, fill: { fgColor: { rgb: COLORS.NAVY_HEADER } }, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ LOG SHIFT HANDOVER", l: { Target: "#'04_HANDOVER'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
+        [{ v: "▶ ACCESS MISSION LEDGER", l: { Target: "#'MISSION_LEDGER'!A1" }, s: { ...navStyle, fill: { fgColor: { rgb: COLORS.NAVY_HEADER } }, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ LOG SHIFT HANDOVER", l: { Target: "#'HANDOVER'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "3. GOVERNANCE & RISK", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
-        [{ v: "▶ EXECUTIVE DASHBOARD", l: { Target: "#'03_DASHBOARD'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ INCIDENT REGISTRY", l: { Target: "#'05_INCIDENT_LOG'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
+        [{ v: "▶ EXECUTIVE DASHBOARD", l: { Target: "#'DASHBOARD'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ INCIDENT REGISTRY", l: { Target: "#'INCIDENT_LOG'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "4. STRATEGY", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
-        [{ v: "▶ ROI & VALUE ENGINE", l: { Target: "#'06_ROI_ENGINE'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ MASTER PROTOCOL (EDIT TASKS)", l: { Target: "#'08_MASTER_PROTOCOL'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
+        [{ v: "▶ ROI & VALUE ENGINE", l: { Target: "#'ROI_ENGINE'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ MASTER PROTOCOL (EDIT TASKS)", l: { Target: "#'MASTER_PROTOCOL'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "SYSTEM IDENTITY STATUS", s: { font: { bold: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Primary Owner:", s: { alignment: { horizontal: 'right' }, border: borderStyle } }, { t: 'f', f: "'02_SETUP'!$B$6", s: { font: { bold: true }, border: borderStyle } }, { v: "Status:", s: { alignment: { horizontal: 'right' }, border: borderStyle } }, { v: "LICENSED / ACTIVE", s: { font: { color: { rgb: COLORS.PRIMARY_GREEN }, bold: true }, border: borderStyle } }]
+        [{ v: "Primary Owner:", s: { alignment: { horizontal: 'right' }, border: borderStyle } }, { t: 'f', f: "'SETUP'!$B$6", s: { font: { bold: true }, border: borderStyle } }, { v: "Status:", s: { alignment: { horizontal: 'right' }, border: borderStyle } }, { v: "LICENSED / ACTIVE", s: { font: { color: { rgb: COLORS.PRIMARY_GREEN }, bold: true }, border: borderStyle } }]
     ];
     const homeWs = utils.aoa_to_sheet(homeData);
     homeWs['!cols'] = [35, 30, 10, 30].map(w => ({ wch: w }));
@@ -139,9 +139,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { s: { r: 18, c: 0 }, e: { r: 18, c: 3 } }
     ];
     addWatermark(homeWs, 22);
-    utils.book_append_sheet(wb, homeWs, "00_HOME_CONSOLE");
+    utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
 
-    // --- 08. MASTER PROTOCOL (At the end, but calculated first for refs) ---
+    // --- MASTER PROTOCOL (Single Source of Truth) ---
     const masterHeaders = [
         { v: "Task ID", s: headerStyle },
         { v: "Module Section", s: headerStyle },
@@ -153,7 +153,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     const masterData: any[][] = [[], [{ v: "MASTER OPERATIONAL PROTOCOLS: SINGLE SOURCE OF TRUTH", s: { font: { sz: 16, bold: true } } }], [], masterHeaders];
     
-    // Add all tasks to the master protocol
     item.checklists.forEach(c => {
         c.tasks.forEach(t => {
             masterData.push([
@@ -171,24 +170,24 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     mpWs['!cols'] = [12, 25, 60, 40, 45, 15, 12].map(w => ({ wch: w }));
     addBackButton(mpWs);
 
-    // --- 02. SETUP (BRANCH IDENTITY & FACILITY SWITCHBOARD) ---
+    // --- SETUP (BRANCH IDENTITY & FACILITY SWITCHBOARD) ---
     const facilityHeaders = [
         { v: "Branch Code", s: headerStyle },
         { v: "Official Branch Name", s: headerStyle },
         { v: "Kitchen?", s: headerStyle },
         { v: "Bar?", s: headerStyle },
-        { v: "FOH Dining?", s: headerStyle },
-        { v: "EHS/Safety?", s: headerStyle },
+        { v: "Dining?", s: headerStyle },
+        { v: "EHS?", s: headerStyle },
         { v: "Statutory?", s: headerStyle },
         { v: "Delivery?", s: headerStyle },
-        { v: "Takeaway?", s: headerStyle },
+        { v: "Pickup?", s: headerStyle },
         { v: "Valet?", s: headerStyle },
         { v: "Garden?", s: headerStyle },
-        { v: "Staff Quarters?", s: headerStyle }
+        { v: "Quarters?", s: headerStyle }
     ];
     const setupData = [
         [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }], 
-        [{ v: "Define branch names and toggle facilities (YES/NO) to auto-configure the Mission Ledger.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [{ v: "Define branch names and toggle facilities (YES/NO) per branch to auto-configure the Ledger.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
         [],
         facilityHeaders,
         [{ v: 1, s: dataStyleCenter }, { v: "Bandra Main", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "YES", s: inputStyle }],
@@ -197,55 +196,52 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const setupWs = utils.aoa_to_sheet(setupData);
     setupWs['!cols'] = [12, 30, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12].map(w => ({ wch: w }));
     addBackButton(setupWs);
-    utils.book_append_sheet(wb, setupWs, "02_SETUP");
+    utils.book_append_sheet(wb, setupWs, "SETUP");
 
-    // --- 01. MISSION LEDGER ---
+    // --- MISSION LEDGER (Relational Database) ---
     const missionHeaders = [
-        { v: "Date", s: headerStyle }, 
-        { v: "Branch Name", s: headerStyle }, 
-        { v: "Task ID", s: headerStyle }, 
-        { v: "Requirement (Live Link)", s: headerStyle }, 
-        { v: "Actioned By", s: headerStyle }, 
-        { v: "Time", s: headerStyle }, 
-        { v: "Consequence", s: intelStyle }, 
-        { v: "Trainer Notes", s: intelStyle }, 
-        { v: "Sign-Off Req?", s: headerStyle }, 
-        { v: "Manager Sign-Off", s: headerStyle }
+        { v: "Date", s: headerStyle }, // A
+        { v: "Branch Name", s: headerStyle }, // B
+        { v: "Task ID", s: headerStyle }, // C
+        { v: "Module Section", s: headerStyle }, // D
+        { v: "Requirement (Live Link)", s: headerStyle }, // E
+        { v: "Actioned By", s: headerStyle }, // F
+        { v: "Time", s: headerStyle }, // G
+        { v: "Sign-Off Req?", s: headerStyle }, // H
+        { v: "Manager Sign-Off", s: headerStyle }, // I
+        { v: "Consequence", s: intelStyle }, // J
+        { v: "Trainer Notes", s: intelStyle } // K
     ];
     const missionData: any[][] = [[], [{ v: "OPERATIONAL MISSION LEDGER: PER-BRANCH GOVERNANCE", s: { font: { sz: 16, bold: true } } }], [], missionHeaders];
     
     const startDate = new Date();
-    // Generate 14 days of sample data
+    // Generate sample for 14 days
     for (let i = 0; i < 14; i++) {
         const entryDate = new Date(startDate);
         entryDate.setDate(startDate.getDate() + i);
         
-        // Loop through 2 branches
         [1, 2].forEach(branchCode => {
             item.checklists.forEach(c => {
                 c.tasks.forEach(t => {
-                    const rowIndex = missionData.length + 1;
-                    
-                    // Logic: Find Branch Row, then find Module Column
-                    let setupCol = "C"; // Default Kitchen
-                    if (c.title.includes("Bar")) setupCol = "D";
-                    if (c.title.includes("FOH") || c.title.includes("Service")) setupCol = "E";
-                    if (c.title.includes("EHS") || c.title.includes("Safety")) setupCol = "F";
-                    if (c.title.includes("Statutory") || c.title.includes("Admin")) setupCol = "G";
-                    if (c.title.includes("Delivery")) setupCol = "H";
-                    if (c.title.includes("Takeaway")) setupCol = "I";
-                    if (c.title.includes("Valet")) setupCol = "J";
-                    if (c.title.includes("Garden")) setupCol = "K";
-                    if (c.title.includes("Quarters")) setupCol = "L";
-
                     const branchRow = branchCode === 1 ? 6 : 7;
-                    const toggleCell = `'02_SETUP'!$${setupCol}$${branchRow}`;
-                    const branchNameCell = `'02_SETUP'!$B$${branchRow}`;
+                    const branchNameCell = `'SETUP'!$B$${branchRow}`;
                     
-                    // VLOOKUP to Master Protocol for Descriptions
-                    const descFormula = `IF(${toggleCell}="YES", VLOOKUP("${t.id}", '08_MASTER_PROTOCOL'!A:G, 3, FALSE), "N/A - MODULE DISABLED")`;
-                    const consFormula = `IF(${toggleCell}="YES", VLOOKUP("${t.id}", '08_MASTER_PROTOCOL'!A:G, 4, FALSE), "-")`;
-                    const noteFormula = `IF(${toggleCell}="YES", VLOOKUP("${t.id}", '08_MASTER_PROTOCOL'!A:G, 5, FALSE), "-")`;
+                    // Requirement Formula: Checks Setup Toggle then pulls from Master Protocol
+                    let toggleCol = "C";
+                    if (c.title.includes("Bar")) toggleCol = "D";
+                    if (c.title.includes("Dining")) toggleCol = "E";
+                    if (c.title.includes("EHS") || c.title.includes("Safety")) toggleCol = "F";
+                    if (c.title.includes("Statutory") || c.title.includes("Admin")) toggleCol = "G";
+                    if (c.title.includes("Delivery")) toggleCol = "H";
+                    if (c.title.includes("Takeaway") || c.title.includes("Pickup")) toggleCol = "I";
+                    if (c.title.includes("Valet")) toggleCol = "J";
+                    if (c.title.includes("Garden")) toggleCol = "K";
+                    if (c.title.includes("Quarters")) toggleCol = "L";
+
+                    const toggleCell = `'SETUP'!$${toggleCol}$${branchRow}`;
+                    const descFormula = `IF(${toggleCell}="YES", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 3, FALSE), "N/A - MODULE DISABLED")`;
+                    const consFormula = `IF(${toggleCell}="YES", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 4, FALSE), "-")`;
+                    const noteFormula = `IF(${toggleCell}="YES", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 5, FALSE), "-")`;
 
                     const isHighRisk = t.riskLevel === 'High';
 
@@ -253,84 +249,43 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                         { v: entryDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
                         { t: 'f', f: branchNameCell, s: dataStyleCenter },
                         { v: t.id, s: dataStyleCenter },
+                        { v: c.title, s: dataStyleCenter },
                         { t: 'f', f: descFormula, s: dataStyleLeft },
                         { v: "", s: inputStyle }, 
                         { v: "", s: inputStyle }, 
-                        { t: 'f', f: consFormula, s: intelStyle }, 
-                        { t: 'f', f: noteFormula, s: intelStyle }, 
                         { v: isHighRisk ? "MGR SIGN" : "NONE", s: { ...dataStyleCenter, font: { bold: isHighRisk, color: { rgb: isHighRisk ? COLORS.RISK_RED : COLORS.TEXT_MUTED } } } }, 
-                        { v: "", s: inputStyle }
+                        { v: "", s: inputStyle },
+                        { t: 'f', f: consFormula, s: intelStyle }, 
+                        { t: 'f', f: noteFormula, s: intelStyle }
                     ]);
                 });
             });
         });
     }
     const mWs = utils.aoa_to_sheet(missionData);
-    mWs['!cols'] = [15, 25, 10, 50, 25, 12, 35, 40, 15, 20].map(w => ({ wch: w }));
+    mWs['!cols'] = [15, 25, 10, 20, 50, 25, 12, 15, 20, 35, 40].map(w => ({ wch: w }));
     addBackButton(mWs);
-    mWs['!autofilter'] = { ref: "A4:J10000" };
-    utils.book_append_sheet(wb, mWs, "01_MISSION_LEDGER");
+    mWs['!autofilter'] = { ref: "A4:K10000" };
+    utils.book_append_sheet(wb, mWs, "MISSION_LEDGER");
 
-    // --- 03. DASHBOARD ---
-    const dashData = [
-        [], [{ v: "EXECUTIVE GOVERNANCE DASHBOARD", s: { font: { sz: 18, bold: true } } }], [],
-        [{ v: "Metric", s: headerStyle }, { v: "Benchmark", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Action Required", s: headerStyle }],
-        [{ v: "Network Compliance Rate", s: dataStyleLeft }, { v: "100%", s: dataStyleCenter }, { t: 'f', f: "COUNTIF('01_MISSION_LEDGER'!E:E,\"COMPLETED\")/MAX(1,COUNTIF('01_MISSION_LEDGER'!D:D,\"<>\")-1)", s: { ...dataStyleCenter, numFmt: '0%', font: { bold: true } } }, { v: "Review Pending Logs" }],
-        [{ v: "High-Risk Verifications", s: dataStyleLeft }, { v: "100%", s: dataStyleCenter }, { t: 'f', f: "COUNTIF('01_MISSION_LEDGER'!J:J,\"<>\")/MAX(1,COUNTIF('01_MISSION_LEDGER'!I:I,\"MGR SIGN\"))", s: { ...dataStyleCenter, numFmt: '0%', font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { v: "Manager Accountability" }]
-    ];
-    const dWs = utils.aoa_to_sheet(dashData);
-    dWs['!cols'] = [30, 15, 20, 40].map(w => ({ wch: w }));
-    addBackButton(dWs);
-    utils.book_append_sheet(wb, dWs, "03_DASHBOARD");
+    // --- OTHER CORE MODULES ---
+    utils.book_append_sheet(wb, mpWs, "MASTER_PROTOCOL"); // Append last
 
-    // --- 04. HANDOVER ---
-    const handoverData = [
-        [], [{ v: "SHIFT HANDOVER BRIDGE", s: { font: { sz: 18, bold: true } } }], [],
-        [{ v: "Date", s: headerStyle }, { v: "Branch", s: headerStyle }, { v: "AM Mgr", s: headerStyle }, { v: "PM Mgr", s: headerStyle }, { v: "Critical Notes", s: headerStyle }],
-        [{ v: new Date(), t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } }, { t: 'f', f: "'02_SETUP'!$B$6" , s: dataStyleCenter }, { v: "", s: inputStyle }, { v: "", s: inputStyle }, { v: "", s: inputStyle }]
-    ];
-    const hWs = utils.aoa_to_sheet(handoverData);
-    hWs['!cols'] = [15, 25, 25, 25, 60].map(w => ({ wch: w }));
-    addBackButton(hWs);
-    utils.book_append_sheet(wb, hWs, "04_HANDOVER");
+    // DASHBOARD, HANDOVER, etc.
+    const addStandardSheet = (name: string, title: string, headers: any[], sampleRow: any[]) => {
+        const data = [[], [{ v: title, s: { font: { sz: 18, bold: true } } }], [], headers, sampleRow];
+        const ws = utils.aoa_to_sheet(data);
+        addBackButton(ws);
+        utils.book_append_sheet(wb, ws, name);
+    };
 
-    // --- 05. INCIDENT LOG ---
-    const incidentData = [
-        [], [{ v: "INCIDENT & LOSS REGISTRY", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.RISK_RED } } } }], [],
-        [{ v: "Date", s: headerStyle }, { v: "Branch", s: headerStyle }, { v: "Category", s: headerStyle }, { v: "Details", s: headerStyle }, { v: "MGR Close-out", s: headerStyle }],
-        [{ v: new Date(), t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } }, { t: 'f', f: "'02_SETUP'!$B$6" , s: dataStyleCenter }, { v: "SAFETY", s: inputStyle }, { v: "", s: inputStyle }, { v: "OPEN", s: inputStyle }]
-    ];
-    const iWs = utils.aoa_to_sheet(incidentData);
-    iWs['!cols'] = [15, 25, 20, 60, 15].map(w => ({ wch: w }));
-    addBackButton(iWs);
-    utils.book_append_sheet(wb, iWs, "05_INCIDENT_LOG");
+    addStandardSheet("DASHBOARD", "EXECUTIVE ANALYTICS", [{v:"Metric", s:headerStyle}, {v:"Live Status", s:headerStyle}], [{v:"Total Compliance", s:dataStyleLeft}, {t:'f', f:`TEXT(COUNTIF('MISSION_LEDGER'!F:F,"<>")/COUNTA('MISSION_LEDGER'!E:E), "0%")`, s:dataStyleCenter}]);
+    addStandardSheet("HANDOVER", "SHIFT HANDOVER BRIDGE", [{v:"Date", s:headerStyle}, {v:"AM Mgr", s:headerStyle}, {v:"PM Mgr", s:headerStyle}, {v:"Notes", s:headerStyle}], [{v:new Date(), t:'d', s:dataStyleCenter}, {v:"", s:inputStyle}, {v:"", s:inputStyle}, {v:"", s:inputStyle}]);
+    addStandardSheet("INCIDENT_LOG", "INCIDENT & LOSS REGISTRY", [{v:"Date", s:headerStyle}, {v:"Category", s:headerStyle}, {v:"Details", s:headerStyle}, {v:"Status", s:headerStyle}], [{v:new Date(), t:'d', s:dataStyleCenter}, {v:"SAFETY", s:inputStyle}, {v:"", s:inputStyle}, {v:"OPEN", s:inputStyle}]);
+    addStandardSheet("ROI_ENGINE", "PROFIT PROTECTION", [{v:"Risk", s:headerStyle}, {v:"Value at Risk", s:headerStyle}, {v:"Protected", s:headerStyle}], [{v:"Health Closure", s:dataStyleLeft}, {v:500000, s:inputStyle}, {v:"95%", s:dataStyleCenter}]);
+    addStandardSheet("PERSONNEL", "STAFF ASSIGNMENT", [{v:"Role", s:headerStyle}, {v:"Staff Name", s:headerStyle}], [{v:"Head Chef", s:dataStyleLeft}, {v:"", s:inputStyle}]);
 
-    // --- 06. ROI ENGINE ---
-    const roiData = [
-        [], [{ v: "ROI & PROFIT PROTECTION CALCULATOR", s: { font: { sz: 18, bold: true } } }], [],
-        [{ v: "Risk Factor", s: headerStyle }, { v: "Annual Value at Risk", s: headerStyle }, { v: "System Mitigation", s: headerStyle }, { v: "Protected Profit", s: headerStyle }],
-        [{ v: "Food Poisoning / Legal Claims", s: dataStyleLeft }, { v: 500000, s: inputStyle }, { v: "95%", s: dataStyleCenter }, { t: 'f', f: "B6*C6", s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }]
-    ];
-    const rWs = utils.aoa_to_sheet(roiData);
-    rWs['!cols'] = [35, 20, 20, 25].map(w => ({ wch: w }));
-    addBackButton(rWs);
-    utils.book_append_sheet(wb, rWs, "06_ROI_ENGINE");
-
-    // --- 07. PERSONNEL ---
-    const personnelData = [
-        [], [{ v: "PERSONNEL-TO-ROLE ASSIGNMENT", s: { font: { sz: 18, bold: true } } }], [],
-        [{ v: "Operational Role", s: headerStyle }, { v: "Staff Name", s: headerStyle }, { v: "Contact", s: headerStyle }, { v: "Branch Access", s: headerStyle }],
-        [{ v: "Head Chef", s: dataStyleLeft }, { v: "", s: inputStyle }, { v: "", s: inputStyle }, { v: "ALL", s: inputStyle }]
-    ];
-    const pWs = utils.aoa_to_sheet(personnelData);
-    pWs['!cols'] = [25, 35, 25, 20].map(w => ({ wch: w }));
-    addBackButton(pWs);
-    utils.book_append_sheet(wb, pWs, "07_PERSONNEL");
-
-    // Append Master Protocol last
-    utils.book_append_sheet(wb, mpWs, "08_MASTER_PROTOCOL");
-
-    // Apply borders to all data in all sheets
+    // Apply borders to all
     wb.SheetNames.forEach(name => {
         const ws = wb.Sheets[name];
         const range = utils.decode_range(ws['!ref'] || 'A1');
