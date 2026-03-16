@@ -8,7 +8,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
  * ROCS v4.2 - THE TOTAL GOVERNANCE SUITE (Commercial Grade)
  * Final Build: 2025-03-16
  * Logic: Interval-Aware Scheduling (Monthly=1st, Weekly=Mon), Fixed Pickup Mapping, Full 240-task Deep Load.
- * UI: Replicated Pro-Tile Console Layout.
+ * UI: Replicated Pro-Tile Console Layout with Descriptive N/A logic.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -99,25 +99,26 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
-    const addSoftwareHeader = (ws: WorkSheet) => {
+    const addSoftwareHeader = (ws: WorkSheet, endCol: string = 'M') => {
         utils.sheet_add_aoa(ws, [[{ 
             v: "◀ BACK TO HOME CONSOLE", 
             l: { Target: "#'HOME_CONSOLE'!A1" }, 
             s: navStyle 
-        }, null, null]], { origin: "A1" });
+        }]], { origin: "A1" });
         
+        const range = utils.decode_range(`A1:${endCol}1`);
         if (!ws['!merges']) ws['!merges'] = [];
-        ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: 2 } }); 
-        
-        utils.sheet_add_aoa(ws, [[{ 
-            v: `LICENSED TO: ${BUYER_EMAIL} | ORDER: ${ORDER_ID}`, 
-            s: { font: { sz: 7, italic: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'right' } } 
-        }]], { origin: "M1" });
+        ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: range.e.c } }); 
 
+        for(let c = 0; c <= range.e.c; c++) {
+            const cell = utils.encode_cell({r: 0, c});
+            if(!ws[cell]) ws[cell] = { v: "", s: navStyle };
+            else ws[cell].s = navStyle;
+        }
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
     };
 
-    // --- 01. HOME CONSOLE (TILE-BASED REPLICATION) ---
+    // --- 01. HOME CONSOLE (TILE MENU) ---
     const homeData: any[][] = [
         [], [],
         [{ v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
@@ -186,10 +187,10 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     const setupWs = utils.aoa_to_sheet(setupData);
     setupWs['!cols'] = [12, 35, 10, 10, 10, 10, 10, 10, 15, 10, 10, 10].map(w => ({ wch: w }));
-    addSoftwareHeader(setupWs);
+    addSoftwareHeader(setupWs, 'L');
     utils.book_append_sheet(wb, setupWs, "SETUP");
 
-    // --- 03. MISSION LEDGER (Interval-Aware + Full Database) ---
+    // --- 03. MISSION LEDGER (Interval-Aware + Descriptive N/A) ---
     const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, { v: "ID", s: headerStyle },
         { v: "Requirement Description", s: headerStyle }, 
@@ -216,6 +217,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             item.checklists.forEach((c, cIdx) => {
                 const switchCol = moduleMap[cIdx] || "C";
                 const activeFormula = `'SETUP'!$${switchCol}$${bRow}`;
+                const moduleName = c.title.split(' ')[0].toUpperCase();
                 
                 const isMonthlyModule = c.frequency === 'Monthly';
                 const isWeeklyModule = c.frequency === 'Weekly';
@@ -229,13 +231,13 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                         { v: d, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
                         { t: 'f', f: `'SETUP'!$B$${bRow}`, s: dataStyleCenter },
                         { v: t.id, s: dataStyleCenter },
-                        { t: 'f', f: `IF(${activeFormula}="NO", "N/A - MODULE DISABLED", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 3, FALSE))`, s: dataStyleLeft },
+                        { t: 'f', f: `IF(${activeFormula}="NO", "N/A - [${moduleName}] NOT CONFIGURED FOR THIS BRANCH", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 3, FALSE))`, s: dataStyleLeft },
                         { v: "", s: inputStyle }, { v: "", s: inputStyle },
                         { v: isHighRisk ? "MGR SIGN" : "NONE", s: { ...dataStyleCenter, font: { bold: isHighRisk, color: { rgb: isHighRisk ? COLORS.RISK_RED : COLORS.TEXT_MUTED } } } },
                         { v: "", s: inputStyle },
                         { v: "", s: inputStyle },
-                        { t: 'f', f: `VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 6, FALSE)`, s: intelStyle },
-                        { t: 'f', f: `VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 7, FALSE)`, s: intelStyle },
+                        { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 6, FALSE))`, s: intelStyle },
+                        { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 7, FALSE))`, s: intelStyle },
                         { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 4, FALSE))`, s: intelStyle },
                         { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 5, FALSE))`, s: intelStyle }
                     ]);
@@ -244,8 +246,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         });
     }
     const mWs = utils.aoa_to_sheet(mData);
-    mWs['!cols'] = [15, 25, 10, 60, 25, 12, 15, 20, 30, 15, 15, 45, 50].map(w => ({ wch: w }));
-    addSoftwareHeader(mWs);
+    mWs['!cols'] = [15, 25, 10, 65, 25, 12, 15, 20, 30, 15, 15, 45, 50].map(w => ({ wch: w }));
+    addSoftwareHeader(mWs, 'M');
     mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
     utils.book_append_sheet(wb, mWs, "MISSION_LEDGER");
 
@@ -258,7 +260,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     const dWs = utils.aoa_to_sheet(dashData);
     dWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
-    addSoftwareHeader(dWs);
+    addSoftwareHeader(dWs, 'C');
     utils.book_append_sheet(wb, dWs, "DASHBOARD");
 
     // --- 05. ROI ENGINE ---
@@ -270,7 +272,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     const rWs = utils.aoa_to_sheet(rData);
     rWs['!cols'] = [40, 25, 25, 25, 20].map(w => ({ wch: w }));
-    addSoftwareHeader(rWs);
+    addSoftwareHeader(rWs, 'E');
     utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
 
     // --- 06. INCIDENT LOG ---
@@ -278,7 +280,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const iData = [[], [{v:"INCIDENT & LIABILITY REGISTRY", s:{font:{sz:18, bold:true}}}], [], iHeaders];
     const iWs = utils.aoa_to_sheet(iData);
     iWs['!cols'] = [15, 12, 25, 35, 60, 30, 25].map(w => ({ wch: w }));
-    addSoftwareHeader(iWs);
+    addSoftwareHeader(iWs, 'G');
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
     // --- 07. HANDOVER ---
@@ -286,7 +288,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const hData = [[], [{v:"SHIFT HANDOVER BRIDGE", s:{font:{sz:18, bold:true}}}], [], hHeaders];
     const hWs = utils.aoa_to_sheet(hData);
     hWs['!cols'] = [15, 25, 25, 60, 60, 45].map(w => ({ wch: w }));
-    addSoftwareHeader(hWs);
+    addSoftwareHeader(hWs, 'F');
     utils.book_append_sheet(wb, hWs, "HANDOVER");
 
     // --- 08. PERSONNEL ---
@@ -294,10 +296,10 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const pData = [[], [{v:"PERSONNEL DIRECTORY", s:{font:{sz:18, bold:true}}}], [], pHeaders];
     const pWs = utils.aoa_to_sheet(pData);
     pWs['!cols'] = [12, 35, 30, 25, 20, 35, 25].map(w => ({ wch: w }));
-    addSoftwareHeader(pWs);
+    addSoftwareHeader(pWs, 'G');
     utils.book_append_sheet(wb, pWs, "PERSONNEL");
 
-    // --- 09. MASTER PROTOCOL (Full 240 Load) ---
+    // --- 09. MASTER PROTOCOL ---
     const mpData: any[][] = [[], [{ v: "MASTER PROTOCOL DATABASE", s: { font: { sz: 16, bold: true } } }], [{v:"Modify task strings here. Changes propagate instantly via VLOOKUP.", s:{font:{italic:true, color:{rgb:COLORS.TEXT_MUTED}}}}], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement / Step", s:headerStyle}, {v:"Consequence of Failure", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}]];
     item.checklists.forEach(c => {
         c.tasks.forEach(t => {
@@ -314,7 +316,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     });
     const mpWs = utils.aoa_to_sheet(mpData);
     mpWs['!cols'] = [12, 25, 65, 45, 50, 12, 10].map(w => ({ wch: w }));
-    addSoftwareHeader(mpWs);
+    addSoftwareHeader(mpWs, 'G');
     utils.book_append_sheet(wb, mpWs, "MASTER_PROTOCOL");
 
     // --- 10. AUTH CORE (HIDDEN) ---
