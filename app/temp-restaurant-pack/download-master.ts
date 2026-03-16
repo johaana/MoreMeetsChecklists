@@ -5,9 +5,8 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * ROCS v4.2 - THE TOTAL GOVERNANCE SUITE (Executive Edition)
- * Final Build: Restored Dashboard, ROI, Handover, and Incident Registry.
- * Intelligence-First Columns with Interval-Aware Scheduling.
+ * ROCS v4.2 - THE TOTAL GOVERNANCE SUITE (Enterprise Edition)
+ * Features: Clinical Borders, Total Module Load, 365-Day dynamic trail.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -105,19 +104,19 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "MOREMEETS™ OPERATIONAL CONSOLE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
         [{ v: "Enterprise Continuity & Governance Suite v4.2", s: { font: { italic: true, sz: 12, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "STEP 1: CONFIGURE SYSTEM", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
+        [{ v: "SYSTEM CONFIGURATION", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
         [{ v: "▶ 1. DEFINE BRANCHES", l: { Target: "#'02_SETUP'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ 2. ASSIGN STAFF", l: { Target: "#'07_PERSONNEL'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "STEP 2: EXECUTE OPERATIONS", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
+        [{ v: "DAILY EXECUTION", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
         [{ v: "▶ 3. MISSION LEDGER", l: { Target: "#'01_MISSION_LEDGER'!A1" }, s: { ...navStyle, fill: { fgColor: { rgb: COLORS.NAVY_HEADER } }, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ 4. SHIFT HANDOVER", l: { Target: "#'04_HANDOVER'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "STEP 3: EXECUTIVE GOVERNANCE", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
-        [{ v: "▶ 5. ANALYTICS DASHBOARD", l: { Target: "#'03_DASHBOARD'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ 6. INCIDENT LOG", l: { Target: "#'05_INCIDENT_LOG'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
+        [{ v: "EXECUTIVE OVERSIGHT", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
+        [{ v: "▶ 5. COMPLIANCE DASHBOARD", l: { Target: "#'03_DASHBOARD'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ 6. INCIDENT REGISTRY", l: { Target: "#'05_INCIDENT_LOG'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "▶ 7. PROFIT PROTECTION (ROI)", l: { Target: "#'06_ROI_ENGINE'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "SYSTEM IDENTITY STATUS", s: { font: { bold: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Master Account:", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "'02_SETUP'!$B$6", s: { font: { bold: true } } }, { v: "Status:", s: { alignment: { horizontal: 'right' } } }, { v: "LICENSED / ACTIVE", s: { font: { color: { rgb: COLORS.PRIMARY_GREEN }, bold: true } } }]
+        [{ v: "Master Account:", s: { alignment: { horizontal: 'right' }, border: borderStyle } }, { t: 'f', f: "'02_SETUP'!$B$6", s: { font: { bold: true }, border: borderStyle } }, { v: "Status:", s: { alignment: { horizontal: 'right' }, border: borderStyle } }, { v: "LICENSED / ACTIVE", s: { font: { color: { rgb: COLORS.PRIMARY_GREEN }, bold: true }, border: borderStyle } }]
     ];
     const homeWs = utils.aoa_to_sheet(homeData);
     homeWs['!cols'] = [35, 30, 10, 30].map(w => ({ wch: w }));
@@ -149,7 +148,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const missionData: any[][] = [[], [{ v: "OPERATIONAL MISSION LEDGER: 365-DAY AUDIT TRAIL", s: { font: { sz: 16, bold: true } } }], [], missionHeaders];
     
     const startDate = new Date();
-    for (let i = 0; i < 31; i++) {
+    // For temp page, we show 14 days of full task load to see the structure
+    for (let i = 0; i < 14; i++) {
         const entryDate = new Date(startDate);
         entryDate.setDate(startDate.getDate() + i);
         const dayOfWeek = entryDate.getDay(); 
@@ -212,8 +212,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const dashData = [
         [], [{ v: "EXECUTIVE COMPLIANCE DASHBOARD", s: { font: { sz: 18, bold: true } } }], [],
         [{ v: "Metric", s: headerStyle }, { v: "Benchmark", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Audit Insight", s: headerStyle }],
-        [{ v: "System Completion Rate", s: dataStyleLeft }, { v: "100%", s: dataStyleCenter }, { t: 'f', f: "COUNTIF('01_MISSION_LEDGER'!F:F,\"<>\")/MAX(1,COUNTA('01_MISSION_LEDGER'!E:E)-1)", s: { ...dataStyleCenter, numFmt: '0%', font: { bold: true } } }, { v: "Measures task execution discipline." }],
-        [{ v: "High-Risk Verifications", s: dataStyleLeft }, { v: "100%", s: dataStyleCenter }, { t: 'f', f: "COUNTIF('01_MISSION_LEDGER'!K:K,\"<>\")/MAX(1,COUNTIF('01_MISSION_LEDGER'!J:J,\"MGR SIGN\"))", s: { ...dataStyleCenter, numFmt: '0%', font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { v: "Measures Managerial accountability." }]
+        [{ v: "System Completion Rate", s: dataStyleLeft }, { v: "100%", s: dataStyleCenter }, { t: 'f', f: "COUNTIF('01_MISSION_LEDGER'!F:F,\"<>\")/MAX(1,COUNTA('01_MISSION_LEDGER'!E:E)-1)", s: { ...dataStyleCenter, numFmt: '0%', font: { bold: true } } }, { v: "Measures task execution discipline.", s: dataStyleLeft }],
+        [{ v: "High-Risk Verifications", s: dataStyleLeft }, { v: "100%", s: dataStyleCenter }, { t: 'f', f: "COUNTIF('01_MISSION_LEDGER'!K:K,\"<>\")/MAX(1,COUNTIF('01_MISSION_LEDGER'!J:J,\"MGR SIGN\"))", s: { ...dataStyleCenter, numFmt: '0%', font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { v: "Measures Managerial accountability.", s: dataStyleLeft }]
     ];
     const dWs = utils.aoa_to_sheet(dashData);
     dWs['!cols'] = [30, 15, 20, 40].map(w => ({ wch: w }));

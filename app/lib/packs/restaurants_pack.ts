@@ -46,6 +46,32 @@ export const restaurants: PremiumPack = {
             ]
         },
         {
+            title: "Bar Opening & Beverage Setup",
+            department: "Bar",
+            frequency: "Daily",
+            role: "Bar Manager",
+            summary: "Beverage service readiness and high-value stock protection.",
+            icon: "glass-water",
+            tasks: [
+                { id: "BO-01", description: "Ice machine deep flush and visual hygiene check.", priority: "High", riskLevel: "Medium", consequence: "Ice contamination and poor drink quality.", proof: "Visual Audit", trainerNotes: "Look for pink mold in the top corners." },
+                { id: "BO-02", description: "Reconcile premium spirit display bottles against previous night closing.", priority: "High", riskLevel: "Medium", consequence: "Unchecked high-value revenue leakage.", proof: "Stock Sheet", trainerNotes: "Check seals on 'Display Only' rare bottles." },
+                { id: "BO-03", description: "Fruit & Garnish prep: Date-code all containers.", priority: "Medium", riskLevel: "Medium", consequence: "Food poisoning from cross-contaminated citrus.", proof: "Date Tags", trainerNotes: "Garnishes must be discarded after 24 hours." }
+            ]
+        },
+        {
+            title: "FOH Service Readiness",
+            department: "Service",
+            frequency: "Daily",
+            role: "Floor Manager",
+            summary: "Brand standards and environmental comfort audits.",
+            icon: "layout",
+            tasks: [
+                { id: "FOH-01", description: "Walk-through: Inspect all guest tables for wobble and cleanliness.", priority: "Medium", riskLevel: "Low", consequence: "Poor guest experience / negative reviews.", proof: "Walkthrough Log", trainerNotes: "Check under the table for gum or residue." },
+                { id: "FOH-02", description: "Restroom Audit: 10-point check (Paper, Scent, Water, Lights).", priority: "High", riskLevel: "Medium", consequence: "Major driver of low NPS/Google scores.", proof: "Restroom Log", trainerNotes: "Mirror must be streak-free at head height." },
+                { id: "FOH-03", description: "Verify current promotional menus and table-talkers are correct.", priority: "Medium", riskLevel: "Low", consequence: "Misleading pricing/expired offers.", proof: "Menu Audit", trainerNotes: "Remove any menu with visible stains or tears." }
+            ]
+        },
+        {
             title: "Weekly Compliance Audits",
             department: "Management",
             frequency: "Weekly",
@@ -56,6 +82,31 @@ export const restaurants: PremiumPack = {
                 { id: "WSEC-01", description: "Inspect all fire exits for obstructions and functional panic bars.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment in fire emergency.", proof: "Exit Audit Sign-off", trainerNotes: "Ensure no boxes are stored in stairwells." },
                 { id: "WSEC-02", description: "Full audit of First Aid kits and AED battery status.", priority: "High", riskLevel: "High", consequence: "Inability to respond to guest cardiac event.", proof: "Medical Kit Log", trainerNotes: "Replace any expired dressings immediately." },
                 { id: "WSEC-03", description: "Reconcile high-value spirit inventory vs. POS sales.", priority: "High", riskLevel: "Medium", consequence: "Unchecked revenue leakage and internal theft.", proof: "Audit Report", trainerNotes: "Focus on Single Malts and Premium Gins." }
+            ]
+        },
+        {
+            title: "Kitchen Closing & Safety",
+            department: "Kitchen",
+            frequency: "Daily",
+            role: "Night Chef",
+            summary: "Life-safety and facility protection shutdown.",
+            icon: "moon",
+            tasks: [
+                { id: "KC-01", description: "Main Gas Valve shutdown and visual verification.", priority: "High", riskLevel: "High", consequence: "Overnight gas leak/Explosion risk.", proof: "Valve Photo/Mgr Witness", trainerNotes: "Physical handle must be 90-degrees to pipe." },
+                { id: "KC-02", description: "All pilot lights checked and burners off.", priority: "High", riskLevel: "High", consequence: "Fire hazard and energy waste.", proof: "Chef Sign-off", trainerNotes: "Run a hand over burners to check for radiant heat." },
+                { id: "KC-03", description: "Deep floor scrub and drain sanitation.", priority: "Medium", riskLevel: "Medium", consequence: "Pest attraction and organic buildup.", proof: "Cleaning Log", trainerNotes: "Use enzyme cleaner in all floor drains." }
+            ]
+        },
+        {
+            title: "Bar Closing & Security",
+            department: "Bar",
+            frequency: "Daily",
+            role: "Bar Head",
+            summary: "Revenue protection and night-lock protocols.",
+            icon: "lock",
+            tasks: [
+                { id: "BC-01", description: "Secure all premium spirits in the locked cage/vault.", priority: "High", riskLevel: "Medium", consequence: "Overnight internal or external theft.", proof: "Safe Lock Log", trainerNotes: "Count bottles of $100+ value during handover." },
+                { id: "BC-02", description: "Coffee machine: Backflush and group head clean.", priority: "Medium", riskLevel: "Low", consequence: "Scale buildup and poor morning coffee quality.", proof: "Cleaning Log", trainerNotes: "Use exactly one scoop of cleaning powder." }
             ]
         },
         {
