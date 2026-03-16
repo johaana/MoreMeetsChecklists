@@ -10,7 +10,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
  * Logic: Interval-Aware Scheduling (Monthly=1st, Weekly=Mon), Fixed Pickup Mapping, Full 240-task Deep Load.
  * UI: Replicated Pro-Tile Console Layout with Descriptive N/A logic.
  * Branding: High-Prestige Software Header (White on Green).
- * Visuals: Matte Background (Software-esque Canvas).
+ * Visuals: Extended Matte Background (Software-esque Canvas) with Smooth Borders.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -35,7 +35,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         BORDER: "CBD5E1",
         HEADER_BG: "1E293B",
         TILE_BG: "111827",
-        CONSOLE_BG: "F1F5F9" // Subtle Slate Grey for matte effect
+        CONSOLE_BG: "F1F5F9" 
     };
 
     const borderStyle = {
@@ -61,15 +61,21 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         border: { 
             top: { style: 'thin', color: { rgb: COLORS.PRIMARY_GREEN } },
             left: { style: 'thin', color: { rgb: COLORS.PRIMARY_GREEN } },
-            bottom: { style: 'medium', color: { rgb: "000000" } },
-            right: { style: 'medium', color: { rgb: "000000" } }
+            bottom: { style: 'thin', color: { rgb: COLORS.PRIMARY_GREEN } },
+            right: { style: 'thin', color: { rgb: COLORS.PRIMARY_GREEN } }
         }
     };
 
     const groupHeaderStyle = {
         font: { ...baseFont, bold: true, color: { rgb: "000000" }, sz: 12 },
         fill: { fgColor: { rgb: COLORS.ACCENT_GOLD } },
-        alignment: { horizontal: 'center', vertical: 'center' }
+        alignment: { horizontal: 'center', vertical: 'center' },
+        border: { 
+            top: { style: 'thin', color: { rgb: "000000" } },
+            left: { style: 'thin', color: { rgb: "000000" } },
+            bottom: { style: 'thin', color: { rgb: "000000" } },
+            right: { style: 'thin', color: { rgb: "000000" } }
+        }
     };
 
     const headerStyle = {
@@ -100,10 +106,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const inputStyle = {
         ...dataStyleCenter,
         fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
-    };
-
-    const bgStyle = {
-        fill: { fgColor: { rgb: COLORS.CONSOLE_BG } }
     };
 
     const addSoftwareHeader = (ws: WorkSheet, endCol: string = 'M') => {
@@ -174,10 +176,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const homeWs = utils.aoa_to_sheet(homeData);
     homeWs['!cols'] = [35, 5, 35, 5, 35].map(w => ({ wch: w }));
     
-    // Fill the background matte
-    const hRange = utils.decode_range(homeWs['!ref'] || 'A1:E22');
-    for (let R = hRange.s.r; R <= hRange.e.r; ++R) {
-        for (let C = hRange.s.c; C <= hRange.e.c; ++C) {
+    // Fill the background matte (Extended to O50)
+    for (let R = 0; R <= 50; R++) {
+        for (let C = 0; C <= 14; C++) {
             const c_ref = utils.encode_cell({c: C, r: R});
             if (!homeWs[c_ref]) homeWs[c_ref] = { v: "", t: 's' };
             if (!homeWs[c_ref].s) homeWs[c_ref].s = {};
