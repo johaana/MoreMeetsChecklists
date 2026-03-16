@@ -183,7 +183,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ],
         [], [],
         [{ v: "SYSTEM STATUS: ✅ VERIFIED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `REGISTERED TO: ${BUYER_EMAIL}`, s: { font: { sz: 8, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }]
+        [{ v: `REGISTERED TO: ${BUYER_EMAIL}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }]
     ];
 
     const homeWs = utils.aoa_to_sheet(homeData);
