@@ -7,7 +7,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * ROCS v4.2 - THE TOTAL GOVERNANCE SUITE (Commercial Grade)
  * Final Build: 2025-03-16
- * Logic: Fixed Pickup module mapping, Upgraded Dashboard/Incident Registry nomenclature.
+ * Logic: Fixed Pickup module mapping, Interval-Aware Scheduling, Upgraded Forensic Nomenclature.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -81,6 +81,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     };
 
     const addSoftwareHeader = (ws: WorkSheet) => {
+        // Clinical App Bar: Merged A1:C1, Navy, Left-Aligned Green Text
         utils.sheet_add_aoa(ws, [[{ 
             v: "◀ BACK TO HOME CONSOLE", 
             l: { Target: "#'HOME_CONSOLE'!A1" }, 
@@ -114,7 +115,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "▶ GOVERNANCE DASHBOARD", l: { Target: "#'DASHBOARD'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ INCIDENT REGISTRY", l: { Target: "#'INCIDENT_LOG'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "PROFIT PROTECTION", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
-        [{ v: "▶ ROI ENGINE", l: { Target: "#'ROI_ENGINE'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ MASTER PROTOCOL (EDIT ONCE)", l: { Target: "#'MASTER_PROTOCOL'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
+        [{ v: "▶ ROI ENGINE", l: { Target: "#'ROI_ENGINE'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ MASTER PROTOCOL (240+ SOPs)", l: { Target: "#'MASTER_PROTOCOL'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
         [], [], [],
         [{ v: "MOREMEETS™ | THE PROFESSIONAL STANDARD FOR OPERATIONAL EXCELLENCE", s: { font: { italic: true, sz: 10, bold: true, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
         [{ v: `ENCRYPTED COPY | REGISTERED TO: ${BUYER_EMAIL}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }]
@@ -151,7 +152,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(setupWs);
     utils.book_append_sheet(wb, setupWs, "SETUP");
 
-    // --- 03. MISSION LEDGER (FIXED PICKUP MAPPING) ---
+    // --- 03. MISSION LEDGER (Interval-Aware + Full Database) ---
     const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, { v: "ID", s: headerStyle },
         { v: "Requirement Description", s: headerStyle }, 
@@ -161,22 +162,32 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { v: "Frequency", s: intelStyle }, { v: "Risk Level", s: intelStyle },
         { v: "Consequence of Failure", s: intelStyle }, { v: "Trainer Notes", s: intelStyle }
     ];
-    const mData: any[][] = [[], [{ v: "MISSION LEDGER: 365-DAY EXECUTION TRAIL", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
+    const mData: any[][] = [[], [{ v: "MISSION LEDGER: FORENSIC EXECUTION TRAIL", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
     
     // MAPPING CHECKLISTS TO SETUP COLUMNS (C=Kitchen, D=Bar, E=Dining, F=EHS, G=Stat, H=Deliv, I=Pickup, J=Valet, K=Garden, L=StaffQ)
     const moduleMap: Record<number, string> = {
         0: "C", 1: "C", 2: "D", 3: "D", 4: "E", 5: "F", 6: "G", 7: "H", 8: "I", 9: "J", 10: "K", 11: "L"
     };
 
-    const startDate = new Date();
+    const startDate = new Date(2025, 2, 16); // Today: 16th March
     for (let i = 0; i < 7; i++) {
         const d = new Date(startDate); d.setDate(startDate.getDate() + i);
+        const is1stOfMonth = d.getDate() === 1;
+        const isMonday = d.getDay() === 1;
+
         [1, 2].forEach(bCode => {
             const bRow = bCode === 1 ? 6 : 7;
             item.checklists.forEach((c, cIdx) => {
                 const switchCol = moduleMap[cIdx] || "C";
                 const activeFormula = `'SETUP'!$${switchCol}$${bRow}`;
                 
+                // --- INTERVAL FILTERING ---
+                const isMonthlyModule = c.frequency === 'Monthly';
+                const isWeeklyModule = c.frequency === 'Weekly';
+                
+                if (isMonthlyModule && !is1stOfMonth) return;
+                if (isWeeklyModule && !isMonday) return;
+
                 c.tasks.forEach(t => {
                     const isHighRisk = t.riskLevel === 'High';
                     mData.push([
@@ -187,7 +198,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                         { v: "", s: inputStyle }, { v: "", s: inputStyle },
                         { v: isHighRisk ? "MGR SIGN" : "NONE", s: { ...dataStyleCenter, font: { bold: isHighRisk, color: { rgb: isHighRisk ? COLORS.RISK_RED : COLORS.TEXT_MUTED } } } },
                         { v: "", s: inputStyle },
-                        { v: "", s: inputStyle }, // NEW: Issue / Deviation column
+                        { v: "", s: inputStyle },
                         { t: 'f', f: `VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 6, FALSE)`, s: intelStyle },
                         { t: 'f', f: `VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 7, FALSE)`, s: intelStyle },
                         { t: 'f', f: `IF(${activeFormula}="NO", "-", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 4, FALSE))`, s: intelStyle },
@@ -203,7 +214,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
     utils.book_append_sheet(wb, mWs, "MISSION_LEDGER");
 
-    // --- 04. DASHBOARD (FIXED NOMENCLATURE & FORMULAS) ---
+    // --- 04. DASHBOARD (Fixed Nomenclature) ---
     const dashData = [
         [], [{ v: "EXECUTIVE SCORECARD: LIVE COMPLIANCE", s: { font: { sz: 20, bold: true } } }], [],
         [{ v: "Governance Metric", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Forensic Threshold", s: headerStyle }],
@@ -227,7 +238,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(rWs);
     utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
 
-    // --- 06. INCIDENT LOG ---
+    // --- 06. INCIDENT LOG (Maintenance written in full) ---
     const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Category (Theft / Maintenance / Safety)", s:headerStyle}, {v:"Forensic Description", s:headerStyle}, {v:"Estimated Financial Impact (₹)", s:headerStyle}, {v:"Resolution", s:headerStyle}];
     const iData = [[], [{v:"INCIDENT & LIABILITY REGISTRY", s:{font:{sz:18, bold:true}}}], [], iHeaders];
     const iWs = utils.aoa_to_sheet(iData);
@@ -235,23 +246,23 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(iWs);
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
-    // --- 07. HANDOVER ---
-    const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Handover Details", s:headerStyle}, {v:"Outstanding", s:headerStyle}, {v:"Proof (Digital Acknowledgement)", s:headerStyle}];
+    // --- 07. HANDOVER (Fixed Proof) ---
+    const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Handover Details", s:headerStyle}, {v:"Outstanding Tasks", s:headerStyle}, {v:"Proof (Digital Acknowledgement & Manager ID)", s:headerStyle}];
     const hData = [[], [{v:"SHIFT HANDOVER BRIDGE", s:{font:{sz:18, bold:true}}}], [], hHeaders];
     const hWs = utils.aoa_to_sheet(hData);
-    hWs['!cols'] = [15, 25, 25, 60, 60, 30].map(w => ({ wch: w }));
+    hWs['!cols'] = [15, 25, 25, 60, 60, 45].map(w => ({ wch: w }));
     addSoftwareHeader(hWs);
     utils.book_append_sheet(wb, hWs, "HANDOVER");
 
-    // --- 08. PERSONNEL ---
-    const pHeaders = [{v:"ID", s:headerStyle}, {v:"Staff Name", s:headerStyle}, {v:"Role", s:headerStyle}, {v:"Assigned Branch", s:headerStyle}, {v:"Phone", s:headerStyle}, {v:"Institutional Email", s:headerStyle}, {v:"Status", s:headerStyle}];
+    // --- 08. PERSONNEL (Restored Depth) ---
+    const pHeaders = [{v:"Staff ID", s:headerStyle}, {v:"Full Name", s:headerStyle}, {v:"Primary Role", s:headerStyle}, {v:"Assigned Branch", s:headerStyle}, {v:"Contact Number", s:headerStyle}, {v:"Institutional Email", s:headerStyle}, {v:"Status (Active/Inactive)", s:headerStyle}];
     const pData = [[], [{v:"PERSONNEL DIRECTORY", s:{font:{sz:18, bold:true}}}], [], pHeaders];
     const pWs = utils.aoa_to_sheet(pData);
-    pWs['!cols'] = [12, 35, 30, 25, 20, 35, 15].map(w => ({ wch: w }));
+    pWs['!cols'] = [12, 35, 30, 25, 20, 35, 25].map(w => ({ wch: w }));
     addSoftwareHeader(pWs);
     utils.book_append_sheet(wb, pWs, "PERSONNEL");
 
-    // --- 09. MASTER PROTOCOL (FULL LOAD) ---
+    // --- 09. MASTER PROTOCOL (Full 240+ Load) ---
     const mpData: any[][] = [[], [{ v: "MASTER PROTOCOL DATABASE", s: { font: { sz: 16, bold: true } } }], [{v:"Modify task strings here. Changes propagate instantly via VLOOKUP.", s:{font:{italic:true, color:{rgb:COLORS.TEXT_MUTED}}}}], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement / Step", s:headerStyle}, {v:"Consequence of Failure", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}]];
     item.checklists.forEach(c => {
         c.tasks.forEach(t => {
