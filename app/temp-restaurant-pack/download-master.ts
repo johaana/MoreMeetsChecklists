@@ -167,19 +167,16 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [],
         [{ v: "TODAY'S STATUS", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'left' } } }],
         [
-            { v: "Active Team:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'right' } } },
-            { t: 'f', f: `COUNTIF('PERSONNEL'!F:F, "*Active*") & " STAFF"`, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } } } },
-            null,
-            { v: "Shift Progress:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'right' } } },
-            { t: 'f', f: `IFERROR(TEXT(COUNTIFS('DAILY_CHECKLISTS'!E:E,"<>", 'DAILY_CHECKLISTS'!D:D, "<>N/A*")/MAX(1, COUNTIFS('DAILY_CHECKLISTS'!D:D, "<>N/A*", 'DAILY_CHECKLISTS'!D:D, "<>")), "0%"), "0%")`, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } } } },
-            null,
-            { v: "Open Incidents:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'right' } } },
-            { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN") & " ACTION REQ")`, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.RISK_RED } } } }
+            { v: "Shift Progress:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
+            { t: 'f', f: `IFERROR(TEXT(COUNTIFS('DAILY_CHECKLISTS'!E:E,"<>", 'DAILY_CHECKLISTS'!D:D, "<>N/A*")/MAX(1, COUNTIFS('DAILY_CHECKLISTS'!D:D, "<>N/A*", 'DAILY_CHECKLISTS'!D:D, "<>", 'DAILY_CHECKLISTS'!D:D, "<>Requirement Description")), "0%"), "0%")`, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }
         ],
         [
-            null, null, null,
-            { v: "Pending Criticals:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'right' } } },
-            { t: 'f', f: `COUNTIFS('DAILY_CHECKLISTS'!E:E, "", 'DAILY_CHECKLISTS'!D:D, "<>N/A*", 'DAILY_CHECKLISTS'!K:K, "High")`, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.ACCENT_GOLD } } } }
+            { v: "Open Incidents:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
+            { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'left' } } }
+        ],
+        [
+            { v: "Active Branch:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
+            { t: 'f', f: `'SETUP'!B6`, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'left' } } }
         ],
         [], [],
         [{ v: "SYSTEM STATUS: ✅ VERIFIED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
@@ -191,8 +188,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
-        { s: { r: 19, c: 0 }, e: { r: 19, c: 4 } },
-        { s: { r: 23, c: 0 }, e: { r: 23, c: 4 } }, { s: { r: 24, c: 0 }, e: { r: 24, c: 4 } },
+        { s: { r: 19, c: 0 }, e: { r: 19, c: 1 } },
+        { s: { r: 25, c: 0 }, e: { r: 25, c: 4 } }, { s: { r: 26, c: 0 }, e: { r: 26, c: 4 } },
         { s: { r: 6, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 8, c: 4 } },
         { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
         { s: { r: 14, c: 0 }, e: { r: 16, c: 0 } }, { s: { r: 14, c: 2 }, e: { r: 16, c: 2 } }, { s: { r: 14, c: 4 }, e: { r: 16, c: 4 } }
