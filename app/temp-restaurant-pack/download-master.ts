@@ -6,7 +6,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
  * ROCS v4.2 - The Operational Operating System (Enterprise Continuity Edition)
- * Refined for Alignment, Accountability Flow, and GM Practicality.
+ * Final Build: Phased Rollout, Hazardous Sign-Off, and Software Lobby UI.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -110,22 +110,22 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "GOVERNANCE INITIALIZATION", s: { font: { bold: true, sz: 10, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "STEP 1: CONFIGURE YOUR FLEET", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "▶ CLICK TO SET NICKNAMES & FACILITY MATRIX", l: { Target: "#'07_SETUP'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [null, { v: "▶ CONFIGURE BRANCH NICKNAMES & START DATES", l: { Target: "#'07_SETUP'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
         [{ v: "STEP 2: ACCESS THE CONTROL HUB", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "▶ CLICK TO OPEN COMMAND CENTER DASHBOARDS", l: { Target: "#'01_CONTROL_PANEL'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [null, { v: "▶ OPEN CENTRAL COMMAND & MODULE LINKS", l: { Target: "#'01_CONTROL_PANEL'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
-        [{ v: "STEP 3: START TODAY'S MISSION", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "▶ CLICK TO EXECUTE DAILY TECHNICAL TASKS", l: { Target: "#'03_TODAY_MISSION'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [{ v: "STEP 3: EXECUTE TODAY'S MISSION", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [null, { v: "▶ GO TO DAILY TECHNICAL TASK LEDGER", l: { Target: "#'03_TODAY_MISSION'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
-        [{ v: "STEP 4: MEASURE VALUE & ROI", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "▶ CLICK TO CALCULATE OPERATIONAL SAVINGS", l: { Target: "#'06_ROI_CALC'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [{ v: "STEP 4: CALCULATE SAVED VALUE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [null, { v: "▶ VIEW ROI & OPERATIONAL LEAKAGE ENGINE", l: { Target: "#'06_ROI_CALC'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
         [{ v: "--------------------------------------------------------------------------------------------------", s: { font: { color: { rgb: COLORS.BORDER_LIGHT } } } }],
         [{ v: "SUPPORT: more@moremeets.com | © 2025 MoreMeets", s: { font: { sz: 9, italic: true }, alignment: { horizontal: 'center' } } }]
     ];
     const insWs = utils.aoa_to_sheet(insData);
-    insWs['!cols'] = [{ wch: 25 }, { wch: 40 }, { wch: 10 }, { wch: 20 }, { wch: 30 }];
+    insWs['!cols'] = [{ wch: 30 }, { wch: 45 }, { wch: 10 }, { wch: 20 }, { wch: 30 }];
     insWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 5 } }, 
         { s: { r: 3, c: 0 }, e: { r: 3, c: 5 } },
@@ -133,7 +133,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { s: { r: 19, c: 0 }, e: { r: 19, c: 5 } },
         { s: { r: 20, c: 0 }, e: { r: 20, c: 5 } }
     ];
-    addWatermark(insWs, 25);
+    addWatermark(insWs, 20);
     utils.book_append_sheet(wb, insWs, "00_START_HERE");
 
     // --- 01. CONTROL PANEL (HUB) ---
@@ -156,16 +156,16 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "Branch 2:", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "'07_SETUP'!$B$7", s: { font: { bold: true } } }, { v: "Status:", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "IFERROR(COUNTIFS('03_TODAY_MISSION'!I:I, \"<>\", '03_TODAY_MISSION'!B:B, '07_SETUP'!$B$7)/MAX(1,COUNTIF('03_TODAY_MISSION'!B:B, '07_SETUP'!$B$7)), 0)", s: { font: { bold: true }, numFmt: '0%' } }]
     ];
     const cpWs = utils.aoa_to_sheet(cpData);
-    cpWs['!cols'] = [25, 30, 10, 30].map(w => ({ wch: w }));
+    cpWs['!cols'] = [30, 30, 10, 30].map(w => ({ wch: w }));
     cpWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 3 } }, 
         { s: { r: 3, c: 0 }, e: { r: 3, c: 3 } },
         { s: { r: 5, c: 0 }, e: { r: 5, c: 3 } },
-        { s: { r: 6, c: 0 }, e: { r: 6, c: 1 } }, { s: { r: 6, c: 3 }, e: { r: 6, c: 4 } },
+        { s: { r: 6, c: 0 }, e: { r: 6, c: 1 } }, { s: { r: 6, c: 2 }, e: { r: 6, c: 3 } },
         { s: { r: 8, c: 0 }, e: { r: 8, c: 3 } },
-        { s: { r: 9, c: 0 }, e: { r: 9, c: 1 } }, { s: { r: 9, c: 3 }, e: { r: 9, c: 4 } },
+        { s: { r: 9, c: 0 }, e: { r: 9, c: 1 } }, { s: { r: 9, c: 2 }, e: { r: 9, c: 3 } },
         { s: { r: 11, c: 0 }, e: { r: 11, c: 3 } },
-        { s: { r: 12, c: 0 }, e: { r: 12, c: 1 } }, { s: { r: 12, c: 3 }, e: { r: 12, c: 4 } },
+        { s: { r: 12, c: 0 }, e: { r: 12, c: 1 } }, { s: { r: 12, c: 2 }, e: { r: 12, c: 3 } },
         { s: { r: 14, c: 0 }, e: { r: 14, c: 3 } }
     ];
     addWatermark(cpWs, 20);
@@ -180,7 +180,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { v: "ID", s: headerBlockStyle }, 
             { v: "BRANCH NICKNAME", s: headerBlockStyle }, 
             { v: "ROLLOUT DATE", s: headerBlockStyle }, 
-            { v: "VIEW MISSION FOR", s: headerBlockStyle }, 
             { v: "BAR?", s: headerBlockStyle }, 
             { v: "GARDEN?", s: headerBlockStyle }, 
             { v: "VALET?", s: headerBlockStyle }, 
@@ -190,7 +189,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [
             { v: 1, s: centerCellStyle },
             { v: "Bandra Main", s: inputStyle },
-            { v: new Date(), t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } },
             { v: new Date(), t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } },
             { v: "YES", s: inputStyle },
             { v: "NO", s: inputStyle },
@@ -202,7 +200,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { v: 2, s: centerCellStyle },
             { v: "Ghatkopar West", s: inputStyle },
             { v: new Date(), t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } },
-            { v: new Date(), t: 'd', s: { ...inputStyle, numFmt: 'dd-mm-yyyy' } },
             { v: "NO", s: inputStyle },
             { v: "YES", s: inputStyle },
             { v: "YES", s: inputStyle },
@@ -212,8 +209,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     const setupWs = utils.aoa_to_sheet(setupData);
     addBackButton(setupWs);
-    addWatermark(setupWs, 15);
-    setupWs['!cols'] = [{ wch: 25 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 40 }];
+    addWatermark(setupWs, 20);
+    setupWs['!cols'] = [{ wch: 30 }, { wch: 25 }, { wch: 15 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 40 }];
     utils.book_append_sheet(wb, setupWs, "07_SETUP");
 
     // --- 03_TODAY_MISSION ---
@@ -221,17 +218,17 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { v: "Date", s: headerBlockStyle }, // A
         { v: "Branch Name", s: headerBlockStyle }, // B
         { v: "Task ID", s: headerBlockStyle }, // C
-        { v: "Module / Sector", s: headerBlockStyle }, // D
-        { v: "Instruction / Control Step", s: headerBlockStyle }, // E
+        { v: "Sector", s: headerBlockStyle }, // D
+        { v: "Technical Requirement", s: headerBlockStyle }, // E
         { v: "Risk", s: headerBlockStyle }, // F
         { v: "Freq", s: headerBlockStyle }, // G
-        { v: "Actioned By (Name)", s: headerBlockStyle }, // H
+        { v: "Actioned By (Full Name)", s: headerBlockStyle }, // H
         { v: "Date Done", s: headerBlockStyle }, // I
         { v: "Sign-Off Required?", s: headerBlockStyle }, // J
         { v: "Manager Sign-Off", s: headerBlockStyle }, // K
         { v: "Trainer Notes", s: headerBlockStyle } // L
     ];
-    const missionData: any[][] = [[], [{ v: "DAILY MISSION LEDGER: ZERO-AMBIGUITY EXECUTION", s: { font: { sz: 18, bold: true } } }], [], missionHeaders];
+    const missionData: any[][] = [[], [{ v: "DAILY MISSION LEDGER: PHASED GOVERNANCE FLOW", s: { font: { sz: 18, bold: true } } }], [], missionHeaders];
     
     const startDate = new Date();
     for (let b = 1; b <= 2; b++) {
@@ -257,9 +254,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                             { v: t.description, s: leftCellStyle },
                             { v: t.riskLevel || "Operational", s: centerCellStyle },
                             { v: freq.toUpperCase(), s: centerCellStyle },
-                            { v: "", s: inputStyle }, // Actioned By
+                            { v: "", s: inputStyle }, // Actioned By (Name)
                             { v: "", s: inputStyle }, // Date Done
-                            { v: t.riskLevel === 'High' ? "MGR SIGN" : "NONE", s: centerCellStyle }, // Sign-off Instruction
+                            { v: t.riskLevel === 'High' ? "MGR SIGN" : "NONE", s: { ...centerCellStyle, font: { bold: true, color: { rgb: t.riskLevel === 'High' ? COLORS.DANGER_RED : COLORS.TEXT_MUTED } } } }, 
                             { v: "", s: inputStyle }, // Manager Sign-off
                             { v: t.trainerNotes, s: { ...leftCellStyle, font: { italic: true, sz: 9, color: { rgb: COLORS.TEXT_MUTED } } } }
                         ]);
@@ -271,7 +268,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const mWs = utils.aoa_to_sheet(missionData);
     addBackButton(mWs);
     addWatermark(mWs, 20);
-    mWs['!cols'] = [25, 18, 10, 20, 50, 12, 10, 25, 15, 18, 20, 45].map(w => ({ wch: w }));
+    mWs['!cols'] = [30, 18, 10, 20, 50, 12, 10, 25, 15, 18, 20, 45].map(w => ({ wch: w }));
     mWs['!autofilter'] = { ref: "A4:L10000" };
     utils.book_append_sheet(wb, mWs, "03_TODAY_MISSION");
 
@@ -296,7 +293,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const dWs = utils.aoa_to_sheet(dashData);
     addBackButton(dWs);
     addWatermark(dWs, 20);
-    dWs['!cols'] = [25, 20, 20, 25].map(w => ({ wch: w }));
+    dWs['!cols'] = [30, 20, 20, 25].map(w => ({ wch: w }));
     dWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
     utils.book_append_sheet(wb, dWs, "02_DASHBOARD");
 
@@ -307,7 +304,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const hoWs = utils.aoa_to_sheet(hoData);
     addBackButton(hoWs);
     addWatermark(hoWs, 20);
-    hoWs['!cols'] = [25, 20, 15, 25, 45, 15].map(w => ({ wch: w }));
+    hoWs['!cols'] = [30, 20, 15, 25, 45, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, hoWs, "04_SHIFT_HANDOVER");
 
     // --- 05_INCIDENT_LOG ---
@@ -317,7 +314,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const incWs = utils.aoa_to_sheet(incData);
     addBackButton(incWs);
     addWatermark(incWs, 20);
-    incWs['!cols'] = [25, 20, 20, 45, 20, 15].map(w => ({ wch: w }));
+    incWs['!cols'] = [30, 20, 20, 45, 20, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, incWs, "05_INCIDENT_LOG");
 
     // --- 06_ROI_CALC ---
@@ -333,7 +330,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const roiWs = utils.aoa_to_sheet(roiData);
     addBackButton(roiWs);
     addWatermark(roiWs, 20);
-    roiWs['!cols'] = [25, 25, 45].map(w => ({ wch: w }));
+    roiWs['!cols'] = [30, 25, 45].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, roiWs, "06_ROI_CALC");
 
     writeFile(wb, `${item.title.replace(/ /g, '_')}_V4.2_ENTERPRISE.xlsx`);

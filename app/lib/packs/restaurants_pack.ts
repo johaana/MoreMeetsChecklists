@@ -54,18 +54,8 @@ export const restaurants: PremiumPack = {
             icon: "shield-check",
             tasks: [
                 { id: "SEC-01", description: "Inspect all fire exits for obstructions and functional panic bars.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment in fire emergency.", proof: "Exit Audit Sign-off", trainerNotes: "Ensure no boxes are stored in stairwells." },
-                { id: "SEC-02", description: "Full audit of First Aid kits and AED battery status.", priority: "High", riskLevel: "High", consequence: "Inability to respond to guest cardiac event.", proof: "Medical Kit Log", trainerNotes: "Replace any expired dressings immediately." }
-            ]
-        },
-        {
-            title: "Pest & Environment Control",
-            department: "Facilities",
-            frequency: "Monthly",
-            role: "Maintenance",
-            summary: "Deep-level infrastructure sanitization.",
-            icon: "bug",
-            tasks: [
-                { id: "PEST-01", description: "Audit all external bait stations and perimeter seals.", priority: "High", riskLevel: "Medium", consequence: "Structural infestation and closure.", proof: "Vendor Verification Log", trainerNotes: "Look for new gnaw marks on back-door sweeps." }
+                { id: "SEC-02", description: "Full audit of First Aid kits and AED battery status.", priority: "High", riskLevel: "High", consequence: "Inability to respond to guest cardiac event.", proof: "Medical Kit Log", trainerNotes: "Replace any expired dressings immediately." },
+                { id: "SEC-03", description: "Review and file statutory licenses (FSSAI, Fire, Health).", priority: "High", riskLevel: "High", consequence: "Legal closure and heavy penalties.", proof: "License Repository Audit", trainerNotes: "Renewals must start 60 days before expiry." }
             ]
         },
         {
@@ -79,6 +69,17 @@ export const restaurants: PremiumPack = {
                 { id: "BAR-01", description: "Reconcile physical high-value spirit stock against POS opening sales.", priority: "High", riskLevel: "High", consequence: "Internal theft and revenue leakage.", proof: "Liquor Inventory Sheet", trainerNotes: "Measure open bottles using a weight scale or jigger." },
                 { id: "BAR-02", description: "Clean and sanitize all beer tap lines.", priority: "High", riskLevel: "Medium", consequence: "Bacterial growth and off-flavor beer.", proof: "Cleaning Log", trainerNotes: "Flush with food-grade line cleaner for 15 mins." },
                 { id: "BAR-03", description: "Inspect ice machines for mold or scale buildup.", priority: "High", riskLevel: "High", consequence: "Contaminated ice causing guest illness.", proof: "Cleaning Audit", trainerNotes: "Discard ice once a week for deep bin sanitation." }
+            ]
+        },
+        {
+            title: "Valet & Parking Security",
+            department: "Security",
+            frequency: "Daily",
+            role: "Security Supervisor",
+            summary: "Risk mitigation for third-party assets.",
+            icon: "car",
+            tasks: [
+                { id: "VAL-01", description: "Audit key cabinet security and camera coverage.", priority: "High", riskLevel: "High", consequence: "Unauthorized vehicle removal and liability.", proof: "Key Log Audit", trainerNotes: "Never leave keys on top of the counter." }
             ]
         }
     ]
