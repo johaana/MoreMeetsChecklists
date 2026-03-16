@@ -47,27 +47,32 @@ export const restaurants: PremiumPack = {
                 { id: "KO-07", description: "Verify functionality of all kitchen exhaust systems.", priority: "High", riskLevel: "High", consequence: "Smoke buildup and fire risk.", proof: "Visual Check", trainerNotes: "Listen for unusual motor noise." },
                 { id: "KO-08", description: "Prepare sanitized sanitizer buckets for all workstations.", priority: "Medium", riskLevel: "Medium", consequence: "Poor hygiene during prep.", proof: "Visual Audit", trainerNotes: "Change water every 2 hours." },
                 { id: "KO-09", description: "Organize raw prep area according to color-coding rules.", priority: "High", riskLevel: "High", consequence: "Cross-contamination.", proof: "Visual Check", trainerNotes: "Red boards for meat, green for veg." },
-                { id: "KO-10", description: "Test all dishwasher chemical levels.", priority: "High", riskLevel: "Medium", consequence: "Dirty plates reaching guests.", proof: "Chemical Log", trainerNotes: "Ensure rinse aid is above 50%." }
+                { id: "KO-10", description: "Test all dishwasher chemical levels.", priority: "High", riskLevel: "Medium", consequence: "Dirty plates reaching guests.", proof: "Chemical Log", trainerNotes: "Ensure rinse aid is above 50%." },
+                { id: "KO-11", description: "Check availability of blue detectable band-aids.", priority: "Medium", riskLevel: "Low", consequence: "Contaminated food reaching guests.", proof: "Visual Check", trainerNotes: "Mandatory for food handlers." },
+                { id: "KO-12", description: "Verify pest control bait station placement.", priority: "High", riskLevel: "High", consequence: "Infestation risks.", proof: "Pest Log", trainerNotes: "Do not move stations." },
+                { id: "KO-13", description: "Check water filter pressure for ice machine.", priority: "Medium", riskLevel: "Low", consequence: "Poor ice quality.", proof: "Pressure Gauge", trainerNotes: "Filter change req every 6 months." },
+                { id: "KO-14", description: "Inspect grease trap for capacity/odors.", priority: "Medium", riskLevel: "Medium", consequence: "Drainage blockages.", proof: "Maintenance Log", trainerNotes: "Schedule pump out if >75% full." },
+                { id: "KO-15", description: "Check oven gaskets for heat leaks.", priority: "Medium", riskLevel: "Low", consequence: "Energy waste/Uneven cooking.", proof: "Visual Check", trainerNotes: "Seals must be supple and intact." }
             ]
         },
         {
-            title: "Bar Opening & Beverage Setup",
+            title: "Bar Opening & Setup",
             department: "Bar",
             frequency: "Daily",
             role: "Bar Manager",
-            summary: "Beverage service readiness and high-value stock protection.",
+            summary: "Beverage service readiness and revenue protection.",
             icon: "glass-water",
             tasks: [
-                { id: "BO-01", description: "Ice machine deep flush and visual hygiene check.", priority: "High", riskLevel: "Medium", consequence: "Ice contamination and poor drink quality.", proof: "Visual Audit", trainerNotes: "Look for pink mold in the top corners." },
-                { id: "BO-02", description: "Reconcile premium spirit display bottles against previous night closing.", priority: "High", riskLevel: "Medium", consequence: "Unchecked high-value revenue leakage.", proof: "Stock Sheet", trainerNotes: "Check seals on 'Display Only' rare bottles." },
-                { id: "BO-03", description: "Fruit & Garnish prep: Date-code all containers.", priority: "Medium", riskLevel: "Medium", consequence: "Food poisoning from cross-contaminated citrus.", proof: "Date Tags", trainerNotes: "Garnishes must be discarded after 24 hours." },
-                { id: "BO-04", description: "Check draft beer line temperatures and pressure.", priority: "High", riskLevel: "Medium", consequence: "Poor pour quality and wastage.", proof: "Pressure Gauge Log", trainerNotes: "Target pressure: 12-14 PSI for most ales." },
-                { id: "BO-05", description: "Sanitize all bar tools and glassware.", priority: "High", riskLevel: "Medium", consequence: "Unpleasant odors and bacterial risk.", proof: "Visual Audit", trainerNotes: "Use separate polish cloths for crystal." },
-                { id: "BO-06", description: "Restock garnishes and stirrers.", priority: "Low", riskLevel: "Low", consequence: "Service delays.", proof: "Visual Check", trainerNotes: "Keep garnish tray on ice." },
-                { id: "BO-07", description: "Test soda fountain syrup levels.", priority: "Medium", riskLevel: "Low", consequence: "Flat or tasteless drinks.", proof: "Visual Check", trainerNotes: "Check CO2 tank pressure." },
-                { id: "BO-08", description: "Log opening stock of expensive wines.", priority: "High", riskLevel: "Medium", consequence: "Internal theft.", proof: "Wine Log", trainerNotes: "Check cork status." },
-                { id: "BO-09", description: "Clean bar counters and under-bar mats.", priority: "Medium", riskLevel: "Low", consequence: "Fruit fly attraction.", proof: "Cleaning Log", trainerNotes: "Use enzyme cleaner for mats." },
-                { id: "BO-10", description: "Check functionality of bar refrigeration.", priority: "High", riskLevel: "High", consequence: "Spoiled garnishes and warm beer.", proof: "Temp Log", trainerNotes: "Maintain at 2-4°C." }
+                { id: "BO-01", description: "Ice machine deep flush and visual hygiene check.", priority: "High", riskLevel: "Medium", consequence: "Ice contamination.", proof: "Visual Audit", trainerNotes: "Look for pink mold." },
+                { id: "BO-02", description: "Reconcile spirit inventory against previous closing.", priority: "High", riskLevel: "Medium", consequence: "Internal theft/leakage.", proof: "Stock Sheet", trainerNotes: "Check seals on rare malts." },
+                { id: "BO-03", description: "Date-code all fresh fruit garnishes.", priority: "Medium", riskLevel: "Medium", consequence: "Food poisoning risk.", proof: "Date Tags", trainerNotes: "Discard after 24 hours." },
+                { id: "BO-04", description: "Check draft beer line pressure (12-14 PSI).", priority: "High", riskLevel: "Medium", consequence: "Waste/Poor pour.", proof: "Pressure Log", trainerNotes: "Check gas tank level." },
+                { id: "BO-05", description: "Sanitize all speed pours and jiggers.", priority: "High", riskLevel: "Medium", consequence: "Cross-contamination.", proof: "Visual Check", trainerNotes: "Soak in hot sanitizer." },
+                { id: "BO-06", description: "Test soda fountain syrup concentrations.", priority: "Medium", riskLevel: "Low", consequence: "Poor drink quality.", proof: "Taste Test", trainerNotes: "Ensure 5:1 ratio." },
+                { id: "BO-07", description: "Check wine fridge temperature (8-12°C).", priority: "High", riskLevel: "Medium", consequence: "Spoiled wine inventory.", proof: "Temp Log", trainerNotes: "Red wine at 16°C." },
+                { id: "BO-08", description: "Clean coffee group heads and backflush.", priority: "Medium", riskLevel: "Low", consequence: "Bitter coffee/Scaling.", proof: "Cleaning Log", trainerNotes: "Use specialized powder." },
+                { id: "BO-09", description: "Verify garnish ice-well is stocked and clean.", priority: "Low", riskLevel: "Low", consequence: "Warm garnishes.", proof: "Visual Check", trainerNotes: "Use filtered water ice." },
+                { id: "BO-10", description: "Inspect glassware for chips and cracks.", priority: "High", riskLevel: "High", consequence: "Guest injury/Lip cuts.", proof: "Visual Audit", trainerNotes: "Discard chipped glass instantly." }
             ]
         },
         {
@@ -75,138 +80,64 @@ export const restaurants: PremiumPack = {
             department: "Service",
             frequency: "Daily",
             role: "Floor Manager",
-            summary: "Brand standards and environmental comfort audits.",
+            summary: "Brand standards and guest comfort audits.",
             icon: "layout",
             tasks: [
-                { id: "FOH-01", description: "Walk-through: Inspect all guest tables for wobble and cleanliness.", priority: "Medium", riskLevel: "Low", consequence: "Poor guest experience / negative reviews.", proof: "Walkthrough Log", trainerNotes: "Check under the table for gum or residue." },
-                { id: "FOH-02", description: "Restroom Audit: 10-point check (Paper, Scent, Water, Lights).", priority: "High", riskLevel: "Medium", consequence: "Major driver of low NPS/Google scores.", proof: "Restroom Log", trainerNotes: "Mirror must be streak-free at head height." },
-                { id: "FOH-03", description: "Verify current promotional menus and table-talkers are correct.", priority: "Medium", riskLevel: "Low", consequence: "Misleading pricing/expired offers.", proof: "Menu Audit", trainerNotes: "Remove any menu with visible stains or tears." },
-                { id: "FOH-04", description: "Check FOH ambient lighting levels for the shift theme.", priority: "Medium", riskLevel: "Low", consequence: "Wrong ambiance.", proof: "Visual Check", trainerNotes: "Use dimmer presets 1-4." },
-                { id: "FOH-05", description: "Verify playlist and volume levels are appropriate.", priority: "Low", riskLevel: "Low", consequence: "Atmosphere mismatch.", proof: "Audio Audit", trainerNotes: "Level 3 for lunch, 6 for dinner." },
-                { id: "FOH-06", description: "Check host stand readiness (Menus, Tablets, Pens).", priority: "Medium", riskLevel: "Low", consequence: "Chaotic arrivals.", proof: "Visual Check", trainerNotes: "Wipe down leather covers." },
-                { id: "FOH-07", description: "Brief servers on VIP reservations and guest preferences.", priority: "High", riskLevel: "Low", consequence: "Missed personalization.", proof: "Briefing Log", trainerNotes: "Mention birthdays and anniversaries." },
-                { id: "FOH-08", description: "Inspect staff uniforms and grooming.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution.", proof: "Staff Log", trainerNotes: "Ironed shirts are mandatory." },
-                { id: "FOH-09", description: "Verify AC/Heating set points.", priority: "High", riskLevel: "Low", consequence: "Guest discomfort.", proof: "BMS Reading", trainerNotes: "Target: 22°C." },
-                { id: "FOH-10", description: "Check server station stock (Cutlery, Napkins).", priority: "Medium", riskLevel: "Low", consequence: "Server frustration/Service lag.", proof: "Visual Check", trainerNotes: "Napkins must be polished-flat." }
+                { id: "FOH-01", description: "Table Wobble & Cleanliness Walkthrough.", priority: "Medium", riskLevel: "Low", consequence: "Negative guest reviews.", proof: "Walkthrough Log", trainerNotes: "Check under table edges." },
+                { id: "FOH-02", description: "Restroom 10-Point Audit (Paper, Scent, Water).", priority: "High", riskLevel: "Medium", consequence: "Low Google/NPS scores.", proof: "Restroom Log", trainerNotes: "Mirror must be streak-free." },
+                { id: "FOH-03", description: "Verify Menu & Table Talker pricing accuracy.", priority: "High", riskLevel: "Medium", consequence: "Legal billing disputes.", proof: "Menu Audit", trainerNotes: "Remove stained menus." },
+                { id: "FOH-04", description: "Check ambient lighting/Dimmer presets.", priority: "Medium", riskLevel: "Low", consequence: "Wrong ambiance.", proof: "Visual Check", trainerNotes: "Level 4 for dinner." },
+                { id: "FOH-05", description: "Test Playlist & Volume Levels.", priority: "Low", riskLevel: "Low", consequence: "Atmosphere mismatch.", proof: "Audio Audit", trainerNotes: "Background, not foreground." },
+                { id: "FOH-06", description: "Host Stand Readiness (Tablets, Menus).", priority: "Medium", riskLevel: "Low", consequence: "Chaotic arrival.", proof: "Visual Check", trainerNotes: "Clean leather folders." },
+                { id: "FOH-07", description: "VIP/Reservation Briefing with Team.", priority: "High", riskLevel: "Low", consequence: "Missed personalization.", proof: "Briefing Log", trainerNotes: "Mention regular guests." },
+                { id: "FOH-08", description: "Grooming & Uniform Audit.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution.", proof: "Staff Log", trainerNotes: "Ironed shirts mandatory." },
+                { id: "FOH-09", description: "AC/Heating Set Point Check (22°C).", priority: "High", riskLevel: "Low", consequence: "Guest discomfort.", proof: "BMS Reading", trainerNotes: "Adjust 1hr before open." },
+                { id: "FOH-10", description: "Server Station Polish & Restock.", priority: "Medium", riskLevel: "Low", consequence: "Service lag.", proof: "Visual Check", trainerNotes: "Steam-polish cutlery." }
             ]
         },
         {
-            title: "Environment, Health & Safety (EHS)",
-            department: "Compliance",
-            frequency: "Weekly",
-            role: "General Manager",
-            summary: "Mitigating life-safety and legal liability risks.",
-            icon: "hard-hat",
-            tasks: [
-                { id: "EHS-01", description: "Inspect all fire exits for obstructions and functional panic bars.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment in fire emergency.", proof: "Exit Audit Sign-off", trainerNotes: "Ensure no boxes are stored in stairwells." },
-                { id: "EHS-02", description: "Full audit of First Aid kits and AED battery status.", priority: "High", riskLevel: "High", consequence: "Inability to respond to guest cardiac event.", proof: "Medical Kit Log", trainerNotes: "Replace any expired dressings immediately." },
-                { id: "EHS-03", description: "Check all electrical panels for loose wiring or burning smells.", priority: "High", riskLevel: "High", consequence: "Short circuit and structural fire.", proof: "Electrical Log", trainerNotes: "Use a thermal gun if available to check for hotspots." },
-                { id: "EHS-04", description: "Verify floor slip-resistance and proper mat placement.", priority: "High", riskLevel: "Medium", consequence: "Slip and fall litigation.", proof: "Safety Walkthrough", trainerNotes: "Check transitions between kitchen and carpet." },
-                { id: "EHS-05", description: "Test emergency lighting backup duration.", priority: "High", riskLevel: "High", consequence: "Blackout panic.", proof: "Test Log", trainerNotes: "Hold button for 10 seconds." },
-                { id: "EHS-06", description: "Check fire extinguisher pressure and seal integrity.", priority: "High", riskLevel: "High", consequence: "Non-functional safety equipment.", proof: "Pressure Gauge Log", trainerNotes: "Must be in the green zone." },
-                { id: "EHS-07", description: "Audit chemical storage for SDS availability.", priority: "Medium", riskLevel: "Medium", consequence: "Hazardous exposure liability.", proof: "Document Audit", trainerNotes: "Sheets must be in a yellow folder." },
-                { id: "EHS-08", description: "Inspect structural boundaries for pest entry points.", priority: "High", riskLevel: "High", consequence: "Infestation closure.", proof: "Visual Audit", trainerNotes: "Check door sweeps and pipe gaps." },
-                { id: "EHS-09", description: "Verify gas leak detection alarm status.", priority: "High", riskLevel: "High", consequence: "Explosion risk.", proof: "System Test", trainerNotes: "Test monthly using test gas." },
-                { id: "EHS-10", description: "Review staff safety training completion rates.", priority: "High", riskLevel: "Medium", consequence: "Operational negligence.", proof: "Training Dashboard", trainerNotes: "Target: 100% completion." }
-            ]
-        },
-        {
-            title: "Delivery & Takeaway Operations",
+            title: "Delivery & Takeaway Control",
             department: "Logistics",
             frequency: "Daily",
             role: "Dispatch Coordinator",
-            summary: "Managing off-site brand and safety standards.",
+            summary: "Off-site brand and safety management.",
             icon: "truck",
             tasks: [
-                { id: "DEL-01", description: "Check all delivery thermal bags for hygiene and odors.", priority: "High", riskLevel: "Medium", consequence: "Poor food quality/complaints.", proof: "Visual Audit", trainerNotes: "Wipe inside with alcohol every morning." },
-                { id: "DEL-02", description: "Verify tamper-evident seal stock levels.", priority: "High", riskLevel: "High", consequence: "Food tampering risks.", proof: "Stock Sheet", trainerNotes: "Minimum 500 seals on hand." },
-                { id: "DEL-03", description: "Audit delivery driver grooming and vehicle cleanliness.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution.", proof: "Driver Log", trainerNotes: "Helmets must be clean." },
-                { id: "DEL-04", description: "Verify correct order handoff procedure (Receipt Check).", priority: "High", riskLevel: "Medium", consequence: "Wrong orders/Financial loss.", proof: "Order Log", trainerNotes: "Match order ID 3 times." },
-                { id: "DEL-05", description: "Check takeaway packaging for heat retention integrity.", priority: "Medium", riskLevel: "Low", consequence: "Cold food delivery.", proof: "Visual Check", trainerNotes: "Ensure lids are tightly fitted." }
+                { id: "DEL-01", description: "Thermal Bag Hygiene & Odor Audit.", priority: "High", riskLevel: "Medium", consequence: "Food quality complaints.", proof: "Visual Audit", trainerNotes: "Wipe with alcohol." },
+                { id: "DEL-02", description: "Verify Tamper-Evident Seal Inventory.", priority: "High", riskLevel: "High", consequence: "Tampering risks.", proof: "Stock Sheet", trainerNotes: "Min 500 on hand." },
+                { id: "DEL-03", description: "Driver Grooming & Vehicle Cleanliness Check.", priority: "Medium", riskLevel: "Low", consequence: "Brand damage.", proof: "Driver Log", trainerNotes: "Helmets must be clean." },
+                { id: "DEL-04", description: "Order ID Handoff Procedure (3-Point Match).", priority: "High", riskLevel: "Medium", consequence: "Wrong orders/Financial loss.", proof: "Order Log", trainerNotes: "Receipt, Bag, System." },
+                { id: "DEL-05", description: "Packaging Heat-Retention Integrity Check.", priority: "Medium", riskLevel: "Low", consequence: "Cold food delivery.", proof: "Visual Check", trainerNotes: "Lids must be airtight." }
             ]
         },
         {
-            title: "Kitchen Closing & Safety",
-            department: "Kitchen",
-            frequency: "Daily",
-            role: "Night Chef",
-            summary: "Life-safety and facility protection shutdown.",
-            icon: "moon",
+            title: "EHS & Safety Audit",
+            department: "Compliance",
+            frequency: "Weekly",
+            role: "General Manager",
+            summary: "Life-safety and legal liability mitigation.",
+            icon: "hard-hat",
             tasks: [
-                { id: "KC-01", description: "Main Gas Valve shutdown and visual verification.", priority: "High", riskLevel: "High", consequence: "Overnight gas leak/Explosion risk.", proof: "Valve Photo/Mgr Witness", trainerNotes: "Physical handle must be 90-degrees to pipe." },
-                { id: "KC-02", description: "All pilot lights checked and burners off.", priority: "High", riskLevel: "High", consequence: "Fire hazard and energy waste.", proof: "Chef Sign-off", trainerNotes: "Run a hand over burners to check for radiant heat." },
-                { id: "KC-03", description: "Deep floor scrub and drain sanitation.", priority: "Medium", riskLevel: "Medium", consequence: "Pest attraction and organic buildup.", proof: "Cleaning Log", trainerNotes: "Use enzyme cleaner in all floor drains." },
-                { id: "KC-04", description: "Check all refrigerator doors are tightly closed.", priority: "High", riskLevel: "High", consequence: "Overnight stock loss.", proof: "Visual Check", trainerNotes: "Check seals for gaps." },
-                { id: "KC-05", description: "Clean and empty grease traps.", priority: "Medium", riskLevel: "Medium", consequence: "Blockages and odors.", proof: "Maintenance Log", trainerNotes: "Use hot water flush after cleaning." }
+                { id: "EHS-01", description: "Fire Exit Clearance & Panic Bar Test.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment risk.", proof: "Exit Log", trainerNotes: "No storage in stairwells." },
+                { id: "EHS-02", description: "First Aid & AED Battery/Stock Audit.", priority: "High", riskLevel: "High", consequence: "Medical response failure.", proof: "Medical Log", trainerNotes: "Check expiry on pads." },
+                { id: "EHS-03", description: "Electrical Panel Hotspot/Odor Audit.", priority: "High", riskLevel: "High", consequence: "Structural fire.", proof: "Electrical Log", trainerNotes: "Use thermal gun." },
+                { id: "EHS-04", description: "Floor Slip-Resistance & Mat Audit.", priority: "High", riskLevel: "Medium", consequence: "Slip & Fall litigation.", proof: "Walkthrough", trainerNotes: "Check kitchen thresholds." },
+                { id: "EHS-05", description: "Emergency Lighting Backup Test.", priority: "High", riskLevel: "High", consequence: "Blackout panic.", proof: "Test Log", trainerNotes: "10-second hold test." }
             ]
         },
         {
-            title: "Bar Closing & Security",
-            department: "Bar",
-            frequency: "Daily",
-            role: "Bar Head",
-            summary: "Revenue protection and night-lock protocols.",
-            icon: "lock",
-            tasks: [
-                { id: "BC-01", description: "Secure all premium spirits in the locked cage/vault.", priority: "High", riskLevel: "Medium", consequence: "Overnight internal or external theft.", proof: "Safe Lock Log", trainerNotes: "Count bottles of $100+ value during handover." },
-                { id: "BC-02", description: "Coffee machine: Backflush and group head clean.", priority: "Medium", riskLevel: "Low", consequence: "Scale buildup and poor morning coffee quality.", proof: "Cleaning Log", trainerNotes: "Use exactly one scoop of cleaning powder." },
-                { id: "BC-03", description: "Clean bar mats and glass-wash area.", priority: "Low", riskLevel: "Low", consequence: "Sour odors.", proof: "Visual Check", trainerNotes: "Hang mats to dry." },
-                { id: "BC-04", description: "Dispose of all fruit garnishes.", priority: "Medium", riskLevel: "Medium", consequence: "Fermentation/Health risk.", proof: "Visual Check", trainerNotes: "Never reuse garnish from previous day." },
-                { id: "BC-05", description: "Final till reconciliation and cash drop.", priority: "High", riskLevel: "High", consequence: "Theft.", proof: "Cash Drop Slip", trainerNotes: "Manager witness required." }
-            ]
-        },
-        {
-            title: "Statutory & Strategic Governance",
+            title: "Statutory & Licensing",
             department: "Executive",
             frequency: "Monthly",
             role: "Owner/COO",
-            summary: "Deep-layer risk mitigation and statutory review.",
+            summary: "License renewal and legal governance.",
             icon: "landmark",
             tasks: [
-                { id: "MSTRAT-01", description: "Review and file statutory licenses (FSSAI, Fire, Health).", priority: "High", riskLevel: "High", consequence: "Legal closure and heavy penalties.", proof: "License Repository Audit", trainerNotes: "Renewals must start 60 days before expiry." },
-                { id: "MSTRAT-02", description: "Deep sweep pest control and boundary sealing audit.", priority: "High", riskLevel: "High", consequence: "Structural infestation and reputation loss.", proof: "Vendor Certificate", trainerNotes: "Audit the vendor's bait station placement map." },
-                { id: "MSTRAT-03", description: "Oven and Cold-Chain mechanical calibration audit.", priority: "High", riskLevel: "Medium", consequence: "Energy waste and inconsistent product quality.", proof: "Calibration Certificate", trainerNotes: "Use external 3rd party calibrated thermometers." },
-                { id: "MSTRAT-04", description: "Full financial P&L review against targets.", priority: "High", riskLevel: "Low", consequence: "Margin erosion.", proof: "P&L Analysis", trainerNotes: "Focus on COGS leakage." },
-                { id: "MSTRAT-05", description: "Audit staff payroll and PF compliance.", priority: "High", riskLevel: "High", consequence: "Labour law litigation.", proof: "Payroll Audit", trainerNotes: "Verify bank transfer records." }
-            ]
-        },
-        {
-            title: "Valet Parking Safety",
-            department: "Valet",
-            frequency: "Daily",
-            role: "Security Supervisor",
-            summary: "Managing high-liability guest asset handling.",
-            icon: "car",
-            tasks: [
-                { id: "VAL-01", description: "Check valet key safe for organization and locks.", priority: "High", riskLevel: "High", consequence: "Theft of guest vehicle.", proof: "Visual Check", trainerNotes: "Keys must never be left on the counter." },
-                { id: "VAL-02", description: "Verify drivers have valid licenses.", priority: "High", riskLevel: "High", consequence: "Legal/Insurance failure.", proof: "License Log", trainerNotes: "Monthly license sweep." },
-                { id: "VAL-03", description: "Inspect valet signage and visibility lighting.", priority: "Medium", riskLevel: "Low", consequence: "Poor guest arrival experience.", proof: "Visual Check", trainerNotes: "Clean the 'Valet Here' sign." }
-            ]
-        },
-        {
-            title: "Garden & Outdoor Maintenance",
-            department: "Facilities",
-            frequency: "Daily",
-            role: "Groundskeeper",
-            summary: "Aesthetic and safety audits for outdoor areas.",
-            icon: "sprout",
-            tasks: [
-                { id: "GAR-01", description: "Check outdoor furniture for stability and safety.", priority: "Medium", riskLevel: "Medium", consequence: "Guest injury.", proof: "Visual Check", trainerNotes: "Tighten bolts every Monday." },
-                { id: "GAR-02", description: "Inspect perimeter for stagnant water (Mosquito breeding).", priority: "High", riskLevel: "High", consequence: "Health risk/Dengue.", proof: "Visual Audit", trainerNotes: "Check flower pots and drains." },
-                { id: "GAR-03", description: "Verify outdoor lighting functionality.", priority: "Medium", riskLevel: "Low", consequence: "Trip hazards/Security risk.", proof: "Visual Check", trainerNotes: "Clean covers for maximum brightness." }
-            ]
-        },
-        {
-            title: "Staff Quarters Hygiene",
-            department: "HR/Admin",
-            frequency: "Daily",
-            role: "HR Executive",
-            summary: "Managing staff welfare and hygiene standards.",
-            icon: "home",
-            tasks: [
-                { id: "STAFF-01", description: "Inspect staff locker rooms for order and cleaning.", priority: "Medium", riskLevel: "Medium", consequence: "Poor staff morale/Infestation.", proof: "Cleaning Log", trainerNotes: "No food allowed in lockers." },
-                { id: "STAFF-02", description: "Audit staff restroom sanitation.", priority: "High", riskLevel: "High", consequence: "Spread of disease among team.", proof: "Cleaning Log", trainerNotes: "Same standard as guest restrooms." },
-                { id: "STAFF-03", description: "Check staff pantry for expired personal items.", priority: "Low", riskLevel: "Low", consequence: "Odors and hygiene lapse.", proof: "Visual Check", trainerNotes: "Clear fridge every Friday night." }
+                { id: "MSTRAT-01", description: "FSSAI & Health License Expiry Review.", priority: "High", riskLevel: "High", consequence: "Operational closure.", proof: "Document Audit", trainerNotes: "Renew 60 days before." },
+                { id: "MSTRAT-02", description: "Pest Control Boundary Sealing Audit.", priority: "High", riskLevel: "High", consequence: "Infestation closure.", proof: "Vendor Report", trainerNotes: "Audit bait map." },
+                { id: "MSTRAT-03", description: "Equipment Calibration Audit (Scale/Temp).", priority: "High", riskLevel: "Medium", consequence: "Weight/Quality failures.", proof: "Calibration Cert", trainerNotes: "Use 3rd party labs." },
+                { id: "MSTRAT-04", description: "Financial P&L Review vs Budget.", priority: "High", riskLevel: "Low", consequence: "Margin erosion.", proof: "P&L Analysis", trainerNotes: "Focus on COGS." },
+                { id: "MSTRAT-05", description: "Labour Law / PF Compliance Audit.", priority: "High", riskLevel: "High", consequence: "Litigation risk.", proof: "Payroll Audit", trainerNotes: "Verify bank transfers." }
             ]
         }
     ]
