@@ -1,13 +1,13 @@
 
 'use client';
 
-import { writeFile, utils, type WorkSheet, type CellObject } from 'xlsx-js-style';
+import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
  * ROCS v4.2 - THE TOTAL GOVERNANCE SUITE (Commercial Grade)
  * Final Build: 2025-03-16
- * Logic: Fixed Pickup module mapping, Interval-Aware Scheduling, Upgraded Forensic Nomenclature.
+ * Logic: Interval-Aware Scheduling (Monthly=1st, Weekly=Mon), Fixed Pickup Mapping, Full 240-task Deep Load.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -164,12 +164,11 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     const mData: any[][] = [[], [{ v: "MISSION LEDGER: FORENSIC EXECUTION TRAIL", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
     
-    // MAPPING CHECKLISTS TO SETUP COLUMNS (C=Kitchen, D=Bar, E=Dining, F=EHS, G=Stat, H=Deliv, I=Pickup, J=Valet, K=Garden, L=StaffQ)
     const moduleMap: Record<number, string> = {
         0: "C", 1: "C", 2: "D", 3: "D", 4: "E", 5: "F", 6: "G", 7: "H", 8: "I", 9: "J", 10: "K", 11: "L"
     };
 
-    const startDate = new Date(2025, 2, 16); // Today: 16th March
+    const startDate = new Date(2025, 2, 16); 
     for (let i = 0; i < 7; i++) {
         const d = new Date(startDate); d.setDate(startDate.getDate() + i);
         const is1stOfMonth = d.getDate() === 1;
@@ -181,7 +180,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                 const switchCol = moduleMap[cIdx] || "C";
                 const activeFormula = `'SETUP'!$${switchCol}$${bRow}`;
                 
-                // --- INTERVAL FILTERING ---
                 const isMonthlyModule = c.frequency === 'Monthly';
                 const isWeeklyModule = c.frequency === 'Weekly';
                 
@@ -214,7 +212,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
     utils.book_append_sheet(wb, mWs, "MISSION_LEDGER");
 
-    // --- 04. DASHBOARD (Fixed Nomenclature) ---
+    // --- 04. DASHBOARD ---
     const dashData = [
         [], [{ v: "EXECUTIVE SCORECARD: LIVE COMPLIANCE", s: { font: { sz: 20, bold: true } } }], [],
         [{ v: "Governance Metric", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Forensic Threshold", s: headerStyle }],
@@ -238,7 +236,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(rWs);
     utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
 
-    // --- 06. INCIDENT LOG (Maintenance written in full) ---
+    // --- 06. INCIDENT LOG ---
     const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Category (Theft / Maintenance / Safety)", s:headerStyle}, {v:"Forensic Description", s:headerStyle}, {v:"Estimated Financial Impact (₹)", s:headerStyle}, {v:"Resolution", s:headerStyle}];
     const iData = [[], [{v:"INCIDENT & LIABILITY REGISTRY", s:{font:{sz:18, bold:true}}}], [], iHeaders];
     const iWs = utils.aoa_to_sheet(iData);
@@ -246,7 +244,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(iWs);
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
-    // --- 07. HANDOVER (Fixed Proof) ---
+    // --- 07. HANDOVER ---
     const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Handover Details", s:headerStyle}, {v:"Outstanding Tasks", s:headerStyle}, {v:"Proof (Digital Acknowledgement & Manager ID)", s:headerStyle}];
     const hData = [[], [{v:"SHIFT HANDOVER BRIDGE", s:{font:{sz:18, bold:true}}}], [], hHeaders];
     const hWs = utils.aoa_to_sheet(hData);
@@ -254,7 +252,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(hWs);
     utils.book_append_sheet(wb, hWs, "HANDOVER");
 
-    // --- 08. PERSONNEL (Restored Depth) ---
+    // --- 08. PERSONNEL ---
     const pHeaders = [{v:"Staff ID", s:headerStyle}, {v:"Full Name", s:headerStyle}, {v:"Primary Role", s:headerStyle}, {v:"Assigned Branch", s:headerStyle}, {v:"Contact Number", s:headerStyle}, {v:"Institutional Email", s:headerStyle}, {v:"Status (Active/Inactive)", s:headerStyle}];
     const pData = [[], [{v:"PERSONNEL DIRECTORY", s:{font:{sz:18, bold:true}}}], [], pHeaders];
     const pWs = utils.aoa_to_sheet(pData);
@@ -262,7 +260,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(pWs);
     utils.book_append_sheet(wb, pWs, "PERSONNEL");
 
-    // --- 09. MASTER PROTOCOL (Full 240+ Load) ---
+    // --- 09. MASTER PROTOCOL (Full 240 Load) ---
     const mpData: any[][] = [[], [{ v: "MASTER PROTOCOL DATABASE", s: { font: { sz: 16, bold: true } } }], [{v:"Modify task strings here. Changes propagate instantly via VLOOKUP.", s:{font:{italic:true, color:{rgb:COLORS.TEXT_MUTED}}}}], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement / Step", s:headerStyle}, {v:"Consequence of Failure", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}]];
     item.checklists.forEach(c => {
         c.tasks.forEach(t => {
