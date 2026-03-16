@@ -7,7 +7,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * ROCS v4.3 PRO - THE COMMAND CENTER EDITION (High-Res UI)
  * Features: 3D-Tile Menu, Invisible Grid, Full-width Application Headers, Live Status Widgets.
- * Updated: Category headers now use a high-visibility yellow background with larger black text.
+ * Logic: Interval-Aware Scheduling, Multi-Branch Identity, 240-Task Deep Load.
  */
 export const handleDownloadPro = (item: PremiumPack) => {
     if (!item) {
@@ -30,7 +30,15 @@ export const handleDownloadPro = (item: PremiumPack) => {
         INTEL_GREY: "64748B",    
         HEADER_BG: "1E293B",
         TILE_BG: "111827",
-        BORDER: "334155"
+        BORDER: "334155",
+        INPUT_ZONE: "FEFCE8"
+    };
+
+    const borderStyle = {
+        top: { style: 'thin', color: { rgb: COLORS.BORDER } },
+        bottom: { style: 'thin', color: { rgb: COLORS.BORDER } },
+        left: { style: 'thin', color: { rgb: COLORS.BORDER } },
+        right: { style: 'thin', color: { rgb: COLORS.BORDER } }
     };
 
     const baseFont = { name: 'Segoe UI', sz: 10 };
@@ -60,6 +68,36 @@ export const handleDownloadPro = (item: PremiumPack) => {
         alignment: { horizontal: 'center', vertical: 'center' }
     };
 
+    const headerStyle = {
+        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 9 },
+        fill: { fgColor: { rgb: COLORS.HEADER_BG } },
+        alignment: { vertical: 'center', horizontal: 'center', wrapText: true },
+        border: borderStyle
+    };
+
+    const dataStyleLeft = { 
+        font: baseFont,
+        alignment: { vertical: 'center', horizontal: 'left', wrapText: true },
+        border: borderStyle
+    };
+
+    const dataStyleCenter = {
+        font: baseFont,
+        alignment: { vertical: 'center', horizontal: 'center' },
+        border: borderStyle
+    };
+
+    const intelStyle = {
+        font: { ...baseFont, color: { rgb: COLORS.INTEL_GREY }, italic: true, sz: 9 },
+        alignment: { vertical: 'center', horizontal: 'left', wrapText: true },
+        border: borderStyle
+    };
+
+    const inputStyle = {
+        ...dataStyleCenter,
+        fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
+    };
+
     const addAppHeader = (ws: WorkSheet, endCol: string = 'M') => {
         utils.sheet_add_aoa(ws, [[{ 
             v: "◀ BACK TO HOME CONSOLE", 
@@ -79,7 +117,7 @@ export const handleDownloadPro = (item: PremiumPack) => {
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
     };
 
-    // --- 01. HOME CONSOLE (COMMAND CENTER UI) ---
+    // --- 01. HOME CONSOLE ---
     const homeData: any[][] = [
         [], [],
         [{ v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
@@ -121,55 +159,153 @@ export const handleDownloadPro = (item: PremiumPack) => {
     const homeWs = utils.aoa_to_sheet(homeData);
     homeWs['!cols'] = [35, 5, 35, 5, 35].map(w => ({ wch: w }));
     
-    const tileMerges = [
-        { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, // Title
-        { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } }, // Subtitle
-        { s: { r: 19, c: 0 }, e: { r: 19, c: 4 } }, // Status
-        { s: { r: 20, c: 0 }, e: { r: 20, c: 4 } }, // License
-        // Row 1 Tiles
+    homeWs['!merges'] = [
+        { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
+        { s: { r: 19, c: 0 }, e: { r: 19, c: 4 } }, { s: { r: 20, c: 0 }, e: { r: 20, c: 4 } },
         { s: { r: 6, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 8, c: 4 } },
-        // Row 2 Tiles
         { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
-        // Row 3 Tiles
         { s: { r: 14, c: 0 }, e: { r: 16, c: 0 } }, { s: { r: 14, c: 2 }, e: { r: 16, c: 2 } }, { s: { r: 14, c: 4 }, e: { r: 16, c: 4 } }
     ];
-    homeWs['!merges'] = tileMerges;
     homeWs['!views'] = [{ showGridLines: false }];
-    
     utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
 
-    // --- OTHER SHEETS ---
-    const mpWs = utils.aoa_to_sheet([[], [{ v: "MASTER PROTOCOL DATABASE", s: { font: { sz: 16, bold: true } } }]]);
-    addAppHeader(mpWs, 'G');
-    utils.book_append_sheet(wb, mpWs, "MASTER_PROTOCOL");
-
-    const setupWs = utils.aoa_to_sheet([[], [{ v: "BRANCH SETUP & SWITCHBOARD", s: { font: { sz: 16, bold: true } } }]]);
+    // --- 02. SETUP ---
+    const facilityHeaders = [
+        { v: "Branch ID", s: headerStyle }, { v: "Branch Name", s: headerStyle },
+        { v: "Kitchen", s: headerStyle }, { v: "Bar", s: headerStyle }, { v: "Dining", s: headerStyle },
+        { v: "EHS", s: headerStyle }, { v: "Statutory", s: headerStyle }, { v: "Delivery", s: headerStyle },
+        { v: "Takeaway/Pickup", s: headerStyle }, { v: "Valet", s: headerStyle }, { v: "Garden", s: headerStyle },
+        { v: "Staff Qtr", s: headerStyle }
+    ];
+    const setupData = [
+        [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
+        [{ v: "Toggle YES/NO per branch. Mission Ledger handles logic automatically.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [], facilityHeaders,
+        [{ v: 1, s: dataStyleCenter }, { v: "Bandra Main", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }],
+        [{ v: 2, s: dataStyleCenter }, { v: "Ghatkopar West", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }]
+    ];
+    const setupWs = utils.aoa_to_sheet(setupData);
+    setupWs['!cols'] = [12, 35, 10, 10, 10, 10, 10, 10, 15, 10, 10, 10].map(w => ({ wch: w }));
     addAppHeader(setupWs, 'L');
     utils.book_append_sheet(wb, setupWs, "SETUP");
 
-    const ledgerWs = utils.aoa_to_sheet([[], [{ v: "MISSION LEDGER (365 DAYS)", s: { font: { sz: 16, bold: true } } }]]);
-    addAppHeader(ledgerWs, 'M');
-    utils.book_append_sheet(wb, ledgerWs, "MISSION_LEDGER");
+    // --- 03. MISSION LEDGER ---
+    const mHeaders = [
+        { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, { v: "ID", s: headerStyle },
+        { v: "Requirement Description", s: headerStyle }, 
+        { v: "Actioned By", s: headerStyle }, { v: "Time Done", s: headerStyle }, 
+        { v: "Sign-Off Req?", s: headerStyle }, { v: "Manager Sign-Off", s: headerStyle },
+        { v: "Issue / Deviation", s: headerStyle },
+        { v: "Frequency", s: intelStyle }, { v: "Risk Level", s: intelStyle },
+        { v: "Consequence of Failure", s: intelStyle }, { v: "Trainer Notes", s: intelStyle }
+    ];
+    const mData: any[][] = [[], [{ v: "MISSION LEDGER: FORENSIC EXECUTION TRAIL", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
+    
+    const moduleMap: Record<number, string> = {
+        0: "C", 1: "C", 2: "D", 3: "D", 4: "E", 5: "F", 6: "G", 7: "H", 8: "I", 9: "J", 10: "K", 11: "L"
+    };
 
-    const dashWs = utils.aoa_to_sheet([[], [{ v: "EXECUTIVE GOVERNANCE DASHBOARD", s: { font: { sz: 16, bold: true } } }]]);
-    addAppHeader(dashWs, 'D');
-    utils.book_append_sheet(wb, dashWs, "DASHBOARD");
+    const startDate = new Date(2025, 2, 16); 
+    for (let i = 0; i < 7; i++) {
+        const d = new Date(startDate); d.setDate(startDate.getDate() + i);
+        const is1stOfMonth = d.getDate() === 1;
+        const isMonday = d.getDay() === 1;
 
-    const roiWs = utils.aoa_to_sheet([[], [{ v: "ROI PROFIT PROTECTION ENGINE", s: { font: { sz: 16, bold: true } } }]]);
-    addAppHeader(roiWs, 'E');
-    utils.book_append_sheet(wb, roiWs, "ROI_ENGINE");
+        [1, 2].forEach(bCode => {
+            const bRow = bCode === 1 ? 6 : 7;
+            item.checklists.forEach((c, cIdx) => {
+                const switchCol = moduleMap[cIdx] || "C";
+                const activeFormula = `'SETUP'!$${switchCol}$${bRow}`;
+                const isMonthlyModule = c.frequency === 'Monthly';
+                const isWeeklyModule = c.frequency === 'Weekly';
+                
+                if (isMonthlyModule && !is1stOfMonth) return;
+                if (isWeeklyModule && !isMonday) return;
 
-    const incidentWs = utils.aoa_to_sheet([[], [{ v: "INCIDENT & LIABILITY REGISTRY", s: { font: { sz: 16, bold: true } } }]]);
-    addAppHeader(incidentWs, 'G');
-    utils.book_append_sheet(wb, incidentWs, "INCIDENT_LOG");
+                c.tasks.forEach(t => {
+                    mData.push([
+                        { v: d, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
+                        { t: 'f', f: `'SETUP'!$B$${bRow}`, s: dataStyleCenter },
+                        { v: t.id, s: dataStyleCenter },
+                        { t: 'f', f: `IF(${activeFormula}="NO", "N/A - MODULE DISABLED", VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 3, FALSE))`, s: dataStyleLeft },
+                        { v: "", s: inputStyle }, { v: "", s: inputStyle },
+                        { v: t.riskLevel === 'High' ? "MGR SIGN" : "NONE", s: dataStyleCenter },
+                        { v: "", s: inputStyle },
+                        { v: "", s: inputStyle },
+                        { t: 'f', f: `VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 6, FALSE)`, s: intelStyle },
+                        { t: 'f', f: `VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 7, FALSE)`, s: intelStyle },
+                        { t: 'f', f: `VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 4, FALSE)`, s: intelStyle },
+                        { t: 'f', f: `VLOOKUP("${t.id}", 'MASTER_PROTOCOL'!A:G, 5, FALSE)`, s: intelStyle }
+                    ]);
+                });
+            });
+        });
+    }
+    const mWs = utils.aoa_to_sheet(mData);
+    mWs['!cols'] = [15, 25, 10, 60, 25, 12, 15, 20, 30, 15, 15, 45, 50].map(w => ({ wch: w }));
+    addAppHeader(mWs, 'M');
+    mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
+    utils.book_append_sheet(wb, mWs, "MISSION_LEDGER");
 
-    const personnelWs = utils.aoa_to_sheet([[], [{ v: "PERSONNEL DIRECTORY", s: { font: { sz: 16, bold: true } } }]]);
-    addAppHeader(personnelWs, 'G');
-    utils.book_append_sheet(wb, personnelWs, "PERSONNEL");
+    // --- 04. DASHBOARD ---
+    const dashData = [
+        [], [{ v: "EXECUTIVE SCORECARD: LIVE COMPLIANCE", s: { font: { sz: 20, bold: true } } }], [],
+        [{ v: "Governance Metric", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Forensic Threshold", s: headerStyle }],
+        [{ v: "Group Compliance Achievement %", s: dataStyleLeft }, { t:'f', f:`COUNTIF('MISSION_LEDGER'!E:E,"<>")/MAX(1, COUNTIFS('MISSION_LEDGER'!D:D, "<>N/A*", 'MISSION_LEDGER'!D:D, "<>"))`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
+        [{ v: "Active Operational Risks / Failures", s: dataStyleLeft }, { t:'f', f:`COUNTIF('MISSION_LEDGER'!I:I, "<>")`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
+    ];
+    const dWs = utils.aoa_to_sheet(dashData);
+    dWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
+    addAppHeader(dWs, 'D');
+    utils.book_append_sheet(wb, dWs, "DASHBOARD");
 
-    const handoverWs = utils.aoa_to_sheet([[], [{ v: "SHIFT HANDOVER BRIDGE", s: { font: { sz: 16, bold: true } } }]]);
-    addAppHeader(handoverWs, 'F');
-    utils.book_append_sheet(wb, handoverWs, "HANDOVER");
+    // --- 05. ROI ENGINE ---
+    const rData = [
+        [], [{v:"PROFIT PROTECTION ENGINE", s:{font:{sz:18, bold:true}}}], [], 
+        [{v:"Risk Category", s:headerStyle}, {v:"Impact per Event (₹)", s:headerStyle}, {v:"Frequency / Yr", s:headerStyle}, {v:"Projected Annual Loss (₹)", s:headerStyle}, {v:"Mitigation Status", s:headerStyle}],
+        [{v:"Food Spoilage (Cold Chain Failure)", s:dataStyleLeft}, {v:50000, s:inputStyle}, {v:12, s:inputStyle}, {t:'f', f:'B6*C6', s:dataStyleCenter}, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [{v:"Regulatory Fines (Health/Statutory)", s:dataStyleLeft}, {v:200000, s:inputStyle}, {v:1, s:inputStyle}, {t:'f', f:'B7*C7', s:dataStyleCenter}, {v:"PROTECTED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
+    ];
+    const rWs = utils.aoa_to_sheet(rData);
+    rWs['!cols'] = [40, 25, 25, 25, 20].map(w => ({ wch: w }));
+    addAppHeader(rWs, 'E');
+    utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
 
-    writeFile(wb, `MOREMEETS_COMMAND_CENTER_v4.3_PRO.xlsx`);
+    // --- 06. INCIDENT LOG ---
+    const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Category (Theft / Maintenance / Safety)", s:headerStyle}, {v:"Forensic Description", s:headerStyle}, {v:"Estimated Financial Impact (₹)", s:headerStyle}, {v:"Resolution", s:headerStyle}];
+    const iData = [[], [{v:"INCIDENT & LIABILITY REGISTRY", s:{font:{sz:18, bold:true}}}], [], iHeaders];
+    const iWs = utils.aoa_to_sheet(iData);
+    iWs['!cols'] = [15, 12, 25, 35, 60, 30, 25].map(w => ({ wch: w }));
+    addAppHeader(iWs, 'G');
+    utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
+
+    // --- 07. HANDOVER ---
+    const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Handover Details", s:headerStyle}, {v:"Outstanding Tasks", s:headerStyle}, {v:"Proof (Digital Acknowledgement)", s:headerStyle}];
+    const hData = [[], [{v:"SHIFT HANDOVER BRIDGE", s:{font:{sz:18, bold:true}}}], [], hHeaders];
+    const hWs = utils.aoa_to_sheet(hData);
+    hWs['!cols'] = [15, 25, 25, 60, 60, 45].map(w => ({ wch: w }));
+    addAppHeader(hWs, 'F');
+    utils.book_append_sheet(wb, hWs, "HANDOVER");
+
+    // --- 08. PERSONNEL ---
+    const pHeaders = [{v:"Staff ID", s:headerStyle}, {v:"Full Name", s:headerStyle}, {v:"Primary Role", s:headerStyle}, {v:"Assigned Branch", s:headerStyle}, {v:"Contact Number", s:headerStyle}, {v:"Institutional Email", s:headerStyle}, {v:"Status", s:headerStyle}];
+    const pData = [[], [{v:"PERSONNEL DIRECTORY", s:{font:{sz:18, bold:true}}}], [], pHeaders];
+    const pWs = utils.aoa_to_sheet(pData);
+    pWs['!cols'] = [12, 35, 30, 25, 20, 35, 25].map(w => ({ wch: w }));
+    addAppHeader(pWs, 'G');
+    utils.book_append_sheet(wb, pWs, "PERSONNEL");
+
+    // --- 09. MASTER PROTOCOL ---
+    const mpData: any[][] = [[], [{ v: "MASTER PROTOCOL DATABASE", s: { font: { sz: 16, bold: true } } }], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement", s:headerStyle}, {v:"Consequence", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}]];
+    item.checklists.forEach(c => {
+        c.tasks.forEach(t => {
+            mpData.push([{v:t.id, s:dataStyleCenter}, {v:c.title, s:dataStyleCenter}, {v:t.description, s:dataStyleLeft}, {v:t.consequence, s:dataStyleLeft}, {v:t.trainerNotes||"-", s:dataStyleLeft}, {v:c.frequency, s:dataStyleCenter}, {v:t.priority, s:dataStyleCenter}]);
+        });
+    });
+    const mpWs = utils.aoa_to_sheet(mpData);
+    mpWs['!cols'] = [12, 25, 65, 45, 50, 12, 10].map(w => ({ wch: w }));
+    addAppHeader(mpWs, 'G');
+    utils.book_append_sheet(wb, mpWs, "MASTER_PROTOCOL");
+
+    writeFile(wb, `MOREMEETS_RESTAURANT_COMMAND_CENTER_v4.3_PRO.xlsx`);
 }
