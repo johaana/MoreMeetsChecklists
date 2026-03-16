@@ -51,7 +51,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const backButtonStyle = {
         font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, sz: 9 },
         fill: { fgColor: { rgb: COLORS.BRAND_LIGHT } },
-        alignment: { horizontal: 'center', vertical: 'center' },
+        alignment: { horizontal: 'left', vertical: 'center', indent: 1 },
         border: borderThin
     };
 
@@ -105,21 +105,21 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const insData = [
         [], [],
         [{ v: "WELCOME TO THE ROCS v4.2 ENTERPRISE SUITE", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Your interactive lobby for operational governance.", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Follow these 4 steps to activate your operational infrastructure.", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "GOVERNANCE INITIALIZATION", s: { font: { bold: true, sz: 10, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "STEP 1: CONFIGURE YOUR FLEET", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "▶ CONFIGURE BRANCH NICKNAMES & START DATES", l: { Target: "#'07_SETUP'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [null, { v: "▶ CLICK TO GO TO SETUP MATRIX", l: { Target: "#'07_SETUP'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
-        [{ v: "STEP 2: ACCESS THE CONTROL HUB", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "▶ OPEN CENTRAL COMMAND & MODULE LINKS", l: { Target: "#'01_CONTROL_PANEL'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [{ v: "STEP 2: ACCESS THE OPERATIONAL CONSOLE (THE APP LOBBY)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [null, { v: "▶ CLICK TO OPEN CONTROL PANEL", l: { Target: "#'01_CONTROL_PANEL'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
-        [{ v: "STEP 3: EXECUTE TODAY'S MISSION", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "▶ GO TO DAILY TECHNICAL TASK LEDGER", l: { Target: "#'03_TODAY_MISSION'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [{ v: "STEP 3: EXECUTE DAILY MISSIONS & LOG INCIDENTS", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [null, { v: "▶ CLICK TO START TODAY'S MISSION", l: { Target: "#'03_TODAY_MISSION'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
-        [{ v: "STEP 4: CALCULATE SAVED VALUE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "▶ VIEW ROI & OPERATIONAL LEAKAGE ENGINE", l: { Target: "#'06_ROI_CALC'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [{ v: "STEP 4: REVIEW YOUR VALUE (ROI CALCULATOR)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [null, { v: "▶ CLICK TO CALCULATE SAVED VALUE", l: { Target: "#'06_ROI_CALC'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
         [{ v: "--------------------------------------------------------------------------------------------------", s: { font: { color: { rgb: COLORS.BORDER_LIGHT } } } }],
         [{ v: "SUPPORT: more@moremeets.com | © 2025 MoreMeets", s: { font: { sz: 9, italic: true }, alignment: { horizontal: 'center' } } }]
@@ -136,24 +136,27 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addWatermark(insWs, 20);
     utils.book_append_sheet(wb, insWs, "00_START_HERE");
 
-    // --- 01. CONTROL PANEL (HUB) ---
+    // --- 01. CONTROL PANEL (UNIVERSAL HUB) ---
     const cpData = [
         [], [],
-        [{ v: "RESTAURANT COMMAND CENTER v4.2", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Certified Multi-Branch Governance Framework", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "OPERATIONAL COMMAND HUB v4.2", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Centralized Multi-Branch Governance Console", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "OPERATIONAL MISSION CONTROL", s: { font: { bold: true, sz: 12 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "▶ START TODAY'S MISSION", l: { Target: "#'03_TODAY_MISSION'!A1" }, s: { ...navStyle, font: { ...navStyle.font, sz: 12 } } }, null, null, { v: "▶ VIEW COMPLIANCE DASHBOARD", l: { Target: "#'02_DASHBOARD'!A1" }, s: { ...navStyle, font: { ...navStyle.font, sz: 12 } } }],
+        [{ v: "DAILY EXECUTION & FLOW", s: { font: { bold: true, sz: 12 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "▶ TODAY'S MISSION LEDGER", l: { Target: "#'03_TODAY_MISSION'!A1" }, s: { ...navStyle, font: { ...navStyle.font, sz: 11 } } }, null, null, { v: "▶ SHIFT HANDOVER BRIDGE", l: { Target: "#'04_SHIFT_HANDOVER'!A1" }, s: { ...navStyle, font: { ...navStyle.font, sz: 11 } } }],
         [],
-        [{ v: "COMMUNICATION & LIABILITY", s: { font: { bold: true, sz: 12 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "▶ LOG SHIFT HANDOVER", l: { Target: "#'04_SHIFT_HANDOVER'!A1" }, s: navStyle }, null, null, { v: "▶ LOG INCIDENT OR LOSS", l: { Target: "#'05_INCIDENT_LOG'!A1" }, s: navStyle }],
+        [{ v: "RISK & COMPLIANCE COMMAND", s: { font: { bold: true, sz: 12 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "▶ INCIDENT & LIABILITY LOG", l: { Target: "#'05_INCIDENT_LOG'!A1" }, s: navStyle }, null, null, { v: "▶ GOVERNANCE DASHBOARD", l: { Target: "#'02_DASHBOARD'!A1" }, s: navStyle }],
         [],
-        [{ v: "ADMINISTRATION & PERFORMANCE", s: { font: { bold: true, sz: 12 }, alignment: { horizontal: 'center' } } }],
-        [{ v: "▶ SYSTEM SETUP MATRIX", l: { Target: "#'07_SETUP'!A1" }, s: navStyle }, null, null, { v: "▶ ROI & VALUE CALCULATOR", l: { Target: "#'06_ROI_CALC'!A1" }, s: navStyle }],
+        [{ v: "SYSTEM ADMIN & ASSET VALUE", s: { font: { bold: true, sz: 12 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "▶ FLEET SETUP MATRIX", l: { Target: "#'07_SETUP'!A1" }, s: navStyle }, null, null, { v: "▶ ROI & LEAKAGE ENGINE", l: { Target: "#'06_ROI_CALC'!A1" }, s: navStyle }],
         [],
-        [{ v: "REAL-TIME BRANCH SNAPSHOTS", s: { font: { bold: true }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Branch 1:", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "'07_SETUP'!$B$6", s: { font: { bold: true } } }, { v: "Status:", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "IFERROR(COUNTIFS('03_TODAY_MISSION'!I:I, \"<>\", '03_TODAY_MISSION'!B:B, '07_SETUP'!$B$6)/MAX(1,COUNTIF('03_TODAY_MISSION'!B:B, '07_SETUP'!$B$6)), 0)", s: { font: { bold: true }, numFmt: '0%' } }],
-        [{ v: "Branch 2:", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "'07_SETUP'!$B$7", s: { font: { bold: true } } }, { v: "Status:", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "IFERROR(COUNTIFS('03_TODAY_MISSION'!I:I, \"<>\", '03_TODAY_MISSION'!B:B, '07_SETUP'!$B$7)/MAX(1,COUNTIF('03_TODAY_MISSION'!B:B, '07_SETUP'!$B$7)), 0)", s: { font: { bold: true }, numFmt: '0%' } }]
+        [{ v: "QUICK START & SUPPORT", s: { font: { bold: true, sz: 12 }, alignment: { horizontal: 'center' } } }],
+        [{ v: "▶ INSTRUCTIONS & LEGEND", l: { Target: "#'00_START_HERE'!A1" }, s: navStyle }, null, null, { v: "▶ REPORT SYSTEM BUG", l: { Target: "mailto:more@moremeets.com" }, s: navStyle }],
+        [],
+        [{ v: "BRANCH SNAPSHOTS", s: { font: { bold: true }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Branch 1:", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "'07_SETUP'!$B$6", s: { font: { bold: true } } }, { v: "Compliance:", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "IFERROR(COUNTIFS('03_TODAY_MISSION'!I:I, \"<>\", '03_TODAY_MISSION'!B:B, '07_SETUP'!$B$6)/MAX(1,COUNTIF('03_TODAY_MISSION'!B:B, '07_SETUP'!$B$6)), 0)", s: { font: { bold: true }, numFmt: '0%' } }],
+        [{ v: "Branch 2:", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "'07_SETUP'!$B$7", s: { font: { bold: true } } }, { v: "Compliance:", s: { alignment: { horizontal: 'right' } } }, { t: 'f', f: "IFERROR(COUNTIFS('03_TODAY_MISSION'!I:I, \"<>\", '03_TODAY_MISSION'!B:B, '07_SETUP'!$B$7)/MAX(1,COUNTIF('03_TODAY_MISSION'!B:B, '07_SETUP'!$B$7)), 0)", s: { font: { bold: true }, numFmt: '0%' } }]
     ];
     const cpWs = utils.aoa_to_sheet(cpData);
     cpWs['!cols'] = [30, 30, 10, 30].map(w => ({ wch: w }));
@@ -166,9 +169,11 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { s: { r: 9, c: 0 }, e: { r: 9, c: 1 } }, { s: { r: 9, c: 2 }, e: { r: 9, c: 3 } },
         { s: { r: 11, c: 0 }, e: { r: 11, c: 3 } },
         { s: { r: 12, c: 0 }, e: { r: 12, c: 1 } }, { s: { r: 12, c: 2 }, e: { r: 12, c: 3 } },
-        { s: { r: 14, c: 0 }, e: { r: 14, c: 3 } }
+        { s: { r: 14, c: 0 }, e: { r: 14, c: 3 } },
+        { s: { r: 15, c: 0 }, e: { r: 15, c: 1 } }, { s: { r: 15, c: 2 }, e: { r: 15, c: 3 } },
+        { s: { r: 17, c: 0 }, e: { r: 17, c: 3 } }
     ];
-    addWatermark(cpWs, 20);
+    addWatermark(cpWs, 22);
     utils.book_append_sheet(wb, cpWs, "01_CONTROL_PANEL");
 
     // --- 07_SETUP ---
@@ -208,9 +213,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ]
     ];
     const setupWs = utils.aoa_to_sheet(setupData);
+    setupWs['!cols'] = [{ wch: 30 }, { wch: 25 }, { wch: 15 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 40 }];
     addBackButton(setupWs);
     addWatermark(setupWs, 20);
-    setupWs['!cols'] = [{ wch: 30 }, { wch: 25 }, { wch: 15 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 40 }];
     utils.book_append_sheet(wb, setupWs, "07_SETUP");
 
     // --- 03_TODAY_MISSION ---
@@ -266,9 +271,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         }
     }
     const mWs = utils.aoa_to_sheet(missionData);
+    mWs['!cols'] = [30, 18, 10, 20, 50, 12, 10, 25, 15, 18, 20, 45].map(w => ({ wch: w }));
     addBackButton(mWs);
     addWatermark(mWs, 20);
-    mWs['!cols'] = [30, 18, 10, 20, 50, 12, 10, 25, 15, 18, 20, 45].map(w => ({ wch: w }));
     mWs['!autofilter'] = { ref: "A4:L10000" };
     utils.book_append_sheet(wb, mWs, "03_TODAY_MISSION");
 
@@ -291,10 +296,10 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ]
     ];
     const dWs = utils.aoa_to_sheet(dashData);
-    addBackButton(dWs);
-    addWatermark(dWs, 20);
     dWs['!cols'] = [30, 20, 20, 25].map(w => ({ wch: w }));
     dWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
+    addBackButton(dWs);
+    addWatermark(dWs, 20);
     utils.book_append_sheet(wb, dWs, "02_DASHBOARD");
 
     // --- 04_SHIFT_HANDOVER ---
@@ -302,9 +307,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const hoData = [[], [{ v: "SHIFT HANDOVER COMMUNICATION BRIDGE", s: { font: { sz: 18, bold: true } } }], [], hoHeaders];
     hoData.push([{ v: new Date(), t: 'd', s: { ...centerCellStyle, numFmt: 'dd-mm-yyyy' } }, { t: 'f', f: "'07_SETUP'!B6", s: inputStyle }, { v: "NIGHT", s: inputStyle }, { v: "Rahul K", s: inputStyle }, { v: "Freezer #2 temp fluctuating.", s: inputStyle }, { v: "Open", s: inputStyle }]);
     const hoWs = utils.aoa_to_sheet(hoData);
+    hoWs['!cols'] = [30, 20, 15, 25, 45, 15].map(w => ({ wch: w }));
     addBackButton(hoWs);
     addWatermark(hoWs, 20);
-    hoWs['!cols'] = [30, 20, 15, 25, 45, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, hoWs, "04_SHIFT_HANDOVER");
 
     // --- 05_INCIDENT_LOG ---
@@ -312,9 +317,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const incData = [[], [{ v: "INCIDENT & LIABILITY LOG", s: { font: { sz: 18, bold: true } } }], [], incHeaders];
     incData.push([{ v: new Date(), t: 'd', s: { ...centerCellStyle, numFmt: 'dd-mm-yyyy' } }, { t: 'f', f: "'07_SETUP'!B6", s: inputStyle }, { v: "Maintenance", s: inputStyle }, { v: "Fridge failure - stock lost.", s: inputStyle }, { v: 15000, s: inputStyle }, { v: "Logged", s: inputStyle }]);
     const incWs = utils.aoa_to_sheet(incData);
+    incWs['!cols'] = [30, 20, 20, 45, 20, 15].map(w => ({ wch: w }));
     addBackButton(incWs);
     addWatermark(incWs, 20);
-    incWs['!cols'] = [30, 20, 20, 45, 20, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, incWs, "05_INCIDENT_LOG");
 
     // --- 06_ROI_CALC ---
@@ -328,9 +333,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "Value Saved With This System (50% reduction):", s: { font: { bold: true } } }, { t: 'f', f: "B8*0.5", s: { font: { bold: true, color: { rgb: COLORS.SUCCESS_GREEN } }, numFmt: '₹#,##0' } }]
     ];
     const roiWs = utils.aoa_to_sheet(roiData);
+    roiWs['!cols'] = [30, 25, 45].map(w => ({ wch: w }));
     addBackButton(roiWs);
     addWatermark(roiWs, 20);
-    roiWs['!cols'] = [30, 25, 45].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, roiWs, "06_ROI_CALC");
 
     writeFile(wb, `${item.title.replace(/ /g, '_')}_V4.2_ENTERPRISE.xlsx`);
