@@ -5,10 +5,10 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * ROCS v4.2 - THE HIGH-SPEED ADOPTION SUITE
- * Optimized for Restaurant Floors: Remove Time/Issue friction.
+ * ROCS v4.2 - THE ENTERPRISE GOVERNANCE SUITE
+ * Optimized for Restaurant Groups: High-Speed Adoption + Binary Verification.
  * Maker-Checker Workflow: Completed By (Staff) | Verified By (Manager).
- * Refined Status: Clean text, N/A prompts for Managers.
+ * N/A logic integrated into Verified column for zero-clutter.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -180,8 +180,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { t: 'f', f: `'BRANCH_SETUP'!B6`, l: { Target: "#'BRANCH_SETUP'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'left' } } }
         ],
         [], [],
-        [{ v: "SYSTEM STATUS: ✅ VERIFIED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
-        [{ v: `REGISTERED TO: ${BUYER_EMAIL}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }]
+        [{ v: "SYSTEM STATUS: ✅ INSTITUTIONAL GRADE VERIFIED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `REGISTERED TO: ${BUYER_EMAIL} | LICENSE: ENTERPRISE`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }]
     ];
 
     const homeWs = utils.aoa_to_sheet(homeData);
@@ -218,7 +218,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(setupWs, 'L');
     utils.book_append_sheet(wb, setupWs, "BRANCH_SETUP");
 
-    // --- 03. TODAYS_TASKS (Refined Clean Log) ---
+    // --- 03. TODAYS_TASKS ---
     const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, { v: "ID", s: headerStyle },
         { v: "Task", s: headerStyle }, 
@@ -228,7 +228,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { v: "Frequency", s: intelStyle }, { v: "Risk Level", s: intelStyle },
         { v: "Consequence of Failure", s: intelStyle }, { v: "Trainer Notes", s: intelStyle }
     ];
-    const mData: any[][] = [[], [{ v: "TODAY'S TASKS: HIGH-SPEED EXECUTION LOG", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
+    const mData: any[][] = [[], [{ v: "TODAY'S TASKS: EXECUTION LOG", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
     
     const moduleMap: Record<number, string> = {
         0: "C", 1: "C", 2: "D", 3: "D", 4: "E", 5: "F", 6: "G", 7: "H", 8: "I", 9: "J", 10: "K", 11: "L"
@@ -248,15 +248,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                 const completedByCell = `F${rowIdx}`;
                 const verifiedByCell = `G${rowIdx}`;
                 
-                // Status logic: 
-                // If Completed By is empty -> PENDING
-                // If Risk is High and Verified is empty -> AWAITING MGR
-                // Else -> COMPLETED
                 const statusFormula = `IF(ISBLANK(${completedByCell}), "PENDING", IF(AND(${riskCell}="High", ISBLANK(${verifiedByCell})), "AWAITING MGR", "COMPLETED"))`;
-                
-                // Verification pre-fill logic:
-                // If Risk is NOT High -> N/A
-                // Else -> Blank (to be filled)
                 const verifiedByValue = t.priority === 'High' || t.riskLevel === 'High' ? "" : "N/A";
 
                 mData.push([
@@ -286,8 +278,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const dashData = [
         [], [{ v: "BUSINESS HEALTH: PERFORMANCE HUB", s: { font: { sz: 20, bold: true } } }], [],
         [{ v: "Operational KPI", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Target Threshold", s: headerStyle }],
-        [{ v: "Shift Completion Rate", s: dataStyleLeft }, { t:'f', f:`COUNTIF('TODAYS_TASKS'!E:E, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"))`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
-        [{ v: "Active Operational Incidents", s: dataStyleLeft }, { t:'f', f:`COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
+        [{ v: "Shift Completion Rate", s: dataStyleLeft }, { t:'f', f:`IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!E:E, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
+        [{ v: "Active Operational Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }],
+        [{ v: "Risk Coverage (Active Modules)", s: dataStyleLeft }, { t:'f', f:`COUNTIF('BRANCH_SETUP'!C6:L6, "YES") & " / 10"`, s: dataStyleCenter }, { v: "ADAPTIVE", s: dataStyleCenter }]
     ];
     const dWs = utils.aoa_to_sheet(dashData);
     dWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
