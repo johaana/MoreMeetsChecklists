@@ -9,6 +9,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
  * Final Build: 2025-03-16
  * Logic: Interval-Aware Scheduling (Monthly=1st, Weekly=Mon), Fixed Pickup Mapping, Full 240-task Deep Load.
  * UI: Replicated Pro-Tile Console Layout with Descriptive N/A logic.
+ * Branding: High-Prestige Software Header (White on Green).
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -121,7 +122,14 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     // --- 01. HOME CONSOLE (TILE MENU) ---
     const homeData: any[][] = [
         [], [],
-        [{ v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
+        [{ 
+            v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", 
+            s: { 
+                font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } }, 
+                fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } },
+                alignment: { horizontal: 'center', vertical: 'center' } 
+            } 
+        }],
         [{ v: "Enterprise Continuity & Governance Suite v4.2", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
         [],
         [
