@@ -7,6 +7,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * ROCS v4.3 PRO - THE COMMAND CENTER EDITION (High-Res UI)
  * Features: 3D-Tile Menu, Invisible Grid, Full-width Application Headers, Live Status Widgets.
+ * Updated: Category headers now use a high-visibility yellow background with larger black text.
  */
 export const handleDownloadPro = (item: PremiumPack) => {
     if (!item) {
@@ -54,8 +55,9 @@ export const handleDownloadPro = (item: PremiumPack) => {
     };
 
     const groupHeaderStyle = {
-        font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_GOLD }, sz: 9 },
-        alignment: { horizontal: 'center', vertical: 'bottom' }
+        font: { ...baseFont, bold: true, color: { rgb: "000000" }, sz: 12 },
+        fill: { fgColor: { rgb: COLORS.ACCENT_GOLD } },
+        alignment: { horizontal: 'center', vertical: 'center' }
     };
 
     const addAppHeader = (ws: WorkSheet, endCol: string = 'M') => {
@@ -93,8 +95,8 @@ export const handleDownloadPro = (item: PremiumPack) => {
             { v: "▶ MISSION LEDGER", l: { Target: "#'MISSION_LEDGER'!A1" }, s: tileStyle }, null, 
             { v: "▶ DASHBOARD", l: { Target: "#'DASHBOARD'!A1" }, s: tileStyle }
         ],
-        [null, null, null, null, null], // Spacer for 3-row tile look
-        [null, null, null, null, null], // Spacer for 3-row tile look
+        [null, null, null, null, null], 
+        [null, null, null, null, null], 
         [],
         [
             { v: "▶ PERSONNEL", l: { Target: "#'PERSONNEL'!A1" }, s: tileStyle }, null, 
@@ -119,7 +121,6 @@ export const handleDownloadPro = (item: PremiumPack) => {
     const homeWs = utils.aoa_to_sheet(homeData);
     homeWs['!cols'] = [35, 5, 35, 5, 35].map(w => ({ wch: w }));
     
-    // Merge Tiles (3x1 blocks)
     const tileMerges = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, // Title
         { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } }, // Subtitle
