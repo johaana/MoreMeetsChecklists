@@ -103,26 +103,38 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
     };
 
-    // --- 00. START HERE ---
+    // --- 00. START HERE (HOME PAGE) ---
     const insData = [
         [], [],
-        [{ v: "WELCOME TO THE ROCS v4.2 ENTERPRISE SUITE", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }],
-        [{ v: "Follow these 4 steps to activate your operational infrastructure.", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [{ v: "WELCOME TO THE ROCS v4.2 ENTERPRISE SUITE", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIME_NAVY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Your daily home page for operational governance.", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "STEP 1: Tell us about your branch nicknames and start dates", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "▶ CLICK TO GO TO SETUP MATRIX", l: { Target: "#'07_SETUP'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [{ v: "GOVERNANCE INITIALIZATION", s: { font: { bold: true, sz: 10, color: { rgb: COLORS.SLATE_HEADER } }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "STEP 2: Access the Operational Console (The App Lobby)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "▶ CLICK TO OPEN CONTROL PANEL", l: { Target: "#'01_CONTROL_PANEL'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [{ v: "1. CONFIGURE YOUR FLEET", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [null, { v: "▶ CLICK HERE TO SET NICKNAMES & START DATES", l: { Target: "#'07_SETUP'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
-        [{ v: "STEP 3: Ensure Shift Continuity and Log Incidents", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "Manage communication and liability through the hub links." }],
+        [{ v: "2. ACCESS YOUR COMMAND CENTER", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [null, { v: "▶ CLICK HERE TO OPEN CONTROL PANEL (APP LOBBY)", l: { Target: "#'01_CONTROL_PANEL'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
         [],
-        [{ v: "STEP 4: Review Your Value (ROI Calculator)", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
-        [null, { v: "See how much operational leakage you've prevented." }]
+        [{ v: "3. EXECUTE DAILY MISSIONS", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [null, { v: "▶ CLICK HERE TO VIEW TODAY'S TECHNICAL TASKS", l: { Target: "#'03_TODAY_MISSION'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [],
+        [{ v: "4. MEASURE SAVINGS & VALUE", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.SUCCESS_GREEN } } } }],
+        [null, { v: "▶ CLICK HERE TO CALCULATE OPERATIONAL VALUE SAVED", l: { Target: "#'06_ROI_CALC'!A1" }, s: { font: { ...baseFont, bold: true, color: { rgb: COLORS.ACCENT_BLUE }, underline: true } } }],
+        [],
+        [{ v: "--------------------------------------------------------------------------------------------------", s: { font: { color: { rgb: COLORS.BORDER_LIGHT } } } }],
+        [{ v: "SUPPORT: more@moremeets.com | © 2025 MoreMeets", s: { font: { sz: 9, italic: true }, alignment: { horizontal: 'center' } } }]
     ];
     const insWs = utils.aoa_to_sheet(insData);
-    addWatermark(insWs, 20);
+    insWs['!merges'] = [
+        { s: { r: 2, c: 0 }, e: { r: 2, c: 5 } }, 
+        { s: { r: 3, c: 0 }, e: { r: 3, c: 5 } },
+        { s: { r: 5, c: 0 }, e: { r: 5, c: 5 } },
+        { s: { r: 19, c: 0 }, e: { r: 19, c: 5 } },
+        { s: { r: 20, c: 0 }, e: { r: 20, c: 5 } }
+    ];
+    addWatermark(insWs, 25);
     utils.book_append_sheet(wb, insWs, "00_START_HERE");
 
     // --- 01. CONTROL PANEL (HUB) ---
@@ -160,7 +172,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addWatermark(cpWs, 20);
     utils.book_append_sheet(wb, cpWs, "01_CONTROL_PANEL");
 
-    // --- 07. SETUP (PROPERTY AS ROWS) ---
+    // --- 07_SETUP ---
     const setupData = [
         [], [{ v: "BRANCH MASTER REGISTRY & FACILITY MATRIX", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIME_NAVY } } } }], 
         [{ v: "Add a new row for each branch. Toggle Facility columns to NO to hide related tasks.", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.TEXT_MUTED } } } }],
@@ -205,7 +217,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     setupWs['!cols'] = [{ wch: 5 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 40 }];
     utils.book_append_sheet(wb, setupWs, "07_SETUP");
 
-    // --- 03. TODAY'S MISSION ---
+    // --- 03_TODAY_MISSION ---
     const missionHeaders = [
         { v: "Date", s: headerBlockStyle }, 
         { v: "Branch Name", s: headerBlockStyle }, 
@@ -262,7 +274,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     mWs['!autofilter'] = { ref: "A4:L10000" };
     utils.book_append_sheet(wb, mWs, "03_TODAY_MISSION");
 
-    // --- 02. DASHBOARD ---
+    // --- 02_DASHBOARD ---
     const dashData = [
         [], [{ v: "EXECUTIVE GOVERNANCE DASHBOARD", s: { font: { sz: 20, bold: true }, alignment: { horizontal: 'center' } } }],
         [],
@@ -286,7 +298,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     dWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 3 } }];
     utils.book_append_sheet(wb, dWs, "02_DASHBOARD");
 
-    // --- 04. SHIFT HANDOVER ---
+    // --- 04_SHIFT_HANDOVER ---
     const hoHeaders = [{ v: "Date", s: headerBlockStyle }, { v: "Branch", s: headerBlockStyle }, { v: "Shift", s: headerBlockStyle }, { v: "Manager", s: headerBlockStyle }, { v: "Critical Issue", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }];
     const hoData = [[], [{ v: "SHIFT HANDOVER COMMUNICATION BRIDGE", s: { font: { sz: 18, bold: true } } }], [], hoHeaders];
     hoData.push([{ v: new Date(), t: 'd', s: { ...centerCellStyle, numFmt: 'dd-mm-yyyy' } }, { t: 'f', f: "'07_SETUP'!B6", s: inputStyle }, { v: "NIGHT", s: inputStyle }, { v: "Rahul K", s: inputStyle }, { v: "Freezer #2 temp fluctuating.", s: inputStyle }, { v: "Open", s: inputStyle }]);
@@ -295,7 +307,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addWatermark(hoWs, 20);
     utils.book_append_sheet(wb, hoWs, "04_SHIFT_HANDOVER");
 
-    // --- 05. INCIDENT LOG ---
+    // --- 05_INCIDENT_LOG ---
     const incHeaders = [{ v: "Date", s: headerBlockStyle }, { v: "Branch", s: headerBlockStyle }, { v: "Type", s: headerBlockStyle }, { v: "Details", s: headerBlockStyle }, { v: "Estimated Loss", s: headerBlockStyle }, { v: "Status", s: headerBlockStyle }];
     const incData = [[], [{ v: "INCIDENT & LIABILITY LOG", s: { font: { sz: 18, bold: true } } }], [], incHeaders];
     incData.push([{ v: new Date(), t: 'd', s: { ...centerCellStyle, numFmt: 'dd-mm-yyyy' } }, { t: 'f', f: "'07_SETUP'!B6", s: inputStyle }, { v: "Maintenance", s: inputStyle }, { v: "Fridge failure - stock lost.", s: inputStyle }, { v: 15000, s: inputStyle }, { v: "Logged", s: inputStyle }]);
@@ -304,7 +316,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addWatermark(incWs, 20);
     utils.book_append_sheet(wb, incWs, "05_INCIDENT_LOG");
 
-    // --- 06. ROI CALC ---
+    // --- 06_ROI_CALC ---
     const roiData = [
         [], [{ v: "VALUE SAVED: ROI CALCULATOR", s: { font: { sz: 18, bold: true } } }], [],
         [{ v: "Metric", s: headerBlockStyle }, { v: "Your Amount", s: headerBlockStyle }, { v: "Industry Benchmarks", s: headerBlockStyle }],
