@@ -7,10 +7,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * ROCS v4.2 - THE TOTAL GOVERNANCE SUITE (Commercial Grade)
  * Final Build: 2025-03-16
- * Logic: Interval-Aware Scheduling (Monthly=1st, Weekly=Mon), Fixed Pickup Mapping, Full 240-task Deep Load.
- * UI: Replicated Pro-Tile Console Layout with Descriptive N/A logic.
- * Branding: High-Prestige Software Header (White on Green).
- * Visuals: Extended Matte Background (Software-esque Canvas) with Smooth Borders.
+ * UI: Simplified Naming + Live Status Widget.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -20,7 +17,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const wb = utils.book_new();
     
-    const BUYER_EMAIL = "RAHUL@RESTAURANTGROUP.COM";
+    const BUYER_EMAIL = "CLIENT@RESTAURANTGROUP.COM";
     const ORDER_ID = "MM-ORD-7721-REST";
 
     const COLORS = {
@@ -34,7 +31,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         INPUT_ZONE: "FEFCE8",    
         BORDER: "CBD5E1",
         HEADER_BG: "1E293B",
-        TILE_BG: "111827",
         CONSOLE_BG: "F1F5F9" 
     };
 
@@ -149,18 +145,18 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [
             { v: "SYSTEM SETUP", s: groupHeaderStyle }, null, 
             { v: "DAILY OPERATIONS", s: groupHeaderStyle }, null, 
-            { v: "MANAGEMENT TOOLS", s: groupHeaderStyle }
+            { v: "EXECUTIVE INTEL", s: groupHeaderStyle }
         ],
         [
-            { v: "▶ BRANCH SETTINGS", l: { Target: "#'SETUP'!A1" }, s: tileStyle }, null, 
-            { v: "▶ DAILY CHECKLISTS", l: { Target: "#'DAILY_CHECKLISTS'!A1" }, s: tileStyle }, null, 
-            { v: "▶ PERFORMANCE DASHBOARD", l: { Target: "#'DASHBOARD'!A1" }, s: tileStyle }
+            { v: "▶ BRANCH SETUP", l: { Target: "#'SETUP'!A1" }, s: tileStyle }, null, 
+            { v: "▶ TODAY'S TASKS", l: { Target: "#'DAILY_CHECKLISTS'!A1" }, s: tileStyle }, null, 
+            { v: "▶ BUSINESS HEALTH", l: { Target: "#'DASHBOARD'!A1" }, s: tileStyle }
         ],
         [null, null, null, null, null], 
         [null, null, null, null, null], 
         [],
         [
-            { v: "▶ STAFF DIRECTORY", l: { Target: "#'PERSONNEL'!A1" }, s: tileStyle }, null, 
+            { v: "▶ TEAM HUB", l: { Target: "#'PERSONNEL'!A1" }, s: tileStyle }, null, 
             { v: "▶ SHIFT HANDOVER", l: { Target: "#'HANDOVER'!A1" }, s: tileStyle }, null, 
             { v: "▶ COST & SAVINGS TRACKER", l: { Target: "#'ROI_ENGINE'!A1" }, s: tileStyle }
         ],
@@ -168,8 +164,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [null, null, null, null, null],
         [],
         [
-            { v: "▶ ARCHIVE", s: tileStyle }, null, 
-            { v: "▶ MASTER SOP DATABASE", l: { Target: "#'MASTER_PROTOCOL'!A1" }, s: tileStyle }, null, 
+            { v: "▶ SOP LIBRARY", l: { Target: "#'MASTER_PROTOCOL'!A1" }, s: tileStyle }, null, 
+            { v: "▶ ARCHIVE", l: { Target: "#'ARCHIVE'!A1" }, s: tileStyle }, null, 
             { v: "▶ INCIDENT TRACKER", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }
         ],
         [null, null, null, null, null],
@@ -182,21 +178,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const homeWs = utils.aoa_to_sheet(homeData);
     homeWs['!cols'] = [35, 5, 35, 5, 35].map(w => ({ wch: w }));
     
-    // Fill the background matte (Extended to O50)
-    for (let R = 0; R <= 50; R++) {
-        for (let C = 0; C <= 14; C++) {
-            const c_ref = utils.encode_cell({c: C, r: R});
-            if (!homeWs[c_ref]) homeWs[c_ref] = { v: "", t: 's' };
-            if (!homeWs[c_ref].s) homeWs[c_ref].s = {};
-            if (!homeWs[c_ref].s.fill) {
-                homeWs[c_ref].s.fill = { fgColor: { rgb: COLORS.CONSOLE_BG } };
-            }
-        }
-    }
-
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
-        { s: { r: 4, c: 2 }, e: { r: 4, c: 2 } }, { s: { r: 4, c: 4 }, e: { r: 4, c: 4 } },
         { s: { r: 19, c: 0 }, e: { r: 19, c: 4 } }, { s: { r: 20, c: 0 }, e: { r: 20, c: 4 } },
         { s: { r: 6, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 8, c: 4 } },
         { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
@@ -215,7 +198,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     const setupData = [
         [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
-        [{ v: "Toggle YES/NO per branch. Checklist handle logic automatically.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [{ v: "Toggle YES/NO per branch. Daily Checklist logic updates automatically.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
         [], facilityHeaders,
         [{ v: 1, s: dataStyleCenter }, { v: "Bandra Main", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }],
         [{ v: 2, s: dataStyleCenter }, { v: "Ghatkopar West", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }]
@@ -288,7 +271,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     // --- 04. DASHBOARD ---
     const dashData = [
-        [], [{ v: "PERFORMANCE DASHBOARD: LIVE COMPLIANCE", s: { font: { sz: 20, bold: true } } }], [],
+        [], [{ v: "BUSINESS HEALTH: LIVE COMPLIANCE", s: { font: { sz: 20, bold: true } } }], [],
         [{ v: "Operational Metric", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Target Threshold", s: headerStyle }],
         [{ v: "Group Compliance Achievement %", s: dataStyleLeft }, { t:'f', f:`COUNTIF('DAILY_CHECKLISTS'!E:E,"<>")/MAX(1, COUNTIFS('DAILY_CHECKLISTS'!D:D, "<>N/A*", 'DAILY_CHECKLISTS'!D:D, "<>"))`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
         [{ v: "Active Operational Risks / Failures", s: dataStyleLeft }, { t:'f', f:`COUNTIF('DAILY_CHECKLISTS'!I:I, "<>")`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
@@ -335,7 +318,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     utils.book_append_sheet(wb, pWs, "PERSONNEL");
 
     // --- 09. MASTER PROTOCOL ---
-    const mpData: any[][] = [[], [{ v: "MASTER SOP DATABASE", s: { font: { sz: 16, bold: true } } }], [{v:"Modify task strings here. Changes propagate instantly via VLOOKUP.", s:{font:{italic:true, color:{rgb:COLORS.INTEL_GREY}}}}], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement / Step", s:headerStyle}, {v:"Consequence of Failure", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}]];
+    const mpData: any[][] = [[], [{ v: "SOP LIBRARY: MASTER DATABASE", s: { font: { sz: 16, bold: true } } }], [], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement / Step", s:headerStyle}, {v:"Consequence of Failure", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}]];
     item.checklists.forEach(c => {
         c.tasks.forEach(t => {
             mpData.push([
@@ -354,7 +337,12 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(mpWs, 'G');
     utils.book_append_sheet(wb, mpWs, "MASTER_PROTOCOL");
 
-    // --- 10. AUTH CORE (HIDDEN) ---
+    // --- 10. ARCHIVE ---
+    const archWs = utils.aoa_to_sheet([[], [{v: "ARCHIVE: COMPLETED HISTORICAL RECORDS", s: { font: { sz: 18, bold: true } } }]]);
+    addSoftwareHeader(archWs, 'E');
+    utils.book_append_sheet(wb, archWs, "ARCHIVE");
+
+    // --- 11. AUTH CORE (HIDDEN) ---
     const aData = [
         ["KEY", "VALUE", "STATUS"],
         ["BUYER_EMAIL", BUYER_EMAIL, "VALID"],
@@ -374,6 +362,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { name: "HANDOVER", Hidden: 0 },
             { name: "PERSONNEL", Hidden: 0 },
             { name: "MASTER_PROTOCOL", Hidden: 0 },
+            { name: "ARCHIVE", Hidden: 0 },
             { name: "_AUTH_CORE_", Hidden: 1 }
         ]
     };
