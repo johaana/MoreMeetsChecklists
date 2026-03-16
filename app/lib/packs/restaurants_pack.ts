@@ -72,16 +72,17 @@ export const restaurants: PremiumPack = {
             ]
         },
         {
-            title: "Weekly Compliance Audits",
-            department: "Management",
+            title: "Environment, Health & Safety (EHS)",
+            department: "Compliance",
             frequency: "Weekly",
             role: "General Manager",
-            summary: "Executive-level verification of safety infrastructure.",
-            icon: "shield-check",
+            summary: "Mitigating life-safety and legal liability risks.",
+            icon: "hard-hat",
             tasks: [
-                { id: "WSEC-01", description: "Inspect all fire exits for obstructions and functional panic bars.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment in fire emergency.", proof: "Exit Audit Sign-off", trainerNotes: "Ensure no boxes are stored in stairwells." },
-                { id: "WSEC-02", description: "Full audit of First Aid kits and AED battery status.", priority: "High", riskLevel: "High", consequence: "Inability to respond to guest cardiac event.", proof: "Medical Kit Log", trainerNotes: "Replace any expired dressings immediately." },
-                { id: "WSEC-03", description: "Reconcile high-value spirit inventory vs. POS sales.", priority: "High", riskLevel: "Medium", consequence: "Unchecked revenue leakage and internal theft.", proof: "Audit Report", trainerNotes: "Focus on Single Malts and Premium Gins." }
+                { id: "EHS-01", description: "Inspect all fire exits for obstructions and functional panic bars.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment in fire emergency.", proof: "Exit Audit Sign-off", trainerNotes: "Ensure no boxes are stored in stairwells." },
+                { id: "EHS-02", description: "Full audit of First Aid kits and AED battery status.", priority: "High", riskLevel: "High", consequence: "Inability to respond to guest cardiac event.", proof: "Medical Kit Log", trainerNotes: "Replace any expired dressings immediately." },
+                { id: "EHS-03", description: "Check all electrical panels for loose wiring or burning smells.", priority: "High", riskLevel: "High", consequence: "Short circuit and structural fire.", proof: "Electrical Log", trainerNotes: "Use a thermal gun if available to check for hotspots." },
+                { id: "EHS-04", description: "Verify floor slip-resistance and proper mat placement.", priority: "High", riskLevel: "Medium", consequence: "Slip and fall litigation.", proof: "Safety Walkthrough", trainerNotes: "Check transitions between kitchen and carpet." }
             ]
         },
         {

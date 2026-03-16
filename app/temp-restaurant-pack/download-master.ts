@@ -6,7 +6,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
  * ROCS v4.2 - THE TOTAL GOVERNANCE SUITE (Enterprise Edition)
- * Features: Clinical Borders, Total Module Load, 365-Day dynamic trail.
+ * Features: Clinical Borders, Total Module Load, 365-Day dynamic trail, Facility Switchboard.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -105,7 +105,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "Enterprise Continuity & Governance Suite v4.2", s: { font: { italic: true, sz: 12, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "SYSTEM CONFIGURATION", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
-        [{ v: "▶ 1. DEFINE BRANCHES", l: { Target: "#'02_SETUP'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ 2. ASSIGN STAFF", l: { Target: "#'07_PERSONNEL'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
+        [{ v: "▶ 1. DEFINE BRANCHES & MODULES", l: { Target: "#'02_SETUP'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ 2. ASSIGN STAFF", l: { Target: "#'07_PERSONNEL'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "DAILY EXECUTION", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
         [{ v: "▶ 3. MISSION LEDGER", l: { Target: "#'01_MISSION_LEDGER'!A1" }, s: { ...navStyle, fill: { fgColor: { rgb: COLORS.NAVY_HEADER } }, alignment: { horizontal: 'center' } } }, null, null, { v: "▶ 4. SHIFT HANDOVER", l: { Target: "#'04_HANDOVER'!A1" }, s: { ...navStyle, alignment: { horizontal: 'center' } } }],
@@ -148,7 +148,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const missionData: any[][] = [[], [{ v: "OPERATIONAL MISSION LEDGER: 365-DAY AUDIT TRAIL", s: { font: { sz: 16, bold: true } } }], [], missionHeaders];
     
     const startDate = new Date();
-    // For temp page, we show 14 days of full task load to see the structure
     for (let i = 0; i < 14; i++) {
         const entryDate = new Date(startDate);
         entryDate.setDate(startDate.getDate() + i);
@@ -165,12 +164,23 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
                 if (shouldShow) {
                     const isHighRisk = t.riskLevel === 'High';
+                    const rowIndex = missionData.length + 1;
+                    
+                    // N/A Logic mapping based on section title
+                    let toggleCell = "'02_SETUP'!$B$11"; // Default Kitchen
+                    if (c.title.includes("Bar")) toggleCell = "'02_SETUP'!$B$12";
+                    if (c.title.includes("FOH") || c.title.includes("Service")) toggleCell = "'02_SETUP'!$B$13";
+                    if (c.title.includes("EHS") || c.title.includes("Compliance")) toggleCell = "'02_SETUP'!$B$14";
+                    if (c.title.includes("Statutory")) toggleCell = "'02_SETUP'!$B$15";
+
+                    const naFormula = `IF(${toggleCell}="YES", "${t.description}", "N/A - MODULE DISABLED")`;
+
                     missionData.push([
                         { v: entryDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
                         { t: 'f', f: `'02_SETUP'!$B$6`, s: dataStyleCenter },
                         { v: t.id, s: dataStyleCenter },
                         { v: c.title, s: dataStyleLeft },
-                        { v: t.description, s: dataStyleLeft },
+                        { t: 'f', f: naFormula, s: dataStyleLeft },
                         { v: "", s: inputStyle }, 
                         { v: "", s: inputStyle }, 
                         { v: t.consequence || "Operational Risk", s: intelStyle }, 
@@ -191,21 +201,28 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     // --- 02. SETUP ---
     const setupData = [
-        [], [{ v: "BRANCH IDENTITY MATRIX", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }], 
-        [{ v: "Change the Branch Name in cell B6 to update the entire system.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
+        [], [{ v: "BRANCH & MODULE CONFIGURATION", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }], 
+        [{ v: "Global variables control the behavior of all 30,000+ rows in the Ledger.", s: { font: { italic: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
         [],
-        [
-            { v: "CODE", s: headerStyle }, 
-            { v: "OFFICIAL BRANCH NAME", s: { ...headerStyle, fill: { fgColor: { rgb: COLORS.ACCENT_GOLD } } } }, 
-            { v: "MODULE: BAR", s: headerStyle }, 
-            { v: "MODULE: POOL", s: headerStyle }, 
-            { v: "STATUS", s: headerStyle }
-        ],
-        [{ v: "BRANCH-01", s: dataStyleCenter }, { v: "Bandra Main Outlet", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "ACTIVE", s: dataStyleCenter }]
+        [{ v: "A: BRANCH IDENTITY", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
+        [{ v: "OFFICIAL BRANCH NAME:", s: { alignment: { horizontal: 'right' }, border: borderStyle } }, { v: "Bandra Main Outlet", s: inputStyle }],
+        [],
+        [{ v: "B: FACILITY / MODULE SWITCHBOARD", s: { font: { bold: true, color: { rgb: COLORS.ACCENT_GOLD } } } }],
+        [{ v: "Disabling a module below will automatically mark its tasks as N/A in the Mission Ledger.", s: { font: { italic: true, sz: 9, color: COLORS.TEXT_MUTED } } }],
+        [{ v: "OPERATIONAL MODULE", s: headerStyle }, { v: "ACTIVE? (YES/NO)", s: headerStyle }, { v: "SYSTEM IMPACT", s: headerStyle }],
+        [{ v: "Kitchen Operations", s: dataStyleLeft }, { v: "YES", s: inputStyle }, { v: "HACCP & Food Safety Logs", s: intelStyle }],
+        [{ v: "Bar & Beverage", s: dataStyleLeft }, { v: "YES", s: inputStyle }, { v: "Alcohol Inventory & Hygiene", s: intelStyle }],
+        [{ v: "FOH / Service Readiness", s: dataStyleLeft }, { v: "YES", s: inputStyle }, { v: "Guest Experience & Floor Audit", s: intelStyle }],
+        [{ v: "EHS / Safety Audits", s: dataStyleLeft }, { v: "YES", s: inputStyle }, { v: "Fire, Electrical & Life Safety", s: intelStyle }],
+        [{ v: "Statutory / Monthly", s: dataStyleLeft }, { v: "YES", s: inputStyle }, { v: "Licenses, Pest Control, Maintenance", s: intelStyle }]
     ];
     const setupWs = utils.aoa_to_sheet(setupData);
-    setupWs['!cols'] = [15, 35, 15, 15, 15].map(w => ({ wch: w }));
+    setupWs['!cols'] = [35, 20, 40].map(w => ({ wch: w }));
     addBackButton(setupWs);
+    // Apply borders to the switchboard
+    for (let r = 10; r <= 14; r++) {
+        ['A', 'B', 'C'].forEach(c => { if(setupWs[c+r]) setupWs[c+r].s = { ...setupWs[c+r].s, border: borderStyle }; });
+    }
     utils.book_append_sheet(wb, setupWs, "02_SETUP");
 
     // --- 03. DASHBOARD ---
@@ -217,6 +234,10 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     const dWs = utils.aoa_to_sheet(dashData);
     dWs['!cols'] = [30, 15, 20, 40].map(w => ({ wch: w }));
+    // Borders for dashboard
+    for (let r = 4; r <= 6; r++) {
+        ['A', 'B', 'C', 'D'].forEach(c => { if(dWs[c+r]) dWs[c+r].s = { ...dWs[c+r].s, border: borderStyle }; });
+    }
     addBackButton(dWs);
     utils.book_append_sheet(wb, dWs, "03_DASHBOARD");
 
@@ -224,7 +245,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const handoverData = [
         [], [{ v: "SHIFT HANDOVER BRIDGE (AM TO PM)", s: { font: { sz: 18, bold: true } } }], [],
         [{ v: "Date", s: headerStyle }, { v: "Outgoing Mgr", s: headerStyle }, { v: "Incoming Mgr", s: headerStyle }, { v: "Critical Handover Notes", s: headerStyle }, { v: "Cash Check", s: headerStyle }],
-        [{ v: new Date(), t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } }, { v: "", s: inputStyle }, { v: "", s: inputStyle }, { v: "", s: inputStyle }, { v: "OK", s: inputStyle }]
+        [{ v: new Date(), t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy', border: borderStyle } }, { v: "", s: { ...inputStyle, border: borderStyle } }, { v: "", s: { ...inputStyle, border: borderStyle } }, { v: "", s: { ...inputStyle, border: borderStyle } }, { v: "OK", s: { ...inputStyle, border: borderStyle } }]
     ];
     const hWs = utils.aoa_to_sheet(handoverData);
     hWs['!cols'] = [15, 25, 25, 60, 15].map(w => ({ wch: w }));
@@ -235,7 +256,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const incidentData = [
         [], [{ v: "INCIDENT & LOSS REGISTRY", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.RISK_RED } } } }], [],
         [{ v: "Date", s: headerStyle }, { v: "Category", s: headerStyle }, { v: "Incident Details", s: headerStyle }, { v: "Loss Value", s: headerStyle }, { v: "MGR Close-out", s: headerStyle }],
-        [{ v: new Date(), t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } }, { v: "SAFETY", s: inputStyle }, { v: "", s: inputStyle }, { v: 0, s: inputStyle }, { v: "OPEN", s: inputStyle }]
+        [{ v: new Date(), t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy', border: borderStyle } }, { v: "SAFETY", s: { ...inputStyle, border: borderStyle } }, { v: "", s: { ...inputStyle, border: borderStyle } }, { v: 0, s: { ...inputStyle, border: borderStyle } }, { v: "OPEN", s: { ...inputStyle, border: borderStyle } }]
     ];
     const iWs = utils.aoa_to_sheet(incidentData);
     iWs['!cols'] = [15, 20, 60, 15, 15].map(w => ({ wch: w }));
@@ -247,7 +268,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [], [{ v: "GOVERNANCE VALUE & ROI CALCULATOR", s: { font: { sz: 18, bold: true } } }], 
         [{ v: "Quantifying the financial protection of your system.", s: { font: { italic: true } } }], [],
         [{ v: "Risk Variable", s: headerStyle }, { v: "Revenue at Risk", s: headerStyle }, { v: "Mitigation Multiplier", s: headerStyle }, { v: "Annual Profit Protection", s: headerStyle }],
-        [{ v: "Total Monthly Inventory", s: dataStyleLeft }, { v: 100000, s: inputStyle }, { v: "2.0%", s: dataStyleCenter }, { t: 'f', f: "B6*0.02*12", s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }]
+        [{ v: "Total Monthly Inventory", s: { ...dataStyleLeft, border: borderStyle } }, { v: 100000, s: { ...inputStyle, border: borderStyle } }, { v: "2.0%", s: { ...dataStyleCenter, border: borderStyle } }, { t: 'f', f: "B6*0.02*12", s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, border: borderStyle } }]
     ];
     const rWs = utils.aoa_to_sheet(roiData);
     rWs['!cols'] = [35, 20, 20, 25].map(w => ({ wch: w }));
@@ -258,7 +279,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const personnelData = [
         [], [{ v: "STAFF-TO-ROLE ASSIGNMENT", s: { font: { sz: 18, bold: true } } }], [],
         [{ v: "Operational Role", s: headerStyle }, { v: "Staff Full Name", s: headerStyle }, { v: "Mobile / Contact", s: headerStyle }, { v: "Certification Status", s: headerStyle }],
-        [{ v: "Head Chef", s: dataStyleLeft }, { v: "", s: inputStyle }, { v: "", s: inputStyle }, { v: "VALID", s: dataStyleCenter }]
+        [{ v: "Head Chef", s: { ...dataStyleLeft, border: borderStyle } }, { v: "", s: { ...inputStyle, border: borderStyle } }, { v: "", s: { ...inputStyle, border: borderStyle } }, { v: "VALID", s: { ...dataStyleCenter, border: borderStyle } }]
     ];
     const pWs = utils.aoa_to_sheet(personnelData);
     pWs['!cols'] = [25, 35, 25, 20].map(w => ({ wch: w }));
