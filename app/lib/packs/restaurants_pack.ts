@@ -46,40 +46,29 @@ export const restaurants: PremiumPack = {
             ]
         },
         {
-            title: "Safety & Compliance Audits",
+            title: "Weekly Compliance Audits",
             department: "Management",
             frequency: "Weekly",
             role: "General Manager",
             summary: "Executive-level verification of safety infrastructure.",
             icon: "shield-check",
             tasks: [
-                { id: "SEC-01", description: "Inspect all fire exits for obstructions and functional panic bars.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment in fire emergency.", proof: "Exit Audit Sign-off", trainerNotes: "Ensure no boxes are stored in stairwells." },
-                { id: "SEC-02", description: "Full audit of First Aid kits and AED battery status.", priority: "High", riskLevel: "High", consequence: "Inability to respond to guest cardiac event.", proof: "Medical Kit Log", trainerNotes: "Replace any expired dressings immediately." },
-                { id: "SEC-03", description: "Review and file statutory licenses (FSSAI, Fire, Health).", priority: "High", riskLevel: "High", consequence: "Legal closure and heavy penalties.", proof: "License Repository Audit", trainerNotes: "Renewals must start 60 days before expiry." }
+                { id: "WSEC-01", description: "Inspect all fire exits for obstructions and functional panic bars.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment in fire emergency.", proof: "Exit Audit Sign-off", trainerNotes: "Ensure no boxes are stored in stairwells." },
+                { id: "WSEC-02", description: "Full audit of First Aid kits and AED battery status.", priority: "High", riskLevel: "High", consequence: "Inability to respond to guest cardiac event.", proof: "Medical Kit Log", trainerNotes: "Replace any expired dressings immediately." },
+                { id: "WSEC-03", description: "Reconcile high-value spirit inventory vs. POS sales.", priority: "High", riskLevel: "Medium", consequence: "Unchecked revenue leakage and internal theft.", proof: "Audit Report", trainerNotes: "Focus on Single Malts and Premium Gins." }
             ]
         },
         {
-            title: "Bar & Spirits Control",
-            department: "Bar",
-            frequency: "Daily",
-            role: "Bar Manager",
-            summary: "Inventory and hygiene controls for beverage operations.",
-            icon: "wine",
+            title: "Monthly Strategic Governance",
+            department: "Executive",
+            frequency: "Monthly",
+            role: "Owner/COO",
+            summary: "Deep-layer risk mitigation and statutory review.",
+            icon: "landmark",
             tasks: [
-                { id: "BAR-01", description: "Reconcile physical high-value spirit stock against POS opening sales.", priority: "High", riskLevel: "High", consequence: "Internal theft and revenue leakage.", proof: "Liquor Inventory Sheet", trainerNotes: "Measure open bottles using a weight scale or jigger." },
-                { id: "BAR-02", description: "Clean and sanitize all beer tap lines.", priority: "High", riskLevel: "Medium", consequence: "Bacterial growth and off-flavor beer.", proof: "Cleaning Log", trainerNotes: "Flush with food-grade line cleaner for 15 mins." },
-                { id: "BAR-03", description: "Inspect ice machines for mold or scale buildup.", priority: "High", riskLevel: "High", consequence: "Contaminated ice causing guest illness.", proof: "Cleaning Audit", trainerNotes: "Discard ice once a week for deep bin sanitation." }
-            ]
-        },
-        {
-            title: "Valet & Parking Security",
-            department: "Security",
-            frequency: "Daily",
-            role: "Security Supervisor",
-            summary: "Risk mitigation for third-party assets.",
-            icon: "car",
-            tasks: [
-                { id: "VAL-01", description: "Audit key cabinet security and camera coverage.", priority: "High", riskLevel: "High", consequence: "Unauthorized vehicle removal and liability.", proof: "Key Log Audit", trainerNotes: "Never leave keys on top of the counter." }
+                { id: "MSTRAT-01", description: "Review and file statutory licenses (FSSAI, Fire, Health).", priority: "High", riskLevel: "High", consequence: "Legal closure and heavy penalties.", proof: "License Repository Audit", trainerNotes: "Renewals must start 60 days before expiry." },
+                { id: "MSTRAT-02", description: "Deep sweep pest control and boundary sealing audit.", priority: "High", riskLevel: "High", consequence: "Structural infestation and reputation loss.", proof: "Vendor Certificate", trainerNotes: "Audit the vendor's bait station placement map." },
+                { id: "MSTRAT-03", description: "Oven and Cold-Chain mechanical calibration audit.", priority: "High", riskLevel: "Medium", consequence: "Energy waste and inconsistent product quality.", proof: "Calibration Certificate", trainerNotes: "Use external 3rd party calibrated thermometers." }
             ]
         }
     ]
