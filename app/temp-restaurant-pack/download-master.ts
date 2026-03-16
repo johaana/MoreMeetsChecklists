@@ -139,7 +139,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [
             { v: "ADMIN & SETUP", s: groupHeaderStyle }, null, 
             { v: "DAILY OPERATIONS", s: groupHeaderStyle }, null, 
-            { v: "MANAGEMENT INTEL", s: groupHeaderStyle }
+            { v: "EXECUTIVE INTEL", s: groupHeaderStyle }
         ],
         [
             { v: "▶ BRANCH SETUP", l: { Target: "#'SETUP'!A1" }, s: tileStyle }, null, 
@@ -165,13 +165,21 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [null, null, null, null, null],
         [null, null, null, null, null],
         [],
-        [{ v: "TODAY'S STATUS", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "TODAY'S STATUS", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'left' } } }],
         [
-            { v: "Checklist Completion:", s: { font: { bold: true, sz: 10 }, alignment: { horizontal: 'right' } } },
-            { t: 'f', f: `IFERROR(TEXT(COUNTIF('DAILY_CHECKLISTS'!E:E,"<>")/MAX(1, COUNTIFS('DAILY_CHECKLISTS'!D:D, "<>N/A*", 'DAILY_CHECKLISTS'!D:D, "<>")), "0%"), "0%")`, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } } } },
+            { v: "Active Team:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'right' } } },
+            { t: 'f', f: `COUNTIF('PERSONNEL'!F:F, "*Active*") & " STAFF"`, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } } } },
             null,
-            { v: "Open Incidents:", s: { font: { bold: true, sz: 10 }, alignment: { horizontal: 'right' } } },
-            { t: 'f', f: `COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")`, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.RISK_RED } } } }
+            { v: "Shift Progress:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'right' } } },
+            { t: 'f', f: `IFERROR(TEXT(COUNTIFS('DAILY_CHECKLISTS'!E:E,"<>", 'DAILY_CHECKLISTS'!D:D, "<>N/A*")/MAX(1, COUNTIFS('DAILY_CHECKLISTS'!D:D, "<>N/A*", 'DAILY_CHECKLISTS'!D:D, "<>")), "0%"), "0%")`, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } } } },
+            null,
+            { v: "Open Incidents:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'right' } } },
+            { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN") & " ACTION REQ")`, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.RISK_RED } } } }
+        ],
+        [
+            null, null, null,
+            { v: "Pending Criticals:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'right' } } },
+            { t: 'f', f: `COUNTIFS('DAILY_CHECKLISTS'!E:E, "", 'DAILY_CHECKLISTS'!D:D, "<>N/A*", 'DAILY_CHECKLISTS'!K:K, "High")`, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.ACCENT_GOLD } } } }
         ],
         [], [],
         [{ v: "SYSTEM STATUS: ✅ VERIFIED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
@@ -188,6 +196,13 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { s: { r: 6, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 8, c: 4 } },
         { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
         { s: { r: 14, c: 0 }, e: { r: 16, c: 0 } }, { s: { r: 14, c: 2 }, e: { r: 16, c: 2 } }, { s: { r: 14, c: 4 }, e: { r: 16, c: 4 } }
+    ];
+    homeWs['!rows'] = [
+        null, null, { hpt: 40 }, { hpt: 20 }, null,
+        null, { hpt: 30 }, null, null, null,
+        null, { hpt: 30 }, null, null, null,
+        null, { hpt: 30 }, null, null, 
+        { hpt: 25 }, { hpt: 20 }, { hpt: 20 }
     ];
     homeWs['!views'] = [{ showGridLines: false }];
     utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
