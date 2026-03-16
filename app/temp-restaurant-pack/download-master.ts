@@ -162,7 +162,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [null, null, null, null, null],
         [],
         [
-            { v: "▶ ARCHIVE", s: { ...tileStyle, fill: { fgColor: { rgb: "334155" } } } }, null, 
+            { v: "▶ ARCHIVE", s: tileStyle }, null, 
             { v: "▶ MASTER PROTOCOL", l: { Target: "#'MASTER_PROTOCOL'!A1" }, s: tileStyle }, null, 
             { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_LOG'!A1" }, s: tileStyle }
         ],
@@ -192,7 +192,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
         { s: { r: 19, c: 0 }, e: { r: 19, c: 4 } }, { s: { r: 20, c: 0 }, e: { r: 20, c: 4 } },
         { s: { r: 6, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 8, c: 4 } },
-        { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
+        { s: { r: 10, c: 0 }, e: { r: 10, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
         { s: { r: 14, c: 0 }, e: { r: 16, c: 0 } }, { s: { r: 14, c: 2 }, e: { r: 16, c: 2 } }, { s: { r: 14, c: 4 }, e: { r: 16, c: 4 } }
     ];
     homeWs['!views'] = [{ showGridLines: false }];
