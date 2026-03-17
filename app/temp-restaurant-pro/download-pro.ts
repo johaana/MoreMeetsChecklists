@@ -7,6 +7,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * ROCS v4.3 PRO - THE SOVEREIGN EDITION
  * Proper UI/UX Redesign: Symmetric Grid + Zero-Clipping Architecture
+ * Optimized for One-Glance Visibility (No Scrolling)
  */
 export const handleDownloadPro = (item: PremiumPack) => {
     if (!item) {
@@ -56,7 +57,7 @@ export const handleDownloadPro = (item: PremiumPack) => {
     };
 
     const tileStyle = {
-        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 12 },
+        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 11 },
         fill: { fgColor: { rgb: COLORS.TILE_BG } },
         alignment: { horizontal: 'center', vertical: 'center' },
         border: { 
@@ -68,28 +69,28 @@ export const handleDownloadPro = (item: PremiumPack) => {
     };
 
     const groupHeaderStyle = {
-        font: { ...baseFont, bold: true, color: { rgb: "000000" }, sz: 13 },
+        font: { ...baseFont, bold: true, color: { rgb: "000000" }, sz: 12 },
         fill: { fgColor: { rgb: COLORS.ACCENT_GOLD } },
         alignment: { horizontal: 'center', vertical: 'center' },
         border: borderStyle
     };
 
     const moodBannerStyle = {
-        font: { ...baseFont, bold: true, sz: 18, color: { rgb: "000000" } },
+        font: { ...baseFont, bold: true, sz: 16, color: { rgb: "000000" } },
         fill: { fgColor: { rgb: COLORS.BANNER_AMBER } },
         alignment: { horizontal: 'center', vertical: 'center' },
         border: { left: boxBorder, top: boxBorder, right: boxBorder }
     };
 
     const chamberHeaderStyle = {
-        font: { ...baseFont, bold: true, sz: 11, color: { rgb: COLORS.WHITE } },
+        font: { ...baseFont, bold: true, sz: 10, color: { rgb: COLORS.WHITE } },
         fill: { fgColor: { rgb: COLORS.NAVY_DEEP } },
         alignment: { horizontal: 'center', vertical: 'center' },
         border: borderStyle
     };
 
     const chamberLabelStyle = {
-        font: { ...baseFont, bold: true, sz: 10, color: { rgb: COLORS.INTEL_GREY } },
+        font: { ...baseFont, bold: true, sz: 9, color: { rgb: COLORS.INTEL_GREY } },
         fill: { fgColor: { rgb: COLORS.CHAMBER_BG } },
         alignment: { horizontal: 'right', vertical: 'center' },
         border: { left: borderStyle.left }
@@ -102,7 +103,7 @@ export const handleDownloadPro = (item: PremiumPack) => {
     };
 
     const bigActionButtonStyle = {
-        font: { ...baseFont, bold: true, sz: 14, color: { rgb: COLORS.PRIMARY_GREEN }, underline: true },
+        font: { ...baseFont, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN }, underline: true },
         fill: { fgColor: { rgb: COLORS.NAVY_DEEP } },
         alignment: { horizontal: 'center', vertical: 'center' },
         border: { left: boxBorder, bottom: boxBorder, right: boxBorder }
@@ -130,8 +131,8 @@ export const handleDownloadPro = (item: PremiumPack) => {
     // --- 01. HOME CONSOLE ---
     const homeData: any[][] = [
         [], [],
-        [{ v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
-        [{ v: "Enterprise Continuity & Governance Suite v4.3 PRO | Sovereign Tier", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
+        [{ v: "Enterprise Continuity & Governance Suite v4.3 PRO | Sovereign Tier", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
         [],
         [
             { v: "ADMIN & SETUP", s: groupHeaderStyle }, null, 
@@ -143,21 +144,16 @@ export const handleDownloadPro = (item: PremiumPack) => {
             { v: "▶ TODAY'S TASKS", l: { Target: "#'MISSION_LEDGER'!A1" }, s: tileStyle }, null, 
             { v: "▶ BUSINESS HEALTH", l: { Target: "#'DASHBOARD'!A1" }, s: tileStyle }
         ],
-        [null, null, null, null, null], 
-        [],
         [
             { v: "▶ TEAM HUB", l: { Target: "#'PERSONNEL'!A1" }, s: tileStyle }, null, 
             { v: "▶ SHIFT HANDOVER", l: { Target: "#'HANDOVER'!A1" }, s: tileStyle }, null, 
             { v: "▶ COST & SAVINGS", l: { Target: "#'ROI_ENGINE'!A1" }, s: tileStyle }
         ],
-        [null, null, null, null, null],
-        [],
         [
             { v: "▶ MASTER SOPs", l: { Target: "#'MASTER_PROTOCOL'!A1" }, s: tileStyle }, null, 
             { v: "▶ ARCHIVE", l: { Target: "#'ARCHIVE'!A1" }, s: tileStyle }, null, 
             { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_LOG'!A1" }, s: tileStyle }
         ],
-        [null, null, null, null, null],
         [],
         // --- PRO DASHBOARD: SYMMETRIC TRIPLE CHAMBER ---
         [{ t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(COUNTIF('MISSION_LEDGER'!E:E, "<>") / MAX(1, COUNTIFS('MISSION_LEDGER'!D:D, "<>N/A*", 'MISSION_LEDGER'!D:D, "<>"))>=0.9, "🔥 SIZZLING - PERFECT EXECUTION!", IF(COUNTIF('MISSION_LEDGER'!E:E, "<>") / MAX(1, COUNTIFS('MISSION_LEDGER'!D:D, "<>N/A*", 'MISSION_LEDGER'!D:D, "<>"))>=0.6, "🥘 SIMMERING - BUILDING MOMENTUM", "🧊 COLD - TURN UP THE HEAT!")), "EMPIRE MOOD: 🧊 LOADING...")`, s: moodBannerStyle }, null, null, null, null],
@@ -193,22 +189,22 @@ export const handleDownloadPro = (item: PremiumPack) => {
     
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
-        { s: { r: 15, c: 0 }, e: { r: 15, c: 4 } },
-        { s: { r: 19, c: 0 }, e: { r: 19, c: 4 } },
-        { s: { r: 21, c: 0 }, e: { r: 21, c: 4 } }, { s: { r: 22, c: 0 }, e: { r: 22, c: 4 } },
-        { s: { r: 6, c: 0 }, e: { r: 7, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 7, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 7, c: 4 } },
-        { s: { r: 9, c: 0 }, e: { r: 10, c: 0 } }, { s: { r: 9, c: 2 }, e: { r: 10, c: 2 } }, { s: { r: 9, c: 4 }, e: { r: 10, c: 4 } },
-        { s: { r: 12, c: 0 }, e: { r: 13, c: 0 } }, { s: { r: 12, c: 2 }, e: { r: 13, c: 2 } }, { s: { r: 12, c: 4 }, e: { r: 13, c: 4 } }
+        { s: { r: 10, c: 0 }, e: { r: 10, c: 4 } },
+        { s: { r: 14, c: 0 }, e: { r: 14, c: 4 } },
+        { s: { r: 16, c: 0 }, e: { r: 16, c: 4 } }, { s: { r: 17, c: 0 }, e: { r: 17, c: 4 } },
+        { s: { r: 6, c: 0 }, e: { r: 6, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 6, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 6, c: 4 } },
+        { s: { r: 7, c: 0 }, e: { r: 7, c: 0 } }, { s: { r: 7, c: 2 }, e: { r: 7, c: 2 } }, { s: { r: 7, c: 4 }, e: { r: 7, c: 4 } },
+        { s: { r: 8, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 8, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 8, c: 4 }, e: { r: 8, c: 4 } }
     ];
 
-    homeWs['!rows'] = Array(35).fill({ hpt: 20 });
-    homeWs['!rows'][2] = { hpt: 55 }; // Title Bar
-    homeWs['!rows'][6] = { hpt: 45 }; // Tile Row 1
-    homeWs['!rows'][9] = { hpt: 45 }; // Tile Row 2
-    homeWs['!rows'][12] = { hpt: 45 }; // Tile Row 3
-    homeWs['!rows'][15] = { hpt: 40 }; // Mood Banner
-    homeWs['!rows'][16] = { hpt: 25 }; // Chamber Headers
-    homeWs['!rows'][19] = { hpt: 45 }; // Big Action Button
+    homeWs['!rows'] = Array(35).fill({ hpt: 18 });
+    homeWs['!rows'][2] = { hpt: 50 }; // Title Bar
+    homeWs['!rows'][6] = { hpt: 35 }; // Tile Row 1
+    homeWs['!rows'][7] = { hpt: 35 }; // Tile Row 2
+    homeWs['!rows'][8] = { hpt: 35 }; // Tile Row 3
+    homeWs['!rows'][10] = { hpt: 35 }; // Mood Banner
+    homeWs['!rows'][11] = { hpt: 22 }; // Chamber Headers
+    homeWs['!rows'][14] = { hpt: 40 }; // Big Action Button
 
     homeWs['!views'] = [{ showGridLines: false }];
     utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
