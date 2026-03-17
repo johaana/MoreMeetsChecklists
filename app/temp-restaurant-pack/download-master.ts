@@ -60,8 +60,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         border: { 
             top: { style: 'thin', color: { rgb: COLORS.PRIMARY_GREEN } },
             left: { style: 'thin', color: { rgb: COLORS.PRIMARY_GREEN } },
-            bottom: { style: 'thin', color: { rgb: COLORS.PRIMARY_GREEN } },
-            right: { style: 'thin', color: { rgb: COLORS.PRIMARY_GREEN } }
+            bottom: { style: 'medium', color: { rgb: "000000" } },
+            right: { style: 'medium', color: { rgb: "000000" } }
         }
     };
 
@@ -108,16 +108,20 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     };
 
     // --- UI/UX UPGRADE: COMMAND PANE STYLES ---
+    const boxBorder = { style: 'medium', color: { rgb: COLORS.NAVY_BAR } };
+    
     const statusHeaderStyle = {
-        font: { ...baseFont, bold: true, sz: 14, color: { rgb: COLORS.NAVY_BAR } },
+        font: { ...baseFont, bold: true, sz: 12, color: { rgb: COLORS.NAVY_BAR } },
         fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
-        alignment: { horizontal: 'left', vertical: 'center' }
+        alignment: { horizontal: 'left', vertical: 'center' },
+        border: { left: boxBorder, top: boxBorder }
     };
 
     const statusLabelStyle = {
-        font: { ...baseFont, sz: 12, color: { rgb: COLORS.INTEL_GREY } },
+        font: { ...baseFont, sz: 11, color: { rgb: COLORS.INTEL_GREY } },
         fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
-        alignment: { horizontal: 'left', vertical: 'center' }
+        alignment: { horizontal: 'left', vertical: 'center' },
+        border: { left: boxBorder }
     };
 
     const statusValueStyle = {
@@ -126,8 +130,24 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         alignment: { horizontal: 'left', vertical: 'center' }
     };
 
-    const statusEmptyStyle = {
-        fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } }
+    const statusEmptyRight = {
+        fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
+        border: { right: boxBorder }
+    };
+
+    const statusBottomLeft = {
+        fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
+        border: { left: boxBorder, bottom: boxBorder }
+    };
+
+    const statusBottomMid = {
+        fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
+        border: { bottom: boxBorder }
+    };
+
+    const statusBottomRight = {
+        fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
+        border: { bottom: boxBorder, right: boxBorder }
     };
 
     const addSoftwareHeader = (ws: WorkSheet, endCol: string = 'K') => {
@@ -192,25 +212,25 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [null, null, null, null, null],
         [],
         // --- TODAY'S STATUS PANE ---
-        [{ v: "TODAY'S STATUS", s: statusHeaderStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }],
+        [{ v: "TODAY'S STATUS", s: statusHeaderStyle }, { v: "", s: { ...statusHeaderStyle, border: { top: boxBorder } } }, { v: "", s: { ...statusHeaderStyle, border: { top: boxBorder } } }, { v: "", s: { ...statusHeaderStyle, border: { top: boxBorder } } }, { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } }, border: { top: boxBorder, right: boxBorder } } }],
         [
             { v: "Start Your Shift → Today's Tasks", l: { Target: "#'TODAYS_TASKS'!A1" }, s: { ...statusLabelStyle, font: { ...statusLabelStyle.font, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } },
-            { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }
+            { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: statusEmptyRight }
         ],
         [
             { v: "Shift Progress:", s: statusLabelStyle },
-            { t: 'f', f: `IFERROR(IF(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task"))>=0.95, "🟢 ", IF(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task"))>=0.8, "🟡 ", "🔴 ")) & TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN } } } },
-            { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }
+            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN } } } },
+            { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: statusEmptyRight }
         ],
         [
             { v: "Open Incidents:", s: statusLabelStyle },
-            { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "🟢 NONE", "🔴 " & COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, color: { rgb: COLORS.RISK_RED } } } },
-            { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }
+            { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, color: { rgb: COLORS.RISK_RED } } } },
+            { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: statusEmptyRight }
         ],
         [
-            { v: "Active Branch:", s: statusLabelStyle },
-            { t: 'f', f: `'BRANCH_SETUP'!B6`, l: { Target: "#'BRANCH_SETUP'!A1" }, s: statusValueStyle },
-            { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }
+            { v: "Active Branch:", s: statusBottomLeft },
+            { t: 'f', f: `'BRANCH_SETUP'!B6`, l: { Target: "#'BRANCH_SETUP'!A1" }, s: { ...statusValueStyle, border: { bottom: boxBorder } } },
+            { v: "", s: statusBottomMid }, { v: "", s: statusBottomMid }, { v: "", s: statusBottomRight }
         ],
         [],
         [{ v: "SYSTEM STATUS: ✅ INSTITUTIONAL GRADE VERIFIED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }],
@@ -223,19 +243,19 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     // Set specific row heights for the status pane
     homeWs['!rows'] = Array(35).fill({ hpt: 20 });
     homeWs['!rows'][2] = { hpt: 40 }; // Title
-    homeWs['!rows'][18] = { hpt: 28 }; // Header "Today's Status"
-    homeWs['!rows'][19] = { hpt: 22 }; // Start Shift line
-    homeWs['!rows'][20] = { hpt: 22 }; // Row 1
-    homeWs['!rows'][21] = { hpt: 22 }; // Row 2
-    homeWs['!rows'][22] = { hpt: 22 }; // Row 3
+    homeWs['!rows'][18] = { hpt: 24 }; // Header
+    homeWs['!rows'][19] = { hpt: 20 }; // CTA
+    homeWs['!rows'][20] = { hpt: 22 }; // Progress
+    homeWs['!rows'][21] = { hpt: 22 }; // Incidents
+    homeWs['!rows'][22] = { hpt: 22 }; // Branch
     
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
-        { s: { r: 18, c: 0 }, e: { r: 18, c: 4 } }, // Header merge
-        { s: { r: 19, c: 0 }, e: { r: 19, c: 4 } }, // Start Shift merge
-        { s: { r: 20, c: 1 }, e: { r: 20, c: 4 } }, // Progress value span
-        { s: { r: 21, c: 1 }, e: { r: 21, c: 4 } }, // Incidents value span
-        { s: { r: 22, c: 1 }, e: { r: 22, c: 4 } }, // Branch value span
+        { s: { r: 18, c: 0 }, e: { r: 18, c: 3 } }, // Header text area
+        { s: { r: 19, c: 0 }, e: { r: 19, c: 3 } }, // CTA span
+        { s: { r: 20, c: 1 }, e: { r: 20, c: 3 } }, // Progress value span
+        { s: { r: 21, c: 1 }, e: { r: 21, c: 3 } }, // Incidents value span
+        { s: { r: 22, c: 1 }, e: { r: 22, c: 3 } }, // Branch value span
         { s: { r: 25, c: 0 }, e: { r: 25, c: 4 } }, { s: { r: 26, c: 0 }, e: { r: 26, c: 4 } },
         { s: { r: 6, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 8, c: 4 } },
         { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
