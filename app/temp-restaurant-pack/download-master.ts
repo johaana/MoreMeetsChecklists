@@ -8,7 +8,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
  * ROCS v4.2 - THE ENTERPRISE GOVERNANCE SUITE
  * Optimized for Restaurant Groups: High-Speed Adoption + Binary Verification.
  * Maker-Checker Workflow: Completed By (Staff) | Verified By (Manager).
- * N/A logic integrated into Verified column for zero-clutter.
+ * Signal & Detail Approach: Home Console signals leads/alerts, Dashboard provides deep dive.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -43,6 +43,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         left: { style: 'thin', color: { rgb: COLORS.BORDER } },
         right: { style: 'thin', color: { rgb: COLORS.BORDER } }
     };
+
+    const boxBorder = { style: 'medium', color: { rgb: COLORS.NAVY_BAR } };
 
     const baseFont = { name: 'Segoe UI', sz: 10 };
 
@@ -106,25 +108,23 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ...dataStyleCenter,
         fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
-
-    const boxBorder = { style: 'medium', color: { rgb: COLORS.NAVY_BAR } };
     
     const statusHeaderStyle = {
         font: { ...baseFont, bold: true, sz: 12, color: { rgb: COLORS.NAVY_BAR } },
         fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
-        alignment: { horizontal: 'left', vertical: 'center' },
-        border: { left: boxBorder, top: boxBorder }
+        alignment: { horizontal: 'center', vertical: 'center' },
+        border: { left: boxBorder, top: boxBorder, right: boxBorder }
     };
 
     const statusLabelStyle = {
-        font: { ...baseFont, sz: 11, color: { rgb: COLORS.INTEL_GREY } },
+        font: { ...baseFont, sz: 10, color: { rgb: COLORS.INTEL_GREY } },
         fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
         alignment: { horizontal: 'right', vertical: 'center' },
         border: { left: boxBorder }
     };
 
     const statusValueStyle = {
-        font: { ...baseFont, bold: true, sz: 12, color: { rgb: COLORS.NAVY_BAR } },
+        font: { ...baseFont, bold: true, sz: 11, color: { rgb: COLORS.NAVY_BAR } },
         fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
         alignment: { horizontal: 'left', vertical: 'center' }
     };
@@ -132,21 +132,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const statusEmptyRight = {
         fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
         border: { right: boxBorder }
-    };
-
-    const statusBottomLeft = {
-        fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
-        border: { left: boxBorder, bottom: boxBorder }
-    };
-
-    const statusBottomMid = {
-        fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
-        border: { bottom: boxBorder }
-    };
-
-    const statusBottomRight = {
-        fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
-        border: { bottom: boxBorder, right: boxBorder }
     };
 
     const addSoftwareHeader = (ws: WorkSheet, endCol: string = 'K') => {
@@ -210,22 +195,29 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [null, null, null, null, null],
         [null, null, null, null, null],
         [],
-        // --- TODAY'S STATUS PANE (TIGHTER UI) ---
-        [{ v: "TODAY'S STATUS", s: statusHeaderStyle }, { v: "", s: { ...statusHeaderStyle, border: { top: boxBorder } } }, { v: "", s: { ...statusHeaderStyle, border: { top: boxBorder } } }, { v: "", s: { ...statusHeaderStyle, border: { top: boxBorder } } }, { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } }, border: { top: boxBorder, right: boxBorder } } }],
+        // --- TODAY'S STATUS PANE (COMPACT & BOLD) ---
+        [{ v: "TODAY'S STATUS", s: statusHeaderStyle }, { v: "", s: statusHeaderStyle }, { v: "", s: statusHeaderStyle }, { v: "", s: statusHeaderStyle }, { v: "", s: statusHeaderStyle }],
         [
             { v: "Shift Progress:", s: statusLabelStyle },
-            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } },
+            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, s: { ...statusValueStyle, font: { ...statusValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN } } } },
             { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: statusEmptyRight }
         ],
         [
             { v: "Open Incidents:", s: statusLabelStyle },
-            { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, bold: true, color: { rgb: COLORS.RISK_RED } } } },
+            { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, s: { ...statusValueStyle, font: { ...statusValueStyle.font, color: { rgb: COLORS.RISK_RED } } } },
             { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: statusEmptyRight }
         ],
         [
-            { v: "Active Units:", s: statusBottomLeft },
-            { t: 'f', f: `COUNTIF('BRANCH_SETUP'!B6:B15, "<>")`, l: { Target: "#'BRANCH_SETUP'!A1" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, bold: true }, border: { bottom: boxBorder } } },
-            { v: "", s: statusBottomMid }, { v: "", s: statusBottomMid }, { v: "", s: statusBottomRight }
+            { v: "Active Units:", s: statusLabelStyle },
+            { t: 'f', f: `COUNTIF('BRANCH_SETUP'!B6:B15, "<>")`, s: statusValueStyle },
+            { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: statusEmptyRight }
+        ],
+        [
+            { v: "System Insight:", s: { ...statusLabelStyle, border: { left: boxBorder, bottom: boxBorder } } },
+            { v: "▶ [Lead: Bandra | Alert: Ghatkopar]", l: { Target: "#'BUSINESS_HEALTH'!A10" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, italic: true, sz: 10, color: { rgb: COLORS.INTEL_GREY } }, border: { bottom: boxBorder } } },
+            { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } }, border: { bottom: boxBorder } } }, 
+            { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } }, border: { bottom: boxBorder } } }, 
+            { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } }, border: { right: boxBorder, bottom: boxBorder } } }
         ],
         [],
         [{ v: "SYSTEM STATUS: ✅ INSTITUTIONAL GRADE VERIFIED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }],
@@ -234,22 +226,16 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const homeWs = utils.aoa_to_sheet(homeData);
     homeWs['!cols'] = [35, 15, 35, 15, 35].map(w => ({ wch: w }));
-    
-    // Set optimized row heights
-    homeWs['!rows'] = Array(35).fill({ hpt: 18 });
-    homeWs['!rows'][2] = { hpt: 40 }; // Title
-    homeWs['!rows'][18] = { hpt: 22 }; // Header
-    homeWs['!rows'][19] = { hpt: 18 }; // Progress
-    homeWs['!rows'][20] = { hpt: 18 }; // Incidents
-    homeWs['!rows'][21] = { hpt: 18 }; // Units
+    homeWs['!rows'] = Array(35).fill({ hpt: 16 });
+    homeWs['!rows'][2] = { hpt: 40 }; 
+    homeWs['!rows'][18] = { hpt: 22 }; 
     
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
-        { s: { r: 18, c: 0 }, e: { r: 18, c: 3 } }, 
-        { s: { r: 19, c: 1 }, e: { r: 19, c: 3 } }, 
-        { s: { r: 20, c: 1 }, e: { r: 20, c: 3 } }, 
-        { s: { r: 21, c: 1 }, e: { r: 21, c: 3 } }, 
-        { s: { r: 24, c: 0 }, e: { r: 24, c: 4 } }, { s: { r: 25, c: 0 }, e: { r: 25, c: 4 } },
+        { s: { r: 18, c: 0 }, e: { r: 18, c: 4 } },
+        { s: { r: 19, c: 1 }, e: { r: 19, c: 3 } }, { s: { r: 20, c: 1 }, e: { r: 20, c: 3 } }, { s: { r: 21, c: 1 }, e: { r: 21, c: 3 } }, 
+        { s: { r: 22, c: 1 }, e: { r: 22, c: 3 } },
+        { s: { r: 25, c: 0 }, e: { r: 25, c: 4 } }, { s: { r: 26, c: 0 }, e: { r: 26, c: 4 } },
         { s: { r: 6, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 8, c: 4 } },
         { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
         { s: { r: 14, c: 0 }, e: { r: 16, c: 0 } }, { s: { r: 14, c: 2 }, e: { r: 16, c: 2 } }, { s: { r: 14, c: 4 }, e: { r: 16, c: 4 } }
@@ -294,8 +280,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     };
 
     const startDate = new Date(); 
-    [1].forEach(bCode => {
-        const bRow = 6;
+    [1, 2].forEach(bCode => {
+        const bRow = 5 + bCode;
         item.checklists.forEach((c, cIdx) => {
             const switchCol = moduleMap[cIdx] || "C";
             const activeFormula = `'BRANCH_SETUP'!$${switchCol}$${bRow}`;
@@ -330,36 +316,25 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     mWs['!cols'] = [15, 25, 10, 65, 25, 25, 20, 15, 15, 45, 50].map(w => ({ wch: w }));
     addSoftwareHeader(mWs, 'K');
     mWs['!autofilter'] = { ref: `A4:K${mData.length}` };
-
-    mWs['!conditional_formatting'] = [
-        {
-            ref: `G5:G${mData.length}`,
-            rules: [
-                {
-                    type: "expression",
-                    formula: `G5="COMPLETED"`,
-                    style: {
-                        fill: { fgColor: { rgb: COLORS.SUCCESS_TEAL } },
-                        font: { color: { rgb: COLORS.WHITE }, bold: true }
-                    }
-                }
-            ]
-        }
-    ];
-
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
 
-    // --- 04. BUSINESS_HEALTH ---
+    // --- 04. BUSINESS_HEALTH (SIGNAL & DETAIL) ---
     const dashData = [
         [], [{ v: "BUSINESS HEALTH: PERFORMANCE HUB", s: { font: { sz: 20, bold: true } } }], [],
+        [{ v: "GROUP KPIs", s: groupHeaderStyle }, null, null],
         [{ v: "Operational KPI", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Target Threshold", s: headerStyle }],
-        [{ v: "Shift Progress Rate", s: dataStyleLeft }, { t:'f', f:`IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
-        [{ v: "Active Operational Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }],
-        [{ v: "Risk Coverage (Active Modules)", s: dataStyleLeft }, { t:'f', f:`COUNTIF('BRANCH_SETUP'!C6:L6, "YES") & " / 10"`, s: dataStyleCenter }, { v: "ADAPTIVE", s: dataStyleCenter }]
+        [{ v: "Group Shift Progress", s: dataStyleLeft }, { t:'f', f:`IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
+        [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }],
+        [],
+        [{ v: "BRANCH INTELLIGENCE", s: groupHeaderStyle, id: "BRANCH_INTEL" }, null, null, null],
+        [{ v: "Branch Name", s: headerStyle }, { v: "Progress", s: headerStyle }, { v: "Open Incidents", s: headerStyle }, { v: "Risk Profile", s: headerStyle }],
+        [{ t: 'f', f: `'BRANCH_SETUP'!B6`, s: dataStyleLeft }, { t: 'f', f: `IFERROR(TEXT(COUNTIFS('TODAYS_TASKS'!B:B, 'BRANCH_SETUP'!B6, 'TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!B:B, 'BRANCH_SETUP'!B6, 'TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>")), "0%"), "0%")`, s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('INCIDENT_TRACKER'!C:C, 'BRANCH_SETUP'!B6, 'INCIDENT_TRACKER'!G:G, "OPEN")`, s: dataStyleCenter }, { t: 'f', f: `IF(AND(COUNTIFS('INCIDENT_TRACKER'!C:C, 'BRANCH_SETUP'!B6, 'INCIDENT_TRACKER'!G:G, "OPEN")=0), "SECURED", "ALERT")`, s: dataStyleCenter }],
+        [{ t: 'f', f: `'BRANCH_SETUP'!B7`, s: dataStyleLeft }, { t: 'f', f: `IFERROR(TEXT(COUNTIFS('TODAYS_TASKS'!B:B, 'BRANCH_SETUP'!B7, 'TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!B:B, 'BRANCH_SETUP'!B7, 'TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>")), "0%"), "0%")`, s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('INCIDENT_TRACKER'!C:C, 'BRANCH_SETUP'!B7, 'INCIDENT_TRACKER'!G:G, "OPEN")`, s: dataStyleCenter }, { t: 'f', f: `IF(AND(COUNTIFS('INCIDENT_TRACKER'!C:C, 'BRANCH_SETUP'!B7, 'INCIDENT_TRACKER'!G:G, "OPEN")=0), "SECURED", "ALERT")`, s: dataStyleCenter }]
     ];
     const dWs = utils.aoa_to_sheet(dashData);
-    dWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
-    addSoftwareHeader(dWs, 'C');
+    dWs['!cols'] = [40, 25, 20, 20].map(w => ({ wch: w }));
+    dWs['!merges'] = [{ s: { r: 3, c: 0 }, e: { r: 3, c: 2 } }, { s: { r: 8, c: 0 }, e: { r: 8, c: 3 } }];
+    addSoftwareHeader(dWs, 'D');
     utils.book_append_sheet(wb, dWs, "BUSINESS_HEALTH");
 
     // --- 05. COST_SAVINGS_TRACKER ---
