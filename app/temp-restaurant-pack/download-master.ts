@@ -167,18 +167,18 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [null, null, null, null, null],
         [null, null, null, null, null],
         [],
-        [{ v: "TODAY'S STATUS", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'left' } } }],
+        [{ v: "TODAY'S STATUS", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'left' } } }],
         [
-            { v: "Shift Progress:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
-            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }
+            { v: "Shift Progress:", s: { font: { sz: 11, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
+            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, sz: 14, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }
         ],
         [
-            { v: "Open Incidents:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
-            { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'left' } } }
+            { v: "Open Incidents:", s: { font: { sz: 11, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
+            { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { font: { bold: true, sz: 14, color: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'left' } } }
         ],
         [
-            { v: "Active Branch:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
-            { t: 'f', f: `'BRANCH_SETUP'!B6`, l: { Target: "#'BRANCH_SETUP'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'left' } } }
+            { v: "Active Branch:", s: { font: { sz: 11, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
+            { t: 'f', f: `'BRANCH_SETUP'!B6`, l: { Target: "#'BRANCH_SETUP'!A1" }, s: { font: { bold: true, sz: 14, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'left' } } }
         ],
         [],
         [{ v: "SYSTEM STATUS: ✅ INSTITUTIONAL GRADE VERIFIED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }],
@@ -187,6 +187,12 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const homeWs = utils.aoa_to_sheet(homeData);
     homeWs['!cols'] = [35, 15, 35, 15, 35].map(w => ({ wch: w }));
+    homeWs['!rows'] = Array(30).fill({ hpt: 20 });
+    homeWs['!rows'][2] = { hpt: 40 }; // Title row
+    homeWs['!rows'][18] = { hpt: 30 }; // Status header
+    homeWs['!rows'][19] = { hpt: 25 }; // Shift Progress row
+    homeWs['!rows'][20] = { hpt: 25 }; // Open Incidents row
+    homeWs['!rows'][21] = { hpt: 25 }; // Active Branch row
     
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
