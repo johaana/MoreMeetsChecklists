@@ -32,7 +32,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         INPUT_ZONE: "FEFCE8",    
         BORDER: "CBD5E1",
         HEADER_BG: "1E293B",
-        SUCCESS_TEAL: "14B8A6", // Green-Blue for Wow factor
+        SUCCESS_TEAL: "14B8A6", 
         CONSOLE_BG: "F1F5F9" 
     };
 
@@ -173,14 +173,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }
         ],
         [
-            { v: "Pending Criticals:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
-            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!G:G, "<>COMPLETED", 'TODAYS_TASKS'!I:I, "High", 'TODAYS_TASKS'!D:D, "<>N/A*")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'left' } } }
-        ],
-        [
-            { v: "Manager Verified:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
-            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>N/A", 'TODAYS_TASKS'!F:F, "<>Verified By*")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.ACCENT_GOLD } }, alignment: { horizontal: 'left' } } }
-        ],
-        [
             { v: "Open Incidents:", s: { font: { sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
             { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { font: { bold: true, sz: 10, color: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'left' } } }
         ],
@@ -198,7 +190,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
-        { s: { r: 25, c: 0 }, e: { r: 25, c: 4 } }, { s: { r: 26, c: 0 }, e: { r: 26, c: 4 } },
+        { s: { r: 23, c: 0 }, e: { r: 23, c: 4 } }, { s: { r: 24, c: 0 }, e: { r: 24, c: 4 } },
         { s: { r: 6, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 8, c: 4 } },
         { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
         { s: { r: 14, c: 0 }, e: { r: 16, c: 0 } }, { s: { r: 14, c: 2 }, e: { r: 16, c: 2 } }, { s: { r: 14, c: 4 }, e: { r: 16, c: 4 } }
@@ -255,10 +247,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                 const completedByCell = `E${rowIdx}`;
                 const verifiedByCell = `F${rowIdx}`;
                 
-                // Status logic: 
-                // 1. If Completed By is blank -> PENDING
-                // 2. If Verified By is blank AND not N/A -> AWAITING MGR
-                // 3. Else -> COMPLETED
                 const statusFormula = `IF(ISBLANK(${completedByCell}), "PENDING", IF(${verifiedByCell}="", "AWAITING MGR", "COMPLETED"))`;
                 const verifiedByValue = t.priority === 'High' || t.riskLevel === 'High' ? "" : "N/A";
 
@@ -284,7 +272,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addSoftwareHeader(mWs, 'K');
     mWs['!autofilter'] = { ref: `A4:K${mData.length}` };
 
-    // Conditional formatting for status column (Column G)
     mWs['!conditional_formatting'] = [
         {
             ref: `G5:G${mData.length}`,
@@ -367,7 +354,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             ]);
         });
     });
-    const mpWs = utils.aoa_to_sheet(MPData);
+    const mpWs = utils.aoa_to_sheet(mpData);
     mpWs['!cols'] = [12, 25, 65, 45, 50, 12, 10].map(w => ({ wch: w }));
     addSoftwareHeader(mpWs, 'G');
     utils.book_append_sheet(wb, mpWs, "SOP_LIBRARY");
