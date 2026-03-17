@@ -103,7 +103,7 @@ export const handleDownloadPro = (item: PremiumPack) => {
     };
 
     const bigActionButtonStyle = {
-        font: { ...baseFont, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN }, underline: true },
+        font: { ...baseFont, bold: true, sz: 14, color: { rgb: COLORS.PRIMARY_GREEN }, underline: true },
         fill: { fgColor: { rgb: COLORS.NAVY_DEEP } },
         alignment: { horizontal: 'center', vertical: 'center' },
         border: { left: boxBorder, bottom: boxBorder, right: boxBorder }
@@ -132,7 +132,8 @@ export const handleDownloadPro = (item: PremiumPack) => {
     const homeData: any[][] = [
         [], [],
         [{ v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
-        [{ v: "Enterprise Continuity & Governance Suite v4.3 PRO | Sovereign Tier", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Run Your Entire Restaurant Operations From One Screen", s: { font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
+        [{ v: "Enterprise Continuity & Governance Suite v4.3 PRO | Sovereign Tier", s: { font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
         [],
         [
             { v: "ADMIN & SETUP", s: groupHeaderStyle }, null, 
@@ -189,25 +190,28 @@ export const handleDownloadPro = (item: PremiumPack) => {
     homeWs['!cols'] = [22, 28, 22, 28, 22, 28].map(w => ({ wch: w }));
     
     homeWs['!merges'] = [
-        { s: { r: 2, c: 0 }, e: { r: 2, c: 5 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 5 } }, // Headers
-        { s: { r: 5, c: 0 }, e: { r: 5, c: 1 } }, { s: { r: 5, c: 2 }, e: { r: 5, c: 3 } }, { s: { r: 5, c: 4 }, e: { r: 5, c: 5 } }, // Category Labels
-        { s: { r: 6, c: 0 }, e: { r: 6, c: 1 } }, { s: { r: 6, c: 2 }, e: { r: 6, c: 3 } }, { s: { r: 6, c: 4 }, e: { r: 6, c: 5 } }, // Row 1 Tiles
-        { s: { r: 7, c: 0 }, e: { r: 7, c: 1 } }, { s: { r: 7, c: 2 }, e: { r: 7, c: 3 } }, { s: { r: 7, c: 4 }, e: { r: 7, c: 5 } }, // Row 2 Tiles
-        { s: { r: 8, c: 0 }, e: { r: 8, c: 1 } }, { s: { r: 8, c: 2 }, e: { r: 8, c: 3 } }, { s: { r: 8, c: 4 }, e: { r: 8, c: 5 } }, // Row 3 Tiles
-        { s: { r: 10, c: 0 }, e: { r: 10, c: 5 } }, // Mood Banner
-        { s: { r: 11, c: 0 }, e: { r: 11, c: 1 } }, { s: { r: 11, c: 2 }, e: { r: 11, c: 3 } }, { s: { r: 11, c: 4 }, e: { r: 11, c: 5 } }, // Chamber Headers
-        { s: { r: 14, c: 0 }, e: { r: 14, c: 5 } }, // Big Action
-        { s: { r: 16, c: 0 }, e: { r: 16, c: 5 } }, { s: { r: 17, c: 0 }, e: { r: 17, c: 5 } } // Footer
+        { s: { r: 2, c: 0 }, e: { r: 2, c: 5 } }, // Title
+        { s: { r: 3, c: 0 }, e: { r: 3, c: 5 } }, // Command Statement
+        { s: { r: 4, c: 0 }, e: { r: 4, c: 5 } }, // Tech Info
+        { s: { r: 6, c: 0 }, e: { r: 6, c: 1 } }, { s: { r: 6, c: 2 }, e: { r: 6, c: 3 } }, { s: { r: 6, c: 4 }, e: { r: 6, c: 5 } }, // Category Labels
+        { s: { r: 7, c: 0 }, e: { r: 7, c: 1 } }, { s: { r: 7, c: 2 }, e: { r: 7, c: 3 } }, { s: { r: 7, c: 4 }, e: { r: 7, c: 5 } }, // Row 1 Tiles
+        { s: { r: 8, c: 0 }, e: { r: 8, c: 1 } }, { s: { r: 8, c: 2 }, e: { r: 8, c: 3 } }, { s: { r: 8, c: 4 }, e: { r: 8, c: 5 } }, // Row 2 Tiles
+        { s: { r: 9, c: 0 }, e: { r: 9, c: 1 } }, { s: { r: 9, c: 2 }, e: { r: 9, c: 3 } }, { s: { r: 9, c: 4 }, e: { r: 9, c: 5 } }, // Row 3 Tiles
+        { s: { r: 11, c: 0 }, e: { r: 11, c: 5 } }, // Mood Banner
+        { s: { r: 12, c: 0 }, e: { r: 12, c: 1 } }, { s: { r: 12, c: 2 }, e: { r: 12, c: 3 } }, { s: { r: 12, c: 4 }, e: { r: 12, c: 5 } }, // Chamber Headers
+        { s: { r: 15, c: 0 }, e: { r: 15, c: 5 } }, // Big Action
+        { s: { r: 17, c: 0 }, e: { r: 17, c: 5 } }, { s: { r: 18, c: 0 }, e: { r: 18, c: 5 } } // Footer
     ];
 
     homeWs['!rows'] = Array(35).fill({ hpt: 18 });
     homeWs['!rows'][2] = { hpt: 50 }; // Title Bar
-    homeWs['!rows'][6] = { hpt: 35 }; // Tile Row 1
-    homeWs['!rows'][7] = { hpt: 35 }; // Tile Row 2
-    homeWs['!rows'][8] = { hpt: 35 }; // Tile Row 3
-    homeWs['!rows'][10] = { hpt: 35 }; // Mood Banner
-    homeWs['!rows'][11] = { hpt: 22 }; // Chamber Headers
-    homeWs['!rows'][14] = { hpt: 40 }; // Big Action Button
+    homeWs['!rows'][3] = { hpt: 25 }; // Command Statement
+    homeWs['!rows'][7] = { hpt: 35 }; // Tile Row 1
+    homeWs['!rows'][8] = { hpt: 35 }; // Tile Row 2
+    homeWs['!rows'][9] = { hpt: 35 }; // Tile Row 3
+    homeWs['!rows'][11] = { hpt: 35 }; // Mood Banner
+    homeWs['!rows'][12] = { hpt: 22 }; // Chamber Headers
+    homeWs['!rows'][15] = { hpt: 45 }; // Big Action Button
 
     homeWs['!views'] = [{ showGridLines: false }];
     utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
