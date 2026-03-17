@@ -109,7 +109,7 @@ export const handleDownloadPro = (item: PremiumPack) => {
         border: { left: boxBorder, bottom: boxBorder, right: boxBorder }
     };
 
-    const addAppHeader = (ws: WorkSheet, endCol: string = 'M') => {
+    const addAppHeader = (ws: WorkSheet, endCol: string = 'K') => {
         utils.sheet_add_aoa(ws, [[{ 
             v: "◀ BACK TO HOME CONSOLE", 
             l: { Target: "#'HOME_CONSOLE'!A1" }, 
@@ -156,11 +156,11 @@ export const handleDownloadPro = (item: PremiumPack) => {
         ],
         [],
         // --- PRO DASHBOARD: SYMMETRIC TRIPLE CHAMBER ---
-        [{ t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(COUNTIF('MISSION_LEDGER'!E:E, "<>") / MAX(1, COUNTIFS('MISSION_LEDGER'!D:D, "<>N/A*", 'MISSION_LEDGER'!D:D, "<>"))>=0.9, "🔥 SIZZLING - PERFECT EXECUTION!", IF(COUNTIF('MISSION_LEDGER'!E:E, "<>") / MAX(1, COUNTIFS('MISSION_LEDGER'!D:D, "<>N/A*", 'MISSION_LEDGER'!D:D, "<>"))>=0.6, "🥘 SIMMERING - BUILDING MOMENTUM", "🧊 COLD - TURN UP THE HEAT!")), "EMPIRE MOOD: 🧊 LOADING...")`, s: moodBannerStyle }, null, null, null, null],
+        [{ t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(COUNTIF('MISSION_LEDGER'!E:E, "<>") / MAX(1, COUNTIFS('MISSION_LEDGER'!D:D, "<>N/A*", 'MISSION_LEDGER'!D:D, "<>"))>=0.9, "🔥 SIZZLING - PERFECT EXECUTION!", IF(COUNTIF('MISSION_LEDGER'!E:E, "<>") / MAX(1, COUNTIFS('MISSION_LEDGER'!D:D, "<>N/A*", 'MISSION_LEDGER'!D:D, "<>"))>=0.6, "🥘 SIMMERING - BUILDING MOMENTUM", "🧊 COLD - TURN UP THE HEAT!")), "EMPIRE MOOD: 🧊 LOADING...")`, s: moodBannerStyle }, null, null, null, null, null],
         [
             { v: "🎖️ TEAM GLORY", s: chamberHeaderStyle }, null, 
             { v: "⚡ MOMENTUM", s: chamberHeaderStyle }, null,
-            { v: "🛡️ COMMAND VITALS", s: chamberHeaderStyle }
+            { v: "🛡️ COMMAND VITALS", s: chamberHeaderStyle }, null
         ],
         [
             { v: "Today's Star:", s: chamberLabelStyle },
@@ -178,23 +178,26 @@ export const handleDownloadPro = (item: PremiumPack) => {
             { v: "Shift Progress:", s: { ...chamberLabelStyle, border: { bottom: boxBorder } } },
             { t: 'f', f: `IFERROR(TEXT(COUNTIF('MISSION_LEDGER'!E:E, "<>") / MAX(1, COUNTIFS('MISSION_LEDGER'!D:D, "<>N/A*", 'MISSION_LEDGER'!D:D, "<>")), "0%"), "0%")`, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN }, sz: 12 }, border: { bottom: boxBorder, right: boxBorder } } }
         ],
-        [{ v: "▶ VIEW BRANCH INTELLIGENCE & PERFORMANCE ANALYTICS", l: { Target: "#'DASHBOARD'!A1" }, s: bigActionButtonStyle }, null, null, null, null],
+        [{ v: "▶ VIEW BRANCH INTELLIGENCE & PERFORMANCE ANALYTICS", l: { Target: "#'DASHBOARD'!A1" }, s: bigActionButtonStyle }, null, null, null, null, null],
         [],
         [{ v: "SYSTEM STATUS: ✅ INSTITUTIONAL GRADE ENCRYPTED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }],
         [{ v: `REGISTERED TO: ${BUYER_EMAIL} | ORDER ID: ${ORDER_ID}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'left' } } }]
     ];
 
     const homeWs = utils.aoa_to_sheet(homeData);
-    homeWs['!cols'] = [40, 10, 40, 10, 40].map(w => ({ wch: w }));
+    // Symmetric 6-Column Architecture: Pillar Labels (22) + Data Values (28)
+    homeWs['!cols'] = [22, 28, 22, 28, 22, 28].map(w => ({ wch: w }));
     
     homeWs['!merges'] = [
-        { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
-        { s: { r: 10, c: 0 }, e: { r: 10, c: 4 } },
-        { s: { r: 14, c: 0 }, e: { r: 14, c: 4 } },
-        { s: { r: 16, c: 0 }, e: { r: 16, c: 4 } }, { s: { r: 17, c: 0 }, e: { r: 17, c: 4 } },
-        { s: { r: 6, c: 0 }, e: { r: 6, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 6, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 6, c: 4 } },
-        { s: { r: 7, c: 0 }, e: { r: 7, c: 0 } }, { s: { r: 7, c: 2 }, e: { r: 7, c: 2 } }, { s: { r: 7, c: 4 }, e: { r: 7, c: 4 } },
-        { s: { r: 8, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 8, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 8, c: 4 }, e: { r: 8, c: 4 } }
+        { s: { r: 2, c: 0 }, e: { r: 2, c: 5 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 5 } }, // Headers
+        { s: { r: 5, c: 0 }, e: { r: 5, c: 1 } }, { s: { r: 5, c: 2 }, e: { r: 5, c: 3 } }, { s: { r: 5, c: 4 }, e: { r: 5, c: 5 } }, // Category Labels
+        { s: { r: 6, c: 0 }, e: { r: 6, c: 1 } }, { s: { r: 6, c: 2 }, e: { r: 6, c: 3 } }, { s: { r: 6, c: 4 }, e: { r: 6, c: 5 } }, // Row 1 Tiles
+        { s: { r: 7, c: 0 }, e: { r: 7, c: 1 } }, { s: { r: 7, c: 2 }, e: { r: 7, c: 3 } }, { s: { r: 7, c: 4 }, e: { r: 7, c: 5 } }, // Row 2 Tiles
+        { s: { r: 8, c: 0 }, e: { r: 8, c: 1 } }, { s: { r: 8, c: 2 }, e: { r: 8, c: 3 } }, { s: { r: 8, c: 4 }, e: { r: 8, c: 5 } }, // Row 3 Tiles
+        { s: { r: 10, c: 0 }, e: { r: 10, c: 5 } }, // Mood Banner
+        { s: { r: 11, c: 0 }, e: { r: 11, c: 1 } }, { s: { r: 11, c: 2 }, e: { r: 11, c: 3 } }, { s: { r: 11, c: 4 }, e: { r: 11, c: 5 } }, // Chamber Headers
+        { s: { r: 14, c: 0 }, e: { r: 14, c: 5 } }, // Big Action
+        { s: { r: 16, c: 0 }, e: { r: 16, c: 5 } }, { s: { r: 17, c: 0 }, e: { r: 17, c: 5 } } // Footer
     ];
 
     homeWs['!rows'] = Array(35).fill({ hpt: 18 });
