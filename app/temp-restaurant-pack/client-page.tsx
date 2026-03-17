@@ -9,19 +9,10 @@ import { handleDownloadMaster } from './download-master';
 import { 
     Download, 
     ShieldCheck,
-    History,
-    TrendingUp,
     LayoutGrid,
-    ArrowRight,
-    Activity,
-    Lock,
     Target,
-    BarChart3,
-    TableProperties,
-    BookOpen,
-    MessageSquareQuote,
-    AlertCircle,
-    CheckCircle2
+    Maximize2,
+    Crown
 } from 'lucide-react';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -44,21 +35,21 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                     playsInline
                     className="absolute inset-0 w-full h-full object-cover grayscale brightness-[0.2] opacity-40"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-background" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/10 to-background" />
             </div>
 
             <div className="container px-4 md:px-6 relative z-10 text-center space-y-10">
                 <div className="space-y-6">
                     <div className="flex justify-center">
-                        <Badge variant="outline" className="text-primary border-primary/30 py-1 px-5 uppercase tracking-[0.5em] font-black text-[10px] bg-primary/5 rounded-full backdrop-blur-sm">
-                            V4.2 ENTERPRISE CONTINUITY
+                        <Badge variant="outline" className="text-accent border-accent/30 py-1.5 px-6 uppercase tracking-[0.5em] font-black text-[10px] bg-accent/5 rounded-full backdrop-blur-md">
+                            SOVEREIGN MASTER BUILD V4.3
                         </Badge>
                     </div>
                     <h1 className="text-5xl md:text-8xl font-black font-headline text-primary-text italic uppercase tracking-tighter leading-[0.9] drop-shadow-2xl">
-                        Operational <br/> <span className="text-primary">System.</span>
+                        Integrated <br/> <span className="text-primary">Command.</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-secondary-text italic max-w-3xl mx-auto font-medium leading-relaxed border-l-2 border-primary/20 pl-8">
-                        A high-performance governance suite with multi-branch identity, facility matrix, and phased rollout support.
+                        The full Multi-Branch Data Engine meets the Symmetric Zero-Clipping interface. Standardizing 240+ control points across your entire group.
                     </p>
                 </div>
 
@@ -66,43 +57,48 @@ export default function TempRestaurantClient({ pack }: { pack: PremiumPack }) {
                     <Button 
                         size="lg"
                         onClick={() => handleDownloadMaster(pack)} 
-                        className="h-16 px-12 bg-primary text-black hover:scale-105 transition-all font-black uppercase italic tracking-widest text-lg shadow-[0_0_40px_-5px_rgba(46,184,107,0.4)]"
+                        className="h-20 px-16 bg-primary text-black hover:scale-105 transition-all font-black uppercase italic tracking-widest text-xl shadow-[0_0_50px_-5px_rgba(46,184,107,0.5)] rounded-2xl"
                     >
-                        Download Enterprise ROCS v4.2 <Download className="ml-2 h-6 w-6" />
+                        Download Sovereign Master v4.3 <Download className="ml-3 h-7 w-7" />
                     </Button>
-                    <div className="flex flex-wrap justify-center items-center gap-4 text-[10px] text-muted-foreground uppercase tracking-widest font-bold bg-white/5 px-6 py-3 rounded-full border border-white/10 backdrop-blur-md">
-                        <span className="flex items-center gap-1.5 text-primary"><Target className="w-3 h-3"/> Branch Identity</span>
-                        <span className="w-1 h-1 rounded-full bg-white/20" />
-                        <span className="flex items-center gap-1.5 text-accent"><LayoutGrid className="w-3 h-3"/> Facility Matrix</span>
-                        <span className="w-1 h-1 rounded-full bg-white/20" />
-                        <span className="flex items-center gap-1.5 text-white/60"><ShieldCheck className="w-3 h-3"/> Phased Rollout</span>
-                    </div>
+                    <p className="text-[10px] text-white/30 uppercase tracking-[0.3em] font-black">Full 11-Sheet Data Engine Included</p>
                 </div>
             </div>
         </section>
 
-        {/* OS FEATURES */}
+        {/* SOVEREIGN DESIGN PILLARS */}
         <section className="py-24 bg-alternate-background">
             <div className="container px-4 md:px-6">
-                <div className="text-center mb-16 space-y-4">
-                    <h2 className="text-3xl font-black font-headline uppercase italic">Multi-Branch Governance</h2>
-                    <p className="text-secondary-text italic font-medium max-w-xl mx-auto">One system to manage the entire group. Every row is an audit-ready record of truth.</p>
-                </div>
                 <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <Card className="bg-black/40 border-white/5 p-8 space-y-4 hover:border-primary/20 transition-colors group">
-                        <Target className="h-10 w-10 text-accent group-hover:scale-110 transition-transform" />
-                        <h3 className="font-black uppercase tracking-widest text-sm text-primary">Identity Anchors</h3>
-                        <p className="text-xs text-secondary-text leading-relaxed italic">Auto-filling Branch Names and "Actioned By (Full Name)" fields turn standard logs into legal-grade operational evidence.</p>
+                    <Card className="bg-black/40 border-white/5 p-10 space-y-6 hover:border-primary/30 transition-all group relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                            <Target className="h-32 w-32" />
+                        </div>
+                        <Target className="h-12 w-12 text-accent group-hover:scale-110 transition-transform" />
+                        <div className="space-y-2">
+                            <h3 className="font-black uppercase tracking-widest text-sm text-primary">Multi-Branch Engine</h3>
+                            <p className="text-xs text-secondary-text leading-relaxed italic">A single Master Excel file that controls up to 10 branches simultaneously. Independent facility toggles ensure perfect local relevance.</p>
+                        </div>
                     </Card>
-                    <Card className="bg-black/40 border-white/5 p-8 space-y-4 hover:border-primary/20 transition-colors group">
-                        <LayoutGrid className="h-10 w-10 text-primary group-hover:scale-110 transition-transform" />
-                        <h3 className="font-black uppercase tracking-widest text-sm text-primary">Facility Switchboard</h3>
-                        <p className="text-xs text-secondary-text leading-relaxed italic">Toggle specific areas (Bar, Pool, Valet) ON/OFF for each branch independently. Protected compliance scores that stay honest.</p>
+                    <Card className="bg-black/40 border-white/5 p-10 space-y-6 hover:border-primary/30 transition-all group relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                            <Maximize2 className="h-32 w-32" />
+                        </div>
+                        <Maximize2 className="h-12 w-12 text-primary group-hover:scale-110 transition-transform" />
+                        <div className="space-y-2">
+                            <h3 className="font-black uppercase tracking-widest text-sm text-primary">Zero-Clipping Grid</h3>
+                            <p className="text-xs text-secondary-text leading-relaxed italic">Re-engineered 6-column symmetric spine ensures that branch names and person-of-the-day records never get cut off.</p>
+                        </div>
                     </Card>
-                    <Card className="bg-black/40 border-white/5 p-8 space-y-4 hover:border-primary/20 transition-colors group">
-                        <ShieldCheck className="h-10 w-10 text-primary group-hover:scale-110 transition-transform" />
-                        <h3 className="font-black uppercase tracking-widest text-sm text-primary">Audit Authority</h3>
-                        <p className="text-xs text-secondary-text leading-relaxed italic">Digital watermarking and slim-line navigation create a professional document pedigree that commands respect during inspections.</p>
+                    <Card className="bg-black/40 border-white/5 p-10 space-y-6 hover:border-primary/30 transition-all group relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                            <ShieldCheck className="h-32 w-32" />
+                        </div>
+                        <ShieldCheck className="h-12 w-12 text-primary group-hover:scale-110 transition-transform" />
+                        <div className="space-y-2">
+                            <h3 className="font-black uppercase tracking-widest text-sm text-primary">Audit-Ready Pedigree</h3>
+                            <p className="text-xs text-secondary-text leading-relaxed italic">Digital watermarks and license verification embedded into the core structure to command respect during official inspections.</p>
+                        </div>
                     </Card>
                 </div>
             </div>
