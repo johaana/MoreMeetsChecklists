@@ -194,13 +194,17 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         // --- TODAY'S STATUS PANE ---
         [{ v: "TODAY'S STATUS", s: statusHeaderStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }],
         [
+            { v: "Start Your Shift → Today's Tasks", l: { Target: "#'TODAYS_TASKS'!A1" }, s: { ...statusLabelStyle, font: { ...statusLabelStyle.font, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } },
+            { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }
+        ],
+        [
             { v: "Shift Progress:", s: statusLabelStyle },
-            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN } } } },
+            { t: 'f', f: `IFERROR(IF(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task"))>=0.95, "🟢 ", IF(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task"))>=0.8, "🟡 ", "🔴 ")) & TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN } } } },
             { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }
         ],
         [
             { v: "Open Incidents:", s: statusLabelStyle },
-            { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, color: { rgb: COLORS.RISK_RED } } } },
+            { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "🟢 NONE", "🔴 " & COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, color: { rgb: COLORS.RISK_RED } } } },
             { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }
         ],
         [
@@ -217,17 +221,22 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     homeWs['!cols'] = [35, 15, 35, 15, 35].map(w => ({ wch: w }));
     
     // Set specific row heights for the status pane
-    homeWs['!rows'] = Array(30).fill({ hpt: 20 });
+    homeWs['!rows'] = Array(35).fill({ hpt: 20 });
     homeWs['!rows'][2] = { hpt: 40 }; // Title
     homeWs['!rows'][18] = { hpt: 28 }; // Header "Today's Status"
-    homeWs['!rows'][19] = { hpt: 22 }; // Row 1
-    homeWs['!rows'][20] = { hpt: 22 }; // Row 2
-    homeWs['!rows'][21] = { hpt: 22 }; // Row 3
+    homeWs['!rows'][19] = { hpt: 22 }; // Start Shift line
+    homeWs['!rows'][20] = { hpt: 22 }; // Row 1
+    homeWs['!rows'][21] = { hpt: 22 }; // Row 2
+    homeWs['!rows'][22] = { hpt: 22 }; // Row 3
     
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
         { s: { r: 18, c: 0 }, e: { r: 18, c: 4 } }, // Header merge
-        { s: { r: 23, c: 0 }, e: { r: 23, c: 4 } }, { s: { r: 24, c: 0 }, e: { r: 24, c: 4 } },
+        { s: { r: 19, c: 0 }, e: { r: 19, c: 4 } }, // Start Shift merge
+        { s: { r: 20, c: 1 }, e: { r: 20, c: 4 } }, // Progress value span
+        { s: { r: 21, c: 1 }, e: { r: 21, c: 4 } }, // Incidents value span
+        { s: { r: 22, c: 1 }, e: { r: 22, c: 4 } }, // Branch value span
+        { s: { r: 25, c: 0 }, e: { r: 25, c: 4 } }, { s: { r: 26, c: 0 }, e: { r: 26, c: 4 } },
         { s: { r: 6, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 8, c: 4 } },
         { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
         { s: { r: 14, c: 0 }, e: { r: 16, c: 0 } }, { s: { r: 14, c: 2 }, e: { r: 16, c: 2 } }, { s: { r: 14, c: 4 }, e: { r: 16, c: 4 } }
