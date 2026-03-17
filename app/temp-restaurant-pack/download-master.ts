@@ -33,7 +33,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         BORDER: "CBD5E1",
         HEADER_BG: "1E293B",
         SUCCESS_TEAL: "14B8A6", 
-        CONSOLE_BG: "F1F5F9" 
+        CONSOLE_BG: "F1F5F9",
+        STATUS_SECTION_BG: "F0F9FF" // Light Blue Pane
     };
 
     const borderStyle = {
@@ -106,6 +107,29 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
+    // --- UI/UX UPGRADE: COMMAND PANE STYLES ---
+    const statusHeaderStyle = {
+        font: { ...baseFont, bold: true, sz: 14, color: { rgb: COLORS.NAVY_BAR } },
+        fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
+        alignment: { horizontal: 'left', vertical: 'center' }
+    };
+
+    const statusLabelStyle = {
+        font: { ...baseFont, sz: 12, color: { rgb: COLORS.INTEL_GREY } },
+        fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
+        alignment: { horizontal: 'left', vertical: 'center' }
+    };
+
+    const statusValueStyle = {
+        font: { ...baseFont, bold: true, sz: 14, color: { rgb: COLORS.NAVY_BAR } },
+        fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
+        alignment: { horizontal: 'left', vertical: 'center' }
+    };
+
+    const statusEmptyStyle = {
+        fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } }
+    };
+
     const addSoftwareHeader = (ws: WorkSheet, endCol: string = 'K') => {
         utils.sheet_add_aoa(ws, [[{ 
             v: "◀ BACK TO HOME CONSOLE", 
@@ -167,18 +191,22 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [null, null, null, null, null],
         [null, null, null, null, null],
         [],
-        [{ v: "TODAY'S STATUS", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'left' } } }],
+        // --- TODAY'S STATUS PANE ---
+        [{ v: "TODAY'S STATUS", s: statusHeaderStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }],
         [
-            { v: "Shift Progress:", s: { font: { sz: 11, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
-            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, sz: 14, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }
+            { v: "Shift Progress:", s: statusLabelStyle },
+            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN } } } },
+            { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }
         ],
         [
-            { v: "Open Incidents:", s: { font: { sz: 11, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
-            { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { font: { bold: true, sz: 14, color: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'left' } } }
+            { v: "Open Incidents:", s: statusLabelStyle },
+            { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, color: { rgb: COLORS.RISK_RED } } } },
+            { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }
         ],
         [
-            { v: "Active Branch:", s: { font: { sz: 11, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'left' } } },
-            { t: 'f', f: `'BRANCH_SETUP'!B6`, l: { Target: "#'BRANCH_SETUP'!A1" }, s: { font: { bold: true, sz: 14, color: { rgb: COLORS.NAVY_BAR } }, alignment: { horizontal: 'left' } } }
+            { v: "Active Branch:", s: statusLabelStyle },
+            { t: 'f', f: `'BRANCH_SETUP'!B6`, l: { Target: "#'BRANCH_SETUP'!A1" }, s: statusValueStyle },
+            { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }, { v: "", s: statusEmptyStyle }
         ],
         [],
         [{ v: "SYSTEM STATUS: ✅ INSTITUTIONAL GRADE VERIFIED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }],
@@ -187,15 +215,18 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const homeWs = utils.aoa_to_sheet(homeData);
     homeWs['!cols'] = [35, 15, 35, 15, 35].map(w => ({ wch: w }));
+    
+    // Set specific row heights for the status pane
     homeWs['!rows'] = Array(30).fill({ hpt: 20 });
-    homeWs['!rows'][2] = { hpt: 40 }; // Title row
-    homeWs['!rows'][18] = { hpt: 30 }; // Status header
-    homeWs['!rows'][19] = { hpt: 25 }; // Shift Progress row
-    homeWs['!rows'][20] = { hpt: 25 }; // Open Incidents row
-    homeWs['!rows'][21] = { hpt: 25 }; // Active Branch row
+    homeWs['!rows'][2] = { hpt: 40 }; // Title
+    homeWs['!rows'][18] = { hpt: 28 }; // Header "Today's Status"
+    homeWs['!rows'][19] = { hpt: 22 }; // Row 1
+    homeWs['!rows'][20] = { hpt: 22 }; // Row 2
+    homeWs['!rows'][21] = { hpt: 22 }; // Row 3
     
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
+        { s: { r: 18, c: 0 }, e: { r: 18, c: 4 } }, // Header merge
         { s: { r: 23, c: 0 }, e: { r: 23, c: 4 } }, { s: { r: 24, c: 0 }, e: { r: 24, c: 4 } },
         { s: { r: 6, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 8, c: 4 } },
         { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
@@ -228,7 +259,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, { v: "ID", s: headerStyle },
         { v: "Task", s: headerStyle }, 
-        { v: "Completed By (Initials)", s: headerStyle }, 
+        { v: "Completed By (Staff Initials)", s: headerStyle }, 
         { v: "Verified By (Manager)", s: headerStyle },
         { v: "Status", s: headerStyle }, 
         { v: "Frequency", s: intelStyle }, { v: "Risk Level", s: intelStyle },
