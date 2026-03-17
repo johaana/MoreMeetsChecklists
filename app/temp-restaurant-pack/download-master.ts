@@ -213,8 +213,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: statusEmptyRight }
         ],
         [
-            { v: "System Insight:", s: { ...statusLabelStyle, border: { left: boxBorder, bottom: boxBorder } } },
-            { v: "▶ [Lead: Bandra | Alert: Ghatkopar]", l: { Target: "#'BUSINESS_HEALTH'!A10" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, italic: true, sz: 10, color: { rgb: COLORS.INTEL_GREY } }, border: { bottom: boxBorder } } },
+            { v: "The Daily Dish:", s: { ...statusLabelStyle, border: { left: boxBorder, bottom: boxBorder } } },
+            { v: "▶ [🔥 Leading: Bandra | 🧊 Needs Help: Ghatkopar]", l: { Target: "#'BUSINESS_HEALTH'!A10" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, italic: true, sz: 10, color: { rgb: COLORS.INTEL_GREY } }, border: { bottom: boxBorder } } },
             { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } }, border: { bottom: boxBorder } } }, 
             { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } }, border: { bottom: boxBorder } } }, 
             { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } }, border: { right: boxBorder, bottom: boxBorder } } }
