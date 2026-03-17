@@ -117,7 +117,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     };
 
     const statusLabelStyle = {
-        font: { ...baseFont, sz: 10, color: { rgb: COLORS.INTEL_GREY } },
+        font: { ...baseFont, bold: true, sz: 10, color: { rgb: COLORS.INTEL_GREY } },
         fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
         alignment: { horizontal: 'right', vertical: 'center' },
         border: { left: boxBorder }
@@ -219,7 +219,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } }, border: { right: boxBorder, bottom: boxBorder } } }
         ],
         [
-            { v: "Branch Intelligence:", s: { font: { italic: true, sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'right' } } },
+            { v: "Branch Intelligence:", s: { font: { italic: true, sz: 9, bold: true, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'right' } } },
             { v: "▶ [View Branch Performance & Leading Units]", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: { font: { italic: true, sz: 9, color: { rgb: COLORS.PRIMARY_GREEN }, bold: true }, alignment: { horizontal: 'left' } } }
         ],
         [],
@@ -228,10 +228,14 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
 
     const homeWs = utils.aoa_to_sheet(homeData);
-    homeWs['!cols'] = [35, 15, 25, 25, 25].map(w => ({ wch: w }));
+    homeWs['!cols'] = [35, 25, 25, 25, 25].map(w => ({ wch: w })); // Increased Col B from 15 to 25
     homeWs['!rows'] = Array(35).fill({ hpt: 16 });
     homeWs['!rows'][2] = { hpt: 40 }; 
-    homeWs['!rows'][18] = { hpt: 24 }; 
+    homeWs['!rows'][18] = { hpt: 22 }; // Slightly tighter header
+    homeWs['!rows'][19] = { hpt: 18 }; // Tighter stats rows
+    homeWs['!rows'][20] = { hpt: 18 }; 
+    homeWs['!rows'][21] = { hpt: 18 }; 
+    homeWs['!rows'][22] = { hpt: 18 }; 
     
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
