@@ -5,8 +5,8 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * ROCS v4.3 PRO - THE COMMAND CENTER EDITION (High-Res UI)
- * Refined Build: Triple-Chamber Dashboard + High-Impact Motivation Matrix
+ * ROCS v4.3 PRO - THE SOVEREIGN EDITION
+ * Proper UI/UX Redesign: Symmetric Grid + Zero-Clipping Architecture
  */
 export const handleDownloadPro = (item: PremiumPack) => {
     if (!item) {
@@ -17,10 +17,10 @@ export const handleDownloadPro = (item: PremiumPack) => {
     const wb = utils.book_new();
     
     const BUYER_EMAIL = "CLIENT@RESTAURANTGROUP.COM";
-    const ORDER_ID = "MM-PRO-9921-REST";
+    const ORDER_ID = "MM-PRO-SOVEREIGN-9921";
 
     const COLORS = {
-        NAVY_BAR: "0A0F19",      
+        NAVY_DEEP: "0A0F19",      
         PRIMARY_GREEN: "2EB86B", 
         ACCENT_GOLD: "F5A623",   
         RISK_RED: "E11D48",      
@@ -29,77 +29,81 @@ export const handleDownloadPro = (item: PremiumPack) => {
         INTEL_GREY: "64748B",    
         HEADER_BG: "1E293B",
         TILE_BG: "111827",
-        BORDER: "334155",
+        BORDER_SOFT: "334155",
         INPUT_ZONE: "FEFCE8",
         CONSOLE_BG: "F1F5F9",
         BANNER_AMBER: "FACC15",
-        SUCCESS_BLUE: "3B82F6"
+        SUCCESS_BLUE: "3B82F6",
+        CHAMBER_BG: "F8FAFC"
     };
 
     const borderStyle = {
-        top: { style: 'thin', color: { rgb: COLORS.BORDER } },
-        bottom: { style: 'thin', color: { rgb: COLORS.BORDER } },
-        left: { style: 'thin', color: { rgb: COLORS.BORDER } },
-        right: { style: 'thin', color: { rgb: COLORS.BORDER } }
+        top: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } },
+        bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } },
+        left: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } },
+        right: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } }
     };
 
-    const boxBorder = { style: 'medium', color: { rgb: COLORS.NAVY_BAR } };
+    const boxBorder = { style: 'medium', color: { rgb: COLORS.NAVY_DEEP } };
 
     const baseFont = { name: 'Segoe UI', sz: 10 };
 
     const navStyle = {
         font: { ...baseFont, bold: true, color: { rgb: COLORS.PRIMARY_GREEN }, sz: 10 },
-        fill: { fgColor: { rgb: COLORS.NAVY_BAR } },
+        fill: { fgColor: { rgb: COLORS.NAVY_DEEP } },
         alignment: { horizontal: 'left', vertical: 'center' },
-        border: { bottom: { style: 'thin', color: { rgb: COLORS.BORDER } } }
+        border: { bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } } }
     };
 
     const tileStyle = {
-        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 11 },
-        fill: { fgColor: { rgb: COLORS.HEADER_BG } },
+        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 12 },
+        fill: { fgColor: { rgb: COLORS.TILE_BG } },
         alignment: { horizontal: 'center', vertical: 'center' },
         border: { 
-            top: { style: 'thin', color: { rgb: COLORS.PRIMARY_GREEN } },
-            left: { style: 'thin', color: { rgb: COLORS.PRIMARY_GREEN } },
+            left: { style: 'thick', color: { rgb: COLORS.PRIMARY_GREEN } },
+            top: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } },
             bottom: { style: 'medium', color: { rgb: "000000" } },
             right: { style: 'medium', color: { rgb: "000000" } }
         }
     };
 
     const groupHeaderStyle = {
-        font: { ...baseFont, bold: true, color: { rgb: "000000" }, sz: 12 },
+        font: { ...baseFont, bold: true, color: { rgb: "000000" }, sz: 13 },
         fill: { fgColor: { rgb: COLORS.ACCENT_GOLD } },
-        alignment: { horizontal: 'center', vertical: 'center' }
+        alignment: { horizontal: 'center', vertical: 'center' },
+        border: borderStyle
     };
 
     const moodBannerStyle = {
-        font: { ...baseFont, bold: true, sz: 16, color: { rgb: "000000" } },
+        font: { ...baseFont, bold: true, sz: 18, color: { rgb: "000000" } },
         fill: { fgColor: { rgb: COLORS.BANNER_AMBER } },
         alignment: { horizontal: 'center', vertical: 'center' },
         border: { left: boxBorder, top: boxBorder, right: boxBorder }
     };
 
-    const subHeaderStyle = {
+    const chamberHeaderStyle = {
         font: { ...baseFont, bold: true, sz: 11, color: { rgb: COLORS.WHITE } },
-        fill: { fgColor: { rgb: COLORS.NAVY_BAR } },
+        fill: { fgColor: { rgb: COLORS.NAVY_DEEP } },
         alignment: { horizontal: 'center', vertical: 'center' },
         border: borderStyle
     };
 
-    const valueLabelStyle = {
+    const chamberLabelStyle = {
         font: { ...baseFont, bold: true, sz: 10, color: { rgb: COLORS.INTEL_GREY } },
+        fill: { fgColor: { rgb: COLORS.CHAMBER_BG } },
         alignment: { horizontal: 'right', vertical: 'center' },
         border: { left: borderStyle.left }
     };
 
-    const valueDataStyle = {
-        font: { ...baseFont, bold: true, sz: 11, color: { rgb: COLORS.NAVY_BAR } },
+    const chamberValueStyle = {
+        font: { ...baseFont, bold: true, sz: 11, color: { rgb: COLORS.NAVY_DEEP } },
+        fill: { fgColor: { rgb: COLORS.CHAMBER_BG } },
         alignment: { horizontal: 'left', vertical: 'center' },
     };
 
-    const bigLinkActionStyle = {
+    const bigActionButtonStyle = {
         font: { ...baseFont, bold: true, sz: 14, color: { rgb: COLORS.PRIMARY_GREEN }, underline: true },
-        fill: { fgColor: { rgb: COLORS.NAVY_BAR } },
+        fill: { fgColor: { rgb: COLORS.NAVY_DEEP } },
         alignment: { horizontal: 'center', vertical: 'center' },
         border: { left: boxBorder, bottom: boxBorder, right: boxBorder }
     };
@@ -126,8 +130,8 @@ export const handleDownloadPro = (item: PremiumPack) => {
     // --- 01. HOME CONSOLE ---
     const homeData: any[][] = [
         [], [],
-        [{ v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "Enterprise Continuity & Governance Suite v4.3 PRO", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
+        [{ v: "Enterprise Continuity & Governance Suite v4.3 PRO | Sovereign Tier", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
         [],
         [
             { v: "ADMIN & SETUP", s: groupHeaderStyle }, null, 
@@ -140,86 +144,93 @@ export const handleDownloadPro = (item: PremiumPack) => {
             { v: "▶ BUSINESS HEALTH", l: { Target: "#'DASHBOARD'!A1" }, s: tileStyle }
         ],
         [null, null, null, null, null], 
-        [null, null, null, null, null], 
         [],
         [
             { v: "▶ TEAM HUB", l: { Target: "#'PERSONNEL'!A1" }, s: tileStyle }, null, 
             { v: "▶ SHIFT HANDOVER", l: { Target: "#'HANDOVER'!A1" }, s: tileStyle }, null, 
-            { v: "▶ COST & SAVINGS TRACKER", l: { Target: "#'ROI_ENGINE'!A1" }, s: tileStyle }
+            { v: "▶ COST & SAVINGS", l: { Target: "#'ROI_ENGINE'!A1" }, s: tileStyle }
         ],
-        [null, null, null, null, null],
         [null, null, null, null, null],
         [],
         [
-            { v: "▶ SOP LIBRARY", l: { Target: "#'MASTER_PROTOCOL'!A1" }, s: tileStyle }, null, 
+            { v: "▶ MASTER SOPs", l: { Target: "#'MASTER_PROTOCOL'!A1" }, s: tileStyle }, null, 
             { v: "▶ ARCHIVE", l: { Target: "#'ARCHIVE'!A1" }, s: tileStyle }, null, 
             { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_LOG'!A1" }, s: tileStyle }
         ],
         [null, null, null, null, null],
-        [null, null, null, null, null],
         [],
-        // --- TRIPLE-ZONE DASHBOARD START ---
-        [{ t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(COUNTIF('MISSION_LEDGER'!E:E, "<>") / MAX(1, COUNTIFS('MISSION_LEDGER'!D:D, "<>N/A*", 'MISSION_LEDGER'!D:D, "<>"))>=0.9, "🔥 SIZZLING - PERFECT EXECUTION!", IF(COUNTIF('MISSION_LEDGER'!E:E, "<>") / MAX(1, COUNTIFS('MISSION_LEDGER'!D:D, "<>N/A*", 'MISSION_LEDGER'!D:D, "<>"))>=0.6, "🥘 SIMMERING - BUILDING MOMENTUM", "🧊 COLD - TURN UP THE HEAT!")), "EMPIRE MOOD: 🧊 LOADING...")`, s: moodBannerStyle }, null, null, null, null, null],
+        // --- PRO DASHBOARD: SYMMETRIC TRIPLE CHAMBER ---
+        [{ t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(COUNTIF('MISSION_LEDGER'!E:E, "<>") / MAX(1, COUNTIFS('MISSION_LEDGER'!D:D, "<>N/A*", 'MISSION_LEDGER'!D:D, "<>"))>=0.9, "🔥 SIZZLING - PERFECT EXECUTION!", IF(COUNTIF('MISSION_LEDGER'!E:E, "<>") / MAX(1, COUNTIFS('MISSION_LEDGER'!D:D, "<>N/A*", 'MISSION_LEDGER'!D:D, "<>"))>=0.6, "🥘 SIMMERING - BUILDING MOMENTUM", "🧊 COLD - TURN UP THE HEAT!")), "EMPIRE MOOD: 🧊 LOADING...")`, s: moodBannerStyle }, null, null, null, null],
         [
-            { v: "🎖️ TEAM GLORY", s: subHeaderStyle }, null, 
-            { v: "⚡ MOMENTUM", s: { ...subHeaderStyle, fill: { fgColor: COLORS.HEADER_BG } } }, null,
-            { v: "🛡️ COMMAND VITALS", s: { ...subHeaderStyle, fill: { fgColor: COLORS.HEADER_BG } } }, null
+            { v: "🎖️ TEAM GLORY", s: chamberHeaderStyle }, null, 
+            { v: "⚡ MOMENTUM", s: chamberHeaderStyle }, null,
+            { v: "🛡️ COMMAND VITALS", s: chamberHeaderStyle }
         ],
         [
-            { v: "Today's Star:", s: valueLabelStyle },
-            { v: "🎖️ Rahul (Bandra)", s: { ...valueDataStyle, font: { ...valueDataStyle.font, color: { rgb: COLORS.PRIMARY_GREEN } } } },
-            { v: "Top Streak:", s: valueLabelStyle },
-            { v: "🏆 Bandra (14 Days)", s: { ...valueDataStyle, font: { ...valueDataStyle.font, color: { rgb: COLORS.ACCENT_GOLD } } } },
-            { v: "Open Incidents:", s: valueLabelStyle },
-            { t: 'f', f: `IF(COUNTIF('INCIDENT_LOG'!E:E, "<>")=0, "✅ NONE", COUNTIF('INCIDENT_LOG'!E:E, "<>"))`, s: { ...valueDataStyle, font: { ...valueDataStyle.font, color: { rgb: COLORS.RISK_RED } } } }
+            { v: "Today's Star:", s: chamberLabelStyle },
+            { v: "🎖️ Rahul (Bandra)", s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN } } } },
+            { v: "Top Streak:", s: chamberLabelStyle },
+            { v: "🏆 Bandra (14 Days)", s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.ACCENT_GOLD } } } },
+            { v: "Open Incidents:", s: chamberLabelStyle },
+            { t: 'f', f: `IF(COUNTIF('INCIDENT_LOG'!E:E, "<>")=0, "✅ NONE", COUNTIF('INCIDENT_LOG'!E:E, "<>"))`, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.RISK_RED } } } }
         ],
         [
-            { v: "Empire Status:", s: valueLabelStyle },
-            { v: "👑 LEVEL 3 - EXECUTIVE", s: { ...valueDataStyle, font: { ...valueDataStyle.font, color: { rgb: COLORS.ACCENT_GOLD } } } },
-            { v: "Active Units:", s: valueLabelStyle },
-            { v: 2, s: valueDataStyle },
-            { v: "Shift Progress:", s: valueLabelStyle },
-            { t: 'f', f: `IFERROR(TEXT(COUNTIF('MISSION_LEDGER'!E:E, "<>") / MAX(1, COUNTIFS('MISSION_LEDGER'!D:D, "<>N/A*", 'MISSION_LEDGER'!D:D, "<>")), "0%"), "0%")`, s: { ...valueDataStyle, font: { ...valueDataStyle.font, color: { rgb: COLORS.PRIMARY_GREEN }, sz: 12 } } }
+            { v: "Empire Status:", s: { ...chamberLabelStyle, border: { ...chamberLabelStyle.border, bottom: boxBorder } } },
+            { v: "👑 LEVEL 3 - EXECUTIVE", s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.ACCENT_GOLD } }, border: { bottom: boxBorder } } },
+            { v: "Active Units:", s: { ...chamberLabelStyle, border: { bottom: boxBorder } } },
+            { v: 2, s: { ...chamberValueStyle, border: { bottom: boxBorder } } },
+            { v: "Shift Progress:", s: { ...chamberLabelStyle, border: { bottom: boxBorder } } },
+            { t: 'f', f: `IFERROR(TEXT(COUNTIF('MISSION_LEDGER'!E:E, "<>") / MAX(1, COUNTIFS('MISSION_LEDGER'!D:D, "<>N/A*", 'MISSION_LEDGER'!D:D, "<>")), "0%"), "0%")`, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN }, sz: 12 }, border: { bottom: boxBorder, right: boxBorder } } }
         ],
-        [{ v: "▶ VIEW BRANCH INTELLIGENCE & PERFORMANCE ANALYTICS", l: { Target: "#'DASHBOARD'!A1" }, s: bigLinkActionStyle }, null, null, null, null, null],
+        [{ v: "▶ VIEW BRANCH INTELLIGENCE & PERFORMANCE ANALYTICS", l: { Target: "#'DASHBOARD'!A1" }, s: bigActionButtonStyle }, null, null, null, null],
         [],
         [{ v: "SYSTEM STATUS: ✅ INSTITUTIONAL GRADE ENCRYPTED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }],
         [{ v: `REGISTERED TO: ${BUYER_EMAIL} | ORDER ID: ${ORDER_ID}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'left' } } }]
     ];
 
     const homeWs = utils.aoa_to_sheet(homeData);
-    homeWs['!cols'] = [25, 30, 20, 30, 20, 30].map(w => ({ wch: w }));
+    homeWs['!cols'] = [40, 10, 40, 10, 40].map(w => ({ wch: w }));
     
     homeWs['!merges'] = [
-        { s: { r: 2, c: 0 }, e: { r: 2, c: 5 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 5 } },
-        { s: { r: 18, c: 0 }, e: { r: 18, c: 5 } },
-        { s: { r: 19, c: 0 }, e: { r: 19, c: 1 } }, { s: { r: 19, c: 2 }, e: { r: 19, c: 3 } }, { s: { r: 19, c: 4 }, e: { r: 19, c: 5 } },
-        { s: { r: 22, c: 0 }, e: { r: 22, c: 5 } },
-        { s: { r: 24, c: 0 }, e: { r: 24, c: 5 } }, { s: { r: 25, c: 0 }, e: { r: 25, c: 5 } },
-        { s: { r: 6, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 8, c: 4 } },
-        { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
-        { s: { r: 14, c: 0 }, e: { r: 16, c: 0 } }, { s: { r: 14, c: 2 }, e: { r: 16, c: 2 } }, { s: { r: 14, c: 4 }, e: { r: 16, c: 4 } }
+        { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
+        { s: { r: 15, c: 0 }, e: { r: 15, c: 4 } },
+        { s: { r: 19, c: 0 }, e: { r: 19, c: 4 } },
+        { s: { r: 21, c: 0 }, e: { r: 21, c: 4 } }, { s: { r: 22, c: 0 }, e: { r: 22, c: 4 } },
+        { s: { r: 6, c: 0 }, e: { r: 7, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 7, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 7, c: 4 } },
+        { s: { r: 9, c: 0 }, e: { r: 10, c: 0 } }, { s: { r: 9, c: 2 }, e: { r: 10, c: 2 } }, { s: { r: 9, c: 4 }, e: { r: 10, c: 4 } },
+        { s: { r: 12, c: 0 }, e: { r: 13, c: 0 } }, { s: { r: 12, c: 2 }, e: { r: 13, c: 2 } }, { s: { r: 12, c: 4 }, e: { r: 13, c: 4 } }
     ];
 
-    homeWs['!rows'] = Array(35).fill({ hpt: 18 });
-    homeWs['!rows'][2] = { hpt: 45 }; 
-    homeWs['!rows'][18] = { hpt: 35 }; // Large Mood Banner
-    homeWs['!rows'][19] = { hpt: 24 }; // Section Headers
-    homeWs['!rows'][22] = { hpt: 35 }; // Massive Action Link
+    homeWs['!rows'] = Array(35).fill({ hpt: 20 });
+    homeWs['!rows'][2] = { hpt: 55 }; // Title Bar
+    homeWs['!rows'][6] = { hpt: 45 }; // Tile Row 1
+    homeWs['!rows'][9] = { hpt: 45 }; // Tile Row 2
+    homeWs['!rows'][12] = { hpt: 45 }; // Tile Row 3
+    homeWs['!rows'][15] = { hpt: 40 }; // Mood Banner
+    homeWs['!rows'][16] = { hpt: 25 }; // Chamber Headers
+    homeWs['!rows'][19] = { hpt: 45 }; // Big Action Button
 
     homeWs['!views'] = [{ showGridLines: false }];
     utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
 
-    // --- SUB-SHEETS --- (Stubs for the Pro build)
-    const setupWs = utils.aoa_to_sheet([[],[{v:"BRANCH SETUP", s:{font:{bold:true, sz:16}}}]]); addAppHeader(setupWs, 'E'); utils.book_append_sheet(wb, setupWs, "SETUP");
-    const mWs = utils.aoa_to_sheet([[],[{v:"MISSION LEDGER", s:{font:{bold:true, sz:16}}}]]); addAppHeader(mWs, 'M'); utils.book_append_sheet(wb, mWs, "MISSION_LEDGER");
-    const dWs = utils.aoa_to_sheet([[],[{v:"DASHBOARD", s:{font:{bold:true, sz:16}}}]]); addAppHeader(dWs, 'E'); utils.book_append_sheet(wb, dWs, "DASHBOARD");
-    const rWs = utils.aoa_to_sheet([[],[{v:"ROI ENGINE", s:{font:{bold:true, sz:16}}}]]); addAppHeader(rWs, 'E'); utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
-    const iWs = utils.aoa_to_sheet([[],[{v:"INCIDENT LOG", s:{font:{bold:true, sz:16}}}]]); addAppHeader(iWs, 'G'); utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
-    const hWs = utils.aoa_to_sheet([[],[{v:"HANDOVER", s:{font:{bold:true, sz:16}}}]]); addAppHeader(hWs, 'F'); utils.book_append_sheet(wb, hWs, "HANDOVER");
-    const pWs = utils.aoa_to_sheet([[],[{v:"PERSONNEL", s:{font:{bold:true, sz:16}}}]]); addAppHeader(pWs, 'G'); utils.book_append_sheet(wb, pWs, "PERSONNEL");
-    const mpWs = utils.aoa_to_sheet([[],[{v:"MASTER PROTOCOL", s:{font:{bold:true, sz:16}}}]]); addAppHeader(mpWs, 'G'); utils.book_append_sheet(wb, mpWs, "MASTER_PROTOCOL");
-    const archWs = utils.aoa_to_sheet([[],[{v:"ARCHIVE", s:{font:{bold:true, sz:16}}}]]); addAppHeader(archWs, 'E'); utils.book_append_sheet(wb, archWs, "ARCHIVE");
+    // --- SUB-SHEETS --- (Software Chasses)
+    const subSheets = [
+        { name: "SETUP", title: "BRANCH MASTER SETUP" },
+        { name: "MISSION_LEDGER", title: "DAILY TASK EXECUTION LOG" },
+        { name: "DASHBOARD", title: "EXECUTIVE ANALYTICS" },
+        { name: "ROI_ENGINE", title: "COST & SAVINGS TRACKER" },
+        { name: "INCIDENT_LOG", title: "LIABILITY & INCIDENT LOG" },
+        { name: "HANDOVER", title: "SHIFT HANDOVER BRIDGE" },
+        { name: "PERSONNEL", title: "TEAM HUB & DIRECTORY" },
+        { name: "MASTER_PROTOCOL", title: "SOP LIBRARY DATABASE" },
+        { name: "ARCHIVE", title: "HISTORICAL PERFORMANCE ARCHIVE" }
+    ];
 
-    writeFile(wb, `MOREMEETS_ROCS_v4.3_COMMAND_CENTER_PRO.xlsx`);
+    subSheets.forEach(s => {
+        const ws = utils.aoa_to_sheet([[],[{v: s.title, s: { font: { bold: true, sz: 18, color: { rgb: COLORS.NAVY_DEEP } } }}]]);
+        addAppHeader(ws, 'K');
+        utils.book_append_sheet(wb, ws, s.name);
+    });
+
+    writeFile(wb, `ROCS_v4.3_SOVEREIGN_PRO_EDITION.xlsx`);
 }
