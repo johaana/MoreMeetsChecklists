@@ -219,8 +219,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } }, border: { right: boxBorder, bottom: boxBorder } } }
         ],
         [
-            { v: "The Daily Dish:", s: { font: { italic: true, sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'right' } } },
-            { v: "▶ [View Branch Intelligence & Leading Units]", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: { font: { italic: true, sz: 9, color: { rgb: COLORS.PRIMARY_GREEN }, bold: true }, alignment: { horizontal: 'left' } } }
+            { v: "Branch Intelligence:", s: { font: { italic: true, sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'right' } } },
+            { v: "▶ [View Branch Performance & Leading Units]", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: { font: { italic: true, sz: 9, color: { rgb: COLORS.PRIMARY_GREEN }, bold: true }, alignment: { horizontal: 'left' } } }
         ],
         [],
         [{ v: "SYSTEM STATUS: ✅ INSTITUTIONAL GRADE VERIFIED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }],
