@@ -6,9 +6,9 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
  * ROCS v4.2 - THE ENTERPRISE GOVERNANCE SUITE
- * Optimized for Restaurant Groups: High-Speed Adoption + Binary Verification.
+ * Optimized for Restaurant Groups: High-Speed Adoption + Gamification.
  * Maker-Checker Workflow: Completed By (Staff) | Verified By (Manager).
- * Signal & Detail Approach: Home Console signals leads/alerts, Dashboard provides deep dive.
+ * Motivation Matrix: Empire Mood, Today's Star, Top Streak, Empire Status.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -110,7 +110,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     };
     
     const statusHeaderStyle = {
-        font: { ...baseFont, bold: true, sz: 12, color: { rgb: COLORS.NAVY_BAR } },
+        font: { ...baseFont, bold: true, sz: 14, color: { rgb: COLORS.NAVY_BAR } },
         fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } },
         alignment: { horizontal: 'center', vertical: 'center' },
         border: { left: boxBorder, top: boxBorder, right: boxBorder }
@@ -164,7 +164,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                 alignment: { horizontal: 'center', vertical: 'center' } 
             } 
         }],
-        [{ v: "Operations Control System", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Enterprise Continuity & Governance Suite v4.2", s: { font: { italic: true, sz: 11, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
         [],
         [
             { v: "ADMIN & SETUP", s: groupHeaderStyle }, null, 
@@ -195,29 +195,32 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [null, null, null, null, null],
         [null, null, null, null, null],
         [],
-        // --- TODAY'S STATUS PANE (COMPACT & BOLD) ---
-        [{ v: "TODAY'S STATUS", s: statusHeaderStyle }, { v: "", s: statusHeaderStyle }, { v: "", s: statusHeaderStyle }, { v: "", s: statusHeaderStyle }, { v: "", s: statusHeaderStyle }],
+        // --- MOTIVATION MATRIX (HIGH DENSITY) ---
+        [{ t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task"))>=0.9, "🔥 SIZZLING!", IF(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task"))>=0.6, "🥘 SIMMERING...", "🧊 COLD - TURN UP THE HEAT!")), "MOOD: 🧊 LOADING...")`, s: statusHeaderStyle }, null, null, null, null],
         [
             { v: "Shift Progress:", s: statusLabelStyle },
             { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, s: { ...statusValueStyle, font: { ...statusValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN } } } },
-            { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: statusEmptyRight }
-        ],
-        [
-            { v: "Open Incidents:", s: statusLabelStyle },
+            { v: "Open Incidents:", s: { ...statusLabelStyle, border: {} } },
             { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, s: { ...statusValueStyle, font: { ...statusValueStyle.font, color: { rgb: COLORS.RISK_RED } } } },
-            { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: statusEmptyRight }
+            { v: "", s: statusEmptyRight }
         ],
         [
-            { v: "Active Units:", s: statusLabelStyle },
-            { t: 'f', f: `COUNTIF('BRANCH_SETUP'!B6:B15, "<>")`, s: statusValueStyle },
-            { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } } } }, { v: "", s: statusEmptyRight }
+            { v: "Today's Star:", s: statusLabelStyle },
+            { v: "🎖️ Rahul (Bandra)", s: statusValueStyle },
+            { v: "Top Streak:", s: { ...statusLabelStyle, border: {} } },
+            { v: "🏆 Bandra (14 Days)", s: statusValueStyle },
+            { v: "", s: statusEmptyRight }
         ],
         [
-            { v: "The Daily Dish:", s: { ...statusLabelStyle, border: { left: boxBorder, bottom: boxBorder } } },
-            { v: "▶ [🔥 Leading: Bandra | 🧊 Needs Help: Ghatkopar]", l: { Target: "#'BUSINESS_HEALTH'!A10" }, s: { ...statusValueStyle, font: { ...statusValueStyle.font, italic: true, sz: 10, color: { rgb: COLORS.INTEL_GREY } }, border: { bottom: boxBorder } } },
-            { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } }, border: { bottom: boxBorder } } }, 
-            { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } }, border: { bottom: boxBorder } } }, 
+            { v: "Empire Status:", s: { ...statusLabelStyle, border: { left: boxBorder, bottom: boxBorder } } },
+            { v: "👑 LEVEL 3 - EXECUTIVE GRADE", s: { ...statusValueStyle, font: { ...statusValueStyle.font, color: { rgb: COLORS.ACCENT_GOLD } }, border: { bottom: boxBorder } } },
+            { v: "Active Units:", s: { ...statusLabelStyle, border: { bottom: boxBorder } } },
+            { t: 'f', f: `COUNTIF('BRANCH_SETUP'!B6:B15, "<>")`, s: { ...statusValueStyle, border: { bottom: boxBorder } } },
             { v: "", s: { fill: { fgColor: { rgb: COLORS.STATUS_SECTION_BG } }, border: { right: boxBorder, bottom: boxBorder } } }
+        ],
+        [
+            { v: "The Daily Dish:", s: { font: { italic: true, sz: 9, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'right' } } },
+            { v: "▶ [View Branch Intelligence & Leading Units]", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: { font: { italic: true, sz: 9, color: { rgb: COLORS.PRIMARY_GREEN }, bold: true }, alignment: { horizontal: 'left' } } }
         ],
         [],
         [{ v: "SYSTEM STATUS: ✅ INSTITUTIONAL GRADE VERIFIED", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'left' } } }],
@@ -225,17 +228,16 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
 
     const homeWs = utils.aoa_to_sheet(homeData);
-    homeWs['!cols'] = [35, 15, 35, 15, 35].map(w => ({ wch: w }));
+    homeWs['!cols'] = [35, 15, 25, 25, 25].map(w => ({ wch: w }));
     homeWs['!rows'] = Array(35).fill({ hpt: 16 });
     homeWs['!rows'][2] = { hpt: 40 }; 
-    homeWs['!rows'][18] = { hpt: 22 }; 
+    homeWs['!rows'][18] = { hpt: 24 }; 
     
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 4 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 4 } },
         { s: { r: 18, c: 0 }, e: { r: 18, c: 4 } },
-        { s: { r: 19, c: 1 }, e: { r: 19, c: 3 } }, { s: { r: 20, c: 1 }, e: { r: 20, c: 3 } }, { s: { r: 21, c: 1 }, e: { r: 21, c: 3 } }, 
-        { s: { r: 22, c: 1 }, e: { r: 22, c: 3 } },
-        { s: { r: 25, c: 0 }, e: { r: 25, c: 4 } }, { s: { r: 26, c: 0 }, e: { r: 26, c: 4 } },
+        { s: { r: 22, c: 1 }, e: { r: 22, c: 4 } },
+        { s: { r: 24, c: 0 }, e: { r: 24, c: 4 } }, { s: { r: 25, c: 0 }, e: { r: 25, c: 4 } },
         { s: { r: 6, c: 0 }, e: { r: 8, c: 0 } }, { s: { r: 6, c: 2 }, e: { r: 8, c: 2 } }, { s: { r: 6, c: 4 }, e: { r: 8, c: 4 } },
         { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } }, { s: { r: 10, c: 2 }, e: { r: 12, c: 2 } }, { s: { r: 10, c: 4 }, e: { r: 12, c: 4 } },
         { s: { r: 14, c: 0 }, e: { r: 16, c: 0 } }, { s: { r: 14, c: 2 }, e: { r: 16, c: 2 } }, { s: { r: 14, c: 4 }, e: { r: 16, c: 4 } }
@@ -318,7 +320,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     mWs['!autofilter'] = { ref: `A4:K${mData.length}` };
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
 
-    // --- 04. BUSINESS_HEALTH (SIGNAL & DETAIL) ---
+    // --- 04. BUSINESS_HEALTH ---
     const dashData = [
         [], [{ v: "BUSINESS HEALTH: PERFORMANCE HUB", s: { font: { sz: 20, bold: true } } }], [],
         [{ v: "GROUP KPIs", s: groupHeaderStyle }, null, null],
@@ -326,7 +328,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "Group Shift Progress", s: dataStyleLeft }, { t:'f', f:`IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>", 'TODAYS_TASKS'!D:D, "<>Task")), "0%"), "0%")`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
         [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }],
         [],
-        [{ v: "BRANCH INTELLIGENCE", s: groupHeaderStyle, id: "BRANCH_INTEL" }, null, null, null],
+        [{ v: "BRANCH INTELLIGENCE", s: groupHeaderStyle }, null, null, null],
         [{ v: "Branch Name", s: headerStyle }, { v: "Progress", s: headerStyle }, { v: "Open Incidents", s: headerStyle }, { v: "Risk Profile", s: headerStyle }],
         [{ t: 'f', f: `'BRANCH_SETUP'!B6`, s: dataStyleLeft }, { t: 'f', f: `IFERROR(TEXT(COUNTIFS('TODAYS_TASKS'!B:B, 'BRANCH_SETUP'!B6, 'TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!B:B, 'BRANCH_SETUP'!B6, 'TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>")), "0%"), "0%")`, s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('INCIDENT_TRACKER'!C:C, 'BRANCH_SETUP'!B6, 'INCIDENT_TRACKER'!G:G, "OPEN")`, s: dataStyleCenter }, { t: 'f', f: `IF(AND(COUNTIFS('INCIDENT_TRACKER'!C:C, 'BRANCH_SETUP'!B6, 'INCIDENT_TRACKER'!G:G, "OPEN")=0), "SECURED", "ALERT")`, s: dataStyleCenter }],
         [{ t: 'f', f: `'BRANCH_SETUP'!B7`, s: dataStyleLeft }, { t: 'f', f: `IFERROR(TEXT(COUNTIFS('TODAYS_TASKS'!B:B, 'BRANCH_SETUP'!B7, 'TODAYS_TASKS'!G:G, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!B:B, 'BRANCH_SETUP'!B7, 'TODAYS_TASKS'!D:D, "<>N/A*", 'TODAYS_TASKS'!D:D, "<>")), "0%"), "0%")`, s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('INCIDENT_TRACKER'!C:C, 'BRANCH_SETUP'!B7, 'INCIDENT_TRACKER'!G:G, "OPEN")`, s: dataStyleCenter }, { t: 'f', f: `IF(AND(COUNTIFS('INCIDENT_TRACKER'!C:C, 'BRANCH_SETUP'!B7, 'INCIDENT_TRACKER'!G:G, "OPEN")=0), "SECURED", "ALERT")`, s: dataStyleCenter }]
