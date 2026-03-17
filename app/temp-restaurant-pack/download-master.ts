@@ -34,7 +34,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         HEADER_BG: "1E293B",
         SUCCESS_TEAL: "14B8A6", 
         CONSOLE_BG: "F1F5F9",
-        STATUS_SECTION_BG: "F0F9FF" // Light Blue Pane
+        STATUS_SECTION_BG: "FFFBEB" // Champagne Gold / Amber-50
     };
 
     const borderStyle = {
@@ -455,5 +455,5 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ]
     };
 
-    writeFile(wb, `MOREMEETS_RESTAURANT_OPERATIONS_CONSOLE_v4.2.xlsx`);
+    writeFile(wb, `MOREMEETS_RESTAURANT_OPERATIONAL_CONSOLE_v4.2.xlsx`);
 }
