@@ -174,7 +174,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <div className="absolute top-6 right-6 z-20">
                             <div className="bg-accent/10 border border-accent/20 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-sm backdrop-blur-sm">
                                 <ShieldCheck className="w-3 h-3 text-accent" />
-                                <span className="text-[9px] font-black uppercase tracking-widest text-accent">Audit Ready</span>
+                                <span className="text-[9px] font-black uppercase tracking-widest text-accent">Permanent Asset</span>
                             </div>
                         </div>
 
@@ -204,8 +204,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     ELIMINATE OPERATIONAL RISK
                                 </h2>
                                 <div className="flex items-center gap-2">
-                                    <Shield className="w-4 h-4 text-white/40" />
-                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic">INSTITUTIONAL COMPLIANCE GRADE</span>
+                                    <Lock className="w-4 h-4 text-white/40" />
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic">ZERO SAAS DEPENDENCY • OWN FOREVER</span>
                                 </div>
                             </div>
                         </CardHeader>
@@ -256,7 +256,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                                 className="w-full h-14 bg-primary text-black font-black text-base rounded-[10px] shadow-md hover:shadow-xl hover:brightness-105 transition-all border-none relative z-10 px-8"
                                             >
                                                 <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center justify-center">
-                                                    Buy Full Pack: ${pack.priceUSD} <ArrowRight className="ml-2 h-5 w-5"/>
+                                                    Buy Once - ${pack.priceUSD} <ArrowRight className="ml-2 h-5 w-5"/>
                                                 </Link>
                                             </Button>
                                         )}
@@ -265,14 +265,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     <div className="mt-1.5 flex items-center justify-center gap-2 opacity-40 grayscale">
                                         <Lock className="w-3 h-3" />
                                         <span className="text-[11px] font-black tracking-widest uppercase">
-                                            {region === 'INDIA' ? 'Secure Payment' : 'Secure International Checkout'}
+                                            {region === 'INDIA' ? 'Secure Payment • No Monthly Subscriptions' : 'Secure Checkout • Own Forever'}
                                         </span>
                                     </div>
 
                                     <div className="mt-3 flex items-center justify-center gap-2 tracking-tight">
                                         <Check className="w-3.5 h-3.5 text-primary opacity-80" /> 
                                         <span className="text-[13px] text-muted-foreground font-bold uppercase tracking-tight text-center">
-                                            Instant Digital Delivery · 100% Alignment Guarantee
+                                            Instant Digital Delivery · Zero SaaS Dependency
                                         </span>
                                     </div>
 

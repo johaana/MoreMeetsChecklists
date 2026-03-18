@@ -5,10 +5,10 @@ export const restaurants: PremiumPack = {
     id: 'restaurants',
     title: "Restaurant Operating System (ROCS v4.3)",
     category: "Hospitality",
-    description: "Stop the bleed. Most restaurants lose 2-5% of revenue to operational chaos, staff inconsistency, and undocumented standards. ROCS v4.3 is the professional plug for your profit leaks.",
+    description: "No monthly subscriptions. No SaaS dependency. One-time investment for a lifetime of control. ROCS v4.3 is the professional plug for your profit leaks.",
     heroHeadline: "Run Your Restaurant Like a System — Not Chaos",
     heroSubheadline: "Track daily tasks, monitor staff, and stay in control — even when you’re not there.",
-    pricingUrgency: "Even one mistake prevented can recover the entire cost of this system.",
+    pricingUrgency: "Most restaurants lose 2-5% revenue to operational chaos. This system stops the bleed.",
     consultingAnchor: 5000,
     priceINR: 5999,
     priceUSD: 79,
@@ -27,7 +27,7 @@ export const restaurants: PremiumPack = {
         { text: "<strong>High-Risk Verification</strong>: Highlighted 'Yellow Targets' show managers exactly what needs attention—no more manual auditing.", icon: "shield-check" },
         { text: "<strong>Gamified Competition</strong>: Driven by the 'Empire Mood' engine. Recognize top performers and branches with live streak tracking.", icon: "trophy" },
         { text: "<strong>Consequences of Failure</strong>: Every task lists the real-world risk, turning mechanical checking into intentional compliance.", icon: "shield-alert" },
-        { text: "<strong>Onboarding Safety Net</strong>: New staff follow instructions and Trainer's Notes built into the file. tribal knowledge is now infrastructure.", icon: "history" },
+        { text: "<strong>Onboarding Safety Net</strong>: New staff follow instructions and Trainer's Notes built into the file. Tribal knowledge is now infrastructure.", icon: "history" },
         { text: "<strong>Multi-Branch Switchboard</strong>: Run your entire group from one master file. Toggle modules ON/OFF to fit each unique outlet.", icon: "layout-grid" }
     ],
     checklists: [

@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Gem, Zap, CheckCircle, Globe, Download, FileSpreadsheet, ShieldAlert, Trophy, Target, Timer } from "lucide-react";
+import { ArrowRight, Check, Gem, Zap, CheckCircle, Globe, Download, FileSpreadsheet, ShieldAlert, Trophy, Target, Timer, Lock, Infinity } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
 import { TestimonialsSection } from "@/components/layout/testimonials-section";
@@ -253,11 +253,17 @@ const FinalCTASection = () => (
                         Eliminate Operational Risk <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Link>
                 </Button>
-                <div className="text-center space-y-0.5 opacity-60">
-                    <p className="text-[10px] font-black uppercase tracking-widest text-primary">Zero SaaS Dependency.</p>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Own your data engine forever.</p>
+                <div className="flex items-center gap-6 pt-2">
+                    <div className="text-center space-y-0.5">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-primary flex items-center gap-1.5"><Lock className="w-3 h-3" /> Zero SaaS Lock-in.</p>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Own your engine forever.</p>
+                    </div>
+                    <div className="text-center space-y-0.5">
+                        <p className="text-[10px] font-black uppercase tracking-widest text-accent flex items-center gap-1.5"><Infinity className="w-3 h-3" /> One-Time Payment.</p>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-white/40">No monthly subscriptions.</p>
+                    </div>
                 </div>
-                 <div className="pt-4 text-[9px] font-black uppercase tracking-[0.2em] text-accent">
+                 <div className="pt-4 text-[9px] font-black uppercase tracking-[0.2em] text-accent/60">
                     1 Expert Customization Included: Aligned to your brand and workflow
                 </div>
             </div>
