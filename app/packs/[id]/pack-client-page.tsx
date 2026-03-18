@@ -59,20 +59,20 @@ const ComparisonSection = () => (
             <div className="max-w-4xl mx-auto text-center mb-16 space-y-4">
                 <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Infrastructure Audit</Badge>
                 <h2 className="text-3xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">System vs. Chaos</h2>
-                <p className="text-secondary-text text-lg italic">The difference between a growing group and a struggling one is the system they run on.</p>
+                <p className="text-secondary-text text-lg italic">The difference between a growing business and a struggling one is the system they run on.</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-3xl overflow-hidden max-w-5xl mx-auto">
                 <div className="bg-black/40 p-8 md:p-12 space-y-8">
                     <h3 className="text-red-500 font-black uppercase tracking-widest text-sm flex items-center gap-2">
-                        <X className="w-5 h-5" /> Managing Manually (WhatsApp & Chat)
+                        <X className="w-5 h-5" /> Manual Chaos (WhatsApp & Memory)
                     </h3>
                     <ul className="space-y-6">
                         {[
-                            { t: "Staff forget important tasks", d: "Standard procedures are just suggestions until they are written down and signed." },
-                            { t: "No real visibility", d: "You only find out about failures when a guest complains or an inspector arrives." },
-                            { t: "Everything depends on you", d: "The business struggles or stops if you or a senior manager is sick or resigns." },
-                            { t: "Losing money without knowing", d: "Small daily losses in food waste and mistakes go untracked and add up to massive yearly leaks." }
+                            { t: "Staff forgets tasks", d: "Standards are just suggestions until they are tracked and signed." },
+                            { t: "You chase staff", d: "Managers spend hours daily following up on basic duties." },
+                            { t: "No visibility", d: "You only find out about failures when a guest complains or an inspector arrives." },
+                            { t: "Problems caught late", d: "Small daily losses add up to massive yearly profit leaks." }
                         ].map(item => (
                             <li key={item.t} className="space-y-1">
                                 <p className="text-primary-text font-bold text-sm">{item.t}</p>
@@ -88,10 +88,10 @@ const ComparisonSection = () => (
                     </h3>
                     <ul className="space-y-6">
                         {[
-                            { t: "Daily Accountability", d: "Tasks are signed off every shift. Following the rules becomes a mandatory daily habit." },
-                            { t: "Instant Executive Clarity", d: "Know exactly which branch is 'Doing Great' or 'Needs Help' in 5 seconds from your phone." },
-                            { t: "Knowledge Stays with the Business", d: "The business owns the system. New staff execute perfectly even when you aren't there." },
-                            { t: "Recover Lost Profits", d: "Track every mistake and fix the root cause to protect your profit margins automatically." }
+                            { t: "Tasks tracked daily", d: "Every step is signed off. Discipline becomes a mandatory habit." },
+                            { t: "You see updates instantly", d: "Know exactly who is performing in 5 seconds from your phone." },
+                            { t: "Full Executive Clarity", d: "Knowledge stays with the business even when staff leave." },
+                            { t: "Problems caught early", d: "The system identifies and fixes errors before they cost you money." }
                         ].map(item => (
                             <li key={item.t} className="space-y-1">
                                 <p className="text-primary-text font-bold text-sm">{item.t}</p>
@@ -156,7 +156,7 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
           <div className="container px-4 md:px-6">
             <div className={cn("grid gap-6 lg:gap-12 xl:gap-16 items-center", hasValidHeroImage ? "lg:grid-cols-[1fr,400px]" : "grid-cols-1 max-w-4xl mx-auto")}>
               <div className="space-y-6">
-                <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.2em] font-black text-[10px]">{pack.category} • Command Engine</Badge>
+                <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.2em] font-black text-[10px]">{pack.category} • Operating System</Badge>
                 <h1 className="text-3xl font-black tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl font-headline text-primary-text uppercase italic leading-[1.1]">
                   {pack.heroHeadline || pack.title}
                 </h1>

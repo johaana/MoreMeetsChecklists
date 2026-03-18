@@ -6,9 +6,9 @@ export const restaurants: PremiumPack = {
     title: "Restaurant Operating System (ROCS v4.3)",
     category: "Hospitality",
     description: "Stop the bleed. Most restaurants lose 2-5% of revenue to operational chaos, staff inconsistency, and undocumented standards. ROCS v4.3 is the professional plug for your profit leaks.",
-    heroHeadline: "Consistency is either engineered, or it is non-existent.",
-    heroSubheadline: "Stop chasing your staff. A complete, ready-to-use Command Engine to track daily tasks, monitor performance, and recover lost profit—in minutes, not hours.",
-    pricingUrgency: "A single health department closure or one major safety mistake costs 100x more than this entire system. Don't gamble with your license.",
+    heroHeadline: "Run Your Restaurant Like a System — Not Chaos",
+    heroSubheadline: "Track daily tasks, monitor staff, and stay in control — even when you’re not there.",
+    pricingUrgency: "Even one mistake prevented can recover the entire cost of this system.",
     consultingAnchor: 5000,
     priceINR: 5999,
     priceUSD: 79,
@@ -20,14 +20,14 @@ export const restaurants: PremiumPack = {
     badgeText: "V4.3 SOVEREIGN",
     badgeVariant: "accent",
     bestseller: true,
-    whoIsItFor: ["Restaurant Owners", "Group COOs", "Multi-Unit Operators", "Executive Chefs tired of firefighting"],
+    whoIsItFor: ["Restaurant Owners", "Multi-branch operators", "Managers tired of chasing staff"],
     sampleItems: [
-        { text: "<strong>Live Operational Visibility</strong>: See exactly which branch, team, and staff member is performing—and who is failing—in under 5 seconds.", icon: "zap" },
-        { text: "<strong>2-Minute Daily Reporting</strong>: Zero reporting friction. Staff find their specific roles using simple filters, ensuring 100% system adoption.", icon: "timer" },
-        { text: "<strong>Multi-Branch Switchboard</strong>: Run your entire group from one file. Toggle modules (Bar, Delivery, etc.) ON or OFF to fit each unique outlet.", icon: "layout-grid" },
-        { text: "<strong>Capture Tribal Knowledge</strong>: Convert individual brilliance into permanent infrastructure. New hires execute like veterans from Day 1.", icon: "history" },
-        { text: "<strong>Manager Target Verification</strong>: Stop auditing everything. Highlighted 'Yellow Targets' show managers exactly where their attention is required.", icon: "shield-check" },
-        { text: "<strong>Recover Lost Revenue</strong>: Track daily mistakes and incidents to quantify the exact cost of operational failure and fix it permanently.", icon: "banknote" }
+        { text: "<strong>2-Minute Daily Reporting</strong>: Your team updates everything in seconds. No long reports. 100% adoption.", icon: "timer" },
+        { text: "<strong>Full Operational Visibility</strong>: See which branch, team, and staff member is performing instantly from your phone.", icon: "zap" },
+        { text: "<strong>No More Chasing Staff</strong>: Highlighted 'Yellow Targets' show managers exactly what needs attention—no more manual auditing.", icon: "shield-check" },
+        { text: "<strong>Built-in Training</strong>: New hires know exactly what to do from Day 1. tribal knowledge is converted into infrastructure.", icon: "history" },
+        { text: "<strong>Stop Revenue Leakage</strong>: Track daily mistakes and incidents to stop the 2-5% profit bleed permanently.", icon: "banknote" },
+        { text: "<strong>Multi-Branch Switchboard</strong>: Run your entire group from one file. Toggle modules ON/OFF to fit each unique outlet.", icon: "layout-grid" }
     ],
     checklists: [
         {

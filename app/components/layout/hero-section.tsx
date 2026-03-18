@@ -43,7 +43,7 @@ export const HeroSection = () => (
                 </div>
 
                 <p className="text-sm md:text-lg max-w-[520px] text-secondary-text leading-relaxed md:leading-[1.5] font-medium md:font-normal">
-                    When work depends on memory or judgment, execution changes with people. Audits, shift changes, and emergencies expose the gaps.
+                    Track daily tasks, monitor your team, and stay in control—even when you’re not there.
                 </p>
                 
                 <div className="flex flex-col items-start gap-5 pt-2 md:pt-8">

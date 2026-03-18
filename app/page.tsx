@@ -27,8 +27,8 @@ const CoreProblemSection = () => (
         <div className="container px-4 md:px-6 text-center max-w-3xl mx-auto space-y-10">
             <SectionHeadline>Memory fails. Systems don’t.</SectionHeadline>
             <div className="space-y-4 text-lg text-secondary-text">
-                <p>People don’t fail because they don’t care.<br/>They fail because the business expects them to remember too much.</p>
-                <p>When processes are undocumented, inconsistently trained, explained verbally, or just “understood” but not written:</p>
+                <p>Most businesses run on WhatsApp, Memory, and Verbal Instructions.</p>
+                <p>That’s why things get missed, standards drift, and revenue leaks out of the business every single day.</p>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-3 text-center text-sm font-medium">
                 {['Steps are skipped', 'Standards drift', 'Training fades', 'Audits are stressful', 'Managers chase'].map(item => (
@@ -37,7 +37,7 @@ const CoreProblemSection = () => (
                     </div>
                 ))}
             </div>
-             <p className="text-xl font-medium pt-4 text-accent">If your process isn’t written clearly, it will be rewritten differently by every person.</p>
+             <p className="text-xl font-medium pt-4 text-accent">If your team forgets things, your business pays for it.</p>
         </div>
     </Section>
 );
@@ -55,26 +55,26 @@ const HowItWorksSection = () => (
                             <span className="text-5xl font-black text-accent block translate-x-0.5">1</span>
                         </div>
                         <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter group-hover/step:text-primary transition-colors flex items-center justify-center gap-2">
-                            Select Your Industry <ArrowRight className="w-4 h-4" />
+                            Install the Engine <ArrowRight className="w-4 h-4" />
                         </h3>
                     </Link>
-                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">Choose a ready-to-implement operational system designed for your business type.</p>
+                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">Choose your industry system and open it in Excel or Google Sheets.</p>
                 </div>
                  <div className="flex flex-col items-center">
                     <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl">
                         <span className="text-5xl font-black text-accent block">2</span>
                     </div>
                     <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">
-                        Implement Immediately
+                        2-Minute Daily Pulse
                     </h3>
-                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">Download fully editable checklists and SOPs instantly: no waiting, no delays.</p>
+                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">Your team updates their specific daily tasks in seconds. No long forms.</p>
                 </div>
                  <div className="flex flex-col items-center">
                     <div className="flex items-center justify-center w-24 h-24 rounded-full bg-black mb-4 border border-white/10 shadow-xl">
                         <span className="text-5xl font-black text-accent block">3</span>
                     </div>
-                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">Tailored To Your Workflow</h3>
-                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">1 expert customization included to match your brand, process, and compliance needs.</p>
+                    <h3 className="text-xl font-bold font-headline text-primary-text uppercase tracking-tighter">Govern the Empire</h3>
+                    <p className="text-secondary-text mt-2 text-sm leading-relaxed">View branch and staff performance instantly. Stay in control from anywhere.</p>
                 </div>
             </div>
             <div className="mt-16 text-center">
@@ -115,27 +115,27 @@ const WhatItIsSection = () => (
     <Section id="what-it-is" className="bg-alternate-background">
         <div className="container px-4 md:px-6 max-w-4xl mx-auto">
             <div className="text-center mb-12">
-                <SectionHeadline>MoreMeets™ is not software people need to “remember to use.”</SectionHeadline>
+                <SectionHeadline>Run your business like a system — not chaos.</SectionHeadline>
             </div>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 text-primary-text">
                 <div className="space-y-4">
                     <h3 className="text-xl font-black uppercase italic flex items-center gap-2 text-authority-green"><Check className="w-5 h-5"/>What It IS</h3>
                     <ul className="space-y-3 pl-2 text-base text-secondary-text">
-                        <li>A structured SOP framework</li>
-                        <li>A library of best-practice operational standards</li>
-                        <li>A way to turn experience into clear, repeatable steps</li>
-                        <li>Designed to work offline, in Excel, or on paper</li>
-                        <li>Easy to update as operations change</li>
-                        <li>Built for real work, not dashboards</li>
+                        <li><strong>Ready-to-use Operating Systems</strong></li>
+                        <li>A way to see performance instantly</li>
+                        <li>Built for real work (Excel or Google Sheets)</li>
+                        <li>Institutional memory that stays when staff leaves</li>
+                        <li>A plug for profit leaks and daily mistakes</li>
+                        <li><strong>Pay once. Own forever. No SaaS fees.</strong></li>
                     </ul>
                 </div>
                  <div className="space-y-4">
                     <h3 className="text-xl font-black uppercase italic flex items-center gap-2 text-risk-accent"><ArrowRight className="w-5 h-5 rotate-45"/>What it’s NOT</h3>
                      <ul className="space-y-3 pl-2 text-base text-secondary-text">
-                        <li>Not task enforcement</li>
-                        <li>Not monitoring employees</li>
-                        <li>Not reminders or notifications</li>
-                        <li>Not another tool to “manage people”</li>
+                        <li>Not another complex tool to learn</li>
+                        <li>Not "paperwork" that staff will ignore</li>
+                        <li>Not a generic template from the internet</li>
+                        <li>Not a recurring monthly subscription bill</li>
                     </ul>
                 </div>
             </div>
@@ -219,7 +219,7 @@ const FinalCTASection = () => (
     <Section id="final-cta" className="bg-black border-t border-white/5">
         <div className="container px-4 md:px-6 text-center max-w-2xl mx-auto space-y-8">
             <SectionHeadline>Stop firefighting. Start building.</SectionHeadline>
-            <p className="text-lg text-secondary-text">Explore the library to find the right operational standard for your business.</p>
+            <p className="text-lg text-secondary-text">Stop managing your business manually. Explore the library to find the right system for you.</p>
             <div className="flex flex-col items-center gap-4 pt-4">
                 <Button size="lg" asChild className="group h-16 px-10 rounded-xl bg-primary text-black font-black uppercase text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all">
                     <Link href="/library" className="flex items-center">
