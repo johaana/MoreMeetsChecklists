@@ -3,12 +3,12 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 export const restaurants: PremiumPack = {
     id: 'restaurants',
-    title: "Restaurant Operations Control System (ROCS)",
+    title: "Restaurant Operating System (ROCS v4.3)",
     category: "Hospitality",
-    description: "The definitive governance framework for 5-star restaurant reliability. Includes 240+ technical SOPs, Multi-Branch Switchboard, and ROI tracking.",
-    heroHeadline: "RESTAURANT OPERATIONAL CONSOLE v4.3",
-    heroSubheadline: "The Sovereign Standard for COOs and Owners who take zero-risk governance and P&L protection seriously. Stop managing manually.",
-    pricingUrgency: "One health department closure or a single 'never event' costs 100x more than this entire system.",
+    description: "A professional way to manage your team and standards. Includes over 240 tasks, multi-branch control, and a simple dashboard to see performance instantly.",
+    heroHeadline: "Run Your Restaurant Like a System — Not Chaos",
+    heroSubheadline: "Stop chasing your staff. A complete, ready-to-use system to track daily tasks, monitor team performance, and fix issues — in minutes, not hours.",
+    pricingUrgency: "One health department closure or a single major safety mistake costs 100x more than this entire system.",
     consultingAnchor: 5000,
     priceINR: 5999,
     priceUSD: 79,
@@ -20,14 +20,14 @@ export const restaurants: PremiumPack = {
     badgeText: "V4.3 SOVEREIGN",
     badgeVariant: "accent",
     bestseller: true,
-    whoIsItFor: ["Restaurant Owners", "Group COOs", "Multi-Unit Managers", "Executive Chefs"],
+    whoIsItFor: ["Restaurant Owners", "Group Managers", "Multi-Unit Operators", "Executive Chefs"],
     sampleItems: [
-        { text: "<strong>Live Executive Intelligence</strong>: See which branch, team, and staff are performing in seconds with the 'Empire Mood' banner.", icon: "zap" },
-        { text: "<strong>2-Minute Reporting</strong>: Staff find their specific role tasks using integrated filters, ensuring 100% adoption without the paperwork fatigue.", icon: "timer" },
-        { text: "<strong>Multi-Branch Switchboard</strong>: Toggle Bar, Garden, Valet, and Pool modules ON/OFF to fit every unique outlet in your group.", icon: "layout-grid" },
-        { text: "<strong>Institutional Memory</strong>: Convert tribal knowledge into permanent infrastructure. New hires execute like veterans from Day 1.", icon: "history" },
-        { text: "<strong>Manager Target Verification</strong>: Highlighted 'Yellow Cells' show leadership exactly where to sign off on high-risk control points.", icon: "shield-check" },
-        { text: "<strong>Loss Recovery Engine</strong>: Track operational incidents and quantify their financial impact to protect your bottom-line margins.", icon: "banknote" }
+        { text: "<strong>Know who is performing instantly</strong>: See exactly how every branch, team, and staff member is doing in 5 seconds.", icon: "zap" },
+        { text: "<strong>Reports that take 2 minutes</strong>: Staff find their specific tasks using simple filters, so they actually use the system every day.", icon: "timer" },
+        { text: "<strong>Works for every location</strong>: Easily turn modules (like Bar or Delivery) ON or OFF to fit each unique outlet in your group.", icon: "layout-grid" },
+        { text: "<strong>Keep knowledge in-house</strong>: New staff learn directly from the system, so they work like veterans from day one.", icon: "history" },
+        { text: "<strong>Managers save 45 mins daily</strong>: Highlighted boxes show exactly where a manager needs to sign off on important tasks.", icon: "shield-check" },
+        { text: "<strong>Stop losing money</strong>: Track daily mistakes and incidents to see exactly where your profit is leaking.", icon: "banknote" }
     ],
     checklists: [
         {

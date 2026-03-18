@@ -45,7 +45,7 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => (
         <CardFooter>
             <Button asChild className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-black font-black uppercase italic text-xs tracking-widest transition-all" variant="secondary">
                 <Link href={`/packs/${pack.id}`}>
-                    Access System <ArrowRight className="ml-2 h-4 w-4" />
+                    Get the System <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
             </Button>
         </CardFooter>
@@ -58,7 +58,7 @@ const Bestsellers = ({ packs }: { packs: PremiumPack[] }) => {
 
     return (
         <div className="mb-16">
-            <h2 className="text-xl font-black tracking-[0.3em] uppercase text-primary mb-10 text-center opacity-60">Field-Tested Benchmarks</h2>
+            <h2 className="text-xl font-black tracking-[0.3em] uppercase text-primary mb-10 text-center opacity-60">Top Rated Systems</h2>
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
                 {bestsellerPacks.map(pack => <PackCard key={pack.id} pack={pack} />)}
             </div>
@@ -132,12 +132,12 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                 <section className="w-full pt-12 md:pt-20 pb-12 md:pb-24 lg:pb-32">
                     <div className="container px-4 md:px-6">
                         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Operational Infrastructure</Badge>
+                            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Business Systems</Badge>
                             <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter font-headline text-primary-text leading-tight uppercase italic">
-                                Operational Systems Hub
+                                Ready-to-Use Systems
                             </h1>
                             <p className="max-w-[750px] text-secondary-text text-lg md:text-xl font-medium leading-relaxed mx-auto italic border-l-2 border-primary/20 pl-6">
-                                Industry-grade execution frameworks designed for zero-ambiguity governance. Deploy editable SOPs and technical checklists instantly.
+                                Professional systems designed to help you manage your team and standards. Download editable SOPs and professional checklists to run your business better today.
                             </p>
                         </div>
                         
@@ -147,7 +147,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                                     <Input 
                                         type="search" 
-                                        placeholder="Search by sector or keyword..." 
+                                        placeholder="Search by industry or keyword..." 
                                         className="pl-10 w-full bg-black/40 border-white/10"
                                         value={searchTerm}
                                         onChange={handleSearchChange}
@@ -225,7 +225,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                         {filteredPacks.length === 0 ? (
                             <div className="text-center py-24 bg-white/[0.02] rounded-3xl border border-dashed border-white/10">
                                 <p className="text-lg font-bold text-primary-text uppercase tracking-widest">No matching systems found.</p>
-                                <p className="text-secondary-text mt-2">Adjust your forensic criteria or reset filters.</p>
+                                <p className="text-secondary-text mt-2">Adjust your criteria or reset filters.</p>
                                 <Button onClick={clearFilters} variant="link" className="mt-6 text-primary">Clear all filters</Button>
                             </div>
                         ) : (

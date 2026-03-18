@@ -65,14 +65,14 @@ const ComparisonSection = () => (
             <div className="grid md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-3xl overflow-hidden max-w-5xl mx-auto">
                 <div className="bg-black/40 p-8 md:p-12 space-y-8">
                     <h3 className="text-red-500 font-black uppercase tracking-widest text-sm flex items-center gap-2">
-                        <X className="w-5 h-5" /> Manual Management (WhatsApp & Verbal)
+                        <X className="w-5 h-5" /> Managing Manually (WhatsApp & Chat)
                     </h3>
                     <ul className="space-y-6">
                         {[
-                            { t: "Staff forget critical tasks", d: "Standard procedures are only suggestions until they are written and signed." },
-                            { t: "Zero operational visibility", d: "You only find out about failures when a guest complains or an auditor arrives." },
-                            { t: "Manager-Dependent", d: "The operation collapses if the senior manager is sick or resigns." },
-                            { t: "Unquantified Revenue Leakage", d: "Small daily losses in prep and waste go untracked and accumulate." }
+                            { t: "Staff forget important tasks", d: "Standard procedures are just suggestions until they are written down and signed." },
+                            { t: "No real idea what's happening", d: "You only find out about failures when a guest complains or an inspector arrives." },
+                            { t: "Everything depends on you", d: "The business struggles if you or a senior manager is sick or resigns." },
+                            { t: "Losing money without knowing", d: "Small daily losses in food waste and mistakes go untracked and add up." }
                         ].map(item => (
                             <li key={item.t} className="space-y-1">
                                 <p className="text-primary-text font-bold text-sm">{item.t}</p>
@@ -84,14 +84,14 @@ const ComparisonSection = () => (
                 <div className="bg-primary/5 p-8 md:p-12 space-y-8 relative">
                     <div className="absolute top-0 right-0 p-6 opacity-10"><Check className="w-32 h-32 text-primary" /></div>
                     <h3 className="text-primary font-black uppercase tracking-widest text-sm flex items-center gap-2">
-                        <Check className="w-5 h-5" /> MoreMeets™ Sovereign Engine
+                        <Check className="w-5 h-5" /> MoreMeets™ Operating System
                     </h3>
                     <ul className="space-y-6">
                         {[
-                            { t: "Binary Accountability", d: "Tasks are signed off daily. Compliance becomes a non-negotiable rhythm." },
-                            { t: "Live Executive Intelligence", d: "Know exactly which branch is 'Sizzling' or 'Cold' in 5 seconds." },
-                            { t: "Institutional Memory", d: "The system owns the knowledge. New hires execute like veterans from day one." },
-                            { t: "Loss Recovery Tracking", d: "Quantify every incident and fix the root cause to protect your P&L." }
+                            { t: "Daily Accountability", d: "Tasks are signed off every shift. Following the rules becomes a daily habit." },
+                            { t: "Instant Clarity", d: "Know exactly which branch is 'Doing Great' or 'Needs Help' in 5 seconds." },
+                            { t: "Knowledge Stays with You", d: "The business owns the system. New staff execute perfectly even when you aren't there." },
+                            { t: "Recover Lost Profits", d: "Track every mistake and fix the cause to protect your profit margins." }
                         ].map(item => (
                             <li key={item.t} className="space-y-1">
                                 <p className="text-primary-text font-bold text-sm">{item.t}</p>
@@ -196,10 +196,10 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
               <div className="container px-2 md:px-6">
                   <div className="max-w-4xl mx-auto text-center mb-12">
                       <h2 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tighter font-headline uppercase italic">
-                          ZERO-AMBIGUITY GOVERNANCE
+                          STOP MANAGING MANUALLY
                       </h2>
                       <p className="max-w-[700px] text-secondary-text text-base md:text-lg/relaxed mx-auto mt-4 font-medium">
-                          Deploy an 11-sheet operational data engine designed to eliminate the gaps where disasters are born. Run multiple branches from one standalone file.
+                          Deploy a professional system designed to help you run your business without chaos. Run multiple locations from one simple, powerful file.
                       </p>
                   </div>
 
