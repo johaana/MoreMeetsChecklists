@@ -7,6 +7,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 
 /**
  * ROCS v4.3 Master Engine - THE SOVEREIGN STANDARD
+ * Universal Generator for all Industry Operating Systems.
  * Features: Multi-Branch Switchboard, Symmetric Zero-Clipping UI, 
  * Manager Yellow Targets, ROI Loss Recovery Engine.
  */
@@ -212,9 +213,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     // --- 01. HOME CONSOLE ---
     const homeData: any[][] = [
         [], [],
-        [{ v: "MOREMEETS™ OPERATIONAL CONSOLE", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
-        [{ v: "Run Your Entire Operation From One Screen", s: { font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
-        [{ v: `Sovereign Series: ${item.title} v4.3 PRO`, s: { font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
+        [{ v: `Run Your Entire ${item.title} Operations From One Screen`, s: { font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
+        [{ v: `Sovereign Series: ${item.title} v4.3 PRO | Institutional Grade`, s: { font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
         [],
         [
             { v: "ADMIN & SETUP", s: groupHeaderStyle }, null, 
@@ -287,6 +288,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const branchSetupData = [
         [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
+        [],
         [], facilityHeaders,
         [{ v: 1, s: dataStyleCenter }, { v: "Type Branch 1 Name", s: ghostInputStyle }, ...packChecklists.map(() => ({ v: "YES", s: ghostInputStyle }))],
         [{ v: 2, s: dataStyleCenter }, { v: "Type Branch 2 Name", s: ghostInputStyle }, ...packChecklists.map(() => ({ v: "YES", s: ghostInputStyle }))]
