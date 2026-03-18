@@ -137,7 +137,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                 Ready-to-Use Systems
                             </h1>
                             <p className="max-w-[750px] text-secondary-text text-lg md:text-xl font-medium leading-relaxed mx-auto italic border-l-2 border-primary/20 pl-6">
-                                Professional systems designed to help you manage your team and standards. Download editable SOPs and professional checklists to run your business better today.
+                                Stop managing your business manually. MoreMeets gives you ready-to-use operating systems—built on Excel & Google Sheets—to eliminate chaos and recover lost profits today.
                             </p>
                         </div>
                         

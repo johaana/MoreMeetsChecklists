@@ -9,7 +9,7 @@ import { IconComponent, ComplianceIcon } from '@/components/icons';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { X, Check, ShieldAlert, ArrowRight } from 'lucide-react';
+import { X, Check, ShieldAlert, ArrowRight, ShieldCheck, FileSpreadsheet, Infinity, Lock } from 'lucide-react';
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
     const content = painPointsContent[packId as keyof typeof painPointsContent];
@@ -70,9 +70,9 @@ const ComparisonSection = () => (
                     <ul className="space-y-6">
                         {[
                             { t: "Staff forget important tasks", d: "Standard procedures are just suggestions until they are written down and signed." },
-                            { t: "No real idea what's happening", d: "You only find out about failures when a guest complains or an inspector arrives." },
-                            { t: "Everything depends on you", d: "The business struggles if you or a senior manager is sick or resigns." },
-                            { t: "Losing money without knowing", d: "Small daily losses in food waste and mistakes go untracked and add up." }
+                            { t: "No real visibility", d: "You only find out about failures when a guest complains or an inspector arrives." },
+                            { t: "Everything depends on you", d: "The business struggles or stops if you or a senior manager is sick or resigns." },
+                            { t: "Losing money without knowing", d: "Small daily losses in food waste and mistakes go untracked and add up to massive yearly leaks." }
                         ].map(item => (
                             <li key={item.t} className="space-y-1">
                                 <p className="text-primary-text font-bold text-sm">{item.t}</p>
@@ -88,10 +88,10 @@ const ComparisonSection = () => (
                     </h3>
                     <ul className="space-y-6">
                         {[
-                            { t: "Daily Accountability", d: "Tasks are signed off every shift. Following the rules becomes a daily habit." },
-                            { t: "Instant Clarity", d: "Know exactly which branch is 'Doing Great' or 'Needs Help' in 5 seconds." },
-                            { t: "Knowledge Stays with You", d: "The business owns the system. New staff execute perfectly even when you aren't there." },
-                            { t: "Recover Lost Profits", d: "Track every mistake and fix the cause to protect your profit margins." }
+                            { t: "Daily Accountability", d: "Tasks are signed off every shift. Following the rules becomes a mandatory daily habit." },
+                            { t: "Instant Executive Clarity", d: "Know exactly which branch is 'Doing Great' or 'Needs Help' in 5 seconds from your phone." },
+                            { t: "Knowledge Stays with the Business", d: "The business owns the system. New staff execute perfectly even when you aren't there." },
+                            { t: "Recover Lost Profits", d: "Track every mistake and fix the root cause to protect your profit margins automatically." }
                         ].map(item => (
                             <li key={item.t} className="space-y-1">
                                 <p className="text-primary-text font-bold text-sm">{item.t}</p>
@@ -118,7 +118,7 @@ const GlobalStandardsSection = ({ pack }: { pack: PremiumPack }) => {
                         AUDIT-READY. GLOBALLY COMPLIANT.
                     </h2>
                      <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
-                        Our checklists are built upon globally recognized standards to ensure you're operating at a world-class level.
+                        Our systems are built upon globally recognized standards to ensure you're operating at a world-class level.
                     </p>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto items-start justify-center">
@@ -156,7 +156,7 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
           <div className="container px-4 md:px-6">
             <div className={cn("grid gap-6 lg:gap-12 xl:gap-16 items-center", hasValidHeroImage ? "lg:grid-cols-[1fr,400px]" : "grid-cols-1 max-w-4xl mx-auto")}>
               <div className="space-y-6">
-                <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.2em] font-black text-[10px]">{pack.category} • Standalone Engine</Badge>
+                <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.2em] font-black text-[10px]">{pack.category} • Command Engine</Badge>
                 <h1 className="text-3xl font-black tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl font-headline text-primary-text uppercase italic leading-[1.1]">
                   {pack.heroHeadline || pack.title}
                 </h1>
@@ -196,10 +196,10 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
               <div className="container px-2 md:px-6">
                   <div className="max-w-4xl mx-auto text-center mb-12">
                       <h2 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tighter font-headline uppercase italic">
-                          STOP MANAGING MANUALLY
+                          STOP THE OPERATIONAL BLEED
                       </h2>
                       <p className="max-w-[700px] text-secondary-text text-base md:text-lg/relaxed mx-auto mt-4 font-medium">
-                          Deploy a professional system designed to help you run your business without chaos. Run multiple locations from one simple, powerful file.
+                          Deploy a standalone data engine designed to run your entire business without chaos. This is not a checklist; it is an infrastructure audit tool.
                       </p>
                   </div>
 
