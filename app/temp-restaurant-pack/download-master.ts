@@ -6,8 +6,8 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
  * ROCS v4.3 Master - SOVEREIGN PRECISION EDITION
- * Features: Hardened Status Logic, Teal/Amber Conditional Formatting, Zero-Clipping Grid.
- * Includes "How This Works" System Manual.
+ * Features: Hardened Status Logic, Inactive Module Grey-out, Symmetric Zero-Clipping.
+ * Replaces ARCHIVE with "HOW THIS WORKS" Guide.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -24,7 +24,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
         PRIMARY_GREEN: "2EB86B", 
-        TEAL_SUCCESS: "14B8A6",
         ACCENT_GOLD: "FACC15",   
         RISK_RED: "E11D48",      
         WHITE: "FFFFFF",
@@ -36,7 +35,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         INPUT_ZONE: "FEFCE8",
         CONSOLE_BG: "F1F5F9",
         CHAMBER_BG: "F8FAFC",
-        MGR_YELLOW: "MGR_YELLOW"
+        MGR_YELLOW: "FEF9C3",
+        INACTIVE_GREY: "F1F5F9"
     };
 
     const borderStyle = {
@@ -139,6 +139,17 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
+    const managerYellowStyle = {
+        ...inputStyle,
+        fill: { fgColor: { rgb: COLORS.MGR_YELLOW } }
+    };
+
+    const inactiveRowStyle = {
+        ...dataStyleLeft,
+        fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } },
+        font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED }, italic: true }
+    };
+
     const instructionTitleStyle = {
         font: { ...baseFont, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } },
         alignment: { vertical: 'center' }
@@ -221,7 +232,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "▶ VIEW BRANCH INTELLIGENCE & PERFORMANCE ANALYTICS", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: bigActionButtonStyle }, null, null, null, null, null],
         [],
         [{ v: "USER GUIDE: Use the [Filter Arrows] in 'Today's Tasks' to see only YOUR role and YOUR name.", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [{ v: `History & Version Control: [ _AUTH_CORE_ ] | REGISTERED TO: ${BUYER_EMAIL}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'left' } } }]
+        [{ v: `REGISTERED TO: ${BUYER_EMAIL} | ORDER ID: ${ORDER_ID}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'left' } } }]
     ];
 
     const homeWs = utils.aoa_to_sheet(homeData);
@@ -299,14 +310,14 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
                 mData.push([
                     { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
-                    { v: bCode === 1 ? "Bandra Main" : "Ghatkopar West", s: dataStyleCenter },
-                    { v: c.role, s: dataStyleCenter },
-                    { t: 'f', f: personFormula, s: dataStyleCenter },
-                    { v: t.id, s: dataStyleCenter },
-                    { v: isActive === "NO" ? `N/A - [${c.title.toUpperCase()}] INACTIVE` : t.description, s: dataStyleLeft },
-                    { v: "", s: inputStyle },
-                    { v: t.priority === 'High' ? "" : "N/A", s: inputStyle },
-                    { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true } } },
+                    { v: bCode === 1 ? "Bandra Main" : "Ghatkopar West", s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : dataStyleCenter },
+                    { v: c.role, s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : dataStyleCenter },
+                    { t: 'f', f: personFormula, s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : dataStyleCenter },
+                    { v: t.id, s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : dataStyleCenter },
+                    { v: isActive === "NO" ? `N/A - [${c.title.toUpperCase()}] INACTIVE` : t.description, s: isActive === "NO" ? inactiveRowStyle : dataStyleLeft },
+                    { v: "", s: isActive === "NO" ? { ...inputStyle, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : inputStyle },
+                    { v: t.priority === 'High' ? "" : "N/A", s: isActive === "NO" ? { ...inputStyle, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : (t.priority === 'High' ? managerYellowStyle : inputStyle) },
+                    { t: 'f', f: statusFormula, s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : { ...dataStyleCenter, font: { bold: true } } },
                     { v: c.frequency, s: intelStyle },
                     { v: t.priority, s: intelStyle },
                     { v: t.consequence, s: intelStyle },
@@ -405,18 +416,18 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     // --- 10. HOW THIS WORKS (SYSTEM MANUAL) ---
     const guideData = [
         [], 
-        [{ v: "COMMAND GUIDE: HOW THIS WORKS", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [{ v: "👨‍🍳 THE SOVEREIGN SYSTEM MANUAL", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [],
         [{ v: "SECTION", s: headerStyle }, { v: "ACTION STEPS & SYSTEM PROTOCOLS", s: headerStyle }],
-        [{ v: "1. THE ENGINE SETUP", s: instructionTitleStyle }, { v: "Go to 'BRANCH_SETUP' first. Use the Switchboard to toggle your facilities (Kitchen, Bar, etc.) to YES or NO. This automatically hides irrelevant tasks from your ledger.", s: instructionBodyStyle }],
-        [{ v: "2. ASSIGNING HEROES", s: instructionTitleStyle }, { v: "Go to 'TEAM_HUB'. Type the real names of your staff next to their roles. This ensures every task in the Ledger is personally assigned to an individual.", s: instructionBodyStyle }],
-        [{ v: "3. FINDING YOUR WORK", s: instructionTitleStyle }, { v: "Staff: Go to 'TODAYS_TASKS'. Click the filter arrow [v] on the 'Responsible Role' column. Uncheck everything except YOUR role. Now you have a clean personal to-do list.", s: instructionBodyStyle }],
-        [{ v: "4. THE DAILY PULSE", s: instructionTitleStyle }, { v: "When a task is done, type your initials in 'Done By'. The system will move the status to 'AWAITING MGR' or 'COMPLETED' automatically.", s: instructionBodyStyle }],
-        [{ v: "5. MANAGER VERIFY", s: instructionTitleStyle }, { v: "Managers: Look for Yellow Cells in the 'Verified By' column. These are high-risk steps that require your eyes. Once you type your initials, the mission is officially secure.", s: instructionBodyStyle }],
-        [{ v: "6. VIEWING HISTORY", s: instructionTitleStyle }, { v: "To see old records, simply use the filter arrow [v] on the 'Date' column in 'TODAYS_TASKS'. You can filter by any past date to review previous shift performance.", s: instructionBodyStyle }],
-        [{ v: "7. EVOLVING THE BIBLE", s: instructionTitleStyle }, { v: "To add a new permanent task, edit it in the 'SOP_LIBRARY'. Any changes there will flow into the daily execution ledger for all future entries.", s: instructionBodyStyle }],
+        [{ v: "1. THE ENGINE SETUP", s: instructionTitleStyle }, { v: "Go to 'BRANCH_SETUP' first. Use the Switchboard to toggle your facilities (Kitchen, Bar, etc.) to YES or NO. This automatically flags irrelevant tasks as Inactive in your daily ledger.", s: instructionBodyStyle }],
+        [{ v: "2. ASSIGNING HEROES", s: instructionTitleStyle }, { v: "Go to 'TEAM_HUB'. Type the real names of your staff next to their roles. This ensures every task in the Ledger is personally assigned to an individual for accountability.", s: instructionBodyStyle }],
+        [{ v: "3. FINDING YOUR WORK", s: instructionTitleStyle }, { v: "Staff: Go to 'TODAYS_TASKS'. Click the filter arrow [v] on the 'Responsible Role' column. Uncheck everything except YOUR role. This turns a 240-task list into your personal to-do list.", s: instructionBodyStyle }],
+        [{ v: "4. THE DAILY PULSE", s: instructionTitleStyle }, { v: "When a task is done, type your initials in 'Done By'. The system will move the status to 'AWAITING MGR' or 'COMPLETED' automatically. Don't skip the initials—it's your signature of quality.", s: instructionBodyStyle }],
+        [{ v: "5. MANAGER VERIFICATION", s: instructionTitleStyle }, { v: "Managers: Look for Yellow Cells in the 'Verified By' column. These are high-risk control points that require leadership sign-off. Once you type your initials, the mission status turns COMPLETED.", s: instructionBodyStyle }],
+        [{ v: "6. VIEWING HISTORY", s: instructionTitleStyle }, { v: "To review old records, use the filter arrow [v] on the 'Date' column in 'TODAYS_TASKS'. You can uncheck 'Today' and select any past date to audit previous shift performance.", s: instructionBodyStyle }],
+        [{ v: "7. EVOLVING THE BIBLE", s: instructionTitleStyle }, { v: "To add a permanent new task, edit the 'SOP_LIBRARY'. Any changes there will flow into the daily execution ledger for all future entries automatically.", s: instructionBodyStyle }],
         [],
-        [{ v: "PRO-TIP: Save a fresh copy of this file every month (e.g. ROCS_March_Bandra.xlsx) to keep your data clean and lightning fast.", s: { font: { italic: true, bold: true, color: { rgb: COLORS.INTEL_GREY } } } }]
+        [{ v: "PRO-TIP: Save a fresh copy of this file every month (e.g. ROCS_March_Bandra.xlsx) to keep your data organized and the file speed optimal.", s: { font: { italic: true, bold: true, color: { rgb: COLORS.INTEL_GREY } } } }]
     ];
     const guideWs = utils.aoa_to_sheet(guideData);
     guideWs['!cols'] = [{ wch: 30 }, { wch: 90 }];
