@@ -9,7 +9,7 @@ import { IconComponent, ComplianceIcon } from '@/components/icons';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-
+import { X, Check, ShieldAlert, ArrowRight } from 'lucide-react';
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
     const content = painPointsContent[packId as keyof typeof painPointsContent];
@@ -32,7 +32,6 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                         <Card key={index} className="flex flex-col h-full bg-background border-border shadow-sm">
                             <CardHeader className="flex flex-row items-center gap-4 space-y-0">
                                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
-                                    {/* Handle both SVG elements and icon name strings */}
                                     {typeof point.icon === 'string' ? (
                                         <IconComponent name={point.icon as string} className="h-6 w-6 text-accent"/>
                                     ) : (
@@ -53,6 +52,58 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
         </section>
     );
 }
+
+const ComparisonSection = () => (
+    <section className="w-full py-16 md:py-24 bg-alternate-background">
+        <div className="container px-4 md:px-6">
+            <div className="max-w-4xl mx-auto text-center mb-16 space-y-4">
+                <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Infrastructure Audit</Badge>
+                <h2 className="text-3xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">System vs. Chaos</h2>
+                <p className="text-secondary-text text-lg italic">The difference between a growing group and a struggling one is the system they run on.</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-3xl overflow-hidden max-w-5xl mx-auto">
+                <div className="bg-black/40 p-8 md:p-12 space-y-8">
+                    <h3 className="text-red-500 font-black uppercase tracking-widest text-sm flex items-center gap-2">
+                        <X className="w-5 h-5" /> Manual Management (WhatsApp & Verbal)
+                    </h3>
+                    <ul className="space-y-6">
+                        {[
+                            { t: "Staff forget critical tasks", d: "Standard procedures are only suggestions until they are written and signed." },
+                            { t: "Zero operational visibility", d: "You only find out about failures when a guest complains or an auditor arrives." },
+                            { t: "Manager-Dependent", d: "The operation collapses if the senior manager is sick or resigns." },
+                            { t: "Unquantified Revenue Leakage", d: "Small daily losses in prep and waste go untracked and accumulate." }
+                        ].map(item => (
+                            <li key={item.t} className="space-y-1">
+                                <p className="text-primary-text font-bold text-sm">{item.t}</p>
+                                <p className="text-xs text-white/40 italic">{item.d}</p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="bg-primary/5 p-8 md:p-12 space-y-8 relative">
+                    <div className="absolute top-0 right-0 p-6 opacity-10"><Check className="w-32 h-32 text-primary" /></div>
+                    <h3 className="text-primary font-black uppercase tracking-widest text-sm flex items-center gap-2">
+                        <Check className="w-5 h-5" /> MoreMeets™ Sovereign Engine
+                    </h3>
+                    <ul className="space-y-6">
+                        {[
+                            { t: "Binary Accountability", d: "Tasks are signed off daily. Compliance becomes a non-negotiable rhythm." },
+                            { t: "Live Executive Intelligence", d: "Know exactly which branch is 'Sizzling' or 'Cold' in 5 seconds." },
+                            { t: "Institutional Memory", d: "The system owns the knowledge. New hires execute like veterans from day one." },
+                            { t: "Loss Recovery Tracking", d: "Quantify every incident and fix the root cause to protect your P&L." }
+                        ].map(item => (
+                            <li key={item.t} className="space-y-1">
+                                <p className="text-primary-text font-bold text-sm">{item.t}</p>
+                                <p className="text-xs text-primary/40 italic font-medium">{item.d}</p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+);
 
 const GlobalStandardsSection = ({ pack }: { pack: PremiumPack }) => {
     if (!pack.globalStandards || !pack.globalStandards.standards) {
@@ -105,7 +156,7 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
           <div className="container px-4 md:px-6">
             <div className={cn("grid gap-6 lg:gap-12 xl:gap-16 items-center", hasValidHeroImage ? "lg:grid-cols-[1fr,400px]" : "grid-cols-1 max-w-4xl mx-auto")}>
               <div className="space-y-6">
-                <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.2em] font-black text-[10px]">{pack.category} • {pack.title}</Badge>
+                <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.2em] font-black text-[10px]">{pack.category} • Standalone Engine</Badge>
                 <h1 className="text-3xl font-black tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl font-headline text-primary-text uppercase italic leading-[1.1]">
                   {pack.heroHeadline || pack.title}
                 </h1>
@@ -116,7 +167,7 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
                   <div className="text-xs md:text-sm font-black uppercase tracking-[0.1em] text-white/40 flex items-center gap-2">
                     <span className="text-primary">{totalChecklists} MODULES</span>
                     <span className="w-1 h-1 rounded-full bg-white/20" />
-                    <span className="text-primary">{totalTasks}+ TECHNICAL TASKS</span>
+                    <span className="text-primary">{totalTasks}+ TECHNICAL CONTROL POINTS</span>
                   </div>
                 )}
                 <div className="mt-4 bg-background/50 border border-white/5 p-4 rounded-xl">
@@ -145,10 +196,10 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
               <div className="container px-2 md:px-6">
                   <div className="max-w-4xl mx-auto text-center mb-12">
                       <h2 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tighter font-headline uppercase italic">
-                          ZERO-AMBIGUITY EXECUTION FRAMEWORK
+                          ZERO-AMBIGUITY GOVERNANCE
                       </h2>
                       <p className="max-w-[700px] text-secondary-text text-base md:text-lg/relaxed mx-auto mt-4 font-medium">
-                          This pack contains {totalChecklists}+ modular checklists and {totalTasks}+ individual control points designed to eliminate the gaps where disasters are born.
+                          Deploy an 11-sheet operational data engine designed to eliminate the gaps where disasters are born. Run multiple branches from one standalone file.
                       </p>
                   </div>
 
@@ -167,6 +218,8 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
               </div>
           </section>
         )}
+
+        <ComparisonSection />
 
         <GlobalStandardsSection pack={pack} />
 

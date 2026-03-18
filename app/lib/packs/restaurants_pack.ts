@@ -5,9 +5,9 @@ export const restaurants: PremiumPack = {
     id: 'restaurants',
     title: "Restaurant Operations Control System (ROCS)",
     category: "Hospitality",
-    description: "The definitive governance framework for 5-star restaurant reliability. Includes 240+ technical SOPs, Shift Handovers, and ROI tracking.",
-    heroHeadline: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE",
-    heroSubheadline: "Built for COOs and Owners who take zero-risk governance and P&L protection seriously.",
+    description: "The definitive governance framework for 5-star restaurant reliability. Includes 240+ technical SOPs, Multi-Branch Switchboard, and ROI tracking.",
+    heroHeadline: "RESTAURANT OPERATIONAL CONSOLE v4.3",
+    heroSubheadline: "The Sovereign Standard for COOs and Owners who take zero-risk governance and P&L protection seriously. Stop managing manually.",
     pricingUrgency: "One health department closure or a single 'never event' costs 100x more than this entire system.",
     consultingAnchor: 5000,
     priceINR: 5999,
@@ -17,17 +17,17 @@ export const restaurants: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f4e6b12a-4422-48a0-a198-154332822a27',
     icon: "utensils-crossed",
-    badgeText: "V4.2 ENTERPRISE",
+    badgeText: "V4.3 SOVEREIGN",
     badgeVariant: "accent",
     bestseller: true,
     whoIsItFor: ["Restaurant Owners", "Group COOs", "Multi-Unit Managers", "Executive Chefs"],
     sampleItems: [
-        { text: "<strong>Eliminate</strong> memory-dependency with an Interval-Aware 365-day operational matrix.", icon: "calendar-check" },
-        { text: "<strong>Protect</strong> margins with an Integrated Incident Log and Financial Impact tracker.", icon: "banknote" },
-        { text: "<strong>Ensure</strong> continuity with a Shift Handover Bridge between Morning and Night teams.", icon: "history" },
-        { text: "<strong>Facility Switchboard</strong>: Toggle Bar, Garden, Valet, and Pool modules ON/OFF per branch.", icon: "layout-grid" },
-        { text: "<strong>Harden</strong> compliance with high-risk Verification layers for managers and chefs.", icon: "shield-check" },
-        { text: "<strong>Standardize</strong> training with 240+ technical SOPs and expert Trainer's Notes.", icon: "graduation-cap" }
+        { text: "<strong>Live Executive Intelligence</strong>: See which branch, team, and staff are performing in seconds with the 'Empire Mood' banner.", icon: "zap" },
+        { text: "<strong>2-Minute Reporting</strong>: Staff find their specific role tasks using integrated filters, ensuring 100% adoption without the paperwork fatigue.", icon: "timer" },
+        { text: "<strong>Multi-Branch Switchboard</strong>: Toggle Bar, Garden, Valet, and Pool modules ON/OFF to fit every unique outlet in your group.", icon: "layout-grid" },
+        { text: "<strong>Institutional Memory</strong>: Convert tribal knowledge into permanent infrastructure. New hires execute like veterans from Day 1.", icon: "history" },
+        { text: "<strong>Manager Target Verification</strong>: Highlighted 'Yellow Cells' show leadership exactly where to sign off on high-risk control points.", icon: "shield-check" },
+        { text: "<strong>Loss Recovery Engine</strong>: Track operational incidents and quantify their financial impact to protect your bottom-line margins.", icon: "banknote" }
     ],
     checklists: [
         {
