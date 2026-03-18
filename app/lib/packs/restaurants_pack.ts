@@ -22,12 +22,13 @@ export const restaurants: PremiumPack = {
     bestseller: true,
     whoIsItFor: ["Restaurant Owners", "Multi-branch operators", "Managers tired of chasing staff"],
     sampleItems: [
-        { text: "<strong>2-Minute Daily Reporting</strong>: Your team updates everything in seconds. No long reports. 100% adoption.", icon: "timer" },
-        { text: "<strong>Full Operational Visibility</strong>: See which branch, team, and staff member is performing instantly from your phone.", icon: "zap" },
-        { text: "<strong>No More Chasing Staff</strong>: Highlighted 'Yellow Targets' show managers exactly what needs attention—no more manual auditing.", icon: "shield-check" },
-        { text: "<strong>Built-in Training</strong>: New hires know exactly what to do from Day 1. tribal knowledge is converted into infrastructure.", icon: "history" },
-        { text: "<strong>Stop Revenue Leakage</strong>: Track daily mistakes and incidents to stop the 2-5% profit bleed permanently.", icon: "banknote" },
-        { text: "<strong>Multi-Branch Switchboard</strong>: Run your entire group from one file. Toggle modules ON/OFF to fit each unique outlet.", icon: "layout-grid" }
+        { text: "<strong>2-Minute Daily Pulse</strong>: Your team updates everything in seconds. No long reports. 100% staff adoption.", icon: "timer" },
+        { text: "<strong>Live Operational Visibility</strong>: See which branch, team, and staff member is performing instantly from your phone.", icon: "zap" },
+        { text: "<strong>High-Risk Verification</strong>: Highlighted 'Yellow Targets' show managers exactly what needs attention—no more manual auditing.", icon: "shield-check" },
+        { text: "<strong>Gamified Competition</strong>: Driven by the 'Empire Mood' engine. Recognize top performers and branches with live streak tracking.", icon: "trophy" },
+        { text: "<strong>Consequences of Failure</strong>: Every task lists the real-world risk, turning mechanical checking into intentional compliance.", icon: "shield-alert" },
+        { text: "<strong>Onboarding Safety Net</strong>: New staff follow instructions and Trainer's Notes built into the file. tribal knowledge is now infrastructure.", icon: "history" },
+        { text: "<strong>Multi-Branch Switchboard</strong>: Run your entire group from one master file. Toggle modules ON/OFF to fit each unique outlet.", icon: "layout-grid" }
     ],
     checklists: [
         {
