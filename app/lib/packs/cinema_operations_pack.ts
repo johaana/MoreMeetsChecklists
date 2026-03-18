@@ -3,7 +3,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 export const cinema_operations_pack: PremiumPack = {
     id: 'cinema_operations_pack',
-    title: "Cinema & Multiplex Operations Pack",
+    title: "Cinema Operating System (Sovereign v4.3)",
     priceINR: 5999,
     priceUSD: 79,
     competitorPriceUSD: 599,
@@ -11,22 +11,23 @@ export const cinema_operations_pack: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/0acf829c-e492-4f66-ae74-0231bfe0bc82',
     category: "Entertainment & Events",
-    description: "Stop catastrophic fire tragedies, projection failures, and viral hygiene scandals: before they destroy your brand.",
-    heroHeadline: "Stop catastrophic fire tragedies and projection failures.",
-    heroSubheadline: "Built for multiplex managers who take zero-risk technical and operational integrity seriously.",
-    pricingUrgency: "A single blocked exit or one technical failure during a blockbuster opening costs 100x more than this entire system.",
+    description: "No monthly subscriptions. No SaaS dependency. One-time investment for a lifetime of control. Sovereign v4.3 is the definitive plug for projection failures and safety gaps.",
+    heroHeadline: "Stop Projection Failures and Catastrophic Safety Gaps",
+    heroSubheadline: "Track technical readiness, monitor auditorium standards, and stay in control of guest safety—even when you aren’t on property.",
+    pricingUrgency: "A single projection failure during a blockbuster opening or one safety lapse costs 100x more than this entire system.",
     consultingAnchor: 5000,
     icon: "popcorn",
-    badgeText: "High Traffic",
+    badgeText: "V4.3 SOVEREIGN",
     badgeVariant: "accent",
-    whoIsItFor: ["Cinema Owners", "Multiplex Managers", "Heads of Operations", "F&B Managers (Cinema)"],
+    whoIsItFor: ["Multiplex Owners", "Heads of Cinema Operations", "General Managers", "Technical Directors", "F&B Directors"],
     sampleItems: [
-        { text: "<strong>Guarantee</strong> a perfect show with pre-screening checklists for projection, sound, and lighting.", icon: "projector" },
-        { text: "<strong>Prevent</strong> fire tragedies with rigorous audits for emergency exits, alarms, and evacuation drills.", icon: "siren" },
-        { text: "<strong>Serve</strong> safe and quality food with F&B concession stand hygiene and inventory SOPs.", icon: "utensils" },
-        { text: "<strong>Improve</strong> profitability with checklists for ticketing, cash handling, and reconciliation.", icon: "ticket" },
-        { text: "<strong>Enhance</strong> guest experience with protocols for auditorium cleaning and seat maintenance.", icon: "sparkles" },
-        { text: "<strong>Manage</strong> your facility effectively with SOPs for housekeeping, security, and maintenance.", icon: "building" }
+        { text: "<strong>2-Minute Technical Pulse</strong>: Projectionists and floor staff update status in seconds. Zero-friction daily reporting.", icon: "timer" },
+        { text: "<strong>Multi-Screen Switchboard</strong>: Manage 1 to 20 screens from one master file. Toggle facilities (Bar, VIP, IMAX) ON or OFF.", icon: "layout-grid" },
+        { text: "<strong>High-Risk Verification</strong>: Highlighted 'Yellow Targets' show managers exactly what needs sign-off—from fire exits to projector focus.", icon: "shield-check" },
+        { text: "<strong>Show-Time Readiness</strong>: Bulletproof pre-screening protocols to ensure zero-fail projection, sound, and lighting.", icon: "projector" },
+        { text: "<strong>Empire Mood Engine</strong>: Drive team discipline with live recognition and healthy competition between cinema branches.", icon: "trophy" },
+        { text: "<strong>Institutional Memory</strong>: Capture technical 'know-how' so new operators are audit-ready and professional from Day 1.", icon: "history" },
+        { text: "<strong>Sovereign Infrastructure</strong>: No recurring SaaS fees. You own your operational data and the control system forever.", icon: "lock" }
     ],
     checklists: [
         {
@@ -75,7 +76,7 @@ export const cinema_operations_pack: PremiumPack = {
             frequency: "Daily",
             role: "F&B Supervisor",
             summary: "Ensures food and beverages served are safe, hygienic, and high quality.",
-            icon: "utensils-crossed",
+            icon: "utensils",
             tasks: [
                 { id: "FNB-CIN-01", description: "Log temperatures of all food holding units (hot and cold).", priority: "High", riskLevel: "High", consequence: "Food held in the \"danger zone\" can cause food poisoning.", proof: "Temperature Log" },
                 { id: "FNB-CIN-02", description: "Check expiry dates of all food products and ingredients.", priority: "High", riskLevel: "High", consequence: "Selling expired food is a major health and legal violation.", proof: "Expiry Date Sweep" },
