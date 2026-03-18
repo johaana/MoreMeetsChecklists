@@ -5,9 +5,9 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * ROCS v4.3 Master - SOVEREIGN PRECISION EDITION
+ * ROCS v4.3 Master - SOVEREIGN SALEABLE EDITION
  * Features: Hardened Status Logic, Inactive Module Grey-out, Symmetric Zero-Clipping.
- * Replaces ARCHIVE with "HOW THIS WORKS" Guide.
+ * Content: "Ready-to-Fill" Ghost Data for commercial sale.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -18,8 +18,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const wb = utils.book_new();
     const startDate = new Date(); 
     
-    const BUYER_EMAIL = "CLIENT@RESTAURANTGROUP.COM";
-    const ORDER_ID = "MM-ORD-7721-REST";
+    const BUYER_EMAIL = "[BUYER EMAIL]";
+    const ORDER_ID = "MM-ORD-[ID]";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -139,6 +139,11 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
+    const ghostInputStyle = {
+        ...inputStyle,
+        font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED }, italic: true }
+    };
+
     const managerYellowStyle = {
         ...inputStyle,
         fill: { fgColor: { rgb: COLORS.MGR_YELLOW } }
@@ -215,9 +220,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ],
         [
             { v: "Today's Star:", s: chamberLabelStyle },
-            { v: "🎖️ Rahul (Bandra)", s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN } } } },
+            { v: "🎖️ [Name]", s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN } } } },
             { v: "Top Streak:", s: chamberLabelStyle },
-            { v: "🏆 Bandra (14 Days)", s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.ACCENT_GOLD } } } },
+            { v: "🏆 [Branch]", s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.ACCENT_GOLD } } } },
             { v: "Open Incidents:", s: chamberLabelStyle },
             { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "✅ NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.RISK_RED } } } }
         ],
@@ -275,8 +280,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
         [],
         [], facilityHeaders,
-        [{ v: 1, s: dataStyleCenter }, { v: "Bandra Main", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }],
-        [{ v: 2, s: dataStyleCenter }, { v: "Ghatkopar West", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "YES", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }, { v: "NO", s: inputStyle }]
+        [{ v: 1, s: dataStyleCenter }, { v: "Type Branch 1 Name", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }],
+        [{ v: 2, s: dataStyleCenter }, { v: "Type Branch 2 Name", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }]
     ];
     const setupWs = utils.aoa_to_sheet(branchSetupData);
     setupWs['!cols'] = [12, 35, 10, 10, 10, 10, 10, 10, 15, 10, 10, 10].map(w => ({ wch: w }));
@@ -310,7 +315,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
                 mData.push([
                     { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
-                    { v: bCode === 1 ? "Bandra Main" : "Ghatkopar West", s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : dataStyleCenter },
+                    { t: 'f', f: `IFERROR(CHOOSE(${bCode}, 'BRANCH_SETUP'!$B$6, 'BRANCH_SETUP'!$B$7), "Branch ${bCode}")`, s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : dataStyleCenter },
                     { v: c.role, s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : dataStyleCenter },
                     { t: 'f', f: personFormula, s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : dataStyleCenter },
                     { v: t.id, s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : dataStyleCenter },
@@ -354,9 +359,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         pData.push([
             { v: idx + 1, s: dataStyleCenter },
             { v: role, s: dataStyleLeft },
-            { v: "", s: inputStyle }, 
-            { v: "Bandra Main", s: inputStyle },
-            { v: "", s: inputStyle },
+            { v: "Type Person Name", s: ghostInputStyle }, 
+            { v: "Type Branch Name", s: ghostInputStyle },
+            { v: "Contact Details", s: ghostInputStyle },
             { v: "ACTIVE", s: dataStyleCenter }
         ]);
     });
@@ -405,15 +410,15 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const rData = [
         [], [{v:"COST & SAVINGS TRACKER", s:{font:{sz:18, bold:true}}}], [], 
         [{v:"Risk Category", s:headerStyle}, {v:"Impact per Event (₹)", s:headerStyle}, {v:"Frequency / Yr", s:headerStyle}, {v:"Projected Annual Loss (₹)", s:headerStyle}, {v:"Mitigation Status", s:headerStyle}],
-        [{v:"Food Spoilage (Cold Chain Failure)", s:dataStyleLeft}, {v:50000, s:inputStyle}, {v:12, s:inputStyle}, {t:'f', f:'B6*C6', s:dataStyleCenter}, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [{v:"Regulatory Fines (Health/Statutory)", s:dataStyleLeft}, {v:200000, s:inputStyle}, {v:1, s:inputStyle}, {t:'f', f:'B7*C7', s:dataStyleCenter}, {v:"PROTECTED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
+        [{v:"Food Spoilage (Cold Chain Failure)", s:dataStyleLeft}, {v:50000, s:ghostInputStyle}, {v:12, s:ghostInputStyle}, {t:'f', f:'B6*C6', s:dataStyleCenter}, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [{v:"Regulatory Fines (Health/Statutory)", s:dataStyleLeft}, {v:200000, s:ghostInputStyle}, {v:1, s:ghostInputStyle}, {t:'f', f:'B7*C7', s:dataStyleCenter}, {v:"PROTECTED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
     ];
     const rWs = utils.aoa_to_sheet(rData);
     rWs['!cols'] = [40, 25, 25, 25, 20].map(w => ({ wch: w }));
     addAppHeader(rWs, 'E');
     utils.book_append_sheet(wb, rWs, "COST_SAVINGS_TRACKER");
 
-    // --- 10. HOW THIS WORKS (RE-DESIGNED FOR SPACE) ---
+    // --- 10. HOW THIS WORKS ---
     const guideData = [
         [], 
         [{ v: "👨‍🍳 THE SOVEREIGN SYSTEM MANUAL", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
