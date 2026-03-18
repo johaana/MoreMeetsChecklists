@@ -12,61 +12,61 @@ export const FaqSection = () => (
                      <AccordionItem value="item-1">
                         <AccordionTrigger>We already have SOPs. Why do we need MoreMeets?</AccordionTrigger>
                         <AccordionContent>
-                           Most SOPs are outdated, inconsistent, or not audit-ready. MoreMeets upgrades your existing system into a <strong>globally compliant, structured, and inspection-ready framework</strong>. It delivers a complete operational system—policies, risk controls, and workflows—that strengthens, not just replaces, what you have.
+                           Most SOPs are outdated, inconsistent, or not audit-ready "dead documents." MoreMeets is not a document; it is a <strong>live operational engine</strong>. It upgrades your existing knowledge into a structured, multi-branch framework that mandates daily discipline and provides instant executive visibility.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-2">
                         <AccordionTrigger>Can't I just use AI like ChatGPT to create these checklists?</AccordionTrigger>
                         <AccordionContent>
-                          You can, but it's a significant risk. Think of AI like a brilliant but inexperienced intern. It can generate a generic, plausible-sounding list. However, our checklists are more like a seasoned COO's playbook. They are not just 'written'; they are <strong>engineered based on deep research into global best practices, industry-specific compliance standards (like ISO and HACCP), and analysis of real-world operational failures.</strong> An AI-generated checklist doesn't know what it doesn't know. It can miss critical safety steps, create non-compliant workflows, and has no concept of legal or financial liability. Our packs provide a verified, audit-ready framework that you can trust when it matters most.
+                          You can, but it's a significant operational risk. AI generates "plausible-sounding" lists based on internet data, but it lacks <strong>forensic engineering</strong>. Our systems are built on over 30 years of high-stakes auditing and analysis of real-world operational failures (fires, outbreaks, heists). An AI-generated checklist doesn't know the specific "Consequences of Failure" or the mandatory "Yellow Target" verification points needed to actually prevent a disaster.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-3">
                         <AccordionTrigger>Are these SOPs globally compliant and audit-ready?</AccordionTrigger>
                         <AccordionContent>
-                           Absolutely. Our packs reference ISO, OSHA, FSSAI, and other global standards. Each checklist includes specific <strong>audit controls, evidence fields, and documentation flows</strong> designed to meet the rigorous demands of both internal and external inspections.
+                           Absolutely. Every Sovereign pack is mapped to global standards including <strong>ISO, HACCP, OSHA, JCI, and FSSAI</strong>. Each task includes mandatory "Proof of Evidence" fields designed to command respect from official inspectors and insurance auditors.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-4">
                         <AccordionTrigger>Will this system fit our unique workflows?</AccordionTrigger>
                         <AccordionContent>
-                            Yes. Over 80% of operational best practices are universal. We provide the <strong>globally benchmarked structure</strong>, and you can easily customize the last 20% to fit your specific organizational needs.
+                            Yes. Over 80% of operational best practices are universal. We provide the <strong>globally benchmarked infrastructure</strong>, and since the file is a standard Excel/Google Sheets engine, you can easily customize the final 20% to fit your brand's specific terminology and layout.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-11">
+                        <AccordionTrigger>Why is this an Excel file and not a dedicated app?</AccordionTrigger>
+                        <AccordionContent>
+                          Apps create "SaaS Friction." They require logins, training, and monthly subscription bills. Excel is <strong>universally understood, 100% private, and works offline.</strong> It allows your team to start reporting in 2 minutes without a setup phase. Plus, you own the engine forever—no monthly fees to access your own data.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-9">
                         <AccordionTrigger>What does "expert customization" mean?</AccordionTrigger>
                         <AccordionContent>
-                          Each pack includes one <strong>Expert Customization</strong> session to align it with your specific brand, format, or unique internal workflow. Your files are available instantly after purchase, and our team coordinates the alignment session separately to ensure the toolkit fits your organization perfectly.
+                          Each pack includes one <strong>Expert Customization</strong> session. After purchase, our team works with you to align the file with your specific brand colors, unique facility modules, or internal department names, ensuring the toolkit fits your organization like a glove.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-5">
                         <AccordionTrigger>What ROI can we expect from implementing this?</AccordionTrigger>
                         <AccordionContent>
-                            Clients report <strong>fewer operational mistakes, faster onboarding, improved audit scores, and reduced compliance risk</strong>. Ultimately, preventing a single major safety or compliance failure can save more than the cost of our entire library.
-                        </AccordionContent>
-                    </AccordionItem>
-                     <AccordionItem value="item-10">
-                        <AccordionTrigger>Will I be charged tax?</AccordionTrigger>
-                        <AccordionContent>
-                          Taxes, if applicable, are applied automatically at checkout by our payment processor as per local regulations. Prices shown may be inclusive or exclusive of tax depending on your region.
+                            Operational chaos typically leaks <strong>2% to 5% of gross revenue</strong> through waste, theft, and downtime. By engineering consistency, our clients recover this loss immediately. Preventing a single safety incident or regulatory fine pays for the entire library 100 times over.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-6">
                         <AccordionTrigger>Will our team actually use this?</AccordionTrigger>
                         <AccordionContent>
-                           Yes. Our SOPs are written in simple, actionable language. They include <strong>Trainer’s Notes</strong> and real-world examples that make daily adoption effortless and turn managers into expert coaches.
+                           Yes, because we follow the <strong>2-Minute Pulse rule.</strong> Your team only sees the tasks assigned to their specific role. They update their status in seconds at the end of a shift. It's built for speed, not paperwork.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-7">
-                        <AccordionTrigger>How does this reduce dependency on key managers?</AccordionTrigger>
+                        <AccordionTrigger>What happens when an experienced manager resigns?</AccordionTrigger>
                         <AccordionContent>
-                            MoreMeets captures expert knowledge into a structured system. This means new and existing staff can perform critical tasks with the <strong>same accuracy and consistency as your top performers</strong>, reducing your reliance on any single individual.
+                            This is our biggest USP. MoreMeets converts "Tribal Knowledge" into <strong>Institutional Memory</strong>. When a hero manager leaves, their standards stay in the system. The new hire simply follows the built-in instructions and "Trainer's Notes," ensuring the standard never leaves with the person.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-8">
                         <AccordionTrigger>Can my internal team build this instead?</AccordionTrigger>
                         <AccordionContent>
-                           They can, but building a complete, compliant SOP library takes <strong>3–6 months of cross-functional effort.</strong> MoreMeets gives you a better outcome instantly, at a fraction of the cost.
+                           Building a multi-branch, logically-aware data engine with forensically-vetted protocols takes <strong>3–6 months of senior leadership time.</strong> MoreMeets gives you a better result instantly, at a fraction of the cost of one week of a consultant's time.
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
