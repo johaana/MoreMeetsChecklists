@@ -207,7 +207,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { v: "▶ HOW THIS WORKS", l: { Target: "#'HOW_THIS_WORKS'!A1" }, s: tileStyle }, null
         ],
         [],
-        [{ t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.9, "🔥 SIZZLING - PERFECT EXECUTION!", IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.6, "🥘 SIMMERING - BUILDING MOMENTUM", "🧊 COLD - TURN UP THE HEAT!")), "EMPIRE MOOD: 🧊 LOADING...")`, s: moodBannerStyle }, null, null, null, null, null],
+        [{ t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.9, "🔥 SIZZLING - PERFECT EXECUTION!", IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKSOTE'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.6, "🥘 SIMMERING - BUILDING MOMENTUM", "🧊 COLD - TURN UP THE HEAT!")), "EMPIRE MOOD: 🧊 LOADING...")`, s: moodBannerStyle }, null, null, null, null, null],
         [
             { v: "🎖️ TEAM GLORY", s: chamberHeaderStyle }, null, 
             { v: "⚡ MOMENTUM", s: chamberHeaderStyle }, null,
@@ -413,25 +413,54 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addAppHeader(rWs, 'E');
     utils.book_append_sheet(wb, rWs, "COST_SAVINGS_TRACKER");
 
-    // --- 10. HOW THIS WORKS (SYSTEM MANUAL) ---
+    // --- 10. HOW THIS WORKS (RE-DESIGNED FOR SPACE) ---
     const guideData = [
         [], 
-        [{ v: "👨‍🍳 THE SOVEREIGN SYSTEM MANUAL", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [{ v: "👨‍🍳 THE SOVEREIGN SYSTEM MANUAL", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [{ v: "The Definitive Protocol for Standardized Restaurant Operations", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [{ v: "SECTION", s: headerStyle }, { v: "ACTION STEPS & SYSTEM PROTOCOLS", s: headerStyle }],
-        [{ v: "1. THE ENGINE SETUP", s: instructionTitleStyle }, { v: "Go to 'BRANCH_SETUP' first. Use the Switchboard to toggle your facilities (Kitchen, Bar, etc.) to YES or NO. This automatically flags irrelevant tasks as Inactive in your daily ledger.", s: instructionBodyStyle }],
-        [{ v: "2. ASSIGNING HEROES", s: instructionTitleStyle }, { v: "Go to 'TEAM_HUB'. Type the real names of your staff next to their roles. This ensures every task in the Ledger is personally assigned to an individual for accountability.", s: instructionBodyStyle }],
-        [{ v: "3. FINDING YOUR WORK", s: instructionTitleStyle }, { v: "Staff: Go to 'TODAYS_TASKS'. Click the filter arrow [v] on the 'Responsible Role' column. Uncheck everything except YOUR role. This turns a 240-task list into your personal to-do list.", s: instructionBodyStyle }],
-        [{ v: "4. THE DAILY PULSE", s: instructionTitleStyle }, { v: "When a task is done, type your initials in 'Done By'. The system will move the status to 'AWAITING MGR' or 'COMPLETED' automatically. Don't skip the initials—it's your signature of quality.", s: instructionBodyStyle }],
-        [{ v: "5. MANAGER VERIFICATION", s: instructionTitleStyle }, { v: "Managers: Look for Yellow Cells in the 'Verified By' column. These are high-risk control points that require leadership sign-off. Once you type your initials, the mission status turns COMPLETED.", s: instructionBodyStyle }],
-        [{ v: "6. VIEWING HISTORY", s: instructionTitleStyle }, { v: "To review old records, use the filter arrow [v] on the 'Date' column in 'TODAYS_TASKS'. You can uncheck 'Today' and select any past date to audit previous shift performance.", s: instructionBodyStyle }],
-        [{ v: "7. EVOLVING THE BIBLE", s: instructionTitleStyle }, { v: "To add a permanent new task, edit the 'SOP_LIBRARY'. Any changes there will flow into the daily execution ledger for all future entries automatically.", s: instructionBodyStyle }],
+        
+        [{ v: "1. THE ENGINE SETUP", s: instructionTitleStyle }, { v: "Go to 'BRANCH_SETUP' first. Use the Switchboard to toggle your facilities (Kitchen, Bar, etc.) to YES or NO. This automatically flags irrelevant tasks as Inactive in your daily ledger, keeping your team focused only on what exists.", s: instructionBodyStyle }],
         [],
-        [{ v: "PRO-TIP: Save a fresh copy of this file every month (e.g. ROCS_March_Bandra.xlsx) to keep your data organized and the file speed optimal.", s: { font: { italic: true, bold: true, color: { rgb: COLORS.INTEL_GREY } } } }]
+        
+        [{ v: "2. ASSIGNING HEROES", s: instructionTitleStyle }, { v: "Go to 'TEAM_HUB'. Type the real names of your staff next to their roles. This ensures every task in the Ledger is personally assigned to an individual. If a role is empty, the task is an 'orphan'—give it a parent for accountability.", s: instructionBodyStyle }],
+        [],
+        
+        [{ v: "3. FINDING YOUR WORK", s: instructionTitleStyle }, { v: "Staff: Go to 'TODAYS_TASKS'. Click the filter arrow [v] on the 'Responsible Role' column. Uncheck everything except YOUR role. This turns a 240-task list into your personal to-do list in one click.", s: instructionBodyStyle }],
+        [],
+        
+        [{ v: "4. THE DAILY PULSE", s: instructionTitleStyle }, { v: "When a task is done, type your initials in 'Done By'. The system will move the status to 'AWAITING MGR' or 'COMPLETED' automatically. Don't skip the initials—it is your digital signature of professional excellence.", s: instructionBodyStyle }],
+        [],
+        
+        [{ v: "5. MANAGER VERIFICATION", s: instructionTitleStyle }, { v: "Managers: Look for Yellow Cells in the 'Verified By' column. These are high-risk control points that require leadership sign-off. Once you type your initials, the mission status turns COMPLETED. This is your final quality gate.", s: instructionBodyStyle }],
+        [],
+        
+        [{ v: "6. THE SHIFT BRIDGE", s: instructionTitleStyle }, { v: "Use 'SHIFT_HANDOVER' to communicate between Morning and Night teams. Log outstanding prep, maintenance issues, or VIP arrivals. This prevents information loss during shift changes.", s: instructionBodyStyle }],
+        [],
+        
+        [{ v: "7. INCIDENT COMMAND", s: instructionTitleStyle }, { v: "If a safety, hygiene, or legal incident occurs, log it immediately in the 'INCIDENT_TRACKER'. Include the estimated financial impact. This creates the 'Black Box' data needed for insurance defense and group learning.", s: instructionBodyStyle }],
+        [],
+        
+        [{ v: "8. VIEWING HISTORY", s: instructionTitleStyle }, { v: "To review old records, use the filter arrow [v] on the 'Date' column in 'TODAYS_TASKS'. Uncheck 'Today' and select any past date to audit previous shift performance or prove compliance during an inspection.", s: instructionBodyStyle }],
+        [],
+        
+        [{ v: "9. EVOLVING THE BIBLE", s: instructionTitleStyle }, { v: "To add a permanent new task, edit the 'SOP_LIBRARY'. Any changes there will flow into the daily execution ledger for all future entries automatically. Your system should get smarter every month.", s: instructionBodyStyle }],
+        [],
+        
+        [{ v: "10. TRACKING THE ROI", s: instructionTitleStyle }, { v: "Go to 'COST_SAVINGS_TRACKER'. Input the estimated cost of a single failure (e.g., a fridge breakdown). The system calculates your annual 'At-Risk' value, showing exactly how much money your discipline is protecting.", s: instructionBodyStyle }],
+        [],
+        
+        [{ v: "PRO-TIP: Save a fresh copy of this file every month (e.g. ROCS_March_Bandra.xlsx) to keep your data organized and the file speed optimal. Historical data stays safe in previous files.", s: { font: { italic: true, bold: true, color: { rgb: COLORS.INTEL_GREY } } } }]
     ];
+
     const guideWs = utils.aoa_to_sheet(guideData);
-    guideWs['!cols'] = [{ wch: 30 }, { wch: 90 }];
-    guideWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 1 } }, { s: { r: 12, c: 0 }, e: { r: 12, c: 1 } }];
+    guideWs['!cols'] = [{ wch: 35 }, { wch: 100 }];
+    guideWs['!merges'] = [
+        { s: { r: 1, c: 0 }, e: { r: 1, c: 1 } }, 
+        { s: { r: 2, c: 0 }, e: { r: 2, c: 1 } },
+        { s: { r: 24, c: 0 }, e: { r: 24, c: 1 } }
+    ];
     addAppHeader(guideWs, 'B');
     utils.book_append_sheet(wb, guideWs, "HOW_THIS_WORKS");
 
