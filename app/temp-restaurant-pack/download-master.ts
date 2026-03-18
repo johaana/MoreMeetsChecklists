@@ -149,6 +149,12 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         fill: { fgColor: { rgb: COLORS.MGR_YELLOW } }
     };
 
+    const naGreyStyle = {
+        ...dataStyleCenter,
+        fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } },
+        font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED }, italic: true }
+    };
+
     const inactiveRowStyle = {
         ...dataStyleLeft,
         fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } },
@@ -321,7 +327,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                     { v: t.id, s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : dataStyleCenter },
                     { v: isActive === "NO" ? `N/A - [${c.title.toUpperCase()}] INACTIVE` : t.description, s: isActive === "NO" ? inactiveRowStyle : dataStyleLeft },
                     { v: "", s: isActive === "NO" ? { ...inputStyle, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : inputStyle },
-                    { v: t.priority === 'High' ? "" : "N/A", s: isActive === "NO" ? { ...inputStyle, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : (t.priority === 'High' ? managerYellowStyle : inputStyle) },
+                    { v: t.priority === 'High' ? "" : "N/A", s: isActive === "NO" ? { ...inputStyle, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : (t.priority === 'High' ? managerYellowStyle : naGreyStyle) },
                     { t: 'f', f: statusFormula, s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : { ...dataStyleCenter, font: { bold: true } } },
                     { v: c.frequency, s: intelStyle },
                     { v: t.priority, s: intelStyle },
