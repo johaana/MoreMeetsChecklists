@@ -7,6 +7,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * ROCS v4.3 Master - SOVEREIGN PRECISION EDITION
  * Features: Hardened Status Logic, Teal/Amber Conditional Formatting, Zero-Clipping Grid.
+ * Includes "How This Works" System Manual.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -35,7 +36,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         INPUT_ZONE: "FEFCE8",
         CONSOLE_BG: "F1F5F9",
         CHAMBER_BG: "F8FAFC",
-        MGR_YELLOW: "FFFF99"
+        MGR_YELLOW: "MGR_YELLOW"
     };
 
     const borderStyle = {
@@ -138,6 +139,16 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
+    const instructionTitleStyle = {
+        font: { ...baseFont, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } },
+        alignment: { vertical: 'center' }
+    };
+
+    const instructionBodyStyle = {
+        font: { ...baseFont, sz: 10 },
+        alignment: { wrapText: true, vertical: 'top' }
+    };
+
     const addAppHeader = (ws: WorkSheet, endCol: string = 'K') => {
         utils.sheet_add_aoa(ws, [[{ 
             v: "◀ BACK TO HOME CONSOLE", 
@@ -181,8 +192,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ],
         [
             { v: "▶ MASTER SOPs", l: { Target: "#'SOP_LIBRARY'!A1" }, s: tileStyle }, null, 
-            { v: "▶ ARCHIVE", l: { Target: "#'ARCHIVE'!A1" }, s: tileStyle }, null, 
-            { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }
+            { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }, null, 
+            { v: "▶ HOW THIS WORKS", l: { Target: "#'HOW_THIS_WORKS'!A1" }, s: tileStyle }, null
         ],
         [],
         [{ t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.9, "🔥 SIZZLING - PERFECT EXECUTION!", IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.6, "🥘 SIMMERING - BUILDING MOMENTUM", "🧊 COLD - TURN UP THE HEAT!")), "EMPIRE MOOD: 🧊 LOADING...")`, s: moodBannerStyle }, null, null, null, null, null],
@@ -210,7 +221,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "▶ VIEW BRANCH INTELLIGENCE & PERFORMANCE ANALYTICS", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: bigActionButtonStyle }, null, null, null, null, null],
         [],
         [{ v: "USER GUIDE: Use the [Filter Arrows] in 'Today's Tasks' to see only YOUR role and YOUR name.", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [{ v: `REGISTERED TO: ${BUYER_EMAIL} | LICENSE: ENTERPRISE`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'left' } } }]
+        [{ v: `History & Version Control: [ _AUTH_CORE_ ] | REGISTERED TO: ${BUYER_EMAIL}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'left' } } }]
     ];
 
     const homeWs = utils.aoa_to_sheet(homeData);
@@ -261,7 +272,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addAppHeader(setupWs, 'L');
     utils.book_append_sheet(wb, setupWs, "BRANCH_SETUP");
 
-    // --- 03. TODAYS_TASKS ( MISSION LEDGER ) ---
+    // --- 03. TODAYS_TASKS ---
     const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, 
         { v: "Responsible Role", s: headerStyle }, { v: "Assigned Person (Auto)", s: headerStyle },
@@ -283,15 +294,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                 const verifiedByCell = `H${rowIdx}`;
                 const roleCell = `C${rowIdx}`;
                 
-                // --- HARDENED STATUS ENGINE ---
                 const statusFormula = `IF(LEN(TRIM(${completedByCell}))=0, "PENDING", IF(AND(LEN(TRIM(${verifiedByCell}))=0, ${verifiedByCell}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
-                
-                const verifiedByValue = t.priority === 'High' || t.riskLevel === 'High' ? "" : "N/A";
                 const personFormula = `IFERROR(VLOOKUP(${roleCell}, 'TEAM_HUB'!B:C, 2, FALSE), "[UNASSIGNED]")`;
-
-                const taskDescription = isActive === "NO" 
-                    ? `N/A - [${c.title.toUpperCase()}] INACTIVE` 
-                    : t.description;
 
                 mData.push([
                     { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
@@ -299,9 +303,9 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                     { v: c.role, s: dataStyleCenter },
                     { t: 'f', f: personFormula, s: dataStyleCenter },
                     { v: t.id, s: dataStyleCenter },
-                    { v: taskDescription, s: dataStyleLeft },
+                    { v: isActive === "NO" ? `N/A - [${c.title.toUpperCase()}] INACTIVE` : t.description, s: dataStyleLeft },
                     { v: "", s: inputStyle },
-                    { v: verifiedByValue, s: (verifiedByValue === "" ? { ...inputStyle, fill: { fgColor: { rgb: COLORS.MGR_YELLOW } } } : dataStyleCenter) },
+                    { v: t.priority === 'High' ? "" : "N/A", s: inputStyle },
                     { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true } } },
                     { v: c.frequency, s: intelStyle },
                     { v: t.priority, s: intelStyle },
@@ -316,26 +320,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     mWs['!cols'] = [15, 25, 25, 30, 10, 65, 20, 20, 20, 12, 12, 45, 50].map(w => ({ wch: w }));
     addAppHeader(mWs, 'M');
     mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
-    
-    // --- TEAL/AMBER CONDITIONAL FORMATTING ---
-    mWs['!conditional_formatting'] = [
-        {
-            ref: `I5:I${mData.length}`,
-            rules: [
-                {
-                    type: "expression",
-                    formula: `I5="COMPLETED"`,
-                    style: { fill: { fgColor: { rgb: COLORS.TEAL_SUCCESS } }, font: { color: { rgb: COLORS.WHITE }, bold: true } }
-                },
-                {
-                    type: "expression",
-                    formula: `I5="AWAITING MGR"`,
-                    style: { fill: { fgColor: { rgb: COLORS.ACCENT_GOLD } }, font: { color: { rgb: "000000" }, bold: true } }
-                }
-            ]
-        }
-    ];
-    
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
 
     // --- 04. BUSINESS_HEALTH ---
@@ -344,17 +328,11 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [{ v: "GROUP KPIs", s: groupHeaderStyle }, null, null],
         [{ v: "Operational KPI", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Target Threshold", s: headerStyle }],
         [{ v: "Group Shift Progress", s: dataStyleLeft }, { t:'f', f:`IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*")), "0%"), "0%")`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
-        [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }],
-        [],
-        [{ v: "BRANCH INTELLIGENCE", s: groupHeaderStyle }, null, null, null],
-        [{ v: "Branch Name", s: headerStyle }, { v: "Progress", s: headerStyle }, { v: "Open Incidents", s: headerStyle }, { v: "Risk Profile", s: headerStyle }],
-        [{ v: "Bandra Main", s: dataStyleLeft }, { t: 'f', f: `IFERROR(TEXT(COUNTIFS('TODAYS_TASKS'!B:B, "Bandra Main", 'TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!B:B, "Bandra Main", 'TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>")), "0%"), "0%")`, s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('INCIDENT_TRACKER'!C:C, "Bandra Main", 'INCIDENT_TRACKER'!G:G, "OPEN")`, s: dataStyleCenter }, { t: 'f', f: `IF(COUNTIFS('INCIDENT_TRACKER'!C:C, "Bandra Main", 'INCIDENT_TRACKER'!G:G, "OPEN")=0, "SECURED", "ALERT")`, s: dataStyleCenter }],
-        [{ v: "Ghatkopar West", s: dataStyleLeft }, { t: 'f', f: `IFERROR(TEXT(COUNTIFS('TODAYS_TASKS'!B:B, "Ghatkopar West", 'TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!B:B, "Ghatkopar West", 'TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>")), "0%"), "0%")`, s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('INCIDENT_TRACKER'!C:C, "Ghatkopar West", 'INCIDENT_TRACKER'!G:G, "OPEN")`, s: dataStyleCenter }, { t: 'f', f: `IF(COUNTIFS('INCIDENT_TRACKER'!C:C, "Ghatkopar West", 'INCIDENT_TRACKER'!G:G, "OPEN")=0, "SECURED", "ALERT")`, s: dataStyleCenter }]
+        [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
     ];
     const dWs = utils.aoa_to_sheet(dashData);
-    dWs['!cols'] = [40, 25, 20, 20].map(w => ({ wch: w }));
-    dWs['!merges'] = [{ s: { r: 3, c: 0 }, e: { r: 3, c: 2 } }, { s: { r: 8, c: 0 }, e: { r: 8, c: 3 } }];
-    addAppHeader(dWs, 'D');
+    dWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
+    addAppHeader(dWs, 'C');
     utils.book_append_sheet(wb, dWs, "BUSINESS_HEALTH");
 
     // --- 05. TEAM_HUB ---
@@ -376,6 +354,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addAppHeader(pWs, 'F');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
+    // --- 06. INCIDENT_TRACKER ---
     const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Category", s:headerStyle}, {v:"Description", s:headerStyle}, {v:"Impact (₹)", s:headerStyle}, {v:"Status (OPEN/CLOSED)", s:headerStyle}, {v:"Resolution", s:headerStyle}];
     const iData = [[], [{v:"INCIDENT TRACKER: LIABILITY LOG", s:{font:{sz:18, bold:true}}}], [], iHeaders];
     const iWs = utils.aoa_to_sheet(iData);
@@ -383,6 +362,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addAppHeader(iWs, 'H');
     utils.book_append_sheet(wb, iWs, "INCIDENT_TRACKER");
 
+    // --- 07. SHIFT_HANDOVER ---
     const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Handover Details", s:headerStyle}, {v:"Outstanding Tasks", s:headerStyle}, {v:"Proof (Digital Acknowledgement)", s:headerStyle}];
     const hData = [[], [{v:"SHIFT HANDOVER BRIDGE", s:{font:{sz:18, bold:true}}}], [], hHeaders];
     const hWs = utils.aoa_to_sheet(hData);
@@ -390,6 +370,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addAppHeader(hWs, 'F');
     utils.book_append_sheet(wb, hWs, "SHIFT_HANDOVER");
 
+    // --- 08. SOP_LIBRARY ---
     const mpData: any[][] = [[], [{ v: "SOP LIBRARY: MASTER DATABASE", s: { font: { sz: 16, bold: true } } }], [], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement / Step", s:headerStyle}, {v:"Consequence of Failure", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}]];
     item.checklists.forEach(c => {
         c.tasks.forEach(t => {
@@ -409,10 +390,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addAppHeader(mpWs, 'G');
     utils.book_append_sheet(wb, mpWs, "SOP_LIBRARY");
 
-    const archWs = utils.aoa_to_sheet([[], [{v: "ARCHIVE: HISTORICAL RECORDS", s: { font: { sz: 18, bold: true } } }]]);
-    addAppHeader(archWs, 'E');
-    utils.book_append_sheet(wb, archWs, "ARCHIVE");
-
+    // --- 09. COST_SAVINGS ---
     const rData = [
         [], [{v:"COST & SAVINGS TRACKER", s:{font:{sz:18, bold:true}}}], [], 
         [{v:"Risk Category", s:headerStyle}, {v:"Impact per Event (₹)", s:headerStyle}, {v:"Frequency / Yr", s:headerStyle}, {v:"Projected Annual Loss (₹)", s:headerStyle}, {v:"Mitigation Status", s:headerStyle}],
@@ -424,6 +402,29 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addAppHeader(rWs, 'E');
     utils.book_append_sheet(wb, rWs, "COST_SAVINGS_TRACKER");
 
+    // --- 10. HOW THIS WORKS (SYSTEM MANUAL) ---
+    const guideData = [
+        [], 
+        [{ v: "COMMAND GUIDE: HOW THIS WORKS", s: { font: { sz: 20, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [],
+        [{ v: "SECTION", s: headerStyle }, { v: "ACTION STEPS & SYSTEM PROTOCOLS", s: headerStyle }],
+        [{ v: "1. THE ENGINE SETUP", s: instructionTitleStyle }, { v: "Go to 'BRANCH_SETUP' first. Use the Switchboard to toggle your facilities (Kitchen, Bar, etc.) to YES or NO. This automatically hides irrelevant tasks from your ledger.", s: instructionBodyStyle }],
+        [{ v: "2. ASSIGNING HEROES", s: instructionTitleStyle }, { v: "Go to 'TEAM_HUB'. Type the real names of your staff next to their roles. This ensures every task in the Ledger is personally assigned to an individual.", s: instructionBodyStyle }],
+        [{ v: "3. FINDING YOUR WORK", s: instructionTitleStyle }, { v: "Staff: Go to 'TODAYS_TASKS'. Click the filter arrow [v] on the 'Responsible Role' column. Uncheck everything except YOUR role. Now you have a clean personal to-do list.", s: instructionBodyStyle }],
+        [{ v: "4. THE DAILY PULSE", s: instructionTitleStyle }, { v: "When a task is done, type your initials in 'Done By'. The system will move the status to 'AWAITING MGR' or 'COMPLETED' automatically.", s: instructionBodyStyle }],
+        [{ v: "5. MANAGER VERIFY", s: instructionTitleStyle }, { v: "Managers: Look for Yellow Cells in the 'Verified By' column. These are high-risk steps that require your eyes. Once you type your initials, the mission is officially secure.", s: instructionBodyStyle }],
+        [{ v: "6. VIEWING HISTORY", s: instructionTitleStyle }, { v: "To see old records, simply use the filter arrow [v] on the 'Date' column in 'TODAYS_TASKS'. You can filter by any past date to review previous shift performance.", s: instructionBodyStyle }],
+        [{ v: "7. EVOLVING THE BIBLE", s: instructionTitleStyle }, { v: "To add a new permanent task, edit it in the 'SOP_LIBRARY'. Any changes there will flow into the daily execution ledger for all future entries.", s: instructionBodyStyle }],
+        [],
+        [{ v: "PRO-TIP: Save a fresh copy of this file every month (e.g. ROCS_March_Bandra.xlsx) to keep your data clean and lightning fast.", s: { font: { italic: true, bold: true, color: { rgb: COLORS.INTEL_GREY } } } }]
+    ];
+    const guideWs = utils.aoa_to_sheet(guideData);
+    guideWs['!cols'] = [{ wch: 30 }, { wch: 90 }];
+    guideWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 1 } }, { s: { r: 12, c: 0 }, e: { r: 12, c: 1 } }];
+    addAppHeader(guideWs, 'B');
+    utils.book_append_sheet(wb, guideWs, "HOW_THIS_WORKS");
+
+    // --- 11. AUTH CORE (HIDDEN) ---
     const aData = [
         ["KEY", "VALUE", "STATUS"],
         ["BUYER_EMAIL", BUYER_EMAIL, "VALID"],
@@ -443,7 +444,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { name: "INCIDENT_TRACKER", Hidden: 0 },
             { name: "SOP_LIBRARY", Hidden: 0 },
             { name: "COST_SAVINGS_TRACKER", Hidden: 0 },
-            { name: "ARCHIVE", Hidden: 0 },
+            { name: "HOW_THIS_WORKS", Hidden: 0 },
             { name: "_AUTH_CORE_", Hidden: 1 }
         ]
     };
