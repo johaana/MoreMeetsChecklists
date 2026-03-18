@@ -5,8 +5,8 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * ROCS v4.3 Master - FOCUS MODE EDITION
- * Features: Role-Based Filtering, Auto-Personnel Lookup, Hardened Verification Logic.
+ * ROCS v4.3 Master - SOVEREIGN PRECISION EDITION
+ * Features: Hardened Status Logic, Teal/Amber Conditional Formatting, Zero-Clipping Grid.
  */
 export const handleDownloadMaster = (item: PremiumPack) => {
     if (!item) {
@@ -15,6 +15,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     }
 
     const wb = utils.book_new();
+    const startDate = new Date(); 
     
     const BUYER_EMAIL = "CLIENT@RESTAURANTGROUP.COM";
     const ORDER_ID = "MM-ORD-7721-REST";
@@ -22,7 +23,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
         PRIMARY_GREEN: "2EB86B", 
-        ACCENT_GOLD: "F5A623",   
+        TEAL_SUCCESS: "14B8A6",
+        ACCENT_GOLD: "FACC15",   
         RISK_RED: "E11D48",      
         WHITE: "FFFFFF",
         TEXT_MUTED: "94A3B8",
@@ -32,12 +34,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         BORDER_SOFT: "334155",
         INPUT_ZONE: "FEFCE8",
         CONSOLE_BG: "F1F5F9",
-        BANNER_AMBER: "FACC15",
-        SUCCESS_BLUE: "3B82F6",
         CHAMBER_BG: "F8FAFC",
-        BORDER: "CBD5E1",
-        INACTIVE_GREY: "F1F5F9", // The "Grey" for N/A rows
-        MGR_YELLOW: "FFFF99"     // The "Yellow" for pending manager verification
+        MGR_YELLOW: "FFFF99"
     };
 
     const borderStyle = {
@@ -48,7 +46,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     };
 
     const boxBorder = { style: 'medium', color: { rgb: COLORS.NAVY_DEEP } };
-
     const baseFont = { name: 'Segoe UI', sz: 10 };
 
     const navStyle = {
@@ -79,7 +76,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const moodBannerStyle = {
         font: { ...baseFont, bold: true, sz: 16, color: { rgb: "000000" } },
-        fill: { fgColor: { rgb: COLORS.BANNER_AMBER } },
+        fill: { fgColor: { rgb: COLORS.ACCENT_GOLD } },
         alignment: { horizontal: 'center', vertical: 'center' },
         border: { left: boxBorder, top: boxBorder, right: boxBorder }
     };
@@ -139,14 +136,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const inputStyle = {
         ...dataStyleCenter,
         fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
-    };
-
-    // --- STATIC GREY STYLE FOR N/A ROWS ---
-    const inactiveRowStyle = {
-        font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED }, italic: true },
-        fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } },
-        alignment: { vertical: 'center', horizontal: 'center' },
-        border: borderStyle
     };
 
     const addAppHeader = (ws: WorkSheet, endCol: string = 'K') => {
@@ -284,16 +273,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     ];
     const mData: any[][] = [[], [{ v: "MISSION LEDGER: DAILY EXECUTION LOG", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
     
-    const moduleMap: Record<number, string> = {
-        0: "C", 1: "C", 2: "D", 3: "D", 4: "E", 5: "F", 6: "G", 7: "H", 8: "I", 9: "J", 10: "K", 11: "L"
-    };
-
-    const startDate = new Date(); 
     [1, 2].forEach(bCode => {
-        const bRow = 5 + bCode;
         item.checklists.forEach((c, cIdx) => {
-            const switchCol = moduleMap[cIdx] || "C";
-            // Check if this module is active for this branch
             const isActive = bCode === 1 ? "YES" : (cIdx === 3 || cIdx >= 9 ? "NO" : "YES"); 
 
             c.tasks.forEach(t => {
@@ -302,38 +283,30 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                 const verifiedByCell = `H${rowIdx}`;
                 const roleCell = `C${rowIdx}`;
                 
-                // --- PRECISION STATUS ENGINE ---
-                // We use LEN(TRIM()) to avoid Excel "empty string is not blank" issues
+                // --- HARDENED STATUS ENGINE ---
                 const statusFormula = `IF(LEN(TRIM(${completedByCell}))=0, "PENDING", IF(AND(LEN(TRIM(${verifiedByCell}))=0, ${verifiedByCell}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
                 
                 const verifiedByValue = t.priority === 'High' || t.riskLevel === 'High' ? "" : "N/A";
                 const personFormula = `IFERROR(VLOOKUP(${roleCell}, 'TEAM_HUB'!B:C, 2, FALSE), "[UNASSIGNED]")`;
 
                 const taskDescription = isActive === "NO" 
-                    ? `N/A - [${c.title.toUpperCase()}] INACTIVE FOR THIS BRANCH` 
+                    ? `N/A - [${c.title.toUpperCase()}] INACTIVE` 
                     : t.description;
 
-                // --- APPLY VISUAL QUIET (GREY) OR FOCUS (YELLOW) ---
-                const rowStyle = isActive === "NO" ? inactiveRowStyle : dataStyleCenter;
-                const descStyle = isActive === "NO" ? { ...inactiveRowStyle, alignment: { ...inactiveRowStyle.alignment, horizontal: 'left' } } : dataStyleLeft;
-                const initialsStyle = isActive === "NO" ? inactiveRowStyle : inputStyle;
-                // Highlight manager column if it's empty and required
-                const mgrStyle = (isActive === "YES" && verifiedByValue === "") ? { ...inputStyle, fill: { fgColor: { rgb: COLORS.MGR_YELLOW } } } : (isActive === "NO" ? inactiveRowStyle : dataStyleCenter);
-
                 mData.push([
-                    { v: startDate, t: 'd', s: { ...rowStyle, numFmt: 'dd-mm-yyyy' } },
-                    { v: bCode === 1 ? "Bandra Main" : "Ghatkopar West", s: rowStyle },
-                    { v: c.role, s: rowStyle },
-                    { t: 'f', f: personFormula, s: rowStyle },
-                    { v: t.id, s: rowStyle },
-                    { v: taskDescription, s: descStyle },
-                    { v: "", s: initialsStyle },
-                    { v: verifiedByValue, s: mgrStyle },
-                    { t: 'f', f: statusFormula, s: { ...rowStyle, font: { ...rowStyle.font, bold: true } } },
-                    { v: isActive === "NO" ? "-" : c.frequency, s: { ...intelStyle, fill: isActive === "NO" ? { fgColor: { rgb: COLORS.INACTIVE_GREY } } : undefined } },
-                    { v: isActive === "NO" ? "-" : t.priority, s: { ...intelStyle, fill: isActive === "NO" ? { fgColor: { rgb: COLORS.INACTIVE_GREY } } : undefined } },
-                    { v: isActive === "NO" ? "-" : t.consequence, s: { ...intelStyle, fill: isActive === "NO" ? { fgColor: { rgb: COLORS.INACTIVE_GREY } } : undefined } },
-                    { v: isActive === "NO" ? "-" : (t.trainerNotes || "-"), s: { ...intelStyle, fill: isActive === "NO" ? { fgColor: { rgb: COLORS.INACTIVE_GREY } } : undefined } }
+                    { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
+                    { v: bCode === 1 ? "Bandra Main" : "Ghatkopar West", s: dataStyleCenter },
+                    { v: c.role, s: dataStyleCenter },
+                    { t: 'f', f: personFormula, s: dataStyleCenter },
+                    { v: t.id, s: dataStyleCenter },
+                    { v: taskDescription, s: dataStyleLeft },
+                    { v: "", s: inputStyle },
+                    { v: verifiedByValue, s: (verifiedByValue === "" ? { ...inputStyle, fill: { fgColor: { rgb: COLORS.MGR_YELLOW } } } : dataStyleCenter) },
+                    { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true } } },
+                    { v: c.frequency, s: intelStyle },
+                    { v: t.priority, s: intelStyle },
+                    { v: t.consequence, s: intelStyle },
+                    { v: t.trainerNotes || "-", s: intelStyle }
                 ]);
             });
         });
@@ -342,8 +315,26 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const mWs = utils.aoa_to_sheet(mData);
     mWs['!cols'] = [15, 25, 25, 30, 10, 65, 20, 20, 20, 12, 12, 45, 50].map(w => ({ wch: w }));
     addAppHeader(mWs, 'M');
-    mWs['!autofit'] = true;
     mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
+    
+    // --- TEAL/AMBER CONDITIONAL FORMATTING ---
+    mWs['!conditional_formatting'] = [
+        {
+            ref: `I5:I${mData.length}`,
+            rules: [
+                {
+                    type: "expression",
+                    formula: `I5="COMPLETED"`,
+                    style: { fill: { fgColor: { rgb: COLORS.TEAL_SUCCESS } }, font: { color: { rgb: COLORS.WHITE }, bold: true } }
+                },
+                {
+                    type: "expression",
+                    formula: `I5="AWAITING MGR"`,
+                    style: { fill: { fgColor: { rgb: COLORS.ACCENT_GOLD } }, font: { color: { rgb: "000000" }, bold: true } }
+                }
+            ]
+        }
+    ];
     
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
 
@@ -366,10 +357,10 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     addAppHeader(dWs, 'D');
     utils.book_append_sheet(wb, dWs, "BUSINESS_HEALTH");
 
-    // --- 05. TEAM_HUB ( Source for Personnel ) ---
+    // --- 05. TEAM_HUB ---
     const pHeaders = [{v:"Staff ID", s:headerStyle}, {v:"Role Name", s:headerStyle}, {v:"Full Name (Assigned)", s:headerStyle}, {v:"Assigned Branch", s:headerStyle}, {v:"Contact", s:headerStyle}, {v:"Status", s:headerStyle}];
     const pData = [[], [{v:"TEAM HUB & ROLE ASSIGNMENT", s:{font:{sz:18, bold:true}}}], [], pHeaders];
-    
+    const roles = ["Head Chef", "Sous Chef", "Bar Manager", "Head Bartender", "Floor Manager", "General Manager", "Owner/COO", "Dispatch Coordinator", "Hostess", "Security Manager", "Facility Manager", "HR Supervisor"];
     roles.forEach((role, idx) => {
         pData.push([
             { v: idx + 1, s: dataStyleCenter },
@@ -380,7 +371,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
             { v: "ACTIVE", s: dataStyleCenter }
         ]);
     });
-
     const pWs = utils.aoa_to_sheet(pData);
     pWs['!cols'] = [12, 30, 35, 25, 20, 25].map(w => ({ wch: w }));
     addAppHeader(pWs, 'F');
@@ -458,12 +448,5 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ]
     };
 
-    writeFile(wb, `MOREMEETS_Master_ROCS_v4.3_FOCUS_MODE.xlsx`);
+    writeFile(wb, `ROCS_v4.3_Sovereign_Master.xlsx`);
 }
-
-const roles = [
-    "Head Chef", "Sous Chef", "Bar Manager", "Head Bartender", 
-    "Floor Manager", "General Manager", "Owner/COO", 
-    "Dispatch Coordinator", "Hostess", "Security Manager", 
-    "Facility Manager", "HR Supervisor"
-];
