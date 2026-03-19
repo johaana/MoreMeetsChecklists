@@ -13,7 +13,7 @@ export const facility_management_blueprint: PremiumPack = {
     category: "Corporate & Tech",
     description: "No monthly subscriptions. No SaaS dependency. One-time investment for a lifetime of control. Sovereign v4.3 is the professional plug for your infrastructure leaks.",
     heroHeadline: "Stop Catastrophic Facility Failures and Vendor Neglect",
-    heroSubheadline: "Track daily walkthroughs, monitor preventive maintenance, and stay in control of campus safety—even when you’re not on property.",
+    heroSubheadline: "Track 150+ control points across Hard FM, Soft FM, Groundskeeping, and Compliance—even when you’re not on property.",
     pricingUrgency: "A single major utility failure or one safety negligence lawsuit costs 100x more than this entire system.",
     consultingAnchor: 10000,
     icon: "building-2",
@@ -22,42 +22,81 @@ export const facility_management_blueprint: PremiumPack = {
     whoIsItFor: ["COOs", "Heads of Corporate Real Estate", "Directors of Facilities", "VPs of Administration", "Data Center Managers"],
     sampleItems: [
         { text: "<strong>2-Minute Facility Pulse</strong>: Your ground team and vendor staff update status in seconds. Zero-friction reporting.", icon: "timer" },
-        { text: "<strong>Symmetric Governance</strong>: One Master File to control up to 10 buildings or zones. Perfect multi-site visibility.", icon: "layout-grid" },
-        { text: "<strong>High-Risk Verification</strong>: Highlighted 'Yellow Targets' show managers exactly what needs sign-off—from fire safety to electrical loads.", icon: "shield-check" },
-        { text: "<strong>Vendor SLA Engine</strong>: Monitor third-party maintenance performance and identify neglect before it causes a breakdown.", icon: "wrench" },
-        { text: "<strong>Institutional Memory</strong>: Built-in instructions ensure that even with high staff turnover, your facility standards never drift.", icon: "history" },
-        { text: "<strong>Revenue Protection</strong>: Stop the profit bleed caused by utility waste and emergency reactive repair costs.", icon: "banknote" },
+        { text: "<strong>Hard FM (MEP) Mastery</strong>: Bulletproof preventive maintenance logs for HVAC, Boilers, Generators, and Lifts.", icon: "wrench" },
+        { text: "<strong>Soft FM (Janitorial) Logic</strong>: Hourly logs for high-traffic zones and specialized washroom hygiene audits.", icon: "sparkles" },
+        { text: "<strong>Grounds & Landscaping</strong>: Maintain perimeter security and curb-appeal with structured exterior audits.", icon: "sprout" },
+        { text: "<strong>High-Risk Verification</strong>: Highlighted 'Yellow Targets' show managers exactly what needs sign-off.", icon: "target" },
+        { text: "<strong>Regulatory Compliance Shield</strong>: Track fire certificates, lift licenses, and water-tank certifications in one ledger.", icon: "file-lock" },
         { text: "<strong>Sovereign Infrastructure</strong>: No recurring SaaS fees. You own the data and the control system forever.", icon: "lock" }
     ],
     checklists: [
         {
-            title: "Daily Facility Walkthrough",
-            department: "Facilities",
+            title: "Hard FM: MEP & Engineering",
+            department: "Engineering",
             frequency: "Daily",
-            role: "Facility Manager",
-            summary: "A proactive daily patrol to identify and rectify issues before they become major problems.",
-            icon: "clipboard-check",
+            role: "Chief Engineer",
+            summary: "Protects the critical mechanical and electrical infrastructure of the facility.",
+            icon: "wrench",
             tasks: [
-                { id: "FMB-DFW-01", description: "Check all common areas (lobbies, receptions) for cleanliness and order.", priority: "High", riskLevel: "Low", consequence: "Negative impression on visitors and employees.", proof: "Walkthrough log.", trainerNotes: "Check for fingerprint smudges on glass." },
-                { id: "FMB-DFW-02", description: "Inspect all restrooms for cleanliness, functionality, and stock levels.", priority: "High", riskLevel: "Medium", consequence: "Major source of employee complaints.", proof: "Restroom inspection log.", trainerNotes: "Smell check is mandatory." },
-                { id: "FMB-DFW-03", description: "Verify temperature and air quality in all zones are comfortable.", priority: "Medium", riskLevel: "Low", consequence: "Reduced employee productivity and comfort.", proof: "BMS reading.", trainerNotes: "Target: 22°C - 24°C." },
-                { id: "FMB-DFW-04", description: "Check for any safety hazards (e.g., slip/trip hazards, blocked fire exits).", priority: "High", riskLevel: "High", consequence: "Employee/visitor injury, legal liability.", proof: "Hazard report log.", trainerNotes: "Fire exits must be 'Push-to-Open' free." },
-                { id: "FMB-DFW-05", description: "Inspect exterior of the building for cleanliness, damage, or security concerns.", priority: "Medium", riskLevel: "Medium", consequence: "Poor curb appeal, potential security breaches.", proof: "Exterior inspection log.", trainerNotes: "Check lighting at parking entry." }
+                { id: "FM-MEP-01", description: "Log Chiller/HVAC plant delivery and return temperatures.", priority: "High", riskLevel: "Medium", consequence: "Tenant discomfort and increased energy waste.", proof: "BMS Reading", trainerNotes: "Check for abnormal compressor noise." },
+                { id: "FM-MEP-02", description: "Inspect backup generator (DG) fuel levels and battery voltage.", priority: "High", riskLevel: "High", consequence: "Total blackout during power failure.", proof: "Daily Log", trainerNotes: "Maintain min 48h fuel reserve." },
+                { id: "FM-MEP-03", description: "Verify water pressure at the main pumps and terrace tanks.", priority: "High", riskLevel: "Medium", consequence: "Water-supply disruption to upper floors.", proof: "Pressure Gauge", trainerNotes: "Check for pump seal leaks." },
+                { id: "FM-MEP-04", description: "Thermal imaging audit of main electrical panels (hotspots).", priority: "High", riskLevel: "High", consequence: "Electrical fire and facility shutdown.", proof: "Infrared Log", trainerNotes: "Focus on loose cable connections." },
+                { id: "FM-MEP-05", description: "Test fire-alarm panel and emergency PA system functionality.", priority: "High", riskLevel: "High", consequence: "Fatal delay during emergency evacuation.", proof: "Test Report", trainerNotes: "Rotate test zones weekly." },
+                { id: "FM-MEP-06", description: "Verify lift emergency phones and alarm bell connectivity.", priority: "High", riskLevel: "High", consequence: "Unassisted elevator entrapment liability.", proof: "Dial Test", trainerNotes: "Test from inside the cabin daily." },
+                { id: "FM-MEP-07", description: "Inspect plumbing shafts for signs of dampness or leakage.", priority: "Medium", riskLevel: "Low", consequence: "Progressive structural and aesthetic damage.", proof: "Walkthrough", trainerNotes: "Check ground-floor vents for odor." }
             ]
         },
         {
-            title: "Preventive Maintenance (MEP)",
-            department: "Engineering",
-            frequency: "Weekly/Monthly",
-            role: "Chief Engineer",
-            summary: "Scheduled maintenance for Mechanical, Electrical, and Plumbing systems to prevent failures.",
-            icon: "wrench",
+            title: "Soft FM: Janitorial & Hygiene",
+            department: "Housekeeping",
+            frequency: "Daily",
+            role: "Housekeeping Lead",
+            summary: "Governs the aesthetic and hygienic standards of the property.",
+            icon: "sparkles",
             tasks: [
-                { id: "FMB-MEP-01", description: "Inspect and clean HVAC filters for all major air handling units (AHUs).", priority: "High", riskLevel: "Medium", consequence: "Poor air quality, increased energy costs, system failure.", proof: "Signed maintenance log", trainerNotes: "Replace filters if grey/dark." },
-                { id: "FMB-MEP-02", description: "Test backup generator under load for at least 30 minutes.", priority: "High", riskLevel: "High", consequence: "Business shutdown during a power outage.", proof: "Generator test log", trainerNotes: "Check fuel level post-test." },
-                { id: "FMB-MEP-03", description: "Electrical: Test UPS systems and verify battery health.", priority: "High", riskLevel: "High", consequence: "Data corruption/loss during power flicker.", proof: "UPS test report.", trainerNotes: "Check for bulging batteries." },
-                { id: "FMB-MEP-04", description: "Fire Safety: Test fire alarm call points and smoke detectors.", priority: "High", riskLevel: "High", consequence: "Fire system failure.", proof: "Alarm test report.", trainerNotes: "Rotate test zones weekly." },
-                { id: "FMB-MEP-05", description: "Lifts: Perform monthly safety check (leveling, doors, emergency phone).", priority: "High", riskLevel: "High", consequence: "Elevator entrapment.", proof: "Lift check log.", trainerNotes: "Verify AMC technician presence." }
+                { id: "FM-JAN-01", description: "Audit washroom cleaning logs: verify 1-hour frequency compliance.", priority: "High", riskLevel: "Low", consequence: "Major driver of occupant complaints.", proof: "Hourly Sheet", trainerNotes: "Check under-sink area for dust." },
+                { id: "FM-JAN-02", description: "Verify stock of hand-soap and paper towels in all restrooms.", priority: "Medium", riskLevel: "Low", consequence: "Hygiene breakdown and poor brand image.", proof: "Stock Check", trainerNotes: "Refill at 20% threshold." },
+                { id: "FM-JAN-03", description: "Sanitize high-touch surfaces: elevator buttons and door handles.", priority: "High", riskLevel: "Medium", consequence: "Viral spread and increased staff sick-leave.", proof: "Sanitization Log", trainerNotes: "Use 200ppm solution." },
+                { id: "FM-JAN-04", description: "Lobby Floor Polish Audit: check for slip-hazards or dullness.", priority: "Medium", riskLevel: "Medium", consequence: "Slip & fall liability and poor first touch.", proof: "Visual Sign-off", trainerNotes: "Use dry-mop for spills immediately." }
+            ]
+        },
+        {
+            title: "Groundskeeping & Landscaping",
+            department: "Exterior",
+            frequency: "Daily/Weekly",
+            role: "Facility Supervisor",
+            summary: "Protects curb appeal and perimeter safety.",
+            icon: "sprout",
+            tasks: [
+                { id: "FM-GRD-01", description: "Exterior Lighting Audit: Check all parking and perimeter lamps.", priority: "High", riskLevel: "Medium", consequence: "Security blind spots and guest safety risk at night.", proof: "Night Patrol Log", trainerNotes: "Replace fused bulbs within 24h." },
+                { id: "FM-GRD-02", description: "Landscape Irrigation: verify functional sprinkler timers.", priority: "Medium", riskLevel: "Low", consequence: "Loss of plant assets and higher replanting costs.", proof: "Visual Check", trainerNotes: "Check for soil saturation." },
+                { id: "FM-GRD-03", description: "Inspect perimeter fence/walls for breaches or debris.", priority: "High", riskLevel: "High", consequence: "Unauthorized entry and security vulnerability.", proof: "Patrol Log", trainerNotes: "Check for overhanging tree limbs." }
+            ]
+        },
+        {
+            title: "Mail, Logistics & Receiving",
+            department: "Admin",
+            frequency: "Daily",
+            role: "Admin Coordinator",
+            summary: "Governance for the facility supply chain and parcel security.",
+            icon: "truck",
+            tasks: [
+                { id: "FM-LOG-01", description: "Audit Parcel Registry: match entries against delivered items.", priority: "High", riskLevel: "Medium", consequence: "Lost or stolen tenant property.", proof: "Inward Log", trainerNotes: "Scan ID of delivery personnel." },
+                { id: "FM-LOG-02", description: "Vendor Receiving: verify quality and weight of cleaning supplies.", priority: "Medium", riskLevel: "Low", consequence: "Paying for sub-par or short-weight stock.", proof: "GRN Note", trainerNotes: "Check seals on chemical cans." }
+            ]
+        },
+        {
+            title: "Regulatory & Compliance",
+            department: "Compliance",
+            frequency: "Monthly",
+            role: "Facility Manager",
+            summary: "Protects the facility from legal and regulatory shutdowns.",
+            icon: "file-lock",
+            tasks: [
+                { id: "FM-REG-01", description: "Verify validity of Fire Safety Certificate (NOC).", priority: "High", riskLevel: "High", consequence: "Legal closure and massive insurance denial.", proof: "Document Audit", trainerNotes: "Apply for renewal 90 days pre-expiry." },
+                { id: "FM-REG-02", description: "Audit AMC Status: check service date for Lifts and DG.", priority: "High", riskLevel: "High", consequence: "Lapse in service for mission-critical machinery.", proof: "Contract File", trainerNotes: "Ensure technician reports are on-site." },
+                { id: "FM-REG-03", description: "Water Tank Certification: verify latest lab test for potability.", priority: "High", riskLevel: "Medium", consequence: "Water-borne disease outbreak liability.", proof: "Lab Report", trainerNotes: "Test every 6 months." }
             ]
         }
     ]

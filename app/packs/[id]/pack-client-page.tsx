@@ -9,7 +9,7 @@ import { IconComponent, ComplianceIcon } from '@/components/icons';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { X, Check, ShieldAlert, ArrowRight, ShieldCheck, FileSpreadsheet, Infinity, Lock, Timer, Target, Eye, Zap } from 'lucide-react';
+import { X, Check, ShieldAlert, ArrowRight, ShieldCheck, FileSpreadsheet, Infinity, Lock, Timer, Target, Eye, Zap, Laptop, LayoutGrid, CheckSquare } from 'lucide-react';
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
     const content = painPointsContent[packId as keyof typeof painPointsContent];
@@ -46,6 +46,60 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
         </section>
     );
 }
+
+const ProductArchitectureSection = () => (
+    <section className="w-full py-16 md:py-24 bg-alternate-background overflow-hidden">
+        <div className="container px-4 md:px-6">
+            <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
+                <div className="space-y-8">
+                    <div className="space-y-4">
+                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Technical Evidence</Badge>
+                        <h2 className="text-3xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter leading-tight">
+                            A High-Gravity <br /> Data Engine.
+                        </h2>
+                        <p className="text-lg text-secondary-text leading-relaxed font-medium italic border-l-2 border-primary/20 pl-6">
+                            This is not a static PDF. You are deploying a multi-branch, logically-aware interface built to command discipline across your entire group.
+                        </p>
+                    </div>
+
+                    <div className="space-y-6">
+                        {[
+                            { t: "Live Status Trigger", d: "Status columns (COMPLETED/AWAITING MGR) update instantly based on staff inputs.", i: Zap },
+                            { t: "The 'Yellow Target' Rule", d: "Managers only focus on highlighted high-risk points. No time wasted on routine ticks.", i: Target },
+                            { t: "Institutional Memory", d: "Trainer notes and consequences are embedded into every task to coach staff automatically.", i: Laptop }
+                        ].map(item => (
+                            <div key={item.t} className="flex gap-4">
+                                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0">
+                                    <item.i className="h-5 w-5" />
+                                </div>
+                                <div className="space-y-1">
+                                    <h4 className="font-bold text-primary-text uppercase text-sm tracking-tight">{item.t}</h4>
+                                    <p className="text-xs text-secondary-text font-medium leading-relaxed italic">{item.d}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="relative group">
+                    <div className="absolute -inset-4 bg-primary/20 blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-1000" />
+                    <div className="relative rounded-2xl border border-white/10 bg-black p-2 shadow-2xl">
+                        <div className="absolute top-0 left-0 right-0 h-8 bg-white/5 border-b border-white/5 rounded-t-xl flex items-center px-4 gap-1.5">
+                            <div className="w-2 h-2 rounded-full bg-red-500/40" />
+                            <div className="w-2 h-2 rounded-full bg-yellow-500/40" />
+                            <div className="w-2 h-2 rounded-full bg-green-500/40" />
+                        </div>
+                        <img 
+                            src="https://i.postimg.cc/mr5tRpPV/Screenshot-2026-03-18-124944.png" 
+                            alt="MoreMeets Engine Interface"
+                            className="rounded-lg mt-6 border border-white/5"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+);
 
 const NotAChecklistSection = () => (
     <section className="w-full py-16 md:py-24 bg-black border-y border-white/5">
@@ -126,6 +180,18 @@ const ComparisonSection = () => (
             </div>
         </div>
     </section>
+);
+
+const Section = ({ children, className }: { children: React.ReactNode, className?: string }) => (
+    <section className={cn("w-full py-16 md:py-24", className)}>
+        {children}
+    </section>
+);
+
+const SectionHeadline = ({ children }: { children: React.ReactNode }) => (
+    <h2 className="text-3xl md:text-4xl font-black font-headline text-primary-text uppercase italic tracking-tighter text-center">
+        {children}
+    </h2>
 );
 
 const WhatChangesSection = () => (
@@ -224,6 +290,8 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
         </section>
 
         <PainPointsSection packId={pack.id} />
+
+        <ProductArchitectureSection />
 
         {/* CLARITY: WHAT YOU GET */}
         {!isEmptyPack && (
