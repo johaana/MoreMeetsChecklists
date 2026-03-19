@@ -392,7 +392,7 @@ export const blogPosts: BlogPost[] = [
         <p>When you hire a new person, you pay an <strong>Onboarding Debt</strong>. For the first 90 days, that employee is guessing. They work slowly, make mistakes, and irritate guests. If you multiply this by a 50% turnover rate, your hotel is operating at permanent, compounding inefficiency.</p>
         
         <h3>The turnover-proof Audit</h3>
-        <p>If your operations manager disappeared tomorrow, could your hotel run smoothly for 30 days? If the answer is "no," you don't have a system: you have a dependency.</p>
+        <p>If your operations manager disappeared tomorrow, could your hotel run smoothly for 30 days? If the answer is \"no,\" you don't have a system: you have a dependency.</p>
 
         <blockquote class="my-16">
           "Staff turnover is inevitable. The loss of operational memory is optional."
@@ -404,13 +404,13 @@ export const blogPosts: BlogPost[] = [
           <ul class="space-y-4">
             <li class="flex gap-3"><span class="text-primary font-black">?</span> <span>If your GM resigned today, would your standards change tomorrow?</span></li>
             <li class="flex gap-3"><span class="text-primary font-black">?</span> <span>Could a new hire handle a guest medical emergency using only your written files?</span></li>
-            <li class="flex gap-3"><span class="text-primary font-black">?</span> <span>Are your "standard" procedures written down, or just "understood"?</span></li>
+            <li class="flex gap-3"><span class="text-primary font-black">?</span> <span>Are your \"standard\" procedures written down, or just \"understood\"?</span></li>
           </ul>
         </section>
 
         <h2>2. Final Assessment</h2>
         <section>
-          <p>Your business should be a machine that works regardless of who is operating it. By using <strong>Standardized SOP Sheets</strong>, you turn a variable cost (training) into a fixed asset (process). The "Memory" stays with the property, even when the people change.</p>
+          <p>Your business should be a machine that works regardless of who is operating it. By using <strong>Standardized SOP Sheets</strong>, you turn a variable cost (training) into a fixed asset (process). The \"Memory\" stays with the property, even when the people change.</p>
         </section>
       `
     },
@@ -435,7 +435,7 @@ export const blogPosts: BlogPost[] = [
         </section>
 
         <h2>1. Management by Verification</h2>
-        <p>By providing <strong>Structured SOPs</strong>, you are giving your team the gift of clarity. You remove the guilt of 'making the wrong choice' because the choice has already been made for them by the system. You transition from "Management by Accusation" to "Management by Verification."</p>
+        <p>By providing <strong>Structured SOPs</strong>, you are giving your team the gift of clarity. You remove the guilt of 'making the wrong choice' because the choice has already been made for them by the system. You transition from \"Management by Accusation\" to \"Management by Verification.\"</p>
         
         <h3>The Psychology of the Freeze</h3>
         <p>Employees do not freeze because they lack intelligence. They freeze because systems lack clarity. In a crisis, the human brain cannot process complex instructions. It needs <strong>Aviation-grade checklists</strong> that mandate simple, sequential actions.</p>
@@ -449,11 +449,11 @@ export const blogPosts: BlogPost[] = [
           <div class="grid md:grid-cols-2 gap-12 mt-8">
             <div class="space-y-4">
                 <h4 class="font-black uppercase text-red-500">The Blame Culture</h4>
-                <p class="text-sm text-secondary-text italic">"Why didn't you know the fire exit was blocked?" (Reactive / Personal / Low Retention)</p>
+                <p class="text-sm text-secondary-text italic">\"Why didn't you know the fire exit was blocked?\" (Reactive / Personal / Low Retention)</p>
             </div>
             <div class="space-y-4">
                 <h4 class="font-black uppercase text-authority-green">The System Culture</h4>
-                <p class="text-sm text-secondary-text italic">"Show me the signed-off daily exit check log." (Proactive / Structural / High Accountability)</p>
+                <p class="text-sm text-secondary-text italic">\"Show me the signed-off daily exit check log.\" (Proactive / Structural / High Accountability)</p>
             </div>
           </div>
         </section>
@@ -472,12 +472,12 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Editorial",
       tags: ["Industrial & Transport"],
       protocol: "Supply Chain Risk",
-      relatedPackId: "logistics_warehouse_pack",
+      relatedPackId: "facility_management_blueprint",
       description: "Deconstructing the 2018 KFC logistics failure. How a single point of failure (SPOF) paralyzed 900 restaurants.",
       imageUrl: "https://i.postimg.cc/D0d91ydR/kfc1.webp",
       content: `
         <p>In February 2018, 900 KFC outlets closed. Not because of a lack of customers, but because of a failure in logistics architecture.</p>
-        <p>The "Great Chicken Crisis" was a failure of <strong>Centralized Risk</strong>. KFC switched distribution to a single, automated hub. When the software glitched, there was no redundant infrastructure. No Plan B.</p>
+        <p>The \"Great Chicken Crisis\" was a failure of <strong>Centralized Risk</strong>. KFC switched distribution to a single, automated hub. When the software glitched, there was no redundant infrastructure. No Plan B.</p>
       `
     },
     {
@@ -488,7 +488,7 @@ export const blogPosts: BlogPost[] = [
       author: "MoreMeets Editorial",
       tags: ["Corporate & Tech"],
       protocol: "Asset Valuation",
-      relatedPackId: "corporate_legal_compliance_starter_kit",
+      relatedPackId: "franchise_operations_pack",
       description: "Why structured operations are revenue multipliers. A financial study on how SOPs increase enterprise value.",
       imageUrl: "https://i.postimg.cc/qvYrNypS/ROI.png",
       content: `
