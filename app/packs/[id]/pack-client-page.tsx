@@ -9,7 +9,7 @@ import { IconComponent, ComplianceIcon } from '@/components/icons';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { X, Check, ShieldAlert, ArrowRight, ShieldCheck, FileSpreadsheet, Infinity, Lock } from 'lucide-react';
+import { X, Check, ShieldAlert, ArrowRight, ShieldCheck, FileSpreadsheet, Infinity, Lock, Timer, Target, Eye, Zap } from 'lucide-react';
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
     const content = painPointsContent[packId as keyof typeof painPointsContent];
@@ -17,33 +17,27 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
 
     return (
         <section id="why" className="w-full py-12 md:py-16 bg-secondary/30">
-            <div className="container px-2 md:px-6">
-                 <div className="max-w-4xl mx-auto text-center mb-10">
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tighter font-headline uppercase italic">
-                        {content.title}
+            <div className="container px-4 md:px-6">
+                 <div className="max-w-4xl mx-auto text-center mb-10 space-y-4">
+                    <h2 className="text-3xl md:text-4xl font-black tracking-tighter font-headline uppercase italic text-primary-text">
+                        Anatomy of an Operational Failure
                     </h2>
-                     <p className="mt-4 text-xs text-muted-foreground italic">{content.disclaimer}</p>
-                     <p className="mt-6 text-lg font-medium text-primary-text italic">
-                        These aren’t theoretical risks. These are real failures that shut down businesses and destroy reputations.
+                     <p className="text-muted-foreground text-sm italic">{content.disclaimer}</p>
+                     <p className="text-lg font-bold text-red-500 italic">
+                        These aren’t theoretical risks. These are real failures that shut down businesses.
                      </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
                     {content.points.map((point, index) => (
-                        <Card key={index} className="flex flex-col h-full bg-background border-border shadow-sm">
+                        <Card key={index} className="flex flex-col h-full bg-background border-border shadow-sm border-l-4 border-l-red-500/50">
                             <CardHeader className="flex flex-row items-center gap-4 space-y-0">
-                                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
-                                    {typeof point.icon === 'string' ? (
-                                        <IconComponent name={point.icon as string} className="h-6 w-6 text-accent"/>
-                                    ) : (
-                                        <span className="h-6 w-6 text-accent flex items-center justify-center">
-                                            {point.icon}
-                                        </span>
-                                    )}
+                                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-500/10 text-red-500 shrink-0">
+                                    {point.icon}
                                 </div>
-                                <CardTitle className="text-lg font-bold">{point.title}</CardTitle>
+                                <CardTitle className="text-lg font-black uppercase italic leading-tight">{point.title}</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-muted-foreground text-sm md:text-base leading-relaxed">{point.description}</p>
+                                <p className="text-secondary-text text-sm leading-relaxed italic font-medium">{point.description}</p>
                             </CardContent>
                         </Card>
                     ))}
@@ -53,26 +47,55 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
     );
 }
 
+const NotAChecklistSection = () => (
+    <section className="w-full py-16 md:py-24 bg-black border-y border-white/5">
+        <div className="container px-4 md:px-6 max-w-4xl mx-auto text-center space-y-12">
+            <div className="space-y-4">
+                <Badge variant="destructive" className="uppercase font-black tracking-widest text-[9px] px-4 py-1">Crucial Distinction</Badge>
+                <h2 className="text-3xl md:text-5xl font-black font-headline uppercase italic tracking-tighter">This is NOT a Checklist.</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                    { t: "NOT a PDF", d: "Static documents get ignored. This is a live, interactive data engine.", i: X },
+                    { t: "NOT a Template", d: "Generic lists don't stop disasters. This is forensically engineered infrastructure.", i: X },
+                    { t: "NOT Manual", d: "No more 'guessing' if work is done. You get verifiable digital evidence.", i: X }
+                ].map(item => (
+                    <div key={item.t} className="space-y-2 p-6 rounded-2xl bg-white/[0.02] border border-white/5">
+                        <item.i className="w-8 h-8 text-red-500 mx-auto mb-2 opacity-50" />
+                        <h3 className="font-black text-primary-text uppercase italic">{item.t}</h3>
+                        <p className="text-xs text-secondary-text leading-relaxed font-medium">{item.d}</p>
+                    </div>
+                ))}
+            </div>
+            
+            <div className="pt-8">
+                <p className="text-xl font-bold text-primary italic">"It is a system your team uses daily to ensure discipline never drifts."</p>
+            </div>
+        </div>
+    </section>
+);
+
 const ComparisonSection = () => (
     <section className="w-full py-16 md:py-24 bg-alternate-background">
         <div className="container px-4 md:px-6">
             <div className="max-w-4xl mx-auto text-center mb-16 space-y-4">
                 <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Infrastructure Audit</Badge>
                 <h2 className="text-3xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">System vs. Chaos</h2>
-                <p className="text-secondary-text text-lg italic">The difference between a growing business and a struggling one is the system they run on.</p>
+                <p className="text-secondary-text text-lg italic font-medium">The difference between a growing business and a struggling one.</p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-3xl overflow-hidden max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-3xl overflow-hidden max-w-5xl mx-auto shadow-2xl">
                 <div className="bg-black/40 p-8 md:p-12 space-y-8">
                     <h3 className="text-red-500 font-black uppercase tracking-widest text-sm flex items-center gap-2">
                         <X className="w-5 h-5" /> Manual Chaos (WhatsApp & Memory)
                     </h3>
                     <ul className="space-y-6">
                         {[
-                            { t: "Staff forgets tasks", d: "Standards are just suggestions until they are tracked and signed." },
+                            { t: "Staff forgets tasks", d: "Standards are just suggestions until they are signed." },
                             { t: "You chase staff", d: "Managers spend hours daily following up on basic duties." },
-                            { t: "No visibility", d: "You only find out about failures when a guest complains or an inspector arrives." },
-                            { t: "Problems caught late", d: "Small daily losses add up to massive yearly profit leaks." }
+                            { t: "No visibility", d: "Failures are only noticed when a guest complains." },
+                            { t: "Problems caught late", d: "Profit leaks are hidden in daily inefficiencies." }
                         ].map(item => (
                             <li key={item.t} className="space-y-1">
                                 <p className="text-primary-text font-bold text-sm">{item.t}</p>
@@ -81,17 +104,17 @@ const ComparisonSection = () => (
                         ))}
                     </ul>
                 </div>
-                <div className="bg-primary/5 p-8 md:p-12 space-y-8 relative">
+                <div className="bg-primary/5 p-8 md:p-12 space-y-8 relative border-l border-primary/20">
                     <div className="absolute top-0 right-0 p-6 opacity-10"><Check className="w-32 h-32 text-primary" /></div>
                     <h3 className="text-primary font-black uppercase tracking-widest text-sm flex items-center gap-2">
                         <Check className="w-5 h-5" /> MoreMeets™ Operating System
                     </h3>
                     <ul className="space-y-6">
                         {[
-                            { t: "Tasks tracked daily", d: "Every step is signed off. Discipline becomes a mandatory habit." },
-                            { t: "You see updates instantly", d: "Know exactly who is performing in 5 seconds from your phone." },
-                            { t: "Full Executive Clarity", d: "Knowledge stays with the business even when staff leave." },
-                            { t: "Problems caught early", d: "The system identifies and fixes errors before they cost you money." }
+                            { t: "Tasks tracked daily", d: "Every step is signed off. Discipline becomes mandatory." },
+                            { t: "You see updates instantly", d: "Know exactly who is performing in 5 seconds." },
+                            { t: "Full Executive Clarity", d: "Knowledge stays with the business if staff leave." },
+                            { t: "Problems caught early", d: "The system flags errors before they cost money." }
                         ].map(item => (
                             <li key={item.t} className="space-y-1">
                                 <p className="text-primary-text font-bold text-sm">{item.t}</p>
@@ -105,39 +128,49 @@ const ComparisonSection = () => (
     </section>
 );
 
-const GlobalStandardsSection = ({ pack }: { pack: PremiumPack }) => {
-    if (!pack.globalStandards || !pack.globalStandards.standards) {
-        return null;
-    }
-
-    return (
-        <section className="w-full py-12 md:py-16">
-            <div className="container px-2 md:px-6">
-                <div className="max-w-3xl mx-auto text-center mb-10">
-                    <h2 className="text-2xl md:text-3xl font-bold tracking-tighter font-headline uppercase italic">
-                        AUDIT-READY. GLOBALLY COMPLIANT.
-                    </h2>
-                     <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4">
-                        Our systems are built upon globally recognized standards to ensure you're operating at a world-class level.
-                    </p>
+const WhatChangesSection = () => (
+    <Section className="bg-black">
+        <div className="container px-4 md:px-6 max-w-4xl mx-auto space-y-16">
+            <div className="text-center space-y-4">
+                <SectionHeadline>What changes after deployment?</SectionHeadline>
+                <p className="text-secondary-text italic font-medium">From firefighting to focused growth.</p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-12">
+                <div className="space-y-6 p-8 rounded-3xl bg-white/[0.02] border border-white/10">
+                    <h3 className="text-white/40 font-black uppercase tracking-widest text-xs">The Past: Firefighting</h3>
+                    <div className="space-y-4">
+                        {[
+                            "You follow up constantly",
+                            "You guess if tasks are done",
+                            "You depend on key people",
+                            "Staff works without accountability"
+                        ].map(item => (
+                            <div key={item} className="flex items-center gap-3 text-sm text-secondary-text italic">
+                                <X className="w-4 h-4 text-red-500/50" /> {item}
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto items-start justify-center">
-                    {pack.globalStandards.standards.map((standard, index) => (
-                        <Card key={index} className="flex flex-col text-center p-4 md:p-6 bg-background">
-                            <CardHeader className="p-0">
-                                <div className="text-accent mx-auto mb-2"><ComplianceIcon standard={standard.name} /></div>
-                                <CardTitle className="text-sm md:text-lg font-headline">{standard.name}</CardTitle>
-                            </CardHeader>
-                            <CardContent className="p-0 mt-2 flex-1">
-                                <p className="text-xs text-muted-foreground">{standard.description}</p>
-                            </CardContent>
-                        </Card>
-                    ))}
+                <div className="space-y-6 p-8 rounded-3xl bg-primary/5 border border-primary/20">
+                    <h3 className="text-primary font-black uppercase tracking-widest text-xs">The Future: Command</h3>
+                    <div className="space-y-4">
+                        {[
+                            "You see everything live",
+                            "You act faster on issues",
+                            "You stay in control remotely",
+                            "Discipline is automated"
+                        ].map(item => (
+                            <div key={item} className="flex items-center gap-3 text-sm text-primary-text font-bold">
+                                <Check className="w-4 h-4 text-primary" /> {item}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
-        </section>
-    );
-};
+        </div>
+    </Section>
+);
 
 export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack: PremiumPack, heroImageUrl: string | null, imageHint: string }) {
   const audience = pack.whoIsItFor || ["Industry Professionals"];
@@ -152,6 +185,7 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
       <SiteHeader />
 
       <main className="flex-1">
+        {/* HERO SECTION */}
         <section className="w-full pt-12 pb-6 md:pt-20 md:pb-10 bg-secondary/30">
           <div className="container px-4 md:px-6">
             <div className={cn("grid gap-6 lg:gap-12 xl:gap-16 items-center", hasValidHeroImage ? "lg:grid-cols-[1fr,400px]" : "grid-cols-1 max-w-4xl mx-auto")}>
@@ -191,15 +225,16 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
 
         <PainPointsSection packId={pack.id} />
 
+        {/* CLARITY: WHAT YOU GET */}
         {!isEmptyPack && (
           <section id="checklists" className="w-full py-12 md:py-16">
               <div className="container px-2 md:px-6">
-                  <div className="max-w-4xl mx-auto text-center mb-12">
-                      <h2 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tighter font-headline uppercase italic">
-                          STOP THE OPERATIONAL BLEED
+                  <div className="max-w-4xl mx-auto text-center mb-12 space-y-4">
+                      <h2 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tighter font-headline uppercase italic text-primary">
+                          THE SYSTEM SUPERPOWERS
                       </h2>
-                      <p className="max-w-[700px] text-secondary-text text-base md:text-lg/relaxed mx-auto mt-4 font-medium">
-                          Deploy a standalone data engine designed to run your entire business without chaos. This is not a checklist; it is an infrastructure audit tool.
+                      <p className="max-w-[700px] text-secondary-text text-base md:text-lg/relaxed mx-auto font-medium italic">
+                          You are deploying a standalone data engine designed to run your business without chaos. This is what changes on Day 1:
                       </p>
                   </div>
 
@@ -219,9 +254,37 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
           </section>
         )}
 
+        <NotAChecklistSection />
         <ComparisonSection />
+        <WhatChangesSection />
 
-        <GlobalStandardsSection pack={pack} />
+        {pack.globalStandards && (
+            <section className="w-full py-12 md:py-16 bg-secondary/10">
+                <div className="container px-2 md:px-6">
+                    <div className="max-w-3xl mx-auto text-center mb-10">
+                        <h2 className="text-2xl md:text-3xl font-bold tracking-tighter font-headline uppercase italic">
+                            AUDIT-READY. GLOBALLY COMPLIANT.
+                        </h2>
+                        <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4 font-medium italic">
+                            Our systems are built upon globally recognized standards to ensure you're operating at a world-class level.
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto items-start justify-center">
+                        {pack.globalStandards.standards.map((standard, index) => (
+                            <Card key={index} className="flex flex-col text-center p-4 md:p-6 bg-background">
+                                <CardHeader className="p-0">
+                                    <div className="text-accent mx-auto mb-2"><ComplianceIcon standard={standard.name} /></div>
+                                    <CardTitle className="text-sm md:text-lg font-headline">{standard.name}</CardTitle>
+                                </CardHeader>
+                                <CardContent className="p-0 mt-2 flex-1">
+                                    <p className="text-xs text-muted-foreground font-medium">{standard.description}</p>
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        )}
 
       </main>
     </div>

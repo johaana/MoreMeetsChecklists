@@ -20,7 +20,8 @@ import {
     Lock,
     Gift,
     Infinity,
-    FileSpreadsheet
+    FileSpreadsheet,
+    Zap
 } from 'lucide-react';
 import { Badge } from '../components/ui/badge';
 import { useToast } from '../hooks/use-toast';
@@ -229,14 +230,27 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                             <div className="flex flex-col items-center">
                                 <div className="space-y-2 mb-8">
+                                    <div className="flex items-center justify-center gap-4 mb-4">
+                                        <div className="text-left">
+                                            <p className="text-[10px] font-black uppercase text-white/20">Typical Consulting</p>
+                                            <p className="text-sm font-bold text-white/40 line-through">
+                                                {region === 'INDIA' ? '₹4,00,000+' : `$${pack.consultingAnchor || 5000}+`}
+                                            </p>
+                                        </div>
+                                        <div className="w-px h-8 bg-white/5" />
+                                        <div className="text-left">
+                                            <p className="text-[10px] font-black uppercase text-primary">Your Investment</p>
+                                            <p className="text-2xl font-black text-primary-text italic">
+                                                {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
                                     {pack.pricingUrgency && (
                                         <p className="text-sm font-bold text-accent italic">
                                             "{pack.pricingUrgency}"
                                         </p>
                                     )}
-                                    <p className="text-xs text-muted-foreground line-through opacity-50 font-bold uppercase tracking-widest">
-                                        Equivalent consulting cost: {region === 'INDIA' ? '₹4,00,000+' : `$${pack.consultingAnchor || 5000}+`}
-                                    </p>
                                 </div>
 
                                 <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto transition-none">
@@ -262,22 +276,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         )}
                                     </div>
                                     
-                                    <div className="mt-1.5 flex items-center justify-center gap-2 opacity-40 grayscale">
-                                        <Lock className="w-3 h-3" />
-                                        <span className="text-[11px] font-black tracking-widest uppercase">
-                                            {region === 'INDIA' ? 'Secure Payment • No Monthly Subscriptions' : 'Secure Checkout • Own Forever'}
+                                    <div className="mt-4 flex items-center justify-center gap-2">
+                                        <Zap className="w-3 h-3 text-primary" />
+                                        <span className="text-[11px] font-black tracking-widest uppercase text-white/40">
+                                            Instant Digital Delivery · One-time payment
                                         </span>
                                     </div>
 
-                                    <div className="mt-3 flex items-center justify-center gap-2 tracking-tight">
-                                        <Check className="w-3.5 h-3.5 text-primary opacity-80" /> 
-                                        <span className="text-[13px] text-muted-foreground font-bold uppercase tracking-tight text-center">
-                                            Instant Digital Delivery · Zero SaaS Dependency
-                                        </span>
-                                    </div>
-
-                                    <p className="mt-6 text-[10px] text-white/20 font-black uppercase tracking-widest">
-                                        By purchasing, you agree to our <Link href="/terms" target="_blank" className="underline underline-offset-2 hover:text-white/40">Terms</Link> & <Link href="/refund" target="_blank" className="underline underline-offset-2 hover:text-white/40">Refund Policy</Link>
+                                    <p className="mt-10 text-[10px] text-white/20 font-black uppercase tracking-widest">
+                                        By purchasing, you agree to our <Link href="/terms" target="_blank" className="underline underline-offset-2 hover:text-white/40">Terms</Link> & <Link href="/refund" target="_blank" className="underline hover:text-white/40">Refund Policy</Link>
                                     </p>
                                 </div>
                             </div>

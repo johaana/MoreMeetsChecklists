@@ -3,12 +3,12 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 export const restaurants: PremiumPack = {
     id: 'restaurants',
-    title: "Restaurant Operating System (ROCS v4.3)",
+    title: "Restaurant Operating System (Sovereign v4.3)",
     category: "Hospitality",
-    description: "No monthly subscriptions. No SaaS dependency. One-time investment for a lifetime of control. ROCS v4.3 is the professional plug for your profit leaks.",
+    description: "No monthly subscriptions. No SaaS dependency. One-time investment for a lifetime of control. Most restaurants run on memory and WhatsApp—that's why they lose 2–5% revenue daily. This system fixes that.",
     heroHeadline: "Run Your Restaurant Like a System — Not Chaos",
-    heroSubheadline: "Track daily tasks, monitor staff, and stay in control — even when you’re not there.",
-    pricingUrgency: "Most restaurants lose 2-5% revenue to operational chaos. This system stops the bleed.",
+    heroSubheadline: "Daily tasks. Team tracking. Manager control. Live performance dashboard. Stay in control even when you’re not there.",
+    pricingUrgency: "Small mistakes in daily operations cost you more than you think. Even one incident prevented recovers the entire cost of this system.",
     consultingAnchor: 5000,
     priceINR: 5999,
     priceUSD: 79,
@@ -20,15 +20,16 @@ export const restaurants: PremiumPack = {
     badgeText: "V4.3 SOVEREIGN",
     badgeVariant: "accent",
     bestseller: true,
-    whoIsItFor: ["Restaurant Owners", "Multi-branch operators", "Managers tired of chasing staff"],
+    whoIsItFor: ["Restaurant Owners", "Cloud Kitchen Operators", "Multi-branch Managers", "Heads of Operations"],
     sampleItems: [
-        { text: "<strong>2-Minute Daily Pulse</strong>: Your team updates everything in seconds. No long reports. 100% staff adoption.", icon: "timer" },
-        { text: "<strong>Live Operational Visibility</strong>: See which branch, team, and staff member is performing instantly from your phone.", icon: "zap" },
-        { text: "<strong>High-Risk Verification</strong>: Highlighted 'Yellow Targets' show managers exactly what needs attention—no more manual auditing.", icon: "shield-check" },
-        { text: "<strong>Gamified Competition</strong>: Driven by the 'Empire Mood' engine. Recognize top performers and branches with live streak tracking.", icon: "trophy" },
-        { text: "<strong>Consequences of Failure</strong>: Every task lists the real-world risk, turning mechanical checking into intentional compliance.", icon: "shield-alert" },
-        { text: "<strong>Onboarding Safety Net</strong>: New staff follow instructions and Trainer's Notes built into the file. Tribal knowledge is now infrastructure.", icon: "history" },
-        { text: "<strong>Multi-Branch Switchboard</strong>: Run your entire group from one master file. Toggle modules ON/OFF to fit each unique outlet.", icon: "layout-grid" }
+        { text: "<strong>Team updates tasks in under 2 minutes</strong>. No long reports. 100% staff adoption.", icon: "timer" },
+        { text: "<strong>See who is working and who is not</strong> — instantly from your phone.", icon: "zap" },
+        { text: "<strong>Managers verify critical tasks</strong>. Highlighted targets mean no shortcuts on safety or cash.", icon: "shield-check" },
+        { text: "<strong>Automated Daily/Weekly/Monthly cycles</strong>. The system remembers so your staff doesn't have to.", icon: "calendar-days" },
+        { text: "<strong>Built-in training for new staff</strong>. Every task includes instructions and consequences of failure.", icon: "history" },
+        { text: "<strong>Live Dashboard visibility</strong>. No more calling managers to ask if 'everything is okay'.", icon: "layout-grid" },
+        { text: "<strong>Track incidents and losses</strong>. Know exactly where your profit is leaking.", icon: "banknote" },
+        { text: "<strong>Gamified performance</strong>. Branch rankings and 'Stars' drive team discipline.", icon: "trophy" }
     ],
     checklists: [
         {
@@ -67,44 +68,6 @@ export const restaurants: PremiumPack = {
                 consequence: "Pathogen transmission, food waste, or regulatory closure.",
                 proof: "Digital Log / Photo",
                 trainerNotes: "Standard clinical procedure. Do not skip."
-            }))
-        },
-        {
-            title: "Kitchen Closing",
-            department: "Kitchen",
-            frequency: "Daily",
-            role: "Sous Chef",
-            summary: "End-of-shift safety and sanitation shutdown.",
-            icon: "sunset",
-            tasks: Array.from({ length: 20 }, (_, i) => ({
-                id: `KC-${(i + 1).toString().padStart(2, '0')}`,
-                description: [
-                    "Perform mandatory main gas valve shutdown.",
-                    "Empty and deep-clean all deep fryers.",
-                    "Label and date-stamp all prepped items (FIFO).",
-                    "Clean and sanitize all walk-in floor drains.",
-                    "Organize and secure chemical storage locker.",
-                    "Empty all trash bins and sanitize interiors.",
-                    "Check all pilot lights are extinguished.",
-                    "Sanitize meat slicer and disassemble.",
-                    "Secure all knife magnets and sharpen.",
-                    "Final walk-in door seal verification.",
-                    "Discard all open dairy past expiry.",
-                    "Turn off all hood lights and fans.",
-                    "Wipe down all door handles with 70% alcohol.",
-                    "Mop floors with degreaser.",
-                    "Secure all prep fridge lids.",
-                    "Check dishwasher for food debris.",
-                    "Verify all staff have clocked out.",
-                    "Empty and dry bain-marie wells.",
-                    "Lock dry store and wine cellar.",
-                    "Review morning prep list for next day."
-                ][i],
-                priority: "High",
-                riskLevel: "High",
-                consequence: "Fire risk, overnight spoilage, or hygiene failure.",
-                proof: "Physical Log",
-                trainerNotes: "Critical for overnight facility safety."
             }))
         }
     ]
