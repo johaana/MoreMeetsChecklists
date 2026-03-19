@@ -358,7 +358,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     // --- 05. TEAM_HUB ---
     const pHeaders = [{v:"Staff ID", s:headerStyle}, {v:"Role Name", s:headerStyle}, {v:"Full Name", s:headerStyle}, {v:"Contact", s:headerStyle}, {v:"Status", s:headerStyle}];
-    const pData = [[], [{v:"TEAM HUB & ROLE ASSIGNMENT", s:{font:{sz:18, bold:true}}}], [], pHeaders];
+    const pData: any[][] = [[], [{v:"TEAM HUB & ROLE ASSIGNMENT", s:{font:{sz:18, bold:true}}}], [], pHeaders];
     const allRoles = Array.from(new Set(packChecklists.map(c => c.role)));
     allRoles.forEach((role, idx) => {
         pData.push([
@@ -474,5 +474,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ]
     };
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_v4.3_Master.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Master.xlsx`);
 }

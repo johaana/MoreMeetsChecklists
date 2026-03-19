@@ -155,22 +155,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED }, italic: true }
     };
 
-    const inactiveRowStyle = {
-        ...dataStyleLeft,
-        fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } },
-        font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED }, italic: true }
-    };
-
-    const instructionTitleStyle = {
-        font: { ...baseFont, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } },
-        alignment: { vertical: 'center' }
-    };
-
-    const instructionBodyStyle = {
-        font: { ...baseFont, sz: 10 },
-        alignment: { wrapText: true, vertical: 'top' }
-    };
-
     const addAppHeader = (ws: WorkSheet, endCol: string = 'K') => {
         utils.sheet_add_aoa(ws, [[{ 
             v: "◀ BACK TO HOME CONSOLE", 
@@ -195,7 +179,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [], [],
         [{ v: "MOREMEETS™ RESTAURANT OPERATIONAL CONSOLE", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
         [{ v: "Run Your Entire Restaurant Operations From One Screen", s: { font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
-        [{ v: "Enterprise Continuity & Governance Suite v4.3 PRO | Sovereign Tier", s: { font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: "Enterprise Continuity & Governance Suite PRO | Sovereign Tier", s: { font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
         [],
         [
             { v: "ADMIN & SETUP", s: groupHeaderStyle }, null, 
@@ -261,198 +245,24 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     homeWs['!views'] = [{ showGridLines: false }];
     utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
 
-    // --- 02. BRANCH_SETUP ---
-    const facilityHeaders = [
-        { v: "Branch ID", s: headerStyle }, { v: "Branch Name", s: headerStyle },
-        { v: "Kitchen", s: headerStyle }, { v: "Bar", s: headerStyle }, { v: "Dining", s: headerStyle },
-        { v: "Statutory", s: headerStyle }, { v: "Delivery", s: headerStyle }, { v: "Admin", s: headerStyle }
+    // --- SUB-SHEETS (Software Chasses) ---
+    const subSheets = [
+        { name: "BRANCH_SETUP", title: "BRANCH MASTER SETUP" },
+        { name: "TODAYS_TASKS", title: "DAILY TASK EXECUTION LOG" },
+        { name: "BUSINESS_HEALTH", title: "EXECUTIVE ANALYTICS" },
+        { name: "TEAM_HUB", title: "TEAM HUB & DIRECTORY" },
+        { name: "SHIFT_HANDOVER", title: "SHIFT HANDOVER BRIDGE" },
+        { name: "INCIDENT_TRACKER", title: "LIABILITY & INCIDENT LOG" },
+        { name: "SOP_LIBRARY", title: "SOP LIBRARY DATABASE" },
+        { name: "COST_SAVINGS_TRACKER", title: "COST & SAVINGS TRACKER" },
+        { name: "HOW_THIS_WORKS", title: "SYSTEM COMMAND MANUAL" }
     ];
-    const branchSetupData = [
-        [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
-        [],
-        [], facilityHeaders,
-        [{ v: "1", s: dataStyleCenter }, { v: "Type Branch 1 Name", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }],
-        [{ v: "2", s: dataStyleCenter }, { v: "Type Branch 2 Name", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }]
-    ];
-    const setupWs = utils.aoa_to_sheet(branchSetupData);
-    setupWs['!cols'] = [12, 35, 10, 10, 10, 10, 10, 10].map(w => ({ wch: w }));
-    addAppHeader(setupWs, 'H');
-    utils.book_append_sheet(wb, setupWs, "BRANCH_SETUP");
 
-    // --- 03. TODAYS_TASKS ---
-    const mHeaders = [
-        { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, 
-        { v: "Responsible Role", s: headerStyle }, { v: "Assigned Person (Auto)", s: headerStyle },
-        { v: "ID", s: headerStyle }, { v: "Mission Requirement / Control Step", s: headerStyle }, 
-        { v: "Done By (Initials)", s: headerStyle }, { v: "Verified By (Manager)", s: headerStyle },
-        { v: "Status", s: headerStyle }, 
-        { v: "Freq", s: intelStyle }, { v: "Risk", s: intelStyle },
-        { v: "Consequence", s: intelStyle }, { v: "Notes / Trainer Notes", s: intelStyle }
-    ];
-    const mData: any[][] = [[], [{ v: "MISSION LEDGER: DAILY EXECUTION LOG", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
-    
-    [1, 2].forEach(bCode => {
-        item.checklists.forEach((c, cIdx) => {
-            c.tasks.forEach(t => {
-                const rowIdx = mData.length + 1;
-                const statusFormula = `IF(LEN(TRIM(G${rowIdx}))=0, "PENDING", IF(AND(LEN(TRIM(H${rowIdx}))=0, H${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
-                const personFormula = `IFERROR(VLOOKUP(C${rowIdx}, 'TEAM_HUB'!B:C, 2, FALSE), "[UNASSIGNED]")`;
-
-                mData.push([
-                    { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
-                    { t: 'f', f: `IFERROR(INDEX('BRANCH_SETUP'!$B$5:$B$15, ${bCode}), "Branch ${bCode}")`, s: dataStyleCenter },
-                    { v: c.role, s: dataStyleCenter },
-                    { t: 'f', f: personFormula, s: dataStyleCenter },
-                    { v: t.id, s: dataStyleCenter },
-                    { v: t.description, s: dataStyleLeft },
-                    { v: "", s: inputStyle },
-                    { v: t.priority === 'High' ? "" : "N/A", s: t.priority === 'High' ? managerYellowStyle : naGreyStyle },
-                    { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true } } },
-                    { v: c.frequency, s: intelStyle },
-                    { v: t.priority, s: intelStyle },
-                    { v: t.consequence, s: intelStyle },
-                    { v: t.trainerNotes || "-", s: intelStyle }
-                ]);
-            });
-        });
+    subSheets.forEach(s => {
+        const ws = utils.aoa_to_sheet([[],[{v: s.title, s: { font: { bold: true, sz: 18, color: { rgb: COLORS.NAVY_DEEP } } }}]]);
+        addAppHeader(ws, 'K');
+        utils.book_append_sheet(wb, ws, s.name);
     });
 
-    const mWs = utils.aoa_to_sheet(mData);
-    mWs['!cols'] = [15, 25, 25, 30, 10, 65, 20, 20, 20, 12, 12, 45, 50].map(w => ({ wch: w }));
-    addAppHeader(mWs, 'M');
-    mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
-    utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
-
-    // --- 04. BUSINESS_HEALTH ---
-    const dashData = [
-        [], [{ v: "BUSINESS HEALTH: PERFORMANCE HUB", s: { font: { sz: 20, bold: true } } }], [],
-        [{ v: "GROUP KPIs", s: groupHeaderStyle }, null, null],
-        [{ v: "Operational KPI", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Target Threshold", s: headerStyle }],
-        [{ v: "Group Shift Progress", s: dataStyleLeft }, { t:'f', f:`IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*")), "0%"), "0%")`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
-        [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
-    ];
-    const dWs = utils.aoa_to_sheet(dashData);
-    dWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
-    addAppHeader(dWs, 'C');
-    utils.book_append_sheet(wb, dWs, "BUSINESS_HEALTH");
-
-    // --- 05. TEAM_HUB ---
-    const pHeaders = [{v:"Staff ID", s:headerStyle}, {v:"Role Name", s:headerStyle}, {v:"Full Name", s:headerStyle}, {v:"Contact", s:headerStyle}, {v:"Status", s:headerStyle}];
-    const pData = [[], [{v:"TEAM HUB & ROLE ASSIGNMENT", s:{font:{sz:18, bold:true}}}], [], pHeaders];
-    const allRoles = Array.from(new Set(item.checklists.map(c => c.role)));
-    allRoles.forEach((role, idx) => {
-        pData.push([
-            { v: String(idx + 1), s: dataStyleCenter },
-            { v: role, s: dataStyleLeft },
-            { v: "Type Person Name", s: ghostInputStyle }, 
-            { v: "Contact Details", s: ghostInputStyle },
-            { v: "ACTIVE", s: dataStyleCenter }
-        ]);
-    });
-    const pWs = utils.aoa_to_sheet(pData);
-    pWs['!cols'] = [12, 30, 35, 20, 25].map(w => ({ wch: w }));
-    addAppHeader(pWs, 'E');
-    utils.book_append_sheet(wb, pWs, "TEAM_HUB");
-
-    // --- 06. INCIDENT_TRACKER ---
-    const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Category", s:headerStyle}, {v:"Description", s:headerStyle}, {v:"Impact", s:headerStyle}, {v:"Status", s:headerStyle}];
-    const iData = [[], [{v:"INCIDENT TRACKER: LIABILITY LOG", s:{font:{sz:18, bold:true}}}], [], iHeaders];
-    const iWs = utils.aoa_to_sheet(iData);
-    iWs['!cols'] = [15, 12, 25, 35, 60, 30, 20].map(w => ({ wch: w }));
-    addAppHeader(iWs, 'G');
-    utils.book_append_sheet(wb, iWs, "INCIDENT_TRACKER");
-
-    // --- 07. SHIFT_HANDOVER ---
-    const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Details", s:headerStyle}, {v:"Outstanding", s:headerStyle}];
-    const hData = [[], [{v:"SHIFT HANDOVER BRIDGE", s:{font:{sz:18, bold:true}}}], [], hHeaders];
-    const hWs = utils.aoa_to_sheet(hData);
-    hWs['!cols'] = [15, 25, 25, 60, 60].map(w => ({ wch: w }));
-    addAppHeader(hWs, 'E');
-    utils.book_append_sheet(wb, hWs, "SHIFT_HANDOVER");
-
-    // --- 08. SOP_LIBRARY ---
-    const mpData: any[][] = [[], [{ v: "SOP LIBRARY: MASTER DATABASE", s: { font: { sz: 16, bold: true } } }], [], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement", s:headerStyle}, {v:"Consequence", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}]];
-    item.checklists.forEach(c => {
-        c.tasks.forEach(t => {
-            mpData.push([
-                { v: t.id, s: dataStyleCenter }, 
-                { v: c.title, s: dataStyleCenter }, 
-                { v: t.description, s: dataStyleLeft }, 
-                { v: t.consequence, s: dataStyleLeft }, 
-                { v: t.trainerNotes || "-", s: dataStyleLeft }, 
-                { v: c.frequency, s: dataStyleCenter }
-            ]);
-        });
-    });
-    const mpWs = utils.aoa_to_sheet(mpData);
-    mpWs['!cols'] = [12, 25, 65, 45, 50, 12].map(w => ({ wch: w }));
-    addAppHeader(mpWs, 'F');
-    utils.book_append_sheet(wb, mpWs, "SOP_LIBRARY");
-
-    // --- 09. COST_SAVINGS ---
-    const rData = [
-        [], [{v:"COST & SAVINGS TRACKER", s:{font:{sz:18, bold:true}}}], [], 
-        [{v:"Risk Category", s:headerStyle}, {v:"Impact per Event", s:headerStyle}, {v:"Freq / Yr", s:headerStyle}, {v:"Projected Loss", s:headerStyle}, {v:"Status", s:headerStyle}],
-        [{v:"Major Operational Failure", s:dataStyleLeft}, {v:"50000", s:ghostInputStyle}, {v:"12", s:ghostInputStyle}, {t:'f', f:'B6*C6', s:dataStyleCenter}, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
-    ];
-    const rWs = utils.aoa_to_sheet(rData);
-    rWs['!cols'] = [40, 25, 25, 25, 20].map(w => ({ wch: w }));
-    addAppHeader(rWs, 'E');
-    utils.book_append_sheet(wb, rWs, "COST_SAVINGS_TRACKER");
-
-    // --- 10. HOW THIS WORKS ---
-    const guideData = [
-        [], 
-        [{ v: "🚀 SYSTEM COMMAND MANUAL", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [{ v: "The Definitive Protocol for Standardized Operations", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.INTEL_GREY } } } }],
-        [],
-        [{ v: "SECTION", s: headerStyle }, { v: "ACTION STEPS & SYSTEM PROTOCOLS", s: headerStyle }],
-        [{ v: "1. ENGINE SETUP", s: instructionTitleStyle }, { v: "Go to 'BRANCH_SETUP'. Use the Switchboard to toggle your modules to YES or NO. This automatically filters irrelevant tasks from your ledger.", s: instructionBodyStyle }],
-        [],
-        [{ v: "2. ASSIGNING HEROES", s: instructionTitleStyle }, { v: "Go to 'TEAM_HUB'. Type real staff names next to roles. This ensures every task in the Ledger is personally assigned.", s: instructionBodyStyle }],
-        [],
-        [{ v: "3. FINDING WORK", s: instructionTitleStyle }, { v: "Staff: Go to 'TODAYS_TASKS'. Use the filter arrow [v] on 'Responsible Role' to see only your job.", s: instructionBodyStyle }],
-        [],
-        [{ v: "4. THE DAILY PULSE", s: instructionTitleStyle }, { v: "Type your initials in 'Done By' when finished. Status updates automatically.", s: instructionBodyStyle }],
-        [],
-        [{ v: "5. MANAGER VERIFY", s: instructionTitleStyle }, { v: "Managers: Look for Yellow Cells in 'Verified By'. These are high-risk points requiring sign-off.", s: instructionBodyStyle }],
-        [],
-        [{ v: "6. SHIFT BRIDGE", s: instructionTitleStyle }, { v: "Use 'SHIFT_HANDOVER' to communicate between AM/PM teams. Prevents information loss.", s: instructionBodyStyle }],
-        [],
-        [{ v: "7. INCIDENT COMMAND", s: instructionTitleStyle }, { v: "Log safety or legal incidents in 'INCIDENT_TRACKER'. Creates the 'Black Box' data trail.", s: instructionBodyStyle }],
-        [],
-        [{ v: "8. VIEWING HISTORY", s: instructionTitleStyle }, { v: "To see old records, use the filter arrow [v] on the 'Date' column in 'TODAYS_TASKS'. Uncheck 'Today' and select past dates.", s: instructionBodyStyle }],
-        [],
-        [{ v: "9. EVOLVING THE BIBLE", s: instructionTitleStyle }, { v: "Add new tasks to 'SOP_LIBRARY'. They will flow into the daily ledger automatically.", s: instructionBodyStyle }],
-        [],
-        [{ v: "10. TRACKING ROI", s: instructionTitleStyle }, { v: "Use 'COST_SAVINGS_TRACKER' to visualize the financial value your discipline protects.", s: instructionBodyStyle }]
-    ];
-    const guideWs = utils.aoa_to_sheet(guideData);
-    guideWs['!cols'] = [{ wch: 35 }, { wch: 100 }];
-    guideWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 1 } }, { s: { r: 2, c: 0 }, e: { r: 2, c: 1 } }];
-    addAppHeader(guideWs, 'B');
-    utils.book_append_sheet(wb, guideWs, "HOW_THIS_WORKS");
-
-    // --- 11. AUTH CORE (HIDDEN) ---
-    const aData = [["KEY", "VALUE"], ["EMAIL", BUYER_EMAIL], ["ORDER", ORDER_ID]];
-    const aWs = utils.aoa_to_sheet(aData);
-    utils.book_append_sheet(wb, aWs, "_AUTH_CORE_");
-    
-    wb.Workbook = {
-        Sheets: [
-            { name: "HOME_CONSOLE", Hidden: 0 },
-            { name: "BRANCH_SETUP", Hidden: 0 },
-            { name: "TODAYS_TASKS", Hidden: 0 },
-            { name: "BUSINESS_HEALTH", Hidden: 0 },
-            { name: "TEAM_HUB", Hidden: 0 },
-            { name: "SHIFT_HANDOVER", Hidden: 0 },
-            { name: "INCIDENT_TRACKER", Hidden: 0 },
-            { name: "SOP_LIBRARY", Hidden: 0 },
-            { name: "COST_SAVINGS_TRACKER", Hidden: 0 },
-            { name: "HOW_THIS_WORKS", Hidden: 0 },
-            { name: "_AUTH_CORE_", Hidden: 1 }
-        ]
-    };
-
-    writeFile(wb, `ROCS_v4.3_Master_Build.xlsx`);
+    writeFile(wb, `ROCS_Sovereign_Build.xlsx`);
 }
