@@ -26,7 +26,7 @@ export const healthcare_and_hospital_operations: PremiumPack = {
         { text: "<strong>Surgical Safety Command</strong>: WHO-aligned protocols for pre-incision 'Time Outs' to eliminate wrong-site surgery.", icon: "shield-check" },
         { text: "<strong>Ambulance & Emergency Response</strong>: Readiness logs for medical gas, siren, and emergency contact sync.", icon: "ambulance" },
         { text: "<strong>High-Risk Verification</strong>: Highlighted 'Yellow Targets' show Quality Leads exactly what needs sign-off—from sterilization to narcotics.", icon: "target" },
-        { text: "<strong>Dietary & Canteen Governance</strong>: Audit patient meals against doctor orders to prevent dietary errors.", icon: "utensils" },
+        { text: "<strong>Billing & Insurance Shield</strong>: Daily audits for TPA pre-auths and discharge clearance to stop revenue leakage.", icon: "banknote" },
         { text: "<strong>Institutional Memory</strong>: Capture expert clinical knowledge so new residents and nurses are audit-ready from Day 1.", icon: "history" },
         { text: "<strong>Sovereign Infrastructure</strong>: No recurring SaaS fees. You own your clinical data and the control system forever.", icon: "lock" }
     ],
@@ -81,27 +81,27 @@ export const healthcare_and_hospital_operations: PremiumPack = {
             ]
         },
         {
-            title: "Reception & Patient Relations",
-            department: "Admin",
+            title: "Reception & Billing Command",
+            department: "Admin/Billing",
             frequency: "Daily",
-            role: "Reception Manager",
-            summary: "Protects the front-end experience and emergency coordination.",
-            icon: "user-check",
+            role: "Billing Manager",
+            summary: "Protects the patient pipeline and stops revenue leakage.",
+            icon: "banknote",
             tasks: [
                 { id: "H-RE-01", description: "Verify emergency contact numbers for all on-call specialists.", priority: "High", riskLevel: "High", consequence: "Unable to reach doctors during a crisis.", proof: "Contact Sync" },
                 { id: "H-RE-02", description: "Audit reception call-handling: wait time and phone etiquette.", priority: "Medium", riskLevel: "Low", consequence: "Lost consultations and poor brand image.", proof: "Call Log" },
                 { id: "H-RE-03", description: "Appointment Sync: Verify online slots match live doctor availability.", priority: "High", riskLevel: "Low", consequence: "Patient frustration and overbooking.", proof: "System Reconcile" },
                 { id: "H-RE-04", description: "ORM Pulse: Respond to Google/Practo reviews within 24 hours.", priority: "High", riskLevel: "Medium", consequence: "Reputation damage and lower patient footfall.", proof: "Dashboard Check" },
                 { id: "H-RE-05", description: "Verify Patient Info availability: brochures, maps, and rate lists.", priority: "Low", riskLevel: "Low", consequence: "Patient confusion and transparency issues.", proof: "Visual Check" },
-                { id: "H-RE-06", description: "Update social media with today's health highlight or doctor story.", priority: "Low", riskLevel: "Low", consequence: "Lower brand engagement.", proof: "Live Post" },
-                { id: "H-RE-07", description: "Confirm reception cash float reconciliation.", priority: "High", riskLevel: "Medium", consequence: "Revenue discrepancies.", proof: "Cash Report" },
-                { id: "H-RE-08", description: "Review daily feedback forms for critical service gaps.", priority: "Medium", riskLevel: "Low", consequence: "Missed recovery opportunities.", proof: "Feedback Summary" },
-                { id: "H-RE-09", description: "Verify availability of wheelchairs and stretchers at the porch.", priority: "High", riskLevel: "Medium", consequence: "Delay in handling unstable patients.", proof: "Visual Audit" },
-                { id: "H-RE-10", description: "Daily briefing on insurance/TPA changes or network status.", priority: "Medium", riskLevel: "Low", consequence: "Incorrect billing guidance to patients.", proof: "Briefing Note" }
+                { id: "H-RE-06", description: "Billing Reconciliation: Match daily cash/digital receipts to HIS (Hospital Information System) reports.", priority: "High", riskLevel: "High", consequence: "Internal fraud and revenue discrepancies.", proof: "Finance Summary" },
+                { id: "H-RE-07", description: "TPA Pre-Auth Audit: Verify all IPD admissions have pre-authorization or deposit.", priority: "High", riskLevel: "High", consequence: "Claim rejections and massive unrecoverable losses.", proof: "Pre-Auth Register" },
+                { id: "H-RE-08", description: "Daily IPD Estimate Briefing: Verify relatives are updated on current bill vs estimate.", priority: "High", riskLevel: "Medium", consequence: "Violent disputes and payment defaults at discharge.", proof: "Interaction Log" },
+                { id: "H-RE-09", description: "Consumable Charge Check: Random audit of nursing charts vs bill for unbilled pharmacy items.", priority: "High", riskLevel: "High", consequence: "Silent profit leakage through unbilled medication/consumables.", proof: "Audit Scorecard" },
+                { id: "H-RE-10", description: "Insurance Network Sync: Daily briefing on changes to network providers or excluded procedures.", priority: "Medium", riskLevel: "Low", consequence: "Incorrect guidance to patients; legal liability.", proof: "Briefing Note" }
             ]
         },
         {
-            title: "Canteen & Dietary Services",
+            title: "Canteen & Dietary Governance",
             department: "F&B",
             frequency: "Daily",
             role: "Dietician / F&B Manager",
