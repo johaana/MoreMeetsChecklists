@@ -21,7 +21,8 @@ import {
     Gift,
     Infinity,
     FileSpreadsheet,
-    Zap
+    Zap,
+    LifeBuoy
 } from 'lucide-react';
 import { Badge } from '../components/ui/badge';
 import { useToast } from '../hooks/use-toast';
@@ -253,8 +254,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     )}
                                 </div>
 
-                                <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto transition-none">
-                                    <Gift className="w-4 h-4" /> 1 EXPERT CUSTOMIZATION INCLUDED
+                                <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto">
+                                    <Zap className="w-4 h-4" /> READY TO DEPLOY IN 10 MINUTES
                                 </div>
 
                                 <div className="w-full flex flex-col items-center pt-8">
@@ -276,11 +277,19 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         )}
                                     </div>
                                     
-                                    <div className="mt-4 flex items-center justify-center gap-2">
-                                        <Zap className="w-3 h-3 text-primary" />
-                                        <span className="text-[11px] font-black tracking-widest uppercase text-white/40">
-                                            Instant Digital Delivery · One-time payment
-                                        </span>
+                                    <div className="mt-4 flex flex-col items-center gap-2">
+                                        <div className="flex items-center gap-2">
+                                            <Zap className="w-3 h-3 text-primary" />
+                                            <span className="text-[11px] font-black tracking-widest uppercase text-white/40">
+                                                Zero-Setup Engine • One-time payment
+                                            </span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <LifeBuoy className="w-3 h-3 text-primary" />
+                                            <span className="text-[11px] font-black tracking-widest uppercase text-white/40">
+                                                LIFETIME EXPERT SUPPORT INCLUDED
+                                            </span>
+                                        </div>
                                     </div>
 
                                     <p className="mt-10 text-[10px] text-white/20 font-black uppercase tracking-widest">

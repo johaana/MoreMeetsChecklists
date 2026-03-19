@@ -17,6 +17,17 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ScrollArea } from '@/components/ui/scroll-area';
 
+// --- CONFIGURATION: THE ELITE 7 ---
+const ELITE_PACK_IDS = [
+    'restaurants',
+    'hotels_and_resorts',
+    'healthcare_and_hospital_operations',
+    'school_operations_pack',
+    'franchise_operations_pack',
+    'facility_management_blueprint',
+    'cinema_operations_pack'
+];
+
 const allPacksByCategory = (packs: PremiumPack[]) => {
     return packs.reduce((acc, pack) => {
         const category = pack.category || "Uncategorized";
@@ -45,33 +56,21 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => (
         <CardFooter>
             <Button asChild className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-black font-black uppercase italic text-xs tracking-widest transition-all" variant="secondary">
                 <Link href={`/packs/${pack.id}`}>
-                    Get the System <ArrowRight className="ml-2 h-4 w-4" />
+                    Deploy This System <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
             </Button>
         </CardFooter>
     </Card>
 );
 
-const Bestsellers = ({ packs }: { packs: PremiumPack[] }) => {
-    const bestsellerPacks = packs.filter(p => p.bestseller);
-    if (bestsellerPacks.length === 0) return null;
-
-    return (
-        <div className="mb-16">
-            <h2 className="text-xl font-black tracking-[0.3em] uppercase text-primary mb-10 text-center opacity-60">Top Rated Systems</h2>
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
-                {bestsellerPacks.map(pack => <PackCard key={pack.id} pack={pack} />)}
-            </div>
-            <div className="mt-16 border-b border-white/5" />
-        </div>
-    )
-}
-
 export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
     const searchParams = useSearchParams();
     const router = useRouter();
 
-    const packsByCategory = React.useMemo(() => allPacksByCategory(packs), [packs]);
+    // FILTER FOR ELITE ONLY
+    const elitePacks = React.useMemo(() => packs.filter(p => ELITE_PACK_IDS.includes(p.id)), [packs]);
+
+    const packsByCategory = React.useMemo(() => allPacksByCategory(elitePacks), [elitePacks]);
     const categories = Object.keys(packsByCategory).sort();
 
     const [searchTerm, setSearchTerm] = React.useState('');
@@ -113,7 +112,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
     };
 
     const filteredPacks = React.useMemo(() => {
-        return packs.filter(pack => {
+        return elitePacks.filter(pack => {
             const categoryMatch = activeCategory === 'All' || pack.category === activeCategory;
             const searchMatch = searchTerm === '' || 
                                 pack.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
@@ -121,7 +120,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                 pack.category.toLowerCase().includes(searchTerm.toLowerCase());
             return categoryMatch && searchMatch;
         });
-    }, [packs, activeCategory, searchTerm]);
+    }, [elitePacks, activeCategory, searchTerm]);
 
     if (!mounted) return null;
 
@@ -132,12 +131,12 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                 <section className="w-full pt-12 md:pt-20 pb-12 md:pb-24 lg:pb-32">
                     <div className="container px-4 md:px-6">
                         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Business Systems</Badge>
+                            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Operational Infrastructure</Badge>
                             <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter font-headline text-primary-text leading-tight uppercase italic">
-                                Ready-to-Use Systems
+                                Industry Operating Systems
                             </h1>
                             <p className="max-w-[750px] text-secondary-text text-lg md:text-xl font-medium leading-relaxed mx-auto italic border-l-2 border-primary/20 pl-6">
-                                Stop managing your business manually. MoreMeets gives you ready-to-use operating systems—built on Excel & Google Sheets—to eliminate chaos and recover lost profits today.
+                                Stop managing manually. Deploy forensically engineered data engines to run your daily operations without chaos.
                             </p>
                         </div>
                         
@@ -147,7 +146,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                                     <Input 
                                         type="search" 
-                                        placeholder="Search by industry or keyword..." 
+                                        placeholder="Search Elite Systems..." 
                                         className="pl-10 w-full bg-black/40 border-white/10"
                                         value={searchTerm}
                                         onChange={handleSearchChange}
@@ -157,12 +156,12 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                     <DropdownMenu>
                                         <DropdownMenuTrigger asChild>
                                             <Button variant="outline" className="w-full md:w-[240px] justify-between border-white/10 font-bold uppercase text-[10px] tracking-widest">
-                                                {activeCategory === 'All' ? 'Select Industry' : activeCategory}
+                                                {activeCategory === 'All' ? 'Select Sector' : activeCategory}
                                                 <ChevronDown className="w-4 h-4 ml-2" />
                                             </Button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent className="w-56 max-h-96 overflow-y-auto bg-alternate-background border-white/10">
-                                            <DropdownMenuItem onSelect={() => handleCategoryChange('All')} className="uppercase text-[10px] font-bold tracking-widest">All Industries</DropdownMenuItem>
+                                            <DropdownMenuItem onSelect={() => handleCategoryChange('All')} className="uppercase text-[10px] font-bold tracking-widest">All Sectors</DropdownMenuItem>
                                             {categories.map(category => (
                                                 <DropdownMenuItem key={category} onSelect={() => handleCategoryChange(category)} className="uppercase text-[10px] font-bold tracking-widest">
                                                     {category}
@@ -179,7 +178,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                         className="w-full md:w-auto text-primary uppercase font-black text-[10px] tracking-widest"
                                     >
                                         <X className="h-4 w-4 mr-2" />
-                                        Reset Filters
+                                        Reset
                                     </Button>
                                 )}
                             </div>
@@ -230,10 +229,8 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                             </div>
                         ) : (
                             <>
-                                {activeCategory === 'All' && searchTerm === '' && <Bestsellers packs={packs} />}
-                                
                                 <h2 className="text-lg font-black tracking-[0.3em] uppercase text-white/30 mb-10 text-center">
-                                    {activeCategory === 'All' ? 'Full Inventory' : `${activeCategory} Systems`}
+                                    {activeCategory === 'All' ? 'Operational Command Library' : `${activeCategory} Systems`}
                                 </h2>
                                 
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">

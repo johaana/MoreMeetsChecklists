@@ -13,11 +13,19 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 
-// --- DATA PREPARATION (Computed once at top-level) ---
-const packs = Array.isArray(premiumPacks) ? premiumPacks : [];
-const packsWithLinks = packs.filter(p => p.id !== 'master_access' && ((p.paymentId && p.priceINR >= 0) || (p.lemonSqueezyUrl && p.priceUSD && p.priceUSD >= 0)));
+// --- CONFIGURATION: THE ELITE 7 ---
+const ELITE_PACK_IDS = [
+    'restaurants',
+    'hotels_and_resorts',
+    'healthcare_and_hospital_operations',
+    'school_operations_pack',
+    'franchise_operations_pack',
+    'facility_management_blueprint',
+    'cinema_operations_pack'
+];
 
-const visiblePacks = packsWithLinks.filter(p => p.category !== "Social Cause");
+const packs = Array.isArray(premiumPacks) ? premiumPacks : [];
+const visiblePacks = packs.filter(p => ELITE_PACK_IDS.includes(p.id));
 
 const allPacksByCategory = visiblePacks.reduce((acc, pack) => {
     const category = pack.category || "Uncategorized";
@@ -29,7 +37,6 @@ const allPacksByCategory = visiblePacks.reduce((acc, pack) => {
 }, {} as Record<string, typeof premiumPacks>);
 
 
-// Reusable component to render the list of solutions
 const SolutionsList = () => (
     <div className="flex flex-col gap-y-6">
         <div className="md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-4 flex flex-col">
@@ -113,14 +120,14 @@ export function SiteHeader() {
 
             <nav className="ml-auto hidden md:flex gap-4 sm:gap-6 items-center">
                 <Link href="/about" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>About Us</Link>
-                <Link href="/library" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Operational Systems</Link>
+                <Link href="/library" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Operations Library</Link>
                 <div 
                     className="group relative"
                     onMouseEnter={() => setIsDropdownOpen(true)}
                     onMouseLeave={() => setIsDropdownOpen(false)}
                 >
                     <button className={cn("text-sm font-medium transition-colors flex items-center gap-1", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")}>
-                        Industries <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                        Industry Systems <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                     </button>
                     {isDropdownOpen && (
                         <div className="absolute top-full right-0 w-screen max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
@@ -130,12 +137,12 @@ export function SiteHeader() {
                                         <SolutionsList />
                                     </div>
                                 </ScrollArea>
-                                <div className="bg-secondary/50 p-3 border-t grid grid-cols-2 gap-4">
-                                        <Link href="/packs/animal_shelter_pack" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50 flex items-center gap-2">
-                                        <PawPrint className="w-4 h-4" /> Social Cause (Free Pack)
-                                    </Link>
+                                <div className="bg-secondary/50 p-3 border-t flex items-center justify-between">
                                     <Link href="/library" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
-                                        View All Operational Systems &rarr;
+                                        View Elite Systems &rarr;
+                                    </Link>
+                                    <Link href="/packs/animal_shelter_pack" className="text-[10px] font-black text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50 flex items-center gap-2 uppercase tracking-widest">
+                                        <PawPrint className="w-3 h-3" /> Social Impact Pack (Free)
                                     </Link>
                                 </div>
                             </div>
@@ -171,12 +178,12 @@ export function SiteHeader() {
                                     </div>
                                     <div className="border-b">
                                         <Link href="/library" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors p-2 flex" prefetch={false}>
-                                            Operational Systems
+                                            Operations Library
                                         </Link>
                                     </div>
                                     <AccordionItem value="packs" className="border-b-0">
                                         <AccordionTrigger className="text-lg font-medium text-muted-foreground hover:text-foreground hover:no-underline p-2">
-                                            Industries
+                                            Elite Industry Systems
                                         </AccordionTrigger>
                                         <AccordionContent className="pb-2">
                                             {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
@@ -192,15 +199,6 @@ export function SiteHeader() {
                                                     </div>
                                                 </div>
                                             ))}
-                                             <div className="ml-4 pl-4 border-l">
-                                                <h5 className="font-semibold text-base text-primary/90 mt-2 mb-1">Social Cause</h5>
-                                                <div className="flex flex-col gap-1">
-                                                    <Link href="/packs/animal_shelter_pack" className="text-base text-muted-foreground hover:text-foreground transition-colors py-1.5 px-2 rounded-md hover:bg-secondary flex items-center gap-2">
-                                                        <PawPrint className="w-4 h-4 shrink-0" />
-                                                        <span>Animal Shelter Pack (Free)</span>
-                                                    </Link>
-                                                </div>
-                                            </div>
                                         </AccordionContent>
                                     </AccordionItem>
                                     <div className="border-b">

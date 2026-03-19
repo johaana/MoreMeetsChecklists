@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronRight, Lock } from "lucide-react";
+import { ArrowRight, ChevronRight, Lock, Zap } from "lucide-react";
 import React from 'react';
 
 export const HeroSection = () => (
@@ -62,9 +62,12 @@ export const HeroSection = () => (
                                 <Lock className="w-3 h-3" /> No SaaS. Own Forever.
                             </span>
                         </div>
-                        <p className="text-[9px] md:text-[10px] text-muted-foreground/40 font-normal leading-tight uppercase tracking-widest">
-                            Includes 1 Complimentary Expert Customization (Limited Time)
-                        </p>
+                        <div className="flex items-center gap-2">
+                            <Zap className="w-3 h-3 text-accent" />
+                            <p className="text-[9px] md:text-[10px] text-muted-foreground/60 font-black leading-tight uppercase tracking-widest">
+                                Ready to Deploy in 10 Minutes • Zero-Setup Engine
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Zap, CheckCircle, Globe, Download, ShieldAlert, Trophy, Target, Timer, Lock, Infinity, Users, Eye } from "lucide-react";
+import { ArrowRight, Check, Zap, CheckCircle, Globe, Download, ShieldAlert, Trophy, Target, Timer, Lock, Infinity, Users, Eye, LifeBuoy } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
 import { TestimonialsSection } from "@/components/layout/testimonials-section";
@@ -26,7 +26,7 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 const ClarityBlock = () => (
     <div className="w-full bg-primary/5 border-y border-white/5 py-12 md:py-16">
         <div className="container px-4 md:px-6 max-w-5xl mx-auto text-center space-y-8">
-            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Product Clarity</Badge>
+            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Strategic Alignment</Badge>
             <h2 className="text-2xl md:text-4xl font-black font-headline text-primary-text uppercase italic leading-tight">
                 MoreMeets™ gives you a ready-to-use system <br className="hidden md:block" /> to run your business daily.
             </h2>
@@ -36,9 +36,9 @@ const ClarityBlock = () => (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
                 {[
                     { t: "Runs on Excel or Google Sheets", i: CheckCircle },
-                    { t: "No app, no complex setup", i: Zap },
-                    { t: "Pay once, use forever", i: Lock },
-                    { t: "Single or Multi-branch", i: Globe }
+                    { t: "Deploy in 10 Minutes", i: Zap },
+                    { t: "No monthly subscriptions", i: Lock },
+                    { t: "Lifetime Expert Support", i: LifeBuoy }
                 ].map(item => (
                     <div key={item.t} className="flex items-center justify-center gap-2 p-4 rounded-xl bg-black/40 border border-white/10">
                         <item.i className="w-4 h-4 text-primary shrink-0" />
@@ -92,31 +92,6 @@ const HowItWorksSection = () => (
                         <p className="text-secondary-text text-sm leading-relaxed italic">{step.d}</p>
                     </div>
                 ))}
-            </div>
-        </div>
-    </Section>
-);
-
-const FeatureStripSection = () => (
-    <Section id="feature-strip" className="py-12 md:py-16 border-y border-white/5">
-        <div className="container px-4 md:px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-5xl mx-auto">
-                <div className="flex flex-col items-center gap-2">
-                    <Download className="w-8 h-8 text-accent"/>
-                    <p className="font-black uppercase tracking-widest text-[10px] text-primary-text">Instant download</p>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                    <Zap className="w-8 h-8 text-accent"/>
-                    <p className="font-black uppercase tracking-widest text-[10px] text-primary-text">Expert Customization</p>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                    <Infinity className="w-8 h-8 text-accent"/>
-                    <p className="font-black uppercase tracking-widest text-[10px] text-primary-text">One-time payment</p>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                    <Globe className="w-8 h-8 text-accent"/>
-                    <p className="font-black uppercase tracking-widest text-[10px] text-primary-text">Globally Aligned</p>
-                </div>
             </div>
         </div>
     </Section>
@@ -242,7 +217,6 @@ export default function Home() {
         <ClarityBlock />
         <CoreProblemSection />
         <HowItWorksSection />
-        <FeatureStripSection />
         <USPPowerSection />
         <WhoIsItForSection />
         <TestimonialsSection />
