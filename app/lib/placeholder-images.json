@@ -9,13 +9,13 @@
   {
     "id": "pack-hotels_and_resorts",
     "description": "Hotels & Resorts Operations Pack",
-    "imageUrl": "https://i.postimg.cc/Lscwd1LF/18-Hotels-and-Resorts-Pack.png",
+    "imageUrl": "https://i.postimg.cc/PfcjQL7g/Create-SOP-for-hotel-maintenance.webp",
     "imageHint": "hotel operations"
   },
   {
     "id": "pack-restaurants",
     "description": "Restaurant Operations Pack",
-    "imageUrl": "https://i.postimg.cc/d0bpMyrw/19-Restaurant-Operations-Pack.png",
+    "imageUrl": "https://i.postimg.cc/mgWWKvTG/restaurant.webp",
     "imageHint": "restaurant operations"
   },
   {
@@ -44,8 +44,8 @@
   },
   {
     "id": "pack-facility_management_blueprint",
-    "description": "Facility Management Blueprint",
-    "imageUrl": "https://i.postimg.cc/cJp2qnw6/22-Facility-Management-Blueprint-Enterprise-Edition.png",
+    "description": "Facility Operating System",
+    "imageUrl": "https://i.postimg.cc/Vv3PfTMd/facilities-management-2.jpg",
     "imageHint": "facility management"
   },
   {
@@ -57,7 +57,7 @@
   {
     "id": "pack-healthcare_and_hospital_operations",
     "description": "Healthcare & Hospital Operations Pack",
-    "imageUrl": "https://i.postimg.cc/7LFdv20D/20-Healthcare-and-Hospital-Operations-Pack.png",
+    "imageUrl": "https://i.postimg.cc/PJBnXcZz/healthcare.jpg",
     "imageHint": "hospital operations"
   },
   {
@@ -99,7 +99,7 @@
   {
     "id": "pack-cinema_operations_pack",
     "description": "Cinema & Multiplex Operations Pack",
-    "imageUrl": "https://i.postimg.cc/PNn5Pxgj/Cinema-and-Multiplex-Operations-Pack.png",
+    "imageUrl": "https://i.postimg.cc/G3NCxBN3/multiplex2.avif",
     "imageHint": "cinema operations"
   },
   {
@@ -135,7 +135,7 @@
   {
     "id": "pack-franchise_operations_pack",
     "description": "Franchise Operations Pack",
-    "imageUrl": "https://i.postimg.cc/nzV7hdvg/Franchise-Operations-Pack.png",
+    "imageUrl": "https://i.postimg.cc/1XgZZPgt/Franchise-operations.jpg",
     "imageHint": "franchise operations"
   }
 ]
