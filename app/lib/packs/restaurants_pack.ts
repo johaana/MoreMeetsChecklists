@@ -24,7 +24,7 @@ export const restaurants: PremiumPack = {
     sampleItems: [
         { text: "<strong>2-Minute Pulse Reporting</strong>: Team updates tasks in seconds. No long reports. 100% staff adoption.", icon: "timer" },
         { text: "<strong>Bar & Happy Hour Command</strong>: Stock reconciliation and license compliance tracking to stop theft.", icon: "glass-water" },
-        { text: "<strong>Managers verify critical tasks</strong>. Highlighted 'Yellow Targets' mean no shortcuts on safety or cash.", icon: "shield-check" },
+        { text: "<strong>Supply & Inventory Governance</strong>: Blind stock counts and weighing scale calibration to stop leaks.", icon: "boxes" },
         { text: "<strong>Delivery & Dispatch Governance</strong>: Protect ratings with packaging audits and rider TAT logs.", icon: "truck" },
         { text: "<strong>Built-in training for new staff</strong>. Every task includes instructions and consequences of failure.", icon: "history" },
         { text: "<strong>Live Dashboard visibility</strong>. No more calling managers to ask if 'everything is okay'.", icon: "layout-grid" },
@@ -126,19 +126,19 @@ export const restaurants: PremiumPack = {
             ]
         },
         {
-            title: "Supply & Receiving",
-            department: "Purchasing",
+            title: "Supply, Receiving & Inventory",
+            department: "Stores",
             frequency: "Weekly",
             role: "Purchasing Manager",
-            summary: "Governance for procurement and margins.",
+            summary: "Governance for procurement, receiving, and margin protection.",
             icon: "package-search",
             tasks: [
-                { id: "RES-SUP-01", description: "Vendor Audit: Check license of 3 major suppliers.", priority: "High", riskLevel: "High", consequence: "Legal liability linkage.", proof: "License File" },
-                { id: "RES-SUP-02", description: "Weighing Scale Calibration: Verify accuracy.", priority: "High", riskLevel: "Medium", consequence: "Paying for missing weight.", proof: "Calibration Log" },
-                { id: "RES-SUP-03", description: "Inventory Count: Random audit of high-value items.", priority: "High", riskLevel: "High", consequence: "Internal theft.", proof: "Stock Sheet" }
+                { id: "RES-SUP-01", description: "Scale Calibration: Test weighing scale with 1kg standard weight.", priority: "High", riskLevel: "Medium", consequence: "Paying for missing weight; incorrect yield calculations.", proof: "Calibration Log" },
+                { id: "RES-SUP-02", description: "Vendor Audit: Check license/FSSAI of 3 major suppliers.", priority: "High", riskLevel: "High", consequence: "Legal liability linkage and food safety risk.", proof: "License File" },
+                { id: "RES-SUP-03", description: "Blind Inventory Count: Random audit of high-value stock (Protein/Alcohol).", priority: "High", riskLevel: "High", consequence: "Internal theft and silent profit leakage.", proof: "Stock Sheet" },
+                { id: "RES-SUP-04", description: "Vendor Quality Reject Log: Track returned sub-par produce.", priority: "Medium", riskLevel: "Low", consequence: "Paying for unusable stock.", proof: "RTV Log" },
+                { id: "RES-SUP-05", description: "FIFO Storage Audit: Ensure oldest batches are positioned for immediate use.", priority: "High", riskLevel: "High", consequence: "100% loss due to ingredient expiry.", proof: "Visual Audit" }
             ]
         }
     ]
 };
-
-    

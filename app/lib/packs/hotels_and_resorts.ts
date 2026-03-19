@@ -25,8 +25,8 @@ export const hotels_and_resorts: PremiumPack = {
         { text: "<strong>Event & Venue Command</strong>: Pre-event AV and safety audits for Weddings and Conferences.", icon: "calendar-heart" },
         { text: "<strong>Room Service Integrity</strong>: Dial-tests for inter-phones and chip-free utensil audits.", icon: "hand-platter" },
         { text: "<strong>OTA Reputation Shield</strong>: Daily pulse for review response and social media signals.", icon: "star" },
-        { text: "<strong>Valet & Parking Governance</strong>: Vault-key verification and perimeter safety audits.", icon: "car" },
-        { text: "<strong>Happy Hour & Bar Control</strong>: Stock reconciliation and license compliance tracking.", icon: "glass-water" },
+        { text: "<strong>Travel Desk & Pickups</strong>: Breathalyzer audits for drivers and flight-tracking protocols.", icon: "car" },
+        { text: "<strong>Vendor & AMC Governance</strong>: Blind stock counts and service-contract tracking to stop theft.", icon: "truck" },
         { text: "<strong>Crisis Command</strong>: Protocols for medical emergencies and power shutdowns.", icon: "siren" },
         { text: "<strong>Sovereign Infrastructure</strong>: No recurring SaaS fees. You own your data forever.", icon: "lock" }
     ],
@@ -172,6 +172,21 @@ export const hotels_and_resorts: PremiumPack = {
             ]
         },
         {
+            title: "Travel Desk & Guest Logistics",
+            department: "Concierge",
+            frequency: "Daily",
+            role: "Travel Desk Manager",
+            summary: "Ensures zero-fail execution for guest pickups, drops, and local tours.",
+            icon: "map-pin",
+            tasks: [
+                { id: "HR-TRV-01", description: "Verify all scheduled guest pickups against live flight/train status.", priority: "High", riskLevel: "Medium", consequence: "Guest waiting at terminal; major service failure.", proof: "Status Reconcile Log" },
+                { id: "HR-TRV-02", description: "Driver Breathalyzer Audit: Random testing of on-duty drivers.", priority: "High", riskLevel: "High", consequence: "Fatal accident and catastrophic legal liability.", proof: "Audit Register" },
+                { id: "HR-TRV-03", description: "Vehicle Cabin Audit: Inspect for cleanliness, water stock, and scent.", priority: "Medium", riskLevel: "Low", consequence: "Sub-par arrival experience.", proof: "Inspection Photo" },
+                { id: "HR-TRV-04", description: "Itinerary Review: Brief drivers on guest tour maps and special stops.", priority: "Medium", riskLevel: "Low", consequence: "Incorrect routes and guest frustration.", proof: "Briefing Note" },
+                { id: "HR-TRV-05", description: "Third-party Dispatch Audit: Verify external cabs meet brand standards.", priority: "High", riskLevel: "High", consequence: "Safety risks from unvetted external drivers.", proof: "Vendor Dispatch Log" }
+            ]
+        },
+        {
             title: "Engineering & Life Safety",
             department: "Engineering",
             frequency: "Daily",
@@ -233,5 +248,3 @@ export const hotels_and_resorts: PremiumPack = {
         }
     ]
 };
-
-    
