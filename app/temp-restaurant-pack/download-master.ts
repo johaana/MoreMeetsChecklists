@@ -214,8 +214,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ],
         [
             { v: "▶ MASTER SOPs", l: { Target: "#'SOP_LIBRARY'!A1" }, s: tileStyle }, null, 
-            { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }, null, 
-            { v: "▶ HOW THIS WORKS", l: { Target: "#'HOW_THIS_WORKS'!A1" }, s: tileStyle }, null
+            { v: "▶ HOW THIS WORKS", l: { Target: "#'HOW_THIS_WORKS'!A1" }, s: tileStyle }, null, 
+            { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }, null
         ],
         [],
         [{ t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.9, "🔥 SIZZLING - PERFECT EXECUTION!", IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.6, "🥘 SIMMERING - BUILDING MOMENTUM", "🧊 COLD - TURN UP THE HEAT!")), "EMPIRE MOOD: 🧊 LOADING...")`, s: moodBannerStyle }, null, null, null, null, null],
@@ -286,8 +286,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
         [],
         [], facilityHeaders,
-        [{ v: 1, s: dataStyleCenter }, { v: "Type Branch 1 Name", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }],
-        [{ v: 2, s: dataStyleCenter }, { v: "Type Branch 2 Name", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }]
+        [{ v: "1", s: dataStyleCenter }, { v: "Type Branch 1 Name", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }],
+        [{ v: "2", s: dataStyleCenter }, { v: "Type Branch 2 Name", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }]
     ];
     const setupWs = utils.aoa_to_sheet(branchSetupData);
     setupWs['!cols'] = [12, 35, 10, 10, 10, 10, 10, 10, 15, 10, 10, 10].map(w => ({ wch: w }));
@@ -363,7 +363,7 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const roles = ["Head Chef", "Sous Chef", "Bar Manager", "Head Bartender", "Floor Manager", "General Manager", "Owner/COO", "Dispatch Coordinator", "Hostess", "Security Manager", "Facility Manager", "HR Supervisor"];
     roles.forEach((role, idx) => {
         pData.push([
-            { v: idx + 1, s: dataStyleCenter },
+            { v: String(idx + 1), s: dataStyleCenter },
             { v: role, s: dataStyleLeft },
             { v: "Type Person Name", s: ghostInputStyle }, 
             { v: "Type Branch Name", s: ghostInputStyle },
@@ -416,8 +416,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const rData = [
         [], [{v:"COST & SAVINGS TRACKER", s:{font:{sz:18, bold:true}}}], [], 
         [{v:"Risk Category", s:headerStyle}, {v:"Impact per Event (₹)", s:headerStyle}, {v:"Frequency / Yr", s:headerStyle}, {v:"Projected Annual Loss (₹)", s:headerStyle}, {v:"Mitigation Status", s:headerStyle}],
-        [{v:"Food Spoilage (Cold Chain Failure)", s:dataStyleLeft}, {v:50000, s:ghostInputStyle}, {v:12, s:ghostInputStyle}, {t:'f', f:'B6*C6', s:dataStyleCenter}, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [{v:"Regulatory Fines (Health/Statutory)", s:dataStyleLeft}, {v:200000, s:ghostInputStyle}, {v:1, s:ghostInputStyle}, {t:'f', f:'B7*C7', s:dataStyleCenter}, {v:"PROTECTED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
+        [{v:"Food Spoilage (Cold Chain Failure)", s:dataStyleLeft}, {v:"50000", s:ghostInputStyle}, {v:"12", s:ghostInputStyle}, {t:'f', f:'B6*C6', s:dataStyleCenter}, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [{v:"Regulatory Fines (Health/Statutory)", s:dataStyleLeft}, {v:"200000", s:ghostInputStyle}, {v:"1", s:ghostInputStyle}, {t:'f', f:'B7*C7', s:dataStyleCenter}, {v:"PROTECTED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
     ];
     const rWs = utils.aoa_to_sheet(rData);
     rWs['!cols'] = [40, 25, 25, 25, 20].map(w => ({ wch: w }));
