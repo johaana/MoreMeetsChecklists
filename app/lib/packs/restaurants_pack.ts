@@ -7,7 +7,7 @@ export const restaurants: PremiumPack = {
     category: "Hospitality",
     description: "No monthly subscriptions. No SaaS dependency. One-time investment for a lifetime of control. Most restaurants run on memory and WhatsApp—that's why they lose 2–5% revenue daily. This system fixes that.",
     heroHeadline: "Run Your Restaurant Like a System — Not Chaos",
-    heroSubheadline: "Daily tasks. Team tracking. Manager control. Live performance dashboard. Stay in control even when you’re not there.",
+    heroSubheadline: "Daily tasks. Team tracking. Manager control. Live performance dashboard. Stay in control of 150+ technical points even when you’re not there.",
     pricingUrgency: "Small mistakes in daily operations cost you more than you think. Even one incident prevented recovers the entire cost of this system.",
     consultingAnchor: 5000,
     priceINR: 5999,
@@ -22,14 +22,13 @@ export const restaurants: PremiumPack = {
     bestseller: true,
     whoIsItFor: ["Restaurant Owners", "Cloud Kitchen Operators", "Multi-branch Managers", "Heads of Operations"],
     sampleItems: [
-        { text: "<strong>2-Minute Pulse Reporting</strong>: Team updates tasks in seconds. No long reports. 100% staff adoption.", icon: "timer" },
-        { text: "<strong>Bar & Happy Hour Command</strong>: Stock reconciliation and license compliance tracking to stop theft.", icon: "glass-water" },
-        { text: "<strong>Supply & Inventory Governance</strong>: Blind stock counts and weighing scale calibration to stop leaks.", icon: "boxes" },
-        { text: "<strong>Delivery & Dispatch Governance</strong>: Protect ratings with packaging audits and rider TAT logs.", icon: "truck" },
-        { text: "<strong>Built-in training for new staff</strong>. Every task includes instructions and consequences of failure.", icon: "history" },
-        { text: "<strong>Live Dashboard visibility</strong>. No more calling managers to ask if 'everything is okay'.", icon: "layout-grid" },
-        { text: "<strong>Digital Reputation Shield</strong>: Daily pulse for review response and social media signals.", icon: "globe" },
-        { text: "<strong>Revenue Protection</strong>: Identify operational failures that lead to wastage and profit leakage.", icon: "banknote" }
+        { text: "<strong>2-Minute Pulse Reporting</strong>: Your team updates tasks in seconds. No long forms. 100% staff adoption.", icon: "timer" },
+        { text: "<strong>Control Without Being Present</strong>: See who is working and who is not across 1 or 100 branches instantly.", icon: "eye" },
+        { text: "<strong>Manager Verification</strong>: Highlighted 'Yellow Targets' show leadership exactly what needs sign-off—no shortcuts allowed.", icon: "shield-check" },
+        { text: "<strong>Built-in Training</strong>: Every task includes instructions and consequences of failure.知识 stays if staff leave.", icon: "history" },
+        { text: "<strong>Stop Revenue Leakage</strong>: Track wastage, incidents, and profit leaks with a live executive dashboard.", icon: "banknote" },
+        { text: "<strong>Accountability Without Arguments</strong>: Verifiable digital evidence for every critical kitchen and bar control point.", icon: "user-check" },
+        { text: "<strong>Sovereign Infrastructure</strong>: No recurring SaaS fees. You own your operational data and the engine forever.", icon: "lock" }
     ],
     checklists: [
         {
