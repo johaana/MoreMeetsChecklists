@@ -49,6 +49,20 @@ export const cinema_operations_pack: PremiumPack = {
                 { id: "CIN-PRO-09", description: "Confirm HVAC connectivity to projection booth.", priority: "High", riskLevel: "High", consequence: "Projector overheating and thermal shutdown.", proof: "Temp Log" },
                 { id: "CIN-PRO-10", description: "Final 'Show-Start' sync with auditorium floor staff.", priority: "High", riskLevel: "Low", consequence: "Late show start and crowd agitation.", proof: "Radio Log" }
             ]
+        },
+        {
+            title: "Auditorium & Exit Safety",
+            department: "Operations",
+            frequency: "Daily",
+            role: "Floor Supervisor",
+            summary: "Governs guest safety and cleanliness inside the halls.",
+            icon: "door-open",
+            tasks: [
+                { id: "CIN-SAFE-01", description: "Verify all emergency exit push-bars are functional.", priority: "High", riskLevel: "High", consequence: "Fatal trap during fire emergency.", proof: "Physical Test" },
+                { id: "CIN-SAFE-02", description: "Check aisle 'pathway' lighting visibility.", priority: "High", riskLevel: "Medium", consequence: "Guest slip and fall liability.", proof: "Visual Check" },
+                { id: "CIN-SAFE-03", description: "Audit hall temperature between shows (Target 23°C).", priority: "Medium", riskLevel: "Low", consequence: "Guest complaints and negative reviews.", proof: "Temp Reading" },
+                { id: "CIN-SAFE-04", description: "Conduct anti-piracy scan during show (Night vision audit).", priority: "High", riskLevel: "High", consequence: "Legal breach and loss of theater license.", proof: "Patrol Log" }
+            ]
         }
     ]
 };

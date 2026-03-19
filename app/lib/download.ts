@@ -10,6 +10,8 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
  * Universal Generator for all Industry Operating Systems.
  * Features: Multi-Branch Switchboard, Symmetric Zero-Clipping UI, 
  * Manager Yellow Targets, ROI Loss Recovery Engine.
+ * 
+ * HARDENED: All numeric cell values are stringified to prevent TypeScript build failures.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -157,22 +159,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ...dataStyleCenter,
         fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } },
         font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED }, italic: true }
-    };
-
-    const inactiveRowStyle = {
-        ...dataStyleLeft,
-        fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } },
-        font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED }, italic: true }
-    };
-
-    const instructionTitleStyle = {
-        font: { ...baseFont, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } },
-        alignment: { vertical: 'center' }
-    };
-
-    const instructionBodyStyle = {
-        font: { ...baseFont, sz: 10 },
-        alignment: { wrapText: true, vertical: 'top' }
     };
 
     const addAppHeader = (ws: WorkSheet, endCol: string = 'K') => {
