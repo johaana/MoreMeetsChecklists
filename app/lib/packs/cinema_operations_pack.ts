@@ -3,7 +3,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 export const cinema_operations_pack: PremiumPack = {
     id: 'cinema_operations_pack',
-    title: "Cinema Operating System (Sovereign v4.3)",
+    title: "Cinema Operating System",
     priceINR: 5999,
     priceUSD: 79,
     competitorPriceUSD: 599,
@@ -13,7 +13,7 @@ export const cinema_operations_pack: PremiumPack = {
     category: "Entertainment & Events",
     description: "No monthly subscriptions. No SaaS dependency. One-time investment for a lifetime of control. Sovereign v4.3 is the definitive plug for projection failures and safety gaps.",
     heroHeadline: "Stop Projection Failures and Catastrophic Safety Gaps",
-    heroSubheadline: "Track technical readiness, monitor auditorium standards, and stay in control—across 100+ technical points.",
+    heroSubheadline: "Track technical readiness, monitor auditorium standards, and stay in control—across 100+ technical control points.",
     pricingUrgency: "A single projection failure during a blockbuster opening or one safety lapse costs 100x more than this entire system.",
     consultingAnchor: 5000,
     icon: "popcorn",

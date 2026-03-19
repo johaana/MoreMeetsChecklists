@@ -82,7 +82,7 @@ export const healthcare_and_hospital_operations: PremiumPack = {
                 { id: "H-DIS-02", description: "Insurance/TPA Clearance: Confirm pre-auth or final approval status.", priority: "High", riskLevel: "High", consequence: "Unrecoverable financial loss and payment defaults.", proof: "System Approval", trainerNotes: "Get approval 4 hours pre-discharge." },
                 { id: "H-DIS-03", description: "Bedside Medication Handover: Verify patient understands post-discharge meds.", priority: "High", riskLevel: "Medium", consequence: "Readmission due to incorrect medication usage at home.", proof: "Handover Note", trainerNotes: "Use 'Teach-Back' method." },
                 { id: "H-DIS-04", description: "Discharge Summary Verification: Ensure doctor sign-off and clarity.", priority: "High", riskLevel: "High", consequence: "Legal liability and clinical confusion during follow-up.", proof: "Signed Summary", trainerNotes: "Check for clear ICD-10 codes." },
-                { id: "H-DIS-05", description: "Exit Feedback Pulse: Verbal or digital feedback from every departing patient.", priority: "Medium", riskLevel: "Low", consequence: "Negative OTA reviews and missed recovery.", proof: "Feedback Log", trainerNotes: "Ask: 'Were you satisfied with nursing?'" }
+                { id: "H-DIS-05", description: "Exit Feedback Pulse: Verbal or digital feedback from every departing patient.", priority: "Medium", riskLevel: "Low", consequence: "Negative reviews and missed recovery.", proof: "Feedback Log", trainerNotes: "Ask: 'Were you satisfied with nursing?'" }
             ]
         },
         {
