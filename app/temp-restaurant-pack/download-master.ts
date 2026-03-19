@@ -248,7 +248,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const homeWs = utils.aoa_to_sheet(homeData);
     homeWs['!cols'] = [22, 28, 22, 28, 22, 28].map(w => ({ wch: w }));
-    
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 5 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 5 } }, { s: { r: 4, c: 0 }, e: { r: 4, c: 5 } },
         { s: { r: 6, c: 0 }, e: { r: 6, c: 1 } }, { s: { r: 6, c: 2 }, e: { r: 6, c: 3 } }, { s: { r: 6, c: 4 }, e: { r: 6, c: 5 } },
@@ -257,20 +256,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { s: { r: 9, c: 0 }, e: { r: 9, c: 1 } }, { s: { r: 9, c: 2 }, e: { r: 9, c: 3 } }, { s: { r: 9, c: 4 }, e: { r: 9, c: 5 } },
         { s: { r: 11, c: 0 }, e: { r: 11, c: 5 } },
         { s: { r: 12, c: 0 }, e: { r: 12, c: 1 } }, { s: { r: 12, c: 2 }, e: { r: 12, c: 3 } }, { s: { r: 12, c: 4 }, e: { r: 12, c: 5 } },
-        { s: { r: 15, c: 0 }, e: { r: 15, c: 5 } },
-        { s: { r: 17, c: 0 }, e: { r: 17, c: 5 } }, { s: { r: 18, c: 0 }, e: { r: 18, c: 5 } }
+        { s: { r: 15, c: 0 }, e: { r: 15, c: 5 } }
     ];
-
-    homeWs['!rows'] = Array(35).fill({ hpt: 18 });
-    homeWs['!rows'][2] = { hpt: 50 }; 
-    homeWs['!rows'][3] = { hpt: 25 };
-    homeWs['!rows'][7] = { hpt: 35 }; 
-    homeWs['!rows'][8] = { hpt: 35 }; 
-    homeWs['!rows'][9] = { hpt: 35 }; 
-    homeWs['!rows'][11] = { hpt: 35 }; 
-    homeWs['!rows'][12] = { hpt: 22 }; 
-    homeWs['!rows'][15] = { hpt: 45 }; 
-
     homeWs['!views'] = [{ showGridLines: false }];
     utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
 
@@ -278,20 +265,18 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const facilityHeaders = [
         { v: "Branch ID", s: headerStyle }, { v: "Branch Name", s: headerStyle },
         { v: "Kitchen", s: headerStyle }, { v: "Bar", s: headerStyle }, { v: "Dining", s: headerStyle },
-        { v: "EHS", s: headerStyle }, { v: "Statutory", s: headerStyle }, { v: "Delivery", s: headerStyle },
-        { v: "Takeaway/Pickup", s: headerStyle }, { v: "Valet", s: headerStyle }, { v: "Garden", s: headerStyle },
-        { v: "Staff Qtr", s: headerStyle }
+        { v: "Statutory", s: headerStyle }, { v: "Delivery", s: headerStyle }, { v: "Admin", s: headerStyle }
     ];
     const branchSetupData = [
         [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
         [],
         [], facilityHeaders,
-        [{ v: "1", s: dataStyleCenter }, { v: "Type Branch 1 Name", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }],
-        [{ v: "2", s: dataStyleCenter }, { v: "Type Branch 2 Name", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }]
+        [{ v: "1", s: dataStyleCenter }, { v: "Type Branch 1 Name", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }],
+        [{ v: "2", s: dataStyleCenter }, { v: "Type Branch 2 Name", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "NO", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }, { v: "YES", s: ghostInputStyle }]
     ];
     const setupWs = utils.aoa_to_sheet(branchSetupData);
-    setupWs['!cols'] = [12, 35, 10, 10, 10, 10, 10, 10, 15, 10, 10, 10].map(w => ({ wch: w }));
-    addAppHeader(setupWs, 'L');
+    setupWs['!cols'] = [12, 35, 10, 10, 10, 10, 10, 10].map(w => ({ wch: w }));
+    addAppHeader(setupWs, 'H');
     utils.book_append_sheet(wb, setupWs, "BRANCH_SETUP");
 
     // --- 03. TODAYS_TASKS ---
@@ -308,27 +293,21 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     
     [1, 2].forEach(bCode => {
         item.checklists.forEach((c, cIdx) => {
-            const isActive = bCode === 1 ? "YES" : (cIdx === 3 || cIdx >= 9 ? "NO" : "YES"); 
-
             c.tasks.forEach(t => {
                 const rowIdx = mData.length + 1;
-                const completedByCell = `G${rowIdx}`;
-                const verifiedByCell = `H${rowIdx}`;
-                const roleCell = `C${rowIdx}`;
-                
-                const statusFormula = `IF(LEN(TRIM(${completedByCell}))=0, "PENDING", IF(AND(LEN(TRIM(${verifiedByCell}))=0, ${verifiedByCell}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
-                const personFormula = `IFERROR(VLOOKUP(${roleCell}, 'TEAM_HUB'!B:C, 2, FALSE), "[UNASSIGNED]")`;
+                const statusFormula = `IF(LEN(TRIM(G${rowIdx}))=0, "PENDING", IF(AND(LEN(TRIM(H${rowIdx}))=0, H${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
+                const personFormula = `IFERROR(VLOOKUP(C${rowIdx}, 'TEAM_HUB'!B:C, 2, FALSE), "[UNASSIGNED]")`;
 
                 mData.push([
                     { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
-                    { t: 'f', f: `IFERROR(CHOOSE(${bCode}, 'BRANCH_SETUP'!$B$6, 'BRANCH_SETUP'!$B$7), "Branch ${bCode}")`, s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : dataStyleCenter },
-                    { v: c.role, s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : dataStyleCenter },
-                    { t: 'f', f: personFormula, s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : dataStyleCenter },
-                    { v: t.id, s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : dataStyleCenter },
-                    { v: isActive === "NO" ? `N/A - [${c.title.toUpperCase()}] INACTIVE` : t.description, s: isActive === "NO" ? inactiveRowStyle : dataStyleLeft },
-                    { v: "", s: isActive === "NO" ? { ...inputStyle, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : inputStyle },
-                    { v: t.priority === 'High' ? "" : "N/A", s: isActive === "NO" ? { ...inputStyle, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : (t.priority === 'High' ? managerYellowStyle : naGreyStyle) },
-                    { t: 'f', f: statusFormula, s: isActive === "NO" ? { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } } } : { ...dataStyleCenter, font: { bold: true } } },
+                    { t: 'f', f: `IFERROR(INDEX('BRANCH_SETUP'!$B$5:$B$15, ${bCode}), "Branch ${bCode}")`, s: dataStyleCenter },
+                    { v: c.role, s: dataStyleCenter },
+                    { t: 'f', f: personFormula, s: dataStyleCenter },
+                    { v: t.id, s: dataStyleCenter },
+                    { v: t.description, s: dataStyleLeft },
+                    { v: "", s: inputStyle },
+                    { v: t.priority === 'High' ? "" : "N/A", s: t.priority === 'High' ? managerYellowStyle : naGreyStyle },
+                    { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true } } },
                     { v: c.frequency, s: intelStyle },
                     { v: t.priority, s: intelStyle },
                     { v: t.consequence, s: intelStyle },
@@ -358,42 +337,41 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     utils.book_append_sheet(wb, dWs, "BUSINESS_HEALTH");
 
     // --- 05. TEAM_HUB ---
-    const pHeaders = [{v:"Staff ID", s:headerStyle}, {v:"Role Name", s:headerStyle}, {v:"Full Name (Assigned)", s:headerStyle}, {v:"Assigned Branch", s:headerStyle}, {v:"Contact", s:headerStyle}, {v:"Status", s:headerStyle}];
+    const pHeaders = [{v:"Staff ID", s:headerStyle}, {v:"Role Name", s:headerStyle}, {v:"Full Name", s:headerStyle}, {v:"Contact", s:headerStyle}, {v:"Status", s:headerStyle}];
     const pData = [[], [{v:"TEAM HUB & ROLE ASSIGNMENT", s:{font:{sz:18, bold:true}}}], [], pHeaders];
-    const roles = ["Head Chef", "Sous Chef", "Bar Manager", "Head Bartender", "Floor Manager", "General Manager", "Owner/COO", "Dispatch Coordinator", "Hostess", "Security Manager", "Facility Manager", "HR Supervisor"];
-    roles.forEach((role, idx) => {
+    const allRoles = Array.from(new Set(item.checklists.map(c => c.role)));
+    allRoles.forEach((role, idx) => {
         pData.push([
             { v: String(idx + 1), s: dataStyleCenter },
             { v: role, s: dataStyleLeft },
             { v: "Type Person Name", s: ghostInputStyle }, 
-            { v: "Type Branch Name", s: ghostInputStyle },
             { v: "Contact Details", s: ghostInputStyle },
             { v: "ACTIVE", s: dataStyleCenter }
         ]);
     });
     const pWs = utils.aoa_to_sheet(pData);
-    pWs['!cols'] = [12, 30, 35, 25, 20, 25].map(w => ({ wch: w }));
-    addAppHeader(pWs, 'F');
+    pWs['!cols'] = [12, 30, 35, 20, 25].map(w => ({ wch: w }));
+    addAppHeader(pWs, 'E');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
     // --- 06. INCIDENT_TRACKER ---
-    const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Category", s:headerStyle}, {v:"Description", s:headerStyle}, {v:"Impact (₹)", s:headerStyle}, {v:"Status (OPEN/CLOSED)", s:headerStyle}, {v:"Resolution", s:headerStyle}];
+    const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Category", s:headerStyle}, {v:"Description", s:headerStyle}, {v:"Impact", s:headerStyle}, {v:"Status", s:headerStyle}];
     const iData = [[], [{v:"INCIDENT TRACKER: LIABILITY LOG", s:{font:{sz:18, bold:true}}}], [], iHeaders];
     const iWs = utils.aoa_to_sheet(iData);
-    iWs['!cols'] = [15, 12, 25, 35, 60, 30, 20, 35].map(w => ({ wch: w }));
-    addAppHeader(iWs, 'H');
+    iWs['!cols'] = [15, 12, 25, 35, 60, 30, 20].map(w => ({ wch: w }));
+    addAppHeader(iWs, 'G');
     utils.book_append_sheet(wb, iWs, "INCIDENT_TRACKER");
 
     // --- 07. SHIFT_HANDOVER ---
-    const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Handover Details", s:headerStyle}, {v:"Outstanding Tasks", s:headerStyle}, {v:"Proof (Digital Acknowledgement)", s:headerStyle}];
+    const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Details", s:headerStyle}, {v:"Outstanding", s:headerStyle}];
     const hData = [[], [{v:"SHIFT HANDOVER BRIDGE", s:{font:{sz:18, bold:true}}}], [], hHeaders];
     const hWs = utils.aoa_to_sheet(hData);
-    hWs['!cols'] = [15, 25, 25, 60, 60, 45].map(w => ({ wch: w }));
-    addAppHeader(hWs, 'F');
+    hWs['!cols'] = [15, 25, 25, 60, 60].map(w => ({ wch: w }));
+    addAppHeader(hWs, 'E');
     utils.book_append_sheet(wb, hWs, "SHIFT_HANDOVER");
 
     // --- 08. SOP_LIBRARY ---
-    const mpData: any[][] = [[], [{ v: "SOP LIBRARY: MASTER DATABASE", s: { font: { sz: 16, bold: true } } }], [], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement / Step", s:headerStyle}, {v:"Consequence of Failure", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}, {v:"Risk", s:headerStyle}]];
+    const mpData: any[][] = [[], [{ v: "SOP LIBRARY: MASTER DATABASE", s: { font: { sz: 16, bold: true } } }], [], [], [{v:"ID", s:headerStyle}, {v:"Module", s:headerStyle}, {v:"Requirement", s:headerStyle}, {v:"Consequence", s:headerStyle}, {v:"Trainer Notes", s:headerStyle}, {v:"Freq", s:headerStyle}]];
     item.checklists.forEach(c => {
         c.tasks.forEach(t => {
             mpData.push([
@@ -402,22 +380,20 @@ export const handleDownloadMaster = (item: PremiumPack) => {
                 { v: t.description, s: dataStyleLeft }, 
                 { v: t.consequence, s: dataStyleLeft }, 
                 { v: t.trainerNotes || "-", s: dataStyleLeft }, 
-                { v: c.frequency, s: dataStyleCenter }, 
-                { v: t.priority, s: dataStyleCenter }
+                { v: c.frequency, s: dataStyleCenter }
             ]);
         });
     });
     const mpWs = utils.aoa_to_sheet(mpData);
-    mpWs['!cols'] = [12, 25, 65, 45, 50, 12, 10].map(w => ({ wch: w }));
-    addAppHeader(mpWs, 'G');
+    mpWs['!cols'] = [12, 25, 65, 45, 50, 12].map(w => ({ wch: w }));
+    addAppHeader(mpWs, 'F');
     utils.book_append_sheet(wb, mpWs, "SOP_LIBRARY");
 
     // --- 09. COST_SAVINGS ---
     const rData = [
         [], [{v:"COST & SAVINGS TRACKER", s:{font:{sz:18, bold:true}}}], [], 
-        [{v:"Risk Category", s:headerStyle}, {v:"Impact per Event (₹)", s:headerStyle}, {v:"Frequency / Yr", s:headerStyle}, {v:"Projected Annual Loss (₹)", s:headerStyle}, {v:"Mitigation Status", s:headerStyle}],
-        [{v:"Food Spoilage (Cold Chain Failure)", s:dataStyleLeft}, {v:"50000", s:ghostInputStyle}, {v:"12", s:ghostInputStyle}, {t:'f', f:'B6*C6', s:dataStyleCenter}, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [{v:"Regulatory Fines (Health/Statutory)", s:dataStyleLeft}, {v:"200000", s:ghostInputStyle}, {v:"1", s:ghostInputStyle}, {t:'f', f:'B7*C7', s:dataStyleCenter}, {v:"PROTECTED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
+        [{v:"Risk Category", s:headerStyle}, {v:"Impact per Event", s:headerStyle}, {v:"Freq / Yr", s:headerStyle}, {v:"Projected Loss", s:headerStyle}, {v:"Status", s:headerStyle}],
+        [{v:"Major Operational Failure", s:dataStyleLeft}, {v:"50000", s:ghostInputStyle}, {v:"12", s:ghostInputStyle}, {t:'f', f:'B6*C6', s:dataStyleCenter}, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
     ];
     const rWs = utils.aoa_to_sheet(rData);
     rWs['!cols'] = [40, 25, 25, 25, 20].map(w => ({ wch: w }));
@@ -427,60 +403,38 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     // --- 10. HOW THIS WORKS ---
     const guideData = [
         [], 
-        [{ v: "👨‍🍳 THE SOVEREIGN SYSTEM MANUAL", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [{ v: "The Definitive Protocol for Standardized Restaurant Operations", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.INTEL_GREY } } } }],
+        [{ v: "🚀 SYSTEM COMMAND MANUAL", s: { font: { sz: 22, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [{ v: "The Definitive Protocol for Standardized Operations", s: { font: { italic: true, sz: 10, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [{ v: "SECTION", s: headerStyle }, { v: "ACTION STEPS & SYSTEM PROTOCOLS", s: headerStyle }],
-        
-        [{ v: "1. THE ENGINE SETUP", s: instructionTitleStyle }, { v: "Go to 'BRANCH_SETUP' first. Use the Switchboard to toggle your facilities (Kitchen, Bar, etc.) to YES or NO. This automatically flags irrelevant tasks as Inactive in your daily ledger, keeping your team focused only on what exists.", s: instructionBodyStyle }],
+        [{ v: "1. ENGINE SETUP", s: instructionTitleStyle }, { v: "Go to 'BRANCH_SETUP'. Use the Switchboard to toggle your modules to YES or NO. This automatically filters irrelevant tasks from your ledger.", s: instructionBodyStyle }],
         [],
-        
-        [{ v: "2. ASSIGNING HEROES", s: instructionTitleStyle }, { v: "Go to 'TEAM_HUB'. Type the real names of your staff next to their roles. This ensures every task in the Ledger is personally assigned to an individual. If a role is empty, the task is an 'orphan'—give it a parent for accountability.", s: instructionBodyStyle }],
+        [{ v: "2. ASSIGNING HEROES", s: instructionTitleStyle }, { v: "Go to 'TEAM_HUB'. Type real staff names next to roles. This ensures every task in the Ledger is personally assigned.", s: instructionBodyStyle }],
         [],
-        
-        [{ v: "3. FINDING YOUR WORK", s: instructionTitleStyle }, { v: "Staff: Go to 'TODAYS_TASKS'. Click the filter arrow [v] on the 'Responsible Role' column. Uncheck everything except YOUR role. This turns a 240-task list into your personal to-do list in one click.", s: instructionBodyStyle }],
+        [{ v: "3. FINDING WORK", s: instructionTitleStyle }, { v: "Staff: Go to 'TODAYS_TASKS'. Use the filter arrow [v] on 'Responsible Role' to see only your job.", s: instructionBodyStyle }],
         [],
-        
-        [{ v: "4. THE DAILY PULSE", s: instructionTitleStyle }, { v: "When a task is done, type your initials in 'Done By'. The system will move the status to 'AWAITING MGR' or 'COMPLETED' automatically. Don't skip the initials—it is your digital signature of professional excellence.", s: instructionBodyStyle }],
+        [{ v: "4. THE DAILY PULSE", s: instructionTitleStyle }, { v: "Type your initials in 'Done By' when finished. Status updates automatically.", s: instructionBodyStyle }],
         [],
-        
-        [{ v: "5. MANAGER VERIFICATION", s: instructionTitleStyle }, { v: "Managers: Look for Yellow Cells in the 'Verified By' column. These are high-risk control points that require leadership sign-off. Once you type your initials, the mission status turns COMPLETED. This is your final quality gate.", s: instructionBodyStyle }],
+        [{ v: "5. MANAGER VERIFY", s: instructionTitleStyle }, { v: "Managers: Look for Yellow Cells in 'Verified By'. These are high-risk points requiring sign-off.", s: instructionBodyStyle }],
         [],
-        
-        [{ v: "6. THE SHIFT BRIDGE", s: instructionTitleStyle }, { v: "Use 'SHIFT_HANDOVER' to communicate between Morning and Night teams. Log outstanding prep, maintenance issues, or VIP arrivals. This prevents information loss during shift changes.", s: instructionBodyStyle }],
+        [{ v: "6. SHIFT BRIDGE", s: instructionTitleStyle }, { v: "Use 'SHIFT_HANDOVER' to communicate between AM/PM teams. Prevents information loss.", s: instructionBodyStyle }],
         [],
-        
-        [{ v: "7. INCIDENT COMMAND", s: instructionTitleStyle }, { v: "If a safety, hygiene, or legal incident occurs, log it immediately in the 'INCIDENT_TRACKER'. Include the estimated financial impact. This creates the 'Black Box' data needed for insurance defense and group learning.", s: instructionBodyStyle }],
+        [{ v: "7. INCIDENT COMMAND", s: instructionTitleStyle }, { v: "Log safety or legal incidents in 'INCIDENT_TRACKER'. Creates the 'Black Box' data trail.", s: instructionBodyStyle }],
         [],
-        
-        [{ v: "8. VIEWING HISTORY", s: instructionTitleStyle }, { v: "To review old records, use the filter arrow [v] on the 'Date' column in 'TODAYS_TASKS'. Uncheck 'Today' and select any past date to audit previous shift performance or prove compliance during an inspection.", s: instructionBodyStyle }],
+        [{ v: "8. VIEWING HISTORY", s: instructionTitleStyle }, { v: "To see old records, use the filter arrow [v] on the 'Date' column in 'TODAYS_TASKS'. Uncheck 'Today' and select past dates.", s: instructionBodyStyle }],
         [],
-        
-        [{ v: "9. EVOLVING THE BIBLE", s: instructionTitleStyle }, { v: "To add a permanent new task, edit the 'SOP_LIBRARY'. Any changes there will flow into the daily execution ledger for all future entries automatically. Your system should get smarter every month.", s: instructionBodyStyle }],
+        [{ v: "9. EVOLVING THE BIBLE", s: instructionTitleStyle }, { v: "Add new tasks to 'SOP_LIBRARY'. They will flow into the daily ledger automatically.", s: instructionBodyStyle }],
         [],
-        
-        [{ v: "10. TRACKING THE ROI", s: instructionTitleStyle }, { v: "Go to 'COST_SAVINGS_TRACKER'. Input the estimated cost of a single failure (e.g., a fridge breakdown). The system calculates your annual 'At-Risk' value, showing exactly how much money your discipline is protecting.", s: instructionBodyStyle }],
-        [],
-        
-        [{ v: "PRO-TIP: Save a fresh copy of this file every month (e.g. ROCS_March_Bandra.xlsx) to keep your data organized and the file speed optimal. Historical data stays safe in previous files.", s: { font: { italic: true, bold: true, color: { rgb: COLORS.INTEL_GREY } } } }]
+        [{ v: "10. TRACKING ROI", s: instructionTitleStyle }, { v: "Use 'COST_SAVINGS_TRACKER' to visualize the financial value your discipline protects.", s: instructionBodyStyle }]
     ];
-
     const guideWs = utils.aoa_to_sheet(guideData);
     guideWs['!cols'] = [{ wch: 35 }, { wch: 100 }];
-    guideWs['!merges'] = [
-        { s: { r: 1, c: 0 }, e: { r: 1, c: 1 } }, 
-        { s: { r: 2, c: 0 }, e: { r: 2, c: 1 } },
-        { s: { r: 24, c: 0 }, e: { r: 24, c: 1 } }
-    ];
+    guideWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 1 } }, { s: { r: 2, c: 0 }, e: { r: 2, c: 1 } }];
     addAppHeader(guideWs, 'B');
     utils.book_append_sheet(wb, guideWs, "HOW_THIS_WORKS");
 
     // --- 11. AUTH CORE (HIDDEN) ---
-    const aData = [
-        ["KEY", "VALUE", "STATUS"],
-        ["BUYER_EMAIL", BUYER_EMAIL, "VALID"],
-        ["ORDER_ID", ORDER_ID, "ACTIVE"]
-    ];
+    const aData = [["KEY", "VALUE"], ["EMAIL", BUYER_EMAIL], ["ORDER", ORDER_ID]];
     const aWs = utils.aoa_to_sheet(aData);
     utils.book_append_sheet(wb, aWs, "_AUTH_CORE_");
     
@@ -500,5 +454,5 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         ]
     };
 
-    writeFile(wb, `ROCS_v4.3_Sovereign_Master.xlsx`);
+    writeFile(wb, `ROCS_v4.3_Master_Build.xlsx`);
 }
