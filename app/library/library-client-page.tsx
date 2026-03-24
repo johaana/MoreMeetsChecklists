@@ -40,7 +40,12 @@ const allPacksByCategory = (packs: PremiumPack[]) => {
 };
 
 const PackCard = ({ pack }: { pack: PremiumPack }) => (
-    <Card key={pack.id} className="flex flex-col h-full overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20 bg-black/40 backdrop-blur-sm">
+    <Card key={pack.id} className="flex flex-col h-full overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20 bg-black/40 backdrop-blur-sm relative">
+        {pack.bestseller && (
+            <div className="absolute top-0 right-0 p-4 z-10">
+                <Badge variant="accent" className="uppercase font-black tracking-widest text-[8px] px-3 py-1 shadow-xl">Bestseller</Badge>
+            </div>
+        )}
         <CardHeader>
             <div className='flex justify-between items-start'>
                 <IconComponent name={pack.icon} className="h-8 w-8 text-accent mb-2" />
@@ -183,43 +188,6 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                 )}
                             </div>
                         </div>
-
-                        <div className="md:hidden fixed bottom-4 right-4 z-40">
-                             <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
-                                <SheetTrigger asChild>
-                                    <Button size="icon" className="rounded-full w-14 h-14 shadow-2xl bg-primary text-black">
-                                        <Filter className="w-6 h-6" />
-                                    </Button>
-                                </SheetTrigger>
-                                <SheetContent side="bottom" className="rounded-t-[2rem] bg-alternate-background border-t border-white/10">
-                                    <SheetHeader className="mb-6">
-                                        <SheetTitle className="uppercase font-black tracking-widest text-xs">Filter by Sector</SheetTitle>
-                                    </SheetHeader>
-                                    <ScrollArea className="h-[60vh]">
-                                        <div className="flex flex-col gap-2 pr-4">
-                                             <Button
-                                                variant={activeCategory === 'All' ? 'default' : 'ghost'}
-                                                onClick={() => handleCategoryChange('All')}
-                                                className="justify-start text-base font-bold uppercase tracking-widest italic"
-                                            >
-                                                All Industries
-                                            </Button>
-                                            {categories.map(tag => (
-                                                 <Button
-                                                    key={tag}
-                                                    variant={activeCategory === tag ? 'default' : 'ghost'}
-                                                    onClick={() => handleCategoryChange(tag)}
-                                                    className="justify-start text-base font-bold uppercase tracking-widest italic"
-                                                >
-                                                    {tag}
-                                                </Button>
-                                            ))}
-                                        </div>
-                                    </ScrollArea>
-                                </SheetContent>
-                             </Sheet>
-                        </div>
-
 
                         {filteredPacks.length === 0 ? (
                             <div className="text-center py-24 bg-white/[0.02] rounded-3xl border border-dashed border-white/10">

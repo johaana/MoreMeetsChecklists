@@ -61,81 +61,21 @@
     "imageHint": "hospital operations"
   },
   {
-    "id": "pack-pharmacy_ops_pack",
-    "description": "Pharmacy Operations Pack",
-    "imageUrl": "https://i.postimg.cc/Lscwd1LF/21-Pharmacy-Operations-Pack.png",
-    "imageHint": "pharmacy operations"
-  },
-  {
     "id": "pack-school_operations_pack",
     "description": "School Operations Pack",
     "imageUrl": "https://i.postimg.cc/1tTt1MMw/1-School-Operations-Pack.png",
     "imageHint": "school operations"
   },
   {
-    "id": "pack-university_college_ops",
-    "description": "University & College Operations Pack",
-    "imageUrl": "https://i.postimg.cc/8c6CpWnY/2-University-and-College-Operations-Pack.png",
-    "imageHint": "university operations"
-  },
-  {
-    "id": "pack-film_production_pack",
-    "description": "Film & OTT Production Pack",
-    "imageUrl": "https://i.postimg.cc/596nV3br/Film-Production-Operations-Pack.png",
-    "imageHint": "film production"
-  },
-  {
-    "id": "pack-ott_platform_pack",
-    "description": "OTT Streaming Platform Operations Pack",
-    "imageUrl": "https://i.postimg.cc/Df8BTg7k/OTT-Platform-Operations-Pack.png",
-    "imageHint": "streaming operations"
-  },
-  {
-    "id": "pack-sports_clubs_stadium_operations_pack",
-    "description": "Sports Clubs & Stadium Operations Pack",
-    "imageUrl": "https://i.postimg.cc/xjct2R91/Sports-Clubs-and-Stadium-Operations-Pack.png",
-    "imageHint": "stadium operations"
+    "id": "pack-franchise_operations_pack",
+    "description": "Franchise Operations Pack",
+    "imageUrl": "https://i.postimg.cc/1XgZZPgt/Franchise-operations.jpg",
+    "imageHint": "franchise operations"
   },
   {
     "id": "pack-cinema_operations_pack",
     "description": "Cinema & Multiplex Operations Pack",
     "imageUrl": "https://i.postimg.cc/G3NCxBN3/multiplex2.avif",
     "imageHint": "cinema operations"
-  },
-  {
-    "id": "pack-theme_park_ops_pack",
-    "description": "Theme Park Operations Pack",
-    "imageUrl": "https://i.postimg.cc/N09SP4yr/11.png",
-    "imageHint": "amusement operations"
-  },
-  {
-    "id": "pack-logistics_warehouse_pack",
-    "description": "Logistics & Warehouse Operations Pack",
-    "imageUrl": "https://i.postimg.cc/hhRtfjkG/5-Logistics-and-Warehouse-Operations-Pack.png",
-    "imageHint": "warehouse operations"
-  },
-  {
-    "id": "pack-manufacturing_operations_ehs_pack",
-    "description": "Manufacturing Operations & EHS Pack",
-    "imageUrl": "https://i.postimg.cc/0jwNkmHt/4-Manufacturing-and-EHS-Pack.png",
-    "imageHint": "factory operations"
-  },
-  {
-    "id": "pack-food_manufacturing_ops",
-    "description": "Food Manufacturing Operations Pack",
-    "imageUrl": "https://i.postimg.cc/QNH03bhP/Food-Manufacturing-Operations-Pack.png",
-    "imageHint": "food production"
-  },
-  {
-    "id": "pack-bakery_confectionery_pack",
-    "description": "Bakery & Confectionery Operations Pack",
-    "imageUrl": "https://i.postimg.cc/TwnST3JK/Bakery-and-Confectionery-Operations-Pack.png",
-    "imageHint": "bakery operations"
-  },
-  {
-    "id": "pack-franchise_operations_pack",
-    "description": "Franchise Operations Pack",
-    "imageUrl": "https://i.postimg.cc/1XgZZPgt/Franchise-operations.jpg",
-    "imageHint": "franchise operations"
   }
 ]

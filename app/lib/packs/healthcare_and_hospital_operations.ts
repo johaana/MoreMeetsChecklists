@@ -119,7 +119,7 @@ export const healthcare_and_hospital_operations: PremiumPack = {
             title: "Canteen & Dietary Governance",
             department: "F&B",
             frequency: "Daily",
-            role: "Dietician / F&B Manager",
+            role: "F&B Manager",
             summary: "Zero-fail dietary compliance for patients.",
             icon: "utensils",
             tasks: [

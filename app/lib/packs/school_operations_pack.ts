@@ -64,6 +64,20 @@ export const school_operations_pack: PremiumPack = {
                 { id: "SC-SEC-04", description: "Confirm CCTV coverage of high-risk 'blind spots' (stairs, back alleys).", priority: "High", riskLevel: "Medium", consequence: "Lack of evidence for bullying or theft incidents.", proof: "Monitor Check", trainerNotes: "Check DVR recording status." },
                 { id: "SC-SEC-05", description: "Enforce 'No Entry Without Badge' policy for all staff/vendors.", priority: "Medium", riskLevel: "Low", consequence: "Unidentified persons on campus.", proof: "Visual Audit", trainerNotes: "Badges must be chest-high." }
             ]
+        },
+        {
+            title: "Lab & Chemical Governance",
+            department: "Science",
+            frequency: "Weekly",
+            role: "Lab Assistant",
+            summary: "Manages hazardous materials and lab safety protocols.",
+            icon: "test-tube",
+            tasks: [
+                { id: "SC-LAB-01", description: "Verify chemical storage segregation (Acid/Flammable separation).", priority: "High", riskLevel: "High", consequence: "Explosion or toxic gas release.", proof: "Storage Audit" },
+                { id: "SC-LAB-02", description: "Check expiry and labeling of all high-risk chemicals.", priority: "High", riskLevel: "Medium", consequence: "Unexpected reactions or legal non-compliance.", proof: "Chemical Register" },
+                { id: "SC-LAB-03", description: "Test lab eye-wash stations and ventilation hoods.", priority: "High", riskLevel: "High", consequence: "Fatal injury after chemical spill.", proof: "Test Log" },
+                { id: "SC-LAB-04", description: "Audit availability of PPE: goggles, gloves, and lab coats.", priority: "Medium", riskLevel: "Low", consequence: "Preventable student injuries.", proof: "Stock Check" }
+            ]
         }
     ]
 };

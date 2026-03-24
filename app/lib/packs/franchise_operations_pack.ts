@@ -93,6 +93,20 @@ export const franchise_operations_pack: PremiumPack = {
                 { id: "FR-FIN-03", description: "Verify timely payment of monthly Royalty and Marketing fees.", priority: "High", riskLevel: "High", consequence: "Breach of contract and cash flow issues.", proof: "Payment Receipt", trainerNotes: "Due by the 5th of every month." },
                 { id: "FR-FIN-04", description: "Audit 'Complimentary' and 'Waste' logs for excess leakage.", priority: "Medium", riskLevel: "Medium", consequence: "Artificial reduction of royalty-eligible sales.", proof: "Log Review", trainerNotes: "Verify against visual waste log." }
             ]
+        },
+        {
+            title: "Franchisee Support & Compliance",
+            department: "Relations",
+            frequency: "Monthly",
+            role: "Account Manager",
+            summary: "Ensures the franchisee is supported and following network-wide social and legal standards.",
+            icon: "handshake",
+            tasks: [
+                { id: "FR-SUP-01", description: "Verify implementation of recent network-wide policy updates.", priority: "High", riskLevel: "Medium", consequence: "Gaps in network alignment and legal vulnerability.", proof: "Acknowledge Log" },
+                { id: "FR-SUP-02", description: "Audit staff welfare and statutory compliance (PF/ESI) at the unit level.", priority: "High", riskLevel: "High", consequence: "Legal liability for the franchisor and brand damage.", proof: "Compliance Chalan" },
+                { id: "FR-SUP-03", description: "Review franchisee marketing spend and local campaign ROI.", priority: "Medium", riskLevel: "Low", consequence: "Ineffective use of brand development funds.", proof: "Marketing Report" },
+                { id: "FR-SUP-04", description: "Gather and log franchisee feedback on supply chain reliability.", priority: "Medium", riskLevel: "Medium", consequence: "Undetected bottlenecks in the central supply chain.", proof: "Feedback Log" }
+            ]
         }
     ]
 };
