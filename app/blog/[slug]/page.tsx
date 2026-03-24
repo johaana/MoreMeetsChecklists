@@ -120,13 +120,27 @@ export default async function BlogPostPage({ params }: Props) {
     'facility_management_blueprint': {
         bridge: "People move on. The system must stay.",
         button: "Secure Facility Infrastructure"
+    },
+    'franchise_operations_pack': {
+        bridge: "Scale requires a standard that doesn't drift.",
+        button: "Secure Your Franchise Growth"
+    },
+    'school_operations_pack': {
+        bridge: "Safety in education is binary: either it's engineered, or it's not.",
+        button: "Strengthen School Safety"
+    },
+    'cinema_operations_pack': {
+        bridge: "Technical excellence requires technical discipline.",
+        button: "Secure Cinema Operations"
     }
   };
 
-  const currentCta = relatedPack ? ctaMapping[relatedPack.id] : {
+  const fallbackCta = {
       bridge: "Operational risk isn't an option. It's a variable you control.",
       button: "Strengthen Your Operations"
   };
+
+  const currentCta = (relatedPack && ctaMapping[relatedPack.id]) ? ctaMapping[relatedPack.id] : fallbackCta;
 
   const PROOFS = [
     { label: 'Audit-Ready', icon: ShieldCheck },
