@@ -11,7 +11,7 @@ export const hotels_and_resorts: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/2f377557-d41f-4571-83d3-a52e24ac27dd',
     category: "Hospitality",
-    description: "No monthly subscriptions. No SaaS dependency. One-time investment for a lifetime of control. Sovereign v4.3 is the professional plug for your operational leaks.",
+    description: "No monthly subscriptions. No SaaS dependency. One-time investment for a lifetime of control. Sovereign v4.4 is the professional plug for your operational leaks.",
     heroHeadline: "Eliminate Guest Safety Gaps and Viral Reputation Damage",
     heroSubheadline: "Track 250+ technical control points across Front Office, Housekeeping, Engineering, Events, and ORM—even when you’re not on property.",
     pricingUrgency: "One safety incident or a single negative viral review costs 100x more than this entire system.",
@@ -97,7 +97,7 @@ export const hotels_and_resorts: PremiumPack = {
             summary: "Governs high-risk leisure zones and niche guest services.",
             icon: "waves",
             tasks: [
-                { id: "HR-LSR-01", description: "Pool Vitals: Log pH and Chlorine every 4 hours.", priority: "High", riskLevel: "High", consequence: "Infection risk and health closure.", proof: "Vitals Log", trainerNotes: "Target pH: 7.2 to 7.8." },
+                { id: "HR-LSR-01", description: "Pool Vitals: Log pH and Chlorine every 4 hours.", priority: "High", riskLevel: "High", consequence: "Pool infection risk and health closure.", proof: "Vitals Log", trainerNotes: "Target pH: 7.2 to 7.8." },
                 { id: "HR-LSR-02", description: "Pool Safety: Verify lifeguard presence and first-aid kit status.", priority: "High", riskLevel: "High", consequence: "Fatal drowning liability.", proof: "Lifeguard Log", trainerNotes: "Lifeguard must not have phone." },
                 { id: "HR-LSR-03", description: "Gym Equipment: Check for worn cables or loose bolts.", priority: "High", riskLevel: "High", consequence: "Serious mechanical injury.", proof: "Inspection Log", trainerNotes: "Check treadmills for belt-drift." },
                 { id: "HR-LSR-04", description: "Pet-Friendly Audit: Check availability of pet-kits and sanitized bowls.", priority: "Medium", riskLevel: "Low", consequence: "Service failure for premium niche.", proof: "Stock Check", trainerNotes: "Sanitize bowls at 82°C." }
