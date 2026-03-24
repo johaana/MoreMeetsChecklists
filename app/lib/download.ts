@@ -290,8 +290,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
         [],
         [], facilityHeaders,
-        [{ v: 1, s: dataStyleCenter }, { v: "Type Branch 1 Name", s: ghostInputStyle }, ...packChecklists.map(() => ({ v: "YES", s: ghostInputStyle }))],
-        [{ v: 2, s: dataStyleCenter }, { v: "Type Branch 2 Name", s: ghostInputStyle }, ...packChecklists.map(() => ({ v: "YES", s: ghostInputStyle }))]
+        [{ v: "1", s: dataStyleCenter }, { v: "Type Branch 1 Name", s: ghostInputStyle }, ...packChecklists.map(() => ({ v: "YES", s: ghostInputStyle }))],
+        [{ v: "2", s: dataStyleCenter }, { v: "Type Branch 2 Name", s: ghostInputStyle }, ...packChecklists.map(() => ({ v: "YES", s: ghostInputStyle }))]
     ];
     const setupWs = utils.aoa_to_sheet(branchSetupData);
     setupWs['!cols'] = [12, 35, ...packChecklists.map(() => 15)].map(w => ({ wch: w }));
@@ -362,7 +362,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const allRoles = Array.from(new Set(packChecklists.map(c => c.role)));
     allRoles.forEach((role, idx) => {
         pData.push([
-            { v: idx + 1, s: dataStyleCenter },
+            { v: String(idx + 1), s: dataStyleCenter },
             { v: role, s: dataStyleLeft },
             { v: "Type Person Name", s: ghostInputStyle }, 
             { v: "Contact Details", s: ghostInputStyle },
@@ -413,7 +413,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const rData = [
         [], [{v:"COST & SAVINGS TRACKER", s:{font:{sz:18, bold:true}}}], [], 
         [{v:"Risk Category", s:headerStyle}, {v:"Impact per Event", s:headerStyle}, {v:"Freq / Yr", s:headerStyle}, {v:"Projected Loss", s:headerStyle}, {v:"Status", s:headerStyle}],
-        [{v:"Major Operational Failure", s:dataStyleLeft}, {v:50000, s:ghostInputStyle}, {v:12, s:ghostInputStyle}, {t:'f', f:'B6*C6', s:dataStyleCenter}, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
+        [{v:"Major Operational Failure", s:dataStyleLeft}, {v:"50000", s:ghostInputStyle}, {v:"12", s:ghostInputStyle}, {t:'f', f:'B6*C6', s:dataStyleCenter}, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
     ];
     const rWs = utils.aoa_to_sheet(rData);
     rWs['!cols'] = [40, 25, 25, 25, 20].map(w => ({ wch: w }));

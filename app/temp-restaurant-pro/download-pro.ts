@@ -175,7 +175,7 @@ export const handleDownloadPro = (item: PremiumPack) => {
             { v: "Empire Status:", s: { ...chamberLabelStyle, border: { ...chamberLabelStyle.border, bottom: boxBorder } } },
             { v: "👑 LEVEL 3 - EXECUTIVE", s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.ACCENT_GOLD } }, border: { bottom: boxBorder } } },
             { v: "Active Units:", s: { ...chamberLabelStyle, border: { bottom: boxBorder } } },
-            { v: 2, s: { ...chamberValueStyle, border: { bottom: boxBorder } } },
+            { v: "2", s: { ...chamberValueStyle, border: { bottom: boxBorder } } },
             { v: "Shift Progress:", s: { ...chamberLabelStyle, border: { bottom: boxBorder } } },
             { t: 'f', f: `IFERROR(TEXT(COUNTIF('MISSION_LEDGER'!E:E, "<>") / MAX(1, COUNTIFS('MISSION_LEDGER'!D:D, "<>N/A*", 'MISSION_LEDGER'!D:D, "<>")), "0%"), "0%")`, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN }, sz: 12 }, border: { bottom: boxBorder, right: boxBorder } } }
         ],
