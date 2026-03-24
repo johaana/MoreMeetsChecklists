@@ -4,6 +4,6 @@
  * This directory (/src) is deactivated to prevent build ambiguity.
  * Standardized codebase is located in the root /app directory.
  */
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+export default function Page() {
+  return null;
 }

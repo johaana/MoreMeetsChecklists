@@ -248,7 +248,6 @@ export const handleDownloadMaster = (item: PremiumPack) => {
 
     const homeWs = utils.aoa_to_sheet(homeData);
     homeWs['!cols'] = [22, 28, 22, 28, 22, 28].map(w => ({ wch: w }));
-    
     homeWs['!merges'] = [
         { s: { r: 2, c: 0 }, e: { r: 2, c: 5 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 5 } }, { s: { r: 4, c: 0 }, e: { r: 4, c: 5 } },
         { s: { r: 6, c: 0 }, e: { r: 6, c: 1 } }, { s: { r: 6, c: 2 }, e: { r: 6, c: 3 } }, { s: { r: 6, c: 4 }, e: { r: 6, c: 5 } },
@@ -257,20 +256,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
         { s: { r: 9, c: 0 }, e: { r: 9, c: 1 } }, { s: { r: 9, c: 2 }, e: { r: 9, c: 3 } }, { s: { r: 9, c: 4 }, e: { r: 9, c: 5 } },
         { s: { r: 11, c: 0 }, e: { r: 11, c: 5 } },
         { s: { r: 12, c: 0 }, e: { r: 12, c: 1 } }, { s: { r: 12, c: 2 }, e: { r: 12, c: 3 } }, { s: { r: 12, c: 4 }, e: { r: 12, c: 5 } },
-        { s: { r: 15, c: 0 }, e: { r: 15, c: 5 } },
-        { s: { r: 17, c: 0 }, e: { r: 17, c: 5 } }, { s: { r: 18, c: 0 }, e: { r: 18, c: 5 } }
+        { s: { r: 15, c: 0 }, e: { r: 15, c: 5 } }
     ];
-
-    homeWs['!rows'] = Array(35).fill({ hpt: 18 });
-    homeWs['!rows'][2] = { hpt: 50 }; 
-    homeWs['!rows'][3] = { hpt: 25 };
-    homeWs['!rows'][7] = { hpt: 35 }; 
-    homeWs['!rows'][8] = { hpt: 35 }; 
-    homeWs['!rows'][9] = { hpt: 35 }; 
-    homeWs['!rows'][11] = { hpt: 35 }; 
-    homeWs['!rows'][12] = { hpt: 22 }; 
-    homeWs['!rows'][15] = { hpt: 45 }; 
-
     homeWs['!views'] = [{ showGridLines: false }];
     utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
 
@@ -416,8 +403,8 @@ export const handleDownloadMaster = (item: PremiumPack) => {
     const rData = [
         [], [{v:"COST & SAVINGS TRACKER", s:{font:{sz:18, bold:true}}}], [], 
         [{v:"Risk Category", s:headerStyle}, {v:"Impact per Event (₹)", s:headerStyle}, {v:"Frequency / Yr", s:headerStyle}, {v:"Projected Annual Loss (₹)", s:headerStyle}, {v:"Mitigation Status", s:headerStyle}],
-        [{v:"Food Spoilage (Cold Chain Failure)", s:dataStyleLeft}, {v:"50000", s:ghostInputStyle}, {v:"12", s:ghostInputStyle}, {t:'f', f:'B6*C6', s:dataStyleCenter}, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [{v:"Regulatory Fines (Health/Statutory)", s:dataStyleLeft}, {v:"200000", s:ghostInputStyle}, {v:"1", s:ghostInputStyle}, {t:'f', f:'B7*C7', s:dataStyleCenter}, {v:"PROTECTED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
+        [{v:"Food Spoilage (Cold Chain Failure)", s:dataStyleLeft}, {v: "50000", s:ghostInputStyle}, {v: "12", s:ghostInputStyle}, {t:'f', f:'B6*C6', s:dataStyleCenter}, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [{v:"Regulatory Fines (Health/Statutory)", s:dataStyleLeft}, {v: "200000", s:ghostInputStyle}, {v: "1", s:ghostInputStyle}, {t:'f', f:'B7*C7', s:dataStyleCenter}, {v:"PROTECTED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
     ];
     const rWs = utils.aoa_to_sheet(rData);
     rWs['!cols'] = [40, 25, 25, 25, 20].map(w => ({ wch: w }));
