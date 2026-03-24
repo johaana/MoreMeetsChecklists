@@ -20,9 +20,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const wb = utils.book_new();
     const startDate = new Date(); 
     
-    // License Data (Placeholders for Saleable Version)
-    const BUYER_EMAIL = "[BUYER EMAIL]";
-    const ORDER_ID = "MM-ORD-[ID]";
+    // License Data
+    const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-4.3";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -42,7 +42,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         INACTIVE_GREY: "F1F5F9"
     };
 
-    // --- SHARED STYLES ---
     const borderStyle = {
         top: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } },
         bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } },
@@ -159,12 +158,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED }, italic: true }
     };
 
-    const inactiveRowStyle = {
-        ...dataStyleLeft,
-        fill: { fgColor: { rgb: COLORS.INACTIVE_GREY } },
-        font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED }, italic: true }
-    };
-
     const instructionTitleStyle = {
         font: { ...baseFont, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } },
         alignment: { vertical: 'center' }
@@ -194,7 +187,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 1 }];
     };
 
-    // Normalize input to handle both Packs and Individual Checklists
     let packChecklists: Checklist[] = [];
     if ('checklists' in item) {
         packChecklists = item.checklists;
@@ -215,7 +207,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [], [],
         [{ v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
         [{ v: `Run Your Entire ${item.title} Operations From One Screen`, s: { font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
-        [{ v: `Sovereign Series: ${item.title} v4.3 PRO | Institutional Grade`, s: { font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Sovereign Series v4.3 PRO | Multi-Branch Engine`, s: { font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
         [],
         [
             { v: "ADMIN & SETUP", s: groupHeaderStyle }, null, 
@@ -253,12 +245,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "✅ NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.RISK_RED } } } }
         ],
         [
-            { v: "Empire Status:", s: { ...chamberLabelStyle, border: { ...chamberLabelStyle.border, bottom: boxBorder } } },
-            { v: "👑 LEVEL 3 - EXECUTIVE", s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.ACCENT_GOLD } }, border: { bottom: boxBorder } } },
-            { v: "Active Units:", s: { ...chamberLabelStyle, border: { bottom: boxBorder } } },
-            { t: 'f', f: `COUNTIF('BRANCH_SETUP'!B6:B15, "<>")`, s: { ...chamberValueStyle, border: { bottom: boxBorder } } },
-            { v: "Shift Progress:", s: { ...chamberLabelStyle, border: { bottom: boxBorder } } },
-            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*")), "0%"), "0%")`, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN }, sz: 12 }, border: { bottom: boxBorder, right: boxBorder } } }
+            { v: "Empire Status:", s: { ...chamberLabelStyle } },
+            { v: "👑 LEVEL 3 - EXECUTIVE", s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.ACCENT_GOLD } } } },
+            { v: "Active Units:", s: { ...chamberLabelStyle } },
+            { t: 'f', f: `COUNTIF('BRANCH_SETUP'!B6:B15, "<>")`, s: { ...chamberValueStyle } },
+            { v: "Shift Progress:", s: { ...chamberLabelStyle } },
+            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*")), "0%"), "0%")`, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN }, sz: 12 } } }
         ],
         [{ v: "▶ VIEW BRANCH INTELLIGENCE & PERFORMANCE ANALYTICS", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: bigActionButtonStyle }, null, null, null, null, null],
         [],
@@ -310,9 +302,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const mData: any[][] = [[], [{ v: "MISSION LEDGER: DAILY EXECUTION LOG", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
     
-    // Preview for 2 branches
     [1, 2].forEach(bCode => {
-        packChecklists.forEach((c, cIdx) => {
+        packChecklists.forEach((c) => {
             c.tasks.forEach(t => {
                 const rowIdx = mData.length + 1;
                 const statusFormula = `IF(LEN(TRIM(G${rowIdx}))=0, "PENDING", IF(AND(LEN(TRIM(H${rowIdx}))=0, H${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;

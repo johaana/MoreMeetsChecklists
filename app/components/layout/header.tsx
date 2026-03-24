@@ -120,7 +120,6 @@ export function SiteHeader() {
 
             <nav className="ml-auto hidden md:flex gap-4 sm:gap-6 items-center">
                 <Link href="/about" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>About Us</Link>
-                <Link href="/library" className={cn("text-sm font-medium transition-colors", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")} prefetch={false}>Operations Library</Link>
                 <div 
                     className="group relative"
                     onMouseEnter={() => setIsDropdownOpen(true)}

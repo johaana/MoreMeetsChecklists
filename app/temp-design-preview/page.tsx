@@ -1,6 +1,6 @@
 
-import ClientPage from './client-page';
+import { notFound } from 'next/navigation';
 
 export default function Page() {
-  return <ClientPage />;
+    return notFound();
 }
