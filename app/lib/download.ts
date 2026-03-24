@@ -6,12 +6,9 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * ROCS v4.3 Master Engine - THE SOVEREIGN STANDARD
- * Universal Generator for all Industry Operating Systems.
- * Features: Multi-Branch Switchboard, Symmetric Zero-Clipping UI, 
- * Manager Yellow Targets, ROI Loss Recovery Engine.
- * 
- * HARDENED: All numeric cell values are stringified to prevent TypeScript build failures.
+ * Sovereign Engine v4.4 - THE INSTITUTIONAL BEAST
+ * Features: Multi-Branch Staff Mapping, Dynamic Star/Branch Tracking, 
+ * Forensic ROI Linkage, Symmetric Zero-Clipping UI.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -24,7 +21,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     
     // License Data
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-MASTER-SOVEREIGN-4.3";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-4.4";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -160,16 +157,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED }, italic: true }
     };
 
-    const instructionTitleStyle = {
-        font: { ...baseFont, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } },
-        alignment: { vertical: 'center' }
-    };
-
-    const instructionBodyStyle = {
-        font: { ...baseFont, sz: 10 },
-        alignment: { wrapText: true, vertical: 'top' }
-    };
-
     const addAppHeader = (ws: WorkSheet, endCol: string = 'K') => {
         utils.sheet_add_aoa(ws, [[{ 
             v: "◀ BACK TO HOME CONSOLE", 
@@ -205,11 +192,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
 
     // --- 01. HOME CONSOLE ---
+    const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!G:G, MATCH(MAX(COUNTIF('TODAYS_TASKS'!G:G, 'TODAYS_TASKS'!G:G)), COUNTIF('TODAYS_TASKS'!G:G, 'TODAYS_TASKS'!G:G), 0)), "[WAITING]")`;
+    const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!B:B, MATCH(MAX(COUNTIF('TODAYS_TASKS'!B:B, 'TODAYS_TASKS'!B:B)), COUNTIF('TODAYS_TASKS'!B:B, 'TODAYS_TASKS'!B:B), 0)), "[CALCULATING]")`;
+
     const homeData: any[][] = [
         [], [],
         [{ v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
-        [{ v: `Run Your Entire ${item.title} Operations From One Screen`, s: { font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
-        [{ v: `Sovereign Series v4.3 PRO | Multi-Branch Engine`, s: { font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
+        [{ v: `Institutional Operating System v4.4 | Sovereign Master`, s: { font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
+        [{ v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } }, alignment: { horizontal: 'center' } } }],
         [],
         [
             { v: "ADMIN & SETUP", s: groupHeaderStyle }, null, 
@@ -224,12 +214,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [
             { v: "▶ TEAM HUB", l: { Target: "#'TEAM_HUB'!A1" }, s: tileStyle }, null, 
             { v: "▶ SHIFT HANDOVER", l: { Target: "#'SHIFT_HANDOVER'!A1" }, s: tileStyle }, null, 
-            { v: "▶ COST & SAVINGS", l: { Target: "#'COST_SAVINGS_TRACKER'!A1" }, s: tileStyle }
+            { v: "▶ COST & SAVINGS", l: { Target: "#'ROI_ENGINE'!A1" }, s: tileStyle }
         ],
         [
             { v: "▶ MASTER SOPs", l: { Target: "#'SOP_LIBRARY'!A1" }, s: tileStyle }, null, 
             { v: "▶ HOW THIS WORKS", l: { Target: "#'HOW_THIS_WORKS'!A1" }, s: tileStyle }, null, 
-            { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }, null
+            { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_LOG'!A1" }, s: tileStyle }, null
         ],
         [],
         [{ t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.9, "🔥 SIZZLING - PERFECT EXECUTION!", IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.6, "🥘 SIMMERING - BUILDING MOMENTUM", "🧊 COLD - TURN UP THE HEAT!")), "EMPIRE MOOD: 🧊 LOADING...")`, s: moodBannerStyle }, null, null, null, null, null],
@@ -240,11 +230,11 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ],
         [
             { v: "Today's Star:", s: chamberLabelStyle },
-            { v: "🎖️ [Name]", s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN } } } },
-            { v: "Top Streak:", s: chamberLabelStyle },
-            { v: "🏆 [Branch]", s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.ACCENT_GOLD } } } },
+            { t: 'f', f: starFormula, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN } } } },
+            { v: "Top Branch:", s: chamberLabelStyle },
+            { t: 'f', f: branchFormula, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.ACCENT_GOLD } } } },
             { v: "Open Incidents:", s: chamberLabelStyle },
-            { t: 'f', f: `IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "✅ NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.RISK_RED } } } }
+            { t: 'f', f: `IF(COUNTIF('INCIDENT_LOG'!G:G, "OPEN")=0, "✅ NONE", COUNTIF('INCIDENT_LOG'!G:G, "OPEN"))`, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.RISK_RED } } } }
         ],
         [
             { v: "Empire Status:", s: { ...chamberLabelStyle } },
@@ -254,9 +244,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "Shift Progress:", s: { ...chamberLabelStyle } },
             { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*")), "0%"), "0%")`, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN }, sz: 12 } } }
         ],
-        [{ v: "▶ VIEW BRANCH INTELLIGENCE & PERFORMANCE ANALYTICS", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: bigActionButtonStyle }, null, null, null, null, null],
+        [{ v: "▶ VIEW REAL-TIME BRANCH INTELLIGENCE & PERFORMANCE ANALYTICS", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: bigActionButtonStyle }, null, null, null, null, null],
         [],
-        [{ v: "USER GUIDE: Use the [Filter Arrows] in 'Today's Tasks' to see only YOUR role and YOUR name.", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [{ v: "USER GUIDE: Use filters in 'Today's Tasks' to see YOUR branch, YOUR role, and YOUR name.", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [{ v: `REGISTERED TO: ${BUYER_EMAIL} | ORDER ID: ${ORDER_ID}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'left' } } }]
     ];
 
@@ -284,8 +274,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
         [],
         [], facilityHeaders,
-        [{ v: "1", s: dataStyleCenter }, { v: "Type Branch 1 Name", s: ghostInputStyle }, ...packChecklists.map(() => ({ v: "YES", s: ghostInputStyle }))],
-        [{ v: "2", s: dataStyleCenter }, { v: "Type Branch 2 Name", s: ghostInputStyle }, ...packChecklists.map(() => ({ v: "YES", s: ghostInputStyle }))]
+        [{ v: "1", s: dataStyleCenter }, { v: "Bandra West", s: ghostInputStyle }, ...packChecklists.map(() => ({ v: "YES", s: ghostInputStyle }))],
+        [{ v: "2", s: dataStyleCenter }, { v: "Colaba Main", s: ghostInputStyle }, ...packChecklists.map(() => ({ v: "YES", s: ghostInputStyle }))]
     ];
     const setupWs = utils.aoa_to_sheet(branchSetupData);
     setupWs['!cols'] = [12, 35, ...packChecklists.map(() => 15)].map(w => ({ wch: w }));
@@ -309,11 +299,11 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             c.tasks.forEach(t => {
                 const rowIdx = mData.length + 1;
                 const statusFormula = `IF(LEN(TRIM(G${rowIdx}))=0, "PENDING", IF(AND(LEN(TRIM(H${rowIdx}))=0, H${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
-                const personFormula = `IFERROR(VLOOKUP(C${rowIdx}, 'TEAM_HUB'!B:C, 2, FALSE), "[UNASSIGNED]")`;
+                const personFormula = `IFERROR(VLOOKUP(B${rowIdx}&C${rowIdx}, 'TEAM_HUB'!A:D, 3, FALSE), "[UNASSIGNED]")`;
 
                 mData.push([
                     { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
-                    { t: 'f', f: `IFERROR(INDEX('BRANCH_SETUP'!$B$5:$B$15, ${bCode}), "Branch ${bCode}")`, s: dataStyleCenter },
+                    { t: 'f', f: `IFERROR(INDEX('BRANCH_SETUP'!$B$5:$B$15, ${bCode}+1), "Branch ${bCode}")`, s: dataStyleCenter },
                     { v: c.role, s: dataStyleCenter },
                     { t: 'f', f: personFormula, s: dataStyleCenter },
                     { v: t.id, s: dataStyleCenter },
@@ -342,7 +332,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [{ v: "GROUP KPIs", s: groupHeaderStyle }, null, null],
         [{ v: "Operational KPI", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Target Threshold", s: headerStyle }],
         [{ v: "Group Shift Progress", s: dataStyleLeft }, { t:'f', f:`IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*")), "0%"), "0%")`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
-        [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!G:G, "OPEN"))`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
+        [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_LOG'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_LOG'!G:G, "OPEN"))`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
     ];
     const dWs = utils.aoa_to_sheet(dashData);
     dWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
@@ -350,33 +340,38 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     utils.book_append_sheet(wb, dWs, "BUSINESS_HEALTH");
 
     // --- 05. TEAM_HUB ---
-    const pHeaders = [{v:"Staff ID", s:headerStyle}, {v:"Role Name", s:headerStyle}, {v:"Full Name", s:headerStyle}, {v:"Contact", s:headerStyle}, {v:"Status", s:headerStyle}];
-    const pData: any[][] = [[], [{v:"TEAM HUB & ROLE ASSIGNMENT", s:{font:{sz:18, bold:true}}}], [], pHeaders];
+    const pHeaders = [{v:"Staff Lookup Key", s:headerStyle}, {v:"Branch Name", s:headerStyle}, {v:"Staff Full Name", s:headerStyle}, {v:"Role Assigned", s:headerStyle}, {v:"Contact", s:headerStyle}, {v:"Status", s:headerStyle}];
+    const pData: any[][] = [[], [{v:"TEAM HUB: PER-BRANCH ROLE ASSIGNMENT", s:{font:{sz:18, bold:true}}}], [], pHeaders];
     const allRoles = Array.from(new Set(packChecklists.map(c => c.role)));
-    allRoles.forEach((role, idx) => {
-        pData.push([
-            { v: String(idx + 1), s: dataStyleCenter },
-            { v: role, s: dataStyleLeft },
-            { v: "Type Person Name", s: ghostInputStyle }, 
-            { v: "Contact Details", s: ghostInputStyle },
-            { v: "ACTIVE", s: dataStyleCenter }
-        ]);
+    
+    [1, 2].forEach(bId => {
+        allRoles.forEach((role) => {
+            const rowIdx = pData.length + 1;
+            pData.push([
+                { t: 'f', f: `B${rowIdx}&D${rowIdx}`, s: intelStyle },
+                { t: 'f', f: `IFERROR(INDEX('BRANCH_SETUP'!$B$5:$B$15, ${bId}+1), "Branch ${bId}")`, s: dataStyleCenter },
+                { v: "Type Person Name", s: ghostInputStyle }, 
+                { v: role, s: dataStyleLeft },
+                { v: "Contact Details", s: ghostInputStyle },
+                { v: "ACTIVE", s: dataStyleCenter }
+            ]);
+        });
     });
     const pWs = utils.aoa_to_sheet(pData);
-    pWs['!cols'] = [12, 30, 35, 20, 25].map(w => ({ wch: w }));
-    addAppHeader(pWs, 'E');
+    pWs['!cols'] = [25, 25, 35, 30, 20, 25].map(w => ({ wch: w }));
+    addAppHeader(pWs, 'F');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- 06. INCIDENT_TRACKER ---
-    const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Category", s:headerStyle}, {v:"Description", s:headerStyle}, {v:"Impact", s:headerStyle}, {v:"Status", s:headerStyle}];
-    const iData = [[], [{v:"INCIDENT TRACKER: LIABILITY LOG", s:{font:{sz:18, bold:true}}}], [], iHeaders];
+    // --- 06. INCIDENT_LOG ---
+    const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Category", s:headerStyle}, {v:"Description", s:headerStyle}, {v:"Financial Impact (Potential)", s:headerStyle}, {v:"Status", s:headerStyle}];
+    const iData = [[], [{v:"INCIDENT TRACKER: LIABILITY & LOSS LOG", s:{font:{sz:18, bold:true}}}], [], iHeaders];
     const iWs = utils.aoa_to_sheet(iData);
     iWs['!cols'] = [15, 12, 25, 35, 60, 30, 20].map(w => ({ wch: w }));
     addAppHeader(iWs, 'G');
-    utils.book_append_sheet(wb, iWs, "INCIDENT_TRACKER");
+    utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
     // --- 07. SHIFT_HANDOVER ---
-    const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Details", s:headerStyle}, {v:"Outstanding", s:headerStyle}];
+    const hHeaders = [{v:"Date", s:headerStyle}, {v:"AM Manager", s:headerStyle}, {v:"PM Manager", s:headerStyle}, {v:"Critical Handover Details", s:headerStyle}, {v:"Outstanding Tasks", s:headerStyle}];
     const hData = [[], [{v:"SHIFT HANDOVER BRIDGE", s:{font:{sz:18, bold:true}}}], [], hHeaders];
     const hWs = utils.aoa_to_sheet(hData);
     hWs['!cols'] = [15, 25, 25, 60, 60].map(w => ({ wch: w }));
@@ -402,16 +397,17 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addAppHeader(mpWs, 'F');
     utils.book_append_sheet(wb, mpWs, "SOP_LIBRARY");
 
-    // --- 09. COST_SAVINGS ---
+    // --- 09. ROI ENGINE ---
     const rData = [
-        [], [{v:"COST & SAVINGS TRACKER", s:{font:{sz:18, bold:true}}}], [], 
-        [{v:"Risk Category", s:headerStyle}, {v:"Impact per Event", s:headerStyle}, {v:"Freq / Yr", s:headerStyle}, {v:"Projected Loss", s:headerStyle}, {v:"Status", s:headerStyle}],
-        [{v:"Major Operational Failure", s:dataStyleLeft}, {v:"50000", s:ghostInputStyle}, {v:"12", s:ghostInputStyle}, {t:'f', f:'B6*C6', s:dataStyleCenter}, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }]
+        [], [{v:"ROI ENGINE: COST & SAVINGS TRACKER", s:{font:{sz:18, bold:true}}}], [], 
+        [{v:"Operational Risk Category", s:headerStyle}, {v:"Cost per Failure", s:headerStyle}, {v:"Incident Count (Linked)", s:headerStyle}, {v:"Projected Loss Avoided", s:headerStyle}, {v:"Governance Status", s:headerStyle}],
+        [{v:"Major Food Poisoning Incident", s:dataStyleLeft}, {v: "500000", s: ghostInputStyle }, { t:'f', f: `COUNTIFS('INCIDENT_LOG'!D:D, "*Food*")`, s: dataStyleCenter }, { t:'f', f:'B6*(10-C6)', s:dataStyleCenter }, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [{v:"Employee Fraud / Theft", s:dataStyleLeft}, {v: "150000", s: ghostInputStyle }, { t:'f', f: `COUNTIFS('INCIDENT_LOG'!D:D, "*Theft*")`, s: dataStyleCenter }, { t:'f', f:'B7*(10-C7)', s:dataStyleCenter }, {v:"ACTIVE AUDIT", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.ACCENT_GOLD } } } }]
     ];
     const rWs = utils.aoa_to_sheet(rData);
     rWs['!cols'] = [40, 25, 25, 25, 20].map(w => ({ wch: w }));
     addAppHeader(rWs, 'E');
-    utils.book_append_sheet(wb, rWs, "COST_SAVINGS_TRACKER");
+    utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
 
     // --- 10. HOW THIS WORKS ---
     const guideData = [
@@ -420,34 +416,19 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [{ v: `The Definitive Protocol for Standardized ${item.title} Operations`, s: { font: { italic: true, sz: 10, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [{ v: "SECTION", s: headerStyle }, { v: "ACTION STEPS & SYSTEM PROTOCOLS", s: headerStyle }],
-        [{ v: "1. ENGINE SETUP", s: instructionTitleStyle }, { v: "Go to 'BRANCH_SETUP'. Use the Switchboard to toggle your modules to YES or NO. This automatically filters irrelevant tasks from your ledger.", s: instructionBodyStyle }],
-        [],
-        [{ v: "2. ASSIGNING HEROES", s: instructionTitleStyle }, { v: "Go to 'TEAM_HUB'. Type real staff names next to roles. This ensures every task in the Ledger is personally assigned.", s: instructionBodyStyle }],
-        [],
-        [{ v: "3. FINDING WORK", s: instructionTitleStyle }, { v: "Staff: Go to 'TODAYS_TASKS'. Use the filter arrow [v] on 'Responsible Role' to see only your job.", s: instructionBodyStyle }],
-        [],
-        [{ v: "4. THE DAILY PULSE", s: instructionTitleStyle }, { v: "Type your initials in 'Done By' when finished. Status updates automatically.", s: instructionBodyStyle }],
-        [],
-        [{ v: "5. MANAGER VERIFY", s: instructionTitleStyle }, { v: "Managers: Look for Yellow Cells in 'Verified By'. These are high-risk points requiring sign-off.", s: instructionBodyStyle }],
-        [],
-        [{ v: "6. SHIFT BRIDGE", s: instructionTitleStyle }, { v: "Use 'SHIFT_HANDOVER' to communicate between AM/PM teams. Prevents information loss.", s: instructionBodyStyle }],
-        [],
-        [{ v: "7. INCIDENT COMMAND", s: instructionTitleStyle }, { v: "Log safety or legal incidents in 'INCIDENT_TRACKER'. Creates the 'Black Box' data trail.", s: instructionBodyStyle }],
-        [],
-        [{ v: "8. VIEWING HISTORY", s: instructionTitleStyle }, { v: "To see old records, use the filter arrow [v] on the 'Date' column in 'TODAYS_TASKS'. Uncheck 'Today' and select past dates.", s: instructionBodyStyle }],
-        [],
-        [{ v: "9. EVOLVING THE BIBLE", s: instructionTitleStyle }, { v: "Add new tasks to 'SOP_LIBRARY'. They will flow into the daily ledger automatically.", s: instructionBodyStyle }],
-        [],
-        [{ v: "10. TRACKING ROI", s: instructionTitleStyle }, { v: "Use 'COST_SAVINGS_TRACKER' to visualize the financial value your discipline protects.", s: instructionBodyStyle }]
+        [{ v: "1. ENGINE SETUP", s: { font: { bold: true, sz: 12, color: COLORS.PRIMARY_GREEN } } }, { v: "Go to 'BRANCH_SETUP'. Name your branches. Toggle modules ON/OFF per branch.", s: { font: { sz: 10 }, alignment: { wrapText: true } } }],
+        [{ v: "2. ASSIGNING HEROES", s: { font: { bold: true, sz: 12, color: COLORS.PRIMARY_GREEN } } }, { v: "Go to 'TEAM_HUB'. List real staff names for EVERY role in EVERY branch. This ensures personal accountability.", s: { font: { sz: 10 }, alignment: { wrapText: true } } }],
+        [{ v: "3. THE DAILY PULSE", s: { font: { bold: true, sz: 12, color: COLORS.PRIMARY_GREEN } } }, { v: "Staff: Type initials in 'Done By' when finished. Status and dashboards update instantly.", s: { font: { sz: 10 }, alignment: { wrapText: true } } }],
+        [{ v: "4. MANAGER VERIFY", s: { font: { bold: true, sz: 12, color: COLORS.PRIMARY_GREEN } } }, { v: "Leadership: Sign off on YELLOW cells in 'Verified By'. These are your high-risk control points.", s: { font: { sz: 10 }, alignment: { wrapText: true } } }],
+        [{ v: "5. AUDIT EVIDENCE", s: { font: { bold: true, sz: 12, color: COLORS.PRIMARY_GREEN } } }, { v: "In case of inspection, show 'TODAYS_TASKS' filtered by branch. It acts as your legal evidence of compliance.", s: { font: { sz: 10 }, alignment: { wrapText: true } } }]
     ];
     const guideWs = utils.aoa_to_sheet(guideData);
     guideWs['!cols'] = [{ wch: 35 }, { wch: 100 }];
-    guideWs['!merges'] = [{ s: { r: 1, c: 0 }, e: { r: 1, c: 1 } }, { s: { r: 2, c: 0 }, e: { r: 2, c: 1 } }];
     addAppHeader(guideWs, 'B');
     utils.book_append_sheet(wb, guideWs, "HOW_THIS_WORKS");
 
     // --- 11. AUTH CORE (HIDDEN) ---
-    const aData = [["KEY", "VALUE"], ["EMAIL", BUYER_EMAIL], ["ORDER", ORDER_ID]];
+    const aData = [["KEY", "VALUE"], ["EMAIL", BUYER_EMAIL], ["ORDER", ORDER_ID], ["ENGINE", "SOVEREIGN_4.4"]];
     const aWs = utils.aoa_to_sheet(aData);
     utils.book_append_sheet(wb, aWs, "_AUTH_CORE_");
     
@@ -459,13 +440,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { name: "BUSINESS_HEALTH", Hidden: 0 },
             { name: "TEAM_HUB", Hidden: 0 },
             { name: "SHIFT_HANDOVER", Hidden: 0 },
-            { name: "INCIDENT_TRACKER", Hidden: 0 },
+            { name: "INCIDENT_LOG", Hidden: 0 },
             { name: "SOP_LIBRARY", Hidden: 0 },
-            { name: "COST_SAVINGS_TRACKER", Hidden: 0 },
+            { name: "ROI_ENGINE", Hidden: 0 },
             { name: "HOW_THIS_WORKS", Hidden: 0 },
             { name: "_AUTH_CORE_", Hidden: 1 }
         ]
     };
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Master.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_4.4.xlsx`);
 }
