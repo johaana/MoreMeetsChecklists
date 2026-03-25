@@ -6,10 +6,10 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v4.4 - THE INFINITE APP EDITION
- * UI: Full-sheet Midnight Navy fill, Hidden Gridlines, Integrated Headers.
- * Logic: Clean "---" fallbacks for live lookups.
- * UX: High-contrast inputs for authoritative data entry.
+ * Sovereign Engine v4.4 - THE TECHNICAL MANUAL EDITION
+ * UI: Full-sheet Midnight Navy Console, Zero-Clipping Footer.
+ * Intelligence: Tints for Consequence (Red) and Trainer Notes (Green).
+ * UX: High-contrast ink for authoritative data entry.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -42,7 +42,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         BADGE_GREEN: "065F46",
         BADGE_AMBER: "D97706",
         BADGE_BLUE: "1E40AF",
-        INK_DARK: "1E293B" // High-contrast for user inputs
+        INK_DARK: "1E293B",
+        // OPTION 1: INTEL TINTS
+        RISK_RED_TEXT: "991B1B",
+        RISK_RED_BG: "FEF2F2",
+        COACH_GREEN_TEXT: "065F46",
+        COACH_GREEN_BG: "ECFDF5"
     };
 
     const borderStyle = {
@@ -139,14 +144,25 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         border: borderStyle
     };
 
-    // ACTIVE INPUT STYLE - Dark Ink for maximum legibility
+    // OPTION 1 STYLES
+    const consequenceStyle = {
+        ...dataStyleLeft,
+        font: { ...baseFont, color: { rgb: COLORS.RISK_RED_TEXT }, italic: true, sz: 9 },
+        fill: { fgColor: { rgb: COLORS.RISK_RED_BG } }
+    };
+
+    const trainerNoteStyle = {
+        ...dataStyleLeft,
+        font: { ...baseFont, color: { rgb: COLORS.COACH_GREEN_TEXT }, italic: true, sz: 9 },
+        fill: { fgColor: { rgb: COLORS.COACH_GREEN_BG } }
+    };
+
     const inputStyle = {
         ...dataStyleCenter,
         font: { ...baseFont, color: { rgb: COLORS.INK_DARK }, bold: true },
         fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
-    // GHOST INPUT STYLE - Strictly Dark Ink, non-italic for professional look
     const ghostInputStyle = {
         ...inputStyle,
         font: { ...baseFont, color: { rgb: COLORS.INK_DARK }, bold: false, italic: false }
@@ -321,7 +337,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { v: "Done By (Initials)", s: headerStyle }, { v: "Verified By (Manager)", s: headerStyle },
         { v: "Status", s: headerStyle }, 
         { v: "Freq", s: intelStyle }, { v: "Risk", s: intelStyle },
-        { v: "Consequence", s: intelStyle }, { v: "Notes", s: intelStyle }
+        { v: "Consequence", s: headerStyle }, { v: "Notes", s: headerStyle }
     ];
     const mData: any[][] = [[], [{ v: "MISSION LEDGER: DAILY EXECUTION LOG", s: { font: { sz: 16, bold: true } } }], [], mHeaders];
     
@@ -344,8 +360,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true } } },
                     { v: c.frequency, s: intelStyle },
                     { v: t.priority, s: intelStyle },
-                    { v: t.consequence, s: intelStyle },
-                    { v: t.trainerNotes || "-", s: intelStyle }
+                    { v: t.consequence, s: consequenceStyle },
+                    { v: t.trainerNotes || "-", s: trainerNoteStyle }
                 ]);
             });
         });
@@ -417,8 +433,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: t.id, s: dataStyleCenter }, 
                 { v: c.title, s: dataStyleCenter }, 
                 { v: t.description, s: dataStyleLeft }, 
-                { v: t.consequence, s: dataStyleLeft }, 
-                { v: t.trainerNotes || "-", s: dataStyleLeft }, 
+                { v: t.consequence, s: consequenceStyle }, 
+                { v: t.trainerNotes || "-", s: trainerNoteStyle }, 
                 { v: c.frequency, s: dataStyleCenter }
             ]);
         });
