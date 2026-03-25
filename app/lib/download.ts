@@ -6,10 +6,11 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v4.4 - FULL SPECTRUM HARDENING
+ * Sovereign Engine v4.4 - COMMERCIAL SALE EDITION
  * UI: Full-sheet Midnight Navy Console, Zero-Clipping Footer.
  * Hardening: Zebra-striping, Linked ROI, Header Ribbon Continuity.
  * UX: Integrated Ghost Data for intuitive onboarding.
+ * Target: Excel 2016+, Google Sheets, Mobile.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -39,11 +40,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         CHAMBER_BG: "111827",
         MGR_YELLOW: "FEF9C3",
         INACTIVE_GREY: "F1F5F9",
-        GHOST_GREY: "F9FAFB", // Zebra striping
+        GHOST_GREY: "F9FAFB",
         BADGE_GREEN: "065F46",
         BADGE_AMBER: "D97706",
         BADGE_BLUE: "1E40AF",
-        INK_DARK: "1E293B"
+        INK_DARK: "1E293B",
+        SOFT_RED: "FEF2F2",
+        SOFT_GREEN: "ECFDF5"
     };
 
     const borderStyle = {
@@ -96,7 +99,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: range.e.c } }); 
         ws['!merges'].push({ s: { r: 1, c: 0 }, e: { r: 1, c: titleRange.e.c } }); 
 
-        // Style the entire ribbon rows
         for(let c = 0; c <= range.e.c; c++) {
             const cell1 = utils.encode_cell({r: 0, c});
             const cell2 = utils.encode_cell({r: 1, c});
@@ -129,6 +131,18 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ...dataStyleCenter,
         font: { ...baseFont, color: { rgb: COLORS.INK_DARK }, bold: true },
         fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
+    };
+
+    const warningStyle = {
+        ...dataStyleLeft,
+        font: { ...baseFont, color: { rgb: "991B1B" }, italic: true },
+        fill: { fgColor: { rgb: COLORS.SOFT_RED } }
+    };
+
+    const coachingStyle = {
+        ...dataStyleLeft,
+        font: { ...baseFont, color: { rgb: "065F46" }, italic: true },
+        fill: { fgColor: { rgb: COLORS.SOFT_GREEN } }
     };
 
     let packChecklists: Checklist[] = [];
@@ -235,7 +249,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { s: { r: 18, c: 1 }, e: { r: 18, c: 6 } }
     ];
     
-    // Hard-black background for entire Console canvas
     for (let R = 0; R < 100; R++) {
         for (let C = 0; C < 26; C++) {
             const cell = utils.encode_cell({ r: R, c: C });
@@ -253,8 +266,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const branchSetupData = [
         [], [], [],
         facilityHeaders,
-        [{ v: "1", s: dataStyleCenter }, { v: "Bandra West (Ghost)", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
-        [{ v: "2", s: dataStyleCenter }, { v: "Colaba Main (Ghost)", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
+        [{ v: "1", s: dataStyleCenter }, { v: "Bandra Main (Sample)", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
+        [{ v: "2", s: dataStyleCenter }, { v: "Colaba West (Sample)", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
         [{ v: "3", s: dataStyleCenter }, { v: "", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))]
     ];
     const setupWs = utils.aoa_to_sheet(branchSetupData);
@@ -293,13 +306,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     { t: 'f', f: personFormula, s: baseStyle },
                     { v: t.id, s: baseStyle },
                     { v: t.description, s: baseStyleLeft },
-                    { v: logicalIdx < 2 ? "IK" : "", s: zebraInput }, // Ghost data: इमरान
+                    { v: logicalIdx < 2 ? "IK" : "", s: zebraInput }, 
                     { v: t.priority === 'High' ? "" : "N/A", s: t.priority === 'High' ? { ...zebraInput, fill: { fgColor: COLORS.MGR_YELLOW } } : baseStyle },
                     { t: 'f', f: statusFormula, s: { ...baseStyle, font: { bold: true, color: { rgb: COLORS.BADGE_GREEN } } } },
                     { v: c.frequency, s: baseStyle },
                     { v: t.priority, s: baseStyle },
-                    { v: t.consequence, s: { ...baseStyleLeft, font: { color: { rgb: "991B1B" }, italic: true }, fill: { fgColor: { rgb: "FEF2F2" } } } },
-                    { v: t.trainerNotes || "-", s: { ...baseStyleLeft, font: { color: { rgb: "065F46" }, italic: true }, fill: { fgColor: { rgb: "ECFDF5" } } } }
+                    { v: t.consequence, s: warningStyle },
+                    { v: t.trainerNotes || "-", s: coachingStyle }
                 ]);
                 logicalIdx++;
             });
@@ -335,7 +348,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             pData.push([
                 { t: 'f', f: `B${rowIdx}&D${rowIdx}`, s: dataStyleCenter },
                 { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}+1), "Branch ${bId}")`, s: dataStyleCenter },
-                { v: rIdx === 0 ? "Imran Khan" : "[Type Staff Name]", s: inputStyle }, 
+                { v: rIdx === 0 ? "Imran Khan (Sample)" : "[Type Staff Name]", s: inputStyle }, 
                 { v: role, s: dataStyleLeft },
                 { v: "9860997711", s: inputStyle },
                 { v: "ACTIVE", s: dataStyleCenter }
@@ -359,7 +372,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(rWs, "ROI & Risk Mitigation Engine", 'E');
     utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
 
-    // --- SUB-SHEET GENERATION ---
+    // --- SUB-SHEETS ---
     const simpleSheets = [
         { n: "INCIDENT_LOG", t: "Liability & Incident Log" },
         { n: "SHIFT_HANDOVER", t: "Shift Handover Bridge" },
