@@ -61,7 +61,7 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 );
 
 const HeroSection = () => (
-    <section className="relative w-full flex flex-col md:flex-row md:items-center h-[calc(100dvh-64px)] md:h-screen md:min-h-[600px] overflow-hidden bg-background">
+    <section className="relative w-full flex flex-col md:flex-row md:items-center h-[calc(100dvh-64px)] md:h-screen md:min-h-[650px] overflow-hidden bg-background">
         {/* Visual Brand Layer */}
         <div className="relative h-[15vh] md:absolute md:top-0 md:left-0 md:h-full md:w-full z-0 overflow-hidden shrink-0">
             <video
@@ -86,7 +86,7 @@ const HeroSection = () => (
                     <Badge variant="outline" className="text-white/40 border-white/10 py-0.5 px-3 uppercase tracking-[0.15em] font-black text-[8px] md:text-[9px] bg-white/5 rounded-none whitespace-nowrap">
                         PRE-BUILT SOPs • READY IN 10 MINUTES • FULLY EDITABLE • ZERO REPORTING EFFORT
                     </Badge>
-                    <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
+                    <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
                         STOP MANAGING. <br />
                         <span className="text-primary">START SEEING.</span>
                     </h1>
@@ -554,7 +554,7 @@ export default function Home() {
                             Eliminate Operational Risk <ArrowRight className="ml-4 h-8 w-8" />
                         </Link>
                     </Button>
-                    <div className="flex wrap items-center justify-center gap-12">
+                    <div className="flex flex-wrap items-center justify-center gap-12">
                         <div className="text-center space-y-1">
                             <p className="text-xs font-black uppercase tracking-widest text-primary flex items-center gap-2 justify-center"><Lock className="w-4 h-4" /> No SaaS Lock-in.</p>
                             <p className="text-[10px] font-black uppercase tracking-widest text-white/20 italic">Own your engine forever.</p>
