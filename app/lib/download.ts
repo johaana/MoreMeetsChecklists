@@ -8,6 +8,8 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
  * Sovereign Engine v4.4 - THE INSTITUTIONAL BEAST
  * Features: Multi-Branch Staff Mapping, Dynamic Star/Branch Tracking, 
  * Forensic ROI Linkage, Symmetric Zero-Clipping UI.
+ * 
+ * Logic: Hardened Formulas for live dashboard hero metrics.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -18,7 +20,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const wb = utils.book_new();
     const startDate = new Date(); 
     
-    // License Data
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
     const ORDER_ID = "MM-MASTER-SOVEREIGN-4.4";
 
