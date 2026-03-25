@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -453,13 +454,13 @@ const DeployRoadmapSection = () => (
                 </div>
                 <div className="grid md:grid-cols-3 gap-12">
                     {[
-                        { s: "01", t: "Setup Branches", d: "Open the file, name your locations, and toggle modules ON or OFF." },
-                        { s: "02", t: "Assign Your Team", d: "List your staff names in the Team Hub. Accountability is now personal." },
-                        { s: "03", t: "Start Command", d: "Open the console daily. See the 'Empire Mood' and shift progress live." }
+                        { s: "01", s_text: "Setup Branches", d: "Open the file, name your locations, and toggle modules ON or OFF." },
+                        { s: "02", s_text: "Assign Your Team", d: "List your staff names in the Team Hub. Accountability is now personal." },
+                        { s: "03", s_text: "Start Command", d: "Open the console daily. See the 'Empire Mood' and shift progress live." }
                     ].map(item => (
                         <div key={item.s} className="space-y-4">
                             <span className="text-6xl font-black text-primary/20 block leading-none">{item.s}</span>
-                            <h4 className="font-black uppercase text-primary italic text-lg">{item.t}</h4>
+                            <h4 className="font-black uppercase text-primary italic text-lg">{item.s_text}</h4>
                             <p className="text-sm text-secondary-text font-medium leading-relaxed italic">{item.d}</p>
                         </div>
                     ))}
