@@ -61,91 +61,92 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 );
 
 const HeroSection = () => (
-    <section className="relative w-full flex flex-col md:flex-row md:items-center h-[calc(100dvh-64px)] md:h-screen md:min-h-[700px] overflow-hidden bg-background">
-        {/* Visual Brand Layer */}
-        <div className="relative h-[22vh] md:absolute md:top-0 md:left-0 md:h-full md:w-full z-0 overflow-hidden shrink-0">
+    <section className="relative w-full flex flex-col md:flex-row md:items-center h-[calc(100dvh-64px)] md:h-screen md:min-h-[650px] overflow-hidden bg-background">
+        {/* Visual Brand Layer - SHARPENED GRADIENT FOR CONTRAST */}
+        <div className="relative h-[20vh] md:absolute md:top-0 md:left-0 md:h-full md:w-full z-0 overflow-hidden shrink-0">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover contrast-[1.15] brightness-[1.15] md:contrast-100 md:brightness-100"
+                className="absolute inset-0 w-full h-full object-cover contrast-[1.1] md:contrast-100 opacity-60 md:opacity-100"
             />
-            {/* Desktop Gradient Overlay */}
-            <div className="hidden md:block absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.8)_40%,rgba(10,15,25,0.3)_70%,rgba(10,15,25,0.05)_100%)]" />
+            {/* Desktop Gradient Overlay - DEEPENED FOR TEXT PROTECTION */}
+            <div className="hidden md:block absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.9)_35%,rgba(10,15,25,0.4)_70%,rgba(10,15,25,0.1)_100%)]" />
             
             {/* Mobile Gradient Overlay */}
-            <div className="md:hidden absolute inset-0 z-10 bg-gradient-to-b from-transparent via-background/10 to-background" />
+            <div className="md:hidden absolute inset-0 z-10 bg-gradient-to-b from-transparent via-background/20 to-background" />
             
             {/* Soft Bleed for Mobile Transition */}
             <div className="md:hidden absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-15" />
         </div>
 
-        {/* Content Layer */}
-        <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center">
-            <div className="max-w-4xl space-y-4 md:space-y-5">
+        {/* Content Layer - TIGHTENED VERTICAL STACK */}
+        <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center py-8">
+            <div className="max-w-4xl space-y-4 md:space-y-5 lg:space-y-6">
                 <div className="space-y-2 md:space-y-3">
-                    <Badge variant="outline" className="text-white/40 border-white/10 py-1 px-3 uppercase tracking-[0.2em] font-black text-[8px] md:text-[9px] bg-white/5 rounded-none whitespace-nowrap">
+                    <Badge variant="outline" className="text-white/50 border-white/10 py-1 px-3 uppercase tracking-[0.2em] font-black text-[8px] md:text-[9px] bg-white/5 rounded-none whitespace-nowrap">
                         PRE-BUILT SOPs • READY IN 10 MINUTES • FULLY EDITABLE • ZERO REPORTING EFFORT
                     </Badge>
-                    <h1 className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-lg uppercase italic">
+                    <h1 className="text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
                         STOP MANAGING. <br />
                         <span className="text-primary">START SEEING.</span>
                     </h1>
                 </div>
                 
-                <div className="space-y-1">
-                    <p className="text-base md:text-xl font-black text-primary uppercase tracking-tight italic">
+                <div className="space-y-1 md:space-y-2">
+                    <p className="text-base md:text-xl font-black text-primary uppercase tracking-tight italic leading-none">
                         A system that runs your business — every single day.
                     </p>
-                    <p className="text-sm md:text-lg font-bold text-primary-text/90 uppercase tracking-wide max-w-2xl leading-snug">
+                    <p className="text-sm md:text-lg lg:text-xl font-bold text-primary-text uppercase tracking-wide max-w-3xl leading-snug">
                         Pre-built SOPs, daily execution, and automatic reporting — all running inside one system.
                     </p>
                 </div>
 
-                <div className="space-y-2 max-w-2xl border-l-2 border-primary/20 pl-6">
-                    <p className="text-[11px] md:text-base text-secondary-text leading-relaxed font-medium italic">
-                        MoreMeets™ turns your operations into a self-running system. <br />
-                        No follow-ups. No manual reports. No dependency on key staff. <br />
+                <div className="max-w-2xl border-l-2 border-primary/30 pl-6">
+                    <p className="text-xs md:text-base text-secondary-text leading-relaxed font-medium italic">
+                        MoreMeets™ turns your operations into a self-running system. <br className="hidden md:block" />
+                        No follow-ups. No manual reports. No dependency on key staff. <br className="hidden md:block" />
                         Know exactly what’s happening — across every shift, every branch, instantly.
                     </p>
                 </div>
 
-                <div className="pt-2 space-y-4">
+                {/* CONVERSION ISLAND - GROUPED FOR IMPACT */}
+                <div className="pt-2 md:pt-4 space-y-4 md:space-y-6">
                     <div className="flex flex-col items-start gap-3">
                         <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                            <Button size="lg" asChild className="group h-14 md:h-16 px-10 rounded-xl shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 bg-primary text-black hover:brightness-90 font-black uppercase text-sm tracking-widest w-full sm:w-auto">
+                            <Button size="lg" asChild className="group h-14 md:h-16 px-10 rounded-xl shadow-[0_0_50px_-10px_rgba(46,184,107,0.4)] transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-sm tracking-widest w-full sm:w-auto border-none">
                                 <Link href="/library" className="flex items-center justify-center">
                                     Get Your System
                                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                                 </Link>
                             </Button>
-                            <Button size="lg" variant="outline" asChild className="h-14 md:h-16 px-10 rounded-xl border-white/10 text-white font-black uppercase text-sm tracking-widest hover:bg-white/5 w-full sm:w-auto">
+                            <Button size="lg" variant="outline" asChild className="h-14 md:h-16 px-10 rounded-xl border-white/20 text-white font-black uppercase text-sm tracking-widest hover:bg-white/10 w-full sm:w-auto transition-colors">
                                 <Link href="#how-it-works">See It In Action</Link>
                             </Button>
                         </div>
-                        <p className="text-[10px] md:text-xs font-black text-accent uppercase tracking-[0.2em] pl-1">
+                        <p className="text-[10px] md:text-xs font-black text-accent uppercase tracking-[0.25em] pl-1 drop-shadow-md">
                             Stop asking for updates. Start seeing reality.
                         </p>
                     </div>
 
-                    {/* Trust Strip */}
-                    <div className="space-y-2 pt-3 border-t border-white/5 w-fit">
-                        <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5">
+                    {/* Trust Strip - COMPACTED */}
+                    <div className="space-y-2.5 pt-4 border-t border-white/10 w-fit">
+                        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                             {[
-                                "Ready in 10 minutes",
-                                "No SaaS. Own forever",
-                                "Fully editable to your business",
-                                "Works with the team you already have"
+                                { t: "Ready in 10 minutes", i: CheckCircle },
+                                { t: "No SaaS. Own forever", i: Lock },
+                                { t: "Fully editable", i: History },
+                                { t: "Works with your existing team", i: Users }
                             ].map(item => (
-                                <div key={item} className="flex items-center gap-2">
-                                    <CheckCircle className="w-3 h-3 text-primary" />
-                                    <span className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-white/40">{item}</span>
+                                <div key={item.t} className="flex items-center gap-2">
+                                    <item.i className="w-3.5 h-3.5 text-primary" />
+                                    <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white/50">{item.t}</span>
                                 </div>
                             ))}
                         </div>
-                        <p className="text-[8px] md:text-[9px] font-bold text-white/20 uppercase tracking-[0.15em] pl-1">
+                        <p className="text-[9px] md:text-[10px] font-bold text-white/30 uppercase tracking-[0.15em] pl-1 italic">
                             Runs on Excel / Google Sheets — so adoption is instant. No training required.
                         </p>
                     </div>
@@ -435,7 +436,7 @@ const ExcelAdvantageSection = () => (
                         <item.i className="w-7 h-7 text-primary" />
                     </div>
                     <h3 className="text-xl font-black uppercase italic text-primary-text">{item.t}</h3>
-                    <p className="text-sm text-secondary-text leading-relaxed font-medium italic">{item.d}</p>
+                    <p className="text-sm text-secondary-text font-medium italic">{item.d}</p>
                 </div>
             ))}
         </div>
