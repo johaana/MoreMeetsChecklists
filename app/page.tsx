@@ -47,7 +47,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 
 const Section = ({ className, id, children, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
-    <section id={id} className={cn("w-full py-20 md:py-32 lg:py-40", className)} {...props}>
+    <section id={id} className={cn("w-full py-16 md:py-24 lg:py-32", className)} {...props}>
         <div className="container px-4 md:px-6">
             {children}
         </div>
@@ -61,9 +61,9 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 );
 
 const HeroSection = () => (
-    <section className="relative w-full flex flex-col md:flex-row md:items-center h-[calc(100dvh-64px)] md:h-screen md:min-h-[800px] overflow-hidden bg-background">
+    <section className="relative w-full flex flex-col md:flex-row md:items-center h-[calc(100dvh-64px)] md:h-screen md:min-h-[700px] overflow-hidden bg-background">
         {/* Visual Brand Layer */}
-        <div className="relative h-[25vh] md:absolute md:top-0 md:left-0 md:h-full md:w-full z-0 overflow-hidden shrink-0">
+        <div className="relative h-[22vh] md:absolute md:top-0 md:left-0 md:h-full md:w-full z-0 overflow-hidden shrink-0">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
                 autoPlay
@@ -84,19 +84,19 @@ const HeroSection = () => (
 
         {/* Content Layer */}
         <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center">
-            <div className="max-w-4xl space-y-5 md:space-y-6">
-                <div className="space-y-3">
+            <div className="max-w-4xl space-y-4 md:space-y-5">
+                <div className="space-y-2 md:space-y-3">
                     <Badge variant="outline" className="text-white/40 border-white/10 py-1 px-3 uppercase tracking-[0.2em] font-black text-[8px] md:text-[9px] bg-white/5 rounded-none whitespace-nowrap">
                         PRE-BUILT SOPs • READY IN 10 MINUTES • FULLY EDITABLE • ZERO REPORTING EFFORT
                     </Badge>
-                    <h1 className="text-[2.75rem] sm:text-6xl md:text-8xl font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-lg uppercase italic">
+                    <h1 className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-lg uppercase italic">
                         STOP MANAGING. <br />
                         <span className="text-primary">START SEEING.</span>
                     </h1>
                 </div>
                 
                 <div className="space-y-1">
-                    <p className="text-lg md:text-2xl font-black text-primary uppercase tracking-tight italic">
+                    <p className="text-base md:text-xl font-black text-primary uppercase tracking-tight italic">
                         A system that runs your business — every single day.
                     </p>
                     <p className="text-sm md:text-lg font-bold text-primary-text/90 uppercase tracking-wide max-w-2xl leading-snug">
@@ -104,15 +104,15 @@ const HeroSection = () => (
                     </p>
                 </div>
 
-                <div className="space-y-3 max-w-2xl border-l-2 border-primary/20 pl-6">
-                    <p className="text-xs md:text-base text-secondary-text leading-relaxed font-medium italic">
+                <div className="space-y-2 max-w-2xl border-l-2 border-primary/20 pl-6">
+                    <p className="text-[11px] md:text-base text-secondary-text leading-relaxed font-medium italic">
                         MoreMeets™ turns your operations into a self-running system. <br />
                         No follow-ups. No manual reports. No dependency on key staff. <br />
                         Know exactly what’s happening — across every shift, every branch, instantly.
                     </p>
                 </div>
 
-                <div className="pt-2 space-y-6">
+                <div className="pt-2 space-y-4">
                     <div className="flex flex-col items-start gap-3">
                         <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
                             <Button size="lg" asChild className="group h-14 md:h-16 px-10 rounded-xl shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 bg-primary text-black hover:brightness-90 font-black uppercase text-sm tracking-widest w-full sm:w-auto">
@@ -131,8 +131,8 @@ const HeroSection = () => (
                     </div>
 
                     {/* Trust Strip */}
-                    <div className="space-y-3 pt-4 border-t border-white/5 w-fit">
-                        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                    <div className="space-y-2 pt-3 border-t border-white/5 w-fit">
+                        <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5">
                             {[
                                 "Ready in 10 minutes",
                                 "No SaaS. Own forever",
@@ -140,12 +140,12 @@ const HeroSection = () => (
                                 "Works with the team you already have"
                             ].map(item => (
                                 <div key={item} className="flex items-center gap-2">
-                                    <CheckCircle className="w-3.5 h-3.5 text-primary" />
-                                    <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white/40">{item}</span>
+                                    <CheckCircle className="w-3 h-3 text-primary" />
+                                    <span className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-white/40">{item}</span>
                                 </div>
                             ))}
                         </div>
-                        <p className="text-[9px] font-bold text-white/20 uppercase tracking-[0.15em] pl-1">
+                        <p className="text-[8px] md:text-[9px] font-bold text-white/20 uppercase tracking-[0.15em] pl-1">
                             Runs on Excel / Google Sheets — so adoption is instant. No training required.
                         </p>
                     </div>
