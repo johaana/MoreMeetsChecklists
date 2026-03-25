@@ -146,10 +146,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
-    // GHOST INPUT STYLE - Refined to use dark ink but lighter weight for placeholders
+    // GHOST INPUT STYLE - Strictly Dark Ink, non-italic for professional look
     const ghostInputStyle = {
         ...inputStyle,
-        font: { ...baseFont, color: { rgb: COLORS.INK_DARK }, italic: false }
+        font: { ...baseFont, color: { rgb: COLORS.INK_DARK }, bold: false, italic: false }
     };
 
     const managerYellowStyle = {
