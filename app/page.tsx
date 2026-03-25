@@ -1,9 +1,8 @@
-
 'use client';
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Zap, CheckCircle, Globe, Download, ShieldAlert, Trophy, Target, Timer, Lock, Infinity, Users, Eye, LifeBuoy } from "lucide-react";
+import { ArrowRight, Check, Zap, CheckCircle, Timer, Target, Eye, Lock, Infinity, Users, LifeBuoy, X, ShieldAlert } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
 import { TestimonialsSection } from "@/components/layout/testimonials-section";
@@ -23,75 +22,70 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
     </h2>
 );
 
-const ClarityBlock = () => (
-    <div className="w-full bg-primary/5 border-y border-white/5 py-12 md:py-16">
-        <div className="container px-4 md:px-6 max-w-5xl mx-auto text-center space-y-8">
-            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Strategic Alignment</Badge>
-            <h2 className="text-2xl md:text-4xl font-black font-headline text-primary-text uppercase italic leading-tight">
-                MoreMeets™ gives you a ready-to-use system <br className="hidden md:block" /> to run your business daily.
-            </h2>
-            <p className="text-xl md:text-2xl font-bold text-accent italic">
-                Your team sees tasks → Updates in 2 minutes → Managers verify → You see everything live.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-                {[
-                    { t: "Runs on Excel or Google Sheets", i: CheckCircle },
-                    { t: "Deploy in 10 Minutes", i: Zap },
-                    { t: "No monthly subscriptions", i: Lock },
-                    { t: "Lifetime Expert Support", i: LifeBuoy }
-                ].map(item => (
-                    <div key={item.t} className="flex items-center justify-center gap-2 p-4 rounded-xl bg-black/40 border border-white/10">
-                        <item.i className="w-4 h-4 text-primary shrink-0" />
-                        <span className="text-[11px] font-black uppercase tracking-widest text-secondary-text">{item.t}</span>
-                    </div>
-                ))}
-            </div>
-        </div>
-    </div>
-);
-
-const CoreProblemSection = () => (
-    <Section id="core-problem">
-        <div className="container px-4 md:px-6 text-center max-w-3xl mx-auto space-y-10">
-            <SectionHeadline>Memory fails. Systems don’t.</SectionHeadline>
-            <div className="space-y-4 text-lg text-secondary-text">
-                <p className="font-bold">Most businesses run on WhatsApp, Memory, and Verbal Instructions.</p>
-                <p>That’s why things get missed, managers have to constantly "chase" staff, and mistakes cost you money every single day.</p>
-            </div>
-            <div className="p-6 rounded-2xl bg-red-500/5 border border-red-500/20 max-w-md mx-auto">
-                <p className="text-lg font-black text-red-500 uppercase tracking-tighter italic">
-                    "This is where businesses lose 2–5% of their revenue every month."
-                </p>
-            </div>
-             <p className="text-xl font-medium pt-4 text-primary-text italic">If your team forgets things, your business pays for it.</p>
-        </div>
-    </Section>
-);
-
-const HowItWorksSection = () => (
-    <Section id="how-it-works" className="bg-alternate-background">
+const ReportingChainSection = () => (
+    <Section id="kill-reporting" className="bg-alternate-background border-y border-white/5">
         <div className="container px-4 md:px-6">
-            <div className="text-center mb-16 max-w-2xl mx-auto space-y-4">
-                <SectionHeadline>4 Steps to Total Control</SectionHeadline>
-                <p className="text-secondary-text italic font-medium">Built for rapid adoption. No training required.</p>
+            <div className="text-center mb-16 max-w-3xl mx-auto space-y-4">
+                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">The Efficiency Multiplier</Badge>
+                <SectionHeadline>Kill the Reporting Chain</SectionHeadline>
+                <p className="text-secondary-text italic font-medium">Reporting should not be a job. It should be automatic.</p>
             </div>
-            <div className="grid md:grid-cols-4 gap-8 text-center max-w-6xl mx-auto">
-                {[
-                    { n: "1", t: "Team sees daily tasks", d: "Staff open the file and filter for their specific role instantly.", i: Users },
-                    { n: "2", t: "Update in 2 minutes", d: "Status is updated with initials before the shift ends. No long reports.", i: Timer },
-                    { n: "3", t: "Managers verify", d: "High-risk tasks are flagged for mandatory leadership sign-off.", i: Target },
-                    { n: "4", t: "You see everything", d: "A live dashboard shows performance across branches, teams, and staff.", i: Eye }
-                ].map(step => (
-                    <div key={step.n} className="flex flex-col items-center group">
-                        <div className="flex items-center justify-center w-20 h-20 rounded-full bg-black mb-6 border border-white/10 shadow-xl group-hover:border-primary/40 transition-all">
-                            <span className="text-4xl font-black text-accent block">{step.n}</span>
-                        </div>
-                        <h3 className="text-lg font-bold font-headline text-primary-text uppercase tracking-tighter mb-2">
-                            {step.t}
+
+            <div className="grid lg:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-[2.5rem] overflow-hidden max-w-6xl mx-auto shadow-2xl">
+                {/* OLD WAY */}
+                <div className="bg-black/40 p-8 md:p-16 space-y-10">
+                    <div className="space-y-2">
+                        <h3 className="text-red-500 font-black uppercase tracking-widest text-sm flex items-center gap-2">
+                            <X className="w-5 h-5" /> The Old World (Chaos)
                         </h3>
-                        <p className="text-secondary-text text-sm leading-relaxed italic">{step.d}</p>
+                        <p className="text-xs text-white/30 italic">Manual follow-ups consume 12+ hours of manager time per week.</p>
                     </div>
-                ))}
+                    
+                    <div className="space-y-6 relative">
+                        {[
+                            "Staff fills notebook / WhatsApp",
+                            "Supervisor checks & signs",
+                            "Manager collates data into Excel",
+                            "GM asks for 'Status Updates'",
+                            "Owner receives outdated reports"
+                        ].map((step, i) => (
+                            <div key={step} className="flex items-center gap-4 opacity-50">
+                                <div className="w-6 h-6 rounded-full border border-red-500/30 flex items-center justify-center text-[10px] font-black text-red-500">{i+1}</div>
+                                <span className="text-sm text-secondary-text font-medium">{step}</span>
+                            </div>
+                        ))}
+                        <div className="pt-6 border-t border-white/5">
+                            <p className="text-red-500 font-bold italic text-sm">Result: ❌ Delayed, ❌ Incomplete, ❌ Time Wasted</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* NEW WAY */}
+                <div className="bg-primary/5 p-8 md:p-16 space-y-10 border-l border-primary/20">
+                    <div className="space-y-2">
+                        <h3 className="text-primary font-black uppercase tracking-widest text-sm flex items-center gap-2">
+                            <Check className="w-5 h-5" /> The MoreMeets World (Command)
+                        </h3>
+                        <p className="text-xs text-primary/40 italic">Data moves from the floor to the dashboard in 0 seconds.</p>
+                    </div>
+
+                    <div className="space-y-6">
+                        {[
+                            "Staff marks task 'Done' in seconds",
+                            "Excel file updates instantly",
+                            "GM opens file → sees Live Dashboard",
+                            "No calls. No emails. No chasing."
+                        ].map((step, i) => (
+                            <div key={step} className="flex items-center gap-4">
+                                <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-[10px] font-black text-black">{i+1}</div>
+                                <span className="text-sm text-primary-text font-bold">{step}</span>
+                            </div>
+                        ))}
+                        <div className="pt-6 border-t border-white/5">
+                            <p className="text-primary font-black italic text-sm">Result: ✅ Live, ✅ Accurate, ✅ Zero Effort</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </Section>
@@ -102,30 +96,30 @@ const USPPowerSection = () => {
         { 
             title: "2-Minute Reporting", 
             icon: Timer,
-            content: ["Staff update tasks in seconds", "Only see what's assigned to them", "No long forms or paperwork", "100% team adoption"], 
-            closing: "Stop chasing staff.", 
+            content: ["Staff update tasks in 120 seconds", "Only see what's assigned to them", "Zero-friction daily pulse", "100% team adoption"], 
+            closing: "Stop chasing reports.", 
             subClosing: "Execution without follow-ups." 
         },
         { 
-            title: "Manager Control", 
+            title: "Operational Independence", 
             icon: ShieldAlert,
-            content: ["Highlighted 'Yellow Targets'", "Mandatory sign-off for risk", "Consequences of failure defined", "Audit-ready evidence trail"], 
-            closing: "Stop mistakes early.", 
-            subClosing: "Focused oversight on what matters." 
-        },
-        { 
-            title: "Built-in Training", 
-            icon: Target,
-            content: ["Instructions built into tasks", "New staff learn on the job", "Tribal knowledge is secured", "Consistent standards 24/7"], 
+            content: ["No reliance on 'key staff'", "System runs even if someone leaves", "Knowledge stays with the business", "New staff training is automated"], 
             closing: "Systems, not heroes.", 
-            subClosing: "Knowledge stays when staff leave." 
+            subClosing: "Institutional memory secured." 
         },
         { 
-            title: "Live Visibility", 
+            title: "Multi-Branch Command", 
             icon: Eye,
-            content: ["Track multiple branches", "See team performance live", "Identify profit leaks instantly", "Incident tracking & logging"], 
+            content: ["Run 10 locations from one screen", "Healthy competition across units", "Spot weak branches immediately", "Remote eyes on every shift"], 
             closing: "Know without asking.", 
-            subClosing: "Full clarity even when you are away." 
+            subClosing: "Full clarity, zero dependency." 
+        },
+        { 
+            title: "No-SaaS Freedom", 
+            icon: Lock,
+            content: ["No monthly subscriptions", "No logins or training struggle", "Works on Excel/Google Sheets", "One-time payment, own forever"], 
+            closing: "Zero recurring cost.", 
+            subClosing: "Lifetime updates included." 
         }
     ];
     return(
@@ -133,7 +127,7 @@ const USPPowerSection = () => {
         <div className="container px-4 md:px-6">
             <div className="text-center mb-16 max-w-3xl mx-auto space-y-4">
                 <SectionHeadline>Your Operational Superpowers</SectionHeadline>
-                <p className="text-secondary-text italic font-medium">You are not buying Excel. You are buying the ability to run your business like a machine.</p>
+                <p className="text-secondary-text italic font-medium text-lg">MoreMeets transforms your daily operations into a system that runs itself.</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
                 {cards.map(card => (
@@ -158,70 +152,39 @@ const USPPowerSection = () => {
     </Section>
 )};
 
-const WhoIsItForSection = () => (
-    <Section id="who-is-it-for" className="bg-alternate-background">
-        <div className="container px-4 md:px-6 max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-                <SectionHeadline>Built for owners tired of firefighting</SectionHeadline>
-            </div>
-            <div className="grid md:grid-cols-3 gap-12 text-center text-primary-text">
-                <div className="space-y-4">
-                    <h3 className="text-xl font-black uppercase italic tracking-tighter text-primary">Founders & COOs</h3>
-                    <p className="text-sm text-secondary-text leading-relaxed italic">"I want to scale without chaos and reduce my dependency on a few key individuals."</p>
-                </div>
-                <div className="space-y-4">
-                    <h3 className="text-xl font-black uppercase italic tracking-tighter text-primary">Operations Heads</h3>
-                    <p className="text-sm text-secondary-text leading-relaxed italic">"I need to know exactly what's happening at every branch without asking for reports."</p>
-                </div>
-                <div className="space-y-4">
-                    <h3 className="text-xl font-black uppercase italic tracking-tighter text-primary">Multi-location Teams</h3>
-                    <p className="text-sm text-secondary-text leading-relaxed italic">"We need one standard across every unit so that onboarding is fast and audits are stress-free."</p>
-                </div>
-            </div>
-        </div>
-    </Section>
-);
-
-const FinalCTASection = () => (
-    <Section id="final-cta" className="bg-black border-t border-white/5">
-        <div className="container px-4 md:px-6 text-center max-w-2xl mx-auto space-y-8">
-            <SectionHeadline>Stop firefighting. <br/> Start building.</SectionHeadline>
-            <p className="text-lg text-secondary-text italic font-bold">Your team already does the work. This system makes sure it gets done properly.</p>
-            <div className="flex flex-col items-center gap-4 pt-4">
-                <Button size="lg" asChild className="group h-16 px-10 rounded-xl bg-primary text-black font-black uppercase text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all">
-                    <Link href="/library" className="flex items-center">
-                        Eliminate Operational Risk <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                </Button>
-                <div className="flex items-center gap-6 pt-2">
-                    <div className="text-center space-y-0.5">
-                        <p className="text-[10px] font-black uppercase tracking-widest text-primary flex items-center gap-1.5"><Lock className="w-3 h-3" /> No SaaS Lock-in.</p>
-                        <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Own your engine forever.</p>
-                    </div>
-                    <div className="text-center space-y-0.5">
-                        <p className="text-[10px] font-black uppercase tracking-widest text-accent flex items-center gap-1.5"><Infinity className="w-3 h-3" /> One-Time Payment.</p>
-                        <p className="text-[10px] font-black uppercase tracking-widest text-white/40">No monthly subscriptions.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </Section>
-);
-
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main className="flex-1">
         <HeroSection />
-        <ClarityBlock />
-        <CoreProblemSection />
-        <HowItWorksSection />
+        <ReportingChainSection />
         <USPPowerSection />
-        <WhoIsItForSection />
         <TestimonialsSection />
         <FaqSection />
-        <FinalCTASection />
+        <Section id="final-cta" className="bg-black border-t border-white/5">
+            <div className="container px-4 md:px-6 text-center max-w-2xl mx-auto space-y-8">
+                <SectionHeadline>Stop Managing People. <br/> Start Managing Systems.</SectionHeadline>
+                <p className="text-lg text-secondary-text italic font-bold">Your team already does the work. This system makes sure it gets done properly.</p>
+                <div className="flex flex-col items-center gap-4 pt-4">
+                    <Button size="lg" asChild className="group h-16 px-10 rounded-xl bg-primary text-black font-black uppercase text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all">
+                        <Link href="/library" className="flex items-center">
+                            Eliminate Operational Risk <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </Button>
+                    <div className="flex items-center gap-6 pt-2">
+                        <div className="text-center space-y-0.5">
+                            <p className="text-[10px] font-black uppercase tracking-widest text-primary flex items-center gap-1.5"><Lock className="w-3 h-3" /> No SaaS Lock-in.</p>
+                            <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Own your engine forever.</p>
+                        </div>
+                        <div className="text-center space-y-0.5">
+                            <p className="text-[10px] font-black uppercase tracking-widest text-accent flex items-center gap-1.5"><Infinity className="w-3 h-3" /> One-Time Payment.</p>
+                            <p className="text-[10px] font-black uppercase tracking-widest text-white/40">No monthly subscriptions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Section>
       </main>
       <Footer />
     </div>

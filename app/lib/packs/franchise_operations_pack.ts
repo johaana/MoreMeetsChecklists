@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const franchise_operations_pack: PremiumPack = {

@@ -8,8 +8,7 @@ import Script from 'next/script';
 
 const siteUrl = 'https://www.moremeets.com';
 const siteTitle = 'MoreMeets™: Professional Operational Checklists & SOPs';
-const siteDescription = 'Downloadable, expert-crafted operational checklists for hotels, retail, healthcare, and more. Achieve compliance and excellence with our one-time purchase SOP templates.';
-const ogImageUrl = `${siteUrl}/api/og`;
+const siteDescription = 'Stop managing. Start seeing. MoreMeets turns your daily operations into a system that runs itself.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -22,7 +21,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: ogImageUrl,
+        url: `${siteUrl}/api/og`,
         width: 1200,
         height: 630,
         alt: siteTitle,
@@ -33,7 +32,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: siteTitle,
     description: siteDescription,
-    images: [ogImageUrl],
+    images: [`${siteUrl}/api/og`],
   },
   icons: {
     icon: '/favicon.ico',
@@ -63,7 +62,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" style={{colorScheme: 'dark'}} suppressHydrationWarning>
       <head>
-        {/* Google tag (gtag.js) */}
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-ZE6F71Y2CM"
@@ -74,7 +72,6 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'G-ZE6F71Y2CM');
           `}
         </Script>

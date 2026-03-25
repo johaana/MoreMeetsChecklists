@@ -1,4 +1,3 @@
-
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
@@ -38,7 +37,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         CONSOLE_BG: "F1F5F9",
         CHAMBER_BG: "F8FAFC",
         MGR_YELLOW: "FEF9C3",
-        INACTIVE_GREY: "F1F5F9"
+        INACTIVE_GREY: "F1F5F9",
+        BADGE_MINT: "E8F5E9",
+        BADGE_GOLD: "FFF8E1",
+        BADGE_BLUE: "E3F2FD",
+        TEXT_DARK_GREEN: "1B5E20",
+        TEXT_DARK_GOLD: "B26A00",
+        TEXT_DARK_BLUE: "0D47A1"
     };
 
     const borderStyle = {
@@ -91,18 +96,19 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         border: borderStyle
     };
 
-    const chamberLabelStyle = {
-        font: { ...baseFont, bold: true, sz: 9, color: { rgb: COLORS.INTEL_GREY } },
+    const ghostLabelStyle = {
+        font: { ...baseFont, bold: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } },
         fill: { fgColor: { rgb: COLORS.CHAMBER_BG } },
         alignment: { horizontal: 'right', vertical: 'center' },
         border: { left: borderStyle.left }
     };
 
-    const chamberValueStyle = {
-        font: { ...baseFont, bold: true, sz: 11, color: { rgb: COLORS.NAVY_DEEP } },
-        fill: { fgColor: { rgb: COLORS.CHAMBER_BG } },
+    const badgeValueStyle = (bg: string, text: string) => ({
+        font: { ...baseFont, bold: true, sz: 12, color: { rgb: text } },
+        fill: { fgColor: { rgb: bg } },
         alignment: { horizontal: 'left', vertical: 'center' },
-    };
+        border: { right: borderStyle.right }
+    });
 
     const bigActionButtonStyle = {
         font: { ...baseFont, bold: true, sz: 14, color: { rgb: COLORS.PRIMARY_GREEN }, underline: true },
@@ -207,7 +213,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "EXECUTIVE INTEL", s: groupHeaderStyle }
         ],
         [
-            { v: "▶ BRANCH SETUP", l: { Target: "#'BRANCH_SETUP'!A1" }, s: tileStyle }, null, 
+            { v: "▶ BRANCH SETUP", l: { Target: "#'BRANCH_MASTER'!A1" }, s: tileStyle }, null, 
             { v: "▶ TODAY'S TASKS", l: { Target: "#'TODAYS_TASKS'!A1" }, s: tileStyle }, null, 
             { v: "▶ BUSINESS HEALTH", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: tileStyle }
         ],
@@ -222,27 +228,27 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_LOG'!A1" }, s: tileStyle }, null
         ],
         [],
-        [{ t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.9, "🔥 SIZZLING - PERFECT EXECUTION!", IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.6, "🥘 SIMMERING - BUILDING MOMENTUM", "🧊 COLD - TURN UP THE HEAT!")), "EMPIRE MOOD: 🧊 LOADING...")`, s: moodBannerStyle }, null, null, null, null, null],
+        [{ t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.9, "🟢 HOT - PERFECT EXECUTION!", IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.6, "🟡 STABLE - PUSH HARDER", "🔴 COLD - TURN UP THE HEAT!")), "EMPIRE MOOD: 🧊 LOADING...")`, s: moodBannerStyle }, null, null, null, null, null],
         [
-            { v: "🎖️ TEAM GLORY", s: chamberHeaderStyle }, null, 
+            { v: "🏅 TEAM GLORY", s: chamberHeaderStyle }, null, 
             { v: "⚡ MOMENTUM", s: chamberHeaderStyle }, null,
             { v: "🛡️ COMMAND VITALS", s: chamberHeaderStyle }, null
         ],
         [
-            { v: "Today's Star:", s: chamberLabelStyle },
-            { t: 'f', f: starFormula, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN } } } },
-            { v: "Top Branch:", s: chamberLabelStyle },
-            { t: 'f', f: branchFormula, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.ACCENT_GOLD } } } },
-            { v: "Open Incidents:", s: chamberLabelStyle },
-            { t: 'f', f: `IF(COUNTIF('INCIDENT_LOG'!G:G, "OPEN")=0, "✅ NONE", COUNTIF('INCIDENT_LOG'!G:G, "OPEN"))`, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.RISK_RED } } } }
+            { v: "TODAY'S STAR:", s: ghostLabelStyle },
+            { t: 'f', f: starFormula, s: badgeValueStyle(COLORS.BADGE_MINT, COLORS.TEXT_DARK_GREEN) },
+            { v: "TOP BRANCH:", s: ghostLabelStyle },
+            { t: 'f', f: branchFormula, s: badgeValueStyle(COLORS.BADGE_GOLD, COLORS.TEXT_DARK_GOLD) },
+            { v: "OPEN INCIDENTS:", s: ghostLabelStyle },
+            { t: 'f', f: `IF(COUNTIF('INCIDENT_LOG'!G:G, "OPEN")=0, "✅ NONE", COUNTIF('INCIDENT_LOG'!G:G, "OPEN"))`, s: badgeValueStyle(COLORS.BADGE_BLUE, COLORS.TEXT_DARK_BLUE) }
         ],
         [
-            { v: "Empire Status:", s: { ...chamberLabelStyle } },
-            { v: "👑 LEVEL 3 - EXECUTIVE", s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.ACCENT_GOLD } } } },
-            { v: "Active Units:", s: { ...chamberLabelStyle } },
-            { t: 'f', f: `COUNTIF('BRANCH_SETUP'!B6:B15, "<>")`, s: { ...chamberValueStyle } },
-            { v: "Shift Progress:", s: { ...chamberLabelStyle } },
-            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*")), "0%"), "0%")`, s: { ...chamberValueStyle, font: { ...chamberValueStyle.font, color: { rgb: COLORS.PRIMARY_GREEN }, sz: 12 } } }
+            { v: "EMPIRE STATUS:", s: ghostLabelStyle },
+            { v: "👑 LEVEL 3 - EXECUTIVE", s: badgeValueStyle(COLORS.CHAMBER_BG, COLORS.TEXT_DARK_BLUE) },
+            { v: "ACTIVE UNITS:", s: ghostLabelStyle },
+            { t: 'f', f: `COUNTIF('BRANCH_MASTER'!B6:B15, "<>")`, s: badgeValueStyle(COLORS.CHAMBER_BG, COLORS.NAVY_DEEP) },
+            { v: "SHIFT PROGRESS:", s: ghostLabelStyle },
+            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*")), "0%"), "0%")`, s: badgeValueStyle(COLORS.BADGE_BLUE, COLORS.TEXT_DARK_BLUE) }
         ],
         [{ v: "▶ VIEW REAL-TIME BRANCH INTELLIGENCE & PERFORMANCE ANALYTICS", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: bigActionButtonStyle }, null, null, null, null, null],
         [],
@@ -265,13 +271,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     homeWs['!views'] = [{ showGridLines: false }];
     utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
 
-    // --- 02. BRANCH_SETUP ---
+    // --- 02. BRANCH_MASTER ---
     const facilityHeaders = [
         { v: "Branch ID", s: headerStyle }, { v: "Branch Name", s: headerStyle },
         ...packChecklists.map(c => ({ v: c.title, s: headerStyle }))
     ];
     const branchSetupData = [
-        [], [{ v: "BRANCH IDENTITY & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
+        [], [{ v: "BRANCH MASTER SETUP & FACILITY SWITCHBOARD", s: { font: { sz: 18, bold: true } } }], 
         [],
         [], facilityHeaders,
         [{ v: "1", s: dataStyleCenter }, { v: "Bandra West", s: ghostInputStyle }, ...packChecklists.map(() => ({ v: "YES", s: ghostInputStyle }))],
@@ -280,7 +286,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const setupWs = utils.aoa_to_sheet(branchSetupData);
     setupWs['!cols'] = [12, 35, ...packChecklists.map(() => 15)].map(w => ({ wch: w }));
     addAppHeader(setupWs, utils.encode_col(facilityHeaders.length - 1));
-    utils.book_append_sheet(wb, setupWs, "BRANCH_SETUP");
+    utils.book_append_sheet(wb, setupWs, "BRANCH_MASTER");
 
     // --- 03. TODAYS_TASKS ---
     const mHeaders = [
@@ -303,7 +309,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
                 mData.push([
                     { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
-                    { t: 'f', f: `IFERROR(INDEX('BRANCH_SETUP'!$B$5:$B$15, ${bCode}+1), "Branch ${bCode}")`, s: dataStyleCenter },
+                    { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode}+1), "Branch ${bCode}")`, s: dataStyleCenter },
                     { v: c.role, s: dataStyleCenter },
                     { t: 'f', f: personFormula, s: dataStyleCenter },
                     { v: t.id, s: dataStyleCenter },
@@ -349,7 +355,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             const rowIdx = pData.length + 1;
             pData.push([
                 { t: 'f', f: `B${rowIdx}&D${rowIdx}`, s: intelStyle },
-                { t: 'f', f: `IFERROR(INDEX('BRANCH_SETUP'!$B$5:$B$15, ${bId}+1), "Branch ${bId}")`, s: dataStyleCenter },
+                { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}+1), "Branch ${bId}")`, s: dataStyleCenter },
                 { v: "Type Person Name", s: ghostInputStyle }, 
                 { v: role, s: dataStyleLeft },
                 { v: "Contact Details", s: ghostInputStyle },
@@ -416,7 +422,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [{ v: `The Definitive Protocol for Standardized ${item.title} Operations`, s: { font: { italic: true, sz: 10, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [{ v: "SECTION", s: headerStyle }, { v: "ACTION STEPS & SYSTEM PROTOCOLS", s: headerStyle }],
-        [{ v: "1. ENGINE SETUP", s: { font: { bold: true, sz: 12, color: COLORS.PRIMARY_GREEN } } }, { v: "Go to 'BRANCH_SETUP'. Name your branches. Toggle modules ON/OFF per branch.", s: { font: { sz: 10 }, alignment: { wrapText: true } } }],
+        [{ v: "1. ENGINE SETUP", s: { font: { bold: true, sz: 12, color: COLORS.PRIMARY_GREEN } } }, { v: "Go to 'BRANCH_MASTER'. Name your branches. Toggle modules ON/OFF per branch.", s: { font: { sz: 10 }, alignment: { wrapText: true } } }],
         [{ v: "2. ASSIGNING HEROES", s: { font: { bold: true, sz: 12, color: COLORS.PRIMARY_GREEN } } }, { v: "Go to 'TEAM_HUB'. List real staff names for EVERY role in EVERY branch. This ensures personal accountability.", s: { font: { sz: 10 }, alignment: { wrapText: true } } }],
         [{ v: "3. THE DAILY PULSE", s: { font: { bold: true, sz: 12, color: COLORS.PRIMARY_GREEN } } }, { v: "Staff: Type initials in 'Done By' when finished. Status and dashboards update instantly.", s: { font: { sz: 10 }, alignment: { wrapText: true } } }],
         [{ v: "4. MANAGER VERIFY", s: { font: { bold: true, sz: 12, color: COLORS.PRIMARY_GREEN } } }, { v: "Leadership: Sign off on YELLOW cells in 'Verified By'. These are your high-risk control points.", s: { font: { sz: 10 }, alignment: { wrapText: true } } }],
@@ -435,7 +441,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     wb.Workbook = {
         Sheets: [
             { name: "HOME_CONSOLE", Hidden: 0 },
-            { name: "BRANCH_SETUP", Hidden: 0 },
+            { name: "BRANCH_MASTER", Hidden: 0 },
             { name: "TODAYS_TASKS", Hidden: 0 },
             { name: "BUSINESS_HEALTH", Hidden: 0 },
             { name: "TEAM_HUB", Hidden: 0 },

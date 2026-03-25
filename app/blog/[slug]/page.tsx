@@ -1,4 +1,3 @@
-
 import { blogPosts } from '@/lib/blog-posts';
 import { notFound } from 'next/navigation';
 import { SiteHeader } from '@/components/layout/header';
@@ -49,25 +48,15 @@ export async function generateMetadata(
   const siteUrl = 'https://www.moremeets.com';
   const ogImage = post.imageUrl || `${siteUrl}/api/og?type=blog&slug=${post.slug}`;
 
-  // SEO Optimized technical titles
-  const seoTitle = `${post.title} | Operational Intelligence Debrief`;
-
   return {
-    title: seoTitle,
+    title: `${post.title} | Operational Intelligence Debrief`,
     description: post.description,
     openGraph: {
       title: post.title,
       description: post.description,
       type: 'article',
       url: `${siteUrl}/blog/${post.slug}`,
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -132,6 +121,10 @@ export default async function BlogPostPage({ params }: Props) {
     'cinema_operations_pack': {
         bridge: "Technical excellence requires technical discipline.",
         button: "Secure Cinema Operations"
+    },
+    'bakery_confectionery_pack': {
+        bridge: "Artisanal quality requires industrial discipline.",
+        button: "Strengthen Bakery Controls"
     }
   };
 
@@ -140,6 +133,7 @@ export default async function BlogPostPage({ params }: Props) {
       button: "Strengthen Your Operations"
   };
 
+  // SAFETY FIX: Optional chaining ensures build never fails on missing mapping
   const currentCta = (relatedPack && ctaMapping[relatedPack.id]) ? ctaMapping[relatedPack.id] : fallbackCta;
 
   const PROOFS = [
@@ -147,13 +141,6 @@ export default async function BlogPostPage({ params }: Props) {
     { label: 'Editable .xlsx', icon: FileSpreadsheet },
     { label: 'Lifetime Updates', icon: Infinity },
     { label: 'No SaaS lock-in', icon: Lock }
-  ];
-
-  const REASSURANCES = [
-    "No SaaS lock-in",
-    "Editable formats",
-    "Immediate deployment",
-    "Expert customization included"
   ];
 
   return (
@@ -188,10 +175,6 @@ export default async function BlogPostPage({ params }: Props) {
                       {post.title}
                     </h1>
                     
-                    <p className="text-xl md:text-2xl text-secondary-text leading-relaxed font-medium max-w-2xl border-l-2 border-primary/20 pl-8 italic">
-                      {post.description}
-                    </p>
-
                     <div className="flex items-center gap-8 text-[10px] font-black text-white/30 uppercase tracking-[0.3em] pt-6">
                        <span className="flex items-center gap-2 border-r border-white/10 pr-8"><User className="w-3 h-3 text-primary" /> {post.author}</span>
                        <span className="flex items-center gap-2 border-r border-white/10 pr-8"><Clock className="w-3 h-3 text-primary" /> {readingTime} MIN READ</span>
@@ -208,7 +191,6 @@ export default async function BlogPostPage({ params }: Props) {
                           className="object-cover w-full h-full grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
                         />
                       </div>
-                      <div className="absolute -bottom-6 -right-6 w-24 h-24 border-r-2 border-b-2 border-primary/20 pointer-events-none rounded-br-[2rem]" />
                     </div>
                   )}
                 </div>
@@ -238,10 +220,6 @@ export default async function BlogPostPage({ params }: Props) {
                             <h2 className="text-3xl md:text-5xl font-black font-headline tracking-tight text-primary-text uppercase italic leading-[1.15]">
                                 OPERATIONAL DISCIPLINE REQUIRES STRUCTURE
                             </h2>
-                            <p className="text-lg text-secondary-text leading-relaxed font-medium">
-                                Deploy ISO, HACCP, and OSHA-aligned protocols built for execution — not documentation.
-                            </p>
-                            
                             <p className="text-base font-bold text-accent/70 italic pt-2 border-t border-white/5 max-w-lg mx-auto">
                                 "{currentCta.bridge}"
                             </p>
@@ -264,7 +242,7 @@ export default async function BlogPostPage({ params }: Props) {
                                 </Button>
                                 
                                 <div className="grid grid-cols-2 gap-x-12 gap-y-4 max-w-lg mx-auto text-[10px] font-black uppercase text-white/20 tracking-widest text-left">
-                                    {REASSURANCES.map(item => (
+                                    {["No SaaS lock-in", "Editable formats", "Immediate deployment", "Expert customization"].map(item => (
                                         <div key={item} className="flex items-center gap-2">
                                             <Check className="w-3.5 h-3.5 text-primary/40" /> {item}
                                         </div>

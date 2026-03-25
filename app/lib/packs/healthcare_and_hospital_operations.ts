@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const healthcare_and_hospital_operations: PremiumPack = {
