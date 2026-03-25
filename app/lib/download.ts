@@ -1,3 +1,4 @@
+
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
@@ -8,6 +9,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
  * Sovereign Engine v4.4 - THE INFINITE APP EDITION
  * UI: Full-sheet Midnight Navy fill, Hidden Gridlines, Integrated Headers.
  * Logic: Clean "---" fallbacks for live lookups.
+ * UX: High-contrast inputs for authoritative data entry.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -39,7 +41,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         INACTIVE_GREY: "F1F5F9",
         BADGE_GREEN: "065F46",
         BADGE_AMBER: "D97706",
-        BADGE_BLUE: "1E40AF"
+        BADGE_BLUE: "1E40AF",
+        INK_DARK: "1E293B" // High-contrast for user inputs
     };
 
     const borderStyle = {
@@ -136,14 +139,17 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         border: borderStyle
     };
 
+    // ACTIVE INPUT STYLE - Dark Ink for maximum legibility
     const inputStyle = {
         ...dataStyleCenter,
+        font: { ...baseFont, color: { rgb: COLORS.INK_DARK }, bold: true },
         fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
+    // GHOST INPUT STYLE - Refined to use dark ink but lighter weight for placeholders
     const ghostInputStyle = {
         ...inputStyle,
-        font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED }, italic: true }
+        font: { ...baseFont, color: { rgb: COLORS.INK_DARK }, italic: false }
     };
 
     const managerYellowStyle = {
@@ -271,12 +277,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { s: { r: 11, c: 1 }, e: { r: 11, c: 6 } },
         { s: { r: 12, c: 1 }, e: { r: 12, c: 2 } }, { s: { r: 12, c: 3 }, e: { r: 12, c: 4 } }, { s: { r: 12, c: 5 }, e: { r: 12, c: 6 } },
         { s: { r: 15, c: 1 }, e: { r: 15, c: 6 } },
-        // MERGE FOOTER LINES ACROSS FULL WIDTH
         { s: { r: 17, c: 1 }, e: { r: 17, c: 6 } },
         { s: { r: 18, c: 1 }, e: { r: 18, c: 6 } }
     ];
     
-    // DISABLE GRIDLINES AND INFINITE FILL
     homeWs['!views'] = [{ showGridLines: false }];
     const fullRange = utils.decode_range('A1:Z100');
     for (let R = fullRange.s.r; R <= fullRange.e.r; ++R) {
@@ -294,7 +298,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     // --- 02. BRANCH_MASTER ---
     const facilityHeaders = [
-        { v: "Branch ID", s: headerStyle }, { v: "Branch Name", s: headerStyle },
+        { v: "Branch ID", s: headerStyle }, { v: "Branch Name (Edit Here)", s: headerStyle },
         ...packChecklists.map(c => ({ v: c.title, s: headerStyle }))
     ];
     const branchSetupData = [
@@ -377,9 +381,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             pData.push([
                 { t: 'f', f: `B${rowIdx}&D${rowIdx}`, s: intelStyle },
                 { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}+1), "Branch ${bId}")`, s: dataStyleCenter },
-                { v: "Type Person Name", s: ghostInputStyle }, 
+                { v: "[Type Staff Name]", s: ghostInputStyle }, 
                 { v: role, s: dataStyleLeft },
-                { v: "Contact Details", s: ghostInputStyle },
+                { v: "[Contact Details]", s: ghostInputStyle },
                 { v: "ACTIVE", s: dataStyleCenter }
             ]);
         });
