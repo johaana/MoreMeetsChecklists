@@ -5,9 +5,9 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v4.4 - THE DARK HUD EDITION (STRICT NO-EMOJI)
- * Hardened Logic: Fixed "Most Frequent" formulas using finite ranges and blank-handling.
- * UI: Midnight Navy Dashboard with High-Saturated Data Badges.
+ * Sovereign Engine v4.4 - THE INFINITE APP EDITION
+ * UI: Full-sheet Midnight Navy fill, Hidden Gridlines, Integrated Headers.
+ * Logic: Clean "---" fallbacks for live lookups.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -192,8 +192,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
 
     // --- 01. HOME CONSOLE ---
-    const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!$G$5:$G$2000, MATCH(MAX(COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "<>", 'TODAYS_TASKS'!$G$5:$G$2000, 'TODAYS_TASKS'!$G$5:$G$2000)), COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "<>", 'TODAYS_TASKS'!$G$5:$G$2000, 'TODAYS_TASKS'!$G$5:$G$2000), 0)), "[WAITING]")`;
-    const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!$B$5:$B$2000, MATCH(MAX(COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, "<>", 'TODAYS_TASKS'!$B$5:$B$2000, 'TODAYS_TASKS'!$B$5:$B$2000)), COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, "<>", 'TODAYS_TASKS'!$B$5:$B$2000, 'TODAYS_TASKS'!$B$5:$B$2000), 0)), "[CALCULATING]")`;
+    const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!$G$5:$G$2000, MATCH(MAX(COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "<>", 'TODAYS_TASKS'!$G$5:$G$2000, 'TODAYS_TASKS'!$G$5:$G$2000)), COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "<>", 'TODAYS_TASKS'!$G$5:$G$2000, 'TODAYS_TASKS'!$G$5:$G$2000), 0)), "---")`;
+    const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!$B$5:$B$2000, MATCH(MAX(COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, "<>", 'TODAYS_TASKS'!$B$5:$B$2000, 'TODAYS_TASKS'!$B$5:$B$2000)), COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, "<>", 'TODAYS_TASKS'!$B$5:$B$2000, 'TODAYS_TASKS'!$B$5:$B$2000), 0)), "---")`;
     const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "<>N/A*", 'TODAYS_TASKS'!$F$5:$F$2000, "<>", 'TODAYS_TASKS'!$F$5:$F$2000, "<>Mission Requirement*")), 0)`;
 
     const homeData: any[][] = [
@@ -263,12 +263,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { s: { r: 12, c: 0 }, e: { r: 12, c: 1 } }, { s: { r: 12, c: 2 }, e: { r: 12, c: 3 } }, { s: { r: 12, c: 4 }, e: { r: 12, c: 5 } },
         { s: { r: 15, c: 0 }, e: { r: 15, c: 5 } }
     ];
-    homeWs['!views'] = [{ showGridLines: false }];
     
-    // FILL BACKGROUND WITH MIDNIGHT NAVY
-    const bgRange = utils.decode_range('A1:Z100');
-    for (let R = bgRange.s.r; R <= bgRange.e.r; ++R) {
-        for (let C = bgRange.s.c; C <= bgRange.e.c; ++C) {
+    // DISABLE GRIDLINES AND INFINITE FILL
+    homeWs['!views'] = [{ showGridLines: false }];
+    const fullRange = utils.decode_range('A1:Z100');
+    for (let R = fullRange.s.r; R <= fullRange.e.r; ++R) {
+        for (let C = fullRange.s.c; C <= fullRange.e.c; ++C) {
             const cell = utils.encode_cell({ r: R, c: C });
             if (!homeWs[cell]) {
                 homeWs[cell] = { v: "", s: { fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } };
@@ -377,7 +377,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     // --- 06. INCIDENT_LOG ---
     const iHeaders = [{v:"Date", s:headerStyle}, {v:"Time", s:headerStyle}, {v:"Branch", s:headerStyle}, {v:"Category", s:headerStyle}, {v:"Description", s:headerStyle}, {v:"Financial Impact (Potential)", s:headerStyle}, {v:"Status", s:headerStyle}];
-    const iData = [[], [{v:"INCIDENT TRACKER: LIABILITY & INCIDENT LOG", s:{font:{sz:18, bold:true}}}], [], iHeaders];
+    const iData = [[], [{v:"INCIDENT TRACKER: LIABILITY & LOSS LOG", s:{font:{sz:18, bold:true}}}], [], iHeaders];
     const iWs = utils.aoa_to_sheet(iData);
     iWs['!cols'] = [15, 12, 25, 35, 60, 30, 20].map(w => ({ wch: w }));
     addAppHeader(iWs, 'G');
