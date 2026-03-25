@@ -47,7 +47,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 
 const Section = ({ className, id, children, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
-    <section id={id} className={cn("w-full py-16 md:py-24 lg:py-32", className)} {...props}>
+    <section id={id} className={cn("w-full py-16 md:py-24", className)} {...props}>
         <div className="container px-4 md:px-6">
             {children}
         </div>
@@ -73,26 +73,26 @@ const HeroSection = () => (
                 className="absolute inset-0 w-full h-full object-cover contrast-[1.1] md:contrast-100 opacity-60 md:opacity-100"
             />
             {/* Hardened Gradient for One-Glance Contrast */}
-            <div className="hidden md:block absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.95)_30%,rgba(10,15,25,0.5)_60%,rgba(10,15,25,0.1)_100%)]" />
+            <div className="hidden md:block absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.95)_35%,rgba(10,15,25,0.5)_65%,rgba(10,15,25,0.1)_100%)]" />
             
             <div className="md:hidden absolute inset-0 z-10 bg-gradient-to-b from-transparent via-background/40 to-background" />
             <div className="md:hidden absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent z-15" />
         </div>
 
-        {/* Content Layer - Tightened for Fold Awareness */}
-        <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center py-4 md:py-0">
-            <div className="max-w-4xl space-y-3 md:space-y-4">
-                <div className="space-y-2">
+        {/* Content Layer - Highly Compressed for One-Glance Fit */}
+        <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center py-2 md:py-0">
+            <div className="max-w-4xl space-y-2 md:space-y-3">
+                <div className="space-y-1">
                     <Badge variant="outline" className="text-white/40 border-white/10 py-0.5 px-3 uppercase tracking-[0.15em] font-black text-[8px] md:text-[9px] bg-white/5 rounded-none whitespace-nowrap">
                         PRE-BUILT SOPs • READY IN 10 MINUTES • FULLY EDITABLE • ZERO REPORTING EFFORT
                     </Badge>
-                    <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
+                    <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
                         STOP MANAGING. <br />
                         <span className="text-primary">START SEEING.</span>
                     </h1>
                 </div>
                 
-                <div className="space-y-1">
+                <div className="space-y-0.5">
                     <p className="text-sm md:text-lg lg:text-xl font-black text-primary uppercase tracking-tight italic leading-tight">
                         A system that runs your business — every single day.
                     </p>
@@ -101,50 +101,52 @@ const HeroSection = () => (
                     </p>
                 </div>
 
-                <div className="max-w-xl border-l border-primary/30 pl-4">
-                    <p className="text-[11px] md:text-sm text-secondary-text leading-relaxed font-medium italic">
+                <div className="max-w-xl border-l border-primary/30 pl-4 py-1">
+                    <p className="text-[10px] md:text-xs lg:text-sm text-secondary-text leading-relaxed font-medium italic">
                         MoreMeets™ turns your operations into a self-running system. <br className="hidden md:block" />
                         No follow-ups. No manual reports. No dependency on key staff. <br className="hidden md:block" />
                         Know exactly what’s happening — across every shift, every branch, instantly.
                     </p>
                 </div>
 
-                {/* Conversion Island - Tightly Grouped */}
-                <div className="pt-2 space-y-4">
+                {/* Conversion Island - Tightly Grouped decision block */}
+                <div className="pt-1 space-y-3">
                     <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-                        <Button size="lg" asChild className="group h-12 md:h-14 px-8 rounded-xl shadow-lg transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-xs tracking-widest w-full sm:w-auto border-none">
+                        <Button size="lg" asChild className="group h-11 md:h-12 px-8 rounded-xl shadow-lg transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-[10px] md:text-xs tracking-widest w-full sm:w-auto border-none">
                             <Link href="/library" className="flex items-center justify-center">
                                 Get Your System
                                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                             </Link>
                         </Button>
-                        <Button size="lg" variant="outline" asChild className="h-12 md:h-14 px-8 rounded-xl border-white/20 text-white font-black uppercase text-xs tracking-widest hover:bg-white/10 w-full sm:w-auto transition-colors">
+                        <Button size="lg" variant="outline" asChild className="h-11 md:h-12 px-8 rounded-xl border-white/20 text-white font-black uppercase text-[10px] md:text-xs tracking-widest hover:bg-white/10 w-full sm:w-auto transition-colors">
                             <Link href="#how-it-works">See It In Action</Link>
                         </Button>
                     </div>
 
-                    <p className="text-[10px] md:text-xs font-black text-accent uppercase tracking-[0.2em] italic">
-                        Stop asking for updates. Start seeing reality.
-                    </p>
-
-                    {/* Trust Strip & Technical Note */}
-                    <div className="space-y-2 pt-3 border-t border-white/10 w-fit">
-                        <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5">
-                            {[
-                                { t: "Ready in 10 minutes", i: CheckCircle },
-                                { t: "No SaaS. Own forever", i: Lock },
-                                { t: "Fully editable", i: History },
-                                { t: "Works with the team you have", i: Users }
-                            ].map(item => (
-                                <div key={item.t} className="flex items-center gap-1.5">
-                                    <item.i className="w-3 h-3 text-primary" />
-                                    <span className="text-[8px] md:text-[10px] font-black uppercase tracking-wider text-white/40">{item.t}</span>
-                                </div>
-                            ))}
-                        </div>
-                        <p className="text-[8px] md:text-[10px] font-bold text-white/20 uppercase tracking-[0.1em] pl-0.5 italic">
-                            Runs on Excel / Google Sheets — so adoption is instant. No training required.
+                    <div className="space-y-2">
+                        <p className="text-[10px] md:text-xs font-black text-accent uppercase tracking-[0.2em] italic">
+                            Stop asking for updates. Start seeing reality.
                         </p>
+
+                        {/* Trust Strip & Technical Note */}
+                        <div className="space-y-1.5 pt-2 border-t border-white/10 w-fit">
+                            <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                                {[
+                                    { t: "Ready in 10 minutes", i: CheckCircle },
+                                    { t: "No SaaS. Own forever", i: Lock },
+                                    { t: "Fully editable", i: History },
+                                    { t: "Works with the team you have", i: Users }
+                                ].map(item => (
+                                    <div key={item.t} className="flex items-center gap-1.5">
+                                        <item.i className="w-3 h-3 text-primary" />
+                                        <span className="text-[8px] md:text-[9px] font-black uppercase tracking-wider text-white/40">{item.t}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-[8px] md:text-[10px] font-bold text-white/20 uppercase tracking-[0.1em] pl-0.5 italic">
+                                Runs on Excel / Google Sheets — so adoption is instant. No training required.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -552,7 +554,7 @@ export default function Home() {
                             Eliminate Operational Risk <ArrowRight className="ml-4 h-8 w-8" />
                         </Link>
                     </Button>
-                    <div className="flex flex-wrap items-center justify-center gap-12">
+                    <div className="flex wrap items-center justify-center gap-12">
                         <div className="text-center space-y-1">
                             <p className="text-xs font-black uppercase tracking-widest text-primary flex items-center gap-2 justify-center"><Lock className="w-4 h-4" /> No SaaS Lock-in.</p>
                             <p className="text-[10px] font-black uppercase tracking-widest text-white/20 italic">Own your engine forever.</p>
