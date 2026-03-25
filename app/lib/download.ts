@@ -256,8 +256,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ],
         [null, { v: "▶ VIEW REAL-TIME BRANCH INTELLIGENCE & PERFORMANCE ANALYTICS", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: bigActionButtonStyle }, null, null, null, null, null],
         [],
-        [null, { v: "USER GUIDE: Use filters in 'Today's Tasks' to see YOUR branch, YOUR role, and YOUR name.", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } }],
-        [null, { v: `REGISTERED TO: ${BUYER_EMAIL} | ORDER ID: ${ORDER_ID}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, fill: { fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'left' } } }]
+        [null, { v: "USER GUIDE: Use filters in 'Today's Tasks' to see YOUR branch, YOUR role, and YOUR name.", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' }, fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } }],
+        [null, { v: `LICENSED TO: ${BUYER_EMAIL} | VALIDATED DEPLOYMENT: ${ORDER_ID}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' }, fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } }]
     ];
 
     const homeWs = utils.aoa_to_sheet(homeData);
@@ -270,7 +270,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { s: { r: 9, c: 1 }, e: { r: 9, c: 2 } }, { s: { r: 9, c: 3 }, e: { r: 9, c: 4 } }, { s: { r: 9, c: 5 }, e: { r: 9, c: 6 } },
         { s: { r: 11, c: 1 }, e: { r: 11, c: 6 } },
         { s: { r: 12, c: 1 }, e: { r: 12, c: 2 } }, { s: { r: 12, c: 3 }, e: { r: 12, c: 4 } }, { s: { r: 12, c: 5 }, e: { r: 12, c: 6 } },
-        { s: { r: 15, c: 1 }, e: { r: 15, c: 6 } }
+        { s: { r: 15, c: 1 }, e: { r: 15, c: 6 } },
+        // MERGE FOOTER LINES ACROSS FULL WIDTH
+        { s: { r: 17, c: 1 }, e: { r: 17, c: 6 } },
+        { s: { r: 18, c: 1 }, e: { r: 18, c: 6 } }
     ];
     
     // DISABLE GRIDLINES AND INFINITE FILL
