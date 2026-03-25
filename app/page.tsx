@@ -61,9 +61,9 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 );
 
 const HeroSection = () => (
-    <section className="relative w-full flex flex-col md:flex-row md:items-center h-[calc(100dvh-64px)] md:h-screen md:min-h-[700px] overflow-hidden bg-background">
-        {/* Visual Brand Layer - PRESERVED AS PER USER REQUEST */}
-        <div className="relative h-[28vh] md:absolute md:top-0 md:left-0 md:h-full md:w-full z-0 overflow-hidden shrink-0">
+    <section className="relative w-full flex flex-col md:flex-row md:items-center h-[calc(100dvh-64px)] md:h-screen md:min-h-[850px] overflow-hidden bg-background">
+        {/* Visual Brand Layer */}
+        <div className="relative h-[25vh] md:absolute md:top-0 md:left-0 md:h-full md:w-full z-0 overflow-hidden shrink-0">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
                 autoPlay
@@ -84,47 +84,71 @@ const HeroSection = () => (
 
         {/* Content Layer */}
         <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center">
-            <div className="max-w-3xl space-y-6">
+            <div className="max-w-4xl space-y-8">
                 <div className="space-y-4">
-                    <Badge variant="outline" className="text-primary border-primary/30 py-1 px-4 uppercase tracking-[0.2em] font-black text-[10px] bg-primary/5 rounded-none">Pre-built. Ready to use. Fully editable.</Badge>
-                    <h1 className="text-[2.25rem] sm:text-5xl md:text-7xl font-black font-headline tracking-tighter !leading-[1.05] text-primary-text drop-shadow-lg uppercase italic">
-                        Stop managing. <br />
-                        <span className="text-primary">Start seeing.</span>
+                    <Badge variant="outline" className="text-white/40 border-white/10 py-1.5 px-4 uppercase tracking-[0.3em] font-black text-[9px] bg-white/5 rounded-none">
+                        PRE-BUILT. READY IN 10 MINUTES. FULLY EDITABLE.
+                    </Badge>
+                    <h1 className="text-[2.5rem] sm:text-6xl md:text-8xl font-black font-headline tracking-tighter !leading-[0.95] text-primary-text drop-shadow-lg uppercase italic">
+                        STOP MANAGING. <br />
+                        <span className="text-primary">START SEEING.</span>
                     </h1>
                 </div>
                 
-                <p className="text-lg md:text-2xl font-bold text-primary uppercase tracking-[0.1em] border-l-4 border-primary pl-6">
-                    A system that runs your business daily.
-                </p>
-
-                <p className="text-sm md:text-xl max-w-[600px] text-secondary-text leading-relaxed font-medium italic">
-                    MoreMeets™ replaces human memory with engineered consistency. No follow-ups. No manual reports. Just real-time clarity.
-                </p>
-
-                <div className="pt-4 space-y-6">
-                    <div className="flex flex-col sm:flex-row items-start gap-4">
-                        <Button size="lg" asChild className="group h-16 px-10 rounded-xl shadow-2xl transition-all active:scale-95 bg-primary text-black hover:brightness-90 font-black uppercase text-sm tracking-widest">
-                            <Link href="/library">
-                                Get Your Operating System
-                                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                            </Link>
-                        </Button>
-                        <Button size="lg" variant="outline" asChild className="h-16 px-10 rounded-xl border-white/10 text-white font-black uppercase text-sm tracking-widest hover:bg-white/5">
-                            <Link href="#how-it-works">View Technical Blueprint</Link>
-                        </Button>
-                    </div>
-                    <p className="text-xs md:text-sm font-black text-white/40 uppercase tracking-widest flex items-center gap-2">
-                        <Check className="w-4 h-4 text-primary" /> World-class SOPs already built-in
+                <div className="space-y-2">
+                    <p className="text-xl md:text-3xl font-black text-primary-text uppercase tracking-tight italic">
+                        A system that runs your business daily.
+                    </p>
+                    <p className="text-base md:text-xl font-bold text-primary/80 uppercase tracking-wide max-w-2xl">
+                        Pre-built SOPs, daily tasks, and automatic reporting — all inside one powerful system.
                     </p>
                 </div>
 
-                <div className="flex items-center gap-6 pt-4">
-                    <span className="flex items-center gap-1.5 text-[10px] font-black text-primary uppercase tracking-widest">
-                        <Lock className="w-3 h-3" /> No SaaS. Own Forever.
-                    </span>
-                    <span className="flex items-center gap-1.5 text-[10px] font-black text-accent uppercase tracking-widest">
-                        <Zap className="w-3 h-3" /> Ready in 10 Minutes
-                    </span>
+                <div className="space-y-4 max-w-2xl border-l-2 border-primary/20 pl-6">
+                    <p className="text-sm md:text-lg text-secondary-text leading-relaxed font-medium italic">
+                        MoreMeets™ replaces human memory with engineered consistency. <br className="hidden md:block" />
+                        No follow-ups. No manual reports. No dependency on key staff. <br className="hidden md:block" />
+                        Just real-time clarity across your entire operation.
+                    </p>
+                </div>
+
+                <div className="pt-4 space-y-8">
+                    <div className="flex flex-col items-start gap-4">
+                        <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                            <Button size="lg" asChild className="group h-16 px-10 rounded-xl shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 bg-primary text-black hover:brightness-90 font-black uppercase text-sm tracking-widest w-full sm:w-auto">
+                                <Link href="/library" className="flex items-center justify-center">
+                                    Get Your System
+                                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                </Link>
+                            </Button>
+                            <Button size="lg" variant="outline" asChild className="h-16 px-10 rounded-xl border-white/10 text-white font-black uppercase text-sm tracking-widest hover:bg-white/5 w-full sm:w-auto">
+                                <Link href="#how-it-works">See How It Works</Link>
+                            </Button>
+                        </div>
+                        <p className="text-[11px] md:text-xs font-black text-accent uppercase tracking-[0.2em] pl-1 animate-pulse">
+                            👉 From chaos to control — in one system.
+                        </p>
+                    </div>
+
+                    {/* Trust / Differentiation Strip */}
+                    <div className="space-y-4 pt-4 border-t border-white/5 w-fit">
+                        <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+                            {[
+                                "Ready in 10 minutes",
+                                "No SaaS. Own forever",
+                                "Fully editable",
+                                "Zero learning curve"
+                            ].map(item => (
+                                <div key={item} className="flex items-center gap-2">
+                                    <CheckCircle className="w-3.5 h-3.5 text-primary" />
+                                    <span className="text-[10px] md:text-[11px] font-black uppercase tracking-widest text-white/50">{item}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <p className="text-[10px] font-bold text-white/20 uppercase tracking-[0.15em] pl-1">
+                            Runs on Excel / Google Sheets — so your team can start instantly.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -192,7 +216,7 @@ const SOPAdvantageSection = () => (
                 <p className="text-xl font-black text-white/10 uppercase tracking-[0.2em] italic">You don't start from zero. You start from a proven system.</p>
             </div>
             
-            <div className="relative group">
+            <div className="relative group" id="how-it-works">
                 <div className="absolute -inset-4 bg-primary/20 blur-3xl opacity-10 group-hover:opacity-30 transition-opacity duration-1000" />
                 <Card className="relative rounded-[3rem] border border-white/10 bg-black p-2 shadow-2xl overflow-hidden">
                     <div className="absolute top-0 left-0 right-0 h-10 bg-white/5 border-b border-white/5 flex items-center px-6 gap-2">
