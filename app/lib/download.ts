@@ -6,10 +6,8 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 
 /**
  * Sovereign Engine v4.4 - THE INSTITUTIONAL BEAST
- * Features: Multi-Branch Staff Mapping, Dynamic Star/Branch Tracking, 
- * Forensic ROI Linkage, Symmetric Zero-Clipping UI.
- * 
- * Logic: Hardened Formulas for live dashboard hero metrics.
+ * Hardened Logic: Fixed "Most Frequent" formulas using finite ranges and blank-handling.
+ * UI: Soft-Glow Badge Palette for hero metrics.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -199,8 +197,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
 
     // --- 01. HOME CONSOLE ---
-    const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!G:G, MATCH(MAX(COUNTIF('TODAYS_TASKS'!G:G, 'TODAYS_TASKS'!G:G)), COUNTIF('TODAYS_TASKS'!G:G, 'TODAYS_TASKS'!G:G), 0)), "[WAITING]")`;
-    const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!B:B, MATCH(MAX(COUNTIF('TODAYS_TASKS'!B:B, 'TODAYS_TASKS'!B:B)), COUNTIF('TODAYS_TASKS'!B:B, 'TODAYS_TASKS'!B:B), 0)), "[CALCULATING]")`;
+    // Finite range match logic to prevent [WAITING] error
+    const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!$G$5:$G$2000, MATCH(MAX(COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "<>", 'TODAYS_TASKS'!$G$5:$G$2000, 'TODAYS_TASKS'!$G$5:$G$2000)), COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "<>", 'TODAYS_TASKS'!$G$5:$G$2000, 'TODAYS_TASKS'!$G$5:$G$2000), 0)), "[WAITING]")`;
+    const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!$B$5:$B$2000, MATCH(MAX(COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, "<>", 'TODAYS_TASKS'!$B$5:$B$2000, 'TODAYS_TASKS'!$B$5:$B$2000)), COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, "<>", 'TODAYS_TASKS'!$B$5:$B$2000, 'TODAYS_TASKS'!$B$5:$B$2000), 0)), "[CALCULATING]")`;
+    const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "<>N/A*", 'TODAYS_TASKS'!$F$5:$F$2000, "<>", 'TODAYS_TASKS'!$F$5:$F$2000, "<>Requirement*")), 0)`;
 
     const homeData: any[][] = [
         [], [],
@@ -229,7 +229,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_LOG'!A1" }, s: tileStyle }, null
         ],
         [],
-        [{ t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.9, "🟢 HOT - PERFECT EXECUTION!", IF(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*"))>=0.6, "🟡 STABLE - PUSH HARDER", "🔴 COLD - TURN UP THE HEAT!")), "EMPIRE MOOD: 🧊 LOADING...")`, s: moodBannerStyle }, null, null, null, null, null],
+        [{ t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(F15>=0.9, "🟢 HOT - PERFECT EXECUTION!", IF(F15>=0.6, "🟡 STABLE - PUSH HARDER", "🔴 COLD - TURN UP THE HEAT!")), "EMPIRE MOOD: 🧊 LOADING...")`, s: moodBannerStyle }, null, null, null, null, null],
         [
             { v: "🏅 TEAM GLORY", s: chamberHeaderStyle }, null, 
             { v: "⚡ MOMENTUM", s: chamberHeaderStyle }, null,
@@ -241,15 +241,15 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "TOP BRANCH:", s: ghostLabelStyle },
             { t: 'f', f: branchFormula, s: badgeValueStyle(COLORS.BADGE_GOLD, COLORS.TEXT_DARK_GOLD) },
             { v: "OPEN INCIDENTS:", s: ghostLabelStyle },
-            { t: 'f', f: `IF(COUNTIF('INCIDENT_LOG'!G:G, "OPEN")=0, "✅ NONE", COUNTIF('INCIDENT_LOG'!G:G, "OPEN"))`, s: badgeValueStyle(COLORS.BADGE_BLUE, COLORS.TEXT_DARK_BLUE) }
+            { t: 'f', f: `IF(COUNTIF('INCIDENT_LOG'!$G$5:$G$1000, "OPEN")=0, "✅ NONE", COUNTIF('INCIDENT_LOG'!$G$5:$G$1000, "OPEN"))`, s: badgeValueStyle(COLORS.BADGE_BLUE, COLORS.TEXT_DARK_BLUE) }
         ],
         [
             { v: "EMPIRE STATUS:", s: ghostLabelStyle },
             { v: "👑 LEVEL 3 - EXECUTIVE", s: badgeValueStyle(COLORS.CHAMBER_BG, COLORS.TEXT_DARK_BLUE) },
             { v: "ACTIVE UNITS:", s: ghostLabelStyle },
-            { t: 'f', f: `COUNTIF('BRANCH_MASTER'!B6:B15, "<>")`, s: badgeValueStyle(COLORS.CHAMBER_BG, COLORS.NAVY_DEEP) },
+            { t: 'f', f: `COUNTIF('BRANCH_MASTER'!$B$6:$B$15, "<>")`, s: badgeValueStyle(COLORS.CHAMBER_BG, COLORS.NAVY_DEEP) },
             { v: "SHIFT PROGRESS:", s: ghostLabelStyle },
-            { t: 'f', f: `IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*")), "0%"), "0%")`, s: badgeValueStyle(COLORS.BADGE_BLUE, COLORS.TEXT_DARK_BLUE) }
+            { t: 'f', f: progressFormula, s: { ...badgeValueStyle(COLORS.BADGE_BLUE, COLORS.TEXT_DARK_BLUE), numFmt: '0%' } }
         ],
         [{ v: "▶ VIEW REAL-TIME BRANCH INTELLIGENCE & PERFORMANCE ANALYTICS", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: bigActionButtonStyle }, null, null, null, null, null],
         [],
@@ -338,8 +338,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [], [{ v: "BUSINESS HEALTH: PERFORMANCE HUB", s: { font: { sz: 20, bold: true } } }], [],
         [{ v: "GROUP KPIs", s: groupHeaderStyle }, null, null],
         [{ v: "Operational KPI", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Target Threshold", s: headerStyle }],
-        [{ v: "Group Shift Progress", s: dataStyleLeft }, { t:'f', f:`IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!I:I, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!F:F, "<>N/A*", 'TODAYS_TASKS'!F:F, "<>", 'TODAYS_TASKS'!F:F, "<>Mission Requirement*")), "0%"), "0%")`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
-        [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_LOG'!G:G, "OPEN")=0, "NONE", COUNTIF('INCIDENT_LOG'!G:G, "OPEN"))`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
+        [{ v: "Group Shift Progress", s: dataStyleLeft }, { t:'f', f:`IFERROR(TEXT(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "<>N/A*", 'TODAYS_TASKS'!$F$5:$F$2000, "<>", 'TODAYS_TASKS'!$F$5:$F$2000, "<>Requirement*")), "0%"), "0%")`, s: { ...dataStyleCenter, font: { bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
+        [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_LOG'!$G$5:$G$1000, "OPEN")=0, "NONE", COUNTIF('INCIDENT_LOG'!$G$5:$G$1000, "OPEN"))`, s: dataStyleCenter }, { v: "ZERO TOLERANCE", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }]
     ];
     const dWs = utils.aoa_to_sheet(dashData);
     dWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
@@ -408,8 +408,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const rData = [
         [], [{v:"ROI ENGINE: COST & SAVINGS TRACKER", s:{font:{sz:18, bold:true}}}], [], 
         [{v:"Operational Risk Category", s:headerStyle}, {v:"Cost per Failure", s:headerStyle}, {v:"Incident Count (Linked)", s:headerStyle}, {v:"Projected Loss Avoided", s:headerStyle}, {v:"Governance Status", s:headerStyle}],
-        [{v:"Major Food Poisoning Incident", s:dataStyleLeft}, {v: "500000", s: ghostInputStyle }, { t:'f', f: `COUNTIFS('INCIDENT_LOG'!D:D, "*Food*")`, s: dataStyleCenter }, { t:'f', f:'B6*(10-C6)', s:dataStyleCenter }, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [{v:"Employee Fraud / Theft", s:dataStyleLeft}, {v: "150000", s: ghostInputStyle }, { t:'f', f: `COUNTIFS('INCIDENT_LOG'!D:D, "*Theft*")`, s: dataStyleCenter }, { t:'f', f:'B7*(10-C7)', s:dataStyleCenter }, {v:"ACTIVE AUDIT", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.ACCENT_GOLD } } } }]
+        [{v:"Major Food Poisoning Incident", s:dataStyleLeft}, {v: "500000", s: ghostInputStyle }, { t:'f', f: `COUNTIFS('INCIDENT_LOG'!$D$5:$D$1000, "*Food*")`, s: dataStyleCenter }, { t:'f', f:'B6*(10-C6)', s:dataStyleCenter }, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [{v:"Employee Fraud / Theft", s:dataStyleLeft}, {v: "150000", s: ghostInputStyle }, { t:'f', f: `COUNTIFS('INCIDENT_LOG'!$D$5:$D$1000, "*Theft*")`, s: dataStyleCenter }, { t:'f', f:'B7*(10-C7)', s:dataStyleCenter }, {v:"ACTIVE AUDIT", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.ACCENT_GOLD } } } }]
     ];
     const rWs = utils.aoa_to_sheet(rData);
     rWs['!cols'] = [40, 25, 25, 25, 20].map(w => ({ wch: w }));
