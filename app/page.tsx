@@ -64,69 +64,69 @@ const HeroSection = () => (
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover contrast-[1.1] opacity-60"
             />
-            {/* Deepened Gradient Overlay for better text anchoring */}
-            <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.98)_30%,rgba(10,15,25,0.8)_60%,rgba(10,15,25,0.3)_80%,rgba(10,15,25,0.05)_100%)]" />
+            {/* Hardened Gradient Mask for One-Glance Contrast */}
+            <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.98)_25%,rgba(10,15,25,0.85)_50%,rgba(10,15,25,0.2)_85%,rgba(10,15,25,0.05)_100%)]" />
         </div>
 
-        {/* Content Layer - v12.0 Elite Polished Build */}
+        {/* Content Layer - v12.5 Optimized For Fold Safety */}
         <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center">
-            <div className="max-w-4xl space-y-4 md:space-y-5">
+            <div className="max-w-3xl space-y-3 md:space-y-4">
                 <div className="space-y-2">
-                    <Badge variant="outline" className="text-white/60 border-white/10 py-0.5 px-3 uppercase tracking-[0.15em] font-black text-[8px] md:text-[9px] bg-white/5 rounded-none">
+                    <Badge variant="outline" className="text-white/50 border-white/10 py-0.5 px-2.5 uppercase tracking-[0.15em] font-black text-[8px] bg-white/5 rounded-none">
                         PRE-BUILT SOPs • READY IN 10 MINUTES • ZERO REPORTING
                     </Badge>
-                    <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-[5rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
+                    <h1 className="text-[2rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
                         STOP MANAGING. <br />
                         <span className="text-primary">START SEEING.</span>
                     </h1>
                 </div>
                 
-                <div className="space-y-4">
-                    <p className="text-sm md:text-2xl font-black text-primary uppercase tracking-tight italic leading-tight">
+                <div className="space-y-3">
+                    <p className="text-sm md:text-xl font-black text-primary uppercase tracking-tight italic leading-tight">
                         Your business runs itself — every single day.
                     </p>
                     
-                    {/* Differentiated Insight Box (Polish v12.0) */}
-                    <div className="space-y-3 border-l-2 border-primary/30 pl-6 py-1">
-                        <p className="text-sm md:text-xl font-black text-primary-text leading-tight uppercase tracking-tight">
+                    {/* Insight Block - Differentiated Hierarchy */}
+                    <div className="space-y-2 border-l-2 border-primary/30 pl-5 py-0.5">
+                        <p className="text-xs md:text-lg font-black text-primary-text leading-tight uppercase tracking-tight">
                             SOPs, daily tasks, and reporting — all in one system.
                         </p>
-                        <p className="text-xs md:text-lg text-secondary-text font-bold italic opacity-90 leading-snug">
+                        <p className="text-[10px] md:text-base text-secondary-text font-bold italic opacity-80 leading-snug">
                             Know exactly what’s happening — across every shift and branch.
                         </p>
                     </div>
                 </div>
 
-                <div className="pt-6 space-y-6"> {/* Increased gap to isolate CTA */}
-                    <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                        <Button size="lg" asChild className="group h-12 md:h-14 px-10 rounded-xl shadow-lg transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-[11px] md:text-xs tracking-[0.15em] w-full sm:w-auto border-none">
+                <div className="pt-2 md:pt-4 space-y-5">
+                    <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                        <Button size="lg" asChild className="group h-11 md:h-14 px-8 md:px-10 rounded-xl shadow-lg transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-[10px] md:text-xs tracking-[0.15em] w-full sm:w-auto border-none">
                             <Link href="/library" className="flex items-center justify-center">
                                 Get Your System <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                             </Link>
                         </Button>
-                        <Button size="lg" variant="outline" asChild className="h-12 md:h-14 px-10 rounded-xl border-white/20 text-white font-black uppercase text-[11px] md:text-xs tracking-[0.15em] hover:bg-white/10 w-full sm:w-auto">
+                        <Button size="lg" variant="outline" asChild className="h-11 md:h-14 px-8 md:px-10 rounded-xl border-white/20 text-white font-black uppercase text-[10px] md:text-xs tracking-[0.15em] hover:bg-white/10 w-full sm:w-auto">
                             <Link href="#how-it-works">See It In Action</Link>
                         </Button>
                     </div>
 
-                    <div className="space-y-4">
-                        {/* Upgraded Trust Strip with subtle UI capsules */}
-                        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <div className="space-y-3">
+                        {/* Compact Trust Capsules */}
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
                             {["No SaaS", "Own forever", "Fully editable", "Works with your team"].map(text => (
-                                <div key={text} className="flex items-center gap-2 px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/5">
-                                    <Check className="w-3 h-3 text-primary" />
-                                    <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white/80">{text}</span>
+                                <div key={text} className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/5">
+                                    <Check className="w-2.5 h-2.5 text-primary" />
+                                    <span className="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-white/70">{text}</span>
                                 </div>
                             ))}
                         </div>
                         
-                        <div className="space-y-2">
-                            <p className="text-[10px] md:text-xs font-bold text-white/70 uppercase tracking-wide italic flex items-center gap-2 drop-shadow-md">
-                                <Zap className="w-3.5 h-3.5 text-accent" />
-                                Runs on Excel / Google Sheets — so adoption is instant. No training required.
+                        <div className="space-y-1">
+                            <p className="text-[9px] md:text-xs font-bold text-white/60 uppercase tracking-wide italic flex items-center gap-2 drop-shadow-md">
+                                <Zap className="w-3 h-3 text-accent" />
+                                Runs on Excel / Google Sheets — so adoption is instant.
                             </p>
-                            {/* Power Line with subtle status glow */}
-                            <p className="text-[11px] md:text-sm font-black text-primary uppercase italic tracking-tighter drop-shadow-[0_0_8px_rgba(46,184,107,0.4)]">
+                            {/* Final Decision Anchor - Pulling higher for taskbar safety */}
+                            <p className="text-[10px] md:text-sm font-black text-primary uppercase italic tracking-tighter drop-shadow-[0_0_10px_rgba(46,184,107,0.3)]">
                                 Stop asking for updates. Start seeing everything.
                             </p>
                         </div>
