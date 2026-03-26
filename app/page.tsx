@@ -71,7 +71,7 @@ const HeroSection = () => (
                 loop
                 muted
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover contrast-[1.1] md:contrast-100 opacity-60 md:opacity-100"
+                className="absolute inset-0 w-full h-full object-cover contrast-[1.1] opacity-60 md:opacity-100"
             />
             {/* Hardened Gradient for One-Glance Contrast */}
             <div className="hidden md:block absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.95)_35%,rgba(10,15,25,0.5)_65%,rgba(10,15,25,0.1)_100%)]" />
@@ -80,11 +80,11 @@ const HeroSection = () => (
             <div className="md:hidden absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent z-15" />
         </div>
 
-        {/* Content Layer - Highly Compressed for One-Glance Fit */}
+        {/* Content Layer - Optimized for 10/10 Vision */}
         <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center py-2 md:py-0">
-            <div className="max-w-4xl space-y-2 md:space-y-3">
-                <div className="space-y-1">
-                    <Badge variant="outline" className="text-white/40 border-white/10 py-0.5 px-3 uppercase tracking-[0.15em] font-black text-[8px] md:text-[9px] bg-white/5 rounded-none whitespace-nowrap">
+            <div className="max-w-4xl space-y-3 md:space-y-4">
+                <div className="space-y-2 md:space-y-3">
+                    <Badge variant="outline" className="text-white/50 border-white/10 py-0.5 px-3 uppercase tracking-[0.15em] font-black text-[8px] md:text-[9px] bg-white/5 rounded-none whitespace-nowrap">
                         PRE-BUILT SOPs • READY IN 10 MINUTES • FULLY EDITABLE • ZERO REPORTING EFFORT
                     </Badge>
                     <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
@@ -93,25 +93,24 @@ const HeroSection = () => (
                     </h1>
                 </div>
                 
-                <div className="space-y-0.5">
+                <div className="space-y-1">
                     <p className="text-sm md:text-lg lg:text-xl font-black text-primary uppercase tracking-tight italic leading-tight">
                         A system that runs your business — every single day.
                     </p>
                     <p className="text-xs md:text-base lg:text-lg font-bold text-primary-text uppercase tracking-wide max-w-2xl leading-snug">
-                        Pre-built SOPs, daily execution, and automatic reporting — all running inside one system.
+                        Pre-built SOPs, daily tasks, and automatic reporting — in one system.
                     </p>
                 </div>
 
-                <div className="max-w-xl border-l border-primary/30 pl-4 py-1">
-                    <p className="text-[10px] md:text-xs lg:text-sm text-secondary-text leading-relaxed font-medium italic">
-                        MoreMeets™ turns your operations into a self-running system. <br className="hidden md:block" />
-                        No follow-ups. No manual reports. No dependency on key staff. <br className="hidden md:block" />
-                        Know exactly what’s happening — across every shift, every branch, instantly.
+                <div className="max-w-xl border-l-2 border-primary/30 pl-4 py-1">
+                    <p className="text-[11px] md:text-xs lg:text-sm text-secondary-text leading-relaxed font-medium italic">
+                        MoreMeets™ turns your operations into a self-running system.<br />
+                        No follow-ups. No manual reports. No dependency on key staff.
                     </p>
                 </div>
 
-                {/* Conversion Island - Tightly Grouped decision block */}
-                <div className="pt-1 space-y-3">
+                {/* Conversion Island - Tightly Grouped */}
+                <div className="pt-1 space-y-4">
                     <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
                         <Button size="lg" asChild className="group h-11 md:h-12 px-8 rounded-xl shadow-lg transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-[10px] md:text-xs tracking-widest w-full sm:w-auto border-none">
                             <Link href="/library" className="flex items-center justify-center">
@@ -124,27 +123,27 @@ const HeroSection = () => (
                         </Button>
                     </div>
 
-                    <div className="space-y-2">
-                        <p className="text-[10px] md:text-xs font-black text-accent uppercase tracking-[0.2em] italic">
+                    <div className="space-y-3">
+                        <p className="text-xs md:text-sm font-black text-accent uppercase tracking-[0.2em] italic">
                             Stop asking for updates. Start seeing reality.
                         </p>
 
-                        {/* Trust Strip & Technical Note */}
-                        <div className="space-y-1.5 pt-2 border-t border-white/10 w-fit">
-                            <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                        {/* Trust Strip & Technical Note - Hardened for Legibility */}
+                        <div className="space-y-2 pt-3 border-t border-white/10 w-fit">
+                            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                                 {[
                                     { t: "Ready in 10 minutes", i: CheckCircle },
                                     { t: "No SaaS. Own forever", i: Lock },
                                     { t: "Fully editable", i: History },
                                     { t: "Works with the team you have", i: Users }
                                 ].map(item => (
-                                    <div key={item.t} className="flex items-center gap-1.5">
-                                        <item.i className="w-3 h-3 text-primary" />
-                                        <span className="text-[8px] md:text-[9px] font-black uppercase tracking-wider text-white/40">{item.t}</span>
+                                    <div key={item.t} className="flex items-center gap-2">
+                                        <item.i className="w-3.5 h-3.5 text-primary" />
+                                        <span className="text-[9px] md:text-[10px] font-black uppercase tracking-wider text-white/70">{item.t}</span>
                                     </div>
                                 ))}
                             </div>
-                            <p className="text-[8px] md:text-[10px] font-bold text-white/20 uppercase tracking-[0.1em] pl-0.5 italic">
+                            <p className="text-[10px] md:text-xs font-bold text-white/50 uppercase tracking-[0.1em] pl-0.5 italic">
                                 Runs on Excel / Google Sheets — so adoption is instant. No training required.
                             </p>
                         </div>
@@ -454,13 +453,13 @@ const DeployRoadmapSection = () => (
                 </div>
                 <div className="grid md:grid-cols-3 gap-12">
                     {[
-                        { s: "01", s_text: "Setup Branches", d: "Open the file, name your locations, and toggle modules ON or OFF." },
-                        { s: "02", s_text: "Assign Your Team", d: "List your staff names in the Team Hub. Accountability is now personal." },
-                        { s: "03", s_text: "Start Command", d: "Open the console daily. See the 'Empire Mood' and shift progress live." }
+                        { s: "01", t: "Setup Branches", d: "Open the file, name your locations, and toggle modules ON or OFF." },
+                        { s: "02", t: "Assign Your Team", d: "List your staff names in the Team Hub. Accountability is now personal." },
+                        { s: "03", t: "Start Command", d: "Open the console daily. See the 'Empire Mood' and shift progress live." }
                     ].map(item => (
                         <div key={item.s} className="space-y-4">
                             <span className="text-6xl font-black text-primary/20 block leading-none">{item.s}</span>
-                            <h4 className="font-black uppercase text-primary italic text-lg">{item.s_text}</h4>
+                            <h4 className="font-black uppercase text-primary italic text-lg">{item.t}</h4>
                             <p className="text-sm text-secondary-text font-medium leading-relaxed italic">{item.d}</p>
                         </div>
                     ))}
