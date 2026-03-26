@@ -64,17 +64,18 @@ const HeroSection = () => (
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover contrast-[1.1] opacity-60"
             />
-            <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.95)_35%,rgba(10,15,25,0.4)_70%,rgba(10,15,25,0.1)_100%)]" />
+            {/* Deepened Gradient Overlay for better text anchoring */}
+            <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.98)_30%,rgba(10,15,25,0.8)_60%,rgba(10,15,25,0.3)_80%,rgba(10,15,25,0.05)_100%)]" />
         </div>
 
-        {/* Content Layer - v11.0 Elite Polished Build */}
+        {/* Content Layer - v12.0 Elite Polished Build */}
         <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center">
             <div className="max-w-4xl space-y-4 md:space-y-5">
                 <div className="space-y-2">
                     <Badge variant="outline" className="text-white/60 border-white/10 py-0.5 px-3 uppercase tracking-[0.15em] font-black text-[8px] md:text-[9px] bg-white/5 rounded-none">
                         PRE-BUILT SOPs • READY IN 10 MINUTES • ZERO REPORTING
                     </Badge>
-                    <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
+                    <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-[5rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
                         STOP MANAGING. <br />
                         <span className="text-primary">START SEEING.</span>
                     </h1>
@@ -85,17 +86,18 @@ const HeroSection = () => (
                         Your business runs itself — every single day.
                     </p>
                     
-                    <div className="space-y-2 border-l-2 border-primary/30 pl-6 py-1">
-                        <p className="text-sm md:text-xl font-bold text-primary-text leading-tight">
+                    {/* Differentiated Insight Box (Polish v12.0) */}
+                    <div className="space-y-3 border-l-2 border-primary/30 pl-6 py-1">
+                        <p className="text-sm md:text-xl font-black text-primary-text leading-tight uppercase tracking-tight">
                             SOPs, daily tasks, and reporting — all in one system.
                         </p>
-                        <p className="text-xs md:text-base text-secondary-text font-medium italic opacity-90">
+                        <p className="text-xs md:text-lg text-secondary-text font-bold italic opacity-90 leading-snug">
                             Know exactly what’s happening — across every shift and branch.
                         </p>
                     </div>
                 </div>
 
-                <div className="pt-2 space-y-5">
+                <div className="pt-6 space-y-6"> {/* Increased gap to isolate CTA */}
                     <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
                         <Button size="lg" asChild className="group h-12 md:h-14 px-10 rounded-xl shadow-lg transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-[11px] md:text-xs tracking-[0.15em] w-full sm:w-auto border-none">
                             <Link href="/library" className="flex items-center justify-center">
@@ -107,22 +109,24 @@ const HeroSection = () => (
                         </Button>
                     </div>
 
-                    <div className="space-y-3">
-                        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                    <div className="space-y-4">
+                        {/* Upgraded Trust Strip with subtle UI capsules */}
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                             {["No SaaS", "Own forever", "Fully editable", "Works with your team"].map(text => (
-                                <div key={text} className="flex items-center gap-2">
+                                <div key={text} className="flex items-center gap-2 px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/5">
                                     <Check className="w-3 h-3 text-primary" />
-                                    <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white/70">{text}</span>
+                                    <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white/80">{text}</span>
                                 </div>
                             ))}
                         </div>
                         
-                        <div className="space-y-1">
-                            <p className="text-[10px] md:text-xs font-bold text-white/60 uppercase tracking-wide italic flex items-center gap-2">
+                        <div className="space-y-2">
+                            <p className="text-[10px] md:text-xs font-bold text-white/70 uppercase tracking-wide italic flex items-center gap-2 drop-shadow-md">
                                 <Zap className="w-3.5 h-3.5 text-accent" />
                                 Runs on Excel / Google Sheets — so adoption is instant. No training required.
                             </p>
-                            <p className="text-[11px] md:text-sm font-black text-primary uppercase italic tracking-tighter">
+                            {/* Power Line with subtle status glow */}
+                            <p className="text-[11px] md:text-sm font-black text-primary uppercase italic tracking-tighter drop-shadow-[0_0_8px_rgba(46,184,107,0.4)]">
                                 Stop asking for updates. Start seeing everything.
                             </p>
                         </div>
