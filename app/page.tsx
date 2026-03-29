@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -64,72 +63,63 @@ const HeroSection = () => (
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover contrast-[1.1] opacity-60"
             />
-            {/* Hardened Gradient Mask for One-Glance Contrast */}
             <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.98)_25%,rgba(10,15,25,0.85)_50%,rgba(10,15,25,0.2)_85%,rgba(10,15,25,0.05)_100%)]" />
         </div>
 
-        {/* Content Layer - v13.0 Ultimate Fold-Safe Compression */}
+        {/* Content Layer - v14.0 High-Conversion Build */}
         <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center">
             <div className="max-w-3xl space-y-3 md:space-y-4">
                 <div className="space-y-2">
-                    <Badge variant="outline" className="text-white/50 border-white/10 py-0.5 px-2.5 uppercase tracking-[0.15em] font-black text-[8px] bg-white/5 rounded-none">
-                        PRE-BUILT SOPs • READY IN 10 MINUTES • ZERO REPORTING
+                    <Badge variant="outline" className="text-accent border-accent/30 py-0.5 px-3 uppercase tracking-[0.2em] font-black text-[8px] bg-accent/5 rounded-none">
+                        V4.5 SOVEREIGN LAUNCH OFFER • 90% OFF
                     </Badge>
-                    <h1 className="text-[1.75rem] sm:text-4xl md:text-5xl lg:text-[3.75rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
-                        STOP MANAGING. <br />
+                    <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
+                        STOP CHASING. <br />
                         <span className="text-primary">START SEEING.</span>
                     </h1>
                 </div>
                 
-                <div className="space-y-2.5">
+                <div className="space-y-3">
                     <p className="text-sm md:text-xl font-black text-primary uppercase tracking-tight italic leading-tight">
-                        Your business runs itself — every single day.
+                        The only way to run your business without being there.
                     </p>
                     
-                    {/* Insight Block - Compressed Vertical Footprint */}
-                    <div className="space-y-1.5 border-l-2 border-primary/30 pl-5 py-0.5">
-                        <p className="text-xs md:text-lg font-black text-primary-text leading-tight uppercase tracking-tight">
-                            SOPs, daily tasks, and reporting — in one system.
-                        </p>
-                        <p className="text-[10px] md:text-base text-secondary-text font-bold italic opacity-80 leading-snug">
-                            Know exactly what’s happening — across every shift.
+                    <p className="text-[10px] md:text-base text-secondary-text font-bold italic opacity-60 max-w-xl">
+                        Pre-built, compliant SOPs with built-in execution and visibility.
+                    </p>
+
+                    <div className="py-2 border-y border-white/5 w-fit">
+                        <p className="text-xs md:text-lg font-black text-primary-text uppercase italic tracking-tighter">
+                            Know what’s done. What’s missed. What’s delayed— <br className="hidden md:block"/>
+                            <span className="text-primary font-bold lowercase">without asking anyone.</span>
                         </p>
                     </div>
                 </div>
 
-                <div className="pt-1.5 md:pt-2 space-y-4">
-                    <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full sm:w-auto">
-                        <Button size="lg" asChild className="group h-10 md:h-12 px-8 md:px-10 rounded-xl shadow-lg transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-[10px] md:text-xs tracking-[0.15em] w-full sm:w-auto border-none">
-                            <Link href="/library" className="flex items-center justify-center">
-                                Get Your System <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                            </Link>
-                        </Button>
-                        <Button size="lg" variant="outline" asChild className="h-10 md:h-12 px-8 md:px-10 rounded-xl border-white/20 text-white font-black uppercase text-[10px] md:text-xs tracking-[0.15em] hover:bg-white/10 w-full sm:w-auto">
+                <div className="pt-2 space-y-4">
+                    <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                        <div className="flex flex-col gap-1 w-full sm:w-auto">
+                            <Button size="lg" asChild className="group h-12 md:h-14 px-8 md:px-12 rounded-xl shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-xs md:text-sm tracking-[0.1em] border-none">
+                                <Link href="/library" className="flex items-center justify-center">
+                                    GET YOUR SYSTEM — ₹799 / $9 USD <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                </Link>
+                            </Button>
+                            <p className="text-[9px] md:text-[10px] text-white/30 uppercase tracking-widest font-black text-center italic">
+                                Professional Grade: <span className="line-through">₹9,999 ($120)</span> • One-time purchase
+                            </p>
+                        </div>
+                        <Button size="lg" variant="outline" asChild className="h-12 md:h-14 px-8 rounded-xl border-white/10 text-white/60 font-black uppercase text-xs tracking-widest hover:bg-white/5 w-full sm:w-auto">
                             <Link href="#how-it-works">See Action</Link>
                         </Button>
                     </div>
 
-                    <div className="space-y-3">
-                        {/* Compact Trust Capsules */}
-                        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
-                            {["No SaaS", "Own forever", "Fully editable", "Start instantly"].map(text => (
-                                <div key={text} className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/5">
-                                    <Check className="w-2.5 h-2.5 text-primary" />
-                                    <span className="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-white/70">{text}</span>
-                                </div>
-                            ))}
-                        </div>
-                        
-                        <div className="space-y-1">
-                            <p className="text-[9px] md:text-xs font-bold text-white/60 uppercase tracking-wide italic flex items-center gap-2 drop-shadow-md">
-                                <Zap className="w-3 h-3 text-accent" />
-                                Runs on Excel / Google Sheets — so adoption is instant.
-                            </p>
-                            {/* Final Decision Anchor - Fold Safety v13.0 */}
-                            <p className="text-[10px] md:text-sm font-black text-primary uppercase italic tracking-tighter drop-shadow-[0_0_10px_rgba(46,184,107,0.3)]">
-                                Stop asking for updates. Start seeing everything.
-                            </p>
-                        </div>
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2">
+                        {["Own Forever", "No SaaS", "Works with Your Team", "Trainer Notes Included"].map(text => (
+                            <div key={text} className="flex items-center gap-1.5">
+                                <Check className="w-3 h-3 text-primary" />
+                                <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.1em] text-white/40">{text}</span>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -175,9 +165,9 @@ const SOPAdvantageSection = () => (
                 </div>
                 <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
                     {[
-                        { t: "World-class SOPs", d: "Industry-grade protocols built-in.", i: Globe },
+                        { t: "Operational Modules", d: "Industry-grade protocols built-in.", i: Globe },
                         { t: "Audit-Ready", d: "Mapped to ISO, HACCP, OSHA.", i: ShieldCheck },
-                        { t: "Multi-Cycle Logic", d: "Daily, weekly, monthly systems.", i: Timer },
+                        { t: "Execution Protocols", d: "Daily, weekly, monthly systems.", i: Timer },
                         { t: "100% Editable", d: "Adapt to your brand instantly.", i: LayoutGrid }
                     ].map(item => (
                         <div key={item.t} className="flex items-start gap-4">
@@ -200,7 +190,7 @@ const SOPAdvantageSection = () => (
                         <div className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
                         <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/40" />
                         <div className="w-2.5 h-2.5 rounded-full bg-green-500/40" />
-                        <span className="text-[10px] font-black uppercase text-white/20 tracking-widest ml-4 italic">Sovereign_OS_v4.4.xlsx</span>
+                        <span className="text-[10px] font-black uppercase text-white/20 tracking-widest ml-4 italic">Sovereign_OS_v4.5.xlsx</span>
                     </div>
                     <img 
                         src="https://i.postimg.cc/mr5tRpPV/Screenshot-2026-03-18-124944.png" 

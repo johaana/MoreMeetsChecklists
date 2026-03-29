@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -265,7 +264,7 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
                 </p>
                 {!isEmptyPack && (
                   <div className="text-xs md:text-sm font-black uppercase tracking-[0.1em] text-white/40 flex items-center gap-2">
-                    <span className="text-primary">{totalChecklists} MODULES</span>
+                    <span className="text-primary">{totalChecklists} OPERATIONAL MODULES</span>
                     <span className="w-1 h-1 rounded-full bg-white/20" />
                     <span className="text-primary">{totalTasks}+ TECHNICAL CONTROL POINTS</span>
                   </div>

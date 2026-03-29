@@ -9,7 +9,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
  * UI: Full-sheet Midnight Navy Console, Zero-Clipping Footer.
  * FIX: Pipe-delimited Staff Keys, Correct Branch Indexing, Privacy Wipe.
  * UI FIX: High-contrast Manager Verification Targets.
- * FORMULA FIX: Hardened Mode logic for Summary Dashboards.
+ * FORMULA FIX: Hardened frequency logic for "Today's Star" and "Top Branch".
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -37,7 +37,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         INPUT_ZONE: "FEFCE8",
         CONSOLE_BG: "0A0F19",
         CHAMBER_BG: "111827",
-        MGR_TARGET: "FDE68A", // Hardened Golden Target
+        MGR_TARGET: "FDE68A", 
         INACTIVE_GREY: "F1F5F9",
         GHOST_GREY: "F9FAFB",
         BADGE_GREEN: "065F46",
@@ -159,7 +159,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
-    // --- formulas ---
+    // --- SOVEREIGN FORMULAS v4.5 ---
     const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!$G$5:$G$2000,MATCH(MAX(INDEX(COUNTIF('TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000),0)),INDEX(COUNTIF('TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000),0),0)),"---")`;
     const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!$B$5:$B$2000,MATCH(MAX(INDEX(COUNTIF('TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000),0)),INDEX(COUNTIF('TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000),0),0)),"---")`;
     const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "<>N/A*", 'TODAYS_TASKS'!$F$5:$F$2000, "<>", 'TODAYS_TASKS'!$F$5:$F$2000, "<>Mission Requirement*")), 0)`;
@@ -241,8 +241,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { s: { r: 18, c: 1 }, e: { r: 18, c: 6 } }
     ];
     
-    for (let R = 0; R < 100; R++) {
-        for (let C = 0; C < 26; C++) {
+    // Fill background for full console look
+    for (let R = 0; R < 50; R++) {
+        for (let C = 0; C < 10; C++) {
             const cell = utils.encode_cell({ r: R, c: C });
             if (!homeWs[cell]) {
                 homeWs[cell] = { v: "", s: { fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } };
@@ -348,7 +349,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`, s: dataStyleCenter },
                 { v: (bId === 1 && rIdx === 0) ? "Imran Khan (Sample)" : "[Type Staff Name]", s: inputStyle }, 
                 { v: role, s: dataStyleLeft },
-                { v: "", s: inputStyle }, // Contact removed for privacy
+                { v: "", s: inputStyle }, 
                 { v: "ACTIVE", s: dataStyleCenter }
             ]);
         });
@@ -358,19 +359,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(pWs, "Team & Role Assignments", 'F');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- 09. ROI ENGINE ---
-    const rData = [
-        [], [], [], 
-        [{v:"Operational Risk Category", s:headerStyle}, {v:"Cost per Failure", s:headerStyle}, {v:"Incident Count (Linked)", s:headerStyle}, {v:"Projected Loss Avoided", s:headerStyle}, {v:"Governance Status", s:headerStyle}],
-        [{v:"Major Food Poisoning Incident", s:dataStyleLeft}, {v: 500000, s: { ...inputStyle, font: monoFont } }, { t:'f', f: `COUNTIFS('INCIDENT_LOG'!$D$5:$D$1000, "*Food*")`, s: { ...dataStyleCenter, font: monoFont } }, { t:'f', f:'B6*(10-C6)', s: { ...dataStyleCenter, font: monoFont } }, {v:"SECURED", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [{v:"Employee Fraud / Theft", s:dataStyleLeft}, {v: 150000, s: { ...inputStyle, font: monoFont } }, { t:'f', f: `COUNTIFS('INCIDENT_LOG'!$D$5:$D$1000, "*Theft*")`, s: { ...dataStyleCenter, font: monoFont } }, { t:'f', f:'B7*(10-C7)', s: { ...dataStyleCenter, font: monoFont } }, {v:"ACTIVE AUDIT", s: { ...dataStyleCenter, font: { color: { rgb: COLORS.ACCENT_GOLD } } } }]
-    ];
-    const rWs = utils.aoa_to_sheet(rData);
-    rWs['!cols'] = [40, 25, 25, 25, 20].map(w => ({ wch: w }));
-    addSovereignRibbon(rWs, "ROI & Risk Mitigation Engine", 'E');
-    utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
-
     const simpleSheets = [
+        { n: "ROI_ENGINE", t: "ROI & Risk Mitigation Engine" },
         { n: "INCIDENT_LOG", t: "Liability & Incident Log" },
         { n: "SHIFT_HANDOVER", t: "Shift Handover Bridge" },
         { n: "SOP_LIBRARY", t: "Institutional SOP Database" },
