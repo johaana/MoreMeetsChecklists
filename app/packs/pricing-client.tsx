@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -89,31 +88,31 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
 
 function getIndustryWording(packId: string): string {
     const map: Record<string, string> = {
-        'hotels_and_resorts': 'Hospitality Operations Checklists',
-        'restaurants': 'Restaurant Operations Checklists',
-        'fashion_and_apparel_retail': 'Apparel Retail Checklists',
-        'jewelry_and_luxury_retail': 'High-Value Retail Checklists',
-        'electronics_showroom_pack': 'Showroom & Asset Protection Checklists',
-        'supermarket_grocery_retail_pack': 'Grocery Retail Checklists',
-        'facility_management_blueprint': 'Facility Control Framework',
-        'corporate_legal_compliance_starter_kit': 'Corporate Governance Framework',
-        'enterprise_risk_cybersecurity_pack': 'Risk & Security Checklists',
-        'healthcare_and_hospital_operations': 'Clinical & Safety Checklists',
-        'school_operations_pack': 'School Safety & Operations Checklists',
-        'university_college_ops': 'Higher-Ed Operations Checklists',
-        'manufacturing_operations_ehs_pack': 'Safety & EHS Checklists',
-        'food_manufacturing_ops': 'Food Safety & Manufacturing Checklists',
-        'logistics_warehouse_pack': 'Warehouse & Logistics Checklists',
-        'franchise_operations_pack': 'Franchise Performance Checklists',
-        'film_production_pack': 'Film & Production Checklists',
-        'ott_platform_pack': 'Streaming & Platform Control Checklists',
-        'sports_clubs_stadium_operations_pack': 'Sports & Stadium Operations Checklists',
-        'cinema_operations_pack': 'Cinema Operations Checklists',
-        'theme_park_ops_pack': 'Theme Park Safety Checklists',
-        'bakery_confectionery_pack': 'Bakery & Confectionery Checklists',
-        'animal_shelter_pack': 'Animal Welfare & Operations Checklists',
+        'hotels_and_resorts': 'Hospitality Operational Modules',
+        'restaurants': 'Restaurant Operational Modules',
+        'fashion_and_apparel_retail': 'Apparel Retail Modules',
+        'jewelry_and_luxury_retail': 'High-Value Retail Modules',
+        'electronics_showroom_pack': 'Showroom Operational Modules',
+        'supermarket_grocery_retail_pack': 'Grocery Retail Modules',
+        'facility_management_blueprint': 'Facility Control Modules',
+        'corporate_legal_compliance_starter_kit': 'Corporate Governance Modules',
+        'enterprise_risk_cybersecurity_pack': 'Risk & Security Modules',
+        'healthcare_and_hospital_operations': 'Clinical Operational Modules',
+        'school_operations_pack': 'School Safety Modules',
+        'university_college_ops': 'Higher-Ed Operational Modules',
+        'manufacturing_operations_ehs_pack': 'Safety & EHS Modules',
+        'food_manufacturing_ops': 'Food Safety Modules',
+        'logistics_warehouse_pack': 'Warehouse & Logistics Modules',
+        'franchise_operations_pack': 'Franchise Performance Modules',
+        'film_production_pack': 'Film & Production Modules',
+        'ott_platform_pack': 'Streaming Control Modules',
+        'sports_clubs_stadium_operations_pack': 'Sports Operations Modules',
+        'cinema_operations_pack': 'Cinema Operations Modules',
+        'theme_park_ops_pack': 'Theme Park Safety Modules',
+        'bakery_confectionery_pack': 'Bakery & Confectionery Modules',
+        'animal_shelter_pack': 'Animal Welfare Modules',
     };
-    return map[packId] || 'Operational Checklists';
+    return map[packId] || 'Operational Modules';
 }
 
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
@@ -151,7 +150,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </CardHeader>
                             <CardContent className="flex-1 p-6 text-center">
                                 <ul className="space-y-4 text-muted-foreground text-sm flex flex-col items-center">
-                                    <li className="flex items-start"><Check className="h-5 w-5 mr-3 mt-0.5 shrink-0 text-primary"/><span>Complete pack with all {totalChecklists} checklists.</span></li>
+                                    <li className="flex items-start"><Check className="h-5 w-5 mr-3 mt-0.5 shrink-0 text-primary"/><span>Complete pack with all {totalChecklists} modules.</span></li>
                                     <li className="flex items-start"><Check className="h-5 w-5 mr-3 mt-0.5 shrink-0 text-primary"/><span>Fully editable Excel format.</span></li>
                                 </ul>
                             </CardContent>
@@ -201,7 +200,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </div>
                             
                             <div className="w-full flex flex-col items-center gap-4">
-                                <Badge variant="outline" className="text-[10px] font-black border-primary/30 text-primary uppercase tracking-[0.2em] rounded-none px-4 py-1">Resolution Protocol</Badge>
+                                <Badge variant="outline" className="text-accent border-accent/30 text-accent uppercase tracking-[0.2em] rounded-none px-4 py-1">V4.5 SOVEREIGN LAUNCH OFFER • 90% OFF</Badge>
                                 <h2 className="text-[1.3rem] sm:text-3xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-[1.1]">
                                     ELIMINATE OPERATIONAL RISK
                                 </h2>
@@ -216,7 +215,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <div className="space-y-8">
                                 <div className="flex flex-col items-center gap-1">
                                     <p className="text-xl md:text-2xl font-black text-primary-text tracking-tight uppercase leading-tight">
-                                        {totalChecklists} {industryWording} · {totalTasks}+ Tasks
+                                        {totalChecklists} {industryWording} · {totalTasks}+ Control Points
                                     </p>
                                     <p className="text-xs text-secondary-text italic font-medium">Complete Operational Payload</p>
                                 </div>
@@ -233,9 +232,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <div className="space-y-2 mb-8">
                                     <div className="flex items-center justify-center gap-4 mb-4">
                                         <div className="text-left">
-                                            <p className="text-[10px] font-black uppercase text-white/20">Typical Consulting</p>
+                                            <p className="text-[10px] font-black uppercase text-white/20">Professional Grade</p>
                                             <p className="text-sm font-bold text-white/40 line-through">
-                                                {region === 'INDIA' ? '₹4,00,000+' : `$${pack.consultingAnchor || 5000}+`}
+                                                {region === 'INDIA' ? '₹9,999+' : `$${pack.consultingAnchor || 120}+`}
                                             </p>
                                         </div>
                                         <div className="w-px h-8 bg-white/5" />
@@ -271,7 +270,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                                 className="w-full h-14 bg-primary text-black font-black text-base rounded-[10px] shadow-md hover:shadow-xl hover:brightness-105 transition-all border-none relative z-10 px-8"
                                             >
                                                 <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center justify-center">
-                                                    Buy Once - ${pack.priceUSD} <ArrowRight className="ml-2 h-5 w-5"/>
+                                                    GET YOUR SYSTEM — ${pack.priceUSD} <ArrowRight className="ml-2 h-5 w-5"/>
                                                 </Link>
                                             </Button>
                                         )}

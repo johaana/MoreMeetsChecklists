@@ -66,40 +66,40 @@ const HeroSection = () => (
             <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.98)_25%,rgba(10,15,25,0.85)_50%,rgba(10,15,25,0.2)_85%,rgba(10,15,25,0.05)_100%)]" />
         </div>
 
-        {/* Content Layer - v14.0 High-Conversion Build */}
+        {/* Content Layer - v4.5 Zero-Noise Build */}
         <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center">
-            <div className="max-w-3xl space-y-3 md:space-y-4">
-                <div className="space-y-2">
+            <div className="max-w-3xl space-y-4">
+                <div className="space-y-3">
                     <Badge variant="outline" className="text-accent border-accent/30 py-0.5 px-3 uppercase tracking-[0.2em] font-black text-[8px] bg-accent/5 rounded-none">
                         V4.5 SOVEREIGN LAUNCH OFFER • 90% OFF
                     </Badge>
-                    <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
+                    <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
                         STOP CHASING. <br />
                         <span className="text-primary">START SEEING.</span>
                     </h1>
                 </div>
                 
-                <div className="space-y-3">
-                    <p className="text-sm md:text-xl font-black text-primary uppercase tracking-tight italic leading-tight">
+                <div className="space-y-4">
+                    <p className="text-sm md:text-xl font-black text-primary-text/90 uppercase tracking-tight italic leading-tight">
                         The only way to run your business without being there.
                     </p>
                     
-                    <p className="text-[10px] md:text-base text-secondary-text font-bold italic opacity-60 max-w-xl">
+                    <p className="text-xs md:text-base text-secondary-text font-medium italic opacity-60 max-w-xl">
                         Pre-built, compliant SOPs with built-in execution and visibility.
                     </p>
 
-                    <div className="py-2 border-y border-white/5 w-fit">
-                        <p className="text-xs md:text-lg font-black text-primary-text uppercase italic tracking-tighter">
-                            Know what’s done. What’s missed. What’s delayed— <br className="hidden md:block"/>
+                    <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 w-fit shadow-2xl backdrop-blur-sm">
+                        <p className="text-sm md:text-xl font-black text-primary-text uppercase italic tracking-tighter">
+                            Know what’s done. What’s missed. What’s delayed— <br />
                             <span className="text-primary font-bold lowercase">without asking anyone.</span>
                         </p>
                     </div>
                 </div>
 
-                <div className="pt-2 space-y-4">
-                    <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                <div className="pt-4 space-y-4">
+                    <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
                         <div className="flex flex-col gap-1 w-full sm:w-auto">
-                            <Button size="lg" asChild className="group h-12 md:h-14 px-8 md:px-12 rounded-xl shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-xs md:text-sm tracking-[0.1em] border-none">
+                            <Button size="lg" asChild className="group h-12 md:h-16 px-8 md:px-12 rounded-xl shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-sm md:text-base tracking-[0.1em] border-none">
                                 <Link href="/library" className="flex items-center justify-center">
                                     GET YOUR SYSTEM — ₹799 / $9 USD <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                                 </Link>
@@ -108,16 +108,21 @@ const HeroSection = () => (
                                 Professional Grade: <span className="line-through">₹9,999 ($120)</span> • One-time purchase
                             </p>
                         </div>
-                        <Button size="lg" variant="outline" asChild className="h-12 md:h-14 px-8 rounded-xl border-white/10 text-white/60 font-black uppercase text-xs tracking-widest hover:bg-white/5 w-full sm:w-auto">
+                        <Button size="lg" variant="outline" asChild className="h-12 md:h-16 px-8 rounded-xl border-white/10 text-white/60 font-black uppercase text-xs tracking-widest hover:bg-white/5 w-full sm:w-auto">
                             <Link href="#how-it-works">See Action</Link>
                         </Button>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2">
-                        {["Own Forever", "No SaaS", "Works with Your Team", "Trainer Notes Included"].map(text => (
-                            <div key={text} className="flex items-center gap-1.5">
-                                <Check className="w-3 h-3 text-primary" />
-                                <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.1em] text-white/40">{text}</span>
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-2">
+                        {[
+                            { text: "Own Forever", icon: Infinity },
+                            { text: "No SaaS", icon: Lock },
+                            { text: "Works with Your Team", icon: Users },
+                            { text: "Trainer Notes Included", icon: GraduationCap }
+                        ].map(item => (
+                            <div key={item.text} className="flex items-center gap-1.5">
+                                <item.icon className="w-3.5 h-3.5 text-primary/60" />
+                                <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.1em] text-white/40">{item.text}</span>
                             </div>
                         ))}
                     </div>

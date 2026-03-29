@@ -65,7 +65,7 @@ const ProductArchitectureSection = () => (
                         {[
                             { t: "Live Status Trigger", d: "Status columns (COMPLETED/AWAITING MGR) update instantly based on staff inputs.", i: Zap },
                             { t: "The 'Yellow Target' Rule", d: "Managers only focus on highlighted high-risk points. No time wasted on routine ticks.", i: Target },
-                            { t: "Institutional Memory", d: "Trainer notes and consequences are embedded into every task to coach staff automatically.", i: Laptop }
+                            { t: "Institutional Memory", d: "Trainer notes and consequences are embedded into every control point to coach staff automatically.", i: Laptop }
                         ].map(item => (
                             <div key={item.t} className="flex gap-4">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0">
@@ -145,7 +145,7 @@ const ComparisonSection = () => (
                     </h3>
                     <ul className="space-y-6">
                         {[
-                            { t: "Staff forgets tasks", d: "Standards are just suggestions until they are signed." },
+                            { t: "Staff forgets steps", d: "Standards are just suggestions until they are signed." },
                             { t: "You chase staff", d: "Managers spend hours daily following up on basic duties." },
                             { t: "No visibility", d: "Failures are only noticed when a guest complains." },
                             { t: "Problems caught late", d: "Profit leaks are hidden in daily inefficiencies." }
@@ -164,7 +164,7 @@ const ComparisonSection = () => (
                     </h3>
                     <ul className="space-y-6">
                         {[
-                            { t: "Tasks tracked daily", d: "Every step is signed off. Discipline becomes mandatory." },
+                            { t: "Modules tracked daily", d: "Every step is signed off. Discipline becomes mandatory." },
                             { t: "You see updates instantly", d: "Know exactly who is performing in 5 seconds." },
                             { t: "Full Executive Clarity", d: "Knowledge stays with the business if staff leave." },
                             { t: "Problems caught early", d: "The system flags errors before they cost money." }
@@ -263,7 +263,7 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
                   {pack.heroSubheadline || pack.description}
                 </p>
                 {!isEmptyPack && (
-                  <div className="text-xs md:text-sm font-black uppercase tracking-[0.1em] text-white/40 flex items-center gap-2">
+                  <div className="text-xs md:sm font-black uppercase tracking-[0.1em] text-white/40 flex items-center gap-2">
                     <span className="text-primary">{totalChecklists} OPERATIONAL MODULES</span>
                     <span className="w-1 h-1 rounded-full bg-white/20" />
                     <span className="text-primary">{totalTasks}+ TECHNICAL CONTROL POINTS</span>
