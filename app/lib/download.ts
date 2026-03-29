@@ -6,10 +6,10 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v4.4 - MASTER BUILD
+ * Sovereign Engine v4.5 - HARDENED GOVERNANCE BUILD
  * UI: Full-sheet Midnight Navy Console, Zero-Clipping Footer.
- * Hardening: Zebra-striping, Linked ROI, Header Ribbon Continuity.
- * FIX: Safe style application to prevent cell-access crashes.
+ * FIX: Pipe-delimited Staff Keys, Correct Branch Indexing, Privacy Wipe.
+ * UI FIX: High-contrast Manager Verification Targets.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -21,7 +21,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-MASTER-SOVEREIGN-4.4";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-4.5";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -37,7 +37,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         INPUT_ZONE: "FEFCE8",
         CONSOLE_BG: "0A0F19",
         CHAMBER_BG: "111827",
-        MGR_YELLOW: "FEF9C3",
+        MGR_TARGET: "FDE68A", // Hardened Golden Target
         INACTIVE_GREY: "F1F5F9",
         GHOST_GREY: "F9FAFB",
         BADGE_GREEN: "065F46",
@@ -170,7 +170,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { ...headerBaseStyle, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v4.4 | Sovereign Master`, s: { ...headerBaseStyle, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v4.5 | Sovereign Master`, s: { ...headerBaseStyle, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { ...headerBaseStyle, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -241,14 +241,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { s: { r: 18, c: 1 }, e: { r: 18, c: 6 } }
     ];
     
-    // SAFE STYLE APPLICATION LOOP
     for (let R = 0; R < 100; R++) {
         for (let C = 0; C < 26; C++) {
             const cell = utils.encode_cell({ r: R, c: C });
             if (!homeWs[cell]) {
                 homeWs[cell] = { v: "", s: { fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } };
             } else {
-                // Ensure s and fill exist before attempting to set
                 if (!homeWs[cell].s) homeWs[cell].s = {};
                 if (!homeWs[cell].s.fill) homeWs[cell].s.fill = { fgColor: { rgb: COLORS.NAVY_DEEP } };
             }
@@ -266,7 +264,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         facilityHeaders,
         [{ v: "1", s: dataStyleCenter }, { v: "Bandra Main (Sample)", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
         [{ v: "2", s: dataStyleCenter }, { v: "Colaba West (Sample)", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
-        [{ v: "3", s: dataStyleCenter }, { v: "", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))]
+        [{ v: "3", s: dataStyleCenter }, { v: "Andheri East (Sample)", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
+        [{ v: "4", s: dataStyleCenter }, { v: "", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
+        [{ v: "5", s: dataStyleCenter }, { v: "", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))]
     ];
     const setupWs = utils.aoa_to_sheet(branchSetupData);
     setupWs['!cols'] = [12, 35, ...packChecklists.map(() => 15)].map(w => ({ wch: w }));
@@ -286,12 +286,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const mData: any[][] = [[], [], [], mHeaders];
     
     let logicalIdx = 0;
-    [1, 2].forEach(bCode => {
+    [1, 2, 3].forEach(bCode => {
         packChecklists.forEach((c) => {
             c.tasks.forEach(t => {
                 const rowIdx = mData.length + 1;
                 const statusFormula = `IF(LEN(TRIM(G${rowIdx}))=0, "PENDING", IF(AND(LEN(TRIM(H${rowIdx}))=0, H${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
-                const personFormula = `IFERROR(VLOOKUP(B${rowIdx}&C${rowIdx}, 'TEAM_HUB'!A:D, 3, FALSE), "[UNASSIGNED]")`;
+                const personFormula = `IFERROR(VLOOKUP(B${rowIdx} & "|" & C${rowIdx}, 'TEAM_HUB'!A:D, 3, FALSE), "[UNASSIGNED]")`;
                 
                 const baseStyle = logicalIdx % 2 === 0 ? dataStyleCenter : { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.GHOST_GREY } } };
                 const baseStyleLeft = logicalIdx % 2 === 0 ? dataStyleLeft : { ...dataStyleLeft, fill: { fgColor: { rgb: COLORS.GHOST_GREY } } };
@@ -299,13 +299,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
                 mData.push([
                     { v: startDate, t: 'd', s: { ...baseStyle, numFmt: 'dd-mm-yyyy' } },
-                    { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode}+1), "Branch ${bCode}")`, s: baseStyle },
+                    { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode}), "Branch ${bCode}")`, s: baseStyle },
                     { v: c.role, s: baseStyle },
                     { t: 'f', f: personFormula, s: baseStyle },
                     { v: t.id, s: baseStyle },
                     { v: t.description, s: baseStyleLeft },
                     { v: logicalIdx < 2 ? "IK" : "", s: zebraInput }, 
-                    { v: t.priority === 'High' ? "" : "N/A", s: t.priority === 'High' ? { ...zebraInput, fill: { fgColor: COLORS.MGR_YELLOW } } : baseStyle },
+                    { v: t.priority === 'High' ? "" : "N/A", s: t.priority === 'High' ? { ...zebraInput, fill: { fgColor: COLORS.MGR_TARGET }, font: { ...baseFont, bold: true, color: { rgb: COLORS.INK_DARK } } } : baseStyle },
                     { t: 'f', f: statusFormula, s: { ...baseStyle, font: { bold: true, color: { rgb: COLORS.BADGE_GREEN } } } },
                     { v: c.frequency, s: baseStyle },
                     { v: t.priority, s: baseStyle },
@@ -340,15 +340,15 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const pData: any[][] = [[], [], [], pHeaders];
     const allRoles = Array.from(new Set(packChecklists.map(c => c.role)));
     
-    [1, 2].forEach(bId => {
+    [1, 2, 3, 4, 5].forEach(bId => {
         allRoles.forEach((role, rIdx) => {
             const rowIdx = pData.length + 1;
             pData.push([
-                { t: 'f', f: `B${rowIdx}&D${rowIdx}`, s: dataStyleCenter },
-                { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}+1), "Branch ${bId}")`, s: dataStyleCenter },
-                { v: rIdx === 0 ? "Imran Khan (Sample)" : "[Type Staff Name]", s: inputStyle }, 
+                { t: 'f', f: `B${rowIdx} & "|" & D${rowIdx}`, s: dataStyleCenter },
+                { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`, s: dataStyleCenter },
+                { v: (bId === 1 && rIdx === 0) ? "Imran Khan (Sample)" : "[Type Staff Name]", s: inputStyle }, 
                 { v: role, s: dataStyleLeft },
-                { v: "9860997711", s: inputStyle },
+                { v: "", s: inputStyle }, // Contact removed for privacy
                 { v: "ACTIVE", s: dataStyleCenter }
             ]);
         });
@@ -370,7 +370,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(rWs, "ROI & Risk Mitigation Engine", 'E');
     utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
 
-    // --- SUB-SHEETS ---
     const simpleSheets = [
         { n: "INCIDENT_LOG", t: "Liability & Incident Log" },
         { n: "SHIFT_HANDOVER", t: "Shift Handover Bridge" },
@@ -384,5 +383,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         utils.book_append_sheet(wb, ws, s.n);
     });
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_4.4.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_4.5.xlsx`);
 }
