@@ -1,4 +1,3 @@
-
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
@@ -10,6 +9,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
  * UI: Full-sheet Midnight Navy Console, Zero-Clipping Footer.
  * FIX: Pipe-delimited Staff Keys, Correct Branch Indexing, Privacy Wipe.
  * UI FIX: High-contrast Manager Verification Targets.
+ * FORMULA FIX: Hardened Mode logic for Summary Dashboards.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -160,8 +160,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
 
     // --- formulas ---
-    const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!$G$5:$G$2000, MATCH(MAX(COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "<>", 'TODAYS_TASKS'!$G$5:$G$2000, 'TODAYS_TASKS'!$G$5:$G$2000)), COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "<>", 'TODAYS_TASKS'!$G$5:$G$2000, 'TODAYS_TASKS'!$G$5:$G$2000), 0)), "---")`;
-    const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!$B$5:$B$2000, MATCH(MAX(COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, "<>", 'TODAYS_TASKS'!$B$5:$B$2000, 'TODAYS_TASKS'!$B$5:$B$2000)), COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, "<>", 'TODAYS_TASKS'!$B$5:$B$2000, 'TODAYS_TASKS'!$B$5:$B$2000), 0)), "---")`;
+    const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!$G$5:$G$2000,MATCH(MAX(INDEX(COUNTIF('TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000),0)),INDEX(COUNTIF('TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000),0),0)),"---")`;
+    const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!$B$5:$B$2000,MATCH(MAX(INDEX(COUNTIF('TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000),0)),INDEX(COUNTIF('TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000),0),0)),"---")`;
     const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "<>N/A*", 'TODAYS_TASKS'!$F$5:$F$2000, "<>", 'TODAYS_TASKS'!$F$5:$F$2000, "<>Mission Requirement*")), 0)`;
     const taskVolumeFormula = `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "?*")`;
 
@@ -286,7 +286,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const mData: any[][] = [[], [], [], mHeaders];
     
     let logicalIdx = 0;
-    [1, 2, 3].forEach(bCode => {
+    [1, 2, 3, 4, 5].forEach(bCode => {
         packChecklists.forEach((c) => {
             c.tasks.forEach(t => {
                 const rowIdx = mData.length + 1;
