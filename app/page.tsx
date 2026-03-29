@@ -68,9 +68,6 @@ const HeroSection = () => (
         <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center">
             <div className="max-w-3xl space-y-3 md:space-y-4">
                 <div className="space-y-2 md:space-y-3">
-                    <Badge variant="outline" className="text-accent border-accent/30 py-0.5 px-3 uppercase tracking-[0.2em] font-black text-[8px] bg-accent/5 rounded-none">
-                        V4.5 SOVEREIGN LAUNCH OFFER • 90% OFF
-                    </Badge>
                     <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-[4.8rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
                         STOP CHASING. <br />
                         <span className="text-primary">START SEEING.</span>

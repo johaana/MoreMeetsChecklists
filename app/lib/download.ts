@@ -8,7 +8,8 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 /**
  * Sovereign Engine v4.5 - FINAL HARDENED BUILD
  * UI: Symmetric Zero-Clipping Midnight Navy Console.
- * FORMULA: Robust INDEX/MATCH/COUNTIF frequency logic for Top Performer/Branch.
+ * FORMULA: Robust INDEX/MATCH/COUNTIFS frequency logic for Top Performer/Branch.
+ * FIX: Formulas updated to explicitly ignore empty cells to prevent incorrect reporting.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -158,9 +159,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
-    // --- HARDENED SOVEREIGN FORMULAS v4.5 ---
-    const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!$G$5:$G$2000,MATCH(MAX(INDEX(COUNTIF('TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000),0)),INDEX(COUNTIF('TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000),0),0)),"---")`;
-    const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!$B$5:$B$2000,MATCH(MAX(INDEX(COUNTIF('TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000),0)),INDEX(COUNTIF('TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000),0),0)),"---")`;
+    // --- HARDENED SOVEREIGN FORMULAS v4.5 (FIXED FOR BLANKS) ---
+    const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!$G$5:$G$2000,MATCH(MAX(INDEX(COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000,"<>"),0)),INDEX(COUNTIF('TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000),0),0)),"---")`;
+    const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!$B$5:$B$2000,MATCH(MAX(INDEX(COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000,"<>"),0)),INDEX(COUNTIF('TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000),0),0)),"---")`;
     const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "<>N/A*", 'TODAYS_TASKS'!$F$5:$F$2000, "<>", 'TODAYS_TASKS'!$F$5:$F$2000, "<>Mission Requirement*")), 0)`;
     const taskVolumeFormula = `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "?*")`;
 
@@ -292,7 +293,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 
                 const baseStyle = logicalIdx % 2 === 0 ? dataStyleCenter : { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.GHOST_GREY } } };
                 const baseStyleLeft = logicalIdx % 2 === 0 ? dataStyleLeft : { ...dataStyleLeft, fill: { fgColor: { rgb: COLORS.GHOST_GREY } } };
-                const zebraInput = logicalIdx % 2 === 0 ? inputStyle : { ...inputStyle, fill: { fgColor: { rgb: "F0F9FF" } } };
+                const zebraInput = logicalIdx % 2 === 0 ? inputStyle : { ...inputStyle, fill: { fgColor: "F0F9FF" } };
 
                 mData.push([
                     { v: startDate, t: 'd', s: { ...baseStyle, numFmt: 'dd-mm-yyyy' } },
