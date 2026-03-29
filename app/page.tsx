@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -15,18 +16,15 @@ import {
     ShieldCheck,
     LayoutGrid,
     AlertTriangle,
-    Search,
-    Stethoscope,
-    Utensils,
-    HardHat,
-    ChevronRight,
     ClipboardCheck,
     GraduationCap,
     FileSpreadsheet,
     Database,
     Eye,
     PackageCheck,
-    Crown
+    Stethoscope,
+    Utensils,
+    HardHat
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -66,44 +64,46 @@ const HeroSection = () => (
             <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.98)_25%,rgba(10,15,25,0.85)_50%,rgba(10,15,25,0.2)_85%,rgba(10,15,25,0.05)_100%)]" />
         </div>
 
-        {/* Content Layer - v4.5 Zero-Noise Build */}
+        {/* Content Layer - v4.5 Strategic Build */}
         <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center">
-            <div className="max-w-3xl space-y-4">
-                <div className="space-y-3">
+            <div className="max-w-3xl space-y-3 md:space-y-4">
+                <div className="space-y-2 md:space-y-3">
                     <Badge variant="outline" className="text-accent border-accent/30 py-0.5 px-3 uppercase tracking-[0.2em] font-black text-[8px] bg-accent/5 rounded-none">
                         V4.5 SOVEREIGN LAUNCH OFFER • 90% OFF
                     </Badge>
-                    <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
+                    <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-[4.8rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
                         STOP CHASING. <br />
                         <span className="text-primary">START SEEING.</span>
                     </h1>
                 </div>
                 
-                <div className="space-y-4">
+                <div className="space-y-3 md:space-y-5">
                     <p className="text-sm md:text-xl font-black text-primary-text/90 uppercase tracking-tight italic leading-tight">
                         The only way to run your business without being there.
                     </p>
                     
-                    <p className="text-xs md:base text-secondary-text font-medium italic opacity-60 max-w-xl">
-                        Pre-built, compliant SOPs with built-in execution and visibility.
+                    <p className="text-[10px] md:text-sm text-secondary-text font-medium italic opacity-60 max-w-xl">
+                        Pre-built, world-class SOPs • Fully Editable • Audit-Ready
                     </p>
 
-                    <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 w-fit shadow-2xl backdrop-blur-sm">
-                        <p className="text-sm md:text-xl font-black text-primary-text uppercase italic tracking-tighter">
-                            Know what’s done. What’s missed. What’s delayed— <br />
+                    <div className="p-5 md:p-7 rounded-2xl bg-white/[0.02] border border-white/5 w-fit shadow-2xl backdrop-blur-sm relative overflow-hidden group">
+                        <div className="absolute -inset-1 bg-primary/5 blur opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                        <p className="text-sm md:text-[1.3rem] font-black text-primary-text uppercase italic tracking-tighter leading-tight relative z-10">
+                            KNOW WHAT’S DONE. WHAT’S MISSED. WHAT’S DELAYED— <br />
                             <span className="text-primary font-bold lowercase">without asking anyone.</span>
                         </p>
+                        <p className="text-[7px] md:text-[8px] uppercase font-black text-white/5 mt-2 tracking-[0.4em] relative z-10">Authenticated Deployment: V4.5 SOVEREIGN MASTER</p>
                     </div>
                 </div>
 
-                <div className="pt-4">
+                <div className="pt-2 md:pt-4">
                     <Button size="lg" asChild className="group h-12 md:h-16 px-8 md:px-12 rounded-xl shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-sm md:text-base tracking-[0.1em] border-none">
                         <Link href="/library" className="flex items-center justify-center">
                             GET YOUR SYSTEM — ₹799 / $9 USD <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
                     
-                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-6">
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-5 md:pt-7">
                         {[
                             { text: "Own Forever", icon: Infinity },
                             { text: "No SaaS", icon: Lock },
@@ -131,8 +131,8 @@ const ClaritySection = () => (
         </div>
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
-                { t: "Team Knows Exactly What to Do", d: "Roles are assigned. Steps are clear. Memory is removed from the equation.", i: ClipboardCheck },
-                { t: "Tasks Completed in Seconds", d: "Reporting is built into the workflow. Two minutes at end of shift, and you're done.", i: Timer },
+                { t: "Team Knows Exactly What to Do", d: "Operational Modules are assigned. Steps are clear. Memory is removed from the equation.", i: ClipboardCheck },
+                { t: "Tasks Completed in Seconds", d: "Technical Control Points are marked done in seconds. Two minutes at end of shift, and you're done.", i: Timer },
                 { t: "Dashboards Update Automatically", d: "No manual collation. No data entry. Open one file and see your entire empire.", i: Zap }
             ].map(item => (
                 <div key={item.t} className="p-10 rounded-[2.5rem] bg-black/40 border border-white/5 space-y-6 shadow-2xl group hover:border-primary/20 transition-all">
@@ -207,7 +207,7 @@ const SuperpowersSection = () => (
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {[
-                { t: "2-Minute Reporting", d: ["Staff update tasks in seconds", "No reporting effort required", "Live visibility always"], p: "Stop chasing reports.", i: Timer },
+                { t: "2-Minute Reporting", d: ["Staff update control points in seconds", "No reporting effort required", "Live visibility always"], p: "Stop chasing reports.", i: Timer },
                 { t: "Faster Training", d: ["New staff ready from Day 1", "No shadowing required", "Learning happens by doing"], p: "No more hand-holding.", i: GraduationCap },
                 { t: "Operational Independence", d: ["No reliance on 'key managers'", "System stays if people leave", "Knowledge is institutionalized"], p: "Systems, not heroes.", i: AlertTriangle },
                 { t: "Multi-Branch Command", d: ["Track all locations in one place", "Compare performance instantly", "Identify weak branches"], p: "Know without asking.", i: Eye },

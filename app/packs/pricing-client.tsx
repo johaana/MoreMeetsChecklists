@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -11,13 +12,9 @@ import {
     Loader2, 
     Globe, 
     Landmark, 
-    Shield, 
     ArrowRight,
-    QrCode,
-    CreditCard as CardIcon,
     ShieldCheck,
     Lock,
-    Gift,
     Infinity,
     FileSpreadsheet,
     Zap,
@@ -234,7 +231,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         <div className="text-left">
                                             <p className="text-[10px] font-black uppercase text-white/20">Professional Grade</p>
                                             <p className="text-sm font-bold text-white/40 line-through">
-                                                {region === 'INDIA' ? '₹9,999' : `$${pack.consultingAnchor || 120}`}
+                                                {region === 'INDIA' ? '₹9,999' : '$120'}
                                             </p>
                                         </div>
                                         <div className="w-px h-8 bg-white/5" />
