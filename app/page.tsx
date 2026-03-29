@@ -92,14 +92,16 @@ const HeroSection = () => (
                             KNOW WHAT’S DONE. WHAT’S MISSED. WHAT’S DELAYED— <br />
                             <span className="text-primary font-bold lowercase">without asking anyone.</span>
                         </p>
-                        <p className="text-[7px] md:text-[8px] uppercase font-black text-white/5 mt-2 tracking-[0.4em] relative z-10">Authenticated Deployment: V4.5 SOVEREIGN MASTER</p>
+                        <p className="text-[7px] md:text-[8px] uppercase font-black text-white/10 mt-3 tracking-[0.2em] relative z-10 italic">
+                            WORKS ON EXCEL / GOOGLE SHEETS
+                        </p>
                     </div>
                 </div>
 
                 <div className="pt-2 md:pt-4">
                     <Button size="lg" asChild className="group h-12 md:h-16 px-8 md:px-12 rounded-xl shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-sm md:text-base tracking-[0.1em] border-none">
                         <Link href="/library" className="flex items-center justify-center">
-                            GET YOUR SYSTEM — ₹799 / $9 USD <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                            LIMITED TIME DEAL: GET YOUR SYSTEM — 90% OFF <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
                     
@@ -207,7 +209,7 @@ const SuperpowersSection = () => (
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {[
-                { t: "2-Minute Reporting", d: ["Staff update control points in seconds", "No reporting effort required", "Live visibility always"], p: "Stop chasing reports.", i: Timer },
+                { t: "2-Minute Reporting", d: ["Staff update technical control points in seconds", "No reporting effort required", "Live visibility always"], p: "Stop chasing reports.", i: Timer },
                 { t: "Faster Training", d: ["New staff ready from Day 1", "No shadowing required", "Learning happens by doing"], p: "No more hand-holding.", i: GraduationCap },
                 { t: "Operational Independence", d: ["No reliance on 'key managers'", "System stays if people leave", "Knowledge is institutionalized"], p: "Systems, not heroes.", i: AlertTriangle },
                 { t: "Multi-Branch Command", d: ["Track all locations in one place", "Compare performance instantly", "Identify weak branches"], p: "Know without asking.", i: Eye },

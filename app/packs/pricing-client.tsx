@@ -43,7 +43,7 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
             setSubmitted(true);
             toast({
                 title: "Check Your Inbox!",
-                description: `Your free checklist pack for "${pack.title}" has been sent.`,
+                description: `Your free toolkit for "${pack.title}" has been sent.`,
             });
         } else {
             toast({
@@ -203,7 +203,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </h2>
                                 <div className="flex items-center gap-2">
                                     <Lock className="w-4 h-4 text-white/40" />
-                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic">ZERO SAAS DEPENDENCY • OWN FOREVER</span>
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic text-center">ZERO SAAS DEPENDENCY • OWN FOREVER</span>
                                 </div>
                             </div>
                         </CardHeader>

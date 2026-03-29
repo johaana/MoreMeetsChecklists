@@ -10,7 +10,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
  * UI: Full-sheet Midnight Navy Console, Zero-Clipping Footer.
  * FIX: Pipe-delimited Staff Keys, Correct Branch Indexing, Privacy Wipe.
  * UI FIX: High-contrast Manager Verification Targets.
- * FORMULA FIX: Hardened frequency logic for "Today's Star" and "Top Branch".
+ * FORMULA FIX: Hardened frequency logic for "Today's Star" and "Top Branch" using INDEX/MATCH/COUNTIF.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -161,8 +161,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
 
     // --- HARDENED SOVEREIGN FORMULAS v4.5 ---
+    // Formula for Today's Star: Identify the most frequent name/initial in G5:G2000
     const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!$G$5:$G$2000,MATCH(MAX(INDEX(COUNTIF('TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000),0)),INDEX(COUNTIF('TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000),0),0)),"---")`;
+    
+    // Formula for Top Branch: Identify the most frequent branch name in B5:B2000
     const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!$B$5:$B$2000,MATCH(MAX(INDEX(COUNTIF('TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000),0)),INDEX(COUNTIF('TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000),0),0)),"---")`;
+    
     const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "<>N/A*", 'TODAYS_TASKS'!$F$5:$F$2000, "<>", 'TODAYS_TASKS'!$F$5:$F$2000, "<>Mission Requirement*")), 0)`;
     const taskVolumeFormula = `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "?*")`;
 
@@ -361,16 +365,16 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
     const simpleSheets = [
-        { n: "ROI_ENGINE", t: "ROI & Risk Mitigation Engine" },
-        { n: "INCIDENT_LOG", t: "Liability & Incident Log" },
-        { n: "SHIFT_HANDOVER", t: "Shift Handover Bridge" },
-        { n: "SOP_LIBRARY", t: "Institutional SOP Database" },
-        { n: "HOW_THIS_WORKS", t: "System Command Manual" }
+        { n: "ROI_ENGINE", n_full: "ROI & Risk Mitigation Engine" },
+        { n: "INCIDENT_LOG", n_full: "Liability & Incident Log" },
+        { n: "SHIFT_HANDOVER", n_full: "Shift Handover Bridge" },
+        { n: "SOP_LIBRARY", n_full: "Institutional SOP Database" },
+        { n: "HOW_THIS_WORKS", n_full: "System Command Manual" }
     ];
 
     simpleSheets.forEach(s => {
         const ws = utils.aoa_to_sheet([[],[],[]]);
-        addSovereignRibbon(ws, s.t, 'K');
+        addSovereignRibbon(ws, s.n_full, 'K');
         utils.book_append_sheet(wb, ws, s.n);
     });
 
