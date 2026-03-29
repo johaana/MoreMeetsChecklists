@@ -6,11 +6,10 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v4.4 - COMMERCIAL SALE EDITION
+ * Sovereign Engine v4.4 - MASTER BUILD
  * UI: Full-sheet Midnight Navy Console, Zero-Clipping Footer.
  * Hardening: Zebra-striping, Linked ROI, Header Ribbon Continuity.
- * UX: Integrated Ghost Data for intuitive onboarding.
- * Target: Excel 2016+, Google Sheets, Mobile.
+ * FIX: Safe style application to prevent cell-access crashes.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -160,7 +159,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
-    // --- 01. HOME CONSOLE ---
+    // --- formulas ---
     const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!$G$5:$G$2000, MATCH(MAX(COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "<>", 'TODAYS_TASKS'!$G$5:$G$2000, 'TODAYS_TASKS'!$G$5:$G$2000)), COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "<>", 'TODAYS_TASKS'!$G$5:$G$2000, 'TODAYS_TASKS'!$G$5:$G$2000), 0)), "---")`;
     const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!$B$5:$B$2000, MATCH(MAX(COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, "<>", 'TODAYS_TASKS'!$B$5:$B$2000, 'TODAYS_TASKS'!$B$5:$B$2000)), COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, "<>", 'TODAYS_TASKS'!$B$5:$B$2000, 'TODAYS_TASKS'!$B$5:$B$2000), 0)), "---")`;
     const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "<>N/A*", 'TODAYS_TASKS'!$F$5:$F$2000, "<>", 'TODAYS_TASKS'!$F$5:$F$2000, "<>Mission Requirement*")), 0)`;
@@ -224,18 +223,11 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "SHIFT PROGRESS:", s: { font: { bold: true, sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'right' } } },
             { t: 'f', f: progressFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { fgColor: { rgb: COLORS.BADGE_BLUE } }, numFmt: '0%' } }
         ],
-        [null, { v: "▶ VIEW REAL-TIME BRANCH INTELLIGENCE & PERFORMANCE ANALYTICS", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: bigActionButtonStyle }, null, null, null, null, null],
+        [null, { v: "▶ VIEW REAL-TIME BRANCH INTELLIGENCE & PERFORMANCE ANALYTICS", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN }, underline: true }, fill: { fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center', vertical: 'center' }, border: borderStyle } }, null, null, null, null, null],
         [],
         [null, { v: "USER GUIDE: Use filters in 'Today's Tasks' to see YOUR branch, YOUR role, and YOUR name. Sign off in the yellow cells.", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
         [null, { v: `LICENSED TO: ${BUYER_EMAIL} | VALIDATED DEPLOYMENT: ${ORDER_ID}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }]
     ];
-
-    const bigActionButtonStyle = {
-        font: { ...baseFont, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN }, underline: true },
-        fill: { fgColor: { rgb: COLORS.TILE_BG } },
-        alignment: { horizontal: 'center', vertical: 'center' },
-        border: borderStyle
-    };
 
     const homeWs = utils.aoa_to_sheet(homeData);
     homeWs['!cols'] = [5, 22, 28, 22, 28, 22, 28].map(w => ({ wch: w }));
@@ -249,11 +241,17 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { s: { r: 18, c: 1 }, e: { r: 18, c: 6 } }
     ];
     
+    // SAFE STYLE APPLICATION LOOP
     for (let R = 0; R < 100; R++) {
         for (let C = 0; C < 26; C++) {
             const cell = utils.encode_cell({ r: R, c: C });
-            if (!homeWs[cell]) homeWs[cell] = { v: "", s: { fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } };
-            else if (!homeWs[cell].s.fill) homeWs[cell].s.fill = { fgColor: { rgb: COLORS.NAVY_DEEP } };
+            if (!homeWs[cell]) {
+                homeWs[cell] = { v: "", s: { fill: { fgColor: { rgb: COLORS.NAVY_DEEP } } } };
+            } else {
+                // Ensure s and fill exist before attempting to set
+                if (!homeWs[cell].s) homeWs[cell].s = {};
+                if (!homeWs[cell].s.fill) homeWs[cell].s.fill = { fgColor: { rgb: COLORS.NAVY_DEEP } };
+            }
         }
     }
     utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
