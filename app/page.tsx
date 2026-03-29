@@ -83,13 +83,17 @@ const HeroSection = () => (
                         Pre-built, world-class SOPs • Fully Editable • Audit-Ready
                     </p>
 
-                    <div className="p-5 md:p-7 rounded-2xl bg-white/[0.02] border border-white/5 w-fit shadow-2xl backdrop-blur-sm relative overflow-hidden group">
+                    <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 w-fit shadow-2xl backdrop-blur-sm relative overflow-hidden group">
                         <div className="absolute -inset-1 bg-primary/5 blur opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                        <p className="text-sm md:text-[1.3rem] font-black text-primary-text uppercase italic tracking-tighter leading-tight relative z-10">
-                            KNOW WHAT’S DONE. WHAT’S MISSED. WHAT’S DELAYED— <br />
-                            <span className="text-primary font-bold lowercase">without asking anyone.</span>
-                        </p>
-                        <p className="text-[7px] md:text-[8px] uppercase font-black text-white/10 mt-3 tracking-[0.2em] relative z-10 italic">
+                        <div className="space-y-1 relative z-10">
+                            <p className="text-lg md:text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-none">
+                                KNOW WHAT’S DONE. WHAT’S MISSED. WHAT’S DELAYED—
+                            </p>
+                            <p className="text-base md:text-lg text-primary font-bold lowercase italic">
+                                without asking anyone.
+                            </p>
+                        </div>
+                        <p className="text-[7px] md:text-[8px] uppercase font-black text-white/30 mt-4 tracking-[0.25em] relative z-10 italic">
                             WORKS ON EXCEL / GOOGLE SHEETS
                         </p>
                     </div>
@@ -98,7 +102,7 @@ const HeroSection = () => (
                 <div className="pt-2 md:pt-4">
                     <Button size="lg" asChild className="group h-12 md:h-16 px-8 md:px-12 rounded-xl shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-sm md:text-base tracking-[0.1em] border-none">
                         <Link href="/library" className="flex items-center justify-center">
-                            LIMITED TIME DEAL: GET YOUR SYSTEM — 90% OFF <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                            GET YOUR SYSTEM — 90% OFF <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </Link>
                     </Button>
                     
