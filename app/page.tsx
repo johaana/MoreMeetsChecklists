@@ -84,7 +84,7 @@ const HeroSection = () => (
                         The only way to run your business without being there.
                     </p>
                     
-                    <p className="text-xs md:text-base text-secondary-text font-medium italic opacity-60 max-w-xl">
+                    <p className="text-xs md:base text-secondary-text font-medium italic opacity-60 max-w-xl">
                         Pre-built, compliant SOPs with built-in execution and visibility.
                     </p>
 
@@ -96,24 +96,14 @@ const HeroSection = () => (
                     </div>
                 </div>
 
-                <div className="pt-4 space-y-4">
-                    <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                        <div className="flex flex-col gap-1 w-full sm:w-auto">
-                            <Button size="lg" asChild className="group h-12 md:h-16 px-8 md:px-12 rounded-xl shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-sm md:text-base tracking-[0.1em] border-none">
-                                <Link href="/library" className="flex items-center justify-center">
-                                    GET YOUR SYSTEM — ₹799 / $9 USD <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                                </Link>
-                            </Button>
-                            <p className="text-[9px] md:text-[10px] text-white/30 uppercase tracking-widest font-black text-center italic">
-                                Professional Grade: <span className="line-through">₹9,999 ($120)</span> • One-time purchase
-                            </p>
-                        </div>
-                        <Button size="lg" variant="outline" asChild className="h-12 md:h-16 px-8 rounded-xl border-white/10 text-white/60 font-black uppercase text-xs tracking-widest hover:bg-white/5 w-full sm:w-auto">
-                            <Link href="#how-it-works">See Action</Link>
-                        </Button>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-2">
+                <div className="pt-4">
+                    <Button size="lg" asChild className="group h-12 md:h-16 px-8 md:px-12 rounded-xl shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-sm md:text-base tracking-[0.1em] border-none">
+                        <Link href="/library" className="flex items-center justify-center">
+                            GET YOUR SYSTEM — ₹799 / $9 USD <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </Button>
+                    
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-6">
                         {[
                             { text: "Own Forever", icon: Infinity },
                             { text: "No SaaS", icon: Lock },

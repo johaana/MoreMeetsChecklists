@@ -215,7 +215,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <div className="space-y-8">
                                 <div className="flex flex-col items-center gap-1">
                                     <p className="text-xl md:text-2xl font-black text-primary-text tracking-tight uppercase leading-tight">
-                                        {totalChecklists} {industryWording} · {totalTasks}+ Control Points
+                                        {totalChecklists} {industryWording} · {totalTasks}+ Technical Control Points
                                     </p>
                                     <p className="text-xs text-secondary-text italic font-medium">Complete Operational Payload</p>
                                 </div>
@@ -223,7 +223,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <div className="flex items-center justify-center gap-2 opacity-100">
                                     <ShieldCheck className="w-3.5 h-3.5 text-white/40" />
                                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic text-center">
-                                        ALIGNED: ISO · HACCP · OSHA · Industry Standards
+                                        ALIGNED WITH: ISO · HACCP · OSHA · Industry Standards
                                     </span>
                                 </div>
                             </div>
@@ -234,7 +234,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         <div className="text-left">
                                             <p className="text-[10px] font-black uppercase text-white/20">Professional Grade</p>
                                             <p className="text-sm font-bold text-white/40 line-through">
-                                                {region === 'INDIA' ? '₹9,999+' : `$${pack.consultingAnchor || 120}+`}
+                                                {region === 'INDIA' ? '₹9,999' : `$${pack.consultingAnchor || 120}`}
                                             </p>
                                         </div>
                                         <div className="w-px h-8 bg-white/5" />
