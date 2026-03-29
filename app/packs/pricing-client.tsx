@@ -238,7 +238,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         <div className="text-left">
                                             <p className="text-[10px] font-black uppercase text-primary">Your Investment</p>
                                             <p className="text-2xl font-black text-primary-text italic">
-                                                {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                                                {region === 'INDIA' ? `₹799` : `$9`}
                                             </p>
                                         </div>
                                     </div>
@@ -267,7 +267,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                                 className="w-full h-14 bg-primary text-black font-black text-base rounded-[10px] shadow-md hover:shadow-xl hover:brightness-105 transition-all border-none relative z-10 px-8"
                                             >
                                                 <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center justify-center">
-                                                    GET YOUR SYSTEM — ${pack.priceUSD} <ArrowRight className="ml-2 h-5 w-5"/>
+                                                    GET YOUR SYSTEM — ${region === 'INDIA' ? '9' : pack.priceUSD} <ArrowRight className="ml-2 h-5 w-5"/>
                                                 </Link>
                                             </Button>
                                         )}

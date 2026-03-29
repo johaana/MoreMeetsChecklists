@@ -36,7 +36,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 
 const Section = ({ className, id, children, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
-    <section id={id} className={cn("w-full py-16 md:py-24", className)} {...props}>
+    <section id={id} className={cn("w-full py-12 md:py-20", className)} {...props}>
         <div className="container px-4 md:px-6">
             {children}
         </div>
@@ -50,7 +50,7 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 );
 
 const HeroSection = () => (
-    <section className="relative w-full flex flex-col items-center h-[calc(100dvh-64px)] md:h-[calc(100vh-64px)] md:min-h-[600px] overflow-hidden bg-background">
+    <section className="relative w-full flex flex-col items-center h-[calc(100dvh-64px)] md:h-[calc(100vh-64px)] md:min-h-[650px] overflow-hidden bg-background">
         {/* Visual Brand Layer */}
         <div className="absolute inset-0 z-0 overflow-hidden">
             <video

@@ -6,11 +6,9 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v4.5 - HARDENED GOVERNANCE BUILD
- * UI: Full-sheet Midnight Navy Console, Zero-Clipping Footer.
- * FIX: Pipe-delimited Staff Keys, Correct Branch Indexing, Privacy Wipe.
- * UI FIX: High-contrast Manager Verification Targets.
- * FORMULA FIX: Hardened frequency logic for "Today's Star" and "Top Branch" using INDEX/MATCH/COUNTIF.
+ * Sovereign Engine v4.5 - FINAL HARDENED BUILD
+ * UI: Symmetric Zero-Clipping Midnight Navy Console.
+ * FORMULA: Robust INDEX/MATCH/COUNTIF frequency logic for Top Performer/Branch.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -161,12 +159,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
 
     // --- HARDENED SOVEREIGN FORMULAS v4.5 ---
-    // Formula for Today's Star: Identify the most frequent name/initial in G5:G2000
     const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!$G$5:$G$2000,MATCH(MAX(INDEX(COUNTIF('TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000),0)),INDEX(COUNTIF('TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000),0),0)),"---")`;
-    
-    // Formula for Top Branch: Identify the most frequent branch name in B5:B2000
     const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!$B$5:$B$2000,MATCH(MAX(INDEX(COUNTIF('TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000),0)),INDEX(COUNTIF('TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000),0),0)),"---")`;
-    
     const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "<>N/A*", 'TODAYS_TASKS'!$F$5:$F$2000, "<>", 'TODAYS_TASKS'!$F$5:$F$2000, "<>Mission Requirement*")), 0)`;
     const taskVolumeFormula = `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "?*")`;
 
@@ -246,7 +240,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { s: { r: 18, c: 1 }, e: { r: 18, c: 6 } }
     ];
     
-    // Fill background for full console look
     for (let R = 0; R < 50; R++) {
         for (let C = 0; C < 10; C++) {
             const cell = utils.encode_cell({ r: R, c: C });
@@ -260,7 +253,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
     utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
 
-    // --- 02. BRANCH_MASTER ---
     const facilityHeaders = [
         { v: "Branch ID", s: headerStyle }, { v: "Branch Name (Edit Here)", s: headerStyle },
         ...packChecklists.map(c => ({ v: c.title, s: headerStyle }))
@@ -279,7 +271,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(setupWs, "Branch Master Setup", utils.encode_col(facilityHeaders.length - 1));
     utils.book_append_sheet(wb, setupWs, "BRANCH_MASTER");
 
-    // --- 03. TODAYS_TASKS ---
     const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, 
         { v: "Responsible Role", s: headerStyle }, { v: "Assigned Person (Auto)", s: headerStyle },
@@ -329,7 +320,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
 
-    // --- 04. BUSINESS_HEALTH ---
     const dashData = [
         [], [], [],
         [{ v: "Operational KPI", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Target Threshold", s: headerStyle }],
@@ -341,7 +331,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(dWs, "Group Performance Hub", 'C');
     utils.book_append_sheet(wb, dWs, "BUSINESS_HEALTH");
 
-    // --- 05. TEAM_HUB ---
     const pHeaders = [{v:"Staff Lookup Key", s:headerStyle}, {v:"Branch Name", s:headerStyle}, {v:"Staff Full Name", s:headerStyle}, {v:"Role Assigned", s:headerStyle}, {v:"Contact", s:headerStyle}, {v:"Status", s:headerStyle}];
     const pData: any[][] = [[], [], [], pHeaders];
     const allRoles = Array.from(new Set(packChecklists.map(c => c.role)));
