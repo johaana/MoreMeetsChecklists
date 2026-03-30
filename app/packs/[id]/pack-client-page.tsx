@@ -90,7 +90,7 @@ const ProductArchitectureSection = () => (
                             <div className="w-2 h-2 rounded-full bg-green-500/40" />
                         </div>
                         <img 
-                            src="https://i.postimg.cc/q7zSzXgJ/Screenshot-2026-03-31-023157.png" 
+                            src="https://i.postimg.cc/9MNGzZ46/Screenshot-2026-03-31-025452.png" 
                             alt="MoreMeets Engine Interface"
                             className="rounded-lg mt-6 border border-white/5"
                         />

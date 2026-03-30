@@ -197,7 +197,7 @@ const SOPAdvantageSection = () => (
                         <span className="text-[10px] font-black uppercase text-white/20 tracking-widest ml-4 italic">Sovereign_OS_v5.0.xlsx</span>
                     </div>
                     <img 
-                        src="https://i.postimg.cc/q7zSzXgJ/Screenshot-2026-03-31-023157.png" 
+                        src="https://i.postimg.cc/9MNGzZ46/Screenshot-2026-03-31-025452.png" 
                         alt="MoreMeets Engine Interface"
                         className="rounded-[2.5rem] mt-10 border border-white/5 transition-transform duration-700 group-hover:scale-[1.02]"
                     />

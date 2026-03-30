@@ -6,9 +6,9 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v5.5 - FULL REPOSITORY ACTIVATION
- * Focus: Populated SOP_LIBRARY with technical depth.
- * Constraint: NO CHANGES to Home Console design.
+ * Sovereign Engine v5.6 - FULL REPOSITORY ACTIVATION
+ * Focus: Populated SOP_LIBRARY and activated command protocols.
+ * Logic: Dashboard syncing with Incident Log and ROI engine.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -20,7 +20,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-MASTER-SOVEREIGN-5.5";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-5.6";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -167,7 +167,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
-    // --- HOME CONSOLE ---
+    // Formulas
     const latestPersonFormula = `IFERROR(LOOKUP(2, 1/('TODAYS_TASKS'!$G$5:$G$2000<>""), 'TODAYS_TASKS'!$G$5:$G$2000), "AWAITING START")`;
     const latestBranchFormula = `IFERROR(LOOKUP(2, 1/('TODAYS_TASKS'!$G$5:$G$2000<>""), 'TODAYS_TASKS'!$B$5:$B$2000), "SYSTEM IDLE")`;
     const taskVolumeFormula = `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "?*")`;
@@ -175,6 +175,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     const headerBaseStyle = { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', vertical: 'center' } };
 
+    // --- HOME CONSOLE ---
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { ...headerBaseStyle, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
@@ -254,9 +255,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             const cell = utils.encode_cell({ r: R, c: C });
             if (!homeWs[cell]) {
                 homeWs[cell] = { v: "", s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } } } };
-            } else {
-                if (!homeWs[cell].s) homeWs[cell].s = {};
-                if (!homeWs[cell].s.fill) homeWs[cell].s.fill = { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } };
             }
         }
     }
@@ -324,7 +322,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
 
-    // --- TEAM HUB (FIXED ALIGNMENT) ---
+    // --- TEAM HUB ---
     const pHeaders = [
         { v: "Staff Lookup Key", s: headerStyle }, 
         { v: "Branch Name", s: headerStyle }, 
@@ -408,7 +406,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(hWs, "Shift Handover Bridge", 'F');
     utils.book_append_sheet(wb, hWs, "SHIFT_HANDOVER");
 
-    // --- SOP LIBRARY (ACTIVATED & DETAILED) ---
+    // --- SOP LIBRARY (ACTIVATED) ---
     const sopHeaders = [
         { v: "Module Title", s: headerStyle },
         { v: "Dept", s: headerStyle },
@@ -440,28 +438,41 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     sopWs['!autofilter'] = { ref: `A4:H${sopData.length}` };
     utils.book_append_sheet(wb, sopWs, "SOP_LIBRARY");
 
-    // --- REMAINING SHEETS ---
-    const simpleSheets = [
-        { n: "BUSINESS_HEALTH", n_full: "Group Performance Hub" },
-        { n: "HOW_THIS_WORKS", n_full: "System Command Manual" }
+    // --- BUSINESS HEALTH (ACTIVATED) ---
+    const bhHeaders = [
+        { v: "Operational KPI", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Target Threshold", s: headerStyle }
     ];
-
-    simpleSheets.forEach(s => {
-        const ws = utils.aoa_to_sheet([[],[],[]]);
-        addSovereignRibbon(ws, s.n_full, 'K');
-        utils.book_append_sheet(wb, ws, s.n);
-    });
-
-    // BUSINESS_HEALTH LOGIC (ACTIVE INCIDENT COUNTER)
-    const bhWs = wb.Sheets["BUSINESS_HEALTH"];
     const bhData = [
         [], [], [],
-        [{ v: "Operational KPI", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Target Threshold", s: headerStyle }],
+        bhHeaders,
         [{ v: "Group Shift Progress", s: dataStyleLeft }, { t:'f', f: progressFormula, s: { ...dataStyleCenter, font: { ...monoFont, bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
-        [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_LOG'!$F$5:$F$100, "OPEN")=0, "NONE", COUNTIF('INCIDENT_LOG'!$F$5:$F$100, "OPEN") & " ACTIVE")`, s: { ...dataStyleCenter, font: { ...monoFont, color: { rgb: COLORS.RISK_RED } } } }, { v: "ZERO TOLERANCE", s: dataStyleCenter }]
+        [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_LOG'!$F$5:$F$100, "OPEN")=0, "NONE", COUNTIF('INCIDENT_LOG'!$F$5:$F$100, "OPEN") & " ACTIVE")`, s: { ...dataStyleCenter, font: { ...monoFont, color: { rgb: COLORS.RISK_RED } } } }, { v: "ZERO TOLERANCE", s: dataStyleCenter }],
+        [{ v: "Network Active Units", s: dataStyleLeft }, { t:'f', f: `COUNTIF('BRANCH_MASTER'!$B$6:$B$15, "?*")`, s: dataStyleCenter }, { v: "MAX CAPACITY", s: dataStyleCenter }],
+        [{ v: "Reporting Participation", s: dataStyleLeft }, { t:'f', f: `COUNTIF('TEAM_HUB'!$F$5:$F$100, "ACTIVE")`, s: dataStyleCenter }, { v: "100% ROSTER", s: dataStyleCenter }],
+        [{ v: "Critical High-Risk Pending", s: dataStyleLeft }, { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$K$5:$K$2000, "High", 'TODAYS_TASKS'!$I$5:$I$2000, "<>COMPLETED")`, s: { ...dataStyleCenter, font: { color: { rgb: COLORS.RISK_RED } } } }, { v: "ZERO TOLERANCE", s: dataStyleCenter }]
     ];
-    utils.sheet_add_aoa(bhWs, bhData, { origin: "A1" });
+    const bhWs = utils.aoa_to_sheet(bhData);
+    addSovereignRibbon(bhWs, "Group Performance Hub", 'C');
     bhWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
+    utils.book_append_sheet(wb, bhWs, "BUSINESS_HEALTH");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_5.5.xlsx`);
+    // --- HOW_THIS_WORKS (ACTIVATED) ---
+    const hwHeaders = [
+        { v: "COMMAND PROTOCOL", s: headerStyle }, { v: "INSTRUCTIONS", s: headerStyle }
+    ];
+    const hwData = [
+        [], [], [],
+        hwHeaders,
+        [{ v: "STEP 01: SETUP", s: dataStyleCenter }, { v: "Go to 'BRANCH_MASTER' and enter your branch names. Set modules to 'YES' for active areas.", s: dataStyleLeft }],
+        [{ v: "STEP 02: TEAM", s: dataStyleCenter }, { v: "Go to 'TEAM_HUB' and enter staff names next to their assigned roles per branch.", s: dataStyleLeft }],
+        [{ v: "STEP 03: PULSE", s: dataStyleCenter }, { v: "Staff use 'TODAYS_TASKS'. They filter by their Name/Role and enter initials in 'Done By'.", s: dataStyleLeft }],
+        [{ v: "STEP 04: AUDIT", s: dataStyleCenter }, { v: "Managers check the 'TODAYS_TASKS' sheet for 'AWAITING MGR' status and sign off.", s: dataStyleLeft }],
+        [{ v: "STEP 05: INTEL", s: dataStyleCenter }, { v: "Owners review 'HOME_CONSOLE' and 'BUSINESS_HEALTH' for real-time empire status.", s: dataStyleLeft }]
+    ];
+    const hwWs = utils.aoa_to_sheet(hwData);
+    addSovereignRibbon(hwWs, "System Command Manual", 'B');
+    hwWs['!cols'] = [25, 80].map(w => ({ wch: w }));
+    utils.book_append_sheet(wb, hwWs, "HOW_THIS_WORKS");
+
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_5.6.xlsx`);
 }
