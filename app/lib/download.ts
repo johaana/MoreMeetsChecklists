@@ -166,8 +166,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
 
     // --- HARDENED SOVEREIGN MODE-MATCH FORMULAS v4.5 ---
-    const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!$G$5:$G$2000,MODE(MATCH('TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000,0))),"---")`;
-    const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!$B$5:$B$2000,MODE(MATCH('TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000,0))),"---")`;
+    const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!$G$5:$G$2000,MODE(IF('TODAYS_TASKS'!$G$5:$G$2000<>"",MATCH('TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000,0)))),"---")`;
+    const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!$B$5:$B$2000,MODE(IF('TODAYS_TASKS'!$B$5:$B$2000<>"",MATCH('TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000,0)))),"---")`;
     const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "<>N/A*", 'TODAYS_TASKS'!$F$5:$F$2000, "<>", 'TODAYS_TASKS'!$F$5:$F$2000, "<>Mission Requirement*")), 0)`;
     const taskVolumeFormula = `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "?*")`;
 

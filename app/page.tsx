@@ -48,81 +48,90 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
     </h2>
 );
 
-const HeroSection = () => (
-    <section className="relative w-full flex flex-col items-center h-[calc(100dvh-64px)] md:h-[calc(100vh-64px)] md:min-h-[650px] overflow-hidden bg-background">
-        {/* Visual Brand Layer */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-            <video
-                src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover contrast-[1.1] opacity-60"
-            />
-            <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.98)_25%,rgba(10,15,25,0.85)_50%,rgba(10,15,25,0.2)_85%,rgba(10,15,25,0.05)_100%)]" />
-        </div>
+const HeroSection = () => {
+    const [mounted, setMounted] = React.useState(false);
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
 
-        {/* Content Layer - v4.5 Strategic Build */}
-        <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center">
-            <div className="max-w-3xl space-y-3 md:space-y-4">
-                <div className="space-y-2 md:space-y-3">
-                    <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-[4.8rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
-                        STOP CHASING. <br />
-                        <span className="text-primary">START SEEING.</span>
-                    </h1>
-                </div>
-                
-                <div className="space-y-3 md:space-y-5">
-                    <p className="text-sm md:text-xl font-black text-primary-text/90 uppercase tracking-tight italic leading-tight">
-                        The only way to run your business without being there.
-                    </p>
-                    
-                    <p className="text-[10px] md:text-sm text-secondary-text font-medium italic opacity-60 max-w-xl">
-                        Pre-built, world-class SOPs • Fully Editable • Audit-Ready
-                    </p>
+    return (
+        <section className="relative w-full flex flex-col items-center h-[calc(100dvh-64px)] md:h-[calc(100vh-64px)] md:min-h-[650px] overflow-hidden bg-background">
+            {/* Visual Brand Layer */}
+            <div className="absolute inset-0 z-0 overflow-hidden">
+                <video
+                    src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover contrast-[1.1] opacity-60"
+                />
+                <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.98)_25%,rgba(10,15,25,0.85)_50%,rgba(10,15,25,0.2)_85%,rgba(10,15,25,0.05)_100%)]" />
+            </div>
 
-                    <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 w-fit shadow-2xl backdrop-blur-sm relative overflow-hidden group">
-                        <div className="absolute -inset-1 bg-primary/5 blur opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                        <div className="space-y-2 relative z-10">
-                            <p className="text-xl md:text-3xl font-black text-primary-text uppercase italic tracking-tighter leading-none">
-                                KNOW WHAT’S DONE. WHAT’S MISSED. WHAT’S DELAYED—
-                            </p>
-                            <p className="text-base md:text-lg text-primary font-bold lowercase italic">
-                                without asking anyone.
-                            </p>
-                        </div>
-                        <p className="text-[10px] md:text-[11px] uppercase font-black text-white/40 mt-6 tracking-[0.2em] relative z-10 italic">
-                            WORKS ON EXCEL / GOOGLE SHEETS
-                        </p>
+            {/* Content Layer - v4.5 Strategic Build */}
+            <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center">
+                <div className="max-w-3xl space-y-3 md:space-y-4">
+                    <div className="space-y-2 md:space-y-3">
+                        <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl lg:text-[4.8rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
+                            STOP CHASING. <br />
+                            <span className="text-primary">START SEEING.</span>
+                        </h1>
                     </div>
-                </div>
-
-                <div className="pt-2 md:pt-4">
-                    <Button size="lg" asChild className="group h-12 md:h-16 px-8 md:px-12 rounded-xl shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-sm md:text-base tracking-[0.1em] border-none">
-                        <Link href="/library" className="flex items-center justify-center">
-                            GET YOUR SYSTEM — 90% OFF <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                        </Link>
-                    </Button>
                     
-                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-5 md:pt-7">
-                        {[
-                            { text: "Own Forever", icon: Infinity },
-                            { text: "No SaaS", icon: Lock },
-                            { text: "Works with Your Team", icon: Users },
-                            { text: "Trainer Notes Included", icon: GraduationCap }
-                        ].map(item => (
-                            <div key={item.text} className="flex items-center gap-1.5">
-                                <item.icon className="w-3.5 h-3.5 text-primary/60" />
-                                <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.1em] text-white/40">{item.text}</span>
+                    <div className="space-y-3 md:space-y-5">
+                        <p className="text-sm md:text-xl font-black text-primary-text/90 uppercase tracking-tight italic leading-tight">
+                            The only way to run your business without being there.
+                        </p>
+                        
+                        <p className="text-[10px] md:text-sm text-secondary-text font-medium italic opacity-60 max-w-xl">
+                            Pre-built, world-class SOPs • Fully Editable • Audit-Ready
+                        </p>
+
+                        <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 w-fit shadow-2xl backdrop-blur-sm relative overflow-hidden group">
+                            <div className="absolute -inset-1 bg-primary/5 blur opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                            <div className="space-y-2 relative z-10">
+                                <p className="text-xl md:text-3xl font-black text-primary-text uppercase italic tracking-tighter leading-none">
+                                    KNOW WHAT’S DONE. WHAT’S MISSED. WHAT’S DELAYED—
+                                </p>
+                                <p className="text-base md:text-lg text-primary font-bold lowercase italic">
+                                    without asking anyone.
+                                </p>
                             </div>
-                        ))}
+                            {mounted && (
+                                <p className="text-[10px] uppercase font-black text-white/40 mt-6 tracking-[0.2em] relative z-10 italic">
+                                    WORKS ON EXCEL / GOOGLE SHEETS
+                                </p>
+                            )}
+                        </div>
+                    </div>
+
+                    <div className="pt-2 md:pt-4">
+                        <Button size="lg" asChild className="group h-12 md:h-16 px-8 md:px-12 rounded-xl shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-sm md:text-base tracking-[0.1em] border-none">
+                            <Link href="/library" className="flex items-center justify-center">
+                                GET YOUR SYSTEM — 90% OFF <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                            </Link>
+                        </Button>
+                        
+                        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-5 md:pt-7">
+                            {[
+                                { text: "Own Forever", icon: Infinity },
+                                { text: "No SaaS", icon: Lock },
+                                { text: "Works with Your Team", icon: Users },
+                                { text: "Trainer Notes Included", icon: GraduationCap }
+                            ].map(item => (
+                                <div key={item.text} className="flex items-center gap-1.5">
+                                    <item.icon className="w-3.5 h-3.5 text-primary/60" />
+                                    <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.1em] text-white/40">{item.text}</span>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-);
+        </section>
+    );
+};
 
 const ClaritySection = () => (
     <Section className="bg-alternate-background border-y border-white/5">
