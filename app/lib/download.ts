@@ -6,11 +6,10 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v4.5 - UNIFORMITY & ACCESS HARDENED
+ * Sovereign Engine v4.6 - UNLOCKED & HARDENED
  * UI: Symmetric Zero-Clipping Midnight Navy Console.
- * FIX: Yellow uniformity in manager verification column.
- * FIX: 'patternType: solid' added to all fills to prevent black-bar bug.
- * FIX: Input zones explicitly UNLOCKED for staff entry.
+ * FIX: Removed all sheet protection/locks as per user request.
+ * FIX: Standardized yellow contrast in manager verification.
  * FORMULA: Robust non-array frequency logic for Star/Branch.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -23,7 +22,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-MASTER-SOVEREIGN-4.5";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-4.6";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -64,8 +63,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         font: { ...baseFont, bold: true, color: { rgb: COLORS.PRIMARY_GREEN }, sz: 10 },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } },
         alignment: { horizontal: 'left', vertical: 'center' },
-        border: { bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } } },
-        protection: { locked: true }
+        border: { bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } } }
     };
 
     const tileStyle = {
@@ -77,65 +75,56 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             top: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } },
             bottom: { style: 'medium', color: { rgb: "000000" } },
             right: { style: 'medium', color: { rgb: "000000" } }
-        },
-        protection: { locked: true }
+        }
     };
 
     const ribbonHeaderStyle = {
         font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 14 },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } },
         alignment: { horizontal: 'left', vertical: 'center' },
-        border: { bottom: { style: 'medium', color: { rgb: COLORS.PRIMARY_GREEN } } },
-        protection: { locked: true }
+        border: { bottom: { style: 'medium', color: { rgb: COLORS.PRIMARY_GREEN } } }
     };
 
     const headerStyle = {
         font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 9 },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } },
         alignment: { vertical: 'center', horizontal: 'center', wrapText: true },
-        border: borderStyle,
-        protection: { locked: true }
+        border: borderStyle
     };
 
     const dataStyleLeft = { 
         font: baseFont,
         alignment: { vertical: 'center', horizontal: 'left', wrapText: true },
-        border: borderStyle,
-        protection: { locked: true }
+        border: borderStyle
     };
 
     const dataStyleCenter = {
         font: baseFont,
         alignment: { vertical: 'center', horizontal: 'center' },
-        border: borderStyle,
-        protection: { locked: true }
+        border: borderStyle
     };
 
     const inputStyle = {
         ...dataStyleCenter,
         font: { ...baseFont, color: { rgb: "000000" }, bold: true },
-        fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_ZONE } },
-        protection: { locked: false }
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
     const managerInputStyle = {
         ...inputStyle,
-        fill: { patternType: 'solid', fgColor: { rgb: COLORS.MGR_TARGET } },
-        protection: { locked: false }
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.MGR_TARGET } }
     };
 
     const warningStyle = {
         ...dataStyleLeft,
         font: { ...baseFont, color: { rgb: "991B1B" }, italic: true },
-        fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_RED } },
-        protection: { locked: true }
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_RED } }
     };
 
     const coachingStyle = {
         ...dataStyleLeft,
         font: { ...baseFont, color: { rgb: "065F46" }, italic: true },
-        fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_GREEN } },
-        protection: { locked: true }
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_GREEN } }
     };
 
     const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K') => {
@@ -159,7 +148,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             if(!ws[cell2]) ws[cell2] = { v: "", s: ribbonHeaderStyle };
         }
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 2 }];
-        ws['!protect'] = { password: 'MM' };
     };
 
     let packChecklists: Checklist[] = [];
@@ -177,9 +165,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
-    // --- HARDENED FREQUENCY FORMULAS (Non-Array Protocol) ---
-    const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!$G$5:$G$2000, MATCH(MAX(COUNTIF('TODAYS_TASKS'!$G$5:$G$2000, 'TODAYS_TASKS'!$G$5:$G$2000)), COUNTIF('TODAYS_TASKS'!$G$5:$G$2000, 'TODAYS_TASKS'!$G$5:$G$2000), 0)), "---")`;
-    const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!$B$5:$B$2000, MATCH(MAX(COUNTIF('TODAYS_TASKS'!$B$5:$B$2000, 'TODAYS_TASKS'!$B$5:$B$2000)), COUNTIF('TODAYS_TASKS'!$B$5:$B$2000, 'TODAYS_TASKS'!$B$5:$B$2000), 0)), "---")`;
+    // --- HARDENED FREQUENCY FORMULAS (Stable Version) ---
+    const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!G:G, MATCH(MAX(COUNTIF('TODAYS_TASKS'!G5:G2000, 'TODAYS_TASKS'!G5:G2000)), COUNTIF('TODAYS_TASKS'!G5:G2000, 'TODAYS_TASKS'!G5:G2000), 0)), "---")`;
+    const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!B:B, MATCH(MAX(COUNTIF('TODAYS_TASKS'!B5:B2000, 'TODAYS_TASKS'!B5:B2000)), COUNTIF('TODAYS_TASKS'!B5:B2000, 'TODAYS_TASKS'!B5:B2000), 0)), "---")`;
     const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "<>N/A*", 'TODAYS_TASKS'!$F$5:$F$2000, "<>", 'TODAYS_TASKS'!$F$5:$F$2000, "<>Mission Requirement*")), 0)`;
     const taskVolumeFormula = `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "?*")`;
 
@@ -188,7 +176,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { ...headerBaseStyle, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v4.5 | Sovereign Master`, s: { ...headerBaseStyle, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v4.6 | Sovereign Master`, s: { ...headerBaseStyle, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { ...headerBaseStyle, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -243,7 +231,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ],
         [null, { v: "▶ VIEW REAL-TIME BRANCH INTELLIGENCE & PERFORMANCE ANALYTICS", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN }, underline: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center', vertical: 'center' }, border: borderStyle } }, null, null, null, null, null],
         [],
-        [null, { v: "USER GUIDE: Use filters in 'Today's Tasks' to see YOUR branch, YOUR role, and YOUR name. Sign off in the yellow cells.", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
+        [null, { v: "USER GUIDE: Use filters in 'Today's Tasks' to see YOUR branch, YOUR role, and YOUR name.", s: { font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
         [null, { v: `LICENSED TO: ${BUYER_EMAIL} | VALIDATED DEPLOYMENT: ${ORDER_ID}`, s: { font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'center' } } }]
     ];
 
@@ -270,7 +258,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             }
         }
     }
-    homeWs['!protect'] = { password: 'MM' };
     utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
 
     const facilityHeaders = [
@@ -387,5 +374,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         utils.book_append_sheet(wb, ws, s.n);
     });
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_4.5.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_4.6.xlsx`);
 }
