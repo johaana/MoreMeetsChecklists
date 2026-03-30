@@ -6,11 +6,11 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v4.6 - UNLOCKED & HARDENED
+ * Sovereign Engine v5.0 - UNLOCKED & HARDENED
  * UI: Symmetric Zero-Clipping Midnight Navy Console.
- * FIX: Removed all sheet protection/locks as per user request.
- * FIX: Standardized yellow contrast in manager verification.
- * FORMULA: Robust non-array frequency logic for Star/Branch.
+ * FIX: Removed all sheet protection/locks.
+ * FIX: Enforced patternType: 'solid' to eliminate black-bar rendering bug.
+ * FORMULA: Replaced fragile arrays with robust LOOKUP for live activity.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -22,7 +22,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-MASTER-SOVEREIGN-4.6";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-5.0";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -165,18 +165,18 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
-    // --- HARDENED FREQUENCY FORMULAS (Stable Version) ---
-    const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!G:G, MATCH(MAX(COUNTIF('TODAYS_TASKS'!G5:G2000, 'TODAYS_TASKS'!G5:G2000)), COUNTIF('TODAYS_TASKS'!G5:G2000, 'TODAYS_TASKS'!G5:G2000), 0)), "---")`;
-    const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!B:B, MATCH(MAX(COUNTIF('TODAYS_TASKS'!B5:B2000, 'TODAYS_TASKS'!B5:B2000)), COUNTIF('TODAYS_TASKS'!B5:B2000, 'TODAYS_TASKS'!B5:B2000), 0)), "---")`;
-    const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "<>N/A*", 'TODAYS_TASKS'!$F$5:$F$2000, "<>", 'TODAYS_TASKS'!$F$5:$F$2000, "<>Mission Requirement*")), 0)`;
+    // --- ROBUST DETERMINISTIC FORMULAS (No Arrays) ---
+    const latestPersonFormula = `IFERROR(LOOKUP(2, 1/('TODAYS_TASKS'!$G$5:$G$2000<>""), 'TODAYS_TASKS'!$G$5:$G$2000), "AWAITING START")`;
+    const latestBranchFormula = `IFERROR(LOOKUP(2, 1/('TODAYS_TASKS'!$G$5:$G$2000<>""), 'TODAYS_TASKS'!$B$5:$B$2000), "SYSTEM IDLE")`;
     const taskVolumeFormula = `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "?*")`;
+    const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "?*")), 0)`;
 
     const headerBaseStyle = { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', vertical: 'center' } };
 
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { ...headerBaseStyle, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v4.6 | Sovereign Master`, s: { ...headerBaseStyle, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v5.0 | Sovereign Master`, s: { ...headerBaseStyle, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { ...headerBaseStyle, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -213,10 +213,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ],
         [
             null,
-            { v: "TODAY'S STAR:", s: { font: { bold: true, sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'right' } } },
-            { t: 'f', f: starFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.BADGE_GREEN } } } },
-            { v: "TOP BRANCH:", s: { font: { bold: true, sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'right' } } },
-            { t: 'f', f: branchFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.BADGE_AMBER } } } },
+            { v: "LATEST ACTIVITY:", s: { font: { bold: true, sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'right' } } },
+            { t: 'f', f: latestPersonFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.BADGE_GREEN } } } },
+            { v: "LAST ACTIVE UNIT:", s: { font: { bold: true, sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'right' } } },
+            { t: 'f', f: latestBranchFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.BADGE_AMBER } } } },
             { v: "TASKS LOGGED:", s: { font: { bold: true, sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'right' } } },
             { t: 'f', f: taskVolumeFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.BADGE_BLUE } } } }
         ],
@@ -225,7 +225,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "EMPIRE STATUS:", s: { font: { bold: true, sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'right' } } },
             { v: "👑 LEVEL 3 - EXECUTIVE", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } } } },
             { v: "ACTIVE UNITS:", s: { font: { bold: true, sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'right' } } },
-            { t: 'f', f: `COUNTIF('BRANCH_MASTER'!$B$6:$B$15, "<>")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } } } },
+            { t: 'f', f: `COUNTIF('BRANCH_MASTER'!$B$6:$B$15, "?*")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } } } },
             { v: "SHIFT PROGRESS:", s: { font: { bold: true, sz: 8, color: { rgb: COLORS.TEXT_MUTED } }, alignment: { horizontal: 'right' } } },
             { t: 'f', f: progressFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.BADGE_BLUE } }, numFmt: '0%' } }
         ],
@@ -260,6 +260,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
     utils.book_append_sheet(wb, homeWs, "HOME_CONSOLE");
 
+    // --- OTHER SHEETS ---
     const facilityHeaders = [
         { v: "Branch ID", s: headerStyle }, { v: "Branch Name (Edit Here)", s: headerStyle },
         ...packChecklists.map(c => ({ v: c.title, s: headerStyle }))
@@ -267,9 +268,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const branchSetupData = [
         [], [], [],
         facilityHeaders,
-        [{ v: "1", s: dataStyleCenter }, { v: "Bandra Main (Sample)", s: { ...inputStyle } }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
-        [{ v: "2", s: dataStyleCenter }, { v: "Colaba West (Sample)", s: { ...inputStyle } }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
-        [{ v: "3", s: dataStyleCenter }, { v: "Andheri East (Sample)", s: { ...inputStyle } }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
+        [{ v: "1", s: dataStyleCenter }, { v: "Bandra Main (Sample)", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
+        [{ v: "2", s: dataStyleCenter }, { v: "Colaba West (Sample)", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
+        [{ v: "3", s: dataStyleCenter }, { v: "Andheri East (Sample)", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
         [{ v: "4", s: dataStyleCenter }, { v: "", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
         [{ v: "5", s: dataStyleCenter }, { v: "", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))]
     ];
@@ -299,7 +300,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 
                 const baseStyle = logicalIdx % 2 === 0 ? dataStyleCenter : { ...dataStyleCenter, fill: { patternType: 'solid', fgColor: { rgb: COLORS.GHOST_GREY } } };
                 const baseStyleLeft = logicalIdx % 2 === 0 ? dataStyleLeft : { ...dataStyleLeft, fill: { patternType: 'solid', fgColor: { rgb: COLORS.GHOST_GREY } } };
-                const zebraInput = logicalIdx % 2 === 0 ? inputStyle : { ...inputStyle, fill: { patternType: 'solid', fgColor: { rgb: "F0F9FF" } } };
 
                 mData.push([
                     { v: startDate, t: 'd', s: { ...baseStyle, numFmt: 'dd-mm-yyyy' } },
@@ -308,7 +308,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     { t: 'f', f: personFormula, s: baseStyle },
                     { v: t.id, s: baseStyle },
                     { v: t.description, s: baseStyleLeft },
-                    { v: logicalIdx < 2 ? "IK" : "", s: zebraInput }, 
+                    { v: "", s: inputStyle }, 
                     { v: t.priority === 'High' ? "" : "N/A", s: t.priority === 'High' ? managerInputStyle : baseStyle },
                     { t: 'f', f: statusFormula, s: { ...baseStyle, font: { bold: true, color: { rgb: COLORS.BADGE_GREEN } } } },
                     { v: c.frequency, s: baseStyle },
@@ -374,5 +374,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         utils.book_append_sheet(wb, ws, s.n);
     });
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_4.6.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_5.0.xlsx`);
 }

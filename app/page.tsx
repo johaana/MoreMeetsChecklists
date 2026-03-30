@@ -25,7 +25,7 @@ import {
     Utensils,
     HardHat
 } from "lucide-react";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { TestimonialsSection } from "@/components/layout/testimonials-section";
 import { FaqSection } from "@/components/layout/faq-section";
@@ -49,6 +49,12 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 );
 
 const HeroSection = () => {
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     return (
         <section className="relative w-full flex flex-col items-center h-[calc(100dvh-64px)] md:h-[calc(100vh-64px)] md:min-h-[650px] overflow-hidden bg-background">
             {/* Visual Brand Layer */}
@@ -64,7 +70,7 @@ const HeroSection = () => {
                 <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.98)_25%,rgba(10,15,25,0.85)_50%,rgba(10,15,25,0.2)_85%,rgba(10,15,25,0.05)_100%)]" />
             </div>
 
-            {/* Content Layer - v4.5 Strategic Build */}
+            {/* Content Layer - v5.0 Hardened Build */}
             <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center">
                 <div className="max-w-3xl space-y-3 md:space-y-4">
                     <div className="space-y-2 md:space-y-3">
@@ -79,10 +85,6 @@ const HeroSection = () => {
                             The only way to run your business without being there.
                         </p>
                         
-                        <p className="text-[10px] md:text-sm text-secondary-text font-medium italic opacity-60 max-w-xl">
-                            Pre-built, world-class SOPs • Fully Editable • Audit-Ready
-                        </p>
-
                         <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 w-fit shadow-2xl backdrop-blur-sm relative overflow-hidden group">
                             <div className="absolute -inset-1 bg-primary/5 blur opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                             <div className="space-y-2 relative z-10">
@@ -94,9 +96,11 @@ const HeroSection = () => {
                                 </p>
                             </div>
                             
-                            <p className="text-[10px] uppercase font-black text-white/40 mt-6 tracking-[0.2em] relative z-10 italic">
-                                WORKS ON EXCEL / GOOGLE SHEETS
-                            </p>
+                            {mounted && (
+                                <p className="text-[10px] uppercase font-black text-white/40 mt-6 tracking-[0.2em] relative z-10 italic">
+                                    WORKS ON EXCEL / GOOGLE SHEETS
+                                </p>
+                            )}
                         </div>
                     </div>
 
@@ -190,7 +194,7 @@ const SOPAdvantageSection = () => (
                         <div className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
                         <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/40" />
                         <div className="w-2.5 h-2.5 rounded-full bg-green-500/40" />
-                        <span className="text-[10px] font-black uppercase text-white/20 tracking-widest ml-4 italic">Sovereign_OS_v4.5.xlsx</span>
+                        <span className="text-[10px] font-black uppercase text-white/20 tracking-widest ml-4 italic">Sovereign_OS_v5.0.xlsx</span>
                     </div>
                     <img 
                         src="https://i.postimg.cc/mr5tRpPV/Screenshot-2026-03-18-124944.png" 
