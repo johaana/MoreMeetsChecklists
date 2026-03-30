@@ -7,7 +7,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 
 /**
  * Sovereign Engine v5.8 - MASTER ACCESS EDITION
- * Focus: Adoption Metrics, Volume-based Unit Logic, and Risk Watch.
+ * Focus: Exact Visual Parity, Zero-Patch UI, Volume-based Leaderboard.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {

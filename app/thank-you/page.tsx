@@ -101,7 +101,7 @@ function ThankYouContent() {
             Verifying Deployment...
           </h1>
           <p className="max-w-[600px] text-muted-foreground text-base md:text-xl/relaxed mx-auto italic font-medium">
-            Securing your Sovereign v4.4 Master Build. This will take only a few seconds.
+            Securing your Sovereign v5.8 Master Build. This will take only a few seconds.
           </p>
         </div>
       );
@@ -136,7 +136,7 @@ function ThankYouContent() {
             <div className="space-y-4">
                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Authenticated Deployment</Badge>
                 <h1 className="text-4xl md:text-6xl font-black font-headline text-primary-text italic uppercase tracking-tighter leading-tight">
-                    Sovereign v4.4 Master Build <br /> <span className="text-primary">Secured.</span>
+                    Sovereign v5.8 Master Build <br /> <span className="text-primary">Secured.</span>
                 </h1>
                 <p className="max-w-[650px] text-secondary-text text-lg md:text-xl font-medium italic border-l-2 border-primary/20 pl-8 mx-auto">
                     Your Operating System for <strong>{verifiedItem.title}</strong> has been generated. Your download should begin automatically.
@@ -156,7 +156,7 @@ function ThankYouContent() {
                     </div>
                     <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-left space-y-1">
                         <p className="text-[10px] font-black uppercase text-white/20 tracking-widest">Version</p>
-                        <p className="text-xs font-bold text-primary italic">SOVEREIGN v4.4</p>
+                        <p className="text-xs font-bold text-primary italic">SOVEREIGN v5.8</p>
                     </div>
                 </div>
 
@@ -214,7 +214,7 @@ function ThankYouContent() {
                     </div>
                     <AlertDialogTitle className="text-center text-primary-text font-black uppercase italic text-2xl tracking-tight">System Transfer Active</AlertDialogTitle>
                     <AlertDialogDescription className="text-center text-secondary-text font-medium italic text-base leading-relaxed">
-                        Your Sovereign v4.4 master file is being transferred. Please check your browser's download queue.
+                        Your Sovereign v5.8 master file is being transferred. Please check your browser's download queue.
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter className="pt-6">
