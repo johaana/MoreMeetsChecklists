@@ -197,7 +197,7 @@ const SOPAdvantageSection = () => (
                         <span className="text-[10px] font-black uppercase text-white/20 tracking-widest ml-4 italic">Sovereign_OS_v5.0.xlsx</span>
                     </div>
                     <img 
-                        src="https://i.postimg.cc/mr5tRpPV/Screenshot-2026-03-18-124944.png" 
+                        src="https://i.postimg.cc/q7zSzXgJ/Screenshot-2026-03-31-023157.png" 
                         alt="MoreMeets Engine Interface"
                         className="rounded-[2.5rem] mt-10 border border-white/5 transition-transform duration-700 group-hover:scale-[1.02]"
                     />
@@ -342,7 +342,7 @@ export default function Home() {
                             Eliminate Operational Risk <ArrowRight className="ml-4 h-8 w-8" />
                         </Link>
                     </Button>
-                    <div className="flex flex-wrap items-center justify-center gap-12">
+                    <div className="flex wrap items-center justify-center gap-12">
                         <div className="text-center space-y-1">
                             <p className="text-xs font-black uppercase tracking-widest text-primary flex items-center gap-2 justify-center"><Lock className="w-4 h-4" /> No SaaS Lock-in.</p>
                             <p className="text-[10px] font-black uppercase tracking-widest text-white/20 italic">Own your engine forever.</p>
