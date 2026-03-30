@@ -6,10 +6,9 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v5.4 - UNLOCKED & HARDENED
- * Focus: Fixed TEAM_HUB alignment + Functional Incident/ROI/Handover sheets.
- * Constraint: NO CHANGES to Home Console labels or layout.
- * FIX: Enforced patternType: 'solid' to eliminate rendering bugs.
+ * Sovereign Engine v5.5 - FULL REPOSITORY ACTIVATION
+ * Focus: Populated SOP_LIBRARY with technical depth.
+ * Constraint: NO CHANGES to Home Console design.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -21,7 +20,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-MASTER-SOVEREIGN-5.4";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-5.5";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -168,7 +167,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
-    // --- HOME CONSOLE (PRESERVED LABELS & LAYOUT) ---
+    // --- HOME CONSOLE ---
     const latestPersonFormula = `IFERROR(LOOKUP(2, 1/('TODAYS_TASKS'!$G$5:$G$2000<>""), 'TODAYS_TASKS'!$G$5:$G$2000), "AWAITING START")`;
     const latestBranchFormula = `IFERROR(LOOKUP(2, 1/('TODAYS_TASKS'!$G$5:$G$2000<>""), 'TODAYS_TASKS'!$B$5:$B$2000), "SYSTEM IDLE")`;
     const taskVolumeFormula = `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "?*")`;
@@ -210,9 +209,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [null, { t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(G15>=0.9, "HOT - PERFECT EXECUTION!", IF(G15>=0.6, "STABLE - PUSH HARDER", IF(G15>0, "COLD - TURN UP THE HEAT!", "SYSTEM INITIALIZED"))), "EMPIRE MOOD: LOADING...")`, s: { font: { sz: 16, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center' } } }, null, null, null, null, null],
         [
             null,
-            { v: "🏅 TEAM GLORY", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center' } } }, null, 
-            { v: "⚡ MOMENTUM", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center' } } }, null,
-            { v: "🛡️ COMMAND VITALS", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center' } } }, null
+            { v: "🏅 TODAY'S STAR:", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center' } } }, null, 
+            { v: "⚡ TOP BRANCH:", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center' } } }, null,
+            { v: "🛡️ COMMAND VITALS:", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center' } } }, null
         ],
         [
             null,
@@ -341,7 +340,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         allRoles.forEach((role, rIdx) => {
             const rowIdx = pData.length + 1;
             pData.push([
-                { t: 'f', f: `B${rowIdx} & "|" & D${rowIdx}`, s: dataStyleLeft }, // Column A: CONTENT LEFT ALIGNED
+                { t: 'f', f: `B${rowIdx} & "|" & D${rowIdx}`, s: dataStyleLeft }, 
                 { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`, s: dataStyleCenter },
                 { v: (bId === 1 && rIdx === 0) ? "Staff Member" : "[Type Name]", s: inputStyleLeft }, 
                 { v: role, s: dataStyleLeft },
@@ -398,7 +397,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const hData: any[][] = [[], [], [], hHeaders];
     for(let i=0; i<15; i++) {
-        const rIdx = hData.length + 1;
         hData.push([
             { v: "", s: inputStyle }, { v: "", s: inputStyle },
             { v: "", s: inputStyle }, { v: "", s: inputStyleLeft },
@@ -410,10 +408,41 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(hWs, "Shift Handover Bridge", 'F');
     utils.book_append_sheet(wb, hWs, "SHIFT_HANDOVER");
 
+    // --- SOP LIBRARY (ACTIVATED & DETAILED) ---
+    const sopHeaders = [
+        { v: "Module Title", s: headerStyle },
+        { v: "Dept", s: headerStyle },
+        { v: "Frequency", s: headerStyle },
+        { v: "Primary Role", s: headerStyle },
+        { v: "Task ID", s: headerStyle },
+        { v: "Requirement / Control Step", s: headerStyle },
+        { v: "Consequence of Failure", s: headerStyle },
+        { v: "Trainer Coaching Notes", s: headerStyle }
+    ];
+    const sopData: any[][] = [[], [], [], sopHeaders];
+    packChecklists.forEach(c => {
+        c.tasks.forEach(t => {
+            sopData.push([
+                { v: c.title, s: dataStyleLeft },
+                { v: c.department, s: dataStyleCenter },
+                { v: c.frequency, s: dataStyleCenter },
+                { v: c.role, s: dataStyleCenter },
+                { v: t.id, s: dataStyleCenter },
+                { v: t.description, s: dataStyleLeft },
+                { v: t.consequence, s: warningStyle },
+                { v: t.trainerNotes || "-", s: coachingStyle }
+            ]);
+        });
+    });
+    const sopWs = utils.aoa_to_sheet(sopData);
+    sopWs['!cols'] = [30, 15, 15, 20, 10, 65, 45, 50].map(w => ({ wch: w }));
+    addSovereignRibbon(sopWs, "Institutional SOP Database", 'H');
+    sopWs['!autofilter'] = { ref: `A4:H${sopData.length}` };
+    utils.book_append_sheet(wb, sopWs, "SOP_LIBRARY");
+
     // --- REMAINING SHEETS ---
     const simpleSheets = [
         { n: "BUSINESS_HEALTH", n_full: "Group Performance Hub" },
-        { n: "SOP_LIBRARY", n_full: "Institutional SOP Database" },
         { n: "HOW_THIS_WORKS", n_full: "System Command Manual" }
     ];
 
@@ -434,5 +463,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     utils.sheet_add_aoa(bhWs, bhData, { origin: "A1" });
     bhWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_5.4.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_5.5.xlsx`);
 }
