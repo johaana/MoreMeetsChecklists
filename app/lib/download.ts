@@ -7,7 +7,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 
 /**
  * Sovereign Engine v5.4 - UNLOCKED & HARDENED
- * Focus: Fixed TEAM_HUB alignment + Functional Incident/ROI sheets.
+ * Focus: Fixed TEAM_HUB alignment + Functional Incident/ROI/Handover sheets.
  * Constraint: NO CHANGES to Home Console labels or layout.
  * FIX: Enforced patternType: 'solid' to eliminate rendering bugs.
  */
@@ -390,10 +390,29 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(rWs, "Risk Mitigation & ROI Engine", 'E');
     utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
 
+    // --- SHIFT HANDOVER (ACTIVATED) ---
+    const hHeaders = [
+        { v: "Date", s: headerStyle }, { v: "Outgoing Mgr", s: headerStyle }, 
+        { v: "Incoming Mgr", s: headerStyle }, { v: "Critical Tasks / Pending Actions", s: headerStyle },
+        { v: "Maintenance & Staffing Notes", s: headerStyle }, { v: "Status", s: headerStyle }
+    ];
+    const hData: any[][] = [[], [], [], hHeaders];
+    for(let i=0; i<15; i++) {
+        const rIdx = hData.length + 1;
+        hData.push([
+            { v: "", s: inputStyle }, { v: "", s: inputStyle },
+            { v: "", s: inputStyle }, { v: "", s: inputStyleLeft },
+            { v: "", s: inputStyleLeft }, { v: "PENDING", s: inputStyle }
+        ]);
+    }
+    const hWs = utils.aoa_to_sheet(hData);
+    hWs['!cols'] = [15, 20, 20, 65, 65, 15].map(w => ({ wch: w }));
+    addSovereignRibbon(hWs, "Shift Handover Bridge", 'F');
+    utils.book_append_sheet(wb, hWs, "SHIFT_HANDOVER");
+
     // --- REMAINING SHEETS ---
     const simpleSheets = [
         { n: "BUSINESS_HEALTH", n_full: "Group Performance Hub" },
-        { n: "SHIFT_HANDOVER", n_full: "Shift Handover Bridge" },
         { n: "SOP_LIBRARY", n_full: "Institutional SOP Database" },
         { n: "HOW_THIS_WORKS", n_full: "System Command Manual" }
     ];
