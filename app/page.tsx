@@ -49,11 +49,6 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 );
 
 const HeroSection = () => {
-    const [mounted, setMounted] = React.useState(false);
-    React.useEffect(() => {
-        setMounted(true);
-    }, []);
-
     return (
         <section className="relative w-full flex flex-col items-center h-[calc(100dvh-64px)] md:h-[calc(100vh-64px)] md:min-h-[650px] overflow-hidden bg-background">
             {/* Visual Brand Layer */}
@@ -98,11 +93,10 @@ const HeroSection = () => {
                                     without asking anyone.
                                 </p>
                             </div>
-                            {mounted && (
-                                <p className="text-[10px] uppercase font-black text-white/40 mt-6 tracking-[0.2em] relative z-10 italic">
-                                    WORKS ON EXCEL / GOOGLE SHEETS
-                                </p>
-                            )}
+                            
+                            <p className="text-[10px] uppercase font-black text-white/40 mt-6 tracking-[0.2em] relative z-10 italic">
+                                WORKS ON EXCEL / GOOGLE SHEETS
+                            </p>
                         </div>
                     </div>
 

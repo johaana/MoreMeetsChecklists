@@ -10,6 +10,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
  * UI: Symmetric Zero-Clipping Midnight Navy Console.
  * FORMULA: Robust MODE-MATCH logic for Top Performer/Branch.
  * FIX: 'Verified By' contrast forced to black for legibility.
+ * FIX: Zebra-stripe color object structure corrected to prevent black-bar rendering.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -128,7 +129,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     const inputStyle = {
         ...dataStyleCenter,
-        font: { ...baseFont, color: { rgb: COLORS.INK_DARK }, bold: true },
+        font: { ...baseFont, color: { rgb: "000000" }, bold: true }, // Explicit black for high contrast
         fill: { fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
@@ -166,6 +167,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
 
     // --- HARDENED SOVEREIGN MODE-MATCH FORMULAS v4.5 ---
+    // Correct logic to ignore blanks and avoid intersection errors
     const starFormula = `IFERROR(INDEX('TODAYS_TASKS'!$G$5:$G$2000,MODE(IF('TODAYS_TASKS'!$G$5:$G$2000<>"",MATCH('TODAYS_TASKS'!$G$5:$G$2000,'TODAYS_TASKS'!$G$5:$G$2000,0)))),"---")`;
     const branchFormula = `IFERROR(INDEX('TODAYS_TASKS'!$B$5:$B$2000,MODE(IF('TODAYS_TASKS'!$B$5:$B$2000<>"",MATCH('TODAYS_TASKS'!$B$5:$B$2000,'TODAYS_TASKS'!$B$5:$B$2000,0)))),"---")`;
     const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "<>N/A*", 'TODAYS_TASKS'!$F$5:$F$2000, "<>", 'TODAYS_TASKS'!$F$5:$F$2000, "<>Mission Requirement*")), 0)`;
@@ -267,9 +269,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const branchSetupData = [
         [], [], [],
         facilityHeaders,
-        [{ v: "1", s: dataStyleCenter }, { v: "Bandra Main (Sample)", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
-        [{ v: "2", s: dataStyleCenter }, { v: "Colaba West (Sample)", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
-        [{ v: "3", s: dataStyleCenter }, { v: "Andheri East (Sample)", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
+        [{ v: "1", s: dataStyleCenter }, { v: "Bandra Main (Sample)", s: { ...inputStyle, font: { ...baseFont, color: { rgb: "000000" } } } }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
+        [{ v: "2", s: dataStyleCenter }, { v: "Colaba West (Sample)", s: { ...inputStyle, font: { ...baseFont, color: { rgb: "000000" } } } }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
+        [{ v: "3", s: dataStyleCenter }, { v: "Andheri East (Sample)", s: { ...inputStyle, font: { ...baseFont, color: { rgb: "000000" } } } }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
         [{ v: "4", s: dataStyleCenter }, { v: "", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))],
         [{ v: "5", s: dataStyleCenter }, { v: "", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle }))]
     ];
@@ -299,8 +301,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 
                 const baseStyle = logicalIdx % 2 === 0 ? dataStyleCenter : { ...dataStyleCenter, fill: { fgColor: { rgb: COLORS.GHOST_GREY } } };
                 const baseStyleLeft = logicalIdx % 2 === 0 ? dataStyleLeft : { ...dataStyleLeft, fill: { fgColor: { rgb: COLORS.GHOST_GREY } } };
-                const zebraInput = logicalIdx % 2 === 0 ? inputStyle : { ...inputStyle, fill: { fgColor: "F0F9FF" } };
-                const zebraMgrInput = logicalIdx % 2 === 0 ? managerInputStyle : { ...managerInputStyle, fill: { fgColor: "FEFCE8" } };
+                
+                // FIX: zebra color structure corrected to { rgb: "..." } to prevent black bars
+                const zebraInput = logicalIdx % 2 === 0 ? inputStyle : { ...inputStyle, fill: { fgColor: { rgb: "F0F9FF" } } };
+                const zebraMgrInput = logicalIdx % 2 === 0 ? managerInputStyle : { ...managerInputStyle, fill: { fgColor: { rgb: "FEFCE8" } } };
 
                 mData.push([
                     { v: startDate, t: 'd', s: { ...baseStyle, numFmt: 'dd-mm-yyyy' } },
@@ -349,7 +353,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             pData.push([
                 { t: 'f', f: `B${rowIdx} & "|" & D${rowIdx}`, s: dataStyleCenter },
                 { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`, s: dataStyleCenter },
-                { v: (bId === 1 && rIdx === 0) ? "Imran Khan (Sample)" : "[Type Staff Name]", s: inputStyle }, 
+                { v: (bId === 1 && rIdx === 0) ? "Imran Khan (Sample)" : "[Type Staff Name]", s: { ...inputStyle, font: { ...baseFont, color: { rgb: "000000" } } } }, 
                 { v: role, s: dataStyleLeft },
                 { v: "", s: inputStyle }, 
                 { v: "ACTIVE", s: dataStyleCenter }
