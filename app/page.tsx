@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { 
     ArrowRight, 
-    Check, 
     Zap, 
     Timer, 
     Lock, 
@@ -85,15 +84,15 @@ const HeroSection = () => (
 
                     <div className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 w-fit shadow-2xl backdrop-blur-sm relative overflow-hidden group">
                         <div className="absolute -inset-1 bg-primary/5 blur opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                        <div className="space-y-1 relative z-10">
-                            <p className="text-lg md:text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-none">
+                        <div className="space-y-2 relative z-10">
+                            <p className="text-xl md:text-3xl font-black text-primary-text uppercase italic tracking-tighter leading-none">
                                 KNOW WHAT’S DONE. WHAT’S MISSED. WHAT’S DELAYED—
                             </p>
                             <p className="text-base md:text-lg text-primary font-bold lowercase italic">
                                 without asking anyone.
                             </p>
                         </div>
-                        <p className="text-[7px] md:text-[8px] uppercase font-black text-white/30 mt-4 tracking-[0.25em] relative z-10 italic">
+                        <p className="text-[10px] md:text-[11px] uppercase font-black text-white/40 mt-6 tracking-[0.2em] relative z-10 italic">
                             WORKS ON EXCEL / GOOGLE SHEETS
                         </p>
                     </div>
