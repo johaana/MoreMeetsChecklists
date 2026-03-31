@@ -6,12 +6,8 @@ export const hotels_and_resorts: PremiumPack = {
     title: "Hotel Operating System",
     priceINR: 799,
     priceUSD: 9,
-    competitorPriceUSD: 599,
-    updatedAt: "2025-02-24",
-    paymentId: 'pl_RaWEBHhFLQENxC',
-    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/2f377557-d41f-4571-83d3-a52e24ac27dd',
     category: "Hospitality",
-    description: "No monthly subscriptions. No SaaS dependency. One-time investment for a lifetime of control. Sovereign v4.4 is the professional plug for your operational leaks.",
+    description: "The definitive Sovereign v4.4 engine for luxury hotels and resorts. Hardening 250+ technical control points across Front Office, Housekeeping, Engineering, and Events.",
     heroHeadline: "Eliminate Guest Safety Gaps and Viral Reputation Damage",
     heroSubheadline: "Track 250+ technical control points across Front Office, Housekeeping, Engineering, Events, and ORM—even when you’re not on property.",
     pricingUrgency: "One safety incident or a single negative viral review costs 100x more than this entire system.",
@@ -22,13 +18,12 @@ export const hotels_and_resorts: PremiumPack = {
     bestseller: true,
     whoIsItFor: ["General Managers", "Hotel Owners", "Heads of Housekeeping", "Banqueting Directors", "Security & Valet Managers"],
     sampleItems: [
-        { text: "<strong>2-Minute Pulse Reporting</strong>: Team updates tasks in seconds. Zero-friction supervision without being present.", icon: "timer" },
-        { text: "<strong>OTA Reputation Shield</strong>: Daily pulse for review response and social media signals to protect your ratings.", icon: "star" },
-        { text: "<strong>Event & Venue Command</strong>: Pre-event AV and floor safety audits for Weddings and Conferences.", icon: "calendar-heart" },
-        { text: "<strong>Manager Verification</strong>: Highlighted 'Yellow Targets' show leadership exactly what needs sign-off—no shortcuts.", icon: "shield-check" },
-        { text: "<strong>Built-in Training</strong>: Every task includes instructions and consequences of failure. Knowledge stays if staff resign.", icon: "history" },
-        { text: "<strong>Room Service Integrity</strong>: Dial-tests for inter-phones and chip-free utensil audits for zero-fail delivery.", icon: "hand-platter" },
-        { text: "<strong>Sovereign Infrastructure</strong>: No recurring SaaS fees. You own your operational data and the engine forever.", icon: "lock" }
+        { text: "<strong>Front Office Integrity</strong>: Zero-fail guest ID compliance and PMS-to-Police registration sync.", icon: "concierge-bell" },
+        { text: "<strong>Housekeeping Command</strong>: Hourly public area audits and deep-clean room inspection scores.", icon: "bed" },
+        { text: "<strong>Wedding & Event Readiness</strong>: Pre-event AV testing and ballroom floor safety walkthroughs.", icon: "calendar-heart" },
+        { text: "<strong>Engineering (MEP) Vitals</strong>: Daily Chiller, Boiler, and Generator fuel/load logging.", icon: "wrench" },
+        { text: "<strong>Travel Desk & Valet Safety</strong>: Driver sobriety checks and valet key-vault reconciliations.", icon: "car" },
+        { text: "<strong>Reputation Shield (ORM)</strong>: 24-hour response mandatory for all OTA and Google reviews.", icon: "star" }
     ],
     checklists: [
         {
@@ -39,26 +34,36 @@ export const hotels_and_resorts: PremiumPack = {
             summary: "Ensures legal compliance, guest arrival readiness, and billing integrity.",
             icon: "concierge-bell",
             tasks: [
-                { id: "HR-FO-01", description: "Verify all arrivals against booking system (PMS vs. Channel Manager).", priority: "High", riskLevel: "High", consequence: "Overbooking conflict and forced guest relocation/denial.", proof: "System Reconcile Note" },
-                { id: "HR-FO-02", description: "Ensure check-in desk is staffed during peak hours (12 PM - 3 PM).", priority: "High", riskLevel: "Medium", consequence: "Long wait times leading to immediate negative first impressions.", proof: "Roster Audit" },
-                { id: "HR-FO-03", description: "Validate guest ID compliance and police registration (C-Form/KYC).", priority: "High", riskLevel: "High", consequence: "Severe legal violations and potential business closure.", proof: "Compliance Log" },
-                { id: "HR-FO-04", description: "Track and log unresolved guest complaints from the previous shift.", priority: "High", riskLevel: "High", consequence: "Escalated complaints turning into viral 1-star reviews.", proof: "Open Issue Log" },
-                { id: "HR-FO-05", description: "Confirm all scheduled wake-up calls are logged and verified.", priority: "Medium", riskLevel: "Medium", consequence: "Guests missing flights; high dissatisfaction.", proof: "Call Log" }
+                { id: "HR-FO-01", description: "Verify all arrivals against booking system (PMS vs. Channel Manager).", priority: "High", riskLevel: "High", consequence: "Overbooking conflict.", proof: "System Reconcile" },
+                { id: "HR-FO-02", description: "Validate guest ID compliance and police registration (C-Form/KYC).", priority: "High", riskLevel: "High", consequence: "Severe legal violations and closure.", proof: "Compliance Log" },
+                { id: "HR-FO-03", description: "Confirm all scheduled wake-up calls are logged and verified.", priority: "Medium", riskLevel: "Medium", consequence: "Guest missing flight.", proof: "Call Log" },
+                { id: "HR-FO-04", description: "Audit reception cash drawer against shift-end PMS report.", priority: "High", riskLevel: "High", consequence: "Internal theft.", proof: "Cash Sheet" },
+                { id: "HR-FO-05", description: "Verify room-key card stock levels.", priority: "Low", riskLevel: "Low", consequence: "Check-in delay.", proof: "Stock Check" }
             ]
         },
         {
-            title: "Housekeeping & Room Integrity",
+            title: "Housekeeping Command",
             department: "Housekeeping",
             frequency: "Daily",
             role: "Head of Housekeeping",
-            summary: "Manages the invisible infrastructure of cleanliness and comfort.",
+            summary: "Manages the sanitation infrastructure.",
             icon: "bed",
             tasks: [
-                { id: "HR-HK-01", description: "Verify all rooms cleaned and inspected before check-in time.", priority: "High", riskLevel: "High", consequence: "Immediate guest refund risk.", proof: "Inspection Sign-off" },
-                { id: "HR-HK-02", description: "Conduct random supervisor audits of 10% of occupied rooms.", priority: "High", riskLevel: "High", consequence: "Slipping standards.", proof: "Audit Scorecard" },
-                { id: "HR-HK-03", description: "Check linen quality: scan for stains, tears, or graying.", priority: "High", riskLevel: "Medium", consequence: "Brand damage.", proof: "Linen Log" },
-                { id: "HR-HK-04", description: "Check bathroom hygiene: check for hair, mold, and scale.", priority: "High", riskLevel: "High", consequence: "1-star review driver.", proof: "Visual Audit" },
-                { id: "HR-HK-05", description: "Inspect for signs of pests (bed bugs, roaches) in crevices.", priority: "High", riskLevel: "High", consequence: "Health department closure.", proof: "Pest Audit" }
+                { id: "HR-HK-01", description: "Verify all check-out rooms inspected before 2 PM.", priority: "High", riskLevel: "High", consequence: "Guest refund risk.", proof: "Inspection Sign-off" },
+                { id: "HR-HK-02", description: "Audit public area restrooms every hour.", priority: "High", riskLevel: "Medium", consequence: "1-star review driver.", proof: "Hourly Sheet" },
+                { id: "HR-HK-03", description: "Inspect laundry chemical titration for automatic dispensers.", priority: "Medium", riskLevel: "Medium", consequence: "Linen damage.", proof: "Test Strip" }
+            ]
+        },
+        {
+            title: "Wedding & Event Readiness",
+            department: "Banquets",
+            frequency: "Per Event",
+            role: "Events Manager",
+            summary: "Zero-fail framework for ballroom events.",
+            icon: "calendar-heart",
+            tasks: [
+                { id: "HR-EVT-01", description: "Technical Recce: Test projector, mics, and Wi-Fi 4 hours pre-event.", priority: "High", riskLevel: "High", consequence: "High-visibility event failure.", proof: "Tech Report" },
+                { id: "HR-EVT-02", description: "Floor Safety Audit: Check for loose cables or trip hazards in halls.", priority: "High", riskLevel: "High", consequence: "Guest injury liability.", proof: "Walkthrough" }
             ]
         }
     ]
