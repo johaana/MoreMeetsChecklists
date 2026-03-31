@@ -159,7 +159,34 @@ export const restaurants: PremiumPack = {
             tasks: [
                 { id: "RES-ORM-01", description: "Reply to all Google My Business reviews < 24h.", priority: "High", riskLevel: "Medium", consequence: "Ranking drop and brand damage.", proof: "Admin Dashboard" },
                 { id: "RES-ORM-02", description: "Review and resolve Zomato/Swiggy order complaints.", priority: "High", riskLevel: "High", consequence: "Merchant platform penalties.", proof: "App Log" },
-                { id: "RES-ORM-03", description: "Audit 'Table Service' survey scores.", priority: "Medium", riskLevel: "Low", consequence: "Undetected drop in server quality.", proof: "Survey Sheet" }
+                { id: "RES-ORM-03", description: "Audit 'Table Service' survey scores.", priority: "Medium", riskLevel: "Low", consequence: "Undetected drop in server quality.", proof: "Survey Sheet" },
+                { id: "RES-ORM-04", description: "Check Instagram DM inbox for guest inquiries.", priority: "Medium", riskLevel: "Low", consequence: "Missed booking opportunities.", proof: "Inbox Clear" },
+                { id: "RES-ORM-05", description: "Verify 'Today's Specials' are updated on social stories.", priority: "Low", riskLevel: "Low", consequence: "Lower sales of high-margin specials.", proof: "Story Post" },
+                { id: "RES-ORM-06", description: "Audit website reservation widget functionality.", priority: "High", riskLevel: "Medium", consequence: "Lost guest revenue.", proof: "Digital Test" },
+                { id: "RES-ORM-07", description: "Monitor competitor mentions and local trends.", priority: "Low", riskLevel: "Low", consequence: "Loss of market relevance.", proof: "Trend Log" },
+                { id: "RES-ORM-08", description: "Update Google My Business 'Holiday Hours' if needed.", priority: "High", riskLevel: "Medium", consequence: "Guests arriving at a closed outlet.", proof: "System Sync" },
+                { id: "RES-ORM-09", description: "Check for unauthorized usage of brand logos online.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution.", proof: "Search Log" },
+                { id: "RES-ORM-10", description: "Execute weekly 'Loyalty Pulse' email to VIP guests.", priority: "Medium", riskLevel: "Low", consequence: "Loss of recurring business.", proof: "Campaign Log" }
+            ]
+        },
+        {
+            title: "Deep Cleaning & Hygiene",
+            department: "Kitchen",
+            frequency: "Weekly",
+            role: "Head Chef",
+            summary: "Advanced sanitation for back-of-house infrastructure.",
+            icon: "sparkles",
+            tasks: [
+                { id: "RES-CLN-01", description: "Deep clean of exhaust hoods and grease filters.", priority: "High", riskLevel: "High", consequence: "Major fire hazard and airflow failure.", proof: "Visual Audit" },
+                { id: "RES-CLN-02", description: "Pressure wash floor drains and grease traps.", priority: "High", riskLevel: "Medium", consequence: "Foul odors and drain backups.", proof: "Cleaning Log" },
+                { id: "RES-CLN-03", description: "Sanitize interiors of all refrigeration units.", priority: "High", riskLevel: "High", consequence: "Listeria and mold growth on shelving.", proof: "ATP Swab" },
+                { id: "RES-CLN-04", description: "De-scale dishwashing machine and check nozzles.", priority: "Medium", riskLevel: "Low", consequence: "Poor cleaning of guest utensils.", proof: "Service Report" },
+                { id: "RES-CLN-05", description: "Wash and sanitize all vegetable wash crates.", priority: "High", riskLevel: "Medium", consequence: "Bacterial cross-contamination.", proof: "Visual Check" },
+                { id: "RES-CLN-06", description: "Sanitize chemical storage shelves and bottles.", priority: "Medium", riskLevel: "Low", consequence: "Chemical contamination of food handling area.", proof: "Storage Audit" },
+                { id: "RES-CLN-07", description: "Clean behind and under all heavy equipment.", priority: "High", riskLevel: "High", consequence: "Pest breeding grounds.", proof: "Supervisor Walkthrough" },
+                { id: "RES-CLN-08", description: "Wipe and sanitize dry-store shelving.", priority: "Low", riskLevel: "Low", consequence: "Dust and weevil attraction.", proof: "Shelf Check" },
+                { id: "RES-CLN-09", description: "Deep clean staff locker room and washrooms.", priority: "Medium", riskLevel: "Low", consequence: "Poor staff morale and hygiene signals.", proof: "Cleaning Log" },
+                { id: "RES-CLN-10", description: "Final hygiene sign-off for the weekly cycle.", priority: "High", riskLevel: "Low", consequence: "Loss of baseline standards.", proof: "Signature" }
             ]
         }
     ]
