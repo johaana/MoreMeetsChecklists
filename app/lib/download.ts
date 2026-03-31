@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v6.2 - INSTITUTIONAL COMMAND RECOVERY
- * Focus: Logic-Hardening, Row-Height Locking, Zero-Patch Navy Canvas.
+ * Sovereign Engine v6.2 - FORENSIC INTELLIGENCE BUILD
+ * Focus: Drill-down Clarity, ROI Header Hardening, Row-Height Precision.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -126,7 +126,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_GREEN } }
     };
 
-    const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K') => {
+    const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K', customTitleHpt: number = 35) => {
         const ribbonData = [
             [{ v: "◀ BACK TO CONSOLE", l: { Target: "#'HOME_CONSOLE'!A1" }, s: navStyle }],
             [{ v: `  ${title.toUpperCase()}`, s: ribbonHeaderStyle }]
@@ -147,8 +147,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             if(!ws[cell2]) ws[cell2] = { v: "", s: ribbonHeaderStyle };
         }
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 2 }];
-        // Row Locking Protocol
-        ws['!rows'] = [{ hpt: 25 }, { hpt: 35 }];
+        ws['!rows'] = [{ hpt: 25 }, { hpt: customTitleHpt }];
     };
 
     let packChecklists: Checklist[] = [];
@@ -257,7 +256,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { s: { r: 15, c: 1 }, e: { r: 15, c: 6 } },
         { s: { r: 17, c: 1 }, e: { r: 17, c: 6 } }, { s: { r: 18, c: 1 }, e: { r: 18, c: 6 } }
     ];
-    // Force Row Heights
     homeWs['!rows'] = Array(35).fill({ hpt: 22 });
     homeWs['!rows'][2] = { hpt: 45 }; 
     homeWs['!rows'][3] = { hpt: 25 }; 
@@ -279,7 +277,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const setupWs = utils.aoa_to_sheet(branchSetupData);
     setupWs['!cols'] = [12, 35, ...packChecklists.map(() => 15), 0, 0].map((w, i) => ({ wch: w, hidden: w === 0 }));
-    addSovereignRibbon(setupWs, "Branch Master Setup", utils.encode_col(facilityHeaders.length - 1));
+    addSovereignRibbon(setupWs, "Branch Master Setup", utils.encode_col(facilityHeaders.length - 1), 25);
     utils.book_append_sheet(wb, setupWs, "BRANCH_MASTER");
 
     // --- MISSION LEDGER ---
@@ -392,16 +390,31 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     // --- BUSINESS HEALTH ---
     const bhHeaders = [{ v: "Operational KPI", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Risk Alert", s: headerStyle }];
-    const bhData = [[], [], [], bhHeaders, [{ v: "Group Progress", s: dataStyleLeft }, { t:'f', f: progressFormula, s: { ...dataStyleCenter, numFmt: '0%' } }, { v: "95% MIN" }], [{ v: "🚨 CRITICAL WATCH", s: { ...dataStyleLeft, font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { t:'f', f: criticalWatchFormula, s: { ...dataStyleCenter, font: { bold: true }, color: { rgb: COLORS.RISK_RED } } }, { v: "ZERO TOLERANCE" }]];
+    const criticalDetailFormula = `IF(MAX('BRANCH_MASTER'!$L$5:$L$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$L$5:$L$15), 'BRANCH_MASTER'!$L$5:$L$15, 0)) & " • " & MAX('BRANCH_MASTER'!$L$5:$L$15) & " HIGH-RISK PENDING", "ALL SYSTEMS SECURE")`;
+    const bhData = [
+        [], [], [], 
+        bhHeaders, 
+        [{ v: "Group Progress", s: dataStyleLeft }, { t:'f', f: progressFormula, s: { ...dataStyleCenter, numFmt: '0%', font: { bold: true } } }, { v: "95% MIN" }], 
+        [{ v: "🚨 CRITICAL WATCH", s: { ...dataStyleLeft, font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { t:'f', f: criticalDetailFormula, s: { ...dataStyleCenter, font: { bold: true }, color: { rgb: COLORS.RISK_RED } } }, { v: "ZERO TOLERANCE" }]
+    ];
     const bhWs = utils.aoa_to_sheet(bhData);
     addSovereignRibbon(bhWs, "Performance Analytics", 'C');
-    bhWs['!cols'] = [40, 25, 45].map(w => ({ wch: w }));
+    bhWs['!cols'] = [40, 45, 45].map(w => ({ wch: w }));
     bhWs['!rows'] = Array(15).fill({ hpt: 25 });
     utils.book_append_sheet(wb, bhWs, "BUSINESS_HEALTH");
 
-    // ROI Engine
-    const roiWs = utils.aoa_to_sheet([[],[],[],[{v:"Liability Category", s:headerStyle}, {v:"Shield Value", s:headerStyle}, {v:"Status", s:headerStyle}], [{v:"Safety & Compliance", s:dataStyleLeft}, {v:"₹45,000", s:dataStyleCenter}, {v:"SHIELDED", s:coachingStyle}]]);
+    // --- ROI ENGINE ---
+    const roiHeaders = [{ v: "Liability Category", s: headerStyle }, { v: "Shield Value", s: headerStyle }, { v: "Status", s: headerStyle }];
+    const roiData = [
+        [], [], [], 
+        roiHeaders, 
+        [{ v: "Safety & Compliance Shield", s: dataStyleLeft }, { v: "₹45,000", s: dataStyleCenter }, { v: "SHIELDED", s: coachingStyle }],
+        [{ v: "Stock Loss Prevention", s: dataStyleLeft }, { v: "₹12,000", s: dataStyleCenter }, { v: "SECURE", s: coachingStyle }],
+        [{ v: "Operational Efficiency Gain", s: dataStyleLeft }, { v: "₹8,500", s: dataStyleCenter }, { v: "ACTIVE", s: coachingStyle }]
+    ];
+    const roiWs = utils.aoa_to_sheet(roiData);
     addSovereignRibbon(roiWs, "ROI & Risk Shield Engine", 'C');
+    roiWs['!cols'] = [40, 25, 45].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, roiWs, "ROI_ENGINE");
 
     writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_6.2.xlsx`);
