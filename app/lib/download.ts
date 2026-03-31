@@ -390,18 +390,53 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     utils.book_append_sheet(wb, sopWs, "SOP_LIBRARY");
 
     // --- BUSINESS HEALTH ---
-    const bhHeaders = [{ v: "Operational KPI", s: headerStyle }, { v: "Live Status", s: headerStyle }, { v: "Risk Alert", s: headerStyle }];
-    const criticalDetailFormula = `IF(MAX('BRANCH_MASTER'!$L$5:$L$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$L$5:$L$15), 'BRANCH_MASTER'!$L$5:$L$15, 0)) & " • " & MAX('BRANCH_MASTER'!$L$5:$L$15) & " HIGH-RISK PENDING", "ALL SYSTEMS SECURE")`;
-    const bhData = [
-        [], [], [], 
-        bhHeaders, 
-        [{ v: "Group Progress", s: dataStyleLeft }, { t:'f', f: progressFormula, s: { ...dataStyleCenter, numFmt: '0%', font: { bold: true } } }, { v: "95% MIN" }], 
-        [{ v: "🚨 CRITICAL WATCH", s: { ...dataStyleLeft, font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { t:'f', f: criticalDetailFormula, s: { ...dataStyleCenter, font: { bold: true }, color: { rgb: COLORS.RISK_RED } } }, { v: "ZERO TOLERANCE" }]
+    const bhHeaders = [
+        { v: "Operational KPI", s: headerStyle }, 
+        { v: "Live Status", s: headerStyle }, 
+        { v: "Performance Target", s: headerStyle }
     ];
+    
+    const breakdownHeaders = [
+        { v: "Unit Name", s: headerStyle },
+        { v: "Pending High-Risk Tasks", s: headerStyle },
+        { v: "Forensic Analysis", s: headerStyle }
+    ];
+
+    const incidentCountFormulaBh = `COUNTIF('INCIDENT_TRACKER'!$F$5:$F$20, "OPEN")`;
+
+    const bhData: any[][] = [
+        [], [], 
+        [{ v: "GROUP PERFORMANCE HUB", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center' } }, t: 's' }],
+        bhHeaders, 
+        [{ v: "Group Shift Progress", s: dataStyleLeft }, { t:'f', f: progressFormula, s: { ...dataStyleCenter, numFmt: '0%', font: { bold: true } } }, { v: "95% MIN" }], 
+        [{ v: "🚨 CRITICAL WATCH", s: { ...dataStyleLeft, font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { t:'f', f: criticalWatchFormula, s: { ...dataStyleCenter, font: { bold: true }, color: { rgb: COLORS.RISK_RED } } }, { v: "ZERO TOLERANCE" }],
+        [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f: incidentCountFormulaBh, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { v: "TARGET: 0" }],
+        [],
+        [{ v: "RISK INTELLIGENCE BREAKDOWN", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center' } }, t: 's' }],
+        breakdownHeaders
+    ];
+
+    // Add branch breakdown rows
+    [1, 2, 3].forEach(i => {
+        const rowIdx = bhData.length + 1;
+        bhData.push([
+            { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${i}), "")`, s: dataStyleLeft },
+            { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$L$5:$L$15, ${i}), 0)`, s: dataStyleCenter },
+            { t: 'f', f: `IF(B${rowIdx}>5, "CRITICAL EXPOSURE - REVIEW NOW", IF(B${rowIdx}>0, "CHECK FIRE EXITS & GAS BANKS", "OPERATIONAL STABILITY DETECTED"))`, s: { ...dataStyleLeft, italic: true } }
+        ]);
+    });
+
     const bhWs = utils.aoa_to_sheet(bhData);
     addSovereignRibbon(bhWs, "Performance Analytics", 'C');
-    bhWs['!cols'] = [40, 45, 45].map(w => ({ wch: w }));
-    bhWs['!rows'] = Array(15).fill({ hpt: 25 });
+    bhWs['!cols'] = [40, 45, 65].map(w => ({ wch: w }));
+    bhWs['!rows'] = Array(bhData.length).fill({ hpt: 25 });
+    bhWs['!rows'][2] = { hpt: 35 }; // Hub Header
+    bhWs['!rows'][8] = { hpt: 35 }; // Breakdown Header
+    
+    if (!bhWs['!merges']) bhWs['!merges'] = [];
+    bhWs['!merges'].push({ s: { r: 2, c: 0 }, e: { r: 2, c: 2 } }); 
+    bhWs['!merges'].push({ s: { r: 8, c: 0 }, e: { r: 8, c: 2 } });
+
     utils.book_append_sheet(wb, bhWs, "BUSINESS_HEALTH");
 
     // --- ROI ENGINE ---
