@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v6.5 - TOTAL COMMAND BUILD
- * Focus: High-Density Payload, Multi-Role TEAM_HUB, Custom Empty-State Intelligence.
+ * Sovereign Engine v6.6 - INSTITUTIONAL COMMAND BUILD
+ * Focus: 8-Role specialized matrix, 120-Task density, Hardened Pulse formula.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -19,7 +19,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-MASTER-SOVEREIGN-6.5";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-6.6";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -165,7 +165,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
 
     // --- FORMULA RE-ENGINEERING (Empty State Messages) ---
-    const opPulseFormula = `IF(MAX('TEAM_HUB'!$G$5:$G$100)=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$100, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$100, "?*")), "0%") & " (" & COUNTIFS('TEAM_HUB'!$G$5:$G$100, ">0") & "/" & COUNTIFS('TEAM_HUB'!$D$5:$D$100, "?*") & ")")`;
+    // Pulse logic hardened: only counts signal if Column D (Staff Name) is not empty.
+    const opPulseFormula = `IF(COUNTIFS('TEAM_HUB'!$D$5:$D$100, "?*")=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$100, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$100, "?*")), "0%") & " (" & COUNTIFS('TEAM_HUB'!$G$5:$G$100, ">0") & "/" & COUNTIFS('TEAM_HUB'!$D$5:$D$100, "?*") & ")")`;
     const topStarFormula = `IF(MAX('TEAM_HUB'!$G$5:$G$100)>0, INDEX('TEAM_HUB'!$D$5:$D$100, MATCH(MAX('TEAM_HUB'!$G$5:$G$100), 'TEAM_HUB'!$G$5:$G$100, 0)), "NO LEADER YET")`;
     const topBranchFormula = `IF(MAX('BRANCH_MASTER'!$K$5:$K$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$K$5:$K$15), 'BRANCH_MASTER'!$K$5:$K$15, 0)), "NO LEADER YET")`;
     const criticalWatchFormula = `IF(MAX('BRANCH_MASTER'!$L$5:$L$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$L$5:$L$15), 'BRANCH_MASTER'!$L$5:$L$15, 0)), "ALL CLEAR")`;
@@ -176,7 +177,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', vertical: 'center' }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v6.5 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', vertical: 'center' }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v6.6 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', vertical: 'center' }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center' }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -204,7 +205,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }, null
         ],
         [],
-        [null, { t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(G15>=0.9, "HOT - PERFECT EXECUTION!", IF(G15>=0.6, "STABLE - PUSH HARDER", IF(G15>0, "COLD - TURN UP THE HEAT!", "SYSTEM INITIALIZED"))), "EMPIRE MOOD: LOADING...")`, s: { font: { sz: 16, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center' } } }, null, null, null, null, null],
+        [null, { t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(G15>=0.9, "HOT - PERFECT EXECUTION!", IF(G15>=0.6, "STABLE - PUSH HARDER", IF(G15>0, "COLD - TURN UP THE HEAT!", "AWAITING SIGNAL"))), "EMPIRE MOOD: LOADING...")`, s: { font: { sz: 16, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center' } } }, null, null, null, null, null],
         [
             null,
             { v: "🏆 TEAM GLORY", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center' } } }, null, 
@@ -344,7 +345,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { t: 'f', f: `B${rowIdx} & "|" & C${rowIdx}`, s: dataStyleLeft }, 
                 { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`, s: dataStyleCenter },
                 { v: role, s: dataStyleLeft },
-                { v: "", s: inputStyleLeft }, 
+                { v: "", s: inputStyleLeft }, // Empty name by default to prevent rogue pulse counts
                 { v: "", s: inputStyleLeft }, 
                 { v: "ACTIVE", s: dataStyleCenter },
                 { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, D${rowIdx}, 'TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED")` }
@@ -358,7 +359,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     pWs['!rows'][3] = { hpt: 35 };
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- BUSINESS HEALTH (Screenshot Perfect) ---
+    // --- BUSINESS HEALTH ---
     const bhHeaders = [
         { v: "Operational KPI", s: headerStyle }, 
         { v: "Live Status", s: headerStyle }, 
@@ -400,7 +401,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     bhWs['!merges'].push({ s: { r: 8, c: 0 }, e: { r: 8, c: 2 } });
     utils.book_append_sheet(wb, bhWs, "BUSINESS_HEALTH");
 
-    // --- SHIFT HANDOVER (Full Build) ---
+    // --- SHIFT HANDOVER ---
     const shHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch", s: headerStyle }, 
         { v: "From Shift", s: headerStyle }, { v: "To Shift", s: headerStyle },
@@ -458,18 +459,18 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     roiWs['!cols'] = [40, 25, 45].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, roiWs, "ROI_ENGINE");
 
-    // --- HOW THIS WORKS (Full Build) ---
+    // --- HOW THIS WORKS ---
     const hwData = [
         [], [], 
         [{ v: "SYSTEM OPERATING PROTOCOL", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center' } } }],
         [{ v: "1. THE 2-MINUTE PULSE", s: { font: { bold: true }, border: borderStyle } }],
-        [{ v: "Staff must open the TODAYS_TASKS ledger daily. Simply entering their FULL NAME in 'Done By' triggers the operational record. This should take less than 2 minutes at the end of a shift.", s: dataStyleLeft }],
+        [{ v: "Staff must open the TODAYS_TASKS ledger daily. Entering their FULL NAME in 'Done By' triggers the record. This takes less than 2 minutes.", s: dataStyleLeft }],
         [],
         [{ v: "2. THE YELLOW TARGET RULE", s: { font: { bold: true }, border: borderStyle } }],
-        [{ v: "High-risk tasks require Manager Verification. These are highlighted as 'Yellow Targets'. If a task is pending a signature, the status remains 'AWAITING MGR'.", s: dataStyleLeft }],
+        [{ v: "High-risk tasks require Manager Verification. These are highlighted as 'Yellow Targets'. Status remains 'AWAITING MGR' until signed.", s: dataStyleLeft }],
         [],
         [{ v: "3. DASHBOARD INTELLIGENCE", s: { font: { bold: true }, border: borderStyle } }],
-        [{ v: "The HOME_CONSOLE and BUSINESS_HEALTH sheets are read-only. They pull data from the ledgers to show you real-time group performance and risk alerts.", s: dataStyleLeft }]
+        [{ v: "The HOME_CONSOLE and BUSINESS_HEALTH sheets pull live data. Use these for 5-second branch audits.", s: dataStyleLeft }]
     ];
     const hwWs = utils.aoa_to_sheet(hwData);
     addSovereignRibbon(hwWs, "System Command Manual", 'A');
@@ -477,5 +478,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     hwWs['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 0 } }];
     utils.book_append_sheet(wb, hwWs, "HOW_THIS_WORKS");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_6.5.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_6.6.xlsx`);
 }
