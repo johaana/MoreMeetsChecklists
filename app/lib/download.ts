@@ -168,7 +168,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const opPulseFormula = `IF(MAX('TEAM_HUB'!$G$5:$G$100)=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$100, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$100, "?*")), "0%") & " (" & COUNTIFS('TEAM_HUB'!$G$5:$G$100, ">0") & "/" & COUNTIFS('TEAM_HUB'!$D$5:$D$100, "?*") & ")")`;
     const topStarFormula = `IF(MAX('TEAM_HUB'!$G$5:$G$100)>0, INDEX('TEAM_HUB'!$D$5:$D$100, MATCH(MAX('TEAM_HUB'!$G$5:$G$100), 'TEAM_HUB'!$G$5:$G$100, 0)), "NO LEADER YET")`;
     const topBranchFormula = `IF(MAX('BRANCH_MASTER'!$K$5:$K$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$K$5:$K$15), 'BRANCH_MASTER'!$K$5:$K$15, 0)), "NO LEADER YET")`;
-    const criticalWatchFormula = `IF(MAX('BRANCH_MASTER'!$L$5:$L$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$L$5:$L$15), 'BRANCH_MASTER'!$L$5:$L$15, 0)), "NO ACTIVE UNITS")`;
+    const criticalWatchFormula = `IF(MAX('BRANCH_MASTER'!$L$5:$L$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$L$5:$L$15), 'BRANCH_MASTER'!$L$5:$L$15, 0)), "ALL CLEAR")`;
     const tasksLoggedFormula = `COUNTIFS('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED")`;
     const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "?*")), 0)`;
 
@@ -386,7 +386,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         bhData.push([
             { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${i}), "")`, s: dataStyleLeft },
             { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$L$5:$L$15, ${i}), 0)`, s: dataStyleCenter },
-            { t: 'f', f: `IF(B${rowIdx}>5, "CRITICAL EXPOSURE - REVIEW NOW", IF(B${rowIdx}>0, "CHECK FIRE EXITS & GAS BANKS", "AWAITING DATA"))`, s: { ...dataStyleLeft, italic: true } }
+            { t: 'f', f: `IF(B${rowIdx}>5, "CRITICAL EXPOSURE - REVIEW NOW", IF(B${rowIdx}>0, "CHECK FIRE EXITS & GAS BANKS", "ALL CLEAR"))`, s: { ...dataStyleLeft, italic: true } }
         ]);
     });
     const bhWs = utils.aoa_to_sheet(bhData);
