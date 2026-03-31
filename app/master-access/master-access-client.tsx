@@ -40,7 +40,7 @@ export default function MasterAccessClient() {
             handleDownload(pack, 'pack');
              toast({
                 title: "Download Initiated",
-                description: `Sovereign v5.9 Engine for "${pack.title}" is generating.`,
+                description: `Sovereign v6.2 Engine for "${pack.title}" is generating.`,
             });
         } catch (err) {
              toast({
@@ -92,7 +92,7 @@ export default function MasterAccessClient() {
                 <div className="space-y-2">
                     <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Administrative Command</Badge>
                     <h1 className="text-4xl font-black font-headline text-primary-text italic uppercase tracking-tighter">Master Download Portal</h1>
-                    <p className="text-secondary-text font-medium italic border-l-2 border-primary/20 pl-6">Direct secure access to all Sovereign v5.9 Multi-Branch Operating Systems.</p>
+                    <p className="text-secondary-text font-medium italic border-l-2 border-primary/20 pl-6">Direct secure access to all Sovereign v6.2 Multi-Branch Operating Systems.</p>
                 </div>
                 <div className="flex items-center gap-4">
                     <div className="text-right hidden md:block">
@@ -139,7 +139,7 @@ export default function MasterAccessClient() {
                                 ) : (
                                     <Download className="mr-2 h-4 w-4" />
                                 )}
-                                Generate Sovereign v5.9
+                                Generate Sovereign v6.2
                             </Button>
                         </CardFooter>
                     </Card>
