@@ -37,11 +37,10 @@ export default function MasterAccessClient() {
     const triggerDownload = (pack: PremiumPack) => {
         setDownloadingPack(pack.id);
         try {
-            // Ensure we use the latest Sovereign v5.8 engine logic
             handleDownload(pack, 'pack');
              toast({
                 title: "Download Initiated",
-                description: `Sovereign v5.8 Engine for "${pack.title}" is generating.`,
+                description: `Sovereign v5.9 Engine for "${pack.title}" is generating.`,
             });
         } catch (err) {
              toast({
@@ -85,7 +84,6 @@ export default function MasterAccessClient() {
         );
     }
     
-    // Filter out the master access pack itself and ensure packs have content
     const validPacks = allPacks.filter(p => p.id !== 'master_access' && p.checklists && p.checklists.length > 0);
 
     return (
@@ -94,7 +92,7 @@ export default function MasterAccessClient() {
                 <div className="space-y-2">
                     <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Administrative Command</Badge>
                     <h1 className="text-4xl font-black font-headline text-primary-text italic uppercase tracking-tighter">Master Download Portal</h1>
-                    <p className="text-secondary-text font-medium italic border-l-2 border-primary/20 pl-6">Direct secure access to all Sovereign v5.8 Multi-Branch Operating Systems.</p>
+                    <p className="text-secondary-text font-medium italic border-l-2 border-primary/20 pl-6">Direct secure access to all Sovereign v5.9 Multi-Branch Operating Systems.</p>
                 </div>
                 <div className="flex items-center gap-4">
                     <div className="text-right hidden md:block">
@@ -141,7 +139,7 @@ export default function MasterAccessClient() {
                                 ) : (
                                     <Download className="mr-2 h-4 w-4" />
                                 )}
-                                Generate Sovereign v5.8
+                                Generate Sovereign v5.9
                             </Button>
                         </CardFooter>
                     </Card>

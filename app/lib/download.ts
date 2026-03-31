@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v5.8 - MASTER ACCESS EDITION
- * Focus: Exact Visual Parity, Zero-Patch UI, Volume-based Leaderboard.
+ * Sovereign Engine v5.9 - HARDENED PRODUCTION EDITION
+ * Focus: Formula Range Constraints, Engine-Room Stealth, Zero-Patch UI.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -19,7 +19,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-MASTER-SOVEREIGN-5.8";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-5.9";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -59,7 +59,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     };
 
     const labelStyle = {
-        font: { ...baseFont, bold: true, color: { rgb: COLORS.TEXT_MUTED }, sz: 8 },
+        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 8 },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } },
         alignment: { horizontal: 'right', vertical: 'center' }
     };
@@ -169,12 +169,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
-    // --- LEADERBOARD & ADOPTION LOGIC ---
+    // --- DASHBOARD INTELLIGENCE v5.9 ---
     const rosterPulseFormula = `IFERROR(COUNTIFS('TEAM_HUB'!$G$5:$G$100, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$C$5:$C$100, "?*")), 0)`;
-    const topUnitFormula = `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$K$5:$K$15), 'BRANCH_MASTER'!$K$5:$K$15, 0)), "SYSTEM IDLE")`;
+    const topBranchFormula = `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$K$5:$K$15), 'BRANCH_MASTER'!$K$5:$K$15, 0)), "SYSTEM IDLE")`;
+    const topStarFormula = `IFERROR(INDEX('TEAM_HUB'!$C$5:$C$100, MATCH(MAX('TEAM_HUB'!$G$5:$G$100), 'TEAM_HUB'!$G$5:$G$100, 0)), "NO SIGNAL")`;
     const taskVolumeFormula = `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "?*")`;
     const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "?*")), 0)`;
-    const criticalWatchFormula = `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$L$5:$L$15), 'BRANCH_MASTER'!$L$5:$L$15, 0)), "ALL SECURE")`;
 
     const headerBaseStyle = { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', vertical: 'center' } };
 
@@ -182,7 +182,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { ...headerBaseStyle, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v5.8 | Sovereign Master`, s: { ...headerBaseStyle, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v5.9 | Sovereign Master`, s: { ...headerBaseStyle, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { ...headerBaseStyle, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -213,25 +213,25 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [null, { t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(G15>=0.9, "HOT - PERFECT EXECUTION!", IF(G15>=0.6, "STABLE - PUSH HARDER", IF(G15>0, "COLD - TURN UP THE HEAT!", "SYSTEM INITIALIZED"))), "EMPIRE MOOD: LOADING...")`, s: { font: { sz: 16, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center' } } }, null, null, null, null, null],
         [
             null,
-            { v: "👥 ADOPTION", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center' } } }, null, 
+            { v: "🏆 TEAM GLORY", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center' } } }, null, 
             { v: "⚡ MOMENTUM", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center' } } }, null,
             { v: "🛡️ COMMAND VITALS", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center' } } }, null
         ],
         [
             null,
-            { v: "ROSTER PULSE:", s: labelStyle },
-            { t: 'f', f: rosterPulseFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.PRIMARY_GREEN } }, numFmt: '0%', alignment: { horizontal: 'center' } } },
-            { v: "TOP UNIT:", s: labelStyle },
-            { t: 'f', f: topUnitFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.ACCENT_AMBER } }, alignment: { horizontal: 'center' } } },
+            { v: "TODAY'S STAR:", s: labelStyle },
+            { t: 'f', f: topStarFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } },
+            { v: "TOP BRANCH:", s: labelStyle },
+            { t: 'f', f: topBranchFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.ACCENT_AMBER } }, alignment: { horizontal: 'center' } } },
             { v: "TASKS LOGGED:", s: labelStyle },
             { t: 'f', f: taskVolumeFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE } }, alignment: { horizontal: 'center' } } }
         ],
         [
             null,
-            { v: "EMPIRE STATUS:", s: labelStyle },
-            { v: "👑 LEVEL 3 - EXECUTIVE", s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } }, alignment: { horizontal: 'center' } } },
+            { v: "ROSTER PULSE:", s: labelStyle },
+            { t: 'f', f: rosterPulseFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } }, numFmt: '0%', alignment: { horizontal: 'center' } } },
             { v: "ACTIVE UNITS:", s: labelStyle },
-            { t: 'f', f: `COUNTIF('BRANCH_MASTER'!$B$6:$B$15, "?*")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } }, alignment: { horizontal: 'center' } } },
+            { t: 'f', f: `COUNTIF('BRANCH_MASTER'!$B$5:$B$15, "?*")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } }, alignment: { horizontal: 'center' } } },
             { v: "SHIFT PROGRESS:", s: labelStyle },
             { t: 'f', f: progressFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE } }, numFmt: '0%', alignment: { horizontal: 'center' } } }
         ],
@@ -244,7 +244,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeWs = utils.aoa_to_sheet(homeData);
     homeWs['!cols'] = [5, 22, 28, 22, 28, 22, 28].map(w => ({ wch: w }));
     
-    // --- ZERO-PATCH UI: GLOBAL FILL ---
+    // --- ZERO-PATCH CANVAS ---
     for (let R = 0; R < 50; R++) {
         for (let C = 0; C < 10; C++) {
             const cell = utils.encode_cell({ r: R, c: C });
@@ -275,14 +275,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const branchSetupData = [
         [], [], [],
         facilityHeaders,
-        [{ v: "1", s: dataStyleCenter }, { v: "Bandra Main", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle })), { t:'f', f: `COUNTIF('TODAYS_TASKS'!$B:$B, B5)`, s: { font: { color: { rgb: COLORS.NAVY_DEEP } } } }, { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B:$B, B5, 'TODAYS_TASKS'!$K:$K, "High", 'TODAYS_TASKS'!$I:$I, "<>COMPLETED")`, s: { font: { color: { rgb: COLORS.NAVY_DEEP } } } }],
-        [{ v: "2", s: dataStyleCenter }, { v: "Colaba West", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle })), { t:'f', f: `COUNTIF('TODAYS_TASKS'!$B:$B, B6)`, s: { font: { color: { rgb: COLORS.NAVY_DEEP } } } }, { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B:$B, B6, 'TODAYS_TASKS'!$K:$K, "High", 'TODAYS_TASKS'!$I:$I, "<>COMPLETED")`, s: { font: { color: { rgb: COLORS.NAVY_DEEP } } } }],
-        [{ v: "3", s: dataStyleCenter }, { v: "Andheri East", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle })), { t:'f', f: `COUNTIF('TODAYS_TASKS'!$B:$B, B7)`, s: { font: { color: { rgb: COLORS.NAVY_DEEP } } } }, { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B:$B, B7, 'TODAYS_TASKS'!$K:$K, "High", 'TODAYS_TASKS'!$I:$I, "<>COMPLETED")`, s: { font: { color: { rgb: COLORS.NAVY_DEEP } } } }],
-        [{ v: "4", s: dataStyleCenter }, { v: "", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle })), { t:'f', f: `COUNTIF('TODAYS_TASKS'!$B:$B, B8)`, s: { font: { color: { rgb: COLORS.NAVY_DEEP } } } }, { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B:$B, B8, 'TODAYS_TASKS'!$K:$K, "High", 'TODAYS_TASKS'!$I:$I, "<>COMPLETED")`, s: { font: { color: { rgb: COLORS.NAVY_DEEP } } } }],
-        [{ v: "5", s: dataStyleCenter }, { v: "", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle })), { t:'f', f: `COUNTIF('TODAYS_TASKS'!$B:$B, B9)`, s: { font: { color: { rgb: COLORS.NAVY_DEEP } } } }, { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B:$B, B9, 'TODAYS_TASKS'!$K:$K, "High", 'TODAYS_TASKS'!$I:$I, "<>COMPLETED")`, s: { font: { color: { rgb: COLORS.NAVY_DEEP } } } }]
+        [{ v: "1", s: dataStyleCenter }, { v: "Bandra Main", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle })), { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, B5, 'TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED")` }, { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, B5, 'TODAYS_TASKS'!$K$5:$K$2000, "High", 'TODAYS_TASKS'!$I$5:$I$2000, "<>COMPLETED")` }],
+        [{ v: "2", s: dataStyleCenter }, { v: "Colaba West", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle })), { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, B6, 'TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED")` }, { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, B6, 'TODAYS_TASKS'!$K$5:$K$2000, "High", 'TODAYS_TASKS'!$I$5:$I$2000, "<>COMPLETED")` }],
+        [{ v: "3", s: dataStyleCenter }, { v: "Andheri East", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle })), { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, B7, 'TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED")` }, { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, B7, 'TODAYS_TASKS'!$K$5:$K$2000, "High", 'TODAYS_TASKS'!$I$5:$I$2000, "<>COMPLETED")` }]
     ];
     const setupWs = utils.aoa_to_sheet(branchSetupData);
-    setupWs['!cols'] = [12, 35, ...packChecklists.map(() => 15), 10, 10].map(w => ({ wch: w }));
+    // HIDE ENGINE ROOM: Columns K and L
+    setupWs['!cols'] = [12, 35, ...packChecklists.map(() => 15), 0, 0].map((w, i) => ({ wch: w, hidden: w === 0 }));
     addSovereignRibbon(setupWs, "Branch Master Setup", utils.encode_col(facilityHeaders.length - 1));
     utils.book_append_sheet(wb, setupWs, "BRANCH_MASTER");
 
@@ -290,7 +289,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, 
         { v: "Responsible Role", s: headerStyle }, { v: "Assigned Person (Auto)", s: headerStyle },
-        { v: "ID", s: headerStyle }, { v: "Requirement / Control Step", s: headerStyle }, 
+        { v: "Task ID", s: headerStyle }, { v: "Requirement / Control Step", s: headerStyle }, 
         { v: "Done By (Initials)", s: headerStyle }, { v: "Verified By (Manager)", s: headerStyle },
         { v: "Status", s: headerStyle }, 
         { v: "Freq", s: headerStyle }, { v: "Risk", s: headerStyle },
@@ -298,7 +297,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const mData: any[][] = [[], [], [], mHeaders];
     
-    [1, 2, 3, 4, 5].forEach(bCode => {
+    [1, 2, 3].forEach(bCode => {
         packChecklists.forEach((c) => {
             c.tasks.forEach(t => {
                 const rowIdx = mData.length + 1;
@@ -324,7 +323,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     });
 
     const mWs = utils.aoa_to_sheet(mData);
-    mWs['!cols'] = [15, 25, 25, 30, 10, 65, 20, 20, 20, 12, 12, 45, 50].map(w => ({ wch: w }));
+    mWs['!cols'] = [15, 25, 25, 30, 12, 65, 20, 20, 20, 12, 12, 45, 50].map(w => ({ wch: w }));
     addSovereignRibbon(mWs, "Mission Execution Ledger", 'M');
     mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
@@ -342,22 +341,22 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const pData: any[][] = [[], [], [], pHeaders];
     const allRoles = Array.from(new Set(packChecklists.map(c => c.role)));
     
-    [1, 2, 3, 4, 5].forEach(bId => {
+    [1, 2, 3].forEach(bId => {
         allRoles.forEach((role, rIdx) => {
             const rowIdx = pData.length + 1;
             pData.push([
                 { t: 'f', f: `B${rowIdx} & "|" & D${rowIdx}`, s: dataStyleLeft }, 
                 { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`, s: dataStyleCenter },
-                { v: (bId === 1 && rIdx === 0) ? "Staff Member" : "[Type Name]", s: inputStyleLeft }, 
+                { v: "[Type Name]", s: inputStyleLeft }, 
                 { v: role, s: dataStyleLeft },
                 { v: "", s: inputStyleLeft }, 
                 { v: "ACTIVE", s: dataStyleCenter },
-                { t:'f', f: `COUNTIF('TODAYS_TASKS'!$G:$G, C${rowIdx})`, s: { font: { color: { rgb: COLORS.NAVY_DEEP } } } }
+                { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, C${rowIdx}, 'TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED")` }
             ]);
         });
     });
     const pWs = utils.aoa_to_sheet(pData);
-    pWs['!cols'] = [25, 25, 35, 30, 20, 25, 10].map(w => ({ wch: w }));
+    pWs['!cols'] = [25, 25, 35, 30, 20, 25, 0].map((w, i) => ({ wch: w, hidden: w === 0 }));
     addSovereignRibbon(pWs, "Team & Role Assignments", 'G');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
@@ -380,69 +379,26 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(iWs, "Liability & Incident Log", 'F');
     utils.book_append_sheet(wb, iWs, "INCIDENT_TRACKER");
 
-    // --- ROI ENGINE ---
-    const rHeaders = [
-        { v: "Risk Category", s: headerStyle }, { v: "Event Prevented", s: headerStyle },
-        { v: "Est. Potential Loss (₹)", s: headerStyle }, { v: "Days Since Last Event", s: headerStyle },
-        { v: "Total Liability Shielded (₹)", s: headerStyle }
-    ];
-    const rData: any[][] = [
-        [], [], [], rHeaders,
-        [{v: "Food Safety", s: dataStyleLeft}, {v: "Avoided Mass Poisoning / Recall", s: dataStyleLeft}, {v: 500000, s: inputStyle}, {v: 120, s: inputStyle}, {t:'f', f: "C5*D5", s: dataStyleCenter}],
-        [{v: "Asset Security", s: dataStyleLeft}, {v: "Prevented Internal Stock Theft", s: dataStyleLeft}, {v: 25000, s: inputStyle}, {v: 45, s: inputStyle}, {t:'f', f: "C6*D6", s: dataStyleCenter}]
-    ];
-    const rWs = utils.aoa_to_sheet(rData);
-    rWs['!cols'] = [25, 45, 25, 25, 30].map(w => ({ wch: w }));
-    addSovereignRibbon(rWs, "Risk Mitigation & ROI Engine", 'E');
-    utils.book_append_sheet(wb, rWs, "ROI_ENGINE");
-
-    // --- SHIFT HANDOVER ---
-    const hHeaders = [
-        { v: "Date", s: headerStyle }, { v: "Outgoing Mgr", s: headerStyle }, 
-        { v: "Incoming Mgr", s: headerStyle }, { v: "Critical Tasks / Pending Actions", s: headerStyle },
-        { v: "Maintenance & Staffing Notes", s: headerStyle }, { v: "Status", s: headerStyle }
-    ];
-    const hData: any[][] = [[], [], [], hHeaders];
-    for(let i=0; i<15; i++) {
-        hData.push([
-            { v: "", s: inputStyle }, { v: "", s: inputStyle },
-            { v: "", s: inputStyle }, { v: "", s: inputStyleLeft },
-            { v: "", s: inputStyleLeft }, { v: "PENDING", s: inputStyle }
-        ]);
-    }
-    const hWs = utils.aoa_to_sheet(hData);
-    hWs['!cols'] = [15, 20, 20, 65, 65, 15].map(w => ({ wch: w }));
-    addSovereignRibbon(hWs, "Shift Handover Bridge", 'F');
-    utils.book_append_sheet(wb, hWs, "SHIFT_HANDOVER");
-
     // --- SOP LIBRARY ---
     const sopHeaders = [
-        { v: "Module Title", s: headerStyle },
-        { v: "Dept", s: headerStyle },
-        { v: "Frequency", s: headerStyle },
-        { v: "Primary Role", s: headerStyle },
-        { v: "Task ID", s: headerStyle },
-        { v: "Requirement / Control Step", s: headerStyle },
-        { v: "Consequence of Failure", s: headerStyle },
-        { v: "Trainer Coaching Notes", s: headerStyle }
+        { v: "Module Title", s: headerStyle }, { v: "Dept", s: headerStyle },
+        { v: "Frequency", s: headerStyle }, { v: "Primary Role", s: headerStyle },
+        { v: "Task ID", s: headerStyle }, { v: "Requirement", s: headerStyle },
+        { v: "Consequence of Failure", s: headerStyle }, { v: "Trainer Coaching Notes", s: headerStyle }
     ];
     const sopData: any[][] = [[], [], [], sopHeaders];
     packChecklists.forEach(c => {
         c.tasks.forEach(t => {
             sopData.push([
-                { v: c.title, s: dataStyleLeft },
-                { v: c.department, s: dataStyleCenter },
-                { v: c.frequency, s: dataStyleCenter },
-                { v: c.role, s: dataStyleCenter },
-                { v: t.id, s: dataStyleCenter },
-                { v: t.description, s: dataStyleLeft },
-                { v: t.consequence, s: warningStyle },
-                { v: t.trainerNotes || "-", s: coachingStyle }
+                { v: c.title, s: dataStyleLeft }, { v: c.department, s: dataStyleCenter },
+                { v: c.frequency, s: dataStyleCenter }, { v: c.role, s: dataStyleCenter },
+                { v: t.id, s: dataStyleCenter }, { v: t.description, s: dataStyleLeft },
+                { v: t.consequence, s: warningStyle }, { v: t.trainerNotes || "-", s: coachingStyle }
             ]);
         });
     });
     const sopWs = utils.aoa_to_sheet(sopData);
-    sopWs['!cols'] = [30, 15, 15, 20, 10, 65, 45, 50].map(w => ({ wch: w }));
+    sopWs['!cols'] = [30, 15, 15, 20, 12, 65, 45, 50].map(w => ({ wch: w }));
     addSovereignRibbon(sopWs, "Institutional SOP Database", 'H');
     sopWs['!autofilter'] = { ref: `A4:H${sopData.length}` };
     utils.book_append_sheet(wb, sopWs, "SOP_LIBRARY");
@@ -455,32 +411,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [], [], [],
         bhHeaders,
         [{ v: "Group Shift Progress", s: dataStyleLeft }, { t:'f', f: progressFormula, s: { ...dataStyleCenter, font: { ...monoFont, bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
-        [{ v: "🚨 CRITICAL WATCH", s: { ...dataStyleLeft, font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { t:'f', f: criticalWatchFormula, s: { ...dataStyleCenter, font: { ...monoFont, bold: true, color: { rgb: COLORS.RISK_RED } } } }, { v: "ZERO TOLERANCE", s: dataStyleCenter }],
-        [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_TRACKER'!$F$5:$F$100, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!$F$5:$F$100, "OPEN") & " ACTIVE")`, s: { ...dataStyleCenter, font: { ...monoFont, color: { rgb: COLORS.RISK_RED } } } }, { v: "ZERO TOLERANCE", s: dataStyleCenter }],
-        [{ v: "Network Active Units", s: dataStyleLeft }, { t:'f', f: `COUNTIF('BRANCH_MASTER'!$B$6:$B$15, "?*")`, s: dataStyleCenter }, { v: "MAX CAPACITY", s: dataStyleCenter }]
+        [{ v: "🚨 CRITICAL WATCH", s: { ...dataStyleLeft, font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { t:'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$L$5:$L$15), 'BRANCH_MASTER'!$L$5:$L$15, 0)), "ALL SECURE")`, s: { ...dataStyleCenter, font: { ...monoFont, bold: true, color: { rgb: COLORS.RISK_RED } } } }, { v: "ZERO TOLERANCE", s: dataStyleCenter }],
+        [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_TRACKER'!$F$5:$F$100, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!$F$5:$F$100, "OPEN") & " ACTIVE")`, s: { ...dataStyleCenter, font: { ...monoFont, color: { rgb: COLORS.RISK_RED } } } }, { v: "ZERO TOLERANCE", s: dataStyleCenter }]
     ];
     const bhWs = utils.aoa_to_sheet(bhData);
     addSovereignRibbon(bhWs, "Group Performance Hub", 'C');
     bhWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, bhWs, "BUSINESS_HEALTH");
 
-    // --- HOW_THIS_WORKS ---
-    const hwHeaders = [
-        { v: "COMMAND PROTOCOL", s: headerStyle }, { v: "INSTRUCTIONS", s: headerStyle }
-    ];
-    const hwData = [
-        [], [], [],
-        hwHeaders,
-        [{ v: "STEP 01: SETUP", s: dataStyleCenter }, { v: "Go to 'BRANCH_MASTER' and enter your branch names. Set modules to 'YES' for active areas.", s: dataStyleLeft }],
-        [{ v: "STEP 02: TEAM", s: dataStyleCenter }, { v: "Go to 'TEAM_HUB' and enter staff names next to their assigned roles per branch.", s: dataStyleLeft }],
-        [{ v: "STEP 03: PULSE", s: dataStyleCenter }, { v: "Staff use 'TODAYS_TASKS'. They filter by their Name/Role and enter initials in 'Done By'.", s: dataStyleLeft }],
-        [{ v: "STEP 04: AUDIT", s: dataStyleCenter }, { v: "Managers check the 'TODAYS_TASKS' sheet for 'AWAITING MGR' status and sign off.", s: dataStyleLeft }],
-        [{ v: "STEP 05: INTEL", s: dataStyleCenter }, { v: "Owners review 'HOME_CONSOLE' and 'BUSINESS_HEALTH' for real-time empire status.", s: dataStyleLeft }]
-    ];
-    const hwWs = utils.aoa_to_sheet(hwData);
-    addSovereignRibbon(hwWs, "System Command Manual", 'B');
-    hwWs['!cols'] = [25, 80].map(w => ({ wch: w }));
-    utils.book_append_sheet(wb, hwWs, "HOW_THIS_WORKS");
-
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_5.8.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_5.9.xlsx`);
 }
