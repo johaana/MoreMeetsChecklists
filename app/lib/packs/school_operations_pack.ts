@@ -37,7 +37,13 @@ export const school_operations_pack: PremiumPack = {
             role: "Transport Manager",
             summary: "Zero-fail transit protocols including empty-bus walkthroughs.",
             icon: "bus",
-            tasks: []
+            tasks: [
+                { id: "SC-TRA-01", description: "Perform daily pre-trip inspection of all buses (brakes, tires, fuel).", priority: "High", riskLevel: "High", consequence: "Mechanical failure during transit leading to injury.", proof: "Driver Sign-off" },
+                { id: "SC-TRA-02", description: "Mandatory 'Empty Bus Walkthrough' at end of every trip.", priority: "High", riskLevel: "High", consequence: "Child left behind in bus (Fatal never-event).", proof: "Secondary Sign-off" },
+                { id: "SC-TRA-03", description: "Verify GPS trackers and CCTV inside buses are active.", priority: "High", riskLevel: "High", consequence: "Inability to track bus during emergency.", proof: "System Dashboard" },
+                { id: "SC-TRA-04", description: "Check that a female attendant is present on every route.", priority: "High", riskLevel: "High", consequence: "Child protection legal violation.", proof: "Roster Check" },
+                { id: "SC-TRA-05", description: "Verify driver sobriety check before the morning shift.", priority: "High", riskLevel: "High", consequence: "Catastrophic crash risk.", proof: "Supervisor Initials" }
+            ]
         },
         {
             title: "Campus Security & CCTV",
@@ -46,7 +52,11 @@ export const school_operations_pack: PremiumPack = {
             role: "Security Chief",
             summary: "Perimeter hardening and visitor ID verification.",
             icon: "shield-check",
-            tasks: []
+            tasks: [
+                { id: "SC-SEC-01", description: "Audit the visitor register for 100% ID verification compliance.", priority: "High", riskLevel: "High", consequence: "Unauthorized intruder gaining access to students.", proof: "Registry Audit" },
+                { id: "SC-SEC-02", description: "Test campus-wide fire alarm and PA system.", priority: "High", riskLevel: "High", consequence: "Fatal delay in emergency communication.", proof: "Sound Test" },
+                { id: "SC-SEC-03", description: "Confirm CCTV coverage of high-risk 'blind spots' (stairs, back alleys).", priority: "High", riskLevel: "Medium", consequence: "Lack of evidence for bullying or theft incidents.", proof: "Monitor Check" }
+            ]
         },
         {
             title: "Canteen & Vendor Quality",
@@ -55,7 +65,10 @@ export const school_operations_pack: PremiumPack = {
             role: "Canteen Manager",
             summary: "HACCP food safety and vendor license auditing.",
             icon: "utensils",
-            tasks: []
+            tasks: [
+                { id: "SC-CAN-01", description: "Log morning fridge and freezer temperatures.", priority: "High", riskLevel: "High", consequence: "Foodborne illness outbreak among students.", proof: "Temp Log" },
+                { id: "SC-CAN-02", description: "Verify FSSAI license of all incoming fresh food vendors.", priority: "High", riskLevel: "High", consequence: "Legal liability for unsafe sourcing.", proof: "License File" }
+            ]
         },
         {
             title: "Admin, Lobby & Fee Command",
@@ -64,7 +77,10 @@ export const school_operations_pack: PremiumPack = {
             role: "Admin Manager",
             summary: "Institutional governance and revenue shield.",
             icon: "landmark",
-            tasks: []
+            tasks: [
+                { id: "SC-ADM-01", description: "Audit daily fee collection and deposit reconciliation.", priority: "High", riskLevel: "Medium", consequence: "Financial leakage or embezzlement.", proof: "Cash Log" },
+                { id: "SC-ADM-02", description: "Verify availability of admission prospectus and inquiry logs.", priority: "Low", riskLevel: "Low", consequence: "Lost admission opportunities.", proof: "Visual Check" }
+            ]
         },
         {
             title: "Digital Command & Marketing",
@@ -73,7 +89,10 @@ export const school_operations_pack: PremiumPack = {
             role: "Admin Manager",
             summary: "Reputation management and social visibility.",
             icon: "megaphone",
-            tasks: []
+            tasks: [
+                { id: "SC-MKT-01", description: "Review Response Pulse: Reply to all Google/Parent portal reviews.", priority: "High", riskLevel: "Medium", consequence: "Damaged institutional reputation.", proof: "Dashboard Check" },
+                { id: "SC-MKT-02", description: "Verify daily update of school social media handles with current activities.", priority: "Low", riskLevel: "Low", consequence: "Low brand engagement.", proof: "Social Check" }
+            ]
         }
     ]
 };

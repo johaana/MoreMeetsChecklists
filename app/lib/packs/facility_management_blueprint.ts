@@ -37,7 +37,11 @@ export const facility_management_blueprint: PremiumPack = {
             role: "Chief Engineer",
             summary: "HVAC, Boiler, Generator, and Electrical vitals.",
             icon: "wrench",
-            tasks: []
+            tasks: [
+                { id: "FM-ENG-01", description: "Inspect backup generator (DG) and log fuel levels.", priority: "High", riskLevel: "High", consequence: "Total blackout during power failure.", proof: "Fuel Log" },
+                { id: "FM-ENG-02", description: "Verify hot water supply temp at central boiler (Target: 55°C).", priority: "High", riskLevel: "Medium", consequence: "Utility service failure.", proof: "Temp Reading" },
+                { id: "FM-ENG-03", description: "Audit chiller plant pressure and KWH consumption.", priority: "Medium", riskLevel: "Medium", consequence: "Inefficient energy spend and breakdown risk.", proof: "System Log" }
+            ]
         },
         {
             title: "Soft FM: Janitorial & Hygiene",
@@ -46,7 +50,10 @@ export const facility_management_blueprint: PremiumPack = {
             role: "Housekeeping Lead",
             summary: "Hourly hygiene command for restrooms and common zones.",
             icon: "sparkles",
-            tasks: []
+            tasks: [
+                { id: "FM-HK-01", description: "Verify restrooms cleaning frequency: hourly logs audit.", priority: "High", riskLevel: "Low", consequence: "Major tenant complaints.", proof: "Hourly Sheet" },
+                { id: "FM-HK-02", description: "Audit stock of consumables (Soap, Paper, Sanitizer).", priority: "Medium", riskLevel: "Low", consequence: "Hygiene breakdown.", proof: "Visual Check" }
+            ]
         },
         {
             title: "Regulatory & Compliance",
@@ -55,7 +62,10 @@ export const facility_management_blueprint: PremiumPack = {
             role: "Admin Manager",
             summary: "Fire safety, lift licenses, and tank certifications.",
             icon: "file-lock",
-            tasks: []
+            tasks: [
+                { id: "FM-REG-01", description: "Verify validity of Lift Fitness Certificates.", priority: "High", riskLevel: "High", consequence: "Legal closure and tenant danger.", proof: "License File" },
+                { id: "FM-REG-02", description: "Audit fire extinguisher expiry and pressure gauges.", priority: "High", riskLevel: "High", consequence: "Safety catastrophe.", proof: "Pressure Check" }
+            ]
         },
         {
             title: "Security & Perimeter Control",
@@ -64,7 +74,10 @@ export const facility_management_blueprint: PremiumPack = {
             role: "EHS Officer",
             summary: "CCTV focal audits and visitor ID enforcement.",
             icon: "shield",
-            tasks: []
+            tasks: [
+                { id: "FM-SEC-01", description: "Test intruder alarm panel and panic buttons.", priority: "High", riskLevel: "High", consequence: "Failure to respond to security breach.", proof: "Alarm Log" },
+                { id: "FM-SEC-02", description: "Audit visitor register for 100% ID verification compliance.", priority: "High", riskLevel: "High", consequence: "Unauthorized access to premises.", proof: "Registry Audit" }
+            ]
         },
         {
             title: "Energy & Sustainability Audit",
@@ -73,7 +86,10 @@ export const facility_management_blueprint: PremiumPack = {
             role: "COO / Owner",
             summary: "Daily KWH tracking and utility load optimization.",
             icon: "leaf",
-            tasks: []
+            tasks: [
+                { id: "FM-SUS-01", description: "Log daily energy consumption (KWH) against occupancy.", priority: "Medium", riskLevel: "Low", consequence: "Hidden utility profit leaks.", proof: "Utility Dashboard" },
+                { id: "FM-SUS-02", description: "Verify status of solar-panel cleaning and efficiency.", priority: "Low", riskLevel: "Low", consequence: "Lost renewable energy output.", proof: "Visual Check" }
+            ]
         }
     ]
 };

@@ -90,7 +90,7 @@ const ProductArchitectureSection = () => (
                             <div className="w-2 h-2 rounded-full bg-green-500/40" />
                         </div>
                         <img 
-                            src="https://i.postimg.cc/9MNGzZ46/Screenshot-2026-03-31-025452.png" 
+                            src="https://i.postimg.cc/mr5tRpPV/Screenshot-2026-03-18-124944.png" 
                             alt="MoreMeets Engine Interface"
                             className="rounded-lg mt-6 border border-white/5"
                         />
@@ -211,7 +211,9 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
             <div className={cn("grid gap-6 lg:gap-12 xl:gap-16 items-center", hasValidHeroImage ? "lg:grid-cols-[1fr,400px]" : "grid-cols-1 max-w-4xl mx-auto")}>
               <div className="space-y-6">
                 <div className="space-y-4">
-                    <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.2em] font-black text-[10px]">{pack.category} • Institutional Grade</Badge>
+                    <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.2em] font-black text-[10px]">
+                        {pack.category} • MOREMEETS {pack.title.toUpperCase()}
+                    </Badge>
                     <h1 className="text-3xl font-black tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl font-headline text-primary-text uppercase italic leading-[1.1]">
                     {pack.heroHeadline || pack.title}
                     </h1>
@@ -232,7 +234,7 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
                     <div className="bg-black/40 border border-white/5 rounded-xl px-4 py-3 flex items-center gap-3">
                         <Database className="w-4 h-4 text-primary" />
                         <div className="flex flex-col">
-                            <span className="text-primary-text font-black text-xs">{totalTasks}+</span>
+                            <span className="text-primary-text font-black text-xs">{totalTasks > 0 ? `${totalTasks}+` : '150+'}</span>
                             <span className="text-[8px] font-black uppercase text-white/20 tracking-widest">Control Points</span>
                         </div>
                     </div>
