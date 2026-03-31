@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v7.5 - READY STATE BUILD
- * Focus: Semantic Placeholders ("AWAITING DATA"), Vertical Centering, Robust Signaling.
+ * Sovereign Engine v7.6 - ALIGNMENT HARDENED BUILD
+ * Focus: Vertical Centering, Zero-Clipping Headers, 8-Role Matrix Propagation.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -19,7 +19,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-MASTER-SOVEREIGN-7.5";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-7.6";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -50,23 +50,26 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         right: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } }
     };
 
+    // GLOBAL ALIGNMENT LOCK
+    const verticalCenter = { vertical: 'center' };
+
     const navStyle = {
         font: { ...baseFont, bold: true, color: { rgb: COLORS.PRIMARY_GREEN }, sz: 10 },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } },
-        alignment: { horizontal: 'left', vertical: 'center' },
+        alignment: { horizontal: 'left', ...verticalCenter },
         border: { bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } } }
     };
 
     const labelStyle = {
         font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 8 },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } },
-        alignment: { horizontal: 'right', vertical: 'center' }
+        alignment: { horizontal: 'right', ...verticalCenter }
     };
 
     const tileStyle = {
         font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 11 },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } },
-        alignment: { horizontal: 'center', vertical: 'center' },
+        alignment: { horizontal: 'center', ...verticalCenter },
         border: { 
             left: { style: 'thick', color: { rgb: COLORS.PRIMARY_GREEN } },
             top: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } },
@@ -78,26 +81,26 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const ribbonHeaderStyle = {
         font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 14 },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } },
-        alignment: { horizontal: 'left', vertical: 'center' },
+        alignment: { horizontal: 'left', ...verticalCenter },
         border: { bottom: { style: 'medium', color: { rgb: COLORS.PRIMARY_GREEN } } }
     };
 
     const headerStyle = {
         font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 9 },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } },
-        alignment: { vertical: 'center', horizontal: 'center', wrapText: true },
+        alignment: { horizontal: 'center', wrapText: true, ...verticalCenter },
         border: borderStyle
     };
 
     const dataStyleLeft = { 
         font: baseFont,
-        alignment: { vertical: 'center', horizontal: 'left', wrapText: true },
+        alignment: { horizontal: 'left', wrapText: true, ...verticalCenter },
         border: borderStyle
     };
 
     const dataStyleCenter = {
         font: baseFont,
-        alignment: { vertical: 'center', horizontal: 'center' },
+        alignment: { horizontal: 'center', ...verticalCenter },
         border: borderStyle
     };
 
@@ -125,7 +128,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_GREEN } }
     };
 
-    const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K', customTitleHpt: number = 35) => {
+    const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K', customTitleHpt: number = 45) => {
         const ribbonData = [
             [{ v: "◀ BACK TO CONSOLE", l: { Target: "#'HOME_CONSOLE'!A1" }, s: navStyle }],
             [{ v: `  ${title.toUpperCase()}`, s: ribbonHeaderStyle }]
@@ -164,7 +167,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
-    // --- FORMULA HARDENING (v7.5) ---
+    // --- FORMULA HARDENING (v7.6) ---
     const opPulseFormula = `IF(COUNTIFS('TEAM_HUB'!$D$5:$D$100, "?*")=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$100, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$100, "?*")), "0%") & " (" & COUNTIFS('TEAM_HUB'!$G$5:$G$100, ">0") & "/" & COUNTIFS('TEAM_HUB'!$D$5:$D$100, "?*") & ")")`;
     const topStarFormula = `IF(MAX('TEAM_HUB'!$G$5:$G$100)>0, INDEX('TEAM_HUB'!$D$5:$D$100, MATCH(MAX('TEAM_HUB'!$G$5:$G$100), 'TEAM_HUB'!$G$5:$G$100, 0)), "AWAITING DATA")`;
     const topBranchFormula = `IF(MAX('BRANCH_MASTER'!$K$5:$K$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$K$5:$K$15), 'BRANCH_MASTER'!$K$5:$K$15, 0)), "AWAITING DATA")`;
@@ -175,15 +178,15 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     // --- HOME CONSOLE ---
     const homeData: any[][] = [
         [], [],
-        [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', vertical: 'center' }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v7.5 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', vertical: 'center' }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', vertical: 'center' }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
+        [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
+        [null, { v: `Institutional Operating System v7.6 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
             null,
-            { v: "ADMIN & SETUP", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { vertical: 'center' }, border: { bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } } } } }, null, 
-            { v: "DAILY OPERATIONS", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { vertical: 'center' }, border: { bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } } } } }, null, 
-            { v: "EXECUTIVE INTEL", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { vertical: 'center' }, border: { bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } } } } }
+            { v: "ADMIN & SETUP", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { ...verticalCenter }, border: { bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } } } } }, null, 
+            { v: "DAILY OPERATIONS", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { ...verticalCenter }, border: { bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } } } } }, null, 
+            { v: "EXECUTIVE INTEL", s: { font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { ...verticalCenter }, border: { bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } } } } }
         ],
         [
             null,
@@ -204,35 +207,35 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }, null
         ],
         [],
-        [null, { t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(G15>=0.9, "HOT - PERFECT EXECUTION!", IF(G15>=0.6, "STABLE - PUSH HARDER", IF(G15>0, "COLD - TURN UP THE HEAT!", "AWAITING DATA"))), "EMPIRE MOOD: LOADING...")`, s: { font: { sz: 16, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center', vertical: 'center' } } }, null, null, null, null, null],
+        [null, { t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(G15>=0.9, "HOT - PERFECT EXECUTION!", IF(G15>=0.6, "STABLE - PUSH HARDER", IF(G15>0, "COLD - TURN UP THE HEAT!", "AWAITING DATA"))), "EMPIRE MOOD: LOADING...")`, s: { font: { sz: 16, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null, null, null, null, null],
         [
             null,
-            { v: "🏆 TEAM GLORY", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', vertical: 'center' } } }, null, 
-            { v: "⚡ MOMENTUM", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', vertical: 'center' } } }, null,
-            { v: "🛡️ COMMAND VITALS", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', vertical: 'center' } } }, null
+            { v: "🏆 TEAM GLORY", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null, 
+            { v: "⚡ MOMENTUM", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null,
+            { v: "🛡️ COMMAND VITALS", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null
         ],
         [
             null,
             { v: "TODAY'S STAR:", s: labelStyle },
-            { t: 'f', f: topStarFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', vertical: 'center' } } },
+            { t: 'f', f: topStarFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "TOP BRANCH:", s: labelStyle },
-            { t: 'f', f: topBranchFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.ACCENT_AMBER } }, alignment: { horizontal: 'center', vertical: 'center' } } },
+            { t: 'f', f: topBranchFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.ACCENT_AMBER } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "TASKS LOGGED:", s: labelStyle },
-            { t: 'f', f: tasksLoggedFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE } }, alignment: { horizontal: 'center', vertical: 'center' } } }
+            { t: 'f', f: tasksLoggedFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE } }, alignment: { horizontal: 'center', ...verticalCenter } } }
         ],
         [
             null,
             { v: "OPERATIONAL PULSE:", s: labelStyle },
-            { t: 'f', f: opPulseFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } }, alignment: { horizontal: 'center', vertical: 'center' } } },
+            { t: 'f', f: opPulseFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "🚨 CRITICAL WATCH:", s: labelStyle },
-            { t: 'f', f: criticalWatchFormula, l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9, underline: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'center', vertical: 'center' } } },
+            { t: 'f', f: criticalWatchFormula, l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9, underline: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "SHIFT PROGRESS:", s: labelStyle },
-            { t: 'f', f: progressFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE } }, numFmt: '0%', alignment: { horizontal: 'center', vertical: 'center' } } }
+            { t: 'f', f: progressFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE } }, numFmt: '0%', alignment: { horizontal: 'center', ...verticalCenter } } }
         ],
-        [null, { v: "▶ VIEW REAL-TIME BRANCH INTELLIGENCE & RISK ANALYTICS", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN }, underline: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center', vertical: 'center' }, border: borderStyle } }, null, null, null, null, null],
+        [null, { v: "▶ VIEW REAL-TIME BRANCH INTELLIGENCE & RISK ANALYTICS", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN }, underline: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center', ...verticalCenter }, border: borderStyle } }, null, null, null, null, null],
         [],
-        [null, { v: "USER GUIDE: Enter your FULL NAME in 'Done By' to trigger your contribution pulse.", s: { ...labelStyle, alignment: { horizontal: 'center', vertical: 'center' }, font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [null, { v: `LICENSED TO: ${BUYER_EMAIL} | SECURE AUTHENTICATION: ${ORDER_ID}`, s: { ...labelStyle, alignment: { horizontal: 'center', vertical: 'center' }, font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } } } }]
+        [null, { v: "USER GUIDE: Enter your FULL NAME in 'Done By' to trigger your contribution pulse.", s: { ...labelStyle, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `LICENSED TO: ${BUYER_EMAIL} | SECURE AUTHENTICATION: ${ORDER_ID}`, s: { ...labelStyle, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } } } }]
     ];
 
     const homeWs = utils.aoa_to_sheet(homeData);
@@ -241,9 +244,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     for (let R = 0; R < 35; R++) {
         for (let C = 0; C < 10; C++) {
             const cell = utils.encode_cell({ r: R, c: C });
-            if (!homeWs[cell]) homeWs[cell] = { v: "", s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { vertical: 'center' } } };
+            if (!homeWs[cell]) homeWs[cell] = { v: "", s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { ...verticalCenter } } };
             else if (homeWs[cell].s) {
-                homeWs[cell].s.alignment = { ...homeWs[cell].s.alignment, vertical: 'center' };
+                homeWs[cell].s.alignment = { ...homeWs[cell].s.alignment, ...verticalCenter };
             }
         }
     }
@@ -370,13 +373,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const incidentCountFormulaBh = `COUNTIF('INCIDENT_TRACKER'!$F$5:$F$20, "OPEN")`;
     const bhData: any[][] = [
         [], [], 
-        [{ v: "GROUP PERFORMANCE HUB", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', vertical: 'center' } }, t: 's' }],
+        [{ v: "GROUP PERFORMANCE HUB", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } }, t: 's' }],
         bhHeaders, 
         [{ v: "Group Shift Progress", s: dataStyleLeft }, { t:'f', f: progressFormula, s: { ...dataStyleCenter, numFmt: '0%', font: { bold: true } } }, { v: "95% MIN" }], 
         [{ v: "🚨 CRITICAL WATCH", s: { ...dataStyleLeft, font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { t:'f', f: criticalWatchFormula, s: { ...dataStyleCenter, font: { bold: true }, color: { rgb: COLORS.RISK_RED } } }, { v: "ZERO TOLERANCE" }],
         [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f: incidentCountFormulaBh, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { v: "TARGET: 0" }],
         [],
-        [{ v: "RISK INTELLIGENCE BREAKDOWN", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', vertical: 'center' } }, t: 's' }],
+        [{ v: "RISK INTELLIGENCE BREAKDOWN", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } }, t: 's' }],
         breakdownHeaders
     ];
     [1, 2, 3].forEach(i => {
@@ -471,7 +474,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     // --- HOW THIS WORKS ---
     const hwData = [
         [], [], 
-        [{ v: "SYSTEM OPERATING PROTOCOL", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', vertical: 'center' } } }],
+        [{ v: "SYSTEM OPERATING PROTOCOL", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }],
         [{ v: "1. THE 2-MINUTE PULSE", s: { font: { bold: true }, border: borderStyle } }],
         [{ v: "Staff must open the TODAYS_TASKS ledger daily. Entering their FULL NAME in 'Done By' triggers the record. This takes less than 2 minutes.", s: dataStyleLeft }],
         [],
@@ -487,5 +490,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     hwWs['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 0 } }];
     utils.book_append_sheet(wb, hwWs, "HOW_THIS_WORKS");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_7.5.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_7.6.xlsx`);
 }
