@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v6.6 - INSTITUTIONAL COMMAND BUILD
- * Focus: 8-Role specialized matrix, 120-Task density, Hardened Pulse formula.
+ * Sovereign Engine v6.7 - INSTITUTIONAL COMMAND BUILD
+ * Focus: 8-Role specialized matrix, 150-Task density, Hardened Pulse formula.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -19,7 +19,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-MASTER-SOVEREIGN-6.6";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-6.7";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -170,14 +170,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const topStarFormula = `IF(MAX('TEAM_HUB'!$G$5:$G$100)>0, INDEX('TEAM_HUB'!$D$5:$D$100, MATCH(MAX('TEAM_HUB'!$G$5:$G$100), 'TEAM_HUB'!$G$5:$G$100, 0)), "NO LEADER YET")`;
     const topBranchFormula = `IF(MAX('BRANCH_MASTER'!$K$5:$K$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$K$5:$K$15), 'BRANCH_MASTER'!$K$5:$K$15, 0)), "NO LEADER YET")`;
     const criticalWatchFormula = `IF(MAX('BRANCH_MASTER'!$L$5:$L$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$L$5:$L$15), 'BRANCH_MASTER'!$L$5:$L$15, 0)), "ALL CLEAR")`;
-    const tasksLoggedFormula = `COUNTIFS('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED")`;
-    const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "?*")), 0)`;
+    const tasksLoggedFormula = `COUNTIFS('TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED")`;
+    const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$5000, "?*")), 0)`;
 
     // --- HOME CONSOLE ---
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', vertical: 'center' }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v6.6 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', vertical: 'center' }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v6.7 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', vertical: 'center' }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center' }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -270,9 +270,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const branchSetupData = [
         [], [], [],
         facilityHeaders,
-        [{ v: "1", s: dataStyleCenter }, { v: "Bandra Main", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle })), { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, B5, 'TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED")` }, { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, B5, 'TODAYS_TASKS'!$K$5:$K$2000, "High", 'TODAYS_TASKS'!$I$5:$I$2000, "<>COMPLETED")` }],
-        [{ v: "2", s: dataStyleCenter }, { v: "Colaba West", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle })), { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, B6, 'TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED")` }, { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, B6, 'TODAYS_TASKS'!$K$5:$K$2000, "High", 'TODAYS_TASKS'!$I$5:$I$2000, "<>COMPLETED")` }],
-        [{ v: "3", s: dataStyleCenter }, { v: "Andheri East", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle })), { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, B7, 'TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED")` }, { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$2000, B7, 'TODAYS_TASKS'!$K$5:$K$2000, "High", 'TODAYS_TASKS'!$I$5:$I$2000, "<>COMPLETED")` }]
+        [{ v: "1", s: dataStyleCenter }, { v: "Bandra Main", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle })), { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, B5, 'TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED")` }, { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, B5, 'TODAYS_TASKS'!$K$5:$K$5000, "High", 'TODAYS_TASKS'!$I$5:$I$5000, "<>COMPLETED")` }],
+        [{ v: "2", s: dataStyleCenter }, { v: "Colaba West", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle })), { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, B6, 'TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED")` }, { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, B6, 'TODAYS_TASKS'!$K$5:$K$5000, "High", 'TODAYS_TASKS'!$I$5:$I$5000, "<>COMPLETED")` }],
+        [{ v: "3", s: dataStyleCenter }, { v: "Andheri East", s: inputStyle }, ...packChecklists.map(() => ({ v: "YES", s: inputStyle })), { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, B7, 'TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED")` }, { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, B7, 'TODAYS_TASKS'!$K$5:$K$5000, "High", 'TODAYS_TASKS'!$I$5:$I$5000, "<>COMPLETED")` }]
     ];
     const setupWs = utils.aoa_to_sheet(branchSetupData);
     setupWs['!cols'] = [12, 35, ...packChecklists.map(() => 20), 0, 0].map((w, i) => ({ wch: w, hidden: w === 0 }));
@@ -345,10 +345,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { t: 'f', f: `B${rowIdx} & "|" & C${rowIdx}`, s: dataStyleLeft }, 
                 { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`, s: dataStyleCenter },
                 { v: role, s: dataStyleLeft },
-                { v: "", s: inputStyleLeft }, // Empty name by default to prevent rogue pulse counts
+                { v: "", s: inputStyleLeft }, 
                 { v: "", s: inputStyleLeft }, 
                 { v: "ACTIVE", s: dataStyleCenter },
-                { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, D${rowIdx}, 'TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED")` }
+                { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$5000, D${rowIdx}, 'TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED")` }
             ]);
         });
     });
@@ -478,5 +478,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     hwWs['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 0 } }];
     utils.book_append_sheet(wb, hwWs, "HOW_THIS_WORKS");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_6.6.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_6.7.xlsx`);
 }

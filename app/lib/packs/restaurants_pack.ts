@@ -5,7 +5,7 @@ export const restaurants: PremiumPack = {
     id: 'restaurants',
     title: "Restaurant Operating System",
     category: "Hospitality",
-    description: "The definitive Sovereign v4.4 engine for multi-unit food and beverage groups. Standardizing 120+ control points from Owner vision to kitchen hygiene.",
+    description: "The definitive Sovereign v4.4 engine for multi-unit food and beverage groups. Standardizing 150+ control points from Owner vision to kitchen hygiene.",
     heroHeadline: "Standardize Your Kitchen. Protect Your Margins.",
     heroSubheadline: "The professional plug for revenue leakage and food safety risks—across every branch in your group.",
     pricingUrgency: "Preventing a single foodborne illness lawsuit or one major theft saves 100x the cost of this system.",
@@ -149,26 +149,6 @@ export const restaurants: PremiumPack = {
             ]
         },
         {
-            title: "HR, Training & Grooming",
-            department: "HR",
-            frequency: "Daily",
-            role: "HR Manager",
-            summary: "Ensures staff readiness and compliance with labor standards.",
-            icon: "users",
-            tasks: [
-                { id: "RES-HR-01", description: "Audit daily attendance and biometric sync.", priority: "Medium", riskLevel: "Low", consequence: "Payroll errors and labor law gaps.", proof: "Roster Sheet" },
-                { id: "RES-HR-02", description: "Conduct grooming parade for incoming shift staff.", priority: "Medium", riskLevel: "Low", consequence: "Poor brand image and hygiene signals.", proof: "Grooming Log" },
-                { id: "RES-HR-03", description: "Verify medical fitness certificates for all active food handlers.", priority: "High", riskLevel: "High", consequence: "Communicable disease outbreak; FSSAI violation.", proof: "File Audit" },
-                { id: "RES-HR-04", description: "Confirm one 'Technical Skill' spot-check performed today.", priority: "Low", riskLevel: "Low", consequence: "Slipping service quality.", proof: "Quiz Log" },
-                { id: "RES-HR-05", description: "Audit staff locker room hygiene and lock integrity.", priority: "Low", riskLevel: "Low", consequence: "Internal theft and morale drop.", proof: "Walkthrough" },
-                { id: "RES-HR-06", description: "Check status of 'Staff Meal' quality and hygiene.", priority: "Medium", riskLevel: "Low", consequence: "High absenteeism and low morale.", proof: "Visual Check" },
-                { id: "RES-HR-07", description: "Verify training records for new hires (onboarding compliance).", priority: "High", riskLevel: "Medium", consequence: "Unsafe work practices by untrained staff.", proof: "Training Matrix" },
-                { id: "RES-HR-08", description: "Audit labor law display boards (Min Wage/Working Hours).", priority: "Medium", riskLevel: "High", consequence: "Heavy fines during labor inspection.", proof: "Visual Audit" },
-                { id: "RES-HR-09", description: "Track and log any staff grievances or conflicts.", priority: "Medium", riskLevel: "Medium", consequence: "Internal churn and legal risk.", proof: "Grievance Log" },
-                { id: "RES-HR-10", description: "Manage monthly staff award/recognition program.", priority: "Low", riskLevel: "Low", consequence: "Loss of top talent.", proof: "Announcement" }
-            ]
-        },
-        {
             title: "Digital Command & ORM",
             department: "Marketing",
             frequency: "Daily",
@@ -189,46 +169,6 @@ export const restaurants: PremiumPack = {
             ]
         },
         {
-            title: "Engineering & MEP Vitals",
-            department: "Maintenance",
-            frequency: "Daily",
-            role: "Admin Manager",
-            summary: "Infrastructure readiness and utility uptime.",
-            icon: "wrench",
-            tasks: [
-                { id: "RES-MEP-01", description: "Log daily electricity and water meter readings.", priority: "Medium", riskLevel: "Low", consequence: "Undetected leaks or energy spikes.", proof: "Meter Log" },
-                { id: "RES-MEP-02", description: "Verify backup generator fuel levels and battery voltage.", priority: "High", riskLevel: "High", consequence: "Blackout during peak weekend shift.", proof: "Test Log" },
-                { id: "RES-MEP-03", description: "Check all floor and kitchen drains for blockage/odors.", priority: "High", riskLevel: "Medium", consequence: "Flooding and hygiene closure.", proof: "Visual Check" },
-                { id: "RES-MEP-04", description: "Inspect HVAC air-filters and monitor lobby temp.", priority: "Medium", riskLevel: "Low", consequence: "Guest discomfort and high energy load.", proof: "BMS Reading" },
-                { id: "RES-MEP-05", description: "Audit light-bulb functionality in the dining area.", priority: "Low", riskLevel: "Low", consequence: "Poor ambiance signals.", proof: "Visual Audit" },
-                { id: "RES-MEP-06", description: "Test emergency exit push-bars and pathway lighting.", priority: "High", riskLevel: "High", consequence: "Safety violation during evacuation.", proof: "Physical Test" },
-                { id: "RES-MEP-07", description: "Verify closure of all maintenance service tickets.", priority: "Medium", riskLevel: "Low", consequence: "Accumulated facility decay.", proof: "Ticket Log" },
-                { id: "RES-MEP-08", description: "Check refrigerator condenser coils for dust buildup.", priority: "Low", riskLevel: "Low", consequence: "Compressor burnout risk.", proof: "Maintenance Log" },
-                { id: "RES-MEP-09", description: "Monitor water-purifier (RO) TDS and filter status.", priority: "High", riskLevel: "Medium", consequence: "Waterborne illness liability.", proof: "TDS Reading" },
-                { id: "RES-MEP-10", description: "Final facility shutdown check (excluding fridges).", priority: "High", riskLevel: "High", consequence: "Fire risk and utility waste.", proof: "Switch-off Log" }
-            ]
-        },
-        {
-            title: "Deep Cleaning & Hygiene",
-            department: "Kitchen",
-            frequency: "Weekly",
-            role: "Head Chef",
-            summary: "Advanced sanitation for back-of-house infrastructure.",
-            icon: "sparkles",
-            tasks: [
-                { id: "RES-CLN-01", description: "Deep clean of exhaust hoods and grease filters.", priority: "High", riskLevel: "High", consequence: "Major fire hazard and airflow failure.", proof: "Visual Audit", trainerNotes: "Soak filters in degreaser overnight." },
-                { id: "RES-CLN-02", description: "Pressure wash floor drains and grease traps.", priority: "High", riskLevel: "Medium", consequence: "Foul odors and drain backups.", proof: "Cleaning Log", trainerNotes: "Check for fruit-fly breeding." },
-                { id: "RES-CLN-03", description: "Sanitize interiors of all refrigeration units.", priority: "High", riskLevel: "High", consequence: "Listeria and mold growth on shelving.", proof: "ATP Swab", trainerNotes: "Empty one unit at a time." },
-                { id: "RES-CLN-04", description: "De-scale dishwashing machine and check nozzles.", priority: "Medium", riskLevel: "Low", consequence: "Poor cleaning of guest utensils.", proof: "Service Report", trainerNotes: "Use industrial descaling agent." },
-                { id: "RES-CLN-05", description: "Wash and sanitize all vegetable wash crates.", priority: "High", riskLevel: "Medium", consequence: "Bacterial cross-contamination.", proof: "Visual Check", trainerNotes: "Air-dry before stacking." },
-                { id: "RES-CLN-06", description: "Sanitize chemical storage shelves and bottles.", priority: "Medium", riskLevel: "Low", consequence: "Chemical contamination of food area.", proof: "Storage Audit", trainerNotes: "Check for leaking sprayers." },
-                { id: "RES-CLN-07", description: "Clean behind and under all heavy equipment.", priority: "High", riskLevel: "High", consequence: "Pest breeding grounds.", proof: "Supervisor Walkthrough", trainerNotes: "Look for old food debris." },
-                { id: "RES-CLN-08", description: "Wipe and sanitize dry-store shelving.", priority: "Low", riskLevel: "Low", consequence: "Dust and weevil attraction.", proof: "Shelf Check", trainerNotes: "Wipe with 70% alcohol." },
-                { id: "RES-CLN-09", description: "Deep clean staff locker room and washrooms.", priority: "Medium", riskLevel: "Low", consequence: "Poor staff morale and hygiene signals.", proof: "Cleaning Log", trainerNotes: "Check locker tops for dust." },
-                { id: "RES-CLN-10", description: "Final hygiene sign-off for the weekly cycle.", priority: "High", riskLevel: "Low", consequence: "Loss of baseline standards.", proof: "Signature", trainerNotes: "Conduct final walkthrough with GM." }
-            ]
-        },
-        {
             title: "Security & Perimeter Control",
             department: "Security",
             frequency: "Daily",
@@ -244,18 +184,32 @@ export const restaurants: PremiumPack = {
             ]
         },
         {
-            title: "Supply Chain Integrity",
-            department: "Procurement",
+            title: "Logistics, Valet & Parking",
+            department: "Security",
             frequency: "Daily",
-            role: "Accountant",
-            summary: "Profit protection at the point of entry.",
-            icon: "package-search",
+            role: "Security Head",
+            summary: "Command for the arrival infrastructure and asset protection.",
+            icon: "car",
             tasks: [
-                { id: "RES-SUP-01", description: "Scale Calibration: Test with 1kg standard weight.", priority: "High", riskLevel: "Medium", consequence: "Paying for missing weight.", proof: "Calibration Log", trainerNotes: "Scale must read exactly 1.000kg." },
-                { id: "RES-SUP-02", description: "Check temp of incoming high-risk dairy/protein.", priority: "High", riskLevel: "High", consequence: "Accepting compromised stock.", proof: "Receiving Log" },
-                { id: "RES-SUP-03", description: "Verify FSSAI license of fresh meat suppliers.", priority: "High", riskLevel: "High", consequence: "Legal liability for unsafe sourcing.", proof: "License File" },
-                { id: "RES-SUP-04", description: "Verify LPG/Gas cylinder weight and seal integrity.", priority: "High", riskLevel: "High", consequence: "Financial loss and gas leak risk.", proof: "Receipt Log" },
-                { id: "RES-SUP-05", description: "Audit dry-store inventory against purchase orders.", priority: "High", riskLevel: "High", consequence: "Stock leakage and over-billing.", proof: "PO Match" }
+                { id: "RES-LOG-01", description: "Valet Key Vault: Reconcile total keys against parking log.", priority: "High", riskLevel: "High", consequence: "Theft / unauthorized joyrides.", proof: "Dual-Verification Log", trainerNotes: "Keys must stay in the locked box." },
+                { id: "RES-LOG-02", description: "Valet Damage Audit: Log any pre-existing dents on arrival.", priority: "High", riskLevel: "High", consequence: "False insurance claims by guests.", proof: "Photo/Checksheet", trainerNotes: "Circle dents on the card." },
+                { id: "RES-LOG-03", description: "Parking Perimeter: Verify barriers and entry sensors functional.", priority: "High", riskLevel: "Medium", consequence: "Security breach / revenue loss.", proof: "Test Log", trainerNotes: "Test manual override too." }
+            ]
+        },
+        {
+            title: "Engineering & MEP Vitals",
+            department: "Maintenance",
+            frequency: "Daily",
+            role: "Admin Manager",
+            summary: "Infrastructure readiness and utility uptime.",
+            icon: "wrench",
+            tasks: [
+                { id: "RES-MEP-01", description: "Log daily electricity and water meter readings.", priority: "Medium", riskLevel: "Low", consequence: "Undetected leaks or energy spikes.", proof: "Meter Log" },
+                { id: "RES-MEP-02", description: "Verify backup generator fuel levels and battery voltage.", priority: "High", riskLevel: "High", consequence: "Blackout during peak weekend shift.", proof: "Test Log" },
+                { id: "RES-MEP-03", description: "Check all floor and kitchen drains for blockage/odors.", priority: "High", riskLevel: "Medium", consequence: "Flooding and hygiene closure.", proof: "Visual Check" },
+                { id: "RES-MEP-04", description: "Inspect HVAC air-filters and monitor lobby temp.", priority: "Medium", riskLevel: "Low", consequence: "Guest discomfort and high energy load.", proof: "BMS Reading" },
+                { id: "RES-MEP-05", description: "Audit light-bulb functionality in the dining area.", priority: "Low", riskLevel: "Low", consequence: "Poor ambiance signals.", proof: "Visual Audit" },
+                { id: "RES-MEP-10", description: "Final facility shutdown check (excluding fridges).", priority: "High", riskLevel: "High", consequence: "Fire risk and utility waste.", proof: "Switch-off Log" }
             ]
         }
     ]
