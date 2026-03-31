@@ -1,3 +1,4 @@
+
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const franchise_operations_pack: PremiumPack = {
@@ -74,7 +75,7 @@ export const franchise_operations_pack: PremiumPack = {
             title: "Financial & Royalty Governance",
             department: "Finance",
             frequency: "Monthly",
-            role: "Financial Auditor",
+            role: "Accountant",
             summary: "Protects the royalty stream by auditing sales integrity.",
             icon: "banknote",
             tasks: [
@@ -87,7 +88,7 @@ export const franchise_operations_pack: PremiumPack = {
             title: "Training & Certification",
             department: "HR",
             frequency: "Quarterly",
-            role: "Training Head",
+            role: "HR Manager",
             summary: "Ensures staff skill levels meet the brand benchmark.",
             icon: "graduation-cap",
             tasks: [
@@ -100,7 +101,7 @@ export const franchise_operations_pack: PremiumPack = {
             title: "Marketing & Local Activation",
             department: "Marketing",
             frequency: "Monthly",
-            role: "Marketing Mgr",
+            role: "Admin Manager",
             summary: "Ensures franchisees are actively driving local footfall.",
             icon: "megaphone",
             tasks: [
@@ -113,7 +114,7 @@ export const franchise_operations_pack: PremiumPack = {
             title: "Supply Chain & Quality Audit",
             department: "Supply Chain",
             frequency: "Monthly",
-            role: "Supply Chain Mgr",
+            role: "EHS Officer",
             summary: "Ensures franchisees are only using approved sources.",
             icon: "truck",
             tasks: [

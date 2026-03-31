@@ -75,7 +75,7 @@ export const facility_management_blueprint: PremiumPack = {
             title: "Regulatory & Compliance",
             department: "Compliance",
             frequency: "Monthly",
-            role: "Facility Manager",
+            role: "Admin Manager",
             summary: "Protects the facility from legal and regulatory shutdowns.",
             icon: "file-lock",
             tasks: [
@@ -88,7 +88,7 @@ export const facility_management_blueprint: PremiumPack = {
             title: "Security & Perimeter Control",
             department: "Security",
             frequency: "Daily",
-            role: "Security Head",
+            role: "EHS Officer",
             summary: "Hardens the perimeter and protects facility assets.",
             icon: "shield",
             tasks: [
@@ -101,7 +101,7 @@ export const facility_management_blueprint: PremiumPack = {
             title: "Mail, Logistics & Receiving",
             department: "Admin",
             frequency: "Daily",
-            role: "Admin Coordinator",
+            role: "Accountant",
             summary: "Governance for the facility supply chain and parcel security.",
             icon: "truck",
             tasks: [
@@ -113,7 +113,7 @@ export const facility_management_blueprint: PremiumPack = {
             title: "Vendor & AMC Management",
             department: "Procurement",
             frequency: "Monthly",
-            role: "Procurement Head",
+            role: "HR Manager",
             summary: "Ensures service partners are delivering on their SLAs.",
             icon: "handshake",
             tasks: [
@@ -126,26 +126,13 @@ export const facility_management_blueprint: PremiumPack = {
             title: "Energy & Sustainability Audit",
             department: "Management",
             frequency: "Weekly",
-            role: "Energy Auditor",
+            role: "COO / Owner",
             summary: "Protects the bottom line through utility optimization.",
             icon: "leaf",
             tasks: [
                 { id: "FM-SUS-01", description: "Log daily KWH consumption from the main meter.", priority: "High", riskLevel: "Low", consequence: "Undetected energy spikes and high bills.", proof: "Meter Reading" },
                 { id: "FM-SUS-02", description: "Verify exterior lighting is off during daylight hours.", priority: "Medium", riskLevel: "Low", consequence: "Wasted energy overheads.", proof: "Visual Check" },
                 { id: "FM-SUS-03", description: "Inspect HVAC vents for blockage to improve efficiency.", priority: "Medium", riskLevel: "Low", consequence: "Increased load on compressor.", proof: "Walkthrough" }
-            ]
-        },
-        {
-            title: "Facility Executive Governance",
-            department: "Management",
-            frequency: "Weekly",
-            role: "COO / Owner",
-            summary: "Strategic oversight of infrastructure performance and ROI.",
-            icon: "crown",
-            tasks: [
-                { id: "FM-EXE-01", description: "Review 'Empire Mood' and facility shift progress.", priority: "High", riskLevel: "Low", consequence: "Drift in maintenance discipline.", proof: "Dashboard Review" },
-                { id: "FM-EXE-02", description: "Audit 'Incident Log' for any unresolved fire or life-safety alerts.", priority: "High", riskLevel: "High", consequence: "Massive legal liability and facility shutdown.", proof: "Incident Audit" },
-                { id: "FM-EXE-03", description: "Reconcile 'ROI Engine' savings against actual utility billing.", priority: "Medium", riskLevel: "Medium", consequence: "Profit erosion through unmonitored waste.", proof: "Financial Match" }
             ]
         }
     ]

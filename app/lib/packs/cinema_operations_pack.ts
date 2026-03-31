@@ -34,7 +34,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "Projection & Sound QC",
             department: "Technical",
             frequency: "Per Show",
-            role: "Projectionist",
+            role: "Head Chef", // Technical Lead role mapping
             summary: "Ensures a flawless technical presentation for every movie screening.",
             icon: "projector",
             tasks: [
@@ -48,7 +48,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "F&B Concessions & Yield",
             department: "F&B",
             frequency: "Daily",
-            role: "F&B Mgr",
+            role: "Accountant",
             summary: "Governance for high-margin concession inventory.",
             icon: "utensils",
             tasks: [
@@ -61,7 +61,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "Auditorium & Exit Safety",
             department: "Operations",
             frequency: "Daily",
-            role: "Floor Supervisor",
+            role: "EHS Officer",
             summary: "Governs guest safety and cleanliness inside the halls.",
             icon: "door-open",
             tasks: [
@@ -74,7 +74,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "Box Office & Queue Command",
             department: "Sales",
             frequency: "Daily",
-            role: "Ticketing Mgr",
+            role: "Admin Manager",
             summary: "Ensures smooth guest arrival and transaction integrity.",
             icon: "ticket",
             tasks: [
@@ -87,7 +87,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "VIP Lounge & Luxury Service",
             department: "Guest Service",
             frequency: "Daily",
-            role: "Guest Relations",
+            role: "Floor Manager",
             summary: "Governance for premium screen and lounge standards.",
             icon: "star",
             tasks: [
@@ -99,7 +99,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "Housekeeping & Washrooms",
             department: "Facilities",
             frequency: "Hourly",
-            role: "Cleaning Lead",
+            role: "Shift Supervisor",
             summary: "Hourly hygiene command for the facility.",
             icon: "sparkles",
             tasks: [
@@ -111,7 +111,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "Technical Maintenance & MEP",
             department: "Engineering",
             frequency: "Weekly",
-            role: "Facility Mgr",
+            role: "Sous Chef", // Maintenance Engineer role mapping
             summary: "Infrastructure readiness for the complex.",
             icon: "wrench",
             tasks: [
@@ -123,7 +123,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "Cinema Executive Governance",
             department: "Management",
             frequency: "Weekly",
-            role: "GM / Owner",
+            role: "COO / Owner",
             summary: "Strategic oversight of theater performance and ROI.",
             icon: "crown",
             tasks: [
