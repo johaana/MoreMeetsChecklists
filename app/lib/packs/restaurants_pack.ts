@@ -5,10 +5,10 @@ export const restaurants: PremiumPack = {
     id: 'restaurants',
     title: "Restaurant Operating System",
     category: "Hospitality",
-    description: "The definitive Sovereign v4.4 engine for multi-unit food and beverage groups. Standardizing 150+ control points from Owner vision to kitchen hygiene.",
+    description: "The definitive Sovereign v4.4 engine for multi-unit food and beverage groups. Standardizing 150+ technical control points from Owner vision to delivery logistics.",
     heroHeadline: "Standardize Your Kitchen. Protect Your Margins.",
     heroSubheadline: "The professional plug for revenue leakage and food safety risks—across every branch in your group.",
-    pricingUrgency: "Preventing a single foodborne illness lawsuit or one major theft saves 100x the cost of this system.",
+    pricingUrgency: "A single foodborne illness lawsuit or one major theft saves 100x the cost of this system.",
     consultingAnchor: 5000,
     priceINR: 5999,
     priceUSD: 79,
@@ -20,10 +20,11 @@ export const restaurants: PremiumPack = {
     bestseller: true,
     whoIsItFor: ["Restaurant Group Owners", "COOs", "General Managers", "Kitchen Directors", "Heads of Quality"],
     sampleItems: [
-        { text: "<strong>Accountant / Inventory Shield</strong>: Blind stock counts and PO matching to stop high-value profit leakage.", icon: "banknote" },
-        { text: "<strong>EHS & Hard Safety</strong>: Technical logs for gas banks, LOTO, and fire-pathway clearance handled by a dedicated officer.", icon: "shield-check" },
+        { text: "<strong>Owner/COO Command</strong>: High-level visibility into group compliance and profit protection dashboards.", icon: "crown" },
         { text: "<strong>Kitchen Opening (HACCP)</strong>: Zero-fail protocols for temperature, hygiene, and allergen separation.", icon: "sunrise" },
-        { text: "<strong>Digital Command & ORM</strong>: Protect your ratings with 24h response mandates for Google and Zomato.", icon: "globe" },
+        { text: "<strong>Delivery & Aggregator Logic</strong>: Menu sync for Swiggy/Zomato, tamper-seal audits, and commission reconciliation.", icon: "truck" },
+        { text: "<strong>Financial & Inventory Shield</strong>: Blind stock counts and PO matching to stop high-value profit leakage.", icon: "banknote" },
+        { text: "<strong>EHS & Hard Safety</strong>: Technical logs for gas banks, LOTO, and fire-pathway clearance.", icon: "shield-check" },
         { text: "<strong>Engineering & MEP Vitals</strong>: Proactive maintenance for HVAC, plumbing, and electrical banks to ensure zero downtime.", icon: "wrench" },
         { text: "<strong>Institutional Memory</strong>: Digital instructions that stay with the brand even when your best chef resigns.", icon: "history" }
     ],
@@ -60,32 +61,22 @@ export const restaurants: PremiumPack = {
                 { id: "RES-COLD-02", description: "Verify Blast Chiller core-temp records for morning prep.", priority: "High", riskLevel: "High", consequence: "Slow cooling allows spore germination.", proof: "Core Log", trainerNotes: "Target: 70°C to 3°C in <90 mins." },
                 { id: "RES-COLD-03", description: "Check temperature of high-risk delivery (Milk/Meat) on arrival.", priority: "High", riskLevel: "High", consequence: "Accepting spoiled stock.", proof: "Inward Log", trainerNotes: "Must be < 4°C at dock." },
                 { id: "RES-COLD-04", description: "Audit date-labeling compliance (Prep Date vs. Expiry).", priority: "High", riskLevel: "High", consequence: "Serving expired product; FSSAI violation.", proof: "Shelf Audit", trainerNotes: "Use 'Discard' labels for end-of-day." },
-                { id: "RES-COLD-05", description: "Log freezer air-curtain and door-seal integrity.", priority: "Low", riskLevel: "Low", consequence: "High energy bills and freezer burn.", proof: "Visual Check", trainerNotes: "Check for condensation on exterior." },
-                { id: "RES-COLD-06", description: "Verify functionality of digital temp-data loggers.", priority: "High", riskLevel: "Medium", consequence: "Loss of auditable safety records.", proof: "App Sync", trainerNotes: "Check battery levels on sensors." },
-                { id: "RES-COLD-07", description: "Check ice-machine for slime or mold buildup.", priority: "High", riskLevel: "High", consequence: "Contaminated ice and guest illness.", proof: "Visual Check", trainerNotes: "Sanitize bin monthly." },
-                { id: "RES-COLD-08", description: "Monitor refrigerator condenser coils for dust.", priority: "Low", riskLevel: "Low", consequence: "Reduced efficiency and compressor burnout.", proof: "Maintenance Log", trainerNotes: "Vacuum coils every 30 days." },
-                { id: "RES-COLD-09", description: "Verify storage of raw eggs on the bottom shelf.", priority: "High", riskLevel: "High", consequence: "Salmonella cross-contamination.", proof: "Shelf Audit", trainerNotes: "Never store above cooked food." },
-                { id: "RES-COLD-10", description: "Ensure walk-in door handles are sanitized every 4h.", priority: "Medium", riskLevel: "Low", consequence: "Surface pathogen spread.", proof: "Sanitization Log", trainerNotes: "Use quaternary ammonium sanitizer." }
+                { id: "RES-COLD-05", description: "Log freezer air-curtain and door-seal integrity.", priority: "Low", riskLevel: "Low", consequence: "High energy bills and freezer burn.", proof: "Visual Check", trainerNotes: "Check for condensation on exterior." }
             ]
         },
         {
-            title: "Service & Dining Logic",
-            department: "Service",
+            title: "Delivery & Aggregator Command",
+            department: "Logistics",
             frequency: "Daily",
-            role: "Floor Manager",
-            summary: "Protects the guest experience standard.",
-            icon: "armchair",
+            role: "Admin Manager",
+            summary: "Ensures delivery excellence and aggregator profit protection.",
+            icon: "truck",
             tasks: [
-                { id: "RES-DIN-01", description: "Verify table alignment against brand planogram.", priority: "Low", riskLevel: "Low", consequence: "Disorganized brand appearance.", proof: "Visual Check", trainerNotes: "Use tile lines for alignment." },
-                { id: "RES-DIN-02", description: "Inspect restrooms hourly for cleanliness and stock.", priority: "High", riskLevel: "Medium", consequence: "Major driver of negative reviews.", proof: "Hourly Log", trainerNotes: "Check for odors and mirror spots." },
-                { id: "RES-DIN-03", description: "Check ambiance vitals: Scent, Music Volume, Lighting.", priority: "Medium", riskLevel: "Low", consequence: "Lower guest dwell time.", proof: "Daily Log", trainerNotes: "Music should be background, not lead." },
-                { id: "RES-DIN-04", description: "Conduct pre-shift briefing: review 86'd items and specials.", priority: "High", riskLevel: "Low", consequence: "Misinformed staff and guest frustration.", proof: "Briefing Log", trainerNotes: "Quiz one server on ingredients." },
-                { id: "RES-DIN-05", description: "Check all POS terminals are functional and paper is stocked.", priority: "High", riskLevel: "Medium", consequence: "Billing delays during peak rush.", proof: "System Check", trainerNotes: "Test credit card machine signal." },
-                { id: "RES-DIN-06", description: "Verify first-aid kit presence and AED battery status.", priority: "High", riskLevel: "High", consequence: "Inability to respond to guest medical emergency.", proof: "Visual Check", trainerNotes: "Replace AED pads if expired." },
-                { id: "RES-DIN-07", description: "Audit uniform grooming (ironed, no stains, clean shoes).", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution and poor first impression.", proof: "Grooming Log", trainerNotes: "Check hairnets if applicable." },
-                { id: "RES-DIN-08", description: "Monitor water-station hygiene and pitcher cleanliness.", priority: "High", riskLevel: "Medium", consequence: "Water-borne illness transmission.", proof: "Visual Audit", trainerNotes: "Pitchers must be sanitized every 4h." },
-                { id: "RES-DIN-09", description: "Verify all floor menu QR codes are functional.", priority: "Medium", riskLevel: "Low", consequence: "Friction at ordering.", proof: "Digital Test", trainerNotes: "Test link on both iOS and Android." },
-                { id: "RES-DIN-10", description: "Audit table-top condiment freshness (Salt/Pepper/Oil).", priority: "Low", riskLevel: "Low", consequence: "Poor quality signals.", proof: "Visual Check", trainerNotes: "Wipe bottles to remove sticky residue." }
+                { id: "RES-DEL-01", description: "Sync Aggregator 'Out of Stock' (86) list with POS.", priority: "High", riskLevel: "Medium", consequence: "High order cancellation rates and platform penalties.", proof: "App Audit", trainerNotes: "Sync Swiggy, Zomato, and Direct Web." },
+                { id: "RES-DEL-02", description: "Verify tamper-evident seal stock and application.", priority: "High", riskLevel: "High", consequence: "Food tampering liability and guest safety risk.", proof: "Visual Check", trainerNotes: "Use double-seal for liquid items." },
+                { id: "RES-DEL-03", description: "Reconcile aggregator terminal orders against physical POS bills.", priority: "High", riskLevel: "High", consequence: "Untracked revenue and major profit leakage.", proof: "Reconciliation Log", trainerNotes: "Perform every 4 hours." },
+                { id: "RES-DEL-04", description: "Audit delivery bag sanitization and rider handoff zone.", priority: "Medium", riskLevel: "Medium", consequence: "Hygiene breakdown during last-mile delivery.", proof: "Cleaning Log", trainerNotes: "Sanitize bags with 70% Alcohol." },
+                { id: "RES-DEL-05", description: "Track Rider Pickup TAT (Target < 5 mins from prep ready).", priority: "Medium", riskLevel: "Low", consequence: "Cold food delivery and negative guest ratings.", proof: "TAT Dashboard", trainerNotes: "Flag delays exceeding 10 mins." }
             ]
         },
         {
@@ -93,19 +84,14 @@ export const restaurants: PremiumPack = {
             department: "Bar",
             frequency: "Daily",
             role: "Bar Manager",
-            summary: "Governance for high-margin alcohol and regulated stock.",
+            summary: "Governance for high-margin alcohol inventory.",
             icon: "glass-water",
             tasks: [
                 { id: "RES-BAR-01", description: "Reconcile opening bottle counts against POS sales.", priority: "High", riskLevel: "High", consequence: "Internal theft and revenue leakage.", proof: "Inventory Sheet", trainerNotes: "Check weight of open bottles." },
                 { id: "RES-BAR-02", description: "Verify garnish freshness and prep date labels.", priority: "Medium", riskLevel: "Low", consequence: "Poor drink quality.", proof: "Visual Check", trainerNotes: "Discard garnishes older than 24h." },
                 { id: "RES-BAR-03", description: "Audit Bar License display and age-check compliance.", priority: "High", riskLevel: "High", consequence: "Legal closure and massive fines.", proof: "Compliance Note", trainerNotes: "Shadow one ID check daily." },
                 { id: "RES-BAR-04", description: "Clean beer draught lines and inspect keg dates.", priority: "High", riskLevel: "Medium", consequence: "Sour taste and wastage.", proof: "Line Log", trainerNotes: "Flush with cleaning solution weekly." },
-                { id: "RES-BAR-05", description: "Execute Narcotics-tier control for high-value liqueurs.", priority: "High", riskLevel: "High", consequence: "Inventory loss of premium assets.", proof: "Dual-Verification", trainerNotes: "Verify seals on 'top-shelf' stock." },
-                { id: "RES-BAR-06", description: "Log waste/breakage bottles with manager signature.", priority: "High", riskLevel: "Medium", consequence: "Fraudulent breakage logs masking theft.", proof: "Waste Sheet", trainerNotes: "Manager must see the broken bottle." },
-                { id: "RES-BAR-07", description: "Verify glass-washer final rinse temp (Target 82°C).", priority: "High", riskLevel: "High", consequence: "Lipstick and bacterial residue on glasses.", proof: "Temp Reading", trainerNotes: "Check for spotted glassware." },
-                { id: "RES-BAR-08", description: "Check bar-mat and floor-drain for foul odors.", priority: "Medium", riskLevel: "Low", consequence: "Negative ambiance.", proof: "Physical Check", trainerNotes: "Pour 1L water + bleach in drain daily." },
-                { id: "RES-BAR-09", description: "Audit straw and napkin inventory.", priority: "Low", riskLevel: "Low", consequence: "Service friction.", proof: "Stock Sheet", trainerNotes: "Ensure eco-friendly straws only." },
-                { id: "RES-BAR-10", description: "Confirm POS 'No-Sale' button usage logs.", priority: "High", riskLevel: "High", consequence: "Unauthorized cash drawer access.", proof: "Void Log Audit", trainerNotes: "Investigate any code usage > 3 times." }
+                { id: "RES-BAR-05", description: "Execute Narcotics-tier control for high-value liqueurs.", priority: "High", riskLevel: "High", consequence: "Inventory loss of premium assets.", proof: "Dual-Verification", trainerNotes: "Verify seals on 'top-shelf' stock." }
             ]
         },
         {
@@ -113,19 +99,14 @@ export const restaurants: PremiumPack = {
             department: "Safety",
             frequency: "Daily",
             role: "EHS Officer",
-            summary: "Mandatory protocols to prevent overnight disasters and ensure worker safety.",
+            summary: "Mandatory protocols to prevent overnight disasters.",
             icon: "hard-hat",
             tasks: [
                 { id: "RES-SAFE-01", description: "Verify all gas bank valves are closed and locked.", priority: "High", riskLevel: "High", consequence: "Catastrophic gas leak or explosion.", proof: "Physical Check", trainerNotes: "Sniff check at the manifold." },
                 { id: "RES-SAFE-02", description: "Shutdown all non-essential electrical equipment.", priority: "High", riskLevel: "High", consequence: "Short-circuit fire risk and energy waste.", proof: "Breaker Walkthrough", trainerNotes: "Don't turn off refrigerators." },
                 { id: "RES-SAFE-03", description: "Confirm all external exits are locked and alarms armed.", priority: "High", riskLevel: "High", consequence: "Unauthorized entry and burglary.", proof: "Alarm Signal", trainerNotes: "Check back-alley door twice." },
                 { id: "RES-SAFE-04", description: "Execute LOTO (Lock-Out Tag-Out) for any equipment in repair.", priority: "High", riskLevel: "High", consequence: "Fatal electrical shock or mechanical injury.", proof: "LOTO Log", trainerNotes: "Verify zero-energy state before repair." },
-                { id: "RES-SAFE-05", description: "Inspect fire extinguishers for pressure and accessibility.", priority: "High", riskLevel: "High", consequence: "Inability to fight fire during critical minutes.", proof: "Pressure Gauge", trainerNotes: "Extinguishers must be clear of boxes." },
-                { id: "RES-SAFE-06", description: "Audit waste segregation at source (Wet/Dry/Hazardous).", priority: "Medium", riskLevel: "Low", consequence: "Environmental fines.", proof: "Visual Audit", trainerNotes: "Check for leaking oil drums." },
-                { id: "RES-SAFE-07", description: "Test emergency lighting battery backup.", priority: "Medium", riskLevel: "Medium", consequence: "Panic during power outage.", proof: "Test Log", trainerNotes: "Press test button for 5s." },
-                { id: "RES-SAFE-08", description: "Check PPE availability for stewards (Gloves/Cut-resistant).", priority: "Medium", riskLevel: "Low", consequence: "Worker injury and turnover.", proof: "Stock Audit", trainerNotes: "Replace torn gloves immediately." },
-                { id: "RES-SAFE-09", description: "Monitor water-tank potability (Chlorine residual check).", priority: "High", riskLevel: "High", consequence: "Water-borne disease outbreak.", proof: "Test Strip", trainerNotes: "Target: 0.5ppm residual." },
-                { id: "RES-SAFE-10", description: "Final manager walkthrough signature.", priority: "High", riskLevel: "High", consequence: "Gaps in daily discipline.", proof: "Manual Sign-off", trainerNotes: "Walk the 'S' path across the floor." }
+                { id: "RES-SAFE-05", description: "Inspect fire extinguishers for pressure and accessibility.", priority: "High", riskLevel: "High", consequence: "Inability to fight fire during critical minutes.", proof: "Pressure Gauge", trainerNotes: "Extinguishers must be clear of boxes." }
             ]
         },
         {
@@ -137,15 +118,10 @@ export const restaurants: PremiumPack = {
             icon: "banknote",
             tasks: [
                 { id: "RES-FIN-01", description: "Reconcile daily POS gross sales against bank settlement reports.", priority: "High", riskLevel: "High", consequence: "Unidentified revenue leakage or banking error.", proof: "Settlement Sheet" },
-                { id: "RES-FIN-02", description: "Perform 'Blind Stock Count' of top 5 high-value SKUs (e.g., Salmon, Liqueur).", priority: "High", riskLevel: "High", consequence: "Internal theft masking as consumption.", proof: "Audit Sheet" },
+                { id: "RES-FIN-02", description: "Perform 'Blind Stock Count' of top 5 high-value SKUs (Salmon, Liqueur).", priority: "High", riskLevel: "High", consequence: "Internal theft masking as consumption.", proof: "Audit Sheet" },
                 { id: "RES-FIN-03", description: "Audit 'Cancelled Bill' and 'Void' reports for unauthorized patterns.", priority: "High", riskLevel: "High", consequence: "Cashier-level fraud.", proof: "Void Log Audit" },
-                { id: "RES-FIN-04", description: "Verify petty cash balance against daily vouchers.", priority: "Medium", riskLevel: "Medium", consequence: "Mismanagement of operational cash.", proof: "Cash Count" },
-                { id: "RES-FIN-05", description: "Reconcile delivery partner (Zomato/Swiggy) payouts against POS orders.", priority: "High", riskLevel: "Medium", consequence: "Over-commission billing errors.", proof: "Aggregator Match" },
-                { id: "RES-FIN-06", description: "Check for 'Manual' bill entries in the system.", priority: "High", riskLevel: "High", consequence: "Bypassing fiscal controls.", proof: "System Report" },
-                { id: "RES-FIN-07", description: "Verify daily cash-drop to secure vault/pickup.", priority: "High", riskLevel: "High", consequence: "Loss of liquid assets during robbery.", proof: "Deposit Slip" },
-                { id: "RES-FIN-08", description: "Audit vendor invoice pricing against signed master contracts.", priority: "Medium", riskLevel: "Low", consequence: "Silent margin erosion via vendor price-creep.", proof: "Pricing Match" },
-                { id: "RES-FIN-09", description: "Verify validity of all active business licenses (Insurance/Trade).", priority: "High", riskLevel: "High", consequence: "Legal closure or insurance denial.", proof: "License Tracker" },
-                { id: "RES-FIN-10", description: "Reconcile monthly utility bills against daily meter logs.", priority: "Low", riskLevel: "Low", consequence: "Undetected energy waste or leaks.", proof: "Utility Audit" }
+                { id: "RES-FIN-04", description: "Verify daily cash-drop to secure vault/pickup.", priority: "High", riskLevel: "High", consequence: "Loss of liquid assets during robbery.", proof: "Deposit Slip" },
+                { id: "RES-FIN-05", description: "Audit vendor invoice pricing against signed master contracts.", priority: "Medium", riskLevel: "Low", consequence: "Silent margin erosion via vendor price-creep.", proof: "Pricing Match" }
             ]
         },
         {
@@ -158,42 +134,9 @@ export const restaurants: PremiumPack = {
             tasks: [
                 { id: "RES-ORM-01", description: "Reply to all Google My Business reviews < 24h.", priority: "High", riskLevel: "Medium", consequence: "Ranking drop and brand damage.", proof: "Admin Dashboard", trainerNotes: "Personalize every response." },
                 { id: "RES-ORM-02", description: "Review and resolve Zomato/Swiggy order complaints.", priority: "High", riskLevel: "High", consequence: "Merchant platform penalties.", proof: "App Log", trainerNotes: "Call guest if order was cancelled." },
-                { id: "RES-ORM-03", description: "Audit 'Table Service' survey scores.", priority: "Medium", riskLevel: "Low", consequence: "Undetected drop in server quality.", proof: "Survey Sheet", trainerNotes: "Focus on 'Speed' score." },
-                { id: "RES-ORM-04", description: "Check Instagram DM inbox for guest inquiries.", priority: "Medium", riskLevel: "Low", consequence: "Missed booking opportunities.", proof: "Inbox Clear", trainerNotes: "Target < 30 min response." },
-                { id: "RES-ORM-05", description: "Verify 'Today's Specials' are updated on social stories.", priority: "Low", riskLevel: "Low", consequence: "Lower sales of high-margin specials.", proof: "Story Post", trainerNotes: "Use high-quality video/photos." },
-                { id: "RES-ORM-06", description: "Audit website reservation widget functionality.", priority: "High", riskLevel: "Medium", consequence: "Lost guest revenue.", proof: "Digital Test", trainerNotes: "Try booking a table for 4." },
-                { id: "RES-ORM-07", description: "Monitor competitor mentions and local trends.", priority: "Low", riskLevel: "Low", consequence: "Loss of market relevance.", proof: "Trend Log", trainerNotes: "Check local hashtags daily." },
-                { id: "RES-ORM-08", description: "Update Google My Business 'Holiday Hours' if needed.", priority: "High", riskLevel: "Medium", consequence: "Guests arriving at a closed outlet.", proof: "System Sync", trainerNotes: "Update 7 days in advance." },
-                { id: "RES-ORM-09", description: "Check for unauthorized usage of brand logos online.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution.", proof: "Search Log", trainerNotes: "Report fake profiles." },
-                { id: "RES-ORM-10", description: "Execute weekly 'Loyalty Pulse' email to VIP guests.", priority: "Medium", riskLevel: "Low", consequence: "Loss of recurring business.", proof: "Campaign Log", trainerNotes: "Include an exclusive offer." }
-            ]
-        },
-        {
-            title: "Security & Perimeter Control",
-            department: "Security",
-            frequency: "Daily",
-            role: "EHS Officer",
-            summary: "Hardens the perimeter and protects facility assets.",
-            icon: "shield",
-            tasks: [
-                { id: "RES-SEC-01", description: "Verify CCTV recording status and camera focal points.", priority: "High", riskLevel: "High", consequence: "Loss of evidence for theft or unauthorized entry.", proof: "DVR Dashboard" },
-                { id: "RES-SEC-02", description: "Patrol boundary walls and parking levels for suspicious activity.", priority: "High", riskLevel: "Medium", consequence: "Theft of tenant property or facility vandalism.", proof: "Patrol Log" },
-                { id: "RES-SEC-03", description: "Audit visitor management logs for 100% ID verification.", priority: "High", riskLevel: "High", consequence: "Unidentified persons gaining facility access.", proof: "Registry Audit" },
-                { id: "RES-SEC-04", description: "Check all panic buttons and silent alarms.", priority: "High", riskLevel: "High", consequence: "Inability to alert authorities during a robbery.", proof: "Alarm Test Log" },
-                { id: "RES-SEC-05", description: "Audit key cabinet and verify all keys are accounted for.", priority: "High", riskLevel: "High", consequence: "Unauthorized access to display inventory.", proof: "Key Inventory" }
-            ]
-        },
-        {
-            title: "Logistics, Valet & Parking",
-            department: "Security",
-            frequency: "Daily",
-            role: "Security Head",
-            summary: "Command for the arrival infrastructure and asset protection.",
-            icon: "car",
-            tasks: [
-                { id: "RES-LOG-01", description: "Valet Key Vault: Reconcile total keys against parking log.", priority: "High", riskLevel: "High", consequence: "Theft / unauthorized joyrides.", proof: "Dual-Verification Log", trainerNotes: "Keys must stay in the locked box." },
-                { id: "RES-LOG-02", description: "Valet Damage Audit: Log any pre-existing dents on arrival.", priority: "High", riskLevel: "High", consequence: "False insurance claims by guests.", proof: "Photo/Checksheet", trainerNotes: "Circle dents on the card." },
-                { id: "RES-LOG-03", description: "Parking Perimeter: Verify barriers and entry sensors functional.", priority: "High", riskLevel: "Medium", consequence: "Security breach / revenue loss.", proof: "Test Log", trainerNotes: "Test manual override too." }
+                { id: "RES-ORM-03", description: "Check Instagram DM inbox for guest inquiries.", priority: "Medium", riskLevel: "Low", consequence: "Missed booking opportunities.", proof: "Inbox Clear", trainerNotes: "Target < 30 min response." },
+                { id: "RES-ORM-04", description: "Update Google My Business 'Holiday Hours' if needed.", priority: "High", riskLevel: "Medium", consequence: "Guests arriving at a closed outlet.", proof: "System Sync", trainerNotes: "Update 7 days in advance." },
+                { id: "RES-ORM-05", description: "Monitor competitor mentions and local trends.", priority: "Low", riskLevel: "Low", consequence: "Loss of market relevance.", proof: "Trend Log" }
             ]
         },
         {
@@ -208,8 +151,7 @@ export const restaurants: PremiumPack = {
                 { id: "RES-MEP-02", description: "Verify backup generator fuel levels and battery voltage.", priority: "High", riskLevel: "High", consequence: "Blackout during peak weekend shift.", proof: "Test Log" },
                 { id: "RES-MEP-03", description: "Check all floor and kitchen drains for blockage/odors.", priority: "High", riskLevel: "Medium", consequence: "Flooding and hygiene closure.", proof: "Visual Check" },
                 { id: "RES-MEP-04", description: "Inspect HVAC air-filters and monitor lobby temp.", priority: "Medium", riskLevel: "Low", consequence: "Guest discomfort and high energy load.", proof: "BMS Reading" },
-                { id: "RES-MEP-05", description: "Audit light-bulb functionality in the dining area.", priority: "Low", riskLevel: "Low", consequence: "Poor ambiance signals.", proof: "Visual Audit" },
-                { id: "RES-MEP-10", description: "Final facility shutdown check (excluding fridges).", priority: "High", riskLevel: "High", consequence: "Fire risk and utility waste.", proof: "Switch-off Log" }
+                { id: "RES-MEP-05", description: "Final facility shutdown check (excluding fridges).", priority: "High", riskLevel: "High", consequence: "Fire risk and utility waste.", proof: "Switch-off Log" }
             ]
         }
     ]
