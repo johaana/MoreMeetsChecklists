@@ -25,33 +25,81 @@ export const healthcare_and_hospital_operations: PremiumPack = {
         { text: "<strong>Pharmacy & Narcotics</strong>: Strict access logs and double-blind stock counts for controlled drugs.", icon: "pill" },
         { text: "<strong>Billing & Discharge Shield</strong>: TPA pre-auth tracking and unbilled consumable audits.", icon: "banknote" },
         { text: "<strong>Biomedical Waste (EHS)</strong>: Legal compliance for waste segregation and spillage kit readiness.", icon: "recycle" },
-        { text: "<strong>Air Ambulance Logistics</strong>: Landing zone safety and flight-medical kit verification.", icon: "plane" },
         { text: "<strong>Security & Perimeter</strong>: Visitor badge enforcement and CCTV focal point audits for drug stores.", icon: "shield" }
     ],
     checklists: [
         {
-            title: "Surgical Safety (WHO Standards)",
+            title: "Reception & OPD Command",
+            department: "Front Office",
+            frequency: "Daily",
+            role: "Floor Manager",
+            summary: "Patient arrival readiness and queue governance.",
+            icon: "stethoscope",
+            tasks: [
+                { id: "MED-OPD-01", description: "Verify doctor arrival time against schedule slots.", priority: "High", riskLevel: "Low", consequence: "Patient frustration and review drop.", proof: "Roster Check" },
+                { id: "MED-OPD-02", description: "Audit waiting area hygiene and seating readiness.", priority: "Medium", riskLevel: "Low", consequence: "Infection transmission risk in lobby.", proof: "Visual Audit" },
+                { id: "MED-OPD-03", description: "Check registration system sync with patient records.", priority: "High", riskLevel: "Medium", consequence: "Mismatched clinical records.", proof: "System Sync" }
+            ]
+        },
+        {
+            title: "Clinical Safety & OT",
             department: "Surgery",
             frequency: "Per Procedure",
             role: "Nursing Lead",
-            summary: "Zero-fail protocols for the operating theater.",
+            summary: "Zero-fail surgical protocols.",
             icon: "shield-check",
             tasks: [
-                { id: "MED-SUR-01", description: "Execute WHO 'Time Out' before every incision.", priority: "High", riskLevel: "High", consequence: "Wrong-site surgery (Fatal never-event).", proof: "Sign-off", trainerNotes: "Whole team must stop and listen." },
-                { id: "MED-SUR-02", description: "Verify sterility indicators on all instrument sets.", priority: "High", riskLevel: "High", consequence: "Post-operative infection outbreak.", proof: "Indicator Tape", trainerNotes: "Check color change on internal strip." },
-                { id: "MED-SUR-03", description: "Perform independent double-count of all gauze and needles.", priority: "High", riskLevel: "High", consequence: "Retained surgical item (Lawsuit).", proof: "Sponge Log", trainerNotes: "Count before, during, and after." },
-                { id: "MED-SUR-04", description: "Verify functioning of backup UPS for anesthesia monitors.", priority: "High", riskLevel: "High", consequence: "Monitor failure during critical moment.", proof: "Battery Test" },
-                { id: "MED-SUR-05", description: "Confirm identity of patient using two identifiers (Name/MRN).", priority: "High", riskLevel: "High", consequence: "Operating on the wrong person.", proof: "Wristband Check" },
-                { id: "MED-SUR-06", description: "Audit surgical site marking visibility after draping.", priority: "High", riskLevel: "High", consequence: "Confusion over incision point.", proof: "Visual Confirmation" },
-                { id: "MED-SUR-07", description: "Log administration of prophylactic antibiotics <60 mins pre-incision.", priority: "Medium", riskLevel: "Medium", consequence: "Increased SSI (Infection) rate.", proof: "MAR Entry" },
-                { id: "MED-SUR-08", description: "Verify status of suction pumps and oxygen flow-meters.", priority: "High", riskLevel: "High", consequence: "Inability to clear airway during emergency.", proof: "Daily Test" },
-                { id: "MED-SUR-09", description: "Check availability of emergency 'Crash Cart' outside OT.", priority: "High", riskLevel: "High", consequence: "Resuscitation failure.", proof: "Seal Check" },
-                { id: "MED-SUR-10", description: "Audit OT air-pressure (Positive Pressure) and humidity levels.", priority: "High", riskLevel: "High", consequence: "Airborne bacterial contamination.", proof: "BMS Reading" },
-                { id: "MED-SUR-11", description: "Verify biopsy specimen labeling matches patient MRN exactly.", priority: "High", riskLevel: "High", consequence: "Mismatched lab reports.", proof: "Specimen Log" },
-                { id: "MED-SUR-12", description: "Check OT-scrub area for automated water-flow and soap stock.", priority: "Medium", riskLevel: "Low", consequence: "Breach in aseptic technique.", proof: "Visual Check" },
-                { id: "MED-SUR-13", description: "Inspect OT tables for mechanical stability and locking.", priority: "High", riskLevel: "Medium", consequence: "Patient fall or positioning error.", proof: "Physical Check" },
-                { id: "MED-SUR-14", description: "Verify functioning of C-Arm or Imaging gear (if applicable).", priority: "Medium", riskLevel: "Low", consequence: "Surgical delay.", proof: "System Test" },
-                { id: "MED-SUR-15", description: "Log terminal cleaning of OT after procedure completion.", priority: "High", riskLevel: "High", consequence: "Cross-infection between cases.", proof: "Cleaning Log" }
+                { id: "MED-OT-01", description: "Execute WHO 'Time Out' before every incision.", priority: "High", riskLevel: "High", consequence: "Wrong-site surgery (Fatal).", proof: "Signed Checklist" },
+                { id: "MED-OT-02", description: "Verify sterility indicators on all sets.", priority: "High", riskLevel: "High", consequence: "Post-op infection outbreak.", proof: "Visual Confirm" },
+                { id: "MED-OT-03", description: "Independent double-count of all needles and sponges.", priority: "High", riskLevel: "High", consequence: "Retained surgical items.", proof: "OT Log" }
+            ]
+        },
+        {
+            title: "Pharmacy & Narcotics Vault",
+            department: "Pharmacy",
+            frequency: "Daily",
+            role: "Pharmacist",
+            summary: "High-stakes medication governance.",
+            icon: "pill",
+            tasks: [
+                { id: "MED-PHM-01", description: "Narcotics Inventory: Dual-person verification count.", priority: "High", riskLevel: "High", consequence: "Theft and criminal liability.", proof: "Dual-Sign Log" },
+                { id: "MED-PHM-02", description: "Cold Chain: Log vaccine/biologics fridge temps twice daily.", priority: "High", riskLevel: "High", consequence: "Ineffective medication administration.", proof: "Temp Log" }
+            ]
+        },
+        {
+            title: "Pathology & Lab Readiness",
+            department: "Diagnostics",
+            frequency: "Daily",
+            role: "Lab Lead",
+            summary: "Accuracy and TAT command for diagnostics.",
+            icon: "microscope",
+            tasks: [
+                { id: "MED-LAB-01", description: "Calibrate analyzer machines with control samples.", priority: "High", riskLevel: "High", consequence: "False diagnostic reports.", proof: "Calibration Log" },
+                { id: "MED-LAB-02", description: "Audit report TAT: target < 2 hours for critical panels.", priority: "Medium", riskLevel: "Medium", consequence: "Delayed treatment decisions.", proof: "System Report" }
+            ]
+        },
+        {
+            title: "Billing & Discharge Shield",
+            department: "Admin",
+            frequency: "Daily",
+            role: "Accountant",
+            summary: "Financial integrity and patient transition.",
+            icon: "banknote",
+            tasks: [
+                { id: "MED-BIL-01", description: "TPA Pre-Auth Pulse: Verify approval status for all IPs.", priority: "High", riskLevel: "Medium", consequence: "Unrecoverable financial loss.", proof: "Insurance Log" },
+                { id: "MED-BIL-02", description: "Discharge Checklist: Verify all medications handed over.", priority: "High", riskLevel: "High", consequence: "Post-discharge clinical failure.", proof: "Handover Note" }
+            ]
+        },
+        {
+            title: "Hospital Security & Visitor Control",
+            department: "Security",
+            frequency: "Daily",
+            role: "Security Chief",
+            summary: "Perimeter hardening and asset protection.",
+            icon: "shield",
+            tasks: [
+                { id: "MED-SEC-01", description: "Audit Visitor Badge compliance at NICU/Ward entry.", priority: "High", riskLevel: "High", consequence: "Unauthorized person access to vulnerable patients.", proof: "Entry Log" },
+                { id: "MED-SEC-02", description: "CCTV Audit: Verify coverage of high-stakes drug stores.", priority: "High", riskLevel: "High", consequence: "Internal theft vulnerability.", proof: "System Dashboard" }
             ]
         }
     ]

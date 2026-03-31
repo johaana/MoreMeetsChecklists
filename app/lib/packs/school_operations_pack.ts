@@ -31,28 +31,64 @@ export const school_operations_pack: PremiumPack = {
     ],
     checklists: [
         {
-            title: "Student Transport & Safety",
+            title: "Student Transport & Bus Safety",
             department: "Transport",
             frequency: "Daily",
             role: "Transport Manager",
-            summary: "Ensures the safe transportation of all students and zero-fail attendance.",
+            summary: "Zero-fail transit protocols.",
             icon: "bus",
             tasks: [
-                { id: "SCH-TRA-01", description: "Mandatory 'Empty Bus Walkthrough' at end of every trip.", priority: "High", riskLevel: "High", consequence: "Child left behind in bus (Fatal never-event).", proof: "Secondary Sign-off", trainerNotes: "Physically touch the back seat." },
-                { id: "SCH-TRA-02", description: "Perform daily pre-trip inspection of brakes and tires.", priority: "High", riskLevel: "High", consequence: "Mechanical failure during transit.", proof: "Driver Sign-off", trainerNotes: "Check tire pressure manually." },
-                { id: "SCH-TRA-03", description: "Verify functioning of GPS trackers and internal bus CCTV.", priority: "High", riskLevel: "High", consequence: "Inability to track bus during emergency.", proof: "System Dashboard" },
-                { id: "SCH-TRA-04", description: "Check that a female attendant is present on every route.", priority: "High", riskLevel: "High", consequence: "Legal violation and child protection risk.", proof: "Roster Check" },
-                { id: "SCH-TRA-05", description: "Verify driver sobriety check before morning shift.", priority: "High", riskLevel: "High", consequence: "Catastrophic crash risk.", proof: "Breathalyzer Log" },
-                { id: "SCH-TRA-06", description: "Audit bus speed alerts from GPS dashboard (Target <40km/h).", priority: "Medium", riskLevel: "Medium", consequence: "Rash driving and accident liability.", proof: "Daily Report" },
-                { id: "SCH-TRA-07", description: "Ensure first-aid kits and fire extinguishers in buses are functional.", priority: "High", riskLevel: "High", consequence: "Inability to respond to a fire event.", proof: "Seal Verification" },
-                { id: "SCH-TRA-08", description: "Verify all student pick-up authorizations match ID cards.", priority: "High", riskLevel: "High", consequence: "Unauthorized removal of child.", proof: "Verification Log" },
-                { id: "SCH-TRA-09", description: "Check status of bus emergency windows and exit latches.", priority: "High", riskLevel: "High", consequence: "Trapped students during fire.", proof: "Physical Test" },
-                { id: "SCH-TRA-10", description: "Audit bus-cleaning logs: verify disinfection of high-touch poles.", priority: "Medium", riskLevel: "Low", consequence: "Disease spread among students.", proof: "Cleaning Log" },
-                { id: "SCH-TRA-11", description: "Verify driver and conductor possess valid licenses.", priority: "High", riskLevel: "High", consequence: "Massive institutional liability.", proof: "License File" },
-                { id: "SCH-TRA-12", description: "Log student boarding/de-boarding times via tablet sync.", priority: "Medium", riskLevel: "Low", consequence: "Administrative confusion.", proof: "App Sync" },
-                { id: "SCH-TRA-13", description: "Inspect bus exterior for sharp edges or loose panels.", priority: "Medium", riskLevel: "Low", consequence: "Minor student injury.", proof: "Visual Audit" },
-                { id: "SCH-TRA-14", description: "Verify communication radio/mobile status for each driver.", priority: "High", riskLevel: "Medium", consequence: "No contact during breakdown.", proof: "Signal Check" },
-                { id: "SCH-TRA-15", description: "Final manager sign-off on afternoon route dispatch.", priority: "High", riskLevel: "Medium", consequence: "Operational drift.", proof: "Manager Initials" }
+                { id: "SCH-TRA-01", description: "Mandatory 'Empty Bus Walkthrough' at end of every trip.", priority: "High", riskLevel: "High", consequence: "Child left behind (Fatal never-event).", proof: "Secondary Sign-off" },
+                { id: "SCH-TRA-02", description: "Verify GPS trackers and CCTV inside buses are active.", priority: "High", riskLevel: "High", consequence: "Inability to track bus in emergency.", proof: "System Dashboard" },
+                { id: "SCH-TRA-03", description: "Driver Sobriety Check before morning shift.", priority: "High", riskLevel: "High", consequence: "Catastrophic crash risk.", proof: "Breathalyzer Log" }
+            ]
+        },
+        {
+            title: "Campus Security & CCTV",
+            department: "Security",
+            frequency: "Daily",
+            role: "Security Chief",
+            summary: "Perimeter hardening and surveillance.",
+            icon: "shield-check",
+            tasks: [
+                { id: "SCH-SEC-01", description: "CCTV Audit: Verify coverage of high-risk 'blind spots'.", priority: "High", riskLevel: "Medium", consequence: "Lack of evidence for bullying/theft.", proof: "Monitor Check" },
+                { id: "SCH-SEC-02", description: "Visitor Badge Enforcement: Check 100% ID verification.", priority: "High", riskLevel: "High", consequence: "Unauthorized intruder access.", proof: "Registry Audit" }
+            ]
+        },
+        {
+            title: "Canteen & Vendor Quality",
+            department: "F&B",
+            frequency: "Daily",
+            role: "Canteen Manager",
+            summary: "Food safety and supplier integrity.",
+            icon: "utensils",
+            tasks: [
+                { id: "SCH-CAN-01", description: "Log morning fridge temperatures.", priority: "High", riskLevel: "High", consequence: "Mass food poisoning outbreak.", proof: "Temp Log" },
+                { id: "SCH-CAN-02", description: "Vendor Audit: Verify FSSAI licenses of daily meat/milk suppliers.", priority: "High", riskLevel: "High", consequence: "Legal liability for unsafe sourcing.", proof: "License File" }
+            ]
+        },
+        {
+            title: "Admin, Lobby & Fee Command",
+            department: "Admin",
+            frequency: "Daily",
+            role: "Admin Manager",
+            summary: "Institutional governance and revenue shield.",
+            icon: "landmark",
+            tasks: [
+                { id: "SCH-ADM-01", description: "Reconcile daily fee collection against bank deposits.", priority: "High", riskLevel: "High", consequence: "Internal cash theft.", proof: "Settlement Log" },
+                { id: "SCH-ADM-02", description: "Lobby Grooming: Inspect reception for parent-readiness.", priority: "Low", riskLevel: "Low", consequence: "Poor first impression for prospective parents.", proof: "Visual Check" }
+            ]
+        },
+        {
+            title: "Digital Command & Marketing",
+            department: "Marketing",
+            frequency: "Daily",
+            role: "Admin Manager",
+            summary: "Reputation and online visibility.",
+            icon: "megaphone",
+            tasks: [
+                { id: "SCH-DIG-01", description: "Review Response: Reply to Google reviews < 24h.", priority: "High", riskLevel: "Medium", consequence: "Reputation drop and lower SEO.", proof: "Review Dashboard" },
+                { id: "SCH-DIG-02", description: "Social Presence: Post 1 update on student achievements.", priority: "Low", riskLevel: "Low", consequence: "Low brand engagement.", proof: "Links Audit" }
             ]
         }
     ]
