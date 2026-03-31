@@ -25,37 +25,36 @@ export const cinema_operations_pack: PremiumPack = {
     ],
     checklists: [
         {
-            title: "Projection & Sound QC",
-            department: "Technical",
-            frequency: "Per Show",
-            role: "Technical Lead",
-            summary: "Zero-fail protocols for digital media.",
-            icon: "projector",
+            title: "Strategic Oversight",
+            department: "Executive",
+            frequency: "Weekly",
+            role: "COO / Owner",
+            summary: "Strategic multi-unit oversight.",
+            icon: "crown",
             tasks: [
-                { id: "CIN-PRO-01", description: "Pre-Show: Test DCP ingest and KDM validity 4 hours pre-release.", priority: "High", riskLevel: "High", consequence: "Black screen during blockbuster.", proof: "System Log" },
-                { id: "CIN-PRO-02", description: "Sound Separation: Verify 7.1/Atmos channel parity.", priority: "High", riskLevel: "Medium", consequence: "Poor guest experience.", proof: "Dial Check" }
+                { id: "CIN-EXE-01", description: "Audit group-wide F&B margin vs. ticket sales trends.", priority: "High", riskLevel: "Medium", consequence: "Undetected group inefficiency.", proof: "Financial Shield" }
             ]
         },
         {
-            title: "F&B Concession Yield",
-            department: "Finance",
-            frequency: "Daily",
-            role: "Accountant",
-            summary: "Protects high-margin F&B revenue.",
-            icon: "banknote",
-            tasks: [
-                { id: "CIN-FNB-01", description: "Reconcile raw popcorn corn-to-bucket yield.", priority: "High", riskLevel: "Low", consequence: "Significant profit leakage.", proof: "Yield Sheet" }
-            ]
-        },
-        {
-            title: "VIP Lounge & Service",
+            title: "VIP Lounge Command",
             department: "Operations",
             frequency: "Per Show",
             role: "General Manager",
             summary: "Premium service standard governance.",
             icon: "crown",
             tasks: [
-                { id: "CIN-VIP-01", description: "Verify recliner motor functionality in VIP rows.", priority: "Medium", riskLevel: "Low", consequence: "Refund request from premium guest.", proof: "Visual Test" }
+                { id: "CIN-VIP-01", description: "Verify recliner motor functionality in VIP rows.", priority: "Medium", riskLevel: "Low", consequence: "Refund request.", proof: "Visual Test" }
+            ]
+        },
+        {
+            title: "Concession Yield Logic",
+            department: "Finance",
+            frequency: "Daily",
+            role: "Accountant",
+            summary: "Protects high-margin F&B revenue.",
+            icon: "banknote",
+            tasks: [
+                { id: "CIN-FNB-01", description: "Reconcile raw popcorn corn-to-bucket yield.", priority: "High", riskLevel: "Low", consequence: "Profit leakage.", proof: "Yield Sheet" }
             ]
         },
         {
@@ -70,18 +69,7 @@ export const cinema_operations_pack: PremiumPack = {
             ]
         },
         {
-            title: "Housekeeping Command",
-            department: "Janitorial",
-            frequency: "Hourly",
-            role: "Logistics Lead",
-            summary: "Sanitation infrastructure command.",
-            icon: "sparkles",
-            tasks: [
-                { id: "CIN-HK-01", description: "Audit auditorium seat-cleaning between shows.", priority: "High", riskLevel: "Low", consequence: "1-star review driver.", proof: "Sweep Log" }
-            ]
-        },
-        {
-            title: "Personnel & Training",
+            title: "Staff Certification",
             department: "HR",
             frequency: "Monthly",
             role: "HR Manager",
@@ -92,7 +80,18 @@ export const cinema_operations_pack: PremiumPack = {
             ]
         },
         {
-            title: "Digital ORM & Box Office",
+            title: "Projection & Sound QC",
+            department: "Technical",
+            frequency: "Per Show",
+            role: "Technical Lead",
+            summary: "Zero-fail protocols for digital media.",
+            icon: "projector",
+            tasks: [
+                { id: "CIN-PRO-01", description: "Pre-Show: Test DCP ingest and KDM validity 4h pre-release.", priority: "High", riskLevel: "High", consequence: "Black screen.", proof: "System Log" }
+            ]
+        },
+        {
+            title: "Box Office Integrity",
             department: "Admin",
             frequency: "Daily",
             role: "Customer Experience Lead",
@@ -103,14 +102,14 @@ export const cinema_operations_pack: PremiumPack = {
             ]
         },
         {
-            title: "Executive Group Command",
-            department: "Executive",
-            frequency: "Weekly",
-            role: "COO / Owner",
-            summary: "Strategic multi-unit oversight.",
-            icon: "layout-grid",
+            title: "Housekeeping Logistics",
+            department: "Janitorial",
+            frequency: "Hourly",
+            role: "Logistics Lead",
+            summary: "Sanitation infrastructure command.",
+            icon: "sparkles",
             tasks: [
-                { id: "CIN-EXE-01", description: "Audit group-wide F&B margin vs. ticket sales trends.", priority: "High", riskLevel: "Medium", consequence: "Undetected group inefficiency.", proof: "Financial Shield" }
+                { id: "CIN-HK-01", description: "Audit auditorium seat-cleaning between shows.", priority: "High", riskLevel: "Low", consequence: "1-star review driver.", proof: "Sweep Log" }
             ]
         }
     ]

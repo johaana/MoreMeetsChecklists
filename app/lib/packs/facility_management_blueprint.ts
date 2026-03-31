@@ -25,20 +25,41 @@ export const facility_management_blueprint: PremiumPack = {
     ],
     checklists: [
         {
-            title: "Hard FM: MEP & Engineering",
-            department: "Engineering",
-            frequency: "Daily",
-            role: "Technical Lead",
-            summary: "HVAC, Boiler, Generator, and Electrical vitals.",
-            icon: "wrench",
+            title: "Portfolio Governance",
+            department: "Executive",
+            frequency: "Weekly",
+            role: "COO / Owner",
+            summary: "Asset health and liability oversight.",
+            icon: "crown",
             tasks: [
-                { id: "FM-ENG-01", description: "Inspect backup generator (DG) and log fuel levels.", priority: "High", riskLevel: "High", consequence: "Blackout.", proof: "Fuel Log" },
-                { id: "FM-ENG-02", description: "Verify hot water supply temp at central boiler.", priority: "High", riskLevel: "Medium", consequence: "Service failure.", proof: "Temp Reading" }
+                { id: "FM-EXE-01", description: "Review major incident status across property group.", priority: "High", riskLevel: "High", consequence: "Escalated liability.", proof: "Incident Audit" }
             ]
         },
         {
-            title: "Security & Perimeter Command",
-            department: "Security",
+            title: "Soft FM Command",
+            department: "Operations",
+            frequency: "Hourly",
+            role: "General Manager",
+            summary: "Hourly hygiene command for public zones.",
+            icon: "sparkles",
+            tasks: [
+                { id: "FM-JAN-01", description: "Audit common area restroom cleaning frequency.", priority: "High", riskLevel: "Low", consequence: "Occupant complaints.", proof: "Hourly Sheet" }
+            ]
+        },
+        {
+            title: "Utility Economics",
+            department: "Finance",
+            frequency: "Daily",
+            role: "Accountant",
+            summary: "Tracks energy and utility efficiency.",
+            icon: "zap",
+            tasks: [
+                { id: "FM-UTIL-01", description: "Log main KWH meter reading and compare to baseline.", priority: "Medium", riskLevel: "Low", consequence: "Energy waste.", proof: "Meter Log" }
+            ]
+        },
+        {
+            title: "Safety & EHS",
+            department: "Safety",
             frequency: "Daily",
             role: "EHS Officer",
             summary: "Protects the physical asset and occupants.",
@@ -48,25 +69,25 @@ export const facility_management_blueprint: PremiumPack = {
             ]
         },
         {
-            title: "Sustainability & Utilities",
-            department: "Finance",
-            frequency: "Daily",
-            role: "Accountant",
-            summary: "Tracks energy and utility efficiency.",
-            icon: "zap",
+            title: "Technical Certs",
+            department: "HR",
+            frequency: "Monthly",
+            role: "HR Manager",
+            summary: "Ensures technical team certifications.",
+            icon: "graduation-cap",
             tasks: [
-                { id: "FM-UTIL-01", description: "Log main KWH meter reading and compare to baseline.", priority: "Medium", riskLevel: "Low", consequence: "Undetected energy waste.", proof: "Meter Log" }
+                { id: "FM-HR-01", description: "Verify LOTO and High-Voltage certifications for engineers.", priority: "High", riskLevel: "High", consequence: "Fatal industrial accident.", proof: "Cert File" }
             ]
         },
         {
-            title: "Soft FM & Janitorial",
-            department: "Operations",
-            frequency: "Hourly",
-            role: "General Manager",
-            summary: "Hourly hygiene command for public zones.",
-            icon: "sparkles",
+            title: "Hard FM (MEP)",
+            department: "Engineering",
+            frequency: "Daily",
+            role: "Technical Lead",
+            summary: "HVAC, Boiler, Generator, and Electrical vitals.",
+            icon: "wrench",
             tasks: [
-                { id: "FM-JAN-01", description: "Audit common area restroom cleaning frequency.", priority: "High", riskLevel: "Low", consequence: "Occupant complaints.", proof: "Hourly Sheet" }
+                { id: "FM-ENG-01", description: "Inspect backup generator (DG) and log fuel levels.", priority: "High", riskLevel: "High", consequence: "Blackout.", proof: "Fuel Log" }
             ]
         },
         {
@@ -81,17 +102,6 @@ export const facility_management_blueprint: PremiumPack = {
             ]
         },
         {
-            title: "Personnel & Training",
-            department: "HR",
-            frequency: "Monthly",
-            role: "HR Manager",
-            summary: "Ensures technical team certifications.",
-            icon: "graduation-cap",
-            tasks: [
-                { id: "FM-HR-01", description: "Verify LOTO and High-Voltage certifications for engineers.", priority: "High", riskLevel: "High", consequence: "Fatal industrial accident.", proof: "Cert File" }
-            ]
-        },
-        {
             title: "Mail & Logistics",
             department: "Logistics",
             frequency: "Daily",
@@ -100,17 +110,6 @@ export const facility_management_blueprint: PremiumPack = {
             icon: "package",
             tasks: [
                 { id: "FM-LOG-01", description: "Audit high-priority parcel register for 100% handover.", priority: "Medium", riskLevel: "Low", consequence: "Lost internal assets.", proof: "Log Review" }
-            ]
-        },
-        {
-            title: "Executive Asset Command",
-            department: "Executive",
-            frequency: "Weekly",
-            role: "COO / Owner",
-            summary: "Strategic oversight of property health.",
-            icon: "crown",
-            tasks: [
-                { id: "FM-EXE-01", description: "Review major incident resolution status across group.", priority: "High", riskLevel: "High", consequence: "Escalated liability.", proof: "Incident Audit" }
             ]
         }
     ]

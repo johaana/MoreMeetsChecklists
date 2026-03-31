@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v7.8 - INSTITUTIONAL FINAL
- * Focus: Localized Sample Data (Colaba/Bandra), 8-Role Matrix, Zero-Clipping.
+ * Sovereign Engine v7.9 - INSTITUTIONAL FINAL
+ * Focus: Localized Sample Data (Colaba/Bandra/Borivali), 8-Role Matrix, Zero-Clipping.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -19,7 +19,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-MASTER-SOVEREIGN-7.8";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-7.9";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -177,7 +177,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v7.8 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v7.9 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -268,7 +268,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ...packChecklists.map(c => ({ v: c.title, s: headerStyle })),
         { v: "Score (Ghost)", s: headerStyle }, { v: "Risk Load (Ghost)", s: headerStyle } 
     ];
-    const branchNames = ["Colaba", "Bandra", "Dadar (Sample)"];
+    const branchNames = ["Colaba (Sample)", "Bandra (Sample)", "Borivali (Sample)"];
     const branchSetupData = [
         [], [], [],
         facilityHeaders,
@@ -403,5 +403,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         utils.book_append_sheet(wb, ws, s.name);
     });
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_7.8.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_7.9.xlsx`);
 }

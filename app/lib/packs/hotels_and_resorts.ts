@@ -27,43 +27,92 @@ export const hotels_and_resorts: PremiumPack = {
     ],
     checklists: [
         {
+            title: "Governance & Audit",
+            department: "Executive",
+            frequency: "Weekly",
+            role: "COO / Owner",
+            summary: "High-level strategic oversight of property risk.",
+            icon: "crown",
+            tasks: [
+                { id: "HR-EXE-01", description: "Review 'Empire Mood' across all units.", priority: "High", riskLevel: "Low", consequence: "Operational drift.", proof: "Dashboard" }
+            ]
+        },
+        {
             title: "Front Office & Reservations",
             department: "Front Desk",
             frequency: "Daily",
-            role: "Front Office Manager",
-            summary: "Ensures legal compliance, guest arrival readiness, and billing integrity.",
+            role: "General Manager",
+            summary: "Ensures legal compliance and arrival readiness.",
             icon: "concierge-bell",
             tasks: [
-                { id: "HR-FO-01", description: "Verify all arrivals against booking system (PMS vs. Channel Manager).", priority: "High", riskLevel: "High", consequence: "Overbooking conflict.", proof: "System Reconcile" },
-                { id: "HR-FO-02", description: "Validate guest ID compliance and police registration (C-Form/KYC).", priority: "High", riskLevel: "High", consequence: "Severe legal violations and closure.", proof: "Compliance Log" },
-                { id: "HR-FO-03", description: "Confirm all scheduled wake-up calls are logged and verified.", priority: "Medium", riskLevel: "Medium", consequence: "Guest missing flight.", proof: "Call Log" },
-                { id: "HR-FO-04", description: "Audit reception cash drawer against shift-end PMS report.", priority: "High", riskLevel: "High", consequence: "Internal theft.", proof: "Cash Sheet" },
-                { id: "HR-FO-05", description: "Verify room-key card stock levels.", priority: "Low", riskLevel: "Low", consequence: "Check-in delay.", proof: "Stock Check" }
+                { id: "HR-FO-01", description: "Verify all arrivals against booking system.", priority: "High", riskLevel: "High", consequence: "Overbooking.", proof: "System Reconcile" },
+                { id: "HR-FO-02", description: "Validate guest ID compliance and police registration (C-Form).", priority: "High", riskLevel: "High", consequence: "Severe legal violations.", proof: "Compliance Log" }
             ]
         },
         {
-            title: "Housekeeping Command",
-            department: "Housekeeping",
+            title: "Financial Shield & Audit",
+            department: "Finance",
             frequency: "Daily",
-            role: "Head of Housekeeping",
-            summary: "Manages the sanitation infrastructure.",
-            icon: "bed",
+            role: "Accountant",
+            summary: "Protects the room revenue and F&B margins.",
+            icon: "banknote",
             tasks: [
-                { id: "HR-HK-01", description: "Verify all check-out rooms inspected before 2 PM.", priority: "High", riskLevel: "High", consequence: "Guest refund risk.", proof: "Inspection Sign-off" },
-                { id: "HR-HK-02", description: "Audit public area restrooms every hour.", priority: "High", riskLevel: "Medium", consequence: "1-star review driver.", proof: "Hourly Sheet" },
-                { id: "HR-HK-03", description: "Inspect laundry chemical titration for automatic dispensers.", priority: "Medium", riskLevel: "Medium", consequence: "Linen damage.", proof: "Test Strip" }
+                { id: "HR-FIN-01", description: "Audit Night Audit report against bank captures.", priority: "High", riskLevel: "High", consequence: "Revenue theft.", proof: "Audit Sheet" }
             ]
         },
         {
-            title: "Wedding & Event Readiness",
-            department: "Banquets",
-            frequency: "Per Event",
-            role: "Events Manager",
-            summary: "Zero-fail framework for ballroom events.",
-            icon: "calendar-heart",
+            title: "Security & Valet Logic",
+            department: "Security",
+            frequency: "Daily",
+            role: "EHS Officer",
+            summary: "Command for the arrival infrastructure.",
+            icon: "shield-check",
             tasks: [
-                { id: "HR-EVT-01", description: "Technical Recce: Test projector, mics, and Wi-Fi 4 hours pre-event.", priority: "High", riskLevel: "High", consequence: "High-visibility event failure.", proof: "Tech Report" },
-                { id: "HR-EVT-02", description: "Floor Safety Audit: Check for loose cables or trip hazards in halls.", priority: "High", riskLevel: "High", consequence: "Guest injury liability.", proof: "Walkthrough" }
+                { id: "HR-SEC-01", description: "Valet Key Vault: Reconcile keys against parking log.", priority: "High", riskLevel: "High", consequence: "Unauthorized joyrides.", proof: "Dual-Sign Log" }
+            ]
+        },
+        {
+            title: "Training & Health Certs",
+            department: "HR",
+            frequency: "Monthly",
+            role: "HR Manager",
+            summary: "Staff competency and health compliance.",
+            icon: "graduation-cap",
+            tasks: [
+                { id: "HR-HR-01", description: "Verify HK staff medical certificates for F&B areas.", priority: "High", riskLevel: "Medium", consequence: "Hygiene breach.", proof: "Cert File" }
+            ]
+        },
+        {
+            title: "MEP & Life Safety",
+            department: "Engineering",
+            frequency: "Daily",
+            role: "Technical Lead",
+            summary: "Hardens the property infrastructure.",
+            icon: "wrench",
+            tasks: [
+                { id: "HR-ENG-01", description: "Inspect backup generator (DG) and fuel levels.", priority: "High", riskLevel: "High", consequence: "Total blackout.", proof: "Test Log" }
+            ]
+        },
+        {
+            title: "Digital ORM & Reviews",
+            department: "Admin",
+            frequency: "Daily",
+            role: "Customer Experience Lead",
+            summary: "Protects online brand ranking.",
+            icon: "star",
+            tasks: [
+                { id: "HR-DIG-01", description: "Review Response Pulse: Reply to all reviews <24h.", priority: "High", riskLevel: "Medium", consequence: "Ranking drop.", proof: "Review Dashboard" }
+            ]
+        },
+        {
+            title: "Travel Desk & Logistics",
+            department: "Travel Desk",
+            frequency: "Daily",
+            role: "Logistics Lead",
+            summary: "Governs first and last impressions.",
+            icon: "car",
+            tasks: [
+                { id: "HR-LOG-01", description: "Driver Sobriety Audit: Random breathalyzer check.", priority: "High", riskLevel: "High", consequence: "Fatal accident.", proof: "Test Note" }
             ]
         }
     ]

@@ -25,53 +25,51 @@ export const franchise_operations_pack: PremiumPack = {
     ],
     checklists: [
         {
-            title: "Royalty & Financial Governance",
-            department: "Finance",
-            frequency: "Daily",
-            role: "Accountant",
-            summary: "Protects the franchise revenue pipeline.",
-            icon: "banknote",
+            title: "Brand Governance",
+            department: "Executive",
+            frequency: "Weekly",
+            role: "COO / Owner",
+            summary: "Group-wide performance and brand protection.",
+            icon: "crown",
             tasks: [
-                { id: "FR-FIN-01", description: "Reconcile aggregator dashboard gross against POS report.", priority: "High", riskLevel: "High", consequence: "Commission leakage.", proof: "System Match" },
-                { id: "FR-FIN-02", description: "Log daily bank settlement for digital payments.", priority: "High", riskLevel: "Medium", consequence: "Uncaptured revenue.", proof: "Bank Note" }
+                { id: "FR-EXE-01", description: "Audit royalty payout status across all branches.", priority: "High", riskLevel: "Medium", consequence: "Income loss.", proof: "Ledger Review" }
             ]
         },
         {
-            title: "Site Audit & Visual Standards",
+            title: "Site Audit Command",
             department: "Operations",
             frequency: "Weekly",
             role: "General Manager",
             summary: "Ensures brand consistency across locations.",
             icon: "eye",
             tasks: [
-                { id: "FR-OPS-01", description: "Audit signage illumination and condition.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution.", proof: "Photo" },
-                { id: "FR-OPS-02", description: "Verify staff uniform and grooming standards.", priority: "Medium", riskLevel: "Low", consequence: "Poor guest first touch.", proof: "Visual Score" }
+                { id: "FR-OPS-01", description: "Verify signage illumination and condition.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution.", proof: "Photo" }
             ]
         },
         {
-            title: "EHS & Safety Compliance",
+            title: "Royalty & Financials",
+            department: "Finance",
+            frequency: "Daily",
+            role: "Accountant",
+            summary: "Protects the franchise revenue pipeline.",
+            icon: "banknote",
+            tasks: [
+                { id: "FR-FIN-01", description: "Reconcile aggregator gross against POS report.", priority: "High", riskLevel: "High", consequence: "Commission leakage.", proof: "Match Note" }
+            ]
+        },
+        {
+            title: "EHS Compliance",
             department: "Safety",
             frequency: "Weekly",
             role: "EHS Officer",
             summary: "Regulatory and occupational safety command.",
             icon: "hard-hat",
             tasks: [
-                { id: "FR-EHS-01", description: "Verify fire extinguisher pressure and expiry.", priority: "High", riskLevel: "High", consequence: "Institutional catastrophe.", proof: "Gauge Log" }
+                { id: "FR-EHS-01", description: "Verify fire extinguisher pressure and expiry.", priority: "High", riskLevel: "High", consequence: "Catastrophe.", proof: "Gauge Log" }
             ]
         },
         {
-            title: "Marketing & Local Activation",
-            department: "Marketing",
-            frequency: "Weekly",
-            role: "Customer Experience Lead",
-            summary: "Governs local branch promotions.",
-            icon: "megaphone",
-            tasks: [
-                { id: "FR-MKT-01", description: "Log current promotional materials against master schedule.", priority: "Medium", riskLevel: "Low", consequence: "Missed sales opportunities.", proof: "Campaign Log" }
-            ]
-        },
-        {
-            title: "Staff Certification & Training",
+            title: "Staff Certification",
             department: "HR",
             frequency: "Monthly",
             role: "HR Manager",
@@ -82,36 +80,36 @@ export const franchise_operations_pack: PremiumPack = {
             ]
         },
         {
-            title: "Technical & IT Infrastructure",
+            title: "IT & POS Integrity",
             department: "Technical",
             frequency: "Weekly",
             role: "Technical Lead",
-            summary: "Protects the digital backbone of the branch.",
+            summary: "Protects the digital backbone.",
             icon: "laptop",
             tasks: [
                 { id: "FR-IT-01", description: "Test POS backup and internet failover.", priority: "High", riskLevel: "High", consequence: "Inability to bill.", proof: "Test Note" }
             ]
         },
         {
-            title: "Supply Chain & Receiving",
-            department: "Stores",
+            title: "Marketing Activation",
+            department: "Admin",
+            frequency: "Weekly",
+            role: "Customer Experience Lead",
+            summary: "Governs local branch promotions.",
+            icon: "megaphone",
+            tasks: [
+                { id: "FR-MKT-01", description: "Log current promotional materials against schedule.", priority: "Medium", riskLevel: "Low", consequence: "Missed sales.", proof: "Campaign Log" }
+            ]
+        },
+        {
+            title: "Supply Chain Audits",
+            department: "Logistics",
             frequency: "Daily",
             role: "Logistics Lead",
             summary: "Ensures sourcing integrity.",
             icon: "truck",
             tasks: [
-                { id: "FR-SUP-01", description: "Audit incoming stock against approved vendor list.", priority: "High", riskLevel: "High", consequence: "Compromised product safety.", proof: "Receiving Note" }
-            ]
-        },
-        {
-            title: "Executive Group Oversight",
-            department: "Executive",
-            frequency: "Weekly",
-            role: "COO / Owner",
-            summary: "Strategic performance command.",
-            icon: "crown",
-            tasks: [
-                { id: "FR-EXE-01", description: "Review group-wide incident alerts and resolution status.", priority: "High", riskLevel: "High", consequence: "Unresolved legal liability.", proof: "Alert Log" }
+                { id: "FR-SUP-01", description: "Audit incoming stock against approved vendor list.", priority: "High", riskLevel: "High", consequence: "Compromised product.", proof: "Receiving Note" }
             ]
         }
     ]

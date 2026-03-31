@@ -38,14 +38,16 @@ export const restaurants: PremiumPack = {
             tasks: [
                 { id: "RES-EXE-01", description: "Review 'Empire Mood' and Group shift completion across all branches.", priority: "High", riskLevel: "Low", consequence: "Drift in operational discipline.", proof: "Dashboard Review", trainerNotes: "Check every Monday at 10 AM." },
                 { id: "RES-EXE-02", description: "Audit 'Incident Log' for any unresolved food safety or legal alerts.", priority: "High", riskLevel: "High", consequence: "Massive legal liability and brand collapse.", proof: "Incident Audit", trainerNotes: "Verify all OPEN incidents have a resolution path." },
-                { id: "RES-EXE-03", description: "Reconcile 'Financial Shield' savings against actual P&L wastage lines.", priority: "Medium", riskLevel: "Medium", consequence: "Profit erosion through unmonitored waste.", proof: "Financial Match", trainerNotes: "Target < 2% wastage total." }
+                { id: "RES-EXE-03", description: "Reconcile 'Financial Shield' savings against actual P&L wastage lines.", priority: "Medium", riskLevel: "Medium", consequence: "Profit erosion through unmonitored waste.", proof: "Financial Match", trainerNotes: "Target < 2% wastage total." },
+                { id: "RES-EXE-04", description: "Audit statutory license expiries (FSSAI, Health, Liquor).", priority: "High", riskLevel: "High", consequence: "Government shutdown.", proof: "License Matrix" },
+                { id: "RES-EXE-05", description: "Review major CAPEX repair status for 100% facility uptime.", priority: "Medium", riskLevel: "Low", consequence: "Service failure.", proof: "BMS Report" }
             ]
         },
         {
-            title: "Kitchen Opening & HACCP",
+            title: "Kitchen Command & HACCP",
             department: "Kitchen",
             frequency: "Daily",
-            role: "Head Chef",
+            role: "General Manager",
             summary: "Critical food safety and readiness protocols.",
             icon: "sunrise",
             tasks: [
@@ -54,32 +56,6 @@ export const restaurants: PremiumPack = {
                 { id: "RES-KIT-03", description: "Verify sanitization of all surfaces using 200ppm strips.", priority: "High", riskLevel: "Medium", consequence: "Cross-contamination risk.", proof: "Test Strip" },
                 { id: "RES-KIT-04", description: "Calibrate all food probes using ice-point method.", priority: "Medium", riskLevel: "Medium", consequence: "False safety readings.", proof: "Calibration Log" },
                 { id: "RES-KIT-05", description: "Audit staff health and grooming (nails, wounds, hair).", priority: "High", riskLevel: "Medium", consequence: "Hygiene failure.", proof: "Daily Audit" }
-            ]
-        },
-        {
-            title: "Delivery & Aggregator Logic",
-            department: "Logistics",
-            frequency: "Daily",
-            role: "Logistics Lead",
-            summary: "Zero-fail framework for off-premise sales.",
-            icon: "truck",
-            tasks: [
-                { id: "RES-DEL-01", description: "Packaging Audit: Verify bags are tamper-sealed correctly.", priority: "High", riskLevel: "Medium", consequence: "Tampering risk and poor rating.", proof: "Visual Check" },
-                { id: "RES-DEL-02", description: "Monitor Rider TAT: Time from order ready to pickup.", priority: "Medium", riskLevel: "Low", consequence: "Cold food and rating drop.", proof: "TAT Log" },
-                { id: "RES-DEL-03", description: "Menu Sync: Check availability on Zomato/Swiggy.", priority: "High", riskLevel: "Medium", consequence: "High cancellation rates.", proof: "App Check" }
-            ]
-        },
-        {
-            title: "Security & Asset Protection",
-            department: "Security",
-            frequency: "Daily",
-            role: "EHS Officer",
-            summary: "Command for the physical perimeter and internal shrinkage.",
-            icon: "shield-check",
-            tasks: [
-                { id: "RES-SEC-01", description: "Verify CCTV recording status and camera focal points.", priority: "High", riskLevel: "High", consequence: "Loss of evidence for theft or accidents.", proof: "System Check" },
-                { id: "RES-SEC-02", description: "Audit cash-drop schedule and vault security protocols.", priority: "High", riskLevel: "High", consequence: "Vulnerability to armed robbery.", proof: "Cash Log" },
-                { id: "RES-SEC-03", description: "Patrol external exits and fire-escape clearance.", priority: "High", riskLevel: "High", consequence: "Fatal trap during emergency.", proof: "Patrol Log" }
             ]
         },
         {
@@ -92,30 +68,22 @@ export const restaurants: PremiumPack = {
             tasks: [
                 { id: "RES-FIN-01", description: "Log Daily Gross Sales into the Financial Shield ledger.", priority: "High", riskLevel: "Medium", consequence: "Unidentified revenue gaps.", proof: "Ledger Entry" },
                 { id: "RES-FIN-02", description: "Audit Raw Material Invoices against Ledger entry.", priority: "High", riskLevel: "High", consequence: "Inflated CoGS due to invoice errors.", proof: "Match Note" },
-                { id: "RES-FIN-03", description: "Update Daily Waste Valuation from BOH incident logs.", priority: "High", riskLevel: "Medium", consequence: "Silent profit leakage through unmeasured waste.", proof: "Waste Log" }
+                { id: "RES-FIN-03", description: "Update Daily Waste Valuation from BOH incident logs.", priority: "High", riskLevel: "Medium", consequence: "Silent profit leakage.", proof: "Waste Log" },
+                { id: "RES-FIN-04", description: "Reconcile POS digital settlements against bank captures.", priority: "High", riskLevel: "Medium", consequence: "Uncaptured digital cash.", proof: "Bank Sync" },
+                { id: "RES-FIN-05", description: "Verify physical stock of top 10 expensive ingredients (Blind count).", priority: "High", riskLevel: "High", consequence: "Inventory theft.", proof: "Audit Sheet" }
             ]
         },
         {
-            title: "Service & Ambiance Command",
-            department: "Operations",
+            title: "Safety & Asset Protection",
+            department: "Security",
             frequency: "Daily",
-            role: "General Manager",
-            summary: "Protects the guest experience standard.",
-            icon: "armchair",
+            role: "EHS Officer",
+            summary: "Perimeter security and fire-readiness.",
+            icon: "shield-check",
             tasks: [
-                { id: "RES-OPS-01", description: "Verify ambiance vitals: Scent, Music Volume, Lighting.", priority: "Medium", riskLevel: "Low", consequence: "Lower guest dwell time.", proof: "Daily Log" },
-                { id: "RES-OPS-02", description: "Hourly restroom hygiene audit and stock check.", priority: "High", riskLevel: "Medium", consequence: "1-star review driver.", proof: "Hourly Sheet" }
-            ]
-        },
-        {
-            title: "Digital ORM & Reputation",
-            department: "Admin",
-            frequency: "Daily",
-            role: "Customer Experience Lead",
-            summary: "Protects the online brand ranking.",
-            icon: "star",
-            tasks: [
-                { id: "RES-CX-01", description: "Review Response Pulse: Reply to all Google reviews <24h.", priority: "High", riskLevel: "Medium", consequence: "Damaged reputation.", proof: "Dashboard" }
+                { id: "RES-SEC-01", description: "Verify CCTV recording status and camera focal points.", priority: "High", riskLevel: "High", consequence: "Loss of evidence for theft or accidents.", proof: "System Check" },
+                { id: "RES-SEC-02", description: "Audit gas valve bank and electrical main bank shutdown.", priority: "High", riskLevel: "High", consequence: "Overnight fire disaster.", proof: "Visual Check" },
+                { id: "RES-SEC-03", description: "Patrol external exits and fire-escape clearance.", priority: "High", riskLevel: "High", consequence: "Fatal trap during emergency.", proof: "Patrol Log" }
             ]
         },
         {
@@ -126,7 +94,42 @@ export const restaurants: PremiumPack = {
             summary: "Ensures staff are trained and compliant.",
             icon: "users",
             tasks: [
-                { id: "RES-HR-01", description: "Audit staff health certificates and FSSAI training records.", priority: "High", riskLevel: "High", consequence: "Regulatory fines and closure.", proof: "Cert File" }
+                { id: "RES-HR-01", description: "Audit staff health certificates and FSSAI training records.", priority: "High", riskLevel: "High", consequence: "Regulatory fines and closure.", proof: "Cert File" },
+                { id: "RES-HR-02", description: "Conduct grooming and uniform audit at morning briefing.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution.", proof: "Visual Score" }
+            ]
+        },
+        {
+            title: "Maintenance & Equipment",
+            department: "Engineering",
+            frequency: "Weekly",
+            role: "Technical Lead",
+            summary: "Protects the technical infrastructure.",
+            icon: "wrench",
+            tasks: [
+                { id: "RES-TEC-01", description: "Check POS internet failover and thermal printer status.", priority: "High", riskLevel: "Low", consequence: "Inability to bill.", proof: "Test Note" },
+                { id: "RES-TEC-02", description: "Verify AC filter cleaning and drain drainage.", priority: "Medium", riskLevel: "Low", consequence: "Lobby smell and dripping.", proof: "Service Log" }
+            ]
+        },
+        {
+            title: "Digital ORM & Marketing",
+            department: "Admin",
+            frequency: "Daily",
+            role: "Customer Experience Lead",
+            summary: "Protects the online reputation.",
+            icon: "star",
+            tasks: [
+                { id: "RES-CX-01", description: "Review Response Pulse: Reply to all Google reviews <24h.", priority: "High", riskLevel: "Medium", consequence: "Damaged reputation.", proof: "Dashboard" }
+            ]
+        },
+        {
+            title: "Delivery & Logistics",
+            department: "Logistics",
+            frequency: "Daily",
+            role: "Logistics Lead",
+            summary: "Zero-fail framework for off-premise sales.",
+            icon: "truck",
+            tasks: [
+                { id: "RES-DEL-01", description: "Packaging Audit: Verify bags are tamper-sealed correctly.", priority: "High", riskLevel: "Medium", consequence: "Tampering risk.", proof: "Visual Check" }
             ]
         }
     ]
