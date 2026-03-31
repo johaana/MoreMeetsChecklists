@@ -45,10 +45,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const monoFont = { name: 'Consolas', sz: 10 };
 
     const borderStyle = {
-        top: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT }, patternType: 'solid' },
-        bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT }, patternType: 'solid' },
-        left: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT }, patternType: 'solid' },
-        right: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT }, patternType: 'solid' }
+        top: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } },
+        bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } },
+        left: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } },
+        right: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } }
     };
 
     const navStyle = {
@@ -170,9 +170,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
 
     // --- DASHBOARD INTELLIGENCE v5.9 ---
-    const rosterPulseFormula = `IFERROR(COUNTIFS('TEAM_HUB'!$G$5:$G$100, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$C$5:$C$100, "?*")), 0)`;
+    const rosterPulseFormula = `IFERROR(COUNTIFS('TEAM_HUB'!$G$5:$G$100, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$100, "?*")), 0)`;
     const topBranchFormula = `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$K$5:$K$15), 'BRANCH_MASTER'!$K$5:$K$15, 0)), "SYSTEM IDLE")`;
-    const topStarFormula = `IFERROR(INDEX('TEAM_HUB'!$C$5:$C$100, MATCH(MAX('TEAM_HUB'!$G$5:$G$100), 'TEAM_HUB'!$G$5:$G$100, 0)), "NO SIGNAL")`;
+    const topStarFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$100, MATCH(MAX('TEAM_HUB'!$G$5:$G$100), 'TEAM_HUB'!$G$5:$G$100, 0)), "NO SIGNAL")`;
     const taskVolumeFormula = `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "?*")`;
     const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "?*")), 0)`;
 
@@ -302,7 +302,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             c.tasks.forEach(t => {
                 const rowIdx = mData.length + 1;
                 const statusFormula = `IF(LEN(TRIM(G${rowIdx}))=0, "PENDING", IF(AND(LEN(TRIM(H${rowIdx}))=0, H${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
-                const personFormula = `IFERROR(VLOOKUP(B${rowIdx} & "|" & C${rowIdx}, 'TEAM_HUB'!A:D, 3, FALSE), "[UNASSIGNED]")`;
+                const personFormula = `IFERROR(VLOOKUP(B${rowIdx} & "|" & C${rowIdx}, 'TEAM_HUB'!A:D, 4, FALSE), "[UNASSIGNED]")`;
                 mData.push([
                     { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
                     { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode}), "")`, s: dataStyleCenter },
@@ -332,8 +332,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const pHeaders = [
         { v: "Staff Lookup Key", s: headerStyle }, 
         { v: "Branch Name", s: headerStyle }, 
-        { v: "Staff Full Name", s: headerStyle }, 
         { v: "Role Assigned", s: headerStyle }, 
+        { v: "Staff Full Name", s: headerStyle }, 
         { v: "Contact", s: headerStyle }, 
         { v: "Status", s: headerStyle },
         { v: "Score", s: headerStyle } 
@@ -345,19 +345,20 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         allRoles.forEach((role, rIdx) => {
             const rowIdx = pData.length + 1;
             pData.push([
-                { t: 'f', f: `B${rowIdx} & "|" & D${rowIdx}`, s: dataStyleLeft }, 
+                { t: 'f', f: `B${rowIdx} & "|" & C${rowIdx}`, s: dataStyleLeft }, 
                 { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`, s: dataStyleCenter },
-                { v: "[Type Name]", s: inputStyleLeft }, 
                 { v: role, s: dataStyleLeft },
+                { v: "[Type Name]", s: inputStyleLeft }, 
                 { v: "", s: inputStyleLeft }, 
                 { v: "ACTIVE", s: dataStyleCenter },
-                { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, C${rowIdx}, 'TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED")` }
+                { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, D${rowIdx}, 'TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED")` }
             ]);
         });
     });
     const pWs = utils.aoa_to_sheet(pData);
-    pWs['!cols'] = [25, 25, 35, 30, 20, 25, 0].map((w, i) => ({ wch: w, hidden: w === 0 }));
-    addSovereignRibbon(pWs, "Team & Role Assignments", 'G');
+    // HIDE Column A (Key) and G (Score)
+    pWs['!cols'] = [0, 25, 30, 35, 20, 25, 0].map((w, i) => ({ wch: w, hidden: w === 0 }));
+    addSovereignRibbon(pWs, "Team & Role Assignments", 'F');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
     // --- INCIDENT TRACKER ---
