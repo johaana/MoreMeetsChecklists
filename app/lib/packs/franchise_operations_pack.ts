@@ -4,8 +4,8 @@ import type { PremiumPack } from "@/lib/premium-packs";
 export const franchise_operations_pack: PremiumPack = {
     id: 'franchise_operations_pack',
     title: "Franchise Operating System",
-    priceINR: 5999,
-    priceUSD: 79,
+    priceINR: 799,
+    priceUSD: 9,
     competitorPriceUSD: 599,
     updatedAt: "2025-02-24",
     paymentId: 'pl_RaWEBHhFLQENxC',
@@ -41,54 +41,6 @@ export const franchise_operations_pack: PremiumPack = {
                 { id: "FR-ONB-01", description: "Execute legal franchise agreement and non-compete clauses.", priority: "High", riskLevel: "High", consequence: "Legal ambiguity and IP theft risk.", proof: "Signed Documents" },
                 { id: "FR-ONB-02", description: "Audit site fit-out against brand architectural standards.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent brand aesthetic.", proof: "Photo Audit" },
                 { id: "FR-ONB-03", description: "Verify IT/POS stack installation and internet failover readiness.", priority: "High", riskLevel: "Medium", consequence: "Inability to process sales on opening day.", proof: "System Ping" }
-            ]
-        },
-        {
-            title: "Brand & Visual Identity Audit",
-            department: "Operations",
-            frequency: "Quarterly",
-            role: "Field Manager",
-            summary: "Ensures signage, uniforms, and VM match standards.",
-            icon: "eye",
-            tasks: [
-                { id: "FR-VM-01", description: "Inspect external signage for illumination and color accuracy.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution and poor visibility.", proof: "Visual Check" },
-                { id: "FR-VM-02", description: "Audit staff uniform compliance: verify no unauthorized accessories.", priority: "Medium", riskLevel: "Low", consequence: "Unprofessional service standard.", proof: "Staff Photo" }
-            ]
-        },
-        {
-            title: "Financial & Royalty Governance",
-            department: "Finance",
-            frequency: "Monthly",
-            role: "Accountant",
-            summary: "Protects royalty streams by auditing POS integrity.",
-            icon: "banknote",
-            tasks: [
-                { id: "FR-FIN-01", description: "Reconcile POS sales data against aggregator payouts (Zomato/Swiggy).", priority: "High", riskLevel: "High", consequence: "Unreported sales and royalty loss.", proof: "Financial Match" },
-                { id: "FR-FIN-02", description: "Audit 'Voids and Refunds' log for unauthorized transaction patterns.", priority: "High", riskLevel: "High", consequence: "Employee-level internal theft.", proof: "Void Log" }
-            ]
-        },
-        {
-            title: "Training & Certification",
-            department: "HR",
-            frequency: "Quarterly",
-            role: "HR Manager",
-            summary: "Ensures franchisee staff meet brand benchmarks.",
-            icon: "graduation-cap",
-            tasks: [
-                { id: "FR-TRN-01", description: "Verify all new outlet staff completed 'Brand Induction' module.", priority: "High", riskLevel: "Medium", consequence: "Poor guest experience scores.", proof: "Certificate Log" },
-                { id: "FR-TRN-02", description: "Conduct skill-test audits for high-stakes roles (Chefs/Technicians).", priority: "Medium", riskLevel: "Medium", consequence: "Technical service failure.", proof: "Scorecard" }
-            ]
-        },
-        {
-            title: "Supply Chain & Quality Audit",
-            department: "Supply Chain",
-            frequency: "Monthly",
-            role: "EHS Officer",
-            summary: "Prevents use of unapproved vendors or short-weight stock.",
-            icon: "truck",
-            tasks: [
-                { id: "FR-SUP-01", description: "Audit dry storage for any 'Local Purchase' of unapproved items.", priority: "High", riskLevel: "High", consequence: "Quality drift and supply chain breach.", proof: "Storage Audit" },
-                { id: "FR-SUP-02", description: "Verify use of approved brand-standard packaging only.", priority: "Medium", riskLevel: "Low", consequence: "Brand erosion.", proof: "Visual Check" }
             ]
         }
     ]
