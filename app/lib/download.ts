@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v5.9 - HARDENED PRODUCTION EDITION
- * Focus: Formula Range Constraints, Engine-Room Stealth, Zero-Patch UI.
+ * Sovereign Engine v6.0 - PERFORMANCE INTELLIGENCE EDITION
+ * Focus: Participation Logic, Critical-Watch Alerts, Zero-Patch UI.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -19,7 +19,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-MASTER-SOVEREIGN-5.9";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-6.0";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -59,7 +59,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     };
 
     const labelStyle = {
-        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 8 },
+        font: { ...baseFont, bold: true, color: { rgb: COLORS.PRIMARY_GREEN }, sz: 8 },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } },
         alignment: { horizontal: 'right', vertical: 'center' }
     };
@@ -169,10 +169,11 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
-    // --- DASHBOARD INTELLIGENCE v5.9 ---
+    // --- DASHBOARD INTELLIGENCE v6.0 ---
     const rosterPulseFormula = `IFERROR(COUNTIFS('TEAM_HUB'!$G$5:$G$100, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$100, "?*")), 0)`;
     const topBranchFormula = `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$K$5:$K$15), 'BRANCH_MASTER'!$K$5:$K$15, 0)), "SYSTEM IDLE")`;
     const topStarFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$100, MATCH(MAX('TEAM_HUB'!$G$5:$G$100), 'TEAM_HUB'!$G$5:$G$100, 0)), "NO SIGNAL")`;
+    const criticalWatchFormula = `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$L$5:$L$15), 'BRANCH_MASTER'!$L$5:$L$15, 0)), "ALL SECURE")`;
     const taskVolumeFormula = `COUNTIFS('TODAYS_TASKS'!$G$5:$G$2000, "?*")`;
     const progressFormula = `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$2000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$2000, "?*")), 0)`;
 
@@ -182,7 +183,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { ...headerBaseStyle, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v5.9 | Sovereign Master`, s: { ...headerBaseStyle, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v6.0 | Sovereign Master`, s: { ...headerBaseStyle, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { ...headerBaseStyle, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -230,8 +231,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             null,
             { v: "ROSTER PULSE:", s: labelStyle },
             { t: 'f', f: rosterPulseFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } }, numFmt: '0%', alignment: { horizontal: 'center' } } },
-            { v: "ACTIVE UNITS:", s: labelStyle },
-            { t: 'f', f: `COUNTIF('BRANCH_MASTER'!$B$5:$B$15, "?*")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } }, alignment: { horizontal: 'center' } } },
+            { v: "🚨 CRITICAL WATCH:", s: labelStyle },
+            { t: 'f', f: criticalWatchFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'center' } } },
             { v: "SHIFT PROGRESS:", s: labelStyle },
             { t: 'f', f: progressFormula, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE } }, numFmt: '0%', alignment: { horizontal: 'center' } } }
         ],
@@ -290,7 +291,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, 
         { v: "Responsible Role", s: headerStyle }, { v: "Assigned Person (Auto)", s: headerStyle },
         { v: "Task ID", s: headerStyle }, { v: "Requirement / Control Step", s: headerStyle }, 
-        { v: "Done By (Initials)", s: headerStyle }, { v: "Verified By (Manager)", s: headerStyle },
+        { v: "Done By (Full Name)", s: headerStyle }, { v: "Verified By (Manager)", s: headerStyle },
         { v: "Status", s: headerStyle }, 
         { v: "Freq", s: headerStyle }, { v: "Risk", s: headerStyle },
         { v: "Consequence", s: headerStyle }, { v: "Notes", s: headerStyle }
@@ -412,7 +413,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [], [], [],
         bhHeaders,
         [{ v: "Group Shift Progress", s: dataStyleLeft }, { t:'f', f: progressFormula, s: { ...dataStyleCenter, font: { ...monoFont, bold: true }, numFmt: '0%' } }, { v: "95% MIN", s: dataStyleCenter }],
-        [{ v: "🚨 CRITICAL WATCH", s: { ...dataStyleLeft, font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { t:'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$L$5:$L$15), 'BRANCH_MASTER'!$L$5:$L$15, 0)), "ALL SECURE")`, s: { ...dataStyleCenter, font: { ...monoFont, bold: true, color: { rgb: COLORS.RISK_RED } } } }, { v: "ZERO TOLERANCE", s: dataStyleCenter }],
+        [{ v: "🚨 CRITICAL WATCH", s: { ...dataStyleLeft, font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { t:'f', f: criticalWatchFormula, s: { ...dataStyleCenter, font: { ...monoFont, bold: true }, color: { rgb: COLORS.RISK_RED } } }, { v: "ZERO TOLERANCE", s: dataStyleCenter }],
         [{ v: "Group Active Incidents", s: dataStyleLeft }, { t:'f', f:`IF(COUNTIF('INCIDENT_TRACKER'!$F$5:$F$100, "OPEN")=0, "NONE", COUNTIF('INCIDENT_TRACKER'!$F$5:$F$100, "OPEN") & " ACTIVE")`, s: { ...dataStyleCenter, font: { ...monoFont, color: { rgb: COLORS.RISK_RED } } } }, { v: "ZERO TOLERANCE", s: dataStyleCenter }]
     ];
     const bhWs = utils.aoa_to_sheet(bhData);
@@ -420,5 +421,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     bhWs['!cols'] = [40, 25, 20].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, bhWs, "BUSINESS_HEALTH");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_5.9.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_6.0.xlsx`);
 }
