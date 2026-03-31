@@ -35,37 +35,27 @@ export const school_operations_pack: PremiumPack = {
             department: "Transport",
             frequency: "Daily",
             role: "Transport Manager",
-            summary: "Zero-fail transit protocols.",
+            summary: "Zero-fail transit protocols including empty-bus walkthroughs.",
             icon: "bus",
-            tasks: [
-                { id: "SCH-TRA-01", description: "Mandatory 'Empty Bus Walkthrough' at end of every trip.", priority: "High", riskLevel: "High", consequence: "Child left behind (Fatal never-event).", proof: "Secondary Sign-off" },
-                { id: "SCH-TRA-02", description: "Verify GPS trackers and CCTV inside buses are active.", priority: "High", riskLevel: "High", consequence: "Inability to track bus in emergency.", proof: "System Dashboard" },
-                { id: "SCH-TRA-03", description: "Driver Sobriety Check before morning shift.", priority: "High", riskLevel: "High", consequence: "Catastrophic crash risk.", proof: "Breathalyzer Log" }
-            ]
+            tasks: []
         },
         {
             title: "Campus Security & CCTV",
             department: "Security",
             frequency: "Daily",
             role: "Security Chief",
-            summary: "Perimeter hardening and surveillance.",
+            summary: "Perimeter hardening and visitor ID verification.",
             icon: "shield-check",
-            tasks: [
-                { id: "SCH-SEC-01", description: "CCTV Audit: Verify coverage of high-risk 'blind spots'.", priority: "High", riskLevel: "Medium", consequence: "Lack of evidence for bullying/theft.", proof: "Monitor Check" },
-                { id: "SCH-SEC-02", description: "Visitor Badge Enforcement: Check 100% ID verification.", priority: "High", riskLevel: "High", consequence: "Unauthorized intruder access.", proof: "Registry Audit" }
-            ]
+            tasks: []
         },
         {
             title: "Canteen & Vendor Quality",
             department: "F&B",
             frequency: "Daily",
             role: "Canteen Manager",
-            summary: "Food safety and supplier integrity.",
+            summary: "HACCP food safety and vendor license auditing.",
             icon: "utensils",
-            tasks: [
-                { id: "SCH-CAN-01", description: "Log morning fridge temperatures.", priority: "High", riskLevel: "High", consequence: "Mass food poisoning outbreak.", proof: "Temp Log" },
-                { id: "SCH-CAN-02", description: "Vendor Audit: Verify FSSAI licenses of daily meat/milk suppliers.", priority: "High", riskLevel: "High", consequence: "Legal liability for unsafe sourcing.", proof: "License File" }
-            ]
+            tasks: []
         },
         {
             title: "Admin, Lobby & Fee Command",
@@ -74,22 +64,16 @@ export const school_operations_pack: PremiumPack = {
             role: "Admin Manager",
             summary: "Institutional governance and revenue shield.",
             icon: "landmark",
-            tasks: [
-                { id: "SCH-ADM-01", description: "Reconcile daily fee collection against bank deposits.", priority: "High", riskLevel: "High", consequence: "Internal cash theft.", proof: "Settlement Log" },
-                { id: "SCH-ADM-02", description: "Lobby Grooming: Inspect reception for parent-readiness.", priority: "Low", riskLevel: "Low", consequence: "Poor first impression for prospective parents.", proof: "Visual Check" }
-            ]
+            tasks: []
         },
         {
             title: "Digital Command & Marketing",
             department: "Marketing",
             frequency: "Daily",
             role: "Admin Manager",
-            summary: "Reputation and online visibility.",
+            summary: "Reputation management and social visibility.",
             icon: "megaphone",
-            tasks: [
-                { id: "SCH-DIG-01", description: "Review Response: Reply to Google reviews < 24h.", priority: "High", riskLevel: "Medium", consequence: "Reputation drop and lower SEO.", proof: "Review Dashboard" },
-                { id: "SCH-DIG-02", description: "Social Presence: Post 1 update on student achievements.", priority: "Low", riskLevel: "Low", consequence: "Low brand engagement.", proof: "Links Audit" }
-            ]
+            tasks: []
         }
     ]
 };

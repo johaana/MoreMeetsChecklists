@@ -38,13 +38,7 @@ export const hotels_and_resorts: PremiumPack = {
             role: "Front Office Manager",
             summary: "Ensures legal compliance, guest arrival readiness, and billing integrity.",
             icon: "concierge-bell",
-            tasks: [
-                { id: "HTL-FO-01", description: "Verify all arrivals against PMS vs. Channel Manager sync.", priority: "High", riskLevel: "High", consequence: "Double-booking and guest denial.", proof: "System Reconcile", trainerNotes: "Check Mobile vs Desktop rates." },
-                { id: "HTL-FO-02", description: "Audit Guest ID compliance and police C-Form filing.", priority: "High", riskLevel: "High", consequence: "Massive legal fines and license suspension.", proof: "Registry Audit", trainerNotes: "Scan original ID only." },
-                { id: "HTL-FO-03", description: "Monitor lobby queue length during peak check-in (12PM).", priority: "High", riskLevel: "Low", consequence: "Immediate negative first impression.", proof: "TAT Log", trainerNotes: "Deploy backup staff if > 3 guests wait." },
-                { id: "HTL-FO-04", description: "Test Front Desk Inter-phone and Emergency Hotline.", priority: "High", riskLevel: "High", consequence: "Inability to summon help during crisis.", proof: "Dial Log" },
-                { id: "HTL-FO-05", description: "Reconcile daily cash float and credit card settlements.", priority: "High", riskLevel: "High", consequence: "Silent internal cash theft.", proof: "Settlement Log" }
-            ]
+            tasks: []
         },
         {
             title: "Housekeeping & Room Integrity",
@@ -53,13 +47,7 @@ export const hotels_and_resorts: PremiumPack = {
             role: "Head of Housekeeping",
             summary: "Manages the invisible infrastructure of cleanliness and comfort.",
             icon: "bed",
-            tasks: [
-                { id: "HTL-HK-01", description: "Mandatory room inspection of 10% of check-in ready rooms.", priority: "High", riskLevel: "High", consequence: "Immediate guest refund and bad reviews.", proof: "Inspection Form", trainerNotes: "Check top of AC and under bed." },
-                { id: "HTL-HK-02", description: "Inspect linen quality for graying, stains, or tears.", priority: "High", riskLevel: "Medium", consequence: "Brand damage and sub-par luxury perception.", proof: "Linen Log", trainerNotes: "Reject graying linens immediately." },
-                { id: "HTL-HK-03", description: "Sanitize high-touch points: remotes, switches, handles.", priority: "High", riskLevel: "High", consequence: "Infection spread among guests.", proof: "Sanitization Log" },
-                { id: "HTL-HK-04", description: "Verify bathroom hygiene: check for hair, mold, and scale.", priority: "High", riskLevel: "High", consequence: "1-star review driver.", proof: "Visual Audit" },
-                { id: "HTL-HK-05", description: "Inspect for signs of bed bugs or roaches in mattress seams.", priority: "High", riskLevel: "High", consequence: "Health department closure.", proof: "Pest Audit" }
-            ]
+            tasks: []
         },
         {
             title: "Room Service & Minibar",
@@ -68,11 +56,7 @@ export const hotels_and_resorts: PremiumPack = {
             role: "Floor Manager",
             summary: "Governance for in-room dining and amenities.",
             icon: "utensils",
-            tasks: [
-                { id: "HTL-RS-01", description: "Inter-phone Dial Test: pickup in < 3 rings.", priority: "High", riskLevel: "Medium", consequence: "Guest frustration and lost revenue.", proof: "Dial Log" },
-                { id: "HTL-RS-02", description: "Verify Minibar expiry and seal integrity in 5 random rooms.", priority: "Medium", riskLevel: "Medium", consequence: "Selling expired product.", proof: "Visual Audit" },
-                { id: "HTL-RS-03", description: "Audit tray-collection frequency in corridors.", priority: "Medium", riskLevel: "Low", consequence: "Corridor odors and poor brand image.", proof: "Patrol Log" }
-            ]
+            tasks: []
         },
         {
             title: "Banquets, Wedding & Events",
@@ -81,11 +65,7 @@ export const hotels_and_resorts: PremiumPack = {
             role: "Banquets Manager",
             summary: "Command for high-visibility group events.",
             icon: "calendar-heart",
-            tasks: [
-                { id: "HTL-EVT-01", description: "Pre-Event Technical Recce: Mics, Projectors, Wi-Fi.", priority: "High", riskLevel: "High", consequence: "High-visibility failure during event.", proof: "Tech Report" },
-                { id: "HTL-EVT-02", description: "Floor Safety Audit: Check for loose cables or trip hazards.", priority: "High", riskLevel: "High", consequence: "Guest injury and liability.", proof: "Walkthrough" },
-                { id: "HTL-EVT-03", description: "Wedding Buffet: Temperature log for high-risk proteins.", priority: "High", riskLevel: "High", consequence: "Mass food poisoning incident.", proof: "Core Temp Log" }
-            ]
+            tasks: []
         },
         {
             title: "Engineering & MEP Vitals",
@@ -94,11 +74,7 @@ export const hotels_and_resorts: PremiumPack = {
             role: "Chief Engineer",
             summary: "Infrastructure readiness for the property.",
             icon: "wrench",
-            tasks: [
-                { id: "HTL-ENG-01", description: "Log hot water temperature at the boiler outlet.", priority: "High", riskLevel: "High", consequence: "Ice-cold showers and guest refunds.", proof: "Temp Log" },
-                { id: "HTL-ENG-02", description: "Test fire alarm panel and PA system functionality.", priority: "High", riskLevel: "High", consequence: "Fatal delay in emergency response.", proof: "Alarm Log" },
-                { id: "HTL-ENG-03", description: "Check backup generator fuel levels and battery voltage.", priority: "High", riskLevel: "High", consequence: "Total blackout during power flicker.", proof: "Gen Log" }
-            ]
+            tasks: []
         },
         {
             title: "Travel Desk, Valet & Parking",
@@ -107,11 +83,7 @@ export const hotels_and_resorts: PremiumPack = {
             role: "Security Chief",
             summary: "First and last impression governance.",
             icon: "car",
-            tasks: [
-                { id: "HTL-LOG-01", description: "Valet Key Vault: Reconcile keys against arrival log.", priority: "High", riskLevel: "High", consequence: "Theft or unauthorized joyrides.", proof: "Dual-Verification" },
-                { id: "HTL-LOG-02", description: "Pre-existing Damage Log: Photo check of arriving cars.", priority: "High", riskLevel: "High", consequence: "False insurance claims by guests.", proof: "Photo/Checklist" },
-                { id: "HTL-LOG-03", description: "Airport Transfer: Verify flight arrival times for pick-ups.", priority: "Medium", riskLevel: "Low", consequence: "Guest waiting at airport.", proof: "Flight Tracker" }
-            ]
+            tasks: []
         },
         {
             title: "Digital Command & ORM",
@@ -120,10 +92,7 @@ export const hotels_and_resorts: PremiumPack = {
             role: "Admin Manager",
             summary: "Reputation and online booking pipeline protection.",
             icon: "globe",
-            tasks: [
-                { id: "HTL-DIG-01", description: "Review Response Pulse: Reply to Google/TripAdvisor < 24h.", priority: "High", riskLevel: "Medium", consequence: "Reputation drop and lower SEO.", proof: "Dashboard Screenshot" },
-                { id: "HTL-DIG-02", description: "OTA Parity Audit: Compare direct rates vs Booking/Expedia.", priority: "High", riskLevel: "Medium", consequence: "Revenue loss or rate parity fines.", proof: "Parity Check" }
-            ]
+            tasks: []
         },
         {
             title: "Lawn, Pool & Grounds",
@@ -132,10 +101,7 @@ export const hotels_and_resorts: PremiumPack = {
             role: "EHS Officer",
             summary: "Safety and aesthetic command for outdoor zones.",
             icon: "waves",
-            tasks: [
-                { id: "HTL-EXT-01", description: "Pool Vitals: Log pH and Chlorine every 4 hours.", priority: "High", riskLevel: "High", consequence: "Waterborne infection and health closure.", proof: "Vitals Log" },
-                { id: "HTL-EXT-02", description: "Lawn Safety: Check for loose wiring or broken landscape lights.", priority: "High", riskLevel: "Medium", consequence: "Electric shock risk to children.", proof: "Patrol Log" }
-            ]
+            tasks: []
         }
     ]
 };

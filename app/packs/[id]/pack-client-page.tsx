@@ -9,7 +9,7 @@ import { IconComponent, ComplianceIcon } from '@/components/icons';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { X, Check, ShieldAlert, ArrowRight, ShieldCheck, FileSpreadsheet, Infinity, Lock, Timer, Target, Eye, Zap, Laptop, LayoutGrid, CheckSquare } from 'lucide-react';
+import { X, Check, ShieldAlert, ArrowRight, ShieldCheck, FileSpreadsheet, Infinity, Lock, Timer, Target, Eye, Zap, Laptop, LayoutGrid, CheckSquare, Layers, Users, Database } from 'lucide-react';
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
     const content = painPointsContent[packId as keyof typeof painPointsContent];
@@ -101,86 +101,40 @@ const ProductArchitectureSection = () => (
     </section>
 );
 
-const NotAChecklistSection = () => (
-    <section className="w-full py-16 md:py-24 bg-black border-y border-white/5">
-        <div className="container px-4 md:px-6 max-w-4xl mx-auto text-center space-y-12">
-            <div className="space-y-4">
-                <Badge variant="destructive" className="uppercase font-black tracking-widest text-[9px] px-4 py-1">Crucial Distinction</Badge>
-                <h2 className="text-3xl md:text-5xl font-black font-headline uppercase italic tracking-tighter">This is NOT a Checklist.</h2>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {[
-                    { t: "NOT a PDF", d: "Static documents get ignored. This is a live, interactive data engine.", i: X },
-                    { t: "NOT a Template", d: "Generic lists don't stop disasters. This is forensically engineered infrastructure.", i: X },
-                    { t: "NOT Manual", d: "No more 'guessing' if work is done. You get verifiable digital evidence.", i: X }
-                ].map(item => (
-                    <div key={item.t} className="space-y-2 p-6 rounded-2xl bg-white/[0.02] border border-white/5">
-                        <item.i className="w-8 h-8 text-red-500 mx-auto mb-2 opacity-50" />
-                        <h3 className="font-black text-primary-text uppercase italic">{item.t}</h3>
-                        <p className="text-xs text-secondary-text leading-relaxed font-medium">{item.d}</p>
-                    </div>
-                ))}
-            </div>
-            
-            <div className="pt-8">
-                <p className="text-xl font-bold text-primary italic">"It is a system your team uses daily to ensure discipline never drifts."</p>
-            </div>
-        </div>
-    </section>
-);
+const DepartmentalCommandSection = ({ pack }: { pack: PremiumPack }) => {
+    if (!pack.checklists || pack.checklists.length === 0) return null;
 
-const ComparisonSection = () => (
-    <section className="w-full py-16 md:py-24 bg-alternate-background">
-        <div className="container px-4 md:px-6">
-            <div className="max-w-4xl mx-auto text-center mb-16 space-y-4">
-                <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Infrastructure Audit</Badge>
-                <h2 className="text-3xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">System vs. Chaos</h2>
-                <p className="text-secondary-text text-lg italic font-medium">The difference between a growing business and a struggling one.</p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-3xl overflow-hidden max-w-5xl mx-auto shadow-2xl">
-                <div className="bg-black/40 p-8 md:p-12 space-y-8">
-                    <h3 className="text-red-500 font-black uppercase tracking-widest text-sm flex items-center gap-2">
-                        <X className="w-5 h-5" /> Manual Chaos (WhatsApp & Memory)
-                    </h3>
-                    <ul className="space-y-6">
-                        {[
-                            { t: "Staff forgets steps", d: "Standards are just suggestions until they are signed." },
-                            { t: "You chase staff", d: "Managers spend hours daily following up on basic duties." },
-                            { t: "No visibility", d: "Failures are only noticed when a guest complains." },
-                            { t: "Problems caught late", d: "Profit leaks are hidden in daily inefficiencies." }
-                        ].map(item => (
-                            <li key={item.t} className="space-y-1">
-                                <p className="text-primary-text font-bold text-sm">{item.t}</p>
-                                <p className="text-xs text-white/40 italic">{item.d}</p>
-                            </li>
-                        ))}
-                    </ul>
+    return (
+        <section className="w-full py-16 md:py-24 bg-black">
+            <div className="container px-4 md:px-6">
+                <div className="max-w-4xl mx-auto text-center mb-16 space-y-4">
+                    <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.3em] font-black text-[10px]">Total Spectrum Coverage</Badge>
+                    <h2 className="text-3xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter">
+                        Departmental Command Layers
+                    </h2>
+                    <p className="text-secondary-text text-lg italic font-medium">Standardizing 100% of your operation, from Owner vision to night-shift security.</p>
                 </div>
-                <div className="bg-primary/5 p-8 md:p-12 space-y-8 relative border-l border-primary/20">
-                    <div className="absolute top-0 right-0 p-6 opacity-10"><Check className="w-32 h-32 text-primary" /></div>
-                    <h3 className="text-primary font-black uppercase tracking-widest text-sm flex items-center gap-2">
-                        <Check className="w-5 h-5" /> MoreMeets™ Operating System
-                    </h3>
-                    <ul className="space-y-6">
-                        {[
-                            { t: "Modules tracked daily", d: "Every step is signed off. Discipline becomes mandatory." },
-                            { t: "You see updates instantly", d: "Know exactly who is performing in 5 seconds." },
-                            { t: "Full Executive Clarity", d: "Knowledge stays with the business if staff leave." },
-                            { t: "Problems caught early", d: "The system flags errors before they cost money." }
-                        ].map(item => (
-                            <li key={item.t} className="space-y-1">
-                                <p className="text-primary-text font-bold text-sm">{item.t}</p>
-                                <p className="text-xs text-primary/40 italic font-medium">{item.d}</p>
-                            </li>
-                        ))}
-                    </ul>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
+                    {pack.checklists.map((module, index) => (
+                        <div key={index} className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] flex flex-col gap-4 group hover:border-primary/20 transition-all">
+                            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                                <IconComponent name={module.icon || "layout-grid"} className="w-5 h-5 text-primary" />
+                            </div>
+                            <div className="space-y-1">
+                                <h3 className="font-black text-primary-text uppercase italic text-sm">{module.title}</h3>
+                                <p className="text-[10px] text-white/30 uppercase font-black tracking-widest">{module.department} Module</p>
+                            </div>
+                            <p className="text-xs text-secondary-text leading-relaxed italic font-medium line-clamp-2">
+                                {module.summary}
+                            </p>
+                        </div>
+                    ))}
                 </div>
             </div>
-        </div>
-    </section>
-);
+        </section>
+    );
+};
 
 const Section = ({ children, className }: { children: React.ReactNode, className?: string }) => (
     <section className={cn("w-full py-16 md:py-24", className)}>
@@ -256,20 +210,41 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
           <div className="container px-4 md:px-6">
             <div className={cn("grid gap-6 lg:gap-12 xl:gap-16 items-center", hasValidHeroImage ? "lg:grid-cols-[1fr,400px]" : "grid-cols-1 max-w-4xl mx-auto")}>
               <div className="space-y-6">
-                <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.2em] font-black text-[10px]">{pack.category} • Operating System</Badge>
-                <h1 className="text-3xl font-black tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl font-headline text-primary-text uppercase italic leading-[1.1]">
-                  {pack.heroHeadline || pack.title}
-                </h1>
+                <div className="space-y-4">
+                    <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.2em] font-black text-[10px]">{pack.category} • Institutional Grade</Badge>
+                    <h1 className="text-3xl font-black tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl font-headline text-primary-text uppercase italic leading-[1.1]">
+                    {pack.heroHeadline || pack.title}
+                    </h1>
+                </div>
+                
                 <p className="max-w-[600px] text-secondary-text text-base md:text-lg lg:text-xl font-medium leading-relaxed italic border-l-2 border-primary/20 pl-6">
                   {pack.heroSubheadline || pack.description}
                 </p>
-                {!isEmptyPack && (
-                  <div className="text-xs md:sm font-black uppercase tracking-[0.1em] text-white/40 flex items-center gap-2">
-                    <span className="text-primary">{totalChecklists} OPERATIONAL MODULES</span>
-                    <span className="w-1 h-1 rounded-full bg-white/20" />
-                    <span className="text-primary">{totalTasks}+ TECHNICAL CONTROL POINTS</span>
-                  </div>
-                )}
+
+                <div className="flex flex-wrap gap-4">
+                    <div className="bg-black/40 border border-white/5 rounded-xl px-4 py-3 flex items-center gap-3">
+                        <Layers className="w-4 h-4 text-primary" />
+                        <div className="flex flex-col">
+                            <span className="text-primary-text font-black text-xs">{totalChecklists}</span>
+                            <span className="text-[8px] font-black uppercase text-white/20 tracking-widest">Modules</span>
+                        </div>
+                    </div>
+                    <div className="bg-black/40 border border-white/5 rounded-xl px-4 py-3 flex items-center gap-3">
+                        <Database className="w-4 h-4 text-primary" />
+                        <div className="flex flex-col">
+                            <span className="text-primary-text font-black text-xs">{totalTasks}+</span>
+                            <span className="text-[8px] font-black uppercase text-white/20 tracking-widest">Control Points</span>
+                        </div>
+                    </div>
+                    <div className="bg-black/40 border border-white/5 rounded-xl px-4 py-3 flex items-center gap-3">
+                        <Users className="w-4 h-4 text-primary" />
+                        <div className="flex flex-col">
+                            <span className="text-primary-text font-black text-xs">8-Role</span>
+                            <span className="text-[8px] font-black uppercase text-white/20 tracking-widest">Admin Matrix</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="mt-4 bg-background/50 border border-white/5 p-4 rounded-xl">
                   <h2 className="text-[10px] font-black text-primary mb-2 uppercase tracking-widest">DEPLOYMENT SECTOR:</h2>
                   <p className="text-sm text-secondary-text font-medium">{audience.join(' • ')}</p>
@@ -290,6 +265,8 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
         </section>
 
         <PainPointsSection packId={pack.id} />
+
+        <DepartmentalCommandSection pack={pack} />
 
         <ProductArchitectureSection />
 
@@ -322,15 +299,13 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
           </section>
         )}
 
-        <NotAChecklistSection />
-        <ComparisonSection />
         <WhatChangesSection />
 
         {pack.globalStandards && (
             <section className="w-full py-12 md:py-16 bg-secondary/10">
                 <div className="container px-2 md:px-6">
                     <div className="max-w-3xl mx-auto text-center mb-10">
-                        <h2 className="text-2xl md:text-3xl font-bold tracking-tighter font-headline uppercase italic">
+                        <h2 className="text-2xl md:text-3xl font-bold tracking-tighter font-headline uppercase italic text-primary-text">
                             AUDIT-READY. GLOBALLY COMPLIANT.
                         </h2>
                         <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto mt-4 font-medium italic">

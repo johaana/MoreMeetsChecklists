@@ -29,54 +29,76 @@ export const restaurants: PremiumPack = {
     ],
     checklists: [
         {
+            title: "Owner & COO Governance",
+            department: "Executive",
+            frequency: "Weekly",
+            role: "COO / Owner",
+            summary: "Strategic oversight of group performance and risk.",
+            icon: "crown",
+            tasks: []
+        },
+        {
             title: "Kitchen Opening & Prep",
             department: "Kitchen",
             frequency: "Daily",
             role: "Head Chef",
             summary: "Critical food safety and readiness protocols.",
             icon: "sunrise",
-            tasks: [
-                { id: "RES-KIT-01", description: "Log temperatures of all walk-in chillers and freezers.", priority: "High", riskLevel: "High", consequence: "Pathogen growth and total stock loss.", proof: "Digital Log" },
-                { id: "RES-KIT-02", description: "Inspect dry storage for signs of rodents or pests.", priority: "High", riskLevel: "High", consequence: "Regulatory closure and contamination.", proof: "Visual Check" },
-                { id: "RES-KIT-03", description: "Verify sanitization of all surfaces using 200ppm strips.", priority: "High", riskLevel: "Medium", consequence: "Cross-contamination risk.", proof: "Test Strip" }
-            ]
+            tasks: []
         },
         {
-            title: "Delivery & Aggregator Command",
+            title: "Service & Ambiance Logic",
+            department: "Service",
+            frequency: "Daily",
+            role: "Floor Manager",
+            summary: "Protects the guest experience standard.",
+            icon: "armchair",
+            tasks: []
+        },
+        {
+            title: "Bar & Happy Hour Control",
+            department: "Bar",
+            frequency: "Daily",
+            role: "Bar Manager",
+            summary: "Governance for high-margin alcohol inventory.",
+            icon: "glass-water",
+            tasks: []
+        },
+        {
+            title: "Delivery & Logistics",
             department: "Logistics",
             frequency: "Daily",
             role: "Dispatch Lead",
-            summary: "Governance for Swiggy, Zomato, and Home Delivery.",
+            summary: "Zero-fail framework for off-premise sales.",
             icon: "truck",
-            tasks: [
-                { id: "RES-DEL-01", description: "Menu Sync: Check 86-list availability on Swiggy/Zomato.", priority: "High", riskLevel: "Medium", consequence: "High cancellation rates and platform penalties.", proof: "App Check" },
-                { id: "RES-DEL-02", description: "Packaging Audit: Verify bags are tamper-sealed correctly.", priority: "High", riskLevel: "Medium", consequence: "Guest complaints and safety risk.", proof: "Visual Check" },
-                { id: "RES-DEL-03", description: "Rider TAT: Monitor handoff time from ready to pickup.", priority: "Medium", riskLevel: "Low", consequence: "Cold food and rating drop.", proof: "TAT Log" }
-            ]
+            tasks: []
         },
         {
-            title: "Digital Command & ORM",
-            department: "Marketing",
+            title: "Security & Perimeter",
+            department: "Security",
             frequency: "Daily",
-            role: "Admin Manager",
-            summary: "Reputation and online presence.",
-            icon: "megaphone",
-            tasks: [
-                { id: "RES-DIG-01", description: "Review Response: Reply to Google/Zomato reviews < 24h.", priority: "High", riskLevel: "Medium", consequence: "Damaged brand rankings.", proof: "Dashboard Screenshot" },
-                { id: "RES-DIG-02", description: "Instagram Clean: Clear all DMs and Comment questions.", priority: "Medium", riskLevel: "Low", consequence: "Lost bookings.", proof: "Inbox Clear" }
-            ]
+            role: "Security Head",
+            summary: "Asset protection and facility safety.",
+            icon: "shield-check",
+            tasks: []
         },
         {
-            title: "Financial Shield Hub",
-            department: "Finance",
+            title: "EHS & Safety Audit",
+            department: "Safety",
             frequency: "Daily",
-            role: "Accountant",
-            summary: "Profit protection and unit contribution tracking.",
-            icon: "banknote",
-            tasks: [
-                { id: "RES-FIN-01", description: "Log Daily Gross Sales from POS into Financial Shield.", priority: "High", riskLevel: "Medium", consequence: "Loss of performance visibility.", proof: "System Report" },
-                { id: "RES-FIN-02", description: "Perform 'Blind Stock Count' of top 5 high-value SKUs.", priority: "High", riskLevel: "High", consequence: "Internal theft masking as consumption.", proof: "Count Sheet" }
-            ]
+            role: "EHS Officer",
+            summary: "Occupational health and environmental governance.",
+            icon: "hard-hat",
+            tasks: []
+        },
+        {
+            title: "Supply Chain & Receiving",
+            department: "Stores",
+            frequency: "Daily",
+            role: "Receiving Lead",
+            summary: "Profit protection at the point of entry.",
+            icon: "package-search",
+            tasks: []
         }
     ]
 };
