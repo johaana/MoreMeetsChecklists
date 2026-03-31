@@ -84,7 +84,7 @@ export const restaurants: PremiumPack = {
             ]
         },
         {
-            title: "Bar & Narcotics Control",
+            title: "Bar & Happy Hour Control",
             department: "Bar",
             frequency: "Daily",
             role: "Bar Manager",

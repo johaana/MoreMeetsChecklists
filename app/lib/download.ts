@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v6.4 - TOTAL COMMAND BUILD
- * Focus: High-Density Payload, Screenshot-Perfect Analytics, Missing Sheet Fulfillment.
+ * Sovereign Engine v6.5 - TOTAL COMMAND BUILD
+ * Focus: High-Density Payload, Multi-Role TEAM_HUB, Screenshot-Perfect Analytics.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -19,7 +19,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-MASTER-SOVEREIGN-6.4";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-6.5";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -175,7 +175,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', vertical: 'center' }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v6.4 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', vertical: 'center' }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v6.5 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', vertical: 'center' }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center' }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -476,5 +476,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     hwWs['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 0 } }];
     utils.book_append_sheet(wb, hwWs, "HOW_THIS_WORKS");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_6.4.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_6.5.xlsx`);
 }
