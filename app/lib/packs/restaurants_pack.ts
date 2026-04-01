@@ -5,7 +5,7 @@ export const restaurants: PremiumPack = {
     id: 'restaurants',
     title: "Restaurant Operating System",
     category: "Hospitality",
-    description: "The definitive Sovereign v8.0 engine for multi-unit food and beverage groups. Standardizing 150+ technical control points from Owner vision to kitchen hygiene.",
+    description: "The definitive Sovereign v8.2 engine for multi-unit food and beverage groups. Standardizing 150+ technical control points from Owner vision to kitchen hygiene.",
     heroHeadline: "Standardize Your Kitchen. Protect Your Margins.",
     heroSubheadline: "The professional plug for revenue leakage and food safety risks—across every branch in your group.",
     pricingUrgency: "Preventing a single foodborne illness lawsuit or one major theft saves 100x the cost of this system.",
@@ -15,7 +15,7 @@ export const restaurants: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f4e6b12a-4422-48a0-a198-154332822a27',
     icon: "utensils-crossed",
-    badgeText: "V8.0 SOVEREIGN",
+    badgeText: "V8.2 SOVEREIGN",
     badgeVariant: "accent",
     bestseller: true,
     whoIsItFor: ["Restaurant Group Owners", "COOs", "General Managers", "Kitchen Directors", "Heads of Quality"],
@@ -37,13 +37,36 @@ export const restaurants: PremiumPack = {
             role: "COO / Owner",
             summary: "Strategic oversight of group performance and risk.",
             icon: "crown",
-            tasks: [
-                { id: "RES-EXE-01", description: "Review 'Empire Mood' and Group shift completion across all branches.", priority: "High", riskLevel: "Low", consequence: "Drift in operational discipline.", proof: "Dashboard Review", trainerNotes: "Check every Monday at 10 AM." },
-                { id: "RES-EXE-02", description: "Audit 'Incident Log' for any unresolved food safety or legal alerts.", priority: "High", riskLevel: "High", consequence: "Massive legal liability and brand collapse.", proof: "Incident Audit", trainerNotes: "Verify all OPEN incidents have a resolution path." },
-                { id: "RES-EXE-03", description: "Reconcile 'Financial Shield' savings against actual P&L wastage lines.", priority: "Medium", riskLevel: "Medium", consequence: "Profit erosion through unmonitored waste.", proof: "Financial Match", trainerNotes: "Target < 2% wastage total." },
-                { id: "RES-EXE-04", description: "Audit statutory license expiries (FSSAI, Health, Liquor).", priority: "High", riskLevel: "High", consequence: "Government shutdown.", proof: "License Matrix" },
-                { id: "RES-EXE-05", description: "Review major CAPEX repair status for 100% facility uptime.", priority: "Medium", riskLevel: "Low", consequence: "Service failure.", proof: "BMS Report" }
-            ]
+            tasks: Array.from({ length: 20 }).map((_, i) => ({
+                id: `RES-EXE-${(i + 1).toString().padStart(2, '0')}`,
+                description: [
+                    "Review 'Empire Mood' and Group shift completion across all branches.",
+                    "Audit 'Incident Log' for any unresolved food safety or legal alerts.",
+                    "Reconcile 'Financial Shield' savings against actual P&L wastage lines.",
+                    "Audit statutory license expiries (FSSAI, Health, Liquor).",
+                    "Review major CAPEX repair status for 100% facility uptime.",
+                    "Audit high-value beverage stock variance across branches.",
+                    "Review guest CSAT scores from direct vs. OTA channels.",
+                    "Verify insurance policy renewals for all properties.",
+                    "Audit petty cash disbursements for group-level spend.",
+                    "Review energy consumption trends and KWH benchmarks.",
+                    "Audit aggregator commission reconciliation (Zomato/Swiggy).",
+                    "Verify trademark and brand asset usage compliance.",
+                    "Review senior manager training matrix status.",
+                    "Audit lease payment and property tax schedules.",
+                    "Review quarterly menu engineering performance report.",
+                    "Verify vendor payment aging and SLA compliance.",
+                    "Audit legal dispute status and litigation risks.",
+                    "Review group-wide payroll variance vs. budget.",
+                    "Audit central kitchen production vs. branch receipt.",
+                    "Approve branch-level expansion feasibility studies."
+                ][i] || `Executive Governance Protocol Mission ${i + 1}`,
+                priority: "High",
+                riskLevel: i % 2 === 0 ? "High" : "Medium",
+                consequence: "Drift in operational discipline and financial leakage.",
+                proof: "Dashboard Review",
+                trainerNotes: "Check every Monday at 10 AM."
+            }))
         },
         {
             title: "Kitchen Command & HACCP",
@@ -52,13 +75,36 @@ export const restaurants: PremiumPack = {
             role: "General Manager",
             summary: "Critical food safety and readiness protocols.",
             icon: "sunrise",
-            tasks: [
-                { id: "RES-KIT-01", description: "Log temperatures of all walk-in chillers and freezers.", priority: "High", riskLevel: "High", consequence: "Pathogen growth and total stock loss.", proof: "Digital Log", trainerNotes: "Check at 8 AM daily." },
-                { id: "RES-KIT-02", description: "Inspect dry storage for signs of rodents or pests.", priority: "High", riskLevel: "High", consequence: "Regulatory closure and contamination.", proof: "Visual Check" },
-                { id: "RES-KIT-03", description: "Verify sanitization of all surfaces using 200ppm strips.", priority: "High", riskLevel: "Medium", consequence: "Cross-contamination risk.", proof: "Test Strip" },
-                { id: "RES-KIT-04", description: "Calibrate all food probes using ice-point method.", priority: "Medium", riskLevel: "Medium", consequence: "False safety readings.", proof: "Calibration Log" },
-                { id: "RES-KIT-05", description: "Audit staff health and grooming (nails, wounds, hair).", priority: "High", riskLevel: "Medium", consequence: "Hygiene failure.", proof: "Daily Audit" }
-            ]
+            tasks: Array.from({ length: 20 }).map((_, i) => ({
+                id: `RES-KIT-${(i + 1).toString().padStart(2, '0')}`,
+                description: [
+                    "Log temperatures of all walk-in chillers and freezers.",
+                    "Inspect dry storage for signs of rodents or pests.",
+                    "Verify sanitization of all surfaces using 200ppm strips.",
+                    "Calibrate all food probes using ice-point method.",
+                    "Audit staff health and grooming (nails, wounds, hair).",
+                    "Check oil quality using TPM meter (Target < 25%).",
+                    "Verify FIFO (First-In, First-Out) storage in all zones.",
+                    "Inspect dishwasher temp (Wash: 60C, Rinse: 82C).",
+                    "Audit date-stamping on all prep and cooked items.",
+                    "Verify raw vs. cooked separation in prep areas.",
+                    "Check fly-killer functionality and tray cleanliness.",
+                    "Audit chopping board color-code compliance.",
+                    "Verify allergen-free zone integrity during prep.",
+                    "Inspect drainage for clogs and grease trap status.",
+                    "Log internal temp of high-risk cooked items.",
+                    "Verify chemical storage is isolated from food zones.",
+                    "Audit personal item storage in locker area.",
+                    "Check exhaust hood suction and filter cleanliness.",
+                    "Verify handwashing frequency and soap availability.",
+                    "Final nightly gas and electrical bank shutdown check."
+                ][i] || `Kitchen Safety Mission ${i + 1}`,
+                priority: "High",
+                riskLevel: "High",
+                consequence: "Foodborne illness outbreak and regulatory closure.",
+                proof: "Digital Log",
+                trainerNotes: "Check at 8 AM daily."
+            }))
         },
         {
             title: "Finance & Cashier Shield",
@@ -67,13 +113,35 @@ export const restaurants: PremiumPack = {
             role: "Finance & Cashier",
             summary: "Profit protection and margin governance.",
             icon: "banknote",
-            tasks: [
-                { id: "RES-FIN-01", description: "Log Daily Gross Sales into the Financial Shield ledger.", priority: "High", riskLevel: "Medium", consequence: "Unidentified revenue gaps.", proof: "Ledger Entry" },
-                { id: "RES-FIN-02", description: "Audit Raw Material Invoices against Ledger entry.", priority: "High", riskLevel: "High", consequence: "Inflated CoGS due to invoice errors.", proof: "Match Note" },
-                { id: "RES-FIN-03", description: "Update Daily Waste Valuation from BOH incident logs.", priority: "High", riskLevel: "Medium", consequence: "Silent profit leakage.", proof: "Waste Log" },
-                { id: "RES-FIN-04", description: "Reconcile POS digital settlements against bank captures.", priority: "High", riskLevel: "Medium", consequence: "Uncaptured digital cash.", proof: "Bank Sync" },
-                { id: "RES-FIN-05", description: "Verify physical stock of top 10 expensive ingredients (Blind count).", priority: "High", riskLevel: "High", consequence: "Inventory theft.", proof: "Audit Sheet" }
-            ]
+            tasks: Array.from({ length: 20 }).map((_, i) => ({
+                id: `RES-FIN-${(i + 1).toString().padStart(2, '0')}`,
+                description: [
+                    "Log Daily Gross Sales into the Financial Shield ledger.",
+                    "Audit Raw Material Invoices against Ledger entry.",
+                    "Update Daily Waste Valuation from BOH incident logs.",
+                    "Reconcile POS digital settlements against bank captures.",
+                    "Verify physical stock of top 10 expensive ingredients (Blind count).",
+                    "Audit voided bills and discount logs from previous shift.",
+                    "Verify cash-in-hand matches POS X-Report.",
+                    "Check validity of tax invoices for B2B customers.",
+                    "Audit staff meal consumption logs.",
+                    "Reconcile petty cash vouchers against physical bills.",
+                    "Verify tip distribution parity vs. staff roster.",
+                    "Audit complimentary bill (comp) authorizations.",
+                    "Check for unrecorded beverage sales in bar area.",
+                    "Verify credit-card machine batch settlements.",
+                    "Audit linen laundry logs against house inventory.",
+                    "Check for inflated delivery commission deductions.",
+                    "Verify payment of daily labor vs. attendance.",
+                    "Audit damaged/rejected stock returns to vendors.",
+                    "Verify functionality of currency note detector.",
+                    "Final cashier drawer handover and safe drop."
+                ][i] || `Financial Control Mission ${i + 1}`,
+                priority: "High",
+                riskLevel: "Medium",
+                consequence: "Internal theft and unidentified revenue gaps.",
+                proof: "Ledger Entry"
+            }))
         },
         {
             title: "Safety & Asset Protection",
@@ -82,11 +150,35 @@ export const restaurants: PremiumPack = {
             role: "EHS Officer",
             summary: "Perimeter security and fire-readiness.",
             icon: "shield-check",
-            tasks: [
-                { id: "RES-SEC-01", description: "Verify CCTV recording status and camera focal points.", priority: "High", riskLevel: "High", consequence: "Loss of evidence for theft or accidents.", proof: "System Check" },
-                { id: "RES-SEC-02", description: "Audit gas valve bank and electrical main bank shutdown.", priority: "High", riskLevel: "High", consequence: "Overnight fire disaster.", proof: "Visual Check" },
-                { id: "RES-SEC-03", description: "Patrol external exits and fire-escape clearance.", priority: "High", riskLevel: "High", consequence: "Fatal trap during emergency.", proof: "Patrol Log" }
-            ]
+            tasks: Array.from({ length: 20 }).map((_, i) => ({
+                id: `RES-SEC-${(i + 1).toString().padStart(2, '0')}`,
+                description: [
+                    "Verify CCTV recording status and camera focal points.",
+                    "Audit gas valve bank and electrical main bank shutdown.",
+                    "Patrol external exits and fire-escape clearance.",
+                    "Test fire extinguisher pressure and check seal integrity.",
+                    "Verify functionality of panic buttons at cashier desk.",
+                    "Audit visitor access log for back-of-house (BOH).",
+                    "Inspect perimeter for signs of unauthorized entry.",
+                    "Verify staff locker security and untampered status.",
+                    "Check emergency lighting and signage functional.",
+                    "Audit server room temperature and fire suppression.",
+                    "Verify First Aid kit stock vs. OSHA checklist.",
+                    "Inspect gas-pipe connections for leaks (Soap test).",
+                    "Audit after-hours staff access authorizations.",
+                    "Check status of outdoor furniture security.",
+                    "Verify keys for high-value stores are in vault.",
+                    "Inspect ceiling for signs of electrical arcing.",
+                    "Audit EHS training records for new hires.",
+                    "Check for flammable debris near cooking zones.",
+                    "Verify signage for floor-wet/safety hazards.",
+                    "Final perimeter lock-up and alarm arming."
+                ][i] || `Safety & EHS Mission ${i + 1}`,
+                priority: "High",
+                riskLevel: "High",
+                consequence: "Loss of life, property damage, and legal liability.",
+                proof: "Patrol Log"
+            }))
         },
         {
             title: "Staff Performance & Certs",
@@ -95,10 +187,35 @@ export const restaurants: PremiumPack = {
             role: "HR Manager",
             summary: "Ensures staff are trained and compliant.",
             icon: "users",
-            tasks: [
-                { id: "RES-HR-01", description: "Audit staff health certificates and FSSAI training records.", priority: "High", riskLevel: "High", consequence: "Regulatory fines and closure.", proof: "Cert File" },
-                { id: "RES-HR-02", description: "Conduct grooming and uniform audit at morning briefing.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution.", proof: "Visual Score" }
-            ]
+            tasks: Array.from({ length: 20 }).map((_, i) => ({
+                id: `RES-HR-${(i + 1).toString().padStart(2, '0')}`,
+                description: [
+                    "Audit staff health certificates and FSSAI training records.",
+                    "Conduct grooming and uniform audit at morning briefing.",
+                    "Verify valid ID documents for all current roster staff.",
+                    "Update the Training Matrix for 'Task of the Week'.",
+                    "Review staff overtime hours against labor laws.",
+                    "Conduct one-on-one feedback sessions with low performers.",
+                    "Audit new-hire onboarding documentation (Offer/JD).",
+                    "Verify staff medical insurance enrollment status.",
+                    "Check for updated Emergency Contact lists.",
+                    "Audit staff dorm/hygiene standards (if applicable).",
+                    "Conduct random knowledge test on menu allergens.",
+                    "Verify payroll attendance logs match POS logins.",
+                    "Audit disciplinary warning log for 100% documentation.",
+                    "Check staff cafeteria hygiene and meal quality.",
+                    "Verify POS access permissions for promoted staff.",
+                    "Audit uniform inventory and replacement cycles.",
+                    "Review staff turnover rate per department.",
+                    "Verify completion of sexual harassment (POSH) training.",
+                    "Audit service staff tips/incentive payout logs.",
+                    "Confirm exit interview completion for resigned staff."
+                ][i] || `HR Governance Mission ${i + 1}`,
+                priority: "High",
+                riskLevel: "Low",
+                consequence: "Regulatory fines, low morale, and brand dilution.",
+                proof: "Cert File"
+            }))
         },
         {
             title: "Maintenance & Equipment",
@@ -107,10 +224,35 @@ export const restaurants: PremiumPack = {
             role: "Technical Lead",
             summary: "Protects the technical infrastructure.",
             icon: "wrench",
-            tasks: [
-                { id: "RES-TEC-01", description: "Check POS internet failover and thermal printer status.", priority: "High", riskLevel: "Low", consequence: "Inability to bill.", proof: "Test Note" },
-                { id: "RES-TEC-02", description: "Verify AC filter cleaning and drain drainage.", priority: "Medium", riskLevel: "Low", consequence: "Lobby smell and dripping.", proof: "Service Log" }
-            ]
+            tasks: Array.from({ length: 20 }).map((_, i) => ({
+                id: `RES-TEC-${(i + 1).toString().padStart(2, '0')}`,
+                description: [
+                    "Check POS internet failover and thermal printer status.",
+                    "Verify AC filter cleaning and drain drainage.",
+                    "Inspect compressor coils on chillers for dust buildup.",
+                    "Test backup generator (DG) battery and fuel levels.",
+                    "Verify functionality of all kitchen exhaust motors.",
+                    "Inspect high-voltage panels for heat using IR gun.",
+                    "Check plumbing for leaks under sinks and bars.",
+                    "Verify UPS backup time for critical POS/CCTV.",
+                    "Audit equipment AMC (Maintenance) contract status.",
+                    "Test functionality of all lighting dimmers/switches.",
+                    "Inspect ovens for door-seal and hinge integrity.",
+                    "Verify calibration of weighing scales (Electronic).",
+                    "Check bar beer tap pressure and glycol levels.",
+                    "Inspect furniture for loose bolts or sharp edges.",
+                    "Verify grease-trap cleaning frequency.",
+                    "Test PA system and background music speakers.",
+                    "Audit spare-parts inventory for critical machinery.",
+                    "Inspect floor grouting for cracks/sanitation gaps.",
+                    "Verify roof waterproofing and gutter clearance.",
+                    "Review technical downtime log for CAPEX planning."
+                ][i] || `Technical Ops Mission ${i + 1}`,
+                priority: "Medium",
+                riskLevel: "Medium",
+                consequence: "Operational downtime and guest discomfort.",
+                proof: "Service Log"
+            }))
         },
         {
             title: "Digital ORM & Marketing",
@@ -119,9 +261,35 @@ export const restaurants: PremiumPack = {
             role: "Customer Experience Lead",
             summary: "Protects the online reputation.",
             icon: "star",
-            tasks: [
-                { id: "RES-CX-01", description: "Review Response Pulse: Reply to all Google reviews <24h.", priority: "High", riskLevel: "Medium", consequence: "Damaged reputation.", proof: "Dashboard" }
-            ]
+            tasks: Array.from({ length: 20 }).map((_, i) => ({
+                id: `RES-CX-${(i + 1).toString().padStart(2, '0')}`,
+                description: [
+                    "Review Response Pulse: Reply to all Google reviews <24h.",
+                    "Update 'Sold Out' items on Zomato/Swiggy apps instantly.",
+                    "Verify current promo-code validity on POS and Apps.",
+                    "Check Google Maps location status and business hours.",
+                    "Audit Instagram/FB comments for unresolved queries.",
+                    "Verify display of marketing stands/flyers in-store.",
+                    "Conduct 'Mystery Diner' report analysis.",
+                    "Verify Wi-Fi login page functionality for guests.",
+                    "Monitor competitor pricing for signature dishes.",
+                    "Audit CRM database for duplicate or invalid entries.",
+                    "Verify consistency of menu pricing across all platforms.",
+                    "Conduct staff briefing on today's social media campaign.",
+                    "Audit 'Gift Card' or Loyalty Point redemptions.",
+                    "Verify display of mandatory FSSAI/License decals.",
+                    "Check email inbox for direct guest feedback.",
+                    "Monitor viral trends affecting brand sentiment.",
+                    "Audit influencer visit logs and output parity.",
+                    "Verify 100% response rate to direct DMs.",
+                    "Update digital signage content for lunch/dinner specials.",
+                    "Review monthly CSAT (Customer Satisfaction) trend."
+                ][i] || `Marketing Command Mission ${i + 1}`,
+                priority: "High",
+                riskLevel: "Medium",
+                consequence: "Damaged reputation and lost sales.",
+                proof: "Dashboard"
+            }))
         },
         {
             title: "Delivery & Logistics",
@@ -130,9 +298,35 @@ export const restaurants: PremiumPack = {
             role: "Logistics Lead",
             summary: "Zero-fail framework for off-premise sales.",
             icon: "truck",
-            tasks: [
-                { id: "RES-DEL-01", description: "Packaging Audit: Verify bags are tamper-sealed correctly.", priority: "High", riskLevel: "Medium", consequence: "Tampering risk.", proof: "Visual Check" }
-            ]
+            tasks: Array.from({ length: 20 }).map((_, i) => ({
+                id: `RES-DEL-${(i + 1).toString().padStart(2, '0')}`,
+                description: [
+                    "Packaging Audit: Verify bags are tamper-sealed correctly.",
+                    "Verify stock of delivery bags, boxes, and cutlery.",
+                    "Audit incoming produce against approved vendor list.",
+                    "Verify temp of high-risk dairy/protein on delivery.",
+                    "Check delivery rider wait-area hygiene.",
+                    "Verify accuracy of 'Out for Delivery' timestamps.",
+                    "Audit return-to-origin (RTO) items for root cause.",
+                    "Inspect vendor transport vehicles for sanitation.",
+                    "Verify scale calibration for bulk receiving.",
+                    "Audit warehouse shelf-load and pallet height.",
+                    "Check inventory of bulk cleaning chemicals.",
+                    "Verify 100% match of PO to Invoice on receipt.",
+                    "Audit aggregator delivery radius settings.",
+                    "Check stock of thermal paper and receipt rolls.",
+                    "Verify first-aid kit in delivery vehicle (if applicable).",
+                    "Audit monthly inventory shrinkage report.",
+                    "Verify vendor FSSAI license validity.",
+                    "Check loading-bay security and camera coverage.",
+                    "Audit waste oil disposal vendor certification.",
+                    "Final delivery dispatch closure and bag inventory."
+                ][i] || `Logistics Command Mission ${i + 1}`,
+                priority: "High",
+                riskLevel: "Medium",
+                consequence: "Tampering risk and poor customer rating.",
+                proof: "Visual Check"
+            }))
         }
     ]
 };

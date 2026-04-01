@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v8.1 - EXECUTIVE ALIGNMENT
- * Fixes: Forced Vertical Centering, Zero-Clipping, 8-Role Matrix Completeness.
+ * Sovereign Engine v8.2 - INSTITUTIONAL FINAL
+ * Fixes: Absolute Vertical Centering, Row-Height Locking, Exhaustive SOP Library.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -19,7 +19,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-MASTER-SOVEREIGN-8.1";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-8.2";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -148,9 +148,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 2 }];
         
-        // HARDENED ROW HEIGHTS FOR ALL DATA ROWS
+        // HARDENED ROW HEIGHTS
         ws['!rows'] = [{ hpt: 25 }, { hpt: customTitleHpt }, { hpt: 15 }, { hpt: headerRowHpt }];
-        for(let r = 4; r < 500; r++) {
+        for(let r = 4; r < 1000; r++) {
             ws['!rows'][r] = { hpt: 25 };
         }
     };
@@ -174,7 +174,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v8.1 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v8.2 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -273,8 +273,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: (i + 1).toString(), s: dataStyleCenter },
             { v: name, s: inputStyle },
             ...packChecklists.map(() => ({ v: "YES", s: inputStyle })),
-            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$5000, "?*", 'TODAYS_TASKS'!$B$5:$B$5000, B${5+i}, 'TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED")` },
-            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, B${5+i}, 'TODAYS_TASKS'!$K$5:$K$5000, "High", 'TODAYS_TASKS'!$I$5:$I$5000, "<>COMPLETED")` }
+            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$5000, "?*", 'TODAYS_TASKS'!$B$5:$B$5000, B${5+i}, 'TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED")`, s: dataStyleCenter },
+            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, B${5+i}, 'TODAYS_TASKS'!$K$5:$K$5000, "High", 'TODAYS_TASKS'!$I$5:$I$5000, "<>COMPLETED")`, s: dataStyleCenter }
         ])
     ];
     const setupWs = utils.aoa_to_sheet(branchSetupData);
@@ -359,7 +359,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: "", s: inputStyleLeft }, 
                 { v: "", s: inputStyleLeft }, 
                 { v: "ACTIVE", s: dataStyleCenter },
-                { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$5000, D${rowIdx}, 'TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED")` }
+                { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$5000, D${rowIdx}, 'TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED")`, s: dataStyleCenter }
             ]);
         });
     });
@@ -430,5 +430,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(healthWs, "Performance Analytics", 'E');
     utils.book_append_sheet(wb, healthWs, "BUSINESS_HEALTH");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_8.1.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_8.2.xlsx`);
 }
