@@ -6,7 +6,7 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v8.3 - INSTITUTIONAL FINAL
+ * Sovereign Engine v8.4 - INSTITUTIONAL FINAL
  * Fixes: Absolute Vertical Centering, Row-Height Locking, Exhaustive SOP Library.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -19,7 +19,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-MASTER-SOVEREIGN-8.3";
+    const ORDER_ID = "MM-MASTER-SOVEREIGN-8.4";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -126,7 +126,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_GREEN } }
     };
 
-    const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K', customTitleHpt: number = 45, headerRowHpt: number = 120) => {
+    const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K', customTitleHpt: number = 45, headerRowHpt: number = 140) => {
         const ribbonData = [
             [{ v: "◀ BACK TO CONSOLE", l: { Target: "#'HOME_CONSOLE'!A1" }, s: navStyle }],
             [{ v: `  ${title.toUpperCase()}`, s: ribbonHeaderStyle }]
@@ -148,7 +148,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 2 }];
         
-        // HARDENED ROW HEIGHTS
         ws['!rows'] = [{ hpt: 25 }, { hpt: customTitleHpt }, { hpt: 15 }, { hpt: headerRowHpt }];
         for(let r = 4; r < 1000; r++) {
             ws['!rows'][r] = { hpt: 25 };
@@ -174,7 +173,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v8.3 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v8.4 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -279,7 +278,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const setupWs = utils.aoa_to_sheet(branchSetupData);
     setupWs['!cols'] = [12, 35, ...packChecklists.map(() => 25), 15, 15].map((w, i) => ({ wch: w }));
-    addSovereignRibbon(setupWs, "Branch Master Setup", utils.encode_col(facilityHeaders.length - 1), 25, 120);
+    addSovereignRibbon(setupWs, "Branch Master Setup", utils.encode_col(facilityHeaders.length - 1));
     utils.book_append_sheet(wb, setupWs, "BRANCH_MASTER");
 
     // --- 03. MISSION LEDGER ---
@@ -337,7 +336,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const pData: any[][] = [[], [], [], pHeaders];
     
-    // HARDENED 8-ROLE MATRIX
     const roles8 = [
         "COO / Owner", 
         "General Manager", 
@@ -430,5 +428,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(healthWs, "Performance Analytics", 'E');
     utils.book_append_sheet(wb, healthWs, "BUSINESS_HEALTH");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_8.3.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_8.4.xlsx`);
 }

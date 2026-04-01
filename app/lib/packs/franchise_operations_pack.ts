@@ -7,7 +7,7 @@ export const franchise_operations_pack: PremiumPack = {
     priceINR: 799,
     priceUSD: 9,
     category: "Franchise",
-    description: "The definitive Sovereign v8.3 engine for multi-unit groups. Standardizing 150+ control points from Royalty protection to brand standards.",
+    description: "The definitive Sovereign v8.4 engine for multi-unit groups. Standardizing 150+ control points from Royalty protection to brand standards.",
     heroHeadline: "Scale Your Brand Without Losing Control",
     heroSubheadline: "Track every outlet, monitor brand standards, and protect your royalty stream—across 150+ technical control points.",
     pricingUrgency: "A single failed outlet or one brand-damaging incident costs 100x more than this system.",

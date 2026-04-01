@@ -7,7 +7,7 @@ export const hotels_and_resorts: PremiumPack = {
     priceINR: 799,
     priceUSD: 9,
     category: "Hospitality",
-    description: "The definitive Sovereign v8.3 engine for luxury hotels and resorts. Hardening 250+ technical control points across Front Office, Housekeeping, Engineering, and Events.",
+    description: "The definitive Sovereign v8.4 engine for luxury hotels and resorts. Hardening 250+ technical control points across Front Office, Housekeeping, Engineering, and Events.",
     heroHeadline: "Eliminate Guest Safety Gaps and Viral Reputation Damage",
     heroSubheadline: "Track 250+ technical control points across Front Office, Housekeeping, Engineering, Events, and ORM—even when you’re not on property.",
     pricingUrgency: "One safety incident or a single negative viral review costs 100x more than this entire system.",
