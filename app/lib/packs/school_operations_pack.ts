@@ -7,7 +7,7 @@ export const school_operations_pack: PremiumPack = {
     priceINR: 799,
     priceUSD: 9,
     category: "Education",
-    description: "No monthly subscriptions. One-time investment for a lifetime of command. Sovereign v4.4 is the safeguard for campus safety.",
+    description: "No monthly subscriptions. One-time investment for a lifetime of command. Sovereign v8.3 is the safeguard for campus safety.",
     heroHeadline: "Prevent Campus Tragedies and Administrative Chaos",
     heroSubheadline: "Track transport safety, monitor playground risks, and stay in control of student welfare—across 100+ technical points.",
     pricingUrgency: "In education, a single safety 'never event' is an institutional catastrophe.",
@@ -25,14 +25,14 @@ export const school_operations_pack: PremiumPack = {
     ],
     checklists: [
         {
-            title: "Strategic Governance",
-            department: "Admin",
+            title: "Board & Trustee Governance",
+            department: "Executive",
             frequency: "Weekly",
             role: "COO / Owner",
             summary: "Campus-wide safety and performance oversight.",
             icon: "crown",
             tasks: [
-                { id: "SC-EXE-01", description: "Review Transport Incident alerts for the week.", priority: "High", riskLevel: "High", consequence: "Institutional failure.", proof: "Alert Log" }
+                { id: "SC-EXE-01", description: "Review Transport Incident alerts for the week.", priority: "High", riskLevel: "High", consequence: "Institutional negligence liability.", proof: "Alert Log", trainerNotes: "Check GPS speed violation history." }
             ]
         },
         {
@@ -43,40 +43,40 @@ export const school_operations_pack: PremiumPack = {
             summary: "Manages student movement and amenities.",
             icon: "school",
             tasks: [
-                { id: "SC-OPS-01", description: "Verify arrival parity for all teaching staff.", priority: "High", riskLevel: "Low", consequence: "Unsupervised classrooms.", proof: "Attendance Log" }
+                { id: "SC-OPS-01", description: "Verify arrival parity for all teaching staff.", priority: "High", riskLevel: "Low", consequence: "Unsupervised classrooms.", proof: "Attendance Log", trainerNotes: "Assign stand-by teachers by 8:15 AM." }
             ]
         },
         {
-            title: "Fee & Finance Shield",
+            title: "Fee & finance Shield",
             department: "Finance",
             frequency: "Monthly",
-            role: "Accountant",
-            summary: "Protects the school's income and vendor payouts.",
+            role: "Finance & Cashier",
+            summary: "Protects the school's income.",
             icon: "banknote",
             tasks: [
-                { id: "SC-FIN-01", description: "Reconcile fee collection portal against bank deposits.", priority: "High", riskLevel: "High", consequence: "Financial leakage.", proof: "Bank Note" }
+                { id: "SC-FIN-01", description: "Reconcile fee collection portal against bank deposits.", priority: "High", riskLevel: "High", consequence: "Revenue loss and accounting fraud.", proof: "Bank Note", trainerNotes: "Audit digital vs. physical receipts." }
             ]
         },
         {
             title: "Perimeter & Fire Safety",
-            department: "Security",
+            department: "Safety",
             frequency: "Daily",
             role: "EHS Officer",
             summary: "Ensures a safe campus perimeter.",
             icon: "hard-hat",
             tasks: [
-                { id: "SC-EHS-01", description: "Test campus PA system for emergency announcements.", priority: "High", riskLevel: "High", consequence: "Fatal communication lag.", proof: "Sound Test" }
+                { id: "SC-EHS-01", description: "Test campus PA system for emergency announcements.", priority: "High", riskLevel: "High", consequence: "Communication lag during crisis.", proof: "Sound Test", trainerNotes: "Test from different zones daily." }
             ]
         },
         {
-            title: "Teacher Certifications",
+            title: "POCSO & Certifications",
             department: "HR",
             frequency: "Monthly",
             role: "HR Manager",
             summary: "Tracks legal and educational competency.",
             icon: "graduation-cap",
             tasks: [
-                { id: "SC-HR-01", description: "Verify POCSO and child-protection training logs.", priority: "High", riskLevel: "High", consequence: "Severe legal liability.", proof: "Training File" }
+                { id: "SC-HR-01", description: "Verify POCSO and child-protection training logs.", priority: "High", riskLevel: "High", consequence: "Severe legal and moral liability.", proof: "Training File", trainerNotes: "100% staff attendance mandatory." }
             ]
         },
         {
@@ -87,7 +87,7 @@ export const school_operations_pack: PremiumPack = {
             summary: "Governs Science labs and IT zones.",
             icon: "test-tube",
             tasks: [
-                { id: "SC-TEC-01", description: "Inspect lab gas lines for leaks and valve integrity.", priority: "High", riskLevel: "High", consequence: "Campus explosion.", proof: "Pressure Log" }
+                { id: "SC-TEC-01", description: "Inspect lab gas lines for leaks and valve integrity.", priority: "High", riskLevel: "High", consequence: "Campus explosion hazard.", proof: "Pressure Log", trainerNotes: "Use soap-bubble test." }
             ]
         },
         {
@@ -98,7 +98,7 @@ export const school_operations_pack: PremiumPack = {
             summary: "Protects reputation and parent feedback.",
             icon: "megaphone",
             tasks: [
-                { id: "SC-CX-01", description: "Resolve high-priority parent emails in <4 hours.", priority: "Medium", riskLevel: "Low", consequence: "Viral complaint.", proof: "Inbox Status" }
+                { id: "SC-CX-01", description: "Resolve high-priority parent emails in <4 hours.", priority: "Medium", riskLevel: "Low", consequence: "Viral parent complaints.", proof: "Inbox Status", trainerNotes: "Escalate sensitive issues to Principal." }
             ]
         },
         {
@@ -109,7 +109,7 @@ export const school_operations_pack: PremiumPack = {
             summary: "Zero-fail transit protocols.",
             icon: "bus",
             tasks: [
-                { id: "SC-TRA-01", description: "Mandatory 'Empty Bus Walkthrough' at end of trip.", priority: "High", riskLevel: "High", consequence: "Child left behind (Fatal).", proof: "Sign-off" }
+                { id: "SC-TRA-01", description: "Mandatory 'Empty Bus Walkthrough' at end of trip.", priority: "High", riskLevel: "High", consequence: "Child left behind (Fatal).", proof: "Sign-off", trainerNotes: "Touch the back seat physically." }
             ]
         }
     ]

@@ -32,7 +32,7 @@ export const facility_management_blueprint: PremiumPack = {
             summary: "Asset health and liability oversight.",
             icon: "crown",
             tasks: [
-                { id: "FM-EXE-01", description: "Review major incident status across property group.", priority: "High", riskLevel: "High", consequence: "Escalated liability.", proof: "Incident Audit" }
+                { id: "FM-EXE-01", description: "Review major incident status across property group.", priority: "High", riskLevel: "High", consequence: "Escalated liability and asset damage.", proof: "Incident Audit", trainerNotes: "Check 'Root Cause' for all P1s." }
             ]
         },
         {
@@ -43,18 +43,18 @@ export const facility_management_blueprint: PremiumPack = {
             summary: "Hourly hygiene command for public zones.",
             icon: "sparkles",
             tasks: [
-                { id: "FM-JAN-01", description: "Audit common area restroom cleaning frequency.", priority: "High", riskLevel: "Low", consequence: "Occupant complaints.", proof: "Hourly Sheet" }
+                { id: "FM-JAN-01", description: "Audit common area restroom cleaning frequency.", priority: "High", riskLevel: "Low", consequence: "Immediate occupant dissatisfaction.", proof: "Hourly Sheet", trainerNotes: "Target < 60 min intervals." }
             ]
         },
         {
             title: "Utility Economics",
             department: "Finance",
             frequency: "Daily",
-            role: "Accountant",
+            role: "Finance & Cashier",
             summary: "Tracks energy and utility efficiency.",
             icon: "zap",
             tasks: [
-                { id: "FM-UTIL-01", description: "Log main KWH meter reading and compare to baseline.", priority: "Medium", riskLevel: "Low", consequence: "Energy waste.", proof: "Meter Log" }
+                { id: "FM-UTIL-01", description: "Log main KWH meter reading and compare to baseline.", priority: "Medium", riskLevel: "Low", consequence: "Energy waste and cost blowouts.", proof: "Meter Log", trainerNotes: "Check at midnight daily." }
             ]
         },
         {
@@ -65,7 +65,7 @@ export const facility_management_blueprint: PremiumPack = {
             summary: "Protects the physical asset and occupants.",
             icon: "shield-check",
             tasks: [
-                { id: "FM-SEC-01", description: "Test perimeter electric fence / alarm system.", priority: "High", riskLevel: "High", consequence: "Security breach.", proof: "Test Note" }
+                { id: "FM-SEC-01", description: "Test perimeter electric fence / alarm system.", priority: "High", riskLevel: "High", consequence: "Security breach and intruder risk.", proof: "Test Note", trainerNotes: "Simulate a breach daily." }
             ]
         },
         {
@@ -76,7 +76,7 @@ export const facility_management_blueprint: PremiumPack = {
             summary: "Ensures technical team certifications.",
             icon: "graduation-cap",
             tasks: [
-                { id: "FM-HR-01", description: "Verify LOTO and High-Voltage certifications for engineers.", priority: "High", riskLevel: "High", consequence: "Fatal industrial accident.", proof: "Cert File" }
+                { id: "FM-HR-01", description: "Verify LOTO and High-Voltage certifications for engineers.", priority: "High", riskLevel: "High", consequence: "Fatal industrial accidents.", proof: "Cert File", trainerNotes: "No certificate, No work." }
             ]
         },
         {
@@ -84,10 +84,10 @@ export const facility_management_blueprint: PremiumPack = {
             department: "Engineering",
             frequency: "Daily",
             role: "Technical Lead",
-            summary: "HVAC, Boiler, Generator, and Electrical vitals.",
+            summary: "HVAC, Boiler, and Generator vitals.",
             icon: "wrench",
             tasks: [
-                { id: "FM-ENG-01", description: "Inspect backup generator (DG) and log fuel levels.", priority: "High", riskLevel: "High", consequence: "Blackout.", proof: "Fuel Log" }
+                { id: "FM-ENG-01", description: "Inspect backup generator (DG) and log fuel levels.", priority: "High", riskLevel: "High", consequence: "Total facility blackout.", proof: "Fuel Log", trainerNotes: "Target > 75% fuel tank." }
             ]
         },
         {
@@ -98,18 +98,18 @@ export const facility_management_blueprint: PremiumPack = {
             summary: "Monitors third-party performance parity.",
             icon: "file-check",
             tasks: [
-                { id: "FM-VEN-01", description: "Verify vendor attendance logs against contract SLA.", priority: "Medium", riskLevel: "Low", consequence: "Paying for unrendered services.", proof: "SLA Match" }
+                { id: "FM-VEN-01", description: "Verify vendor attendance logs against contract SLA.", priority: "Medium", riskLevel: "Low", consequence: "Paying for unrendered services.", proof: "SLA Match", trainerNotes: "Deduct from billing for gaps." }
             ]
         },
         {
-            title: "Mail & Logistics",
+            title: "Internal Logistics",
             department: "Logistics",
             frequency: "Daily",
             role: "Logistics Lead",
             summary: "Internal distribution command.",
             icon: "package",
             tasks: [
-                { id: "FM-LOG-01", description: "Audit high-priority parcel register for 100% handover.", priority: "Medium", riskLevel: "Low", consequence: "Lost internal assets.", proof: "Log Review" }
+                { id: "FM-LOG-01", description: "Audit high-priority parcel register for 100% handover.", priority: "Medium", riskLevel: "Low", consequence: "Lost institutional assets.", proof: "Log Review", trainerNotes: "Signature required for all items." }
             ]
         }
     ]

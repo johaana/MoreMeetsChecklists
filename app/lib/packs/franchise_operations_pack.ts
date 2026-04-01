@@ -7,7 +7,7 @@ export const franchise_operations_pack: PremiumPack = {
     priceINR: 799,
     priceUSD: 9,
     category: "Franchise",
-    description: "The definitive Sovereign v4.4 engine for multi-unit groups. Standardizing 150+ control points from Royalty protection to brand standards.",
+    description: "The definitive Sovereign v8.3 engine for multi-unit groups. Standardizing 150+ control points from Royalty protection to brand standards.",
     heroHeadline: "Scale Your Brand Without Losing Control",
     heroSubheadline: "Track every outlet, monitor brand standards, and protect your royalty stream—across 150+ technical control points.",
     pricingUrgency: "A single failed outlet or one brand-damaging incident costs 100x more than this system.",
@@ -32,7 +32,7 @@ export const franchise_operations_pack: PremiumPack = {
             summary: "Group-wide performance and brand protection.",
             icon: "crown",
             tasks: [
-                { id: "FR-EXE-01", description: "Audit royalty payout status across all branches.", priority: "High", riskLevel: "Medium", consequence: "Income loss.", proof: "Ledger Review" }
+                { id: "FR-EXE-01", description: "Audit royalty payout status across all branches.", priority: "High", riskLevel: "Medium", consequence: "Unrealized income leakage.", proof: "Ledger Review", trainerNotes: "Cross-check with bank captures." }
             ]
         },
         {
@@ -43,18 +43,18 @@ export const franchise_operations_pack: PremiumPack = {
             summary: "Ensures brand consistency across locations.",
             icon: "eye",
             tasks: [
-                { id: "FR-OPS-01", description: "Verify signage illumination and condition.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution.", proof: "Photo" }
+                { id: "FR-OPS-01", description: "Verify signage illumination and condition.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution and poor visibility.", proof: "Photo", trainerNotes: "Check at sunset daily." }
             ]
         },
         {
             title: "Royalty & Financials",
             department: "Finance",
             frequency: "Daily",
-            role: "Accountant",
+            role: "Finance & Cashier",
             summary: "Protects the franchise revenue pipeline.",
             icon: "banknote",
             tasks: [
-                { id: "FR-FIN-01", description: "Reconcile aggregator gross against POS report.", priority: "High", riskLevel: "High", consequence: "Commission leakage.", proof: "Match Note" }
+                { id: "FR-FIN-01", description: "Reconcile aggregator gross against POS report.", priority: "High", riskLevel: "High", consequence: "Undetected commission errors.", proof: "Match Note", trainerNotes: "Report > 1% variance." }
             ]
         },
         {
@@ -65,7 +65,7 @@ export const franchise_operations_pack: PremiumPack = {
             summary: "Regulatory and occupational safety command.",
             icon: "hard-hat",
             tasks: [
-                { id: "FR-EHS-01", description: "Verify fire extinguisher pressure and expiry.", priority: "High", riskLevel: "High", consequence: "Catastrophe.", proof: "Gauge Log" }
+                { id: "FR-EHS-01", description: "Verify fire extinguisher pressure and expiry.", priority: "High", riskLevel: "High", consequence: "Total liability in case of fire.", proof: "Gauge Log", trainerNotes: "Tag and date every cylinder." }
             ]
         },
         {
@@ -76,7 +76,7 @@ export const franchise_operations_pack: PremiumPack = {
             summary: "Tracks franchisee staff competency.",
             icon: "graduation-cap",
             tasks: [
-                { id: "FR-HR-01", description: "Update training matrix for current roster.", priority: "High", riskLevel: "Medium", consequence: "Service quality drift.", proof: "Matrix File" }
+                { id: "FR-HR-01", description: "Update training matrix for current roster.", priority: "High", riskLevel: "Medium", consequence: "Service quality drift.", proof: "Matrix File", trainerNotes: "Verify 'Brand Standard' test scores." }
             ]
         },
         {
@@ -87,7 +87,7 @@ export const franchise_operations_pack: PremiumPack = {
             summary: "Protects the digital backbone.",
             icon: "laptop",
             tasks: [
-                { id: "FR-IT-01", description: "Test POS backup and internet failover.", priority: "High", riskLevel: "High", consequence: "Inability to bill.", proof: "Test Note" }
+                { id: "FR-IT-01", description: "Test POS backup and internet failover.", priority: "High", riskLevel: "High", consequence: "Inability to bill during peak hours.", proof: "Test Note", trainerNotes: "Test with main router off." }
             ]
         },
         {
@@ -98,7 +98,7 @@ export const franchise_operations_pack: PremiumPack = {
             summary: "Governs local branch promotions.",
             icon: "megaphone",
             tasks: [
-                { id: "FR-MKT-01", description: "Log current promotional materials against schedule.", priority: "Medium", riskLevel: "Low", consequence: "Missed sales.", proof: "Campaign Log" }
+                { id: "FR-MKT-01", description: "Log current promotional materials against schedule.", priority: "Medium", riskLevel: "Low", consequence: "Missed sales opportunities.", proof: "Campaign Log", trainerNotes: "Replace expired posters immediately." }
             ]
         },
         {
@@ -109,7 +109,7 @@ export const franchise_operations_pack: PremiumPack = {
             summary: "Ensures sourcing integrity.",
             icon: "truck",
             tasks: [
-                { id: "FR-SUP-01", description: "Audit incoming stock against approved vendor list.", priority: "High", riskLevel: "High", consequence: "Compromised product.", proof: "Receiving Note" }
+                { id: "FR-SUP-01", description: "Audit incoming stock against approved vendor list.", priority: "High", riskLevel: "High", consequence: "Compromised product and legal risk.", proof: "Receiving Note", trainerNotes: "Unauthorized vendors = red alert." }
             ]
         }
     ]

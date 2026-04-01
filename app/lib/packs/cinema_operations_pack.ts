@@ -7,13 +7,13 @@ export const cinema_operations_pack: PremiumPack = {
     priceINR: 799,
     priceUSD: 9,
     category: "Entertainment & Events",
-    description: "The Sovereign v4.4 engine for cinema groups. Hardening 150+ control points from Projection QC to Concession Yield.",
+    description: "The Sovereign v8.3 engine for cinema groups. Hardening 150+ control points from Projection QC to Concession Yield.",
     heroHeadline: "Stop Projection Failures and Catastrophic Safety Gaps",
-    heroSubheadline: "Track technical readiness, auditorium standards, and concesssion yields—across 150+ control points.",
+    heroSubheadline: "Track technical readiness, auditorium standards, and concession yields—across 150+ control points.",
     pricingUrgency: "A single projection failure during a blockbuster opening costs 100x more than this entire system.",
     consultingAnchor: 5000,
     icon: "popcorn",
-    badgeText: "V4.4 SOVEREIGN",
+    badgeText: "V8.3 SOVEREIGN",
     badgeVariant: "accent",
     whoIsItFor: ["Multiplex Owners", "Operations Heads", "General Managers", "Technical Directors"],
     sampleItems: [
@@ -32,7 +32,7 @@ export const cinema_operations_pack: PremiumPack = {
             summary: "Strategic multi-unit oversight.",
             icon: "crown",
             tasks: [
-                { id: "CIN-EXE-01", description: "Audit group-wide F&B margin vs. ticket sales trends.", priority: "High", riskLevel: "Medium", consequence: "Undetected group inefficiency.", proof: "Financial Shield" }
+                { id: "CIN-EXE-01", description: "Audit group-wide F&B margin vs. ticket sales trends.", priority: "High", riskLevel: "Medium", consequence: "Undetected group inefficiency.", proof: "Financial Shield", trainerNotes: "Compare ATP vs. SPP weekly." }
             ]
         },
         {
@@ -43,18 +43,18 @@ export const cinema_operations_pack: PremiumPack = {
             summary: "Premium service standard governance.",
             icon: "crown",
             tasks: [
-                { id: "CIN-VIP-01", description: "Verify recliner motor functionality in VIP rows.", priority: "Medium", riskLevel: "Low", consequence: "Refund request.", proof: "Visual Test" }
+                { id: "CIN-VIP-01", description: "Verify recliner motor functionality in VIP rows.", priority: "Medium", riskLevel: "Low", consequence: "Refund requests and CX drop.", proof: "Visual Test", trainerNotes: "Test before doors open." }
             ]
         },
         {
             title: "Concession Yield Logic",
             department: "Finance",
             frequency: "Daily",
-            role: "Accountant",
+            role: "Finance & Cashier",
             summary: "Protects high-margin F&B revenue.",
             icon: "banknote",
             tasks: [
-                { id: "CIN-FNB-01", description: "Reconcile raw popcorn corn-to-bucket yield.", priority: "High", riskLevel: "Low", consequence: "Profit leakage.", proof: "Yield Sheet" }
+                { id: "CIN-FNB-01", description: "Reconcile raw popcorn corn-to-bucket yield.", priority: "High", riskLevel: "Low", consequence: "Massive profit leakage.", proof: "Yield Sheet", trainerNotes: "Target yield: 1:40 ratio." }
             ]
         },
         {
@@ -65,18 +65,18 @@ export const cinema_operations_pack: PremiumPack = {
             summary: "Ensures safe evacuation and fire-readiness.",
             icon: "hard-hat",
             tasks: [
-                { id: "CIN-EHS-01", description: "Verify all auditorium fire-exits are unlocked and clear.", priority: "High", riskLevel: "High", consequence: "Institutional catastrophe.", proof: "Patrol Log" }
+                { id: "CIN-EHS-01", description: "Verify all auditorium fire-exits are unlocked and clear.", priority: "High", riskLevel: "High", consequence: "Total institutional catastrophe (Fatal).", proof: "Patrol Log", trainerNotes: "Physical check of push-bars." }
             ]
         },
         {
-            title: "Staff Certification",
+            title: "Personnel Certification",
             department: "HR",
             frequency: "Monthly",
             role: "HR Manager",
             summary: "Staff certification and grooming.",
             icon: "users",
             tasks: [
-                { id: "CIN-HR-01", description: "Verify grooming standards for front-of-house staff.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution.", proof: "Visual Audit" }
+                { id: "CIN-HR-01", description: "Verify grooming standards for front-of-house staff.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution.", proof: "Visual Audit", trainerNotes: "Check uniforms at briefing." }
             ]
         },
         {
@@ -87,7 +87,7 @@ export const cinema_operations_pack: PremiumPack = {
             summary: "Zero-fail protocols for digital media.",
             icon: "projector",
             tasks: [
-                { id: "CIN-PRO-01", description: "Pre-Show: Test DCP ingest and KDM validity 4h pre-release.", priority: "High", riskLevel: "High", consequence: "Black screen.", proof: "System Log" }
+                { id: "CIN-PRO-01", description: "Pre-Show: Test DCP ingest and KDM validity.", priority: "High", riskLevel: "High", consequence: "Black screen during blockbuster.", proof: "System Log", trainerNotes: "Check keys 4h before show." }
             ]
         },
         {
@@ -98,7 +98,7 @@ export const cinema_operations_pack: PremiumPack = {
             summary: "Reputation and ticketing integrity.",
             icon: "globe",
             tasks: [
-                { id: "CIN-BOX-01", description: "Review response: 100% BMS/Google review pulse.", priority: "High", riskLevel: "Medium", consequence: "Ranking drop.", proof: "Review Dashboard" }
+                { id: "CIN-BOX-01", description: "Review response: 100% BMS/Google review pulse.", priority: "High", riskLevel: "Medium", consequence: "Ranking drop and lost bookings.", proof: "Review Dashboard", trainerNotes: "Reply to all ratings < 24h." }
             ]
         },
         {
@@ -109,7 +109,7 @@ export const cinema_operations_pack: PremiumPack = {
             summary: "Sanitation infrastructure command.",
             icon: "sparkles",
             tasks: [
-                { id: "CIN-HK-01", description: "Audit auditorium seat-cleaning between shows.", priority: "High", riskLevel: "Low", consequence: "1-star review driver.", proof: "Sweep Log" }
+                { id: "CIN-HK-01", description: "Audit auditorium seat-cleaning between shows.", priority: "High", riskLevel: "Low", consequence: "Primary driver of negative reviews.", proof: "Sweep Log", trainerNotes: "Check cup-holders for stickiness." }
             ]
         }
     ]
