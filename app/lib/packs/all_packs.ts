@@ -22,6 +22,7 @@ import { manufacturing_operations_ehs_pack } from "./manufacturing_operations_eh
 import { food_manufacturing_ops } from "./food_manufacturing_ops";
 import { bakery_confectionery_pack } from "./bakery_confectionery_pack";
 import { animal_shelter_pack } from "./animal_shelter_pack";
+import { pharmacy_ops_pack } from "./pharmacy_ops_pack";
 import type { PremiumPack } from "../premium-packs";
 
 export const allPacks: PremiumPack[] = [
@@ -48,4 +49,5 @@ export const allPacks: PremiumPack[] = [
     food_manufacturing_ops,
     bakery_confectionery_pack,
     animal_shelter_pack,
+    pharmacy_ops_pack
 ];
