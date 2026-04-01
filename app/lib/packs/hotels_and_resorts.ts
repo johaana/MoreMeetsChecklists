@@ -20,7 +20,7 @@ export const hotels_and_resorts: PremiumPack = {
     sampleItems: [
         { text: "<strong>Front Office Integrity</strong>: Zero-fail guest ID compliance and PMS-to-Police registration sync.", icon: "concierge-bell" },
         { text: "<strong>Housekeeping Command</strong>: Hourly public area audits and deep-clean room inspection scores.", icon: "bed" },
-        { text: "<strong>Wedding & Event Readiness</strong>: Pre-event AV testing and ballroom floor safety walkthroughs.", icon: "calendar-heart" },
+        { text: "<strong>Online Portals (MMT/MMT/Airbnb)</strong>: Rate parity audits and channel manager synchronization.", icon: "globe" },
         { text: "<strong>Engineering (MEP) Vitals</strong>: Daily Chiller, Boiler, and Generator fuel/load logging.", icon: "wrench" },
         { text: "<strong>Travel Desk & Valet Safety</strong>: Driver sobriety checks and valet key-vault reconciliations.", icon: "car" },
         { text: "<strong>Reputation Shield (ORM)</strong>: 24-hour response mandatory for all OTA and Google reviews.", icon: "star" }
@@ -31,25 +31,26 @@ export const hotels_and_resorts: PremiumPack = {
             department: "Executive",
             frequency: "Weekly",
             role: "COO / Owner",
-            summary: "High-level strategic oversight of property risk.",
+            summary: "High-level strategic oversight of property risk and channel parity.",
             icon: "crown",
             tasks: [
                 { id: "HR-EXE-01", description: "Review 'Empire Mood' and ADR performance across all locations.", priority: "High", riskLevel: "Low", consequence: "Operational drift and financial inconsistency.", proof: "Dashboard Review", trainerNotes: "Check ADR vs. RevPAR weekly." },
                 { id: "HR-EXE-02", description: "Audit Night Audit report against bank captures.", priority: "High", riskLevel: "High", consequence: "Revenue theft and billing errors.", proof: "Audit Sheet", trainerNotes: "Reconcile CC terminals at 3 AM." },
-                { id: "HR-EXE-03", description: "Verify insurance validity for Public Liability and Fire.", priority: "High", riskLevel: "High", consequence: "Total financial ruin during a major incident.", proof: "Policy File", trainerNotes: "Check expiry 60 days early." }
+                { id: "HR-EXE-03", description: "Verify insurance validity for Public Liability and Fire.", priority: "High", riskLevel: "High", consequence: "Total financial ruin during a major incident.", proof: "Policy File", trainerNotes: "Check expiry 60 days early." },
+                { id: "HR-EXE-04", description: "Audit MMT/Goibibo commission invoices vs. actual stays.", priority: "High", riskLevel: "Medium", consequence: "Overpaying commissions on cancelled/no-show bookings.", proof: "Ledger Match", trainerNotes: "Flag 'No-Show' disputes by 5th of every month." }
             ]
         },
         {
-            title: "Front Office & Reception",
+            title: "Front Office & Reservations",
             department: "Front Desk",
             frequency: "Daily",
             role: "General Manager",
-            summary: "Ensures legal compliance and arrival readiness.",
+            summary: "Ensures legal compliance, OTA voucher verification, and arrival readiness.",
             icon: "concierge-bell",
             tasks: [
                 { id: "HR-FO-01", description: "Validate guest ID compliance and police registration (C-Form).", priority: "High", riskLevel: "High", consequence: "Criminal legal liability and license loss.", proof: "Compliance Log", trainerNotes: "Scan original IDs only." },
-                { id: "HR-FO-02", description: "Confirm check-in desk backup for group arrival blocks.", priority: "High", riskLevel: "Medium", consequence: "Lobby congestion and poor CSAT.", proof: "Roster Audit", trainerNotes: "Deploy extra staff if > 5 arrivals/min." },
-                { id: "HR-FO-03", description: "Reconcile 'Open Folios' for departures in < 2 hours.", priority: "Medium", riskLevel: "Low", consequence: "Revenue loss from unbilled charges.", proof: "PMS Report", trainerNotes: "Check for pending mini-bar inputs." }
+                { id: "HR-FO-02", description: "Verify MMT/Goibibo/Airbnb booking vouchers on arrival.", priority: "High", riskLevel: "Medium", consequence: "Guest disputes and check-in delays.", proof: "PMS Match", trainerNotes: "Cross-check voucher ID with PMS booking notes." },
+                { id: "HR-FO-03", description: "Confirm Airbnb pre-arrival messaging 'Welcome Protocol' is sent.", priority: "Medium", riskLevel: "Low", consequence: "Poor communication scores on Airbnb.", proof: "App Inbox", trainerNotes: "Include parking and entry instructions." }
             ]
         },
         {
@@ -102,15 +103,16 @@ export const hotels_and_resorts: PremiumPack = {
             ]
         },
         {
-            title: "Banquets & Corporate Events",
-            department: "Events",
+            title: "Digital Portals & Reputation",
+            department: "Admin",
             frequency: "Daily",
             role: "Customer Experience Lead",
-            summary: "Protects reputation during high-visibility events.",
-            icon: "calendar-heart",
+            summary: "Governs online portals (MMT, Goibibo, Airbnb) and reputation.",
+            icon: "globe",
             tasks: [
-                { id: "HR-EVT-01", description: "Banquet Tech Recce: Test projector and mics pre-event.", priority: "High", riskLevel: "High", consequence: "Major event failure and refund claim.", proof: "Tech Log", trainerNotes: "Test guest's own laptop too." },
-                { id: "HR-EVT-02", description: "Review Response Pulse: Reply to all Google reviews <24h.", priority: "High", riskLevel: "Medium", consequence: "Ranking drop on OTAs.", proof: "Dashboard", trainerNotes: "Personalize every guest reply." }
+                { id: "HR-PORT-01", description: "Rate Parity Audit: Check MMT/Goibibo vs. Direct Site.", priority: "High", riskLevel: "High", consequence: "Platform 'Deprioritization' and lower search visibility.", proof: "Parity Check", trainerNotes: "Rates must be within 1% variance." },
+                { id: "HR-PORT-02", description: "Airbnb/MMT Review Response: Reply to all portal feedback <24h.", priority: "High", riskLevel: "Medium", consequence: "Ranking drop on portals.", proof: "Dashboard", trainerNotes: "Personalize every guest reply; mention their specific feedback." },
+                { id: "HR-PORT-03", description: "Inventory Sync: Verify Room Availability across all channels.", priority: "High", riskLevel: "High", consequence: "Overbooking and refund penalties from OTAs.", proof: "Channel Mgr Sync", trainerNotes: "Manual check of last 5 rooms at peak occupancy." }
             ]
         },
         {

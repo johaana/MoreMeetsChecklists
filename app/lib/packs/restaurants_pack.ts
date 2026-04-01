@@ -5,7 +5,7 @@ export const restaurants: PremiumPack = {
     id: 'restaurants',
     title: "Restaurant Operating System",
     category: "Hospitality",
-    description: "The definitive Sovereign v8.5 engine for multi-unit food and beverage groups. Standardizing 160+ technical control points from Owner vision to kitchen hygiene.",
+    description: "The definitive Sovereign v8.5 engine for multi-unit food and beverage groups. Standardizing 160 technical control points from Owner vision to kitchen hygiene.",
     heroHeadline: "Standardize Your Kitchen. Protect Your Margins.",
     heroSubheadline: "The professional plug for revenue leakage and food safety risks—across every branch in your group.",
     pricingUrgency: "Preventing a single foodborne illness lawsuit or one major theft saves 100x the cost of this system.",
@@ -27,7 +27,7 @@ export const restaurants: PremiumPack = {
         { text: "<strong>Staff Performance & Certs</strong>: Training matrix and health certification audits for 100% compliance.", icon: "users" },
         { text: "<strong>Maintenance & Equipment</strong>: HVAC, POS Internet, and Kitchen hardware uptime logs.", icon: "wrench" },
         { text: "<strong>Digital ORM & Marketing</strong>: 24-hour response mandatory for all Google and social reviews.", icon: "star" },
-        { text: "<strong>Delivery & Logistics</strong>: Tamper-seal audits and aggregator sync for Zomato/Swiggy.", icon: "truck" }
+        { text: "<strong>Aggregator Logistics</strong>: Zomato/Swiggy payout reconciliation and menu availability sync.", icon: "truck" }
     ],
     checklists: [
         {
@@ -73,7 +73,7 @@ export const restaurants: PremiumPack = {
                 { id: "RES-KIT-03", description: "Audit date-stamping and FIFO compliance in all prep zones.", priority: "High", riskLevel: "High", consequence: "Serving expired product and regulatory non-compliance.", proof: "Visual Audit Note", trainerNotes: "Discard anything with missing or illegible labels immediately." },
                 { id: "RES-KIT-04", description: "Calibrate core thermometers using the ice-point test (0°C).", priority: "High", riskLevel: "Medium", consequence: "False safety readings leading to undercooked high-risk proteins.", proof: "Calibration Log", trainerNotes: "Probe must read exactly 0°C in an 80/20 ice-water slurry." },
                 { id: "RES-KIT-05", description: "Verify allergen segregation in dry store and prep areas.", priority: "High", riskLevel: "High", consequence: "Fatal allergic reaction and immediate business closure.", proof: "Walkthrough Note", trainerNotes: "Ensure color-coded boards and knives are used for nuts/shellfish." },
-                { id: "RES-KIT-06", description: "Inspect dishwashing machine: Temp 82°C / Chemical levels.", priority: "High", riskLevel: "High", consequence: "Greasy, unhygienic plates and spread of infections.", proof: "Dish Log", trainerNotes: "Final rinse must reach 82°C to kill bacteria effectively." },
+                { id: "RES-KIT-06", description: "Inspect dishwashing machine: Temp 82°C / Chemical levels.", priority: "High", riskLevel: "High", consequence: "Unhygienic plates and spread of infections.", proof: "Dish Log", trainerNotes: "Final rinse must reach 82°C to kill bacteria effectively." },
                 { id: "RES-KIT-07", description: "Audit personnel hygiene: nails, hairnets, and handwashing.", priority: "High", riskLevel: "Medium", consequence: "Physical contamination reaching the guest's plate.", proof: "Staff Briefing Log", trainerNotes: "Handwashing mandatory every 20 mins or after every task change." },
                 { id: "RES-KIT-08", description: "Check grease trap status and scheduled cleaning frequency.", priority: "Medium", riskLevel: "Low", consequence: "Foul odors and sewage backup in the kitchen area.", proof: "Cleaning Note", trainerNotes: "Professional cleaning required once every 15 days." },
                 { id: "RES-KIT-09", description: "Verify meat/poultry receiving temp is below 5°C.", priority: "High", riskLevel: "High", consequence: "Breaking the cold chain; accepting compromised bacteria-laden stock.", proof: "Receiving Log", trainerNotes: "Reject the entire batch if temp exceeds 7°C on arrival." },
@@ -103,7 +103,7 @@ export const restaurants: PremiumPack = {
                 { id: "RES-FIN-03", description: "Audit 'Void' and 'Discount' history for current shift.", priority: "High", riskLevel: "Medium", consequence: "Revenue leakage via unauthorized bill manipulation.", proof: "POS Audit Log", trainerNotes: "Every single void requires a manager's handwritten signature." },
                 { id: "RES-FIN-04", description: "Log daily kitchen waste weight and calculated value.", priority: "Medium", riskLevel: "Low", consequence: "Inflated CoGS and hidden operational inefficiency.", proof: "Waste Ledger", trainerNotes: "Target waste is < 1% of total daily sales." },
                 { id: "RES-FIN-05", description: "Verify opening and closing cash float accuracy.", priority: "High", riskLevel: "High", consequence: "Shortages and lack of accountability for the drawer.", proof: "Float Sheet", trainerNotes: "Denominations must be recorded individually." },
-                { id: "RES-FIN-06", description: "Check aggregator (Zomato/Swiggy) payouts vs. Dispatch logs.", priority: "High", riskLevel: "Medium", consequence: "Loss of income due to unrecorded cancellations.", proof: "Payout Reconcile", trainerNotes: "Flag any order marked 'Cancelled' that was actually sent." },
+                { id: "RES-FIN-06", description: "Check Zomato/Swiggy payouts vs. dispatched KOTs.", priority: "High", riskLevel: "Medium", consequence: "Loss of income due to unrecorded cancellations.", proof: "Payout Reconcile", trainerNotes: "Flag any order marked 'Cancelled' that was actually sent." },
                 { id: "RES-FIN-07", description: "Audit 'Complimentary' KOTs against manager guest notes.", priority: "Medium", riskLevel: "Medium", consequence: "Excessive freebies eroding net margins.", proof: "POS Report", trainerNotes: "Verify the reason for 'Comp' (e.g., Service failure)." },
                 { id: "RES-FIN-08", description: "Verify all purchase invoices are entered in the system in <24h.", priority: "Medium", riskLevel: "Low", consequence: "Inaccurate real-time inventory and skewed P&L.", proof: "Entry Log", trainerNotes: "Invoices must match physical receiving notes exactly." },
                 { id: "RES-FIN-09", description: "Audit POS 'Open Table' duration (Watch for long-open bills).", priority: "High", riskLevel: "Medium", consequence: "Table-skimming fraud where cash is pocketed.", proof: "Open Bill Log", trainerNotes: "Tables open > 3 hours are a high-risk red flag." },
@@ -218,11 +218,11 @@ export const restaurants: PremiumPack = {
             summary: "Protects the online brand reputation and governs local store marketing activities.",
             icon: "star",
             tasks: [
-                { id: "RES-CX-01", description: "Review Response Pulse: Reply to all Google reviews <24h.", priority: "High", riskLevel: "Medium", consequence: "Ranking drop and brand reputation damage.", proof: "Response Dashboard", trainerNotes: "Address 1-star reviews first with a personalized apology." },
+                { id: "RES-CX-01", description: "Review Response Pulse: Reply to all Swiggy/Zomato reviews <24h.", priority: "High", riskLevel: "Medium", consequence: "Ranking drop and brand reputation damage on aggregators.", proof: "Response Dashboard", trainerNotes: "Address 1-star reviews first with a personalized apology." },
                 { id: "RES-CX-02", description: "Verify Google Maps 'Live Status' and Opening Hours.", priority: "High", riskLevel: "Low", consequence: "Guests arriving to a 'Closed' store; lost revenue.", proof: "Mobile Check", trainerNotes: "Update hours immediately for public holidays." },
                 { id: "RES-CX-03", description: "Audit 'Social Media DMs' for booking inquiries.", priority: "Medium", riskLevel: "Low", consequence: "Lost revenue via unread Instagram/FB inquiries.", proof: "Inbox Status", trainerNotes: "Target < 30 minute response time." },
                 { id: "RES-CX-04", description: "Verify 'Marketing Materials' (Tent cards/Posters) setup.", priority: "Low", riskLevel: "Low", consequence: "Inconsistent promo messaging and lower upsells.", proof: "Visual Audit", trainerNotes: "Replace faded or torn posters immediately." },
-                { id: "RES-CX-05", description: "Check 'Digital Menu' price accuracy vs. POS.", priority: "High", riskLevel: "Medium", consequence: "Customer disputes and legal metrology violations.", proof: "Price Match", trainerNotes: "Check aggregator prices too." },
+                { id: "RES-CX-05", description: "Check Swiggy/Zomato price accuracy vs. POS menu.", priority: "High", riskLevel: "Medium", consequence: "Customer disputes and legal metrology violations.", proof: "Price Match", trainerNotes: "Ensure aggregator markups are consistent across platforms." },
                 { id: "RES-CX-06", description: "Review 'Customer Feedback Forms' for daily trends.", priority: "Medium", riskLevel: "Low", consequence: "Undetected drop in food or service quality.", proof: "Trend Log", trainerNotes: "Highlight recurring complaints in the GM briefing." },
                 { id: "RES-CX-07", description: "Verify 'Loyalty QR Codes' are functional on all tables.", priority: "Low", riskLevel: "Low", consequence: "Failure to capture guest data.", proof: "Scan Test", trainerNotes: "Test with a personal mobile phone." },
                 { id: "RES-CX-08", description: "Check 'Birthday/Anniversary' list for today's bookings.", priority: "Medium", riskLevel: "Low", consequence: "Missed opportunity for guest delight and loyalty.", proof: "Reservation Log", trainerNotes: "Notify the GM to greet the celebrant personally." },
@@ -241,7 +241,7 @@ export const restaurants: PremiumPack = {
             ]
         },
         {
-            title: "Delivery & Logistics",
+            title: "Delivery & Aggregators",
             department: "Logistics",
             frequency: "Daily",
             role: "Logistics Lead",
@@ -250,24 +250,24 @@ export const restaurants: PremiumPack = {
             tasks: [
                 { id: "RES-DEL-01", description: "Packaging Audit: Verify bags are tamper-sealed correctly.", priority: "High", riskLevel: "Medium", consequence: "Tampering claims and poor guest experience.", proof: "Visual Check", trainerNotes: "Use double-fold bag seals; no staples allowed." },
                 { id: "RES-DEL-02", description: "Reconcile aggregator dispatch against POS delivery logs.", priority: "High", riskLevel: "High", consequence: "Undetected commission leakage and theft.", proof: "Log Match", trainerNotes: "Check Zomato/Swiggy reconciliation daily." },
-                { id: "RES-DEL-03", description: "Monitor 'Rider TAT' (Ready to Pickup time).", priority: "Medium", riskLevel: "Low", consequence: "Cold food reaching the guest and rating drop.", proof: "TAT Dashboard", trainerNotes: "Alert Aggregator if riders are > 10 mins late." },
+                { id: "RES-DEL-03", description: "Monitor Swiggy/Zomato 'Ready-to-Pickup' TAT.", priority: "Medium", riskLevel: "Low", consequence: "Cold food reaching the guest and rating drop.", proof: "TAT Dashboard", trainerNotes: "Alert Aggregator if riders are > 10 mins late." },
                 { id: "RES-DEL-04", description: "Verify 'Cutlery & Napkin' inclusion per brand policy.", priority: "Low", riskLevel: "Low", consequence: "Negative reviews for missing basics.", proof: "Visual Check", trainerNotes: "Default should be 'Opt-out' unless requested." },
                 { id: "RES-DEL-05", description: "Inspect 'Delivery Dispatch Zone' for hygiene.", priority: "Medium", riskLevel: "Medium", consequence: "Contamination during the last mile.", proof: "Cleaning Log", trainerNotes: "Area must be sanitized every 4 hours." },
-                { id: "RES-DEL-06", description: "Check availability of 'Hot Bags' for internal fleet (if any).", priority: "High", riskLevel: "Medium", consequence: "Service failure for own-website orders.", proof: "Visual Check", trainerNotes: "Bags must be clean and free of odors." },
-                { id: "RES-DEL-07", description: "Verify 'Menu Item Availability' across all delivery apps.", priority: "High", riskLevel: "Medium", consequence: "High order cancellation rates.", proof: "App Check", trainerNotes: "Out-of-stock items must be 'turned off' instantly." },
+                { id: "RES-DEL-06", description: "Check Swiggy/Zomato 'Menu Out-of-Stock' status sync.", priority: "High", riskLevel: "Medium", consequence: "High order cancellation rates and platform penalties.", proof: "App Check", trainerNotes: "Items marked '86' in kitchen must be toggled OFF instantly." },
+                { id: "RES-DEL-07", description: "Verify 'Aggregator Tablet' volume is set to MAX.", priority: "High", riskLevel: "Medium", consequence: "Missed order notifications and delayed prep.", proof: "Device Check", trainerNotes: "Check every hour during lunch/dinner." },
                 { id: "RES-DEL-08", description: "Audit 'Delivery Feedback' specifically for spillages.", priority: "Medium", riskLevel: "Low", consequence: "Identifying poor packaging design/execution.", proof: "Feedback Review", trainerNotes: "Flag any 1-star 'Leaking' reviews." },
                 { id: "RES-DEL-09", description: "Check 'Tamper-Evident Label' stock levels.", priority: "Medium", riskLevel: "Low", consequence: "Inability to secure bags correctly.", proof: "Stock Check", trainerNotes: "Order when stock drops to < 2 days supply." },
                 { id: "RES-DEL-10", description: "Review 'Distance-based' performance analytics.", priority: "Low", riskLevel: "Low", consequence: "Operating in zones where food quality fails.", proof: "Logistics Report", trainerNotes: "Flag orders > 5km for quality testing." },
                 { id: "RES-DEL-11", description: "Verify 'Rider Hygiene' and courtesy at pickup point.", priority: "Low", riskLevel: "Low", consequence: "Negative brand perception.", proof: "Observation Log", trainerNotes: "Riders should not enter the kitchen." },
-                { id: "RES-DEL-12", description: "Audit 'Self-Fleet' fuel and maintenance logs.", priority: "High", riskLevel: "Medium", consequence: "Breakdowns during delivery peak.", proof: "Maint Log", trainerNotes: "Service bikes every 2,500km." },
+                { id: "RES-DEL-12", description: "Audit Swiggy/Zomato Payouts for unauthorized deductions.", priority: "High", riskLevel: "High", consequence: "Loss of profit via platform errors.", proof: "Payout Note", trainerNotes: "Reconcile 'Merchant Deductions' weekly." },
                 { id: "RES-DEL-13", description: "Check 'Rain Gear' availability for delivery team.", priority: "Medium", riskLevel: "Low", consequence: "Operational halt during monsoon.", proof: "Visual Check", trainerNotes: "Ensure 100% waterproof kits." },
-                { id: "RES-DEL-14", description: "Verify 'Aggregator Tablet' volume is set to MAX.", priority: "Medium", riskLevel: "Low", consequence: "Missed order notifications.", proof: "Device Check", trainerNotes: "Check every hour during lunch/dinner." },
+                { id: "RES-DEL-14", description: "Verify 'Self-Fleet' fuel and maintenance logs.", priority: "High", riskLevel: "Medium", consequence: "Breakdowns during delivery peak.", proof: "Maint Log", trainerNotes: "Service bikes every 2,500km." },
                 { id: "RES-DEL-15", description: "Audit 'Cancellations' for fraudulent rider behavior.", priority: "High", riskLevel: "High", consequence: "Theft of food by external riders.", proof: "Incident Log", trainerNotes: "Cross-check with CCTV if a rider claims 'Restaurant Closed'." },
                 { id: "RES-DEL-16", description: "Review 'Packaging Cost %' against sales.", priority: "Low", riskLevel: "Low", consequence: "Unchecked margin erosion.", proof: "Financial Shield", trainerNotes: "Target < 3% of delivery sales." },
                 { id: "RES-DEL-17", description: "Verify 'Allergen Labels' on delivery containers.", priority: "High", riskLevel: "High", consequence: "Fatal reaction for off-premise guest.", proof: "Visual Audit", trainerNotes: "Handwritten notes allowed only if verified." },
                 { id: "RES-DEL-18", description: "Check 'Return-to-Origin' (RTO) frequency.", priority: "Medium", riskLevel: "Low", consequence: "Inventory waste.", proof: "RTO Log", trainerNotes: "Analyze 'Wrong Address' root causes." },
                 { id: "RES-DEL-19", description: "Verify 'Promotional Inserts' in every delivery bag.", priority: "Low", riskLevel: "Low", consequence: "Missed repeat-booking opportunity.", proof: "Visual Check", trainerNotes: "Check for 'Order Direct' discount cards." },
-                { id: "RES-DEL-20", description: "Final daily Logistics sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of delivery governance.", proof: "Signed Dispatch", trainerNotes: "Reconcile 'Cash on Delivery' (COD) before leaving." }
+                { id: "RES-DEL-20", description: "Final daily Aggregator sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of delivery governance.", proof: "Signed Dispatch", trainerNotes: "Reconcile 'Cash on Delivery' (COD) before leaving." }
             ]
         }
     ]
