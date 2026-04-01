@@ -7,13 +7,13 @@ export const school_operations_pack: PremiumPack = {
     priceINR: 799,
     priceUSD: 9,
     category: "Education",
-    description: "No monthly subscriptions. One-time investment for a lifetime of command. Sovereign v8.4 is the safeguard for campus safety.",
+    description: "No monthly subscriptions. One-time investment for a lifetime of command. Sovereign v8.5 is the safeguard for campus safety.",
     heroHeadline: "Prevent Campus Tragedies and Administrative Chaos",
-    heroSubheadline: "Track transport safety, monitor playground risks, and stay in control of student welfare—across 100+ technical points.",
+    heroSubheadline: "Track transport safety, monitor playground risks, and stay in control of student welfare—across 152+ technical points.",
     pricingUrgency: "In education, a single safety 'never event' is an institutional catastrophe.",
     consultingAnchor: 10000,
     icon: "school",
-    badgeText: "Safety Critical",
+    badgeText: "V8.5 SOVEREIGN",
     badgeVariant: "destructive",
     whoIsItFor: ["School Principals", "Trustees", "Heads of Administration", "Transport Managers"],
     sampleItems: [
@@ -47,7 +47,7 @@ export const school_operations_pack: PremiumPack = {
             ]
         },
         {
-            title: "Fee & finance Shield",
+            title: "Fee & Finance Shield",
             department: "Finance",
             frequency: "Monthly",
             role: "Finance & Cashier",

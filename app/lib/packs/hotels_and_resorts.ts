@@ -7,13 +7,13 @@ export const hotels_and_resorts: PremiumPack = {
     priceINR: 799,
     priceUSD: 9,
     category: "Hospitality",
-    description: "The definitive Sovereign v8.4 engine for luxury hotels and resorts. Hardening 250+ technical control points across Front Office, Housekeeping, Engineering, and Events.",
+    description: "The definitive Sovereign v8.5 engine for luxury hotels and resorts. Hardening 184+ technical control points across Front Office, Housekeeping, Engineering, and Events.",
     heroHeadline: "Eliminate Guest Safety Gaps and Viral Reputation Damage",
-    heroSubheadline: "Track 250+ technical control points across Front Office, Housekeeping, Engineering, Events, and ORM—even when you’re not on property.",
+    heroSubheadline: "Track 184+ technical control points across Front Office, Housekeeping, Engineering, Events, and ORM—even when you’re not on property.",
     pricingUrgency: "One safety incident or a single negative viral review costs 100x more than this entire system.",
     consultingAnchor: 15000,
     icon: "building",
-    badgeText: "Recommended",
+    badgeText: "V8.5 SOVEREIGN",
     badgeVariant: "accent",
     bestseller: true,
     whoIsItFor: ["General Managers", "Hotel Owners", "Heads of Housekeeping", "Banqueting Directors", "Security & Valet Managers"],
@@ -34,7 +34,8 @@ export const hotels_and_resorts: PremiumPack = {
             summary: "High-level strategic oversight of property risk.",
             icon: "crown",
             tasks: [
-                { id: "HR-EXE-01", description: "Review 'Empire Mood' and ADR performance across all locations.", priority: "High", riskLevel: "Low", consequence: "Operational drift and financial inconsistency.", proof: "Dashboard Review", trainerNotes: "Check ADR vs. RevPAR weekly." }
+                { id: "HR-EXE-01", description: "Review 'Empire Mood' and ADR performance across all locations.", priority: "High", riskLevel: "Low", consequence: "Operational drift and financial inconsistency.", proof: "Dashboard Review", trainerNotes: "Check ADR vs. RevPAR weekly." },
+                { id: "HR-EXE-02", description: "Audit Night Audit report against bank captures.", priority: "High", riskLevel: "High", consequence: "Revenue theft and billing errors.", proof: "Audit Sheet", trainerNotes: "Reconcile CC terminals at 3 AM." }
             ]
         },
         {
@@ -50,14 +51,15 @@ export const hotels_and_resorts: PremiumPack = {
             ]
         },
         {
-            title: "Financial Shield & Audit",
-            department: "Finance",
+            title: "Housekeeping & Room Shield",
+            department: "Housekeeping",
             frequency: "Daily",
             role: "Finance & Cashier",
-            summary: "Protects the room revenue and F&B margins.",
-            icon: "banknote",
+            summary: "Manages the room inventory and linen assets.",
+            icon: "bed",
             tasks: [
-                { id: "HR-FIN-01", description: "Audit Night Audit report against bank captures.", priority: "High", riskLevel: "High", consequence: "Revenue theft and billing errors.", proof: "Audit Sheet", trainerNotes: "Reconcile CC terminals at 3 AM." }
+                { id: "HR-HK-01", description: "Blind Count: Reconcile clean linen against laundry invoice.", priority: "High", riskLevel: "Medium", consequence: "Silent theft of assets.", proof: "Stock Sheet", trainerNotes: "Audit 5% of bundles randomly." },
+                { id: "HR-HK-02", description: "Room Inspection: Verify 'The 5 Critical Surfaces' are dust-free.", priority: "High", riskLevel: "High", consequence: "Review penalty.", proof: "Scorecard", trainerNotes: "Check top of AC and under the bed." }
             ]
         },
         {
