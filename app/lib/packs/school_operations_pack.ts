@@ -7,20 +7,20 @@ export const school_operations_pack: PremiumPack = {
     priceINR: 5999,
     priceUSD: 79,
     category: "Education",
-    description: "The Sovereign v9.0 technical engine for K-12 and Academies. Hardening 152 control points from School Bus safety to Science Lab security.",
+    description: "The Sovereign v9.1 technical engine for K-12 and Academies. Hardening 152 control points from School Bus safety to Science Lab security.",
     heroHeadline: "Zero-Risk Campus Operations. Audit-Ready.",
-    heroSubheadline: "Standardize safety, transport, and academic governance across your entire campus with a logically-aware data engine.",
+    heroSubheadline: "Standardize safety, transport, social reputation, and academic governance across your entire campus with a logically-aware data engine.",
     pricingUrgency: "In education, a single safety 'never event' is an institutional catastrophe. This system is the safeguard.",
     consultingAnchor: 10000,
     icon: "school",
-    badgeText: "V9.0 SOVEREIGN",
+    badgeText: "V9.1 SOVEREIGN",
     badgeVariant: "destructive",
     whoIsItFor: ["School Principals", "Trustees", "Heads of Administration", "Transport Managers", "Registrars"],
     sampleItems: [
         { text: "<strong>Transport (Bus) Command</strong>: Mandatory 'Empty Bus Walkthrough' and driver sobriety checks.", icon: "bus" },
-        { text: "<strong>Campus Security & CCTV</strong>: 30-day backup verification and visitor ID lockdown protocols.", icon: "shield-check" },
-        { text: "<strong>Science Lab & EHS</strong>: Hazardous material storage and gas-line soap-test audits.", icon: "test-tube" },
-        { text: "<strong>HACCP Canteen & Hygiene</strong>: Hourly washroom sweeps and student meal temperature logs.", icon: "utensils" }
+        { text: "<strong>Social Media & ORM</strong>: 24h response pulse for reviews and parent inquiry tracking.", icon: "megaphone" },
+        { text: "<strong>Expedition & Trip Safety</strong>: Risk assessments and permission audits for off-campus tours.", icon: "map" },
+        { text: "<strong>Campus Security & CCTV</strong>: 30-day backup verification and visitor ID lockdown protocols.", icon: "shield-check" }
     ],
     checklists: [
         {
@@ -41,7 +41,7 @@ export const school_operations_pack: PremiumPack = {
                 { id: "SC-EXE-08", description: "Review 'Staff Churn' trends in Academic departments.", priority: "Low", riskLevel: "Low", consequence: "Curriculum discontinuity.", proof: "HR Dashboard", trainerNotes: "Analyze exit interview reasons." },
                 { id: "SC-EXE-09", description: "Audit 'Institutional Memory' backup status.", priority: "Medium", riskLevel: "Low", consequence: "Loss of academic records.", proof: "Server Log", trainerNotes: "Check cloud sync every Monday." },
                 { id: "SC-EXE-10", description: "Check status of CCTV in 'Blind Spot' zones.", priority: "High", riskLevel: "Medium", consequence: "Unmonitored student zones.", proof: "Monitor Check", trainerNotes: "Focus on back stairs/lockers." },
-                { id: "SC-EXE-11", description: "Review 'Parent Grievance' escalation speed.", priority: "Medium", riskLevel: "Low", consequence: "Viral reputation damage.", proof: "Dashboard", trainerNotes: "Target resolution in < 48 hours." },
+                { id: "SC-EXE-11", description: "Review 'Expedition Safety' protocols for upcoming trips.", priority: "High", riskLevel: "High", consequence: "Unmanaged off-site risks.", proof: "Trip Risk File", trainerNotes: "Verify teacher-student ratios." },
                 { id: "SC-EXE-12", description: "Audit vendor pricing for Canteen/Uniforms.", priority: "Medium", riskLevel: "Low", consequence: "Inflated procurement costs.", proof: "Vendor Log", trainerNotes: "Check Top 10 items prices." },
                 { id: "SC-EXE-13", description: "Verify 'Emergency PA' system coverage.", priority: "High", riskLevel: "High", consequence: "Communication failure during crisis.", proof: "Test Note", trainerNotes: "Test from Playground zone." },
                 { id: "SC-EXE-14", description: "Review status of 'Scholarship' quota audits.", priority: "Low", riskLevel: "Medium", consequence: "Regulatory non-conformance.", proof: "Quota File", trainerNotes: "Verify eligibility documents." },
@@ -57,7 +57,7 @@ export const school_operations_pack: PremiumPack = {
             department: "Operations",
             frequency: "Daily",
             role: "General Manager",
-            summary: "Student flow, counselling governance, and facility readiness.",
+            summary: "Student flow, counselling governance, and trip logistics.",
             icon: "school",
             tasks: [
                 { id: "SC-OPS-01", description: "Teacher Arrival: Verify 100% parity by 8:15 AM.", priority: "High", riskLevel: "Low", consequence: "Unsupervised classrooms.", proof: "Attendance Log", trainerNotes: "Assign stand-by teachers instantly." },
@@ -66,7 +66,7 @@ export const school_operations_pack: PremiumPack = {
                 { id: "SC-OPS-04", description: "Medical Emergency: Verify infirmary nurse presence.", priority: "High", riskLevel: "High", consequence: "Failure to life-support.", proof: "Roster Check", trainerNotes: "Nurse must be at desk by 8 AM." },
                 { id: "SC-OPS-05", description: "Classroom Audit: Check for furniture damage/splinters.", priority: "Medium", riskLevel: "Medium", consequence: "Student injury negligence.", proof: "Visual Audit", trainerNotes: "Focus on desk-edge integrity." },
                 { id: "SC-OPS-06", description: "Teachers Room: Audit hygiene and behavior standards.", priority: "Low", riskLevel: "Low", consequence: "Brand professionalism drop.", proof: "Cleaning Note", trainerNotes: "Check for unwashed mugs/papers." },
-                { id: "SC-OPS-07", description: "Hall AV: Test projector and backup laptop link.", priority: "Medium", riskLevel: "Low", consequence: "Interruption to presentations.", proof: "Tech Log", trainerNotes: "Keep spare HDMI cable at lectern." },
+                { id: "SC-OPS-07", description: "Field Trip Readiness: Audit permission slips for Grade X.", priority: "High", riskLevel: "High", consequence: "Legal liability for unauthorized trip.", proof: "Slip Registry", trainerNotes: "No slip, No trip. Manual check." },
                 { id: "SC-OPS-08", description: "School Bell: Sync with master time-server.", priority: "Low", riskLevel: "Low", consequence: "Campus scheduling chaos.", proof: "Visual Check", trainerNotes: "Drift must be < 10 seconds." },
                 { id: "SC-OPS-09", description: "Lost & Found: Log all arrivals and tag with Date.", priority: "Medium", riskLevel: "Low", consequence: "Parent disputes over assets.", proof: "L&F Ledger", trainerNotes: "Secure in main admin vault." },
                 { id: "SC-OPS-10", description: "Corridor Patrol: Check for unauthorized student groups.", priority: "Medium", riskLevel: "Medium", consequence: "Bullying opportunities.", proof: "Patrol Note", trainerNotes: "Check back-alleys during recess." },
@@ -202,12 +202,12 @@ export const school_operations_pack: PremiumPack = {
             department: "Admin",
             frequency: "Daily",
             role: "Customer Experience Lead",
-            summary: "Admission pipeline, Parent ORM, and first-touch governance.",
+            summary: "Admission pipeline, Social Media ORM, and first-touch governance.",
             icon: "megaphone",
             tasks: [
-                { id: "SC-CX-01", description: "Parent Inquiry TAT: Resolve < 4 hours.", priority: "Medium", riskLevel: "Low", consequence: "Lost admissions revenue.", proof: "Inbox Clear", trainerNotes: "Confirm via WhatsApp/Call." },
+                { id: "SC-CX-01", description: "Parent Social Inquiry TAT: Resolve < 2 hours.", priority: "High", riskLevel: "Low", consequence: "Lost admissions revenue via unread DMs.", proof: "Inbox Clear", trainerNotes: "Confirm via WhatsApp/Call instantly." },
                 { id: "SC-CX-02", description: "Google/Search: Reply to all reviews < 24h.", priority: "High", riskLevel: "Medium", consequence: "Viral reputation damage.", proof: "Dashboard", trainerNotes: "Address 1-star reviews first." },
-                { id: "SC-CX-03", description: "Admission Pipeline: verify form completeness.", priority: "High", riskLevel: "Low", consequence: "Legal liability for missing data.", proof: "Sample Audit", trainerNotes: "Verify Address/Medical IDs." },
+                { id: "SC-CX-03", description: "Instagram/FB: Post 'Safe Event' footage according to privacy rules.", priority: "Medium", riskLevel: "Low", consequence: "Institutional invisibility.", proof: "Post Link", trainerNotes: "Verify student face-blur policy." },
                 { id: "SC-CX-04", description: "Reception: Audit tone and greeting smile.", priority: "Medium", riskLevel: "Low", consequence: "Negative brand first-touch.", proof: "Supervisor Obs", trainerNotes: "Mandatory eye contact." },
                 { id: "SC-CX-05", description: "Parent Portal: verify login speed.", priority: "Low", riskLevel: "Low", consequence: "Mass parent frustration.", proof: "App Test", trainerNotes: "Login must work in < 10s." },
                 { id: "SC-CX-06", description: "Google Maps: update hours for holidays.", priority: "High", riskLevel: "Low", consequence: "Parents arrive to 'Closed' campus.", proof: "Mobile Check", trainerNotes: "Update instantly for breaks." },
@@ -215,7 +215,7 @@ export const school_operations_pack: PremiumPack = {
                 { id: "SC-CX-08", description: "Audit 'Feedback QR' placement in lobby.", priority: "Low", riskLevel: "Low", consequence: "Low volume of audit data.", proof: "Visual Check", trainerNotes: "Check stickers on chairs." },
                 { id: "SC-CX-09", description: "Verify 'Guest Wi-Fi' code visibility.", priority: "Low", riskLevel: "Low", consequence: "Parent frustration scores.", proof: "Photo", trainerNotes: "Display at helpdesk only." },
                 { id: "SC-CX-10", description: "Monitor 'Admission Center' ambiance/scent.", priority: "Low", riskLevel: "Low", consequence: "Negative micro-impressions.", proof: "Daily Log", trainerNotes: "Keep zone at exactly 23C." },
-                { id: "SC-CX-11", description: "Review 'Dropout' stats from pipeline.", priority: "Medium", riskLevel: "Low", consequence: "Unrealized revenue leakage.", proof: "CRM Report", trainerNotes: "Trigger follow-up < 24h." },
+                { id: "SC-CX-11", description: "Social Media: Answer all YouTube comments < 24h.", priority: "Medium", riskLevel: "Low", consequence: "Negative sentiment buildup.", proof: "Comment Audit", trainerNotes: "Delete offensive spam instantly." },
                 { id: "SC-CX-12", description: "Audit Admission form 'Medical Info' section.", priority: "High", riskLevel: "High", consequence: "Undocumented allergy risk.", proof: "Audit Sheet", trainerNotes: "Cross-check vs Student Matrix." },
                 { id: "SC-CX-13", description: "Check status of 'Uniform Order' TAT.", priority: "Medium", riskLevel: "Low", consequence: "Parent delivery disputes.", proof: "Vendor Log", trainerNotes: "Target < 7 days delivery." },
                 { id: "SC-CX-14", description: "Verify 100% reply to Social Comments.", priority: "Medium", riskLevel: "Low", consequence: "PR fire ignored.", proof: "Inbox Clear", trainerNotes: "Target < 4h response." },
@@ -257,5 +257,3 @@ export const school_operations_pack: PremiumPack = {
         }
     ]
 };
-
-    
