@@ -77,10 +77,10 @@ export default function AboutPage() {
                             <div className="space-y-4">
                                 <h2 className="text-3xl md:text-4xl font-black font-headline text-primary-text uppercase italic tracking-tighter">The Engineering of Reliability</h2>
                                 <p className="text-lg text-secondary-text leading-relaxed">
-                                    MoreMeets™ was born from over <span className="text-primary font-black">30 years of cumulative operational exposure.</span> Our founders have spent three decades auditing, directing, and optimizing complex environments across hospitality, healthcare, and industrial sectors. 
+                                    MoreMeets™ was born from over <span className="text-primary font-black">30 years of cumulative operational exposure.</span> Our founders have spent three decades directing and optimizing complex environments across hospitality, healthcare, and industrial sectors. 
                                 </p>
                                 <p className="text-lg text-secondary-text leading-relaxed">
-                                    We realized a recurring, dangerous pattern: Most businesses don't actually have "systems". They have heroes who remember how things work. When those heroes leave, the standard leaves with them. 
+                                    We realized a recurring, dangerous pattern: Most businesses don't actually have systems. They have heroes who remember how things work. When those heroes leave, the standard leaves with them. 
                                 </p>
                                 <p className="text-lg text-secondary-text leading-relaxed font-bold text-primary-text">
                                     We built MoreMeets™ to convert individual brilliance into permanent organizational infrastructure.
@@ -89,10 +89,10 @@ export default function AboutPage() {
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             {[
-                                { label: "Forensic Experience", value: "30+ Years", icon: Binary },
-                                { label: "Industries Audited", value: "12+", icon: ShieldCheck },
-                                { label: "Critical Procedures", value: "5,000+", icon: ClipboardList },
-                                { label: "Compliance Alignment", value: "ISO/HACCP", icon: Scale }
+                                { label: "Operational Depth", value: "30+ Years", icon: Binary },
+                                { label: "Industries Vetted", value: "12+", icon: ShieldCheck },
+                                { label: "Technical Missions", value: "5,000+", icon: ClipboardList },
+                                { label: "Protocol Alignment", value: "ISO/HACCP", icon: Scale }
                             ].map((stat, i) => (
                                 <div key={i} className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] flex flex-col gap-2 group hover:border-primary/20 transition-colors">
                                     <stat.icon className="w-6 h-6 text-primary/50 group-hover:text-primary transition-colors" />

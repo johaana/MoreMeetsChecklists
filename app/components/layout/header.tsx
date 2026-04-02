@@ -126,7 +126,7 @@ export function SiteHeader() {
                     onMouseLeave={() => setIsDropdownOpen(false)}
                 >
                     <button className={cn("text-sm font-medium transition-colors flex items-center gap-1", isHomepage && !isScrolled ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-foreground")}>
-                        Industry Systems <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                        Operations Library <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                     </button>
                     {isDropdownOpen && (
                         <div className="absolute top-full right-0 w-screen max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
@@ -138,7 +138,7 @@ export function SiteHeader() {
                                 </ScrollArea>
                                 <div className="bg-secondary/50 p-3 border-t flex items-center justify-between">
                                     <Link href="/library" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
-                                        View Elite Systems &rarr;
+                                        View Systems Hub &rarr;
                                     </Link>
                                     <Link href="/packs/animal_shelter_pack" className="text-[10px] font-black text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50 flex items-center gap-2 uppercase tracking-widest">
                                         <PawPrint className="w-3 h-3" /> Social Impact Pack (Free)
@@ -177,7 +177,7 @@ export function SiteHeader() {
                                     </div>
                                     <div className="border-b">
                                         <Link href="/library" className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors p-2 flex" prefetch={false}>
-                                            Operations Library
+                                            Systems Hub
                                         </Link>
                                     </div>
                                     <AccordionItem value="packs" className="border-b-0">

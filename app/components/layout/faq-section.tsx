@@ -12,19 +12,19 @@ export const FaqSection = () => (
                      <AccordionItem value="item-1">
                         <AccordionTrigger>We already have SOPs. Why do we need MoreMeets?</AccordionTrigger>
                         <AccordionContent>
-                           Most SOPs are outdated, inconsistent, or not audit-ready "dead documents." MoreMeets is not a document; it is a <strong>live operational engine</strong>. It upgrades your existing knowledge into a structured, multi-branch framework that mandates daily discipline and provides instant executive visibility.
+                           Most SOPs are outdated, inconsistent, or not audit-ready "dead documents." MoreMeets is not a document: it is a <strong>live operational engine</strong>. It upgrades your existing knowledge into a structured, multi-branch framework that mandates daily discipline and provides instant executive visibility.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-11">
                         <AccordionTrigger>Why is this an Excel file and not a dedicated app?</AccordionTrigger>
                         <AccordionContent>
-                          Apps create "SaaS Friction." They require logins, training, and monthly subscription bills. Excel is <strong>universally understood, 100% private, and works offline.</strong> It allows your team to start reporting in 2 minutes without a setup phase. Plus, you own the engine forever—no monthly fees to access your own data.
+                          Apps create "SaaS Friction." They require logins, training, and monthly subscription bills. Excel is <strong>universally understood, 100% private, and works offline.</strong> It allows your team to start reporting in 2 minutes without a setup phase. Plus, you own the engine forever: no monthly fees to access your own data.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-12">
                         <AccordionTrigger>How does this help me if I'm not physically present?</AccordionTrigger>
                         <AccordionContent>
-                          This is the core power of MoreMeets. The <strong>Live Performance Dashboard</strong> and <strong>Incident Log</strong> act as your "Remote Eyes." You can see exactly which tasks were signed off, which high-risk points were verified by managers, and if any safety or profit-leak incidents occurred—from anywhere in the world.
+                          This is the core power of MoreMeets. The <strong>Live Performance Dashboard</strong> and <strong>Incident Log</strong> act as your "Remote Eyes." You can see exactly which tasks were signed off, which high-risk points were verified by managers, and if any safety or profit-leak incidents occurred: from anywhere in the world.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-13">
@@ -54,7 +54,7 @@ export const FaqSection = () => (
                      <AccordionItem value="item-8">
                         <AccordionTrigger>Can my internal team build this instead?</AccordionTrigger>
                         <AccordionContent>
-                           Building a multi-branch, logically-aware data engine with forensically-vetted protocols takes <strong>3–6 months of senior leadership time.</strong> MoreMeets gives you a better result instantly, at a fraction of the cost of one week of a consultant's time.
+                           Building a multi-branch, logically-aware data engine with forensically-vetted protocols takes <strong>3.6 months of senior leadership time.</strong> MoreMeets gives you a better result instantly, at a fraction of the cost of one week of a consultant's time.
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>

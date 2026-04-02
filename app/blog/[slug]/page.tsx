@@ -1,3 +1,4 @@
+
 import { blogPosts } from '@/lib/blog-posts';
 import { notFound } from 'next/navigation';
 import { SiteHeader } from '@/components/layout/header';
@@ -133,7 +134,6 @@ export default async function BlogPostPage({ params }: Props) {
       button: "Strengthen Your Operations"
   };
 
-  // SAFETY FIX: Optional chaining ensures build never fails on missing mapping
   const currentCta = (relatedPack && ctaMapping[relatedPack.id]) ? ctaMapping[relatedPack.id] : fallbackCta;
 
   const PROOFS = [
@@ -199,7 +199,7 @@ export default async function BlogPostPage({ params }: Props) {
           </header>
 
           <div className="container px-4 md:px-6 mt-24 relative z-20">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-4xl auto">
               <div 
                 className="prose-custom max-w-none 
                   [&_h2]:font-headline [&_h2]:text-primary-text [&_h2]:font-black [&_h2]:tracking-tighter [&_h2]:uppercase [&_h2]:mt-24 [&_h2]:mb-12 [&_h2]:italic [&_h2]:text-4xl
