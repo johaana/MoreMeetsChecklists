@@ -7,7 +7,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 
 /**
  * Sovereign Engine v9.4 - PERSONNEL DENSITY UPDATE
- * Fixes: Expanded TEAM_HUB for Elite 7 (starting with Restaurants & Hotels).
+ * Fixes: Expanded TEAM_HUB for Elite 7 (Hospitals, Restaurants & Hotels).
  * UI: Symmetric 45pt Ribbons, 100pt Headers, Forced Vertical Centering.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -332,27 +332,27 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         if (packId === 'restaurants') {
             return [
                 "Owner / Managing Director",
-                "COO / Operations Director",
+                "COO / Regional Manager",
                 "Unit General Manager",
                 "Assistant Restaurant Manager",
-                "Floor Supervisor (Shift A)",
-                "Floor Supervisor (Shift B)",
+                "Floor Captain (Shift A)",
+                "Floor Captain (Shift B)",
+                "Hostess / Reception",
+                "Head Waiter",
+                "Junior Steward",
                 "Executive Chef",
                 "Sous Chef",
-                "Kitchen Supervisor",
                 "CDP (Main Kitchen)",
                 "Commi Chef (Prep)",
                 "Kitchen Steward / Utility",
                 "Finance & Accounts Head",
-                "Cashier (Front of House)",
-                "Purchase & Store Manager",
-                "HR & Training Manager",
+                "Billing Cashier (Shift A)",
+                "Billing Cashier (Shift B)",
+                "Store & Purchase Manager",
                 "EHS & Food Safety Officer",
-                "Technical Maintenance Tech",
-                "Hostess / Reception",
-                "Delivery & Logistics Lead",
-                "Shift Cashier (A)",
-                "Shift Cashier (B)"
+                "HR & Training Manager",
+                "Technical Maintenance Lead",
+                "Delivery & Logistics Lead"
             ];
         }
         if (packId === 'hotels_and_resorts') {
@@ -363,25 +363,29 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 "Resident Manager",
                 "Finance Controller",
                 "Finance & Cashier",
+                "Night Auditor",
+                "Billing Desk (Shift A)",
+                "Billing Desk (Shift B)",
                 "Front Office Manager",
                 "Duty Manager (Shift A)",
                 "Duty Manager (Shift B)",
-                "Night Auditor",
                 "Customer Experience Lead",
                 "Guest Relations Manager",
+                "Concierge Lead",
                 "Executive Housekeeper",
                 "Head of Housekeeping",
                 "Floor Supervisor (Shift A)",
                 "Floor Supervisor (Shift B)",
+                "Laundry Manager",
                 "F&B Director",
-                "Restaurant Manager",
-                "Banquet Manager",
                 "Executive Chef",
                 "Sous Chef",
+                "Banquet Manager",
+                "Events Manager",
+                "Room Service Supervisor",
                 "Chief Engineer",
                 "Technical Lead",
                 "IT & Digital Manager",
-                "Security Manager",
                 "EHS Officer",
                 "Security Chief",
                 "HR Manager",
@@ -389,6 +393,42 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 "Purchasing Manager",
                 "Logistics Lead",
                 "Fleet & Valet In-charge"
+            ];
+        }
+        if (packId === 'healthcare_and_hospital_operations') {
+            return [
+                "Managing Director",
+                "Medical Director",
+                "Hospital COO",
+                "Admin Director",
+                "Nursing Superintendent",
+                "Deputy Nursing Superintendent",
+                "Ward Sister (Shift A)",
+                "Ward Sister (Shift B)",
+                "ICU Nursing In-charge",
+                "ER In-charge",
+                "RMO (Resident Medical Officer)",
+                "Finance Controller",
+                "Billing Manager",
+                "TPA Coordinator",
+                "Insurance Desk Executive",
+                "Pharmacy Lead",
+                "Pharmacist (Shift A)",
+                "Pharmacist (Shift B)",
+                "Narcotics Custodian",
+                "EHS Officer",
+                "Bio-Medical Waste Lead",
+                "Security Chief",
+                "HR Manager",
+                "Training Manager",
+                "IT & HIS Manager",
+                "Technical Maintenance Lead",
+                "Biomedical Engineer",
+                "Canteen Manager",
+                "Receptionist (Shift A)",
+                "Receptionist (Shift B)",
+                "OPD Manager",
+                "Logistics Lead"
             ];
         }
         return [
