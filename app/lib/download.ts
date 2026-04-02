@@ -6,9 +6,10 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v9.4 - PERSONNEL DENSITY UPDATE
- * Fixes: Expanded TEAM_HUB for Elite 7 (Hospitals, Restaurants, Hotels, Schools, Franchise, Facility, Cinema).
- * UI: Symmetric 45pt Ribbons, 100pt Headers, Forced Vertical Centering.
+ * Sovereign Engine v9.5 - COMPRESSED COMMAND UPDATE
+ * UI: Header height reduced to 60pt for sheets 2+.
+ * Logic: SOP_LIBRARY now includes Consequences & Trainer's Notes.
+ * Personnel: Preserved 22-32 role density for Elite 7.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -20,7 +21,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-SOVEREIGN-9.4-MASTER";
+    const ORDER_ID = "MM-SOVEREIGN-9.5-MASTER";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -129,7 +130,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         alignment: { ...verticalCenter, wrapText: true }
     };
 
-    const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K', customTitleHpt: number = 45, headerRowHpt: number = 100) => {
+    // UI REFINEMENT: Shorter Header Height (60pt) for Sheets 2+
+    const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K', customTitleHpt: number = 45, headerRowHpt: number = 60) => {
         const ribbonData = [
             [{ v: "◀ BACK TO CONSOLE", l: { Target: "#'HOME_CONSOLE'!A1" }, s: navStyle }],
             [{ v: `  ${title.toUpperCase()}`, s: ribbonHeaderStyle }]
@@ -176,7 +178,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v9.4 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v9.5 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -330,244 +332,27 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     // --- 04. TEAM HUB ---
     const getRolesForPack = (packId: string) => {
         if (packId === 'restaurants') {
-            return [
-                "Owner / Managing Director",
-                "COO / Regional Manager",
-                "Unit General Manager",
-                "Assistant Restaurant Manager",
-                "Floor Captain (Shift A)",
-                "Floor Captain (Shift B)",
-                "Hostess / Reception",
-                "Head Waiter",
-                "Junior Steward",
-                "Executive Chef",
-                "Sous Chef",
-                "CDP (Main Kitchen)",
-                "Commi Chef (Prep)",
-                "Kitchen Steward / Utility",
-                "Finance & Accounts Head",
-                "Billing Cashier (Shift A)",
-                "Billing Cashier (Shift B)",
-                "Store & Purchase Manager",
-                "EHS & Food Safety Officer",
-                "HR & Training Manager",
-                "Technical Maintenance Lead",
-                "Delivery & Logistics Lead"
-            ];
+            return ["Owner / Managing Director", "COO / Regional Manager", "Unit General Manager", "Assistant Restaurant Manager", "Floor Captain (Shift A)", "Floor Captain (Shift B)", "Hostess / Reception", "Head Waiter", "Junior Steward", "Executive Chef", "Sous Chef", "CDP (Main Kitchen)", "Commi Chef (Prep)", "Kitchen Steward / Utility", "Finance & Accounts Head", "Billing Cashier (Shift A)", "Billing Cashier (Shift B)", "Store & Purchase Manager", "EHS & Food Safety Officer", "HR & Training Manager", "Technical Maintenance Lead", "Delivery & Logistics Lead"];
         }
         if (packId === 'hotels_and_resorts') {
-            return [
-                "Owner / Managing Director",
-                "COO / Owner",
-                "General Manager",
-                "Resident Manager",
-                "Finance Controller",
-                "Finance & Cashier",
-                "Night Auditor",
-                "Billing Desk (Shift A)",
-                "Billing Desk (Shift B)",
-                "Front Office Manager",
-                "Duty Manager (Shift A)",
-                "Duty Manager (Shift B)",
-                "Customer Experience Lead",
-                "Guest Relations Manager",
-                "Concierge Lead",
-                "Executive Housekeeper",
-                "Head of Housekeeping",
-                "Floor Supervisor (Shift A)",
-                "Floor Supervisor (Shift B)",
-                "Laundry Manager",
-                "F&B Director",
-                "Executive Chef",
-                "Sous Chef",
-                "Banquet Manager",
-                "Events Manager",
-                "Room Service Supervisor",
-                "Chief Engineer",
-                "Technical Lead",
-                "IT & Digital Manager",
-                "EHS Officer",
-                "Security Chief",
-                "HR Manager",
-                "Training Manager",
-                "Purchasing Manager",
-                "Logistics Lead",
-                "Fleet & Valet In-charge"
-            ];
+            return ["Owner / Managing Director", "COO / Owner", "General Manager", "Resident Manager", "Finance Controller", "Finance & Cashier", "Night Auditor", "Billing Desk (Shift A)", "Billing Desk (Shift B)", "Front Office Manager", "Duty Manager (Shift A)", "Duty Manager (Shift B)", "Customer Experience Lead", "Guest Relations Manager", "Concierge Lead", "Executive Housekeeper", "Head of Housekeeping", "Floor Supervisor (Shift A)", "Floor Supervisor (Shift B)", "Laundry Manager", "F&B Director", "Executive Chef", "Sous Chef", "Banquet Manager", "Events Manager", "Room Service Supervisor", "Chief Engineer", "Technical Lead", "IT & Digital Manager", "EHS Officer", "Security Chief", "HR Manager", "Training Manager", "Purchasing Manager", "Logistics Lead", "Fleet & Valet In-charge"];
         }
         if (packId === 'healthcare_and_hospital_operations') {
-            return [
-                "Managing Director",
-                "Medical Director",
-                "Hospital COO",
-                "Admin Director",
-                "Nursing Superintendent",
-                "Deputy Nursing Superintendent",
-                "Ward Sister (Shift A)",
-                "Ward Sister (Shift B)",
-                "ICU Nursing In-charge",
-                "ER In-charge",
-                "RMO (Resident Medical Officer)",
-                "Finance Controller",
-                "Billing Manager",
-                "TPA Coordinator",
-                "Insurance Desk Executive",
-                "Pharmacy Lead",
-                "Pharmacist (Shift A)",
-                "Pharmacist (Shift B)",
-                "Narcotics Custodian",
-                "EHS Officer",
-                "Bio-Medical Waste Lead",
-                "Security Chief",
-                "HR Manager",
-                "Training Manager",
-                "IT & HIS Manager",
-                "Technical Maintenance Lead",
-                "Biomedical Engineer",
-                "Canteen Manager",
-                "Receptionist (Shift A)",
-                "Receptionist (Shift B)",
-                "OPD Manager",
-                "Logistics Lead"
-            ];
+            return ["Managing Director", "Medical Director", "Hospital COO", "Admin Director", "Nursing Superintendent", "Deputy Nursing Superintendent", "Ward Sister (Shift A)", "Ward Sister (Shift B)", "ICU Nursing In-charge", "ER In-charge", "RMO (Resident Medical Officer)", "Finance Controller", "Billing Manager", "TPA Coordinator", "Insurance Desk Executive", "Pharmacy Lead", "Pharmacist (Shift A)", "Pharmacist (Shift B)", "Narcotics Custodian", "EHS Officer", "Bio-Medical Waste Lead", "Security Chief", "HR Manager", "Training Manager", "IT & HIS Manager", "Technical Maintenance Lead", "Biomedical Engineer", "Canteen Manager", "Receptionist (Shift A)", "Receptionist (Shift B)", "OPD Manager", "Logistics Lead"];
         }
         if (packId === 'school_operations_pack') {
-            return [
-                "Trustee / Board Member",
-                "School Principal",
-                "Vice Principal (Academic)",
-                "Vice Principal (Admin)",
-                "School Administrator",
-                "Registrar / Fee Cashier",
-                "Accountant",
-                "Admissions & CX Head",
-                "Receptionist (Shift A)",
-                "Receptionist (Shift B)",
-                "School Counsellor",
-                "Infirmary Nurse",
-                "Librarian",
-                "HOD Primary Wing",
-                "HOD Secondary Wing",
-                "Lab Assistant (Science)",
-                "Lab Assistant (IT)",
-                "IT & Lab Technical Lead",
-                "EHS & Safety Officer",
-                "Security Chief",
-                "Security Guard (Day)",
-                "Security Guard (Night)",
-                "Transport & Canteen Lead",
-                "Bus Driver (Route A)",
-                "Bus Driver (Route B)",
-                "Bus Attendant / Conductor",
-                "Canteen Supervisor",
-                "Maintenance Supervisor",
-                "HR & Child Protection Manager",
-                "Clerk / Admin Assistant"
-            ];
+            return ["Trustee / Board Member", "School Principal", "Vice Principal (Academic)", "Vice Principal (Admin)", "School Administrator", "Registrar / Fee Cashier", "Accountant", "Admissions & CX Head", "Receptionist (Shift A)", "Receptionist (Shift B)", "School Counsellor", "Infirmary Nurse", "Librarian", "HOD Primary Wing", "HOD Secondary Wing", "Lab Assistant (Science)", "Lab Assistant (IT)", "IT & Lab Technical Lead", "EHS & Safety Officer", "Security Chief", "Security Guard (Day)", "Security Guard (Night)", "Transport & Canteen Lead", "Bus Driver (Route A)", "Bus Driver (Route B)", "Bus Attendant / Conductor", "Canteen Supervisor", "Maintenance Supervisor", "HR & Child Protection Manager", "Clerk / Admin Assistant"];
         }
         if (packId === 'franchise_operations_pack') {
-            return [
-                "Franchisor CEO / MD",
-                "Franchisor COO / Head of Ops",
-                "VP Franchise Development",
-                "Head of Brand & Marketing",
-                "Legal & Compliance Director",
-                "Regional Manager (North)",
-                "Regional Manager (South)",
-                "Area Operational Coach",
-                "Field Quality Auditor",
-                "Regional Training Lead",
-                "Franchisee Owner / Partner",
-                "Unit General Manager",
-                "Assistant Manager (Shift A)",
-                "Assistant Manager (Shift B)",
-                "Floor Supervisor (Morning)",
-                "Floor Supervisor (Evening)",
-                "Senior Billing Cashier",
-                "Junior Billing Cashier",
-                "Kitchen/Production Manager",
-                "Inventory & Store In-charge",
-                "Customer Experience Lead",
-                "Local Marketing Coordinator",
-                "EHS & Safety Officer",
-                "Technical Maintenance Tech",
-                "Logistics & Delivery Lead",
-                "Dispatch Coordinator",
-                "Admin & HR Assistant",
-                "Finance & Accounts Executive",
-                "Procurement & Supply Specialist"
-            ];
+            return ["Franchisor CEO / MD", "Franchisor COO / Head of Ops", "VP Franchise Development", "Head of Brand & Marketing", "Legal & Compliance Director", "Regional Manager (North)", "Regional Manager (South)", "Area Operational Coach", "Field Quality Auditor", "Regional Training Lead", "Franchisee Owner / Partner", "Unit General Manager", "Assistant Manager (Shift A)", "Assistant Manager (Shift B)", "Floor Supervisor (Morning)", "Floor Supervisor (Evening)", "Senior Billing Cashier", "Junior Billing Cashier", "Kitchen/Production Manager", "Inventory & Store In-charge", "Customer Experience Lead", "Local Marketing Coordinator", "EHS & Safety Officer", "Technical Maintenance Tech", "Logistics & Delivery Lead", "Dispatch Coordinator", "Admin & HR Assistant", "Finance & Accounts Executive", "Procurement & Supply Specialist"];
         }
         if (packId === 'facility_management_blueprint') {
-            return [
-                "COO / Head of Real Estate",
-                "Facility Director",
-                "Property General Manager",
-                "Assistant Property Manager",
-                "Chief Engineer",
-                "Technical Lead",
-                "Electrical Supervisor",
-                "HVAC Specialist",
-                "Plumbing Supervisor",
-                "Fire & Life Safety Tech",
-                "BMS & IT Manager",
-                "Soft FM Manager",
-                "Housekeeping Supervisor (Shift A)",
-                "Housekeeping Supervisor (Shift B)",
-                "Janitorial Lead",
-                "Pest Control Coordinator",
-                "Waste Management Supervisor",
-                "Finance & Accounts Executive",
-                "HR & Admin Assistant",
-                "Customer Experience Lead",
-                "Vendor SLA Manager",
-                "Procurement Specialist",
-                "EHS & Safety Officer",
-                "Security Chief",
-                "Security Supervisor (Shift A)",
-                "Security Supervisor (Shift B)",
-                "Landscaping & Facade Lead",
-                "Parking & Valet Coordinator"
-            ];
+            return ["COO / Head of Real Estate", "Facility Director", "Property General Manager", "Assistant Property Manager", "Chief Engineer", "Technical Lead", "Electrical Supervisor", "HVAC Specialist", "Plumbing Supervisor", "Fire & Life Safety Tech", "BMS & IT Manager", "Soft FM Manager", "Housekeeping Supervisor (Shift A)", "Housekeeping Supervisor (Shift B)", "Janitorial Lead", "Pest Control Coordinator", "Waste Management Supervisor", "Finance & Accounts Executive", "HR & Admin Assistant", "Customer Experience Lead", "Vendor SLA Manager", "Procurement Specialist", "EHS & Safety Officer", "Security Chief", "Security Supervisor (Shift A)", "Security Supervisor (Shift B)", "Landscaping & Facade Lead", "Parking & Valet Coordinator"];
         }
         if (packId === 'cinema_operations_pack') {
-            return [
-                "Owner / Managing Director",
-                "COO / Regional Manager",
-                "Cinema General Manager",
-                "Assistant Cinema Manager",
-                "Technical Director",
-                "Chief Projectionist",
-                "Projectionist (Shift A)",
-                "Projectionist (Shift B)",
-                "Box Office Manager",
-                "Ticketing Cashier (Shift A)",
-                "Ticketing Cashier (Shift B)",
-                "F&B / Concession Manager",
-                "Concession Supervisor",
-                "Kitchen Lead (Snacks)",
-                "Service Crew (Shift A)",
-                "Service Crew (Shift B)",
-                "Guest Services Lead",
-                "Marketing & Events Coordinator",
-                "Security Chief",
-                "Janitorial Lead / HK Supervisor",
-                "Finance & Accounts Executive",
-                "HR & Admin Assistant",
-                "EHS & Safety Officer",
-                "Technical Maintenance Tech"
-            ];
+            return ["Owner / Managing Director", "COO / Regional Manager", "Cinema General Manager", "Assistant Cinema Manager", "Technical Director", "Chief Projectionist", "Projectionist (Shift A)", "Projectionist (Shift B)", "Box Office Manager", "Ticketing Cashier (Shift A)", "Ticketing Cashier (Shift B)", "F&B / Concession Manager", "Concession Supervisor", "Kitchen Lead (Snacks)", "Service Crew (Shift A)", "Service Crew (Shift B)", "Guest Services Lead", "Marketing & Events Coordinator", "Security Chief", "Janitorial Lead / HK Supervisor", "Finance & Accounts Executive", "HR & Admin Assistant", "EHS & Safety Officer", "Technical Maintenance Tech"];
         }
-        return [
-            "COO / Owner", 
-            "General Manager", 
-            "Finance & Cashier", 
-            "EHS Officer", 
-            "HR Manager", 
-            "Technical Lead", 
-            "Customer Experience Lead", 
-            "Logistics Lead"
-        ];
+        return ["COO / Owner", "General Manager", "Finance & Cashier", "EHS Officer", "HR Manager", "Technical Lead", "Customer Experience Lead", "Logistics Lead"];
     };
 
     const pHeaders = [
@@ -629,7 +414,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
-    // --- 06. POPULATED SOP LIBRARY ---
+    // --- 06. SOP LIBRARY (Institutional Bible) ---
     const sopHeaders = [
         { v: "Module", s: headerStyle }, 
         { v: "Protocol ID", s: headerStyle }, 
@@ -647,7 +432,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: t.description, s: dataStyleLeft },
                 { v: t.consequence || "Operational Risk Applied.", s: warningStyle },
                 { v: t.trainerNotes || "Institutional standard applies.", s: coachingStyle },
-                { v: "ISO/HACCP v9.4", s: dataStyleCenter }
+                { v: "ISO/HACCP v9.5", s: dataStyleCenter }
             ]);
         });
     });
@@ -656,7 +441,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(sopWs, "Institutional SOP Database", 'F');
     utils.book_append_sheet(wb, sopWs, "SOP_LIBRARY");
 
-    // --- 07. GHOST SHEETS ---
+    // --- 07. LOGS ---
     const handoverHeaders = [{ v: "Branch", s: headerStyle }, { v: "Departing Shift Manager", s: headerStyle }, { v: "Arriving Shift Manager", s: headerStyle }, { v: "Critical Issues Carried Over", s: headerStyle }, { v: "Safety/EHS Clear?", s: headerStyle }, { v: "Handover Timestamp", s: headerStyle }];
     const handoverWs = utils.aoa_to_sheet([[], [], [], handoverHeaders]);
     addSovereignRibbon(handoverWs, "Shift Handover Bridge", 'F');
@@ -672,5 +457,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(healthWs, "Performance Analytics", 'E');
     utils.book_append_sheet(wb, healthWs, "BUSINESS_HEALTH");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_9.4.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_9.5.xlsx`);
 }
