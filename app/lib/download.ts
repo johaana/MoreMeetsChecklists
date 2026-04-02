@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v9.0 - INSTITUTIONAL FINAL
- * Fixes: Absolute Vertical Centering, 140pt Header Locking, 8-Role Hub Population.
+ * Sovereign Engine v9.3 - INSTITUTIONAL FINAL
+ * Fixes: Compressed 100pt Header, SOP Library Expansion, Trainer's Notes nomenclature.
  * Symmetry: Symmetric 45pt Ribbons and Zero-Clipping symmetric Grid.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -20,7 +20,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-SOVEREIGN-9.0-MASTER";
+    const ORDER_ID = "MM-SOVEREIGN-9.3-MASTER";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -118,16 +118,18 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const warningStyle = {
         ...dataStyleLeft,
         font: { ...baseFont, color: { rgb: "991B1B" }, italic: true },
-        fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_RED } }
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_RED } },
+        alignment: { ...verticalCenter, wrapText: true }
     };
 
     const coachingStyle = {
         ...dataStyleLeft,
         font: { ...baseFont, color: { rgb: "065F46" }, italic: true },
-        fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_GREEN } }
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_GREEN } },
+        alignment: { ...verticalCenter, wrapText: true }
     };
 
-    const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K', customTitleHpt: number = 45, headerRowHpt: number = 140) => {
+    const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K', customTitleHpt: number = 45, headerRowHpt: number = 100) => {
         const ribbonData = [
             [{ v: "◀ BACK TO CONSOLE", l: { Target: "#'HOME_CONSOLE'!A1" }, s: navStyle }],
             [{ v: `  ${title.toUpperCase()}`, s: ribbonHeaderStyle }]
@@ -174,7 +176,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v9.0 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v9.3 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -290,7 +292,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { v: "Done By (Full Name)", s: headerStyle }, { v: "Verified By (Manager)", s: headerStyle },
         { v: "Status", s: headerStyle }, 
         { v: "Freq", s: headerStyle }, { v: "Risk", s: headerStyle },
-        { v: "Consequence", s: warningStyle }, { v: "Notes", s: coachingStyle }
+        { v: "Consequence", s: warningStyle }, { v: "Trainer's Notes", s: coachingStyle }
     ];
     const mData: any[][] = [[], [], [], mHeaders];
     
@@ -395,7 +397,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
     // --- 06. POPULATED SOP LIBRARY ---
-    const sopHeaders = [{ v: "Module", s: headerStyle }, { v: "Protocol ID", s: headerStyle }, { v: "Technical Standard / SOP", s: headerStyle }, { v: "Institutional Guideline", s: headerStyle }, { v: "Reference Code", s: headerStyle }];
+    const sopHeaders = [
+        { v: "Module", s: headerStyle }, 
+        { v: "Protocol ID", s: headerStyle }, 
+        { v: "Technical Standard / SOP", s: headerStyle }, 
+        { v: "Consequence of Failure", s: { ...headerStyle, fill: { patternType: 'solid', fgColor: { rgb: "450a0a" } } } },
+        { v: "Trainer's Notes", s: { ...headerStyle, fill: { patternType: 'solid', fgColor: { rgb: "064e3b" } } } },
+        { v: "Reference Code", s: headerStyle }
+    ];
     const sopData: any[][] = [[], [], [], sopHeaders];
     packChecklists.forEach(c => {
         c.tasks.forEach(t => {
@@ -403,17 +412,18 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: c.title, s: dataStyleCenter },
                 { v: t.id, s: dataStyleCenter },
                 { v: t.description, s: dataStyleLeft },
+                { v: t.consequence || "Operational Risk Applied.", s: warningStyle },
                 { v: t.trainerNotes || "Institutional standard applies.", s: coachingStyle },
-                { v: "ISO/HACCP v1.0", s: dataStyleCenter }
+                { v: "ISO/HACCP v9.3", s: dataStyleCenter }
             ]);
         });
     });
     const sopWs = utils.aoa_to_sheet(sopData);
-    sopWs['!cols'] = [25, 15, 60, 60, 20].map(w => ({ wch: w }));
-    addSovereignRibbon(sopWs, "Institutional SOP Database", 'E');
+    sopWs['!cols'] = [25, 15, 60, 60, 60, 20].map(w => ({ wch: w }));
+    addSovereignRibbon(sopWs, "Institutional SOP Database", 'F');
     utils.book_append_sheet(wb, sopWs, "SOP_LIBRARY");
 
-    // --- 07. GHOST SHEETS (INITIALIZED) ---
+    // --- 07. GHOST SHEETS ---
     const handoverHeaders = [{ v: "Branch", s: headerStyle }, { v: "Departing Shift Manager", s: headerStyle }, { v: "Arriving Shift Manager", s: headerStyle }, { v: "Critical Issues Carried Over", s: headerStyle }, { v: "Safety/EHS Clear?", s: headerStyle }, { v: "Handover Timestamp", s: headerStyle }];
     const handoverWs = utils.aoa_to_sheet([[], [], [], handoverHeaders]);
     addSovereignRibbon(handoverWs, "Shift Handover Bridge", 'F');
@@ -429,5 +439,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(healthWs, "Performance Analytics", 'E');
     utils.book_append_sheet(wb, healthWs, "BUSINESS_HEALTH");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_9.0.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_9.3.xlsx`);
 }
