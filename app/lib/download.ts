@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v10.6 - ASSIGNMENT PRECISION UPDATE
- * Features: Symmetric 70pt Headers, COUNTIFS-based Assignment Gate, Simplified Layman Vocab.
+ * Sovereign Engine v10.7 - OPERATIONAL DENSITY UPDATE
+ * Features: 70pt Headers, COUNTIFS-based Assignment Gate, Simplified Layman Vocab.
  * Sequence: Console -> Branch -> Hub -> Ledger -> Handover -> Incident -> Health -> Library -> Finance.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -22,7 +22,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const dayOfMonth = startDate.getDate();
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-SOVEREIGN-10.6-MASTER";
+    const ORDER_ID = "MM-SOVEREIGN-10.7-MASTER";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -178,7 +178,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v10.6 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v10.7 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -289,7 +289,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     // --- 03. TEAM HUB ---
     const getRolesForPack = (packId: string) => {
         if (packId === 'restaurants') {
-            return ["Owner / Managing Director", "COO / Regional Manager", "Unit General Manager", "Assistant Restaurant Manager", "Floor Captain (Shift A)", "Floor Captain (Shift B)", "Hostess / Reception", "Head Waiter", "Junior Steward", "Executive Chef", "Sous Chef", "CDP (Main Kitchen)", "Commi Chef (Prep)", "Kitchen Steward / Utility", "Finance & Accounts Head", "Billing Cashier (Shift A)", "Billing Cashier (Shift B)", "Store & Purchase Manager", "EHS & Food Safety Officer", "HR & Training Manager", "Technical Maintenance Lead", "Delivery & Logistics Lead"];
+            return ["Owner / Managing Director", "COO / Regional Manager", "Unit General Manager", "Assistant Restaurant Manager", "Floor Captain (Shift A)", "Floor Captain (Shift B)", "Hostess / Reception", "Head Waiter", "Junior Steward", "Executive Chef", "Sous Chef", "CDP (Main Kitchen)", "Commi Chef (Prep)", "Kitchen Steward / Utility", "Finance & Accounts Head", "Billing Cashier (Shift A)", "Billing Cashier (Shift B)", "Store & Purchase Manager", "EHS & Food Safety Officer", "Technical Maintenance Lead", "Delivery & Logistics Lead", "Bar Manager"];
         }
         if (packId === 'hotels_and_resorts') {
             return ["Owner / Managing Director", "COO / Owner", "General Manager", "Resident Manager", "Finance Controller", "Finance & Cashier", "Night Auditor", "Billing Desk (Shift A)", "Billing Desk (Shift B)", "Front Office Manager", "Duty Manager (Shift A)", "Duty Manager (Shift B)", "Customer Experience Lead", "Guest Relations Manager", "Concierge Lead", "Executive Housekeeper", "Head of Housekeeping", "Floor Supervisor (Shift A)", "Floor Supervisor (Shift B)", "Laundry Manager", "F&B Director", "Executive Chef", "Sous Chef", "Banquet Manager", "Events Manager", "Room Service Supervisor", "Chief Engineer", "Technical Lead", "IT & Digital Manager", "EHS Officer", "Security Chief", "HR Manager", "Training Manager", "Purchasing Manager", "Logistics Lead", "Fleet & Valet In-charge"];
@@ -462,7 +462,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: t.description, s: dataStyleLeft },
                 { v: t.consequence || "Operational Risk Applied.", s: warningStyle },
                 { v: t.trainerNotes || "Institutional standard applies.", s: coachingStyle },
-                { v: "ISO/HACCP v10.6", s: dataStyleCenter }
+                { v: "ISO/HACCP v10.7", s: dataStyleCenter }
             ]);
         });
     });
@@ -498,5 +498,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_10.6.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_10.7.xlsx`);
 }
