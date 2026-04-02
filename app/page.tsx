@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -9,6 +8,7 @@ import {
     Zap, 
     Timer, 
     ShieldCheck,
+    ShieldAlert,
     History,
     GraduationCap,
     Globe,
@@ -18,7 +18,6 @@ import {
     PackageCheck,
     AlertTriangle,
     LayoutGrid,
-    Maximize2,
     Lock,
     Users,
     ClipboardCheck,
@@ -48,12 +47,6 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 );
 
 const HeroSection = () => {
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
     return (
         <section className="relative w-full flex flex-col items-center h-[calc(100dvh-64px)] md:h-[calc(100vh-64px)] md:min-h-[700px] overflow-hidden bg-background">
             {/* Visual Brand Layer */}
@@ -178,7 +171,7 @@ const DeploymentSection = () => (
                     { s: "02", t: "OPEN", d: "Use Google Sheets or Excel. No setup." },
                     { s: "03", t: "ASSIGN", d: "Add your branches and team. Define roles." },
                     { s: "04", t: "START", d: "Operations begin. Tasks are already built." },
-                    { s: "05", t: "SEE", d: "Everything updates live. Command established." }
+                    { s: "05", t: "SEE", d: "Everything updates automatically." }
                 ].map((step, i) => (
                     <div key={step.s} className="p-8 rounded-3xl bg-black/40 border border-white/5 flex flex-col gap-4 group hover:border-primary/20 transition-all">
                         <span className="text-4xl font-black text-primary/10 group-hover:text-primary/20 transition-colors">{step.s}</span>
@@ -430,7 +423,7 @@ const NoSaaSSection = () => (
                         { t: "Excel / Google Sheets", i: FileSpreadsheet },
                         { t: "100% Private Data", i: Lock },
                         { t: "Offline Capable", i: Globe },
-                        { t: "One-time Payment", i: Infinity }
+                        { t: "One-time Payment", i: History }
                     ].map(item => (
                         <li key={item.t} className="flex items-center gap-4 text-primary-text font-black uppercase italic text-sm tracking-tight">
                             <item.i className="w-5 h-5 text-primary" /> {item.t}
