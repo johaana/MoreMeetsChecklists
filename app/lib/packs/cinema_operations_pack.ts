@@ -4,24 +4,29 @@ import type { PremiumPack } from "@/lib/premium-packs";
 export const cinema_operations_pack: PremiumPack = {
     id: 'cinema_operations_pack',
     title: "Cinema Operating System",
-    priceINR: 799,
-    priceUSD: 9,
+    priceINR: 5999,
+    priceUSD: 79,
+    competitorPriceUSD: 599,
+    updatedAt: "2025-02-24",
+    paymentId: 'pl_RaWEBHhFLQENxC',
+    lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
     category: "Entertainment & Events",
-    description: "The Sovereign v8.5 engine for cinema groups. Hardening 152+ control points from Projection QC to Concession Yield.",
+    description: "The Sovereign v9.2 technical engine for cinema groups and independent multiplexes. Hardening 152 control points from Projection QC to Concession Yield.",
     heroHeadline: "Stop Projection Failures and Catastrophic Safety Gaps",
     heroSubheadline: "Track technical readiness, auditorium standards, and concession yields—across 152+ control points.",
     pricingUrgency: "A single projection failure during a blockbuster opening costs 100x more than this entire system.",
     consultingAnchor: 5000,
     icon: "popcorn",
-    badgeText: "V8.5 SOVEREIGN",
+    badgeText: "V9.2 SOVEREIGN",
     badgeVariant: "accent",
-    whoIsItFor: ["Multiplex Owners", "Operations Heads", "General Managers", "Technical Directors"],
+    whoIsItFor: ["Multiplex Owners", "Operations Heads", "General Managers", "Technical Directors", "Concession Managers"],
     sampleItems: [
-        { text: "<strong>Projection Sound QC</strong>: DCP ingest and KDM validity tests pre-release.", icon: "projector" },
-        { text: "<strong>VIP Lounge Service</strong>: Zero-fail luxury seating and F&B service standards.", icon: "crown" },
-        { text: "<strong>F&B Concession Yield</strong>: Popcorn weight reconciliation and combo sales audits.", icon: "banknote" },
-        { text: "<strong>Housekeeping & Restroom</strong>: Hourly sanitation logs and seat-clean audits.", icon: "sparkles" },
-        { text: "<strong>Digital ORM</strong>: 24h response for Google/BookMyShow reviews.", icon: "globe" }
+        { text: "<strong>Projection Sound QC</strong>: DCP ingest and KDM validity tests pre-release to ensure zero black-screen events.", icon: "projector" },
+        { text: "<strong>F&B Concession Yield</strong>: Corn-to-bucket reconciliation and combo sales audits to stop high-value leakage.", icon: "banknote" },
+        { text: "<strong>Zero-Fail Fire Safety</strong>: Mandatory daily physical checks of every exit push-bar and alarm zone.", icon: "flame" },
+        { text: "<strong>Reputation Hub</strong>: 24h response pulse for Google, BookMyShow, and Yelp reviews to protect rankings.", icon: "star" },
+        { text: "<strong>Institutional Memory</strong>: Digital instructions ensure that even with high floor-staff turnover, your standards stay.", icon: "history" },
+        { text: "<strong>Sovereign Infrastructure</strong>: No recurring SaaS fees. You own your cinema data and the engine forever.", icon: "lock" }
     ],
     checklists: [
         {
@@ -29,21 +34,57 @@ export const cinema_operations_pack: PremiumPack = {
             department: "Executive",
             frequency: "Weekly",
             role: "COO / Owner",
-            summary: "Strategic multi-unit oversight.",
+            summary: "Strategic multi-unit performance and group-wide risk oversight.",
             icon: "crown",
             tasks: [
-                { id: "CIN-EXE-01", description: "Audit group-wide F&B margin vs. ticket sales trends.", priority: "High", riskLevel: "Medium", consequence: "Undetected group inefficiency.", proof: "Financial Shield", trainerNotes: "Compare ATP vs. SPP weekly." }
+                { id: "CIN-EXE-01", description: "Audit group-wide F&B margin vs. ticket sales trends.", priority: "High", riskLevel: "Medium", consequence: "Undetected group inefficiency and margin erosion.", proof: "Financial Shield", trainerNotes: "Compare ATP (Avg Ticket Price) vs. SPP (Spend Per Person) weekly." },
+                { id: "CIN-EXE-02", description: "Verify validity of Entertainment Tax and Fire NOC certs.", priority: "High", riskLevel: "High", consequence: "Government sealing of premises and massive PR disaster.", proof: "License File", trainerNotes: "Renew 60 days before expiry date." },
+                { id: "CIN-EXE-03", description: "Review 'Empire Mood' and shift completion across all branches.", priority: "High", riskLevel: "Low", consequence: "Operational drift and loss of multi-unit accountability.", proof: "Console Snapshot", trainerNotes: "Identify the bottom 2 units for GM intervention." },
+                { id: "CIN-EXE-04", description: "Audit mystery auditor scores: focus on 'Red' failures.", priority: "Medium", riskLevel: "Low", consequence: "Luxury brand dilution.", proof: "Audit Report", trainerNotes: "Circulate failure themes to all GMs." },
+                { id: "CIN-EXE-05", description: "Verify CAPEX milestone photos for screen upgrades.", priority: "Medium", riskLevel: "Medium", consequence: "Budget overruns and delayed launches.", proof: "Project Log", trainerNotes: "Check 50% completion step photos." },
+                { id: "CIN-EXE-06", description: "Review Insurance: Public Liability coverage validity.", priority: "High", riskLevel: "High", consequence: "Financial ruin during a crowd incident.", proof: "Policy File", trainerNotes: "Verify 'Terrorism' and 'Fire' clauses are active." },
+                { id: "CIN-EXE-07", description: "Audit senior management attendance during blockbuster peaks.", priority: "Low", riskLevel: "Low", consequence: "Management disconnect during high-risk slots.", proof: "Roster Review", trainerNotes: "GMs must be on floor for Sat/Sun evening shows." },
+                { id: "CIN-EXE-08", description: "Check status of unresolved 'Red' safety incidents.", priority: "High", riskLevel: "High", consequence: "Escalated legal liability.", proof: "Incident Log", trainerNotes: "Resolve all P1 failures in < 24h." },
+                { id: "CIN-EXE-09", description: "Review utility intensity (KWH) vs Screen occupancy.", priority: "Low", riskLevel: "Low", consequence: "Unmonitored energy spikes.", proof: "Utility Tracker", trainerNotes: "Check AC usage during off-peak hours." },
+                { id: "CIN-EXE-10", description: "Audit Fixed Asset tags on new projection hardware.", priority: "Low", riskLevel: "Low", consequence: "Loss of expensive institutional property.", proof: "Asset Register", trainerNotes: "Tag every item > $1000 value." },
+                { id: "CIN-EXE-11", description: "Verify 100% response to social media grievances.", priority: "High", riskLevel: "Low", consequence: "Viral reputation damage.", proof: "ORM Dashboard", trainerNotes: "Address 1-star reviews in < 2 hours." },
+                { id: "CIN-EXE-12", description: "Audit petty cash surprise blind count.", priority: "Medium", riskLevel: "High", consequence: "Small-scale internal embezzlement.", proof: "Audit Note", trainerNotes: "Signature required for all vouchers." },
+                { id: "CIN-EXE-13", description: "Check status of 'VIP Lounge' premium revenue growth.", priority: "Low", riskLevel: "Low", consequence: "Stagnant high-margin revenue.", proof: "Sales Report", trainerNotes: "Compare vs previous week avg." },
+                { id: "CIN-EXE-14", description: "Verify NDAs signed by visiting distributors/vendors.", priority: "High", riskLevel: "Medium", consequence: "Loss of trade secrets.", proof: "Signed File", trainerNotes: "Store in secure HR vault." },
+                { id: "CIN-EXE-15", description: "Review resignation exit interview notes.", priority: "Low", riskLevel: "Low", consequence: "Unaddressed churn causes.", proof: "Exit Notes", trainerNotes: "Identify 'Manager Friction' early." },
+                { id: "CIN-EXE-16", description: "Verify 'Disaster Recovery' IT server sync status.", priority: "High", riskLevel: "High", consequence: "Total loss of ticketing data.", proof: "System Log", trainerNotes: "Manual backup test every Monday." },
+                { id: "CIN-EXE-17", description: "Audit payroll accuracy for all units.", priority: "High", riskLevel: "Medium", consequence: "Employee disputes and legal risk.", proof: "Payroll Register", trainerNotes: "Check OT calculations for peak weeks." },
+                { id: "CIN-EXE-18", description: "Check availability of spare projector parts inventory.", priority: "Medium", riskLevel: "Medium", consequence: "Extended downtime during big releases.", proof: "Stock Sheet", trainerNotes: "Audit 'High-Fail' items monthly." },
+                { id: "CIN-EXE-19", description: "Final Weekly Strategic sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of board-level oversight.", proof: "Signed Summary", trainerNotes: "Submit to Owners every Monday." }
             ]
         },
         {
-            title: "VIP Lounge Command",
+            title: "Theater Command",
             department: "Operations",
-            frequency: "Per Show",
+            frequency: "Daily",
             role: "General Manager",
-            summary: "Premium service standard governance.",
-            icon: "crown",
+            summary: "Ambiance, floor standards, and show-readiness governance.",
+            icon: "theater",
             tasks: [
-                { id: "CIN-VIP-01", description: "Verify recliner motor functionality in VIP rows.", priority: "Medium", riskLevel: "Low", consequence: "Refund requests and CX drop.", proof: "Visual Test", trainerNotes: "Test before doors open." }
+                { id: "CIN-OPS-01", description: "Visual Ambiance Check: Lobby Music, Temp, Scent.", priority: "Medium", riskLevel: "Low", consequence: "Poor first impression and dwell time.", proof: "Daily Log", trainerNotes: "Lobby temp target: 23°C." },
+                { id: "CIN-OPS-02", description: "Verify 100% signage illumination (Neon/LED).", priority: "Low", riskLevel: "Low", consequence: "Low visibility and brand dilution.", proof: "Photo at Night", trainerNotes: "Check at sunset daily." },
+                { id: "CIN-OPS-03", description: "Brief staff on daily movie lineup and combo promos.", priority: "High", riskLevel: "Low", consequence: "Uninformed staff and lost upsells.", proof: "Briefing Log", trainerNotes: "Mention 'Item of the Day' at briefing." },
+                { id: "CIN-OPS-04", description: "Inspect VIP Lounge seating functionality.", priority: "High", riskLevel: "Low", consequence: "Premium guest complaints/refunds.", proof: "Visual Check", trainerNotes: "Test recliners in 2 rows daily." },
+                { id: "CIN-OPS-05", description: "Audit restroom hygiene logs: verify 1-h frequency.", priority: "High", riskLevel: "Low", consequence: "Major driver of negative reviews.", proof: "Hourly Sheet", trainerNotes: "Check soap and sanitizers." },
+                { id: "CIN-OPS-06", description: "Verify staff grooming and ID card visibility.", priority: "Low", riskLevel: "Low", consequence: "Professional image drop.", proof: "Visual Audit", trainerNotes: "Check badges and clean uniforms." },
+                { id: "CIN-OPS-07", description: "Check status of 'Open' guest feedback alerts.", priority: "High", riskLevel: "High", consequence: "Reputation crisis.", proof: "Feedback Log", trainerNotes: "Resolve all < 4 hours." },
+                { id: "CIN-OPS-08", description: "Verify digital menu item availability (Sync with stock).", priority: "High", riskLevel: "Low", consequence: "Guest frustration at counter.", proof: "App Check", trainerNotes: "Sync POS with inventory daily." },
+                { id: "CIN-OPS-09", description: "Inspect auditorium temperature during show.", priority: "Medium", riskLevel: "Low", consequence: "Guest discomfort during peak occupancy.", proof: "Temp Note", trainerNotes: "Target exactly 21°C during full house." },
+                { id: "CIN-OPS-10", description: "Audit 'Free-Ticket' quota documentation.", priority: "High", riskLevel: "High", consequence: "Revenue leakage/internal fraud.", proof: "Quota Registry", trainerNotes: "Verify eligibility ID cards." },
+                { id: "CIN-OPS-11", description: "Check lighting in 'Blind Spot' parking zones.", priority: "Medium", riskLevel: "Medium", consequence: "Security risk/Assault.", proof: "Photo", trainerNotes: "Replace fused bulbs < 24h." },
+                { id: "CIN-OPS-12", description: "Verify availability of spare 3D glasses.", priority: "Low", riskLevel: "Low", consequence: "Lost revenue during 3D shows.", proof: "Stock Check", trainerNotes: "Min 100 sets buffer per screen." },
+                { id: "CIN-OPS-13", description: "Audit auditorium seat-cleanliness pulse.", priority: "High", riskLevel: "Low", consequence: "Unhygienic student experience.", proof: "Sweep Log", trainerNotes: "Check cup-holders for stickiness." },
+                { id: "CIN-OPS-14", description: "Check Lobby Wi-Fi guest portal login speed.", priority: "Low", riskLevel: "Low", consequence: "Immediate guest complaints.", proof: "Phone Test", trainerNotes: "Login must work in < 10s." },
+                { id: "CIN-OPS-15", description: "Verify staff break-room hygiene.", priority: "Low", riskLevel: "Low", consequence: "Low morale and pest risk.", proof: "Cleaning Note", trainerNotes: "No food allowed in lockers." },
+                { id: "CIN-OPS-16", description: "Audit 'Upsell' contest results for shift.", priority: "Low", riskLevel: "Low", consequence: "Missed concession revenue.", proof: "Leaderboard", trainerNotes: "Reward at shift end." },
+                { id: "CIN-OPS-17", description: "Verify lobby TV content daypart match.", priority: "Low", riskLevel: "Low", consequence: "Inappropriate energy for ambiance.", proof: "Visual Check", trainerNotes: "Mute if noise > 60dB." },
+                { id: "CIN-OPS-18", description: "Final Daily Operations sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of duty control.", proof: "Signed Log", trainerNotes: "Brief GM on overnight security." },
+                { id: "CIN-OPS-19", description: "Review P1 breakdown TAT for shift.", priority: "High", riskLevel: "Low", consequence: "Loss of focus.", proof: "Job Log", trainerNotes: "Target P1 fix in < 30m." }
             ]
         },
         {
@@ -51,10 +92,28 @@ export const cinema_operations_pack: PremiumPack = {
             department: "Finance",
             frequency: "Daily",
             role: "Finance & Cashier",
-            summary: "Protects high-margin F&B revenue.",
+            summary: "Protects high-margin F&B revenue and profit.",
             icon: "banknote",
             tasks: [
-                { id: "CIN-FNB-01", description: "Reconcile raw popcorn corn-to-bucket yield.", priority: "High", riskLevel: "Low", consequence: "Massive profit leakage.", proof: "Yield Sheet", trainerNotes: "Target yield: 1:40 ratio." }
+                { id: "CIN-FIN-01", description: "Reconcile raw popcorn corn-to-bucket yield.", priority: "High", riskLevel: "Low", consequence: "Massive profit leakage.", proof: "Yield Sheet", trainerNotes: "Target yield: 1:40 ratio." },
+                { id: "CIN-FIN-02", description: "POS settlements vs Bank capture matching.", priority: "High", riskLevel: "High", consequence: "Cashier-driven internal theft.", proof: "Match Note", trainerNotes: "Report variance > ₹100 instantly." },
+                { id: "CIN-FIN-03", description: "Audit 'Voided' transactions for shift.", priority: "High", riskLevel: "Medium", consequence: "Bill manipulation leakage.", proof: "POS Audit", trainerNotes: "Every void needs reason code." },
+                { id: "CIN-FIN-04", description: "Match Cash-to-Bank witnessed seal.", priority: "High", riskLevel: "High", consequence: "Internal revenue theft.", proof: "Bank Slip", trainerNotes: "Deposit before 11 AM daily." },
+                { id: "CIN-FIN-05", description: "Verify Cash Float denominations.", priority: "High", riskLevel: "High", consequence: "Operational delays at counter.", proof: "Float Sheet", trainerNotes: "Record denominations separately." },
+                { id: "CIN-FIN-06", description: "Check aggregator (Zomato) payouts vs dispatch.", priority: "High", riskLevel: "Medium", consequence: "Loss of profit via platform errors.", proof: "Payout Reconcile", trainerNotes: "Flag 'Cancelled' orders sent." },
+                { id: "CIN-FIN-07", description: "Audit 'Discount' code usage pulse.", priority: "Medium", riskLevel: "Medium", consequence: "Margin erosion.", proof: "POS Report", trainerNotes: "Verify reason codes." },
+                { id: "CIN-FIN-08", description: "Verify invoice entry in < 24h.", priority: "Medium", riskLevel: "Low", consequence: "Inaccurate real-time inventory.", proof: "Entry Log", trainerNotes: "Match physical receiving notes." },
+                { id: "CIN-FIN-09", description: "Audit credit card machine tamper seals.", priority: "High", riskLevel: "High", consequence: "Skimming legal disaster.", proof: "Visual Audit", trainerNotes: "Check for mismatched screws." },
+                { id: "CIN-FIN-10", description: "Check stationery stock (Bill rolls/Labels).", priority: "Low", riskLevel: "Low", consequence: "Billing halt.", proof: "Supply Check", trainerNotes: "Min 1 week buffer stock." },
+                { id: "CIN-FIN-11", description: "Audit staff travel expense claims.", priority: "Low", riskLevel: "Medium", consequence: "Inflated expenses.", proof: "Claim File", trainerNotes: "Vouchers needed for all." },
+                { id: "CIN-FIN-12", description: "Verify vendor TDS deductions.", priority: "Medium", riskLevel: "Medium", consequence: "Tax non-compliance.", proof: "TDS Register", trainerNotes: "Check PAN status monthly." },
+                { id: "CIN-FIN-13", description: "Review 'SPP' trend for shift.", priority: "Low", riskLevel: "Low", consequence: "Underperforming upsells.", proof: "Sales Report", trainerNotes: "Compare vs previous week avg." },
+                { id: "CIN-FIN-14", description: "Check 'Item Variance' for high-risk stock.", priority: "High", riskLevel: "High", consequence: "Systemic portioning fail.", proof: "Variance Report", trainerNotes: "Focus on > 5% variance." },
+                { id: "CIN-FIN-15", description: "Audit utility meters for EOD.", priority: "Low", riskLevel: "Low", consequence: "Undetected energy spikes.", proof: "Meter Log", trainerNotes: "Check at night shift end." },
+                { id: "CIN-FIN-16", description: "Verify vendor payment approvals.", priority: "Medium", riskLevel: "Low", consequence: "Paying incorrect rates.", proof: "Approval Note", trainerNotes: "Cross-check market rate list." },
+                { id: "CIN-FIN-17", description: "Check availability of bill folders.", priority: "Low", riskLevel: "Low", consequence: "Poor billing presentation.", proof: "Stock Note", trainerNotes: "Clean with alcohol wipe." },
+                { id: "CIN-FIN-18", description: "Final daily Finance sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of fiscal control.", proof: "Signed Summary", trainerNotes: "Attach exception reports." },
+                { id: "CIN-FIN-19", description: "Review P1 vendor service TAT.", priority: "Medium", riskLevel: "Low", consequence: "Delayed repairs.", proof: "SLA Match", trainerNotes: "Penalty for > 4h delay." }
             ]
         },
         {
@@ -62,10 +121,28 @@ export const cinema_operations_pack: PremiumPack = {
             department: "Safety",
             frequency: "Daily",
             role: "EHS Officer",
-            summary: "Ensures safe evacuation and fire-readiness.",
+            summary: "Infrastructure hardening and crowd safety governance.",
             icon: "hard-hat",
             tasks: [
-                { id: "CIN-EHS-01", description: "Verify all auditorium fire-exits are unlocked and clear.", priority: "High", riskLevel: "High", consequence: "Total institutional catastrophe (Fatal).", proof: "Patrol Log", trainerNotes: "Physical check of push-bars." }
+                { id: "CIN-EHS-01", description: "Verify all auditorium fire-exits are unlocked and clear.", priority: "High", riskLevel: "High", consequence: "Total institutional catastrophe (Fatal).", proof: "Patrol Log", trainerNotes: "Physical check of push-bars." },
+                { id: "CIN-EHS-02", description: "Check fire extinguisher pressure and expiry.", priority: "High", riskLevel: "High", consequence: "Total liability in case of fire.", proof: "Gauge Log", trainerNotes: "Tag and date every cylinder." },
+                { id: "CIN-EHS-03", description: "CCTV Audit: Verify 30-day backup status.", priority: "High", riskLevel: "High", consequence: "Loss of evidence.", proof: "System Screen", trainerNotes: "Check timestamp sync." },
+                { id: "CIN-EHS-04", description: "Verify status of Pest Control bait stations.", priority: "Medium", riskLevel: "Low", consequence: "Infestation in auditorium.", proof: "Pest Log", trainerNotes: "Target zero sightings." },
+                { id: "CIN-EHS-05", description: "Test fire alarm panel zones.", priority: "High", riskLevel: "High", consequence: "Fatal delay in alert.", proof: "Test Log", trainerNotes: "Rotate zones weekly." },
+                { id: "CIN-EHS-06", description: "Audit staff entry/exit bag point.", priority: "Medium", riskLevel: "High", consequence: "Inventory theft.", proof: "Security Note", trainerNotes: "No bags in prep zone." },
+                { id: "CIN-EHS-07", description: "Check perimeter lighting bulbs.", priority: "Low", riskLevel: "Low", consequence: "Night safety risk.", proof: "Visual Check", trainerNotes: "Replace fused bulbs < 24h." },
+                { id: "CIN-EHS-08", description: "First-aid kit shelf stock audit.", priority: "Medium", riskLevel: "Medium", consequence: "Inability to treat injuries.", proof: "Stock Audit", trainerNotes: "Check burn-gel levels." },
+                { id: "CIN-EHS-09", description: "Chemical store spill containment check.", priority: "High", riskLevel: "Medium", consequence: "Toxic gas exposure.", proof: "Safety Log", trainerNotes: "Separate acids/alkalis." },
+                { id: "CIN-EHS-10", description: "Verify 'Wet Floor' signage availability.", priority: "Medium", riskLevel: "Medium", consequence: "Slip-and-fall lawsuits.", proof: "Visual Check", trainerNotes: "Mandatory during mopping." },
+                { id: "CIN-EHS-11", description: "Electrical panel infrared heat test.", priority: "High", riskLevel: "High", consequence: "Electrical fire risk.", proof: "Panel Log", trainerNotes: "Check for smell or heat." },
+                { id: "CIN-EHS-12", description: "Rear delivery lock integrity check.", priority: "High", riskLevel: "High", consequence: "After-hours burglary.", proof: "Lock Audit", trainerNotes: "Keys to GM nightly." },
+                { id: "CIN-EHS-13", description: "Emergency Contact List posted clearly.", priority: "Low", riskLevel: "Low", consequence: "Communication delay.", proof: "Photo", trainerNotes: "Include Fire/Police/Owner." },
+                { id: "CIN-EHS-14", description: "Incident Report 100% completion check.", priority: "Medium", riskLevel: "Low", consequence: "No record for defense.", proof: "Report File", trainerNotes: "Log even small incidents." },
+                { id: "CIN-EHS-15", description: "Back-alley waste removal (Cardboard).", priority: "High", riskLevel: "Medium", consequence: "Arson risk.", proof: "Walkthrough", trainerNotes: "Flatten boxes daily." },
+                { id: "CIN-EHS-16", description: "Vendor visitor badge enforcement.", priority: "Low", riskLevel: "Low", consequence: "Unauthorized person risk.", proof: "Patrol Log", trainerNotes: "Badges must be worn." },
+                { id: "CIN-EHS-17", description: "Emergency light battery run test.", priority: "Medium", riskLevel: "High", consequence: "Darkness during power fail.", proof: "Test Note", trainerNotes: "Run 15 mins monthly." },
+                { id: "CIN-EHS-18", description: "Final nightly safety sign-off.", priority: "High", riskLevel: "Low", consequence: "Systemic risk gap.", proof: "Manager Initials", trainerNotes: "Physical perimeter touch." },
+                { id: "CIN-EHS-19", description: "Test 'Panic Button' at box office/vault.", priority: "High", riskLevel: "High", consequence: "Robbery response delay.", proof: "Test Log", trainerNotes: "Silent test via monitoring co." }
             ]
         },
         {
@@ -73,10 +150,28 @@ export const cinema_operations_pack: PremiumPack = {
             department: "HR",
             frequency: "Monthly",
             role: "HR Manager",
-            summary: "Staff certification and grooming.",
+            summary: "Staff certification, health, and grooming governance.",
             icon: "users",
             tasks: [
-                { id: "CIN-HR-01", description: "Verify grooming standards for front-of-house staff.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution.", proof: "Visual Audit", trainerNotes: "Check uniforms at briefing." }
+                { id: "CIN-HR-01", description: "Verify staff health certs (F&B).", priority: "High", riskLevel: "Medium", consequence: "Regulatory fines.", proof: "Cert File", trainerNotes: "Renew every 6 months." },
+                { id: "CIN-HR-02", description: "Briefing grooming audit: check badges/uniforms.", priority: "Low", riskLevel: "Low", consequence: "Brand dilution.", proof: "Attendance Log", trainerNotes: "Check name-tags/clean shirts." },
+                { id: "CIN-HR-03", description: "Update 'Service Recovery' training matrix.", priority: "High", riskLevel: "Low", consequence: "Loss of unhappy guests.", proof: "Training Log", trainerNotes: "Role-play L.E.A.R.N. protocol." },
+                { id: "CIN-HR-04", description: "Audit staff attendance trends: latecomers.", priority: "Medium", riskLevel: "Low", consequence: "Operational delays.", proof: "Biometric Log", trainerNotes: "Flag > 3 late entries/week." },
+                { id: "CIN-HR-05", description: "Verify 'Safety Drill' enrollment.", priority: "High", riskLevel: "High", consequence: "Staff panic in fire.", proof: "Drill Log", trainerNotes: "Surprise every 90 days." },
+                { id: "CIN-HR-06", description: "Inspect staff locker hygiene.", priority: "Low", riskLevel: "Low", consequence: "Pest risk in staff zone.", proof: "Cleaning Log", trainerNotes: "Open lockers Sundays." },
+                { id: "CIN-HR-07", description: "Check uniform stock levels.", priority: "Low", riskLevel: "Low", consequence: "Unprofessional hires.", proof: "Inventory Check", trainerNotes: "Min 2 sets per person." },
+                { id: "CIN-HR-08", description: "Audit 'Upsell' contest results.", priority: "Low", riskLevel: "Low", consequence: "Missed revenue.", proof: "Leaderboard", trainerNotes: "Reward at briefing." },
+                { id: "CIN-HR-09", description: "Check first-aid responder roster.", priority: "High", riskLevel: "High", consequence: "Medical liability risk.", proof: "Roster Note", trainerNotes: "Min 1 certified/shift." },
+                { id: "CIN-HR-10", description: "Verify NDAs signed by new hires.", priority: "High", riskLevel: "Medium", consequence: "Loss of trade secrets.", proof: "Signed File", trainerNotes: "Store in secure HR vault." },
+                { id: "CIN-HR-11", description: "Review resignation exit interview notes.", priority: "Low", riskLevel: "Low", consequence: "Unaddressed churn causes.", proof: "Exit Notes", trainerNotes: "Identify manager friction." },
+                { id: "CIN-HR-12", description: "Audit 'Overtime' vs GM budget.", priority: "Medium", riskLevel: "Medium", consequence: "Payroll inflation.", proof: "OT Tracker", trainerNotes: "Must be pre-approved." },
+                { id: "CIN-HR-13", description: "Verify medical insurance coverage.", priority: "Medium", riskLevel: "Low", consequence: "Employee distress liability.", proof: "Policy File", trainerNotes: "Renew 30 days early." },
+                { id: "CIN-HR-14", description: "Check grooming kit availability in lockers.", priority: "Low", riskLevel: "Low", consequence: "Slipping standards.", proof: "Visual Check", trainerNotes: "Razors/Deo in lockers." },
+                { id: "CIN-HR-15", description: "Conduct 'Code Red' verbal quiz.", priority: "High", riskLevel: "High", consequence: "Emergency protocol failure.", proof: "Quiz Log", trainerNotes: "Ask random staff daily." },
+                { id: "CIN-HR-16", description: "Verify 'Sexual Harassment' policy post.", priority: "High", riskLevel: "High", consequence: "Legal liability/Toxic culture.", proof: "Photo", trainerNotes: "Display in staff room." },
+                { id: "CIN-HR-17", description: "Audit 'Uniform Laundry' cycle time.", priority: "Low", riskLevel: "Low", consequence: "Dirty clothes.", proof: "Laundry Log", trainerNotes: "Target < 24h turnaround." },
+                { id: "CIN-HR-18", description: "Review 'Training Satisfaction' survey.", priority: "Low", riskLevel: "Low", consequence: "Ineffective training spend.", proof: "Survey Note", trainerNotes: "Target > 80% positive." },
+                { id: "CIN-HR-19", description: "Final monthly HR matrix sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of admin control.", proof: "Signed Matrix", trainerNotes: "Submit to GM." }
             ]
         },
         {
@@ -84,10 +179,28 @@ export const cinema_operations_pack: PremiumPack = {
             department: "Technical",
             frequency: "Per Show",
             role: "Technical Lead",
-            summary: "Zero-fail protocols for digital media.",
+            summary: "Zero-fail protocols for digital media and projection hardware.",
             icon: "projector",
             tasks: [
-                { id: "CIN-PRO-01", description: "Pre-Show: Test DCP ingest and KDM validity.", priority: "High", riskLevel: "High", consequence: "Black screen during blockbuster.", proof: "System Log", trainerNotes: "Check keys 4h before show." }
+                { id: "CIN-PRO-01", description: "Pre-Show: Test DCP ingest and KDM validity.", priority: "High", riskLevel: "High", consequence: "Black screen during blockbuster.", proof: "System Log", trainerNotes: "Check keys 4h before show." },
+                { id: "CIN-PRO-02", description: "Audit sound-rack cooling fans.", priority: "High", riskLevel: "High", consequence: "Amplifier burnout mid-show.", proof: "Visual Audit", trainerNotes: "Check for red LED error lights." },
+                { id: "CIN-PRO-03", description: "Check projector lamp-hours against baseline.", priority: "Medium", riskLevel: "Medium", consequence: "Dull picture quality.", proof: "Lamp Log", trainerNotes: "Target replacement at 1,200h." },
+                { id: "CIN-PRO-04", description: "Verify 7.1 sound zone balance.", priority: "Medium", riskLevel: "Low", consequence: "Distorted audio experience.", proof: "Pink-noise Test", trainerNotes: "Check surround speakers weekly." },
+                { id: "CIN-PRO-05", description: "Test POS backup and internet failover.", priority: "High", riskLevel: "High", consequence: "Inability to bill during peak.", proof: "Test Note", trainerNotes: "Test with main router off." },
+                { id: "CIN-PRO-06", description: "AC filter cleaning / Lobby temp audit.", priority: "Medium", riskLevel: "Low", consequence: "Guest discomfort/high bills.", proof: "Maint Log", trainerNotes: "Target exactly 23°C." },
+                { id: "CIN-PRO-07", description: "Backup Generator fuel/load test.", priority: "High", riskLevel: "High", consequence: "Total blackout/lost sales.", proof: "Start-test Log", trainerNotes: "Run 10 mins every Sunday." },
+                { id: "CIN-PRO-08", description: "Intercom dial-test.", priority: "Low", riskLevel: "Low", consequence: "Communication gap.", proof: "Test Call", trainerNotes: "Ensure 100% clear audio." },
+                { id: "CIN-PRO-09", description: "Gas Leak Detector battery check.", priority: "High", riskLevel: "High", consequence: "Undetected gas buildup.", proof: "Alarm Test", trainerNotes: "Replace batteries every 6m." },
+                { id: "CIN-PRO-10", description: "Server Room AC (Target 20C).", priority: "High", riskLevel: "High", consequence: "TMS/Data fail.", proof: "Temp Reading", trainerNotes: "Check backup split-unit." },
+                { id: "CIN-PRO-11", description: "Verify 'Content Protection' lock on TMS.", priority: "High", riskLevel: "High", consequence: "Piracy legal risk.", proof: "System Log", trainerNotes: "Change password quarterly." },
+                { id: "CIN-PRO-12", description: "Test 3D polarizer sync.", priority: "Medium", riskLevel: "Low", consequence: "Blurred visual/Complaints.", proof: "Visual Test", trainerNotes: "Test with calibrated glasses." },
+                { id: "CIN-PRO-13", description: "Log UPS battery bank voltage.", priority: "High", riskLevel: "High", consequence: "Blackout interruption.", proof: "Gauge Log", trainerNotes: "Target 12.6V per unit." },
+                { id: "CIN-PRO-14", description: "Inspect screen masking motors.", priority: "Low", riskLevel: "Low", consequence: "Wrong aspect ratio.", proof: "Visual Check", trainerNotes: "Lubricate rails monthly." },
+                { id: "CIN-PRO-15", description: "Verify Dolby/Atmos license pulse.", priority: "Medium", riskLevel: "Low", consequence: "Sound quality downgrade.", proof: "Dashboard", trainerNotes: "Check for firmware errors." },
+                { id: "CIN-PRO-16", description: "Check projector lens dust levels.", priority: "Low", riskLevel: "Low", consequence: "Soft focus.", proof: "Visual Audit", trainerNotes: "Clean with blower only." },
+                { id: "CIN-PRO-17", description: "Audit server room hygiene/dust.", priority: "Low", riskLevel: "Low", consequence: "Equipment fire risk.", proof: "Cleaning Note", trainerNotes: "No boxes allowed in UPS room." },
+                { id: "CIN-PRO-18", description: "Final Technical sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of maintenance control.", proof: "Signed Log", trainerNotes: "Report parts needed to Owner." },
+                { id: "CIN-PRO-19", description: "Review P1 breakdown TAT for shift.", priority: "High", riskLevel: "Low", consequence: "Loss of focus.", proof: "Job Log", trainerNotes: "Target P1 fix in < 30m." }
             ]
         },
         {
@@ -95,10 +208,28 @@ export const cinema_operations_pack: PremiumPack = {
             department: "Admin",
             frequency: "Daily",
             role: "Customer Experience Lead",
-            summary: "Reputation and ticketing integrity.",
+            summary: "Ticketing integrity, digital ORM, and first-touch governance.",
             icon: "globe",
             tasks: [
-                { id: "CIN-BOX-01", description: "Review response: 100% BMS/Google review pulse.", priority: "High", riskLevel: "Medium", consequence: "Ranking drop and lost bookings.", proof: "Review Dashboard", trainerNotes: "Reply to all ratings < 24h." }
+                { id: "CIN-BOX-01", description: "Review response: 100% BMS/Google review pulse.", priority: "High", riskLevel: "Medium", consequence: "Ranking drop and lost bookings.", proof: "Review Dashboard", trainerNotes: "Reply to all ratings < 24h." },
+                { id: "CIN-BOX-02", description: "Google Maps 'Live Status' opening hours check.", priority: "High", riskLevel: "Low", consequence: "Guests arrive to 'Closed' site.", proof: "Mobile Check", trainerNotes: "Update for holidays instantly." },
+                { id: "CIN-BOX-03", description: "Social Media: Answer all DMs < 30m.", priority: "Medium", riskLevel: "Low", consequence: "Lost booking revenue.", proof: "Inbox Clear", trainerNotes: "Confirm via WhatsApp." },
+                { id: "CIN-BOX-04", description: "Audit 'Free-Parking' validation log.", priority: "Low", riskLevel: "Low", consequence: "Revenue leakage.", proof: "Log Match", trainerNotes: "Match vs Ticket IDs." },
+                { id: "CIN-BOX-05", description: "Verify 'Promo Code' validity on web/app.", priority: "High", riskLevel: "Medium", consequence: "Booking friction.", proof: "Test Booking", trainerNotes: "Check 'Blockbuster' codes." },
+                { id: "CIN-BOX-06", description: "Review daily feedback trend for shift.", priority: "Medium", riskLevel: "Low", consequence: "Undetected quality drop.", proof: "Trend Log", trainerNotes: "Highlight top 3 complaints." },
+                { id: "CIN-BOX-07", description: "Audit 'Feedback QR' placement in lobby.", priority: "Low", riskLevel: "Low", consequence: "Low volume of audit data.", proof: "Visual Check", trainerNotes: "Stickers on every table." },
+                { id: "CIN-BOX-08", description: "Check helpdesk stationery (Pens/Forms).", priority: "Low", riskLevel: "Low", consequence: "Operational friction.", proof: "Supply Audit", trainerNotes: "Check at 8 AM daily." },
+                { id: "CIN-BOX-09", description: "Verify 100% reply to Social Comments.", priority: "Medium", riskLevel: "Low", consequence: "PR fire ignored.", proof: "Inbox Clear", trainerNotes: "Target < 4h response." },
+                { id: "CIN-BOX-10", description: "Audit valet car return TAT.", priority: "Medium", riskLevel: "Low", consequence: "Crowded porch exit.", proof: "Log Match", trainerNotes: "Target return in < 8 mins." },
+                { id: "CIN-BOX-11", description: "Verify lobby TV trailers daypart match.", priority: "Low", riskLevel: "Low", consequence: "Inappropriate energy.", proof: "Volume Check", trainerNotes: "Show family trailers till 6 PM." },
+                { id: "CIN-BOX-12", description: "Check availability of spare face masks.", priority: "Low", riskLevel: "Low", consequence: "Airborne risk liability.", proof: "Stock Check", trainerNotes: "Offer to coughing guests." },
+                { id: "CIN-BOX-13", description: "Verify 'VIP Guest' arrival setup.", priority: "Medium", riskLevel: "Low", consequence: "Loss of institutional trust.", proof: "Photo", trainerNotes: "Escalate to GM instantly." },
+                { id: "CIN-BOX-14", description: "Audit ticketing kiosk touchscreen hygiene.", priority: "Low", riskLevel: "Low", consequence: "Unhygienic touch-points.", proof: "Cleaning Note", trainerNotes: "Wipe with alcohol 4 times daily." },
+                { id: "CIN-BOX-15", description: "Check Box Office bill folder stock.", priority: "Low", riskLevel: "Low", consequence: "Poor billing image.", proof: "Stock Note", trainerNotes: "Clean with alcohol wipe." },
+                { id: "CIN-BOX-16", description: "Review 'Abandoned Cart' app stats.", priority: "Low", riskLevel: "Low", consequence: "Unrealized sales leakage.", proof: "Web Report", trainerNotes: "Trigger recovery SMS < 1h." },
+                { id: "CIN-BOX-17", description: "Verify 100% KYC for student discounts.", priority: "Medium", riskLevel: "Low", consequence: "Revenue loss via fraud.", proof: "ID Audit", trainerNotes: "Verify original school ID." },
+                { id: "CIN-BOX-18", description: "Audit 'Influencer' visit itinerary.", priority: "Low", riskLevel: "Low", consequence: "Poor branding content.", proof: "Event Calendar", trainerNotes: "Brief GM on arrivals." },
+                { id: "CIN-BOX-19", description: "Final daily Reputation sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of ORM control.", proof: "Signed Dashboard", trainerNotes: "Submit to GM." }
             ]
         },
         {
@@ -106,11 +237,31 @@ export const cinema_operations_pack: PremiumPack = {
             department: "Janitorial",
             frequency: "Hourly",
             role: "Logistics Lead",
-            summary: "Sanitation infrastructure command.",
+            summary: "Auditorium sanitation and waste-bay command.",
             icon: "sparkles",
             tasks: [
-                { id: "CIN-HK-01", description: "Audit auditorium seat-cleaning between shows.", priority: "High", riskLevel: "Low", consequence: "Primary driver of negative reviews.", proof: "Sweep Log", trainerNotes: "Check cup-holders for stickiness." }
+                { id: "CIN-LOG-01", description: "Audit auditorium seat-cleaning between shows.", priority: "High", riskLevel: "Low", consequence: "Primary driver of negative reviews.", proof: "Sweep Log", trainerNotes: "Check cup-holders for stickiness." },
+                { id: "CIN-LOG-02", description: "Verify loading bay lock integrity.", priority: "High", riskLevel: "High", consequence: "After-hours theft.", proof: "Lock Audit", trainerNotes: "Keys to GM nightly." },
+                { id: "CIN-LOG-03", description: "Audit staff break-room drainage.", priority: "Low", riskLevel: "Low", consequence: "Unhygienic zone.", proof: "Cleaning Note", trainerNotes: "Buff mirrors daily." },
+                { id: "CIN-LOG-04", description: "Check availability of spare car/bike keys.", priority: "Low", riskLevel: "Medium", consequence: "Delay crisis.", proof: "Vault Inventory", trainerNotes: "Secure in main safe." },
+                { id: "CIN-LOG-05", description: "Verify vendor attendance logs.", priority: "Low", riskLevel: "Low", consequence: "Paying for unrendered work.", proof: "Log Review", trainerNotes: "Deduct for late arrivals." },
+                { id: "CIN-LOG-06", description: "Audit outsourced HK staff ID visibility.", priority: "High", riskLevel: "High", consequence: "Unauthorized person risk.", proof: "Patrol Log", trainerNotes: "Badges must be chest-high." },
+                { id: "CIN-LOG-07", description: "Inspect back-alley for waste leakage.", priority: "High", riskLevel: "High", consequence: "Fines.", proof: "Walkthrough", trainerNotes: "Check yellow bag seals." },
+                { id: "CIN-LOG-08", description: "Verify kitchen gas manifold joints soap-test.", priority: "High", riskLevel: "High", consequence: "Explosion.", proof: "Maint Note", trainerNotes: "Check joints daily." },
+                { id: "CIN-LOG-09", description: "Audit 'Inventory Waste' trend.", priority: "Medium", riskLevel: "Medium", consequence: "Profit leakage.", proof: "Waste Ledger", trainerNotes: "Target waste < 1%." },
+                { id: "CIN-LOG-10", description: "Check status of 'Fire Exit' clearance.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment.", proof: "Patrol Log", trainerNotes: "Physically open doors." },
+                { id: "CIN-LOG-11", description: "Verify vendor GST pan match on bills.", priority: "Low", riskLevel: "Low", consequence: "Tax inefficiency.", proof: "Ledger Audit", trainerNotes: "Verify 100% of new vendors." },
+                { id: "CIN-LOG-12", description: "Audit 'Uniform Laundry' cycle time.", priority: "Low", riskLevel: "Low", consequence: "Dirty clothes.", proof: "Laundry Log", trainerNotes: "Target < 24h turnaround." },
+                { id: "CIN-LOG-13", description: "Check availability of PPE masks at entry.", priority: "Medium", riskLevel: "Medium", consequence: "Infection.", proof: "Stock Check", trainerNotes: "Provide free to arrivals." },
+                { id: "CIN-LOG-14", description: "Verify porch floodlight status.", priority: "Low", riskLevel: "Low", consequence: "Security risk.", proof: "Photo", trainerNotes: "Target Sunset-to-Sunrise." },
+                { id: "CIN-LOG-15", description: "Audit security guard hourly entries.", priority: "Low", riskLevel: "Low", consequence: "Discipline drift.", proof: "Log Review", trainerNotes: "Entries must be hourly." },
+                { id: "CIN-LOG-16", description: "Inspect back-alley for bio-waste leakage.", priority: "High", riskLevel: "High", consequence: "Public health hazard/Fines.", proof: "Walkthrough", trainerNotes: "Check yellow bag seals." },
+                { id: "CIN-LOG-17", description: "Check first-aid kits in non-clinical zones.", priority: "Low", riskLevel: "Low", consequence: "Liability.", proof: "Stock Audit", trainerNotes: "Check expiry dates." },
+                { id: "CIN-LOG-18", description: "Verify 100% sign on 'Inventory Waste'.", priority: "Medium", riskLevel: "Medium", consequence: "Leakage.", proof: "Waste Ledger", trainerNotes: "Target < 1% of sales." },
+                { id: "CIN-LOG-19", description: "Final shift Logistics sign-off.", priority: "High", riskLevel: "Low", consequence: "Incomplete handover.", proof: "Signed Summary", trainerNotes: "Brief GM on stockouts." }
             ]
         }
     ]
 };
+
+    
