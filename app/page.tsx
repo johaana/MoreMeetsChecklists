@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -350,11 +349,11 @@ export default function Home() {
                             <div className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
                             <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/40" />
                             <div className="w-2.5 h-2.5 rounded-full bg-green-500/40" />
-                            <span className="text-[10px] font-black uppercase text-white/20 tracking-widest ml-4 italic">Sovereign_OS_v7.3.xlsx</span>
+                            <span className="text-[10px] font-black uppercase text-white/20 tracking-widest ml-4 italic">Sovereign_OS_v9.7.xlsx</span>
                         </div>
                         <img 
-                            src="https://i.postimg.cc/9MNGzZ46/Screenshot-2026-03-31-025452.png" 
-                            alt="MoreMeets Engine Interface"
+                            src="https://i.postimg.cc/YSQcfhnQ/Screenshot-2026-04-02-165428.png" 
+                            alt="MoreMeets Sovereign Engine Interface"
                             className="rounded-[2.5rem] mt-10 border border-white/5 transition-transform duration-700 group-hover:scale-[1.02]"
                         />
                     </Card>

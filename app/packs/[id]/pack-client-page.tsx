@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -90,8 +89,8 @@ const ProductArchitectureSection = () => (
                             <div className="w-2 h-2 rounded-full bg-green-500/40" />
                         </div>
                         <img 
-                            src="https://i.postimg.cc/mr5tRpPV/Screenshot-2026-03-18-124944.png" 
-                            alt="MoreMeets Engine Interface"
+                            src="https://i.postimg.cc/YSQcfhnQ/Screenshot-2026-04-02-165428.png" 
+                            alt="MoreMeets Sovereign Engine Interface"
                             className="rounded-lg mt-6 border border-white/5"
                         />
                     </div>
