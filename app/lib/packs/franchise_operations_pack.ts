@@ -11,13 +11,13 @@ export const franchise_operations_pack: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f4e6b12a-4422-48a0-a198-154332822a27',
     category: "Franchise",
-    description: "The definitive Sovereign v9.1 engine for multi-unit groups. Standardizing 152 technical control points from Royalty protection to brand standards.",
+    description: "The definitive Sovereign v9.4 engine for multi-unit groups. Standardizing 152 technical control points from Royalty protection to brand standards.",
     heroHeadline: "Scale Your Brand Without Losing Control",
     heroSubheadline: "Track every outlet, monitor brand standards, and protect your royalty stream—across 152 technical control points.",
     pricingUrgency: "A single failed outlet or one brand-damaging incident costs 100x more than this system.",
     consultingAnchor: 15000,
     icon: "store",
-    badgeText: "V9.1 SOVEREIGN",
+    badgeText: "V9.4 SOVEREIGN",
     badgeVariant: "accent",
     whoIsItFor: ["Franchise Owners", "Heads of Operations", "Development Managers", "Regional Managers"],
     sampleItems: [
@@ -32,7 +32,7 @@ export const franchise_operations_pack: PremiumPack = {
             title: "Brand Governance",
             department: "Executive",
             frequency: "Weekly",
-            role: "COO / Owner",
+            role: "Franchisor COO / Head of Ops",
             summary: "Group-wide performance and brand protection.",
             icon: "crown",
             tasks: [
@@ -61,7 +61,7 @@ export const franchise_operations_pack: PremiumPack = {
             title: "Site Audit Command",
             department: "Operations",
             frequency: "Daily",
-            role: "General Manager",
+            role: "Area Operational Coach",
             summary: "Ensures brand consistency and arrival readiness.",
             icon: "eye",
             tasks: [
@@ -90,13 +90,13 @@ export const franchise_operations_pack: PremiumPack = {
             title: "Royalty & Financials",
             department: "Finance",
             frequency: "Daily",
-            role: "Finance & Cashier",
+            role: "Finance & Accounts Executive",
             summary: "Protects the franchise revenue pipeline.",
             icon: "banknote",
             tasks: [
                 { id: "FR-FIN-01", description: "Reconcile aggregator gross against POS report.", priority: "High", riskLevel: "High", consequence: "Undetected commission errors.", proof: "Match Note", trainerNotes: "Report > 1% variance." },
                 { id: "FR-FIN-02", description: "Blind Stock Count: Top 10 items.", priority: "High", riskLevel: "High", consequence: "High-value inventory theft.", proof: "Stock Sheet", trainerNotes: "Count without system qty." },
-                { id: "FR-FIN-03", description: "Audit 'Void' history for shift.", priority: "High", riskLevel: "Medium", consequence: "Bill manipulation leakage.", proof: "POS Audit", trainerNotes: "Voids need GM signature." },
+                { id: "FR-FIN-03", description: "Audit 'Void' history for shift.", priority: "High", riskLevel: "Medium", consequence: "Bill manipulation leakage.", proof: "POS Audit", trainerNotes: "Voids need manager signature." },
                 { id: "FR-FIN-04", description: "Match Cash-to-Bank deposit slip.", priority: "High", riskLevel: "High", consequence: "Internal revenue theft.", proof: "Bank Slip", trainerNotes: "Witnessed seal mandatory." },
                 { id: "FR-FIN-05", description: "Verify Cash Float denominations.", priority: "High", riskLevel: "High", consequence: "Operational delays.", proof: "Float Sheet", trainerNotes: "Record denominations." },
                 { id: "FR-FIN-06", description: "Check aggregator payouts vs dispatched logs.", priority: "High", riskLevel: "Medium", consequence: "Income loss via unrecorded cancels.", proof: "Payout Reconcile", trainerNotes: "Flag 'Cancelled' orders sent." },
@@ -119,7 +119,7 @@ export const franchise_operations_pack: PremiumPack = {
             title: "EHS & Safety Compliance",
             department: "Safety",
             frequency: "Daily",
-            role: "EHS Officer",
+            role: "EHS & Safety Officer",
             summary: "Regulatory and occupational safety command.",
             icon: "hard-hat",
             tasks: [
@@ -148,7 +148,7 @@ export const franchise_operations_pack: PremiumPack = {
             title: "Staff Certification",
             department: "HR",
             frequency: "Monthly",
-            role: "HR Manager",
+            role: "Regional Training Lead",
             summary: "Tracks franchisee staff competency and health.",
             icon: "graduation-cap",
             tasks: [
@@ -177,7 +177,7 @@ export const franchise_operations_pack: PremiumPack = {
             title: "IT & POS Integrity",
             department: "Technical",
             frequency: "Weekly",
-            role: "Technical Lead",
+            role: "Technical Maintenance Tech",
             summary: "Protects the digital backbone.",
             icon: "laptop",
             tasks: [
@@ -206,7 +206,7 @@ export const franchise_operations_pack: PremiumPack = {
             title: "Marketing Activation",
             department: "Admin",
             frequency: "Daily",
-            role: "Customer Experience Lead",
+            role: "Local Marketing Coordinator",
             summary: "Governs local branch promotions.",
             icon: "megaphone",
             tasks: [
@@ -228,14 +228,14 @@ export const franchise_operations_pack: PremiumPack = {
                 { id: "FR-MKT-16", description: "Local news/Press mention review.", priority: "Low", riskLevel: "Low", consequence: "Missed PR amplification.", proof: "News Check", trainerNotes: "Share positive PR on social." },
                 { id: "FR-MKT-17", description: "Holiday decor 100% completion check.", priority: "Low", riskLevel: "Low", consequence: "Lack of seasonal energy.", proof: "Visual Check", trainerNotes: "Complete before opening." },
                 { id: "FR-MKT-18", description: "Gift Voucher redemption ID check.", priority: "Medium", riskLevel: "Medium", consequence: "Fraudulent voucher usage.", proof: "Voucher Match", trainerNotes: "Reconcile vs master list." },
-                { id: "FR-MKT-19", description: "Final Digital Reputation Sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of ORM governance.", proof: "Signed Dashboard", trainerNotes: "Submit feedback report to GM." }
+                { id: "FR-MKT-19", description: "Final daily Reputation sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of ORM governance.", proof: "Signed Dashboard", trainerNotes: "Submit feedback report to GM." }
             ]
         },
         {
             title: "Supply Chain Audits",
             department: "Logistics",
             frequency: "Daily",
-            role: "Logistics Lead",
+            role: "Procurement & Supply Specialist",
             summary: "Ensures sourcing integrity and first impression command.",
             icon: "truck",
             tasks: [
@@ -243,7 +243,7 @@ export const franchise_operations_pack: PremiumPack = {
                 { id: "FR-SUP-02", description: "Vendor Receiving: Reconcile weight.", priority: "Medium", riskLevel: "Medium", consequence: "Paying for missing stock.", proof: "Scale Note", trainerNotes: "Reject variance > 2%." },
                 { id: "FR-SUP-03", description: "Check temp of incoming high-risk perishables.", priority: "High", riskLevel: "High", consequence: "Accepting compromised stock.", proof: "Receiving Log", trainerNotes: "Reject if temp > 7°C." },
                 { id: "FR-SUP-04", description: "Audit 'Expiring Stock' (3-day window).", priority: "High", riskLevel: "Medium", consequence: "Inventory waste.", proof: "Expiry Log", trainerNotes: "Move to LSM promo list." },
-                { id: "FR-SUP-05", description: "Verify vendor FSSAI for perishables.", priority: "High", riskLevel: "High", consequence: "Legal liability.", proof: "License File", trainerNotes: "Renew repository every 6m." },
+                { id: "FR-SUP-05", description: "Verify vendor FSSAI for perishables.", priority: "High", riskLevel: "High", consequence: "Legal liability.", proof: "License File", trainerNotes: "Update repository every 6m." },
                 { id: "FR-SUP-06", description: "Inspect back-alley waste bins.", priority: "Medium", riskLevel: "Medium", consequence: "Pest risk/Odors.", proof: "Cleaning Log", trainerNotes: "Bins must be closed." },
                 { id: "FR-SUP-07", description: "Reconcile delivery fuel expense claims.", priority: "Medium", riskLevel: "Medium", consequence: "Internal revenue loss.", proof: "Voucher Reconcile", trainerNotes: "Match vs Odometer." },
                 { id: "FR-SUP-08", description: "Verify vendor attendance logs.", priority: "Low", riskLevel: "Low", consequence: "Paying for unrendered work.", proof: "Log Review", trainerNotes: "Deduct for late arrivals." },
@@ -262,5 +262,3 @@ export const franchise_operations_pack: PremiumPack = {
         }
     ]
 };
-
-    

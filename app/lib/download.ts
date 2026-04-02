@@ -7,7 +7,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 
 /**
  * Sovereign Engine v9.4 - PERSONNEL DENSITY UPDATE
- * Fixes: Expanded TEAM_HUB for Elite 7 (Hospitals, Restaurants & Hotels).
+ * Fixes: Expanded TEAM_HUB for Elite 7 (Hospitals, Restaurants, Hotels, Schools, Franchise).
  * UI: Symmetric 45pt Ribbons, 100pt Headers, Forced Vertical Centering.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -463,6 +463,39 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 "Maintenance Supervisor",
                 "HR & Child Protection Manager",
                 "Clerk / Admin Assistant"
+            ];
+        }
+        if (packId === 'franchise_operations_pack') {
+            return [
+                "Franchisor CEO / MD",
+                "Franchisor COO / Head of Ops",
+                "VP Franchise Development",
+                "Head of Brand & Marketing",
+                "Legal & Compliance Director",
+                "Regional Manager (North)",
+                "Regional Manager (South)",
+                "Area Operational Coach",
+                "Field Quality Auditor",
+                "Regional Training Lead",
+                "Franchisee Owner / Partner",
+                "Unit General Manager",
+                "Assistant Manager (Shift A)",
+                "Assistant Manager (Shift B)",
+                "Floor Supervisor (Morning)",
+                "Floor Supervisor (Evening)",
+                "Senior Billing Cashier",
+                "Junior Billing Cashier",
+                "Kitchen/Production Manager",
+                "Inventory & Store In-charge",
+                "Customer Experience Lead",
+                "Local Marketing Coordinator",
+                "EHS & Safety Officer",
+                "Technical Maintenance Tech",
+                "Logistics & Delivery Lead",
+                "Dispatch Coordinator",
+                "Admin & HR Assistant",
+                "Finance & Accounts Executive",
+                "Procurement & Supply Specialist"
             ];
         }
         return [
