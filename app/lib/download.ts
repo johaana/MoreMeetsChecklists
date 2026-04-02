@@ -6,7 +6,7 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v11.1 - DYNAMIC HOSPITALITY BUILD
+ * Sovereign Engine v11.2 - INDUSTRIAL COMMAND BUILD
  * Perfected Header Spacing (40/100/40) & Dynamic Role Mapping
  * Sequence: Console -> Branch -> Hub -> Ledger -> Handover -> Incident -> Health -> Library -> Finance.
  */
@@ -22,7 +22,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const dayOfMonth = startDate.getDate();
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-SOVEREIGN-11.1-MASTER";
+    const ORDER_ID = "MM-SOVEREIGN-11.2-MASTER";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -179,7 +179,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v11.1 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v11.2 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -269,7 +269,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ...packChecklists.map(c => ({ v: c.title, s: headerStyle })),
         { v: "Score (Ghost)", s: headerStyle }, { v: "Risk Load (Ghost)", s: headerStyle } 
     ];
-    const branchNames = ["Bandra Main (Sample)", "Ghatkopar West (Sample)", "Colaba (Sample)"];
+    const branchNames = ["Unit 1 (Primary)", "Unit 2 (Expansion)", "Unit 3 (Ghost)"];
     const branchSetupData = [
         [], [], [],
         facilityHeaders,
@@ -298,12 +298,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const pData: any[][] = [[], [], [], pHeaders];
     
-    // DYNAMIC ROLE MAPPING BASED ON INDUSTRY
+    // DYNAMIC ROLE MAPPING
     let activeRoles = ["General Manager", "Assistant Manager", "Supervisor", "Operator"];
     if (item.id === 'restaurants') {
         activeRoles = ["Owner / Managing Director", "Executive Chef", "Floor Captain (Shift A)", "Bar Manager", "Delivery & Logistics Lead", "Store & Purchase Manager", "Finance & Accounts Head", "EHS & Food Safety Officer"];
     } else if (item.id === 'hotels_and_resorts') {
         activeRoles = ["Owner / Managing Director", "General Manager", "Head of Housekeeping", "F&B Manager", "Events Manager", "Security Chief", "Chief Engineer", "Guest Relations Manager"];
+    } else if (item.id === 'healthcare_and_hospital_operations') {
+        activeRoles = ["Medical Director", "Nursing Superintendent", "OPD Manager", "Pharmacy Lead", "Billing Manager", "EHS Officer", "Technical Maintenance Lead", "Admissions & CX Head", "Logistics Lead", "HR Manager"];
     }
     
     [1, 2, 3].forEach(bId => {
@@ -316,7 +318,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: "", s: inputStyleLeft }, 
                 { v: "", s: inputStyleLeft }, 
                 { v: "ACTIVE", s: inputStyle }, 
-                { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$5000, D${rowIdx}, 'TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED")`, s: dataStyleCenter }
+                { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$500, D${rowIdx}, 'TODAYS_TASKS'!$I$5:$I$500, "COMPLETED")`, s: dataStyleCenter }
             ]);
         });
     });
@@ -354,7 +356,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 const rowIdx = mData.length + 1;
                 const statusFormula = `IF(LEN(TRIM(G${rowIdx}))=0, "PENDING", IF(AND(LEN(TRIM(H${rowIdx}))=0, H${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
                 
-                // HARDENED ASSIGNMENT LOGIC: Check COUNTIFS for existing non-empty string in Team Hub
+                // HARDENED ASSIGNMENT LOGIC
                 const keyRef = `B${rowIdx} & "|" & C${rowIdx}`;
                 const personFormula = `IF(COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0, HYPERLINK("#'TEAM_HUB'!A1", "ASSIGN IN TEAM HUB"), VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", ""))`;
                 
@@ -400,7 +402,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { v: "Resolved? (YES/NO)", s: headerStyle }
     ];
     const incidentRows = [];
-    // PRE-STYLE 50 ROWS FOR ZERO-NOISE INPUT
     for (let i = 0; i < 50; i++) {
         incidentRows.push([
             { v: "", s: inputStyle },
@@ -440,7 +441,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         healthData.push([
             { v: "Liability Exposure", s: dataStyleLeft }, { t: 'f', f: branchRef, s: dataStyleCenter }, { v: "AUDIT", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('INCIDENT_TRACKER'!$B$5:$B$500, ${branchRef}, 'INCIDENT_TRACKER'!$G$5:$G$500, "<>YES", 'INCIDENT_TRACKER'!$D$5:$D$500, "?*")`, s: dataStyleCenter }, { v: "ZERO TARGET", s: dataStyleCenter }
         ]);
-        healthData.push([]); // Spacer
+        healthData.push([]); 
     });
     const healthWs = utils.aoa_to_sheet(healthData);
     addSovereignRibbon(healthWs, "Performance Analytics & Unit Health", 'E');
@@ -465,7 +466,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: t.description, s: dataStyleLeft },
                 { v: t.consequence || "Operational Risk Applied.", s: warningStyle },
                 { v: t.trainerNotes || "Institutional standard applies.", s: coachingStyle },
-                { v: "ISO/HACCP v11.1", s: dataStyleCenter }
+                { v: "ISO/HACCP v11.2", s: dataStyleCenter }
             ]);
         });
     });
@@ -501,5 +502,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_11.1.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_11.2.xlsx`);
 }
