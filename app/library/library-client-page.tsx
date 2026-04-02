@@ -10,12 +10,10 @@ import { Button } from '@/components/ui/button';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Input } from '@/components/ui/input';
-import { Search, ArrowRight, X, ChevronDown, Filter } from 'lucide-react';
+import { Search, ArrowRight, X, ChevronDown } from 'lucide-react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { IconComponent } from '@/components/icons';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { ScrollArea } from '@/components/ui/scroll-area';
 
 // --- CONFIGURATION: THE ELITE 7 ---
 const ELITE_PACK_IDS = [
@@ -51,17 +49,17 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => (
                 <IconComponent name={pack.icon} className="h-8 w-8 text-accent mb-2" />
                 {pack.badgeText && <Badge variant={pack.badgeVariant || 'default'} className="uppercase tracking-widest text-[8px] font-black">{pack.badgeText}</Badge>}
             </div>
-            <CardTitle className="text-xl font-headline italic uppercase tracking-tighter">
+            <CardTitle className="text-xl font-headline italic uppercase tracking-tighter text-primary-text">
                 <Link href={`/packs/${pack.id}`} className="hover:text-primary transition-colors">{pack.title}</Link>
             </CardTitle>
         </CardHeader>
         <CardContent className="flex-1">
-            <CardDescription className="text-secondary-text leading-relaxed">{pack.description}</CardDescription>
+            <CardDescription className="text-secondary-text leading-relaxed font-medium italic">{pack.description}</CardDescription>
         </CardContent>
         <CardFooter>
-            <Button asChild className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-black font-black uppercase italic text-xs tracking-widest transition-all" variant="secondary">
+            <Button asChild className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-black font-black uppercase italic text-xs tracking-widest transition-all border-none" variant="secondary">
                 <Link href={`/packs/${pack.id}`}>
-                    Deploy This System <ArrowRight className="ml-2 h-4 w-4" />
+                    Deploy This System: Just $9 <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
             </Button>
         </CardFooter>
@@ -80,7 +78,6 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
 
     const [searchTerm, setSearchTerm] = React.useState('');
     const [activeCategory, setActiveCategory] = React.useState('All');
-    const [isSheetOpen, setSheetOpen] = React.useState(false);
     const [mounted, setMounted] = React.useState(false);
 
     React.useEffect(() => {
@@ -97,7 +94,6 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
             params.set('category', category);
         }
         router.push(`/library?${params.toString()}`, { scroll: false });
-        setSheetOpen(false);
     };
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -138,7 +134,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                             <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 uppercase tracking-[0.3em] font-black text-[10px]">Operational Infrastructure</Badge>
                             <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter font-headline text-primary-text leading-tight uppercase italic">
-                                Industry Operating Systems
+                                Systems Hub
                             </h1>
                             <p className="max-w-[750px] text-secondary-text text-lg md:text-xl font-medium leading-relaxed mx-auto italic border-l-2 border-primary/20 pl-6">
                                 Stop managing manually. Deploy forensically engineered data engines to run your daily operations without chaos.
@@ -198,7 +194,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                         ) : (
                             <>
                                 <h2 className="text-lg font-black tracking-[0.3em] uppercase text-white/30 mb-10 text-center">
-                                    {activeCategory === 'All' ? 'Operational Command Library' : `${activeCategory} Systems`}
+                                    {activeCategory === 'All' ? 'Operations Library' : `${activeCategory} Systems`}
                                 </h2>
                                 
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">

@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -8,7 +9,7 @@ import { IconComponent, ComplianceIcon } from '@/components/icons';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { X, Check, ShieldAlert, ArrowRight, ShieldCheck, FileSpreadsheet, Infinity, Lock, Timer, Target, Eye, Zap, Laptop, LayoutGrid, CheckSquare, Layers, Users, Database } from 'lucide-react';
+import { X, Check, ArrowRight, Target, Zap, Laptop, Layers, Users, Database } from 'lucide-react';
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
     const content = painPointsContent[packId as keyof typeof painPointsContent];
@@ -33,7 +34,7 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-500/10 text-red-500 shrink-0">
                                     {point.icon}
                                 </div>
-                                <CardTitle className="text-lg font-black uppercase italic leading-tight">{point.title}</CardTitle>
+                                <CardTitle className="text-lg font-black uppercase italic leading-tight text-primary-text">{point.title}</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <p className="text-secondary-text text-sm leading-relaxed italic font-medium">{point.description}</p>
@@ -318,7 +319,7 @@ export default function PackClientPage({ pack, heroImageUrl, imageHint }: { pack
                             <Card key={index} className="flex flex-col text-center p-4 md:p-6 bg-background">
                                 <CardHeader className="p-0">
                                     <div className="text-accent mx-auto mb-2"><ComplianceIcon standard={standard.name} /></div>
-                                    <CardTitle className="text-sm md:text-lg font-headline">{standard.name}</CardTitle>
+                                    <CardTitle className="text-sm md:text-lg font-headline text-primary-text">{standard.name}</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-0 mt-2 flex-1">
                                     <p className="text-xs text-muted-foreground font-medium">{standard.description}</p>

@@ -43,7 +43,7 @@ const DifferencePoint = ({ title, description, icon: Icon }: { title: string, de
         </div>
         <div className="space-y-1">
             <h3 className="font-bold text-lg text-primary-text">{title}</h3>
-            <p className="text-sm text-secondary-text leading-relaxed">{description}</p>
+            <p className="text-sm text-secondary-text leading-relaxed font-medium italic">{description}</p>
         </div>
     </div>
 );
@@ -80,7 +80,7 @@ export default function AboutPage() {
                                     MoreMeets™ was born from over <span className="text-primary font-black">30 years of cumulative operational exposure.</span> Our founders have spent three decades auditing, directing, and optimizing complex environments across hospitality, healthcare, and industrial sectors. 
                                 </p>
                                 <p className="text-lg text-secondary-text leading-relaxed">
-                                    We realized a recurring, dangerous pattern: Most businesses don't actually have "systems" — they have heroes who remember how things work. When those heroes leave, the standard leaves with them. 
+                                    We realized a recurring, dangerous pattern: Most businesses don't actually have "systems". They have heroes who remember how things work. When those heroes leave, the standard leaves with them. 
                                 </p>
                                 <p className="text-lg text-secondary-text leading-relaxed font-bold text-primary-text">
                                     We built MoreMeets™ to convert individual brilliance into permanent organizational infrastructure.
@@ -109,8 +109,8 @@ export default function AboutPage() {
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="space-y-8">
                             <div className="space-y-4">
-                                <h2 className="text-3xl font-bold font-headline text-primary-text">What Really Happens When a Task Is Missed?</h2>
-                                <p className="text-secondary-text">Operational failures rarely begin with disasters. They begin small. One miss becomes a pattern. A pattern becomes exposure.</p>
+                                <h2 className="text-3xl font-bold font-headline text-primary-text uppercase italic tracking-tighter">What Happens When a Task Is Missed?</h2>
+                                <p className="text-secondary-text italic font-medium">Operational failures rarely begin with disasters. They begin small. One miss becomes a pattern. A pattern becomes exposure.</p>
                             </div>
                             <div className="grid sm:grid-cols-2 gap-3">
                                 <MissedTaskItem text="Daily temperature not logged" />
@@ -126,13 +126,13 @@ export default function AboutPage() {
                             <h3 className="text-xl font-bold text-red-500 uppercase tracking-widest flex items-center gap-2">
                                 <AlertTriangle className="w-5 h-5" /> The Consequences
                             </h3>
-                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-primary-text font-bold">
+                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-primary-text font-bold uppercase italic">
                                 {[
                                     "Financial loss", "Audit non-conformance", "Regulatory penalties", 
                                     "Legal disputes", "License suspension", "Franchise conflicts", 
                                     "Insurance complications", "Brand damage", "Operational shutdown"
                                 ].map(item => (
-                                    <li key={item} className="flex items-center gap-2 text-sm">
+                                    <li key={item} className="flex items-center gap-2 text-[10px] tracking-tight">
                                         <ArrowRight className="w-4 h-4 text-red-500" />
                                         {item}
                                     </li>
@@ -150,7 +150,7 @@ export default function AboutPage() {
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
                             <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary-text uppercase italic tracking-tighter">Institutional Memory as a Service</h2>
-                            <p className="text-lg text-secondary-text">We transform experience into structured execution frameworks.</p>
+                            <p className="text-lg text-secondary-text italic font-medium">We transform experience into structured execution frameworks.</p>
                         </div>
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">
@@ -196,8 +196,8 @@ export default function AboutPage() {
                         </div>
                         <div className="flex flex-col md:flex-row gap-8 items-center relative z-10">
                             <div className="space-y-4 flex-1">
-                                <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary-text uppercase italic">When Someone Resigns: The System Stays</h3>
-                                <p className="text-secondary-text leading-relaxed">
+                                <h3 className="text-2xl md:text-3xl font-bold font-headline text-primary-text uppercase italic tracking-tighter">When Someone Resigns: The System Stays</h3>
+                                <p className="text-secondary-text leading-relaxed font-medium italic">
                                     This is one of the biggest silent risks in operations. When experienced staff leave, unwritten shortcuts disappear and undocumented practices break. MoreMeets™ ensures the process is owned by the business, not the individual.
                                 </p>
                             </div>
@@ -214,10 +214,10 @@ export default function AboutPage() {
                         <h2 className="text-4xl md:text-5xl font-black font-headline text-primary-text tracking-tighter uppercase italic">
                             Less misses. <br /> More standards.
                         </h2>
-                        <p className="text-lg text-secondary-text max-w-lg mx-auto">
+                        <p className="text-lg text-secondary-text max-w-lg mx-auto italic font-medium">
                             Because memory is not a system. And serious operations deserve more than improvisation.
                         </p>
-                        <Button size="lg" asChild className="h-16 px-10 rounded-xl bg-primary text-black font-black uppercase text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all">
+                        <Button size="lg" asChild className="h-16 px-10 rounded-xl bg-primary text-black font-black uppercase text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all border-none">
                             <Link href="/library">Explore Operational Standards <ArrowRight className="ml-2 w-5 h-5"/></Link>
                         </Button>
                     </div>
