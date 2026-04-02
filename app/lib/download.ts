@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v10.7 - OPERATIONAL DENSITY UPDATE
- * Features: 70pt Headers, COUNTIFS-based Assignment Gate, Simplified Layman Vocab.
+ * Sovereign Engine v10.8 - VISUAL COMMAND UPDATE
+ * Features: 70pt Headers, 24pt Titles, Grid-Ready Incident Logs.
  * Sequence: Console -> Branch -> Hub -> Ledger -> Handover -> Incident -> Health -> Library -> Finance.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -22,7 +22,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const dayOfMonth = startDate.getDate();
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-SOVEREIGN-10.7-MASTER";
+    const ORDER_ID = "MM-SOVEREIGN-10.8-MASTER";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -80,14 +80,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     };
 
     const ribbonHeaderStyle = {
-        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 14 },
+        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 24 },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } },
         alignment: { horizontal: 'left', ...verticalCenter },
         border: { bottom: { style: 'medium', color: { rgb: COLORS.PRIMARY_GREEN } } }
     };
 
     const headerStyle = {
-        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 9 },
+        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 10 },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } },
         alignment: { horizontal: 'center', wrapText: true, ...verticalCenter },
         border: borderStyle
@@ -153,7 +153,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 2 }];
         
-        ws['!rows'] = [{ hpt: 25 }, { hpt: customTitleHpt }, { hpt: 15 }, { hpt: headerRowHpt }];
+        ws['!rows'] = [{ hpt: 30 }, { hpt: customTitleHpt }, { hpt: 15 }, { hpt: headerRowHpt }];
         for(let r = 4; r < 5000; r++) {
             ws['!rows'][r] = { hpt: 30 };
         }
@@ -178,7 +178,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v10.7 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v10.8 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -202,8 +202,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [
             null,
             { v: "▶ MASTER SOPs", l: { Target: "#'SOP_LIBRARY'!A1" }, s: tileStyle }, null, 
-            { v: "▶ HOW THIS WORKS", l: { Target: "#'HOW_THIS_WORKS'!A1" }, s: tileStyle }, null, 
-            { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }, null
+            { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }, null, null
         ],
         [],
         [null, { t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(G15>=0.9, "HOT - PERFECT EXECUTION!", IF(G15>=0.6, "STABLE - PUSH HARDER", IF(G15>0, "COLD - TURN UP THE HEAT!", "AWAITING DATA"))), "EMPIRE MOOD: LOADING...")`, s: { font: { sz: 16, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null, null, null, null, null],
@@ -287,31 +286,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     utils.book_append_sheet(wb, setupWs, "BRANCH_MASTER");
 
     // --- 03. TEAM HUB ---
-    const getRolesForPack = (packId: string) => {
-        if (packId === 'restaurants') {
-            return ["Owner / Managing Director", "COO / Regional Manager", "Unit General Manager", "Assistant Restaurant Manager", "Floor Captain (Shift A)", "Floor Captain (Shift B)", "Hostess / Reception", "Head Waiter", "Junior Steward", "Executive Chef", "Sous Chef", "CDP (Main Kitchen)", "Commi Chef (Prep)", "Kitchen Steward / Utility", "Finance & Accounts Head", "Billing Cashier (Shift A)", "Billing Cashier (Shift B)", "Store & Purchase Manager", "EHS & Food Safety Officer", "Technical Maintenance Lead", "Delivery & Logistics Lead", "Bar Manager"];
-        }
-        if (packId === 'hotels_and_resorts') {
-            return ["Owner / Managing Director", "COO / Owner", "General Manager", "Resident Manager", "Finance Controller", "Finance & Cashier", "Night Auditor", "Billing Desk (Shift A)", "Billing Desk (Shift B)", "Front Office Manager", "Duty Manager (Shift A)", "Duty Manager (Shift B)", "Customer Experience Lead", "Guest Relations Manager", "Concierge Lead", "Executive Housekeeper", "Head of Housekeeping", "Floor Supervisor (Shift A)", "Floor Supervisor (Shift B)", "Laundry Manager", "F&B Director", "Executive Chef", "Sous Chef", "Banquet Manager", "Events Manager", "Room Service Supervisor", "Chief Engineer", "Technical Lead", "IT & Digital Manager", "EHS Officer", "Security Chief", "HR Manager", "Training Manager", "Purchasing Manager", "Logistics Lead", "Fleet & Valet In-charge"];
-        }
-        if (packId === 'healthcare_and_hospital_operations') {
-            return ["Managing Director", "Medical Director", "Hospital COO", "Admin Director", "Nursing Superintendent", "Deputy Nursing Superintendent", "Ward Sister (Shift A)", "Ward Sister (Shift B)", "ICU Nursing In-charge", "ER In-charge", "RMO (Resident Medical Officer)", "Finance Controller", "Billing Manager", "TPA Coordinator", "Insurance Desk Executive", "Pharmacy Lead", "Pharmacist (Shift A)", "Pharmacist (Shift B)", "Narcotics Custodian", "EHS Officer", "Bio-Medical Waste Lead", "Security Chief", "HR Manager", "Training Manager", "IT & HIS Manager", "Technical Maintenance Lead", "Biomedical Engineer", "Canteen Manager", "Receptionist (Shift A)", "Receptionist (Shift B)", "OPD Manager", "Logistics Lead"];
-        }
-        if (packId === 'school_operations_pack') {
-            return ["Trustee / Board Member", "School Principal", "Vice Principal (Academic)", "Vice Principal (Admin)", "School Administrator", "Registrar / Fee Cashier", "Accountant", "Admissions & CX Head", "Receptionist (Shift A)", "Receptionist (Shift B)", "School Counsellor", "Infirmary Nurse", "Librarian", "HOD Primary Wing", "HOD Secondary Wing", "Lab Assistant (Science)", "Lab Assistant (IT)", "IT & Lab Technical Lead", "EHS & Safety Officer", "Security Chief", "Security Guard (Day)", "Security Guard (Night)", "Transport & Canteen Lead", "Bus Driver (Route A)", "Bus Driver (Route B)", "Bus Attendant / Conductor", "Canteen Supervisor", "Maintenance Supervisor", "HR & Child Protection Manager", "Clerk / Admin Assistant"];
-        }
-        if (packId === 'franchise_operations_pack') {
-            return ["Franchisor CEO / MD", "Franchisor COO / Head of Ops", "VP Franchise Development", "Head of Brand & Marketing", "Legal & Compliance Director", "Regional Manager (North)", "Regional Manager (South)", "Area Operational Coach", "Field Quality Auditor", "Regional Training Lead", "Franchisee Owner / Partner", "Unit General Manager", "Assistant Manager (Shift A)", "Assistant Manager (Shift B)", "Floor Supervisor (Morning)", "Floor Supervisor (Evening)", "Senior Billing Cashier", "Junior Billing Cashier", "Kitchen/Production Manager", "Inventory & Store In-charge", "Customer Experience Lead", "Local Marketing Coordinator", "EHS & Safety Officer", "Technical Maintenance Tech", "Logistics & Delivery Lead", "Dispatch Coordinator", "Admin & HR Assistant", "Finance & Accounts Executive", "Procurement & Supply Specialist"];
-        }
-        if (packId === 'facility_management_blueprint') {
-            return ["COO / Head of Real Estate", "Facility Director", "Property General Manager", "Assistant Property Manager", "Chief Engineer", "Technical Lead", "Electrical Supervisor", "HVAC Specialist", "Plumbing Supervisor", "Fire & Life Safety Tech", "BMS & IT Manager", "Soft FM Manager", "Housekeeping Supervisor (Shift A)", "Housekeeping Supervisor (Shift B)", "Janitorial Lead", "Pest Control Coordinator", "Waste Management Supervisor", "Finance & Accounts Executive", "HR & Admin Assistant", "Customer Experience Lead", "Vendor SLA Manager", "Procurement Specialist", "EHS & Safety Officer", "Security Chief", "Security Supervisor (Shift A)", "Security Supervisor (Shift B)", "Landscaping & Facade Lead", "Parking & Valet Coordinator"];
-        }
-        if (packId === 'cinema_operations_pack') {
-            return ["Owner / Managing Director", "COO / Regional Manager", "Cinema General Manager", "Assistant Cinema Manager", "Technical Director", "Chief Projectionist", "Projectionist (Shift A & B)", "Box Office Manager", "Ticketing Cashier (Shift A & B)", "Guest Services Lead", "Marketing & Events Coordinator", "Security Chief", "Janitorial Lead / HK Supervisor", "Finance & Accounts Executive", "HR & Admin Assistant", "EHS & Safety Officer", "Technical Maintenance Tech"];
-        }
-        return ["COO / Owner", "General Manager", "Finance & Cashier", "EHS Officer", "HR Manager", "Technical Lead", "Customer Experience Lead", "Logistics Lead"];
-    };
-
     const pHeaders = [
         { v: "Staff Lookup Key (Ghost)", s: headerStyle }, 
         { v: "Branch Name", s: headerStyle }, 
@@ -323,7 +297,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const pData: any[][] = [[], [], [], pHeaders];
     
-    const activeRoles = getRolesForPack(item.id);
+    const activeRoles = ["Owner / Managing Director", "Executive Chef", "Floor Captain (Shift A)", "Bar Manager", "Delivery & Logistics Lead", "Store & Purchase Manager", "Finance & Accounts Head", "EHS & Food Safety Officer"];
     
     [1, 2, 3].forEach(bId => {
         activeRoles.forEach((role) => {
@@ -408,10 +382,31 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(handoverWs, "Shift Handover Bridge", 'F');
     utils.book_append_sheet(wb, handoverWs, "SHIFT_HANDOVER");
 
-    // --- 06. INCIDENT TRACKER ---
-    const incidentHeaders = [{ v: "Date", s: headerStyle }, { v: "Branch", s: headerStyle }, { v: "Type (Safety/Profit/PR)", s: headerStyle }, { v: "Incident Description", s: headerStyle }, { v: "Root Cause", s: headerStyle }, { v: "Corrective Action Taken", s: headerStyle }, { v: "Resolved?", s: headerStyle }];
-    const incidentWs = utils.aoa_to_sheet([[], [], [], incidentHeaders]);
+    // --- 06. INCIDENT TRACKER (IMPROVISED) ---
+    const incidentHeaders = [
+        { v: "Date", s: headerStyle }, 
+        { v: "Branch", s: headerStyle }, 
+        { v: "Type (Safety/Profit/PR)", s: headerStyle }, 
+        { v: "Incident Description (What happened?)", s: headerStyle }, 
+        { v: "Root Cause (Why did it happen?)", s: headerStyle }, 
+        { v: "Corrective Action Taken", s: headerStyle }, 
+        { v: "Resolved? (YES/NO)", s: headerStyle }
+    ];
+    const incidentRows = [];
+    for (let i = 0; i < 50; i++) {
+        incidentRows.push([
+            { v: "", s: inputStyle },
+            { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, 1), "")`, s: inputStyle },
+            { v: "", s: inputStyle },
+            { v: "", s: inputStyleLeft },
+            { v: "", s: inputStyleLeft },
+            { v: "", s: inputStyleLeft },
+            { v: "NO", s: inputStyle }
+        ]);
+    }
+    const incidentWs = utils.aoa_to_sheet([[], [], [], incidentHeaders, ...incidentRows]);
     addSovereignRibbon(incidentWs, "Liability & Incident Log", 'G');
+    incidentWs['!cols'] = [15, 25, 25, 65, 45, 65, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, incidentWs, "INCIDENT_TRACKER");
 
     // --- 07. BUSINESS HEALTH (INTELLIGENCE POPULATED) ---
@@ -462,7 +457,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: t.description, s: dataStyleLeft },
                 { v: t.consequence || "Operational Risk Applied.", s: warningStyle },
                 { v: t.trainerNotes || "Institutional standard applies.", s: coachingStyle },
-                { v: "ISO/HACCP v10.7", s: dataStyleCenter }
+                { v: "ISO/HACCP v10.8", s: dataStyleCenter }
             ]);
         });
     });
@@ -498,5 +493,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_10.7.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_10.8.xlsx`);
 }
