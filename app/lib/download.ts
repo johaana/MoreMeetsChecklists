@@ -7,7 +7,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 
 /**
  * Sovereign Engine v9.4 - PERSONNEL DENSITY UPDATE
- * Fixes: Expanded TEAM_HUB for Elite 7 (Hospitals, Restaurants, Hotels, Schools, Franchise).
+ * Fixes: Expanded TEAM_HUB for Elite 7 (Hospitals, Restaurants, Hotels, Schools, Franchise, Facility).
  * UI: Symmetric 45pt Ribbons, 100pt Headers, Forced Vertical Centering.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -496,6 +496,38 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 "Admin & HR Assistant",
                 "Finance & Accounts Executive",
                 "Procurement & Supply Specialist"
+            ];
+        }
+        if (packId === 'facility_management_blueprint') {
+            return [
+                "COO / Head of Real Estate",
+                "Facility Director",
+                "Property General Manager",
+                "Assistant Property Manager",
+                "Chief Engineer",
+                "Technical Lead",
+                "Electrical Supervisor",
+                "HVAC Specialist",
+                "Plumbing Supervisor",
+                "Fire & Life Safety Tech",
+                "BMS & IT Manager",
+                "Soft FM Manager",
+                "Housekeeping Supervisor (Shift A)",
+                "Housekeeping Supervisor (Shift B)",
+                "Janitorial Lead",
+                "Pest Control Coordinator",
+                "Waste Management Supervisor",
+                "Finance & Accounts Executive",
+                "HR & Admin Assistant",
+                "Customer Experience Lead",
+                "Vendor SLA Manager",
+                "Procurement Specialist",
+                "EHS & Safety Officer",
+                "Security Chief",
+                "Security Supervisor (Shift A)",
+                "Security Supervisor (Shift B)",
+                "Landscaping & Facade Lead",
+                "Parking & Valet Coordinator"
             ];
         }
         return [

@@ -34,7 +34,7 @@ export const facility_management_blueprint: PremiumPack = {
             title: "Portfolio Governance",
             department: "Executive",
             frequency: "Weekly",
-            role: "COO / Owner",
+            role: "COO / Head of Real Estate",
             summary: "Asset health and high-level liability oversight.",
             icon: "crown",
             tasks: [
@@ -48,7 +48,7 @@ export const facility_management_blueprint: PremiumPack = {
                 { id: "FM-EXE-08", description: "Audit vendor payment approvals vs SLA penalties.", priority: "Medium", riskLevel: "Low", consequence: "Overpaying for poor service.", proof: "Ledger Note", trainerNotes: "Apply deductions for P1 misses." },
                 { id: "FM-EXE-09", description: "Verify Fixed Asset tagging for new MEP equipment.", priority: "Low", riskLevel: "Low", consequence: "Lost institutional assets.", proof: "Asset Log", trainerNotes: "Tag every item > $500." },
                 { id: "FM-EXE-10", description: "Check status of unresolved 'Red' safety incidents.", priority: "High", riskLevel: "High", consequence: "Legal liability.", proof: "Incident Log", trainerNotes: "Resolve all < 24h." },
-                { id: "FM-EXE-11", description: "Review staff churn in technical departments.", priority: "Low", riskLevel: "Low", consequence: "Loss of institutional knowledge.", proof: "HR Dashboard", trainerNotes: "Analyze exit interview notes." },
+                { id: "FM-EXE-11", description: "Review staff churn in technical departments.", priority: "Low", riskLevel: "Low", consequence: "Loss of institutional knowledge.", proof: "HR Dashboard", trainerNotes: "Analyze exit interview reasons." },
                 { id: "FM-EXE-12", description: "Verify IT disaster backup cloud sync status.", priority: "High", riskLevel: "High", consequence: "Total loss of BMS data.", proof: "System Log", trainerNotes: "Manual backup test Mondays." },
                 { id: "FM-EXE-13", description: "Audit Tenant satisfaction survey scores.", priority: "Medium", riskLevel: "Low", consequence: "Tenant attrition.", proof: "CSAT Report", trainerNotes: "Address bottom 10% complaints." },
                 { id: "FM-EXE-14", description: "Verify LOTO policy signature compliance.", priority: "High", riskLevel: "High", consequence: "Fatal industrial accidents.", proof: "Compliance File", trainerNotes: "Audit 10% of new hires." },
@@ -64,7 +64,7 @@ export const facility_management_blueprint: PremiumPack = {
             title: "Soft FM Command",
             department: "Operations",
             frequency: "Daily",
-            role: "General Manager",
+            role: "Property General Manager",
             summary: "Hourly hygiene and aesthetic command.",
             icon: "sparkles",
             tasks: [
@@ -94,7 +94,7 @@ export const facility_management_blueprint: PremiumPack = {
             title: "Utility Economics",
             department: "Finance",
             frequency: "Daily",
-            role: "Finance & Cashier",
+            role: "Finance & Accounts Executive",
             summary: "Energy and utility cost governance.",
             icon: "zap",
             tasks: [
@@ -124,7 +124,7 @@ export const facility_management_blueprint: PremiumPack = {
             title: "Safety & EHS",
             department: "Safety",
             frequency: "Daily",
-            role: "EHS Officer",
+            role: "EHS & Safety Officer",
             summary: "Property hardening and life-safety command.",
             icon: "shield-check",
             tasks: [
@@ -132,7 +132,7 @@ export const facility_management_blueprint: PremiumPack = {
                 { id: "FM-SEC-02", description: "CCTV Audit: Verify 30-day backup status.", priority: "High", riskLevel: "High", consequence: "Loss of evidence.", proof: "System Screen", trainerNotes: "Check timestamp sync." },
                 { id: "FM-SEC-03", description: "Verify fire-exit corridors are clear/unlocked.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment.", proof: "Patrol Log", trainerNotes: "Physically open every door." },
                 { id: "FM-SEC-04", description: "Check fire extinguisher pressure (Green).", priority: "High", riskLevel: "High", consequence: "Inability to fight fire.", proof: "Gauge Log", trainerNotes: "Check safety seals daily." },
-                { id: "FM-SEC-05", description: "Verify guard sobriety and attendance.", priority: "High", riskLevel: "High", consequence: "Vulnerable perimeter.", proof: "Test Note", trainerNotes: "Conduct at shift change." },
+                { id: "FM-SEC-05", description: "Verify guard sobriety and attendance.", priority: "High", riskLevel: "High", consequence: "Vulnerable perimeter.", proof: "Test Note", trainerNotes: "Conduct during shift change." },
                 { id: "FM-SEC-06", description: "Audit visitor ID register: 100% capture.", priority: "High", riskLevel: "High", consequence: "Unauthorized access.", proof: "Registry Audit", trainerNotes: "Retain ID at gate." },
                 { id: "FM-SEC-07", description: "Test emergency PA system volume zones.", priority: "High", riskLevel: "Medium", consequence: "Crisis comm failure.", proof: "Sound Test", trainerNotes: "Rotate zones weekly." },
                 { id: "FM-SEC-08", description: "Verify 'LOTO' locks on active MEP repairs.", priority: "High", riskLevel: "High", consequence: "Fatal electrocution.", proof: "Visual Audit", trainerNotes: "No lock, No work." },
@@ -154,7 +154,7 @@ export const facility_management_blueprint: PremiumPack = {
             title: "Technical Certs",
             department: "HR",
             frequency: "Monthly",
-            role: "HR Manager",
+            role: "HR & Admin Assistant",
             summary: "Compliance and safety skill governance.",
             icon: "graduation-cap",
             tasks: [
@@ -184,7 +184,7 @@ export const facility_management_blueprint: PremiumPack = {
             title: "Hard FM (MEP)",
             department: "Engineering",
             frequency: "Daily",
-            role: "Technical Lead",
+            role: "Chief Engineer",
             summary: "Technical uptime and backbone protection.",
             icon: "wrench",
             tasks: [
@@ -214,7 +214,7 @@ export const facility_management_blueprint: PremiumPack = {
             title: "Vendor SLA Governance",
             department: "Admin",
             frequency: "Weekly",
-            role: "Customer Experience Lead",
+            role: "Vendor SLA Manager",
             summary: "Monitors third-party performance parity.",
             icon: "file-check",
             tasks: [
@@ -272,5 +272,3 @@ export const facility_management_blueprint: PremiumPack = {
         }
     ]
 };
-
-    
