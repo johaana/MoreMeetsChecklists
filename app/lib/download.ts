@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v11.0 - ZERO-NOISE PRECISION
- * Perfected Header Spacing (40/100/40) & Clean Data Modules
+ * Sovereign Engine v11.1 - DYNAMIC HOSPITALITY BUILD
+ * Perfected Header Spacing (40/100/40) & Dynamic Role Mapping
  * Sequence: Console -> Branch -> Hub -> Ledger -> Handover -> Incident -> Health -> Library -> Finance.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -22,7 +22,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const dayOfMonth = startDate.getDate();
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-SOVEREIGN-11.0-MASTER";
+    const ORDER_ID = "MM-SOVEREIGN-11.1-MASTER";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -154,8 +154,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 2 }];
         
         // PERFECTED SPACING: 40pt / 100pt / 40pt
-        ws['!rows'] = [{ hpt: 40 }, { hpt: 100 }, { hpt: 40 }, { hpt: 80 }];
-        for(let r = 4; r < 5000; r++) {
+        ws['!rows'] = [{ hpt: 40 }, { hpt: 100 }, { hpt: 40 }];
+        for(let r = 3; r < 5000; r++) {
             ws['!rows'][r] = { hpt: 35 };
         }
     };
@@ -179,7 +179,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v11.0 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v11.1 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -298,7 +298,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const pData: any[][] = [[], [], [], pHeaders];
     
-    const activeRoles = ["Owner / Managing Director", "Executive Chef", "Floor Captain (Shift A)", "Bar Manager", "Delivery & Logistics Lead", "Store & Purchase Manager", "Finance & Accounts Head", "EHS & Food Safety Officer"];
+    // DYNAMIC ROLE MAPPING BASED ON INDUSTRY
+    let activeRoles = ["General Manager", "Assistant Manager", "Supervisor", "Operator"];
+    if (item.id === 'restaurants') {
+        activeRoles = ["Owner / Managing Director", "Executive Chef", "Floor Captain (Shift A)", "Bar Manager", "Delivery & Logistics Lead", "Store & Purchase Manager", "Finance & Accounts Head", "EHS & Food Safety Officer"];
+    } else if (item.id === 'hotels_and_resorts') {
+        activeRoles = ["Owner / Managing Director", "General Manager", "Head of Housekeeping", "F&B Manager", "Events Manager", "Security Chief", "Chief Engineer", "Guest Relations Manager"];
+    }
     
     [1, 2, 3].forEach(bId => {
         activeRoles.forEach((role) => {
@@ -310,7 +316,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: "", s: inputStyleLeft }, 
                 { v: "", s: inputStyleLeft }, 
                 { v: "ACTIVE", s: inputStyle }, 
-                { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$500, D${rowIdx}, 'TODAYS_TASKS'!$I$5:$I$500, "COMPLETED")`, s: dataStyleCenter }
+                { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$5000, D${rowIdx}, 'TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED")`, s: dataStyleCenter }
             ]);
         });
     });
@@ -423,7 +429,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     [1, 2, 3].forEach(bId => {
         const branchRef = `INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId})`;
         healthData.push([
-            { v: "Task Execution Velocity", s: dataStyleLeft }, { t: 'f', f: branchRef, s: dataStyleCenter }, { v: "MONITORING", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}))`, s: { ...dataStyleCenter, numFmt: '0%' } }, { v: "NORMAL", s: dataStyleCenter }
+            { v: "Task Execution Velocity", s: dataStyleLeft }, { t: 'f', f: branchRef, s: dataStyleCenter }, { v: "MONITORING", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$F$5:$F$5000, "?*"))`, s: { ...dataStyleCenter, numFmt: '0%' } }, { v: "NORMAL", s: dataStyleCenter }
         ]);
         healthData.push([
             { v: "Critical Risk Load", s: dataStyleLeft }, { t: 'f', f: branchRef, s: dataStyleCenter }, { v: "MONITORING", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$K$5:$K$5000, "High", 'TODAYS_TASKS'!$I$5:$I$5000, "<>COMPLETED")`, s: dataStyleCenter }, { v: "CHECK PENDING", s: dataStyleCenter }
@@ -459,7 +465,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: t.description, s: dataStyleLeft },
                 { v: t.consequence || "Operational Risk Applied.", s: warningStyle },
                 { v: t.trainerNotes || "Institutional standard applies.", s: coachingStyle },
-                { v: "ISO/HACCP v11.0", s: dataStyleCenter }
+                { v: "ISO/HACCP v11.1", s: dataStyleCenter }
             ]);
         });
     });
@@ -495,5 +501,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_11.0.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_11.1.xlsx`);
 }
