@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v10.9 - VISUAL COMMAND UPDATE
- * Perfected Header Spacing & Full Module Payload
+ * Sovereign Engine v11.0 - ZERO-NOISE PRECISION
+ * Perfected Header Spacing (40/100/40) & Clean Data Modules
  * Sequence: Console -> Branch -> Hub -> Ledger -> Handover -> Incident -> Health -> Library -> Finance.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -22,7 +22,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const dayOfMonth = startDate.getDate();
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-SOVEREIGN-10.9-MASTER";
+    const ORDER_ID = "MM-SOVEREIGN-11.0-MASTER";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -131,7 +131,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         alignment: { ...verticalCenter, wrapText: true }
     };
 
-    const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K', customTitleHpt: number = 100, headerRowHpt: number = 80) => {
+    const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K') => {
         const ribbonData = [
             [{ v: "◀ BACK TO CONSOLE", l: { Target: "#'HOME_CONSOLE'!A1" }, s: navStyle }],
             [{ v: `  ${title.toUpperCase()}`, s: ribbonHeaderStyle }]
@@ -153,8 +153,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 2 }];
         
-        // PERFECTED SPACING: Increase row heights for 'Air'
-        ws['!rows'] = [{ hpt: 40 }, { hpt: customTitleHpt }, { hpt: 40 }, { hpt: headerRowHpt }];
+        // PERFECTED SPACING: 40pt / 100pt / 40pt
+        ws['!rows'] = [{ hpt: 40 }, { hpt: 100 }, { hpt: 40 }, { hpt: 80 }];
         for(let r = 4; r < 5000; r++) {
             ws['!rows'][r] = { hpt: 35 };
         }
@@ -179,7 +179,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v10.9 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v11.0 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -269,7 +269,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ...packChecklists.map(c => ({ v: c.title, s: headerStyle })),
         { v: "Score (Ghost)", s: headerStyle }, { v: "Risk Load (Ghost)", s: headerStyle } 
     ];
-    const branchNames = ["Colaba (Sample)", "Bandra (Sample)", "Borivali (Sample)"];
+    const branchNames = ["Bandra Main (Sample)", "Ghatkopar West (Sample)", "Colaba (Sample)"];
     const branchSetupData = [
         [], [], [],
         facilityHeaders,
@@ -394,6 +394,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { v: "Resolved? (YES/NO)", s: headerStyle }
     ];
     const incidentRows = [];
+    // PRE-STYLE 50 ROWS FOR ZERO-NOISE INPUT
     for (let i = 0; i < 50; i++) {
         incidentRows.push([
             { v: "", s: inputStyle },
@@ -458,7 +459,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: t.description, s: dataStyleLeft },
                 { v: t.consequence || "Operational Risk Applied.", s: warningStyle },
                 { v: t.trainerNotes || "Institutional standard applies.", s: coachingStyle },
-                { v: "ISO/HACCP v10.9", s: dataStyleCenter }
+                { v: "ISO/HACCP v11.0", s: dataStyleCenter }
             ]);
         });
     });
@@ -494,5 +495,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_10.9.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_11.0.xlsx`);
 }
