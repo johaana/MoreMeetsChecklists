@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v10.5 - TEMPORAL INTELLIGENCE UPDATE
- * Features: Symmetric 70pt Headers, Monday/1st-of-month filtering, Hyperlinked Assignments.
+ * Sovereign Engine v10.6 - ASSIGNMENT PRECISION UPDATE
+ * Features: Symmetric 70pt Headers, COUNTIFS-based Assignment Gate, Simplified Layman Vocab.
  * Sequence: Console -> Branch -> Hub -> Ledger -> Handover -> Incident -> Health -> Library -> Finance.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -22,7 +22,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const dayOfMonth = startDate.getDate();
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-SOVEREIGN-10.5-MASTER";
+    const ORDER_ID = "MM-SOVEREIGN-10.6-MASTER";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -178,7 +178,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v10.5 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v10.6 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -372,13 +372,16 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
                 const rowIdx = mData.length + 1;
                 const statusFormula = `IF(LEN(TRIM(G${rowIdx}))=0, "PENDING", IF(AND(LEN(TRIM(H${rowIdx}))=0, H${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
-                const personFormula = `IFERROR(VLOOKUP(B${rowIdx} & "|" & C${rowIdx}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(B${rowIdx} & "|" & C${rowIdx}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(B${rowIdx} & "|" & C${rowIdx}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", ""), HYPERLINK("#'TEAM_HUB'!A1", "ASSIGN IN TEAM HUB"))`;
+                
+                // HARDENED ASSIGNMENT LOGIC: Check COUNTIFS for existing non-empty string in Team Hub
+                const keyRef = `B${rowIdx} & "|" & C${rowIdx}`;
+                const personFormula = `IF(COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0, HYPERLINK("#'TEAM_HUB'!A1", "ASSIGN IN TEAM HUB"), VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", ""))`;
                 
                 mData.push([
                     { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
                     { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode}), "")`, s: dataStyleCenter },
                     { v: c.role, s: dataStyleCenter },
-                    { t: 'f', f: personFormula, s: { ...dataStyleCenter, font: { italic: true, color: { rgb: COLORS.INTEL_GREY }, underline: true } } },
+                    { t: 'f', f: personFormula, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.VITAL_BLUE }, underline: true } } },
                     { v: t.id, s: dataStyleCenter },
                     { v: t.description, s: dataStyleLeft },
                     { v: "", s: inputStyle }, 
@@ -459,7 +462,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: t.description, s: dataStyleLeft },
                 { v: t.consequence || "Operational Risk Applied.", s: warningStyle },
                 { v: t.trainerNotes || "Institutional standard applies.", s: coachingStyle },
-                { v: "ISO/HACCP v10.5", s: dataStyleCenter }
+                { v: "ISO/HACCP v10.6", s: dataStyleCenter }
             ]);
         });
     });
@@ -495,5 +498,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_10.5.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_10.6.xlsx`);
 }
