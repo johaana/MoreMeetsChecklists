@@ -7,7 +7,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 
 /**
  * Sovereign Engine v9.4 - PERSONNEL DENSITY UPDATE
- * Fixes: Expanded TEAM_HUB for Elite 7 (starting with Restaurants).
+ * Fixes: Expanded TEAM_HUB for Elite 7 (starting with Restaurants & Hotels).
  * UI: Symmetric 45pt Ribbons, 100pt Headers, Forced Vertical Centering.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -353,6 +353,42 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 "Delivery & Logistics Lead",
                 "Shift Cashier (A)",
                 "Shift Cashier (B)"
+            ];
+        }
+        if (packId === 'hotels_and_resorts') {
+            return [
+                "Owner / Managing Director",
+                "COO / Owner",
+                "General Manager",
+                "Resident Manager",
+                "Finance Controller",
+                "Finance & Cashier",
+                "Front Office Manager",
+                "Duty Manager (Shift A)",
+                "Duty Manager (Shift B)",
+                "Night Auditor",
+                "Customer Experience Lead",
+                "Guest Relations Manager",
+                "Executive Housekeeper",
+                "Head of Housekeeping",
+                "Floor Supervisor (Shift A)",
+                "Floor Supervisor (Shift B)",
+                "F&B Director",
+                "Restaurant Manager",
+                "Banquet Manager",
+                "Executive Chef",
+                "Sous Chef",
+                "Chief Engineer",
+                "Technical Lead",
+                "IT & Digital Manager",
+                "Security Manager",
+                "EHS Officer",
+                "Security Chief",
+                "HR Manager",
+                "Training Manager",
+                "Purchasing Manager",
+                "Logistics Lead",
+                "Fleet & Valet In-charge"
             ];
         }
         return [
