@@ -7,7 +7,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 
 /**
  * Sovereign Engine v10.5 - TEMPORAL INTELLIGENCE UPDATE
- * Features: Symmetric 60pt Headers, Monday/1st-of-month filtering, Hyperlinked Assignments.
+ * Features: Symmetric 70pt Headers, Monday/1st-of-month filtering, Hyperlinked Assignments.
  * Sequence: Console -> Branch -> Hub -> Ledger -> Handover -> Incident -> Health -> Library -> Finance.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -111,6 +111,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
+    const inputStyleLeft = {
+        ...dataStyleLeft,
+        font: { ...baseFont, color: { rgb: "000000" }, bold: true },
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_ZONE } }
+    };
+
     const warningStyle = {
         ...dataStyleLeft,
         font: { ...baseFont, color: { rgb: "991B1B" }, italic: true },
@@ -125,7 +131,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         alignment: { ...verticalCenter, wrapText: true }
     };
 
-    const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K', customTitleHpt: number = 60, headerRowHpt: number = 60) => {
+    const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K', customTitleHpt: number = 70, headerRowHpt: number = 70) => {
         const ribbonData = [
             [{ v: "◀ BACK TO CONSOLE", l: { Target: "#'HOME_CONSOLE'!A1" }, s: navStyle }],
             [{ v: `  ${title.toUpperCase()}`, s: ribbonHeaderStyle }]
@@ -149,7 +155,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         
         ws['!rows'] = [{ hpt: 25 }, { hpt: customTitleHpt }, { hpt: 15 }, { hpt: headerRowHpt }];
         for(let r = 4; r < 5000; r++) {
-            ws['!rows'][r] = { hpt: 25 };
+            ws['!rows'][r] = { hpt: 30 };
         }
     };
 
@@ -372,7 +378,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
                     { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode}), "")`, s: dataStyleCenter },
                     { v: c.role, s: dataStyleCenter },
-                    { t: 'f', f: personFormula, s: { ...dataStyleCenter, font: { italic: true, color: { rgb: COLORS.INTEL_GREY } } } },
+                    { t: 'f', f: personFormula, s: { ...dataStyleCenter, font: { italic: true, color: { rgb: COLORS.INTEL_GREY }, underline: true } } },
                     { v: t.id, s: dataStyleCenter },
                     { v: t.description, s: dataStyleLeft },
                     { v: "", s: inputStyle }, 

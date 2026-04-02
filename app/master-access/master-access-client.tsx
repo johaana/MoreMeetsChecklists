@@ -38,7 +38,7 @@ export default function MasterAccessClient() {
         setDownloadingPack(pack.id);
         try {
             handleDownload(pack, 'pack');
-             toast({ title: "Sovereign v6.2 Generated", description: `Engine for "${pack.title}" is ready.` });
+             toast({ title: "Sovereign v10.5 Generated", description: `Engine for "${pack.title}" is ready.` });
         } catch (err) {
              toast({ variant: "destructive", title: "Build Failed", description: `Could not build "${pack.title}".` });
         } finally {
@@ -53,7 +53,7 @@ export default function MasterAccessClient() {
                     <CardHeader className="text-center">
                         <KeyRound className="w-10 h-10 text-primary mx-auto mb-4" />
                         <CardTitle className="text-xl font-headline uppercase italic">Admin Gate</CardTitle>
-                        <CardDescription>Sovereign Library v6.2 Access.</CardDescription>
+                        <CardDescription>Sovereign Library v10.5 Access.</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <form onSubmit={handleLogin} className="space-y-4">
@@ -74,7 +74,7 @@ export default function MasterAccessClient() {
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-16 p-8 rounded-[2rem] bg-primary/5 border border-primary/10">
                 <div className="space-y-2">
                     <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Administrative Hub</Badge>
-                    <h1 className="text-4xl font-black font-headline text-primary-text italic uppercase tracking-tighter">Sovereign v6.2 Master Portal</h1>
+                    <h1 className="text-4xl font-black font-headline text-primary-text italic uppercase tracking-tighter">Sovereign v10.5 Master Portal</h1>
                 </div>
                 <ShieldCheck className="w-12 h-12 text-primary opacity-50" />
             </div>
@@ -89,7 +89,7 @@ export default function MasterAccessClient() {
                         <CardFooter className="mt-auto pt-4 border-t border-white/5 bg-white/[0.02]">
                            <Button variant="ghost" className="w-full h-12 font-black uppercase italic text-xs tracking-widest hover:bg-primary hover:text-black transition-all" onClick={() => triggerDownload(pack)} disabled={downloadingPack === pack.id}>
                                 {downloadingPack === pack.id ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
-                                Generate v6.2 Master
+                                Generate v10.5 Master
                             </Button>
                         </CardFooter>
                     </Card>
