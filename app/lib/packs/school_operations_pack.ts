@@ -27,7 +27,7 @@ export const school_operations_pack: PremiumPack = {
             title: "Board & Trustee Governance",
             department: "Executive",
             frequency: "Weekly",
-            role: "COO / Owner",
+            role: "Trustee / Board Member",
             summary: "Campus-wide strategic risk and liability oversight.",
             icon: "crown",
             tasks: [
@@ -56,7 +56,7 @@ export const school_operations_pack: PremiumPack = {
             title: "Campus Command & Counselling",
             department: "Operations",
             frequency: "Daily",
-            role: "General Manager",
+            role: "School Principal",
             summary: "Student flow, counselling governance, and trip logistics.",
             icon: "school",
             tasks: [
@@ -85,7 +85,7 @@ export const school_operations_pack: PremiumPack = {
             title: "Fee & Finance Shield",
             department: "Finance",
             frequency: "Daily",
-            role: "Finance & Cashier",
+            role: "Registrar / Fee Cashier",
             summary: "Revenue protection and statutory financial audits.",
             icon: "banknote",
             tasks: [
@@ -105,7 +105,7 @@ export const school_operations_pack: PremiumPack = {
                 { id: "SC-FIN-14", description: "Verify 'Library' fine collection total.", priority: "Low", riskLevel: "Low", consequence: "Untracked micro-leakage.", proof: "Fine Register", trainerNotes: "Reconcile vs system report." },
                 { id: "SC-FIN-15", description: "Check availability of 'Bill Books'.", priority: "Low", riskLevel: "Low", consequence: "Administrative friction.", proof: "Stock Audit", trainerNotes: "Order at < 5 books buffer." },
                 { id: "SC-FIN-16", description: "Audit staff travel expense claims.", priority: "Low", riskLevel: "Medium", consequence: "Inflated admin expenses.", proof: "Voucher File", trainerNotes: "Verify journey logs." },
-                { id: "SC-FIN-17", description: "Verify vendor TDS deductions.", priority: "Medium", riskLevel: "Medium", consequence: "Tax non-conformance.", proof: "TDS Register", trainerNotes: "Check PAN status monthly." },
+                { id: "SC-FIN-17", description: "Verify vendor TDS deductions.", priority: "Medium", riskLevel: "Medium", consequence: "Tax non-compliance.", proof: "TDS Register", trainerNotes: "Check PAN status monthly." },
                 { id: "SC-FIN-18", description: "Review 'Revenue per Student' trend.", priority: "Low", riskLevel: "Low", consequence: "Undetected margin erosion.", proof: "Finance Chart", trainerNotes: "Analyze vs previous year." },
                 { id: "SC-FIN-19", description: "Final daily Finance sign-off.", priority: "High", riskLevel: "Low", consequence: "Incomplete handover.", proof: "Signed Summary", trainerNotes: "Attach exception reports." }
             ]
@@ -114,7 +114,7 @@ export const school_operations_pack: PremiumPack = {
             title: "Perimeter & Life Safety",
             department: "Safety",
             frequency: "Daily",
-            role: "EHS Officer",
+            role: "EHS & Safety Officer",
             summary: "Infrastructure hardening, Playground safety, and CCTV command.",
             icon: "hard-hat",
             tasks: [
@@ -143,7 +143,7 @@ export const school_operations_pack: PremiumPack = {
             title: "POCSO & Personnel Certs",
             department: "HR",
             frequency: "Monthly",
-            role: "HR Manager",
+            role: "HR & Child Protection Manager",
             summary: "Legal competency, Child protection training, and Staff health.",
             icon: "graduation-cap",
             tasks: [
@@ -172,7 +172,7 @@ export const school_operations_pack: PremiumPack = {
             title: "Lab, Tech & Auditorium",
             department: "Technical",
             frequency: "Weekly",
-            role: "Technical Lead",
+            role: "IT & Lab Technical Lead",
             summary: "Science Lab safety, IT uptime, and Hall AV governance.",
             icon: "wrench",
             tasks: [
@@ -201,7 +201,7 @@ export const school_operations_pack: PremiumPack = {
             title: "Admission, Reception & ORM",
             department: "Admin",
             frequency: "Daily",
-            role: "Customer Experience Lead",
+            role: "Admissions & CX Head",
             summary: "Admission pipeline, Social Media ORM, and first-touch governance.",
             icon: "megaphone",
             tasks: [
@@ -230,7 +230,7 @@ export const school_operations_pack: PremiumPack = {
             title: "Transport, Canteen & Hygiene",
             department: "Logistics",
             frequency: "Daily",
-            role: "Logistics Lead",
+            role: "Transport & Canteen Lead",
             summary: "Zero-fail School Bus, HACCP Canteen, and Janitorial command.",
             icon: "truck",
             tasks: [

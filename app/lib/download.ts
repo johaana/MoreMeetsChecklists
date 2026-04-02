@@ -431,6 +431,40 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 "Logistics Lead"
             ];
         }
+        if (packId === 'school_operations_pack') {
+            return [
+                "Trustee / Board Member",
+                "School Principal",
+                "Vice Principal (Academic)",
+                "Vice Principal (Admin)",
+                "School Administrator",
+                "Registrar / Fee Cashier",
+                "Accountant",
+                "Admissions & CX Head",
+                "Receptionist (Shift A)",
+                "Receptionist (Shift B)",
+                "School Counsellor",
+                "Infirmary Nurse",
+                "Librarian",
+                "HOD Primary Wing",
+                "HOD Secondary Wing",
+                "Lab Assistant (Science)",
+                "Lab Assistant (IT)",
+                "IT & Lab Technical Lead",
+                "EHS & Safety Officer",
+                "Security Chief",
+                "Security Guard (Day)",
+                "Security Guard (Night)",
+                "Transport & Canteen Lead",
+                "Bus Driver (Route A)",
+                "Bus Driver (Route B)",
+                "Bus Attendant / Conductor",
+                "Canteen Supervisor",
+                "Maintenance Supervisor",
+                "HR & Child Protection Manager",
+                "Clerk / Admin Assistant"
+            ];
+        }
         return [
             "COO / Owner", 
             "General Manager", 
