@@ -227,7 +227,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "OPERATIONAL PULSE:", s: labelStyle },
             { t: 'f', f: `IF(COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$500, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")), "0%") & " PULSE | " & COUNTIFS('TEAM_HUB'!$F$5:$F$500, "ACTIVE", 'TEAM_HUB'!$D$5:$D$500, "?*") & " ACTIVE | " & COUNTIFS('TEAM_HUB'!$F$5:$F$500, "<>ACTIVE", 'TEAM_HUB'!$F$5:$F$500, "<>") & " UNAVAILABLE")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "🚨 CRITICAL WATCH:", s: labelStyle },
-            { t: 'f', f: `IF(MAX('BRANCH_MASTER'!$L$5:$L$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$L$5:$L$15), 'BRANCH_MASTER'!$L$5:$L$15, 0)), "ALL CLEAR")`, l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9, underline: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'center', ...verticalCenter } } },
+            { t: 'f', f: `IF(COUNTIFS('INCIDENT_TRACKER'!$D$5:$D$500, "?*", 'INCIDENT_TRACKER'!$G$5:$G$500, "<>YES")>0, INDEX('INCIDENT_TRACKER'!$B$5:$B$500, MATCH("NO", 'INCIDENT_TRACKER'!$G$5:$G$500, 0)), "ALL CLEAR")`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9, underline: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "SHIFT PROGRESS:", s: labelStyle },
             { t: 'f', f: `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$5000, "?*")), 0)`, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE } }, numFmt: '0%', alignment: { horizontal: 'center', ...verticalCenter } } }
         ],
@@ -306,6 +306,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         activeRoles = ["Owner / Managing Director", "General Manager", "Head of Housekeeping", "F&B Manager", "Events Manager", "Security Chief", "Chief Engineer", "Guest Relations Manager"];
     } else if (item.id === 'healthcare_and_hospital_operations') {
         activeRoles = ["Medical Director", "Nursing Superintendent", "OPD Manager", "Pharmacy Lead", "Billing Manager", "EHS Officer", "Technical Maintenance Lead", "Admissions & CX Head", "Logistics Lead", "HR Manager"];
+    } else if (item.id === 'cinema_operations_pack') {
+        activeRoles = ["Owner / Managing Director", "Cinema General Manager", "Concession & F&B Manager", "Chief Projectionist", "Guest Services Lead", "EHS & Safety Officer", "Housekeeping Lead", "HR & Admin Assistant"];
     }
     
     [1, 2, 3].forEach(bId => {
