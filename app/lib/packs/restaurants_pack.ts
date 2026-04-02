@@ -30,7 +30,7 @@ export const restaurants: PremiumPack = {
             title: "Owner & COO Governance",
             department: "Executive",
             frequency: "Weekly",
-            role: "COO / Owner",
+            role: "Owner / Managing Director",
             summary: "Strategic oversight of group performance and risk.",
             icon: "crown",
             tasks: [
@@ -60,7 +60,7 @@ export const restaurants: PremiumPack = {
             title: "Kitchen Command & HACCP",
             department: "Kitchen",
             frequency: "Daily",
-            role: "General Manager",
+            role: "Executive Chef",
             summary: "Critical food safety and production protocols.",
             icon: "sunrise",
             tasks: [
@@ -90,7 +90,7 @@ export const restaurants: PremiumPack = {
             title: "Finance & Cashier Shield",
             department: "Finance",
             frequency: "Daily",
-            role: "Finance & Cashier",
+            role: "Finance & Accounts Head",
             summary: "Profit protection and fraud detection.",
             icon: "banknote",
             tasks: [
@@ -120,7 +120,7 @@ export const restaurants: PremiumPack = {
             title: "Safety & Asset Protection",
             department: "Security",
             frequency: "Daily",
-            role: "EHS Officer",
+            role: "EHS & Food Safety Officer",
             summary: "Infrastructure hardening against fire and theft.",
             icon: "shield-check",
             tasks: [
@@ -150,7 +150,7 @@ export const restaurants: PremiumPack = {
             title: "Staff Performance & Certs",
             department: "HR",
             frequency: "Weekly",
-            role: "HR Manager",
+            role: "HR & Training Manager",
             summary: "Training and health compliance governance.",
             icon: "users",
             tasks: [
@@ -180,7 +180,7 @@ export const restaurants: PremiumPack = {
             title: "Maintenance & Equipment",
             department: "Engineering",
             frequency: "Weekly",
-            role: "Technical Lead",
+            role: "Technical Maintenance Lead",
             summary: "Technical uptime and digital backbone protection.",
             icon: "wrench",
             tasks: [
@@ -210,7 +210,7 @@ export const restaurants: PremiumPack = {
             title: "Digital ORM & Marketing",
             department: "Admin",
             frequency: "Daily",
-            role: "Customer Experience Lead",
+            role: "Hostess / Reception",
             summary: "Reputation protection and marketing governance.",
             icon: "star",
             tasks: [
@@ -240,7 +240,7 @@ export const restaurants: PremiumPack = {
             title: "Delivery & Logistics",
             department: "Logistics",
             frequency: "Daily",
-            role: "Logistics Lead",
+            role: "Delivery & Logistics Lead",
             summary: "Command for off-premise sales and supply chain.",
             icon: "truck",
             tasks: [

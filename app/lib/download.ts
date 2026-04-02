@@ -6,9 +6,9 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v9.3 - INSTITUTIONAL FINAL
- * Fixes: Compressed 100pt Header, SOP Library Expansion, Trainer's Notes nomenclature.
- * Symmetry: Symmetric 45pt Ribbons and Zero-Clipping symmetric Grid.
+ * Sovereign Engine v9.4 - PERSONNEL DENSITY UPDATE
+ * Fixes: Expanded TEAM_HUB for Elite 7 (starting with Restaurants).
+ * UI: Symmetric 45pt Ribbons, 100pt Headers, Forced Vertical Centering.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -20,7 +20,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const startDate = new Date(); 
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-SOVEREIGN-9.3-MASTER";
+    const ORDER_ID = "MM-SOVEREIGN-9.4-MASTER";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -176,7 +176,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v9.3 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v9.4 | Sovereign Master Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -214,7 +214,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [
             null,
             { v: "TODAY'S STAR:", s: labelStyle },
-            { t: 'f', f: `IF(MAX('TEAM_HUB'!$G$5:$G$100)>0, INDEX('TEAM_HUB'!$D$5:$D$100, MATCH(MAX('TEAM_HUB'!$G$5:$G$100), 'TEAM_HUB'!$G$5:$G$100, 0)), "AWAITING DATA")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', ...verticalCenter } } },
+            { t: 'f', f: `IF(MAX('TEAM_HUB'!$G$5:$G$500)>0, INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(MAX('TEAM_HUB'!$G$5:$G$500), 'TEAM_HUB'!$G$5:$G$500, 0)), "AWAITING DATA")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "TOP BRANCH:", s: labelStyle },
             { t: 'f', f: `IF(MAX('BRANCH_MASTER'!$K$5:$K$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$K$5:$K$15), 'BRANCH_MASTER'!$K$5:$K$15, 0)), "AWAITING DATA")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.ACCENT_AMBER } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "TASKS LOGGED:", s: labelStyle },
@@ -223,7 +223,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [
             null,
             { v: "OPERATIONAL PULSE:", s: labelStyle },
-            { t: 'f', f: `IF(COUNTIFS('TEAM_HUB'!$D$5:$D$100, "?*")=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$100, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$100, "?*")), "0%") & " (" & COUNTIFS('TEAM_HUB'!$G$5:$G$100, ">0") & "/" & COUNTIFS('TEAM_HUB'!$D$5:$D$100, "?*") & ")")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } },
+            { t: 'f', f: `IF(COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$500, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")), "0%") & " (" & COUNTIFS('TEAM_HUB'!$G$5:$G$500, ">0") & "/" & COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*") & ")")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "🚨 CRITICAL WATCH:", s: labelStyle },
             { t: 'f', f: `IF(MAX('BRANCH_MASTER'!$L$5:$L$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$L$5:$L$15), 'BRANCH_MASTER'!$L$5:$L$15, 0)), "ALL CLEAR")`, l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9, underline: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "SHIFT PROGRESS:", s: labelStyle },
@@ -328,6 +328,45 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
 
     // --- 04. TEAM HUB ---
+    const getRolesForPack = (packId: string) => {
+        if (packId === 'restaurants') {
+            return [
+                "Owner / Managing Director",
+                "COO / Operations Director",
+                "Unit General Manager",
+                "Assistant Restaurant Manager",
+                "Floor Supervisor (Shift A)",
+                "Floor Supervisor (Shift B)",
+                "Executive Chef",
+                "Sous Chef",
+                "Kitchen Supervisor",
+                "CDP (Main Kitchen)",
+                "Commi Chef (Prep)",
+                "Kitchen Steward / Utility",
+                "Finance & Accounts Head",
+                "Cashier (Front of House)",
+                "Purchase & Store Manager",
+                "HR & Training Manager",
+                "EHS & Food Safety Officer",
+                "Technical Maintenance Tech",
+                "Hostess / Reception",
+                "Delivery & Logistics Lead",
+                "Shift Cashier (A)",
+                "Shift Cashier (B)"
+            ];
+        }
+        return [
+            "COO / Owner", 
+            "General Manager", 
+            "Finance & Cashier", 
+            "EHS Officer", 
+            "HR Manager", 
+            "Technical Lead", 
+            "Customer Experience Lead", 
+            "Logistics Lead"
+        ];
+    };
+
     const pHeaders = [
         { v: "Staff Lookup Key (Ghost)", s: headerStyle }, 
         { v: "Branch Name", s: headerStyle }, 
@@ -339,19 +378,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const pData: any[][] = [[], [], [], pHeaders];
     
-    const roles8 = [
-        "COO / Owner", 
-        "General Manager", 
-        "Finance & Cashier", 
-        "EHS Officer", 
-        "HR Manager", 
-        "Technical Lead", 
-        "Customer Experience Lead", 
-        "Logistics Lead"
-    ];
+    const activeRoles = getRolesForPack(item.id);
     
     [1, 2, 3].forEach(bId => {
-        roles8.forEach((role) => {
+        activeRoles.forEach((role) => {
             const rowIdx = pData.length + 1;
             pData.push([
                 { t: 'f', f: `B${rowIdx} & "|" & C${rowIdx}`, s: dataStyleLeft }, 
@@ -414,7 +444,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: t.description, s: dataStyleLeft },
                 { v: t.consequence || "Operational Risk Applied.", s: warningStyle },
                 { v: t.trainerNotes || "Institutional standard applies.", s: coachingStyle },
-                { v: "ISO/HACCP v9.3", s: dataStyleCenter }
+                { v: "ISO/HACCP v9.4", s: dataStyleCenter }
             ]);
         });
     });
@@ -439,5 +469,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(healthWs, "Performance Analytics", 'E');
     utils.book_append_sheet(wb, healthWs, "BUSINESS_HEALTH");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_9.3.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_9.4.xlsx`);
 }
