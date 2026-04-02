@@ -432,7 +432,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "Workforce Availability", s: dataStyleLeft }, { t: 'f', f: branchRef, s: dataStyleCenter }, { v: "LIVE PULSE", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('TEAM_HUB'!$B$5:$B$500, ${branchRef}, 'TEAM_HUB'!$F$5:$F$500, "ACTIVE")`, s: dataStyleCenter }, { v: "STABLE", s: dataStyleCenter }
         ]);
         healthData.push([
-            { v: "Liability Exposure", s: dataStyleLeft }, { t: 'f', f: branchRef, s: dataStyleCenter }, { v: "AUDIT", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('INCIDENT_TRACKER'!$B$4:$B$500, ${branchRef}, 'INCIDENT_TRACKER'!$G$4:$G$500, "<>YES")`, s: dataStyleCenter }, { v: "ZERO TARGET", s: dataStyleCenter }
+            { v: "Liability Exposure", s: dataStyleLeft }, { t: 'f', f: branchRef, s: dataStyleCenter }, { v: "AUDIT", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('INCIDENT_TRACKER'!$B$5:$B$500, ${branchRef}, 'INCIDENT_TRACKER'!$G$5:$G$500, "<>YES", 'INCIDENT_TRACKER'!$D$5:$D$500, "?*")`, s: dataStyleCenter }, { v: "ZERO TARGET", s: dataStyleCenter }
         ]);
         healthData.push([]); // Spacer
     });
