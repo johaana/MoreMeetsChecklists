@@ -33,7 +33,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "Strategic Oversight",
             department: "Executive",
             frequency: "Weekly",
-            role: "COO / Owner",
+            role: "COO / Regional Manager",
             summary: "Strategic multi-unit performance and group-wide risk oversight.",
             icon: "crown",
             tasks: [
@@ -62,7 +62,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "Theater Command",
             department: "Operations",
             frequency: "Daily",
-            role: "General Manager",
+            role: "Cinema General Manager",
             summary: "Ambiance, floor standards, and show-readiness governance.",
             icon: "theater",
             tasks: [
@@ -91,7 +91,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "Concession Yield Logic",
             department: "Finance",
             frequency: "Daily",
-            role: "Finance & Cashier",
+            role: "Finance & Accounts Executive",
             summary: "Protects high-margin F&B revenue and profit.",
             icon: "banknote",
             tasks: [
@@ -105,7 +105,7 @@ export const cinema_operations_pack: PremiumPack = {
                 { id: "CIN-FIN-08", description: "Verify invoice entry in < 24h.", priority: "Medium", riskLevel: "Low", consequence: "Inaccurate real-time inventory.", proof: "Entry Log", trainerNotes: "Match physical receiving notes." },
                 { id: "CIN-FIN-09", description: "Audit credit card machine tamper seals.", priority: "High", riskLevel: "High", consequence: "Skimming legal disaster.", proof: "Visual Audit", trainerNotes: "Check for mismatched screws." },
                 { id: "CIN-FIN-10", description: "Check stationery stock (Bill rolls/Labels).", priority: "Low", riskLevel: "Low", consequence: "Billing halt.", proof: "Supply Check", trainerNotes: "Min 1 week buffer stock." },
-                { id: "CIN-FIN-11", description: "Audit staff travel expense claims.", priority: "Low", riskLevel: "Medium", consequence: "Inflated expenses.", proof: "Claim File", trainerNotes: "Vouchers needed for all." },
+                { id: "CIN-FIN-11", description: "Audit staff travel expense claims.", priority: "Low", riskLevel: "Medium", consequence: "Inflated expenses.", proof: "Claim File", trainerNotes: "Signature required for all vouchers." },
                 { id: "CIN-FIN-12", description: "Verify vendor TDS deductions.", priority: "Medium", riskLevel: "Medium", consequence: "Tax non-compliance.", proof: "TDS Register", trainerNotes: "Check PAN status monthly." },
                 { id: "CIN-FIN-13", description: "Review 'SPP' trend for shift.", priority: "Low", riskLevel: "Low", consequence: "Underperforming upsells.", proof: "Sales Report", trainerNotes: "Compare vs previous week avg." },
                 { id: "CIN-FIN-14", description: "Check 'Item Variance' for high-risk stock.", priority: "High", riskLevel: "High", consequence: "Systemic portioning fail.", proof: "Variance Report", trainerNotes: "Focus on > 5% variance." },
@@ -120,7 +120,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "Life Safety & EHS",
             department: "Safety",
             frequency: "Daily",
-            role: "EHS Officer",
+            role: "EHS & Safety Officer",
             summary: "Infrastructure hardening and crowd safety governance.",
             icon: "hard-hat",
             tasks: [
@@ -149,7 +149,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "Personnel Certification",
             department: "HR",
             frequency: "Monthly",
-            role: "HR Manager",
+            role: "HR & Admin Assistant",
             summary: "Staff certification, health, and grooming governance.",
             icon: "users",
             tasks: [
@@ -178,7 +178,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "Projection & Sound QC",
             department: "Technical",
             frequency: "Per Show",
-            role: "Technical Lead",
+            role: "Chief Projectionist",
             summary: "Zero-fail protocols for digital media and projection hardware.",
             icon: "projector",
             tasks: [
@@ -207,7 +207,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "Box Office Integrity",
             department: "Admin",
             frequency: "Daily",
-            role: "Customer Experience Lead",
+            role: "Guest Services Lead",
             summary: "Ticketing integrity, digital ORM, and first-touch governance.",
             icon: "globe",
             tasks: [
@@ -236,7 +236,7 @@ export const cinema_operations_pack: PremiumPack = {
             title: "Housekeeping Logistics",
             department: "Janitorial",
             frequency: "Hourly",
-            role: "Logistics Lead",
+            role: "Janitorial Lead / HK Supervisor",
             summary: "Auditorium sanitation and waste-bay command.",
             icon: "sparkles",
             tasks: [
@@ -263,5 +263,3 @@ export const cinema_operations_pack: PremiumPack = {
         }
     ]
 };
-
-    

@@ -7,7 +7,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 
 /**
  * Sovereign Engine v9.4 - PERSONNEL DENSITY UPDATE
- * Fixes: Expanded TEAM_HUB for Elite 7 (Hospitals, Restaurants, Hotels, Schools, Franchise, Facility).
+ * Fixes: Expanded TEAM_HUB for Elite 7 (Hospitals, Restaurants, Hotels, Schools, Franchise, Facility, Cinema).
  * UI: Symmetric 45pt Ribbons, 100pt Headers, Forced Vertical Centering.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -528,6 +528,34 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 "Security Supervisor (Shift B)",
                 "Landscaping & Facade Lead",
                 "Parking & Valet Coordinator"
+            ];
+        }
+        if (packId === 'cinema_operations_pack') {
+            return [
+                "Owner / Managing Director",
+                "COO / Regional Manager",
+                "Cinema General Manager",
+                "Assistant Cinema Manager",
+                "Technical Director",
+                "Chief Projectionist",
+                "Projectionist (Shift A)",
+                "Projectionist (Shift B)",
+                "Box Office Manager",
+                "Ticketing Cashier (Shift A)",
+                "Ticketing Cashier (Shift B)",
+                "F&B / Concession Manager",
+                "Concession Supervisor",
+                "Kitchen Lead (Snacks)",
+                "Service Crew (Shift A)",
+                "Service Crew (Shift B)",
+                "Guest Services Lead",
+                "Marketing & Events Coordinator",
+                "Security Chief",
+                "Janitorial Lead / HK Supervisor",
+                "Finance & Accounts Executive",
+                "HR & Admin Assistant",
+                "EHS & Safety Officer",
+                "Technical Maintenance Tech"
             ];
         }
         return [
