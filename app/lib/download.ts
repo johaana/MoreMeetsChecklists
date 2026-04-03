@@ -399,11 +399,11 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     // --- 05. SHIFT HANDOVER ---
     const handoverHeaders = [{ v: "Branch", s: headerStyle }, { v: "Departing Shift Manager", s: headerStyle }, { v: "Arriving Shift Manager", s: headerStyle }, { v: "Critical Issues Carried Over", s: headerStyle }, { v: "Safety/EHS Clear?", s: headerStyle }, { v: "Handover Timestamp", s: headerStyle }];
     const handoverRows = [];
-    // ONE DEFAULT ROW
-    for(let i=0; i<30; i++) {
+    // TWO DEFAULT ROWS
+    for(let i=0; i<2; i++) {
         handoverRows.push([
-            { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, 1), "")`, s: i === 0 ? inputStyle : dataStyleCenter },
-            { v: "", s: i === 0 ? inputStyle : dataStyleCenter }, { v: "", s: i === 0 ? inputStyle : dataStyleCenter }, { v: "", s: i === 0 ? inputStyleLeft : dataStyleLeft }, { v: "YES", s: i === 0 ? inputStyle : dataStyleCenter }, { v: "", s: i === 0 ? inputStyle : dataStyleCenter }
+            { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, 1), "")`, s: inputStyle },
+            { v: "", s: inputStyle }, { v: "", s: inputStyle }, { v: "", s: inputStyleLeft }, { v: "YES", s: inputStyle }, { v: "", s: inputStyle }
         ]);
     }
     const handoverWs = utils.aoa_to_sheet([[], [], [], handoverHeaders, ...handoverRows]);
@@ -422,16 +422,16 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { v: "Resolved? (YES/NO)", s: headerStyle }
     ];
     const incidentRows = [];
-    // CLEAN GRID - ONE DEFAULT INPUT ROW
-    for (let i = 0; i < 50; i++) {
+    // TWO CLEAN INPUT ROWS
+    for (let i = 0; i < 2; i++) {
         incidentRows.push([
-            { v: "", s: i === 0 ? inputStyle : dataStyleCenter },
-            { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, 1), "")`, s: i === 0 ? inputStyle : dataStyleCenter },
-            { v: "", s: i === 0 ? inputStyle : dataStyleCenter },
-            { v: "", s: i === 0 ? inputStyleLeft : dataStyleLeft },
-            { v: "", s: i === 0 ? inputStyleLeft : dataStyleLeft },
-            { v: "", s: i === 0 ? inputStyleLeft : dataStyleLeft },
-            { v: "NO", s: i === 0 ? inputStyle : dataStyleCenter }
+            { v: "", s: inputStyle },
+            { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, 1), "")`, s: inputStyle },
+            { v: "", s: inputStyle },
+            { v: "", s: inputStyleLeft },
+            { v: "", s: inputStyleLeft },
+            { v: "", s: inputStyleLeft },
+            { v: "NO", s: inputStyle }
         ]);
     }
     const incidentWs = utils.aoa_to_sheet([[], [], [], incidentHeaders, ...incidentRows]);
@@ -505,14 +505,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const fsData: any[][] = [[], [], [], fsHeaders];
     [1, 2].forEach(bId => {
-        for(let i=0; i<5; i++) {
+        for(let i=0; i<2; i++) {
             const rowIdx = fsData.length + 1;
             const contribFormula = `C${rowIdx}-D${rowIdx}-(C${rowIdx}*E${rowIdx})-F${rowIdx}`;
             const marginFormula = `IFERROR(G${rowIdx}/C${rowIdx}, 0)`;
             fsData.push([
                 { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
-                { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`, s: i === 0 ? inputStyle : dataStyleCenter },
-                { v: 0, s: i === 0 ? inputStyle : dataStyleCenter }, { v: 0, s: i === 0 ? inputStyle : dataStyleCenter }, { v: 0.25, s: { ... (i === 0 ? inputStyle : dataStyleCenter), numFmt: '0%' } }, { v: 0, s: i === 0 ? inputStyle : dataStyleCenter },
+                { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`, s: inputStyle },
+                { v: 0, s: inputStyle }, { v: 0, s: inputStyle }, { v: 0.25, s: { ...inputStyle, numFmt: '0%' } }, { v: 0, s: inputStyle },
                 { t: 'f', f: contribFormula, s: { ...dataStyleCenter, font: { bold: true } } },
                 { t: 'f', f: marginFormula, s: { ...dataStyleCenter, numFmt: '0.0%' } }
             ]);
