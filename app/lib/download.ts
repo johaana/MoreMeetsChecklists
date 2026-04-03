@@ -524,11 +524,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
-    // --- 10. SYSTEM GUIDE - FIXING CLIPPING ISSUE ---
+    // --- 10. SYSTEM GUIDE - FIXING CLIPPING & REPETITION ---
     const guideData: any[][] = [
-        [], [],
-        [null, { v: "SYSTEM COMMAND MANUAL", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'left', ...verticalCenter } } }],
-        [],
+        [], [], // Overwritten by Ribbon
+        [], // Empty Spacer for Row 3
         [null, { v: "COMMAND MANUAL: HOW TO DEPLOY YOUR SOVEREIGN OS", s: { font: { sz: 12, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [],
         [null, { v: "4-STEP DEPLOYMENT ROADMAP", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
@@ -551,8 +550,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(guideWs, "System Command Manual", 'K');
     guideWs['!cols'] = [5, 35, 100].map(w => ({ wch: w }));
     
-    // Formatting the steps/glossary rows
-    for(let r = 7; r < guideData.length; r++) {
+    for(let r = 6; r < guideData.length; r++) {
         const cellLabel = utils.encode_cell({r, c: 1});
         const cellText = utils.encode_cell({r, c: 2});
         if(guideWs[cellLabel]) guideWs[cellLabel].s = { ...dataStyleCenter, font: { bold: true }, alignment: { horizontal: 'right', ...verticalCenter } };
