@@ -312,6 +312,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         activeRoles = ["Franchisor COO / Head of Ops", "Area Operational Coach", "Finance & Accounts Executive", "EHS & Safety Officer", "Regional Training Lead", "Technical Maintenance Tech", "Local Marketing Coordinator", "Procurement & Supply Specialist"];
     } else if (item.id === 'school_operations_pack') {
         activeRoles = ["Trustee / Board Member", "School Principal", "Registrar / Fee Cashier", "EHS & Safety Officer", "HR & Child Protection Manager", "IT & Lab Technical Lead", "Admissions & CX Head", "Transport & Canteen Lead"];
+    } else if (item.id === 'facility_management_blueprint') {
+        activeRoles = ["COO / Head of Real Estate", "Property General Manager", "Finance & Accounts Executive", "EHS & Safety Officer", "HR & Admin Assistant", "Chief Engineer", "Vendor SLA Manager", "Logistics Lead"];
     }
     
     [1, 2, 3].forEach(bId => {
