@@ -8,6 +8,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 /**
  * Sovereign Engine v11.9 - THE ABSOLUTE COMMAND BUILD
  * Features: Shift A/B Matrix, Ghost Column Hiding, Purged Executive Console.
+ * Optimized: Empire Mood now includes "WARM" Orange State.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -209,7 +210,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }, null, null
         ],
         [],
-        [null, { t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(G15>=0.9, "HOT - PERFECT EXECUTION!", IF(G15>=0.6, "STABLE - PUSH HARDER", IF(G15>0, "COLD - TURN UP THE HEAT!", "AWAITING DATA"))), "EMPIRE MOOD: LOADING...")`, s: { font: { sz: 16, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null, null, null, null, null],
+        [null, { t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(G15>=0.9, "HOT - PERFECT EXECUTION!", IF(G15>=0.75, "WARM - MINOR GAPS DETECTED", IF(G15>=0.6, "STABLE - PUSH HARDER", IF(G15>0, "COLD - TURN UP THE HEAT!", "AWAITING DATA")))), "EMPIRE MOOD: LOADING...")`, s: { font: { sz: 16, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null, null, null, null, null],
         [
             null,
             { v: "⚡ MOMENTUM", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null, 
@@ -334,16 +335,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     [1, 2].forEach(bCode => {
         packChecklists.forEach((c) => {
             c.tasks.forEach(t => {
-                const freq = (t.frequency || c.frequency || "").toLowerCase();
-                const isWeekly = freq.includes("weekly");
-                const isMonthly = freq.includes("monthly");
-                
-                const isMon = dayOfWeek === 1;
-                const is1st = dayOfMonth === 1;
-                const shouldInclude = (!isWeekly && !isMonthly) || (isWeekly && isMon) || (isMonthly && is1st);
-                
-                if (!shouldInclude) return;
-
                 const rowIdx = mData.length + 1;
                 const statusFormula = `IF(LEN(TRIM(H${rowIdx}))=0, "PENDING", IF(AND(LEN(TRIM(I${rowIdx}))=0, I${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
                 
