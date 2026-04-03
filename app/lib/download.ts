@@ -8,7 +8,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 /**
  * Sovereign Engine v11.9 - THE ABSOLUTE COMMAND BUILD
  * Features: Shift A/B Matrix, Ghost Column Hiding, Purged Executive Console.
- * Optimized: Empire Mood now includes "WARM" Orange State.
+ * Optimized: Operational Pulse is now Static Orange.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -18,16 +18,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     const wb = utils.book_new();
     const startDate = new Date(); 
-    const dayOfWeek = startDate.getDay(); 
-    const dayOfMonth = startDate.getDate();
     
-    const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
     const ORDER_ID = "MM-SOVEREIGN-11.9-COMMAND";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
         PRIMARY_GREEN: "2EB86B", 
-        ACCENT_AMBER: "D97706",   
+        ACCENT_AMBER: "D97706",   // PURE ORANGE
         VITAL_BLUE: "1E40AF",      
         WHITE: "FFFFFF",
         TEXT_MUTED: "94A3B8",
@@ -65,6 +62,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 8 },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } },
         alignment: { horizontal: 'right', ...verticalCenter }
+    };
+
+    const pulseOrangeStyle = {
+        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 9 },
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.ACCENT_AMBER } }, // STATIC ORANGE
+        alignment: { horizontal: 'center', ...verticalCenter }
     };
 
     const tileStyle = {
@@ -229,7 +232,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [
             null,
             { v: "OPERATIONAL PULSE:", s: labelStyle },
-            { t: 'f', f: `IF(COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$500, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")), "0%") & " PULSE")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } },
+            { t: 'f', f: `IF(COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$500, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")), "0%") & " PULSE")`, s: pulseOrangeStyle }, // HARDENED ORANGE
             { v: "SHIFT PROGRESS:", s: labelStyle },
             { t: 'f', f: `IFERROR(COUNTIF('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$5000, "?*")), 0)`, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE } }, numFmt: '0%', alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "UNIT LOAD:", s: labelStyle },
@@ -280,7 +283,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ])
     ];
     const setupWs = utils.aoa_to_sheet(branchSetupData);
-    // HIDE THE GHOST COLUMNS (WIDTH 0)
     const setupCols = [12, 35, ...packChecklists.map(() => 25), 0, 0];
     setupWs['!cols'] = setupCols.map(w => ({ wch: w, hidden: w === 0 }));
     addSovereignRibbon(setupWs, "Branch Master Setup");
@@ -336,10 +338,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         packChecklists.forEach((c) => {
             c.tasks.forEach(t => {
                 const rowIdx = mData.length + 1;
-                
-                // --- NEW TEMPORAL STATUS LOGIC ---
-                // Weekly tasks only due on Mondays (Day 2 in WEEKDAY system)
-                // Monthly tasks only due on 1st of every month
                 const temporalCheck = `IF(AND(K${rowIdx}="Weekly", WEEKDAY(TODAY(), 2)<>1), "OFF CYCLE", IF(AND(K${rowIdx}="Monthly", DAY(TODAY())<>1), "OFF CYCLE", "PENDING"))`;
                 const statusFormula = `IF(LEN(TRIM(H${rowIdx}))=0, ${temporalCheck}, IF(AND(LEN(TRIM(I${rowIdx}))=0, I${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
                 
