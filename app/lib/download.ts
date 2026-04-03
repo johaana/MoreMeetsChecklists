@@ -310,6 +310,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         activeRoles = ["Owner / Managing Director", "Cinema General Manager", "Concession & F&B Manager", "Chief Projectionist", "Guest Services Lead", "EHS & Safety Officer", "Housekeeping Lead", "HR & Admin Assistant"];
     } else if (item.id === 'franchise_operations_pack') {
         activeRoles = ["Franchisor COO / Head of Ops", "Area Operational Coach", "Finance & Accounts Executive", "EHS & Safety Officer", "Regional Training Lead", "Technical Maintenance Tech", "Local Marketing Coordinator", "Procurement & Supply Specialist"];
+    } else if (item.id === 'school_operations_pack') {
+        activeRoles = ["Trustee / Board Member", "School Principal", "Registrar / Fee Cashier", "EHS & Safety Officer", "HR & Child Protection Manager", "IT & Lab Technical Lead", "Admissions & CX Head", "Transport & Canteen Lead"];
     }
     
     [1, 2, 3].forEach(bId => {
