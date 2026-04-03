@@ -8,8 +8,9 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 /**
  * Sovereign Engine v11.9 - THE ABSOLUTE COMMAND BUILD
  * Features: Shift A/B Matrix, Maroon Consequence Header, Underlined Interactive Console.
- * Optimized: Operational Pulse is Static Amber. Vitals use Two-Tone Blue.
+ * Optimized: Operational Pulse is Amber. Vitals use Two-Tone Blue.
  * Sovereign Sort: Daily missions grouped at the top for zero-noise flow.
+ * NEW: SYSTEM_GUIDE sheet with full terminology glossary.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -20,7 +21,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const wb = utils.book_new();
     const startDate = new Date(); 
     
-    const ORDER_ID = "MM-SOVEREIGN-11.9-COMMAND";
+    const ORDER_ID = "MM-SOVEREIGN-11.9-MASTER";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -206,7 +207,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeWsData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v11.9 | Sovereign Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v11.9 | Sovereign Master`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `SECURE AUTHENTICATION: ${ORDER_ID}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -230,7 +231,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [
             null,
             { v: "▶ MASTER SOPs", l: { Target: "#'SOP_LIBRARY'!A1" }, s: tileStyle }, null, 
-            { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }, null, null
+            { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }, null, 
+            { v: "▶ SYSTEM GUIDE", l: { Target: "#'SYSTEM_GUIDE'!A1" }, s: tileStyle }
         ],
         [],
         [null, { t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(G15>=0.9, "HOT - PERFECT EXECUTION!", IF(G15>=0.75, "WARM - MINOR GAPS DETECTED", IF(G15>=0.6, "STABLE - PUSH HARDER", IF(G15>0, "COLD - TURN UP THE HEAT!", "AWAITING DATA")))), "EMPIRE MOOD: LOADING...")`, s: { font: { sz: 16, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null, null, null, null, null],
@@ -340,7 +342,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(pWs, "Responsibility & Resource Mapping");
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- 04. MISSION LEDGER (TODAYS_TASKS) - OPTION 1: SOVEREIGN SORT ---
+    // --- 04. MISSION LEDGER (TODAYS_TASKS) - SOVEREIGN SORT ---
     const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, 
         { v: "Role", s: headerStyle }, { v: "Assigned To (Auto)", s: headerStyle },
@@ -522,6 +524,38 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(fsWs, "Unit Contribution & Financial Shield");
     fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
+
+    // --- 10. SYSTEM GUIDE ---
+    const guideData: any[][] = [
+        [], [],
+        [{ v: "COMMAND MANUAL: HOW TO DEPLOY YOUR SOVEREIGN OS", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [],
+        [{ v: "STEP 1: UPLOAD TO GOOGLE SHEETS", s: { font: { bold: true, sz: 12 } } }],
+        [{ v: "For team synchronization, upload this .xlsx file to Google Drive and 'Open with Google Sheets'. Share the live link with your Managers and Staff." }],
+        [],
+        [{ v: "STEP 2: REGISTER YOUR BRANCHES", s: { font: { bold: true, sz: 12 } } }],
+        [{ v: "Go to the 'BRANCH_MASTER' sheet. Enter your branch names in the 'Branch Name' column. The engine will automatically update all other sheets with these names." }],
+        [],
+        [{ v: "STEP 3: MAP YOUR TEAM", s: { font: { bold: true, sz: 12 } } }],
+        [{ v: "Go to 'TEAM_HUB'. Assign real staff names to the predefined roles (e.g., General Manager, Executive Chef). The 'Assigned To' column in the Task Ledger will update instantly." }],
+        [],
+        [{ v: "STEP 4: START DAILY LOGGING", s: { font: { bold: true, sz: 12 } } }],
+        [{ v: "Staff members should go to 'TODAYS_TASKS'. When a task is done, they simply type their name in 'Done By'. The 'Status' will turn GREEN automatically." }],
+        [],
+        [{ v: "GLOSSARY OF TERMINOLOGY", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [{ v: "EMPIRE MOOD", s: { font: { bold: true } } }, { v: "The overall health score of your group based on task completion across all branches." }],
+        [{ v: "OPERATIONAL PULSE", s: { font: { bold: true } } }, { v: "Shows if your team is 'awake' and reporting. Calculated by the % of staff who have logged at least one task." }],
+        [{ v: "UNIT LOAD", s: { font: { bold: true } } }, { v: "The number of pending 'High Priority' tasks. A high unit load means significant unmitigated risk." }],
+        [{ v: "RISK STATUS", s: { font: { bold: true } } }, { v: "Displays 'RISK DETECTED' if there are unresolved incidents in the Incident Tracker." }],
+        [{ v: "CoGS", s: { font: { bold: true } } }, { v: "Cost of Goods Sold. Your total raw material cost as a percentage of your total sales." }],
+        [{ v: "TECHNICAL PROTOCOL", s: { font: { bold: true } } }, { v: "The formal audit-standard description of the task for inspectors." }],
+        [{ v: "TRAINER'S NOTES", s: { font: { bold: true } } }, { v: "Simplified, action-oriented instructions for the staff member performing the task." }],
+        [{ v: "CONSEQUENCE", s: { font: { bold: true } } }, { v: "The risk the business faces (safety, financial, or legal) if this specific step is missed." }]
+    ];
+    const guideWs = utils.aoa_to_sheet(guideData);
+    addSovereignRibbon(guideWs, "System Command Manual", 'K');
+    guideWs['!cols'] = [2, 35, 100].map(w => ({ wch: w }));
+    utils.book_append_sheet(wb, guideWs, "SYSTEM_GUIDE");
 
     writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_11.9.xlsx`);
 }
