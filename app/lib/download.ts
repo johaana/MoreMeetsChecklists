@@ -8,8 +8,8 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 /**
  * Sovereign Engine v11.9 - THE ABSOLUTE COMMAND BUILD
  * Features: Shift A/B Matrix, Ghost Column Hiding, Purged Executive Console.
- * Optimized: Operational Pulse is now Static Orange.
- * Hardened: Fully Hyperlinked Empire Mood.
+ * Optimized: Operational Pulse is now Static Amber (Yellow-Orange).
+ * Hardened: Fully Hyperlinked Empire Mood + Temporal Cycle Logic.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -25,7 +25,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
         PRIMARY_GREEN: "2EB86B", 
-        ACCENT_AMBER: "D97706",   // PURE ORANGE
+        ACCENT_AMBER: "F5A623",   // PREMIUM YELLOWISH ORANGE
         VITAL_BLUE: "1E40AF",      
         WHITE: "FFFFFF",
         TEXT_MUTED: "94A3B8",
@@ -65,9 +65,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         alignment: { horizontal: 'right', ...verticalCenter }
     };
 
-    const pulseOrangeStyle = {
+    const pulseAmberStyle = {
         font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 9 },
-        fill: { patternType: 'solid', fgColor: { rgb: COLORS.ACCENT_AMBER } }, // STATIC ORANGE
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.ACCENT_AMBER } }, // YELLOW-ORANGE
         alignment: { horizontal: 'center', ...verticalCenter }
     };
 
@@ -233,7 +233,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [
             null,
             { v: "OPERATIONAL PULSE:", s: labelStyle },
-            { t: 'f', f: `IF(COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$500, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")), "0%") & " PULSE")`, l: { Target: "#'TEAM_HUB'!A1" }, s: pulseOrangeStyle }, // HARDENED ORANGE
+            { t: 'f', f: `IF(COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$500, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")), "0%") & " PULSE")`, l: { Target: "#'TEAM_HUB'!A1" }, s: pulseAmberStyle }, // HARDENED AMBER
             { v: "SHIFT PROGRESS:", s: labelStyle },
             { t: 'f', f: `IFERROR(COUNTIF('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$5000, "?*")), 0)`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE } }, numFmt: '0%', alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "UNIT LOAD:", s: labelStyle },
