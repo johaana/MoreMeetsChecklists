@@ -5,7 +5,7 @@ export const restaurants: PremiumPack = {
     id: 'restaurants',
     title: "Restaurant Operating System",
     category: "Hospitality",
-    description: "The definitive Sovereign v11.9 engine for multi-unit food and beverage groups. Hardening 200+ technical control points across 12 distinct floor roles including Shift A/B parity.",
+    description: "The definitive Sovereign v11.9 engine for multi-unit food and beverage groups. Standardizing 200+ technical control points across 12 distinct floor roles including Shift A/B parity.",
     heroHeadline: "Standardize Your Kitchen. Protect Your Margins.",
     heroSubheadline: "The professional plug for revenue leakage and food safety risks—across every branch in your group.",
     pricingUrgency: "Preventing a single foodborne illness lawsuit or one major theft saves 100x the cost of this system.",

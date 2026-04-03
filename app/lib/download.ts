@@ -231,8 +231,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [
             null,
             { v: "▶ MASTER SOPs", l: { Target: "#'SOP_LIBRARY'!A1" }, s: tileStyle }, null, 
-            { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }, null, 
-            { v: "▶ SYSTEM GUIDE", l: { Target: "#'SYSTEM_GUIDE'!A1" }, s: tileStyle }
+            { v: "▶ SYSTEM GUIDE", l: { Target: "#'SYSTEM_GUIDE'!A1" }, s: tileStyle }, null, 
+            { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }
         ],
         [],
         [null, { t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(G15>=0.9, "HOT - PERFECT EXECUTION!", IF(G15>=0.75, "WARM - MINOR GAPS DETECTED", IF(G15>=0.6, "STABLE - PUSH HARDER", IF(G15>0, "COLD - TURN UP THE HEAT!", "AWAITING DATA")))), "EMPIRE MOOD: LOADING...")`, s: { font: { sz: 16, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null, null, null, null, null],
@@ -525,36 +525,39 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
-    // --- 10. SYSTEM GUIDE ---
+    // --- 10. SYSTEM GUIDE - IMPROVED UI/UX ---
     const guideData: any[][] = [
         [], [],
         [{ v: "COMMAND MANUAL: HOW TO DEPLOY YOUR SOVEREIGN OS", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [],
-        [{ v: "STEP 1: UPLOAD TO GOOGLE SHEETS", s: { font: { bold: true, sz: 12 } } }],
-        [{ v: "For team synchronization, upload this .xlsx file to Google Drive and 'Open with Google Sheets'. Share the live link with your Managers and Staff." }],
+        [{ v: "4-STEP DEPLOYMENT ROADMAP", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } }, border: { bottom: { style: 'medium', color: {rgb: COLORS.PRIMARY_GREEN} } } }],
+        [{ v: "STEP 1: CLOUD SYNC", s: { font: { bold: true } } }, { v: "Upload this .xlsx to Google Drive and 'Open with Google Sheets'. Share the live link with Managers." }],
+        [{ v: "STEP 2: REGISTER BRANCHES", s: { font: { bold: true } } }, { v: "Go to 'BRANCH_MASTER'. Enter names in 'Branch Name' column. Everything updates automatically." }],
+        [{ v: "STEP 3: MAP THE TEAM", s: { font: { bold: true } } }, { v: "Go to 'TEAM_HUB'. Assign real names to roles. The 'Assigned To' column in the Ledger will update instantly." }],
+        [{ v: "STEP 4: COMMAND DAILY", s: { font: { bold: true } } }, { v: "Staff members type their name in 'Done By' in 'TODAYS_TASKS'. Status turns GREEN instantly." }],
         [],
-        [{ v: "STEP 2: REGISTER YOUR BRANCHES", s: { font: { bold: true, sz: 12 } } }],
-        [{ v: "Go to the 'BRANCH_MASTER' sheet. Enter your branch names in the 'Branch Name' column. The engine will automatically update all other sheets with these names." }],
-        [],
-        [{ v: "STEP 3: MAP YOUR TEAM", s: { font: { bold: true, sz: 12 } } }],
-        [{ v: "Go to 'TEAM_HUB'. Assign real staff names to the predefined roles (e.g., General Manager, Executive Chef). The 'Assigned To' column in the Task Ledger will update instantly." }],
-        [],
-        [{ v: "STEP 4: START DAILY LOGGING", s: { font: { bold: true, sz: 12 } } }],
-        [{ v: "Staff members should go to 'TODAYS_TASKS'. When a task is done, they simply type their name in 'Done By'. The 'Status' will turn GREEN automatically." }],
-        [],
-        [{ v: "GLOSSARY OF TERMINOLOGY", s: { font: { bold: true, sz: 14, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [{ v: "EMPIRE MOOD", s: { font: { bold: true } } }, { v: "The overall health score of your group based on task completion across all branches." }],
-        [{ v: "OPERATIONAL PULSE", s: { font: { bold: true } } }, { v: "Shows if your team is 'awake' and reporting. Calculated by the % of staff who have logged at least one task." }],
-        [{ v: "UNIT LOAD", s: { font: { bold: true } } }, { v: "The number of pending 'High Priority' tasks. A high unit load means significant unmitigated risk." }],
-        [{ v: "RISK STATUS", s: { font: { bold: true } } }, { v: "Displays 'RISK DETECTED' if there are unresolved incidents in the Incident Tracker." }],
-        [{ v: "CoGS", s: { font: { bold: true } } }, { v: "Cost of Goods Sold. Your total raw material cost as a percentage of your total sales." }],
+        [{ v: "GLOSSARY OF SOVEREIGN TERMINOLOGY", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } }, border: { bottom: { style: 'medium', color: {rgb: COLORS.PRIMARY_GREEN} } } }],
+        [{ v: "EMPIRE MOOD", s: { font: { bold: true } } }, { v: "The overall health score of your group based on total mission completion." }],
+        [{ v: "OPERATIONAL PULSE", s: { font: { bold: true } } }, { v: "Shows if your team is 'awake' and reporting. Based on % of staff logging activity." }],
+        [{ v: "UNIT LOAD", s: { font: { bold: true } } }, { v: "The number of pending 'High Priority' missions. A high load means dangerous unmitigated risk." }],
+        [{ v: "RISK STATUS", s: { font: { bold: true } } }, { v: "Displays 'RISK DETECTED' if there are unresolved entries in the Incident Tracker." }],
+        [{ v: "CoGS", s: { font: { bold: true } } }, { v: "Cost of Goods Sold. Your raw material cost as a percentage of total sales." }],
         [{ v: "TECHNICAL PROTOCOL", s: { font: { bold: true } } }, { v: "The formal audit-standard description of the task for inspectors." }],
-        [{ v: "TRAINER'S NOTES", s: { font: { bold: true } } }, { v: "Simplified, action-oriented instructions for the staff member performing the task." }],
-        [{ v: "CONSEQUENCE", s: { font: { bold: true } } }, { v: "The risk the business faces (safety, financial, or legal) if this specific step is missed." }]
+        [{ v: "TRAINER'S NOTES", s: { font: { bold: true } } }, { v: "Simplified, action-oriented instructions for the staff member on the floor." }],
+        [{ v: "CONSEQUENCE", s: { font: { bold: true } } }, { v: "The specific risk the business faces (safety or profit) if this step is missed." }]
     ];
     const guideWs = utils.aoa_to_sheet(guideData);
     addSovereignRibbon(guideWs, "System Command Manual", 'K');
     guideWs['!cols'] = [2, 35, 100].map(w => ({ wch: w }));
+    
+    // Apply guide styles toTerm/Step column
+    for(let r=5; r<guideData.length; r++) {
+        const cell = utils.encode_cell({r, c: 1});
+        if(guideWs[cell]) {
+            guideWs[cell].s = { font: { bold: true }, alignment: { horizontal: 'right' } };
+        }
+    }
+
     utils.book_append_sheet(wb, guideWs, "SYSTEM_GUIDE");
 
     writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_11.9.xlsx`);
