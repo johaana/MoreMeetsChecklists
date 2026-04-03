@@ -10,7 +10,6 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
  * Features: Shift A/B Matrix, Maroon Consequence Header, Underlined Interactive Console.
  * Optimized: Operational Pulse is Amber. Vitals use Two-Tone Blue.
  * Sovereign Sort: Daily missions grouped at the top for zero-noise flow.
- * NEW: SYSTEM_GUIDE sheet with full terminology glossary.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -525,37 +524,39 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
-    // --- 10. SYSTEM GUIDE - IMPROVED UI/UX ---
+    // --- 10. SYSTEM GUIDE - FIXING CLIPPING ISSUE ---
     const guideData: any[][] = [
         [], [],
-        [{ v: "COMMAND MANUAL: HOW TO DEPLOY YOUR SOVEREIGN OS", s: { font: { sz: 18, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: "SYSTEM COMMAND MANUAL", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'left', ...verticalCenter } } }],
         [],
-        [{ v: "4-STEP DEPLOYMENT ROADMAP", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } }, border: { bottom: { style: 'medium', color: {rgb: COLORS.PRIMARY_GREEN} } } }],
-        [{ v: "STEP 1: CLOUD SYNC", s: { font: { bold: true } } }, { v: "Upload this .xlsx to Google Drive and 'Open with Google Sheets'. Share the live link with Managers." }],
-        [{ v: "STEP 2: REGISTER BRANCHES", s: { font: { bold: true } } }, { v: "Go to 'BRANCH_MASTER'. Enter names in 'Branch Name' column. Everything updates automatically." }],
-        [{ v: "STEP 3: MAP THE TEAM", s: { font: { bold: true } } }, { v: "Go to 'TEAM_HUB'. Assign real names to roles. The 'Assigned To' column in the Ledger will update instantly." }],
-        [{ v: "STEP 4: COMMAND DAILY", s: { font: { bold: true } } }, { v: "Staff members type their name in 'Done By' in 'TODAYS_TASKS'. Status turns GREEN instantly." }],
+        [null, { v: "COMMAND MANUAL: HOW TO DEPLOY YOUR SOVEREIGN OS", s: { font: { sz: 12, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [],
-        [{ v: "GLOSSARY OF SOVEREIGN TERMINOLOGY", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } }, border: { bottom: { style: 'medium', color: {rgb: COLORS.PRIMARY_GREEN} } } }],
-        [{ v: "EMPIRE MOOD", s: { font: { bold: true } } }, { v: "The overall health score of your group based on total mission completion." }],
-        [{ v: "OPERATIONAL PULSE", s: { font: { bold: true } } }, { v: "Shows if your team is 'awake' and reporting. Based on % of staff logging activity." }],
-        [{ v: "UNIT LOAD", s: { font: { bold: true } } }, { v: "The number of pending 'High Priority' missions. A high load means dangerous unmitigated risk." }],
-        [{ v: "RISK STATUS", s: { font: { bold: true } } }, { v: "Displays 'RISK DETECTED' if there are unresolved entries in the Incident Tracker." }],
-        [{ v: "CoGS", s: { font: { bold: true } } }, { v: "Cost of Goods Sold. Your raw material cost as a percentage of total sales." }],
-        [{ v: "TECHNICAL PROTOCOL", s: { font: { bold: true } } }, { v: "The formal audit-standard description of the task for inspectors." }],
-        [{ v: "TRAINER'S NOTES", s: { font: { bold: true } } }, { v: "Simplified, action-oriented instructions for the staff member on the floor." }],
-        [{ v: "CONSEQUENCE", s: { font: { bold: true } } }, { v: "The specific risk the business faces (safety or profit) if this step is missed." }]
+        [null, { v: "4-STEP DEPLOYMENT ROADMAP", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: "STEP 1: CLOUD SYNC", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Upload this .xlsx to Google Drive and 'Open with Google Sheets'. Share the live link with Managers." }],
+        [null, { v: "STEP 2: REGISTER BRANCHES", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Go to 'BRANCH_MASTER'. Enter names in 'Branch Name' column. Everything updates automatically." }],
+        [null, { v: "STEP 3: MAP THE TEAM", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Go to 'TEAM_HUB'. Assign real names to roles. The 'Assigned To' column in the Ledger will update instantly." }],
+        [null, { v: "STEP 4: COMMAND DAILY", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Staff members type their name in 'Done By' in 'TODAYS_TASKS'. Status turns GREEN instantly." }],
+        [],
+        [null, { v: "GLOSSARY OF SOVEREIGN TERMINOLOGY", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: "EMPIRE MOOD", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "The overall health score of your group based on total mission completion." }],
+        [null, { v: "OPERATIONAL PULSE", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Shows if your team is 'awake' and reporting. Based on % of staff logging activity." }],
+        [null, { v: "UNIT LOAD", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "The number of pending 'High Priority' missions. A high load means dangerous unmitigated risk." }],
+        [null, { v: "RISK STATUS", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Displays 'RISK DETECTED' if there are unresolved entries in the Incident Tracker." }],
+        [null, { v: "CoGS", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Cost of Goods Sold. Your raw material cost as a percentage of total sales." }],
+        [null, { v: "TECHNICAL PROTOCOL", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "The formal audit-standard description of the task for inspectors." }],
+        [null, { v: "TRAINER'S NOTES", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Simplified, action-oriented instructions for the staff member on the floor." }],
+        [null, { v: "CONSEQUENCE", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "The specific risk the business faces (safety or profit) if this step is missed." }]
     ];
     const guideWs = utils.aoa_to_sheet(guideData);
     addSovereignRibbon(guideWs, "System Command Manual", 'K');
-    guideWs['!cols'] = [2, 35, 100].map(w => ({ wch: w }));
+    guideWs['!cols'] = [5, 35, 100].map(w => ({ wch: w }));
     
-    // Apply guide styles toTerm/Step column
-    for(let r=5; r<guideData.length; r++) {
-        const cell = utils.encode_cell({r, c: 1});
-        if(guideWs[cell]) {
-            guideWs[cell].s = { font: { bold: true }, alignment: { horizontal: 'right' } };
-        }
+    // Formatting the steps/glossary rows
+    for(let r = 7; r < guideData.length; r++) {
+        const cellLabel = utils.encode_cell({r, c: 1});
+        const cellText = utils.encode_cell({r, c: 2});
+        if(guideWs[cellLabel]) guideWs[cellLabel].s = { ...dataStyleCenter, font: { bold: true }, alignment: { horizontal: 'right', ...verticalCenter } };
+        if(guideWs[cellText]) guideWs[cellText].s = { ...dataStyleLeft, alignment: { horizontal: 'left', wrapText: true, ...verticalCenter } };
     }
 
     utils.book_append_sheet(wb, guideWs, "SYSTEM_GUIDE");
