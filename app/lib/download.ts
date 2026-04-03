@@ -9,7 +9,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
  * Sovereign Engine v11.9 - THE ABSOLUTE COMMAND BUILD
  * Features: Shift A/B Matrix, Maroon Consequence Header, Underlined Interactive Console.
  * Optimized: Operational Pulse is Static Amber. Vitals use Two-Tone Blue.
- * Hardened: Fully Hyperlinked Empire Mood + Temporal Cycle Logic.
+ * Sovereign Sort: Daily missions grouped at the top for zero-noise flow.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -28,7 +28,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ACCENT_AMBER: "F5A623",   
         VITAL_BLUE_DARK: "1E40AF", 
         PROGRESS_BLUE_LIGHT: "3B82F6", 
-        MAROON_RISK: "450a0a",    // NEW: MAROON FOR CONSEQUENCE HEADER
+        MAROON_RISK: "450a0a",    
         WHITE: "FFFFFF",
         TEXT_MUTED: "94A3B8",
         INTEL_GREY: "64748B",    
@@ -111,7 +111,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         border: borderStyle
     };
 
-    // NEW: MAROON CONSEQUENCE HEADER STYLE
     const consequenceHeaderStyle = {
         ...headerStyle,
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.MAROON_RISK } }
@@ -341,7 +340,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(pWs, "Responsibility & Resource Mapping");
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- 04. MISSION LEDGER (TODAYS_TASKS) ---
+    // --- 04. MISSION LEDGER (TODAYS_TASKS) - OPTION 1: SOVEREIGN SORT ---
     const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, 
         { v: "Role", s: headerStyle }, { v: "Assigned To (Auto)", s: headerStyle },
@@ -351,38 +350,47 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { v: "Done By (Full Name)", s: headerStyle }, { v: "Verified By (Manager)", s: headerStyle },
         { v: "Status", s: headerStyle }, 
         { v: "Freq", s: headerStyle }, { v: "Risk", s: headerStyle },
-        { v: "Consequence of Failure", s: consequenceHeaderStyle } // NEW: MAROON HEADER
+        { v: "Consequence of Failure", s: consequenceHeaderStyle } 
     ];
     const mData: any[][] = [[], [], [], mHeaders];
     
+    const frequencies = ["Daily", "Weekly", "Monthly"];
+    
     [1, 2].forEach(bCode => {
-        packChecklists.forEach((c) => {
-            c.tasks.forEach(t => {
-                const rowIdx = mData.length + 1;
-                const temporalCheck = `IF(AND(K${rowIdx}="Weekly", WEEKDAY(TODAY(), 2)<>1), "OFF CYCLE", IF(AND(K${rowIdx}="Monthly", DAY(TODAY())<>1), "OFF CYCLE", "PENDING"))`;
-                const statusFormula = `IF(LEN(TRIM(H${rowIdx}))=0, ${temporalCheck}, IF(AND(LEN(TRIM(I${rowIdx}))=0, I${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
-                
-                const keyRef = `B${rowIdx} & "|" & C${rowIdx}`;
-                const personFormula = `IF(COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0, HYPERLINK("#'TEAM_HUB'!A1", "ASSIGN IN TEAM HUB"), VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", ""))`;
-                
-                const technicalVal = t.technicalProtocol || t.description || "";
-                const trainerVal = t.floorAction || "";
+        frequencies.forEach(freq => {
+            packChecklists.filter(c => c.frequency === freq).forEach((c) => {
+                c.tasks.forEach(t => {
+                    const rowIdx = mData.length + 1;
+                    const temporalCheck = freq === "Weekly" 
+                        ? `IF(WEEKDAY(TODAY(), 2)<>1, "OFF CYCLE", "PENDING")`
+                        : freq === "Monthly"
+                        ? `IF(DAY(TODAY())<>1, "OFF CYCLE", "PENDING")`
+                        : `"PENDING"`;
 
-                mData.push([
-                    { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
-                    { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode}), "")`, s: dataStyleCenter },
-                    { v: c.role, s: dataStyleCenter },
-                    { t: 'f', f: personFormula, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.VITAL_BLUE_DARK }, underline: true } } },
-                    { v: t.id, s: dataStyleCenter },
-                    { v: technicalVal, s: dataStyleLeft },
-                    { v: trainerVal, s: coachingStyle },
-                    { v: "", s: inputStyle }, 
-                    { v: t.priority === 'High' ? "" : "N/A", s: t.priority === 'High' ? inputStyle : dataStyleCenter },
-                    { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } },
-                    { v: c.frequency, s: dataStyleCenter },
-                    { v: t.priority, s: dataStyleCenter },
-                    { v: t.consequence, s: warningStyle }
-                ]);
+                    const statusFormula = `IF(LEN(TRIM(H${rowIdx}))=0, ${temporalCheck}, IF(AND(LEN(TRIM(I${rowIdx}))=0, I${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
+                    
+                    const keyRef = `B${rowIdx} & "|" & C${rowIdx}`;
+                    const personFormula = `IF(COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0, HYPERLINK("#'TEAM_HUB'!A1", "ASSIGN IN TEAM HUB"), VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", ""))`;
+                    
+                    const technicalVal = t.technicalProtocol || t.description || "";
+                    const trainerVal = t.floorAction || "";
+
+                    mData.push([
+                        { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
+                        { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode}), "")`, s: dataStyleCenter },
+                        { v: c.role, s: dataStyleCenter },
+                        { t: 'f', f: personFormula, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.VITAL_BLUE_DARK }, underline: true } } },
+                        { v: t.id, s: dataStyleCenter },
+                        { v: technicalVal, s: dataStyleLeft },
+                        { v: trainerVal, s: coachingStyle },
+                        { v: "", s: inputStyle }, 
+                        { v: t.priority === 'High' ? "" : "N/A", s: t.priority === 'High' ? inputStyle : dataStyleCenter },
+                        { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } },
+                        { v: c.frequency, s: dataStyleCenter },
+                        { v: t.priority, s: dataStyleCenter },
+                        { v: t.consequence, s: warningStyle }
+                    ]);
+                });
             });
         });
     });
@@ -467,7 +475,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { v: "Protocol ID", s: headerStyle }, 
         { v: "Technical Protocol", s: headerStyle }, 
         { v: "Trainer's Notes (Action)", s: headerStyle }, 
-        { v: "Consequence of Failure", s: consequenceHeaderStyle } // NEW: MAROON HEADER
+        { v: "Consequence of Failure", s: consequenceHeaderStyle } 
     ];
     const sopData: any[][] = [[], [], [], sopHeaders];
     packChecklists.forEach(c => {

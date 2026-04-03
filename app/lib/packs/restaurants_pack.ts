@@ -5,7 +5,7 @@ export const restaurants: PremiumPack = {
     id: 'restaurants',
     title: "Restaurant Operating System",
     category: "Hospitality",
-    description: "The definitive Sovereign v11.9 engine for multi-unit groups. Hardening 200+ technical control points across 12 distinct floor roles including Shift A/B parity.",
+    description: "The definitive Sovereign v11.9 engine for multi-unit food and beverage groups. Hardening 200+ technical control points across 12 distinct floor roles including Shift A/B parity.",
     heroHeadline: "Standardize Your Kitchen. Protect Your Margins.",
     heroSubheadline: "The professional plug for revenue leakage and food safety risks—across every branch in your group.",
     pricingUrgency: "Preventing a single foodborne illness lawsuit or one major theft saves 100x the cost of this system.",
@@ -271,6 +271,18 @@ export const restaurants: PremiumPack = {
                 { id: "RES-SEC-03", technicalProtocol: "Fire Extinguisher Gauge Check", floorAction: "Confirm needle is in GREEN zone for all units.", priority: "High", riskLevel: "High", consequence: "Fire fighting failure.", proof: "Gauge Log" },
                 { id: "RES-SEC-04", technicalProtocol: "Gas Manifold Soap Test", floorAction: "Check joints for leaks daily.", priority: "High", riskLevel: "High", consequence: "Explosion.", proof: "Maint Note" },
                 { id: "RES-SEC-05", technicalProtocol: "Kitchen Wet-Floor Hazard", floorAction: "Verify 'Wet Floor' signs used during floor wash.", priority: "Medium", riskLevel: "High", consequence: "Staff slip/break injury.", proof: "Visual Check" }
+            ]
+        },
+        {
+            title: "Staff Certification & Health",
+            department: "HR",
+            frequency: "Monthly",
+            role: "HR Lead",
+            summary: "Governance for personnel health and legal compliance.",
+            icon: "graduation-cap",
+            tasks: [
+                { id: "RES-HR-01", technicalProtocol: "Health Card Integrity Audit", floorAction: "Verify valid health certificates for all F&B handlers.", priority: "High", riskLevel: "High", consequence: "Massive regulatory fines.", proof: "Cert Registry" },
+                { id: "RES-HR-02", technicalProtocol: "Emergency Responder Matrix", floorAction: "Audit staff BLS/First-Aid certs: target 2 per shift.", priority: "High", riskLevel: "High", consequence: "Medical negligence.", proof: "Matrix File" }
             ]
         }
     ]
