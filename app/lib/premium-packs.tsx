@@ -11,7 +11,8 @@ export type Checklist = {
     icon: string;
     tasks: {
         id: string;
-        description: string;
+        technicalProtocol: string; // The "Audit" Language
+        floorAction: string;       // The "Easy" Language
         priority: 'High' | 'Medium' | 'Low';
         riskLevel: 'High' | 'Medium' | 'Low';
         consequence: string;

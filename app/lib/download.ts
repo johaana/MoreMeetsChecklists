@@ -6,9 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v11.4 - CLEAN SLATE BUILD
- * Features: Reduced default branch count (2), purged sample data, symmetric headers.
- * Fixed: Ribbon clipping, overlapping text, and excessive sample rows.
+ * Sovereign Engine v11.5 - OPERATIONAL DENSITY BUILD
+ * Features: Dual-Language Protocols, 11-Role Matrix, Zero-Noise Grids.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -22,7 +21,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const dayOfMonth = startDate.getDate();
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-SOVEREIGN-11.4-MASTER";
+    const ORDER_ID = "MM-SOVEREIGN-11.5-MASTER";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -138,7 +137,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ];
         utils.sheet_add_aoa(ws, ribbonData, { origin: "A1" });
         
-        // Ribbon Width - Guaranteed spanning to Column M for title space
         const range = utils.decode_range(`A1:M1`);
         const titleRange = utils.decode_range(`A2:M2`);
         
@@ -184,7 +182,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v11.4 | Sovereign Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v11.5 | Sovereign Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -225,7 +223,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "TOP BRANCH:", s: labelStyle },
             { t: 'f', f: `IF(MAX('BRANCH_MASTER'!$K$5:$K$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$K$5:$K$15), 'BRANCH_MASTER'!$K$5:$K$15, 0)), "AWAITING DATA")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.ACCENT_AMBER } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "TASKS LOGGED:", s: labelStyle },
-            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE } }, alignment: { horizontal: 'center', ...verticalCenter } } }
+            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE } }, alignment: { horizontal: 'center', ...verticalCenter } } }
         ],
         [
             null,
@@ -234,7 +232,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "🚨 RISK ALERT:", s: labelStyle },
             { t: 'f', f: `IF(COUNTIFS('INCIDENT_TRACKER'!$G$5:$G$500, "<>YES", 'INCIDENT_TRACKER'!$D$5:$D$500, "?*")>0, "RISK DETECTED", "ALL CLEAR")`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9, underline: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "SHIFT PROGRESS:", s: labelStyle },
-            { t: 'f', f: `IFERROR(COUNTIF('TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$5000, "?*")), 0)`, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE } }, numFmt: '0%', alignment: { horizontal: 'center', ...verticalCenter } } }
+            { t: 'f', f: `IFERROR(COUNTIF('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$5000, "?*")), 0)`, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE } }, numFmt: '0%', alignment: { horizontal: 'center', ...verticalCenter } } }
         ],
         [],
         [null, { v: "USER GUIDE: Enter FULL NAME in 'Assigned To' in TEAM HUB. Change 'Duty Status' to flag LEAVE/OFF.", s: { ...labelStyle, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 9, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
@@ -271,7 +269,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ...packChecklists.map(c => ({ v: c.title, s: headerStyle })),
         { v: "Score (Ghost)", s: headerStyle }, { v: "Risk Load (Ghost)", s: headerStyle } 
     ];
-    // REDUCED TO 2 BRANCHES
     const branchNames = ["Unit 1 (Primary)", "Unit 2 (Ghost)"];
     const branchSetupData = [
         [], [], [],
@@ -280,8 +277,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: (i + 1).toString(), s: dataStyleCenter },
             { v: name, s: inputStyle },
             ...packChecklists.map(() => ({ v: "YES", s: inputStyle })),
-            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$5000, "?*", 'TODAYS_TASKS'!$B$5:$B$5000, B${5+i}, 'TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED")`, s: dataStyleCenter },
-            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, B${5+i}, 'TODAYS_TASKS'!$K$5:$K$5000, "High", 'TODAYS_TASKS'!$I$5:$I$5000, "<>COMPLETED")`, s: dataStyleCenter }
+            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$K$5:$K$5000, "COMPLETED", 'TODAYS_TASKS'!$B$5:$B$5000, B${5+i})`, s: dataStyleCenter },
+            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, B${5+i}, 'TODAYS_TASKS'!$L$5:$L$5000, "High", 'TODAYS_TASKS'!$J$5:$J$5000, "<>COMPLETED")`, s: dataStyleCenter }
         ])
     ];
     const setupWs = utils.aoa_to_sheet(branchSetupData);
@@ -301,25 +298,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const pData: any[][] = [[], [], [], pHeaders];
     
-    // DYNAMIC ROLE MAPPING
-    let activeRoles = ["General Manager", "Assistant Manager", "Supervisor", "Operator"];
-    if (item.id === 'restaurants') {
-        activeRoles = ["Owner / Managing Director", "Executive Chef", "Floor Captain (Shift A)", "Bar Manager", "Delivery & Logistics Lead", "Store & Purchase Manager", "Finance & Accounts Head", "EHS & Food Safety Officer"];
-    } else if (item.id === 'hotels_and_resorts') {
-        activeRoles = ["Owner / Managing Director", "General Manager", "Head of Housekeeping", "F&B Manager", "Events Manager", "Security Chief", "Chief Engineer", "Guest Relations Manager"];
-    } else if (item.id === 'healthcare_and_hospital_operations') {
-        activeRoles = ["Medical Director", "Nursing Superintendent", "OPD Manager", "Pharmacy Lead", "Billing Manager", "EHS Officer", "Technical Maintenance Lead", "Admissions & CX Head", "Logistics Lead", "HR Manager"];
-    } else if (item.id === 'cinema_operations_pack') {
-        activeRoles = ["Owner / Managing Director", "Cinema General Manager", "Concession & F&B Manager", "Chief Projectionist", "Guest Services Lead", "EHS & Safety Officer", "Housekeeping Lead", "HR & Admin Assistant"];
-    } else if (item.id === 'franchise_operations_pack') {
-        activeRoles = ["Franchisor COO / Head of Ops", "Area Operational Coach", "Finance & Accounts Executive", "EHS & Safety Officer", "Regional Training Lead", "Technical Maintenance Tech", "Local Marketing Coordinator", "Procurement & Supply Specialist"];
-    } else if (item.id === 'school_operations_pack') {
-        activeRoles = ["Trustee / Board Member", "School Principal", "Registrar / Fee Cashier", "EHS & Safety Officer", "HR & Child Protection Manager", "IT & Lab Technical Lead", "Admissions & CX Head", "Transport & Canteen Lead"];
-    } else if (item.id === 'facility_management_blueprint') {
-        activeRoles = ["COO / Head of Real Estate", "Property General Manager", "Finance & Accounts Executive", "EHS & Safety Officer", "HR & Admin Assistant", "Chief Engineer", "Vendor SLA Manager", "Logistics Lead"];
-    }
+    const activeRoles = Array.from(new Set(packChecklists.map(c => c.role)));
     
-    // REDUCED TO 2 BRANCHES FOR ROSTER
     [1, 2].forEach(bId => {
         activeRoles.forEach((role) => {
             const rowIdx = pData.length + 1;
@@ -330,7 +310,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: "", s: inputStyleLeft }, 
                 { v: "", s: inputStyleLeft }, 
                 { v: "ACTIVE", s: inputStyle }, 
-                { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$G$5:$G$500, D${rowIdx}, 'TODAYS_TASKS'!$I$5:$I$500, "COMPLETED")`, s: dataStyleCenter }
+                { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$H$5:$H$500, D${rowIdx}, 'TODAYS_TASKS'!$J$5:$J$500, "COMPLETED")`, s: dataStyleCenter }
             ]);
         });
     });
@@ -343,7 +323,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, 
         { v: "Role", s: headerStyle }, { v: "Assigned To (Auto)", s: headerStyle },
-        { v: "Task ID", s: headerStyle }, { v: "Requirement / Control Step", s: headerStyle }, 
+        { v: "Task ID", s: headerStyle }, 
+        { v: "Technical Protocol (Audit)", s: headerStyle }, 
+        { v: "Floor Action (Easy)", s: headerStyle }, 
         { v: "Done By (Full Name)", s: headerStyle }, { v: "Verified By (Manager)", s: headerStyle },
         { v: "Status", s: headerStyle }, 
         { v: "Freq", s: headerStyle }, { v: "Risk", s: headerStyle },
@@ -351,7 +333,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const mData: any[][] = [[], [], [], mHeaders];
     
-    // REDUCED TO 2 BRANCHES
     [1, 2].forEach(bCode => {
         packChecklists.forEach((c) => {
             c.tasks.forEach(t => {
@@ -366,7 +347,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 if (!shouldInclude) return;
 
                 const rowIdx = mData.length + 1;
-                const statusFormula = `IF(LEN(TRIM(G${rowIdx}))=0, "PENDING", IF(AND(LEN(TRIM(H${rowIdx}))=0, H${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
+                const statusFormula = `IF(LEN(TRIM(H${rowIdx}))=0, "PENDING", IF(AND(LEN(TRIM(I${rowIdx}))=0, I${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
                 
                 const keyRef = `B${rowIdx} & "|" & C${rowIdx}`;
                 const personFormula = `IF(COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0, HYPERLINK("#'TEAM_HUB'!A1", "ASSIGN IN TEAM HUB"), VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", ""))`;
@@ -377,7 +358,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     { v: c.role, s: dataStyleCenter },
                     { t: 'f', f: personFormula, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.VITAL_BLUE }, underline: true } } },
                     { v: t.id, s: dataStyleCenter },
-                    { v: t.description, s: dataStyleLeft },
+                    { v: t.technicalProtocol, s: dataStyleLeft },
+                    { v: t.floorAction, s: dataStyleLeft },
                     { v: "", s: inputStyle }, 
                     { v: t.priority === 'High' ? "" : "N/A", s: t.priority === 'High' ? inputStyle : dataStyleCenter },
                     { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } },
@@ -391,15 +373,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     });
 
     const mWs = utils.aoa_to_sheet(mData);
-    mWs['!cols'] = [15, 25, 25, 30, 12, 65, 20, 20, 20, 12, 12, 45, 50].map(w => ({ wch: w }));
+    mWs['!cols'] = [15, 25, 25, 30, 12, 45, 55, 20, 20, 20, 12, 12, 45, 50].map(w => ({ wch: w }));
     addSovereignRibbon(mWs, "Mission Execution Ledger");
-    mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
+    mWs['!autofilter'] = { ref: `A4:N${mData.length}` };
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
 
     // --- 05. SHIFT HANDOVER ---
     const handoverHeaders = [{ v: "Branch", s: headerStyle }, { v: "Departing Shift Manager", s: headerStyle }, { v: "Arriving Shift Manager", s: headerStyle }, { v: "Critical Issues Carried Over", s: headerStyle }, { v: "Safety/EHS Clear?", s: headerStyle }, { v: "Handover Timestamp", s: headerStyle }];
     const handoverRows = [];
-    // TWO DEFAULT ROWS
     for(let i=0; i<2; i++) {
         handoverRows.push([
             { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, 1), "")`, s: inputStyle },
@@ -422,7 +403,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { v: "Resolved? (YES/NO)", s: headerStyle }
     ];
     const incidentRows = [];
-    // TWO CLEAN INPUT ROWS
     for (let i = 0; i < 2; i++) {
         incidentRows.push([
             { v: "", s: inputStyle },
@@ -451,10 +431,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     [1, 2].forEach(bId => {
         const branchRef = `INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId})`;
         healthData.push([
-            { v: "Task Execution Velocity", s: dataStyleLeft }, { t: 'f', f: branchRef, s: dataStyleCenter }, { v: "MONITORING", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$I$5:$I$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$F$5:$F$5000, "?*"))`, s: { ...dataStyleCenter, numFmt: '0%' } }, { v: "NORMAL", s: dataStyleCenter }
+            { v: "Task Execution Velocity", s: dataStyleLeft }, { t: 'f', f: branchRef, s: dataStyleCenter }, { v: "MONITORING", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$G$5:$G$5000, "?*"))`, s: { ...dataStyleCenter, numFmt: '0%' } }, { v: "NORMAL", s: dataStyleCenter }
         ]);
         healthData.push([
-            { v: "Critical Risk Load", s: dataStyleLeft }, { t: 'f', f: branchRef, s: dataStyleCenter }, { v: "MONITORING", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$K$5:$K$5000, "High", 'TODAYS_TASKS'!$I$5:$I$5000, "<>COMPLETED")`, s: dataStyleCenter }, { v: "CHECK PENDING", s: dataStyleCenter }
+            { v: "Critical Risk Load", s: dataStyleLeft }, { t: 'f', f: branchRef, s: dataStyleCenter }, { v: "MONITORING", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$L$5:$L$5000, "High", 'TODAYS_TASKS'!$J$5:$J$5000, "<>COMPLETED")`, s: dataStyleCenter }, { v: "CHECK PENDING", s: dataStyleCenter }
         ]);
         healthData.push([
             { v: "Workforce Availability", s: dataStyleLeft }, { t: 'f', f: branchRef, s: dataStyleCenter }, { v: "LIVE PULSE", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('TEAM_HUB'!$B$5:$B$500, ${branchRef}, 'TEAM_HUB'!$F$5:$F$500, "ACTIVE")`, s: dataStyleCenter }, { v: "STABLE", s: dataStyleCenter }
@@ -473,10 +453,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const sopHeaders = [
         { v: "Module", s: headerStyle }, 
         { v: "Protocol ID", s: headerStyle }, 
-        { v: "Technical Standard / SOP", s: headerStyle }, 
+        { v: "Technical Protocol", s: headerStyle }, 
+        { v: "Floor Action", s: headerStyle }, 
         { v: "Consequence of Failure", s: { ...headerStyle, fill: { patternType: 'solid', fgColor: { rgb: "450a0a" } } } },
-        { v: "Trainer's Notes", s: { ...headerStyle, fill: { patternType: 'solid', fgColor: { rgb: "064e3b" } } } },
-        { v: "Reference Code", s: headerStyle }
+        { v: "Trainer's Notes", s: { ...headerStyle, fill: { patternType: 'solid', fgColor: { rgb: "064e3b" } } } }
     ];
     const sopData: any[][] = [[], [], [], sopHeaders];
     packChecklists.forEach(c => {
@@ -484,15 +464,15 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             sopData.push([
                 { v: c.title, s: dataStyleCenter },
                 { v: t.id, s: dataStyleCenter },
-                { v: t.description, s: dataStyleLeft },
+                { v: t.technicalProtocol, s: dataStyleLeft },
+                { v: t.floorAction, s: dataStyleLeft },
                 { v: t.consequence || "Operational Risk Applied.", s: warningStyle },
-                { v: t.trainerNotes || "Institutional standard applies.", s: coachingStyle },
-                { v: "ISO/HACCP v11.4", s: dataStyleCenter }
+                { v: t.trainerNotes || "Institutional standard applies.", s: coachingStyle }
             ]);
         });
     });
     const sopWs = utils.aoa_to_sheet(sopData);
-    sopWs['!cols'] = [25, 15, 60, 60, 60, 20].map(w => ({ wch: w }));
+    sopWs['!cols'] = [25, 15, 50, 60, 60, 60].map(w => ({ wch: w }));
     addSovereignRibbon(sopWs, "Institutional SOP Database");
     utils.book_append_sheet(wb, sopWs, "SOP_LIBRARY");
 
@@ -523,5 +503,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_11.4.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_11.5.xlsx`);
 }
