@@ -336,7 +336,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         packChecklists.forEach((c) => {
             c.tasks.forEach(t => {
                 const rowIdx = mData.length + 1;
-                const statusFormula = `IF(LEN(TRIM(H${rowIdx}))=0, "PENDING", IF(AND(LEN(TRIM(I${rowIdx}))=0, I${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
+                
+                // --- NEW TEMPORAL STATUS LOGIC ---
+                // Weekly tasks only due on Mondays (Day 2 in WEEKDAY system)
+                // Monthly tasks only due on 1st of every month
+                const temporalCheck = `IF(AND(K${rowIdx}="Weekly", WEEKDAY(TODAY(), 2)<>1), "OFF CYCLE", IF(AND(K${rowIdx}="Monthly", DAY(TODAY())<>1), "OFF CYCLE", "PENDING"))`;
+                const statusFormula = `IF(LEN(TRIM(H${rowIdx}))=0, ${temporalCheck}, IF(AND(LEN(TRIM(I${rowIdx}))=0, I${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
                 
                 const keyRef = `B${rowIdx} & "|" & C${rowIdx}`;
                 const personFormula = `IF(COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0, HYPERLINK("#'TEAM_HUB'!A1", "ASSIGN IN TEAM HUB"), VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", ""))`;

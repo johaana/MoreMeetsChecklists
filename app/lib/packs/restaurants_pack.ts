@@ -50,12 +50,7 @@ export const restaurants: PremiumPack = {
                 { id: "RES-EXE-12", technicalProtocol: "Fixed Asset Integrity Tracking", floorAction: "Audit Fixed Asset tags on high-value equipment.", priority: "Low", riskLevel: "Low", consequence: "Loss or theft of property.", proof: "Asset Register" },
                 { id: "RES-EXE-13", technicalProtocol: "Proprietary IP & NDA Governance", floorAction: "Verify NDAs signed by visiting distributors.", priority: "High", riskLevel: "Medium", consequence: "Leakage of proprietary recipes.", proof: "Signed File" },
                 { id: "RES-EXE-14", technicalProtocol: "Personnel Churn & Toxicity Analysis", floorAction: "Review staff churn rate: identify manager patterns.", priority: "Medium", riskLevel: "Low", consequence: "High recruitment costs.", proof: "HR Dashboard" },
-                { id: "RES-EXE-15", technicalProtocol: "Blind Petty Cash Verification", floorAction: "Audit petty cash surprise blind count at 2 branches.", priority: "Medium", riskLevel: "High", consequence: "Internal embezzlement.", proof: "Audit Note" },
-                { id: "RES-EXE-16", technicalProtocol: "Business Continuity Backup Audit", floorAction: "Check status of 'Disaster Recovery' backup for POS server.", priority: "High", riskLevel: "High", consequence: "Total loss of sales data.", proof: "System Log" },
-                { id: "RES-EXE-17", technicalProtocol: "Historical Performance Archive", floorAction: "Review Board Report PDF archive for history preservation.", priority: "Low", riskLevel: "Low", consequence: "Loss of history.", proof: "System Folder" },
-                { id: "RES-EXE-18", technicalProtocol: "Procurement Benchmark Analysis", floorAction: "Audit vendor pricing vs. market benchmarks.", priority: "Medium", riskLevel: "Low", consequence: "Inflated costs.", proof: "Vendor Log" },
-                { id: "RES-EXE-19", technicalProtocol: "Digital ORM Escalation Review", floorAction: "Verify 100% response to social media grievances.", priority: "High", riskLevel: "Low", consequence: "Viral reputation damage.", proof: "ORM Dashboard" },
-                { id: "RES-EXE-20", technicalProtocol: "Executive Board Sign-off", floorAction: "Final Weekly Strategic sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of oversight.", proof: "Signed Summary" }
+                { id: "RES-EXE-15", technicalProtocol: "Blind Petty Cash Verification", floorAction: "Audit petty cash surprise blind count at 2 branches.", priority: "Medium", riskLevel: "High", consequence: "Internal embezzlement.", proof: "Audit Note" }
             ]
         },
         {
