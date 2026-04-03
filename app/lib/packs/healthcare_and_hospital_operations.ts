@@ -9,13 +9,13 @@ export const healthcare_and_hospital_operations: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/129cb25a-b177-4a6d-a1bf-d8fafc24a09d',
     category: "Healthcare",
-    description: "The Sovereign v11.2 clinical engine for hospitals and medical centers. Hardening 200+ control points from surgical safety to narcotics governance.",
+    description: "The Sovereign v11.3 clinical engine for hospitals and medical centers. Hardening 200+ control points from surgical safety to narcotics governance.",
     heroHeadline: "Zero-Risk Medical Operations. Audit-Ready.",
     heroSubheadline: "Standardize clinical and operational governance across every department in your facility with a logically-aware data engine.",
     pricingUrgency: "A single clinical error or one NABH/JCI audit failure costs 1000x more than this system.",
     consultingAnchor: 15000,
     icon: "hospital",
-    badgeText: "V11.2 SOVEREIGN",
+    badgeText: "V11.3 SOVEREIGN",
     badgeVariant: "destructive",
     whoIsItFor: ["Medical Directors", "Hospital COOs", "Nursing Superintendents", "Quality Heads", "Admin Directors"],
     sampleItems: [
@@ -164,49 +164,6 @@ export const healthcare_and_hospital_operations: PremiumPack = {
                 { id: "H-TEC-03", description: "MRI/CT: Check room temp and radiation badges.", priority: "High", riskLevel: "High", consequence: "Machine failure or health risk.", proof: "System Screen" },
                 { id: "H-TEC-04", description: "Log generator fuel and battery health.", priority: "High", riskLevel: "High", consequence: "Total hospital blackout.", proof: "Fuel Log" },
                 { id: "H-TEC-05", description: "Check RO water TDS level for Dialysis unit.", priority: "High", riskLevel: "High", consequence: "Patient blood contamination.", proof: "TDS Reading" }
-            ]
-        },
-        {
-            title: "Admissions & Reputation",
-            department: "Admin",
-            frequency: "Daily",
-            role: "Admissions Head",
-            summary: "Governs reputation and arrival readiness.",
-            icon: "megaphone",
-            tasks: [
-                { id: "H-CX-01", description: "Reply to Google and Practo reviews < 24h.", priority: "High", riskLevel: "Medium", consequence: "Damaged brand image.", proof: "Dashboard" },
-                { id: "H-CX-02", description: "Answer all social media inquiries < 30 mins.", priority: "Medium", riskLevel: "Low", consequence: "Lost surgery leads.", proof: "Inbox Clear" },
-                { id: "H-CX-03", description: "Check status of unresolved patient grievances.", priority: "High", riskLevel: "High", consequence: "Viral reputation fire.", proof: "Incident Log" },
-                { id: "H-CX-04", description: "Identify VIP patient admissions for greet.", priority: "Medium", riskLevel: "Low", consequence: "Loss of high-profile loyalty.", proof: "VIP List" },
-                { id: "H-CX-05", description: "Update Google Maps for holiday hours.", priority: "High", riskLevel: "Low", consequence: "Patients arrive to closed gates.", proof: "Mobile Check" }
-            ]
-        },
-        {
-            title: "HR & Training Certs",
-            department: "HR",
-            frequency: "Monthly",
-            role: "HR Manager",
-            summary: "Competency and certification governance.",
-            icon: "graduation-cap",
-            tasks: [
-                { id: "H-HR-01", description: "Check nursing registration ID validity.", priority: "High", riskLevel: "High", consequence: "Legal liability for unlicensed care.", proof: "Cert Registry" },
-                { id: "H-HR-02", description: "Verify ACLS/BLS training dates for ICU staff.", priority: "High", riskLevel: "High", consequence: "Failure to save life during arrest.", proof: "Matrix File" },
-                { id: "H-HR-03", description: "Check staff health cards and stool tests.", priority: "Medium", riskLevel: "Medium", consequence: "Spreading infection to patients.", proof: "Med File" },
-                { id: "H-HR-04", description: "Brief staff on grooming and name-tag visibility.", priority: "Low", riskLevel: "Low", consequence: "Unprofessional image.", proof: "Attendance Log" },
-                { id: "H-HR-05", description: "Final monthly Cert matrix sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of compliance oversight.", proof: "Signed Matrix" }
-            ]
-        },
-        {
-            title: "Internal Supply & Waste",
-            department: "Logistics",
-            frequency: "Daily",
-            role: "Logistics Lead",
-            summary: "Internal distribution and bay command.",
-            icon: "package",
-            tasks: [
-                { id: "H-LOG-01", description: "Verify high-value medicine parcel registry.", priority: "Medium", riskLevel: "Low", consequence: "Lost hospital inventory.", proof: "Log Review" },
-                { id: "H-LOG-02", description: "Check loading bay lock status at night.", priority: "High", riskLevel: "High", consequence: "After-hours theft.", proof: "Lock Audit" },
-                { id: "H-LOG-03", description: "Audit waste bin disposal frequency at bay.", priority: "Low", riskLevel: "High", consequence: "Odors and public health fines.", proof: "Walkthrough" }
             ]
         }
     ]
