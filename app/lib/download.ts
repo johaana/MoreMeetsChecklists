@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v11.5 - OPERATIONAL DENSITY BUILD
- * Features: Dual-Language Protocols, 11-Role Matrix, Zero-Noise Grids.
+ * Sovereign Engine v11.6 - OPERATIONAL DENSITY BUILD
+ * Features: Trainer Notes Integration, 11-Role Matrix, Header Spacing Precision.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -21,7 +21,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const dayOfMonth = startDate.getDate();
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-SOVEREIGN-11.5-MASTER";
+    const ORDER_ID = "MM-SOVEREIGN-11.6-MASTER";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -110,12 +110,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
-    const inputStyleLeft = {
-        ...dataStyleLeft,
-        font: { ...baseFont, color: { rgb: "000000" }, bold: true },
-        fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_ZONE } }
-    };
-
     const warningStyle = {
         ...dataStyleLeft,
         font: { ...baseFont, color: { rgb: "991B1B" }, italic: true },
@@ -137,8 +131,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ];
         utils.sheet_add_aoa(ws, ribbonData, { origin: "A1" });
         
-        const range = utils.decode_range(`A1:M1`);
-        const titleRange = utils.decode_range(`A2:M2`);
+        const range = utils.decode_range(`A1:${endCol}1`);
+        const titleRange = utils.decode_range(`A2:${endCol}2`);
         
         if (!ws['!merges']) ws['!merges'] = [];
         ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: range.e.c } }); 
@@ -179,10 +173,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
 
     // --- 01. HOME CONSOLE ---
-    const homeData: any[][] = [
+    const homeWsData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v11.5 | Sovereign Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v11.6 | Sovereign Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -239,7 +233,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [null, { v: `LICENSED TO: ${BUYER_EMAIL} | SECURE AUTHENTICATION: ${ORDER_ID}`, s: { ...labelStyle, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 8, color: { rgb: COLORS.TEXT_MUTED } } } }]
     ];
 
-    const homeWs = utils.aoa_to_sheet(homeData);
+    const homeWs = utils.aoa_to_sheet(homeWsData);
     homeWs['!cols'] = [5, 22, 28, 22, 28, 22, 28].map(w => ({ wch: w }));
     homeWs['!rows'] = [];
     for(let r = 0; r < 35; r++) homeWs['!rows'][r] = { hpt: 30 };
@@ -287,6 +281,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     utils.book_append_sheet(wb, setupWs, "BRANCH_MASTER");
 
     // --- 03. TEAM HUB ---
+    const activeRoles = Array.from(new Set(packChecklists.map(c => c.role)));
     const pHeaders = [
         { v: "Staff Lookup Key (Ghost)", s: headerStyle }, 
         { v: "Branch Name", s: headerStyle }, 
@@ -297,8 +292,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { v: "Score (Ghost)", s: headerStyle } 
     ];
     const pData: any[][] = [[], [], [], pHeaders];
-    
-    const activeRoles = Array.from(new Set(packChecklists.map(c => c.role)));
     
     [1, 2].forEach(bId => {
         activeRoles.forEach((role) => {
@@ -325,11 +318,11 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { v: "Role", s: headerStyle }, { v: "Assigned To (Auto)", s: headerStyle },
         { v: "Task ID", s: headerStyle }, 
         { v: "Technical Protocol (Audit)", s: headerStyle }, 
-        { v: "Floor Action (Easy)", s: headerStyle }, 
+        { v: "Trainer's Notes (Action)", s: headerStyle }, 
         { v: "Done By (Full Name)", s: headerStyle }, { v: "Verified By (Manager)", s: headerStyle },
         { v: "Status", s: headerStyle }, 
         { v: "Freq", s: headerStyle }, { v: "Risk", s: headerStyle },
-        { v: "Consequence", s: warningStyle }, { v: "Trainer's Notes", s: coachingStyle }
+        { v: "Consequence", s: warningStyle }
     ];
     const mData: any[][] = [[], [], [], mHeaders];
     
@@ -359,23 +352,22 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     { t: 'f', f: personFormula, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.VITAL_BLUE }, underline: true } } },
                     { v: t.id, s: dataStyleCenter },
                     { v: t.technicalProtocol, s: dataStyleLeft },
-                    { v: t.floorAction, s: dataStyleLeft },
+                    { v: t.floorAction, s: coachingStyle }, // Use floorAction as Trainer's Notes per user request
                     { v: "", s: inputStyle }, 
                     { v: t.priority === 'High' ? "" : "N/A", s: t.priority === 'High' ? inputStyle : dataStyleCenter },
                     { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } },
                     { v: c.frequency, s: dataStyleCenter },
                     { v: t.priority, s: dataStyleCenter },
-                    { v: t.consequence, s: warningStyle },
-                    { v: t.trainerNotes || "-", s: coachingStyle }
+                    { v: t.consequence, s: warningStyle }
                 ]);
             });
         });
     });
 
     const mWs = utils.aoa_to_sheet(mData);
-    mWs['!cols'] = [15, 25, 25, 30, 12, 45, 55, 20, 20, 20, 12, 12, 45, 50].map(w => ({ wch: w }));
+    mWs['!cols'] = [15, 25, 25, 30, 12, 45, 55, 20, 20, 20, 12, 12, 45].map(w => ({ wch: w }));
     addSovereignRibbon(mWs, "Mission Execution Ledger");
-    mWs['!autofilter'] = { ref: `A4:N${mData.length}` };
+    mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
 
     // --- 05. SHIFT HANDOVER ---
@@ -454,9 +446,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { v: "Module", s: headerStyle }, 
         { v: "Protocol ID", s: headerStyle }, 
         { v: "Technical Protocol", s: headerStyle }, 
-        { v: "Floor Action", s: headerStyle }, 
-        { v: "Consequence of Failure", s: { ...headerStyle, fill: { patternType: 'solid', fgColor: { rgb: "450a0a" } } } },
-        { v: "Trainer's Notes", s: { ...headerStyle, fill: { patternType: 'solid', fgColor: { rgb: "064e3b" } } } }
+        { v: "Trainer's Notes (Action)", s: headerStyle }, 
+        { v: "Consequence of Failure", s: { ...headerStyle, fill: { patternType: 'solid', fgColor: { rgb: "450a0a" } } } }
     ];
     const sopData: any[][] = [[], [], [], sopHeaders];
     packChecklists.forEach(c => {
@@ -465,14 +456,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: c.title, s: dataStyleCenter },
                 { v: t.id, s: dataStyleCenter },
                 { v: t.technicalProtocol, s: dataStyleLeft },
-                { v: t.floorAction, s: dataStyleLeft },
-                { v: t.consequence || "Operational Risk Applied.", s: warningStyle },
-                { v: t.trainerNotes || "Institutional standard applies.", s: coachingStyle }
+                { v: t.floorAction, s: coachingStyle },
+                { v: t.consequence || "Operational Risk Applied.", s: warningStyle }
             ]);
         });
     });
     const sopWs = utils.aoa_to_sheet(sopData);
-    sopWs['!cols'] = [25, 15, 50, 60, 60, 60].map(w => ({ wch: w }));
+    sopWs['!cols'] = [25, 15, 50, 60, 60].map(w => ({ wch: w }));
     addSovereignRibbon(sopWs, "Institutional SOP Database");
     utils.book_append_sheet(wb, sopWs, "SOP_LIBRARY");
 
@@ -503,5 +493,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_11.5.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_11.6.xlsx`);
 }
