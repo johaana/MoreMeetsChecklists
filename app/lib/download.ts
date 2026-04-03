@@ -6,8 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v11.6 - OPERATIONAL DENSITY BUILD
- * Features: Trainer Notes Integration, 11-Role Matrix, Header Spacing Precision.
+ * Sovereign Engine v11.7 - STABILITY BUILD
+ * Features: Trainer Notes Integration, 11-Role Matrix, Zero-Crash Styles.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -21,7 +21,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const dayOfMonth = startDate.getDate();
     
     const BUYER_EMAIL = "ADMIN@MOREMEETS.COM";
-    const ORDER_ID = "MM-SOVEREIGN-11.6-MASTER";
+    const ORDER_ID = "MM-SOVEREIGN-11.7-MASTER";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -110,6 +110,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
+    const inputStyleLeft = {
+        ...dataStyleLeft,
+        font: { ...baseFont, color: { rgb: "000000" }, bold: true },
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_ZONE } }
+    };
+
     const warningStyle = {
         ...dataStyleLeft,
         font: { ...baseFont, color: { rgb: "991B1B" }, italic: true },
@@ -176,7 +182,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeWsData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v11.6 | Sovereign Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v11.7 | Sovereign Build`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `Authenticated Deployment: ${BUYER_EMAIL}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { italic: true, sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -345,14 +351,17 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 const keyRef = `B${rowIdx} & "|" & C${rowIdx}`;
                 const personFormula = `IF(COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0, HYPERLINK("#'TEAM_HUB'!A1", "ASSIGN IN TEAM HUB"), VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", ""))`;
                 
+                const technicalVal = t.technicalProtocol || t.description || "";
+                const trainerVal = t.floorAction || "";
+
                 mData.push([
                     { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
                     { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode}), "")`, s: dataStyleCenter },
                     { v: c.role, s: dataStyleCenter },
                     { t: 'f', f: personFormula, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.VITAL_BLUE }, underline: true } } },
                     { v: t.id, s: dataStyleCenter },
-                    { v: t.technicalProtocol, s: dataStyleLeft },
-                    { v: t.floorAction, s: coachingStyle }, // Use floorAction as Trainer's Notes per user request
+                    { v: technicalVal, s: dataStyleLeft },
+                    { v: trainerVal, s: coachingStyle },
                     { v: "", s: inputStyle }, 
                     { v: t.priority === 'High' ? "" : "N/A", s: t.priority === 'High' ? inputStyle : dataStyleCenter },
                     { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } },
@@ -452,11 +461,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const sopData: any[][] = [[], [], [], sopHeaders];
     packChecklists.forEach(c => {
         c.tasks.forEach(t => {
+            const technicalVal = t.technicalProtocol || t.description || "";
+            const trainerVal = t.floorAction || "";
             sopData.push([
                 { v: c.title, s: dataStyleCenter },
                 { v: t.id, s: dataStyleCenter },
-                { v: t.technicalProtocol, s: dataStyleLeft },
-                { v: t.floorAction, s: coachingStyle },
+                { v: technicalVal, s: dataStyleLeft },
+                { v: trainerVal, s: coachingStyle },
                 { v: t.consequence || "Operational Risk Applied.", s: warningStyle }
             ]);
         });
@@ -493,5 +504,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_11.6.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_11.7.xlsx`);
 }
