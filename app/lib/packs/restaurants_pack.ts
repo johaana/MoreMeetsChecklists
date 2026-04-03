@@ -95,7 +95,7 @@ export const restaurants: PremiumPack = {
             summary: "Zero-fail daily protocols for food safety, prep quality, and hygiene.",
             icon: "sunrise",
             tasks: [
-                { id: "RES-KIT-01", technicalProtocol: "Cold-Chain Integrity Verification (CCP-1)", floorAction: "Check and log fridge temps: must be 1°C to 4°C.", priority: "High", riskLevel: "High", consequence: "Mass food poisoning.", proof: "Temperature Log" },
+                { id: "RES-KIT-01", technicalProtocol: "Cold-Chain Integrity Verification (CCP-1)", floorAction: "Check and log fridge temps: must be 1°C to 4°C.", priority: "High", riskLevel: "High", consequence: "Pathogen growth and total stock loss.", proof: "Temperature Log" },
                 { id: "RES-KIT-02", technicalProtocol: "Surface Pathogen Control Protocol", floorAction: "Sanitize all counters and verify sanitizer strength with strips.", priority: "High", riskLevel: "Medium", consequence: "Cross-contamination.", proof: "Test Strip" },
                 { id: "RES-KIT-03", technicalProtocol: "Inventory Life-Cycle Governance (FIFO)", floorAction: "Verify all prep items have date labels and follow FIFO.", priority: "High", riskLevel: "High", consequence: "Serving expired ingredients.", proof: "Visual Audit" },
                 { id: "RES-KIT-04", technicalProtocol: "Probe Thermometer Calibration Check", floorAction: "Test thermometers in ice water to ensure 0°C accuracy.", priority: "High", riskLevel: "Medium", consequence: "Undercooked food risk.", proof: "Calibration Log" },
@@ -115,56 +115,6 @@ export const restaurants: PremiumPack = {
                 { id: "RES-KIT-18", technicalProtocol: "Handwash Station Check", floorAction: "Verify soap and paper-towel levels at kitchen sink.", priority: "High", riskLevel: "Medium", consequence: "Staff hygiene lapse.", proof: "Visual Check" },
                 { id: "RES-KIT-19", technicalProtocol: "Staff Meal Quality", floorAction: "Inspect today's staff meal for nutrition and hygiene.", priority: "Low", riskLevel: "Low", consequence: "Low morale.", proof: "Taste Test" },
                 { id: "RES-KIT-20", technicalProtocol: "Final Chef closure sign-off", floorAction: "Sign the EOD HACCP compliance declaration.", priority: "High", riskLevel: "Low", consequence: "Systemic risk gap.", proof: "Signed Decl" }
-            ]
-        },
-        {
-            title: "Guest Relations & ORM",
-            department: "Reception",
-            frequency: "Daily",
-            role: "Guest Relations & ORM Lead",
-            summary: "Protects the brand reputation and first-impression standard.",
-            icon: "star",
-            tasks: [
-                { id: "RES-ORM-01", technicalProtocol: "Digital Reputation Response Pulse", floorAction: "Reply to all Google/Zomato reviews received in last 24h.", priority: "High", riskLevel: "Medium", consequence: "Ranking drop and brand damage.", proof: "Dashboard" },
-                { id: "RES-ORM-02", technicalProtocol: "Reservation Channel Integrity Sync", floorAction: "Verify digital bookings match the physical floor plan.", priority: "High", riskLevel: "Medium", consequence: "Overbooking and angry guests.", proof: "System Match" },
-                { id: "RES-ORM-03", technicalProtocol: "Social Media Inquiry TAT Audit", floorAction: "Answer all Instagram/WhatsApp inquiries in < 30 mins.", priority: "Medium", riskLevel: "Low", consequence: "Lost booking revenue.", proof: "Inbox Clear" },
-                { id: "RES-ORM-04", technicalProtocol: "Guest Wi-Fi Portal Verification", floorAction: "Test login speed and password visibility in lobby.", priority: "Low", riskLevel: "Low", consequence: "Visitor frustration.", proof: "Phone Test" },
-                { id: "RES-ORM-05", technicalProtocol: "VIP Arrival Setup", floorAction: "Verify table choice and 'Celebration' kit for today's VIPs.", priority: "Medium", riskLevel: "Low", consequence: "Loss of loyalty.", proof: "Photo" },
-                { id: "RES-ORM-06", technicalProtocol: "Entry Ambiance Scent Check", floorAction: "Verify lobby aroma intensity.", priority: "Low", riskLevel: "Low", consequence: "Poor sensory branding.", proof: "Visual Check" },
-                { id: "RES-ORM-07", technicalProtocol: "Feedback QR Placement", floorAction: "Ensure all table tents have clean, scannable QR codes.", priority: "Medium", riskLevel: "Low", consequence: "Lower survey response rate.", proof: "Visual Audit" },
-                { id: "RES-ORM-08", technicalProtocol: "Celebration Calendar", floorAction: "Check for birthdays/anniversaries in reservations.", priority: "Medium", riskLevel: "Low", consequence: "Missed personalization.", proof: "Diary Match" },
-                { id: "RES-ORM-09", technicalProtocol: "Google Maps Status Update", floorAction: "Update business hours for upcoming holidays.", priority: "High", riskLevel: "Low", frequency: "Monthly", consequence: "Guests arrive at closed unit.", proof: "System Check" },
-                { id: "RES-ORM-10", technicalProtocol: "Guest Departure Interview", floorAction: "Speak to 5 departing tables for direct feedback.", priority: "Medium", riskLevel: "Low", consequence: "Hidden dissatisfaction.", proof: "Feedback Log" },
-                { id: "RES-ORM-11", technicalProtocol: "Menu Typo Audit", floorAction: "Scan all menus for price stickers or tears.", priority: "Low", riskLevel: "Low", consequence: "Cheap brand feel.", proof: "Visual Check" },
-                { id: "RES-ORM-12", technicalProtocol: "Reservation Confirmation Pulse", floorAction: "Call all 10+ pax bookings to confirm headcount.", priority: "High", riskLevel: "Low", consequence: "Wasted table space.", proof: "Call Log" },
-                { id: "RES-ORM-13", technicalProtocol: "Influencer Visit Prep", floorAction: "Review brief for any high-profile visitors today.", priority: "Medium", riskLevel: "Low", consequence: "PR PR fail.", proof: "Briefing Log" },
-                { id: "RES-ORM-14", technicalProtocol: "Lobby Lighting Ambiance", floorAction: "Dim lobby lights to evening preset at 6 PM.", priority: "Low", riskLevel: "Low", consequence: "Incorrect mood.", proof: "Visual Check" },
-                { id: "RES-ORM-15", technicalProtocol: "EOD ORM Report", floorAction: "Submit summary of sentiment keywords to GM.", priority: "High", riskLevel: "Low", consequence: "Loss of insight.", proof: "Signed Report" }
-            ]
-        },
-        {
-            title: "Maintenance & Assets",
-            department: "Engineering",
-            frequency: "Daily",
-            role: "Maintenance & Assets Lead",
-            summary: "Ensures 100% equipment uptime and facility safety.",
-            icon: "wrench",
-            tasks: [
-                { id: "RES-MNT-01", technicalProtocol: "Mission-Critical MEP Vitals Check", floorAction: "Check HVAC chiller plant and log lobby temperature.", priority: "High", riskLevel: "Medium", consequence: "Guest heat discomfort.", proof: "BMS Reading" },
-                { id: "RES-MNT-02", technicalProtocol: "Emergency Power Readiness Test", floorAction: "Inspect generator fuel and test battery voltage.", priority: "High", riskLevel: "High", consequence: "Total facility blackout.", proof: "Test Log" },
-                { id: "RES-MNT-03", technicalProtocol: "Technical Asset Uptime Audit", floorAction: "Verify all POS terminals and printers are connected.", priority: "Medium", riskLevel: "Low", consequence: "Billing delays during peak.", proof: "Print Test" },
-                { id: "RES-MNT-04", technicalProtocol: "Plumbing Leak Patrol", floorAction: "Inspect kitchen drains and bathroom traps for leaks.", priority: "Medium", riskLevel: "Medium", consequence: "Water damage and odors.", proof: "Walkthrough" },
-                { id: "RES-MNT-05", technicalProtocol: "Kitchen Hood Exhaust Test", floorAction: "Check suction power and grease filter build-up.", priority: "High", riskLevel: "High", consequence: "Kitchen fire risk.", proof: "Visual Audit" },
-                { id: "RES-MNT-06", technicalProtocol: "Generator Load Test", floorAction: "Full load test of backup power for 30 minutes.", priority: "High", riskLevel: "High", frequency: "Monthly", consequence: "Blackout during critical rush.", proof: "Service Log" },
-                { id: "RES-MNT-07", technicalProtocol: "Exterior Signage Audit", floorAction: "Check if all logo LEDs are operational.", priority: "Low", riskLevel: "Low", consequence: "Poor night visibility.", proof: "Photo" },
-                { id: "RES-MNT-08", technicalProtocol: "Water Filter TDS Pulse", floorAction: "Check RO water TDS (Target < 150).", priority: "High", riskLevel: "High", consequence: "Poor water taste/Infection.", proof: "TDS Reading" },
-                { id: "RES-MNT-09", technicalProtocol: "AC Filter Cleaning Cycle", floorAction: "Vacuum and sanitize all split/cassette filters.", priority: "Medium", riskLevel: "Low", frequency: "Monthly", consequence: "High energy bills and poor cooling.", proof: "Maint Note" },
-                { id: "RES-MNT-10", technicalProtocol: "Maintenance Spares Audit", floorAction: "Verify stock of spare light bulbs and POS rolls.", priority: "Low", riskLevel: "Low", consequence: "Service halt.", proof: "Stock Sheet" },
-                { id: "RES-MNT-11", technicalProtocol: "Elevator ARD Test", floorAction: "Verify automatic rescue battery works for lifts.", priority: "High", riskLevel: "High", consequence: "Guest trapped in lift.", proof: "Test Note" },
-                { id: "RES-MNT-12", technicalProtocol: "UPS Load Balancing", floorAction: "Check battery charge for billing server.", priority: "High", riskLevel: "Medium", consequence: "Data corruption.", proof: "Visual Check" },
-                { id: "RES-MNT-13", technicalProtocol: "Door-Hinge Calibration", floorAction: "Oil and check closure speed of main entrance door.", priority: "Low", riskLevel: "Low", consequence: "Loud/Slamming doors.", proof: "Visual Audit" },
-                { id: "RES-MNT-14", technicalProtocol: "Solar Panel Washing", floorAction: "Clean dust from solar manifold if present.", priority: "Low", riskLevel: "Low", consequence: "Reduced energy efficiency.", proof: "Photo" },
-                { id: "RES-MNT-15", technicalProtocol: "Technical Shift sign-off", floorAction: "Handover status of broken machines to GM.", priority: "High", riskLevel: "Low", consequence: "Broken workflow.", proof: "Signed Summary" }
             ]
         },
         {
@@ -206,6 +156,46 @@ export const restaurants: PremiumPack = {
             ]
         },
         {
+            title: "Guest Relations & ORM",
+            department: "Reception",
+            frequency: "Daily",
+            role: "Guest Relations & ORM Lead",
+            summary: "Protects the brand reputation and first-impression standard.",
+            icon: "star",
+            tasks: [
+                { id: "RES-ORM-01", technicalProtocol: "Digital Reputation Response Pulse", floorAction: "Reply to all Google/Zomato reviews received in last 24h.", priority: "High", riskLevel: "Medium", consequence: "Ranking drop and brand damage.", proof: "Dashboard" },
+                { id: "RES-ORM-02", technicalProtocol: "Reservation Channel Integrity Sync", floorAction: "Verify digital bookings match the physical floor plan.", priority: "High", riskLevel: "Medium", consequence: "Overbooking and angry guests.", proof: "System Match" },
+                { id: "RES-ORM-03", technicalProtocol: "Social Media Inquiry TAT Audit", floorAction: "Answer all Instagram/WhatsApp inquiries in < 30 mins.", priority: "Medium", riskLevel: "Low", consequence: "Lost booking revenue.", proof: "Inbox Clear" },
+                { id: "RES-ORM-04", technicalProtocol: "Guest Wi-Fi Portal Verification", floorAction: "Test login speed and password visibility in lobby.", priority: "Low", riskLevel: "Low", consequence: "Visitor frustration.", proof: "Phone Test" },
+                { id: "RES-ORM-05", technicalProtocol: "VIP Arrival Setup", floorAction: "Verify table choice and 'Celebration' kit for today's VIPs.", priority: "Medium", riskLevel: "Low", consequence: "Loss of loyalty.", proof: "Photo" },
+                { id: "RES-ORM-06", technicalProtocol: "Entry Ambiance Scent Check", floorAction: "Verify lobby aroma intensity.", priority: "Low", riskLevel: "Low", consequence: "Poor sensory branding.", proof: "Visual Check" },
+                { id: "RES-ORM-07", technicalProtocol: "Feedback QR Placement", floorAction: "Ensure all table tents have clean, scannable QR codes.", priority: "Medium", riskLevel: "Low", consequence: "Lower survey response rate.", proof: "Visual Audit" },
+                { id: "RES-ORM-08", technicalProtocol: "Celebration Calendar", floorAction: "Check for birthdays/anniversaries in reservations.", priority: "Medium", riskLevel: "Low", consequence: "Missed personalization.", proof: "Diary Match" },
+                { id: "RES-ORM-09", technicalProtocol: "Google Maps Status Update", floorAction: "Update business hours for upcoming holidays.", priority: "High", riskLevel: "Low", consequence: "Guests arrive at closed unit.", proof: "System Check" },
+                { id: "RES-ORM-10", technicalProtocol: "Guest Departure Interview", floorAction: "Speak to 5 departing tables for direct feedback.", priority: "Medium", riskLevel: "Low", consequence: "Hidden dissatisfaction.", proof: "Feedback Log" }
+            ]
+        },
+        {
+            title: "Maintenance & Assets",
+            department: "Engineering",
+            frequency: "Daily",
+            role: "Maintenance & Assets Lead",
+            summary: "Ensures 100% equipment uptime and facility safety.",
+            icon: "wrench",
+            tasks: [
+                { id: "RES-MNT-01", technicalProtocol: "Mission-Critical MEP Vitals Check", floorAction: "Check HVAC chiller plant and log lobby temperature.", priority: "High", riskLevel: "Medium", consequence: "Guest heat discomfort.", proof: "BMS Reading" },
+                { id: "RES-MNT-02", technicalProtocol: "Emergency Power Readiness Test", floorAction: "Inspect generator fuel and test battery voltage.", priority: "High", riskLevel: "High", consequence: "Total facility blackout.", proof: "Test Log" },
+                { id: "RES-MNT-03", technicalProtocol: "Technical Asset Uptime Audit", floorAction: "Verify all POS terminals and printers are connected.", priority: "Medium", riskLevel: "Low", consequence: "Billing delays during peak.", proof: "Print Test" },
+                { id: "RES-MNT-04", technicalProtocol: "Plumbing Leak Patrol", floorAction: "Inspect kitchen drains and bathroom traps for leaks.", priority: "Medium", riskLevel: "Medium", consequence: "Water damage and odors.", proof: "Walkthrough" },
+                { id: "RES-MNT-05", technicalProtocol: "Kitchen Hood Exhaust Test", floorAction: "Check suction power and grease filter build-up.", priority: "High", riskLevel: "High", consequence: "Kitchen fire risk.", proof: "Visual Audit" },
+                { id: "RES-MNT-06", technicalProtocol: "Generator Load Test", floorAction: "Full load test of backup power for 30 minutes.", priority: "High", riskLevel: "High", consequence: "Blackout during critical rush.", proof: "Service Log" },
+                { id: "RES-MNT-07", technicalProtocol: "Exterior Signage Audit", floorAction: "Check if all logo LEDs are operational.", priority: "Low", riskLevel: "Low", consequence: "Poor night visibility.", proof: "Photo" },
+                { id: "RES-MNT-08", technicalProtocol: "Water Filter TDS Pulse", floorAction: "Check RO water TDS (Target < 150).", priority: "High", riskLevel: "High", consequence: "Poor water taste/Infection.", proof: "TDS Reading" },
+                { id: "RES-MNT-09", technicalProtocol: "AC Filter Cleaning Cycle", floorAction: "Vacuum and sanitize all split/cassette filters.", priority: "Medium", riskLevel: "Low", consequence: "High energy bills and poor cooling.", proof: "Maint Note" },
+                { id: "RES-MNT-10", technicalProtocol: "Maintenance Spares Audit", floorAction: "Verify stock of spare light bulbs and POS rolls.", priority: "Low", riskLevel: "Low", consequence: "Service halt.", proof: "Stock Sheet" }
+            ]
+        },
+        {
             title: "Bar & Liquor Integrity",
             department: "Bar",
             frequency: "Daily",
@@ -217,15 +207,14 @@ export const restaurants: PremiumPack = {
                 { id: "RES-BAR-02", technicalProtocol: "Ice-Production Sanitation Audit", floorAction: "Deep clean ice bin and check for mold/slime.", priority: "High", riskLevel: "High", consequence: "Guest illness.", proof: "Cleaning Log" },
                 { id: "RES-BAR-03", technicalProtocol: "Glassware Chip Audit", floorAction: "Discard all glasses with even microscopic chips.", priority: "High", riskLevel: "High", consequence: "Glass in guest drink.", proof: "Visual Audit" },
                 { id: "RES-BAR-04", technicalProtocol: "Age Verification Pulse", floorAction: "Verify staff are checking IDs for anyone < 25.", priority: "High", riskLevel: "High", consequence: "License suspension.", proof: "Briefing Log" },
-                { id: "RES-BAR-05", technicalProtocol: "Draft Line Flushing", floorAction: "Flush beer lines with cleaner to prevent yeast.", priority: "Medium", riskLevel: "Low", frequency: "Weekly", consequence: "Sour beer/Complaints.", proof: "Maint Note" },
+                { id: "RES-BAR-05", technicalProtocol: "Draft Line Flushing", floorAction: "Flush beer lines with cleaner to prevent yeast.", priority: "Medium", riskLevel: "Low", consequence: "Sour beer/Complaints.", proof: "Maint Note" },
                 { id: "RES-BAR-06", technicalProtocol: "Bottle Tamper Audit", floorAction: "Check pourer seals for any signs of refilling.", priority: "High", riskLevel: "High", consequence: "Fake liquor/PR death.", proof: "Visual Audit" },
                 { id: "RES-BAR-07", technicalProtocol: "Bar Sink Drainage", floorAction: "Clear bar floor traps of fruit peel/debris.", priority: "Low", riskLevel: "Low", consequence: "Backflow odors.", proof: "Cleaning Note" },
-                { id: "RES-BAR-08", technicalProtocol: "Cocktail Garnish Date-Stamp", floorAction: "Verify all citrus/syrups have 'Prep Date' labels.", priority: "Medium", riskLevel: "Low", consequence: "Serving fermented fruit.", proof: "Visual Audit" },
-                { id: "RES-BAR-09", technicalProtocol: "Bar Closing Security", floorAction: "Lock liquor store and hand keys to GM.", priority: "High", riskLevel: "High", consequence: "Stock theft.", proof: "Log Book" }
+                { id: "RES-BAR-08", technicalProtocol: "Cocktail Garnish Date-Stamp", floorAction: "Verify all citrus/syrups have 'Prep Date' labels.", priority: "Medium", riskLevel: "Low", consequence: "Serving fermented fruit.", proof: "Visual Audit" }
             ]
         },
         {
-            title: "Logistics & Delivery",
+            title: "Logistics & Dispatch",
             department: "Logistics",
             frequency: "Daily",
             role: "Dispatch Lead",
@@ -235,9 +224,8 @@ export const restaurants: PremiumPack = {
                 { id: "RES-DEL-01", technicalProtocol: "Packaging Tamper-Seal Audit", floorAction: "Verify bags are stapled/sealed correctly.", priority: "High", riskLevel: "Medium", consequence: "Food tampering.", proof: "Visual Audit" },
                 { id: "RES-DEL-02", technicalProtocol: "Aggregator Price Parity Sync", floorAction: "Verify prices on Zomato match the menu.", priority: "High", riskLevel: "Medium", consequence: "Customer disputes.", proof: "App Check" },
                 { id: "RES-DEL-03", technicalProtocol: "Rider Pickup TAT", floorAction: "Log minutes from 'Order Ready' to 'Rider Pickup'.", priority: "Medium", riskLevel: "Low", consequence: "Cold food/Late delivery.", proof: "TAT Log" },
-                { id: "RES-DEL-04", technicalProtocol: "Delivery Bag Sanitization", floorAction: "Full cleaning of all thermal delivery bags.", priority: "Medium", riskLevel: "Low", frequency: "Weekly", consequence: "Odors and cross-contamination.", proof: "Cleaning Log" },
-                { id: "RES-DEL-05", technicalProtocol: "Address Accuracy Pulse", floorAction: "Verify guest address on 5 random orders.", priority: "Medium", riskLevel: "Low", consequence: "Lost orders.", proof: "Phone Check" },
-                { id: "RES-DEL-06", technicalProtocol: "Aggregator Refund Audit", floorAction: "Review daily 'Cancelled' orders for fake riders.", priority: "High", riskLevel: "High", consequence: "Revenue theft.", proof: "Reconcile Log" }
+                { id: "RES-DEL-04", technicalProtocol: "Delivery Bag Sanitization", floorAction: "Full cleaning of all thermal delivery bags.", priority: "Medium", riskLevel: "Low", consequence: "Odors and cross-contamination.", proof: "Cleaning Log" },
+                { id: "RES-DEL-05", technicalProtocol: "Address Accuracy Pulse", floorAction: "Verify guest address on 5 random orders.", priority: "Medium", riskLevel: "Low", consequence: "Lost orders.", proof: "Phone Check" }
             ]
         },
         {
@@ -252,12 +240,11 @@ export const restaurants: PremiumPack = {
                 { id: "RES-STO-02", technicalProtocol: "Incoming Protein Thermal Audit", floorAction: "Check meat temp on arrival (Target < 5C).", priority: "High", riskLevel: "High", consequence: "Accepting spoiled food.", proof: "Receiving Log" },
                 { id: "RES-STO-03", technicalProtocol: "Supplier FSSAI Audit", floorAction: "Verify FSSAI license of new local vendors.", priority: "High", riskLevel: "High", consequence: "Safety non-compliance.", proof: "Cert File" },
                 { id: "RES-STO-04", technicalProtocol: "Dry Store Pest Patrol", floorAction: "Inspect cereal/flour bags for holes or pests.", priority: "High", riskLevel: "High", consequence: "Infestation.", proof: "Visual Audit" },
-                { id: "RES-STO-05", technicalProtocol: "Stock Requisition Match", floorAction: "Verify all kitchen draws are backed by indent.", priority: "Medium", riskLevel: "High", consequence: "Internal leakage.", proof: "Indent Match" },
-                { id: "RES-STO-06", technicalProtocol: "Store Thermometer Sync", floorAction: "Cross-check analog dial vs digital temp probe.", priority: "Medium", riskLevel: "Low", consequence: "Inaccurate storage data.", proof: "Sync Log" }
+                { id: "RES-STO-05", technicalProtocol: "Stock Requisition Match", floorAction: "Verify all kitchen draws are backed by indent.", priority: "Medium", riskLevel: "High", consequence: "Internal leakage.", proof: "Indent Match" }
             ]
         },
         {
-            title: "Finance & Cashier Shield",
+            title: "Finance & Accounts",
             department: "Finance",
             frequency: "Daily",
             role: "Finance Head",
@@ -268,7 +255,7 @@ export const restaurants: PremiumPack = {
                 { id: "RES-FIN-02", technicalProtocol: "Transactional Integrity Audit (Voids)", floorAction: "Audit all 'Deleted' or 'Voided' bills.", priority: "High", riskLevel: "Medium", consequence: "Cashier fraud.", proof: "POS Audit" },
                 { id: "RES-FIN-03", technicalProtocol: "Petty Cash Surprise Count", floorAction: "Physical count of coins and notes vs voucher.", priority: "Medium", riskLevel: "High", consequence: "Small-scale theft.", proof: "Audit Note" },
                 { id: "RES-FIN-04", technicalProtocol: "Credit Card Terminal Audit", floorAction: "Check for skimmers or untampered ports.", priority: "High", riskLevel: "High", consequence: "Legal/PR disaster.", proof: "Visual Check" },
-                { id: "RES-FIN-05", technicalProtocol: "GST Filing Prep", floorAction: "Verify 100% invoice entry for current week.", priority: "High", riskLevel: "High", frequency: "Weekly", consequence: "Tax penalties.", proof: "System Report" }
+                { id: "RES-FIN-05", technicalProtocol: "GST Filing Prep", floorAction: "Verify 100% invoice entry for current week.", priority: "High", riskLevel: "High", consequence: "Tax penalties.", proof: "System Report" }
             ]
         },
         {

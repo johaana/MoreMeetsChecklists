@@ -8,7 +8,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 /**
  * Sovereign Engine v11.9 - THE ABSOLUTE COMMAND BUILD
  * Features: Shift A/B Matrix, Ghost Column Hiding, Underlined Interactive Console.
- * Optimized: Operational Pulse is now Static Amber (Yellow-Orange).
+ * Optimized: Operational Pulse is now Static Amber. Vitals use Two-Tone Blue.
  * Hardened: Fully Hyperlinked Empire Mood + Temporal Cycle Logic.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -26,7 +26,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         NAVY_DEEP: "0A0F19",      
         PRIMARY_GREEN: "2EB86B", 
         ACCENT_AMBER: "F5A623",   // PREMIUM YELLOWISH ORANGE
-        VITAL_BLUE: "1E40AF",      
+        VITAL_BLUE_DARK: "1E40AF", // DARK BLUE for Tasks Logged
+        PROGRESS_BLUE_LIGHT: "3B82F6", // LIGHT BLUE for Shift Progress
         WHITE: "FFFFFF",
         TEXT_MUTED: "94A3B8",
         INTEL_GREY: "64748B",    
@@ -71,9 +72,15 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         alignment: { horizontal: 'center', ...verticalCenter }
     };
 
-    const vitalsBlueStyle = {
+    const vitalsBlueDarkStyle = {
         font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 9, underline: true },
-        fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE } }, 
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.VITAL_BLUE_DARK } }, 
+        alignment: { horizontal: 'center', ...verticalCenter }
+    };
+
+    const progressBlueLightStyle = {
+        font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 9, underline: true },
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.PROGRESS_BLUE_LIGHT } }, 
         alignment: { horizontal: 'center', ...verticalCenter }
     };
 
@@ -232,7 +239,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "TOP BRANCH:", s: labelStyle },
             { t: 'f', f: `IF(MAX('BRANCH_MASTER'!$K$5:$K$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$K$5:$K$15), 'BRANCH_MASTER'!$K$5:$K$15, 0)), "AWAITING DATA")`, l: { Target: "#'BRANCH_MASTER'!A1" }, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, underline: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "TASKS LOGGED:", s: labelStyle },
-            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: vitalsBlueStyle },
+            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: vitalsBlueDarkStyle },
             { v: "RISK STATUS:", s: labelStyle },
             { t: 'f', f: `IF(COUNTIFS('INCIDENT_TRACKER'!$G$5:$G$500, "<>YES", 'INCIDENT_TRACKER'!$D$5:$D$500, "?*")>0, "RISK DETECTED", "ALL CLEAR")`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9, underline: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'center', ...verticalCenter } } }
         ],
@@ -241,7 +248,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "OPERATIONAL PULSE:", s: labelStyle },
             { t: 'f', f: `IF(COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$500, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")), "0%") & " PULSE")`, l: { Target: "#'TEAM_HUB'!A1" }, s: pulseAmberStyle }, 
             { v: "SHIFT PROGRESS:", s: labelStyle },
-            { t: 'f', f: `IFERROR(COUNTIF('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$5000, "?*")), 0)`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { ...vitalsBlueStyle, numFmt: '0%' } },
+            { t: 'f', f: `IFERROR(COUNTIF('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$5000, "?*")), 0)`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { ...progressBlueLightStyle, numFmt: '0%' } },
             { v: "UNIT LOAD:", s: labelStyle },
             { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$L$5:$L$5000, "High", 'TODAYS_TASKS'!$J$5:$J$5000, "<>COMPLETED")`, l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9, underline: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }
         ],
@@ -358,7 +365,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
                     { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode}), "")`, s: dataStyleCenter },
                     { v: c.role, s: dataStyleCenter },
-                    { t: 'f', f: personFormula, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.VITAL_BLUE }, underline: true } } },
+                    { t: 'f', f: personFormula, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.VITAL_BLUE_DARK }, underline: true } } },
                     { v: t.id, s: dataStyleCenter },
                     { v: technicalVal, s: dataStyleLeft },
                     { v: trainerVal, s: coachingStyle },
