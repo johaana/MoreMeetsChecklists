@@ -5,7 +5,6 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import PricingClient from "../pricing-client";
 import { FaqSection } from "@/components/layout/faq-section";
-import { Footer } from "@/components/layout/footer";
 import images from '@/lib/placeholder-images.json';
 
 type Props = {
@@ -26,17 +25,9 @@ export async function generateMetadata(
   }
   
   const siteUrl = 'https://www.moremeets.com';
+  let title = `${pack.title} - Operational System | MoreMeets™`;
+  let description = `Download the complete ${pack.title} system. Professional SOPs for ${pack.category} leaders. One-time purchase.`;
   
-  // SEO Optimization for Animal Shelter specifically
-  let title = `${pack.title} - Excel SOP Templates | MoreMeets™`;
-  let description = `Download the complete ${pack.title} checklist pack. Expert-crafted SOPs for ${pack.category} professionals. One-time purchase.`;
-  
-  if (id === 'animal_shelter_pack') {
-      title = "Free Animal Shelter Operations Framework & SOPs | MoreMeets™";
-      description = "Download our comprehensive, free operational framework for animal shelters. Includes hygiene, medical intake, and welfare SOPs in editable Excel format.";
-  }
-  
-  // Single source of truth for imagery
   const imageData = images.find(img => img.id === `pack-${id}`);
   const ogImage = imageData?.imageUrl || `${siteUrl}/api/og?type=pack&id=${pack.id}`;
 
@@ -73,7 +64,6 @@ export default async function Page({ params }: Props) {
     notFound();
   }
   
-  // Single source of truth for imagery
   const imageData = images.find(img => img.id === `pack-${id}`);
   const heroImageUrl = imageData?.imageUrl || null;
   const imageHint = imageData?.imageHint || "operational checklist";
@@ -83,7 +73,6 @@ export default async function Page({ params }: Props) {
       <PackClientPage pack={pack} heroImageUrl={heroImageUrl} imageHint={imageHint} />
       <PricingClient pack={pack} />
       <FaqSection />
-      <Footer />
     </>
   );
 }
