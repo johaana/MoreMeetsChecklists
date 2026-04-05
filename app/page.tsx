@@ -179,8 +179,8 @@ const WhyMoreMeetsSection = () => (
             <div className="grid md:grid-cols-2 gap-12 relative">
                 <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/5 hidden md:block" />
                 
-                <div className="space-y-8 p-8 rounded-[2rem] bg-red-500/[0.02] border border-red-500/5">
-                    <h3 className="text-red-500/40 font-black uppercase tracking-widest text-[10px] text-center italic">SYSTEMS THAT FAIL</h3>
+                <div className="space-y-8 p-8 rounded-[2rem] bg-red-500/[0.03] border border-red-500/10">
+                    <h3 className="text-red-500/60 font-black uppercase tracking-widest text-[10px] text-center italic">SYSTEMS THAT FAIL</h3>
                     <div className="space-y-6">
                         {[
                             "People forget critical steps",
@@ -189,8 +189,8 @@ const WhyMoreMeetsSection = () => (
                             "Operational data is invisible",
                             "The standard leaves when the hero leaves"
                         ].map(item => (
-                            <div key={item} className="flex items-center gap-4 text-sm text-secondary-text italic opacity-50">
-                                <XCircle className="w-4 h-4 text-red-500/30" /> {item}
+                            <div key={item} className="flex items-center gap-4 text-sm text-secondary-text italic">
+                                <XCircle className="w-4 h-4 text-red-500/50" /> {item}
                             </div>
                         ))}
                     </div>
