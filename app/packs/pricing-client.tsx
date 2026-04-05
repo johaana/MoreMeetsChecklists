@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -86,7 +87,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const hasINR = !!(pack.paymentId && pack.paymentId.length > 0 && pack.priceINR >= 0);
     const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
     
-    // DEFAULT TO INDIA (₹) FOR PRIMARY MARKET Frictionless Conversion
+    // DEFAULT TO INDIA (₹) FOR PRIMARY MARKET
     const [region, setRegion] = React.useState<'GLOBAL' | 'INDIA'>('INDIA');
     
     const totalChecklists = pack.checklists?.length || 0;
