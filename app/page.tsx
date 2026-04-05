@@ -6,20 +6,13 @@ import {
     ArrowRight, 
     Check, 
     Zap, 
-    Timer, 
     ShieldCheck,
-    ShieldAlert,
-    History,
     GraduationCap,
     FileSpreadsheet,
-    Database,
-    Eye,
     AlertTriangle,
-    LayoutGrid,
     Lock,
     Users,
     ClipboardCheck,
-    Target,
     BarChart3,
     UserCheck,
     ChevronRight,
@@ -27,7 +20,10 @@ import {
     FileText,
     TrendingUp,
     Settings2,
-    BookOpen
+    BookOpen,
+    Target,
+    Layers,
+    Database
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -37,6 +33,7 @@ import { SiteHeader } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { HeroSection } from "@/components/layout/hero-section";
 
 const Section = ({ className, id, children, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
     <section id={id} className={cn("w-full py-20 md:py-32", className)} {...props}>
@@ -52,207 +49,88 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
     </h2>
 );
 
-const HeroSection = () => {
-    return (
-        <section className="relative w-full flex flex-col items-center justify-center min-h-[calc(100dvh-64px)] md:min-h-[850px] overflow-hidden bg-background">
-            <div className="absolute inset-0 z-0 overflow-hidden">
-                <video
-                    src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover contrast-[1.1] opacity-40 md:opacity-60"
-                />
-                <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.98)_25%,rgba(10,15,25,0.85)_50%,rgba(10,15,25,0.2)_85%,rgba(10,15,25,0.05)_100%)]" />
-            </div>
-
-            <div className="container px-4 md:px-6 relative z-20 flex flex-col md:flex-row items-center gap-12 py-12 md:py-0">
-                <div className="max-w-3xl space-y-6 md:space-y-8 text-left flex-1">
-                    <div className="space-y-1">
-                        <p className="text-primary/60 font-black uppercase tracking-[0.3em] text-[10px] md:text-xs italic mb-2">MoreMeets™ Sovereign Operating System</p>
-                        <h1 className="text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[6rem] font-black font-headline tracking-tighter !leading-[0.85] text-primary-text drop-shadow-2xl uppercase italic">
-                            STOP CHASING. <br />
-                            <span className="text-primary text-[1.1em]">START SEEING.</span>
-                        </h1>
-                    </div>
-                    
-                    <div className="space-y-4">
-                        <p className="text-lg md:text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-none">
-                            Run your operations on <br />
-                            <span className="text-primary">pre-built, world-class SOPs.</span>
-                        </p>
-                        
-                        <div className="flex flex-col gap-0.5 border-l-2 border-primary/20 pl-6 mt-4">
-                            <p className="text-xs md:text-lg font-bold text-white/40 uppercase tracking-widest italic leading-tight">
-                                SEE EVERYTHING LIVE. NO FOLLOW-UPS.
-                            </p>
-                            <div className="flex items-center gap-2 mt-2">
-                                <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                                <p className="text-[9px] md:text-xs font-black text-primary uppercase tracking-[0.2em]">Live Operations Dashboard Active</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row gap-4 items-start">
-                        <Button size="lg" asChild className="group h-16 px-8 rounded-xl shadow-xl transition-all active:scale-95 bg-primary text-black hover:brightness-105 border-none font-black uppercase italic tracking-widest">
-                            <Link href="/library">
-                                Get Your System <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                            </Link>
-                        </Button>
-                        <Button size="lg" variant="outline" asChild className="h-16 px-8 rounded-xl border-white/10 text-white font-black uppercase italic tracking-widest hover:bg-white/5">
-                            <Link href="#how-it-works">See How It Works</Link>
-                        </Button>
-                    </div>
-                </div>
-
-                <div className="w-full md:w-[380px] shrink-0">
-                    <Card className="p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-2xl relative overflow-hidden group hover:border-primary/20 transition-all duration-500">
-                        <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-                            <ShieldCheck className="w-32 h-32 text-primary" />
-                        </div>
-                        
-                        <div className="relative z-10 space-y-8">
-                            <div className="space-y-2">
-                                <h3 className="text-xs font-black text-primary uppercase tracking-[0.2em]">BUILT FOR REAL OPERATIONS</h3>
-                                <div className="space-y-1">
-                                    {["Restaurants", "Hotels", "Hospitals", "Facilities", "Cinemas", "Franchise Networks"].map(item => (
-                                        <div key={item} className="flex items-center gap-2 text-sm font-bold text-primary-text uppercase italic tracking-tighter opacity-80 group-hover:opacity-100 transition-opacity">
-                                            <ChevronRight className="w-3 h-3 text-primary" /> {item}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="pt-6 border-t border-white/5 space-y-3">
-                                {[
-                                    "Pre-built Technical SOPs",
-                                    "Built-in Trainer Notes",
-                                    "Consequence Mapping",
-                                    "No SaaS Subscriptions"
-                                ].map(point => (
-                                    <div key={point} className="flex items-center gap-3">
-                                        <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
-                                            <Check className="w-2.5 h-2.5 text-primary" />
-                                        </div>
-                                        <span className="text-[11px] font-black uppercase text-white/40 tracking-wider">{point}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </Card>
-                </div>
-            </div>
-        </section>
-    );
-};
-
-const CoreValueSection = () => (
+const WhatYouGetSection = () => (
     <Section className="bg-black border-y border-white/5">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-            <div className="space-y-2">
-                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">The Sovereignty Layer</Badge>
-                <SectionHeadline>NOT JUST TASK TRACKING.</SectionHeadline>
-                <p className="text-xl md:text-2xl text-secondary-text italic font-medium">A complete operating system for your business.</p>
+        <div className="max-w-6xl mx-auto space-y-16">
+            <div className="text-center space-y-4">
+                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Industrial Payload</Badge>
+                <SectionHeadline>WHAT YOU GET</SectionHeadline>
+                <p className="text-xl md:text-2xl text-secondary-text italic font-medium">1 Complete Operating System File. Pre-built for your industry.</p>
             </div>
-            
-            <div className="grid md:grid-cols-3 gap-8 pt-8">
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
-                    { t: "PRE-BUILT SOPs", d: "Standardize instantly with world-class technical protocols.", i: FileText },
-                    { t: "TRAINER NOTES", d: "On-the-job coaching for every task. No senior dependency.", i: GraduationCap },
-                    { id: "audit", t: "AUDIT-READY", d: "Hardened workflows designed for compliance & safety.", i: ShieldCheck }
+                    { t: "DAILY TASK ENGINE", d: "Automatic status triggers for every shift.", i: ClipboardCheck },
+                    { t: "8-ROLE RESPONSIBILITY MATRIX", d: "Assign names to roles; ledger updates instantly.", i: Users },
+                    { t: "MULTI-BRANCH DASHBOARD", d: "Live visibility across 1 to 10 locations.", i: BarChart3 },
+                    { t: "TRAINER NOTES", d: "Instructional guidance built into every task.", i: GraduationCap },
+                    { t: "INCIDENT & RISK TRACKER", d: "Log deviations and safety threats live.", i: ShieldCheck },
+                    { t: "AUDIT-READY LOGS", d: "ISO / HACCP aligned technical protocols.", i: FileText }
                 ].map((item, i) => (
-                    <div key={i} className="space-y-4">
-                        <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto text-primary">
-                            <item.i className="w-6 h-6" />
-                        </div>
-                        <h4 className="font-black text-primary-text uppercase italic text-sm">{item.t}</h4>
+                    <div key={i} className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 flex flex-col gap-4 hover:border-primary/20 transition-all group">
+                        <item.i className="w-10 h-10 text-primary opacity-50 group-hover:opacity-100 transition-opacity" />
+                        <h4 className="font-black text-primary-text uppercase italic text-sm tracking-tight">{item.t}</h4>
                         <p className="text-xs text-secondary-text leading-relaxed italic font-medium">{item.d}</p>
                     </div>
                 ))}
             </div>
-        </div>
-    </Section>
-);
 
-const PowerfulSection = () => (
-    <Section className="bg-alternate-background">
-        <div className="max-w-6xl mx-auto space-y-16">
-            <div className="text-center space-y-4">
-                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.3em] font-black text-[10px]">Structural Advantages</Badge>
-                <SectionHeadline>WHAT MAKES THIS POWERFUL</SectionHeadline>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                    { 
-                        t: "PRE-BUILT SOPs", 
-                        d: "Ready-to-use workflows. No research. No setup. Just deployment.", 
-                        i: BookOpen 
-                    },
-                    { 
-                        t: "TRAINER NOTES", 
-                        d: "Built-in guidance for every task. Your team knows exactly what to do.", 
-                        i: UserCheck 
-                    },
-                    { 
-                        t: "CONSEQUENCES", 
-                        d: "Every task defines what happens if missed. No ambiguity. No excuses.", 
-                        i: AlertTriangle 
-                    },
-                    { 
-                        t: "AUDIT LANGUAGE", 
-                        d: "Structured for high-stakes compliance. Always inspection-ready.", 
-                        i: FileSpreadsheet 
-                    }
-                ].map((item, i) => (
-                    <Card key={i} className="p-8 bg-white/[0.02] border-white/5 flex flex-col gap-4 hover:border-primary/20 transition-all">
-                        <item.i className="w-8 h-8 text-primary" />
-                        <h4 className="font-black text-primary-text uppercase italic text-lg tracking-tight">{item.t}</h4>
-                        <p className="text-sm text-secondary-text leading-relaxed italic font-medium">{item.d}</p>
-                    </Card>
-                ))}
+            <div className="p-10 rounded-[3rem] bg-primary/5 border border-primary/20 text-center space-y-6">
+                <p className="text-sm md:text-lg font-black text-primary-text uppercase tracking-widest italic">
+                    WORKS ON EXCEL / GOOGLE SHEETS • SINGLE OR MULTI-BRANCH READY
+                </p>
             </div>
         </div>
     </Section>
 );
 
 const HowItWorksSection = () => (
-    <Section id="how-it-works" className="bg-black">
+    <Section id="how-it-works" className="bg-alternate-background">
         <div className="max-w-6xl mx-auto space-y-16">
             <div className="text-center space-y-4">
-                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Seamless Implementation</Badge>
+                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.3em] font-black text-[10px]">Seamless Implementation</Badge>
                 <SectionHeadline>HOW IT WORKS</SectionHeadline>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-12">
+            <div className="grid md:grid-cols-5 gap-8">
                 {[
-                    { 
-                        s: "Step 1", 
-                        t: "USE PRE-BUILT SOPs", 
-                        d: "Download the complete technical database for your industry. Use them as-is or customize in minutes.", 
-                        i: Settings2 
-                    },
-                    { 
-                        s: "Step 2", 
-                        t: "TEAM UPDATES TASKS", 
-                        d: "Your staff marks tasks as done in real-time. Simple, familiar Excel/Sheets language. No training needed.", 
-                        i: ClipboardCheck 
-                    },
-                    { 
-                        s: "Step 3", 
-                        t: "YOU SEE EVERYTHING LIVE", 
-                        d: "The dashboard updates automatically. Monitor execution across teams and locations from anywhere.", 
-                        i: BarChart3 
-                    }
+                    { s: "01", t: "DOWNLOAD", d: "Get your system instantly.", i: Settings2 },
+                    { s: "02", t: "SETUP", d: "Add branches and team.", i: Users },
+                    { s: "03", t: "OPERATE", d: "Team marks tasks as done.", i: Target },
+                    { s: "04", t: "TRACK", d: "Dashboard updates live.", i: BarChart3 },
+                    { s: "05", t: "CONTROL", d: "See what's missed instantly.", i: Crown }
                 ].map((step, i) => (
-                    <div key={i} className="relative space-y-6">
+                    <div key={i} className="relative space-y-4 text-center md:text-left">
                         <div className="text-[10px] font-black text-primary uppercase tracking-[0.3em]">{step.s}</div>
-                        <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-primary">
-                            <step.i className="w-8 h-8" />
-                        </div>
-                        <h4 className="font-black text-primary-text uppercase italic text-xl tracking-tighter">{step.t}</h4>
-                        <p className="text-sm text-secondary-text leading-relaxed font-medium italic">{step.d}</p>
+                        <h4 className="font-black text-primary-text uppercase italic text-lg tracking-tighter">{step.t}</h4>
+                        <p className="text-xs text-secondary-text leading-relaxed font-medium italic">{step.d}</p>
+                    </div>
+                ))}
+            </div>
+            
+            <p className="text-center text-[10px] font-black text-white/20 uppercase tracking-[0.4em]">NO TRAINING • NO ONBOARDING • NO DELAY</p>
+        </div>
+    </Section>
+);
+
+const BuiltForSection = () => (
+    <Section className="bg-black border-y border-white/5">
+        <div className="max-w-4xl mx-auto space-y-12">
+            <div className="text-center space-y-4">
+                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Self-Identification</Badge>
+                <SectionHeadline>BUILT FOR</SectionHeadline>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+                {[
+                    "Owners running multiple branches",
+                    "Operators tired of chasing updates",
+                    "Teams with inconsistent execution",
+                    "Businesses dependent on key managers",
+                    "Companies preparing for audits"
+                ].map(item => (
+                    <div key={item} className="flex items-center gap-4 p-6 rounded-2xl bg-white/[0.02] border border-white/5 font-black text-xs uppercase tracking-tight italic text-primary-text">
+                        <Check className="w-5 h-5 text-primary" /> {item}
                     </div>
                 ))}
             </div>
@@ -260,25 +138,29 @@ const HowItWorksSection = () => (
     </Section>
 );
 
-const ProblemSection = () => (
-    <Section className="bg-alternate-background border-y border-white/5">
-        <div className="max-w-4xl mx-auto space-y-12">
+const WhyTeamFollowsSection = () => (
+    <Section className="bg-alternate-background">
+        <div className="max-w-4xl mx-auto space-y-16">
             <div className="text-center space-y-4">
-                <Badge variant="outline" className="text-red-500 border-red-500/30 uppercase tracking-[0.3em] font-black text-[10px]">Operational Diagnosis</Badge>
-                <SectionHeadline>THE REAL PROBLEM</SectionHeadline>
-                <p className="text-lg md:text-xl text-secondary-text italic font-medium">Operations don't break because of effort. They break because:</p>
+                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.3em] font-black text-[10px]">Human-Centric Design</Badge>
+                <SectionHeadline>WHY YOUR TEAM WILL <br/> ACTUALLY FOLLOW THIS</SectionHeadline>
+                <p className="text-secondary-text italic font-medium">We replaced complex software with intentional compliance.</p>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid gap-8">
                 {[
-                    "No clear, pre-built SOPs",
-                    "Poor on-the-job training",
-                    "Missed critical tasks",
-                    "Zero real-time accountability",
-                    "Dependency on 'hero' individuals"
-                ].map(item => (
-                    <div key={item} className="flex items-center gap-4 p-6 rounded-2xl bg-red-500/5 border border-red-500/10 font-black text-xs uppercase tracking-tight italic text-primary-text">
-                        <XCircle className="w-5 h-5 text-red-500/50" /> {item}
+                    { t: "WHAT TO DO", d: "Clear, technical protocols mapped to industry standards.", i: FileText },
+                    { t: "HOW TO DO IT", d: "Trainer Notes built into every task—zero dependency on seniors.", i: GraduationCap },
+                    { t: "WHY IT MATTERS", d: "Consequences of failure defined for every control point.", i: AlertTriangle }
+                ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-8 p-10 rounded-[3rem] bg-black border border-white/5 group hover:border-primary/20 transition-all">
+                        <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 text-primary">
+                            <item.i className="w-8 h-8" />
+                        </div>
+                        <div className="space-y-1">
+                            <h4 className="font-black text-primary-text uppercase italic text-xl tracking-tighter">{item.t}</h4>
+                            <p className="text-sm text-secondary-text leading-relaxed font-medium italic">{item.d}</p>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -287,24 +169,26 @@ const ProblemSection = () => (
 );
 
 const WhyMoreMeetsSection = () => (
-    <Section className="bg-black overflow-hidden">
+    <Section className="bg-black">
         <div className="max-w-5xl mx-auto space-y-16">
             <div className="text-center space-y-4">
-                <SectionHeadline>WHY MOREMEETS™</SectionHeadline>
+                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">The Structural Moat</Badge>
+                <SectionHeadline>WHY THIS WORKS</SectionHeadline>
+                <p className="text-secondary-text italic font-medium">Most systems fail because they are "Suggestions." MoreMeets is "Infrastructure."</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-12 relative">
                 <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/5 hidden md:block" />
                 
                 <div className="space-y-8">
-                    <h3 className="text-white/20 font-black uppercase tracking-widest text-xs text-center">WITHOUT MOREMEETS™</h3>
+                    <h3 className="text-white/20 font-black uppercase tracking-widest text-xs text-center italic">SYSTEMS THAT FAIL</h3>
                     <div className="space-y-6">
                         {[
-                            "SOPs missing or outdated",
-                            "Training is inconsistent",
-                            "Follow-ups required everywhere",
-                            "Zero operational visibility",
-                            "System fails if key person leaves"
+                            "People forget tasks",
+                            "Managers don't follow up",
+                            "SOPs are never used",
+                            "Data is never visible",
+                            "Dependency on 'hero' managers"
                         ].map(item => (
                             <div key={item} className="flex items-center gap-4 text-sm text-secondary-text italic opacity-50">
                                 <XCircle className="w-4 h-4 text-red-500/50" /> {item}
@@ -314,13 +198,13 @@ const WhyMoreMeetsSection = () => (
                 </div>
 
                 <div className="space-y-8">
-                    <h3 className="text-primary font-black uppercase tracking-widest text-xs text-center">WITH MOREMEETS™</h3>
+                    <h3 className="text-primary font-black uppercase tracking-widest text-xs text-center italic">THE MOREMEETS WAY</h3>
                     <div className="space-y-6">
                         {[
-                            "Pre-built, structured SOPs",
-                            "Built-in training guidance",
-                            "Live task visibility dashboard",
-                            "Clear, binary accountability",
+                            "Tasks are pre-defined",
+                            "Responsibility is assigned",
+                            "Execution is logged live",
+                            "Visibility is automatic",
                             "The system stays if the person leaves"
                         ].map(item => (
                             <div key={item} className="flex items-center gap-4 text-sm text-primary-text font-bold uppercase italic">
@@ -334,61 +218,26 @@ const WhyMoreMeetsSection = () => (
     </Section>
 );
 
-const RealTeamsSection = () => (
-    <Section className="bg-alternate-background border-y border-white/5">
-        <div className="max-w-4xl mx-auto text-center space-y-12">
+const FinalCtaSection = () => (
+    <Section className="bg-black border-t border-white/5 text-center py-32">
+        <div className="max-w-4xl mx-auto space-y-16">
             <div className="space-y-4">
-                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.3em] font-black text-[10px]">Human-Centric Engineering</Badge>
-                <SectionHeadline>DESIGNED FOR REAL TEAMS</SectionHeadline>
-                <p className="text-lg md:text-xl text-secondary-text italic font-medium">Simple language. No complexity. Anyone can use it.</p>
+                <SectionHeadline>DEPLOY YOUR OPERATING SYSTEM.</SectionHeadline>
+                <p className="text-xl md:text-3xl text-primary font-black uppercase italic tracking-tighter -mt-6">STOP DEPENDING ON PEOPLE. START DEPENDING ON SYSTEMS.</p>
             </div>
-
-            <div className="p-12 rounded-[3rem] bg-white/[0.02] border border-white/10 space-y-8">
-                <div className="flex flex-col md:flex-row justify-center gap-12 md:gap-24">
-                    <div className="space-y-2">
-                        <FileSpreadsheet className="w-10 h-10 text-primary mx-auto" />
-                        <p className="text-xs font-black text-white/40 uppercase tracking-widest">WORKS ON EXCEL / GOOGLE SHEETS</p>
-                    </div>
-                    <div className="space-y-2">
-                        <Lock className="w-10 h-10 text-primary mx-auto" />
-                        <p className="text-xs font-black text-white/40 uppercase tracking-widest">NO LOGINS. NO APPS.</p>
-                    </div>
-                    <div className="space-y-2">
-                        <Timer className="w-10 h-10 text-primary mx-auto" />
-                        <p className="text-xs font-black text-white/40 uppercase tracking-widest">ZERO LEARNING CURVE</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </Section>
-);
-
-const OutcomeSection = () => (
-    <Section className="bg-black">
-        <div className="max-w-4xl mx-auto p-12 md:p-24 rounded-[4rem] bg-primary/5 border border-primary/20 space-y-12 text-center relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-10 opacity-5 rotate-12"><TrendingUp className="w-64 h-64 text-primary" /></div>
             
-            <div className="space-y-6 relative z-10">
-                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">The Result</Badge>
-                <SectionHeadline>CONSISTENT EXECUTION.</SectionHeadline>
-                <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-xs font-black text-white/40 uppercase tracking-widest italic pt-4 border-t border-white/5">
-                    <span>EVERY DAY.</span>
-                    <span>EVERY LOCATION.</span>
-                    <span>EVERY TEAM.</span>
+            <div className="flex flex-col items-center gap-10">
+                <div className="flex flex-col items-center">
+                    <Button size="lg" asChild className="group h-24 px-16 rounded-[2rem] bg-primary text-black font-black uppercase text-2xl shadow-[0_0_60px_-10px_rgba(46,184,107,0.6)] hover:scale-105 active:scale-95 transition-all border-none">
+                        <Link href="/library" className="flex flex-col items-center justify-center gap-1">
+                            <div className="flex items-center">
+                                START SEEING <ArrowRight className="ml-4 h-8 w-8" />
+                            </div>
+                            <div className="text-[10px] font-bold opacity-60">~ Pre-built. Editable. Ready to run. ~</div>
+                        </Link>
+                    </Button>
+                    <p className="text-[10px] font-black text-white/20 mt-8 uppercase tracking-[0.3em]">ONE-TIME DEPLOYMENT OFFER: ₹999 (LAUNCH PRICING)</p>
                 </div>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8 relative z-10">
-                {[
-                    { t: "WHAT'S DONE", d: "Verifiable proof of work." },
-                    { t: "WHAT'S MISSED", d: "Immediate risk detection." },
-                    { t: "WHAT NEEDS ATTENTION", d: "Proactive management focus." }
-                ].map((item, i) => (
-                    <div key={i} className="space-y-2">
-                        <h4 className="font-black text-primary-text uppercase italic text-sm">{item.t}</h4>
-                        <p className="text-[10px] text-white/40 font-black uppercase tracking-widest">{item.d}</p>
-                    </div>
-                ))}
             </div>
         </div>
     </Section>
@@ -400,46 +249,22 @@ export default function Home() {
       <SiteHeader />
       <main className="flex-1">
         <HeroSection />
-        <CoreValueSection />
-        <PowerfulSection />
+        <WhatYouGetSection />
         <HowItWorksSection />
-        <ProblemSection />
+        <BuiltForSection />
+        <WhyTeamFollowsSection />
         <WhyMoreMeetsSection />
-        <RealTeamsSection />
-        <OutcomeSection />
         
         <TestimonialsSection />
         <FaqSection />
-        
-        <Section id="offer" className="bg-black border-t border-white/5 text-center">
-            <div className="max-w-4xl mx-auto space-y-16">
-                <div className="space-y-4">
-                    <SectionHeadline>DEPLOY YOUR OPERATING SYSTEM.</SectionHeadline>
-                    <p className="text-xl md:text-2xl text-primary font-black uppercase italic tracking-tighter -mt-6">NOT JUST SOFTWARE.</p>
-                </div>
-                
-                <div className="flex flex-col items-center gap-10">
-                    <div className="flex flex-col items-center">
-                        <Button size="lg" asChild className="group h-24 px-16 rounded-[2rem] bg-primary text-black font-black uppercase text-2xl shadow-[0_0_60px_-10px_rgba(46,184,107,0.6)] hover:scale-105 active:scale-95 transition-all border-none">
-                            <Link href="/library" className="flex flex-col items-center justify-center gap-1">
-                                <div className="flex items-center">
-                                    START SEEING <ArrowRight className="ml-4 h-8 w-8" />
-                                </div>
-                                <div className="text-xs font-bold opacity-60">~ Pre-built. Editable. Ready to run. ~</div>
-                            </Link>
-                        </Button>
-                        <p className="text-[10px] font-black text-white/20 mt-8 uppercase tracking-[0.3em]">ONE-TIME DEPLOYMENT OFFER: ₹999</p>
-                    </div>
-                    
-                    <div className="pt-12 border-t border-white/5 w-full">
-                        <SectionHeadline className="text-primary-text/40 text-2xl sm:text-3xl">STOP DEPENDING ON PEOPLE.</SectionHeadline>
-                        <SectionHeadline className="text-primary text-2xl sm:text-3xl">START DEPENDING ON SYSTEMS.</SectionHeadline>
-                    </div>
-                </div>
-            </div>
-        </Section>
+        <FinalCtaSection />
       </main>
       <Footer />
     </div>
   );
 }
+
+// Icons
+const Crown = (props: any) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
+);

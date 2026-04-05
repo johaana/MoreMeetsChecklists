@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -83,35 +82,6 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     )
 }
 
-function getIndustryWording(packId: string): string {
-    const map: Record<string, string> = {
-        'hotels_and_resorts': 'Hospitality Operational Modules',
-        'restaurants': 'Restaurant Operational Modules',
-        'fashion_and_apparel_retail': 'Apparel Retail Modules',
-        'jewelry_and_luxury_retail': 'High-Value Retail Modules',
-        'electronics_showroom_pack': 'Showroom Operational Modules',
-        'supermarket_grocery_retail_pack': 'Grocery Retail Modules',
-        'facility_management_blueprint': 'Facility Control Modules',
-        'corporate_legal_compliance_starter_kit': 'Corporate Governance Modules',
-        'enterprise_risk_cybersecurity_pack': 'Risk & Security Modules',
-        'healthcare_and_hospital_operations': 'Clinical Operational Modules',
-        'school_operations_pack': 'School Safety Modules',
-        'university_college_ops': 'Higher-Ed Operational Modules',
-        'manufacturing_operations_ehs_pack': 'Safety & EHS Modules',
-        'food_manufacturing_ops': 'Food Safety Modules',
-        'logistics_warehouse_pack': 'Warehouse & Logistics Modules',
-        'franchise_operations_pack': 'Franchise Performance Modules',
-        'film_production_pack': 'Film & Production Modules',
-        'ott_platform_pack': 'Streaming Control Modules',
-        'sports_clubs_stadium_operations_pack': 'Sports Operations Modules',
-        'cinema_operations_pack': 'Cinema Operations Modules',
-        'theme_park_ops_pack': 'Theme Park Safety Modules',
-        'bakery_confectionery_pack': 'Bakery & Confectionery Modules',
-        'animal_shelter_pack': 'Animal Welfare Modules',
-    };
-    return map[packId] || 'Operational Modules';
-}
-
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const hasINR = !!(pack.paymentId && pack.paymentId.length > 0 && pack.priceINR >= 0);
     const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
@@ -120,7 +90,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     
     const totalChecklists = pack.checklists?.length || 0;
     const totalTasks = pack.checklists?.reduce((acc, c) => acc + c.tasks.length, 0) || 0;
-    const industryWording = getIndustryWording(pack.id);
 
     const PROOFS = [
         { label: 'Audit-Ready', icon: ShieldCheck },
@@ -212,7 +181,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <div className="space-y-8">
                                 <div className="flex flex-col items-center gap-1">
                                     <p className="text-xl md:text-2xl font-black text-primary-text tracking-tight uppercase leading-tight">
-                                        {totalChecklists} {industryWording} · {totalTasks}+ Technical Control Points
+                                        {totalChecklists} Operational Modules · {totalTasks}+ Technical Control Points
                                     </p>
                                     <p className="text-xs text-secondary-text italic font-medium">Complete Operational Payload</p>
                                 </div>
@@ -229,7 +198,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <div className="space-y-2 mb-8">
                                     <div className="flex items-center justify-center gap-4 mb-4">
                                         <div className="text-left">
-                                            <p className="text-[10px] font-black uppercase text-white/20">Professional Value</p>
+                                            <p className="text-[10px] font-black uppercase text-white/20">Professional Grade</p>
                                             <p className="text-sm font-bold text-white/40 line-through">
                                                 {region === 'INDIA' ? '₹1,999' : '$25'}
                                             </p>
@@ -243,11 +212,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         </div>
                                     </div>
                                     
-                                    {pack.pricingUrgency && (
-                                        <p className="text-sm font-bold text-accent italic">
-                                            "{pack.pricingUrgency}"
-                                        </p>
-                                    )}
+                                    <p className="text-sm font-bold text-accent italic">
+                                        Launch pricing valid for early deployments only.
+                                    </p>
                                 </div>
 
                                 <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.25em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto">
@@ -277,7 +244,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         <div className="flex items-center gap-2">
                                             <Zap className="w-3 h-3 text-primary" />
                                             <span className="text-[11px] font-black tracking-widest uppercase text-white/40">
-                                                Launch pricing valid for early deployments only.
+                                                Own the full technical library forever.
                                             </span>
                                         </div>
                                         <div className="flex items-center gap-2">

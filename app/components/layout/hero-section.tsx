@@ -2,71 +2,108 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronRight, Lock, Zap } from "lucide-react";
+import { ArrowRight, ChevronRight, Lock, Zap, Check } from "lucide-react";
 import React from 'react';
+import { cn } from "@/lib/utils";
+
+const ELITE_INDUSTRIES = [
+    { name: "Restaurants", id: "restaurants" },
+    { name: "Hotels & Resorts", id: "hotels_and_resorts" },
+    { name: "Healthcare", id: "healthcare_and_hospital_operations" },
+    { name: "Schools", id: "school_operations_pack" },
+    { name: "Franchise Networks", id: "franchise_operations_pack" },
+    { name: "Facilities", id: "facility_management_blueprint" },
+    { name: "Cinemas", id: "cinema_operations_pack" }
+];
 
 export const HeroSection = () => (
-    <section className="relative w-full flex flex-col md:flex-row md:items-center h-[calc(100dvh-64px)] md:h-screen md:min-h-[700px] overflow-hidden bg-background">
-        {/* Visual Brand Layer - PRESERVED AS PER USER REQUEST */}
-        <div className="relative h-[28vh] md:absolute md:top-0 md:left-0 md:h-full md:w-full z-0 overflow-hidden shrink-0">
+    <section className="relative w-full flex flex-col md:flex-row md:items-center min-h-[calc(100dvh-64px)] md:h-[90vh] md:min-h-[800px] overflow-hidden bg-background">
+        {/* Cinematic Visual Layer */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover contrast-[1.15] brightness-[1.15] md:contrast-100 md:brightness-100"
+                className="absolute inset-0 w-full h-full object-cover grayscale brightness-[0.25] opacity-60"
             />
-            {/* Desktop Gradient Overlay */}
-            <div className="hidden md:block absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.8)_40%,rgba(10,15,25,0.3)_70%,rgba(10,15,25,0.05)_100%)]" />
-            
-            {/* Mobile Gradient Overlay */}
-            <div className="md:hidden absolute inset-0 z-10 bg-gradient-to-b from-transparent via-background/10 to-background" />
-            
-            {/* Soft Bleed for Mobile Transition */}
-            <div className="md:hidden absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-15" />
+            {/* Gradient Masking */}
+            <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.95)_30%,rgba(10,15,25,0.6)_60%,rgba(10,15,25,0.1)_100%)]" />
         </div>
 
-        {/* Content Layer - LAYOUT PRESERVED, COPY REFINED */}
-        <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center md:justify-center">
-            <div className="max-w-2xl space-y-4 md:space-y-6">
-                <h1 className="text-[2.25rem] sm:text-5xl md:text-6xl font-headline font-bold tracking-tighter !leading-[1.1] md:!leading-[1.05] text-primary-text drop-shadow-lg normal-case">
-                    Stop managing. <br />
-                    <span className="text-primary">Start seeing.</span>
-                </h1>
-                
-                <div className="py-1 border-y border-primary/20 w-fit inline-block md:border-none md:p-0">
-                    <p className="text-[11px] md:text-base lg:text-lg font-black text-primary uppercase tracking-[0.15em] md:normal-case md:tracking-normal">
-                        A system that runs your business daily.
+        {/* Left Command Block */}
+        <div className="container px-4 md:px-6 relative z-20 flex flex-col justify-center">
+            <div className="max-w-3xl space-y-8 md:space-y-10">
+                {/* 1. Hook & Payoff */}
+                <div className="space-y-2">
+                    <p className="text-primary font-black uppercase tracking-[0.3em] text-[10px] md:text-xs italic">
+                        MoreMeets™ Sovereign Operating System
+                    </p>
+                    <h1 className="text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[6.5rem] font-black font-headline tracking-tighter !leading-[0.85] text-primary-text uppercase italic">
+                        STOP CHASING. <br />
+                        <span className="text-primary">START SEEING.</span>
+                    </h1>
+                </div>
+
+                {/* 2. Result Clarity */}
+                <div className="space-y-4">
+                    <h2 className="text-xl md:text-3xl font-black text-primary-text uppercase italic tracking-tighter leading-none">
+                        YOUR TEAM UPDATES TASKS. <br />
+                        <span className="text-primary/80">YOU SEE EVERYTHING LIVE.</span>
+                    </h2>
+                    <p className="text-sm md:text-lg max-w-[550px] text-secondary-text/80 leading-relaxed font-medium italic border-l-2 border-primary/20 pl-6">
+                        KNOW WHAT'S DONE. WHAT'S MISSED. WHAT'S DELAYED. <br />
+                        ACROSS YOUR ENTIRE OPERATION.
                     </p>
                 </div>
 
-                <p className="text-sm md:text-lg max-w-[520px] text-secondary-text leading-relaxed md:leading-[1.5] font-medium md:font-normal italic">
-                    MoreMeets™ replaces human memory with engineered consistency. No follow-ups. No manual reports. Just real-time clarity.
-                </p>
-                
-                <div className="flex flex-col items-start gap-5 pt-2 md:pt-8">
-                    <Button size="lg" asChild className="group w-full sm:w-auto h-14 md:h-16 rounded-xl shadow-xl md:shadow-2xl transition-all active:scale-95 px-8 bg-primary text-black hover:brightness-90 border-none">
-                        <Link href="/library" className="flex items-center justify-center font-black uppercase text-sm tracking-widest">
-                           Get Your Operating System
-                           <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                        </Link>
-                    </Button>
-                    <div className="space-y-3 pl-1">
-                        <div className="flex items-center gap-4">
-                            <Link href="#how-it-works" className="text-xs font-bold text-secondary-text/80 hover:text-primary transition-colors flex items-center gap-1 group/link w-fit underline underline-offset-4 decoration-white/10 hover:decoration-primary/40">
-                                See how it works <ChevronRight className="w-3 h-3 transition-transform group-hover/link:translate-x-0.5" />
+                {/* 3. The Left Switchboard (Glass Container) */}
+                <div className="p-6 md:p-8 rounded-[2rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl max-w-xl shadow-2xl space-y-6">
+                    <div className="space-y-1">
+                        <h3 className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">SELECT DEPLOYMENT SECTOR:</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 pt-2">
+                            {ELITE_INDUSTRIES.map(item => (
+                                <Link 
+                                    key={item.id} 
+                                    href={`/packs/${item.id}`} 
+                                    className="flex items-center justify-between group/link text-sm font-bold text-primary-text/70 hover:text-primary transition-all uppercase italic tracking-tighter border-b border-white/5 pb-1"
+                                >
+                                    <span>{item.name}</span>
+                                    <ChevronRight className="w-4 h-4 opacity-0 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-all" />
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* 4. Action & Proof */}
+                <div className="flex flex-col gap-6">
+                    <div className="flex flex-wrap gap-x-8 gap-y-3">
+                        {[
+                            { t: "NO APPS / NO SAAS", i: Lock },
+                            { t: "OWN FOREVER", i: Zap },
+                            { t: "LIVE IN MINUTES", i: Check }
+                        ].map(point => (
+                            <div key={point.t} className="flex items-center gap-2">
+                                <point.i className="w-3.5 h-3.5 text-primary" />
+                                <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{point.t}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                        <Button size="lg" asChild className="group h-20 px-10 rounded-2xl bg-primary text-black hover:brightness-110 shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 border-none">
+                            <Link href="/library" className="flex flex-col items-center leading-none gap-1">
+                                <span className="font-black uppercase italic text-lg tracking-widest flex items-center">
+                                    DEPLOY YOUR SYSTEM: ₹999 <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-1" />
+                                </span>
+                                <span className="text-[9px] font-bold opacity-60">~ ₹1,999 ~ LAUNCH OFFER</span>
                             </Link>
-                            <span className="flex items-center gap-1.5 text-[10px] font-black text-primary uppercase tracking-widest">
-                                <Lock className="w-3 h-3" /> No SaaS. Own Forever.
-                            </span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Zap className="w-3 h-3 text-accent" />
-                            <p className="text-[9px] md:text-[10px] text-muted-foreground/60 font-black leading-tight uppercase tracking-widest">
-                                Ready to Deploy in 10 Minutes • Zero-Collation Engine
-                            </p>
-                        </div>
+                        </Button>
+                        <p className="text-[10px] text-secondary-text max-w-[180px] italic font-medium leading-snug">
+                            No learning curve. <br /> Works on Excel / Google Sheets.
+                        </p>
                     </div>
                 </div>
             </div>
