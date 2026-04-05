@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -92,15 +93,16 @@ const WhatYouGetSection = () => (
 
 const HowItWorksSection = () => (
     <Section id="how-it-works" className="bg-alternate-background relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-primary/20 via-primary/5 to-transparent hidden md:block" />
-        
         <div className="max-w-6xl mx-auto space-y-20 relative z-10">
             <div className="text-center space-y-4">
                 <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.3em] font-black text-[10px]">Seamless Implementation</Badge>
                 <SectionHeadline>SYSTEM BOOT SEQUENCE</SectionHeadline>
             </div>
 
-            <div className="grid md:grid-cols-5 gap-8">
+            <div className="relative grid md:grid-cols-5 gap-8 lg:gap-12">
+                {/* Visual Connection Line (Desktop) */}
+                <div className="absolute top-6 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent hidden md:block z-0" />
+                
                 {[
                     { s: "01", t: "DOWNLOAD", d: "Get your industrial file instantly.", i: Settings2 },
                     { s: "02", t: "CONFIGURE", d: "Add your branches and assign the team.", i: Users },
@@ -108,14 +110,18 @@ const HowItWorksSection = () => (
                     { s: "04", t: "TELEMETRY", d: "Executive dashboard updates live.", i: Activity },
                     { s: "05", t: "COMMAND", d: "See what's missed and control the standard.", i: CrownIcon }
                 ].map((step, i) => (
-                    <div key={i} className="relative space-y-6 group">
+                    <div key={i} className="relative space-y-6 group z-10">
                         <div className="flex flex-col items-center md:items-start gap-4">
-                            <div className="w-12 h-12 rounded-full bg-black border border-white/10 flex items-center justify-center relative z-20 group-hover:border-primary/50 transition-colors">
-                                <span className="text-[10px] font-black text-primary uppercase">{step.s}</span>
+                            {/* The Improved Number Indicator */}
+                            <div className="w-12 h-12 rounded-full bg-black border border-white/10 flex items-center justify-center relative transition-all duration-500 group-hover:border-primary group-hover:shadow-[0_0_20px_-5px_rgba(46,184,107,0.5)]">
+                                <span className="text-xs font-black text-primary font-mono tracking-tighter transition-all group-hover:scale-110">{step.s}</span>
+                                {/* Pulse Effect */}
+                                <div className="absolute inset-0 rounded-full bg-primary/20 animate-pulse-soft opacity-0 group-hover:opacity-100" />
                             </div>
+                            
                             <div className="space-y-2 text-center md:text-left">
-                                <h4 className="font-black text-primary-text uppercase italic text-lg tracking-tighter">{step.t}</h4>
-                                <p className="text-xs text-secondary-text leading-relaxed font-medium italic">{step.d}</p>
+                                <h4 className="font-black text-primary-text uppercase italic text-lg tracking-tighter leading-none">{step.t}</h4>
+                                <p className="text-[11px] text-secondary-text leading-relaxed font-medium italic opacity-80 group-hover:opacity-100 transition-opacity">{step.d}</p>
                             </div>
                         </div>
                     </div>
