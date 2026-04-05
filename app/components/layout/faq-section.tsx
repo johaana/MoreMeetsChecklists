@@ -15,7 +15,8 @@ export const FaqSection = () => (
                         <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">We already have SOPs. Why do we need this?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic space-y-4">
                            <p>Most businesses already have SOPs. <strong>The problem is execution.</strong></p>
-                           <p>SOPs sit in folders. They depend on memory. They are not followed daily. MoreMeets converts SOPs into a <strong>Live Operating System</strong> where responsibility is assigned and execution is recorded in real time.</p>
+                           <p>SOPs sit in folders. They depend on memory. They are not followed daily.</p>
+                           <p>MoreMeets converts SOPs into a <strong>Live Operating System</strong> where responsibility is assigned and execution is recorded in real time.</p>
                            <p className="text-primary-text font-black border-t border-white/5 pt-2">SOPs = Documentation. <br/> MoreMeets = Execution.</p>
                         </AccordionContent>
                     </AccordionItem>
