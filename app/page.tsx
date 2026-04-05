@@ -100,21 +100,21 @@ const HowItWorksSection = () => (
             </div>
 
             <div className="relative grid md:grid-cols-5 gap-8 lg:gap-12">
-                {/* Visual Connection Line (Desktop) */}
-                <div className="absolute top-6 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent hidden md:block z-0" />
+                {/* Visual Connection Line (Desktop) - Hardened with 2px stroke and glow */}
+                <div className="absolute top-8 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent hidden md:block z-0 shadow-[0_0_15px_rgba(46,184,107,0.3)]" />
                 
                 {[
-                    { s: "01", t: "DOWNLOAD", d: "Get your industrial file instantly.", i: Settings2 },
-                    { s: "02", t: "CONFIGURE", d: "Add your branches and assign the team.", i: Users },
-                    { s: "03", t: "OPERATE", d: "Team marks missions as done on the floor.", i: Target },
-                    { s: "04", t: "TELEMETRY", d: "Executive dashboard updates live.", i: Activity },
-                    { s: "05", t: "COMMAND", d: "See what's missed and control the standard.", i: CrownIcon }
+                    { t: "DOWNLOAD", d: "Get your industrial file instantly.", i: Settings2 },
+                    { t: "CONFIGURE", d: "Add your branches and assign the team.", i: Users },
+                    { t: "OPERATE", d: "Team marks missions as done on the floor.", i: Target },
+                    { t: "TELEMETRY", d: "Executive dashboard updates live.", i: Activity },
+                    { t: "COMMAND", d: "See what's missed and control the standard.", i: CrownIcon }
                 ].map((step, i) => (
                     <div key={i} className="relative space-y-6 group z-10">
                         <div className="flex flex-col items-center md:items-start gap-4">
-                            {/* The Improved Number Indicator */}
-                            <div className="w-12 h-12 rounded-full bg-black border border-white/10 flex items-center justify-center relative transition-all duration-500 group-hover:border-primary group-hover:shadow-[0_0_20px_-5px_rgba(46,184,107,0.5)]">
-                                <span className="text-xs font-black text-primary font-mono tracking-tighter transition-all group-hover:scale-110">{step.s}</span>
+                            {/* The Improved Number Indicator - Rescaled to 64px */}
+                            <div className="w-16 h-16 rounded-full bg-black border border-white/10 flex items-center justify-center relative transition-all duration-500 group-hover:border-primary group-hover:shadow-[0_0_20px_-5px_rgba(46,184,107,0.5)]">
+                                <span className="text-xl font-black text-primary font-mono transition-all group-hover:scale-110">{i + 1}</span>
                                 {/* Pulse Effect */}
                                 <div className="absolute inset-0 rounded-full bg-primary/20 animate-pulse-soft opacity-0 group-hover:opacity-100" />
                             </div>
