@@ -71,16 +71,16 @@ const CtaBlock = ({ price = "₹999", sub = "INSTITUTIONAL ACCESS • OWN FOREVE
 );
 
 export default function PackClientPage({ pack }: { pack: PremiumPack }) {
-  const totalChecklists = 12; // Hardened for Restaurant OS context
-  const totalTasks = 120; // Hardened for Restaurant OS context
-  const roles = 12; // Hardened for Restaurant OS context
+  const totalChecklists = 12; 
+  const totalTasks = 120;
+  const roles = 12;
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
 
       <main className="flex-1">
-        {/* SECTION 1: COMMAND HERO (HUGE SCALE) */}
+        {/* SECTION 1: COMMAND HERO */}
         <section className="relative w-full pt-20 pb-16 md:pt-32 md:pb-32 border-b border-white/5 overflow-hidden bg-black">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(46,184,107,0.08)_0%,transparent_70%)]" />
           <div className="container px-4 md:px-6 text-center max-w-7xl mx-auto space-y-16 relative z-10">
@@ -103,7 +103,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                 </div>
             </div>
 
-            {/* Vitals Grid - Center Aligned */}
+            {/* Vitals Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                 {[
                     { l: "Modules", v: `${totalChecklists}`, i: ShieldCheck },
@@ -288,7 +288,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                 </div>
 
                 <div className="relative rounded-[3rem] border border-white/10 bg-zinc-900/50 p-4 shadow-2xl group max-w-5xl mx-auto">
-                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-[2.8rem]" />
+                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-10 transition-opacity duration-1000 rounded-[2.8rem]" />
                     <img 
                         src="https://i.postimg.cc/YSQcfhnQ/Screenshot-2026-04-02-165428.png" 
                         alt="Sovereign Dashboard Interface" 
@@ -371,10 +371,10 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                             i: FlameKindling
                         },
                         { 
-                            cat: "🔄 SERVICE CONTROL", 
-                            title: "Shift Handover Audit", 
-                            d: "Verified shift-logs → prevents communication gaps and accountability loss.",
-                            i: Repeat
+                            cat: "🔄 AGGREGATOR SHIELD", 
+                            title: "Cancellation Guard", 
+                            d: "Disorganized staff → organized workflow → 40% fewer Zomato/Swiggy cancellations.",
+                            i: Smartphone
                         },
                         { 
                             cat: "💰 PROFIT SHIELD", 
@@ -448,7 +448,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                         "Pre-built Restaurant SOP Engine",
                         "Daily, Weekly, Monthly Auto-Cycles",
                         "Trainer Notes for 100% of tasks",
-                        "Consequences of Failure Database",
+                        "Consequences of failure database",
                         "Multi-Branch Command Dashboard",
                         "Fully Editable .xlsx / Sheets format",
                         "No Learning Curve for floor staff"
