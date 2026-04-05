@@ -17,7 +17,7 @@ const ELITE_INDUSTRIES = [
 ];
 
 export const HeroSection = () => (
-    <section className="relative w-full flex flex-col md:flex-row md:items-center min-h-[calc(100dvh-64px)] md:h-[92vh] overflow-hidden bg-background">
+    <section className="relative w-full flex flex-col md:flex-row md:items-center min-h-[calc(100dvh-64px)] md:h-[90vh] overflow-hidden bg-background">
         {/* Cinematic Visual Layer - Full Color with Heavy-Left Mask */}
         <div className="absolute inset-0 z-0 overflow-hidden">
             <video
@@ -33,16 +33,16 @@ export const HeroSection = () => (
         </div>
 
         {/* Left Command Block */}
-        <div className="container px-4 md:px-6 relative z-20 flex flex-col justify-center pt-6 md:pt-10 pb-8">
-            <div className="max-w-3xl space-y-5 md:space-y-6">
+        <div className="container px-4 md:px-6 relative z-20 flex flex-col justify-center pt-4 md:pt-6 pb-8">
+            <div className="max-w-3xl space-y-4 md:space-y-5">
                 {/* 1. Hook & Payoff - Massive Impact */}
                 <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-[5.2rem] font-black font-headline tracking-tighter !leading-[0.82] text-primary-text uppercase italic">
                     STOP CHASING. <br />
                     <span className="text-primary">START SEEING.</span>
                 </h1>
 
-                {/* 2. Result Clarity (Telemetry) - Increased Size for Readability */}
-                <div className="space-y-2">
+                {/* 2. Result Clarity (Telemetry) - Tightened Spacing */}
+                <div className="space-y-1.5">
                     <h2 className="text-xl md:text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-none">
                         Your team updates tasks. <br />
                         <span className="text-primary/80">You see everything live.</span>
@@ -57,7 +57,7 @@ export const HeroSection = () => (
                 <div className="p-4 rounded-[1.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl max-w-lg shadow-2xl space-y-3">
                     <div className="space-y-1">
                         <h3 className="text-[11px] font-black text-primary uppercase tracking-[0.2em]">SELECT DEPLOYMENT MODULE:</h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1.5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1">
                             {ELITE_INDUSTRIES.map(item => (
                                 <Link 
                                     key={item.id} 
@@ -73,7 +73,7 @@ export const HeroSection = () => (
                 </div>
 
                 {/* 4. Action & Proof - Compressed Flow */}
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-3">
                     <div className="flex flex-wrap gap-x-5 gap-y-1">
                         {[
                             { t: "NO APPS / NO SAAS", i: Lock },
@@ -89,11 +89,8 @@ export const HeroSection = () => (
 
                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                         <Button size="lg" asChild className="group h-14 md:h-16 px-8 md:px-10 rounded-xl bg-primary text-black hover:brightness-110 shadow-[0_0_30px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 border-none">
-                            <Link href="/library" className="flex flex-col items-center leading-none gap-0.5">
-                                <span className="font-black uppercase italic text-sm md:text-base tracking-widest flex items-center">
-                                    GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 transition-transform group-hover:translate-x-1" />
-                                </span>
-                                <span className="text-[8px] font-bold opacity-60">~ ₹1,999 ~ LAUNCH DEPLOYMENT OFFER</span>
+                            <Link href="/library" className="inline-flex items-center justify-center font-black uppercase italic text-sm md:text-base tracking-widest">
+                                GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 transition-transform group-hover:translate-x-1" />
                             </Link>
                         </Button>
                         <p className="text-[11px] text-secondary-text max-w-[140px] italic font-bold leading-tight uppercase tracking-tighter">
