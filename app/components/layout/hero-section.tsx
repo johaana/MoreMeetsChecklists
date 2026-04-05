@@ -34,33 +34,26 @@ export const HeroSection = () => (
 
         {/* Left Command Block */}
         <div className="container px-4 md:px-6 relative z-20 flex flex-col justify-center pt-6 md:pt-10 pb-8">
-            <div className="max-w-3xl space-y-4 md:space-y-5">
-                {/* 1. Hook & Payoff - Tighter Lead */}
-                <div className="space-y-0.5">
-                    <div className="flex items-center px-1 pb-1">
-                        <p className="text-primary font-black uppercase tracking-[0.4em] text-[10px] italic border-l-2 border-primary/40 pl-3 pr-4">
-                            MoreMeets™ Sovereign Operating System
-                        </p>
-                    </div>
-                    <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-[4.8rem] font-black font-headline tracking-tighter !leading-[0.82] text-primary-text uppercase italic">
-                        STOP CHASING. <br />
-                        <span className="text-primary">START SEEING.</span>
-                    </h1>
-                </div>
+            <div className="max-w-3xl space-y-5 md:space-y-6">
+                {/* 1. Hook & Payoff - Massive Impact */}
+                <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-[5.2rem] font-black font-headline tracking-tighter !leading-[0.82] text-primary-text uppercase italic">
+                    STOP CHASING. <br />
+                    <span className="text-primary">START SEEING.</span>
+                </h1>
 
-                {/* 2. Result Clarity (Telemetry) - Sentence Case refinement */}
-                <div className="space-y-1.5">
-                    <h2 className="text-lg md:text-xl font-black text-primary-text uppercase italic tracking-tighter leading-none">
+                {/* 2. Result Clarity (Telemetry) - Increased Size for Readability */}
+                <div className="space-y-2">
+                    <h2 className="text-xl md:text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-none">
                         Your team updates tasks. <br />
                         <span className="text-primary/80">You see everything live.</span>
                     </h2>
-                    <p className="text-[13px] md:text-sm max-w-[450px] text-secondary-text leading-snug font-medium italic border-l-2 border-primary/20 pl-5">
+                    <p className="text-sm md:text-base max-w-[500px] text-secondary-text leading-snug font-medium italic border-l-2 border-primary/20 pl-5">
                         Know what's done. What's missed. What's delayed. <br />
                         Across your entire operation.
                     </p>
                 </div>
 
-                {/* 3. The Left Switchboard (Compact Glass) - Tighter Padding */}
+                {/* 3. The Left Switchboard (Compact Glass) */}
                 <div className="p-4 rounded-[1.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl max-w-lg shadow-2xl space-y-3">
                     <div className="space-y-1">
                         <h3 className="text-[9px] font-black text-primary uppercase tracking-[0.2em]">SELECT DEPLOYMENT MODULE:</h3>
