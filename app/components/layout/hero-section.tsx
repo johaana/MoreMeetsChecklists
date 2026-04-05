@@ -17,8 +17,8 @@ const ELITE_INDUSTRIES = [
 ];
 
 export const HeroSection = () => (
-    <section className="relative w-full flex flex-col md:flex-row md:items-center min-h-[calc(100dvh-64px)] md:h-[90vh] overflow-hidden bg-background">
-        {/* Cinematic Visual Layer - Full Color with Heavy-Left Mask */}
+    <section className="relative w-full flex flex-col md:flex-row md:items-center min-h-[calc(100dvh-64px)] md:h-[90vh] overflow-hidden bg-black">
+        {/* Cinematic Visual Layer */}
         <div className="absolute inset-0 z-0 overflow-hidden">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
@@ -28,20 +28,20 @@ export const HeroSection = () => (
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover"
             />
-            {/* Surgical Masking: Deep black on text-side, crystal clear on environment-side */}
-            <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0) 0%,rgba(10,15,25,0.9) 25%,rgba(10,15,25,0.4) 50%,rgba(10,15,25,0) 100%)]" />
+            {/* Surgical Masking: 100% Black on text-side, sharp transition to clear environment */}
+            <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,#000_0%,#000_35%,rgba(0,0,0,0.8)_45%,rgba(0,0,0,0)_70%)]" />
         </div>
 
         {/* Left Command Block */}
         <div className="container px-4 md:px-6 relative z-20 flex flex-col justify-center pt-4 md:pt-6 pb-8">
             <div className="max-w-3xl space-y-4 md:space-y-5">
-                {/* 1. Hook & Payoff - Massive Impact */}
+                {/* 1. Hook & Payoff */}
                 <h1 className="text-[2.2rem] sm:text-6xl md:text-7xl lg:text-[5.2rem] font-black font-headline tracking-tighter !leading-[0.82] text-primary-text uppercase italic">
                     STOP CHASING. <br />
                     <span className="text-primary">START SEEING.</span>
                 </h1>
 
-                {/* 2. Result Clarity (Telemetry) - Tightened Spacing */}
+                {/* 2. Result Clarity */}
                 <div className="space-y-1.5">
                     <h2 className="text-xl md:text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-none">
                         Your team updates tasks. <br />
@@ -53,10 +53,10 @@ export const HeroSection = () => (
                     </p>
                 </div>
 
-                {/* 3. The Left Switchboard (Compact Glass) */}
+                {/* 3. The Left Switchboard */}
                 <div className="p-4 rounded-[1.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl max-w-lg shadow-2xl space-y-3">
-                    <div className="space-y-1">
-                        <h3 className="text-xs font-black text-primary uppercase tracking-[0.2em]">SELECT DEPLOYMENT MODULE:</h3>
+                    <div className="space-y-2">
+                        <h3 className="text-[13px] font-black text-primary uppercase tracking-[0.3em]">SELECT DEPLOYMENT MODULE:</h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1">
                             {ELITE_INDUSTRIES.map(item => (
                                 <Link 
@@ -72,7 +72,7 @@ export const HeroSection = () => (
                     </div>
                 </div>
 
-                {/* 4. Action & Proof - Compressed Flow */}
+                {/* 4. Action & Proof */}
                 <div className="flex flex-col gap-4">
                     <div className="flex flex-wrap gap-x-5 gap-y-1">
                         {[
@@ -93,7 +93,7 @@ export const HeroSection = () => (
                                 GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 transition-transform group-hover:translate-x-1" />
                             </Link>
                         </Button>
-                        <p className="text-xs md:text-sm text-secondary-text italic font-bold leading-tight uppercase tracking-[0.15em] border-l border-primary/30 pl-4">
+                        <p className="text-[11px] md:text-xs text-secondary-text/70 italic font-bold leading-tight uppercase tracking-[0.15em] border-l border-primary/30 pl-4">
                             NO LEARNING CURVE. <br /> WORKS ON EXCEL / SHEETS.
                         </p>
                     </div>
