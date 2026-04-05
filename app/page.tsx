@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -21,9 +22,11 @@ import {
     Lock,
     Users,
     ClipboardCheck,
-    Target
+    Target,
+    MousePointer2,
+    BarChart3
 } from "lucide-react";
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { cn } from "@/lib/utils";
 import { TestimonialsSection } from "@/components/layout/testimonials-section";
 import { FaqSection } from "@/components/layout/faq-section";
@@ -48,7 +51,7 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 
 const HeroSection = () => {
     return (
-        <section className="relative w-full flex flex-col items-center h-[calc(100dvh-64px)] md:h-[calc(100vh-64px)] md:min-h-[700px] overflow-hidden bg-background">
+        <section className="relative w-full flex flex-col items-center h-[calc(100dvh-64px)] md:h-[calc(100vh-64px)] md:min-h-[750px] overflow-hidden bg-background">
             {/* Visual Brand Layer */}
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <video
@@ -75,12 +78,12 @@ const HeroSection = () => {
                     
                     <div className="space-y-4">
                         <p className="text-xl md:text-3xl font-black text-primary-text uppercase italic tracking-tighter leading-tight max-w-2xl">
-                            KNOW WHAT’S DONE. WHAT’S MISSED. WHAT’S DELAYED. <br />
-                            <span className="text-white/40">ACROSS YOUR ENTIRE OPERATION.</span>
+                            YOUR TEAM UPDATES TASKS. <br />
+                            <span className="text-primary">YOU SEE EVERYTHING LIVE.</span>
                         </p>
                         
-                        <p className="text-sm md:text-xl font-bold text-primary uppercase tracking-widest italic border-l-4 border-primary pl-6">
-                            THIS RUNS YOUR DAILY OPERATIONS.
+                        <p className="text-sm md:text-lg font-bold text-white/40 uppercase tracking-widest italic border-l-4 border-white/10 pl-6">
+                            ACROSS YOUR ENTIRE OPERATION.
                         </p>
                     </div>
 
@@ -92,7 +95,7 @@ const HeroSection = () => {
                             <div className="pt-2">
                                 <Button size="lg" asChild className="group h-16 px-10 rounded-xl shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-base tracking-widest border-none">
                                     <Link href="/library">
-                                        DEPLOY YOUR SYSTEM: $9
+                                        DEPLOY YOUR SYSTEM: ₹999
                                         <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
                                     </Link>
                                 </Button>
@@ -110,10 +113,10 @@ const HeroSection = () => {
                             </p>
                             <div className="pt-2 border-t border-white/5 space-y-2">
                                 <p className="text-[9px] font-black text-white/20 uppercase tracking-widest flex items-center gap-2">
-                                    <FileSpreadsheet className="w-3 h-3" /> RUNS ON EXCEL / GOOGLE SHEETS
+                                    <FileSpreadsheet className="w-3 h-3" /> WORKS ON EXCEL / GOOGLE SHEETS
                                 </p>
                                 <p className="text-[9px] font-black text-white/20 uppercase tracking-widest flex items-center gap-2">
-                                    <Lock className="w-3 h-3" /> OWN YOUR SYSTEM. NO LOGINS. NO SUBSCRIPTIONS.
+                                    <Lock className="w-3 h-3" /> NO NEW APPS. NO SUBSCRIPTIONS.
                                 </p>
                             </div>
                         </div>
@@ -124,67 +127,62 @@ const HeroSection = () => {
     );
 };
 
-const WhatIsThisSection = () => (
+const RealLifeSection = () => (
     <Section className="bg-black border-y border-white/5">
-        <div className="max-w-4xl mx-auto text-center space-y-12">
-            <div className="space-y-4">
-                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">The Control Layer</Badge>
-                <SectionHeadline>THIS IS NOT SOFTWARE.</SectionHeadline>
-                <SectionHeadline className="text-primary -mt-4">THIS IS YOUR CONTROL LAYER.</SectionHeadline>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-12 text-left">
-                <div className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 space-y-6">
-                    <p className="text-xl md:text-2xl font-black text-primary-text uppercase italic leading-tight">
-                        Your team works <br /> on the floor.
-                    </p>
-                    <p className="text-secondary-text italic font-medium">The Sovereign Engine converts daily floor activity into structured metadata. You see reality as it happens.</p>
-                </div>
-                <div className="p-10 rounded-[2.5rem] bg-primary/5 border border-primary/20 space-y-6 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 p-6 opacity-10"><Eye className="w-20 h-20 text-primary" /></div>
-                    <p className="text-xl md:text-2xl font-black text-primary uppercase italic leading-tight">
-                        This system shows <br /> you reality.
-                    </p>
-                    <ul className="space-y-2 text-sm text-primary-text font-bold uppercase italic">
-                        <li className="flex items-center gap-2"><Check className="w-4 h-4" /> Live Visibility</li>
-                        <li className="flex items-center gap-2"><Check className="w-4 h-4" /> Without Calls</li>
-                        <li className="flex items-center gap-2"><Check className="w-4 h-4" /> Without Reports</li>
-                        <li className="flex items-center gap-2"><Check className="w-4 h-4" /> Without People dependency</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </Section>
-);
-
-const DeploymentSection = () => (
-    <Section className="bg-alternate-background border-y border-white/5">
         <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-20 space-y-4">
-                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Rapid Integration</Badge>
-                <SectionHeadline>DEPLOY IN MINUTES</SectionHeadline>
+            <div className="text-center mb-16 space-y-4">
+                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.3em] font-black text-[10px]">Real-World Deployment</Badge>
+                <SectionHeadline>HOW IT WORKS IN REAL LIFE</SectionHeadline>
             </div>
             
-            <div className="grid md:grid-cols-5 gap-4">
+            <div className="grid md:grid-cols-4 gap-8">
                 {[
-                    { s: "01", t: "DOWNLOAD", d: "Instant access to the master build." },
-                    { s: "02", t: "OPEN", d: "Use Google Sheets or Excel. No setup." },
-                    { s: "03", t: "ASSIGN", d: "Add your branches and team. Define roles." },
-                    { s: "04", t: "START", d: "Operations begin. Tasks are already built." },
-                    { s: "05", t: "SEE", d: "Everything updates automatically." }
-                ].map((step, i) => (
-                    <div key={step.s} className="p-8 rounded-3xl bg-black/40 border border-white/5 flex flex-col gap-4 group hover:border-primary/20 transition-all">
-                        <span className="text-4xl font-black text-primary/10 group-hover:text-primary/20 transition-colors">{step.s}</span>
+                    { s: "01", t: "TEAM OPENS SHEET", d: "Your staff opens the shared link on their mobile or desktop.", i: MousePointer2 },
+                    { s: "02", t: "THEY MARK AS DONE", d: "As tasks are finished, they type their name. Status turns GREEN.", i: Check },
+                    { s: "03", t: "LOGBOOK UPDATES", d: "The operational ledger syncs instantly across all branches.", i: FileSpreadsheet },
+                    { s: "04", t: "YOU SEE REALITY", d: "Open the dashboard to see what's done, missed, or weak.", i: BarChart3 }
+                ].map((step) => (
+                    <div key={step.s} className="space-y-4 p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 relative group hover:border-primary/20 transition-all">
+                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
+                            <step.i className="w-6 h-6" />
+                        </div>
                         <h4 className="font-black text-primary-text uppercase italic text-sm tracking-widest">{step.t}</h4>
                         <p className="text-xs text-secondary-text font-medium italic leading-relaxed">{step.d}</p>
                     </div>
                 ))}
             </div>
+        </div>
+    </Section>
+);
 
-            <div className="mt-16 flex flex-col md:flex-row justify-center items-center gap-8">
-                <p className="text-sm font-black text-white/20 uppercase tracking-[0.3em] italic">NO TRAINING REQUIRED.</p>
-                <div className="w-2 h-2 rounded-full bg-white/10 hidden md:block" />
-                <p className="text-sm font-black text-white/20 uppercase tracking-[0.3em] italic">NO IMPLEMENTATION DELAY.</p>
+const WhatIsThisSection = () => (
+    <Section className="bg-alternate-background">
+        <div className="max-w-4xl mx-auto text-center space-y-12">
+            <div className="space-y-4">
+                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">The Operational Engine</Badge>
+                <SectionHeadline>THIS IS NOT AN APP.</SectionHeadline>
+                <SectionHeadline className="text-primary -mt-4">THIS IS HOW YOUR BUSINESS RUNS.</SectionHeadline>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-12 text-left">
+                <div className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 space-y-6">
+                    <p className="text-xl md:text-2xl font-black text-primary-text uppercase italic leading-tight">
+                        No new software. <br /> No learning curve.
+                    </p>
+                    <p className="text-secondary-text italic font-medium">Built on the Excel/Sheets framework your team already knows. Deployment is instant because the interface is universal.</p>
+                </div>
+                <div className="p-10 rounded-[2.5rem] bg-primary/5 border border-primary/20 space-y-6 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-6 opacity-10"><Eye className="w-20 h-20 text-primary" /></div>
+                    <p className="text-xl md:text-2xl font-black text-primary uppercase italic leading-tight">
+                        See your empire <br /> from anywhere.
+                    </p>
+                    <ul className="space-y-2 text-sm text-primary-text font-bold uppercase italic">
+                        <li className="flex items-center gap-2"><Check className="w-4 h-4" /> Live Unit Progress</li>
+                        <li className="flex items-center gap-2"><Check className="w-4 h-4" /> Weak Branch Alerts</li>
+                        <li className="flex items-center gap-2"><Check className="w-4 h-4" /> Critical Risk Detection</li>
+                        <li className="flex items-center gap-2"><Check className="w-4 h-4" /> Zero People Dependency</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </Section>
@@ -195,10 +193,10 @@ const LiveControlSection = () => (
         <div className="grid lg:grid-cols-2 gap-20 items-center max-w-7xl mx-auto">
             <div className="space-y-10">
                 <div className="space-y-6">
-                    <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.3em] font-black text-[10px]">Real-Time Telemetry</Badge>
-                    <SectionHeadline>SEE YOUR BUSINESS LIVE</SectionHeadline>
+                    <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.3em] font-black text-[10px]">Real-Time Intelligence</Badge>
+                    <SectionHeadline>USED DAILY BY <br /> OPERATIONS TEAMS</SectionHeadline>
                     <p className="text-xl text-secondary-text font-medium italic border-l-2 border-primary/20 pl-8 leading-relaxed">
-                        The dashboard is the pulse of your empire. You know the score before the shift ends.
+                        Not a template. Not a report. <br /> A working system.
                     </p>
                 </div>
                 <div className="grid grid-cols-2 gap-6">
@@ -215,9 +213,9 @@ const LiveControlSection = () => (
                     ))}
                 </div>
                 <div className="space-y-2 pt-4">
-                    <p className="text-xs font-black text-white/30 uppercase tracking-widest flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> NO REPORTS.</p>
-                    <p className="text-xs font-black text-white/30 uppercase tracking-widest flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> NO CALLS.</p>
-                    <p className="text-xs font-black text-white/30 uppercase tracking-widest flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> NO FOLLOW-UPS.</p>
+                    <p className="text-xs font-black text-white/30 uppercase tracking-widest flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> 100% AUDIT-READY EVIDENCE.</p>
+                    <p className="text-xs font-black text-white/30 uppercase tracking-widest flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> ZERO SAAS LOCK-IN.</p>
+                    <p className="text-xs font-black text-white/30 uppercase tracking-widest flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> ONE-TIME ASSET PURCHASE.</p>
                 </div>
             </div>
             
@@ -228,7 +226,7 @@ const LiveControlSection = () => (
                         <div className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
                         <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/40" />
                         <div className="w-2.5 h-2.5 rounded-full bg-green-500/40" />
-                        <span className="text-[10px] font-black uppercase text-white/20 tracking-widest ml-4 italic">Sovereign_OS_v9.7.xlsx</span>
+                        <span className="text-[10px] font-black uppercase text-white/20 tracking-widest ml-4 italic">Sovereign_OS_v11.9.xlsx</span>
                     </div>
                     <img 
                         src="https://i.postimg.cc/YSQcfhnQ/Screenshot-2026-04-02-165428.png" 
@@ -247,17 +245,16 @@ const SystemizedExecutionSection = () => (
             <div className="absolute top-0 right-0 p-10 opacity-5 rotate-12"><Database className="w-64 h-64 text-primary" /></div>
             
             <div className="text-center space-y-6 relative z-10">
-                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.3em] font-black text-[10px]">The Structural Moat</Badge>
-                <SectionHeadline>EVERY TASK HAS CONTEXT.</SectionHeadline>
-                <SectionHeadline className="text-primary -mt-6">NOT JUST CHECKBOXES.</SectionHeadline>
-                <p className="text-lg text-secondary-text italic font-medium max-w-2xl mx-auto">Systems are built on pedagogy, not just reminders. Each technical mission includes:</p>
+                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.3em] font-black text-[10px]">Intentional Compliance</Badge>
+                <SectionHeadline>WHY YOUR TEAM WILL <br /> ACTUALLY FOLLOW IT</SectionHeadline>
+                <p className="text-lg text-secondary-text italic font-medium max-w-2xl mx-auto">We replace "mechanical ticking" with intentional execution. Every task includes:</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-12 relative z-10 text-center">
                 {[
-                    { t: "WHAT TO DO", d: "Clear technical requirements mapped to global standards.", i: Target },
-                    { t: "HOW TO DO IT", d: "Trainer Notes for on-the-job coaching. No shadowing needed.", i: GraduationCap },
-                    { t: "WHY IT MATTERS", d: "Consequences of failure to ensure intentional compliance.", i: AlertTriangle }
+                    { t: "WHAT TO DO", d: "Clear instruction mapped to audit standards.", i: Target },
+                    { t: "HOW TO DO IT", d: "Trainer Notes for on-the-job coaching. No seniors needed.", i: GraduationCap },
+                    { t: "WHY IT MATTERS", d: "Consequences of failure to ensure focus.", i: AlertTriangle }
                 ].map(item => (
                     <div key={item.t} className="space-y-4">
                         <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto"><item.i className="w-6 h-6 text-primary" /></div>
@@ -268,173 +265,9 @@ const SystemizedExecutionSection = () => (
             </div>
 
             <div className="pt-12 border-t border-white/5 text-center relative z-10 flex flex-col md:flex-row justify-center gap-8 md:gap-16">
-                <p className="text-xs font-black text-white/30 uppercase tracking-widest italic">NO CONFUSION.</p>
                 <p className="text-xs font-black text-white/30 uppercase tracking-widest italic">NO INTERPRETATION.</p>
-                <p className="text-xs font-black text-white/30 uppercase tracking-widest italic">NO DEPENDENCY ON HEROES.</p>
-            </div>
-        </div>
-    </Section>
-);
-
-const EngineSection = () => (
-    <Section className="bg-black">
-        <div className="max-w-6xl mx-auto space-y-20">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-6">
-                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Universal Architecture</Badge>
-                    <SectionHeadline>ONE ENGINE. <br /> <span className="text-primary">MULTIPLE INDUSTRIES.</span></SectionHeadline>
-                    <p className="text-lg text-secondary-text italic font-medium leading-relaxed">
-                        The same Sovereign control system runs everything. You simply choose the technical payload for your industry.
-                    </p>
-                </div>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    {[
-                        "Restaurant", "Hotel", "Hospital", "Facility", "Cinema", "Franchise"
-                    ].map(industry => (
-                        <div key={industry} className="p-4 rounded-xl border border-white/5 bg-white/[0.02] text-center group hover:border-primary/30 transition-all">
-                            <p className="text-[10px] font-black text-primary-text uppercase tracking-widest group-hover:text-primary">{industry}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            <div className="p-10 md:p-16 rounded-[3rem] bg-primary/5 border border-primary/20 space-y-8">
-                <h3 className="text-xl font-black text-primary uppercase italic">EACH PACK COMES PRE-LOADED WITH:</h3>
-                <div className="grid md:grid-cols-4 gap-8">
-                    {[
-                        { t: "Daily Tasks", d: "Zero-fail hygiene & opening missions." },
-                        { t: "Weekly Systems", d: "Deep-cleaning & mechanical audits." },
-                        { t: "Monthly Protocols", d: "Licensing & statutory filings." },
-                        { t: "Audit Structures", d: "Evidence logs for external inspectors." }
-                    ].map(item => (
-                        <div key={item.t} className="space-y-2">
-                            <p className="font-black text-primary-text uppercase italic text-sm">{item.t}</p>
-                            <p className="text-xs text-secondary-text font-medium italic leading-relaxed">{item.d}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    </Section>
-);
-
-const FlexibleOpsSection = () => (
-    <Section className="bg-alternate-background border-y border-white/5">
-        <div className="grid lg:grid-cols-2 gap-20 items-center max-w-7xl mx-auto">
-            <div className="order-2 lg:order-1">
-                <div className="relative p-10 rounded-[3rem] bg-black border border-white/10 shadow-2xl overflow-hidden group">
-                    <div className="absolute top-0 right-0 p-8 opacity-5"><Users className="w-40 h-40 text-primary" /></div>
-                    <div className="space-y-8 relative z-10">
-                        <div className="p-6 rounded-2xl bg-primary/10 border border-primary/20">
-                            <p className="text-xs font-black text-primary uppercase tracking-widest mb-4">RE-MAPPING REALITY:</p>
-                            <div className="space-y-4">
-                                <div className="flex justify-between items-center text-[10px] font-black text-white/40 uppercase tracking-widest">
-                                    <span>Staff Member: Imran</span>
-                                    <span className="text-primary">Multi-Role Active</span>
-                                </div>
-                                <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
-                                    <div className="h-full w-full bg-primary animate-shimmer" />
-                                </div>
-                                <p className="text-xs font-bold text-primary-text italic">Owner of: General Manager + Finance Head + EHS Officer</p>
-                            </div>
-                        </div>
-                        <p className="text-sm text-secondary-text font-medium italic leading-relaxed">
-                            Unlike rigid software, MoreMeets reflects real-world teams. One person can handle multiple roles. One role can be reassigned instantly.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <div className="space-y-10 order-1 lg:order-2">
-                <div className="space-y-6">
-                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Personnel Agility</Badge>
-                    <SectionHeadline>BUILT FOR REAL TEAMS</SectionHeadline>
-                    <p className="text-xl text-secondary-text font-medium italic leading-relaxed border-l-2 border-primary/20 pl-8">
-                        No rigidity. No dependency on specific people. The mission belongs to the role, not the individual.
-                    </p>
-                </div>
-                <div className="space-y-4">
-                    <div className="flex items-center gap-4 text-primary-text font-bold italic">
-                        <div className="w-2 h-2 rounded-full bg-primary" /> Re-map responsibilities in 2 seconds.
-                    </div>
-                    <div className="flex items-center gap-4 text-primary-text font-bold italic">
-                        <div className="w-2 h-2 rounded-full bg-primary" /> Handle personnel gaps without system collapse.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </Section>
-);
-
-const WhyThisWorksSection = () => (
-    <Section className="bg-black">
-        <div className="max-w-4xl mx-auto text-center space-y-16">
-            <div className="space-y-4">
-                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.3em] font-black text-[10px]">The Cognitive Shield</Badge>
-                <SectionHeadline>SYSTEMS DON'T FORGET.</SectionHeadline>
-                <SectionHeadline className="text-primary -mt-6">PEOPLE DO.</SectionHeadline>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-12">
-                <div className="space-y-4">
-                    <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center mx-auto text-red-500 font-black">X</div>
-                    <h4 className="font-black text-white/40 uppercase italic text-sm">REMOVES:</h4>
-                    <ul className="text-xs text-secondary-text italic space-y-2">
-                        <li>Memory failure</li>
-                        <li>Follow-ups</li>
-                        <li>Person dependency</li>
-                    </ul>
-                </div>
-                <div className="md:col-span-2 flex flex-col justify-center bg-primary/5 border border-primary/20 p-10 rounded-[2.5rem] space-y-4">
-                    <h4 className="font-black text-primary uppercase italic text-sm">REPLACES THEM WITH:</h4>
-                    <div className="grid grid-cols-3 gap-4">
-                        <div className="space-y-1">
-                            <p className="text-xl font-black text-primary-text italic">Structure</p>
-                            <p className="text-[10px] text-white/20 uppercase font-black">Protocol-based</p>
-                        </div>
-                        <div className="space-y-1">
-                            <p className="text-xl font-black text-primary-text italic">Visibility</p>
-                            <p className="text-[10px] text-white/20 uppercase font-black">Live Data</p>
-                        </div>
-                        <div className="space-y-1">
-                            <p className="text-xl font-black text-primary-text italic">Audit-Ready</p>
-                            <p className="text-[10px] text-white/20 uppercase font-black">Legal Defense</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </Section>
-);
-
-const NoSaaSSection = () => (
-    <Section className="bg-alternate-background border-y border-white/5">
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
-            <div className="space-y-8">
-                <div className="space-y-4">
-                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Technological Freedom</Badge>
-                    <SectionHeadline>NO LOGINS. <br /> NO SUBSCRIPTIONS. <br /> NO LOCK-IN.</SectionHeadline>
-                </div>
-                <p className="text-lg text-secondary-text font-medium italic border-l-2 border-primary/20 pl-8">
-                    You own the system. Forever. It runs on the software you already have and trust.
-                </p>
-                <ul className="space-y-4">
-                    {[
-                        { t: "Excel / Google Sheets", i: FileSpreadsheet },
-                        { t: "100% Private Data", i: Lock },
-                        { t: "Offline Capable", i: Globe },
-                        { t: "One-time Payment", i: History }
-                    ].map(item => (
-                        <li key={item.t} className="flex items-center gap-4 text-primary-text font-black uppercase italic text-sm tracking-tight">
-                            <item.i className="w-5 h-5 text-primary" /> {item.t}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-            <div className="p-12 md:p-20 rounded-[3rem] bg-black border border-white/5 flex flex-col items-center justify-center text-center space-y-6 shadow-2xl">
-                <div className="w-20 h-20 rounded-3xl bg-primary/10 flex items-center justify-center"><Lock className="w-10 h-10 text-primary" /></div>
-                <p className="text-2xl font-black text-primary-text uppercase italic leading-tight">Your data belongs <br /> to you.</p>
-                <p className="text-xs text-white/20 uppercase font-black tracking-widest">NO CLOUD DEPENDENCY • NO MONTHLY BILLS</p>
+                <p className="text-xs font-black text-white/30 uppercase tracking-widest italic">NO EXCUSES.</p>
+                <p className="text-xs font-black text-white/30 uppercase tracking-widest italic">NO HERO DEPENDENCY.</p>
             </div>
         </div>
     </Section>
@@ -476,14 +309,10 @@ export default function Home() {
       <SiteHeader />
       <main className="flex-1">
         <HeroSection />
+        <RealLifeSection />
         <WhatIsThisSection />
-        <DeploymentSection />
         <LiveControlSection />
         <SystemizedExecutionSection />
-        <EngineSection />
-        <FlexibleOpsSection />
-        <WhyThisWorksSection />
-        <NoSaaSSection />
         <RiskSection />
         
         <TestimonialsSection />
@@ -500,7 +329,7 @@ export default function Home() {
                 <div className="flex flex-col items-center gap-10">
                     <Button size="lg" asChild className="group h-24 px-16 rounded-[2rem] bg-primary text-black font-black uppercase text-2xl shadow-[0_0_60px_-10px_rgba(46,184,107,0.6)] hover:scale-105 active:scale-95 transition-all border-none">
                         <Link href="/library" className="flex items-center">
-                            DEPLOY YOUR OPERATING SYSTEM: $9 <ArrowRight className="ml-4 h-8 w-8" />
+                            DEPLOY YOUR OPERATING SYSTEM: ₹999 <ArrowRight className="ml-4 h-8 w-8" />
                         </Link>
                     </Button>
                     <p className="text-xl md:text-2xl font-black text-primary-text uppercase italic tracking-tighter">

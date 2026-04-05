@@ -59,7 +59,7 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => (
         <CardFooter>
             <Button asChild className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-black font-black uppercase italic text-xs tracking-widest transition-all border-none" variant="secondary">
                 <Link href={`/packs/${pack.id}`}>
-                    Deploy This System: Just $9 <ArrowRight className="ml-2 h-4 w-4" />
+                    Deploy This System: ₹999 <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
             </Button>
         </CardFooter>

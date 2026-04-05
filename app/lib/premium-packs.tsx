@@ -1,6 +1,7 @@
 
+'use client';
+
 import { allPacks } from "./packs/all_packs";
-import { master_access_pack } from "./packs/master_access_pack";
 
 export type Checklist = {
     title: string;
@@ -56,6 +57,5 @@ export type PremiumPack = {
 }
 
 export const premiumPacks: PremiumPack[] = [
-    ...allPacks,
-    master_access_pack,
+    ...allPacks.filter(p => p.id !== 'master_access'),
 ];

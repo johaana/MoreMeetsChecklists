@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -196,7 +197,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </div>
                             
                             <div className="w-full flex flex-col items-center gap-4">
-                                <Badge variant="outline" className="text-accent border-accent/30 text-accent uppercase tracking-[0.2em] rounded-none px-4 py-1">V4.5 SOVEREIGN LAUNCH OFFER • 90% OFF</Badge>
+                                <Badge variant="outline" className="text-accent border-accent/30 text-accent uppercase tracking-[0.2em] rounded-none px-4 py-1">V11.9 SOVEREIGN LAUNCH OFFER • 90% OFF</Badge>
                                 <h2 className="text-[1.3rem] sm:text-3xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-[1.1]">
                                     ELIMINATE OPERATIONAL RISK
                                 </h2>
@@ -237,7 +238,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         <div className="text-left">
                                             <p className="text-[10px] font-black uppercase text-primary">Your Investment</p>
                                             <p className="text-2xl font-black text-primary-text italic">
-                                                {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                                                {region === 'INDIA' ? `₹999` : `$12`}
                                             </p>
                                         </div>
                                     </div>
