@@ -91,7 +91,7 @@ export const HeroSection = () => (
                         <Button size="lg" asChild className="group h-14 md:h-16 px-8 md:px-10 rounded-xl bg-primary text-black hover:brightness-110 shadow-[0_0_30px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 border-none">
                             <Link href="/library" className="flex flex-col items-center leading-none gap-0.5">
                                 <span className="font-black uppercase italic text-sm md:text-base tracking-widest flex items-center">
-                                    DEPLOY YOUR SYSTEM: ₹999 <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 transition-transform group-hover:translate-x-1" />
+                                    GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 transition-transform group-hover:translate-x-1" />
                                 </span>
                                 <span className="text-[8px] font-bold opacity-60">~ ₹1,999 ~ LAUNCH DEPLOYMENT OFFER</span>
                             </Link>

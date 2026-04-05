@@ -21,10 +21,7 @@ import {
     TrendingUp,
     Settings2,
     BookOpen,
-    Target,
-    Layers,
-    Database,
-    ShieldAlert
+    Target
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
