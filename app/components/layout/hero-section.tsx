@@ -44,8 +44,8 @@ export const HeroSection = () => (
                 {/* 2. Result Clarity */}
                 <div className="space-y-1.5">
                     <h2 className="text-xl md:text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-none">
-                        Your team updates tasks. <br />
-                        <span className="text-primary">You see everything live.</span>
+                        Your team marks tasks. <br />
+                        <span className="text-primary">You see everything without asking.</span>
                     </h2>
                     <p className="text-base md:text-lg max-w-[500px] text-secondary-text leading-snug font-medium italic border-l-2 border-primary/20 pl-5">
                         Know what's done. What's missed. What's delayed. <br />
@@ -94,7 +94,7 @@ export const HeroSection = () => (
                             </Link>
                         </Button>
                         <p className="text-[11px] md:text-xs text-secondary-text/70 italic font-bold leading-tight uppercase tracking-[0.15em] border-l border-primary/30 pl-4">
-                            NO LEARNING CURVE. <br /> WORKS ON EXCEL / SHEETS.
+                            NO LEARNING CURVE. <br /> RUNS ON EXCEL / GOOGLE SHEETS.
                         </p>
                     </div>
                 </div>
