@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -86,7 +87,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const hasINR = !!(pack.paymentId && pack.paymentId.length > 0 && pack.priceINR >= 0);
     const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
     
-    const [region, setRegion] = React.useState<'GLOBAL' | 'INDIA'>(hasUSD ? 'GLOBAL' : 'INDIA');
+    // DEFAULT TO INDIA FOR PRIMARY TRAFFIC
+    const [region, setRegion] = React.useState<'GLOBAL' | 'INDIA'>('INDIA');
     
     const totalChecklists = pack.checklists?.length || 0;
     const totalTasks = pack.checklists?.reduce((acc, c) => acc + c.tasks.length, 0) || 0;
@@ -166,7 +168,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </div>
                             
                             <div className="w-full flex flex-col items-center gap-4">
-                                <Badge variant="outline" className="text-accent border-accent/30 text-accent uppercase tracking-[0.2em] rounded-none px-4 py-1">V11.9 SOVEREIGN LAUNCH OFFER</Badge>
+                                <Badge variant="outline" className="text-accent border-accent/30 text-accent uppercase tracking-[0.2em] rounded-none px-4 py-1">SOVEREIGN V11.9 ACCESS</Badge>
                                 <h2 className="text-[1.3rem] sm:text-3xl md:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-[1.1]">
                                     ELIMINATE OPERATIONAL RISK
                                 </h2>
@@ -198,14 +200,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <div className="space-y-2 mb-8">
                                     <div className="flex items-center justify-center gap-4 mb-4">
                                         <div className="text-left">
-                                            <p className="text-[10px] font-black uppercase text-white/20">Professional Grade</p>
+                                            <p className="text-[10px] font-black uppercase text-white/20">Institutional Rate</p>
                                             <p className="text-sm font-bold text-white/40 line-through">
                                                 {region === 'INDIA' ? '₹1,999' : '$25'}
                                             </p>
                                         </div>
                                         <div className="w-px h-8 bg-white/5" />
                                         <div className="text-left">
-                                            <p className="text-[10px] font-black uppercase text-primary">Deployment Offer</p>
+                                            <p className="text-[10px] font-black uppercase text-primary">Deployment Price</p>
                                             <p className="text-2xl font-black text-primary-text italic">
                                                 {region === 'INDIA' ? `₹999` : `$12`}
                                             </p>
@@ -213,7 +215,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </div>
                                     
                                     <p className="text-sm font-bold text-accent italic">
-                                        Launch pricing valid for early deployments only.
+                                        Pricing valid for current deployment window.
                                     </p>
                                 </div>
 
@@ -234,7 +236,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                                 className="w-full h-14 bg-primary text-black font-black text-base rounded-[10px] shadow-md hover:shadow-xl hover:brightness-105 transition-all border-none relative z-10 px-8"
                                             >
                                                 <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center justify-center">
-                                                    DEPLOY YOUR SYSTEM: ${pack.priceUSD} <ArrowRight className="ml-2 h-5 w-5"/>
+                                                    DEPLOY SYSTEM: ${pack.priceUSD} <ArrowRight className="ml-2 h-5 w-5"/>
                                                 </Link>
                                             </Button>
                                         )}
