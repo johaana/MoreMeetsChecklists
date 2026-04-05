@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronRight, Lock, Zap, Check } from "lucide-react";
+import { ArrowRight, ChevronRight, Lock, Zap, ShieldCheck } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
 
@@ -78,10 +78,10 @@ export const HeroSection = () => (
                         {[
                             { t: "NO APPS / NO SAAS", i: Lock },
                             { t: "OWN FOREVER", i: Zap },
-                            { t: "LIVE IN MINUTES", i: Check }
+                            { t: "AUDIT READY", i: ShieldCheck }
                         ].map(point => (
                             <div key={point.t} className="flex items-center gap-1.5">
-                                <point.i className="w-2.5 h-2.5 text-primary" />
+                                <point.i className="w-3 h-3 text-primary" />
                                 <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{point.t}</span>
                             </div>
                         ))}
