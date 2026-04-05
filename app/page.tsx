@@ -27,7 +27,8 @@ import {
     Download,
     Building2,
     UserCheck,
-    Search
+    Search,
+    ChevronRight
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -54,7 +55,7 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 
 const HeroSection = () => {
     return (
-        <section className="relative w-full flex flex-col items-center h-[calc(100dvh-64px)] md:h-[calc(100vh-64px)] md:min-h-[850px] overflow-hidden bg-background">
+        <section className="relative w-full flex flex-col items-center justify-center min-h-[calc(100dvh-64px)] md:min-h-[850px] overflow-hidden bg-background">
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <video
                     src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
@@ -62,74 +63,97 @@ const HeroSection = () => {
                     loop
                     muted
                     playsInline
-                    className="absolute inset-0 w-full h-full object-cover contrast-[1.1] opacity-60"
+                    className="absolute inset-0 w-full h-full object-cover contrast-[1.1] opacity-40 md:opacity-60"
                 />
                 <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.98)_25%,rgba(10,15,25,0.85)_50%,rgba(10,15,25,0.2)_85%,rgba(10,15,25,0.05)_100%)]" />
             </div>
 
-            <div className="container px-4 md:px-6 relative z-20 flex-1 flex flex-col justify-center">
-                <div className="max-w-4xl space-y-6 md:space-y-8 text-left">
-                    <div className="space-y-2">
-                        <p className="text-primary font-black uppercase tracking-[0.4em] text-xs md:text-sm italic">MoreMeets™ Sovereign Operating System</p>
-                        <h1 className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black font-headline tracking-tighter !leading-[0.9] text-primary-text drop-shadow-2xl uppercase italic">
+            <div className="container px-4 md:px-6 relative z-20 flex flex-col md:flex-row items-center gap-12 py-12 md:py-0">
+                {/* LEFT SIDE: EMOTIONAL HOOK & COMMAND */}
+                <div className="max-w-3xl space-y-6 md:space-y-8 text-left flex-1">
+                    <div className="space-y-1">
+                        <p className="text-primary/60 font-black uppercase tracking-[0.3em] text-[10px] md:text-xs italic mb-2">MoreMeets™ Sovereign Operating System</p>
+                        <h1 className="text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[6rem] font-black font-headline tracking-tighter !leading-[0.85] text-primary-text drop-shadow-2xl uppercase italic">
                             STOP CHASING. <br />
-                            <span className="text-primary">START SEEING.</span>
+                            <span className="text-primary text-[1.1em]">START SEEING.</span>
                         </h1>
                     </div>
                     
-                    <div className="space-y-4">
-                        <p className="text-xl md:text-3xl font-black text-primary-text uppercase italic tracking-tighter leading-tight max-w-2xl">
+                    <div className="space-y-2">
+                        <p className="text-lg md:text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-none">
                             YOUR TEAM UPDATES TASKS. <br />
                             <span className="text-primary">YOU SEE EVERYTHING LIVE.</span>
                         </p>
                         
-                        <div className="flex flex-col gap-1 border-l-4 border-white/10 pl-6">
-                            <p className="text-sm md:text-xl font-bold text-white/60 uppercase tracking-widest italic">
+                        <div className="flex flex-col gap-0.5 border-l-2 border-white/10 pl-6 mt-4">
+                            <p className="text-xs md:text-lg font-bold text-white/40 uppercase tracking-widest italic leading-tight">
                                 KNOW WHAT'S DONE. WHAT'S MISSED. WHAT'S DELAYED.
                             </p>
-                            <p className="text-[10px] md:text-sm font-black text-primary uppercase tracking-[0.2em]">ACROSS YOUR ENTIRE OPERATION.</p>
+                            <p className="text-[9px] md:text-xs font-black text-primary/60 uppercase tracking-[0.2em]">ACROSS YOUR ENTIRE OPERATION</p>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                        <div className="space-y-4">
-                            <p className="text-secondary-text text-sm md:text-lg font-medium leading-relaxed italic">
-                                WITHOUT FOLLOW-UPS. WITHOUT REPORTING CHAOS. WITHOUT SOFTWARE DEPENDENCE.
-                            </p>
+                    <div className="flex flex-col gap-6 items-start">
+                        <div className="space-y-4 w-full">
                             <div className="pt-2">
-                                <div className="flex items-center gap-4 mb-4">
-                                    <div className="flex flex-col">
-                                        <span className="text-[10px] font-black text-white/20 uppercase tracking-widest line-through">Professional Grade: ₹1,999</span>
-                                        <span className="text-primary font-black text-xs uppercase tracking-widest italic">Launch Deployment Offer</span>
-                                    </div>
-                                </div>
-                                <Button size="lg" asChild className="group h-16 px-10 rounded-xl shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 bg-primary text-black hover:brightness-95 font-black uppercase text-base tracking-widest border-none">
-                                    <Link href="/library">
-                                        DEPLOY YOUR SYSTEM: ₹999
-                                        <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
+                                <Button size="lg" asChild className="group h-20 md:h-24 w-full sm:w-auto px-10 md:px-12 rounded-2xl shadow-[0_0_50px_-10px_rgba(46,184,107,0.4)] transition-all active:scale-95 bg-primary text-black hover:brightness-105 border-none">
+                                    <Link href="/library" className="flex flex-col items-center justify-center gap-0.5">
+                                        <div className="flex items-center font-black uppercase text-lg md:text-xl tracking-widest">
+                                            DEPLOY YOUR SYSTEM: ₹999
+                                            <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
+                                        </div>
+                                        <div className="flex items-center gap-2 text-[10px] md:text-xs font-bold opacity-70">
+                                            <span className="line-through">Professional Grade: ₹1,999</span>
+                                            <span className="uppercase tracking-widest italic">Launch Offer</span>
+                                        </div>
                                     </Link>
                                 </Button>
-                                <p className="text-[9px] font-black uppercase text-accent mt-4 tracking-[0.2em] italic">
-                                    LIVE IN MINUTES. OWN IT FOREVER.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="hidden md:flex flex-col gap-4 p-6 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-md">
-                            <p className="text-[10px] font-black text-primary uppercase tracking-widest">WORKS ON EXCEL / GOOGLE SHEETS:</p>
-                            <p className="text-xs font-bold text-primary-text leading-relaxed tracking-tight uppercase italic">
-                                NO NEW APPS. NO LOGINS. NO SUBSCRIPTIONS.
-                            </p>
-                            <div className="pt-2 border-t border-white/5 space-y-2">
-                                <p className="text-[9px] font-black text-white/20 uppercase tracking-widest flex items-center gap-2">
-                                    <FileSpreadsheet className="w-3 h-3" /> UNIVERSAL ACCESS
-                                </p>
-                                <p className="text-[9px] font-black text-white/20 uppercase tracking-widest flex items-center gap-2">
-                                    <Lock className="w-3 h-3" /> 100% PRIVATE DATA OWNERSHIP
-                                </p>
+                                <div className="flex items-center gap-4 mt-4 ml-1">
+                                    <p className="text-[10px] font-black uppercase text-white/30 tracking-[0.2em] italic flex items-center gap-2">
+                                        <Timer className="w-3 h-3" /> LIVE IN MINUTES. OWN IT FOREVER.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                {/* RIGHT SIDE: LOGICAL VALIDATION CARD */}
+                <div className="w-full md:w-[380px] shrink-0">
+                    <Card className="p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-2xl relative overflow-hidden group hover:border-primary/20 transition-all duration-500">
+                        <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                            <ShieldCheck className="w-32 h-32 text-primary" />
+                        </div>
+                        
+                        <div className="relative z-10 space-y-8">
+                            <div className="space-y-2">
+                                <h3 className="text-xs font-black text-primary uppercase tracking-[0.2em]">BUILT FOR REAL OPERATIONS</h3>
+                                <div className="space-y-1">
+                                    {["Restaurants", "Hotels", "Hospitals", "Facilities", "Cinemas", "Franchise Networks"].map(item => (
+                                        <div key={item} className="flex items-center gap-2 text-sm font-bold text-primary-text uppercase italic tracking-tighter opacity-80 group-hover:opacity-100 transition-opacity">
+                                            <ChevronRight className="w-3 h-3 text-primary" /> {item}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="pt-6 border-t border-white/5 space-y-3">
+                                {[
+                                    "Works on Excel / Sheets",
+                                    "No logins required",
+                                    "No subscriptions",
+                                    "Multi-branch ready"
+                                ].map(point => (
+                                    <div key={point} className="flex items-center gap-3">
+                                        <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                                            <Check className="w-2.5 h-2.5 text-primary" />
+                                        </div>
+                                        <span className="text-[11px] font-black uppercase text-white/40 tracking-wider">{point}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </Card>
                 </div>
             </div>
         </section>
@@ -369,10 +393,12 @@ export default function Home() {
                 
                 <div className="flex flex-col items-center gap-10">
                     <div className="flex flex-col items-center">
-                        <p className="text-sm font-bold text-white/20 line-through uppercase tracking-widest">Professional Grade: ₹1,999</p>
                         <Button size="lg" asChild className="group h-24 px-16 rounded-[2rem] bg-primary text-black font-black uppercase text-2xl shadow-[0_0_60px_-10px_rgba(46,184,107,0.6)] hover:scale-105 active:scale-95 transition-all border-none">
-                            <Link href="/library" className="flex items-center">
-                                DEPLOY YOUR SYSTEM: ₹999 <ArrowRight className="ml-4 h-8 w-8" />
+                            <Link href="/library" className="flex flex-col items-center justify-center gap-1">
+                                <div className="flex items-center">
+                                    DEPLOY YOUR SYSTEM: ₹999 <ArrowRight className="ml-4 h-8 w-8" />
+                                </div>
+                                <div className="text-xs font-bold opacity-60">~ Professional Grade: ₹1,999 ~</div>
                             </Link>
                         </Button>
                         <p className="text-xs font-black text-accent mt-6 uppercase tracking-widest italic">
