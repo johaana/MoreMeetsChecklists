@@ -29,7 +29,7 @@ export const HeroSection = () => (
                 className="absolute inset-0 w-full h-full object-cover"
             />
             {/* Surgical Masking: Deep black on text-side, crystal clear on environment-side */}
-            <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.9)_25%,rgba(10,15,25,0.4)_50%,rgba(10,15,25,0)_100%)]" />
+            <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0) 0%,rgba(10,15,25,0.9) 25%,rgba(10,15,25,0.4) 50%,rgba(10,15,25,0) 100%)]" />
         </div>
 
         {/* Left Command Block */}
@@ -47,7 +47,7 @@ export const HeroSection = () => (
                         Your team updates tasks. <br />
                         <span className="text-primary">You see everything live.</span>
                     </h2>
-                    <p className="text-sm md:text-base max-w-[500px] text-secondary-text leading-snug font-medium italic border-l-2 border-primary/20 pl-5">
+                    <p className="text-base md:text-lg max-w-[500px] text-secondary-text leading-snug font-medium italic border-l-2 border-primary/20 pl-5">
                         Know what's done. What's missed. What's delayed. <br />
                         Across your entire operation.
                     </p>
@@ -56,16 +56,16 @@ export const HeroSection = () => (
                 {/* 3. The Left Switchboard (Compact Glass) */}
                 <div className="p-4 rounded-[1.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl max-w-lg shadow-2xl space-y-3">
                     <div className="space-y-1">
-                        <h3 className="text-[11px] font-black text-primary uppercase tracking-[0.2em]">SELECT DEPLOYMENT MODULE:</h3>
+                        <h3 className="text-xs font-black text-primary uppercase tracking-[0.2em]">SELECT DEPLOYMENT MODULE:</h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1">
                             {ELITE_INDUSTRIES.map(item => (
                                 <Link 
                                     key={item.id} 
                                     href={`/packs/${item.id}`} 
-                                    className="flex items-center justify-between group/link text-xs font-bold text-primary-text/70 hover:text-primary transition-all uppercase italic tracking-tighter border-b border-white/5 pb-0.5"
+                                    className="flex items-center justify-between group/link text-sm font-bold text-primary-text/70 hover:text-primary transition-all uppercase italic tracking-tighter border-b border-white/5 pb-0.5"
                                 >
                                     <span>{item.name}</span>
-                                    <ChevronRight className="w-3 h-3 opacity-0 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-all" />
+                                    <ChevronRight className="w-3.5 h-3.5 opacity-0 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-all" />
                                 </Link>
                             ))}
                         </div>
@@ -81,8 +81,8 @@ export const HeroSection = () => (
                             { t: "AUDIT READY", i: ShieldCheck }
                         ].map(point => (
                             <div key={point.t} className="flex items-center gap-1.5">
-                                <point.i className="w-3.5 h-3.5 text-primary" />
-                                <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{point.t}</span>
+                                <point.i className="w-4 h-4 text-primary" />
+                                <span className="text-[11px] font-black text-white/40 uppercase tracking-widest">{point.t}</span>
                             </div>
                         ))}
                     </div>
@@ -93,7 +93,7 @@ export const HeroSection = () => (
                                 GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 transition-transform group-hover:translate-x-1" />
                             </Link>
                         </Button>
-                        <p className="text-[11px] md:text-xs text-secondary-text italic font-bold leading-tight uppercase tracking-[0.15em] border-l border-primary/30 pl-4">
+                        <p className="text-xs md:text-sm text-secondary-text italic font-bold leading-tight uppercase tracking-[0.15em] border-l border-primary/30 pl-4">
                             NO LEARNING CURVE. <br /> WORKS ON EXCEL / SHEETS.
                         </p>
                     </div>

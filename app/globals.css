@@ -30,14 +30,14 @@
     --surface-card: 212 40% 8%;
     --border-color: 212 40% 15%;
     --text-primary: 0 0% 98%;
-    --text-secondary: 215.4 16.3% 70%;
+    --text-secondary: 215.4 16.3% 81%; /* Increased brightness from 70% to 81% */
     --text-on-light: 215.4 16.3% 56.9%;
     --authority-green: 145 58% 48%;
     --accent-urgency: 0 59% 54%;
     --alternate-background: 218 20% 6%;
     --primary-text: 215 25% 95%;
-    --secondary-text: 220 15% 65%;
-    --muted-text: 220 15% 65%;
+    --secondary-text: 220 15% 76%; /* Increased brightness from 65% to 76% */
+    --muted-text: 220 15% 76%;
     --high-contrast-green: 145 58% 48%;
     --risk-accent: 0 59% 54%;
   }
@@ -68,14 +68,14 @@
     --surface-card: 212 40% 8%;
     --border-color: 212 40% 15%;
     --text-primary: 0 0% 98%;
-    --text-secondary: 215.4 16.3% 70%;
+    --text-secondary: 215.4 16.3% 81%; /* Increased brightness from 70% to 81% */
     --text-on-light: 215.4 16.3% 56.9%;
     --accent-authority: 145 58% 48%;
     --accent-urgency: 0 59% 54%;
     --alternate-background: 218 20% 6%;
     --primary-text: 215 25% 95%;
-    --secondary-text: 220 15% 65%;
-    --muted-text: 220 15% 65%;
+    --secondary-text: 220 15% 76%; /* Increased brightness from 65% to 76% */
+    --muted-text: 220 15% 76%;
     --authority-green: 145 58% 48%;
     --high-contrast-green: 145 58% 48%;
     --risk-accent: 0 59% 54%;

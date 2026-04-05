@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -6,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { Logo, IconComponent } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { Menu, ArrowRight, ChevronDown, PawPrint } from "lucide-react";
+import { Menu, ChevronDown, PawPrint } from "lucide-react";
 import React from 'react';
 import { premiumPacks } from "@/lib/premium-packs";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -102,7 +101,7 @@ export function SiteHeader() {
 
         window.addEventListener('scroll', handleScroll);
         handleScroll(); 
-        return () => removeEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
@@ -140,8 +139,8 @@ export function SiteHeader() {
                                     <Link href="/library" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
                                         View Systems Hub &rarr;
                                     </Link>
-                                    <Link href="/packs/animal_shelter_pack" className="text-[10px] font-black text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50 flex items-center gap-2 uppercase tracking-widest">
-                                        <PawPrint className="w-3 h-3" /> Social Impact Pack (Free)
+                                    <Link href="/packs/animal_shelter_pack" className="text-xs font-black text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50 flex items-center gap-2 uppercase tracking-widest">
+                                        <PawPrint className="w-3.5 h-3.5" /> Social Impact Pack (Free)
                                     </Link>
                                 </div>
                             </div>
