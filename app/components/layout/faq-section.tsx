@@ -10,27 +10,27 @@ export const FaqSection = () => (
             <div className="max-w-3xl mx-auto">
                 <Accordion type="single" collapsible className="w-full" defaultValue="item-1">
                     <AccordionItem value="item-1" className="border-white/10">
-                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic">Why is this an Excel file and not a dedicated app?</AccordionTrigger>
+                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic">We already have SOPs. Why do we need MoreMeets?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
-                          Apps create <strong>"SaaS Friction."</strong> They require monthly subscriptions, logins, staff training curves, and internet access. Excel is <strong>universally understood, 100% private, and works offline.</strong> It allows your team to start reporting in 2 minutes without a setup phase. Plus, you own the engine forever—no monthly fees to access your own operational data.
+                           Most SOPs are <strong>"Dead Documents"</strong>—outdated, inconsistent, or hidden in a folder. MoreMeets is not a document; it is a <strong>Live Operational Engine.</strong> It upgrades your existing knowledge into a structured, multi-branch framework that mandates daily discipline and provides instant executive visibility via telemetry. It turns "knowing" into "doing."
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-2" className="border-white/10">
-                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic">We already have SOPs. Why do we need MoreMeets?</AccordionTrigger>
+                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic">Why standalone infrastructure instead of a dedicated App?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
-                           Most SOPs are "Dead Documents"—outdated, inconsistent, or hidden in a folder. MoreMeets is not a document; it is a <strong>Live Operational Engine.</strong> It upgrades your existing knowledge into a structured, multi-branch framework that mandates daily discipline and provides instant executive visibility via telemetry.
+                          Apps create <strong>"SaaS Friction."</strong> They require monthly subscriptions, logins, staff training curves, and constant internet. Our standalone engine is <strong>universally understood, 100% private, and works offline.</strong> It allows your team to start reporting in 2 minutes without a setup phase. Plus, you own the infrastructure forever—no monthly fees to access your own operational data.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-3" className="border-white/10">
                         <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic">How does this help me if I'm not physically present?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
-                          This is the core power of MoreMeets. The <strong>Multi-Branch Dashboard</strong> and <strong>Incident Log</strong> act as your "Remote Eyes." You can see exactly which tasks were signed off, which high-risk points were verified by managers, and if any profit-leak incidents occurred from anywhere in the world.
+                          This is the core power of the system. The <strong>Multi-Branch Dashboard</strong> and <strong>Incident Log</strong> act as your "Remote Eyes." You can see exactly which tasks were signed off, which high-risk points were verified by managers, and if any profit-leak incidents occurred from anywhere in the world.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-4" className="border-white/10">
                         <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic">Can I add my own custom tasks or branding?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
-                          Yes. Unlike a locked SaaS app, <strong>you own the infrastructure.</strong> Since it's a standalone Excel/Google Sheets engine, you can add, delete, or modify tasks to fit your brand's unique needs. You can also paste your logo on the Home Console to make it your institutional standard.
+                          Yes. Unlike a locked SaaS app, <strong>you own the core engine.</strong> You can add, delete, or modify tasks to fit your brand's unique needs. You can also paste your logo on the Home Console to make it your institutional standard.
                         </AccordionContent>
                     </AccordionItem>
                      <AccordionItem value="item-5" className="border-white/10">
