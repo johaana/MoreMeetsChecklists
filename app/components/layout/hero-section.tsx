@@ -17,7 +17,7 @@ const ELITE_INDUSTRIES = [
 ];
 
 export const HeroSection = () => (
-    <section className="relative w-full flex flex-col md:flex-row md:items-center min-h-[calc(100dvh-64px)] md:h-[90vh] md:min-h-[800px] overflow-hidden bg-background">
+    <section className="relative w-full flex flex-col md:flex-row md:items-center min-h-[calc(100dvh-64px)] md:h-[95vh] md:min-h-[850px] overflow-hidden bg-background">
         {/* Cinematic Visual Layer */}
         <div className="absolute inset-0 z-0 overflow-hidden">
             <video
@@ -26,20 +26,22 @@ export const HeroSection = () => (
                 loop
                 muted
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover grayscale brightness-[0.25] opacity-60"
+                className="absolute inset-0 w-full h-full object-cover grayscale brightness-[0.45] opacity-70"
             />
-            {/* Gradient Masking */}
-            <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.95)_30%,rgba(10,15,25,0.6)_60%,rgba(10,15,25,0.1)_100%)]" />
+            {/* Gradient Masking - Loosened for right-side visibility */}
+            <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.9)_35%,rgba(10,15,25,0.2)_70%,rgba(10,15,25,0)_100%)]" />
         </div>
 
         {/* Left Command Block */}
-        <div className="container px-4 md:px-6 relative z-20 flex flex-col justify-center">
+        <div className="container px-4 md:px-6 relative z-20 flex flex-col justify-center pt-32 pb-20">
             <div className="max-w-3xl space-y-8 md:space-y-10">
-                {/* 1. Hook & Payoff */}
-                <div className="space-y-2">
-                    <p className="text-primary font-black uppercase tracking-[0.3em] text-[10px] md:text-xs italic">
-                        MoreMeets™ Sovereign Operating System
-                    </p>
+                {/* 1. Hook & Payoff - Tighter Vertical Stack */}
+                <div className="space-y-1">
+                    <div className="flex items-center px-1">
+                        <p className="text-primary font-black uppercase tracking-[0.4em] text-[10px] md:text-xs italic border-l-2 border-primary/40 pl-3">
+                            MoreMeets™ Sovereign Operating System
+                        </p>
+                    </div>
                     <h1 className="text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[6.5rem] font-black font-headline tracking-tighter !leading-[0.85] text-primary-text uppercase italic">
                         STOP CHASING. <br />
                         <span className="text-primary">START SEEING.</span>
@@ -52,16 +54,16 @@ export const HeroSection = () => (
                         YOUR TEAM UPDATES TASKS. <br />
                         <span className="text-primary/80">YOU SEE EVERYTHING LIVE.</span>
                     </h2>
-                    <p className="text-sm md:text-lg max-w-[550px] text-secondary-text/80 leading-relaxed font-medium italic border-l-2 border-primary/20 pl-6">
-                        KNOW WHAT'S DONE. WHAT'S MISSED. WHAT'S DELAYED. <br />
-                        ACROSS YOUR ENTIRE OPERATION.
+                    <p className="text-sm md:text-lg max-w-[550px] text-secondary-text leading-relaxed font-medium italic border-l-2 border-primary/20 pl-6">
+                        Know what&apos;s done. What&apos;s missed. What&apos;s delayed. <br />
+                        Across your entire operation.
                     </p>
                 </div>
 
                 {/* 3. The Left Switchboard (Glass Container) */}
                 <div className="p-6 md:p-8 rounded-[2rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl max-w-xl shadow-2xl space-y-6">
                     <div className="space-y-1">
-                        <h3 className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">SELECT DEPLOYMENT SECTOR:</h3>
+                        <h3 className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">SELECT DEPLOYMENT MODULE:</h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 pt-2">
                             {ELITE_INDUSTRIES.map(item => (
                                 <Link 
@@ -98,7 +100,7 @@ export const HeroSection = () => (
                                 <span className="font-black uppercase italic text-lg tracking-widest flex items-center">
                                     DEPLOY YOUR SYSTEM: ₹999 <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-1" />
                                 </span>
-                                <span className="text-[9px] font-bold opacity-60">~ ₹1,999 ~ LAUNCH OFFER</span>
+                                <span className="text-[9px] font-bold opacity-60">~ ₹1,999 ~ LAUNCH DEPLOYMENT OFFER</span>
                             </Link>
                         </Button>
                         <p className="text-[10px] text-secondary-text max-w-[180px] italic font-medium leading-snug">

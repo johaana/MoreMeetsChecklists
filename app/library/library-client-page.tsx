@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -38,7 +37,7 @@ const allPacksByCategory = (packs: PremiumPack[]) => {
 };
 
 const PackCard = ({ pack }: { pack: PremiumPack }) => (
-    <Card key={pack.id} className="flex flex-col h-full overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20 bg-black/40 backdrop-blur-sm relative">
+    <Card key={pack.id} className="flex flex-col h-full overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary/20 bg-black/40 backdrop-blur-sm relative group">
         {pack.bestseller && (
             <div className="absolute top-0 right-0 p-4 z-10">
                 <Badge variant="accent" className="uppercase font-black tracking-widest text-[8px] px-3 py-1 shadow-xl">Bestseller</Badge>
@@ -61,7 +60,7 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => (
                 <span className="text-[10px] font-bold text-white/20 line-through">₹1,999</span>
                 <span className="text-[10px] font-black text-primary uppercase tracking-widest italic">Launch Deployment Offer</span>
             </div>
-            <Button asChild className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-black font-black uppercase italic text-xs tracking-widest transition-all border-none" variant="secondary">
+            <Button asChild className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-black font-black uppercase italic text-xs tracking-widest transition-all border-none h-14" variant="secondary">
                 <Link href={`/packs/${pack.id}`}>
                     DEPLOY SYSTEM: ₹999 <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
