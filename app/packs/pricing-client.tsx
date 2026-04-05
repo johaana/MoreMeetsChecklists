@@ -197,8 +197,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </div>
                             
                             <div className="w-full flex flex-col items-center gap-4">
-                                <Badge variant="outline" className="text-accent border-accent/30 text-accent uppercase tracking-[0.2em] rounded-none px-4 py-1">V11.9 SOVEREIGN LAUNCH OFFER • 90% OFF</Badge>
-                                <h2 className="text-[1.3rem] sm:text-3xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-[1.1]">
+                                <Badge variant="outline" className="text-accent border-accent/30 text-accent uppercase tracking-[0.2em] rounded-none px-4 py-1">V11.9 SOVEREIGN LAUNCH OFFER</Badge>
+                                <h2 className="text-[1.3rem] sm:text-3xl md:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-[1.1]">
                                     ELIMINATE OPERATIONAL RISK
                                 </h2>
                                 <div className="flex items-center gap-2">
@@ -229,14 +229,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <div className="space-y-2 mb-8">
                                     <div className="flex items-center justify-center gap-4 mb-4">
                                         <div className="text-left">
-                                            <p className="text-[10px] font-black uppercase text-white/20">Professional Grade</p>
+                                            <p className="text-[10px] font-black uppercase text-white/20">Professional Value</p>
                                             <p className="text-sm font-bold text-white/40 line-through">
-                                                {region === 'INDIA' ? '₹9,999' : '$120'}
+                                                {region === 'INDIA' ? '₹1,999' : '$25'}
                                             </p>
                                         </div>
                                         <div className="w-px h-8 bg-white/5" />
                                         <div className="text-left">
-                                            <p className="text-[10px] font-black uppercase text-primary">Your Investment</p>
+                                            <p className="text-[10px] font-black uppercase text-primary">Deployment Offer</p>
                                             <p className="text-2xl font-black text-primary-text italic">
                                                 {region === 'INDIA' ? `₹999` : `$12`}
                                             </p>
@@ -267,7 +267,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                                 className="w-full h-14 bg-primary text-black font-black text-base rounded-[10px] shadow-md hover:shadow-xl hover:brightness-105 transition-all border-none relative z-10 px-8"
                                             >
                                                 <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center justify-center">
-                                                    GET YOUR SYSTEM: ${pack.priceUSD} <ArrowRight className="ml-2 h-5 w-5"/>
+                                                    DEPLOY YOUR SYSTEM: ${pack.priceUSD} <ArrowRight className="ml-2 h-5 w-5"/>
                                                 </Link>
                                             </Button>
                                         )}
@@ -277,7 +277,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         <div className="flex items-center gap-2">
                                             <Zap className="w-3 h-3 text-primary" />
                                             <span className="text-[11px] font-black tracking-widest uppercase text-white/40">
-                                                Zero-Setup Engine • One-time payment
+                                                Launch pricing valid for early deployments only.
                                             </span>
                                         </div>
                                         <div className="flex items-center gap-2">

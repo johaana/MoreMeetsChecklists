@@ -56,10 +56,14 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => (
         <CardContent className="flex-1">
             <CardDescription className="text-secondary-text leading-relaxed font-medium italic">{pack.description}</CardDescription>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex flex-col gap-3">
+            <div className="flex items-center justify-center gap-3 w-full">
+                <span className="text-[10px] font-bold text-white/20 line-through">₹1,999</span>
+                <span className="text-[10px] font-black text-primary uppercase tracking-widest italic">Launch Deployment Offer</span>
+            </div>
             <Button asChild className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-black font-black uppercase italic text-xs tracking-widest transition-all border-none" variant="secondary">
                 <Link href={`/packs/${pack.id}`}>
-                    Deploy This System: ₹999 <ArrowRight className="ml-2 h-4 w-4" />
+                    DEPLOY SYSTEM: ₹999 <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
             </Button>
         </CardFooter>

@@ -1,6 +1,3 @@
-
-'use client';
-
 import { allPacks } from "./packs/all_packs";
 
 export type Checklist = {
@@ -31,7 +28,9 @@ export type PremiumPack = {
     id: string;
     title: string;
     priceINR: number;
+    anchorPriceINR?: number;
     priceUSD?: number;
+    anchorPriceUSD?: number;
     competitorPriceUSD?: number;
     paymentId: string;
     lemonSqueezyUrl?: string;
@@ -57,5 +56,22 @@ export type PremiumPack = {
 }
 
 export const premiumPacks: PremiumPack[] = [
-    ...allPacks.filter(p => p.id !== 'master_access'),
+    ...allPacks.filter(p => p.id !== 'master_access').map(p => {
+        // Apply Elite 7 Pricing Logic
+        const eliteIds = [
+            'restaurants', 'hotels_and_resorts', 'healthcare_and_hospital_operations', 
+            'school_operations_pack', 'franchise_operations_pack', 
+            'facility_management_blueprint', 'cinema_operations_pack'
+        ];
+        if (eliteIds.includes(p.id)) {
+            return {
+                ...p,
+                priceINR: 999,
+                anchorPriceINR: 1999,
+                priceUSD: 12,
+                anchorPriceUSD: 25
+            }
+        }
+        return p;
+    }),
 ];
