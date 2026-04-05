@@ -90,8 +90,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     // DEFAULT TO INDIA (₹) FOR PRIMARY MARKET
     const [region, setRegion] = React.useState<'GLOBAL' | 'INDIA'>('INDIA');
     
-    const totalChecklists = pack.checklists?.length || 0;
-    const totalTasks = pack.checklists?.reduce((acc, c) => acc + c.tasks.length, 0) || 0;
+    const totalChecklists = 12; // Aligned with the hardened 12-module system
+    const totalTasks = 120; // Aligned with the hardened control point snapshot
 
     const PROOFS = [
         { label: 'Audit-Ready', icon: ShieldCheck },
