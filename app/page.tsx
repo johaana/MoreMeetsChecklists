@@ -101,7 +101,7 @@ const HowItWorksSection = () => (
 
             <div className="relative grid md:grid-cols-5 gap-8 lg:gap-12">
                 {/* Visual Connection Line (Desktop) - Hardened with 2px stroke and glow */}
-                <div className="absolute top-8 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent hidden md:block z-0 shadow-[0_0_15px_rgba(46,184,107,0.3)]" />
+                <div className="absolute top-8 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent hidden md:block z-0 shadow-[0_0_20px_-5px_rgba(46,184,107,0.4)]" />
                 
                 {[
                     { t: "DOWNLOAD", d: "Get your industrial file instantly.", i: Settings2 },
@@ -189,8 +189,8 @@ const WhyMoreMeetsSection = () => (
                             "Operational data is invisible",
                             "The standard leaves when the hero leaves"
                         ].map(item => (
-                            <div key={item} className="flex items-center gap-4 text-sm text-secondary-text italic">
-                                <XCircle className="w-4 h-4 text-red-500/50" /> {item}
+                            <div key={item} className="flex items-center gap-4 text-sm text-zinc-400 italic">
+                                <XCircle className="w-4 h-4 text-red-500/40" /> {item}
                             </div>
                         ))}
                     </div>
@@ -200,11 +200,11 @@ const WhyMoreMeetsSection = () => (
                     <h3 className="text-primary font-black uppercase tracking-widest text-[10px] text-center italic">THE MOREMEETS WAY</h3>
                     <div className="space-y-6">
                         {[
-                            "Missions are pre-defined & binary",
-                            "Ownership is assigned by role",
-                            "Execution is timestamped & logged",
-                            "Live visibility across every branch",
-                            "The system is permanent infrastructure"
+                            "MISSIONS ARE PRE-DEFINED & BINARY",
+                            "OWNERSHIP IS ASSIGNED BY ROLE",
+                            "EXECUTION IS TIMESTAMPED & LOGGED",
+                            "LIVE VISIBILITY ACROSS EVERY BRANCH",
+                            "THE SYSTEM IS PERMANENT INFRASTRUCTURE"
                         ].map(item => (
                             <div key={item} className="flex items-center gap-4 text-sm text-primary-text font-bold uppercase italic tracking-tight">
                                 <ShieldCheck className="w-4 h-4 text-primary" /> {item}
