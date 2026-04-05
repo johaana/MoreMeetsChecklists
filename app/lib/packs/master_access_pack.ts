@@ -22,9 +22,11 @@ export const master_access_pack: PremiumPack = {
             ...checklist,
             tasks: checklist.tasks.map(task => ({
                 ...task,
-                department: checklist.department,
-                role: checklist.role,
-                frequency: checklist.frequency
+                department: task.department || checklist.department,
+                role: task.role || checklist.role,
+                frequency: task.frequency || checklist.frequency,
+                technicalProtocol: task.technicalProtocol || task.description || "",
+                floorAction: task.floorAction || task.trainerNotes || ""
             }))
         }))
     }),
