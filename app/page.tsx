@@ -65,7 +65,7 @@ const TheShiftSection = () => (
                             "No real visibility",
                             "Every branch runs differently"
                         ].map(item => (
-                            <div key={item} className="flex items-center gap-4 text-sm md:text-base text-secondary-text italic">
+                            <div key={item} className="flex items-center gap-4 text-sm md:text-base text-zinc-400 italic">
                                 <XCircle className="w-5 h-5 text-red-500/40 shrink-0" /> {item}
                             </div>
                         ))}
@@ -121,7 +121,7 @@ const OperatingLoopSection = () => (
                             {i + 1}
                         </div>
                         <h4 className="font-black text-primary-text uppercase italic text-sm tracking-tight">{step.t}</h4>
-                        <p className="text-xs text-secondary-text leading-relaxed font-medium italic">{step.d}</p>
+                        <p className="text-sm text-secondary-text leading-relaxed font-medium italic">{step.d}</p>
                     </div>
                 ))}
             </div>
@@ -337,7 +337,10 @@ const PricingSection = () => (
                     ONE-TIME DEPLOYMENT
                 </h2>
                 <div className="flex flex-col items-center gap-2">
-                    <span className="text-7xl md:text-9xl font-black text-primary italic drop-shadow-[0_0_30px_rgba(46,184,107,0.3)]">₹999</span>
+                    <div className="flex items-baseline gap-4">
+                        <span className="text-7xl md:text-9xl font-black text-primary italic drop-shadow-[0_0_30px_rgba(46,184,107,0.3)]">₹999</span>
+                        <span className="text-2xl md:text-4xl font-black text-white/20 italic">/ $12</span>
+                    </div>
                     <span className="text-xs font-black text-white/20 uppercase tracking-[0.4em]">NO SUBSCRIPTIONS • NO LOCK-IN</span>
                 </div>
             </div>
@@ -359,7 +362,7 @@ const FinalCtaSection = () => (
         <div className="max-w-4xl mx-auto space-y-16 relative z-10">
             <div className="space-y-4">
                 <SectionHeadline>STOP CHASING. <br /> START SEEING.</SectionHeadline>
-                <p className="text-xl md:text-3xl text-primary font-black uppercase italic tracking-tighter -mt-6">DEPLOY YOUR SYSTEM: ₹999</p>
+                <p className="text-xl md:text-3xl text-primary font-black uppercase italic tracking-tighter -mt-6">DEPLOY YOUR SYSTEM: ₹999 / $12</p>
             </div>
             
             <div className="flex flex-col items-center gap-10">
