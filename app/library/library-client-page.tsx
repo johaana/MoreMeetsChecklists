@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -48,7 +49,7 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => (
                 <IconComponent name={pack.icon} className="h-8 w-8 text-accent mb-2" />
                 {pack.badgeText && <Badge variant={pack.badgeVariant || 'default'} className="uppercase tracking-widest text-[8px] font-black">{pack.badgeText}</Badge>}
             </div>
-            <CardTitle className="text-xl font-headline italic uppercase tracking-tighter text-primary-text">
+            <CardTitle className="text-xl font-headline italic uppercase tracking-tighter text-primary-text leading-tight">
                 <Link href={`/packs/${pack.id}`} className="hover:text-primary transition-colors">{pack.title}</Link>
             </CardTitle>
         </CardHeader>
@@ -58,7 +59,7 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => (
         <CardFooter className="flex flex-col gap-3">
             <div className="flex items-center justify-center gap-3 w-full">
                 <span className="text-[10px] font-bold text-white/20 line-through">₹1,999</span>
-                <span className="text-[10px] font-black text-primary uppercase tracking-widest italic">Launch Deployment Offer</span>
+                <span className="text-[10px] font-black text-primary uppercase tracking-widest italic">INSTITUTIONAL RATE</span>
             </div>
             <Button asChild className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-black font-black uppercase italic text-xs tracking-widest transition-all border-none h-14" variant="secondary">
                 <Link href={`/packs/${pack.id}`}>
@@ -159,15 +160,15 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                 <div className="hidden md:block">
                                     <DropdownMenu>
                                         <DropdownMenuTrigger asChild>
-                                            <Button variant="outline" className="w-full md:w-[240px] justify-between border-white/10 font-bold uppercase text-[10px] tracking-widest">
+                                            <Button variant="outline" className="w-full md:w-[240px] justify-between border-white/10 font-bold uppercase text-[10px] tracking-widest h-10 px-4">
                                                 {activeCategory === 'All' ? 'Select Sector' : activeCategory}
                                                 <ChevronDown className="w-4 h-4 ml-2" />
                                             </Button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent className="w-56 max-h-96 overflow-y-auto bg-alternate-background border-white/10">
-                                            <DropdownMenuItem onSelect={() => handleCategoryChange('All')} className="uppercase text-[10px] font-bold tracking-widest">All Sectors</DropdownMenuItem>
+                                            <DropdownMenuItem onSelect={() => handleCategoryChange('All')} className="uppercase text-[10px] font-bold tracking-widest p-3">All Sectors</DropdownMenuItem>
                                             {categories.map(category => (
-                                                <DropdownMenuItem key={category} onSelect={() => handleCategoryChange(category)} className="uppercase text-[10px] font-bold tracking-widest">
+                                                <DropdownMenuItem key={category} onSelect={() => handleCategoryChange(category)} className="uppercase text-[10px] font-bold tracking-widest p-3">
                                                     {category}
                                                 </DropdownMenuItem>
                                             ))}
