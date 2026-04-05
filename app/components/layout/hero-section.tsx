@@ -73,7 +73,7 @@ export const HeroSection = () => (
                 </div>
 
                 {/* 4. Action & Proof - Compressed Flow */}
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-4">
                     <div className="flex flex-wrap gap-x-5 gap-y-1">
                         {[
                             { t: "NO APPS / NO SAAS", i: Lock },
@@ -81,19 +81,19 @@ export const HeroSection = () => (
                             { t: "AUDIT READY", i: ShieldCheck }
                         ].map(point => (
                             <div key={point.t} className="flex items-center gap-1.5">
-                                <point.i className="w-3 h-3 text-primary" />
+                                <point.i className="w-3.5 h-3.5 text-primary" />
                                 <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{point.t}</span>
                             </div>
                         ))}
                     </div>
 
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <div className="flex flex-col items-start gap-3">
                         <Button size="lg" asChild className="group h-14 md:h-16 px-8 md:px-10 rounded-xl bg-primary text-black hover:brightness-110 shadow-[0_0_30px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 border-none">
                             <Link href="/library" className="inline-flex items-center justify-center font-black uppercase italic text-sm md:text-base tracking-widest">
                                 GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 transition-transform group-hover:translate-x-1" />
                             </Link>
                         </Button>
-                        <p className="text-[11px] text-secondary-text max-w-[140px] italic font-bold leading-tight uppercase tracking-tighter">
+                        <p className="text-[11px] md:text-xs text-secondary-text italic font-bold leading-tight uppercase tracking-[0.15em] border-l border-primary/30 pl-4">
                             No learning curve. <br /> Works on Excel / Sheets.
                         </p>
                     </div>
