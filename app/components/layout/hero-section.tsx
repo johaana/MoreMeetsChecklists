@@ -26,10 +26,10 @@ export const HeroSection = () => (
                 loop
                 muted
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover grayscale brightness-[0.45] opacity-70"
+                className="absolute inset-0 w-full h-full object-cover brightness-[0.8]"
             />
-            {/* Gradient Masking - Loosened for right-side visibility */}
-            <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.9)_35%,rgba(10,15,25,0.2)_70%,rgba(10,15,25,0)_100%)]" />
+            {/* Gradient Masking - Heavy dark on left for text, clear on right for visual clarity */}
+            <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.85)_30%,rgba(10,15,25,0.2)_60%,rgba(10,15,25,0)_100%)]" />
         </div>
 
         {/* Left Command Block */}
@@ -37,8 +37,8 @@ export const HeroSection = () => (
             <div className="max-w-3xl space-y-8 md:space-y-10">
                 {/* 1. Hook & Payoff - Tighter Vertical Stack */}
                 <div className="space-y-1">
-                    <div className="flex items-center px-1">
-                        <p className="text-primary font-black uppercase tracking-[0.4em] text-[10px] md:text-xs italic border-l-2 border-primary/40 pl-3">
+                    <div className="flex items-center px-1 pb-3">
+                        <p className="text-primary font-black uppercase tracking-[0.4em] text-[10px] md:text-xs italic border-l-2 border-primary/40 pl-3 pr-4">
                             MoreMeets™ Sovereign Operating System
                         </p>
                     </div>
