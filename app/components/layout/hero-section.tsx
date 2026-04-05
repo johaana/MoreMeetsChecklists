@@ -56,7 +56,7 @@ export const HeroSection = () => (
                 {/* 3. The Left Switchboard (Compact Glass) */}
                 <div className="p-4 rounded-[1.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl max-w-lg shadow-2xl space-y-3">
                     <div className="space-y-1">
-                        <h3 className="text-[9px] font-black text-primary uppercase tracking-[0.2em]">SELECT DEPLOYMENT MODULE:</h3>
+                        <h3 className="text-[11px] font-black text-primary uppercase tracking-[0.2em]">SELECT DEPLOYMENT MODULE:</h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1.5">
                             {ELITE_INDUSTRIES.map(item => (
                                 <Link 
@@ -82,7 +82,7 @@ export const HeroSection = () => (
                         ].map(point => (
                             <div key={point.t} className="flex items-center gap-1.5">
                                 <point.i className="w-2.5 h-2.5 text-primary" />
-                                <span className="text-[8px] font-black text-white/40 uppercase tracking-widest">{point.t}</span>
+                                <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{point.t}</span>
                             </div>
                         ))}
                     </div>
@@ -96,7 +96,7 @@ export const HeroSection = () => (
                                 <span className="text-[8px] font-bold opacity-60">~ ₹1,999 ~ LAUNCH DEPLOYMENT OFFER</span>
                             </Link>
                         </Button>
-                        <p className="text-[9px] text-secondary-text max-w-[140px] italic font-medium leading-tight">
+                        <p className="text-[11px] text-secondary-text max-w-[140px] italic font-bold leading-tight uppercase tracking-tighter">
                             No learning curve. <br /> Works on Excel / Sheets.
                         </p>
                     </div>
