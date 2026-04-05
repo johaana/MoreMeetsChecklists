@@ -1,3 +1,4 @@
+
 import { allPacks } from "./packs/all_packs";
 
 export type Checklist = {
@@ -56,7 +57,7 @@ export type PremiumPack = {
 }
 
 export const premiumPacks: PremiumPack[] = [
-    ...allPacks.filter(p => p.id !== 'master_access').map(p => {
+    ...allPacks.map(p => {
         // Apply Elite 7 Pricing Logic - ₹999 Buy / ₹1,999 Grade
         const eliteIds = [
             'restaurants', 'hotels_and_resorts', 'healthcare_and_hospital_operations', 

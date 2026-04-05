@@ -1,6 +1,4 @@
 
-import { premiumPacks } from '@/lib/premium-packs';
-import { notFound } from 'next/navigation';
 import MasterAccessClient from './master-access-client';
 import type { Metadata } from 'next';
 import { Footer } from '@/components/layout/footer';
@@ -17,12 +15,8 @@ export const metadata: Metadata = {
 };
 
 export default function MasterAccessPage() {
-    const pack = premiumPacks.find(p => p.id === 'master_access');
-    if (!pack) {
-        notFound();
-    }
     return (
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen bg-background">
         <SiteHeader />
         <main className="flex-1 py-12">
            <Suspense fallback={<div>Loading...</div>}>

@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -177,7 +178,7 @@ const WhyMoreMeetsSection = () => (
                             "Operational data is invisible",
                             "The standard leaves when the hero leaves"
                         ].map(item => (
-                            <div key={item} className="flex items-center gap-4 text-base text-secondary-text italic">
+                            <div key={item} className="flex items-center gap-4 text-base text-zinc-400 italic">
                                 <XCircle className="w-4 h-4 text-red-500/40" /> {item}
                             </div>
                         ))}
@@ -239,18 +240,21 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         
-        <Section id="built-for" className="bg-black border-b border-white/5 py-16 md:py-20">
+        <Section id="operational-logic" className="bg-black border-b border-white/5 py-16 md:py-20">
             <div className="max-w-5xl mx-auto text-center space-y-12">
-                <Badge variant="outline" className="text-white/20 border-white/10 uppercase tracking-[0.3em] font-black text-[11px]">Strategic Alignment</Badge>
-                <div className="flex flex-wrap justify-center gap-x-12 gap-y-8">
+                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[11px]">OPERATIONAL LOGIC</Badge>
+                <div className="flex flex-wrap justify-center gap-x-8 md:gap-x-16 gap-y-8">
                     {[
-                        "MULTI-BRANCH OWNERS",
-                        "HOSPITALITY GROUPS",
-                        "INDUSTRIAL PLANTS",
-                        "AUDIT-READY TEAMS",
-                        "FRANCHISE NETWORKS"
-                    ].map(item => (
-                        <span key={item} className="text-sm md:text-base font-black text-white/40 uppercase tracking-widest italic">{item}</span>
+                        { from: "MEMORY", to: "INFRASTRUCTURE" },
+                        { from: "GUESSWORK", to: "TELEMETRY" },
+                        { from: "HEROES", to: "SYSTEMS" },
+                        { from: "DOCUMENTATION", to: "EXECUTION" }
+                    ].map((shift, i) => (
+                        <div key={i} className="flex items-center gap-3 md:gap-4">
+                            <span className="text-sm md:text-lg font-black text-white/20 uppercase tracking-widest italic">{shift.from}</span>
+                            <ArrowRight className="w-4 h-4 text-primary/40" />
+                            <span className="text-sm md:text-lg font-black text-primary uppercase tracking-widest italic">{shift.to}</span>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -272,4 +276,8 @@ export default function Home() {
 
 const CrownIcon = (props: any) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
+);
+
+const XCircle = (props: any) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
 );
