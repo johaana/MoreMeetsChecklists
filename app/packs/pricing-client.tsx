@@ -87,7 +87,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const hasINR = !!(pack.paymentId && pack.paymentId.length > 0 && pack.priceINR >= 0);
     const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
     
-    // DEFAULT TO INDIA (₹) AS THE PRIMARY ANCHOR
+    // DEFAULT TO INDIA (₹) FOR PRIMARY MARKET
     const [region, setRegion] = React.useState<'GLOBAL' | 'INDIA'>('INDIA');
     
     const totalChecklists = pack.checklists?.length || 0;
@@ -152,16 +152,16 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <Tabs value={region} onValueChange={(v) => setRegion(v as any)} className="w-fit">
                                     <TabsList className="bg-white/5 border border-white/10 h-9 p-0.5 rounded-full px-1">
                                         <TabsTrigger 
-                                            value="GLOBAL" 
-                                            className="text-[10px] font-black uppercase px-5 h-8 rounded-full data-[state=active]:bg-white/10 data-[state=active]:text-primary flex items-center gap-2"
-                                        >
-                                            <Globe className="w-4 h-4" /> GLOBAL ($)
-                                        </TabsTrigger>
-                                        <TabsTrigger 
                                             value="INDIA" 
                                             className="text-[10px] font-black uppercase px-5 h-8 rounded-full data-[state=active]:bg-white/10 data-[state=active]:text-primary flex items-center gap-2"
                                         >
                                             <Landmark className="w-4 h-4" /> INDIA (₹)
+                                        </TabsTrigger>
+                                        <TabsTrigger 
+                                            value="GLOBAL" 
+                                            className="text-[10px] font-black uppercase px-5 h-8 rounded-full data-[state=active]:bg-white/10 data-[state=active]:text-primary flex items-center gap-2"
+                                        >
+                                            <Globe className="w-4 h-4" /> GLOBAL ($)
                                         </TabsTrigger>
                                     </TabsList>
                                 </Tabs>
@@ -185,7 +185,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     <p className="text-xl md:text-2xl font-black text-primary-text tracking-tight uppercase leading-tight italic">
                                         {totalChecklists} Operational Modules · {totalTasks}+ Technical Control Points
                                     </p>
-                                    <p className="text-xs text-secondary-text italic font-medium">Complete Operational Payload</p>
+                                    <p className="text-xs text-secondary-text italic font-medium">Complete Institutional Payload</p>
                                 </div>
                                 
                                 <div className="flex items-center justify-center gap-2 opacity-100">
@@ -215,7 +215,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </div>
                                     
                                     <p className="text-xs font-bold text-accent italic uppercase tracking-wider">
-                                        Pricing valid for current deployment window.
+                                        Active Deployment Window.
                                     </p>
                                 </div>
 
