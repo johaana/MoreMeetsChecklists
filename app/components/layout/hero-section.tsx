@@ -18,7 +18,7 @@ const ELITE_INDUSTRIES = [
 
 export const HeroSection = () => (
     <section className="relative w-full flex flex-col md:flex-row md:items-center min-h-[calc(100dvh-64px)] md:h-[92vh] overflow-hidden bg-background">
-        {/* Cinematic Visual Layer */}
+        {/* Cinematic Visual Layer - Full Color with Heavy-Left Mask */}
         <div className="absolute inset-0 z-0 overflow-hidden">
             <video
                 src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
@@ -26,9 +26,9 @@ export const HeroSection = () => (
                 loop
                 muted
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover brightness-[0.8]"
+                className="absolute inset-0 w-full h-full object-cover"
             />
-            {/* Gradient Masking - Surgical heavy-left mask, clear right */}
+            {/* Surgical Masking: Deep black on text-side, crystal clear on environment-side */}
             <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(10,15,25,1.0)_0%,rgba(10,15,25,0.9)_25%,rgba(10,15,25,0.4)_50%,rgba(10,15,25,0)_100%)]" />
         </div>
 
