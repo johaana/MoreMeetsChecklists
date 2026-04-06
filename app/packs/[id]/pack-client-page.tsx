@@ -199,14 +199,14 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                         <h4 className="text-white/20 font-black uppercase tracking-[0.5em] text-[10px]">HERO-BASED MANAGEMENT</h4>
                         <div className="space-y-8">
                             {[
-                                { f: "MEMORY", t: "SOPs exist only in documentation" },
-                                { f: "GUESSWORK", t: "Managers ask 'Is it done?'" },
-                                { f: "HEROES", t: "Standards leave when staff resigns" },
-                                { f: "DEAD DATA", t: "Records are for audits only" }
+                                { f: "MEMORY", fDesc: "SOPs exist only in documentation" },
+                                { f: "GUESSWORK", fDesc: "Managers ask 'Is it done?'" },
+                                { f: "HEROES", fDesc: "Standards leave when staff resigns" },
+                                { f: "DEAD DATA", fDesc: "Records are for audits only" }
                             ].map((item, i) => (
                                 <div key={i} className="flex flex-col">
                                     <span className="text-red-500/60 font-black text-2xl italic uppercase leading-none">{item.f}</span>
-                                    <p className="text-sm text-zinc-500 italic font-medium">{item.t}</p>
+                                    <p className="text-sm text-zinc-500 italic font-medium">{item.fDesc}</p>
                                 </div>
                             ))}
                         </div>
@@ -218,14 +218,14 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                         <h4 className="text-primary/60 font-black uppercase tracking-[0.5em] text-[10px]">SOVEREIGN INFRASTRUCTURE</h4>
                         <div className="space-y-8">
                             {[
-                                { f: "INFRASTRUCTURE", t: "Execution is built into the workflow" },
-                                { f: "TELEMETRY", t: "Dashboard shows reality live" },
-                                { f: "PERMANENCE", t: "Standards are owned by the business" },
-                                { f: "EXECUTION", t: "Work happens correctly every time" }
+                                { t: "INFRASTRUCTURE", tDesc: "Execution is built into the workflow" },
+                                { t: "TELEMETRY", tDesc: "Dashboard shows reality live" },
+                                { t: "PERMANENCE", tDesc: "Standards are owned by the business" },
+                                { t: "EXECUTION", tDesc: "Work happens correctly every time" }
                             ].map((item, i) => (
                                 <div key={i} className="flex flex-col">
-                                    <span className="text-primary font-black text-2xl italic uppercase leading-none">{item.f}</span>
-                                    <p className="text-sm text-primary-text italic font-medium">{item.t}</p>
+                                    <span className="text-primary font-black text-2xl italic uppercase leading-none">{item.t}</span>
+                                    <p className="text-sm text-primary-text italic font-medium">{item.tDesc}</p>
                                 </div>
                             ))}
                         </div>
