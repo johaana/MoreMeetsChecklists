@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -26,7 +25,8 @@ import {
     Popcorn,
     Settings2,
     Clock,
-    Activity
+    Activity,
+    Users2
 } from 'lucide-react';
 import type { PremiumPack } from "@/lib/premium-packs";
 
