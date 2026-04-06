@@ -88,7 +88,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
     
     // DEFAULT TO INDIA (₹) FOR PRIMARY MARKET
-    const [region, setRegion] = React.useState<'GLOBAL' | 'INDIA'>('INDIA');
+    const [region, setRegion] = React.useState<'INDIA' | 'GLOBAL'>('INDIA');
     
     const totalChecklists = 12; 
     const totalTasks = 120; 
