@@ -55,14 +55,14 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
 
       <main className="flex-1">
         {/* SECTION 1: ONE-GLANCE COMMAND HERO */}
-        <section className="relative w-full pt-4 pb-6 md:pt-8 md:pb-10 border-b border-white/5 overflow-hidden bg-black flex flex-col justify-center">
+        <section className="relative w-full pt-16 pb-12 md:pt-24 md:pb-20 border-b border-white/5 overflow-hidden bg-black flex flex-col justify-center">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(46,184,107,0.05)_0%,transparent_60%)]" />
           <div className="container px-4 md:px-6 relative z-10">
-            <div className="grid lg:grid-cols-[1fr,480px] gap-6 md:gap-12 items-start">
+            <div className="grid lg:grid-cols-[1fr,480px] gap-12 md:gap-16 items-start">
                 
                 {/* Left: The Hook & Proof Layer */}
-                <div className="space-y-4 md:space-y-5">
-                    <div className="space-y-3 md:space-y-4">
+                <div className="space-y-5 md:space-y-6">
+                    <div className="space-y-4 md:space-y-5">
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-4 uppercase tracking-[0.3em] font-black text-[10px] rounded-none bg-primary/5">
                             RESTAURANT OPERATING SYSTEM • SOVEREIGN V11.9
                         </Badge>
@@ -70,18 +70,18 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                             STOP CHASING STAFF.<br />
                             <span className="text-primary">START SEEING EXECUTION.</span>
                         </h1>
-                        <div className="space-y-4 md:space-y-5">
+                        <div className="space-y-5 md:space-y-6">
                             <p className="text-lg md:text-xl text-secondary-text font-medium leading-relaxed italic max-w-xl">
                                 Know what’s done, missed, or at risk—across every shift and branch. 
                                 <span className="text-primary-text/80 block not-italic font-bold">No follow-ups. No guesswork.</span>
                             </p>
                             
-                            <div className="space-y-3">
+                            <div className="space-y-4">
                                 <p className="text-sm md:text-base font-bold text-primary-text/60 border-l-2 border-primary/30 pl-6 italic">
                                     Pre-built SOPs. Fully editable. One-time deploy. <br /> Runs on Excel & Google Sheets.
                                 </p>
                                 
-                                {/* PROOF STRIP: Added directly under support line */}
+                                {/* PROOF STRIP */}
                                 <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] md:text-xs font-black text-primary uppercase tracking-widest pl-6">
                                     <span className="flex items-center gap-1.5"><Gem className="w-3.5 h-3.5" /> 12 OPERATIONAL MODULES</span>
                                     <span className="text-white/20">•</span>
@@ -95,36 +95,36 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                 </div>
 
                 {/* Right: The Decision Block */}
-                <div className="p-6 md:p-8 rounded-[2rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl shadow-2xl space-y-6 relative">
-                    <div className="space-y-1.5 text-center">
+                <div className="p-8 md:p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl shadow-2xl space-y-8 relative">
+                    <div className="space-y-2 text-center">
                         <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.4em] block">DEPLOYMENT CLEARANCE:</span>
                         <p className="text-base font-black text-primary-text uppercase italic tracking-tighter leading-tight">
                             BUILT FOR MULTI-BRANCH RESTAURANT TEAMS
                         </p>
                     </div>
 
-                    <div className="space-y-5 text-center pt-5 border-t border-white/5">
-                        <div className="space-y-0.5">
+                    <div className="space-y-6 text-center pt-6 border-t border-white/5">
+                        <div className="space-y-1">
                             <p className="text-[10px] font-black text-white/20 uppercase tracking-widest">Institutional Rate (One-Time)</p>
                             <p className="text-4xl md:text-5xl font-black text-primary-text italic leading-none">₹999 <span className="text-[10px] text-white/20 not-italic ml-1">/ $12</span></p>
                         </div>
                         
-                        <div className="space-y-3">
-                            <Button asChild size="lg" className="w-full h-14 md:h-16 rounded-xl bg-primary text-black font-black uppercase italic text-sm shadow-[0_0_30px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.02] transition-all border-none">
+                        <div className="space-y-4">
+                            <Button asChild size="lg" className="w-full h-16 rounded-xl bg-primary text-black font-black uppercase italic text-sm shadow-[0_0_30px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.02] transition-all border-none">
                                 <Link href="#pricing" className="flex items-center justify-center gap-2">
                                     DEPLOY YOUR SYSTEM → ₹999 <ArrowRight className="h-4 w-4" />
                                 </Link>
                             </Button>
 
-                            <div className="flex items-center justify-center gap-3 text-[8px] md:text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">
-                                <span className="flex items-center gap-1"><Check className="w-3 h-3 text-primary" /> NO SAAS</span>
-                                <span className="flex items-center gap-1"><Check className="w-3 h-3 text-primary" /> OWN FOREVER</span>
-                                <span className="flex items-center gap-1"><Check className="w-3 h-3 text-primary" /> 10-MIN SETUP</span>
+                            <div className="flex items-center justify-center gap-4 text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">
+                                <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-primary" /> NO SAAS</span>
+                                <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-primary" /> OWN FOREVER</span>
+                                <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-primary" /> 10-MIN SETUP</span>
                             </div>
                         </div>
 
-                        <div className="pt-3 border-t border-white/5">
-                            <p className="text-[9px] font-black text-accent/60 uppercase tracking-[0.15em] italic leading-tight">
+                        <div className="pt-4 border-t border-white/5">
+                            <p className="text-[10px] font-black text-accent/60 uppercase tracking-[0.15em] italic leading-tight">
                                 FOR TEAMS WHO CAN'T AFFORD FAILURE
                             </p>
                         </div>
