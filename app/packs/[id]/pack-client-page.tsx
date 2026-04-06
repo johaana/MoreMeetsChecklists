@@ -66,7 +66,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
       <SiteHeader />
 
       <main className="flex-1">
-        {/* SECTION 1: COMMAND HERO (OPTIMIZED SPLIT) */}
+        {/* SECTION 1: COMMAND HERO */}
         <section className="relative w-full pt-12 pb-16 md:pt-24 md:pb-24 border-b border-white/5 overflow-hidden bg-black">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(46,184,107,0.05)_0%,transparent_60%)]" />
           <div className="container px-4 md:px-6 relative z-10">
