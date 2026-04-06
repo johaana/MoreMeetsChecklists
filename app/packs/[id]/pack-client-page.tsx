@@ -28,7 +28,8 @@ import {
     TrendingUp,
     Repeat,
     Gem,
-    Check
+    Check,
+    LayoutGrid
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -48,17 +49,13 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 );
 
 export default function PackClientPage({ pack }: { pack: PremiumPack }) {
-  const totalChecklists = 12; 
-  const totalTasks = 120;
-  const roles = 12;
-
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
 
       <main className="flex-1">
         {/* SECTION 1: ONE-GLANCE COMMAND HERO */}
-        <section className="relative w-full pt-4 pb-8 md:pt-10 md:pb-12 border-b border-white/5 overflow-hidden bg-black min-h-[calc(100vh-64px)] flex flex-col justify-center">
+        <section className="relative w-full pt-10 pb-12 md:pt-16 md:pb-20 border-b border-white/5 overflow-hidden bg-black min-h-[calc(100vh-64px)] flex flex-col justify-center">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(46,184,107,0.05)_0%,transparent_60%)]" />
           <div className="container px-4 md:px-6 relative z-10">
             <div className="grid lg:grid-cols-[1fr,480px] gap-8 md:gap-16 items-center">
@@ -85,17 +82,12 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                                 </p>
                                 
                                 {/* PROOF STRIP: Added directly under support line */}
-                                <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-2">
-                                    {[
-                                        { l: "12 Operational Modules", i: Gem },
-                                        { l: "120+ Daily Control Points", i: Target },
-                                        { l: "12 Defined Roles", i: Users2 }
-                                    ].map((stat, i) => (
-                                        <div key={i} className="flex items-center gap-2">
-                                            <stat.i className="w-3.5 h-3.5 text-primary" />
-                                            <span className="text-[11px] font-black text-white/40 uppercase tracking-widest">{stat.l}</span>
-                                        </div>
-                                    ))}
+                                <div className="flex items-center gap-2 text-[10px] md:text-xs font-black text-white/40 uppercase tracking-widest pl-6">
+                                    <span>12 Operational Modules</span>
+                                    <span className="text-primary/40">•</span>
+                                    <span>120+ Daily Control Points</span>
+                                    <span className="text-primary/40">•</span>
+                                    <span>12 Defined Roles</span>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +125,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                         </div>
 
                         <div className="pt-4 border-t border-white/5">
-                            <p className="text-[10px] font-black text-accent/60 uppercase tracking-[0.15em] italic">
+                            <p className="text-[10px] font-black text-accent/60 uppercase tracking-[0.15em] italic leading-tight">
                                 Used across kitchens, audits, and multi-branch operations
                             </p>
                         </div>
@@ -144,7 +136,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
           </div>
         </section>
 
-        {/* SECTION 2: THE REALITY CHECK (Restored High-Impact Problems) */}
+        {/* SECTION 2: THE REALITY CHECK */}
         <Section className="bg-black border-b border-white/5">
             <div className="max-w-5xl mx-auto space-y-20">
                 <div className="text-center space-y-4">
@@ -265,7 +257,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                             </div>
                             <div className="space-y-2">
                                 <h4 className="font-black text-primary-text uppercase italic text-sm tracking-tight">{step.t}</h4>
-                                <p className="text-xs text-secondary-text leading-relaxed font-medium italic">{step.d}</p>
+                                <p className="text-[11px] text-secondary-text leading-relaxed font-medium italic">{step.d}</p>
                             </div>
                         </div>
                     ))}
