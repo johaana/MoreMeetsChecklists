@@ -5,7 +5,7 @@ import * as React from 'react';
 import type { PremiumPack } from '../lib/premium-packs';
 import Link from 'next/link';
 import { Button } from '../components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '../components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
 import { 
     Check, 
     Download, 

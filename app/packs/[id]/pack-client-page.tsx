@@ -17,27 +17,18 @@ import {
     Lock, 
     Clock,
     Settings2,
-    Crown,
-    AlertTriangle,
-    GraduationCap,
-    Repeat,
     LayoutGrid,
     Users2,
-    BarChart3,
-    ClipboardCheck,
     Utensils,
     History,
     Zap,
     Scale,
-    ShieldAlert,
-    ChevronRight,
-    Eye,
-    TrendingUp,
-    Check,
-    ChefHat,
+    GraduationCap,
+    AlertTriangle,
     FlameKindling,
     Banknote,
-    Shield
+    TrendingUp,
+    Repeat
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -70,74 +61,66 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
         <section className="relative w-full pt-12 pb-16 md:pt-24 md:pb-24 border-b border-white/5 overflow-hidden bg-black">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(46,184,107,0.05)_0%,transparent_60%)]" />
           <div className="container px-4 md:px-6 relative z-10">
-            <div className="grid lg:grid-cols-[1fr,480px] gap-12 items-start">
+            <div className="flex flex-col items-center text-center space-y-10">
                 
-                {/* Left: Hook & Narrative */}
-                <div className="space-y-8">
-                    <div className="space-y-4">
-                        <div className="flex">
-                            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-4 uppercase tracking-[0.3em] font-black text-[10px] rounded-none">
-                                {pack.title.toUpperCase()} • SOVEREIGN V11.9
-                            </Badge>
-                        </div>
-                        <h1 className="text-5xl md:text-8xl font-black tracking-tighter font-headline text-primary-text uppercase italic leading-[0.82]">
-                            RUN DAILY <br /> OPERATIONS <br />
-                            <span className="text-primary">WITHOUT <br /> CHASING STAFF</span>
-                        </h1>
+                {/* 1. Institutional Hook */}
+                <div className="space-y-6 max-w-4xl mx-auto">
+                    <div className="flex justify-center">
+                        <Badge variant="outline" className="text-primary border-primary/30 py-1 px-4 uppercase tracking-[0.3em] font-black text-[10px] rounded-none bg-primary/5">
+                            {pack.title.toUpperCase()} • SOVEREIGN V11.9
+                        </Badge>
                     </div>
-                    
-                    <div className="max-w-xl space-y-6">
-                        <p className="text-xl md:text-2xl text-secondary-text font-medium leading-tight italic border-l-2 border-primary/20 pl-6">
-                            Your team runs the floor. You see everything live. <br />
-                            <span className="text-primary-text">Know what’s done, missed, or at risk—across every branch.</span>
-                        </p>
-                        
-                        <div className="flex flex-col gap-4">
-                            <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em]">PERSONNEL CLEARANCE:</span>
-                            <div className="flex flex-wrap gap-2">
-                                {["Owners", "COOs", "GMs", "Kitchen Heads"].map(role => (
-                                    <div key={role} className="px-4 py-2 bg-white/[0.03] border border-white/10 text-[9px] font-black uppercase text-primary-text/60 tracking-widest italic">
-                                        {role}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
+                    <h1 className="text-4xl md:text-7xl font-black tracking-tighter font-headline text-primary-text uppercase italic leading-[0.85]">
+                        RUN DAILY OPERATIONS <br />
+                        <span className="text-primary">WITHOUT CHASING STAFF</span>
+                    </h1>
+                    <p className="text-lg md:text-xl text-secondary-text font-medium leading-relaxed italic max-w-2xl mx-auto">
+                        Your team runs the floor. You see everything live. <br />
+                        <span className="text-primary-text">Know what’s done, missed, or at risk—across every branch.</span>
+                    </p>
                 </div>
 
-                {/* Right: Decision Block & Snapshot */}
-                <div className="p-8 md:p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl shadow-2xl space-y-10">
-                    <div className="space-y-6">
-                        <div className="flex items-center justify-between border-b border-white/5 pb-6">
-                            <div className="text-left">
-                                <p className="text-[10px] font-black text-white/20 uppercase tracking-widest mb-1">Institutional Deployment</p>
-                                <p className="text-4xl font-black text-primary-text italic leading-none">₹999 <span className="text-sm text-white/20 not-italic ml-2">/ $12</span></p>
-                            </div>
-                            <Badge variant="outline" className="text-accent border-accent/30 text-[9px] font-black py-1 px-3">ONE-TIME DEPLOYMENT</Badge>
+                {/* 2. Payload Snapshots */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl">
+                    {[
+                        { l: "Modules", v: totalChecklists, i: LayoutGrid },
+                        { l: "Control Points", v: `${totalTasks}+`, i: Target },
+                        { l: "Role Matrix", v: `${roles}-Role`, i: Users2 }
+                    ].map((stat, i) => (
+                        <div key={i} className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/5 flex flex-col items-center gap-1 group hover:border-primary/20 transition-all">
+                            <stat.i className="w-5 h-5 text-primary/40 mb-1 group-hover:text-primary transition-colors" />
+                            <span className="text-3xl font-black text-primary-text italic leading-none">{stat.v}</span>
+                            <span className="text-[9px] font-black text-white/20 uppercase tracking-widest">{stat.l}</span>
                         </div>
+                    ))}
+                </div>
 
-                        <div className="grid grid-cols-3 gap-4">
-                            {[
-                                { l: "Modules", v: totalChecklists, i: LayoutGrid },
-                                { l: "Control Points", v: `${totalTasks}+`, i: Target },
-                                { l: "Role Matrix", v: `${roles}`, i: Users2 }
-                            ].map((stat, i) => (
-                                <div key={stat.l} className="flex flex-col items-center gap-1">
-                                    <stat.i className="w-4 h-4 text-primary/40 mb-1" />
-                                    <span className="text-xl font-black text-primary-text italic leading-none">{stat.v}</span>
-                                    <span className="text-[8px] font-black text-white/20 uppercase tracking-widest text-center">{stat.l}</span>
+                {/* 3. Personnel Clearance & Impulse Offer */}
+                <div className="space-y-8 w-full max-w-lg">
+                    <div className="flex flex-col items-center gap-3">
+                        <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em]">CREATED FOR:</span>
+                        <div className="flex flex-wrap justify-center gap-2">
+                            {["Owners", "COOs", "GMs", "Kitchen Heads"].map(role => (
+                                <div key={role} className="px-4 py-1.5 bg-white/[0.03] border border-white/10 text-[9px] font-black uppercase text-primary-text/60 tracking-widest italic rounded-full">
+                                    {role}
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    <div className="space-y-4">
-                        <Button asChild size="lg" className="w-full h-20 rounded-2xl bg-primary text-black font-black uppercase italic text-lg shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.02] transition-all border-none">
+                    <div className="space-y-4 pt-4 border-t border-white/5">
+                        <div className="flex items-center justify-center gap-4">
+                            <div className="text-center">
+                                <p className="text-[10px] font-black text-white/20 uppercase tracking-widest mb-1">Institutional Rate</p>
+                                <p className="text-4xl font-black text-primary-text italic leading-none">₹999 <span className="text-sm text-white/20 not-italic ml-1">/ $12</span></p>
+                            </div>
+                        </div>
+                        <Button asChild size="lg" className="w-full h-16 rounded-2xl bg-primary text-black font-black uppercase italic text-base shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.02] transition-all border-none">
                             <Link href="#pricing" className="flex items-center justify-center gap-3">
-                                DEPLOY SYSTEM <ArrowRight className="h-6 w-6" />
+                                DEPLOY SYSTEM <ArrowRight className="h-5 w-5" />
                             </Link>
                         </Button>
-                        <p className="text-[10px] text-white/20 text-center font-black uppercase tracking-[0.3em]">OWN FOREVER • NO SAAS • NO LOCK-IN</p>
+                        <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.3em]">OWN FOREVER • NO SAAS • NO LOCK-IN</p>
                     </div>
                 </div>
 
@@ -155,11 +138,11 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
 
                 <div className="grid md:grid-cols-2 gap-12 relative">
                     <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/5 hidden md:block" />
-                    <div className="space-y-8 p-10 rounded-[2.5rem] bg-red-500/[0.02] border border-red-500/10">
-                        <h3 className="text-red-500/60 font-black uppercase tracking-[0.3em] text-xs italic">THE PROBLEM</h3>
+                    <div className="space-y-8 p-10 rounded-[2.5rem] bg-white/[0.01] border border-white/5">
+                        <h3 className="text-white/40 font-black uppercase tracking-[0.3em] text-xs italic">THE PROBLEM</h3>
                         <div className="space-y-6">
                             {[
-                                "Tasks depend on human memory",
+                                "Tasks depend on memory",
                                 "SOPs sit in folders / PDFs",
                                 "Managers waste 40% time chasing staff",
                                 "Execution varies by shift and person",
@@ -171,8 +154,8 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                             ))}
                         </div>
                     </div>
-                    <div className="space-y-8 p-10 rounded-[2.5rem] bg-primary/[0.02] border border-primary/10">
-                        <h3 className="text-primary font-black uppercase tracking-[0.3em] text-xs italic">THE OUTCOME</h3>
+                    <div className="space-y-8 p-10 rounded-[2.5rem] bg-white/[0.01] border border-white/5">
+                        <h3 className="text-white/40 font-black uppercase tracking-[0.3em] text-xs italic">THE OUTCOME</h3>
                         <div className="space-y-6">
                             {[
                                 "Critical food safety & FSSAI risks",
@@ -189,8 +172,9 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                     </div>
                 </div>
 
-                <div className="text-center">
-                    <p className="text-2xl md:text-4xl font-black text-primary uppercase italic tracking-tighter leading-none">THIS IS NOT A PEOPLE PROBLEM. <br /><span className="text-primary-text">THIS IS A SYSTEM PROBLEM.</span></p>
+                <div className="text-center space-y-2">
+                    <p className="text-2xl md:text-4xl font-black text-zinc-100 uppercase italic tracking-tighter leading-none">THIS IS NOT A PEOPLE PROBLEM.</p>
+                    <p className="text-3xl md:text-6xl font-black text-red-500 uppercase italic tracking-tighter leading-none">THIS IS A SYSTEM PROBLEM.</p>
                 </div>
             </div>
         </Section>
