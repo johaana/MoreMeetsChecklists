@@ -57,14 +57,14 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
       <SiteHeader />
 
       <main className="flex-1">
-        {/* SECTION 1: COMMAND HERO */}
-        <section className="relative w-full pt-12 pb-16 md:pt-24 md:pb-24 border-b border-white/5 overflow-hidden bg-black">
+        {/* SECTION 1: COMMAND HERO (Tightened & Optimized) */}
+        <section className="relative w-full pt-10 pb-12 md:pt-16 md:pb-20 border-b border-white/5 overflow-hidden bg-black">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(46,184,107,0.05)_0%,transparent_60%)]" />
           <div className="container px-4 md:px-6 relative z-10">
-            <div className="flex flex-col items-center text-center space-y-10">
+            <div className="flex flex-col items-center text-center space-y-8">
                 
                 {/* 1. Institutional Hook */}
-                <div className="space-y-6 max-w-4xl mx-auto">
+                <div className="space-y-4 max-w-4xl mx-auto">
                     <div className="flex justify-center">
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-4 uppercase tracking-[0.3em] font-black text-[10px] rounded-none bg-primary/5">
                             {pack.title.toUpperCase()} • SOVEREIGN V11.9
@@ -74,53 +74,53 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                         RUN DAILY OPERATIONS <br />
                         <span className="text-primary">WITHOUT CHASING STAFF</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-secondary-text font-medium leading-relaxed italic max-w-2xl mx-auto">
+                    <p className="text-base md:text-xl text-secondary-text font-medium leading-relaxed italic max-w-2xl mx-auto">
                         Your team runs the floor. You see everything live. <br />
-                        <span className="text-primary-text">Know what’s done, missed, or at risk—across every branch.</span>
+                        <span className="hidden md:inline text-primary-text/60">Know what’s done, missed, or at risk—across every branch.</span>
                     </p>
                 </div>
 
-                {/* 2. Payload Snapshots */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl">
+                {/* 2. Payload Snapshots (Consolidated Grid) */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 w-full max-w-2xl">
                     {[
                         { l: "Modules", v: totalChecklists, i: LayoutGrid },
                         { l: "Control Points", v: `${totalTasks}+`, i: Target },
                         { l: "Role Matrix", v: `${roles}-Role`, i: Users2 }
                     ].map((stat, i) => (
-                        <div key={i} className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/5 flex flex-col items-center gap-1 group hover:border-primary/20 transition-all">
-                            <stat.i className="w-5 h-5 text-primary/40 mb-1 group-hover:text-primary transition-colors" />
-                            <span className="text-3xl font-black text-primary-text italic leading-none">{stat.v}</span>
-                            <span className="text-[9px] font-black text-white/20 uppercase tracking-widest">{stat.l}</span>
+                        <div key={i} className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col items-center gap-1 group hover:border-primary/20 transition-all shadow-xl">
+                            <stat.i className="w-4 h-4 text-primary/40 mb-1 group-hover:text-primary transition-colors" />
+                            <span className="text-2xl font-black text-primary-text italic leading-none">{stat.v}</span>
+                            <span className="text-[8px] font-black text-white/20 uppercase tracking-widest">{stat.l}</span>
                         </div>
                     ))}
                 </div>
 
-                {/* 3. Personnel Clearance & Impulse Offer */}
-                <div className="space-y-8 w-full max-w-lg">
-                    <div className="flex flex-col items-center gap-3">
-                        <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em]">CREATED FOR:</span>
-                        <div className="flex flex-wrap justify-center gap-2">
+                {/* 3. Decision Block (Personnel & Pricing) */}
+                <div className="space-y-6 w-full max-w-lg pt-4">
+                    <div className="flex flex-col items-center gap-2.5">
+                        <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.4em]">CREATED FOR:</span>
+                        <div className="flex flex-wrap justify-center gap-1.5">
                             {["Owners", "COOs", "GMs", "Kitchen Heads"].map(role => (
-                                <div key={role} className="px-4 py-1.5 bg-white/[0.03] border border-white/10 text-[9px] font-black uppercase text-primary-text/60 tracking-widest italic rounded-full">
+                                <div key={role} className="px-3 py-1 bg-white/[0.03] border border-white/10 text-[8px] font-black uppercase text-primary-text/60 tracking-widest italic rounded-full">
                                     {role}
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    <div className="space-y-4 pt-4 border-t border-white/5">
+                    <div className="space-y-4 pt-6 border-t border-white/5">
                         <div className="flex items-center justify-center gap-4">
                             <div className="text-center">
-                                <p className="text-[10px] font-black text-white/20 uppercase tracking-widest mb-1">Institutional Rate</p>
-                                <p className="text-4xl font-black text-primary-text italic leading-none">₹999 <span className="text-sm text-white/20 not-italic ml-1">/ $12</span></p>
+                                <p className="text-[9px] font-black text-white/20 uppercase tracking-widest mb-1">Institutional Rate</p>
+                                <p className="text-4xl font-black text-primary-text italic leading-none">₹999 <span className="text-xs text-white/20 not-italic ml-1">/ $12</span></p>
                             </div>
                         </div>
-                        <Button asChild size="lg" className="w-full h-16 rounded-2xl bg-primary text-black font-black uppercase italic text-base shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.02] transition-all border-none">
-                            <Link href="#pricing" className="flex items-center justify-center gap-3">
-                                DEPLOY SYSTEM <ArrowRight className="h-5 w-5" />
+                        <Button asChild size="lg" className="w-full h-14 rounded-xl bg-primary text-black font-black uppercase italic text-sm shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.02] transition-all border-none">
+                            <Link href="#pricing" className="flex items-center justify-center gap-2">
+                                DEPLOY SYSTEM <ArrowRight className="h-4 w-4" />
                             </Link>
                         </Button>
-                        <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.3em]">OWN FOREVER • NO SAAS • NO LOCK-IN</p>
+                        <p className="text-[9px] text-white/20 font-black uppercase tracking-[0.3em]">OWN FOREVER • NO SAAS • NO LOCK-IN</p>
                     </div>
                 </div>
 
