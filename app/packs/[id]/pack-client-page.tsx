@@ -18,6 +18,7 @@ import {
     Clock,
     Settings2,
     LayoutGrid,
+    Library,
     Users2,
     Utensils,
     History,
@@ -48,7 +49,6 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 );
 
 export default function PackClientPage({ pack }: { pack: PremiumPack }) {
-  // Hardcoded values for the "Institutional Grade" feel
   const totalChecklists = 12; 
   const totalTasks = 120;
   const roles = 12;
@@ -83,7 +83,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                     {/* Snapshot Vitals */}
                     <div className="grid grid-cols-3 gap-3">
                         {[
-                            { l: "Modules", v: totalChecklists, i: LayoutGrid },
+                            { l: "Modules", v: totalChecklists, i: Library },
                             { l: "Control Points", v: `${totalTasks}+`, i: Target },
                             { l: "Role Matrix", v: `${roles}-Role`, i: Users2 }
                         ].map((stat, i) => (
@@ -135,7 +135,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
             <div className="max-w-5xl mx-auto space-y-20">
                 <div className="text-center space-y-4">
                     <Badge variant="outline" className="text-red-500 border-red-500/30 uppercase tracking-[0.4em] font-black text-[11px]">Forensic Exposure</Badge>
-                    <SectionHeadline className="text-center">WHY RESTAURANTS BREAK</SectionHeadline>
+                    <SectionHeadline className="text-center">WHY OPERATIONS BREAK</SectionHeadline>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-12 relative">
