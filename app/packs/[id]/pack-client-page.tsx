@@ -17,10 +17,8 @@ import {
     Lock, 
     Clock,
     Settings2,
-    LayoutGrid,
     Users2,
     Utensils,
-    History,
     Zap,
     Scale,
     GraduationCap,
@@ -59,38 +57,55 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
       <SiteHeader />
 
       <main className="flex-1">
-        {/* SECTION 1: COMMAND HERO (One-Glance Layout) */}
-        <section className="relative w-full pt-4 pb-8 md:pt-12 md:pb-16 border-b border-white/5 overflow-hidden bg-black min-h-[calc(100vh-64px)] flex flex-col justify-center">
+        {/* SECTION 1: ONE-GLANCE COMMAND HERO */}
+        <section className="relative w-full pt-4 pb-8 md:pt-10 md:pb-12 border-b border-white/5 overflow-hidden bg-black min-h-[calc(100vh-64px)] flex flex-col justify-center">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(46,184,107,0.05)_0%,transparent_60%)]" />
           <div className="container px-4 md:px-6 relative z-10">
-            <div className="grid lg:grid-cols-[1fr,480px] gap-8 md:gap-12 items-center">
+            <div className="grid lg:grid-cols-[1fr,480px] gap-8 md:gap-16 items-center">
                 
-                {/* Left: The Hook */}
+                {/* Left: The Hook & Proof Layer */}
                 <div className="space-y-6 md:space-y-8">
                     <div className="space-y-4 md:space-y-6">
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-4 uppercase tracking-[0.3em] font-black text-[10px] rounded-none bg-primary/5">
                             RESTAURANT OPERATING SYSTEM • SOVEREIGN V11.9
                         </Badge>
-                        <h1 className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter font-headline text-primary-text uppercase italic leading-[0.85]">
+                        <h1 className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter font-headline text-primary-text uppercase italic leading-[0.82]">
                             STOP CHASING STAFF.<br />
                             <span className="text-primary">START SEEING EXECUTION.</span>
                         </h1>
-                        <div className="space-y-4">
+                        <div className="space-y-6">
                             <p className="text-lg md:text-xl text-secondary-text font-medium leading-relaxed italic max-w-xl">
                                 Know what’s done, missed, or at risk—across every shift and branch. 
                                 <span className="text-primary-text/80 block not-italic font-bold">No follow-ups. No guesswork.</span>
                             </p>
-                            <p className="text-sm md:text-base font-bold text-primary-text/60 border-l-2 border-primary/30 pl-6 italic">
-                                Pre-built SOPs. Fully editable. One-time deploy. <br /> Runs on Excel & Google Sheets.
-                            </p>
+                            
+                            <div className="space-y-4">
+                                <p className="text-sm md:text-base font-bold text-primary-text/60 border-l-2 border-primary/30 pl-6 italic">
+                                    Pre-built SOPs. Fully editable. One-time deploy. <br /> Runs on Excel & Google Sheets.
+                                </p>
+                                
+                                {/* PROOF STRIP: Added directly under support line */}
+                                <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-2">
+                                    {[
+                                        { l: "12 Operational Modules", i: Gem },
+                                        { l: "120+ Daily Control Points", i: Target },
+                                        { l: "12 Defined Roles", i: Users2 }
+                                    ].map((stat, i) => (
+                                        <div key={i} className="flex items-center gap-2">
+                                            <stat.i className="w-3.5 h-3.5 text-primary" />
+                                            <span className="text-[11px] font-black text-white/40 uppercase tracking-widest">{stat.l}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Right: The Decision Block */}
+                {/* Right: The Decision Block (Decision-Triggering Hero) */}
                 <div className="p-8 md:p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl shadow-2xl space-y-8 relative">
-                    <div className="space-y-4 text-center">
-                        <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em] block">SECTOR DEPLOYMENT:</span>
+                    <div className="space-y-2 text-center">
+                        <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em] block">DEPLOYMENT CLEARANCE:</span>
                         <p className="text-lg font-black text-primary-text uppercase italic tracking-tighter leading-tight">
                             BUILT FOR MULTI-BRANCH RESTAURANT TEAMS
                         </p>
@@ -102,20 +117,24 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                             <p className="text-5xl md:text-6xl font-black text-primary-text italic leading-none">₹999 <span className="text-xs text-white/20 not-italic ml-1">/ $12</span></p>
                         </div>
                         
-                        <Button asChild size="lg" className="w-full h-16 md:h-20 rounded-xl bg-primary text-black font-black uppercase italic text-sm md:text-base shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.02] transition-all border-none">
-                            <Link href="#pricing" className="flex items-center justify-center gap-2">
-                                DEPLOY YOUR SYSTEM → ₹999 <ArrowRight className="h-5 w-5" />
-                            </Link>
-                        </Button>
+                        <div className="space-y-4">
+                            <Button asChild size="lg" className="w-full h-16 md:h-20 rounded-xl bg-primary text-black font-black uppercase italic text-sm md:text-base shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.02] transition-all border-none">
+                                <Link href="#pricing" className="flex items-center justify-center gap-2">
+                                    DEPLOY YOUR SYSTEM → ₹999 <ArrowRight className="h-5 w-5" />
+                                </Link>
+                            </Button>
 
-                        <div className="flex flex-col items-center gap-4">
-                            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[9px] text-white/30 font-black uppercase tracking-[0.2em]">
+                            {/* TRUST STRIP: Answer objections right under CTA */}
+                            <div className="flex items-center justify-center gap-4 text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">
                                 <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-primary" /> NO SAAS</span>
                                 <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-primary" /> OWN FOREVER</span>
                                 <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-primary" /> 10-MIN SETUP</span>
                             </div>
-                            <p className="text-[10px] font-black text-accent/60 uppercase tracking-[0.15em] italic pt-4 border-t border-white/5 w-full">
-                                USED ACROSS KITCHENS, AUDITS, AND MULTI-BRANCH OPERATIONS
+                        </div>
+
+                        <div className="pt-4 border-t border-white/5">
+                            <p className="text-[10px] font-black text-accent/60 uppercase tracking-[0.15em] italic">
+                                Used across kitchens, audits, and multi-branch operations
                             </p>
                         </div>
                     </div>
@@ -125,28 +144,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
           </div>
         </section>
 
-        {/* SECTION 1.5: THE VITALS (Relocated for Focus) */}
-        <section className="bg-black py-12 border-b border-white/5">
-            <div className="container px-4 md:px-6">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                    {[
-                        { l: "Operational Modules", v: totalChecklists, i: Gem },
-                        { l: "Daily Control Points", v: `${totalTasks}+`, i: Target },
-                        { l: "Defined Roles (Zero Confusion)", v: `${roles}-Role Matrix`, i: Users2 }
-                    ].map((stat, i) => (
-                        <div key={i} className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 flex flex-col items-center gap-3 group hover:border-primary/20 transition-all shadow-xl">
-                            <stat.i className="w-6 h-6 text-primary/40 group-hover:text-primary transition-colors" />
-                            <div className="space-y-1 text-center">
-                                <span className="text-3xl font-black text-primary-text italic leading-none block">{stat.v}</span>
-                                <span className="text-[10px] font-black text-white/20 uppercase tracking-widest">{stat.l}</span>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-        {/* SECTION 2: THE REALITY CHECK */}
+        {/* SECTION 2: THE REALITY CHECK (Restored High-Impact Problems) */}
         <Section className="bg-black border-b border-white/5">
             <div className="max-w-5xl mx-auto space-y-20">
                 <div className="text-center space-y-4">
