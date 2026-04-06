@@ -174,7 +174,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </h2>
                                 <div className="flex items-center gap-2">
                                     <Lock className="w-4 h-4 text-white/40" />
-                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic">ZERO SAAS DEPENDENCY • OWN FOREVER</span>
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic text-center leading-relaxed">
+                                        ALIGNED WITH: ISO · HACCP · OSHA · INDUSTRY STANDARDS
+                                    </span>
                                 </div>
                             </div>
                         </CardHeader>
@@ -185,13 +187,13 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     <p className="text-xl md:text-2xl font-black text-primary-text tracking-tight uppercase leading-tight italic">
                                         {totalChecklists} Operational Modules · {totalTasks}+ Technical Control Points
                                     </p>
-                                    <p className="text-xs text-secondary-text italic font-medium">Complete Institutional Payload</p>
+                                    <p className="text-xs text-secondary-text italic font-medium">Use for single location or scale across multiple units.</p>
                                 </div>
                                 
                                 <div className="flex items-center justify-center gap-2 opacity-100">
                                     <ShieldCheck className="w-3.5 h-3.5 text-white/40" />
                                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic text-center leading-relaxed">
-                                        ALIGNED WITH: ISO · HACCP · OSHA · INDUSTRY STANDARDS
+                                        SINGLE UNIT OR MULTI-BRANCH · SAME SYSTEM
                                     </span>
                                 </div>
                             </div>

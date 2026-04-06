@@ -72,8 +72,8 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                         </h1>
                         <div className="space-y-5 md:space-y-6">
                             <p className="text-lg md:text-xl text-secondary-text font-medium leading-relaxed italic max-w-xl">
-                                Know what’s done, missed, or at risk—across every shift and branch. 
-                                <span className="text-primary-text/80 block not-italic font-bold">No follow-ups. No guesswork.</span>
+                                Know what’s done, missed, or at risk—across every shift, station, and location. 
+                                <span className="text-primary-text/80 block not-italic font-bold">No follow-ups. No guesswork. No dependency.</span>
                             </p>
                             
                             <div className="space-y-4">
@@ -99,7 +99,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                     <div className="space-y-2 text-center">
                         <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.4em] block">DEPLOYMENT CLEARANCE:</span>
                         <p className="text-base font-black text-primary-text uppercase italic tracking-tighter leading-tight">
-                            BUILT FOR MULTI-BRANCH RESTAURANT TEAMS
+                            ENGINEERED FOR SINGLE UNITS & MULTI-BRANCH GROUPS
                         </p>
                     </div>
 
@@ -115,6 +115,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                                     DEPLOY YOUR SYSTEM → ₹999 <ArrowRight className="h-4 w-4" />
                                 </Link>
                             </Button>
+                            <p className="text-[10px] font-black text-white/40 uppercase tracking-widest">Works for 1 location. Scales to 100.</p>
 
                             <div className="flex items-center justify-center gap-4 text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">
                                 <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-primary" /> NO SAAS</span>
@@ -269,8 +270,8 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
             <div className="max-w-6xl mx-auto space-y-20">
                 <div className="text-center space-y-4">
                     <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.4em] font-black text-[11px]">The Control Center</Badge>
-                    <SectionHeadline className="text-center">LIVE OPERATIONAL TELEMETRY</SectionHeadline>
-                    <p className="text-xl text-secondary-text italic font-medium">The Institutional Command View across all branches.</p>
+                    <SectionHeadline className="text-center">OPERATIONAL COMMAND DASHBOARD</SectionHeadline>
+                    <p className="text-xl text-secondary-text italic font-medium">Works for one location or across multiple branches.</p>
                 </div>
 
                 <div className="relative rounded-[3rem] border border-white/10 bg-zinc-900/50 p-3 shadow-2xl group max-w-5xl mx-auto">
@@ -285,7 +286,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-5xl mx-auto">
                     {[
                         "Live Completion (Green/Pending)",
-                        "Multi-Branch Performance Grid",
+                        "Unit & Group Performance Grid",
                         "High-Risk Alert Signals",
                         "Audit-Ready Execution Logs"
                     ].map(item => (
@@ -349,7 +350,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
         <Section className="bg-alternate-background">
             <div className="max-w-6xl mx-auto space-y-20">
                 <div className="text-center space-y-4">
-                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Industrial Proof</Badge>
+                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[11px]">Industrial Proof</Badge>
                     <SectionHeadline className="text-center">REAL OPERATIONS. REAL CONTROL.</SectionHeadline>
                 </div>
 
@@ -442,7 +443,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                         "Daily, Weekly, Monthly Auto-Schedules",
                         "Trainer Notes for 100% of Tasks",
                         "Consequences of failure defined for all 120+ points",
-                        "Multi-Branch Command Dashboard",
+                        "Unit & Group Command Dashboard",
                         "Fully Editable .xlsx / Sheets standalone system",
                         "Zero Learning Curve for floor staff"
                     ].map((item, i) => (

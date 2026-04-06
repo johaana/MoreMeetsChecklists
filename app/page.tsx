@@ -114,7 +114,7 @@ const OperatingLoopSection = () => (
                     { t: "TEAM OPENS TASKS", d: "They see what to do, how to do it, and why it matters.", i: Smartphone },
                     { t: "THEY EXECUTE", d: "Names entered as work happens. Logs build live.", i: Target },
                     { t: "TASKS RUN ON SCHEDULE", d: "Daily, Weekly, Monthly cycles trigger automatically.", i: Clock },
-                    { t: "YOU SEE EVERYTHING", d: "Open dashboard to see what's done or missed instantly.", i: Activity }
+                    { t: "COMMAND", d: "Run one unit perfectly. Scale without chaos.", i: Activity }
                 ].map((step, i) => (
                     <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left gap-4 group">
                         <div className="w-12 h-12 rounded-xl bg-primary/5 border border-primary/20 flex items-center justify-center text-primary font-black font-mono group-hover:bg-primary group-hover:text-black transition-all">
@@ -346,7 +346,7 @@ const PricingSection = () => (
             </div>
 
             <div className="space-y-6">
-                <p className="text-lg text-secondary-text font-medium italic">Use across your team. Single or multiple branches.</p>
+                <p className="text-lg text-secondary-text font-medium italic">Single unit or multi-branch. One system for any scale.</p>
                 <Button size="lg" asChild className="group h-20 px-12 rounded-2xl bg-primary text-black font-black uppercase text-xl shadow-2xl hover:scale-105 active:scale-95 transition-all border-none">
                     <Link href="/library">DEPLOY YOUR SYSTEM <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" /></Link>
                 </Button>
