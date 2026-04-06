@@ -59,19 +59,19 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
       <SiteHeader />
 
       <main className="flex-1">
-        {/* SECTION 1: COMMAND HERO (Split Decision Layout) */}
-        <section className="relative w-full pt-8 pb-12 md:pt-16 md:pb-20 border-b border-white/5 overflow-hidden bg-black">
+        {/* SECTION 1: COMMAND HERO (One-Glance Layout) */}
+        <section className="relative w-full pt-4 pb-8 md:pt-12 md:pb-16 border-b border-white/5 overflow-hidden bg-black min-h-[calc(100vh-64px)] flex flex-col justify-center">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(46,184,107,0.05)_0%,transparent_60%)]" />
           <div className="container px-4 md:px-6 relative z-10">
-            <div className="grid lg:grid-cols-[1fr,480px] gap-12 items-start">
+            <div className="grid lg:grid-cols-[1fr,480px] gap-8 md:gap-12 items-center">
                 
-                {/* Left: The Hook & Outcome Metrics */}
-                <div className="space-y-10">
-                    <div className="space-y-6">
+                {/* Left: The Hook */}
+                <div className="space-y-6 md:space-y-8">
+                    <div className="space-y-4 md:space-y-6">
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-4 uppercase tracking-[0.3em] font-black text-[10px] rounded-none bg-primary/5">
                             RESTAURANT OPERATING SYSTEM • SOVEREIGN V11.9
                         </Badge>
-                        <h1 className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter font-headline text-primary-text uppercase italic leading-[0.82]">
+                        <h1 className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter font-headline text-primary-text uppercase italic leading-[0.85]">
                             STOP CHASING STAFF.<br />
                             <span className="text-primary">START SEEING EXECUTION.</span>
                         </h1>
@@ -85,41 +85,24 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                             </p>
                         </div>
                     </div>
-
-                    {/* Industrial Vitals Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl">
-                        {[
-                            { l: "Operational Modules", v: totalChecklists, i: Gem },
-                            { l: "Daily Control Points", v: `${totalTasks}+`, i: Target },
-                            { l: "Defined Roles (Zero Confusion)", v: `${roles}-Role`, i: Users2 }
-                        ].map((stat, i) => (
-                            <div key={i} className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col items-center sm:items-start gap-2 group hover:border-primary/20 transition-all shadow-xl">
-                                <stat.i className="w-5 h-5 text-primary/40 group-hover:text-primary transition-colors" />
-                                <div className="space-y-0.5 text-center sm:text-left">
-                                    <span className="text-2xl font-black text-primary-text italic leading-none block">{stat.v}</span>
-                                    <span className="text-[9px] font-black text-white/20 uppercase tracking-widest">{stat.l}</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
                 </div>
 
                 {/* Right: The Decision Block */}
-                <div className="p-8 md:p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl shadow-2xl space-y-10 relative">
-                    <div className="space-y-6 text-center">
+                <div className="p-8 md:p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl shadow-2xl space-y-8 relative">
+                    <div className="space-y-4 text-center">
                         <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em] block">SECTOR DEPLOYMENT:</span>
-                        <p className="text-sm font-black text-primary-text uppercase italic tracking-tighter">
-                            Built for multi-branch restaurant teams
+                        <p className="text-lg font-black text-primary-text uppercase italic tracking-tighter leading-tight">
+                            BUILT FOR MULTI-BRANCH RESTAURANT TEAMS
                         </p>
                     </div>
 
-                    <div className="space-y-6 text-center pt-8 border-t border-white/5">
+                    <div className="space-y-6 text-center pt-6 border-t border-white/5">
                         <div className="space-y-1">
                             <p className="text-[10px] font-black text-white/20 uppercase tracking-widest">Institutional Rate (One-Time)</p>
-                            <p className="text-5xl font-black text-primary-text italic leading-none">₹999 <span className="text-xs text-white/20 not-italic ml-1">/ $12</span></p>
+                            <p className="text-5xl md:text-6xl font-black text-primary-text italic leading-none">₹999 <span className="text-xs text-white/20 not-italic ml-1">/ $12</span></p>
                         </div>
                         
-                        <Button asChild size="lg" className="w-full h-20 rounded-xl bg-primary text-black font-black uppercase italic text-sm shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.02] transition-all border-none">
+                        <Button asChild size="lg" className="w-full h-16 md:h-20 rounded-xl bg-primary text-black font-black uppercase italic text-sm md:text-base shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.02] transition-all border-none">
                             <Link href="#pricing" className="flex items-center justify-center gap-2">
                                 DEPLOY YOUR SYSTEM → ₹999 <ArrowRight className="h-5 w-5" />
                             </Link>
@@ -131,8 +114,8 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                                 <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-primary" /> OWN FOREVER</span>
                                 <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-primary" /> 10-MIN SETUP</span>
                             </div>
-                            <p className="text-[9px] font-bold text-accent/60 uppercase tracking-[0.15em] italic pt-2 border-t border-white/5 w-full">
-                                Used across kitchens, audits, and multi-branch operations
+                            <p className="text-[10px] font-black text-accent/60 uppercase tracking-[0.15em] italic pt-4 border-t border-white/5 w-full">
+                                USED ACROSS KITCHENS, AUDITS, AND MULTI-BRANCH OPERATIONS
                             </p>
                         </div>
                     </div>
@@ -140,6 +123,27 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
 
             </div>
           </div>
+        </section>
+
+        {/* SECTION 1.5: THE VITALS (Relocated for Focus) */}
+        <section className="bg-black py-12 border-b border-white/5">
+            <div className="container px-4 md:px-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                    {[
+                        { l: "Operational Modules", v: totalChecklists, i: Gem },
+                        { l: "Daily Control Points", v: `${totalTasks}+`, i: Target },
+                        { l: "Defined Roles (Zero Confusion)", v: `${roles}-Role Matrix`, i: Users2 }
+                    ].map((stat, i) => (
+                        <div key={i} className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 flex flex-col items-center gap-3 group hover:border-primary/20 transition-all shadow-xl">
+                            <stat.i className="w-6 h-6 text-primary/40 group-hover:text-primary transition-colors" />
+                            <div className="space-y-1 text-center">
+                                <span className="text-3xl font-black text-primary-text italic leading-none block">{stat.v}</span>
+                                <span className="text-[10px] font-black text-white/20 uppercase tracking-widest">{stat.l}</span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </section>
 
         {/* SECTION 2: THE REALITY CHECK */}
