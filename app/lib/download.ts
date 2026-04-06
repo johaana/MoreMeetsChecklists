@@ -10,6 +10,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
  * Features: Shift A/B Matrix, Maroon Consequence Header, Underlined Interactive Console.
  * Optimized: Operational Pulse is Amber. Vitals use Two-Tone Blue.
  * Sovereign Sort: Daily missions grouped at the top for zero-noise flow.
+ * FIX: Conditional Hyperlinks for Staff Assignment & Dynamic Top Branch Logic.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -202,6 +203,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
+    // Dynamic Column Calculation for Top Branch Logic
+    // Score is at index: 2 + checklists.length
+    const scoreColLetter = utils.encode_col(2 + packChecklists.length);
+
     // --- 01. HOME CONSOLE ---
     const homeWsData: any[][] = [
         [], [],
@@ -244,7 +249,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [
             null,
             { v: "TOP BRANCH:", s: labelStyle },
-            { t: 'f', f: `IF(MAX('BRANCH_MASTER'!$K$5:$K$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$K$5:$K$15), 'BRANCH_MASTER'!$K$5:$K$15, 0)), "AWAITING DATA")`, l: { Target: "#'BRANCH_MASTER'!A1" }, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, underline: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', ...verticalCenter } } },
+            { t: 'f', f: `IF(MAX('BRANCH_MASTER'!$${scoreColLetter}$5:$${scoreColLetter}$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$${scoreColLetter}$5:$${scoreColLetter}$15), 'BRANCH_MASTER'!$${scoreColLetter}$5:$${scoreColLetter}$15, 0)), "AWAITING DATA")`, l: { Target: "#'BRANCH_MASTER'!A1" }, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, underline: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "TASKS LOGGED:", s: labelStyle },
             { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: vitalsBlueDarkStyle },
             { v: "RISK STATUS:", s: labelStyle },
@@ -299,7 +304,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: (i + 1).toString(), s: dataStyleCenter },
             { v: name, s: inputStyle },
             ...packChecklists.map(() => ({ v: "YES", s: inputStyle })),
-            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$K$5:$K$5000, "COMPLETED", 'TODAYS_TASKS'!$B$5:$B$5000, B${5+i})`, s: dataStyleCenter },
+            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED", 'TODAYS_TASKS'!$B$5:$B$5000, B${5+i})`, s: dataStyleCenter },
             { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, B${5+i}, 'TODAYS_TASKS'!$L$5:$L$5000, "High", 'TODAYS_TASKS'!$J$5:$J$5000, "<>COMPLETED")`, s: dataStyleCenter }
         ])
     ];
@@ -371,7 +376,11 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     const statusFormula = `IF(LEN(TRIM(H${rowIdx}))=0, ${temporalCheck}, IF(AND(LEN(TRIM(I${rowIdx}))=0, I${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
                     
                     const keyRef = `B${rowIdx} & "|" & C${rowIdx}`;
-                    const personFormula = `IF(COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0, HYPERLINK("#'TEAM_HUB'!A1", "ASSIGN IN TEAM HUB"), VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", ""))`;
+                    
+                    // FIXED HYPERLINK LOGIC: Only hyperlink if no name is assigned.
+                    const personCondition = `COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0`;
+                    const personResult = `VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", "")`;
+                    const personFormula = `HYPERLINK(IF(${personCondition}, "#'TEAM_HUB'!A1", ""), IF(${personCondition}, "ASSIGN IN TEAM HUB", ${personResult}))`;
                     
                     const technicalVal = t.technicalProtocol || t.description || "";
                     const trainerVal = t.floorAction || "";
@@ -380,7 +389,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                         { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
                         { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode}), "")`, s: dataStyleCenter },
                         { v: c.role, s: dataStyleCenter },
-                        { t: 'f', f: personFormula, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.VITAL_BLUE_DARK }, underline: true } } },
+                        { t: 'f', f: personFormula, s: dataStyleCenter }, // Removed forced blue style; handled by conditional formatting
                         { v: t.id, s: dataStyleCenter },
                         { v: technicalVal, s: dataStyleLeft },
                         { v: trainerVal, s: coachingStyle },
@@ -400,6 +409,29 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     mWs['!cols'] = [15, 25, 25, 30, 12, 45, 55, 20, 20, 20, 12, 12, 45].map(w => ({ wch: w }));
     addSovereignRibbon(mWs, "Mission Execution Ledger");
     mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
+
+    // --- REFINED CONDITIONAL FORMATTING ---
+    const overdueConditionalFmt = {
+        type: "expression",
+        formula: `ISNUMBER(SEARCH("ACTION REQUIRED",INDIRECT("J"&ROW())))`, // J is Status
+        style: { fill: { fgColor: { rgb: "FEE2E2" } }, font: { color: { rgb: "B91C1C" }, bold: true } },
+    };
+    const completedConditionalFmt = {
+        type: "expression",
+        formula: `INDIRECT("J"&ROW())="COMPLETED"`, // J is Status
+        style: { fill: { fgColor: { rgb: "DCFCE7" } }, font: { color: { rgb: "15803D" }, bold: true } },
+    };
+    const assignLinkConditionalFmt = {
+        type: "expression",
+        formula: `ISNUMBER(SEARCH("ASSIGN",INDIRECT("D"&ROW())))`, // D is Assigned To
+        style: { font: { color: { rgb: COLORS.VITAL_BLUE_DARK }, underline: true, bold: true } },
+    };
+
+    mWs['!conditional_formatting'] = [
+        { ref: `A5:M${mData.length}`, rules: [overdueConditionalFmt, completedConditionalFmt] },
+        { ref: `D5:D${mData.length}`, rules: [assignLinkConditionalFmt] }
+    ];
+
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
 
     // --- 05. SHIFT HANDOVER ---
