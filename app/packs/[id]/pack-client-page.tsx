@@ -18,7 +18,6 @@ import {
     Clock,
     Settings2,
     LayoutGrid,
-    Library,
     Users2,
     Utensils,
     History,
@@ -29,7 +28,8 @@ import {
     FlameKindling,
     Banknote,
     TrendingUp,
-    Repeat
+    Repeat,
+    Gem
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -58,14 +58,14 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
       <SiteHeader />
 
       <main className="flex-1">
-        {/* SECTION 1: COMMAND HERO (High-Density Split Layout) */}
-        <section className="relative w-full pt-10 pb-12 md:pt-16 md:pb-20 border-b border-white/5 overflow-hidden bg-black">
+        {/* SECTION 1: COMMAND HERO (Split Decision Layout) */}
+        <section className="relative w-full pt-8 pb-12 md:pt-12 md:pb-16 border-b border-white/5 overflow-hidden bg-black">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(46,184,107,0.05)_0%,transparent_60%)]" />
           <div className="container px-4 md:px-6 relative z-10">
-            <div className="grid lg:grid-cols-[1fr,480px] gap-12 items-center">
+            <div className="grid lg:grid-cols-[1fr,480px] gap-8 items-start">
                 
-                {/* Left: The Hook & Payload */}
-                <div className="space-y-8">
+                {/* Left: The Hook & Engineering Stats */}
+                <div className="space-y-10">
                     <div className="space-y-4">
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-4 uppercase tracking-[0.3em] font-black text-[10px] rounded-none bg-primary/5">
                             {pack.title.toUpperCase()} • SOVEREIGN V11.9
@@ -81,9 +81,9 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                     </div>
 
                     {/* Snapshot Vitals */}
-                    <div className="grid grid-cols-3 gap-3">
+                    <div className="grid grid-cols-3 gap-3 max-w-lg">
                         {[
-                            { l: "Modules", v: totalChecklists, i: Library },
+                            { l: "Modules", v: totalChecklists, i: Gem },
                             { l: "Control Points", v: `${totalTasks}+`, i: Target },
                             { l: "Role Matrix", v: `${roles}-Role`, i: Users2 }
                         ].map((stat, i) => (
@@ -97,19 +97,35 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                 </div>
 
                 {/* Right: The Decision Block */}
-                <div className="p-8 md:p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl shadow-2xl space-y-8">
-                    <div className="flex flex-col items-center gap-2.5">
-                        <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.4em]">CREATED FOR:</span>
-                        <div className="flex flex-wrap justify-center gap-1.5">
-                            {["Owners", "COOs", "GMs", "Kitchen Heads"].map(role => (
-                                <div key={role} className="px-3 py-1 bg-white/[0.03] border border-white/10 text-[8px] font-black uppercase text-primary-text/60 tracking-widest italic rounded-full">
-                                    {role}
-                                </div>
-                            ))}
+                <div className="p-8 md:p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl shadow-2xl space-y-10">
+                    <div className="space-y-6">
+                        <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em] block text-center">FOR TEAMS WHO CAN’T AFFORD FAILURE:</span>
+                        <div className="grid grid-cols-1 gap-2.5">
+                            <div className="flex justify-center gap-2">
+                                {["Owners", "COOs", "Ops Heads"].map(role => (
+                                    <div key={role} className="px-3 py-1.5 bg-white/[0.03] border border-white/10 text-[8px] font-black uppercase text-primary-text/80 tracking-widest italic rounded-full">
+                                        {role}
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="flex justify-center gap-2">
+                                {["GMs", "Kitchen Heads", "Area Managers"].map(role => (
+                                    <div key={role} className="px-3 py-1.5 bg-white/[0.03] border border-white/10 text-[8px] font-black uppercase text-primary-text/80 tracking-widest italic rounded-full">
+                                        {role}
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="flex justify-center gap-2">
+                                {["QA", "Audit", "Training Teams"].map(role => (
+                                    <div key={role} className="px-3 py-1.5 bg-white/[0.03] border border-white/10 text-[8px] font-black uppercase text-primary-text/80 tracking-widest italic rounded-full">
+                                        {role}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
 
-                    <div className="space-y-4 text-center pt-6 border-t border-white/5">
+                    <div className="space-y-4 text-center pt-8 border-t border-white/5">
                         <div className="space-y-1">
                             <p className="text-[10px] font-black text-white/20 uppercase tracking-widest">Institutional Rate</p>
                             <p className="text-5xl font-black text-primary-text italic leading-none">₹999 <span className="text-xs text-white/20 not-italic ml-1">/ $12</span></p>
@@ -371,7 +387,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                         { 
                             cat: "🔄 AGGREGATORS", 
                             title: "Cancellation Guard", 
-                            d: "Organized staff → 40% fewer Zomato/Swiggy cancellations due to rush chaos.",
+                            d: "Organized floor → 40% fewer Zomato/Swiggy cancellations due to rush chaos.",
                             i: Smartphone
                         },
                         { 
