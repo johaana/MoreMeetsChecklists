@@ -6,9 +6,9 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v11.9.7 - STABLE BUILD
+ * Sovereign Engine v11.9.8 - COMPACT COMMAND BUILD
  * Features: Fixed Top Branch Logic, Symmetric Grid, Standard Assignment Text.
- * Optimized: Operational Pulse is Amber. Vitals use Two-Tone Blue.
+ * Optimized: Slightly compact column widths for one-glance visibility.
  * Refinement: HYPERLINK formula pattern for visual assignment links.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
@@ -131,6 +131,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     const inputStyle = {
         ...dataStyleCenter,
+        font: { ...baseFont, color: { rgb: "000000" }, bold: true },
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_ZONE } }
+    };
+
+    const inputStyleLeft = {
+        ...dataStyleLeft,
         font: { ...baseFont, color: { rgb: "000000" }, bold: true },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
@@ -301,7 +307,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ])
     ];
     const setupWs = utils.aoa_to_sheet(branchSetupData);
-    const setupCols = [12, 35, ...packChecklists.map(() => 25), 0, 0];
+    const setupCols = [10, 30, ...packChecklists.map(() => 20), 0, 0];
     setupWs['!cols'] = setupCols.map(w => ({ wch: w, hidden: w === 0 }));
     addSovereignRibbon(setupWs, "Branch Master Setup");
     utils.book_append_sheet(wb, setupWs, "BRANCH_MASTER");
@@ -334,7 +340,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         });
     });
     const pWs = utils.aoa_to_sheet(pData);
-    pWs['!cols'] = [0, 25, 30, 35, 20, 35, 0].map((w, i) => ({ wch: w, hidden: w === 0 }));
+    pWs['!cols'] = [0, 20, 25, 30, 18, 30, 0].map((w, i) => ({ wch: w, hidden: w === 0 }));
     addSovereignRibbon(pWs, "Responsibility & Resource Mapping");
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
@@ -369,7 +375,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     
                     const keyRef = `B${rowIdx} & "|" & C${rowIdx}`;
                     
-                    // HYPERLINK PATTERN: Automatically styles as Blue/Underline if it returns the HYPERLINK function
+                    // HYPERLINK PATTERN: Automatically styles as Blue/Underline if unassigned
                     const personFormula = `IF(COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0, HYPERLINK("#'TEAM_HUB'!A1", "ASSIGN IN TEAM HUB"), VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", ""))`;
                     
                     const technicalVal = t.technicalProtocol || t.description || "";
@@ -396,7 +402,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     });
 
     const mWs = utils.aoa_to_sheet(mData);
-    mWs['!cols'] = [15, 25, 25, 30, 12, 45, 55, 20, 20, 20, 12, 12, 45].map(w => ({ wch: w }));
+    // COMPACT WIDTHS: Reclaimed horizontal space for one-glance command
+    mWs['!cols'] = [12, 20, 20, 22, 10, 40, 50, 18, 18, 15, 10, 10, 40].map(w => ({ wch: w }));
     addSovereignRibbon(mWs, "Mission Execution Ledger");
     mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
 
@@ -412,7 +419,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ]);
     }
     const handoverWs = utils.aoa_to_sheet([[], [], [], handoverHeaders, ...handoverRows]);
-    handoverWs['!cols'] = [25, 30, 30, 65, 20, 25].map(w => ({ wch: w }));
+    handoverWs['!cols'] = [20, 25, 25, 55, 15, 22].map(w => ({ wch: w }));
     addSovereignRibbon(handoverWs, "Shift Handover Bridge");
     utils.book_append_sheet(wb, handoverWs, "SHIFT_HANDOVER");
 
@@ -440,7 +447,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
     const incidentWs = utils.aoa_to_sheet([[], [], [], incidentHeaders, ...incidentRows]);
     addSovereignRibbon(incidentWs, "Liability & Incident Log");
-    incidentWs['!cols'] = [15, 25, 25, 65, 45, 65, 15].map(w => ({ wch: w }));
+    incidentWs['!cols'] = [12, 20, 20, 55, 40, 55, 12].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, incidentWs, "INCIDENT_TRACKER");
 
     // --- 07. BUSINESS HEALTH ---
@@ -467,7 +474,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     });
     const healthWs = utils.aoa_to_sheet(healthData);
     addSovereignRibbon(healthWs, "Performance Analytics & Unit Health");
-    healthWs['!cols'] = [35, 25, 20, 20, 25].map(w => ({ wch: w }));
+    healthWs['!cols'] = [30, 20, 18, 18, 22].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, healthWs, "BUSINESS_HEALTH");
 
     // --- 08. SOP LIBRARY (FULL DATABASE) ---
@@ -493,7 +500,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         });
     });
     const sopWs = utils.aoa_to_sheet(sopData);
-    sopWs['!cols'] = [25, 15, 50, 60, 60].map(w => ({ wch: w }));
+    sopWs['!cols'] = [20, 12, 45, 55, 55].map(w => ({ wch: w }));
     addSovereignRibbon(sopWs, "Institutional SOP Database");
     utils.book_append_sheet(wb, sopWs, "SOP_LIBRARY");
 
@@ -521,7 +528,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     });
     const fsWs = utils.aoa_to_sheet(fsData);
     addSovereignRibbon(fsWs, "Unit Contribution & Financial Shield");
-    fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
+    fsWs['!cols'] = [12, 20, 18, 22, 12, 18, 22, 12].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
     // --- 10. SYSTEM GUIDE ---
