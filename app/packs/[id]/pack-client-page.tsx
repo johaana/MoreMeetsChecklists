@@ -181,7 +181,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
 
                 {/* Right: Built For & Selection */}
-                <div className="p-12 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-xl shadow-2xl space-y-12">
+                <div className="p-12 rounded-xl bg-white/[0.02] border border-white/10 backdrop-blur-xl shadow-2xl space-y-12">
                     <div className="space-y-5">
                         <span className="text-[10px] font-black text-primary uppercase tracking-[0.5em] font-headline">/ BUILT FOR</span>
                         <div className="flex flex-wrap gap-2.5">
@@ -226,7 +226,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {pack.checklists.slice(0, 6).map((checklist, index) => (
-                        <div key={index} className="p-12 rounded-2xl bg-white/[0.01] border border-white/5 space-y-8 hover:border-primary/20 transition-all">
+                        <div key={index} className="p-12 rounded-xl bg-white/[0.01] border border-white/5 space-y-8 hover:border-primary/20 transition-all">
                             <div className="flex justify-between items-start">
                                 <IconComponent name={checklist.icon || "ClipboardCheck"} className="w-8 h-8 text-primary/40" />
                                 <Badge variant="outline" className="text-[9px] font-black text-white/20 uppercase tracking-[0.2em]">{checklist.frequency}</Badge>

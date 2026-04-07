@@ -81,8 +81,8 @@ const TheShiftSection = () => (
             <div className="text-center space-y-4">
                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Category Shift</Badge>
                 <SectionHeadline>STOP LEAVING YOUR BRAND TO LUCK</SectionHeadline>
-                <p className="text-xl text-secondary-text italic font-medium max-w-2xl mx-auto">
-                    A good manager is a gift. A good system is an asset.
+                <p className="text-xl text-secondary-text italic font-medium max-w-2xl mx-auto leading-relaxed">
+                    A good manager is a gift. A good system is an asset. <br /> Stop leaving your brand to luck.
                 </p>
             </div>
 
@@ -254,24 +254,21 @@ const LiveDashboardSection = () => (
 );
 
 const ResignationRiskSection = () => (
-    <Section className="bg-alternate-background">
-        <div className="max-w-4xl mx-auto p-10 md:p-20 rounded-2xl border border-white/5 bg-white/[0.01] space-y-10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-12 opacity-[0.03]">
-                <Fingerprint className="w-64 h-64 text-primary" />
+    <Section className="bg-black text-center py-24 md:py-40">
+        <div className="max-w-5xl mx-auto space-y-12">
+            <div className="space-y-6">
+                <h3 className="text-4xl md:text-7xl font-black font-headline text-white uppercase italic tracking-tighter leading-[0.9]">
+                    SYSTEMS DON'T FORGET. <br /> <span className="text-primary">PEOPLE DO.</span>
+                </h3>
+                <p className="text-xl md:text-2xl text-secondary-text italic font-medium">
+                    When a manager leaves, your standards shouldn't leave.
+                </p>
             </div>
-            <div className="flex flex-col md:flex-row gap-12 items-center relative z-10">
-                <div className="space-y-6 flex-1">
-                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">Institutional Memory</Badge>
-                    <h3 className="text-3xl md:text-[2.75rem] font-black font-headline text-primary-text uppercase italic tracking-tighter leading-[0.9]">
-                        WHEN THEY LEAVE, <br /> <span className="text-primary">THE SYSTEM STAYS.</span>
-                    </h3>
-                    <p className="text-lg text-secondary-text leading-relaxed font-medium italic">
-                        The biggest risk in operations is "Tribal Knowledge." When your best manager resigns, your luck runs out. MoreMeets™ converts individual memory into permanent organizational infrastructure.
-                    </p>
-                </div>
-                <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-primary/5 flex items-center justify-center border border-primary/10 shrink-0">
-                    <History className="w-16 h-16 md:w-24 md:h-24 text-primary opacity-20" />
-                </div>
+            
+            <div className="pt-8">
+                <p className="text-sm md:text-base font-black text-white/30 uppercase tracking-[0.6em] italic leading-relaxed">
+                    THIS SYSTEM TURNS DAILY OPERATIONS INTO A <br className="hidden md:block" /> STRUCTURE THAT STAYS.
+                </p>
             </div>
         </div>
     </Section>
@@ -283,10 +280,10 @@ const PricingSection = () => (
             <div className="space-y-4">
                 <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.4em] font-black text-[11px]">Investment in Infrastructure</Badge>
                 <h2 className="text-4xl md:text-6xl font-black font-headline italic uppercase tracking-tighter text-primary-text">
-                    LUCK IS NOT A STRATEGY
+                    OPERATIONAL CERTAINTY
                 </h2>
                 <p className="text-xl text-secondary-text italic font-medium max-w-lg mx-auto">
-                    Consistency shouldn't be a lucky outcome. For ₹999, install a permanent operational asset.
+                    Consistency shouldn't be a lucky outcome. Luck is not a strategy. Install a permanent operational asset.
                 </p>
                 <div className="flex flex-col items-center gap-2 pt-6">
                     <div className="flex items-baseline gap-4">
@@ -298,7 +295,7 @@ const PricingSection = () => (
             </div>
 
             <Button size="lg" asChild className="group h-24 px-16 rounded-xl bg-primary text-black font-black uppercase text-2xl shadow-2xl hover:scale-105 active:scale-95 transition-all border-none">
-                <Link href="/library" className="flex items-center">DEPLOY OPERATIONAL CERTAINTY <ArrowRight className="ml-4 h-8 w-8 transition-transform group-hover:translate-x-2" /></Link>
+                <Link href="/library" className="flex items-center">DEPLOY SYSTEM NOW <ArrowRight className="ml-4 h-8 w-8 transition-transform group-hover:translate-x-2" /></Link>
             </Button>
         </div>
     </Section>
