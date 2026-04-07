@@ -48,6 +48,34 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
     </h2>
 );
 
+const OperationalWindow = ({ src, alt }: { src: string, alt: string }) => (
+    <div className="relative mx-auto max-w-5xl group">
+        {/* Browser/Window Frame Header */}
+        <div className="bg-[#111] border border-white/10 border-b-0 rounded-t-2xl py-3 px-5 flex items-center gap-4">
+            <div className="flex gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
+                <div className="w-2.5 h-2.5 rounded-full bg-amber-500/20" />
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500/20" />
+            </div>
+            <div className="flex-1 flex justify-center">
+                <div className="bg-black/40 border border-white/5 rounded-md px-12 py-1 text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner">
+                    sovereign_v11.9_master_engine.xlsx
+                </div>
+            </div>
+        </div>
+        {/* Content with glow effect */}
+        <div className="relative rounded-b-2xl border border-white/10 bg-zinc-900 overflow-hidden shadow-[0_0_100px_-20px_rgba(46,184,107,0.15)] group-hover:shadow-[0_0_100px_-10px_rgba(46,184,107,0.25)] transition-all duration-1000">
+            <img 
+                src={src} 
+                alt={alt} 
+                className="w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
+            />
+            {/* Gloss Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
+        </div>
+    </div>
+);
+
 const TheShiftSection = () => (
     <Section className="bg-black border-b border-white/5">
         <div className="max-w-5xl mx-auto space-y-16">
@@ -246,29 +274,23 @@ const LiveDashboardSection = () => (
                 <p className="text-xl text-secondary-text italic font-medium">No reports. No calls. No follow-ups.</p>
             </div>
 
-            <div className="relative group">
-                <div className="absolute -inset-10 bg-primary/10 blur-[100px] opacity-20" />
-                <div className="relative rounded-2xl md:rounded-[3rem] border border-white/10 bg-zinc-900/50 p-2 shadow-2xl overflow-hidden">
-                    <img 
-                        src="https://i.postimg.cc/YSQcfhnQ/Screenshot-2026-04-02-165428.png" 
-                        alt="Sovereign Dashboard" 
-                        className="rounded-xl md:rounded-[2.5rem] grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 w-full h-auto"
-                    />
-                    
-                    <div className="absolute top-1/2 -right-8 md:-right-16 -translate-y-1/2 space-y-4 hidden lg:block">
-                        {[
-                            { t: "TASKS COMPLETED", i: CheckCircle2 },
-                            { t: "TASKS MISSED", i: XCircle },
-                            { t: "BRANCH COMPARISON", i: BarChart3 },
-                            { t: "RISK SIGNALS", i: AlertTriangle }
-                        ].map(item => (
-                            <div key={item.t} className="bg-black/80 backdrop-blur-xl border border-white/10 p-4 rounded-xl flex items-center gap-3 shadow-2xl animate-pulse-soft">
-                                <item.i className="w-4 h-4 text-primary" />
-                                <span className="text-[10px] font-black text-primary-text uppercase tracking-widest">{item.t}</span>
-                            </div>
-                        ))}
+            <OperationalWindow 
+                src="https://i.postimg.cc/tTW6pWwx/Screenshot-2026-04-08-015852.png"
+                alt="Sovereign Dashboard Interface"
+            />
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-5xl mx-auto pt-12">
+                {[
+                    "Live Completion (Green/Pending)",
+                    "Unit & Group Performance Grid",
+                    "High-Risk Alert Signals",
+                    "Audit-Ready Execution Logs"
+                ].map(item => (
+                    <div key={item} className="flex items-center justify-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-primary" />
+                        <span className="text-[10px] font-black text-white/40 uppercase tracking-widest leading-tight italic">{item}</span>
                     </div>
-                </div>
+                ))}
             </div>
 
             <div className="text-center">

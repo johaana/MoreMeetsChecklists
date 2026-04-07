@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -48,6 +47,32 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
     </h2>
 );
 
+const OperationalWindow = ({ src, alt }: { src: string, alt: string }) => (
+    <div className="relative mx-auto max-w-5xl group">
+        {/* Browser Frame Header */}
+        <div className="bg-[#111] border border-white/10 border-b-0 rounded-t-2xl py-3 px-5 flex items-center gap-4">
+            <div className="flex gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
+                <div className="w-2.5 h-2.5 rounded-full bg-amber-500/20" />
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500/20" />
+            </div>
+            <div className="flex-1 flex justify-center">
+                <div className="bg-black/40 border border-white/5 rounded-md px-12 py-1 text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner">
+                    sovereign_v11.9_master_engine.xlsx
+                </div>
+            </div>
+        </div>
+        <div className="relative rounded-b-2xl border border-white/10 bg-zinc-900 overflow-hidden shadow-[0_0_100px_-20px_rgba(46,184,107,0.15)] group-hover:shadow-[0_0_100px_-10px_rgba(46,184,107,0.25)] transition-all duration-1000">
+            <img 
+                src={src} 
+                alt={alt} 
+                className="w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
+        </div>
+    </div>
+);
+
 export default function PackClientPage({ pack }: { pack: PremiumPack }) {
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -64,7 +89,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                 <div className="space-y-5 md:space-y-6">
                     <div className="space-y-4 md:space-y-5">
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-4 uppercase tracking-[0.3em] font-black text-[10px] rounded-none bg-primary/5">
-                            RESTAURANT OPERATING SYSTEM • SOVEREIGN V11.9
+                            {pack.category.toUpperCase()} OPERATING SYSTEM • SOVEREIGN V11.9
                         </Badge>
                         <h1 className="text-[2.2rem] sm:text-5xl md:text-6xl lg:text-[5rem] font-black tracking-tighter font-headline text-primary-text uppercase italic leading-[0.82]">
                             STOP CHASING STAFF.<br />
@@ -166,7 +191,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                         <h3 className="text-white/40 font-black uppercase tracking-[0.3em] text-xs italic">THE OUTCOME</h3>
                         <div className="space-y-6">
                             {[
-                                "Critical food safety & FSSAI risks",
+                                "Critical compliance & safety risks",
                                 "Silent profit leakage and theft",
                                 "Negative reviews and brand damage",
                                 "Total dependency on individuals",
@@ -274,14 +299,10 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                     <p className="text-xl text-secondary-text italic font-medium">Works for one location or across multiple branches.</p>
                 </div>
 
-                <div className="relative rounded-[3rem] border border-white/10 bg-zinc-900/50 p-3 shadow-2xl group max-w-5xl mx-auto">
-                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-10 transition-opacity duration-1000 rounded-[2.8rem]" />
-                    <img 
-                        src="https://i.postimg.cc/YSQcfhnQ/Screenshot-2026-04-02-165428.png" 
-                        alt="Sovereign Dashboard Interface" 
-                        className="rounded-[2.5rem] grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 w-full h-auto"
-                    />
-                </div>
+                <OperationalWindow 
+                    src="https://i.postimg.cc/tTW6pWwx/Screenshot-2026-04-08-015852.png"
+                    alt="Sovereign Dashboard Interface"
+                />
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-5xl mx-auto">
                     {[
@@ -292,7 +313,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                     ].map(item => (
                         <div key={item} className="flex items-center justify-center gap-3">
                             <CheckCircle2 className="w-5 h-5 text-primary" />
-                            <span className="text-[10px] font-black text-white/40 uppercase tracking-widest leading-tight">{item}</span>
+                            <span className="text-[10px] font-black text-white/40 uppercase tracking-widest leading-tight italic">{item}</span>
                         </div>
                     ))}
                 </div>
@@ -315,7 +336,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                                 <Scale className="w-5 h-5" />
                                 <span className="text-[10px] font-black uppercase tracking-widest">Audit Language</span>
                             </div>
-                            <div className="p-6 rounded-2xl bg-black border border-white/5 italic text-sm text-zinc-400">
+                            <div className="p-6 rounded-2xl bg-black border border-white/5 italic text-sm text-zinc-400 leading-relaxed">
                                 "Verify cold-chain integrity (CCP-1): Log walk-in chiller temperature (Target 1°C to 4°C)."
                             </div>
                         </div>
@@ -324,7 +345,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                                 <GraduationCap className="w-5 h-5" />
                                 <span className="text-[10px] font-black uppercase tracking-widest">Trainer Notes</span>
                             </div>
-                            <div className="p-6 rounded-2xl bg-accent/5 border border-accent/20 italic text-sm text-accent/80 font-bold">
+                            <div className="p-6 rounded-2xl bg-accent/5 border border-accent/20 italic text-sm text-accent/80 font-bold leading-relaxed">
                                 "Check the fridge display and write the number in the log. If it's above 5°C, call the Chef immediately."
                             </div>
                         </div>
@@ -333,7 +354,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                                 <AlertTriangle className="w-5 h-5" />
                                 <span className="text-[10px] font-black uppercase tracking-widest">Consequence</span>
                             </div>
-                            <div className="p-6 rounded-2xl bg-red-500/5 border border-red-500/20 italic text-sm text-red-500/80 font-bold">
+                            <div className="p-6 rounded-2xl bg-red-500/5 border border-red-500/20 italic text-sm text-red-500/80 font-bold leading-relaxed">
                                 "Bacterial growth leading to mass spoilage, guest poisoning, and total brand collapse."
                             </div>
                         </div>
@@ -439,10 +460,10 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
-                        "Pre-built Restaurant SOP Execution Engine",
+                        "Pre-built Industry SOP Execution Engine",
                         "Daily, Weekly, Monthly Auto-Schedules",
                         "Trainer Notes for 100% of Tasks",
-                        "Consequences of failure defined for all 120+ points",
+                        "Consequences of failure defined for all technical points",
                         "Unit & Group Command Dashboard",
                         "Fully Editable .xlsx / Sheets standalone system",
                         "Zero Learning Curve for floor staff"
