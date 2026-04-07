@@ -83,6 +83,32 @@ const IndustrySelector = ({ className }: { className?: string }) => (
     </div>
 );
 
+const OperationalWindow = ({ src, alt }: { src: string, alt: string }) => (
+    <div className="relative mx-auto max-w-4xl group">
+        {/* Browser Frame Header */}
+        <div className="bg-[#111] border border-white/10 border-b-0 rounded-t-2xl py-3 px-5 flex items-center gap-4">
+            <div className="flex gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
+                <div className="w-2.5 h-2.5 rounded-full bg-amber-500/20" />
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500/20" />
+            </div>
+            <div className="flex-1 flex justify-center">
+                <div className="bg-black/40 border border-white/5 rounded-md px-12 py-1 text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner">
+                    sovereign_v11.9_master_engine.xlsx
+                </div>
+            </div>
+        </div>
+        <div className="relative rounded-b-2xl border border-white/10 bg-zinc-900 overflow-hidden shadow-[0_0_100px_-20px_rgba(46,184,107,0.15)] group-hover:shadow-[0_0_100px_-10px_rgba(46,184,107,0.25)] transition-all duration-1000">
+            <img 
+                src={src} 
+                alt={alt} 
+                className="w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
+        </div>
+    </div>
+);
+
 export default function WebHeroPreviewClient() {
     return (
         <div className="flex flex-col min-h-screen bg-background text-foreground">
@@ -271,6 +297,13 @@ export default function WebHeroPreviewClient() {
                         </div>
                     </div>
                 </PreviewFrame>
+
+                <div className="mt-20">
+                    <OperationalWindow 
+                        src="https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png" 
+                        alt="High Res Dashboard Preview" 
+                    />
+                </div>
 
             </main>
             

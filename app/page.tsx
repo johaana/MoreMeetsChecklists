@@ -49,7 +49,7 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 );
 
 const OperationalWindow = ({ src, alt }: { src: string, alt: string }) => (
-    <div className="relative mx-auto max-w-5xl group">
+    <div className="relative mx-auto max-w-4xl group">
         {/* Browser/Window Frame Header */}
         <div className="bg-[#111] border border-white/10 border-b-0 rounded-t-2xl py-3 px-5 flex items-center gap-4">
             <div className="flex gap-1.5">
@@ -275,7 +275,7 @@ const LiveDashboardSection = () => (
             </div>
 
             <OperationalWindow 
-                src="https://i.postimg.cc/tTW6pWwx/Screenshot-2026-04-08-015852.png"
+                src="https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png"
                 alt="Sovereign Dashboard Interface"
             />
 

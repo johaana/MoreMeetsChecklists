@@ -48,7 +48,7 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 );
 
 const OperationalWindow = ({ src, alt }: { src: string, alt: string }) => (
-    <div className="relative mx-auto max-w-5xl group">
+    <div className="relative mx-auto max-w-4xl group">
         {/* Browser Frame Header */}
         <div className="bg-[#111] border border-white/10 border-b-0 rounded-t-2xl py-3 px-5 flex items-center gap-4">
             <div className="flex gap-1.5">
@@ -300,7 +300,7 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                 </div>
 
                 <OperationalWindow 
-                    src="https://i.postimg.cc/tTW6pWwx/Screenshot-2026-04-08-015852.png"
+                    src="https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png"
                     alt="Sovereign Dashboard Interface"
                 />
 
@@ -461,11 +461,11 @@ export default function PackClientPage({ pack }: { pack: PremiumPack }) {
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
                         "Pre-built Industry SOP Execution Engine",
-                        "Daily, Weekly, Monthly Auto-Schedules",
-                        "Trainer Notes for 100% of Tasks",
-                        "Consequences of failure defined for all technical points",
-                        "Unit & Group Command Dashboard",
-                        "Fully Editable .xlsx / Sheets standalone system",
+                        "Daily, weekly, monthly execution system",
+                        "Trainer Notes for every task",
+                        "Consequences of failure defined",
+                        "Multi-branch visibility",
+                        "Fully editable .xlsx / Sheets standalone system",
                         "Zero Learning Curve for floor staff"
                     ].map((item, i) => (
                         <div key={i} className="flex items-center gap-5 p-8 rounded-[2rem] bg-black border border-white/5 shadow-inner group hover:border-primary/20 transition-all">
