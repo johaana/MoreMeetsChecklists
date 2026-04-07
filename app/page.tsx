@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -52,11 +51,9 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 const TheShiftSection = () => (
     <Section className="bg-black border-b border-white/5">
         <div className="max-w-5xl mx-auto space-y-16">
-            <div className="grid md:grid-cols-2 gap-12 relative">
-                <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/5 hidden md:block" />
-                
-                <div className="space-y-8 p-8 md:p-12 rounded-[2rem] bg-red-500/[0.02] border border-red-500/10">
-                    <h3 className="text-red-500/60 font-black uppercase tracking-[0.2em] text-xs italic">WHY OPERATIONS BREAK</h3>
+            <div className="grid md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-2xl md:rounded-[2.5rem] overflow-hidden">
+                <div className="space-y-8 p-10 md:p-16 bg-black">
+                    <h3 className="text-red-500/60 font-black uppercase tracking-[0.4em] text-[10px] italic">WHY OPERATIONS BREAK</h3>
                     <div className="space-y-6">
                         {[
                             "Tasks depend on memory",
@@ -65,15 +62,15 @@ const TheShiftSection = () => (
                             "No real visibility",
                             "Every branch runs differently"
                         ].map(item => (
-                            <div key={item} className="flex items-center gap-4 text-sm md:text-base text-zinc-400 italic">
-                                <XCircle className="w-5 h-5 text-red-500/40 shrink-0" /> {item}
+                            <div key={item} className="flex items-start gap-4 text-base md:text-lg text-zinc-400 italic font-medium">
+                                <XCircle className="w-5 h-5 text-red-500/40 shrink-0 mt-1" /> {item}
                             </div>
                         ))}
                     </div>
                 </div>
 
-                <div className="space-y-8 p-8 md:p-12 rounded-[2rem] bg-primary/[0.02] border border-primary/10">
-                    <h3 className="text-primary font-black uppercase tracking-[0.2em] text-xs italic">WHAT THIS CHANGES</h3>
+                <div className="space-y-8 p-10 md:p-16 bg-primary/[0.02]">
+                    <h3 className="text-primary font-black uppercase tracking-[0.4em] text-[10px] italic">WHAT THIS CHANGES</h3>
                     <div className="space-y-6">
                         {[
                             "Tasks are already defined",
@@ -82,8 +79,8 @@ const TheShiftSection = () => (
                             "Dashboard shows reality live",
                             "Every location runs the same standard"
                         ].map(item => (
-                            <div key={item} className="flex items-center gap-4 text-sm md:text-base text-primary-text font-bold uppercase italic tracking-tight">
-                                <CheckCircle2 className="w-5 h-5 text-primary shrink-0" /> {item}
+                            <div key={item} className="flex items-start gap-4 text-base md:text-lg text-primary-text font-bold uppercase italic tracking-tight">
+                                <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-1" /> {item}
                             </div>
                         ))}
                     </div>
@@ -116,12 +113,14 @@ const OperatingLoopSection = () => (
                     { t: "TASKS RUN ON SCHEDULE", d: "Daily, Weekly, Monthly cycles trigger automatically.", i: Clock },
                     { t: "COMMAND", d: "Run one unit perfectly. Scale without chaos.", i: Activity }
                 ].map((step, i) => (
-                    <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left gap-4 group">
-                        <div className="w-12 h-12 rounded-xl bg-primary/5 border border-primary/20 flex items-center justify-center text-primary font-black font-mono group-hover:bg-primary group-hover:text-black transition-all">
+                    <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left gap-6 group">
+                        <div className="w-14 h-14 rounded-xl bg-primary/5 border border-primary/20 flex items-center justify-center text-primary font-black font-mono group-hover:bg-primary group-hover:text-black transition-all shadow-xl">
                             {i + 1}
                         </div>
-                        <h4 className="font-black text-primary-text uppercase italic text-sm tracking-tight">{step.t}</h4>
-                        <p className="text-sm text-secondary-text leading-relaxed font-medium italic">{step.d}</p>
+                        <div className="space-y-2">
+                            <h4 className="font-black text-primary-text uppercase italic text-sm tracking-tight">{step.t}</h4>
+                            <p className="text-[11px] text-secondary-text leading-relaxed font-medium italic">{step.d}</p>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -149,11 +148,11 @@ const ClaritySection = () => (
                     { t: "HOW TO DO IT", d: "Trainer Notes in plain language. No training curve required.", i: GraduationCap },
                     { t: "WHY IT MATTERS", d: "Specific consequences of failure defined to drive intentionality.", i: AlertTriangle }
                 ].map((item, i) => (
-                    <div key={i} className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 space-y-4 hover:border-primary/20 transition-all">
-                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                            <item.i className="w-5 h-5" />
+                    <div key={i} className="p-10 rounded-2xl bg-white/[0.02] border border-white/5 space-y-6 hover:border-primary/20 transition-all group">
+                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-colors">
+                            <item.i className="w-6 h-6" />
                         </div>
-                        <h4 className="font-black text-primary-text uppercase italic text-lg tracking-tighter">{item.t}</h4>
+                        <h4 className="font-black text-primary-text uppercase italic text-xl tracking-tighter">{item.t}</h4>
                         <p className="text-sm text-secondary-text leading-relaxed font-medium italic">{item.d}</p>
                     </div>
                 ))}
@@ -166,7 +165,7 @@ const ClaritySection = () => (
                     "Faster onboarding",
                     "No hero dependency"
                 ].map(item => (
-                    <div key={item} className="flex items-center gap-2 text-[11px] font-black text-primary uppercase tracking-widest text-center justify-center border-l border-white/10 px-4">
+                    <div key={item} className="flex items-center gap-2 text-[10px] font-black text-primary uppercase tracking-[0.2em] text-center justify-center border-l border-white/10 px-4 italic">
                         {item}
                     </div>
                 ))}
@@ -214,15 +213,15 @@ const RealWorldExamplesSection = () => (
                         why: "Guest complaints and exits" 
                     }
                 ].map((item, i) => (
-                    <div key={i} className="p-8 rounded-[2rem] bg-black border border-white/5 space-y-6">
-                        <div className="space-y-1">
-                            <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">{item.cat}</span>
-                            <h4 className="font-black text-primary-text uppercase italic text-lg tracking-tighter leading-tight">{item.title}</h4>
+                    <div key={i} className="p-10 rounded-2xl bg-black border border-white/5 space-y-8 hover:border-primary/30 transition-colors">
+                        <div className="space-y-2">
+                            <span className="text-[10px] font-black text-primary uppercase tracking-[0.3em]">{item.cat}</span>
+                            <h4 className="font-black text-primary-text uppercase italic text-xl tracking-tighter leading-tight">{item.title}</h4>
                         </div>
-                        <div className="space-y-4 text-xs font-medium italic text-secondary-text">
-                            <p><strong className="text-primary-text uppercase not-italic font-black text-[10px] tracking-widest mr-2">What:</strong> {item.what}</p>
-                            <p><strong className="text-primary-text uppercase not-italic font-black text-[10px] tracking-widest mr-2">How:</strong> {item.how}</p>
-                            <p><strong className="text-red-500 uppercase not-italic font-black text-[10px] tracking-widest mr-2">Why:</strong> {item.why}</p>
+                        <div className="space-y-5 text-[11px] font-medium italic text-secondary-text">
+                            <p className="leading-relaxed"><strong className="text-primary-text uppercase not-italic font-black text-[9px] tracking-[0.2em] mr-2 block mb-1">What:</strong> {item.what}</p>
+                            <p className="leading-relaxed"><strong className="text-primary-text uppercase not-italic font-black text-[9px] tracking-[0.2em] mr-2 block mb-1">How:</strong> {item.how}</p>
+                            <p className="leading-relaxed"><strong className="text-red-500 uppercase not-italic font-black text-[9px] tracking-[0.2em] mr-2 block mb-1">Why:</strong> {item.why}</p>
                         </div>
                     </div>
                 ))}
@@ -249,11 +248,11 @@ const LiveDashboardSection = () => (
 
             <div className="relative group">
                 <div className="absolute -inset-10 bg-primary/10 blur-[100px] opacity-20" />
-                <div className="relative rounded-[2rem] border border-white/10 bg-zinc-900/50 p-2 shadow-2xl">
+                <div className="relative rounded-2xl md:rounded-[3rem] border border-white/10 bg-zinc-900/50 p-2 shadow-2xl overflow-hidden">
                     <img 
                         src="https://i.postimg.cc/YSQcfhnQ/Screenshot-2026-04-02-165428.png" 
                         alt="Sovereign Dashboard" 
-                        className="rounded-[1.5rem] grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
+                        className="rounded-xl md:rounded-[2.5rem] grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 w-full h-auto"
                     />
                     
                     <div className="absolute top-1/2 -right-8 md:-right-16 -translate-y-1/2 space-y-4 hidden lg:block">
@@ -273,7 +272,7 @@ const LiveDashboardSection = () => (
             </div>
 
             <div className="text-center">
-                <p className="text-2xl md:text-4xl font-black text-primary-text uppercase italic tracking-tighter">
+                <p className="text-2xl md:text-4xl font-black text-primary-text uppercase italic tracking-tighter leading-tight">
                     YOU DON'T ASK. <br />
                     <span className="text-primary">YOU ALREADY KNOW.</span>
                 </p>
@@ -289,11 +288,11 @@ const WhyExistsSection = () => (
                 SYSTEMS DON'T FORGET. <br />
                 <span className="text-primary">PEOPLE DO.</span>
             </h2>
-            <div className="space-y-2">
+            <div className="space-y-4">
                 <p className="text-xl md:text-2xl text-secondary-text font-medium italic">
                     When a manager leaves, your standards shouldn't leave.
                 </p>
-                <p className="text-lg text-white/40 font-bold uppercase tracking-widest">
+                <p className="text-sm md:text-lg text-white/40 font-bold uppercase tracking-[0.4em]">
                     THIS SYSTEM TURNS DAILY OPERATIONS INTO A STRUCTURE THAT STAYS.
                 </p>
             </div>
@@ -314,13 +313,13 @@ const WhatYouGetSection = () => (
                     "Pre-built, industry-grade SOPs",
                     "Daily, weekly, monthly execution system",
                     "Trainer Notes for every task",
-                    "Consequences of failure built-in",
+                    "Consequences of failure defined",
                     "Multi-branch visibility",
                     "Fully editable standalone system"
                 ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-4 p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-primary/20 transition-all">
-                        <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
-                        <p className="text-sm font-bold text-primary-text uppercase italic tracking-tight">{item}</p>
+                    <div key={i} className="flex items-center gap-5 p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-primary/20 transition-all shadow-inner">
+                        <CheckCircle2 className="w-6 h-6 text-primary shrink-0" />
+                        <p className="text-[13px] font-bold text-primary-text uppercase italic tracking-tight leading-tight">{item}</p>
                     </div>
                 ))}
             </div>
@@ -330,9 +329,9 @@ const WhatYouGetSection = () => (
 
 const PricingSection = () => (
     <Section id="pricing" className="bg-alternate-background text-center py-32">
-        <div className="max-w-2xl mx-auto space-y-12">
+        <div className="max-w-3xl mx-auto space-y-12">
             <div className="space-y-4">
-                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.3em] font-black text-[11px]">Limited Deployment Offer</Badge>
+                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.4em] font-black text-[11px]">Limited Deployment Offer</Badge>
                 <h2 className="text-4xl md:text-6xl font-black font-headline italic uppercase tracking-tighter text-primary-text">
                     ONE-TIME DEPLOYMENT
                 </h2>
@@ -341,14 +340,14 @@ const PricingSection = () => (
                         <span className="text-7xl md:text-9xl font-black text-primary italic drop-shadow-[0_0_30px_rgba(46,184,107,0.3)]">₹999</span>
                         <span className="text-2xl md:text-4xl font-black text-white/20 italic">/ $12</span>
                     </div>
-                    <span className="text-xs font-black text-white/20 uppercase tracking-[0.4em]">NO SUBSCRIPTIONS • NO LOCK-IN</span>
+                    <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em]">NO SUBSCRIPTIONS • NO LOCK-IN</span>
                 </div>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
                 <p className="text-lg text-secondary-text font-medium italic">Single unit or multi-branch. One system for any scale.</p>
-                <Button size="lg" asChild className="group h-20 px-12 rounded-2xl bg-primary text-black font-black uppercase text-xl shadow-2xl hover:scale-105 active:scale-95 transition-all border-none">
-                    <Link href="/library">DEPLOY YOUR SYSTEM <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" /></Link>
+                <Button size="lg" asChild className="group h-24 px-16 rounded-2xl bg-primary text-black font-black uppercase text-2xl shadow-2xl hover:scale-105 active:scale-95 transition-all border-none">
+                    <Link href="/library" className="flex items-center">DEPLOY YOUR SYSTEM <ArrowRight className="ml-4 h-8 w-8 transition-transform group-hover:translate-x-2" /></Link>
                 </Button>
             </div>
         </div>
@@ -367,12 +366,12 @@ const FinalCtaSection = () => (
             
             <div className="flex flex-col items-center gap-10">
                 <div className="flex flex-col items-center">
-                    <Button size="lg" asChild className="group h-24 px-16 rounded-[2rem] bg-primary text-black font-black uppercase text-2xl shadow-[0_0_60px_-10px_rgba(46,184,107,0.6)] hover:scale-105 active:scale-95 transition-all border-none">
+                    <Button size="lg" asChild className="group h-24 px-16 rounded-2xl bg-primary text-black font-black uppercase text-2xl shadow-[0_0_60px_-10px_rgba(46,184,107,0.6)] hover:scale-105 active:scale-95 transition-all border-none">
                         <Link href="/library" className="flex flex-col items-center justify-center gap-1">
                             START SEEING <ArrowRight className="ml-4 h-8 w-8 transition-transform group-hover:translate-x-2" />
                         </Link>
                     </Button>
-                    <p className="text-[11px] font-black text-white/20 mt-10 uppercase tracking-[0.4em]">OWN IT. RUN IT. NO DEPENDENCE.</p>
+                    <p className="text-[11px] font-black text-white/20 mt-10 uppercase tracking-[0.5em]">OWN IT. RUN IT. NO DEPENDENCE.</p>
                 </div>
             </div>
         </div>
@@ -388,7 +387,7 @@ export default function Home() {
         
         <Section id="operational-logic" className="bg-black border-b border-white/5 py-16 md:py-20">
             <div className="max-w-5xl mx-auto text-center space-y-12">
-                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[11px]">OPERATIONAL LOGIC</Badge>
+                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">OPERATIONAL LOGIC</Badge>
                 <div className="flex flex-wrap justify-center gap-x-8 md:gap-x-16 gap-y-8">
                     {[
                         { from: "MEMORY", to: "INFRASTRUCTURE" },
@@ -397,9 +396,9 @@ export default function Home() {
                         { from: "DOCUMENTATION", to: "EXECUTION" }
                     ].map((shift, i) => (
                         <div key={i} className="flex items-center gap-3 md:gap-4">
-                            <span className="text-sm md:text-lg font-black text-white/20 uppercase tracking-widest italic">{shift.from}</span>
+                            <span className="text-sm md:text-xl font-black text-white/20 uppercase tracking-[0.2em] italic">{shift.from}</span>
                             <ArrowRight className="w-4 h-4 text-primary/40" />
-                            <span className="text-sm md:text-lg font-black text-primary uppercase tracking-widest italic">{shift.to}</span>
+                            <span className="text-sm md:text-xl font-black text-primary uppercase tracking-[0.2em] italic">{shift.to}</span>
                         </div>
                     ))}
                 </div>
