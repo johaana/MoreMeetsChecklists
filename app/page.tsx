@@ -25,7 +25,10 @@ import {
     HeartPulse,
     ShieldAlert,
     Star,
-    Flame
+    Flame,
+    Hospital,
+    School,
+    Popcorn
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -193,34 +196,85 @@ const DeploymentRoadmapSection = () => (
     </Section>
 );
 
-const ForensicExamplesSection = () => (
-    <Section className="bg-black">
-        <div className="max-w-6xl mx-auto space-y-16">
-            <div className="text-center space-y-4">
-                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.4em] font-black text-[11px]">System Standards</Badge>
-                <SectionHeadline>SOVEREIGN EXAMPLES</SectionHeadline>
-                <p className="text-xl text-secondary-text italic font-medium">Industry-grade modules ready for immediate deployment.</p>
-            </div>
+const RealTaskExamplesSection = () => {
+    const examples = [
+        {
+            industry: "RESTAURANT",
+            title: "COLD-CHAIN CHECK",
+            icon: Utensils,
+            color: "text-primary",
+            what: "Ensure fridge is 1°C to 4°C",
+            how: "Check display and log reading",
+            why: "Prevents spoilage and recall"
+        },
+        {
+            industry: "HOSPITAL",
+            title: "CRASH CART READINESS",
+            icon: Hospital,
+            color: "text-pink-500",
+            what: "Verify cart seal and O2 level",
+            how: "Check lock seal + pressure",
+            why: "Emergency response failure"
+        },
+        {
+            industry: "SCHOOL",
+            title: "BUS SAFETY CHECK",
+            icon: School,
+            color: "text-amber-500",
+            what: "No child left in bus",
+            how: "Walk to the last seat",
+            why: "Critical safety never-event"
+        },
+        {
+            industry: "CINEMA",
+            title: "AUDITORIUM COMFORT",
+            icon: Popcorn,
+            color: "text-purple-500",
+            what: "Verify temperature in show",
+            how: "Check AC output load",
+            why: "Guest complaints and exits"
+        }
+    ];
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                    { t: "HACCP Kitchen Safety", d: "Zero-fail thermal logs and allergen separation protocols for high-stakes kitchens.", i: Utensils },
-                    { t: "Vault & Cash Integrity", d: "Dual-verification controls for high-value inventory and revenue reconciliation.", i: Lock },
-                    { t: "Clinical Safe-Zone", d: "WHO-aligned surgical time-outs and bedside handover governance.", i: HeartPulse },
-                    { t: "MHE & Warehouse EHS", d: "Rigorous daily maintenance audits for forklifts and structural racking safety.", i: ShieldAlert },
-                    { t: "Reputation Guard", d: "24h response telemetry for digital review signals and guest feedback sentiment.", i: Star },
-                    { t: "Fire Exit Hardening", d: "Daily physical verification of life-safety paths and alarm readiness.", i: Flame }
-                ].map((ex, i) => (
-                    <div key={i} className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all group">
-                        <ex.i className="w-8 h-8 text-primary/40 group-hover:text-primary mb-6 transition-colors" />
-                        <h4 className="text-xl font-black text-primary-text uppercase italic tracking-tighter mb-3 leading-tight">{ex.t}</h4>
-                        <p className="text-xs text-secondary-text italic font-medium leading-relaxed">{ex.d}</p>
-                    </div>
-                ))}
+    return (
+        <Section className="bg-black">
+            <div className="max-w-7xl mx-auto space-y-16">
+                <div className="text-center space-y-4">
+                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Field Evidence</Badge>
+                    <SectionHeadline>REAL TASK EXAMPLES</SectionHeadline>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {examples.map((ex, i) => (
+                        <div key={i} className="p-8 rounded-2xl border border-white/5 bg-[#0a0a0a] flex flex-col space-y-8 hover:border-primary/20 transition-all group">
+                            <div className="flex items-center gap-2">
+                                <ex.icon className={cn("w-4 h-4", ex.color)} />
+                                <span className={cn("text-[10px] font-black uppercase tracking-[0.3em]", ex.color)}>{ex.industry}</span>
+                            </div>
+                            
+                            <h4 className="text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-none font-headline">{ex.title}</h4>
+                            
+                            <div className="space-y-6">
+                                <div className="space-y-1">
+                                    <span className="text-[10px] font-black text-white/30 uppercase tracking-widest">WHAT:</span>
+                                    <p className="text-sm text-secondary-text italic font-medium">{ex.what}</p>
+                                </div>
+                                <div className="space-y-1">
+                                    <span className="text-[10px] font-black text-white/30 uppercase tracking-widest">HOW:</span>
+                                    <p className="text-sm text-secondary-text italic font-medium">{ex.how}</p>
+                                </div>
+                                <div className="space-y-1">
+                                    <span className="text-[10px] font-black text-red-500 uppercase tracking-widest">WHY:</span>
+                                    <p className="text-sm text-secondary-text italic font-medium">{ex.why}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
-    </Section>
-);
+        </Section>
+    );
+};
 
 const LiveDashboardSection = () => (
     <Section className="bg-black overflow-hidden border-y border-white/5">
@@ -312,7 +366,7 @@ export default function Home() {
         <InstitutionalPayloadSection />
         <DeploymentRoadmapSection />
         <LiveDashboardSection />
-        <ForensicExamplesSection />
+        <RealTaskExamplesSection />
         <ResignationRiskSection />
         
         <TestimonialsSection />
