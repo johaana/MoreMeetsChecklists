@@ -155,7 +155,52 @@ const InstitutionalPayloadSection = () => (
                         )}>
                             <item.i className="w-5 h-5" />
                         </div>
-                        <h4 className="font-black text-primary-text uppercase italic text-sm tracking-tighter leading-tight">{item.t}</h4>
+                        <h4 className="font-black text-primary-text uppercase italic text-sm tracking-tighter leading-tight font-headline">{item.t}</h4>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </Section>
+);
+
+const TheDifferentiatorSection = () => (
+    <Section className="bg-black border-y border-white/5">
+        <div className="max-w-6xl mx-auto space-y-20">
+            <div className="text-center space-y-4">
+                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.4em] font-black text-[10px]">The Differentiator</Badge>
+                <h2 className="text-4xl md:text-7xl font-black font-headline text-primary-text uppercase italic tracking-tighter leading-[0.9]">
+                    EVERY TASK IS <br /> BUILT FOR CLARITY
+                </h2>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+                {[
+                    { t: "WHAT TO DO", d: "Clear, unambiguous instructions. No room for guessing.", i: ClipboardCheck },
+                    { t: "HOW TO DO IT", d: "Trainer Notes in plain language. No training curve required.", i: GraduationCap },
+                    { t: "WHY IT MATTERS", d: "Specific consequences of failure defined to drive intentionality.", i: AlertTriangle }
+                ].map((card, i) => (
+                    <div key={i} className="p-10 rounded-[2.5rem] bg-[#0a0a0a] border border-white/5 space-y-8 group hover:border-primary/20 transition-all duration-500">
+                        <div className="w-14 h-14 rounded-2xl bg-primary/5 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-all">
+                            <card.i className="w-6 h-6" />
+                        </div>
+                        <div className="space-y-4">
+                            <h4 className="text-2xl font-black text-primary-text uppercase italic tracking-tighter font-headline leading-none">{card.t}</h4>
+                            <p className="text-base text-secondary-text italic font-medium leading-relaxed">{card.d}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-white/5 max-w-5xl mx-auto">
+                {[
+                    "NO MISINTERPRETATION",
+                    "SAME EXECUTION ACROSS TEAMS",
+                    "FASTER ONBOARDING",
+                    "NO HERO DEPENDENCY"
+                ].map((proof, i) => (
+                    <div key={i} className="flex items-center gap-6">
+                        <span className="text-[10px] md:text-[11px] font-black text-primary uppercase tracking-[0.3em] italic text-center leading-tight">{proof}</span>
+                        {i < 3 && <div className="hidden md:block w-px h-4 bg-white/10" />}
                     </div>
                 ))}
             </div>
@@ -164,7 +209,7 @@ const InstitutionalPayloadSection = () => (
 );
 
 const DeploymentRoadmapSection = () => (
-    <Section className="bg-alternate-background border-y border-white/5">
+    <Section className="bg-alternate-background border-b border-white/5">
         <div className="max-w-5xl mx-auto space-y-16">
             <div className="text-center space-y-4">
                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Implementation</Badge>
@@ -186,7 +231,7 @@ const DeploymentRoadmapSection = () => (
                         </div>
                         <div className="space-y-2">
                             <span className="text-[10px] font-black text-primary uppercase tracking-[0.5em] italic">{step.s} / ROADMAP</span>
-                            <h4 className="text-lg font-black text-primary-text uppercase italic tracking-tighter">{step.t}</h4>
+                            <h4 className="text-lg font-black text-primary-text uppercase italic tracking-tighter font-headline">{step.t}</h4>
                             <p className="text-sm text-secondary-text italic font-medium leading-relaxed">{step.d}</p>
                         </div>
                     </div>
@@ -364,6 +409,7 @@ export default function Home() {
         
         <TheShiftSection />
         <InstitutionalPayloadSection />
+        <TheDifferentiatorSection />
         <DeploymentRoadmapSection />
         <LiveDashboardSection />
         <RealTaskExamplesSection />
