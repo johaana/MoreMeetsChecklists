@@ -16,7 +16,8 @@ import {
     Popcorn,
     ClipboardCheck,
     Activity,
-    Smartphone
+    Smartphone,
+    FileSpreadsheet
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -33,9 +34,9 @@ const ELITE_INDUSTRIES = [
 
 const TECHNICAL_PAYLOAD = [
     { t: "120+ Pre-built SOPs", i: ClipboardCheck },
+    { t: "Excel & Sheets Ready", i: FileSpreadsheet },
     { t: "Live Dashboard", i: Activity },
-    { t: "No SaaS. Own your data.", i: Lock },
-    { t: "Trainer Notes for staff", i: Smartphone }
+    { t: "No SaaS. Own your data.", i: Lock }
 ];
 
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
@@ -162,7 +163,7 @@ export const HeroSection = () => (
                                 GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="h-5 w-5" />
                             </Link>
                         </Button>
-                        <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.4em] pl-2">NO SUBSCRIPTIONS • NO LOCK-IN</p>
+                        <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.4em] pl-2">NO SUBSCRIPTIONS • EXCEL NATIVE • OWN FOREVER</p>
                     </div>
                 </div>
 

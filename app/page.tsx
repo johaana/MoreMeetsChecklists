@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -88,7 +87,7 @@ const InstitutionalPayloadSection = () => (
                     { t: "TRAINER NOTES FOR EVERY TASK", i: GraduationCap },
                     { t: "CONSEQUENCES OF FAILURE DEFINED", i: AlertTriangle },
                     { t: "SINGLE UNIT OR MULTI-BRANCH VISIBILITY", i: LayoutGrid },
-                    { t: "FULLY EDITABLE STANDALONE SYSTEM", i: FileSpreadsheet, highlighted: true }
+                    { t: "EXCEL & GOOGLE SHEETS STANDALONE SYSTEM", i: FileSpreadsheet, highlighted: true }
                 ].map((item, i) => (
                     <div key={i} className={cn(
                         "p-10 rounded-2xl border border-white/5 flex flex-col gap-6 hover:border-primary/20 transition-all group",
@@ -163,7 +162,7 @@ const DailySequenceSection = () => (
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
                 {[
-                    { s: "1", t: "SETUP", d: "Add branches and assign team to roles. One time only." },
+                    { s: "1", t: "SETUP", d: "Download your .xlsx master and sync to Excel or Google Sheets." },
                     { s: "2", t: "TEAM OPENS TASKS", d: "They see what to do, how to do it, and why it matters." },
                     { s: "3", t: "THEY EXECUTE", d: "Names entered as work happens. Logs build live." },
                     { s: "4", t: "TASKS RUN ON SCHEDULE", d: "Daily, Weekly, Monthly cycles trigger automatically." },
@@ -388,7 +387,7 @@ const PricingSection = () => (
                         <span className="text-7xl md:text-9xl font-black text-primary italic drop-shadow-[0_0_30px_rgba(46,184,107,0.3)]">₹999</span>
                         <span className="text-2xl md:text-4xl font-black text-white/20 italic">/ $12</span>
                     </div>
-                    <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em]">NO SUBSCRIPTIONS • NO LOCK-IN</span>
+                    <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em]">NO SUBSCRIPTIONS • EXCEL NATIVE • OWN FOREVER</span>
                 </div>
             </div>
 

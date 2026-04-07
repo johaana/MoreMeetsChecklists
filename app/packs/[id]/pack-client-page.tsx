@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -30,7 +29,8 @@ import {
     Check,
     LayoutGrid,
     Gem,
-    History
+    History,
+    FileSpreadsheet
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -168,7 +168,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-[11px] font-black text-primary uppercase tracking-[0.3em]">
                             <span className="flex items-center gap-2.5"><LayoutGrid className="w-4 h-4" /> {totalChecklists} MODULES</span>
                             <span className="flex items-center gap-2.5"><Target className="w-4 h-4" /> {totalTasks}+ TASKS</span>
-                            <span className="flex items-center gap-2.5"><History className="w-4 h-4" /> LIFETIME UPDATES</span>
+                            <span className="flex items-center gap-2.5"><FileSpreadsheet className="w-4 h-4" /> EXCEL & SHEETS</span>
                         </div>
                         
                         <div className="pt-8">
