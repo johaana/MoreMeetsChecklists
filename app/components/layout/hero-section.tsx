@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -17,7 +18,8 @@ import {
     Popcorn,
     ClipboardCheck,
     Activity,
-    Smartphone
+    Smartphone,
+    CheckCircle2
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -39,14 +41,16 @@ const TECHNICAL_PAYLOAD = [
     { t: "Trainer Notes for staff", i: Smartphone }
 ];
 
+const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
+
 export const HeroSection = () => (
     <section className="relative w-full overflow-hidden bg-black">
-        {/* --- MOBILE ARCHITECTURE: OPTION 1 (THE COMMAND GRID) --- */}
+        {/* --- MOBILE ARCHITECTURE: THE COMMAND GRID --- */}
         <div className="md:hidden flex flex-col min-h-[calc(100dvh-64px)]">
             {/* 1. Video Header (35%) */}
             <div className="relative h-[35vh] w-full overflow-hidden bg-zinc-900">
                 <video
-                    src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
+                    src={VIDEO_URL}
                     autoPlay
                     loop
                     muted
@@ -118,90 +122,66 @@ export const HeroSection = () => (
             </div>
         </div>
 
-        {/* --- DESKTOP ARCHITECTURE: CINEMATIC SIDE-BY-SIDE --- */}
-        <div className="hidden md:flex flex-row items-center h-[90vh] min-h-[700px]">
+        {/* --- DESKTOP ARCHITECTURE: THE ELITE REFINEMENT (OPTION 4) --- */}
+        <div className="hidden md:flex flex-row items-center h-[90vh] min-h-[800px] relative">
             {/* Cinematic Visual Layer */}
-            <div className="absolute inset-0 z-0 overflow-hidden">
-                <video
-                    src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
+            <div className="absolute inset-0 z-0">
+                <video 
+                    src={VIDEO_URL} 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    className="w-full h-full object-cover opacity-20" 
                 />
-                {/* Surgical Masking: 100% Black on text-side, sharp transition to clear environment */}
-                <div className="absolute inset-0 z-10 bg-[linear-gradient(90deg,#000_0%,#000_35%,rgba(0,0,0,0.8)_45%,rgba(0,0,0,0)_70%)]" />
+                <div className="absolute inset-0 bg-black/40" />
             </div>
 
-            {/* Left Command Block */}
-            <div className="container px-4 md:px-6 relative z-20 flex flex-col justify-center">
-                <div className="max-w-3xl space-y-5 md:space-y-6">
-                    {/* 1. Hook & Payoff */}
-                    <h1 className="md:text-7xl lg:text-[5.2rem] font-black font-headline tracking-tighter !leading-[0.82] text-primary-text uppercase italic">
-                        STOP CHASING. <br />
-                        <span className="text-primary">START SEEING.</span>
-                    </h1>
-
-                    {/* 2. Result Clarity */}
-                    <div className="space-y-1.5">
-                        <h2 className="text-xl md:text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-none">
-                            Your team marks tasks. <br />
-                            <span className="text-primary">You see everything without asking.</span>
-                        </h2>
-                        <p className="text-base md:text-lg max-w-[500px] text-secondary-text leading-snug font-medium italic border-l-2 border-primary/20 pl-5">
-                            Know what's done. What's missed. What's delayed. <br />
-                            Across your entire operation.
+            <div className="container px-4 md:px-32 relative z-10 h-full grid grid-cols-[1.2fr,1fr] items-center gap-32">
+                {/* Left: Narrative & Payload */}
+                <div className="space-y-16">
+                    <div className="space-y-8">
+                        <h1 className="text-8xl font-black font-headline text-white leading-[0.8] uppercase italic tracking-tighter">
+                            CAPTURE<br />
+                            <span className="text-primary">MEMORY.</span>
+                        </h1>
+                        <p className="text-xl text-white/40 italic font-medium max-w-sm border-l border-white/20 pl-10 leading-relaxed">
+                            Institutional memory is an asset. <br /> Anything else is just luck.
                         </p>
                     </div>
 
-                    {/* 3. The Left Switchboard */}
-                    <div className="p-4 rounded-[1.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl max-w-lg shadow-2xl space-y-3">
-                        <div className="space-y-2">
-                            <h3 className="text-[13px] font-black text-primary uppercase tracking-[0.3em]">SEE HOW IT WORKS FOR YOUR BUSINESS</h3>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1">
-                                {ELITE_INDUSTRIES.map(item => (
-                                    <Link 
-                                        key={item.id} 
-                                        href={`/packs/${item.id}`} 
-                                        className="flex items-center justify-between group/link text-sm font-bold text-primary-text/70 hover:text-primary transition-all uppercase italic tracking-tighter border-b border-white/5 pb-0.5"
-                                    >
-                                        <div className="flex items-center gap-2">
-                                            <item.icon className="w-3.5 h-3.5 text-primary/40 group-hover/link:text-primary transition-colors" />
-                                            <span>{item.name}</span>
-                                        </div>
-                                        <ChevronRight className="w-3.5 h-3.5 opacity-0 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-all" />
-                                    </Link>
-                                ))}
+                    <div className="flex flex-col gap-6">
+                        {TECHNICAL_PAYLOAD.slice(0, 3).map((item, i) => (
+                            <div key={i} className="flex items-center gap-4">
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">{item.t}</span>
                             </div>
-                        </div>
+                        ))}
                     </div>
 
-                    {/* 4. Action & Proof */}
-                    <div className="flex flex-col gap-4">
-                        <div className="flex flex-wrap gap-x-5 gap-y-1">
-                            {[
-                                { t: "NO APPS / NO SAAS", i: Lock },
-                                { t: "OWN FOREVER", i: Zap },
-                                { t: "AUDIT READY", i: ShieldCheck }
-                            ].map(point => (
-                                <div key={point.t} className="flex items-center gap-1.5">
-                                    <point.i className="w-4 h-4 text-primary" />
-                                    <span className="text-[11px] font-black text-white/40 uppercase tracking-widest">{point.t}</span>
-                                </div>
-                            ))}
-                        </div>
+                    <div className="space-y-4">
+                        <Button asChild size="lg" className="bg-transparent border border-primary/40 text-primary hover:bg-primary hover:text-black shadow-none w-fit px-12 h-16 rounded-xl font-black uppercase italic text-sm tracking-widest transition-all active:scale-95">
+                            <Link href="/library" className="flex items-center justify-center gap-2">
+                                GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="h-5 w-5" />
+                            </Link>
+                        </Button>
+                        <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.4em] pl-2">NO SUBSCRIPTIONS • NO LOCK-IN</p>
+                    </div>
+                </div>
 
-                        <div className="flex flex-col items-start gap-3">
-                            <Button size="lg" asChild className="group h-14 md:h-16 px-8 md:px-10 rounded-xl bg-primary text-black hover:brightness-110 shadow-[0_0_30px_-10px_rgba(46,184,107,0.5)] transition-all active:scale-95 border-none">
-                                <Link href="/library" className="inline-flex items-center justify-center font-black uppercase italic text-sm md:text-base tracking-widest">
-                                    GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 transition-transform group-hover:translate-x-1" />
-                                </Link>
-                            </Button>
-                            <p className="text-[11px] md:text-xs text-secondary-text/70 italic font-bold leading-tight uppercase tracking-[0.15em] border-l border-primary/30 pl-4">
-                                NO LEARNING CURVE. <br /> RUNS ON EXCEL / GOOGLE SHEETS.
-                            </p>
-                        </div>
+                {/* Right: Sector Selection (Vertical stack) */}
+                <div className="p-1 border-l border-white/10 space-y-12 pl-20">
+                    <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.6em]">SELECT VERTICAL</span>
+                    <div className="space-y-6">
+                        {ELITE_INDUSTRIES.map((ind) => (
+                            <Link 
+                                key={ind.id} 
+                                href={`/packs/${ind.id}`} 
+                                className="block text-2xl font-bold uppercase italic text-white/20 hover:text-primary transition-all hover:translate-x-3"
+                            >
+                                {ind.name}
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </div>
