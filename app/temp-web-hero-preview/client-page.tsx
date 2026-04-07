@@ -90,13 +90,13 @@ export default function WebHeroPreviewClient() {
             
             <main className="flex-1 py-20 px-6 space-y-40 bg-zinc-950">
                 <div className="max-w-4xl mx-auto text-center space-y-4">
-                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Sovereign Minimalist Lab v5.1</Badge>
-                    <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-none text-white">Refining the "Elite" Aesthetic</h1>
-                    <p className="text-secondary-text italic font-medium">Testing mirrored orientations and typographic gravity.</p>
+                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Sovereign Web Lab v6.0</Badge>
+                    <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-none text-white">The Right-Aligned Mandate</h1>
+                    <p className="text-secondary-text italic font-medium">Standardizing visual flow across all strategic archetypes.</p>
                 </div>
 
                 {/* VARIANT 1: THE BASELINE COMMAND */}
-                <PreviewFrame title="1. The Baseline Command" description="The proven formula: Side-by-side, glass card, and integrated technical payload.">
+                <PreviewFrame title="1. The Baseline Command" description="The proven formula: Left-aligned narrative, right-aligned glass card. Desaturated video.">
                     <div className="absolute inset-0 z-0">
                         <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-40 grayscale-[0.5]" />
                         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
@@ -127,123 +127,113 @@ export default function WebHeroPreviewClient() {
                     </div>
                 </PreviewFrame>
 
-                {/* VARIANT 2: THE MINIMALIST MIRROR (A) */}
-                <PreviewFrame title="2. The Minimalist Mirror (A)" description="Reversed orientation with left-aligned sector selection and right-aligned narrative.">
+                {/* VARIANT 2: THE VIVID NARRATIVE */}
+                <PreviewFrame title="2. The Vivid Narrative" description="Full-color cinematic visuals. Narrative focus on 'Capture Memory'. Right-aligned selector.">
+                    <div className="absolute inset-0 z-0">
+                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-40" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+                    </div>
+                    <div className="relative z-10 h-full grid grid-cols-2 items-center px-20 gap-20">
+                        <div className="space-y-10">
+                            <div className="space-y-5">
+                                <h1 className="text-7xl font-black font-headline text-white leading-[0.85] uppercase italic tracking-tighter">
+                                    CAPTURE<br />
+                                    <span className="text-primary">MEMORY.</span>
+                                </h1>
+                                <p className="text-xl text-white/60 italic font-medium border-l-2 border-primary/20 pl-6 max-w-lg leading-relaxed">
+                                    Institutional memory is an asset. Anything else is just luck. <br />
+                                    Own your standards forever.
+                                </p>
+                            </div>
+                            <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                                {TECHNICAL_PAYLOAD.map((item, i) => (
+                                    <div key={i} className="flex items-center gap-3">
+                                        <item.i className="w-4 h-4 text-primary" />
+                                        <span className="text-[11px] font-black text-white/40 uppercase tracking-widest">{item.t}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            <DesktopCTA className="bg-white text-black shadow-white/10" />
+                        </div>
+                        <IndustrySelector />
+                    </div>
+                </PreviewFrame>
+
+                {/* VARIANT 3: THE INDUSTRIAL SPLIT */}
+                <PreviewFrame title="3. The Industrial Split" description="Hard 50/50 division. Left side commands attention on black. Right side frames the video.">
+                    <div className="h-full flex overflow-hidden">
+                        <div className="w-1/2 bg-black h-full flex flex-col justify-center px-20 space-y-12">
+                            <div className="space-y-6">
+                                <Badge className="bg-primary/10 text-primary border-primary/20 w-fit uppercase font-black tracking-widest text-[10px]">SOVEREIGN V11.9</Badge>
+                                <h1 className="text-6xl font-black font-headline text-white leading-[0.85] uppercase italic tracking-tighter">
+                                    DEPLOY<br />
+                                    <span className="text-primary">INFRASTRUCTURE.</span>
+                                </h1>
+                                <p className="text-lg text-secondary-text italic font-medium border-l-2 border-primary/20 pl-6 max-w-sm">
+                                    Systems are not suggestions. <br />
+                                    They are infrastructure.
+                                </p>
+                            </div>
+                            <div className="space-y-4">
+                                {TECHNICAL_PAYLOAD.map((item, i) => (
+                                    <div key={i} className="flex items-center gap-3">
+                                        <item.i className="w-4 h-4 text-primary/60" />
+                                        <span className="text-[10px] font-black text-white/30 uppercase tracking-widest italic">{item.t}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            <DesktopCTA className="w-full" />
+                        </div>
+                        <div className="w-1/2 relative h-full flex items-center justify-center">
+                            <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" />
+                            <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+                            <IndustrySelector className="relative z-10 w-[80%] max-w-md bg-black/60 border-white/5" />
+                        </div>
+                    </div>
+                </PreviewFrame>
+
+                {/* VARIANT 4: THE ELITE REFINEMENT */}
+                <PreviewFrame title="4. The Elite Refinement" description="Format 5 styling (prestigious line-art) with Variant 2 content. Right-aligned selector.">
                     <div className="absolute inset-0 z-0">
                         <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20" />
                         <div className="absolute inset-0 bg-black/40" />
                     </div>
                     <div className="relative z-10 h-full grid grid-cols-[1.2fr,1fr] items-center px-32 gap-32">
-                        <IndustrySelector />
                         <div className="space-y-16">
                             <div className="space-y-8">
                                 <h1 className="text-8xl font-black font-headline text-white leading-[0.8] uppercase italic tracking-tighter">
                                     CAPTURE<br />
                                     <span className="text-primary">MEMORY.</span>
                                 </h1>
-                                <p className="text-xl text-white/40 italic font-medium max-w-sm border-r border-white/20 pr-10 leading-relaxed text-right ml-auto">
+                                <p className="text-xl text-white/40 italic font-medium max-w-sm border-l border-white/20 pl-10 leading-relaxed">
                                     Institutional memory is an asset. <br /> Anything else is just luck.
                                 </p>
                             </div>
-                            <div className="flex flex-col items-end gap-6">
+                            <div className="flex flex-col gap-6">
                                 {TECHNICAL_PAYLOAD.slice(0, 3).map((item, i) => (
                                     <div key={i} className="flex items-center gap-4">
-                                        <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">{item.t}</span>
                                         <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                        <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">{item.t}</span>
                                     </div>
                                 ))}
                             </div>
-                            <div className="flex justify-end">
-                                <DesktopCTA className="bg-transparent border border-primary/40 text-primary hover:bg-primary hover:text-black shadow-none w-fit px-12" />
-                            </div>
+                            <DesktopCTA className="bg-transparent border border-primary/40 text-primary hover:bg-primary hover:text-black shadow-none w-fit px-12" />
                         </div>
-                    </div>
-                </PreviewFrame>
-
-                {/* VARIANT 3: THE MINIMALIST MIRROR (B - REVERSED 5) */}
-                <PreviewFrame title="3. The Minimalist Mirror (B)" description="Variation of 5: Reversed orientation with left-aligned sector selection and right-aligned narrative.">
-                    <div className="absolute inset-0 z-0">
-                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20" />
-                        <div className="absolute inset-0 bg-black/40" />
-                    </div>
-                    <div className="relative z-10 h-full grid grid-cols-[1fr,1.2fr] items-center px-32 gap-32">
-                        <div className="p-1 border-r border-white/10 space-y-12 pr-20 text-right">
+                        <div className="p-1 border-l border-white/10 space-y-12 pl-20">
                             <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.6em]">SELECT VERTICAL</span>
                             <div className="space-y-6">
                                 {ELITE_7.map((ind) => (
-                                    <Link key={ind.id} href={`/packs/${ind.id}`} className="block text-2xl font-bold uppercase italic text-white/20 hover:text-primary transition-all hover:-translate-x-3">
+                                    <Link key={ind.id} href={`/packs/${ind.id}`} className="block text-2xl font-bold uppercase italic text-white/20 hover:text-primary transition-all hover:translate-x-3">
                                         {ind.name}
                                     </Link>
                                 ))}
                             </div>
-                        </div>
-                        <div className="space-y-16">
-                            <div className="space-y-8">
-                                <h1 className="text-8xl font-black font-headline text-white leading-[0.8] uppercase italic tracking-tighter">
-                                    DEPLOY<br />
-                                    <span className="text-primary">SYSTEMS.</span>
-                                </h1>
-                                <p className="text-xl text-white/40 italic font-medium max-w-sm border-l border-white/20 pl-10 leading-relaxed">
-                                    Memory is not a system. Serious operations deserve more than improvisation.
-                                </p>
-                            </div>
-                            <div className="flex flex-col gap-6">
-                                {TECHNICAL_PAYLOAD.slice(0, 3).map((item, i) => (
-                                    <div key={i} className="flex items-center gap-4">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                                        <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">{item.t}</span>
-                                    </div>
-                                ))}
-                            </div>
-                            <DesktopCTA className="bg-transparent border border-primary/40 text-primary hover:bg-primary hover:text-black shadow-none w-fit px-12" />
-                        </div>
-                    </div>
-                </PreviewFrame>
-
-                {/* VARIANT 4: THE MINIMALIST ELITE MIRROR (Content of 2 in Format 5) */}
-                <PreviewFrame title="4. The Elite Mirror (Content 2 / Format 5)" description="The narrative of 'Memory Capture' in the ultra-refined vertical stack format.">
-                    <div className="absolute inset-0 z-0">
-                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20" />
-                        <div className="absolute inset-0 bg-black/40" />
-                    </div>
-                    <div className="relative z-10 h-full grid grid-cols-[1fr,1.2fr] items-center px-32 gap-32">
-                        {/* Selector on Left (Format 5 style reversed) */}
-                        <div className="p-1 border-r border-white/10 space-y-12 pr-20 text-right">
-                            <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.6em]">TARGET SECTOR</span>
-                            <div className="space-y-6">
-                                {ELITE_7.map((ind) => (
-                                    <Link key={ind.id} href={`/packs/${ind.id}`} className="block text-2xl font-bold uppercase italic text-white/20 hover:text-primary transition-all hover:-translate-x-3">
-                                        {ind.name}
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
-                        {/* Narrative on Right (Format 5 style reversed + Content of 2) */}
-                        <div className="space-y-16">
-                            <div className="space-y-8">
-                                <h1 className="text-8xl font-black font-headline text-white leading-[0.8] uppercase italic tracking-tighter">
-                                    CAPTURE<br />
-                                    <span className="text-primary">MEMORY.</span>
-                                </h1>
-                                <p className="text-xl text-white/40 italic font-medium max-w-sm border-l border-white/20 pl-10 leading-relaxed">
-                                    Institutional memory is an asset. <br /> Anything else is just luck.
-                                </p>
-                            </div>
-                            <div className="flex flex-col gap-6">
-                                {TECHNICAL_PAYLOAD.slice(0, 3).map((item, i) => (
-                                    <div key={i} className="flex items-center gap-4">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                                        <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">{item.t}</span>
-                                    </div>
-                                ))}
-                            </div>
-                            <DesktopCTA className="bg-transparent border border-primary/40 text-primary hover:bg-primary hover:text-black shadow-none w-fit px-12" />
                         </div>
                     </div>
                 </PreviewFrame>
 
                 {/* VARIANT 5: THE MINIMALIST ELITE */}
-                <PreviewFrame title="5. The Minimalist Elite" description="The selected high-end variant: Focus on line-art, whitespace, and prestigious spacing.">
+                <PreviewFrame title="5. The Minimalist Elite" description="The selected prestigious standard. Focus on line-art, whitespace, and vertical typography.">
                     <div className="absolute inset-0 z-0">
                         <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20" />
                         <div className="absolute inset-0 bg-black/40" />
