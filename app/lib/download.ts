@@ -1,3 +1,4 @@
+
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
@@ -8,6 +9,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
  * Sovereign Engine v11.9.7 - STABLE BUILD
  * Features: Fixed Top Branch Logic, Symmetric Grid, Standard Assignment Text.
  * Optimized: Operational Pulse is Amber. Vitals use Two-Tone Blue.
+ * Refinement: HYPERLINK formula pattern for visual assignment links.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -133,23 +135,17 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_ZONE } }
     };
 
-    const inputStyleLeft = {
+    const coachingStyle = {
         ...dataStyleLeft,
-        font: { ...baseFont, color: { rgb: "000000" }, bold: true },
-        fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_ZONE } }
+        font: { ...baseFont, color: { rgb: "065F46" }, italic: true },
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_GREEN } },
+        alignment: { ...verticalCenter, wrapText: true }
     };
 
     const warningStyle = {
         ...dataStyleLeft,
         font: { ...baseFont, color: { rgb: "991B1B" }, italic: true },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_RED } },
-        alignment: { ...verticalCenter, wrapText: true }
-    };
-
-    const coachingStyle = {
-        ...dataStyleLeft,
-        font: { ...baseFont, color: { rgb: "065F46" }, italic: true },
-        fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_GREEN } },
         alignment: { ...verticalCenter, wrapText: true }
     };
 
@@ -372,7 +368,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     const statusFormula = `IF(LEN(TRIM(H${rowIdx}))=0, ${temporalCheck}, IF(AND(LEN(TRIM(I${rowIdx}))=0, I${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
                     
                     const keyRef = `B${rowIdx} & "|" & C${rowIdx}`;
-                    const personFormula = `IF(COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0, "ASSIGN IN TEAM HUB", VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", ""))`;
+                    
+                    // HYPERLINK PATTERN: Automatically styles as Blue/Underline if it returns the HYPERLINK function
+                    const personFormula = `IF(COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0, HYPERLINK("#'TEAM_HUB'!A1", "ASSIGN IN TEAM HUB"), VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", ""))`;
                     
                     const technicalVal = t.technicalProtocol || t.description || "";
                     const trainerVal = t.floorAction || "";
