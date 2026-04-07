@@ -14,21 +14,16 @@ import {
     Clock,
     LayoutGrid,
     History,
-    Download,
-    Cpu,
-    CheckCircle2,
-    Fingerprint,
     FileSpreadsheet,
     XCircle,
     Utensils,
     Lock,
     HeartPulse,
-    ShieldAlert,
-    Star,
-    Flame,
     Hospital,
     School,
-    Popcorn
+    Popcorn,
+    CheckCircle2,
+    Activity
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -76,56 +71,6 @@ const OperationalWindow = ({ src, alt, title = "MASTER_OPERATIONAL_ENGINE_V11.9"
             <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
         </div>
     </div>
-);
-
-const TheShiftSection = () => (
-    <Section className="bg-black border-b border-white/5">
-        <div className="max-w-5xl mx-auto space-y-16">
-            <div className="text-center space-y-4">
-                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Category Shift</Badge>
-                <SectionHeadline>STOP LEAVING YOUR BRAND TO LUCK</SectionHeadline>
-                <p className="text-xl text-secondary-text italic font-medium max-w-2xl mx-auto leading-relaxed">
-                    A good manager is a gift. A good system is an asset. <br /> Stop leaving your brand to luck.
-                </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-2xl overflow-hidden">
-                <div className="space-y-8 p-10 md:p-16 bg-black">
-                    <h3 className="text-red-500/60 font-black uppercase tracking-[0.4em] text-[10px] italic">THE LUCK MODEL</h3>
-                    <div className="space-y-6">
-                        {[
-                            "Tasks depend on memory",
-                            "SOPs sit in folders",
-                            "Managers keep following up",
-                            "No real visibility",
-                            "Standards leave when people do"
-                        ].map(item => (
-                            <div key={item} className="flex items-start gap-4 text-base md:text-lg text-zinc-400 italic font-medium leading-tight">
-                                <XCircle className="w-5 h-5 text-red-500/40 shrink-0 mt-1" /> {item}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                <div className="space-y-8 p-10 md:p-16 bg-primary/[0.02]">
-                    <h3 className="text-primary font-black uppercase tracking-[0.4em] text-[10px] italic">THE ASSET MODEL</h3>
-                    <div className="space-y-6">
-                        {[
-                            "Tasks are already defined",
-                            "Responsibility is assigned by role",
-                            "Execution is recorded as work happens",
-                            "Dashboard shows reality live",
-                            "The system stays forever"
-                        ].map(item => (
-                            <div key={item} className="flex items-start gap-4 text-base md:text-lg text-primary-text font-black uppercase italic tracking-tighter leading-tight">
-                                <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-1" /> {item}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </Section>
 );
 
 const InstitutionalPayloadSection = () => (
@@ -245,6 +190,37 @@ const DailySequenceSection = () => (
     </Section>
 );
 
+const LiveDashboardSection = () => (
+    <Section className="bg-black overflow-hidden border-y border-white/5">
+        <div className="max-w-6xl mx-auto space-y-16">
+            <div className="text-center space-y-4">
+                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.4em] font-black text-[10px]">Live Telemetry</Badge>
+                <SectionHeadline>SEE YOUR BUSINESS LIVE</SectionHeadline>
+                <p className="text-xl text-secondary-text italic font-medium">No reports. No calls. No follow-ups.</p>
+            </div>
+
+            <OperationalWindow 
+                src="https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png"
+                alt="Sovereign Dashboard Interface"
+            />
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-5xl mx-auto pt-12">
+                {[
+                    "Done vs. Pending Status",
+                    "Single Unit or Multi-Branch Overview",
+                    "Identified Operational Gaps",
+                    "Permanent Activity Record"
+                ].map(item => (
+                    <div key={item} className="flex items-center justify-center gap-3 text-left">
+                        <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
+                        <span className="text-[10px] font-black text-white/40 uppercase tracking-widest leading-tight italic">{item}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </Section>
+);
+
 const RealTaskExamplesSection = () => {
     const examples = [
         {
@@ -325,32 +301,51 @@ const RealTaskExamplesSection = () => {
     );
 };
 
-const LiveDashboardSection = () => (
-    <Section className="bg-black overflow-hidden border-y border-white/5">
-        <div className="max-w-6xl mx-auto space-y-16">
+const TheShiftSection = () => (
+    <Section className="bg-black border-b border-white/5">
+        <div className="max-w-5xl mx-auto space-y-16">
             <div className="text-center space-y-4">
-                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.4em] font-black text-[11px]">Live Telemetry</Badge>
-                <SectionHeadline>SEE YOUR BUSINESS LIVE</SectionHeadline>
-                <p className="text-xl text-secondary-text italic font-medium">No reports. No calls. No follow-ups.</p>
+                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Category Shift</Badge>
+                <SectionHeadline>STOP LEAVING YOUR BRAND TO LUCK</SectionHeadline>
+                <p className="text-xl text-secondary-text italic font-medium max-w-2xl mx-auto leading-relaxed">
+                    A good manager is a gift. A good system is an asset. <br /> Stop leaving your brand to luck.
+                </p>
             </div>
 
-            <OperationalWindow 
-                src="https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png"
-                alt="Sovereign Dashboard Interface"
-            />
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-5xl mx-auto pt-12">
-                {[
-                    "Done vs. Pending Status",
-                    "Single Unit or Multi-Branch Overview",
-                    "Identified Operational Gaps",
-                    "Permanent Activity Record"
-                ].map(item => (
-                    <div key={item} className="flex items-center justify-center gap-3 text-left">
-                        <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
-                        <span className="text-[10px] font-black text-white/40 uppercase tracking-widest leading-tight italic">{item}</span>
+            <div className="grid md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-2xl overflow-hidden">
+                <div className="space-y-8 p-10 md:p-16 bg-black">
+                    <h3 className="text-red-500/60 font-black uppercase tracking-[0.4em] text-[10px] italic">THE LUCK MODEL</h3>
+                    <div className="space-y-6">
+                        {[
+                            "Tasks depend on memory",
+                            "SOPs sit in folders",
+                            "Managers keep following up",
+                            "No real visibility",
+                            "Standards leave when people do"
+                        ].map(item => (
+                            <div key={item} className="flex items-start gap-4 text-base md:text-lg text-zinc-400 italic font-medium leading-tight">
+                                <XCircle className="w-5 h-5 text-red-500/40 shrink-0 mt-1" /> {item}
+                            </div>
+                        ))}
                     </div>
-                ))}
+                </div>
+
+                <div className="space-y-8 p-10 md:p-16 bg-primary/[0.02]">
+                    <h3 className="text-primary font-black uppercase tracking-[0.4em] text-[10px] italic">THE ASSET MODEL</h3>
+                    <div className="space-y-6">
+                        {[
+                            "Tasks are already defined",
+                            "Responsibility is assigned by role",
+                            "Execution is recorded as work happens",
+                            "Dashboard shows reality live",
+                            "The system stays forever"
+                        ].map(item => (
+                            <div key={item} className="flex items-start gap-4 text-base md:text-lg text-primary-text font-black uppercase italic tracking-tighter leading-tight">
+                                <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-1" /> {item}
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     </Section>
@@ -411,12 +406,12 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         
-        <TheShiftSection />
         <InstitutionalPayloadSection />
         <TheDifferentiatorSection />
         <DailySequenceSection />
         <LiveDashboardSection />
         <RealTaskExamplesSection />
+        <TheShiftSection />
         <ResignationRiskSection />
         
         <TestimonialsSection />

@@ -156,7 +156,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <Badge variant="outline" className="text-primary border-primary/30 py-1 px-4 uppercase tracking-[0.4em] font-black text-[10px] rounded-none bg-primary/5">
                             {pack.category.toUpperCase()} • SOVEREIGN V11.9
                         </Badge>
-                        <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-black tracking-tighter font-headline text-primary-text uppercase italic leading-[0.85] font-headline">
+                        <h1 className="text-4xl sm:text-5xl md:text-[4.5rem] font-black tracking-tighter font-headline text-primary-text uppercase italic leading-[0.85]">
                             {pack.title.toUpperCase()}
                         </h1>
                         <p className="text-xl text-secondary-text font-medium leading-relaxed italic max-w-xl border-l-2 border-primary/20 pl-8">
