@@ -208,34 +208,38 @@ const TheDifferentiatorSection = () => (
     </Section>
 );
 
-const DeploymentRoadmapSection = () => (
+const DailySequenceSection = () => (
     <Section className="bg-alternate-background border-b border-white/5">
-        <div className="max-w-5xl mx-auto space-y-16">
+        <div className="max-w-7xl mx-auto space-y-20">
             <div className="text-center space-y-4">
-                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Implementation</Badge>
-                <SectionHeadline>DEPLOYMENT ROADMAP</SectionHeadline>
-                <p className="text-xl text-secondary-text italic font-medium">From acquisition to command in under 10 minutes.</p>
+                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Daily Sequence</Badge>
+                <SectionHeadline>HOW YOUR BUSINESS RUNS DAILY</SectionHeadline>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-12 relative">
-                <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-y-1/2 z-0" />
-                
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
                 {[
-                    { s: "01", t: "Institutional Acquisition", d: "Download the Sovereign v11.9 Master Engine. Upload to your secure Google Drive or local server.", i: Download },
-                    { s: "02", t: "Role-Based Mapping", d: "Assign names to pre-defined industry roles in the Team Hub. The Mission Ledger updates instantly.", i: Users },
-                    { s: "03", t: "Binary Command", d: "Staff log execution as it happens. You monitor the truth from the telemetry dashboard.", i: Cpu }
+                    { s: "1", t: "SETUP", d: "Add branches and assign team to roles. One time only." },
+                    { s: "2", t: "TEAM OPENS TASKS", d: "They see what to do, how to do it, and why it matters." },
+                    { s: "3", t: "THEY EXECUTE", d: "Names entered as work happens. Logs build live." },
+                    { s: "4", t: "TASKS RUN ON SCHEDULE", d: "Daily, Weekly, Monthly cycles trigger automatically." },
+                    { s: "5", t: "COMMAND", d: "Run one unit perfectly. Scale without chaos." }
                 ].map((step, i) => (
-                    <div key={i} className="relative z-10 flex flex-col items-center text-center space-y-6 group">
-                        <div className="w-16 h-16 rounded-full bg-black border border-white/10 flex items-center justify-center group-hover:border-primary/40 transition-all shadow-2xl">
-                            <step.i className="w-6 h-6 text-primary" />
+                    <div key={i} className="flex flex-col items-start space-y-6 group">
+                        <div className="w-12 h-12 rounded-lg border border-primary/30 bg-primary/5 flex items-center justify-center text-primary font-black text-sm">
+                            {step.s}
                         </div>
-                        <div className="space-y-2">
-                            <span className="text-[10px] font-black text-primary uppercase tracking-[0.5em] italic">{step.s} / ROADMAP</span>
-                            <h4 className="text-lg font-black text-primary-text uppercase italic tracking-tighter font-headline">{step.t}</h4>
-                            <p className="text-sm text-secondary-text italic font-medium leading-relaxed">{step.d}</p>
+                        <div className="space-y-3">
+                            <h4 className="text-sm font-black text-primary-text uppercase italic tracking-tighter font-headline leading-tight">{step.t}</h4>
+                            <p className="text-xs text-secondary-text italic font-medium leading-relaxed">{step.d}</p>
                         </div>
                     </div>
                 ))}
+            </div>
+
+            <div className="pt-12 text-center border-t border-white/5">
+                <p className="text-lg md:text-xl text-white/40 italic font-medium">
+                    This repeats every day. Without follow-ups. Without supervision.
+                </p>
             </div>
         </div>
     </Section>
@@ -410,7 +414,7 @@ export default function Home() {
         <TheShiftSection />
         <InstitutionalPayloadSection />
         <TheDifferentiatorSection />
-        <DeploymentRoadmapSection />
+        <DailySequenceSection />
         <LiveDashboardSection />
         <RealTaskExamplesSection />
         <ResignationRiskSection />
