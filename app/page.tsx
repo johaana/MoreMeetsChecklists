@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -51,7 +50,7 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
     </h2>
 );
 
-const OperationalWindow = ({ src, alt }: { src: string, alt: string }) => (
+const OperationalWindow = ({ src, alt, title = "MASTER_OPERATIONAL_ENGINE_V11.9" }: { src: string, alt: string, title?: string }) => (
     <div className="relative mx-auto max-w-4xl group">
         <div className="bg-[#111] border border-white/10 border-b-0 rounded-t-2xl py-3 px-5 flex items-center gap-4">
             <div className="flex gap-1.5">
@@ -60,8 +59,8 @@ const OperationalWindow = ({ src, alt }: { src: string, alt: string }) => (
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500/20" />
             </div>
             <div className="flex-1 flex justify-center">
-                <div className="bg-black/40 border border-white/5 rounded-md px-12 py-1 text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner">
-                    sovereign_v11.9_master_engine.xlsx
+                <div className="bg-black/40 border border-white/5 rounded-md px-12 py-1 text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner font-headline">
+                    {title}
                 </div>
             </div>
         </div>
@@ -87,7 +86,7 @@ const TheShiftSection = () => (
                 </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-2xl md:rounded-[2.5rem] overflow-hidden">
+            <div className="grid md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-2xl overflow-hidden">
                 <div className="space-y-8 p-10 md:p-16 bg-black">
                     <h3 className="text-red-500/60 font-black uppercase tracking-[0.4em] text-[10px] italic">THE LUCK MODEL</h3>
                     <div className="space-y-6">
@@ -98,7 +97,7 @@ const TheShiftSection = () => (
                             "No real visibility",
                             "Standards leave when people do"
                         ].map(item => (
-                            <div key={item} className="flex items-start gap-4 text-base md:text-lg text-zinc-400 italic font-medium">
+                            <div key={item} className="flex items-start gap-4 text-base md:text-lg text-zinc-400 italic font-medium leading-tight">
                                 <XCircle className="w-5 h-5 text-red-500/40 shrink-0 mt-1" /> {item}
                             </div>
                         ))}
@@ -115,7 +114,7 @@ const TheShiftSection = () => (
                             "Dashboard shows reality live",
                             "The system stays forever"
                         ].map(item => (
-                            <div key={item} className="flex items-start gap-4 text-base md:text-lg text-primary-text font-bold uppercase italic tracking-tight">
+                            <div key={item} className="flex items-start gap-4 text-base md:text-lg text-primary-text font-black uppercase italic tracking-tighter leading-tight">
                                 <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-1" /> {item}
                             </div>
                         ))}
@@ -130,7 +129,7 @@ const InstitutionalPayloadSection = () => (
     <Section className="bg-black">
         <div className="max-w-6xl mx-auto space-y-16">
             <div className="text-center space-y-4">
-                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[11px]">Institutional Payload</Badge>
+                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Institutional Payload</Badge>
                 <SectionHeadline>WHAT YOU GET</SectionHeadline>
             </div>
 
@@ -140,12 +139,18 @@ const InstitutionalPayloadSection = () => (
                     { t: "DAILY, WEEKLY, MONTHLY EXECUTION SYSTEM", i: Clock },
                     { t: "TRAINER NOTES FOR EVERY TASK", i: GraduationCap },
                     { t: "CONSEQUENCES OF FAILURE DEFINED", i: AlertTriangle },
-                    { t: "MULTI-BRANCH VISIBILITY", i: LayoutGrid },
-                    { t: "FULLY EDITABLE STANDALONE SYSTEM", i: FileSpreadsheet }
+                    { t: "SINGLE UNIT OR MULTI-BRANCH VISIBILITY", i: LayoutGrid },
+                    { t: "FULLY EDITABLE STANDALONE SYSTEM", i: FileSpreadsheet, highlighted: true }
                 ].map((item, i) => (
-                    <div key={i} className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col gap-6 hover:border-primary/20 transition-all group">
-                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-colors">
-                            <CheckCircle2 className="w-5 h-5" />
+                    <div key={i} className={cn(
+                        "p-10 rounded-2xl border border-white/5 flex flex-col gap-6 hover:border-primary/20 transition-all group",
+                        item.highlighted ? "bg-primary/10 border-primary/20 shadow-[0_0_40px_-10px_rgba(46,184,107,0.2)]" : "bg-white/[0.02]"
+                    )}>
+                        <div className={cn(
+                            "w-10 h-10 rounded-lg flex items-center justify-center transition-colors",
+                            item.highlighted ? "bg-primary text-black" : "bg-primary/10 text-primary group-hover:bg-primary group-hover:text-black"
+                        )}>
+                            <item.i className="w-5 h-5" />
                         </div>
                         <h4 className="font-black text-primary-text uppercase italic text-sm tracking-tighter leading-tight">{item.t}</h4>
                     </div>
@@ -159,7 +164,7 @@ const LiveDashboardSection = () => (
     <Section className="bg-black overflow-hidden border-y border-white/5">
         <div className="max-w-6xl mx-auto space-y-16">
             <div className="text-center space-y-4">
-                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.3em] font-black text-[11px]">Live Telemetry</Badge>
+                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.4em] font-black text-[11px]">Live Telemetry</Badge>
                 <SectionHeadline>SEE YOUR BUSINESS LIVE</SectionHeadline>
                 <p className="text-xl text-secondary-text italic font-medium">No reports. No calls. No follow-ups.</p>
             </div>
@@ -172,7 +177,7 @@ const LiveDashboardSection = () => (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-5xl mx-auto pt-12">
                 {[
                     "Done vs. Pending Status",
-                    "Multi-Branch Overview",
+                    "Single Unit or Multi-Branch Overview",
                     "Identified Operational Gaps",
                     "Permanent Activity Record"
                 ].map(item => (
@@ -188,18 +193,18 @@ const LiveDashboardSection = () => (
 
 const ResignationRiskSection = () => (
     <Section className="bg-alternate-background">
-        <div className="max-w-4xl mx-auto p-10 md:p-20 rounded-[2rem] border border-white/5 bg-white/[0.01] space-y-10 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto p-10 md:p-20 rounded-2xl border border-white/5 bg-white/[0.01] space-y-10 relative overflow-hidden">
             <div className="absolute top-0 right-0 p-12 opacity-[0.03]">
                 <Fingerprint className="w-64 h-64 text-primary" />
             </div>
             <div className="flex flex-col md:flex-row gap-12 items-center relative z-10">
                 <div className="space-y-6 flex-1">
-                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Resignation Proof</Badge>
-                    <h3 className="text-3xl md:text-[2.75rem] font-black font-headline text-primary-text uppercase italic tracking-tighter leading-none">
+                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">Institutional Memory</Badge>
+                    <h3 className="text-3xl md:text-[2.75rem] font-black font-headline text-primary-text uppercase italic tracking-tighter leading-[0.9]">
                         WHEN THEY LEAVE, <br /> <span className="text-primary">THE SYSTEM STAYS.</span>
                     </h3>
                     <p className="text-lg text-secondary-text leading-relaxed font-medium italic">
-                        The biggest risk in operations is "Tribal Knowledge." When your best manager resigns, your luck runs out. MoreMeets converts individual memory into permanent institutional infrastructure.
+                        The biggest risk in operations is "Tribal Knowledge." When your best manager resigns, your luck runs out. MoreMeets™ converts individual memory into permanent organizational infrastructure.
                     </p>
                 </div>
                 <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-primary/5 flex items-center justify-center border border-primary/10 shrink-0">
@@ -230,8 +235,8 @@ const PricingSection = () => (
                 </div>
             </div>
 
-            <Button size="lg" asChild className="group h-24 px-16 rounded-2xl bg-primary text-black font-black uppercase text-2xl shadow-2xl hover:scale-105 active:scale-95 transition-all border-none">
-                <Link href="/library" className="flex items-center">DEPLOY YOUR ASSET <ArrowRight className="ml-4 h-8 w-8 transition-transform group-hover:translate-x-2" /></Link>
+            <Button size="lg" asChild className="group h-24 px-16 rounded-xl bg-primary text-black font-black uppercase text-2xl shadow-2xl hover:scale-105 active:scale-95 transition-all border-none">
+                <Link href="/library" className="flex items-center">DEPLOY OPERATIONAL CERTAINTY <ArrowRight className="ml-4 h-8 w-8 transition-transform group-hover:translate-x-2" /></Link>
             </Button>
         </div>
     </Section>

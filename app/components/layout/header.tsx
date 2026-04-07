@@ -41,13 +41,13 @@ const SolutionsList = () => (
         <div className="md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-4 flex flex-col">
         {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
             <div key={category} className="flex flex-col mb-4 md:mb-0 break-inside-avoid">
-                <h5 className="font-bold text-sm text-primary/90 mb-2 px-2 uppercase tracking-widest text-[10px]">{category}</h5>
+                <h5 className="font-black text-primary/90 mb-2 px-2 uppercase tracking-[0.3em] text-[9px] font-headline">/ {category}</h5>
                 <ul className="space-y-1">
                     {packs.map(pack => (
                         <li key={pack.id}>
-                            <Link href={`/packs/${pack.id}`} className="text-[11px] font-headline uppercase tracking-[0.1em] text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-secondary/70">
-                                <span className="shrink-0 w-5 h-5 flex items-center justify-center">
-                                    <IconComponent name={pack.icon} className="w-4 h-4" />
+                            <Link href={`/packs/${pack.id}`} className="text-[10px] font-headline font-black uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-white/5">
+                                <span className="shrink-0 w-4 h-4 flex items-center justify-center">
+                                    <IconComponent name={pack.icon} className="w-3.5 h-3.5" />
                                 </span>
                                 <span className="flex-1 leading-snug">{pack.title}</span>
                             </Link>
@@ -64,8 +64,8 @@ const BrandLogo = ({ isHomepage, isScrolled }: { isHomepage: boolean, isScrolled
      <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
         <Logo className={cn("h-6 w-6 text-primary")} />
         <div className="flex flex-col">
-            <span className={cn("font-headline text-lg font-bold leading-tight", isHomepage && !isScrolled ? "text-white" : "text-foreground")}>MoreMeets™</span>
-            <span className={cn("text-[8px] uppercase font-black tracking-[0.3em] leading-tight -mt-0.5", isHomepage && !isScrolled ? "text-white/60" : "text-muted-foreground")}>Less misses.</span>
+            <span className={cn("font-headline text-lg font-black leading-tight tracking-tighter uppercase italic", isHomepage && !isScrolled ? "text-white" : "text-foreground")}>MoreMeets™</span>
+            <span className={cn("text-[8px] uppercase font-black tracking-[0.4em] leading-tight -mt-0.5", isHomepage && !isScrolled ? "text-white/40" : "text-muted-foreground")}>Less misses.</span>
         </div>
     </Link>
 );
@@ -106,7 +106,7 @@ export function SiteHeader() {
 
     const navLinkClass = cn(
         "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-colors",
-        isHomepage && !isScrolled ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground"
+        isHomepage && !isScrolled ? "text-white/60 hover:text-white" : "text-muted-foreground hover:text-foreground"
     );
 
     return (
@@ -122,30 +122,30 @@ export function SiteHeader() {
                 </div>
             </div>
 
-            <nav className="ml-auto hidden md:flex gap-8 items-center">
+            <nav className="ml-auto hidden md:flex gap-10 items-center">
                 <Link href="/about" className={navLinkClass} prefetch={false}>About Us</Link>
                 <div 
                     className="group relative"
                     onMouseEnter={() => setIsDropdownOpen(true)}
                     onMouseLeave={() => setIsDropdownOpen(false)}
                 >
-                    <button className={cn(navLinkClass, "flex items-center gap-1")}>
+                    <button className={cn(navLinkClass, "flex items-center gap-1.5")}>
                         Systems <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
                     </button>
                     {isDropdownOpen && (
                         <div className="absolute top-full right-0 w-screen max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
-                            <div className="bg-background rounded-xl shadow-2xl border flex flex-col overflow-hidden">
+                            <div className="bg-background rounded-xl shadow-2xl border border-white/10 flex flex-col overflow-hidden">
                                     <ScrollArea className="max-h-[75vh] overflow-y-auto">
-                                    <div className="p-8">
+                                    <div className="p-10">
                                         <SolutionsList />
                                     </div>
                                 </ScrollArea>
-                                <div className="bg-secondary/50 p-4 border-t flex items-center justify-between">
-                                    <Link href="/library" className="text-[10px] font-black uppercase tracking-[0.2em] text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50">
+                                <div className="bg-white/[0.02] p-4 border-t border-white/5 flex items-center justify-between px-10">
+                                    <Link href="/library" className="text-[10px] font-black uppercase tracking-[0.3em] text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-white/5">
                                         View Systems Hub &rarr;
                                     </Link>
-                                    <Link href="/packs/animal_shelter_pack" className="text-[9px] font-black text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-background/50 flex items-center gap-2 uppercase tracking-widest">
-                                        <PawPrint className="w-3 h-3" /> Social Impact (Free)
+                                    <Link href="/packs/animal_shelter_pack" className="text-[9px] font-black text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-white/5 flex items-center gap-2 uppercase tracking-[0.3em]">
+                                        <PawPrint className="w-3.5 h-3.5" /> Social Impact (Free)
                                     </Link>
                                 </div>
                             </div>
@@ -175,26 +175,26 @@ export function SiteHeader() {
                             <div className="flex flex-col p-4">
                                 <Accordion type="multiple" className="w-full">
                                     <div className="border-b">
-                                        <Link href="/about" className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors py-4 flex" prefetch={false}>
+                                        <Link href="/about" className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors py-5 flex" prefetch={false}>
                                             About Us
                                         </Link>
                                     </div>
                                     <div className="border-b">
-                                        <Link href="/library" className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors py-4 flex" prefetch={false}>
+                                        <Link href="/library" className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors py-5 flex" prefetch={false}>
                                             Systems Hub
                                         </Link>
                                     </div>
                                     <AccordionItem value="packs" className="border-b">
-                                        <AccordionTrigger className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground hover:no-underline py-4">
+                                        <AccordionTrigger className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground hover:no-underline py-5">
                                             Elite Industry Systems
                                         </AccordionTrigger>
                                         <AccordionContent className="pb-4">
                                             {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
                                                 <div key={category} className="ml-4 pl-4 border-l border-white/5 mb-4">
-                                                    <h5 className="font-black text-[9px] uppercase tracking-[0.3em] text-primary/90 mt-2 mb-2">{category}</h5>
+                                                    <h5 className="font-black text-[9px] uppercase tracking-[0.3em] text-primary/90 mt-2 mb-2 font-headline">/ {category}</h5>
                                                     <div className="flex flex-col gap-1">
                                                         {packs.map(pack => (
-                                                            <Link key={pack.id} href={`/packs/${pack.id}`} className="text-[11px] font-bold uppercase tracking-tight text-muted-foreground hover:text-foreground transition-colors py-2 px-2 rounded-md hover:bg-secondary flex items-center gap-2">
+                                                            <Link key={pack.id} href={`/packs/${pack.id}`} className="text-[11px] font-bold uppercase tracking-tight text-muted-foreground hover:text-foreground transition-colors py-2 px-2 rounded-md hover:bg-white/5 flex items-center gap-2">
                                                                 <IconComponent name={pack.icon} className="w-3.5 h-3.5 shrink-0" />
                                                                 <span>{pack.title}</span>
                                                             </Link>
@@ -205,12 +205,12 @@ export function SiteHeader() {
                                         </AccordionContent>
                                     </AccordionItem>
                                     <div className="border-b">
-                                        <Link href="/blog" className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors py-4 flex" prefetch={false}>
+                                        <Link href="/blog" className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors py-5 flex" prefetch={false}>
                                             Intelligence Hub
                                         </Link>
                                     </div>
                                     <div>
-                                        <Link href="/contact" className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors py-4 flex" prefetch={false}>
+                                        <Link href="/contact" className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors py-5 flex" prefetch={false}>
                                             Contact
                                         </Link>
                                     </div>
