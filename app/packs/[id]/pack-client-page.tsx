@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -12,12 +11,12 @@ import {
     Activity, 
     ShieldCheck, 
     FileSpreadsheet,
-    LayoutGrid
+    LayoutGrid,
+    Lock
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { painPointsContent } from '@/lib/pain-points-content';
-import { PainPoint } from '@/components/ui/pain-point';
 import { IconComponent } from '@/components/icons';
 
 const DASHBOARD_PREVIEW_URL = "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png";
@@ -27,7 +26,7 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
         <div className="container px-4 md:px-6">
             {children}
         </div>
-    </section> section>
+    </section>
 );
 
 const SectionHeadline = ({ children, className }: { children: React.ReactNode, className?: string }) => (
@@ -168,7 +167,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-[11px] font-black text-primary uppercase tracking-[0.3em]">
                             <span className="flex items-center gap-2.5"><LayoutGrid className="w-4 h-4" /> {totalChecklists} MODULES</span>
                             <span className="flex items-center gap-2.5"><Target className="w-4 h-4" /> {totalTasks}+ TASKS</span>
-                            <span className="flex items-center gap-2.5"><FileSpreadsheet className="w-4 h-4" /> WORKS ON EXCEL AND GOOGLE SHEETS</span>
+                            <span className="flex items-center gap-2.5"><FileSpreadsheet className="w-4 h-4" /> WORKS ON EXCEL & SHEETS</span>
                         </div>
                         
                         <div className="pt-8">
