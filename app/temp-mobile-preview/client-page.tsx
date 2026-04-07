@@ -20,7 +20,8 @@ import {
     Lock,
     ChevronRight,
     LayoutGrid,
-    ListFilter
+    ListFilter,
+    CheckCircle2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -91,7 +92,7 @@ export default function MobilePreviewClient() {
                     </div>
                     <div className="flex-1 bg-black p-6 space-y-6 flex flex-col justify-between">
                         <div className="space-y-4">
-                            <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.4em]">DEPLOYMENT MODULES:</span>
+                            <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.2em]">SEE HOW IT WORKS FOR YOUR BUSINESS?</span>
                             <div className="grid grid-cols-2 gap-2">
                                 {ELITE_7.slice(0, 6).map((ind) => (
                                     <Link key={ind.id} href={`/packs/${ind.id}`} className="flex items-center gap-2.5 p-3 rounded-xl border border-white/5 bg-white/[0.02]">
@@ -122,13 +123,16 @@ export default function MobilePreviewClient() {
                             </h1>
                         </div>
                         <div className="bg-white/[0.03] backdrop-blur-2xl border-t border-white/10 rounded-t-[2.5rem] p-8 space-y-8 shadow-[0_-20px_50px_-10px_rgba(0,0,0,0.8)]">
-                            <div className="grid grid-cols-2 gap-3">
-                                {ELITE_7.slice(0, 4).map((ind) => (
-                                    <Link key={ind.id} href={`/packs/${ind.id}`} className="flex flex-col items-center gap-2 p-4 rounded-2xl border border-white/5 bg-black/40 text-center">
-                                        <ind.icon className="w-5 h-5 text-primary" />
-                                        <span className="text-[8px] font-black uppercase italic text-white/60">{ind.name}</span>
-                                    </Link>
-                                ))}
+                            <div className="space-y-4">
+                                <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.2em]">SEE HOW IT WORKS FOR YOUR BUSINESS?</span>
+                                <div className="grid grid-cols-2 gap-3">
+                                    {ELITE_7.slice(0, 4).map((ind) => (
+                                        <Link key={ind.id} href={`/packs/${ind.id}`} className="flex flex-col items-center gap-2 p-4 rounded-2xl border border-white/5 bg-black/40 text-center">
+                                            <ind.icon className="w-5 h-5 text-primary" />
+                                            <span className="text-[8px] font-black uppercase italic text-white/60">{ind.name}</span>
+                                        </Link>
+                                    ))}
+                                </div>
                             </div>
                             <div className="space-y-3">
                                 <DeployButton className="h-16" />
@@ -141,7 +145,8 @@ export default function MobilePreviewClient() {
                 {/* OPTION 3: THE INDUSTRIAL LIST (CLEAN LIST) */}
                 <PreviewFrame title="Option 3: The Industrial List" subtitle="Authority & Precision">
                     <div className="h-[30%] w-full relative">
-                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover grayscale brightness-50" />
+                        {/* Video now in full color as requested */}
+                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover brightness-50" />
                         <div className="absolute inset-0 bg-primary/5" />
                         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
                             <h1 className="text-2xl font-black font-headline text-white leading-[0.85] uppercase italic tracking-tighter">
@@ -152,7 +157,7 @@ export default function MobilePreviewClient() {
                     </div>
                     <div className="flex-1 bg-zinc-950 p-6 flex flex-col">
                         <div className="space-y-1 mb-6">
-                            <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.4em]">SELECT VERTICAL:</span>
+                            <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.2em]">SEE HOW IT WORKS FOR YOUR BUSINESS?</span>
                             <div className="space-y-1">
                                 {ELITE_7.map((ind) => (
                                     <Link key={ind.id} href={`/packs/${ind.id}`} className="flex items-center justify-between p-3.5 border-b border-white/5 group active:bg-primary/5">
@@ -183,10 +188,10 @@ export default function MobilePreviewClient() {
                             </h1>
                         </div>
                     </div>
-                    <div className="flex-1 bg-black p-5 flex flex-col">
-                        <div className="space-y-4 mb-auto">
+                    <div className="flex-1 bg-black p-5 flex flex-col space-y-6">
+                        <div className="space-y-4">
                             <div className="flex items-center justify-between">
-                                <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.4em]">ACTIVE ENGINES:</span>
+                                <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.2em]">SEE HOW IT WORKS FOR YOUR BUSINESS?</span>
                                 <LayoutGrid className="w-3 h-3 text-white/10" />
                             </div>
                             <div className="grid grid-cols-3 gap-2">
@@ -198,7 +203,25 @@ export default function MobilePreviewClient() {
                                 ))}
                             </div>
                         </div>
-                        <div className="pt-6 space-y-3">
+
+                        {/* Additional Info for Option 4 */}
+                        <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 space-y-3">
+                            <span className="text-[7px] font-black text-primary uppercase tracking-[0.3em]">TECHNICAL PAYLOAD:</span>
+                            <div className="space-y-2">
+                                {[
+                                    "120+ Pre-built Technical Tasks",
+                                    "Built-in Trainer Notes for staff",
+                                    "Zero Learning Curve Deployment"
+                                ].map((info, idx) => (
+                                    <div key={idx} className="flex items-center gap-2">
+                                        <CheckCircle2 className="w-2.5 h-2.5 text-primary/60" />
+                                        <span className="text-[8px] font-bold text-white/40 uppercase italic">{info}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="mt-auto space-y-3">
                             <DeployButton className="h-16 rounded-2xl" />
                             <PROOF_LINE />
                         </div>
@@ -229,7 +252,7 @@ export default function MobilePreviewClient() {
                         <div className="space-y-4 pt-10">
                             <div className="flex items-center gap-2">
                                 <ListFilter className="w-3 h-3 text-primary" />
-                                <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.4em]">SELECT SYSTEM:</span>
+                                <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.2em]">SEE HOW IT WORKS FOR YOUR BUSINESS?</span>
                             </div>
                             <div className="flex flex-wrap gap-2">
                                 {ELITE_7.map((ind) => (
