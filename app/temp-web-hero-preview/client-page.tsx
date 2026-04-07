@@ -126,30 +126,21 @@ export default function WebHeroPreviewClient() {
                     </div>
                 </PreviewFrame>
 
-                {/* VARIANT 2: THE MINIMALIST MIRROR */}
-                <PreviewFrame title="2. The Minimalist Mirror" description="Variation of 5: Reversed orientation with left-aligned sector selection and right-aligned narrative.">
+                {/* VARIANT 2: THE MINIMALIST MIRROR (TYPE A) */}
+                <PreviewFrame title="2. The Minimalist Mirror (A)" description="Reversed orientation with left-aligned sector selection and right-aligned narrative.">
                     <div className="absolute inset-0 z-0">
                         <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20" />
                         <div className="absolute inset-0 bg-black/40" />
                     </div>
-                    <div className="relative z-10 h-full grid grid-cols-[1fr,1.2fr] items-center px-32 gap-32">
-                        <div className="p-1 border-r border-white/10 space-y-12 pr-20 text-right">
-                            <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.6em]">SELECT VERTICAL</span>
-                            <div className="space-y-6">
-                                {ELITE_7.map((ind) => (
-                                    <Link key={ind.id} href={`/packs/${ind.id}`} className="block text-2xl font-bold uppercase italic text-white/20 hover:text-primary transition-all hover:-translate-x-3">
-                                        {ind.name}
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
+                    <div className="relative z-10 h-full grid grid-cols-[1.2fr,1fr] items-center px-32 gap-32">
+                        <IndustrySelector />
                         <div className="space-y-16">
                             <div className="space-y-8">
                                 <h1 className="text-8xl font-black font-headline text-white leading-[0.8] uppercase italic tracking-tighter">
                                     CAPTURE<br />
                                     <span className="text-primary">MEMORY.</span>
                                 </h1>
-                                <p className="text-xl text-white/40 italic font-medium max-w-sm border-r border-white/20 pr-10 leading-relaxed text-right">
+                                <p className="text-xl text-white/40 italic font-medium max-w-sm border-r border-white/20 pr-10 leading-relaxed text-right ml-auto">
                                     Institutional memory is an asset. <br /> Anything else is just luck.
                                 </p>
                             </div>
@@ -168,37 +159,42 @@ export default function WebHeroPreviewClient() {
                     </div>
                 </PreviewFrame>
 
-                {/* VARIANT 3: THE TYPOGRAPHIC MONOLITH */}
-                <PreviewFrame title="3. The Typographic Monolith" description="Variation of 5: Purely typographic layout. Removed all markers and dots. High-gravity focus.">
+                {/* VARIANT 3: THE MINIMALIST MIRROR (TYPE B - REVERSED 5) */}
+                <PreviewFrame title="3. The Minimalist Mirror (B)" description="Variation of 5: Reversed orientation with left-aligned sector selection and right-aligned narrative.">
                     <div className="absolute inset-0 z-0">
-                        <div className="absolute inset-0 bg-zinc-950" />
-                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-10 grayscale" />
+                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20" />
+                        <div className="absolute inset-0 bg-black/40" />
                     </div>
-                    <div className="relative z-10 h-full grid grid-cols-[1.4fr,1fr] items-center px-32">
-                        <div className="space-y-20">
+                    <div className="relative z-10 h-full grid grid-cols-[1fr,1.2fr] items-center px-32 gap-32">
+                        <div className="p-1 border-r border-white/10 space-y-12 pr-20 text-right">
+                            <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.6em]">SELECT VERTICAL</span>
                             <div className="space-y-6">
-                                <h1 className="text-[6rem] font-black font-headline text-white leading-[0.75] uppercase italic tracking-tighter">
-                                    INFRASTRUCTURE<br />
-                                    <span className="text-primary">OVER EFFORT.</span>
-                                </h1>
-                                <p className="text-lg text-white/30 uppercase tracking-[0.4em] font-black">Sovereign Build 11.9.7</p>
-                            </div>
-                            <div className="space-y-4">
-                                {TECHNICAL_PAYLOAD.map((item, i) => (
-                                    <p key={i} className="text-sm font-black text-white/40 uppercase tracking-widest italic">/ {item.t.toUpperCase()}</p>
-                                ))}
-                            </div>
-                            <DesktopCTA className="h-20 bg-white text-black shadow-none rounded-none px-16 text-xl" />
-                        </div>
-                        <div className="space-y-8 pl-24 border-l border-white/5">
-                            <span className="text-[10px] font-black text-white/10 uppercase tracking-[1em]">NETWORK</span>
-                            <div className="space-y-4">
                                 {ELITE_7.map((ind) => (
-                                    <Link key={ind.id} href={`/packs/${ind.id}`} className="block text-4xl font-black uppercase italic text-white/[0.05] hover:text-primary transition-all duration-500 hover:tracking-widest">
+                                    <Link key={ind.id} href={`/packs/${ind.id}`} className="block text-2xl font-bold uppercase italic text-white/20 hover:text-primary transition-all hover:-translate-x-3">
                                         {ind.name}
                                     </Link>
                                 ))}
                             </div>
+                        </div>
+                        <div className="space-y-16">
+                            <div className="space-y-8">
+                                <h1 className="text-8xl font-black font-headline text-white leading-[0.8] uppercase italic tracking-tighter">
+                                    DEPLOY<br />
+                                    <span className="text-primary">SYSTEMS.</span>
+                                </h1>
+                                <p className="text-xl text-white/40 italic font-medium max-w-sm border-l border-white/20 pl-10 leading-relaxed">
+                                    Memory is not a system. Serious operations deserve more than improvisation.
+                                </p>
+                            </div>
+                            <div className="flex flex-col gap-6">
+                                {TECHNICAL_PAYLOAD.slice(0, 3).map((item, i) => (
+                                    <div key={i} className="flex items-center gap-4">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                        <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">{item.t}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            <DesktopCTA className="bg-transparent border border-primary/40 text-primary hover:bg-primary hover:text-black shadow-none w-fit px-12" />
                         </div>
                     </div>
                 </PreviewFrame>
