@@ -23,7 +23,8 @@ import {
     Target,
     Zap,
     Scale,
-    Cpu
+    Cpu,
+    CheckCircle2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -89,9 +90,9 @@ export default function WebHeroPreviewClient() {
             
             <main className="flex-1 py-20 px-6 space-y-40 bg-zinc-950">
                 <div className="max-w-4xl mx-auto text-center space-y-4">
-                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Sovereign Minimalist Lab v5.0</Badge>
+                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Sovereign Minimalist Lab v5.1</Badge>
                     <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-none text-white">Refining the "Elite" Aesthetic</h1>
-                    <p className="text-secondary-text italic font-medium">Focusing on whitespace, precision lines, and high-gravity typography.</p>
+                    <p className="text-secondary-text italic font-medium">Testing mirrored orientations and typographic gravity.</p>
                 </div>
 
                 {/* VARIANT 1: THE BASELINE COMMAND */}
@@ -126,7 +127,7 @@ export default function WebHeroPreviewClient() {
                     </div>
                 </PreviewFrame>
 
-                {/* VARIANT 2: THE MINIMALIST MIRROR (TYPE A) */}
+                {/* VARIANT 2: THE MINIMALIST MIRROR (A) */}
                 <PreviewFrame title="2. The Minimalist Mirror (A)" description="Reversed orientation with left-aligned sector selection and right-aligned narrative.">
                     <div className="absolute inset-0 z-0">
                         <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20" />
@@ -159,7 +160,7 @@ export default function WebHeroPreviewClient() {
                     </div>
                 </PreviewFrame>
 
-                {/* VARIANT 3: THE MINIMALIST MIRROR (TYPE B - REVERSED 5) */}
+                {/* VARIANT 3: THE MINIMALIST MIRROR (B - REVERSED 5) */}
                 <PreviewFrame title="3. The Minimalist Mirror (B)" description="Variation of 5: Reversed orientation with left-aligned sector selection and right-aligned narrative.">
                     <div className="absolute inset-0 z-0">
                         <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20" />
@@ -199,45 +200,44 @@ export default function WebHeroPreviewClient() {
                     </div>
                 </PreviewFrame>
 
-                {/* VARIANT 4: THE MINIMALIST SPLIT */}
-                <PreviewFrame title="4. The Minimalist Split" description="Variation of 5: Hard division between the 'Mission' and the 'Target Sector'.">
-                    <div className="h-full grid grid-cols-2">
-                        <div className="bg-black flex flex-col justify-center px-24 space-y-12 border-r border-white/10 relative overflow-hidden">
-                            <div className="absolute top-0 left-0 p-12 opacity-5">
-                                <ShieldCheck className="w-64 h-64 text-primary" />
+                {/* VARIANT 4: THE MINIMALIST ELITE MIRROR (Content of 2 in Format 5) */}
+                <PreviewFrame title="4. The Elite Mirror (Content 2 / Format 5)" description="The narrative of 'Memory Capture' in the ultra-refined vertical stack format.">
+                    <div className="absolute inset-0 z-0">
+                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20" />
+                        <div className="absolute inset-0 bg-black/40" />
+                    </div>
+                    <div className="relative z-10 h-full grid grid-cols-[1fr,1.2fr] items-center px-32 gap-32">
+                        {/* Selector on Left (Format 5 style reversed) */}
+                        <div className="p-1 border-r border-white/10 space-y-12 pr-20 text-right">
+                            <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.6em]">TARGET SECTOR</span>
+                            <div className="space-y-6">
+                                {ELITE_7.map((ind) => (
+                                    <Link key={ind.id} href={`/packs/${ind.id}`} className="block text-2xl font-bold uppercase italic text-white/20 hover:text-primary transition-all hover:-translate-x-3">
+                                        {ind.name}
+                                    </Link>
+                                ))}
                             </div>
-                            <div className="space-y-6 relative z-10">
-                                <h1 className="text-7xl font-black font-headline text-white leading-[0.85] uppercase italic tracking-tighter">
-                                    STOP <br />
-                                    <span className="text-primary">CHASING.</span>
+                        </div>
+                        {/* Narrative on Right (Format 5 style reversed + Content of 2) */}
+                        <div className="space-y-16">
+                            <div className="space-y-8">
+                                <h1 className="text-8xl font-black font-headline text-white leading-[0.8] uppercase italic tracking-tighter">
+                                    CAPTURE<br />
+                                    <span className="text-primary">MEMORY.</span>
                                 </h1>
-                                <p className="text-lg text-white/40 italic leading-relaxed max-w-sm">
-                                    We transform tribal knowledge into permanent organizational infrastructure.
+                                <p className="text-xl text-white/40 italic font-medium max-w-sm border-l border-white/20 pl-10 leading-relaxed">
+                                    Institutional memory is an asset. <br /> Anything else is just luck.
                                 </p>
                             </div>
-                            <div className="space-y-2 relative z-10">
+                            <div className="flex flex-col gap-6">
                                 {TECHNICAL_PAYLOAD.slice(0, 3).map((item, i) => (
-                                    <div key={i} className="flex items-center gap-3">
-                                        <div className="w-4 h-px bg-primary/40" />
-                                        <span className="text-[10px] font-black text-white/30 uppercase tracking-widest">{item.t}</span>
+                                    <div key={i} className="flex items-center gap-4">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                        <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">{item.t}</span>
                                     </div>
                                 ))}
                             </div>
-                            <DesktopCTA className="relative z-10 w-fit rounded-none border border-primary text-primary bg-transparent hover:bg-primary hover:text-black" />
-                        </div>
-                        <div className="bg-zinc-900 relative flex flex-col justify-center px-24">
-                            <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale" />
-                            <div className="relative z-10 space-y-8">
-                                <span className="text-[10px] font-black text-primary uppercase tracking-[0.5em]">SYSTEM SELECTION</span>
-                                <div className="space-y-2">
-                                    {ELITE_7.map((ind) => (
-                                        <Link key={ind.id} href={`/packs/${ind.id}`} className="group flex items-center justify-between py-4 border-b border-white/5">
-                                            <span className="text-xl font-bold uppercase italic text-white/20 group-hover:text-white transition-all">{ind.name}</span>
-                                            <ArrowRight className="w-5 h-5 text-white/0 group-hover:text-primary transition-all group-hover:translate-x-2" />
-                                        </Link>
-                                    ))}
-                                </div>
-                            </div>
+                            <DesktopCTA className="bg-transparent border border-primary/40 text-primary hover:bg-primary hover:text-black shadow-none w-fit px-12" />
                         </div>
                     </div>
                 </PreviewFrame>
