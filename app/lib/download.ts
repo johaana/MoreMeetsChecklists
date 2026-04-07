@@ -205,7 +205,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
 
     // Dynamic Column Calculation for Top Branch Logic
-    // Score index is exactly 2 + number of active modules
     const scoreColLetter = utils.encode_col(2 + packChecklists.length);
 
     // --- 01. HOME CONSOLE ---
@@ -378,7 +377,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     
                     const keyRef = `B${rowIdx} & "|" & C${rowIdx}`;
                     
-                    // FIXED HYPERLINK LOGIC
                     const personCondition = `COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0`;
                     const personResult = `VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", "")`;
                     const personFormula = `HYPERLINK(IF(${personCondition}, "#'TEAM_HUB'!A1", ""), IF(${personCondition}, "ASSIGN IN TEAM HUB", ${personResult}))`;
@@ -422,11 +420,16 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         formula: `J5="COMPLETED"`, 
         style: { fill: { fgColor: { rgb: "DCFCE7" } }, font: { color: { rgb: "15803D" }, bold: true } },
     };
-    // LINK STYLING: Blue + Underline for the Assignment Prompt
     const assignLinkConditionalFmt = {
         type: "expression",
         formula: `ISNUMBER(SEARCH("ASSIGN",D5))`, 
-        style: { font: { color: { rgb: COLORS.LINK_BLUE }, underline: true, bold: true } },
+        style: { 
+            font: { 
+                color: { rgb: COLORS.LINK_BLUE }, 
+                underline: true, 
+                bold: true 
+            } 
+        },
     };
 
     mWs['!conditional_formatting'] = [
