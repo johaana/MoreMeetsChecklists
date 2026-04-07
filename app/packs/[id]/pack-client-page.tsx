@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { SiteHeader } from '@/components/layout/header';
+import { Footer } from '@/components/layout/footer';
 import type { PremiumPack } from "@/lib/premium-packs";
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
@@ -35,7 +36,7 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
     </h2>
 );
 
-const OperationalWindow = ({ src = DASHBOARD_PREVIEW_URL, alt, title = "MASTER_OPERATIONAL_ENGINE_V11.9" }: { src?: string, alt: string, title?: string }) => (
+const OperationalWindow = ({ src = DASHBOARD_PREVIEW_URL, alt, title = "SAMPLE_INTERFACE_RESTAURANT_V11.9" }: { src?: string, alt: string, title?: string }) => (
     <div className="relative mx-auto max-w-4xl group">
         <div className="bg-[#111] border border-white/10 border-b-0 rounded-t-xl py-3 px-5 flex items-center gap-4">
             <div className="flex gap-1.5">
@@ -56,6 +57,11 @@ const OperationalWindow = ({ src = DASHBOARD_PREVIEW_URL, alt, title = "MASTER_O
                 className="w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
+        </div>
+        <div className="mt-4 text-center">
+            <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em] italic">
+                NOTE: Interface shown is a sample. Your system will be forensically mapped to {alt}.
+            </span>
         </div>
     </div>
 );
@@ -173,7 +179,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <div className="pt-8">
                             <OperationalWindow 
                                 src={DASHBOARD_PREVIEW_URL}
-                                alt="Sovereign Dashboard"
+                                alt={pack.title}
                             />
                         </div>
                     </div>
@@ -241,6 +247,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         <GlobalStandardsSection pack={pack} />
 
       </main>
+      <Footer />
     </div>
   );
 }
