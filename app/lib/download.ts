@@ -6,11 +6,11 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v11.9.3 - THE COMMAND BUILD (Hardened)
- * Features: Shift A/B Matrix, Maroon Consequence Header, Underlined Interactive Console.
+ * Sovereign Engine v11.9.4 - THE COMMAND BUILD (Hardened)
+ * Features: Shift A/B Matrix, Maroon Consequence Header, Conditional Hyperlink Logic.
  * Optimized: Operational Pulse is Amber. Vitals use Two-Tone Blue.
  * Sovereign Sort: Daily missions grouped at the top for zero-noise flow.
- * FIX: Persistent Link Styling (Blue + Underline) & Dynamic Column Analysis for Top Branch.
+ * FIX: Conditional HYPERLINK pattern for clean text names vs blue links.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -204,7 +204,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
-    // Dynamic Column Calculation for Top Branch Logic (Hardened)
     const scoreColLetter = utils.encode_col(2 + packChecklists.length);
 
     // --- 01. HOME CONSOLE ---
@@ -376,10 +375,11 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     const statusFormula = `IF(LEN(TRIM(H${rowIdx}))=0, ${temporalCheck}, IF(AND(LEN(TRIM(I${rowIdx}))=0, I${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
                     
                     const keyRef = `B${rowIdx} & "|" & C${rowIdx}`;
-                    
                     const personCondition = `COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0`;
                     const personResult = `VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", "")`;
-                    const personFormula = `HYPERLINK(IF(${personCondition}, "#'TEAM_HUB'!A1", ""), IF(${personCondition}, "ASSIGN IN TEAM HUB", ${personResult}))`;
+                    
+                    // FIXED: Conditional HYPERLINK pattern for clean names vs functional links
+                    const personFormula = `IF(${personCondition}, HYPERLINK("#'TEAM_HUB'!A1", "ASSIGN IN TEAM HUB"), ${personResult})`;
                     
                     const technicalVal = t.technicalProtocol || t.description || "";
                     const trainerVal = t.floorAction || "";
@@ -409,7 +409,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(mWs, "Mission Execution Ledger");
     mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
 
-    // --- REFINED CONDITIONAL FORMATTING (HARDENED) ---
     const overdueConditionalFmt = {
         type: "expression",
         formula: `ISNUMBER(SEARCH("ACTION REQUIRED",J5))`, 
@@ -420,21 +419,9 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         formula: `J5="COMPLETED"`, 
         style: { fill: { fgColor: { rgb: "DCFCE7" } }, font: { color: { rgb: "15803D" }, bold: true } },
     };
-    const assignLinkConditionalFmt = {
-        type: "expression",
-        formula: `ISNUMBER(SEARCH("ASSIGN",D5))`, 
-        style: { 
-            font: { 
-                color: { rgb: "0000FF" }, // Hardcoded link blue
-                underline: true, 
-                bold: true 
-            } 
-        },
-    };
 
     mWs['!conditional_formatting'] = [
-        { ref: `A5:M${mData.length}`, rules: [overdueConditionalFmt, completedConditionalFmt] },
-        { ref: `D5:D${mData.length}`, rules: [assignLinkConditionalFmt] }
+        { ref: `A5:M${mData.length}`, rules: [overdueConditionalFmt, completedConditionalFmt] }
     ];
 
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
