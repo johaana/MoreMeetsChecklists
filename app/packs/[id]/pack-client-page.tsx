@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -149,7 +150,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-[11px] font-black text-primary uppercase tracking-[0.3em]">
                             <span className="flex items-center gap-2.5"><LayoutGrid className="w-4 h-4" /> {totalChecklists} MODULES</span>
                             <span className="flex items-center gap-2.5"><Target className="w-4 h-4" /> {totalTasks}+ TASKS</span>
-                            <span className="flex items-center gap-2.5"><FileSpreadsheet className="w-4 h-4" /> EXCEL & GOOGLE SHEETS</span>
+                            <span className="flex items-center gap-2.5"><FileSpreadsheet className="w-4 h-4" /> WORKS ON EXCEL AND GOOGLE SHEETS</span>
                         </div>
                         
                         <div className="pt-8">

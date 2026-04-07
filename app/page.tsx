@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -8,16 +9,13 @@ import {
     ShieldCheck,
     GraduationCap,
     AlertTriangle,
-    Users,
     ClipboardCheck,
     Clock,
     LayoutGrid,
-    History,
     FileSpreadsheet,
     XCircle,
     Utensils,
     Lock,
-    HeartPulse,
     Hospital,
     School,
     Popcorn,
@@ -87,7 +85,7 @@ const InstitutionalPayloadSection = () => (
                     { t: "TRAINER NOTES FOR EVERY TASK", i: GraduationCap },
                     { t: "CONSEQUENCES OF FAILURE DEFINED", i: AlertTriangle },
                     { t: "SINGLE UNIT OR MULTI-BRANCH VISIBILITY", i: LayoutGrid },
-                    { t: "WORKS ON EXCEL & GOOGLE SHEETS", i: FileSpreadsheet }
+                    { t: "WORKS ON EXCEL AND GOOGLE SHEETS", i: FileSpreadsheet }
                 ].map((item, i) => (
                     <div key={i} className="p-10 rounded-2xl border border-white/5 bg-white/[0.02] flex flex-col gap-6 hover:border-primary/20 transition-all group">
                         <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-black">
@@ -156,7 +154,7 @@ const DailySequenceSection = () => (
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
                 {[
-                    { s: "1", t: "SETUP", d: "Download master and works on Excel and Google Sheets." },
+                    { s: "1", t: "SETUP", d: "Download master file. Works on Excel and Google Sheets." },
                     { s: "2", t: "TEAM OPENS TASKS", d: "They see what to do, how to do it, and why it matters." },
                     { s: "3", t: "THEY EXECUTE", d: "Names entered as work happens. Logs build live." },
                     { s: "4", t: "TASKS RUN ON SCHEDULE", d: "Daily, Weekly, Monthly cycles trigger automatically." },

@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -16,7 +17,6 @@ import {
     Popcorn,
     ClipboardCheck,
     Activity,
-    Smartphone,
     FileSpreadsheet
 } from "lucide-react";
 import React from 'react';
@@ -30,13 +30,6 @@ const ELITE_INDUSTRIES = [
     { name: "Franchise Networks", id: "franchise_operations_pack", icon: Store },
     { name: "Facilities", id: "facility_management_blueprint", icon: Building2 },
     { name: "Cinemas", id: "cinema_operations_pack", icon: Popcorn }
-];
-
-const TECHNICAL_PAYLOAD = [
-    { t: "120+ Pre-built SOPs", i: ClipboardCheck },
-    { t: "Excel & Sheets Ready", i: FileSpreadsheet },
-    { t: "Live Dashboard", i: Activity },
-    { t: "No SaaS. Own your data.", i: Lock }
 ];
 
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
@@ -165,7 +158,7 @@ export const HeroSection = () => (
                         </div>
                         <div className="flex items-center gap-4">
                             <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                            <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">WORKS ON EXCEL & GOOGLE SHEETS</span>
+                            <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">WORKS ON EXCEL AND GOOGLE SHEETS</span>
                         </div>
                         <div className="flex items-center gap-4">
                             <div className="w-1.5 h-1.5 rounded-full bg-primary" />
