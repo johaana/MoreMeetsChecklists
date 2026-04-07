@@ -87,16 +87,10 @@ const InstitutionalPayloadSection = () => (
                     { t: "TRAINER NOTES FOR EVERY TASK", i: GraduationCap },
                     { t: "CONSEQUENCES OF FAILURE DEFINED", i: AlertTriangle },
                     { t: "SINGLE UNIT OR MULTI-BRANCH VISIBILITY", i: LayoutGrid },
-                    { t: "EXCEL & GOOGLE SHEETS STANDALONE SYSTEM", i: FileSpreadsheet, highlighted: true }
+                    { t: "WORKS ON EXCEL & GOOGLE SHEETS", i: FileSpreadsheet }
                 ].map((item, i) => (
-                    <div key={i} className={cn(
-                        "p-10 rounded-2xl border border-white/5 flex flex-col gap-6 hover:border-primary/20 transition-all group",
-                        item.highlighted ? "bg-primary/10 border-primary/20 shadow-[0_0_40px_-10px_rgba(46,184,107,0.2)]" : "bg-white/[0.02]"
-                    )}>
-                        <div className={cn(
-                            "w-10 h-10 rounded-lg flex items-center justify-center transition-colors",
-                            item.highlighted ? "bg-primary text-black" : "bg-primary/10 text-primary group-hover:bg-primary group-hover:text-black"
-                        )}>
+                    <div key={i} className="p-10 rounded-2xl border border-white/5 bg-white/[0.02] flex flex-col gap-6 hover:border-primary/20 transition-all group">
+                        <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-black">
                             <item.i className="w-5 h-5" />
                         </div>
                         <h4 className="font-black text-primary-text uppercase italic text-sm tracking-tighter leading-tight font-headline">{item.t}</h4>
@@ -120,7 +114,7 @@ const TheDifferentiatorSection = () => (
             <div className="grid md:grid-cols-3 gap-8">
                 {[
                     { t: "WHAT TO DO", d: "Clear, unambiguous instructions. No room for guessing.", i: ClipboardCheck },
-                    { t: "HOW TO DO IT", d: "Trainer Notes in plain language. No training curve required.", i: GraduationCap },
+                    { t: "HOW TO DO IT", d: "Action-oriented notes in plain language. No training curve required.", i: GraduationCap },
                     { t: "WHY IT MATTERS", d: "Specific consequences of failure defined to drive intentionality.", i: AlertTriangle }
                 ].map((card, i) => (
                     <div key={i} className="p-10 rounded-[2.5rem] bg-[#0a0a0a] border border-white/5 space-y-8 group hover:border-primary/20 transition-all duration-500">
@@ -162,7 +156,7 @@ const DailySequenceSection = () => (
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
                 {[
-                    { s: "1", t: "SETUP", d: "Download your .xlsx master and sync to Excel or Google Sheets." },
+                    { s: "1", t: "SETUP", d: "Download master and works on Excel and Google Sheets." },
                     { s: "2", t: "TEAM OPENS TASKS", d: "They see what to do, how to do it, and why it matters." },
                     { s: "3", t: "THEY EXECUTE", d: "Names entered as work happens. Logs build live." },
                     { s: "4", t: "TASKS RUN ON SCHEDULE", d: "Daily, Weekly, Monthly cycles trigger automatically." },
@@ -206,7 +200,7 @@ const LiveDashboardSection = () => (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-5xl mx-auto pt-12">
                 {[
                     "Done vs. Pending Status",
-                    "Single Unit or Multi-Branch Overview",
+                    "Single Unit / Multi-Branch Overview",
                     "Identified Operational Gaps",
                     "Permanent Activity Record"
                 ].map(item => (
@@ -387,7 +381,7 @@ const PricingSection = () => (
                         <span className="text-7xl md:text-9xl font-black text-primary italic drop-shadow-[0_0_30px_rgba(46,184,107,0.3)]">₹999</span>
                         <span className="text-2xl md:text-4xl font-black text-white/20 italic">/ $12</span>
                     </div>
-                    <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em]">NO SUBSCRIPTIONS • EXCEL NATIVE • OWN FOREVER</span>
+                    <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em]">WORKS ON EXCEL & GOOGLE SHEETS • OWN FOREVER</span>
                 </div>
             </div>
 

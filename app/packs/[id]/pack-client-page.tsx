@@ -8,29 +8,10 @@ import { Badge } from '@/components/ui/badge';
 import { 
     ArrowRight, 
     Target, 
-    Smartphone, 
     Activity, 
-    XCircle, 
-    CheckCircle2, 
     ShieldCheck, 
-    Lock, 
-    Clock,
-    Settings2,
-    Users,
-    Utensils,
-    Zap,
-    Scale,
-    GraduationCap,
-    AlertTriangle,
-    Flame,
-    Banknote,
-    TrendingUp,
-    Repeat,
-    Check,
-    LayoutGrid,
-    Gem,
-    History,
-    FileSpreadsheet
+    FileSpreadsheet,
+    LayoutGrid
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -168,7 +149,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-[11px] font-black text-primary uppercase tracking-[0.3em]">
                             <span className="flex items-center gap-2.5"><LayoutGrid className="w-4 h-4" /> {totalChecklists} MODULES</span>
                             <span className="flex items-center gap-2.5"><Target className="w-4 h-4" /> {totalTasks}+ TASKS</span>
-                            <span className="flex items-center gap-2.5"><FileSpreadsheet className="w-4 h-4" /> EXCEL & SHEETS</span>
+                            <span className="flex items-center gap-2.5"><FileSpreadsheet className="w-4 h-4" /> EXCEL & GOOGLE SHEETS</span>
                         </div>
                         
                         <div className="pt-8">

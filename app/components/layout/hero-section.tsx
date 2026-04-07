@@ -89,12 +89,22 @@ export const HeroSection = () => (
 
                     {/* Technical Payload */}
                     <div className="grid grid-cols-2 gap-x-4 gap-y-2 p-3 rounded-2xl bg-white/[0.02] border border-white/5">
-                        {TECHNICAL_PAYLOAD.map((item, i) => (
-                            <div key={i} className="flex items-center gap-2">
-                                <item.i className="w-3 h-3 text-primary/60" />
-                                <span className="text-[8px] font-bold text-white/40 uppercase italic tracking-tight">{item.t}</span>
-                            </div>
-                        ))}
+                        <div className="flex items-center gap-2">
+                            <ClipboardCheck className="w-3 h-3 text-primary/60" />
+                            <span className="text-[8px] font-bold text-white/40 uppercase italic tracking-tight">120+ PRE-BUILT SOPs</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <FileSpreadsheet className="w-3 h-3 text-primary/60" />
+                            <span className="text-[8px] font-bold text-white/40 uppercase italic tracking-tight">WORKS ON EXCEL & SHEETS</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Activity className="w-3 h-3 text-primary/60" />
+                            <span className="text-[8px] font-bold text-white/40 uppercase italic tracking-tight">LIVE DASHBOARD</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Lock className="w-3 h-3 text-primary/60" />
+                            <span className="text-[8px] font-bold text-white/40 uppercase italic tracking-tight">NO SaaS. OWN YOUR DATA.</span>
+                        </div>
                     </div>
                 </div>
 
@@ -106,7 +116,7 @@ export const HeroSection = () => (
                     
                     <div className="flex justify-between items-center px-1 pt-2 border-t border-white/5">
                         {[
-                            { t: "EXCEL READY", i: ShieldCheck },
+                            { t: "EXCEL & SHEETS", i: ShieldCheck },
                             { t: "OWN FOREVER", i: Zap },
                             { t: "AUDIT READY", i: ShieldCheck }
                         ].map((point, i) => (
@@ -149,12 +159,18 @@ export const HeroSection = () => (
                     </div>
 
                     <div className="flex flex-col gap-5">
-                        {TECHNICAL_PAYLOAD.slice(0, 3).map((item, i) => (
-                            <div key={i} className="flex items-center gap-4">
-                                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                                <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">{item.t}</span>
-                            </div>
-                        ))}
+                        <div className="flex items-center gap-4">
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                            <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">120+ PRE-BUILT SOPs</span>
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                            <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">WORKS ON EXCEL & GOOGLE SHEETS</span>
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                            <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">LIVE DASHBOARD TELEMETRY</span>
+                        </div>
                     </div>
 
                     <div className="space-y-4">
@@ -163,7 +179,7 @@ export const HeroSection = () => (
                                 GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="h-5 w-5" />
                             </Link>
                         </Button>
-                        <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.4em] pl-2">NO SUBSCRIPTIONS • EXCEL NATIVE • OWN FOREVER</p>
+                        <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.4em] pl-2">WORKS ON EXCEL & SHEETS • OWN FOREVER • NO SaaS</p>
                     </div>
                 </div>
 
