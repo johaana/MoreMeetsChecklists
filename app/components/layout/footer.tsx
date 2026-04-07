@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { Logo, WhatsAppIcon } from "@/components/icons";
 import { Mail } from "lucide-react";
@@ -9,10 +8,13 @@ export function Footer() {
             <div className="container grid items-start justify-center gap-8 px-4 py-12 text-center md:grid-cols-3 md:text-left">
                 <div className="flex flex-col items-center md:items-start gap-2">
                     <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
-                        <Logo className="h-6 w-6 text-authority-green" />
-                        <span className="font-headline text-lg font-bold text-primary-text">MoreMeets™</span>
+                        <Logo className="h-6 w-6 text-primary" />
+                        <div className="flex flex-col">
+                            <span className="font-headline text-lg font-bold text-primary-text leading-none tracking-tight">MoreMeets™</span>
+                            <span className="text-[8px] font-black uppercase tracking-[0.3em] text-white/40 leading-none mt-1">LESS MISSES.</span>
+                        </div>
                     </Link>
-                    <p className="text-xs md:text-sm text-muted-text max-w-xs">
+                    <p className="text-xs md:text-sm text-muted-text max-w-xs pt-2">
                         Audit-Ready Operational Standards for modern teams.
                     </p>
                 </div>
@@ -50,8 +52,8 @@ export function Footer() {
                     </div>
                 </div>
             </div>
-             <div className="border-t border-border py-4">
-                <p className="text-xs text-muted-text text-center">&copy; 2025 MoreMeets™. All rights reserved.</p>
+             <div className="border-t border-white/5 py-4">
+                <p className="text-xs text-white/20 text-center uppercase tracking-widest font-black">&copy; 2025 MoreMeets™. All rights reserved.</p>
             </div>
         </footer>
     );

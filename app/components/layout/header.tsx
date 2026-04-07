@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -62,11 +61,11 @@ const SolutionsList = () => (
 );
 
 const BrandLogo = ({ isHomepage, isScrolled }: { isHomepage: boolean, isScrolled: boolean }) => (
-     <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
+     <Link href="/" className="flex items-center justify-center gap-2 group" prefetch={false}>
         <Logo className={cn("h-6 w-6 text-primary")} />
         <div className="flex flex-col">
-            <span className={cn("font-headline text-lg font-bold leading-tight", isHomepage && !isScrolled ? "text-white" : "text-foreground")}>MoreMeets™</span>
-            <span className={cn("text-[10px] font-medium leading-tight -mt-0.5", isHomepage && !isScrolled ? "text-white/60" : "text-muted-foreground")}>Less misses.</span>
+            <span className={cn("font-headline text-lg font-bold leading-none tracking-tight", isHomepage && !isScrolled ? "text-white" : "text-foreground")}>MoreMeets™</span>
+            <span className={cn("text-[8px] font-black uppercase tracking-[0.3em] leading-none mt-1", isHomepage && !isScrolled ? "text-white/40" : "text-muted-foreground/60")}>LESS MISSES.</span>
         </div>
     </Link>
 );
