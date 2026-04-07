@@ -11,26 +11,21 @@ import {
     AlertTriangle,
     Users,
     ClipboardCheck,
-    BarChart3,
-    Settings2,
-    Target,
-    Activity,
-    XCircle,
-    CheckCircle2,
     Clock,
     LayoutGrid,
-    Repeat,
-    Smartphone,
-    Globe,
     History,
-    Search,
+    Download,
+    Cpu,
+    CheckCircle2,
     Fingerprint,
     FileSpreadsheet,
-    Download,
-    UserCheck,
+    XCircle,
+    Utensils,
+    Lock,
+    HeartPulse,
     ShieldAlert,
-    Cpu,
-    Check
+    Star,
+    Flame
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -40,7 +35,6 @@ import { SiteHeader } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Badge } from "@/components/ui/badge";
 import { HeroSection } from "@/components/layout/hero-section";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Section = ({ className, id, children, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
     <section id={id} className={cn("w-full py-20 md:py-32", className)} {...props}>
@@ -215,7 +209,7 @@ const ForensicExamplesSection = () => (
                     { t: "Clinical Safe-Zone", d: "WHO-aligned surgical time-outs and bedside handover governance.", i: HeartPulse },
                     { t: "MHE & Warehouse EHS", d: "Rigorous daily maintenance audits for forklifts and structural racking safety.", i: ShieldAlert },
                     { t: "Reputation Guard", d: "24h response telemetry for digital review signals and guest feedback sentiment.", i: Star },
-                    { t: "Fire Exit Hardening", d: "Daily physical verification of life-safety paths and alarm readiness.", i: FlameKindling }
+                    { t: "Fire Exit Hardening", d: "Daily physical verification of life-safety paths and alarm readiness.", i: Flame }
                 ].map((ex, i) => (
                     <div key={i} className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all group">
                         <ex.i className="w-8 h-8 text-primary/40 group-hover:text-primary mb-6 transition-colors" />
