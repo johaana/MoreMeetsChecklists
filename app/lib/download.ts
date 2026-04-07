@@ -6,11 +6,11 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v11.9.2 - THE COMMAND BUILD
+ * Sovereign Engine v11.9.3 - THE COMMAND BUILD (Hardened)
  * Features: Shift A/B Matrix, Maroon Consequence Header, Underlined Interactive Console.
  * Optimized: Operational Pulse is Amber. Vitals use Two-Tone Blue.
  * Sovereign Sort: Daily missions grouped at the top for zero-noise flow.
- * FIX: Persistent Link Styling & Dynamic Column Analysis.
+ * FIX: Persistent Link Styling (Blue + Underline) & Dynamic Column Analysis for Top Branch.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -204,7 +204,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         }];
     }
 
-    // Dynamic Column Calculation for Top Branch Logic
+    // Dynamic Column Calculation for Top Branch Logic (Hardened)
     const scoreColLetter = utils.encode_col(2 + packChecklists.length);
 
     // --- 01. HOME CONSOLE ---
@@ -409,7 +409,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(mWs, "Mission Execution Ledger");
     mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
 
-    // --- REFINED CONDITIONAL FORMATTING ---
+    // --- REFINED CONDITIONAL FORMATTING (HARDENED) ---
     const overdueConditionalFmt = {
         type: "expression",
         formula: `ISNUMBER(SEARCH("ACTION REQUIRED",J5))`, 
@@ -425,7 +425,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         formula: `ISNUMBER(SEARCH("ASSIGN",D5))`, 
         style: { 
             font: { 
-                color: { rgb: COLORS.LINK_BLUE }, 
+                color: { rgb: "0000FF" }, // Hardcoded link blue
                 underline: true, 
                 bold: true 
             } 
