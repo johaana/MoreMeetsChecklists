@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -20,9 +19,11 @@ import {
     Activity,
     ClipboardCheck,
     Smartphone,
-    Check,
     ShieldCheck,
-    Target
+    Target,
+    Zap,
+    Scale,
+    Cpu
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -52,26 +53,9 @@ const PreviewFrame = ({ children, title, description }: { children: React.ReactN
             <h3 className="text-xl font-black uppercase italic tracking-tighter text-primary-text">{title}</h3>
             {description && <p className="text-sm text-secondary-text italic font-medium">{description}</p>}
         </div>
-        <div className="w-full aspect-[16/8] min-h-[750px] border border-white/10 rounded-[3.5rem] bg-black overflow-hidden shadow-2xl relative">
+        <div className="w-full aspect-[16/8] min-h-[800px] border border-white/10 rounded-[3.5rem] bg-black overflow-hidden shadow-2xl relative">
             {children}
         </div>
-    </div>
-);
-
-const VideoBg = ({ grayscale = false }: { grayscale?: boolean }) => (
-    <div className="absolute inset-0 z-0">
-        <video 
-            src={VIDEO_URL} 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            className={cn(
-                "w-full h-full object-cover opacity-40",
-                grayscale && "grayscale-[0.5]"
-            )} 
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
     </div>
 );
 
@@ -81,24 +65,10 @@ const DesktopCTA = ({ price = "₹999", className }: { price?: string, className
     </Button>
 );
 
-const PayloadGrid = ({ className }: { className?: string }) => (
-    <div className={cn("grid grid-cols-2 gap-x-8 gap-y-4", className)}>
-        {TECHNICAL_PAYLOAD.map((item, i) => (
-            <div key={i} className="flex items-center gap-3">
-                <item.i className="w-4 h-4 text-primary" />
-                <span className="text-[11px] font-black text-white/40 uppercase tracking-widest">{item.t}</span>
-            </div>
-        ))}
-    </div>
-);
-
-const IndustrySelector = ({ className, variant = "list" }: { className?: string, variant?: "list" | "grid" }) => (
+const IndustrySelector = ({ className }: { className?: string }) => (
     <div className={cn("bg-white/[0.03] border border-white/10 backdrop-blur-xl p-10 rounded-[2.5rem] space-y-6 shadow-2xl", className)}>
         <span className="text-[11px] font-black text-primary uppercase tracking-[0.3em]">SEE HOW IT WORKS FOR YOUR BUSINESS</span>
-        <div className={cn(
-            "grid gap-2",
-            variant === "grid" ? "grid-cols-2" : "grid-cols-1"
-        )}>
+        <div className="grid grid-cols-1 gap-2">
             {ELITE_7.map((ind) => (
                 <Link key={ind.id} href={`/packs/${ind.id}`} className="flex items-center justify-between p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-primary/5 transition-all group">
                     <div className="flex items-center gap-4">
@@ -119,14 +89,17 @@ export default function WebHeroPreviewClient() {
             
             <main className="flex-1 py-20 px-6 space-y-40 bg-zinc-950">
                 <div className="max-w-4xl mx-auto text-center space-y-4">
-                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Sovereign Web Improv Lab v3.0</Badge>
-                    <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-none">Command Archetype Variations</h1>
-                    <p className="text-secondary-text italic font-medium">Fine-tuning the side-by-side 'Integrated Command' strategy.</p>
+                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Sovereign Web Improv Lab v4.0</Badge>
+                    <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-none text-white">The "Command" Archetype Variations</h1>
+                    <p className="text-secondary-text italic font-medium">Testing creative improvisations of the successful side-by-side strategy.</p>
                 </div>
 
-                {/* VARIANT 1: THE BASELINE (Option 1 Original) */}
-                <PreviewFrame title="1. The Baseline Command" description="The current winning formula: Desaturated video, high-blur glass, vertical sector list.">
-                    <VideoBg grayscale />
+                {/* VARIANT 1: THE BASELINE COMMAND */}
+                <PreviewFrame title="1. The Baseline Command" description="The proven side-by-side formula: Desaturated video, high-blur glass, vertical list.">
+                    <div className="absolute inset-0 z-0">
+                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-40 grayscale-[0.5]" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
+                    </div>
                     <div className="relative z-10 h-full grid grid-cols-2 items-center px-20 gap-20">
                         <div className="space-y-10">
                             <div className="space-y-5">
@@ -139,15 +112,22 @@ export default function WebHeroPreviewClient() {
                                     Across your entire operation.
                                 </p>
                             </div>
-                            <PayloadGrid />
+                            <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                                {TECHNICAL_PAYLOAD.map((item, i) => (
+                                    <div key={i} className="flex items-center gap-3">
+                                        <item.i className="w-4 h-4 text-primary" />
+                                        <span className="text-[11px] font-black text-white/40 uppercase tracking-widest">{item.t}</span>
+                                    </div>
+                                ))}
+                            </div>
                             <DesktopCTA />
                         </div>
                         <IndustrySelector />
                     </div>
                 </PreviewFrame>
 
-                {/* VARIANT 2: THE VIVID AUTHORITY (Color Video + Depth) */}
-                <PreviewFrame title="2. The Vivid Authority" description="Full color video background with deeper blurs and enhanced typographic hierarchy.">
+                {/* VARIANT 2: THE VIVID AUTHORITY */}
+                <PreviewFrame title="2. The Vivid Authority" description="Full color video loop with deeper blurs and enhanced typographic weight.">
                     <div className="absolute inset-0 z-0">
                         <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-40" />
                         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
@@ -156,131 +136,149 @@ export default function WebHeroPreviewClient() {
                         <div className="space-y-10">
                             <div className="space-y-5">
                                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px]">SOVEREIGN V11.9 ACCESS</Badge>
-                                <h1 className="text-7xl lg:text-8xl font-black font-headline text-white leading-[0.8] uppercase italic tracking-tighter">
+                                <h1 className="text-7xl lg:text-[5.5rem] font-black font-headline text-white leading-[0.8] uppercase italic tracking-tighter">
                                     CAPTURE<br />
                                     <span className="text-primary">MEMORY.</span>
                                 </h1>
                                 <p className="text-2xl text-white/60 italic font-medium max-w-lg leading-snug">
-                                    Stop managing by effort. <br />
-                                    Start seeing by system.
+                                    Stop managing by individual effort. <br />
+                                    Start seeing by institutional system.
                                 </p>
                             </div>
                             <div className="bg-white/[0.02] border border-white/10 p-8 rounded-3xl backdrop-blur-md inline-block">
-                                <PayloadGrid />
-                            </div>
-                            <DesktopCTA className="h-20 text-lg" />
-                        </div>
-                        <IndustrySelector className="bg-black/40 border-primary/20" />
-                    </div>
-                </PreviewFrame>
-
-                {/* VARIANT 3: THE SOFTWARE GRID (Dashboard Logic) */}
-                <PreviewFrame title="3. The Software Grid" description="Re-imagines the industry selector as a high-density dashboard grid. Best for multi-sector groups.">
-                    <div className="absolute inset-0 z-0">
-                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-30" />
-                        <div className="absolute inset-0 bg-[linear-gradient(90deg,#000_0%,#000_40%,rgba(0,0,0,0.5)_60%,rgba(0,0,0,0)_100%)]" />
-                    </div>
-                    <div className="relative z-10 h-full grid grid-cols-[1fr,600px] items-center px-20 gap-16">
-                        <div className="space-y-10">
-                            <div className="space-y-6">
-                                <h1 className="text-7xl font-black font-headline text-white leading-[0.85] uppercase italic tracking-tighter">
-                                    LESS MISSES.<br />
-                                    <span className="text-primary">MORE STANDARDS.</span>
-                                </h1>
-                                <div className="space-y-3 border-l-2 border-primary/40 pl-8">
-                                    <p className="text-xl text-white/80 font-bold uppercase italic tracking-tight">Pre-built SOPs with Live Dashboard.</p>
-                                    <p className="text-lg text-white/40 font-medium italic leading-tight">No SaaS for your business. Own the engine forever.</p>
+                                <div className="grid grid-cols-2 gap-x-10 gap-y-4">
+                                    {TECHNICAL_PAYLOAD.map((item, i) => (
+                                        <div key={i} className="flex items-center gap-3">
+                                            <item.i className="w-4 h-4 text-primary" />
+                                            <span className="text-[11px] font-black text-white/80 uppercase tracking-widest">{item.t}</span>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
-                            <PayloadGrid />
-                            <DesktopCTA />
+                            <DesktopCTA className="h-20 text-lg shadow-[0_0_50px_-5px_rgba(46,184,107,0.4)]" />
                         </div>
-                        <IndustrySelector variant="grid" className="bg-black/60 border-white/5 p-8" />
+                        <IndustrySelector className="bg-black/40 border-primary/20 p-12" />
                     </div>
                 </PreviewFrame>
 
-                {/* VARIANT 4: THE CORPORATE MONOLITH (Sharp 50/50 Split) */}
-                <PreviewFrame title="4. The Corporate Monolith" description="Hard 50/50 split with sharp industrial borders. Maximum focus on 'Stop Chasing' narrative.">
-                    <div className="relative z-10 h-full grid grid-cols-2">
-                        <div className="h-full bg-black flex flex-col justify-center px-24 space-y-10 border-r border-white/5">
+                {/* VARIANT 3: THE TELEMETRY BLUEPRINT */}
+                <PreviewFrame title="3. The Telemetry Blueprint" description="Creative: Forensic engineering feel with a digital grid and technical callouts.">
+                    <div className="absolute inset-0 z-0">
+                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-30 grayscale" />
+                        {/* Digital Grid Overlay */}
+                        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+                    </div>
+                    <div className="relative z-10 h-full grid grid-cols-2 items-center px-20 gap-20">
+                        <div className="space-y-12">
                             <div className="space-y-6">
-                                <span className="text-primary font-black uppercase tracking-[0.5em] text-[10px]">SOVEREIGN INFRASTRUCTURE</span>
-                                <h1 className="text-6xl lg:text-7xl font-black font-headline text-white leading-[0.9] uppercase italic tracking-tighter">
-                                    STOP CHASING.<br />
-                                    <span className="text-primary">START SEEING.</span>
+                                <div className="flex items-center gap-3 text-primary">
+                                    <Cpu className="w-5 h-5 animate-pulse" />
+                                    <span className="text-[10px] font-black uppercase tracking-[0.5em] font-mono">SPEC: SOVEREIGN_V11.9</span>
+                                </div>
+                                <h1 className="text-7xl font-black font-headline text-white leading-[0.85] uppercase italic tracking-tighter">
+                                    SYSTEMS ARE <br />
+                                    <span className="text-primary">INFRASTRUCTURE.</span>
                                 </h1>
-                                <p className="text-lg text-zinc-500 italic font-medium leading-relaxed">
-                                    Capture the institutional memory of your best performers. Deployforensically engineered data engines to run your daily operations.
+                                <p className="text-lg text-zinc-500 font-mono italic leading-relaxed max-w-lg border-l border-white/10 pl-8">
+                                    [PROCESS_ID: MM_OS_2025] // Capturing the institutional memory of your top performers into an editable data engine.
                                 </p>
                             </div>
                             <div className="grid grid-cols-1 gap-4">
                                 {TECHNICAL_PAYLOAD.map((item, i) => (
                                     <div key={i} className="flex items-center gap-4 group">
-                                        <div className="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-all"><item.i className="w-4 h-4" /></div>
-                                        <span className="text-xs font-black text-zinc-400 uppercase tracking-widest">{item.t}</span>
+                                        <div className="w-10 h-10 rounded bg-zinc-900 border border-white/5 flex items-center justify-center text-primary group-hover:border-primary/50 transition-all"><item.i className="w-5 h-5" /></div>
+                                        <div className="space-y-0.5">
+                                            <span className="text-[10px] font-black text-primary uppercase tracking-widest">MODULE_{i+1}</span>
+                                            <p className="text-xs font-bold text-white/40 uppercase tracking-widest font-mono">{item.t}</p>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
-                            <DesktopCTA className="w-fit" />
+                            <DesktopCTA className="rounded-none font-mono" />
                         </div>
-                        <div className="h-full relative overflow-hidden flex flex-col justify-center px-16">
-                            <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-50" />
-                            <div className="absolute inset-0 bg-black/40" />
-                            <div className="relative z-10 space-y-6">
-                                <div className="p-10 rounded-[2rem] bg-black/80 border border-white/10 backdrop-blur-xl space-y-8">
-                                    <div className="flex justify-between items-center border-b border-white/10 pb-6">
-                                        <span className="text-xs font-black text-primary uppercase tracking-[0.4em]">DEPLOYMENT SECTORS</span>
-                                        <ShieldCheck className="w-5 h-5 text-primary/40" />
-                                    </div>
-                                    <div className="grid grid-cols-1 gap-1">
-                                        {ELITE_7.map((ind) => (
-                                            <Link key={ind.id} href={`/packs/${ind.id}`} className="flex items-center justify-between p-4 rounded-xl hover:bg-primary/10 transition-all group">
-                                                <div className="flex items-center gap-5">
-                                                    <ind.icon className="w-5 h-5 text-primary/40 group-hover:text-primary transition-colors" />
-                                                    <span className="text-sm font-bold uppercase italic text-white/50 group-hover:text-white transition-all">{ind.name}</span>
-                                                </div>
-                                                <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-primary" />
-                                            </Link>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="p-1 rounded-[2.5rem] bg-gradient-to-br from-primary/20 to-transparent">
+                            <IndustrySelector className="bg-black/90 border-none rounded-[2.4rem] p-12" />
                         </div>
                     </div>
                 </PreviewFrame>
 
-                {/* VARIANT 5: THE MINIMALIST ELITE (Clean / Linear) */}
-                <PreviewFrame title="5. The Minimalist Elite" description="Ultra-clean variant of Option 1. Focused strictly on line-art and high-end typography.">
+                {/* VARIANT 4: THE ATMOSPHERIC COMMAND */}
+                <PreviewFrame title="4. The Atmospheric Command" description="Creative: Multi-layer gradients and 'Floating Data Chips' for a cinematic brand story.">
                     <div className="absolute inset-0 z-0">
-                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20" />
-                        <div className="absolute inset-0 bg-black/20" />
+                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-50" />
+                        {/* Background Watermark */}
+                        <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 text-[20rem] font-black text-white/[0.02] uppercase italic select-none pointer-events-none">
+                            SOVEREIGN
+                        </div>
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(0,0,0,0.8)_0%,rgba(0,0,0,0.95)_100%)]" />
                     </div>
-                    <div className="relative z-10 h-full grid grid-cols-[1fr,500px] items-center px-32 gap-32">
+                    <div className="relative z-10 h-full grid grid-cols-2 items-center px-24 gap-24">
                         <div className="space-y-12">
                             <div className="space-y-6">
+                                <h1 className="text-8xl font-black font-headline text-white leading-[0.8] uppercase italic tracking-tighter">
+                                    STOP <br />
+                                    <span className="text-primary">CHASING.</span>
+                                </h1>
+                                <p className="text-2xl text-secondary-text font-medium italic max-w-md leading-snug drop-shadow-lg">
+                                    "Consistency is either engineered, or it is non-existent."
+                                </p>
+                            </div>
+                            
+                            {/* Floating Data Chips */}
+                            <div className="flex flex-wrap gap-3">
+                                {TECHNICAL_PAYLOAD.map((item, i) => (
+                                    <div key={i} className="bg-white/5 backdrop-blur-2xl border border-white/10 px-6 py-3 rounded-full flex items-center gap-3 shadow-2xl hover:bg-primary/10 transition-colors cursor-default">
+                                        <item.i className="w-4 h-4 text-primary" />
+                                        <span className="text-[10px] font-black text-white/60 uppercase tracking-widest">{item.t}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="flex flex-col gap-4">
+                                <DesktopCTA className="w-fit px-16 h-20 rounded-[2rem]" />
+                                <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.4em] pl-8 border-l border-primary/30">NO APPS. NO SAAS. OWN FOREVER.</p>
+                            </div>
+                        </div>
+                        <div className="relative group">
+                            <div className="absolute -inset-1 bg-primary/20 blur-3xl rounded-[3rem] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                            <IndustrySelector className="bg-black/60 border-white/10 backdrop-blur-3xl relative" />
+                        </div>
+                    </div>
+                </PreviewFrame>
+
+                {/* VARIANT 5: THE MINIMALIST ELITE */}
+                <PreviewFrame title="5. The Minimalist Elite" description="High-end refinement applied to the side-by-side layout. Focus on line-art and whitespace.">
+                    <div className="absolute inset-0 z-0">
+                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20" />
+                        <div className="absolute inset-0 bg-black/40" />
+                    </div>
+                    <div className="relative z-10 h-full grid grid-cols-[1.2fr,1fr] items-center px-32 gap-32">
+                        <div className="space-y-16">
+                            <div className="space-y-8">
                                 <h1 className="text-8xl font-black font-headline text-white leading-[0.8] uppercase italic tracking-tighter">
                                     DEPLOY<br />
                                     <span className="text-primary">SYSTEMS.</span>
                                 </h1>
-                                <p className="text-xl text-white/40 italic font-medium max-w-sm border-l border-white/20 pl-8 leading-relaxed">
+                                <p className="text-xl text-white/40 italic font-medium max-w-sm border-l border-white/20 pl-10 leading-relaxed">
                                     Memory is not a system. Serious operations deserve more than improvisation.
                                 </p>
                             </div>
-                            <div className="flex flex-col gap-4">
+                            <div className="flex flex-col gap-6">
                                 {TECHNICAL_PAYLOAD.slice(0, 3).map((item, i) => (
-                                    <div key={i} className="flex items-center gap-3">
-                                        <item.i className="w-3.5 h-3.5 text-primary" />
-                                        <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">{item.t}</span>
+                                    <div key={i} className="flex items-center gap-4">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                        <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">{item.t}</span>
                                     </div>
                                 ))}
                             </div>
-                            <DesktopCTA className="bg-transparent border border-primary/40 text-primary hover:bg-primary hover:text-black shadow-none" />
+                            <DesktopCTA className="bg-transparent border border-primary/40 text-primary hover:bg-primary hover:text-black shadow-none w-fit px-12" />
                         </div>
-                        <div className="p-1 border-l border-white/10 space-y-10 pl-16">
-                            <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.5em]">SELECT VERTICAL</span>
-                            <div className="space-y-4">
+                        <div className="p-1 border-l border-white/10 space-y-12 pl-20">
+                            <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.6em]">SELECT VERTICAL</span>
+                            <div className="space-y-6">
                                 {ELITE_7.map((ind) => (
-                                    <Link key={ind.id} href={`/packs/${ind.id}`} className="block text-xl font-bold uppercase italic text-white/30 hover:text-primary transition-all hover:translate-x-2">
+                                    <Link key={ind.id} href={`/packs/${ind.id}`} className="block text-2xl font-bold uppercase italic text-white/20 hover:text-primary transition-all hover:translate-x-3">
                                         {ind.name}
                                     </Link>
                                 ))}
@@ -295,5 +293,3 @@ export default function WebHeroPreviewClient() {
         </div>
     );
 }
-
-    
