@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -24,7 +25,12 @@ import {
     History,
     Search,
     Fingerprint,
-    FileSpreadsheet
+    FileSpreadsheet,
+    Download,
+    UserCheck,
+    ShieldAlert,
+    Cpu,
+    Check
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -160,6 +166,68 @@ const InstitutionalPayloadSection = () => (
     </Section>
 );
 
+const DeploymentRoadmapSection = () => (
+    <Section className="bg-alternate-background border-y border-white/5">
+        <div className="max-w-5xl mx-auto space-y-16">
+            <div className="text-center space-y-4">
+                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Implementation</Badge>
+                <SectionHeadline>DEPLOYMENT ROADMAP</SectionHeadline>
+                <p className="text-xl text-secondary-text italic font-medium">From acquisition to command in under 10 minutes.</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-12 relative">
+                <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-y-1/2 z-0" />
+                
+                {[
+                    { s: "01", t: "Institutional Acquisition", d: "Download the Sovereign v11.9 Master Engine. Upload to your secure Google Drive or local server.", i: Download },
+                    { s: "02", t: "Role-Based Mapping", d: "Assign names to pre-defined industry roles in the Team Hub. The Mission Ledger updates instantly.", i: Users },
+                    { s: "03", t: "Binary Command", d: "Staff log execution as it happens. You monitor the truth from the telemetry dashboard.", i: Cpu }
+                ].map((step, i) => (
+                    <div key={i} className="relative z-10 flex flex-col items-center text-center space-y-6 group">
+                        <div className="w-16 h-16 rounded-full bg-black border border-white/10 flex items-center justify-center group-hover:border-primary/40 transition-all shadow-2xl">
+                            <step.i className="w-6 h-6 text-primary" />
+                        </div>
+                        <div className="space-y-2">
+                            <span className="text-[10px] font-black text-primary uppercase tracking-[0.5em] italic">{step.s} / ROADMAP</span>
+                            <h4 className="text-lg font-black text-primary-text uppercase italic tracking-tighter">{step.t}</h4>
+                            <p className="text-sm text-secondary-text italic font-medium leading-relaxed">{step.d}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </Section>
+);
+
+const ForensicExamplesSection = () => (
+    <Section className="bg-black">
+        <div className="max-w-6xl mx-auto space-y-16">
+            <div className="text-center space-y-4">
+                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.4em] font-black text-[11px]">System Standards</Badge>
+                <SectionHeadline>SOVEREIGN EXAMPLES</SectionHeadline>
+                <p className="text-xl text-secondary-text italic font-medium">Industry-grade modules ready for immediate deployment.</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                    { t: "HACCP Kitchen Safety", d: "Zero-fail thermal logs and allergen separation protocols for high-stakes kitchens.", i: Utensils },
+                    { t: "Vault & Cash Integrity", d: "Dual-verification controls for high-value inventory and revenue reconciliation.", i: Lock },
+                    { t: "Clinical Safe-Zone", d: "WHO-aligned surgical time-outs and bedside handover governance.", i: HeartPulse },
+                    { t: "MHE & Warehouse EHS", d: "Rigorous daily maintenance audits for forklifts and structural racking safety.", i: ShieldAlert },
+                    { t: "Reputation Guard", d: "24h response telemetry for digital review signals and guest feedback sentiment.", i: Star },
+                    { t: "Fire Exit Hardening", d: "Daily physical verification of life-safety paths and alarm readiness.", i: FlameKindling }
+                ].map((ex, i) => (
+                    <div key={i} className="p-8 rounded-2xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all group">
+                        <ex.i className="w-8 h-8 text-primary/40 group-hover:text-primary mb-6 transition-colors" />
+                        <h4 className="text-xl font-black text-primary-text uppercase italic tracking-tighter mb-3 leading-tight">{ex.t}</h4>
+                        <p className="text-xs text-secondary-text italic font-medium leading-relaxed">{ex.d}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </Section>
+);
+
 const LiveDashboardSection = () => (
     <Section className="bg-black overflow-hidden border-y border-white/5">
         <div className="max-w-6xl mx-auto space-y-16">
@@ -251,7 +319,9 @@ export default function Home() {
         
         <TheShiftSection />
         <InstitutionalPayloadSection />
+        <DeploymentRoadmapSection />
         <LiveDashboardSection />
+        <ForensicExamplesSection />
         <ResignationRiskSection />
         
         <TestimonialsSection />
