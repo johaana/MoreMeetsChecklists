@@ -20,12 +20,14 @@ import { painPointsContent } from '@/lib/pain-points-content';
 import { PainPoint } from '@/components/ui/pain-point';
 import { IconComponent } from '@/components/icons';
 
+const DASHBOARD_PREVIEW_URL = "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png";
+
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
     <section id={id} className={cn("w-full py-16 md:py-24", className)}>
         <div className="container px-4 md:px-6">
             {children}
         </div>
-    </section>
+    </section> section>
 );
 
 const SectionHeadline = ({ children, className }: { children: React.ReactNode, className?: string }) => (
@@ -34,7 +36,7 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
     </h2>
 );
 
-const OperationalWindow = ({ src, alt, title = "MASTER_OPERATIONAL_ENGINE_V11.9" }: { src: string, alt: string, title?: string }) => (
+const OperationalWindow = ({ src = DASHBOARD_PREVIEW_URL, alt, title = "MASTER_OPERATIONAL_ENGINE_V11.9" }: { src?: string, alt: string, title?: string }) => (
     <div className="relative mx-auto max-w-4xl group">
         <div className="bg-[#111] border border-white/10 border-b-0 rounded-t-xl py-3 px-5 flex items-center gap-4">
             <div className="flex gap-1.5">
@@ -75,7 +77,13 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
                     {content.points.map((point: any, index: number) => (
-                        <PainPoint key={index} icon={point.icon} title={point.title} description={point.description} />
+                        <div key={index} className="rounded-2xl border border-white/5 bg-white/[0.02] p-8 space-y-4 hover:border-red-500/20 transition-all">
+                            <div className="flex items-center gap-4 text-red-500">
+                                {point.icon}
+                                <h4 className="font-bold text-lg text-primary-text leading-tight">{point.title}</h4>
+                            </div>
+                            <p className="text-sm text-secondary-text leading-relaxed italic font-medium">{point.description}</p>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -126,9 +134,19 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
       <SiteHeader />
 
       <main className="flex-1">
-        {/* HERO SECTION */}
-        <section className="relative w-full pt-24 pb-12 md:pt-32 md:pb-24 border-b border-white/5 overflow-hidden bg-black flex flex-col justify-center">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(46,184,107,0.05)_0%,transparent_60%)]" />
+        {/* HERO SECTION WITH ATMOSPHERIC BACKGROUND */}
+        <section className="relative w-full pt-24 pb-12 md:pt-32 md:pb-24 border-b border-white/5 overflow-hidden bg-black flex flex-col justify-center min-h-[85vh]">
+          
+          {/* Industry Context Layer (Blurred) */}
+          <div className="absolute inset-0 z-0">
+            <img 
+                src={heroImageUrl} 
+                alt="Context" 
+                className="w-full h-full object-cover opacity-20 blur-xl scale-110 grayscale" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black" />
+          </div>
+
           <div className="container px-4 md:px-6 relative z-10">
             <div className="grid lg:grid-cols-[1fr,480px] gap-12 md:gap-20 items-center">
                 
@@ -155,8 +173,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         
                         <div className="pt-8">
                             <OperationalWindow 
-                                src={heroImageUrl}
-                                alt={pack.title}
+                                src={DASHBOARD_PREVIEW_URL}
+                                alt="Sovereign Dashboard"
                             />
                         </div>
                     </div>
