@@ -1,11 +1,9 @@
-
 'use client';
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { 
     ArrowRight, 
-    ChevronRight, 
     Lock, 
     Zap, 
     ShieldCheck, 
@@ -18,8 +16,7 @@ import {
     Popcorn,
     ClipboardCheck,
     Activity,
-    Smartphone,
-    CheckCircle2
+    Smartphone
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -46,9 +43,9 @@ const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730
 export const HeroSection = () => (
     <section className="relative w-full overflow-hidden bg-black">
         {/* --- MOBILE ARCHITECTURE: THE COMMAND GRID --- */}
-        <div className="md:hidden flex flex-col min-h-[calc(100dvh-64px)]">
+        <div className="md:hidden flex flex-col min-h-[100dvh]">
             {/* 1. Video Header (35%) */}
-            <div className="relative h-[35vh] w-full overflow-hidden bg-zinc-900">
+            <div className="relative h-[32vh] w-full overflow-hidden bg-zinc-900">
                 <video
                     src={VIDEO_URL}
                     autoPlay
@@ -57,9 +54,9 @@ export const HeroSection = () => (
                     playsInline
                     className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6">
-                    <h1 className="text-[2.2rem] font-black font-headline text-white leading-[0.82] uppercase italic tracking-tighter">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                <div className="absolute bottom-4 left-6 right-6">
+                    <h1 className="text-[2rem] font-black font-headline text-white leading-[0.85] uppercase italic tracking-tighter">
                         STOP CHASING.<br />
                         <span className="text-primary">START SEEING.</span>
                     </h1>
@@ -67,10 +64,10 @@ export const HeroSection = () => (
             </div>
 
             {/* 2. Control Deck (65%) */}
-            <div className="flex-1 px-6 pt-2 pb-8 flex flex-col justify-between space-y-6">
-                <div className="space-y-6">
+            <div className="flex-1 px-6 pt-2 pb-6 flex flex-col justify-between space-y-4">
+                <div className="space-y-4">
                     {/* Industry Selector */}
-                    <div className="space-y-3">
+                    <div className="space-y-2">
                         <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.2em]">SEE HOW IT WORKS FOR YOUR BUSINESS</span>
                         <div className="grid grid-cols-2 gap-2">
                             {ELITE_INDUSTRIES.map((ind, i) => (
@@ -90,7 +87,7 @@ export const HeroSection = () => (
                     </div>
 
                     {/* Technical Payload */}
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-2 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-2 p-3 rounded-2xl bg-white/[0.02] border border-white/5">
                         {TECHNICAL_PAYLOAD.map((item, i) => (
                             <div key={i} className="flex items-center gap-2">
                                 <item.i className="w-3 h-3 text-primary/60" />
@@ -101,8 +98,8 @@ export const HeroSection = () => (
                 </div>
 
                 {/* Unified CTA & Proof */}
-                <div className="space-y-4">
-                    <Button asChild className="w-full h-16 bg-primary text-black font-black uppercase italic text-[10px] tracking-widest rounded-xl shadow-[0_0_30px_-10px_rgba(46,184,107,0.5)] border-none active:scale-95 transition-all">
+                <div className="space-y-3">
+                    <Button asChild className="w-full h-14 bg-primary text-black font-black uppercase italic text-[10px] tracking-widest rounded-xl shadow-lg border-none active:scale-95 transition-all">
                         <Link href="/library">GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="ml-2 h-4 w-4" /></Link>
                     </Button>
                     
@@ -122,8 +119,8 @@ export const HeroSection = () => (
             </div>
         </div>
 
-        {/* --- DESKTOP ARCHITECTURE: THE ELITE REFINEMENT (OPTION 4) --- */}
-        <div className="hidden md:flex flex-row items-center h-[90vh] min-h-[800px] relative">
+        {/* --- DESKTOP ARCHITECTURE: THE ELITE REFINEMENT --- */}
+        <div className="hidden md:flex flex-row items-center h-screen relative pt-16">
             {/* Cinematic Visual Layer */}
             <div className="absolute inset-0 z-0">
                 <video 
@@ -132,15 +129,15 @@ export const HeroSection = () => (
                     loop 
                     muted 
                     playsInline 
-                    className="w-full h-full object-cover opacity-20" 
+                    className="w-full h-full object-cover opacity-30" 
                 />
-                <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
             </div>
 
-            <div className="container px-4 md:px-32 relative z-10 h-full grid grid-cols-[1.2fr,1fr] items-center gap-32">
+            <div className="container px-4 md:px-32 relative z-10 h-full grid grid-cols-[1.2fr,1fr] items-center gap-24">
                 {/* Left: Narrative & Payload */}
-                <div className="space-y-16">
-                    <div className="space-y-8">
+                <div className="space-y-12">
+                    <div className="space-y-6">
                         <h1 className="text-8xl font-black font-headline text-white leading-[0.8] uppercase italic tracking-tighter">
                             CAPTURE<br />
                             <span className="text-primary">MEMORY.</span>
@@ -150,7 +147,7 @@ export const HeroSection = () => (
                         </p>
                     </div>
 
-                    <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-5">
                         {TECHNICAL_PAYLOAD.slice(0, 3).map((item, i) => (
                             <div key={i} className="flex items-center gap-4">
                                 <div className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -170,9 +167,9 @@ export const HeroSection = () => (
                 </div>
 
                 {/* Right: Sector Selection (Vertical stack) */}
-                <div className="p-1 border-l border-white/10 space-y-12 pl-20">
+                <div className="p-1 border-l border-white/10 space-y-10 pl-20">
                     <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.6em]">SELECT VERTICAL</span>
-                    <div className="space-y-6">
+                    <div className="space-y-5">
                         {ELITE_INDUSTRIES.map((ind) => (
                             <Link 
                                 key={ind.id} 

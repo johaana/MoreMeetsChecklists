@@ -60,12 +60,12 @@ const SolutionsList = () => (
     </div>
 );
 
-const BrandLogo = () => (
+const BrandLogo = ({ isHomepage, isScrolled }: { isHomepage: boolean, isScrolled: boolean }) => (
      <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
         <Logo className={cn("h-6 w-6 text-primary")} />
         <div className="flex flex-col">
-            <span className={cn("font-headline text-lg font-bold leading-tight text-foreground")}>MoreMeets™</span>
-            <span className={cn("text-xs leading-tight -mt-0.5 text-muted-foreground")}>Less misses.</span>
+            <span className={cn("font-headline text-lg font-bold leading-tight", isHomepage && !isScrolled ? "text-white" : "text-foreground")}>MoreMeets™</span>
+            <span className={cn("text-xs leading-tight -mt-0.5", isHomepage && !isScrolled ? "text-white/60" : "text-muted-foreground")}>Less misses.</span>
         </div>
     </Link>
 );
@@ -106,14 +106,14 @@ export function SiteHeader() {
 
     return (
         <header className={cn(
-            "px-4 lg:px-6 h-16 flex items-center sticky top-0 z-50 transition-colors duration-300",
+            "px-4 lg:px-6 h-16 flex items-center fixed top-0 w-full z-50 transition-all duration-500",
             isHomepage
-                ? (isScrolled ? "bg-background/80 backdrop-blur-sm border-b border-border" : "bg-transparent border-b border-transparent")
+                ? (isScrolled ? "bg-background/95 backdrop-blur-md border-b border-white/5" : "bg-transparent border-b border-transparent")
                 : "bg-background/95 backdrop-blur-sm border-b"
         )}>
             <div className="flex items-center">
                 <div className="flex">
-                  <BrandLogo />
+                  <BrandLogo isHomepage={isHomepage} isScrolled={isScrolled} />
                 </div>
             </div>
 
@@ -155,7 +155,7 @@ export function SiteHeader() {
             <div className="md:hidden ml-auto">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" className={cn(isHomepage && !isScrolled ? "text-white/80 hover:text-white hover:bg-white/10" : "text-foreground")}>
+                        <Button variant="ghost" size="icon" className={cn(isHomepage && !isScrolled ? "text-white hover:bg-white/10" : "text-foreground")}>
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>
@@ -163,7 +163,7 @@ export function SiteHeader() {
                     <SheetContent side="right" className="w-full max-w-sm flex flex-col p-0">
                          <SheetHeader className="p-4 border-b">
                             <SheetTitle>
-                                <BrandLogo />
+                                <BrandLogo isHomepage={false} isScrolled={true} />
                             </SheetTitle>
                         </SheetHeader>
                         <ScrollArea className="flex-1">
