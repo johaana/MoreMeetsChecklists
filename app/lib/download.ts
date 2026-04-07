@@ -6,11 +6,11 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v11.9 - THE ABSOLUTE COMMAND BUILD
+ * Sovereign Engine v11.9.2 - THE COMMAND BUILD
  * Features: Shift A/B Matrix, Maroon Consequence Header, Underlined Interactive Console.
  * Optimized: Operational Pulse is Amber. Vitals use Two-Tone Blue.
  * Sovereign Sort: Daily missions grouped at the top for zero-noise flow.
- * FIX: Conditional Hyperlinks for Staff Assignment & Dynamic Top Branch Logic.
+ * FIX: Persistent Link Styling & Dynamic Column Analysis.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -42,7 +42,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         MGR_TARGET: "FDE68A", 
         SOFT_RED: "FEF2F2",
         SOFT_GREEN: "ECFDF5",
-        RISK_RED: "E11D48"
+        RISK_RED: "E11D48",
+        LINK_BLUE: "0000FF"
     };
 
     const baseFont = { name: 'Segoe UI', sz: 10 };
@@ -204,7 +205,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
 
     // Dynamic Column Calculation for Top Branch Logic
-    // Score is at index: 2 + checklists.length
+    // Score index is exactly 2 + number of active modules
     const scoreColLetter = utils.encode_col(2 + packChecklists.length);
 
     // --- 01. HOME CONSOLE ---
@@ -346,7 +347,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(pWs, "Responsibility & Resource Mapping");
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- 04. MISSION LEDGER (TODAYS_TASKS) - SOVEREIGN SORT ---
+    // --- 04. MISSION LEDGER (TODAYS_TASKS) ---
     const mHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, 
         { v: "Role", s: headerStyle }, { v: "Assigned To (Auto)", s: headerStyle },
@@ -377,7 +378,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     
                     const keyRef = `B${rowIdx} & "|" & C${rowIdx}`;
                     
-                    // FIXED HYPERLINK LOGIC: Only hyperlink if no name is assigned.
+                    // FIXED HYPERLINK LOGIC
                     const personCondition = `COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0`;
                     const personResult = `VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", "")`;
                     const personFormula = `HYPERLINK(IF(${personCondition}, "#'TEAM_HUB'!A1", ""), IF(${personCondition}, "ASSIGN IN TEAM HUB", ${personResult}))`;
@@ -389,7 +390,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                         { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
                         { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode}), "")`, s: dataStyleCenter },
                         { v: c.role, s: dataStyleCenter },
-                        { t: 'f', f: personFormula, s: dataStyleCenter }, // Removed forced blue style; handled by conditional formatting
+                        { t: 'f', f: personFormula, s: dataStyleCenter },
                         { v: t.id, s: dataStyleCenter },
                         { v: technicalVal, s: dataStyleLeft },
                         { v: trainerVal, s: coachingStyle },
@@ -413,18 +414,19 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     // --- REFINED CONDITIONAL FORMATTING ---
     const overdueConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("ACTION REQUIRED",INDIRECT("J"&ROW())))`, // J is Status
+        formula: `ISNUMBER(SEARCH("ACTION REQUIRED",J5))`, 
         style: { fill: { fgColor: { rgb: "FEE2E2" } }, font: { color: { rgb: "B91C1C" }, bold: true } },
     };
     const completedConditionalFmt = {
         type: "expression",
-        formula: `INDIRECT("J"&ROW())="COMPLETED"`, // J is Status
+        formula: `J5="COMPLETED"`, 
         style: { fill: { fgColor: { rgb: "DCFCE7" } }, font: { color: { rgb: "15803D" }, bold: true } },
     };
+    // LINK STYLING: Blue + Underline for the Assignment Prompt
     const assignLinkConditionalFmt = {
         type: "expression",
-        formula: `ISNUMBER(SEARCH("ASSIGN",INDIRECT("D"&ROW())))`, // D is Assigned To
-        style: { font: { color: { rgb: COLORS.VITAL_BLUE_DARK }, underline: true, bold: true } },
+        formula: `ISNUMBER(SEARCH("ASSIGN",D5))`, 
+        style: { font: { color: { rgb: COLORS.LINK_BLUE }, underline: true, bold: true } },
     };
 
     mWs['!conditional_formatting'] = [
@@ -556,10 +558,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     fsWs['!cols'] = [15, 25, 20, 25, 15, 20, 25, 15].map(w => ({ wch: w }));
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
-    // --- 10. SYSTEM GUIDE - FIXING CLIPPING & REPETITION ---
+    // --- 10. SYSTEM GUIDE ---
     const guideData: any[][] = [
-        [], [], // Overwritten by Ribbon
-        [], // Empty Spacer for Row 3
+        [], [], 
+        [], 
         [null, { v: "COMMAND MANUAL: HOW TO DEPLOY YOUR SOVEREIGN OS", s: { font: { sz: 12, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [],
         [null, { v: "4-STEP DEPLOYMENT ROADMAP", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
