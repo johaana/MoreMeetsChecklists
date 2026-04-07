@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -35,7 +36,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { painPointsContent } from '@/lib/pain-points-content';
 import { PainPoint } from '@/components/ui/pain-point';
-import { IconComponent, ComplianceIcon } from '@/components/icons';
+import { IconComponent } from '@/components/icons';
 
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
     <section id={id} className={cn("w-full py-16 md:py-24", className)}>
@@ -138,7 +139,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
   const audience = pack.whoIsItFor || ["Industry Professionals"];
   const totalChecklists = pack.checklists?.length || 0;
   const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
-  const isEmptyPack = totalChecklists === 0;
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -218,7 +218,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         <PainPointsSection packId={pack.id} />
 
         <Section className="bg-black">
-            <div className="max-w-6xl mx-auto space-y-20">
+            <div className="max-w-6xl auto space-y-20">
                 <div className="text-center space-y-4">
                     <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.4em] font-black text-[11px]">System Standards</Badge>
                     <SectionHeadline className="text-center">OPERATIONAL STANDARDS</SectionHeadline>

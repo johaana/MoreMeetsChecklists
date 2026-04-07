@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -23,7 +24,8 @@ import {
     Globe,
     History,
     Search,
-    Fingerprint
+    Fingerprint,
+    FileSpreadsheet
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -124,57 +126,28 @@ const TheShiftSection = () => (
     </Section>
 );
 
-const OperatingLoopSection = () => (
-    <Section className="bg-alternate-background">
-        <div className="max-w-6xl mx-auto space-y-20">
-            <div className="text-center space-y-4">
-                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[11px]">Daily Sequence</Badge>
-                <SectionHeadline>HOW YOUR BUSINESS RUNS DAILY</SectionHeadline>
-            </div>
-
-            <div className="grid md:grid-cols-5 gap-8">
-                {[
-                    { t: "SETUP", d: "Add branches and assign team to roles. One time only.", i: Settings2 },
-                    { t: "TEAM OPENS TASKS", d: "They see what to do, how to do it, and why it matters.", i: Smartphone },
-                    { t: "THEY EXECUTE", d: "Names entered as work happens. Logs build live.", i: Target },
-                    { t: "TASKS RUN ON SCHEDULE", d: "Daily, Weekly, Monthly cycles trigger automatically.", i: Clock },
-                    { t: "COMMAND", d: "Run one unit perfectly. Scale without chaos.", i: Activity }
-                ].map((step, i) => (
-                    <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left gap-6 group">
-                        <div className="w-14 h-14 rounded-xl bg-primary/5 border border-primary/20 flex items-center justify-center text-primary font-black font-mono group-hover:bg-primary group-hover:text-black transition-all shadow-xl">
-                            {i + 1}
-                        </div>
-                        <div className="space-y-2">
-                            <h4 className="font-black text-primary-text uppercase italic text-sm tracking-tight">{step.t}</h4>
-                            <p className="text-[11px] text-secondary-text leading-relaxed font-medium italic">{step.d}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
-    </Section>
-);
-
-const ClaritySection = () => (
+const InstitutionalPayloadSection = () => (
     <Section className="bg-black">
-        <div className="max-w-5xl mx-auto space-y-16">
+        <div className="max-w-6xl mx-auto space-y-16">
             <div className="text-center space-y-4">
-                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.3em] font-black text-[11px]">The Differentiator</Badge>
-                <SectionHeadline>EVERY TASK IS BUILT FOR CLARITY</SectionHeadline>
+                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[11px]">Institutional Payload</Badge>
+                <SectionHeadline>WHAT YOU GET</SectionHeadline>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-6">
                 {[
-                    { t: "WHAT TO DO", d: "Clear, unambiguous instructions. No room for guessing.", i: ClipboardCheck },
-                    { t: "HOW TO DO IT", d: "Trainer Notes in plain language. No training curve required.", i: GraduationCap },
-                    { t: "WHY IT MATTERS", d: "Specific consequences of failure defined to drive intentionality.", i: AlertTriangle }
+                    { t: "PRE-BUILT, INDUSTRY-GRADE SOPs", i: ClipboardCheck },
+                    { t: "DAILY, WEEKLY, MONTHLY EXECUTION SYSTEM", i: Clock },
+                    { t: "TRAINER NOTES FOR EVERY TASK", i: GraduationCap },
+                    { t: "CONSEQUENCES OF FAILURE DEFINED", i: AlertTriangle },
+                    { t: "MULTI-BRANCH VISIBILITY", i: LayoutGrid },
+                    { t: "FULLY EDITABLE STANDALONE SYSTEM", i: FileSpreadsheet }
                 ].map((item, i) => (
-                    <div key={i} className="p-10 rounded-2xl bg-white/[0.02] border border-white/5 space-y-6 hover:border-primary/20 transition-all group">
-                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-colors">
-                            <item.i className="w-6 h-6" />
+                    <div key={i} className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col gap-6 hover:border-primary/20 transition-all group">
+                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-colors">
+                            <CheckCircle2 className="w-5 h-5" />
                         </div>
-                        <h4 className="font-black text-primary-text uppercase italic text-xl tracking-tighter">{item.t}</h4>
-                        <p className="text-sm text-secondary-text leading-relaxed font-medium italic">{item.d}</p>
+                        <h4 className="font-black text-primary-text uppercase italic text-sm tracking-tighter leading-tight">{item.t}</h4>
                     </div>
                 ))}
             </div>
@@ -203,8 +176,8 @@ const LiveDashboardSection = () => (
                     "Identified Operational Gaps",
                     "Permanent Activity Record"
                 ].map(item => (
-                    <div key={item} className="flex items-center justify-center gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-primary" />
+                    <div key={item} className="flex items-center justify-center gap-3 text-left">
+                        <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
                         <span className="text-[10px] font-black text-white/40 uppercase tracking-widest leading-tight italic">{item}</span>
                     </div>
                 ))}
@@ -222,11 +195,11 @@ const ResignationRiskSection = () => (
             <div className="flex flex-col md:flex-row gap-12 items-center relative z-10">
                 <div className="space-y-6 flex-1">
                     <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Resignation Proof</Badge>
-                    <h3 className="text-3xl md:text-5xl font-black font-headline text-primary-text uppercase italic tracking-tighter leading-none">
+                    <h3 className="text-3xl md:text-[2.75rem] font-black font-headline text-primary-text uppercase italic tracking-tighter leading-none">
                         WHEN THEY LEAVE, <br /> <span className="text-primary">THE SYSTEM STAYS.</span>
                     </h3>
                     <p className="text-lg text-secondary-text leading-relaxed font-medium italic">
-                        The biggest risk in operations is "Tribal Knowledge." When your best manager leaves, your standards shouldn't evaporate. MoreMeets converts individual memory into institutional infrastructure.
+                        The biggest risk in operations is "Tribal Knowledge." When your best manager resigns, your luck runs out. MoreMeets converts individual memory into permanent institutional infrastructure.
                     </p>
                 </div>
                 <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-primary/5 flex items-center justify-center border border-primary/10 shrink-0">
@@ -272,8 +245,7 @@ export default function Home() {
         <HeroSection />
         
         <TheShiftSection />
-        <OperatingLoopSection />
-        <ClaritySection />
+        <InstitutionalPayloadSection />
         <LiveDashboardSection />
         <ResignationRiskSection />
         
