@@ -30,7 +30,7 @@ const ELITE_INDUSTRIES = [
     { name: "Hotels & Resorts", id: "hotels_and_resorts", icon: Building },
     { name: "Healthcare", id: "healthcare_and_hospital_operations", icon: Hospital },
     { name: "Schools", id: "school_operations_pack", icon: School },
-    { name: "Franchise Networks", id: "franchise_operations_pack", icon: Store },
+    { name: "Franchise Networks", id: "franchise_operations_pack", id_tag: "FRAN" },
     { name: "Facilities", id: "facility_management_blueprint", icon: Building2 },
     { name: "Cinemas", id: "cinema_operations_pack", icon: Popcorn }
 ];
@@ -89,14 +89,22 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                             </p>
                         </div>
 
-                        {/* 2. System Specifications (Grey + Green Dots) */}
-                        <div className="space-y-3">
-                            <span className="text-[8px] font-black text-primary uppercase tracking-[0.4em] font-headline">SYSTEM SPECIFICATIONS</span>
+                        {/* 2. System Specifications */}
+                        <div className={cn("space-y-3", variant === 6 && "py-4")}>
+                            <span className={cn(
+                                "font-black text-primary uppercase tracking-[0.4em] font-headline",
+                                variant === 6 ? "text-[10px]" : "text-[8px]"
+                            )}>
+                                SYSTEM SPECIFICATIONS
+                            </span>
                             <div className="space-y-2">
                                 {SYSTEM_SPECS.map((spec, i) => (
                                     <div key={i} className="flex items-center gap-3 group">
                                         <div className="w-1 h-1 rounded-full bg-primary shrink-0 shadow-[0_0_6px_rgba(46,184,107,0.4)]" />
-                                        <span className="text-[8px] font-bold uppercase tracking-[0.2em] italic text-white/40 leading-none">
+                                        <span className={cn(
+                                            "font-bold uppercase tracking-[0.2em] italic text-white/40 leading-none",
+                                            variant === 6 ? "text-[10px] text-white/60" : "text-[8px]"
+                                        )}>
                                             {spec}
                                         </span>
                                     </div>
@@ -104,19 +112,20 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                             </div>
                         </div>
 
-                        {/* 3. Industry Vertical Stack (Elite 7) */}
-                        <div className="space-y-4 pt-2">
-                            <div className="space-y-1.5">
-                                <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.5em] font-headline">SELECT VERTICAL</span>
+                        {/* 3. Industry Vertical Stack */}
+                        <div className={cn("space-y-4 pt-2", variant === 6 && "flex flex-col items-end pr-4 text-right")}>
+                            <div className={cn("space-y-1.5", variant === 6 && "flex flex-col items-end")}>
+                                <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.5em] font-headline text-right">SELECT VERTICAL</span>
                                 <div className="w-10 h-px bg-primary/20" />
                             </div>
                             
-                            <div className="flex flex-col space-y-3">
+                            <div className={cn("flex flex-col space-y-3", variant === 6 && "items-end")}>
                                 {ELITE_INDUSTRIES.map((ind, i) => (
                                     <div key={ind.id} className="group flex items-center gap-2">
+                                        {variant === 6 && <ArrowRight className="w-2.5 h-2.5 text-white/5 group-hover:text-primary transition-colors rotate-180" />}
                                         <span className={cn(
                                             "text-base font-black font-headline uppercase italic tracking-tighter transition-all duration-300",
-                                            variant === 5 ? "text-primary" : "text-white/20 group-hover:text-primary"
+                                            variant === 5 || variant === 6 ? "text-primary" : "text-white/20 group-hover:text-primary"
                                         )}>
                                             {ind.name}
                                         </span>
@@ -138,7 +147,7 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                         </p>
                     </div>
 
-                    {variant !== 1 && (
+                    {variant !== 1 && variant !== 6 && (
                         <Button className="w-full h-12 font-black uppercase italic text-[9px] tracking-[0.2em] rounded-none bg-primary text-black transition-all active:scale-95 border-none shadow-[0_0_30px_-5px_rgba(46,184,107,0.3)]">
                             GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="ml-2 h-3.5 w-3.5" />
                         </Button>
@@ -164,14 +173,18 @@ export default function MobilePreviewPage() {
                 <div className="max-w-4xl mx-auto text-center space-y-6 mb-16 px-4">
                     <div className="space-y-3">
                         <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-6 py-1.5 rounded-none bg-primary/5">
-                            Sovereign Mobile Lab v10.0
+                            Sovereign Mobile Lab v11.0
                         </Badge>
-                        <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-tight text-white font-headline">The Technical Standard</h1>
+                        <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-tight text-white font-headline">The Experimental Split</h1>
                     </div>
-                    <p className="text-zinc-500 italic font-medium max-w-sm mx-auto leading-relaxed">Refining the Vertical Narrative with compressed spacing for One-Glance authority.</p>
+                    <p className="text-zinc-500 italic font-medium max-w-sm mx-auto leading-relaxed">Testing the staggered balance of larger specs vs. right-aligned verticals.</p>
                 </div>
 
-                <PreviewFrame title="Archetype 1: Sovereign Standard" subtitle="Grey specs + Green Dots + Proof Strip (Button Hidden)">
+                <PreviewFrame title="Archetype 6: The Sovereign Split" subtitle="Larger Specs (Left) + Verticals (Right) + Staggered Scan">
+                    <MobileHeroBase variant={6} />
+                </PreviewFrame>
+
+                <PreviewFrame title="Archetype 1: Sovereign Standard" subtitle="Current Production Model: Left-aligned technical briefing">
                     <MobileHeroBase variant={1} />
                 </PreviewFrame>
 
