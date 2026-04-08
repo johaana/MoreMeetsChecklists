@@ -21,6 +21,7 @@ import {
     Store,
     Building2,
     Popcorn,
+    Lock,
     Smartphone
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -127,6 +128,11 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
     }
 
     // VERTICAL ARCHETYPES: INTEGRATED CONTENT
+    // Define payload for variant 3
+    const currentPayload = variant === 3 
+        ? [...CONTENT.payload, { t: "NO SaaS. OWN YOUR DATA.", i: Lock }]
+        : CONTENT.payload;
+
     return (
         <div className="flex flex-col h-full bg-black relative">
             <div className="absolute inset-0 z-0">
@@ -141,16 +147,16 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                     <div className="relative h-full flex flex-col items-center">
                         <div className={cn(
                             "absolute inset-y-0 w-px bg-white/10",
-                            variant === 4 && "bg-primary/20"
+                            (variant === 4 || variant === 3) && "bg-primary/20"
                         )} />
                         
                         <div className="sticky top-24 flex flex-col gap-24 items-center">
-                            {variant === 3 && (
+                            {(variant === 3 || variant === 4) && (
                                 <div className="-rotate-90 origin-center whitespace-nowrap">
                                     <span className="text-[7px] font-black text-primary uppercase tracking-[0.6em] italic">120+ SOPs</span>
                                 </div>
                             )}
-                            {variant === 5 && (
+                            {variant === 6 && (
                                 <div className="space-y-8 text-white/20">
                                     <div className="text-[6px] font-mono">01//</div>
                                     <div className="text-[6px] font-mono">02//</div>
@@ -167,22 +173,24 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                         <div className="space-y-4">
                             <h1 className={cn(
                                 "text-4xl font-black font-headline text-white uppercase italic tracking-tighter leading-[0.85]",
-                                variant === 4 && "text-5xl"
+                                variant === 5 && "text-5xl"
                             )}>
-                                {CONTENT.h1}
+                                {variant === 3 ? (
+                                    <>CAPTURE <span className="text-primary">MEMORY.</span></>
+                                ) : CONTENT.h1}
                             </h1>
                             <p className="text-xs text-white/40 italic font-medium leading-relaxed max-w-[220px]">
                                 {CONTENT.p}
                             </p>
                         </div>
 
-                        {/* 2. Technical Payload (Pre-built SOPs etc) */}
+                        {/* 2. Technical Payload */}
                         <div className="space-y-3">
                             <span className="text-[8px] font-black text-primary uppercase tracking-[0.4em]">SYSTEM SPECIFICATIONS</span>
                             <div className="space-y-2.5">
-                                {CONTENT.payload.map((item, i) => (
+                                {currentPayload.map((item, i) => (
                                     <div key={i} className="flex items-center gap-3">
-                                        <div className="w-1 h-1 rounded-full bg-primary/40" />
+                                        <item.i className="w-3 h-3 text-primary/40" />
                                         <span className="text-[8px] font-bold text-white/30 uppercase tracking-[0.2em] italic">{item.t}</span>
                                     </div>
                                 ))}
@@ -206,11 +214,11 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                                         <div className="flex items-center gap-2">
                                             <span className={cn(
                                                 "text-xl font-black font-headline text-white/20 uppercase italic tracking-tighter group-hover:text-primary transition-all duration-300",
-                                                variant === 4 && "text-2xl"
+                                                variant === 5 && "text-2xl"
                                             )}>
                                                 {ind.name}
                                             </span>
-                                            {variant === 5 && (
+                                            {variant === 6 && (
                                                 <span className="text-[6px] font-mono text-primary/40 opacity-0 group-hover:opacity-100 transition-opacity">
                                                     [SEC_LOAD_0{ELITE_INDUSTRIES.indexOf(ind) + 1}]
                                                 </span>
@@ -227,7 +235,7 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                 <div className="px-10 mt-8 space-y-5 border-t border-white/5 pt-8">
                     <Button className={cn(
                         "w-full h-14 font-black uppercase italic text-[10px] tracking-[0.2em] rounded-none bg-primary text-black transition-all active:scale-95 border-none shadow-[0_0_30px_-5px_rgba(46,184,107,0.3)]",
-                        variant === 4 && "h-16"
+                        variant === 5 && "h-16"
                     )}>
                         {CONTENT.cta} <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
@@ -258,31 +266,35 @@ export default function MobilePreviewPage() {
                 <div className="max-w-4xl mx-auto text-center space-y-6 mb-16">
                     <div className="space-y-3">
                         <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-6 py-1.5 rounded-none bg-primary/5">
-                            Sovereign Mobile Lab v6.0
+                            Sovereign Mobile Lab v7.0
                         </Badge>
-                        <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-tight text-white font-headline">The Full Payload</h1>
+                        <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-tight text-white font-headline">The Narrative Shield</h1>
                     </div>
-                    <p className="text-zinc-500 italic font-medium max-w-sm mx-auto">Synchronizing full web content (Narrative, SOP Stats, Elite 7) into vertical divider archetypes.</p>
+                    <p className="text-zinc-500 italic font-medium max-w-sm mx-auto">Hardening the "Capture Memory" standard with technical mandates and high-gravity highlights.</p>
                 </div>
 
                 <PreviewFrame title="Archetype 1: Standard" subtitle="Existing layout standard">
                     <MobileHeroBase variant={1} />
                 </PreviewFrame>
 
-                <PreviewFrame title="Archetype 2: Vertical Narrative" subtitle="Narrative + Full Vertical Stack">
+                <PreviewFrame title="Archetype 2: Vertical Narrative" subtitle="The approved structural standard">
                     <MobileHeroBase variant={2} />
                 </PreviewFrame>
 
-                <PreviewFrame title="Archetype 3: Blueprint Hybrid" subtitle="Technical stats + vertical stack">
+                <PreviewFrame title="Archetype 3: Narrative Hardening" subtitle="Option 2 + Green Memory + NO SaaS">
                     <MobileHeroBase variant={3} />
                 </PreviewFrame>
 
-                <PreviewFrame title="Archetype 4: Minimalist Mandate" subtitle="Expanded type / High prestigious focus">
+                <PreviewFrame title="Archetype 4: Blueprint Hybrid" subtitle="Technical stats + vertical stack">
                     <MobileHeroBase variant={4} />
                 </PreviewFrame>
 
-                <PreviewFrame title="Archetype 5: HUD Interface" subtitle="Digital coordinates / Technical tags">
+                <PreviewFrame title="Archetype 5: Minimalist Mandate" subtitle="Expanded type / High prestigious focus">
                     <MobileHeroBase variant={5} />
+                </PreviewFrame>
+
+                <PreviewFrame title="Archetype 6: HUD Interface" subtitle="Digital coordinates / Technical tags">
+                    <MobileHeroBase variant={6} />
                 </PreviewFrame>
 
             </main>
