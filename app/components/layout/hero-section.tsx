@@ -56,7 +56,7 @@ export const HeroSection = () => (
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
             </div>
 
-            <div className="relative z-10 flex-1 flex flex-col pt-20 pb-6 h-full">
+            <div className="relative z-10 flex-1 flex flex-col pt-20 pb-4 h-full">
                 <div className="flex-1 grid grid-cols-[40px,1fr] gap-0">
                     
                     {/* Left: The Structural Divider */}
@@ -65,26 +65,26 @@ export const HeroSection = () => (
                     </div>
 
                     {/* Right: The Content Stack */}
-                    <div className="flex flex-col space-y-10 pr-6 overflow-y-auto no-scrollbar">
+                    <div className="flex flex-col space-y-6 pr-6 overflow-y-auto no-scrollbar">
                         
                         {/* 1. Narrative Block */}
-                        <div className="space-y-4">
-                            <h1 className="text-[2.2rem] font-black font-headline text-white uppercase italic tracking-tighter leading-[0.85]">
+                        <div className="space-y-3">
+                            <h1 className="text-[2rem] font-black font-headline text-white uppercase italic tracking-tighter leading-[0.85]">
                                 CAPTURE <br/><span className="text-primary">MEMORY.</span>
                             </h1>
-                            <p className="text-[11px] text-white/40 italic font-medium leading-relaxed max-w-[220px]">
+                            <p className="text-[10px] text-white/40 italic font-medium leading-relaxed max-w-[200px]">
                                 Institutional memory is an asset. <br/> Anything else is just luck.
                             </p>
                         </div>
 
                         {/* 2. System Specifications (Grey + Green Dots) */}
-                        <div className="space-y-5">
-                            <span className="text-[9px] font-black text-primary uppercase tracking-[0.4em] font-headline">SYSTEM SPECIFICATIONS</span>
-                            <div className="space-y-3">
+                        <div className="space-y-3">
+                            <span className="text-[8px] font-black text-primary uppercase tracking-[0.4em] font-headline">SYSTEM SPECIFICATIONS</span>
+                            <div className="space-y-2">
                                 {SYSTEM_SPECS.map((spec, i) => (
                                     <div key={i} className="flex items-center gap-3">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 shadow-[0_0_8px_rgba(46,184,107,0.4)]" />
-                                        <span className="text-[9px] font-bold uppercase tracking-[0.2em] italic text-white/40 leading-none">
+                                        <div className="w-1 h-1 rounded-full bg-primary shrink-0 shadow-[0_0_6px_rgba(46,184,107,0.4)]" />
+                                        <span className="text-[8px] font-bold uppercase tracking-[0.2em] italic text-white/40 leading-none">
                                             {spec}
                                         </span>
                                     </div>
@@ -93,20 +93,20 @@ export const HeroSection = () => (
                         </div>
 
                         {/* 3. Industry Vertical Stack (Elite 7) */}
-                        <div className="space-y-6 pt-4 pb-8">
-                            <div className="space-y-2">
-                                <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em] font-headline">SELECT VERTICAL</span>
-                                <div className="w-12 h-px bg-primary/20" />
+                        <div className="space-y-4 pt-2 pb-6">
+                            <div className="space-y-1.5">
+                                <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.5em] font-headline">SELECT VERTICAL</span>
+                                <div className="w-10 h-px bg-primary/20" />
                             </div>
                             
-                            <div className="flex flex-col space-y-4">
+                            <div className="flex flex-col space-y-3">
                                 {ELITE_INDUSTRIES.map((ind) => (
                                     <Link 
                                         key={ind.id} 
                                         href={`/packs/${ind.id}`} 
                                         className="group flex items-center gap-2"
                                     >
-                                        <span className="text-lg font-black font-headline uppercase italic tracking-tighter text-white/20 group-hover:text-primary transition-all duration-300">
+                                        <span className="text-base font-black font-headline uppercase italic tracking-tighter text-white/20 group-hover:text-primary transition-all duration-300">
                                             {ind.name}
                                         </span>
                                         <ChevronRight className="w-3 h-3 text-white/5 group-hover:text-primary transition-colors" />
@@ -118,23 +118,23 @@ export const HeroSection = () => (
                 </div>
 
                 {/* Conversion Footer with Sovereign Proof-Strip */}
-                <div className="px-6 mt-auto space-y-6">
+                <div className="px-6 mt-auto space-y-4">
                     {/* The Strip */}
-                    <div className="bg-white/[0.03] border-y border-white/5 py-3 px-2">
-                        <p className="text-[7px] text-white/30 font-black text-center uppercase tracking-[0.25em] italic">
+                    <div className="bg-white/[0.03] border-y border-white/5 py-2.5 px-2">
+                        <p className="text-[6px] text-white/30 font-black text-center uppercase tracking-[0.25em] italic">
                             {PROOF_STRIP}
                         </p>
                     </div>
 
-                    <div className="pt-2 text-center">
-                         <Link href="/library" className="text-[9px] font-black text-primary uppercase tracking-[0.3em] italic hover:underline flex items-center justify-center gap-2">
-                            EXPLORE SYSTEMS HUB <ArrowRight className="w-3 h-3" />
+                    <div className="pt-1 text-center">
+                         <Link href="/library" className="text-[8px] font-black text-primary uppercase tracking-[0.3em] italic hover:underline flex items-center justify-center gap-2">
+                            EXPLORE SYSTEMS HUB <ArrowRight className="w-2.5 h-2.5" />
                          </Link>
                     </div>
                     
                     {/* Native Sovereign Home-Bar */}
-                    <div className="flex justify-center pt-2 pb-2">
-                        <div className="w-24 h-1.5 rounded-full bg-primary/40" />
+                    <div className="flex justify-center pt-1 pb-1">
+                        <div className="w-20 h-1 rounded-full bg-primary/40" />
                     </div>
                 </div>
             </div>

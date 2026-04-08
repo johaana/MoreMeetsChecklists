@@ -39,7 +39,8 @@ const SYSTEM_SPECS = [
     "120+ PRE-BUILT SOPs",
     "AUDIT-READY COMPLIANCE",
     "LIVE DASHBOARD",
-    "NO SaaS. OWN YOUR DATA."
+    "NO SaaS. OWN YOUR DATA.",
+    "WORKS ON EXCEL & SHEETS"
 ];
 
 const PROOF_STRIP = "WORKS ON EXCEL & SHEETS • OWN FOREVER • NO SaaS";
@@ -67,35 +68,35 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
             </div>
 
-            <div className="relative z-10 flex-1 flex flex-col pt-16 pb-6 overflow-hidden">
+            <div className="relative z-10 flex-1 flex flex-col pt-16 pb-4 overflow-hidden h-full">
                 <div className="flex-1 grid grid-cols-[40px,1fr] gap-0 h-full">
                     
-                    {/* Left: The Structural Divider (Plain as requested) */}
+                    {/* Left: The Structural Divider */}
                     <div className="relative h-full flex flex-col items-center">
                         <div className="absolute inset-y-0 w-px bg-primary/20" />
                     </div>
 
                     {/* Right: The Content Stack */}
-                    <div className="flex flex-col space-y-8 pr-6 overflow-y-auto no-scrollbar">
+                    <div className="flex flex-col space-y-6 pr-6 overflow-y-auto no-scrollbar">
                         
                         {/* 1. Narrative Block */}
                         <div className="space-y-3">
-                            <h1 className="text-[2.2rem] font-black font-headline text-white uppercase italic tracking-tighter leading-[0.85]">
+                            <h1 className="text-[2rem] font-black font-headline text-white uppercase italic tracking-tighter leading-[0.85]">
                                 CAPTURE <br/><span className="text-primary">MEMORY.</span>
                             </h1>
-                            <p className="text-[11px] text-white/40 italic font-medium leading-relaxed max-w-[220px]">
+                            <p className="text-[10px] text-white/40 italic font-medium leading-relaxed max-w-[200px]">
                                 Institutional memory is an asset. <br/> Anything else is just luck.
                             </p>
                         </div>
 
                         {/* 2. System Specifications (Grey + Green Dots) */}
-                        <div className="space-y-4">
-                            <span className="text-[9px] font-black text-primary uppercase tracking-[0.4em] font-headline">SYSTEM SPECIFICATIONS</span>
-                            <div className="space-y-2.5">
+                        <div className="space-y-3">
+                            <span className="text-[8px] font-black text-primary uppercase tracking-[0.4em] font-headline">SYSTEM SPECIFICATIONS</span>
+                            <div className="space-y-2">
                                 {SYSTEM_SPECS.map((spec, i) => (
                                     <div key={i} className="flex items-center gap-3 group">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 shadow-[0_0_8px_rgba(46,184,107,0.4)]" />
-                                        <span className="text-[9px] font-bold uppercase tracking-[0.2em] italic text-white/40 leading-none">
+                                        <div className="w-1 h-1 rounded-full bg-primary shrink-0 shadow-[0_0_6px_rgba(46,184,107,0.4)]" />
+                                        <span className="text-[8px] font-bold uppercase tracking-[0.2em] italic text-white/40 leading-none">
                                             {spec}
                                         </span>
                                     </div>
@@ -104,17 +105,17 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                         </div>
 
                         {/* 3. Industry Vertical Stack (Elite 7) */}
-                        <div className="space-y-5 pt-4">
-                            <div className="space-y-2">
-                                <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em] font-headline">SELECT VERTICAL</span>
-                                <div className="w-12 h-px bg-primary/20" />
+                        <div className="space-y-4 pt-2">
+                            <div className="space-y-1.5">
+                                <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.5em] font-headline">SELECT VERTICAL</span>
+                                <div className="w-10 h-px bg-primary/20" />
                             </div>
                             
-                            <div className="flex flex-col space-y-3.5">
+                            <div className="flex flex-col space-y-3">
                                 {ELITE_INDUSTRIES.map((ind, i) => (
                                     <div key={ind.id} className="group flex items-center gap-2">
                                         <span className={cn(
-                                            "text-lg font-black font-headline uppercase italic tracking-tighter transition-all duration-300",
+                                            "text-base font-black font-headline uppercase italic tracking-tighter transition-all duration-300",
                                             variant === 5 ? "text-primary" : "text-white/20 group-hover:text-primary"
                                         )}>
                                             {ind.name}
@@ -129,23 +130,23 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                 </div>
 
                 {/* Conversion Footer with Sovereign Proof-Strip */}
-                <div className="px-6 mt-4 space-y-4">
+                <div className="px-6 mt-auto space-y-4">
                     {/* The Strip */}
-                    <div className="bg-white/[0.03] border-y border-white/5 py-3 px-2">
-                        <p className="text-[7px] text-white/30 font-black text-center uppercase tracking-[0.25em] italic">
+                    <div className="bg-white/[0.03] border-y border-white/5 py-2.5 px-2">
+                        <p className="text-[6px] text-white/30 font-black text-center uppercase tracking-[0.25em] italic">
                             {PROOF_STRIP}
                         </p>
                     </div>
 
                     {variant !== 1 && (
-                        <Button className="w-full h-14 font-black uppercase italic text-[10px] tracking-[0.2em] rounded-none bg-primary text-black transition-all active:scale-95 border-none shadow-[0_0_30px_-5px_rgba(46,184,107,0.3)]">
-                            GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="ml-2 h-4 w-4" />
+                        <Button className="w-full h-12 font-black uppercase italic text-[9px] tracking-[0.2em] rounded-none bg-primary text-black transition-all active:scale-95 border-none shadow-[0_0_30px_-5px_rgba(46,184,107,0.3)]">
+                            GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="ml-2 h-3.5 w-3.5" />
                         </Button>
                     )}
                     
                     {/* Native Sovereign Home-Bar */}
-                    <div className="flex justify-center pt-2">
-                        <div className="w-24 h-1.5 rounded-full bg-primary/40" />
+                    <div className="flex justify-center pt-1">
+                        <div className="w-20 h-1 rounded-full bg-primary/40" />
                     </div>
                 </div>
             </div>
@@ -167,7 +168,7 @@ export default function MobilePreviewPage() {
                         </Badge>
                         <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-tight text-white font-headline">The Technical Standard</h1>
                     </div>
-                    <p className="text-zinc-500 italic font-medium max-w-sm mx-auto leading-relaxed">Refining the Vertical Narrative with grey specifications, green indicators, and the Institutional Proof-Strip.</p>
+                    <p className="text-zinc-500 italic font-medium max-w-sm mx-auto leading-relaxed">Refining the Vertical Narrative with compressed spacing for One-Glance authority.</p>
                 </div>
 
                 <PreviewFrame title="Archetype 1: Sovereign Standard" subtitle="Grey specs + Green Dots + Proof Strip (Button Hidden)">
