@@ -50,6 +50,13 @@ export const FaqSection = () => (
                         </AccordionContent>
                     </AccordionItem>
 
+                    <AccordionItem value="item-lock" className="border-white/10">
+                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Is the system locked? Can I prevent staff from changing my SOPs?</AccordionTrigger>
+                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
+                          No, the system is <strong>100% unlocked</strong> and yours to own. To prevent accidental edits by staff, we recommend using the "Protect Sheet" feature in Excel or Google Sheets. You can lock everything except the "Done By" and "Date" columns, ensuring your core protocols and formulas remain bulletproof while allowing daily reporting.
+                        </AccordionContent>
+                    </AccordionItem>
+
                     <AccordionItem value="item-6" className="border-white/10">
                         <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Is this system audit-ready?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
