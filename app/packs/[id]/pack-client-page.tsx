@@ -36,35 +36,39 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
     </h2>
 );
 
-const OperationalWindow = ({ src = DASHBOARD_PREVIEW_URL, alt, title = "SAMPLE_INTERFACE_RESTAURANT_V11.9" }: { src?: string, alt: string, title?: string }) => (
-    <div className="relative mx-auto max-w-4xl group">
-        <div className="bg-[#111] border border-white/10 border-b-0 rounded-t-xl py-3 px-5 flex items-center gap-4">
-            <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
-                <div className="w-2.5 h-2.5 rounded-full bg-amber-500/20" />
-                <div className="w-2.5 h-2.5 rounded-full bg-green-500/20" />
-            </div>
-            <div className="flex-1 flex justify-center">
-                <div className="bg-black/40 border border-white/5 rounded-md px-12 py-1 text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner font-headline">
-                    {title}
+const OperationalWindow = ({ src = DASHBOARD_PREVIEW_URL, alt, packTitle }: { src?: string, alt: string, packTitle: string }) => {
+    const displayTitle = `SOVEREIGN_MASTER_${packTitle.toUpperCase().replace(/\s/g, '_')}_EDITION_V11.9`;
+    
+    return (
+        <div className="relative mx-auto max-w-4xl group">
+            <div className="bg-[#111] border border-white/10 border-b-0 rounded-t-xl py-3 px-5 flex items-center gap-4">
+                <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500/20" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/20" />
+                </div>
+                <div className="flex-1 flex justify-center">
+                    <div className="bg-black/40 border border-white/5 rounded-md px-8 md:px-12 py-1 text-[8px] md:text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner font-headline text-center truncate max-w-full">
+                        {displayTitle}
+                    </div>
                 </div>
             </div>
+            <div className="relative rounded-b-xl border border-white/10 bg-zinc-900 overflow-hidden shadow-[0_0_100px_-20px_rgba(46,184,107,0.15)] group-hover:shadow-[0_0_100px_-10px_rgba(46,184,107,0.25)] transition-all duration-1000">
+                <img 
+                    src={src} 
+                    alt={alt} 
+                    className="w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
+            </div>
+            <div className="mt-4 text-center">
+                <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em] italic">
+                    NOTE: Interface shown is a sample. Your system will be forensically mapped to {packTitle}.
+                </span>
+            </div>
         </div>
-        <div className="relative rounded-b-xl border border-white/10 bg-zinc-900 overflow-hidden shadow-[0_0_100px_-20px_rgba(46,184,107,0.15)] group-hover:shadow-[0_0_100px_-10px_rgba(46,184,107,0.25)] transition-all duration-1000">
-            <img 
-                src={src} 
-                alt={alt} 
-                className="w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
-        </div>
-        <div className="mt-4 text-center">
-            <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em] italic">
-                NOTE: Interface shown is a sample. Your system will be forensically mapped to {alt}.
-            </span>
-        </div>
-    </div>
-);
+    );
+};
 
 const PainPointsSection = ({ packId }: { packId: string }) => {
     const content = painPointsContent[packId as keyof typeof painPointsContent];
@@ -82,7 +86,7 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
                     {content.points.map((point: any, index: number) => (
-                        <div key={index} className="rounded-2xl border border-white/5 bg-white/[0.02] p-8 space-y-4 hover:border-red-500/20 transition-all">
+                        <div key={index} className="rounded-2xl border border-white/5 bg-black/40 p-8 space-y-4 hover:border-red-500/20 transition-all">
                             <div className="flex items-center gap-4 text-red-500">
                                 {point.icon}
                                 <h4 className="font-bold text-lg text-primary-text leading-tight">{point.title}</h4>
@@ -178,7 +182,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         
                         <div className="pt-8">
                             <OperationalWindow 
-                                src={DASHBOARD_PREVIEW_URL}
+                                packTitle={pack.title}
                                 alt={pack.title}
                             />
                         </div>
