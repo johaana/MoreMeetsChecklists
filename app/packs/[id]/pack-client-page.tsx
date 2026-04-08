@@ -41,7 +41,10 @@ const OperationalWindow = ({ src = DASHBOARD_PREVIEW_URL, alt, packTitle }: { sr
     
     return (
         <div className="relative mx-auto max-w-4xl group">
-            <div className="bg-[#111] border border-white/10 border-b-0 rounded-t-xl py-3 px-5 flex items-center gap-4">
+            {/* The Tactical Glow Effect */}
+            <div className="absolute -inset-4 bg-primary/10 rounded-[2.5rem] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+            
+            <div className="bg-[#111] border border-white/10 border-b-0 rounded-t-xl py-3 px-5 flex items-center gap-4 relative z-10">
                 <div className="flex gap-1.5">
                     <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
                     <div className="w-2.5 h-2.5 rounded-full bg-amber-500/20" />
@@ -53,7 +56,7 @@ const OperationalWindow = ({ src = DASHBOARD_PREVIEW_URL, alt, packTitle }: { sr
                     </div>
                 </div>
             </div>
-            <div className="relative rounded-b-xl border border-white/10 bg-zinc-900 overflow-hidden shadow-[0_0_100px_-20px_rgba(46,184,107,0.15)] group-hover:shadow-[0_0_100px_-10px_rgba(46,184,107,0.25)] transition-all duration-1000">
+            <div className="relative rounded-b-xl border border-white/10 bg-zinc-900 overflow-hidden shadow-[0_0_100px_-20px_rgba(46,184,107,0.15)] group-hover:shadow-[0_0_100px_-10px_rgba(46,184,107,0.25)] transition-all duration-1000 z-10">
                 <img 
                     src={src} 
                     alt={alt} 
@@ -61,9 +64,9 @@ const OperationalWindow = ({ src = DASHBOARD_PREVIEW_URL, alt, packTitle }: { sr
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
             </div>
-            <div className="mt-4 text-center">
+            <div className="mt-4 text-center relative z-10">
                 <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em] italic">
-                    NOTE: Interface shown is a sample. Your system will be forensically mapped to {packTitle}.
+                    SAMPLE INTERFACE: YOUR SYSTEM WILL BE FORENSICALLY MAPPED TO THE {packTitle.toUpperCase()} SECTOR.
                 </span>
             </div>
         </div>
@@ -86,9 +89,9 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
                     {content.points.map((point: any, index: number) => (
-                        <div key={index} className="rounded-2xl border border-white/5 bg-black/40 p-8 space-y-4 hover:border-red-500/20 transition-all">
+                        <div key={index} className="rounded-2xl border border-white/5 bg-black/40 p-8 space-y-4 hover:border-red-500/20 transition-all group/card">
                             <div className="flex items-center gap-4 text-red-500">
-                                {point.icon}
+                                <span className="group-hover/card:scale-110 transition-transform duration-500">{point.icon}</span>
                                 <h4 className="font-bold text-lg text-primary-text leading-tight">{point.title}</h4>
                             </div>
                             <p className="text-sm text-secondary-text leading-relaxed italic font-medium">{point.description}</p>
@@ -235,9 +238,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {pack.checklists.slice(0, 6).map((checklist, index) => (
-                        <div key={index} className="p-12 rounded-xl bg-white/[0.01] border border-white/5 space-y-8 hover:border-primary/20 transition-all">
+                        <div key={index} className="p-12 rounded-xl bg-white/[0.01] border border-white/5 space-y-8 hover:border-primary/20 transition-all group">
                             <div className="flex justify-between items-start">
-                                <IconComponent name={checklist.icon || "ClipboardCheck"} className="w-8 h-8 text-primary/40" />
+                                <IconComponent name={checklist.icon || "ClipboardCheck"} className="w-8 h-8 text-primary/40 group-hover:text-primary transition-colors" />
                                 <Badge variant="outline" className="text-[9px] font-black text-white/20 uppercase tracking-[0.2em]">{checklist.frequency}</Badge>
                             </div>
                             <h4 className="text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-tight font-headline">{checklist.title}</h4>

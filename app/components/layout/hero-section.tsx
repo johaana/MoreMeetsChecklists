@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -17,7 +16,8 @@ import {
     Popcorn,
     ClipboardCheck,
     Activity,
-    FileSpreadsheet
+    FileSpreadsheet,
+    FileCheck
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -87,8 +87,8 @@ export const HeroSection = () => (
                             <span className="text-[8px] font-bold text-white/40 uppercase italic tracking-tight">120+ PRE-BUILT SOPs</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <FileSpreadsheet className="w-3 h-3 text-primary/60" />
-                            <span className="text-[8px] font-bold text-white/40 uppercase italic tracking-tight">WORKS ON EXCEL & SHEETS</span>
+                            <FileCheck className="w-3 h-3 text-primary/60" />
+                            <span className="text-[8px] font-bold text-white/40 uppercase italic tracking-tight">AUDIT-READY COMPLIANCE</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <Activity className="w-3 h-3 text-primary/60" />
@@ -158,7 +158,7 @@ export const HeroSection = () => (
                         </div>
                         <div className="flex items-center gap-4">
                             <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                            <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">WORKS ON EXCEL AND GOOGLE SHEETS</span>
+                            <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">AUDIT-READY COMPLIANCE</span>
                         </div>
                         <div className="flex items-center gap-4">
                             <div className="w-1.5 h-1.5 rounded-full bg-primary" />
