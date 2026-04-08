@@ -4,9 +4,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { 
     ArrowRight, 
-    Lock, 
-    Zap, 
-    ShieldCheck, 
     Utensils, 
     Building, 
     Hospital, 
@@ -14,10 +11,8 @@ import {
     Store, 
     Building2, 
     Popcorn,
-    ClipboardCheck,
-    Activity,
-    FileSpreadsheet,
-    FileCheck
+    ChevronRight,
+    ShieldCheck
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -32,92 +27,113 @@ const ELITE_INDUSTRIES = [
     { name: "Cinemas", id: "cinema_operations_pack", icon: Popcorn }
 ];
 
+const SYSTEM_SPECS = [
+    "120+ PRE-BUILT SOPs",
+    "AUDIT-READY COMPLIANCE",
+    "LIVE DASHBOARD",
+    "NO SaaS. OWN YOUR DATA.",
+    "WORKS ON EXCEL & SHEETS"
+];
+
+const PROOF_STRIP = "WORKS ON EXCEL & SHEETS • OWN FOREVER • NO SaaS";
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 export const HeroSection = () => (
     <section className="relative w-full overflow-hidden bg-black">
-        {/* --- MOBILE ARCHITECTURE: THE COMMAND GRID --- */}
-        <div className="md:hidden flex flex-col min-h-[100dvh]">
-            {/* 1. Video Header (35%) */}
-            <div className="relative h-[32vh] w-full overflow-hidden bg-zinc-900">
-                <video
-                    src={VIDEO_URL}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover"
+        {/* --- MOBILE ARCHITECTURE: ARCHETYPE 1 (THE VERTICAL NARRATIVE) --- */}
+        <div className="md:hidden flex flex-col min-h-[100dvh] relative">
+            {/* Cinematic Background Layer */}
+            <div className="absolute inset-0 z-0">
+                <video 
+                    src={VIDEO_URL} 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    className="w-full h-full object-cover opacity-30 grayscale" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                <div className="absolute bottom-4 left-6 right-6">
-                    <h1 className="text-[2rem] font-black font-headline text-white leading-[0.85] uppercase italic tracking-tighter">
-                        CAPTURE<br />
-                        <span className="text-primary">MEMORY.</span>
-                    </h1>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
             </div>
 
-            {/* 2. Control Deck (65%) */}
-            <div className="flex-1 px-6 pt-2 pb-6 flex flex-col justify-between space-y-4">
-                <div className="space-y-4">
-                    {/* Industry Selector */}
-                    <div className="space-y-2">
-                        <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.2em]">SEE HOW IT WORKS FOR YOUR BUSINESS</span>
-                        <div className="grid grid-cols-2 gap-2">
-                            {ELITE_INDUSTRIES.map((ind, i) => (
-                                <Link 
-                                    key={ind.id} 
-                                    href={`/packs/${ind.id}`} 
-                                    className={cn(
-                                        "flex items-center gap-2.5 p-3 rounded-xl border border-white/5 bg-white/[0.02] active:bg-primary/5 transition-colors",
-                                        i === ELITE_INDUSTRIES.length - 1 && "col-span-2"
-                                    )}
-                                >
-                                    <ind.icon className="w-3.5 h-3.5 text-primary/60" />
-                                    <span className="text-[8px] font-black uppercase italic tracking-tight text-white/70">{ind.name}</span>
-                                </Link>
-                            ))}
-                        </div>
+            <div className="relative z-10 flex-1 flex flex-col pt-20 pb-6">
+                <div className="flex-1 grid grid-cols-[40px,1fr] gap-0">
+                    
+                    {/* Left: The Structural Divider */}
+                    <div className="relative h-full flex flex-col items-center">
+                        <div className="absolute inset-y-0 w-px bg-primary/20" />
                     </div>
 
-                    {/* Technical Payload */}
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-2 p-3 rounded-2xl bg-white/[0.02] border border-white/5">
-                        <div className="flex items-center gap-2">
-                            <ClipboardCheck className="w-3 h-3 text-primary/60" />
-                            <span className="text-[8px] font-bold text-white/40 uppercase italic tracking-tight">120+ PRE-BUILT SOPs</span>
+                    {/* Right: The Content Stack */}
+                    <div className="flex flex-col space-y-10 pr-6 overflow-y-auto no-scrollbar">
+                        
+                        {/* 1. Narrative Block */}
+                        <div className="space-y-4">
+                            <h1 className="text-[2.2rem] font-black font-headline text-white uppercase italic tracking-tighter leading-[0.85]">
+                                CAPTURE <br/><span className="text-primary">MEMORY.</span>
+                            </h1>
+                            <p className="text-[11px] text-white/40 italic font-medium leading-relaxed max-w-[220px]">
+                                Institutional memory is an asset. <br/> Anything else is just luck.
+                            </p>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <FileCheck className="w-3 h-3 text-primary/60" />
-                            <span className="text-[8px] font-bold text-white/40 uppercase italic tracking-tight">AUDIT-READY COMPLIANCE</span>
+
+                        {/* 2. System Specifications (Grey + Green Dots) */}
+                        <div className="space-y-5">
+                            <span className="text-[9px] font-black text-primary uppercase tracking-[0.4em] font-headline">SYSTEM SPECIFICATIONS</span>
+                            <div className="space-y-3">
+                                {SYSTEM_SPECS.map((spec, i) => (
+                                    <div key={i} className="flex items-center gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 shadow-[0_0_8px_rgba(46,184,107,0.4)]" />
+                                        <span className="text-[9px] font-bold uppercase tracking-[0.2em] italic text-white/40 leading-none">
+                                            {spec}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <Activity className="w-3 h-3 text-primary/60" />
-                            <span className="text-[8px] font-bold text-white/40 uppercase italic tracking-tight">LIVE DASHBOARD</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Lock className="w-3 h-3 text-primary/60" />
-                            <span className="text-[8px] font-bold text-white/40 uppercase italic tracking-tight">NO SaaS. OWN YOUR DATA.</span>
+
+                        {/* 3. Industry Vertical Stack (Elite 7) */}
+                        <div className="space-y-6 pt-4 pb-8">
+                            <div className="space-y-2">
+                                <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em] font-headline">SELECT VERTICAL</span>
+                                <div className="w-12 h-px bg-primary/20" />
+                            </div>
+                            
+                            <div className="flex flex-col space-y-4">
+                                {ELITE_INDUSTRIES.map((ind) => (
+                                    <Link 
+                                        key={ind.id} 
+                                        href={`/packs/${ind.id}`} 
+                                        className="group flex items-center gap-2"
+                                    >
+                                        <span className="text-lg font-black font-headline uppercase italic tracking-tighter text-white/20 group-hover:text-primary transition-all duration-300">
+                                            {ind.name}
+                                        </span>
+                                        <ChevronRight className="w-3 h-3 text-white/5 group-hover:text-primary transition-colors" />
+                                    </Link>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Unified CTA & Proof */}
-                <div className="space-y-3">
-                    <Button asChild className="w-full h-14 bg-primary text-black font-black uppercase italic text-[10px] tracking-widest rounded-xl shadow-lg border-none active:scale-95 transition-all">
-                        <Link href="/library">GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                    </Button>
+                {/* Conversion Footer with Sovereign Proof-Strip */}
+                <div className="px-6 mt-4 space-y-6">
+                    {/* The Strip */}
+                    <div className="bg-white/[0.03] border-y border-white/5 py-3 px-2">
+                        <p className="text-[7px] text-white/30 font-black text-center uppercase tracking-[0.25em] italic">
+                            {PROOF_STRIP}
+                        </p>
+                    </div>
+
+                    <div className="pt-2 text-center">
+                         <Link href="/library" className="text-[9px] font-black text-primary uppercase tracking-[0.3em] italic hover:underline flex items-center justify-center gap-2">
+                            EXPLORE SYSTEMS HUB <ArrowRight className="w-3 h-3" />
+                         </Link>
+                    </div>
                     
-                    <div className="flex justify-between items-center px-1 pt-2 border-t border-white/5">
-                        {[
-                            { t: "EXCEL & SHEETS", i: ShieldCheck },
-                            { t: "OWN FOREVER", i: Zap },
-                            { t: "AUDIT READY", i: ShieldCheck }
-                        ].map((point, i) => (
-                            <div key={i} className="flex items-center gap-1">
-                                <point.i className="w-2 h-2 text-primary/60" />
-                                <span className="text-[6px] font-black text-white/20 uppercase tracking-widest">{point.t}</span>
-                            </div>
-                        ))}
+                    {/* Native Sovereign Home-Bar */}
+                    <div className="flex justify-center pt-2">
+                        <div className="w-24 h-1.5 rounded-full bg-primary/40" />
                     </div>
                 </div>
             </div>
@@ -152,18 +168,12 @@ export const HeroSection = () => (
                     </div>
 
                     <div className="flex flex-col gap-5">
-                        <div className="flex items-center gap-4">
-                            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                            <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">120+ PRE-BUILT SOPs</span>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                            <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">AUDIT-READY COMPLIANCE</span>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                            <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">LIVE DASHBOARD</span>
-                        </div>
+                        {SYSTEM_SPECS.slice(0, 4).map((spec, i) => (
+                            <div key={i} className="flex items-center gap-4">
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">{spec}</span>
+                            </div>
+                        ))}
                     </div>
 
                     <div className="space-y-4">
@@ -172,7 +182,7 @@ export const HeroSection = () => (
                                 GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="h-5 w-5" />
                             </Link>
                         </Button>
-                        <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.4em] pl-2">WORKS ON EXCEL & SHEETS • OWN FOREVER • NO SaaS</p>
+                        <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.4em] pl-2">{PROOF_STRIP}</p>
                     </div>
                 </div>
 
