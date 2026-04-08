@@ -60,11 +60,11 @@ const OperationalWindow = ({ src, alt, title = "MASTER_OPERATIONAL_ENGINE_V11.9"
             </div>
         </div>
         <div className="relative rounded-b-2xl border border-white/10 bg-zinc-950 overflow-hidden shadow-[0_0_100px_-20px_rgba(46,184,107,0.15)] group-hover:shadow-[0_0_100px_-10px_rgba(46,184,107,0.25)] transition-all duration-1000">
-            {/* Identity Mask for Home Dashboard */}
-            <div className="absolute top-0 left-0 w-full h-[25%] z-20 bg-black/90 backdrop-blur-3xl border-b border-white/10 flex items-center justify-center px-10">
+            {/* Identity Mask for Home Dashboard: Refined proportions */}
+            <div className="absolute top-0 left-0 w-full h-[22%] z-20 bg-black/95 backdrop-blur-3xl border-b border-white/10 flex items-center justify-center px-10">
                 <div className="flex items-center gap-4">
-                    <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_12px_rgba(46,184,107,0.6)]" />
-                    <span className="text-[10px] md:text-[13px] font-black text-primary uppercase tracking-[0.4em] italic font-headline text-center">
+                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_12px_rgba(46,184,107,0.8)]" />
+                    <span className="text-[10px] md:text-[13px] font-black text-primary uppercase tracking-[0.5em] italic font-headline text-center">
                         SOVEREIGN_COMMAND_OS_ACTIVE
                     </span>
                 </div>
@@ -73,7 +73,7 @@ const OperationalWindow = ({ src, alt, title = "MASTER_OPERATIONAL_ENGINE_V11.9"
             <img 
                 src={src} 
                 alt={alt} 
-                className="w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 mt-[-2%]"
+                className="w-full h-auto grayscale-[0.1] group-hover:grayscale-0 transition-all duration-700 mt-[-1.5%]"
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
         </div>
@@ -175,7 +175,7 @@ const DailySequenceSection = () => (
                             {step.s}
                         </div>
                         <div className="space-y-3">
-                            <h4 className="text-sm font-black text-primary-text uppercase italic tracking-tighter font-headline leading-tight">{step.t}</h4>
+                            <h4 className="font-black text-primary-text uppercase italic tracking-tighter font-headline leading-tight">{step.t}</h4>
                             <p className="text-xs text-secondary-text italic font-medium leading-relaxed">{step.d}</p>
                         </div>
                     </div>
