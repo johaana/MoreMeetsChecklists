@@ -117,12 +117,6 @@ export const HeroSection = () => (
                     </div>
                 </div>
 
-                {/* Mobile Scroll Indicator (The Anchor) */}
-                <div className="flex flex-col items-center gap-2 mb-10 opacity-40">
-                    <span className="text-[8px] font-black uppercase tracking-[0.4em] text-white/60">SCROLL TO DEPLOY</span>
-                    <ChevronDown className="w-4 h-4 text-primary animate-bounce" />
-                </div>
-
                 {/* Conversion Footer with Sovereign Proof-Strip */}
                 <div className="px-6 mt-auto space-y-6">
                     {/* The Strip */}
