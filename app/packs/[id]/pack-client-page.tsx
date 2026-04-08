@@ -59,11 +59,11 @@ const OperationalWindow = ({ src = DASHBOARD_PREVIEW_URL, alt, packTitle }: { sr
                 </div>
             </div>
             <div className="relative rounded-b-xl border border-white/10 bg-zinc-950 overflow-hidden shadow-[0_0_100px_-20px_rgba(46,184,107,0.15)] group-hover:shadow-[0_0_100px_-10px_rgba(46,184,107,0.25)] transition-all duration-1000 z-10">
-                {/* Identity Mask: Refined height and depth */}
-                <div className="absolute top-0 left-0 w-full h-[22%] z-20 bg-black/95 backdrop-blur-3xl border-b border-white/10 flex items-center justify-center px-10">
+                {/* Identity Mask: Surgical tight fit */}
+                <div className="absolute top-0 left-0 w-full h-[12%] z-20 bg-black/90 backdrop-blur-3xl border-b border-white/10 flex items-center justify-center px-10">
                     <div className="flex items-center gap-4">
-                        <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_12px_rgba(46,184,107,0.8)]" />
-                        <span className="text-[10px] md:text-[12px] font-black text-primary uppercase tracking-[0.5em] italic font-headline text-center">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_12px_rgba(46,184,107,0.8)]" />
+                        <span className="text-[9px] md:text-[11px] font-black text-primary uppercase tracking-[0.4em] italic font-headline text-center">
                             SYSTEM_ID: {displayTitle}
                         </span>
                     </div>
@@ -72,7 +72,7 @@ const OperationalWindow = ({ src = DASHBOARD_PREVIEW_URL, alt, packTitle }: { sr
                 <img 
                     src={src} 
                     alt={alt} 
-                    className="w-full h-auto grayscale-[0.1] group-hover:grayscale-0 transition-all duration-700 mt-[-1.5%]"
+                    className="w-full h-auto grayscale-[0.05] group-hover:grayscale-0 transition-all duration-700 mt-[-0.8%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
             </div>
