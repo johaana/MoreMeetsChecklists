@@ -12,7 +12,8 @@ import {
     Building2, 
     Popcorn,
     ChevronRight,
-    ShieldCheck
+    ShieldCheck,
+    ChevronDown
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -55,7 +56,7 @@ export const HeroSection = () => (
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
             </div>
 
-            <div className="relative z-10 flex-1 flex flex-col pt-20 pb-6">
+            <div className="relative z-10 flex-1 flex flex-col pt-20 pb-6 h-full">
                 <div className="flex-1 grid grid-cols-[40px,1fr] gap-0">
                     
                     {/* Left: The Structural Divider */}
@@ -116,8 +117,14 @@ export const HeroSection = () => (
                     </div>
                 </div>
 
+                {/* Mobile Scroll Indicator (The Anchor) */}
+                <div className="flex flex-col items-center gap-2 mb-10 opacity-40">
+                    <span className="text-[8px] font-black uppercase tracking-[0.4em] text-white/60">SCROLL TO DEPLOY</span>
+                    <ChevronDown className="w-4 h-4 text-primary animate-bounce" />
+                </div>
+
                 {/* Conversion Footer with Sovereign Proof-Strip */}
-                <div className="px-6 mt-4 space-y-6">
+                <div className="px-6 mt-auto space-y-6">
                     {/* The Strip */}
                     <div className="bg-white/[0.03] border-y border-white/5 py-3 px-2">
                         <p className="text-[7px] text-white/30 font-black text-center uppercase tracking-[0.25em] italic">
@@ -132,7 +139,7 @@ export const HeroSection = () => (
                     </div>
                     
                     {/* Native Sovereign Home-Bar */}
-                    <div className="flex justify-center pt-2">
+                    <div className="flex justify-center pt-2 pb-2">
                         <div className="w-24 h-1.5 rounded-full bg-primary/40" />
                     </div>
                 </div>
@@ -154,7 +161,7 @@ export const HeroSection = () => (
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
             </div>
 
-            <div className="container px-4 md:px-32 relative z-10 h-full grid grid-cols-[1.2fr,1fr] items-center gap-24">
+            <div className="container px-4 md:px-32 relative z-10 h-full grid grid-cols-[1.2fr,1fr] items-center gap-24 mx-auto">
                 {/* Left: Narrative & Payload */}
                 <div className="space-y-12">
                     <div className="space-y-6">

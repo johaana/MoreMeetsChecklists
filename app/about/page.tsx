@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -23,7 +22,7 @@ import Link from 'next/link';
 
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
     <section id={id} className={cn("w-full py-16 md:py-24", className)}>
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 mx-auto">
             {children}
         </div>
     </section>
@@ -55,8 +54,9 @@ export default function AboutPage() {
             
             <main className="flex-1">
                 {/* HERO SECTION */}
-                <section className="w-full pt-20 pb-12 md:pt-32 md:pb-24 border-b border-white/5">
-                    <div className="container px-4 md:px-6">
+                <section className="w-full pt-20 pb-12 md:pt-32 md:pb-24 border-b border-white/5 relative overflow-hidden">
+                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#2eb86b_1px,transparent_1px)] [background-size:24px_24px]" />
+                    <div className="container px-4 md:px-6 mx-auto relative z-10">
                         <div className="max-w-4xl space-y-6">
                             <Badge variant="outline" className="text-primary border-primary/30 py-1 px-3 mb-4 uppercase tracking-[0.3em] font-black text-[10px]">Forensic Pedigree</Badge>
                             <h1 className="text-4xl md:text-6xl font-black font-headline !leading-[1.1] text-primary-text tracking-tighter uppercase italic">
@@ -71,8 +71,11 @@ export default function AboutPage() {
                 </section>
 
                 {/* THE PEDIGREE */}
-                <Section className="bg-alternate-background">
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <Section className="bg-alternate-background relative">
+                    {/* Blueprint Grid Overlay */}
+                    <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[linear-gradient(to_right,#888_1px,transparent_1px),linear-gradient(to_bottom,#888_1px,transparent_1px)] bg-[size:40px_40px]" />
+                    
+                    <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
                         <div className="space-y-8">
                             <div className="space-y-4">
                                 <h2 className="text-3xl md:text-4xl font-black font-headline text-primary-text uppercase italic tracking-tighter">The Engineering of Reliability</h2>
@@ -94,7 +97,7 @@ export default function AboutPage() {
                                 { label: "Technical Missions", value: "5,000+", icon: ClipboardList },
                                 { label: "Protocol Alignment", value: "ISO/HACCP", icon: Scale }
                             ].map((stat, i) => (
-                                <div key={i} className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] flex flex-col gap-2 group hover:border-primary/20 transition-colors">
+                                <div key={i} className="p-6 rounded-2xl border border-white/5 bg-black/40 flex flex-col gap-2 group hover:border-primary/20 transition-colors backdrop-blur-sm">
                                     <stat.icon className="w-6 h-6 text-primary/50 group-hover:text-primary transition-colors" />
                                     <p className="text-2xl font-black text-primary-text">{stat.value}</p>
                                     <p className="text-[10px] uppercase font-black tracking-widest text-secondary-text">{stat.label}</p>

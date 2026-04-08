@@ -13,7 +13,8 @@ import {
     ShieldCheck, 
     FileSpreadsheet,
     LayoutGrid,
-    Lock
+    Lock,
+    ChevronDown
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -24,7 +25,7 @@ const DASHBOARD_PREVIEW_URL = "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-
 
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
     <section id={id} className={cn("w-full py-16 md:py-24", className)}>
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 mx-auto">
             {children}
         </div>
     </section>
@@ -37,7 +38,7 @@ const SectionHeadline = ({ children, className }: { children: React.ReactNode, c
 );
 
 const OperationalWindow = ({ src = DASHBOARD_PREVIEW_URL, alt, packTitle }: { src?: string, alt: string, packTitle: string }) => {
-    const displayTitle = `SOVEREIGN_MASTER_${packTitle.toUpperCase().replace(/\s/g, '_')}_EDITION_V11.9`;
+    const displayTitle = `${packTitle.toUpperCase().replace(/\s/g, '_')}_V11.9`;
     
     return (
         <div className="relative mx-auto max-w-4xl group">
@@ -52,21 +53,31 @@ const OperationalWindow = ({ src = DASHBOARD_PREVIEW_URL, alt, packTitle }: { sr
                 </div>
                 <div className="flex-1 flex justify-center">
                     <div className="bg-black/40 border border-white/5 rounded-md px-8 md:px-12 py-1 text-[8px] md:text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner font-headline text-center truncate max-w-full">
-                        {displayTitle}
+                        SOVEREIGN_MASTER_INTERFACE
                     </div>
                 </div>
             </div>
             <div className="relative rounded-b-xl border border-white/10 bg-zinc-900 overflow-hidden shadow-[0_0_100px_-20px_rgba(46,184,107,0.15)] group-hover:shadow-[0_0_100px_-10px_rgba(46,184,107,0.25)] transition-all duration-1000 z-10">
+                {/* Identity Mask: Blurs/Covers the image's internal title bar to fix sector-mismatch */}
+                <div className="absolute top-0 left-0 w-full h-[12%] z-20 bg-black/60 backdrop-blur-xl border-b border-white/5 flex items-center px-10">
+                    <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                        <span className="text-[10px] md:text-[12px] font-black text-primary uppercase tracking-[0.3em] italic font-headline">
+                            SYSTEM_ID: {displayTitle}
+                        </span>
+                    </div>
+                </div>
+
                 <img 
                     src={src} 
                     alt={alt} 
-                    className="w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
+                    className="w-full h-auto grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 mt-[2%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
             </div>
             <div className="mt-4 text-center relative z-10">
                 <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em] italic">
-                    SAMPLE INTERFACE: YOUR SYSTEM WILL BE FORENSICALLY MAPPED TO THE {packTitle.toUpperCase()} SECTOR.
+                    TECHNICAL BRIEFING: LIVE OPS ENGINE FORENSICALLY MAPPED TO YOUR SECTOR.
                 </span>
             </div>
         </div>
@@ -79,7 +90,7 @@ const PainPointsSection = ({ packId }: { packId: string }) => {
 
     return (
         <Section className="bg-black border-b border-white/5">
-            <div className="container px-2 md:px-6">
+            <div className="container px-2 md:px-6 mx-auto">
                  <div className="max-w-4xl mx-auto text-center mb-16 space-y-4">
                     <Badge variant="outline" className="text-red-500 border-red-500/30 uppercase tracking-[0.4em] font-black text-[11px]">Forensic Analysis</Badge>
                     <SectionHeadline>
@@ -110,7 +121,7 @@ const GlobalStandardsSection = ({ pack }: { pack: PremiumPack }) => {
 
     return (
         <Section className="bg-alternate-background">
-            <div className="container px-2 md:px-6">
+            <div className="container px-2 md:px-6 mx-auto">
                 <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
                     <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Institutional Compliance</Badge>
                     <SectionHeadline>
@@ -159,7 +170,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
             <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black" />
           </div>
 
-          <div className="container px-4 md:px-6 relative z-10">
+          <div className="container px-4 md:px-6 relative z-10 mx-auto">
             <div className="grid lg:grid-cols-[1fr,480px] gap-12 md:gap-20 items-center">
                 
                 {/* Left: Narrative */}
@@ -193,7 +204,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
 
                 {/* Right: Built For & Selection */}
-                <div className="p-12 rounded-xl bg-white/[0.02] border border-white/10 backdrop-blur-xl shadow-2xl space-y-12">
+                <div className="p-12 rounded-xl bg-white/[0.02] border border-white/10 backdrop-blur-2xl shadow-2xl space-y-12">
                     <div className="space-y-5">
                         <span className="text-[10px] font-black text-primary uppercase tracking-[0.5em] font-headline">/ BUILT FOR</span>
                         <div className="flex flex-wrap gap-2.5">
