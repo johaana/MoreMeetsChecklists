@@ -56,7 +56,7 @@ export const HeroSection = () => (
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
             </div>
 
-            <div className="relative z-10 flex-1 flex flex-col pt-20 pb-4 h-full">
+            <div className="relative z-10 flex-1 flex flex-col pt-16 pb-4 h-full">
                 <div className="flex-1 grid grid-cols-[40px,1fr] gap-0">
                     
                     {/* Left: The Structural Divider */}
@@ -65,7 +65,7 @@ export const HeroSection = () => (
                     </div>
 
                     {/* Right: The Content Stack (Staggered Scan) */}
-                    <div className="flex flex-col space-y-8 pr-6 overflow-y-auto no-scrollbar">
+                    <div className="flex flex-col space-y-5 pr-6 overflow-y-auto no-scrollbar">
                         
                         {/* 1. Narrative Block */}
                         <div className="space-y-3">
@@ -78,7 +78,7 @@ export const HeroSection = () => (
                         </div>
 
                         {/* 2. System Specifications (Refined Gravity) */}
-                        <div className="space-y-4 py-2">
+                        <div className="space-y-3 py-1">
                             <span className="text-[10px] font-black text-primary uppercase tracking-[0.4em] font-headline">SYSTEM SPECIFICATIONS</span>
                             <div className="space-y-2.5">
                                 {SYSTEM_SPECS.map((spec, i) => (
@@ -93,13 +93,13 @@ export const HeroSection = () => (
                         </div>
 
                         {/* 3. Industry Vertical Stack (Right-Aligned for Ergonomics) */}
-                        <div className="space-y-5 pt-4 pb-8 flex flex-col items-end">
+                        <div className="space-y-4 pt-2 pb-4 flex flex-col items-end">
                             <div className="flex flex-col items-end space-y-1.5">
                                 <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.5em] font-headline text-right">SELECT VERTICAL</span>
                                 <div className="w-12 h-px bg-primary/20" />
                             </div>
                             
-                            <div className="flex flex-col space-y-4 items-end">
+                            <div className="flex flex-col space-y-3 items-end">
                                 {ELITE_INDUSTRIES.map((ind) => (
                                     <Link 
                                         key={ind.id} 
@@ -118,7 +118,7 @@ export const HeroSection = () => (
                 </div>
 
                 {/* Conversion Footer with Sovereign Proof-Strip */}
-                <div className="px-6 mt-auto space-y-5">
+                <div className="px-6 mt-auto space-y-4">
                     {/* The Refined Strip */}
                     <div className="bg-white/[0.03] border-y border-white/5 py-3 px-2">
                         <p className="text-[8px] text-white/40 font-black text-center uppercase tracking-[0.3em] italic">
