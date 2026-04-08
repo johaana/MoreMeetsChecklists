@@ -60,7 +60,7 @@ const MobileHero = ({ h1, p }: { h1: React.ReactNode, p: string }) => (
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover opacity-50"
+                className="w-full h-full object-cover opacity-50 grayscale-[0.3]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
             <div className="absolute bottom-4 left-6 right-6">
@@ -103,7 +103,7 @@ const MobileHero = ({ h1, p }: { h1: React.ReactNode, p: string }) => (
                                 key={ind.id} 
                                 href={`/packs/${ind.id}`} 
                                 className={cn(
-                                    "flex items-center gap-2 p-3 rounded-xl border border-white/5 bg-white/[0.02] active:bg-primary/5 transition-colors",
+                                    "flex items-center gap-2.5 p-3 rounded-xl border border-white/5 bg-white/[0.02] active:bg-primary/5 transition-colors",
                                     i === ELITE_INDUSTRIES.length - 1 && "col-span-2"
                                 )}
                             >
@@ -146,48 +146,48 @@ export default function MobilePreviewClient() {
             <main className="flex-1 py-24 px-4 bg-black space-y-32 flex flex-col items-center">
                 
                 <div className="max-w-4xl mx-auto text-center space-y-4 mb-12">
-                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Sovereign Mobile Lab v1.0</Badge>
-                    <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-none text-white">The Narrative Matrix</h1>
-                    <p className="text-secondary-text italic font-medium">Evaluating 5 strategic hero angles for the mobile command deck.</p>
+                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Sovereign Mobile Lab v2.0</Badge>
+                    <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-none text-white">The Option 1 Variations</h1>
+                    <p className="text-secondary-text italic font-medium">Evaluating 5 ways to frame "Capture Memory" for procurement anxiety.</p>
                 </div>
 
-                {/* VARIATION 1: THE NARRATIVE VISION */}
-                <PreviewFrame title="Var 1: The Narrative Vision" subtitle="Emotional Branding Standard">
+                {/* VARIATION 1: THE LEGACY SHIELD */}
+                <PreviewFrame title="Var 1: The Legacy Shield" subtitle="Focus: Long-term Brand Protection">
                     <MobileHero 
                         h1={<>CAPTURE<br/><span className="text-primary">MEMORY.</span></>}
-                        p="Institutional memory is an asset. Anything else is just luck. Own your standards forever."
+                        p="Tribal knowledge is a liability. Systems are an asset. Secure your brand's future by documenting the 'How-To' today."
                     />
                 </PreviewFrame>
 
-                {/* VARIATION 2: THE OPERATIONAL COMMAND */}
-                <PreviewFrame title="Var 2: The Operational Command" subtitle="Direct Utility Standard">
+                {/* VARIATION 2: THE DRIFT NEUTRALIZER */}
+                <PreviewFrame title="Var 2: The Drift Neutralizer" subtitle="Focus: Standard Maintenance">
                     <MobileHero 
-                        h1={<>STOP CHASING.<br/><span className="text-primary">START SEEING.</span></>}
-                        p="Know what's done. What's missed. What's delayed. Across your entire operation."
+                        h1={<>CAPTURE MEMORY.<br/><span className="text-primary">STOP THE DRIFT.</span></>}
+                        p="Standards decay the moment you leave the floor. Build a permanent structure that ensures execution stays at 100%."
                     />
                 </PreviewFrame>
 
-                {/* VARIATION 3: THE CONTINUITY GUARD */}
-                <PreviewFrame title="Var 3: The Continuity Guard" subtitle="Risk-Avoidance Standard">
+                {/* VARIATION 3: THE ASSET MULTIPLIER */}
+                <PreviewFrame title="Var 3: The Asset Multiplier" subtitle="Focus: Enterprise Value">
                     <MobileHero 
-                        h1={<>SYSTEMS STAY.<br/><span className="text-primary">PEOPLE LEAVE.</span></>}
-                        p="When a manager resigns, your standards shouldn't leave with them. Build a structure that lasts."
+                        h1={<>CAPTURE MEMORY.<br/><span className="text-primary">BUILD ASSETS.</span></>}
+                        p="Don't just run a business. Build a repeatable, scalable data engine that works independently of who is in the room."
                     />
                 </PreviewFrame>
 
-                {/* VARIATION 4: THE INDUSTRIAL MANDATE */}
-                <PreviewFrame title="Var 4: The Industrial Mandate" subtitle="Infrastructure Standard">
+                {/* VARIATION 4: THE CONTINUITY GUARD */}
+                <PreviewFrame title="Var 4: The Continuity Guard" subtitle="Focus: Resignation Risk">
                     <MobileHero 
-                        h1={<>DEPLOY<br/><span className="text-primary">INFRASTRUCTURE.</span></>}
-                        p="Systems are not suggestions. They are the backbone of a professional brand."
+                        h1={<>CAPTURE MEMORY.<br/><span className="text-primary">SYSTEMS STAY.</span></>}
+                        p="When a manager resigns, your standards shouldn't leave with them. Convert individual brilliance into organizational memory."
                     />
                 </PreviewFrame>
 
-                {/* VARIATION 5: THE SOVEREIGN INDEPENDENCE */}
-                <PreviewFrame title="Var 5: The Sovereign Independence" subtitle="Data-Ownership Standard">
+                {/* VARIATION 5: THE SCALABLE COMMAND */}
+                <PreviewFrame title="Var 5: The Scalable Command" subtitle="Focus: Growth Friction">
                     <MobileHero 
-                        h1={<>OWN YOUR DATA.<br/><span className="text-primary">NO SaaS.</span></>}
-                        p="No monthly fees. No cloud dependency. A permanent operational asset on Excel & Google Sheets."
+                        h1={<>CAPTURE MEMORY.<br/><span className="text-primary">SCALE FAST.</span></>}
+                        p="Growth requires a standard that doesn't dilute. Standardize once, deploy everywhere, and scale without the chaos."
                     />
                 </PreviewFrame>
 
