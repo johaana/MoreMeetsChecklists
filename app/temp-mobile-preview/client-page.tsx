@@ -137,9 +137,11 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                         </p>
                     </div>
 
-                    <Button className="w-full h-14 font-black uppercase italic text-[10px] tracking-[0.2em] rounded-none bg-primary text-black transition-all active:scale-95 border-none shadow-[0_0_30px_-5px_rgba(46,184,107,0.3)]">
-                        GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
+                    {variant !== 1 && (
+                        <Button className="w-full h-14 font-black uppercase italic text-[10px] tracking-[0.2em] rounded-none bg-primary text-black transition-all active:scale-95 border-none shadow-[0_0_30px_-5px_rgba(46,184,107,0.3)]">
+                            GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                    )}
                     
                     {/* Native Sovereign Home-Bar */}
                     <div className="flex justify-center pt-2">
@@ -168,7 +170,7 @@ export default function MobilePreviewPage() {
                     <p className="text-zinc-500 italic font-medium max-w-sm mx-auto leading-relaxed">Refining the Vertical Narrative with grey specifications, green indicators, and the Institutional Proof-Strip.</p>
                 </div>
 
-                <PreviewFrame title="Archetype 1: Sovereign Standard" subtitle="Grey specs + Green Dots + Proof Strip">
+                <PreviewFrame title="Archetype 1: Sovereign Standard" subtitle="Grey specs + Green Dots + Proof Strip (Button Hidden)">
                     <MobileHeroBase variant={1} />
                 </PreviewFrame>
 
