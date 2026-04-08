@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -14,7 +13,14 @@ import {
     ClipboardCheck, 
     FileSpreadsheet,
     LayoutGrid,
-    ChevronRight
+    ChevronRight,
+    Utensils,
+    Building,
+    Hospital,
+    School,
+    Store,
+    Building2,
+    Popcorn
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -22,13 +28,13 @@ import Link from 'next/link';
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 const ELITE_INDUSTRIES = [
-    { name: "Restaurants", id: "restaurants" },
-    { name: "Hotels & Resorts", id: "hotels_and_resorts" },
-    { name: "Healthcare", id: "healthcare_and_hospital_operations" },
-    { name: "Schools", id: "school_operations_pack" },
-    { name: "Franchise Networks", id: "franchise_operations_pack" },
-    { name: "Facilities", id: "facility_management_blueprint" },
-    { name: "Cinemas", id: "cinema_operations_pack" }
+    { name: "Restaurants", id: "restaurants", icon: Utensils },
+    { name: "Hotels & Resorts", id: "hotels_and_resorts", icon: Building },
+    { name: "Healthcare", id: "healthcare_and_hospital_operations", icon: Hospital },
+    { name: "Schools", id: "school_operations_pack", icon: School },
+    { name: "Franchise Networks", id: "franchise_operations_pack", icon: Store },
+    { name: "Facilities", id: "facility_management_blueprint", icon: Building2 },
+    { name: "Cinemas", id: "cinema_operations_pack", icon: Popcorn }
 ];
 
 const CONTENT = {
@@ -70,7 +76,7 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                     "relative overflow-hidden shrink-0 transition-all duration-700",
                     variant === 1 && "h-[32vh]",
                     variant === 3 && "h-[28vh] border-b border-white/10",
-                    variant === 4 && "h-[25vh]",
+                    variant === 4 && "h-[22vh]",
                     variant === 5 && "h-[35vh]"
                 )}>
                     <video
@@ -126,13 +132,13 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
             {/* COMMAND DECK (BODY) */}
             <div className={cn(
                 "flex-1 flex flex-col justify-between p-8 relative z-10",
-                variant === 2 && "bg-black/20 backdrop-blur-xl mt-[40vh] rounded-t-[3rem] border-t border-white/10",
+                variant === 2 && "bg-black/20 backdrop-blur-xl mt-[25vh] rounded-t-[3rem] border-t border-white/10",
                 variant === 3 && "border-l-4 border-primary/20",
                 variant === 4 && "items-center text-center px-10"
             )}>
                 
                 {/* Narrative & Stats */}
-                <div className="space-y-10">
+                <div className="space-y-8">
                     <div className="space-y-6">
                         <p className={cn(
                             "text-sm text-white/40 italic font-medium leading-relaxed",
@@ -144,7 +150,7 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                         </p>
                         
                         <div className={cn(
-                            "flex flex-col gap-4",
+                            "flex flex-col gap-3",
                             variant === 4 && "items-center"
                         )}>
                             {[
@@ -154,12 +160,12 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                             ].map((item, i) => (
                                 <div key={i} className="flex items-center gap-4 group">
                                     <div className={cn(
-                                        "w-1.5 h-1.5 rounded-full bg-primary",
+                                        "w-1 h-1 rounded-full bg-primary",
                                         variant === 3 && "w-4 h-4 rounded-md bg-primary/10 flex items-center justify-center"
                                     )}>
                                         {variant === 3 && <item.i className="w-2.5 h-2.5 text-primary" />}
                                     </div>
-                                    <span className="text-[9px] font-black text-white/30 uppercase tracking-[0.35em] italic group-hover:text-primary transition-colors">
+                                    <span className="text-[8px] font-black text-white/30 uppercase tracking-[0.35em] italic group-hover:text-primary transition-colors">
                                         {item.t}
                                     </span>
                                 </div>
@@ -177,12 +183,16 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                             "grid grid-cols-2 gap-2",
                             variant === 4 && "grid-cols-1 w-full"
                         )}>
-                            {ELITE_INDUSTRIES.slice(0, 4).map((ind, i) => (
+                            {ELITE_INDUSTRIES.map((ind, i) => (
                                 <div key={ind.id} className={cn(
                                     "flex items-center justify-between p-3 rounded-xl border border-white/5 bg-white/[0.02] active:bg-primary/5 transition-all",
-                                    variant === 4 && "rounded-none border-x-0 border-t-0 p-2 text-center justify-center"
+                                    variant === 4 && "rounded-none border-x-0 border-t-0 p-2 text-center justify-center",
+                                    (variant !== 4 && i === ELITE_INDUSTRIES.length - 1) && "col-span-2"
                                 )}>
-                                    <span className="text-[9px] font-bold uppercase italic tracking-tight text-white/70">{ind.name}</span>
+                                    <div className="flex items-center gap-3">
+                                        {variant !== 4 && <ind.icon className="w-3.5 h-3.5 text-primary/40" />}
+                                        <span className="text-[9px] font-bold uppercase italic tracking-tight text-white/70">{ind.name}</span>
+                                    </div>
                                     {variant !== 4 && <ChevronRight className="w-3 h-3 text-white/10" />}
                                 </div>
                             ))}
@@ -191,9 +201,9 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                 </div>
 
                 {/* Conversion Block */}
-                <div className="space-y-5 pt-8 border-t border-white/5">
+                <div className="space-y-5 pt-6 border-t border-white/5">
                     <Button className={cn(
-                        "w-full h-16 font-black uppercase italic text-[11px] tracking-[0.2em] rounded-xl shadow-2xl transition-all active:scale-95 border-none",
+                        "w-full h-14 font-black uppercase italic text-[10px] tracking-[0.2em] rounded-xl shadow-2xl transition-all active:scale-95 border-none",
                         variant === 4 ? "bg-white text-black rounded-none" : "bg-primary text-black"
                     )}>
                         {CONTENT.cta} <ArrowRight className="ml-2 h-4 w-4" />
@@ -201,7 +211,7 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                     
                     <div className="flex justify-between items-center px-2">
                         {[
-                            { t: "EXCEL READY", i: ShieldCheck },
+                            { t: "EXCEL & SHEETS", i: ShieldCheck },
                             { t: "OWN FOREVER", i: Zap }
                         ].map((point, i) => (
                             <div key={i} className="flex items-center gap-2">
@@ -237,23 +247,23 @@ export default function MobilePreviewClient() {
                 <div className="max-w-4xl mx-auto text-center space-y-6 mb-16">
                     <div className="space-y-3">
                         <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-6 py-1.5 rounded-none bg-primary/5">
-                            Sovereign Mobile Lab v4.0
+                            Sovereign Mobile Lab v4.5
                         </Badge>
-                        <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-tight text-white font-headline">Industrial Flow</h1>
+                        <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-tight text-white font-headline">Elite 7 Payload</h1>
                     </div>
-                    <p className="text-zinc-500 italic font-medium max-w-sm mx-auto">Evaluating 5 executive visual archetypes for the mobile procurement mandate.</p>
+                    <p className="text-zinc-500 italic font-medium max-w-sm mx-auto">Ensuring all 7 operational verticals command attention on mobile viewport.</p>
                 </div>
 
                 {/* ARCHETYPES */}
-                <PreviewFrame title="Archetype 1: The Baseline" subtitle="Standard Desaturated / Hard-Deck">
+                <PreviewFrame title="Archetype 1: The Baseline" subtitle="Complete vertical list / Hard-Deck Layout">
                     <MobileHeroBase variant={1} />
                 </PreviewFrame>
 
-                <PreviewFrame title="Archetype 2: Kinetic Glass" subtitle="Depth / Overlap / Software Modernism">
+                <PreviewFrame title="Archetype 2: Kinetic Glass" subtitle="Glassmorphism / Semi-Translucent Selection">
                     <MobileHeroBase variant={2} />
                 </PreviewFrame>
 
-                <PreviewFrame title="Archetype 3: The Blueprint" subtitle="Structural Grid / Precision Markers">
+                <PreviewFrame title="Archetype 3: The Blueprint" subtitle="Structural Grid / High-Gravity Markers">
                     <MobileHeroBase variant={3} />
                 </PreviewFrame>
 
