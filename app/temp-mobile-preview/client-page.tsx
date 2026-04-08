@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -21,7 +20,8 @@ import {
     School,
     Store,
     Building2,
-    Popcorn
+    Popcorn,
+    Smartphone
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -42,7 +42,12 @@ const CONTENT = {
     h1: "CAPTURE MEMORY.",
     p: "Institutional memory is an asset. Anything else is just luck.",
     cta: "GO LIVE IN 10 MINUTES: ₹999",
-    bottomLine: "WORKS ON EXCEL & SHEETS • OWN FOREVER"
+    bottomLine: "WORKS ON EXCEL & SHEETS • OWN FOREVER",
+    payload: [
+        { t: "120+ PRE-BUILT SOPs", i: ClipboardCheck },
+        { t: "WORKS ON EXCEL & SHEETS", i: FileSpreadsheet },
+        { t: "LIVE DASHBOARD TELEMETRY", i: Activity }
+    ]
 };
 
 const PreviewFrame = ({ children, title, subtitle }: { children: React.ReactNode, title: string, subtitle?: string }) => (
@@ -80,7 +85,7 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                                 {CONTENT.p}
                             </p>
                             <div className="flex flex-col gap-3">
-                                {[{ t: "120+ PRE-BUILT SOPs", i: ClipboardCheck }, { t: "WORKS ON EXCEL & SHEETS", i: FileSpreadsheet }, { t: "LIVE DASHBOARD TELEMETRY", i: Activity }].map((item, i) => (
+                                {CONTENT.payload.map((item, i) => (
                                     <div key={i} className="flex items-center gap-4 group">
                                         <div className="w-1 h-1 rounded-full bg-primary" />
                                         <span className="text-[8px] font-black text-white/30 uppercase tracking-[0.35em] italic group-hover:text-primary transition-colors">{item.t}</span>
@@ -121,18 +126,16 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
         );
     }
 
-    // NEW VARIANTS: THE SOVEREIGN VERTICAL EFFECT
+    // VERTICAL ARCHETYPES: INTEGRATED CONTENT
     return (
         <div className="flex flex-col h-full bg-black relative">
-            {/* Background Layer */}
             <div className="absolute inset-0 z-0">
                 <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-30 grayscale" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
             </div>
 
-            {/* Layout Grid */}
-            <div className="relative z-10 flex-1 flex flex-col pt-24 pb-12">
-                <div className="flex-1 grid grid-cols-[60px,1fr] gap-0">
+            <div className="relative z-10 flex-1 flex flex-col pt-20 pb-10">
+                <div className="flex-1 grid grid-cols-[50px,1fr] gap-0">
                     
                     {/* Left: The Structural Divider */}
                     <div className="relative h-full flex flex-col items-center">
@@ -141,11 +144,10 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                             variant === 4 && "bg-primary/20"
                         )} />
                         
-                        {/* Dynamic Side Content */}
-                        <div className="sticky top-32 flex flex-col gap-24 items-center">
+                        <div className="sticky top-24 flex flex-col gap-24 items-center">
                             {variant === 3 && (
                                 <div className="-rotate-90 origin-center whitespace-nowrap">
-                                    <span className="text-[8px] font-black text-primary uppercase tracking-[0.6em]">120+ SOPs</span>
+                                    <span className="text-[7px] font-black text-primary uppercase tracking-[0.6em] italic">120+ SOPs</span>
                                 </div>
                             )}
                             {variant === 5 && (
@@ -159,34 +161,42 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                     </div>
 
                     {/* Right: The Content Stack */}
-                    <div className={cn(
-                        "flex flex-col space-y-12 pr-10",
-                        variant === 4 && "justify-center"
-                    )}>
+                    <div className="flex flex-col space-y-10 pr-8 overflow-y-auto no-scrollbar">
                         
-                        {/* Narrative (Optional depending on variant) */}
-                        {variant !== 2 && (
-                            <div className="space-y-4">
-                                <h1 className={cn(
-                                    "text-4xl font-black font-headline text-white uppercase italic tracking-tighter leading-[0.8]",
-                                    variant === 4 && "text-5xl"
-                                )}>
-                                    {CONTENT.h1}
-                                </h1>
-                                <p className="text-xs text-white/40 italic font-medium leading-relaxed max-w-[220px]">
-                                    {CONTENT.p}
-                                </p>
-                            </div>
-                        )}
+                        {/* 1. Narrative Block */}
+                        <div className="space-y-4">
+                            <h1 className={cn(
+                                "text-4xl font-black font-headline text-white uppercase italic tracking-tighter leading-[0.85]",
+                                variant === 4 && "text-5xl"
+                            )}>
+                                {CONTENT.h1}
+                            </h1>
+                            <p className="text-xs text-white/40 italic font-medium leading-relaxed max-w-[220px]">
+                                {CONTENT.p}
+                            </p>
+                        </div>
 
-                        {/* Industry Stack (The Reference Effect) */}
-                        <div className="space-y-8 pt-4">
+                        {/* 2. Technical Payload (Pre-built SOPs etc) */}
+                        <div className="space-y-3">
+                            <span className="text-[8px] font-black text-primary uppercase tracking-[0.4em]">SYSTEM SPECIFICATIONS</span>
+                            <div className="space-y-2.5">
+                                {CONTENT.payload.map((item, i) => (
+                                    <div key={i} className="flex items-center gap-3">
+                                        <div className="w-1 h-1 rounded-full bg-primary/40" />
+                                        <span className="text-[8px] font-bold text-white/30 uppercase tracking-[0.2em] italic">{item.t}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* 3. Industry Vertical Stack */}
+                        <div className="space-y-6">
                             <div className="space-y-2">
                                 <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.5em] font-headline">SELECT VERTICAL</span>
-                                <div className="w-12 h-0.5 bg-primary/20" />
+                                <div className="w-12 h-px bg-primary/20" />
                             </div>
                             
-                            <div className="flex flex-col space-y-5">
+                            <div className="flex flex-col space-y-4">
                                 {ELITE_INDUSTRIES.map((ind) => (
                                     <Link 
                                         key={ind.id} 
@@ -194,7 +204,10 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                                         className="group flex flex-col"
                                     >
                                         <div className="flex items-center gap-2">
-                                            <span className="text-xl md:text-2xl font-black font-headline text-white/30 uppercase italic tracking-tighter group-hover:text-primary transition-all duration-300">
+                                            <span className={cn(
+                                                "text-xl font-black font-headline text-white/20 uppercase italic tracking-tighter group-hover:text-primary transition-all duration-300",
+                                                variant === 4 && "text-2xl"
+                                            )}>
                                                 {ind.name}
                                             </span>
                                             {variant === 5 && (
@@ -211,14 +224,14 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                 </div>
 
                 {/* Conversion Footer */}
-                <div className="px-10 space-y-6">
+                <div className="px-10 mt-8 space-y-5 border-t border-white/5 pt-8">
                     <Button className={cn(
                         "w-full h-14 font-black uppercase italic text-[10px] tracking-[0.2em] rounded-none bg-primary text-black transition-all active:scale-95 border-none shadow-[0_0_30px_-5px_rgba(46,184,107,0.3)]",
                         variant === 4 && "h-16"
                     )}>
                         {CONTENT.cta} <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
-                    <p className="text-[7px] text-white/20 font-black text-center uppercase tracking-[0.4em]">
+                    <p className="text-[7px] text-white/20 font-black text-center uppercase tracking-[0.4em] italic">
                         {CONTENT.bottomLine}
                     </p>
                 </div>
@@ -230,7 +243,6 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
 export default function MobilePreviewPage() {
     return (
         <div className="flex flex-col min-h-screen bg-[#050505] text-foreground">
-            {/* Header Mirror */}
             <header className="px-6 h-16 flex items-center bg-black/80 backdrop-blur-md border-b border-white/5 sticky top-0 z-50">
                 <div className="flex items-center gap-2.5">
                     <LayoutGrid size={22} className="text-primary" />
@@ -246,18 +258,18 @@ export default function MobilePreviewPage() {
                 <div className="max-w-4xl mx-auto text-center space-y-6 mb-16">
                     <div className="space-y-3">
                         <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-6 py-1.5 rounded-none bg-primary/5">
-                            Sovereign Mobile Lab v5.0
+                            Sovereign Mobile Lab v6.0
                         </Badge>
-                        <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-tight text-white font-headline">Vertical Mandate</h1>
+                        <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-tight text-white font-headline">The Full Payload</h1>
                     </div>
-                    <p className="text-zinc-500 italic font-medium max-w-sm mx-auto">Implementing the structural divider and high-gravity vertical menu standard.</p>
+                    <p className="text-zinc-500 italic font-medium max-w-sm mx-auto">Synchronizing full web content (Narrative, SOP Stats, Elite 7) into vertical divider archetypes.</p>
                 </div>
 
-                <PreviewFrame title="Archetype 1: The Baseline" subtitle="Existing standard layout">
+                <PreviewFrame title="Archetype 1: Standard" subtitle="Existing layout standard">
                     <MobileHeroBase variant={1} />
                 </PreviewFrame>
 
-                <PreviewFrame title="Archetype 2: Pure Vertical" subtitle="Reference image replication">
+                <PreviewFrame title="Archetype 2: Vertical Narrative" subtitle="Narrative + Full Vertical Stack">
                     <MobileHeroBase variant={2} />
                 </PreviewFrame>
 
