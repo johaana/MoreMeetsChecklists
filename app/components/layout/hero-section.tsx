@@ -51,8 +51,8 @@ export const HeroSection = () => (
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                 <div className="absolute bottom-4 left-6 right-6">
                     <h1 className="text-[2rem] font-black font-headline text-white leading-[0.85] uppercase italic tracking-tighter">
-                        STOP CHASING.<br />
-                        <span className="text-primary">START SEEING.</span>
+                        CAPTURE<br />
+                        <span className="text-primary">MEMORY.</span>
                     </h1>
                 </div>
             </div>
@@ -162,7 +162,7 @@ export const HeroSection = () => (
                         </div>
                         <div className="flex items-center gap-4">
                             <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                            <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">LIVE DASHBOARD TELEMETRY</span>
+                            <span className="text-[11px] font-black text-white/30 uppercase tracking-[0.3em] italic">LIVE DASHBOARD</span>
                         </div>
                     </div>
 

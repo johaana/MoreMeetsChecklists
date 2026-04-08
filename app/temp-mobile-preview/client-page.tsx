@@ -44,8 +44,8 @@ const CONTENT = {
     bottomLine: "WORKS ON EXCEL & SHEETS • OWN FOREVER",
     payload: [
         { t: "120+ PRE-BUILT SOPs", i: ClipboardCheck },
-        { t: "WORKS ON EXCEL & SHEETS", i: FileSpreadsheet },
-        { t: "LIVE DASHBOARD TELEMETRY", i: Activity }
+        { t: "AUDIT-READY COMPLIANCE", i: ShieldCheck },
+        { t: "LIVE DASHBOARD", i: Activity }
     ]
 };
 
@@ -144,11 +144,7 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                     {/* Left: The Structural Divider */}
                     <div className="relative h-full flex flex-col items-center">
                         <div className="absolute inset-y-0 w-px bg-primary/20" />
-                        <div className="sticky top-24 flex flex-col gap-24 items-center">
-                            <div className="-rotate-90 origin-center whitespace-nowrap">
-                                <span className="text-[7px] font-black text-primary uppercase tracking-[0.6em] italic">120+ SOPs</span>
-                            </div>
-                        </div>
+                        {/* 120 SOPs Text REMOVED as requested */}
                     </div>
 
                     {/* Right: The Content Stack */}
@@ -157,11 +153,7 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                         {/* 1. Narrative Block */}
                         <div className="space-y-4">
                             <h1 className="text-4xl font-black font-headline text-white uppercase italic tracking-tighter leading-[0.85]">
-                                {isHardened ? (
-                                    <>CAPTURE <br/><span className="text-primary">MEMORY.</span></>
-                                ) : (
-                                    <>CAPTURE <br/>MEMORY.</>
-                                )}
+                                CAPTURE <br/><span className="text-primary">MEMORY.</span>
                             </h1>
                             <p className="text-xs text-white/40 italic font-medium leading-relaxed max-w-[220px]">
                                 {CONTENT.p}
@@ -174,10 +166,10 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                             <div className="space-y-2.5">
                                 {currentPayload.map((item, i) => (
                                     <div key={i} className="flex items-center gap-3">
-                                        <item.i className={cn("w-3 h-3", isHardened && item.t.includes("NO SaaS") ? "text-primary" : "text-primary/40")} />
+                                        <item.i className={cn("w-3 h-3", (isHardened && item.t.includes("NO SaaS")) || item.t.includes("AUDIT-READY") ? "text-primary" : "text-primary/40")} />
                                         <span className={cn(
                                             "text-[8px] font-bold uppercase tracking-[0.2em] italic",
-                                            isHardened && item.t.includes("NO SaaS") ? "text-primary" : "text-white/30"
+                                            (isHardened && item.t.includes("NO SaaS")) || item.t.includes("AUDIT-READY") ? "text-primary" : "text-white/30"
                                         )}>{item.t}</span>
                                     </div>
                                 ))}
@@ -235,22 +227,22 @@ export default function MobilePreviewPage() {
                 <div className="max-w-4xl mx-auto text-center space-y-6 mb-16 px-4">
                     <div className="space-y-3">
                         <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-6 py-1.5 rounded-none bg-primary/5">
-                            Sovereign Mobile Lab v7.0
+                            Sovereign Mobile Lab v7.5
                         </Badge>
                         <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-tight text-white font-headline">The Narrative Shield</h1>
                     </div>
-                    <p className="text-zinc-500 italic font-medium max-w-sm mx-auto">Hardening the "Capture Memory" standard with technical mandates and high-gravity highlights.</p>
+                    <p className="text-zinc-500 italic font-medium max-w-sm mx-auto">Hardening the "Capture Memory" standard with technical mandates and Audit-Ready payloads.</p>
                 </div>
 
                 <PreviewFrame title="Archetype 1: Standard" subtitle="Existing layout standard">
                     <MobileHeroBase variant={1} />
                 </PreviewFrame>
 
-                <PreviewFrame title="Archetype 2: Vertical Narrative" subtitle="The structural vertical standard">
+                <PreviewFrame title="Archetype 2: Vertical Narrative" subtitle="Green MEMORY + Audit Payload">
                     <MobileHeroBase variant={2} />
                 </PreviewFrame>
 
-                <PreviewFrame title="Archetype 3: Narrative Hardening" subtitle="Green MEMORY + 'NO SaaS' Payload">
+                <PreviewFrame title="Archetype 3: Narrative Hardening" subtitle="Green MEMORY + NO SaaS + Audit Payload">
                     <MobileHeroBase variant={3} />
                 </PreviewFrame>
 
