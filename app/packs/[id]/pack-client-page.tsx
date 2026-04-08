@@ -229,7 +229,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         <PainPointsSection packId={pack.id} />
 
         <Section className="bg-black">
-            <div className="max-w-6xl auto space-y-24">
+            <div className="max-w-6xl mx-auto space-y-24">
                 <div className="text-center space-y-4">
                     <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.5em] font-black text-[11px]">System Standards</Badge>
                     <SectionHeadline className="text-center">OPERATIONAL STANDARDS</SectionHeadline>

@@ -293,7 +293,7 @@ const RealTaskExamplesSection = () => {
 
 const TheShiftSection = () => (
     <Section className="bg-black border-b border-white/5">
-        <div className="max-w-5xl auto space-y-16">
+        <div className="max-w-5xl mx-auto space-y-16">
             <div className="text-center space-y-4">
                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[11px]">Category Shift</Badge>
                 <SectionHeadline>STOP LEAVING YOUR BRAND TO LUCK</SectionHeadline>
