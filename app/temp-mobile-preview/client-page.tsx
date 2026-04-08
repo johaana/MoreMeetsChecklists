@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -38,7 +39,7 @@ const ELITE_INDUSTRIES = [
 ];
 
 const CONTENT = {
-    h1: <>CAPTURE<br/><span className="text-primary">MEMORY.</span></>,
+    h1: "CAPTURE MEMORY.",
     p: "Institutional memory is an asset. Anything else is just luck.",
     cta: "GO LIVE IN 10 MINUTES: ₹999",
     bottomLine: "WORKS ON EXCEL & SHEETS • OWN FOREVER"
@@ -59,185 +60,183 @@ const PreviewFrame = ({ children, title, subtitle }: { children: React.ReactNode
 );
 
 const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
-    return (
-        <div className="flex flex-col h-full bg-black relative">
-            
-            {/* VARIANT 2: KINETIC GLASS OVERLAY */}
-            {variant === 2 && (
-                <div className="absolute inset-0 z-0">
-                    <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-40" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
-                </div>
-            )}
-
-            {/* HEADER / VISUAL SECTION */}
-            {variant !== 2 && (
-                <div className={cn(
-                    "relative overflow-hidden shrink-0 transition-all duration-700",
-                    variant === 1 && "h-[32vh]",
-                    variant === 3 && "h-[28vh] border-b border-white/10",
-                    variant === 4 && "h-[22vh]",
-                    variant === 5 && "h-[35vh]"
-                )}>
-                    <video
-                        src={VIDEO_URL}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className={cn(
-                            "w-full h-full object-cover",
-                            variant === 1 && "opacity-40 grayscale-[0.5]",
-                            variant === 3 && "opacity-20 grayscale",
-                            variant === 4 && "opacity-15 blur-sm",
-                            variant === 5 && "opacity-30 grayscale"
-                        )}
-                    />
-                    
-                    {variant === 5 && (
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] opacity-60">
-                            <div className="bg-[#111] border border-white/10 border-b-0 rounded-t-lg py-1 px-3 flex items-center justify-between">
-                                <div className="flex gap-1">
-                                    <div className="w-1 h-1 rounded-full bg-red-500/40" />
-                                    <div className="w-1 h-1 rounded-full bg-amber-500/40" />
-                                    <div className="w-1 h-1 rounded-full bg-green-500/40" />
-                                </div>
-                                <span className="text-[6px] font-black text-white/20 tracking-widest uppercase italic">SOVEREIGN_V11.9</span>
-                            </div>
-                            <div className="bg-zinc-900 border border-white/10 rounded-b-lg p-1 aspect-video">
-                                <img src="https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png" alt="Dashboard" className="w-full h-full object-cover grayscale-[0.2]" />
-                            </div>
-                        </div>
-                    )}
-
-                    <div className={cn(
-                        "absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent",
-                        variant === 3 && "bg-primary/5"
-                    )} />
-                    
+    // VARIANT 1: THE BASELINE (KEEP)
+    if (variant === 1) {
+        return (
+            <div className="flex flex-col h-full bg-black relative">
+                <div className="relative h-[32vh] overflow-hidden shrink-0">
+                    <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-40 grayscale-[0.5]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                     <div className="absolute bottom-6 left-8 right-8">
-                        <h1 className={cn(
-                            "font-black font-headline text-white uppercase italic tracking-tighter",
-                            variant === 1 && "text-[2.2rem] leading-[0.85]",
-                            variant === 3 && "text-4xl leading-[0.9]",
-                            variant === 4 && "text-5xl leading-[0.8] text-center",
-                            variant === 5 && "text-3xl leading-none text-primary"
-                        )}>
-                            {CONTENT.h1}
+                        <h1 className="font-black font-headline text-white uppercase italic tracking-tighter text-[2.2rem] leading-[0.85]">
+                            CAPTURE<br/><span className="text-primary">MEMORY.</span>
                         </h1>
                     </div>
                 </div>
-            )}
-
-            {/* COMMAND DECK (BODY) */}
-            <div className={cn(
-                "flex-1 flex flex-col justify-between p-8 relative z-10",
-                variant === 2 && "bg-black/20 backdrop-blur-xl mt-[25vh] rounded-t-[3rem] border-t border-white/10",
-                variant === 3 && "border-l-4 border-primary/20",
-                variant === 4 && "items-center text-center px-10"
-            )}>
-                
-                {/* Narrative & Stats */}
-                <div className="space-y-8">
-                    <div className="space-y-6">
-                        <p className={cn(
-                            "text-sm text-white/40 italic font-medium leading-relaxed",
-                            variant === 1 && "border-l-2 border-primary/20 pl-4",
-                            variant === 3 && "bg-white/[0.02] p-4 rounded-xl border border-white/5",
-                            variant === 4 && "text-base text-white/60"
-                        )}>
-                            {CONTENT.p}
-                        </p>
-                        
-                        <div className={cn(
-                            "flex flex-col gap-3",
-                            variant === 4 && "items-center"
-                        )}>
-                            {[
-                                { t: "120+ PRE-BUILT SOPs", i: ClipboardCheck },
-                                { t: "WORKS ON EXCEL & GOOGLE SHEETS", i: FileSpreadsheet },
-                                { t: "LIVE DASHBOARD TELEMETRY", i: Activity }
-                            ].map((item, i) => (
-                                <div key={i} className="flex items-center gap-4 group">
-                                    <div className={cn(
-                                        "w-1 h-1 rounded-full bg-primary",
-                                        variant === 3 && "w-4 h-4 rounded-md bg-primary/10 flex items-center justify-center"
-                                    )}>
-                                        {variant === 3 && <item.i className="w-2.5 h-2.5 text-primary" />}
+                <div className="flex-1 flex flex-col justify-between p-8 relative z-10">
+                    <div className="space-y-8">
+                        <div className="space-y-6">
+                            <p className="text-sm text-white/40 italic font-medium leading-relaxed border-l-2 border-primary/20 pl-4">
+                                {CONTENT.p}
+                            </p>
+                            <div className="flex flex-col gap-3">
+                                {[{ t: "120+ PRE-BUILT SOPs", i: ClipboardCheck }, { t: "WORKS ON EXCEL & SHEETS", i: FileSpreadsheet }, { t: "LIVE DASHBOARD TELEMETRY", i: Activity }].map((item, i) => (
+                                    <div key={i} className="flex items-center gap-4 group">
+                                        <div className="w-1 h-1 rounded-full bg-primary" />
+                                        <span className="text-[8px] font-black text-white/30 uppercase tracking-[0.35em] italic group-hover:text-primary transition-colors">{item.t}</span>
                                     </div>
-                                    <span className="text-[8px] font-black text-white/30 uppercase tracking-[0.35em] italic group-hover:text-primary transition-colors">
-                                        {item.t}
-                                    </span>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
+                        </div>
+                        <div className="space-y-4">
+                            <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.5em] font-headline block">SELECT VERTICAL</span>
+                            <div className="grid grid-cols-2 gap-2">
+                                {ELITE_INDUSTRIES.map((ind, i) => (
+                                    <div key={ind.id} className={cn("flex items-center justify-between p-3 rounded-xl border border-white/5 bg-white/[0.02] active:bg-primary/5 transition-all", i === ELITE_INDUSTRIES.length - 1 && "col-span-2")}>
+                                        <div className="flex items-center gap-3">
+                                            <ind.icon className="w-3.5 h-3.5 text-primary/40" />
+                                            <span className="text-[9px] font-bold uppercase italic tracking-tight text-white/70">{ind.name}</span>
+                                        </div>
+                                        <ChevronRight className="w-3 h-3 text-white/10" />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
-
-                    {/* Sector Selector */}
-                    <div className="space-y-4">
-                        <span className={cn(
-                            "text-[8px] font-black text-white/20 uppercase tracking-[0.5em] font-headline block",
-                            variant === 4 && "text-center"
-                        )}>SELECT VERTICAL</span>
-                        <div className={cn(
-                            "grid grid-cols-2 gap-2",
-                            variant === 4 && "grid-cols-1 w-full"
-                        )}>
-                            {ELITE_INDUSTRIES.map((ind, i) => (
-                                <div key={ind.id} className={cn(
-                                    "flex items-center justify-between p-3 rounded-xl border border-white/5 bg-white/[0.02] active:bg-primary/5 transition-all",
-                                    variant === 4 && "rounded-none border-x-0 border-t-0 p-2 text-center justify-center",
-                                    (variant !== 4 && i === ELITE_INDUSTRIES.length - 1) && "col-span-2"
-                                )}>
-                                    <div className="flex items-center gap-3">
-                                        {variant !== 4 && <ind.icon className="w-3.5 h-3.5 text-primary/40" />}
-                                        <span className="text-[9px] font-bold uppercase italic tracking-tight text-white/70">{ind.name}</span>
-                                    </div>
-                                    {variant !== 4 && <ChevronRight className="w-3 h-3 text-white/10" />}
+                    <div className="space-y-5 pt-6 border-t border-white/5">
+                        <Button className="w-full h-14 font-black uppercase italic text-[10px] tracking-[0.2em] rounded-xl shadow-2xl bg-primary text-black transition-all active:scale-95 border-none">
+                            {CONTENT.cta} <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                        <div className="flex justify-between items-center px-2">
+                            {[{ t: "EXCEL & SHEETS", i: ShieldCheck }, { t: "OWN FOREVER", i: Zap }].map((point, i) => (
+                                <div key={i} className="flex items-center gap-2">
+                                    <point.i className="w-3 h-3 text-primary/60" />
+                                    <span className="text-[7.5px] font-black text-white/20 uppercase tracking-[0.3em] italic">{point.t}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </div>
+            </div>
+        );
+    }
 
-                {/* Conversion Block */}
-                <div className="space-y-5 pt-6 border-t border-white/5">
+    // NEW VARIANTS: THE SOVEREIGN VERTICAL EFFECT
+    return (
+        <div className="flex flex-col h-full bg-black relative">
+            {/* Background Layer */}
+            <div className="absolute inset-0 z-0">
+                <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-30 grayscale" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
+            </div>
+
+            {/* Layout Grid */}
+            <div className="relative z-10 flex-1 flex flex-col pt-24 pb-12">
+                <div className="flex-1 grid grid-cols-[60px,1fr] gap-0">
+                    
+                    {/* Left: The Structural Divider */}
+                    <div className="relative h-full flex flex-col items-center">
+                        <div className={cn(
+                            "absolute inset-y-0 w-px bg-white/10",
+                            variant === 4 && "bg-primary/20"
+                        )} />
+                        
+                        {/* Dynamic Side Content */}
+                        <div className="sticky top-32 flex flex-col gap-24 items-center">
+                            {variant === 3 && (
+                                <div className="-rotate-90 origin-center whitespace-nowrap">
+                                    <span className="text-[8px] font-black text-primary uppercase tracking-[0.6em]">120+ SOPs</span>
+                                </div>
+                            )}
+                            {variant === 5 && (
+                                <div className="space-y-8 text-white/20">
+                                    <div className="text-[6px] font-mono">01//</div>
+                                    <div className="text-[6px] font-mono">02//</div>
+                                    <div className="text-[6px] font-mono">03//</div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Right: The Content Stack */}
+                    <div className={cn(
+                        "flex flex-col space-y-12 pr-10",
+                        variant === 4 && "justify-center"
+                    )}>
+                        
+                        {/* Narrative (Optional depending on variant) */}
+                        {variant !== 2 && (
+                            <div className="space-y-4">
+                                <h1 className={cn(
+                                    "text-4xl font-black font-headline text-white uppercase italic tracking-tighter leading-[0.8]",
+                                    variant === 4 && "text-5xl"
+                                )}>
+                                    {CONTENT.h1}
+                                </h1>
+                                <p className="text-xs text-white/40 italic font-medium leading-relaxed max-w-[220px]">
+                                    {CONTENT.p}
+                                </p>
+                            </div>
+                        )}
+
+                        {/* Industry Stack (The Reference Effect) */}
+                        <div className="space-y-8 pt-4">
+                            <div className="space-y-2">
+                                <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.5em] font-headline">SELECT VERTICAL</span>
+                                <div className="w-12 h-0.5 bg-primary/20" />
+                            </div>
+                            
+                            <div className="flex flex-col space-y-5">
+                                {ELITE_INDUSTRIES.map((ind) => (
+                                    <Link 
+                                        key={ind.id} 
+                                        href={`/packs/${ind.id}`} 
+                                        className="group flex flex-col"
+                                    >
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-xl md:text-2xl font-black font-headline text-white/30 uppercase italic tracking-tighter group-hover:text-primary transition-all duration-300">
+                                                {ind.name}
+                                            </span>
+                                            {variant === 5 && (
+                                                <span className="text-[6px] font-mono text-primary/40 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                    [SEC_LOAD_0{ELITE_INDUSTRIES.indexOf(ind) + 1}]
+                                                </span>
+                                            )}
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Conversion Footer */}
+                <div className="px-10 space-y-6">
                     <Button className={cn(
-                        "w-full h-14 font-black uppercase italic text-[10px] tracking-[0.2em] rounded-xl shadow-2xl transition-all active:scale-95 border-none",
-                        variant === 4 ? "bg-white text-black rounded-none" : "bg-primary text-black"
+                        "w-full h-14 font-black uppercase italic text-[10px] tracking-[0.2em] rounded-none bg-primary text-black transition-all active:scale-95 border-none shadow-[0_0_30px_-5px_rgba(46,184,107,0.3)]",
+                        variant === 4 && "h-16"
                     )}>
                         {CONTENT.cta} <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
-                    
-                    <div className="flex justify-between items-center px-2">
-                        {[
-                            { t: "EXCEL & SHEETS", i: ShieldCheck },
-                            { t: "OWN FOREVER", i: Zap }
-                        ].map((point, i) => (
-                            <div key={i} className="flex items-center gap-2">
-                                <point.i className="w-3 h-3 text-primary/60" />
-                                <span className="text-[7.5px] font-black text-white/20 uppercase tracking-[0.3em] italic">{point.t}</span>
-                            </div>
-                        ))}
-                    </div>
+                    <p className="text-[7px] text-white/20 font-black text-center uppercase tracking-[0.4em]">
+                        {CONTENT.bottomLine}
+                    </p>
                 </div>
             </div>
         </div>
     );
 };
 
-export default function MobilePreviewClient() {
+export default function MobilePreviewPage() {
     return (
         <div className="flex flex-col min-h-screen bg-[#050505] text-foreground">
-            {/* Sovereign Mock Header */}
+            {/* Header Mirror */}
             <header className="px-6 h-16 flex items-center bg-black/80 backdrop-blur-md border-b border-white/5 sticky top-0 z-50">
                 <div className="flex items-center gap-2.5">
-                    <div className="h-6 w-6 text-primary flex items-center justify-center">
-                        <LayoutGrid size={22} strokeWidth={2.5} />
-                    </div>
+                    <LayoutGrid size={22} className="text-primary" />
                     <div className="flex flex-col">
-                        <span className="font-headline text-[1.1rem] font-bold leading-none tracking-tight text-white">MoreMeets™</span>
-                        <span className="text-[8px] font-black uppercase tracking-[0.3em] leading-none mt-1.5 text-white/40 italic">LESS MISSES.</span>
+                        <span className="font-headline text-lg font-bold leading-none tracking-tight text-white">MoreMeets™</span>
+                        <span className="text-[8px] font-black uppercase tracking-[0.3em] leading-none mt-1 text-white/40 italic">LESS MISSES.</span>
                     </div>
                 </div>
             </header>
@@ -247,31 +246,30 @@ export default function MobilePreviewClient() {
                 <div className="max-w-4xl mx-auto text-center space-y-6 mb-16">
                     <div className="space-y-3">
                         <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-6 py-1.5 rounded-none bg-primary/5">
-                            Sovereign Mobile Lab v4.5
+                            Sovereign Mobile Lab v5.0
                         </Badge>
-                        <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-tight text-white font-headline">Elite 7 Payload</h1>
+                        <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-tight text-white font-headline">Vertical Mandate</h1>
                     </div>
-                    <p className="text-zinc-500 italic font-medium max-w-sm mx-auto">Ensuring all 7 operational verticals command attention on mobile viewport.</p>
+                    <p className="text-zinc-500 italic font-medium max-w-sm mx-auto">Implementing the structural divider and high-gravity vertical menu standard.</p>
                 </div>
 
-                {/* ARCHETYPES */}
-                <PreviewFrame title="Archetype 1: The Baseline" subtitle="Complete vertical list / Hard-Deck Layout">
+                <PreviewFrame title="Archetype 1: The Baseline" subtitle="Existing standard layout">
                     <MobileHeroBase variant={1} />
                 </PreviewFrame>
 
-                <PreviewFrame title="Archetype 2: Kinetic Glass" subtitle="Glassmorphism / Semi-Translucent Selection">
+                <PreviewFrame title="Archetype 2: Pure Vertical" subtitle="Reference image replication">
                     <MobileHeroBase variant={2} />
                 </PreviewFrame>
 
-                <PreviewFrame title="Archetype 3: The Blueprint" subtitle="Structural Grid / High-Gravity Markers">
+                <PreviewFrame title="Archetype 3: Blueprint Hybrid" subtitle="Technical stats + vertical stack">
                     <MobileHeroBase variant={3} />
                 </PreviewFrame>
 
-                <PreviewFrame title="Archetype 4: Minimalist Elite" subtitle="Whitespace / Vertical Type / Prestigious">
+                <PreviewFrame title="Archetype 4: Minimalist Mandate" subtitle="Expanded type / High prestigious focus">
                     <MobileHeroBase variant={4} />
                 </PreviewFrame>
 
-                <PreviewFrame title="Archetype 5: Tactical Pulse" subtitle="Product-Forward / HUD Interface">
+                <PreviewFrame title="Archetype 5: HUD Interface" subtitle="Digital coordinates / Technical tags">
                     <MobileHeroBase variant={5} />
                 </PreviewFrame>
 
