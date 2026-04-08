@@ -12,7 +12,6 @@ import {
     Activity, 
     ClipboardCheck, 
     FileSpreadsheet,
-    LayoutGrid,
     ChevronRight,
     Utensils,
     Building,
@@ -21,8 +20,7 @@ import {
     Store,
     Building2,
     Popcorn,
-    Lock,
-    Smartphone
+    Lock
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -52,7 +50,7 @@ const CONTENT = {
 };
 
 const PreviewFrame = ({ children, title, subtitle }: { children: React.ReactNode, title: string, subtitle?: string }) => (
-    <div className="flex flex-col items-center space-y-6 w-full mb-32">
+    <div className="flex flex-col items-center space-y-6 w-full mb-32 px-4">
         <div className="text-center space-y-1">
             <Badge variant="outline" className="text-[10px] font-black uppercase tracking-[0.3em] text-primary border-primary/30 py-1.5 px-6 rounded-full bg-primary/5">
                 {title}
@@ -66,7 +64,7 @@ const PreviewFrame = ({ children, title, subtitle }: { children: React.ReactNode
 );
 
 const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
-    // VARIANT 1: THE BASELINE (KEEP)
+    // VARIANT 1: THE BASELINE
     if (variant === 1) {
         return (
             <div className="flex flex-col h-full bg-black relative">
@@ -87,9 +85,9 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                             </p>
                             <div className="flex flex-col gap-3">
                                 {CONTENT.payload.map((item, i) => (
-                                    <div key={i} className="flex items-center gap-4 group">
+                                    <div key={i} className="flex items-center gap-4">
                                         <div className="w-1 h-1 rounded-full bg-primary" />
-                                        <span className="text-[8px] font-black text-white/30 uppercase tracking-[0.35em] italic group-hover:text-primary transition-colors">{item.t}</span>
+                                        <span className="text-[8px] font-black text-white/30 uppercase tracking-[0.35em] italic">{item.t}</span>
                                     </div>
                                 ))}
                             </div>
@@ -127,9 +125,9 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
         );
     }
 
-    // VERTICAL ARCHETYPES: INTEGRATED CONTENT
-    // Define payload for variant 3
-    const currentPayload = variant === 3 
+    // VERTICAL ARCHETYPES (2 & 3)
+    const isHardened = variant === 3;
+    const currentPayload = isHardened 
         ? [...CONTENT.payload, { t: "NO SaaS. OWN YOUR DATA.", i: Lock }]
         : CONTENT.payload;
 
@@ -145,24 +143,11 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                     
                     {/* Left: The Structural Divider */}
                     <div className="relative h-full flex flex-col items-center">
-                        <div className={cn(
-                            "absolute inset-y-0 w-px bg-white/10",
-                            (variant === 4 || variant === 3) && "bg-primary/20"
-                        )} />
-                        
+                        <div className="absolute inset-y-0 w-px bg-primary/20" />
                         <div className="sticky top-24 flex flex-col gap-24 items-center">
-                            {(variant === 3 || variant === 4) && (
-                                <div className="-rotate-90 origin-center whitespace-nowrap">
-                                    <span className="text-[7px] font-black text-primary uppercase tracking-[0.6em] italic">120+ SOPs</span>
-                                </div>
-                            )}
-                            {variant === 6 && (
-                                <div className="space-y-8 text-white/20">
-                                    <div className="text-[6px] font-mono">01//</div>
-                                    <div className="text-[6px] font-mono">02//</div>
-                                    <div className="text-[6px] font-mono">03//</div>
-                                </div>
-                            )}
+                            <div className="-rotate-90 origin-center whitespace-nowrap">
+                                <span className="text-[7px] font-black text-primary uppercase tracking-[0.6em] italic">120+ SOPs</span>
+                            </div>
                         </div>
                     </div>
 
@@ -171,13 +156,12 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                         
                         {/* 1. Narrative Block */}
                         <div className="space-y-4">
-                            <h1 className={cn(
-                                "text-4xl font-black font-headline text-white uppercase italic tracking-tighter leading-[0.85]",
-                                variant === 5 && "text-5xl"
-                            )}>
-                                {variant === 3 ? (
-                                    <>CAPTURE <span className="text-primary">MEMORY.</span></>
-                                ) : CONTENT.h1}
+                            <h1 className="text-4xl font-black font-headline text-white uppercase italic tracking-tighter leading-[0.85]">
+                                {isHardened ? (
+                                    <>CAPTURE <br/><span className="text-primary">MEMORY.</span></>
+                                ) : (
+                                    <>CAPTURE <br/>MEMORY.</>
+                                )}
                             </h1>
                             <p className="text-xs text-white/40 italic font-medium leading-relaxed max-w-[220px]">
                                 {CONTENT.p}
@@ -190,8 +174,11 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                             <div className="space-y-2.5">
                                 {currentPayload.map((item, i) => (
                                     <div key={i} className="flex items-center gap-3">
-                                        <item.i className="w-3 h-3 text-primary/40" />
-                                        <span className="text-[8px] font-bold text-white/30 uppercase tracking-[0.2em] italic">{item.t}</span>
+                                        <item.i className={cn("w-3 h-3", isHardened && item.t.includes("NO SaaS") ? "text-primary" : "text-primary/40")} />
+                                        <span className={cn(
+                                            "text-[8px] font-bold uppercase tracking-[0.2em] italic",
+                                            isHardened && item.t.includes("NO SaaS") ? "text-primary" : "text-white/30"
+                                        )}>{item.t}</span>
                                     </div>
                                 ))}
                             </div>
@@ -206,25 +193,11 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
                             
                             <div className="flex flex-col space-y-4">
                                 {ELITE_INDUSTRIES.map((ind) => (
-                                    <Link 
-                                        key={ind.id} 
-                                        href={`/packs/${ind.id}`} 
-                                        className="group flex flex-col"
-                                    >
-                                        <div className="flex items-center gap-2">
-                                            <span className={cn(
-                                                "text-xl font-black font-headline text-white/20 uppercase italic tracking-tighter group-hover:text-primary transition-all duration-300",
-                                                variant === 5 && "text-2xl"
-                                            )}>
-                                                {ind.name}
-                                            </span>
-                                            {variant === 6 && (
-                                                <span className="text-[6px] font-mono text-primary/40 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                    [SEC_LOAD_0{ELITE_INDUSTRIES.indexOf(ind) + 1}]
-                                                </span>
-                                            )}
-                                        </div>
-                                    </Link>
+                                    <div key={ind.id} className="group flex items-center gap-2">
+                                        <span className="text-xl font-black font-headline text-white/20 uppercase italic tracking-tighter group-hover:text-primary transition-all duration-300">
+                                            {ind.name}
+                                        </span>
+                                    </div>
                                 ))}
                             </div>
                         </div>
@@ -233,10 +206,7 @@ const MobileHeroBase = ({ variant = 1 }: { variant?: number }) => {
 
                 {/* Conversion Footer */}
                 <div className="px-10 mt-8 space-y-5 border-t border-white/5 pt-8">
-                    <Button className={cn(
-                        "w-full h-14 font-black uppercase italic text-[10px] tracking-[0.2em] rounded-none bg-primary text-black transition-all active:scale-95 border-none shadow-[0_0_30px_-5px_rgba(46,184,107,0.3)]",
-                        variant === 5 && "h-16"
-                    )}>
+                    <Button className="w-full h-14 font-black uppercase italic text-[10px] tracking-[0.2em] rounded-none bg-primary text-black transition-all active:scale-95 border-none shadow-[0_0_30px_-5px_rgba(46,184,107,0.3)]">
                         {CONTENT.cta} <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                     <p className="text-[7px] text-white/20 font-black text-center uppercase tracking-[0.4em] italic">
@@ -253,7 +223,6 @@ export default function MobilePreviewPage() {
         <div className="flex flex-col min-h-screen bg-[#050505] text-foreground">
             <header className="px-6 h-16 flex items-center bg-black/80 backdrop-blur-md border-b border-white/5 sticky top-0 z-50">
                 <div className="flex items-center gap-2.5">
-                    <LayoutGrid size={22} className="text-primary" />
                     <div className="flex flex-col">
                         <span className="font-headline text-lg font-bold leading-none tracking-tight text-white">MoreMeets™</span>
                         <span className="text-[8px] font-black uppercase tracking-[0.3em] leading-none mt-1 text-white/40 italic">LESS MISSES.</span>
@@ -261,9 +230,9 @@ export default function MobilePreviewPage() {
                 </div>
             </header>
             
-            <main className="flex-1 py-20 px-4 bg-zinc-950 space-y-40 flex flex-col items-center">
+            <main className="flex-1 py-20 bg-zinc-950 flex flex-col items-center">
                 
-                <div className="max-w-4xl mx-auto text-center space-y-6 mb-16">
+                <div className="max-w-4xl mx-auto text-center space-y-6 mb-16 px-4">
                     <div className="space-y-3">
                         <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-6 py-1.5 rounded-none bg-primary/5">
                             Sovereign Mobile Lab v7.0
@@ -277,24 +246,12 @@ export default function MobilePreviewPage() {
                     <MobileHeroBase variant={1} />
                 </PreviewFrame>
 
-                <PreviewFrame title="Archetype 2: Vertical Narrative" subtitle="The approved structural standard">
+                <PreviewFrame title="Archetype 2: Vertical Narrative" subtitle="The structural vertical standard">
                     <MobileHeroBase variant={2} />
                 </PreviewFrame>
 
-                <PreviewFrame title="Archetype 3: Narrative Hardening" subtitle="Option 2 + Green Memory + NO SaaS">
+                <PreviewFrame title="Archetype 3: Narrative Hardening" subtitle="Green MEMORY + 'NO SaaS' Payload">
                     <MobileHeroBase variant={3} />
-                </PreviewFrame>
-
-                <PreviewFrame title="Archetype 4: Blueprint Hybrid" subtitle="Technical stats + vertical stack">
-                    <MobileHeroBase variant={4} />
-                </PreviewFrame>
-
-                <PreviewFrame title="Archetype 5: Minimalist Mandate" subtitle="Expanded type / High prestigious focus">
-                    <MobileHeroBase variant={5} />
-                </PreviewFrame>
-
-                <PreviewFrame title="Archetype 6: HUD Interface" subtitle="Digital coordinates / Technical tags">
-                    <MobileHeroBase variant={6} />
                 </PreviewFrame>
 
             </main>
