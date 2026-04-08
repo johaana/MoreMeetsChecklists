@@ -20,7 +20,9 @@ import {
     School,
     Popcorn,
     CheckCircle2,
-    Activity
+    Activity,
+    ChevronLeft,
+    ChevronRight
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -30,6 +32,11 @@ import { SiteHeader } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Badge } from "@/components/ui/badge";
 import { HeroSection } from "@/components/layout/hero-section";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 const Section = ({ className, id, children, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
     <section id={id} className={cn("w-full py-20 md:py-32", className)} {...props}>
@@ -60,7 +67,6 @@ const OperationalWindow = ({ src, alt, title = "MASTER_OPERATIONAL_ENGINE_V11.9"
             </div>
         </div>
         <div className="relative rounded-b-2xl border border-white/10 bg-zinc-950 overflow-hidden shadow-[0_0_100px_-20px_rgba(46,184,107,0.15)] group-hover:shadow-[0_0_100px_-10px_rgba(46,184,107,0.25)] transition-all duration-1000">
-            {/* Identity Mask for Home Dashboard: Surgical tight fit */}
             <div className="absolute top-0 left-0 w-full h-[12%] z-20 bg-black/90 backdrop-blur-3xl border-b border-white/10 flex items-center justify-center px-10">
                 <div className="flex items-center gap-4">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_12px_rgba(46,184,107,0.8)]" />
@@ -222,6 +228,35 @@ const LiveDashboardSection = () => (
     </Section>
 );
 
+const TaskCard = ({ ex, i }: { ex: any, i: number }) => (
+    <div className="p-8 md:p-10 rounded-2xl border border-white/5 bg-[#0a0a0a] flex flex-col space-y-8 hover:border-primary/20 transition-all group h-full">
+        <div className="flex justify-between items-start">
+            <div className="flex items-center gap-2">
+                <ex.icon className={cn("w-4 h-4", ex.color)} />
+                <span className={cn("text-[10px] font-black uppercase tracking-[0.3em]", ex.color)}>{ex.industry}</span>
+            </div>
+            <span className="text-[8px] font-mono text-white/10 uppercase tracking-widest">[CP_0{i+1}]</span>
+        </div>
+        
+        <h4 className="text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-none font-headline">{ex.title}</h4>
+        
+        <div className="space-y-6">
+            <div className="space-y-1">
+                <span className="text-[10px] font-black text-white/20 uppercase tracking-widest">TECHNICAL PROTOCOL:</span>
+                <p className="text-sm text-secondary-text italic font-medium leading-relaxed">{ex.what}</p>
+            </div>
+            <div className="space-y-1">
+                <span className="text-[10px] font-black text-white/20 uppercase tracking-widest">FLOOR ACTION:</span>
+                <p className="text-sm text-secondary-text italic font-medium leading-relaxed">{ex.how}</p>
+            </div>
+            <div className="space-y-1 p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+                <span className="text-[10px] font-black text-red-500/60 uppercase tracking-widest">CONSEQUENCE IF MISSED:</span>
+                <p className="text-sm text-secondary-text italic font-medium leading-relaxed">{ex.why}</p>
+            </div>
+        </div>
+    </div>
+);
+
 const RealTaskExamplesSection = () => {
     const examples = [
         {
@@ -270,31 +305,28 @@ const RealTaskExamplesSection = () => {
                     <SectionHeadline>REAL TASK EXAMPLES</SectionHeadline>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {examples.map((ex, i) => (
-                        <div key={i} className="p-8 rounded-2xl border border-white/5 bg-[#0a0a0a] flex flex-col space-y-8 hover:border-primary/20 transition-all group">
-                            <div className="flex items-center gap-2">
-                                <ex.icon className={cn("w-4 h-4", ex.color)} />
-                                <span className={cn("text-[10px] font-black uppercase tracking-[0.3em]", ex.color)}>{ex.industry}</span>
-                            </div>
-                            
-                            <h4 className="text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-none font-headline">{ex.title}</h4>
-                            
-                            <div className="space-y-6">
-                                <div className="space-y-1">
-                                    <span className="text-[10px] font-black text-white/30 uppercase tracking-widest">WHAT:</span>
-                                    <p className="text-sm text-secondary-text italic font-medium">{ex.what}</p>
-                                </div>
-                                <div className="space-y-1">
-                                    <span className="text-[10px] font-black text-white/30 uppercase tracking-widest">HOW:</span>
-                                    <p className="text-sm text-secondary-text italic font-medium">{ex.how}</p>
-                                </div>
-                                <div className="space-y-1">
-                                    <span className="text-[10px] font-black text-red-500 uppercase tracking-widest">WHY:</span>
-                                    <p className="text-sm text-secondary-text italic font-medium">{ex.why}</p>
-                                </div>
-                            </div>
+                {/* Mobile: Swipable Carousel */}
+                <div className="md:hidden">
+                    <Carousel className="w-full">
+                        <CarouselContent className="-ml-4">
+                            {examples.map((ex, i) => (
+                                <CarouselItem key={i} className="pl-4 basis-[90%]">
+                                    <TaskCard ex={ex} i={i} />
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                        <div className="flex justify-center gap-2 mt-8">
+                            {examples.map((_, i) => (
+                                <div key={i} className="w-1.5 h-1.5 rounded-full bg-white/10" />
+                            ))}
                         </div>
+                    </Carousel>
+                </div>
+
+                {/* Desktop: Static Grid */}
+                <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    {examples.map((ex, i) => (
+                        <TaskCard key={i} ex={ex} i={i} />
                     ))}
                 </div>
             </div>
