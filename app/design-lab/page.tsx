@@ -39,8 +39,8 @@ const HeroVariation = ({ id, title, badge, accentText, accentBg, glowClass }: an
                 {/* Dynamic Technical Glow */}
                 <div className={cn("absolute -inset-20 rounded-full blur-[100px] opacity-30 group-hover:opacity-50 transition-opacity duration-1000 animate-pulse-soft", glowClass)} />
                 
-                {/* 60% Translucent Glass Card */}
-                <div className="relative z-10 p-10 md:p-16 rounded-[3.5rem] border border-white/20 border-t-white/60 border-l-white/60 bg-white/60 backdrop-blur-3xl space-y-10 shadow-[0_20px_50px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.5)] transition-all duration-500 hover:bg-white/65">
+                {/* 40% Hyper-Translucent Glass Card */}
+                <div className="relative z-10 p-10 md:p-16 rounded-[3.5rem] border border-white/20 border-t-white/60 border-l-white/60 bg-white/40 backdrop-blur-[100px] space-y-10 shadow-[0_20px_50px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.5)] transition-all duration-500 hover:bg-white/45">
                     <div className="space-y-8">
                         <div className="w-20 h-2 rounded-full opacity-80" style={{ backgroundColor: accentBg }} />
                         
@@ -79,7 +79,7 @@ const HeroVariation = ({ id, title, badge, accentText, accentBg, glowClass }: an
 );
 
 const TaskSnippetGlass = ({ title, audit, action, risk, accentColor }: any) => (
-    <div className="p-10 rounded-[3rem] border border-white/20 border-t-white/60 border-l-white/60 bg-white/60 backdrop-blur-3xl shadow-xl space-y-8 hover:bg-white/70 transition-all group flex flex-col justify-between h-full">
+    <div className="p-10 rounded-[3rem] border border-white/20 border-t-white/60 border-l-white/60 bg-white/40 backdrop-blur-[100px] shadow-xl space-y-8 hover:bg-white/50 transition-all group flex flex-col justify-between h-full">
         <div className="space-y-6">
             <div className="flex items-center gap-5">
                 <div className={cn("p-3 rounded-2xl bg-white/40 border border-white/20 shadow-sm", accentColor)}>
@@ -112,25 +112,25 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* OPTION 1: ROYAL GOLD (Reference Standard) */}
+                {/* ARCHETYPE 1: ROYAL GOLD (Prestige) */}
                 <HeroVariation 
-                    id="platinum"
+                    id="gold"
                     badge="1. Royal Gold (High Prestige)"
                     glowClass="bg-amber-500/40"
                     accentText="#f5a623"
                     accentBg="#f5a623"
                 />
 
-                {/* OPTION 2: INSTITUTIONAL BLUE (Trust Focus) */}
+                {/* ARCHETYPE 2: OCEANIC BLUE (Trust) */}
                 <HeroVariation 
-                    id="sky"
-                    badge="2. Institutional Blue (Asego Inspired)"
+                    id="blue"
+                    badge="2. Oceanic Blue (Asego Standard)"
                     glowClass="bg-blue-600/40"
                     accentText="#2563eb"
                     accentBg="#2563eb"
                 />
 
-                {/* OPTION 3: VIVID EMERALD (Clinical Authority) */}
+                {/* ARCHETYPE 3: VIVID EMERALD (Safety) */}
                 <HeroVariation 
                     id="emerald"
                     badge="3. Vivid Emerald (Safety Standard)"
@@ -139,7 +139,7 @@ export default function DesignLabPage() {
                     accentBg="#10b981"
                 />
 
-                {/* OPTION 4: ELECTRIC ORCHID (Modern Tech) */}
+                {/* ARCHETYPE 4: ELECTRIC ORCHID (Tech) */}
                 <HeroVariation 
                     id="orchid"
                     badge="4. Electric Orchid (Innovation)"
@@ -148,7 +148,7 @@ export default function DesignLabPage() {
                     accentBg="#9333ea"
                 />
 
-                {/* OPTION 5: STEEL CARBON (Industrial Brutalist) */}
+                {/* ARCHETYPE 5: STEEL CARBON (Industrial) */}
                 <HeroVariation 
                     id="carbon"
                     badge="5. Steel Carbon (Grounded Focus)"
@@ -163,12 +163,12 @@ export default function DesignLabPage() {
                     
                     <div className="container px-6 mx-auto relative z-10">
                         <div className="max-w-4xl mx-auto text-center space-y-4 mb-20">
-                            <Badge variant="outline" className="uppercase tracking-[0.4em] font-black text-[10px] border-zinc-300 text-zinc-500 px-6 py-1.5 rounded-full bg-white/50">Translucent Component Hub</Badge>
-                            <h2 className="text-4xl md:text-7xl font-black font-headline uppercase italic tracking-tighter text-zinc-900 leading-[0.9]">Universal Glass <br /> Architecture</h2>
-                            <p className="text-lg md:text-xl text-zinc-600 italic font-medium max-w-xl mx-auto leading-relaxed">High-gravity 60% translucent blocks engineered for deep visual impact and flawless readability.</p>
+                            <Badge variant="outline" className="uppercase tracking-[0.4em] font-black text-[10px] border-zinc-300 text-zinc-500 px-6 py-1.5 rounded-full bg-white/50">Hyper-Translucent Hub</Badge>
+                            <h2 className="text-4xl md:text-7xl font-black font-headline uppercase italic tracking-tighter text-zinc-900 leading-[0.9]">Sovereign Glass <br /> Standards</h2>
+                            <p className="text-lg md:text-xl text-zinc-600 italic font-medium max-w-xl mx-auto leading-relaxed">40% translucent blocks with 100px refraction engineered for daylight-optimized execution.</p>
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
                             <TaskSnippetGlass 
                                 accentColor="text-blue-600"
                                 title="Guest Arrival"
@@ -200,7 +200,7 @@ export default function DesignLabPage() {
                         </div>
 
                         {/* ANALYTICS GLASS MODULE */}
-                        <div className="mt-20 max-w-5xl mx-auto p-12 md:p-20 rounded-[4rem] border border-white/20 border-t-white/60 border-l-white/60 bg-white/60 backdrop-blur-3xl shadow-2xl space-y-16 transition-all hover:bg-white/70">
+                        <div className="mt-20 max-w-5xl mx-auto p-12 md:p-20 rounded-[4rem] border border-white/20 border-t-white/60 border-l-white/60 bg-white/40 backdrop-blur-[100px] shadow-2xl space-y-16 transition-all hover:bg-white/50">
                             <div className="flex flex-col md:flex-row items-center justify-between gap-12 border-b border-zinc-200/50 pb-12">
                                 <div className="space-y-3 text-center md:text-left">
                                     <span className="text-[11px] font-black uppercase text-blue-600 tracking-[0.5em] font-headline">/ Live Portfolio Health</span>
