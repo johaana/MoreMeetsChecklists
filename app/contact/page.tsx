@@ -8,10 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Sparkles, ArrowRight, ShieldCheck } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { SiteHeader } from '@/components/layout/header';
-
+import { Badge } from '@/components/ui/badge';
 
 export default function ContactUsPage() {
     const [name, setName] = React.useState('');
@@ -27,75 +27,123 @@ export default function ContactUsPage() {
        <SiteHeader />
 
       <main className="flex-1">
-        <section className="w-full pt-12">
-            <div className="container px-2 md:px-6">
-                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">
-                        Contact Us
+        <section className="w-full pt-24 pb-12 md:pt-32 md:pb-24">
+            <div className="container px-4 md:px-6">
+                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
+                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Institutional Comms</Badge>
+                    <h1 className="text-4xl font-black tracking-tighter sm:text-5xl md:text-7xl font-headline uppercase italic">
+                        Contact Command
                     </h1>
-                    <p className="max-w-[700px] text-muted-foreground text-base md:text-xl/relaxed mx-auto">
-                        We're here to help. Reach out to us with any questions or inquiries.
+                    <p className="max-w-[700px] text-secondary-text text-lg md:text-xl font-medium italic border-l-2 border-primary/20 pl-6 mx-auto">
+                        Direct lines for operational support and bespoke forensic engineering.
                     </p>
                 </div>
 
-                <div className="max-w-4xl mx-auto space-y-12">
-                     <div className="space-y-8">
-                        <div className="space-y-4 text-center">
-                            <h2 className="text-2xl font-bold font-headline text-primary">Get in Touch</h2>
-                        </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                             <Card className="text-center">
-                                <CardHeader>
-                                    <CardTitle className="text-lg flex flex-col items-center justify-center gap-3"><WhatsAppIcon className="w-8 h-8"/> WhatsApp</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <a href="https://wa.me/919860997711" target="_blank" rel="noopener noreferrer" className="text-primary underline">Chat with us</a>
-                                </CardContent>
-                            </Card>
-                            <Card className="text-center">
-                                <CardHeader>
-                                    <CardTitle className="text-lg flex flex-col items-center justify-center gap-3"><Mail className="w-8 h-8 text-primary"/> General Inquiries</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <a href="mailto:more@moremeets.com" className="text-primary underline">more@moremeets.com</a>
-                                </CardContent>
-                            </Card>
-                             <Card className="text-center">
-                                <CardHeader>
-                                    <CardTitle className="text-lg flex flex-col items-center justify-center gap-3"><MapPin className="w-8 h-8 text-primary"/> Office</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                     <p className="text-muted-foreground text-sm md:text-base">Borivali East, Mumbai 400066</p>
-                                </CardContent>
-                            </Card>
-                        </div>
+                <div className="max-w-5xl mx-auto space-y-24">
+                    {/* CUSTOM SOLUTIONS SECTION - PRIMARY FOCUS */}
+                    <div className="relative group">
+                        <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-[2rem] blur opacity-10 group-hover:opacity-20 transition duration-1000"></div>
+                        <Card className="overflow-hidden bg-black border border-white/10 rounded-[2rem] relative z-10">
+                            <div className="p-8 md:p-12 grid md:grid-cols-[1fr,300px] gap-12 items-center">
+                                <div className="space-y-6">
+                                    <div className="flex items-center gap-3">
+                                        <Sparkles className="w-6 h-6 text-primary" />
+                                        <span className="text-[10px] font-black uppercase text-primary tracking-[0.4em]">Specialized Engineering</span>
+                                    </div>
+                                    <h2 className="text-2xl md:text-4xl font-black font-headline text-primary-text uppercase italic tracking-tighter">Need a Customized System?</h2>
+                                    <p className="text-secondary-text text-lg italic leading-relaxed font-medium">
+                                        If our standard packs don't fit your unique workflow or you require a ground-up institutional engine for a new sector, book a 1-on-1 discovery session.
+                                    </p>
+                                    <div className="flex flex-wrap gap-4 text-[9px] font-black uppercase text-white/20 tracking-widest">
+                                        <span className="flex items-center gap-2"><ShieldCheck className="w-3 h-3 text-primary/40" /> Tailored Logic</span>
+                                        <span className="flex items-center gap-2"><ShieldCheck className="w-3 h-3 text-primary/40" /> Brand-Specific SOPs</span>
+                                        <span className="flex items-center gap-2"><ShieldCheck className="w-3 h-3 text-primary/40" /> Multi-Branch Mapping</span>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col gap-4">
+                                    <Button asChild size="lg" className="h-16 rounded-xl bg-primary text-black font-black uppercase italic text-sm shadow-2xl hover:scale-105 transition-all border-none">
+                                        <a href="https://calendly.com/more-moremeets/30min" target="_blank" rel="noopener noreferrer">
+                                            Book Consultation <ArrowRight className="ml-2 w-5 h-5" />
+                                        </a>
+                                    </Button>
+                                    <p className="text-[8px] text-white/20 text-center uppercase tracking-widest font-black">NO-OBLIGATION DISCOVERY CALL</p>
+                                </div>
+                            </div>
+                        </Card>
                     </div>
-                     <div className="space-y-8">
-                         <div className="space-y-4 text-center">
-                            <h2 className="text-2xl font-bold font-headline text-primary">Send a Message</h2>
-                             <p className="text-muted-foreground max-w-md mx-auto text-sm md:text-base">For the fastest response, send your message on WhatsApp.</p>
-                         </div>
-                        <form className="max-w-xl mx-auto space-y-4" onSubmit={(e) => e.preventDefault()}>
-                            <div className="space-y-2">
-                                <Label htmlFor="name">Name</Label>
-                                <Input id="name" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
+
+                    <div className="grid md:grid-cols-[1fr,1.2fr] gap-16">
+                        <div className="space-y-12">
+                            <div className="space-y-4">
+                                <h2 className="text-2xl font-black font-headline text-primary uppercase italic tracking-tighter">General Channels</h2>
+                                <p className="text-secondary-text italic font-medium">Standard support and administrative inquiries.</p>
                             </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="email">Email</Label>
-                                <Input id="email" type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            
+                            <div className="space-y-6">
+                                <a href="https://wa.me/919860997711" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-primary/20 transition-all group">
+                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-all">
+                                        <WhatsAppIcon className="w-6 h-6" />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <p className="text-[10px] font-black text-white/20 uppercase tracking-widest leading-none">Instant Response</p>
+                                        <p className="text-lg font-bold text-primary-text italic uppercase tracking-tight">Chat on WhatsApp</p>
+                                    </div>
+                                </a>
+
+                                <a href="mailto:more@moremeets.com" className="flex items-center gap-6 p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-primary/20 transition-all group">
+                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-all">
+                                        <Mail className="w-6 h-6" />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <p className="text-[10px] font-black text-white/20 uppercase tracking-widest leading-none">Formal Inquiry</p>
+                                        <p className="text-lg font-bold text-primary-text italic uppercase tracking-tight">more@moremeets.com</p>
+                                    </div>
+                                </a>
+
+                                <div className="flex items-center gap-6 p-6 rounded-2xl border border-white/5 bg-white/[0.02]">
+                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                        <MapPin className="w-6 h-6" />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <p className="text-[10px] font-black text-white/20 uppercase tracking-widest leading-none">Institutional HQ</p>
+                                        <p className="text-sm font-bold text-primary-text italic uppercase tracking-tight">Borivali East, Mumbai 400066</p>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+
+                        <div className="p-10 rounded-[2rem] bg-white/[0.01] border border-white/5 space-y-8">
                             <div className="space-y-2">
-                                <Label htmlFor="message">Message</Label>
-                                <Textarea id="message" placeholder="Enter your message" className="min-h-[120px]" value={message} onChange={(e) => setMessage(e.target.value)} />
+                                <h2 className="text-2xl font-black font-headline text-primary uppercase italic tracking-tighter">Secure Message</h2>
+                                <p className="text-xs text-white/30 uppercase tracking-widest font-black italic">Fastest resolution via WhatsApp.</p>
                             </div>
-                            <Button asChild className="w-full" variant="accent">
-                                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">Send Message on WhatsApp</a>
-                            </Button>
-                        </form>
+                            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                                <div className="grid sm:grid-cols-2 gap-6">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="name" className="text-[10px] font-black uppercase text-white/20 tracking-widest ml-1">Name</Label>
+                                        <Input id="name" placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)} className="h-12 bg-black border-white/10 rounded-xl" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="email" className="text-[10px] font-black uppercase text-white/20 tracking-widest ml-1">Email</Label>
+                                        <Input id="email" type="email" placeholder="Institutional Email" value={email} onChange={(e) => setEmail(e.target.value)} className="h-12 bg-black border-white/10 rounded-xl" />
+                                    </div>
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="message" className="text-[10px] font-black uppercase text-white/20 tracking-widest ml-1">Message</Label>
+                                    <Textarea id="message" placeholder="Technical or operational inquiry..." className="min-h-[150px] bg-black border-white/10 rounded-xl italic" value={message} onChange={(e) => setMessage(e.target.value)} />
+                                </div>
+                                <Button asChild className="w-full h-14 bg-white/5 border border-white/10 hover:bg-primary hover:text-black hover:border-transparent transition-all rounded-xl font-black uppercase italic text-xs tracking-widest" variant="outline">
+                                    <a href={whatsappLink} target="_blank" rel="noopener noreferrer">Initiate WhatsApp Send</a>
+                                </Button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                 <div className="max-w-4xl mx-auto mt-16 text-center text-xs text-muted-foreground p-4 border rounded-lg bg-secondary/50">
-                    <strong>Disclaimer:</strong> The legal documents and policies on this site are for informational purposes only and do not constitute legal advice. Please consult with a qualified legal professional for your specific needs.
+                 
+                 <div className="max-w-4xl mx-auto mt-32 text-center">
+                    <p className="text-[9px] text-white/10 font-black uppercase tracking-[0.5em] leading-relaxed">
+                        DISCLAIMER: TECHNICAL DOCUMENTS PROVIDED BY MOREMEETS™ ARE OPERATIONAL INSTRUMENTS AND DO NOT CONSTITUTE FORMAL LEGAL OR REGULATORY CERTIFICATION. 
+                    </p>
                 </div>
             </div>
         </section>
