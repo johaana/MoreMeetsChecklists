@@ -58,6 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" style={{colorScheme: 'dark'}} suppressHydrationWarning>
       <head>
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-ZE6F71Y2CM"

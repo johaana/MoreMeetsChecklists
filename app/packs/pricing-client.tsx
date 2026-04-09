@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -114,7 +113,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <Download className="w-10 h-10 text-primary mx-auto mb-4" />
                                 <CardTitle className="text-2xl font-black uppercase italic tracking-tighter font-headline">Instant Download</CardTitle>
                                 <CardDescription className="italic font-medium">Get the complete, fully-editable Excel file for the {pack.title}.</CardDescription>
-                                <p className="text-5xl font-black pt-4 text-primary italic font-headline">Free</p>
+                                <p className="text-5xl font-extrabold pt-4 text-primary italic font-headline">Free</p>
                             </CardHeader>
                             <CardContent className="flex-1 p-8 text-center">
                                 <ul className="space-y-4 text-secondary-text text-sm flex flex-col items-center font-medium italic">
@@ -261,7 +260,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                                     <div className="mt-8 pt-6 border-t border-white/5 w-full">
                                         <Button asChild variant="link" size="sm" className="w-full text-[10px] font-black uppercase text-accent/60 tracking-widest hover:text-accent">
-                                            <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
+                                            <Link href="https://calendly.com/more-moremeets/30min" target="_blank">
                                                 Need a Bespoke Build or Tailored Customization? Schedule a Call.
                                             </Link>
                                         </Button>

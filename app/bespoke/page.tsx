@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -93,8 +92,8 @@ export default function BespokePage() {
                             </div>
 
                             <div className="pt-8">
-                                <Button asChild size="lg" className="h-20 px-12 rounded-xl bg-primary text-black font-black uppercase italic text-lg shadow-2xl hover:scale-105 active:scale-95 transition-all border-none">
-                                    <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">Book Discovery Session <ArrowRight className="ml-3 w-6 h-6"/></Link>
+                                <Button asChild size="lg" className="h-20 px-12 rounded-xl bg-primary text-black font-black uppercase italic text-lg shadow-2xl hover:scalebs-105 active:scale-95 transition-all border-none">
+                                    <Link href="https://calendly.com/more-moremeets/30min" target="_blank">Book Discovery Session <ArrowRight className="ml-3 w-6 h-6"/></Link>
                                 </Button>
                                 <p className="mt-6 text-[10px] text-white/20 font-black uppercase tracking-[0.4em]">NO OBLIGATION CONSULTATION REQUIRED</p>
                             </div>
