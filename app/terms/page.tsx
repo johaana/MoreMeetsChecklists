@@ -50,8 +50,8 @@ export default function TermsOfServicePage() {
                         <p>
                             Use of these Products does not guarantee compliance with any specific local laws or regulations, nor does it replace the requirement for qualified professionals (e.g., Fire Safety Officers, Legal Counsel, Certified Auditors) to inspect and certify your operations. 
                         </p>
-                        <p className="font-bold text-foreground">
-                            Chain of Custody Notice: MoreMeets™ assumes no liability for operational failures, accidents, data errors, or regulatory penalties incurred while using these tools, especially if the original technical logic, formulas, or task descriptions have been modified by the user post-download.
+                        <p className="font-bold text-foreground bg-primary/10 p-6 rounded-xl border border-primary/20 italic">
+                            Chain of Custody Notice: MoreMeets™ assumes no liability for operational failures, accidents, data errors, or regulatory penalties incurred while using these tools. Since all files are 100% editable, MoreMeets™ disclaims all responsibility for outcomes if the original technical logic, formulas, or task descriptions have been modified by the user post-download.
                         </p>
                     </LegalSection>
 

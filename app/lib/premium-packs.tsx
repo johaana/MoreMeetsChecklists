@@ -39,6 +39,7 @@ export type PremiumPack = {
     updatedAt?: string;
     category: "Hospitality" | "Corporate & Tech" | "Retail" | "Healthcare" | "Education" | "Industrial & Transport" | "Entertainment & Events" | "Social Cause" | "Real Estate" | "Compliance" | "Wellness & Beauty" | "Agriculture" | "Specialized Production" | "Food & Beverage" | "Franchise" | "Master Access";
     description: string;
+    shortDescription?: string;
     heroHeadline?: string;
     heroSubheadline?: string;
     pricingUrgency?: string;
@@ -56,6 +57,21 @@ export type PremiumPack = {
     bestseller?: boolean;
 }
 
+const shortDescriptions: Record<string, string> = {
+    'restaurants': "Stop revenue leakage and food safety risks. 150+ technical control points for multi-unit kitchen and floor command.",
+    'hotels_and_resorts': "Eliminate guest safety gaps and reputation damage. 250+ control points across Front Office, Housekeeping, and Engineering.",
+    'healthcare_and_hospital_operations': "Zero-risk clinical governance. 200+ NABH/JCI aligned control points from surgical safety to narcotics control.",
+    'school_operations_pack': "Prevent campus tragedies and admin chaos. Transport safety, playground risk, and student welfare protocols.",
+    'franchise_operations_pack': "Scale your brand without losing control. Standardize every outlet with royalty protection and brand parity audits.",
+    'facility_management_blueprint': "Stop catastrophic utility failures. Hard and Soft FM engine for MEP, fire safety, and vendor SLA command.",
+    'cinema_operations_pack': "Technical excellence for cinema groups. Projection QC, concession yield logic, and auditorium hygiene standards.",
+    'logistics_warehouse_pack': "Stop inventory shrinkage and fatal safety gaps. 120+ protocols for MHE safety and stock integrity.",
+    'corporate_legal_compliance_starter_kit': "Stop boardroom liability and statutory leaks. Track mandatory filings without SaaS dependency.",
+    'food_manufacturing_ops': "Prevent mass recalls. HACCP/FSSAI engine for production integrity and traceability.",
+    'jewelry_and_luxury_retail': "Stop sophisticated heists and 'swap' thefts. Dual-verification vault control and asset protection.",
+    'animal_shelter_pack': "NGO-grade welfare and disease prevention. Comprehensive intake, medical, and adoption protocols."
+};
+
 export const premiumPacks: PremiumPack[] = [
     ...allPacks.map(p => {
         // Apply Elite 7 Pricing Logic - ₹999 Buy / ₹1,999 Grade
@@ -64,15 +80,23 @@ export const premiumPacks: PremiumPack[] = [
             'school_operations_pack', 'franchise_operations_pack', 
             'facility_management_blueprint', 'cinema_operations_pack'
         ];
+        
+        let processedPack = { ...p };
+        
         if (eliteIds.includes(p.id)) {
-            return {
-                ...p,
+            processedPack = {
+                ...processedPack,
                 priceINR: 999,
                 anchorPriceINR: 1999,
                 priceUSD: 12,
                 anchorPriceUSD: 25
             }
         }
-        return p;
+
+        if (shortDescriptions[p.id]) {
+            processedPack.shortDescription = shortDescriptions[p.id];
+        }
+
+        return processedPack;
     }),
 ];

@@ -83,12 +83,12 @@ const BespokeCard = () => (
         </CardHeader>
         <CardContent className="flex-1">
             <CardDescription className="text-secondary-text leading-relaxed font-medium italic">
-                Can't find your specific sector? We build custom institutional operating systems for specialized industries. 1-on-1 consultation required.
+                Can't find your specific sector? We build custom institutional operating systems for specialized industries. 1-on-1 discovery session required.
             </CardDescription>
         </CardContent>
         <CardFooter>
             <Button asChild className="w-full bg-accent text-black hover:brightness-110 font-black uppercase italic text-xs tracking-widest transition-all border-none h-14" variant="accent">
-                <Link href="/contact" className="flex items-center justify-center gap-2">
+                <Link href="/bespoke" className="flex items-center justify-center gap-2">
                     REQUEST CUSTOM SYSTEM <ArrowRight className="h-4 w-4" />
                 </Link>
             </Button>
