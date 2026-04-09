@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -66,7 +65,7 @@ const BrandLogo = ({ isHomepage, isScrolled }: { isHomepage: boolean, isScrolled
         <Logo className={cn("h-5 w-5 md:h-6 md:w-6 text-primary")} />
         <div className="flex flex-col">
             <span className={cn("font-headline text-base md:text-lg font-bold leading-none tracking-tight", isHomepage && !isScrolled ? "text-white" : "text-foreground")}>MoreMeets™</span>
-            <span className={cn("text-[7px] md:text-[8px] font-black uppercase tracking-[0.3em] leading-none mt-1", isHomepage && !isScrolled ? "text-white/40" : "text-muted-foreground/60")}>LESS MISSES.</span>
+            <span className={cn("text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] leading-none mt-1", isHomepage && !isScrolled ? "text-white/40" : "text-muted-foreground/60")}>LESS MISSES.</span>
         </div>
     </Link>
 );
@@ -158,10 +157,10 @@ export function SiteHeader() {
             </nav>
 
             {/* Mobile Navigation */}
-            <div className="md:hidden ml-auto">
+            <div className="md:hidden ml-auto flex items-center">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" className={cn("mr-[-16px]", isHomepage && !isScrolled ? "text-white hover:bg-white/10" : "text-foreground")}>
+                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", isHomepage && !isScrolled ? "text-white/60 hover:bg-white/10" : "text-foreground")}>
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>

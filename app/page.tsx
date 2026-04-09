@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -93,7 +92,7 @@ const InstitutionalPayloadSection = () => (
                         <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-black shrink-0 transition-colors">
                             <item.i className="w-4 h-4 md:w-6 md:h-6" />
                         </div>
-                        <h4 className="font-black text-primary-text uppercase italic text-xs md:text-sm tracking-tight leading-tight font-headline">{item.t}</h4>
+                        <h4 className="font-black text-primary-text uppercase italic text-[11px] md:text-sm tracking-tight leading-tight font-headline">{item.t}</h4>
                     </div>
                 ))}
             </div>
@@ -115,13 +114,13 @@ const TheDifferentiatorSection = () => (
                     { t: "WHY IT MATTERS", d: "Consequences defined to drive intentionality.", i: AlertTriangle }
                 ].map((card, i) => (
                     <div key={i} className="p-6 md:p-10 rounded-2xl bg-[#0a0a0a] border border-white/5 space-y-4 md:space-y-8 group hover:border-primary/20 transition-all">
-                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-primary/5 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black">
-                            <card.i className="w-4 h-4 md:w-6 md:h-6" />
-                        </div>
-                        <div className="space-y-2 md:space-y-4">
+                        <div className="flex items-center gap-4">
+                            <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-primary/5 border border-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black">
+                                <card.i className="w-4 h-4 md:w-6 md:h-6" />
+                            </div>
                             <h4 className="text-lg md:text-2xl font-black text-primary-text uppercase italic tracking-tighter font-headline leading-none">{card.t}</h4>
-                            <p className="text-xs md:text-base text-secondary-text italic font-medium leading-relaxed">{card.d}</p>
                         </div>
+                        <p className="text-xs md:text-base text-secondary-text italic font-medium leading-relaxed">{card.d}</p>
                     </div>
                 ))}
             </div>
@@ -149,7 +148,7 @@ const DailySequenceSection = () => (
                             {step.s}
                         </div>
                         <div className="flex-1 md:text-center space-y-1">
-                            <h4 className="text-xs md:text-sm font-black text-primary-text uppercase italic tracking-tighter font-headline">{step.t}</h4>
+                            <h4 className="text-sm font-black text-primary-text uppercase italic tracking-tighter font-headline">{step.t}</h4>
                             <p className="text-[10px] md:text-xs text-secondary-text italic font-medium">{step.d}</p>
                         </div>
                     </div>
@@ -263,33 +262,33 @@ const RealTaskExamplesSection = () => {
                                         <ex.icon className="w-4 h-4 md:w-6 md:h-6" />
                                     </div>
                                     <div className="flex flex-col">
-                                        <span className={cn("text-[8px] md:text-[10px] font-black uppercase tracking-widest", ex.color)}>{ex.industry}</span>
+                                        <span className={cn("text-[10px] font-black uppercase tracking-widest", ex.color)}>{ex.industry}</span>
                                         <h4 className="text-base md:text-2xl font-black text-primary-text uppercase italic tracking-tighter font-headline leading-none">{ex.title}</h4>
                                     </div>
                                 </div>
-                                <span className="text-[8px] md:text-[10px] font-mono text-white/20">ID: {ex.id}</span>
+                                <span className="text-[10px] font-mono text-white/20">ID: {ex.id}</span>
                             </div>
 
                             <div className="space-y-3 md:space-y-4">
                                 <div className="space-y-0.5">
-                                    <span className="text-[8px] md:text-[9px] font-black text-primary/60 uppercase tracking-[0.3em] flex items-center gap-2">
-                                        <SearchCheck className="w-3 h-3" /> AUDIT (TECHNICAL PROTOCOL)
+                                    <span className="text-[10px] font-black text-primary/60 uppercase tracking-[0.3em] flex items-center gap-2">
+                                        <SearchCheck className="w-3.5 h-3.5" /> AUDIT (TECHNICAL PROTOCOL)
                                     </span>
                                     <p className="text-xs md:text-sm text-primary-text font-bold italic leading-tight">{ex.audit}</p>
                                 </div>
                                 
                                 <div className="space-y-0.5">
-                                    <span className="text-[8px] md:text-[9px] font-black text-accent/60 uppercase tracking-[0.3em] flex items-center gap-2">
-                                        <GraduationCap className="w-3 h-3" /> ACTION (TRAINER'S NOTES)
+                                    <span className="text-[10px] font-black text-accent/60 uppercase tracking-[0.3em] flex items-center gap-2">
+                                        <GraduationCap className="w-3.5 h-3.5" /> ACTION (TRAINER'S NOTES)
                                     </span>
                                     <p className="text-xs md:text-sm text-secondary-text font-medium italic leading-relaxed">{ex.action}</p>
                                 </div>
 
                                 <div className="pt-3 border-t border-white/5">
-                                    <span className="text-[8px] md:text-[9px] font-black text-red-500/60 uppercase tracking-[0.3em] flex items-center gap-2">
-                                        <ShieldAlert className="w-3 h-3" /> RISK (CONSEQUENCE IF MISSED)
+                                    <span className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.3em] flex items-center gap-2">
+                                        <ShieldAlert className="w-3.5 h-3.5" /> RISK (CONSEQUENCE IF MISSED)
                                     </span>
-                                    <p className="text-[10px] md:text-xs text-red-500/80 font-black uppercase italic leading-tight pt-0.5">{ex.risk}</p>
+                                    <p className="text-[11px] md:text-xs text-red-500/80 font-black uppercase italic leading-tight pt-0.5">{ex.risk}</p>
                                 </div>
                             </div>
                         </div>

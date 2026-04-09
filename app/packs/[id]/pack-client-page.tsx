@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -156,7 +155,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     <IconComponent name={checklist.icon || "ClipboardCheck"} className="w-5 h-5 md:w-8 md:h-8 text-primary group-hover:scale-110 transition-transform" />
                                     <h4 className="text-lg md:text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-none font-headline">{checklist.title}</h4>
                                 </div>
-                                <span className="text-[8px] md:text-[10px] font-black text-white/20 uppercase tracking-widest pt-1">{checklist.frequency}</span>
+                                <span className="text-[10px] font-black text-white/20 uppercase tracking-widest pt-1">{checklist.frequency}</span>
                             </div>
                             <p className="text-[11px] md:text-sm text-secondary-text italic font-medium leading-relaxed">{checklist.summary}</p>
                         </div>

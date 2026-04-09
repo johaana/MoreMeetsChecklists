@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -123,12 +122,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                             <div className="flex items-center justify-center gap-4 md:gap-8 py-4 border-y border-white/5">
                                 <div className="text-left">
-                                    <p className="text-[9px] md:text-[10px] font-black uppercase text-white/20 tracking-widest mb-1">Institutional Rate</p>
+                                    <p className="text-[10px] font-black uppercase text-white/20 tracking-widest mb-1">Institutional Rate</p>
                                     <p className="text-sm md:text-base font-bold text-white/40 line-through leading-none">{region === 'INDIA' ? '₹1,999' : '$25'}</p>
                                 </div>
                                 <div className="w-px h-8 bg-white/10" />
                                 <div className="text-left">
-                                    <p className="text-[9px] md:text-[10px] font-black uppercase text-primary tracking-widest mb-1">Deployment Price</p>
+                                    <p className="text-[10px] font-black uppercase text-primary tracking-widest mb-1">Deployment Price</p>
                                     <p className="text-2xl md:text-4xl font-black text-primary-text italic font-headline leading-none">{region === 'INDIA' ? `₹999` : `$12`}</p>
                                 </div>
                             </div>

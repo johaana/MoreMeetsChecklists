@@ -1,4 +1,3 @@
-
 [
   {
     "id": "pack-enterprise_risk_cybersecurity_pack",
@@ -89,5 +88,11 @@
     "description": "Bakery & Confectionery Pack",
     "imageUrl": "https://i.postimg.cc/DzTLvTRS/food-cooking.avif",
     "imageHint": "bakery production"
+  },
+  {
+    "id": "pack-manufacturing_operations_ehs_pack",
+    "description": "Manufacturing Operations & EHS Pack",
+    "imageUrl": "https://i.postimg.cc/R0BKSB2n/Q16.jpg",
+    "imageHint": "manufacturing safety"
   }
 ]
