@@ -89,7 +89,7 @@ const InstitutionalPayloadSection = () => (
                     { t: "MULTI-BRANCH VIEWS", i: LayoutGrid },
                     { t: "EXCEL/SHEETS ENGINE", i: FileSpreadsheet }
                 ].map((item, i) => (
-                    <div key={i} className="p-4 md:p-10 rounded-xl border border-white/5 bg-white/[0.02] flex flex-col gap-3 md:gap-6 hover:border-primary/20 transition-all group">
+                    <div key={i} className="p-5 md:p-10 rounded-xl border border-white/5 bg-white/[0.02] flex flex-col gap-3 md:gap-6 hover:border-primary/20 transition-all group">
                         <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-black">
                             <item.i className="w-4 h-4 md:w-5 md:h-5" />
                         </div>
@@ -252,40 +252,40 @@ const RealTaskExamplesSection = () => {
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
                     {examples.map((ex, i) => (
-                        <div key={i} className="p-6 md:p-10 rounded-2xl border border-white/10 bg-[#0a0a0a] space-y-6 hover:border-primary/30 transition-all group relative overflow-hidden">
+                        <div key={i} className="p-5 md:p-10 rounded-2xl border border-white/10 bg-zinc-950 space-y-4 md:space-y-6 hover:border-primary/30 transition-all group relative overflow-hidden">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-3">
                                     <div className={cn("p-2 rounded-lg bg-white/5", ex.color)}>
-                                        <ex.icon className="w-5 h-5" />
+                                        <ex.icon className="w-4 h-4 md:w-5 md:h-5" />
                                     </div>
                                     <div className="flex flex-col">
-                                        <span className={cn("text-[10px] font-black uppercase tracking-widest", ex.color)}>{ex.industry}</span>
-                                        <h4 className="text-lg md:text-2xl font-black text-primary-text uppercase italic tracking-tighter font-headline leading-none">{ex.title}</h4>
+                                        <span className={cn("text-[9px] md:text-[10px] font-black uppercase tracking-widest", ex.color)}>{ex.industry}</span>
+                                        <h4 className="text-base md:text-2xl font-black text-primary-text uppercase italic tracking-tighter font-headline leading-none">{ex.title}</h4>
                                     </div>
                                 </div>
-                                <span className="text-[10px] font-mono text-white/20">ID: {ex.id}</span>
+                                <span className="text-[8px] md:text-[10px] font-mono text-white/20">ID: {ex.id}</span>
                             </div>
 
-                            <div className="space-y-4">
-                                <div className="space-y-1">
-                                    <span className="text-[9px] font-black text-primary uppercase tracking-[0.3em] flex items-center gap-2">
+                            <div className="space-y-3 md:space-y-4">
+                                <div className="space-y-0.5">
+                                    <span className="text-[8px] md:text-[9px] font-black text-primary/60 uppercase tracking-[0.3em] flex items-center gap-2">
                                         <SearchCheck className="w-3 h-3" /> AUDIT (TECHNICAL PROTOCOL)
                                     </span>
                                     <p className="text-xs md:text-sm text-primary-text font-bold italic leading-tight">{ex.audit}</p>
                                 </div>
                                 
-                                <div className="space-y-1">
-                                    <span className="text-[9px] font-black text-accent uppercase tracking-[0.3em] flex items-center gap-2">
+                                <div className="space-y-0.5">
+                                    <span className="text-[8px] md:text-[9px] font-black text-accent/60 uppercase tracking-[0.3em] flex items-center gap-2">
                                         <GraduationCap className="w-3 h-3" /> ACTION (TRAINER'S NOTES)
                                     </span>
                                     <p className="text-xs md:text-sm text-secondary-text font-medium italic leading-relaxed">{ex.action}</p>
                                 </div>
 
-                                <div className="pt-4 border-t border-white/5">
-                                    <span className="text-[9px] font-black text-red-500 uppercase tracking-[0.3em] flex items-center gap-2">
+                                <div className="pt-3 border-t border-white/5">
+                                    <span className="text-[8px] md:text-[9px] font-black text-red-500/60 uppercase tracking-[0.3em] flex items-center gap-2">
                                         <ShieldAlert className="w-3 h-3" /> RISK (CONSEQUENCE IF MISSED)
                                     </span>
-                                    <p className="text-[10px] md:text-xs text-red-500/80 font-black uppercase italic leading-tight pt-1">{ex.risk}</p>
+                                    <p className="text-[10px] md:text-xs text-red-500/80 font-black uppercase italic leading-tight pt-0.5">{ex.risk}</p>
                                 </div>
                             </div>
                         </div>
