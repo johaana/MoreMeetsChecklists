@@ -12,7 +12,8 @@ import {
     ShieldAlert,
     Zap,
     AlertTriangle,
-    ChevronRight
+    ChevronRight,
+    ShieldCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -24,7 +25,7 @@ const ConceptSection = ({ title, description, bgClass, textClass, children, id }
     <section id={id} className={cn("w-full py-16 border-b border-white/5", bgClass)}>
         <div className="container px-4 mx-auto">
             <div className="max-w-4xl mx-auto mb-12 text-center space-y-2">
-                <Badge variant="outline" className={cn("uppercase tracking-[0.3em] font-black text-[10px]", textClass === "text-zinc-900" ? "border-zinc-900/20" : "border-primary/20")}>Combo Archetype</Badge>
+                <Badge variant="outline" className={cn("uppercase tracking-[0.3em] font-black text-[10px]", textClass === "text-zinc-900" || textClass === "text-[#0d4d4d]" || textClass === "text-[#2d1b10]" ? "border-black/10" : "border-primary/20")}>Combo Archetype</Badge>
                 <h2 className={cn("text-3xl font-black font-headline uppercase italic tracking-tighter", textClass)}>{title}</h2>
                 <p className={cn("text-sm opacity-60 italic font-medium", textClass)}>{description}</p>
             </div>
@@ -43,15 +44,15 @@ const TaskSnippet = ({ title, audit, action, risk, colorClass, bgCard = "bg-whit
         </div>
         <div className="space-y-4">
             <div className="space-y-1">
-                <span className={cn("text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-2", labelClass)}><SearchCheck className="w-3 h-3"/> AUDIT</span>
+                <span className={cn("text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-2", labelClass)}><SearchCheck className="w-3 h-3"/> AUDIT (TECHNICAL)</span>
                 <p className={cn("text-sm font-bold italic leading-tight", textMain)}>{audit}</p>
             </div>
             <div className="space-y-1">
-                <span className={cn("text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-2", labelClass)}><GraduationCap className="w-3 h-3"/> ACTION</span>
+                <span className={cn("text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-2", labelClass)}><GraduationCap className="w-3 h-3"/> ACTION (TRAINER)</span>
                 <p className={cn("text-sm font-medium italic opacity-80", textMain)}>{action}</p>
             </div>
             <div className="pt-3 border-t border-white/5">
-                <span className="text-[10px] font-black text-red-500 uppercase tracking-[0.3em] flex items-center gap-2"><ShieldAlert className="w-3 h-3"/> RISK</span>
+                <span className="text-[10px] font-black text-red-500 uppercase tracking-[0.3em] flex items-center gap-2"><ShieldAlert className="w-3 h-3"/> RISK (CONSEQUENCE)</span>
                 <p className="text-xs text-red-500 font-black uppercase italic pt-1">{risk}</p>
             </div>
         </div>
@@ -65,31 +66,34 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* --- HERO A: HIGH-KEY COMMAND (Light Video + Dark Text) --- */}
-                <section className="relative w-full min-h-[90vh] flex flex-col justify-center bg-white overflow-hidden border-b border-zinc-200">
+                {/* --- HERO A: HIGH-KEY SPLIT (Light Gradient Left + Clear Video Right) --- */}
+                <section className="relative w-full min-h-[95vh] flex flex-col justify-center bg-white overflow-hidden border-b border-zinc-200">
                     <div className="absolute inset-0 z-0">
-                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20 grayscale brightness-150" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
+                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                        {/* Gradient Fade: Light Green/White from Left */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#f0f9f4] via-white/90 to-transparent" />
                     </div>
+                    
                     <div className="container px-6 relative z-10 grid md:grid-cols-[1.2fr,1fr] items-center gap-12 py-20 mx-auto">
                         <div className="space-y-10">
                             <div className="space-y-6">
-                                <Badge variant="outline" className="text-zinc-900 border-zinc-900/30 uppercase tracking-[0.4em] font-black text-[10px]">Prototype A: High-Key</Badge>
-                                <h1 className="text-6xl md:text-[6rem] font-black font-headline text-zinc-900 uppercase italic tracking-tighter leading-[0.85]">
+                                <Badge variant="outline" className="text-zinc-900 border-zinc-900/30 uppercase tracking-[0.4em] font-black text-[10px] bg-primary/5">Prototype A: Sovereign Light-Split</Badge>
+                                <h1 className="text-6xl md:text-[6.5rem] font-black font-headline text-zinc-900 uppercase italic tracking-tighter leading-[0.82]">
                                     CAPTURE <br/><span className="text-primary">MEMORY.</span>
                                 </h1>
-                                <p className="text-lg md:text-xl text-zinc-500 italic font-medium border-l-4 border-primary/40 pl-8 max-w-sm leading-relaxed">
+                                <p className="text-lg md:text-xl text-zinc-600 italic font-medium border-l-4 border-primary/40 pl-8 max-w-sm leading-relaxed">
                                     Institutional memory is an asset. <br /> Anything else is just luck.
                                 </p>
                             </div>
                             <div className="space-y-4">
-                                <Button className="h-16 px-10 bg-zinc-900 text-white font-black uppercase italic rounded-xl border-none shadow-xl hover:scale-105 transition-all">
+                                <Button className="h-16 px-10 bg-zinc-900 text-white font-black uppercase italic rounded-xl border-none shadow-2xl hover:scale-105 transition-all">
                                     Deploy System Now <ArrowRight className="ml-2 h-5 w-5" />
                                 </Button>
                                 <p className="text-[10px] text-zinc-400 font-black uppercase tracking-[0.4em] pl-2">EXCEL & SHEETS • OWN FOREVER</p>
                             </div>
                         </div>
-                        <div className="hidden md:block p-1 border-l border-zinc-200 pl-16 space-y-8">
+                        
+                        <div className="hidden md:block p-1 border-l border-zinc-900/10 pl-16 space-y-8">
                             <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.6em]">SELECT VERTICAL</span>
                             <div className="space-y-5">
                                 {["Restaurants", "Hotels & Resorts", "Healthcare", "Schools", "Franchise Networks"].map(v => (
@@ -100,30 +104,30 @@ export default function DesignLabPage() {
                     </div>
                 </section>
 
-                {/* --- HERO B: ULTRA-BLACK COMMAND (Pure Black + White Text) --- */}
+                {/* --- HERO B: ULTRA-BLACK COMMAND (Pure Contrast) --- */}
                 <section className="relative w-full min-h-[90vh] flex flex-col justify-center bg-black overflow-hidden border-b border-white/5">
                     <div className="container px-6 relative z-10 grid md:grid-cols-[1.2fr,1fr] items-center gap-12 py-20 mx-auto">
                         <div className="space-y-10">
                             <div className="space-y-6">
-                                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">Prototype B: Ultra-Black</Badge>
-                                <h1 className="text-6xl md:text-[6rem] font-black font-headline text-white uppercase italic tracking-tighter leading-[0.85]">
+                                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">Prototype B: Deep Space Command</Badge>
+                                <h1 className="text-6xl md:text-[6.5rem] font-black font-headline text-white uppercase italic tracking-tighter leading-[0.82]">
                                     CAPTURE <br/><span className="text-primary">MEMORY.</span>
                                 </h1>
                                 <p className="text-lg md:text-xl text-white/40 italic font-medium border-l-4 border-primary/20 pl-8 max-w-sm leading-relaxed">
-                                    Institutional memory is an asset. <br /> Anything else is just luck.
+                                    Maximum contrast for high-stakes operational review.
                                 </p>
                             </div>
                             <div className="space-y-4">
                                 <Button className="h-16 px-10 bg-primary text-black font-black uppercase italic rounded-xl border-none shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] hover:scale-105 transition-all">
                                     Deploy System Now <ArrowRight className="ml-2 h-5 w-5" />
                                 </Button>
-                                <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.4em] pl-2">EXCEL & SHEETS • OWN FOREVER</p>
+                                <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.4em] pl-2">NO SAAS • NO LOCK-IN</p>
                             </div>
                         </div>
                         <div className="hidden md:block p-1 border-l border-white/10 pl-16 space-y-8">
-                            <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.6em]">SELECT VERTICAL</span>
+                            <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.6em]">INFRASTRUCTURE NODES</span>
                             <div className="space-y-5">
-                                {["Restaurants", "Hotels & Resorts", "Healthcare", "Schools", "Franchise Networks"].map(v => (
+                                {["Manufacturing", "Logistics", "Governance", "Retail", "Cinemas"].map(v => (
                                     <p key={v} className="text-2xl font-black text-white/20 uppercase italic hover:text-primary transition-all hover:translate-x-3 cursor-pointer">{v}</p>
                                 ))}
                             </div>
@@ -134,7 +138,7 @@ export default function DesignLabPage() {
                 {/* 1. PAPER WHITE */}
                 <ConceptSection 
                     title="1. Paper White" 
-                    description="Maximum contrast. High-trust academic standard. Pure readability."
+                    description="Pure contrast. High-trust academic standard. Maximum readability."
                     bgClass="bg-white"
                     textClass="text-zinc-900"
                 >
@@ -178,11 +182,11 @@ export default function DesignLabPage() {
                 {/* 3. BLUEPRINT GRID */}
                 <ConceptSection 
                     title="3. Blueprint Grid" 
-                    description="White background, bold black borders, engineered technical precision."
-                    bgClass="bg-white"
+                    description="Engineering focused. Bold black borders and technical precision."
+                    bgClass="bg-zinc-50"
                     textClass="text-black"
                 >
-                    <div className="max-w-xl mx-auto border-[3px] border-black p-10 space-y-8 bg-zinc-50 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]">
+                    <div className="max-w-xl mx-auto border-[3px] border-black p-10 space-y-8 bg-white shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]">
                         <div className="flex items-center gap-4">
                             <Zap className="w-8 h-8 text-primary" />
                             <h3 className="text-3xl font-black uppercase italic font-headline text-black">Zero-Fail OT</h3>
@@ -195,7 +199,7 @@ export default function DesignLabPage() {
                 {/* 4. MIDNIGHT SLATE */}
                 <ConceptSection 
                     title="4. Midnight Slate" 
-                    description="Deep Navy background with crisp white text. Professional depth and authority."
+                    description="Deep Navy background with crisp white text. Professional depth."
                     bgClass="bg-[#0f172a]"
                     textClass="text-white"
                 >
@@ -216,7 +220,7 @@ export default function DesignLabPage() {
                 {/* 5. INDUSTRIAL AMBER */}
                 <ConceptSection 
                     title="5. Industrial Amber" 
-                    description="Black background, Amber primary text. Inspired by high-viz safety monitors."
+                    description="Maximum visibility safety style. Inspired by high-viz monitors."
                     bgClass="bg-black"
                     textClass="text-amber-500"
                 >
@@ -225,23 +229,16 @@ export default function DesignLabPage() {
                             <AlertTriangle className="w-6 h-6 text-amber-500" />
                             <h4 className="text-2xl font-black uppercase italic font-headline">Hazard Warning</h4>
                         </div>
-                        <div className="space-y-4">
-                            <p className="text-sm font-bold text-amber-500/80 leading-relaxed italic">
-                                Critical safety breach detected in Unit 04. All fire exits must be physically cleared within 10 minutes.
-                            </p>
-                            <hr className="border-amber-500/10" />
-                            <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest">
-                                <span className="text-white/20">Ref: SAF-EXE-01</span>
-                                <span className="text-amber-500">Status: URGENT</span>
-                            </div>
-                        </div>
+                        <p className="text-sm font-bold text-amber-500/80 leading-relaxed italic">
+                            Critical safety breach detected in Unit 04. All fire exits must be physically cleared.
+                        </p>
                     </div>
                 </ConceptSection>
 
                 {/* 6. CLINICAL TEAL */}
                 <ConceptSection 
                     title="6. Clinical Teal" 
-                    description="Off-white with Deep Teal. High-trust, sterile palette for Healthcare."
+                    description="Off-white with Deep Teal. Sterile healthcare palette."
                     bgClass="bg-[#f0f4f4]"
                     textClass="text-[#0d4d4d]"
                 >
@@ -300,7 +297,7 @@ export default function DesignLabPage() {
                 {/* 9. STEEL HIGH-KEY */}
                 <ConceptSection 
                     title="9. Steel High-Key" 
-                    description="Pure Silver-Grey with Stark Black text. Modern industrial tech vibe."
+                    description="Silver-Grey with Stark Black text. Modern industrial tech vibe."
                     bgClass="bg-[#e2e8f0]"
                     textClass="text-zinc-900"
                 >
