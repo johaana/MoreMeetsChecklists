@@ -80,7 +80,7 @@ const InstitutionalPayloadSection = () => (
                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">Technical Payload</Badge>
                 <SectionHeadline>WHAT YOU GET</SectionHeadline>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
                 {[
                     { t: "120+ INDUSTRY SOPs", i: ClipboardCheck },
                     { t: "DAILY EXECUTION LOGS", i: Clock },
@@ -89,11 +89,11 @@ const InstitutionalPayloadSection = () => (
                     { t: "MULTI-BRANCH VIEWS", i: LayoutGrid },
                     { t: "EXCEL/SHEETS ENGINE", i: FileSpreadsheet }
                 ].map((item, i) => (
-                    <div key={i} className="p-5 md:p-10 rounded-xl border border-white/5 bg-white/[0.02] flex flex-col gap-3 md:gap-6 hover:border-primary/20 transition-all group">
-                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-black">
-                            <item.i className="w-4 h-4 md:w-5 md:h-5" />
+                    <div key={i} className="p-4 md:p-10 rounded-xl border border-white/5 bg-white/[0.02] flex flex-row items-center gap-4 md:gap-6 hover:border-primary/20 transition-all group">
+                        <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-black shrink-0 transition-colors">
+                            <item.i className="w-4 h-4 md:w-6 md:h-6" />
                         </div>
-                        <h4 className="font-black text-primary-text uppercase italic text-[10px] md:text-sm tracking-tight leading-tight font-headline">{item.t}</h4>
+                        <h4 className="font-black text-primary-text uppercase italic text-xs md:text-sm tracking-tight leading-tight font-headline">{item.t}</h4>
                     </div>
                 ))}
             </div>
@@ -208,6 +208,7 @@ const RealTaskExamplesSection = () => {
             title: "Cold-Chain Integrity", 
             icon: Utensils, 
             color: "text-primary",
+            borderHover: "hover:border-primary/40 hover:shadow-[0_0_20px_-5px_rgba(46,184,107,0.2)]",
             audit: "Thermal Integrity Verification (CCP-1)",
             action: "Check and log fridge temps: must be 1°C to 4°C.",
             risk: "Pathogen growth and total stock loss."
@@ -218,6 +219,7 @@ const RealTaskExamplesSection = () => {
             title: "Crash Cart Readiness", 
             icon: Hospital, 
             color: "text-pink-500",
+            borderHover: "hover:border-pink-500/40 hover:shadow-[0_0_20px_-5px_rgba(236,72,153,0.2)]",
             audit: "Life-Support Equipment Validation (CCP)",
             action: "Verify crash cart seal integrity and O2 cylinder level.",
             risk: "Rescue failure during cardiac arrest."
@@ -228,6 +230,7 @@ const RealTaskExamplesSection = () => {
             title: "Student Transport", 
             icon: School, 
             color: "text-amber-500",
+            borderHover: "hover:border-amber-500/40 hover:shadow-[0_0_20px_-5px_rgba(245,158,11,0.2)]",
             audit: "Empty Bus Walkthrough Protocol",
             action: "Secondary check: walk to the back seat after drop-off.",
             risk: "Child left behind in bus (Fatal Never-Event)."
@@ -238,6 +241,7 @@ const RealTaskExamplesSection = () => {
             title: "Projection Quality", 
             icon: Popcorn, 
             color: "text-purple-500",
+            borderHover: "hover:border-purple-500/40 hover:shadow-[0_0_20px_-5px_rgba(168,85,247,0.2)]",
             audit: "DCP Ingest Verification",
             action: "Verify movie file is 100% loaded and checksum passed.",
             risk: "Black screen during show (Full refund)."
@@ -252,14 +256,14 @@ const RealTaskExamplesSection = () => {
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
                     {examples.map((ex, i) => (
-                        <div key={i} className="p-5 md:p-10 rounded-2xl border border-white/10 bg-zinc-950 space-y-4 md:space-y-6 hover:border-primary/30 transition-all group relative overflow-hidden">
+                        <div key={i} className={cn("p-5 md:p-10 rounded-2xl border border-white/10 bg-zinc-950 space-y-4 md:space-y-6 transition-all duration-500 group relative overflow-hidden", ex.borderHover)}>
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-3">
-                                    <div className={cn("p-2 rounded-lg bg-white/5", ex.color)}>
-                                        <ex.icon className="w-4 h-4 md:w-5 md:h-5" />
+                                    <div className={cn("p-2 rounded-lg bg-white/5 transition-colors group-hover:bg-white/10", ex.color)}>
+                                        <ex.icon className="w-4 h-4 md:w-6 md:h-6" />
                                     </div>
                                     <div className="flex flex-col">
-                                        <span className={cn("text-[9px] md:text-[10px] font-black uppercase tracking-widest", ex.color)}>{ex.industry}</span>
+                                        <span className={cn("text-[8px] md:text-[10px] font-black uppercase tracking-widest", ex.color)}>{ex.industry}</span>
                                         <h4 className="text-base md:text-2xl font-black text-primary-text uppercase italic tracking-tighter font-headline leading-none">{ex.title}</h4>
                                     </div>
                                 </div>

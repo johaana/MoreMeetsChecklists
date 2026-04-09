@@ -150,12 +150,14 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
                     {pack.checklists.slice(0, 9).map((checklist, index) => (
-                        <div key={index} className="p-8 md:p-12 rounded-2xl bg-white/[0.01] border border-white/5 space-y-6 md:space-y-8 hover:border-primary/20 transition-all group">
-                            <div className="flex justify-between items-center">
-                                <IconComponent name={checklist.icon || "ClipboardCheck"} className="w-6 h-6 md:w-8 md:h-8 text-primary/40 group-hover:text-primary transition-colors" />
-                                <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.2em]">{checklist.frequency}</span>
+                        <div key={index} className="p-6 md:p-10 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-primary/30 transition-all group flex flex-col gap-4">
+                            <div className="flex items-start justify-between gap-4">
+                                <div className="flex items-center gap-3">
+                                    <IconComponent name={checklist.icon || "ClipboardCheck"} className="w-5 h-5 md:w-8 md:h-8 text-primary group-hover:scale-110 transition-transform" />
+                                    <h4 className="text-lg md:text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-none font-headline">{checklist.title}</h4>
+                                </div>
+                                <span className="text-[8px] md:text-[10px] font-black text-white/20 uppercase tracking-widest pt-1">{checklist.frequency}</span>
                             </div>
-                            <h4 className="text-xl md:text-2xl font-black text-primary-text uppercase italic tracking-tighter leading-tight font-headline">{checklist.title}</h4>
                             <p className="text-[11px] md:text-sm text-secondary-text italic font-medium leading-relaxed">{checklist.summary}</p>
                         </div>
                     ))}
