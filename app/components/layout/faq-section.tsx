@@ -31,7 +31,7 @@ export const FaqSection = () => (
                     <AccordionItem value="item-3" className="border-white/10">
                         <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Will our team actually use this?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
-                           Yes, because it’s <strong>Simple.</strong> They don't have to report separately. They simply open their role-specific view, see exactly what needs to be done, and enter their name when it's completed. It turns mechanical ticking into intentional discipline.
+                           Yes, because it’s <strong>Simple.</strong> They don't have to report separately. They simply open their role-specific view, see exactly what needs to be done, and enter their name when it's completed. The system automatically handles the status and time-logging.
                         </AccordionContent>
                     </AccordionItem>
 
@@ -60,7 +60,7 @@ export const FaqSection = () => (
                     <AccordionItem value="item-lock" className="border-white/10">
                         <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Is the system locked? Can I prevent staff from changing my SOPs?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
-                          No, the system is <strong>100% unlocked</strong> and yours to own. To prevent accidental edits by staff, we recommend using the "Protect Sheet" feature in Excel or Google Sheets. You can lock everything except the "Done By" and "Date" columns, ensuring your core protocols and formulas remain bulletproof while allowing daily reporting.
+                          No, the system is <strong>100% unlocked</strong> and yours to own. To prevent accidental edits by staff, we recommend using the "Protect Sheet" feature in Excel or Google Sheets. You can lock everything except the "Done By" and "Verified By" columns, ensuring your core protocols and formulas remain bulletproof while allowing daily reporting.
                         </AccordionContent>
                     </AccordionItem>
 
@@ -76,7 +76,7 @@ export const FaqSection = () => (
                     <AccordionItem value="item-6" className="border-white/10">
                         <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Is this system audit-ready?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
-                           Absolutely. Every system is built using <strong>real compliance standards</strong> (ISO, HACCP, OSHA). The logs generated are time-stamped and provide the exact "Proof of Evidence" required by inspectors and auditors.
+                           Absolutely. Every system is built using <strong>real compliance standards</strong> (ISO, HACCP, OSHA). The logs generated provide the exact "Proof of Evidence" and auditable trail required by inspectors and regulatory bodies.
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
