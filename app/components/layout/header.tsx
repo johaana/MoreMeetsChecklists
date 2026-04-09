@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -60,12 +61,12 @@ const SolutionsList = () => (
     </div>
 );
 
-const BrandLogo = ({ isScrolled }: { isScrolled: boolean }) => (
+const BrandLogo = ({ isScrolled, isDarkText }: { isScrolled: boolean, isDarkText?: boolean }) => (
      <Link href="/" className="flex items-center justify-center gap-2 group" prefetch={false}>
         <Logo className={cn("h-5 w-5 md:h-6 md:w-6 text-primary")} />
         <div className="flex flex-col">
-            <span className={cn("font-headline text-base md:text-lg font-bold leading-none tracking-tight", !isScrolled ? "text-white" : "text-foreground")}>MoreMeets™</span>
-            <span className={cn("text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] leading-none mt-1", !isScrolled ? "text-white/40" : "text-muted-foreground/60")}>LESS MISSES.</span>
+            <span className={cn("font-headline text-base md:text-lg font-bold leading-none tracking-tight", (isScrolled || isDarkText) ? "text-foreground" : "text-white")}>MoreMeets™</span>
+            <span className={cn("text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] leading-none mt-1", (isScrolled || isDarkText) ? "text-muted-foreground/60" : "text-white/40")}>LESS MISSES.</span>
         </div>
     </Link>
 );
@@ -76,21 +77,12 @@ export function SiteHeader() {
     const pathname = usePathname();
     const [isScrolled, setIsScrolled] = React.useState(false);
 
+    const isDesignLab = pathname === '/design-lab';
+
     React.useEffect(() => {
         setIsSheetOpen(false);
         setIsDropdownOpen(false);
     }, [pathname]);
-
-    React.useEffect(() => {
-        if (isDropdownOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-        return () => {
-            document.body.style.overflow = 'auto';
-        };
-    }, [isDropdownOpen]);
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -104,20 +96,18 @@ export function SiteHeader() {
 
     const navLinkClass = cn(
         "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-colors",
-        !isScrolled ? "text-white/60 hover:text-white" : "text-muted-foreground hover:text-foreground"
+        (isScrolled || isDesignLab) ? "text-muted-foreground hover:text-foreground" : "text-white/60 hover:text-white"
     );
 
     return (
         <header className={cn(
             "px-6 lg:px-12 h-16 flex items-center fixed top-0 w-full z-50 transition-all duration-500",
             isScrolled 
-                ? "bg-background/95 backdrop-blur-md border-b border-white/5" 
+                ? "bg-background/95 backdrop-blur-md border-b border-white/5 shadow-sm" 
                 : "bg-transparent border-b border-transparent"
         )}>
             <div className="flex items-center">
-                <div className="flex">
-                  <BrandLogo isScrolled={isScrolled} />
-                </div>
+                <BrandLogo isScrolled={isScrolled} isDarkText={isDesignLab} />
             </div>
 
             <nav className="ml-auto hidden md:flex gap-10 items-center">
@@ -158,13 +148,13 @@ export function SiteHeader() {
             <div className="md:hidden ml-auto flex items-center">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", !isScrolled ? "text-white/60 hover:bg-white/10" : "text-foreground")}>
+                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", (isScrolled || isDesignLab) ? "text-foreground" : "text-white/60 hover:bg-white/10")}>
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="right" className="w-full max-w-sm flex flex-col p-0 bg-background">
-                         <SheetHeader className="p-4 border-b">
+                    <SheetContent side="right" className="w-full max-w-sm flex flex-col p-0 bg-background border-l-white/5 shadow-2xl">
+                         <SheetHeader className="p-4 border-b border-white/5">
                             <SheetTitle>
                                 <BrandLogo isScrolled={true} />
                             </SheetTitle>
@@ -172,17 +162,17 @@ export function SiteHeader() {
                         <ScrollArea className="flex-1">
                             <div className="flex flex-col p-4">
                                 <Accordion type="multiple" className="w-full">
-                                    <div className="border-b">
+                                    <div className="border-b border-white/5">
                                         <Link href="/about" className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors py-5 flex" prefetch={false}>
                                             About Us
                                         </Link>
                                     </div>
-                                    <div className="border-b">
+                                    <div className="border-b border-white/5">
                                         <Link href="/library" className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors py-5 flex" prefetch={false}>
                                             Systems Hub
                                         </Link>
                                     </div>
-                                    <AccordionItem value="packs" className="border-b">
+                                    <AccordionItem value="packs" className="border-b border-white/5">
                                         <AccordionTrigger className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground hover:no-underline py-5">
                                             Elite Industry Systems
                                         </AccordionTrigger>
@@ -202,7 +192,7 @@ export function SiteHeader() {
                                             ))}
                                         </AccordionContent>
                                     </AccordionItem>
-                                    <div className="border-b">
+                                    <div className="border-b border-white/5">
                                         <Link href="/blog" className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors py-5 flex" prefetch={false}>
                                             Intelligence Hub
                                         </Link>
