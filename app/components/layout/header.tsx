@@ -63,10 +63,10 @@ const SolutionsList = () => (
 
 const BrandLogo = ({ isHomepage, isScrolled }: { isHomepage: boolean, isScrolled: boolean }) => (
      <Link href="/" className="flex items-center justify-center gap-2 group" prefetch={false}>
-        <Logo className={cn("h-6 w-6 text-primary")} />
+        <Logo className={cn("h-5 w-5 md:h-6 md:w-6 text-primary")} />
         <div className="flex flex-col">
-            <span className={cn("font-headline text-lg font-bold leading-none tracking-tight", isHomepage && !isScrolled ? "text-white" : "text-foreground")}>MoreMeets™</span>
-            <span className={cn("text-[8px] font-black uppercase tracking-[0.3em] leading-none mt-1", isHomepage && !isScrolled ? "text-white/40" : "text-muted-foreground/60")}>LESS MISSES.</span>
+            <span className={cn("font-headline text-base md:text-lg font-bold leading-none tracking-tight", isHomepage && !isScrolled ? "text-white" : "text-foreground")}>MoreMeets™</span>
+            <span className={cn("text-[7px] md:text-[8px] font-black uppercase tracking-[0.3em] leading-none mt-1", isHomepage && !isScrolled ? "text-white/40" : "text-muted-foreground/60")}>LESS MISSES.</span>
         </div>
     </Link>
 );
@@ -112,7 +112,7 @@ export function SiteHeader() {
 
     return (
         <header className={cn(
-            "px-4 lg:px-6 h-16 flex items-center fixed top-0 w-full z-50 transition-all duration-500",
+            "px-6 lg:px-12 h-16 flex items-center fixed top-0 w-full z-50 transition-all duration-500",
             isHomepage
                 ? (isScrolled ? "bg-background/95 backdrop-blur-md border-b border-white/5" : "bg-transparent border-b border-transparent")
                 : "bg-background/95 backdrop-blur-sm border-b"
@@ -161,7 +161,7 @@ export function SiteHeader() {
             <div className="md:hidden ml-auto">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", isHomepage && !isScrolled ? "text-white hover:bg-white/10" : "text-foreground")}>
+                        <Button variant="ghost" size="icon" className={cn("mr-[-16px]", isHomepage && !isScrolled ? "text-white hover:bg-white/10" : "text-foreground")}>
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>
