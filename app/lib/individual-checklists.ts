@@ -4,6 +4,7 @@ import type { Checklist } from "@/lib/premium-packs";
 export type IndividualChecklist = {
     id: string;
     title: string;
+    description: string;
     shortDescription: string;
     longDescription: string;
     priceINR: number;
