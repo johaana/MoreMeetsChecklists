@@ -25,35 +25,6 @@ export function LayoutScript() {
           `}
         </Script>
       )}
-
-      {/* Calendly Badge Widget */}
-      <Script 
-        src="https://assets.calendly.com/assets/external/widget.js" 
-        strategy="lazyOnload"
-      />
-      <Script id="calendly-init" strategy="lazyOnload">
-        {`
-          function initCalendly() {
-            if (window.Calendly && typeof window.Calendly.initBadgeWidget === 'function') {
-              Calendly.initBadgeWidget({ 
-                url: 'https://calendly.com/more-moremeets/30min', 
-                text: 'Book Consultation', 
-                color: '#2eb86b', 
-                textColor: '#ffffff', 
-                branding: true 
-              });
-            } else {
-              setTimeout(initCalendly, 1000);
-            }
-          }
-          
-          if (document.readyState === 'complete') {
-            initCalendly();
-          } else {
-            window.addEventListener('load', initCalendly);
-          }
-        `}
-      </Script>
     </>
   );
 }

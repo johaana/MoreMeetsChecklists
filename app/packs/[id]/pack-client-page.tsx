@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { SiteHeader } from '@/components/layout/header';
 import type { PremiumPack } from "@/lib/premium-packs";
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
@@ -37,7 +36,7 @@ const OperationalWindow = ({ src = DASHBOARD_PREVIEW_URL, alt, packTitle }: { sr
     return (
         <div className="relative mx-auto max-w-4xl group">
             {/* The Tactical Glow Effect */}
-            <div className="absolute -inset-4 bg-primary/10 rounded-[2.5rem] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+            <div className="absolute -inset-4 bg-primary/10 rounded-[2.5rem] blur-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-1000 pointer-events-none" />
             
             <div className="bg-[#111] border border-white/10 border-b-0 rounded-t-xl py-3 px-5 flex items-center gap-4 relative z-10">
                 <div className="flex gap-1.5">
@@ -147,8 +146,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
   const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
 
   return (
-    <div className="flex flex-col bg-background">
-      <main className="flex-1">
+    <>
         {/* HERO SECTION WITH ATMOSPHERIC BACKGROUND */}
         <section className="relative w-full pt-24 pb-12 md:pt-32 md:pb-24 border-b border-white/5 overflow-hidden bg-black flex flex-col justify-center min-h-[85vh]">
           
@@ -255,8 +253,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         </Section>
 
         <GlobalStandardsSection pack={pack} />
-
-      </main>
-    </div>
+    </>
   );
 }

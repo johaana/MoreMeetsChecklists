@@ -24,6 +24,7 @@ export function Footer() {
                     <Link href="/library" className="text-secondary-text hover:text-primary-text" prefetch={false}>Operational Systems</Link>
                     <Link href="/blog" className="text-secondary-text hover:text-primary-text" prefetch={false}>Intelligence Hub</Link>
                     <Link href="/contact" className="text-secondary-text hover:text-primary-text" prefetch={false}>Contact</Link>
+                    <a href="https://calendly.com/more-moremeets/30min" target="_blank" className="text-secondary-text hover:text-primary-text">Book a Consultation</a>
                 </div>
                 <div className="flex flex-col gap-2 items-center md:items-start text-sm">
                     <h3 className="font-semibold mb-2 text-primary-text">Contact & Legal</h3>

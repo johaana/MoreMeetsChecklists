@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -59,8 +58,10 @@ export const FaqSection = () => (
 
                     <AccordionItem value="item-modify" className="border-white/10">
                         <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">What if I accidentally break a formula or task?</AccordionTrigger>
-                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
-                          The system is fully unlocked, which is its greatest power. We recommend keeping an original <strong>Master Copy</strong> untouched. MoreMeets is not responsible for operational failures, data errors, or compliance lapses resulting from post-download edits or misuse of the file logic.
+                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic space-y-4">
+                          <p>The system is fully unlocked, which is its greatest power. We recommend keeping an original <strong>Master Copy</strong> untouched.</p>
+                          <p>If you accidentally modify or break the logic, reach out to us with your order ID—we can provide a fresh copy of the latest master format. Additionally, step-by-step instructions on how to "Lock" your final protocols are included within the file itself.</p>
+                          <p className="text-primary-text/40 pt-2 border-t border-white/5">MoreMeets is not responsible for operational failures or compliance lapses resulting from post-download edits or misuse of the file logic.</p>
                         </AccordionContent>
                     </AccordionItem>
 
