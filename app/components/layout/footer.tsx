@@ -4,7 +4,7 @@ import { Mail } from "lucide-react";
 
 export function Footer() {
     return (
-        <footer className="w-full border-t border-border bg-alternate-background text-secondary-text">
+        <footer className="w-full border-t border-border bg-alternate-background text-secondary-text pb-24 md:pb-12">
             <div className="container grid items-start justify-center gap-8 px-4 py-12 text-center md:grid-cols-3 md:text-left">
                 <div className="flex flex-col items-center md:items-start gap-2">
                     <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>

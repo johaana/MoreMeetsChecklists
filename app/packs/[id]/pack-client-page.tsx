@@ -1,21 +1,14 @@
-
 'use client';
 
 import React from 'react';
 import { SiteHeader } from '@/components/layout/header';
-import { Footer } from '@/components/layout/footer';
 import type { PremiumPack } from "@/lib/premium-packs";
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { 
-    ArrowRight, 
     Target, 
-    Activity, 
-    ShieldCheck, 
     FileSpreadsheet,
-    LayoutGrid,
-    Lock,
-    ChevronDown
+    LayoutGrid
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -154,9 +147,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
   const totalTasks = pack.checklists?.reduce((sum, checklist) => sum + (checklist.tasks?.length || 0), 0) || 0;
 
   return (
-    <div className="flex flex-col min-h-screen bg-background">
-      <SiteHeader />
-
+    <div className="flex flex-col bg-background">
       <main className="flex-1">
         {/* HERO SECTION WITH ATMOSPHERIC BACKGROUND */}
         <section className="relative w-full pt-24 pb-12 md:pt-32 md:pb-24 border-b border-white/5 overflow-hidden bg-black flex flex-col justify-center min-h-[85vh]">
@@ -168,7 +159,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 alt="Context" 
                 className="w-full h-full object-cover opacity-20 blur-xl scale-110 grayscale" 
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
           </div>
 
           <div className="container px-4 md:px-6 relative z-10 mx-auto">
@@ -266,7 +257,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         <GlobalStandardsSection pack={pack} />
 
       </main>
-      <Footer />
     </div>
   );
 }

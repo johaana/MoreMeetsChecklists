@@ -1,4 +1,3 @@
-
 import PackClientPage from "./pack-client-page";
 import { premiumPacks } from '@/lib/premium-packs';
 import { notFound } from 'next/navigation';
@@ -6,6 +5,8 @@ import type { Metadata } from 'next';
 import PricingClient from "../pricing-client";
 import { FaqSection } from "@/components/layout/faq-section";
 import images from '@/lib/placeholder-images.json';
+import { SiteHeader } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 
 type Props = {
   params: Promise<{ id: string }>
@@ -66,13 +67,16 @@ export default async function Page({ params }: Props) {
   
   const imageData = images.find(img => img.id === `pack-${id}`);
   const heroImageUrl = imageData?.imageUrl || null;
-  const imageHint = imageData?.imageHint || "operational checklist";
 
   return (
-    <>
-      <PackClientPage pack={pack} heroImageUrl={heroImageUrl} imageHint={imageHint} />
-      <PricingClient pack={pack} />
-      <FaqSection />
-    </>
+    <div className="min-h-screen flex flex-col bg-background">
+      <SiteHeader />
+      <main className="flex-1">
+        <PackClientPage pack={pack} heroImageUrl={heroImageUrl} />
+        <PricingClient pack={pack} />
+        <FaqSection />
+      </main>
+      <Footer />
+    </div>
   );
 }
