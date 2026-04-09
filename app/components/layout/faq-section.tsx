@@ -49,6 +49,14 @@ export const FaqSection = () => (
                         </AccordionContent>
                     </AccordionItem>
 
+                    <AccordionItem value="item-custom" className="border-white/10">
+                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">What if I need professional customization or a custom build?</AccordionTrigger>
+                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic space-y-4">
+                          <p>If your organization has complex multi-branch requirements or you operate in a specialized sector not found in our library, we offer <strong>Bespoke Forensic Engineering.</strong></p>
+                          <p>We can build a ground-up institutional engine or customize an existing pack to your brand's specific protocols. Visit our <a href="/bespoke" className="text-primary underline">Bespoke Page</a> to book a discovery session.</p>
+                        </AccordionContent>
+                    </AccordionItem>
+
                     <AccordionItem value="item-lock" className="border-white/10">
                         <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Is the system locked? Can I prevent staff from changing my SOPs?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
