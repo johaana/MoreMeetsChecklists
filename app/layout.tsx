@@ -7,8 +7,9 @@ import { LayoutScript } from '@/components/layout/layout-script';
 import Script from 'next/script';
 
 const siteUrl = 'https://www.moremeets.com';
-const siteTitle = 'MoreMeets™: Professional Operational Checklists & SOPs';
-const siteDescription = 'Stop managing. Start seeing. MoreMeets turns your daily operations into a system that runs itself.';
+const siteTitle = 'MoreMeets™ | Sovereign Operational Infrastructure';
+const siteDescription = 'Stop managing manually. MoreMeets™ converts SOPs into live operating infrastructure. Own your data. No SaaS lock-in. Works on Excel & Google Sheets.';
+const socialImage = 'https://i.postimg.cc/rsHq85yn/Screenshot-2026-04-09-091611.png';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -21,10 +22,10 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: `${siteUrl}/api/og`,
+        url: socialImage,
         width: 1200,
         height: 630,
-        alt: siteTitle,
+        alt: 'MoreMeets™ Sovereign Master Engine Dashboard',
       },
     ],
   },
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: siteTitle,
     description: siteDescription,
-    images: [`${siteUrl}/api/og`],
+    images: [socialImage],
   },
 };
 

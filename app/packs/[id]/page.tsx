@@ -1,4 +1,3 @@
-
 import PackClientPage from "./pack-client-page";
 import { premiumPacks } from '@/lib/premium-packs';
 import { notFound } from 'next/navigation';
@@ -28,10 +27,11 @@ export async function generateMetadata(
   
   const siteUrl = 'https://www.moremeets.com';
   let title = `${pack.title} - Operational System | MoreMeets™`;
-  let description = `Download the complete ${pack.title} system. Professional SOPs for ${pack.category} leaders. One-time purchase.`;
+  let description = `Deploy the Sovereign v11.9 engine for ${pack.category}. Professional, audit-ready SOPs for elite leaders. Own your data forever.`;
   
   const imageData = images.find(img => img.id === `pack-${id}`);
-  const ogImage = imageData?.imageUrl || `${siteUrl}/api/og?type=pack&id=${pack.id}`;
+  const fallbackImage = 'https://i.postimg.cc/rsHq85yn/Screenshot-2026-04-09-091611.png';
+  const ogImage = imageData?.imageUrl || fallbackImage;
 
   return {
     metadataBase: new URL(siteUrl),
