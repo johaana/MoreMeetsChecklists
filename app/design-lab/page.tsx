@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -30,7 +31,7 @@ const SYSTEM_SPECS = [
     "NO SaaS. OWN YOUR DATA."
 ];
 
-const HeroVariation = ({ id, badge, glowClass, cardClass, textClass, accentClass, btnClass }: any) => (
+const HeroVariation = ({ id, badge, glowClass, cardClass, titleColor1, titleColor2, accentClass, btnClass }: any) => (
     <section id={id} className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black">
         {/* Clear Cinematic Video */}
         <div className="absolute inset-0 z-0">
@@ -38,20 +39,21 @@ const HeroVariation = ({ id, badge, glowClass, cardClass, textClass, accentClass
         </div>
         
         <div className="container px-6 relative z-10 mx-auto">
-            <div className="max-w-2xl relative group">
+            <div className="max-w-lg relative group"> {/* Compact container for square/rect feel */}
                 {/* Technical Engine Glow */}
                 <div className={cn("absolute -inset-4 rounded-[3rem] blur-3xl opacity-40 group-hover:opacity-60 transition-opacity animate-pulse-soft", glowClass)} />
                 
-                {/* The Floating Command Card */}
-                <div className={cn("relative z-10 p-10 md:p-16 rounded-[3rem] border border-white/20 backdrop-blur-xl space-y-10 shadow-2xl", cardClass)}>
+                {/* The Floating Glass Command Card */}
+                <div className={cn("relative z-10 p-10 md:p-12 rounded-[3rem] border border-white/20 backdrop-blur-xl space-y-8 shadow-2xl", cardClass)}>
                     <div className="space-y-6">
                         <Badge variant="outline" className={cn("uppercase tracking-[0.4em] font-black text-[10px] px-4 py-1.5 rounded-full border-none", accentClass)}>
                             {badge}
                         </Badge>
                         
                         <div className="space-y-2">
-                            <h1 className={cn("text-5xl md:text-7xl font-black font-headline uppercase italic tracking-tighter leading-[0.85]", textClass)}>
-                                CAPTURE <br/>MEMORY.
+                            <h1 className="text-5xl md:text-6xl font-black font-headline uppercase italic tracking-tighter leading-[0.85]">
+                                <span className={titleColor1}>CAPTURE</span> <br/>
+                                <span className={titleColor2}>MEMORY.</span>
                             </h1>
                             <p className="text-lg md:text-xl text-zinc-600 italic font-medium leading-tight border-l-4 border-zinc-200 pl-6">
                                 Institutional memory is an asset. <br /> Anything else is just luck.
@@ -62,14 +64,14 @@ const HeroVariation = ({ id, badge, glowClass, cardClass, textClass, accentClass
                         <div className="space-y-2.5 pt-4">
                             {SYSTEM_SPECS.map((spec, i) => (
                                 <div key={i} className="flex items-center gap-3">
-                                    <div className={cn("w-1.5 h-1.5 rounded-full", textClass.replace('text-', 'bg-').split(' ')[0] || 'bg-primary')} />
+                                    <div className={cn("w-1.5 h-1.5 rounded-full", titleColor2.replace('text-', 'bg-').split(' ')[0] || 'bg-primary')} />
                                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 italic">{spec}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    <Button className={cn("h-16 px-10 font-black uppercase italic rounded-xl border-none shadow-xl hover:scale-105 transition-all w-full md:w-auto", btnClass)}>
+                    <Button className={cn("h-16 px-10 font-black uppercase italic rounded-xl border-none shadow-xl hover:scale-105 transition-all w-full", btnClass)}>
                         Deploy System Now <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                 </div>
@@ -113,10 +115,11 @@ export default function DesignLabPage() {
                 {/* OPTION 1: FLOATING GOLD (Prestige) */}
                 <HeroVariation 
                     id="gold"
-                    badge="Archetype 1: Gold Command"
+                    badge="Option 1: Gold Command"
                     glowClass="bg-amber-500/20"
                     cardClass="bg-white/95"
-                    textClass="text-amber-600"
+                    titleColor1="text-zinc-900"
+                    titleColor2="text-amber-600"
                     accentClass="bg-amber-50 text-amber-600"
                     btnClass="bg-amber-600 text-white"
                 />
@@ -124,10 +127,11 @@ export default function DesignLabPage() {
                 {/* OPTION 2: SOVEREIGN BLUE (Trust) */}
                 <HeroVariation 
                     id="blue"
-                    badge="Archetype 2: Institutional Sky"
+                    badge="Option 2: Institutional Sky"
                     glowClass="bg-blue-500/20"
                     cardClass="bg-[#f0f7ff]/95"
-                    textClass="text-[#0f172a]"
+                    titleColor1="text-zinc-900"
+                    titleColor2="text-blue-600"
                     accentClass="bg-blue-600 text-white"
                     btnClass="bg-blue-600 text-white"
                 />
@@ -135,10 +139,11 @@ export default function DesignLabPage() {
                 {/* OPTION 3: EXECUTIVE EMERALD (Authority) */}
                 <HeroVariation 
                     id="green"
-                    badge="Archetype 3: Executive Emerald"
+                    badge="Option 3: Executive Emerald"
                     glowClass="bg-emerald-500/20"
                     cardClass="bg-[#f0f9f4]/95"
-                    textClass="text-emerald-800"
+                    titleColor1="text-zinc-900"
+                    titleColor2="text-emerald-700"
                     accentClass="bg-emerald-50 text-emerald-700"
                     btnClass="bg-emerald-700 text-white"
                 />
@@ -146,10 +151,11 @@ export default function DesignLabPage() {
                 {/* OPTION 4: MINIMALIST ONYX (Clarity) */}
                 <HeroVariation 
                     id="minimal"
-                    badge="Archetype 4: Minimalist Onyx"
+                    badge="Option 4: Minimalist Onyx"
                     glowClass="bg-zinc-400/20"
                     cardClass="bg-white/95"
-                    textClass="text-black"
+                    titleColor1="text-zinc-900"
+                    titleColor2="text-zinc-500"
                     accentClass="bg-zinc-100 text-zinc-900"
                     btnClass="bg-black text-white"
                 />
@@ -157,10 +163,11 @@ export default function DesignLabPage() {
                 {/* OPTION 5: INDUSTRIAL COPPER (Stability) */}
                 <HeroVariation 
                     id="copper"
-                    badge="Archetype 5: Industrial Copper"
+                    badge="Option 5: Industrial Copper"
                     glowClass="bg-orange-500/20"
                     cardClass="bg-[#fffbf0]/95"
-                    textClass="text-[#7c2d12]"
+                    titleColor1="text-zinc-900"
+                    titleColor2="text-orange-700"
                     accentClass="bg-orange-100 text-[#7c2d12]"
                     btnClass="bg-[#c2410c] text-white"
                 />
