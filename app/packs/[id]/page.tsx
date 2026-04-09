@@ -1,3 +1,4 @@
+
 import PackClientPage from "./pack-client-page";
 import { premiumPacks } from '@/lib/premium-packs';
 import { notFound } from 'next/navigation';
@@ -72,7 +73,7 @@ export default async function Page({ params }: Props) {
     <div className="min-h-screen flex flex-col bg-background">
       <SiteHeader />
       <main className="flex-1">
-        <PackClientPage pack={pack} heroImageUrl={heroImageUrl} />
+        <PackClientPage pack={pack} heroImageUrl={heroImageUrl ?? ''} />
         <PricingClient pack={pack} />
         <FaqSection />
       </main>
