@@ -9,13 +9,13 @@
   {
     "id": "pack-hotels_and_resorts",
     "description": "Hotels & Resorts Operations Pack",
-    "imageUrl": "https://i.postimg.cc/PfcjQL7g/Create-SOP-for-hotel-maintenance.webp",
+    "imageUrl": "https://i.postimg.cc/YSHYrHTr/hotel-ops.webp",
     "imageHint": "hotel operations"
   },
   {
     "id": "pack-restaurants",
     "description": "Restaurant Operations Pack",
-    "imageUrl": "https://i.postimg.cc/mgWWKvTG/restaurant.webp",
+    "imageUrl": "https://i.postimg.cc/cJSwxSPg/Restaurant-Standard-Operating-Procedures.png",
     "imageHint": "restaurant operations"
   },
   {
@@ -45,37 +45,49 @@
   {
     "id": "pack-facility_management_blueprint",
     "description": "Facility Operating System",
-    "imageUrl": "https://i.postimg.cc/Vv3PfTMd/facilities-management-2.jpg",
+    "imageUrl": "https://i.postimg.cc/CKgkhg9S/facilities-management1.png",
     "imageHint": "facility management"
   },
   {
     "id": "pack-corporate_legal_compliance_starter_kit",
     "description": "Corporate Legal & Compliance Starter Kit",
-    "imageUrl": "https://i.postimg.cc/HxbKTk9y/Corporate-Legal-and-Compliance-Starter-Kit.png",
+    "imageUrl": "https://i.postimg.cc/g0W8zW1L/Q13.jpg",
     "imageHint": "corporate legal"
   },
   {
     "id": "pack-healthcare_and_hospital_operations",
     "description": "Healthcare & Hospital Operations Pack",
-    "imageUrl": "https://i.postimg.cc/PJBnXcZz/healthcare.jpg",
+    "imageUrl": "https://i.postimg.cc/rpkxVk7c/Hospital-Levels-of-Care.jpg",
     "imageHint": "hospital operations"
   },
   {
     "id": "pack-school_operations_pack",
     "description": "School Operations Pack",
-    "imageUrl": "https://i.postimg.cc/1tTt1MMw/1-School-Operations-Pack.png",
+    "imageUrl": "https://i.postimg.cc/GthjcC8T/school-safety.webp",
     "imageHint": "school operations"
   },
   {
     "id": "pack-franchise_operations_pack",
     "description": "Franchise Operations Pack",
-    "imageUrl": "https://i.postimg.cc/1XgZZPgt/Franchise-operations.jpg",
+    "imageUrl": "https://i.postimg.cc/FK43r4w5/franchise-2.jpg",
     "imageHint": "franchise operations"
   },
   {
     "id": "pack-cinema_operations_pack",
     "description": "Cinema & Multiplex Operations Pack",
-    "imageUrl": "https://i.postimg.cc/G3NCxBN3/multiplex2.avif",
+    "imageUrl": "https://i.postimg.cc/43gVfgjd/multiplex2.avif",
     "imageHint": "cinema operations"
+  },
+  {
+    "id": "pack-food_manufacturing_ops",
+    "description": "Food Manufacturing Operations Pack",
+    "imageUrl": "https://i.postimg.cc/R0BKSB2n/Q16.jpg",
+    "imageHint": "food production quality"
+  },
+  {
+    "id": "pack-bakery_confectionery_pack",
+    "description": "Bakery & Confectionery Pack",
+    "imageUrl": "https://i.postimg.cc/DzTLvTRS/food-cooking.avif",
+    "imageHint": "bakery production"
   }
 ]

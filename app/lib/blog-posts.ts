@@ -24,7 +24,7 @@ export const blogPosts: BlogPost[] = [
       protocol: "Institutional Memory",
       relatedPackId: "hotels_and_resorts",
       description: "A technical debrief on the Ebbinghaus Forgetting Curve in hospitality. Why verbal training leads to 70% knowledge loss. Discover how Excel SOPs prevent operational drift.",
-      imageUrl: "https://i.postimg.cc/gc5WHw5m/housekeeping-hotel-1.avif",
+      imageUrl: "https://i.postimg.cc/cJSwxSP4/housekeeping-hotel-1.avif",
       content: `
         <section>
           <div class="bg-primary/10 border-l-4 border-primary p-6 mb-12 rounded-r-xl">
@@ -112,7 +112,7 @@ export const blogPosts: BlogPost[] = [
       protocol: "Life Safety",
       relatedPackId: "hotels_and_resorts",
       description: "Forensic analysis of the 'Amygdala Hijack' in hospitality. Why even high-performing staff fail during crises. Why physical systems are the only cure.",
-      imageUrl: "https://i.postimg.cc/PfcjQL7g/Create-SOP-for-hotel-maintenance.webp",
+      imageUrl: "https://i.postimg.cc/ZqSpbSXJ/Create-SOP-for-hotel-maintenance.webp",
       content: `
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
@@ -166,7 +166,7 @@ export const blogPosts: BlogPost[] = [
       protocol: "Audit Readiness",
       relatedPackId: "hotels_and_resorts",
       description: "WhatsApp is a communication tool, not an operating system. Discover why relying on chat for hotel operations creates massive hidden liabilities.",
-      imageUrl: "https://i.postimg.cc/gc5WHw5m/housekeeping-hotel-1.avif",
+      imageUrl: "https://i.postimg.cc/cJSwxSP4/housekeeping-hotel-1.avif",
       content: `
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
@@ -220,7 +220,7 @@ export const blogPosts: BlogPost[] = [
       protocol: "Supply Chain Risk",
       relatedPackId: "facility_management_blueprint",
       description: "Deconstructing the 2018 KFC logistics failure. How a single point of failure (SPOF) paralyzed 900 restaurants.",
-      imageUrl: "https://i.postimg.cc/y8CC2MsP/Back-of-House-BOH-Operations-restaurant.png",
+      imageUrl: "https://i.postimg.cc/tgjWqj8Y/Back-of-House-BOH-Operations-restaurant.png",
       content: `
         <p>In February 2018, 900 KFC outlets closed. Not because of a lack of customers, but because of a failure in logistics architecture.</p>
         <p>The \"Great Chicken Crisis\" was a failure of <strong>Centralized Risk</strong>. KFC switched distribution to a single, automated hub. When the software glitched, there was no redundant infrastructure. No Plan B.</p>
@@ -236,7 +236,7 @@ export const blogPosts: BlogPost[] = [
       protocol: "Asset Valuation",
       relatedPackId: "franchise_operations_pack",
       description: "Why structured operations are revenue multipliers. A financial study on how SOPs increase enterprise value.",
-      imageUrl: "https://i.postimg.cc/1XgZZPgt/Franchise-operations.jpg",
+      imageUrl: "https://i.postimg.cc/FK43r4w5/franchise-2.jpg",
       content: `
         <p>Most founders see SOPs as compliance. CFOs see them as overhead. But structured operations are <strong>Revenue Multipliers</strong>. Chaos has a measurable, compounding cost.</p>
         <p>Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people: you are selling a recurring profit engine that works regardless of who is in the room.</p>
