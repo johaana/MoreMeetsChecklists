@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -133,99 +134,99 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     }
 
     return (
-        <section className="w-full py-16 md:py-24" id="pricing">
+        <section className="w-full py-12 md:py-24" id="pricing">
             <div className="container px-4 md:px-6">
                 <div className="flex justify-center">
                     <Card 
                         className="w-full max-w-[650px] bg-black border-white/10 shadow-[0_0_60px_-12px_rgba(0,0,0,0.5)] flex flex-col h-full overflow-hidden relative rounded-2xl"
                     >
-                        <div className="absolute top-6 right-6 z-20">
-                            <div className="bg-accent/10 border border-accent/20 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-sm backdrop-blur-sm">
+                        <div className="absolute top-4 right-4 md:top-6 md:right-6 z-20">
+                            <div className="bg-accent/10 border border-accent/20 rounded-full px-2.5 py-1 flex items-center gap-1.5 shadow-sm backdrop-blur-sm">
                                 <ShieldCheck className="w-3 h-3 text-accent" />
-                                <span className="text-[9px] font-black uppercase tracking-widest text-accent">Permanent Asset</span>
+                                <span className="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-accent">Permanent Asset</span>
                             </div>
                         </div>
 
-                        <CardHeader className="pb-6 border-b border-white/5 bg-white/[0.01] relative flex flex-col items-center pt-10 px-8">
-                            <div className="flex justify-center mb-8">
+                        <CardHeader className="pb-6 border-b border-white/5 bg-white/[0.01] relative flex flex-col items-center pt-8 md:pt-10 px-6 md:px-8">
+                            <div className="flex justify-center mb-6 md:mb-8">
                                 <Tabs value={region} onValueChange={(v) => setRegion(v as any)} className="w-fit">
-                                    <TabsList className="bg-white/5 border border-white/10 h-9 p-0.5 rounded-full px-1">
+                                    <TabsList className="bg-white/5 border border-white/10 h-8 md:h-9 p-0.5 rounded-full px-1">
                                         <TabsTrigger 
                                             value="INDIA" 
-                                            className="text-[10px] font-black uppercase px-5 h-8 rounded-full data-[state=active]:bg-white/10 data-[state=active]:text-primary flex items-center gap-2 tracking-[0.2em]"
+                                            className="text-[8px] md:text-[10px] font-black uppercase px-4 md:px-5 h-7 md:h-8 rounded-full data-[state=active]:bg-white/10 data-[state=active]:text-primary flex items-center gap-2 tracking-[0.2em]"
                                         >
-                                            <Landmark className="w-4 h-4" /> INDIA (₹)
+                                            <Landmark className="w-3.5 h-3.5 md:w-4 md:h-4" /> INDIA (₹)
                                         </TabsTrigger>
                                         <TabsTrigger 
                                             value="GLOBAL" 
-                                            className="text-[10px] font-black uppercase px-5 h-8 rounded-full data-[state=active]:bg-white/10 data-[state=active]:text-primary flex items-center gap-2 tracking-[0.2em]"
+                                            className="text-[8px] md:text-[10px] font-black uppercase px-4 md:px-5 h-7 md:h-8 rounded-full data-[state=active]:bg-white/10 data-[state=active]:text-primary flex items-center gap-2 tracking-[0.2em]"
                                         >
-                                            <Globe className="w-4 h-4" /> GLOBAL ($)
+                                            <Globe className="w-3.5 h-3.5 md:w-4 md:h-4" /> GLOBAL ($)
                                         </TabsTrigger>
                                     </TabsList>
                                 </Tabs>
                             </div>
                             
-                            <div className="w-full flex flex-col items-center gap-4 text-center">
-                                <Badge variant="outline" className="text-accent border-accent/30 text-accent uppercase tracking-[0.4em] rounded-none px-4 py-1 font-black text-[10px]">SOVEREIGN V11.9 ACCESS</Badge>
-                                <h2 className="text-3xl md:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-[1.1]">
+                            <div className="w-full flex flex-col items-center gap-3 md:gap-4 text-center">
+                                <Badge variant="outline" className="text-accent border-accent/30 text-accent uppercase tracking-[0.4em] rounded-none px-3 py-1 font-black text-[9px] md:text-[10px]">SOVEREIGN V11.9 ACCESS</Badge>
+                                <h2 className="text-2xl md:text-5xl font-black font-headline tracking-tighter text-primary-text uppercase italic leading-[1.1]">
                                     OPERATIONAL CERTAINTY
                                 </h2>
                                 <div className="flex items-center gap-2">
-                                    <Lock className="w-4 h-4 text-white/40" />
-                                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 italic text-center leading-relaxed font-headline">
-                                        ALIGNED WITH: ISO • HACCP • OSHA • INDUSTRY STANDARDS
+                                    <Lock className="w-3.5 h-3.5 text-white/40" />
+                                    <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] text-white/40 italic text-center leading-relaxed font-headline">
+                                        ALIGNED WITH: ISO • HACCP • OSHA
                                     </span>
                                 </div>
                             </div>
                         </CardHeader>
 
-                        <CardContent className="flex-1 p-8 md:p-12 flex flex-col space-y-10 text-center">
-                            <div className="space-y-8">
+                        <CardContent className="flex-1 p-6 md:p-12 flex flex-col space-y-8 md:space-y-10 text-center">
+                            <div className="space-y-6 md:space-y-8">
                                 <div className="flex flex-col items-center gap-1">
-                                    <p className="text-xl md:text-2xl font-black text-primary-text tracking-tight uppercase leading-tight italic font-headline">
-                                        {totalChecklists} Operational Modules • {totalTasks}+ Technical Control Points
+                                    <p className="text-lg md:text-2xl font-black text-primary-text tracking-tight uppercase leading-tight italic font-headline">
+                                        {totalChecklists} Modules • {totalTasks}+ Points
                                     </p>
-                                    <p className="text-xs text-secondary-text italic font-medium">Consistency shouldn't be a lucky outcome. Install a permanent asset.</p>
+                                    <p className="text-[10px] md:text-xs text-secondary-text italic font-medium">Consistency is either engineered, or it is non-existent.</p>
                                 </div>
                                 
-                                <div className="flex items-center justify-center gap-2 opacity-100">
-                                    <ShieldCheck className="w-3.5 h-3.5 text-white/40" />
-                                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 italic text-center leading-relaxed font-headline">
-                                        SINGLE UNIT OR MULTI-BRANCH • SAME SYSTEM
+                                <div className="flex items-center justify-center gap-2">
+                                    <ShieldCheck className="w-3.5 h-3.5 text-white/20" />
+                                    <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] text-white/30 italic font-headline">
+                                        SINGLE UNIT OR MULTI-BRANCH
                                     </span>
                                 </div>
                             </div>
 
                             <div className="flex flex-col items-center">
-                                <div className="space-y-2 mb-8">
-                                    <div className="flex items-center justify-center gap-4 mb-4">
+                                <div className="space-y-2 mb-6 md:mb-8">
+                                    <div className="flex items-center justify-center gap-4 mb-3 md:mb-4">
                                         <div className="text-left">
-                                            <p className="text-[10px] font-black uppercase text-white/20 tracking-widest font-headline">Institutional Rate</p>
-                                            <p className="text-sm font-bold text-white/40 line-through">
+                                            <p className="text-[8px] md:text-[10px] font-black uppercase text-white/20 tracking-widest font-headline">Institutional Rate</p>
+                                            <p className="text-xs md:text-sm font-bold text-white/40 line-through">
                                                 {region === 'INDIA' ? '₹1,999' : '$25'}
                                             </p>
                                         </div>
-                                        <div className="w-px h-8 bg-white/5" />
+                                        <div className="w-px h-6 md:h-8 bg-white/5" />
                                         <div className="text-left">
-                                            <p className="text-[10px] font-black uppercase text-primary tracking-widest font-headline">Deployment Price</p>
-                                            <p className="text-2xl font-black text-primary-text italic font-headline">
+                                            <p className="text-[8px] md:text-[10px] font-black uppercase text-primary tracking-widest font-headline">Deployment Price</p>
+                                            <p className="text-xl md:text-2xl font-black text-primary-text italic font-headline">
                                                 {region === 'INDIA' ? `₹999` : `$12`}
                                             </p>
                                         </div>
                                     </div>
                                     
-                                    <p className="text-xs font-bold text-accent italic uppercase tracking-[0.2em] font-headline">
+                                    <p className="text-[10px] font-bold text-accent italic uppercase tracking-[0.2em] font-headline">
                                         Active Deployment Window.
                                     </p>
                                 </div>
 
-                                <div className="flex items-center gap-2.5 text-accent font-black uppercase text-[10px] tracking-[0.35em] bg-accent/5 px-6 py-3 rounded-full border border-accent/20 w-fit mx-auto font-headline">
-                                    <Zap className="w-4 h-4" /> READY TO DEPLOY IN 10 MINUTES
+                                <div className="flex items-center gap-2 text-accent font-black uppercase text-[8px] md:text-[10px] tracking-[0.3em] bg-accent/5 px-4 py-2 md:px-6 md:py-3 rounded-full border border-accent/20 w-fit mx-auto font-headline">
+                                    <Zap className="w-3.5 h-3.5 md:w-4 md:h-4" /> READY TO DEPLOY
                                 </div>
 
-                                <div className="w-full flex flex-col items-center pt-8">
-                                    <div className="w-full md:w-96">
+                                <div className="w-full flex flex-col items-center pt-6 md:pt-8">
+                                    <div className="w-full md:w-96 px-4">
                                         {region === 'INDIA' && hasINR ? (
                                             <div className="w-full">
                                                 <RazorpayButton paymentId={pack.paymentId} className="w-full" />
@@ -234,49 +235,43 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                             <Button 
                                                 asChild 
                                                 size="lg" 
-                                                className="w-full h-14 bg-primary text-black font-black text-base rounded-xl shadow-md hover:shadow-xl hover:brightness-105 transition-all border-none relative z-10 px-8 uppercase italic tracking-[0.2em]"
+                                                className="w-full h-14 bg-primary text-black font-black text-sm md:text-base rounded-xl shadow-md hover:shadow-xl hover:brightness-105 transition-all border-none relative z-10 px-6 md:px-8 uppercase italic tracking-[0.2em]"
                                             >
                                                 <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center justify-center gap-2">
-                                                    DEPLOY SYSTEM: ${pack.priceUSD} <ArrowRight className="w-5 h-5"/>
+                                                    DEPLOY SYSTEM: ${pack.priceUSD} <ArrowRight className="w-4 h-4 md:w-5 md:h-5"/>
                                                 </Link>
                                             </Button>
                                         )}
                                     </div>
                                     
-                                    <div className="mt-6 flex flex-col items-center gap-2">
+                                    <div className="mt-6 flex flex-col items-center gap-2 px-4">
                                         <div className="flex items-center gap-2">
                                             <Zap className="w-3 h-3 text-primary" />
-                                            <span className="text-[10px] font-black tracking-[0.3em] uppercase text-white/40 font-headline">
+                                            <span className="text-[8px] md:text-[10px] font-black tracking-[0.3em] uppercase text-white/40 font-headline text-center">
                                                 OWN THE FULL TECHNICAL LIBRARY FOREVER
-                                            </span>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <LifeBuoy className="w-3 h-3 text-primary" />
-                                            <span className="text-[10px] font-black tracking-[0.3em] uppercase text-white/40 font-headline">
-                                                LIFETIME EXPERT SUPPORT INCLUDED
                                             </span>
                                         </div>
                                     </div>
 
-                                    <div className="mt-8 pt-6 border-t border-white/5 w-full">
-                                        <Button asChild variant="link" size="sm" className="w-full text-[10px] font-black uppercase text-accent/60 tracking-widest hover:text-accent">
+                                    <div className="mt-6 md:mt-8 pt-6 border-t border-white/5 w-full">
+                                        <Button asChild variant="link" size="sm" className="w-full h-auto py-2 text-[8px] md:text-[10px] font-black uppercase text-accent/60 tracking-widest hover:text-accent whitespace-normal">
                                             <Link href="https://calendly.com/more-moremeets/30min" target="_blank">
-                                                Need a Bespoke Build or Tailored Customization? Schedule a Call.
+                                                Need a Bespoke Build? Schedule a Discovery Call.
                                             </Link>
                                         </Button>
                                     </div>
 
-                                    <p className="mt-10 text-[9px] text-white/20 font-black uppercase tracking-[0.4em] font-headline">
-                                        By purchasing, you agree to our <Link href="/terms" target="_blank" className="underline underline-offset-2 hover:text-white/40">Terms</Link> & <Link href="/refund" target="_blank" className="underline hover:text-white/40">Refund Policy</Link>
+                                    <p className="mt-8 text-[8px] md:text-[9px] text-white/20 font-black uppercase tracking-[0.4em] font-headline">
+                                        By purchasing, you agree to our <Link href="/terms" target="_blank" className="underline hover:text-white/40">Terms</Link>
                                     </p>
                                 </div>
                             </div>
                         </CardContent>
 
-                        <div className="bg-white/[0.03] border-t border-white/5 py-6 px-4 md:px-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+                        <div className="bg-white/[0.03] border-t border-white/5 py-5 px-4 md:px-8 flex flex-wrap items-center justify-center gap-x-6 md:gap-x-10 gap-y-3">
                             {PROOFS.map(item => (
-                                <div key={item.label} className="flex items-center gap-1.5 text-[8px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.2em] shrink-0 whitespace-nowrap italic font-headline">
-                                    <item.icon className="w-3.5 h-3.5 text-primary/40" /> {item.label}
+                                <div key={item.label} className="flex items-center gap-1.5 text-[7px] md:text-[9px] font-black uppercase text-white/30 tracking-[0.2em] shrink-0 whitespace-nowrap italic font-headline">
+                                    <item.icon className="w-3 h-3 md:w-3.5 md:h-3.5 text-primary/40" /> {item.label}
                                 </div>
                             ))}
                         </div>

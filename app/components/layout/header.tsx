@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -160,7 +161,7 @@ export function SiteHeader() {
             <div className="md:hidden ml-auto">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" className={cn(isHomepage && !isScrolled ? "text-white hover:bg-white/10" : "text-foreground")}>
+                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", isHomepage && !isScrolled ? "text-white hover:bg-white/10" : "text-foreground")}>
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>
