@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -11,15 +12,14 @@ import {
     Clock,
     LayoutGrid,
     FileSpreadsheet,
-    XCircle,
     Utensils,
     Hospital,
     School,
     Popcorn,
     CheckCircle2,
     Activity,
-    ChevronLeft,
-    ChevronRight
+    ShieldAlert,
+    SearchCheck
 } from "lucide-react";
 import React from 'react';
 import { cn } from "@/lib/utils";
@@ -29,15 +29,10 @@ import { SiteHeader } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Badge } from "@/components/ui/badge";
 import { HeroSection } from "@/components/layout/hero-section";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
 
 const Section = ({ className, id, children, ...props }: React.HTMLAttributes<HTMLElement> & { id?: string }) => (
-    <section id={id} className={cn("w-full py-10 md:py-32", className)} {...props}>
-        <div className="container px-4 md:px-6">
+    <section id={id} className={cn("w-full py-12 md:py-32", className)} {...props}>
+        <div className="container px-4 md:px-6 mx-auto">
             {children}
         </div>
     </section>
@@ -58,7 +53,7 @@ const OperationalWindow = ({ src, alt, title = "MASTER_OPERATIONAL_ENGINE_V11.9"
                 <div className="w-2 h-2 rounded-full bg-green-500/20" />
             </div>
             <div className="flex-1 flex justify-center">
-                <div className="bg-black/40 border border-white/5 rounded-md px-6 md:px-12 py-1 text-[7px] md:text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner font-headline truncate max-w-[150px] md:max-w-none">
+                <div className="bg-black/40 border border-white/5 rounded-md px-6 md:px-12 py-1 text-[8px] md:text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner font-headline truncate max-w-[150px] md:max-w-none">
                     {title}
                 </div>
             </div>
@@ -67,7 +62,7 @@ const OperationalWindow = ({ src, alt, title = "MASTER_OPERATIONAL_ENGINE_V11.9"
             <div className="absolute top-0 left-0 w-full h-[12%] z-20 bg-black/90 backdrop-blur-3xl border-b border-white/10 flex items-center justify-center px-4 md:px-10">
                 <div className="flex items-center gap-3 md:gap-4">
                     <div className="w-1 h-1 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(46,184,107,0.8)]" />
-                    <span className="text-[8px] md:text-[11px] font-black text-primary uppercase tracking-[0.4em] italic font-headline text-center">
+                    <span className="text-[10px] md:text-[11px] font-black text-primary uppercase tracking-[0.4em] italic font-headline text-center">
                         SOVEREIGN_COMMAND_OS_ACTIVE
                     </span>
                 </div>
@@ -82,7 +77,7 @@ const InstitutionalPayloadSection = () => (
     <Section className="bg-black">
         <div className="max-w-6xl mx-auto space-y-8 md:space-y-16">
             <div className="text-center space-y-2 md:space-y-4">
-                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[9px]">Technical Payload</Badge>
+                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">Technical Payload</Badge>
                 <SectionHeadline>WHAT YOU GET</SectionHeadline>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
@@ -98,7 +93,7 @@ const InstitutionalPayloadSection = () => (
                         <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-black">
                             <item.i className="w-4 h-4 md:w-5 md:h-5" />
                         </div>
-                        <h4 className="font-black text-primary-text uppercase italic text-[9px] md:text-sm tracking-tight leading-tight font-headline">{item.t}</h4>
+                        <h4 className="font-black text-primary-text uppercase italic text-[10px] md:text-sm tracking-tight leading-tight font-headline">{item.t}</h4>
                     </div>
                 ))}
             </div>
@@ -110,7 +105,7 @@ const TheDifferentiatorSection = () => (
     <Section className="bg-black border-y border-white/5">
         <div className="max-w-6xl mx-auto space-y-8 md:space-y-20">
             <div className="text-center space-y-2">
-                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.4em] font-black text-[9px]">Industrial Clarity</Badge>
+                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.4em] font-black text-[10px]">Industrial Clarity</Badge>
                 <h2 className="text-2xl md:text-7xl font-black font-headline text-primary-text uppercase italic tracking-tighter leading-[0.9]">CLARITY DRIVES <br /> EXECUTION</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
@@ -138,7 +133,7 @@ const DailySequenceSection = () => (
     <Section className="bg-alternate-background border-b border-white/5">
         <div className="max-w-7xl mx-auto space-y-8 md:space-y-20">
             <div className="text-center space-y-2">
-                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[9px]">Sovereign Workflow</Badge>
+                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">Sovereign Workflow</Badge>
                 <SectionHeadline>DAILY COMMAND</SectionHeadline>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-8">
@@ -149,13 +144,13 @@ const DailySequenceSection = () => (
                     { s: "4", t: "SCHEDULE", d: "Cycles trigger auto." },
                     { s: "5", t: "COMMAND", d: "Scale without chaos." }
                 ].map((step, i) => (
-                    <div key={i} className="flex flex-row md:flex-col items-center gap-4 md:space-y-6 group p-3 md:p-0 bg-white/5 md:bg-transparent rounded-xl border border-white/5 md:border-none">
-                        <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg border border-primary/30 bg-primary/5 flex items-center justify-center text-primary font-black text-xs shrink-0">
+                    <div key={i} className="flex flex-row md:flex-col items-center gap-4 md:space-y-6 group p-4 md:p-0 bg-white/5 md:bg-transparent rounded-xl border border-white/5 md:border-none">
+                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg border border-primary/30 bg-primary/5 flex items-center justify-center text-primary font-black text-sm shrink-0">
                             {step.s}
                         </div>
                         <div className="flex-1 md:text-center space-y-1">
-                            <h4 className="text-[10px] md:text-sm font-black text-primary-text uppercase italic tracking-tighter font-headline">{step.t}</h4>
-                            <p className="text-[8px] md:text-xs text-secondary-text italic font-medium">{step.d}</p>
+                            <h4 className="text-xs md:text-sm font-black text-primary-text uppercase italic tracking-tighter font-headline">{step.t}</h4>
+                            <p className="text-[10px] md:text-xs text-secondary-text italic font-medium">{step.d}</p>
                         </div>
                     </div>
                 ))}
@@ -170,13 +165,13 @@ const LiveDashboardSection = () => (
             <div className="grid lg:grid-cols-2 gap-12 md:gap-24 items-center">
                 <div className="space-y-6 md:space-y-10">
                     <div className="space-y-4">
-                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[9px]">Operational Visibility</Badge>
+                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">Operational Visibility</Badge>
                         <SectionHeadline>STOP CHASING. <br /><span className="text-primary">START SEEING.</span></SectionHeadline>
-                        <p className="text-sm md:text-xl text-secondary-text italic font-medium leading-relaxed border-l-2 border-primary/20 pl-6">
+                        <p className="text-base md:text-xl text-secondary-text italic font-medium leading-relaxed border-l-2 border-primary/20 pl-6">
                             One unified dashboard gives you high-gravity oversight of every task, across every branch, in real-time.
                         </p>
                     </div>
-                    <ul className="space-y-3 md:space-y-6">
+                    <ul className="space-y-4 md:space-y-6">
                         {[
                             { t: "BINARY STATUS", d: "Pending tasks stay RED. Completed turn GREEN.", i: CheckCircle2 },
                             { t: "TIME-STAMPED PROOF", d: "Verifiable audit trail for every action.", i: Clock },
@@ -187,8 +182,8 @@ const LiveDashboardSection = () => (
                                     <item.i className="h-5 w-5 md:h-6 md:w-6" />
                                 </div>
                                 <div className="space-y-1">
-                                    <h4 className="font-black text-primary-text uppercase italic text-[10px] md:text-sm tracking-tight font-headline">{item.t}</h4>
-                                    <p className="text-[9px] md:text-sm text-secondary-text italic font-medium leading-relaxed">{item.d}</p>
+                                    <h4 className="font-black text-primary-text uppercase italic text-xs md:text-sm tracking-tight font-headline">{item.t}</h4>
+                                    <p className="text-[10px] md:text-sm text-secondary-text italic font-medium leading-relaxed">{item.d}</p>
                                 </div>
                             </li>
                         ))}
@@ -207,27 +202,92 @@ const LiveDashboardSection = () => (
 
 const RealTaskExamplesSection = () => {
     const examples = [
-        { industry: "RESTAURANT", title: "COLD-CHAIN", icon: Utensils, color: "text-primary", what: "1°C to 4°C", how: "Check display", why: "Prevents recall" },
-        { industry: "HOSPITAL", title: "CRASH CART", icon: Hospital, color: "text-pink-500", what: "Verify seal", how: "Check pressure", why: "Code Blue fail" },
-        { industry: "SCHOOL", title: "BUS SAFETY", icon: School, color: "text-amber-500", what: "Empty bus", how: "Back-seat check", why: "Never-event" },
-        { industry: "CINEMA", title: "AC COMFORT", icon: Popcorn, color: "text-purple-500", what: "Check show temp", how: "Verify load", why: "Guest exits" }
+        { 
+            id: "RES-KIT-01",
+            industry: "RESTAURANT", 
+            title: "Cold-Chain Integrity", 
+            icon: Utensils, 
+            color: "text-primary",
+            audit: "Thermal Integrity Verification (CCP-1)",
+            action: "Check and log fridge temps: must be 1°C to 4°C.",
+            risk: "Pathogen growth and total stock loss."
+        },
+        { 
+            id: "H-NUR-02",
+            industry: "HOSPITAL", 
+            title: "Crash Cart Readiness", 
+            icon: Hospital, 
+            color: "text-pink-500",
+            audit: "Life-Support Equipment Validation (CCP)",
+            action: "Verify crash cart seal integrity and O2 cylinder level.",
+            risk: "Rescue failure during cardiac arrest."
+        },
+        { 
+            id: "SC-LOG-03",
+            industry: "SCHOOL", 
+            title: "Student Transport", 
+            icon: School, 
+            color: "text-amber-500",
+            audit: "Empty Bus Walkthrough Protocol",
+            action: "Secondary check: walk to the back seat after drop-off.",
+            risk: "Child left behind in bus (Fatal Never-Event)."
+        },
+        { 
+            id: "C-PRO-01",
+            industry: "CINEMA", 
+            title: "Projection Quality", 
+            icon: Popcorn, 
+            color: "text-purple-500",
+            audit: "DCP Ingest Verification",
+            action: "Verify movie file is 100% loaded and checksum passed.",
+            risk: "Black screen during show (Full refund)."
+        }
     ];
     return (
         <Section className="bg-black">
             <div className="max-w-7xl mx-auto space-y-8 md:space-y-16">
                 <div className="text-center space-y-2">
-                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[9px]">Field Evidence</Badge>
-                    <SectionHeadline>REAL EXAMPLES</SectionHeadline>
+                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">Forensic Data Mapping</Badge>
+                    <SectionHeadline>REAL TASK EXAMPLES</SectionHeadline>
                 </div>
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
                     {examples.map((ex, i) => (
-                        <div key={i} className="p-4 md:p-8 rounded-xl border border-white/5 bg-[#0a0a0a] flex flex-col space-y-3 md:space-y-6 hover:border-primary/20 transition-all group">
-                            <div className="flex items-center gap-2">
-                                <ex.icon className={cn("w-3 h-3 md:w-4 md:h-4", ex.color)} />
-                                <span className={cn("text-[7px] md:text-[9px] font-black uppercase tracking-widest", ex.color)}>{ex.industry}</span>
+                        <div key={i} className="p-6 md:p-10 rounded-2xl border border-white/10 bg-[#0a0a0a] space-y-6 hover:border-primary/30 transition-all group relative overflow-hidden">
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                    <div className={cn("p-2 rounded-lg bg-white/5", ex.color)}>
+                                        <ex.icon className="w-5 h-5" />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <span className={cn("text-[10px] font-black uppercase tracking-widest", ex.color)}>{ex.industry}</span>
+                                        <h4 className="text-lg md:text-2xl font-black text-primary-text uppercase italic tracking-tighter font-headline leading-none">{ex.title}</h4>
+                                    </div>
+                                </div>
+                                <span className="text-[10px] font-mono text-white/20">ID: {ex.id}</span>
                             </div>
-                            <h4 className="text-[10px] md:text-xl font-black text-primary-text uppercase italic tracking-tighter leading-none font-headline">{ex.title}</h4>
-                            <p className="text-[8px] md:text-sm text-secondary-text italic font-medium leading-tight">WHY: {ex.why}</p>
+
+                            <div className="space-y-4">
+                                <div className="space-y-1">
+                                    <span className="text-[9px] font-black text-primary uppercase tracking-[0.3em] flex items-center gap-2">
+                                        <SearchCheck className="w-3 h-3" /> AUDIT (TECHNICAL PROTOCOL)
+                                    </span>
+                                    <p className="text-xs md:text-sm text-primary-text font-bold italic leading-tight">{ex.audit}</p>
+                                </div>
+                                
+                                <div className="space-y-1">
+                                    <span className="text-[9px] font-black text-accent uppercase tracking-[0.3em] flex items-center gap-2">
+                                        <GraduationCap className="w-3 h-3" /> ACTION (TRAINER'S NOTES)
+                                    </span>
+                                    <p className="text-xs md:text-sm text-secondary-text font-medium italic leading-relaxed">{ex.action}</p>
+                                </div>
+
+                                <div className="pt-4 border-t border-white/5">
+                                    <span className="text-[9px] font-black text-red-500 uppercase tracking-[0.3em] flex items-center gap-2">
+                                        <ShieldAlert className="w-3 h-3" /> RISK (CONSEQUENCE IF MISSED)
+                                    </span>
+                                    <p className="text-[10px] md:text-xs text-red-500/80 font-black uppercase italic leading-tight pt-1">{ex.risk}</p>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -240,18 +300,18 @@ const PricingSection = () => (
     <Section id="pricing" className="bg-black text-center py-16 md:py-32 border-t border-white/5">
         <div className="max-w-3xl mx-auto space-y-8 md:space-y-12">
             <div className="space-y-4">
-                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.4em] font-black text-[9px]">Investment in Infrastructure</Badge>
+                <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.4em] font-black text-[10px]">Investment in Infrastructure</Badge>
                 <h2 className="text-3xl md:text-6xl font-black font-headline italic uppercase tracking-tighter text-primary-text leading-tight">OPERATIONAL CERTAINTY</h2>
                 <div className="flex flex-col items-center gap-2 pt-2">
                     <div className="flex items-baseline gap-2 md:gap-4">
                         <span className="text-5xl md:text-9xl font-black text-primary italic drop-shadow-[0_0_30px_rgba(46,184,107,0.3)]">₹999</span>
-                        <span className="text-lg md:text-4xl font-black text-white/20 italic">/ $12</span>
+                        <span className="text-2xl md:text-4xl font-black text-white/20 italic">/ $12</span>
                     </div>
-                    <span className="text-[8px] md:text-[10px] font-black text-white/20 uppercase tracking-[0.5em]">EXCEL & GOOGLE SHEETS • OWN FOREVER</span>
+                    <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em]">EXCEL & GOOGLE SHEETS • OWN FOREVER</span>
                 </div>
             </div>
             <div className="px-4">
-                <Button size="lg" asChild className="group w-full md:w-auto h-16 md:h-24 px-6 md:px-16 rounded-xl bg-primary text-black font-black uppercase text-base md:text-2xl shadow-2xl hover:scale-105 active:scale-95 transition-all border-none">
+                <Button size="lg" asChild className="group w-full md:w-auto h-16 md:h-24 px-8 md:px-16 rounded-xl bg-primary text-black font-black uppercase text-base md:text-2xl shadow-2xl hover:scale-105 active:scale-95 transition-all border-none">
                     <Link href="/library" className="flex items-center justify-center">DEPLOY SYSTEM NOW <ArrowRight className="ml-2 h-5 w-5 md:ml-4 md:h-8 md:w-8 transition-transform group-hover:translate-x-2" /></Link>
                 </Button>
             </div>
