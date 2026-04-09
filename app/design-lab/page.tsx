@@ -11,9 +11,11 @@ import {
     GraduationCap,
     ShieldAlert,
     Zap,
-    AlertTriangle,
-    ChevronRight,
-    ShieldCheck
+    ShieldCheck,
+    Maximize2,
+    LayoutGrid,
+    Cpu,
+    Target
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -22,10 +24,10 @@ import { Footer } from '@/components/layout/footer';
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 const ConceptSection = ({ title, description, bgClass, textClass, children, id }: { title: string, description: string, bgClass: string, textClass: string, children: React.ReactNode, id?: string }) => (
-    <section id={id} className={cn("w-full py-16 border-b border-white/5", bgClass)}>
+    <section id={id} className={cn("w-full py-16 border-b border-zinc-200", bgClass)}>
         <div className="container px-4 mx-auto">
             <div className="max-w-4xl mx-auto mb-12 text-center space-y-2">
-                <Badge variant="outline" className={cn("uppercase tracking-[0.3em] font-black text-[10px]", textClass === "text-zinc-900" || textClass === "text-[#0d4d4d]" || textClass === "text-[#2d1b10]" ? "border-black/10" : "border-primary/20")}>Combo Archetype</Badge>
+                <Badge variant="outline" className={cn("uppercase tracking-[0.3em] font-black text-[10px] border-zinc-300")}>Color Archetype</Badge>
                 <h2 className={cn("text-3xl font-black font-headline uppercase italic tracking-tighter", textClass)}>{title}</h2>
                 <p className={cn("text-sm opacity-60 italic font-medium", textClass)}>{description}</p>
             </div>
@@ -34,10 +36,10 @@ const ConceptSection = ({ title, description, bgClass, textClass, children, id }
     </section>
 );
 
-const TaskSnippet = ({ title, audit, action, risk, colorClass, bgCard = "bg-white/5", borderClass = "border-white/10", labelClass = "text-white/40", textMain = "text-white" }: any) => (
-    <div className={cn("p-6 rounded-2xl border shadow-2xl space-y-5", bgCard, borderClass)}>
+const TaskSnippet = ({ title, audit, action, risk, colorClass, bgCard = "bg-white", borderClass = "border-zinc-200", labelClass = "text-zinc-400", textMain = "text-zinc-900" }: any) => (
+    <div className={cn("p-6 rounded-2xl border shadow-sm space-y-5", bgCard, borderClass)}>
         <div className="flex items-center gap-3">
-            <div className={cn("p-2 rounded-lg bg-white/5", colorClass)}>
+            <div className={cn("p-2 rounded-lg bg-zinc-100", colorClass)}>
                 <Utensils className="w-5 h-5" />
             </div>
             <h4 className={cn("text-xl font-black uppercase italic tracking-tighter font-headline leading-none", textMain)}>{title}</h4>
@@ -51,9 +53,9 @@ const TaskSnippet = ({ title, audit, action, risk, colorClass, bgCard = "bg-whit
                 <span className={cn("text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-2", labelClass)}><GraduationCap className="w-3 h-3"/> ACTION (TRAINER)</span>
                 <p className={cn("text-sm font-medium italic opacity-80", textMain)}>{action}</p>
             </div>
-            <div className="pt-3 border-t border-white/5">
-                <span className="text-[10px] font-black text-red-500 uppercase tracking-[0.3em] flex items-center gap-2"><ShieldAlert className="w-3 h-3"/> RISK (CONSEQUENCE)</span>
-                <p className="text-xs text-red-500 font-black uppercase italic pt-1">{risk}</p>
+            <div className="pt-3 border-t border-zinc-100">
+                <span className="text-[10px] font-black text-red-600 uppercase tracking-[0.3em] flex items-center gap-2"><ShieldAlert className="w-3 h-3"/> RISK (CONSEQUENCE)</span>
+                <p className="text-xs text-red-600 font-black uppercase italic pt-1">{risk}</p>
             </div>
         </div>
     </div>
@@ -61,84 +63,112 @@ const TaskSnippet = ({ title, audit, action, risk, colorClass, bgCard = "bg-whit
 
 export default function DesignLabPage() {
     return (
-        <div className="flex flex-col min-h-screen bg-black text-white">
+        <div className="flex flex-col min-h-screen bg-white text-zinc-900">
             <SiteHeader />
 
             <main className="flex-1">
                 
-                {/* --- HERO A: HIGH-KEY SPLIT (Light Gradient Left + Clear Video Right) --- */}
-                <section className="relative w-full min-h-[95vh] flex flex-col justify-center bg-white overflow-hidden border-b border-zinc-200">
+                {/* --- PROTOTYPE C: THE FLOATING GLASS CARD (Localized Light) --- */}
+                <section className="relative w-full min-h-[90vh] flex flex-col justify-center bg-zinc-900 overflow-hidden">
                     <div className="absolute inset-0 z-0">
-                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-                        {/* Gradient Fade: Light Green/White from Left */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#f0f9f4] via-white/90 to-transparent" />
+                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover grayscale opacity-40" />
                     </div>
-                    
-                    <div className="container px-6 relative z-10 grid md:grid-cols-[1.2fr,1fr] items-center gap-12 py-20 mx-auto">
-                        <div className="space-y-10">
-                            <div className="space-y-6">
-                                <Badge variant="outline" className="text-zinc-900 border-zinc-900/30 uppercase tracking-[0.4em] font-black text-[10px] bg-primary/5">Prototype A: Sovereign Light-Split</Badge>
-                                <h1 className="text-6xl md:text-[6.5rem] font-black font-headline text-zinc-900 uppercase italic tracking-tighter leading-[0.82]">
+                    <div className="container px-6 relative z-10 mx-auto">
+                        <div className="max-w-2xl bg-white/95 backdrop-blur-xl p-10 md:p-16 rounded-[2.5rem] shadow-2xl border border-white/20 space-y-8">
+                            <div className="space-y-4">
+                                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">Prototype C: Floating Command</Badge>
+                                <h1 className="text-5xl md:text-7xl font-black font-headline text-zinc-900 uppercase italic tracking-tighter leading-[0.85]">
                                     CAPTURE <br/><span className="text-primary">MEMORY.</span>
                                 </h1>
-                                <p className="text-lg md:text-xl text-zinc-600 italic font-medium border-l-4 border-primary/40 pl-8 max-w-sm leading-relaxed">
+                                <p className="text-lg text-zinc-600 italic font-medium leading-relaxed border-l-4 border-primary/20 pl-6">
                                     Institutional memory is an asset. <br /> Anything else is just luck.
                                 </p>
                             </div>
-                            <div className="space-y-4">
-                                <Button className="h-16 px-10 bg-zinc-900 text-white font-black uppercase italic rounded-xl border-none shadow-2xl hover:scale-105 transition-all">
-                                    Deploy System Now <ArrowRight className="ml-2 h-5 w-5" />
-                                </Button>
-                                <p className="text-[10px] text-zinc-400 font-black uppercase tracking-[0.4em] pl-2">EXCEL & SHEETS • OWN FOREVER</p>
-                            </div>
-                        </div>
-                        
-                        <div className="hidden md:block p-1 border-l border-zinc-900/10 pl-16 space-y-8">
-                            <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.6em]">SELECT VERTICAL</span>
-                            <div className="space-y-5">
-                                {["Restaurants", "Hotels & Resorts", "Healthcare", "Schools", "Franchise Networks"].map(v => (
-                                    <p key={v} className="text-2xl font-black text-zinc-300 uppercase italic hover:text-primary transition-all hover:translate-x-3 cursor-pointer">{v}</p>
-                                ))}
-                            </div>
+                            <Button className="h-16 px-10 bg-zinc-900 text-white font-black uppercase italic rounded-xl border-none shadow-xl hover:scale-105 transition-all">
+                                Deploy System Now <ArrowRight className="ml-2 h-5 w-5" />
+                            </Button>
                         </div>
                     </div>
                 </section>
 
-                {/* --- HERO B: ULTRA-BLACK COMMAND (Pure Contrast) --- */}
-                <section className="relative w-full min-h-[90vh] flex flex-col justify-center bg-black overflow-hidden border-b border-white/5">
-                    <div className="container px-6 relative z-10 grid md:grid-cols-[1.2fr,1fr] items-center gap-12 py-20 mx-auto">
+                {/* --- PROTOTYPE D: THE TECHNICAL BLUEPRINT (Framed Video) --- */}
+                <section className="relative w-full min-h-[90vh] flex flex-col justify-center bg-[#f8fafc] border-y border-zinc-200">
+                    <div className="container px-6 mx-auto grid lg:grid-cols-2 gap-16 items-center py-20">
                         <div className="space-y-10">
                             <div className="space-y-6">
-                                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">Prototype B: Deep Space Command</Badge>
-                                <h1 className="text-6xl md:text-[6.5rem] font-black font-headline text-white uppercase italic tracking-tighter leading-[0.82]">
-                                    CAPTURE <br/><span className="text-primary">MEMORY.</span>
+                                <Badge variant="outline" className="text-zinc-500 border-zinc-300 uppercase tracking-[0.4em] font-black text-[10px]">Prototype D: Blueprint Framed</Badge>
+                                <h1 className="text-6xl md:text-8xl font-black font-headline text-zinc-900 uppercase italic tracking-tighter leading-[0.85]">
+                                    SYSTEMS <br/><span className="text-primary">ONLY.</span>
                                 </h1>
-                                <p className="text-lg md:text-xl text-white/40 italic font-medium border-l-4 border-primary/20 pl-8 max-w-sm leading-relaxed">
-                                    Maximum contrast for high-stakes operational review.
+                                <p className="text-xl text-zinc-500 italic font-medium max-w-sm">
+                                    Stop managing manually. Deploy forensically engineered infrastructure.
                                 </p>
                             </div>
-                            <div className="space-y-4">
-                                <Button className="h-16 px-10 bg-primary text-black font-black uppercase italic rounded-xl border-none shadow-[0_0_40px_-10px_rgba(46,184,107,0.5)] hover:scale-105 transition-all">
-                                    Deploy System Now <ArrowRight className="ml-2 h-5 w-5" />
-                                </Button>
-                                <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.4em] pl-2">NO SAAS • NO LOCK-IN</p>
-                            </div>
+                            <Button className="h-16 px-12 bg-primary text-white font-black uppercase italic rounded-full shadow-2xl hover:brightness-110 transition-all">
+                                View Technical Packs <ArrowRight className="ml-2 h-5 w-5" />
+                            </Button>
                         </div>
-                        <div className="hidden md:block p-1 border-l border-white/10 pl-16 space-y-8">
-                            <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.6em]">INFRASTRUCTURE NODES</span>
-                            <div className="space-y-5">
-                                {["Manufacturing", "Logistics", "Governance", "Retail", "Cinemas"].map(v => (
-                                    <p key={v} className="text-2xl font-black text-white/20 uppercase italic hover:text-primary transition-all hover:translate-x-3 cursor-pointer">{v}</p>
-                                ))}
+                        <div className="relative group">
+                            <div className="absolute -inset-4 bg-primary/5 rounded-[3rem] blur-2xl group-hover:bg-primary/10 transition-all" />
+                            <div className="relative bg-zinc-900 rounded-[2.5rem] p-3 border-8 border-white shadow-2xl overflow-hidden aspect-video">
+                                <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover rounded-[1.5rem]" />
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* 1. PAPER WHITE */}
+                {/* --- PROTOTYPE E: THE MINIMALIST SPLIT (Pure Pro) --- */}
+                <section className="relative w-full min-h-[90vh] flex overflow-hidden border-b border-zinc-200">
+                    <div className="w-1/2 bg-white flex flex-col justify-center px-20 space-y-12 border-r border-zinc-100">
+                        <div className="space-y-6">
+                            <h1 className="text-7xl font-black font-headline text-zinc-900 uppercase italic tracking-tighter leading-[0.85]">
+                                DEPLOY <br/><span className="text-primary">GRAVITY.</span>
+                            </h1>
+                            <p className="text-xl text-zinc-400 italic font-medium max-w-sm leading-relaxed">
+                                Zero-fail operational protocols built for high-stakes environments.
+                            </p>
+                        </div>
+                        <div className="space-y-4">
+                            <Button className="h-16 px-10 bg-zinc-900 text-white font-black uppercase italic rounded-xl">
+                                Standardize Your Brand <ArrowRight className="ml-2 h-5 w-5" />
+                            </Button>
+                            <p className="text-[10px] text-zinc-300 font-black uppercase tracking-[0.5em] pl-2">NO SAAS • NO SUBSCRIPTIONS</p>
+                        </div>
+                    </div>
+                    <div className="w-1/2 relative bg-zinc-100">
+                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-white to-transparent" />
+                    </div>
+                </section>
+
+                {/* --- PROTOTYPE G: THE SOOTHING INSURANCE STANDARD (Sky/Navy) --- */}
+                <section className="relative w-full min-h-[90vh] flex flex-col justify-center bg-[#f0f7ff] overflow-hidden border-b border-blue-100">
+                    <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#1e40af_1px,transparent_1px)] [background-size:24px_24px]" />
+                    <div className="container px-6 relative z-10 mx-auto text-center space-y-12">
+                        <div className="space-y-6 max-w-4xl mx-auto">
+                            <Badge className="bg-blue-600 text-white uppercase tracking-[0.4em] font-black text-[10px] px-6 py-1.5 rounded-full">Prototype G: Institutional Sky</Badge>
+                            <h1 className="text-6xl md:text-[7rem] font-black font-headline text-[#0f172a] uppercase italic tracking-tighter leading-[0.82]">
+                                TRUST IS <br/><span className="text-blue-600">ENGINEERED.</span>
+                            </h1>
+                            <p className="text-xl md:text-2xl text-slate-500 italic font-medium max-w-2xl mx-auto">
+                                The professional standard for global compliance and operational continuity.
+                            </p>
+                        </div>
+                        <div className="flex flex-col md:flex-row gap-4 justify-center">
+                            <Button className="h-20 px-12 bg-[#0f172a] text-white font-black uppercase italic rounded-2xl text-lg shadow-2xl">
+                                Explore The Library <ArrowRight className="ml-2 h-6 w-6" />
+                            </Button>
+                            <Button variant="outline" className="h-20 px-12 border-blue-200 text-blue-600 bg-white font-black uppercase italic rounded-2xl text-lg hover:bg-blue-50">
+                                Talk To An Engineer
+                            </Button>
+                        </div>
+                    </div>
+                </section>
+
+                {/* 10 SOOTHING COLOR COMBOS */}
                 <ConceptSection 
-                    title="1. Paper White" 
-                    description="Pure contrast. High-trust academic standard. Maximum readability."
+                    title="1. Paper Technical" 
+                    description="Clean white with zinc text. The highest legibility standard."
                     bgClass="bg-white"
                     textClass="text-zinc-900"
                 >
@@ -149,205 +179,179 @@ export default function DesignLabPage() {
                             action="Log fridge temps: Target 1°C to 4°C."
                             risk="Pathogen growth and stock loss."
                             colorClass="text-primary"
-                            bgCard="bg-zinc-50"
-                            borderClass="border-zinc-200"
-                            labelClass="text-zinc-400"
-                            textMain="text-zinc-900"
                         />
                     </div>
                 </ConceptSection>
 
-                {/* 2. SOFT SLATE */}
                 <ConceptSection 
-                    title="2. Soft Slate" 
-                    description="Premium SaaS aesthetic. Reduces ocular fatigue while maintaining high-trust."
-                    bgClass="bg-slate-50"
-                    textClass="text-slate-900"
+                    title="2. Corporate Sky" 
+                    description="Soothing blue-tinted background with navy text. High-trust."
+                    bgClass="bg-[#f8faff]"
+                    textClass="text-[#1e293b]"
                 >
                     <div className="max-w-xl mx-auto">
                         <TaskSnippet 
-                            title="Narcotics Vault"
-                            audit="Double-Blind Narcotics Count"
-                            action="Dual-person count of all controlled units."
-                            risk="Drug diversion and criminal charges."
+                            title="Legal Compliance"
+                            audit="Statutory License Validity Audit"
+                            action="Verify validity of FSSAI and Trade licenses."
+                            risk="Government sealing of premises."
                             colorClass="text-blue-600"
                             bgCard="bg-white"
-                            borderClass="border-slate-200"
-                            labelClass="text-slate-400"
                             textMain="text-slate-900"
                         />
                     </div>
                 </ConceptSection>
 
-                {/* 3. BLUEPRINT GRID */}
                 <ConceptSection 
-                    title="3. Blueprint Grid" 
-                    description="Engineering focused. Bold black borders and technical precision."
-                    bgClass="bg-zinc-50"
-                    textClass="text-black"
-                >
-                    <div className="max-w-xl mx-auto border-[3px] border-black p-10 space-y-8 bg-white shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]">
-                        <div className="flex items-center gap-4">
-                            <Zap className="w-8 h-8 text-primary" />
-                            <h3 className="text-3xl font-black uppercase italic font-headline text-black">Zero-Fail OT</h3>
-                        </div>
-                        <p className="text-sm font-bold uppercase tracking-widest text-zinc-500">Institutional Data Engine v11.9</p>
-                        <Button className="w-full h-14 bg-black text-white font-black uppercase rounded-none">Verify Command</Button>
-                    </div>
-                </ConceptSection>
-
-                {/* 4. MIDNIGHT SLATE */}
-                <ConceptSection 
-                    title="4. Midnight Slate" 
-                    description="Deep Navy background with crisp white text. Professional depth."
-                    bgClass="bg-[#0f172a]"
-                    textClass="text-white"
+                    title="3. Organic Mint" 
+                    description="Extremely soothing pale green. Low ocular fatigue."
+                    bgClass="bg-[#f0f9f4]"
+                    textClass="text-[#064e3b]"
                 >
                     <div className="max-w-xl mx-auto">
                         <TaskSnippet 
-                            title="Server Security"
-                            audit="Physical Server Room Temp Check"
-                            action="Log output temp (Target exactly 20°C)."
-                            risk="Hardware failure and data loss."
+                            title="Kitchen Hygiene"
+                            audit="Sanitization Validation Protocol"
+                            action="Sanitize all counters and verify with strips."
+                            risk="Mass food poisoning and brand damage."
                             colorClass="text-primary"
-                            bgCard="bg-white/5"
-                            borderClass="border-white/10"
-                            labelClass="text-primary/60"
+                            bgCard="bg-white"
+                            textMain="text-emerald-900"
                         />
                     </div>
                 </ConceptSection>
 
-                {/* 5. INDUSTRIAL AMBER */}
                 <ConceptSection 
-                    title="5. Industrial Amber" 
-                    description="Maximum visibility safety style. Inspired by high-viz monitors."
-                    bgClass="bg-black"
-                    textClass="text-amber-500"
+                    title="4. Modern Sand" 
+                    description="Warm, catchy and inviting boardroom aesthetic."
+                    bgClass="bg-[#fafaf9]"
+                    textClass="text-[#44403c]"
                 >
-                    <div className="max-w-xl mx-auto border-2 border-amber-500/20 p-8 rounded-3xl bg-[#0a0a0a] space-y-6">
-                        <div className="flex items-center gap-3">
-                            <AlertTriangle className="w-6 h-6 text-amber-500" />
-                            <h4 className="text-2xl font-black uppercase italic font-headline">Hazard Warning</h4>
-                        </div>
-                        <p className="text-sm font-bold text-amber-500/80 leading-relaxed italic">
-                            Critical safety breach detected in Unit 04. All fire exits must be physically cleared.
-                        </p>
+                    <div className="max-w-xl mx-auto">
+                        <TaskSnippet 
+                            title="Asset Protection"
+                            audit="Serialized Inventory Reconciliation"
+                            action="Count high-value units against daily sales."
+                            risk="Internal theft and margin erosion."
+                            colorClass="text-orange-600"
+                            bgCard="bg-white"
+                            textMain="text-stone-900"
+                        />
                     </div>
                 </ConceptSection>
 
-                {/* 6. CLINICAL TEAL */}
                 <ConceptSection 
-                    title="6. Clinical Teal" 
-                    description="Off-white with Deep Teal. Sterile healthcare palette."
-                    bgClass="bg-[#f0f4f4]"
+                    title="5. Steel Minimal" 
+                    description="Industrial grey with stark black typography. Catchy and bold."
+                    bgClass="bg-[#f1f5f9]"
+                    textClass="text-black"
+                >
+                    <div className="max-w-xl mx-auto border-2 border-black p-10 bg-white shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+                        <div className="flex items-center gap-4">
+                            <Zap className="w-8 h-8 text-primary" />
+                            <h3 className="text-3xl font-black uppercase italic font-headline">SOVEREIGN V11.9</h3>
+                        </div>
+                        <p className="text-sm font-bold uppercase tracking-widest text-zinc-500 mt-4">High-Readability Deployment Mode</p>
+                        <Button className="w-full h-14 bg-black text-white font-black uppercase rounded-none mt-8">Secure System</Button>
+                    </div>
+                </ConceptSection>
+
+                <ConceptSection 
+                    title="6. Clinical Minimal" 
+                    description="Sterile, high-trust healthcare palette."
+                    bgClass="bg-white"
                     textClass="text-[#0d4d4d]"
                 >
                     <div className="max-w-xl mx-auto">
                         <TaskSnippet 
-                            title="Patient ID Sync"
-                            audit="Dual-Identifier Verification"
-                            action="Cross-check Name and MRN before medication."
-                            risk="Wrong-patient clinical never-event."
-                            colorClass="text-[#0d4d4d]"
-                            bgCard="bg-white"
-                            borderClass="border-[#0d4d4d]/10"
-                            labelClass="text-[#0d4d4d]/40"
-                            textMain="text-[#0d4d4d]"
+                            title="Surgical Safety"
+                            audit="WHO 'Time Out' Execution"
+                            action="Verify Patient, Site, and Procedure before incision."
+                            risk="Wrong-site surgery (Fatal never-event)."
+                            colorClass="text-teal-600"
+                            borderClass="border-teal-100"
+                            textMain="text-teal-950"
                         />
                     </div>
                 </ConceptSection>
 
-                {/* 7. IVORY EXECUTIVE */}
                 <ConceptSection 
-                    title="7. Ivory Executive" 
-                    description="Warm Cream with Deep Espresso. Prestigious boardroom aesthetic."
-                    bgClass="bg-[#faf7f2]"
+                    title="7. Executive Parchment" 
+                    description="Light cream with deep espresso accents. Prestigious."
+                    bgClass="bg-[#fffcf5]"
                     textClass="text-[#2d1b10]"
                 >
                     <div className="max-w-xl mx-auto p-10 rounded-[2rem] border border-[#2d1b10]/10 bg-white shadow-xl space-y-6">
-                        <h4 className="text-2xl font-black italic uppercase tracking-tighter font-headline text-[#2d1b10]">Governance Protocol</h4>
+                        <h4 className="text-2xl font-black italic uppercase tracking-tighter font-headline text-[#2d1b10]">Strategic Governance</h4>
                         <div className="h-px bg-[#2d1b10]/10" />
                         <p className="text-sm italic font-medium text-[#2d1b10]/70">Consistency is the luxury of the well-engineered.</p>
-                        <Button className="bg-[#2d1b10] text-[#faf7f2] font-black uppercase rounded-xl h-14 w-full">Review Vitals</Button>
+                        <Button className="bg-[#2d1b10] text-[#fffcf5] font-black uppercase rounded-xl h-14 w-full">Review Vitals</Button>
                     </div>
                 </ConceptSection>
 
-                {/* 8. OBSIDIAN EMERALD */}
                 <ConceptSection 
-                    title="8. Obsidian Emerald" 
-                    description="Pure Black with High-Contrast Green. The hardened brand standard."
-                    bgClass="bg-black"
-                    textClass="text-primary"
-                >
-                    <div className="max-w-xl mx-auto">
-                        <TaskSnippet 
-                            title="Perimeter Lock"
-                            audit="Institutional Lockdown Verification"
-                            action="Verify 100% of external roof/alley gates locked."
-                            risk="Unauthorized intrusion and asset theft."
-                            colorClass="text-primary"
-                            bgCard="bg-[#050505]"
-                            borderClass="border-primary/20"
-                            labelClass="text-primary/40"
-                            textMain="text-white"
-                        />
-                    </div>
-                </ConceptSection>
-
-                {/* 9. STEEL HIGH-KEY */}
-                <ConceptSection 
-                    title="9. Steel High-Key" 
-                    description="Silver-Grey with Stark Black text. Modern industrial tech vibe."
-                    bgClass="bg-[#e2e8f0]"
-                    textClass="text-zinc-900"
-                >
-                    <div className="max-w-xl mx-auto">
-                        <TaskSnippet 
-                            title="Load Capacity"
-                            audit="Structural Pallet Racking Audit"
-                            action="Inspect uprights for impact or deformation."
-                            risk="Progressive collapse and total inventory loss."
-                            colorClass="text-zinc-900"
-                            bgCard="bg-[#f8fafc]"
-                            borderClass="border-zinc-400"
-                            labelClass="text-zinc-500"
-                            textMain="text-zinc-900"
-                        />
-                    </div>
-                </ConceptSection>
-
-                {/* 10. SOLARISED COMMAND */}
-                <ConceptSection 
-                    title="10. Solarised Command" 
-                    description="Deep Charcoal-Teal with Soft Yellow. Balanced for long-form review."
-                    bgClass="bg-[#002b36]"
-                    textClass="text-[#b58900]"
+                    title="8. High-Contrast Slate" 
+                    description="Sharp slate-blue with white cards. Very modern."
+                    bgClass="bg-[#eff6ff]"
+                    textClass="text-[#1e3a8a]"
                 >
                     <div className="max-w-xl mx-auto">
                         <TaskSnippet 
                             title="Data Integrity"
-                            audit="Night Audit Ledger Synthesis"
-                            action="Reconcile POS sales against bank deposits."
-                            risk="Undetected revenue leakage."
-                            colorClass="text-[#859900]"
-                            bgCard="bg-[#073642]"
-                            borderClass="border-[#586e75]"
-                            labelClass="text-[#93a1a1]"
-                            textMain="text-[#eee8d5]"
+                            audit="Cloud Backup Verification"
+                            action="Confirm 100% daily sync of operational logs."
+                            risk="Total loss of institutional memory."
+                            colorClass="text-blue-700"
+                            bgCard="bg-white"
+                            textMain="text-blue-950"
                         />
                     </div>
                 </ConceptSection>
 
+                <ConceptSection 
+                    title="9. Soft Graphite" 
+                    description="Matte grey with vibrant green accents. Catchy."
+                    bgClass="bg-[#f4f4f5]"
+                    textClass="text-zinc-800"
+                >
+                    <div className="max-w-xl mx-auto">
+                        <TaskSnippet 
+                            title="Machine Uptime"
+                            audit="OEE Performance Sweep"
+                            action="Track machine downtime and quality defects."
+                            risk="Loss of manufacturing throughput."
+                            colorClass="text-primary"
+                            bgCard="bg-white"
+                        />
+                    </div>
+                </ConceptSection>
+
+                <ConceptSection 
+                    title="10. Neutral Blueprint" 
+                    description="Off-white with technical grid and deep borders."
+                    bgClass="bg-[#fafafa]"
+                    textClass="text-zinc-900"
+                >
+                    <div className="max-w-xl mx-auto p-8 border-4 border-zinc-900 bg-white flex flex-col gap-6">
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 bg-zinc-900 text-white flex items-center justify-center font-black">V11</div>
+                            <h3 className="text-2xl font-black uppercase font-headline">MASTER ENGINE</h3>
+                        </div>
+                        <p className="text-xs font-bold leading-relaxed text-zinc-500 italic">SYSTEM_STATUS: ACTIVE // READABILITY: OPTIMIZED</p>
+                        <Button className="bg-zinc-900 text-white rounded-none font-black uppercase h-14">Initiate Audit</Button>
+                    </div>
+                </ConceptSection>
+
                 {/* FINAL CTA PROTOTYPE */}
-                <section className="py-24 text-center bg-zinc-950 border-t border-white/5">
+                <section className="py-24 text-center bg-zinc-50 border-t border-zinc-200">
                     <div className="max-w-2xl mx-auto space-y-10 px-4">
-                        <h2 className="text-3xl font-black font-headline italic text-zinc-500 uppercase tracking-tighter">Testing High-Readability CTA</h2>
+                        <h2 className="text-3xl font-black font-headline italic text-zinc-400 uppercase tracking-tighter">Testing High-Readability CTA</h2>
                         <div className="flex flex-col gap-4">
-                            <Button className="h-20 bg-white text-black font-black uppercase text-lg rounded-xl shadow-2xl hover:bg-zinc-200 border-none transition-all">
-                                Deploy (Black Text on White) <ArrowRight className="ml-2 h-6 w-6" />
+                            <Button className="h-20 bg-zinc-900 text-white font-black uppercase text-lg rounded-xl shadow-2xl hover:bg-black transition-all">
+                                Deploy (White Text on Black) <ArrowRight className="ml-2 h-6 w-6" />
                             </Button>
-                            <Button className="h-20 bg-primary text-black font-black uppercase text-lg rounded-xl shadow-2xl hover:scale-[1.02] border-none transition-all">
-                                Deploy (Black Text on Green) <ArrowRight className="ml-2 h-6 w-6" />
+                            <Button className="h-20 bg-primary text-white font-black uppercase text-lg rounded-xl shadow-2xl hover:brightness-110 border-none transition-all">
+                                Deploy (White Text on Green) <ArrowRight className="ml-2 h-6 w-6" />
                             </Button>
                         </div>
                     </div>
