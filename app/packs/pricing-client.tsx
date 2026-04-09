@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -256,6 +257,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                                 LIFETIME EXPERT SUPPORT INCLUDED
                                             </span>
                                         </div>
+                                    </div>
+
+                                    <div className="mt-8 pt-6 border-t border-white/5 w-full">
+                                        <Button asChild variant="link" size="sm" className="w-full text-[10px] font-black uppercase text-accent/60 tracking-widest hover:text-accent">
+                                            <Link href="https://calendly.com/aditi-imran-khan/30min" target="_blank">
+                                                Need a Bespoke Build or Tailored Customization? Schedule a Call.
+                                            </Link>
+                                        </Button>
                                     </div>
 
                                     <p className="mt-10 text-[9px] text-white/20 font-black uppercase tracking-[0.4em] font-headline">

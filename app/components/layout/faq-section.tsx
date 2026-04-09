@@ -57,6 +57,13 @@ export const FaqSection = () => (
                         </AccordionContent>
                     </AccordionItem>
 
+                    <AccordionItem value="item-modify" className="border-white/10">
+                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">What if I accidentally break a formula or task?</AccordionTrigger>
+                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
+                          The system is fully unlocked, which is its greatest power. We recommend keeping an original <strong>Master Copy</strong> untouched. MoreMeets is not responsible for operational failures, data errors, or compliance lapses resulting from post-download edits or misuse of the file logic.
+                        </AccordionContent>
+                    </AccordionItem>
+
                     <AccordionItem value="item-6" className="border-white/10">
                         <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Is this system audit-ready?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">

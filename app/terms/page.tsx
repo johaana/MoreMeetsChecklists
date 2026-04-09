@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Footer } from "@/components/layout/footer";
 import type { Metadata } from 'next';
@@ -47,7 +48,10 @@ export default function TermsOfServicePage() {
                             The Products provided on this Site (Standard Operating Procedures, Checklists, and Templates) are intended as management tools to assist in organizational consistency and are not a substitute for professional, legal, safety, or medical advice. 
                         </p>
                         <p>
-                            Use of these Products does not guarantee compliance with any specific local laws or regulations, nor does it replace the requirement for qualified professionals (e.g., Fire Safety Officers, Legal Counsel, Certified Auditors) to inspect and certify your operations. MoreMeets™ assumes no liability for any operational failures, accidents, or regulatory penalties incurred while using these tools.
+                            Use of these Products does not guarantee compliance with any specific local laws or regulations, nor does it replace the requirement for qualified professionals (e.g., Fire Safety Officers, Legal Counsel, Certified Auditors) to inspect and certify your operations. 
+                        </p>
+                        <p className="font-bold text-foreground">
+                            Chain of Custody Notice: MoreMeets™ assumes no liability for operational failures, accidents, data errors, or regulatory penalties incurred while using these tools, especially if the original technical logic, formulas, or task descriptions have been modified by the user post-download.
                         </p>
                     </LegalSection>
 

@@ -155,6 +155,11 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         alignment: { ...verticalCenter, wrapText: true }
     };
 
+    const footerStyle = {
+        font: { ...baseFont, sz: 8, italic: true, color: { rgb: COLORS.INTEL_GREY } },
+        alignment: { horizontal: 'center', ...verticalCenter }
+    };
+
     const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'M') => {
         const ribbonData = [
             [{ v: "◀ BACK TO CONSOLE", l: { Target: "#'HOME_CONSOLE'!A1" }, s: navStyle }],
@@ -186,6 +191,18 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         for(let r = 4; r < 5000; r++) {
             if(!ws['!rows'][r]) ws['!rows'][r] = { hpt: 35 };
         }
+    };
+
+    const addLiabilityFooter = (ws: WorkSheet, lastRow: number, endCol: string = 'M') => {
+        const rowIdx = lastRow + 2;
+        const footerText = "For support, contact more@moremeets.com | MoreMeets assumes no liability for post-download structural alterations or misuse. © 2025 MoreMeets.";
+        const cell = utils.encode_cell({r: rowIdx, c: 0});
+        
+        utils.sheet_add_aoa(ws, [[{ v: footerText, s: footerStyle }]], { origin: cell });
+        
+        if (!ws['!merges']) ws['!merges'] = [];
+        const endC = utils.decode_col(endCol);
+        ws['!merges'].push({ s: { r: rowIdx, c: 0 }, e: { r: rowIdx, c: endC } });
     };
 
     let packChecklists: Checklist[] = [];
@@ -310,6 +327,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const setupCols = [10, 30, ...packChecklists.map(() => 20), 0, 0];
     setupWs['!cols'] = setupCols.map(w => ({ wch: w, hidden: w === 0 }));
     addSovereignRibbon(setupWs, "Branch Master Setup");
+    addLiabilityFooter(setupWs, branchSetupData.length);
     utils.book_append_sheet(wb, setupWs, "BRANCH_MASTER");
 
     // --- 03. TEAM HUB ---
@@ -342,6 +360,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const pWs = utils.aoa_to_sheet(pData);
     pWs['!cols'] = [0, 20, 25, 30, 18, 30, 0].map((w, i) => ({ wch: w, hidden: w === 0 }));
     addSovereignRibbon(pWs, "Responsibility & Resource Mapping");
+    addLiabilityFooter(pWs, pData.length);
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
     // --- 04. MISSION LEDGER (TODAYS_TASKS) ---
@@ -374,8 +393,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     const statusFormula = `IF(LEN(TRIM(H${rowIdx}))=0, ${temporalCheck}, IF(AND(LEN(TRIM(I${rowIdx}))=0, I${rowIdx}<>"N/A"), "AWAITING MGR", "COMPLETED"))`;
                     
                     const keyRef = `B${rowIdx} & "|" & C${rowIdx}`;
-                    
-                    // HYPERLINK PATTERN: Automatically styles as Blue/Underline if unassigned
                     const personFormula = `IF(COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0, HYPERLINK("#'TEAM_HUB'!A1", "ASSIGN IN TEAM HUB"), VLOOKUP(${keyRef}, 'TEAM_HUB'!A:D, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!A:F, 6, FALSE) & "]", ""))`;
                     
                     const technicalVal = t.technicalProtocol || t.description || "";
@@ -402,10 +419,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     });
 
     const mWs = utils.aoa_to_sheet(mData);
-    // COMPACT WIDTHS: Reclaimed horizontal space for one-glance command
     mWs['!cols'] = [12, 20, 20, 22, 10, 40, 50, 18, 18, 15, 10, 10, 40].map(w => ({ wch: w }));
     addSovereignRibbon(mWs, "Mission Execution Ledger");
     mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
+    addLiabilityFooter(mWs, mData.length);
 
     utils.book_append_sheet(wb, mWs, "TODAYS_TASKS");
 
@@ -421,6 +438,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const handoverWs = utils.aoa_to_sheet([[], [], [], handoverHeaders, ...handoverRows]);
     handoverWs['!cols'] = [20, 25, 25, 55, 15, 22].map(w => ({ wch: w }));
     addSovereignRibbon(handoverWs, "Shift Handover Bridge");
+    addLiabilityFooter(handoverWs, handoverRows.length + 4, 'F');
     utils.book_append_sheet(wb, handoverWs, "SHIFT_HANDOVER");
 
     // --- 06. INCIDENT TRACKER ---
@@ -448,6 +466,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const incidentWs = utils.aoa_to_sheet([[], [], [], incidentHeaders, ...incidentRows]);
     addSovereignRibbon(incidentWs, "Liability & Incident Log");
     incidentWs['!cols'] = [12, 20, 20, 55, 40, 55, 12].map(w => ({ wch: w }));
+    addLiabilityFooter(incidentWs, incidentRows.length + 4, 'G');
     utils.book_append_sheet(wb, incidentWs, "INCIDENT_TRACKER");
 
     // --- 07. BUSINESS HEALTH ---
@@ -475,6 +494,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const healthWs = utils.aoa_to_sheet(healthData);
     addSovereignRibbon(healthWs, "Performance Analytics & Unit Health");
     healthWs['!cols'] = [30, 20, 18, 18, 22].map(w => ({ wch: w }));
+    addLiabilityFooter(healthWs, healthData.length, 'E');
     utils.book_append_sheet(wb, healthWs, "BUSINESS_HEALTH");
 
     // --- 08. SOP LIBRARY (FULL DATABASE) ---
@@ -502,6 +522,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const sopWs = utils.aoa_to_sheet(sopData);
     sopWs['!cols'] = [20, 12, 45, 55, 55].map(w => ({ wch: w }));
     addSovereignRibbon(sopWs, "Institutional SOP Database");
+    addLiabilityFooter(sopWs, sopData.length, 'E');
     utils.book_append_sheet(wb, sopWs, "SOP_LIBRARY");
 
     // --- 09. FINANCIAL SHIELD ---
@@ -529,6 +550,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const fsWs = utils.aoa_to_sheet(fsData);
     addSovereignRibbon(fsWs, "Unit Contribution & Financial Shield");
     fsWs['!cols'] = [12, 20, 18, 22, 12, 18, 22, 12].map(w => ({ wch: w }));
+    addLiabilityFooter(fsWs, fsData.length, 'H');
     utils.book_append_sheet(wb, fsWs, "FINANCIAL_SHIELD");
 
     // --- 10. SYSTEM GUIDE ---
@@ -564,6 +586,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         if(guideWs[cellLabel]) guideWs[cellLabel].s = { ...dataStyleCenter, font: { bold: true }, alignment: { horizontal: 'right', ...verticalCenter } };
         if(guideWs[cellText]) guideWs[cellText].s = { ...dataStyleLeft, alignment: { horizontal: 'left', wrapText: true, ...verticalCenter } };
     }
+    addLiabilityFooter(guideWs, guideData.length, 'K');
 
     utils.book_append_sheet(wb, guideWs, "SYSTEM_GUIDE");
 

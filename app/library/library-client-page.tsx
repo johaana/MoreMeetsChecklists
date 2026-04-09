@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Input } from '@/components/ui/input';
-import { Search, ArrowRight, X, ChevronDown } from 'lucide-react';
+import { Search, ArrowRight, X, ChevronDown, Sparkles } from 'lucide-react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { IconComponent } from '@/components/icons';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
@@ -64,6 +64,32 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => (
             <Button asChild className="w-full bg-primary/10 text-primary hover:bg-primary hover:text-black font-black uppercase italic text-xs tracking-widest transition-all border-none h-14" variant="secondary">
                 <Link href={`/packs/${pack.id}`}>
                     DEPLOY SYSTEM: ₹999 <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+            </Button>
+        </CardFooter>
+    </Card>
+);
+
+const BespokeCard = () => (
+    <Card className="flex flex-col h-full overflow-hidden rounded-2xl shadow-lg border-2 border-dashed border-primary/20 bg-primary/5 relative group">
+        <CardHeader>
+            <div className='flex justify-between items-start'>
+                <Sparkles className="h-8 w-8 text-accent mb-2" />
+                <Badge variant="outline" className="uppercase tracking-widest text-[8px] font-black border-accent/30 text-accent">Custom Build</Badge>
+            </div>
+            <CardTitle className="text-xl font-headline italic uppercase tracking-tighter text-primary-text leading-tight">
+                Bespoke Forensic Engineering
+            </CardTitle>
+        </CardHeader>
+        <CardContent className="flex-1">
+            <CardDescription className="text-secondary-text leading-relaxed font-medium italic">
+                Can't find your specific sector? We build custom institutional operating systems for specialized industries. 1-on-1 consultation required.
+            </CardDescription>
+        </CardContent>
+        <CardFooter>
+            <Button asChild className="w-full bg-accent text-black hover:brightness-110 font-black uppercase italic text-xs tracking-widest transition-all border-none h-14" variant="accent">
+                <Link href="/contact" className="flex items-center justify-center gap-2">
+                    REQUEST CUSTOM SYSTEM <ArrowRight className="h-4 w-4" />
                 </Link>
             </Button>
         </CardFooter>
@@ -203,6 +229,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                                 
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
                                     {filteredPacks.map(pack => <PackCard key={pack.id} pack={pack} />)}
+                                    {activeCategory === 'All' && searchTerm === '' && <BespokeCard />}
                                 </div>
                             </>
                         )}
