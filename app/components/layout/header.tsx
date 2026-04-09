@@ -60,12 +60,12 @@ const SolutionsList = () => (
     </div>
 );
 
-const BrandLogo = ({ isHomepage, isScrolled }: { isHomepage: boolean, isScrolled: boolean }) => (
+const BrandLogo = ({ isScrolled }: { isScrolled: boolean }) => (
      <Link href="/" className="flex items-center justify-center gap-2 group" prefetch={false}>
         <Logo className={cn("h-5 w-5 md:h-6 md:w-6 text-primary")} />
         <div className="flex flex-col">
-            <span className={cn("font-headline text-base md:text-lg font-bold leading-none tracking-tight", isHomepage && !isScrolled ? "text-white" : "text-foreground")}>MoreMeets™</span>
-            <span className={cn("text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] leading-none mt-1", isHomepage && !isScrolled ? "text-white/40" : "text-muted-foreground/60")}>LESS MISSES.</span>
+            <span className={cn("font-headline text-base md:text-lg font-bold leading-none tracking-tight", !isScrolled ? "text-white" : "text-foreground")}>MoreMeets™</span>
+            <span className={cn("text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] leading-none mt-1", !isScrolled ? "text-white/40" : "text-muted-foreground/60")}>LESS MISSES.</span>
         </div>
     </Link>
 );
@@ -75,8 +75,6 @@ export function SiteHeader() {
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
     const pathname = usePathname();
     const [isScrolled, setIsScrolled] = React.useState(false);
-
-    const isHomepage = pathname === '/';
 
     React.useEffect(() => {
         setIsSheetOpen(false);
@@ -106,19 +104,19 @@ export function SiteHeader() {
 
     const navLinkClass = cn(
         "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-colors",
-        isHomepage && !isScrolled ? "text-white/60 hover:text-white" : "text-muted-foreground hover:text-foreground"
+        !isScrolled ? "text-white/60 hover:text-white" : "text-muted-foreground hover:text-foreground"
     );
 
     return (
         <header className={cn(
             "px-6 lg:px-12 h-16 flex items-center fixed top-0 w-full z-50 transition-all duration-500",
-            isHomepage
-                ? (isScrolled ? "bg-background/95 backdrop-blur-md border-b border-white/5" : "bg-transparent border-b border-transparent")
-                : "bg-background/95 backdrop-blur-sm border-b"
+            isScrolled 
+                ? "bg-background/95 backdrop-blur-md border-b border-white/5" 
+                : "bg-transparent border-b border-transparent"
         )}>
             <div className="flex items-center">
                 <div className="flex">
-                  <BrandLogo isHomepage={isHomepage} isScrolled={isScrolled} />
+                  <BrandLogo isScrolled={isScrolled} />
                 </div>
             </div>
 
@@ -160,7 +158,7 @@ export function SiteHeader() {
             <div className="md:hidden ml-auto flex items-center">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", isHomepage && !isScrolled ? "text-white/60 hover:bg-white/10" : "text-foreground")}>
+                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", !isScrolled ? "text-white/60 hover:bg-white/10" : "text-foreground")}>
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>
@@ -168,7 +166,7 @@ export function SiteHeader() {
                     <SheetContent side="right" className="w-full max-w-sm flex flex-col p-0 bg-background">
                          <SheetHeader className="p-4 border-b">
                             <SheetTitle>
-                                <BrandLogo isHomepage={false} isScrolled={true} />
+                                <BrandLogo isScrolled={true} />
                             </SheetTitle>
                         </SheetHeader>
                         <ScrollArea className="flex-1">

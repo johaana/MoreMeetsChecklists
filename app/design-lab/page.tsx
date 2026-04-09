@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -75,13 +74,15 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 
                 {/* --- PROTOTYPE C: THE FLOATING GOLD CARD (localized light) --- */}
-                <section className="relative w-full min-h-[90vh] flex flex-col justify-center bg-zinc-100 overflow-hidden">
+                <section className="relative w-full min-h-[100vh] flex flex-col justify-center bg-zinc-100 overflow-hidden">
+                    {/* Background Video - Cleared of dark overlays */}
                     <div className="absolute inset-0 z-0">
                         <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-black/20" />
+                        {/* Subtler overlay for just a hint of cinematic depth */}
+                        <div className="absolute inset-0 bg-black/10" />
                     </div>
                     <div className="container px-6 relative z-10 mx-auto">
-                        <div className="max-w-2xl bg-white/95 backdrop-blur-xl p-10 md:p-16 rounded-[2.5rem] shadow-2xl border border-white/20 space-y-8">
+                        <div className="max-w-2xl bg-white/95 backdrop-blur-xl p-10 md:p-16 rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] border border-white/20 space-y-8">
                             <div className="space-y-4">
                                 <Badge variant="outline" className="text-amber-600 border-amber-600/30 uppercase tracking-[0.4em] font-black text-[10px]">Prototype C: Floating Command</Badge>
                                 <h1 className="text-5xl md:text-7xl font-black font-headline text-zinc-900 uppercase italic tracking-tighter leading-[0.85]">
@@ -354,6 +355,3 @@ export default function DesignLabPage() {
         </div>
     );
 }
-    
-    
-    
