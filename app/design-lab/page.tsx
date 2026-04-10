@@ -10,18 +10,8 @@ import {
     GraduationCap,
     ShieldAlert,
     Zap,
-    Cpu,
     LayoutGrid,
-    ShieldCheck,
-    ClipboardCheck,
-    Activity,
-    Lock,
-    Smartphone,
-    MousePointer2,
-    PanelsTopLeft,
-    PanelLeft,
-    Monitor,
-    Maximize2
+    Search
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -36,194 +26,90 @@ const SYSTEM_SPECS = [
     "NO SaaS. OWN YOUR DATA."
 ];
 
-// --- SIGNATURE HERO PROTOTYPES ---
+// --- ULTRA PREMIUM HERO ARCHETYPE ---
 
-const BentoHero = ({ accentColor, glowClass }: any) => (
-    <section className="relative w-full min-h-screen flex items-center overflow-hidden bg-black border-b border-white/5">
-        <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-40 grayscale-[0.2]" />
-        <div className="container px-6 relative z-10 mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 max-w-6xl mx-auto">
-                {/* Main Narrative Block */}
-                <div className="lg:col-span-8 p-10 md:p-16 rounded-[2.5rem] border border-white/20 bg-white/40 backdrop-blur-[100px] shadow-2xl relative group">
-                    <div className={cn("absolute -inset-10 rounded-full blur-[80px] opacity-10 group-hover:opacity-20 transition-opacity", glowClass)} />
-                    <div className="relative z-10 space-y-6">
-                        <h1 className="text-5xl md:text-7xl font-black font-headline uppercase italic tracking-tighter leading-[0.85] text-zinc-900">
-                            CAPTURE <br/><span style={{ color: accentColor }}>MEMORY.</span>
+const UltraPremiumHero = ({ accentColor, glowClass, archetypeTitle }: any) => (
+    <section className="relative w-full h-[90vh] flex items-center overflow-hidden bg-black border-b border-white/5">
+        <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale-[0.2]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent" />
+        
+        <div className="container px-6 lg:px-24 relative z-10 mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr,1fr] gap-12 items-center">
+                
+                {/* Left: Aggressive Narrative */}
+                <div className="space-y-8">
+                    <div className="space-y-4">
+                        <h1 className="text-6xl md:text-[7.5rem] font-black font-headline text-white leading-[0.85] uppercase italic tracking-tighter">
+                            CAPTURE <br />
+                            <span style={{ color: accentColor }}>MEMORY.</span>
                         </h1>
-                        <p className="text-xl text-zinc-800 italic font-medium leading-relaxed border-l-4 border-zinc-400/30 pl-8 max-w-md">
-                            Institutional memory is an asset. <br /> Anything else is just luck.
-                        </p>
-                        <Button className="h-16 px-10 font-black uppercase italic rounded-xl border-none shadow-xl hover:scale-[1.02] transition-all text-white" style={{ backgroundColor: accentColor }}>
-                            DEPLOY SYSTEM <ArrowRight className="ml-3 h-5 w-5" />
+                        <div className="flex gap-6 items-start">
+                            <div className="w-1 h-12 bg-white/20 mt-2" />
+                            <p className="text-xl md:text-2xl text-white/60 italic font-medium leading-tight max-w-sm">
+                                Institutional memory is an asset. <br /> Anything else is just luck.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Right: Floating Command Card */}
+                <div className="relative group flex justify-center lg:justify-end">
+                    {/* The Background Glow */}
+                    <div className={cn("absolute -inset-10 rounded-full blur-[120px] opacity-20 group-hover:opacity-30 transition-all duration-1000", glowClass)} />
+                    
+                    {/* The Glass Pane */}
+                    <div className="w-full max-w-md p-10 md:p-12 rounded-[3.5rem] border border-white/20 bg-white/10 backdrop-blur-3xl shadow-2xl space-y-10 relative overflow-hidden ring-1 ring-white/5">
+                        <div className="space-y-4">
+                            {SYSTEM_SPECS.map((spec, i) => (
+                                <div key={i} className="flex items-center gap-4">
+                                    <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: accentColor }} />
+                                    <span className="text-[11px] font-black uppercase tracking-[0.3em] text-white/50 italic leading-none">{spec}</span>
+                                </div>
+                            ))}
+                        </div>
+                        
+                        <Button 
+                            className="w-full h-20 rounded-[2rem] font-black uppercase italic text-lg tracking-widest shadow-2xl transition-all hover:scale-[1.02] active:scale-95 border-none"
+                            style={{ backgroundColor: accentColor, color: '#000' }}
+                        >
+                            DEPLOY NOW <ArrowRight className="ml-3 h-6 w-6" />
                         </Button>
                     </div>
                 </div>
-                {/* Bento Specs */}
-                <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4">
-                    {SYSTEM_SPECS.map((spec, i) => (
-                        <div key={i} className="p-6 rounded-[2rem] border border-white/20 bg-white/40 backdrop-blur-[80px] shadow-lg flex items-center justify-center text-center">
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-900 italic leading-tight">{spec}</span>
-                        </div>
-                    ))}
-                </div>
             </div>
         </div>
-        <div className="absolute bottom-10 left-10"><p className="text-[9px] font-black uppercase tracking-[0.5em] text-white/30">Archetype 1: The Bento Command</p></div>
-    </section>
-);
-
-const SideRailHero = ({ accentColor, glowClass }: any) => (
-    <section className="relative w-full h-screen overflow-hidden bg-black border-b border-white/5">
-        <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-50" />
-        <div className="absolute inset-y-0 left-0 w-full md:w-[450px] bg-white/40 backdrop-blur-[120px] border-r border-white/20 p-12 flex flex-col justify-center gap-12 shadow-[20px_0_50px_rgba(0,0,0,0.2)]">
-            <div className={cn("absolute -inset-20 left-0 rounded-full blur-[100px] opacity-20", glowClass)} />
-            <div className="relative z-10 space-y-8">
-                <div className="space-y-4">
-                    <h1 className="text-5xl md:text-6xl font-black font-headline uppercase italic tracking-tighter leading-[0.85] text-zinc-900">
-                        CAPTURE <br/><span style={{ color: accentColor }}>MEMORY.</span>
-                    </h1>
-                    <p className="text-lg text-zinc-800 italic font-medium leading-relaxed border-l-4 border-zinc-400/30 pl-6">
-                        Institutional memory is an asset. <br /> Anything else is just luck.
-                    </p>
-                </div>
-                <div className="space-y-4">
-                    <span className="text-[9px] font-black text-zinc-500 uppercase tracking-[0.4em]">SYSTEM_VITALS</span>
-                    <div className="space-y-3">
-                        {SYSTEM_SPECS.map((spec, i) => (
-                            <div key={i} className="flex items-center gap-3">
-                                <div className="w-1 h-1 rounded-full" style={{ backgroundColor: accentColor }} />
-                                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-900 italic">{spec}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <Button className="h-16 px-10 font-black uppercase italic rounded-xl border-none shadow-xl text-white" style={{ backgroundColor: accentColor }}>
-                    GO LIVE NOW <ArrowRight className="ml-3 h-5 w-5" />
-                </Button>
-            </div>
-        </div>
-        <div className="absolute bottom-10 right-10"><p className="text-[9px] font-black uppercase tracking-[0.5em] text-white/30">Archetype 2: The Side-Rail Rail</p></div>
-    </section>
-);
-
-const HUDHero = ({ accentColor }: any) => (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black border-b border-white/5">
-        <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-30 grayscale" />
-        <div className="container relative z-10 mx-auto px-6">
-            <div className="flex flex-col items-center gap-12">
-                {/* Minimal HUD Title */}
-                <div className="p-8 rounded-2xl border border-white/20 bg-white/45 backdrop-blur-[150px] shadow-2xl text-center space-y-4 max-w-xl">
-                    <h1 className="text-5xl md:text-7xl font-black font-headline uppercase italic tracking-tighter leading-none text-zinc-900">
-                        CAPTURE <span style={{ color: accentColor }}>MEMORY.</span>
-                    </h1>
-                    <p className="text-lg text-zinc-800 italic font-medium">Institutional memory is an asset. Anything else is just luck.</p>
-                </div>
-                {/* Instrument Cluster */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-5xl">
-                    {SYSTEM_SPECS.map((spec, i) => (
-                        <div key={i} className="p-6 rounded-xl border border-white/10 bg-white/30 backdrop-blur-md text-center group hover:bg-white/50 transition-all border-t-white/40">
-                            <span className="text-[10px] font-black uppercase tracking-widest text-zinc-900 group-hover:text-primary transition-colors">{spec}</span>
-                        </div>
-                    ))}
-                </div>
-                <Button className="h-20 px-16 font-black uppercase italic rounded-2xl border-none shadow-2xl text-white text-xl" style={{ backgroundColor: accentColor }}>
-                    INITIATE DEPLOYMENT <ArrowRight className="ml-4 h-6 w-6" />
-                </Button>
-            </div>
-        </div>
-        <div className="absolute top-24 left-1/2 -translate-x-1/2"><p className="text-[9px] font-black uppercase tracking-[0.5em] text-white/20">Archetype 3: The Technical HUD</p></div>
-    </section>
-);
-
-const ControlBarHero = ({ accentColor }: any) => (
-    <section className="relative w-full h-screen overflow-hidden bg-black border-b border-white/5">
-        <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
         
-        <div className="absolute bottom-0 left-0 w-full p-10 md:p-20">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-end justify-between gap-12">
-                <div className="space-y-6 max-w-2xl">
-                    <h1 className="text-6xl md:text-8xl font-black font-headline uppercase italic tracking-tighter leading-[0.8] text-white">
-                        CAPTURE <br/><span style={{ color: accentColor }}>MEMORY.</span>
-                    </h1>
-                    <p className="text-xl text-white/60 italic font-medium leading-relaxed border-l-4 border-white/20 pl-8">
-                        Institutional memory is an asset. <br /> Anything else is just luck.
-                    </p>
-                </div>
-                
-                <div className="p-10 rounded-[3rem] border border-white/20 bg-white/40 backdrop-blur-xl shadow-2xl space-y-8 w-full md:w-[450px]">
-                    <div className="space-y-3">
-                        {SYSTEM_SPECS.map((spec, i) => (
-                            <div key={i} className="flex items-center gap-4">
-                                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: accentColor }} />
-                                <span className="text-[11px] font-black uppercase tracking-[0.2em] text-zinc-900 italic">{spec}</span>
-                            </div>
-                        ))}
-                    </div>
-                    <Button className="h-16 px-10 font-black uppercase italic rounded-xl border-none shadow-xl w-full text-white" style={{ backgroundColor: accentColor }}>
-                        DEPLOY NOW <ArrowRight className="ml-3 h-5 w-5" />
-                    </Button>
-                </div>
-            </div>
+        <div className="absolute top-24 right-10 flex items-center gap-3">
+            <span className="text-[9px] font-black uppercase tracking-[0.5em] text-white/20">{archetypeTitle}</span>
+            <div className="w-12 h-px bg-white/10" />
         </div>
-        <div className="absolute top-24 right-10"><p className="text-[9px] font-black uppercase tracking-[0.5em] text-white/30">Archetype 4: The Bottom Control Bar</p></div>
     </section>
 );
 
-const LensHero = ({ accentColor, glowClass }: any) => (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black border-b border-white/5">
-        <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-60" />
-        <div className="relative z-10 p-12 md:p-24 rounded-[4rem] border border-white/30 border-t-white/60 border-l-white/60 bg-white/45 backdrop-blur-[120px] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.5)] max-w-3xl text-center space-y-12 group transition-all hover:bg-white/50">
-            <div className={cn("absolute -inset-40 rounded-full blur-[150px] opacity-30 group-hover:opacity-50 transition-all duration-1000", glowClass)} />
-            <div className="relative z-10 space-y-6">
-                <div className="space-y-2">
-                    <h1 className="text-6xl md:text-[6rem] font-black font-headline uppercase italic tracking-tighter leading-[0.85] text-zinc-900">
-                        CAPTURE <br/><span style={{ color: accentColor }}>MEMORY.</span>
-                    </h1>
-                    <p className="text-xl md:text-2xl text-zinc-800 italic font-medium max-w-xl mx-auto leading-relaxed">
-                        Institutional memory is an asset. <br /> Anything else is just luck.
-                    </p>
-                </div>
-                <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 pt-4">
-                    {SYSTEM_SPECS.map((spec, i) => (
-                        <span key={i} className="text-[10px] font-black uppercase tracking-widest text-zinc-900 italic opacity-60">{spec}</span>
-                    ))}
-                </div>
-                <div className="pt-6">
-                    <Button className="h-20 px-16 font-black uppercase italic rounded-2xl border-none shadow-2xl text-xl text-white" style={{ backgroundColor: accentColor }}>
-                        GO LIVE: ₹999 <ArrowRight className="ml-4 h-7 w-7" />
-                    </Button>
-                </div>
-            </div>
-        </div>
-        <div className="absolute top-24 left-10"><p className="text-[9px] font-black uppercase tracking-[0.5em] text-white/30">Archetype 5: The Refractive Lens</p></div>
-    </section>
-);
-
-// --- SHARED COMPONENT LAB ---
+// --- SHARED ASSET COMPONENT ---
 
 const TaskSnippetGlass = ({ title, audit, action, risk, accentColor }: any) => (
-    <div className="p-8 md:p-10 rounded-[2.5rem] border border-white/20 border-t-white/60 border-l-white/60 bg-white/40 backdrop-blur-[80px] shadow-xl space-y-8 hover:bg-white/60 transition-all group flex flex-col justify-between h-full relative overflow-hidden">
+    <div className="p-8 md:p-10 rounded-[2.5rem] border border-zinc-200 bg-white shadow-xl space-y-8 hover:border-primary/20 transition-all group flex flex-col justify-between h-full relative overflow-hidden">
         <div className="space-y-6 relative z-10">
             <div className="flex items-center gap-5">
-                <div className={cn("p-3 rounded-2xl bg-white/40 border border-white/20 shadow-sm transition-transform group-hover:scale-110", accentColor)}>
+                <div className={cn("p-3 rounded-2xl bg-zinc-50 border border-zinc-100 shadow-sm transition-transform group-hover:scale-110", accentColor)}>
                     <Zap className="w-7 h-7" />
                 </div>
                 <h4 className="text-2xl md:text-3xl font-black uppercase italic tracking-tighter font-headline leading-none text-zinc-900">{title}</h4>
             </div>
             <div className="space-y-6">
                 <div className="space-y-1">
-                    <span className="text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-2 text-zinc-500"><SearchCheck className="w-4 h-4"/> AUDIT (TECHNICAL)</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-2 text-zinc-400"><SearchCheck className="w-4 h-4"/> AUDIT (TECHNICAL)</span>
                     <p className="text-base md:text-lg font-bold italic leading-tight text-zinc-900">{audit}</p>
                 </div>
                 <div className="space-y-1">
-                    <span className="text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-2 text-zinc-500"><GraduationCap className="w-4 h-4"/> ACTION (TRAINER)</span>
-                    <p className="text-base md:text-lg font-medium italic text-zinc-800 leading-relaxed">{action}</p>
+                    <span className="text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-2 text-zinc-400"><GraduationCap className="w-4 h-4"/> ACTION (TRAINER)</span>
+                    <p className="text-base md:text-lg font-medium italic text-zinc-700 leading-relaxed">{action}</p>
                 </div>
             </div>
         </div>
-        <div className="pt-6 border-t border-zinc-200/50 relative z-10">
-            <span className="text-[10px] font-black text-red-600 uppercase tracking-[0.3em] flex items-center gap-2"><ShieldAlert className="w-4 h-4"/> RISK (CONSEQUENCE)</span>
+        <div className="pt-6 border-t border-zinc-100 relative z-10">
+            <span className="text-[10px] font-black text-red-600/60 uppercase tracking-[0.3em] flex items-center gap-2"><ShieldAlert className="w-4 h-4"/> RISK (CONSEQUENCE)</span>
             <p className="text-sm md:text-base text-red-600 font-black uppercase italic pt-2">{risk}</p>
         </div>
     </div>
@@ -236,49 +122,55 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* SECTION 1: THE BENTO COMMAND (Gold) */}
-                <BentoHero 
-                    glowClass="bg-amber-500/40"
-                    accentColor="#f5a623"
-                />
-
-                {/* SECTION 2: THE LEFT RAIL (Blue) */}
-                <SideRailHero 
-                    glowClass="bg-blue-600/40"
-                    accentColor="#2563eb"
-                />
-
-                {/* SECTION 3: THE TECHNICAL HUD (Emerald) */}
-                <HUDHero 
-                    accentColor="#10b981"
-                />
-
-                {/* SECTION 4: THE BOTTOM BAR (Indigo) */}
-                <ControlBarHero 
+                {/* 1. SOVEREIGN INDIGO (Screenshot Standard) */}
+                <UltraPremiumHero 
+                    archetypeTitle="ARCHETYPE 1: SOVEREIGN INDIGO"
                     accentColor="#6366f1"
+                    glowClass="bg-indigo-500/40"
                 />
 
-                {/* SECTION 5: THE REFRACTIVE LENS (Carbon) */}
-                <LensHero 
-                    glowClass="bg-zinc-400/40"
-                    accentColor="#18181b"
+                {/* 2. PLATINUM GOLD (Luxury Prestige) */}
+                <UltraPremiumHero 
+                    archetypeTitle="ARCHETYPE 2: PLATINUM GOLD"
+                    accentColor="#f5a623"
+                    glowClass="bg-amber-500/40"
                 />
 
-                {/* UNIVERSAL GLASS COMPONENT LIBRARY */}
+                {/* 3. EMERALD AUTHORITY (Medical/Safety) */}
+                <UltraPremiumHero 
+                    archetypeTitle="ARCHETYPE 3: EMERALD AUTHORITY"
+                    accentColor="#10b981"
+                    glowClass="bg-emerald-500/40"
+                />
+
+                {/* 4. CRIMSON SHIELD (Risk/Governance) */}
+                <UltraPremiumHero 
+                    archetypeTitle="ARCHETYPE 4: CRIMSON SHIELD"
+                    accentColor="#e11d48"
+                    glowClass="bg-rose-500/40"
+                />
+
+                {/* 5. ARCTIC GHOST (Minimalist Elite) */}
+                <UltraPremiumHero 
+                    archetypeTitle="ARCHETYPE 5: ARCTIC GHOST"
+                    accentColor="#ffffff"
+                    glowClass="bg-zinc-200/40"
+                />
+
+                {/* UNIVERSAL ASSET LIBRARY (High Contrast Daylight) */}
                 <section className="py-24 md:py-32 bg-zinc-50 relative overflow-hidden">
-                    {/* Subtle Blueprint Grid Overlay */}
                     <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:32px_32px]" />
                     
                     <div className="container px-6 mx-auto relative z-10">
                         <div className="max-w-4xl mx-auto text-center space-y-4 mb-20">
-                            <Badge variant="outline" className="uppercase tracking-[0.4em] font-black text-[10px] border-zinc-300 text-zinc-500 px-6 py-1.5 rounded-full bg-white/50">Universal Refraction Standard</Badge>
+                            <Badge variant="outline" className="uppercase tracking-[0.4em] font-black text-[10px] border-zinc-300 text-zinc-500 px-6 py-1.5 rounded-full bg-white">Sovereign Component Standard v11.0</Badge>
                             <h2 className="text-4xl md:text-7xl font-black font-headline uppercase italic tracking-tighter text-zinc-900 leading-[0.9]">Technical <br /> Grid Assets</h2>
-                            <p className="text-lg md:text-xl text-zinc-600 italic font-medium max-w-xl mx-auto leading-relaxed">High-contrast executive data on refractive glass blocks. Optimized for ocular comfort and speed.</p>
+                            <p className="text-lg md:text-xl text-zinc-600 italic font-medium max-w-xl mx-auto leading-relaxed">High-contrast, daylight-optimized documentation blocks. Designed for clarity, speed, and executive authority.</p>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
                             <TaskSnippetGlass 
-                                accentColor="text-blue-600"
+                                accentColor="text-indigo-600"
                                 title="Guest Arrival"
                                 audit="VIP Reception Readiness (SOP-01)"
                                 action="Verify celebration amenities and personalized greetings are placed 30m before check-in."
@@ -299,7 +191,7 @@ export default function DesignLabPage() {
                                 risk="Fatal industrial accident, severe legal liability, and production shutdown."
                             />
                             <TaskSnippetGlass 
-                                accentColor="text-purple-600"
+                                accentColor="text-rose-600"
                                 title="Data Security"
                                 audit="Privileged Access Review (ISO 27001)"
                                 action="Audit admin logs for unauthorized access patterns and stale user accounts."
@@ -307,25 +199,25 @@ export default function DesignLabPage() {
                             />
                         </div>
 
-                        {/* ANALYTICS GLASS MODULE */}
-                        <div className="mt-20 max-w-5xl mx-auto p-12 md:p-20 rounded-[4rem] border border-white/20 border-t-white/60 border-l-white/60 bg-white/40 backdrop-blur-[100px] shadow-2xl space-y-16 transition-all hover:bg-white/50">
-                            <div className="flex flex-col md:flex-row items-center justify-between gap-12 border-b border-zinc-200/50 pb-12">
+                        {/* HIGH-KEY ANALYTICS MODULE */}
+                        <div className="mt-20 max-w-5xl mx-auto p-12 md:p-20 rounded-[4rem] border border-zinc-200 bg-white shadow-2xl space-y-16 transition-all hover:bg-zinc-50/50">
+                            <div className="flex flex-col md:flex-row items-center justify-between gap-12 border-b border-zinc-100 pb-12">
                                 <div className="space-y-3 text-center md:text-left">
-                                    <span className="text-[11px] font-black uppercase text-blue-600 tracking-[0.5em] font-headline">/ Live Portfolio Health</span>
+                                    <span className="text-[11px] font-black uppercase text-indigo-600 tracking-[0.5em] font-headline">/ Live Portfolio Health</span>
                                     <h3 className="text-4xl md:text-6xl font-black font-headline uppercase italic tracking-tighter text-zinc-900">Sovereign Pulse</h3>
                                 </div>
-                                <div className="flex items-center gap-8 bg-white/40 p-4 rounded-[2.5rem] border border-white/40 shadow-inner">
-                                    <div className="text-center px-8 border-r border-zinc-300/50">
+                                <div className="flex items-center gap-8 bg-zinc-50 p-4 rounded-[2.5rem] border border-zinc-100 shadow-inner">
+                                    <div className="text-center px-8 border-r border-zinc-200">
                                         <p className="text-4xl font-black text-emerald-600">92%</p>
-                                        <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 pt-2">STATUS</p>
+                                        <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 pt-2">STATUS</p>
                                     </div>
-                                    <div className="text-center px-8 border-r border-zinc-300/50">
+                                    <div className="text-center px-8 border-r border-zinc-200">
                                         <p className="text-4xl font-black text-red-600">04</p>
-                                        <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 pt-2">RISKS</p>
+                                        <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 pt-2">RISKS</p>
                                     </div>
                                     <div className="text-center px-8">
-                                        <p className="text-4xl font-black text-blue-600">120</p>
-                                        <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 pt-2">MISSIONS</p>
+                                        <p className="text-4xl font-black text-indigo-600">120</p>
+                                        <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 pt-2">MISSIONS</p>
                                     </div>
                                 </div>
                             </div>
@@ -333,16 +225,16 @@ export default function DesignLabPage() {
                             <div className="grid md:grid-cols-3 gap-12">
                                 {[
                                     { t: "Role Mastery", d: "Staff completion scores.", i: GraduationCap },
-                                    { t: "Asset Uptime", d: "Utility vitals monitor.", i: Cpu },
+                                    { t: "Asset Uptime", d: "Utility vitals monitor.", i: Zap },
                                     { t: "Audit Proof", d: "Zero-gap evidence trail.", i: LayoutGrid }
                                 ].map((feat, i) => (
                                     <div key={i} className="flex gap-6 group">
-                                        <div className="w-14 h-14 rounded-2xl bg-white/50 border border-white/40 flex items-center justify-center text-zinc-400 shrink-0 group-hover:bg-primary/10 group-hover:text-primary transition-all shadow-sm">
+                                        <div className="w-14 h-14 rounded-2xl bg-zinc-50 border border-zinc-100 flex items-center justify-center text-zinc-400 shrink-0 group-hover:bg-primary/10 group-hover:text-primary transition-all shadow-sm">
                                             <feat.i className="w-7 h-7" />
                                         </div>
                                         <div className="space-y-1">
                                             <h4 className="font-black uppercase italic tracking-tighter text-lg text-zinc-900 leading-none">{feat.t}</h4>
-                                            <p className="text-sm text-zinc-600 font-medium italic leading-tight">{feat.d}</p>
+                                            <p className="text-sm text-zinc-500 font-medium italic leading-tight">{feat.d}</p>
                                         </div>
                                     </div>
                                 ))}
