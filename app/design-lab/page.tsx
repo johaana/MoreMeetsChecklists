@@ -10,7 +10,6 @@ import {
     FileSpreadsheet, 
     Lock, 
     GraduationCap,
-    Zap,
     Utensils,
     Building,
     Hospital,
@@ -20,8 +19,7 @@ import {
     AlertTriangle,
     ClipboardCheck,
     Building2,
-    ChevronRight,
-    Smartphone
+    ChevronRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -32,8 +30,7 @@ const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730
 
 /**
  * SOVEREIGN VALUE STRIP - Persistent USPs
- * Highlights the core value payload below the industry dock.
- * Zero-truncation grid logic.
+ * Locked at the base of every hero. High-density, zero-truncation.
  */
 const ValueStrip = () => (
     <div className="w-full flex items-center justify-center gap-4 md:gap-12 py-3 px-4 border-t border-white/5 bg-black/40 backdrop-blur-md rounded-b-[2rem] md:rounded-b-[3rem]">
@@ -55,8 +52,7 @@ const ValueStrip = () => (
 
 /**
  * SECTOR NAVIGATOR DOCK - The "Look What's In" Interface
- * All 7 Elite Industries hyperlinked.
- * Variants for Dark and Light themes.
+ * Standardized across all 4 archetypes.
  */
 const SectorNavigator = ({ accentColor, variant = "default" }: { accentColor: string, variant?: "default" | "glass" }) => {
     
