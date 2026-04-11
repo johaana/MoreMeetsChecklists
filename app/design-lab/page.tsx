@@ -11,18 +11,14 @@ import {
     GraduationCap,
     Target,
     Zap,
-    ChevronRight,
     Utensils,
     Building,
     Hospital,
     School,
     Building2,
     Popcorn,
-    Scale,
-    Cpu,
-    SearchCheck,
-    CheckCircle2,
-    Activity
+    ChevronRight,
+    SearchCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -32,7 +28,7 @@ import Link from 'next/link';
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 /**
- * TECHNICAL DOCK v49.0 - ZERO TRUNCATION MANDATE
+ * TECHNICAL DOCK v50.0 - ZERO TRUNCATION MANDATE
  * Optimized for: INSTANT INDUSTRY NAVIGATION & TECHNICAL PROOF.
  * Modes: 'intelligence' (Product Depth) | 'sectors' (Direct Offerings)
  */
@@ -121,13 +117,13 @@ const CommandHero = ({
     dockType?: "intelligence" | "sectors"
 }) => (
     <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden bg-black border-b border-white/5">
-        {/* Background Video - Zero Filter as requested */}
+        {/* Background Video - Raw visibility */}
         <div className="absolute inset-0 z-0">
             <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-black/10 z-10" />
         </div>
 
-        {/* Hero Content */}
+        {/* Hero Content - Surgical Readability */}
         <div className={cn(
             "relative z-20 flex-1 flex flex-col px-6 md:px-24 pt-20",
             layout === "centered" ? "justify-center items-center text-center" : "justify-center"
@@ -155,7 +151,7 @@ const CommandHero = ({
             </div>
         </div>
 
-        {/* Lower Command Dock */}
+        {/* Lower Command Dock - Information Density */}
         <div className="relative z-30 w-full px-6 md:px-24 pb-10 md:pb-16 space-y-4">
             <div className="max-w-7xl mx-auto flex justify-between items-end px-6">
                 <span className="text-[10px] font-black text-white/60 uppercase tracking-[0.4em] italic drop-shadow-[0_4px_8px_rgba(0,0,0,1)]">
@@ -175,9 +171,9 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* 01. AZURE MONOLITH: CAPTURE MEMORY */}
+                {/* 01. AZURE: THE INTELLECTUAL */}
                 <CommandHero 
-                    badge="ARCHETYPE 01: THE INTELLECTUAL"
+                    badge="ARCHETYPE 01: THE ANALYST"
                     title="CAPTURE MEMORY."
                     subtitle="Institutional memory is an asset. Anything else is just luck."
                     accentColor="#38bdf8"
@@ -185,7 +181,7 @@ export default function DesignLabPage() {
                     dockType="intelligence"
                 />
 
-                {/* 02. GOLDEN HUB: SYSTEMS OVER LUCK */}
+                {/* 02. GOLDEN: THE SOVEREIGN */}
                 <CommandHero 
                     badge="ARCHETYPE 02: THE SOVEREIGN"
                     title="SYSTEMS OVER LUCK."
@@ -196,7 +192,7 @@ export default function DesignLabPage() {
                     dockVariant="glass"
                 />
 
-                {/* 03. EMERALD EXECUTIVE: GET ORGANIZED */}
+                {/* 03. EMERALD: THE COMMANDER */}
                 <CommandHero 
                     badge="ARCHETYPE 03: THE COMMANDER"
                     title="GET ORGANIZED."
@@ -206,7 +202,7 @@ export default function DesignLabPage() {
                     dockType="intelligence"
                 />
 
-                {/* 04. SUNSET SOVEREIGN: YOU OWN THE DATA */}
+                {/* 04. SUNSET: THE INDEPENDENT */}
                 <CommandHero 
                     badge="ARCHETYPE 04: THE INDEPENDENT"
                     title="YOU OWN THE DATA."
@@ -217,7 +213,7 @@ export default function DesignLabPage() {
                     dockVariant="glass"
                 />
 
-                {/* 05. INDIGO NAVIGATOR: PERFECT CONSISTENCY */}
+                {/* 05. INDIGO: THE STANDARD */}
                 <CommandHero 
                     badge="ARCHETYPE 05: THE STANDARD"
                     title="PERFECT ORDER."
@@ -227,7 +223,7 @@ export default function DesignLabPage() {
                     dockType="sectors"
                 />
 
-                {/* 06. SLATE COCKPIT: BUILT TO SCALE */}
+                {/* 06. SLATE: THE SCALER */}
                 <CommandHero 
                     badge="ARCHETYPE 06: THE SCALER"
                     title="BUILT TO SCALE."
