@@ -13,7 +13,10 @@ import {
     Zap,
     CheckCircle2,
     Hospital,
-    Utensils
+    Utensils,
+    Activity,
+    SearchCheck,
+    ShieldAlert
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -22,64 +25,39 @@ import { Footer } from '@/components/layout/footer';
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 /**
- * SOVEREIGN INTELLIGENCE DOCK
+ * TECHNICAL INTELLIGENCE DOCK
  * A high-density data strip that explains the product depth surgically.
  */
-const TechnicalDock = ({ accentColor, variant = 1 }: { accentColor: string, variant?: number }) => {
+const TechnicalDock = ({ accentColor }: { accentColor: string }) => {
     const dataPoints = [
-        { label: "ASSET CLASS", val: "Institutional Memory", icon: Target },
-        { label: "COMPLIANCE", val: "ISO/HACCP Ready", icon: ShieldCheck },
-        { label: "CORE ENGINE", val: "Excel & Google Sheets", icon: FileSpreadsheet },
-        { label: "OWNERSHIP", val: "100% Data Sovereignty", icon: Lock },
-        { label: "TRAINING", val: "Built-in Action Notes", icon: GraduationCap },
-        { label: "DEPLOYMENT", val: "< 10 Min Go-Live", icon: Zap }
+        { label: "ASSET CLASS", val: "INSTITUTIONAL MEMORY", icon: Target },
+        { label: "COMPLIANCE", val: "ISO/HACCP READY", icon: ShieldCheck },
+        { label: "CORE ENGINE", val: "EXCEL & GOOGLE SHEETS", icon: FileSpreadsheet },
+        { label: "OWNERSHIP", val: "100% DATA SOVEREIGNTY", icon: Lock },
+        { label: "TRAINING", val: "BUILT-IN ACTION NOTES", icon: GraduationCap },
+        { label: "DEPLOYMENT", val: "< 10 MIN GO-LIVE", icon: Zap }
     ];
 
-    if (variant === 4) { // Bento Style for variant 4
-        return (
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
-                {[0, 2, 4].map((idx) => {
-                    const PointIcon = dataPoints[idx].icon;
-                    return (
-                        <div key={idx} className="bg-white/95 backdrop-blur-xl rounded-3xl p-6 flex flex-col gap-4 shadow-2xl">
-                            <div className="flex items-center gap-3 border-b border-zinc-100 pb-3">
-                                <PointIcon className="w-5 h-5" style={{ color: accentColor }} />
-                                <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400">{dataPoints[idx].label}</span>
-                            </div>
-                            <div className="space-y-1">
-                                <p className="text-sm font-black text-zinc-900 uppercase italic">{dataPoints[idx].val}</p>
-                                <p className="text-[9px] text-zinc-400 font-bold uppercase italic">Sovereign Standard</p>
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
-        );
-    }
-
     return (
-        <div className={cn(
-            "max-w-7xl mx-auto bg-white/95 backdrop-blur-2xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)] border border-white p-4 flex flex-col md:flex-row items-center gap-8 md:gap-4 ring-1 ring-black/5",
-            variant === 6 ? "rounded-full px-12" : "rounded-[2.5rem] md:rounded-[4rem]"
-        )}>
-            <div className="flex-1 grid grid-cols-2 md:grid-cols-6 gap-x-8 gap-y-4 px-6">
+        <div className="max-w-7xl mx-auto bg-white/95 backdrop-blur-3xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white p-2 md:p-4 flex flex-col md:flex-row items-center gap-6 md:gap-4 ring-1 ring-black/5 rounded-[2.5rem] md:rounded-full">
+            <div className="flex-1 grid grid-cols-2 md:grid-cols-6 gap-x-4 gap-y-4 md:gap-y-0 px-4 md:px-8">
                 {dataPoints.map((item, i) => {
                     const ItemIcon = item.icon;
                     return (
-                        <div key={i} className="flex flex-col gap-1 border-l border-zinc-100 pl-4 first:border-0">
-                            <span className="text-[8px] font-black uppercase tracking-[0.2em] text-zinc-400">{item.label}</span>
+                        <div key={i} className="flex flex-col gap-1 border-l border-zinc-100 pl-4 first:border-0 overflow-hidden">
+                            <span className="text-[8px] font-black uppercase tracking-[0.2em] text-zinc-400 truncate">{item.label}</span>
                             <div className="flex items-center gap-2">
                                 <ItemIcon className="w-3.5 h-3.5 shrink-0" style={{ color: accentColor }} />
-                                <span className="text-[10px] font-black uppercase italic text-zinc-900 leading-none truncate">{item.val}</span>
+                                <span className="text-[9px] font-black uppercase italic text-zinc-900 leading-none truncate">{item.val}</span>
                             </div>
                         </div>
                     );
                 })}
             </div>
             <Button 
-                className="h-16 px-12 rounded-full font-black uppercase italic text-sm tracking-widest shadow-2xl transition-all hover:scale-105 border-none bg-zinc-950 text-white shrink-0"
+                className="h-14 md:h-16 px-10 md:px-12 rounded-full font-black uppercase italic text-[11px] md:text-sm tracking-widest shadow-2xl transition-all hover:scale-105 border-none bg-zinc-950 text-white shrink-0 group/btn"
             >
-                DEPLOY NOW: ₹999 <ArrowRight className="ml-2 h-4 w-4" />
+                DEPLOY NOW: ₹999 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
             </Button>
         </div>
     );
@@ -104,32 +82,29 @@ const CommandHero = ({
     bgUrl?: string,
     gradientClass?: string
 }) => (
-    <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden bg-zinc-900 border-b">
-        {/* RAW BACKGROUND (UNFILTERED) */}
+    <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden bg-black">
+        {/* RAW BACKGROUND (NO EFFECTS) */}
         <div className="absolute inset-0 z-0">
             <video src={bgUrl} autoPlay loop muted playsInline className="w-full h-full object-cover" />
         </div>
 
         {/* CONTENT LAYER */}
-        <div className={cn(
-            "relative z-10 flex-1 flex flex-col justify-center px-6 md:px-20 pt-20",
-            variant === 6 && "items-center text-center"
-        )}>
-            <div className={cn("max-w-6xl space-y-4", variant === 6 && "flex flex-col items-center")}>
-                <Badge variant="outline" className="bg-white/90 backdrop-blur-md text-zinc-500 border-white/50 uppercase tracking-[0.4em] font-black text-[10px] px-6 py-1.5 rounded-full mb-4 shadow-xl">
+        <div className="relative z-10 flex-1 flex flex-col justify-center px-6 md:px-24 pt-20">
+            <div className="max-w-6xl space-y-6">
+                <Badge variant="outline" className="bg-white/95 backdrop-blur-md text-zinc-500 border-white/50 uppercase tracking-[0.4em] font-black text-[10px] px-6 py-1.5 rounded-full mb-2 shadow-2xl">
                     {badge}
                 </Badge>
                 
-                <h1 className="text-5xl md:text-[8.5rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)]">
+                <h1 className="text-5xl md:text-[9.5rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)]">
                     {title} <br />
                     <span className={cn(gradientClass ? "bg-gradient-to-r bg-clip-text text-transparent" : "")} style={gradientClass ? {} : { color: accentColor }}>
                         {accentText}
                     </span>
                 </h1>
                 
-                <div className={cn("flex gap-6 pt-4", variant === 6 && "justify-center")}>
-                    <div className="w-1.5 bg-white/20 rounded-full h-auto self-stretch shadow-lg" style={{ backgroundColor: accentColor + '40' }} />
-                    <p className="text-xl md:text-3xl text-white font-medium italic max-w-2xl drop-shadow-[0_8px_16px_rgba(0,0,0,0.9)] opacity-95 leading-tight">
+                <div className="flex gap-6 pt-4">
+                    <div className="w-2 bg-white/20 rounded-full h-auto self-stretch shadow-2xl" style={{ backgroundColor: accentColor }} />
+                    <p className="text-xl md:text-4xl text-white font-medium italic max-w-3xl drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)] opacity-95 leading-[1.1]">
                         {subtitle}
                     </p>
                 </div>
@@ -137,8 +112,8 @@ const CommandHero = ({
         </div>
 
         {/* THE TECHNICAL BRIEFING DOCK */}
-        <div className="relative z-20 w-full px-6 md:px-20 pb-10 md:pb-16">
-            <TechnicalDock accentColor={accentColor} variant={variant} />
+        <div className="relative z-20 w-full px-6 md:px-24 pb-10 md:pb-16">
+            <TechnicalDock accentColor={accentColor} />
         </div>
     </section>
 );
@@ -198,7 +173,6 @@ export default function DesignLabPage() {
                     title="CAPTURE"
                     accentText="MEMORY."
                     accentColor="#f472b6"
-                    gradientClass="from-pink-400 to-violet-500"
                     subtitle={SHARED_SUBTITLE}
                 />
 
@@ -209,7 +183,6 @@ export default function DesignLabPage() {
                     title="DEPLOY"
                     accentText="STRUCTURE."
                     accentColor="#38bdf8"
-                    gradientClass="from-sky-400 to-blue-600"
                     subtitle="Because memory is not a system. Serious operations deserve more."
                 />
 
@@ -220,7 +193,6 @@ export default function DesignLabPage() {
                     title="STANDARDIZE"
                     accentText="EVERYTHING."
                     accentColor="#217346"
-                    gradientClass="from-emerald-500 to-teal-700"
                     subtitle="The definitive institutional standard. Trust built on Excel architecture."
                 />
 
@@ -231,7 +203,6 @@ export default function DesignLabPage() {
                     title="BETTER DAYS,"
                     accentText="BUILT-IN."
                     accentColor="#34d399"
-                    gradientClass="from-mint-400 to-emerald-500"
                     subtitle="We've made elite standards simple enough for everyone. Clarity for your team."
                 />
 
@@ -242,7 +213,6 @@ export default function DesignLabPage() {
                     title="OPERATE"
                     accentText="SMARTER."
                     accentColor="#a855f7"
-                    gradientClass="from-purple-400 to-indigo-600"
                     subtitle="Remove the human variable from high-stakes operations. Innovation focused."
                 />
 
@@ -253,7 +223,6 @@ export default function DesignLabPage() {
                     title="ELITE"
                     accentText="STANDARDS."
                     accentColor="#fbbf24"
-                    gradientClass="from-amber-400 to-orange-600"
                     subtitle="The benchmark for high-net-worth operational control. Sophisticated depth."
                 />
 
