@@ -31,7 +31,8 @@ import {
     Download,
     ChevronRight,
     HelpCircle,
-    Check
+    Check,
+    Lock
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -164,7 +165,7 @@ const FlowStudioHero = () => (
  */
 const MinimalistStudioHero = () => (
     <section className="relative w-full h-screen flex bg-zinc-50 overflow-hidden border-b">
-        <div className="w-[45%] h-full bg-white p-16 md:p-24 flex flex-col justify-between relative border-r border-zinc-100 z-20">
+        <div className="w-full lg:w-[45%] h-full bg-white p-8 md:p-24 flex flex-col justify-between relative border-r border-zinc-100 z-20">
             <div className="space-y-10">
                 <Badge variant="outline" className="border-zinc-100 text-zinc-300 uppercase tracking-[0.6em] font-black text-[10px] px-6 py-2 rounded-none">
                     ARCHETYPE 03: STUDIO MINIMALIST
@@ -199,7 +200,7 @@ const MinimalistStudioHero = () => (
             </div>
         </div>
 
-        <div className="flex-1 relative bg-zinc-100">
+        <div className="hidden lg:block flex-1 relative bg-zinc-100">
             <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-80 grayscale" />
             <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent" />
             
