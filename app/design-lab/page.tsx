@@ -9,7 +9,6 @@ import {
     FileSpreadsheet, 
     Lock, 
     GraduationCap,
-    Target,
     Zap,
     Utensils,
     Building,
@@ -18,7 +17,9 @@ import {
     Store,
     Popcorn,
     AlertTriangle,
-    ClipboardCheck
+    ClipboardCheck,
+    Building2,
+    ChevronRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -28,11 +29,11 @@ import Link from 'next/link';
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 /**
- * SOVEREIGN VALUE STRIP - The "No Truncation" Mandate
- * Displays the 4 non-negotiable value points below the primary dock.
+ * SOVEREIGN VALUE STRIP - Persistent USPs
+ * Highlights the core value payload below the industry dock.
  */
 const ValueStrip = () => (
-    <div className="w-full flex items-center justify-center gap-4 md:gap-12 py-2 px-4 border-t border-white/5 bg-black/20 backdrop-blur-md rounded-b-[2rem] md:rounded-b-full">
+    <div className="w-full flex items-center justify-center gap-4 md:gap-12 py-3 px-4 border-t border-white/5 bg-black/40 backdrop-blur-md rounded-b-[2rem] md:rounded-b-[3rem]">
         {[
             { t: "120+ PRE-BUILT SOPs", i: ClipboardCheck },
             { t: "NO SaaS LOCK-IN", i: Lock },
@@ -40,8 +41,8 @@ const ValueStrip = () => (
             { t: "CONSEQUENCES DEFINED", i: AlertTriangle }
         ].map((item, i) => (
             <div key={i} className="flex items-center gap-1.5 md:gap-2 shrink-0">
-                <item.i className="w-2.5 h-2.5 md:w-3 md:h-3 text-primary/60" />
-                <span className="text-[6px] md:text-[9px] font-black uppercase tracking-[0.2em] text-white/40 italic whitespace-nowrap">
+                <item.i className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 text-primary/60" />
+                <span className="text-[7px] md:text-[10px] font-black uppercase tracking-[0.2em] text-white/50 italic whitespace-nowrap">
                     {item.t}
                 </span>
             </div>
@@ -50,66 +51,51 @@ const ValueStrip = () => (
 );
 
 /**
- * TECHNICAL DOCK v54.0 - ZERO CLIPPING MANDATE
- * Modes: 'intelligence' (Product Specs) | 'sectors' (Direct Navigation)
+ * SECTOR NAVIGATOR DOCK - The "Look What's In" Interface
+ * All 7 Elite Industries hyperlinked.
  */
-const TechnicalDock = ({ accentColor, type = "intelligence", variant = "default" }: { accentColor: string, type?: "intelligence" | "sectors", variant?: "default" | "glass" }) => {
+const SectorNavigator = ({ accentColor, variant = "default" }: { accentColor: string, variant?: "default" | "glass" }) => {
     
-    const intelligencePoints = [
-        { label: "ASSET CLASS", val: "INSTITUTIONAL MEMORY", icon: Target },
-        { label: "SAFETY READY", val: "ISO/HACCP/OSHA", icon: ShieldCheck },
-        { label: "CORE ENGINE", val: "EXCEL & SHEETS", icon: FileSpreadsheet },
-        { label: "OWNERSHIP", val: "100% SOVEREIGN", icon: Lock },
-        { label: "TRAINING", val: "ACTION NOTES", icon: GraduationCap },
-        { label: "SETUP SPEED", val: "< 10 MIN START", icon: Zap }
-    ];
-
     const sectorPoints = [
         { label: "HOSPITALITY", val: "RESTAURANTS", icon: Utensils, href: "/packs/restaurants" },
         { label: "HOSPITALITY", val: "HOTELS & RESORTS", icon: Building, href: "/packs/hotels_and_resorts" },
         { label: "HEALTHCARE", val: "HOSPITALS", icon: Hospital, href: "/packs/healthcare_and_hospital_operations" },
         { label: "EDUCATION", val: "SCHOOLS", icon: School, href: "/packs/school_operations_pack" },
         { label: "FRANCHISE", val: "NETWORKS", icon: Store, href: "/packs/franchise_operations_pack" },
+        { label: "FACILITIES", val: "MGMT", icon: Building2, href: "/packs/facility_management_blueprint" },
         { label: "ENTERTAINMENT", val: "CINEMAS", icon: Popcorn, href: "/packs/cinema_operations_pack" }
     ];
-
-    const points = type === "intelligence" ? intelligencePoints : sectorPoints;
 
     return (
         <div className="max-w-7xl mx-auto space-y-px">
             <div className={cn(
-                "border p-2 md:p-4 flex flex-col md:flex-row items-center gap-6 rounded-t-[2rem] md:rounded-t-full shadow-2xl transition-all duration-500",
+                "border p-2 md:p-4 flex flex-col md:flex-row items-center gap-4 md:gap-6 rounded-t-[2rem] md:rounded-t-[3rem] shadow-2xl transition-all duration-500",
                 variant === "glass" ? "backdrop-blur-3xl bg-white/10 border-white/20" : "bg-white border-zinc-200"
             )}>
-                <div className="flex-1 grid grid-cols-2 md:grid-cols-6 gap-2 md:gap-4 w-full px-4 md:px-6 h-full">
-                    {points.map((item, i) => {
-                        const DynamicIcon = item.icon;
-                        const Content = (
-                            <div key={i} className={cn(
-                                "flex flex-col gap-1 pl-3 md:pl-4 first:border-0 h-full justify-center transition-all min-w-0 overflow-hidden",
-                                variant === "glass" ? "border-l border-white/10" : "border-l border-zinc-100"
+                <div className="flex-1 grid grid-cols-2 md:grid-cols-7 gap-2 md:gap-3 w-full px-4 md:px-6 h-full py-2">
+                    {sectorPoints.map((item, i) => (
+                        <Link key={i} href={item.href} className="group/item">
+                            <div className={cn(
+                                "flex flex-col gap-1 pl-3 md:pl-4 first:border-0 h-full justify-center transition-all min-w-0 overflow-hidden border-l",
+                                variant === "glass" ? "border-white/10" : "border-zinc-100"
                             )}>
                                 <span className={cn(
-                                    "text-[7px] md:text-[8px] font-black uppercase tracking-[0.2em] whitespace-nowrap",
+                                    "text-[6px] md:text-[8px] font-black uppercase tracking-[0.2em] whitespace-nowrap",
                                     variant === "glass" ? "text-white/40" : "text-zinc-400"
                                 )}>{item.label}</span>
-                                <div className="flex items-center gap-2 overflow-hidden">
-                                    <DynamicIcon className="w-3 md:w-3.5 h-3 md:h-3.5 shrink-0" style={{ color: accentColor }} />
+                                <div className="flex items-center gap-1.5 md:gap-2 overflow-hidden">
+                                    <item.icon className="w-3 md:w-4 h-3 md:h-4 shrink-0 transition-transform group-hover/item:scale-110" style={{ color: accentColor }} />
                                     <span className={cn(
-                                        "text-[8px] md:text-[9px] font-black uppercase italic whitespace-nowrap leading-none",
+                                        "text-[8px] md:text-[10px] font-black uppercase italic whitespace-nowrap leading-none group-hover/item:text-primary transition-colors",
                                         variant === "glass" ? "text-white" : "text-zinc-900"
                                     )}>{item.val}</span>
                                 </div>
                             </div>
-                        );
-
-                        return 'href' in item ? (
-                            <Link key={i} href={item.href as string} className="hover:opacity-70 transition-all">{Content}</Link>
-                        ) : Content;
-                    })}
+                        </Link>
+                    ))}
                 </div>
                 <Button asChild className={cn(
-                    "h-12 md:h-16 px-8 md:px-10 rounded-full font-black uppercase italic text-[10px] md:text-xs tracking-widest transition-all hover:scale-105 border-none shrink-0 group/btn shadow-xl",
+                    "h-12 md:h-16 px-8 md:px-12 rounded-full font-black uppercase italic text-[10px] md:text-xs tracking-widest transition-all hover:scale-105 border-none shrink-0 group/btn shadow-xl",
                     variant === "glass" ? "bg-white text-black" : "bg-zinc-950 text-white"
                 )}>
                     <Link href="/library">
@@ -128,16 +114,14 @@ const CommandHero = ({
     accentColor, 
     badge,
     layout = "centered",
-    dockVariant = "default",
-    dockType = "intelligence"
+    dockVariant = "default"
 }: { 
     title: string,
     subtitle: string,
     accentColor: string, 
     badge: string,
-    layout?: "centered" | "left" | "split",
-    dockVariant?: "default" | "glass",
-    dockType?: "intelligence" | "sectors"
+    layout?: "centered" | "left",
+    dockVariant?: "default" | "glass"
 }) => (
     <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden bg-black border-b border-white/5">
         {/* Background Video */}
@@ -175,13 +159,16 @@ const CommandHero = ({
 
         {/* Lower Command Dock */}
         <div className="relative z-30 w-full px-6 md:px-24 pb-10 md:pb-16 space-y-4">
-            <div className="max-w-7xl mx-auto flex justify-between items-end px-6">
-                <span className="text-[10px] font-black text-white/60 uppercase tracking-[0.4em] italic drop-shadow-[0_4px_8px_rgba(0,0,0,1)]">
-                    {dockType === 'sectors' ? "LOOK WHAT'S IN FOR YOUR BUSINESS" : "SYSTEM_AUTHENTICATION_ACTIVE"}
-                </span>
-                <span className="text-[8px] font-mono text-white/40 uppercase">MM_SOVEREIGN_V11.9_MASTER</span>
+            <div className="max-w-7xl mx-auto flex justify-between items-end px-10">
+                <div className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                    <span className="text-[11px] font-black text-white/80 uppercase tracking-[0.5em] italic drop-shadow-[0_4px_8px_rgba(0,0,0,1)]">
+                        LOOK WHAT'S IN FOR YOUR BUSINESS
+                    </span>
+                </div>
+                <span className="hidden md:block text-[8px] font-mono text-white/40 uppercase tracking-widest">SYSTEM_VERSION_11.9_MASTER</span>
             </div>
-            <TechnicalDock accentColor={accentColor} variant={dockVariant} type={dockType} />
+            <SectorNavigator accentColor={accentColor} variant={dockVariant} />
         </div>
     </section>
 );
@@ -193,66 +180,33 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* 01. AZURE: THE ANALYST */}
+                {/* 01. GOLDEN: THE SOVEREIGN (Previously #2) */}
                 <CommandHero 
-                    badge="ARCHETYPE 01: THE ANALYST"
-                    title="LUCK IS NOT A SYSTEM."
-                    subtitle="Institutional memory is an asset. Anything else is just luck."
-                    accentColor="#38bdf8"
-                    layout="centered"
-                    dockType="intelligence"
-                />
-
-                {/* 02. GOLDEN: THE SOVEREIGN */}
-                <CommandHero 
-                    badge="ARCHETYPE 02: THE SOVEREIGN"
+                    badge="SOVEREIGN STANDARD"
                     title="STOP MANAGING BY HOPE."
                     subtitle="Make sure every task is done right, even when you aren't there."
                     accentColor="#fbbf24"
                     layout="left"
-                    dockType="sectors"
                     dockVariant="glass"
                 />
 
-                {/* 03. EMERALD: THE COMMANDER */}
+                {/* 02. EMERALD: THE COMMANDER (Previously #3) */}
                 <CommandHero 
-                    badge="ARCHETYPE 03: THE COMMANDER"
+                    badge="COMMANDER PROTOCOL"
                     title="CHAOS IS EXPENSIVE."
                     subtitle="Stop the daily stress. Make your business run itself. No more management gaps."
                     accentColor="#107c10"
                     layout="centered"
-                    dockType="intelligence"
                 />
 
-                {/* 04. SUNSET: THE INDEPENDENT */}
+                {/* 03. SUNSET: THE INDEPENDENT (Previously #4) */}
                 <CommandHero 
-                    badge="ARCHETYPE 04: THE INDEPENDENT"
+                    badge="INDEPENDENT ENGINE"
                     title="OWN THE INFRASTRUCTURE."
                     subtitle="No monthly fees. No SaaS lock-in. Buy it once, own your system forever."
                     accentColor="#f97316"
                     layout="left"
-                    dockType="sectors"
                     dockVariant="glass"
-                />
-
-                {/* 05. INDIGO: THE STANDARD */}
-                <CommandHero 
-                    badge="ARCHETYPE 05: THE STANDARD"
-                    title="RESIGNATION PROOF."
-                    subtitle="Don't let your best secrets leave when staff resign."
-                    accentColor="#6366f1"
-                    layout="centered"
-                    dockType="sectors"
-                />
-
-                {/* 06. SLATE: THE SCALER */}
-                <CommandHero 
-                    badge="ARCHETYPE 06: THE SCALER"
-                    title="AUDIT PROOF."
-                    subtitle="Deploy ISO, HACCP, and OSHA-aligned protocols built for execution."
-                    accentColor="#64748b"
-                    layout="centered"
-                    dockType="intelligence"
                 />
 
             </main>
