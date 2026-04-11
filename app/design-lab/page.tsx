@@ -5,41 +5,94 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
     ArrowRight, 
-    Zap,
+    ShieldCheck, 
+    Clock, 
+    FileSpreadsheet, 
+    Lock, 
+    GraduationCap,
     Activity,
-    ClipboardCheck,
+    Target,
+    Zap,
+    Scale,
+    Cpu,
     CheckCircle2,
-    Shield,
-    Clock,
+    Hospital,
+    Utensils,
     LayoutGrid,
     SearchCheck,
-    ShieldAlert,
-    Smartphone,
-    Download,
-    Utensils,
-    Hospital,
-    School,
-    Popcorn
+    ShieldAlert
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import Link from 'next/link';
 
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 /**
- * SOVEREIGN COMMAND HERO
- * Re-implemented based on the user's favorite "Design Success" screenshot.
- * Features: Bottom-aligned White Command Dock, Aggressive Italic Typography, Deep Text Shadows.
+ * SOVEREIGN INTELLIGENCE DOCK (THE "WHITE STRIP" RE-IMAGINED)
+ * A high-density data strip that explains the product depth surgically.
  */
+const TechnicalDock = ({ accentColor, variant = 1 }: { accentColor: string, variant?: number }) => {
+    const dataPoints = [
+        { label: "ASSET CLASS", val: "Institutional Memory", icon: Target },
+        { label: "COMPLIANCE", val: "ISO/HACCP Ready", icon: ShieldCheck },
+        { label: "CORE ENGINE", val: "Excel & Sheets", icon: FileSpreadsheet },
+        { label: "OWNERSHIP", val: "100% Data Sovereignty", icon: Lock },
+        { label: "TRAINING", val: "Built-in Action Notes", icon: GraduationCap },
+        { label: "DEPLOYMENT", val: "< 10 Min Go-Live", icon: Zap }
+    ];
+
+    if (variant === 4) { // Bento Style
+        return (
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[0, 2, 4].map((idx) => (
+                    <div key={idx} className="bg-white rounded-3xl p-6 flex flex-col gap-4 shadow-2xl">
+                        <div className="flex items-center gap-3 border-b border-zinc-100 pb-3">
+                            <dataPoints[idx].icon className="w-5 h-5" style={{ color: accentColor }} />
+                            <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400">{dataPoints[idx].label}</span>
+                        </div>
+                        <div className="space-y-1">
+                            <p className="text-sm font-black text-zinc-900 uppercase italic">{dataPoints[idx].val}</p>
+                            <p className="text-[9px] text-zinc-400 font-bold uppercase italic">{dataPoints[idx+1].val}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        );
+    }
+
+    return (
+        <div className={cn(
+            "max-w-7xl mx-auto bg-white shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)] border border-white p-4 flex flex-col md:flex-row items-center gap-8 md:gap-4 ring-1 ring-black/5",
+            variant === 6 ? "rounded-full px-12" : "rounded-[2.5rem] md:rounded-[4rem]"
+        )}>
+            <div className="flex-1 grid grid-cols-2 md:grid-cols-6 gap-x-8 gap-y-4 px-6">
+                {dataPoints.map((item, i) => (
+                    <div key={i} className="flex flex-col gap-1 border-l border-zinc-100 pl-4 first:border-0">
+                        <span className="text-[8px] font-black uppercase tracking-[0.2em] text-zinc-400">{item.label}</span>
+                        <div className="flex items-center gap-2">
+                            <item.icon className="w-3 h-3 shrink-0" style={{ color: accentColor }} />
+                            <span className="text-[10px] font-black uppercase italic text-zinc-900 leading-none truncate">{item.val}</span>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <Button 
+                className="h-16 px-12 rounded-full font-black uppercase italic text-sm tracking-widest shadow-2xl transition-all hover:scale-105 border-none bg-zinc-950 text-white shrink-0"
+            >
+                DEPLOY NOW: ₹999 <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+        </div>
+    );
+};
+
 const CommandHero = ({ 
     title, 
     accentText, 
     subtitle, 
     accentColor, 
     badge,
-    bgType = 'video',
+    variant = 1,
     bgUrl = VIDEO_URL
 }: { 
     title: string, 
@@ -47,59 +100,42 @@ const CommandHero = ({
     subtitle: string, 
     accentColor: string, 
     badge: string,
-    bgType?: 'video' | 'image',
+    variant?: number,
     bgUrl?: string
 }) => (
-    <section className="relative w-full h-[90vh] md:h-screen flex flex-col overflow-hidden bg-zinc-900 border-b">
-        {/* RAW BACKGROUND (NO FILTERS AS REQUESTED) */}
+    <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden bg-zinc-900 border-b">
+        {/* RAW BACKGROUND (NO EFFECTS AS REQUESTED) */}
         <div className="absolute inset-0 z-0">
-            {bgType === 'video' ? (
-                <video src={bgUrl} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-            ) : (
-                <img src={bgUrl} alt="Premium Backdrop" className="w-full h-full object-cover" />
-            )}
+            <video src={bgUrl} autoPlay loop muted playsInline className="w-full h-full object-cover" />
         </div>
 
         {/* CONTENT LAYER */}
-        <div className="relative z-10 flex-1 flex flex-col justify-center px-6 md:px-20 pt-20">
-            <div className="max-w-6xl space-y-4">
+        <div className={cn(
+            "relative z-10 flex-1 flex flex-col justify-center px-6 md:px-20 pt-20",
+            variant === 6 && "items-center text-center"
+        )}>
+            <div className={cn("max-w-6xl space-y-4", variant === 6 && "flex flex-col items-center")}>
                 <Badge variant="outline" className="bg-white/90 backdrop-blur-md text-zinc-500 border-white/50 uppercase tracking-[0.4em] font-black text-[10px] px-6 py-1.5 rounded-full mb-4 shadow-xl">
                     {badge}
                 </Badge>
                 
-                {/* HIGH-GRAVITY TYPOGRAPHY WITH OCULAR SHADOWS */}
-                <h1 className="text-5xl md:text-[8rem] font-black font-headline tracking-tighter leading-[0.85] uppercase italic text-white drop-shadow-[0_10px_25px_rgba(0,0,0,0.9)]">
+                <h1 className="text-5xl md:text-[8.5rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)]">
                     {title} <br />
                     <span style={{ color: accentColor }}>{accentText}</span>
                 </h1>
                 
-                <p className="text-xl md:text-3xl text-white font-medium italic max-w-2xl pt-4 drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] opacity-90">
-                    {subtitle}
-                </p>
+                <div className={cn("flex gap-6 pt-4", variant === 6 && "justify-center")}>
+                    <div className="w-1.5 bg-white/20 rounded-full h-auto self-stretch shadow-lg" style={{ backgroundColor: accentColor + '40' }} />
+                    <p className="text-xl md:text-3xl text-white font-medium italic max-w-2xl drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] opacity-95 leading-tight">
+                        {subtitle}
+                    </p>
+                </div>
             </div>
         </div>
 
-        {/* THE COMMAND DOCK (AS PER SCREENSHOT) */}
+        {/* THE TECHNICAL BRIEFING DOCK */}
         <div className="relative z-20 w-full px-6 md:px-20 pb-10 md:pb-16">
-            <div className="max-w-7xl mx-auto rounded-[2.5rem] md:rounded-[4rem] bg-white shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)] border border-white p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 ring-1 ring-black/5">
-                <div className="flex flex-wrap justify-center md:justify-start gap-8 md:gap-12 px-6">
-                    {[
-                        { t: "120+ SOPS", i: ClipboardCheck },
-                        { t: "AUDIT READY", i: Shield },
-                        { t: "LIVE LOGS", i: Activity }
-                    ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-3 group">
-                            <item.i className="w-5 h-5 transition-colors" style={{ color: accentColor }} />
-                            <span className="text-[11px] font-black uppercase tracking-widest text-zinc-400 group-hover:text-zinc-900 transition-colors">{item.t}</span>
-                        </div>
-                    ))}
-                </div>
-                <Button 
-                    className="h-16 px-12 md:px-16 rounded-[2rem] font-black uppercase italic text-sm md:text-lg tracking-widest shadow-2xl transition-all hover:scale-105 border-none bg-zinc-950 text-white"
-                >
-                    DEPLOY NOW: ₹999 <ArrowRight className="ml-3 h-5 w-5" />
-                </Button>
-            </div>
+            <TechnicalDock accentColor={accentColor} variant={variant} />
         </div>
     </section>
 );
@@ -144,32 +180,37 @@ const TaskCard = ({ title, audit, action, risk, color, icon: Icon }: any) => (
 );
 
 export default function DesignLabPage() {
+    const SHARED_SUBTITLE = "Institutional memory is an asset. Anything else is just luck.";
+
     return (
         <div className="flex flex-col min-h-screen bg-white">
             <SiteHeader />
 
             <main className="flex-1">
                 
-                {/* 01. PINK FAVORITE (DESIGN SUCCESS) */}
+                {/* 01. PINK SUCCESS */}
                 <CommandHero 
-                    badge="ARCHETYPE 01: DESIGN SUCCESS"
-                    title="THE VIEW FROM"
-                    accentText="THE TOP."
-                    accentColor="#f472b6"
-                    subtitle="Premium workflows for premium brands. Soft on the eyes, hard on the errors."
-                />
-
-                {/* 02. AZURE BLUE (PURE ORDER) */}
-                <CommandHero 
-                    badge="ARCHETYPE 02: PURE ORDER"
+                    variant={1}
+                    badge="ARCHETYPE 01: THE PINK SUCCESS"
                     title="CAPTURE"
                     accentText="MEMORY."
-                    accentColor="#38bdf8"
-                    subtitle="Institutional memory is an asset. Anything else is just luck. Build your legacy."
+                    accentColor="#f472b6"
+                    subtitle={SHARED_SUBTITLE}
                 />
 
-                {/* 03. EXCEL GREEN (EXECUTIVE STANDARD) */}
+                {/* 02. AZURE ORDER */}
                 <CommandHero 
+                    variant={2}
+                    badge="ARCHETYPE 02: PURE ORDER"
+                    title="DEPLOY"
+                    accentText="STRUCTURE."
+                    accentColor="#38bdf8"
+                    subtitle="Because memory is not a system. Serious operations deserve more."
+                />
+
+                {/* 03. EXCEL EXECUTIVE */}
+                <CommandHero 
+                    variant={3}
                     badge="ARCHETYPE 03: EXCEL EXECUTIVE"
                     title="STANDARDIZE"
                     accentText="EVERYTHING."
@@ -177,27 +218,30 @@ export default function DesignLabPage() {
                     subtitle="The definitive institutional standard. Trust built on Excel architecture."
                 />
 
-                {/* 04. MINT MOMENTUM (FLOW STUDIO) */}
+                {/* 04. MINT MOMENTUM */}
                 <CommandHero 
-                    badge="ARCHETYPE 04: FLOW STUDIO"
+                    variant={4}
+                    badge="ARCHETYPE 04: MINT FLOW"
                     title="BETTER DAYS,"
                     accentText="BUILT-IN."
                     accentColor="#34d399"
                     subtitle="We've made elite standards simple enough for everyone. Clarity for your team."
                 />
 
-                {/* 05. ELECTRIC ORCHID (MODERN TECH) */}
+                {/* 05. ELECTRIC ORCHID */}
                 <CommandHero 
-                    badge="ARCHETYPE 05: ELECTRIC ORCHID"
+                    variant={5}
+                    badge="ARCHETYPE 05: CREATIVE PULSE"
                     title="OPERATE"
                     accentText="SMARTER."
                     accentColor="#a855f7"
                     subtitle="Remove the human variable from high-stakes operations. Innovation focused."
                 />
 
-                {/* 06. PRESTIGE GOLD (SOVEREIGN PEAK) */}
+                {/* 06. PRESTIGE GOLD */}
                 <CommandHero 
-                    badge="ARCHETYPE 06: PRESTIGE GOLD"
+                    variant={6}
+                    badge="ARCHETYPE 06: GOLDEN SOVEREIGN"
                     title="ELITE"
                     accentText="STANDARDS."
                     accentColor="#fbbf24"
@@ -234,24 +278,6 @@ export default function DesignLabPage() {
                                 action="Check and log fridge temps: must be between 1°C and 4°C."
                                 risk="Stock spoilage and safety fines."
                             />
-                        </div>
-
-                        <div className="mt-24 p-16 rounded-[4rem] bg-white shadow-2xl shadow-zinc-900/5 border border-zinc-100 text-center space-y-10">
-                            <div className="grid md:grid-cols-3 gap-12">
-                                {[
-                                    { t: "Step 1: Download", d: "Instantly get your master file.", i: Download },
-                                    { t: "Step 2: Assign", d: "Type in your team's names.", i: Smartphone },
-                                    { t: "Step 3: Deploy", d: "Start running like an elite group.", i: CheckCircle2 }
-                                ].map((step, i) => (
-                                    <div key={i} className="space-y-4">
-                                        <div className="w-16 h-16 rounded-3xl bg-zinc-50 flex items-center justify-center mx-auto text-zinc-300 shadow-inner">
-                                            <step.i className="w-8 h-8" />
-                                        </div>
-                                        <h4 className="font-black uppercase tracking-widest text-zinc-900">{step.t}</h4>
-                                        <p className="text-sm text-zinc-400 italic font-medium">{step.d}</p>
-                                    </div>
-                                ))}
-                            </div>
                         </div>
                     </div>
                 </section>
