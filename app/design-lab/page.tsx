@@ -16,8 +16,7 @@ import {
     Hospital,
     School,
     Store,
-    Popcorn,
-    ChevronRight
+    Popcorn
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -27,7 +26,7 @@ import Link from 'next/link';
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 /**
- * TECHNICAL DOCK v52.0 - ZERO CLIPPING MANDATE
+ * TECHNICAL DOCK v53.0 - ZERO CLIPPING MANDATE
  * Modes: 'intelligence' (Product Specs) | 'sectors' (Direct Navigation)
  */
 const TechnicalDock = ({ accentColor, type = "intelligence", variant = "default" }: { accentColor: string, type?: "intelligence" | "sectors", variant?: "default" | "glass" }) => {
@@ -57,20 +56,19 @@ const TechnicalDock = ({ accentColor, type = "intelligence", variant = "default"
             "max-w-7xl mx-auto border p-2 md:p-4 flex flex-col md:flex-row items-center gap-6 rounded-[2rem] md:rounded-full shadow-2xl transition-all duration-500",
             variant === "glass" ? "backdrop-blur-3xl bg-white/10 border-white/20" : "bg-white border-zinc-200"
         )}>
-            <div className="flex-1 grid grid-cols-2 md:grid-cols-6 gap-2 md:gap-4 w-full px-4 md:px-6">
+            <div className="flex-1 grid grid-cols-2 md:grid-cols-6 gap-2 md:gap-4 w-full px-4 md:px-6 h-full">
                 {points.map((item, i) => {
                     const DynamicIcon = item.icon;
                     const Content = (
                         <div key={i} className={cn(
-                            "flex flex-col gap-1 pl-3 md:pl-4 first:border-0 h-full justify-center transition-all",
-                            variant === "glass" ? "border-l border-white/10" : "border-l border-zinc-100",
-                            'href' in item && "hover:opacity-70 cursor-pointer"
+                            "flex flex-col gap-1 pl-3 md:pl-4 first:border-0 h-full justify-center transition-all min-w-0 overflow-hidden",
+                            variant === "glass" ? "border-l border-white/10" : "border-l border-zinc-100"
                         )}>
                             <span className={cn(
                                 "text-[7px] md:text-[8px] font-black uppercase tracking-[0.2em] whitespace-nowrap",
                                 variant === "glass" ? "text-white/40" : "text-zinc-400"
                             )}>{item.label}</span>
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-2 overflow-hidden">
                                 <DynamicIcon className="w-3 md:w-3.5 h-3 md:h-3.5 shrink-0" style={{ color: accentColor }} />
                                 <span className={cn(
                                     "text-[8px] md:text-[9px] font-black uppercase italic whitespace-nowrap leading-none",
@@ -81,7 +79,7 @@ const TechnicalDock = ({ accentColor, type = "intelligence", variant = "default"
                     );
 
                     return 'href' in item ? (
-                        <Link key={i} href={item.href as string}>{Content}</Link>
+                        <Link key={i} href={item.href as string} className="hover:opacity-70 transition-all">{Content}</Link>
                     ) : Content;
                 })}
             </div>
@@ -117,7 +115,7 @@ const CommandHero = ({
     <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden bg-black border-b border-white/5">
         {/* Background Video */}
         <div className="absolute inset-0 z-0">
-            <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+            <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-40 grayscale" />
             <div className="absolute inset-0 bg-black/30 z-10" />
         </div>
 
@@ -132,7 +130,7 @@ const CommandHero = ({
                 </Badge>
                 
                 <div className="relative group">
-                    <div className="absolute -inset-10 bg-radial-gradient blur-[100px] opacity-20 pointer-events-none transition-opacity duration-1000 group-hover:opacity-40" style={{ background: `radial-gradient(circle, ${accentColor} 0%, transparent 70%)` }} />
+                    <div className="absolute -inset-10 bg-radial-gradient blur-[100px] opacity-30 pointer-events-none transition-opacity duration-1000 group-hover:opacity-50" style={{ background: `radial-gradient(circle, ${accentColor} 0%, transparent 70%)` }} />
                     
                     <h1 className="text-5xl md:text-[9rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic text-white relative z-10 drop-shadow-[0_15px_35px_rgba(0,0,0,1)]">
                         {title}
@@ -171,7 +169,7 @@ export default function DesignLabPage() {
                 {/* 01. AZURE: THE ANALYST */}
                 <CommandHero 
                     badge="ARCHETYPE 01: THE ANALYST"
-                    title="MEMORY DECAYS."
+                    title="LUCK IS NOT A SYSTEM."
                     subtitle="Institutional memory is an asset. Anything else is just luck."
                     accentColor="#38bdf8"
                     layout="centered"
@@ -181,7 +179,7 @@ export default function DesignLabPage() {
                 {/* 02. GOLDEN: THE SOVEREIGN */}
                 <CommandHero 
                     badge="ARCHETYPE 02: THE SOVEREIGN"
-                    title="LUCK FAILS."
+                    title="STOP MANAGING BY HOPE."
                     subtitle="Make sure every task is done right, even when you aren't there."
                     accentColor="#fbbf24"
                     layout="left"
@@ -192,7 +190,7 @@ export default function DesignLabPage() {
                 {/* 03. EMERALD: THE COMMANDER */}
                 <CommandHero 
                     badge="ARCHETYPE 03: THE COMMANDER"
-                    title="STOP THE CHAOS."
+                    title="CHAOS IS EXPENSIVE."
                     subtitle="Stop the daily stress. Make your business run itself. No more management gaps."
                     accentColor="#107c10"
                     layout="centered"
@@ -202,7 +200,7 @@ export default function DesignLabPage() {
                 {/* 04. SUNSET: THE INDEPENDENT */}
                 <CommandHero 
                     badge="ARCHETYPE 04: THE INDEPENDENT"
-                    title="OWN YOUR DATA."
+                    title="OWN THE INFRASTRUCTURE."
                     subtitle="No monthly fees. No SaaS lock-in. Buy it once, own your system forever."
                     accentColor="#f97316"
                     layout="left"
@@ -213,7 +211,7 @@ export default function DesignLabPage() {
                 {/* 05. INDIGO: THE STANDARD */}
                 <CommandHero 
                     badge="ARCHETYPE 05: THE STANDARD"
-                    title="PEOPLE LEAVE."
+                    title="RESIGNATION PROOF."
                     subtitle="Don't let your best secrets leave when staff resign."
                     accentColor="#6366f1"
                     layout="centered"
@@ -223,7 +221,7 @@ export default function DesignLabPage() {
                 {/* 06. SLATE: THE SCALER */}
                 <CommandHero 
                     badge="ARCHETYPE 06: THE SCALER"
-                    title="AUDIT READY."
+                    title="AUDIT PROOF."
                     subtitle="Deploy ISO, HACCP, and OSHA-aligned protocols built for execution."
                     accentColor="#64748b"
                     layout="centered"
