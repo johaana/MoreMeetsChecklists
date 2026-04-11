@@ -39,7 +39,10 @@ import {
     Trophy,
     TrendingUp,
     Settings,
-    Shield
+    Shield,
+    Factory,
+    ShoppingCart,
+    Scale
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -54,10 +57,10 @@ const SOFT_PURPLE = "#a855f7";
 const SOFT_MINT = "#34d399";
 
 /**
- * 01. DESIGN SUCCESS (Screenshot Standard - Refined)
+ * 01. DESIGN SUCCESS (The Pink/Purple Favorite)
  */
 const DesignSuccessHero = () => (
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white py-20">
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white py-20 border-b">
         <div className="container px-6 relative z-10 mx-auto text-center space-y-16">
             <div className="max-w-5xl mx-auto space-y-8">
                 <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-full bg-white shadow-sm">
@@ -98,7 +101,7 @@ const DesignSuccessHero = () => (
 );
 
 /**
- * 02. PURE ORDER (Sky Blue Favorite)
+ * 02. PURE ORDER (The Sky Blue Standard)
  */
 const PureOrderHero = () => (
     <section className="relative w-full h-screen flex bg-white overflow-hidden border-b">
@@ -159,7 +162,7 @@ const PureOrderHero = () => (
  * 03. EXCEL EXECUTIVE (Main Site Standard)
  */
 const ExcelExecutiveHero = () => (
-    <section className="relative w-full h-screen flex items-center overflow-hidden bg-white">
+    <section className="relative w-full h-screen flex items-center overflow-hidden bg-white border-b">
         <div className="absolute inset-0 z-0">
             <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover grayscale brightness-110 opacity-40" />
             <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 via-white/40 to-transparent" />
@@ -217,7 +220,7 @@ const ExcelExecutiveHero = () => (
  * 04. FLOW STUDIO (Friendly Bento)
  */
 const FlowStudioHero = () => (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-white py-20">
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-white py-20 border-b">
         <div className="absolute inset-0 z-0 bg-gradient-to-tr from-[#f0fdfa] via-white to-[#f0f9ff]" />
         
         <div className="container px-6 relative z-10 mx-auto grid lg:grid-cols-[1.3fr,1fr] gap-16 items-center">
@@ -268,7 +271,7 @@ const FlowStudioHero = () => (
  * 05. GLASS INSTRUMENT (HUD Multi-Color)
  */
 const GlassInstrumentHero = () => (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-white">
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-white border-b">
         <div className="absolute inset-0 z-0">
             <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-20" />
             <div className="absolute inset-0 bg-white/60 backdrop-blur-sm" />
@@ -315,7 +318,7 @@ const GlassInstrumentHero = () => (
  * 06. PANORAMIC HUD (Bottom Command)
  */
 const PanoramicHUDHero = () => (
-    <section className="relative w-full h-screen bg-white flex flex-col justify-end overflow-hidden">
+    <section className="relative w-full h-screen bg-white flex flex-col justify-end overflow-hidden border-b">
         <div className="absolute inset-0 z-0">
             <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
@@ -356,7 +359,7 @@ const PanoramicHUDHero = () => (
  * 07. THE VERTICAL RAIL (Technical Command)
  */
 const VerticalRailHero = () => (
-    <section className="relative w-full h-screen bg-zinc-50 flex items-center overflow-hidden">
+    <section className="relative w-full h-screen bg-zinc-50 flex items-center overflow-hidden border-b">
         <div className="w-24 md:w-32 h-full bg-white border-r border-zinc-100 flex flex-col items-center justify-center gap-12 z-20 shadow-2xl">
             {[Workflow, Command, Palette, Settings].map((Ico, i) => (
                 <div key={i} className="w-12 h-12 rounded-2xl bg-zinc-50 flex items-center justify-center text-zinc-300 hover:text-primary transition-colors cursor-pointer group">
@@ -393,7 +396,7 @@ const VerticalRailHero = () => (
  * 08. THE ORGANIC MESH (Soft Flow)
  */
 const OrganicMeshHero = () => (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-white">
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-white border-b">
         <div className="absolute inset-0 z-0 opacity-40">
             <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-pink-200 blur-[150px] animate-pulse" />
             <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-blue-200 blur-[150px] animate-pulse" />
@@ -430,7 +433,7 @@ const OrganicMeshHero = () => (
  * 09. STUDIO CANVAS (Brutalist White)
  */
 const StudioCanvasHero = () => (
-    <section className="relative w-full h-screen bg-white flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+    <section className="relative w-full h-screen bg-white flex flex-col items-center justify-center text-center px-6 overflow-hidden border-b">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:32px_32px]" />
         
         <div className="space-y-12 max-w-6xl">
@@ -458,7 +461,7 @@ const StudioCanvasHero = () => (
  * 10. INTERACTIVE BENTO (Modern Matrix)
  */
 const InteractiveBentoHero = () => (
-    <section className="relative w-full min-h-screen bg-zinc-50 flex items-center justify-center py-20 px-6">
+    <section className="relative w-full min-h-screen bg-zinc-50 flex items-center justify-center py-20 px-6 border-b">
         <div className="container mx-auto grid lg:grid-cols-[1fr,1.2fr] gap-10 items-stretch">
             
             <div className="p-16 rounded-[4rem] bg-white border border-zinc-100 shadow-2xl flex flex-col justify-between space-y-12">
