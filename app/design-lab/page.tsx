@@ -16,11 +16,12 @@ import {
     Activity,
     SearchCheck,
     ShieldAlert,
-    Download,
-    ChevronRight,
     Cpu,
     Scale,
-    LayoutGrid
+    LayoutGrid,
+    ChevronRight,
+    Binary,
+    Network
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -29,52 +30,61 @@ import { Footer } from '@/components/layout/footer';
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 /**
- * TECHNICAL INTELLIGENCE DOCK v44.0
- * Optimized for ABSOLUTE CLARITY: No truncation, full-visibility technical lines.
- * Standardized across 6 briefing cells.
+ * SOVEREIGN TECHNICAL DOCK v45.0
+ * Optimized for: ABSOLUTE CLARITY. Zero truncation.
+ * Content: Intellectual Product Briefing.
  */
-const TechnicalDock = ({ accentColor, variant = "default" }: { accentColor: string, variant?: string }) => {
+const TechnicalDock = ({ accentColor, variant = "default" }: { accentColor: string, variant?: "default" | "glass" | "bento" }) => {
     const dataPoints = [
         { label: "ASSET CLASS", val: "INSTITUTIONAL MEMORY", icon: Target },
         { label: "COMPLIANCE", val: "ISO/HACCP READY", icon: ShieldCheck },
         { label: "CORE ENGINE", val: "EXCEL & GOOGLE SHEETS", icon: FileSpreadsheet },
-        { label: "OWNERSHIP", val: "100% DATA SOVEREIGNTY", icon: Lock },
-        { label: "TRAINING", val: "BUILT-IN ACTION NOTES", icon: GraduationCap },
+        { label: "DATA SOVEREIGNTY", val: "100% OWNERSHIP", icon: Lock },
+        { label: "TRAINING LOGIC", val: "ACTION NOTES", icon: GraduationCap },
         { label: "DEPLOYMENT", val: "< 10 MIN GO-LIVE", icon: Zap }
     ];
 
+    if (variant === "glass") {
+        return (
+            <div className="max-w-7xl mx-auto backdrop-blur-3xl bg-white/10 border border-white/20 p-2 md:p-4 flex flex-col md:flex-row items-center gap-6 rounded-[2.5rem] md:rounded-full shadow-2xl">
+                <div className="flex-1 grid grid-cols-2 md:grid-cols-6 gap-4 w-full px-6">
+                    {dataPoints.map((item, i) => {
+                        const Icon = item.icon;
+                        return (
+                            <div key={i} className="flex flex-col gap-1 border-l border-white/10 pl-4 first:border-0">
+                                <span className="text-[8px] font-black uppercase tracking-[0.2em] text-white/40 whitespace-nowrap">{item.label}</span>
+                                <div className="flex items-center gap-2">
+                                    <Icon className="w-3.5 h-3.5 shrink-0" style={{ color: accentColor }} />
+                                    <span className="text-[9px] font-black uppercase italic text-white whitespace-nowrap leading-none">{item.val}</span>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+                <Button className="h-14 md:h-16 px-10 rounded-full font-black uppercase italic text-xs tracking-widest transition-all hover:scale-105 border-none bg-white text-black shrink-0 group/btn">
+                    DEPLOY SYSTEM <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                </Button>
+            </div>
+        );
+    }
+
     return (
-        <div className={cn(
-            "max-w-7xl mx-auto backdrop-blur-3xl border border-white/20 p-2 md:p-4 flex flex-col md:flex-row items-center gap-6 md:gap-4 rounded-[2.5rem] md:rounded-full shadow-2xl",
-            variant === "glass" ? "bg-white/10" : "bg-white/95"
-        )}>
-            <div className="flex-1 grid grid-cols-2 md:grid-cols-6 gap-x-2 md:gap-x-0 w-full px-4 md:px-8">
+        <div className="max-w-7xl mx-auto bg-white border border-zinc-200 p-2 md:p-4 flex flex-col md:flex-row items-center gap-6 rounded-[2.5rem] md:rounded-full shadow-2xl">
+            <div className="flex-1 grid grid-cols-2 md:grid-cols-6 gap-4 w-full px-6">
                 {dataPoints.map((item, i) => {
-                    const ItemIcon = item.icon;
+                    const Icon = item.icon;
                     return (
-                        <div key={i} className="flex flex-col gap-1 border-l border-zinc-200/20 md:border-zinc-200 pl-4 first:border-0 overflow-visible py-2 md:py-0">
-                            <span className={cn(
-                                "text-[8px] font-black uppercase tracking-[0.2em] whitespace-nowrap",
-                                variant === "glass" ? "text-white/40" : "text-zinc-400"
-                            )}>
-                                {item.label}
-                            </span>
+                        <div key={i} className="flex flex-col gap-1 border-l border-zinc-100 pl-4 first:border-0">
+                            <span className="text-[8px] font-black uppercase tracking-[0.2em] text-zinc-400 whitespace-nowrap">{item.label}</span>
                             <div className="flex items-center gap-2">
-                                <ItemIcon className="w-3.5 h-3.5 shrink-0" style={{ color: accentColor }} />
-                                <span className={cn(
-                                    "text-[9px] font-black uppercase italic leading-none whitespace-nowrap",
-                                    variant === "glass" ? "text-white" : "text-zinc-900"
-                                )}>
-                                    {item.val}
-                                </span>
+                                <Icon className="w-3.5 h-3.5 shrink-0" style={{ color: accentColor }} />
+                                <span className="text-[9px] font-black uppercase italic text-zinc-900 whitespace-nowrap leading-none">{item.val}</span>
                             </div>
                         </div>
                     );
                 })}
             </div>
-            <Button 
-                className="h-14 md:h-16 px-10 md:px-12 rounded-full font-black uppercase italic text-[11px] md:text-sm tracking-widest shadow-2xl transition-all hover:scale-105 border-none bg-zinc-950 text-white shrink-0 group/btn"
-            >
+            <Button className="h-14 md:h-16 px-10 rounded-full font-black uppercase italic text-xs tracking-widest transition-all hover:scale-105 border-none bg-zinc-950 text-white shrink-0 group/btn">
                 DEPLOY SYSTEM <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
             </Button>
         </div>
@@ -82,29 +92,30 @@ const TechnicalDock = ({ accentColor, variant = "default" }: { accentColor: stri
 };
 
 const CommandHero = ({ 
-    title = "CAPTURE",
-    accentText = "MEMORY.",
-    subtitle = "Institutional memory is an asset. Anything else is just luck.",
+    title,
+    accentText,
+    subtitle,
     accentColor, 
     badge,
     layout = "centered",
     dockVariant = "default",
     isSplit = false
 }: { 
-    title?: string,
-    accentText?: string,
-    subtitle?: string,
+    title: string,
+    accentText: string,
+    subtitle: string,
     accentColor: string, 
     badge: string,
-    layout?: "centered" | "left" | "bottom",
+    layout?: "centered" | "left" | "split",
     dockVariant?: "default" | "glass",
     isSplit?: boolean
 }) => (
     <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden bg-black border-b border-white/5">
-        {/* RAW BACKGROUND (NO EFFECTS) */}
+        {/* RAW BACKGROUND VIDEO */}
         <div className="absolute inset-0 z-0">
-            <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-            {isSplit && <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent z-10" />}
+            <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover grayscale-[0.2]" />
+            {layout === "split" && <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent z-10" />}
+            {layout !== "split" && <div className="absolute inset-0 bg-black/20 z-10" />}
         </div>
 
         {/* CONTENT LAYER */}
@@ -114,27 +125,32 @@ const CommandHero = ({
         )}>
             <div className={cn("max-w-6xl space-y-8", layout === "centered" && "flex flex-col items-center")}>
                 <Badge variant="outline" className={cn(
-                    "bg-white/95 backdrop-blur-md border-white/50 uppercase tracking-[0.4em] font-black text-[10px] px-6 py-2 rounded-full mb-2 shadow-2xl",
-                    isSplit ? "text-zinc-400" : "text-zinc-500"
+                    "backdrop-blur-md border-white/50 uppercase tracking-[0.4em] font-black text-[10px] px-6 py-2 rounded-full mb-2 shadow-2xl",
+                    layout === "split" ? "bg-zinc-100 text-zinc-400" : "bg-white/10 text-white/60"
                 )}>
                     {badge}
                 </Badge>
                 
-                <h1 className={cn(
-                    "text-5xl md:text-[9.5rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic drop-shadow-[0_15px_35px_rgba(0,0,0,1)]",
-                    isSplit ? "text-zinc-950 drop-shadow-none" : "text-white"
-                )}>
-                    {title} <br />
-                    <span style={{ color: accentColor }}>
-                        {accentText}
-                    </span>
-                </h1>
+                <div className="relative group">
+                    {/* RETINA RIM-LIGHTING EFFECT */}
+                    <div className="absolute -inset-10 bg-radial-gradient blur-[100px] opacity-20 pointer-events-none transition-opacity duration-1000 group-hover:opacity-40" style={{ background: `radial-gradient(circle, ${accentColor} 0%, transparent 70%)` }} />
+                    
+                    <h1 className={cn(
+                        "text-5xl md:text-[9rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic relative z-10",
+                        layout === "split" ? "text-zinc-950" : "text-white drop-shadow-[0_15px_35px_rgba(0,0,0,1)]"
+                    )}>
+                        {title} <br />
+                        <span style={{ color: accentColor }}>
+                            {accentText}
+                        </span>
+                    </h1>
+                </div>
                 
                 <div className={cn("flex gap-6 pt-4", layout === "centered" ? "justify-center" : "")}>
-                    <div className="w-2 bg-white/20 rounded-full h-auto self-stretch shadow-2xl" style={{ backgroundColor: accentColor }} />
+                    <div className="w-2 rounded-full h-auto self-stretch shadow-2xl" style={{ backgroundColor: accentColor }} />
                     <p className={cn(
-                        "text-xl md:text-4xl font-medium italic max-w-3xl drop-shadow-[0_15px_35px_rgba(0,0,0,1)] opacity-95 leading-[1.1]",
-                        isSplit ? "text-zinc-500 drop-shadow-none" : "text-white"
+                        "text-xl md:text-4xl font-medium italic max-w-2xl leading-[1.1] relative z-10",
+                        layout === "split" ? "text-zinc-500" : "text-white/90 drop-shadow-[0_15px_35px_rgba(0,0,0,1)]"
                     )}>
                         {subtitle}
                     </p>
@@ -156,46 +172,63 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* 01. AZURE MONOLITH - CENTERED STANDARD */}
+                {/* 01. AZURE MONOLITH - INTELLECTUAL CENTERED */}
                 <CommandHero 
                     badge="ARCHETYPE 01: AZURE MONOLITH"
+                    title="SOVEREIGN"
+                    accentText="ORDER."
+                    subtitle="Institutional memory is an asset. Anything else is just luck."
                     accentColor="#38bdf8"
                     layout="centered"
                 />
 
-                {/* 02. GOLDEN SOVEREIGN - PRESTIGE FOCUS */}
+                {/* 02. AZURE RAIL - COMMAND PANEL */}
                 <CommandHero 
-                    badge="ARCHETYPE 02: GOLDEN SOVEREIGN"
-                    accentColor="#fbbf24"
-                    layout="centered"
-                />
-
-                {/* 03. AZURE RAIL - LEFT WEIGHTED */}
-                <CommandHero 
-                    badge="ARCHETYPE 03: AZURE RAIL"
+                    badge="ARCHETYPE 02: AZURE RAIL"
+                    title="CAPTURE"
+                    accentText="INTELLECT."
+                    subtitle="Convert tribal knowledge into permanent organizational infrastructure."
                     accentColor="#38bdf8"
                     layout="left"
                 />
 
-                {/* 04. GOLDEN SPLIT - INSTITUTIONAL EXECUTIVE */}
+                {/* 03. AZURE HUD - REFRACTIVE GLASS */}
                 <CommandHero 
-                    isSplit={true}
-                    badge="ARCHETYPE 04: GOLDEN SPLIT"
-                    accentColor="#fbbf24"
-                    layout="left"
-                />
-
-                {/* 05. AZURE HUD - GLASS MANDATE */}
-                <CommandHero 
-                    badge="ARCHETYPE 05: AZURE GLASS HUD"
+                    badge="ARCHETYPE 03: AZURE GLASS HUD"
+                    title="ENGINEERED"
+                    accentText="CONSISTENCY."
+                    subtitle="Consistency is either engineered, or it is non-existent."
                     accentColor="#38bdf8"
                     layout="centered"
                     dockVariant="glass"
                 />
 
-                {/* 06. GOLDEN PANORAMIC - BOTTOM COMMAND */}
+                {/* 04. GOLDEN SOVEREIGN - PEAK LUXURY */}
                 <CommandHero 
-                    badge="ARCHETYPE 06: GOLDEN PANORAMIC"
+                    badge="ARCHETYPE 04: GOLDEN SOVEREIGN"
+                    title="INSTITUTIONAL"
+                    accentText="CONTINUITY."
+                    subtitle="Ownership of standard is the ultimate operational insurance."
+                    accentColor="#fbbf24"
+                    layout="centered"
+                />
+
+                {/* 05. GOLDEN SPLIT - EXECUTIVE PRESTIGE */}
+                <CommandHero 
+                    badge="ARCHETYPE 05: PRESTIGE SPLIT"
+                    title="OPERATIONAL"
+                    accentText="PERMANENCE."
+                    subtitle="Build systems that stay when people move on."
+                    accentColor="#fbbf24"
+                    layout="split"
+                />
+
+                {/* 06. GOLDEN COCKPIT - INDUSTRIAL POWER */}
+                <CommandHero 
+                    badge="ARCHETYPE 06: GOLDEN COCKPIT"
+                    title="ASSET"
+                    accentText="SOVEREIGNTY."
+                    subtitle="100% Data ownership. No SaaS. Total operational control."
                     accentColor="#fbbf24"
                     layout="left"
                     dockVariant="glass"
@@ -251,7 +284,7 @@ export default function DesignLabPage() {
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-5">
                                             <div className="p-4 rounded-2xl bg-amber-50 text-amber-500 shadow-inner">
-                                                <Crown className="w-8 h-8" />
+                                                <CrownIcon className="w-8 h-8" />
                                             </div>
                                             <h4 className="text-3xl font-black uppercase italic tracking-tighter font-headline text-zinc-950">Prestige Vitals</h4>
                                         </div>
@@ -282,8 +315,8 @@ export default function DesignLabPage() {
     );
 }
 
-// Additional required icon for the improvised cards
-function Crown(props: any) {
+// Fixed Icon Component to avoid constructor errors
+function CrownIcon(props: any) {
   return (
     <svg
       {...props}
