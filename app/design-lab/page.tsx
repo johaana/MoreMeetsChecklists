@@ -12,21 +12,29 @@ import {
     GraduationCap,
     Target,
     Zap,
-    LayoutGrid
+    LayoutGrid,
+    ChevronRight,
+    Utensils,
+    Building,
+    Hospital,
+    School,
+    Building2,
+    Popcorn
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import Link from 'next/link';
 
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 /**
- * SOVEREIGN TECHNICAL DOCK v46.0
- * Optimized for: ABSOLUTE CLARITY. Zero truncation.
- * Content: Intellectual Product Briefing.
+ * SOVEREIGN TECHNICAL DOCK v47.0
+ * Optimized for: INSTANT INDUSTRY NAVIGATION & TECHNICAL PROOF.
+ * Modes: 'intelligence' (Product Depth) | 'sectors' (Direct Offerings)
  */
-const TechnicalDock = ({ accentColor, variant = "default" }: { accentColor: string, variant?: "default" | "glass" }) => {
-    const dataPoints = [
+const TechnicalDock = ({ accentColor, type = "intelligence", variant = "default" }: { accentColor: string, type?: "intelligence" | "sectors", variant?: "default" | "glass" }) => {
+    const intelligencePoints = [
         { label: "ASSET CLASS", val: "INSTITUTIONAL MEMORY", icon: Target },
         { label: "COMPLIANCE", val: "ISO/HACCP READY", icon: ShieldCheck },
         { label: "CORE ENGINE", val: "EXCEL & GOOGLE SHEETS", icon: FileSpreadsheet },
@@ -35,18 +43,30 @@ const TechnicalDock = ({ accentColor, variant = "default" }: { accentColor: stri
         { label: "DEPLOYMENT", val: "< 10 MIN GO-LIVE", icon: Zap }
     ];
 
+    const sectorPoints = [
+        { label: "HOSPITALITY", val: "RESTAURANTS", icon: Utensils, href: "/packs/restaurants" },
+        { label: "HOSPITALITY", val: "HOTELS & RESORTS", icon: Building, href: "/packs/hotels_and_resorts" },
+        { label: "HEALTHCARE", val: "HOSPITALS", icon: Hospital, href: "/packs/healthcare_and_hospital_operations" },
+        { label: "EDUCATION", val: "SCHOOLS", icon: School, href: "/packs/school_operations_pack" },
+        { label: "REAL ESTATE", val: "FACILITIES", icon: Building2, href: "/packs/facility_management_blueprint" },
+        { label: "ENTERTAINMENT", val: "CINEMAS", icon: Popcorn, href: "/packs/cinema_operations_pack" }
+    ];
+
+    const points = type === "intelligence" ? intelligencePoints : sectorPoints;
+
     return (
         <div className={cn(
             "max-w-7xl mx-auto border p-2 md:p-4 flex flex-col md:flex-row items-center gap-6 rounded-[2.5rem] md:rounded-full shadow-2xl transition-all duration-500",
             variant === "glass" ? "backdrop-blur-3xl bg-white/10 border-white/20" : "bg-white border-zinc-200"
         )}>
             <div className="flex-1 grid grid-cols-2 md:grid-cols-6 gap-4 w-full px-6">
-                {dataPoints.map((item, i) => {
+                {points.map((item, i) => {
                     const Icon = item.icon;
-                    return (
+                    const Content = (
                         <div key={i} className={cn(
-                            "flex flex-col gap-1 pl-4 first:border-0",
-                            variant === "glass" ? "border-l border-white/10" : "border-l border-zinc-100"
+                            "flex flex-col gap-1 pl-4 first:border-0 h-full justify-center transition-all",
+                            variant === "glass" ? "border-l border-white/10" : "border-l border-zinc-100",
+                            'href' in item && "hover:opacity-70 cursor-pointer"
                         )}>
                             <span className={cn(
                                 "text-[8px] font-black uppercase tracking-[0.2em] whitespace-nowrap",
@@ -61,6 +81,10 @@ const TechnicalDock = ({ accentColor, variant = "default" }: { accentColor: stri
                             </div>
                         </div>
                     );
+
+                    return 'href' in item ? (
+                        <Link key={i} href={item.href as string}>{Content}</Link>
+                    ) : Content;
                 })}
             </div>
             <Button className={cn(
@@ -80,7 +104,8 @@ const CommandHero = ({
     accentColor, 
     badge,
     layout = "centered",
-    dockVariant = "default"
+    dockVariant = "default",
+    dockType = "intelligence"
 }: { 
     title: string,
     accentText: string,
@@ -88,17 +113,16 @@ const CommandHero = ({
     accentColor: string, 
     badge: string,
     layout?: "centered" | "left" | "split",
-    dockVariant?: "default" | "glass"
+    dockVariant?: "default" | "glass",
+    dockType?: "intelligence" | "sectors"
 }) => (
     <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden bg-black border-b border-white/5">
-        {/* RAW BACKGROUND VIDEO */}
         <div className="absolute inset-0 z-0">
             <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover grayscale-[0.2]" />
             {layout === "split" && <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent z-10" />}
             {layout !== "split" && <div className="absolute inset-0 bg-black/20 z-10" />}
         </div>
 
-        {/* CONTENT LAYER */}
         <div className={cn(
             "relative z-20 flex-1 flex flex-col px-6 md:px-24 pt-20",
             layout === "centered" ? "justify-center items-center text-center" : "justify-center"
@@ -112,7 +136,6 @@ const CommandHero = ({
                 </Badge>
                 
                 <div className="relative group">
-                    {/* RETINA RIM-LIGHTING EFFECT */}
                     <div className="absolute -inset-10 bg-radial-gradient blur-[100px] opacity-20 pointer-events-none transition-opacity duration-1000 group-hover:opacity-40" style={{ background: `radial-gradient(circle, ${accentColor} 0%, transparent 70%)` }} />
                     
                     <h1 className={cn(
@@ -138,9 +161,14 @@ const CommandHero = ({
             </div>
         </div>
 
-        {/* THE TECHNICAL BRIEFING DOCK */}
-        <div className="relative z-30 w-full px-6 md:px-24 pb-10 md:pb-16">
-            <TechnicalDock accentColor={accentColor} variant={dockVariant} />
+        <div className="relative z-30 w-full px-6 md:px-24 pb-10 md:pb-16 space-y-4">
+            <div className="max-w-7xl mx-auto flex justify-between items-end px-6">
+                <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.4em] italic drop-shadow-lg">
+                    {dockType === 'sectors' ? "LOOK WHAT'S IN FOR YOUR BUSINESS" : "SYSTEM_AUTHENTICATION_ACTIVE"}
+                </span>
+                <span className="text-[8px] font-mono text-white/20 uppercase">MM_SOVEREIGN_V11.9</span>
+            </div>
+            <TechnicalDock accentColor={accentColor} variant={dockVariant} type={dockType} />
         </div>
     </section>
 );
@@ -160,58 +188,64 @@ export default function DesignLabPage() {
                     subtitle="Institutional memory is an asset. Anything else is just luck."
                     accentColor="#38bdf8"
                     layout="centered"
+                    dockType="intelligence"
                 />
 
-                {/* 02. AZURE RAIL - THE ACTION */}
+                {/* 02. AZURE NAVIGATOR - THE OFFERING */}
                 <CommandHero 
-                    badge="ARCHETYPE 02: THE RAIL"
+                    badge="ARCHETYPE 02: THE NAVIGATOR"
+                    title="RUN YOUR"
+                    accentText="BUSINESS."
+                    subtitle="Industry-specific operating systems for high-stakes environments."
+                    accentColor="#38bdf8"
+                    layout="left"
+                    dockType="sectors"
+                    dockVariant="glass"
+                />
+
+                {/* 03. EMERALD EXECUTIVE - THE TRUST */}
+                <CommandHero 
+                    badge="ARCHETYPE 03: THE EXECUTIVE"
+                    title="SYSTEMS OVER"
+                    accentText="LUCK."
+                    subtitle="Consistency is either engineered, or it is non-existent."
+                    accentColor="#107c10"
+                    layout="centered"
+                    dockType="intelligence"
+                />
+
+                {/* 04. GOLDEN SOVEREIGN - THE MEMORY */}
+                <CommandHero 
+                    badge="ARCHETYPE 04: THE SOVEREIGN"
                     title="CAPTURE"
                     accentText="MEMORY."
                     subtitle="Don't let your best secrets leave when staff resign."
-                    accentColor="#38bdf8"
-                    layout="left"
+                    accentColor="#fbbf24"
+                    layout="centered"
+                    dockType="intelligence"
                 />
 
-                {/* 03. AZURE HUD - THE GOAL */}
+                {/* 05. GOLDEN HUB - THE CONTROL */}
                 <CommandHero 
-                    badge="ARCHETYPE 03: THE HUD"
-                    title="PERFECT"
+                    badge="ARCHETYPE 05: THE HUB"
+                    title="SCALE WITH"
                     accentText="ORDER."
-                    subtitle="Make sure things are done right, every single time."
-                    accentColor="#38bdf8"
-                    layout="centered"
+                    subtitle="Stop managing manually. Deploy infrastructure."
+                    accentColor="#fbbf24"
+                    layout="left"
+                    dockType="sectors"
                     dockVariant="glass"
                 />
 
-                {/* 04. GOLDEN SOVEREIGN - THE PROMISE */}
-                <CommandHero 
-                    badge="ARCHETYPE 04: THE SOVEREIGN"
-                    title="BUILT TO"
-                    accentText="LAST."
-                    subtitle="Keep your standards high, even when you aren't there."
-                    accentColor="#fbbf24"
-                    layout="centered"
-                />
-
-                {/* 05. GOLDEN SPLIT - THE EFFICIENCY */}
-                <CommandHero 
-                    badge="ARCHETYPE 05: THE SPLIT"
-                    title="WORK"
-                    accentText="SMARTER."
-                    subtitle="Create a system that runs itself."
-                    accentColor="#fbbf24"
-                    layout="split"
-                />
-
-                {/* 06. GOLDEN COCKPIT - THE VALUE */}
+                {/* 06. EMERALD COCKPIT - THE SCALE */}
                 <CommandHero 
                     badge="ARCHETYPE 06: THE COCKPIT"
-                    title="OWN YOUR"
-                    accentText="DATA."
-                    subtitle="You own the data. No monthly fees. Total control."
-                    accentColor="#fbbf24"
-                    layout="left"
-                    dockVariant="glass"
+                    title="BUILT TO"
+                    accentText="LAST."
+                    subtitle="Capture tribal knowledge and build a permanent sovereign engine."
+                    accentColor="#107c10"
+                    layout="split"
+                    dockType="sectors"
                 />
 
                 {/* TECHNICAL ASSETS SECTION */}
