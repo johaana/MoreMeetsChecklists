@@ -16,7 +16,9 @@ import {
     Hospital,
     School,
     Store,
-    Popcorn
+    Popcorn,
+    AlertTriangle,
+    ClipboardCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -26,7 +28,29 @@ import Link from 'next/link';
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 /**
- * TECHNICAL DOCK v53.0 - ZERO CLIPPING MANDATE
+ * SOVEREIGN VALUE STRIP - The "No Truncation" Mandate
+ * Displays the 4 non-negotiable value points below the primary dock.
+ */
+const ValueStrip = () => (
+    <div className="w-full flex items-center justify-center gap-4 md:gap-12 py-2 px-4 border-t border-white/5 bg-black/20 backdrop-blur-md rounded-b-[2rem] md:rounded-b-full">
+        {[
+            { t: "120+ PRE-BUILT SOPs", i: ClipboardCheck },
+            { t: "NO SaaS LOCK-IN", i: Lock },
+            { t: "TRAINER NOTES INCLUDED", i: GraduationCap },
+            { t: "CONSEQUENCES DEFINED", i: AlertTriangle }
+        ].map((item, i) => (
+            <div key={i} className="flex items-center gap-1.5 md:gap-2 shrink-0">
+                <item.i className="w-2.5 h-2.5 md:w-3 md:h-3 text-primary/60" />
+                <span className="text-[6px] md:text-[9px] font-black uppercase tracking-[0.2em] text-white/40 italic whitespace-nowrap">
+                    {item.t}
+                </span>
+            </div>
+        ))}
+    </div>
+);
+
+/**
+ * TECHNICAL DOCK v54.0 - ZERO CLIPPING MANDATE
  * Modes: 'intelligence' (Product Specs) | 'sectors' (Direct Navigation)
  */
 const TechnicalDock = ({ accentColor, type = "intelligence", variant = "default" }: { accentColor: string, type?: "intelligence" | "sectors", variant?: "default" | "glass" }) => {
@@ -52,45 +76,48 @@ const TechnicalDock = ({ accentColor, type = "intelligence", variant = "default"
     const points = type === "intelligence" ? intelligencePoints : sectorPoints;
 
     return (
-        <div className={cn(
-            "max-w-7xl mx-auto border p-2 md:p-4 flex flex-col md:flex-row items-center gap-6 rounded-[2rem] md:rounded-full shadow-2xl transition-all duration-500",
-            variant === "glass" ? "backdrop-blur-3xl bg-white/10 border-white/20" : "bg-white border-zinc-200"
-        )}>
-            <div className="flex-1 grid grid-cols-2 md:grid-cols-6 gap-2 md:gap-4 w-full px-4 md:px-6 h-full">
-                {points.map((item, i) => {
-                    const DynamicIcon = item.icon;
-                    const Content = (
-                        <div key={i} className={cn(
-                            "flex flex-col gap-1 pl-3 md:pl-4 first:border-0 h-full justify-center transition-all min-w-0 overflow-hidden",
-                            variant === "glass" ? "border-l border-white/10" : "border-l border-zinc-100"
-                        )}>
-                            <span className={cn(
-                                "text-[7px] md:text-[8px] font-black uppercase tracking-[0.2em] whitespace-nowrap",
-                                variant === "glass" ? "text-white/40" : "text-zinc-400"
-                            )}>{item.label}</span>
-                            <div className="flex items-center gap-2 overflow-hidden">
-                                <DynamicIcon className="w-3 md:w-3.5 h-3 md:h-3.5 shrink-0" style={{ color: accentColor }} />
-                                <span className={cn(
-                                    "text-[8px] md:text-[9px] font-black uppercase italic whitespace-nowrap leading-none",
-                                    variant === "glass" ? "text-white" : "text-zinc-900"
-                                )}>{item.val}</span>
-                            </div>
-                        </div>
-                    );
-
-                    return 'href' in item ? (
-                        <Link key={i} href={item.href as string} className="hover:opacity-70 transition-all">{Content}</Link>
-                    ) : Content;
-                })}
-            </div>
-            <Button asChild className={cn(
-                "h-12 md:h-16 px-8 md:px-10 rounded-full font-black uppercase italic text-[10px] md:text-xs tracking-widest transition-all hover:scale-105 border-none shrink-0 group/btn shadow-xl",
-                variant === "glass" ? "bg-white text-black" : "bg-zinc-950 text-white"
+        <div className="max-w-7xl mx-auto space-y-px">
+            <div className={cn(
+                "border p-2 md:p-4 flex flex-col md:flex-row items-center gap-6 rounded-t-[2rem] md:rounded-t-full shadow-2xl transition-all duration-500",
+                variant === "glass" ? "backdrop-blur-3xl bg-white/10 border-white/20" : "bg-white border-zinc-200"
             )}>
-                <Link href="/library">
-                    DEPLOY SYSTEM <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                </Link>
-            </Button>
+                <div className="flex-1 grid grid-cols-2 md:grid-cols-6 gap-2 md:gap-4 w-full px-4 md:px-6 h-full">
+                    {points.map((item, i) => {
+                        const DynamicIcon = item.icon;
+                        const Content = (
+                            <div key={i} className={cn(
+                                "flex flex-col gap-1 pl-3 md:pl-4 first:border-0 h-full justify-center transition-all min-w-0 overflow-hidden",
+                                variant === "glass" ? "border-l border-white/10" : "border-l border-zinc-100"
+                            )}>
+                                <span className={cn(
+                                    "text-[7px] md:text-[8px] font-black uppercase tracking-[0.2em] whitespace-nowrap",
+                                    variant === "glass" ? "text-white/40" : "text-zinc-400"
+                                )}>{item.label}</span>
+                                <div className="flex items-center gap-2 overflow-hidden">
+                                    <DynamicIcon className="w-3 md:w-3.5 h-3 md:h-3.5 shrink-0" style={{ color: accentColor }} />
+                                    <span className={cn(
+                                        "text-[8px] md:text-[9px] font-black uppercase italic whitespace-nowrap leading-none",
+                                        variant === "glass" ? "text-white" : "text-zinc-900"
+                                    )}>{item.val}</span>
+                                </div>
+                            </div>
+                        );
+
+                        return 'href' in item ? (
+                            <Link key={i} href={item.href as string} className="hover:opacity-70 transition-all">{Content}</Link>
+                        ) : Content;
+                    })}
+                </div>
+                <Button asChild className={cn(
+                    "h-12 md:h-16 px-8 md:px-10 rounded-full font-black uppercase italic text-[10px] md:text-xs tracking-widest transition-all hover:scale-105 border-none shrink-0 group/btn shadow-xl",
+                    variant === "glass" ? "bg-white text-black" : "bg-zinc-950 text-white"
+                )}>
+                    <Link href="/library">
+                        DEPLOY SYSTEM <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                    </Link>
+                </Button>
+            </div>
+            <ValueStrip />
         </div>
     );
 };
