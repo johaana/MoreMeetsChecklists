@@ -16,7 +16,13 @@ import {
     Utensils,
     Activity,
     SearchCheck,
-    ShieldAlert
+    ShieldAlert,
+    Download,
+    Factory,
+    ShoppingCart,
+    Scale,
+    School,
+    Popcorn
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -28,7 +34,7 @@ const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730
  * TECHNICAL INTELLIGENCE DOCK
  * A high-density data strip that explains the product depth surgically.
  */
-const TechnicalDock = ({ accentColor }: { accentColor: string }) => {
+const TechnicalDock = ({ accentColor, variant = 1 }: { accentColor: string, variant?: number }) => {
     const dataPoints = [
         { label: "ASSET CLASS", val: "INSTITUTIONAL MEMORY", icon: Target },
         { label: "COMPLIANCE", val: "ISO/HACCP READY", icon: ShieldCheck },
@@ -113,7 +119,7 @@ const CommandHero = ({
 
         {/* THE TECHNICAL BRIEFING DOCK */}
         <div className="relative z-20 w-full px-6 md:px-24 pb-10 md:pb-16">
-            <TechnicalDock accentColor={accentColor} />
+            <TechnicalDock accentColor={accentColor} variant={variant} />
         </div>
     </section>
 );
@@ -224,6 +230,17 @@ export default function DesignLabPage() {
                     accentText="STANDARDS."
                     accentColor="#fbbf24"
                     subtitle="The benchmark for high-net-worth operational control. Sophisticated depth."
+                />
+
+                {/* 07. STUDIO PANORAMIC (THE NEW ONE) */}
+                <CommandHero 
+                    variant={7}
+                    badge="ARCHETYPE 07: STUDIO PANORAMIC"
+                    title="GLOBAL"
+                    accentText="INFRASTRUCTURE."
+                    accentColor="#f472b6"
+                    gradientClass="from-pink-400 via-purple-400 to-sky-400"
+                    subtitle="Transforming Tribal Knowledge into a Permanent Institutional Asset."
                 />
 
                 {/* TECHNICAL COMPONENTS SECTION */}
