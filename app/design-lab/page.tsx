@@ -33,7 +33,7 @@ const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730
  * Locked at the base. High-density USPs.
  */
 const ValueStrip = () => (
-    <div className="w-full flex items-center justify-center gap-4 md:gap-12 py-4 px-4 border-t border-zinc-200 bg-white/80 backdrop-blur-md rounded-b-[2rem] md:rounded-b-[3.5rem] shadow-sm">
+    <div className="w-full flex items-center justify-center gap-4 md:gap-12 py-5 px-4 border-t border-zinc-200 bg-white/90 backdrop-blur-md rounded-b-[2.5rem] md:rounded-b-[4rem] shadow-sm">
         {[
             { t: "120+ PRE-BUILT SOPs", i: ClipboardCheck },
             { t: "NO SaaS LOCK-IN", i: Lock },
@@ -41,8 +41,8 @@ const ValueStrip = () => (
             { t: "CONSEQUENCES DEFINED", i: AlertTriangle }
         ].map((item, i) => (
             <div key={i} className="flex items-center gap-1.5 md:gap-3 shrink-0">
-                <item.i className="w-3 h-3 md:w-4 md:h-4 text-zinc-400" />
-                <span className="text-[7px] md:text-[10px] font-black uppercase tracking-[0.25em] text-zinc-500 italic whitespace-nowrap">
+                <item.i className="w-3.5 h-3.5 md:w-4 md:h-4 text-zinc-400" />
+                <span className="text-[7.5px] md:text-[10px] font-black uppercase tracking-[0.25em] text-zinc-500 italic whitespace-nowrap">
                     {item.t}
                 </span>
             </div>
@@ -66,7 +66,7 @@ const SectorNavigator = ({ accentColor }: { accentColor: string }) => {
 
     return (
         <div className="max-w-7xl mx-auto space-y-px">
-            <div className="bg-white border border-zinc-200 p-2 md:p-4 flex flex-col md:flex-row items-center gap-4 md:gap-6 rounded-t-[2rem] md:rounded-t-[3.5rem] shadow-2xl relative z-10">
+            <div className="bg-white/95 backdrop-blur-md border border-zinc-200 p-2 md:p-4 flex flex-col md:flex-row items-center gap-4 md:gap-6 rounded-t-[2.5rem] md:rounded-t-[4rem] shadow-2xl relative z-10">
                 <div className="flex-1 grid grid-cols-2 md:grid-cols-7 gap-2 md:gap-3 w-full px-4 md:px-6 h-full py-2">
                     {sectorPoints.map((item, i) => (
                         <Link key={i} href={item.href} className="group/item">
@@ -106,11 +106,11 @@ const DaylightHero = ({
     badge: string,
     layout?: "centered" | "left"
 }) => (
-    <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden bg-zinc-50 border-b border-zinc-200">
-        {/* Cinematic Backdrop - Lightened */}
+    <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden bg-zinc-100 border-b border-zinc-200">
+        {/* Cinematic Backdrop - Optimized Clarity */}
         <div className="absolute inset-0 z-0">
-            <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover grayscale opacity-[0.08]" />
-            <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/80" />
+            <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover grayscale-[0.2] opacity-30" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/10 to-white/80" />
         </div>
 
         {/* Hero Content */}
@@ -119,22 +119,22 @@ const DaylightHero = ({
             layout === "centered" ? "justify-center items-center text-center" : "justify-center"
         )}>
             <div className={cn("max-w-6xl space-y-10", layout === "centered" && "flex flex-col items-center")}>
-                <Badge variant="outline" className="backdrop-blur-md bg-white/80 border-zinc-200 text-zinc-500 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2.5 rounded-full mb-2 shadow-sm">
+                <Badge variant="outline" className="backdrop-blur-md bg-white/90 border-zinc-300 text-zinc-500 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2.5 rounded-full mb-2 shadow-sm">
                     {badge}
                 </Badge>
                 
                 <div className="relative group">
                     {/* Subtle Rim Lighting */}
-                    <div className="absolute -inset-20 bg-radial-gradient blur-[120px] opacity-20 pointer-events-none transition-opacity duration-1000 group-hover:opacity-30" style={{ background: `radial-gradient(circle, ${accentColor} 0%, transparent 70%)` }} />
+                    <div className="absolute -inset-20 blur-[120px] opacity-30 pointer-events-none transition-opacity duration-1000 group-hover:opacity-40" style={{ background: `radial-gradient(circle, ${accentColor} 0%, transparent 70%)` }} />
                     
-                    <h1 className="text-5xl md:text-[8.5rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic text-zinc-950 relative z-10">
+                    <h1 className="text-5xl md:text-[8.5rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic text-zinc-950 relative z-10 drop-shadow-xl">
                         {titleWhite} <br/> <span style={{ color: accentColor }}>{titleColor}</span>
                     </h1>
                 </div>
                 
                 <div className={cn("flex gap-8 pt-6", layout === "centered" ? "justify-center" : "")}>
                     <div className="w-2.5 rounded-full h-auto self-stretch shadow-sm" style={{ backgroundColor: accentColor }} />
-                    <p className="text-xl md:text-4xl font-medium italic max-w-2xl leading-[1.1] text-zinc-600 relative z-10">
+                    <p className="text-xl md:text-4xl font-bold italic max-w-2xl leading-[1.1] text-zinc-800 relative z-10 drop-shadow-sm">
                         {subtitle}
                     </p>
                 </div>
@@ -147,13 +147,13 @@ const DaylightHero = ({
                 "max-w-7xl mx-auto flex justify-between items-end px-12",
                 layout === "centered" ? "flex-col items-center gap-4" : ""
             )}>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 bg-white/40 backdrop-blur-sm px-4 py-1.5 rounded-full border border-zinc-200">
                     <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: accentColor }} />
-                    <span className="text-[11px] font-black text-zinc-400 uppercase tracking-[0.6em] italic font-headline">
+                    <span className="text-[11px] font-black text-zinc-600 uppercase tracking-[0.6em] italic font-headline">
                         LOOK WHAT'S IN FOR YOUR BUSINESS
                     </span>
                 </div>
-                <span className="hidden md:block text-[9px] font-mono text-zinc-300 uppercase tracking-widest">SOVEREIGN_SYSTEM_V58.46</span>
+                <span className="hidden md:block text-[9px] font-mono text-zinc-400 uppercase tracking-widest">SOVEREIGN_SYSTEM_V59.46</span>
             </div>
             <SectorNavigator accentColor={accentColor} />
         </div>
@@ -162,7 +162,7 @@ const DaylightHero = ({
 
 export default function DesignLabPage() {
     return (
-        <div className="flex flex-col min-h-screen bg-zinc-50 selection:bg-primary/20">
+        <div className="flex flex-col min-h-screen bg-zinc-100 selection:bg-primary/20">
             <SiteHeader />
 
             <main className="flex-1">
