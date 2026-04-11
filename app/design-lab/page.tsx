@@ -15,12 +15,9 @@ import {
     Building,
     Hospital,
     School,
-    Building2,
+    Store,
     Popcorn,
-    ChevronRight,
-    SearchCheck,
-    Activity,
-    Store
+    ChevronRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -30,13 +27,13 @@ import Link from 'next/link';
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 /**
- * TECHNICAL DOCK v51.0 - ZERO CLIPPING MANDATE
+ * TECHNICAL DOCK v52.0 - ZERO CLIPPING MANDATE
  * Modes: 'intelligence' (Product Specs) | 'sectors' (Direct Navigation)
  */
 const TechnicalDock = ({ accentColor, type = "intelligence", variant = "default" }: { accentColor: string, type?: "intelligence" | "sectors", variant?: "default" | "glass" }) => {
     
     const intelligencePoints = [
-        { label: "PRODUCT CLASS", val: "INSTITUTIONAL MEMORY", icon: Target },
+        { label: "ASSET CLASS", val: "INSTITUTIONAL MEMORY", icon: Target },
         { label: "SAFETY READY", val: "ISO/HACCP/OSHA", icon: ShieldCheck },
         { label: "CORE ENGINE", val: "EXCEL & SHEETS", icon: FileSpreadsheet },
         { label: "OWNERSHIP", val: "100% SOVEREIGN", icon: Lock },
@@ -121,7 +118,7 @@ const CommandHero = ({
         {/* Background Video */}
         <div className="absolute inset-0 z-0">
             <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-black/20 z-10" />
+            <div className="absolute inset-0 bg-black/30 z-10" />
         </div>
 
         {/* Hero Content */}
@@ -135,7 +132,7 @@ const CommandHero = ({
                 </Badge>
                 
                 <div className="relative group">
-                    <div className="absolute -inset-10 bg-radial-gradient blur-[100px] opacity-30 pointer-events-none transition-opacity duration-1000 group-hover:opacity-50" style={{ background: `radial-gradient(circle, ${accentColor} 0%, transparent 70%)` }} />
+                    <div className="absolute -inset-10 bg-radial-gradient blur-[100px] opacity-20 pointer-events-none transition-opacity duration-1000 group-hover:opacity-40" style={{ background: `radial-gradient(circle, ${accentColor} 0%, transparent 70%)` }} />
                     
                     <h1 className="text-5xl md:text-[9rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic text-white relative z-10 drop-shadow-[0_15px_35px_rgba(0,0,0,1)]">
                         {title}
@@ -174,7 +171,7 @@ export default function DesignLabPage() {
                 {/* 01. AZURE: THE ANALYST */}
                 <CommandHero 
                     badge="ARCHETYPE 01: THE ANALYST"
-                    title="CAPTURE MEMORY."
+                    title="MEMORY DECAYS."
                     subtitle="Institutional memory is an asset. Anything else is just luck."
                     accentColor="#38bdf8"
                     layout="centered"
@@ -184,7 +181,7 @@ export default function DesignLabPage() {
                 {/* 02. GOLDEN: THE SOVEREIGN */}
                 <CommandHero 
                     badge="ARCHETYPE 02: THE SOVEREIGN"
-                    title="REMOTE COMMAND."
+                    title="LUCK FAILS."
                     subtitle="Make sure every task is done right, even when you aren't there."
                     accentColor="#fbbf24"
                     layout="left"
@@ -195,7 +192,7 @@ export default function DesignLabPage() {
                 {/* 03. EMERALD: THE COMMANDER */}
                 <CommandHero 
                     badge="ARCHETYPE 03: THE COMMANDER"
-                    title="TOTAL CONTROL."
+                    title="STOP THE CHAOS."
                     subtitle="Stop the daily stress. Make your business run itself. No more management gaps."
                     accentColor="#107c10"
                     layout="centered"
@@ -205,7 +202,7 @@ export default function DesignLabPage() {
                 {/* 04. SUNSET: THE INDEPENDENT */}
                 <CommandHero 
                     badge="ARCHETYPE 04: THE INDEPENDENT"
-                    title="OWN IT FOREVER."
+                    title="OWN YOUR DATA."
                     subtitle="No monthly fees. No SaaS lock-in. Buy it once, own your system forever."
                     accentColor="#f97316"
                     layout="left"
@@ -216,7 +213,7 @@ export default function DesignLabPage() {
                 {/* 05. INDIGO: THE STANDARD */}
                 <CommandHero 
                     badge="ARCHETYPE 05: THE STANDARD"
-                    title="RETAIN SECRETS."
+                    title="PEOPLE LEAVE."
                     subtitle="Don't let your best secrets leave when staff resign."
                     accentColor="#6366f1"
                     layout="centered"
