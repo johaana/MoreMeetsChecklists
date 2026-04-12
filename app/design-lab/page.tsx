@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
@@ -18,9 +18,9 @@ import {
     ClipboardCheck,
     Building2,
     Activity,
-    SearchCheck,
     ShieldCheck,
-    ChevronRight
+    ChevronRight,
+    SearchCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -60,12 +60,11 @@ const ROTATING_NARRATIVES = [
     }
 ];
 
-// Force high-performance stream
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 /**
- * STATIC VIDEO LAYER
- * Memoized to prevent re-renders during text transitions (Fixes stuttering).
+ * HARDWARE-ISOLATED VIDEO LAYER
+ * Memoized to bypass React state updates during text rotation (Zero Stutter).
  */
 const StaticVideo = React.memo(() => (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden" style={{ transform: 'translate3d(0,0,0)' }}>
@@ -76,7 +75,7 @@ const StaticVideo = React.memo(() => (
             muted 
             playsInline 
             preload="auto"
-            className="w-full h-full object-cover opacity-60 grayscale-[0.1] will-change-transform"
+            className="w-full h-full object-cover grayscale-[0.1] opacity-60 will-change-transform"
             style={{ transform: 'translate3d(0,0,0)' }}
         />
     </div>
@@ -84,10 +83,10 @@ const StaticVideo = React.memo(() => (
 StaticVideo.displayName = 'StaticVideo';
 
 /**
- * STATIONARY FOUNDATION HUB
- * Locked outside the animation logic.
+ * ABSOLUTE STATIONARY FOUNDATION
+ * Locked at the base of the screen. Never interacts with rotation logic.
  */
-const StationaryFoundation = ({ accentColor }: { accentColor: string }) => {
+const StationaryFoundation = ({ activeColor }: { activeColor: string }) => {
     const sectors = [
         { label: "HOSPITALITY", val: "RESTAURANTS", icon: Utensils, href: "/packs/restaurants" },
         { label: "HOSPITALITY", val: "HOTELS & RESORTS", icon: Building, href: "/packs/hotels_and_resorts" },
@@ -100,22 +99,25 @@ const StationaryFoundation = ({ accentColor }: { accentColor: string }) => {
 
     return (
         <div className="relative z-40 w-full mt-auto">
-            {/* Status Pulse Bridge */}
+            {/* Status Pulse Bridge (Stationary) */}
             <div className="max-w-7xl mx-auto flex justify-between items-end px-12 pb-4">
-                <div className="flex items-center gap-4 bg-white/80 backdrop-blur-md px-5 py-2.5 rounded-xl border border-zinc-200 shadow-sm">
-                    <div className="w-2.5 h-2.5 rounded-full animate-pulse transition-colors duration-1000 shadow-[0_0_10px_rgba(46,184,107,0.5)]" style={{ backgroundColor: accentColor }} />
+                <div className="flex items-center gap-4 bg-white/90 backdrop-blur-md px-5 py-2.5 rounded-xl border border-zinc-200 shadow-sm">
+                    <div 
+                        className="w-2.5 h-2.5 rounded-full animate-pulse transition-colors duration-1000 shadow-[0_0_10px_rgba(46,184,107,0.5)]" 
+                        style={{ backgroundColor: activeColor }} 
+                    />
                     <span className="text-[10px] md:text-[11px] font-black text-zinc-600 uppercase tracking-[0.6em] italic font-headline">
                         LOOK WHAT'S IN FOR YOUR BUSINESS
                     </span>
                 </div>
                 <div className="hidden md:flex items-center gap-3 text-[9px] font-black text-zinc-400 uppercase tracking-[0.4em] italic font-headline">
-                    <Activity className="w-3.5 h-3.5 text-primary/40" /> SYSTEM_OS_V74.0_STABLE
+                    <Activity className="w-3.5 h-3.5 text-primary/40" /> SYSTEM_OS_V75.0_STABLE
                 </div>
             </div>
 
-            {/* Industry Dock */}
-            <div className="bg-white/95 backdrop-blur-2xl border-y border-zinc-200 flex flex-col md:flex-row items-center shadow-2xl">
-                <div className="flex-1 grid grid-cols-2 md:grid-cols-7 gap-px bg-zinc-200/50">
+            {/* Industry Dock (Frosted Glass - Stationary) */}
+            <div className="bg-white/95 backdrop-blur-3xl border-y border-zinc-200 flex flex-col md:flex-row items-center shadow-2xl">
+                <div className="flex-1 grid grid-cols-2 md:grid-cols-7 gap-px bg-zinc-200/50 w-full">
                     {sectors.map((s, i) => (
                         <Link key={i} href={s.href} className="group/item bg-white hover:bg-zinc-50 transition-all duration-500 py-6 px-6">
                             <div className="flex flex-col gap-2">
@@ -137,7 +139,7 @@ const StationaryFoundation = ({ accentColor }: { accentColor: string }) => {
                 </div>
             </div>
 
-            {/* Technical Payload Strip */}
+            {/* Technical Payload (Deep Zinc Anchor - Stationary) */}
             <div className="w-full flex items-center justify-center gap-4 md:gap-16 py-4 px-4 bg-zinc-950 border-t border-white/5">
                 {[
                     { t: "120+ PRE-BUILT SOPs", i: ClipboardCheck },
@@ -171,15 +173,15 @@ export default function DesignLabPage() {
     const active = ROTATING_NARRATIVES[currentIndex];
 
     const motionProps = {
-        initial: { opacity: 0, x: -30, filter: 'blur(10px)' },
+        initial: { opacity: 0, x: -20, filter: 'blur(10px)' },
         animate: { opacity: 1, x: 0, filter: 'blur(0px)' },
-        exit: { opacity: 0, x: 30, filter: 'blur(10px)' },
-        transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } // Custom easeOutCirc
+        exit: { opacity: 0, x: 20, filter: 'blur(10px)' },
+        transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
     };
 
     const renderHeroContent = () => {
         switch (archetype) {
-            case 1: // THE BLUEPRINT COMMAND
+            case 1: // THE BLUEPRINT COMMAND (Executive Split)
                 return (
                     <div className="h-full grid grid-cols-[1.2fr,1fr] items-center">
                         <div className="h-full flex flex-col justify-center px-12 md:px-24 bg-zinc-100 relative overflow-hidden">
@@ -200,6 +202,7 @@ export default function DesignLabPage() {
                                 </motion.div>
                             </AnimatePresence>
                         </div>
+                        {/* The Crystal Clear Window */}
                         <div className="h-full bg-transparent" />
                     </div>
                 );
@@ -255,7 +258,7 @@ export default function DesignLabPage() {
                                 <div className="hidden md:flex flex-col gap-6 p-10 bg-zinc-950 rounded-[2.5rem] border border-white/10 shadow-2xl">
                                     <span className="text-[10px] font-black text-primary uppercase tracking-widest">METADATA_STREAM</span>
                                     {[
-                                        { l: "ENGINE", v: "SOVEREIGN_V74" },
+                                        { l: "ENGINE", v: "SOVEREIGN_V75" },
                                         { l: "STATUS", v: "STABLE_BUILD" },
                                         { l: "PAYLOAD", v: "120+_SOPs" }
                                     ].map((m, i) => (
@@ -317,7 +320,7 @@ export default function DesignLabPage() {
 
                 <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden">
                     
-                    {/* VIDEO BACKGROUND (STATIC) */}
+                    {/* HARDWARE-ACCELERATED VIDEO (STATIC) */}
                     <StaticVideo />
 
                     {/* MASKING LAYER */}
@@ -332,8 +335,8 @@ export default function DesignLabPage() {
                         {renderHeroContent()}
                     </div>
 
-                    {/* STATIONARY FOUNDATION HUB */}
-                    <StationaryFoundation accentColor={active.accentColor} />
+                    {/* ABSOLUTE STATIONARY FOUNDATION HUB */}
+                    <StationaryFoundation activeColor={active.accentColor} />
                 </section>
             </main>
 
