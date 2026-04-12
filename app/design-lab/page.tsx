@@ -92,7 +92,7 @@ const StaticVideo = React.memo(({ opacity = 0.5, grayscale = 0.2, isDark = false
             muted 
             playsInline 
             preload="auto"
-            className="w-full h-full object-cover will-change-transform"
+            className="w-full h-full object-cover opacity-20 grayscale will-change-transform" 
             style={{ opacity, filter: `grayscale(${grayscale}) blur(${blur}px)`, transform: 'translate3d(0,0,0)' }}
         />
     </div>
@@ -101,7 +101,7 @@ StaticVideo.displayName = 'StaticVideo';
 
 export default function DesignLabPage() {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [archetype, setArchetype] = useState(1);
+    const [archetype, setArchetype] = useState(6);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -153,6 +153,8 @@ export default function DesignLabPage() {
                         <>
                             <StaticVideo opacity={0.05} grayscale={0.5} blur={10} />
                             <div className="absolute inset-0 bg-gradient-to-br from-[#22C55E]/5 via-transparent to-transparent z-10" />
+                            {/* Radial Depth behind CTA area */}
+                            <div className="absolute bottom-[20%] left-[20%] w-[400px] h-[400px] bg-[#22C55E]/5 blur-[120px] rounded-full z-10 pointer-events-none" />
                         </>
                     ) : (
                         <>
@@ -195,75 +197,94 @@ export default function DesignLabPage() {
                         <div className="w-full max-w-7xl mx-auto">
                             
                             {archetype === 6 ? (
-                                /* ARCHETYPE 6: HIGH CONVERSION LIGHT THEME */
-                                <div className="grid lg:grid-cols-2 gap-20 items-center">
-                                    <div className="space-y-10">
-                                        <div className="space-y-4">
-                                            <h1 className="text-5xl md:text-7xl font-black font-headline text-[#0F172A] leading-[1.1] tracking-tighter uppercase italic">
+                                /* ARCHETYPE 6: HIGH CONVERSION PREMIUM LIGHT */
+                                <div className="grid lg:grid-cols-[1fr,450px] gap-20 items-center">
+                                    <div className="space-y-12">
+                                        <div className="space-y-6">
+                                            <h1 className="text-5xl md:text-7xl font-black font-headline text-[#0F172A] leading-[1.05] tracking-tighter uppercase italic">
                                                 Run Your Operations <br />
-                                                Without Chasing People.
+                                                <span className="text-[#0F172A] opacity-90">Without Chasing People.</span>
                                             </h1>
                                             
-                                            <div className="min-h-[80px] flex items-center">
+                                            <div className="min-h-[100px] flex items-center">
                                                 <AnimatePresence mode="wait">
                                                     <motion.p 
                                                         key={currentIndex} 
                                                         {...transitionProps} 
-                                                        className="text-2xl md:text-4xl font-bold text-[#22C55E] italic tracking-tight"
+                                                        className="text-2xl md:text-4xl font-black text-[#22C55E] italic tracking-tight leading-none"
                                                     >
                                                         {activeA6}
                                                     </motion.p>
                                                 </AnimatePresence>
                                             </div>
 
-                                            <p className="text-lg md:text-xl text-[#475569] font-medium leading-relaxed max-w-xl border-l-2 border-[#22C55E]/20 pl-6">
-                                                A ready-to-use operating system for restaurants, hotels, retail, healthcare, and multi-location teams. <br />
-                                                Know what’s done, missed, or at risk — in real time.
-                                            </p>
+                                            <div className="flex gap-6 items-start max-w-xl">
+                                                <div className="w-0.5 h-auto self-stretch bg-gradient-to-b from-[#22C55E] via-[#22C55E]/40 to-transparent shrink-0 opacity-60" />
+                                                <p className="text-lg md:text-xl text-[#475569] font-medium leading-[1.7] italic">
+                                                    A ready-to-use operating system for restaurants, hotels, retail, healthcare, and multi-location teams. <br />
+                                                    Know what’s done, missed, or at risk — in real time.
+                                                </p>
+                                            </div>
                                         </div>
 
-                                        <div className="space-y-6">
-                                            <div className="space-y-3">
-                                                <Button asChild size="lg" className="h-16 px-12 rounded-xl bg-[#22C55E] text-white font-black uppercase italic text-sm tracking-widest shadow-2xl hover:bg-[#16A34A] transition-all border-none group/btn w-fit">
-                                                    <a href="/library" className="flex items-center">
+                                        <div className="space-y-8">
+                                            <div className="space-y-4">
+                                                <Button asChild size="lg" className="h-20 px-14 rounded-2xl bg-gradient-to-br from-[#22C55E] to-[#16A34A] text-white font-black uppercase italic text-lg tracking-widest shadow-[0_15px_30px_-10px_rgba(34,197,94,0.3)] hover:shadow-[0_20px_40px_-5px_rgba(34,197,94,0.4)] hover:-translate-y-1 active:scale-95 transition-all border-none group/btn w-fit">
+                                                    <a href="/library" className="flex items-center gap-3">
                                                         Deploy Your System → ₹999
+                                                        <ArrowRight className="w-6 h-6 transition-transform group-hover/btn:translate-x-1.5" />
                                                     </a>
                                                 </Button>
-                                                <p className="text-[10px] font-black text-[#475569]/60 uppercase tracking-[0.3em] pl-2">
+                                                <p className="text-[11px] font-black text-[#475569]/50 uppercase tracking-[0.4em] pl-4 italic">
                                                     Works on Excel & Google Sheets • No SaaS • Own Forever
                                                 </p>
                                             </div>
 
-                                            <div className="grid grid-cols-2 gap-x-10 gap-y-3 pt-4 border-t border-zinc-200/50 max-w-lg">
+                                            <div className="grid grid-cols-2 gap-x-12 gap-y-4 pt-6 border-t border-zinc-200 max-w-xl">
                                                 {[
-                                                    "120+ Pre-built SOPs",
+                                                    "Pre-built SOPs",
                                                     "Audit-ready logs",
                                                     "Works without internet",
                                                     "No training required"
                                                 ].map((boost, i) => (
-                                                    <div key={i} className="flex items-center gap-2">
-                                                        <CheckCircle2 className="w-4 h-4 text-[#22C55E]" />
-                                                        <span className="text-[11px] font-bold text-[#0F172A]/70 uppercase tracking-widest">{boost}</span>
+                                                    <div key={i} className="flex items-center gap-3 group/item">
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-[#22C55E]/20 group-hover/item:bg-[#22C55E] transition-colors" />
+                                                        <span className="text-[11px] font-black text-[#0F172A]/60 uppercase tracking-widest group-hover/item:text-[#0F172A] transition-colors">{boost}</span>
                                                     </div>
                                                 ))}
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="hidden lg:flex justify-end">
-                                        <div className="bg-white/40 border border-white/60 backdrop-blur-xl p-12 rounded-[3rem] space-y-8 shadow-2xl max-w-sm w-full">
-                                            <span className="text-[11px] font-black text-[#22C55E] uppercase tracking-[0.4em] font-headline block pb-4 border-b border-zinc-200/50">USED ACROSS:</span>
-                                            <div className="space-y-4">
+                                    <div className="hidden lg:flex justify-end relative">
+                                        <div className="bg-white/60 border border-black/[0.08] backdrop-blur-2xl p-12 rounded-[3.5rem] space-y-10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] max-w-sm w-full relative z-10 overflow-hidden">
+                                            {/* Decorative glass highlight */}
+                                            <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+                                            
+                                            <div className="space-y-2">
+                                                <span className="text-[11px] font-black text-[#22C55E] uppercase tracking-[0.5em] font-headline block">USED ACROSS</span>
+                                                <div className="w-12 h-0.5 bg-[#22C55E]/20" />
+                                            </div>
+
+                                            <div className="space-y-5">
                                                 {INDUSTRIES.map((ind, i) => (
-                                                    <div key={i} className="flex items-center gap-4 group">
-                                                        <div className="w-1 h-1 rounded-full bg-[#22C55E] opacity-20 group-hover:opacity-100 transition-opacity" />
-                                                        <span className="text-lg font-black font-headline uppercase italic tracking-tight text-[#0F172A]/30 group-hover:text-[#0F172A] transition-all">
+                                                    <div key={i} className="flex items-center gap-5 group/industry cursor-default">
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-zinc-200 group-hover/industry:bg-[#22C55E] group-hover/industry:scale-125 transition-all duration-300" />
+                                                        <span className="text-xl font-black font-headline uppercase italic tracking-tight text-[#0F172A]/20 group-hover/industry:text-[#0F172A] group-hover/industry:translate-x-1.5 transition-all duration-300">
                                                             {ind}
                                                         </span>
                                                     </div>
                                                 ))}
                                             </div>
+
+                                            <div className="pt-6 border-t border-black/5">
+                                                <span className="text-[9px] font-black text-black/20 uppercase tracking-[0.4em] italic">
+                                                    Single unit → multi-location scale
+                                                </span>
+                                            </div>
                                         </div>
+                                        {/* Background soft glow behind panel */}
+                                        <div className="absolute -inset-10 bg-[#22C55E]/5 blur-[80px] rounded-full z-0" />
                                     </div>
                                 </div>
                             ) : (
