@@ -25,7 +25,7 @@ const ROTATING_LINES = [
 
 const SUBTEXT = "A ready system to manage daily tasks across your team — with full visibility.";
 
-const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
+const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 // --- COMPONENT: HARDWARE-ACCELERATED SMOOTH VIDEO ---
 const StaticVideo = React.memo(({ opacity = 0.85 }: { opacity?: number }) => (
@@ -93,15 +93,15 @@ export default function DesignLabPage() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [archetypeId, setArchetypeId] = useState(1); 
 
-    // Rotation Engine: Snappy 3s cycles
+    // Rotation Engine: Optimized 2.5s snaps
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % ROTATING_LINES.length);
-        }, 3000);
+        }, 2500);
         return () => clearInterval(interval);
     }, []);
 
-    // PREMIUM COLOR SYSTEM: Pigmented for Maximum Readability on Glass
+    // PREMIUM COLOR SYSTEM: Deep Pigments for absolute contrast on transparent glass
     const archetypes = [
         { id: 1, label: "ASEGO TEAL", accent: "#00AE8D", textColor: "#008D74" },   
         { id: 2, label: "COBALT TECH", accent: "#2563EB", textColor: "#1D4ED8" },  
@@ -112,11 +112,11 @@ export default function DesignLabPage() {
 
     const currentArchetype = archetypes.find(a => a.id === archetypeId) || archetypes[0];
 
-    // High-Performance Transition: Snap and Pop
+    // High-Performance Cinematic Transition: Snap and Pop
     const transitionProps = {
-        initial: { opacity: 0, y: 15, scale: 0.98 },
+        initial: { opacity: 0, y: 20, scale: 0.98 },
         animate: { opacity: 1, y: 0, scale: 1 },
-        exit: { opacity: 0, y: -15, scale: 0.98 },
+        exit: { opacity: 0, y: -20, scale: 0.98 },
         transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
     };
 
@@ -127,7 +127,7 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 {/* ARCHETYPE SELECTOR */}
                 <div className="fixed top-24 right-8 z-50 flex flex-col gap-2 p-2 bg-white/80 backdrop-blur-xl rounded-2xl border border-zinc-200 shadow-2xl">
-                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V114</span>
+                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V116</span>
                     {archetypes.map((arch) => (
                         <button 
                             key={arch.id} 
@@ -144,14 +144,14 @@ export default function DesignLabPage() {
 
                 {/* --- HERO SECTION --- */}
                 <section className="relative w-full h-screen flex items-center overflow-hidden">
-                    {/* Clear Cinematic Backdrop */}
+                    {/* Vivid Cinematic Backdrop: Fixed 85% opacity */}
                     <StaticVideo opacity={0.85} />
                     
                     <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center">
-                        {/* COMPRESSED GLASS COMMAND SLAB: Zero-clipping & Header-Safe */}
+                        {/* COMPRESSED GLASS COMMAND SLAB: 20px blur for zero lag */}
                         <div className={cn(
                             "max-w-2xl w-full p-8 md:p-10 rounded-[3rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-8",
-                            "bg-white/10 backdrop-blur-[45px] transition-all duration-700" 
+                            "bg-white/10 backdrop-blur-[20px] transition-all duration-700" 
                         )}>
                             {/* Rim Lighting Accent */}
                             <div className="absolute top-0 left-0 w-full h-1.5 opacity-40 transition-colors duration-1000" style={{ background: currentArchetype.accent }} />
@@ -193,7 +193,7 @@ export default function DesignLabPage() {
                         <div className="flex items-center gap-4">
                             <div className="w-2 h-2 rounded-full animate-pulse shadow-[0_0_8px_rgba(0,0,0,0.1)] transition-colors duration-1000" style={{ background: currentArchetype.accent }} />
                             <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.6em] italic font-headline">
-                                SYSTEM_STATUS_V114_ONLINE
+                                SYSTEM_STATUS_V116_ONLINE
                             </span>
                         </div>
                         <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-zinc-300 font-headline">
