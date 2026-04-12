@@ -114,7 +114,7 @@ export default function DesignLabPage() {
 
     const currentArchetype = archetypes.find(a => a.id === archetypeId) || archetypes[0];
 
-    // High-Performance Transition: Snap and Slide
+    // High-Performance Transition: Snap and Pop
     const transitionProps = {
         initial: { opacity: 0, y: 15, scale: 0.98 },
         animate: { opacity: 1, y: 0, scale: 1 },
@@ -129,7 +129,7 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 {/* ARCHETYPE SELECTOR */}
                 <div className="fixed top-24 right-8 z-50 flex flex-col gap-2 p-2 bg-white/80 backdrop-blur-xl rounded-2xl border border-zinc-200 shadow-2xl">
-                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V111</span>
+                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V112</span>
                     {archetypes.map((arch) => (
                         <button 
                             key={arch.id} 
@@ -152,7 +152,7 @@ export default function DesignLabPage() {
                     <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center">
                         {/* COMPRESSED GLASS COMMAND SLAB: Zero-clipping & Header-Safe */}
                         <div className={cn(
-                            "max-w-2xl w-full p-8 md:p-10 rounded-[3rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-16",
+                            "max-w-2xl w-full p-8 md:p-10 rounded-[3rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-8",
                             "bg-white/10 backdrop-blur-[45px] transition-all duration-700" 
                         )}>
                             {/* Rim Lighting Accent */}
@@ -160,12 +160,12 @@ export default function DesignLabPage() {
                             
                             {/* Narrative Block - High Contrast Dynamic Text */}
                             <div className="space-y-1 pb-4">
-                                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-headline text-[#0F172A] leading-[1] tracking-tighter uppercase italic drop-shadow-sm">
+                                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-headline text-[#0F172A] leading-[0.95] tracking-tighter uppercase italic drop-shadow-sm">
                                     {STATIC_HEADLINE}
                                 </h1>
                                 
                                 {/* STABILIZED NARRATIVE CONTAINER - Zero Resizing Height & Zero Clipping */}
-                                <div className="h-[60px] md:h-[70px] flex items-center overflow-hidden">
+                                <div className="h-[70px] md:h-[80px] flex items-center overflow-hidden">
                                     <AnimatePresence mode="wait">
                                         <motion.div 
                                             key={`${archetypeId}-${currentIndex}`} 
@@ -195,7 +195,7 @@ export default function DesignLabPage() {
                         <div className="flex items-center gap-4">
                             <div className="w-2 h-2 rounded-full animate-pulse shadow-[0_0_8px_rgba(0,0,0,0.1)] transition-colors duration-1000" style={{ background: currentArchetype.accent }} />
                             <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.6em] italic font-headline">
-                                SYSTEM_STATUS_V111_ONLINE
+                                SYSTEM_STATUS_V112_ONLINE
                             </span>
                         </div>
                         <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-zinc-300 font-headline">
