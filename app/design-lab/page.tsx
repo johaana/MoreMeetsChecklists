@@ -48,14 +48,14 @@ StaticVideo.displayName = 'StaticVideo';
 
 // --- SUB-COMPONENT: ABSOLUTE STATIONARY COMMAND FLOOR ---
 const FixedCommandFloor = ({ accentColor = "#00AE8D" }: { accentColor?: string }) => (
-    <div className="space-y-4 pt-4 relative z-30">
+    <div className="space-y-3 pt-3 relative z-30">
         {/* 1. Subtext - Stationary */}
         <p className="text-base md:text-lg font-medium leading-relaxed text-[#0F172A]/80 italic max-w-md font-body">
             {SUBTEXT}
         </p>
 
         {/* 2. Primary CTA Anchor - Stationary */}
-        <div className="space-y-4">
+        <div className="space-y-3">
             <div className="space-y-2">
                 <Button asChild size="lg" style={{ background: accentColor }} className={cn(
                     "h-16 px-10 rounded-xl text-white font-black uppercase italic text-sm md:text-base tracking-widest transition-all border-none group/btn w-fit font-headline",
@@ -80,7 +80,7 @@ const FixedCommandFloor = ({ accentColor = "#00AE8D" }: { accentColor?: string }
         </div>
 
         {/* 4. Sector Support - Stationary */}
-        <div className="pt-4 border-t border-black/5 w-fit">
+        <div className="pt-3 border-t border-black/5 w-fit">
             <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-[#0F172A]/30 italic font-headline">
                 For hospitality, retail, healthcare, education & more
             </span>
@@ -92,20 +92,22 @@ export default function DesignLabPage() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [archetypeId, setArchetypeId] = useState(1); 
 
+    // Rotation Engine: Fixed and Hardened
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % ROTATING_LINES.length);
-        }, 4500);
+        }, 4000);
         return () => clearInterval(interval);
     }, []);
 
-    // PREMIUM COLOR SYSTEM: Saturated & Authoritative
+    // PREMIUM COLOR SYSTEM: Pigmented for Readability
+    // textColor is a darker shade of the accent for better contrast on transparent glass
     const archetypes = [
-        { id: 1, label: "ASEGO TEAL", accent: "#00AE8D" },   
-        { id: 2, label: "COBALT TECH", accent: "#2563EB" },  
-        { id: 3, label: "RUBY PERF", accent: "#E11D48" },    
-        { id: 4, label: "BURNISHED GOLD", accent: "#F59E0B" }, 
-        { id: 5, label: "ROYAL BLUE", accent: "#1D4ED8" }    
+        { id: 1, label: "ASEGO TEAL", accent: "#00AE8D", textColor: "#008D74" },   
+        { id: 2, label: "COBALT TECH", accent: "#2563EB", textColor: "#1D4ED8" },  
+        { id: 3, label: "RUBY PERF", accent: "#E11D48", textColor: "#BE123C" },    
+        { id: 4, label: "BURNISHED GOLD", accent: "#F59E0B", textColor: "#B45309" }, 
+        { id: 5, label: "ROYAL BLUE", accent: "#1D4ED8", textColor: "#1E40AF" }    
     ];
 
     const currentArchetype = archetypes.find(a => a.id === archetypeId) || archetypes[0];
@@ -124,7 +126,7 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 {/* ARCHETYPE SELECTOR */}
                 <div className="fixed top-24 right-8 z-50 flex flex-col gap-2 p-2 bg-white/80 backdrop-blur-xl rounded-2xl border border-zinc-200 shadow-2xl">
-                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V107</span>
+                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V108</span>
                     {archetypes.map((arch) => (
                         <button 
                             key={arch.id} 
@@ -159,10 +161,7 @@ export default function DesignLabPage() {
                                     {STATIC_HEADLINE}
                                 </h1>
                                 
-                                {/* 
-                                    STABILIZED CONTAINER 
-                                    Height increased to h-[80px] to prevent clipping when text wraps on mobile/tablet.
-                                */}
+                                {/* STABILIZED NARRATIVE CONTAINER */}
                                 <div className="h-[80px] md:h-[90px] flex items-center">
                                     <AnimatePresence mode="wait">
                                         <motion.div 
@@ -171,7 +170,7 @@ export default function DesignLabPage() {
                                             className="w-full"
                                         >
                                             <p 
-                                                style={{ color: currentArchetype.accent }}
+                                                style={{ color: currentArchetype.textColor }}
                                                 className="text-xl md:text-2xl lg:text-3xl font-black italic tracking-tight leading-[1.1] uppercase transition-colors duration-1000 font-headline"
                                             >
                                                 {ROTATING_LINES[currentIndex]}
@@ -193,7 +192,7 @@ export default function DesignLabPage() {
                         <div className="flex items-center gap-4">
                             <div className="w-2 h-2 rounded-full animate-pulse shadow-[0_0_8px_rgba(0,0,0,0.1)] transition-colors duration-1000" style={{ background: currentArchetype.accent }} />
                             <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.6em] italic font-headline">
-                                SYSTEM_STATUS_V107_ONLINE
+                                SYSTEM_STATUS_V108_ONLINE
                             </span>
                         </div>
                         <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-zinc-300 font-headline">
