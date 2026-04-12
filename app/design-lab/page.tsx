@@ -6,12 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
     ArrowRight, 
-    Activity,
-    MonitorPlay,
     ShieldCheck,
-    FileSpreadsheet,
-    Zap,
-    LayoutGrid,
     Cpu,
     CheckCircle2
 } from 'lucide-react';
@@ -40,7 +35,7 @@ const ROTATING_NARRATIVES = [
         badge: "FINANCIAL COMMAND",
         titleWhite: "CHAOS IS",
         titleColor: "EXPENSIVE.",
-        subtitle: "Stop the daily stress. Make your business run itself. Eliminate management gaps and profit leaks.",
+        subtitle: "Stop the daily stress. Make your business run itself. Eliminate management gaps.",
         accentColor: "#10b981", // Emerald
     },
     {
@@ -50,6 +45,15 @@ const ROTATING_NARRATIVES = [
         subtitle: "No monthly fees. No SaaS lock-in. Buy it once, own your system and your data forever.",
         accentColor: "#f97316", // Sunset
     }
+];
+
+const TECHNICAL_PILLARS = [
+    "PRE-BUILT SOPs",
+    "TRAINER NOTES",
+    "CONSEQUENCES",
+    "AUDIT READY",
+    "COMPLIANCE",
+    "ALL INDUSTRIES"
 ];
 
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
@@ -96,41 +100,52 @@ export default function DesignLabPage() {
 
     const renderHeroContent = () => {
         switch (archetype) {
-            case 1: // THE EXECUTIVE CONSOLE (Surgical Split - Clean)
+            case 1: // THE EXECUTIVE CONSOLE (Surgical Split - Maximized Video)
                 return (
-                    <div className="h-full grid grid-cols-[1.2fr,1fr] items-center">
+                    <div className="h-full grid grid-cols-1 lg:grid-cols-[1fr,1.5fr] items-center">
                         <div className="h-full flex flex-col justify-center px-12 md:px-24 bg-zinc-100 relative overflow-hidden">
-                            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]" />
-                            <AnimatePresence mode="wait">
-                                <motion.div key={currentIndex} {...motionProps} className="space-y-8 relative z-10">
-                                    <Badge variant="outline" className="bg-white border-zinc-200 text-zinc-400 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2.5 rounded-none shadow-sm">
-                                        {active.badge}
-                                    </Badge>
-                                    <h1 className="text-5xl md:text-[7.5rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic text-zinc-950">
-                                        {active.titleWhite} <br/> 
-                                        <span style={{ color: active.accentColor }} className="transition-colors duration-1000">{active.titleColor}</span>
-                                    </h1>
-                                    <div className="flex gap-8 pt-4">
-                                        <div className="w-2 rounded-full self-stretch shadow-sm" style={{ backgroundColor: active.accentColor }} />
-                                        <p className="text-xl md:text-3xl font-bold italic max-w-xl leading-[1.1] text-zinc-800">{active.subtitle}</p>
+                            {/* CLEAN CANVAS: Background grid removed for prestige */}
+                            <div className="space-y-12 relative z-10">
+                                <AnimatePresence mode="wait">
+                                    <motion.div key={currentIndex} {...motionProps} className="space-y-8">
+                                        <Badge variant="outline" className="bg-white border-zinc-200 text-zinc-400 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2.5 rounded-none shadow-sm">
+                                            {active.badge}
+                                        </Badge>
+                                        <h1 className="text-5xl md:text-7xl font-black font-headline tracking-tighter leading-[0.85] uppercase italic text-zinc-950">
+                                            {active.titleWhite} <br/> 
+                                            <span style={{ color: active.accentColor }} className="transition-colors duration-1000">{active.titleColor}</span>
+                                        </h1>
+                                        <p className="text-xl md:text-2xl font-bold italic max-w-xl leading-[1.1] text-zinc-800 border-l-4 pl-6" style={{ borderColor: active.accentColor }}>
+                                            {active.subtitle}
+                                        </p>
+                                    </motion.div>
+                                </AnimatePresence>
+
+                                {/* STATIONARY PAYLOAD: Explicit technical offerings */}
+                                <div className="pt-8 border-t border-zinc-200 space-y-6">
+                                    <div className="grid grid-cols-2 gap-4">
+                                        {TECHNICAL_PILLARS.slice(0, 4).map((pillar, i) => (
+                                            <div key={i} className="flex items-center gap-2">
+                                                <div className="w-1 h-1 rounded-full bg-zinc-300" />
+                                                <span className="text-[9px] font-black text-zinc-400 uppercase tracking-widest italic">{pillar}</span>
+                                            </div>
+                                        ))}
                                     </div>
-                                    <div className="pt-8">
-                                        <Button asChild className="h-16 px-12 rounded-xl font-black uppercase italic text-sm tracking-widest bg-zinc-950 text-white shadow-2xl hover:scale-105 transition-all border-none group/btn">
-                                            <a href="/library">
-                                                DEPLOY SYSTEM <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover/btn:translate-x-1.5" />
-                                            </a>
-                                        </Button>
-                                    </div>
-                                </motion.div>
-                            </AnimatePresence>
+                                    <Button asChild className="h-16 px-12 rounded-xl font-black uppercase italic text-sm tracking-widest bg-zinc-950 text-white shadow-2xl hover:scale-105 transition-all border-none group/btn">
+                                        <a href="/library">
+                                            DEPLOY SYSTEM <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover/btn:translate-x-1.5" />
+                                        </a>
+                                    </Button>
+                                </div>
+                            </div>
                         </div>
-                        <div className="h-full relative overflow-hidden">
+                        <div className="h-full relative overflow-hidden hidden lg:block">
                             <StaticVideo opacity={1} />
-                            <div className="absolute inset-0 bg-gradient-to-r from-zinc-100 via-transparent to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-zinc-100 via-zinc-100/20 to-transparent" />
                         </div>
                     </div>
                 );
-            case 2: // THE PORTAL (Software Shell - Enhanced Metadata)
+            case 2: // THE PORTAL (Software Shell - Stationary Conversion)
                 return (
                     <div className="h-full flex items-center justify-center px-12 bg-zinc-50 relative overflow-hidden">
                         <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:24px_24px]" />
@@ -143,42 +158,39 @@ export default function DesignLabPage() {
                                     <div className="w-2.5 h-2.5 rounded-full bg-green-500/20" />
                                 </div>
                                 <div className="flex-1 flex justify-center">
-                                    <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.5em] italic">SOVEREIGN_OPERATING_SYSTEM_V77.0.XLSX</span>
+                                    <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.5em] italic">SOVEREIGN_OPERATING_SYSTEM_V78.0.XLSX</span>
                                 </div>
                             </div>
 
                             <div className="flex-1 relative flex items-center px-20">
                                 <StaticVideo opacity={0.4} />
-                                <AnimatePresence mode="wait">
-                                    <motion.div key={currentIndex} {...motionProps} className="space-y-6 relative z-10 max-w-3xl">
-                                        <Badge variant="outline" className="bg-white/5 border-white/10 text-white/40 uppercase tracking-[0.4em] font-black text-[9px] px-6 py-1.5 rounded-none mb-2">
-                                            {active.badge}
-                                        </Badge>
-                                        <h1 className="text-5xl md:text-8xl font-black font-headline tracking-tighter leading-[0.85] uppercase italic text-white">
-                                            {active.titleWhite} <br/> 
-                                            <span style={{ color: active.accentColor }} className="transition-colors duration-1000">{active.titleColor}</span>
-                                        </h1>
-                                        <p className="text-xl md:text-2xl font-bold italic text-white/60 leading-tight border-l border-white/20 pl-8">{active.subtitle}</p>
-                                        <div className="pt-6">
-                                            <Button asChild className="h-14 px-10 rounded-xl font-black uppercase italic text-xs tracking-widest bg-primary text-black shadow-2xl hover:scale-105 transition-all border-none">
-                                                <a href="/library">RECLAIM CONTROL</a>
-                                            </Button>
-                                        </div>
-                                    </motion.div>
-                                </AnimatePresence>
+                                <div className="space-y-10 relative z-10 max-w-3xl">
+                                    <AnimatePresence mode="wait">
+                                        <motion.div key={currentIndex} {...motionProps} className="space-y-6">
+                                            <Badge variant="outline" className="bg-white/5 border-white/10 text-white/40 uppercase tracking-[0.4em] font-black text-[9px] px-6 py-1.5 rounded-none">
+                                                {active.badge}
+                                            </Badge>
+                                            <h1 className="text-5xl md:text-8xl font-black font-headline tracking-tighter leading-[0.85] uppercase italic text-white">
+                                                {active.titleWhite} <br/> 
+                                                <span style={{ color: active.accentColor }} className="transition-colors duration-1000">{active.titleColor}</span>
+                                            </h1>
+                                            <p className="text-xl md:text-2xl font-bold italic text-white/60 leading-tight border-l border-white/20 pl-8">{active.subtitle}</p>
+                                        </motion.div>
+                                    </AnimatePresence>
+
+                                    {/* STATIONARY BUTTON: Bypasses narrative rotation */}
+                                    <div className="pt-2">
+                                        <Button asChild className="h-14 px-10 rounded-xl font-black uppercase italic text-xs tracking-widest bg-primary text-black shadow-2xl hover:scale-105 transition-all border-none">
+                                            <a href="/library">RECLAIM CONTROL</a>
+                                        </Button>
+                                    </div>
+                                </div>
                             </div>
 
                             {/* Semi-transparent Institutional Metadata */}
                             <div className="absolute bottom-0 left-0 w-full h-16 bg-white/[0.02] border-t border-white/5 backdrop-blur-xl flex items-center justify-center px-12 overflow-hidden">
                                 <div className="flex items-center gap-8 md:gap-12 opacity-40 whitespace-nowrap">
-                                    {[
-                                        "PRE-BUILT SOPs", 
-                                        "TRAINER NOTES", 
-                                        "CONSEQUENCES", 
-                                        "AUDIT READY", 
-                                        "COMPLIANCE", 
-                                        "ALL INDUSTRIES"
-                                    ].map((text, i) => (
+                                    {TECHNICAL_PILLARS.map((text, i) => (
                                         <div key={i} className="flex items-center gap-3 shrink-0">
                                             <div className="w-1 h-1 rounded-full bg-primary" />
                                             <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white italic">{text}</span>
@@ -231,7 +243,7 @@ export default function DesignLabPage() {
                                     style={{ backgroundColor: active.accentColor }} 
                                 />
                                 <span className="text-[9px] font-black text-zinc-500 uppercase tracking-[0.6em] italic font-headline">
-                                    SYSTEM_OS_V77.0_STABLE_BUILD
+                                    SYSTEM_OS_V78.0_STABLE_BUILD
                                 </span>
                             </div>
                             <div className="hidden md:flex items-center gap-6 text-[8px] font-black text-zinc-400 uppercase tracking-[0.4em] italic">
