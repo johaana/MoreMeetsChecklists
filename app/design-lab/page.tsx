@@ -17,7 +17,9 @@ import {
     AlertTriangle,
     ClipboardCheck,
     Building2,
-    ChevronRight
+    ChevronRight,
+    SearchCheck,
+    Activity
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -61,7 +63,7 @@ const ROTATING_NARATIVES = [
 
 /**
  * STATIONARY SECTOR NAVIGATOR
- * Improved Glass look with better fonts and refined iconography.
+ * High-density glass grid with technical dividers.
  */
 const SectorNavigator = () => {
     const sectorPoints = [
@@ -75,10 +77,10 @@ const SectorNavigator = () => {
     ];
 
     return (
-        <div className="bg-white/70 backdrop-blur-2xl border-y border-white/20 p-2 md:p-0 flex flex-col md:flex-row items-center gap-0 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.1)] relative z-10 overflow-hidden">
-            <div className="flex-1 grid grid-cols-2 md:grid-cols-7 gap-px w-full h-full bg-zinc-200/20">
+        <div className="bg-white/80 backdrop-blur-3xl border-y border-zinc-200 flex flex-col md:flex-row items-center gap-0 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.15)] relative z-10 overflow-hidden">
+            <div className="flex-1 grid grid-cols-2 md:grid-cols-7 gap-px w-full h-full bg-zinc-200/30">
                 {sectorPoints.map((item, i) => (
-                    <Link key={i} href={item.href} className="group/item bg-white/40 hover:bg-white/80 transition-all duration-500 py-6 px-6">
+                    <Link key={i} href={item.href} className="group/item bg-white/40 hover:bg-white/90 transition-all duration-500 py-6 px-6">
                         <div className="flex flex-col gap-2 h-full justify-center">
                             <span className="text-[7px] font-black uppercase tracking-[0.4em] text-zinc-400 whitespace-nowrap leading-none transition-colors group-hover/item:text-primary/60">{item.label}</span>
                             <div className="flex items-center gap-2.5">
@@ -89,7 +91,7 @@ const SectorNavigator = () => {
                     </Link>
                 ))}
             </div>
-            <div className="p-4 md:px-10 bg-white/60 h-full flex items-center border-l border-white/20">
+            <div className="p-4 md:px-10 bg-white/60 h-full flex items-center border-l border-zinc-200">
                 <Button asChild className="h-14 px-10 rounded-xl font-black uppercase italic text-xs tracking-widest transition-all hover:scale-105 active:scale-95 border-none shrink-0 group/btn bg-zinc-950 text-white shadow-2xl">
                     <Link href="/library">
                         DEPLOY SYSTEM <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
@@ -102,10 +104,10 @@ const SectorNavigator = () => {
 
 /**
  * STATIONARY VALUE STRIP
- * High-density technical anchor.
+ * The Absolute Base of the business.
  */
 const ValueStrip = () => (
-    <div className="w-full flex items-center justify-center gap-4 md:gap-16 py-4 px-4 bg-zinc-950/95 backdrop-blur-md shadow-2xl relative z-10 border-t border-white/5">
+    <div className="w-full flex items-center justify-center gap-4 md:gap-16 py-4 px-4 bg-zinc-950 shadow-2xl relative z-10 border-t border-white/5">
         {[
             { t: "120+ PRE-BUILT SOPs", i: ClipboardCheck },
             { t: "NO SaaS LOCK-IN", i: Lock },
@@ -122,7 +124,7 @@ const ValueStrip = () => (
     </div>
 );
 
-export default function ProDesignerSovereignPage() {
+export default function EliteConsolePage() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -141,7 +143,7 @@ export default function ProDesignerSovereignPage() {
             <main className="flex-1">
                 <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden bg-zinc-100">
                     
-                    {/* Cinematic Backdrop - Clear Right, White Left */}
+                    {/* --- BACKGROUND ARCHITECTURE (STATIONARY) --- */}
                     <div className="absolute inset-0 z-0 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
                         <video 
                             src={VIDEO_URL} 
@@ -150,18 +152,21 @@ export default function ProDesignerSovereignPage() {
                             muted 
                             playsInline 
                             preload="auto"
-                            className="w-full h-full object-cover opacity-60 will-change-transform" 
+                            className="w-full h-full object-cover opacity-60 will-change-transform grayscale-[0.1]" 
                             style={{ transform: 'translate3d(0,0,0)' }}
                         />
                         {/* 
-                            ELITE GRADIENT MASK: 
+                            EXECUTIVE SPLIT MASK: 
                             Left: Solid Zinc-100 for surgical text clarity.
                             Right: Transparent to show vivid operational video.
                         */}
                         <div className="absolute inset-0 bg-gradient-to-r from-zinc-100 via-zinc-100/95 to-zinc-100/0 pointer-events-none z-10" />
+                        
+                        {/* Technical Blueprint Grid */}
+                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px] z-10" />
                     </div>
 
-                    {/* DYNAMIC CONTENT LAYER (The Narratives) */}
+                    {/* --- DYNAMIC CONTENT LAYER (ONLY THIS ROTATES) --- */}
                     <div className="relative z-20 flex-1 flex flex-col px-6 md:px-24 justify-center pt-16">
                         <AnimatePresence mode="wait">
                             <motion.div 
@@ -177,7 +182,7 @@ export default function ProDesignerSovereignPage() {
                                 </Badge>
                                 
                                 <div className="relative group">
-                                    {/* High-Gravity Rim Lighting */}
+                                    {/* High-Gravity Rim Lighting (Color Synced) */}
                                     <div 
                                         className="absolute -inset-40 blur-[150px] opacity-20 pointer-events-none transition-all duration-1000" 
                                         style={{ background: `radial-gradient(circle, ${active.accentColor} 0%, transparent 70%)` }} 
@@ -200,19 +205,26 @@ export default function ProDesignerSovereignPage() {
                                         {active.subtitle}
                                     </p>
                                 </div>
-
-                                <div className="pt-10 flex items-center gap-4 group/label">
-                                    <div className="w-2.5 h-2.5 rounded-full animate-pulse shadow-[0_0_10px_rgba(46,184,107,0.5)] bg-primary" />
-                                    <span className="text-[10px] md:text-[11px] font-black text-zinc-500 uppercase tracking-[0.6em] italic font-headline transition-colors group-hover/label:text-zinc-900">
-                                        LOOK WHAT'S IN FOR YOUR BUSINESS
-                                    </span>
-                                </div>
                             </motion.div>
                         </AnimatePresence>
                     </div>
 
-                    {/* STATIONARY FOUNDATION LAYER (The Command Docks) */}
+                    {/* --- STATIONARY FOUNDATION LAYER (NEVER ROTATES) --- */}
                     <div className="relative z-30 w-full mt-auto">
+                        
+                        {/* Stationary Command Pulse */}
+                        <div className="max-w-7xl mx-auto flex justify-between items-end px-12 pb-4">
+                            <div className="flex items-center gap-4 bg-white/60 backdrop-blur-md px-5 py-2.5 rounded-xl border border-zinc-200 shadow-sm">
+                                <div className="w-2.5 h-2.5 rounded-full animate-pulse shadow-[0_0_10px_rgba(46,184,107,0.5)] bg-primary" />
+                                <span className="text-[10px] md:text-[11px] font-black text-zinc-600 uppercase tracking-[0.6em] italic font-headline">
+                                    LOOK WHAT'S IN FOR YOUR BUSINESS
+                                </span>
+                            </div>
+                            <div className="hidden md:flex items-center gap-3 text-[9px] font-black text-zinc-400 uppercase tracking-[0.4em] italic font-headline">
+                                <Activity className="w-3.5 h-3.5 text-primary/40" /> SYSTEM_OS_V71.0_STABLE
+                            </div>
+                        </div>
+
                         <SectorNavigator />
                         <ValueStrip />
                     </div>
