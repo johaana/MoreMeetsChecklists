@@ -65,8 +65,8 @@ const BrandLogo = ({ isScrolled, isDarkText }: { isScrolled: boolean, isDarkText
      <Link href="/" className="flex items-center justify-center gap-2 group" prefetch={false}>
         <Logo className={cn("h-5 w-5 md:h-6 md:w-6 text-primary")} />
         <div className="flex flex-col">
-            <span className={cn("font-headline text-base md:text-lg font-bold leading-none tracking-tight", (isScrolled || isDarkText) ? "text-foreground" : "text-white")}>MoreMeets™</span>
-            <span className={cn("text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] leading-none mt-1", (isScrolled || isDarkText) ? "text-muted-foreground/60" : "text-white/40")}>LESS MISSES.</span>
+            <span className={cn("font-headline text-base md:text-lg font-bold leading-none tracking-tight", (isScrolled || isDarkText) ? "text-[#0F172A]" : "text-white")}>MoreMeets™</span>
+            <span className={cn("text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] leading-none mt-1", (isScrolled || isDarkText) ? "text-[#0F172A]/40" : "text-white/40")}>LESS MISSES.</span>
         </div>
     </Link>
 );
@@ -77,6 +77,7 @@ export function SiteHeader() {
     const pathname = usePathname();
     const [isScrolled, setIsScrolled] = React.useState(false);
 
+    // Visibility logic for Design Lab
     const isDesignLab = pathname === '/design-lab';
 
     React.useEffect(() => {
@@ -96,14 +97,14 @@ export function SiteHeader() {
 
     const navLinkClass = cn(
         "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-colors",
-        (isScrolled || isDesignLab) ? "text-muted-foreground hover:text-foreground" : "text-white/60 hover:text-white"
+        (isScrolled || isDesignLab) ? "text-[#0F172A]/60 hover:text-[#0F172A]" : "text-white/60 hover:text-white"
     );
 
     return (
         <header className={cn(
             "px-6 lg:px-12 h-16 flex items-center fixed top-0 w-full z-50 transition-all duration-500",
             isScrolled 
-                ? "bg-background/95 backdrop-blur-md border-b border-white/5 shadow-sm" 
+                ? "bg-white/95 backdrop-blur-md border-b border-black/5 shadow-sm" 
                 : "bg-transparent border-b border-transparent"
         )}>
             <div className="flex items-center">
@@ -122,17 +123,17 @@ export function SiteHeader() {
                     </button>
                     {isDropdownOpen && (
                         <div className="absolute top-full right-0 w-screen max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
-                            <div className="bg-background rounded-xl shadow-2xl border border-white/10 flex flex-col overflow-hidden">
+                            <div className="bg-white rounded-xl shadow-2xl border border-black/10 flex flex-col overflow-hidden">
                                     <ScrollArea className="max-h-[75vh] overflow-y-auto">
                                     <div className="p-10">
                                         <SolutionsList />
                                     </div>
                                 </ScrollArea>
-                                <div className="bg-white/[0.02] p-4 border-t border-white/5 flex items-center justify-between px-10">
-                                    <Link href="/library" className="text-[10px] font-black uppercase tracking-[0.3em] text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-white/5">
+                                <div className="bg-black/[0.02] p-4 border-t border-black/5 flex items-center justify-between px-10">
+                                    <Link href="/library" className="text-[10px] font-black uppercase tracking-[0.3em] text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-black/5">
                                         View Systems Hub &rarr;
                                     </Link>
-                                    <Link href="/packs/animal_shelter_pack" className="text-[9px] font-black text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-white/5 flex items-center gap-2 uppercase tracking-[0.3em]">
+                                    <Link href="/packs/animal_shelter_pack" className="text-[9px] font-black text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-black/5 flex items-center gap-2 uppercase tracking-[0.3em]">
                                         <PawPrint className="w-3.5 h-3.5" /> Social Impact (Free)
                                     </Link>
                                 </div>
@@ -148,13 +149,13 @@ export function SiteHeader() {
             <div className="md:hidden ml-auto flex items-center">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", (isScrolled || isDesignLab) ? "text-foreground" : "text-white/60 hover:bg-white/10")}>
+                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", (isScrolled || isDesignLab) ? "text-[#0F172A]" : "text-white/60 hover:bg-white/10")}>
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>
                     </SheetTrigger>
-                    <SheetContent side="right" className="w-full max-w-sm flex flex-col p-0 bg-background border-l-white/5 shadow-2xl">
-                         <SheetHeader className="p-4 border-b border-white/5">
+                    <SheetContent side="right" className="w-full max-w-sm flex flex-col p-0 bg-white border-l-black/5 shadow-2xl">
+                         <SheetHeader className="p-4 border-b border-black/5">
                             <SheetTitle>
                                 <BrandLogo isScrolled={true} />
                             </SheetTitle>
@@ -162,27 +163,27 @@ export function SiteHeader() {
                         <ScrollArea className="flex-1">
                             <div className="flex flex-col p-4">
                                 <Accordion type="multiple" className="w-full">
-                                    <div className="border-b border-white/5">
+                                    <div className="border-b border-black/5">
                                         <Link href="/about" className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors py-5 flex" prefetch={false}>
                                             About Us
                                         </Link>
                                     </div>
-                                    <div className="border-b border-white/5">
+                                    <div className="border-b border-black/5">
                                         <Link href="/library" className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors py-5 flex" prefetch={false}>
                                             Systems Hub
                                         </Link>
                                     </div>
-                                    <AccordionItem value="packs" className="border-b border-white/5">
+                                    <AccordionItem value="packs" className="border-b border-black/5">
                                         <AccordionTrigger className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground hover:no-underline py-5">
                                             Elite Industry Systems
                                         </AccordionTrigger>
                                         <AccordionContent className="pb-4">
                                             {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
-                                                <div key={category} className="ml-4 pl-4 border-l border-white/5 mb-4">
+                                                <div key={category} className="ml-4 pl-4 border-l border-black/5 mb-4">
                                                     <h5 className="font-black text-[9px] uppercase tracking-[0.3em] text-primary/90 mt-2 mb-2 font-headline">/ {category}</h5>
                                                     <div className="flex flex-col gap-1">
                                                         {packs.map(pack => (
-                                                            <Link key={pack.id} href={`/packs/${pack.id}`} className="text-[11px] font-bold uppercase tracking-tight text-muted-foreground hover:text-foreground transition-colors py-2 px-2 rounded-md hover:bg-white/5 flex items-center gap-2">
+                                                            <Link key={pack.id} href={`/packs/${pack.id}`} className="text-[11px] font-bold uppercase tracking-tight text-muted-foreground hover:text-foreground transition-colors py-2 px-2 rounded-md hover:bg-black/5 flex items-center gap-2">
                                                                 <IconComponent name={pack.icon} className="w-3.5 h-3.5 shrink-0" />
                                                                 <span>{pack.title}</span>
                                                             </Link>
@@ -192,7 +193,7 @@ export function SiteHeader() {
                                             ))}
                                         </AccordionContent>
                                     </AccordionItem>
-                                    <div className="border-b border-white/5">
+                                    <div className="border-b border-black/5">
                                         <Link href="/blog" className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors py-5 flex" prefetch={false}>
                                             Intelligence Hub
                                         </Link>

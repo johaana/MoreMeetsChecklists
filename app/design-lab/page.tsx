@@ -15,7 +15,7 @@ import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// --- CONFIGURATION: MINIMAL HIGH-CONVERSION NARRATIVE (V97.0) ---
+// --- CONFIGURATION: MINIMAL HIGH-CONVERSION NARRATIVE (V99.0) ---
 const STATIC_HEADLINE = "Run Operations Without Follow-Ups.";
 
 const ROTATING_LINES = [
@@ -29,8 +29,8 @@ const SUBTEXT = "A ready system to manage daily tasks across your team — with 
 
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
-// --- COMPONENT: HARDWARE-ISOLATED VIDEO (GPU ACCELERATED) ---
-const StaticVideo = React.memo(({ opacity = 0.7, blur = 0 }: { opacity?: number, blur?: number }) => (
+// --- COMPONENT: HARDWARE-ACCELERATED SMOOTH VIDEO ---
+const StaticVideo = React.memo(({ opacity = 0.8 }: { opacity?: number }) => (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-white" style={{ transform: 'translate3d(0,0,0)' }}>
         <video 
             src={VIDEO_URL} 
@@ -40,7 +40,7 @@ const StaticVideo = React.memo(({ opacity = 0.7, blur = 0 }: { opacity?: number,
             playsInline 
             preload="auto"
             className="w-full h-full object-cover will-change-transform" 
-            style={{ opacity, filter: `blur(${blur}px)`, transform: 'translate3d(0,0,0)' }}
+            style={{ opacity, transform: 'translate3d(0,0,0)' }}
         />
         {/* Soft daylight gradient overlay to protect text contrast on the left */}
         <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-transparent to-transparent z-10" />
@@ -51,24 +51,29 @@ StaticVideo.displayName = 'StaticVideo';
 // --- SUB-COMPONENT: ABSOLUTE STATIONARY COMMAND FLOOR ---
 const FixedCommandFloor = ({ accentColor = "#00AE8D" }: { accentColor?: string }) => (
     <div className="space-y-8 pt-6 relative z-30">
-        {/* 1. Subtext */}
+        {/* 1. Subtext - Stationary */}
         <p className="text-base md:text-lg font-medium leading-relaxed text-[#0F172A]/80 italic max-w-md">
             {SUBTEXT}
         </p>
 
-        {/* 2. Primary CTA Anchor */}
+        {/* 2. Primary CTA Anchor - Stationary */}
         <div className="space-y-5">
-            <Button asChild size="lg" style={{ background: accentColor }} className={cn(
-                "h-16 md:h-18 px-10 md:px-12 rounded-xl text-white font-black uppercase italic text-sm md:text-base tracking-widest shadow-2xl transition-all border-none group/btn w-fit",
-                "hover:brightness-110 hover:-translate-y-1 active:scale-95 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)]"
-            )}>
-                <a href="/library" className="flex items-center gap-3">
-                    Deploy Your System → ₹999
-                    <ArrowRight className="w-5 h-5 md:w-6 h-6 transition-transform group-hover/btn:translate-x-1.5" />
-                </a>
-            </Button>
+            <div className="space-y-3">
+                <Button asChild size="lg" style={{ background: accentColor }} className={cn(
+                    "h-16 md:h-18 px-10 md:px-12 rounded-xl text-white font-black uppercase italic text-sm md:text-base tracking-widest shadow-2xl transition-all border-none group/btn w-fit",
+                    "hover:brightness-110 hover:-translate-y-1 active:scale-95 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)]"
+                )}>
+                    <a href="/library" className="flex items-center gap-3">
+                        Deploy Your System → ₹999
+                        <ArrowRight className="w-5 h-5 md:w-6 h-6 transition-transform group-hover/btn:translate-x-1.5" />
+                    </a>
+                </Button>
+                <p className="text-[10px] font-black uppercase text-[#0F172A]/40 tracking-widest pl-2">
+                    No SaaS • No monthly fees
+                </p>
+            </div>
             
-            {/* 3. Micro-Boosters */}
+            {/* 3. Micro-Boosters - Stationary */}
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[9px] md:text-[10px] font-black uppercase tracking-[0.25em] text-[#0F172A]/50">
                 <span className="flex items-center gap-2"><Check className="w-3 h-3" style={{ color: accentColor }} /> Works on Excel & Sheets</span>
                 <span className="flex items-center gap-2"><Check className="w-3 h-3" style={{ color: accentColor }} /> No SaaS</span>
@@ -76,7 +81,7 @@ const FixedCommandFloor = ({ accentColor = "#00AE8D" }: { accentColor?: string }
             </div>
         </div>
 
-        {/* 4. Micro Strip: Minimal Sector Support */}
+        {/* 4. Micro Strip: Minimal Sector Support - Stationary */}
         <div className="pt-6 border-t border-black/10 w-fit">
             <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-[#0F172A]/30 italic">
                 For hospitality, retail, healthcare, education & more
@@ -105,20 +110,20 @@ export default function DesignLabPage() {
 
     const archetypes = [
         { id: 1, label: "ASEGO TEAL", accent: "#00AE8D" },
-        { id: 2, label: "PEACH GLOW", accent: "#FF8A71" },
-        { id: 3, label: "AZURE HUB", accent: "#0EA5E9" },
-        { id: 4, label: "EXECUTIVE GOLD", accent: "#EAB308" },
-        { id: 5, label: "PURE MINIMAL", accent: "#0F172A" }
+        { id: 2, label: "VIOLET HUB", accent: "#8B5CF6" },
+        { id: 3, label: "ROSE CRIMSON", accent: "#E11D48" },
+        { id: 4, label: "MODERN INDIGO", accent: "#4F46E5" },
+        { id: 5, label: "EMERALD GOV", accent: "#059669" }
     ];
 
     return (
-        <div className="flex flex-col min-h-screen selection:bg-[#00AE8D]/20 overflow-hidden font-body bg-white">
+        <div className="flex flex-col min-h-screen selection:bg-black/10 overflow-hidden font-body bg-white">
             <SiteHeader />
 
             <main className="flex-1">
                 {/* ARCHETYPE SELECTOR */}
                 <div className="fixed top-24 right-8 z-50 flex flex-col gap-2 p-2 bg-white/80 backdrop-blur-xl rounded-2xl border border-zinc-200 shadow-2xl">
-                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">SOVEREIGN V97</span>
+                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">SOVEREIGN V99</span>
                     {archetypes.map((arch) => (
                         <button 
                             key={arch.id} 
@@ -135,21 +140,19 @@ export default function DesignLabPage() {
 
                 {/* --- HERO SECTION --- */}
                 <section className="relative w-full h-screen flex items-center overflow-hidden">
-                    {/* Clear Video Backdrop (75% Opacity) */}
-                    <StaticVideo opacity={0.75} blur={0} />
+                    {/* Crystal Clear Video Backdrop (80% Opacity) */}
+                    <StaticVideo opacity={0.8} />
                     
                     <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center">
-                        {/* LEFT-ALIGNED GLASS COMMAND SLAB */}
+                        {/* LEFT-ALIGNED ULTRA-TRANSPARENT GLASS COMMAND SLAB */}
                         <div className={cn(
                             "max-w-2xl w-full p-10 md:p-16 rounded-[2.5rem] border border-white/40 shadow-2xl relative overflow-hidden group",
-                            "bg-white/20 backdrop-blur-3xl", // High transparency, high blur for freshness
-                            archetype === 2 && "border-[#FF8A71]/20",
-                            archetype === 3 && "border-[#0EA5E9]/20"
+                            "bg-white/10 backdrop-blur-[40px]" // Extreme transparency + high blur for Asego look
                         )}>
                             {/* Rim Lighting Accent */}
-                            <div className="absolute top-0 left-0 w-full h-1 opacity-40" style={{ background: archetypes.find(a => a.id === archetype)?.accent || "#00AE8D" }} />
+                            <div className="absolute top-0 left-0 w-full h-1 opacity-40" style={{ background: archetypes.find(a => a.id === archetype)?.accent }} />
                             
-                            {/* Narrative Sky */}
+                            {/* Narrative Sky - The only part that moves */}
                             <div className="space-y-4">
                                 <h1 className="text-4xl md:text-6xl font-black font-headline text-[#0F172A] leading-[1] tracking-tighter uppercase italic drop-shadow-sm">
                                     {STATIC_HEADLINE}
@@ -168,7 +171,7 @@ export default function DesignLabPage() {
                                 </div>
                             </div>
 
-                            {/* Fixed Command Floor: Stationary functional anchors */}
+                            {/* Fixed Command Floor: 100% Stationary elements */}
                             <FixedCommandFloor accentColor={archetypes.find(a => a.id === archetype)?.accent} />
                         </div>
                     </div>
@@ -180,7 +183,7 @@ export default function DesignLabPage() {
                         <div className="flex items-center gap-4">
                             <div className="w-2 h-2 rounded-full animate-pulse shadow-[0_0_8px_rgba(0,0,0,0.1)]" style={{ background: archetypes.find(a => a.id === archetype)?.accent }} />
                             <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.6em] italic font-headline">
-                                SYSTEM_STATUS_V97_ONLINE
+                                SYSTEM_STATUS_V99_ONLINE
                             </span>
                         </div>
                         <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-zinc-300">
