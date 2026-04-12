@@ -69,7 +69,7 @@ const StaticVideo = React.memo(({ opacity = 1, blur = 0, variant = 1 }: { opacit
             )} 
             style={{ opacity, filter: `blur(${blur}px)`, transform: 'translate3d(0,0,0)' }}
         />
-        {/* Layered Overlay System for specific variants */}
+        {/* Layered Overlay System */}
         {variant === 5 && (
             <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/95 to-transparent z-10" />
         )}
