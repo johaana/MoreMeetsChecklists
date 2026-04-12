@@ -57,6 +57,10 @@ const ROTATING_OPTIONS = [
     }
 ];
 
+/**
+ * STATIONARY SECTOR NAVIGATOR
+ * Locked in place to provide a permanent operational floor.
+ */
 const SectorNavigator = ({ accentColor }: { accentColor: string }) => {
     const sectorPoints = [
         { label: "HOSPITALITY", val: "RESTAURANTS", icon: Utensils, href: "/packs/restaurants" },
@@ -92,6 +96,10 @@ const SectorNavigator = ({ accentColor }: { accentColor: string }) => {
     );
 };
 
+/**
+ * STATIONARY VALUE STRIP
+ * The constant technical payload at the absolute base.
+ */
 const ValueStrip = () => (
     <div className="w-full flex items-center justify-center gap-4 md:gap-12 py-4 px-4 bg-zinc-900 shadow-2xl">
         {[
@@ -110,7 +118,7 @@ const ValueStrip = () => (
     </div>
 );
 
-export default function DesignLabPage() {
+export default function RotatingSovereignPage() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -126,28 +134,29 @@ export default function DesignLabPage() {
         <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden bg-zinc-100">
             {/* Cinematic Backdrop - Optimized Clarity (40% Opacity) */}
             <div className="absolute inset-0 z-0">
-                <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover grayscale-[0.3] opacity-40" />
-                {/* Left-to-Right Daylight Gradient Mask */}
-                <div className="absolute inset-0 bg-gradient-to-r from-zinc-100 via-zinc-100/80 to-transparent pointer-events-none" />
+                <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover grayscale-[0.2] opacity-40" />
+                {/* Fixed Daylight Gradient Mask - Ensures Text Legibility */}
+                <div className="absolute inset-0 bg-gradient-to-r from-zinc-100 via-zinc-100/80 to-transparent pointer-events-none z-10" />
             </div>
 
-            {/* Rotating Hero Content */}
+            {/* DYNAMIC CONTENT LAYER (The Narratives) */}
             <div className="relative z-20 flex-1 flex flex-col px-6 md:px-24 justify-center">
-                <div className="max-w-6xl space-y-8 md:space-y-12 transition-all duration-1000">
-                    <Badge variant="outline" className="backdrop-blur-md bg-white/90 border-zinc-300 text-zinc-500 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2.5 rounded-full mb-2 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-700">
+                <div key={currentIndex} className="max-w-6xl space-y-8 md:space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                    <Badge variant="outline" className="backdrop-blur-md bg-white/90 border-zinc-300 text-zinc-500 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2.5 rounded-full mb-2 shadow-sm">
                         {active.badge}
                     </Badge>
                     
                     <div className="relative group">
-                        {/* Subtle Rim Lighting */}
-                        <div className="absolute -inset-20 blur-[120px] opacity-20 pointer-events-none transition-opacity duration-1000" style={{ background: `radial-gradient(circle, ${active.accentColor} 0%, transparent 70%)` }} />
+                        {/* Dynamic Rim Lighting (Updates with Accent Color) */}
+                        <div className="absolute -inset-20 blur-[120px] opacity-20 pointer-events-none transition-all duration-1000" style={{ background: `radial-gradient(circle, ${active.accentColor} 0%, transparent 70%)` }} />
                         
-                        <h1 className="text-5xl md:text-[8.5rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic text-zinc-950 relative z-10 drop-shadow-xl animate-in fade-in slide-in-from-bottom-4 duration-1000">
-                            {active.titleWhite} <br/> <span style={{ color: active.accentColor }}>{active.titleColor}</span>
+                        <h1 className="text-5xl md:text-[8.5rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic text-zinc-950 relative z-10 drop-shadow-xl">
+                            {active.titleWhite} <br/> <span style={{ color: active.accentColor }} className="transition-colors duration-1000">{active.titleColor}</span>
                         </h1>
                     </div>
                     
-                    <div className="flex gap-8 pt-4 animate-in fade-in slide-in-from-bottom-6 duration-1000">
+                    <div className="flex gap-8 pt-4">
+                        {/* Dynamic Accent Bar */}
                         <div className="w-2.5 rounded-full h-auto self-stretch shadow-sm transition-colors duration-1000" style={{ backgroundColor: active.accentColor }} />
                         <p className="text-xl md:text-4xl font-bold italic max-w-2xl leading-[1.1] text-zinc-800 relative z-10 drop-shadow-sm">
                             {active.subtitle}
@@ -156,19 +165,21 @@ export default function DesignLabPage() {
                 </div>
             </div>
 
-            {/* Floating Dual-Strip Command Dock */}
+            {/* STATIONARY FOUNDATION LAYER (The Command Docks) */}
             <div className="relative z-30 w-full">
                 <div className="max-w-7xl mx-auto flex justify-between items-end px-12 pb-4">
                     <div className="flex items-center gap-4 bg-white/60 backdrop-blur-sm px-5 py-2 rounded-full border border-zinc-200 shadow-sm">
+                        {/* Pulse matches the current active color */}
                         <div className="w-2 h-2 rounded-full animate-pulse transition-colors duration-1000" style={{ backgroundColor: active.accentColor }} />
                         <span className="text-[10px] md:text-[11px] font-black text-zinc-600 uppercase tracking-[0.5em] italic font-headline">
                             LOOK WHAT'S IN FOR YOUR BUSINESS
                         </span>
                     </div>
-                    <span className="hidden md:block text-[9px] font-mono text-zinc-400 uppercase tracking-widest">SOVEREIGN_SYSTEM_V61.0_STABLE</span>
+                    <span className="hidden md:block text-[9px] font-mono text-zinc-400 uppercase tracking-widest">SOVEREIGN_SYSTEM_V62.0_STABLE</span>
                 </div>
                 
                 <div className="max-w-7xl mx-auto">
+                    {/* These two components are now stationary anchors */}
                     <SectorNavigator accentColor={active.accentColor} />
                     <ValueStrip />
                 </div>
