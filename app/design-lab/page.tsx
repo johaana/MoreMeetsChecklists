@@ -56,13 +56,13 @@ const ORIGINAL_NARRATIVES = [
     }
 ];
 
-// --- CONFIGURATION: ARCHETYPE 06 (HIGH CONVERSION) ---
+// --- CONFIGURATION: ARCHETYPE 06 (PREMIUM COMMAND SYSTEM) ---
 const ARCHETYPE_6_ROTATION = [
     "Track Daily Tasks. See What’s Done.",
     "Pre-Built SOPs Your Team Actually Follows.",
     "Live Dashboard for Every Shift & Location.",
     "No Apps. No SaaS. Runs on Excel & Sheets.",
-    "Train Staff Automatically. No Follow-Ups Needed."
+    "Train Staff Automatically. No Follow-Ups."
 ];
 
 const INDUSTRIES = [
@@ -151,10 +151,10 @@ export default function DesignLabPage() {
                     {/* --- BACKGROUND LAYERS --- */}
                     {archetype === 6 ? (
                         <>
-                            <StaticVideo opacity={0.05} grayscale={0.5} blur={10} />
-                            <div className="absolute inset-0 bg-gradient-to-br from-[#22C55E]/5 via-transparent to-transparent z-10" />
-                            {/* Radial Depth behind CTA area */}
-                            <div className="absolute bottom-[20%] left-[20%] w-[400px] h-[400px] bg-[#22C55E]/5 blur-[120px] rounded-full z-10 pointer-events-none" />
+                            <StaticVideo opacity={0.08} grayscale={0.5} blur={12} />
+                            <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-transparent to-transparent z-10" />
+                            {/* Layer 3: Soft radial depth behind CTA */}
+                            <div className="absolute bottom-[20%] left-[20%] w-[500px] h-[500px] bg-green-500/[0.03] blur-[120px] rounded-full z-10 pointer-events-none" />
                         </>
                     ) : (
                         <>
@@ -197,29 +197,32 @@ export default function DesignLabPage() {
                         <div className="w-full max-w-7xl mx-auto">
                             
                             {archetype === 6 ? (
-                                /* ARCHETYPE 6: HIGH CONVERSION PREMIUM LIGHT */
+                                /* ARCHETYPE 6: PREMIUM COMMAND SYSTEM (HIGH CONVERSION) */
                                 <div className="grid lg:grid-cols-[1fr,450px] gap-20 items-center">
                                     <div className="space-y-12">
                                         <div className="space-y-6">
-                                            <h1 className="text-5xl md:text-7xl font-black font-headline text-[#0F172A] leading-[1.05] tracking-tighter uppercase italic">
+                                            {/* Static Main Headline */}
+                                            <h1 className="text-5xl md:text-7xl font-black font-headline text-[#0F172A] leading-[1.02] tracking-tighter uppercase italic drop-shadow-sm">
                                                 Run Your Operations <br />
                                                 <span className="text-[#0F172A] opacity-90">Without Chasing People.</span>
                                             </h1>
                                             
-                                            <div className="min-h-[100px] flex items-center">
+                                            {/* Rotating Educational Secondary Headline */}
+                                            <div className="min-h-[60px] flex items-center">
                                                 <AnimatePresence mode="wait">
                                                     <motion.p 
                                                         key={currentIndex} 
                                                         {...transitionProps} 
-                                                        className="text-2xl md:text-4xl font-black text-[#22C55E] italic tracking-tight leading-none"
+                                                        className="text-2xl md:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#22C55E] to-[#15803D] italic tracking-tight leading-none"
                                                     >
                                                         {activeA6}
                                                     </motion.p>
                                                 </AnimatePresence>
                                             </div>
 
-                                            <div className="flex gap-6 items-start max-w-xl">
-                                                <div className="w-0.5 h-auto self-stretch bg-gradient-to-b from-[#22C55E] via-[#22C55E]/40 to-transparent shrink-0 opacity-60" />
+                                            {/* Static Subtext with Left-Edge Signal Line */}
+                                            <div className="flex gap-10 items-start max-w-xl">
+                                                <div className="w-[3px] h-full self-stretch bg-gradient-to-b from-[#16A34A] via-[#16A34A]/20 to-transparent shrink-0 rounded-full" />
                                                 <p className="text-lg md:text-xl text-[#475569] font-medium leading-[1.7] italic">
                                                     A ready-to-use operating system for restaurants, hotels, retail, healthcare, and multi-location teams. <br />
                                                     Know what’s done, missed, or at risk — in real time.
@@ -227,9 +230,10 @@ export default function DesignLabPage() {
                                             </div>
                                         </div>
 
-                                        <div className="space-y-8">
+                                        {/* STATIONARY COMMAND FLOOR (Absolute Constant) */}
+                                        <div className="space-y-10 pt-4">
                                             <div className="space-y-4">
-                                                <Button asChild size="lg" className="h-20 px-14 rounded-2xl bg-gradient-to-br from-[#22C55E] to-[#16A34A] text-white font-black uppercase italic text-lg tracking-widest shadow-[0_15px_30px_-10px_rgba(34,197,94,0.3)] hover:shadow-[0_20px_40px_-5px_rgba(34,197,94,0.4)] hover:-translate-y-1 active:scale-95 transition-all border-none group/btn w-fit">
+                                                <Button asChild size="lg" className="h-20 px-14 rounded-2xl bg-gradient-to-br from-[#22C55E] to-[#15803D] text-white font-black uppercase italic text-lg tracking-widest shadow-[0_20px_40px_-10px_rgba(22,163,74,0.3)] hover:shadow-[0_25px_50px_-5px_rgba(22,163,74,0.45)] hover:-translate-y-1 active:scale-95 transition-all border-none group/btn w-fit">
                                                     <a href="/library" className="flex items-center gap-3">
                                                         Deploy Your System → ₹999
                                                         <ArrowRight className="w-6 h-6 transition-transform group-hover/btn:translate-x-1.5" />
@@ -240,51 +244,55 @@ export default function DesignLabPage() {
                                                 </p>
                                             </div>
 
-                                            <div className="grid grid-cols-2 gap-x-12 gap-y-4 pt-6 border-t border-zinc-200 max-w-xl">
+                                            {/* Technical Trust Pillars (Stationary) */}
+                                            <div className="grid grid-cols-2 gap-x-12 gap-y-5 pt-10 border-t border-[#0F172A]/5 max-w-xl">
                                                 {[
-                                                    "Pre-built SOPs",
+                                                    "120+ Pre-built SOPs",
                                                     "Audit-ready logs",
                                                     "Works without internet",
                                                     "No training required"
                                                 ].map((boost, i) => (
-                                                    <div key={i} className="flex items-center gap-3 group/item">
-                                                        <div className="w-1.5 h-1.5 rounded-full bg-[#22C55E]/20 group-hover/item:bg-[#22C55E] transition-colors" />
-                                                        <span className="text-[11px] font-black text-[#0F172A]/60 uppercase tracking-widest group-hover/item:text-[#0F172A] transition-colors">{boost}</span>
+                                                    <div key={boost} className="flex items-center gap-4 group/item">
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-[#16A34A]/20 group-hover/item:bg-[#16A34A] transition-colors" />
+                                                        <span className="text-[11px] font-black text-[#0F172A]/60 uppercase tracking-[0.25em] group-hover/item:text-[#0F172A] transition-colors">{boost}</span>
                                                     </div>
                                                 ))}
                                             </div>
                                         </div>
                                     </div>
 
+                                    {/* Glass Command Console (Right Section) */}
                                     <div className="hidden lg:flex justify-end relative">
-                                        <div className="bg-white/60 border border-black/[0.08] backdrop-blur-2xl p-12 rounded-[3.5rem] space-y-10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] max-w-sm w-full relative z-10 overflow-hidden">
-                                            {/* Decorative glass highlight */}
-                                            <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+                                        <div className="bg-white/75 border border-black/[0.05] backdrop-blur-2xl p-12 rounded-[3.5rem] space-y-10 shadow-[0_30px_60px_rgba(0,0,0,0.12)] max-w-sm w-full relative z-10 overflow-hidden ring-1 ring-white/20">
+                                            {/* Decorative top highlight */}
+                                            <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-[#16A34A]/20 to-transparent" />
                                             
-                                            <div className="space-y-2">
-                                                <span className="text-[11px] font-black text-[#22C55E] uppercase tracking-[0.5em] font-headline block">USED ACROSS</span>
-                                                <div className="w-12 h-0.5 bg-[#22C55E]/20" />
+                                            <div className="space-y-3">
+                                                <span className="text-[11px] font-black text-[#16A34A] uppercase tracking-[0.5em] font-headline block">USED ACROSS</span>
+                                                <div className="w-16 h-0.5 bg-gradient-to-r from-[#16A34A] to-transparent rounded-full" />
                                             </div>
 
-                                            <div className="space-y-5">
+                                            <div className="space-y-1">
                                                 {INDUSTRIES.map((ind, i) => (
-                                                    <div key={i} className="flex items-center gap-5 group/industry cursor-default">
-                                                        <div className="w-1.5 h-1.5 rounded-full bg-zinc-200 group-hover/industry:bg-[#22C55E] group-hover/industry:scale-125 transition-all duration-300" />
-                                                        <span className="text-xl font-black font-headline uppercase italic tracking-tight text-[#0F172A]/20 group-hover/industry:text-[#0F172A] group-hover/industry:translate-x-1.5 transition-all duration-300">
-                                                            {ind}
-                                                        </span>
+                                                    <div key={ind} className="group/industry cursor-default py-3 border-b border-black/[0.03] last:border-0">
+                                                        <div className="flex items-center gap-5 transition-all duration-300 group-hover/industry:translate-x-2">
+                                                            <div className="w-1.5 h-1.5 rounded-full bg-zinc-200 group-hover/industry:bg-[#16A34A] group-hover/industry:scale-125 transition-all duration-300" />
+                                                            <span className="text-xl font-black font-headline uppercase italic tracking-tight text-[#0F172A]/20 group-hover/industry:text-[#0F172A] transition-all duration-300">
+                                                                {ind}
+                                                            </span>
+                                                        </div>
                                                     </div>
                                                 ))}
                                             </div>
 
-                                            <div className="pt-6 border-t border-black/5">
-                                                <span className="text-[9px] font-black text-black/20 uppercase tracking-[0.4em] italic">
+                                            <div className="pt-6">
+                                                <span className="text-[9px] font-black text-black/25 uppercase tracking-[0.4em] italic leading-relaxed">
                                                     Single unit → multi-location scale
                                                 </span>
                                             </div>
                                         </div>
-                                        {/* Background soft glow behind panel */}
-                                        <div className="absolute -inset-10 bg-[#22C55E]/5 blur-[80px] rounded-full z-0" />
+                                        {/* Soft panel glow layer */}
+                                        <div className="absolute -inset-10 bg-green-500/[0.04] blur-[80px] rounded-full z-0" />
                                     </div>
                                 </div>
                             ) : (
@@ -343,7 +351,7 @@ export default function DesignLabPage() {
 
                                         <div className={cn("grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 md:gap-8 border-t pt-8", archetype === 1 ? "border-white/10" : "border-zinc-200/50")}>
                                             {TECHNICAL_PILLARS.map((pillar, i) => (
-                                                <div key={i} className="flex items-center gap-2 group">
+                                                <div key={pillar.t} className="flex items-center gap-2 group">
                                                     <pillar.i className="w-3.5 h-3.5 shrink-0 opacity-40 transition-colors" style={{ color: activeOriginal.accentColor }} />
                                                     <span className={cn("text-[9px] font-black uppercase tracking-[0.2em] italic whitespace-nowrap", archetype === 1 ? "text-white/30" : "text-zinc-400")}>{pillar.t}</span>
                                                 </div>
@@ -364,7 +372,7 @@ export default function DesignLabPage() {
                             <div className="flex items-center gap-4">
                                 <div 
                                     className="w-2 h-2 rounded-full animate-pulse transition-colors duration-1000 shadow-[0_0_8px_rgba(46,184,107,0.5)]" 
-                                    style={{ backgroundColor: archetype === 6 ? "#22C55E" : activeOriginal.accentColor }} 
+                                    style={{ backgroundColor: archetype === 6 ? "#16A34A" : activeOriginal.accentColor }} 
                                 />
                                 <span className={cn("text-[10px] font-black uppercase tracking-[0.6em] italic font-headline", archetype === 1 ? "text-white/20" : "text-zinc-400")}>
                                     ELITE_COMMAND_OS_STABLE
