@@ -47,15 +47,15 @@ const StaticVideo = React.memo(({ opacity = 0.85 }: { opacity?: number }) => (
 StaticVideo.displayName = 'StaticVideo';
 
 // --- SUB-COMPONENT: ABSOLUTE STATIONARY COMMAND FLOOR ---
-const FixedCommandFloor = ({ accentColor = "#008D74" }: { accentColor?: string }) => (
-    <div className="space-y-6 pt-4 relative z-30">
+const FixedCommandFloor = ({ accentColor = "#00AE8D" }: { accentColor?: string }) => (
+    <div className="space-y-5 pt-2 relative z-30">
         {/* 1. Subtext - Stationary */}
         <p className="text-base md:text-lg font-medium leading-relaxed text-[#0F172A]/80 italic max-w-md">
             {SUBTEXT}
         </p>
 
         {/* 2. Primary CTA Anchor - Stationary */}
-        <div className="space-y-5">
+        <div className="space-y-4">
             <div className="space-y-3">
                 <Button asChild size="lg" style={{ background: accentColor }} className={cn(
                     "h-16 px-10 rounded-xl text-white font-black uppercase italic text-sm md:text-base tracking-widest transition-all border-none group/btn w-fit",
@@ -73,14 +73,14 @@ const FixedCommandFloor = ({ accentColor = "#008D74" }: { accentColor?: string }
             
             {/* 3. Micro-Boosters - Stationary */}
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[9px] md:text-[10px] font-black uppercase tracking-[0.25em] text-[#0F172A]/50">
-                <span className="flex items-center gap-2"><Check className="w-3 h-3" style={{ color: accentColor }} /> Excel & Sheets Native</span>
-                <span className="flex items-center gap-2"><Check className="w-3 h-3" style={{ color: accentColor }} /> No SaaS Lock-in</span>
-                <span className="flex items-center gap-2"><Check className="w-3 h-3" style={{ color: accentColor }} /> Own Forever</span>
+                <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5" style={{ color: accentColor }} /> Excel & Sheets Native</span>
+                <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5" style={{ color: accentColor }} /> No SaaS Lock-in</span>
+                <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5" style={{ color: accentColor }} /> Own Forever</span>
             </div>
         </div>
 
-        {/* 4. Sector Support - Stationary (Reduced Padding) */}
-        <div className="pt-6 border-t border-black/10 w-fit">
+        {/* 4. Sector Support - Stationary */}
+        <div className="pt-5 border-t border-black/5 w-fit">
             <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-[#0F172A]/30 italic">
                 For hospitality, retail, healthcare, education & more
             </span>
@@ -99,13 +99,13 @@ export default function DesignLabPage() {
         return () => clearInterval(interval);
     }, []);
 
-    // COLORS UPDATED FOR READABILITY (High Contrast Pigments)
+    // NEW BRIGHT PREMIUM COLORS (High contrast vs white glass)
     const archetypes = [
-        { id: 1, label: "ASEGO TEAL", accent: "#008D74" },   // Richer Teal
-        { id: 2, label: "ROYAL BLUE", accent: "#1D4ED8" },   // Strong Navy Blue
-        { id: 3, label: "RUBY RED", accent: "#BE123C" },     // Premium Ruby (Not Emergency Red)
-        { id: 4, label: "TECH INDIGO", accent: "#4338CA" },  // Deep Indigo
-        { id: 5, label: "AMBER GOLD", accent: "#B45309" }    // Burnished Amber (Visible Yellow)
+        { id: 1, label: "ASEGO TEAL", accent: "#00AE8D" },   
+        { id: 2, label: "COBALT TECH", accent: "#2563EB" },  
+        { id: 3, label: "VIVID ROSE", accent: "#F43F5E" },    
+        { id: 4, label: "MODERN VIOLET", accent: "#8B5CF6" }, 
+        { id: 5, label: "SUN AMBER", accent: "#F59E0B" }    
     ];
 
     const currentArchetype = archetypes.find(a => a.id === archetypeId) || archetypes[0];
@@ -124,7 +124,7 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 {/* ARCHETYPE SELECTOR */}
                 <div className="fixed top-24 right-8 z-50 flex flex-col gap-2 p-2 bg-white/80 backdrop-blur-xl rounded-2xl border border-zinc-200 shadow-2xl">
-                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V104</span>
+                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V105</span>
                     {archetypes.map((arch) => (
                         <button 
                             key={arch.id} 
@@ -141,14 +141,11 @@ export default function DesignLabPage() {
 
                 {/* --- HERO SECTION --- */}
                 <section className="relative w-full h-screen flex items-center overflow-hidden">
-                    {/* Clear Cinematic Backdrop (85% Opacity) */}
+                    {/* Clear Cinematic Backdrop */}
                     <StaticVideo opacity={0.85} />
                     
                     <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center">
-                        {/* 
-                            LEFT-ALIGNED GLASS COMMAND SLAB 
-                            Header-safe offset + tighter padding
-                        */}
+                        {/* LEFT-ALIGNED GLASS COMMAND SLAB */}
                         <div className={cn(
                             "max-w-xl w-full p-8 md:p-10 rounded-[2.5rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-16",
                             "bg-white/10 backdrop-blur-[40px] transition-all duration-700" 
@@ -157,11 +154,16 @@ export default function DesignLabPage() {
                             <div className="absolute top-0 left-0 w-full h-1 opacity-40 transition-colors duration-1000" style={{ background: currentArchetype.accent }} />
                             
                             {/* Narrative Block - High Contrast Dynamic Text */}
-                            <div className="space-y-3">
+                            <div className="space-y-2">
                                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-black font-headline text-[#0F172A] leading-[1.1] tracking-tighter uppercase italic drop-shadow-sm">
                                     {STATIC_HEADLINE}
                                 </h1>
-                                <div className="min-h-[40px] flex items-center">
+                                
+                                {/* 
+                                    FIXED HEIGHT CONTAINER 
+                                    This prevents the entire glass frame from changing size during rotation
+                                */}
+                                <div className="h-[44px] flex items-center overflow-hidden">
                                     <AnimatePresence mode="wait">
                                         <motion.p 
                                             key={`${archetypeId}-${currentIndex}`} 
@@ -187,7 +189,7 @@ export default function DesignLabPage() {
                         <div className="flex items-center gap-4">
                             <div className="w-2 h-2 rounded-full animate-pulse shadow-[0_0_8px_rgba(0,0,0,0.1)] transition-colors duration-1000" style={{ background: currentArchetype.accent }} />
                             <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.6em] italic font-headline">
-                                SYSTEM_STATUS_V104_ONLINE
+                                SYSTEM_STATUS_V105_ONLINE
                             </span>
                         </div>
                         <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-zinc-300">
