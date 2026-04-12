@@ -83,7 +83,7 @@ const SectorNavigator = () => {
                             <span className="text-[7px] font-black uppercase tracking-[0.4em] text-zinc-400 whitespace-nowrap leading-none transition-colors group-hover/item:text-primary/60">{item.label}</span>
                             <div className="flex items-center gap-2.5">
                                 <item.icon className="w-4 h-4 shrink-0 text-primary transition-all duration-500 group-hover/item:scale-110 group-hover/item:rotate-3" />
-                                <span className="text-[10px] font-black uppercase italic whitespace-nowrap leading-none text-zinc-900 tracking-tighter">{item.val}</span>
+                                <span className="text-[10px] font-black uppercase italic whitespace-nowrap leading-none text-zinc-950 tracking-tighter">{item.val}</span>
                             </div>
                         </div>
                     </Link>
