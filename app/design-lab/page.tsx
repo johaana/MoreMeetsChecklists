@@ -16,8 +16,6 @@ import { Footer } from '@/components/layout/footer';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- CONFIGURATION: MINIMAL HIGH-CONVERSION NARRATIVE ---
-const STATIC_HEADLINE = "Run Operations Without Follow-Ups.";
-
 const ROTATING_LINES = [
     "Pre-Built SOPs & Checklists",
     "Live, Audit-Ready Reporting",
@@ -129,7 +127,7 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 {/* ARCHETYPE SELECTOR */}
                 <div className="fixed top-24 right-8 z-50 flex flex-col gap-2 p-2 bg-white/80 backdrop-blur-xl rounded-2xl border border-zinc-200 shadow-2xl">
-                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V112</span>
+                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V114</span>
                     {archetypes.map((arch) => (
                         <button 
                             key={arch.id} 
@@ -160,8 +158,8 @@ export default function DesignLabPage() {
                             
                             {/* Narrative Block - High Contrast Dynamic Text */}
                             <div className="space-y-1 pb-4">
-                                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-headline text-[#0F172A] leading-[0.95] tracking-tighter uppercase italic drop-shadow-sm">
-                                    {STATIC_HEADLINE}
+                                <h1 className="text-3xl md:text-4xl lg:text-5xl font-black font-headline text-[#0F172A] leading-[0.95] tracking-tighter uppercase italic drop-shadow-sm">
+                                    Run Operations <span className="whitespace-nowrap">Without Follow-Ups.</span>
                                 </h1>
                                 
                                 {/* STABILIZED NARRATIVE CONTAINER - Zero Resizing Height & Zero Clipping */}
@@ -195,7 +193,7 @@ export default function DesignLabPage() {
                         <div className="flex items-center gap-4">
                             <div className="w-2 h-2 rounded-full animate-pulse shadow-[0_0_8px_rgba(0,0,0,0.1)] transition-colors duration-1000" style={{ background: currentArchetype.accent }} />
                             <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.6em] italic font-headline">
-                                SYSTEM_STATUS_V112_ONLINE
+                                SYSTEM_STATUS_V114_ONLINE
                             </span>
                         </div>
                         <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-zinc-300 font-headline">
