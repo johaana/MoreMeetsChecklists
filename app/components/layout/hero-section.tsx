@@ -34,14 +34,23 @@ const SYSTEM_SPECS = [
 ];
 
 const PROOF_STRIP = "EXCEL & SHEETS • OWN FOREVER • NO SaaS";
-const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
+const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 export const HeroSection = () => (
     <section className="relative w-full overflow-hidden bg-black">
         {/* --- MOBILE ARCHITECTURE: HIGH-DENSITY SOVEREIGN --- */}
         <div className="md:hidden flex flex-col min-h-[100dvh] relative">
-            <div className="absolute inset-0 z-0">
-                <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20 grayscale" />
+            <div className="absolute inset-0 z-0 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
+                <video 
+                    src={VIDEO_URL} 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    preload="auto"
+                    className="w-full h-full object-cover opacity-20 grayscale will-change-transform" 
+                    style={{ transform: 'translate3d(0,0,0)' }}
+                />
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
             </div>
 
@@ -105,8 +114,17 @@ export const HeroSection = () => (
 
         {/* --- DESKTOP ARCHITECTURE --- */}
         <div className="hidden md:flex flex-row items-center h-screen relative pt-16">
-            <div className="absolute inset-0 z-0">
-                <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-30" />
+            <div className="absolute inset-0 z-0 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
+                <video 
+                    src={VIDEO_URL} 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    preload="auto"
+                    className="w-full h-full object-cover opacity-30 will-change-transform" 
+                    style={{ transform: 'translate3d(0,0,0)' }}
+                />
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
             </div>
             <div className="container px-4 md:px-32 relative z-10 h-full grid grid-cols-[1.2fr,1fr] items-center gap-24 mx-auto">

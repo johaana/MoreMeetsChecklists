@@ -25,7 +25,8 @@ import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
+// Optimized URL: Added Cloudinary transformations for 1080p, auto-quality, and H.264 codec for maximum compatibility and smoothness.
+const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 const ROTATING_NARATIVES = [
     {
@@ -137,15 +138,17 @@ export default function ProDesignerSovereignPage() {
             <main className="flex-1">
                 <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden bg-zinc-100 border-b border-zinc-200">
                     
-                    {/* Cinematic Backdrop - Vivid Clarity Architecture */}
-                    <div className="absolute inset-0 z-0 will-change-transform">
+                    {/* Cinematic Backdrop - Optimized for Smooth Rendering */}
+                    <div className="absolute inset-0 z-0 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
                         <video 
                             src={VIDEO_URL} 
                             autoPlay 
                             loop 
                             muted 
                             playsInline 
-                            className="w-full h-full object-cover grayscale-[0.1] opacity-50" 
+                            preload="auto"
+                            className="w-full h-full object-cover grayscale-[0.1] opacity-50 will-change-transform" 
+                            style={{ transform: 'translate3d(0,0,0)' }}
                         />
                         {/* Elite Gradient Mask: Left is solid for surgery, Right is clear for depth */}
                         <div className="absolute inset-0 bg-gradient-to-r from-zinc-100 via-zinc-100/80 to-transparent pointer-events-none z-10" />
@@ -156,9 +159,9 @@ export default function ProDesignerSovereignPage() {
                         <AnimatePresence mode="wait">
                             <motion.div 
                                 key={currentIndex}
-                                initial={{ opacity: 0, x: -20, filter: 'blur(10px)' }}
-                                animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-                                exit={{ opacity: 0, x: 20, filter: 'blur(10px)' }}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 20 }}
                                 transition={{ duration: 0.8, ease: "circOut" }}
                                 className="max-w-6xl space-y-8 md:space-y-12"
                             >
