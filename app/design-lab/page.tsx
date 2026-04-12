@@ -21,8 +21,8 @@ const STATIC_HEADLINE = "Run Operations Without Follow-Ups.";
 const ROTATING_LINES = [
     "Pre-Built SOPs & Checklists",
     "Live, Audit-Ready Reporting",
-    "Works on Excel & Google Sheets",
-    "No SaaS. Own It Forever"
+    "No SaaS. Own It Forever",
+    "Zero-Gap System Execution"
 ];
 
 const SUBTEXT = "A ready system to manage daily tasks across your team — with full visibility.";
@@ -95,7 +95,7 @@ export default function DesignLabPage() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [archetypeId, setArchetypeId] = useState(1); 
 
-    // Rotation Engine: Faster 3s cycles for higher energy
+    // Rotation Engine: Snappy 3s cycles
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % ROTATING_LINES.length);
@@ -116,9 +116,9 @@ export default function DesignLabPage() {
 
     // High-Performance Transition: Snap and Slide
     const transitionProps = {
-        initial: { opacity: 0, y: 10, scale: 0.98 },
+        initial: { opacity: 0, y: 15, scale: 0.98 },
         animate: { opacity: 1, y: 0, scale: 1 },
-        exit: { opacity: 0, y: -10, scale: 0.98 },
+        exit: { opacity: 0, y: -15, scale: 0.98 },
         transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
     };
 
@@ -129,7 +129,7 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 {/* ARCHETYPE SELECTOR */}
                 <div className="fixed top-24 right-8 z-50 flex flex-col gap-2 p-2 bg-white/80 backdrop-blur-xl rounded-2xl border border-zinc-200 shadow-2xl">
-                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V110</span>
+                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V111</span>
                     {archetypes.map((arch) => (
                         <button 
                             key={arch.id} 
@@ -152,7 +152,7 @@ export default function DesignLabPage() {
                     <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center">
                         {/* COMPRESSED GLASS COMMAND SLAB: Zero-clipping & Header-Safe */}
                         <div className={cn(
-                            "max-w-2xl w-full p-8 md:p-10 rounded-[3rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-8",
+                            "max-w-2xl w-full p-8 md:p-10 rounded-[3rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-16",
                             "bg-white/10 backdrop-blur-[45px] transition-all duration-700" 
                         )}>
                             {/* Rim Lighting Accent */}
@@ -164,8 +164,8 @@ export default function DesignLabPage() {
                                     {STATIC_HEADLINE}
                                 </h1>
                                 
-                                {/* STABILIZED NARRATIVE CONTAINER - Zero Resizing Height */}
-                                <div className="h-[50px] md:h-[60px] flex items-center overflow-hidden">
+                                {/* STABILIZED NARRATIVE CONTAINER - Zero Resizing Height & Zero Clipping */}
+                                <div className="h-[60px] md:h-[70px] flex items-center overflow-hidden">
                                     <AnimatePresence mode="wait">
                                         <motion.div 
                                             key={`${archetypeId}-${currentIndex}`} 
@@ -174,7 +174,7 @@ export default function DesignLabPage() {
                                         >
                                             <p 
                                                 style={{ color: currentArchetype.textColor }}
-                                                className="text-2xl md:text-3xl lg:text-4xl font-black italic tracking-tight leading-none uppercase font-headline"
+                                                className="text-2xl md:text-3xl lg:text-4xl font-black italic tracking-tight leading-[1.1] uppercase font-headline"
                                             >
                                                 {ROTATING_LINES[currentIndex]}
                                             </p>
@@ -195,7 +195,7 @@ export default function DesignLabPage() {
                         <div className="flex items-center gap-4">
                             <div className="w-2 h-2 rounded-full animate-pulse shadow-[0_0_8px_rgba(0,0,0,0.1)] transition-colors duration-1000" style={{ background: currentArchetype.accent }} />
                             <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.6em] italic font-headline">
-                                SYSTEM_STATUS_V110_ONLINE
+                                SYSTEM_STATUS_V111_ONLINE
                             </span>
                         </div>
                         <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-zinc-300 font-headline">
