@@ -17,14 +17,15 @@ import {
     Clock,
     SearchCheck,
     Lock,
-    Smartphone
+    Smartphone,
+    Check
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// --- CONFIGURATION: THE 5 ORIGINAL NARRATIVES ---
+// --- CONFIGURATION: THE ORIGINAL NARRATIVES (1-5) ---
 const ORIGINAL_NARRATIVES = [
     {
         badge: "INSTITUTIONAL INFRASTRUCTURE",
@@ -56,13 +57,13 @@ const ORIGINAL_NARRATIVES = [
     }
 ];
 
-// --- CONFIGURATION: ARCHETYPE 06 (PREMIUM COMMAND SYSTEM) ---
+// --- CONFIGURATION: ARCHETYPE 06 (THE COMMAND SYSTEM) ---
 const ARCHETYPE_6_ROTATION = [
     "Track Daily Tasks. See What’s Done.",
     "Pre-Built SOPs Your Team Actually Follows.",
     "Live Dashboard for Every Shift & Location.",
     "No Apps. No SaaS. Runs on Excel & Sheets.",
-    "Train Staff Automatically. No Follow-Ups."
+    "Train Staff Automatically. No Follow-Ups Needed."
 ];
 
 const INDUSTRIES = [
@@ -70,21 +71,11 @@ const INDUSTRIES = [
     "Schools", "Facilities", "Cinemas", "Franchise Networks"
 ];
 
-const TECHNICAL_PILLARS = [
-    { t: "PRE-BUILT SOPs", i: ShieldCheck },
-    { t: "TRAINER NOTES", i: GraduationCap },
-    { t: "CONSEQUENCES", i: AlertTriangle },
-    { t: "EXCEL / SHEETS", i: FileSpreadsheet },
-    { t: "AUTO REPORTING", i: Activity },
-    { t: "FASTER TRAINING", i: Zap },
-    { t: "NO KEY DEPENDENCY", i: Cpu }
-];
-
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 // --- COMPONENT: HARDWARE-ISOLATED VIDEO ---
-const StaticVideo = React.memo(({ opacity = 0.5, grayscale = 0.2, isDark = false, blur = 0 }: { opacity?: number, grayscale?: number, isDark?: boolean, blur?: number }) => (
-    <div className={cn("absolute inset-0 z-0 pointer-events-none overflow-hidden", isDark ? "bg-black" : "bg-zinc-100")} style={{ transform: 'translate3d(0,0,0)' }}>
+const StaticVideo = React.memo(({ opacity = 0.5, blur = 0 }: { opacity?: number, blur?: number }) => (
+    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-[#F8FAFC]" style={{ transform: 'translate3d(0,0,0)' }}>
         <video 
             src={VIDEO_URL} 
             autoPlay 
@@ -92,9 +83,12 @@ const StaticVideo = React.memo(({ opacity = 0.5, grayscale = 0.2, isDark = false
             muted 
             playsInline 
             preload="auto"
-            className="w-full h-full object-cover opacity-20 grayscale will-change-transform" 
-            style={{ opacity, filter: `grayscale(${grayscale}) blur(${blur}px)`, transform: 'translate3d(0,0,0)' }}
+            className="w-full h-full object-cover grayscale will-change-transform" 
+            style={{ opacity, filter: `grayscale(0.2) blur(${blur}px)`, transform: 'translate3d(0,0,0)' }}
         />
+        {/* Layered Overlay System: Fades from solid white/satin on left to transparent on right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/95 to-transparent z-10" />
+        <div className="absolute inset-0 bg-[rgba(34,197,94,0.03)] z-10" />
     </div>
 ));
 StaticVideo.displayName = 'StaticVideo';
@@ -115,9 +109,9 @@ export default function DesignLabPage() {
     const activeA6 = ARCHETYPE_6_ROTATION[currentIndex] || ARCHETYPE_6_ROTATION[0];
 
     const transitionProps = {
-        initial: { opacity: 0, y: 10, filter: 'blur(10px)' },
+        initial: { opacity: 0, y: 15, filter: 'blur(10px)' },
         animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
-        exit: { opacity: 0, y: -10, filter: 'blur(10px)' },
+        exit: { opacity: 0, y: -15, filter: 'blur(10px)' },
         transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
     };
 
@@ -148,66 +142,59 @@ export default function DesignLabPage() {
                     archetype === 6 ? "bg-[#F8FAFC]" : (archetype === 1 ? "bg-black" : "bg-zinc-50")
                 )}>
                     
-                    {/* --- BACKGROUND LAYERS --- */}
                     {archetype === 6 ? (
                         <>
-                            <StaticVideo opacity={0.08} grayscale={0.5} blur={12} />
-                            <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-transparent to-transparent z-10" />
+                            <StaticVideo opacity={0.15} blur={4} />
                             {/* Layer 3: Soft radial depth behind CTA */}
-                            <div className="absolute bottom-[20%] left-[20%] w-[500px] h-[500px] bg-green-500/[0.03] blur-[120px] rounded-full z-10 pointer-events-none" />
+                            <div className="absolute bottom-[20%] left-[20%] w-[600px] h-[600px] bg-green-500/[0.04] blur-[120px] rounded-full z-10 pointer-events-none" />
                         </>
                     ) : (
                         <>
                             {archetype === 1 && (
                                 <>
-                                    <StaticVideo opacity={0.3} grayscale={0.5} isDark={true} />
+                                    <div className="absolute inset-0 bg-black z-0" />
                                     <div className="absolute inset-0 bg-gradient-to-tr from-black via-transparent to-transparent z-10" />
                                 </>
                             )}
                             {archetype === 2 && (
                                 <>
-                                    <StaticVideo opacity={0.6} grayscale={0.1} />
                                     <div className="absolute inset-0 bg-gradient-to-r from-zinc-50 via-zinc-50/80 to-transparent z-10" />
                                 </>
                             )}
                             {archetype === 3 && (
                                 <div className="absolute inset-0 z-0 bg-zinc-50">
-                                    <StaticVideo opacity={0.4} grayscale={0.2} />
                                     <div className="absolute inset-0 bg-white/90" />
                                 </div>
                             )}
                             {archetype === 4 && (
                                 <>
-                                    <StaticVideo opacity={0.4} grayscale={0.2} />
                                     <div className="absolute inset-0 bg-[linear-gradient(to_right,#888_1px,transparent_1px),linear-gradient(to_bottom,#888_1px,transparent_1px)] bg-[size:40px_40px] opacity-[0.05]" />
                                 </>
                             )}
                             {archetype === 5 && (
                                 <div className="absolute inset-0 z-0 bg-zinc-50">
                                     <div className="h-1/2 w-full mt-[25vh] overflow-hidden relative border-y border-zinc-200">
-                                        <StaticVideo opacity={0.8} grayscale={0} />
                                     </div>
                                 </div>
                             )}
                         </>
                     )}
 
-                    {/* --- CONTENT LAYER --- */}
                     <div className="relative z-20 flex-1 flex flex-col h-full px-6 md:px-24 justify-center">
                         <div className="w-full max-w-7xl mx-auto">
                             
                             {archetype === 6 ? (
-                                /* ARCHETYPE 6: PREMIUM COMMAND SYSTEM (HIGH CONVERSION) */
-                                <div className="grid lg:grid-cols-[1fr,450px] gap-20 items-center">
+                                /* ARCHETYPE 6: THE SOVEREIGN COMMAND SYSTEM (HIGH CONVERSION) */
+                                <div className="grid lg:grid-cols-[1.2fr,1fr] gap-20 items-center">
                                     <div className="space-y-12">
                                         <div className="space-y-6">
-                                            {/* Static Main Headline */}
-                                            <h1 className="text-5xl md:text-7xl font-black font-headline text-[#0F172A] leading-[1.02] tracking-tighter uppercase italic drop-shadow-sm">
+                                            {/* 1. STATIC HEADLINE (ANCHOR) */}
+                                            <h1 className="text-5xl md:text-7xl font-black font-headline text-[#0F172A] leading-[1.02] tracking-tighter uppercase italic">
                                                 Run Your Operations <br />
-                                                <span className="text-[#0F172A] opacity-90">Without Chasing People.</span>
+                                                <span className="opacity-90">Without Chasing People.</span>
                                             </h1>
                                             
-                                            {/* Rotating Educational Secondary Headline */}
+                                            {/* 2. ROTATING EDUCATION LINE (SKY) */}
                                             <div className="min-h-[60px] flex items-center">
                                                 <AnimatePresence mode="wait">
                                                     <motion.p 
@@ -220,9 +207,10 @@ export default function DesignLabPage() {
                                                 </AnimatePresence>
                                             </div>
 
-                                            {/* Static Subtext with Left-Edge Signal Line */}
-                                            <div className="flex gap-10 items-start max-w-xl">
-                                                <div className="w-[3px] h-full self-stretch bg-gradient-to-b from-[#16A34A] via-[#16A34A]/20 to-transparent shrink-0 rounded-full" />
+                                            {/* 3. STATIC SUBTEXT (ANCHOR) */}
+                                            <div className="flex gap-8 items-start max-w-xl">
+                                                {/* Left Edge Signal Line */}
+                                                <div className="w-[3px] h-full self-stretch bg-gradient-to-b from-[#16A34A] to-transparent shrink-0 rounded-full opacity-40" />
                                                 <p className="text-lg md:text-xl text-[#475569] font-medium leading-[1.7] italic">
                                                     A ready-to-use operating system for restaurants, hotels, retail, healthcare, and multi-location teams. <br />
                                                     Know what’s done, missed, or at risk — in real time.
@@ -230,7 +218,7 @@ export default function DesignLabPage() {
                                             </div>
                                         </div>
 
-                                        {/* STATIONARY COMMAND FLOOR (Absolute Constant) */}
+                                        {/* 4. STATIONARY COMMAND FLOOR (Functional Engine) */}
                                         <div className="space-y-10 pt-4">
                                             <div className="space-y-4">
                                                 <Button asChild size="lg" className="h-20 px-14 rounded-2xl bg-gradient-to-br from-[#22C55E] to-[#15803D] text-white font-black uppercase italic text-lg tracking-widest shadow-[0_20px_40px_-10px_rgba(22,163,74,0.3)] hover:shadow-[0_25px_50px_-5px_rgba(22,163,74,0.45)] hover:-translate-y-1 active:scale-95 transition-all border-none group/btn w-fit">
@@ -239,70 +227,67 @@ export default function DesignLabPage() {
                                                         <ArrowRight className="w-6 h-6 transition-transform group-hover/btn:translate-x-1.5" />
                                                     </a>
                                                 </Button>
+                                                
+                                                {/* Secondary Micro-text */}
                                                 <p className="text-[11px] font-black text-[#475569]/50 uppercase tracking-[0.4em] pl-4 italic">
                                                     Works on Excel & Google Sheets • No SaaS • Own Forever
                                                 </p>
                                             </div>
 
-                                            {/* Technical Trust Pillars (Stationary) */}
+                                            {/* 5. CONVERSION BOOSTERS (Stationary) */}
                                             <div className="grid grid-cols-2 gap-x-12 gap-y-5 pt-10 border-t border-[#0F172A]/5 max-w-xl">
                                                 {[
                                                     "120+ Pre-built SOPs",
                                                     "Audit-ready logs",
                                                     "Works without internet",
                                                     "No training required"
-                                                ].map((boost, i) => (
-                                                    <div key={boost} className="flex items-center gap-4 group/item">
-                                                        <div className="w-1.5 h-1.5 rounded-full bg-[#16A34A]/20 group-hover/item:bg-[#16A34A] transition-colors" />
-                                                        <span className="text-[11px] font-black text-[#0F172A]/60 uppercase tracking-[0.25em] group-hover/item:text-[#0F172A] transition-colors">{boost}</span>
+                                                ].map((boost) => (
+                                                    <div key={boost} className="flex items-center gap-3 group/item">
+                                                        <div className="w-4 h-4 rounded-full bg-[#16A34A]/10 flex items-center justify-center shrink-0">
+                                                            <Check className="w-2.5 h-2.5 text-[#16A34A]" />
+                                                        </div>
+                                                        <span className="text-[11px] font-black text-[#0F172A]/60 uppercase tracking-[0.2em] italic group-hover/item:text-[#0F172A] transition-colors">{boost}</span>
                                                     </div>
                                                 ))}
                                             </div>
                                         </div>
                                     </div>
 
-                                    {/* Glass Command Console (Right Section) */}
-                                    <div className="hidden lg:flex justify-end relative">
-                                        <div className="bg-white/75 border border-black/[0.05] backdrop-blur-2xl p-12 rounded-[3.5rem] space-y-10 shadow-[0_30px_60px_rgba(0,0,0,0.12)] max-w-sm w-full relative z-10 overflow-hidden ring-1 ring-white/20">
-                                            {/* Decorative top highlight */}
-                                            <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-[#16A34A]/20 to-transparent" />
-                                            
+                                    {/* 6. GLASS COMMAND CONSOLE (Right) */}
+                                    <div className="hidden lg:flex justify-end">
+                                        <div className="bg-white/75 border border-black/[0.05] backdrop-blur-2xl p-12 rounded-[3.5rem] space-y-10 shadow-[0_30px_60px_rgba(0,0,0,0.1)] max-w-sm w-full relative z-10 overflow-hidden ring-1 ring-white/20">
+                                            {/* Top Accents */}
                                             <div className="space-y-3">
                                                 <span className="text-[11px] font-black text-[#16A34A] uppercase tracking-[0.5em] font-headline block">USED ACROSS</span>
                                                 <div className="w-16 h-0.5 bg-gradient-to-r from-[#16A34A] to-transparent rounded-full" />
                                             </div>
 
+                                            {/* Interactive Industry Engine */}
                                             <div className="space-y-1">
-                                                {INDUSTRIES.map((ind, i) => (
+                                                {INDUSTRIES.map((ind) => (
                                                     <div key={ind} className="group/industry cursor-default py-3 border-b border-black/[0.03] last:border-0">
-                                                        <div className="flex items-center gap-5 transition-all duration-300 group-hover/industry:translate-x-2">
-                                                            <div className="w-1.5 h-1.5 rounded-full bg-zinc-200 group-hover/industry:bg-[#16A34A] group-hover/industry:scale-125 transition-all duration-300" />
-                                                            <span className="text-xl font-black font-headline uppercase italic tracking-tight text-[#0F172A]/20 group-hover/industry:text-[#0F172A] transition-all duration-300">
+                                                        <div className="flex items-center justify-between transition-all duration-300 group-hover/industry:translate-x-2">
+                                                            <span className="text-xl font-black font-headline uppercase italic tracking-tight text-[#0F172A]/25 group-hover/industry:text-[#0F172A] transition-all duration-300">
                                                                 {ind}
                                                             </span>
+                                                            <div className="w-1.5 h-1.5 rounded-full bg-zinc-200 group-hover/industry:bg-[#16A34A] group-hover/industry:scale-125 transition-all duration-300" />
                                                         </div>
                                                     </div>
                                                 ))}
                                             </div>
 
+                                            {/* Terminal Metadata */}
                                             <div className="pt-6">
                                                 <span className="text-[9px] font-black text-black/25 uppercase tracking-[0.4em] italic leading-relaxed">
                                                     Single unit → multi-location scale
                                                 </span>
                                             </div>
                                         </div>
-                                        {/* Soft panel glow layer */}
-                                        <div className="absolute -inset-10 bg-green-500/[0.04] blur-[80px] rounded-full z-0" />
                                     </div>
                                 </div>
                             ) : (
                                 /* ORIGINAL ARCHETYPES 1-5 */
                                 <div className="space-y-12">
-                                    <div 
-                                        className="absolute -z-10 blur-[150px] opacity-20 pointer-events-none transition-colors duration-1000 rounded-full w-[600px] h-[600px]" 
-                                        style={{ backgroundColor: activeOriginal.accentColor, top: '20%', left: archetype === 3 ? '50%' : '10%', transform: archetype === 3 ? 'translateX(-50%)' : 'none' }} 
-                                    />
-
                                     <Badge variant="outline" className={cn(
                                         "w-fit text-[10px] font-black uppercase tracking-[0.5em] px-8 py-2 rounded-none",
                                         archetype === 1 ? "border-white/20 text-white/40 bg-white/5" : "border-zinc-300 text-zinc-400 bg-white shadow-sm"
@@ -322,7 +307,7 @@ export default function DesignLabPage() {
                                                         {activeOriginal.titleColor}
                                                     </span>
                                                 </h1>
-                                                <div className={cn("flex gap-8 items-start", archetype === 3 && "justify-center")}>
+                                                <div className="flex gap-8 items-start">
                                                     <div className="w-2 rounded-full h-16 shrink-0 transition-colors duration-1000" style={{ backgroundColor: activeOriginal.accentColor }} />
                                                     <p className={cn(
                                                         "text-xl md:text-3xl font-bold italic leading-[1.1] max-w-2xl",
@@ -335,7 +320,6 @@ export default function DesignLabPage() {
                                         </AnimatePresence>
                                     </div>
 
-                                    {/* Stationary Command Floor (Locked outside transition) */}
                                     <div className="w-full space-y-10 pt-12 relative z-30">
                                         <div className="flex flex-col md:flex-row items-start md:items-center gap-10">
                                             <Button asChild className="h-16 px-12 rounded-xl font-black uppercase italic text-sm tracking-widest shadow-2xl transition-all border-none group/btn text-black hover:scale-105 active:scale-95" style={{ backgroundColor: activeOriginal.accentColor }}>
@@ -347,15 +331,6 @@ export default function DesignLabPage() {
                                                 <span className={cn("text-[10px] font-black uppercase tracking-[0.4em]", archetype === 1 ? "text-white/20" : "text-zinc-400")}>SOVEREIGN_V11.9_MASTER</span>
                                                 <span className={cn("text-[11px] font-bold italic", archetype === 1 ? "text-white/40" : "text-zinc-500")}>Audit-Ready • No Subscriptions • Lifetime Access</span>
                                             </div>
-                                        </div>
-
-                                        <div className={cn("grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 md:gap-8 border-t pt-8", archetype === 1 ? "border-white/10" : "border-zinc-200/50")}>
-                                            {TECHNICAL_PILLARS.map((pillar, i) => (
-                                                <div key={pillar.t} className="flex items-center gap-2 group">
-                                                    <pillar.i className="w-3.5 h-3.5 shrink-0 opacity-40 transition-colors" style={{ color: activeOriginal.accentColor }} />
-                                                    <span className={cn("text-[9px] font-black uppercase tracking-[0.2em] italic whitespace-nowrap", archetype === 1 ? "text-white/30" : "text-zinc-400")}>{pillar.t}</span>
-                                                </div>
-                                            ))}
                                         </div>
                                     </div>
                                 </div>
