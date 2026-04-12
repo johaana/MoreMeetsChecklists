@@ -49,42 +49,42 @@ StaticVideo.displayName = 'StaticVideo';
 
 // --- SUB-COMPONENT: ABSOLUTE STATIONARY COMMAND FLOOR ---
 const FixedCommandFloor = ({ accentColor = "#00AE8D" }: { accentColor?: string }) => (
-    <div className="space-y-4 pt-4 relative z-30 border-t border-black/5">
+    <div className="space-y-3 pt-3 relative z-30 border-t border-black/5">
         {/* 1. Subtext - Stationary */}
-        <p className="text-sm md:text-base font-medium leading-relaxed text-[#0F172A]/70 italic max-w-md font-body">
+        <p className="text-xs md:text-sm font-medium leading-relaxed text-[#0F172A]/70 italic max-w-md font-body">
             {SUBTEXT}
         </p>
 
         {/* 2. Primary CTA Anchor - Stationary */}
-        <div className="space-y-4">
+        <div className="space-y-3">
             <div className="space-y-2">
                 <Button asChild size="lg" style={{ background: accentColor }} className={cn(
-                    "h-16 px-10 rounded-xl text-white font-black uppercase italic text-sm md:text-base tracking-widest transition-all border-none group/btn w-fit font-headline",
+                    "h-14 md:h-16 px-8 md:px-10 rounded-xl text-white font-black uppercase italic text-xs md:text-sm tracking-widest transition-all border-none group/btn w-fit font-headline",
                     "hover:brightness-110 hover:-translate-y-1 active:scale-95 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)]"
                 )}>
                     <a href="/library" className="flex items-center gap-3">
                         Deploy Your System → ₹999
-                        <ArrowRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-1.5" />
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1.5" />
                     </a>
                 </Button>
                 <div className="flex items-center gap-4 pl-2">
-                    <p className="text-[10px] font-black uppercase text-[#0F172A]/40 tracking-widest font-headline">
+                    <p className="text-[9px] font-black uppercase text-[#0F172A]/30 tracking-widest font-headline leading-none">
                         No SaaS • No monthly fees
                     </p>
                 </div>
             </div>
             
             {/* 3. Micro-Boosters - Stationary */}
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[9px] md:text-[10px] font-black uppercase tracking-[0.25em] text-[#0F172A]/50 font-headline">
-                <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5" style={{ color: accentColor }} /> EXCEL & SHEETS NATIVE</span>
-                <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5" style={{ color: accentColor }} /> NO SaaS LOCK-IN</span>
-                <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5" style={{ color: accentColor }} /> OWN FOREVER</span>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] text-[#0F172A]/40 font-headline">
+                <span className="flex items-center gap-1.5"><Check className="w-3 h-3" style={{ color: accentColor }} /> EXCEL & SHEETS NATIVE</span>
+                <span className="flex items-center gap-1.5"><Check className="w-3 h-3" style={{ color: accentColor }} /> NO SaaS LOCK-IN</span>
+                <span className="flex items-center gap-1.5"><Check className="w-3 h-3" style={{ color: accentColor }} /> OWN FOREVER</span>
             </div>
         </div>
 
         {/* 4. Sector Support - Stationary */}
         <div className="pt-2 border-t border-black/5 w-fit">
-            <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-[#0F172A]/30 italic font-headline">
+            <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] text-[#0F172A]/20 italic font-headline">
                 For hospitality, retail, healthcare, education & more
             </span>
         </div>
@@ -95,15 +95,15 @@ export default function DesignLabPage() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [archetypeId, setArchetypeId] = useState(1); 
 
-    // Rotation Engine: Optimized for 4s cycles
+    // Rotation Engine: Faster 3s cycles for higher energy
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % ROTATING_LINES.length);
-        }, 4000);
+        }, 3000);
         return () => clearInterval(interval);
     }, []);
 
-    // PREMIUM COLOR SYSTEM: Pigmented for Readability
+    // PREMIUM COLOR SYSTEM: Pigmented for Maximum Readability on Glass
     const archetypes = [
         { id: 1, label: "ASEGO TEAL", accent: "#00AE8D", textColor: "#008D74" },   
         { id: 2, label: "COBALT TECH", accent: "#2563EB", textColor: "#1D4ED8" },  
@@ -114,12 +114,12 @@ export default function DesignLabPage() {
 
     const currentArchetype = archetypes.find(a => a.id === archetypeId) || archetypes[0];
 
-    // Vertical Slide Transition: Tighter and more functional
+    // High-Performance Transition: Snap and Slide
     const transitionProps = {
-        initial: { opacity: 0, y: 15, filter: 'blur(4px)' },
-        animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
-        exit: { opacity: 0, y: -15, filter: 'blur(4px)' },
-        transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+        initial: { opacity: 0, y: 10, scale: 0.98 },
+        animate: { opacity: 1, y: 0, scale: 1 },
+        exit: { opacity: 0, y: -10, scale: 0.98 },
+        transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
     };
 
     return (
@@ -129,7 +129,7 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 {/* ARCHETYPE SELECTOR */}
                 <div className="fixed top-24 right-8 z-50 flex flex-col gap-2 p-2 bg-white/80 backdrop-blur-xl rounded-2xl border border-zinc-200 shadow-2xl">
-                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V109</span>
+                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V110</span>
                     {archetypes.map((arch) => (
                         <button 
                             key={arch.id} 
@@ -150,22 +150,22 @@ export default function DesignLabPage() {
                     <StaticVideo opacity={0.85} />
                     
                     <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center">
-                        {/* LEFT-ALIGNED GLASS COMMAND SLAB: Wider and Header-Safe */}
+                        {/* COMPRESSED GLASS COMMAND SLAB: Zero-clipping & Header-Safe */}
                         <div className={cn(
-                            "max-w-2xl w-full p-8 md:p-12 rounded-[3rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-8",
+                            "max-w-2xl w-full p-8 md:p-10 rounded-[3rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-8",
                             "bg-white/10 backdrop-blur-[45px] transition-all duration-700" 
                         )}>
                             {/* Rim Lighting Accent */}
                             <div className="absolute top-0 left-0 w-full h-1.5 opacity-40 transition-colors duration-1000" style={{ background: currentArchetype.accent }} />
                             
                             {/* Narrative Block - High Contrast Dynamic Text */}
-                            <div className="space-y-2 pb-6">
+                            <div className="space-y-1 pb-4">
                                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-black font-headline text-[#0F172A] leading-[1] tracking-tighter uppercase italic drop-shadow-sm">
                                     {STATIC_HEADLINE}
                                 </h1>
                                 
-                                {/* STABILIZED NARRATIVE CONTAINER */}
-                                <div className="h-[60px] md:h-[70px] flex items-center">
+                                {/* STABILIZED NARRATIVE CONTAINER - Zero Resizing Height */}
+                                <div className="h-[50px] md:h-[60px] flex items-center overflow-hidden">
                                     <AnimatePresence mode="wait">
                                         <motion.div 
                                             key={`${archetypeId}-${currentIndex}`} 
@@ -174,7 +174,7 @@ export default function DesignLabPage() {
                                         >
                                             <p 
                                                 style={{ color: currentArchetype.textColor }}
-                                                className="text-2xl md:text-3xl lg:text-4xl font-black italic tracking-tight leading-none uppercase transition-colors duration-1000 font-headline"
+                                                className="text-2xl md:text-3xl lg:text-4xl font-black italic tracking-tight leading-none uppercase font-headline"
                                             >
                                                 {ROTATING_LINES[currentIndex]}
                                             </p>
@@ -195,7 +195,7 @@ export default function DesignLabPage() {
                         <div className="flex items-center gap-4">
                             <div className="w-2 h-2 rounded-full animate-pulse shadow-[0_0_8px_rgba(0,0,0,0.1)] transition-colors duration-1000" style={{ background: currentArchetype.accent }} />
                             <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.6em] italic font-headline">
-                                SYSTEM_STATUS_V109_ONLINE
+                                SYSTEM_STATUS_V110_ONLINE
                             </span>
                         </div>
                         <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-zinc-300 font-headline">
