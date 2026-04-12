@@ -15,7 +15,7 @@ import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// --- CONFIGURATION: MINIMAL HIGH-CONVERSION NARRATIVE (V100.0) ---
+// --- CONFIGURATION: MINIMAL HIGH-CONVERSION NARRATIVE (V101.0) ---
 const STATIC_HEADLINE = "Run Operations Without Follow-Ups.";
 
 const ROTATING_LINES = [
@@ -30,7 +30,7 @@ const SUBTEXT = "A ready system to manage daily tasks across your team — with 
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 // --- COMPONENT: HARDWARE-ACCELERATED SMOOTH VIDEO ---
-const StaticVideo = React.memo(({ opacity = 0.8 }: { opacity?: number }) => (
+const StaticVideo = React.memo(({ opacity = 0.85 }: { opacity?: number }) => (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-white" style={{ transform: 'translate3d(0,0,0)' }}>
         <video 
             src={VIDEO_URL} 
@@ -42,7 +42,8 @@ const StaticVideo = React.memo(({ opacity = 0.8 }: { opacity?: number }) => (
             className="w-full h-full object-cover will-change-transform" 
             style={{ opacity, transform: 'translate3d(0,0,0)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-transparent to-transparent z-10" />
+        {/* Subtle vignette to ensure text pop on edges */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-transparent z-10" />
     </div>
 ));
 StaticVideo.displayName = 'StaticVideo';
@@ -76,7 +77,7 @@ const FixedCommandFloor = ({ accentColor = "#00AE8D" }: { accentColor?: string }
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[9px] md:text-[10px] font-black uppercase tracking-[0.25em] text-[#0F172A]/50">
                 <span className="flex items-center gap-2"><Check className="w-3 h-3" style={{ color: accentColor }} /> Works on Excel & Sheets</span>
                 <span className="flex items-center gap-2"><Check className="w-3 h-3" style={{ color: accentColor }} /> No SaaS</span>
-                <span className="flex items-center gap-2"><Check className="w-3 h-3" style={{ color: accentColor }} /> Own Forever</span>
+                <span className="flex items-center gap-2"><Check className="Check w-3 h-3" style={{ color: accentColor }} /> Own Forever</span>
             </div>
         </div>
 
@@ -122,7 +123,7 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 {/* ARCHETYPE SELECTOR */}
                 <div className="fixed top-24 right-8 z-50 flex flex-col gap-2 p-2 bg-white/80 backdrop-blur-xl rounded-2xl border border-zinc-200 shadow-2xl">
-                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">SOVEREIGN V100</span>
+                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">SOVEREIGN V101</span>
                     {archetypes.map((arch) => (
                         <button 
                             key={arch.id} 
@@ -139,13 +140,16 @@ export default function DesignLabPage() {
 
                 {/* --- HERO SECTION --- */}
                 <section className="relative w-full h-screen flex items-center overflow-hidden">
-                    {/* Crystal Clear Video Backdrop */}
+                    {/* Crystal Clear Cinematic Video Backdrop (85% Opacity) */}
                     <StaticVideo opacity={0.85} />
                     
                     <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center">
-                        {/* LEFT-ALIGNED HEADER-SAFE GLASS COMMAND SLAB */}
+                        {/* 
+                            LEFT-ALIGNED COMPACT GLASS COMMAND SLAB 
+                            Reduced padding and added translate-y-12 to avoid header overlap.
+                        */}
                         <div className={cn(
-                            "max-w-2xl w-full p-8 md:p-12 rounded-[2.5rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-6",
+                            "max-w-xl w-full p-8 md:p-10 rounded-[2.5rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-12",
                             "bg-white/10 backdrop-blur-[40px]" 
                         )}>
                             {/* Rim Lighting Accent */}
@@ -153,7 +157,7 @@ export default function DesignLabPage() {
                             
                             {/* Narrative Sky - The only part that moves */}
                             <div className="space-y-4">
-                                <h1 className="text-4xl md:text-6xl font-black font-headline text-[#0F172A] leading-[1] tracking-tighter uppercase italic drop-shadow-sm">
+                                <h1 className="text-4xl md:text-5xl font-black font-headline text-[#0F172A] leading-[1] tracking-tighter uppercase italic drop-shadow-sm">
                                     {STATIC_HEADLINE}
                                 </h1>
                                 <div className="min-h-[40px] flex items-center">
@@ -182,7 +186,7 @@ export default function DesignLabPage() {
                         <div className="flex items-center gap-4">
                             <div className="w-2 h-2 rounded-full animate-pulse shadow-[0_0_8px_rgba(0,0,0,0.1)]" style={{ background: archetypes.find(a => a.id === archetype)?.accent }} />
                             <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.6em] italic font-headline">
-                                SYSTEM_STATUS_V100_ONLINE
+                                SYSTEM_STATUS_V101_ONLINE
                             </span>
                         </div>
                         <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-zinc-300">
