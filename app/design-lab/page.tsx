@@ -71,7 +71,7 @@ const StaticVideo = React.memo(({ opacity = 0.6 }: { opacity?: number }) => (
             muted 
             playsInline 
             preload="auto"
-            className="w-full h-full object-cover will-change-transform"
+            className="w-full h-full object-cover bill-change-transform"
             style={{ opacity, transform: 'translate3d(0,0,0)', filter: 'grayscale(0.2)' }}
         />
     </div>
