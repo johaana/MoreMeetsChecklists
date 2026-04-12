@@ -1,25 +1,15 @@
 
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
     ArrowRight, 
-    ShieldCheck,
-    FileSpreadsheet,
-    Zap,
-    Activity,
-    GraduationCap,
-    AlertTriangle,
     Check,
-    Clock,
-    Lock,
-    Smartphone,
-    SearchCheck,
     ChevronRight,
-    LayoutGrid,
-    Target
+    SearchCheck,
+    Lock
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -70,17 +60,18 @@ const StaticVideo = React.memo(({ opacity = 1, blur = 0, variant = 1 }: { opacit
             style={{ opacity, filter: `blur(${blur}px)`, transform: 'translate3d(0,0,0)' }}
         />
         {/* Layered Overlay System */}
-        {variant === 5 && (
-            <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/95 to-transparent z-10" />
-        )}
         {variant === 2 && (
             <div className="absolute inset-0 bg-black/40 z-10" />
+        )}
+        {variant === 5 && (
+            <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/90 to-transparent z-10" />
         )}
     </div>
 ));
 StaticVideo.displayName = 'StaticVideo';
 
 // --- SUB-COMPONENT: STATIONARY COMMAND FLOOR ---
+// Physically decoupled from narrative to prevent any shift during transitions
 const CommandFloor = ({ variant }: { variant: number }) => (
     <div className="space-y-8 pt-8">
         <div className="space-y-4">
@@ -162,24 +153,26 @@ export default function DesignLabPage() {
                     ))}
                 </div>
 
-                {/* --- ARCHETYPE 01: THE STRATEGIC SPLIT --- */}
+                {/* --- ARCHETYPE 01: THE INSTITUTIONAL SPLIT --- */}
                 {archetype === 1 && (
                     <section className="relative w-full h-screen flex overflow-hidden bg-white">
-                        <div className="w-[45%] h-full flex flex-col justify-center px-12 md:px-24 z-20">
-                            <div className="max-w-xl space-y-6">
-                                <h1 className="text-4xl md:text-6xl font-black font-headline text-[#0F172A] leading-[1.02] tracking-tighter uppercase italic">
-                                    {STATIC_HEADLINE}
-                                </h1>
-                                <div className="min-h-[50px]">
-                                    <AnimatePresence mode="wait">
-                                        <motion.p key={currentIndex} {...transitionProps} className="text-2xl md:text-4xl font-black text-[#16A34A] italic tracking-tight leading-none">
-                                            {activeLine}
-                                        </motion.p>
-                                    </AnimatePresence>
+                        <div className="w-[45%] h-full flex flex-col pt-32 px-12 md:px-24 z-20 overflow-y-auto no-scrollbar">
+                            <div className="max-w-xl space-y-8">
+                                <div className="space-y-4">
+                                    <h1 className="text-4xl md:text-6xl font-black font-headline text-[#0F172A] leading-[1.1] tracking-tighter uppercase italic">
+                                        {STATIC_HEADLINE}
+                                    </h1>
+                                    <div className="min-h-[60px]">
+                                        <AnimatePresence mode="wait">
+                                            <motion.p key={currentIndex} {...transitionProps} className="text-2xl md:text-4xl font-black text-[#16A34A] italic tracking-tight leading-none">
+                                                {activeLine}
+                                            </motion.p>
+                                        </AnimatePresence>
+                                    </div>
+                                    <p className="text-lg text-[#475569] font-medium leading-relaxed italic border-l-2 border-[#16A34A]/20 pl-6">
+                                        {SUBTEXT}
+                                    </p>
                                 </div>
-                                <p className="text-lg text-[#475569] font-medium leading-relaxed italic border-l-2 border-[#16A34A]/20 pl-6">
-                                    {SUBTEXT}
-                                </p>
                                 <CommandFloor variant={1} />
                             </div>
                         </div>
@@ -195,19 +188,21 @@ export default function DesignLabPage() {
                         <StaticVideo opacity={0.7} variant={2} />
                         <div className="container px-6 md:px-24 relative z-20 mx-auto">
                             <div className="bg-black/40 backdrop-blur-3xl border border-white/10 p-12 md:p-20 rounded-[3.5rem] max-w-3xl space-y-8 shadow-2xl">
-                                <h1 className="text-4xl md:text-7xl font-black font-headline text-white leading-[1.02] tracking-tighter uppercase italic">
-                                    {STATIC_HEADLINE}
-                                </h1>
-                                <div className="min-h-[50px]">
-                                    <AnimatePresence mode="wait">
-                                        <motion.p key={currentIndex} {...transitionProps} className="text-2xl md:text-4xl font-black text-[#22C55E] italic tracking-tight leading-none">
-                                            {activeLine}
-                                        </motion.p>
-                                    </AnimatePresence>
+                                <div className="space-y-4">
+                                    <h1 className="text-4xl md:text-7xl font-black font-headline text-white leading-[1.1] tracking-tighter uppercase italic">
+                                        {STATIC_HEADLINE}
+                                    </h1>
+                                    <div className="min-h-[60px]">
+                                        <AnimatePresence mode="wait">
+                                            <motion.p key={currentIndex} {...transitionProps} className="text-2xl md:text-4xl font-black text-[#22C55E] italic tracking-tight leading-none">
+                                                {activeLine}
+                                            </motion.p>
+                                        </AnimatePresence>
+                                    </div>
+                                    <p className="text-lg text-white/60 font-medium leading-relaxed italic">
+                                        {SUBTEXT}
+                                    </p>
                                 </div>
-                                <p className="text-lg text-white/60 font-medium leading-relaxed italic">
-                                    {SUBTEXT}
-                                </p>
                                 <CommandFloor variant={2} />
                             </div>
                         </div>
@@ -217,29 +212,29 @@ export default function DesignLabPage() {
                 {/* --- ARCHETYPE 03: THE BOARDROOM MINIMALIST --- */}
                 {archetype === 3 && (
                     <section className="relative w-full h-screen flex flex-col overflow-hidden bg-[#F8FAFC]">
-                        <div className="flex-1 flex flex-col justify-center items-center text-center px-6 z-20">
+                        <div className="flex-1 flex flex-col pt-40 items-center text-center px-6 z-20">
                             <div className="max-w-4xl space-y-10">
-                                <div className="space-y-4">
-                                    <h1 className="text-5xl md:text-8xl font-black font-headline text-[#0F172A] leading-[0.9] tracking-tighter uppercase italic">
+                                <div className="space-y-6">
+                                    <h1 className="text-5xl md:text-8xl font-black font-headline text-[#0F172A] leading-[1] tracking-tighter uppercase italic">
                                         {STATIC_HEADLINE}
                                     </h1>
-                                    <div className="min-h-[60px] flex justify-center">
+                                    <div className="min-h-[70px] flex justify-center">
                                         <AnimatePresence mode="wait">
                                             <motion.p key={currentIndex} {...transitionProps} className="text-2xl md:text-5xl font-black text-[#16A34A] italic tracking-tight leading-none">
                                                 {activeLine}
                                             </motion.p>
                                         </AnimatePresence>
                                     </div>
+                                    <p className="text-xl md:text-2xl text-[#475569] font-medium leading-relaxed italic max-w-2xl mx-auto">
+                                        {SUBTEXT}
+                                    </p>
                                 </div>
-                                <p className="text-xl md:text-2xl text-[#475569] font-medium leading-relaxed italic max-w-2xl mx-auto">
-                                    {SUBTEXT}
-                                </p>
                                 <div className="flex justify-center">
                                     <CommandFloor variant={3} />
                                 </div>
                             </div>
                         </div>
-                        <div className="h-[25vh] w-full relative border-t border-black/5">
+                        <div className="h-[20vh] w-full relative border-t border-black/5">
                             <StaticVideo opacity={0.4} blur={2} variant={3} />
                         </div>
                     </section>
@@ -248,38 +243,33 @@ export default function DesignLabPage() {
                 {/* --- ARCHETYPE 04: THE TECHNICAL BLUEPRINT --- */}
                 {archetype === 4 && (
                     <section className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden bg-[#F8FAFC]">
-                        {/* Background Grid Texture */}
                         <div className="absolute inset-0 bg-[linear-gradient(to_right,#888_1px,transparent_1px),linear-gradient(to_bottom,#888_1px,transparent_1px)] bg-[size:40px_40px] opacity-[0.03]" />
                         <StaticVideo opacity={0.1} blur={10} variant={4} />
                         
                         <div className="relative z-20 container px-6 md:px-24 mx-auto grid lg:grid-cols-2 gap-20 items-center">
-                            <div className="space-y-8">
-                                <div className="space-y-4">
+                            <div className="space-y-10">
+                                <div className="space-y-6">
                                     <Badge variant="outline" className="border-[#16A34A]/30 text-[#16A34A] uppercase tracking-[0.4em] font-black text-[10px] px-6 py-1.5 rounded-none">SOVEREIGN V11.9</Badge>
-                                    <h1 className="text-5xl md:text-7xl font-black font-headline text-[#0F172A] leading-[1] tracking-tighter uppercase italic">
+                                    <h1 className="text-5xl md:text-7xl font-black font-headline text-[#0F172A] leading-[1.1] tracking-tighter uppercase italic">
                                         {STATIC_HEADLINE}
                                     </h1>
-                                    <div className="min-h-[50px]">
+                                    <div className="min-h-[60px]">
                                         <AnimatePresence mode="wait">
                                             <motion.p key={currentIndex} {...transitionProps} className="text-2xl md:text-4xl font-black text-[#16A34A] italic tracking-tight leading-none">
                                                 {activeLine}
                                             </motion.p>
                                         </AnimatePresence>
                                     </div>
+                                    <p className="text-lg text-[#475569] font-medium leading-relaxed italic border-l-4 border-[#16A34A] pl-8">
+                                        {SUBTEXT}
+                                    </p>
                                 </div>
-                                <p className="text-lg text-[#475569] font-medium leading-relaxed italic border-l-4 border-[#16A34A] pl-8">
-                                    {SUBTEXT}
-                                </p>
                                 <CommandFloor variant={4} />
                             </div>
                             <div className="hidden lg:block">
                                 <div className="relative aspect-video rounded-[2.5rem] overflow-hidden border border-black/5 shadow-2xl">
                                     <StaticVideo opacity={1} variant={1} />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                                    <div className="absolute bottom-8 left-8 flex items-center gap-3">
-                                        <div className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse" />
-                                        <span className="text-[10px] font-black text-white uppercase tracking-[0.4em]">LIVE_SIGNAL_ACTIVE</span>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -294,7 +284,7 @@ export default function DesignLabPage() {
                         <div className="relative z-20 container px-6 md:px-24 mx-auto grid lg:grid-cols-[1.2fr,1fr] gap-24 items-center">
                             <div className="space-y-12">
                                 <div className="space-y-6">
-                                    <h1 className="text-5xl md:text-7xl font-black font-headline text-[#0F172A] leading-[1.02] tracking-tighter uppercase italic">
+                                    <h1 className="text-5xl md:text-7xl font-black font-headline text-[#0F172A] leading-[1.1] tracking-tighter uppercase italic">
                                         {STATIC_HEADLINE}
                                     </h1>
                                     <div className="min-h-[60px]">
@@ -314,9 +304,8 @@ export default function DesignLabPage() {
                                 <CommandFloor variant={5} />
                             </div>
 
-                            {/* GLASS COMMAND CONSOLE */}
                             <div className="hidden lg:flex justify-end">
-                                <div className="bg-white/75 border border-black/[0.05] backdrop-blur-2xl p-12 rounded-[3.5rem] space-y-10 shadow-[0_30px_60px_rgba(0,0,0,0.1)] max-w-sm w-full relative z-10 overflow-hidden ring-1 ring-white/20">
+                                <div className="bg-white/75 border border-black/[0.05] backdrop-blur-2xl p-12 rounded-[3.5rem] space-y-10 shadow-[0_30px_60px_rgba(0,0,0,0.1)] max-w-sm w-full relative z-10 overflow-hidden">
                                     <div className="space-y-3">
                                         <span className="text-[11px] font-black text-[#16A34A] uppercase tracking-[0.5em] font-headline block">USED ACROSS</span>
                                         <div className="w-16 h-0.5 bg-gradient-to-r from-[#16A34A] to-transparent rounded-full" />
@@ -332,11 +321,6 @@ export default function DesignLabPage() {
                                                 </div>
                                             </div>
                                         ))}
-                                    </div>
-                                    <div className="pt-6">
-                                        <span className="text-[9px] font-black text-black/25 uppercase tracking-[0.4em] italic leading-relaxed">
-                                            Single unit → multi-location scale
-                                        </span>
                                     </div>
                                 </div>
                             </div>
