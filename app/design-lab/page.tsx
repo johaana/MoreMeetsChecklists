@@ -47,7 +47,7 @@ const ROTATING_NARATIVES = [
         titleWhite: "CHAOS IS",
         titleColor: "EXPENSIVE.",
         subtitle: "Stop the daily stress. Make your business run itself. No more management gaps.",
-        accentColor: "#107c10", // Emerald
+        accentColor: "#10b981", // Emerald
     },
     {
         badge: "SOVEREIGN ENGINE",
@@ -60,6 +60,7 @@ const ROTATING_NARATIVES = [
 
 /**
  * STATIONARY SECTOR NAVIGATOR
+ * High-end Glassmorphism Dock
  */
 const SectorNavigator = () => {
     const sectorPoints = [
@@ -73,11 +74,11 @@ const SectorNavigator = () => {
     ];
 
     return (
-        <div className="bg-white/95 backdrop-blur-md border-y border-zinc-200 p-2 md:p-4 flex flex-col md:flex-row items-center gap-4 md:gap-6 shadow-2xl relative z-10">
-            <div className="flex-1 grid grid-cols-2 md:grid-cols-7 gap-2 md:gap-3 w-full px-4 md:px-6 h-full py-2">
+        <div className="bg-white/80 backdrop-blur-xl border-y border-zinc-200/50 p-2 md:p-4 flex flex-col md:flex-row items-center gap-4 md:gap-6 shadow-2xl relative z-10">
+            <div className="flex-1 grid grid-cols-2 md:grid-cols-7 gap-2 md:gap-3 w-full px-4 md:px-12 h-full py-2">
                 {sectorPoints.map((item, i) => (
                     <Link key={i} href={item.href} className="group/item">
-                        <div className="flex flex-col gap-1 md:gap-1.5 pl-3 md:pl-4 first:border-0 h-full justify-center border-l border-zinc-100 transition-all overflow-hidden">
+                        <div className="flex flex-col gap-1 md:gap-1.5 pl-3 md:pl-4 first:border-0 h-full justify-center border-l border-zinc-200/50 transition-all overflow-hidden">
                             <span className="text-[6px] md:text-[8px] font-black uppercase tracking-[0.3em] text-zinc-400 whitespace-nowrap leading-none">{item.label}</span>
                             <div className="flex items-center gap-2 overflow-hidden mt-0.5">
                                 <item.icon className="w-3 md:w-4 h-3 md:h-4 shrink-0 text-primary transition-transform group-hover/item:scale-110" />
@@ -100,7 +101,7 @@ const SectorNavigator = () => {
  * STATIONARY VALUE STRIP
  */
 const ValueStrip = () => (
-    <div className="w-full flex items-center justify-center gap-4 md:gap-12 py-4 px-4 bg-zinc-900 shadow-2xl">
+    <div className="w-full flex items-center justify-center gap-4 md:gap-16 py-4 px-4 bg-zinc-950 shadow-2xl relative z-10">
         {[
             { t: "120+ PRE-BUILT SOPs", i: ClipboardCheck },
             { t: "NO SaaS LOCK-IN", i: Lock },
@@ -108,8 +109,8 @@ const ValueStrip = () => (
             { t: "CONSEQUENCES DEFINED", i: AlertTriangle }
         ].map((item, i) => (
             <div key={i} className="flex items-center gap-1.5 md:gap-3 shrink-0">
-                <item.i className="w-3 md:w-4 h-3 md:h-4 text-zinc-500" />
-                <span className="text-[7.5px] md:text-[9px] font-black uppercase tracking-[0.2em] text-zinc-400 italic whitespace-nowrap">
+                <item.i className="w-3 md:w-4 h-3 md:h-4 text-primary/40" />
+                <span className="text-[7px] md:text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 italic whitespace-nowrap">
                     {item.t}
                 </span>
             </div>
@@ -117,7 +118,7 @@ const ValueStrip = () => (
     </div>
 );
 
-export default function BestRotatingPage() {
+export default function ProDesignerSovereignPage() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -130,22 +131,23 @@ export default function BestRotatingPage() {
     const active = ROTATING_NARATIVES[currentIndex];
 
     return (
-        <div className="flex flex-col min-h-screen bg-zinc-100 selection:bg-primary/20">
+        <div className="flex flex-col min-h-screen bg-zinc-100 selection:bg-primary/20 overflow-hidden">
             <SiteHeader />
 
             <main className="flex-1">
                 <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden bg-zinc-100 border-b border-zinc-200">
-                    {/* Cinematic Backdrop - Optimized clarity */}
-                    <div className="absolute inset-0 z-0">
+                    
+                    {/* Cinematic Backdrop - Vivid Clarity Architecture */}
+                    <div className="absolute inset-0 z-0 will-change-transform">
                         <video 
                             src={VIDEO_URL} 
                             autoPlay 
                             loop 
                             muted 
                             playsInline 
-                            className="w-full h-full object-cover grayscale-[0.2] opacity-40" 
+                            className="w-full h-full object-cover grayscale-[0.1] opacity-50" 
                         />
-                        {/* Improved Daylight Gradient Mask: Clearer on the right */}
+                        {/* Elite Gradient Mask: Left is solid for surgery, Right is clear for depth */}
                         <div className="absolute inset-0 bg-gradient-to-r from-zinc-100 via-zinc-100/80 to-transparent pointer-events-none z-10" />
                     </div>
 
@@ -154,9 +156,9 @@ export default function BestRotatingPage() {
                         <AnimatePresence mode="wait">
                             <motion.div 
                                 key={currentIndex}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
+                                initial={{ opacity: 0, x: -20, filter: 'blur(10px)' }}
+                                animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                                exit={{ opacity: 0, x: 20, filter: 'blur(10px)' }}
                                 transition={{ duration: 0.8, ease: "circOut" }}
                                 className="max-w-6xl space-y-8 md:space-y-12"
                             >
@@ -165,13 +167,13 @@ export default function BestRotatingPage() {
                                 </Badge>
                                 
                                 <div className="relative group">
-                                    {/* Dynamic Rim Lighting */}
+                                    {/* Surgical Rim Lighting - High-End Soft Glow */}
                                     <div 
-                                        className="absolute -inset-20 blur-[120px] opacity-20 pointer-events-none transition-all duration-1000" 
+                                        className="absolute -inset-40 blur-[150px] opacity-25 pointer-events-none transition-all duration-1000" 
                                         style={{ background: `radial-gradient(circle, ${active.accentColor} 0%, transparent 70%)` }} 
                                     />
                                     
-                                    <h1 className="text-5xl md:text-[8.5rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic text-zinc-950 relative z-10 drop-shadow-xl">
+                                    <h1 className="text-5xl md:text-[8.5rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic text-zinc-950 relative z-10 drop-shadow-[0_10px_30px_rgba(0,0,0,0.15)]">
                                         {active.titleWhite} <br/> 
                                         <span style={{ color: active.accentColor }} className="transition-colors duration-1000">
                                             {active.titleColor}
@@ -196,14 +198,14 @@ export default function BestRotatingPage() {
                     {/* STATIONARY FOUNDATION LAYER (The Command Docks) */}
                     <div className="relative z-30 w-full">
                         <div className="max-w-7xl mx-auto flex justify-between items-end px-12 pb-4">
-                            <div className="flex items-center gap-4 bg-white/60 backdrop-blur-sm px-5 py-2 rounded-full border border-zinc-200 shadow-sm">
-                                <div className="w-2 h-2 rounded-full animate-pulse bg-primary" />
+                            <div className="flex items-center gap-4 bg-white/80 backdrop-blur-md px-6 py-2.5 rounded-full border border-zinc-200/50 shadow-sm">
+                                <div className="w-2 h-2 rounded-full animate-pulse transition-colors duration-1000" style={{ backgroundColor: active.accentColor }} />
                                 <span className="text-[10px] md:text-[11px] font-black text-zinc-600 uppercase tracking-[0.5em] italic font-headline">
                                     LOOK WHAT'S IN FOR YOUR BUSINESS
                                 </span>
                             </div>
-                            <span className="hidden md:block text-[9px] font-mono text-zinc-400 uppercase tracking-widest">
-                                SOVEREIGN_SYSTEM_V65.0_STABLE
+                            <span className="hidden md:block text-[9px] font-mono text-zinc-400 uppercase tracking-widest opacity-50">
+                                SOVEREIGN_V66.0_STABLE
                             </span>
                         </div>
                         
