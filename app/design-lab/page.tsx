@@ -41,14 +41,14 @@ const StaticVideo = React.memo(({ opacity = 0.85 }: { opacity?: number }) => (
             className="w-full h-full object-cover will-change-transform" 
             style={{ opacity, transform: 'translate3d(0,0,0)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-transparent to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/10 to-transparent z-10" />
     </div>
 ));
 StaticVideo.displayName = 'StaticVideo';
 
 // --- SUB-COMPONENT: ABSOLUTE STATIONARY COMMAND FLOOR ---
 const FixedCommandFloor = ({ accentColor = "#00AE8D" }: { accentColor?: string }) => (
-    <div className="space-y-5 pt-2 relative z-30">
+    <div className="space-y-4 pt-4 relative z-30">
         {/* 1. Subtext - Stationary */}
         <p className="text-base md:text-lg font-medium leading-relaxed text-[#0F172A]/80 italic max-w-md">
             {SUBTEXT}
@@ -56,7 +56,7 @@ const FixedCommandFloor = ({ accentColor = "#00AE8D" }: { accentColor?: string }
 
         {/* 2. Primary CTA Anchor - Stationary */}
         <div className="space-y-4">
-            <div className="space-y-3">
+            <div className="space-y-2">
                 <Button asChild size="lg" style={{ background: accentColor }} className={cn(
                     "h-16 px-10 rounded-xl text-white font-black uppercase italic text-sm md:text-base tracking-widest transition-all border-none group/btn w-fit",
                     "hover:brightness-110 hover:-translate-y-1 active:scale-95 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)]"
@@ -80,7 +80,7 @@ const FixedCommandFloor = ({ accentColor = "#00AE8D" }: { accentColor?: string }
         </div>
 
         {/* 4. Sector Support - Stationary */}
-        <div className="pt-5 border-t border-black/5 w-fit">
+        <div className="pt-4 border-t border-black/5 w-fit">
             <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-[#0F172A]/30 italic">
                 For hospitality, retail, healthcare, education & more
             </span>
@@ -99,21 +99,21 @@ export default function DesignLabPage() {
         return () => clearInterval(interval);
     }, []);
 
-    // NEW BRIGHT PREMIUM COLORS (High contrast vs white glass)
+    // PREMIUM COLOR SYSTEM: Saturated & Authoritative
     const archetypes = [
         { id: 1, label: "ASEGO TEAL", accent: "#00AE8D" },   
         { id: 2, label: "COBALT TECH", accent: "#2563EB" },  
-        { id: 3, label: "VIVID ROSE", accent: "#F43F5E" },    
-        { id: 4, label: "MODERN VIOLET", accent: "#8B5CF6" }, 
-        { id: 5, label: "SUN AMBER", accent: "#F59E0B" }    
+        { id: 3, label: "VIVID MAGENTA", accent: "#D946EF" },    
+        { id: 4, label: "ELECTRIC CYAN", accent: "#06B6D4" }, 
+        { id: 5, label: "ROYAL INDIGO", accent: "#4F46E5" }    
     ];
 
     const currentArchetype = archetypes.find(a => a.id === archetypeId) || archetypes[0];
 
     const transitionProps = {
-        initial: { opacity: 0, y: 8, filter: 'blur(4px)' },
-        animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
-        exit: { opacity: 0, y: -8, filter: 'blur(4px)' },
+        initial: { opacity: 0, x: -10, filter: 'blur(4px)' },
+        animate: { opacity: 1, x: 0, filter: 'blur(0px)' },
+        exit: { opacity: 0, x: 10, filter: 'blur(4px)' },
         transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
     };
 
@@ -124,7 +124,7 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 {/* ARCHETYPE SELECTOR */}
                 <div className="fixed top-24 right-8 z-50 flex flex-col gap-2 p-2 bg-white/80 backdrop-blur-xl rounded-2xl border border-zinc-200 shadow-2xl">
-                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V105</span>
+                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V106</span>
                     {archetypes.map((arch) => (
                         <button 
                             key={arch.id} 
@@ -147,32 +147,36 @@ export default function DesignLabPage() {
                     <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center">
                         {/* LEFT-ALIGNED GLASS COMMAND SLAB */}
                         <div className={cn(
-                            "max-w-xl w-full p-8 md:p-10 rounded-[2.5rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-16",
-                            "bg-white/10 backdrop-blur-[40px] transition-all duration-700" 
+                            "max-w-xl w-full p-8 md:p-10 rounded-[2.5rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-20",
+                            "bg-white/10 backdrop-blur-[45px] transition-all duration-700" 
                         )}>
                             {/* Rim Lighting Accent */}
                             <div className="absolute top-0 left-0 w-full h-1 opacity-40 transition-colors duration-1000" style={{ background: currentArchetype.accent }} />
                             
                             {/* Narrative Block - High Contrast Dynamic Text */}
-                            <div className="space-y-2">
+                            <div className="space-y-1">
                                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-black font-headline text-[#0F172A] leading-[1.1] tracking-tighter uppercase italic drop-shadow-sm">
                                     {STATIC_HEADLINE}
                                 </h1>
                                 
                                 {/* 
-                                    FIXED HEIGHT CONTAINER 
-                                    This prevents the entire glass frame from changing size during rotation
+                                    STABILIZED CONTAINER 
+                                    Height increased to h-[80px] to prevent clipping when text wraps on mobile/tablet.
                                 */}
-                                <div className="h-[44px] flex items-center overflow-hidden">
+                                <div className="h-[80px] md:h-[90px] flex items-center">
                                     <AnimatePresence mode="wait">
-                                        <motion.p 
+                                        <motion.div 
                                             key={`${archetypeId}-${currentIndex}`} 
                                             {...transitionProps} 
-                                            style={{ color: currentArchetype.accent }}
-                                            className="text-xl md:text-2xl lg:text-3xl font-black italic tracking-tight leading-none uppercase transition-colors duration-1000"
+                                            className="w-full"
                                         >
-                                            {ROTATING_LINES[currentIndex]}
-                                        </motion.p>
+                                            <p 
+                                                style={{ color: currentArchetype.accent }}
+                                                className="text-xl md:text-2xl lg:text-3xl font-black italic tracking-tight leading-[1.1] uppercase transition-colors duration-1000"
+                                            >
+                                                {ROTATING_LINES[currentIndex]}
+                                            </p>
+                                        </motion.div>
                                     </AnimatePresence>
                                 </div>
                             </div>
@@ -189,7 +193,7 @@ export default function DesignLabPage() {
                         <div className="flex items-center gap-4">
                             <div className="w-2 h-2 rounded-full animate-pulse shadow-[0_0_8px_rgba(0,0,0,0.1)] transition-colors duration-1000" style={{ background: currentArchetype.accent }} />
                             <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.6em] italic font-headline">
-                                SYSTEM_STATUS_V105_ONLINE
+                                SYSTEM_STATUS_V106_ONLINE
                             </span>
                         </div>
                         <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-zinc-300">
