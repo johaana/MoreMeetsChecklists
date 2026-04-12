@@ -61,7 +61,7 @@ const ROTATING_NARATIVES = [
 /**
  * STATIONARY SECTOR NAVIGATOR
  */
-const SectorNavigator = ({ accentColor }: { accentColor: string }) => {
+const SectorNavigator = () => {
     const sectorPoints = [
         { label: "HOSPITALITY", val: "RESTAURANTS", icon: Utensils, href: "/packs/restaurants" },
         { label: "HOSPITALITY", val: "HOTELS & RESORTS", icon: Building, href: "/packs/hotels_and_resorts" },
@@ -80,7 +80,7 @@ const SectorNavigator = ({ accentColor }: { accentColor: string }) => {
                         <div className="flex flex-col gap-1 md:gap-1.5 pl-3 md:pl-4 first:border-0 h-full justify-center border-l border-zinc-100 transition-all overflow-hidden">
                             <span className="text-[6px] md:text-[8px] font-black uppercase tracking-[0.3em] text-zinc-400 whitespace-nowrap leading-none">{item.label}</span>
                             <div className="flex items-center gap-2 overflow-hidden mt-0.5">
-                                <item.icon className="w-3 md:w-4 h-3 md:h-4 shrink-0 transition-transform group-hover/item:scale-110" style={{ color: accentColor }} />
+                                <item.icon className="w-3 md:w-4 h-3 md:h-4 shrink-0 text-primary transition-transform group-hover/item:scale-110" />
                                 <span className="text-[8px] md:text-[10px] font-black uppercase italic whitespace-nowrap leading-none text-zinc-900 group-hover/item:text-primary transition-colors">{item.val}</span>
                             </div>
                         </div>
@@ -135,10 +135,17 @@ export default function BestRotatingPage() {
 
             <main className="flex-1">
                 <section className="relative w-full h-[100dvh] flex flex-col overflow-hidden bg-zinc-100 border-b border-zinc-200">
-                    {/* Cinematic Backdrop */}
+                    {/* Cinematic Backdrop - Optimized clarity */}
                     <div className="absolute inset-0 z-0">
-                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover grayscale-[0.2] opacity-40" />
-                        {/* Daylight Gradient Mask */}
+                        <video 
+                            src={VIDEO_URL} 
+                            autoPlay 
+                            loop 
+                            muted 
+                            playsInline 
+                            className="w-full h-full object-cover grayscale-[0.2] opacity-40" 
+                        />
+                        {/* Improved Daylight Gradient Mask: Clearer on the right */}
                         <div className="absolute inset-0 bg-gradient-to-r from-zinc-100 via-zinc-100/80 to-transparent pointer-events-none z-10" />
                     </div>
 
@@ -190,21 +197,18 @@ export default function BestRotatingPage() {
                     <div className="relative z-30 w-full">
                         <div className="max-w-7xl mx-auto flex justify-between items-end px-12 pb-4">
                             <div className="flex items-center gap-4 bg-white/60 backdrop-blur-sm px-5 py-2 rounded-full border border-zinc-200 shadow-sm">
-                                <div 
-                                    className="w-2 h-2 rounded-full animate-pulse transition-colors duration-1000" 
-                                    style={{ backgroundColor: active.accentColor }} 
-                                />
+                                <div className="w-2 h-2 rounded-full animate-pulse bg-primary" />
                                 <span className="text-[10px] md:text-[11px] font-black text-zinc-600 uppercase tracking-[0.5em] italic font-headline">
                                     LOOK WHAT'S IN FOR YOUR BUSINESS
                                 </span>
                             </div>
                             <span className="hidden md:block text-[9px] font-mono text-zinc-400 uppercase tracking-widest">
-                                SOVEREIGN_SYSTEM_V64.0_STABLE
+                                SOVEREIGN_SYSTEM_V65.0_STABLE
                             </span>
                         </div>
                         
                         <div className="w-full">
-                            <SectorNavigator accentColor={active.accentColor} />
+                            <SectorNavigator />
                             <ValueStrip />
                         </div>
                     </div>
