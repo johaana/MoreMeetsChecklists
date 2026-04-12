@@ -50,7 +50,7 @@ StaticVideo.displayName = 'StaticVideo';
 const FixedCommandFloor = ({ accentColor = "#00AE8D" }: { accentColor?: string }) => (
     <div className="space-y-4 pt-4 relative z-30">
         {/* 1. Subtext - Stationary */}
-        <p className="text-base md:text-lg font-medium leading-relaxed text-[#0F172A]/80 italic max-w-md">
+        <p className="text-base md:text-lg font-medium leading-relaxed text-[#0F172A]/80 italic max-w-md font-body">
             {SUBTEXT}
         </p>
 
@@ -58,7 +58,7 @@ const FixedCommandFloor = ({ accentColor = "#00AE8D" }: { accentColor?: string }
         <div className="space-y-4">
             <div className="space-y-2">
                 <Button asChild size="lg" style={{ background: accentColor }} className={cn(
-                    "h-16 px-10 rounded-xl text-white font-black uppercase italic text-sm md:text-base tracking-widest transition-all border-none group/btn w-fit",
+                    "h-16 px-10 rounded-xl text-white font-black uppercase italic text-sm md:text-base tracking-widest transition-all border-none group/btn w-fit font-headline",
                     "hover:brightness-110 hover:-translate-y-1 active:scale-95 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)]"
                 )}>
                     <a href="/library" className="flex items-center gap-3">
@@ -66,13 +66,13 @@ const FixedCommandFloor = ({ accentColor = "#00AE8D" }: { accentColor?: string }
                         <ArrowRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-1.5" />
                     </a>
                 </Button>
-                <p className="text-[10px] font-black uppercase text-[#0F172A]/40 tracking-widest pl-2">
+                <p className="text-[10px] font-black uppercase text-[#0F172A]/40 tracking-widest pl-2 font-headline">
                     No SaaS • No monthly fees
                 </p>
             </div>
             
             {/* 3. Micro-Boosters - Stationary */}
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[9px] md:text-[10px] font-black uppercase tracking-[0.25em] text-[#0F172A]/50">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[9px] md:text-[10px] font-black uppercase tracking-[0.25em] text-[#0F172A]/50 font-headline">
                 <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5" style={{ color: accentColor }} /> Excel & Sheets Native</span>
                 <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5" style={{ color: accentColor }} /> No SaaS Lock-in</span>
                 <span className="flex items-center gap-2"><Check className="w-3.5 h-3.5" style={{ color: accentColor }} /> Own Forever</span>
@@ -81,7 +81,7 @@ const FixedCommandFloor = ({ accentColor = "#00AE8D" }: { accentColor?: string }
 
         {/* 4. Sector Support - Stationary */}
         <div className="pt-4 border-t border-black/5 w-fit">
-            <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-[#0F172A]/30 italic">
+            <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-[#0F172A]/30 italic font-headline">
                 For hospitality, retail, healthcare, education & more
             </span>
         </div>
@@ -103,9 +103,9 @@ export default function DesignLabPage() {
     const archetypes = [
         { id: 1, label: "ASEGO TEAL", accent: "#00AE8D" },   
         { id: 2, label: "COBALT TECH", accent: "#2563EB" },  
-        { id: 3, label: "VIVID MAGENTA", accent: "#D946EF" },    
-        { id: 4, label: "ELECTRIC CYAN", accent: "#06B6D4" }, 
-        { id: 5, label: "ROYAL INDIGO", accent: "#4F46E5" }    
+        { id: 3, label: "RUBY PERF", accent: "#E11D48" },    
+        { id: 4, label: "BURNISHED GOLD", accent: "#F59E0B" }, 
+        { id: 5, label: "ROYAL BLUE", accent: "#1D4ED8" }    
     ];
 
     const currentArchetype = archetypes.find(a => a.id === archetypeId) || archetypes[0];
@@ -124,13 +124,13 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 {/* ARCHETYPE SELECTOR */}
                 <div className="fixed top-24 right-8 z-50 flex flex-col gap-2 p-2 bg-white/80 backdrop-blur-xl rounded-2xl border border-zinc-200 shadow-2xl">
-                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V106</span>
+                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">DESIGN LAB V107</span>
                     {archetypes.map((arch) => (
                         <button 
                             key={arch.id} 
                             onClick={() => { setArchetypeId(arch.id); setCurrentIndex(0); }}
                             className={cn(
-                                "w-10 h-10 rounded-xl font-black text-[10px] transition-all",
+                                "w-10 h-10 rounded-xl font-black text-[10px] transition-all font-headline",
                                 archetypeId === arch.id ? "bg-zinc-900 text-white shadow-lg" : "hover:bg-zinc-100 text-zinc-400"
                             )}
                         >
@@ -147,7 +147,7 @@ export default function DesignLabPage() {
                     <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center">
                         {/* LEFT-ALIGNED GLASS COMMAND SLAB */}
                         <div className={cn(
-                            "max-w-xl w-full p-8 md:p-10 rounded-[2.5rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-20",
+                            "max-w-xl w-full p-8 md:p-10 rounded-[2.5rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-14",
                             "bg-white/10 backdrop-blur-[45px] transition-all duration-700" 
                         )}>
                             {/* Rim Lighting Accent */}
@@ -172,7 +172,7 @@ export default function DesignLabPage() {
                                         >
                                             <p 
                                                 style={{ color: currentArchetype.accent }}
-                                                className="text-xl md:text-2xl lg:text-3xl font-black italic tracking-tight leading-[1.1] uppercase transition-colors duration-1000"
+                                                className="text-xl md:text-2xl lg:text-3xl font-black italic tracking-tight leading-[1.1] uppercase transition-colors duration-1000 font-headline"
                                             >
                                                 {ROTATING_LINES[currentIndex]}
                                             </p>
@@ -193,10 +193,10 @@ export default function DesignLabPage() {
                         <div className="flex items-center gap-4">
                             <div className="w-2 h-2 rounded-full animate-pulse shadow-[0_0_8px_rgba(0,0,0,0.1)] transition-colors duration-1000" style={{ background: currentArchetype.accent }} />
                             <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.6em] italic font-headline">
-                                SYSTEM_STATUS_V106_ONLINE
+                                SYSTEM_STATUS_V107_ONLINE
                             </span>
                         </div>
-                        <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-zinc-300">
+                        <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-zinc-300 font-headline">
                             <span className="flex items-center gap-2"><SearchCheck className="w-3.5 h-3.5" /> AUDIT_READY_PROTOCOL</span>
                             <span className="flex items-center gap-2"><Lock className="w-3.5 h-3.5" /> SOVEREIGN_OWNERSHIP</span>
                         </div>
