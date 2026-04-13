@@ -9,22 +9,16 @@ import {
     CheckCircle2,
     ShieldCheck,
     Activity,
-    Smartphone,
-    History,
-    Zap,
-    Lock,
     SearchCheck,
-    AlertTriangle,
-    LayoutGrid,
-    ClipboardCheck
+    Lock
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 
-// --- CONFIGURATION: V118.0 THE FULL MANDATE ---
+// --- CONFIGURATION: V119.0 THE CONVERSION MANDATE ---
 const HEADLINE = "STOP RELYING ON MEMORY.";
-const BRIDGE = "This is how operations should run.";
+const BRIDGE = "THIS IS WHAT OPERATIONAL CONTROL LOOKS LIKE.";
 
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
@@ -66,7 +60,7 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 {/* ARCHETYPE SELECTOR */}
                 <div className="fixed top-24 right-8 z-50 flex flex-col gap-2 p-2 bg-white/80 backdrop-blur-xl rounded-2xl border border-zinc-200 shadow-2xl">
-                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">SOVEREIGN V118</span>
+                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-1 border-b border-zinc-100 mb-1">SOVEREIGN V119</span>
                     {archetypes.map((arch) => (
                         <button 
                             key={arch.id} 
@@ -86,80 +80,80 @@ export default function DesignLabPage() {
                     <StaticVideo opacity={0.85} />
                     
                     <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center">
-                        {/* THE FULL MANDATE COMMAND SLAB */}
+                        {/* THE CONVERSION COMMAND SLAB */}
                         <div className={cn(
-                            "max-w-4xl w-full p-8 md:p-12 rounded-[3rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-4",
-                            "bg-white/10 backdrop-blur-[20px] transition-all duration-700" 
+                            "max-w-4xl w-full p-8 md:p-14 rounded-[3.5rem] border border-white/40 shadow-2xl relative overflow-hidden group translate-y-4",
+                            "bg-white/5 backdrop-blur-[20px] transition-all duration-700" 
                         )}>
                             {/* Rim Lighting Accent */}
                             <div className="absolute top-0 left-0 w-full h-1.5 opacity-40 transition-colors duration-1000" style={{ background: currentArchetype.accent }} />
                             
                             {/* Tier 1: Primary Headline */}
-                            <div className="space-y-4">
-                                <div className="space-y-1">
-                                    <Badge variant="outline" className="text-[9px] font-black uppercase tracking-[0.4em] text-[#0F172A]/40 border-black/10 px-4 py-1 rounded-full">
-                                        Institutional Standard
+                            <div className="space-y-8">
+                                <div className="space-y-2">
+                                    <Badge variant="outline" className="text-[10px] font-black uppercase tracking-[0.5em] text-[#0F172A]/60 border-black/10 px-6 py-1.5 rounded-full">
+                                        INSTITUTIONAL OPERATING STANDARD
                                     </Badge>
-                                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-black font-headline text-[#0F172A] leading-[0.85] tracking-tighter uppercase italic">
+                                    <h1 className="text-4xl md:text-6xl lg:text-[5.5rem] font-black font-headline text-[#0F172A] leading-[0.85] tracking-tighter uppercase italic">
                                         {HEADLINE}
                                     </h1>
                                 </div>
 
-                                {/* Tier 2: The Structural Bridge */}
-                                <div className="bg-black/5 border-y border-black/5 -mx-12 px-12 py-3">
-                                    <p className="text-sm md:text-base font-black uppercase tracking-[0.3em] font-headline italic" style={{ color: currentArchetype.textColor }}>
+                                {/* Tier 2: The Category Spine */}
+                                <div className="bg-black/5 border-y border-black/5 -mx-14 px-14 py-4 my-4">
+                                    <p className="text-sm md:text-lg font-black uppercase tracking-[0.4em] font-headline italic" style={{ color: currentArchetype.textColor }}>
                                         {BRIDGE}
                                     </p>
                                 </div>
 
                                 {/* Tier 3: The Technical Action Grid */}
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-2">
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-4 pb-2">
                                     <div className="space-y-2">
                                         <span className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.4em]">/ SOP_EXECUTION</span>
-                                        <p className="text-sm font-bold text-[#0F172A]/80 leading-snug">Run pre-built SOPs.<br/>Done right. Every day.</p>
+                                        <p className="text-sm md:text-base font-bold text-[#0F172A]/80 leading-snug">Run pre-built SOPs.<br/>Done right. Every day.</p>
                                     </div>
                                     <div className="space-y-2">
                                         <span className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.4em]">/ COMMAND_MODE</span>
-                                        <p className="text-sm font-bold text-[#0F172A]/80 leading-snug">Operations on autopilot.<br/>Without SaaS dependency.</p>
+                                        <p className="text-sm md:text-base font-bold text-[#0F172A]/80 leading-snug">Operations on autopilot.<br/>Without SaaS.</p>
                                     </div>
                                     <div className="space-y-2">
                                         <span className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.4em]">/ DATA_FLOW</span>
-                                        <p className="text-sm font-bold text-[#0F172A]/80 leading-snug">Everything updates<br/>as work happens.</p>
+                                        <p className="text-sm md:text-base font-bold text-[#0F172A]/80 leading-snug">Everything updates<br/>as work happens.</p>
                                     </div>
                                 </div>
 
-                                {/* Tier 4: The Operational Reality & Payload */}
-                                <div className="pt-6 border-t border-black/5 space-y-6">
-                                    <div className="flex flex-wrap gap-x-8 gap-y-2">
+                                {/* Tier 4: The Trust & Conversion Floor */}
+                                <div className="pt-8 border-t border-black/5 space-y-8">
+                                    <div className="flex flex-wrap gap-x-10 gap-y-2">
                                         {[
                                             { t: "NO FOLLOW-UPS", i: CheckCircle2 },
                                             { t: "NO REPORTING CHAOS", i: ShieldCheck },
                                             { t: "AUDIT-READY", i: Activity }
                                         ].map((item, i) => (
-                                            <div key={i} className="flex items-center gap-2">
-                                                <item.i className="w-3.5 h-3.5" style={{ color: currentArchetype.accent }} />
-                                                <span className="text-[10px] font-black uppercase tracking-widest text-[#0F172A] font-headline">
+                                            <div key={i} className="flex items-center gap-2.5">
+                                                <item.i className="w-4 h-4" style={{ color: currentArchetype.accent }} />
+                                                <span className="text-[11px] font-black uppercase tracking-widest text-[#0F172A] font-headline">
                                                     {item.t}
                                                 </span>
                                             </div>
                                         ))}
                                     </div>
 
-                                    <div className="flex flex-col md:flex-row items-center gap-6">
-                                        <Button asChild size="lg" style={{ background: currentArchetype.accent }} className={cn(
-                                            "h-16 px-10 rounded-2xl text-white font-black uppercase italic text-sm tracking-widest transition-all border-none group/btn w-full md:w-fit font-headline",
-                                            "hover:brightness-110 hover:-translate-y-1 active:scale-95 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)]"
-                                        )}>
-                                            <a href="/library" className="flex items-center gap-3">
-                                                Deploy System → ₹999
-                                                <ArrowRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-1.5" />
-                                            </a>
-                                        </Button>
-                                        <div className="flex-1 space-y-1">
-                                            <p className="text-[9px] font-bold text-[#0F172A]/60 italic leading-tight">
-                                                Pre-built, editable SOPs with live tracking and dashboard. <br/>
+                                    <div className="flex flex-col md:flex-row items-center gap-10">
+                                        <div className="flex-1 space-y-4">
+                                            <p className="text-sm md:text-base font-bold text-[#0F172A]/70 italic leading-relaxed border-l-2 pl-6" style={{ borderColor: currentArchetype.accent }}>
+                                                Pre-built, editable SOPs with live tracking & dashboard. <br/>
                                                 Includes trainer notes for faster training.
                                             </p>
+                                            <Button asChild size="lg" style={{ background: currentArchetype.accent }} className={cn(
+                                                "h-16 px-12 rounded-2xl text-white font-black uppercase italic text-base tracking-widest transition-all border-none group/btn w-full md:w-fit font-headline",
+                                                "hover:brightness-110 hover:-translate-y-1 active:scale-95 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)]"
+                                            )}>
+                                                <a href="/library" className="flex items-center gap-3">
+                                                    DEPLOY YOUR SYSTEM → ₹999
+                                                    <ArrowRight className="w-6 h-6 transition-transform group-hover/btn:translate-x-1.5" />
+                                                </a>
+                                            </Button>
                                         </div>
                                     </div>
                                 </div>
@@ -174,7 +168,7 @@ export default function DesignLabPage() {
                         <div className="flex items-center gap-4">
                             <div className="w-2 h-2 rounded-full animate-pulse shadow-[0_0_8px_rgba(0,0,0,0.1)] transition-colors duration-1000" style={{ background: currentArchetype.accent }} />
                             <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.6em] italic font-headline">
-                                SYSTEM_COMMAND_V118_STABLE
+                                SYSTEM_COMMAND_V119_STABLE
                             </span>
                         </div>
                         <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-zinc-300 font-headline">
