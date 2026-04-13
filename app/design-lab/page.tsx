@@ -39,9 +39,9 @@ const StaticVideo = React.memo(() => (
             loop 
             muted 
             playsInline 
-            className="w-full h-full object-cover opacity-70 grayscale-[0.1]" 
+            className="w-full h-full object-cover opacity-50 grayscale-[0.1]" 
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
     </div>
 ));
 StaticVideo.displayName = 'StaticVideo';
@@ -69,68 +69,68 @@ export default function DesignLabPage() {
         const themeColor = isGold ? "#F5A623" : "#2EB86B"; // Gold vs Asego Teal
         const bridgeBg = isWireframe ? "bg-transparent border-y border-white/10" : (isGold ? "bg-[#F5A623]" : "bg-primary");
         const bridgeText = isWireframe ? (isGold ? "text-[#F5A623]" : "text-primary") : "text-[#0F172A]";
-        const glassBg = isObsidian ? "bg-black/40" : (isApple ? "bg-white/65" : "bg-white/10");
+        const glassBg = isObsidian ? "bg-black/60" : (isApple ? "bg-white/80" : "bg-white/15");
         const textMain = isObsidian ? "text-white" : "text-[#0F172A]";
         const textSub = isObsidian ? "text-white/60" : "text-zinc-600";
 
         return (
             <div className={cn(
-                "max-w-5xl w-full p-10 md:p-14 rounded-[3.5rem] border backdrop-blur-xl shadow-2xl relative overflow-hidden group transition-all duration-700",
+                "max-w-5xl w-full p-8 md:p-10 rounded-[2.5rem] border backdrop-blur-md shadow-2xl relative overflow-hidden group transition-all duration-700",
                 glassBg,
                 isObsidian ? "border-white/10" : "border-white/20"
             )}>
                 {/* Top Rim Light */}
-                <div className="absolute top-0 left-0 w-full h-1.5" style={{ backgroundColor: themeColor }} />
+                <div className="absolute top-0 left-0 w-full h-1" style={{ backgroundColor: themeColor }} />
                 
-                <div className="space-y-10 md:space-y-14">
-                    <div className="space-y-4">
+                <div className="space-y-6 md:space-y-8">
+                    <div className="space-y-3">
                         <Badge variant="outline" className={cn(
-                            "text-[10px] font-black uppercase tracking-[0.5em] px-6 py-1.5 rounded-full bg-white/5",
-                            isObsidian ? "text-white/40 border-white/10" : "text-zinc-400 border-zinc-200/20"
+                            "text-[9px] font-black uppercase tracking-[0.4em] px-5 py-1 rounded-full bg-white/5",
+                            isObsidian ? "text-white/40 border-white/10" : "text-zinc-500 border-zinc-200/40"
                         )}>
                             INSTITUTIONAL OPERATING STANDARD
                         </Badge>
                         <h1 className={cn(
-                            "text-5xl md:text-7xl font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-sm",
+                            "text-4xl md:text-6xl lg:text-[4.5rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic drop-shadow-sm",
                             textMain
                         )}>
                             {HEADLINE}
                         </h1>
                     </div>
                     
-                    <div className={cn("py-5 -mx-14 px-14 shadow-inner border-y border-black/5", bridgeBg)}>
-                        <p className={cn("text-lg md:text-2xl font-black uppercase tracking-[0.15em] font-headline italic text-center", bridgeText)}>
+                    <div className={cn("py-4 -mx-10 px-10 shadow-inner border-y border-black/5", bridgeBg)}>
+                        <p className={cn("text-base md:text-xl font-black uppercase tracking-[0.15em] font-headline italic text-center", bridgeText)}>
                             {BRIDGE}
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                         {FEATURES.map((f, i) => (
-                            <div key={i} className="space-y-2 border-l-2 pl-6" style={{ borderColor: `${themeColor}40` }}>
-                                <h4 className={cn("text-base md:text-lg font-black uppercase italic leading-tight", textMain)}>{f.title}</h4>
-                                <p className={cn("text-xs md:text-sm font-bold italic", textSub)}>{f.text}</p>
+                            <div key={i} className="space-y-1 border-l-2 pl-5" style={{ borderColor: `${themeColor}40` }}>
+                                <h4 className={cn("text-sm md:text-base font-black uppercase italic leading-tight", textMain)}>{f.title}</h4>
+                                <p className={cn("text-[10px] md:text-xs font-bold italic", textSub)}>{f.text}</p>
                             </div>
                         ))}
                     </div>
 
-                    <div className={cn("pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-10", isObsidian ? "border-white/10" : "border-black/5")}>
-                        <div className="space-y-5 max-w-md text-left w-full">
-                            <div className="flex flex-wrap gap-4">
+                    <div className={cn("pt-6 border-t flex flex-col md:flex-row items-center justify-between gap-6", isObsidian ? "border-white/10" : "border-black/5")}>
+                        <div className="space-y-3 max-w-md text-left w-full">
+                            <div className="flex flex-wrap gap-x-4 gap-y-2">
                                 {TRUST_POINTS.map(tp => (
-                                    <span key={tp} className="text-[10px] font-black flex items-center gap-1.5 tracking-widest italic" style={{ color: themeColor }}>
-                                        <Check className="w-3.5 h-3.5 stroke-[4px]" /> {tp}
+                                    <span key={tp} className="text-[9px] font-black flex items-center gap-1.5 tracking-widest italic" style={{ color: themeColor }}>
+                                        <Check className="w-3 h-3 stroke-[4px]" /> {tp}
                                     </span>
                                 ))}
                             </div>
-                            <div className="border-l-4 pl-6" style={{ borderColor: themeColor }}>
-                                <p className={cn("text-sm md:text-base font-bold italic leading-relaxed", textMain)}>
+                            <div className="border-l-4 pl-5" style={{ borderColor: themeColor }}>
+                                <p className={cn("text-[11px] md:text-sm font-bold italic leading-relaxed", textMain)}>
                                     {VALUE_LINE}
                                 </p>
                             </div>
                         </div>
                         <Button 
                             size="lg" 
-                            className="h-20 px-12 rounded-2xl text-black font-black uppercase italic text-sm md:text-base tracking-widest hover:scale-105 transition-all shadow-2xl border-none shrink-0"
+                            className="h-16 px-10 rounded-2xl text-black font-black uppercase italic text-sm tracking-widest hover:scale-105 transition-all shadow-xl border-none shrink-0"
                             style={{ backgroundColor: themeColor }}
                         >
                             DEPLOY YOUR SYSTEM → ₹999
@@ -154,7 +154,7 @@ export default function DesignLabPage() {
                             key={id} 
                             onClick={() => setArchetypeId(id)}
                             className={cn(
-                                "w-12 h-12 rounded-xl font-black text-xs transition-all font-headline",
+                                "w-10 h-10 rounded-xl font-black text-xs transition-all font-headline",
                                 archetypeId === id 
                                     ? (id === 2 ? "bg-[#F5A623] text-black" : "bg-primary text-black") 
                                     : "hover:bg-white/5 text-white/40"
@@ -170,31 +170,31 @@ export default function DesignLabPage() {
                     <StaticVideo />
                     
                     <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center justify-center">
-                        <div className="w-full flex justify-center translate-y-[-5%]">
+                        <div className="w-full flex justify-center translate-y-[-2%]">
                             {renderLayout()}
                         </div>
                     </div>
                 </section>
 
                 {/* STATIONARY STATUS STRIP */}
-                <div className="relative z-40 w-full py-5 px-6 md:px-12 border-t bg-black border-white/5">
+                <div className="relative z-40 w-full py-4 px-6 md:px-12 border-t bg-black border-white/5">
                     <div className="max-w-7xl mx-auto flex justify-between items-center">
                         <div className="flex items-center gap-6">
                             <div className="flex items-center gap-3">
-                                <div className="w-2.5 h-2.5 rounded-full animate-pulse bg-primary shadow-[0_0_10px_rgba(46,184,107,0.8)]" />
-                                <span className="text-[11px] font-black text-primary uppercase tracking-[0.5em] italic font-headline">
+                                <div className="w-2 h-2 rounded-full animate-pulse bg-primary shadow-[0_0_8px_rgba(46,184,107,0.8)]" />
+                                <span className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">
                                     SOVEREIGN_COMMAND_OS_ACTIVE
                                 </span>
                             </div>
                             <div className="hidden sm:block h-4 w-px bg-white/10 mx-2" />
-                            <span className="hidden sm:block text-[10px] font-black text-white/20 uppercase tracking-[0.4em] italic font-headline">
+                            <span className="hidden sm:block text-[9px] font-black text-white/20 uppercase tracking-[0.4em] italic font-headline">
                                 SYSTEM_STATUS: ARCHETYPE_0{archetypeId} // STABLE
                             </span>
                         </div>
-                        <div className="hidden md:flex items-center gap-12 text-[9px] font-black uppercase tracking-[0.5em] italic text-white/10 font-headline">
-                            <span className="flex items-center gap-3"><SearchCheck className="w-4 h-4" /> AUDIT_SHIELD_V131</span>
-                            <span className="flex items-center gap-3"><Lock className="w-4 h-4" /> ZERO_SaaS_LOCK_IN</span>
-                            <span className="flex items-center gap-3"><Cpu className="w-4 h-4" /> HARDWARE_ACCELERATED</span>
+                        <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-white/10 font-headline">
+                            <span className="flex items-center gap-2"><SearchCheck className="w-3 h-3" /> AUDIT_SHIELD_V131</span>
+                            <span className="flex items-center gap-2"><Lock className="w-3 h-3" /> ZERO_SaaS_LOCK_IN</span>
+                            <span className="flex items-center gap-2"><Cpu className="w-3 h-3" /> HARDWARE_ACCELERATED</span>
                         </div>
                     </div>
                 </div>
