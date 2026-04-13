@@ -43,7 +43,7 @@ const StaticVideo = React.memo(() => (
             playsInline 
             className="w-full h-full object-cover opacity-40 grayscale-[0.2]" 
         />
-        {/* Subtle Daylight Mask to focus eye on center */}
+        {/* Subtle Daylight Mask to focus eye on center and ensure text readability */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(244,244,245,0.4)_100%)]" />
     </div>
 ));
@@ -67,7 +67,7 @@ export default function DesignLabPage() {
                 <div className="absolute top-0 left-0 w-1/2 h-[3px] opacity-60" style={{ backgroundColor: themeColor }} />
                 
                 <div className="space-y-10 relative z-10">
-                    {/* 1. Primary Narrative */}
+                    {/* 1. Primary Narrative Hook */}
                     <div className="space-y-2">
                         <h1 className="text-4xl md:text-[4rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: isDark ? '#FFFFFF' : '#0F172A' }}>
                             RUN OPERATIONS <br /> WITHOUT FOLLOW-UPS.
@@ -77,7 +77,7 @@ export default function DesignLabPage() {
                         </h2>
                     </div>
 
-                    {/* 2. Mechanism & Hook */}
+                    {/* 2. Mechanism & Value Bridge */}
                     <div className="space-y-6">
                         <p className="text-sm md:text-lg font-medium italic leading-relaxed max-w-lg opacity-60" style={{ color: textColor }}>
                             A ready system to manage daily tasks across your team — with full visibility.
