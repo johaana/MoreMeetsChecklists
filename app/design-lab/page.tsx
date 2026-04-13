@@ -6,9 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
     Check,
-    ArrowRight,
     Activity,
-    ShieldCheck,
     Lock,
     Target
 } from 'lucide-react';
@@ -40,10 +38,12 @@ const StaticVideo = React.memo(() => (
             loop 
             muted 
             playsInline 
-            className="w-full h-full object-cover opacity-60 transition-opacity duration-1000" 
+            className="w-full h-full object-cover opacity-70 transition-opacity duration-1000 will-change-transform" 
         />
-        {/* Subtle radial mask to keep edges vivid while protecting text area */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,transparent_0%,rgba(244,244,245,0.3)_100%)]" />
+        {/* Left-weighted mask: Mutes the video behind the text on the left, clear on the right */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,rgba(244,244,245,0.4)_0%,transparent_70%)] z-10" />
+        {/* Overall brightness protection */}
+        <div className="absolute inset-0 bg-white/5 z-0" />
     </div>
 ));
 StaticVideo.displayName = 'StaticVideo';
@@ -59,19 +59,19 @@ export default function DesignLabPage() {
 
         return (
             <div className={cn(
-                "max-w-3xl w-full p-10 md:p-16 rounded-[3.5rem] border border-white/20 backdrop-blur-3xl shadow-2xl relative overflow-hidden group transition-all duration-700",
-                isDark ? "bg-black/70" : "bg-white/45"
+                "max-w-2xl w-full p-10 md:p-14 rounded-[3.5rem] border border-white/30 backdrop-blur-3xl shadow-2xl relative overflow-hidden group transition-all duration-700",
+                isDark ? "bg-black/70" : "bg-white/40"
             )}>
-                {/* Top Rim Glow - Asymmetric logic from screenshot */}
+                {/* Top Rim Glow */}
                 <div className="absolute top-0 left-0 w-3/4 h-[3px] opacity-60" style={{ backgroundColor: themeColor }} />
                 
                 <div className="space-y-10 relative z-10">
                     {/* 1. Primary Narrative Hook */}
-                    <div className="space-y-2">
-                        <h1 className="text-4xl md:text-[4.2rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: isDark ? '#FFFFFF' : '#0F172A' }}>
+                    <div className="space-y-3">
+                        <h1 className="text-4xl md:text-[3.8rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: isDark ? '#FFFFFF' : '#0F172A' }}>
                             RUN OPERATIONS <br /> WITHOUT FOLLOW-UPS.
                         </h1>
-                        <h2 className="text-2xl md:text-[2.8rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic" style={{ color: themeColor }}>
+                        <h2 className="text-2xl md:text-[2.5rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic" style={{ color: themeColor }}>
                             PRE-BUILT SOPS & CHECKLISTS
                         </h2>
                     </div>
@@ -85,7 +85,7 @@ export default function DesignLabPage() {
                         <div className="flex flex-col gap-4">
                             <Button 
                                 size="lg" 
-                                className="h-16 md:h-20 px-10 md:px-14 rounded-2xl text-[#0F172A] font-black uppercase italic text-sm md:text-2xl tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl border-none w-fit"
+                                className="h-16 md:h-20 px-10 md:px-14 rounded-2xl text-[#0F172A] font-black uppercase italic text-sm md:text-xl tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl border-none w-fit"
                                 style={{ backgroundColor: themeColor }}
                             >
                                 DEPLOY YOUR SYSTEM → ₹999
@@ -119,7 +119,7 @@ export default function DesignLabPage() {
             <main className="flex-1 relative flex flex-col justify-center items-center h-[100dvh]">
                 <StaticVideo />
 
-                {/* ARCHETYPE SELECTOR - PILL STYLE EXACT MATCH */}
+                {/* ARCHETYPE SELECTOR - PILL STYLE */}
                 <div className="fixed top-1/2 -translate-y-1/2 right-10 z-50 flex flex-col gap-4 p-6 bg-white/80 backdrop-blur-xl rounded-[2.5rem] border border-zinc-200 shadow-2xl">
                     <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-3 border-b border-zinc-100">DESIGN LAB V116</span>
                     {ARCHETYPES.map((arch) => (
@@ -138,9 +138,9 @@ export default function DesignLabPage() {
                     ))}
                 </div>
 
-                <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center justify-center">
-                    {/* Slab placement shifted to the left as per screenshot */}
-                    <div className="w-full flex justify-center lg:justify-start lg:pl-32 -translate-y-4 max-h-[82vh]">
+                <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center">
+                    {/* Compact Slab Aligned to the Left */}
+                    <div className="w-full flex justify-start lg:pl-20 -translate-y-4 max-h-[82vh]">
                         <SovereignSlab />
                     </div>
                 </div>
