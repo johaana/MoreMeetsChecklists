@@ -68,61 +68,61 @@ export default function DesignLabPage() {
 
         return (
             <div className={cn(
-                "max-w-5xl w-full p-8 md:p-10 rounded-[2.5rem] border border-white/10 backdrop-blur-xl shadow-2xl relative overflow-hidden group transition-all duration-700",
+                "max-w-4xl w-full p-6 md:p-8 rounded-[2rem] border border-white/10 backdrop-blur-xl shadow-2xl relative overflow-hidden group transition-all duration-700",
                 isDark ? "bg-black/60" : "bg-white/5"
             )}>
                 {/* Top Rim Glow */}
                 <div className="absolute top-0 left-0 w-full h-[2px] opacity-50" style={{ backgroundColor: themeColor }} />
                 
-                <div className="space-y-8">
+                <div className="space-y-6">
                     {/* 1. Technical Tag */}
                     <div className="flex justify-start">
-                        <div className="bg-white/5 border border-white/10 rounded-md px-6 py-1 text-[9px] font-black text-white/40 uppercase tracking-[0.4em] italic font-headline">
+                        <div className="bg-white/5 border border-white/10 rounded-md px-5 py-1 text-[8px] font-black text-white/40 uppercase tracking-[0.4em] italic font-headline">
                             INSTITUTIONAL OPERATING STANDARD
                         </div>
                     </div>
 
                     {/* 2. Massive Headline */}
-                    <h1 className="text-5xl md:text-[5.5rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic text-white drop-shadow-2xl">
+                    <h1 className="text-4xl md:text-[4.5rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic text-white drop-shadow-2xl">
                         STOP RELYING <br /> ON MEMORY.
                     </h1>
                     
-                    {/* 3. The Structural Bridge Bar */}
-                    <div className="py-4 -mx-10 px-10 shadow-inner border-y border-black/20" style={{ backgroundColor: themeColor }}>
-                        <p className="text-base md:text-xl font-black uppercase tracking-[0.15em] font-headline italic text-center text-[#0F172A]">
+                    {/* 3. The Structural Bridge Bar - Compact py-3 */}
+                    <div className="py-3 -mx-8 px-8 shadow-inner border-y border-black/20" style={{ backgroundColor: themeColor }}>
+                        <p className="text-sm md:text-lg font-black uppercase tracking-[0.15em] font-headline italic text-center text-[#0F172A]">
                             THIS IS WHAT OPERATIONAL CONTROL LOOKS LIKE.
                         </p>
                     </div>
 
-                    {/* 4. Three Blocks Technical Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-2">
+                    {/* 4. Three Blocks Technical Grid - Compact gap-6 */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-1">
                         {FEATURES.map((f, i) => (
-                            <div key={i} className="space-y-1 border-l-2 pl-6" style={{ borderColor: `${themeColor}40` }}>
-                                <h4 className="text-sm md:text-base font-black uppercase italic leading-tight text-white">{f.title}</h4>
-                                <p className="text-[10px] md:text-xs font-bold italic text-white/40">{f.text}</p>
+                            <div key={i} className="space-y-1 border-l-2 pl-5" style={{ borderColor: `${themeColor}40` }}>
+                                <h4 className="text-xs md:text-sm font-black uppercase italic leading-tight text-white">{f.title}</h4>
+                                <p className="text-[9px] md:text-[10px] font-bold italic text-white/40">{f.text}</p>
                             </div>
                         ))}
                     </div>
 
-                    {/* 5. The Functional HUD Floor */}
-                    <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-8">
-                        <div className="space-y-4 max-w-lg text-left w-full">
-                            <div className="flex flex-wrap gap-x-6 gap-y-2">
+                    {/* 5. The Functional HUD Floor - Compact pt-4 */}
+                    <div className="pt-4 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div className="space-y-3 max-w-lg text-left w-full">
+                            <div className="flex flex-wrap gap-x-5 gap-y-1.5">
                                 {TRUST_POINTS.map(tp => (
-                                    <span key={tp} className="text-[9px] font-black flex items-center gap-2 tracking-widest italic" style={{ color: themeColor }}>
-                                        <Check className="w-3.5 h-3.5 stroke-[4px]" /> {tp}
+                                    <span key={tp} className="text-[8px] font-black flex items-center gap-2 tracking-widest italic" style={{ color: themeColor }}>
+                                        <Check className="w-3 h-3 stroke-[4px]" /> {tp}
                                     </span>
                                 ))}
                             </div>
-                            <div className="border-l-4 pl-6" style={{ borderColor: themeColor }}>
-                                <p className="text-xs md:text-sm font-bold italic leading-relaxed text-white/80">
+                            <div className="border-l-4 pl-5" style={{ borderColor: themeColor }}>
+                                <p className="text-[11px] md:text-xs font-bold italic leading-relaxed text-white/80">
                                     {VALUE_LINE}
                                 </p>
                             </div>
                         </div>
                         <Button 
                             size="lg" 
-                            className="h-16 md:h-20 px-10 md:px-14 rounded-2xl text-[#0F172A] font-black uppercase italic text-sm md:text-base tracking-widest hover:scale-105 active:scale-95 transition-all shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)] border-none shrink-0"
+                            className="h-14 md:h-16 px-8 md:px-12 rounded-xl text-[#0F172A] font-black uppercase italic text-xs md:text-sm tracking-widest hover:scale-105 active:scale-95 transition-all shadow-[0_15px_40px_-8px_rgba(0,0,0,0.5)] border-none shrink-0"
                             style={{ backgroundColor: themeColor }}
                         >
                             DEPLOY YOUR SYSTEM → ₹999
@@ -140,7 +140,7 @@ export default function DesignLabPage() {
             <main className="flex-1 relative">
                 {/* ARCHETYPE SELECTOR */}
                 <div className="fixed top-24 right-8 z-50 flex flex-col gap-2 p-2 bg-black/40 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl">
-                    <span className="text-[8px] font-black text-center text-white/20 uppercase tracking-widest pb-1 border-b border-white/5 mb-1">SOVEREIGN V132</span>
+                    <span className="text-[8px] font-black text-center text-white/20 uppercase tracking-widest pb-1 border-b border-white/5 mb-1">SOVEREIGN V133</span>
                     {ARCHETYPES.map((arch) => (
                         <button 
                             key={arch.id} 
@@ -185,7 +185,7 @@ export default function DesignLabPage() {
                             </span>
                         </div>
                         <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-white/10 font-headline">
-                            <span className="flex items-center gap-2"><SearchCheck className="w-3 h-3" /> AUDIT_SHIELD_V132</span>
+                            <span className="flex items-center gap-2"><SearchCheck className="w-3 h-3" /> AUDIT_SHIELD_V133</span>
                             <span className="flex items-center gap-2"><Lock className="w-3 h-3" /> ZERO_SaaS_LOCK_IN</span>
                             <span className="flex items-center gap-2"><Cpu className="w-3 h-3" /> HARDWARE_ACCELERATED</span>
                         </div>
