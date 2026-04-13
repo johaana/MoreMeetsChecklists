@@ -40,10 +40,10 @@ const StaticVideo = React.memo(() => (
             loop 
             muted 
             playsInline 
-            className="w-full h-full object-cover opacity-40 grayscale-[0.2]" 
+            className="w-full h-full object-cover opacity-60 transition-opacity duration-1000" 
         />
-        {/* Daylight Mask to ensure 100% text legibility */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(244,244,245,0.5)_100%)]" />
+        {/* Subtle radial mask to keep edges vivid while protecting text area */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,transparent_0%,rgba(244,244,245,0.3)_100%)]" />
     </div>
 ));
 StaticVideo.displayName = 'StaticVideo';
@@ -59,39 +59,39 @@ export default function DesignLabPage() {
 
         return (
             <div className={cn(
-                "max-w-3xl w-full p-10 md:p-16 rounded-[3rem] border border-white/20 backdrop-blur-3xl shadow-2xl relative overflow-hidden group transition-all duration-700",
-                isDark ? "bg-black/80" : "bg-white/85"
+                "max-w-3xl w-full p-10 md:p-16 rounded-[3.5rem] border border-white/20 backdrop-blur-3xl shadow-2xl relative overflow-hidden group transition-all duration-700",
+                isDark ? "bg-black/70" : "bg-white/45"
             )}>
                 {/* Top Rim Glow - Asymmetric logic from screenshot */}
-                <div className="absolute top-0 left-0 w-1/2 h-[3px] opacity-60" style={{ backgroundColor: themeColor }} />
+                <div className="absolute top-0 left-0 w-3/4 h-[3px] opacity-60" style={{ backgroundColor: themeColor }} />
                 
                 <div className="space-y-10 relative z-10">
                     {/* 1. Primary Narrative Hook */}
                     <div className="space-y-2">
-                        <h1 className="text-4xl md:text-[4rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: isDark ? '#FFFFFF' : '#0F172A' }}>
+                        <h1 className="text-4xl md:text-[4.2rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: isDark ? '#FFFFFF' : '#0F172A' }}>
                             RUN OPERATIONS <br /> WITHOUT FOLLOW-UPS.
                         </h1>
-                        <h2 className="text-2xl md:text-[2.5rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic" style={{ color: themeColor }}>
+                        <h2 className="text-2xl md:text-[2.8rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic" style={{ color: themeColor }}>
                             PRE-BUILT SOPS & CHECKLISTS
                         </h2>
                     </div>
 
                     {/* 2. Mechanism & Value Bridge */}
-                    <div className="space-y-6">
-                        <p className="text-sm md:text-lg font-medium italic leading-relaxed max-w-lg opacity-70" style={{ color: textColor }}>
+                    <div className="space-y-8">
+                        <p className="text-lg md:text-xl font-bold italic leading-relaxed max-w-lg opacity-80" style={{ color: textColor }}>
                             A ready system to manage daily tasks across your team — with full visibility.
                         </p>
                         
                         <div className="flex flex-col gap-4">
                             <Button 
                                 size="lg" 
-                                className="h-16 md:h-20 px-10 md:px-14 rounded-2xl text-[#0F172A] font-black uppercase italic text-sm md:text-xl tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl border-none w-fit"
+                                className="h-16 md:h-20 px-10 md:px-14 rounded-2xl text-[#0F172A] font-black uppercase italic text-sm md:text-2xl tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl border-none w-fit"
                                 style={{ backgroundColor: themeColor }}
                             >
                                 DEPLOY YOUR SYSTEM → ₹999
                             </Button>
                             <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-40 px-2" style={{ color: textColor }}>
-                                NO SaaS • NO MONTHLY FEES
+                                NO SAAS • NO MONTHLY FEES
                             </span>
                         </div>
                     </div>
@@ -106,10 +106,6 @@ export default function DesignLabPage() {
                                 </div>
                             ))}
                         </div>
-                        
-                        <p className="text-[10px] font-black uppercase tracking-[0.5em] italic opacity-40" style={{ color: textColor }}>
-                            FOR HOSPITALITY, RETAIL, HEALTHCARE, EDUCATION & MORE
-                        </p>
                     </div>
                 </div>
             </div>
@@ -124,16 +120,16 @@ export default function DesignLabPage() {
                 <StaticVideo />
 
                 {/* ARCHETYPE SELECTOR - PILL STYLE EXACT MATCH */}
-                <div className="fixed top-1/2 -translate-y-1/2 right-10 z-50 flex flex-col gap-4 p-4 bg-white/80 backdrop-blur-xl rounded-full border border-zinc-200 shadow-2xl">
-                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-2 border-b border-zinc-100">DESIGN LAB V116</span>
+                <div className="fixed top-1/2 -translate-y-1/2 right-10 z-50 flex flex-col gap-4 p-6 bg-white/80 backdrop-blur-xl rounded-[2.5rem] border border-zinc-200 shadow-2xl">
+                    <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-3 border-b border-zinc-100">DESIGN LAB V116</span>
                     {ARCHETYPES.map((arch) => (
                         <button 
                             key={arch.id} 
                             onClick={() => setArchetypeId(arch.id)}
                             className={cn(
-                                "w-10 h-10 rounded-full font-black text-[10px] transition-all flex items-center justify-center border border-transparent",
+                                "w-12 h-12 rounded-full font-black text-xs transition-all flex items-center justify-center border border-transparent",
                                 archetypeId === arch.id 
-                                    ? "bg-zinc-950 text-white shadow-lg" 
+                                    ? "bg-zinc-950 text-white shadow-lg scale-110" 
                                     : "text-zinc-400 hover:bg-zinc-50"
                             )}
                         >
@@ -143,8 +139,8 @@ export default function DesignLabPage() {
                 </div>
 
                 <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center justify-center">
-                    {/* Slab placement slightly to the left to allow room for the selector */}
-                    <div className="w-full flex justify-center lg:justify-start lg:pl-20 -translate-y-4 max-h-[82vh]">
+                    {/* Slab placement shifted to the left as per screenshot */}
+                    <div className="w-full flex justify-center lg:justify-start lg:pl-32 -translate-y-4 max-h-[82vh]">
                         <SovereignSlab />
                     </div>
                 </div>
