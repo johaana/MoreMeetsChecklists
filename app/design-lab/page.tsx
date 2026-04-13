@@ -10,7 +10,6 @@ import {
     Activity,
     ShieldCheck,
     Lock,
-    Cpu,
     Target
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -43,8 +42,8 @@ const StaticVideo = React.memo(() => (
             playsInline 
             className="w-full h-full object-cover opacity-40 grayscale-[0.2]" 
         />
-        {/* Subtle Daylight Mask to focus eye on center and ensure text readability */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(244,244,245,0.4)_100%)]" />
+        {/* Daylight Mask to ensure 100% text legibility */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(244,244,245,0.5)_100%)]" />
     </div>
 ));
 StaticVideo.displayName = 'StaticVideo';
@@ -61,9 +60,9 @@ export default function DesignLabPage() {
         return (
             <div className={cn(
                 "max-w-3xl w-full p-10 md:p-16 rounded-[3rem] border border-white/20 backdrop-blur-3xl shadow-2xl relative overflow-hidden group transition-all duration-700",
-                isDark ? "bg-black/70" : "bg-white/60"
+                isDark ? "bg-black/80" : "bg-white/85"
             )}>
-                {/* Top Rim Glow - Asymmetric logic from reference */}
+                {/* Top Rim Glow - Asymmetric logic */}
                 <div className="absolute top-0 left-0 w-1/2 h-[3px] opacity-60" style={{ backgroundColor: themeColor }} />
                 
                 <div className="space-y-10 relative z-10">
@@ -79,7 +78,7 @@ export default function DesignLabPage() {
 
                     {/* 2. Mechanism & Value Bridge */}
                     <div className="space-y-6">
-                        <p className="text-sm md:text-lg font-medium italic leading-relaxed max-w-lg opacity-60" style={{ color: textColor }}>
+                        <p className="text-sm md:text-lg font-medium italic leading-relaxed max-w-lg opacity-70" style={{ color: textColor }}>
                             A ready system to manage daily tasks across your team — with full visibility.
                         </p>
                         
@@ -91,7 +90,7 @@ export default function DesignLabPage() {
                             >
                                 DEPLOY YOUR SYSTEM → ₹999
                             </Button>
-                            <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-30 px-2" style={{ color: textColor }}>
+                            <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-40 px-2" style={{ color: textColor }}>
                                 NO SaaS • NO MONTHLY FEES
                             </span>
                         </div>
@@ -103,12 +102,12 @@ export default function DesignLabPage() {
                             {FEATURES.map(feat => (
                                 <div key={feat} className="flex items-center gap-2">
                                     <Check className="w-4 h-4 stroke-[4px]" style={{ color: themeColor }} />
-                                    <span className="text-[10px] md:text-xs font-black uppercase tracking-widest italic opacity-60" style={{ color: textColor }}>{feat}</span>
+                                    <span className="text-[10px] md:text-xs font-black uppercase tracking-widest italic opacity-70" style={{ color: textColor }}>{feat}</span>
                                 </div>
                             ))}
                         </div>
                         
-                        <p className="text-[10px] font-black uppercase tracking-[0.5em] italic opacity-30" style={{ color: textColor }}>
+                        <p className="text-[10px] font-black uppercase tracking-[0.5em] italic opacity-40" style={{ color: textColor }}>
                             FOR HOSPITALITY, RETAIL, HEALTHCARE, EDUCATION & MORE
                         </p>
                     </div>
@@ -121,10 +120,10 @@ export default function DesignLabPage() {
         <div className="flex flex-col min-h-screen selection:bg-primary/20 overflow-hidden font-body bg-zinc-100">
             <SiteHeader />
 
-            <main className="flex-1 relative flex flex-col justify-center items-center h-screen pt-16">
+            <main className="flex-1 relative flex flex-col justify-center items-center h-[100dvh]">
                 <StaticVideo />
 
-                {/* ARCHETYPE SELECTOR - PILL STYLE FROM REFERENCE */}
+                {/* ARCHETYPE SELECTOR - PILL STYLE */}
                 <div className="fixed top-1/2 -translate-y-1/2 right-10 z-50 flex flex-col gap-4 p-4 bg-white/80 backdrop-blur-xl rounded-full border border-zinc-200 shadow-2xl">
                     <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-2 border-b border-zinc-100">DESIGN LAB V116</span>
                     {ARCHETYPES.map((arch) => (
@@ -149,7 +148,7 @@ export default function DesignLabPage() {
                     </div>
                 </div>
 
-                {/* BOTTOM STATIONARY STATUS STRIP */}
+                {/* BOTTOM STATUS STRIP */}
                 <div className="absolute bottom-0 w-full py-4 px-12 border-t bg-white/40 backdrop-blur-sm border-zinc-200 z-30">
                     <div className="max-w-7xl mx-auto flex justify-between items-center">
                         <div className="flex items-center gap-6">
