@@ -62,7 +62,7 @@ export default function DesignLabPage() {
                 "max-w-3xl w-full p-10 md:p-16 rounded-[3rem] border border-white/20 backdrop-blur-3xl shadow-2xl relative overflow-hidden group transition-all duration-700",
                 isDark ? "bg-black/80" : "bg-white/85"
             )}>
-                {/* Top Rim Glow - Asymmetric logic */}
+                {/* Top Rim Glow - Asymmetric logic from screenshot */}
                 <div className="absolute top-0 left-0 w-1/2 h-[3px] opacity-60" style={{ backgroundColor: themeColor }} />
                 
                 <div className="space-y-10 relative z-10">
@@ -123,7 +123,7 @@ export default function DesignLabPage() {
             <main className="flex-1 relative flex flex-col justify-center items-center h-[100dvh]">
                 <StaticVideo />
 
-                {/* ARCHETYPE SELECTOR - PILL STYLE */}
+                {/* ARCHETYPE SELECTOR - PILL STYLE EXACT MATCH */}
                 <div className="fixed top-1/2 -translate-y-1/2 right-10 z-50 flex flex-col gap-4 p-4 bg-white/80 backdrop-blur-xl rounded-full border border-zinc-200 shadow-2xl">
                     <span className="text-[8px] font-black text-center text-zinc-400 uppercase tracking-widest pb-2 border-b border-zinc-100">DESIGN LAB V116</span>
                     {ARCHETYPES.map((arch) => (
@@ -143,7 +143,8 @@ export default function DesignLabPage() {
                 </div>
 
                 <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center justify-center">
-                    <div className="w-full flex justify-center -translate-y-4 max-h-[82vh]">
+                    {/* Slab placement slightly to the left to allow room for the selector */}
+                    <div className="w-full flex justify-center lg:justify-start lg:pl-20 -translate-y-4 max-h-[82vh]">
                         <SovereignSlab />
                     </div>
                 </div>
