@@ -8,7 +8,8 @@ import {
     Check,
     Activity,
     Lock,
-    Target
+    Target,
+    ArrowRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -25,9 +26,9 @@ const ARCHETYPES = [
 ];
 
 const FEATURES = [
-    "EXCEL & SHEETS NATIVE",
-    "NO SaaS LOCK-IN",
-    "OWN FOREVER"
+    "PRE-BUILT EDITABLE SOPS",
+    "LIVE TRACKING & DASHBOARD",
+    "AUDIT-READY PROTOCOLS"
 ];
 
 const StaticVideo = React.memo(() => (
@@ -41,8 +42,8 @@ const StaticVideo = React.memo(() => (
             className="w-full h-full object-cover opacity-70 transition-opacity duration-1000 will-change-transform" 
         />
         {/* Left-weighted mask: Mutes the video behind the text on the left, clear on the right */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,rgba(244,244,245,0.4)_0%,transparent_70%)] z-10" />
-        {/* Overall brightness protection */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,rgba(244,244,245,0.2)_0%,transparent_70%)] z-10" />
+        {/* Subtle overall protection */}
         <div className="absolute inset-0 bg-white/5 z-0" />
     </div>
 ));
@@ -59,50 +60,57 @@ export default function DesignLabPage() {
 
         return (
             <div className={cn(
-                "max-w-2xl w-full p-10 md:p-14 rounded-[3.5rem] border border-white/30 backdrop-blur-3xl shadow-2xl relative overflow-hidden group transition-all duration-700",
-                isDark ? "bg-black/70" : "bg-white/40"
+                "max-w-2xl w-full p-10 md:p-12 rounded-[3.5rem] border border-white/30 backdrop-blur-3xl shadow-2xl relative overflow-hidden group transition-all duration-700",
+                isDark ? "bg-black/60" : "bg-white/40"
             )}>
                 {/* Top Rim Glow */}
                 <div className="absolute top-0 left-0 w-3/4 h-[3px] opacity-60" style={{ backgroundColor: themeColor }} />
                 
-                <div className="space-y-10 relative z-10">
+                <div className="space-y-8 relative z-10">
                     {/* 1. Primary Narrative Hook */}
                     <div className="space-y-3">
                         <h1 className="text-4xl md:text-[3.8rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: isDark ? '#FFFFFF' : '#0F172A' }}>
-                            RUN OPERATIONS <br /> WITHOUT FOLLOW-UPS.
+                            STOP RELYING <br /> ON MEMORY.
                         </h1>
-                        <h2 className="text-2xl md:text-[2.5rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic" style={{ color: themeColor }}>
-                            PRE-BUILT SOPS & CHECKLISTS
+                        <h2 className="text-2xl md:text-[2.2rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic" style={{ color: themeColor }}>
+                            Run pre-built SOPs. <br />
+                            <span className="text-[0.8em] opacity-80">Done right. Every day.</span>
                         </h2>
                     </div>
 
                     {/* 2. Mechanism & Value Bridge */}
-                    <div className="space-y-8">
-                        <p className="text-lg md:text-xl font-bold italic leading-relaxed max-w-lg opacity-80" style={{ color: textColor }}>
-                            A ready system to manage daily tasks across your team — with full visibility.
+                    <div className="space-y-6">
+                        <p className="text-lg md:text-xl font-bold italic leading-tight max-w-lg" style={{ color: textColor }}>
+                            This is how operations should run. <br />
+                            <span className="text-primary" style={{ color: themeColor }}>Operations on autopilot. Without SaaS.</span>
                         </p>
                         
-                        <div className="flex flex-col gap-4">
+                        <p className="text-xs md:text-sm font-medium italic opacity-70 leading-relaxed max-w-md" style={{ color: textColor }}>
+                            No follow-ups. No reporting chaos. Everything updates as work happens. 
+                            Includes trainer notes for faster training.
+                        </p>
+
+                        <div className="flex flex-col gap-4 pt-2">
                             <Button 
                                 size="lg" 
-                                className="h-16 md:h-20 px-10 md:px-14 rounded-2xl text-[#0F172A] font-black uppercase italic text-sm md:text-xl tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl border-none w-fit"
+                                className="h-16 md:h-18 px-10 rounded-2xl text-[#0F172A] font-black uppercase italic text-sm md:text-lg tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl border-none w-fit"
                                 style={{ backgroundColor: themeColor }}
                             >
                                 DEPLOY YOUR SYSTEM → ₹999
                             </Button>
                             <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-40 px-2" style={{ color: textColor }}>
-                                NO SAAS • NO MONTHLY FEES
+                                ONE-TIME PURCHASE • OWN FOREVER
                             </span>
                         </div>
                     </div>
 
                     {/* 3. The Technical Payload Floor */}
                     <div className="pt-8 border-t border-black/5 flex flex-col gap-6">
-                        <div className="flex flex-wrap gap-x-8 gap-y-2">
+                        <div className="flex flex-wrap gap-x-8 gap-y-3">
                             {FEATURES.map(feat => (
                                 <div key={feat} className="flex items-center gap-2">
                                     <Check className="w-4 h-4 stroke-[4px]" style={{ color: themeColor }} />
-                                    <span className="text-[10px] md:text-xs font-black uppercase tracking-widest italic opacity-70" style={{ color: textColor }}>{feat}</span>
+                                    <span className="text-[10px] md:text-[11px] font-black uppercase tracking-widest italic opacity-70" style={{ color: textColor }}>{feat}</span>
                                 </div>
                             ))}
                         </div>
@@ -140,7 +148,7 @@ export default function DesignLabPage() {
 
                 <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center">
                     {/* Compact Slab Aligned to the Left */}
-                    <div className="w-full flex justify-start lg:pl-20 -translate-y-4 max-h-[82vh]">
+                    <div className="w-full flex justify-start lg:pl-20 -translate-y-4 max-h-[85vh]">
                         <SovereignSlab />
                     </div>
                 </div>
@@ -151,12 +159,12 @@ export default function DesignLabPage() {
                         <div className="flex items-center gap-6">
                             <div className="flex items-center gap-3">
                                 <div className="w-2 h-2 rounded-full animate-pulse shadow-sm" style={{ backgroundColor: active.color }} />
-                                <span className="text-[10px] font-black uppercase tracking-[0.4em] italic text-zinc-500 font-headline">
+                                <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] italic text-zinc-500 font-headline">
                                     SYSTEM_ACTIVE // {active.name}
                                 </span>
                             </div>
                         </div>
-                        <div className="hidden md:flex items-center gap-10 text-[9px] font-black uppercase tracking-[0.4em] italic text-zinc-300 font-headline">
+                        <div className="hidden md:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.4em] italic text-zinc-400 font-headline">
                             <span className="flex items-center gap-2"><Target className="w-3.5 h-3.5" /> ZERO_SCROLL_MANDATE</span>
                             <span className="flex items-center gap-2"><Lock className="w-3.5 h-3.5" /> SOVEREIGN_IP_LOCKED</span>
                             <span className="flex items-center gap-2"><Activity className="w-3.5 h-3.5" /> PERFORMANCE_STABLE</span>
