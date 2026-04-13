@@ -6,26 +6,38 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
     Check,
-    Activity,
     SearchCheck,
     Lock,
-    Zap,
     Cpu,
+    ArrowRight,
+    ClipboardCheck,
+    Activity,
     Smartphone,
-    ShieldAlert
+    LayoutGrid,
+    Target,
+    Zap,
+    GraduationCap,
+    AlertTriangle
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 
-const HEADLINE = "STOP RELYING ON MEMORY.";
-const BRIDGE = "THIS IS WHAT OPERATIONAL CONTROL LOOKS LIKE.";
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
+const ARCHETYPES = [
+    { id: 1, name: "ASEGO TEAL", color: "#2EB86B" },
+    { id: 2, name: "SOVEREIGN GOLD", color: "#F5A623" },
+    { id: 3, name: "OBSIDIAN NIGHT", color: "#2EB86B", dark: true },
+    { id: 4, name: "INDUSTRIAL YELLOW", color: "#FACC15" },
+    { id: 5, name: "INK BLUE COMMAND", color: "#1E40AF" },
+    { id: 6, name: "RISK ALERT RED", color: "#E11D48" }
+];
+
 const FEATURES = [
-    { title: "Run pre-built SOPs.", text: "Done right. Every day." },
-    { title: "Operations on autopilot.", text: "Without SaaS." },
-    { title: "Everything updates", text: "as work happens." }
+    { title: "RUN PRE-BUILT SOPs.", text: "Done right. Every day." },
+    { title: "OPERATIONS ON AUTOPILOT.", text: "Without SaaS." },
+    { title: "EVERYTHING UPDATES", text: "as work happens." }
 ];
 
 const TRUST_POINTS = ["NO FOLLOW-UPS", "NO REPORTING CHAOS", "AUDIT-READY"];
@@ -41,96 +53,76 @@ const StaticVideo = React.memo(() => (
             playsInline 
             className="w-full h-full object-cover opacity-50 grayscale-[0.1]" 
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
     </div>
 ));
 StaticVideo.displayName = 'StaticVideo';
 
 export default function DesignLabPage() {
-    const [archetypeId, setArchetypeId] = useState(1); 
+    const [archetypeId, setArchetypeId] = useState(1);
+    const active = ARCHETYPES.find(a => a.id === archetypeId) || ARCHETYPES[0];
 
-    const renderLayout = () => {
-        switch (archetypeId) {
-            case 2: return <SovereignSlab variant="gold" />;
-            case 3: return <SovereignSlab variant="obsidian" />;
-            case 4: return <SovereignSlab variant="apple" />;
-            case 5: return <SovereignSlab variant="wireframe" />;
-            default: return <SovereignSlab variant="standard" />;
-        }
-    };
-
-    // --- REUSABLE INTEGRATED SLAB COMPONENT ---
-    const SovereignSlab = ({ variant }: { variant: 'standard' | 'gold' | 'obsidian' | 'apple' | 'wireframe' }) => {
-        const isGold = variant === 'gold';
-        const isObsidian = variant === 'obsidian';
-        const isApple = variant === 'apple';
-        const isWireframe = variant === 'wireframe';
-
-        const themeColor = isGold ? "#F5A623" : "#2EB86B"; // Gold vs Asego Teal
-        const bridgeBg = isWireframe ? "bg-transparent border-y border-white/10" : (isGold ? "bg-[#F5A623]" : "bg-primary");
-        const bridgeText = isWireframe ? (isGold ? "text-[#F5A623]" : "text-primary") : "text-[#0F172A]";
-        const glassBg = isObsidian ? "bg-black/60" : (isApple ? "bg-white/80" : "bg-white/15");
-        const textMain = isObsidian ? "text-white" : "text-[#0F172A]";
-        const textSub = isObsidian ? "text-white/60" : "text-zinc-600";
+    const SovereignSlab = () => {
+        const themeColor = active.color;
+        const isDark = active.dark;
 
         return (
             <div className={cn(
-                "max-w-5xl w-full p-8 md:p-10 rounded-[2.5rem] border backdrop-blur-md shadow-2xl relative overflow-hidden group transition-all duration-700",
-                glassBg,
-                isObsidian ? "border-white/10" : "border-white/20"
+                "max-w-5xl w-full p-8 md:p-10 rounded-[2.5rem] border border-white/10 backdrop-blur-xl shadow-2xl relative overflow-hidden group transition-all duration-700",
+                isDark ? "bg-black/60" : "bg-white/5"
             )}>
-                {/* Top Rim Light */}
-                <div className="absolute top-0 left-0 w-full h-1" style={{ backgroundColor: themeColor }} />
+                {/* Top Rim Glow */}
+                <div className="absolute top-0 left-0 w-full h-[2px] opacity-50" style={{ backgroundColor: themeColor }} />
                 
-                <div className="space-y-6 md:space-y-8">
-                    <div className="space-y-3">
-                        <Badge variant="outline" className={cn(
-                            "text-[9px] font-black uppercase tracking-[0.4em] px-5 py-1 rounded-full bg-white/5",
-                            isObsidian ? "text-white/40 border-white/10" : "text-zinc-500 border-zinc-200/40"
-                        )}>
+                <div className="space-y-8">
+                    {/* 1. Technical Tag */}
+                    <div className="flex justify-start">
+                        <div className="bg-white/5 border border-white/10 rounded-md px-6 py-1 text-[9px] font-black text-white/40 uppercase tracking-[0.4em] italic font-headline">
                             INSTITUTIONAL OPERATING STANDARD
-                        </Badge>
-                        <h1 className={cn(
-                            "text-4xl md:text-6xl lg:text-[4.5rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic drop-shadow-sm",
-                            textMain
-                        )}>
-                            {HEADLINE}
-                        </h1>
+                        </div>
                     </div>
+
+                    {/* 2. Massive Headline */}
+                    <h1 className="text-5xl md:text-[5.5rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic text-white drop-shadow-2xl">
+                        STOP RELYING <br /> ON MEMORY.
+                    </h1>
                     
-                    <div className={cn("py-4 -mx-10 px-10 shadow-inner border-y border-black/5", bridgeBg)}>
-                        <p className={cn("text-base md:text-xl font-black uppercase tracking-[0.15em] font-headline italic text-center", bridgeText)}>
-                            {BRIDGE}
+                    {/* 3. The Structural Bridge Bar */}
+                    <div className="py-4 -mx-10 px-10 shadow-inner border-y border-black/20" style={{ backgroundColor: themeColor }}>
+                        <p className="text-base md:text-xl font-black uppercase tracking-[0.15em] font-headline italic text-center text-[#0F172A]">
+                            THIS IS WHAT OPERATIONAL CONTROL LOOKS LIKE.
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    {/* 4. Three Blocks Technical Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-2">
                         {FEATURES.map((f, i) => (
-                            <div key={i} className="space-y-1 border-l-2 pl-5" style={{ borderColor: `${themeColor}40` }}>
-                                <h4 className={cn("text-sm md:text-base font-black uppercase italic leading-tight", textMain)}>{f.title}</h4>
-                                <p className={cn("text-[10px] md:text-xs font-bold italic", textSub)}>{f.text}</p>
+                            <div key={i} className="space-y-1 border-l-2 pl-6" style={{ borderColor: `${themeColor}40` }}>
+                                <h4 className="text-sm md:text-base font-black uppercase italic leading-tight text-white">{f.title}</h4>
+                                <p className="text-[10px] md:text-xs font-bold italic text-white/40">{f.text}</p>
                             </div>
                         ))}
                     </div>
 
-                    <div className={cn("pt-6 border-t flex flex-col md:flex-row items-center justify-between gap-6", isObsidian ? "border-white/10" : "border-black/5")}>
-                        <div className="space-y-3 max-w-md text-left w-full">
-                            <div className="flex flex-wrap gap-x-4 gap-y-2">
+                    {/* 5. The Functional HUD Floor */}
+                    <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-8">
+                        <div className="space-y-4 max-w-lg text-left w-full">
+                            <div className="flex flex-wrap gap-x-6 gap-y-2">
                                 {TRUST_POINTS.map(tp => (
-                                    <span key={tp} className="text-[9px] font-black flex items-center gap-1.5 tracking-widest italic" style={{ color: themeColor }}>
-                                        <Check className="w-3 h-3 stroke-[4px]" /> {tp}
+                                    <span key={tp} className="text-[9px] font-black flex items-center gap-2 tracking-widest italic" style={{ color: themeColor }}>
+                                        <Check className="w-3.5 h-3.5 stroke-[4px]" /> {tp}
                                     </span>
                                 ))}
                             </div>
-                            <div className="border-l-4 pl-5" style={{ borderColor: themeColor }}>
-                                <p className={cn("text-[11px] md:text-sm font-bold italic leading-relaxed", textMain)}>
+                            <div className="border-l-4 pl-6" style={{ borderColor: themeColor }}>
+                                <p className="text-xs md:text-sm font-bold italic leading-relaxed text-white/80">
                                     {VALUE_LINE}
                                 </p>
                             </div>
                         </div>
                         <Button 
                             size="lg" 
-                            className="h-16 px-10 rounded-2xl text-black font-black uppercase italic text-sm tracking-widest hover:scale-105 transition-all shadow-xl border-none shrink-0"
+                            className="h-16 md:h-20 px-10 md:px-14 rounded-2xl text-[#0F172A] font-black uppercase italic text-sm md:text-base tracking-widest hover:scale-105 active:scale-95 transition-all shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)] border-none shrink-0"
                             style={{ backgroundColor: themeColor }}
                         >
                             DEPLOY YOUR SYSTEM → ₹999
@@ -148,30 +140,31 @@ export default function DesignLabPage() {
             <main className="flex-1 relative">
                 {/* ARCHETYPE SELECTOR */}
                 <div className="fixed top-24 right-8 z-50 flex flex-col gap-2 p-2 bg-black/40 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl">
-                    <span className="text-[8px] font-black text-center text-white/20 uppercase tracking-widest pb-1 border-b border-white/5 mb-1">SOVEREIGN V131</span>
-                    {[1, 2, 3, 4, 5].map((id) => (
+                    <span className="text-[8px] font-black text-center text-white/20 uppercase tracking-widest pb-1 border-b border-white/5 mb-1">SOVEREIGN V132</span>
+                    {ARCHETYPES.map((arch) => (
                         <button 
-                            key={id} 
-                            onClick={() => setArchetypeId(id)}
+                            key={arch.id} 
+                            onClick={() => setArchetypeId(arch.id)}
                             className={cn(
-                                "w-10 h-10 rounded-xl font-black text-xs transition-all font-headline",
-                                archetypeId === id 
-                                    ? (id === 2 ? "bg-[#F5A623] text-black" : "bg-primary text-black") 
+                                "w-10 h-10 rounded-xl font-black text-xs transition-all font-headline flex items-center justify-center",
+                                archetypeId === arch.id 
+                                    ? "text-black" 
                                     : "hover:bg-white/5 text-white/40"
                             )}
+                            style={{ backgroundColor: archetypeId === arch.id ? arch.color : 'transparent' }}
                         >
-                            0{id}
+                            0{arch.id}
                         </button>
                     ))}
                 </div>
 
                 {/* --- HERO SECTION --- */}
-                <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+                <section className="relative w-full h-screen flex items-center justify-center overflow-hidden pt-16">
                     <StaticVideo />
                     
                     <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center justify-center">
-                        <div className="w-full flex justify-center translate-y-[-2%]">
-                            {renderLayout()}
+                        <div className="w-full flex justify-center -translate-y-4">
+                            <SovereignSlab />
                         </div>
                     </div>
                 </section>
@@ -181,18 +174,18 @@ export default function DesignLabPage() {
                     <div className="max-w-7xl mx-auto flex justify-between items-center">
                         <div className="flex items-center gap-6">
                             <div className="flex items-center gap-3">
-                                <div className="w-2 h-2 rounded-full animate-pulse bg-primary shadow-[0_0_8px_rgba(46,184,107,0.8)]" />
-                                <span className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">
-                                    SOVEREIGN_COMMAND_OS_ACTIVE
+                                <div className="w-2 h-2 rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.5)]" style={{ backgroundColor: active.color }} />
+                                <span className="text-[10px] font-black uppercase tracking-[0.4em] italic font-headline" style={{ color: active.color }}>
+                                    SYSTEM_ACTIVE // {active.name}
                                 </span>
                             </div>
                             <div className="hidden sm:block h-4 w-px bg-white/10 mx-2" />
                             <span className="hidden sm:block text-[9px] font-black text-white/20 uppercase tracking-[0.4em] italic font-headline">
-                                SYSTEM_STATUS: ARCHETYPE_0{archetypeId} // STABLE
+                                ONE_GLANCE_PERFORMANCE: STABLE
                             </span>
                         </div>
                         <div className="hidden md:flex items-center gap-10 text-[8px] font-black uppercase tracking-[0.4em] italic text-white/10 font-headline">
-                            <span className="flex items-center gap-2"><SearchCheck className="w-3 h-3" /> AUDIT_SHIELD_V131</span>
+                            <span className="flex items-center gap-2"><SearchCheck className="w-3 h-3" /> AUDIT_SHIELD_V132</span>
                             <span className="flex items-center gap-2"><Lock className="w-3 h-3" /> ZERO_SaaS_LOCK_IN</span>
                             <span className="flex items-center gap-2"><Cpu className="w-3 h-3" /> HARDWARE_ACCELERATED</span>
                         </div>
