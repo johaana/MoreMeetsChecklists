@@ -71,7 +71,7 @@ const BrandLogo = ({ isScrolled, isDarkText }: { isScrolled: boolean, isDarkText
     </Link>
 );
 
-export function SiteHeader() {
+export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
     const [isSheetOpen, setIsSheetOpen] = React.useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
     const pathname = usePathname();
@@ -79,6 +79,9 @@ export function SiteHeader() {
 
     // Visibility logic for Design Lab
     const isDesignLab = pathname === '/design-lab';
+    
+    // Theme logic: prioritize forceTheme, then isDesignLab (dark), then isScrolled (dark)
+    const shouldShowDark = forceTheme ? (forceTheme === 'dark') : (isDesignLab || isScrolled);
 
     React.useEffect(() => {
         setIsSheetOpen(false);
@@ -97,7 +100,7 @@ export function SiteHeader() {
 
     const navLinkClass = cn(
         "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-colors",
-        (isScrolled || isDesignLab) ? "text-[#0F172A]/60 hover:text-[#0F172A]" : "text-white/60 hover:text-white"
+        shouldShowDark ? "text-[#0F172A]/60 hover:text-[#0F172A]" : "text-white/60 hover:text-white"
     );
 
     return (
@@ -108,7 +111,7 @@ export function SiteHeader() {
                 : "bg-transparent border-b border-transparent"
         )}>
             <div className="flex items-center">
-                <BrandLogo isScrolled={isScrolled} isDarkText={isDesignLab} />
+                <BrandLogo isScrolled={isScrolled} isDarkText={shouldShowDark} />
             </div>
 
             <nav className="ml-auto hidden md:flex gap-10 items-center">
@@ -149,7 +152,7 @@ export function SiteHeader() {
             <div className="md:hidden ml-auto flex items-center">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", (isScrolled || isDesignLab) ? "text-[#0F172A]" : "text-white/60 hover:bg-white/10")}>
+                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", shouldShowDark ? "text-[#0F172A]" : "text-white/60 hover:bg-white/10")}>
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>

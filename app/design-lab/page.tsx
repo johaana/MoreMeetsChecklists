@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState } from 'react';
@@ -25,8 +26,8 @@ const ARCHETYPES = [
     { id: 6, name: "AZURE SKY", color: "#3B82F6", text: "#0F172A", layout: 'solar' },
     { id: 7, name: "VIVID PURPLE", color: "#8B5CF6", text: "#FFFFFF", layout: 'glow' },
     { id: 8, name: "EMERALD HUD", color: "#10B981", text: "#FFFFFF", layout: 'glow' },
-    { id: 9, name: "MIDNIGHT GLOW", color: "#22D3EE", text: "#FFFFFF", layout: 'glow' }, // NO CHANGE
-    { id: 10, name: "SOLAR MINIMAL", color: "#F97316", text: "#0F172A", layout: 'solar' }, // NO CHANGE
+    { id: 9, name: "MIDNIGHT GLOW", color: "#22D3EE", text: "#FFFFFF", layout: 'glow' },
+    { id: 10, name: "SOLAR MINIMAL", color: "#F97316", text: "#0F172A", layout: 'solar' },
     { id: 11, name: "ROYAL INDIGO", color: "#6366F1", text: "#FFFFFF", layout: 'glow' },
     { id: 12, name: "ROSE COMMAND", color: "#F43F5E", text: "#FFFFFF", layout: 'glow' }
 ];
@@ -52,21 +53,21 @@ const StaticVideo = ({ layout }: { layout: string }) => {
             />
             {/* 
                 THE INDUSTRIAL BLADE MASK: 
-                A high-gravity linear gradient column on the far left.
-                Provides a dedicated zone for the Site Header and Headlines.
+                High-gravity linear gradient column on the far left.
+                Provides a rock-solid bed for the Site Header, Logo, and Headlines.
             */}
             <div className={cn(
                 "absolute inset-0 z-10 w-full transition-all duration-1000",
                 isDark 
-                    ? "bg-gradient-to-r from-black via-black/40 to-transparent" 
-                    : "bg-gradient-to-r from-white via-white/50 to-transparent"
+                    ? "bg-gradient-to-r from-black via-black/60 to-transparent" 
+                    : "bg-gradient-to-r from-white via-white/70 to-transparent"
             )} />
         </div>
     );
 };
 
 export default function DesignLabPage() {
-    const [archetypeId, setArchetypeId] = useState(1);
+    const [archetypeId, setArchetypeId] = useState(9);
     const active = ARCHETYPES.find(a => a.id === archetypeId) || ARCHETYPES[0];
 
     const SovereignSlab = () => {
@@ -79,9 +80,6 @@ export default function DesignLabPage() {
             <div className="w-full transition-all duration-700 relative z-20 max-w-lg bg-transparent border-none shadow-none p-0">
                 <div className="space-y-10 relative z-10 max-h-[85vh] flex flex-col justify-center">
                     <div className="space-y-4">
-                        <Badge variant="outline" className="text-[10px] font-black uppercase tracking-[0.4em] px-4 py-1.5 rounded-none" style={{ borderColor: `${themeColor}40`, color: themeColor, backgroundColor: `${themeColor}10` }}>
-                            TECHNICAL MANDATE
-                        </Badge>
                         <div className="space-y-2">
                             <h1 className="text-4xl md:text-[4.5rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: textColor }}>
                                 STOP RELYING <br /> ON MEMORY.
@@ -146,7 +144,7 @@ export default function DesignLabPage() {
 
     return (
         <div className="flex flex-col min-h-screen selection:bg-primary/20 overflow-hidden font-body bg-black">
-            <SiteHeader />
+            <SiteHeader forceTheme={active.layout === 'glow' ? 'light' : 'dark'} />
 
             <main className="flex-1 relative flex flex-col h-[100dvh]">
                 <StaticVideo layout={active.layout} />
