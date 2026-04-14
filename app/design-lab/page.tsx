@@ -26,8 +26,8 @@ import { Footer } from '@/components/layout/footer';
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 const ARCHETYPES = [
-    { id: 1, name: "SOVEREIGN GREEN", color: "#2EB86B", text: "#0F172A", layout: 'glass' },
-    { id: 2, name: "SOVEREIGN GOLD", color: "#F5A623", text: "#0F172A", layout: 'glass' },
+    { id: 1, name: "EXECUTIVE GREEN", color: "#2EB86B", text: "#0F172A", layout: 'glass' },
+    { id: 2, name: "PRESTIGE GOLD", color: "#F5A623", text: "#0F172A", layout: 'glass' },
     { id: 3, name: "WHITE SPLIT (FRAMELESS)", color: "#2EB86B", text: "#0F172A", layout: 'split' },
     { id: 4, name: "GHOST COMMAND (FRAMELESS)", color: "#2EB86B", text: "#FFFFFF", layout: 'ghost' },
     { id: 5, name: "CARBON TECHNICAL", color: "#F97316", text: "#FFFFFF", layout: 'carbon' },
@@ -50,25 +50,26 @@ const StaticVideo = ({ layout }: { layout: string }) => {
     const isDark = layout === 'ghost' || layout === 'carbon' || layout === 'glow';
     
     return (
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-zinc-100">
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-black">
             <video 
                 src={VIDEO_URL} 
                 autoPlay 
                 loop 
                 muted 
                 playsInline 
-                className="w-full h-full object-cover opacity-90 transition-opacity duration-1000 will-change-transform" 
+                className="w-full h-full object-cover opacity-95 transition-opacity duration-1000 will-change-transform" 
             />
             {/* 
-                THE BLADE MASK: 
-                A high-gravity linear gradient column on the left to ensure 100% legibility 
-                of text and logo while keeping the center and right side 100% clear.
+                THE INDUSTRIAL BLADE MASK: 
+                A high-gravity linear gradient column on the far left.
+                Starts at high opacity to protect the Logo and Headlines,
+                transitions rapidly to transparency to leave the video clear.
             */}
             <div className={cn(
                 "absolute inset-0 z-10 w-full transition-all duration-1000",
                 isDark 
-                    ? "bg-gradient-to-r from-black via-black/60 to-transparent" 
-                    : "bg-gradient-to-r from-zinc-50 via-zinc-50/70 to-transparent"
+                    ? "bg-gradient-to-r from-black/90 via-black/40 to-transparent" 
+                    : "bg-gradient-to-r from-white/95 via-white/50 to-transparent"
             )} />
         </div>
     );
@@ -86,11 +87,11 @@ export default function DesignLabPage() {
 
         const containerClasses = cn(
             "w-full transition-all duration-700 relative z-20",
-            layout.includes('glass') && "max-w-lg p-8 md:p-12 rounded-[3.5rem] border border-white/20 backdrop-blur-3xl shadow-2xl bg-white/60",
-            layout === 'glass_ivory' && "max-w-lg p-8 md:p-12 rounded-[3.5rem] border border-zinc-200 backdrop-blur-3xl shadow-2xl bg-zinc-50/70",
-            layout === 'glass_light' && "max-w-lg p-8 md:p-12 rounded-[3.5rem] border border-white/50 backdrop-blur-2xl shadow-xl bg-white/85",
-            layout === 'carbon' && "max-w-lg p-8 md:p-12 rounded-2xl border border-zinc-800 backdrop-blur-2xl shadow-2xl bg-zinc-950/85",
-            (layout === 'split' || layout === 'ghost' || layout === 'blueprint' || layout === 'solar' || layout === 'glow') && "max-w-lg bg-transparent border-none shadow-none p-0"
+            layout.includes('glass') && "max-w-xl p-10 md:p-12 rounded-[3.5rem] border border-white/20 backdrop-blur-3xl shadow-2xl bg-white/45",
+            layout === 'glass_ivory' && "max-w-xl p-10 md:p-12 rounded-[3.5rem] border border-zinc-200 backdrop-blur-3xl shadow-2xl bg-zinc-50/50",
+            layout === 'glass_light' && "max-w-xl p-10 md:p-12 rounded-[3.5rem] border border-white/50 backdrop-blur-2xl shadow-xl bg-white/70",
+            layout === 'carbon' && "max-w-xl p-10 md:p-12 rounded-2xl border border-zinc-800 backdrop-blur-2xl shadow-2xl bg-zinc-950/70",
+            (layout === 'split' || layout === 'ghost' || layout === 'blueprint' || layout === 'solar' || layout === 'glow') && "max-w-xl bg-transparent border-none shadow-none p-0"
         );
 
         return (
@@ -106,7 +107,7 @@ export default function DesignLabPage() {
                             TECHNICAL MANDATE
                         </Badge>
                         <div className="space-y-2">
-                            <h1 className="text-4xl md:text-[4.2rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: textColor }}>
+                            <h1 className="text-4xl md:text-[4.5rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: textColor }}>
                                 STOP RELYING <br /> ON MEMORY.
                             </h1>
                             <h2 className="text-xl md:text-[1.8rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic" style={{ color: themeColor }}>
@@ -168,10 +169,10 @@ export default function DesignLabPage() {
     };
 
     return (
-        <div className="flex flex-col min-h-screen selection:bg-primary/20 overflow-hidden font-body bg-zinc-100">
+        <div className="flex flex-col min-h-screen selection:bg-primary/20 overflow-hidden font-body bg-black">
             <SiteHeader />
 
-            <main className="flex-1 relative flex flex-col justify-center items-center h-[100dvh]">
+            <main className="flex-1 relative flex flex-col h-[100dvh]">
                 <StaticVideo layout={active.layout} />
 
                 {/* DYNAMIC SELECTOR PILL - FLOATING RIGHT */}
@@ -199,8 +200,13 @@ export default function DesignLabPage() {
                     </div>
                 </div>
 
-                <div className="container relative z-20 flex h-full px-6 md:px-16 mx-auto items-center">
-                    <div className="w-full flex transition-all duration-1000 justify-start">
+                {/* 
+                    EXTREME LEFT CONTAINER:
+                    - lg:pl-16 for absolute edge alignment
+                    - pt-32 to clear the SiteHeader logo and provide a safe visual zone
+                */}
+                <div className="container relative z-20 h-full px-6 lg:pl-16 mx-auto pt-32">
+                    <div className="w-full flex transition-all duration-1000 justify-start h-full">
                         <SovereignSlab />
                     </div>
                 </div>
