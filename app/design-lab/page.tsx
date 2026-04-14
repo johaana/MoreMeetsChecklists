@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
@@ -8,16 +8,7 @@ import {
     Target,
     Lock,
     ArrowRight,
-    ShieldCheck,
-    Activity,
-    Zap,
-    Cpu,
-    CheckCircle2,
-    ChevronRight,
-    SearchCheck,
-    GraduationCap,
-    AlertTriangle,
-    ClipboardCheck
+    ShieldCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -26,28 +17,28 @@ import { Footer } from '@/components/layout/footer';
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 const ARCHETYPES = [
-    { id: 1, name: "EXECUTIVE GREEN", color: "#2EB86B", text: "#0F172A", layout: 'glass' },
-    { id: 2, name: "PRESTIGE GOLD", color: "#F5A623", text: "#0F172A", layout: 'glass' },
-    { id: 3, name: "WHITE SPLIT (FRAMELESS)", color: "#2EB86B", text: "#0F172A", layout: 'split' },
-    { id: 4, name: "GHOST COMMAND (FRAMELESS)", color: "#2EB86B", text: "#FFFFFF", layout: 'ghost' },
-    { id: 5, name: "CARBON TECHNICAL", color: "#F97316", text: "#FFFFFF", layout: 'carbon' },
-    { id: 6, name: "IVORY PRESTIGE", color: "#00AE8D", text: "#0F172A", layout: 'glass_ivory' },
-    { id: 7, name: "SaaS MODERN", color: "#3B82F6", text: "#0F172A", layout: 'glass_light' },
-    { id: 8, name: "TITANIUM BLUEPRINT", color: "#38BDF8", text: "#0F172A", layout: 'blueprint' },
-    { id: 9, name: "MIDNIGHT GLOW", color: "#22D3EE", text: "#FFFFFF", layout: 'glow' },
-    { id: 10, name: "SOLAR MINIMAL", color: "#F97316", text: "#0F172A", layout: 'solar' },
-    { id: 11, name: "LEMON SAFETY", color: "#FACC15", text: "#0F172A", layout: 'glass' },
-    { id: 12, name: "MODERN PINK", color: "#EC4899", text: "#0F172A", layout: 'glass' }
+    { id: 1, name: "EXECUTIVE GREEN", color: "#2EB86B", text: "#0F172A", layout: 'solar' },
+    { id: 2, name: "PRESTIGE GOLD", color: "#F5A623", text: "#0F172A", layout: 'solar' },
+    { id: 3, name: "SAFETY RED", color: "#E11D48", text: "#0F172A", layout: 'solar' },
+    { id: 4, name: "LEMON SAFETY", color: "#FACC15", text: "#0F172A", layout: 'solar' },
+    { id: 5, name: "MODERN PINK", color: "#EC4899", text: "#0F172A", layout: 'solar' },
+    { id: 6, name: "AZURE SKY", color: "#3B82F6", text: "#0F172A", layout: 'solar' },
+    { id: 7, name: "VIVID PURPLE", color: "#8B5CF6", text: "#FFFFFF", layout: 'glow' },
+    { id: 8, name: "EMERALD HUD", color: "#10B981", text: "#FFFFFF", layout: 'glow' },
+    { id: 9, name: "MIDNIGHT GLOW", color: "#22D3EE", text: "#FFFFFF", layout: 'glow' }, // NO CHANGE
+    { id: 10, name: "SOLAR MINIMAL", color: "#F97316", text: "#0F172A", layout: 'solar' }, // NO CHANGE
+    { id: 11, name: "ROYAL INDIGO", color: "#6366F1", text: "#FFFFFF", layout: 'glow' },
+    { id: 12, name: "ROSE COMMAND", color: "#F43F5E", text: "#FFFFFF", layout: 'glow' }
 ];
 
 const FEATURES = [
-    "PRE-BUILT SOPS",
+    "PRE-BUILT SOPs",
     "LIVE DASHBOARD",
     "AUDIT-READY"
 ];
 
 const StaticVideo = ({ layout }: { layout: string }) => {
-    const isDark = layout === 'ghost' || layout === 'carbon' || layout === 'glow';
+    const isDark = layout === 'glow';
     
     return (
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-black">
@@ -57,19 +48,18 @@ const StaticVideo = ({ layout }: { layout: string }) => {
                 loop 
                 muted 
                 playsInline 
-                className="w-full h-full object-cover opacity-95 transition-opacity duration-1000 will-change-transform" 
+                className="w-full h-full object-cover opacity-90 transition-opacity duration-1000 will-change-transform" 
             />
             {/* 
                 THE INDUSTRIAL BLADE MASK: 
                 A high-gravity linear gradient column on the far left.
-                Starts at high opacity to protect the Logo and Headlines,
-                transitions rapidly to transparency to leave the video clear.
+                Provides a dedicated zone for the Site Header and Headlines.
             */}
             <div className={cn(
                 "absolute inset-0 z-10 w-full transition-all duration-1000",
                 isDark 
-                    ? "bg-gradient-to-r from-black/90 via-black/40 to-transparent" 
-                    : "bg-gradient-to-r from-white/95 via-white/50 to-transparent"
+                    ? "bg-gradient-to-r from-black via-black/40 to-transparent" 
+                    : "bg-gradient-to-r from-white via-white/50 to-transparent"
             )} />
         </div>
     );
@@ -83,24 +73,10 @@ export default function DesignLabPage() {
         const themeColor = active.color;
         const textColor = active.text;
         const layout = active.layout;
-        const isDark = layout === 'ghost' || layout === 'carbon' || layout === 'glow';
-
-        const containerClasses = cn(
-            "w-full transition-all duration-700 relative z-20",
-            layout.includes('glass') && "max-w-xl p-10 md:p-12 rounded-[3.5rem] border border-white/20 backdrop-blur-3xl shadow-2xl bg-white/45",
-            layout === 'glass_ivory' && "max-w-xl p-10 md:p-12 rounded-[3.5rem] border border-zinc-200 backdrop-blur-3xl shadow-2xl bg-zinc-50/50",
-            layout === 'glass_light' && "max-w-xl p-10 md:p-12 rounded-[3.5rem] border border-white/50 backdrop-blur-2xl shadow-xl bg-white/70",
-            layout === 'carbon' && "max-w-xl p-10 md:p-12 rounded-2xl border border-zinc-800 backdrop-blur-2xl shadow-2xl bg-zinc-950/70",
-            (layout === 'split' || layout === 'ghost' || layout === 'blueprint' || layout === 'solar' || layout === 'glow') && "max-w-xl bg-transparent border-none shadow-none p-0"
-        );
+        const isDark = layout === 'glow';
 
         return (
-            <div className={containerClasses}>
-                {/* Visual Rim Accent */}
-                {layout.includes('glass') && (
-                    <div className="absolute top-0 left-0 w-1/3 h-[3px] opacity-60 rounded-full blur-[1px]" style={{ backgroundColor: themeColor }} />
-                )}
-                
+            <div className="w-full transition-all duration-700 relative z-20 max-w-lg bg-transparent border-none shadow-none p-0">
                 <div className="space-y-10 relative z-10 max-h-[85vh] flex flex-col justify-center">
                     <div className="space-y-4">
                         <Badge variant="outline" className="text-[10px] font-black uppercase tracking-[0.4em] px-4 py-1.5 rounded-none" style={{ borderColor: `${themeColor}40`, color: themeColor, backgroundColor: `${themeColor}10` }}>
@@ -132,7 +108,7 @@ export default function DesignLabPage() {
                             <Button 
                                 size="lg" 
                                 className="h-16 md:h-20 px-10 rounded-xl font-black uppercase italic text-sm md:text-xl tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl border-none w-fit group"
-                                style={{ backgroundColor: themeColor, color: isDark ? '#FFFFFF' : '#0F172A' }}
+                                style={{ backgroundColor: themeColor, color: isDark ? '#0F172A' : '#FFFFFF' }}
                             >
                                 DEPLOY SYSTEM <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
                             </Button>
@@ -148,7 +124,7 @@ export default function DesignLabPage() {
                         </div>
                     </div>
 
-                    <div className={cn("pt-8 flex flex-col gap-6", !layout.includes('glass') ? "" : "border-t border-black/5")}>
+                    <div className="pt-8 flex flex-col gap-6">
                         <p className="text-[11px] md:text-xs font-bold italic opacity-60 leading-relaxed max-w-sm" style={{ color: textColor }}>
                             Pre-built, editable SOPs with live tracking and dashboard. Includes trainer notes for faster training. Audit-ready.
                         </p>
@@ -200,11 +176,7 @@ export default function DesignLabPage() {
                     </div>
                 </div>
 
-                {/* 
-                    EXTREME LEFT CONTAINER:
-                    - lg:pl-16 for absolute edge alignment
-                    - pt-32 to clear the SiteHeader logo and provide a safe visual zone
-                */}
+                {/* EXTREME LEFT CONTAINER with pt-32 for Logo Safety */}
                 <div className="container relative z-20 h-full px-6 lg:pl-16 mx-auto pt-32">
                     <div className="w-full flex transition-all duration-1000 justify-start h-full">
                         <SovereignSlab />
