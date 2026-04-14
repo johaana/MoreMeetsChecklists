@@ -6,14 +6,11 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
     Check,
-    Target,
+    ArrowRight, 
+    ShieldCheck, 
+    Activity, 
     Lock,
-    ArrowRight,
-    ShieldCheck,
-    Activity,
-    ChevronRight,
-    SearchCheck,
-    GraduationCap
+    Zap
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -30,7 +27,7 @@ const ARCHETYPES = [
     { id: 6, name: "AZURE SKY", color: "#3B82F6", text: "#0F172A", layout: 'solar' },
     { id: 7, name: "VIVID PURPLE", color: "#8B5CF6", text: "#FFFFFF", layout: 'glow' },
     { id: 8, name: "EMERALD HUD", color: "#10B981", text: "#FFFFFF", layout: 'glow' },
-    { id: 9, name: "GOLDEN GLOW", color: "#F5A623", text: "#FFFFFF", layout: 'glow' },
+    { id: 9, name: "GOLDEN COMMAND", color: "#F5A623", text: "#FFFFFF", layout: 'glow' },
     { id: 10, name: "SOLAR MINIMAL", color: "#F97316", text: "#0F172A", layout: 'solar' },
     { id: 11, name: "ROYAL INDIGO", color: "#6366F1", text: "#FFFFFF", layout: 'glow' },
     { id: 12, name: "ROSE COMMAND", color: "#F43F5E", text: "#FFFFFF", layout: 'glow' }
@@ -55,15 +52,12 @@ const StaticVideo = ({ layout }: { layout: string }) => {
                 playsInline 
                 className="w-full h-full object-cover opacity-90 transition-opacity duration-1000 will-change-transform" 
             />
-            {/* 
-                THE INDUSTRIAL BLADE MASK: 
-                High-gravity linear gradient providing 100% legibility for the extreme-left logo and text.
-            */}
+            {/* THE INDUSTRIAL BLADE MASK: High-gravity gradient for absolute legibility */}
             <div className={cn(
                 "absolute inset-0 z-10 w-full transition-all duration-1000",
                 isDark 
-                    ? "bg-gradient-to-r from-black/95 via-black/60 to-transparent" 
-                    : "bg-gradient-to-r from-white/95 via-white/60 to-transparent"
+                    ? "bg-gradient-to-r from-black via-black/80 to-transparent" 
+                    : "bg-gradient-to-r from-white via-white/80 to-transparent"
             )} />
         </div>
     );
@@ -81,10 +75,10 @@ export default function DesignLabPage() {
 
         return (
             <div className="w-full transition-all duration-700 relative z-20 max-w-xl bg-transparent border-none p-0 flex flex-col justify-center">
-                <div className="space-y-6 md:space-y-10 relative z-10">
+                <div className="space-y-4 md:space-y-8 relative z-10">
                     
                     {/* NARRATIVE HOOK */}
-                    <div className="space-y-2 md:space-y-3">
+                    <div className="space-y-2">
                         <h1 className="text-4xl md:text-[5.5rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: textColor }}>
                             STOP RELYING <br /> ON MEMORY.
                         </h1>
@@ -94,7 +88,7 @@ export default function DesignLabPage() {
                         </h2>
                     </div>
 
-                    {/* AUTOPILOT BLOCK - HIGH EMPHASIS */}
+                    {/* EXECUTIVE ANCHOR - AUTOPILOT BLOCK */}
                     <div className="space-y-6">
                         <div className="space-y-2 border-l-4 pl-8" style={{ borderColor: `${themeColor}` }}>
                             <p className="text-2xl md:text-4xl font-black italic tracking-tight leading-tight" style={{ color: textColor }}>
@@ -116,11 +110,11 @@ export default function DesignLabPage() {
                                 DEPLOY SYSTEM <ArrowRight className="ml-4 h-6 w-6 transition-transform group-hover:translate-x-1.5" />
                             </Button>
                             <div className="flex items-center gap-4 px-1">
-                                <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
+                                <span className="text-xs font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
                                     ONE-TIME: ₹999
                                 </span>
                                 <div className="w-1.5 h-1.5 rounded-full bg-current opacity-20" style={{ color: textColor }} />
-                                <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
+                                <span className="text-xs font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
                                     OWN FOREVER
                                 </span>
                             </div>
@@ -138,7 +132,7 @@ export default function DesignLabPage() {
                                     <div className="w-4 h-4 rounded-full flex items-center justify-center bg-current opacity-10" style={{ color: themeColor }}>
                                         <Check className="w-2.5 h-2.5 stroke-[4px]" style={{ color: themeColor }} />
                                     </div>
-                                    <span className="text-[10px] md:text-[11px] font-black uppercase tracking-widest italic opacity-70" style={{ color: textColor }}>{feat}</span>
+                                    <span className="text-xs font-black uppercase tracking-widest italic opacity-70" style={{ color: textColor }}>{feat}</span>
                                 </div>
                             ))}
                         </div>
@@ -181,7 +175,7 @@ export default function DesignLabPage() {
                 </div>
 
                 {/* EXTREME LEFT CONTAINER with proper offset for Header safety */}
-                <div className="container relative z-20 h-full px-6 lg:pl-16 mx-auto pt-32 pb-24">
+                <div className="container relative z-20 h-full px-6 lg:pl-16 mx-auto pt-24 pb-16">
                     <div className="w-full flex transition-all duration-1000 justify-start h-full items-center">
                         <SovereignSlab />
                     </div>
@@ -199,14 +193,14 @@ export default function DesignLabPage() {
                             <div className="flex items-center gap-3">
                                 <div className="w-2 h-2 rounded-full animate-pulse shadow-sm" style={{ backgroundColor: active.color }} />
                                 <span className={cn(
-                                    "text-[10px] md:text-[11px] font-black uppercase tracking-[0.5em] italic font-headline",
+                                    "text-xs font-black uppercase tracking-[0.5em] italic font-headline",
                                     active.layout === 'glow' ? "text-white/40" : "text-zinc-600"
                                 )}>
                                     SOVEREIGN_SYSTEM // ACTIVE_NODE: {active.name}
                                 </span>
                             </div>
                         </div>
-                        <div className="hidden md:flex items-center gap-10 text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] italic font-headline">
+                        <div className="hidden md:flex items-center gap-10 text-xs font-black uppercase tracking-[0.4em] italic font-headline">
                             <span className="flex items-center gap-2 opacity-40"><Activity className="w-4 h-4" /> ZERO_SCROLL_MANDATE</span>
                             <span className="flex items-center gap-2 opacity-40"><ShieldCheck className="w-4 h-4" /> AUDIT_READY_V135</span>
                             <span className="flex items-center gap-2 opacity-40"><Lock className="w-4 h-4" /> SOVEREIGN_IP_SECURED</span>
