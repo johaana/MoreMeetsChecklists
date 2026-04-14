@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -26,7 +25,7 @@ const ARCHETYPES = [
     { id: 6, name: "AZURE SKY", color: "#3B82F6", text: "#0F172A", layout: 'solar' },
     { id: 7, name: "VIVID PURPLE", color: "#8B5CF6", text: "#FFFFFF", layout: 'glow' },
     { id: 8, name: "EMERALD HUD", color: "#10B981", text: "#FFFFFF", layout: 'glow' },
-    { id: 9, name: "MIDNIGHT GLOW", color: "#22D3EE", text: "#FFFFFF", layout: 'glow' },
+    { id: 9, name: "GOLDEN GLOW", color: "#F5A623", text: "#FFFFFF", layout: 'glow' },
     { id: 10, name: "SOLAR MINIMAL", color: "#F97316", text: "#0F172A", layout: 'solar' },
     { id: 11, name: "ROYAL INDIGO", color: "#6366F1", text: "#FFFFFF", layout: 'glow' },
     { id: 12, name: "ROSE COMMAND", color: "#F43F5E", text: "#FFFFFF", layout: 'glow' }
@@ -59,8 +58,8 @@ const StaticVideo = ({ layout }: { layout: string }) => {
             <div className={cn(
                 "absolute inset-0 z-10 w-full transition-all duration-1000",
                 isDark 
-                    ? "bg-gradient-to-r from-black via-black/60 to-transparent" 
-                    : "bg-gradient-to-r from-white via-white/70 to-transparent"
+                    ? "bg-gradient-to-r from-black via-black/70 to-transparent" 
+                    : "bg-gradient-to-r from-white via-white/85 to-transparent"
             )} />
         </div>
     );
@@ -78,61 +77,59 @@ export default function DesignLabPage() {
 
         return (
             <div className="w-full transition-all duration-700 relative z-20 max-w-lg bg-transparent border-none shadow-none p-0">
-                <div className="space-y-10 relative z-10 max-h-[85vh] flex flex-col justify-center">
-                    <div className="space-y-4">
-                        <div className="space-y-2">
-                            <h1 className="text-4xl md:text-[4.5rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: textColor }}>
-                                STOP RELYING <br /> ON MEMORY.
-                            </h1>
-                            <h2 className="text-xl md:text-[1.8rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic" style={{ color: themeColor }}>
-                                Run pre-built SOPs. <br />
-                                <span className="text-[0.8em] opacity-80">Done right. Every day.</span>
-                            </h2>
-                        </div>
+                <div className="space-y-6 relative z-10 max-h-[80vh] flex flex-col justify-center">
+                    <div className="space-y-2">
+                        <h1 className="text-4xl md:text-[4rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: textColor }}>
+                            STOP RELYING <br /> ON MEMORY.
+                        </h1>
+                        <h2 className="text-xl md:text-[1.6rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic" style={{ color: themeColor }}>
+                            Run pre-built SOPs. <br />
+                            <span className="text-[0.8em] opacity-80">Done right. Every day.</span>
+                        </h2>
                     </div>
 
-                    <div className="space-y-6">
-                        <div className="space-y-2 border-l-4 pl-6" style={{ borderColor: `${themeColor}40` }}>
-                            <p className="text-xl font-bold italic leading-tight" style={{ color: textColor }}>
+                    <div className="space-y-4">
+                        <div className="space-y-1 border-l-4 pl-6" style={{ borderColor: `${themeColor}40` }}>
+                            <p className="text-lg md:text-xl font-bold italic leading-tight" style={{ color: textColor }}>
                                 Operations on autopilot. <br />
                                 <span style={{ color: themeColor }}>Without SaaS.</span>
                             </p>
-                            <p className="text-xs md:text-sm font-medium italic opacity-70 leading-relaxed max-w-[280px]" style={{ color: textColor }}>
+                            <p className="text-[10px] md:text-xs font-medium italic opacity-70 leading-relaxed max-w-[280px]" style={{ color: textColor }}>
                                 No follow-ups. No reporting chaos. <br /> Everything updates as work happens. 
                             </p>
                         </div>
 
-                        <div className="flex flex-col gap-4 pt-2">
+                        <div className="flex flex-col gap-3 pt-1">
                             <Button 
                                 size="lg" 
-                                className="h-16 md:h-20 px-10 rounded-xl font-black uppercase italic text-sm md:text-xl tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl border-none w-fit group"
+                                className="h-14 md:h-16 px-8 md:px-10 rounded-xl font-black uppercase italic text-xs md:text-lg tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl border-none w-fit group"
                                 style={{ backgroundColor: themeColor, color: isDark ? '#0F172A' : '#FFFFFF' }}
                             >
-                                DEPLOY SYSTEM <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
+                                DEPLOY SYSTEM <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </Button>
                             <div className="flex items-center gap-3 px-1">
-                                <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
+                                <span className="text-[9px] font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
                                     ONE-TIME: ₹999
                                 </span>
                                 <div className="w-1 h-1 rounded-full bg-current opacity-20" style={{ color: textColor }} />
-                                <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
+                                <span className="text-[9px] font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
                                     OWN FOREVER
                                 </span>
                             </div>
                         </div>
                     </div>
 
-                    <div className="pt-8 flex flex-col gap-6">
-                        <p className="text-[11px] md:text-xs font-bold italic opacity-60 leading-relaxed max-w-sm" style={{ color: textColor }}>
+                    <div className="pt-4 flex flex-col gap-4">
+                        <p className="text-[10px] md:text-[11px] font-bold italic opacity-60 leading-relaxed max-w-sm" style={{ color: textColor }}>
                             Pre-built, editable SOPs with live tracking and dashboard. Includes trainer notes for faster training. Audit-ready.
                         </p>
-                        <div className="flex flex-wrap gap-x-8 gap-y-3">
+                        <div className="flex flex-wrap gap-x-6 gap-y-2">
                             {FEATURES.map(feat => (
                                 <div key={feat} className="flex items-center gap-2">
-                                    <div className="w-4 h-4 rounded-full flex items-center justify-center bg-current opacity-10" style={{ color: themeColor }}>
-                                        <Check className="w-2.5 h-2.5 stroke-[4px]" style={{ color: themeColor }} />
+                                    <div className="w-3.5 h-3.5 rounded-full flex items-center justify-center bg-current opacity-10" style={{ color: themeColor }}>
+                                        <Check className="w-2 h-2 stroke-[4px]" style={{ color: themeColor }} />
                                     </div>
-                                    <span className="text-[10px] font-black uppercase tracking-widest italic opacity-70" style={{ color: textColor }}>{feat}</span>
+                                    <span className="text-[9px] font-black uppercase tracking-widest italic opacity-70" style={{ color: textColor }}>{feat}</span>
                                 </div>
                             ))}
                         </div>
@@ -144,7 +141,7 @@ export default function DesignLabPage() {
 
     return (
         <div className="flex flex-col min-h-screen selection:bg-primary/20 overflow-hidden font-body bg-black">
-            <SiteHeader forceTheme={active.layout === 'glow' ? 'light' : 'dark'} />
+            <SiteHeader forceTheme={active.layout === 'glow' ? 'dark' : 'light'} />
 
             <main className="flex-1 relative flex flex-col h-[100dvh]">
                 <StaticVideo layout={active.layout} />
@@ -174,9 +171,9 @@ export default function DesignLabPage() {
                     </div>
                 </div>
 
-                {/* EXTREME LEFT CONTAINER with pt-32 for Logo Safety */}
-                <div className="container relative z-20 h-full px-6 lg:pl-16 mx-auto pt-32">
-                    <div className="w-full flex transition-all duration-1000 justify-start h-full">
+                {/* EXTREME LEFT CONTAINER with pt-24 for Logo Safety */}
+                <div className="container relative z-20 h-full px-6 lg:pl-16 mx-auto pt-24">
+                    <div className="w-full flex transition-all duration-1000 justify-start h-full items-center">
                         <SovereignSlab />
                     </div>
                 </div>
