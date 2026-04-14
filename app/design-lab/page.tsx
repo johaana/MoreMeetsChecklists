@@ -18,9 +18,9 @@ import { Footer } from '@/components/layout/footer';
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 const ARCHETYPES = [
-    { id: 1, name: "SOVEREIGN GREEN", color: "#2EB86B", text: "#0F172A" },
+    { id: 1, name: "SOVEREIGN GREEN", color: "#2EB86B", text: "#0F172A", transparent: true },
     { id: 2, name: "SOVEREIGN GOLD", color: "#F5A623", text: "#0F172A" },
-    { id: 3, name: "OBSIDIAN NIGHT", color: "#2EB86B", text: "#FFFFFF", dark: true },
+    { id: 3, name: "PREMIUM WHITE", color: "#2EB86B", text: "#0F172A", apple: true },
     { id: 4, name: "LEMON YELLOW", color: "#FACC15", text: "#0F172A" },
     { id: 5, name: "MODERN PINK", color: "#EC4899", text: "#0F172A" }
 ];
@@ -42,7 +42,7 @@ const StaticVideo = React.memo(() => (
             className="w-full h-full object-cover opacity-70 transition-opacity duration-1000 will-change-transform" 
         />
         {/* Left-weighted mask: Mutes the video behind the text on the left, clear on the right */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,rgba(244,244,245,0.2)_0%,transparent_70%)] z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent z-10" />
         {/* Subtle overall protection */}
         <div className="absolute inset-0 bg-white/5 z-0" />
     </div>
@@ -55,13 +55,14 @@ export default function DesignLabPage() {
 
     const SovereignSlab = () => {
         const themeColor = active.color;
-        const isDark = active.dark;
+        const isDark = false; // Standardizing on high-clarity light themes
         const textColor = active.text;
 
         return (
             <div className={cn(
                 "max-w-2xl w-full p-10 md:p-12 rounded-[3.5rem] border border-white/30 backdrop-blur-3xl shadow-2xl relative overflow-hidden group transition-all duration-700",
-                isDark ? "bg-black/60" : "bg-white/40"
+                active.apple ? "bg-white/95 shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-white/50" : 
+                active.transparent ? "bg-white/40" : "bg-white/60"
             )}>
                 {/* Top Rim Glow */}
                 <div className="absolute top-0 left-0 w-3/4 h-[3px] opacity-60" style={{ backgroundColor: themeColor }} />
@@ -69,7 +70,7 @@ export default function DesignLabPage() {
                 <div className="space-y-8 relative z-10">
                     {/* 1. Primary Narrative Hook */}
                     <div className="space-y-3">
-                        <h1 className="text-4xl md:text-[3.8rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: isDark ? '#FFFFFF' : '#0F172A' }}>
+                        <h1 className="text-4xl md:text-[3.8rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: '#0F172A' }}>
                             STOP RELYING <br /> ON MEMORY.
                         </h1>
                         <h2 className="text-2xl md:text-[2.2rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic" style={{ color: themeColor }}>
