@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState } from 'react';
@@ -9,7 +10,8 @@ import {
     Lock,
     ArrowRight,
     ShieldCheck,
-    Activity
+    Activity,
+    ChevronRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -53,7 +55,7 @@ const StaticVideo = ({ layout }: { layout: string }) => {
             />
             {/* 
                 THE INDUSTRIAL BLADE MASK: 
-                Precision gradient mask for extreme-left text legibility while keeping right side clear.
+                High-gravity linear gradient providing 100% legibility for the extreme-left logo and text.
             */}
             <div className={cn(
                 "absolute inset-0 z-10 w-full transition-all duration-1000",
