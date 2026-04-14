@@ -18,11 +18,11 @@ import { Footer } from '@/components/layout/footer';
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 const ARCHETYPES = [
-    { id: 1, name: "SOVEREIGN GREEN", color: "#2EB86B", text: "#0F172A", transparent: true },
-    { id: 2, name: "SOVEREIGN GOLD", color: "#F5A623", text: "#0F172A" },
-    { id: 3, name: "PREMIUM WHITE", color: "#2EB86B", text: "#0F172A", apple: true },
-    { id: 4, name: "LEMON YELLOW", color: "#FACC15", text: "#0F172A" },
-    { id: 5, name: "MODERN PINK", color: "#EC4899", text: "#0F172A" }
+    { id: 1, name: "SOVEREIGN GREEN", color: "#2EB86B", text: "#0F172A", transparent: true, layout: 'glass' },
+    { id: 2, name: "SOVEREIGN GOLD", color: "#F5A623", text: "#0F172A", layout: 'glass' },
+    { id: 3, name: "WHITE SPLIT", color: "#2EB86B", text: "#0F172A", layout: 'split' },
+    { id: 4, name: "LEMON YELLOW", color: "#FACC15", text: "#0F172A", layout: 'glass' },
+    { id: 5, name: "MODERN PINK", color: "#EC4899", text: "#0F172A", layout: 'glass' }
 ];
 
 const FEATURES = [
@@ -31,7 +31,7 @@ const FEATURES = [
     "AUDIT-READY PROTOCOLS"
 ];
 
-const StaticVideo = React.memo(() => (
+const StaticVideo = ({ isSplit }: { isSplit: boolean }) => (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-zinc-100">
         <video 
             src={VIDEO_URL} 
@@ -39,15 +39,22 @@ const StaticVideo = React.memo(() => (
             loop 
             muted 
             playsInline 
-            className="w-full h-full object-cover opacity-70 transition-opacity duration-1000 will-change-transform" 
+            className={cn(
+                "w-full h-full object-cover transition-opacity duration-1000 will-change-transform",
+                isSplit ? "opacity-100" : "opacity-70"
+            )} 
         />
-        {/* Left-weighted mask: Mutes the video behind the text on the left, clear on the right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent z-10" />
-        {/* Subtle overall protection */}
-        <div className="absolute inset-0 bg-white/5 z-0" />
+        {/* Masking logic */}
+        {isSplit ? (
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent z-10 w-full" />
+        ) : (
+            <>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent z-10" />
+                <div className="absolute inset-0 bg-white/5 z-0" />
+            </>
+        )}
     </div>
-));
-StaticVideo.displayName = 'StaticVideo';
+);
 
 export default function DesignLabPage() {
     const [archetypeId, setArchetypeId] = useState(1);
@@ -55,20 +62,19 @@ export default function DesignLabPage() {
 
     const SovereignSlab = () => {
         const themeColor = active.color;
-        const isDark = false; // Standardizing on high-clarity light themes
         const textColor = active.text;
+        const isSplit = active.layout === 'split';
 
         return (
             <div className={cn(
-                "max-w-2xl w-full p-10 md:p-12 rounded-[3.5rem] border border-white/30 backdrop-blur-3xl shadow-2xl relative overflow-hidden group transition-all duration-700",
-                active.apple ? "bg-white/95 shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-white/50" : 
-                active.transparent ? "bg-white/40" : "bg-white/60"
+                "w-full transition-all duration-700 relative z-20",
+                isSplit ? "max-w-2xl" : "max-w-xl p-10 md:p-12 rounded-[3.5rem] border border-white/30 backdrop-blur-3xl shadow-2xl overflow-hidden bg-white/40"
             )}>
-                {/* Top Rim Glow */}
-                <div className="absolute top-0 left-0 w-3/4 h-[3px] opacity-60" style={{ backgroundColor: themeColor }} />
+                {!isSplit && (
+                    <div className="absolute top-0 left-0 w-3/4 h-[3px] opacity-60" style={{ backgroundColor: themeColor }} />
+                )}
                 
                 <div className="space-y-8 relative z-10">
-                    {/* 1. Primary Narrative Hook */}
                     <div className="space-y-3">
                         <h1 className="text-4xl md:text-[3.8rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: '#0F172A' }}>
                             STOP RELYING <br /> ON MEMORY.
@@ -79,14 +85,13 @@ export default function DesignLabPage() {
                         </h2>
                     </div>
 
-                    {/* 2. Mechanism & Value Bridge */}
                     <div className="space-y-6">
                         <p className="text-lg md:text-xl font-bold italic leading-tight max-w-lg" style={{ color: textColor }}>
                             This is how operations should run. <br />
                             <span className="text-primary" style={{ color: themeColor }}>Operations on autopilot. Without SaaS.</span>
                         </p>
                         
-                        <p className="text-xs md:text-sm font-medium italic opacity-70 leading-relaxed max-w-md" style={{ color: textColor }}>
+                        <p className="text-[10px] md:text-sm font-medium italic opacity-70 leading-relaxed max-w-md" style={{ color: textColor }}>
                             No follow-ups. No reporting chaos. Everything updates as work happens. 
                             Includes trainer notes for faster training.
                         </p>
@@ -105,7 +110,6 @@ export default function DesignLabPage() {
                         </div>
                     </div>
 
-                    {/* 3. The Technical Payload Floor */}
                     <div className="pt-8 border-t border-black/5 flex flex-col gap-6">
                         <div className="flex flex-wrap gap-x-8 gap-y-3">
                             {FEATURES.map(feat => (
@@ -126,7 +130,7 @@ export default function DesignLabPage() {
             <SiteHeader />
 
             <main className="flex-1 relative flex flex-col justify-center items-center h-[100dvh]">
-                <StaticVideo />
+                <StaticVideo isSplit={active.layout === 'split'} />
 
                 {/* ARCHETYPE SELECTOR - PILL STYLE */}
                 <div className="fixed top-1/2 -translate-y-1/2 right-10 z-50 flex flex-col gap-4 p-6 bg-white/80 backdrop-blur-xl rounded-[2.5rem] border border-zinc-200 shadow-2xl">
@@ -148,8 +152,8 @@ export default function DesignLabPage() {
                 </div>
 
                 <div className="container relative z-20 flex h-full px-6 md:px-24 mx-auto items-center">
-                    {/* Compact Slab Aligned to the Left */}
-                    <div className="w-full flex justify-start lg:pl-20 -translate-y-4 max-h-[85vh]">
+                    {/* Compact HUD alignment further to the left */}
+                    <div className="w-full flex justify-start lg:pl-32 -translate-y-4 max-h-[85vh]">
                         <SovereignSlab />
                     </div>
                 </div>
@@ -165,7 +169,7 @@ export default function DesignLabPage() {
                                 </span>
                             </div>
                         </div>
-                        <div className="hidden md:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.4em] italic text-zinc-400 font-headline">
+                        <div className="hidden md:flex items-center gap-10 text-[10px] md:text-[11px] font-black uppercase tracking-[0.4em] italic text-zinc-400 font-headline">
                             <span className="flex items-center gap-2"><Target className="w-3.5 h-3.5" /> ZERO_SCROLL_MANDATE</span>
                             <span className="flex items-center gap-2"><Lock className="w-3.5 h-3.5" /> SOVEREIGN_IP_LOCKED</span>
                             <span className="flex items-center gap-2"><Activity className="w-3.5 h-3.5" /> PERFORMANCE_STABLE</span>
