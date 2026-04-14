@@ -8,7 +8,8 @@ import {
     Target,
     Lock,
     ArrowRight,
-    ShieldCheck
+    ShieldCheck,
+    Activity
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -52,14 +53,13 @@ const StaticVideo = ({ layout }: { layout: string }) => {
             />
             {/* 
                 THE INDUSTRIAL BLADE MASK: 
-                High-gravity linear gradient column on the far left.
-                Provides a rock-solid bed for the Site Header, Logo, and Headlines.
+                Precision gradient mask for extreme-left text legibility while keeping right side clear.
             */}
             <div className={cn(
                 "absolute inset-0 z-10 w-full transition-all duration-1000",
                 isDark 
-                    ? "bg-gradient-to-r from-black via-black/70 to-transparent" 
-                    : "bg-gradient-to-r from-white via-white/85 to-transparent"
+                    ? "bg-gradient-to-r from-black via-black/80 to-transparent" 
+                    : "bg-gradient-to-r from-white via-white/90 to-transparent"
             )} />
         </div>
     );
@@ -76,13 +76,13 @@ export default function DesignLabPage() {
         const isDark = layout === 'glow';
 
         return (
-            <div className="w-full transition-all duration-700 relative z-20 max-w-lg bg-transparent border-none shadow-none p-0">
-                <div className="space-y-6 relative z-10 max-h-[80vh] flex flex-col justify-center">
-                    <div className="space-y-2">
-                        <h1 className="text-4xl md:text-[4rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: textColor }}>
+            <div className="w-full transition-all duration-700 relative z-20 max-w-lg bg-transparent border-none p-0 flex flex-col justify-center">
+                <div className="space-y-4 md:space-y-6 relative z-10">
+                    <div className="space-y-1 md:space-y-2">
+                        <h1 className="text-4xl md:text-[4.5rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: textColor }}>
                             STOP RELYING <br /> ON MEMORY.
                         </h1>
-                        <h2 className="text-xl md:text-[1.6rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic" style={{ color: themeColor }}>
+                        <h2 className="text-xl md:text-[1.8rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic" style={{ color: themeColor }}>
                             Run pre-built SOPs. <br />
                             <span className="text-[0.8em] opacity-80">Done right. Every day.</span>
                         </h2>
@@ -119,7 +119,7 @@ export default function DesignLabPage() {
                         </div>
                     </div>
 
-                    <div className="pt-4 flex flex-col gap-4">
+                    <div className="pt-2 flex flex-col gap-4">
                         <p className="text-[10px] md:text-[11px] font-bold italic opacity-60 leading-relaxed max-w-sm" style={{ color: textColor }}>
                             Pre-built, editable SOPs with live tracking and dashboard. Includes trainer notes for faster training. Audit-ready.
                         </p>
@@ -171,28 +171,36 @@ export default function DesignLabPage() {
                     </div>
                 </div>
 
-                {/* EXTREME LEFT CONTAINER with pt-24 for Logo Safety */}
-                <div className="container relative z-20 h-full px-6 lg:pl-16 mx-auto pt-24">
+                {/* EXTREME LEFT CONTAINER with proper offset for Header safety */}
+                <div className="container relative z-20 h-full px-6 lg:pl-16 mx-auto pt-32 pb-24">
                     <div className="w-full flex transition-all duration-1000 justify-start h-full items-center">
                         <SovereignSlab />
                     </div>
                 </div>
 
-                {/* BOTTOM STATUS STRIP */}
-                <div className="absolute bottom-0 w-full py-4 px-12 border-t bg-white/40 backdrop-blur-md border-zinc-200 z-30">
+                {/* REFINED TRANSPARENT BOTTOM STATUS STRIP */}
+                <div className={cn(
+                    "absolute bottom-0 w-full py-4 px-12 border-t z-30 transition-all duration-1000",
+                    active.layout === 'glow' 
+                        ? "bg-black/20 backdrop-blur-md border-white/5" 
+                        : "bg-white/10 backdrop-blur-md border-zinc-200"
+                )}>
                     <div className="max-w-7xl mx-auto flex justify-between items-center">
                         <div className="flex items-center gap-6">
                             <div className="flex items-center gap-3">
                                 <div className="w-2 h-2 rounded-full animate-pulse shadow-sm" style={{ backgroundColor: active.color }} />
-                                <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.5em] italic text-zinc-600 font-headline">
+                                <span className={cn(
+                                    "text-[10px] md:text-[11px] font-black uppercase tracking-[0.5em] italic font-headline",
+                                    active.layout === 'glow' ? "text-white/40" : "text-zinc-600"
+                                )}>
                                     SOVEREIGN_SYSTEM // ACTIVE_NODE: {active.name}
                                 </span>
                             </div>
                         </div>
-                        <div className="hidden md:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.4em] italic text-zinc-400 font-headline">
-                            <span className="flex items-center gap-2"><Target className="w-3.5 h-3.5" /> ZERO_SCROLL_MANDATE</span>
-                            <span className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5" /> AUDIT_READY_V135</span>
-                            <span className="flex items-center gap-2"><Lock className="w-3.5 h-3.5" /> SOVEREIGN_IP_SECURED</span>
+                        <div className="hidden md:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.4em] italic font-headline">
+                            <span className="flex items-center gap-2 opacity-40"><Activity className="w-3.5 h-3.5" /> ZERO_SCROLL_MANDATE</span>
+                            <span className="flex items-center gap-2 opacity-40"><ShieldCheck className="w-3.5 h-3.5" /> AUDIT_READY_V135</span>
+                            <span className="flex items-center gap-2 opacity-40"><Lock className="w-3.5 h-3.5" /> SOVEREIGN_IP_SECURED</span>
                         </div>
                     </div>
                 </div>
