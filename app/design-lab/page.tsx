@@ -19,24 +19,24 @@ import { Footer } from '@/components/layout/footer';
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 const ARCHETYPES = [
-    { id: 1, name: "EXECUTIVE GREEN", color: "#2EB86B", text: "#0F172A", layout: 'solar' },
-    { id: 2, name: "ROYAL VIOLET", color: "#8B5CF6", text: "#0F172A", layout: 'solar' },
-    { id: 3, name: "SAFETY RED", color: "#E11D48", text: "#0F172A", layout: 'solar' },
-    { id: 4, name: "LEMON SAFETY", color: "#FACC15", text: "#0F172A", layout: 'solar' },
+    { id: 1, name: "ROYAL VIOLET", color: "#8B5CF6", text: "#0F172A", layout: 'solar' },
+    { id: 2, name: "VIVID PURPLE", color: "#A855F7", text: "#FFFFFF", layout: 'glow' },
+    { id: 3, name: "DEEP ORCHID", color: "#9333EA", text: "#0F172A", layout: 'solar' },
+    { id: 4, name: "MAGENTA GLOW", color: "#D946EF", text: "#FFFFFF", layout: 'glow' },
     { id: 5, name: "MODERN PINK", color: "#EC4899", text: "#0F172A", layout: 'solar' },
-    { id: 6, name: "AZURE SKY", color: "#3B82F6", text: "#0F172A", layout: 'solar' },
-    { id: 7, name: "VIVID PURPLE", color: "#8B5CF6", text: "#FFFFFF", layout: 'glow' },
-    { id: 8, name: "EMERALD HUD", color: "#10B981", text: "#FFFFFF", layout: 'glow' },
-    { id: 9, name: "GOLDEN COMMAND", color: "#F5A623", text: "#FFFFFF", layout: 'glow' },
-    { id: 10, name: "SOLAR MINIMAL", color: "#F97316", text: "#0F172A", layout: 'solar' },
-    { id: 11, name: "ROYAL INDIGO", color: "#6366F1", text: "#FFFFFF", layout: 'glow' },
-    { id: 12, name: "ROSE COMMAND", color: "#F43F5E", text: "#FFFFFF", layout: 'glow' }
+    { id: 6, name: "ROSE COMMAND", color: "#F43F5E", text: "#FFFFFF", layout: 'glow' },
+    { id: 7, name: "ELECTRIC PURPLE", color: "#7C3AED", text: "#FFFFFF", layout: 'glow' },
+    { id: 8, name: "FUCHSIA HUD", color: "#C026D3", text: "#0F172A", layout: 'solar' },
+    { id: 9, name: "AMETHYST SOVEREIGN", color: "#6D28D9", text: "#FFFFFF", layout: 'glow' },
+    { id: 10, name: "CHERRY COMMAND", color: "#E11D48", text: "#0F172A", layout: 'solar' },
+    { id: 11, name: "NEON PINK", color: "#F472B6", text: "#0F172A", layout: 'solar' },
+    { id: 12, name: "MIDNIGHT VIOLET", color: "#4C1D95", text: "#FFFFFF", layout: 'glow' }
 ];
 
 const FEATURES = [
     "120+ PRE-BUILT SOPs",
     "LIVE DASHBOARD",
-    "AUDIT-READY"
+    "AUDIT-READY COMPLIANCE"
 ];
 
 const StaticVideo = ({ layout }: { layout: string }) => {
@@ -52,7 +52,7 @@ const StaticVideo = ({ layout }: { layout: string }) => {
                 playsInline 
                 className="w-full h-full object-cover opacity-90 transition-opacity duration-1000 will-change-transform" 
             />
-            {/* THE INDUSTRIAL BLADE MASK: High-gravity gradient for absolute legibility */}
+            {/* THE INDUSTRIAL BLADE MASK: High-gravity gradient for absolute legibility on the extreme left */}
             <div className={cn(
                 "absolute inset-0 z-10 w-full transition-all duration-1000",
                 isDark 
@@ -64,7 +64,7 @@ const StaticVideo = ({ layout }: { layout: string }) => {
 };
 
 export default function DesignLabPage() {
-    const [archetypeId, setArchetypeId] = useState(2);
+    const [archetypeId, setArchetypeId] = useState(1);
     const active = ARCHETYPES.find(a => a.id === archetypeId) || ARCHETYPES[0];
 
     const SovereignSlab = () => {
@@ -105,7 +105,7 @@ export default function DesignLabPage() {
                             <Button 
                                 size="lg" 
                                 className="h-16 md:h-20 px-10 md:px-14 rounded-xl font-black uppercase italic text-sm md:text-xl tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl border-none w-fit group"
-                                style={{ backgroundColor: themeColor, color: isDark ? '#0F172A' : '#FFFFFF' }}
+                                style={{ backgroundColor: themeColor, color: isDark ? '#FFFFFF' : '#FFFFFF' }}
                             >
                                 DEPLOY SYSTEM <ArrowRight className="ml-4 h-6 w-6 transition-transform group-hover:translate-x-1.5" />
                             </Button>
