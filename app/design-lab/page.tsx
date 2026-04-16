@@ -20,7 +20,7 @@ const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h
 
 const ARCHETYPES = [
     { id: 1, name: "EXECUTIVE GREEN", color: "#2EB86B", text: "#0F172A", layout: 'solar' },
-    { id: 2, name: "PRESTIGE GOLD", color: "#F5A623", text: "#0F172A", layout: 'solar' },
+    { id: 2, name: "ROYAL VIOLET", color: "#8B5CF6", text: "#0F172A", layout: 'solar' },
     { id: 3, name: "SAFETY RED", color: "#E11D48", text: "#0F172A", layout: 'solar' },
     { id: 4, name: "LEMON SAFETY", color: "#FACC15", text: "#0F172A", layout: 'solar' },
     { id: 5, name: "MODERN PINK", color: "#EC4899", text: "#0F172A", layout: 'solar' },
@@ -64,7 +64,7 @@ const StaticVideo = ({ layout }: { layout: string }) => {
 };
 
 export default function DesignLabPage() {
-    const [archetypeId, setArchetypeId] = useState(9);
+    const [archetypeId, setArchetypeId] = useState(2);
     const active = ARCHETYPES.find(a => a.id === archetypeId) || ARCHETYPES[0];
 
     const SovereignSlab = () => {
