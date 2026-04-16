@@ -51,12 +51,12 @@ const StaticVideo = ({ layout }: { layout: string }) => {
                 playsInline 
                 className="w-full h-full object-cover opacity-90 transition-opacity duration-1000 will-change-transform" 
             />
-            {/* THE INDUSTRIAL BLADE MASK: High-gravity left gradient (95% opacity) cutting to clear by mid-screen */}
+            {/* THE INDUSTRIAL BLADE MASK: Aggressive left cut-off for perfect text depth */}
             <div className={cn(
                 "absolute inset-0 z-10 w-full transition-all duration-1000",
                 isDark 
-                    ? "bg-gradient-to-r from-black via-black/95 to-transparent" 
-                    : "bg-gradient-to-r from-white via-white/95 to-transparent"
+                    ? "bg-gradient-to-r from-black via-black/90 to-transparent" 
+                    : "bg-gradient-to-r from-white via-white/90 to-transparent"
             )} />
         </div>
     );
