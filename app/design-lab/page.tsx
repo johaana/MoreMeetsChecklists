@@ -30,7 +30,7 @@ const ARCHETYPES = [
     { id: 6, name: "ROSE COMMAND", color: "#F43F5E", text: "#FFFFFF", layout: 'glow' },
     { id: 7, name: "ELECTRIC PURPLE", color: "#7C3AED", text: "#FFFFFF", layout: 'glow' },
     { id: 8, name: "FUCHSIA HUD", color: "#C026D3", text: "#0F172A", layout: 'solar' },
-    { id: 9, name: "AMETHYST SOVEREIGN", color: "#F5A623", text: "#FFFFFF", layout: 'glow' }, // Orange/Gold variant
+    { id: 9, name: "AMETHYST SOVEREIGN", color: "#F5A623", text: "#FFFFFF", layout: 'glow' },
     { id: 10, name: "CHERRY COMMAND", color: "#E11D48", text: "#0F172A", layout: 'solar' },
     { id: 11, name: "NEON PINK", color: "#F472B6", text: "#0F172A", layout: 'solar' },
     { id: 12, name: "MIDNIGHT VIOLET", color: "#4C1D95", text: "#FFFFFF", layout: 'glow' }
@@ -51,12 +51,12 @@ const StaticVideo = ({ layout }: { layout: string }) => {
                 playsInline 
                 className="w-full h-full object-cover opacity-90 transition-opacity duration-1000 will-change-transform" 
             />
-            {/* THE INDUSTRIAL BLADE MASK: 95% opacity on the extreme left, cutting to clear by mid-screen */}
+            {/* THE INDUSTRIAL BLADE MASK: High-gravity left gradient (95% opacity) cutting to clear by mid-screen */}
             <div className={cn(
                 "absolute inset-0 z-10 w-full transition-all duration-1000",
                 isDark 
-                    ? "bg-gradient-to-r from-black via-black/80 to-transparent" 
-                    : "bg-gradient-to-r from-white via-white/80 to-transparent"
+                    ? "bg-gradient-to-r from-black via-black/95 to-transparent" 
+                    : "bg-gradient-to-r from-white via-white/95 to-transparent"
             )} />
         </div>
     );
@@ -74,15 +74,15 @@ export default function DesignLabPage() {
 
         return (
             <div className="w-full transition-all duration-700 relative z-20 max-w-xl bg-transparent border-none p-0 flex flex-col justify-center">
-                <div className="space-y-4 md:space-y-6 relative z-10">
+                <div className="space-y-3 md:space-y-4 relative z-10">
                     
                     {/* 1. NARRATIVE HOOK (Headline + Subhead) */}
-                    <div className="space-y-2">
-                        <h1 className="text-3xl md:text-[4rem] font-black font-headline leading-[0.95] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: textColor }}>
+                    <div className="space-y-1">
+                        <h1 className="text-3xl md:text-[3.5rem] font-black font-headline leading-[0.95] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: textColor }}>
                             MAKE SURE DAILY WORK <br /> GETS DONE PROPERLY.
                         </h1>
-                        <div className="space-y-1">
-                            <h2 className="text-lg md:text-[1.8rem] font-black font-headline leading-[1] tracking-tighter uppercase italic" style={{ color: themeColor }}>
+                        <div className="space-y-0.5">
+                            <h2 className="text-lg md:text-[1.5rem] font-black font-headline leading-[1] tracking-tighter uppercase italic" style={{ color: themeColor }}>
                                 EVERY TIME.
                             </h2>
                             <p className="text-sm md:text-lg font-bold italic opacity-80 uppercase tracking-tight" style={{ color: textColor }}>
@@ -92,60 +92,60 @@ export default function DesignLabPage() {
                     </div>
 
                     {/* 2. OPERATIONAL REALITY (Body) */}
-                    <div className="space-y-4 border-l-4 pl-8" style={{ borderColor: `${themeColor}` }}>
-                        <p className="text-xl md:text-3xl font-black italic tracking-tight leading-tight" style={{ color: textColor }}>
+                    <div className="space-y-3 border-l-4 pl-6 md:pl-8" style={{ borderColor: `${themeColor}` }}>
+                        <p className="text-xl md:text-2xl font-black italic tracking-tight leading-tight" style={{ color: textColor }}>
                             Your team knows exactly what to do. <br />
                             Everything updates as work happens.
                         </p>
-                        <p className="text-sm md:text-base font-bold italic opacity-60 leading-relaxed max-w-md" style={{ color: textColor }}>
-                            No follow-ups. No reporting chaos. <br /> No dependency on memory.
+                        <p className="text-[10px] md:text-sm font-bold italic opacity-60 leading-relaxed max-w-md" style={{ color: textColor }}>
+                            No follow-ups. No reporting chaos. No dependency on memory.
                         </p>
                     </div>
 
                     {/* 3. THE MOAT (Differentiator) */}
-                    <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-current opacity-90" style={{ color: textColor, borderColor: `${textColor}20` }}>
-                        <div className="flex items-center gap-3 mb-2">
-                            <ShieldCheck className="w-5 h-5" style={{ color: themeColor }} />
-                            <span className="text-[10px] font-black uppercase tracking-[0.4em]">TECHNICAL DIFFERENTIATOR</span>
+                    <div className="bg-white/5 backdrop-blur-sm p-4 md:p-5 rounded-2xl border border-current opacity-90" style={{ color: textColor, borderColor: `${textColor}20` }}>
+                        <div className="flex items-center gap-3 mb-1">
+                            <ShieldCheck className="w-4 h-4 md:w-5 md:h-5" style={{ color: themeColor }} />
+                            <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em]">TECHNICAL DIFFERENTIATOR</span>
                         </div>
-                        <p className="text-sm md:text-base font-bold italic leading-relaxed">
+                        <p className="text-xs md:text-sm font-bold italic leading-snug">
                             Pre-built, editable SOPs with built-in tracking and dashboard. <br />
                             Includes trainer notes for faster training. Audit-ready.
                         </p>
                     </div>
 
                     {/* 4. TRUST & DELIVERY (Trust Line + Delivery) */}
-                    <div className="space-y-4 pt-2">
-                        <div className="space-y-2">
-                            <span className="text-[9px] font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
+                    <div className="space-y-3">
+                        <div className="space-y-1">
+                            <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
                                 {TRUST_SECTORS}
                             </span>
                             <div className="flex items-center gap-4">
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary" style={{ color: themeColor }}>
+                                <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-primary" style={{ color: themeColor }}>
                                     NO SOFTWARE. NO SUBSCRIPTION.
                                 </span>
                                 <div className="w-1 h-1 rounded-full bg-current opacity-20" style={{ color: textColor }} />
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] opacity-60" style={{ color: textColor }}>
+                                <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] opacity-60" style={{ color: textColor }}>
                                     RUNS ON EXCEL / GOOGLE SHEETS.
                                 </span>
                             </div>
                         </div>
 
                         {/* 5. CONVERSION (CTA + Price) */}
-                        <div className="flex flex-col gap-4 pt-2">
+                        <div className="flex flex-col gap-3">
                             <Button 
                                 size="lg" 
-                                className="h-16 md:h-20 px-10 md:px-14 rounded-xl font-black uppercase italic text-sm md:text-xl tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl border-none w-fit group"
+                                className="h-14 md:h-16 px-10 md:px-12 rounded-xl font-black uppercase italic text-sm md:text-lg tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl border-none w-fit group"
                                 style={{ backgroundColor: themeColor, color: isDark ? '#000000' : '#FFFFFF' }}
                             >
-                                START RUNNING YOUR SYSTEM <ArrowRight className="ml-4 h-6 w-6 transition-transform group-hover:translate-x-1.5" />
+                                START RUNNING YOUR SYSTEM <ArrowRight className="ml-3 h-5 w-5 md:h-6 md:w-6 transition-transform group-hover:translate-x-1.5" />
                             </Button>
                             <div className="flex items-center gap-4 px-1">
-                                <span className="text-xs font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
+                                <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
                                     ONE-TIME: ₹999
                                 </span>
-                                <div className="w-1.5 h-1.5 rounded-full bg-current opacity-20" style={{ color: textColor }} />
-                                <span className="text-xs font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
+                                <div className="w-1 h-1 rounded-full bg-current opacity-20" style={{ color: textColor }} />
+                                <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
                                     OWN FOREVER
                                 </span>
                             </div>
@@ -160,23 +160,23 @@ export default function DesignLabPage() {
         <div className="flex flex-col min-h-screen selection:bg-primary/20 overflow-hidden font-body bg-black">
             <SiteHeader forceTheme={active.layout === 'glow' ? 'dark' : 'light'} />
 
-            <main className="flex-1 relative flex flex-col h-[100dvh]">
+            <main className="flex-1 relative flex flex-col h-[100svh]">
                 <StaticVideo layout={active.layout} />
 
                 {/* DYNAMIC SELECTOR PILL - FLOATING RIGHT */}
-                <div className="fixed top-1/2 -translate-y-1/2 right-6 md:right-12 z-50 flex flex-col gap-3 p-4 bg-white/80 backdrop-blur-2xl rounded-[2.5rem] border border-zinc-200 shadow-2xl">
-                    <div className="flex flex-col items-center gap-1 border-b border-zinc-100 pb-3 mb-1">
-                        <span className="text-[7px] font-black text-zinc-400 uppercase tracking-[0.2em]">LAB</span>
-                        <span className="text-[10px] font-black text-zinc-900 uppercase tracking-tighter italic">V135</span>
+                <div className="fixed top-1/2 -translate-y-1/2 right-4 md:right-8 z-50 flex flex-col gap-2 p-3 bg-white/80 backdrop-blur-2xl rounded-[2.5rem] border border-zinc-200 shadow-2xl">
+                    <div className="flex flex-col items-center gap-0.5 border-b border-zinc-100 pb-2 mb-0.5">
+                        <span className="text-[6px] font-black text-zinc-400 uppercase tracking-[0.2em]">LAB</span>
+                        <span className="text-[8px] font-black text-zinc-900 uppercase tracking-tighter italic">V135</span>
                     </div>
-                    <div className="grid grid-cols-1 gap-2.5">
+                    <div className="grid grid-cols-1 gap-2">
                         {ARCHETYPES.map((arch) => (
                             <button 
                                 key={arch.id} 
                                 onClick={() => setArchetypeId(arch.id)}
                                 title={arch.name}
                                 className={cn(
-                                    "w-9 h-9 rounded-full font-black text-[9px] transition-all flex items-center justify-center border-2",
+                                    "w-8 h-8 rounded-full font-black text-[8px] transition-all flex items-center justify-center border-2",
                                     archetypeId === arch.id 
                                         ? "bg-zinc-950 text-white border-zinc-950 shadow-xl scale-110" 
                                         : "text-zinc-400 border-transparent hover:bg-zinc-100 hover:text-zinc-600"
@@ -188,16 +188,16 @@ export default function DesignLabPage() {
                     </div>
                 </div>
 
-                {/* EXTREME LEFT CONTAINER with proper offset for Header safety */}
-                <div className="container relative z-20 h-full px-6 lg:pl-16 mx-auto pt-28 pb-16">
+                {/* EXTREME LEFT CONTAINER with optimized offset */}
+                <div className="container relative z-20 h-full px-6 lg:pl-16 mx-auto pt-20 pb-16">
                     <div className="w-full flex transition-all duration-1000 justify-start h-full items-center">
                         <SovereignSlab />
                     </div>
                 </div>
 
-                {/* REFINED TRANSPARENT BOTTOM STATUS STRIP */}
+                {/* REFINED TRANSPARENT BOTTOM STATUS STRIP - Compressing height for one-glance */}
                 <div className={cn(
-                    "absolute bottom-0 w-full py-5 px-12 border-t z-30 transition-all duration-1000",
+                    "absolute bottom-0 w-full py-3 px-12 border-t z-30 transition-all duration-1000",
                     active.layout === 'glow' 
                         ? "bg-black/20 backdrop-blur-md border-white/5" 
                         : "bg-white/10 backdrop-blur-md border-zinc-200"
@@ -207,23 +207,21 @@ export default function DesignLabPage() {
                             <div className="flex items-center gap-3">
                                 <div className="w-2 h-2 rounded-full animate-pulse shadow-sm" style={{ backgroundColor: active.color }} />
                                 <span className={cn(
-                                    "text-xs font-black uppercase tracking-[0.5em] italic font-headline",
+                                    "text-[10px] font-black uppercase tracking-[0.4em] italic font-headline",
                                     active.layout === 'glow' ? "text-white/40" : "text-zinc-600"
                                 )}>
                                     SOVEREIGN_SYSTEM // ACTIVE_NODE: {active.name}
                                 </span>
                             </div>
                         </div>
-                        <div className="hidden md:flex items-center gap-10 text-xs font-black uppercase tracking-[0.4em] italic font-headline">
-                            <span className="flex items-center gap-2 opacity-40"><Activity className="w-4 h-4" /> REAL_TIME_LEADERSHIP</span>
-                            <span className="flex items-center gap-2 opacity-40"><ShieldCheck className="w-4 h-4" /> AUDIT_READY_V135</span>
-                            <span className="flex items-center gap-2 opacity-40"><Lock className="w-4 h-4" /> SOVEREIGN_IP_SECURED</span>
+                        <div className="hidden md:flex items-center gap-8 text-[10px] font-black uppercase tracking-[0.3em] italic font-headline">
+                            <span className="flex items-center gap-2 opacity-40"><Activity className="w-3.5 h-3.5" /> REAL_TIME_LEADERSHIP</span>
+                            <span className="flex items-center gap-2 opacity-40"><ShieldCheck className="w-3.5 h-3.5" /> AUDIT_READY_V135</span>
+                            <span className="flex items-center gap-2 opacity-40"><Lock className="w-3.5 h-3.5" /> SOVEREIGN_IP_SECURED</span>
                         </div>
                     </div>
                 </div>
             </main>
-
-            <Footer />
         </div>
     );
 }
