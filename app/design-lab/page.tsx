@@ -10,7 +10,10 @@ import {
     ShieldCheck, 
     Activity, 
     Lock,
-    Zap
+    Zap,
+    LayoutGrid,
+    Smartphone,
+    Globe
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -27,17 +30,13 @@ const ARCHETYPES = [
     { id: 6, name: "ROSE COMMAND", color: "#F43F5E", text: "#FFFFFF", layout: 'glow' },
     { id: 7, name: "ELECTRIC PURPLE", color: "#7C3AED", text: "#FFFFFF", layout: 'glow' },
     { id: 8, name: "FUCHSIA HUD", color: "#C026D3", text: "#0F172A", layout: 'solar' },
-    { id: 9, name: "AMETHYST SOVEREIGN", color: "#6D28D9", text: "#FFFFFF", layout: 'glow' },
+    { id: 9, name: "AMETHYST SOVEREIGN", color: "#F5A623", text: "#FFFFFF", layout: 'glow' }, // Orange/Gold variant
     { id: 10, name: "CHERRY COMMAND", color: "#E11D48", text: "#0F172A", layout: 'solar' },
     { id: 11, name: "NEON PINK", color: "#F472B6", text: "#0F172A", layout: 'solar' },
     { id: 12, name: "MIDNIGHT VIOLET", color: "#4C1D95", text: "#FFFFFF", layout: 'glow' }
 ];
 
-const FEATURES = [
-    "120+ PRE-BUILT SOPs",
-    "LIVE DASHBOARD",
-    "AUDIT-READY COMPLIANCE"
-];
+const TRUST_SECTORS = "WORKS FOR RESTAURANTS, HOTELS, HOSPITALS, RETAIL, FACILITIES & FRANCHISES";
 
 const StaticVideo = ({ layout }: { layout: string }) => {
     const isDark = layout === 'glow';
@@ -52,7 +51,7 @@ const StaticVideo = ({ layout }: { layout: string }) => {
                 playsInline 
                 className="w-full h-full object-cover opacity-90 transition-opacity duration-1000 will-change-transform" 
             />
-            {/* THE INDUSTRIAL BLADE MASK: High-gravity gradient for absolute legibility on the extreme left */}
+            {/* THE INDUSTRIAL BLADE MASK: 95% opacity on the extreme left, cutting to clear by mid-screen */}
             <div className={cn(
                 "absolute inset-0 z-10 w-full transition-all duration-1000",
                 isDark 
@@ -75,39 +74,71 @@ export default function DesignLabPage() {
 
         return (
             <div className="w-full transition-all duration-700 relative z-20 max-w-xl bg-transparent border-none p-0 flex flex-col justify-center">
-                <div className="space-y-4 md:space-y-8 relative z-10">
+                <div className="space-y-4 md:space-y-6 relative z-10">
                     
-                    {/* NARRATIVE HOOK */}
+                    {/* 1. NARRATIVE HOOK (Headline + Subhead) */}
                     <div className="space-y-2">
-                        <h1 className="text-4xl md:text-[5.5rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: textColor }}>
-                            STOP RELYING <br /> ON MEMORY.
+                        <h1 className="text-3xl md:text-[4rem] font-black font-headline leading-[0.95] tracking-tighter uppercase italic drop-shadow-sm" style={{ color: textColor }}>
+                            MAKE SURE DAILY WORK <br /> GETS DONE PROPERLY.
                         </h1>
-                        <h2 className="text-xl md:text-[2.2rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic" style={{ color: themeColor }}>
-                            RUN PRE-BUILT SOPs. <br />
-                            <span className="text-[0.8em] opacity-80">DONE RIGHT. EVERY DAY.</span>
-                        </h2>
-                    </div>
-
-                    {/* EXECUTIVE ANCHOR - AUTOPILOT BLOCK */}
-                    <div className="space-y-6">
-                        <div className="space-y-2 border-l-4 pl-8" style={{ borderColor: `${themeColor}` }}>
-                            <p className="text-2xl md:text-4xl font-black italic tracking-tight leading-tight" style={{ color: textColor }}>
-                                Operations on autopilot. <br />
-                                <span style={{ color: themeColor }}>Without SaaS.</span>
-                            </p>
-                            <p className="text-sm md:text-base font-bold italic opacity-70 leading-relaxed max-w-md" style={{ color: textColor }}>
-                                No follow-ups. No reporting chaos. <br /> Everything updates as work happens. 
+                        <div className="space-y-1">
+                            <h2 className="text-lg md:text-[1.8rem] font-black font-headline leading-[1] tracking-tighter uppercase italic" style={{ color: themeColor }}>
+                                EVERY TIME.
+                            </h2>
+                            <p className="text-sm md:text-lg font-bold italic opacity-80 uppercase tracking-tight" style={{ color: textColor }}>
+                                Run pre-built SOPs across your business. <br /> Done right. Every day.
                             </p>
                         </div>
+                    </div>
 
-                        {/* CTA + PRICE */}
+                    {/* 2. OPERATIONAL REALITY (Body) */}
+                    <div className="space-y-4 border-l-4 pl-8" style={{ borderColor: `${themeColor}` }}>
+                        <p className="text-xl md:text-3xl font-black italic tracking-tight leading-tight" style={{ color: textColor }}>
+                            Your team knows exactly what to do. <br />
+                            Everything updates as work happens.
+                        </p>
+                        <p className="text-sm md:text-base font-bold italic opacity-60 leading-relaxed max-w-md" style={{ color: textColor }}>
+                            No follow-ups. No reporting chaos. <br /> No dependency on memory.
+                        </p>
+                    </div>
+
+                    {/* 3. THE MOAT (Differentiator) */}
+                    <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-current opacity-90" style={{ color: textColor, borderColor: `${textColor}20` }}>
+                        <div className="flex items-center gap-3 mb-2">
+                            <ShieldCheck className="w-5 h-5" style={{ color: themeColor }} />
+                            <span className="text-[10px] font-black uppercase tracking-[0.4em]">TECHNICAL DIFFERENTIATOR</span>
+                        </div>
+                        <p className="text-sm md:text-base font-bold italic leading-relaxed">
+                            Pre-built, editable SOPs with built-in tracking and dashboard. <br />
+                            Includes trainer notes for faster training. Audit-ready.
+                        </p>
+                    </div>
+
+                    {/* 4. TRUST & DELIVERY (Trust Line + Delivery) */}
+                    <div className="space-y-4 pt-2">
+                        <div className="space-y-2">
+                            <span className="text-[9px] font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
+                                {TRUST_SECTORS}
+                            </span>
+                            <div className="flex items-center gap-4">
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary" style={{ color: themeColor }}>
+                                    NO SOFTWARE. NO SUBSCRIPTION.
+                                </span>
+                                <div className="w-1 h-1 rounded-full bg-current opacity-20" style={{ color: textColor }} />
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] opacity-60" style={{ color: textColor }}>
+                                    RUNS ON EXCEL / GOOGLE SHEETS.
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* 5. CONVERSION (CTA + Price) */}
                         <div className="flex flex-col gap-4 pt-2">
                             <Button 
                                 size="lg" 
                                 className="h-16 md:h-20 px-10 md:px-14 rounded-xl font-black uppercase italic text-sm md:text-xl tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl border-none w-fit group"
-                                style={{ backgroundColor: themeColor, color: isDark ? '#FFFFFF' : '#FFFFFF' }}
+                                style={{ backgroundColor: themeColor, color: isDark ? '#000000' : '#FFFFFF' }}
                             >
-                                DEPLOY SYSTEM <ArrowRight className="ml-4 h-6 w-6 transition-transform group-hover:translate-x-1.5" />
+                                START RUNNING YOUR SYSTEM <ArrowRight className="ml-4 h-6 w-6 transition-transform group-hover:translate-x-1.5" />
                             </Button>
                             <div className="flex items-center gap-4 px-1">
                                 <span className="text-xs font-black uppercase tracking-[0.4em] opacity-40" style={{ color: textColor }}>
@@ -118,23 +149,6 @@ export default function DesignLabPage() {
                                     OWN FOREVER
                                 </span>
                             </div>
-                        </div>
-                    </div>
-
-                    {/* FEATURE MAPPING */}
-                    <div className="pt-2 flex flex-col gap-6">
-                        <p className="text-sm md:text-base font-bold italic opacity-60 leading-relaxed max-w-md" style={{ color: textColor }}>
-                            Pre-built, editable SOPs with live tracking and dashboard. Includes trainer notes for faster training. Audit-ready.
-                        </p>
-                        <div className="flex flex-wrap gap-x-10 gap-y-3">
-                            {FEATURES.map(feat => (
-                                <div key={feat} className="flex items-center gap-3">
-                                    <div className="w-4 h-4 rounded-full flex items-center justify-center bg-current opacity-10" style={{ color: themeColor }}>
-                                        <Check className="w-2.5 h-2.5 stroke-[4px]" style={{ color: themeColor }} />
-                                    </div>
-                                    <span className="text-xs font-black uppercase tracking-widest italic opacity-70" style={{ color: textColor }}>{feat}</span>
-                                </div>
-                            ))}
                         </div>
                     </div>
                 </div>
@@ -175,7 +189,7 @@ export default function DesignLabPage() {
                 </div>
 
                 {/* EXTREME LEFT CONTAINER with proper offset for Header safety */}
-                <div className="container relative z-20 h-full px-6 lg:pl-16 mx-auto pt-24 pb-16">
+                <div className="container relative z-20 h-full px-6 lg:pl-16 mx-auto pt-28 pb-16">
                     <div className="w-full flex transition-all duration-1000 justify-start h-full items-center">
                         <SovereignSlab />
                     </div>
@@ -201,7 +215,7 @@ export default function DesignLabPage() {
                             </div>
                         </div>
                         <div className="hidden md:flex items-center gap-10 text-xs font-black uppercase tracking-[0.4em] italic font-headline">
-                            <span className="flex items-center gap-2 opacity-40"><Activity className="w-4 h-4" /> ZERO_SCROLL_MANDATE</span>
+                            <span className="flex items-center gap-2 opacity-40"><Activity className="w-4 h-4" /> REAL_TIME_LEADERSHIP</span>
                             <span className="flex items-center gap-2 opacity-40"><ShieldCheck className="w-4 h-4" /> AUDIT_READY_V135</span>
                             <span className="flex items-center gap-2 opacity-40"><Lock className="w-4 h-4" /> SOVEREIGN_IP_SECURED</span>
                         </div>
@@ -213,3 +227,4 @@ export default function DesignLabPage() {
         </div>
     );
 }
+
