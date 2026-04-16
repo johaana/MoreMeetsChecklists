@@ -20,7 +20,7 @@ const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h
 
 const ARCHETYPES = [
     { id: 1, name: "ROYAL VIOLET", color: "#8B5CF6", text: "#0F172A", layout: 'solar' },
-    { id: 2, name: "VIVID PURPLE", color: "#A855F7", text: "#FFFFFF", layout: 'glow' },
+    { id: 2, name: "VIVID PURPLE", color: "#A855F7", text: "#0F172A", layout: 'solar' },
     { id: 3, name: "DEEP ORCHID", color: "#9333EA", text: "#0F172A", layout: 'solar' },
     { id: 4, name: "MAGENTA GLOW", color: "#D946EF", text: "#FFFFFF", layout: 'glow' },
     { id: 5, name: "MODERN PINK", color: "#EC4899", text: "#0F172A", layout: 'solar' },
@@ -83,8 +83,8 @@ export default function DesignLabPage() {
                             STOP RELYING <br /> ON MEMORY.
                         </h1>
                         <h2 className="text-xl md:text-[2.2rem] font-black font-headline leading-[0.9] tracking-tighter uppercase italic" style={{ color: themeColor }}>
-                            Run pre-built SOPs. <br />
-                            <span className="text-[0.8em] opacity-80">Done right. Every day.</span>
+                            RUN PRE-BUILT SOPs. <br />
+                            <span className="text-[0.8em] opacity-80">DONE RIGHT. EVERY DAY.</span>
                         </h2>
                     </div>
 
