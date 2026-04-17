@@ -52,6 +52,7 @@ const COLORS = {
 };
 
 const DASHBOARD_IMAGE = "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png";
+const CINEMA_TASKS_IMAGE = "https://i.postimg.cc/G278vKh8/Screenshot-2026-04-18-004329.png";
 
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
     <section id={id} className={cn("w-full py-16 md:py-24", className)}>
@@ -62,11 +63,6 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
 );
 
 const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green" }: { children: React.ReactNode, className?: string, delay?: string, color?: "green" | "red" | "blue" }) => {
-    const dotColors = {
-        green: "bg-emerald-500",
-        red: "bg-red-500",
-        blue: "bg-blue-500"
-    };
     const pingColors = {
         green: "bg-emerald-400",
         red: "bg-red-400",
@@ -75,14 +71,14 @@ const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green"
 
     return (
         <div className={cn(
-            "absolute z-30 bg-white/95 backdrop-blur-md px-3 py-2 rounded-lg shadow-xl flex items-center gap-2 border border-[#E6E8EC] animate-in fade-in zoom-in duration-700 whitespace-nowrap",
+            "absolute z-30 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-lg shadow-xl flex items-center gap-3 border border-[#E6E8EC] animate-in fade-in zoom-in duration-700 whitespace-nowrap",
             className
         )} style={{ animationDelay: delay }}>
-            <span className="relative flex h-2 w-2">
-                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 scale-[1.5]", pingColors[color])}></span>
-                <span className={cn("relative inline-flex rounded-full h-2 w-2", dotColors[color])}></span>
+            <span className="relative flex h-3 w-3">
+                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 scale-[2.5]", pingColors[color])}></span>
+                <span className={cn("relative inline-flex rounded-full h-3 w-3", pingColors[color].replace('400', '500'))}></span>
             </span>
-            <span className="text-[10px] font-black text-[#0B0F14] uppercase tracking-widest">{children}</span>
+            <span className="text-[11px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
         </div>
     );
 };
@@ -103,9 +99,9 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 
                 {/* 🔴 HERO SECTION - ONE GLANCE OPTIMIZED */}
-                <section className="w-full bg-[#F7F8FA] pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden min-h-[90svh] flex flex-col justify-center">
+                <section className="w-full bg-[#F7F8FA] pt-8 pb-16 md:pt-12 md:pb-20 overflow-hidden min-h-[90svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
-                        <div className="grid lg:grid-cols-[1fr,1fr] gap-12 lg:gap-24 items-center">
+                        <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-20 items-center">
                             
                             {/* LEFT SIDE: NARRATIVE */}
                             <div className="flex flex-col items-start space-y-8">
@@ -167,18 +163,18 @@ export default function DesignLabPage() {
                             </div>
 
                             {/* RIGHT SIDE: DASHBOARD PROOF (ANNOTATED OUTSIDE) */}
-                            <div className="relative">
-                                {/* Externalized Annotations (Moved out of the frame) */}
-                                <AnimatedAnnotation className="-top-4 -left-12 md:-left-20" color="red" delay="0.5s">
-                                    🔴 Missed tasks
+                            <div className="relative pt-12">
+                                {/* Externalized Annotations - Pulsating Only */}
+                                <AnimatedAnnotation className="-top-4 -left-12 md:-left-24" color="red" delay="0.5s">
+                                    Missed tasks
                                 </AnimatedAnnotation>
 
-                                <AnimatedAnnotation className="top-1/3 -right-12 md:-right-24" color="green" delay="1s">
-                                    🟢 Completed tasks
+                                <AnimatedAnnotation className="top-1/3 -right-12 md:-right-32" color="green" delay="1s">
+                                    Completed tasks
                                 </AnimatedAnnotation>
 
-                                <AnimatedAnnotation className="-bottom-4 -left-8 md:-left-16" color="blue" delay="1.5s">
-                                    📊 Live dashboard
+                                <AnimatedAnnotation className="-bottom-4 -left-8 md:-left-20" color="blue" delay="1.5s">
+                                    Live dashboard
                                 </AnimatedAnnotation>
 
                                 <div className="rounded-[24px] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.12)] bg-white border border-[#E6E8EC] relative">
@@ -204,7 +200,7 @@ export default function DesignLabPage() {
                                 </div>
                                 
                                 {/* Image Caption */}
-                                <div className="mt-4 text-center">
+                                <div className="mt-6 text-center">
                                     <p className="text-[10px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
                                         / Sample of Restaurant Operating Dashboard
                                     </p>
@@ -307,7 +303,7 @@ export default function DesignLabPage() {
                         </div>
                         <div className="space-y-4">
                             <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E6E8EC] bg-black p-2">
-                                 <img src="https://i.postimg.cc/G278vKh8/Screenshot-2026-04-18-004329.png" alt="Simple System" className="w-full h-auto rounded-xl" />
+                                 <img src={CINEMA_TASKS_IMAGE} alt="Cinema Daily Tasks" className="w-full h-auto rounded-xl" />
                             </div>
                             <p className="text-[10px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic text-center">
                                 / sample daily tasks cinema product
@@ -457,7 +453,7 @@ export default function DesignLabPage() {
                                 <h4 className="font-black text-[#0B0F14] uppercase italic text-sm">No software debt</h4>
                                 <p className="text-[13px] text-[#5B6670] italic font-medium">Nothing new to install or learn.</p>
                             </div>
-                            <div className="space-y-3">
+                            <div className="grid grid-cols-1 gap-2">
                                 <h4 className="font-black text-[#0B0F14] uppercase italic text-sm">No recurring cost</h4>
                                 <p className="text-[13px] text-[#5B6670] italic font-medium">One-time payment. Own forever.</p>
                             </div>
@@ -544,3 +540,4 @@ export default function DesignLabPage() {
         </div>
     );
 }
+
