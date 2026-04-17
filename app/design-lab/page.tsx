@@ -75,8 +75,7 @@ const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green"
             className
         )} style={{ animationDelay: delay }}>
             <span className="relative flex h-3 w-3">
-                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 scale-[2.5]", pingColors[color])}></span>
-                <span className={cn("relative inline-flex rounded-full h-3 w-3", pingColors[color].replace('400', '500'))}></span>
+                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 scale-[3.5]", pingColors[color])}></span>
             </span>
             <span className="text-[11px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
         </div>
@@ -101,16 +100,18 @@ export default function DesignLabPage() {
                 {/* 🔴 HERO SECTION - ONE GLANCE OPTIMIZED */}
                 <section className="w-full bg-[#F7F8FA] pt-8 pb-16 md:pt-12 md:pb-20 overflow-hidden min-h-[90svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
-                        <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-20 items-center">
+                        <div className="grid lg:grid-cols-[1.4fr,1fr] gap-12 lg:gap-20 items-center">
                             
                             {/* LEFT SIDE: NARRATIVE */}
-                            <div className="flex flex-col items-start space-y-8">
-                                <div className="space-y-4">
-                                    <h1 className="text-[40px] md:text-[56px] font-bold text-[#0B0F14] leading-[1.14] tracking-tighter uppercase italic">
-                                        <span className="block whitespace-nowrap">Stop chasing your team.</span>
-                                        <span className="block whitespace-nowrap text-[#0F3D2E]">See daily work getting done.</span>
+                            <div className="flex flex-col items-start space-y-8 max-w-[900px]">
+                                <div className="space-y-1">
+                                    <h1 className="text-[34px] md:text-[52px] lg:text-[60px] font-bold text-[#0B0F14] leading-[1.1] tracking-tighter uppercase italic whitespace-nowrap">
+                                        Stop chasing your team.
                                     </h1>
-                                    <p className="text-[22px] md:text-[26px] text-[#5B6670] italic font-medium leading-tight">
+                                    <h1 className="text-[34px] md:text-[52px] lg:text-[60px] font-bold text-[#0F3D2E] leading-[1.1] tracking-tighter uppercase italic whitespace-nowrap">
+                                        See daily work getting done.
+                                    </h1>
+                                    <p className="text-[22px] md:text-[26px] text-[#5B6670] italic font-medium leading-tight pt-4">
                                         Even when you’re not there.
                                     </p>
                                 </div>
@@ -165,15 +166,15 @@ export default function DesignLabPage() {
                             {/* RIGHT SIDE: DASHBOARD PROOF (ANNOTATED OUTSIDE) */}
                             <div className="relative pt-12">
                                 {/* Externalized Annotations - Pulsating Only */}
-                                <AnimatedAnnotation className="-top-4 -left-12 md:-left-24" color="red" delay="0.5s">
+                                <AnimatedAnnotation className="-top-8 -left-8 md:-left-20" color="red" delay="0.5s">
                                     Missed tasks
                                 </AnimatedAnnotation>
 
-                                <AnimatedAnnotation className="top-1/3 -right-12 md:-right-32" color="green" delay="1s">
+                                <AnimatedAnnotation className="top-1/4 -right-12 md:-right-24" color="green" delay="1s">
                                     Completed tasks
                                 </AnimatedAnnotation>
 
-                                <AnimatedAnnotation className="-bottom-4 -left-8 md:-left-20" color="blue" delay="1.5s">
+                                <AnimatedAnnotation className="-bottom-8 -left-4 md:-left-12" color="blue" delay="1.5s">
                                     Live dashboard
                                 </AnimatedAnnotation>
 
@@ -199,10 +200,10 @@ export default function DesignLabPage() {
                                     />
                                 </div>
                                 
-                                {/* Image Caption */}
-                                <div className="mt-6 text-center">
-                                    <p className="text-[10px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
-                                        / Sample of Restaurant Operating Dashboard
+                                {/* Image Caption - Smaller, No Slash, One Line */}
+                                <div className="mt-4 text-center">
+                                    <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
+                                        Sample of Restaurant Operating Dashboard
                                     </p>
                                 </div>
                             </div>
@@ -305,8 +306,9 @@ export default function DesignLabPage() {
                             <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E6E8EC] bg-black p-2">
                                  <img src={CINEMA_TASKS_IMAGE} alt="Cinema Daily Tasks" className="w-full h-auto rounded-xl" />
                             </div>
-                            <p className="text-[10px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic text-center">
-                                / sample daily tasks cinema product
+                            {/* Image Caption - Smaller, No Slash, One Line */}
+                            <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic text-center">
+                                sample daily tasks cinema product
                             </p>
                         </div>
                     </div>
@@ -540,4 +542,3 @@ export default function DesignLabPage() {
         </div>
     );
 }
-
