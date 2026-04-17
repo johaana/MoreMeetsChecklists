@@ -39,7 +39,7 @@ import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-// --- PRODUCTION DESIGN SYSTEM (STRICT) ---
+// --- PRODUCTION DESIGN SYSTEM (STRICT FIGMA SPECS) ---
 const COLORS = {
     PRIMARY: "#0F3D2E",      // Deep Green
     ACCENT: "#F4A261",       // Muted Amber CTA
@@ -103,27 +103,26 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 
                 {/* 🔴 HERO SECTION - ONE GLANCE OPTIMIZED */}
-                <section className="w-full bg-[#F7F8FA] pt-20 pb-16 md:pt-24 md:pb-20 overflow-hidden min-h-[90svh] flex flex-col justify-center">
+                <section className="w-full bg-[#F7F8FA] pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden min-h-[90svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
-                        <div className="grid lg:grid-cols-[1fr,1fr] gap-12 lg:gap-24 items-center">
+                        <div className="grid lg:grid-cols-[1.1fr,0.9fr] gap-12 lg:gap-24 items-center">
                             
                             {/* LEFT SIDE: NARRATIVE */}
-                            <div className="max-w-[540px] flex flex-col items-start space-y-8">
+                            <div className="max-w-[600px] flex flex-col items-start space-y-8">
                                 <div className="space-y-4">
-                                    <h1 className="text-4xl md:text-5xl lg:text-[4.2rem] font-bold text-[#0B0F14] leading-[1.1] tracking-tighter uppercase italic">
+                                    <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-bold text-[#0B0F14] leading-[1.05] tracking-tighter uppercase italic">
                                         Stop chasing your team. <br/>
                                         <span className="text-[#0F3D2E]">See daily work getting done.</span>
                                     </h1>
-                                    <p className="text-[22px] text-[#5B6670] italic font-medium leading-tight">
+                                    <p className="text-[22px] md:text-[26px] text-[#5B6670] italic font-medium leading-tight">
                                         Even when you’re not there.
                                     </p>
                                 </div>
 
                                 {/* PAIN BLOCK */}
                                 <div className="border-l-[3px] border-[#0F3D2E] pl-[16px] space-y-2 py-1">
-                                    <p className="text-[18px] font-medium leading-tight">Without follow-ups</p>
-                                    <p className="text-[18px] font-medium leading-tight">Without confusion</p>
-                                    <p className="text-[18px] font-medium leading-tight">Without depending on memory</p>
+                                    <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">No follow-ups. No confusion.</p>
+                                    <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">No dependency on memory.</p>
                                 </div>
 
                                 {/* FEATURES GRID */}
@@ -167,17 +166,17 @@ export default function DesignLabPage() {
                             </div>
 
                             {/* RIGHT SIDE: DASHBOARD PROOF (ANNOTATED OUTSIDE) */}
-                            <div className="relative group">
-                                {/* Externalized Annotations */}
-                                <AnimatedAnnotation className="top-[5%] -left-[40px]" color="red" delay="0.5s">
+                            <div className="relative">
+                                {/* Externalized Annotations (Moved out of the frame) */}
+                                <AnimatedAnnotation className="-top-4 -left-12 md:-left-20" color="red" delay="0.5s">
                                     🔴 Missed tasks
                                 </AnimatedAnnotation>
 
-                                <AnimatedAnnotation className="top-[35%] -right-[40px]" color="green" delay="1s">
+                                <AnimatedAnnotation className="top-1/3 -right-12 md:-right-24" color="green" delay="1s">
                                     🟢 Completed tasks
                                 </AnimatedAnnotation>
 
-                                <AnimatedAnnotation className="bottom-[15%] -left-[20px]" color="blue" delay="1.5s">
+                                <AnimatedAnnotation className="-bottom-4 -left-8 md:-left-16" color="blue" delay="1.5s">
                                     📊 Live dashboard
                                 </AnimatedAnnotation>
 
@@ -199,21 +198,15 @@ export default function DesignLabPage() {
                                     <img 
                                         src={DASHBOARD_IMAGE} 
                                         alt="Master Operational System" 
-                                        className="w-full h-auto object-cover grayscale-[0.05] group-hover:grayscale-0 transition-all duration-700" 
+                                        className="w-full h-auto object-cover grayscale-[0.05]" 
                                     />
                                 </div>
                                 
                                 {/* Image Caption */}
-                                <div className="mt-6 text-center">
+                                <div className="mt-4 text-center">
                                     <p className="text-[10px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
                                         / Sample of Restaurant Product
                                     </p>
-                                </div>
-                                
-                                <div className="mt-8 flex items-center justify-center gap-6 opacity-30">
-                                    <ShieldCheck className="w-5 h-5" />
-                                    <span className="text-[10px] font-black uppercase tracking-[0.4em]">Audit-Ready Infrastructure</span>
-                                    <Lock className="w-5 h-5" />
                                 </div>
                             </div>
 
@@ -250,7 +243,7 @@ export default function DesignLabPage() {
                                     {[
                                         "Managers keep following up manually",
                                         "No real-time visibility into completion",
-                                        "No verifiable records for audits"
+                                        "No proper records for audits"
                                     ].map((p, i) => (
                                         <li key={i} className="flex items-start gap-3 text-red-900 font-bold text-sm">
                                             <X className="w-4 h-4 text-red-500 mt-0.5 shrink-0" />
@@ -545,3 +538,4 @@ export default function DesignLabPage() {
         </div>
     );
 }
+
