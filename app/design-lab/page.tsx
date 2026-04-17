@@ -79,8 +79,8 @@ const HorizontalMobileChassis = () => (
             </div>
         </div>
 
-        {/* Floating Vitals - REPOSITIONED to prevent obstruction */}
-        <div className="absolute -bottom-10 -right-4 bg-white/90 backdrop-blur-2xl p-5 rounded-2xl border border-zinc-200 shadow-[0_30px_60px_-10px_rgba(0,0,0,0.2)] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-500 z-30">
+        {/* Floating Vitals - REPOSITIONED OUTSIDE to prevent obstruction */}
+        <div className="absolute -bottom-12 -right-8 bg-white/90 backdrop-blur-2xl p-5 rounded-2xl border border-zinc-200 shadow-[0_30px_60px_-10px_rgba(0,0,0,0.2)] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-500 z-30">
             <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shadow-inner">
                     <Activity className="w-5 h-5 animate-pulse" />
@@ -111,75 +111,75 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 
                 {/* 🔴 SECTION 1: RADIANT LIGHT HERO (ZERO SCROLL) */}
-                <section className="relative w-full h-[100svh] flex flex-col justify-center bg-[#f8fafc] overflow-hidden border-b border-zinc-100 pt-16">
-                    {/* Radiant Pastel Mesh - Premium Depth */}
+                <section className="relative w-full min-h-[100svh] flex flex-col justify-center bg-[#fdfcfd] overflow-hidden border-b border-zinc-100 pt-16">
+                    {/* Radiant Amethyst & Mint Mesh - High Fidelity Depth */}
                     <div className="absolute inset-0 z-0">
-                        <div className="absolute top-0 right-0 w-[60%] h-[100%] bg-[radial-gradient(circle_at_center,#f0f9f4_0%,transparent_70%)] opacity-70" />
-                        <div className="absolute bottom-0 left-0 w-[50%] h-[80%] bg-[radial-gradient(circle_at_center,#ede9fe_0%,transparent_60%)] opacity-50" />
+                        <div className="absolute top-0 right-0 w-[70%] h-[100%] bg-[radial-gradient(circle_at_center,rgba(237,233,254,0.7)_0%,transparent_70%)]" />
+                        <div className="absolute bottom-0 left-0 w-[50%] h-[80%] bg-[radial-gradient(circle_at_center,rgba(236,253,245,0.5)_0%,transparent_60%)]" />
                         <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000003_1px,transparent_1px),linear-gradient(to_bottom,#00000003_1px,transparent_1px)] bg-[size:64px_64px]" />
                     </div>
                     
                     <div className="container px-6 lg:px-12 mx-auto h-full flex items-center relative z-10">
-                        <div className="grid lg:grid-cols-[1fr,1.1fr] gap-12 items-center w-full">
+                        <div className="grid lg:grid-cols-[1.4fr,1fr] gap-12 items-center w-full">
                             
                             {/* Left Narrative Slab */}
-                            <div className="space-y-4 md:space-y-6 animate-in fade-in slide-in-from-left-4 duration-1000">
+                            <div className="space-y-6 md:space-y-10 animate-in fade-in slide-in-from-left-4 duration-1000">
                                 <div className="space-y-4">
-                                    <h1 className="text-4xl md:text-5xl lg:text-[4.2rem] font-black font-headline text-[#0F172A] leading-[0.9] tracking-tighter uppercase italic">
-                                        Stop chasing <br /> <span className="text-primary">your team.</span>
+                                    <h1 className="text-4xl md:text-5xl lg:text-[4.4rem] font-black font-headline text-[#0F172A] leading-[0.85] tracking-tighter uppercase italic lg:whitespace-nowrap">
+                                        Stop chasing <span className="text-primary">your team.</span>
                                     </h1>
-                                    <p className="text-xl md:text-2xl font-bold italic text-zinc-500 leading-tight border-l-4 border-primary/40 pl-6">
+                                    <p className="text-xl md:text-2xl font-bold italic text-zinc-500 leading-tight border-l-4 border-primary/40 pl-6 max-w-2xl">
                                         See daily work getting done—even when you’re not there.
                                     </p>
                                 </div>
 
                                 {/* Autopilot Feature Block */}
-                                <div className="p-6 md:p-8 rounded-3xl bg-[#0F172A] text-white border-l-[12px] border-primary shadow-[0_30px_60px_-12px_rgba(15,23,42,0.3)] space-y-2 relative overflow-hidden group">
-                                    <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-                                        <Zap className="w-24 h-24 text-primary" />
+                                <div className="p-6 md:p-10 rounded-[2.5rem] bg-[#0F172A] text-white border-l-[12px] border-primary shadow-[0_30px_60px_-12px_rgba(15,23,42,0.3)] space-y-3 relative overflow-hidden group max-w-xl">
+                                    <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                                        <Zap className="w-32 h-32 text-primary" />
                                     </div>
-                                    <p className="text-2xl md:text-3xl font-black italic leading-tight uppercase tracking-tighter">
+                                    <p className="text-2xl md:text-4xl font-black italic leading-tight uppercase tracking-tighter">
                                         Operations on Autopilot.
                                     </p>
-                                    <p className="text-sm md:text-base font-medium text-white/40 italic leading-relaxed">
+                                    <p className="text-sm md:text-lg font-medium text-white/40 italic leading-relaxed">
                                         Without follow-ups. Without confusion. <br />
                                         Without depending on memory.
                                     </p>
                                 </div>
 
-                                <div className="space-y-6">
-                                    <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                                <div className="space-y-8">
+                                    <div className="grid grid-cols-2 gap-x-12 gap-y-6 max-w-2xl">
                                         {[
                                             { t: "Pre-built, editable SOPs", i: ClipboardCheck },
                                             { t: "Daily task tracking", i: Clock },
                                             { t: "Trainer notes for staff", i: GraduationCap },
                                             { t: "Admin system lock", i: Lock }
                                         ].map((item, i) => (
-                                            <div key={i} className="flex items-center gap-3">
-                                                <item.i className="w-4 h-4 text-primary shrink-0" />
-                                                <span className="text-[11px] font-black text-zinc-600 uppercase tracking-widest italic">{item.t}</span>
+                                            <div key={i} className="flex items-center gap-4">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(46,184,107,0.5)]" />
+                                                <span className="text-[12px] font-black text-zinc-600 uppercase tracking-widest italic">{item.t}</span>
                                             </div>
                                         ))}
                                     </div>
 
-                                    <div className="flex flex-col md:flex-row md:items-center gap-10 pt-2">
+                                    <div className="flex flex-col md:flex-row md:items-center gap-12 pt-4">
                                         <div className="space-y-1">
-                                            <div className="flex items-baseline gap-3">
-                                                <span className="text-5xl font-black text-[#0F172A] italic font-headline leading-none">₹2,999</span>
-                                                <span className="text-lg font-bold text-zinc-300 line-through italic">₹4,999</span>
+                                            <div className="flex items-baseline gap-4">
+                                                <span className="text-6xl md:text-7xl font-black text-[#0F172A] italic font-headline leading-none drop-shadow-sm">₹2,999</span>
+                                                <span className="text-xl font-bold text-zinc-300 line-through italic">₹4,999</span>
                                             </div>
-                                            <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-[0.4em]">⏳ Launch Rate • Own Forever</p>
+                                            <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-[0.4em] pl-1">⏳ Launch Rate • Own Forever</p>
                                         </div>
-                                        <button className="h-16 px-10 rounded-2xl bg-[#f97316] text-white font-black uppercase italic tracking-widest text-base hover:scale-105 transition-all shadow-[0_20px_40px_-5px_rgba(249,115,22,0.4)] border-none group">
-                                            <Link href="/library" className="flex items-center gap-3">
-                                                START RUNNING YOUR SYSTEM <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                                        <button className="h-20 px-12 rounded-2xl bg-[#f97316] text-white font-black uppercase italic tracking-widest text-lg hover:scale-105 transition-all shadow-[0_20px_40px_-5px_rgba(249,115,22,0.4)] border-none group relative overflow-hidden">
+                                            <Link href="/library" className="flex items-center gap-4 relative z-10">
+                                                START RUNNING YOUR SYSTEM <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-2" />
                                             </Link>
+                                            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                                         </button>
                                     </div>
                                     
-                                    <div className="flex items-center gap-4 py-4 px-8 bg-white border border-zinc-100 rounded-full w-fit shadow-sm">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                                        <p className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.4em] italic leading-none">
+                                    <div className="flex items-center gap-4 py-4 px-10 bg-white border border-zinc-100 rounded-full w-fit shadow-sm">
+                                        <p className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.5em] italic leading-none">
                                             BUILT ON EXCEL. RUNS ON GOOGLE SHEETS.
                                         </p>
                                     </div>
@@ -187,7 +187,7 @@ export default function DesignLabPage() {
                             </div>
 
                             {/* Right Proof Column: Landscape Mobile Chassis */}
-                            <div className="relative group flex justify-center lg:justify-end animate-in fade-in zoom-in-95 duration-1000 delay-200">
+                            <div className="relative group flex justify-center lg:justify-end animate-in fade-in zoom-in-95 duration-1000 delay-200 pr-8">
                                 <div className="absolute -inset-20 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
                                 <HorizontalMobileChassis />
                             </div>
@@ -195,14 +195,14 @@ export default function DesignLabPage() {
                     </div>
 
                     {/* Technical Command Strip */}
-                    <div className="absolute bottom-0 w-full py-5 bg-white/60 backdrop-blur-md border-t border-zinc-100">
+                    <div className="absolute bottom-0 w-full py-6 bg-white/60 backdrop-blur-md border-t border-zinc-100">
                         <div className="container px-12 mx-auto flex justify-center md:justify-between items-center text-[10px] font-black text-zinc-400 uppercase tracking-[0.5em] italic font-headline">
                              <span className="hidden md:block">AUDIT READY COMPLIANCE</span>
-                             <span className="flex items-center gap-4 text-primary">
-                                <ShieldCheck className="w-4 h-4" />
+                             <span className="flex items-center gap-6 text-primary">
+                                <ShieldCheck className="w-5 h-5" />
                                 100% SOVEREIGN DATA OWNERSHIP
                              </span>
-                             <span className="hidden md:block">SECURE_BUILD_V220.0</span>
+                             <span className="hidden md:block">SECURE_BUILD_V260.0_STABLE</span>
                         </div>
                     </div>
                 </section>
@@ -217,7 +217,7 @@ export default function DesignLabPage() {
                         </div>
                         
                         <div className="grid md:grid-cols-2 gap-12">
-                            <div className="p-12 rounded-[3rem] bg-[#fdf2f2] border border-red-100 space-y-10 relative overflow-hidden group">
+                            <div className="p-12 rounded-[3.5rem] bg-[#fdf2f2] border border-red-100 space-y-10 relative overflow-hidden group">
                                 <div className="absolute -top-10 -right-10 opacity-5 group-hover:opacity-10 transition-opacity">
                                     <AlertTriangle className="w-48 h-48 text-red-500" />
                                 </div>
@@ -244,7 +244,7 @@ export default function DesignLabPage() {
                                         "Most operational problems don’t come from big failures. They come from small tasks being missed every day."
                                     </p>
                                 </div>
-                                <div className="p-10 bg-zinc-50 border border-zinc-100 rounded-3xl text-zinc-400 shadow-sm relative overflow-hidden">
+                                <div className="p-10 bg-zinc-50 border border-zinc-100 rounded-[2.5rem] text-zinc-400 shadow-sm relative overflow-hidden">
                                     <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em] mb-2 italic">INFRASTRUCTURE MANDATE</p>
                                     <p className="text-xl font-bold italic leading-snug">That is exactly where control is lost. Memory is not a system.</p>
                                 </div>
@@ -326,7 +326,7 @@ export default function DesignLabPage() {
                                     { t: "PERFORMANCE %", d: "Track efficiency across all sites instantly.", i: Activity, c: "text-primary" }
                                 ].map((item, i) => (
                                     <li key={i} className="flex gap-10 group">
-                                        <div className="flex h-20 w-20 items-center justify-center rounded-[1.5rem] bg-white border border-zinc-100 group-hover:bg-primary group-hover:text-white transition-all shrink-0 shadow-sm">
+                                        <div className="flex h-20 w-20 items-center justify-center rounded-[2rem] bg-white border border-zinc-100 group-hover:bg-primary group-hover:text-white transition-all shrink-0 shadow-sm">
                                             <item.i className={cn("w-10 h-10", item.c, "group-hover:text-white")} />
                                         </div>
                                         <div className="space-y-1">
@@ -360,7 +360,7 @@ export default function DesignLabPage() {
                                 { t: "LIVE DASHBOARD", d: "High-gravity oversight across all units.", i: Activity },
                                 { t: "ADMIN CONTROLS", d: "Lock formulas & structure so staff can't break it.", i: Lock, elite: true }
                             ].map((item, i) => (
-                                <div key={i} className={cn("p-12 rounded-[3rem] bg-[#f8fafc] border border-zinc-100 space-y-6 hover:border-primary/40 transition-all group", item.elite && "border-primary/20 bg-primary/5")}>
+                                <div key={i} className={cn("p-12 rounded-[3.5rem] bg-[#f8fafc] border border-zinc-100 space-y-6 hover:border-primary/40 transition-all group", item.elite && "border-primary/20 bg-primary/5")}>
                                     <div className="w-14 h-14 rounded-2xl bg-white border border-zinc-50 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
                                         <item.i className="w-7 h-7" />
                                     </div>
@@ -381,14 +381,14 @@ export default function DesignLabPage() {
                             <p className="text-zinc-500 text-lg italic font-medium">Most SOPs fail because they sit in files. This system stays on the floor.</p>
                         </div>
                         <div className="grid md:grid-cols-2 gap-10 md:gap-12">
-                            <div className="p-12 rounded-[3rem] bg-white border border-zinc-100 flex gap-10 items-start hover:border-primary/40 transition-all group shadow-sm">
+                            <div className="p-12 rounded-[3.5rem] bg-white border border-zinc-100 flex gap-10 items-start hover:border-primary/40 transition-all group shadow-sm">
                                 <div className="w-2 h-24 bg-primary rounded-full shrink-0 group-hover:scale-y-110 transition-transform shadow-[0_0_20px_rgba(46,184,107,0.4)]" />
                                 <div className="space-y-4">
                                     <h4 className="font-black text-[#0F172A] uppercase tracking-widest text-base">TRAINER NOTES</h4>
                                     <p className="text-xl text-zinc-600 italic font-bold leading-snug">They explain exactly HOW to do it. Faster onboarding, lower dependency on managers.</p>
                                 </div>
                             </div>
-                            <div className="p-12 rounded-[3rem] bg-white border border-zinc-100 flex gap-10 items-start hover:border-[#f97316]/40 transition-all group shadow-sm">
+                            <div className="p-12 rounded-[3.5rem] bg-white border border-zinc-100 flex gap-10 items-start hover:border-[#f97316]/40 transition-all group shadow-sm">
                                 <div className="w-2 h-24 bg-[#f97316] rounded-full shrink-0 group-hover:scale-y-110 transition-transform shadow-[0_0_20px_rgba(249,115,22,0.4)]" />
                                 <div className="space-y-4">
                                     <h4 className="font-black text-[#0F172A] uppercase tracking-widest text-base">CONSEQUENCES</h4>
@@ -416,7 +416,7 @@ export default function DesignLabPage() {
                                 { n: "Facilities", i: Building2 },
                                 { n: "Franchise Networks", i: LayoutGrid }
                             ].map((ind, i) => (
-                                <div key={i} className="px-12 py-10 rounded-[2.5rem] bg-[#f8fafc] border border-zinc-100 flex flex-col items-center gap-6 hover:border-primary/40 hover:bg-white transition-all group shrink-0 shadow-sm">
+                                <div key={i} className="px-12 py-10 rounded-[3rem] bg-[#f8fafc] border border-zinc-100 flex flex-col items-center gap-6 hover:border-primary/40 hover:bg-white transition-all group shrink-0 shadow-sm">
                                     <ind.i className="w-10 h-10 text-zinc-300 group-hover:text-primary transition-colors" />
                                     <span className="text-xl font-black text-[#0F172A] uppercase italic tracking-tighter font-headline">{ind.n}</span>
                                 </div>
@@ -510,7 +510,7 @@ export default function DesignLabPage() {
                                 </div>
                             </div>
                             
-                            <button className="h-28 px-20 rounded-[2.5rem] bg-[#f97316] text-white font-black uppercase italic tracking-widest text-3xl shadow-[0_30px_60px_-10px_rgba(249,115,22,0.4)] hover:scale-105 transition-all border-none">
+                            <button className="h-28 px-20 rounded-[3rem] bg-[#f97316] text-white font-black uppercase italic tracking-widest text-3xl shadow-[0_30px_60px_-10px_rgba(249,115,22,0.4)] hover:scale-105 transition-all border-none">
                                 <Link href="/library" className="flex items-center justify-center">GET INSTANT ACCESS <ArrowRight className="ml-6 h-10 w-10" /></Link>
                             </button>
                         </div>
