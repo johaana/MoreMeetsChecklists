@@ -170,11 +170,11 @@ export default function DesignLabPage() {
                                             </div>
                                             <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-[0.4em]">⏳ Launch Rate • Own Forever</p>
                                         </div>
-                                        <Button asChild size="lg" className="h-16 px-10 rounded-2xl bg-[#f97316] text-white font-black uppercase italic tracking-widest text-base hover:scale-105 transition-all shadow-[0_20px_40px_-5px_rgba(249,115,22,0.4)] border-none group">
+                                        <button className="h-16 px-10 rounded-2xl bg-[#f97316] text-white font-black uppercase italic tracking-widest text-base hover:scale-105 transition-all shadow-[0_20px_40px_-5px_rgba(249,115,22,0.4)] border-none group">
                                             <Link href="/library" className="flex items-center gap-3">
                                                 START RUNNING YOUR SYSTEM <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                                             </Link>
-                                        </Button>
+                                        </button>
                                     </div>
                                     
                                     <div className="flex items-center gap-4 py-4 px-8 bg-white border border-zinc-100 rounded-full w-fit shadow-sm">
@@ -510,9 +510,9 @@ export default function DesignLabPage() {
                                 </div>
                             </div>
                             
-                            <Button asChild size="lg" className="h-28 px-20 rounded-[2.5rem] bg-[#f97316] text-white font-black uppercase italic tracking-widest text-3xl shadow-[0_30px_60px_-10px_rgba(249,115,22,0.4)] hover:scale-105 transition-all border-none">
-                                <Link href="/library">GET INSTANT ACCESS <ArrowRight className="ml-6 h-10 w-10" /></Link>
-                            </Button>
+                            <button className="h-28 px-20 rounded-[2.5rem] bg-[#f97316] text-white font-black uppercase italic tracking-widest text-3xl shadow-[0_30px_60px_-10px_rgba(249,115,22,0.4)] hover:scale-105 transition-all border-none">
+                                <Link href="/library" className="flex items-center justify-center">GET INSTANT ACCESS <ArrowRight className="ml-6 h-10 w-10" /></Link>
+                            </button>
                         </div>
                     </div>
                 </Section>
@@ -522,3 +522,4 @@ export default function DesignLabPage() {
         </div>
     );
 }
+
