@@ -59,14 +59,14 @@ const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green"
 
     return (
         <div className={cn(
-            "absolute z-30 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-lg shadow-xl flex items-center gap-3 border border-[#E6E8EC] animate-in fade-in zoom-in duration-700 whitespace-nowrap",
+            "absolute z-30 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-lg shadow-xl flex items-center gap-2.5 border border-[#E6E8EC] animate-in fade-in zoom-in duration-700 whitespace-nowrap",
             className
         )} style={{ animationDelay: delay }}>
-            <span className="relative flex h-4 w-4">
-                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 scale-[3.5]", pingColors[color as keyof typeof pingColors])}></span>
-                <span className={cn("relative inline-flex rounded-full h-4 w-4", pingColors[color as keyof typeof pingColors])}></span>
+            <span className="relative flex h-2 w-2">
+                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 scale-[4]", pingColors[color as keyof typeof pingColors])}></span>
+                <span className={cn("relative inline-flex rounded-full h-2 w-2", pingColors[color as keyof typeof pingColors])}></span>
             </span>
-            <span className="text-[11px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
+            <span className="text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
         </div>
     );
 };
@@ -87,17 +87,17 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 
                 {/* 🔴 HERO SECTION - ONE GLANCE OPTIMIZED */}
-                <section className="w-full bg-[#F7F8FA] pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden min-h-[90svh] flex flex-col justify-center">
+                <section className="w-full bg-[#F7F8FA] pt-8 pb-16 md:pt-12 md:pb-20 overflow-hidden min-h-[90svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
-                        <div className="grid lg:grid-cols-[1.1fr,1.3fr] gap-12 lg:gap-16 items-center">
+                        <div className="grid lg:grid-cols-[1fr,1fr] gap-12 lg:gap-16 items-center">
                             
                             {/* LEFT SIDE: NARRATIVE */}
-                            <div className="flex flex-col items-start space-y-8">
+                            <div className="flex flex-col items-start space-y-8 relative z-20">
                                 <div className="space-y-1">
-                                    <h1 className="text-[32px] md:text-[50px] lg:text-[62px] font-bold text-[#0B0F14] leading-[1.05] tracking-tighter uppercase italic whitespace-nowrap">
+                                    <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-bold text-[#0B0F14] leading-[1.05] tracking-tighter uppercase italic whitespace-nowrap">
                                         Stop chasing your team.
                                     </h1>
-                                    <h1 className="text-[32px] md:text-[50px] lg:text-[62px] font-bold text-[#0F3D2E] leading-[1.05] tracking-tighter uppercase italic whitespace-nowrap">
+                                    <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-bold text-[#0F3D2E] leading-[1.05] tracking-tighter uppercase italic whitespace-nowrap">
                                         See daily work getting done.
                                     </h1>
                                     <p className="text-[20px] md:text-[24px] text-[#5B6670] italic font-medium leading-tight pt-4">
@@ -152,18 +152,18 @@ export default function DesignLabPage() {
                                 </div>
                             </div>
 
-                            {/* RIGHT SIDE: DASHBOARD PROOF (ANNOTATED OUTSIDE) */}
-                            <div className="relative pt-12 lg:-ml-12 scale-110 md:scale-125 transition-transform duration-1000">
-                                {/* Externalized Annotations - Vibrant Signals */}
-                                <AnimatedAnnotation className="-top-12 -left-12" color="red" delay="0.5s">
+                            {/* RIGHT SIDE: DASHBOARD PROOF */}
+                            <div className="relative pt-20 lg:-ml-24 scale-125 transition-transform duration-1000">
+                                {/* Dynamic Annotations - Tightened Proximity */}
+                                <AnimatedAnnotation className="-top-6 -left-6" color="red" delay="0.5s">
                                     Missed tasks
                                 </AnimatedAnnotation>
 
-                                <AnimatedAnnotation className="top-1/4 -right-16" color="green" delay="1s">
+                                <AnimatedAnnotation className="top-1/4 -right-8" color="green" delay="1s">
                                     Completed tasks
                                 </AnimatedAnnotation>
 
-                                <AnimatedAnnotation className="-bottom-12 -left-8" color="blue" delay="1.5s">
+                                <AnimatedAnnotation className="-bottom-6 -left-4" color="blue" delay="1.5s">
                                     Live dashboard
                                 </AnimatedAnnotation>
 
@@ -189,7 +189,7 @@ export default function DesignLabPage() {
                                     />
                                 </div>
                                 
-                                {/* Image Caption - Micro Font, No Slash */}
+                                {/* Image Caption */}
                                 <div className="mt-4 text-center">
                                     <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
                                         Sample of Restaurant Operating Dashboard
@@ -295,7 +295,7 @@ export default function DesignLabPage() {
                             <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E6E8EC] bg-black p-2">
                                  <img src={CINEMA_TASKS_IMAGE} alt="Cinema Daily Tasks" className="w-full h-auto rounded-xl" />
                             </div>
-                            {/* Image Caption - Micro Font, No Slash */}
+                            {/* Image Caption */}
                             <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic text-center">
                                 sample daily tasks cinema product
                             </p>
