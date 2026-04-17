@@ -26,7 +26,8 @@ import {
     School,
     Store,
     Building2,
-    Popcorn
+    Popcorn,
+    GraduationCap
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
