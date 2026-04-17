@@ -79,7 +79,7 @@ const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green"
             className
         )} style={{ animationDelay: delay }}>
             <span className="relative flex h-2 w-2">
-                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-75", pingColors[color])}></span>
+                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 scale-[1.5]", pingColors[color])}></span>
                 <span className={cn("relative inline-flex rounded-full h-2 w-2", dotColors[color])}></span>
             </span>
             <span className="text-[10px] font-black text-[#0B0F14] uppercase tracking-widest">{children}</span>
@@ -105,14 +105,14 @@ export default function DesignLabPage() {
                 {/* 🔴 HERO SECTION - ONE GLANCE OPTIMIZED */}
                 <section className="w-full bg-[#F7F8FA] pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden min-h-[90svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
-                        <div className="grid lg:grid-cols-[1.1fr,0.9fr] gap-12 lg:gap-24 items-center">
+                        <div className="grid lg:grid-cols-[1fr,1fr] gap-12 lg:gap-24 items-center">
                             
                             {/* LEFT SIDE: NARRATIVE */}
-                            <div className="max-w-[600px] flex flex-col items-start space-y-8">
+                            <div className="flex flex-col items-start space-y-8">
                                 <div className="space-y-4">
-                                    <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-bold text-[#0B0F14] leading-[1.05] tracking-tighter uppercase italic">
-                                        Stop chasing your team. <br/>
-                                        <span className="text-[#0F3D2E]">See daily work getting done.</span>
+                                    <h1 className="text-[40px] md:text-[56px] font-bold text-[#0B0F14] leading-[1.14] tracking-tighter uppercase italic">
+                                        <span className="block whitespace-nowrap">Stop chasing your team.</span>
+                                        <span className="block whitespace-nowrap text-[#0F3D2E]">See daily work getting done.</span>
                                     </h1>
                                     <p className="text-[22px] md:text-[26px] text-[#5B6670] italic font-medium leading-tight">
                                         Even when you’re not there.
@@ -121,8 +121,9 @@ export default function DesignLabPage() {
 
                                 {/* PAIN BLOCK */}
                                 <div className="border-l-[3px] border-[#0F3D2E] pl-[16px] space-y-2 py-1">
-                                    <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">No follow-ups. No confusion.</p>
-                                    <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">No dependency on memory.</p>
+                                    <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">Without follow-ups</p>
+                                    <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">Without confusion</p>
+                                    <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">Without depending on memory</p>
                                 </div>
 
                                 {/* FEATURES GRID */}
@@ -205,7 +206,7 @@ export default function DesignLabPage() {
                                 {/* Image Caption */}
                                 <div className="mt-4 text-center">
                                     <p className="text-[10px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
-                                        / Sample of Restaurant Product
+                                        / Sample of Restaurant Operating Dashboard
                                     </p>
                                 </div>
                             </div>
@@ -304,8 +305,13 @@ export default function DesignLabPage() {
                                 </p>
                             </div>
                         </div>
-                        <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E6E8EC] bg-black p-2">
-                             <img src={DASHBOARD_IMAGE} alt="Simple System" className="w-full h-auto rounded-xl grayscale-[0.2]" />
+                        <div className="space-y-4">
+                            <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E6E8EC] bg-black p-2">
+                                 <img src="https://i.postimg.cc/G278vKh8/Screenshot-2026-04-18-004329.png" alt="Simple System" className="w-full h-auto rounded-xl" />
+                            </div>
+                            <p className="text-[10px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic text-center">
+                                / sample daily tasks cinema product
+                            </p>
                         </div>
                     </div>
                 </Section>
@@ -538,4 +544,3 @@ export default function DesignLabPage() {
         </div>
     );
 }
-
