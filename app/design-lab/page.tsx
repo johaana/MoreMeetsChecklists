@@ -62,9 +62,9 @@ const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green"
             "absolute z-30 bg-white/95 backdrop-blur-md px-2 py-1 rounded-lg shadow-xl flex items-center gap-2 border border-[#E6E8EC] animate-in fade-in zoom-in duration-700 whitespace-nowrap",
             className
         )} style={{ animationDelay: delay }}>
-            <span className="relative flex h-2 w-2">
-                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-100 scale-[4]", pingColors[color as keyof typeof pingColors])}></span>
-                <span className={cn("relative inline-flex rounded-full h-2 w-2", pingColors[color as keyof typeof pingColors])}></span>
+            <span className="relative flex h-1.5 w-1.5">
+                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-100 scale-[4.5]", pingColors[color as keyof typeof pingColors])}></span>
+                <span className={cn("relative inline-flex rounded-full h-1.5 w-1.5", pingColors[color as keyof typeof pingColors])}></span>
             </span>
             <span className="text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
         </div>
@@ -87,13 +87,13 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 
                 {/* 🔴 HERO SECTION - ONE GLANCE OPTIMIZED */}
-                <section className="w-full bg-[#F7F8FA] pt-6 pb-16 md:pt-8 md:pb-20 overflow-hidden min-h-[90svh] flex flex-col justify-center">
+                <section className="w-full bg-[#F7F8FA] pt-4 pb-16 md:pt-6 md:pb-20 overflow-hidden min-h-[90svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
                         <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-16 items-center">
                             
                             {/* LEFT SIDE: NARRATIVE */}
                             <div className="flex flex-col items-start space-y-8 relative z-20">
-                                <div className="space-y-1">
+                                <div className="space-y-1 max-w-[900px]">
                                     <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-bold text-[#0B0F14] leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
                                         Stop chasing your team.
                                     </h1>
@@ -154,16 +154,16 @@ export default function DesignLabPage() {
 
                             {/* RIGHT SIDE: DASHBOARD PROOF */}
                             <div className="relative pt-24 lg:-ml-32 scale-125 transition-all duration-1000">
-                                {/* Dynamic Annotations - Tightened Proximity */}
-                                <AnimatedAnnotation className="top-8 -left-4" color="red" delay="0.5s">
+                                {/* Precision Annotations - Closer & Almost On Dashboard */}
+                                <AnimatedAnnotation className="top-[32%] -left-2" color="red" delay="0.5s">
                                     Missed tasks
                                 </AnimatedAnnotation>
 
-                                <AnimatedAnnotation className="top-20 -right-4" color="green" delay="1s">
+                                <AnimatedAnnotation className="top-[12%] -right-2" color="green" delay="1s">
                                     Completed tasks
                                 </AnimatedAnnotation>
 
-                                <AnimatedAnnotation className="bottom-12 -left-2" color="blue" delay="1.5s">
+                                <AnimatedAnnotation className="bottom-[18%] -left-4" color="blue" delay="1.5s">
                                     Live dashboard
                                 </AnimatedAnnotation>
 
