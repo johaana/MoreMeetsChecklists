@@ -44,7 +44,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 // --- PRODUCTION DESIGN SYSTEM ---
 const COLORS = {
     PRIMARY: "#0F3D2E",      // Dark Green
-    ACCENT: "#F4A261",       // Muted Amber CTA
+    ACCENT: "#F4A261",       // Amber CTA
     TEXT_PRIMARY: "#0B0F14", // Dark
     TEXT_SECONDARY: "#5B6670", // Grey
     BACKGROUND: "#F7F8FA",   // Off-white
@@ -63,6 +63,32 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
     </section>
 );
 
+const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green" }: { children: React.ReactNode, className?: string, delay?: string, color?: "green" | "red" | "blue" }) => {
+    const dotColors = {
+        green: "bg-emerald-500",
+        red: "bg-red-500",
+        blue: "bg-blue-500"
+    };
+    const pingColors = {
+        green: "bg-emerald-400",
+        red: "bg-red-400",
+        blue: "bg-blue-400"
+    };
+
+    return (
+        <div className={cn(
+            "absolute z-30 bg-white/95 backdrop-blur-md px-3 py-2 rounded-lg shadow-2xl flex items-center gap-2 border border-[#E6E8EC] animate-in fade-in zoom-in duration-700",
+            className
+        )} style={{ animationDelay: delay }}>
+            <span className="relative flex h-2 w-2">
+                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-75", pingColors[color])}></span>
+                <span className={cn("relative inline-flex rounded-full h-2 w-2", dotColors[color])}></span>
+            </span>
+            <span className="text-[10px] font-black text-[#0B0F14] uppercase tracking-widest">{children}</span>
+        </div>
+    );
+};
+
 export default function DesignLabPage() {
     const [mounted, setMounted] = useState(false);
 
@@ -73,230 +99,243 @@ export default function DesignLabPage() {
     if (!mounted) return null;
 
     return (
-        <div className="flex flex-col min-h-screen bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased">
+        <div className="flex flex-col min-h-screen bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             {/* Header forced to contrast with light background */}
             <SiteHeader forceTheme="dark" />
 
             <main className="flex-1">
                 
-                {/* 🔴 HERO SECTION (FRAME 1) */}
-                <section className="w-full bg-[#F7F8FA] pt-24 pb-20 md:pt-32 md:pb-24">
+                {/* 🔴 HERO SECTION (FRAME 1) - ONE GLANCE OPTIMIZED */}
+                <section className="w-full bg-[#F7F8FA] pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
                     <div className="container mx-auto max-w-[1200px] px-6">
-                        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                        <div className="flex flex-col space-y-12">
                             
-                            {/* Left: Narrative (6 cols) */}
-                            <div className="max-w-[520px] flex flex-col items-start">
-                                <span className="text-[11px] font-black text-[#5B6670] uppercase tracking-[0.4em] mb-4">
+                            {/* Headline: THE ONE-LINE MANDATE */}
+                            <div className="max-w-7xl">
+                                <span className="text-[11px] font-black text-[#5B6670] uppercase tracking-[0.4em] mb-4 block">
                                     INSTITUTIONAL OPERATING SYSTEM
                                 </span>
-                                
-                                <h1 className="text-4xl md:text-[56px] font-bold text-[#0B0F14] leading-[1.14] tracking-tight mb-4">
-                                    Stop chasing your team. <br/>
-                                    See daily work getting done.
+                                <h1 className="text-3xl md:text-5xl lg:text-[4.2rem] font-bold text-[#0B0F14] leading-tight tracking-tighter uppercase italic">
+                                    Stop chasing your team. <span className="text-[#0F3D2E]">See daily work getting done.</span>
                                 </h1>
+                            </div>
+
+                            <div className="grid lg:grid-cols-[1fr,1fr] gap-12 lg:gap-24 items-start">
                                 
-                                <p className="text-[20px] text-[#5B6670] italic mb-8">
-                                    Even when you’re not there.
-                                </p>
-
-                                {/* Pain Block (Key Visual) */}
-                                <div className="border-l-[3px] border-[#0F3D2E] pl-[12px] space-y-2 mb-8">
-                                    <p className="text-[18px] font-medium leading-tight">Without follow-ups</p>
-                                    <p className="text-[18px] font-medium leading-tight">Without confusion</p>
-                                    <p className="text-[18px] font-medium leading-tight">Without depending on memory</p>
-                                </div>
-
-                                <p className="text-[18px] font-medium mb-5">
-                                    A ready operational system for your daily work
-                                </p>
-
-                                {/* Features Grid */}
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 mb-7 w-full">
-                                    {[
-                                        "Pre-built, editable SOPs",
-                                        "Daily task tracking",
-                                        "Trainer notes (faster training)",
-                                        "Live dashboard visibility"
-                                    ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-2">
-                                            <Check className="w-4 h-4 text-[#0F3D2E] shrink-0" />
-                                            <span className="text-sm font-medium text-[#0B0F14]">{item}</span>
+                                {/* Left: Narrative (6 cols) */}
+                                <div className="max-w-[520px] flex flex-col items-start space-y-8">
+                                    <div className="space-y-2">
+                                        <p className="text-[22px] text-[#5B6670] italic leading-tight">
+                                            Even when you’re not there.
+                                        </p>
+                                        <div className="border-l-[3px] border-[#0F3D2E] pl-[16px] space-y-1 py-1">
+                                            <p className="text-[18px] font-medium leading-tight">Without follow-ups</p>
+                                            <p className="text-[18px] font-medium leading-tight">Without confusion</p>
+                                            <p className="text-[18px] font-medium leading-tight">Without depending on memory</p>
                                         </div>
-                                    ))}
+                                    </div>
+
+                                    {/* Features Grid */}
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4 w-full">
+                                        {[
+                                            "Pre-built, editable SOPs",
+                                            "Daily task tracking",
+                                            "Trainer notes (faster training)",
+                                            "Live dashboard visibility"
+                                        ].map((item, i) => (
+                                            <div key={i} className="flex items-center gap-3 group">
+                                                <div className="w-5 h-5 rounded-full bg-[#0F3D2E]/10 flex items-center justify-center shrink-0">
+                                                    <Check className="w-3 h-3 text-[#0F3D2E]" />
+                                                </div>
+                                                <span className="text-sm font-bold text-[#0B0F14]">{item}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className="space-y-6 w-full">
+                                        <div className="flex flex-col sm:flex-row items-center gap-6">
+                                            <button className="h-[64px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group">
+                                                <Link href="/library" className="flex items-center gap-3">
+                                                    Start Your System <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                                                </Link>
+                                            </button>
+                                            
+                                            <div className="flex flex-col items-center sm:items-start">
+                                                <div className="flex items-baseline gap-2">
+                                                    <p className="text-[28px] font-black text-[#0B0F14] italic tracking-tight">₹2,999</p>
+                                                    <span className="text-xs font-bold text-[#5B6670] line-through">₹4,999</span>
+                                                </div>
+                                                <p className="text-[11px] font-black text-[#5B6670] uppercase tracking-widest">One-time • Own forever</p>
+                                            </div>
+                                        </div>
+
+                                        <p className="text-[13px] text-[#5B6670] font-bold uppercase tracking-[0.1em] border-t border-[#E6E8EC] pt-4 leading-relaxed">
+                                            Built on Excel • Runs on Google Sheets <br/>
+                                            Used across hotels, clinics, and multi-unit ops.
+                                        </p>
+                                    </div>
                                 </div>
 
-                                <p className="text-[14px] text-[#5B6670] mb-7 font-medium">
-                                    Built on Excel • Runs on Google Sheets <br/>
-                                    No software • No subscription
-                                </p>
+                                {/* Right: Master Dashboard (6 cols) */}
+                                <div className="relative group perspective-2000">
+                                    <div className="rounded-[20px] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.15)] bg-white border border-[#E6E8EC] relative transform-gpu transition-all duration-1000 group-hover:rotate-y-[-2deg] group-hover:rotate-x-[1deg]">
+                                        {/* Browser-style Header Overlay */}
+                                        <div className="bg-[#0B0F14] h-10 w-full flex items-center px-4 gap-2">
+                                            <div className="flex gap-1.5">
+                                                <div className="w-2 h-2 rounded-full bg-red-500/30" />
+                                                <div className="w-2 h-2 rounded-full bg-amber-500/30" />
+                                                <div className="w-2 h-2 rounded-full bg-emerald-500/30" />
+                                            </div>
+                                            <div className="flex-1 flex justify-center">
+                                                <div className="bg-white/10 px-6 py-1 rounded text-[8px] font-black text-white/40 uppercase tracking-widest italic">
+                                                    MASTER_OPERATIONAL_CONSOLE_V4.3
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                <div className="flex flex-col gap-3 w-full sm:w-auto">
-                                    <button className="h-[52px] px-7 rounded-[10px] bg-[#F4A261] text-white font-semibold text-base shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:brightness-105 active:scale-95 transition-all flex items-center justify-center gap-2">
-                                        <Link href="/library" className="flex items-center gap-2">
-                                            Start using your system <ArrowRight className="w-4 h-4" />
-                                        </Link>
-                                    </button>
+                                        <div className="relative">
+                                            <img 
+                                                src={DASHBOARD_IMAGE} 
+                                                alt="Sovereign Master Dashboard" 
+                                                className="w-full h-auto object-cover grayscale-[0.1] group-hover:grayscale-0 transition-all duration-700" 
+                                            />
+                                            {/* Mask to hide specific text if needed (simulated) */}
+                                            <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/5 via-transparent to-transparent" />
+                                        </div>
+                                        
+                                        {/* HIGH-FIDELITY ANNOTATIONS WITH EFFECTS */}
+                                        <AnimatedAnnotation className="top-[15%] left-[-20px]" color="red" delay="0.5s">
+                                            Missed tasks
+                                        </AnimatedAnnotation>
+
+                                        <AnimatedAnnotation className="top-[40%] right-[-10px]" color="green" delay="1s">
+                                            Completed tasks
+                                        </AnimatedAnnotation>
+
+                                        <AnimatedAnnotation className="bottom-[10%] left-[10%]" color="blue" delay="1.5s">
+                                            Live dashboard
+                                        </AnimatedAnnotation>
+                                    </div>
                                     
-                                    <div className="flex flex-col items-center sm:items-start pl-1">
-                                        <p className="text-[20px] font-semibold">₹2,999 <span className="text-xs font-normal text-[#5B6670] ml-1">(limited time)</span></p>
-                                        <p className="text-[14px] text-[#5B6670]">Own forever</p>
+                                    <div className="mt-8 flex items-center justify-center gap-6 opacity-40">
+                                        <ShieldCheck className="w-5 h-5" />
+                                        <span className="text-[10px] font-black uppercase tracking-[0.4em]">Audit-Ready Infrastructure</span>
+                                        <Lock className="w-5 h-5" />
                                     </div>
                                 </div>
 
-                                <div className="mt-6 pt-4 border-t border-[#E6E8EC] w-full">
-                                    <p className="text-[14px] text-[#5B6670] font-medium">
-                                        Your team knows what to do. <br/>
-                                        You know what actually got done.
-                                    </p>
-                                </div>
                             </div>
-
-                            {/* Right: Dashboard (6 cols) */}
-                            <div className="relative group animate-in fade-in slide-in-from-right-4 duration-1000">
-                                {/* Container styling */}
-                                <div className="rounded-[16px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.12)] bg-white border border-[#E6E8EC] relative">
-                                    {/* Top-Left Label */}
-                                    <div className="absolute top-4 left-4 z-20 bg-[#0B0F14]/90 backdrop-blur-md text-white px-3 py-1.5 rounded-md text-[10px] font-black uppercase tracking-widest border border-white/10">
-                                        Live Operational Dashboard
-                                    </div>
-
-                                    <img 
-                                        src={DASHBOARD_IMAGE} 
-                                        alt="Product Dashboard" 
-                                        className="w-full h-auto object-cover" 
-                                    />
-                                    
-                                    {/* Floating Labels (Annotations) */}
-                                    <div className="absolute top-[20%] left-[-20px] z-30 bg-white p-2.5 rounded-lg shadow-2xl flex items-center gap-2 border border-[#E6E8EC]">
-                                        <div className="w-2 h-2 rounded-full bg-red-500" />
-                                        <span className="text-[10px] font-bold text-[#0B0F14] uppercase">Missed tasks</span>
-                                    </div>
-
-                                    <div className="absolute top-[45%] right-[-10px] z-30 bg-white p-2.5 rounded-lg shadow-2xl flex items-center gap-2 border border-[#E6E8EC]">
-                                        <div className="w-2 h-2 rounded-full bg-[#1F7A63]" />
-                                        <span className="text-[10px] font-bold text-[#0B0F14] uppercase">Completed tasks</span>
-                                    </div>
-
-                                    <div className="absolute bottom-[15%] left-[5%] z-30 bg-white p-2.5 rounded-lg shadow-2xl flex items-center gap-2 border border-[#E6E8EC]">
-                                        <Activity className="w-3 h-3 text-blue-500" />
-                                        <span className="text-[10px] font-bold text-[#0B0F14] uppercase">Live Dashboard</span>
-                                    </div>
-                                </div>
-                                
-                                <p className="text-center mt-6 text-[12px] font-bold text-[#5B6670] uppercase tracking-[0.2em]">
-                                    Used across restaurants, hotels, healthcare & operations teams
-                                </p>
-                            </div>
-
                         </div>
                     </div>
                 </section>
 
                 {/* 🔴 SECTION 2 — PROBLEM */}
-                <Section className="bg-white">
-                    <div className="max-w-[760px] mx-auto text-center">
-                        <h2 className="text-[28px] md:text-[36px] font-semibold text-[#0B0F14] mb-6 leading-tight">One common issue across operations</h2>
-                        <p className="text-[18px] text-[#5B6670] mb-10 leading-relaxed">
-                            Most businesses run on memory and assumptions. When a task is missed, it's rarely a disaster—at first. But small misses compound into exposure.
-                        </p>
+                <Section className="bg-white border-y border-[#E6E8EC]">
+                    <div className="max-w-[800px] mx-auto text-center space-y-10">
+                        <div className="space-y-4">
+                            <Badge variant="outline" className="text-red-500 border-red-500/30 uppercase tracking-[0.2em] font-black text-[10px]">Operational Risk</Badge>
+                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] leading-tight tracking-tight uppercase italic">Why operations break</h2>
+                        </div>
                         
-                        <div className="grid md:grid-cols-2 gap-10 text-left mb-12">
-                            <div className="space-y-4">
-                                <ul className="space-y-3">
-                                    <li className="flex items-start gap-3 text-[#5B6670]">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#5B6670] mt-2 shrink-0" />
-                                        <span>Work depends on specific people</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-[#5B6670]">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#5B6670] mt-2 shrink-0" />
-                                        <span>Tasks get skipped during rush hours</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-[#5B6670]">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#5B6670] mt-2 shrink-0" />
-                                        <span>Staff executes steps differently</span>
-                                    </li>
+                        <div className="grid md:grid-cols-2 gap-12 text-left">
+                            <div className="space-y-6">
+                                <h4 className="text-[11px] font-black text-[#5B6670] uppercase tracking-[0.3em]">Common Pitfalls</h4>
+                                <ul className="space-y-4">
+                                    {[
+                                        "Work depends on memory of key people",
+                                        "Tasks get skipped during busy shifts",
+                                        "Staff executes steps differently every time"
+                                    ].map((p, i) => (
+                                        <li key={i} className="flex items-start gap-4 text-[#5B6670] text-sm font-medium italic">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 shrink-0" />
+                                            <span>{p}</span>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
-                            <div className="space-y-4">
-                                <ul className="space-y-3">
-                                    <li className="flex items-start gap-3 text-[#0B0F14] font-bold">
-                                        <X className="w-4 h-4 text-red-500 mt-1 shrink-0" />
-                                        <span>Managers keep following up manually</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-[#0B0F14] font-bold">
-                                        <X className="w-4 h-4 text-red-500 mt-1 shrink-0" />
-                                        <span>No real-time visibility into completion</span>
-                                    </li>
-                                    <li className="flex items-start gap-3 text-[#0B0F14] font-bold">
-                                        <X className="w-4 h-4 text-red-500 mt-1 shrink-0" />
-                                        <span>No verifiable records for audits</span>
-                                    </li>
+                            <div className="space-y-6 p-8 rounded-2xl bg-[#FFF5F5] border border-red-100">
+                                <h4 className="text-[11px] font-black text-red-600 uppercase tracking-[0.3em]">The Consequence</h4>
+                                <ul className="space-y-4">
+                                    {[
+                                        "Managers keep following up manually",
+                                        "No real-time visibility into completion",
+                                        "No verifiable records for audits"
+                                    ].map((p, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-red-900 font-bold text-sm">
+                                            <X className="w-4 h-4 text-red-500 mt-0.5 shrink-0" />
+                                            <span>{p}</span>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         </div>
                         
-                        <p className="text-[20px] font-bold text-[#0B0F14]">
+                        <p className="text-[22px] font-black text-[#0B0F14] pt-4 uppercase italic">
                             Small misses. Every day. <br/>
-                            <span className="text-[#5B6670] font-semibold">That’s where control is lost.</span>
+                            <span className="text-red-500">That’s where control is lost.</span>
                         </p>
                     </div>
                 </Section>
 
                 {/* 🟢 SECTION 3 — SOLUTION */}
-                <Section className="bg-[#FFFFFF] border-y border-[#E6E8EC]">
+                <Section className="bg-[#FFFFFF]">
                     <div className="grid md:grid-cols-2 gap-16 items-center">
-                        <div className="space-y-8">
-                            <h2 className="text-[32px] md:text-[36px] font-semibold text-[#0B0F14] leading-tight">This solves that.</h2>
-                            <div className="space-y-6">
-                                <div className="flex gap-4">
-                                    <div className="w-8 h-8 rounded-full bg-[#0F3D2E]/10 flex items-center justify-center text-[#0F3D2E] shrink-0">
-                                        <Check className="w-5 h-5" />
+                        <div className="space-y-10">
+                            <div className="space-y-4">
+                                <Badge variant="outline" className="text-[#0F3D2E] border-[#0F3D2E]/30 uppercase tracking-[0.2em] font-black text-[10px]">The Resolution</Badge>
+                                <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] leading-tight tracking-tight uppercase italic">This changes everything.</h2>
+                            </div>
+                            <div className="space-y-8">
+                                <div className="flex gap-5 group">
+                                    <div className="w-12 h-12 rounded-xl bg-[#0F3D2E]/5 flex items-center justify-center text-[#0F3D2E] shrink-0 group-hover:bg-[#0F3D2E] group-hover:text-white transition-all">
+                                        <ClipboardCheck className="w-6 h-6" />
                                     </div>
                                     <div className="space-y-1">
-                                        <h4 className="text-[18px] font-bold text-[#0B0F14]">Tasks are already defined</h4>
-                                        <p className="text-[#5B6670]">Over 120+ industry standard SOPs built-in.</p>
+                                        <h4 className="text-[18px] font-black text-[#0B0F14] uppercase italic">Tasks are already defined</h4>
+                                        <p className="text-[#5B6670] text-sm font-medium">Over 120+ industry standard SOPs built-in.</p>
                                     </div>
                                 </div>
-                                <div className="flex gap-4">
-                                    <div className="w-8 h-8 rounded-full bg-[#0F3D2E]/10 flex items-center justify-center text-[#0F3D2E] shrink-0">
-                                        <Check className="w-5 h-5" />
+                                <div className="flex gap-5 group">
+                                    <div className="w-12 h-12 rounded-xl bg-[#0F3D2E]/5 flex items-center justify-center text-[#0F3D2E] shrink-0 group-hover:bg-[#0F3D2E] group-hover:text-white transition-all">
+                                        <Activity className="w-6 h-6" />
                                     </div>
                                     <div className="space-y-1">
-                                        <h4 className="text-[18px] font-bold text-[#0B0F14]">Work is updated daily</h4>
-                                        <p className="text-[#5B6670]">Team updates progress in seconds, not meetings.</p>
+                                        <h4 className="text-[18px] font-black text-[#0B0F14] uppercase italic">Work is updated daily</h4>
+                                        <p className="text-[#5B6670] text-sm font-medium">Team updates progress in seconds, not meetings.</p>
                                     </div>
                                 </div>
-                                <div className="flex gap-4">
-                                    <div className="w-8 h-8 rounded-full bg-[#0F3D2E]/10 flex items-center justify-center text-[#0F3D2E] shrink-0">
-                                        <Check className="w-5 h-5" />
+                                <div className="flex gap-5 group">
+                                    <div className="w-12 h-12 rounded-xl bg-[#0F3D2E]/5 flex items-center justify-center text-[#0F3D2E] shrink-0 group-hover:bg-[#0F3D2E] group-hover:text-white transition-all">
+                                        <SearchCheck className="w-6 h-6" />
                                     </div>
                                     <div className="space-y-1">
-                                        <h4 className="text-[18px] font-bold text-[#0B0F14]">Full visibility instantly</h4>
-                                        <p className="text-[#5B6670]">One glance shows you exactly what’s done vs missed.</p>
+                                        <h4 className="text-[18px] font-black text-[#0B0F14] uppercase italic">Full visibility instantly</h4>
+                                        <p className="text-[#5B6670] text-sm font-medium">One glance shows you exactly what’s done vs missed.</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className="pt-6 border-t border-[#E6E8EC] space-y-2">
-                                <p className="text-[18px] font-bold text-[#0F3D2E] flex items-center gap-2">
-                                    <ArrowRight className="w-4 h-4" /> No follow-ups required
+                            <div className="pt-8 border-t border-[#E6E8EC] space-y-3">
+                                <p className="text-[18px] font-black text-[#0F3D2E] flex items-center gap-3 uppercase italic">
+                                    <CheckCircle2 className="w-5 h-5" /> No follow-ups required
                                 </p>
-                                <p className="text-[18px] font-bold text-[#0F3D2E] flex items-center gap-2">
-                                    <ArrowRight className="w-4 h-4" /> No dependency on memory
+                                <p className="text-[18px] font-black text-[#0F3D2E] flex items-center gap-3 uppercase italic">
+                                    <CheckCircle2 className="w-5 h-5" /> No dependency on memory
                                 </p>
                             </div>
                         </div>
-                        <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E6E8EC]">
-                            <img src={DASHBOARD_IMAGE} alt="Simple System" className="w-full h-auto" />
+                        <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E6E8EC] bg-black p-2">
+                             <img src={DASHBOARD_IMAGE} alt="Simple System" className="w-full h-auto rounded-xl grayscale-[0.2]" />
                         </div>
                     </div>
                 </Section>
 
                 {/* 🔵 SECTION 4 — HOW IT WORKS */}
-                <Section className="bg-[#F7F8FA]">
+                <Section className="bg-[#F7F8FA] border-y border-[#E6E8EC]">
                     <div className="max-w-[1200px] mx-auto space-y-16">
                         <div className="text-center space-y-2">
-                            <h2 className="text-[32px] md:text-[36px] font-semibold text-[#0B0F14]">Start in minutes</h2>
-                            <p className="text-[#5B6670]">Works on phone or desktop • No training required</p>
+                            <Badge variant="outline" className="text-[#5B6670] border-[#5B6670]/30 uppercase tracking-[0.2em] font-black text-[10px]">Implementation</Badge>
+                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">Start in minutes</h2>
+                            <p className="text-[#5B6670] font-medium italic">Works on phone or desktop • No training required</p>
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -306,13 +345,13 @@ export default function DesignLabPage() {
                                 { t: "Share with team", d: "Define roles in 60 seconds.", i: Users },
                                 { t: "Track everything live", d: "Dashboard updates in real-time.", i: Activity }
                             ].map((step, i) => (
-                                <div key={i} className="bg-white border border-[#E6E8EC] p-[20px] rounded-[12px] space-y-4 hover:border-[#0F3D2E]/20 transition-all group">
-                                    <div className="w-10 h-10 rounded-lg bg-[#F7F8FA] flex items-center justify-center text-[#0B0F14] font-black group-hover:bg-[#0F3D2E] group-hover:text-white transition-all">
+                                <div key={i} className="bg-white border border-[#E6E8EC] p-8 rounded-2xl space-y-6 hover:shadow-xl transition-all group">
+                                    <div className="w-12 h-12 rounded-xl bg-[#F7F8FA] flex items-center justify-center text-[#0B0F14] font-black group-hover:bg-[#0F3D2E] group-hover:text-white transition-all text-xl italic">
                                         {i+1}
                                     </div>
-                                    <div className="space-y-1">
-                                        <h4 className="font-bold text-base leading-tight">{step.t}</h4>
-                                        <p className="text-[14px] text-[#5B6670] leading-snug">{step.d}</p>
+                                    <div className="space-y-2">
+                                        <h4 className="font-black text-lg uppercase italic leading-tight">{step.t}</h4>
+                                        <p className="text-sm text-[#5B6670] font-medium italic leading-relaxed">{step.d}</p>
                                     </div>
                                 </div>
                             ))}
@@ -320,43 +359,12 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* 🟣 SECTION 5 — DASHBOARD VIEW */}
-                <Section className="bg-white">
-                    <div className="max-w-[1200px] mx-auto space-y-12">
-                        <div className="text-center space-y-4">
-                            <h2 className="text-[32px] md:text-[36px] font-semibold text-[#0B0F14]">Your daily view</h2>
-                            <p className="text-[18px] text-[#5B6670]">You don’t ask. You already know.</p>
-                        </div>
-                        
-                        <div className="relative rounded-[16px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.12)] border border-[#E6E8EC] group">
-                            <img src={DASHBOARD_IMAGE} alt="Annotated View" className="w-full h-[420px] object-cover" />
-                            
-                            <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                            
-                            {/* Visual Annotations */}
-                            <div className="absolute top-[20%] right-[10%] bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-2xl border border-[#E6E8EC] space-y-3">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-2 h-2 rounded-full bg-red-500" />
-                                    <span className="text-sm font-bold">🔴 Pending tasks</span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <div className="w-2 h-2 rounded-full bg-green-500" />
-                                    <span className="text-sm font-bold">🟢 Completed tasks</span>
-                                </div>
-                                <div className="flex items-center gap-3 pt-2 border-t border-[#E6E8EC]">
-                                    <Activity className="w-4 h-4 text-blue-500" />
-                                    <span className="text-sm font-bold">📊 Performance %</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Section>
-
                 {/* 🟡 SECTION 6 — WHAT YOU GET */}
-                <Section className="bg-[#F7F8FA]">
+                <Section className="bg-white">
                     <div className="max-w-[1200px] mx-auto space-y-16">
-                        <div className="text-center">
-                             <h2 className="text-[32px] md:text-[36px] font-semibold text-[#0B0F14]">What you get</h2>
+                        <div className="text-center space-y-2">
+                             <Badge variant="outline" className="text-[#0F3D2E] border-[#0F3D2E]/30 uppercase tracking-[0.2em] font-black text-[10px]">Inventory</Badge>
+                             <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">What you get</h2>
                         </div>
                         
                         <div className="grid md:grid-cols-3 gap-8">
@@ -370,13 +378,13 @@ export default function DesignLabPage() {
                                 { t: "Fully Editable System", d: "Universal accessibility forever.", i: FileSpreadsheet },
                                 { t: "Multi-Location View", d: "See all units in one place.", i: LayoutGrid }
                             ].map((item, i) => (
-                                <div key={i} className="flex gap-4">
-                                    <div className="w-10 h-10 rounded-xl bg-white border border-[#E6E8EC] flex items-center justify-center text-[#0F3D2E] shrink-0 shadow-sm">
-                                        <item.i className="w-5 h-5" />
+                                <div key={i} className="flex gap-5 p-4 rounded-xl hover:bg-[#F7F8FA] transition-colors">
+                                    <div className="w-12 h-12 rounded-xl bg-white border border-[#E6E8EC] flex items-center justify-center text-[#0F3D2E] shrink-0 shadow-sm group-hover:scale-110 transition-transform">
+                                        <item.i className="w-6 h-6" />
                                     </div>
                                     <div className="space-y-1">
-                                        <h4 className="text-[16px] font-semibold text-[#0B0F14]">{item.t}</h4>
-                                        <p className="text-[14px] text-[#5B6670] leading-snug">{item.d}</p>
+                                        <h4 className="text-base font-black text-[#0B0F14] uppercase italic">{item.t}</h4>
+                                        <p className="text-[13px] text-[#5B6670] leading-snug font-medium italic">{item.d}</p>
                                     </div>
                                 </div>
                             ))}
@@ -385,67 +393,69 @@ export default function DesignLabPage() {
                 </Section>
 
                 {/* ⚫ SECTION 7 — WHY THIS WORKS */}
-                <Section className="bg-white">
-                    <div className="grid md:grid-cols-2 gap-1 gap-y-12 bg-[#0B0F14] rounded-[24px] overflow-hidden">
-                        <div className="p-12 space-y-8 text-white/60">
-                            <h3 className="text-[20px] font-bold text-red-400 uppercase tracking-widest">Why others fail</h3>
-                            <div className="space-y-6">
-                                <p className="text-[18px] font-medium line-through">SOPs sit in files / folders</p>
-                                <p className="text-[18px] font-medium line-through">Staff doesn’t understand them</p>
-                                <p className="text-[18px] font-medium line-through">No one tracks daily execution</p>
+                <Section className="bg-[#0B0F14]">
+                    <div className="grid md:grid-cols-2 gap-1 gap-y-12 bg-[#0B0F14] rounded-[32px] overflow-hidden border border-white/5 shadow-2xl">
+                        <div className="p-16 space-y-10 text-white/40">
+                            <h3 className="text-[14px] font-black text-red-500/60 uppercase tracking-[0.5em]">The Failure Loop</h3>
+                            <div className="space-y-8 text-xl font-bold italic">
+                                <p className="line-through decoration-red-500/50 decoration-2 text-white/20">SOPs sit in files / folders</p>
+                                <p className="line-through decoration-red-500/50 decoration-2 text-white/20">Staff doesn’t understand them</p>
+                                <p className="line-through decoration-red-500/50 decoration-2 text-white/20">No one tracks daily execution</p>
                             </div>
                         </div>
-                        <div className="p-12 bg-[#0F3D2E] space-y-8 text-white">
-                            <h3 className="text-[20px] font-bold text-green-400 uppercase tracking-widest">How we fix it</h3>
-                            <div className="space-y-6 text-[18px] font-medium">
-                                <div className="flex items-center gap-3">
-                                    <Check className="w-5 h-5 text-green-400" />
+                        <div className="p-16 bg-[#0F3D2E] space-y-10 text-white">
+                            <h3 className="text-[14px] font-black text-emerald-400 uppercase tracking-[0.5em]">The Sovereign Fix</h3>
+                            <div className="space-y-8 text-xl font-black italic">
+                                <div className="flex items-center gap-4">
+                                    <Check className="w-6 h-6 text-emerald-400" />
                                     <span>Clear what to do (SOPs)</span>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <Check className="w-5 h-5 text-green-400" />
+                                <div className="flex items-center gap-4">
+                                    <Check className="w-6 h-6 text-emerald-400" />
                                     <span>Trainer notes explain how</span>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <Check className="w-5 h-5 text-green-400" />
+                                <div className="flex items-center gap-4">
+                                    <Check className="w-6 h-6 text-emerald-400" />
                                     <span>Consequences show why it matters</span>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <Check className="w-5 h-5 text-green-400" />
+                                <div className="flex items-center gap-4">
+                                    <Check className="w-6 h-6 text-emerald-400" />
                                     <span>Daily tracking ensures it gets done</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="text-center mt-12">
-                         <p className="text-[24px] font-bold text-[#0B0F14]">
+                    <div className="text-center mt-16 space-y-2">
+                         <p className="text-[28px] md:text-[40px] font-black text-white uppercase italic tracking-tighter">
                             This is not documentation. <br/>
-                            <span className="text-[#0F3D2E]">This is execution.</span>
+                            <span className="text-[#0F3D2E] bg-white px-4 py-1 inline-block mt-2">This is execution.</span>
                         </p>
                     </div>
                 </Section>
 
                 {/* 🔴 SECTION 8 — RISKS */}
                 <Section className="bg-[#FFF5F5]">
-                    <div className="max-w-[800px] mx-auto text-center space-y-12">
-                        <h2 className="text-[32px] md:text-[36px] font-semibold text-[#0B0F14]">What this prevents</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-left">
+                    <div className="max-w-[1000px] mx-auto text-center space-y-16">
+                        <div className="space-y-4">
+                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">What this prevents</h2>
+                            <p className="text-red-900/60 font-bold uppercase tracking-widest text-xs">Small misses don't become big problems.</p>
+                        </div>
+                        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
                             {[
-                                "Missed safety checks",
-                                "Equipment failures",
-                                "Poor customer experience",
-                                "Audit failures",
-                                "Revenue loss"
+                                { t: "Missed safety checks", i: ShieldAlert },
+                                { t: "Equipment failures", i: Zap },
+                                { t: "Poor customer experience", i: Users },
+                                { t: "Audit failures", i: SearchCheck },
+                                { t: "Revenue loss", i: CircleDollarSign }
                             ].map((risk, i) => (
-                                <div key={i} className="flex items-center gap-3 font-bold text-red-800">
-                                    <ShieldAlert className="w-5 h-5 text-red-500 shrink-0" />
-                                    <span>{risk}</span>
+                                <div key={i} className="flex flex-col items-center gap-4 group">
+                                    <div className="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all">
+                                        <risk.i className="w-6 h-6" />
+                                    </div>
+                                    <span className="text-[11px] font-black uppercase tracking-widest text-red-900 leading-tight">{risk.t}</span>
                                 </div>
                             ))}
                         </div>
-                        <p className="text-[20px] font-bold italic text-red-700">
-                            "Small misses don’t become big problems."
-                        </p>
                     </div>
                 </Section>
 
@@ -453,8 +463,8 @@ export default function DesignLabPage() {
                 <Section className="bg-white">
                     <div className="max-w-[1200px] mx-auto space-y-16">
                         <div className="text-center space-y-2">
-                             <h2 className="text-[32px] md:text-[36px] font-semibold text-[#0B0F14]">Built for serious operations</h2>
-                             <p className="text-[#5B6670]">Built for single units and multi-location teams</p>
+                             <Badge variant="outline" className="text-[#5B6670] border-[#E6E8EC] uppercase tracking-[0.2em] font-black text-[10px]">Institutional Fit</Badge>
+                             <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">Built for serious operations</h2>
                         </div>
                         
                         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
@@ -467,9 +477,9 @@ export default function DesignLabPage() {
                                 { n: "Cinemas", i: Popcorn },
                                 { n: "Franchise", i: LayoutGrid }
                             ].map((ind, i) => (
-                                <div key={i} className="bg-[#F7F8FA] border border-[#E6E8EC] p-6 rounded-xl flex flex-col items-center justify-center text-center hover:border-[#0F3D2E]/30 transition-all group">
-                                    <ind.i className="w-8 h-8 text-[#5B6670] group-hover:text-[#0F3D2E] transition-colors mb-4" />
-                                    <span className="font-bold text-[14px] text-[#0B0F14]">{ind.n}</span>
+                                <div key={i} className="bg-[#F7F8FA] border border-[#E6E8EC] p-8 rounded-2xl flex flex-col items-center justify-center text-center hover:border-[#0F3D2E]/40 hover:bg-white transition-all group">
+                                    <ind.i className="w-10 h-10 text-[#5B6670] group-hover:text-[#0F3D2E] transition-colors mb-6" />
+                                    <span className="font-black text-[11px] text-[#0B0F14] uppercase tracking-widest leading-none">{ind.n}</span>
                                 </div>
                             ))}
                         </div>
@@ -477,64 +487,64 @@ export default function DesignLabPage() {
                 </Section>
 
                 {/* ⚙️ SECTION 10 — CLARITY */}
-                <Section className="bg-white border-t border-[#E6E8EC]">
-                    <div className="max-w-[760px] mx-auto text-center space-y-8">
-                        <h2 className="text-[32px] md:text-[36px] font-semibold text-[#0B0F14]">This is not "just Excel"</h2>
-                        <p className="text-[18px] text-[#5B6670] leading-relaxed">
-                            It’s a complete operational system built for daily execution.
-                        </p>
-                        <div className="flex flex-wrap justify-center gap-12 pt-4">
-                            <div className="space-y-1">
-                                <h4 className="font-bold text-[#0B0F14]">No software dependency</h4>
-                                <p className="text-[14px] text-[#5B6670]">Nothing new to install</p>
+                <Section className="bg-[#F7F8FA] border-y border-[#E6E8EC]">
+                    <div className="max-w-[800px] mx-auto text-center space-y-12">
+                        <div className="space-y-4">
+                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">This is not "just Excel"</h2>
+                            <p className="text-[20px] text-[#5B6670] font-medium italic">It’s a complete operational engine built for daily execution.</p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-4">
+                            <div className="space-y-3">
+                                <h4 className="font-black text-[#0B0F14] uppercase italic text-sm">No software debt</h4>
+                                <p className="text-[13px] text-[#5B6670] italic font-medium">Nothing new to install or learn.</p>
                             </div>
-                            <div className="space-y-1">
-                                <h4 className="font-bold text-[#0B0F14]">No recurring cost</h4>
-                                <p className="text-[14px] text-[#5B6670]">One-time investment</p>
+                            <div className="space-y-3">
+                                <h4 className="font-black text-[#0B0F14] uppercase italic text-sm">No recurring cost</h4>
+                                <p className="text-[13px] text-[#5B6670] italic font-medium">One-time payment. Own forever.</p>
                             </div>
-                            <div className="space-y-1">
-                                <h4 className="font-bold text-[#0B0F14]">No complexity</h4>
-                                <p className="text-[14px] text-[#5B6670]">Universal accessibility</p>
+                            <div className="space-y-3">
+                                <h4 className="font-black text-[#0B0F14] uppercase italic text-sm">No complexity</h4>
+                                <p className="text-[13px] text-[#5B6670] italic font-medium">Universal access for any team.</p>
                             </div>
                         </div>
-                        <p className="text-[20px] font-bold text-[#0B0F14] pt-4">
+                        <p className="text-[22px] font-black text-[#0B0F14] pt-8 uppercase italic border-t border-[#E6E8EC]">
                             Simple for teams. <br/>
-                            <span className="text-[#0F3D2E]">Powerful for managers.</span>
+                            <span className="text-[#0F3D2E]">Surgical for managers.</span>
                         </p>
                     </div>
                 </Section>
 
                 {/* 💬 SECTION 11 — FAQ */}
-                <Section className="bg-[#F7F8FA]">
-                    <div className="max-w-[760px] mx-auto space-y-12">
-                        <h2 className="text-[32px] md:text-[36px] font-semibold text-[#0B0F14] text-center">Common Questions</h2>
+                <Section className="bg-white">
+                    <div className="max-w-[800px] mx-auto space-y-16">
+                        <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] text-center uppercase italic tracking-tight">Technical Questions</h2>
                         
-                        <Accordion type="single" collapsible className="w-full">
-                            <AccordionItem value="item-1" className="bg-white px-6 rounded-xl border border-[#E6E8EC] mb-4">
-                                <AccordionTrigger className="text-[18px] font-semibold hover:no-underline py-6">Can my team break the system?</AccordionTrigger>
-                                <AccordionContent className="text-[#5B6670] text-base pb-6">
-                                    No. You can lock formulas and key sections so only daily tasks can be updated. This ensures the technical engine remains bulletproof while allowing staff to log completion.
+                        <Accordion type="single" collapsible className="w-full space-y-4">
+                            <AccordionItem value="item-1" className="bg-[#F7F8FA] px-8 rounded-2xl border-none">
+                                <AccordionTrigger className="text-[18px] font-black uppercase italic hover:no-underline py-8">Can my team break the system?</AccordionTrigger>
+                                <AccordionContent className="text-[#5B6670] text-base pb-8 italic font-medium leading-relaxed">
+                                    No. You can lock formulas and key structures so only daily tasks can be updated. This ensures the technical engine remains bulletproof while allowing staff to log completion.
                                 </AccordionContent>
                             </AccordionItem>
                             
-                            <AccordionItem value="item-2" className="bg-white px-6 rounded-xl border border-[#E6E8EC] mb-4">
-                                <AccordionTrigger className="text-[18px] font-semibold hover:no-underline py-6">Is this difficult to use?</AccordionTrigger>
-                                <AccordionContent className="text-[#5B6670] text-base pb-6">
+                            <AccordionItem value="item-2" className="bg-[#F7F8FA] px-8 rounded-2xl border-none">
+                                <AccordionTrigger className="text-[18px] font-black uppercase italic hover:no-underline py-8">Is this difficult to use?</AccordionTrigger>
+                                <AccordionContent className="text-[#5B6670] text-base pb-8 italic font-medium leading-relaxed">
                                     No. Your team already knows Excel / Google Sheets. There is no new software to learn, no separate passwords to manage, and no complex training required.
                                 </AccordionContent>
                             </AccordionItem>
 
-                            <AccordionItem value="item-3" className="bg-white px-6 rounded-xl border border-[#E6E8EC] mb-4">
-                                <AccordionTrigger className="text-[18px] font-semibold hover:no-underline py-6">Can I edit the system?</AccordionTrigger>
-                                <AccordionContent className="text-[#5B6670] text-base pb-6">
-                                    Yes. It is fully customizable to your operations. You can add, delete, or modify any task to fit your specific brand standards. You own the file forever.
+                            <AccordionItem value="item-3" className="bg-[#F7F8FA] px-8 rounded-2xl border-none">
+                                <AccordionTrigger className="text-[18px] font-black uppercase italic hover:no-underline py-8">Can I edit the system?</AccordionTrigger>
+                                <AccordionContent className="text-[#5B6670] text-base pb-8 italic font-medium leading-relaxed">
+                                    Yes. It is 100% unlocked and customizable. You can add, delete, or modify any task to fit your specific brand standards. You own the file for life.
                                 </AccordionContent>
                             </AccordionItem>
 
-                            <AccordionItem value="item-4" className="bg-white px-6 rounded-xl border border-[#E6E8EC] mb-4">
-                                <AccordionTrigger className="text-[18px] font-semibold hover:no-underline py-6">What if I need help?</AccordionTrigger>
-                                <AccordionContent className="text-[#5B6670] text-base pb-6">
-                                    Support and customization available. We provide 1-on-1 discovery calls if you need a bespoke engine built for a specialized sector or multi-unit group.
+                            <AccordionItem value="item-4" className="bg-[#F7F8FA] px-8 rounded-2xl border-none">
+                                <AccordionTrigger className="text-[18px] font-black uppercase italic hover:no-underline py-8">What if I need professional help?</AccordionTrigger>
+                                <AccordionContent className="text-[#5B6670] text-base pb-8 italic font-medium leading-relaxed">
+                                    Full support and customization are available. We provide 1-on-1 discovery calls if you need a bespoke engine built for a specialized sector or large multi-unit group.
                                 </AccordionContent>
                             </AccordionItem>
                         </Accordion>
@@ -542,33 +552,36 @@ export default function DesignLabPage() {
                 </Section>
 
                 {/* 🚀 FINAL CTA */}
-                <Section className="bg-[#FFFFFF] border-t border-[#E6E8EC] text-center">
-                    <div className="max-w-[800px] mx-auto space-y-10">
-                        <div className="space-y-4">
-                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] leading-tight">Start running your system today</h2>
-                            <p className="text-[18px] text-[#5B6670]">Setup takes less than 10 minutes</p>
+                <Section className="bg-[#0F3D2E] text-white text-center py-32">
+                    <div className="max-w-[800px] mx-auto space-y-12">
+                        <div className="space-y-6">
+                            <Badge className="bg-white/10 text-white border-white/20 uppercase tracking-[0.4em] font-black text-[11px] px-8 py-2">Infrastructure Mandate</Badge>
+                            <h2 className="text-[40px] md:text-[64px] font-bold leading-[0.9] tracking-tighter uppercase italic">Start running your system today</h2>
+                            <p className="text-[18px] text-white/60 font-medium italic">Setup takes less than 10 minutes</p>
                         </div>
                         
-                        <div className="flex flex-col items-center gap-5">
-                            <button className="h-[56px] px-10 rounded-[10px] bg-[#F4A261] text-white font-semibold text-[18px] shadow-[0_8px_25px_rgba(244,162,97,0.3)] hover:brightness-105 active:scale-95 transition-all">
-                                <Link href="/library" className="flex items-center gap-2">
-                                    Get Your System Now <ArrowRight className="w-5 h-5" />
+                        <div className="flex flex-col items-center gap-8">
+                            <button className="h-[80px] px-12 rounded-[16px] bg-[#F4A261] text-white font-black uppercase italic text-2xl shadow-[0_20px_50px_-10px_rgba(244,162,97,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group">
+                                <Link href="/library" className="flex items-center gap-4">
+                                    Get Your System Now <ArrowRight className="w-8 h-8 transition-transform group-hover:translate-x-2" />
                                 </Link>
                             </button>
                             
                             <div className="flex flex-col items-center">
-                                <p className="text-[24px] font-bold text-[#0B0F14]">₹2,999 / $29</p>
-                                <p className="text-[14px] text-[#5B6670] font-medium uppercase tracking-widest">
+                                <div className="flex items-baseline gap-3">
+                                    <p className="text-[40px] font-black italic">₹2,999</p>
+                                    <span className="text-xl font-bold text-white/30 italic">/ $29</span>
+                                </div>
+                                <p className="text-[12px] font-black uppercase tracking-[0.3em] text-white/40">
                                     One-time payment • Own forever
                                 </p>
-                                <p className="text-[12px] text-red-500 font-bold mt-1 uppercase tracking-tighter">Limited-time pricing</p>
                             </div>
                         </div>
 
-                        <div className="pt-10 border-t border-[#E6E8EC]">
-                            <p className="text-[14px] text-[#5B6670] font-medium">Need help setting this up?</p>
-                            <Button asChild variant="link" className="text-[#0F3D2E] font-bold">
-                                <Link href="/contact">Customization and setup support available →</Link>
+                        <div className="pt-16 border-t border-white/5 opacity-60">
+                            <p className="text-[14px] font-bold italic mb-4">Need help setting this up?</p>
+                            <Button asChild variant="outline" className="bg-transparent border-white/20 text-white hover:bg-white hover:text-black font-black uppercase italic text-xs tracking-widest px-8">
+                                <Link href="/contact">Customization support available →</Link>
                             </Button>
                         </div>
                     </div>
@@ -580,3 +593,4 @@ export default function DesignLabPage() {
         </div>
     );
 }
+
