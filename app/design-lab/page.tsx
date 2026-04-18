@@ -186,7 +186,7 @@ export default function DesignLabPage() {
                                     
                                     <div className="mt-8 text-center">
                                         <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
-                                            Sample of Restaurant Operating Dashboard
+                                            sample of restaurant operating dashboard
                                         </p>
                                     </div>
                                 </div>
@@ -297,20 +297,19 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* HOW IT WORKS - GOOGLE SHEETS WORKFLOW */}
+                {/* HOW IT WORKS - REFINED ROADMAP */}
                 <Section className="bg-[#FFFFFF]">
                     <div className="max-w-[1200px] mx-auto space-y-16">
                         <div className="text-center space-y-2">
                             <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">Start in minutes</h2>
-                            <p className="text-[#5B6670] font-medium italic">Works on phone or desktop • No training required</p>
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                             {[
-                                { t: "Download System", d: "Get the master file instantly.", i: Download },
-                                { t: "Upload to Sheets", d: "Upload to Drive and open in Sheets.", i: FileSpreadsheet },
-                                { t: "Lock & Configure", d: "Set locations, roles & lock formulas.", i: Lock },
-                                { t: "Go Live & Track", d: "Share link; team updates tasks daily.", i: Activity }
+                                { t: "1. Download your system", d: "Get your industry-specific file with pre-built SOPs — ready to use.", i: Download },
+                                { t: "2. Open in Google Sheets", d: "Upload once. Access from phone or desktop.", i: FileSpreadsheet },
+                                { t: "3. Share with your team", d: "Assign roles. Lock structure so nothing breaks.", i: Lock },
+                                { t: "4. See everything live", d: "Track tasks as they get done. Know what’s missed — without asking.", i: Activity }
                             ].map((step, i) => (
                                 <div className="bg-[#F7F8FA] border border-[#E6E8EC] p-8 rounded-2xl space-y-6 hover:shadow-lg transition-all group" key={i}>
                                     <div className="w-12 h-12 rounded-xl bg-white border border-[#E6E8EC] flex items-center justify-center text-[#0B0F14] font-black group-hover:bg-[#0F3D2E] group-hover:text-white transition-all text-xl italic">
@@ -322,6 +321,12 @@ export default function DesignLabPage() {
                                     </div>
                                 </div>
                             ))}
+                        </div>
+
+                        <div className="text-center pt-8">
+                            <p className="text-[20px] font-black text-[#0B0F14] uppercase italic tracking-tighter">
+                                👉 That’s it. Your operations are now structured.
+                            </p>
                         </div>
                     </div>
                 </Section>
