@@ -25,7 +25,7 @@ import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
 
 /**
- * Sovereign Pricing Engine v13.5 - BRAND SYNCED
+ * Sovereign Pricing Engine v14.0 - BRAND SYNCED & FIGMA-READY
  * Hierarchy: Price Anchor -> 2-Column Value Stack -> Centered Trust Resolve
  * Colors: Hardened Executive Green (#2EB86B)
  */
@@ -222,4 +222,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-

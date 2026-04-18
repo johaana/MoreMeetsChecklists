@@ -157,8 +157,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
 
                             <div className="flex items-center gap-6 w-full text-[9px] font-black uppercase tracking-[0.25em]">
-                                <span className="flex items-center gap-2 text-zinc-500"><LayoutGrid className="w-3.5 h-3.5" /> {totalChecklists} MODULES</span>
-                                <span className="flex items-center gap-2 text-zinc-500"><Target className="w-3.5 h-3.5" /> {totalTasks}+ CHECKPOINTS</span>
+                                <span className="flex items-center gap-2 text-zinc-500 font-headline"><LayoutGrid className="w-3.5 h-3.5" /> {totalChecklists} MODULES</span>
+                                <span className="flex items-center gap-2 text-zinc-500 font-headline"><Target className="w-3.5 h-3.5" /> {totalTasks}+ CHECKPOINTS</span>
                             </div>
 
                             <div className="w-full pt-2">
@@ -363,4 +363,3 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         </div>
     );
 }
-
