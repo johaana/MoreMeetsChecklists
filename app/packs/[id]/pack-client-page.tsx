@@ -36,31 +36,19 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
     </section>
 );
 
-const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green" }: { children: React.ReactNode, className?: string, delay?: string, color?: "green" | "red" | "blue" }) => {
-    const pingColors = {
-        green: "bg-emerald-500",
-        red: "bg-red-500",
-        blue: "bg-blue-500"
-    };
-
-    return (
-        <div className={cn(
-            "absolute z-30 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full shadow-xl flex items-center gap-2 border border-zinc-200 animate-in fade-in zoom-in duration-700 whitespace-nowrap",
-            className
-        )} style={{ animationDelay: delay }}>
-            <span className="relative flex h-1.5 w-1.5">
-                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-100 scale-[4.5]", pingColors[color as keyof typeof pingColors])}></span>
-                <span className={cn("relative inline-flex rounded-full h-1.5 w-1.5", pingColors[color as keyof typeof pingColors])}></span>
-            </span>
-            <span className="text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
-        </div>
-    );
-};
-
 // Industry specific technical pitfalls and prevention mappings
 const getIndustryContent = (id: string) => {
     const defaults = {
-        pitfalls: ["Tasks get skipped during busy shifts", "Work depends on memory of key people", "Inconsistent standards across locations"],
+        pitfalls: [
+            "Tasks get skipped during busy shifts", 
+            "Work depends on memory of key people", 
+            "Inconsistent standards across locations",
+            "Managers waste hours manually chasing staff",
+            "No real-time visibility into completion status",
+            "Staff 'guess' procedures when managers are away",
+            "Institutional memory leaves when staff resign",
+            "Audit non-conformance detected too late"
+        ],
         prevents: [
             { t: "Safety failures", d: "Prevents fatal gaps in protocols." },
             { t: "Operational drift", d: "Ensures consistent quality every day." },
@@ -70,7 +58,16 @@ const getIndustryContent = (id: string) => {
 
     const mapping: Record<string, typeof defaults> = {
         'restaurants': {
-            pitfalls: ["Critical food safety checks missed", "Inconsistent recipe execution", "Revenue leakage in the kitchen"],
+            pitfalls: [
+                "Critical food safety checks (HACCP) missed during rush shifts.",
+                "High-value protein leakage goes undetected without daily reconcile.",
+                "Inconsistent recipe execution leading to unmonitored ingredient waste.",
+                "Staff 'guess' procedures because Trainer Notes are missing.",
+                "Managers waste hours manually chasing shift handovers.",
+                "Digital reputation drops because 24h review response pulse is ignored.",
+                "No institutional memory stays when your best Chef resigns.",
+                "Margin erosion from unverified third-party aggregator cancellations."
+            ],
             prevents: [
                 { t: "Food safety incidents", d: "Zero-fail HACCP compliance." },
                 { t: "Margin erosion", d: "Stops unmonitored waste and theft." },
@@ -78,7 +75,16 @@ const getIndustryContent = (id: string) => {
             ]
         },
         'hotels_and_resorts': {
-            pitfalls: ["Room readiness gaps", "Safety protocol lapses", "Reputation damage on social media"],
+            pitfalls: [
+                "Room readiness gaps lead to immediate guest refund requests.",
+                "Critical safety protocols (Fire/Perimeter) are assumed but not verified.",
+                "Shift handovers are documented in disjointed, unsearchable chat groups.",
+                "Preventive maintenance for expensive HVAC assets is neglected.",
+                "Brand standards drift as staff turnover increases and training fails.",
+                "5-star reputation is destroyed by single, unmonitored hygiene lapses.",
+                "Minibar revenue bleeds out without a structured reconciliation log.",
+                "Guest Wi-Fi and tech assets fail due to lack of daily uptime audits."
+            ],
             prevents: [
                 { t: "Refund requests", d: "Ensures 100% room parity." },
                 { t: "Guest safety gaps", d: "Verified perimeter and life safety." },
@@ -86,7 +92,16 @@ const getIndustryContent = (id: string) => {
             ]
         },
         'cinema_operations_pack': {
-            pitfalls: ["Projection issues go unnoticed", "Concession revenue leakage", "Fire safety checks skipped"],
+            pitfalls: [
+                "Projector lamp life and KDM decryption status go unmonitored.",
+                "Concession profit bleeds through unverified yield gaps.",
+                "Fire exit physical verification is skipped in busy intervals.",
+                "Projection sound acoustic balance not tested pre-show.",
+                "No institutional memory stays when a key Projectionist resigns.",
+                "Restroom hygiene cycles drift, leading to viral negative reviews.",
+                "Technical uptime fails because asset logs are documented on paper.",
+                "Box office revenue leakage from unverified 'voided' ticket bills."
+            ],
             prevents: [
                 { t: "Projection failure", d: "Zero-fail technical checks." },
                 { t: "Revenue leakage", d: "Stops concession profit bleed." },
@@ -94,7 +109,16 @@ const getIndustryContent = (id: string) => {
             ]
         },
         'healthcare_and_hospital_operations': {
-            pitfalls: ["Clinical safety protocols bypassed", "Nursing handover gaps", "Compliance audit failures"],
+            pitfalls: [
+                "Surgical safety 'time-outs' bypassed under high-volume pressure.",
+                "High-alert medication dual-verification is skipped during shifts.",
+                "Bedside handovers lose critical vitals data in verbal-only transfers.",
+                "Biomedical waste segregation lapses risk massive regulatory fines.",
+                "Pharmacy cold-chain integrity is assumed rather than logged.",
+                "Audit non-conformance (NABH/JCI) detected only when it's too late.",
+                "Staff skills decay because technical protocols aren't at the point of work.",
+                "ICU and Ward vitals unmonitored due to management gaps."
+            ],
             prevents: [
                 { t: "Clinical errors", d: "Hardened surgical safety checks." },
                 { t: "Audit non-conformance", d: "NABH/JCI ready documentation." },
@@ -102,7 +126,16 @@ const getIndustryContent = (id: string) => {
             ]
         },
         'school_operations_pack': {
-            pitfalls: ["Transport safety checks missed", "Student attendance gaps", "Playground hazards unnoticed"],
+            pitfalls: [
+                "'Empty Bus Walkthroughs' missed, risking student abandonment.",
+                "Visitor ID verification becomes lax at high-traffic entry points.",
+                "Playground equipment rust and loose bolts go unnoticed by maintenance.",
+                "Student allergy red-flags aren't synced with the canteen floor.",
+                "Admin chaos ensues when attendance parity isn't verified by 8:30 AM.",
+                "Campus safety culture drifts without verifiable technical audits.",
+                "Institutional standards leave when key administrative staff resign.",
+                "Emergency response fails because drills are documented but not hardened."
+            ],
             prevents: [
                 { t: "Transport tragedies", d: "Zero-fail bus safety protocols." },
                 { t: "Campus accidents", d: "Daily playground & infrastructure audits." },
@@ -119,8 +152,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     useEffect(() => { setMounted(true); }, []);
 
     const content = getIndustryContent(pack.id);
-    const totalChecklists = pack.checklists?.length || 0;
-    const totalTasks = pack.checklists?.reduce((sum, cl) => sum + cl.tasks.length, 0) || 0;
 
     if (!mounted) return null;
 
@@ -171,14 +202,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
                         </div>
 
-                        {/* RIGHT SIDE: Technical Image Frame */}
+                        {/* RIGHT SIDE: Technical Image Frame (No Annotations) */}
                         <div className="relative lg:-ml-44">
                             <div className="relative mx-auto w-fit scale-110 lg:scale-125 transition-all duration-1000">
-                                
-                                <AnimatedAnnotation className="top-[32%] -left-2" color="red" delay="0.5s">Missed</AnimatedAnnotation>
-                                <AnimatedAnnotation className="top-[12%] -right-2" color="green" delay="1s">Completed</AnimatedAnnotation>
-                                <AnimatedAnnotation className="bottom-[18%] -left-6" color="blue" delay="1.5s">Dashboard</AnimatedAnnotation>
-
                                 <div className="rounded-[24px] overflow-hidden shadow-[0_40px_100px_-15px_rgba(0,0,0,0.15)] bg-white border border-zinc-200 relative max-w-lg">
                                     {/* Browser Simulation Bar */}
                                     <div className="bg-[#111] h-10 w-full flex items-center px-4 gap-2">
@@ -213,19 +239,24 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </section>
 
-            {/* SECTION 2 — WHY THIS MATTERS */}
+            {/* SECTION 2 — WHY THIS MATTERS (Expanded & Grid) */}
             <Section className="bg-white border-y border-zinc-200">
-                <div className="max-w-[720px] mx-auto text-center space-y-10">
+                <div className="max-w-4xl mx-auto text-center space-y-12">
                     <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">Why {pack.title.toLowerCase().replace(' operating system', '')} operations break</h2>
-                    <div className="grid gap-4 text-left">
+                    
+                    <div className="grid md:grid-cols-2 gap-4 text-left">
                         {content.pitfalls.map((p, i) => (
                             <div key={i} className="flex items-center gap-4 p-5 rounded-2xl bg-[#F7F8FA] border border-zinc-100 group hover:border-[#F4A261]/30 transition-all">
                                 <div className="w-2 h-2 rounded-full bg-red-500 shrink-0" />
-                                <span className="text-[#5B6670] font-bold italic text-lg">{p}</span>
+                                <span className="text-[#5B6670] font-bold italic text-lg leading-tight">{p}</span>
                             </div>
                         ))}
                     </div>
-                    <p className="text-xl font-black text-red-600 uppercase italic pt-4">Small misses create big failures.</p>
+                    
+                    <div className="pt-6">
+                        <p className="text-xl font-black text-red-600 uppercase italic">Small misses create big failures.</p>
+                        <p className="text-xs text-[#5B6670] mt-2 font-black uppercase tracking-[0.4em] opacity-40">Operational Hardening Required</p>
+                    </div>
                 </div>
             </Section>
 
