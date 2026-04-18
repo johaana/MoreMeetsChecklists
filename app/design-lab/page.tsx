@@ -297,7 +297,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* HOW IT WORKS - REFINED ROADMAP */}
+                {/* HOW IT WORKS - BEST VERSION (EASE + CLARITY + POWER) */}
                 <Section className="bg-[#FFFFFF]">
                     <div className="max-w-[1200px] mx-auto space-y-16">
                         <div className="text-center space-y-2">
@@ -324,7 +324,7 @@ export default function DesignLabPage() {
                         </div>
 
                         <div className="text-center pt-8">
-                            <p className="text-[20px] font-black text-[#0B0F14] uppercase italic tracking-tighter">
+                            <p className="text-[20px] md:text-[24px] font-black text-[#0B0F14] uppercase italic tracking-tighter">
                                 👉 That’s it. Your operations are now structured.
                             </p>
                         </div>

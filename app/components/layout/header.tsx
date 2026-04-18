@@ -116,15 +116,15 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
             <nav className="ml-auto hidden md:flex gap-10 items-center">
                 <Link href="/about" className={navLinkClass} prefetch={false}>About Us</Link>
                 <div 
-                    className="group relative"
+                    className="group static"
                     onMouseEnter={() => setIsDropdownOpen(true)}
                     onMouseLeave={() => setIsDropdownOpen(false)}
                 >
-                    <button className={cn(navLinkClass, "flex items-center gap-1.5")}>
+                    <button className={cn(navLinkClass, "flex items-center gap-1.5 py-6")}>
                         Systems <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
                     </button>
                     {isDropdownOpen && (
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-[90vw] max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
+                        <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[90vw] max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
                             <div className="bg-white rounded-xl shadow-2xl border border-black/10 flex flex-col overflow-hidden">
                                     <ScrollArea className="max-h-[75vh] overflow-y-auto">
                                     <div className="p-10">
