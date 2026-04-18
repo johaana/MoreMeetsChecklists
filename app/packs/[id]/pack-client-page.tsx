@@ -131,7 +131,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
             {/* HERO SECTION - ONE GLANCE ARCHITECTURE */}
             <section className="relative w-full bg-[#F7F8FA] pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden min-h-[85vh] flex flex-col justify-center border-b border-zinc-200">
                 <div className="container mx-auto max-w-[1200px] px-6">
-                    <div className="grid lg:grid-cols-[1fr,550px] gap-12 lg:gap-16 items-center">
+                    <div className="grid lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-20 items-center">
                         
                         {/* LEFT: NARRATIVE AUTHORITY */}
                         <div className="flex flex-col items-start space-y-8 relative z-20">
@@ -153,9 +153,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <p className="text-[17px] font-bold leading-none text-[#0B0F14]">Without depending on memory</p>
                             </div>
 
-                            <div className="flex items-center gap-8 w-full text-[9px] font-black text-[#5B6670] uppercase tracking-[0.25em] opacity-40">
-                                <span className="flex items-center gap-2.5"><LayoutGrid className="w-3.5 h-3.5" /> {totalChecklists} MODULES</span>
-                                <span className="flex items-center gap-2.5"><Target className="w-3.5 h-3.5" /> {totalTasks}+ CHECKPOINTS</span>
+                            <div className="flex items-center gap-8 w-full text-[9px] font-black text-zinc-500 uppercase tracking-[0.25em]">
+                                <span className="flex items-center gap-2.5"><LayoutGrid className="w-3.5 h-3.5 text-zinc-400" /> {totalChecklists} MODULES</span>
+                                <span className="flex items-center gap-2.5"><Target className="w-3.5 h-3.5 text-zinc-400" /> {totalTasks}+ CHECKPOINTS</span>
                             </div>
 
                             <div className="space-y-6 w-full pt-4">
