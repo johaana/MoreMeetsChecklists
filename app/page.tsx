@@ -28,13 +28,18 @@ import {
     Zap,
     GraduationCap,
     Smartphone,
-    ShieldAlert
+    ShieldAlert,
+    ChevronRight,
+    SearchCheck,
+    Scale
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { TestimonialsSection } from '@/components/layout/testimonials-section';
+import { FaqSection } from '@/components/layout/faq-section';
 
 const DASHBOARD_IMAGE = "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png";
 const CINEMA_TASKS_IMAGE = "https://i.postimg.cc/G278vKh8/Screenshot-2026-04-18-004329.png";
@@ -83,7 +88,7 @@ export default function Home() {
 
             <main className="flex-1">
                 
-                {/* HERO SECTION - HIGH HORIZON Verticality */}
+                {/* HERO SECTION - HIGH HORIZON */}
                 <section className="w-full bg-[#F7F8FA] pt-8 pb-16 md:pt-16 md:pb-24 overflow-hidden min-h-[90svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
                         <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-16 items-center">
@@ -147,7 +152,7 @@ export default function Home() {
                                 </div>
                             </div>
 
-                            {/* RIGHT SIDE: DASHBOARD PROOF - HORIZONTALLY COMPRESSED lg:-ml-44 */}
+                            {/* RIGHT SIDE: DASHBOARD PROOF */}
                             <div className="relative lg:-ml-44 lg:pt-16">
                                 <div className="relative mx-auto w-fit scale-125 transition-all duration-1000">
                                     
@@ -196,8 +201,36 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* PROBLEM SECTION */}
+                {/* SECTOR COMMAND - INDUSTRY GRID */}
                 <Section className="bg-white border-y border-[#E6E8EC]">
+                    <div className="space-y-12">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[10px]">Strategic Inventory</Badge>
+                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">Select Your Vertical</h2>
+                        </div>
+                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                            {[
+                                { name: "Restaurants", id: "restaurants", icon: Utensils },
+                                { name: "Hotels", id: "hotels_and_resorts", icon: Building },
+                                { name: "Healthcare", id: "healthcare_and_hospital_operations", icon: Hospital },
+                                { name: "Schools", id: "school_operations_pack", icon: School },
+                                { name: "Franchise", id: "franchise_operations_pack", icon: Store },
+                                { name: "Facilities", id: "facility_management_blueprint", icon: Building2 },
+                                { name: "Cinemas", id: "cinema_operations_pack", icon: Popcorn }
+                            ].map((sector) => (
+                                <Link key={sector.id} href={`/packs/${sector.id}`} className="group flex flex-col items-center gap-4 p-6 rounded-2xl border border-zinc-100 bg-[#F7F8FA] hover:bg-white hover:shadow-xl hover:border-primary/20 transition-all text-center">
+                                    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-zinc-400 group-hover:text-primary group-hover:scale-110 transition-all shadow-sm">
+                                        <sector.icon className="w-6 h-6" />
+                                    </div>
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-zinc-900 leading-tight italic">{sector.name}</span>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+
+                {/* PROBLEM SECTION */}
+                <Section className="bg-[#F7F8FA]">
                     <div className="max-w-[800px] mx-auto text-center space-y-10">
                         <div className="space-y-4">
                             <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] leading-tight tracking-tight uppercase italic">Why operations break</h2>
@@ -243,8 +276,8 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* SOLUTION SECTION - CINEMA IMPLEMENTATION PROOF */}
-                <Section className="bg-[#F3F4F6]">
+                {/* SOLUTION SECTION - CINEMA PROOF */}
+                <Section className="bg-white border-y border-[#E6E8EC]">
                     <div className="grid md:grid-cols-2 gap-16 items-center">
                         <div className="space-y-10">
                             <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] leading-tight tracking-tight uppercase italic">This changes everything.</h2>
@@ -277,14 +310,6 @@ export default function Home() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="pt-8 border-t border-[#E6E8EC] space-y-3">
-                                <p className="text-[18px] font-black text-[#0F3D2E] flex items-center gap-3 uppercase italic">
-                                    <CheckCircle2 className="w-5 h-5" /> No follow-ups required
-                                </p>
-                                <p className="text-[18px] font-black text-[#0F3D2E] flex items-center gap-3 uppercase italic">
-                                    <CheckCircle2 className="w-5 h-5" /> No dependency on memory
-                                </p>
-                            </div>
                         </div>
                         <div className="space-y-4">
                             <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E6E8EC] bg-black p-2">
@@ -297,8 +322,8 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* HOW IT WORKS - BEST VERSION (EASE + CLARITY + POWER) */}
-                <Section className="bg-[#FFFFFF]">
+                {/* HOW IT WORKS - EASE + CLARITY + POWER */}
+                <Section className="bg-[#F7F8FA]">
                     <div className="max-w-[1200px] mx-auto space-y-16">
                         <div className="text-center space-y-2">
                             <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">Start in minutes</h2>
@@ -311,8 +336,8 @@ export default function Home() {
                                 { t: "3. Share with your team", d: "Assign roles. Lock structure so nothing breaks.", i: Lock },
                                 { t: "4. See everything live", d: "Track tasks as they get done. Know what’s missed — without asking.", i: Activity }
                             ].map((step, i) => (
-                                <div className="bg-[#F7F8FA] border border-[#E6E8EC] p-8 rounded-2xl space-y-6 hover:shadow-lg transition-all group" key={i}>
-                                    <div className="w-12 h-12 rounded-xl bg-white border border-[#E6E8EC] flex items-center justify-center text-[#0B0F14] font-black group-hover:bg-[#0F3D2E] group-hover:text-white transition-all text-xl italic">
+                                <div className="bg-white border border-[#E6E8EC] p-8 rounded-2xl space-y-6 hover:shadow-lg transition-all group" key={i}>
+                                    <div className="w-12 h-12 rounded-xl bg-[#F7F8FA] border border-[#E6E8EC] flex items-center justify-center text-[#0B0F14] font-black group-hover:bg-[#0F3D2E] group-hover:text-white transition-all text-xl italic">
                                         {i+1}
                                     </div>
                                     <div className="space-y-2">
@@ -331,37 +356,47 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* WHAT YOU GET */}
-                <Section className="bg-[#F7F8FA] border-y border-[#E6E8EC]">
-                    <div className="max-w-[1200px] mx-auto space-y-16">
-                        <div className="text-center space-y-2">
-                             <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">What you get</h2>
+                {/* TESTIMONIALS */}
+                <TestimonialsSection />
+
+                {/* SOVEREIGN VS SAAS - COMPARISON SECTION */}
+                <Section className="bg-white border-y border-[#E6E8EC]">
+                    <div className="max-w-4xl mx-auto space-y-16">
+                        <div className="text-center space-y-4">
+                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">System Sovereignty</h2>
+                            <p className="text-[#5B6670] font-medium italic">Why Elite groups choose MoreMeets over standard SaaS.</p>
                         </div>
-                        
-                        <div className="grid md:grid-cols-3 gap-8">
-                            {[
-                                { t: "120+ Pre-built SOPs", d: "Industry-standard protocols.", i: ClipboardCheck },
-                                { t: "Daily Execution Tracking", d: "Verifiable logs for every task.", i: Clock },
-                                { t: "Trainer Notes", d: "Action instructions for every task.", i: GraduationCap },
-                                { t: "Defined Consequences", d: "Built-in accountability metrics.", i: AlertTriangle },
-                                { t: "Live Dashboard", d: "One-screen operational pulse.", i: Activity },
-                                { t: "Admin Controls", d: "Lock formulas and structure.", i: Lock },
-                                { t: "Fully Editable System", d: "Universal accessibility forever.", i: FileSpreadsheet },
-                                { t: "Multi-Location View", d: "See all units in one place.", i: LayoutGrid }
-                            ].map((item, i) => (
-                                <div className="flex gap-5 p-4 rounded-xl hover:bg-white hover:shadow-sm transition-all group" key={i}>
-                                    <div className="w-12 h-12 rounded-xl bg-white border border-[#E6E8EC] flex items-center justify-center text-[#0F3D2E] shrink-0 shadow-sm group-hover:scale-110 transition-transform">
-                                        <item.i className="w-6 h-6" />
-                                    </div>
-                                    <div className="space-y-1">
-                                        <h4 className="text-base font-black text-[#0B0F14] uppercase italic">{item.t}</h4>
-                                        <p className="text-[13px] text-[#5B6670] leading-snug font-medium italic">{item.d}</p>
-                                    </div>
-                                </div>
-                            ))}
+                        <div className="overflow-hidden rounded-3xl border border-zinc-100 shadow-2xl">
+                            <table className="w-full text-left">
+                                <thead className="bg-[#0B0F14] text-white">
+                                    <tr>
+                                        <th className="p-6 text-[10px] font-black uppercase tracking-[0.3em]">Feature</th>
+                                        <th className="p-6 text-[10px] font-black uppercase tracking-[0.3em] bg-primary/20">MoreMeets™ OS</th>
+                                        <th className="p-6 text-[10px] font-black uppercase tracking-[0.3em]">Typical SaaS App</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-zinc-100 text-sm">
+                                    {[
+                                        { f: "Ownership", mm: "One-time buy. Own it forever.", app: "Monthly lease. Pay forever." },
+                                        { f: "Customization", mm: "100% Unlocked Excel logic.", app: "Locked features. Request changes." },
+                                        { f: "Onboarding", mm: "Zero training. Use Sheets/Excel.", app: "New app learning curve." },
+                                        { f: "Data Security", mm: "Sovereign. Stays in your Drive.", app: "Stored on vendor servers." },
+                                        { f: "Deployment", mm: "Instant. Live in 10 minutes.", app: "Weeks of setup & integration." }
+                                    ].map((row, i) => (
+                                        <tr key={i} className="hover:bg-zinc-50 transition-colors">
+                                            <td className="p-6 font-black uppercase italic text-zinc-400 text-[11px]">{row.f}</td>
+                                            <td className="p-6 font-bold text-[#0F3D2E] bg-primary/5">{row.mm}</td>
+                                            <td className="p-6 text-zinc-500 italic">{row.app}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </Section>
+
+                {/* FAQ - BEFORE YOU DEPLOY */}
+                <FaqSection />
 
                 {/* FINAL CTA */}
                 <Section className="bg-[#0F3D2E] text-white text-center py-32">
