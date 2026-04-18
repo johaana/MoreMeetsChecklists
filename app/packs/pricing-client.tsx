@@ -18,13 +18,11 @@ import {
     FileDown,
     Ban
 } from 'lucide-react';
-import { Badge } from '../components/ui/badge';
 import { useToast } from '../hooks/use-toast';
 import { addContact } from './actions';
 import { Input } from '../components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
-import { cn } from '@/lib/utils';
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     const { toast } = useToast();
@@ -143,10 +141,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                         <div className="flex items-center gap-8 md:gap-12">
                             <span className="text-[28px] font-medium text-[#5B6670] line-through italic tracking-tight">
-                                {region === 'INDIA' ? '₹1,999' : '$25'}
+                                {region === 'INDIA' ? '₹4,999' : '$49'}
                             </span>
                             <h2 className="text-[64px] md:text-[84px] font-bold text-white italic tracking-tighter leading-none">
-                                {region === 'INDIA' ? '₹999' : '$12'}
+                                {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
                             </h2>
                         </div>
                     </div>

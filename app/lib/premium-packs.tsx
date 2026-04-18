@@ -74,7 +74,7 @@ const shortDescriptions: Record<string, string> = {
 
 export const premiumPacks: PremiumPack[] = [
     ...allPacks.map(p => {
-        // Apply Elite 7 Pricing Logic - ₹999 Buy / ₹1,999 Grade
+        // Apply Sovereign Pricing Logic - ₹2,999 Buy / ₹4,999 Grade
         const eliteIds = [
             'restaurants', 'hotels_and_resorts', 'healthcare_and_hospital_operations', 
             'school_operations_pack', 'franchise_operations_pack', 
@@ -86,10 +86,10 @@ export const premiumPacks: PremiumPack[] = [
         if (eliteIds.includes(p.id)) {
             processedPack = {
                 ...processedPack,
-                priceINR: 999,
-                anchorPriceINR: 1999,
-                priceUSD: 12,
-                anchorPriceUSD: 25
+                priceINR: 2999,
+                anchorPriceINR: 4999,
+                priceUSD: 29,
+                anchorPriceUSD: 49
             }
         }
 

@@ -28,7 +28,6 @@ import {
     ShieldAlert
 } from 'lucide-react';
 import Link from 'next/link';
-import { IconComponent } from '@/components/icons';
 import PricingClient from '../pricing-client';
 
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
@@ -109,6 +108,23 @@ const getIndustryContent = (id: string) => {
                 { t: "Revenue leakage", d: "Stops concession profit bleed." },
                 { t: "Safety disasters", d: "Daily physical exit verification." }
             ]
+        },
+        'healthcare_and_hospital_operations': {
+            pitfalls: [
+                "Critical clinical handovers missed during high-caseload shifts.",
+                "Surgical 'Time Out' protocols assumed rather than verified.",
+                "Narcotics safe stock counts unmonitored across shift cycles.",
+                "Delayed emergency response (Code Blue) due to lack of daily drills.",
+                "Staff turnover eroding institutional NABH/JCI knowledge.",
+                "Infection control breaches in ICU going undetected.",
+                "Pharmacy cold-chain integrity lapses during power flips.",
+                "Unbilled clinical consumables leading to massive silent margin loss."
+            ],
+            prevents: [
+                { t: "Clinical errors", d: "Zero-fail surgical & medication safety." },
+                { t: "Audit failure", d: "Permanent NABH/JCI readiness." },
+                { t: "Revenue leakage", d: "100% billing parity for consumables." }
+            ]
         }
     };
 
@@ -128,8 +144,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             
-            {/* HERO SECTION — VERTICALLY COMPACT — ONE GLANCE MANDATE */}
-            <section className="relative w-full bg-[#F7F8FA] pt-12 pb-12 md:pt-16 md:pb-16 overflow-hidden min-h-[80vh] flex flex-col justify-center border-b border-zinc-200">
+            {/* 1. HERO SECTION — ONE GLANCE MANDATE */}
+            <section className="relative w-full bg-[#F7F8FA] pt-12 pb-12 md:pt-16 md:pb-16 overflow-hidden min-h-[85vh] flex flex-col justify-center border-b border-zinc-200">
                 <div className="container mx-auto max-w-[1200px] px-6">
                     <div className="grid lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-16 items-center">
                         
@@ -162,7 +178,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <div className="flex flex-col sm:flex-row items-center gap-6">
                                     <button className="h-[56px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-base shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group">
                                         <Link href="#pricing" className="flex items-center gap-3">
-                                            Deploy system → ₹999
+                                            Deploy system → ₹{pack.priceINR}
                                         </Link>
                                     </button>
                                     <div className="flex flex-col text-left">
@@ -173,7 +189,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
                         </div>
 
-                        {/* RIGHT: TECHNICAL PROOF FRAME — SHORTER — 16/9 ASPECT */}
+                        {/* RIGHT: TECHNICAL PROOF FRAME — WIDESCREEN */}
                         <div className="relative z-10 w-full">
                             <div className="relative mx-auto group max-w-xl">
                                 <div className="bg-[#111] h-9 w-full rounded-t-[14px] flex items-center px-4 gap-2 border border-white/5">
@@ -193,7 +209,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     <img 
                                         src={heroImageUrl} 
                                         alt={pack.title} 
-                                        className="w-full h-auto object-cover aspect-[16/9] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
+                                        className="w-full h-auto object-cover aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
                                 </div>
@@ -210,7 +226,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </section>
 
-            {/* PROBLEM BRIDGE */}
+            {/* 2. WHY THIS MATTERS (PITFALLS) */}
             <Section className="bg-white border-y border-[#E6E8EC]">
                 <div className="max-w-[1000px] mx-auto text-center space-y-16">
                     <div className="space-y-4">
@@ -235,7 +251,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* CORE FUNCTIONALITY CARDS */}
+            {/* 3. WHAT THIS SYSTEM DOES */}
             <Section>
                 <div className="grid md:grid-cols-3 gap-10">
                     {[
@@ -256,7 +272,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* DEPLOYMENT ROADMAP */}
+            {/* 4. HOW IT WORKS (ROADMAP) */}
             <Section className="bg-[#F7F8FA] border-y border-[#E6E8EC]">
                 <div className="space-y-20">
                     <div className="text-center space-y-4">
@@ -284,13 +300,13 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                     <div className="text-center pt-8">
                         <p className="text-[22px] md:text-[32px] font-black text-[#0B0F14] uppercase italic tracking-tighter">
-                            👉 No setup. No training. Ready in minutes.
+                            👉 That’s it. Your operations are now structured.
                         </p>
                     </div>
                 </div>
             </Section>
 
-            {/* SYSTEM ARCHITECTURE - THE ELITE GRID */}
+            {/* 5. SYSTEM ARCHITECTURE (WHITE CARDS) */}
             <Section className="bg-white">
                 <div className="space-y-20">
                     <div className="text-center space-y-5">
@@ -322,7 +338,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* RISK PREVENTION */}
+            {/* 7. WHAT THIS PREVENTS */}
             <Section className="bg-[#F7F8FA] border-y border-[#E6E8EC]">
                 <div className="max-w-[1000px] mx-auto space-y-20">
                     <h2 className="text-[32px] md:text-[48px] font-black text-[#0B0F14] text-center uppercase italic tracking-tight">What this prevents</h2>
@@ -342,10 +358,10 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* PRICING ENGINE HUB */}
+            {/* 8. PRICING ENGINE */}
             <PricingClient pack={pack} />
 
-            {/* FINAL NARRATIVE CLOSURE */}
+            {/* 11. FINAL CTA */}
             <Section className="bg-[#0F3D2E] text-white text-center py-40 md:py-56">
                 <div className="max-w-4xl mx-auto space-y-16">
                     <div className="space-y-6">
