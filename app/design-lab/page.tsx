@@ -83,8 +83,8 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* HERO SECTION - REPOSITIONED 3% DOWN */}
-                <section className="w-full bg-[#F7F8FA] pt-16 pb-16 md:pt-32 md:pb-24 overflow-hidden min-h-[90svh] flex flex-col justify-center">
+                {/* HERO SECTION - REPOSITIONED UP BY ~3% */}
+                <section className="w-full bg-[#F7F8FA] pt-12 pb-16 md:pt-24 md:pb-24 overflow-hidden min-h-[90svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
                         <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-16 items-center">
                             
@@ -115,7 +115,7 @@ export default function DesignLabPage() {
                                         "Trainer notes (faster training)",
                                         "Live dashboard visibility"
                                     ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-3 group">
+                                        <div className="flex items-center gap-3 group" key={i}>
                                             <div className="w-5 h-5 rounded-full bg-[#0F3D2E]/10 flex items-center justify-center shrink-0">
                                                 <Check className="w-3 h-3 text-[#0F3D2E]" />
                                             </div>
@@ -147,7 +147,7 @@ export default function DesignLabPage() {
                                 </div>
                             </div>
 
-                            {/* RIGHT SIDE: DASHBOARD PROOF - OPTICAL BALANCE + PRECISE ANCHORING */}
+                            {/* RIGHT SIDE: DASHBOARD PROOF - OPTICAL BALANCE OFFSET */}
                             <div className="relative lg:-ml-24 lg:pt-16">
                                 <div className="relative mx-auto w-fit scale-125 transition-all duration-1000">
                                     
@@ -212,7 +212,7 @@ export default function DesignLabPage() {
                                         "Tasks get skipped during busy shifts",
                                         "Staff executes steps differently every time"
                                     ].map((p, i) => (
-                                        <li key={i} className="flex items-start gap-4 text-[#5B6670] text-sm font-medium italic">
+                                        <li className="flex items-start gap-4 text-[#5B6670] text-sm font-medium italic" key={i}>
                                             <div className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 shrink-0" />
                                             <span>{p}</span>
                                         </li>
@@ -227,7 +227,7 @@ export default function DesignLabPage() {
                                         "No real-time visibility into completion",
                                         "No proper records for audits"
                                     ].map((p, i) => (
-                                        <li key={i} className="flex items-start gap-3 text-red-900 font-bold text-sm">
+                                        <li className="flex items-start gap-3 text-red-900 font-bold text-sm" key={i}>
                                             <X className="w-4 h-4 text-red-500 mt-0.5 shrink-0" />
                                             <span>{p}</span>
                                         </li>
@@ -312,7 +312,7 @@ export default function DesignLabPage() {
                                 { t: "Share with team", d: "Define roles in 60 seconds.", i: Users },
                                 { t: "Track everything live", d: "Dashboard updates in real-time.", i: Activity }
                             ].map((step, i) => (
-                                <div key={i} className="bg-[#F7F8FA] border border-[#E6E8EC] p-8 rounded-2xl space-y-6 hover:shadow-lg transition-all group">
+                                <div className="bg-[#F7F8FA] border border-[#E6E8EC] p-8 rounded-2xl space-y-6 hover:shadow-lg transition-all group" key={i}>
                                     <div className="w-12 h-12 rounded-xl bg-white border border-[#E6E8EC] flex items-center justify-center text-[#0B0F14] font-black group-hover:bg-[#0F3D2E] group-hover:text-white transition-all text-xl italic">
                                         {i+1}
                                     </div>
@@ -344,7 +344,7 @@ export default function DesignLabPage() {
                                 { t: "Fully Editable System", d: "Universal accessibility forever.", i: FileSpreadsheet },
                                 { t: "Multi-Location View", d: "See all units in one place.", i: LayoutGrid }
                             ].map((item, i) => (
-                                <div key={i} className="flex gap-5 p-4 rounded-xl hover:bg-white hover:shadow-sm transition-all group">
+                                <div className="flex gap-5 p-4 rounded-xl hover:bg-white hover:shadow-sm transition-all group" key={i}>
                                     <div className="w-12 h-12 rounded-xl bg-white border border-[#E6E8EC] flex items-center justify-center text-[#0F3D2E] shrink-0 shadow-sm group-hover:scale-110 transition-transform">
                                         <item.i className="w-6 h-6" />
                                     </div>
