@@ -19,7 +19,6 @@ import {
     Activity,
     FileSpreadsheet,
     CheckCircle2,
-    SearchCheck,
     Building2,
     Utensils,
     Building,
@@ -30,8 +29,7 @@ import {
     Zap,
     GraduationCap,
     Smartphone,
-    ShieldAlert,
-    CircleDollarSign
+    ShieldAlert
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -86,7 +84,7 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* 🔴 HERO SECTION - ONE GLANCE OPTIMIZED */}
+                {/* HERO SECTION */}
                 <section className="w-full bg-[#F7F8FA] pt-4 pb-16 md:pt-6 md:pb-20 overflow-hidden min-h-[90svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
                         <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-16 items-center">
@@ -154,12 +152,12 @@ export default function DesignLabPage() {
 
                             {/* RIGHT SIDE: DASHBOARD PROOF */}
                             <div className="relative pt-24 lg:-ml-32 scale-125 transition-all duration-1000">
-                                {/* Precision Annotations - Closer & Almost On Dashboard */}
+                                {/* Precision Annotations - Mirror-Clamped Alignment */}
                                 <AnimatedAnnotation className="top-[32%] -left-2" color="red" delay="0.5s">
                                     Missed tasks
                                 </AnimatedAnnotation>
 
-                                <AnimatedAnnotation className="top-[12%] -right-2" color="green" delay="1s">
+                                <AnimatedAnnotation className="top-[12%] right-12" color="green" delay="1s">
                                     Completed tasks
                                 </AnimatedAnnotation>
 
@@ -201,7 +199,7 @@ export default function DesignLabPage() {
                     </div>
                 </section>
 
-                {/* 🔴 SECTION 2 — PROBLEM */}
+                {/* PROBLEM SECTION */}
                 <Section className="bg-white border-y border-[#E6E8EC]">
                     <div className="max-w-[800px] mx-auto text-center space-y-10">
                         <div className="space-y-4">
@@ -248,7 +246,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* 🟢 SECTION 3 — SOLUTION */}
+                {/* SOLUTION SECTION */}
                 <Section className="bg-[#F3F4F6]">
                     <div className="grid md:grid-cols-2 gap-16 items-center">
                         <div className="space-y-10">
@@ -295,7 +293,6 @@ export default function DesignLabPage() {
                             <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E6E8EC] bg-black p-2">
                                  <img src={CINEMA_TASKS_IMAGE} alt="Cinema Daily Tasks" className="w-full h-auto rounded-xl" />
                             </div>
-                            {/* Image Caption */}
                             <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic text-center">
                                 sample daily tasks cinema product
                             </p>
@@ -303,7 +300,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* 🔵 SECTION 4 — HOW IT WORKS */}
+                {/* HOW IT WORKS */}
                 <Section className="bg-[#FFFFFF]">
                     <div className="max-w-[1200px] mx-auto space-y-16">
                         <div className="text-center space-y-2">
@@ -332,7 +329,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* 🟡 SECTION 6 — WHAT YOU GET */}
+                {/* WHAT YOU GET */}
                 <Section className="bg-[#F7F8FA] border-y border-[#E6E8EC]">
                     <div className="max-w-[1200px] mx-auto space-y-16">
                         <div className="text-center space-y-2">
@@ -364,103 +361,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* ⚫ SECTION 7 — WHY THIS WORKS */}
-                <Section className="bg-[#FFFFFF]">
-                    <div className="grid md:grid-cols-2 gap-1 gap-y-12 bg-[#0B0F14] rounded-[32px] overflow-hidden border border-[#E6E8EC] shadow-2xl">
-                        <div className="p-16 space-y-10 text-white/40">
-                            <h3 className="text-[14px] font-black text-red-500/60 uppercase tracking-[0.5em]">The Failure Loop</h3>
-                            <div className="space-y-8 text-xl font-bold italic">
-                                <p className="line-through decoration-red-500/50 decoration-2 text-white/20">SOPs sit in files / folders</p>
-                                <p className="line-through decoration-red-500/50 decoration-2 text-white/20">Staff doesn’t understand them</p>
-                                <p className="line-through decoration-red-500/50 decoration-2 text-white/20">No one tracks daily execution</p>
-                            </div>
-                        </div>
-                        <div className="p-16 bg-[#0F3D2E] space-y-10 text-white">
-                            <h3 className="text-[14px] font-black text-emerald-400 uppercase tracking-[0.5em]">The Sovereign Fix</h3>
-                            <div className="space-y-8 text-xl font-black italic">
-                                <div className="flex items-center gap-4">
-                                    <Check className="w-6 h-6 text-emerald-400" />
-                                    <span>Clear what to do (SOPs)</span>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <Check className="w-6 h-6 text-emerald-400" />
-                                    <span>Trainer notes explain how</span>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <Check className="w-6 h-6 text-emerald-400" />
-                                    <span>Consequences show why it matters</span>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <Check className="w-6 h-6 text-emerald-400" />
-                                    <span>Daily tracking ensures it gets done</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="text-center mt-16 space-y-2">
-                         <p className="text-[28px] md:text-[40px] font-black text-[#0B0F14] uppercase italic tracking-tighter">
-                            This is not documentation. <br/>
-                            <span className="text-[#FFFFFF] bg-[#0F3D2E] px-4 py-1 inline-block mt-2">This is execution.</span>
-                        </p>
-                    </div>
-                </Section>
-
-                {/* 🏢 SECTION 9 — WHO IT’S FOR */}
-                <Section className="bg-[#F7F8FA]">
-                    <div className="max-w-[1200px] mx-auto space-y-16">
-                        <div className="text-center space-y-2">
-                             <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">Built for serious operations</h2>
-                        </div>
-                        
-                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-                            {[
-                                { n: "Restaurants", i: Utensils },
-                                { n: "Hotels", i: Building },
-                                { n: "Clinics", i: Hospital },
-                                { n: "Retail", i: Store },
-                                { n: "Facilities", i: Building2 },
-                                { n: "Cinemas", i: Popcorn },
-                                { n: "Franchise", i: LayoutGrid }
-                            ].map((ind, i) => (
-                                <div key={i} className="bg-white border border-[#E6E8EC] p-8 rounded-2xl flex flex-col items-center justify-center text-center hover:border-[#0F3D2E]/40 hover:shadow-md transition-all group">
-                                    <ind.i className="w-10 h-10 text-[#5B6670] group-hover:text-[#0F3D2E] transition-colors mb-6" />
-                                    <span className="font-black text-[11px] text-[#0B0F14] uppercase tracking-widest leading-none">{ind.n}</span>
-                                </div>
-                            ))}
-                        </div>
-                        <p className="text-center text-[13px] text-[#5B6670] font-bold uppercase tracking-[0.2em] italic">Built for single units and multi-location teams</p>
-                    </div>
-                </Section>
-
-                {/* ⚙️ SECTION 10 — CLARITY */}
-                <Section className="bg-[#FFFFFF] border-y border-[#E6E8EC]">
-                    <div className="max-w-[800px] mx-auto text-center space-y-12">
-                        <div className="space-y-4">
-                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">This is not "just Excel"</h2>
-                            <p className="text-[20px] text-[#5B6670] font-medium italic">It’s a complete operational engine built for daily execution.</p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-4">
-                            <div className="space-y-3">
-                                <h4 className="font-black text-[#0B0F14] uppercase italic text-sm">No software debt</h4>
-                                <p className="text-[13px] text-[#5B6670] italic font-medium">Nothing new to install or learn.</p>
-                            </div>
-                            <div className="grid grid-cols-1 gap-2">
-                                <h4 className="font-black text-[#0B0F14] uppercase italic text-sm">No recurring cost</h4>
-                                <p className="text-[13px] text-[#5B6670] italic font-medium">One-time payment. Own forever.</p>
-                            </div>
-                            <div className="space-y-3">
-                                <h4 className="font-black text-[#0B0F14] uppercase italic text-sm">No complexity</h4>
-                                <p className="text-[13px] text-[#5B6670] italic font-medium">Universal access for any team.</p>
-                            </div>
-                        </div>
-                        <p className="text-[22px] font-black text-[#0B0F14] pt-8 uppercase italic border-t border-[#E6E8EC]">
-                            Simple for teams. <br/>
-                            <span className="text-[#0F3D2E]">Surgical for managers.</span>
-                        </p>
-                    </div>
-                </Section>
-
-                {/* 🚀 FINAL CTA */}
+                {/* FINAL CTA */}
                 <Section className="bg-[#0F3D2E] text-white text-center py-32">
                     <div className="max-w-[800px] mx-auto space-y-12">
                         <div className="space-y-6">
@@ -488,7 +389,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* 💬 SECTION 11 — FAQ */}
+                {/* FAQ */}
                 <Section className="bg-white">
                     <div className="max-w-[800px] mx-auto space-y-16">
                         <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] text-center uppercase italic tracking-tight">Questions & Answers</h2>
