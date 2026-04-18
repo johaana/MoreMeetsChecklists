@@ -4,8 +4,6 @@
 import * as React from 'react';
 import type { PremiumPack } from '../lib/premium-packs';
 import Link from 'next/link';
-import { Button } from '../components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../components/ui/card';
 import { 
     Download, 
     Loader2, 
@@ -16,12 +14,12 @@ import {
     Infinity,
     FileSpreadsheet,
     ArrowRight,
-    Zap,
-    Scale,
-    Activity,
     Check,
     GraduationCap,
-    LayoutGrid
+    LayoutGrid,
+    ClipboardCheck,
+    Activity,
+    Target
 } from 'lucide-react';
 import { Badge } from '../components/ui/badge';
 import { useToast } from '../hooks/use-toast';
@@ -29,6 +27,7 @@ import { addContact } from './actions';
 import { Input } from '../components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     const { toast } = useToast();
@@ -42,9 +41,9 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
         const result = await addContact({ email, packId: pack.id });
         if (result.success) {
             setSubmitted(true);
-            toast({ title: "Check Your Inbox!", description: `Your free toolkit for "${pack.title}" has been sent.` });
+            toast({ title: "Protocol Accepted", description: "The Sovereign Toolkit has been sent to your inbox." });
         } else {
-            toast({ variant: "destructive", title: "Something went wrong", description: result.message || "Could not process your request." });
+            toast({ variant: "destructive", title: "Transmission Failed", description: result.message || "Could not process request." });
         }
         setLoading(false);
     };
@@ -52,15 +51,15 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     if (submitted) {
         return (
             <div className="text-center p-6 bg-primary/10 text-primary rounded-2xl border border-primary/20">
-                <p className="font-black uppercase italic tracking-widest text-sm">Protocol Accepted. Check Inbox.</p>
+                <p className="font-black uppercase italic tracking-widest text-sm">TRANSMISSION SECURED. CHECK INBOX.</p>
             </div>
         )
     }
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
-             <Input type="email" placeholder="Institutional email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full bg-black/40 border-white/10 h-14 text-sm rounded-xl italic text-white" />
-            <button type="submit" className="w-full h-16 rounded-xl bg-accent text-black font-black uppercase italic text-sm tracking-widest shadow-xl hover:scale-[1.02] active:scale-95 transition-all border-none flex items-center justify-center gap-3" disabled={loading}>
+             <Input type="email" placeholder="Enter institutional email..." value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full bg-black/40 border-white/10 h-14 text-sm rounded-xl italic text-white focus-visible:ring-primary/40" />
+            <button type="submit" className="w-full h-16 rounded-xl bg-[#F4A261] text-white font-black uppercase italic text-sm tracking-widest shadow-xl hover:scale-[1.02] active:scale-95 transition-all border-none flex items-center justify-center gap-3" disabled={loading}>
                 {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
                 Download Sovereign Toolkit
             </button>
@@ -71,7 +70,7 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
 export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const hasINR = !!(pack.paymentId && pack.paymentId.length > 0 && pack.priceINR >= 0);
     const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
-    const [region, setRegion] = React.useState<'INDIA' | 'GLOBAL'>('INDIA');
+    const [region, setRegion] = React.useState<'INDIA' | 'GLOBAL'>(hasINR ? 'INDIA' : 'GLOBAL');
     
     const totalChecklists = pack.checklists.length; 
     const totalTasks = pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0); 
@@ -147,14 +146,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </TabsTrigger>
                                 </TabsList>
                             </Tabs>
-                            <div className="flex flex-col items-center gap-4 text-center">
-                                <Badge variant="outline" className="text-accent border-accent/40 text-accent uppercase tracking-[0.4em] px-8 py-2 font-black text-[11px] rounded-none bg-accent/5 backdrop-blur-md italic">SOVEREIGN V11.9 ACTIVE</Badge>
-                            </div>
+                            <Badge variant="outline" className="text-accent border-accent/40 text-accent uppercase tracking-[0.4em] px-8 py-2 font-black text-[11px] rounded-none bg-accent/5 backdrop-blur-md italic">SOVEREIGN V11.9 ACTIVE</Badge>
                         </CardHeader>
 
                         <CardContent className="p-10 md:p-20 flex flex-col text-center space-y-12">
                             <div className="flex flex-col items-center gap-4">
-                                <p className="text-2xl md:text-4xl font-black text-primary-text uppercase leading-none italic font-headline tracking-tighter">{totalChecklists} Modules • {totalTasks}+ Checkpoints</p>
+                                <p className="text-2xl md:text-4xl font-black text-primary-text uppercase leading-none italic font-headline tracking-tighter">{totalChecklists} Modules • {totalTasks}+ Points</p>
                                 <p className="text-sm text-secondary-text italic font-medium max-w-sm leading-relaxed border-l-2 border-primary/20 pl-6 mx-auto">"Consistency is either engineered, or it is non-existent."</p>
                             </div>
 
@@ -186,7 +183,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                             <RazorpayButton paymentId={pack.paymentId} className="w-full shadow-2xl" />
                                         </div>
                                     ) : (
-                                        <button className="w-full h-[72px] bg-primary text-black font-black text-xl rounded-2xl border-none uppercase italic tracking-widest shadow-[0_20px_50px_-10px_rgba(46,184,107,0.4)] hover:scale-[1.02] transition-all active:scale-95 flex items-center justify-center gap-4">
+                                        <button className="w-full h-[72px] bg-[#F4A261] text-white font-black text-xl rounded-2xl border-none uppercase italic tracking-widest shadow-[0_20px_50px_-10px_rgba(244,162,97,0.4)] hover:scale-[1.02] transition-all active:scale-95 flex items-center justify-center gap-4">
                                             <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center gap-4">
                                                 DEPLOY SYSTEM: ${pack.priceUSD} <ArrowRight className="w-7 h-7" />
                                             </Link>

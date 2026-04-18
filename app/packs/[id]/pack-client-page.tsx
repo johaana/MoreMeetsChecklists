@@ -41,9 +41,9 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
 const getIndustryContent = (id: string) => {
     const defaults = {
         pitfalls: [
-            "Tasks get skipped during busy shifts", 
-            "Work depends on memory of key people", 
-            "Inconsistent standards across locations",
+            "Critical tasks get skipped during busy shifts", 
+            "Work depends on the memory of key people", 
+            "Standards drift as staff turnover increases",
             "Managers waste hours manually chasing staff",
             "No real-time visibility into completion status",
             "Staff 'guess' procedures when managers are away",
@@ -108,40 +108,6 @@ const getIndustryContent = (id: string) => {
                 { t: "Revenue leakage", d: "Stops concession profit bleed." },
                 { t: "Safety disasters", d: "Daily physical exit verification." }
             ]
-        },
-        'healthcare_and_hospital_operations': {
-            pitfalls: [
-                "Surgical safety 'time-outs' bypassed under high-volume pressure.",
-                "High-alert medication dual-verification is skipped during shifts.",
-                "Bedside handovers lose critical vitals data in verbal-only transfers.",
-                "Biomedical waste segregation lapses risk massive regulatory fines.",
-                "Pharmacy cold-chain integrity is assumed rather than logged.",
-                "Audit non-conformance (NABH/JCI) detected only when it's too late.",
-                "Staff skills decay because technical protocols aren't at the point of work.",
-                "ICU and Ward vitals unmonitored due to management gaps."
-            ],
-            prevents: [
-                { t: "Clinical errors", d: "Hardened surgical safety checks." },
-                { t: "Audit non-conformance", d: "NABH/JCI ready documentation." },
-                { t: "Patient risk", d: "Zero-fail ICU and Ward vitals." }
-            ]
-        },
-        'school_operations_pack': {
-            pitfalls: [
-                "'Empty Bus Walkthroughs' missed, risking student abandonment.",
-                "Visitor ID verification becomes lax at high-traffic entry points.",
-                "Playground equipment rust and loose bolts go unnoticed by maintenance.",
-                "Student allergy red-flags aren't synced with the canteen floor.",
-                "Admin chaos ensues when attendance parity isn't verified by 8:30 AM.",
-                "Campus safety culture drifts without verifiable technical audits.",
-                "Institutional standards leave when key administrative staff resign.",
-                "Emergency response fails because drills are documented but not hardened."
-            ],
-            prevents: [
-                { t: "Transport tragedies", d: "Zero-fail bus safety protocols." },
-                { t: "Campus accidents", d: "Daily playground & infrastructure audits." },
-                { t: "Admin chaos", d: "Streamlined student welfare tracking." }
-            ]
         }
     };
 
@@ -161,12 +127,12 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased">
             
-            {/* SECTION 1 — HERO */}
+            {/* HERO SECTION - HIGH GRAVITY */}
             <section className="w-full bg-[#F7F8FA] pt-8 pb-16 md:pt-16 md:pb-24 overflow-hidden min-h-[90svh] flex flex-col justify-center">
                 <div className="container mx-auto max-w-[1200px] px-6">
                     <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-16 items-center">
                         
-                        {/* LEFT SIDE: Narrative */}
+                        {/* LEFT: Technical Briefing */}
                         <div className="flex flex-col items-start space-y-8 relative z-20">
                             <div className="space-y-1">
                                 <span className="text-[12px] font-black uppercase tracking-[0.4em] text-[#5B6670] mb-2 block">/ {pack.category.toUpperCase()}</span>
@@ -210,20 +176,19 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
                         </div>
 
-                        {/* RIGHT SIDE: Dashboard Frame */}
+                        {/* RIGHT: Sovereign Master Engine Frame */}
                         <div className="relative lg:-ml-44 lg:pt-16">
                             <div className="relative mx-auto w-fit scale-125 transition-all duration-1000">
                                 <div className="rounded-[24px] overflow-hidden shadow-[0_40px_100px_-15px_rgba(0,0,0,0.15)] bg-white border border-[#E6E8EC] relative max-w-lg">
-                                    {/* Browser Simulation Bar */}
                                     <div className="bg-[#111] h-10 w-full flex items-center px-4 gap-2">
                                         <div className="flex gap-1.5">
-                                            <div className="w-2 h-2 rounded-full bg-red-500/30" />
-                                            <div className="w-2 h-2 rounded-full bg-amber-500/30" />
-                                            <div className="w-2 h-2 rounded-full bg-emerald-500/30" />
+                                            <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
+                                            <div className="w-2.5 h-2.5 rounded-full bg-amber-500/20" />
+                                            <div className="w-2.5 h-2.5 rounded-full bg-green-500/20" />
                                         </div>
                                         <div className="flex-1 flex justify-center">
-                                            <div className="bg-white/10 px-6 py-1 rounded text-[8px] font-black text-white/40 uppercase tracking-widest italic truncate max-w-[240px]">
-                                                {pack.id.toUpperCase()}_MASTER_ENGINE
+                                            <div className="bg-black/40 border border-white/5 rounded-md px-12 py-1 text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner">
+                                                {pack.id.toUpperCase()}_MASTER_ENGINE.xlsx
                                             </div>
                                         </div>
                                     </div>
@@ -247,7 +212,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </section>
 
-            {/* SECTION 2 — WHY THIS MATTERS */}
+            {/* PROBLEM BRIDGE */}
             <Section className="bg-white border-y border-[#E6E8EC]">
                 <div className="max-w-[1000px] mx-auto text-center space-y-12">
                     <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight leading-tight">Why {pack.title.toLowerCase().replace(' operating system', '')} operations break</h2>
@@ -269,7 +234,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* SECTION 3 — WHAT THIS SYSTEM DOES */}
+            {/* CORE FUNCTIONALITY */}
             <Section>
                 <div className="grid md:grid-cols-3 gap-8">
                     {[
@@ -290,7 +255,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* SECTION 4 — HOW IT WORKS */}
+            {/* ROADMAP */}
             <Section className="bg-[#F7F8FA] border-y border-[#E6E8EC]">
                 <div className="space-y-16">
                     <div className="text-center">
@@ -324,7 +289,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* SECTION 5 & 6 — ROLES / MODULES (SCREENSHOT STYLE) */}
+            {/* SYSTEM ARCHITECTURE - THE SCREENSHOT STANDARD */}
             <Section className="bg-white">
                 <div className="space-y-16">
                     <div className="text-center space-y-4">
@@ -334,31 +299,29 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                         {pack.checklists.map((checklist, index) => (
-                            <div key={index} className="bg-[#F7F8FA] p-10 rounded-[2.5rem] space-y-6 group hover:bg-white hover:shadow-2xl hover:shadow-[#0B0F14]/5 transition-all duration-500 relative">
-                                <div className="absolute top-8 right-10">
-                                     <div className="w-8 h-4 rounded-full bg-zinc-200/50" />
-                                </div>
+                            <div key={index} className="bg-white p-10 rounded-[2.5rem] space-y-6 group hover:shadow-2xl hover:shadow-[#0B0F14]/5 transition-all duration-500 relative border border-zinc-100">
                                 <div className="space-y-1">
                                     <p className="text-[10px] font-black uppercase text-zinc-400 tracking-[0.3em] font-headline">{checklist.role}</p>
-                                    <h4 className="text-2xl font-black italic uppercase leading-none tracking-tighter text-[#0B0F14] pt-2">
+                                    <h4 className="text-2xl md:text-3xl font-black italic uppercase leading-none tracking-tighter text-[#0B0F14] pt-2">
                                         {checklist.title.replace('System', '').replace('Command', '').replace('Operations', '').replace('Protocol', '')}
                                     </h4>
                                 </div>
                                 <div className="pt-2 flex items-center gap-3">
-                                    <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
-                                        <Target className="w-3 h-3 text-primary" />
+                                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                                        <Target className="w-5 h-5 text-primary" />
                                     </div>
-                                    <span className="text-[10px] font-black text-primary uppercase tracking-[0.4em] font-headline">
+                                    <span className="text-[11px] font-black text-primary uppercase tracking-[0.4em] font-headline">
                                         {checklist.tasks.length} CHECKPOINTS
                                     </span>
                                 </div>
+                                <p className="text-sm text-zinc-500 italic font-medium leading-relaxed">{checklist.summary}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </Section>
 
-            {/* SECTION 7 — REAL RISKS */}
+            {/* RISK PREVENTION */}
             <Section className="bg-[#F7F8FA] border-y border-[#E6E8EC]">
                 <div className="max-w-[900px] mx-auto space-y-16">
                     <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] text-center uppercase italic tracking-tight">What this prevents</h2>
@@ -378,10 +341,10 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* SECTION 8-11 — PRICING & PROOFS */}
+            {/* PRICING ENGINE */}
             <PricingClient pack={pack} />
 
-            {/* FINAL CTA */}
+            {/* FINAL NARRATIVE ANCHOR */}
             <Section className="bg-[#0F3D2E] text-white text-center py-32 md:py-48">
                 <div className="max-w-4xl mx-auto space-y-12">
                     <div className="space-y-6">
