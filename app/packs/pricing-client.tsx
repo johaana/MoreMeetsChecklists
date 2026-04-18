@@ -16,14 +16,14 @@ import {
     ClipboardCheck,
     Activity,
     FileDown,
-    Ban,
-    Infinity
+    Ban
 } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
 import { addContact } from './actions';
 import { Input } from '../components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
+import { Button } from '../components/ui/button';
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     const { toast } = useToast();
@@ -205,7 +205,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         ))}
                     </div>
 
-                    <div className="pt-4">
+                    <div className="pt-4 text-center">
                         <p className="text-[11px] font-bold text-[#5B6670] italic">
                             Works in minutes. If not useful, don’t use it.
                         </p>

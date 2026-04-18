@@ -6,25 +6,12 @@ import type { PremiumPack } from "@/lib/premium-packs";
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { 
-    Check, 
     ArrowRight, 
     LayoutGrid,
     ClipboardCheck,
     Clock,
-    ShieldCheck,
-    Lock,
     Activity,
-    FileSpreadsheet,
-    CheckCircle2,
-    Zap,
-    GraduationCap,
-    Smartphone,
-    AlertTriangle,
-    Download,
-    HelpCircle,
     Target,
-    ChevronRight,
-    CircleDashed,
     ShieldAlert
 } from 'lucide-react';
 import Link from 'next/link';
@@ -58,12 +45,29 @@ const getIndustryContent = (id: string) => {
     };
 
     const mapping: Record<string, typeof defaults> = {
+        'cinema_operations_pack': {
+            pitfalls: [
+                "Projector lamp life and KDM decryption status go unmonitored.",
+                "Concession profit bleeds through unverified yield gaps.",
+                "Fire exit physical verification is skipped in busy intervals.",
+                "Projection sound acoustic balance not tested pre-show.",
+                "Staff 'guess' procedures because technical Trainer Notes are missing.",
+                "Restroom hygiene cycles drift, leading to viral negative reviews.",
+                "Technical uptime fails because asset logs are documented on paper.",
+                "Box office revenue leakage from unverified 'voided' ticket bills."
+            ],
+            prevents: [
+                { t: "Projection failure", d: "Zero-fail technical checks." },
+                { t: "Revenue leakage", d: "Stops concession profit bleed." },
+                { t: "Safety disasters", d: "Daily physical exit verification." }
+            ]
+        },
         'restaurants': {
             pitfalls: [
                 "Critical food safety checks (HACCP) missed during rush shifts.",
                 "High-value protein leakage goes undetected without daily reconcile.",
                 "Inconsistent recipe execution leading to unmonitored ingredient waste.",
-                "Staff 'guess' procedures because Trainer Notes are missing.",
+                "Staff 'guess' procedures because digital Trainer Notes are missing.",
                 "Managers waste hours manually chasing shift handovers.",
                 "Digital reputation drops because 24h review response pulse is ignored.",
                 "No institutional memory stays when your best Chef resigns.",
@@ -90,23 +94,6 @@ const getIndustryContent = (id: string) => {
                 { t: "Refund requests", d: "Ensures 100% room parity." },
                 { t: "Guest safety gaps", d: "Verified perimeter and life safety." },
                 { t: "Brand dilution", d: "Maintains 5-star standards daily." }
-            ]
-        },
-        'cinema_operations_pack': {
-            pitfalls: [
-                "Projector lamp life and KDM decryption status go unmonitored.",
-                "Concession profit bleeds through unverified yield gaps.",
-                "Fire exit physical verification is skipped in busy intervals.",
-                "Projection sound acoustic balance not tested pre-show.",
-                "No institutional memory stays when a key Projectionist resigns.",
-                "Restroom hygiene cycles drift, leading to viral negative reviews.",
-                "Technical uptime fails because asset logs are documented on paper.",
-                "Box office revenue leakage from unverified 'voided' ticket bills."
-            ],
-            prevents: [
-                { t: "Projection failure", d: "Zero-fail technical checks." },
-                { t: "Revenue leakage", d: "Stops concession profit bleed." },
-                { t: "Safety disasters", d: "Daily physical exit verification." }
             ]
         },
         'healthcare_and_hospital_operations': {
