@@ -89,12 +89,16 @@ export const premiumPacks: PremiumPack[] = [
                 priceINR: 2999,
                 anchorPriceINR: 4999,
                 priceUSD: 29,
-                anchorPriceUSD: 49
+                anchorPriceUSD: 49,
+                competitorPriceUSD: 599
             }
         } else {
             // Default pricing for non-elite if not set
             processedPack.priceINR = processedPack.priceINR || 1999;
             processedPack.anchorPriceINR = processedPack.anchorPriceINR || 2999;
+            processedPack.priceUSD = processedPack.priceUSD || 19;
+            processedPack.anchorPriceUSD = processedPack.anchorPriceUSD || 29;
+            processedPack.competitorPriceUSD = processedPack.competitorPriceUSD || 299;
         }
 
         if (shortDescriptions[p.id]) {

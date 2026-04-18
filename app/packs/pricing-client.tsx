@@ -55,7 +55,7 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
              <Input type="email" placeholder="Enter institutional email..." value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full bg-black/40 border-white/10 h-14 text-sm rounded-xl italic text-white focus-visible:ring-primary/40" />
-            <button type="submit" className="w-full h-16 rounded-xl bg-[#F4A261] text-white font-black uppercase italic text-sm tracking-widest shadow-xl hover:scale-[1.02] active:scale-95 transition-all border-none flex items-center justify-center gap-3" disabled={loading}>
+            <button type="submit" className="w-full h-16 rounded-xl bg-[#22C55E] text-[#0B0F14] font-black uppercase italic text-sm tracking-widest shadow-xl hover:scale-[1.02] active:scale-95 transition-all border-none flex items-center justify-center gap-3" disabled={loading}>
                 {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
                 Download Sovereign Toolkit
             </button>
