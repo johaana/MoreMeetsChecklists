@@ -5,10 +5,10 @@ import type { PremiumPack } from '@/lib/premium-packs';
 import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { Input } from '@/components/ui/input';
-import { Search, ArrowRight, X, ChevronDown, Sparkles, LayoutGrid, Target, FileSpreadsheet } from 'lucide-react';
+import { Search, ArrowRight, X, ChevronDown, LayoutGrid, Target } from 'lucide-react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { IconComponent } from '@/components/icons';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
@@ -89,35 +89,6 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => {
         </Card>
     );
 };
-
-const BespokeCard = () => (
-    <Card className="flex flex-col h-full overflow-hidden rounded-[2rem] shadow-2xl border border-dashed border-primary/20 bg-primary/5 relative group p-8 md:p-12">
-        <CardHeader className="p-0 space-y-6">
-            <div className='flex justify-between items-start'>
-                <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center text-accent">
-                    <Sparkles className="h-8 w-8" />
-                </div>
-                <Badge variant="outline" className="uppercase tracking-widest text-[8px] font-black border-accent/30 text-accent px-4 py-1.5 rounded-none">Sovereign Build</Badge>
-            </div>
-            <div className="space-y-2">
-                <p className="text-[9px] font-black uppercase tracking-[0.4em] text-accent/60">/ CUSTOM ENGINEERING</p>
-                <CardTitle className="text-2xl md:text-3xl font-black font-headline italic uppercase tracking-tighter text-primary-text leading-[0.9]">
-                    Bespoke Operational Engines
-                </CardTitle>
-            </div>
-            <CardDescription className="text-sm md:text-base text-secondary-text leading-relaxed font-medium italic opacity-60">
-                Can't find your specific sector? We build custom institutional operating systems for specialized high-stakes industries.
-            </CardDescription>
-        </CardHeader>
-        <CardFooter className="p-0 mt-auto pt-10">
-            <button className="w-full h-16 rounded-xl bg-accent text-black font-black uppercase italic text-xs tracking-widest transition-all hover:brightness-110 shadow-2xl border-none">
-                <Link href="/bespoke" className="flex items-center justify-center gap-3">
-                    REQUEST CUSTOM SYSTEM <ArrowRight className="w-4 h-4" />
-                </Link>
-            </button>
-        </CardFooter>
-    </Card>
-);
 
 export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
     const searchParams = useSearchParams();
@@ -253,7 +224,6 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
                         ) : (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                                 {filteredPacks.map(pack => <PackCard key={pack.id} pack={pack} />)}
-                                {activeCategory === 'All' && searchTerm === '' && <BespokeCard />}
                             </div>
                         )}
                     </div>

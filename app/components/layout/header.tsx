@@ -77,7 +77,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
     const [isScrolled, setIsScrolled] = React.useState(false);
 
     // Visibility logic for Design Lab
-    const isDesignLab = pathname === '/design-lab';
+    const isDesignLab = pathname === '/design-lab' || pathname === '/';
     
     // Theme logic: prioritize forceTheme, then isDesignLab (dark), then isScrolled (dark)
     const shouldShowDark = forceTheme ? (forceTheme === 'dark') : (isDesignLab || isScrolled);
