@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -125,7 +124,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                         Systems <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
                     </button>
                     {isDropdownOpen && (
-                        <div className="absolute top-full right-0 w-screen max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-[90vw] max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
                             <div className="bg-white rounded-xl shadow-2xl border border-black/10 flex flex-col overflow-hidden">
                                     <ScrollArea className="max-h-[75vh] overflow-y-auto">
                                     <div className="p-10">
