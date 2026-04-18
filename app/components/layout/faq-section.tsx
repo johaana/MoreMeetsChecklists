@@ -3,7 +3,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const FaqSection = () => (
-    <section id="faq" className="w-full py-16 md:py-24">
+    <section id="faq" className="w-full py-16 md:py-24 bg-[#0B0F14]">
         <div className="container px-4 md:px-6">
             <div className="text-center max-w-3xl mx-auto mb-12">
                 <h2 className="text-3xl md:text-4xl font-black font-headline uppercase italic text-primary-text tracking-tighter">BEFORE YOU DEPLOY</h2>

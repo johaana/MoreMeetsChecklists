@@ -13,8 +13,6 @@ import {
     Clock,
     ShieldCheck,
     Lock,
-    Users,
-    AlertTriangle,
     Activity,
     FileSpreadsheet,
     CheckCircle2,
@@ -27,17 +25,12 @@ import {
     Popcorn,
     Zap,
     GraduationCap,
-    Smartphone,
-    ShieldAlert,
-    ChevronRight,
-    SearchCheck,
-    Scale
+    Smartphone
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { TestimonialsSection } from '@/components/layout/testimonials-section';
 import { FaqSection } from '@/components/layout/faq-section';
 
@@ -322,7 +315,7 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* HOW IT WORKS - EASE + CLARITY + POWER */}
+                {/* HOW IT WORKS - BEST VERSION */}
                 <Section className="bg-[#F7F8FA]">
                     <div className="max-w-[1200px] mx-auto space-y-16">
                         <div className="text-center space-y-2">
