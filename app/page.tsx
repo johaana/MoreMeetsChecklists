@@ -115,7 +115,7 @@ export default function Home() {
                                     ].map((item, i) => (
                                         <div className="flex items-center gap-3 group" key={i}>
                                             <div className="w-5 h-5 rounded-full bg-[#0F3D2E]/10 flex items-center justify-center shrink-0">
-                                                <Check className="w-3 h-3 text-[#0F3D2E]" />
+                                                <Check className="w-3 f-3 text-[#0F3D2E]" />
                                             </div>
                                             <span className="text-sm font-bold text-[#0B0F14]">{item}</span>
                                         </div>

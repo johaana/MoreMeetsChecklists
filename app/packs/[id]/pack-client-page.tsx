@@ -176,7 +176,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
             <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(to_right,#888_1px,transparent_1px),linear-gradient(to_bottom,#888_1px,transparent_1px)] bg-[size:40px_40px]" />
             <div className="max-w-6xl mx-auto space-y-16 relative z-10">
                 <div className="text-center space-y-4">
-                    <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.5em] font-black text-[10px] rounded-none px-6">Operational Architecture</SectionHeadline>
+                    <Badge variant="outline" className="text-accent border-accent/30 uppercase tracking-[0.5em] font-black text-[10px] rounded-none px-6">Operational Architecture</Badge>
                     <SectionHeadline>CORE MODULES</SectionHeadline>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
