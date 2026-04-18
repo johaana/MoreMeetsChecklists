@@ -83,7 +83,7 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* HERO SECTION - REPOSITIONED UP BY ~10% TOTAL */}
+                {/* HERO SECTION - HIGH HORIZON Verticality */}
                 <section className="w-full bg-[#F7F8FA] pt-8 pb-16 md:pt-16 md:pb-24 overflow-hidden min-h-[90svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
                         <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-16 items-center">
@@ -147,7 +147,7 @@ export default function DesignLabPage() {
                                 </div>
                             </div>
 
-                            {/* RIGHT SIDE: DASHBOARD PROOF - OPTICAL BALANCE OFFSET (Shifted Left lg:-ml-44) */}
+                            {/* RIGHT SIDE: DASHBOARD PROOF - HORIZONTALLY COMPRESSED lg:-ml-44 */}
                             <div className="relative lg:-ml-44 lg:pt-16">
                                 <div className="relative mx-auto w-fit scale-125 transition-all duration-1000">
                                     
@@ -243,7 +243,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* SOLUTION SECTION */}
+                {/* SOLUTION SECTION - CINEMA IMPLEMENTATION PROOF */}
                 <Section className="bg-[#F3F4F6]">
                     <div className="grid md:grid-cols-2 gap-16 items-center">
                         <div className="space-y-10">
@@ -297,7 +297,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* HOW IT WORKS */}
+                {/* HOW IT WORKS - GOOGLE SHEETS WORKFLOW */}
                 <Section className="bg-[#FFFFFF]">
                     <div className="max-w-[1200px] mx-auto space-y-16">
                         <div className="text-center space-y-2">
@@ -307,10 +307,10 @@ export default function DesignLabPage() {
                         
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                             {[
-                                { t: "Download system", d: "Get the master file instantly.", i: Download },
-                                { t: "Open in Sheets", d: "Or open in local Excel.", i: FileSpreadsheet },
-                                { t: "Share with team", d: "Define roles in 60 seconds.", i: Users },
-                                { t: "Track everything live", d: "Dashboard updates in real-time.", i: Activity }
+                                { t: "Download System", d: "Get the master file instantly.", i: Download },
+                                { t: "Upload to Sheets", d: "Upload to Drive and open in Sheets.", i: FileSpreadsheet },
+                                { t: "Lock & Configure", d: "Set locations, roles & lock formulas.", i: Lock },
+                                { t: "Go Live & Track", d: "Share link; team updates tasks daily.", i: Activity }
                             ].map((step, i) => (
                                 <div className="bg-[#F7F8FA] border border-[#E6E8EC] p-8 rounded-2xl space-y-6 hover:shadow-lg transition-all group" key={i}>
                                     <div className="w-12 h-12 rounded-xl bg-white border border-[#E6E8EC] flex items-center justify-center text-[#0B0F14] font-black group-hover:bg-[#0F3D2E] group-hover:text-white transition-all text-xl italic">
