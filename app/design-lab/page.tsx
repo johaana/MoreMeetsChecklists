@@ -92,10 +92,10 @@ export default function DesignLabPage() {
                             {/* LEFT SIDE: NARRATIVE */}
                             <div className="flex flex-col items-start space-y-8 relative z-20">
                                 <div className="space-y-1 max-w-[900px]">
-                                    <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-bold text-[#0B0F14] leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
+                                    <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-black text-[#0B0F14] leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
                                         Stop chasing your team.
                                     </h1>
-                                    <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-bold text-[#0F3D2E] leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
+                                    <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-black text-[#0F3D2E] leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
                                         See daily work getting done.
                                     </h1>
                                     <p className="text-[20px] md:text-[24px] text-[#5B6670] italic font-medium leading-tight pt-4">
@@ -157,7 +157,7 @@ export default function DesignLabPage() {
                                     Missed tasks
                                 </AnimatedAnnotation>
 
-                                <AnimatedAnnotation className="top-[12%] right-12" color="green" delay="1s">
+                                <AnimatedAnnotation className="top-[12%] -right-2" color="green" delay="1s">
                                     Completed tasks
                                 </AnimatedAnnotation>
 
@@ -432,3 +432,4 @@ export default function DesignLabPage() {
         </div>
     );
 }
+
