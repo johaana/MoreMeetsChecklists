@@ -156,9 +156,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <p className="text-[16px] font-bold leading-none text-[#0B0F14]">Without depending on memory</p>
                             </div>
 
-                            <div className="flex items-center gap-6 w-full text-[9px] font-black text-zinc-500 uppercase tracking-[0.25em]">
-                                <span className="flex items-center gap-2"><LayoutGrid className="w-3.5 h-3.5 text-zinc-500" /> {totalChecklists} MODULES</span>
-                                <span className="flex items-center gap-2"><Target className="w-3.5 h-3.5 text-zinc-500" /> {totalTasks}+ CHECKPOINTS</span>
+                            <div className="flex items-center gap-6 w-full text-[9px] font-black uppercase tracking-[0.25em]">
+                                <span className="flex items-center gap-2 text-zinc-500"><LayoutGrid className="w-3.5 h-3.5" /> {totalChecklists} MODULES</span>
+                                <span className="flex items-center gap-2 text-zinc-500"><Target className="w-3.5 h-3.5" /> {totalTasks}+ CHECKPOINTS</span>
                             </div>
 
                             <div className="w-full pt-2">
@@ -176,7 +176,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
                         </div>
 
-                        {/* RIGHT: TECHNICAL PROOF FRAME — WIDESCREEN */}
+                        {/* RIGHT: TECHNICAL PROOF FRAME */}
                         <div className="relative z-10 w-full">
                             <div className="relative mx-auto group max-w-xl">
                                 <div className="bg-[#111] h-9 w-full rounded-t-[14px] flex items-center px-4 gap-2 border border-white/10">
@@ -228,12 +228,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <span className="text-[#5B6670] font-bold italic text-lg leading-tight">{p}</span>
                             </div>
                         ))}
-                    </div>
-                    
-                    <div className="pt-8">
-                        <p className="text-[24px] font-black text-[#0B0F14] uppercase italic tracking-tighter">
-                            Small misses create big failures.
-                        </p>
                     </div>
                 </div>
             </Section>
@@ -369,3 +363,4 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         </div>
     );
 }
+

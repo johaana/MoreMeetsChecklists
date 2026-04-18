@@ -24,6 +24,11 @@ import { Input } from '../components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
 
+/**
+ * Sovereign Pricing Engine v13.5 - BRAND SYNCED
+ * Hierarchy: Price Anchor -> 2-Column Value Stack -> Centered Trust Resolve
+ * Colors: Hardened Executive Green (#2EB86B)
+ */
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     const { toast } = useToast();
     const [email, setEmail] = React.useState('');
@@ -54,7 +59,7 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
              <Input type="email" placeholder="Enter institutional email..." value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full bg-black/40 border-white/10 h-14 text-sm rounded-xl italic text-white focus-visible:ring-primary/40" />
-            <button type="submit" className="w-full h-16 rounded-xl bg-[#22C55E] text-[#0B0F14] font-black uppercase italic text-sm tracking-widest shadow-xl hover:scale-[1.02] active:scale-95 transition-all border-none flex items-center justify-center gap-3" disabled={loading}>
+            <button type="submit" className="w-full h-16 rounded-xl bg-[#2EB86B] text-[#0B0F14] font-black uppercase italic text-sm tracking-widest shadow-xl hover:scale-[1.02] active:scale-95 transition-all border-none flex items-center justify-center gap-3" disabled={loading}>
                 {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
                 Download Sovereign Toolkit
             </button>
@@ -83,6 +88,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         { t: "No subscription", i: Ban }
     ];
 
+    const BRAND_GREEN = "#2EB86B";
+
     if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
         return (
              <section className="w-full py-24 md:py-32 bg-[#0B0F14]" id="pricing">
@@ -104,7 +111,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <div className="mt-10 grid grid-cols-2 gap-4">
                                     {TRUST_BADGES.slice(1, 3).map(item => (
                                         <div key={item.t} className="flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                                            <item.i className="w-3.5 h-3.5 text-primary/40" />
+                                            <item.i className="w-3.5 h-3.5 opacity-40" style={{ color: BRAND_GREEN }} />
                                             <span className="text-[8px] font-black text-white/30 uppercase tracking-widest italic">{item.t}</span>
                                         </div>
                                     ))}
@@ -130,10 +137,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <div className="flex flex-col items-center space-y-4">
                          <Tabs value={region} onValueChange={(v) => setRegion(v as any)} className="w-fit mb-4">
                             <TabsList className="bg-white/5 border border-white/10 h-9 p-0.5 rounded-full px-1 w-full max-w-[200px] grid grid-cols-2">
-                                <TabsTrigger value="INDIA" className="text-[8px] font-black uppercase h-8 rounded-full tracking-widest data-[state=active]:bg-[#22C55E] data-[state=active]:text-[#0B0F14] transition-all">
+                                <TabsTrigger value="INDIA" className="text-[8px] font-black uppercase h-8 rounded-full tracking-widest data-[state=active]:bg-[#2EB86B] data-[state=active]:text-[#0B0F14] transition-all">
                                     INDIA
                                 </TabsTrigger>
-                                <TabsTrigger value="GLOBAL" className="text-[8px] font-black uppercase h-8 rounded-full tracking-widest data-[state=active]:bg-[#22C55E] data-[state=active]:text-[#0B0F14] transition-all">
+                                <TabsTrigger value="GLOBAL" className="text-[8px] font-black uppercase h-8 rounded-full tracking-widest data-[state=active]:bg-[#2EB86B] data-[state=active]:text-[#0B0F14] transition-all">
                                     GLOBAL
                                 </TabsTrigger>
                             </TabsList>
@@ -153,7 +160,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <p className="text-[14px] font-bold text-[#8A94A6] uppercase tracking-widest italic">
                             One-time payment • Own forever • No subscription
                         </p>
-                        <p className="text-[13px] font-black text-[#22C55E] uppercase tracking-[0.2em] animate-pulse">
+                        <p className="text-[13px] font-black uppercase tracking-[0.2em] animate-pulse" style={{ color: BRAND_GREEN }}>
                             LIMITED TIME OFFER
                         </p>
                     </div>
@@ -163,8 +170,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 mb-20 bg-white/[0.02] border border-white/5 p-12 rounded-[2.5rem] backdrop-blur-sm shadow-inner">
                     {VALUE_ITEMS.map((item, i) => (
                         <div key={i} className="flex items-start gap-4 group">
-                            <div className="w-5 h-5 rounded-full bg-[#22C55E]/10 flex items-center justify-center shrink-0 mt-0.5 transition-colors group-hover:bg-[#22C55E]/20">
-                                <item.i className="w-3.5 h-3.5 text-[#22C55E]" />
+                            <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 transition-colors" style={{ backgroundColor: `${BRAND_GREEN}1A` }}>
+                                <item.i className="w-3.5 h-3.5" style={{ color: BRAND_GREEN }} />
                             </div>
                             <span className="text-[15px] font-bold italic text-[#C9D1D9] leading-tight group-hover:text-white transition-colors">
                                 {item.t}
@@ -180,11 +187,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <div className="w-full flex justify-center hover:scale-[1.02] transition-transform duration-500">
                                 <RazorpayButton 
                                     paymentId={pack.paymentId} 
-                                    className="w-full flex justify-center min-h-[60px] shadow-[0_30px_60px_-15px_rgba(34,197,94,0.3)]" 
+                                    className="w-full flex justify-center min-h-[60px] shadow-[0_30px_60px_-15px_rgba(46,184,107,0.3)]" 
                                 />
                             </div>
                         ) : (
-                            <button className="w-full h-[56px] bg-[#22C55E] text-[#0B0F14] font-black text-sm rounded-[12px] border-none uppercase italic tracking-[0.15em] shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:scale-[1.02] transition-all active:scale-95 flex items-center justify-center gap-3 group">
+                            <button className="w-full h-[56px] text-[#0B0F14] font-black text-sm rounded-[12px] border-none uppercase italic tracking-[0.15em] shadow-[0_20px_50px_-10px_rgba(46,184,107,0.4)] hover:scale-[1.02] transition-all active:scale-95 flex items-center justify-center gap-3 group" style={{ backgroundColor: BRAND_GREEN }}>
                                 <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center gap-3">
                                     Start using your system <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                                 </Link>
@@ -198,7 +205,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 pt-8 border-t border-white/5 w-full">
                         {TRUST_BADGES.map((badge, i) => (
                             <div key={i} className="flex items-center gap-2 text-[10px] font-black text-[#5B6670] uppercase tracking-widest italic">
-                                <badge.i className="w-4 h-4 text-[#22C55E]/40" />
+                                <badge.i className="w-4 h-4 opacity-40" style={{ color: BRAND_GREEN }} />
                                 {badge.t}
                             </div>
                         ))}
@@ -215,3 +222,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
