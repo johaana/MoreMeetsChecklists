@@ -42,14 +42,14 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
 const getIndustryContent = (id: string) => {
     const defaults = {
         pitfalls: [
-            "Critical tasks get skipped during busy shifts", 
-            "Work depends on the memory of key people", 
-            "Standards drift as staff turnover increases",
-            "Managers waste hours manually chasing staff",
-            "No real-time visibility into completion status",
-            "Staff 'guess' procedures when managers are away",
-            "Institutional memory leaves when staff resign",
-            "Audit non-conformance detected too late"
+            "Critical tasks get skipped during busy shifts.",
+            "Work depends on the memory of key people.",
+            "Standards drift as staff turnover increases.",
+            "Managers waste hours manually chasing staff.",
+            "No real-time visibility into completion status.",
+            "Staff 'guess' procedures when managers are away.",
+            "Institutional memory leaves when staff resign.",
+            "Audit non-conformance detected too late."
         ],
         prevents: [
             { t: "Safety failures", d: "Prevents fatal gaps in protocols." },
@@ -162,7 +162,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <div className="flex flex-col sm:flex-row items-center gap-8">
                                     <button className="h-[60px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group">
                                         <a href="#pricing" className="flex items-center gap-3">
-                                            Deploy system → ₹{pack.priceINR}
+                                            Deploy system → ₹999
                                         </a>
                                     </button>
                                     <div className="flex flex-col text-left">
@@ -173,10 +173,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
                         </div>
 
-                        {/* RIGHT: TECHNICAL PROOF FRAME - SHORTER & WIDER */}
+                        {/* RIGHT: TECHNICAL PROOF FRAME */}
                         <div className="relative z-10 w-full">
                             <div className="relative mx-auto group max-w-xl">
-                                {/* Browser Frame Header */}
                                 <div className="bg-[#111] h-10 w-full rounded-t-[16px] flex items-center px-5 gap-3 border border-white/5">
                                     <div className="flex gap-1.5">
                                         <div className="w-2 h-2 rounded-full bg-red-500/20" />
@@ -367,3 +366,4 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         </div>
     );
 }
+
