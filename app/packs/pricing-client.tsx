@@ -23,7 +23,6 @@ import { addContact } from './actions';
 import { Input } from '../components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
-import { Button } from '../components/ui/button';
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     const { toast } = useToast();
@@ -142,7 +141,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                         <div className="flex items-center gap-8 md:gap-12">
                             <span className="text-[28px] font-medium text-[#5B6670] line-through italic tracking-tight">
-                                {region === 'INDIA' ? '₹4,999' : '$49'}
+                                {region === 'INDIA' ? `₹${pack.anchorPriceINR}` : `$${pack.anchorPriceUSD}`}
                             </span>
                             <h2 className="text-[64px] md:text-[84px] font-bold text-white italic tracking-tighter leading-none">
                                 {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
@@ -206,8 +205,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     </div>
 
                     <div className="pt-4 text-center">
-                        <p className="text-[11px] font-bold text-[#5B6670] italic">
-                            Works in minutes. If not useful, don’t use it.
+                        <p className="text-[11px] font-bold text-[#5B6670] uppercase tracking-widest italic">
+                            Immediate Deployment. Institutional Grade.
                         </p>
                     </div>
                 </div>

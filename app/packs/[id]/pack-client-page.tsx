@@ -179,7 +179,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         {/* RIGHT: TECHNICAL PROOF FRAME — WIDESCREEN */}
                         <div className="relative z-10 w-full">
                             <div className="relative mx-auto group max-w-xl">
-                                <div className="bg-[#111] h-9 w-full rounded-t-[14px] flex items-center px-4 gap-2 border border-white/5">
+                                <div className="bg-[#111] h-9 w-full rounded-t-[14px] flex items-center px-4 gap-2 border border-white/10">
                                     <div className="flex gap-1">
                                         <div className="w-1.5 h-1.5 rounded-full bg-red-500/30" />
                                         <div className="w-1.5 h-1.5 rounded-full bg-amber-500/30" />
