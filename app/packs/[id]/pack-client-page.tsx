@@ -128,42 +128,42 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             
-            {/* HERO SECTION - ONE GLANCE ARCHITECTURE */}
-            <section className="relative w-full bg-[#F7F8FA] pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden min-h-[85vh] flex flex-col justify-center border-b border-zinc-200">
+            {/* HERO SECTION — VERTICALLY COMPACT — ONE GLANCE MANDATE */}
+            <section className="relative w-full bg-[#F7F8FA] pt-12 pb-12 md:pt-16 md:pb-16 overflow-hidden min-h-[80vh] flex flex-col justify-center border-b border-zinc-200">
                 <div className="container mx-auto max-w-[1200px] px-6">
-                    <div className="grid lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-20 items-center">
+                    <div className="grid lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-16 items-center">
                         
                         {/* LEFT: NARRATIVE AUTHORITY */}
-                        <div className="flex flex-col items-start space-y-8 relative z-20">
-                            <div className="space-y-4">
-                                <span className="text-[12px] font-black uppercase tracking-[0.5em] text-[#5B6670] mb-2 block">/ {pack.category.toUpperCase()}</span>
-                                <h1 className="text-[40px] md:text-[60px] lg:text-[72px] font-black text-[#0B0F14] leading-[0.85] tracking-tighter uppercase italic">
+                        <div className="flex flex-col items-start space-y-6 relative z-20">
+                            <div className="space-y-3">
+                                <span className="text-[12px] font-black uppercase tracking-[0.5em] text-[#5B6670] mb-1 block">/ {pack.category.toUpperCase()}</span>
+                                <h1 className="text-[40px] md:text-[56px] lg:text-[68px] font-black text-[#0B0F14] leading-[0.85] tracking-tighter uppercase italic">
                                     {pack.title.replace('Operating System', '')} <br/>
                                     <span className="text-[#0F3D2E]">Operating System</span>
                                 </h1>
-                                <p className="text-[18px] md:text-[22px] text-[#5B6670] italic font-medium leading-tight pt-2">
+                                <p className="text-[18px] md:text-[20px] text-[#5B6670] italic font-medium leading-tight pt-1">
                                     Run {pack.title.toLowerCase().replace(' operating system', '')} daily without chasing staff.
                                 </p>
                             </div>
 
-                            <div className="border-l-[3px] border-[#0F3D2E] pl-[20px] space-y-2 py-1">
-                                <p className="text-[17px] font-bold leading-none text-[#0B0F14]">Even when you’re not there.</p>
-                                <p className="text-[17px] font-bold leading-none text-[#0B0F14]">Without follow-ups</p>
-                                <p className="text-[17px] font-bold leading-none text-[#0B0F14]">Without confusion</p>
-                                <p className="text-[17px] font-bold leading-none text-[#0B0F14]">Without depending on memory</p>
+                            <div className="border-l-[3px] border-[#0F3D2E] pl-[20px] space-y-1.5 py-0.5">
+                                <p className="text-[16px] font-bold leading-none text-[#0B0F14]">Even when you’re not there.</p>
+                                <p className="text-[16px] font-bold leading-none text-[#0B0F14]">Without follow-ups</p>
+                                <p className="text-[16px] font-bold leading-none text-[#0B0F14]">Without confusion</p>
+                                <p className="text-[16px] font-bold leading-none text-[#0B0F14]">Without depending on memory</p>
                             </div>
 
-                            <div className="flex items-center gap-8 w-full text-[9px] font-black text-zinc-500 uppercase tracking-[0.25em]">
-                                <span className="flex items-center gap-2.5"><LayoutGrid className="w-3.5 h-3.5 text-zinc-400" /> {totalChecklists} MODULES</span>
-                                <span className="flex items-center gap-2.5"><Target className="w-3.5 h-3.5 text-zinc-400" /> {totalTasks}+ CHECKPOINTS</span>
+                            <div className="flex items-center gap-6 w-full text-[9px] font-black text-zinc-500 uppercase tracking-[0.25em]">
+                                <span className="flex items-center gap-2"><LayoutGrid className="w-3.5 h-3.5 text-zinc-400" /> {totalChecklists} MODULES</span>
+                                <span className="flex items-center gap-2"><Target className="w-3.5 h-3.5 text-zinc-400" /> {totalTasks}+ CHECKPOINTS</span>
                             </div>
 
-                            <div className="space-y-6 w-full pt-4">
-                                <div className="flex flex-col sm:flex-row items-center gap-8">
-                                    <button className="h-[60px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group">
-                                        <a href="#pricing" className="flex items-center gap-3">
+                            <div className="w-full pt-2">
+                                <div className="flex flex-col sm:flex-row items-center gap-6">
+                                    <button className="h-[56px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-base shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group">
+                                        <Link href="#pricing" className="flex items-center gap-3">
                                             Deploy system → ₹999
-                                        </a>
+                                        </Link>
                                     </button>
                                     <div className="flex flex-col text-left">
                                         <p className="text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">ONE-TIME PAYMENT</p>
@@ -173,32 +173,32 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
                         </div>
 
-                        {/* RIGHT: TECHNICAL PROOF FRAME */}
+                        {/* RIGHT: TECHNICAL PROOF FRAME — SHORTER — 16/9 ASPECT */}
                         <div className="relative z-10 w-full">
                             <div className="relative mx-auto group max-w-xl">
-                                <div className="bg-[#111] h-10 w-full rounded-t-[16px] flex items-center px-5 gap-3 border border-white/5">
-                                    <div className="flex gap-1.5">
-                                        <div className="w-2 h-2 rounded-full bg-red-500/20" />
-                                        <div className="w-2 h-2 rounded-full bg-amber-500/20" />
-                                        <div className="w-2 h-2 rounded-full bg-green-500/20" />
+                                <div className="bg-[#111] h-9 w-full rounded-t-[14px] flex items-center px-4 gap-2 border border-white/5">
+                                    <div className="flex gap-1">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-red-500/30" />
+                                        <div className="w-1.5 h-1.5 rounded-full bg-amber-500/30" />
+                                        <div className="w-1.5 h-1.5 rounded-full bg-green-500/30" />
                                     </div>
                                     <div className="flex-1 flex justify-center">
-                                        <div className="bg-black/40 border border-white/5 rounded px-6 py-0.5 text-[7px] font-black text-white/20 uppercase tracking-[0.4em] italic shadow-inner">
+                                        <div className="bg-black/40 border border-white/5 rounded px-4 py-0.5 text-[7px] font-black text-white/20 uppercase tracking-[0.4em] italic shadow-inner">
                                             {pack.id.toUpperCase()}_MASTER_ENGINE.xlsx
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="rounded-b-[16px] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.12)] bg-white border border-[#E6E8EC] border-t-0 relative">
+                                <div className="rounded-b-[14px] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] bg-white border border-[#E6E8EC] border-t-0 relative">
                                     <img 
                                         src={heroImageUrl} 
                                         alt={pack.title} 
-                                        className="w-full h-auto object-cover aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
+                                        className="w-full h-auto object-cover aspect-[16/9] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
                                 </div>
                                 
-                                <div className="mt-4 text-center">
+                                <div className="mt-3 text-center">
                                     <p className="text-[7px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
                                         {pack.category.replace('&', '&')} technical implementation proof
                                     </p>
@@ -366,4 +366,3 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         </div>
     );
 }
-

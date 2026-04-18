@@ -7,21 +7,14 @@ import Link from 'next/link';
 import { 
     Download, 
     Loader2, 
-    Globe, 
-    Landmark, 
     ShieldCheck,
     Lock,
     FileSpreadsheet,
     ArrowRight,
-    Check,
     GraduationCap,
     LayoutGrid,
     ClipboardCheck,
     Activity,
-    Target,
-    Zap,
-    CircleCheck,
-    CreditCard,
     FileDown,
     Ban
 } from 'lucide-react';
@@ -47,7 +40,7 @@ function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
             setSubmitted(true);
             toast({ title: "Protocol Accepted", description: "The Sovereign Toolkit has been sent to your inbox." });
         } else {
-            toast({ variant: "destructive", title: "Transmission Failed", description: result.message || "Could not process request." });
+            toast({ variant: "destructive", title: "Transmission Failed", description: result.message || "Could not process your request." });
         }
         setLoading(false);
     };
@@ -137,7 +130,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     </span>
                     
                     <div className="flex flex-col items-center space-y-4">
-                         {/* Region Switcher (Subtle) */}
                          <Tabs value={region} onValueChange={(v) => setRegion(v as any)} className="w-fit mb-4">
                             <TabsList className="bg-white/5 border border-white/10 h-9 p-0.5 rounded-full px-1 w-full max-w-[200px] grid grid-cols-2">
                                 <TabsTrigger value="INDIA" className="text-[8px] font-black uppercase h-8 rounded-full tracking-widest data-[state=active]:bg-[#22C55E] data-[state=active]:text-[#0B0F14] transition-all">
@@ -202,7 +194,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </p>
                     </div>
                     
-                    {/* Trust Badges Row */}
                     <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 pt-8 border-t border-white/5 w-full">
                         {TRUST_BADGES.map((badge, i) => (
                             <div key={i} className="flex items-center gap-2 text-[10px] font-black text-[#5B6670] uppercase tracking-widest italic">
@@ -223,4 +214,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
