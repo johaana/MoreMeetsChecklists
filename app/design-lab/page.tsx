@@ -306,10 +306,10 @@ export default function DesignLabPage() {
                         
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                             {[
-                                { t: "1. Download your system", d: "Get your industry-specific file with pre-built SOPs — ready to use.", i: Download },
-                                { t: "2. Open in Google Sheets", d: "Upload once. Access from phone or desktop.", i: FileSpreadsheet },
-                                { t: "3. Share with your team", d: "Assign roles. Lock structure so nothing breaks.", i: Lock },
-                                { t: "4. See everything live", d: "Track tasks as they get done. Know what’s missed — without asking.", i: Activity }
+                                { t: "Download your system", d: "Get your industry-specific file with pre-built SOPs — ready to use.", i: Download },
+                                { t: "Open in Google Sheets", d: "Upload once. Access from phone or desktop.", i: FileSpreadsheet },
+                                { t: "Share with your team", d: "Assign roles. Lock structure so nothing breaks.", i: Lock },
+                                { t: "See everything live", d: "Track tasks as they get done. Know what’s missed — without asking.", i: Activity }
                             ].map((step, i) => (
                                 <div className="bg-[#F7F8FA] border border-[#E6E8EC] p-8 rounded-2xl space-y-6 hover:shadow-lg transition-all group" key={i}>
                                     <div className="w-12 h-12 rounded-xl bg-white border border-[#E6E8EC] flex items-center justify-center text-[#0B0F14] font-black group-hover:bg-[#0F3D2E] group-hover:text-white transition-all text-xl italic">
