@@ -128,86 +128,80 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             
-            {/* HERO SECTION - CLINICAL BRIEFING */}
-            <section className="relative w-full bg-[#F7F8FA] pt-12 pb-24 md:pt-20 md:pb-32 overflow-hidden min-h-[90svh] flex flex-col justify-center">
+            {/* HERO SECTION - ONE GLANCE ARCHITECTURE */}
+            <section className="relative w-full bg-[#F7F8FA] pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden min-h-[85vh] flex flex-col justify-center border-b border-zinc-200">
                 <div className="container mx-auto max-w-[1200px] px-6">
-                    <div className="grid lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-20 items-center">
+                    <div className="grid lg:grid-cols-[1fr,550px] gap-12 lg:gap-16 items-center">
                         
                         {/* LEFT: NARRATIVE AUTHORITY */}
-                        <div className="flex flex-col items-start space-y-10 relative z-20">
+                        <div className="flex flex-col items-start space-y-8 relative z-20">
                             <div className="space-y-4">
                                 <span className="text-[12px] font-black uppercase tracking-[0.5em] text-[#5B6670] mb-2 block">/ {pack.category.toUpperCase()}</span>
-                                <h1 className="text-[40px] md:text-[64px] font-black text-[#0B0F14] leading-[0.9] tracking-tighter uppercase italic">
+                                <h1 className="text-[40px] md:text-[60px] lg:text-[72px] font-black text-[#0B0F14] leading-[0.85] tracking-tighter uppercase italic">
                                     {pack.title.replace('Operating System', '')} <br/>
                                     <span className="text-[#0F3D2E]">Operating System</span>
                                 </h1>
-                                <p className="text-[20px] md:text-[24px] text-[#5B6670] italic font-medium leading-tight pt-2">
+                                <p className="text-[18px] md:text-[22px] text-[#5B6670] italic font-medium leading-tight pt-2">
                                     Run {pack.title.toLowerCase().replace(' operating system', '')} daily without chasing staff.
                                 </p>
                             </div>
 
-                            <div className="border-l-[3px] border-[#0F3D2E] pl-[20px] space-y-3 py-1">
-                                <p className="text-[19px] font-bold leading-none text-[#0B0F14]">Even when you’re not there.</p>
-                                <p className="text-[19px] font-bold leading-none text-[#0B0F14]">Without follow-ups</p>
-                                <p className="text-[19px] font-bold leading-none text-[#0B0F14]">Without confusion</p>
-                                <p className="text-[19px] font-bold leading-none text-[#0B0F14]">Without depending on memory</p>
+                            <div className="border-l-[3px] border-[#0F3D2E] pl-[20px] space-y-2 py-1">
+                                <p className="text-[17px] font-bold leading-none text-[#0B0F14]">Even when you’re not there.</p>
+                                <p className="text-[17px] font-bold leading-none text-[#0B0F14]">Without follow-ups</p>
+                                <p className="text-[17px] font-bold leading-none text-[#0B0F14]">Without confusion</p>
+                                <p className="text-[17px] font-bold leading-none text-[#0B0F14]">Without depending on memory</p>
                             </div>
 
-                            <div className="grid grid-cols-2 gap-x-8 gap-y-2 w-full text-[9px] font-black text-[#5B6670] uppercase tracking-[0.25em] opacity-50">
-                                <span className="flex items-center gap-2.5"><LayoutGrid className="w-3.5 h-3.5 text-[#0F3D2E]" /> {totalChecklists} MODULES</span>
-                                <span className="flex items-center gap-2.5"><Target className="w-3.5 h-3.5 text-[#0F3D2E]" /> {totalTasks}+ CHECKPOINTS</span>
+                            <div className="flex items-center gap-8 w-full text-[9px] font-black text-[#5B6670] uppercase tracking-[0.25em] opacity-40">
+                                <span className="flex items-center gap-2.5"><LayoutGrid className="w-3.5 h-3.5" /> {totalChecklists} MODULES</span>
+                                <span className="flex items-center gap-2.5"><Target className="w-3.5 h-3.5" /> {totalTasks}+ CHECKPOINTS</span>
                             </div>
 
                             <div className="space-y-6 w-full pt-4">
                                 <div className="flex flex-col sm:flex-row items-center gap-8">
-                                    <button className="h-[64px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-lg shadow-[0_15px_35px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group">
+                                    <button className="h-[60px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group">
                                         <a href="#pricing" className="flex items-center gap-3">
                                             Deploy system → ₹{pack.priceINR}
                                         </a>
                                     </button>
-                                    <div className="flex flex-col">
-                                        <p className="text-[10px] font-black text-[#5B6670] uppercase tracking-widest leading-none">One-time payment</p>
-                                        <p className="text-[10px] font-black text-[#5B6670] uppercase tracking-widest leading-none mt-1">Own the engine forever</p>
+                                    <div className="flex flex-col text-left">
+                                        <p className="text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">ONE-TIME PAYMENT</p>
+                                        <p className="text-[9px] font-black text-[#5B6670] uppercase tracking-widest leading-none mt-1">OWN THE ENGINE FOREVER</p>
                                     </div>
                                 </div>
-
-                                <p className="text-[13px] text-[#5B6670] font-bold uppercase tracking-[0.1em] border-t border-[#E6E8EC] pt-6 leading-relaxed max-w-sm">
-                                    Built on Excel • Runs on Google Sheets <br/>
-                                    No software required • Universal access
-                                </p>
                             </div>
                         </div>
 
-                        {/* RIGHT: TECHNICAL PROOF FRAME */}
-                        <div className="relative z-10 w-full lg:pt-8">
-                            <div className="relative mx-auto group">
-                                {/* Browser Frame Bezel */}
-                                <div className="bg-[#111] h-10 w-full rounded-t-[20px] flex items-center px-5 gap-3 border border-white/5">
+                        {/* RIGHT: TECHNICAL PROOF FRAME - SHORTER & WIDER */}
+                        <div className="relative z-10 w-full">
+                            <div className="relative mx-auto group max-w-xl">
+                                {/* Browser Frame Header */}
+                                <div className="bg-[#111] h-10 w-full rounded-t-[16px] flex items-center px-5 gap-3 border border-white/5">
                                     <div className="flex gap-1.5">
-                                        <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
-                                        <div className="w-2.5 h-2.5 rounded-full bg-amber-500/20" />
-                                        <div className="w-2.5 h-2.5 rounded-full bg-green-500/20" />
+                                        <div className="w-2 h-2 rounded-full bg-red-500/20" />
+                                        <div className="w-2 h-2 rounded-full bg-amber-500/20" />
+                                        <div className="w-2 h-2 rounded-full bg-green-500/20" />
                                     </div>
                                     <div className="flex-1 flex justify-center">
-                                        <div className="bg-black/40 border border-white/5 rounded px-8 py-0.5 text-[8px] font-black text-white/20 uppercase tracking-[0.4em] italic shadow-inner">
+                                        <div className="bg-black/40 border border-white/5 rounded px-6 py-0.5 text-[7px] font-black text-white/20 uppercase tracking-[0.4em] italic shadow-inner">
                                             {pack.id.toUpperCase()}_MASTER_ENGINE.xlsx
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="rounded-b-[20px] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.18)] bg-white border border-[#E6E8EC] border-t-0 relative">
+                                <div className="rounded-b-[16px] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.12)] bg-white border border-[#E6E8EC] border-t-0 relative">
                                     <img 
                                         src={heroImageUrl} 
                                         alt={pack.title} 
-                                        className="w-full h-auto object-cover aspect-[4/3] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
+                                        className="w-full h-auto object-cover aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
                                     />
-                                    {/* Glass Overlay for Depth */}
                                     <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
                                 </div>
                                 
-                                <div className="mt-8 text-center">
-                                    <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.5em] italic opacity-60">
-                                        {pack.category} technical implementation proof
+                                <div className="mt-4 text-center">
+                                    <p className="text-[7px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
+                                        {pack.category.replace('&', '&')} technical implementation proof
                                     </p>
                                 </div>
                             </div>
@@ -373,4 +367,3 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         </div>
     );
 }
-

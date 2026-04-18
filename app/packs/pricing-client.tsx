@@ -185,7 +185,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     ) : (
                                         <button className="w-full h-[72px] bg-[#F4A261] text-white font-black text-xl rounded-2xl border-none uppercase italic tracking-widest shadow-[0_20px_50px_-10px_rgba(244,162,97,0.4)] hover:scale-[1.02] transition-all active:scale-95 flex items-center justify-center gap-4">
                                             <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center gap-4">
-                                                DEPLOY SYSTEM: ${pack.priceUSD} <ArrowRight className="w-7 h-7" />
+                                                Buy Now: ${pack.priceUSD} <ArrowRight className="w-7 h-7" />
                                             </Link>
                                         </button>
                                     )}
@@ -213,4 +213,3 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
-
