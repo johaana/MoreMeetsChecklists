@@ -349,9 +349,6 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* TESTIMONIALS */}
-                <TestimonialsSection />
-
                 {/* SOVEREIGN VS SAAS - COMPARISON SECTION */}
                 <Section className="bg-white border-y border-[#E6E8EC]">
                     <div className="max-w-4xl mx-auto space-y-16">
@@ -387,6 +384,9 @@ export default function Home() {
                         </div>
                     </div>
                 </Section>
+
+                {/* TESTIMONIALS */}
+                <TestimonialsSection />
 
                 {/* FAQ - BEFORE YOU DEPLOY */}
                 <FaqSection />
