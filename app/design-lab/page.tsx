@@ -83,8 +83,8 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* HERO SECTION - REPOSITIONED UP BY ~3% */}
-                <section className="w-full bg-[#F7F8FA] pt-12 pb-16 md:pt-24 md:pb-24 overflow-hidden min-h-[90svh] flex flex-col justify-center">
+                {/* HERO SECTION - REPOSITIONED UP BY ~10% TOTAL */}
+                <section className="w-full bg-[#F7F8FA] pt-8 pb-16 md:pt-16 md:pb-24 overflow-hidden min-h-[90svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
                         <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-16 items-center">
                             
@@ -92,10 +92,10 @@ export default function DesignLabPage() {
                             <div className="flex flex-col items-start space-y-8 relative z-20">
                                 <div className="space-y-1">
                                     <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-black text-[#0B0F14] leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
-                                        Stop chasing your team.
+                                        STOP CHASING YOUR TEAM.
                                     </h1>
                                     <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-black text-[#0F3D2E] leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
-                                        See daily work getting done.
+                                        SEE DAILY WORK GETTING DONE.
                                     </h1>
                                     <p className="text-[20px] md:text-[24px] text-[#5B6670] italic font-medium leading-tight pt-4">
                                         Even when you’re not there.
@@ -108,7 +108,7 @@ export default function DesignLabPage() {
                                     <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">Without depending on memory</p>
                                 </div>
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4 w-full">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 w-full">
                                     {[
                                         "Pre-built, editable SOPs",
                                         "Daily task tracking",
@@ -147,8 +147,8 @@ export default function DesignLabPage() {
                                 </div>
                             </div>
 
-                            {/* RIGHT SIDE: DASHBOARD PROOF - OPTICAL BALANCE OFFSET */}
-                            <div className="relative lg:-ml-24 lg:pt-16">
+                            {/* RIGHT SIDE: DASHBOARD PROOF - OPTICAL BALANCE OFFSET (Shifted Left lg:-ml-44) */}
+                            <div className="relative lg:-ml-44 lg:pt-16">
                                 <div className="relative mx-auto w-fit scale-125 transition-all duration-1000">
                                     
                                     <AnimatedAnnotation className="top-[32%] -left-2" color="red" delay="0.5s">
