@@ -83,8 +83,8 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* HERO SECTION - SHIFTED 3% DOWN VIA PT-12 */}
-                <section className="w-full bg-[#F7F8FA] pt-12 pb-16 md:pt-20 md:pb-20 overflow-hidden min-h-[90svh] flex flex-col justify-center">
+                {/* HERO SECTION - REPOSITIONED 3% DOWN */}
+                <section className="w-full bg-[#F7F8FA] pt-16 pb-16 md:pt-32 md:pb-24 overflow-hidden min-h-[90svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
                         <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-16 items-center">
                             
@@ -147,19 +147,19 @@ export default function DesignLabPage() {
                                 </div>
                             </div>
 
-                            {/* RIGHT SIDE: DASHBOARD PROOF - FIXED ANCHORING WITH W-FIT */}
-                            <div className="relative lg:-ml-24">
+                            {/* RIGHT SIDE: DASHBOARD PROOF - OPTICAL BALANCE + PRECISE ANCHORING */}
+                            <div className="relative lg:-ml-24 lg:pt-16">
                                 <div className="relative mx-auto w-fit scale-125 transition-all duration-1000">
                                     
-                                    <AnimatedAnnotation className="top-[32%] -left-4" color="red" delay="0.5s">
+                                    <AnimatedAnnotation className="top-[32%] -left-2" color="red" delay="0.5s">
                                         Missed tasks
                                     </AnimatedAnnotation>
 
-                                    <AnimatedAnnotation className="top-[12%] -right-4" color="green" delay="1s">
+                                    <AnimatedAnnotation className="top-[12%] -right-2" color="green" delay="1s">
                                         Completed tasks
                                     </AnimatedAnnotation>
 
-                                    <AnimatedAnnotation className="bottom-[18%] -left-8" color="blue" delay="1.5s">
+                                    <AnimatedAnnotation className="bottom-[18%] -left-6" color="blue" delay="1.5s">
                                         Live dashboard
                                     </AnimatedAnnotation>
 
