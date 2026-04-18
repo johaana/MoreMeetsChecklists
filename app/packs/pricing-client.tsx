@@ -154,7 +154,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             One-time payment • Own forever • No subscription
                         </p>
                         <p className="text-[13px] font-black text-[#22C55E] uppercase tracking-[0.2em] animate-pulse">
-                            Limited early-user pricing
+                            LIMITED TIME OFFER
                         </p>
                     </div>
                 </div>
