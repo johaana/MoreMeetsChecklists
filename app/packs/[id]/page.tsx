@@ -1,8 +1,8 @@
+
 import PackClientPage from "./pack-client-page";
 import { premiumPacks } from '@/lib/premium-packs';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import PricingClient from "../pricing-client";
 import { FaqSection } from "@/components/layout/faq-section";
 import images from '@/lib/placeholder-images.json';
 import { SiteHeader } from "@/components/layout/header";
@@ -65,16 +65,12 @@ export default async function Page({ params }: Props) {
   if (!pack) {
     notFound();
   }
-  
-  const imageData = images.find(img => img.id === `pack-${id}`);
-  const heroImageUrl = imageData?.imageUrl || null;
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <SiteHeader />
+    <div className="min-h-screen flex flex-col bg-[#F7F8FA]">
+      <SiteHeader forceTheme="dark" />
       <main className="flex-1">
-        <PackClientPage pack={pack} heroImageUrl={heroImageUrl ?? ''} />
-        <PricingClient pack={pack} />
+        <PackClientPage pack={pack} />
         <FaqSection />
       </main>
       <Footer />
