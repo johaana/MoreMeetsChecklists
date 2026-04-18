@@ -74,7 +74,7 @@ const shortDescriptions: Record<string, string> = {
 
 export const premiumPacks: PremiumPack[] = [
     ...allPacks.map(p => {
-        // Apply Sovereign Pricing Logic - ₹2,999 Buy / ₹4,999 Grade
+        // Apply Sovereign Pricing Logic - ₹2,999 Buy / ₹4,999 Institutional
         const eliteIds = [
             'restaurants', 'hotels_and_resorts', 'healthcare_and_hospital_operations', 
             'school_operations_pack', 'franchise_operations_pack', 
@@ -91,6 +91,10 @@ export const premiumPacks: PremiumPack[] = [
                 priceUSD: 29,
                 anchorPriceUSD: 49
             }
+        } else {
+            // Default pricing for non-elite if not set
+            processedPack.priceINR = processedPack.priceINR || 1999;
+            processedPack.anchorPriceINR = processedPack.anchorPriceINR || 2999;
         }
 
         if (shortDescriptions[p.id]) {

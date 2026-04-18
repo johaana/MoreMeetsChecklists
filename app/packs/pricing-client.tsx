@@ -16,7 +16,8 @@ import {
     ClipboardCheck,
     Activity,
     FileDown,
-    Ban
+    Ban,
+    Infinity
 } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
 import { addContact } from './actions';
@@ -137,7 +138,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     GLOBAL
                                 </TabsTrigger>
                             </TabsList>
-                        </Tabs>
+                         </Tabs>
 
                         <div className="flex items-center gap-8 md:gap-12">
                             <span className="text-[28px] font-medium text-[#5B6670] line-through italic tracking-tight">
@@ -177,8 +178,11 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                 <div className="flex flex-col items-center space-y-8">
                     <div className="w-full max-w-[360px] flex flex-col items-center gap-4">
                         {region === 'INDIA' && hasINR ? (
-                            <div className="w-full hover:scale-[1.02] transition-transform duration-500">
-                                <RazorpayButton paymentId={pack.paymentId} className="w-full shadow-[0_30px_60px_-15px_rgba(34,197,94,0.3)]" />
+                            <div className="w-full flex justify-center hover:scale-[1.02] transition-transform duration-500">
+                                <RazorpayButton 
+                                    paymentId={pack.paymentId} 
+                                    className="w-full flex justify-center min-h-[60px] shadow-[0_30px_60px_-15px_rgba(34,197,94,0.3)]" 
+                                />
                             </div>
                         ) : (
                             <button className="w-full h-[56px] bg-[#22C55E] text-[#0B0F14] font-black text-sm rounded-[12px] border-none uppercase italic tracking-[0.15em] shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:scale-[1.02] transition-all active:scale-95 flex items-center justify-center gap-3 group">
@@ -187,7 +191,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 </Link>
                             </button>
                         )}
-                        <p className="text-[13px] font-bold text-[#7B8794] uppercase tracking-widest italic">
+                        <p className="text-[13px] font-bold text-[#7B8794] uppercase tracking-widest italic text-center">
                             Secure payment • Instant access • No login required
                         </p>
                     </div>
