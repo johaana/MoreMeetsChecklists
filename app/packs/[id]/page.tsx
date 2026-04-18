@@ -66,11 +66,15 @@ export default async function Page({ params }: Props) {
     notFound();
   }
 
+  // Find the specific technical asset for this pack
+  const imageData = images.find(img => img.id === `pack-${id}`);
+  const heroImageUrl = imageData?.imageUrl || "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png";
+
   return (
     <div className="min-h-screen flex flex-col bg-[#F7F8FA]">
       <SiteHeader forceTheme="dark" />
       <main className="flex-1">
-        <PackClientPage pack={pack} />
+        <PackClientPage pack={pack} heroImageUrl={heroImageUrl} />
         <FaqSection />
       </main>
       <Footer />
