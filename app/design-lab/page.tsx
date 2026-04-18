@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -84,14 +83,14 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* HERO SECTION */}
-                <section className="w-full bg-[#F7F8FA] pt-4 pb-16 md:pt-6 md:pb-20 overflow-hidden min-h-[90svh] flex flex-col justify-center">
+                {/* HERO SECTION - SHIFTED 3% DOWN VIA PT-12 */}
+                <section className="w-full bg-[#F7F8FA] pt-12 pb-16 md:pt-20 md:pb-20 overflow-hidden min-h-[90svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
                         <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-16 items-center">
                             
                             {/* LEFT SIDE: NARRATIVE */}
                             <div className="flex flex-col items-start space-y-8 relative z-20">
-                                <div className="space-y-1 max-w-[900px]">
+                                <div className="space-y-1">
                                     <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-black text-[#0B0F14] leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
                                         Stop chasing your team.
                                     </h1>
@@ -103,14 +102,12 @@ export default function DesignLabPage() {
                                     </p>
                                 </div>
 
-                                {/* PAIN BLOCK */}
                                 <div className="border-l-[3px] border-[#0F3D2E] pl-[16px] space-y-2 py-1">
                                     <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">Without follow-ups</p>
                                     <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">Without confusion</p>
                                     <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">Without depending on memory</p>
                                 </div>
 
-                                {/* FEATURES GRID */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4 w-full">
                                     {[
                                         "Pre-built, editable SOPs",
@@ -150,48 +147,48 @@ export default function DesignLabPage() {
                                 </div>
                             </div>
 
-                            {/* RIGHT SIDE: DASHBOARD PROOF */}
-                            <div className="relative pt-24 lg:-ml-32 scale-125 transition-all duration-1000">
-                                {/* Precision Annotations - Mirror-Clamped Alignment */}
-                                <AnimatedAnnotation className="top-[32%] -left-2" color="red" delay="0.5s">
-                                    Missed tasks
-                                </AnimatedAnnotation>
+                            {/* RIGHT SIDE: DASHBOARD PROOF - FIXED ANCHORING WITH W-FIT */}
+                            <div className="relative lg:-ml-24">
+                                <div className="relative mx-auto w-fit scale-125 transition-all duration-1000">
+                                    
+                                    <AnimatedAnnotation className="top-[32%] -left-4" color="red" delay="0.5s">
+                                        Missed tasks
+                                    </AnimatedAnnotation>
 
-                                <AnimatedAnnotation className="top-[12%] -right-2" color="green" delay="1s">
-                                    Completed tasks
-                                </AnimatedAnnotation>
+                                    <AnimatedAnnotation className="top-[12%] -right-4" color="green" delay="1s">
+                                        Completed tasks
+                                    </AnimatedAnnotation>
 
-                                <AnimatedAnnotation className="bottom-[18%] -left-4" color="blue" delay="1.5s">
-                                    Live dashboard
-                                </AnimatedAnnotation>
+                                    <AnimatedAnnotation className="bottom-[18%] -left-8" color="blue" delay="1.5s">
+                                        Live dashboard
+                                    </AnimatedAnnotation>
 
-                                <div className="rounded-[24px] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.12)] bg-white border border-[#E6E8EC] relative">
-                                    {/* Virtual Browser Header */}
-                                    <div className="bg-[#0B0F14] h-10 w-full flex items-center px-4 gap-2">
-                                        <div className="flex gap-1.5">
-                                            <div className="w-2 h-2 rounded-full bg-red-500/30" />
-                                            <div className="w-2 h-2 rounded-full bg-amber-500/30" />
-                                            <div className="w-2 h-2 rounded-full bg-emerald-500/30" />
-                                        </div>
-                                        <div className="flex-1 flex justify-center">
-                                            <div className="bg-white/10 px-6 py-1 rounded text-[8px] font-black text-white/40 uppercase tracking-widest italic">
-                                                MASTER_OPERATIONAL_SYSTEM_CONSOLE
+                                    <div className="rounded-[24px] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.12)] bg-white border border-[#E6E8EC] relative max-w-lg">
+                                        <div className="bg-[#0B0F14] h-10 w-full flex items-center px-4 gap-2">
+                                            <div className="flex gap-1.5">
+                                                <div className="w-2 h-2 rounded-full bg-red-500/30" />
+                                                <div className="w-2 h-2 rounded-full bg-amber-500/30" />
+                                                <div className="w-2 h-2 rounded-full bg-emerald-500/30" />
+                                            </div>
+                                            <div className="flex-1 flex justify-center">
+                                                <div className="bg-white/10 px-6 py-1 rounded text-[8px] font-black text-white/40 uppercase tracking-widest italic">
+                                                    MASTER_OPERATIONAL_SYSTEM_CONSOLE
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <img 
-                                        src={DASHBOARD_IMAGE} 
-                                        alt="Master Operational System" 
-                                        className="w-full h-auto object-cover grayscale-[0.05]" 
-                                    />
-                                </div>
-                                
-                                {/* Image Caption */}
-                                <div className="mt-4 text-center">
-                                    <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
-                                        Sample of Restaurant Operating Dashboard
-                                    </p>
+                                        <img 
+                                            src={DASHBOARD_IMAGE} 
+                                            alt="Master Operational System" 
+                                            className="w-full h-auto object-cover grayscale-[0.05]" 
+                                        />
+                                    </div>
+                                    
+                                    <div className="mt-8 text-center">
+                                        <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
+                                            Sample of Restaurant Operating Dashboard
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -432,4 +429,3 @@ export default function DesignLabPage() {
         </div>
     );
 }
-
