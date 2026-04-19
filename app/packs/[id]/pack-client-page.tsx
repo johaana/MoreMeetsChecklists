@@ -100,7 +100,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     if (!mounted) return null;
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
-        <div className={cn("relative group w-full", isMobile ? "block md:hidden my-6" : "hidden md:block")}>
+        <div className={cn("relative group", isMobile ? "block md:hidden my-4 max-w-[92%] mx-auto" : "hidden md:block w-full")}>
             <div className="bg-[#111] h-8 md:h-9 w-full rounded-t-xl md:rounded-t-[14px] flex items-center px-4 gap-1.5 border border-white/10">
                 <div className="flex gap-1 md:gap-1.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-red-500/30" />
@@ -133,8 +133,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             
-            {/* HERO SECTION - REFINED PT FOR MOBILE */}
-            <section className="relative w-full bg-[#F7F8FA] pt-20 pb-8 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
+            {/* HERO SECTION - PT-16 FOR MAX VERTICALITY */}
+            <section className="relative w-full bg-[#F7F8FA] pt-16 pb-8 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
                 <div className="container mx-auto max-w-[1200px] px-6">
                     <div className="grid lg:grid-cols-[1.1fr,1fr] gap-8 lg:gap-16 items-center">
                         
@@ -150,7 +150,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </p>
                             </div>
 
-                            {/* MOBILE: PRODUCT-FIRST */}
+                            {/* MOBILE: PRODUCT-FIRST SEQUENCE */}
                             <TechnicalProof isMobile />
 
                             <div className="border-l-[3px] border-[#0F3D2E] pl-4 md:pl-[20px] space-y-2">

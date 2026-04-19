@@ -80,8 +80,8 @@ export default function Home() {
 
             <main className="flex-1">
                 
-                {/* HERO SECTION - REFINED PT FOR MOBILE */}
-                <section className="w-full bg-[#F7F8FA] pt-20 pb-12 md:pt-16 md:pb-24 overflow-hidden min-h-[85svh] flex flex-col justify-center">
+                {/* HERO SECTION - PT-16 FOR MAX COMPACTNESS */}
+                <section className="w-full bg-[#F7F8FA] pt-16 pb-12 md:pt-16 md:pb-24 overflow-hidden min-h-[85svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
                         <div className="grid lg:grid-cols-[1.2fr,1fr] gap-10 lg:gap-16 items-center">
                             
