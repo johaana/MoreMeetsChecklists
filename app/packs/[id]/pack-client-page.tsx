@@ -100,32 +100,31 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     if (!mounted) return null;
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
-        <div className={cn("relative group max-w-xl", isMobile ? "block md:hidden my-6" : "hidden md:block")}>
-            <div className="bg-[#111] h-8 md:h-9 w-full rounded-t-xl md:rounded-t-[14px] flex items-center px-4 gap-1.5 md:gap-2 border border-white/10">
+        <div className={cn("relative group w-full", isMobile ? "block md:hidden my-4" : "hidden md:block")}>
+            <div className="bg-[#111] h-7 md:h-9 w-full rounded-t-xl md:rounded-t-[14px] flex items-center px-4 gap-1.5 border border-white/10">
                 <div className="flex gap-1 md:gap-1.5">
-                    <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-red-500/30" />
-                    <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-amber-500/30" />
-                    <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-green-500/30" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-red-500/30" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500/30" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-500/30" />
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <div className="bg-black/40 border border-white/5 rounded px-3 md:px-4 py-0.5 text-[6px] md:text-[7px] font-black text-white/20 uppercase tracking-[0.3em] md:tracking-[0.4em] italic shadow-inner">
+                    <div className="bg-black/40 border border-white/5 rounded px-3 py-0.5 text-[6px] md:text-[7px] font-black text-white/20 uppercase tracking-[0.3em] italic shadow-inner">
                         {pack.id.toUpperCase()}_MASTER_ENGINE.xlsx
                     </div>
                 </div>
             </div>
 
-            <div className="rounded-b-xl md:rounded-b-[14px] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] bg-white border border-[#E6E8EC] border-t-0 relative">
+            <div className="rounded-b-xl md:rounded-b-[14px] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.15)] bg-white border border-[#E6E8EC] border-t-0 relative">
                 <img 
                     src={heroImageUrl} 
                     alt={pack.title} 
                     className="w-full h-auto object-cover aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
             </div>
             
-            <div className="mt-3 text-center">
+            <div className="mt-2 text-center">
                 <p className="text-[7px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
-                    {pack.category.replace('&', '&')} technical implementation proof
+                    Sovereign Technical implementation proof
                 </p>
             </div>
         </div>
@@ -134,55 +133,54 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             
-            {/* 1. HERO SECTION — ONE-GLANCE BRIEFING */}
+            {/* 1. HERO SECTION — PRODUCT-FIRST */}
             <section className="relative w-full bg-[#F7F8FA] pt-28 pb-10 md:pt-20 md:pb-16 overflow-hidden border-b border-zinc-200">
                 <div className="container mx-auto max-w-[1200px] px-6">
                     <div className="grid lg:grid-cols-[1.1fr,1fr] gap-8 lg:gap-16 items-center">
                         
-                        <div className="flex flex-col items-start space-y-6 md:space-y-8 relative z-20">
-                            <div className="space-y-2 md:space-y-3">
+                        <div className="flex flex-col items-start space-y-5 md:space-y-8 relative z-20">
+                            <div className="space-y-2">
                                 <span className="text-[9px] md:text-[12px] font-black uppercase tracking-[0.4em] md:tracking-[0.5em] text-zinc-400 mb-0.5 block">/ {pack.category.toUpperCase()}</span>
                                 <h1 className="text-[32px] md:text-[56px] lg:text-[68px] font-black text-[#0B0F14] leading-[1] md:leading-[0.85] tracking-tighter uppercase italic">
                                     {pack.title.replace('Operating System', '')} <br/>
                                     <span className="text-[#0F3D2E]">Operating System</span>
                                 </h1>
-                                <p className="text-base md:text-xl text-[#5B6670] italic font-medium leading-tight pt-0.5 md:pt-1">
+                                <p className="text-base md:text-xl text-[#5B6670] italic font-medium leading-tight">
                                     Run {pack.title.toLowerCase().replace(' operating system', '')} daily without chasing staff.
                                 </p>
                             </div>
 
-                            {/* MOBILE: PRODUCT VISUAL SHOWN BEFORE JUSTIFICATION */}
+                            {/* MOBILE: SEE PRODUCT IMMEDIATELY */}
                             <TechnicalProof isMobile />
 
-                            <div className="border-l-[3px] border-[#0F3D2E] pl-4 md:pl-[20px] space-y-1.5 py-0.5">
-                                <p className="text-[16px] md:text-[17px] font-bold leading-tight text-zinc-900 italic">Even when you’re not there.</p>
-                                <p className="text-[16px] md:text-[17px] font-bold leading-tight text-zinc-900 italic">Without follow-ups</p>
-                                <p className="text-[16px] md:text-[17px] font-bold leading-tight text-zinc-900 italic">Without confusion</p>
-                                <p className="text-[16px] md:text-[17px] font-bold leading-tight text-zinc-900 italic">Without depending on memory</p>
+                            <div className="border-l-[3px] border-[#0F3D2E] pl-4 md:pl-[20px] space-y-1.5">
+                                <p className="text-[16px] md:text-[18px] font-bold leading-tight text-zinc-900 italic">Even when you’re not there.</p>
+                                <p className="text-[16px] md:text-[18px] font-bold leading-tight text-zinc-400 italic">Without follow-ups</p>
+                                <p className="text-[16px] md:text-[18px] font-bold leading-tight text-zinc-400 italic">Without depending on memory</p>
                             </div>
 
-                            <div className="flex items-center gap-6 md:gap-8 w-full text-[9px] md:text-[11px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em]">
+                            <div className="flex items-center gap-6 md:gap-8 w-full text-[10px] md:text-[11px] font-black uppercase tracking-[0.3em]">
                                 <span className="flex items-center gap-2 text-zinc-900 font-headline"><LayoutGrid className="w-4 h-4 text-primary" /> {totalChecklists} MODULES</span>
-                                <span className="flex items-center gap-2 text-zinc-900 font-headline"><Target className="w-4 h-4 text-primary" /> {totalTasks}+ CHECKPOINTS</span>
+                                <span className="flex items-center gap-2 text-zinc-900 font-headline"><Target className="w-4 h-4 text-primary" /> {totalTasks}+ POINTS</span>
                             </div>
 
                             <div className="w-full pt-2">
                                 <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-8">
-                                    <button className="h-16 md:h-[56px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-base shadow-[0_15px_35px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all border-none group w-full sm:w-auto">
+                                    <button className="h-14 md:h-[56px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-base shadow-[0_15px_35px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all border-none group w-full sm:w-auto">
                                         <Link href="#pricing" className="flex items-center gap-3">
                                             Deploy system → ₹{pack.priceINR}
                                         </Link>
                                     </button>
                                     <div className="flex flex-col text-center sm:text-left space-y-0.5">
-                                        <p className="text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">ONE-TIME PAYMENT</p>
+                                        <p className="text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none italic">ONE-TIME PAYMENT</p>
                                         <p className="text-[8px] font-black text-[#5B6670] uppercase tracking-widest leading-none">OWN THE ENGINE FOREVER</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* DESKTOP IMAGE FRAME */}
-                        <div className="relative z-10 w-full lg:pt-0 pt-2 hidden md:block">
+                        {/* DESKTOP VISUAL */}
+                        <div className="relative z-10 w-full hidden md:block">
                             <TechnicalProof />
                         </div>
 
@@ -190,18 +188,18 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </section>
 
-            {/* 2. WHY THIS MATTERS (PITFALLS) */}
+            {/* 2. WHY THIS MATTERS */}
             <Section className="bg-white border-y border-[#E6E8EC]">
                 <div className="max-w-[1000px] mx-auto text-center space-y-10 md:space-y-16">
                     <div className="space-y-4">
-                        <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50/50 uppercase tracking-[0.3em] md:tracking-[0.4em] font-black text-[9px] md:text-[10px] px-6 md:px-8 py-2 rounded-none italic">Forensic Finding</Badge>
-                        <h2 className="text-[26px] md:text-[48px] font-black text-[#0B0F14] uppercase italic tracking-tight leading-tight">Why {pack.title.toLowerCase().replace(' operating system', '')} operations break</h2>
+                        <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50/50 uppercase tracking-[0.4em] font-black text-[9px] md:text-[10px] px-8 py-2 rounded-none italic">Forensic Finding</Badge>
+                        <h2 className="text-[26px] md:text-[48px] font-black text-[#0B0F14] uppercase italic tracking-tight leading-tight">Why operations break</h2>
                     </div>
                     
                     <div className="grid md:grid-cols-2 gap-3 md:gap-4 text-left">
                         {content.pitfalls.map((p, i) => (
-                            <div key={i} className="flex items-center gap-4 md:gap-5 p-5 md:p-8 rounded-2xl bg-[#F7F8FA] border border-zinc-100 hover:border-red-100 transition-all group">
-                                <div className="w-1.5 h-1.5 md:w-2.5 md:h-2.5 rounded-full bg-red-500 shrink-0 group-hover:scale-125 transition-transform shadow-[0_0_8px_rgba(239,68,68,0.3)]" />
+                            <div key={i} className="flex items-center gap-4 md:gap-5 p-5 md:p-8 rounded-2xl bg-[#F7F8FA] border border-zinc-100 group">
+                                <div className="w-2 h-2 rounded-full bg-red-500 shrink-0 group-hover:scale-125 transition-transform" />
                                 <span className="text-[#5B6670] font-bold italic text-sm md:text-lg leading-tight">{p}</span>
                             </div>
                         ))}
@@ -209,28 +207,26 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* 3. SYSTEM ARCHITECTURE (WHITE CARDS) */}
+            {/* 3. SYSTEM ARCHITECTURE */}
             <Section className="bg-white">
                 <div className="space-y-10 md:space-y-20">
-                    <div className="text-center space-y-3 md:space-y-5">
-                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] md:tracking-[0.5em] font-black text-[9px] md:text-[10px] px-8 md:px-10 py-2.5 md:py-3 rounded-full bg-primary/5">Institutional Engine</Badge>
+                    <div className="text-center space-y-4">
+                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px] px-10 py-3 rounded-full bg-primary/5">Institutional Engine</Badge>
                         <h2 className="text-[26px] md:text-[48px] font-black text-[#0B0F14] uppercase italic tracking-tight leading-tight">What’s inside the system</h2>
                     </div>
                     
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 max-w-7xl mx-auto">
                         {pack.checklists.map((checklist, index) => (
-                            <div key={index} className="bg-white p-6 md:p-12 rounded-[1.5rem] md:rounded-[2.5rem] space-y-5 md:space-y-8 group hover:shadow-[0_40px_100px_-15px_rgba(0,0,0,0.08)] transition-all duration-700 relative border border-zinc-100 hover:border-primary/20">
-                                <div className="space-y-1 md:space-y-2">
-                                    <p className="text-[9px] md:text-[11px] font-black uppercase text-zinc-400 tracking-[0.3em] md:tracking-[0.4em] font-headline">{checklist.role}</p>
-                                    <h4 className="text-xl md:text-4xl font-black italic uppercase leading-[0.95] md:leading-[0.9] tracking-tighter text-[#0B0F14] pt-0.5 md:pt-1">
+                            <div key={index} className="bg-white p-6 md:p-12 rounded-[1.5rem] md:rounded-[2.5rem] space-y-6 group hover:shadow-[0_40px_100px_-15px_rgba(0,0,0,0.08)] transition-all duration-700 border border-zinc-100">
+                                <div className="space-y-1">
+                                    <p className="text-[9px] md:text-[11px] font-black uppercase text-zinc-400 tracking-[0.3em] font-headline">{checklist.role}</p>
+                                    <h4 className="text-xl md:text-4xl font-black italic uppercase tracking-tighter text-[#0B0F14]">
                                         {checklist.title.replace('System', '').replace('Command', '').replace('Operations', '').replace('Protocol', '')}
                                     </h4>
                                 </div>
-                                <div className="pt-3 md:pt-4 flex items-center gap-3 md:gap-4 border-t border-zinc-100">
-                                    <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-primary/10 flex items-center justify-center shadow-inner">
-                                        <Target className="w-3.5 h-3.5 md:w-5 md:h-5 text-primary" />
-                                    </div>
-                                    <span className="text-[9px] md:text-[12px] font-black text-primary uppercase tracking-[0.3em] md:tracking-[0.4em] font-headline">
+                                <div className="pt-3 md:pt-4 flex items-center gap-3 border-t border-zinc-100">
+                                    <Target className="w-5 h-5 text-primary" />
+                                    <span className="text-[10px] md:text-[12px] font-black text-primary uppercase tracking-[0.3em] font-headline">
                                         {checklist.tasks.length} CHECKPOINTS
                                     </span>
                                 </div>
@@ -245,18 +241,18 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
             <PricingClient pack={pack} />
 
             {/* 5. FINAL CTA */}
-            <Section className="bg-[#0F3D2E] text-white text-center py-24 md:py-56">
-                <div className="max-w-4xl mx-auto space-y-10 md:space-y-16">
-                    <div className="space-y-4 md:space-y-6 px-2">
-                        <h2 className="text-[32px] md:text-[80px] font-black leading-[0.95] md:leading-[0.9] tracking-tighter uppercase italic drop-shadow-2xl">
+            <Section className="bg-[#0F3D2E] text-white text-center py-24 md:py-48">
+                <div className="max-w-4xl mx-auto space-y-12 md:space-y-16">
+                    <div className="space-y-4">
+                        <h2 className="text-[32px] md:text-[80px] font-black tracking-tighter uppercase italic leading-[0.9]">
                             Run your <br/> {pack.title.toLowerCase().replace(' operating system', '')} <br/> properly.
                         </h2>
-                        <p className="text-base md:text-[28px] text-white/60 font-bold italic pt-1 md:pt-2">Deploy the Sovereign Master Engine in under 10 minutes.</p>
+                        <p className="text-base md:text-2xl text-white/60 font-bold italic">Deploy the Sovereign Master Engine in under 10 minutes.</p>
                     </div>
                     
-                    <button className="h-16 md:h-[84px] px-8 md:px-16 rounded-xl md:rounded-[20px] bg-[#F4A261] text-white font-black uppercase italic text-base md:text-2xl shadow-[0_25px_60px_-10px_rgba(244,162,97,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group w-full max-w-sm mx-auto flex items-center justify-center">
-                        <Link href="#pricing" className="flex items-center gap-3 md:gap-5">
-                            Deploy System Now <ArrowRight className="w-7 h-7 md:w-10 md:h-10 transition-transform group-hover:translate-x-3" />
+                    <button className="h-16 md:h-20 px-10 md:px-16 rounded-xl bg-[#F4A261] text-white font-black uppercase italic text-base md:text-xl shadow-2xl hover:scale-[1.05] active:scale-95 transition-all border-none group w-full max-w-sm mx-auto flex items-center justify-center">
+                        <Link href="#pricing" className="flex items-center gap-3">
+                            Deploy System Now <ArrowRight className="w-6 h-6 md:w-8 md:h-8 transition-transform group-hover:translate-x-3" />
                         </Link>
                     </button>
                 </div>

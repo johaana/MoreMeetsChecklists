@@ -80,7 +80,7 @@ export default function Home() {
 
             <main className="flex-1">
                 
-                {/* HERO SECTION - HIGH HORIZON */}
+                {/* HERO SECTION */}
                 <section className="w-full bg-[#F7F8FA] pt-8 pb-12 md:pt-16 md:pb-24 overflow-hidden min-h-[85svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
                         <div className="grid lg:grid-cols-[1.2fr,1fr] gap-10 lg:gap-16 items-center">
@@ -193,7 +193,7 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* SECTOR COMMAND - INDUSTRY GRID */}
+                {/* SECTOR COMMAND */}
                 <Section className="bg-white border-y border-[#E6E8EC]">
                     <div className="space-y-10 md:space-y-12">
                         <div className="text-center space-y-3 md:space-y-4">
@@ -268,7 +268,7 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* SOLUTION SECTION - CINEMA PROOF */}
+                {/* SOLUTION SECTION */}
                 <Section className="bg-white border-y border-[#E6E8EC]">
                     <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
                         <div className="space-y-8 md:space-y-10">
@@ -348,7 +348,7 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* SOVEREIGN VS SAAS - MOBILE OPTIMIZED TABLE */}
+                {/* SOVEREIGN VS SAAS */}
                 <Section className="bg-white border-y border-[#E6E8EC]">
                     <div className="max-w-4xl mx-auto space-y-12 md:space-y-16">
                         <div className="text-center space-y-3 md:space-y-4">
@@ -356,7 +356,6 @@ export default function Home() {
                             <p className="text-[#5B6670] text-sm md:text-base font-medium italic">Why Elite groups choose MoreMeets over standard SaaS.</p>
                         </div>
                         
-                        {/* Mobile Swipe Indicator */}
                         <div className="md:hidden flex justify-center mb-4">
                             <Badge variant="outline" className="text-[8px] font-black uppercase text-zinc-400 border-zinc-200">← Swipe to compare →</Badge>
                         </div>
@@ -393,7 +392,7 @@ export default function Home() {
                 {/* TESTIMONIALS */}
                 <TestimonialsSection />
 
-                {/* FAQ - BEFORE YOU DEPLOY */}
+                {/* FAQ */}
                 <FaqSection />
 
                 {/* FINAL CTA */}
