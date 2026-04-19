@@ -30,14 +30,14 @@ const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green"
 
     return (
         <div className={cn(
-            "absolute z-30 bg-white/95 backdrop-blur-md px-2 py-1 rounded-lg shadow-xl flex items-center gap-2 border border-[#E6E8EC] animate-in fade-in zoom-in duration-700 whitespace-nowrap",
+            "absolute z-30 bg-white/95 backdrop-blur-md px-1.5 py-0.5 md:px-2 md:py-1 rounded md:rounded-lg shadow-xl flex items-center gap-1.5 border border-[#E6E8EC] animate-in fade-in zoom-in duration-700 whitespace-nowrap",
             className
         )} style={{ animationDelay: delay }}>
             <span className="relative flex h-1 w-1">
                 <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-100 scale-[4]", pingColors[color as keyof typeof pingColors])}></span>
                 <span className={cn("relative inline-flex rounded-full h-1 w-1", pingColors[color as keyof typeof pingColors])}></span>
             </span>
-            <span className="text-[7px] md:text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
+            <span className="text-[6px] md:text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
         </div>
     );
 };
@@ -121,12 +121,12 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     if (!mounted) return null;
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
-        <div className={cn("relative group", isMobile ? "block md:hidden mt-2 mb-4 max-w-[95%] mx-auto" : "hidden md:block w-full")}>
+        <div className={cn("relative group", isMobile ? "block md:hidden mt-6 mb-8 w-full" : "hidden md:block w-full")}>
             {isMobile && (
                 <>
-                    <AnimatedAnnotation className="top-[15%] -left-1" color="red" delay="0.5s">Misses</AnimatedAnnotation>
-                    <AnimatedAnnotation className="top-[5%] -right-1" color="green" delay="1s">Completed</AnimatedAnnotation>
-                    <AnimatedAnnotation className="bottom-[25%] -left-2" color="blue" delay="1.5s">Dashboard</AnimatedAnnotation>
+                    <AnimatedAnnotation className="top-[25%] left-[10%]" color="red" delay="0.5s">Misses</AnimatedAnnotation>
+                    <AnimatedAnnotation className="top-[10%] right-[10%]" color="green" delay="1s">Completed</AnimatedAnnotation>
+                    <AnimatedAnnotation className="bottom-[20%] left-[15%]" color="blue" delay="1.5s">Console</AnimatedAnnotation>
                 </>
             )}
             
@@ -137,7 +137,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-green-500/30" />
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <div className="bg-black/40 border border-white/5 rounded px-4 py-0.5 text-[6px] md:text-[8px] font-black text-white/20 uppercase tracking-[0.3em] italic shadow-inner">
+                    <div className="bg-black/40 border border-white/5 rounded px-4 py-0.5 text-[6px] md:text-[8px] font-black text-white/20 uppercase tracking-[0.4em] italic shadow-inner">
                         {pack.id.toUpperCase()}_MASTER_ENGINE.xlsx
                     </div>
                 </div>
@@ -182,6 +182,23 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                             <div className="border-l-[3px] border-[#0F3D2E] pl-4 md:pl-[20px] space-y-1">
                                 <p className="text-[14px] md:text-[18px] font-black leading-tight text-zinc-900 italic">No follow-ups • No confusion • No memory gaps</p>
+                            </div>
+
+                            {/* 3. Technical Benefits Grid - NOW 2 COLUMNS ON MOBILE */}
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-3 w-full py-2">
+                                {[
+                                    "Pre-built SOPs",
+                                    "Daily Tracking",
+                                    "Trainer Notes",
+                                    "Live Dashboard"
+                                ].map((item, i) => (
+                                    <div className="flex items-center gap-2" key={i}>
+                                        <div className="w-4 h-4 rounded-full bg-[#0F3D2E]/10 flex items-center justify-center shrink-0">
+                                            <Check className="w-2.5 h-2.5 text-[#0F3D2E]" />
+                                        </div>
+                                        <span className="text-[11px] font-bold text-[#0B0F14]">{item}</span>
+                                    </div>
+                                ))}
                             </div>
 
                             <div className="flex items-center gap-6 md:gap-8 w-full text-[10px] md:text-[11px] font-black uppercase tracking-[0.3em]">

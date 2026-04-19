@@ -53,14 +53,14 @@ const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green"
 
     return (
         <div className={cn(
-            "absolute z-30 bg-white/95 backdrop-blur-md px-2 py-1 rounded-lg shadow-xl flex items-center gap-2 border border-[#E6E8EC] animate-in fade-in zoom-in duration-700 whitespace-nowrap",
+            "absolute z-30 bg-white/95 backdrop-blur-md px-1.5 py-0.5 md:px-2 md:py-1 rounded md:rounded-lg shadow-xl flex items-center gap-1.5 border border-[#E6E8EC] animate-in fade-in zoom-in duration-700 whitespace-nowrap",
             className
         )} style={{ animationDelay: delay }}>
             <span className="relative flex h-1 w-1">
                 <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-100 scale-[4]", pingColors[color as keyof typeof pingColors])}></span>
                 <span className={cn("relative inline-flex rounded-full h-1 w-1", pingColors[color as keyof typeof pingColors])}></span>
             </span>
-            <span className="text-[7px] md:text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
+            <span className="text-[6px] md:text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
         </div>
     );
 };
@@ -75,12 +75,12 @@ export default function Home() {
     if (!mounted) return null;
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
-        <div className={cn("relative group", isMobile ? "block md:hidden mt-2 mb-4 max-w-[95%] mx-auto" : "hidden md:block w-full")}>
+        <div className={cn("relative group", isMobile ? "block md:hidden mt-6 mb-8 w-full" : "hidden md:block w-full")}>
             {isMobile && (
                 <>
-                    <AnimatedAnnotation className="top-[15%] -left-1" color="red" delay="0.5s">Missed</AnimatedAnnotation>
-                    <AnimatedAnnotation className="top-[5%] -right-1" color="green" delay="1s">Completed</AnimatedAnnotation>
-                    <AnimatedAnnotation className="bottom-[25%] -left-2" color="blue" delay="1.5s">Dashboard</AnimatedAnnotation>
+                    <AnimatedAnnotation className="top-[25%] left-[10%]" color="red" delay="0.5s">Misses</AnimatedAnnotation>
+                    <AnimatedAnnotation className="top-[10%] right-[10%]" color="green" delay="1s">Completed</AnimatedAnnotation>
+                    <AnimatedAnnotation className="bottom-[20%] left-[15%]" color="blue" delay="1.5s">Console</AnimatedAnnotation>
                 </>
             )}
             
@@ -91,7 +91,7 @@ export default function Home() {
                     <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-green-500/30" />
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <div className="bg-black/40 border border-white/5 rounded px-4 py-0.5 text-[6px] md:text-[8px] font-black text-white/20 uppercase tracking-[0.3em] italic shadow-inner">
+                    <div className="bg-black/40 border border-white/5 rounded px-4 py-0.5 text-[6px] md:text-[8px] font-black text-white/20 uppercase tracking-[0.4em] italic shadow-inner">
                         SOVEREIGN_MASTER_CONSOLE.xlsx
                     </div>
                 </div>
@@ -103,12 +103,6 @@ export default function Home() {
                     alt="Sovereign Dashboard" 
                     className="w-full h-auto object-cover aspect-[16/8] md:aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
                 />
-            </div>
-            
-            <div className="mt-2 text-center">
-                <p className="text-[6px] md:text-[8px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
-                    Sovereign Technical implementation proof
-                </p>
             </div>
         </div>
     );
@@ -140,39 +134,38 @@ export default function Home() {
 
                                 <div className="border-l-[3px] border-[#0F3D2E] pl-[16px] space-y-0.5 py-0.5">
                                     <p className="text-[14px] md:text-[18px] font-black leading-tight text-[#0B0F14] italic">No follow-ups • No confusion</p>
-                                    <p className="text-[14px] md:text-[18px] font-bold leading-tight text-zinc-400 italic">No more dependency on memory</p>
                                 </div>
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 md:gap-y-4 w-full">
+                                {/* 2 COLUMN CHECKLIST ON MOBILE */}
+                                <div className="grid grid-cols-2 gap-x-4 gap-y-3 w-full">
                                     {[
-                                        "Pre-built, editable SOPs",
-                                        "Daily task tracking",
-                                        "Trainer notes (faster training)",
-                                        "Live dashboard visibility"
+                                        "Pre-built SOPs",
+                                        "Daily Tracking",
+                                        "Trainer Notes",
+                                        "Live Dashboard"
                                     ].map((item, i) => (
-                                        <div className="flex items-center gap-3 group" key={i}>
+                                        <div className="flex items-center gap-2 group" key={i}>
                                             <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-[#0F3D2E]/10 flex items-center justify-center shrink-0">
                                                 <Check className="w-2.5 h-2.5 md:w-3 md:h-3 text-[#0F3D2E]" />
                                             </div>
-                                            <span className="text-[13px] md:text-sm font-bold text-[#0B0F14]">{item}</span>
+                                            <span className="text-[11px] md:text-sm font-bold text-[#0B0F14]">{item}</span>
                                         </div>
                                     ))}
                                 </div>
 
                                 <div className="space-y-4 w-full pt-4">
-                                    <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-8">
-                                        <div className="flex flex-col items-center sm:items-start order-2 sm:order-1">
-                                            <div className="flex items-baseline gap-2">
-                                                <p className="text-[28px] md:text-[32px] font-black text-[#0B0F14] italic tracking-tight">₹2,999</p>
-                                                <span className="text-xs font-bold text-[#5B6670] line-through">₹4,999</span>
-                                            </div>
-                                            <p className="text-[10px] md:text-[11px] font-black text-[#5B6670] uppercase tracking-widest">One-time • Own forever</p>
+                                    <button className="h-[56px] md:h-[64px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-base md:text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group w-full sm:w-auto">
+                                        <Link href="/library" className="flex items-center gap-3">
+                                            Start Your System <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                                        </Link>
+                                    </button>
+
+                                    <div className="flex flex-col items-center sm:items-start space-y-1">
+                                        <div className="flex items-baseline gap-2">
+                                            <p className="text-[22px] md:text-[32px] font-black text-[#0B0F14] italic tracking-tight">₹2,999</p>
+                                            <span className="text-xs font-bold text-[#5B6670] line-through">₹4,999</span>
                                         </div>
-                                        <button className="h-[56px] md:h-[64px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-base md:text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group order-1 sm:order-2 w-full sm:w-auto">
-                                            <Link href="/library" className="flex items-center gap-3">
-                                                Start Your System <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                                            </Link>
-                                        </button>
+                                        <p className="text-[9px] md:text-[11px] font-black text-[#5B6670] uppercase tracking-widest">One-time • Own forever</p>
                                     </div>
 
                                     <p className="text-[11px] md:text-[13px] text-[#5B6670] font-bold uppercase tracking-[0.1em] border-t border-[#E6E8EC] pt-4 leading-relaxed text-center sm:text-left">
@@ -202,9 +195,6 @@ export default function Home() {
                                             </div>
                                         </div>
                                         <img src={DASHBOARD_IMAGE} alt="Master Operational System" className="w-full h-auto object-cover grayscale-[0.05]" />
-                                    </div>
-                                    <div className="mt-8 text-center">
-                                        <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">sample of restaurant operating dashboard</p>
                                     </div>
                                 </div>
                             </div>
