@@ -79,7 +79,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
     if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
         return (
-             <section className="w-full py-12 md:py-24 bg-[#0B0F14]" id="pricing">
+             <section className="w-full py-10 md:py-24 bg-[#0B0F14]" id="pricing">
                 <div className="container px-4 mx-auto">
                     <div className="max-w-xl mx-auto">
                         <div className="bg-black border border-white/10 shadow-[0_40px_100px_-15px_rgba(0,0,0,0.5)] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden text-center">
@@ -91,7 +91,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     <h2 className="text-2xl md:text-3xl font-black uppercase italic font-headline tracking-tighter text-white">Instant Access</h2>
                                     <p className="text-sm md:text-base text-secondary-text italic font-medium">Sovereign Social Impact Pack</p>
                                 </div>
-                                <p className="text-5xl md:text-6xl font-black pt-2 md:pt-4" style={{ color: BRAND_GREEN }}>FREE</p>
+                                <p className="text-5xl font-black pt-2 md:pt-4" style={{ color: BRAND_GREEN }}>FREE</p>
                             </div>
                             <div className="p-8 md:p-12 pt-0">
                                 <FreeDownloadForm pack={pack} />
@@ -104,15 +104,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     }
 
     return (
-        <section className="w-full py-12 md:py-20 bg-gradient-to-b from-[#0B0F14] to-[#0E1621] text-white overflow-hidden border-t border-white/5" id="pricing">
+        <section className="w-full py-10 md:py-20 bg-gradient-to-b from-[#0B0F14] to-[#0E1621] text-white overflow-hidden border-t border-white/5" id="pricing">
             <div className="container px-4 mx-auto max-w-5xl">
-                <div className="grid lg:grid-cols-[1fr,400px] gap-10 md:gap-12 items-center">
+                <div className="grid lg:grid-cols-[1fr,400px] gap-8 md:gap-12 items-center">
                     
-                    {/* LEFT: VALUE ANCHOR */}
-                    <div className="space-y-8 md:space-y-10">
-                        <div className="space-y-3 md:space-y-4">
+                    {/* LEFT: VALUE ANCHOR - COMPACTED FOR MOBILE */}
+                    <div className="space-y-6 md:space-y-10">
+                        <div className="space-y-2 md:space-y-4">
                             <Badge variant="outline" className="text-zinc-500 border-zinc-800 uppercase tracking-[0.2em] md:tracking-[0.3em] font-black text-[9px] md:text-[10px] rounded-none px-3 md:px-4 py-1">DEPLOYMENT PROTOCOL</Badge>
-                            <h2 className="text-3xl md:text-5xl font-black font-headline text-white italic tracking-tighter uppercase leading-tight">
+                            <h2 className="text-2xl md:text-5xl font-black font-headline text-white italic tracking-tighter uppercase leading-tight">
                                 Sovereign <br />
                                 <span style={{ color: BRAND_GREEN }}>Master Engine.</span>
                             </h2>
@@ -120,27 +120,27 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                         <div className="flex items-center gap-4 md:gap-6">
                             <div className="flex flex-col">
-                                <span className="text-base md:text-lg font-medium text-zinc-500 line-through italic tracking-tight leading-none">
+                                <span className="text-sm md:text-lg font-medium text-zinc-500 line-through italic tracking-tight leading-none">
                                     {region === 'INDIA' ? `₹${pack.anchorPriceINR}` : `$${pack.anchorPriceUSD}`}
                                 </span>
-                                <h3 className="text-5xl md:text-6xl font-black text-white italic tracking-tighter leading-none pt-2" style={{ textShadow: `0 0 20px ${BRAND_GREEN}30` }}>
+                                <h3 className="text-4xl md:text-6xl font-black text-white italic tracking-tighter leading-none pt-1 md:pt-2">
                                     {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
                                 </h3>
                             </div>
-                            <div className="w-px h-12 md:h-16 bg-white/10 hidden sm:block" />
-                            <div className="space-y-1">
-                                <p className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.15em] md:tracking-[0.2em]" style={{ color: CONVERSION_AMBER }}>LIMITED TIME OFFER</p>
-                                <p className="text-[10px] md:text-[11px] font-bold text-zinc-500 uppercase tracking-widest italic">One-time payment • Own forever</p>
+                            <div className="w-px h-10 md:h-16 bg-white/10" />
+                            <div className="space-y-0.5 md:space-y-1">
+                                <p className="text-[9px] md:text-[11px] font-black uppercase tracking-[0.15em] md:tracking-[0.2em]" style={{ color: CONVERSION_AMBER }}>LIMITED TIME OFFER</p>
+                                <p className="text-[8px] md:text-[11px] font-bold text-zinc-500 uppercase tracking-widest italic">One-time • Own forever</p>
                             </div>
                         </div>
 
-                        <div className="grid sm:grid-cols-2 gap-x-6 md:gap-x-8 gap-y-4 md:gap-y-5">
+                        <div className="grid grid-cols-2 gap-x-4 md:gap-x-8 gap-y-3 md:gap-y-5">
                             {VALUE_ITEMS.map((item, i) => (
-                                <div key={i} className="flex items-start gap-3 group">
-                                    <div className="w-4 h-4 md:w-5 md:h-5 rounded-full flex items-center justify-center shrink-0 mt-1 md:mt-0.5" style={{ backgroundColor: `${BRAND_GREEN}1A` }}>
-                                        <item.i className="w-2.5 h-2.5 md:w-3 md:h-3" style={{ color: BRAND_GREEN }} />
+                                <div key={i} className="flex items-start gap-2 md:gap-3 group">
+                                    <div className="w-3.5 h-3.5 md:w-5 md:h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ backgroundColor: `${BRAND_GREEN}1A` }}>
+                                        <item.i className="w-2 md:w-3 md:h-3" style={{ color: BRAND_GREEN }} />
                                     </div>
-                                    <span className="text-xs md:text-sm font-bold italic text-zinc-300 group-hover:text-white transition-colors leading-tight">
+                                    <span className="text-[10px] md:text-sm font-bold italic text-zinc-400 group-hover:text-white transition-colors leading-tight">
                                         {item.t}
                                     </span>
                                 </div>
@@ -148,28 +148,28 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         </div>
                     </div>
 
-                    {/* RIGHT: DECISION BOX */}
+                    {/* RIGHT: DECISION BOX - COMPACTED FOR MOBILE */}
                     <div className="relative pt-4 lg:pt-0">
-                        <div className="absolute -inset-4 blur-3xl opacity-40 md:opacity-50" style={{ backgroundColor: `${BRAND_GREEN}0D` }} />
+                        <div className="absolute -inset-4 blur-3xl opacity-30 md:opacity-50" style={{ backgroundColor: `${BRAND_GREEN}0D` }} />
                         
-                        <div className="relative bg-white/[0.02] border border-white/[0.08] backdrop-blur-xl rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-10 shadow-2xl flex flex-col items-center gap-6 md:gap-8">
-                            <div className="absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2 bg-[#F59E0B1A] border border-[#F59E0B30] text-[#F59E0B] px-4 md:px-5 py-1 md:py-1.5 rounded-full text-[8px] md:text-[9px] font-black uppercase tracking-widest shadow-xl whitespace-nowrap">
+                        <div className="relative bg-white/[0.02] border border-white/[0.08] backdrop-blur-xl rounded-[1.5rem] md:rounded-[2.5rem] p-5 md:p-10 shadow-2xl flex flex-col items-center gap-6 md:gap-8">
+                            <div className="absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2 bg-[#F59E0B1A] border border-[#F59E0B30] text-[#F59E0B] px-3 md:px-5 py-1 md:py-1.5 rounded-full text-[7px] md:text-[9px] font-black uppercase tracking-widest shadow-xl whitespace-nowrap">
                                 Recommended deployment
                             </div>
 
-                            <div className="text-center space-y-4 w-full">
-                                <div className="space-y-1.5">
-                                    <p className="text-[9px] md:text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] md:tracking-[0.3em]">SELECT REGION</p>
+                            <div className="text-center space-y-3 md:space-y-4 w-full">
+                                <div className="space-y-1 md:space-y-1.5">
+                                    <p className="text-[8px] md:text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] md:tracking-[0.3em]">SELECT REGION</p>
                                     <Tabs value={region} onValueChange={(v) => setRegion(v as any)} className="w-full">
-                                        <TabsList className="bg-black/40 border border-white/5 h-10 md:h-12 p-1 rounded-xl w-full grid grid-cols-2">
+                                        <TabsList className="bg-black/40 border border-white/5 h-9 md:h-12 p-1 rounded-xl w-full grid grid-cols-2">
                                             <TabsTrigger value="INDIA" className="text-[8px] md:text-[9px] font-black uppercase rounded-lg data-[state=active]:bg-primary data-[state=active]:text-black transition-all">INDIA</TabsTrigger>
                                             <TabsTrigger value="GLOBAL" className="text-[8px] md:text-[9px] font-black uppercase rounded-lg data-[state=active]:bg-primary data-[state=active]:text-black transition-all">GLOBAL</TabsTrigger>
                                         </TabsList>
                                     </Tabs>
                                 </div>
-                                <div className="pt-2">
-                                    <p className="text-xs md:text-sm font-medium text-zinc-400 italic">Start using your system today</p>
-                                    <p className="text-2xl md:text-3xl font-black text-white italic tracking-tighter pt-1">
+                                <div className="pt-1 md:pt-2">
+                                    <p className="text-[10px] md:text-sm font-medium text-zinc-400 italic">Start using your system today</p>
+                                    <p className="text-xl md:text-3xl font-black text-white italic tracking-tighter pt-0.5">
                                         {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
                                     </p>
                                 </div>
@@ -192,14 +192,14 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </button>
                                 )}
                                 
-                                <div className="space-y-2">
+                                <div className="space-y-1.5">
                                     {[
                                         "Secure payment via " + (region === 'INDIA' ? "Razorpay" : "Lemon Squeezy"),
                                         "Instant download after payment",
                                         "No login required"
                                     ].map((line, i) => (
-                                        <div key={i} className="flex items-center gap-2 text-[9px] md:text-[10px] font-bold text-zinc-500 italic">
-                                            <CheckCircle2 className="w-2.5 h-2.5 md:w-3 md:h-3" style={{ color: `${BRAND_GREEN}99` }} /> {line}
+                                        <div key={i} className="flex items-center gap-2 text-[8px] md:text-[10px] font-bold text-zinc-500 italic">
+                                            <CheckCircle2 className="w-2 md:w-3 md:h-3" style={{ color: `${BRAND_GREEN}99` }} /> {line}
                                         </div>
                                     ))}
                                 </div>
@@ -208,8 +208,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     </div>
                 </div>
 
-                <div className="mt-12 md:mt-16 pt-6 md:pt-8 text-center border-t border-white/5">
-                    <p className="text-[9px] md:text-[11px] font-black text-zinc-600 uppercase tracking-[0.3em] md:tracking-[0.5em] italic">
+                <div className="mt-8 md:mt-16 pt-4 md:pt-8 text-center border-t border-white/5">
+                    <p className="text-[8px] md:text-[11px] font-black text-zinc-600 uppercase tracking-[0.3em] md:tracking-[0.5em] italic">
                         Immediate Deployment. Institutional Grade Engineering.
                     </p>
                 </div>
