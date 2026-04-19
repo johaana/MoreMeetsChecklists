@@ -100,7 +100,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     if (!mounted) return null;
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
-        <div className={cn("relative group w-full", isMobile ? "block md:hidden my-4" : "hidden md:block")}>
+        <div className={cn("relative group w-full", isMobile ? "block md:hidden my-6" : "hidden md:block")}>
             <div className="bg-[#111] h-7 md:h-9 w-full rounded-t-xl md:rounded-t-[14px] flex items-center px-4 gap-1.5 border border-white/10">
                 <div className="flex gap-1 md:gap-1.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-red-500/30" />
@@ -133,24 +133,24 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             
-            {/* 1. HERO SECTION — PRODUCT-FIRST */}
-            <section className="relative w-full bg-[#F7F8FA] pt-28 pb-10 md:pt-20 md:pb-16 overflow-hidden border-b border-zinc-200">
+            {/* 1. HERO SECTION — PT-36 for Mobile Overlap Resolve */}
+            <section className="relative w-full bg-[#F7F8FA] pt-36 pb-12 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
                 <div className="container mx-auto max-w-[1200px] px-6">
                     <div className="grid lg:grid-cols-[1.1fr,1fr] gap-8 lg:gap-16 items-center">
                         
-                        <div className="flex flex-col items-start space-y-5 md:space-y-8 relative z-20">
+                        <div className="flex flex-col items-start space-y-6 md:space-y-8 relative z-20">
                             <div className="space-y-2">
-                                <span className="text-[9px] md:text-[12px] font-black uppercase tracking-[0.4em] md:tracking-[0.5em] text-zinc-400 mb-0.5 block">/ {pack.category.toUpperCase()}</span>
-                                <h1 className="text-[32px] md:text-[56px] lg:text-[68px] font-black text-[#0B0F14] leading-[1] md:leading-[0.85] tracking-tighter uppercase italic">
+                                <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.5em] text-zinc-400 mb-0.5 block">/ {pack.category.toUpperCase()}</span>
+                                <h1 className="text-[36px] md:text-[56px] lg:text-[68px] font-black text-[#0B0F14] leading-[0.95] md:leading-[0.85] tracking-tighter uppercase italic">
                                     {pack.title.replace('Operating System', '')} <br/>
                                     <span className="text-[#0F3D2E]">Operating System</span>
                                 </h1>
-                                <p className="text-base md:text-xl text-[#5B6670] italic font-medium leading-tight">
+                                <p className="text-base md:text-xl text-[#5B6670] italic font-medium leading-tight pt-1">
                                     Run {pack.title.toLowerCase().replace(' operating system', '')} daily without chasing staff.
                                 </p>
                             </div>
 
-                            {/* MOBILE: SEE PRODUCT IMMEDIATELY */}
+                            {/* MOBILE: PRODUCT-FIRST — Image before bullets/CTA */}
                             <TechnicalProof isMobile />
 
                             <div className="border-l-[3px] border-[#0F3D2E] pl-4 md:pl-[20px] space-y-1.5">
@@ -179,7 +179,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
                         </div>
 
-                        {/* DESKTOP VISUAL */}
+                        {/* DESKTOP VISUAL — Maintained side-by-side */}
                         <div className="relative z-10 w-full hidden md:block">
                             <TechnicalProof />
                         </div>
