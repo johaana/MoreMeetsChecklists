@@ -8,17 +8,15 @@ import { Badge } from '@/components/ui/badge';
 import { 
     ArrowRight, 
     LayoutGrid,
-    ClipboardCheck,
-    Clock,
-    Activity,
     Target,
     ShieldAlert
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
+import { IconComponent } from '@/components/icons';
 
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
-    <section id={id} className={cn("w-full py-20 md:py-32", className)}>
+    <section id={id} className={cn("w-full py-16 md:py-24", className)}>
         <div className="container mx-auto max-w-[1200px] px-6">
             {children}
         </div>
@@ -132,7 +130,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         <div className="bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             
             {/* 1. HERO SECTION — ONE GLANCE MANDATE */}
-            <section className="relative w-full bg-[#F7F8FA] pt-12 pb-12 md:pt-16 md:pb-16 overflow-hidden min-h-[85vh] flex flex-col justify-center border-b border-zinc-200">
+            <section className="relative w-full bg-[#F7F8FA] pt-12 pb-12 overflow-hidden min-h-[80vh] flex flex-col justify-center border-b border-zinc-200">
                 <div className="container mx-auto max-w-[1200px] px-6">
                     <div className="grid lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-16 items-center">
                         
@@ -232,62 +230,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* 3. WHAT THIS SYSTEM DOES */}
-            <Section>
-                <div className="grid md:grid-cols-3 gap-10">
-                    {[
-                        { t: "Pre-built SOPs", d: "Everything already defined", i: ClipboardCheck },
-                        { t: "Daily tracking", d: "Tasks updated as work happens", i: Clock },
-                        { t: "Live dashboard", d: "See what’s done vs missed instantly", i: Activity }
-                    ].map((card, i) => (
-                        <div key={i} className="bg-white p-16 rounded-[3rem] border border-zinc-200 shadow-sm hover:shadow-2xl transition-all duration-500 text-center space-y-8 group">
-                            <div className="w-20 h-20 rounded-2xl bg-[#0F3D2E]/5 flex items-center justify-center text-[#0F3D2E] mx-auto group-hover:bg-[#0F3D2E] group-hover:text-white transition-all shadow-inner">
-                                <card.i className="w-10 h-10" />
-                            </div>
-                            <div className="space-y-3">
-                                <h4 className="text-3xl font-black uppercase italic leading-tight tracking-tighter">{card.t}</h4>
-                                <p className="text-[#5B6670] text-xl font-medium italic">{card.d}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </Section>
-
-            {/* 4. HOW IT WORKS (ROADMAP) */}
-            <Section className="bg-[#F7F8FA] border-y border-[#E6E8EC]">
-                <div className="space-y-20">
-                    <div className="text-center space-y-4">
-                        <h2 className="text-[32px] md:text-[48px] font-black text-[#0B0F14] uppercase italic tracking-tight">Start in minutes</h2>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                        {[
-                            { t: "Download system", d: "Get your industry-specific file with pre-built SOPs." },
-                            { t: "Open in Sheets", d: "Upload once. Access from phone or desktop." },
-                            { t: "Share with team", d: "Assign roles. Lock structure so nothing breaks." },
-                            { t: "See everything live", d: "Track tasks as they get done. Know what’s missed." }
-                        ].map((step, i) => (
-                            <div className="bg-white border border-zinc-200 p-10 rounded-[2.5rem] space-y-8 hover:shadow-xl transition-all group" key={i}>
-                                <div className="w-14 h-14 rounded-xl bg-[#F7F8FA] border border-zinc-200 flex items-center justify-center text-[#0B0F14] font-black group-hover:bg-[#0F3D2E] group-hover:text-white transition-all text-2xl italic shadow-inner">
-                                    {i+1}
-                                </div>
-                                <div className="space-y-2">
-                                    <h4 className="font-black text-xl uppercase italic leading-tight tracking-tight">{step.t}</h4>
-                                    <p className="text-sm text-[#5B6670] font-medium italic leading-relaxed">{step.d}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="text-center pt-8">
-                        <p className="text-[22px] md:text-[32px] font-black text-[#0B0F14] uppercase italic tracking-tighter">
-                            👉 That’s it. Your operations are now structured.
-                        </p>
-                    </div>
-                </div>
-            </Section>
-
-            {/* 5. SYSTEM ARCHITECTURE (WHITE CARDS) */}
+            {/* 3. SYSTEM ARCHITECTURE (WHITE CARDS) */}
             <Section className="bg-white">
                 <div className="space-y-20">
                     <div className="text-center space-y-5">
@@ -319,30 +262,10 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* 7. WHAT THIS PREVENTS */}
-            <Section className="bg-[#F7F8FA] border-y border-[#E6E8EC]">
-                <div className="max-w-[1000px] mx-auto space-y-20">
-                    <h2 className="text-[32px] md:text-[48px] font-black text-[#0B0F14] text-center uppercase italic tracking-tight">What this prevents</h2>
-                    <div className="grid md:grid-cols-3 gap-16">
-                        {content.prevents.map((item, i) => (
-                            <div key={i} className="space-y-6 text-center group">
-                                <div className="w-24 h-24 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 mx-auto group-hover:scale-110 group-hover:bg-red-500 group-hover:text-white transition-all duration-500 shadow-inner">
-                                    <ShieldAlert className="w-12 h-12" />
-                                </div>
-                                <div className="space-y-2">
-                                    <h4 className="font-black text-2xl uppercase italic leading-tight tracking-tighter">{item.t}</h4>
-                                    <p className="text-lg text-[#5B6670] italic font-medium leading-relaxed">{item.d}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </Section>
-
-            {/* 8. PRICING ENGINE */}
+            {/* 4. PRICING ENGINE */}
             <PricingClient pack={pack} />
 
-            {/* 11. FINAL CTA */}
+            {/* 5. FINAL CTA */}
             <Section className="bg-[#0F3D2E] text-white text-center py-40 md:py-56">
                 <div className="max-w-4xl mx-auto space-y-16">
                     <div className="space-y-6">
