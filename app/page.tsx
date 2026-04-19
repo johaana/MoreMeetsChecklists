@@ -56,11 +56,11 @@ const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green"
             "absolute z-30 bg-white/95 backdrop-blur-md px-2 py-1 rounded-lg shadow-xl flex items-center gap-2 border border-[#E6E8EC] animate-in fade-in zoom-in duration-700 whitespace-nowrap",
             className
         )} style={{ animationDelay: delay }}>
-            <span className="relative flex h-1.5 w-1.5">
-                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-100 scale-[4.5]", pingColors[color as keyof typeof pingColors])}></span>
-                <span className={cn("relative inline-flex rounded-full h-1.5 w-1.5", pingColors[color as keyof typeof pingColors])}></span>
+            <span className="relative flex h-1 w-1">
+                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-100 scale-[4]", pingColors[color as keyof typeof pingColors])}></span>
+                <span className={cn("relative inline-flex rounded-full h-1 w-1", pingColors[color as keyof typeof pingColors])}></span>
             </span>
-            <span className="text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
+            <span className="text-[7px] md:text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
         </div>
     );
 };
@@ -75,7 +75,15 @@ export default function Home() {
     if (!mounted) return null;
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
-        <div className={cn("relative group", isMobile ? "block md:hidden mt-2 mb-4 max-w-[82%] mx-auto" : "hidden md:block w-full")}>
+        <div className={cn("relative group", isMobile ? "block md:hidden mt-2 mb-4 max-w-[95%] mx-auto" : "hidden md:block w-full")}>
+            {isMobile && (
+                <>
+                    <AnimatedAnnotation className="top-[15%] -left-1" color="red" delay="0.5s">Missed</AnimatedAnnotation>
+                    <AnimatedAnnotation className="top-[5%] -right-1" color="green" delay="1s">Completed</AnimatedAnnotation>
+                    <AnimatedAnnotation className="bottom-[25%] -left-2" color="blue" delay="1.5s">Dashboard</AnimatedAnnotation>
+                </>
+            )}
+            
             <div className="bg-[#111] h-6 md:h-9 w-full rounded-t-lg md:rounded-t-[14px] flex items-center px-4 gap-1.5 border border-white/10">
                 <div className="flex gap-1 md:gap-1.5">
                     <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-red-500/30" />
@@ -93,12 +101,12 @@ export default function Home() {
                 <img 
                     src={DASHBOARD_IMAGE} 
                     alt="Sovereign Dashboard" 
-                    className="w-full h-auto object-cover aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
+                    className="w-full h-auto object-cover aspect-[16/8] md:aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
                 />
             </div>
             
-            <div className="mt-3 text-center">
-                <p className="text-[7px] md:text-[8px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
+            <div className="mt-2 text-center">
+                <p className="text-[6px] md:text-[8px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
                     Sovereign Technical implementation proof
                 </p>
             </div>
@@ -111,13 +119,11 @@ export default function Home() {
 
             <main className="flex-1">
                 
-                {/* HERO SECTION - PT-14 FOR COMPACT MOBILE FOLD */}
-                <section className="w-full bg-[#F7F8FA] pt-14 pb-8 md:pt-24 md:pb-24 overflow-hidden min-h-[85svh] flex flex-col justify-center">
+                <section className="w-full bg-[#F7F8FA] pt-16 pb-8 md:pt-24 md:pb-24 overflow-hidden min-h-[85svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
                         <div className="grid lg:grid-cols-[1.2fr,1fr] gap-6 lg:gap-16 items-center">
                             
-                            {/* LEFT SIDE: NARRATIVE */}
-                            <div className="flex flex-col items-start space-y-3 md:space-y-8 relative z-20">
+                            <div className="flex flex-col items-start space-y-4 md:space-y-8 relative z-20">
                                 <div className="space-y-1 md:space-y-2">
                                     <h1 className="text-[30px] md:text-[50px] lg:text-[64px] font-black text-[#0B0F14] leading-[1] md:leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
                                         STOP CHASING YOUR TEAM.
@@ -128,15 +134,6 @@ export default function Home() {
                                     <p className="text-base md:text-[24px] text-[#5B6670] italic font-medium leading-tight pt-1 md:pt-4">
                                         Even when you’re not there.
                                     </p>
-                                </div>
-
-                                {/* MOBILE-FIRST CONVERSION BUTTON */}
-                                <div className="md:hidden w-full pt-1">
-                                    <button className="h-[54px] px-8 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-sm shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none w-full">
-                                        <Link href="/library" className="flex items-center gap-3">
-                                            Start Your System <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                        </Link>
-                                    </button>
                                 </div>
 
                                 <TechnicalProof isMobile />
@@ -162,16 +159,16 @@ export default function Home() {
                                     ))}
                                 </div>
 
-                                <div className="space-y-4 w-full pt-2 md:pt-4">
-                                    <div className="hidden md:flex flex-row items-center gap-8">
-                                        <div className="flex flex-col items-start">
+                                <div className="space-y-4 w-full pt-4">
+                                    <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-8">
+                                        <div className="flex flex-col items-center sm:items-start order-2 sm:order-1">
                                             <div className="flex items-baseline gap-2">
-                                                <p className="text-[32px] font-black text-[#0B0F14] italic tracking-tight">₹2,999</p>
+                                                <p className="text-[28px] md:text-[32px] font-black text-[#0B0F14] italic tracking-tight">₹2,999</p>
                                                 <span className="text-xs font-bold text-[#5B6670] line-through">₹4,999</span>
                                             </div>
-                                            <p className="text-[11px] font-black text-[#5B6670] uppercase tracking-widest">One-time • Own forever</p>
+                                            <p className="text-[10px] md:text-[11px] font-black text-[#5B6670] uppercase tracking-widest">One-time • Own forever</p>
                                         </div>
-                                        <button className="h-[64px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group">
+                                        <button className="h-[56px] md:h-[64px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-base md:text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group order-1 sm:order-2 w-full sm:w-auto">
                                             <Link href="/library" className="flex items-center gap-3">
                                                 Start Your System <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                                             </Link>
@@ -185,21 +182,11 @@ export default function Home() {
                                 </div>
                             </div>
 
-                            {/* RIGHT SIDE: DESKTOP DASHBOARD PROOF */}
                             <div className="relative lg:-ml-44 lg:pt-16 hidden md:block">
                                 <div className="relative mx-auto w-fit scale-110 lg:scale-125 transition-all duration-1000">
-                                    
-                                    <AnimatedAnnotation className="top-[32%] -left-2" color="red" delay="0.5s">
-                                        Missed tasks
-                                    </AnimatedAnnotation>
-
-                                    <AnimatedAnnotation className="top-[12%] -right-2" color="green" delay="1s">
-                                        Completed tasks
-                                    </AnimatedAnnotation>
-
-                                    <AnimatedAnnotation className="bottom-[18%] -left-6" color="blue" delay="1.5s">
-                                        Live dashboard
-                                    </AnimatedAnnotation>
+                                    <AnimatedAnnotation className="top-[32%] -left-2" color="red" delay="0.5s">Missed tasks</AnimatedAnnotation>
+                                    <AnimatedAnnotation className="top-[12%] -right-2" color="green" delay="1s">Completed tasks</AnimatedAnnotation>
+                                    <AnimatedAnnotation className="bottom-[18%] -left-6" color="blue" delay="1.5s">Live dashboard</AnimatedAnnotation>
 
                                     <div className="rounded-[24px] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.12)] bg-white border border-[#E6E8EC] relative max-w-lg">
                                         <div className="bg-[#0B0F14] h-10 w-full flex items-center px-4 gap-2">
@@ -214,27 +201,17 @@ export default function Home() {
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <img 
-                                            src={DASHBOARD_IMAGE} 
-                                            alt="Master Operational System" 
-                                            className="w-full h-auto object-cover grayscale-[0.05]" 
-                                        />
+                                        <img src={DASHBOARD_IMAGE} alt="Master Operational System" className="w-full h-auto object-cover grayscale-[0.05]" />
                                     </div>
-                                    
                                     <div className="mt-8 text-center">
-                                        <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
-                                            sample of restaurant operating dashboard
-                                        </p>
+                                        <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">sample of restaurant operating dashboard</p>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </section>
 
-                {/* SECTOR COMMAND */}
                 <Section className="bg-white border-y border-[#E6E8EC]">
                     <div className="space-y-10 md:space-y-12">
                         <div className="text-center space-y-3 md:space-y-4">
@@ -262,13 +239,11 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* PROBLEM SECTION */}
                 <Section className="bg-[#F7F8FA]">
                     <div className="max-w-[800px] mx-auto text-center space-y-10">
                         <div className="space-y-4">
                             <h2 className="text-[28px] md:text-[44px] font-bold text-[#0B0F14] leading-tight tracking-tight uppercase italic">Why operations break</h2>
                         </div>
-                        
                         <div className="grid md:grid-cols-2 gap-8 md:gap-12 text-left">
                             <div className="space-y-4 md:space-y-6">
                                 <h4 className="text-[10px] md:text-[11px] font-black text-[#5B6670] uppercase tracking-[0.3em]">Common Pitfalls</h4>
@@ -301,7 +276,6 @@ export default function Home() {
                                 </ul>
                             </div>
                         </div>
-                        
                         <p className="text-xl md:text-[22px] font-black text-[#0B0F14] pt-4 uppercase italic">
                             Small misses. Every day. <br/>
                             <span className="text-red-500">That’s where control is lost.</span>
@@ -309,7 +283,6 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* SOLUTION SECTION */}
                 <Section className="bg-white border-y border-[#E6E8EC]">
                     <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
                         <div className="space-y-8 md:space-y-10">
@@ -348,20 +321,16 @@ export default function Home() {
                             <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E6E8EC] bg-black p-1.5 md:p-2">
                                  <img src={CINEMA_TASKS_IMAGE} alt="Cinema Daily Tasks" className="w-full h-auto rounded-xl" />
                             </div>
-                            <p className="text-[7px] md:text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic text-center">
-                                sample daily tasks cinema product
-                            </p>
+                            <p className="text-[7px] md:text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic text-center">sample daily tasks cinema product</p>
                         </div>
                     </div>
                 </Section>
 
-                {/* HOW IT WORKS */}
                 <Section className="bg-[#F7F8FA]">
                     <div className="max-w-[1200px] mx-auto space-y-12 md:space-y-16">
                         <div className="text-center space-y-2">
                             <h2 className="text-[28px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">Start in minutes</h2>
                         </div>
-                        
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                             {[
                                 { t: "Download system", d: "Get your industry file with pre-built SOPs — ready to use.", i: Download },
@@ -380,27 +349,18 @@ export default function Home() {
                                 </div>
                             ))}
                         </div>
-
                         <div className="text-center pt-4 md:pt-8">
-                            <p className="text-lg md:text-[24px] font-black text-[#0B0F14] uppercase italic tracking-tighter">
-                                👉 That’s it. Your operations are now structured.
-                            </p>
+                            <p className="text-lg md:text-[24px] font-black text-[#0B0F14] uppercase italic tracking-tighter">👉 That’s it. Your operations are now structured.</p>
                         </div>
                     </div>
                 </Section>
 
-                {/* SOVEREIGN VS SAAS */}
                 <Section className="bg-white border-y border-[#E6E8EC]">
                     <div className="max-w-4xl mx-auto space-y-12 md:space-y-16">
                         <div className="text-center space-y-3 md:space-y-4">
                             <h2 className="text-[28px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">System Sovereignty</h2>
                             <p className="text-[#5B6670] text-sm md:text-base font-medium italic">Why Elite groups choose MoreMeets over standard SaaS.</p>
                         </div>
-                        
-                        <div className="md:hidden flex justify-center mb-4">
-                            <Badge variant="outline" className="text-[8px] font-black uppercase text-zinc-400 border-zinc-200">← Swipe to compare →</Badge>
-                        </div>
-
                         <div className="overflow-x-auto no-scrollbar rounded-2xl md:rounded-3xl border border-zinc-100 shadow-2xl">
                             <table className="w-full text-left min-w-[500px] md:min-w-0">
                                 <thead className="bg-[#0B0F14] text-white">
@@ -430,42 +390,30 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* TESTIMONIALS */}
                 <TestimonialsSection />
-
-                {/* FAQ */}
                 <FaqSection />
 
-                {/* FINAL CTA */}
                 <Section className="bg-[#0F3D2E] text-white text-center py-24 md:py-32">
                     <div className="max-w-[800px] mx-auto space-y-10 md:space-y-12">
                         <div className="space-y-4 md:space-y-6">
                             <h2 className="text-[32px] md:text-[64px] font-bold leading-[0.95] md:leading-[0.9] tracking-tighter uppercase italic">Start running your system today</h2>
                             <p className="text-base md:text-[18px] text-white/60 font-medium italic">Setup takes less than 10 minutes</p>
                         </div>
-                        
                         <div className="flex flex-col items-center gap-6 md:gap-8">
                             <button className="h-[70px] md:h-[80px] px-10 md:px-12 rounded-[16px] bg-[#F4A261] text-white font-black uppercase italic text-xl md:text-2xl shadow-[0_20px_50px_-10px_rgba(244,162,97,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group w-full max-w-sm sm:w-auto">
-                                <Link href="/library" className="flex items-center gap-4 justify-center">
-                                    Get Your System <ArrowRight className="w-6 h-6 md:w-8 md:h-8 transition-transform group-hover:translate-x-2" />
-                                </Link>
+                                <Link href="/library" className="flex items-center gap-4 justify-center">Get Your System <ArrowRight className="w-6 h-6 md:w-8 md:h-8 transition-transform group-hover:translate-x-2" /></Link>
                             </button>
-                            
                             <div className="flex flex-col items-center">
                                 <div className="flex items-baseline gap-3">
                                     <p className="text-[32px] md:text-[40px] font-black italic">₹2,999</p>
                                     <span className="text-lg md:text-xl font-bold text-white/30 italic">/ $29</span>
                                 </div>
-                                <p className="text-[11px] md:text-[12px] font-black uppercase tracking-[0.3em] text-white/40">
-                                    One-time payment • Own forever
-                                </p>
+                                <p className="text-[11px] md:text-[12px] font-black uppercase tracking-[0.3em] text-white/40">One-time payment • Own forever</p>
                             </div>
                         </div>
                     </div>
                 </Section>
-
             </main>
-            
             <Footer />
         </div>
     );

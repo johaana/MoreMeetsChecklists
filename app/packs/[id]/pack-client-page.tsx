@@ -21,6 +21,27 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
     </section>
 );
 
+const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green" }: { children: React.ReactNode, className?: string, delay?: string, color?: "green" | "red" | "blue" }) => {
+    const pingColors = {
+        green: "bg-emerald-500",
+        red: "bg-red-500",
+        blue: "bg-blue-500"
+    };
+
+    return (
+        <div className={cn(
+            "absolute z-30 bg-white/95 backdrop-blur-md px-2 py-1 rounded-lg shadow-xl flex items-center gap-2 border border-[#E6E8EC] animate-in fade-in zoom-in duration-700 whitespace-nowrap",
+            className
+        )} style={{ animationDelay: delay }}>
+            <span className="relative flex h-1 w-1">
+                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-100 scale-[4]", pingColors[color as keyof typeof pingColors])}></span>
+                <span className={cn("relative inline-flex rounded-full h-1 w-1", pingColors[color as keyof typeof pingColors])}></span>
+            </span>
+            <span className="text-[7px] md:text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
+        </div>
+    );
+};
+
 const getIndustryContent = (id: string) => {
     const defaults = {
         pitfalls: [
@@ -100,7 +121,15 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     if (!mounted) return null;
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
-        <div className={cn("relative group", isMobile ? "block md:hidden mt-1 mb-4 max-w-[82%] mx-auto" : "hidden md:block w-full")}>
+        <div className={cn("relative group", isMobile ? "block md:hidden mt-2 mb-4 max-w-[95%] mx-auto" : "hidden md:block w-full")}>
+            {isMobile && (
+                <>
+                    <AnimatedAnnotation className="top-[15%] -left-1" color="red" delay="0.5s">Misses</AnimatedAnnotation>
+                    <AnimatedAnnotation className="top-[5%] -right-1" color="green" delay="1s">Completed</AnimatedAnnotation>
+                    <AnimatedAnnotation className="bottom-[25%] -left-2" color="blue" delay="1.5s">Dashboard</AnimatedAnnotation>
+                </>
+            )}
+            
             <div className="bg-[#111] h-6 md:h-9 w-full rounded-t-lg md:rounded-t-[14px] flex items-center px-4 gap-1.5 border border-white/10">
                 <div className="flex gap-1 md:gap-1.5">
                     <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-red-500/30" />
@@ -118,12 +147,12 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 <img 
                     src={heroImageUrl} 
                     alt={pack.title} 
-                    className="w-full h-auto object-cover aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
+                    className="w-full h-auto object-cover aspect-[16/8] md:aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
                 />
             </div>
             
-            <div className="mt-3 text-center">
-                <p className="text-[7px] md:text-[8px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
+            <div className="mt-2 text-center">
+                <p className="text-[6px] md:text-[8px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
                     Sovereign Technical implementation proof
                 </p>
             </div>
@@ -133,12 +162,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             
-            {/* HERO SECTION - PT-14 FOR COMPACT MOBILE FOLD */}
-            <section className="relative w-full bg-[#F7F8FA] pt-14 pb-8 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
+            <section className="relative w-full bg-[#F7F8FA] pt-16 pb-8 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
                 <div className="container mx-auto max-w-[1200px] px-6">
                     <div className="grid lg:grid-cols-[1.1fr,1fr] gap-6 lg:gap-16 items-center">
                         
-                        <div className="flex flex-col items-start space-y-3 md:space-y-8 relative z-20">
+                        <div className="flex flex-col items-start space-y-4 md:space-y-8 relative z-20">
                             <div className="space-y-1">
                                 <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] text-zinc-400 mb-0.5 block">/ {pack.category.toUpperCase()}</span>
                                 <h1 className="text-[30px] md:text-[56px] lg:text-[68px] font-black text-[#0B0F14] leading-[1.1] md:leading-[0.85] tracking-tighter uppercase italic">
@@ -148,15 +176,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <p className="text-sm md:text-xl text-[#5B6670] italic font-medium leading-tight pt-1">
                                     Run {pack.title.toLowerCase().replace(' operating system', '')} daily without chasing staff.
                                 </p>
-                            </div>
-
-                            {/* MOBILE: QUICK CONVERSION BUTTON */}
-                            <div className="md:hidden w-full pt-1">
-                                <button className="h-[54px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-sm shadow-[0_15px_35px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all border-none w-full">
-                                    <Link href="#pricing" className="flex items-center gap-3">
-                                        Deploy system → ₹{pack.priceINR}
-                                    </Link>
-                                </button>
                             </div>
 
                             <TechnicalProof isMobile />
@@ -170,7 +189,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <span className="flex items-center gap-2 text-zinc-900 font-headline"><Target className="w-3.5 h-3.5 text-primary" /> {totalTasks}+ POINTS</span>
                             </div>
 
-                            <div className="w-full pt-2 hidden md:block">
+                            <div className="w-full pt-2">
                                 <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-8">
                                     <button className="h-14 md:h-[56px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-base shadow-[0_15px_35px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all border-none group w-full sm:w-auto">
                                         <Link href="#pricing" className="flex items-center gap-3">
@@ -185,7 +204,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
                         </div>
 
-                        {/* DESKTOP VISUAL */}
                         <div className="relative z-10 w-full hidden md:block">
                             <TechnicalProof />
                         </div>
@@ -194,14 +212,12 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </section>
 
-            {/* 2. WHY THIS MATTERS */}
             <Section className="bg-white border-y border-[#E6E8EC]">
                 <div className="max-w-[1000px] mx-auto text-center space-y-10 md:space-y-16">
                     <div className="space-y-4">
                         <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50/50 uppercase tracking-[0.4em] font-black text-[9px] md:text-[10px] px-8 py-2 rounded-none italic">Forensic Finding</Badge>
                         <h2 className="text-[26px] md:text-[48px] font-black text-[#0B0F14] uppercase italic tracking-tight leading-tight">Why operations break</h2>
                     </div>
-                    
                     <div className="grid md:grid-cols-2 gap-3 md:gap-4 text-left">
                         {content.pitfalls.map((p, i) => (
                             <div key={i} className="flex items-center gap-4 md:gap-5 p-5 md:p-8 rounded-2xl bg-[#F7F8FA] border border-zinc-100 group">
@@ -213,14 +229,12 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* 3. SYSTEM ARCHITECTURE */}
             <Section className="bg-white">
                 <div className="space-y-10 md:space-y-20">
                     <div className="text-center space-y-4">
                         <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px] px-10 py-3 rounded-full bg-primary/5">Institutional Engine</Badge>
                         <h2 className="text-[26px] md:text-[48px] font-black text-[#0B0F14] uppercase italic tracking-tight leading-tight">What’s inside the system</h2>
                     </div>
-                    
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 max-w-7xl mx-auto">
                         {pack.checklists.map((checklist, index) => (
                             <div key={index} className="bg-white p-6 md:p-12 rounded-[1.5rem] md:rounded-[2.5rem] space-y-6 group hover:shadow-[0_40px_100px_-15px_rgba(0,0,0,0.08)] transition-all duration-700 border border-zinc-100">
@@ -243,11 +257,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
             
-            {/* PRICING Hub anchor for the floating CTA */}
             <div id="pricing" />
             <PricingClient pack={pack} />
 
-            {/* 5. FINAL CTA */}
             <Section className="bg-[#0F3D2E] text-white text-center py-24 md:py-48">
                 <div className="max-w-4xl mx-auto space-y-12 md:space-y-16">
                     <div className="space-y-4">
@@ -256,7 +268,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         </h2>
                         <p className="text-base md:text-2xl text-white/60 font-bold italic">Deploy the Sovereign Master Engine in under 10 minutes.</p>
                     </div>
-                    
                     <button className="h-16 md:h-20 px-10 md:px-16 rounded-xl bg-[#F4A261] text-white font-black uppercase italic text-base md:text-xl shadow-2xl hover:scale-[1.05] active:scale-95 transition-all border-none group w-full max-w-sm mx-auto flex items-center justify-center">
                         <Link href="#pricing" className="flex items-center gap-3">
                             Deploy System Now <ArrowRight className="w-6 h-6 md:w-8 md:h-8 transition-transform group-hover:translate-x-3" />
