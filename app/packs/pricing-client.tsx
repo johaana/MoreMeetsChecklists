@@ -104,7 +104,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     }
 
     return (
-        <section className="w-full py-12 md:py-20 bg-gradient-to-b from-[#0B0F14] to-[#0E1621] text-white border-t border-white/5" id="pricing">
+        <section className="w-full py-10 md:py-20 bg-gradient-to-b from-[#0B0F14] to-[#0E1621] text-white border-t border-white/5" id="pricing">
             <div className="container px-4 mx-auto max-w-5xl">
                 <div className="grid lg:grid-cols-[1fr,400px] gap-8 md:gap-12 items-center">
                     
@@ -124,7 +124,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     {region === 'INDIA' ? `₹${pack.anchorPriceINR}` : `$${pack.anchorPriceUSD}`}
                                 </span>
                                 <h3 className="text-[38px] md:text-6xl font-black text-white italic tracking-tighter leading-none pt-1">
-                                    {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                                    {region === 'INDIA' ? `₹${pack.priceINR}` : `$${region === 'GLOBAL' && pack.priceUSD ? pack.priceUSD : '29'}`}
                                 </h3>
                             </div>
                             <div className="hidden md:block w-px h-16 bg-white/10" />
@@ -166,7 +166,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                 <div className="pt-2">
                                     <p className="text-[12px] md:text-sm font-medium text-zinc-400 italic">Start using your system today</p>
                                     <p className="text-2xl md:text-3xl font-black text-white italic tracking-tighter pt-0.5">
-                                        {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                                        {region === 'INDIA' ? `₹${pack.priceINR}` : `$${region === 'GLOBAL' && pack.priceUSD ? pack.priceUSD : '29'}`}
                                     </p>
                                 </div>
                             </div>

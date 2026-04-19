@@ -100,21 +100,21 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     if (!mounted) return null;
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
-        <div className={cn("relative group w-full", isMobile ? "block md:hidden my-4" : "hidden md:block")}>
-            <div className="bg-[#111] h-7 md:h-9 w-full rounded-t-xl md:rounded-t-[14px] flex items-center px-4 gap-1.5 border border-white/10">
+        <div className={cn("relative group w-full", isMobile ? "block md:hidden my-6" : "hidden md:block")}>
+            <div className="bg-[#111] h-8 md:h-9 w-full rounded-t-xl md:rounded-t-[14px] flex items-center px-4 gap-1.5 border border-white/10">
                 <div className="flex gap-1 md:gap-1.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-red-500/30" />
                     <div className="w-1.5 h-1.5 rounded-full bg-amber-500/30" />
                     <div className="w-1.5 h-1.5 rounded-full bg-green-500/30" />
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <div className="bg-black/40 border border-white/5 rounded px-3 py-0.5 text-[6px] md:text-[7px] font-black text-white/20 uppercase tracking-[0.3em] italic shadow-inner">
+                    <div className="bg-black/40 border border-white/5 rounded px-4 py-0.5 text-[7px] md:text-[8px] font-black text-white/20 uppercase tracking-[0.3em] italic shadow-inner">
                         {pack.id.toUpperCase()}_MASTER_ENGINE.xlsx
                     </div>
                 </div>
             </div>
 
-            <div className="rounded-b-xl md:rounded-b-[14px] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.15)] bg-white border border-[#E6E8EC] border-t-0 relative">
+            <div className="rounded-b-xl md:rounded-b-[14px] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.2)] bg-white border border-[#E6E8EC] border-t-0 relative">
                 <img 
                     src={heroImageUrl} 
                     alt={pack.title} 
@@ -123,7 +123,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
             </div>
             
             <div className="mt-2 text-center">
-                <p className="text-[7px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
+                <p className="text-[7px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
                     Sovereign Technical implementation proof
                 </p>
             </div>
@@ -133,15 +133,15 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             
-            {/* HERO SECTION — Reduced pt-36 to pt-24 to take it slightly up */}
-            <section className="relative w-full bg-[#F7F8FA] pt-24 pb-10 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
+            {/* HERO SECTION - REFINED PT FOR MOBILE */}
+            <section className="relative w-full bg-[#F7F8FA] pt-20 pb-8 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
                 <div className="container mx-auto max-w-[1200px] px-6">
                     <div className="grid lg:grid-cols-[1.1fr,1fr] gap-8 lg:gap-16 items-center">
                         
                         <div className="flex flex-col items-start space-y-6 md:space-y-8 relative z-20">
                             <div className="space-y-2">
-                                <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.5em] text-zinc-400 mb-0.5 block">/ {pack.category.toUpperCase()}</span>
-                                <h1 className="text-[32px] md:text-[56px] lg:text-[68px] font-black text-[#0B0F14] leading-[0.95] md:leading-[0.85] tracking-tighter uppercase italic">
+                                <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] text-zinc-400 mb-0.5 block">/ {pack.category.toUpperCase()}</span>
+                                <h1 className="text-[32px] md:text-[56px] lg:text-[68px] font-black text-[#0B0F14] leading-[1] md:leading-[0.85] tracking-tighter uppercase italic">
                                     {pack.title.replace('Operating System', '')} <br/>
                                     <span className="text-[#0F3D2E]">Operating System</span>
                                 </h1>
@@ -150,11 +150,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </p>
                             </div>
 
-                            {/* MOBILE: PRODUCT-FIRST — Image before bullets/CTA */}
+                            {/* MOBILE: PRODUCT-FIRST */}
                             <TechnicalProof isMobile />
 
-                            <div className="border-l-[3px] border-[#0F3D2E] pl-4 md:pl-[20px] space-y-1.5">
-                                <p className="text-[16px] md:text-[18px] font-bold leading-tight text-zinc-900 italic">Even when you’re not there.</p>
+                            <div className="border-l-[3px] border-[#0F3D2E] pl-4 md:pl-[20px] space-y-2">
+                                <p className="text-[16px] md:text-[18px] font-black leading-tight text-zinc-900 italic">Even when you’re not there.</p>
                                 <p className="text-[16px] md:text-[18px] font-bold leading-tight text-zinc-400 italic">Without follow-ups</p>
                                 <p className="text-[16px] md:text-[18px] font-bold leading-tight text-zinc-400 italic">Without depending on memory</p>
                             </div>
@@ -179,7 +179,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
                         </div>
 
-                        {/* DESKTOP VISUAL — Maintained side-by-side */}
+                        {/* DESKTOP VISUAL */}
                         <div className="relative z-10 w-full hidden md:block">
                             <TechnicalProof />
                         </div>
