@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { 
     Download, 
     Loader2, 
-    ShieldCheck,
     Lock,
     FileSpreadsheet,
     ArrowRight,
@@ -22,7 +21,6 @@ import { Input } from '../components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
 import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/utils';
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     const { toast } = useToast();
@@ -187,7 +185,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         />
                                     </div>
                                 ) : (
-                                    <button className="w-full h-16 text-[#0B0F14] font-black text-base rounded-xl border-none uppercase italic tracking-widest shadow-xl transition-all active:scale-95 flex items-center justify-center gap-3 group hover:scale-[1.02] max-w-[360px]" style={{ backgroundColor: CONVERSION_AMBER }}>
+                                    <button className="w-full h-16 text-[#0B0F14] font-black text-base rounded-xl border-none uppercase italic tracking-widest shadow-xl transition-all active:scale-[0.98] flex items-center justify-center gap-3 group hover:scale-[1.02] max-w-[360px]" style={{ backgroundColor: CONVERSION_AMBER }}>
                                         <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center gap-3">
                                             Deploy Now <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1.5" />
                                         </Link>

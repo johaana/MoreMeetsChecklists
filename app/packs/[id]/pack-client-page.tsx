@@ -5,10 +5,9 @@ import type { PremiumPack } from "@/lib/premium-packs";
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { 
-    ArrowRight, 
     LayoutGrid,
     Target,
-    ShieldAlert,
+    ArrowRight,
     CheckCircle2
 } from 'lucide-react';
 import Link from 'next/link';
@@ -20,7 +19,7 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
         <div className="container mx-auto max-w-[1200px] px-6">
             {children}
         </div>
-Section
+    </section>
 );
 
 const getIndustryContent = (id: string) => {
@@ -34,11 +33,6 @@ const getIndustryContent = (id: string) => {
             "Staff 'guess' procedures when managers are away.",
             "Institutional memory leaves when staff resign.",
             "Audit non-conformance detected too late."
-        ],
-        prevents: [
-            { t: "Safety failures", d: "Prevents fatal gaps in protocols." },
-            { t: "Operational drift", d: "Ensures consistent quality every day." },
-            { t: "PR disasters", d: "Protects your brand reputation instantly." }
         ]
     };
 
@@ -53,11 +47,6 @@ const getIndustryContent = (id: string) => {
                 "Restroom hygiene cycles drift, leading to negative reviews.",
                 "Technical uptime fails because asset logs are paper-based.",
                 "Box office revenue leakage from unverified 'voided' bills."
-            ],
-            prevents: [
-                { t: "Projection failure", d: "Zero-fail technical checks." },
-                { t: "Revenue leakage", d: "Stops concession profit bleed." },
-                { t: "Safety disasters", d: "Daily physical exit verification." }
             ]
         },
         'restaurants': {
@@ -70,11 +59,6 @@ const getIndustryContent = (id: string) => {
                 "Digital reputation drops as 24h review pulse is ignored.",
                 "No institutional memory stays when your best Chef resigns.",
                 "Margin erosion from unverified aggregator cancellations."
-            ],
-            prevents: [
-                { t: "Food safety incidents", d: "Zero-fail HACCP compliance." },
-                { t: "Margin erosion", d: "Stops unmonitored waste and theft." },
-                { t: "Service collapse", d: "Ensures kitchen readiness for rush." }
             ]
         },
         'hotels_and_resorts': {
@@ -87,11 +71,6 @@ const getIndustryContent = (id: string) => {
                 "5-star reputation is destroyed by single hygiene lapses.",
                 "Minibar revenue bleeds out without a structured log.",
                 "Guest Wi-Fi and tech assets fail due to lack of daily audits."
-            ],
-            prevents: [
-                { t: "Refund requests", d: "Ensures 100% room parity." },
-                { t: "Guest safety gaps", d: "Verified perimeter and life safety." },
-                { t: "Brand dilution", d: "Maintains 5-star standards daily." }
             ]
         },
         'healthcare_and_hospital_operations': {
@@ -104,11 +83,6 @@ const getIndustryContent = (id: string) => {
                 "Infection control breaches in ICU going undetected.",
                 "Pharmacy cold-chain integrity lapses during power flips.",
                 "Unbilled clinical consumables leading to massive margin loss."
-            ],
-            prevents: [
-                { t: "Clinical errors", d: "Zero-fail surgical & medication safety." },
-                { t: "Audit failure", d: "Permanent NABH/JCI readiness." },
-                { t: "Revenue leakage", d: "100% billing parity for consumables." }
             ]
         }
     };
