@@ -37,7 +37,7 @@ const DASHBOARD_IMAGE = "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015
 const CINEMA_TASKS_IMAGE = "https://i.postimg.cc/G278vKh8/Screenshot-2026-04-18-004329.png";
 
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
-    <section id={id} className={cn("w-full py-16 md:py-24", className)}>
+    <section id={id} className={cn("w-full py-12 md:py-24", className)}>
         <div className="container mx-auto max-w-[1200px] px-6">
             {children}
         </div>
@@ -81,31 +81,31 @@ export default function Home() {
             <main className="flex-1">
                 
                 {/* HERO SECTION - HIGH HORIZON */}
-                <section className="w-full bg-[#F7F8FA] pt-8 pb-16 md:pt-16 md:pb-24 overflow-hidden min-h-[90svh] flex flex-col justify-center">
+                <section className="w-full bg-[#F7F8FA] pt-8 pb-12 md:pt-16 md:pb-24 overflow-hidden min-h-[85svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
-                        <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-16 items-center">
+                        <div className="grid lg:grid-cols-[1.2fr,1fr] gap-10 lg:gap-16 items-center">
                             
                             {/* LEFT SIDE: NARRATIVE */}
-                            <div className="flex flex-col items-start space-y-8 relative z-20">
-                                <div className="space-y-1">
-                                    <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-black text-[#0B0F14] leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
+                            <div className="flex flex-col items-start space-y-6 md:space-y-8 relative z-20">
+                                <div className="space-y-1 md:space-y-2">
+                                    <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-black text-[#0B0F14] leading-[1] md:leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
                                         STOP CHASING YOUR TEAM.
                                     </h1>
-                                    <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-black text-[#0F3D2E] leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
+                                    <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-black text-[#0F3D2E] leading-[1] md:leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
                                         SEE DAILY WORK GETTING DONE.
                                     </h1>
-                                    <p className="text-[20px] md:text-[24px] text-[#5B6670] italic font-medium leading-tight pt-4">
+                                    <p className="text-lg md:text-[24px] text-[#5B6670] italic font-medium leading-tight pt-2 md:pt-4">
                                         Even when you’re not there.
                                     </p>
                                 </div>
 
-                                <div className="border-l-[3px] border-[#0F3D2E] pl-[16px] space-y-2 py-1">
-                                    <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">Without follow-ups</p>
-                                    <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">Without confusion</p>
-                                    <p className="text-[18px] font-medium leading-tight text-[#0B0F14]">Without depending on memory</p>
+                                <div className="border-l-[3px] border-[#0F3D2E] pl-[16px] space-y-1 md:space-y-2 py-0.5 md:py-1">
+                                    <p className="text-[16px] md:text-[18px] font-medium leading-tight text-[#0B0F14]">Without follow-ups</p>
+                                    <p className="text-[16px] md:text-[18px] font-medium leading-tight text-[#0B0F14]">Without confusion</p>
+                                    <p className="text-[16px] md:text-[18px] font-medium leading-tight text-[#0B0F14]">Without depending on memory</p>
                                 </div>
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 w-full">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 md:gap-y-4 w-full">
                                     {[
                                         "Pre-built, editable SOPs",
                                         "Daily task tracking",
@@ -114,30 +114,30 @@ export default function Home() {
                                     ].map((item, i) => (
                                         <div className="flex items-center gap-3 group" key={i}>
                                             <div className="w-5 h-5 rounded-full bg-[#0F3D2E]/10 flex items-center justify-center shrink-0">
-                                                <Check className="w-3 f-3 text-[#0F3D2E]" />
+                                                <Check className="w-3 h-3 text-[#0F3D2E]" />
                                             </div>
                                             <span className="text-sm font-bold text-[#0B0F14]">{item}</span>
                                         </div>
                                     ))}
                                 </div>
 
-                                <div className="space-y-6 w-full pt-4">
-                                    <div className="flex flex-col sm:flex-row items-center gap-8">
+                                <div className="space-y-6 w-full pt-2 md:pt-4">
+                                    <div className="flex flex-col sm:flex-row items-center gap-6 md:gap-8">
                                         <div className="flex flex-col items-center sm:items-start order-2 sm:order-1">
                                             <div className="flex items-baseline gap-2">
-                                                <p className="text-[32px] font-black text-[#0B0F14] italic tracking-tight">₹2,999</p>
+                                                <p className="text-[28px] md:text-[32px] font-black text-[#0B0F14] italic tracking-tight">₹2,999</p>
                                                 <span className="text-xs font-bold text-[#5B6670] line-through">₹4,999</span>
                                             </div>
-                                            <p className="text-[11px] font-black text-[#5B6670] uppercase tracking-widest">One-time • Own forever</p>
+                                            <p className="text-[10px] md:text-[11px] font-black text-[#5B6670] uppercase tracking-widest">One-time • Own forever</p>
                                         </div>
-                                        <button className="h-[64px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group order-1 sm:order-2">
+                                        <button className="h-[60px] md:h-[64px] px-8 md:px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-base md:text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group order-1 sm:order-2 w-full sm:w-auto">
                                             <Link href="/library" className="flex items-center gap-3">
                                                 Start Your System <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                                             </Link>
                                         </button>
                                     </div>
 
-                                    <p className="text-[13px] text-[#5B6670] font-bold uppercase tracking-[0.1em] border-t border-[#E6E8EC] pt-4 leading-relaxed">
+                                    <p className="text-[12px] md:text-[13px] text-[#5B6670] font-bold uppercase tracking-[0.1em] border-t border-[#E6E8EC] pt-4 leading-relaxed text-center sm:text-left">
                                         Built on Excel • Runs on Google Sheets <br/>
                                         No software required • Universal accessibility
                                     </p>
@@ -145,8 +145,8 @@ export default function Home() {
                             </div>
 
                             {/* RIGHT SIDE: DASHBOARD PROOF */}
-                            <div className="relative lg:-ml-44 lg:pt-16">
-                                <div className="relative mx-auto w-fit scale-125 transition-all duration-1000">
+                            <div className="relative lg:-ml-44 lg:pt-16 hidden md:block">
+                                <div className="relative mx-auto w-fit scale-110 lg:scale-125 transition-all duration-1000">
                                     
                                     <AnimatedAnnotation className="top-[32%] -left-2" color="red" delay="0.5s">
                                         Missed tasks
@@ -195,12 +195,12 @@ export default function Home() {
 
                 {/* SECTOR COMMAND - INDUSTRY GRID */}
                 <Section className="bg-white border-y border-[#E6E8EC]">
-                    <div className="space-y-12">
-                        <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[10px]">Strategic Inventory</Badge>
-                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">Select Your Vertical</h2>
+                    <div className="space-y-10 md:space-y-12">
+                        <div className="text-center space-y-3 md:space-y-4">
+                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[9px] md:text-[10px] rounded-full px-4">Strategic Inventory</Badge>
+                            <h2 className="text-[28px] md:text-[44px] font-black text-[#0B0F14] uppercase italic tracking-tight">Select Your Vertical</h2>
                         </div>
-                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 md:gap-4">
                             {[
                                 { name: "Restaurants", id: "restaurants", icon: Utensils },
                                 { name: "Hotels", id: "hotels_and_resorts", icon: Building },
@@ -210,11 +210,11 @@ export default function Home() {
                                 { name: "Facilities", id: "facility_management_blueprint", icon: Building2 },
                                 { name: "Cinemas", id: "cinema_operations_pack", icon: Popcorn }
                             ].map((sector) => (
-                                <Link key={sector.id} href={`/packs/${sector.id}`} className="group flex flex-col items-center gap-4 p-6 rounded-2xl border border-zinc-100 bg-[#F7F8FA] hover:bg-white hover:shadow-xl hover:border-primary/20 transition-all text-center">
-                                    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-zinc-400 group-hover:text-primary group-hover:scale-110 transition-all shadow-sm">
-                                        <sector.icon className="w-6 h-6" />
+                                <Link key={sector.id} href={`/packs/${sector.id}`} className="group flex flex-col items-center gap-3 md:gap-4 p-5 md:p-6 rounded-2xl border border-zinc-100 bg-[#F7F8FA] hover:bg-white hover:shadow-xl hover:border-primary/20 transition-all text-center">
+                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white flex items-center justify-center text-zinc-400 group-hover:text-primary group-hover:scale-110 transition-all shadow-sm">
+                                        <sector.icon className="w-5 h-5 md:w-6 md:h-6" />
                                     </div>
-                                    <span className="text-[10px] font-black uppercase tracking-widest text-zinc-900 leading-tight italic">{sector.name}</span>
+                                    <span className="text-[9px] font-black uppercase tracking-widest text-zinc-900 leading-tight italic">{sector.name}</span>
                                 </Link>
                             ))}
                         </div>
@@ -225,13 +225,13 @@ export default function Home() {
                 <Section className="bg-[#F7F8FA]">
                     <div className="max-w-[800px] mx-auto text-center space-y-10">
                         <div className="space-y-4">
-                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] leading-tight tracking-tight uppercase italic">Why operations break</h2>
+                            <h2 className="text-[28px] md:text-[44px] font-bold text-[#0B0F14] leading-tight tracking-tight uppercase italic">Why operations break</h2>
                         </div>
                         
-                        <div className="grid md:grid-cols-2 gap-12 text-left">
-                            <div className="space-y-6">
-                                <h4 className="text-[11px] font-black text-[#5B6670] uppercase tracking-[0.3em]">Common Pitfalls</h4>
-                                <ul className="space-y-4">
+                        <div className="grid md:grid-cols-2 gap-8 md:gap-12 text-left">
+                            <div className="space-y-4 md:space-y-6">
+                                <h4 className="text-[10px] md:text-[11px] font-black text-[#5B6670] uppercase tracking-[0.3em]">Common Pitfalls</h4>
+                                <ul className="space-y-3 md:space-y-4">
                                     {[
                                         "Work depends on memory of key people",
                                         "Tasks get skipped during busy shifts",
@@ -244,9 +244,9 @@ export default function Home() {
                                     ))}
                                 </ul>
                             </div>
-                            <div className="space-y-6 p-8 rounded-2xl bg-[#FFF5F5] border border-red-100">
-                                <h4 className="text-[11px] font-black text-red-600 uppercase tracking-[0.3em]">The Consequence</h4>
-                                <ul className="space-y-4">
+                            <div className="space-y-4 md:space-y-6 p-6 md:p-8 rounded-2xl bg-[#FFF5F5] border border-red-100">
+                                <h4 className="text-[10px] md:text-[11px] font-black text-red-600 uppercase tracking-[0.3em]">The Consequence</h4>
+                                <ul className="space-y-3 md:space-y-4">
                                     {[
                                         "Managers keep following up manually",
                                         "No real-time visibility into completion",
@@ -261,7 +261,7 @@ export default function Home() {
                             </div>
                         </div>
                         
-                        <p className="text-[22px] font-black text-[#0B0F14] pt-4 uppercase italic">
+                        <p className="text-xl md:text-[22px] font-black text-[#0B0F14] pt-4 uppercase italic">
                             Small misses. Every day. <br/>
                             <span className="text-red-500">That’s where control is lost.</span>
                         </p>
@@ -270,101 +270,107 @@ export default function Home() {
 
                 {/* SOLUTION SECTION - CINEMA PROOF */}
                 <Section className="bg-white border-y border-[#E6E8EC]">
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
-                        <div className="space-y-10">
-                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] leading-tight tracking-tight uppercase italic">This changes everything.</h2>
-                            <div className="space-y-8">
-                                <div className="flex gap-5 group">
-                                    <div className="w-12 h-12 rounded-xl bg-[#0F3D2E]/5 flex items-center justify-center text-[#0F3D2E] shrink-0 group-hover:bg-[#0F3D2E] group-hover:text-white transition-all">
-                                        <ClipboardCheck className="w-6 h-6" />
+                    <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                        <div className="space-y-8 md:space-y-10">
+                            <h2 className="text-[28px] md:text-[44px] font-bold text-[#0B0F14] leading-tight tracking-tight uppercase italic">This changes everything.</h2>
+                            <div className="space-y-6 md:space-y-8">
+                                <div className="flex gap-4 md:gap-5 group">
+                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#0F3D2E]/5 flex items-center justify-center text-[#0F3D2E] shrink-0 group-hover:bg-[#0F3D2E] group-hover:text-white transition-all">
+                                        <ClipboardCheck className="w-5 h-5 md:w-6 md:h-6" />
                                     </div>
                                     <div className="space-y-1">
-                                        <h4 className="text-[18px] font-black text-[#0B0F14] uppercase italic">Tasks are already defined</h4>
-                                        <p className="text-[#5B6670] text-sm font-medium">Over 120+ industry standard SOPs built-in.</p>
+                                        <h4 className="text-base md:text-[18px] font-black text-[#0B0F14] uppercase italic">Tasks are already defined</h4>
+                                        <p className="text-[#5B6670] text-xs md:text-sm font-medium leading-snug">Over 120+ industry standard SOPs built-in.</p>
                                     </div>
                                 </div>
-                                <div className="flex gap-5 group">
-                                    <div className="w-12 h-12 rounded-xl bg-[#0F3D2E]/5 flex items-center justify-center text-[#0F3D2E] shrink-0 group-hover:bg-[#0F3D2E] group-hover:text-white transition-all">
-                                        <Activity className="w-6 h-6" />
+                                <div className="flex gap-4 md:gap-5 group">
+                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#0F3D2E]/5 flex items-center justify-center text-[#0F3D2E] shrink-0 group-hover:bg-[#0F3D2E] group-hover:text-white transition-all">
+                                        <Activity className="w-5 h-5 md:w-6 md:h-6" />
                                     </div>
                                     <div className="space-y-1">
-                                        <h4 className="text-[18px] font-black text-[#0B0F14] uppercase italic">Work is updated daily</h4>
-                                        <p className="text-[#5B6670] text-sm font-medium">Team updates progress in seconds, not meetings.</p>
+                                        <h4 className="text-base md:text-[18px] font-black text-[#0B0F14] uppercase italic">Work is updated daily</h4>
+                                        <p className="text-[#5B6670] text-xs md:text-sm font-medium leading-snug">Team updates progress in seconds, not meetings.</p>
                                     </div>
                                 </div>
-                                <div className="flex gap-5 group">
-                                    <div className="w-12 h-12 rounded-xl bg-[#0F3D2E]/5 flex items-center justify-center text-[#0F3D2E] shrink-0 group-hover:bg-[#0F3D2E] group-hover:text-white transition-all">
-                                        <CheckCircle2 className="w-6 h-6" />
+                                <div className="flex gap-4 md:gap-5 group">
+                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#0F3D2E]/5 flex items-center justify-center text-[#0F3D2E] shrink-0 group-hover:bg-[#0F3D2E] group-hover:text-white transition-all">
+                                        <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6" />
                                     </div>
                                     <div className="space-y-1">
-                                        <h4 className="text-[18px] font-black text-[#0B0F14] uppercase italic">Full visibility instantly</h4>
-                                        <p className="text-[#5B6670] text-sm font-medium">One glance shows you exactly what’s done vs missed.</p>
+                                        <h4 className="text-base md:text-[18px] font-black text-[#0B0F14] uppercase italic">Full visibility instantly</h4>
+                                        <p className="text-[#5B6670] text-xs md:text-sm font-medium leading-snug">One glance shows you exactly what’s done vs missed.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="space-y-4">
-                            <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E6E8EC] bg-black p-2">
+                            <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E6E8EC] bg-black p-1.5 md:p-2">
                                  <img src={CINEMA_TASKS_IMAGE} alt="Cinema Daily Tasks" className="w-full h-auto rounded-xl" />
                             </div>
-                            <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic text-center">
+                            <p className="text-[7px] md:text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic text-center">
                                 sample daily tasks cinema product
                             </p>
                         </div>
                     </div>
                 </Section>
 
-                {/* HOW IT WORKS - BEST VERSION */}
+                {/* HOW IT WORKS */}
                 <Section className="bg-[#F7F8FA]">
-                    <div className="max-w-[1200px] mx-auto space-y-16">
+                    <div className="max-w-[1200px] mx-auto space-y-12 md:space-y-16">
                         <div className="text-center space-y-2">
-                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">Start in minutes</h2>
+                            <h2 className="text-[28px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">Start in minutes</h2>
                         </div>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                             {[
-                                { t: "Download your system", d: "Get your industry-specific file with pre-built SOPs — ready to use.", i: Download },
-                                { t: "Open in Google Sheets", d: "Upload once. Access from phone or desktop.", i: FileSpreadsheet },
-                                { t: "Share with your team", d: "Assign roles. Lock structure so nothing breaks.", i: Lock },
-                                { t: "See everything live", d: "Track tasks as they get done. Know what’s missed — without asking.", i: Activity }
+                                { t: "Download system", d: "Get your industry file with pre-built SOPs — ready to use.", i: Download },
+                                { t: "Open in Sheets", d: "Upload once. Access from phone or desktop instantly.", i: FileSpreadsheet },
+                                { t: "Share with team", d: "Assign roles. Lock structure so nothing breaks.", i: Lock },
+                                { t: "See everything live", d: "Track tasks as they get done. Know what’s missed.", i: Activity }
                             ].map((step, i) => (
-                                <div className="bg-white border border-[#E6E8EC] p-8 rounded-2xl space-y-6 hover:shadow-lg transition-all group" key={i}>
-                                    <div className="w-12 h-12 rounded-xl bg-[#F7F8FA] border border-[#E6E8EC] flex items-center justify-center text-[#0B0F14] font-black group-hover:bg-[#0F3D2E] group-hover:text-white transition-all text-xl italic">
+                                <div className="bg-white border border-[#E6E8EC] p-6 md:p-8 rounded-2xl space-y-4 md:space-y-6 hover:shadow-lg transition-all group" key={i}>
+                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#F7F8FA] border border-[#E6E8EC] flex items-center justify-center text-[#0B0F14] font-black group-hover:bg-[#0F3D2E] group-hover:text-white transition-all text-lg md:text-xl italic">
                                         {i+1}
                                     </div>
                                     <div className="space-y-2">
-                                        <h4 className="font-black text-lg uppercase italic leading-tight">{step.t}</h4>
-                                        <p className="text-sm text-[#5B6670] font-medium italic leading-relaxed">{step.d}</p>
+                                        <h4 className="font-black text-base md:text-lg uppercase italic leading-tight">{step.t}</h4>
+                                        <p className="text-xs md:text-sm text-[#5B6670] font-medium italic leading-relaxed">{step.d}</p>
                                     </div>
                                 </div>
                             ))}
                         </div>
 
-                        <div className="text-center pt-8">
-                            <p className="text-[20px] md:text-[24px] font-black text-[#0B0F14] uppercase italic tracking-tighter">
+                        <div className="text-center pt-4 md:pt-8">
+                            <p className="text-lg md:text-[24px] font-black text-[#0B0F14] uppercase italic tracking-tighter">
                                 👉 That’s it. Your operations are now structured.
                             </p>
                         </div>
                     </div>
                 </Section>
 
-                {/* SOVEREIGN VS SAAS - COMPARISON SECTION */}
+                {/* SOVEREIGN VS SAAS - MOBILE OPTIMIZED TABLE */}
                 <Section className="bg-white border-y border-[#E6E8EC]">
-                    <div className="max-w-4xl mx-auto space-y-16">
-                        <div className="text-center space-y-4">
-                            <h2 className="text-[32px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">System Sovereignty</h2>
-                            <p className="text-[#5B6670] font-medium italic">Why Elite groups choose MoreMeets over standard SaaS.</p>
+                    <div className="max-w-4xl mx-auto space-y-12 md:space-y-16">
+                        <div className="text-center space-y-3 md:space-y-4">
+                            <h2 className="text-[28px] md:text-[44px] font-bold text-[#0B0F14] uppercase italic tracking-tight">System Sovereignty</h2>
+                            <p className="text-[#5B6670] text-sm md:text-base font-medium italic">Why Elite groups choose MoreMeets over standard SaaS.</p>
                         </div>
-                        <div className="overflow-hidden rounded-3xl border border-zinc-100 shadow-2xl">
-                            <table className="w-full text-left">
+                        
+                        {/* Mobile Swipe Indicator */}
+                        <div className="md:hidden flex justify-center mb-4">
+                            <Badge variant="outline" className="text-[8px] font-black uppercase text-zinc-400 border-zinc-200">← Swipe to compare →</Badge>
+                        </div>
+
+                        <div className="overflow-x-auto no-scrollbar rounded-2xl md:rounded-3xl border border-zinc-100 shadow-2xl">
+                            <table className="w-full text-left min-w-[500px] md:min-w-0">
                                 <thead className="bg-[#0B0F14] text-white">
                                     <tr>
-                                        <th className="p-6 text-[10px] font-black uppercase tracking-[0.3em]">Feature</th>
-                                        <th className="p-6 text-[10px] font-black uppercase tracking-[0.3em] bg-primary/20">MoreMeets™ OS</th>
-                                        <th className="p-6 text-[10px] font-black uppercase tracking-[0.3em]">Typical SaaS App</th>
+                                        <th className="p-4 md:p-6 text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em]">Feature</th>
+                                        <th className="p-4 md:p-6 text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] bg-primary/20">MoreMeets™ OS</th>
+                                        <th className="p-4 md:p-6 text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em]">Typical SaaS App</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-zinc-100 text-sm">
+                                <tbody className="divide-y divide-zinc-100 text-xs md:text-sm">
                                     {[
                                         { f: "Ownership", mm: "One-time buy. Own it forever.", app: "Monthly lease. Pay forever." },
                                         { f: "Customization", mm: "100% Unlocked Excel logic.", app: "Locked features. Request changes." },
@@ -373,9 +379,9 @@ export default function Home() {
                                         { f: "Deployment", mm: "Instant. Live in 10 minutes.", app: "Weeks of setup & integration." }
                                     ].map((row, i) => (
                                         <tr key={i} className="hover:bg-zinc-50 transition-colors">
-                                            <td className="p-6 font-black uppercase italic text-zinc-400 text-[11px]">{row.f}</td>
-                                            <td className="p-6 font-bold text-[#0F3D2E] bg-primary/5">{row.mm}</td>
-                                            <td className="p-6 text-zinc-500 italic">{row.app}</td>
+                                            <td className="p-4 md:p-6 font-black uppercase italic text-zinc-400 text-[10px] md:text-[11px]">{row.f}</td>
+                                            <td className="p-4 md:p-6 font-bold text-[#0F3D2E] bg-primary/5">{row.mm}</td>
+                                            <td className="p-4 md:p-6 text-zinc-500 italic">{row.app}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -391,26 +397,26 @@ export default function Home() {
                 <FaqSection />
 
                 {/* FINAL CTA */}
-                <Section className="bg-[#0F3D2E] text-white text-center py-32">
-                    <div className="max-w-[800px] mx-auto space-y-12">
-                        <div className="space-y-6">
-                            <h2 className="text-[40px] md:text-[64px] font-bold leading-[0.9] tracking-tighter uppercase italic">Start running your system today</h2>
-                            <p className="text-[18px] text-white/60 font-medium italic">Setup takes less than 10 minutes</p>
+                <Section className="bg-[#0F3D2E] text-white text-center py-24 md:py-32">
+                    <div className="max-w-[800px] mx-auto space-y-10 md:space-y-12">
+                        <div className="space-y-4 md:space-y-6">
+                            <h2 className="text-[32px] md:text-[64px] font-bold leading-[0.95] md:leading-[0.9] tracking-tighter uppercase italic">Start running your system today</h2>
+                            <p className="text-base md:text-[18px] text-white/60 font-medium italic">Setup takes less than 10 minutes</p>
                         </div>
                         
-                        <div className="flex flex-col items-center gap-8">
-                            <button className="h-[80px] px-12 rounded-[16px] bg-[#F4A261] text-white font-black uppercase italic text-2xl shadow-[0_20px_50px_-10px_rgba(244,162,97,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group">
-                                <Link href="/library" className="flex items-center gap-4">
-                                    Get Your System Now <ArrowRight className="w-8 h-8 transition-transform group-hover:translate-x-2" />
+                        <div className="flex flex-col items-center gap-6 md:gap-8">
+                            <button className="h-[70px] md:h-[80px] px-10 md:px-12 rounded-[16px] bg-[#F4A261] text-white font-black uppercase italic text-xl md:text-2xl shadow-[0_20px_50px_-10px_rgba(244,162,97,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group w-full max-w-sm sm:w-auto">
+                                <Link href="/library" className="flex items-center gap-4 justify-center">
+                                    Get Your System <ArrowRight className="w-6 h-6 md:w-8 md:h-8 transition-transform group-hover:translate-x-2" />
                                 </Link>
                             </button>
                             
                             <div className="flex flex-col items-center">
                                 <div className="flex items-baseline gap-3">
-                                    <p className="text-[40px] font-black italic">₹2,999</p>
-                                    <span className="text-xl font-bold text-white/30 italic">/ $29</span>
+                                    <p className="text-[32px] md:text-[40px] font-black italic">₹2,999</p>
+                                    <span className="text-lg md:text-xl font-bold text-white/30 italic">/ $29</span>
                                 </div>
-                                <p className="text-[12px] font-black uppercase tracking-[0.3em] text-white/40">
+                                <p className="text-[11px] md:text-[12px] font-black uppercase tracking-[0.3em] text-white/40">
                                     One-time payment • Own forever
                                 </p>
                             </div>
