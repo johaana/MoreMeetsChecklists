@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -100,7 +101,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     if (!mounted) return null;
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
-        <div className={cn("relative group", isMobile ? "block md:hidden mt-2 mb-6 max-w-[82%] mx-auto" : "hidden md:block w-full")}>
+        <div className={cn("relative group", isMobile ? "block md:hidden mt-1 mb-4 max-w-[76%] mx-auto" : "hidden md:block w-full")}>
             <div className="bg-[#111] h-6 md:h-9 w-full rounded-t-lg md:rounded-t-[14px] flex items-center px-4 gap-1.5 border border-white/10">
                 <div className="flex gap-1 md:gap-1.5">
                     <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-red-500/30" />
@@ -133,19 +134,19 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             
-            {/* HERO SECTION - PT-16 FOR MAX VERTICALITY */}
-            <section className="relative w-full bg-[#F7F8FA] pt-16 pb-8 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
+            {/* HERO SECTION - PT-20 FOR HEADER CLEARANCE */}
+            <section className="relative w-full bg-[#F7F8FA] pt-20 pb-8 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
                 <div className="container mx-auto max-w-[1200px] px-6">
                     <div className="grid lg:grid-cols-[1.1fr,1fr] gap-8 lg:gap-16 items-center">
                         
-                        <div className="flex flex-col items-start space-y-4 md:space-y-8 relative z-20">
-                            <div className="space-y-2">
+                        <div className="flex flex-col items-start space-y-3 md:space-y-8 relative z-20">
+                            <div className="space-y-1">
                                 <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] text-zinc-400 mb-0.5 block">/ {pack.category.toUpperCase()}</span>
-                                <h1 className="text-[30px] md:text-[56px] lg:text-[68px] font-black text-[#0B0F14] leading-[1] md:leading-[0.85] tracking-tighter uppercase italic">
+                                <h1 className="text-[32px] md:text-[56px] lg:text-[68px] font-black text-[#0B0F14] leading-[1.1] md:leading-[0.85] tracking-tighter uppercase italic">
                                     {pack.title.replace('Operating System', '')} <br/>
                                     <span className="text-[#0F3D2E]">Operating System</span>
                                 </h1>
-                                <p className="text-sm md:text-xl text-[#5B6670] italic font-medium leading-tight pt-1">
+                                <p className="text-xs md:text-xl text-[#5B6670] italic font-medium leading-tight pt-1">
                                     Run {pack.title.toLowerCase().replace(' operating system', '')} daily without chasing staff.
                                 </p>
                             </div>
@@ -153,18 +154,18 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             {/* MOBILE: PRODUCT-FIRST SEQUENCE */}
                             <TechnicalProof isMobile />
 
-                            <div className="border-l-[3px] border-[#0F3D2E] pl-4 md:pl-[20px] space-y-1.5">
-                                <p className="text-[15px] md:text-[18px] font-black leading-tight text-zinc-900 italic">Even when you’re not there.</p>
-                                <p className="text-[15px] md:text-[18px] font-bold leading-tight text-zinc-400 italic">Without follow-ups</p>
-                                <p className="text-[15px] md:text-[18px] font-bold leading-tight text-zinc-400 italic">Without depending on memory</p>
+                            <div className="border-l-[3px] border-[#0F3D2E] pl-4 md:pl-[20px] space-y-1">
+                                <p className="text-[14px] md:text-[18px] font-black leading-tight text-zinc-900 italic">Even when you’re not there.</p>
+                                <p className="text-[14px] md:text-[18px] font-bold leading-tight text-zinc-400 italic">Without follow-ups</p>
+                                <p className="text-[14px] md:text-[18px] font-bold leading-tight text-zinc-400 italic">Without depending on memory</p>
                             </div>
 
                             <div className="flex items-center gap-6 md:gap-8 w-full text-[10px] md:text-[11px] font-black uppercase tracking-[0.3em]">
-                                <span className="flex items-center gap-2 text-zinc-900 font-headline"><Target className="w-4 h-4 text-primary" /> {totalChecklists} MODULES</span>
-                                <span className="flex items-center gap-2 text-zinc-900 font-headline"><Target className="w-4 h-4 text-primary" /> {totalTasks}+ POINTS</span>
+                                <span className="flex items-center gap-2 text-zinc-900 font-headline"><Target className="w-3.5 h-3.5 text-primary" /> {totalChecklists} MODULES</span>
+                                <span className="flex items-center gap-2 text-zinc-900 font-headline"><Target className="w-3.5 h-3.5 text-primary" /> {totalTasks}+ POINTS</span>
                             </div>
 
-                            <div className="w-full pt-4">
+                            <div className="w-full pt-2">
                                 <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-8">
                                     <button className="h-14 md:h-[56px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-base shadow-[0_15px_35px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all border-none group w-full sm:w-auto">
                                         <Link href="#pricing" className="flex items-center gap-3">
@@ -236,8 +237,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     </div>
                 </div>
             </Section>
-
-            {/* 4. PRICING ENGINE */}
+            
+            {/* PRICING Hub anchor for the floating CTA */}
+            <div id="pricing" />
             <PricingClient pack={pack} />
 
             {/* 5. FINAL CTA */}
