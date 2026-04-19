@@ -74,19 +74,50 @@ export default function Home() {
 
     if (!mounted) return null;
 
+    const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
+        <div className={cn("relative group", isMobile ? "block md:hidden mt-2 mb-6 max-w-[76%] mx-auto" : "hidden md:block w-full")}>
+            <div className="bg-[#111] h-6 md:h-9 w-full rounded-t-lg md:rounded-t-[14px] flex items-center px-4 gap-1.5 border border-white/10">
+                <div className="flex gap-1 md:gap-1.5">
+                    <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-red-500/30" />
+                    <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-amber-500/30" />
+                    <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-green-500/30" />
+                </div>
+                <div className="flex-1 flex justify-center">
+                    <div className="bg-black/40 border border-white/5 rounded px-4 py-0.5 text-[6px] md:text-[8px] font-black text-white/20 uppercase tracking-[0.3em] italic shadow-inner">
+                        SOVEREIGN_MASTER_CONSOLE.xlsx
+                    </div>
+                </div>
+            </div>
+
+            <div className="rounded-b-lg md:rounded-b-[14px] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.2)] bg-white border border-[#E6E8EC] border-t-0 relative">
+                <img 
+                    src={DASHBOARD_IMAGE} 
+                    alt="Sovereign Dashboard" 
+                    className="w-full h-auto object-cover aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
+                />
+            </div>
+            
+            <div className="mt-3 text-center">
+                <p className="text-[7px] md:text-[8px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
+                    Sovereign Technical implementation proof
+                </p>
+            </div>
+        </div>
+    );
+
     return (
         <div className="flex flex-col min-h-screen bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             <SiteHeader forceTheme="dark" />
 
             <main className="flex-1">
                 
-                {/* HERO SECTION - PT-16 FOR MAX COMPACTNESS */}
-                <section className="w-full bg-[#F7F8FA] pt-16 pb-12 md:pt-16 md:pb-24 overflow-hidden min-h-[85svh] flex flex-col justify-center">
+                {/* HERO SECTION - PT-20 FOR HEADER CLEARANCE */}
+                <section className="w-full bg-[#F7F8FA] pt-20 pb-12 md:pt-24 md:pb-24 overflow-hidden min-h-[85svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
                         <div className="grid lg:grid-cols-[1.2fr,1fr] gap-10 lg:gap-16 items-center">
                             
                             {/* LEFT SIDE: NARRATIVE */}
-                            <div className="flex flex-col items-start space-y-6 md:space-y-8 relative z-20">
+                            <div className="flex flex-col items-start space-y-4 md:space-y-8 relative z-20">
                                 <div className="space-y-1 md:space-y-2">
                                     <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-black text-[#0B0F14] leading-[1] md:leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
                                         STOP CHASING YOUR TEAM.
@@ -98,6 +129,9 @@ export default function Home() {
                                         Even when you’re not there.
                                     </p>
                                 </div>
+
+                                {/* PRODUCT-FIRST: SHOW THE SYSTEM IMMEDIATELY ON MOBILE */}
+                                <TechnicalProof isMobile />
 
                                 <div className="border-l-[3px] border-[#0F3D2E] pl-[16px] space-y-1 md:space-y-2 py-0.5 md:py-1">
                                     <p className="text-[16px] md:text-[18px] font-medium leading-tight text-[#0B0F14]">Without follow-ups</p>
@@ -144,7 +178,7 @@ export default function Home() {
                                 </div>
                             </div>
 
-                            {/* RIGHT SIDE: DASHBOARD PROOF */}
+                            {/* RIGHT SIDE: DESKTOP DASHBOARD PROOF */}
                             <div className="relative lg:-ml-44 lg:pt-16 hidden md:block">
                                 <div className="relative mx-auto w-fit scale-110 lg:scale-125 transition-all duration-1000">
                                     
