@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -22,6 +21,7 @@ import { addContact } from './actions';
 import { Input } from '../components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
+import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
@@ -93,7 +93,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     <h2 className="text-3xl font-black uppercase italic font-headline tracking-tighter text-white">Instant Access</h2>
                                     <p className="text-secondary-text italic font-medium">Sovereign Social Impact Pack</p>
                                 </div>
-                                <p className="text-6xl font-black pt-4 text-primary italic font-headline tracking-tighter">FREE</p>
+                                <p className="text-6xl font-black pt-4" style={{ color: BRAND_GREEN }}>FREE</p>
                             </div>
                             <div className="p-12 pt-0">
                                 <FreeDownloadForm pack={pack} />
@@ -116,7 +116,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <Badge variant="outline" className="text-zinc-500 border-zinc-800 uppercase tracking-[0.3em] font-black text-[10px] rounded-none px-4 py-1">DEPLOYMENT PROTOCOL</Badge>
                             <h2 className="text-4xl md:text-5xl font-black font-headline text-white italic tracking-tighter uppercase leading-tight">
                                 Sovereign <br />
-                                <span className="text-primary">Master Engine.</span>
+                                <span style={{ color: BRAND_GREEN }}>Master Engine.</span>
                             </h2>
                         </div>
 
@@ -139,8 +139,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <div className="grid sm:grid-cols-2 gap-x-8 gap-y-5">
                             {VALUE_ITEMS.map((item, i) => (
                                 <div key={i} className="flex items-start gap-3 group">
-                                    <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 bg-primary/10">
-                                        <item.i className="w-3 h-3 text-primary" />
+                                    <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ backgroundColor: `${BRAND_GREEN}1A` }}>
+                                        <item.i className="w-3 h-3" style={{ color: BRAND_GREEN }} />
                                     </div>
                                     <span className="text-sm font-bold italic text-zinc-300 group-hover:text-white transition-colors leading-tight">
                                         {item.t}
@@ -152,8 +152,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                     {/* RIGHT: DECISION BOX */}
                     <div className="relative">
-                        {/* Decorative glow behind card */}
-                        <div className="absolute -inset-4 bg-primary/5 blur-3xl opacity-50" />
+                        <div className="absolute -inset-4 blur-3xl opacity-50" style={{ backgroundColor: `${BRAND_GREEN}0D` }} />
                         
                         <div className="relative bg-white/[0.02] border border-white/[0.08] backdrop-blur-xl rounded-[2.5rem] p-8 md:p-10 shadow-2xl flex flex-col items-center gap-8">
                             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#F59E0B1A] border border-[#F59E0B30] text-[#F59E0B] px-5 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest shadow-xl">
@@ -180,15 +179,15 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
 
                             <div className="w-full flex flex-col items-center gap-5">
                                 {region === 'INDIA' && hasINR ? (
-                                    <div className="w-full group/rzp relative">
-                                        <div className="absolute inset-0 bg-primary/20 blur-2xl opacity-0 group-hover/rzp:opacity-100 transition-opacity rounded-xl" />
+                                    <div className="w-full group/rzp relative max-w-[360px]">
+                                        <div className="absolute inset-0 blur-2xl opacity-0 group-hover/rzp:opacity-100 transition-opacity rounded-xl" style={{ backgroundColor: `${BRAND_GREEN}33` }} />
                                         <RazorpayButton 
                                             paymentId={pack.paymentId} 
                                             className="w-full flex justify-center min-h-[60px] relative z-10" 
                                         />
                                     </div>
                                 ) : (
-                                    <button className="w-full h-16 text-[#0B0F14] font-black text-base rounded-xl border-none uppercase italic tracking-widest shadow-xl transition-all active:scale-95 flex items-center justify-center gap-3 group hover:scale-[1.02]" style={{ backgroundColor: CONVERSION_AMBER }}>
+                                    <button className="w-full h-16 text-[#0B0F14] font-black text-base rounded-xl border-none uppercase italic tracking-widest shadow-xl transition-all active:scale-95 flex items-center justify-center gap-3 group hover:scale-[1.02] max-w-[360px]" style={{ backgroundColor: CONVERSION_AMBER }}>
                                         <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center gap-3">
                                             Deploy Now <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1.5" />
                                         </Link>
@@ -199,10 +198,10 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     {[
                                         "Secure payment via " + (region === 'INDIA' ? "Razorpay" : "Lemon Squeezy"),
                                         "Instant download after payment",
-                                        "No login or SaaS account required"
+                                        "No login required"
                                     ].map((line, i) => (
                                         <div key={i} className="flex items-center gap-2 text-[10px] font-bold text-zinc-500 italic">
-                                            <CheckCircle2 className="w-3 h-3 text-primary/60" /> {line}
+                                            <CheckCircle2 className="w-3 h-3" style={{ color: `${BRAND_GREEN}99` }} /> {line}
                                         </div>
                                     ))}
                                 </div>

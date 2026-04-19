@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -9,7 +8,8 @@ import {
     ArrowRight, 
     LayoutGrid,
     Target,
-    ShieldAlert
+    ShieldAlert,
+    CheckCircle2
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
@@ -20,7 +20,7 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
         <div className="container mx-auto max-w-[1200px] px-6">
             {children}
         </div>
-    </section>
+Section
 );
 
 const getIndustryContent = (id: string) => {
@@ -45,14 +45,14 @@ const getIndustryContent = (id: string) => {
     const mapping: Record<string, typeof defaults> = {
         'cinema_operations_pack': {
             pitfalls: [
-                "Projector lamp life and KDM decryption status go unmonitored.",
+                "Projector lamp life and KDM status go unmonitored.",
                 "Concession profit bleeds through unverified yield gaps.",
                 "Fire exit physical verification is skipped in busy intervals.",
                 "Projection sound acoustic balance not tested pre-show.",
-                "Staff 'guess' procedures because technical Trainer Notes are missing.",
-                "Restroom hygiene cycles drift, leading to viral negative reviews.",
-                "Technical uptime fails because asset logs are documented on paper.",
-                "Box office revenue leakage from unverified 'voided' ticket bills."
+                "Staff 'guess' procedures because technical notes are missing.",
+                "Restroom hygiene cycles drift, leading to negative reviews.",
+                "Technical uptime fails because asset logs are paper-based.",
+                "Box office revenue leakage from unverified 'voided' bills."
             ],
             prevents: [
                 { t: "Projection failure", d: "Zero-fail technical checks." },
@@ -62,14 +62,14 @@ const getIndustryContent = (id: string) => {
         },
         'restaurants': {
             pitfalls: [
-                "Critical food safety checks (HACCP) missed during rush shifts.",
+                "Critical food safety checks (HACCP) missed during rush.",
                 "High-value protein leakage goes undetected without daily reconcile.",
-                "Inconsistent recipe execution leading to unmonitored ingredient waste.",
-                "Staff 'guess' procedures because digital Trainer Notes are missing.",
+                "Inconsistent recipe execution leading to unmonitored waste.",
+                "Staff 'guess' procedures because digital notes are missing.",
                 "Managers waste hours manually chasing shift handovers.",
-                "Digital reputation drops because 24h review response pulse is ignored.",
+                "Digital reputation drops as 24h review pulse is ignored.",
                 "No institutional memory stays when your best Chef resigns.",
-                "Margin erosion from unverified third-party aggregator cancellations."
+                "Margin erosion from unverified aggregator cancellations."
             ],
             prevents: [
                 { t: "Food safety incidents", d: "Zero-fail HACCP compliance." },
@@ -79,14 +79,14 @@ const getIndustryContent = (id: string) => {
         },
         'hotels_and_resorts': {
             pitfalls: [
-                "Room readiness gaps lead to immediate guest refund requests.",
-                "Critical safety protocols (Fire/Perimeter) are assumed but not verified.",
+                "Room readiness gaps lead to immediate refund requests.",
+                "Critical safety protocols are assumed but not verified.",
                 "Shift handovers are documented in unsearchable chat groups.",
-                "Preventive maintenance for expensive HVAC assets is neglected.",
-                "Brand standards drift as staff turnover increases and training fails.",
+                "Preventive maintenance for expensive assets is neglected.",
+                "Brand standards drift as staff turnover increases.",
                 "5-star reputation is destroyed by single hygiene lapses.",
-                "Minibar revenue bleeds out without a structured reconciliation log.",
-                "Guest Wi-Fi and tech assets fail due to lack of daily uptime audits."
+                "Minibar revenue bleeds out without a structured log.",
+                "Guest Wi-Fi and tech assets fail due to lack of daily audits."
             ],
             prevents: [
                 { t: "Refund requests", d: "Ensures 100% room parity." },
@@ -96,14 +96,14 @@ const getIndustryContent = (id: string) => {
         },
         'healthcare_and_hospital_operations': {
             pitfalls: [
-                "Critical clinical handovers missed during high-caseload shifts.",
+                "Critical clinical handovers missed during high caseloads.",
                 "Surgical 'Time Out' protocols assumed rather than verified.",
                 "Narcotics safe stock counts unmonitored across shift cycles.",
-                "Delayed emergency response (Code Blue) due to lack of daily drills.",
+                "Delayed emergency response (Code Blue) without daily drills.",
                 "Staff turnover eroding institutional NABH/JCI knowledge.",
                 "Infection control breaches in ICU going undetected.",
                 "Pharmacy cold-chain integrity lapses during power flips.",
-                "Unbilled clinical consumables leading to massive silent margin loss."
+                "Unbilled clinical consumables leading to massive margin loss."
             ],
             prevents: [
                 { t: "Clinical errors", d: "Zero-fail surgical & medication safety." },
