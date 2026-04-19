@@ -100,7 +100,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     if (!mounted) return null;
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
-        <div className={cn("relative group w-full", isMobile ? "block md:hidden my-6" : "hidden md:block")}>
+        <div className={cn("relative group w-full", isMobile ? "block md:hidden my-4" : "hidden md:block")}>
             <div className="bg-[#111] h-7 md:h-9 w-full rounded-t-xl md:rounded-t-[14px] flex items-center px-4 gap-1.5 border border-white/10">
                 <div className="flex gap-1 md:gap-1.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-red-500/30" />
@@ -133,15 +133,15 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             
-            {/* 1. HERO SECTION — PT-36 for Mobile Overlap Resolve */}
-            <section className="relative w-full bg-[#F7F8FA] pt-36 pb-12 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
+            {/* HERO SECTION — Reduced pt-36 to pt-24 to take it slightly up */}
+            <section className="relative w-full bg-[#F7F8FA] pt-24 pb-10 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
                 <div className="container mx-auto max-w-[1200px] px-6">
                     <div className="grid lg:grid-cols-[1.1fr,1fr] gap-8 lg:gap-16 items-center">
                         
                         <div className="flex flex-col items-start space-y-6 md:space-y-8 relative z-20">
                             <div className="space-y-2">
                                 <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.5em] text-zinc-400 mb-0.5 block">/ {pack.category.toUpperCase()}</span>
-                                <h1 className="text-[36px] md:text-[56px] lg:text-[68px] font-black text-[#0B0F14] leading-[0.95] md:leading-[0.85] tracking-tighter uppercase italic">
+                                <h1 className="text-[32px] md:text-[56px] lg:text-[68px] font-black text-[#0B0F14] leading-[0.95] md:leading-[0.85] tracking-tighter uppercase italic">
                                     {pack.title.replace('Operating System', '')} <br/>
                                     <span className="text-[#0F3D2E]">Operating System</span>
                                 </h1>
@@ -160,7 +160,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
 
                             <div className="flex items-center gap-6 md:gap-8 w-full text-[10px] md:text-[11px] font-black uppercase tracking-[0.3em]">
-                                <span className="flex items-center gap-2 text-zinc-900 font-headline"><LayoutGrid className="w-4 h-4 text-primary" /> {totalChecklists} MODULES</span>
+                                <span className="flex items-center gap-2 text-zinc-900 font-headline"><Target className="w-4 h-4 text-primary" /> {totalChecklists} MODULES</span>
                                 <span className="flex items-center gap-2 text-zinc-900 font-headline"><Target className="w-4 h-4 text-primary" /> {totalTasks}+ POINTS</span>
                             </div>
 
