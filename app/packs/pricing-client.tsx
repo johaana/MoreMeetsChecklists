@@ -16,19 +16,16 @@ import {
     ClipboardCheck,
     Activity,
     FileDown,
-    Ban
+    Ban,
+    CheckCircle2
 } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
 import { addContact } from './actions';
 import { Input } from '../components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { RazorpayButton } from '../components/ui/razorpay-button';
+import { cn } from '@/lib/utils';
 
-/**
- * Sovereign Pricing Engine v14.0 - BRAND SYNCED & FIGMA-READY
- * Hierarchy: Price Anchor -> 2-Column Value Stack -> Centered Trust Resolve
- * Colors: Hardened Executive Green (#2EB86B)
- */
 function FreeDownloadForm({ pack }: { pack: PremiumPack }) {
     const { toast } = useToast();
     const [email, setEmail] = React.useState('');
@@ -81,14 +78,8 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         { t: "Fully editable Excel system", i: FileSpreadsheet }
     ];
 
-    const TRUST_BADGES = [
-        { t: region === 'INDIA' ? "Razorpay Secure" : "Lemon Squeezy Secure", i: ShieldCheck },
-        { t: "Instant Download", i: FileDown },
-        { t: "Works on Excel", i: FileSpreadsheet },
-        { t: "No subscription", i: Ban }
-    ];
-
-    const BRAND_GREEN = "#2EB86B";
+    const BRAND_GREEN = "#22C55E";
+    const CONVERSION_AMBER = "#F59E0B";
 
     if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
         return (
@@ -108,14 +99,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             </div>
                             <div className="p-12 pt-0">
                                 <FreeDownloadForm pack={pack} />
-                                <div className="mt-10 grid grid-cols-2 gap-4">
-                                    {TRUST_BADGES.slice(1, 3).map(item => (
-                                        <div key={item.t} className="flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                                            <item.i className="w-3.5 h-3.5 opacity-40" style={{ color: BRAND_GREEN }} />
-                                            <span className="text-[8px] font-black text-white/30 uppercase tracking-widest italic">{item.t}</span>
-                                        </div>
-                                    ))}
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -125,7 +108,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     }
 
     return (
-        <section className="w-full py-24 md:py-32 bg-gradient-to-b from-[#0B0F14] to-[#0E1621] text-white" id="pricing">
+        <section className="w-full py-24 md:py-32 bg-gradient-to-b from-[#0B0F14] to-[#0E1621] text-white overflow-hidden" id="pricing">
             <div className="container px-4 mx-auto max-w-[1100px]">
                 
                 {/* 1. TOP — PRICE ANCHOR */}
@@ -150,69 +133,95 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                             <span className="text-[28px] font-medium text-[#5B6670] line-through italic tracking-tight">
                                 {region === 'INDIA' ? `₹${pack.anchorPriceINR}` : `$${pack.anchorPriceUSD}`}
                             </span>
-                            <h2 className="text-[64px] md:text-[84px] font-bold text-white italic tracking-tighter leading-none">
+                            <h2 
+                                className="text-[64px] md:text-[84px] font-bold text-white italic tracking-tighter leading-none"
+                                style={{ textShadow: `0 0 20px ${BRAND_GREEN}40` }}
+                            >
                                 {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
                             </h2>
                         </div>
                     </div>
 
-                    <div className="space-y-1">
+                    <div className="space-y-2">
                         <p className="text-[14px] font-bold text-[#8A94A6] uppercase tracking-widest italic">
                             One-time payment • Own forever • No subscription
                         </p>
-                        <p className="text-[13px] font-black uppercase tracking-[0.2em] animate-pulse" style={{ color: BRAND_GREEN }}>
+                        <p className="text-[13px] font-black uppercase tracking-[0.2em] animate-pulse" style={{ color: CONVERSION_AMBER }}>
                             LIMITED TIME OFFER
                         </p>
                     </div>
                 </div>
 
                 {/* 2. MIDDLE — VALUE STACK */}
-                <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 mb-20 bg-white/[0.02] border border-white/5 p-12 rounded-[2.5rem] backdrop-blur-sm shadow-inner">
+                <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 mb-24 bg-white/[0.02] border border-white/[0.06] backdrop-blur-[12px] p-12 rounded-[2.5rem] shadow-inner">
                     {VALUE_ITEMS.map((item, i) => (
                         <div key={i} className="flex items-start gap-4 group">
-                            <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 transition-colors" style={{ backgroundColor: `${BRAND_GREEN}1A` }}>
-                                <item.i className="w-3.5 h-3.5" style={{ color: BRAND_GREEN }} />
+                            <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ backgroundColor: `${BRAND_GREEN}1A` }}>
+                                <item.i className="w-4 h-4" style={{ color: BRAND_GREEN }} />
                             </div>
-                            <span className="text-[15px] font-bold italic text-[#C9D1D9] leading-tight group-hover:text-white transition-colors">
+                            <span className="text-[15px] font-bold italic text-[#D1D5DB] leading-tight group-hover:text-white transition-colors">
                                 {item.t}
                             </span>
                         </div>
                     ))}
                 </div>
 
-                {/* 3. BOTTOM — CTA BLOCK */}
+                {/* 3. BOTTOM — CONVERSION BLOCK */}
                 <div className="flex flex-col items-center space-y-8">
-                    <div className="w-full max-w-[360px] flex flex-col items-center gap-4">
-                        {region === 'INDIA' && hasINR ? (
-                            <div className="w-full flex justify-center hover:scale-[1.02] transition-transform duration-500">
-                                <RazorpayButton 
-                                    paymentId={pack.paymentId} 
-                                    className="w-full flex justify-center min-h-[60px] shadow-[0_30px_60px_-15px_rgba(46,184,107,0.3)]" 
-                                />
-                            </div>
-                        ) : (
-                            <button className="w-full h-[56px] text-[#0B0F14] font-black text-sm rounded-[12px] border-none uppercase italic tracking-[0.15em] shadow-[0_20px_50px_-10px_rgba(46,184,107,0.4)] hover:scale-[1.02] transition-all active:scale-95 flex items-center justify-center gap-3 group" style={{ backgroundColor: BRAND_GREEN }}>
-                                <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center gap-3">
-                                    Start using your system <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                                </Link>
-                            </button>
-                        )}
-                        <p className="text-[13px] font-bold text-[#7B8794] uppercase tracking-widest italic text-center">
-                            Secure payment • Instant access • No login required
-                        </p>
-                    </div>
+                    <p className="text-sm font-black text-white/40 uppercase tracking-[0.4em] italic mb-2">
+                        Deploy your system in under 10 minutes
+                    </p>
                     
-                    <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 pt-8 border-t border-white/5 w-full">
-                        {TRUST_BADGES.map((badge, i) => (
-                            <div key={i} className="flex items-center gap-2 text-[10px] font-black text-[#5B6670] uppercase tracking-widest italic">
-                                <badge.i className="w-4 h-4 opacity-40" style={{ color: BRAND_GREEN }} />
-                                {badge.t}
+                    <div className="w-full max-w-[420px] bg-white/[0.02] border border-white/[0.08] backdrop-blur-[12px] rounded-[2rem] p-8 md:p-10 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] flex flex-col items-center gap-8 relative">
+                        {/* Most Popular Badge */}
+                        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#F59E0B1A] border border-[#F59E0B30] text-[#F59E0B] px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest shadow-xl">
+                            Most popular choice
+                        </div>
+
+                        <div className="text-center space-y-2">
+                            <h4 className="text-base font-medium text-[#E5E7EB] italic">Start using your system today</h4>
+                            <p className="text-4xl font-black text-white italic tracking-tighter">
+                                {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
+                            </p>
+                            <p className="text-[10px] text-[#9CA3AF] font-bold uppercase tracking-widest pt-1">
+                                One-time payment • Own forever
+                            </p>
+                        </div>
+
+                        <div className="w-full flex flex-col items-center gap-4">
+                            {region === 'INDIA' && hasINR ? (
+                                <div className="w-full group/rzp relative">
+                                    {/* Sublte glow behind authentic button */}
+                                    <div className="absolute inset-0 bg-primary/20 blur-2xl opacity-0 group-hover/rzp:opacity-100 transition-opacity rounded-xl" />
+                                    <RazorpayButton 
+                                        paymentId={pack.paymentId} 
+                                        className="w-full flex justify-center min-h-[60px] relative z-10" 
+                                    />
+                                </div>
+                            ) : (
+                                <button className="w-full h-[64px] text-[#0B0F14] font-black text-base rounded-[14px] border-none uppercase italic tracking-[0.15em] shadow-[0_15px_40px_-5px_rgba(245,158,11,0.4)] hover:bg-[#FBBF24] transition-all active:scale-95 flex items-center justify-center gap-3 group" style={{ backgroundColor: CONVERSION_AMBER }}>
+                                    <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center gap-3">
+                                        Deploy Now <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1.5" />
+                                    </Link>
+                                </button>
+                            )}
+                            
+                            <div className="space-y-2 pt-2">
+                                {[
+                                    "Secure payment via " + (region === 'INDIA' ? "Razorpay" : "Lemon Squeezy"),
+                                    "Instant download after payment",
+                                    "No login required"
+                                ].map((line, i) => (
+                                    <div key={i} className="flex items-center justify-center gap-2 text-[11px] font-bold text-[#9CA3AF] italic">
+                                        <CheckCircle2 className="w-3 h-3 text-[#2EB86B]/60" /> {line}
+                                    </div>
+                                ))}
                             </div>
-                        ))}
+                        </div>
                     </div>
 
-                    <div className="pt-4 text-center">
-                        <p className="text-[11px] font-bold text-[#5B6670] uppercase tracking-widest italic">
+                    <div className="pt-12 text-center border-t border-white/5 w-full max-w-lg">
+                        <p className="text-[12px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic">
                             Immediate Deployment. Institutional Grade.
                         </p>
                     </div>
@@ -222,3 +231,4 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
         </section>
     );
 }
+
