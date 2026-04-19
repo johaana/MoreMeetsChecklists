@@ -64,8 +64,8 @@ const BrandLogo = ({ isScrolled, isDarkText }: { isScrolled: boolean, isDarkText
      <Link href="/" className="flex items-center justify-center gap-2 group" prefetch={false}>
         <Logo className={cn("h-5 w-5 md:h-6 md:w-6 text-primary")} />
         <div className="flex flex-col">
-            <span className={cn("font-headline text-base md:text-lg font-bold leading-none tracking-tight", (isScrolled || isDarkText) ? "text-[#0F172A]" : "text-white")}>MoreMeets™</span>
-            <span className={cn("text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] leading-none mt-1", (isScrolled || isDarkText) ? "text-[#0F172A]/40" : "text-white/40")}>LESS MISSES.</span>
+            <span className={cn("font-headline text-base md:text-lg font-bold leading-[1] tracking-tight", (isScrolled || isDarkText) ? "text-[#0F172A]" : "text-white")}>MoreMeets™</span>
+            <span className={cn("text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] leading-none mt-0.5", (isScrolled || isDarkText) ? "text-[#0F172A]/40" : "text-white/40")}>LESS MISSES.</span>
         </div>
     </Link>
 );

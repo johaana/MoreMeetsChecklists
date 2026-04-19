@@ -75,7 +75,7 @@ export default function Home() {
     if (!mounted) return null;
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
-        <div className={cn("relative group", isMobile ? "block md:hidden mt-2 mb-6 max-w-[76%] mx-auto" : "hidden md:block w-full")}>
+        <div className={cn("relative group", isMobile ? "block md:hidden mt-2 mb-4 max-w-[82%] mx-auto" : "hidden md:block w-full")}>
             <div className="bg-[#111] h-6 md:h-9 w-full rounded-t-lg md:rounded-t-[14px] flex items-center px-4 gap-1.5 border border-white/10">
                 <div className="flex gap-1 md:gap-1.5">
                     <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-red-500/30" />
@@ -111,35 +111,42 @@ export default function Home() {
 
             <main className="flex-1">
                 
-                {/* HERO SECTION - PT-20 FOR HEADER CLEARANCE */}
-                <section className="w-full bg-[#F7F8FA] pt-20 pb-12 md:pt-24 md:pb-24 overflow-hidden min-h-[85svh] flex flex-col justify-center">
+                {/* HERO SECTION - PT-14 FOR COMPACT MOBILE FOLD */}
+                <section className="w-full bg-[#F7F8FA] pt-14 pb-8 md:pt-24 md:pb-24 overflow-hidden min-h-[85svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
-                        <div className="grid lg:grid-cols-[1.2fr,1fr] gap-10 lg:gap-16 items-center">
+                        <div className="grid lg:grid-cols-[1.2fr,1fr] gap-6 lg:gap-16 items-center">
                             
                             {/* LEFT SIDE: NARRATIVE */}
-                            <div className="flex flex-col items-start space-y-4 md:space-y-8 relative z-20">
+                            <div className="flex flex-col items-start space-y-3 md:space-y-8 relative z-20">
                                 <div className="space-y-1 md:space-y-2">
-                                    <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-black text-[#0B0F14] leading-[1] md:leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
+                                    <h1 className="text-[30px] md:text-[50px] lg:text-[64px] font-black text-[#0B0F14] leading-[1] md:leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
                                         STOP CHASING YOUR TEAM.
                                     </h1>
-                                    <h1 className="text-[32px] md:text-[50px] lg:text-[64px] font-black text-[#0F3D2E] leading-[1] md:leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
+                                    <h1 className="text-[30px] md:text-[50px] lg:text-[64px] font-black text-[#0F3D2E] leading-[1] md:leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
                                         SEE DAILY WORK GETTING DONE.
                                     </h1>
-                                    <p className="text-lg md:text-[24px] text-[#5B6670] italic font-medium leading-tight pt-2 md:pt-4">
+                                    <p className="text-base md:text-[24px] text-[#5B6670] italic font-medium leading-tight pt-1 md:pt-4">
                                         Even when you’re not there.
                                     </p>
                                 </div>
 
-                                {/* PRODUCT-FIRST: SHOW THE SYSTEM IMMEDIATELY ON MOBILE */}
-                                <TechnicalProof isMobile />
-
-                                <div className="border-l-[3px] border-[#0F3D2E] pl-[16px] space-y-1 md:space-y-2 py-0.5 md:py-1">
-                                    <p className="text-[16px] md:text-[18px] font-medium leading-tight text-[#0B0F14]">Without follow-ups</p>
-                                    <p className="text-[16px] md:text-[18px] font-medium leading-tight text-[#0B0F14]">Without confusion</p>
-                                    <p className="text-[16px] md:text-[18px] font-medium leading-tight text-[#0B0F14]">Without depending on memory</p>
+                                {/* MOBILE-FIRST CONVERSION BUTTON */}
+                                <div className="md:hidden w-full pt-1">
+                                    <button className="h-[54px] px-8 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-sm shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none w-full">
+                                        <Link href="/library" className="flex items-center gap-3">
+                                            Start Your System <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                        </Link>
+                                    </button>
                                 </div>
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 md:gap-y-4 w-full">
+                                <TechnicalProof isMobile />
+
+                                <div className="border-l-[3px] border-[#0F3D2E] pl-[16px] space-y-0.5 py-0.5">
+                                    <p className="text-[14px] md:text-[18px] font-black leading-tight text-[#0B0F14] italic">No follow-ups • No confusion</p>
+                                    <p className="text-[14px] md:text-[18px] font-bold leading-tight text-zinc-400 italic">No more dependency on memory</p>
+                                </div>
+
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 md:gap-y-4 w-full">
                                     {[
                                         "Pre-built, editable SOPs",
                                         "Daily task tracking",
@@ -147,31 +154,31 @@ export default function Home() {
                                         "Live dashboard visibility"
                                     ].map((item, i) => (
                                         <div className="flex items-center gap-3 group" key={i}>
-                                            <div className="w-5 h-5 rounded-full bg-[#0F3D2E]/10 flex items-center justify-center shrink-0">
-                                                <Check className="w-3 h-3 text-[#0F3D2E]" />
+                                            <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-[#0F3D2E]/10 flex items-center justify-center shrink-0">
+                                                <Check className="w-2.5 h-2.5 md:w-3 md:h-3 text-[#0F3D2E]" />
                                             </div>
-                                            <span className="text-sm font-bold text-[#0B0F14]">{item}</span>
+                                            <span className="text-[13px] md:text-sm font-bold text-[#0B0F14]">{item}</span>
                                         </div>
                                     ))}
                                 </div>
 
-                                <div className="space-y-6 w-full pt-2 md:pt-4">
-                                    <div className="flex flex-col sm:flex-row items-center gap-6 md:gap-8">
-                                        <div className="flex flex-col items-center sm:items-start order-2 sm:order-1">
+                                <div className="space-y-4 w-full pt-2 md:pt-4">
+                                    <div className="hidden md:flex flex-row items-center gap-8">
+                                        <div className="flex flex-col items-start">
                                             <div className="flex items-baseline gap-2">
-                                                <p className="text-[28px] md:text-[32px] font-black text-[#0B0F14] italic tracking-tight">₹2,999</p>
+                                                <p className="text-[32px] font-black text-[#0B0F14] italic tracking-tight">₹2,999</p>
                                                 <span className="text-xs font-bold text-[#5B6670] line-through">₹4,999</span>
                                             </div>
-                                            <p className="text-[10px] md:text-[11px] font-black text-[#5B6670] uppercase tracking-widest">One-time • Own forever</p>
+                                            <p className="text-[11px] font-black text-[#5B6670] uppercase tracking-widest">One-time • Own forever</p>
                                         </div>
-                                        <button className="h-[60px] md:h-[64px] px-8 md:px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-base md:text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group order-1 sm:order-2 w-full sm:w-auto">
+                                        <button className="h-[64px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group">
                                             <Link href="/library" className="flex items-center gap-3">
                                                 Start Your System <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                                             </Link>
                                         </button>
                                     </div>
 
-                                    <p className="text-[12px] md:text-[13px] text-[#5B6670] font-bold uppercase tracking-[0.1em] border-t border-[#E6E8EC] pt-4 leading-relaxed text-center sm:text-left">
+                                    <p className="text-[11px] md:text-[13px] text-[#5B6670] font-bold uppercase tracking-[0.1em] border-t border-[#E6E8EC] pt-4 leading-relaxed text-center sm:text-left">
                                         Built on Excel • Runs on Google Sheets <br/>
                                         No software required • Universal accessibility
                                     </p>
@@ -232,7 +239,7 @@ export default function Home() {
                     <div className="space-y-10 md:space-y-12">
                         <div className="text-center space-y-3 md:space-y-4">
                             <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[9px] md:text-[10px] rounded-full px-4">Strategic Inventory</Badge>
-                            <h2 className="text-[28px] md:text-[44px] font-black text-[#0B0F14] uppercase italic tracking-tight">Select Your Vertical</h2>
+                            <h2 className="text-[26px] md:text-[44px] font-black text-[#0B0F14] uppercase italic tracking-tight">Select Your Vertical</h2>
                         </div>
                         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 md:gap-4">
                             {[
