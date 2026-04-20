@@ -100,32 +100,13 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     if (!mounted) return null;
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
-        <div className={cn("relative group", isMobile ? "block md:hidden mt-4 mb-4 w-full" : "hidden md:block w-full")}>
-            <div className="bg-[#111] h-6 md:h-9 w-full rounded-t-lg md:rounded-t-[14px] flex items-center px-4 gap-1.5 border border-white/10">
-                <div className="flex gap-1 md:gap-1.5">
-                    <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-red-500/30" />
-                    <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-amber-500/30" />
-                    <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-green-500/30" />
-                </div>
-                <div className="flex-1 flex justify-center">
-                    <div className="bg-black/40 border border-white/5 rounded px-4 py-0.5 text-[6px] md:text-[8px] font-black text-white/20 uppercase tracking-[0.4em] italic shadow-inner">
-                        {pack.id.toUpperCase()}_MASTER_ENGINE.xlsx
-                    </div>
-                </div>
-            </div>
-
-            <div className="rounded-b-lg md:rounded-b-[14px] overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.2)] bg-white border border-[#E6E8EC] border-t-0 relative">
+        <div className={cn("relative group", isMobile ? "block md:hidden mt-4 mb-4 w-[95%] mx-auto" : "hidden md:block w-full")}>
+            <div className="rounded-2xl overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.15)] bg-white border border-[#E6E8EC] relative">
                 <img 
                     src={heroImageUrl} 
                     alt={pack.title} 
                     className="w-full h-auto object-cover aspect-[16/7] md:aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
                 />
-            </div>
-            
-            <div className="mt-2 text-center">
-                <p className="text-[6px] md:text-[8px] font-black text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
-                    Sovereign Technical implementation proof
-                </p>
             </div>
         </div>
     );

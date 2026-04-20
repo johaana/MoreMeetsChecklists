@@ -75,14 +75,10 @@ export default function Home() {
     if (!mounted) return null;
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
-        <div className={cn("relative group", isMobile ? "block md:hidden mt-4 mb-4 w-full" : "hidden md:block w-full")}>
-            {isMobile && (
-                <>
-                    <AnimatedAnnotation className="top-[25%] left-[10%]" color="red" delay="0.5s">Misses</AnimatedAnnotation>
-                    <AnimatedAnnotation className="top-[10%] right-[10%]" color="green" delay="1s">Completed</AnimatedAnnotation>
-                    <AnimatedAnnotation className="bottom-[20%] left-[15%]" color="blue" delay="1.5s">Console</AnimatedAnnotation>
-                </>
-            )}
+        <div className={cn("relative group", isMobile ? "block md:hidden mt-4 mb-4 w-[95%] mx-auto" : "hidden md:block w-full")}>
+            <AnimatedAnnotation className="top-[25%] left-[10%]" color="red" delay="0.5s">Misses</AnimatedAnnotation>
+            <AnimatedAnnotation className="top-[10%] right-[10%]" color="green" delay="1s">Completed</AnimatedAnnotation>
+            <AnimatedAnnotation className="bottom-[20%] left-[15%]" color="blue" delay="1.5s">Console</AnimatedAnnotation>
             
             <div className="bg-[#111] h-6 md:h-9 w-full rounded-t-lg md:rounded-t-[14px] flex items-center px-4 gap-1.5 border border-white/10">
                 <div className="flex gap-1 md:gap-1.5">
@@ -204,7 +200,7 @@ export default function Home() {
                                     
                                     <div className="mt-8 text-center">
                                         <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
-                                            sample of restaurant operating dashboard
+                                            sample of restaurant operational dashboard
                                         </p>
                                     </div>
                                 </div>
