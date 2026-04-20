@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
@@ -8,7 +9,7 @@ import Script from 'next/script';
 
 const siteUrl = 'https://www.moremeets.com';
 const siteTitle = 'MoreMeets™ | Sovereign Operational Infrastructure';
-const siteDescription = 'Stop managing manually. MoreMeets™ converts SOPs into live operating infrastructure. Own your data. No SaaS lock-in. Works on Excel & Google Sheets.';
+const siteDescription = 'Stop managing manually. MoreMeets™ converts SOPs into live operating infrastructure for restaurants, hotels, hospitals, retail stores, facilities and franchises. Own your data. Works on Excel & Google Sheets.';
 const socialImage = 'https://i.postimg.cc/rsHq85yn/Screenshot-2026-04-09-091611.png';
 
 export const metadata: Metadata = {

@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -12,7 +13,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 
-// --- CONFIGURATION: THE ELITE 7 ---
+// --- CONFIGURATION: THE SOVEREIGN ELITE ---
 const ELITE_PACK_IDS = [
     'restaurants',
     'hotels_and_resorts',
@@ -20,7 +21,8 @@ const ELITE_PACK_IDS = [
     'school_operations_pack',
     'franchise_operations_pack',
     'facility_management_blueprint',
-    'cinema_operations_pack'
+    'cinema_operations_pack',
+    'retail_operations_system'
 ];
 
 const packs = Array.isArray(premiumPacks) ? premiumPacks : [];

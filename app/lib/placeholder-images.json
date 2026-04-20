@@ -1,3 +1,4 @@
+
 [
   {
     "id": "pack-enterprise_risk_cybersecurity_pack",
@@ -18,28 +19,10 @@
     "imageHint": "restaurant operations"
   },
   {
-    "id": "pack-fashion_and_apparel_retail",
-    "description": "Fashion & Apparel Retail Operations Pack",
+    "id": "pack-retail_operations_system",
+    "description": "Retail Operations System",
     "imageUrl": "https://i.postimg.cc/YSGZy34J/14-Fashion-and-Apparel-Retail-Operations-Pack.png",
-    "imageHint": "fashion retail"
-  },
-  {
-    "id": "pack-jewelry_and_luxury_retail",
-    "description": "Jewelry & Luxury Retail Pack",
-    "imageUrl": "https://i.postimg.cc/jjpmV7N3/16-Jewelry-and-Luxury-Retail-Pack.png",
-    "imageHint": "luxury jewelry"
-  },
-  {
-    "id": "pack-electronics_showroom_pack",
-    "description": "Electronics Showroom Operations Pack",
-    "imageUrl": "https://i.postimg.cc/W4BCRkrf/17-Electronics-Showroom-Operations-Pack.png",
-    "imageHint": "electronics retail"
-  },
-  {
-    "id": "pack-supermarket_grocery_retail_pack",
-    "description": "Supermarket & Grocery Retail Operations Pack",
-    "imageUrl": "https://i.postimg.cc/d1WCk8Bx/Supermarket-and-Grocery-Retail-Operations-Pack.png",
-    "imageHint": "supermarket retail"
+    "imageHint": "retail operations store"
   },
   {
     "id": "pack-facility_management_blueprint",

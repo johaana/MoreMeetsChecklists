@@ -2,10 +2,6 @@
 import { franchise_operations_pack } from "./franchise_operations_pack";
 import { hotels_and_resorts } from "./hotels_and_resorts";
 import { restaurants } from "./restaurants_pack";
-import { fashion_and_apparel_retail } from "./fashion_and_apparel_retail";
-import { jewelry_and_luxury_retail } from "./jewelry_and_luxury_retail";
-import { electronics_showroom_pack } from "./electronics_showroom_pack";
-import { supermarket_grocery_retail_pack } from "./supermarket_grocery_retail_pack";
 import { facility_management_blueprint } from "./facility_management_blueprint";
 import { corporate_legal_compliance_starter_kit } from "./corporate_legal_compliance_starter_kit";
 import { enterprise_risk_cybersecurity_pack } from "./enterprise_risk_cybersecurity_pack";
@@ -23,16 +19,13 @@ import { food_manufacturing_ops } from "./food_manufacturing_ops";
 import { bakery_confectionery_pack } from "./bakery_confectionery_pack";
 import { animal_shelter_pack } from "./animal_shelter_pack";
 import { pharmacy_ops_pack } from "./pharmacy_ops_pack";
+import { retail_operations_system } from "./retail_operations_system";
 import type { PremiumPack } from "../premium-packs";
 
 export const allPacks: PremiumPack[] = [
     franchise_operations_pack,
     hotels_and_resorts,
     restaurants,
-    fashion_and_apparel_retail,
-    jewelry_and_luxury_retail,
-    electronics_showroom_pack,
-    supermarket_grocery_retail_pack,
     facility_management_blueprint,
     corporate_legal_compliance_starter_kit,
     enterprise_risk_cybersecurity_pack,
@@ -49,5 +42,6 @@ export const allPacks: PremiumPack[] = [
     food_manufacturing_ops,
     bakery_confectionery_pack,
     animal_shelter_pack,
-    pharmacy_ops_pack
+    pharmacy_ops_pack,
+    retail_operations_system
 ];

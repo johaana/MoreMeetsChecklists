@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -15,6 +16,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
+// --- CONFIGURATION: THE SOVEREIGN ELITE ---
 const ELITE_PACK_IDS = [
     'restaurants',
     'hotels_and_resorts',
@@ -22,7 +24,8 @@ const ELITE_PACK_IDS = [
     'school_operations_pack',
     'franchise_operations_pack',
     'facility_management_blueprint',
-    'cinema_operations_pack'
+    'cinema_operations_pack',
+    'retail_operations_system'
 ];
 
 const allPacksByCategory = (packs: PremiumPack[]) => {
@@ -74,8 +77,8 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => {
             <CardFooter className="p-6 md:p-12 flex flex-col gap-4 md:gap-6">
                 <div className="flex items-center justify-between w-full">
                     <div className="flex flex-col">
-                        <span className="text-[7px] md:text-[8px] font-black text-white/20 uppercase tracking-widest line-through italic">₹1,999</span>
-                        <span className="text-lg md:text-xl font-black text-primary-text italic font-headline leading-none">₹999</span>
+                        <span className="text-[7px] md:text-[8px] font-black text-white/20 uppercase tracking-widest line-through italic">₹4,999</span>
+                        <span className="text-lg md:text-xl font-black text-primary-text italic font-headline leading-none">₹2,999</span>
                     </div>
                     <span className="text-[7px] md:text-[8px] font-black text-primary uppercase tracking-[0.3em] italic">DEPLOYMENT RATE</span>
                 </div>

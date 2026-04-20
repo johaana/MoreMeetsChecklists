@@ -1,8 +1,18 @@
 
 import React from 'react';
-import { Bug, Siren, HandCoins, Users, Shield, TrendingUp, Lock, Zap, FileLock, HeartPulse, Bus, Home, TestTube, DatabaseZap, BriefcaseBusiness, ShieldCheck, Handshake, BookOpen, Car, Drill, SprayCan, Megaphone, Stethoscope, Microscope, FileWarning, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, Wrench, LifeBuoy, DollarSign, Thermometer, UserCog2, Key, Router, Package, Drama, Eye, Cog, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Code, ScanFace, HandPlatter, Scissors, Fish, Cloud, Theater, PackageCheck, UserCheck, KeyRound, Building2, Wind, PawPrint, PersonStanding, Dumbbell, ShoppingCart, Waves, Utensils, Building, MonitorPlay, Film, Tv, Shirt, Gem, Factory, HardHat, GraduationCap, School, Sprout, ShoppingBasket, Wifi, Link, BrainCircuit, Bot, Syringe, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, Computer, Landmark, FerrisWheel, GalleryVertical, Guitar, Gamepad, Rabbit, VenetianMask, Store, Pill, Ship, Sun, AnchorIcon, Clapperboard, Library, Recycle, FileCheck, Truck, ClipboardCheck, UserPlus, Scale, Projector } from 'lucide-react';
+import { Bug, Siren, HandCoins, Users, Shield, TrendingUp, Lock, Zap, FileLock, HeartPulse, Bus, Home, TestTube, DatabaseZap, BriefcaseBusiness, ShieldCheck, Handshake, BookOpen, Car, Drill, SprayCan, Megaphone, Stethoscope, Microscope, FileWarning, Ambulance, DoorClosed, CircleDollarSign, Watch, Barcode, Wrench, LifeBuoy, DollarSign, Thermometer, UserCog2, Key, Router, Package, Drama, Eye, Cog, Route, CalendarDays, ClipboardList, HelpingHand, Map, DramaIcon, UserRound, Sparkles, Code, ScanFace, HandPlatter, Scissors, Fish, Cloud, Theater, PackageCheck, UserCheck, KeyRound, Building2, Wind, PawPrint, PersonStanding, Dumbbell, ShoppingCart, Waves, Utensils, Building, MonitorPlay, Film, Tv, Shirt, Gem, Factory, HardHat, GraduationCap, School, Sprout, ShoppingBasket, Wifi, Link, BrainCircuit, Bot, Syringe, Popcorn, Ticket, Lamp, Aperture, Sailboat, Anchor, CakeSlice, AnchorIcon, Ship, Sun, Clapperboard, Library, Recycle, FileCheck, Truck, ClipboardCheck, UserPlus, Scale, Projector, ShoppingBag } from 'lucide-react';
 
 export const painPointsContent = {
+    retail_operations_system: {
+        title: "Anatomy of a Retail Failure",
+        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
+        points: [
+            { icon: <ShoppingBag />, title: "The $10B Shrinkage Epidemic (National Retail Federation)", description: "Retailers lose billions annually to internal theft and inventory errors. Our 'Loss Prevention' and 'Inventory Reconciliation' SOPs implement the cycle counts and POS checks needed to protect your bottom line." },
+            { icon: <Zap />, title: "The Lithium Fire Crisis (Generic Electronics)", description: "Lithium-ion batteries in demo units spontaneously exploding have caused multiple showroom fires. Our 'Thermal Safety Pulse' mandates daily checks for swelling and overheating, preventing catastrophic venue damage." },
+            { icon: <Thermometer />, title: "The Cold Chain Spoilage (Generic Supermarket)", description: "A single overnight refrigeration failure can wipe out 100% of fresh inventory profit. Our 'HACCP Temperature Logs' provide a verifiable early-warning system for perishable goods." },
+            { icon: <Shield />, title: "The Luxury 'Swap' Heist (Generic Jewelry)", description: "High-value items are often swapped with fakes during customer viewings. Our 'Dual-Verification Protocol' and 'One-Item-Only' viewing policy eliminate substitution theft at the point of sale." }
+        ]
+    },
     bakery_confectionery_pack: {
         title: "Anatomy of a Bakery Failure",
         disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
@@ -43,54 +53,14 @@ export const painPointsContent = {
             { icon: <TrendingUp />, title: "KFC Chicken Shortage (UK, 2018)", description: "KFC ran out of chicken due to a supply chain failure, costing them millions. Our vendor verification and inventory SOPs help prevent such catastrophic stockouts." }
         ]
     },
-    fashion_and_apparel_retail: {
-        title: "Anatomy of a Fashion Retail Failure",
+    cinema_operations_pack: {
+        title: "Anatomy of a Cinema Failure",
         disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
         points: [
-            { icon: <Factory />, title: "The Rana Plaza Factory Collapse (Bangladesh, 2013)", description: "A structural failure killed over 1,100 garment workers, exposing major brands like Primark and Mango to a global crisis over supply chain safety. Our 'Vendor Compliance Audits' ensure your partners meet ethical and safety standards, protecting your brand from association with such disasters." },
-            { icon: <Recycle />, title: "The H&M 'Unsold Inventory' Scandal (Global, 2018)", description: "H&M was caught incinerating millions of dollars of unsold inventory, leading to a massive environmental backlash. Our 'Seasonal Inventory Management' SOP provides a structured markdown process to clear seasonal goods, preventing the financial and reputational damage of dead stock." },
-            { icon: <Building />, title: "The 'Shrinkage' Epidemic (Global, Ongoing)", description: "Retailers lose billions annually to theft and inventory errors. Our 'Loss Prevention' and 'Inventory Reconciliation' SOPs implement the cycle counts, security tagging, and POS checks needed to protect your bottom line." },
-            { icon: <Zap />, title: "Inconsistent Customer Experience (Multi-brand issue)", description: "A customer has a great experience in one store and a terrible one in another, damaging brand loyalty. Our 'Customer Service Standards Audit' ensures every store delivers the same high-quality experience." }
-        ]
-    },
-    electronics_showroom_pack: {
-        title: "Anatomy of an Electronics Retail Failure",
-        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
-        points: [
-            { icon: <Zap />, title: "The Apple Store Battery Explosions (Spain & Netherlands, 2018)", description: "iPhones on display spontaneously exploded in-store, causing emergency evacuations and highlighting the fire risk of demo units. Our 'Demo Unit Safety' checklist mandates daily checks for battery swelling and overheating, preventing fires." },
-            { icon: <Shield />, title: "The Best Buy 'Geek Squad' Data Theft (USA, 2018)", description: "Best Buy faced lawsuits after employees were accused of copying customers' sensitive data from devices in for repair. Our 'Repair & Service Management' SOP creates a strict chain of custody, protecting customer data and your brand from legal damage." },
-            { icon: <Bug />, title: "Large-Scale Inventory Theft (Best Buy, USA, 2019)", description: "A sophisticated theft ring stole over $43 million in goods by exploiting inventory control weaknesses. Our 'Asset Tagging' and 'Inventory Reconciliation' SOPs make such theft impossible by creating a verifiable trail for every high-value item." },
-            { icon: <Recycle />, title: "E-Waste Compliance Failure (Walmart, USA, 2013)", description: "Walmart was fined over $81 million for improperly disposing of returned electronics and hazardous e-waste. Our 'E-waste Handling SOP' provides a legally compliant framework to prevent massive environmental fines and reputational damage." }
-        ]
-    },
-    supermarket_grocery_retail_pack: {
-        title: "Anatomy of a Supermarket Failure",
-        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
-        points: [
-            { icon: <Bug />, title: "The Blue Bell Creameries Listeria Outbreak (USA, 2015)", description: "A listeria outbreak linked to the ice cream brand killed three people and forced a total product recall, costing the company hundreds of millions. This is a classic example of a cold chain and production hygiene failure that our checklists prevent." },
-            { icon: <Siren />, title: "The Walmart 'Slip and Fall' Lawsuits (USA, Ongoing)", description: "Walmart faces thousands of lawsuits annually, with one verdict awarding a customer $7.5 million for a slip-and-fall injury. Our 'Hourly Floor Inspection & Spill Response' SOP creates a verifiable log to prove diligence and prevent these incidents." },
-            { icon: <Zap />, title: "The Tesco Rodent Infestation (UK, 2017)", description: "A Tesco store was hit with heavy fines after a rodent infestation was discovered. Our 'Store Hygiene' and 'Pest Control' schedules prevent the conditions that allow for such infestations, protecting both public health and your brand." },
-            { icon: <Recycle />, title: "Expired Goods on Shelves (Multiple Retailers)", description: "Chains like More Retail in India have been fined after inspections found expired items on shelves. Our 'FIFO & Expiry Sweep' checklist provides a daily, verifiable system to ensure this never happens." }
-        ]
-    },
-    ott_platform_pack: {
-        title: "Anatomy of an OTT Platform Failure",
-        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
-        points: [
-            { icon: <Users />, title: "Hotstar Cricket World Cup Crash (India, 2019)", description: "The platform crashed during a record-breaking India vs. Pakistan match, infuriating millions of paying subscribers. Our 'Live Event Readiness' checklist prevents this with mandatory load testing and disaster recovery drills before major events." },
-            { icon: <Shield />, title: "SonyLIV User Data Leak (India, 2021)", description: "User data was leaked due to an API misconfiguration, a common security flaw. Our 'Cybersecurity' checklists include API security reviews to prevent such breaches." },
-            { icon: <Lock />, title: "Zee5 Server Hack (India, 2021)", description: "A server hack compromised user data, leading to regulatory scrutiny. Our 'Patch Management' and 'Vulnerability' checklists ensure systems are not left exposed to known exploits." },
-            { icon: <FileLock />, title: "Amazon Prime 'Tandav' Legal Issues (India, 2021)", description: "The platform faced legal action over unreviewed content that violated local laws. Our pre-release 'QC and Legal Content Review' process ensures all content is compliant before going live." }
-        ]
-    },
-    theme_park_ops_pack: {
-        title: "Anatomy of a Theme Park Failure",
-        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
-        points: [
-            { icon: <Siren />, title: "The Smiler Crash at Alton Towers (UK, 2015)", description: "Two carriages collided, causing life-changing injuries. The cause was human error overriding a safety system. Our 'Ride Safety' SOP includes a mandatory 'no-override' policy and dual-operator verification, preventing this exact failure." },
-            { icon: <Shield />, title: "The Mindbender Derailment (Canada, 1986)", description: "A roller coaster derailed, killing three people, because of missing bolts on a wheel assembly: a clear maintenance failure. Our 'Daily Pre-Opening Inspection' checklist mandates a multi-point physical check of critical components, catching such issues before the first guest arrives." },
-            { icon: <Bug />, title: "Action Park (USA, 1980s-90s)", description: "Dubbed 'Class Action Park,' this venue was notorious for poorly designed rides and untrained staff, leading to multiple deaths. Our checklists for ride design, operator training, and daily safety audits are the antidote to such a catastrophic operational culture." },
-            { icon: <FerrisWheel />, title: "Dreamworld River Rapids Tragedy (Australia, 2016)", description: "Four people died on a river rapids ride due to a conveyor belt malfunction that was a known issue. Our 'Preventive Maintenance' checklists ensure that every component is regularly inspected, logged, and repaired before it can cause a disaster." }
+            { icon: <Siren />, title: "Uphaar Cinema Fire (Delhi, 1997)", description: "59 people died, not from fire, but from suffocation due to blocked exits. Our 'Fire Safety' checklist mandates daily exit checks, making such a tragedy impossible." },
+            { icon: <Bug />, title: "AMC Theater Bed Bug Infestation (USA, 2010)", description: "A viral news story about bed bugs led to a PR nightmare and costly pest control. Our 'Auditorium Cleaning' SOP includes checks for pests, preventing such outbreaks." },
+            { icon: <Projector />, title: "Interstellar Projection Error (Global, 2014)", description: "Many cinemas showed the film with incorrect sound mixing, ruining the experience. Our 'Projection & Sound QC' checklist ensures all technical aspects are perfect before every show." },
+            { icon: <Users />, title: "Aurora Movie Theater Shooting (USA, 2012)", description: "While a horrific criminal act, this tragedy led to enhanced security protocols worldwide. Our 'Crowd Management & Security' checklists help manage entry points and monitor for suspicious behavior." }
         ]
     },
     facility_management_blueprint: {
@@ -173,36 +143,6 @@ export const painPointsContent = {
             { icon: <Wrench />, title: "Amazon Warehouse Fatality (USA, 2021)", description: "A worker was killed after being caught in a conveyor belt. Our 'Material Handling Equipment (MHE)' safety checklists and maintenance logs ensure that all machinery is safe and operated correctly, preventing tragic accidents." }
         ]
     },
-    animal_shelter_pack: {
-        title: "Anatomy of an Animal Shelter Failure",
-        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
-        points: [
-            { icon: <Bug />, title: "Delhi Shelter Parvovirus Outbreak (2023)", description: "A parvovirus outbreak killed 20 dogs, forcing a temporary shutdown. Our 'Cleaning and Disinfection' schedule is designed to prevent the spread of such infectious diseases." },
-            { icon: <Siren />, title: "Pune NGO Shelter Sealed (2021)", description: "A shelter was sealed by authorities due to unsanitary conditions. Our checklists provide a verifiable record of daily cleaning and hygiene, ensuring compliance and animal welfare." },
-            { icon: <Stethoscope />, title: "Kerala Rabies Death after Bite (2022)", description: "A tragic death occurred from a bite by a stray, highlighting failures in systematic vaccination SOPs for rescued animals. Our 'Medical Stock & Vaccine Tracker' ensures every animal's vaccination schedule is up-to-date." },
-            { icon: <Users />, title: "Chennai Volunteer Bitten (2019)", description: "A volunteer was bitten by a dog with no recorded aggression protocol. Our 'Animal Behavior Monitoring' SOP helps identify and manage at-risk animals, protecting staff and volunteers." }
-        ]
-    },
-    sports_clubs_stadium_operations_pack: {
-        title: "Anatomy of a Sports Venue Failure",
-        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
-        points: [
-            { icon: <Users />, title: "Hillsborough Disaster (UK, 1989)", description: "A human crush at a football match killed 97 people due to severe overcrowding and failed crowd control. Our 'Crowd Management' SOPs, including capacity monitoring and steward positioning, are designed to prevent such a catastrophe." },
-            { icon: <Dumbbell />, title: "Jabalpur Gym Accident (India, 2023)", description: "A youth died after gym equipment snapped due to poor maintenance; the machine had not been serviced in 14 months. Prevented by: Our 'Monthly Equipment Inspection' and preventive maintenance SOP, which creates a mandatory, verifiable service log." },
-            { icon: <Siren />, title: "Bradford City Stadium Fire (UK, 1985)", description: "A pile of litter under wooden stands caught fire, killing 56 people. No fire audit had been done. Prevented by: Our 'Fire Safety' and 'Housekeeping' SOPs, which mandate checks for flammable debris and functional fire equipment." },
-            { icon: <Bug />, title: "Wankhede Stadium Water Contamination (India, 2019)", description: "Several spectators fell ill due to untested drinking water points during an IPL match. Prevented by: Our 'Daily Sanitation' and 'F&B Hygiene Audit' checklists, ensuring all public amenities are safe." }
-        ]
-    },
-    film_production_pack: {
-        title: "Anatomy of a Film Production Failure",
-        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
-        points: [
-            { icon: <FileLock />, title: "The '$2M Mistake' Life Rights Disaster", description: "A biopic was halted and sued because producers failed to secure the life rights of its subject. Our 'Pre-production Legal' checklist makes this impossible to miss." },
-            { icon: <Siren />, title: "Rust Movie Set Shooting (USA, 2021)", description: "A tragic on-set death occurred due to a failure in weapons handling protocols. Our 'On-Set Safety' and 'High-Risk Scene' checklists enforce strict, verifiable safety procedures." },
-            { icon: <Car />, title: "Midnight Rider Train Accident (USA, 2014)", description: "A crew member was killed filming on a live train track without proper permits or safety coordination. Our 'Location Scouting & Permitting' SOP ensures all legal and safety clearances are met." },
-            { icon: <Lock />, title: "The 'Deadpool' Leak (USA, 2014)", description: "Test footage was leaked online, but it actually generated huge buzz and got the movie greenlit. While this was a happy accident, our 'Data Security' SOPs prevent unauthorized leaks of valuable IP." }
-        ]
-    },
     healthcare_and_hospital_operations: {
         title: "Anatomy of a Medical Failure",
         disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
@@ -211,26 +151,6 @@ export const painPointsContent = {
             { icon: <Sparkles />, title: "JIPMER Sterilization Failure (India, 2019)", description: "An infection outbreak was traced back to improperly sterilized surgical tools. Our 'CSSD & Sterilization' checklist, including biological indicator tests, ensures equipment is sterile." },
             { icon: <Pill />, title: "Dana-Farber Chemo Overdose (USA, 1995)", description: "A patient died after receiving a four-fold overdose of chemotherapy due to a calculation error. Our 'High-Alert Medication' SOP mandates an independent double-check for exactly these scenarios." },
             { icon: <UserCheck />, title: "Patient ID Mix-up (Multiple Cases, Global)", description: "Countless errors occur from mixing up patients with similar names. Our 'Patient Identification Protocol' requires using two identifiers (e.g., name and MRN) before any procedure or medication." }
-        ]
-    },
-    jewelry_and_luxury_retail: {
-        title: "Anatomy of a Luxury Retail Failure",
-        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
-        points: [
-            { icon: <Gem />, title: "The Graff Diamond Heist (UK, 2009)", description: "Thieves used professional makeup to disguise their identities and simply walked out with £40 million in jewels. This highlights the need for behavioral awareness training, covered in our 'Suspicious Behavior Identification' checklist." },
-            { icon: <Siren />, title: "The 'Swap' Thefts (Global, Ongoing)", description: "High-value items like watches or diamonds are swapped with fakes during a viewing. Our 'High-Value Transaction' SOP, requiring one-item-at-a-time viewing and post-viewing serial number checks, prevents this." },
-            { icon: <Zap />, title: "Rolex 'Smash and Grab' Robberies (Global, Ongoing)", description: "Gangs use hammers to smash display cases in seconds. Our 'Display Case Security' protocols recommend laminated, shatter-resistant glass and alarm integration to deter these attacks." },
-            { icon: <Lock />, title: "Antwerp Diamond Heist (Belgium, 2003)", description: "Over $100 million was stolen by bypassing the vault's multiple security systems. Our 'Vault Security' SOP includes dual-person access control and regular alarm testing to ensure layers of defense." }
-        ]
-    },
-    cinema_operations_pack: {
-        title: "Anatomy of a Cinema Failure",
-        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
-        points: [
-            { icon: <Siren />, title: "Uphaar Cinema Fire (Delhi, 1997)", description: "59 people died, not from fire, but from suffocation due to blocked exits. Our 'Fire Safety' checklist mandates daily exit checks, making such a tragedy impossible." },
-            { icon: <Bug />, title: "AMC Theater Bed Bug Infestation (USA, 2010)", description: "A viral news story about bed bugs led to a PR nightmare and costly pest control. Our 'Auditorium Cleaning' SOP includes checks for pests, preventing such outbreaks." },
-            { icon: <Projector />, title: "Interstellar Projection Error (Global, 2014)", description: "Many cinemas showed the film with incorrect sound mixing, ruining the experience. Our 'Projection & Sound QC' checklist ensures all technical aspects are perfect before every show." },
-            { icon: <Users />, title: "Aurora Movie Theater Shooting (USA, 2012)", description: "While a horrific criminal act, this tragedy led to enhanced security protocols worldwide. Our 'Crowd Management & Security' checklists help manage entry points and monitor for suspicious behavior." }
         ]
     }
 };

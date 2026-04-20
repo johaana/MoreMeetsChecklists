@@ -67,8 +67,8 @@ const shortDescriptions: Record<string, string> = {
     'cinema_operations_pack': "Technical excellence for cinema groups. Projection QC, concession yield logic, and auditorium hygiene standards.",
     'logistics_warehouse_pack': "Stop inventory shrinkage and fatal safety gaps. 120+ protocols for MHE safety and stock integrity.",
     'corporate_legal_compliance_starter_kit': "Stop boardroom liability and statutory leaks. Track mandatory filings without SaaS dependency.",
+    'retail_operations_system': "Stop inventory shrinkage and brand standards drift. A unified master engine for High-Value, Perishable, and Technical retail.",
     'food_manufacturing_ops': "Prevent mass recalls. HACCP/FSSAI engine for production integrity and traceability.",
-    'jewelry_and_luxury_retail': "Stop sophisticated heists and 'swap' thefts. Dual-verification vault control and asset protection.",
     'animal_shelter_pack': "NGO-grade welfare and disease prevention. Comprehensive intake, medical, and adoption protocols."
 };
 
@@ -78,7 +78,7 @@ export const premiumPacks: PremiumPack[] = [
         const eliteIds = [
             'restaurants', 'hotels_and_resorts', 'healthcare_and_hospital_operations', 
             'school_operations_pack', 'franchise_operations_pack', 
-            'facility_management_blueprint', 'cinema_operations_pack'
+            'facility_management_blueprint', 'cinema_operations_pack', 'retail_operations_system'
         ];
         
         let processedPack = { ...p };

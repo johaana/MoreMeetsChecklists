@@ -12,13 +12,15 @@ import {
     Store, 
     Building2, 
     Popcorn,
-    ChevronRight
+    ChevronRight,
+    ShoppingBag
 } from "lucide-react";
 import React from 'react';
 
 const ELITE_INDUSTRIES = [
     { name: "Restaurants", id: "restaurants", icon: Utensils },
     { name: "Hotels & Resorts", id: "hotels_and_resorts", icon: Building },
+    { name: "Retail Stores", id: "retail_operations_system", icon: ShoppingBag },
     { name: "Healthcare", id: "healthcare_and_hospital_operations", icon: Hospital },
     { name: "Schools", id: "school_operations_pack", icon: School },
     { name: "Franchise Networks", id: "franchise_operations_pack", icon: Store },
