@@ -104,6 +104,12 @@ export default function Home() {
                     className="w-full h-auto object-cover aspect-[16/7] md:aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
                 />
             </div>
+            
+            <div className="mt-2 text-center">
+                <p className="text-[7px] md:text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
+                    sample of restaurant operational dashboard
+                </p>
+            </div>
         </div>
     );
 
@@ -113,7 +119,7 @@ export default function Home() {
 
             <main className="flex-1">
                 
-                <section className="w-full bg-[#F7F8FA] pt-12 pb-8 md:pt-24 md:pb-24 overflow-hidden min-h-[85svh] flex flex-col justify-center">
+                <section className="w-full bg-[#F7F8FA] pt-16 pb-8 md:pt-24 md:pb-24 overflow-hidden min-h-[85svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
                         <div className="grid lg:grid-cols-[1.2fr,1fr] gap-6 lg:gap-16 items-center">
                             
@@ -136,7 +142,6 @@ export default function Home() {
                                     <p className="text-[14px] md:text-[18px] font-black leading-tight text-[#0B0F14] italic">No follow-ups • No confusion</p>
                                 </div>
 
-                                {/* 2 COLUMN CHECKLIST ON MOBILE */}
                                 <div className="grid grid-cols-2 gap-x-4 gap-y-2 w-full">
                                     {[
                                         "Pre-built SOPs",
@@ -195,6 +200,12 @@ export default function Home() {
                                             </div>
                                         </div>
                                         <img src={DASHBOARD_IMAGE} alt="Master Operational System" className="w-full h-auto object-cover grayscale-[0.05]" />
+                                    </div>
+                                    
+                                    <div className="mt-8 text-center">
+                                        <p className="text-[8px] font-bold text-[#5B6670] uppercase tracking-[0.4em] italic opacity-60">
+                                            sample of restaurant operating dashboard
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -360,7 +371,7 @@ export default function Home() {
                                         <th className="p-4 md:p-6 text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em]">Typical SaaS App</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-zinc-100 text-xs md:text-sm">
+                                <tbody className="divide-y divide-zinc-100 text-xs md:sm">
                                     {[
                                         { f: "Ownership", mm: "One-time buy. Own it forever.", app: "Monthly lease. Pay forever." },
                                         { f: "Customization", mm: "100% Unlocked Excel logic.", app: "Locked features. Request changes." },

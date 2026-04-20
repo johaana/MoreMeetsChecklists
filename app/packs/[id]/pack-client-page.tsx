@@ -21,27 +21,6 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
     </section>
 );
 
-const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green" }: { children: React.ReactNode, className?: string, delay?: string, color?: "green" | "red" | "blue" }) => {
-    const pingColors = {
-        green: "bg-emerald-500",
-        red: "bg-red-500",
-        blue: "bg-blue-500"
-    };
-
-    return (
-        <div className={cn(
-            "absolute z-30 bg-white/95 backdrop-blur-md px-1.5 py-0.5 md:px-2 md:py-1 rounded md:rounded-lg shadow-xl flex items-center gap-1.5 border border-[#E6E8EC] animate-in fade-in zoom-in duration-700 whitespace-nowrap",
-            className
-        )} style={{ animationDelay: delay }}>
-            <span className="relative flex h-1 w-1">
-                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-100 scale-[4]", pingColors[color as keyof typeof pingColors])}></span>
-                <span className={cn("relative inline-flex rounded-full h-1 w-1", pingColors[color as keyof typeof pingColors])}></span>
-            </span>
-            <span className="text-[6px] md:text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
-        </div>
-    );
-};
-
 const getIndustryContent = (id: string) => {
     const defaults = {
         pitfalls: [
@@ -122,14 +101,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
         <div className={cn("relative group", isMobile ? "block md:hidden mt-4 mb-4 w-full" : "hidden md:block w-full")}>
-            {isMobile && (
-                <>
-                    <AnimatedAnnotation className="top-[25%] left-[10%]" color="red" delay="0.5s">Misses</AnimatedAnnotation>
-                    <AnimatedAnnotation className="top-[10%] right-[10%]" color="green" delay="1s">Completed</AnimatedAnnotation>
-                    <AnimatedAnnotation className="bottom-[20%] left-[15%]" color="blue" delay="1.5s">Console</AnimatedAnnotation>
-                </>
-            )}
-            
             <div className="bg-[#111] h-6 md:h-9 w-full rounded-t-lg md:rounded-t-[14px] flex items-center px-4 gap-1.5 border border-white/10">
                 <div className="flex gap-1 md:gap-1.5">
                     <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-red-500/30" />
@@ -162,7 +133,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             
-            <section className="relative w-full bg-[#F7F8FA] pt-12 pb-8 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
+            <section className="relative w-full bg-[#F7F8FA] pt-16 pb-8 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
                 <div className="container mx-auto max-w-[1200px] px-6">
                     <div className="grid lg:grid-cols-[1.1fr,1fr] gap-6 lg:gap-16 items-center">
                         
