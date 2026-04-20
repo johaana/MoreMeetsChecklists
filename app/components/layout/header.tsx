@@ -41,7 +41,7 @@ const SolutionsList = () => (
         <div className="md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-4 flex flex-col">
         {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
             <div key={category} className="flex flex-col mb-4 md:mb-0 break-inside-avoid">
-                <h5 className="font-black text-slate-900 mb-2 px-2 uppercase tracking-[0.3em] text-[9px] font-headline">/ {category}</h5>
+                <h5 className="font-black text-slate-900 mb-2 px-2 uppercase tracking-[0.3em] text-[9px] font-headline">{category}</h5>
                 <ul className="space-y-1">
                     {packs.map(pack => (
                         <li key={pack.id}>
@@ -182,7 +182,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                                         <AccordionContent className="pb-4">
                                             {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
                                                 <div key={category} className="ml-4 pl-4 border-l border-black/5 mb-4">
-                                                    <h5 className="font-black text-[9px] uppercase tracking-[0.3em] text-primary/90 mt-2 mb-2 font-headline">/ {category}</h5>
+                                                    <h5 className="font-black text-[9px] uppercase tracking-[0.3em] text-primary/90 mt-2 mb-2 font-headline">{category}</h5>
                                                     <div className="flex flex-col gap-1">
                                                         {packs.map(pack => (
                                                             <Link key={pack.id} href={`/packs/${pack.id}`} className="text-[11px] font-bold uppercase tracking-tight text-slate-600 hover:text-slate-900 transition-colors py-2 px-2 rounded-md hover:bg-black/5 flex items-center gap-2">

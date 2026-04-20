@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -393,7 +392,7 @@ export default function Home() {
                             <p className="text-base md:text-[18px] text-white/60 font-medium italic">Setup takes less than 10 minutes</p>
                         </div>
                         <div className="flex flex-col items-center gap-6 md:gap-8">
-                            <button className="h-[70px] md:h-[80px] px-10 md:px-12 rounded-[16px] bg-[#F4A261] text-white font-black uppercase italic text-xl md:text-2xl shadow-[0_20px_50px_-10px_rgba(244,162,97,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group w-full max-w-sm sm:w-auto">
+                            <button className="h-70 md:h-[80px] px-10 md:px-12 rounded-[16px] bg-[#F4A261] text-white font-black uppercase italic text-xl md:text-2xl shadow-[0_20px_50px_-10px_rgba(244,162,97,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group w-full max-w-sm sm:w-auto">
                                 <Link href="/library" className="flex items-center gap-4 justify-center">Get Your System <ArrowRight className="w-6 h-6 md:w-8 md:h-8 transition-transform group-hover:translate-x-2" /></Link>
                             </button>
                             <div className="flex flex-col items-center">

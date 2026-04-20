@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -121,7 +120,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         
                         <div className="flex flex-col items-start space-y-3 md:space-y-8 relative z-20">
                             <div className="space-y-1">
-                                <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] text-zinc-400 mb-0.5 block">/ {pack.category.toUpperCase()}</span>
+                                <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] text-zinc-400 mb-0.5 block">{pack.category.toUpperCase()}</span>
                                 <h1 className="text-[30px] md:text-[56px] lg:text-[68px] font-black text-[#0B0F14] leading-[1.1] md:leading-[0.85] tracking-tighter uppercase italic">
                                     {pack.title.replace('Operating System', '')} <br/>
                                     <span className="text-[#0F3D2E]">Operating System</span>

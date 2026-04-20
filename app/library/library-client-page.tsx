@@ -54,7 +54,7 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => {
                     {pack.badgeText && <Badge variant={pack.badgeVariant || 'outline'} className="uppercase tracking-widest text-[7px] md:text-[8px] font-black border-primary/20 text-primary px-2 md:px-3">{pack.badgeText}</Badge>}
                 </div>
                 <div className="space-y-1 md:space-y-2">
-                    <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.4em] text-primary/60">/ {pack.category.toUpperCase()}</p>
+                    <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.4em] text-primary/60">{pack.category.toUpperCase()}</p>
                     <CardTitle className="text-xl md:text-3xl font-black font-headline italic uppercase tracking-tighter text-primary-text leading-[0.9] group-hover:text-primary transition-colors">
                         <Link href={`/packs/${pack.id}`}>{pack.title}</Link>
                     </CardTitle>
