@@ -147,7 +147,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         <div className="w-4 h-4 rounded-full bg-[#0F3D2E]/10 flex items-center justify-center shrink-0">
                                             <Check className="w-2.5 h-2.5 text-[#0F3D2E]" />
                                         </div>
-                                        <span className="text-[11px] font-bold text-[#0B0F14]">{item}</span>
+                                        <span className="text-[13px] md:text-sm font-bold text-[#0B0F14]">{item}</span>
                                     </div>
                                 ))}
                             </div>
