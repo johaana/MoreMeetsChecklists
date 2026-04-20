@@ -125,7 +125,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     {pack.title.replace('Operating System', '')} <br/>
                                     <span className="text-[#0F3D2E]">Operating System</span>
                                 </h1>
-                                <p className="text-sm md:text-xl text-[#5B6670] italic font-medium leading-tight pt-1">
+                                <p className="text-base md:text-xl text-[#5B6670] italic font-medium leading-tight pt-1">
                                     Run {pack.title.toLowerCase().replace(' operating system', '')} daily without chasing staff.
                                 </p>
                             </div>
@@ -133,7 +133,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             <TechnicalProof isMobile />
 
                             <div className="border-l-[3px] border-[#0F3D2E] pl-4 md:pl-[20px] space-y-1">
-                                <p className="text-[14px] md:text-[18px] font-black leading-tight text-zinc-900 italic">No follow-ups • No confusion • No memory gaps</p>
+                                <p className="text-[15px] md:text-[18px] font-black leading-tight text-[#0B0F14] italic">No follow-ups • No confusion • No memory gaps</p>
                             </div>
 
                             <div className="grid grid-cols-2 gap-x-4 gap-y-2 w-full py-1">

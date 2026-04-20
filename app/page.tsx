@@ -24,7 +24,8 @@ import {
     Popcorn,
     Zap,
     GraduationCap,
-    Smartphone
+    Smartphone,
+    Target
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -135,7 +136,7 @@ export default function Home() {
                                 <TechnicalProof isMobile />
 
                                 <div className="border-l-[3px] border-[#0F3D2E] pl-[16px] space-y-0.5 py-0.5">
-                                    <p className="text-[14px] md:text-[18px] font-black leading-tight text-[#0B0F14] italic">No follow-ups • No confusion</p>
+                                    <p className="text-[15px] md:text-[18px] font-black leading-tight text-[#0B0F14] italic">No follow-ups • No confusion</p>
                                 </div>
 
                                 <div className="grid grid-cols-2 gap-x-4 gap-y-2 w-full">
@@ -155,18 +156,16 @@ export default function Home() {
                                 </div>
 
                                 <div className="space-y-2 w-full pt-2">
-                                    <button className="h-12 md:h-[64px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-sm md:text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group w-full sm:w-auto">
-                                        <Link href="/library" className="flex items-center gap-3">
-                                            Start Your System <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
-                                        </Link>
-                                    </button>
-
-                                    <div className="flex flex-col items-center sm:items-start space-y-0.5">
-                                        <div className="flex items-baseline gap-2">
-                                            <p className="text-[20px] md:text-[32px] font-black text-[#0B0F14] italic tracking-tight">₹2,999</p>
-                                            <span className="text-[10px] md:text-xs font-bold text-[#5B6670] line-through">₹4,999</span>
+                                    <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-8">
+                                        <button className="h-12 md:h-[64px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-sm md:text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group w-full sm:w-auto">
+                                            <Link href="/library" className="flex items-center gap-3">
+                                                Deploy System → ₹2,999 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
+                                            </Link>
+                                        </button>
+                                        <div className="flex flex-col items-center sm:items-start space-y-0.5">
+                                            <p className="text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none italic">ONE-TIME PAYMENT</p>
+                                            <p className="text-[8px] font-black text-[#5B6670] uppercase tracking-widest leading-none">OWN THE ENGINE FOREVER</p>
                                         </div>
-                                        <p className="text-[8px] md:text-[11px] font-black text-[#5B6670] uppercase tracking-widest leading-none">One-time • Own forever</p>
                                     </div>
 
                                     <p className="text-[10px] md:text-[13px] text-[#5B6670] font-bold uppercase tracking-[0.1em] border-t border-[#E6E8EC] pt-2 leading-relaxed text-center sm:text-left">
