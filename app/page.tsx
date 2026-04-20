@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { 
     Check, 
+    X,
     ArrowRight, 
     Download,
     LayoutGrid,
@@ -54,7 +55,7 @@ const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green"
         )} style={{ animationDelay: delay }}>
             <span className="relative flex h-1 w-1">
                 <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-100 scale-[4]", pingColors[color as keyof typeof pingColors])}></span>
-                <span className={cn("relative inline-full rounded-full h-1 w-1", pingColors[color as keyof typeof pingColors])}></span>
+                <span className={cn("relative inline-block rounded-full h-1 w-1", pingColors[color as keyof typeof pingColors])}></span>
             </span>
             <span className="text-[6px] md:text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
         </div>
@@ -83,7 +84,7 @@ export default function Home() {
                     <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-green-500/30" />
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <div className="bg-black/40 border border-white/5 rounded px-4 py-0.5 text-[6px] md:text-[8px] font-black text-white/20 uppercase tracking-[0.4em] italic shadow-inner">
+                    <div className="bg-black/40 border border-white/5 rounded px-4 py-0.5 text-[6px] md:text-[8px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner">
                         SOVEREIGN_MASTER_CONSOLE.xlsx
                     </div>
                 </div>
