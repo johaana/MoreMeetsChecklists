@@ -75,7 +75,7 @@ export default function Home() {
     if (!mounted) return null;
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
-        <div className={cn("relative group", isMobile ? "block md:hidden mt-6 mb-8 w-full" : "hidden md:block w-full")}>
+        <div className={cn("relative group", isMobile ? "block md:hidden mt-4 mb-4 w-full" : "hidden md:block w-full")}>
             {isMobile && (
                 <>
                     <AnimatedAnnotation className="top-[25%] left-[10%]" color="red" delay="0.5s">Misses</AnimatedAnnotation>
@@ -101,7 +101,7 @@ export default function Home() {
                 <img 
                     src={DASHBOARD_IMAGE} 
                     alt="Sovereign Dashboard" 
-                    className="w-full h-auto object-cover aspect-[16/8] md:aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
+                    className="w-full h-auto object-cover aspect-[16/7] md:aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
                 />
             </div>
         </div>
@@ -113,11 +113,11 @@ export default function Home() {
 
             <main className="flex-1">
                 
-                <section className="w-full bg-[#F7F8FA] pt-16 pb-8 md:pt-24 md:pb-24 overflow-hidden min-h-[85svh] flex flex-col justify-center">
+                <section className="w-full bg-[#F7F8FA] pt-12 pb-8 md:pt-24 md:pb-24 overflow-hidden min-h-[85svh] flex flex-col justify-center">
                     <div className="container mx-auto max-w-[1200px] px-6">
                         <div className="grid lg:grid-cols-[1.2fr,1fr] gap-6 lg:gap-16 items-center">
                             
-                            <div className="flex flex-col items-start space-y-4 md:space-y-8 relative z-20">
+                            <div className="flex flex-col items-start space-y-3 md:space-y-8 relative z-20">
                                 <div className="space-y-1 md:space-y-2">
                                     <h1 className="text-[30px] md:text-[50px] lg:text-[64px] font-black text-[#0B0F14] leading-[1] md:leading-[1.05] tracking-tighter uppercase italic lg:whitespace-nowrap">
                                         STOP CHASING YOUR TEAM.
@@ -137,7 +137,7 @@ export default function Home() {
                                 </div>
 
                                 {/* 2 COLUMN CHECKLIST ON MOBILE */}
-                                <div className="grid grid-cols-2 gap-x-4 gap-y-3 w-full">
+                                <div className="grid grid-cols-2 gap-x-4 gap-y-2 w-full">
                                     {[
                                         "Pre-built SOPs",
                                         "Daily Tracking",
@@ -153,22 +153,22 @@ export default function Home() {
                                     ))}
                                 </div>
 
-                                <div className="space-y-4 w-full pt-4">
-                                    <button className="h-[56px] md:h-[64px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-base md:text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group w-full sm:w-auto">
+                                <div className="space-y-2 w-full pt-2">
+                                    <button className="h-12 md:h-[64px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-sm md:text-lg shadow-[0_12px_30px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 border-none group w-full sm:w-auto">
                                         <Link href="/library" className="flex items-center gap-3">
-                                            Start Your System <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                                            Start Your System <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
                                         </Link>
                                     </button>
 
-                                    <div className="flex flex-col items-center sm:items-start space-y-1">
+                                    <div className="flex flex-col items-center sm:items-start space-y-0.5">
                                         <div className="flex items-baseline gap-2">
-                                            <p className="text-[22px] md:text-[32px] font-black text-[#0B0F14] italic tracking-tight">₹2,999</p>
-                                            <span className="text-xs font-bold text-[#5B6670] line-through">₹4,999</span>
+                                            <p className="text-[20px] md:text-[32px] font-black text-[#0B0F14] italic tracking-tight">₹2,999</p>
+                                            <span className="text-[10px] md:text-xs font-bold text-[#5B6670] line-through">₹4,999</span>
                                         </div>
-                                        <p className="text-[9px] md:text-[11px] font-black text-[#5B6670] uppercase tracking-widest">One-time • Own forever</p>
+                                        <p className="text-[8px] md:text-[11px] font-black text-[#5B6670] uppercase tracking-widest leading-none">One-time • Own forever</p>
                                     </div>
 
-                                    <p className="text-[11px] md:text-[13px] text-[#5B6670] font-bold uppercase tracking-[0.1em] border-t border-[#E6E8EC] pt-4 leading-relaxed text-center sm:text-left">
+                                    <p className="text-[10px] md:text-[13px] text-[#5B6670] font-bold uppercase tracking-[0.1em] border-t border-[#E6E8EC] pt-2 leading-relaxed text-center sm:text-left">
                                         Built on Excel • Runs on Google Sheets <br/>
                                         No software required • Universal accessibility
                                     </p>

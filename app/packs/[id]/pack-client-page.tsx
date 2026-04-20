@@ -121,7 +121,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     if (!mounted) return null;
 
     const TechnicalProof = ({ isMobile = false }: { isMobile?: boolean }) => (
-        <div className={cn("relative group", isMobile ? "block md:hidden mt-6 mb-8 w-full" : "hidden md:block w-full")}>
+        <div className={cn("relative group", isMobile ? "block md:hidden mt-4 mb-4 w-full" : "hidden md:block w-full")}>
             {isMobile && (
                 <>
                     <AnimatedAnnotation className="top-[25%] left-[10%]" color="red" delay="0.5s">Misses</AnimatedAnnotation>
@@ -147,7 +147,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 <img 
                     src={heroImageUrl} 
                     alt={pack.title} 
-                    className="w-full h-auto object-cover aspect-[16/8] md:aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
+                    className="w-full h-auto object-cover aspect-[16/7] md:aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
                 />
             </div>
             
@@ -162,11 +162,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             
-            <section className="relative w-full bg-[#F7F8FA] pt-16 pb-8 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
+            <section className="relative w-full bg-[#F7F8FA] pt-12 pb-8 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
                 <div className="container mx-auto max-w-[1200px] px-6">
                     <div className="grid lg:grid-cols-[1.1fr,1fr] gap-6 lg:gap-16 items-center">
                         
-                        <div className="flex flex-col items-start space-y-4 md:space-y-8 relative z-20">
+                        <div className="flex flex-col items-start space-y-3 md:space-y-8 relative z-20">
                             <div className="space-y-1">
                                 <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] text-zinc-400 mb-0.5 block">/ {pack.category.toUpperCase()}</span>
                                 <h1 className="text-[30px] md:text-[56px] lg:text-[68px] font-black text-[#0B0F14] leading-[1.1] md:leading-[0.85] tracking-tighter uppercase italic">
@@ -184,8 +184,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <p className="text-[14px] md:text-[18px] font-black leading-tight text-zinc-900 italic">No follow-ups • No confusion • No memory gaps</p>
                             </div>
 
-                            {/* 3. Technical Benefits Grid - NOW 2 COLUMNS ON MOBILE */}
-                            <div className="grid grid-cols-2 gap-x-4 gap-y-3 w-full py-2">
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-2 w-full py-1">
                                 {[
                                     "Pre-built SOPs",
                                     "Daily Tracking",
@@ -201,14 +200,14 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 ))}
                             </div>
 
-                            <div className="flex items-center gap-6 md:gap-8 w-full text-[10px] md:text-[11px] font-black uppercase tracking-[0.3em]">
+                            <div className="flex items-center gap-4 md:gap-8 w-full text-[10px] md:text-[11px] font-black uppercase tracking-[0.3em]">
                                 <span className="flex items-center gap-2 text-zinc-900 font-headline"><Target className="w-3.5 h-3.5 text-primary" /> {totalChecklists} MODULES</span>
                                 <span className="flex items-center gap-2 text-zinc-900 font-headline"><Target className="w-3.5 h-3.5 text-primary" /> {totalTasks}+ POINTS</span>
                             </div>
 
                             <div className="w-full pt-2">
-                                <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-8">
-                                    <button className="h-14 md:h-[56px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-base shadow-[0_15px_35px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all border-none group w-full sm:w-auto">
+                                <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-8">
+                                    <button className="h-12 md:h-[56px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-sm md:text-base shadow-[0_15px_35px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all border-none group w-full sm:w-auto">
                                         <Link href="#pricing" className="flex items-center gap-3">
                                             Deploy system → ₹{pack.priceINR}
                                         </Link>

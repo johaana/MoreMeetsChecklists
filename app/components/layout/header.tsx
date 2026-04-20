@@ -41,11 +41,11 @@ const SolutionsList = () => (
         <div className="md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-4 flex flex-col">
         {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
             <div key={category} className="flex flex-col mb-4 md:mb-0 break-inside-avoid">
-                <h5 className="font-black text-primary/90 mb-2 px-2 uppercase tracking-[0.3em] text-[9px] font-headline">/ {category}</h5>
+                <h5 className="font-black text-slate-900 mb-2 px-2 uppercase tracking-[0.3em] text-[9px] font-headline">/ {category}</h5>
                 <ul className="space-y-1">
                     {packs.map(pack => (
                         <li key={pack.id}>
-                            <Link href={`/packs/${pack.id}`} className="text-[10px] font-headline font-black uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-white/5">
+                            <Link href={`/packs/${pack.id}`} className="text-[10px] font-headline font-black uppercase tracking-[0.2em] text-slate-600 hover:text-slate-900 transition-colors flex items-center gap-2 group/item p-2 rounded-md hover:bg-black/5">
                                 <span className="shrink-0 w-4 h-4 flex items-center justify-center">
                                     <IconComponent name={pack.icon} className="w-3.5 h-3.5" />
                                 </span>
@@ -166,17 +166,17 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                             <div className="flex flex-col p-4">
                                 <Accordion type="multiple" className="w-full">
                                     <div className="border-b border-black/5">
-                                        <Link href="/about" className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors py-5 flex" prefetch={false}>
+                                        <Link href="/about" className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 transition-colors py-5 flex" prefetch={false}>
                                             About Us
                                         </Link>
                                     </div>
                                     <div className="border-b border-black/5">
-                                        <Link href="/library" className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors py-5 flex" prefetch={false}>
+                                        <Link href="/library" className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 transition-colors py-5 flex" prefetch={false}>
                                             Systems Hub
                                         </Link>
                                     </div>
                                     <AccordionItem value="packs" className="border-b border-black/5">
-                                        <AccordionTrigger className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground hover:no-underline py-5">
+                                        <AccordionTrigger className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 hover:no-underline py-5">
                                             Elite Industry Systems
                                         </AccordionTrigger>
                                         <AccordionContent className="pb-4">
@@ -185,7 +185,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                                                     <h5 className="font-black text-[9px] uppercase tracking-[0.3em] text-primary/90 mt-2 mb-2 font-headline">/ {category}</h5>
                                                     <div className="flex flex-col gap-1">
                                                         {packs.map(pack => (
-                                                            <Link key={pack.id} href={`/packs/${pack.id}`} className="text-[11px] font-bold uppercase tracking-tight text-muted-foreground hover:text-foreground transition-colors py-2 px-2 rounded-md hover:bg-black/5 flex items-center gap-2">
+                                                            <Link key={pack.id} href={`/packs/${pack.id}`} className="text-[11px] font-bold uppercase tracking-tight text-slate-600 hover:text-slate-900 transition-colors py-2 px-2 rounded-md hover:bg-black/5 flex items-center gap-2">
                                                                 <IconComponent name={pack.icon} className="w-3.5 h-3.5 shrink-0" />
                                                                 <span>{pack.title}</span>
                                                             </Link>
@@ -196,12 +196,12 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                                         </AccordionContent>
                                     </AccordionItem>
                                     <div className="border-b border-black/5">
-                                        <Link href="/blog" className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors py-5 flex" prefetch={false}>
+                                        <Link href="/blog" className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 transition-colors py-5 flex" prefetch={false}>
                                             Intelligence Hub
                                         </Link>
                                     </div>
                                     <div>
-                                        <Link href="/contact" className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground hover:text-foreground transition-colors py-5 flex" prefetch={false}>
+                                        <Link href="/contact" className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 transition-colors py-5 flex" prefetch={false}>
                                             Contact
                                         </Link>
                                     </div>
