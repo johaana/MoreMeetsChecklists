@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -14,7 +15,7 @@ import Link from 'next/link';
 import PricingClient from '../pricing-client';
 
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
-    <section id={id} className={cn("w-full py-10 md:py-24", className)}>
+    <section id={id} className={cn("w-full py-12 md:py-24", className)}>
         <div className="container mx-auto max-w-[1200px] px-6">
             {children}
         </div>
@@ -114,7 +115,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
             
-            <section className="relative w-full bg-[#F7F8FA] pt-16 pb-8 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200">
+            <section className="relative w-full bg-[#F7F8FA] pt-24 pb-12 md:pt-24 md:pb-16 overflow-hidden border-b border-zinc-200 min-h-[90svh] flex flex-col justify-center">
                 <div className="container mx-auto max-w-[1200px] px-6">
                     <div className="grid lg:grid-cols-[1.1fr,1fr] gap-6 lg:gap-16 items-center">
                         
