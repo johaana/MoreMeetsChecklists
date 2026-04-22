@@ -128,6 +128,66 @@ export const retail_operations_system: PremiumPack = {
                 { id: "RET-SEC-04", technicalProtocol: "Guard Sobriety Pulse", floorAction: "Random alcohol check for night shift security personnel.", priority: "High", riskLevel: "High", consequence: "Vulnerable venue perimeter overnight.", proof: "Test Note" },
                 { id: "RET-SEC-05", technicalProtocol: "Fire Exit Clearance", floorAction: "Physically verify fire exits are unlocked and unobstructed.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment (Never-Event).", proof: "Patrol Log" }
             ]
+        },
+        {
+            title: "Sourcing & Store Logistics",
+            department: "Stores",
+            frequency: "Weekly",
+            role: "Logistics Lead",
+            summary: "Profit protection and quality control at the entry point.",
+            icon: "truck",
+            tasks: [
+                { id: "RET-LOG-01", technicalProtocol: "Receiving Audit Protocol", floorAction: "Spot check incoming cases for seal integrity and weight.", priority: "High", riskLevel: "Medium", consequence: "Paying for missing or damaged inventory.", proof: "Receiving Note" },
+                { id: "RET-LOG-02", technicalProtocol: "Metrology Calibration Test", floorAction: "Test main receiving scales with 1kg standard weight.", priority: "High", riskLevel: "Medium", consequence: "Regulatory fines and supplier disputes.", proof: "Calibration Log" },
+                { id: "RET-LOG-03", technicalProtocol: "Vendor License Verify", floorAction: "Audit 3 local vendors for valid FSSAI/Trade licenses.", priority: "High", riskLevel: "High", consequence: "Legal liability for unvetted sourcing.", proof: "Cert File" },
+                { id: "RET-LOG-04", technicalProtocol: "Bay Security Handoff", floorAction: "Verify loading bay is clear and locked after deliveries.", priority: "Medium", riskLevel: "High", consequence: "Unauthorized entry or stock theft.", proof: "Visual Check" },
+                { id: "RET-LOG-05", technicalProtocol: "U-Boat & MHE Safety", floorAction: "Inspect flatbeds and trolleys for wheel stability.", priority: "Low", riskLevel: "Medium", consequence: "Staff injury and damaged merchandise.", proof: "Visual Audit" }
+            ]
+        },
+        {
+            title: "Customer Experience & ORM",
+            department: "Guest Relations",
+            frequency: "Daily",
+            role: "Experience Lead",
+            summary: "Protects the digital brand and reservation pipeline.",
+            icon: "star",
+            tasks: [
+                { id: "RET-CX-01", technicalProtocol: "Review Response Pulse", floorAction: "Reply to all Google/Map reviews in < 24h.", priority: "High", riskLevel: "Medium", consequence: "Damaged brand and lower search ranking.", proof: "Dashboard" },
+                { id: "RET-CX-02", technicalProtocol: "Social Media Inquiry TAT", floorAction: "Answer all DMs/WhatsApp leads in < 30 mins.", priority: "Medium", riskLevel: "Low", consequence: "Lost sales revenue and poor engagement.", proof: "Inbox Clear" },
+                { id: "RET-CX-03", technicalProtocol: "Return & Exchange Reconcile", floorAction: "Audit today's returns for original bill matching.", priority: "High", riskLevel: "High", consequence: "Fraudulent returns and profit loss.", proof: "Return Log" },
+                { id: "RET-CX-04", technicalProtocol: "Loyalty Data Accuracy", floorAction: "Verify correct phone number capture for 10 random bills.", priority: "Low", riskLevel: "Low", consequence: "Ineffective CRM and lost repeat revenue.", proof: "System Audit" },
+                { id: "RET-CX-05", technicalProtocol: "In-Store Helpdesk Readiness", floorAction: "Check availability of bags, gift wraps, and forms.", priority: "Low", riskLevel: "Low", consequence: "Service friction at checkout.", proof: "Visual Check" }
+            ]
+        },
+        {
+            title: "Personnel & Competency Matrix",
+            department: "HR",
+            frequency: "Monthly",
+            role: "HR Assistant",
+            summary: "Staff readiness and legal display compliance.",
+            icon: "graduation-cap",
+            tasks: [
+                { id: "RET-HR-01", technicalProtocol: "Grooming & ID Compliance", floorAction: "Inspect clean uniforms and badge visibility.", priority: "Low", riskLevel: "Low", consequence: "Loss of authority brand image.", proof: "Briefing Log" },
+                { id: "RET-HR-02", technicalProtocol: "POSH Policy Display", floorAction: "Verify compliance poster is visible in staff breakroom.", priority: "High", riskLevel: "High", consequence: "Severe legal liability and labor audit failure.", proof: "Photo" },
+                { id: "RET-HR-03", technicalProtocol: "Training Hour Tracking", floorAction: "Verify 4h of 'Shadow Training' for new cashiers.", priority: "Medium", riskLevel: "Low", consequence: "Billing errors and customer rage.", proof: "Matrix File" },
+                { id: "RET-HR-04", technicalProtocol: "Shift Handover Governance", floorAction: "Review 'Mission Ledger' for supervisor signatures.", priority: "High", riskLevel: "Low", consequence: "Loss of shift-to-shift continuity.", proof: "Signed Log" },
+                { id: "RET-HR-05", technicalProtocol: "Workforce Sobriety Pulse", floorAction: "Random check of night-shift closing team.", priority: "High", riskLevel: "High", consequence: "Systemic risk and asset damage.", proof: "Test Note" }
+            ]
+        },
+        {
+            title: "Finance & Cash Shield",
+            department: "Finance",
+            frequency: "Daily",
+            role: "Finance Lead",
+            summary: "Revenue reconciliation and profit protection.",
+            icon: "banknote",
+            tasks: [
+                { id: "RET-FIN-01", technicalProtocol: "Revenue Reconcile Pulse", floorAction: "Match cash in hand to POS daily report.", priority: "High", riskLevel: "High", consequence: "Untraceable internal cashier theft.", proof: "Settlement Log" },
+                { id: "RET-FIN-02", technicalProtocol: "Void Bill Authorization", floorAction: "Manager sign-off on 100% of shift cancellations.", priority: "High", riskLevel: "High", consequence: "Theft masked as billing errors.", proof: "POS Audit" },
+                { id: "RET-FIN-03", technicalProtocol: "Petty Cash Blind Count", floorAction: "Physical count of coins/notes vs voucher.", priority: "Medium", riskLevel: "High", consequence: "Small-scale systemic theft.", proof: "Audit Note" },
+                { id: "RET-FIN-04", technicalProtocol: "Discount Code Audit", floorAction: "Verify reason codes for 5 random staff discounts.", priority: "Medium", riskLevel: "Medium", consequence: "Margin erosion.", proof: "System Log" },
+                { id: "RET-FIN-05", technicalProtocol: "UPI/Digital Settlement Match", floorAction: "Verify app settlements hit the bank account.", priority: "High", riskLevel: "Medium", consequence: "Unbilled revenue loss.", proof: "Bank Sync" }
+            ]
         }
     ]
 };
