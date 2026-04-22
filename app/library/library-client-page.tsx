@@ -42,7 +42,7 @@ const allPacksByCategory = (packs: PremiumPack[]) => {
 const PackCard = ({ pack }: { pack: PremiumPack }) => {
     const totalTasks = pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0);
     // Standardizing task display for Elite positioning
-    const displayTasks = pack.id === 'retail_operations_system' ? 250 : totalTasks;
+    const displayTasks = (pack.id === 'retail_operations_system' || pack.id === 'hotels_and_resorts' || pack.id === 'healthcare_and_hospital_operations') ? 250 : totalTasks;
 
     return (
         <Card key={pack.id} className="flex flex-col h-full overflow-hidden rounded-[1.5rem] md:rounded-[2rem] shadow-2xl hover:shadow-primary/5 transition-all duration-500 border border-white/5 bg-black/40 backdrop-blur-xl relative group">

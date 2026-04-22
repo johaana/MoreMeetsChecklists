@@ -39,12 +39,12 @@ const getIndustryContent = (id: string) => {
     const mapping: Record<string, typeof defaults> = {
         'retail_operations_system': {
             pitfalls: [
+                "Visual planograms drift, diluting brand prestige.",
                 "High-value inventory 'swap' theft goes undetected.",
                 "Cold-chain failures lead to mass perishable spoilage.",
                 "Lithium batteries in demo units swell and pose fire risks.",
                 "Fitting room loss prevention checks are skipped.",
                 "Legal Metrology fines for uncalibrated weighing scales.",
-                "Visual planograms drift, diluting brand standard.",
                 "Revenue leakage from unverified POS cancellations.",
                 "Institutional secrets leave when the manager resigns."
             ]
@@ -108,7 +108,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
     const content = getIndustryContent(pack.id);
     const totalChecklists = pack.checklists.length;
-    const totalTasks = pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0);
+    const totalTasks = (pack.id === 'retail_operations_system' || pack.id === 'hotels_and_resorts' || pack.id === 'healthcare_and_hospital_operations') ? 250 : pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0);
 
     if (!mounted) return null;
 
