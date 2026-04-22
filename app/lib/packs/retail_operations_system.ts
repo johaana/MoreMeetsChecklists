@@ -11,8 +11,8 @@ export const retail_operations_system: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f4e6b12a-4422-48a0-a198-154332822a27',
     category: "Retail",
-    description: "The definitive Sovereign v11.9 technical engine for physical retail. A unified system for Fashion, Jewelry, Electronics, and Grocery—standardizing 200+ control points.",
-    heroHeadline: "Stop Inventory Shrinkage and Brand Standards Drift",
+    description: "The definitive Sovereign v11.9 technical engine for physical retail. A unified system for Fashion, Jewelry, Electronics, and Grocery—standardizing 250+ technical control points.",
+    heroHeadline: "One Engine. Four Specialized Governance Modes.",
     heroSubheadline: "The professional plug for revenue leakage and asset safety—across every unit in your retail group.",
     pricingUrgency: "Preventing a single major theft or one regulatory METROLOGY fine saves 100x the cost of this system.",
     consultingAnchor: 5000,
@@ -30,10 +30,25 @@ export const retail_operations_system: PremiumPack = {
     ],
     checklists: [
         {
+            title: "Global Retail Governance",
+            department: "Executive",
+            frequency: "Weekly",
+            role: "Group Operations Director",
+            summary: "Portfolio-wide risk and profit oversight for multi-unit retail groups.",
+            icon: "crown",
+            tasks: [
+                { id: "RET-EXE-01", technicalProtocol: "Inventory Shrinkage Synthesis", floorAction: "Review weekly stock discrepancy logs across all branches.", priority: "High", riskLevel: "High", consequence: "Unmonitored systemic internal theft.", proof: "Shrinkage Report" },
+                { id: "RET-EXE-02", technicalProtocol: "Statutory Metrology Audit", floorAction: "Verify validity of weighing scale calibration certs for all units.", priority: "High", riskLevel: "Medium", consequence: "Heavy regulatory fines and equipment seizure.", proof: "Certificate Registry" },
+                { id: "RET-EXE-03", technicalProtocol: "Public Liability Shield", floorAction: "Confirm active insurance coverage for 100% of retail sites.", priority: "High", riskLevel: "High", consequence: "Financial ruin during a customer accident.", proof: "Policy File" },
+                { id: "RET-EXE-04", technicalProtocol: "Brand Standard Parity", floorAction: "Review mystery shopper scores: focus on 'Lobby' and 'Ambiance' fails.", priority: "Medium", riskLevel: "Low", consequence: "Dilution of brand prestige.", proof: "Audit Report" },
+                { id: "RET-EXE-05", technicalProtocol: "Final Board Sign-off", floorAction: "Execute weekly strategic closure initials.", priority: "High", riskLevel: "Low", consequence: "Loss of executive oversight.", proof: "Signed Summary" }
+            ]
+        },
+        {
             title: "Store Readiness & Command",
             department: "Operations",
             frequency: "Daily",
-            role: "Floor Manager",
+            role: "Store Manager",
             summary: "Ensures the facility is safe, presentable, and operationally hardened before opening.",
             icon: "sunrise",
             tasks: [
