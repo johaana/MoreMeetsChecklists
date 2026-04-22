@@ -60,33 +60,55 @@ export const retail_operations_system: PremiumPack = {
             ]
         },
         {
+            title: "Luxury & High-Value Module",
+            department: "Security",
+            frequency: "Daily",
+            role: "Security Chief / Store Lead",
+            summary: "Specialized governance for Jewelry and Luxury environments.",
+            icon: "gem",
+            tasks: [
+                { id: "RET-LUX-01", technicalProtocol: "Vault Dual-Sign Logic", floorAction: "Witness witnessed opening and closing of main inventory safe.", priority: "High", riskLevel: "High", consequence: "Single point of failure for massive internal theft.", proof: "Dual-Sign Register" },
+                { id: "RET-LUX-02", technicalProtocol: "Anti-Swap Protocol", floorAction: "Enforce 1-item-at-a-time viewing policy at all display counters.", priority: "High", riskLevel: "High", consequence: "Sophisticated substitution theft by customers.", proof: "Supervisor Audit" },
+                { id: "RET-LUX-03", technicalProtocol: "Serialized Inventory Count", floorAction: "Blind count of Top 10 high-LTV items vs system records.", priority: "High", riskLevel: "High", consequence: "Undetected shrinkage of high-value assets.", proof: "Count Sheet" }
+            ]
+        },
+        {
+            title: "Perishable & Grocery Module",
+            department: "Inventory",
+            frequency: "Daily",
+            role: "Inventory Lead",
+            summary: "Cold-chain and freshness governance for Grocery and Supermarkets.",
+            icon: "shopping-basket",
+            tasks: [
+                { id: "RET-GRO-01", technicalProtocol: "Cold Chain Integrity (CCP)", floorAction: "Log temperatures of all open-deck chillers and closed freezers (< 5°C).", priority: "High", riskLevel: "High", consequence: "Mass bacterial growth and inventory spoilage.", proof: "Temperature Log" },
+                { id: "RET-GRO-02", technicalProtocol: "Daily Expiry Sweep", floorAction: "Identify items with < 48h shelf life for immediate markdown.", priority: "High", riskLevel: "Medium", consequence: "Legal fines for selling expired perishables.", proof: "Sweep Registry" },
+                { id: "RET-GRO-03", technicalProtocol: "Metrology Precision Test", floorAction: "Test store weighing scales with 1kg standard weight.", priority: "High", riskLevel: "Medium", consequence: "Regulatory fines and customer overcharging.", proof: "Calibration Note" }
+            ]
+        },
+        {
+            title: "Technical & Electronics Module",
+            department: "Safety",
+            frequency: "Daily",
+            role: "Operations Lead",
+            summary: "Thermal safety and asset protection for Electronics Showrooms.",
+            icon: "zap",
+            tasks: [
+                { id: "RET-TEC-01", technicalProtocol: "Lithium Thermal Pulse", floorAction: "Inspect display demo units for battery swelling or deformation.", priority: "High", riskLevel: "High", consequence: "Spontaneous in-store battery fire.", proof: "Visual Log" },
+                { id: "RET-TEC-02", technicalProtocol: "EAS Security Gate Test", floorAction: "Walk a test-tag through main entrance to verify alarm trigger.", priority: "High", riskLevel: "High", consequence: "Unchecked shoplifting of high-value units.", proof: "Test Log" },
+                { id: "RET-TEC-03", technicalProtocol: "Demo Reset Protocol", floorAction: "Verify all demo units are wiped of previous customer data.", priority: "Medium", riskLevel: "Low", consequence: "Privacy violations and brand damage.", proof: "Reset Confirmation" }
+            ]
+        },
+        {
             title: "Asset Shield & Loss Prevention",
             department: "Security",
             frequency: "Daily",
-            role: "Security Chief",
+            role: "Security Head",
             summary: "Hardening the perimeter and protecting high-value inventory.",
             icon: "shield-check",
             tasks: [
                 { id: "RET-SEC-01", technicalProtocol: "CCTV Sync Validation", floorAction: "Verify 30-day recording backup and focal points.", priority: "High", riskLevel: "High", consequence: "Loss of evidence for theft or suits.", proof: "System Screen" },
-                { id: "RET-SEC-02", technicalProtocol: "EAS Security Gate Test", floorAction: "Walk a test-tag through main entry to verify alarm.", priority: "High", riskLevel: "High", consequence: "Unchecked shoplifting of tagged goods.", proof: "Test Log" },
-                { id: "RET-SEC-03", technicalProtocol: "High-Value 'Swap' Protocol", floorAction: "Verify 1-item-at-a-time viewing policy at Jewelry/Tech counters.", priority: "High", riskLevel: "High", consequence: "Sophisticated substitution theft.", proof: "Supervisor Audit" },
-                { id: "RET-SEC-04", technicalProtocol: "Fitting Room Sweep", floorAction: "Inspect stalls every 30 mins for hidden tags or debris.", priority: "Medium", riskLevel: "Medium", consequence: "Concealment theft or unhygienic experience.", proof: "Hourly Sheet" },
-                { id: "RET-SEC-05", technicalProtocol: "Vault Dual-Sign Logic", floorAction: "Witness witnessed lock of high-value inventory safe.", priority: "High", riskLevel: "High", consequence: "Internal theft of master stock.", proof: "Dual-Sign Log" }
-            ]
-        },
-        {
-            title: "Inventory & Profit Integrity",
-            department: "Inventory",
-            frequency: "Daily",
-            role: "Inventory Lead",
-            summary: "Profit protection and supply chain governance.",
-            icon: "barcode",
-            tasks: [
-                { id: "RET-INV-01", technicalProtocol: "Blind Cycle Count (Top 5 SKUs)", floorAction: "Physical count of highest value items vs. POS data.", priority: "High", riskLevel: "High", consequence: "Undetected silent shrinkage.", proof: "Count Sheet" },
-                { id: "RET-INV-02", technicalProtocol: "Expiry Sweep / Markdown Sync", floorAction: "Identify items within 30 days of expiry for markdown.", priority: "High", riskLevel: "Medium", consequence: "100% financial write-off or legal fines.", proof: "Sweep Log" },
-                { id: "RET-INV-03", technicalProtocol: "Receiving Weight Validation", floorAction: "Test store scales with 1kg standard weight before receiving.", priority: "High", riskLevel: "Medium", consequence: "Paying for missing supplier stock.", proof: "Calibration Log" },
-                { id: "RET-INV-04", technicalProtocol: "Cold Chain Integrity (Grocery)", floorAction: "Log temperatures of all open-deck chillers (< 5°C).", priority: "High", riskLevel: "High", consequence: "Mass spoilage and health department shutdown.", proof: "Temp Log" },
-                { id: "RET-INV-05", technicalProtocol: "Void Bill Authorization", floorAction: "Manager sign-off on 100% of shift cancellations.", priority: "High", riskLevel: "High", consequence: "Theft masked as billing errors.", proof: "POS Audit" }
+                { id: "RET-SEC-02", technicalProtocol: "Fitting Room Sweep", floorAction: "Inspect stalls every 30 mins for hidden tags or debris.", priority: "Medium", riskLevel: "Medium", consequence: "Concealment theft or unhygienic experience.", proof: "Hourly Sheet" },
+                { id: "RET-SEC-03", technicalProtocol: "POS Void Bill Authorization", floorAction: "Manager sign-off on 100% of shift cancellations.", priority: "High", riskLevel: "High", consequence: "Theft masked as billing errors.", proof: "POS Audit" }
             ]
         }
     ]

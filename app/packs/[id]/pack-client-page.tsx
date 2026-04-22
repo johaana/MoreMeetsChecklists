@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -36,6 +37,18 @@ const getIndustryContent = (id: string) => {
     };
 
     const mapping: Record<string, typeof defaults> = {
+        'retail_operations_system': {
+            pitfalls: [
+                "High-value inventory 'swap' theft goes undetected.",
+                "Cold-chain failures lead to mass perishable spoilage.",
+                "Lithium batteries in demo units swell and pose fire risks.",
+                "Fitting room loss prevention checks are skipped.",
+                "Legal Metrology fines for uncalibrated weighing scales.",
+                "Visual planograms drift, diluting brand standard.",
+                "Revenue leakage from unverified POS cancellations.",
+                "Institutional secrets leave when the manager resigns."
+            ]
+        },
         'cinema_operations_pack': {
             pitfalls: [
                 "Projector lamp life and KDM status go unmonitored.",
