@@ -204,7 +204,20 @@ export default function Home() {
                     </div>
                 </section>
 
-                <Section className="bg-white border-y border-[#E6E8EC]">
+                {/* TECHNICAL AUTHORITY STRIP - POINT 4 */}
+                <div className="w-full bg-white border-y border-zinc-200 py-4 md:py-6 overflow-hidden">
+                    <div className="container mx-auto px-6">
+                        <div className="flex flex-wrap items-center justify-center gap-x-8 md:gap-x-16 gap-y-4 opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700">
+                            {["ISO 9001", "HACCP", "FSSAI", "OSHA", "NABH", "JCI", "AUDIT-READY"].map((std, i) => (
+                                <div key={i} className="flex items-center gap-3">
+                                    <span className="text-[10px] md:text-[12px] font-black text-[#0B0F14] uppercase tracking-[0.4em] italic whitespace-nowrap">{std}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                <Section className="bg-white border-b border-[#E6E8EC]">
                     <div className="space-y-10 md:space-y-12">
                         <div className="text-center space-y-3 md:space-y-4">
                             <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[9px] md:text-[10px] rounded-full px-4">Strategic Inventory</Badge>
