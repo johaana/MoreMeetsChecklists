@@ -108,7 +108,7 @@ const Annotation = ({ children, icon: Icon, className, color = "bg-red-600/90", 
                 </span>
              )}
         </div>
-        <p className="text-[11px] font-black uppercase tracking-[0.1em] leading-tight text-white whitespace-nowrap drop-shadow-md">{children}</p>
+        <p className="text-[12px] font-black uppercase tracking-[0.1em] leading-tight text-white whitespace-nowrap drop-shadow-md">{children}</p>
         <div className="w-10 h-0.5 bg-white/20 rounded-full mt-1" />
     </div>
 );
@@ -134,11 +134,11 @@ export default function HeroLabClient() {
             
             <div className="container px-8 pt-32 pb-20 mx-auto text-center space-y-8">
                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[11px] px-10 py-3 rounded-none bg-primary/5">
-                    SOVEREIGN HERO LAB V8.0
+                    SOVEREIGN HERO LAB V10.0
                 </Badge>
                 <h1 className="text-6xl md:text-8xl font-black font-headline italic uppercase tracking-tighter leading-none">The <span className="text-primary">Selection.</span></h1>
                 <p className="text-zinc-500 italic font-medium max-w-2xl mx-auto text-xl leading-relaxed">
-                    Archetypes refined with restored narrative, darkened green accents, and high-fidelity risk annotations.
+                    Standardized two-line narrative with Dark Sovereign Green accents and clean architectural splits.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4 pt-4">
                     {[1, 2, 3, 5, 6, 7].map(num => (
@@ -150,7 +150,7 @@ export default function HeroLabClient() {
             </div>
 
             {/* --- 1. THE IMMERSIVE OVERLAP --- */}
-            <LabSection id="opt-1" title="1. The Immersive Overlap" subtitle="Massive two-line typography spanning the width of the cinematic video.">
+            <LabSection id="opt-1" title="1. The Immersive Overlap" subtitle="Massive two-line typography spanning the width of the cinematic video. No wrapping.">
                 <div className="h-full relative flex items-center px-8 md:px-24">
                     <VideoBackground opacity={0.5} grayscale={0.3} maskGradient="from-black/90 via-black/30 to-black/70" />
                     
@@ -176,15 +176,17 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- 2. THE SOVEREIGN GHOST (THE BOSS FRAME) --- */}
+            {/* --- 2. THE SOVEREIGN GHOST --- */}
             <LabSection id="opt-2" title="2. The Sovereign Ghost" subtitle="The gold standard frame archetype with hardened operational risks.">
                 <div className="h-full bg-[#0A0F19] flex items-center justify-center relative px-8 md:px-24">
                     <div className="grid md:grid-cols-[1fr,1.2fr] gap-20 items-center relative z-20 w-full">
                         <div className="space-y-12">
                             <div className="space-y-6">
-                                <h1 className="text-[3.5rem] md:text-[5rem] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-white">
-                                    {CONTENT.line1} <br/>
-                                    <span style={{ color: DARK_GREEN }}>{CONTENT.line2}</span>
+                                <h1 className="text-[3rem] md:text-[4rem] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white whitespace-nowrap">
+                                    {CONTENT.line1}
+                                </h1>
+                                <h1 className="text-[3rem] md:text-[4rem] font-black font-headline leading-[0.9] uppercase italic tracking-tighter whitespace-nowrap" style={{ color: DARK_GREEN }}>
+                                    {CONTENT.line2}
                                 </h1>
                                 <p className="text-xl md:text-2xl text-zinc-500 italic font-bold leading-tight">
                                     {CONTENT.subheadline}
@@ -220,9 +222,11 @@ export default function HeroLabClient() {
                     <div className="grid md:grid-cols-[1fr,1.2fr] gap-24 items-center relative z-20 w-full">
                         <div className="space-y-12">
                              <div className="space-y-6">
-                                <h1 className="text-[3.5rem] md:text-[5rem] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-white">
-                                    {CONTENT.line1} <br/>
-                                    <span className="text-accent">{CONTENT.line2}</span>
+                                <h1 className="text-[3rem] md:text-[4rem] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white whitespace-nowrap">
+                                    {CONTENT.line1}
+                                </h1>
+                                <h1 className="text-[3rem] md:text-[4rem] font-black font-headline leading-[0.9] uppercase italic tracking-tighter whitespace-nowrap text-accent">
+                                    {CONTENT.line2}
                                 </h1>
                                 <p className="text-2xl text-zinc-500 italic font-bold">{CONTENT.subheadline}</p>
                             </div>
@@ -250,33 +254,35 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- 5. THE CRITICAL DEFENSE (RISK RED) --- */}
-            <LabSection id="opt-5" title="5. The Risk Center" subtitle="High-urgency archetype positioning the system as mission-critical armor.">
+            {/* --- 5. THE ANXIETY GUARD (SIMPLER ANNOTATIONS) --- */}
+            <LabSection id="opt-5" title="5. The Anxiety Guard" subtitle="Realistic 'Boss' questions Grounding the solution in immediate relief.">
                 <div className="h-full bg-black flex items-center justify-center relative px-24 overflow-hidden">
                     <div className="absolute -inset-20 bg-red-600/10 blur-[120px] rounded-full" />
                     
                     <div className="grid md:grid-cols-[1fr,1.2fr] gap-20 items-center relative z-20 w-full">
                         <div className="space-y-12">
                             <div className="space-y-6">
-                                <h1 className="text-[3.5rem] md:text-[5rem] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-white">
-                                    {CONTENT.line1} <br/>
-                                    <span className="text-red-600">{CONTENT.line2}</span>
+                                <h1 className="text-[3rem] md:text-[4rem] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white whitespace-nowrap">
+                                    {CONTENT.line1}
                                 </h1>
-                                <p className="text-xl font-mono text-red-600/60 uppercase tracking-[0.3em] font-black">CRITICAL_VULNERABILITY_FIX</p>
+                                <h1 className="text-[3rem] md:text-[4rem] font-black font-headline leading-[0.9] uppercase italic tracking-tighter whitespace-nowrap" style={{ color: DARK_GREEN }}>
+                                    {CONTENT.line2}
+                                </h1>
+                                <p className="text-xl font-mono text-red-600/60 uppercase tracking-[0.3em] font-black">LEADERSHIP_ANXIETY_MITIGATION</p>
                             </div>
                             <SpecsGrid color="#DC2626" />
                             <HeroCTA accent="#DC2626" />
                         </div>
                         
                         <div className="relative">
-                            <Annotation icon={ShieldAlert} color="bg-red-600 shadow-[0_0_40px_rgba(220,38,38,0.5)]" className="-top-12 -left-12">
-                                FATAL PROTOCOL LAPSE
+                            <Annotation icon={TriangleAlert} color="bg-red-600/90 shadow-[0_0_40px_rgba(220,38,38,0.5)]" className="-top-12 -left-12">
+                                Follow ups?
                             </Annotation>
-                            <Annotation icon={TriangleAlert} color="bg-red-800" className="bottom-0 -right-20">
-                                UNMITIGATED RISK LOAD
+                            <Annotation icon={AlertCircle} color="bg-red-800/90" className="bottom-0 -right-20">
+                                Missed steps?
                             </Annotation>
-                            <Annotation icon={Zap} color="bg-red-700" className="top-1/2 -right-24">
-                                MARGIN EROSION
+                            <Annotation icon={Smartphone} color="bg-red-700/90" className="top-1/2 -right-24">
+                                Training calls?
                             </Annotation>
                             <div className="aspect-[16/10] rounded-[3rem] overflow-hidden border-[12px] border-red-600/30 shadow-[0_0_120px_-20px_rgba(220,38,38,0.5)]">
                                 <iframe src={VIMEO_URL} frameBorder="0" className="w-full h-full object-cover grayscale saturate-200" />
@@ -286,8 +292,8 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- 6. THE STRATEGIC HORIZON (CREATIVE NEW) --- */}
-            <LabSection id="opt-6" title="6. The Strategic Horizon" subtitle="Horizontal technical floor architecture for multi-unit groups.">
+            {/* --- 6. THE STRATEGIC HORIZON (IMPROVISED) --- */}
+            <LabSection id="opt-6" title="6. The Horizon Command" subtitle="Enhanced multi-unit command architecture with live metadata floors.">
                 <div className="h-full bg-[#F7F8FA] flex flex-col relative overflow-hidden">
                     <div className="flex-1 relative">
                         <VideoBackground opacity={0.6} grayscale={0} maskGradient="from-transparent via-transparent to-transparent" />
@@ -295,9 +301,11 @@ export default function HeroLabClient() {
                         
                         <div className="absolute inset-0 flex items-center justify-center text-center p-8 z-20">
                             <div className="space-y-6">
-                                <h1 className="text-5xl md:text-7xl font-black font-headline leading-[1] uppercase italic tracking-tighter text-white drop-shadow-2xl">
-                                    {CONTENT.line1} <br/>
-                                    <span style={{ color: DARK_GREEN }}>{CONTENT.line2}</span>
+                                <h1 className="text-5xl md:text-6xl font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white drop-shadow-2xl whitespace-nowrap">
+                                    {CONTENT.line1}
+                                </h1>
+                                <h1 className="text-5xl md:text-6xl font-black font-headline leading-[0.9] uppercase italic tracking-tighter drop-shadow-2xl whitespace-nowrap" style={{ color: DARK_GREEN }}>
+                                    {CONTENT.line2}
                                 </h1>
                                 <p className="text-xl md:text-2xl text-white/80 font-bold italic drop-shadow-lg">{CONTENT.subheadline}</p>
                             </div>
@@ -312,56 +320,59 @@ export default function HeroLabClient() {
                     </div>
 
                     <div className="h-40 bg-zinc-950 border-t border-white/10 flex items-center px-24 justify-between z-30">
-                        <SpecsGrid color={DARK_GREEN} textOpacity="text-white/60" />
+                        <div className="flex items-center gap-12">
+                            <div className="flex flex-col gap-1">
+                                <span className="text-[8px] font-black text-white/20 uppercase tracking-[0.4em]">LIVE_OPERATIONAL_PULSE</span>
+                                <div className="flex items-center gap-4">
+                                    <div className="h-1.5 w-32 bg-white/5 rounded-full overflow-hidden">
+                                        <div className="h-full bg-primary w-[82%] animate-pulse" />
+                                    </div>
+                                    <span className="text-xs font-black text-primary">82%</span>
+                                </div>
+                            </div>
+                            <SpecsGrid color={DARK_GREEN} textOpacity="text-white/60" />
+                        </div>
                         <HeroCTA accent={DARK_GREEN} />
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- 7. THE SOVEREIGN SLATE (CREATIVE NEW) --- */}
-            <LabSection id="opt-7" title="7. The Sovereign Slate" subtitle="Sophisticated glass-morphism panels dividing narrative from live feed.">
+            {/* --- 7. THE CLEAN SLATE (NO GLASS) --- */}
+            <LabSection id="opt-7" title="7. The Clean Slate" subtitle="Pure 50/50 division with straight lines. Narrative commands the left.">
                 <div className="h-full relative flex items-stretch">
-                    <div className="w-1/2 bg-black flex flex-col justify-center px-20 space-y-12 z-20 border-r border-white/5 shadow-[20px_0_100px_rgba(0,0,0,0.9)]">
-                        <div className="space-y-6">
-                            <Badge className="bg-primary/10 text-primary border-primary/20 w-fit uppercase font-black tracking-widest text-[10px]">STABLE ENGINE v11.9</Badge>
-                            <h1 className="text-5xl md:text-6xl font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
-                                {CONTENT.line1} <br/>
-                                <span style={{ color: DARK_GREEN }}>{CONTENT.line2}</span>
-                            </h1>
-                            <p className="text-xl text-zinc-500 italic font-bold border-l-4 border-primary pl-6">{CONTENT.subheadline}</p>
+                    <div className="w-1/2 bg-black flex flex-col justify-center px-20 space-y-12 z-20 border-r border-white/5">
+                        <div className="space-y-10">
+                            <Badge className="bg-primary/10 text-primary border-primary/20 w-fit uppercase font-black tracking-widest text-[10px] rounded-none px-6 py-2">STABLE ENGINE v11.9</Badge>
+                            <div className="space-y-4">
+                                <h1 className="text-4xl md:text-[3.5rem] font-black font-headline leading-[1] uppercase italic tracking-tighter text-white whitespace-nowrap">
+                                    {CONTENT.line1}
+                                </h1>
+                                <h1 className="text-4xl md:text-[3.5rem] font-black font-headline leading-[1] uppercase italic tracking-tighter whitespace-nowrap" style={{ color: DARK_GREEN }}>
+                                    {CONTENT.line2}
+                                </h1>
+                            </div>
+                            <p className="text-xl text-zinc-500 italic font-bold border-l-4 border-primary pl-6 max-w-sm">
+                                {CONTENT.subheadline}
+                            </p>
                         </div>
                         <SpecsGrid color={DARK_GREEN} />
                         <HeroCTA accent={DARK_GREEN} />
                     </div>
                     
-                    <div className="flex-1 relative overflow-hidden">
-                        <iframe src={VIMEO_URL} frameBorder="0" className="absolute inset-0 h-full w-full object-cover scale-[1.4]" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black/40" />
+                    <div className="flex-1 relative overflow-hidden bg-[#0A0A0A]">
+                        <iframe src={VIMEO_URL} frameBorder="0" className="absolute inset-0 h-full w-full object-cover scale-[1.4] opacity-80" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black/20" />
                         
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-[80%] aspect-video rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl relative">
-                                <div className="absolute top-4 left-6 flex items-center gap-3">
-                                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                                    <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em]">LIVE_MISSION_FEED</span>
-                                </div>
-                                <div className="h-full flex flex-col items-center justify-center gap-4">
-                                    <div className="flex items-center gap-4 p-4 rounded-xl bg-black/40 border border-white/5 w-[80%]">
-                                        <Target className="w-5 h-5 text-primary" />
-                                        <p className="text-xs font-bold uppercase italic text-white/60">Housekeeping Protocol: Complete</p>
-                                    </div>
-                                    <div className="flex items-center gap-4 p-4 rounded-xl bg-red-600/20 border border-red-500/20 w-[80%]">
-                                        <TriangleAlert className="w-5 h-5 text-red-500" />
-                                        <p className="text-xs font-bold uppercase italic text-red-500/80">Audit Exposure: Level 2 Detected</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="absolute top-12 left-12 flex items-center gap-4 bg-black/40 backdrop-blur-md px-6 py-3 rounded-full border border-white/10">
+                            <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
+                            <span className="text-[10px] font-black text-white/60 uppercase tracking-[0.4em]">MISSION_SYNC_ACTIVE</span>
                         </div>
                     </div>
                 </div>
             </LabSection>
 
             <div className="py-24 text-center bg-zinc-950 border-t border-white/5">
-                 <p className="text-[11px] font-black text-zinc-600 uppercase tracking-[0.5em] italic">Sovereign Lab v8.0 Concluded. Select archetype for final integration.</p>
+                 <p className="text-[11px] font-black text-zinc-600 uppercase tracking-[0.5em] italic">Sovereign Lab v10.0 Concluded. Select archetype for final integration.</p>
                  <Button asChild variant="link" className="mt-8 text-primary font-black uppercase tracking-widest text-xs">
                     <Link href="/">RETURN TO PRODUCTION SITE</Link>
                  </Button>
@@ -370,4 +381,3 @@ export default function HeroLabClient() {
         </div>
     );
 }
-
