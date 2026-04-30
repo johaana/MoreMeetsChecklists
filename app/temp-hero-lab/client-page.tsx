@@ -5,16 +5,16 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
     ArrowRight, 
-    ShieldCheck, 
     Check,
     Activity,
     Lock,
     ClipboardCheck,
     Smartphone,
-    ShieldAlert,
+    ShieldCheck,
     Target,
-    ChevronRight,
-    SearchCheck
+    Zap,
+    Cpu,
+    CheckCircle2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -26,16 +26,16 @@ const NARRATIVE = {
     line1: "STOP CHASING YOUR TEAM.",
     line2: "SEE DAILY WORK GETTING DONE.",
     subline: "Without follow-ups. Without confusion. Without depending on memory.",
-    support: "Memory is not a system. Serious operations deserve more.",
+    support: "Memory is not a system. Serious operations deserve more than improvisation.",
     cta: "Start Using Your System → ₹2,999",
     meta: "One-time payment • Own the engine forever"
 };
 
 const BULLETS = [
-    { t: "120+ Pre-built SOPs", i: ClipboardCheck },
-    { t: "Live Dashboard", i: Activity },
-    { t: "No SaaS dependency", i: Lock },
-    { t: "Built-in Trainer Notes", i: Smartphone }
+    { t: "120+ Technical SOPs", i: ClipboardCheck },
+    { t: "Daily Execution Logs", i: Activity },
+    { t: "Manager Approval Engine", i: CheckCircle2 },
+    { t: "No SaaS. Own your data.", i: Lock }
 ];
 
 const YELLOW = "#FACC15";
@@ -76,7 +76,7 @@ const LabSection = ({ children, title, description, id }: { children: React.Reac
 const AnxietyTag = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
     <div 
         className={cn(
-            "px-4 py-1.5 rounded-full bg-red-600/90 text-white text-[10px] font-black uppercase tracking-widest shadow-2xl backdrop-blur-2xl border border-red-500/40 flex items-center gap-2.5 animate-in fade-in zoom-in duration-700",
+            "px-4 py-2 rounded-full bg-red-600/90 text-white text-[10px] font-black uppercase tracking-widest shadow-2xl backdrop-blur-2xl border border-red-500/40 flex items-center gap-2.5 animate-in fade-in zoom-in duration-700",
             className
         )}
         style={{ animationDelay: delay }}
@@ -90,11 +90,11 @@ const AnxietyTag = ({ text, className, delay = "0s" }: { text: string, className
 );
 
 const OneGlanceSpecs = ({ className, dark = true }: { className?: string, dark?: boolean }) => (
-    <div className={cn("grid grid-cols-2 gap-x-6 gap-y-2.5", className)}>
+    <div className={cn("grid grid-cols-2 gap-x-8 gap-y-3", className)}>
         {BULLETS.map((item, i) => (
-            <div key={i} className="flex items-center gap-2.5 group">
+            <div key={i} className="flex items-center gap-3 group">
                 <div className={cn("w-1 h-1 rounded-full shrink-0", dark ? "bg-[#FACC15]" : "bg-zinc-900")} />
-                <span className={cn("text-[13px] font-black uppercase tracking-widest italic leading-none", dark ? "text-white/40" : "text-zinc-500")}>
+                <span className={cn("text-[14px] font-black uppercase tracking-widest italic leading-none whitespace-nowrap", dark ? "text-white/40" : "text-zinc-500")}>
                     {item.t}
                 </span>
             </div>
@@ -104,14 +104,14 @@ const OneGlanceSpecs = ({ className, dark = true }: { className?: string, dark?:
 
 const HighStakesCTA = ({ className }: { className?: string }) => (
     <div className={cn("space-y-3", className)}>
-        <Button className="h-14 px-10 rounded-xl bg-[#FACC15] text-black font-black uppercase italic text-base shadow-[0_15px_30px_-5px_rgba(250,204,21,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group">
+        <Button className="h-14 px-12 rounded-xl bg-[#FACC15] text-black font-black uppercase italic text-base shadow-[0_15px_35px_-5px_rgba(250,204,21,0.4)] hover:bg-white hover:scale-[1.02] transition-all border-none group">
             {NARRATIVE.cta} <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1.5" />
         </Button>
         <p className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.3em] pl-1">{NARRATIVE.meta}</p>
     </div>
 );
 
-const VideoConsole = ({ className }: { className?: string }) => (
+const VideoConsole = ({ className, showOverlaySpecs = false }: { className?: string, showOverlaySpecs?: boolean }) => (
     <div className={cn("relative group w-full max-w-4xl", className)}>
         <AnxietyTag text="Follow ups?" className="absolute top-10 right-10 z-20" delay="0.5s" />
         <AnxietyTag text="Missed steps?" className="absolute bottom-16 right-10 z-20" delay="1s" />
@@ -124,18 +124,27 @@ const VideoConsole = ({ className }: { className?: string }) => (
             </div>
             <div className="flex-1 flex justify-center">
                 <div className="bg-black/40 border border-white/5 rounded-md px-10 py-1 text-[8px] font-black text-white/20 uppercase tracking-[0.4em] italic shadow-inner">
-                    MASTER_GOVERNANCE_CONSOLE.xlsx
+                    MASTER_OPERATIONAL_ENGINE.xlsx
                 </div>
             </div>
         </div>
 
-        <div className="rounded-b-2xl overflow-hidden shadow-[0_30px_80px_-15px_rgba(0,0,0,0.4)] bg-zinc-900 border border-white/10 border-t-0 relative aspect-video">
+        <div className="rounded-b-2xl overflow-hidden shadow-[0_30px_80px_-15px_rgba(0,0,0,0.5)] bg-zinc-900 border border-white/10 border-t-0 relative aspect-video">
             <BackgroundVideo opacity={0.7} />
             <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute bottom-6 left-8 flex items-center gap-3">
-                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                 <span className="text-[10px] font-black text-primary uppercase tracking-[0.5em] italic">LIVE_DATA_TRACKING</span>
-            </div>
+            
+            {showOverlaySpecs && (
+                <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black via-black/80 to-transparent">
+                    <OneGlanceSpecs />
+                </div>
+            )}
+
+            {!showOverlaySpecs && (
+                <div className="absolute bottom-6 left-8 flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                    <span className="text-[10px] font-black text-primary uppercase tracking-[0.5em] italic">LIVE_TECHNICAL_RECORDING</span>
+                </div>
+            )}
         </div>
     </div>
 );
@@ -146,23 +155,23 @@ export default function HeroLabClient() {
             
             <div className="container px-8 pt-32 pb-16 mx-auto text-center space-y-6">
                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2.5 rounded-none bg-primary/5">
-                    SOVEREIGN "ONE-GLANCE" LAB V30.0
+                    SOVEREIGN "ONE-GLANCE" LAB V32.0
                 </Badge>
                 <h1 className="text-5xl md:text-8xl font-black font-headline italic uppercase tracking-tighter leading-none">
-                    Zero <span className="text-primary">Drift.</span>
+                    Absolute <span className="text-primary">Control.</span>
                 </h1>
                 <p className="text-zinc-500 italic font-medium max-w-xl mx-auto text-lg leading-relaxed">
-                    Eliminating vertical spray. Forcing every value point into a single cognitive strike-zone.
+                    Surgically re-engineered for zero vertical drift. Capturing technical authority in a single cognitive fixation.
                 </p>
             </div>
 
             {/* --- ARCHETYPE 1: THE SURGICAL STRIKE --- */}
-            <LabSection id="opt-1" title="01. The Surgical Strike" description="Extreme vertical compression. Specs locked under narrative. Maximum eye-fixation efficiency.">
+            <LabSection id="opt-1" title="01. The Surgical Strike" description="Extreme vertical compression. Technical engine locked directly under narrative. CTA anchored for immediate strike.">
                 <div className="relative h-full flex items-center px-24">
                     <BackgroundVideo opacity={0.15} grayscale />
                     <div className="grid grid-cols-[1fr,1.1fr] gap-20 items-center w-full max-w-[1300px] relative z-10 mx-auto">
-                        <div className="space-y-8">
-                             <div className="space-y-3">
+                        <div className="space-y-6">
+                             <div className="space-y-2">
                                 <h1 className="font-headline font-black text-[56px] leading-[0.85] tracking-tighter text-white uppercase italic">
                                     {NARRATIVE.line1}<br/>
                                     <span style={{ color: YELLOW }}>{NARRATIVE.line2}</span>
@@ -172,23 +181,25 @@ export default function HeroLabClient() {
                                 </p>
                              </div>
                              
-                             <OneGlanceSpecs className="max-w-sm pt-2" />
+                             <div className="bg-white/[0.03] border-y border-white/5 py-4">
+                                <OneGlanceSpecs className="max-w-sm" />
+                             </div>
 
-                             <HighStakesCTA className="pt-4" />
+                             <HighStakesCTA className="pt-2" />
                         </div>
                         <VideoConsole />
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 2: THE INTEGRATED HUD --- */}
-            <LabSection id="opt-2" title="02. The Integrated HUD" description="Specs moved into a floating 'Protocol Strip' at the base. Unified product-story.">
+            {/* --- ARCHETYPE 2: THE INTEGRATED CONSOLE --- */}
+            <LabSection id="opt-2" title="02. The Integrated Console" description="Technical points moved INSIDE the video frame. Narrative and proof merge into one action.">
                 <div className="relative h-full flex items-center px-24">
                      <BackgroundVideo opacity={0.15} />
                      <div className="grid grid-cols-[1fr,1.2fr] gap-24 items-center w-full relative z-10 mx-auto max-w-7xl">
-                        <div className="space-y-10">
+                        <div className="space-y-8">
                             <div className="space-y-4">
-                                <span className="text-[11px] font-black text-primary uppercase tracking-[0.6em]">BUILD_V30.0_STABLE</span>
+                                <span className="text-[11px] font-black text-primary uppercase tracking-[0.6em]">TECHNICAL_SPEC_V32.0</span>
                                 <h1 className="text-6xl font-black font-headline leading-[0.82] tracking-tighter uppercase italic text-white">
                                     OWN THE <br/> <span style={{ color: YELLOW }}>INFRASTRUCTURE.</span>
                                 </h1>
@@ -199,35 +210,24 @@ export default function HeroLabClient() {
                             <HighStakesCTA />
                         </div>
 
-                        <div className="relative">
-                            <VideoConsole />
-                            <div className="absolute -bottom-6 -left-12 -right-6 bg-zinc-950/90 backdrop-blur-3xl border border-white/10 p-8 rounded-2xl shadow-2xl flex items-center justify-between">
-                                 {BULLETS.map((b, i) => (
-                                     <div key={i} className="flex flex-col gap-1 first:border-0 border-l border-white/5 pl-6 first:pl-0">
-                                         <span className="text-[8px] font-black text-primary uppercase tracking-widest">MODULE_0{i+1}</span>
-                                         <span className="text-[11px] font-black uppercase text-white/60 italic">{b.t}</span>
-                                     </div>
-                                 ))}
-                            </div>
-                        </div>
+                        <VideoConsole showOverlaySpecs />
                      </div>
                 </div>
             </LabSection>
 
             {/* --- ARCHETYPE 3: THE CENTERED MONOLITH --- */}
-            <LabSection id="opt-3" title="03. The Centered Monolith" description="High-gravity center focus. Everything contained in a single elite glass card.">
+            <LabSection id="opt-3" title="03. The Centered Monolith" description="Prestigious centered command card. Ultra-low vertical profile using horizontal technical chips.">
                 <BackgroundVideo opacity={0.4} grayscale />
                 <div className="absolute inset-0 bg-black/40" />
                 
                 <div className="relative z-10 h-full flex items-center justify-center px-4">
-                    <div className="max-w-4xl w-full bg-white/[0.03] border border-white/10 backdrop-blur-3xl rounded-[3rem] p-16 md:p-24 shadow-[0_0_120px_-20px_rgba(250,204,21,0.15)] text-center space-y-12 border-t-white/20 relative">
-                        {/* Status Pings */}
-                        <AnxietyTag text="Training calls?" className="absolute -top-4 left-1/4" delay="0.2s" />
+                    <div className="max-w-4xl w-full bg-white/[0.03] border border-white/10 backdrop-blur-3xl rounded-[3rem] p-16 md:p-20 shadow-[0_0_120px_-20px_rgba(250,204,21,0.15)] text-center space-y-10 border-t-white/20 relative">
+                        <AnxietyTag text="Daily chaos?" className="absolute -top-4 left-1/4" delay="0.2s" />
                         <AnxietyTag text="Memory gaps?" className="absolute -bottom-4 right-1/4" delay="0.6s" />
 
-                        <div className="space-y-6">
-                            <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2 uppercase font-black tracking-widest text-[9px]">OPERATIONAL COMMAND V30.0</Badge>
-                            <h1 className="text-5xl md:text-7xl font-black font-headline leading-[0.85] tracking-tighter uppercase italic text-white">
+                        <div className="space-y-5">
+                            <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2 uppercase font-black tracking-widest text-[9px]">TECHNICAL GOVERNANCE V32.0</Badge>
+                            <h1 className="text-5xl md:text-[72px] font-black font-headline leading-[0.85] tracking-tighter uppercase italic text-white">
                                 CAPTURE <br/> <span style={{ color: YELLOW }}>MEMORY.</span>
                             </h1>
                             <p className="text-lg md:text-xl text-zinc-400 font-bold italic leading-tight max-w-lg mx-auto">
@@ -235,20 +235,20 @@ export default function HeroLabClient() {
                             </p>
                         </div>
 
-                        <div className="flex justify-center border-y border-white/5 py-8">
-                            <div className="flex gap-12">
+                        <div className="flex justify-center border-y border-white/5 py-6">
+                            <div className="flex gap-10">
                                 {BULLETS.map((b, i) => (
-                                    <div key={i} className="flex flex-col items-center gap-2">
-                                        <b.i className="w-5 h-5 text-primary/40" />
-                                        <span className="text-[10px] font-black uppercase text-white/30 tracking-widest">{b.t}</span>
+                                    <div key={i} className="flex items-center gap-2">
+                                        <div className="w-1 h-1 rounded-full bg-primary" />
+                                        <span className="text-[11px] font-black uppercase text-white/40 tracking-widest italic">{b.t}</span>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
-                        <div className="flex flex-col items-center gap-4">
-                            <Button className="h-20 px-16 rounded-2xl bg-[#FACC15] text-black font-black uppercase italic text-xl shadow-2xl hover:scale-105 transition-all border-none">
-                                DEPLOY MASTER ENGINE
+                        <div className="flex flex-col items-center gap-3">
+                            <Button className="h-16 px-16 rounded-2xl bg-[#FACC15] text-black font-black uppercase italic text-lg shadow-2xl hover:scale-105 transition-all border-none">
+                                DEPLOY SYSTEM NOW
                             </Button>
                             <p className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.4em]">{NARRATIVE.meta}</p>
                         </div>
@@ -257,18 +257,18 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 4: THE TECHNICAL PULSE --- */}
-            <LabSection id="opt-4" title="04. The Technical Pulse" description="Data-first density. Monospace accents. Structured for clarity and authority.">
-                <div className="absolute inset-0 bg-[#050505] opacity-20 bg-[radial-gradient(#FACC15_1px,transparent_1px)] [background-size:32px:32px]" />
+            <LabSection id="opt-4" title="04. The Infrastructure Pulse" description="Data-first density. Monospace technical accents. Product positioning as mission-critical hardware.">
+                <div className="absolute inset-0 bg-[#050505] opacity-20 bg-[radial-gradient(#FACC15_1px,transparent_1px)] [background-size:32px_32px]" />
                 <BackgroundVideo opacity={0.25} />
                 
                 <div className="relative z-10 h-full container px-24 mx-auto flex flex-col justify-center space-y-12">
                     <div className="flex items-center gap-4">
-                        <span className="text-[10px] font-mono text-[#FACC15] uppercase tracking-[0.5em] bg-[#FACC15]/10 px-5 py-1.5 border border-[#FACC15]/30">ENCRYPTED_OPERATIONAL_ENGINE</span>
+                        <span className="text-[10px] font-mono text-[#FACC15] uppercase tracking-[0.5em] bg-[#FACC15]/10 px-5 py-1.5 border border-[#FACC15]/30">ENCRYPTED_SOVEREIGN_ENGINE</span>
                         <div className="flex-1 h-px bg-white/5" />
                     </div>
                     
-                    <div className="space-y-6 max-w-5xl">
-                        <h1 className="text-7xl md:text-[9rem] font-black font-headline leading-[0.75] tracking-tighter uppercase italic text-white">
+                    <div className="space-y-4 max-w-5xl">
+                        <h1 className="text-7xl md:text-[8.5rem] font-black font-headline leading-[0.75] tracking-tighter uppercase italic text-white">
                             SYSTEMS <br/> <span className="text-zinc-800">OVER LUCK.</span>
                         </h1>
                         <p className="text-2xl text-zinc-500 font-black italic uppercase tracking-widest leading-none pt-2">{NARRATIVE.subline}</p>
@@ -280,7 +280,7 @@ export default function HeroLabClient() {
                                 <div className="absolute top-0 right-0 p-3 opacity-10">
                                     <item.i className="w-8 h-8 text-white" />
                                 </div>
-                                <span className="block text-[#FACC15] mb-4 text-[10px] font-black tracking-widest">PRO_SPEC_0{i+1}</span>
+                                <span className="block text-[#FACC15] mb-4 text-[10px] font-black tracking-widest">TECHNICAL_LOG_0{i+1}</span>
                                 {item.t.toUpperCase()}
                             </div>
                         ))}
@@ -299,12 +299,12 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 5: THE PURE RAZOR --- */}
-            <LabSection id="opt-5" title="05. The Pure Razor" description="The minimalist elite. Focused narrative with a high-density spec-sidebar.">
+            <LabSection id="opt-5" title="05. The Pure Razor" description="High-contrast minimalist elite. Narrative focus with a high-density spec-sidebar for speed.">
                  <div className="h-full flex overflow-hidden">
-                    <div className="w-1/2 bg-black h-full flex flex-col justify-center px-24 space-y-12 border-r border-white/5">
-                        <div className="space-y-8">
-                            <Badge className="bg-primary/10 text-primary border-primary/20 w-fit uppercase font-black tracking-[0.5em] text-[10px] py-1.5 px-6">SOVEREIGN V30.0</Badge>
-                            <h1 className="text-6xl md:text-7xl font-black font-headline leading-[0.85] uppercase italic tracking-tighter">
+                    <div className="w-1/2 bg-black h-full flex flex-col justify-center px-24 space-y-10 border-r border-white/5">
+                        <div className="space-y-6">
+                            <Badge className="bg-primary/10 text-primary border-primary/20 w-fit uppercase font-black tracking-[0.5em] text-[10px] py-1.5 px-6">SOVEREIGN V32.0</Badge>
+                            <h1 className="text-6xl md:text-[72px] font-black font-headline leading-[0.85] uppercase italic tracking-tighter">
                                 DEPLOY <br/> <span style={{ color: YELLOW }}>ORDER.</span>
                             </h1>
                             <p className="text-xl text-zinc-400 italic font-bold max-w-sm leading-relaxed border-l-4 border-primary pl-8">
@@ -312,13 +312,8 @@ export default function HeroLabClient() {
                             </p>
                         </div>
                         
-                        <div className="space-y-6 bg-white/[0.02] p-8 rounded-2xl border border-white/5">
-                            {BULLETS.map((item, i) => (
-                                <div key={i} className="flex items-center gap-4 group">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
-                                    <span className="text-[12px] font-black text-white/30 uppercase tracking-[0.3em] group-hover:text-white transition-colors">{item.t}</span>
-                                </div>
-                            ))}
+                        <div className="space-y-4 bg-white/[0.02] p-6 rounded-2xl border border-white/5">
+                             <OneGlanceSpecs />
                         </div>
 
                         <HighStakesCTA />
@@ -337,7 +332,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             <div className="py-32 text-center bg-zinc-950 border-t border-white/5">
-                 <p className="text-[13px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">Full One-Glance Collection v30.0 Active.</p>
+                 <p className="text-[13px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">One-Glance Technical Framework v32.0 Active.</p>
                  <Button asChild variant="link" className="mt-10 text-primary font-black uppercase tracking-widest text-sm hover:text-white transition-colors">
                     <Link href="/">RETURN TO PRODUCTION SITE</Link>
                  </Button>
