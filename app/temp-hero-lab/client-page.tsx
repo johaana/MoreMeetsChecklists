@@ -18,12 +18,14 @@ import {
     ShieldAlert,
     Target,
     Layers,
-    Command
+    Command,
+    ChevronRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
-const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
+// --- CONFIGURATION ---
+const VIMEO_URL = "https://player.vimeo.com/video/1187795401?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0";
 
 const NARRATIVE = {
     line1: "STOP CHASING YOUR TEAM.",
@@ -35,20 +37,38 @@ const NARRATIVE = {
 };
 
 const BULLETS = [
-    "120+ Pre-built technical protocols",
-    "Live dashboard for group visibility",
-    "No SaaS dependency. Own your data.",
-    "Built-in Trainer's Notes for staff"
+    { t: "120+ Pre-built technical protocols", i: ClipboardCheck },
+    { t: "Live dashboard for group visibility", i: Activity },
+    { t: "No SaaS dependency. Own your data.", i: Lock },
+    { t: "Built-in Trainer's Notes for staff", i: Smartphone }
 ];
 
 const YELLOW = "#FACC15";
-const RED = "#EF4444";
 
-const LabSection = ({ children, title, description, id }: { children: React.ReactNode, title: string, description: string, id: string }) => (
-    <div id={id} className="w-full py-24 md:py-32 border-b border-white/5 bg-black space-y-12">
+// --- REUSABLE COMPONENTS ---
+
+const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
+    <div className="absolute inset-0 z-0 pointer-events-none">
+        <iframe
+            src={VIMEO_URL}
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            className={cn(
+                "absolute inset-0 h-full w-full object-cover scale-[1.15]",
+                grayscale && "saturate-0 brightness-75 contrast-110"
+            )}
+            style={{ opacity }}
+            title="Sovereign Background"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+    </div>
+);
+
+const LabSection = ({ children, title, description, id, dark = true }: { children: React.ReactNode, title: string, description: string, id: string, dark?: boolean }) => (
+    <div id={id} className={cn("w-full py-24 md:py-32 border-b border-white/5 space-y-12", dark ? "bg-black" : "bg-zinc-100")}>
         <div className="container px-8 mx-auto">
-            <div className="space-y-2 border-l-4 border-primary pl-8">
-                <h2 className="text-3xl font-black uppercase italic tracking-tighter text-white font-headline">{title}</h2>
+            <div className={cn("space-y-2 border-l-4 pl-8", dark ? "border-primary" : "border-zinc-900")}>
+                <h2 className={cn("text-3xl font-black uppercase italic tracking-tighter font-headline", dark ? "text-white" : "text-zinc-900")}>{title}</h2>
                 <p className="text-zinc-500 italic font-medium">{description}</p>
             </div>
         </div>
@@ -58,20 +78,41 @@ const LabSection = ({ children, title, description, id }: { children: React.Reac
     </div>
 );
 
-const BulletList = ({ className }: { className?: string }) => (
-    <div className={cn("grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4", className)}>
-        {BULLETS.map((bullet, i) => (
-            <div key={i} className="flex items-center gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#FACC15] shrink-0" />
-                <span className="text-[15px] font-medium text-[#F5F7FA]">{bullet}</span>
+const Tag = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
+    <div 
+        className={cn(
+            "px-5 py-2 rounded-full bg-red-600/90 text-white text-[11px] font-black uppercase tracking-widest shadow-2xl backdrop-blur-xl border border-red-500/30 flex items-center gap-3 animate-in fade-in zoom-in duration-700",
+            className
+        )}
+        style={{ animationDelay: delay }}
+    >
+        <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+        </span>
+        {text}
+    </div>
+);
+
+const SpecsGrid = ({ className, dark = true }: { className?: string, dark?: boolean }) => (
+    <div className={cn("grid grid-cols-2 gap-x-8 gap-y-3", className)}>
+        {BULLETS.map((item, i) => (
+            <div key={i} className="flex items-center gap-3 group">
+                <div className={cn("w-1 h-1 rounded-full shrink-0", dark ? "bg-[#FACC15]" : "bg-zinc-900")} />
+                <span className={cn("text-[14px] font-bold uppercase tracking-widest italic", dark ? "text-white/60" : "text-zinc-500")}>
+                    {item.t}
+                </span>
             </div>
         ))}
     </div>
 );
 
-const Tag = ({ text, className }: { text: string, className?: string }) => (
-    <div className={cn("px-4 py-1.5 rounded-full bg-[#EF4444] text-white text-[12px] font-black uppercase tracking-widest shadow-2xl animate-pulse backdrop-blur-md border border-white/10", className)}>
-        {text}
+const DesktopCTA = ({ className }: { className?: string }) => (
+    <div className={cn("space-y-4", className)}>
+        <Button className="h-[72px] px-12 rounded-xl bg-[#FACC15] text-black font-black uppercase italic text-lg shadow-[0_20px_50px_-10px_rgba(250,204,21,0.4)] hover:bg-white hover:scale-[1.02] transition-all border-none group">
+            {NARRATIVE.cta} <ArrowRight className="ml-3 w-6 h-6 transition-transform group-hover:translate-x-2" />
+        </Button>
+        <p className="text-[11px] text-zinc-500 font-black uppercase tracking-[0.3em] pl-2">{NARRATIVE.meta}</p>
     </div>
 );
 
@@ -81,297 +122,232 @@ export default function HeroLabClient() {
             
             <div className="container px-8 pt-40 pb-20 mx-auto text-center space-y-8">
                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[11px] px-8 py-3 rounded-none bg-primary/5">
-                    SOVEREIGN HERO LAB V27.0
+                    SOVEREIGN HERO LAB V28.0
                 </Badge>
-                <h1 className="text-6xl md:text-8xl font-black font-headline italic uppercase tracking-tighter leading-none">
-                    Cinematic <span className="text-primary">Command.</span>
+                <h1 className="text-6xl md:text-9xl font-black font-headline italic uppercase tracking-tighter leading-none">
+                    One <span className="text-primary">Glance.</span>
                 </h1>
-                <p className="text-zinc-500 italic font-medium max-w-2xl mx-auto text-lg">
-                    Archetypes A-C preserved. New Cinematic Glass variants added for maximum institutional authority.
+                <p className="text-zinc-500 italic font-medium max-w-2xl mx-auto text-xl">
+                    Finalists preserved. 5 New Cinematic Glass variants added. <br/>All video backgrounds fixed with robust Vimeo engine.
                 </p>
+                <div className="flex justify-center gap-4">
+                    <Button asChild variant="outline" className="rounded-full px-8 border-white/10 text-white/40 hover:text-white">
+                        <Link href="#opt-a">Archetype A</Link>
+                    </Button>
+                    <Button asChild variant="outline" className="rounded-full px-8 border-white/10 text-white/40 hover:text-white">
+                        <Link href="#opt-4">New Cinematic</Link>
+                    </Button>
+                </div>
             </div>
 
-            {/* --- ARCHEPTYPE A: THE BLUEPRINT (Literal FIGMA Spec) --- */}
-            <LabSection id="opt-a" title="Archetype A: The Blueprint" description="1440px Figma-Ready Master Spec. Pure Spacing + Hierarchy.">
+            {/* --- ARCHEPTYPE A: THE BLUEPRINT --- */}
+            <LabSection id="opt-a" title="Archetype A: The Blueprint" description="Finalist. 1440px Figma Spec. Exact Spacing + 2x2 Specs Grid.">
                 <div className="w-full h-full bg-[#0B0F1A] flex items-center px-[120px]">
-                    <div className="grid grid-cols-2 gap-20 w-full max-w-[1200px]">
-                        <div className="space-y-[28px]">
+                    <div className="grid grid-cols-2 gap-20 w-full max-w-[1300px]">
+                        <div className="space-y-[32px]">
                              <div className="space-y-[16px]">
-                                <h1 className="font-headline font-extrabold text-[52px] leading-[60px] tracking-[-1px] text-[#F5F7FA] uppercase">
+                                <h1 className="font-headline font-black text-[64px] leading-[0.9] tracking-tighter text-white uppercase italic">
                                     STOP CHASING YOUR TEAM.<br/>
-                                    <span style={{ color: YELLOW }}>SEE DAILY WORK GETTING DONE.</span>
+                                    <span style={{ color: YELLOW }}>SEE DAILY WORK DONE.</span>
                                 </h1>
-                                <p className="text-[18px] font-normal text-[#9CA3AF] leading-[28px]">
+                                <p className="text-[20px] font-bold text-zinc-400 leading-[28px] italic">
                                     {NARRATIVE.subline}
                                 </p>
                              </div>
                              
-                             <div className="space-y-[12px]">
-                                <p className="text-[16px] font-medium text-[#9CA3AF] italic">
-                                    {NARRATIVE.support}
-                                </p>
-                             </div>
+                             <p className="text-[18px] font-medium text-zinc-500 italic border-l-2 border-primary/30 pl-6">
+                                {NARRATIVE.support}
+                             </p>
 
-                             <div className="space-y-4 pt-4">
-                                {BULLETS.map((bullet, i) => (
-                                    <div key={i} className="flex items-center gap-3">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#FACC15] shrink-0" />
-                                        <span className="text-[15px] font-medium text-[#F5F7FA]">{bullet}</span>
-                                    </div>
-                                ))}
-                             </div>
+                             <SpecsGrid />
 
-                             <div className="pt-[28px] relative">
-                                <div className="absolute -inset-10 bg-[#FACC15]/20 blur-[40px] rounded-full pointer-events-none" />
-                                <Button className="h-[56px] px-[28px] rounded-[10px] bg-[#FACC15] text-[#0B0F1A] font-semibold text-[16px] hover:bg-[#EAB308] hover:scale-[1.02] transition-all border-none relative z-10">
-                                    {NARRATIVE.cta}
-                                </Button>
-                                <p className="mt-[12px] text-[12px] text-[#6B7280]">
-                                    {NARRATIVE.meta}
-                                </p>
-                             </div>
+                             <DesktopCTA className="pt-6" />
                         </div>
 
                         <div className="flex items-center justify-center">
-                            <div className="w-[620px] h-[420px] rounded-[16px] overflow-hidden relative shadow-2xl border border-white/5 bg-black">
-                                <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-50" />
-                                <div className="absolute inset-0 bg-gradient-to-r from-[#0B0F1A] via-transparent to-transparent opacity-85" />
+                            <div className="w-[640px] h-[440px] rounded-[2rem] overflow-hidden relative shadow-2xl border border-white/10 bg-black">
+                                <BackgroundVideo opacity={0.6} />
                                 
-                                <Tag text="Missed tasks?" className="absolute top-8 right-8" />
-                                <Tag text="Constant follow-ups?" className="absolute bottom-12 right-8" />
-                                <div className="absolute bottom-8 left-10 text-[12px] font-semibold text-[#FACC15]">Live tracking</div>
+                                <Tag text="Follow ups?" className="absolute top-10 right-10" delay="0.5s" />
+                                <Tag text="Missed steps?" className="absolute bottom-16 right-10" delay="1s" />
+                                <div className="absolute bottom-8 left-10 text-[11px] font-black text-[#FACC15] uppercase tracking-[0.5em] italic">LIVE_TRACKING_ACTIVE</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHEPTYPE B: THE HORIZON --- */}
-            <LabSection id="opt-b" title="Archetype B: The Horizon" description="60/40 Split. Deep gradient immersion. High-density meta tags.">
-                 <div className="w-full h-full bg-[#0B0F1A] flex items-center relative">
-                    <div className="absolute inset-0 z-0 flex justify-end">
-                        <div className="w-[60%] h-full relative">
-                            <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-40" />
-                            <div className="absolute inset-0 bg-gradient-to-r from-[#0B0F1A] via-[#0B0F1A]/80 to-transparent" />
-                        </div>
-                    </div>
-
-                    <div className="container px-24 relative z-10 grid grid-cols-[1.2fr,1fr] gap-20 items-center">
-                        <div className="space-y-10">
-                            <h1 className="font-headline font-extrabold text-[64px] leading-[0.9] tracking-[-2px] text-white uppercase italic">
-                                CHAOS IS <br/> <span style={{ color: YELLOW }}>EXPENSIVE.</span>
-                            </h1>
-                            <p className="text-[20px] text-zinc-400 italic font-medium leading-relaxed max-w-lg">
-                                Stop the daily stress. Make your business run itself. No more management gaps.
-                            </p>
-                            <div className="grid grid-cols-2 gap-x-8 gap-y-4">
-                                {BULLETS.map((bullet, i) => (
-                                    <div key={i} className="flex items-center gap-3">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#FACC15] shrink-0" />
-                                        <span className="text-[14px] font-medium text-white/70">{bullet}</span>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="pt-6">
-                                <Button className="h-20 px-12 rounded-xl bg-[#FACC15] text-black font-black uppercase italic text-lg shadow-2xl hover:bg-white transition-all border-none">
-                                    DEPLOY MASTER ENGINE → ₹2,999
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-            </LabSection>
-
-            {/* --- ARCHEPTYPE C: THE COMMAND CENTER --- */}
-            <LabSection id="opt-c" title="Archetype C: The Command Center" description="Aggressive center-aligned messaging. Strong industrial presence.">
-                <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale" />
-                <div className="absolute inset-0 bg-[#0B0F1A]/90" />
-                <div className="relative z-10 h-full flex flex-col items-center justify-center text-center space-y-12 px-6">
-                    <div className="space-y-4">
-                        <Badge className="bg-[#FACC15]/10 text-[#FACC15] border-[#FACC15]/20 px-6 py-2 uppercase font-black tracking-widest text-[10px]">SOVEREIGN ENGINE PRO</Badge>
-                        <h1 className="text-5xl md:text-8xl font-black font-headline leading-[0.85] tracking-tight uppercase italic text-white">
-                            SYSTEMS <br/> OVER LUCK.
-                        </h1>
-                    </div>
-                    <p className="text-xl md:text-2xl text-zinc-400 italic font-bold max-w-2xl mx-auto leading-tight">
-                        {NARRATIVE.subline}
-                    </p>
-                    <div className="flex flex-col items-center gap-6">
-                        <Button className="h-20 px-16 rounded-2xl bg-[#FACC15] text-black font-black uppercase italic text-xl shadow-2xl hover:scale-105 transition-all border-none">
-                            GET STARTED NOW
-                        </Button>
-                        <div className="flex items-center gap-12 text-[10px] font-black text-white/30 uppercase tracking-[0.4em]">
-                            <span className="flex items-center gap-2"><Check className="w-4 h-4 text-[#FACC15]" /> ONE-TIME BUY</span>
-                            <span className="flex items-center gap-2"><Check className="w-4 h-4 text-[#FACC15]" /> NO SaaS FEES</span>
-                        </div>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 4: THE OBSIDIAN GLASS --- */}
-            <LabSection id="opt-4" title="Archetype 4: The Obsidian Glass" description="Centered massive glass monolith. Deep blur. Floating over full-screen industrial visuals.">
-                <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-40 blur-[2px]" />
-                <div className="absolute inset-0 bg-black/40" />
+            {/* --- ARCHETYPE 4: THE MIDNIGHT MONOLITH --- */}
+            <LabSection id="opt-4" title="Archetype 4: The Midnight Monolith" description="New Cinematic. Centered Glass Monolith. Deep Blur. Single Point of Truth.">
+                <BackgroundVideo opacity={0.5} />
+                <div className="absolute inset-0 bg-black/60" />
                 
                 <div className="relative z-10 h-full flex items-center justify-center px-4">
-                    <div className="max-w-4xl w-full bg-white/[0.03] border border-white/10 backdrop-blur-3xl rounded-[3rem] p-10 md:p-20 shadow-[0_0_100px_-20px_rgba(250,204,21,0.15)] text-center space-y-10 border-t-white/20">
-                        <div className="space-y-4">
-                            <h1 className="text-4xl md:text-7xl font-black font-headline leading-[0.9] tracking-tighter uppercase italic text-white">
-                                STOP CHASING.<br/>
-                                <span style={{ color: YELLOW }}>START SEEING.</span>
+                    <div className="max-w-4xl w-full bg-white/[0.03] border border-white/10 backdrop-blur-3xl rounded-[3rem] p-10 md:p-20 shadow-[0_0_100px_-20px_rgba(250,204,21,0.15)] text-center space-y-12 border-t-white/20">
+                        <div className="space-y-6">
+                            <Badge className="bg-primary/10 text-primary border-primary/20 px-6 py-2 uppercase font-black tracking-widest text-[10px]">SOVEREIGN MASTER ENGINE</Badge>
+                            <h1 className="text-5xl md:text-8xl font-black font-headline leading-[0.85] tracking-tighter uppercase italic text-white">
+                                CAPTURE <br/> <span style={{ color: YELLOW }}>MEMORY.</span>
                             </h1>
                             <p className="text-xl md:text-2xl text-zinc-400 font-bold italic leading-tight">
                                 {NARRATIVE.subline}
                             </p>
                         </div>
 
-                        <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 py-4 border-y border-white/5">
-                            {BULLETS.map((b, i) => (
-                                <div key={i} className="flex items-center gap-3">
-                                    <CheckCircle2 className="w-4 h-4 text-[#FACC15]" />
-                                    <span className="text-[10px] font-black uppercase tracking-widest text-white/50">{b}</span>
+                        <div className="flex justify-center">
+                            <SpecsGrid className="max-w-2xl" />
+                        </div>
+
+                        <div className="flex flex-col items-center gap-6 pt-4">
+                            <Button className="h-24 px-20 rounded-[2rem] bg-[#FACC15] text-black font-black uppercase italic text-2xl shadow-2xl hover:scale-105 transition-all border-none group">
+                                DEPLOY NOW →
+                            </Button>
+                            <p className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.4em]">{NARRATIVE.meta}</p>
+                        </div>
+                    </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 5: THE GLASS HORIZON --- */}
+            <LabSection id="opt-5" title="Archetype 5: The Glass Horizon" description="New Cinematic. Wide 60/40 Split. 90-degree Gradient Mask. Elite Software feel.">
+                <BackgroundVideo opacity={0.6} />
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+                
+                <div className="relative z-10 h-full container px-24 mx-auto grid lg:grid-cols-[1.3fr,1fr] items-center gap-24">
+                    <div className="space-y-12">
+                        <div className="space-y-6">
+                             <span className="text-[12px] font-black text-primary uppercase tracking-[0.6em]">BUILD_V28.0_STABLE</span>
+                            <h1 className="text-7xl md:text-[8rem] font-black font-headline leading-[0.8] tracking-tighter uppercase italic text-white">
+                                CHAOS IS <br/> <span style={{ color: YELLOW }}>EXPENSIVE.</span>
+                            </h1>
+                            <p className="text-2xl text-zinc-400 italic font-bold max-w-lg leading-relaxed border-l-4 border-primary pl-8">
+                                Stop the daily stress. <br/>Make your business run itself.
+                            </p>
+                        </div>
+                        
+                        <div className="grid grid-cols-2 gap-6 p-1 bg-white/5 rounded-2xl border border-white/5 backdrop-blur-md">
+                            {BULLETS.map((item, i) => (
+                                <div key={i} className="flex items-center gap-4 p-4">
+                                    <item.i className="w-5 h-5 text-primary" />
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-white/70">{item.t}</span>
                                 </div>
                             ))}
                         </div>
 
-                        <div className="flex flex-col items-center gap-4">
-                            <Button className="h-20 px-16 rounded-2xl bg-[#FACC15] text-black font-black uppercase italic text-xl shadow-2xl hover:scale-105 transition-all border-none group">
-                                {NARRATIVE.cta} <ArrowRight className="ml-3 w-6 h-6 transition-transform group-hover:translate-x-2" />
-                            </Button>
-                            <p className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.3em]">{NARRATIVE.meta}</p>
-                        </div>
+                        <DesktopCTA />
+                    </div>
+
+                    <div className="space-y-6">
+                        <Tag text="Training calls?" delay="0.5s" />
+                        <Tag text="Daily chaos?" className="translate-x-12" delay="1s" />
+                        <Tag text="Memory gaps?" delay="1.5s" />
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 5: THE WIDE-ANGLE COMMANDER --- */}
-            <LabSection id="opt-5" title="Archetype 5: The Wide-Angle Commander" description="Cinematic full-color video with a sharp 90-degree dark gradient mask.">
-                <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0B0F1A] via-[#0B0F1A]/90 to-transparent" />
+            {/* --- ARCHETYPE 6: THE TECHNICAL PULSE --- */}
+            <LabSection id="opt-6" title="Archetype 6: The Technical Pulse" description="New Cinematic. Data-First Monospace accents. High-density audit grid.">
+                <div className="absolute inset-0 bg-[#0B0F1A] opacity-10 bg-[radial-gradient(#FACC15_1px,transparent_1px)] [background-size:40px_40px]" />
+                <BackgroundVideo opacity={0.2} grayscale />
                 
-                <div className="relative z-10 h-full container px-24 mx-auto grid lg:grid-cols-[1.2fr,1fr] items-center">
-                    <div className="space-y-12">
-                        <div className="space-y-4">
-                            <h1 className="text-6xl md:text-8xl font-black font-headline leading-[0.8] tracking-tighter uppercase italic text-white">
-                                CAPTURE<br/>
-                                <span style={{ color: YELLOW }}>MEMORY.</span>
-                            </h1>
-                            <p className="text-2xl text-zinc-400 italic font-medium max-w-lg leading-relaxed border-l-4 border-[#FACC15] pl-8">
-                                Institutional memory is an asset. <br/>Anything else is just luck.
-                            </p>
-                        </div>
-                        <BulletList className="max-w-lg" />
-                        <div className="pt-4">
-                            <Button className="h-20 px-12 rounded-xl bg-[#FACC15] text-black font-black uppercase italic text-lg shadow-2xl hover:bg-yellow-400 transition-all border-none">
-                                DEPLOY SYSTEM → ₹2,999
-                            </Button>
-                            <p className="mt-4 text-[11px] text-zinc-500 font-bold uppercase tracking-widest pl-2">{NARRATIVE.meta}</p>
-                        </div>
-                    </div>
-                    <div className="hidden lg:flex justify-end pr-20">
-                         <div className="w-24 h-24 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center animate-pulse">
-                            <Play className="w-10 h-10 text-[#FACC15] fill-[#FACC15]" />
-                         </div>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 6: THE MONOSPACE AUDIT --- */}
-            <LabSection id="opt-6" title="Archetype 6: The Monospace Audit" description="Monospace technical meta-tags. Very clean, high-density professional audit style.">
-                <div className="absolute inset-0 bg-[#0B0F1A] opacity-20 bg-[radial-gradient(#FACC15_1px,transparent_1px)] [background-size:40px_40px]" />
-                <div className="relative z-10 h-full container px-24 mx-auto flex flex-col justify-center max-w-5xl space-y-12">
+                <div className="relative z-10 h-full container px-24 mx-auto flex flex-col justify-center space-y-16">
                     <div className="flex items-center gap-4">
-                        <span className="text-[10px] font-mono text-[#FACC15] uppercase tracking-[0.5em] bg-[#FACC15]/10 px-4 py-1">BUILD: SOVEREIGN_V27.0_STABLE</span>
-                        <div className="flex-1 h-px bg-white/5" />
+                        <span className="text-[11px] font-mono text-[#FACC15] uppercase tracking-[0.4em] bg-[#FACC15]/10 px-4 py-1 border border-[#FACC15]/20">ENCRYPTED_OPERATIONAL_INFRASTRUCTURE</span>
+                        <div className="flex-1 h-px bg-white/10" />
                     </div>
                     
-                    <div className="space-y-6">
-                        <h1 className="text-7xl md:text-9xl font-black font-headline leading-[0.8] tracking-tighter uppercase italic text-[#F5F7FA]">
-                            SYSTEMS<br/>
-                            <span className="text-zinc-700">OVER LUCK.</span>
+                    <div className="space-y-6 max-w-5xl">
+                        <h1 className="text-8xl md:text-[10rem] font-black font-headline leading-[0.8] tracking-tighter uppercase italic text-white">
+                            SYSTEMS <br/> <span className="text-zinc-700">OVER LUCK.</span>
                         </h1>
-                        <p className="text-2xl text-zinc-500 font-medium italic">{NARRATIVE.subline}</p>
+                        <p className="text-3xl text-zinc-500 font-black italic uppercase tracking-tight">{NARRATIVE.subline}</p>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {["120+ SOPs", "LIVE CONSOLE", "NO SaaS", "TRAINER NOTES"].map((item, i) => (
-                            <div key={i} className="p-6 bg-white/[0.02] border border-white/5 rounded-xl font-mono text-[10px] text-zinc-400 group hover:border-[#FACC15]/30 transition-all">
-                                <span className="block text-[#FACC15] mb-2">0{i+1}</span>
-                                {item}
+                    <div className="grid grid-cols-4 gap-4 max-w-6xl">
+                        {BULLETS.map((item, i) => (
+                            <div key={i} className="p-8 bg-white/[0.02] border border-white/5 rounded-2xl font-mono text-[11px] text-zinc-400 group hover:border-[#FACC15]/40 transition-all hover:bg-white/[0.04]">
+                                <span className="block text-[#FACC15] mb-4 text-xs font-black">PRO_MODULE_0{i+1}</span>
+                                {item.t.toUpperCase()}
                             </div>
                         ))}
                     </div>
 
-                    <div className="flex items-center gap-8">
-                        <Button className="h-16 px-12 rounded-none bg-[#FACC15] text-black font-black uppercase text-sm tracking-[0.2em] hover:scale-105 transition-all">
+                    <div className="flex items-center gap-12">
+                        <Button className="h-20 px-16 rounded-none bg-[#FACC15] text-black font-black uppercase text-base tracking-[0.3em] hover:scale-105 transition-all">
                             INITIALIZE DEPLOYMENT
                         </Button>
-                        <span className="text-xl font-black italic text-white/20">₹2,999 ONE-TIME</span>
+                        <div className="space-y-1">
+                            <span className="text-2xl font-black italic text-white">₹2,999</span>
+                            <span className="block text-[9px] font-mono text-zinc-600 uppercase tracking-widest">ONE-TIME_LICENSE_FEE</span>
+                        </div>
                     </div>
                 </div>
             </LabSection>
 
             {/* --- ARCHETYPE 7: THE ETHEREAL PORTAL --- */}
-            <LabSection id="opt-7" title="Archetype 7: The Ethereal Portal" description="Centered video portal with narrative wrapping around it. High-end modern.">
+            <LabSection id="opt-7" title="Archetype 7: The Ethereal Portal" description="New Cinematic. Minimalist Portal. High-gravity center focus. Wrapping narrative.">
                 <div className="h-full flex flex-col items-center justify-center space-y-16 px-4">
                     <div className="text-center space-y-4">
-                        <h1 className="text-5xl md:text-8xl font-black font-headline leading-none tracking-tight uppercase italic">
+                        <h1 className="text-6xl md:text-9xl font-black font-headline leading-none tracking-tighter uppercase italic">
                             MEMORY IS NOT <br/> <span className="text-zinc-800">A SYSTEM.</span>
                         </h1>
                     </div>
 
-                    <div className="relative group max-w-4xl w-full">
-                        <Tag text="Missed tasks?" className="absolute -top-6 -left-6 z-20" />
-                        <Tag text="Constant follow-ups?" className="absolute -bottom-6 -right-6 z-20" />
+                    <div className="relative group max-w-5xl w-full">
+                        <Tag text="Follow ups?" className="absolute -top-6 -left-6 z-20" delay="0.2s" />
+                        <Tag text="Missed steps?" className="absolute -bottom-6 -right-6 z-20" delay="0.6s" />
                         
-                        <div className="aspect-video rounded-[3rem] overflow-hidden border-[12px] border-zinc-900 shadow-2xl relative bg-black">
-                            <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-80" />
-                            <div className="absolute bottom-6 left-10 text-[12px] font-black text-[#FACC15] uppercase tracking-[0.5em] italic">LIVE_TRACKING_ACTIVE</div>
+                        <div className="aspect-video rounded-[4rem] overflow-hidden border-[16px] border-zinc-900 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] relative bg-black">
+                            <BackgroundVideo opacity={0.8} />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                            <div className="absolute bottom-8 left-12 text-[12px] font-black text-[#FACC15] uppercase tracking-[0.5em] italic">LIVE_COMMAND_FEED</div>
                         </div>
                     </div>
 
-                    <div className="flex flex-col items-center gap-6">
-                        <p className="text-zinc-500 font-bold italic text-lg text-center max-w-lg">{NARRATIVE.support}</p>
-                        <Button className="h-20 px-16 rounded-full bg-white text-black font-black uppercase italic text-xl hover:bg-[#FACC15] transition-all">
-                            DEPLOY ENGINE → ₹2,999
-                        </Button>
+                    <div className="flex flex-col items-center gap-10">
+                        <p className="text-zinc-500 font-bold italic text-2xl text-center max-w-2xl leading-tight">{NARRATIVE.support}</p>
+                        <div className="flex flex-col items-center gap-4">
+                            <Button className="h-24 px-20 rounded-full bg-white text-black font-black uppercase italic text-2xl hover:bg-[#FACC15] transition-all shadow-2xl">
+                                DEPLOY ENGINE →
+                            </Button>
+                            <p className="text-[11px] text-zinc-600 font-black uppercase tracking-[0.4em]">{NARRATIVE.meta}</p>
+                        </div>
                     </div>
                 </div>
             </LabSection>
 
             {/* --- ARCHETYPE 8: THE INDUSTRIAL HUD --- */}
-            <LabSection id="opt-8" title="Archetype 8: The Industrial HUD" description="Tactical cockpit style. Floating glass panels for technical specifications.">
-                 <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale" />
-                 <div className="absolute inset-0 bg-black/60" />
+            <LabSection id="opt-8" title="Archetype 8: The Industrial HUD" description="New Cinematic. Tactical Tactical Glass. Information overlays. Cockpit style.">
+                 <BackgroundVideo opacity={0.4} grayscale />
+                 <div className="absolute inset-0 bg-black/70" />
                  
-                 <div className="relative z-10 h-full container px-8 md:px-24 mx-auto flex items-center justify-between gap-12">
-                    <div className="max-w-2xl space-y-10">
-                        <div className="space-y-4">
-                            <h1 className="text-6xl md:text-[7rem] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-[#FACC15]">
+                 <div className="relative z-10 h-full container px-12 md:px-24 mx-auto flex items-center justify-between gap-16">
+                    <div className="max-w-3xl space-y-12">
+                        <div className="space-y-6">
+                            <Badge variant="outline" className="text-primary border-primary/40 px-6 py-2 rounded-none font-black tracking-widest text-[10px]">OPERATIONAL COMMAND V28.0</Badge>
+                            <h1 className="text-7xl md:text-[9rem] font-black font-headline leading-[0.82] uppercase italic tracking-tighter text-[#FACC15]">
                                 OBSERVE.<br/>
                                 <span className="text-white">COMMAND.</span>
                             </h1>
-                            <p className="text-xl text-zinc-400 font-bold italic leading-snug">
+                            <p className="text-2xl text-zinc-400 font-bold italic leading-tight max-w-xl">
                                 {NARRATIVE.subline}
                             </p>
                         </div>
-                        <Button className="h-20 px-12 rounded-2xl bg-[#FACC15] text-black font-black uppercase italic text-lg shadow-2xl hover:scale-105 transition-all border-none">
-                            GET THE SOVEREIGN V11.9
+                        <Button className="h-20 px-16 rounded-2xl bg-[#FACC15] text-black font-black uppercase italic text-xl shadow-[0_0_50px_-5px_rgba(250,204,21,0.5)] hover:scale-105 transition-all border-none">
+                            ACQUIRE SOVEREIGN SYSTEM
                         </Button>
                     </div>
 
-                    <div className="hidden lg:grid grid-cols-2 gap-6 w-[500px]">
-                        {[
-                            { t: "120+ SOPs", i: ClipboardCheck, d: "Technical protocols" },
-                            { t: "Live Stats", i: Activity, d: "One-glance health" },
-                            { t: "Sovereign IP", i: Lock, d: "Own your data" },
-                            { t: "Trainer Notes", i: Smartphone, d: "Zero-friction training" }
-                        ].map((item, i) => (
-                            <div key={i} className="p-8 bg-black/40 backdrop-blur-3xl border border-white/10 rounded-[2rem] space-y-4 hover:border-[#FACC15]/50 transition-all group">
-                                <item.i className="w-8 h-8 text-[#FACC15]" />
+                    <div className="hidden lg:grid grid-cols-2 gap-6 w-[550px]">
+                        {BULLETS.map((item, i) => (
+                            <div key={i} className="p-10 bg-white/[0.02] backdrop-blur-3xl border border-white/10 rounded-[2.5rem] space-y-6 hover:border-[#FACC15]/50 transition-all group shadow-2xl relative overflow-hidden">
+                                <div className="absolute top-0 right-0 p-6 opacity-10">
+                                    <item.i className="w-20 h-20 text-white" />
+                                </div>
+                                <item.i className="w-10 h-10 text-[#FACC15]" />
                                 <div className="space-y-1">
-                                    <h4 className="font-black uppercase italic text-lg leading-none">{item.t}</h4>
-                                    <p className="text-[10px] font-black uppercase text-zinc-500 tracking-widest">{item.d}</p>
+                                    <h4 className="font-black uppercase italic text-xl leading-none text-white">{item.t.split(' ')[0]}</h4>
+                                    <p className="text-[11px] font-black uppercase text-zinc-500 tracking-widest leading-relaxed">{item.t.split(' ').slice(1).join(' ')}</p>
                                 </div>
                             </div>
                         ))}
@@ -380,7 +356,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             <div className="py-40 text-center bg-zinc-950 border-t border-white/5">
-                 <p className="text-[14px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">Full Cinematic Lab Collection v27.0 Active.</p>
+                 <p className="text-[14px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">Full Cinematic Lab Collection v28.0 Active.</p>
                  <Button asChild variant="link" className="mt-12 text-primary font-black uppercase tracking-widest text-sm hover:text-white transition-colors">
                     <Link href="/">RETURN TO PRODUCTION SITE</Link>
                  </Button>
