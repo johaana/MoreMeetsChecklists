@@ -75,7 +75,7 @@ export default function Home() {
         <div className={cn("relative group w-full", className)}>
             <AnimatedAnnotation className="top-[25%] left-[10%]" color="red" delay="0.5s">Missed tasks</AnimatedAnnotation>
             <AnimatedAnnotation className="top-[10%] right-[10%]" color="green" delay="1s">Completed</AnimatedAnnotation>
-            <AnimatedAnnotation className="bottom-[20%] left-[15%]" color="blue" delay="1.5s">Console</AnimatedAnnotation>
+            <AnimatedAnnotation className="bottom-[20%] left-[15%]" color="blue" delay="1.5s">Live Console</AnimatedAnnotation>
             
             <div className="bg-[#111] h-6 md:h-9 w-full rounded-t-lg md:rounded-t-[14px] flex items-center px-4 gap-1.5 border border-white/10">
                 <div className="flex gap-1 md:gap-1.5">
@@ -116,19 +116,19 @@ export default function Home() {
             <main className="flex-1">
                 
                 {/* HERO SECTION - PURE NARRATIVE FOCUS */}
-                <section className="relative w-full bg-[#F7F8FA] pt-24 pb-12 md:pt-48 md:pb-32 overflow-hidden min-h-[80svh] flex flex-col justify-center">
+                <section className="relative w-full bg-[#F7F8FA] pt-24 pb-12 md:pt-56 md:pb-40 overflow-hidden min-h-[85svh] flex flex-col justify-center">
                     <div className="absolute inset-0 z-0">
                         <video src="https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20 grayscale" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#F7F8FA] via-[#F7F8FA]/80 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#F7F8FA] via-[#F7F8FA]/90 to-transparent" />
                     </div>
 
                     <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
                         <div className="max-w-4xl space-y-6 md:space-y-10">
                             <div className="space-y-2 md:space-y-4">
-                                <h1 className="text-[36px] md:text-[60px] lg:text-[76px] font-black text-[#0B0F14] leading-[1] md:leading-[1.05] tracking-tighter uppercase italic">
+                                <h1 className="text-[36px] md:text-[64px] lg:text-[80px] font-black text-[#0B0F14] leading-[1] md:leading-[1.05] tracking-tighter uppercase italic">
                                     STOP CHASING YOUR TEAM.
                                 </h1>
-                                <h1 className="text-[36px] md:text-[60px] lg:text-[76px] font-black text-primary leading-[1] md:leading-[1.05] tracking-tighter uppercase italic">
+                                <h1 className="text-[36px] md:text-[64px] lg:text-[80px] font-black text-primary leading-[1] md:leading-[1.05] tracking-tighter uppercase italic">
                                     SEE DAILY WORK GETTING DONE.
                                 </h1>
                                 <p className="text-lg md:text-[28px] text-[#5B6670] italic font-medium leading-tight pt-2">
@@ -162,17 +162,111 @@ export default function Home() {
                 </section>
 
                 {/* TECHNICAL AUTHORITY STRIP */}
-                <div className="w-full bg-white border-y border-zinc-200 py-6 md:py-8 overflow-hidden">
+                <div className="w-full bg-white border-y border-zinc-200 py-6 md:py-10 overflow-hidden">
                     <div className="container mx-auto px-6">
                         <div className="flex flex-wrap items-center justify-center gap-x-12 md:gap-x-20 gap-y-6 opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-1000">
                             {["ISO 9001", "HACCP", "FSSAI", "OSHA", "NABH", "JCI", "AUDIT-READY"].map((std, i) => (
                                 <div key={i} className="flex items-center gap-3">
-                                    <span className="text-[11px] md:text-[14px] font-black text-[#0B0F14] uppercase tracking-[0.5em] italic whitespace-nowrap">{std}</span>
+                                    <span className="text-[11px] md:text-[16px] font-black text-[#0B0F14] uppercase tracking-[0.5em] italic whitespace-nowrap">{std}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </div>
+
+                {/* PITFALLS & CONSEQUENCES */}
+                <Section className="bg-[#F7F8FA]">
+                    <div className="max-w-[1000px] mx-auto text-center space-y-12 md:space-y-20">
+                        <div className="space-y-4">
+                            <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50 px-6 py-1 font-black uppercase tracking-[0.3em] text-[10px]">Forensic Finding</Badge>
+                            <h2 className="text-[32px] md:text-[56px] font-bold text-[#0B0F14] leading-[0.95] tracking-tight uppercase italic">Why operations break</h2>
+                        </div>
+                        
+                        <div className="grid md:grid-cols-2 gap-8 md:gap-16 text-left">
+                            <div className="space-y-6 md:space-y-10">
+                                <h4 className="text-[11px] font-black text-[#5B6670] uppercase tracking-[0.4em]">COMMON PITFALLS</h4>
+                                <ul className="space-y-6">
+                                    {[
+                                        "Staff 'guess' the right steps when a manager isn't looking.",
+                                        "Tribal knowledge leaves the building when a key person resigns.",
+                                        "Training takes weeks because protocols aren't physically documented.",
+                                        "Minor near-misses are ignored because no one is held accountable.",
+                                        "Standard work becomes optional when the floor gets busy."
+                                    ].map((p, i) => (
+                                        <li className="flex items-start gap-4 text-[#5B6670] text-sm md:text-[18px] font-medium italic leading-snug" key={i}>
+                                            <div className="w-2.5 h-2.5 rounded-full bg-red-400 mt-1.5 shrink-0" />
+                                            <span>{p}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="space-y-6 md:space-y-10 p-8 md:p-12 rounded-[2.5rem] bg-[#FFF5F5] border border-red-100 shadow-2xl">
+                                <h4 className="text-[11px] font-black text-red-600 uppercase tracking-[0.4em]">THE CONSEQUENCE</h4>
+                                <ul className="space-y-6">
+                                    {[
+                                        "Managers are trapped in a loop of manual follow-ups.",
+                                        "SOPs are treated as suggestions, not mission-critical infrastructure.",
+                                        "Errors go undetected until they hit your bottom line or guest safety.",
+                                        "Zero auditable proof for insurance or regulatory inspections.",
+                                        "Inconsistency destroys brand trust and guest loyalty."
+                                    ].map((p, i) => (
+                                        <li className="flex items-start gap-4 text-red-950 font-bold text-sm md:text-[18px] leading-snug" key={i}>
+                                            <X className="w-6 h-6 text-red-500 mt-0.5 shrink-0" />
+                                            <span>{p}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div className="pt-8">
+                            <p className="text-[24px] md:text-[36px] font-black text-[#0B0F14] uppercase italic tracking-tighter leading-none">
+                                Small misses. Every day. <br/>
+                                <span className="text-red-500">That’s where control is lost.</span>
+                            </p>
+                        </div>
+                    </div>
+                </Section>
+
+                {/* HOW IT WORKS & VISUAL PAYOFF */}
+                <Section className="bg-white border-y border-[#E6E8EC]">
+                    <div className="max-w-[1200px] mx-auto space-y-16 md:space-y-24">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-primary border-primary/20 px-6 py-1 font-black uppercase tracking-[0.3em] text-[10px]">Rapid Deployment</Badge>
+                            <h2 className="text-[32px] md:text-[56px] font-bold text-[#0B0F14] uppercase italic tracking-tight">Start in minutes</h2>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                            {[
+                                { t: "Download system", d: "Get your industry file with 120+ pre-built SOPs — ready to use.", i: Download },
+                                { t: "Open in Sheets", d: "Upload once. Access from phone or desktop instantly.", i: FileSpreadsheet },
+                                { t: "Share with team", d: "Assign roles. Lock structure so nothing breaks.", i: Lock },
+                                { t: "See everything live", d: "Track tasks as they get done. Know what’s missed.", i: Activity }
+                            ].map((step, i) => (
+                                <div className="bg-[#F7F8FA] border border-[#E6E8EC] p-8 md:p-10 rounded-[2rem] space-y-6 hover:shadow-xl hover:bg-white hover:border-primary/20 transition-all group" key={i}>
+                                    <div className="w-12 h-12 rounded-2xl bg-white border border-[#E6E8EC] flex items-center justify-center text-[#0B0F14] font-black group-hover:bg-primary group-hover:text-black transition-all text-xl italic shadow-sm">
+                                        {i+1}
+                                    </div>
+                                    <div className="space-y-2">
+                                        <h4 className="font-black text-lg md:text-xl uppercase italic leading-tight">{step.t}</h4>
+                                        <p className="text-sm text-[#5B6670] font-medium italic leading-relaxed">{step.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* TECHNICAL PROOF: FULL DASHBOARD VISIBILITY */}
+                        <div className="space-y-12">
+                            <TechnicalProof className="max-w-5xl mx-auto" />
+                            
+                            <div className="text-center pt-4">
+                                <p className="text-xl md:text-[32px] font-black text-[#0B0F14] uppercase italic tracking-tighter">
+                                    👉 That’s it. Your operations are now structured.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </Section>
 
                 <Section className="bg-white border-b border-[#E6E8EC]">
                     <div className="space-y-12">
@@ -197,100 +291,6 @@ export default function Home() {
                                     <span className="text-[10px] font-black uppercase tracking-widest text-zinc-900 leading-tight italic">{sector.name}</span>
                                 </Link>
                             ))}
-                        </div>
-                    </div>
-                </Section>
-
-                {/* HARDENED PITFALLS SECTION */}
-                <Section className="bg-[#F7F8FA]">
-                    <div className="max-w-[1000px] mx-auto text-center space-y-12 md:space-y-20">
-                        <div className="space-y-4">
-                            <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50 px-6 py-1 font-black uppercase tracking-[0.3em] text-[10px]">Forensic Finding</Badge>
-                            <h2 className="text-[32px] md:text-[52px] font-bold text-[#0B0F14] leading-[0.95] tracking-tight uppercase italic">Why operations break</h2>
-                        </div>
-                        
-                        <div className="grid md:grid-cols-2 gap-8 md:gap-16 text-left">
-                            <div className="space-y-6 md:space-y-8">
-                                <h4 className="text-[11px] font-black text-[#5B6670] uppercase tracking-[0.4em]">COMMON PITFALLS</h4>
-                                <ul className="space-y-5">
-                                    {[
-                                        "Staff 'guess' the right steps when a manager isn't looking.",
-                                        "Tribal knowledge leaves the building when a key person resigns.",
-                                        "Training takes weeks because protocols aren't physically documented.",
-                                        "Minor near-misses are ignored because no one is held accountable.",
-                                        "Standard work becomes optional when the floor gets busy."
-                                    ].map((p, i) => (
-                                        <li className="flex items-start gap-4 text-[#5B6670] text-sm md:text-[17px] font-medium italic leading-snug" key={i}>
-                                            <div className="w-2 h-2 rounded-full bg-red-400 mt-2 shrink-0" />
-                                            <span>{p}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="space-y-6 md:space-y-8 p-8 md:p-12 rounded-[2.5rem] bg-[#FFF5F5] border border-red-100 shadow-xl">
-                                <h4 className="text-[11px] font-black text-red-600 uppercase tracking-[0.4em]">THE CONSEQUENCE</h4>
-                                <ul className="space-y-5">
-                                    {[
-                                        "Managers are trapped in a loop of manual follow-ups.",
-                                        "SOPs are treated as suggestions, not mission-critical infrastructure.",
-                                        "Errors go undetected until they hit your bottom line or guest safety.",
-                                        "Zero auditable proof for insurance or regulatory inspections.",
-                                        "Inconsistency destroys brand trust and guest loyalty."
-                                    ].map((p, i) => (
-                                        <li className="flex items-start gap-4 text-red-950 font-bold text-sm md:text-[17px] leading-snug" key={i}>
-                                            <X className="w-5 h-5 text-red-500 mt-0.5 shrink-0" />
-                                            <span>{p}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div className="pt-8">
-                            <p className="text-[24px] md:text-[32px] font-black text-[#0B0F14] uppercase italic tracking-tighter leading-none">
-                                Small misses. Every day. <br/>
-                                <span className="text-red-500">That’s where control is lost.</span>
-                            </p>
-                        </div>
-                    </div>
-                </Section>
-
-                {/* THE HOW IT WORKS & VISUAL PROOF SECTION */}
-                <Section className="bg-white border-y border-[#E6E8EC]">
-                    <div className="max-w-[1200px] mx-auto space-y-16 md:space-y-24">
-                        <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-primary border-primary/20 px-6 py-1 font-black uppercase tracking-[0.3em] text-[10px]">Rapid Deployment</Badge>
-                            <h2 className="text-[32px] md:text-[52px] font-bold text-[#0B0F14] uppercase italic tracking-tight">Start in minutes</h2>
-                        </div>
-                        
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                            {[
-                                { t: "Download system", d: "Get your industry file with 120+ pre-built SOPs — ready to use.", i: Download },
-                                { t: "Open in Sheets", d: "Upload once. Access from phone or desktop instantly.", i: FileSpreadsheet },
-                                { t: "Share with team", d: "Assign roles. Lock structure so nothing breaks.", i: Lock },
-                                { t: "See everything live", d: "Track tasks as they get done. Know what’s missed.", i: Activity }
-                            ].map((step, i) => (
-                                <div className="bg-[#F7F8FA] border border-[#E6E8EC] p-8 md:p-10 rounded-[2rem] space-y-6 hover:shadow-xl hover:bg-white hover:border-primary/20 transition-all group" key={i}>
-                                    <div className="w-12 h-12 rounded-2xl bg-white border border-[#E6E8EC] flex items-center justify-center text-[#0B0F14] font-black group-hover:bg-primary group-hover:text-black transition-all text-xl italic shadow-sm">
-                                        {i+1}
-                                    </div>
-                                    <div className="space-y-2">
-                                        <h4 className="font-black text-lg md:text-xl uppercase italic leading-tight">{step.t}</h4>
-                                        <p className="text-sm text-[#5B6670] font-medium italic leading-relaxed">{step.d}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* VISUAL CAPSTONE: TECHNICAL PROOF */}
-                        <div className="space-y-12">
-                            <TechnicalProof className="max-w-5xl mx-auto" />
-                            
-                            <div className="text-center pt-4">
-                                <p className="text-xl md:text-[28px] font-black text-[#0B0F14] uppercase italic tracking-tighter">
-                                    👉 That’s it. Your operations are now structured.
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </Section>
