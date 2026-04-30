@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -93,17 +92,16 @@ const CommandCTA = ({ accent = SOVEREIGN_GOLD }) => (
  * HARDENED HUD ANNOTATION
  * Risk-Red, Icon-free, glassmorphic.
  */
-const HUDAnnotation = ({ children, className, color = "bg-red-600/90", delay = "0s" }: { children: React.ReactNode, className: string, color?: string, delay?: string }) => (
+const HUDAnnotation = ({ children, className, delay = "0s" }: { children: React.ReactNode, className: string, delay?: string }) => (
     <div className={cn(
-        "absolute px-3 py-2 rounded-lg shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)] backdrop-blur-2xl border border-white/10 z-30 flex items-center gap-2.5 transition-all hover:scale-110 animate-in fade-in zoom-in duration-1000", 
-        color, 
+        "absolute px-3 py-2 rounded-lg shadow-[0_30px_60px_-12px_rgba(220,38,38,0.3)] backdrop-blur-3xl border border-red-500/30 z-30 flex items-center gap-2.5 transition-all hover:scale-110 animate-in fade-in zoom-in duration-1000 bg-red-600/90", 
         className
     )} style={{ animationDelay: delay }}>
         <span className="relative flex h-1.5 w-1.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
             <span className="relative inline-block rounded-full h-1.5 w-1.5 bg-white"></span>
         </span>
-        <p className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.15em] leading-tight text-white whitespace-nowrap italic">{children}</p>
+        <p className="text-[9px] font-black uppercase tracking-[0.2em] leading-tight text-white whitespace-nowrap italic">{children}</p>
     </div>
 );
 
@@ -153,9 +151,9 @@ export default function HeroLabClient() {
                         </div>
                         
                         <div className="relative group">
-                            <HUDAnnotation className="top-8 -left-4 bg-red-600/90" delay="0.5s">UNVERIFIED EXECUTION</HUDAnnotation>
-                            <HUDAnnotation className="top-1/2 -right-8 bg-red-600/90" delay="1s">PROTOCOL DRIFT DETECTED</HUDAnnotation>
-                            <HUDAnnotation className="bottom-8 -left-2 bg-emerald-600/90" delay="1.5s">SYSTEM_SECURED_V21</HUDAnnotation>
+                            <HUDAnnotation className="top-8 -left-4" delay="0.5s">Follow ups?</HUDAnnotation>
+                            <HUDAnnotation className="top-1/2 -right-8" delay="1s">Missed steps?</HUDAnnotation>
+                            <HUDAnnotation className="bottom-8 -left-2" delay="1.5s">Daily chaos?</HUDAnnotation>
 
                             <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden border-[8px] border-zinc-900 shadow-2xl bg-black relative">
                                 <iframe src={VIMEO_URL} frameBorder="0" className="absolute inset-0 h-full w-full object-cover scale-[1.1]" title="Ghost Video" />
@@ -184,9 +182,9 @@ export default function HeroLabClient() {
                         </div>
                         
                         <div className="relative">
-                            <HUDAnnotation color="bg-red-600/90" className="-top-4 left-10">AUDIT EXPOSURE ALERT</HUDAnnotation>
-                            <HUDAnnotation color="bg-zinc-800/95" className="bottom-10 -right-4">COMPLIANCE_SHIELD_ACTIVE</HUDAnnotation>
-                            <HUDAnnotation color="bg-red-600/90" className="top-1/2 -right-10">MISSED PROTOCOL</HUDAnnotation>
+                            <HUDAnnotation className="-top-4 left-10">Training calls?</HUDAnnotation>
+                            <HUDAnnotation className="bottom-10 -right-4">Memory gaps?</HUDAnnotation>
+                            <HUDAnnotation className="top-1/2 -right-10">Missed steps?</HUDAnnotation>
                             <div className="aspect-[16/9] rounded-[3rem] overflow-hidden border-[6px] border-white/5 shadow-2xl bg-black relative">
                                 <iframe src={VIMEO_URL} frameBorder="0" className="absolute inset-0 h-full w-full object-cover" title="Monitor Red" />
                             </div>
