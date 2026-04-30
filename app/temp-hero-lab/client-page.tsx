@@ -6,222 +6,361 @@ import { Button } from '@/components/ui/button';
 import { 
     ArrowRight, 
     ShieldCheck, 
-    CheckCircle2
+    CheckCircle2,
+    Play,
+    Activity,
+    Lock,
+    Zap,
+    ClipboardCheck,
+    Smartphone
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
-const VIMEO_URL = "https://player.vimeo.com/video/1187795401?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0";
+const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 const NARRATIVE = {
     line1: "STOP CHASING YOUR TEAM.",
-    line2: "SEE DAILY WORK GETTING DONE."
+    line2: "SEE DAILY WORK GETTING DONE.",
+    subline: "Without follow-ups. Without confusion. Without depending on memory.",
+    support: "Memory is not a system. Serious operations deserve more.",
+    cta: "Start Using Your System → ₹2,999",
+    meta: "One-time payment • Runs on Excel / Google Sheets"
 };
 
-const SOVEREIGN_GOLD = "#FACC15";
-const SOVEREIGN_GREEN = "#1E8E5A";
+const BULLETS = [
+    "120+ Pre-built technical protocols",
+    "Live dashboard for group visibility",
+    "No SaaS dependency. Own your data.",
+    "Built-in Trainer's Notes for staff"
+];
 
-const VideoBackground = ({ opacity = 0.4 }) => (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <iframe
-            src={VIMEO_URL}
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            className="absolute inset-0 h-full w-full object-cover scale-[1.3]"
-            style={{ 
-                opacity: opacity, 
-                width: '100vw',
-                height: '100vh',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%) scale(1.3)'
-            }}
-            title="Operations Hero Video"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
-    </div>
-);
+const YELLOW = "#FACC15";
+const RED = "#EF4444";
 
-/**
- * 2x2 COMMAND GRID
- * Re-engineered for maximum vertical space efficiency.
- */
-const SpecsGrid = ({ color = SOVEREIGN_GOLD }) => (
-    <div className="grid grid-cols-2 gap-x-12 gap-y-4 md:gap-y-5 w-fit">
-        {[
-            "120+ PRE-BUILT SOPs",
-            "LIVE DASHBOARD",
-            "NO SaaS LOCK-IN",
-            "TRAINER NOTES INCLUDED"
-        ].map((item, i) => (
-            <div key={i} className="flex items-center gap-3 group">
-                <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
-                <span className="font-black uppercase tracking-[0.2em] italic font-headline text-white/50 text-[10px] md:text-sm group-hover:text-white transition-colors whitespace-nowrap">{item}</span>
-            </div>
-        ))}
-    </div>
-);
-
-const CommandCTA = ({ accent = SOVEREIGN_GOLD }) => (
-    <div className="flex flex-col gap-4 w-full max-w-xl">
-        <div className="flex flex-col items-center md:items-start gap-4">
-            <Button 
-                asChild
-                className="h-20 px-10 rounded-xl font-black uppercase italic text-lg md:text-xl transition-all border-none group flex items-center justify-center gap-4 active:scale-95 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.6)]"
-                style={{ backgroundColor: accent, color: 'black' }}
-            >
-                <Link href="/library">
-                    DEPLOY MASTER ENGINE → ₹2,999 <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-2" />
-                </Link>
-            </Button>
-            <div className="flex flex-col md:flex-row md:items-center justify-between w-full px-2 gap-4">
-                <div className="space-y-1">
-                    <p className="text-[10px] font-black uppercase tracking-[0.4em] leading-none text-white/50">ONE-TIME PAYMENT</p>
-                    <p className="text-[9px] font-bold uppercase tracking-[0.4em] leading-none text-white/20 italic">OWN FOREVER • NO SaaS</p>
-                </div>
-                <div className="hidden md:flex items-center gap-3">
-                     <ShieldCheck className="w-4 h-4 text-white/10" />
-                     <span className="text-[8px] font-mono text-white/10 uppercase tracking-widest">SECURE_BUILD_V21.0</span>
-                </div>
-            </div>
-        </div>
-    </div>
-);
-
-/**
- * HARDENED HUD ANNOTATION
- * Risk-Red, Icon-free, glassmorphic.
- */
-const HUDAnnotation = ({ children, className, delay = "0s" }: { children: React.ReactNode, className: string, delay?: string }) => (
-    <div className={cn(
-        "absolute px-3 py-2 rounded-lg shadow-[0_30px_60px_-12px_rgba(220,38,38,0.3)] backdrop-blur-3xl border border-red-500/30 z-30 flex items-center gap-2.5 transition-all hover:scale-110 animate-in fade-in zoom-in duration-1000 bg-red-600/90", 
-        className
-    )} style={{ animationDelay: delay }}>
-        <span className="relative flex h-1.5 w-1.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-            <span className="relative inline-block rounded-full h-1.5 w-1.5 bg-white"></span>
-        </span>
-        <p className="text-[9px] font-black uppercase tracking-[0.2em] leading-tight text-white whitespace-nowrap italic">{children}</p>
-    </div>
-);
-
-const LabSection = ({ children, id, title, subtitle, className }: { children: React.ReactNode, id: string, title: string, subtitle: string, className?: string }) => (
-    <div id={id} className={cn("w-full py-24 md:py-32 border-b border-white/5 space-y-12 bg-black", className)}>
+const LabSection = ({ children, title, description, id }: { children: React.ReactNode, title: string, description: string, id: string }) => (
+    <div id={id} className="w-full py-24 md:py-32 border-b border-white/5 bg-black space-y-12">
         <div className="container px-8 mx-auto">
-            <div className="space-y-2 pl-8 border-l-4 border-primary">
-                <h2 className="text-3xl font-black uppercase italic tracking-tighter text-primary-text font-headline">{title}</h2>
-                <p className="text-base text-zinc-500 italic font-medium">{subtitle}</p>
+            <div className="space-y-2 border-l-4 border-primary pl-8">
+                <h2 className="text-3xl font-black uppercase italic tracking-tighter text-white font-headline">{title}</h2>
+                <p className="text-zinc-500 italic font-medium">{description}</p>
             </div>
         </div>
-        <div className="w-full min-h-[90svh] relative overflow-hidden bg-black flex flex-col justify-center">
+        <div className="w-full h-[90svh] relative overflow-hidden bg-[#0B0F1A]">
             {children}
         </div>
     </div>
 );
 
+const BulletList = ({ className }: { className?: string }) => (
+    <div className={cn("space-y-3", className)}>
+        {BULLETS.map((bullet, i) => (
+            <div key={i} className="flex items-center gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#FACC15] shrink-0" />
+                <span className="text-[15px] font-medium text-[#F5F7FA]">{bullet}</span>
+            </div>
+        ))}
+    </div>
+);
+
+const Tag = ({ text, className }: { text: string, className?: string }) => (
+    <div className={cn("px-4 py-1.5 rounded-full bg-[#EF4444] text-white text-[12px] font-black uppercase tracking-widest shadow-2xl animate-pulse", className)}>
+        {text}
+    </div>
+);
+
 export default function HeroLabClient() {
     return (
-        <div className="bg-[#050505] text-white font-sans overflow-x-hidden pb-40">
+        <div className="bg-black text-white font-sans selection:bg-yellow-500/30">
             
-            <div className="container px-8 pt-40 pb-24 mx-auto text-center space-y-10">
-                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[11px] px-10 py-3 rounded-none bg-primary/5">
-                    SOVEREIGN ONE-GLANCE LAB V21.0
+            <div className="container px-8 pt-40 pb-20 mx-auto text-center space-y-8">
+                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[11px] px-8 py-3 rounded-none bg-primary/5">
+                    SOVEREIGN HERO LAB V27.0
                 </Badge>
-                <h1 className="text-6xl md:text-9xl font-black font-headline italic uppercase tracking-tighter leading-none">Market <span className="text-primary">Command.</span></h1>
-                <p className="text-zinc-500 italic font-medium max-w-3xl mx-auto text-xl md:text-2xl leading-relaxed">
-                    Options 2, 3, 7 Finalists. 2x2 Command Grid Active.
+                <h1 className="text-6xl md:text-8xl font-black font-headline italic uppercase tracking-tighter leading-none">
+                    Cinematic <span className="text-primary">Command.</span>
+                </h1>
+                <p className="text-zinc-500 italic font-medium max-w-2xl mx-auto text-lg">
+                    Archetypes A-C preserved. Variants 4-8 added for cinematic glass immersion.
                 </p>
             </div>
 
-            {/* --- ARCHETYPE 2: THE GHOST HUD --- */}
-            <LabSection id="opt-2" title="Archetype 2: The Ghost HUD" subtitle="Framed video haunted by Risk-Red alerts. Compact 2x2 command unit.">
-                <div className="h-full bg-[#0A0F19] flex items-center justify-center relative px-8 md:px-24 py-20">
-                    <div className="grid lg:grid-cols-[1fr,1.4fr] gap-12 lg:gap-20 items-center relative z-20 w-full max-w-7xl">
-                        <div className="space-y-12">
-                            <div className="space-y-3">
-                                <h1 className="text-[1.8rem] md:text-[4rem] font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white">
-                                    {NARRATIVE.line1}
-                                </h1>
-                                <h1 className="text-[1.8rem] md:text-[4rem] font-black font-headline leading-[0.95] uppercase italic tracking-tighter" style={{ color: SOVEREIGN_GREEN }}>
-                                    {NARRATIVE.line2}
-                                </h1>
-                            </div>
-                            <SpecsGrid color={SOVEREIGN_GREEN} />
-                            <CommandCTA accent={SOVEREIGN_GREEN} />
-                        </div>
-                        
-                        <div className="relative group">
-                            <HUDAnnotation className="top-8 -left-4" delay="0.5s">Follow ups?</HUDAnnotation>
-                            <HUDAnnotation className="top-1/2 -right-8" delay="1s">Missed steps?</HUDAnnotation>
-                            <HUDAnnotation className="bottom-8 -left-2" delay="1.5s">Daily chaos?</HUDAnnotation>
-
-                            <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden border-[8px] border-zinc-900 shadow-2xl bg-black relative">
-                                <iframe src={VIMEO_URL} frameBorder="0" className="absolute inset-0 h-full w-full object-cover scale-[1.1]" title="Ghost Video" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 3: THE MULTI-TONE MONITOR --- */}
-            <LabSection id="opt-3" title="Archetype 3: The Multi-Tone Monitor" subtitle="High-density monitoring architecture. Sovereign Gold mandate.">
-                <div className="h-full bg-[#050B15] flex items-center justify-center relative px-8 md:px-24 py-20">
-                    <div className="grid lg:grid-cols-[1fr,1.6fr] gap-12 lg:gap-32 items-center relative z-20 w-full max-w-[1440px]">
-                        <div className="space-y-12">
-                             <div className="space-y-4">
-                                <h1 className="text-[1.8rem] md:text-[4.2rem] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
-                                    {NARRATIVE.line1}
-                                </h1>
-                                <h1 className="text-[1.8rem] md:text-[4.2rem] font-black font-headline leading-[0.9] uppercase italic tracking-tighter" style={{ color: SOVEREIGN_GOLD }}>
-                                    {NARRATIVE.line2}
-                                </h1>
-                            </div>
-                            <SpecsGrid color={SOVEREIGN_GOLD} />
-                            <CommandCTA accent={SOVEREIGN_GOLD} />
-                        </div>
-                        
-                        <div className="relative">
-                            <HUDAnnotation className="-top-4 left-10">Training calls?</HUDAnnotation>
-                            <HUDAnnotation className="bottom-10 -right-4">Memory gaps?</HUDAnnotation>
-                            <HUDAnnotation className="top-1/2 -right-10">Missed steps?</HUDAnnotation>
-                            <div className="aspect-[16/9] rounded-[3rem] overflow-hidden border-[6px] border-white/5 shadow-2xl bg-black relative">
-                                <iframe src={VIMEO_URL} frameBorder="0" className="absolute inset-0 h-full w-full object-cover" title="Monitor Red" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 7: THE PURE SPLIT --- */}
-            <LabSection id="opt-7" title="Archetype 7: The Pure Split" subtitle="Symmetric 50/50 division. Standardized 2x2 grid. Zero clutter.">
-                <div className="h-full relative flex flex-col md:flex-row items-stretch">
-                    <div className="w-full md:w-1/2 bg-black flex flex-col justify-center px-12 md:px-24 space-y-12 z-20 border-r border-white/5 py-24">
-                        <div className="space-y-8">
-                            <h1 className="text-[2.2rem] md:text-[4.5rem] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white whitespace-nowrap">
-                                {NARRATIVE.line1}
+            {/* --- ARCHETYPE 4: THE OBSIDIAN GLASS --- */}
+            <LabSection id="opt-4" title="Archetype 4: The Obsidian Glass" description="Centered massive glass card. Deep blur. Floating over full-screen blurred video.">
+                <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-30 blur-sm" />
+                <div className="absolute inset-0 bg-black/40" />
+                
+                <div className="relative z-10 h-full flex items-center justify-center px-4">
+                    <div className="max-w-4xl w-full bg-white/[0.03] border border-white/10 backdrop-blur-3xl rounded-[3rem] p-10 md:p-20 shadow-[0_0_100px_-20px_rgba(250,204,21,0.15)] text-center space-y-10 border-t-white/20">
+                        <div className="space-y-4">
+                            <h1 className="text-4xl md:text-7xl font-black font-headline leading-[0.9] tracking-tighter uppercase italic text-white">
+                                STOP CHASING.<br/>
+                                <span style={{ color: YELLOW }}>START SEEING.</span>
                             </h1>
-                            <h1 className="text-[2.2rem] md:text-[4.5rem] font-black font-headline leading-[0.9] uppercase italic tracking-tighter whitespace-nowrap" style={{ color: SOVEREIGN_GOLD }}>
-                                {NARRATIVE.line2}
-                            </h1>
-                            <p className="text-xl md:text-2xl text-zinc-500 italic font-bold pt-4 border-l-4 border-white/10 pl-8 max-w-md leading-tight">
-                                Memory is not a system. <br/> Serious operations deserve more.
+                            <p className="text-xl md:text-2xl text-zinc-400 font-bold italic leading-tight">
+                                {NARRATIVE.subline}
                             </p>
                         </div>
-                        <div className="space-y-12">
-                            <SpecsGrid color={SOVEREIGN_GOLD} />
-                            <CommandCTA accent={SOVEREIGN_GOLD} />
+
+                        <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 py-4 border-y border-white/5">
+                            {BULLETS.map((b, i) => (
+                                <div key={i} className="flex items-center gap-3">
+                                    <CheckCircle2 className="w-4 h-4 text-[#FACC15]" />
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-white/50">{b}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="flex flex-col items-center gap-4">
+                            <Button className="h-20 px-16 rounded-2xl bg-[#FACC15] text-black font-black uppercase italic text-xl shadow-2xl hover:scale-105 transition-all border-none group">
+                                {NARRATIVE.cta} <ArrowRight className="ml-3 w-6 h-6 transition-transform group-hover:translate-x-2" />
+                            </Button>
+                            <p className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.3em]">{NARRATIVE.meta}</p>
                         </div>
                     </div>
-                    <div className="flex-1 relative overflow-hidden bg-[#0A0A0A] min-h-[500px]">
-                        <iframe src={VIMEO_URL} frameBorder="0" className="absolute inset-0 h-full w-full object-cover scale-[1.3]" title="Split Color" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent pointer-events-none" />
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 5: THE WIDE-ANGLE COMMANDER --- */}
+            <LabSection id="opt-5" title="Archetype 5: The Wide-Angle Commander" description="Full-screen video background with a surgical 90-degree dark gradient mask.">
+                <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0B0F1A] via-[#0B0F1A]/90 to-transparent" />
+                
+                <div className="relative z-10 h-full container px-24 mx-auto grid lg:grid-cols-2 items-center">
+                    <div className="space-y-12">
+                        <div className="space-y-4">
+                            <h1 className="text-6xl md:text-8xl font-black font-headline leading-[0.8] tracking-tighter uppercase italic text-white">
+                                CAPTURE<br/>
+                                <span style={{ color: YELLOW }}>MEMORY.</span>
+                            </h1>
+                            <p className="text-2xl text-zinc-400 italic font-medium max-w-lg leading-relaxed border-l-4 border-[#FACC15] pl-8">
+                                Institutional memory is an asset. <br/>Anything else is just luck.
+                            </p>
+                        </div>
+                        <BulletList className="pl-2" />
+                        <div className="pt-4">
+                            <Button className="h-20 px-12 rounded-xl bg-[#FACC15] text-black font-black uppercase italic text-lg shadow-2xl hover:bg-yellow-400 transition-all border-none">
+                                DEPLOY SYSTEM → ₹2,999
+                            </Button>
+                            <p className="mt-4 text-[11px] text-zinc-500 font-bold uppercase tracking-widest pl-2">{NARRATIVE.meta}</p>
+                        </div>
+                    </div>
+                    <div className="hidden lg:flex justify-end pr-20">
+                         <div className="w-20 h-20 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center animate-bounce">
+                            <Play className="w-8 h-8 text-[#FACC15] fill-[#FACC15]" />
+                         </div>
+                    </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 6: THE MONOSPACE AUDIT --- */}
+            <LabSection id="opt-6" title="Archetype 6: The Monospace Audit" description="Monospace technical meta-tags. Very clean, high-density professional audit style.">
+                <div className="absolute inset-0 bg-[#0B0F1A] opacity-20 bg-[radial-gradient(#FACC15_1px,transparent_1px)] [background-size:40px_40px]" />
+                <div className="relative z-10 h-full container px-24 mx-auto flex flex-col justify-center max-w-5xl space-y-12">
+                    <div className="flex items-center gap-4">
+                        <span className="text-[10px] font-mono text-[#FACC15] uppercase tracking-[0.5em] bg-[#FACC15]/10 px-4 py-1">BUILD: SOVEREIGN_V27.0_STABLE</span>
+                        <div className="flex-1 h-px bg-white/5" />
+                    </div>
+                    
+                    <div className="space-y-6">
+                        <h1 className="text-7xl md:text-9xl font-black font-headline leading-[0.8] tracking-tighter uppercase italic text-[#F5F7FA]">
+                            SYSTEMS<br/>
+                            <span className="text-zinc-700">OVER LUCK.</span>
+                        </h1>
+                        <p className="text-2xl text-zinc-500 font-medium italic">{NARRATIVE.subline}</p>
+                    </div>
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {["120+ SOPs", "LIVE CONSOLE", "NO SaaS", "TRAINER NOTES"].map((item, i) => (
+                            <div key={i} className="p-6 bg-white/[0.02] border border-white/5 rounded-xl font-mono text-[10px] text-zinc-400 group hover:border-[#FACC15]/30 transition-all">
+                                <span className="block text-[#FACC15] mb-2">0{i+1}</span>
+                                {item}
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="flex items-center gap-8">
+                        <Button className="h-16 px-12 rounded-none bg-[#FACC15] text-black font-black uppercase text-sm tracking-[0.2em] hover:scale-105 transition-all">
+                            INITIALIZE DEPLOYMENT
+                        </Button>
+                        <span className="text-xl font-black italic text-white/20">₹2,999 ONE-TIME</span>
+                    </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 7: THE ETHEREAL PORTAL --- */}
+            <LabSection id="opt-7" title="Archetype 7: The Ethereal Portal" description="Minimalist high-end. Narrative wraps around a sharp centered video portal.">
+                <div className="h-full flex flex-col items-center justify-center space-y-16 px-4">
+                    <div className="text-center space-y-4">
+                        <h1 className="text-5xl md:text-8xl font-black font-headline leading-none tracking-tight uppercase italic">
+                            MEMORY IS NOT <br/> <span className="text-zinc-800">A SYSTEM.</span>
+                        </h1>
+                    </div>
+
+                    <div className="relative group max-w-4xl w-full">
+                        <Tag text="Missed tasks?" className="absolute -top-6 -left-6 z-20" />
+                        <Tag text="Constant follow-ups?" className="absolute -bottom-6 -right-6 z-20" />
+                        
+                        <div className="aspect-video rounded-[3rem] overflow-hidden border-[12px] border-zinc-900 shadow-2xl relative bg-black">
+                            <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-80" />
+                            <div className="absolute bottom-6 left-10 text-[10px] font-black text-[#FACC15] uppercase tracking-[0.5em] italic">LIVE_TRACKING_ACTIVE</div>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col items-center gap-6">
+                        <p className="text-zinc-500 font-bold italic text-lg">{NARRATIVE.support}</p>
+                        <Button className="h-20 px-16 rounded-full bg-white text-black font-black uppercase italic text-xl hover:bg-[#FACC15] transition-all">
+                            DEPLOY ENGINE → ₹2,999
+                        </Button>
+                    </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 8: THE INDUSTRIAL HUD --- */}
+            <LabSection id="opt-8" title="Archetype 8: The Industrial HUD" description="Tactical cockpit style. Multiple floating glass panels for technical specifications.">
+                 <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale" />
+                 <div className="absolute inset-0 bg-black/60" />
+                 
+                 <div className="relative z-10 h-full container px-8 md:px-24 mx-auto flex items-center justify-between gap-12">
+                    <div className="max-w-2xl space-y-10">
+                        <div className="space-y-4">
+                            <h1 className="text-6xl md:text-8xl font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-[#FACC15]">
+                                OBSERVE.<br/>
+                                <span className="text-white">COMMAND.</span>
+                            </h1>
+                            <p className="text-xl text-zinc-400 font-bold italic leading-snug">
+                                {NARRATIVE.subline}
+                            </p>
+                        </div>
+                        <Button className="h-20 px-12 rounded-2xl bg-[#FACC15] text-black font-black uppercase italic text-lg shadow-2xl hover:scale-105 transition-all border-none">
+                            GET THE SOVEREIGN V11.9
+                        </Button>
+                    </div>
+
+                    <div className="hidden lg:grid grid-cols-2 gap-6 w-[500px]">
+                        {[
+                            { t: "120+ SOPs", i: ClipboardCheck, d: "Technical protocols" },
+                            { t: "Live Stats", i: Activity, d: "One-glance health" },
+                            { t: "Sovereign IP", i: Lock, d: "Own your data" },
+                            { t: "Trainer Notes", i: Smartphone, d: "Zero-friction training" }
+                        ].map((item, i) => (
+                            <div key={i} className="p-8 bg-black/40 backdrop-blur-3xl border border-white/10 rounded-[2rem] space-y-4 hover:border-[#FACC15]/50 transition-all group">
+                                <item.i className="w-8 h-8 text-[#FACC15]" />
+                                <div className="space-y-1">
+                                    <h4 className="font-black uppercase italic text-lg leading-none">{item.t}</h4>
+                                    <p className="text-[10px] font-black uppercase text-zinc-500 tracking-widest">{item.d}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                 </div>
+            </LabSection>
+
+            {/* --- ARCHEPTYPE A: THE BLUEPRINT (Finalist) --- */}
+            <LabSection id="opt-a" title="Archetype A: The Blueprint" description="1440px Figma-Ready Master Spec. Pure Spacing + Hierarchy.">
+                <div className="w-full h-full bg-[#0B0F1A] flex items-center px-[120px]">
+                    <div className="grid grid-cols-2 gap-20 w-full max-w-[1200px]">
+                        <div className="space-y-[28px]">
+                             <div className="space-y-[16px]">
+                                <h1 className="font-headline font-extrabold text-[52px] leading-[60px] tracking-[-1px] text-[#F5F7FA] uppercase">
+                                    STOP CHASING YOUR TEAM.<br/>
+                                    <span style={{ color: YELLOW }}>SEE DAILY WORK GETTING DONE.</span>
+                                </h1>
+                                <p className="text-[18px] font-normal text-[#9CA3AF] leading-[28px]">
+                                    {NARRATIVE.subline}
+                                </p>
+                             </div>
+                             
+                             <div className="space-y-[12px]">
+                                <p className="text-[16px] font-medium text-[#9CA3AF] italic">
+                                    {NARRATIVE.support}
+                                </p>
+                             </div>
+
+                             <BulletList className="space-y-[26px] pt-4" />
+
+                             <div className="pt-[28px] relative">
+                                <div className="absolute -inset-10 bg-[#FACC15]/20 blur-[40px] rounded-full pointer-events-none" />
+                                <Button className="h-[56px] px-[28px] rounded-[10px] bg-[#FACC15] text-[#0B0F1A] font-semibold text-[16px] hover:bg-[#EAB308] hover:scale-[1.02] transition-all border-none relative z-10">
+                                    {NARRATIVE.cta}
+                                </Button>
+                                <p className="mt-[12px] text-[12px] text-[#6B7280]">
+                                    {NARRATIVE.meta}
+                                </p>
+                             </div>
+                        </div>
+
+                        <div className="flex items-center justify-center">
+                            <div className="w-[620px] h-[420px] rounded-[16px] overflow-hidden relative shadow-2xl border border-white/5 bg-black">
+                                <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-50" />
+                                <div className="absolute inset-0 bg-gradient-to-r from-[#0B0F1A] via-transparent to-transparent opacity-85" />
+                                
+                                <Tag text="Missed tasks?" className="absolute top-8 right-8" />
+                                <Tag text="Constant follow-ups?" className="absolute bottom-12 right-8" />
+                                <div className="absolute bottom-8 left-10 text-[12px] font-semibold text-[#FACC15]">Live tracking</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHEPTYPE B: THE HORIZON --- */}
+            <LabSection id="opt-b" title="Archetype B: The Horizon" description="60/40 Split. Deep gradient immersion. High-density meta tags.">
+                 <div className="w-full h-full bg-[#0B0F1A] flex items-center relative">
+                    <div className="absolute inset-0 z-0 flex justify-end">
+                        <div className="w-[60%] h-full relative">
+                            <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-40" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#0B0F1A] via-[#0B0F1A]/80 to-transparent" />
+                        </div>
+                    </div>
+
+                    <div className="container px-24 relative z-10 grid grid-cols-[1.2fr,1fr] gap-20 items-center">
+                        <div className="space-y-10">
+                            <h1 className="font-headline font-extrabold text-[64px] leading-[0.9] tracking-[-2px] text-white uppercase italic">
+                                CHAOS IS <br/> <span style={{ color: YELLOW }}>EXPENSIVE.</span>
+                            </h1>
+                            <p className="text-[20px] text-zinc-400 italic font-medium leading-relaxed max-w-lg">
+                                Stop the daily stress. Make your business run itself. No more management gaps.
+                            </p>
+                            <BulletList className="grid grid-cols-2 gap-4 space-y-0" />
+                            <div className="pt-6">
+                                <Button className="h-20 px-12 rounded-xl bg-[#FACC15] text-black font-black uppercase italic text-lg shadow-2xl hover:bg-white transition-all border-none">
+                                    DEPLOY MASTER ENGINE → ₹2,999
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </LabSection>
+
+            {/* --- ARCHEPTYPE C: THE COMMAND CENTER --- */}
+            <LabSection id="opt-c" title="Archetype C: The Command Center" description="Aggressive center-aligned messaging. Strong industrial presence.">
+                <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale" />
+                <div className="absolute inset-0 bg-[#0B0F1A]/90" />
+                <div className="relative z-10 h-full flex flex-col items-center justify-center text-center space-y-12 px-6">
+                    <div className="space-y-4">
+                        <Badge className="bg-[#FACC15]/10 text-[#FACC15] border-[#FACC15]/20 px-6 py-2 uppercase font-black tracking-widest text-[10px]">SOVEREIGN ENGINE PRO</Badge>
+                        <h1 className="text-5xl md:text-8xl font-black font-headline leading-[0.85] tracking-tight uppercase italic text-white">
+                            SYSTEMS <br/> OVER LUCK.
+                        </h1>
+                    </div>
+                    <p className="text-xl md:text-2xl text-zinc-400 italic font-bold max-w-2xl mx-auto leading-tight">
+                        {NARRATIVE.subline}
+                    </p>
+                    <div className="flex flex-col items-center gap-6">
+                        <Button className="h-20 px-16 rounded-2xl bg-[#FACC15] text-black font-black uppercase italic text-xl shadow-2xl hover:scale-105 transition-all border-none">
+                            GET STARTED NOW
+                        </Button>
+                        <div className="flex items-center gap-12 text-[10px] font-black text-white/30 uppercase tracking-[0.4em]">
+                            <span className="flex items-center gap-2"><Check className="w-4 h-4 text-[#FACC15]" /> ONE-TIME BUY</span>
+                            <span className="flex items-center gap-2"><Check className="w-4 h-4 text-[#FACC15]" /> NO SaaS FEES</span>
+                        </div>
                     </div>
                 </div>
             </LabSection>
 
             <div className="py-40 text-center bg-zinc-950 border-t border-white/5">
-                 <p className="text-[14px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">Consolidated Finalists v21.0 Active.</p>
+                 <p className="text-[14px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">Full Cinematic Lab Collection v27.0 Active.</p>
                  <Button asChild variant="link" className="mt-12 text-primary font-black uppercase tracking-widest text-sm hover:text-white transition-colors">
                     <Link href="/">RETURN TO PRODUCTION SITE</Link>
                  </Button>
