@@ -17,7 +17,8 @@ import {
     Clock,
     Zap,
     Scale,
-    Target
+    Target,
+    ShieldCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
