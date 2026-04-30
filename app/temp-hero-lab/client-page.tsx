@@ -6,18 +6,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
     ArrowRight, 
-    Lock, 
-    Activity, 
-    ClipboardCheck,
-    Smartphone,
-    ShieldAlert,
-    ShieldCheck,
-    CheckCircle2,
-    Target,
-    Clock,
-    GraduationCap,
-    HelpCircle,
-    AlertCircle
+    ShieldCheck, 
+    CheckCircle2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -31,7 +21,6 @@ const NARRATIVE = {
 
 const SOVEREIGN_GOLD = "#FACC15";
 const SOVEREIGN_GREEN = "#1E8E5A";
-const RISK_RED = "#DC2626";
 
 const VideoBackground = ({ opacity = 0.4 }) => (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -56,10 +45,10 @@ const VideoBackground = ({ opacity = 0.4 }) => (
 
 /**
  * 2x2 COMMAND GRID
- * Re-engineered for One-Glance impact.
+ * Re-engineered for maximum vertical space efficiency.
  */
 const SpecsGrid = ({ color = SOVEREIGN_GOLD }) => (
-    <div className="grid grid-cols-2 gap-x-12 gap-y-4 md:gap-y-6 w-fit">
+    <div className="grid grid-cols-2 gap-x-12 gap-y-4 md:gap-y-5 w-fit">
         {[
             "120+ PRE-BUILT SOPs",
             "LIVE DASHBOARD",
@@ -75,7 +64,7 @@ const SpecsGrid = ({ color = SOVEREIGN_GOLD }) => (
 );
 
 const CommandCTA = ({ accent = SOVEREIGN_GOLD }) => (
-    <div className="flex flex-col gap-6 w-full max-w-xl">
+    <div className="flex flex-col gap-4 w-full max-w-xl">
         <div className="flex flex-col items-center md:items-start gap-4">
             <Button 
                 asChild
@@ -86,14 +75,14 @@ const CommandCTA = ({ accent = SOVEREIGN_GOLD }) => (
                     DEPLOY MASTER ENGINE → ₹2,999 <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-2" />
                 </Link>
             </Button>
-            <div className="flex items-center justify-between w-full px-2">
+            <div className="flex flex-col md:flex-row md:items-center justify-between w-full px-2 gap-4">
                 <div className="space-y-1">
                     <p className="text-[10px] font-black uppercase tracking-[0.4em] leading-none text-white/50">ONE-TIME PAYMENT</p>
                     <p className="text-[9px] font-bold uppercase tracking-[0.4em] leading-none text-white/20 italic">OWN FOREVER • NO SaaS</p>
                 </div>
                 <div className="hidden md:flex items-center gap-3">
                      <ShieldCheck className="w-4 h-4 text-white/10" />
-                     <span className="text-[8px] font-mono text-white/10 uppercase tracking-widest">SECURE_BUILD_V20.0</span>
+                     <span className="text-[8px] font-mono text-white/10 uppercase tracking-widest">SECURE_BUILD_V21.0</span>
                 </div>
             </div>
         </div>
@@ -102,7 +91,7 @@ const CommandCTA = ({ accent = SOVEREIGN_GOLD }) => (
 
 /**
  * HARDENED HUD ANNOTATION
- * Icons removed. Enhanced rim-glow and blur.
+ * Risk-Red, Icon-free, glassmorphic.
  */
 const HUDAnnotation = ({ children, className, color = "bg-red-600/90", delay = "0s" }: { children: React.ReactNode, className: string, color?: string, delay?: string }) => (
     <div className={cn(
@@ -138,42 +127,16 @@ export default function HeroLabClient() {
             
             <div className="container px-8 pt-40 pb-24 mx-auto text-center space-y-10">
                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[11px] px-10 py-3 rounded-none bg-primary/5">
-                    SOVEREIGN ONE-GLANCE LAB V20.0
+                    SOVEREIGN ONE-GLANCE LAB V21.0
                 </Badge>
                 <h1 className="text-6xl md:text-9xl font-black font-headline italic uppercase tracking-tighter leading-none">Market <span className="text-primary">Command.</span></h1>
                 <p className="text-zinc-500 italic font-medium max-w-3xl mx-auto text-xl md:text-2xl leading-relaxed">
-                    2x2 Command Grid & Hardened HUD Architecture.
+                    Options 2, 3, 7 Finalists. 2x2 Command Grid Active.
                 </p>
             </div>
 
-            {/* --- 1. THE IMMERSIVE OVERLAP (GOLD) --- */}
-            <LabSection id="opt-1" title="1. The Immersive Overlap" subtitle="Massive narrative. Sovereign Gold. 2x2 grid compactness.">
-                <div className="h-full relative flex items-center px-8 md:px-24 py-20">
-                    <VideoBackground opacity={0.4} />
-                    <div className="relative z-20 space-y-12 w-full max-w-7xl mx-auto">
-                         <div className="space-y-4">
-                            <h1 className="text-[2.2rem] md:text-[5.5rem] lg:text-[7.5rem] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white whitespace-nowrap">
-                                {NARRATIVE.line1}
-                            </h1>
-                            <h1 className="text-[2.2rem] md:text-[5.5rem] lg:text-[7.5rem] font-black font-headline leading-[0.9] uppercase italic tracking-tighter whitespace-nowrap" style={{ color: SOVEREIGN_GOLD }}>
-                                {NARRATIVE.line2}
-                            </h1>
-                         </div>
-                         <div className="flex flex-col md:flex-row items-start gap-12 md:gap-24 pt-4">
-                            <div className="space-y-10">
-                                <p className="text-xl md:text-2xl text-white/50 italic font-bold leading-tight max-w-xl border-l-2 border-white/10 pl-6">
-                                    Stop the daily stress. <br/> Make your business run itself.
-                                </p>
-                                <SpecsGrid color={SOVEREIGN_GOLD} />
-                            </div>
-                            <CommandCTA accent={SOVEREIGN_GOLD} />
-                         </div>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- 2. THE GHOST HUD (GREEN) --- */}
-            <LabSection id="opt-2" title="2. The Ghost HUD" subtitle="Framed video haunted by Risk-Red alerts. Compact command stack.">
+            {/* --- ARCHETYPE 2: THE GHOST HUD --- */}
+            <LabSection id="opt-2" title="Archetype 2: The Ghost HUD" subtitle="Framed video haunted by Risk-Red alerts. Compact 2x2 command unit.">
                 <div className="h-full bg-[#0A0F19] flex items-center justify-center relative px-8 md:px-24 py-20">
                     <div className="grid lg:grid-cols-[1fr,1.4fr] gap-12 lg:gap-20 items-center relative z-20 w-full max-w-7xl">
                         <div className="space-y-12">
@@ -192,7 +155,7 @@ export default function HeroLabClient() {
                         <div className="relative group">
                             <HUDAnnotation className="top-8 -left-4 bg-red-600/90" delay="0.5s">UNVERIFIED EXECUTION</HUDAnnotation>
                             <HUDAnnotation className="top-1/2 -right-8 bg-red-600/90" delay="1s">PROTOCOL DRIFT DETECTED</HUDAnnotation>
-                            <HUDAnnotation className="bottom-8 -left-2 bg-emerald-600/90" delay="1.5s">SYSTEM_SECURED_V20</HUDAnnotation>
+                            <HUDAnnotation className="bottom-8 -left-2 bg-emerald-600/90" delay="1.5s">SYSTEM_SECURED_V21</HUDAnnotation>
 
                             <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden border-[8px] border-zinc-900 shadow-2xl bg-black relative">
                                 <iframe src={VIMEO_URL} frameBorder="0" className="absolute inset-0 h-full w-full object-cover scale-[1.1]" title="Ghost Video" />
@@ -203,8 +166,8 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- 3. THE MULTI-TONE MONITOR --- */}
-            <LabSection id="opt-3" title="3. The Multi-Tone Monitor" subtitle="High-density monitoring architecture. Sovereign Gold mandate.">
+            {/* --- ARCHETYPE 3: THE MULTI-TONE MONITOR --- */}
+            <LabSection id="opt-3" title="Archetype 3: The Multi-Tone Monitor" subtitle="High-density monitoring architecture. Sovereign Gold mandate.">
                 <div className="h-full bg-[#050B15] flex items-center justify-center relative px-8 md:px-24 py-20">
                     <div className="grid lg:grid-cols-[1fr,1.6fr] gap-12 lg:gap-32 items-center relative z-20 w-full max-w-[1440px]">
                         <div className="space-y-12">
@@ -232,42 +195,8 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- 5. THE ANXIETY GUARD --- */}
-            <LabSection id="opt-5" title="5. The Anxiety Guard" subtitle="Human anxiety callouts. Small headline scale. 2x2 grid.">
-                <div className="h-full bg-black flex items-center justify-center relative px-8 md:px-24 py-20 overflow-hidden">
-                    <div className="grid lg:grid-cols-[1fr,1.8fr] gap-12 lg:gap-24 items-center relative z-20 w-full max-w-[1500px]">
-                        <div className="space-y-10">
-                            <div className="space-y-3">
-                                <h1 className="text-[1.6rem] md:text-[3.5rem] font-black font-headline leading-[1] uppercase italic tracking-tighter text-white">
-                                    {NARRATIVE.line1}
-                                </h1>
-                                <h1 className="text-[1.6rem] md:text-[3.5rem] font-black font-headline leading-[1] uppercase italic tracking-tighter" style={{ color: SOVEREIGN_GOLD }}>
-                                    {NARRATIVE.line2}
-                                </h1>
-                                <p className="text-lg md:text-xl text-zinc-600 italic font-bold pt-2 uppercase tracking-[0.2em]">DEPLOY IMMEDIATE RELIEF.</p>
-                            </div>
-                            <SpecsGrid color={SOVEREIGN_GOLD} />
-                            <CommandCTA accent={SOVEREIGN_GOLD} />
-                        </div>
-                        
-                        <div className="relative">
-                            <HUDAnnotation color="bg-red-600/90" className="-top-8 left-10">FOLLOW UPS?</HUDAnnotation>
-                            <HUDAnnotation color="bg-red-600/90" className="top-12 -right-8">MISSED STEPS?</HUDAnnotation>
-                            <HUDAnnotation color="bg-red-600/90" className="bottom-1/4 -right-12">TRAINING CALLS?</HUDAnnotation>
-                            <HUDAnnotation color="bg-red-600/90" className="-bottom-8 left-1/4">SHIFT HANDOVERS?</HUDAnnotation>
-                            <HUDAnnotation color="bg-red-600/90" className="bottom-12 right-10">DELAYED REPORTING?</HUDAnnotation>
-                            
-                            <div className="aspect-[16/9] rounded-[3rem] overflow-hidden border-[6px] border-white/5 shadow-2xl relative">
-                                <iframe src={VIMEO_URL} frameBorder="0" className="w-full h-full object-cover" title="Anxiety Video" />
-                                <div className="absolute inset-0 bg-black/20" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- 7. THE PURE SPLIT --- */}
-            <LabSection id="opt-7" title="7. The Pure Split" subtitle="Symmetric 50/50 division. Zero labels. Zero annotations.">
+            {/* --- ARCHETYPE 7: THE PURE SPLIT --- */}
+            <LabSection id="opt-7" title="Archetype 7: The Pure Split" subtitle="Symmetric 50/50 division. Standardized 2x2 grid. Zero clutter.">
                 <div className="h-full relative flex flex-col md:flex-row items-stretch">
                     <div className="w-full md:w-1/2 bg-black flex flex-col justify-center px-12 md:px-24 space-y-12 z-20 border-r border-white/5 py-24">
                         <div className="space-y-8">
@@ -294,7 +223,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             <div className="py-40 text-center bg-zinc-950 border-t border-white/5">
-                 <p className="text-[14px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">Hero Lab v20.0 Hardening Complete.</p>
+                 <p className="text-[14px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">Consolidated Finalists v21.0 Active.</p>
                  <Button asChild variant="link" className="mt-12 text-primary font-black uppercase tracking-widest text-sm hover:text-white transition-colors">
                     <Link href="/">RETURN TO PRODUCTION SITE</Link>
                  </Button>
@@ -303,4 +232,3 @@ export default function HeroLabClient() {
         </div>
     );
 }
-
