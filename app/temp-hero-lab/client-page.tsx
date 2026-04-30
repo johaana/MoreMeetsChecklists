@@ -12,7 +12,13 @@ import {
     Lock,
     Zap,
     ClipboardCheck,
-    Smartphone
+    Smartphone,
+    Check,
+    Monitor,
+    ShieldAlert,
+    Target,
+    Layers,
+    Command
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -53,7 +59,7 @@ const LabSection = ({ children, title, description, id }: { children: React.Reac
 );
 
 const BulletList = ({ className }: { className?: string }) => (
-    <div className={cn("space-y-3", className)}>
+    <div className={cn("grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4", className)}>
         {BULLETS.map((bullet, i) => (
             <div key={i} className="flex items-center gap-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#FACC15] shrink-0" />
@@ -64,7 +70,7 @@ const BulletList = ({ className }: { className?: string }) => (
 );
 
 const Tag = ({ text, className }: { text: string, className?: string }) => (
-    <div className={cn("px-4 py-1.5 rounded-full bg-[#EF4444] text-white text-[12px] font-black uppercase tracking-widest shadow-2xl animate-pulse", className)}>
+    <div className={cn("px-4 py-1.5 rounded-full bg-[#EF4444] text-white text-[12px] font-black uppercase tracking-widest shadow-2xl animate-pulse backdrop-blur-md border border-white/10", className)}>
         {text}
     </div>
 );
@@ -81,182 +87,11 @@ export default function HeroLabClient() {
                     Cinematic <span className="text-primary">Command.</span>
                 </h1>
                 <p className="text-zinc-500 italic font-medium max-w-2xl mx-auto text-lg">
-                    Archetypes A-C preserved. Variants 4-8 added for cinematic glass immersion.
+                    Archetypes A-C preserved. New Cinematic Glass variants added for maximum institutional authority.
                 </p>
             </div>
 
-            {/* --- ARCHETYPE 4: THE OBSIDIAN GLASS --- */}
-            <LabSection id="opt-4" title="Archetype 4: The Obsidian Glass" description="Centered massive glass card. Deep blur. Floating over full-screen blurred video.">
-                <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-30 blur-sm" />
-                <div className="absolute inset-0 bg-black/40" />
-                
-                <div className="relative z-10 h-full flex items-center justify-center px-4">
-                    <div className="max-w-4xl w-full bg-white/[0.03] border border-white/10 backdrop-blur-3xl rounded-[3rem] p-10 md:p-20 shadow-[0_0_100px_-20px_rgba(250,204,21,0.15)] text-center space-y-10 border-t-white/20">
-                        <div className="space-y-4">
-                            <h1 className="text-4xl md:text-7xl font-black font-headline leading-[0.9] tracking-tighter uppercase italic text-white">
-                                STOP CHASING.<br/>
-                                <span style={{ color: YELLOW }}>START SEEING.</span>
-                            </h1>
-                            <p className="text-xl md:text-2xl text-zinc-400 font-bold italic leading-tight">
-                                {NARRATIVE.subline}
-                            </p>
-                        </div>
-
-                        <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 py-4 border-y border-white/5">
-                            {BULLETS.map((b, i) => (
-                                <div key={i} className="flex items-center gap-3">
-                                    <CheckCircle2 className="w-4 h-4 text-[#FACC15]" />
-                                    <span className="text-[10px] font-black uppercase tracking-widest text-white/50">{b}</span>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="flex flex-col items-center gap-4">
-                            <Button className="h-20 px-16 rounded-2xl bg-[#FACC15] text-black font-black uppercase italic text-xl shadow-2xl hover:scale-105 transition-all border-none group">
-                                {NARRATIVE.cta} <ArrowRight className="ml-3 w-6 h-6 transition-transform group-hover:translate-x-2" />
-                            </Button>
-                            <p className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.3em]">{NARRATIVE.meta}</p>
-                        </div>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 5: THE WIDE-ANGLE COMMANDER --- */}
-            <LabSection id="opt-5" title="Archetype 5: The Wide-Angle Commander" description="Full-screen video background with a surgical 90-degree dark gradient mask.">
-                <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0B0F1A] via-[#0B0F1A]/90 to-transparent" />
-                
-                <div className="relative z-10 h-full container px-24 mx-auto grid lg:grid-cols-2 items-center">
-                    <div className="space-y-12">
-                        <div className="space-y-4">
-                            <h1 className="text-6xl md:text-8xl font-black font-headline leading-[0.8] tracking-tighter uppercase italic text-white">
-                                CAPTURE<br/>
-                                <span style={{ color: YELLOW }}>MEMORY.</span>
-                            </h1>
-                            <p className="text-2xl text-zinc-400 italic font-medium max-w-lg leading-relaxed border-l-4 border-[#FACC15] pl-8">
-                                Institutional memory is an asset. <br/>Anything else is just luck.
-                            </p>
-                        </div>
-                        <BulletList className="pl-2" />
-                        <div className="pt-4">
-                            <Button className="h-20 px-12 rounded-xl bg-[#FACC15] text-black font-black uppercase italic text-lg shadow-2xl hover:bg-yellow-400 transition-all border-none">
-                                DEPLOY SYSTEM → ₹2,999
-                            </Button>
-                            <p className="mt-4 text-[11px] text-zinc-500 font-bold uppercase tracking-widest pl-2">{NARRATIVE.meta}</p>
-                        </div>
-                    </div>
-                    <div className="hidden lg:flex justify-end pr-20">
-                         <div className="w-20 h-20 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center animate-bounce">
-                            <Play className="w-8 h-8 text-[#FACC15] fill-[#FACC15]" />
-                         </div>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 6: THE MONOSPACE AUDIT --- */}
-            <LabSection id="opt-6" title="Archetype 6: The Monospace Audit" description="Monospace technical meta-tags. Very clean, high-density professional audit style.">
-                <div className="absolute inset-0 bg-[#0B0F1A] opacity-20 bg-[radial-gradient(#FACC15_1px,transparent_1px)] [background-size:40px_40px]" />
-                <div className="relative z-10 h-full container px-24 mx-auto flex flex-col justify-center max-w-5xl space-y-12">
-                    <div className="flex items-center gap-4">
-                        <span className="text-[10px] font-mono text-[#FACC15] uppercase tracking-[0.5em] bg-[#FACC15]/10 px-4 py-1">BUILD: SOVEREIGN_V27.0_STABLE</span>
-                        <div className="flex-1 h-px bg-white/5" />
-                    </div>
-                    
-                    <div className="space-y-6">
-                        <h1 className="text-7xl md:text-9xl font-black font-headline leading-[0.8] tracking-tighter uppercase italic text-[#F5F7FA]">
-                            SYSTEMS<br/>
-                            <span className="text-zinc-700">OVER LUCK.</span>
-                        </h1>
-                        <p className="text-2xl text-zinc-500 font-medium italic">{NARRATIVE.subline}</p>
-                    </div>
-
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {["120+ SOPs", "LIVE CONSOLE", "NO SaaS", "TRAINER NOTES"].map((item, i) => (
-                            <div key={i} className="p-6 bg-white/[0.02] border border-white/5 rounded-xl font-mono text-[10px] text-zinc-400 group hover:border-[#FACC15]/30 transition-all">
-                                <span className="block text-[#FACC15] mb-2">0{i+1}</span>
-                                {item}
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="flex items-center gap-8">
-                        <Button className="h-16 px-12 rounded-none bg-[#FACC15] text-black font-black uppercase text-sm tracking-[0.2em] hover:scale-105 transition-all">
-                            INITIALIZE DEPLOYMENT
-                        </Button>
-                        <span className="text-xl font-black italic text-white/20">₹2,999 ONE-TIME</span>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 7: THE ETHEREAL PORTAL --- */}
-            <LabSection id="opt-7" title="Archetype 7: The Ethereal Portal" description="Minimalist high-end. Narrative wraps around a sharp centered video portal.">
-                <div className="h-full flex flex-col items-center justify-center space-y-16 px-4">
-                    <div className="text-center space-y-4">
-                        <h1 className="text-5xl md:text-8xl font-black font-headline leading-none tracking-tight uppercase italic">
-                            MEMORY IS NOT <br/> <span className="text-zinc-800">A SYSTEM.</span>
-                        </h1>
-                    </div>
-
-                    <div className="relative group max-w-4xl w-full">
-                        <Tag text="Missed tasks?" className="absolute -top-6 -left-6 z-20" />
-                        <Tag text="Constant follow-ups?" className="absolute -bottom-6 -right-6 z-20" />
-                        
-                        <div className="aspect-video rounded-[3rem] overflow-hidden border-[12px] border-zinc-900 shadow-2xl relative bg-black">
-                            <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-80" />
-                            <div className="absolute bottom-6 left-10 text-[10px] font-black text-[#FACC15] uppercase tracking-[0.5em] italic">LIVE_TRACKING_ACTIVE</div>
-                        </div>
-                    </div>
-
-                    <div className="flex flex-col items-center gap-6">
-                        <p className="text-zinc-500 font-bold italic text-lg">{NARRATIVE.support}</p>
-                        <Button className="h-20 px-16 rounded-full bg-white text-black font-black uppercase italic text-xl hover:bg-[#FACC15] transition-all">
-                            DEPLOY ENGINE → ₹2,999
-                        </Button>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 8: THE INDUSTRIAL HUD --- */}
-            <LabSection id="opt-8" title="Archetype 8: The Industrial HUD" description="Tactical cockpit style. Multiple floating glass panels for technical specifications.">
-                 <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale" />
-                 <div className="absolute inset-0 bg-black/60" />
-                 
-                 <div className="relative z-10 h-full container px-8 md:px-24 mx-auto flex items-center justify-between gap-12">
-                    <div className="max-w-2xl space-y-10">
-                        <div className="space-y-4">
-                            <h1 className="text-6xl md:text-8xl font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-[#FACC15]">
-                                OBSERVE.<br/>
-                                <span className="text-white">COMMAND.</span>
-                            </h1>
-                            <p className="text-xl text-zinc-400 font-bold italic leading-snug">
-                                {NARRATIVE.subline}
-                            </p>
-                        </div>
-                        <Button className="h-20 px-12 rounded-2xl bg-[#FACC15] text-black font-black uppercase italic text-lg shadow-2xl hover:scale-105 transition-all border-none">
-                            GET THE SOVEREIGN V11.9
-                        </Button>
-                    </div>
-
-                    <div className="hidden lg:grid grid-cols-2 gap-6 w-[500px]">
-                        {[
-                            { t: "120+ SOPs", i: ClipboardCheck, d: "Technical protocols" },
-                            { t: "Live Stats", i: Activity, d: "One-glance health" },
-                            { t: "Sovereign IP", i: Lock, d: "Own your data" },
-                            { t: "Trainer Notes", i: Smartphone, d: "Zero-friction training" }
-                        ].map((item, i) => (
-                            <div key={i} className="p-8 bg-black/40 backdrop-blur-3xl border border-white/10 rounded-[2rem] space-y-4 hover:border-[#FACC15]/50 transition-all group">
-                                <item.i className="w-8 h-8 text-[#FACC15]" />
-                                <div className="space-y-1">
-                                    <h4 className="font-black uppercase italic text-lg leading-none">{item.t}</h4>
-                                    <p className="text-[10px] font-black uppercase text-zinc-500 tracking-widest">{item.d}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                 </div>
-            </LabSection>
-
-            {/* --- ARCHEPTYPE A: THE BLUEPRINT (Finalist) --- */}
+            {/* --- ARCHEPTYPE A: THE BLUEPRINT (Literal FIGMA Spec) --- */}
             <LabSection id="opt-a" title="Archetype A: The Blueprint" description="1440px Figma-Ready Master Spec. Pure Spacing + Hierarchy.">
                 <div className="w-full h-full bg-[#0B0F1A] flex items-center px-[120px]">
                     <div className="grid grid-cols-2 gap-20 w-full max-w-[1200px]">
@@ -277,7 +112,14 @@ export default function HeroLabClient() {
                                 </p>
                              </div>
 
-                             <BulletList className="space-y-[26px] pt-4" />
+                             <div className="space-y-4 pt-4">
+                                {BULLETS.map((bullet, i) => (
+                                    <div key={i} className="flex items-center gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#FACC15] shrink-0" />
+                                        <span className="text-[15px] font-medium text-[#F5F7FA]">{bullet}</span>
+                                    </div>
+                                ))}
+                             </div>
 
                              <div className="pt-[28px] relative">
                                 <div className="absolute -inset-10 bg-[#FACC15]/20 blur-[40px] rounded-full pointer-events-none" />
@@ -322,7 +164,14 @@ export default function HeroLabClient() {
                             <p className="text-[20px] text-zinc-400 italic font-medium leading-relaxed max-w-lg">
                                 Stop the daily stress. Make your business run itself. No more management gaps.
                             </p>
-                            <BulletList className="grid grid-cols-2 gap-4 space-y-0" />
+                            <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                                {BULLETS.map((bullet, i) => (
+                                    <div key={i} className="flex items-center gap-3">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#FACC15] shrink-0" />
+                                        <span className="text-[14px] font-medium text-white/70">{bullet}</span>
+                                    </div>
+                                ))}
+                            </div>
                             <div className="pt-6">
                                 <Button className="h-20 px-12 rounded-xl bg-[#FACC15] text-black font-black uppercase italic text-lg shadow-2xl hover:bg-white transition-all border-none">
                                     DEPLOY MASTER ENGINE → ₹2,999
@@ -357,6 +206,177 @@ export default function HeroLabClient() {
                         </div>
                     </div>
                 </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 4: THE OBSIDIAN GLASS --- */}
+            <LabSection id="opt-4" title="Archetype 4: The Obsidian Glass" description="Centered massive glass monolith. Deep blur. Floating over full-screen industrial visuals.">
+                <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-40 blur-[2px]" />
+                <div className="absolute inset-0 bg-black/40" />
+                
+                <div className="relative z-10 h-full flex items-center justify-center px-4">
+                    <div className="max-w-4xl w-full bg-white/[0.03] border border-white/10 backdrop-blur-3xl rounded-[3rem] p-10 md:p-20 shadow-[0_0_100px_-20px_rgba(250,204,21,0.15)] text-center space-y-10 border-t-white/20">
+                        <div className="space-y-4">
+                            <h1 className="text-4xl md:text-7xl font-black font-headline leading-[0.9] tracking-tighter uppercase italic text-white">
+                                STOP CHASING.<br/>
+                                <span style={{ color: YELLOW }}>START SEEING.</span>
+                            </h1>
+                            <p className="text-xl md:text-2xl text-zinc-400 font-bold italic leading-tight">
+                                {NARRATIVE.subline}
+                            </p>
+                        </div>
+
+                        <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 py-4 border-y border-white/5">
+                            {BULLETS.map((b, i) => (
+                                <div key={i} className="flex items-center gap-3">
+                                    <CheckCircle2 className="w-4 h-4 text-[#FACC15]" />
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-white/50">{b}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="flex flex-col items-center gap-4">
+                            <Button className="h-20 px-16 rounded-2xl bg-[#FACC15] text-black font-black uppercase italic text-xl shadow-2xl hover:scale-105 transition-all border-none group">
+                                {NARRATIVE.cta} <ArrowRight className="ml-3 w-6 h-6 transition-transform group-hover:translate-x-2" />
+                            </Button>
+                            <p className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.3em]">{NARRATIVE.meta}</p>
+                        </div>
+                    </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 5: THE WIDE-ANGLE COMMANDER --- */}
+            <LabSection id="opt-5" title="Archetype 5: The Wide-Angle Commander" description="Cinematic full-color video with a sharp 90-degree dark gradient mask.">
+                <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0B0F1A] via-[#0B0F1A]/90 to-transparent" />
+                
+                <div className="relative z-10 h-full container px-24 mx-auto grid lg:grid-cols-[1.2fr,1fr] items-center">
+                    <div className="space-y-12">
+                        <div className="space-y-4">
+                            <h1 className="text-6xl md:text-8xl font-black font-headline leading-[0.8] tracking-tighter uppercase italic text-white">
+                                CAPTURE<br/>
+                                <span style={{ color: YELLOW }}>MEMORY.</span>
+                            </h1>
+                            <p className="text-2xl text-zinc-400 italic font-medium max-w-lg leading-relaxed border-l-4 border-[#FACC15] pl-8">
+                                Institutional memory is an asset. <br/>Anything else is just luck.
+                            </p>
+                        </div>
+                        <BulletList className="max-w-lg" />
+                        <div className="pt-4">
+                            <Button className="h-20 px-12 rounded-xl bg-[#FACC15] text-black font-black uppercase italic text-lg shadow-2xl hover:bg-yellow-400 transition-all border-none">
+                                DEPLOY SYSTEM → ₹2,999
+                            </Button>
+                            <p className="mt-4 text-[11px] text-zinc-500 font-bold uppercase tracking-widest pl-2">{NARRATIVE.meta}</p>
+                        </div>
+                    </div>
+                    <div className="hidden lg:flex justify-end pr-20">
+                         <div className="w-24 h-24 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center animate-pulse">
+                            <Play className="w-10 h-10 text-[#FACC15] fill-[#FACC15]" />
+                         </div>
+                    </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 6: THE MONOSPACE AUDIT --- */}
+            <LabSection id="opt-6" title="Archetype 6: The Monospace Audit" description="Monospace technical meta-tags. Very clean, high-density professional audit style.">
+                <div className="absolute inset-0 bg-[#0B0F1A] opacity-20 bg-[radial-gradient(#FACC15_1px,transparent_1px)] [background-size:40px_40px]" />
+                <div className="relative z-10 h-full container px-24 mx-auto flex flex-col justify-center max-w-5xl space-y-12">
+                    <div className="flex items-center gap-4">
+                        <span className="text-[10px] font-mono text-[#FACC15] uppercase tracking-[0.5em] bg-[#FACC15]/10 px-4 py-1">BUILD: SOVEREIGN_V27.0_STABLE</span>
+                        <div className="flex-1 h-px bg-white/5" />
+                    </div>
+                    
+                    <div className="space-y-6">
+                        <h1 className="text-7xl md:text-9xl font-black font-headline leading-[0.8] tracking-tighter uppercase italic text-[#F5F7FA]">
+                            SYSTEMS<br/>
+                            <span className="text-zinc-700">OVER LUCK.</span>
+                        </h1>
+                        <p className="text-2xl text-zinc-500 font-medium italic">{NARRATIVE.subline}</p>
+                    </div>
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {["120+ SOPs", "LIVE CONSOLE", "NO SaaS", "TRAINER NOTES"].map((item, i) => (
+                            <div key={i} className="p-6 bg-white/[0.02] border border-white/5 rounded-xl font-mono text-[10px] text-zinc-400 group hover:border-[#FACC15]/30 transition-all">
+                                <span className="block text-[#FACC15] mb-2">0{i+1}</span>
+                                {item}
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="flex items-center gap-8">
+                        <Button className="h-16 px-12 rounded-none bg-[#FACC15] text-black font-black uppercase text-sm tracking-[0.2em] hover:scale-105 transition-all">
+                            INITIALIZE DEPLOYMENT
+                        </Button>
+                        <span className="text-xl font-black italic text-white/20">₹2,999 ONE-TIME</span>
+                    </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 7: THE ETHEREAL PORTAL --- */}
+            <LabSection id="opt-7" title="Archetype 7: The Ethereal Portal" description="Centered video portal with narrative wrapping around it. High-end modern.">
+                <div className="h-full flex flex-col items-center justify-center space-y-16 px-4">
+                    <div className="text-center space-y-4">
+                        <h1 className="text-5xl md:text-8xl font-black font-headline leading-none tracking-tight uppercase italic">
+                            MEMORY IS NOT <br/> <span className="text-zinc-800">A SYSTEM.</span>
+                        </h1>
+                    </div>
+
+                    <div className="relative group max-w-4xl w-full">
+                        <Tag text="Missed tasks?" className="absolute -top-6 -left-6 z-20" />
+                        <Tag text="Constant follow-ups?" className="absolute -bottom-6 -right-6 z-20" />
+                        
+                        <div className="aspect-video rounded-[3rem] overflow-hidden border-[12px] border-zinc-900 shadow-2xl relative bg-black">
+                            <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-80" />
+                            <div className="absolute bottom-6 left-10 text-[12px] font-black text-[#FACC15] uppercase tracking-[0.5em] italic">LIVE_TRACKING_ACTIVE</div>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col items-center gap-6">
+                        <p className="text-zinc-500 font-bold italic text-lg text-center max-w-lg">{NARRATIVE.support}</p>
+                        <Button className="h-20 px-16 rounded-full bg-white text-black font-black uppercase italic text-xl hover:bg-[#FACC15] transition-all">
+                            DEPLOY ENGINE → ₹2,999
+                        </Button>
+                    </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 8: THE INDUSTRIAL HUD --- */}
+            <LabSection id="opt-8" title="Archetype 8: The Industrial HUD" description="Tactical cockpit style. Floating glass panels for technical specifications.">
+                 <video src={VIDEO_URL} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale" />
+                 <div className="absolute inset-0 bg-black/60" />
+                 
+                 <div className="relative z-10 h-full container px-8 md:px-24 mx-auto flex items-center justify-between gap-12">
+                    <div className="max-w-2xl space-y-10">
+                        <div className="space-y-4">
+                            <h1 className="text-6xl md:text-[7rem] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-[#FACC15]">
+                                OBSERVE.<br/>
+                                <span className="text-white">COMMAND.</span>
+                            </h1>
+                            <p className="text-xl text-zinc-400 font-bold italic leading-snug">
+                                {NARRATIVE.subline}
+                            </p>
+                        </div>
+                        <Button className="h-20 px-12 rounded-2xl bg-[#FACC15] text-black font-black uppercase italic text-lg shadow-2xl hover:scale-105 transition-all border-none">
+                            GET THE SOVEREIGN V11.9
+                        </Button>
+                    </div>
+
+                    <div className="hidden lg:grid grid-cols-2 gap-6 w-[500px]">
+                        {[
+                            { t: "120+ SOPs", i: ClipboardCheck, d: "Technical protocols" },
+                            { t: "Live Stats", i: Activity, d: "One-glance health" },
+                            { t: "Sovereign IP", i: Lock, d: "Own your data" },
+                            { t: "Trainer Notes", i: Smartphone, d: "Zero-friction training" }
+                        ].map((item, i) => (
+                            <div key={i} className="p-8 bg-black/40 backdrop-blur-3xl border border-white/10 rounded-[2rem] space-y-4 hover:border-[#FACC15]/50 transition-all group">
+                                <item.i className="w-8 h-8 text-[#FACC15]" />
+                                <div className="space-y-1">
+                                    <h4 className="font-black uppercase italic text-lg leading-none">{item.t}</h4>
+                                    <p className="text-[10px] font-black uppercase text-zinc-500 tracking-widest">{item.d}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                 </div>
             </LabSection>
 
             <div className="py-40 text-center bg-zinc-950 border-t border-white/5">
