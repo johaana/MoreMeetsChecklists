@@ -24,12 +24,15 @@ const CONTENT = {
     proofLine: "No follow-ups • No confusion • No memory gaps",
     price: "₹2,999",
     specs: [
-        { t: "120+ Pre-built SOPs", i: ClipboardCheck },
-        { t: "Live Dashboard", i: Activity },
-        { t: "No SaaS Lock-in", i: Lock },
-        { t: "Trainer Notes Included", i: Smartphone }
+        { t: "120+ PRE-BUILT SOPs", i: ClipboardCheck },
+        { t: "LIVE DASHBOARD", i: Activity },
+        { t: "NO SaaS LOCK-IN", i: Lock },
+        { t: "TRAINER NOTES INCLUDED", i: Smartphone }
     ]
 };
+
+const BRAND_GREEN = "#2EB86B";
+const DEEP_BLACK = "#0A0F19";
 
 const VideoBackground = ({ opacity = 0.3, grayscale = 1 }) => (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -67,24 +70,29 @@ const LabSection = ({ children, title, subtitle, className }: { children: React.
     </div>
 );
 
-const DesktopCTA = ({ className }: { className?: string }) => (
+const DesktopCTA = ({ className, dark = false }: { className?: string, dark?: boolean }) => (
     <div className={cn("flex flex-col md:flex-row items-center gap-6", className)}>
-        <button className="h-16 px-12 rounded-xl bg-primary text-black font-black uppercase italic text-sm shadow-[0_0_50px_-5px_rgba(46,184,107,0.5)] hover:scale-105 active:scale-95 transition-all border-none group flex items-center justify-center gap-3">
+        <button className={cn(
+            "h-16 px-12 rounded-xl font-black uppercase italic text-sm transition-all border-none group flex items-center justify-center gap-3 active:scale-95",
+            dark 
+                ? "bg-zinc-950 text-white shadow-xl hover:bg-black" 
+                : "bg-primary text-black shadow-[0_12px_40px_-5px_rgba(46,184,107,0.4)] hover:scale-105"
+        )}>
             DEPLOY MASTER ENGINE → {CONTENT.price} <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
         </button>
         <div className="flex flex-col text-left space-y-0.5 opacity-40">
-            <p className="text-[10px] font-black uppercase tracking-widest leading-none text-white">ONE-TIME PAYMENT</p>
-            <p className="text-[9px] font-bold uppercase tracking-widest leading-none text-white">OWN FOREVER • NO SaaS</p>
+            <p className={cn("text-[10px] font-black uppercase tracking-widest leading-none", dark ? "text-black" : "text-white")}>ONE-TIME PAYMENT</p>
+            <p className={cn("text-[9px] font-bold uppercase tracking-widest leading-none", dark ? "text-black/60" : "text-white/40")}>OWN FOREVER • NO SaaS</p>
         </div>
     </div>
 );
 
-const SpecsGrid = () => (
+const SpecsGrid = ({ color = BRAND_GREEN, textOpacity = "text-white/40" }) => (
     <div className="grid grid-cols-2 gap-x-8 gap-y-4">
         {CONTENT.specs.map((item, i) => (
             <div key={i} className="flex items-center gap-3">
-                <item.i className="w-4 h-4 text-primary" />
-                <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{item.t}</span>
+                <item.i className="w-4 h-4" style={{ color }} />
+                <span className={cn("text-[10px] font-black uppercase tracking-widest", textOpacity)}>{item.t}</span>
             </div>
         ))}
     </div>
@@ -97,50 +105,111 @@ export default function HeroLabClient() {
             
             <div className="container px-6 pt-32 pb-20 mx-auto text-center space-y-6">
                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[11px] px-8 py-2 rounded-none bg-primary/5">
-                    SOVEREIGN HERO LAB V3.0
+                    SOVEREIGN HERO LAB V4.0
                 </Badge>
-                <h1 className="text-5xl md:text-8xl font-black font-headline italic uppercase tracking-tighter leading-none">Visual <br/> <span className="text-primary">Archetypes.</span></h1>
+                <h1 className="text-5xl md:text-8xl font-black font-headline italic uppercase tracking-tighter leading-none">Hardened <br/> <span className="text-primary">Archetypes.</span></h1>
                 <p className="text-zinc-500 italic font-medium max-w-2xl mx-auto text-lg leading-relaxed">
-                    Testing 5 high-gravity industrial frameworks. All options use the working Vimeo engine and standardized technical content.
+                    Refining 1 & 4 with Heavy Italic IBM Plex Sans and high-gravity institutional spacing.
                 </p>
             </div>
 
-            {/* --- ARCHETYPE 1: THE SOVEREIGN SPLIT --- */}
+            {/* --- ARCHETYPE 1: THE SOVEREIGN SPLIT (IMPROVED) --- */}
             <LabSection 
-                title="1. The Sovereign Split" 
-                subtitle="Clean 50/50 division. Hard narrative on the left, cinematic focus on the right."
+                title="1. The Sovereign Split (Hardened)" 
+                subtitle="Maximum contrast. Massive typography. One-glance logic command."
             >
                 <div className="flex h-full flex-col md:flex-row">
-                    <div className="w-full md:w-[45%] bg-black h-full flex flex-col justify-center px-12 md:px-24 space-y-12 relative z-20 border-r border-white/5">
+                    <div className="w-full md:w-[50%] bg-[#0A0F19] h-full flex flex-col justify-center px-12 md:px-24 space-y-12 relative z-20 border-r border-white/5 shadow-[20px_0_100px_-10px_rgba(0,0,0,0.5)]">
                         <div className="space-y-8">
                             <div className="space-y-4">
-                                <h1 className="text-5xl md:text-[5rem] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-white">
-                                    {CONTENT.headlineWhite}
+                                <h1 className="text-5xl md:text-[5.5rem] font-black font-headline leading-[0.88] uppercase italic tracking-tighter text-white">
+                                    STOP CHASING <br/> YOUR TEAM.
                                 </h1>
-                                <h1 className="text-5xl md:text-[5rem] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-primary">
-                                    {CONTENT.headlineGreen}
+                                <h1 className="text-5xl md:text-[5.5rem] font-black font-headline leading-[0.88] uppercase italic tracking-tighter text-primary">
+                                    SEE DAILY WORK <br/> GETTING DONE.
                                 </h1>
                             </div>
-                            <p className="text-xl text-zinc-400 italic font-medium border-l-2 border-primary/20 pl-6 max-w-sm">
-                                {CONTENT.subheadline}
-                            </p>
-                            <p className="text-sm font-bold text-white/20 uppercase tracking-widest italic">{CONTENT.proofLine}</p>
+                            <div className="space-y-2">
+                                <p className="text-xl md:text-2xl text-zinc-400 italic font-medium border-l-4 border-primary pl-6">
+                                    {CONTENT.subheadline}
+                                </p>
+                                <p className="text-[11px] font-black text-white/20 uppercase tracking-[0.4em] pl-7 italic">{CONTENT.proofLine}</p>
+                            </div>
                         </div>
                         <SpecsGrid />
                         <DesktopCTA />
                     </div>
                     <div className="flex-1 relative h-full bg-zinc-900">
-                        <VideoBackground opacity={0.6} grayscale={0.5} />
-                        <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent z-10" />
+                        <VideoBackground opacity={0.7} grayscale={0.5} />
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0F19] via-transparent to-transparent z-10" />
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 2: THE GLASS COMMAND --- */}
+            {/* --- ARCHETYPE 4: THE STRATEGIC BLUEPRINT (IMPROVED) --- */}
             <LabSection 
-                title="2. The Glass Command" 
-                subtitle="Full-bleed cinematic immersion with a centered, translucent governance box."
+                title="4. The Strategic Blueprint (Hardened)" 
+                subtitle="Institutional grid. Industrial framing. Technical accuracy at a glance."
+                className="bg-[#F7F8FA]"
             >
+                <div className="h-full bg-white flex items-center justify-center relative overflow-hidden">
+                    {/* The Blueprint Grid */}
+                    <div className="absolute inset-0 opacity-[0.06] pointer-events-none bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,white_80%)]" />
+                    
+                    <VideoBackground opacity={0.1} grayscale={1} />
+                    
+                    <div className="container mx-auto grid md:grid-cols-[1fr,1.1fr] gap-12 items-center relative z-20 px-12 lg:px-24">
+                        <div className="space-y-12">
+                            <div className="space-y-6">
+                                <div className="space-y-2">
+                                    <h1 className="text-5xl md:text-[5.5rem] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-[#0B0F14]">
+                                        STOP CHASING <br/> YOUR TEAM.
+                                    </h1>
+                                    <h1 className="text-5xl md:text-[5.5rem] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-primary">
+                                        SEE DAILY WORK <br/> GETTING DONE.
+                                    </h1>
+                                </div>
+                                <p className="text-2xl md:text-3xl text-zinc-500 font-bold italic leading-tight">{CONTENT.subheadline}</p>
+                            </div>
+                            
+                            <div className="space-y-5">
+                                {CONTENT.specs.map((s, i) => (
+                                    <div key={i} className="flex items-center gap-4 group">
+                                        <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary shadow-inner">
+                                            <CheckCircle2 className="w-3.5 h-3.5" />
+                                        </div>
+                                        <span className="text-xs md:text-sm font-black uppercase tracking-[0.2em] text-[#0B0F14]/60 group-hover:text-primary transition-colors">{s.t}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <DesktopCTA dark />
+                        </div>
+                        
+                        <div className="relative group p-4 bg-zinc-100/50 backdrop-blur-sm rounded-[3rem] border border-zinc-200 shadow-2xl">
+                            <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden border-[8px] border-white shadow-2xl relative bg-black">
+                                <iframe
+                                    src={VIMEO_URL}
+                                    frameBorder="0"
+                                    allow="autoplay; fullscreen; picture-in-picture"
+                                    className="absolute inset-0 h-full w-full object-cover scale-[1.15] grayscale contrast-125 saturate-0"
+                                    title="Ops Video"
+                                />
+                                <div className="absolute inset-0 bg-black/10" />
+                            </div>
+                            
+                            {/* Floating High-Gravity Badge */}
+                            <div className="absolute -top-6 -right-6 bg-primary text-black px-10 py-3 rounded-full font-black uppercase italic text-sm tracking-[0.3em] shadow-[0_10px_40px_-5px_rgba(46,184,107,0.6)] animate-pulse">
+                                SHIFT_LIVE
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </LabSection>
+
+            {/* --- PREVIOUS OPTIONS (MODIFIED TO MATCH V4.0 STANDARDS) --- */}
+            <LabSection title="2. The Glass Command" subtitle="Standardized with V4.0 typography.">
                 <div className="h-full relative flex items-center justify-center">
                     <VideoBackground opacity={0.4} grayscale={1} />
                     <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10" />
@@ -157,11 +226,6 @@ export default function HeroLabClient() {
                              
                              <div className="flex flex-col items-center gap-8">
                                 <DesktopCTA />
-                                <div className="flex items-center gap-6 opacity-30">
-                                    {["ISO 9001", "HACCP", "OSHA", "FSSAI"].map(std => (
-                                        <span key={std} className="text-[11px] font-black tracking-[0.4em] uppercase">{std}</span>
-                                    ))}
-                                </div>
                                 <p className="text-xs font-bold text-zinc-500 uppercase tracking-[0.3em] italic">{CONTENT.proofLine}</p>
                              </div>
                         </div>
@@ -169,131 +233,8 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 3: THE HIGH HORIZON --- */}
-            <LabSection 
-                title="3. The High Horizon" 
-                subtitle="Ultra-wide spread. Minimalist vertical accents. Positions the product as a massive global asset."
-            >
-                <div className="h-full relative flex flex-col justify-center px-12 md:px-32">
-                    <VideoBackground opacity={0.2} grayscale={1} />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/20 to-transparent z-10" />
-                    
-                    <div className="relative z-20 space-y-16">
-                        <div className="space-y-12">
-                            <div className="space-y-2">
-                                <h1 className="text-6xl md:text-[9rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic text-white">
-                                    STOP CHASING.
-                                </h1>
-                                <h1 className="text-6xl md:text-[9rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic text-primary">
-                                    START SEEING.
-                                </h1>
-                            </div>
-                            <div className="flex gap-10 items-center">
-                                <div className="w-1.5 h-24 bg-primary/20 rounded-full" />
-                                <p className="text-2xl md:text-3xl font-bold italic text-zinc-400 max-w-2xl leading-tight">
-                                    {CONTENT.subheadline} <br/> 
-                                    <span className="text-white/20 text-lg uppercase not-italic tracking-[0.2em]">{CONTENT.proofLine}</span>
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div className="flex flex-col md:flex-row items-center gap-16">
-                            <DesktopCTA />
-                            <div className="flex gap-12">
-                                {CONTENT.specs.slice(0,2).map((item, i) => (
-                                    <div key={i} className="flex flex-col gap-2">
-                                        <span className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">{item.t.split(' ')[0]}</span>
-                                        <span className="text-sm font-bold text-white/30 uppercase tracking-widest italic">{item.t.split(' ').slice(1).join(' ')}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 4: THE STRATEGIC BLUEPRINT --- */}
-            <LabSection 
-                title="4. The Strategic Blueprint" 
-                subtitle="Light-industrial framing. Focuses on the engineering aspect of operations."
-                className="bg-zinc-100"
-            >
-                <div className="h-full bg-white flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]" />
-                    <VideoBackground opacity={0.1} grayscale={1} />
-                    
-                    <div className="container mx-auto grid md:grid-cols-[1fr,1.2fr] gap-12 items-center relative z-20 px-12">
-                        <div className="space-y-12">
-                            <div className="space-y-6">
-                                <h1 className="text-5xl md:text-[4.5rem] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-zinc-950">
-                                    {CONTENT.headlineWhite} <br/>
-                                    <span className="text-primary">{CONTENT.headlineGreen}</span>
-                                </h1>
-                                <p className="text-2xl text-zinc-500 font-bold italic">{CONTENT.subheadline}</p>
-                            </div>
-                            <div className="space-y-4">
-                                {CONTENT.specs.map((s, i) => (
-                                    <div key={i} className="flex items-center gap-3 text-zinc-400">
-                                        <CheckCircle2 className="w-4 h-4 text-primary" />
-                                        <span className="text-xs font-black uppercase tracking-widest">{s.t}</span>
-                                    </div>
-                                ))}
-                            </div>
-                            <DesktopCTA />
-                        </div>
-                        
-                        <div className="relative group p-4 bg-zinc-100 rounded-[3rem] border border-zinc-200 shadow-inner">
-                            <div className="aspect-video rounded-[2.5rem] overflow-hidden border-4 border-white shadow-2xl relative bg-black">
-                                <iframe
-                                    src={VIMEO_URL}
-                                    frameBorder="0"
-                                    allow="autoplay; fullscreen; picture-in-picture"
-                                    className="absolute inset-0 h-full w-full object-cover scale-[1.1] grayscale contrast-125"
-                                    title="Ops Video"
-                                />
-                            </div>
-                            <div className="absolute -top-4 -right-4 bg-primary text-black px-6 py-2 rounded-full font-black uppercase italic text-xs tracking-widest shadow-xl">
-                                SHIFT_LIVE
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 5: THE IMMERSIVE VOID --- */}
-            <LabSection 
-                title="5. The Immersive Void" 
-                subtitle="Deep immersive dark mode. Floating glowing command over a high-density industrial loop."
-            >
-                <div className="h-full relative flex items-center justify-center text-center">
-                    <VideoBackground opacity={0.25} grayscale={1} />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10" />
-                    
-                    <div className="relative z-20 space-y-12 max-w-6xl px-6">
-                        <div className="space-y-6">
-                            <h1 className="text-5xl md:text-[8rem] font-black font-headline tracking-tighter leading-[0.8] uppercase italic text-white">
-                                STOP <span className="text-white/10">CHASING.</span><br />
-                                <span className="text-primary drop-shadow-[0_0_30px_rgba(46,184,107,0.3)]">START SEEING.</span>
-                            </h1>
-                            <p className="text-xl md:text-3xl font-bold italic text-white/40 max-w-3xl mx-auto leading-tight">
-                                {CONTENT.subheadline}
-                            </p>
-                        </div>
-                        
-                        <div className="flex flex-col items-center gap-10 pt-8">
-                            <DesktopCTA />
-                            <div className="flex items-center gap-12 opacity-10">
-                                {CONTENT.specs.map((item, i) => (
-                                    <span key={i} className="text-[9px] font-black tracking-[0.5em] uppercase">{item.t}</span>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </LabSection>
-
             <div className="py-24 text-center bg-zinc-950 border-t border-white/5">
-                 <p className="text-sm font-bold text-zinc-600 uppercase tracking-[0.4em] italic">End of Strategic Lab v3.0. Select archetype for primary implementation.</p>
+                 <p className="text-sm font-bold text-zinc-600 uppercase tracking-[0.4em] italic">End of Strategic Lab v4.0. Select archetype for primary implementation.</p>
                  <Button asChild variant="link" className="mt-8 text-primary font-black uppercase tracking-widest text-xs">
                     <Link href="/">RETURN TO PRODUCTION SITE</Link>
                  </Button>
