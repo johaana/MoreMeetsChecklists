@@ -94,7 +94,7 @@ export default function Home() {
                 <img 
                     src={DASHBOARD_IMAGE} 
                     alt="Sovereign Dashboard" 
-                    className="w-full h-auto object-cover aspect-[16/7] md:aspect-[16/10] grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
+                    className="w-full h-auto object-contain grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
                 />
             </div>
             
@@ -103,7 +103,7 @@ export default function Home() {
                     Sample of restaurant operations system dashboard
                 </p>
                 <p className="text-[8px] md:text-[11px] font-bold text-primary uppercase tracking-[0.2em] italic">
-                    Monitor one branch—or see your entire group instantly
+                    One glance shows what's done across your entire group.
                 </p>
             </div>
         </div>
@@ -214,11 +214,11 @@ export default function Home() {
                                 <h4 className="text-[11px] font-black text-[#5B6670] uppercase tracking-[0.4em]">COMMON PITFALLS</h4>
                                 <ul className="space-y-5">
                                     {[
-                                        "Work depends on the individual memory of a few key people.",
-                                        "Standard steps turn into 'suggestions' as soon as the manager leaves.",
-                                        "New hires take weeks to learn 'tribal knowledge' instead of a system.",
-                                        "Critical tasks get skipped during busy shifts to save time.",
-                                        "No clear consequence defined for missing specific safety steps."
+                                        "Staff 'guess' the right steps when a manager isn't looking.",
+                                        "Tribal knowledge leaves the building when a key person resigns.",
+                                        "Training takes weeks because protocols aren't physically documented.",
+                                        "Minor near-misses are ignored because no one is held accountable.",
+                                        "Standard work becomes optional when the floor gets busy."
                                     ].map((p, i) => (
                                         <li className="flex items-start gap-4 text-[#5B6670] text-sm md:text-[17px] font-medium italic leading-snug" key={i}>
                                             <div className="w-2 h-2 rounded-full bg-red-400 mt-2 shrink-0" />
@@ -231,11 +231,11 @@ export default function Home() {
                                 <h4 className="text-[11px] font-black text-red-600 uppercase tracking-[0.4em]">THE CONSEQUENCE</h4>
                                 <ul className="space-y-5">
                                     {[
-                                        "Managers spend 4+ hours a day manually chasing staff for updates.",
-                                        "SOPs sit in dusty folders while daily chaos runs the floor.",
-                                        "No real-time visibility into what's actually done vs. what was assumed.",
-                                        "Near-misses go unrecorded until they become catastrophic accidents.",
-                                        "Zero auditable trail for legal, insurance, or regulatory defense."
+                                        "Managers are trapped in a loop of manual follow-ups.",
+                                        "SOPs are treated as suggestions, not mission-critical infrastructure.",
+                                        "Errors go undetected until they hit your bottom line or guest safety.",
+                                        "Zero auditable proof for insurance or regulatory inspections.",
+                                        "Inconsistency destroys brand trust and guest loyalty."
                                     ].map((p, i) => (
                                         <li className="flex items-start gap-4 text-red-950 font-bold text-sm md:text-[17px] leading-snug" key={i}>
                                             <X className="w-5 h-5 text-red-500 mt-0.5 shrink-0" />
@@ -282,7 +282,7 @@ export default function Home() {
                             ))}
                         </div>
 
-                        {/* OPTION 3 PLACEMENT: VISUAL CAPSTONE */}
+                        {/* VISUAL CAPSTONE: TECHNICAL PROOF */}
                         <div className="space-y-12">
                             <TechnicalProof className="max-w-5xl mx-auto" />
                             

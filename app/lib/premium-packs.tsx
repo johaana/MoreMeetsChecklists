@@ -1,4 +1,3 @@
-
 import { allPacks } from "./packs/all_packs";
 
 export type Checklist = {
@@ -58,7 +57,7 @@ export type PremiumPack = {
 }
 
 const shortDescriptions: Record<string, string> = {
-    'restaurants': "Stop revenue leakage and food safety risks. 150+ technical control points for multi-unit kitchen and floor command.",
+    'restaurants': "Stop revenue leakage and food safety risks. 150+ technical control points for single units or multi-unit groups.",
     'hotels_and_resorts': "Eliminate guest safety gaps and reputation damage. 250+ control points across Front Office, Housekeeping, and Engineering.",
     'healthcare_and_hospital_operations': "Zero-risk clinical governance. 200+ NABH/JCI aligned control points from surgical safety to narcotics control.",
     'school_operations_pack': "Prevent campus tragedies and admin chaos. Transport safety, playground risk, and student welfare protocols.",
@@ -74,14 +73,15 @@ const shortDescriptions: Record<string, string> = {
 
 export const premiumPacks: PremiumPack[] = [
     ...allPacks.map(p => {
-        // Apply Sovereign Pricing Logic - ₹2,999 Buy / ₹4,999 Institutional
+        // Standardized Nomenclature to "Operations System"
+        let processedPack = { ...p };
+        processedPack.title = processedPack.title.replace('Operating System', 'Operations System');
+        
         const eliteIds = [
             'restaurants', 'hotels_and_resorts', 'healthcare_and_hospital_operations', 
             'school_operations_pack', 'franchise_operations_pack', 
             'facility_management_blueprint', 'cinema_operations_pack', 'retail_operations_system'
         ];
-        
-        let processedPack = { ...p };
         
         if (eliteIds.includes(p.id)) {
             processedPack = {
