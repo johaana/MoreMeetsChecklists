@@ -8,7 +8,8 @@ import {
     Activity,
     Lock,
     ClipboardCheck,
-    CheckCircle2
+    CheckCircle2,
+    Check
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -82,7 +83,7 @@ const OneGlanceSpecs = ({ className, dark = true }: { className?: string, dark?:
         {BULLETS.map((item, i) => (
             <div key={i} className="flex items-center gap-3 group">
                 <div className={cn("w-1.5 h-1.5 rounded-full shrink-0", dark ? "bg-[#FACC15]" : "bg-zinc-900")} />
-                <span className={cn("text-[14px] font-black uppercase tracking-widest italic leading-none whitespace-nowrap", dark ? "text-white/40" : "text-zinc-500")}>
+                <span className={cn("text-[14px] font-black uppercase tracking-widest italic leading-none whitespace-nowrap", dark ? "text-white/60" : "text-zinc-500")}>
                     {item.t}
                 </span>
             </div>
@@ -107,11 +108,11 @@ const PureConsole = ({ className }: { className?: string }) => (
             <BackgroundVideo opacity={0.8} />
             <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-transparent pointer-events-none" />
             
-            {/* ANXIETY TAGS ANCHORED TO CHAOS */}
-            <DiagnosticRisk text="Follow ups?" className="absolute top-[20%] left-[10%]" delay="0.2s" />
-            <DiagnosticRisk text="Missed steps?" className="absolute top-[45%] right-[15%]" delay="0.4s" />
-            <DiagnosticRisk text="Memory gaps?" className="absolute bottom-[25%] left-[20%]" delay="0.6s" />
-            <DiagnosticRisk text="Training calls?" className="absolute bottom-[10%] right-[10%]" delay="0.8s" />
+            {/* ANXIETY TAGS ANCHORED TO CHAOS - POSITIONED FOR IMPACT */}
+            <DiagnosticRisk text="Follow ups?" className="absolute top-[15%] left-[10%]" delay="0.2s" />
+            <DiagnosticRisk text="Memory gaps?" className="absolute top-[40%] left-[15%]" delay="0.4s" />
+            <DiagnosticRisk text="Missed steps?" className="absolute top-[55%] right-[10%]" delay="0.6s" />
+            <DiagnosticRisk text="Training calls?" className="absolute bottom-[15%] right-[15%]" delay="0.8s" />
         </div>
     </div>
 );
@@ -122,13 +123,13 @@ export default function HeroLabClient() {
             
             <div className="container px-8 pt-32 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-primary/5">
-                    DIAGNOSTIC ONE-GLANCE LAB V35.0
+                    DIAGNOSTIC ONE-GLANCE LAB V36.0
                 </Badge>
                 <h1 className="text-4xl md:text-7xl font-black font-headline italic uppercase tracking-tighter leading-none">
                     Problem <span className="text-primary">&</span> Solution.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-base leading-tight">
-                    Anchoring the anxiety to the chaos. The narrative column is for resolution; the video window is for the operational faults identified.
+                    Anchoring the anxiety to the chaos. The narrative column is for resolution; the video window is for the identified operational faults.
                 </p>
             </div>
 
@@ -270,7 +271,7 @@ export default function HeroLabClient() {
                     <div className="w-1/2 bg-black h-full flex flex-col justify-center px-24 space-y-12 border-r border-white/5">
                         <div className="space-y-8">
                             <div className="space-y-4">
-                                <Badge className="bg-primary/10 text-primary border-primary/20 w-fit uppercase font-black tracking-[0.6em] text-[11px] py-1.5 px-6">SOVEREIGN V35.0</Badge>
+                                <Badge className="bg-primary/10 text-primary border-primary/20 w-fit uppercase font-black tracking-[0.6em] text-[11px] py-1.5 px-6">SOVEREIGN V36.0</Badge>
                                 <h1 className="text-7xl md:text-[76px] font-black font-headline leading-[0.88] uppercase italic tracking-tighter">
                                     STOP <br/> <span style={{ color: YELLOW }}>CHAOS.</span>
                                 </h1>
@@ -288,7 +289,7 @@ export default function HeroLabClient() {
                         <BackgroundVideo opacity={0.9} />
                         <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-black" />
                         
-                        {/* ANXIETY CALLOUTS ANCHORED TO CHAOS */}
+                        {/* ANXIETY CALLOUTS ANCHORED TO CHAOS - INCREASED SCALE FOR THE SPLIT */}
                         <div className="relative z-10 flex flex-col items-center gap-6">
                             <DiagnosticRisk text="Follow ups?" className="scale-150 shadow-2xl" delay="0.2s" />
                             <DiagnosticRisk text="Missed steps?" className="scale-150 shadow-2xl" delay="0.4s" />
