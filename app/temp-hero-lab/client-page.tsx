@@ -10,12 +10,12 @@ import {
     ClipboardCheck,
     CheckCircle2,
     History,
-    SearchCheck,
     AlertTriangle,
     Target,
     Activity,
     ShieldAlert,
-    LayoutGrid
+    LayoutGrid,
+    Check
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -24,30 +24,29 @@ import Link from 'next/link';
 const VIMEO_URL = "https://player.vimeo.com/video/1187795401?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0";
 
 const NARRATIVE = {
-    line1: "STOP CHASING YOUR STAFF.",
+    line1: "STOP CHASING YOUR TEAM.",
     line2: "SEE DAILY WORK GETTING DONE.",
     subline: "Even when you aren't there.",
-    support: "No more management gaps, memory failures, or training drift.",
+    support: "Memory is not a system. Serious operations deserve more than improvisation.",
     cta: "Start Your System Now → ₹2,999",
     meta: "ONE-TIME PAYMENT • OWN FOREVER • NO MONTHLY FEES"
 };
 
 const TECH_SPECS = [
     { t: "120+ Pre-built Industry SOPs", i: ClipboardCheck },
-    { t: "Live Dashboard (Phone access)", i: Activity },
-    { t: "Trainer Notes for staff", i: History },
+    { t: "Live Dashboard (See work on phone)", i: Activity },
+    { t: "Trainer Notes included", i: History },
     { t: "No SaaS. Own your data.", i: Lock }
 ];
 
 const ANXIETY_ITEMS = [
-    "Constant follow-ups?",
-    "Missed steps?",
-    "Staff confusion?",
+    "Always following up?",
+    "Tasks forgotten?",
+    "Staff confused?",
     "Memory gaps?"
 ];
 
 const YELLOW = "#FACC15";
-const RISK_RED = "#EF4444";
 
 // --- REUSABLE COMPONENTS ---
 
@@ -97,7 +96,7 @@ const CommandGrid = ({ className }: { className?: string }) => (
         {TECH_SPECS.map((item, i) => (
             <div key={i} className="flex items-center gap-3 group">
                 <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <CheckCircle2 className="w-2.5 h-2.5 text-primary" />
+                    <Check className="w-2.5 h-2.5 text-primary" />
                 </div>
                 <span className="text-[14px] md:text-[16px] font-bold uppercase tracking-[0.05em] italic leading-tight text-white/80">
                     {item.t}
@@ -131,18 +130,18 @@ export default function HeroLabClient() {
             
             <div className="container px-8 pt-32 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-primary/5">
-                    SOVEREIGN HERO LAB V38.0
+                    SOVEREIGN HERO LAB V40.0
                 </Badge>
                 <h1 className="text-4xl md:text-7xl font-black font-headline italic uppercase tracking-tighter leading-none">
                     Risk <span className="text-primary">&</span> Resolution.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-base leading-tight">
-                    Storytelling through diagnostic placement. The red items identify the "Risk Factors" while the yellow engine provides the "Resolution."
+                    Layman-friendly storytelling through diagnostic placement. Identified risks lead directly to the Sovereign resolution.
                 </p>
             </div>
 
             {/* --- ARCHETYPE 1: THE DIAGNOSTIC SPLIT --- */}
-            <LabSection id="opt-1" title="01. The Diagnostic Split" description="Evidence -> Diagnosis -> Solution. Red items stacked as a status bar next to the video.">
+            <LabSection id="opt-1" title="01. The Diagnostic Sidebar" description="Risks stacked as a surgical status bar next to the borderless video evidence.">
                 <div className="relative h-full flex items-center px-6 md:px-24 max-w-[1440px] mx-auto">
                     <BackgroundVideo opacity={0.1} grayscale />
                     <div className="grid grid-cols-1 lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-24 items-center w-full relative z-10">
@@ -172,10 +171,6 @@ export default function HeroLabClient() {
                             <div className="relative flex-1 rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl aspect-[16/11] bg-zinc-900">
                                 <BackgroundVideo opacity={1} />
                                 <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-transparent pointer-events-none" />
-                                <div className="absolute bottom-4 left-6 flex items-center gap-2">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-primary animate-ping" />
-                                    <span className="text-[9px] font-black text-primary uppercase tracking-[0.4em] italic">LIVE_OPERATIONAL_EVIDENCE</span>
-                                </div>
                             </div>
                             
                             {/* THE DIAGNOSTIC COLUMN */}
@@ -193,8 +188,8 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 2: THE CONSOLE MARKERS --- */}
-            <LabSection id="opt-2" title="02. The Console Markers" description="Anxiety items anchored as structural markers on the video frame borders.">
+            {/* --- ARCHETYPE 2: THE BORDER MARKERS --- */}
+            <LabSection id="opt-2" title="02. The Frame Markers" description="Anxiety factors anchored as tactical markers on the border of the operational window.">
                 <div className="relative h-full flex items-center px-6 md:px-24">
                      <BackgroundVideo opacity={0.15} />
                      <div className="grid grid-cols-1 lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-24 items-center w-full relative z-10 max-w-7xl mx-auto">
@@ -204,7 +199,7 @@ export default function HeroLabClient() {
                                     STOP <br/> <span style={{ color: YELLOW }}>CHAOS.</span>
                                 </h1>
                                 <p className="text-xl md:text-3xl text-zinc-400 italic font-bold max-w-md leading-tight border-l-4 border-primary pl-8">
-                                    Capture institutional memory. <br/> See daily work getting done.
+                                    {NARRATIVE.line2} <br/> {NARRATIVE.subline}
                                 </p>
                             </div>
                             
@@ -222,7 +217,6 @@ export default function HeroLabClient() {
 
                             <div className="relative rounded-[2.5rem] overflow-hidden shadow-[0_0_100px_-20px_rgba(46,184,107,0.2)] aspect-[4/3] border border-white/5 bg-zinc-950">
                                 <BackgroundVideo opacity={0.9} />
-                                <div className="absolute inset-0 ring-1 ring-white/10 rounded-[2.5rem] inset-px pointer-events-none" />
                             </div>
                         </div>
                      </div>
@@ -230,7 +224,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 3: THE RISK TRIAGE --- */}
-            <LabSection id="opt-3" title="03. The Risk Triage" description="A centered monolith where identified risks precede the massive resolution.">
+            <LabSection id="opt-3" title="03. The Risk Triage" description="Centred monolith where identified risks precede the Sovereign resolution.">
                 <BackgroundVideo opacity={0.2} grayscale />
                 <div className="absolute inset-0 bg-black/60" />
                 
@@ -251,7 +245,7 @@ export default function HeroLabClient() {
                                 CAPTURE <br/> <span style={{ color: YELLOW }}>MEMORY.</span>
                             </h1>
                             <p className="text-xl md:text-3xl text-zinc-400 font-bold italic leading-tight max-w-2xl mx-auto">
-                                Run your business properly. Even when you aren't there.
+                                {NARRATIVE.line2} <br/> {NARRATIVE.subline}
                             </p>
                         </div>
 
@@ -266,19 +260,19 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 4: THE TECHNICAL INFRASTRUCTURE --- */}
-            <LabSection id="opt-4" title="04. The Infrastructure Frame" description="The video is framed as a literal 'Operational Console' with technical status lights.">
+            {/* --- ARCHETYPE 4: THE INFRASTRUCTURE FRAME --- */}
+            <LabSection id="opt-4" title="04. The Infrastructure Bezel" description="Risks positioned as external alerts to a hardened operational bezel.">
                 <div className="relative h-full flex items-center px-6 md:px-24">
                      <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.1fr] gap-12 lg:gap-24 items-center w-full relative z-10 max-w-7xl mx-auto">
                         <div className="space-y-12">
                             <div className="space-y-4">
-                                <Badge className="bg-primary/10 text-primary border-primary/20 w-fit uppercase font-black tracking-[0.6em] text-[11px] py-1.5 px-6">SOVEREIGN V38.0</Badge>
+                                <Badge className="bg-primary/10 text-primary border-primary/20 w-fit uppercase font-black tracking-[0.6em] text-[11px] py-1.5 px-6">MASTER ENGINE</Badge>
                                 <h1 className="text-6xl md:text-[84px] font-black font-headline leading-[0.88] uppercase italic tracking-tighter">
                                     DEPLOY<br />
                                     <span style={{ color: YELLOW }}>SYSTEMS.</span>
                                 </h1>
                                 <p className="text-xl md:text-2xl text-zinc-400 italic font-bold max-w-md leading-tight border-l-4 border-primary pl-8">
-                                    Serious operations deserve more than improvisation.
+                                    {NARRATIVE.support}
                                 </p>
                             </div>
                             
@@ -288,19 +282,13 @@ export default function HeroLabClient() {
                         </div>
 
                         <div className="relative group">
-                            {/* TECHNICAL BEZEL */}
-                            <div className="bg-[#0A0A0A] border-4 border-white/5 rounded-[3rem] p-4 shadow-2xl relative">
-                                <div className="absolute top-10 -left-6 space-y-2">
-                                     <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_10px_red]" />
-                                     <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
-                                     <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
-                                </div>
+                            <div className="bg-[#0A0A0A] border-4 border-white/5 rounded-[3.5rem] p-6 shadow-2xl relative">
                                 <div className="relative rounded-[2rem] overflow-hidden aspect-video bg-black">
                                     <BackgroundVideo opacity={0.8} />
                                 </div>
                                 <div className="mt-4 flex justify-between px-8 text-[8px] font-black text-white/20 uppercase tracking-[0.5em]">
-                                    <span>CONSOLE_ACTIVE</span>
-                                    <span>SIGNAL_STRENGTH_100%</span>
+                                    <span>OPERATIONAL_CONTROL_PORTAL</span>
+                                    <span>STABLE_SIGNAL</span>
                                 </div>
                             </div>
                             
@@ -315,17 +303,16 @@ export default function HeroLabClient() {
             </LabSection>
 
              {/* --- ARCHETYPE 5: THE PURE SPLIT --- */}
-             <LabSection id="opt-5" title="05. The Direct Relief" description="High-contrast division. Chaos on the right, perfect order on the left.">
+             <LabSection id="opt-5" title="05. The Direct Relief" description="High-contrast split. Identified faults on the right, perfect order on the left.">
                  <div className="h-full flex overflow-hidden">
                     <div className="w-full lg:w-1/2 bg-black h-full flex flex-col justify-center px-8 md:px-24 space-y-12 border-r border-white/5 relative z-10">
                         <div className="space-y-8">
                             <div className="space-y-4">
-                                <Badge className="bg-primary/10 text-primary border-primary/20 w-fit uppercase font-black tracking-[0.5em] text-[11px] py-1.5 px-6">MASTER ENGINE</Badge>
-                                <h1 className="text-6xl md:text-[84px] font-black font-headline leading-[0.88] uppercase italic tracking-tighter">
+                                <h1 className="text-6xl md:text-[84px] font-black font-headline leading-[0.88] uppercase italic tracking-tighter text-white">
                                     STOP <br/> <span style={{ color: YELLOW }}>CHASING.</span>
                                 </h1>
                                 <p className="text-xl md:text-3xl text-zinc-400 italic font-bold max-w-sm leading-tight border-l-4 border-primary pl-6">
-                                    See daily work getting done. Even when you're away.
+                                    {NARRATIVE.line2} <br/> {NARRATIVE.subline}
                                 </p>
                             </div>
                         </div>
