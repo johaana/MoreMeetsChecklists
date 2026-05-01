@@ -133,13 +133,13 @@ export default function HeroLabClient() {
             
             <div className="container px-8 pt-32 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-primary/5">
-                    SOVEREIGN HERO LAB V62.0
+                    SOVEREIGN HERO LAB V62.1
                 </Badge>
                 <h1 className="text-4xl md:text-7xl font-black font-headline italic uppercase tracking-tighter leading-none">
                     One Glance <span className="text-primary">&</span> Absolute Command.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-base leading-tight">
-                    Refining the technical placement of identified faults. Testing the elite variants of archetypes 1 and 8.
+                    Finalized Elite variants. All technical watermarks and version labels have been stripped for a pure operational aesthetic.
                 </p>
             </div>
 
@@ -198,7 +198,6 @@ export default function HeroLabClient() {
                     <div className="hidden lg:flex w-1/2 flex-col justify-center items-end pr-24 space-y-4">
                         <div className="bg-black/80 backdrop-blur-xl border border-red-500/20 rounded-[2.5rem] p-10 w-full max-w-md shadow-2xl">
                             <div className="space-y-1 mb-8">
-                                <p className="text-red-500 font-black uppercase tracking-[0.4em] text-[10px]">DIAGNOSTIC_RISK_FACTORS</p>
                                 <h3 className="text-2xl font-black italic uppercase tracking-tighter text-white">Operational Gaps</h3>
                             </div>
                             <div className="space-y-4">
@@ -211,14 +210,14 @@ export default function HeroLabClient() {
                             </div>
                             <div className="mt-10 pt-6 border-t border-white/5 flex items-center gap-3 text-[10px] font-black text-white/20 uppercase tracking-widest italic">
                                 <div className="w-2 h-2 rounded-full bg-red-500" />
-                                <span>DETECTED_IN_DAILY_SHIFTS</span>
+                                <span>LIVE_STATUS_MONITORING</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- NEW VARIANT 9: THE STATUS GUTTER --- */}
+            {/* --- VARIANT 9: THE STATUS GUTTER --- */}
             <LabSection id="opt-9" title="09. The Status Gutter" description="Splits the layout with a surgical red risk bar in the center, acting as a cognitive bridge.">
                 <div className="relative h-full flex items-center max-w-[1440px] mx-auto px-10">
                     <BackgroundVideo opacity={0.1} />
@@ -253,7 +252,7 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- NEW VARIANT 10: THE BEZEL ALERTS --- */}
+            {/* --- VARIANT 10: THE BEZEL ALERTS --- */}
             <LabSection id="opt-10" title="10. The Bezel Alerts" description="Risks integrated as technical status chips on the border of the operational console.">
                 <div className="relative h-full flex items-center px-16 max-w-7xl mx-auto">
                     <BackgroundVideo opacity={0.05} />
@@ -286,7 +285,7 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- NEW VARIANT 11: THE WINGED COMMAND --- */}
+            {/* --- VARIANT 11: THE WINGED COMMAND --- */}
             <LabSection id="opt-11" title="11. The Winged Command" description="Centered glass card with a dedicated 'Diagnostic Wing' listing operational gaps.">
                  <div className="absolute inset-0">
                     <BackgroundVideo opacity={0.3} grayscale />
@@ -295,7 +294,6 @@ export default function HeroLabClient() {
                  <div className="relative z-10 h-full flex items-center justify-center px-6">
                     <div className="flex items-stretch max-w-5xl w-full">
                         <div className="flex-1 bg-black/80 backdrop-blur-3xl border border-white/10 rounded-l-[3rem] p-16 space-y-10 shadow-2xl">
-                             <Badge className="bg-primary text-black rounded-none font-black uppercase text-[10px] tracking-widest px-6">SYSTEM_V62.0</Badge>
                              <h1 className="text-5xl md:text-7xl font-black font-headline uppercase italic leading-[0.85] tracking-tighter">
                                 CAPTURE <br/> <span style={{ color: YELLOW }}>MEMORY.</span>
                              </h1>
@@ -304,7 +302,6 @@ export default function HeroLabClient() {
                         </div>
                         <div className="w-80 bg-red-600/10 backdrop-blur-3xl border border-white/10 border-l-0 rounded-r-[3rem] p-12 flex flex-col justify-center gap-8">
                              <div className="space-y-1">
-                                <p className="text-red-500 font-black uppercase tracking-[0.4em] text-[10px]">RISK_LEAD</p>
                                 <h3 className="text-xl font-black italic uppercase text-white">Detected Gaps</h3>
                              </div>
                              <div className="space-y-4">
@@ -320,7 +317,7 @@ export default function HeroLabClient() {
                  </div>
             </LabSection>
 
-            {/* --- NEW VARIANT 12: THE PERIMETER HUD --- */}
+            {/* --- VARIANT 12: THE PERIMETER HUD --- */}
             <LabSection id="opt-12" title="12. The Perimeter HUD" description="Full-screen video with risks anchored to absolute corners as mission-critical alerts.">
                 <BackgroundVideo opacity={0.5} />
                 <div className="absolute inset-0 bg-gradient-to-tr from-black via-black/20 to-black/80 pointer-events-none" />
@@ -349,7 +346,7 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- NEW VARIANT 13: THE TACTICAL SCAN --- */}
+            {/* --- VARIANT 13: THE TACTICAL SCAN --- */}
             <LabSection id="opt-13" title="13. The Tactical Scan" description="Full-screen industrial loop where risks appear as target markers diagnosing chaos.">
                 <BackgroundVideo opacity={0.6} grayscale />
                 <div className="absolute inset-0 bg-black/40" />
@@ -371,7 +368,6 @@ export default function HeroLabClient() {
                 <div className="relative z-10 h-full grid grid-cols-2 items-center px-24">
                      <div className="space-y-12">
                          <div className="space-y-4">
-                            <Badge className="bg-primary/20 text-primary border-primary/40 rounded-none uppercase font-black text-[11px] px-6">TECHNICAL_SCAN_062</Badge>
                             <h1 className="text-7xl md:text-[100px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white">
                                 START <br/> <span style={{ color: YELLOW }}>SEEING.</span>
                             </h1>
