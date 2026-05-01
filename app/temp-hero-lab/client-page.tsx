@@ -21,7 +21,7 @@ import {
     Cpu,
     Zap,
     Scale,
-    ShieldCheck
+    ShieldCheck as ShieldCheckIcon
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -40,7 +40,7 @@ const NARRATIVE = {
 
 const TECH_SPECS = [
     { t: "120+ Pre-built Industry SOPs", i: ClipboardCheck },
-    { t: "Live Dashboard (See work on phone)", i: Activity },
+    { t: "Live Dashboard", i: Activity },
     { t: "Trainer Notes included", i: History },
     { t: "No SaaS. Own your data.", i: Lock }
 ];
@@ -53,6 +53,7 @@ const ANXIETY_ITEMS = [
 ];
 
 const YELLOW = "#FACC15";
+const BRAND_GREEN = "#22C55E";
 
 // --- REUSABLE COMPONENTS ---
 
@@ -133,15 +134,88 @@ export default function HeroLabClient() {
             
             <div className="container px-8 pt-32 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-primary/5">
-                    SOVEREIGN HERO LAB V62.1
+                    SOVEREIGN HERO LAB V63.0
                 </Badge>
                 <h1 className="text-4xl md:text-7xl font-black font-headline italic uppercase tracking-tighter leading-none">
-                    One Glance <span className="text-primary">&</span> Absolute Command.
+                    Absolute <span className="text-primary">Command</span> & Elite Precision.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-base leading-tight">
-                    Finalized Elite variants. All technical watermarks and version labels have been stripped for a pure operational aesthetic.
+                    Added Archetype 14: The Sovereign Elite. 5 core design refinements for category-defining authority.
                 </p>
             </div>
+
+            {/* --- ARCHETYPE 14: THE SOVEREIGN ELITE (HARDENED REFINEMENT) --- */}
+            <LabSection id="opt-14" title="14. The Sovereign Elite" description="Restrained color palette, editorial risk tabs, and premium 'Deployment' CTA.">
+                <div className="relative h-full flex items-center px-6 md:px-24 max-w-[1440px] mx-auto">
+                    {/* Atmospheric Portrait - Felt not seen */}
+                    <div className="absolute inset-0 z-0 opacity-[0.02] grayscale pointer-events-none flex items-center justify-center">
+                        <ShieldCheckIcon className="w-[800px] h-[800px] text-white" />
+                    </div>
+                    
+                    <BackgroundVideo opacity={0.08} grayscale />
+                    
+                    <div className="grid grid-cols-1 lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-24 items-center w-full relative z-10">
+                        <div className="space-y-10">
+                             <div className="space-y-4">
+                                <h1 className="font-headline font-black text-[40px] md:text-[84px] leading-[0.85] tracking-tighter text-[#F5F5F2] uppercase italic">
+                                    STOP CHASING.<br/>
+                                    <span style={{ color: BRAND_GREEN }}>START SEEING.</span>
+                                </h1>
+                                <p className="text-[18px] md:text-[26px] font-bold text-[#A1A1AA] italic leading-tight max-w-xl">
+                                    {NARRATIVE.subline}
+                                </p>
+                             </div>
+
+                             <div className="grid grid-cols-2 gap-x-12 gap-y-5 max-w-xl">
+                                {TECH_SPECS.map((item, i) => (
+                                    <div key={i} className="flex items-center gap-3.5 group">
+                                        <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-emerald-500/20 bg-emerald-500/5">
+                                            <Check className="w-3 h-3 text-[#22C55E]" />
+                                        </div>
+                                        <span className="text-[13px] md:text-[14px] font-black uppercase tracking-[0.1em] italic leading-tight text-white/50 group-hover:text-[#22C55E] transition-colors">
+                                            {item.t}
+                                        </span>
+                                    </div>
+                                ))}
+                             </div>
+
+                             <div className="space-y-6">
+                                <button className="h-16 px-14 rounded-2xl bg-[#22C55E] text-black font-black uppercase italic text-lg shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-4">
+                                    Deploy the system <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1.5" style={{ color: YELLOW }} />
+                                </button>
+                                <div className="space-y-1 pl-2">
+                                     <p className="text-[10px] text-[#A1A1AA] font-black uppercase tracking-[0.5em] italic">
+                                        ONE-TIME PAYMENT • OWN FOREVER • NO SaaS
+                                    </p>
+                                    <p className="text-[8px] text-[#22C55E]/40 font-black uppercase tracking-[0.3em]">
+                                        SINGLE / MULTI-UNIT READY • AUDIT-READY COMPLIANCE
+                                    </p>
+                                </div>
+                             </div>
+                        </div>
+
+                        {/* Cinematic Video Window */}
+                        <div className="relative flex items-center group">
+                            <div className="relative flex-1 rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_0_120px_-20px_rgba(0,0,0,0.5)] aspect-[16/11] bg-[#050505] ring-1 ring-white/5">
+                                <BackgroundVideo opacity={1} />
+                                <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-transparent to-transparent pointer-events-none" />
+                            </div>
+                            {/* Editorial Hinged Tabs - Muted Red */}
+                            <div className="flex flex-col gap-2.5 -ml-4 relative z-20">
+                                {ANXIETY_ITEMS.map((item, i) => (
+                                    <div key={i} className={cn(
+                                        "flex items-center gap-3 px-4 py-2 bg-[#991B1B]/40 border border-red-500/20 rounded-r-2xl backdrop-blur-3xl shadow-2xl animate-in fade-in zoom-in duration-1000",
+                                        "border-l-0"
+                                    )} style={{ animationDelay: `${i * 0.15}s` }}>
+                                        <div className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse shadow-[0_0_8px_rgba(248,113,113,0.6)]" />
+                                        <span className="text-[10px] md:text-[11px] font-black text-red-100 uppercase tracking-widest italic leading-none whitespace-nowrap opacity-80">{item}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </LabSection>
 
             {/* --- ARCHETYPE 1: THE HINGED DIAGNOSIS (Retained) --- */}
             <LabSection id="opt-1" title="01. The Hinged Risk Tabs" description="Risks attached to the right border of the video like tactical monitor tabs.">
@@ -271,7 +345,9 @@ export default function HeroLabClient() {
                             {/* The Hardened Bezel */}
                             <div className="absolute inset-y-10 -left-16 w-32 flex flex-col justify-center gap-3 z-20">
                                 {ANXIETY_ITEMS.map((item, i) => (
-                                    <RiskTag key={i} text={item} className="rounded-none border-l-4 border-l-red-500 bg-black/90 text-[10px]" />
+                                    <div key={i} className="flex items-center gap-2 px-3 py-1.5 bg-black/90 border-l-4 border-l-red-500 border-y border-r border-white/5 text-[10px] font-black text-white uppercase italic tracking-widest backdrop-blur-xl">
+                                        {item}
+                                    </div>
                                 ))}
                             </div>
                             <div className="rounded-[3rem] overflow-hidden border-8 border-[#111] shadow-2xl aspect-[4/3] bg-zinc-900 relative">
@@ -323,10 +399,30 @@ export default function HeroLabClient() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-black via-black/20 to-black/80 pointer-events-none" />
                 
                 {/* Corner Alerts */}
-                <div className="absolute top-10 left-10"><RiskTag text={ANXIETY_ITEMS[0]} /></div>
-                <div className="absolute top-10 right-10"><RiskTag text={ANXIETY_ITEMS[1]} /></div>
-                <div className="absolute bottom-10 left-10"><RiskTag text={ANXIETY_ITEMS[2]} /></div>
-                <div className="absolute bottom-10 right-10"><RiskTag text={ANXIETY_ITEMS[3]} /></div>
+                <div className="absolute top-10 left-10">
+                    <div className="flex items-center gap-2.5 px-3 py-1.5 bg-red-600/90 border border-red-500/50 rounded-lg backdrop-blur-3xl shadow-2xl">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                        <span className="text-[9px] md:text-[11px] font-black text-white uppercase tracking-widest italic leading-none whitespace-nowrap">{ANXIETY_ITEMS[0]}</span>
+                    </div>
+                </div>
+                <div className="absolute top-10 right-10">
+                     <div className="flex items-center gap-2.5 px-3 py-1.5 bg-red-600/90 border border-red-500/50 rounded-lg backdrop-blur-3xl shadow-2xl">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                        <span className="text-[9px] md:text-[11px] font-black text-white uppercase tracking-widest italic leading-none whitespace-nowrap">{ANXIETY_ITEMS[1]}</span>
+                    </div>
+                </div>
+                <div className="absolute bottom-10 left-10">
+                     <div className="flex items-center gap-2.5 px-3 py-1.5 bg-red-600/90 border border-red-500/50 rounded-lg backdrop-blur-3xl shadow-2xl">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                        <span className="text-[9px] md:text-[11px] font-black text-white uppercase tracking-widest italic leading-none whitespace-nowrap">{ANXIETY_ITEMS[2]}</span>
+                    </div>
+                </div>
+                <div className="absolute bottom-10 right-10">
+                     <div className="flex items-center gap-2.5 px-3 py-1.5 bg-red-600/90 border border-red-500/50 rounded-lg backdrop-blur-3xl shadow-2xl">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                        <span className="text-[9px] md:text-[11px] font-black text-white uppercase tracking-widest italic leading-none whitespace-nowrap">{ANXIETY_ITEMS[3]}</span>
+                    </div>
+                </div>
 
                 <div className="relative z-10 h-full flex items-center justify-center">
                     <div className="text-center space-y-12 max-w-4xl px-6">
@@ -355,13 +451,19 @@ export default function HeroLabClient() {
                 <div className="absolute top-[25%] right-[20%] group">
                      <div className="flex items-center gap-4 animate-pulse">
                         <div className="w-10 h-px bg-red-500" />
-                        <RiskTag text={ANXIETY_ITEMS[0]} />
+                        <div className="flex items-center gap-2.5 px-3 py-1.5 bg-red-600/90 border border-red-500/50 rounded-lg backdrop-blur-3xl shadow-2xl">
+                            <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                            <span className="text-[9px] md:text-[11px] font-black text-white uppercase tracking-widest italic leading-none whitespace-nowrap">{ANXIETY_ITEMS[0]}</span>
+                        </div>
                      </div>
                 </div>
                 <div className="absolute bottom-[35%] right-[15%]">
                      <div className="flex items-center gap-4">
                         <div className="w-20 h-px bg-red-500" />
-                        <RiskTag text={ANXIETY_ITEMS[1]} />
+                        <div className="flex items-center gap-2.5 px-3 py-1.5 bg-red-600/90 border border-red-500/50 rounded-lg backdrop-blur-3xl shadow-2xl">
+                            <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                            <span className="text-[9px] md:text-[11px] font-black text-white uppercase tracking-widest italic leading-none whitespace-nowrap">{ANXIETY_ITEMS[1]}</span>
+                        </div>
                      </div>
                 </div>
 
