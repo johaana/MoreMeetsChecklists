@@ -10,7 +10,12 @@ import {
     ClipboardCheck,
     CheckCircle2,
     History,
-    SearchCheck
+    SearchCheck,
+    AlertTriangle,
+    Target,
+    Activity,
+    ShieldAlert,
+    LayoutGrid
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -21,19 +26,28 @@ const VIMEO_URL = "https://player.vimeo.com/video/1187795401?background=1&autopl
 const NARRATIVE = {
     line1: "STOP CHASING YOUR STAFF.",
     line2: "SEE DAILY WORK GETTING DONE.",
-    subline: "Even when you aren't there. No more guessing.",
+    subline: "Even when you aren't there.",
+    support: "No more management gaps, memory failures, or training drift.",
     cta: "Start Your System Now → ₹2,999",
     meta: "ONE-TIME PAYMENT • OWN FOREVER • NO MONTHLY FEES"
 };
 
-const BULLETS = [
-    { t: "120+ Daily Checklists", i: ClipboardCheck },
-    { t: "See work on your phone", i: Smartphone },
-    { t: "Staff instructions included", i: History },
-    { t: "One-time buy. Own forever.", i: Lock }
+const TECH_SPECS = [
+    { t: "120+ Pre-built Industry SOPs", i: ClipboardCheck },
+    { t: "Live Dashboard (Phone access)", i: Activity },
+    { t: "Trainer Notes for staff", i: History },
+    { t: "No SaaS. Own your data.", i: Lock }
+];
+
+const ANXIETY_ITEMS = [
+    "Constant follow-ups?",
+    "Missed steps?",
+    "Staff confusion?",
+    "Memory gaps?"
 ];
 
 const YELLOW = "#FACC15";
+const RISK_RED = "#EF4444";
 
 // --- REUSABLE COMPONENTS ---
 
@@ -62,28 +76,30 @@ const LabSection = ({ children, title, description, id }: { children: React.Reac
                 <p className="text-zinc-500 italic font-medium text-xs uppercase tracking-widest">{description}</p>
             </div>
         </div>
-        <div className="w-full h-[85svh] relative overflow-hidden bg-[#050505]">
+        <div className="w-full h-[90svh] relative overflow-hidden bg-[#050505] flex flex-col justify-center">
             {children}
         </div>
     </div>
 );
 
-const AnxietyAlert = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
+const RiskTag = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
     <div className={cn(
-        "flex items-center gap-2 px-3 py-1.5 bg-red-600/90 border border-red-500/50 rounded-lg backdrop-blur-3xl shadow-[0_15px_30px_-5px_rgba(220,38,38,0.6)] animate-in fade-in zoom-in duration-1000", 
+        "flex items-center gap-3 px-4 py-2 bg-red-600/90 border border-red-500/50 rounded-xl backdrop-blur-3xl shadow-[0_15px_30px_-5px_rgba(220,38,38,0.4)] animate-in fade-in slide-in-from-right-4 duration-1000", 
         className
     )} style={{ animationDelay: delay }}>
-        <div className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
-        <span className="text-[10px] md:text-[11px] font-black text-white uppercase tracking-widest italic">{text}</span>
+        <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
+        <span className="text-[11px] md:text-[13px] font-black text-white uppercase tracking-widest italic leading-none whitespace-nowrap">{text}</span>
     </div>
 );
 
-const OneGlanceSpecs = ({ className, dark = true }: { className?: string, dark?: boolean }) => (
-    <div className={cn("grid grid-cols-2 gap-x-8 gap-y-4", className)}>
-        {BULLETS.map((item, i) => (
+const CommandGrid = ({ className }: { className?: string }) => (
+    <div className={cn("grid grid-cols-2 gap-x-10 gap-y-5", className)}>
+        {TECH_SPECS.map((item, i) => (
             <div key={i} className="flex items-center gap-3 group">
-                <div className={cn("w-2 h-2 rounded-full shrink-0 shadow-sm", dark ? "bg-[#FACC15]" : "bg-zinc-900")} />
-                <span className={cn("text-[15px] font-black uppercase tracking-[0.1em] italic leading-none whitespace-nowrap", dark ? "text-white/70" : "text-zinc-500")}>
+                <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <CheckCircle2 className="w-2.5 h-2.5 text-primary" />
+                </div>
+                <span className="text-[14px] md:text-[16px] font-bold uppercase tracking-[0.05em] italic leading-tight text-white/80">
                     {item.t}
                 </span>
             </div>
@@ -91,167 +107,244 @@ const OneGlanceSpecs = ({ className, dark = true }: { className?: string, dark?:
     </div>
 );
 
-const FinalCTA = ({ className }: { className?: string }) => (
-    <div className={cn("space-y-4", className)}>
-        <button className="h-16 px-12 rounded-xl bg-[#FACC15] text-black font-black uppercase italic text-sm md:text-base shadow-[0_15px_40px_-5px_rgba(250,204,21,0.6)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
-            {NARRATIVE.cta} <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+const SovereignCTA = ({ className }: { className?: string }) => (
+    <div className={cn("space-y-5", className)}>
+        <button className="h-16 px-12 rounded-xl bg-[#FACC15] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(250,204,21,0.5)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
+            {NARRATIVE.cta} <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
         </button>
-        <p className="text-[10px] md:text-[11px] text-zinc-600 font-black uppercase tracking-[0.4em] pl-1">
-            {NARRATIVE.meta}
-        </p>
-    </div>
-);
-
-const OperationalConsole = ({ className }: { className?: string }) => (
-    <div className={cn("relative group w-full", className)}>
-        <div className="rounded-[2.5rem] overflow-hidden shadow-[0_40px_120px_-20px_rgba(0,0,0,0.7)] bg-zinc-950 border border-white/5 relative aspect-[16/10]">
-            <BackgroundVideo opacity={0.9} />
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-transparent pointer-events-none" />
-            
-            {/* ANXIETY TAGS ANCHORED TO VISUAL TRIGGERS */}
-            <AnxietyAlert text="Always following up?" className="absolute top-[12%] left-[8%]" delay="0.2s" />
-            <AnxietyAlert text="Tasks forgotten?" className="absolute top-[35%] right-[10%]" delay="0.4s" />
-            <AnxietyAlert text="Staff confused?" className="absolute bottom-[25%] left-[12%]" delay="0.6s" />
-            <AnxietyAlert text="Memory gaps?" className="absolute bottom-[15%] right-[15%]" delay="0.8s" />
+        <div className="space-y-1 pl-1">
+             <p className="text-[10px] md:text-[11px] text-zinc-500 font-black uppercase tracking-[0.4em]">
+                {NARRATIVE.meta}
+            </p>
+            <p className="text-[9px] text-primary/60 font-black uppercase tracking-[0.3em]">
+                SINGLE / MULTI-UNIT READY • AUDIT-READY COMPLIANCE
+            </p>
         </div>
     </div>
 );
 
+// --- ARCHETYPES ---
+
 export default function HeroLabClient() {
     return (
-        <div className="bg-black text-white font-sans selection:bg-yellow-500/30">
+        <div className="bg-black text-white font-sans selection:bg-yellow-500/30 pb-40">
             
             <div className="container px-8 pt-32 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-primary/5">
-                    LAYMAN ONE-GLANCE LAB V37.0
+                    SOVEREIGN HERO LAB V38.0
                 </Badge>
                 <h1 className="text-4xl md:text-7xl font-black font-headline italic uppercase tracking-tighter leading-none">
-                    Simple <span className="text-primary">&</span> Direct.
+                    Risk <span className="text-primary">&</span> Resolution.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-base leading-tight">
-                    Zero tech jargon. Anxiety tags are anchored to visual triggers. Spacing is locked for absolute one-glance capture.
+                    Storytelling through diagnostic placement. The red items identify the "Risk Factors" while the yellow engine provides the "Resolution."
                 </p>
             </div>
 
-            {/* --- ARCHETYPE 1: THE SURGICAL STRIKE --- */}
-            <LabSection id="opt-1" title="01. The Surgical Strike" description="Immediate problem/solution alignment. Dense, layman-friendly narrative.">
-                <div className="relative h-full flex items-center px-6 md:px-24">
-                    <BackgroundVideo opacity={0.15} grayscale />
-                    <div className="grid grid-cols-1 lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-24 items-center w-full max-w-7xl relative z-10 mx-auto">
-                        <div className="space-y-8 md:space-y-12">
+            {/* --- ARCHETYPE 1: THE DIAGNOSTIC SPLIT --- */}
+            <LabSection id="opt-1" title="01. The Diagnostic Split" description="Evidence -> Diagnosis -> Solution. Red items stacked as a status bar next to the video.">
+                <div className="relative h-full flex items-center px-6 md:px-24 max-w-[1440px] mx-auto">
+                    <BackgroundVideo opacity={0.1} grayscale />
+                    <div className="grid grid-cols-1 lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-24 items-center w-full relative z-10">
+                        
+                        {/* LEFT: RESOLUTION */}
+                        <div className="space-y-10">
                              <div className="space-y-4">
-                                <h1 className="font-headline font-black text-[38px] md:text-[72px] leading-[0.88] tracking-tighter text-white uppercase italic">
+                                <h1 className="font-headline font-black text-[40px] md:text-[76px] leading-[0.88] tracking-tighter text-white uppercase italic">
                                     {NARRATIVE.line1}<br/>
                                     <span style={{ color: YELLOW }}>{NARRATIVE.line2}</span>
                                 </h1>
-                                <p className="text-base md:text-xl font-bold text-zinc-400 italic leading-tight max-w-md">
+                                <p className="text-[20px] md:text-[28px] font-bold text-zinc-400 italic leading-tight">
                                     {NARRATIVE.subline}
+                                </p>
+                                <p className="text-sm md:text-base font-medium text-zinc-500 italic max-w-md">
+                                    {NARRATIVE.support}
                                 </p>
                              </div>
                              
-                             <div className="bg-white/[0.03] border-y border-white/5 py-8 md:py-10">
-                                <OneGlanceSpecs className="max-w-md" />
-                             </div>
+                             <CommandGrid className="max-w-xl" />
 
-                             <FinalCTA />
+                             <SovereignCTA />
                         </div>
-                        <OperationalConsole className="hidden lg:block" />
+
+                        {/* RIGHT: EVIDENCE & DIAGNOSIS */}
+                        <div className="flex items-center gap-6 group">
+                            <div className="relative flex-1 rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl aspect-[16/11] bg-zinc-900">
+                                <BackgroundVideo opacity={1} />
+                                <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-transparent pointer-events-none" />
+                                <div className="absolute bottom-4 left-6 flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-primary animate-ping" />
+                                    <span className="text-[9px] font-black text-primary uppercase tracking-[0.4em] italic">LIVE_OPERATIONAL_EVIDENCE</span>
+                                </div>
+                            </div>
+                            
+                            {/* THE DIAGNOSTIC COLUMN */}
+                            <div className="flex flex-col gap-4 shrink-0">
+                                {ANXIETY_ITEMS.map((item, i) => (
+                                    <RiskTag key={i} text={item} delay={`${i * 0.15}s`} />
+                                ))}
+                                <div className="mt-4 pt-4 border-t border-white/5 flex flex-col items-center gap-2">
+                                    <ShieldAlert className="w-5 h-5 text-red-500/50" />
+                                    <p className="text-[8px] font-black text-red-500/40 uppercase tracking-[0.3em] vertical-text transform rotate-180">RISK_DETECTED</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 2: THE TECHNICAL COMMAND --- */}
-            <LabSection id="opt-2" title="02. The Technical Command" description="A 50/50 division where the video of chaos is the primary problem source.">
+            {/* --- ARCHETYPE 2: THE CONSOLE MARKERS --- */}
+            <LabSection id="opt-2" title="02. The Console Markers" description="Anxiety items anchored as structural markers on the video frame borders.">
                 <div className="relative h-full flex items-center px-6 md:px-24">
-                     <BackgroundVideo opacity={0.12} />
-                     <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.2fr] gap-12 lg:gap-24 items-center w-full relative z-10 mx-auto max-w-7xl">
+                     <BackgroundVideo opacity={0.15} />
+                     <div className="grid grid-cols-1 lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-24 items-center w-full relative z-10 max-w-7xl mx-auto">
                         <div className="space-y-12">
                             <div className="space-y-6">
                                 <h1 className="text-[44px] md:text-8xl font-black font-headline leading-[0.85] tracking-tighter uppercase italic text-white">
                                     STOP <br/> <span style={{ color: YELLOW }}>CHAOS.</span>
                                 </h1>
-                                <p className="text-lg md:text-2xl text-zinc-400 italic font-bold max-w-sm leading-tight border-l-4 border-primary pl-6">
-                                    Stop chasing staff. See work getting done daily.
+                                <p className="text-xl md:text-3xl text-zinc-400 italic font-bold max-w-md leading-tight border-l-4 border-primary pl-8">
+                                    Capture institutional memory. <br/> See daily work getting done.
                                 </p>
                             </div>
                             
-                            <OneGlanceSpecs />
+                            <CommandGrid />
 
-                            <FinalCTA />
+                            <SovereignCTA />
                         </div>
 
-                        <OperationalConsole className="hidden lg:block" />
+                        {/* VIDEO CONSOLE WITH BORDER MARKERS */}
+                        <div className="relative p-12">
+                            <div className="absolute top-0 left-12"><RiskTag text={ANXIETY_ITEMS[0]} /></div>
+                            <div className="absolute top-1/2 -right-8 -translate-y-1/2"><RiskTag text={ANXIETY_ITEMS[1]} /></div>
+                            <div className="absolute -bottom-4 right-12"><RiskTag text={ANXIETY_ITEMS[3]} /></div>
+                            <div className="absolute top-1/2 -left-8 -translate-y-1/2"><RiskTag text={ANXIETY_ITEMS[2]} /></div>
+
+                            <div className="relative rounded-[2.5rem] overflow-hidden shadow-[0_0_100px_-20px_rgba(46,184,107,0.2)] aspect-[4/3] border border-white/5 bg-zinc-950">
+                                <BackgroundVideo opacity={0.9} />
+                                <div className="absolute inset-0 ring-1 ring-white/10 rounded-[2.5rem] inset-px pointer-events-none" />
+                            </div>
+                        </div>
                      </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 3: THE SOVEREIGN MONOLITH --- */}
-            <LabSection id="opt-3" title="03. The Sovereign Monolith" description="Centered gravity. Anxiety alerts attack the margins of the system.">
-                <BackgroundVideo opacity={0.4} grayscale />
+            {/* --- ARCHETYPE 3: THE RISK TRIAGE --- */}
+            <LabSection id="opt-3" title="03. The Risk Triage" description="A centered monolith where identified risks precede the massive resolution.">
+                <BackgroundVideo opacity={0.2} grayscale />
                 <div className="absolute inset-0 bg-black/60" />
                 
-                {/* FLOATING ANXIETY ALERTS */}
-                <AnxietyAlert text="Always following up?" className="absolute top-[20%] right-[10%] z-20 scale-125" delay="0.1s" />
-                <AnxietyAlert text="Tasks forgotten?" className="absolute top-[40%] left-[5%] z-20 scale-125" delay="0.3s" />
-                <AnxietyAlert text="Memory gaps?" className="absolute bottom-[20%] right-[15%] z-20 scale-125" delay="0.5s" />
-
                 <div className="relative z-10 h-full flex items-center justify-center px-4">
-                    <div className="max-w-4xl w-full bg-white/[0.02] border border-white/10 backdrop-blur-3xl rounded-[3rem] md:rounded-[4rem] p-10 md:p-24 shadow-[0_0_120px_-20px_rgba(250,204,21,0.2)] text-center space-y-12 border-t-white/20">
+                    <div className="max-w-4xl w-full text-center space-y-12">
+                        
+                        {/* IDENTIFIED RISKS */}
+                        <div className="flex flex-wrap justify-center gap-4">
+                            {ANXIETY_ITEMS.map((item, i) => (
+                                <div key={i} className="flex items-center gap-2 px-6 py-2 rounded-full border border-red-500/20 bg-red-500/5 text-red-500 font-black uppercase italic text-[11px] tracking-widest shadow-[0_0_20px_rgba(239,68,68,0.1)]">
+                                    <AlertTriangle className="w-3 h-3" /> {item}
+                                </div>
+                            ))}
+                        </div>
+
                         <div className="space-y-6">
-                            <Badge className="bg-primary/10 text-primary border-primary/20 px-8 py-2 uppercase font-black tracking-[0.6em] text-[10px]">RESTAURANT & HOTEL ENGINE</Badge>
-                            <h1 className="text-[44px] md:text-[96px] font-black font-headline leading-[0.85] tracking-tighter uppercase italic text-white">
+                            <h1 className="text-[50px] md:text-[110px] font-black font-headline leading-[0.8] tracking-tighter uppercase italic text-white">
                                 CAPTURE <br/> <span style={{ color: YELLOW }}>MEMORY.</span>
                             </h1>
-                            <p className="text-lg md:text-2xl text-zinc-400 font-bold italic leading-tight max-w-lg mx-auto">
-                                Run your business daily without having to chase people.
+                            <p className="text-xl md:text-3xl text-zinc-400 font-bold italic leading-tight max-w-2xl mx-auto">
+                                Run your business properly. Even when you aren't there.
                             </p>
                         </div>
 
-                        <div className="flex justify-center py-8 border-y border-white/5">
-                            <OneGlanceSpecs className="text-center" />
+                        <div className="flex justify-center py-10 border-y border-white/5">
+                            <CommandGrid className="text-center" />
                         </div>
 
-                        <div className="flex flex-col items-center gap-6">
-                            <button className="h-20 px-16 rounded-2xl bg-[#FACC15] text-black font-black uppercase italic text-xl shadow-2xl hover:scale-105 transition-all border-none">
-                                DEPLOY SYSTEM NOW
-                            </button>
-                            <p className="text-[11px] text-zinc-600 font-black uppercase tracking-[0.5em]">ONE-TIME PAYMENT • NO MONTHLY FEES</p>
+                        <div className="flex flex-col items-center gap-8">
+                            <SovereignCTA className="items-center" />
                         </div>
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 4: THE DATA ENGINE --- */}
-            <LabSection id="opt-4" title="04. The Pure Split" description="The ultimate distinction. Left is 100% relief. Right is 100% frustration.">
+            {/* --- ARCHETYPE 4: THE TECHNICAL INFRASTRUCTURE --- */}
+            <LabSection id="opt-4" title="04. The Infrastructure Frame" description="The video is framed as a literal 'Operational Console' with technical status lights.">
+                <div className="relative h-full flex items-center px-6 md:px-24">
+                     <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.1fr] gap-12 lg:gap-24 items-center w-full relative z-10 max-w-7xl mx-auto">
+                        <div className="space-y-12">
+                            <div className="space-y-4">
+                                <Badge className="bg-primary/10 text-primary border-primary/20 w-fit uppercase font-black tracking-[0.6em] text-[11px] py-1.5 px-6">SOVEREIGN V38.0</Badge>
+                                <h1 className="text-6xl md:text-[84px] font-black font-headline leading-[0.88] uppercase italic tracking-tighter">
+                                    DEPLOY<br />
+                                    <span style={{ color: YELLOW }}>SYSTEMS.</span>
+                                </h1>
+                                <p className="text-xl md:text-2xl text-zinc-400 italic font-bold max-w-md leading-tight border-l-4 border-primary pl-8">
+                                    Serious operations deserve more than improvisation.
+                                </p>
+                            </div>
+                            
+                            <CommandGrid />
+
+                            <SovereignCTA />
+                        </div>
+
+                        <div className="relative group">
+                            {/* TECHNICAL BEZEL */}
+                            <div className="bg-[#0A0A0A] border-4 border-white/5 rounded-[3rem] p-4 shadow-2xl relative">
+                                <div className="absolute top-10 -left-6 space-y-2">
+                                     <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_10px_red]" />
+                                     <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
+                                     <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
+                                </div>
+                                <div className="relative rounded-[2rem] overflow-hidden aspect-video bg-black">
+                                    <BackgroundVideo opacity={0.8} />
+                                </div>
+                                <div className="mt-4 flex justify-between px-8 text-[8px] font-black text-white/20 uppercase tracking-[0.5em]">
+                                    <span>CONSOLE_ACTIVE</span>
+                                    <span>SIGNAL_STRENGTH_100%</span>
+                                </div>
+                            </div>
+                            
+                            {/* FLOATING RISK CALLOUTS */}
+                            <div className="absolute top-1/2 -right-12 -translate-y-1/2 space-y-4">
+                                <RiskTag text={ANXIETY_ITEMS[0]} />
+                                <RiskTag text={ANXIETY_ITEMS[1]} />
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </LabSection>
+
+             {/* --- ARCHETYPE 5: THE PURE SPLIT --- */}
+             <LabSection id="opt-5" title="05. The Direct Relief" description="High-contrast division. Chaos on the right, perfect order on the left.">
                  <div className="h-full flex overflow-hidden">
-                    <div className="w-full lg:w-1/2 bg-black h-full flex flex-col justify-center px-8 md:px-24 space-y-12 border-r border-white/5">
+                    <div className="w-full lg:w-1/2 bg-black h-full flex flex-col justify-center px-8 md:px-24 space-y-12 border-r border-white/5 relative z-10">
                         <div className="space-y-8">
                             <div className="space-y-4">
-                                <Badge className="bg-primary/10 text-primary border-primary/20 w-fit uppercase font-black tracking-[0.6em] text-[11px] py-1.5 px-6">SOVEREIGN V37.0</Badge>
+                                <Badge className="bg-primary/10 text-primary border-primary/20 w-fit uppercase font-black tracking-[0.5em] text-[11px] py-1.5 px-6">MASTER ENGINE</Badge>
                                 <h1 className="text-6xl md:text-[84px] font-black font-headline leading-[0.88] uppercase italic tracking-tighter">
                                     STOP <br/> <span style={{ color: YELLOW }}>CHASING.</span>
                                 </h1>
-                                <p className="text-xl md:text-2xl text-zinc-400 italic font-bold max-w-sm leading-tight border-l-4 border-primary pl-6">
+                                <p className="text-xl md:text-3xl text-zinc-400 italic font-bold max-w-sm leading-tight border-l-4 border-primary pl-6">
                                     See daily work getting done. Even when you're away.
                                 </p>
                             </div>
                         </div>
                         
-                        <OneGlanceSpecs />
+                        <CommandGrid />
 
-                        <FinalCTA />
+                        <SovereignCTA />
                     </div>
                     <div className="hidden lg:flex w-1/2 relative h-full items-center justify-center bg-zinc-950 overflow-hidden">
                         <BackgroundVideo opacity={1} />
-                        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-black" />
+                        <div className="absolute inset-0 bg-gradient-to-l from-black via-transparent to-transparent pointer-events-none" />
                         
-                        {/* ANXIETY CALLOUTS ANCHORED TO THE 'ANGRY BOSS' VISUALS */}
-                        <div className="relative z-10 flex flex-col items-center gap-8">
-                            <AnxietyAlert text="Constantly following up?" className="scale-150 shadow-2xl" delay="0.2s" />
-                            <AnxietyAlert text="Important tasks skipped?" className="scale-150 shadow-2xl" delay="0.4s" />
-                            <AnxietyAlert text="Memory gaps?" className="scale-150 shadow-2xl" delay="0.6s" />
-                            <div className="p-4 bg-black/40 backdrop-blur-md rounded-xl border border-white/5 mt-12">
-                                <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.5em] italic">IDENTIFIED_OPERATIONAL_FAULT</p>
+                        {/* THE RISK DIAGNOSIS SIDE */}
+                        <div className="relative z-10 flex flex-col items-end gap-12 pr-12 w-full">
+                            <RiskTag text={ANXIETY_ITEMS[0]} className="scale-150" />
+                            <RiskTag text={ANXIETY_ITEMS[1]} className="scale-150" />
+                            <RiskTag text={ANXIETY_ITEMS[3]} className="scale-150" />
+                            <div className="p-4 bg-red-600/10 border border-red-500/20 rounded-xl backdrop-blur-md mr-4">
+                                <p className="text-[10px] font-black text-red-500 uppercase tracking-[0.5em] italic">IDENTIFIED_OPERATIONAL_FAULT</p>
                             </div>
                         </div>
                     </div>
