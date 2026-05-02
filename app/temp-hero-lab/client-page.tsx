@@ -103,7 +103,7 @@ const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: s
     </div>
 );
 
-const SovereignCTA = ({ className }: { className?: string }) => (
+const SovereignCTA = ({ className, showExtraMeta = true }: { className?: string, showExtraMeta?: boolean }) => (
     <div className={cn("space-y-6", className)}>
         <button className="h-16 px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
             {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-[#FACC15] transition-transform group-hover:translate-x-1" />
@@ -112,9 +112,11 @@ const SovereignCTA = ({ className }: { className?: string }) => (
              <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic">
                 {NARRATIVE.meta}
             </p>
-            <p className="text-[8px] text-emerald-500/40 font-black uppercase tracking-[0.3em]">
-                SINGLE / MULTI-UNIT READY • AUDIT-READY COMPLIANCE
-            </p>
+            {showExtraMeta && (
+                <p className="text-[8px] text-emerald-500/40 font-black uppercase tracking-[0.3em]">
+                    SINGLE / MULTI-UNIT READY • AUDIT-READY COMPLIANCE
+                </p>
+            )}
         </div>
     </div>
 );
@@ -125,13 +127,13 @@ export default function HeroLabClient() {
             
             <div className="container px-8 pt-32 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-emerald-500/5">
-                    SOVEREIGN HERO LAB V65.0
+                    SOVEREIGN HERO LAB V65.1
                 </Badge>
                 <h1 className="text-4xl md:text-7xl font-black font-headline italic uppercase tracking-tighter leading-none">
                     Category <span className="text-emerald-500">Defining</span> Authority.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-base leading-tight">
-                    Preserving 1 and 13. Adding look-wise variations (14-17) focused on high-end editorial diagnostic UI.
+                    Preserving 1 and 13. Archetype 17 refined for absolute narrative clarity.
                 </p>
             </div>
 
@@ -320,10 +322,9 @@ export default function HeroLabClient() {
                 <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-24">
                     <div className="max-w-4xl space-y-16">
                         <div className="space-y-6">
-                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.5em] font-black text-[10px] px-6 py-1.5 rounded-none bg-primary/5">SOVEREIGN_ENGINE_ACTIVE</Badge>
                             <h1 className="text-6xl md:text-[100px] font-black font-headline leading-[0.85] uppercase italic tracking-tighter">
-                                CAPTURE<br/>
-                                <span style={{ color: BRAND_GREEN }}>MEMORY.</span>
+                                {NARRATIVE.line1}<br/>
+                                <span style={{ color: BRAND_GREEN }}>{NARRATIVE.line2}</span>
                             </h1>
                         </div>
 
@@ -344,18 +345,9 @@ export default function HeroLabClient() {
 
                             <div className="space-y-10">
                                 <CommandGrid className="max-w-md" />
-                                <SovereignCTA />
+                                <SovereignCTA showExtraMeta={false} />
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                {/* HUD Footer */}
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-full max-w-7xl px-8 flex justify-between items-end text-[9px] font-black text-white/10 uppercase tracking-[0.4em] italic">
-                    <span>SYSTEM_V11.9_STABLE</span>
-                    <div className="flex gap-12">
-                        <span>LATENCY_ZERO</span>
-                        <span>SINGLE_MULTI_UNIT_READY</span>
                     </div>
                 </div>
             </LabSection>
