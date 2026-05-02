@@ -222,11 +222,14 @@ export default function HeroLabClient() {
                 <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-24 lg:px-32">
                     <div className="max-w-5xl space-y-16">
                         {/* Narrative Command */}
-                        <div className="space-y-4">
+                        <div className="space-y-6">
                             <h1 className="text-6xl md:text-[110px] font-black font-headline leading-[0.82] uppercase italic tracking-tighter drop-shadow-2xl">
                                 {NARRATIVE.line1}<br/>
                                 <span style={{ color: BRAND_GREEN }}>{NARRATIVE.line2}</span>
                             </h1>
+                            <p className="text-[20px] md:text-[32px] leading-[1.2] italic font-medium text-zinc-400 max-w-xl">
+                                See daily work getting done. <br/> Even when you aren't there.
+                            </p>
                         </div>
 
                         <div className="flex flex-col md:flex-row gap-12 lg:gap-24 items-start md:items-center">
