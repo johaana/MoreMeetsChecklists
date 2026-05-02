@@ -42,7 +42,6 @@ const ANXIETY_ITEMS = [
 ];
 
 const BRAND_GREEN = "#22C55E";
-const MUTED_RED = "#991B1B";
 
 // --- REUSABLE COMPONENTS ---
 
@@ -62,7 +61,7 @@ const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
     </div>
 );
 
-const LabSection = ({ children, title, description, id }: { children: React.ReactNode, title: string, description: string, id: string }) => (
+const LabSection = ({ children, title, description, id, fullScreen = false }: { children: React.ReactNode, title: string, description: string, id: string, fullScreen?: boolean }) => (
     <div id={id} className="w-full py-24 border-b border-white/5 space-y-12 bg-black">
         <div className="container px-8 mx-auto">
             <div className="space-y-1 border-l-2 border-primary pl-6">
@@ -70,7 +69,10 @@ const LabSection = ({ children, title, description, id }: { children: React.Reac
                 <p className="text-zinc-500 italic font-medium text-xs uppercase tracking-widest">{description}</p>
             </div>
         </div>
-        <div className="w-full h-[90svh] relative overflow-hidden bg-[#050505] flex flex-col justify-center">
+        <div className={cn(
+            "w-full relative overflow-hidden bg-[#050505] flex flex-col justify-center",
+            fullScreen ? "h-[100svh]" : "h-[90svh]"
+        )}>
             {children}
         </div>
     </div>
@@ -127,13 +129,13 @@ export default function HeroLabClient() {
             
             <div className="container px-8 pt-32 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-emerald-500/5">
-                    SOVEREIGN HERO LAB V65.1
+                    SOVEREIGN HERO LAB V66.0
                 </Badge>
                 <h1 className="text-4xl md:text-7xl font-black font-headline italic uppercase tracking-tighter leading-none">
                     Category <span className="text-emerald-500">Defining</span> Authority.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-base leading-tight">
-                    Preserving 1 and 13. Archetype 17 refined for absolute narrative clarity.
+                    Refined Cinematic Immersion. Reinstated multi-unit metadata. 1 and 13 strictly preserved.
                 </p>
             </div>
 
@@ -164,80 +166,6 @@ export default function HeroLabClient() {
                                 {ANXIETY_ITEMS.map((item, i) => (
                                     <RiskTag key={i} text={item} delay={`${i * 0.1}s`} className="rounded-l-none border-l-0" />
                                 ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 14: THE SOVEREIGN ELITE (VARIANT OF 1) --- */}
-            <LabSection id="opt-14" title="14. The Status Gutter (Variation of 1)" description="Restrained green palette. Diagnostic ledger positioned as a center-gutter divider.">
-                <div className="relative h-full flex items-center px-6 md:px-24 max-w-[1440px] mx-auto">
-                    <div className="absolute inset-0 z-0 opacity-[0.02] grayscale pointer-events-none flex items-center justify-center">
-                        <ShieldCheckIcon className="w-[800px] h-[800px] text-white" />
-                    </div>
-                    <BackgroundVideo opacity={0.05} grayscale />
-                    
-                    <div className="grid grid-cols-1 lg:grid-cols-[1.1fr,60px,1fr] gap-0 items-center w-full relative z-10">
-                        {/* Narrative */}
-                        <div className="space-y-12 pr-12">
-                             <div className="space-y-4">
-                                <h1 className="font-headline font-black text-[40px] md:text-[88px] leading-[0.85] tracking-tighter text-[#F5F5F2] uppercase italic">
-                                    STOP CHASING.<br/>
-                                    <span style={{ color: BRAND_GREEN }}>START SEEING.</span>
-                                </h1>
-                                <p className="text-[18px] md:text-[28px] font-bold text-[#A1A1AA] italic leading-tight max-w-xl">
-                                    {NARRATIVE.subline}
-                                </p>
-                             </div>
-                             <CommandGrid className="max-w-xl" />
-                             <SovereignCTA />
-                        </div>
-
-                        {/* Diagnostic Gutter */}
-                        <div className="h-full flex flex-col justify-center items-center relative py-20 border-x border-white/5 bg-white/[0.01]">
-                            <div className="absolute inset-0 bg-red-500/[0.02]" />
-                            {ANXIETY_ITEMS.map((item, i) => (
-                                <div key={i} className="vertical-text text-[10px] font-black text-red-500/40 uppercase tracking-[0.4em] whitespace-nowrap rotate-90 py-12">
-                                    {item}
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Evidence Window */}
-                        <div className="pl-16">
-                            <div className="relative rounded-[2rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.4)] aspect-[16/11] bg-black ring-1 ring-white/5">
-                                <BackgroundVideo opacity={1} />
-                                <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-transparent to-transparent pointer-events-none" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 15: THE BEZEL ALERTS (VARIANT OF 1) --- */}
-            <LabSection id="opt-15" title="15. Perimeter Bezel (Variation of 1)" description="Risks integrated into the corner bezel of the operational window.">
-                <div className="relative h-full flex items-center px-6 md:px-24 max-w-[1440px] mx-auto">
-                    <BackgroundVideo opacity={0.08} grayscale />
-                    <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.3fr] gap-20 items-center w-full relative z-10">
-                        <div className="space-y-12">
-                            <h1 className="text-6xl md:text-[84px] font-black font-headline leading-[0.88] uppercase italic tracking-tighter text-white">
-                                STOP <br/> <span style={{ color: BRAND_GREEN }}>CHAOS.</span>
-                            </h1>
-                            <CommandGrid className="grid-cols-1 gap-y-4" />
-                            <SovereignCTA />
-                        </div>
-                        <div className="relative group">
-                            {/* Bezel Risks */}
-                            <div className="absolute -top-6 -left-6 z-20"><RiskTag text={ANXIETY_ITEMS[0]} variant="editorial" /></div>
-                            <div className="absolute top-1/2 -right-10 z-20 -translate-y-1/2"><RiskTag text={ANXIETY_ITEMS[1]} variant="editorial" /></div>
-                            <div className="absolute -bottom-6 -left-6 z-20"><RiskTag text={ANXIETY_ITEMS[2]} variant="editorial" /></div>
-                            
-                            <div className="relative rounded-[3rem] overflow-hidden shadow-2xl aspect-[16/12] bg-black ring-1 ring-white/10 p-1">
-                                <div className="absolute inset-0 bg-zinc-900" />
-                                <div className="relative h-full w-full rounded-[2.8rem] overflow-hidden">
-                                    <BackgroundVideo opacity={1} />
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -282,73 +210,54 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 16: THE COMMAND MONOLITH (VARIANT OF 13) --- */}
-            <LabSection id="opt-16" title="16. Glass Monolith (Variation of 13)" description="Immersive video background with a centered editorial resolution card.">
-                <BackgroundVideo opacity={0.4} grayscale />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80" />
-                
-                <div className="relative z-10 h-full flex items-center justify-center px-6">
-                    <div className="w-full max-w-5xl bg-black/60 backdrop-blur-3xl border border-white/5 rounded-[3rem] p-16 md:p-24 shadow-[0_0_100px_-20px_rgba(0,0,0,0.8)] relative group">
-                        {/* Status Anchors */}
-                        <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex gap-4">
-                            {ANXIETY_ITEMS.slice(0,2).map((item, i) => (
-                                <RiskTag key={i} text={item} variant="editorial" />
-                            ))}
-                        </div>
-
-                        <div className="grid lg:grid-cols-2 gap-16 items-center">
-                            <div className="space-y-8">
-                                <h1 className="text-5xl md:text-7xl font-black font-headline leading-[0.9] uppercase italic tracking-tighter">
-                                    START <br/> <span style={{ color: BRAND_GREEN }}>SEEING.</span>
-                                </h1>
-                                <p className="text-lg md:text-xl text-[#A1A1AA] italic font-medium leading-tight">
-                                    {NARRATIVE.subline}
-                                </p>
-                            </div>
-                            <div className="space-y-10">
-                                <CommandGrid className="grid-cols-1 gap-y-4" textColor="text-white/70" />
-                                <SovereignCTA />
-                            </div>
-                        </div>
-                    </div>
+            {/* --- ARCHETYPE 17: THE REFINED CINEMATIC HUD (VERSION 66.0) --- */}
+            <LabSection id="opt-17" title="17. Refined Cinematic HUD" description="Full-screen immersion with reinstated multi-unit metadata." fullScreen>
+                {/* Fixed Background Video Engine */}
+                <div className="absolute inset-0 z-0">
+                    <BackgroundVideo opacity={0.5} grayscale />
+                    {/* Directional Hardware Gradient for legibility */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent pointer-events-none" />
                 </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 17: THE HUD LEDGER (VARIANT OF 13) --- */}
-            <LabSection id="opt-17" title="17. Technical HUD (Variation of 13)" description="Full-screen immersion with risks shown as an editorial ledger.">
-                <BackgroundVideo opacity={0.6} grayscale />
-                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
                 
-                <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-24">
-                    <div className="max-w-4xl space-y-16">
-                        <div className="space-y-6">
-                            <h1 className="text-6xl md:text-[100px] font-black font-headline leading-[0.85] uppercase italic tracking-tighter">
+                <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-24 lg:px-32">
+                    <div className="max-w-5xl space-y-16">
+                        {/* Narrative Command */}
+                        <div className="space-y-4">
+                            <h1 className="text-6xl md:text-[110px] font-black font-headline leading-[0.82] uppercase italic tracking-tighter drop-shadow-2xl">
                                 {NARRATIVE.line1}<br/>
                                 <span style={{ color: BRAND_GREEN }}>{NARRATIVE.line2}</span>
                             </h1>
                         </div>
 
-                        <div className="flex flex-col md:flex-row gap-12 items-start md:items-center">
-                            <div className="space-y-6 border-l-2 border-red-500/20 pl-8">
-                                <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.5em]">DETECTED GAPS</p>
-                                <div className="flex flex-col gap-3">
+                        <div className="flex flex-col md:flex-row gap-12 lg:gap-20 items-start md:items-center">
+                            {/* Diagnostic Ledger (The Problems) */}
+                            <div className="space-y-6 border-l-2 border-red-500/20 pl-8 md:pl-10">
+                                <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">DETECTED GAPS</p>
+                                <div className="flex flex-col gap-3.5">
                                     {ANXIETY_ITEMS.map((item, i) => (
-                                        <div key={i} className="flex items-center gap-4 text-white/30 font-bold italic text-sm">
-                                            <div className="w-1 h-1 rounded-full bg-red-500" />
-                                            <span className="uppercase tracking-tight">{item}</span>
+                                        <div key={i} className="flex items-center gap-4 text-white/40 font-bold italic text-sm md:text-base group">
+                                            <div className="w-1 h-1 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.4)] group-hover:scale-150 transition-transform" />
+                                            <span className="uppercase tracking-tight whitespace-nowrap">{item}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
 
-                            <div className="h-24 w-px bg-white/5 hidden md:block" />
+                            {/* Separator */}
+                            <div className="h-32 w-px bg-white/5 hidden md:block" />
 
+                            {/* Sovereign Engine (The Solution) */}
                             <div className="space-y-10">
-                                <CommandGrid className="max-w-md" />
-                                <SovereignCTA showExtraMeta={false} />
+                                <CommandGrid className="max-w-lg lg:grid-cols-2" textColor="text-white/60" />
+                                <SovereignCTA showExtraMeta={true} />
                             </div>
                         </div>
                     </div>
+                </div>
+
+                {/* Sub-Bezel Metadata */}
+                <div className="absolute bottom-8 left-8 md:left-24 lg:left-32 z-10 opacity-20">
+                     <p className="text-[8px] font-black uppercase tracking-[0.8em] italic">SOVEREIGN_SYSTEM_OPERATIONAL_OVERLAY_V66</p>
                 </div>
             </LabSection>
 
