@@ -35,10 +35,10 @@ const TECH_SPECS = [
 ];
 
 const ANXIETY_ITEMS = [
-    "Always following up?",
-    "Tasks forgotten?",
-    "Staff confused?",
-    "Memory gaps?"
+    "Always chasing staff?",
+    "Work gets missed?",
+    "The team is confused?",
+    "Memories fade?"
 ];
 
 const BRAND_GREEN = "#22C55E";
@@ -46,13 +46,13 @@ const BRAND_GREEN = "#22C55E";
 // --- REUSABLE COMPONENTS ---
 
 const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
-    <div className="absolute inset-0 z-0 pointer-events-none">
+    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <iframe
             src={VIMEO_URL}
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             className={cn(
-                "absolute inset-0 h-full w-full object-cover scale-[1.1]",
+                "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.77vh] min-w-full h-full min-h-[56.25vw] scale-[1.05]",
                 grayscale && "saturate-0 brightness-75 contrast-110"
             )}
             style={{ opacity, border: 'none' }}
@@ -84,7 +84,7 @@ const RiskTag = ({ text, className, delay = "0s", variant = "tactical" }: { text
             ? "flex items-center gap-3 px-4 py-2 bg-red-950/40 border border-red-900/30 rounded-lg backdrop-blur-3xl shadow-2xl animate-in fade-in zoom-in duration-1000"
             : "flex items-center gap-3 px-4 py-1.5 bg-[#991B1B]/40 border border-red-900/10 rounded-full backdrop-blur-md animate-in fade-in slide-in-from-left-2 duration-1000",
         className
-    )} style={{ animationDelay: delay }}>
+    )} style={{ delay }}>
         <div className={cn("w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.5)]")} />
         <span className="text-[10px] md:text-[11px] font-black text-red-100 uppercase tracking-widest italic leading-none whitespace-nowrap opacity-70">{text}</span>
     </div>
@@ -129,13 +129,13 @@ export default function HeroLabClient() {
             
             <div className="container px-8 pt-32 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-emerald-500/5">
-                    SOVEREIGN HERO LAB V66.0
+                    SOVEREIGN HERO LAB V67.0
                 </Badge>
                 <h1 className="text-4xl md:text-7xl font-black font-headline italic uppercase tracking-tighter leading-none">
                     Category <span className="text-emerald-500">Defining</span> Authority.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-base leading-tight">
-                    Refined Cinematic Immersion. Reinstated multi-unit metadata. 1 and 13 strictly preserved.
+                    Optimized Cinematic Full-Screen Logic. Layman vocabulary applied to Option 17. Option 1 and 13 preserved.
                 </p>
             </div>
 
@@ -210,13 +210,13 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 17: THE REFINED CINEMATIC HUD (VERSION 66.0) --- */}
-            <LabSection id="opt-17" title="17. Refined Cinematic HUD" description="Full-screen immersion with reinstated multi-unit metadata." fullScreen>
-                {/* Fixed Background Video Engine */}
+            {/* --- ARCHETYPE 17: THE REFINED CINEMATIC HUD (VERSION 67.0) --- */}
+            <LabSection id="opt-17" title="17. Refined Cinematic HUD" description="Absolute full-screen cover logic. Layman vocabulary applied." fullScreen>
+                {/* Fixed Background Video Engine - Optimized for True Cover */}
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.5} grayscale />
                     {/* Directional Hardware Gradient for legibility */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent pointer-events-none" />
                 </div>
                 
                 <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-24 lg:px-32">
@@ -229,26 +229,26 @@ export default function HeroLabClient() {
                             </h1>
                         </div>
 
-                        <div className="flex flex-col md:flex-row gap-12 lg:gap-20 items-start md:items-center">
-                            {/* Diagnostic Ledger (The Problems) */}
+                        <div className="flex flex-col md:flex-row gap-12 lg:gap-24 items-start md:items-center">
+                            {/* Diagnostic Ledger (The Layman Problems) */}
                             <div className="space-y-6 border-l-2 border-red-500/20 pl-8 md:pl-10">
-                                <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">DETECTED GAPS</p>
-                                <div className="flex flex-col gap-3.5">
+                                <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">WHY TEAMS STRUGGLE</p>
+                                <div className="flex flex-col gap-4">
                                     {ANXIETY_ITEMS.map((item, i) => (
                                         <div key={i} className="flex items-center gap-4 text-white/40 font-bold italic text-sm md:text-base group">
-                                            <div className="w-1 h-1 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.4)] group-hover:scale-150 transition-transform" />
+                                            <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)] group-hover:scale-150 transition-transform" />
                                             <span className="uppercase tracking-tight whitespace-nowrap">{item}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
 
-                            {/* Separator */}
-                            <div className="h-32 w-px bg-white/5 hidden md:block" />
+                            {/* Separator Line */}
+                            <div className="h-40 w-px bg-white/10 hidden md:block" />
 
                             {/* Sovereign Engine (The Solution) */}
                             <div className="space-y-10">
-                                <CommandGrid className="max-w-lg lg:grid-cols-2" textColor="text-white/60" />
+                                <CommandGrid className="max-w-lg" textColor="text-white/60" />
                                 <SovereignCTA showExtraMeta={true} />
                             </div>
                         </div>
@@ -256,8 +256,8 @@ export default function HeroLabClient() {
                 </div>
 
                 {/* Sub-Bezel Metadata */}
-                <div className="absolute bottom-8 left-8 md:left-24 lg:left-32 z-10 opacity-20">
-                     <p className="text-[8px] font-black uppercase tracking-[0.8em] italic">SOVEREIGN_SYSTEM_OPERATIONAL_OVERLAY_V66</p>
+                <div className="absolute bottom-8 left-8 md:left-24 lg:left-32 z-10 opacity-30">
+                     <p className="text-[8px] font-black uppercase tracking-[0.8em] italic">SOVEREIGN_SYSTEM_OPERATIONAL_OVERLAY_V67</p>
                 </div>
             </LabSection>
 
