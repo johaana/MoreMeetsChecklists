@@ -76,7 +76,7 @@ const TechnicalProof = ({ className }: { className?: string }) => (
             </div>
             <div className="flex-1 flex justify-center">
                 <div className="bg-black/40 border border-white/5 rounded-md px-4 md:px-12 py-1 text-[6px] md:text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner">
-                    SOVEREIGN_MASTER_CONSOLE.xlsx
+                    MASTER_CONSOLE
                 </div>
             </div>
         </div>
@@ -417,7 +417,7 @@ export default function Home() {
                 <Section className="bg-white">
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-6">
-                            <h2 className="text-[32px] md:text-[56px] font-black text-[#0B0F14] uppercase italic tracking-tight font-headline">System Sovereignty</h2>
+                            <h2 className="text-3xl md:text-5xl font-black text-[#0B0F14] uppercase italic tracking-tight font-headline">System Sovereignty</h2>
                             <p className="text-[#5F6672] text-xl font-bold italic">Why elite groups choose MoreMeets over standard SaaS.</p>
                         </div>
                         <div className="overflow-x-auto no-scrollbar rounded-[3rem] border border-[#E8E7E2] shadow-2xl">

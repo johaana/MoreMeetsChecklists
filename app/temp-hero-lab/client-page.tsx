@@ -135,12 +135,12 @@ export default function HeroLabClient() {
                     Category <span className="text-emerald-500">Defining</span> Authority.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-base leading-tight">
-                    Optimized Cinematic Full-Screen Logic. Layman vocabulary applied to Option 17. Option 1 and 13 preserved.
+                    Optimized Cinematic Full-Screen Logic. All versioning and meta-tags sterilized.
                 </p>
             </div>
 
-            {/* --- ARCHETYPE 1: THE HINGED DIAGNOSIS (ANCHOR) --- */}
-            <LabSection id="opt-1" title="01. The Hinged Risk Tabs (Anchor)" description="Original tactical layout. Borderless frame.">
+            {/* --- ARCHETYPE 1: THE HINGED DIAGNOSIS --- */}
+            <LabSection id="opt-1" title="01. The Hinged Risk Tabs" description="Original tactical layout. Borderless frame.">
                 <div className="relative h-full flex items-center px-6 md:px-24 max-w-[1440px] mx-auto">
                     <BackgroundVideo opacity={0.1} grayscale />
                     <div className="grid grid-cols-1 lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-24 items-center w-full relative z-10">
@@ -172,8 +172,8 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 13: THE TACTICAL SCAN (ANCHOR) --- */}
-            <LabSection id="opt-13" title="13. The Tactical Scan (Anchor)" description="Full-screen industrial loop where risks appear as target markers.">
+            {/* --- ARCHETYPE 13: THE TACTICAL SCAN --- */}
+            <LabSection id="opt-13" title="13. The Tactical Scan" description="Full-screen industrial loop where risks appear as target markers.">
                 <BackgroundVideo opacity={0.6} grayscale />
                 <div className="absolute inset-0 bg-black/40" />
                 <div className="absolute top-[25%] right-[20%] group">
@@ -257,16 +257,10 @@ export default function HeroLabClient() {
                         </div>
                     </div>
                 </div>
-
-                {/* Sub-Bezel Metadata */}
-                <div className="absolute bottom-8 left-8 md:left-24 lg:left-32 z-10 opacity-30">
-                     <p className="text-[8px] font-black uppercase tracking-[0.8em] italic">SOVEREIGN_SYSTEM_OPERATIONAL_OVERLAY</p>
-                </div>
             </LabSection>
 
             <div className="py-32 text-center bg-zinc-950 border-t border-white/5">
-                 <p className="text-[12px] font-black text-zinc-700 uppercase tracking-[0.8em] italic">SOVEREIGN ONE-GLANCE FRAMEWORK ACTIVE.</p>
-                 <Button asChild variant="link" className="mt-10 text-emerald-500 font-black uppercase tracking-widest text-sm hover:text-white transition-colors">
+                 <Button asChild variant="link" className="text-emerald-500 font-black uppercase tracking-widest text-sm hover:text-white transition-colors">
                     <Link href="/">RETURN TO PRODUCTION SITE</Link>
                  </Button>
             </div>
