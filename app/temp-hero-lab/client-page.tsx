@@ -30,7 +30,6 @@ const NARRATIVE = {
 const TECH_SPECS = [
     { t: "120+ Pre-built Industry SOPs", i: ClipboardCheck },
     { t: "Live Dashboard", i: Activity },
-    { t: "Trainer Notes included", i: History },
     { t: "No SaaS. Own your data.", i: Lock }
 ];
 
@@ -146,7 +145,7 @@ export default function HeroLabClient() {
                     Category <span className="text-emerald-500">Defining</span> Authority.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-base leading-tight">
-                    Testing operational archetypes for the final selection.
+                    Testing operational archetypes for final selection.
                 </p>
             </div>
 
@@ -279,80 +278,77 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 18: THE RIGHT-ALIGNED CINEMATIC (Copy of 17) --- */}
-            <LabSection id="opt-18" title="18. The Right-Aligned Cinematic" description="Copy of 17 with 'Why Teams Struggle' ledger moved to the right." fullScreen>
+            {/* --- ARCHETYPE 18: IMPROVISED RIGHT SIDE RAIL --- */}
+            <LabSection id="opt-18" title="18. The Diagnostic Sidebar Rail" description="Copy of 17 with risks moved to a thin, non-obstructive vertical rail on the far right." fullScreen>
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.5} grayscale />
-                    <div className="absolute inset-0 bg-gradient-to-l from-black via-black/20 to-black/60 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent pointer-events-none" />
                 </div>
                 
-                <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-24 lg:px-32">
-                    <div className="grid lg:grid-cols-[1fr,350px] gap-20 items-center">
-                        <div className="space-y-16">
-                            <div className="space-y-6">
-                                <h1 className="text-6xl md:text-[110px] font-black font-headline leading-[0.82] uppercase italic tracking-tighter drop-shadow-2xl">
-                                    {NARRATIVE.line1}<br/>
-                                    <span style={{ color: BRAND_GREEN }}>{NARRATIVE.line2}</span>
-                                </h1>
-                                <p className="text-[20px] md:text-[32px] leading-[1.2] italic font-medium text-zinc-400 max-w-xl">
-                                    {NARRATIVE.subline}
-                                </p>
-                            </div>
-                            <div className="flex flex-col gap-10">
-                                <CommandGrid className="max-w-lg" textColor="text-white/60" />
-                                <SovereignCTA />
-                            </div>
+                <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-24">
+                    <div className="max-w-4xl space-y-12">
+                        <div className="space-y-6">
+                            <h1 className="text-6xl md:text-[110px] font-black font-headline leading-[0.82] uppercase italic tracking-tighter drop-shadow-2xl">
+                                {NARRATIVE.line1}<br/>
+                                <span style={{ color: BRAND_GREEN }}>{NARRATIVE.line2}</span>
+                            </h1>
+                            <p className="text-[20px] md:text-[32px] leading-[1.2] italic font-medium text-zinc-400 max-w-xl">
+                                {NARRATIVE.subline}
+                            </p>
                         </div>
+                        <div className="flex flex-col gap-10">
+                            <CommandGrid className="max-w-lg" textColor="text-white/60" />
+                            <SovereignCTA />
+                        </div>
+                    </div>
+                </div>
 
-                        {/* Right Aligned Risk Ledger */}
-                        <div className="space-y-8 bg-black/40 backdrop-blur-xl p-10 rounded-[2.5rem] border border-white/5 shadow-2xl">
-                            <p className="text-[10px] font-black text-red-500 uppercase tracking-[0.5em] italic">WHY TEAMS STRUGGLE</p>
-                            <div className="flex flex-col gap-6">
-                                {ANXIETY_ITEMS.map((item, i) => (
-                                    <div key={i} className="flex items-center gap-4 text-white/60 font-bold italic text-base group">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.4)] group-hover:scale-125 transition-transform" />
-                                        <span className="uppercase tracking-tight">{item}</span>
+                {/* Improvisation: Unobstructive Vertical Status Rail */}
+                <div className="absolute top-0 right-0 h-full w-[20%] md:w-[15%] bg-gradient-to-l from-black via-black/20 to-transparent z-20 flex flex-col justify-center px-4 md:px-8 border-l border-white/5 backdrop-blur-[2px]">
+                    <div className="space-y-12">
+                         <div className="space-y-1">
+                            <p className="text-[8px] font-black text-red-500 uppercase tracking-[0.4em] italic text-right">ALERT_LEDGER</p>
+                            <div className="h-px w-full bg-red-500/20" />
+                         </div>
+                         <div className="flex flex-col gap-16">
+                            {ANXIETY_ITEMS.map((item, i) => (
+                                <div key={i} className="flex flex-col items-end gap-2 group">
+                                    <div className="flex items-center gap-3">
+                                        <span className="text-[10px] font-black text-white/20 uppercase font-mono">0{i+1}</span>
+                                        <div className="w-1 h-1 rounded-full bg-red-500 group-hover:scale-150 transition-transform duration-500" />
                                     </div>
-                                ))}
-                            </div>
-                        </div>
+                                    <span className="text-[11px] md:text-[13px] font-black text-red-100/50 uppercase tracking-widest italic text-right leading-none max-w-[120px]">
+                                        {item}
+                                    </span>
+                                </div>
+                            ))}
+                         </div>
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 19: THE REFINED TACTICAL (Copy of 13) --- */}
-            <LabSection id="opt-19" title="19. The Refined Tactical" description="Copy of 13 with all markers strategically placed on the right half.">
+            {/* --- ARCHETYPE 19: IMPROVISED EDGE CLUSTER --- */}
+            <LabSection id="opt-19" title="19. The Refined Edge Cluster" description="Copy of 13 with all markers clustered on the right third, connected to the edge to clear the center.">
                 <BackgroundVideo opacity={0.6} grayscale />
                 <div className="absolute inset-0 bg-black/40" />
                 
-                {/* Specific Right-Side Marker Positioning */}
-                <div className="absolute top-[20%] right-[10%] group z-20">
-                     <div className="flex items-center gap-4 animate-pulse">
-                        <div className="w-12 h-px bg-red-500" />
-                        <RiskTag text={ANXIETY_ITEMS[0]} />
-                     </div>
-                </div>
-                
-                <div className="absolute top-[40%] right-[25%] group z-20">
-                     <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: '0.2s' }}>
-                        <div className="w-16 h-px bg-red-500" />
-                        <RiskTag text={ANXIETY_ITEMS[1]} />
-                     </div>
-                </div>
-
-                <div className="absolute bottom-[35%] right-[15%] group z-20">
-                     <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: '0.4s' }}>
-                        <div className="w-10 h-px bg-red-500" />
-                        <RiskTag text={ANXIETY_ITEMS[2]} />
-                     </div>
-                </div>
-
-                <div className="absolute bottom-[15%] right-[20%] group z-20">
-                     <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: '0.6s' }}>
-                        <div className="w-20 h-px bg-red-500" />
-                        <RiskTag text={ANXIETY_ITEMS[3]} />
-                     </div>
-                </div>
+                {/* Cluster on the Right Edge only */}
+                {[
+                    { t: ANXIETY_ITEMS[0], top: '25%', right: '5%' },
+                    { t: ANXIETY_ITEMS[1], top: '40%', right: '8%' },
+                    { t: ANXIETY_ITEMS[2], top: '55%', right: '4%' },
+                    { t: ANXIETY_ITEMS[3], top: '70%', right: '7%' }
+                ].map((item, i) => (
+                    <div key={i} className="absolute group z-20" style={{ top: item.top, right: item.right }}>
+                         <div className="flex items-center gap-4 animate-in slide-in-from-right duration-1000" style={{ animationDelay: `${i * 0.15}s` }}>
+                            <RiskTag text={item.t} className="shadow-red-500/10 border-red-500/10" />
+                            <div className="w-6 h-px bg-red-500/20" />
+                            <div className="w-2 h-2 rounded-full border border-red-500/40 flex items-center justify-center">
+                                <div className="w-0.5 h-0.5 rounded-full bg-red-500 animate-ping" />
+                            </div>
+                         </div>
+                    </div>
+                ))}
 
                 <div className="relative z-10 h-full grid grid-cols-1 lg:grid-cols-[1.2fr,1fr] items-center px-8 md:px-24">
                      <div className="space-y-12">
@@ -380,3 +376,4 @@ export default function HeroLabClient() {
         </div>
     );
 }
+
