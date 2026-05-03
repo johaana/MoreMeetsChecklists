@@ -8,7 +8,12 @@ import {
     Lock,
     ClipboardCheck,
     Activity,
-    Check
+    Check,
+    Cpu,
+    Target,
+    ShieldCheck,
+    Zap,
+    History
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -150,7 +155,7 @@ export default function HeroLabClient() {
                     Final Candidate <span className="text-emerald-500">Benchmark</span>.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-sm md:text-base leading-tight">
-                    Optimized mobile placement with production-locked content logic.
+                    Synchronized content logic across all archetypes.
                 </p>
             </div>
 
@@ -269,15 +274,43 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 17: THE WINNING CINEMATIC HUD --- */}
-            <LabSection id="opt-17" title="17. The Cinematic HUD (Selection)" description="Production standard. Sequence: See Work -> Why Teams Struggle -> Solution -> CTA.">
+            {/* --- ARCHETYPE 17: THE CINEMATIC WINNER --- */}
+            <LabSection id="opt-17" title="17. The Cinematic HUD" description="The current selected standard. High-gravity ledger alignment.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.5} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/60 to-transparent pointer-events-none" />
                 </div>
                 
                 <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-16 md:py-0">
-                    <div className="max-w-5xl space-y-10 md:space-y-16">
+                    {/* MOBILE VIEW SEQUENCE */}
+                    <div className="md:hidden flex flex-col space-y-10 w-full">
+                        <div className="space-y-4">
+                            <h1 className="text-4xl font-black font-headline leading-[1.1] uppercase italic tracking-tighter">
+                                {NARRATIVE.line1}<br />
+                                <span className="text-emerald-500">{NARRATIVE.line2}</span>
+                            </h1>
+                            <p className="text-base font-bold text-zinc-400 italic">{NARRATIVE.subline}</p>
+                        </div>
+
+                        {/* RISKS (DNA: Ledger with Pulsar Dots) */}
+                        <div className="space-y-5 border-l-2 border-red-500/20 pl-6">
+                            <p className="text-[9px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">WHY TEAMS STRUGGLE</p>
+                            <div className="flex flex-col gap-4">
+                                {ANXIETY_ITEMS.map((item, i) => (
+                                    <div key={i} className="flex items-center gap-3 text-white/40 font-bold italic text-sm">
+                                        <div className="w-1 h-1 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+                                        <span className="uppercase tracking-tight">{item}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <CommandGrid textColor="text-white/60" />
+                        <SovereignCTA />
+                    </div>
+
+                    {/* DESKTOP VIEW */}
+                    <div className="hidden md:block max-w-5xl space-y-10 md:space-y-16">
                         <div className="space-y-4 md:space-y-6">
                             <h1 className="text-4xl md:text-[110px] font-black font-headline leading-[1.1] md:leading-[0.82] uppercase italic tracking-tighter drop-shadow-2xl">
                                 {NARRATIVE.line1}<br className="hidden md:block" />
@@ -289,7 +322,6 @@ export default function HeroLabClient() {
                         </div>
 
                         <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-24 items-start md:items-center">
-                            {/* RISKS (DNA: Cinematic Ledger with Pulsar Dots) */}
                             <div className="space-y-6 border-l-2 border-red-500/20 pl-6 md:pl-10">
                                 <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">WHY TEAMS STRUGGLE</p>
                                 <div className="flex flex-col gap-3 md:gap-4">
@@ -301,9 +333,7 @@ export default function HeroLabClient() {
                                     ))}
                                 </div>
                             </div>
-
                             <div className="h-32 md:h-40 w-px bg-white/10 hidden md:block" />
-
                             <div className="space-y-8 md:space-y-10 w-full sm:w-auto">
                                 <CommandGrid className="max-w-lg" textColor="text-white/60" />
                                 <SovereignCTA />
@@ -314,7 +344,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 18: THE RIGHT-ALIGNED STRESS STACK --- */}
-            <LabSection id="opt-18" title="18. The Right-Aligned Stress Stack" description="DNA: Raw pulsating crimson text. Sequence: Narrative -> Pulsating Risks -> Solution -> CTA.">
+            <LabSection id="opt-18" title="18. The Right-Aligned Stress Stack" description="DNA: Raw pulsating text. Mobile: Centered Stress Sequence.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.4} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/40 to-transparent pointer-events-none" />
@@ -359,7 +389,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 19: THE SCATTERED STRESS CLUSTER --- */}
-            <LabSection id="opt-19" title="19. The Scattered Stress Cluster" description="DNA: Variable pulsars. Narrative -> Pulsating Risks -> Solution -> CTA sequence.">
+            <LabSection id="opt-19" title="19. The Scattered Stress Cluster" description="DNA: Organic pulsars. Mobile: Vertical Stress Scan.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.4} grayscale />
                     <div className="absolute inset-0 bg-black/40 md:bg-black/30" />
@@ -406,6 +436,77 @@ export default function HeroLabClient() {
                             <SovereignCTA />
                          </div>
                      </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 20: THE HIGH-GRAVITY HUD (FINALIST PROPOSAL) --- */}
+            <LabSection id="opt-20" title="20. The High-Gravity HUD" description="Final Recommendation: Stacked headline + Glass Solution HUD + Integrated Sequence.">
+                <div className="absolute inset-0 z-0">
+                    <BackgroundVideo opacity={0.5} grayscale />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/60 to-transparent pointer-events-none" />
+                </div>
+
+                <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-16 md:py-0">
+                    <div className="max-w-6xl space-y-12 md:space-y-20">
+                        
+                        {/* 1. THE STACKED HOOK */}
+                        <div className="space-y-6 md:space-y-8">
+                            <h1 className="text-4xl md:text-[110px] font-black font-headline leading-[1] md:leading-[0.82] uppercase italic tracking-tighter drop-shadow-2xl">
+                                {NARRATIVE.line1} <br />
+                                <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
+                            </h1>
+                            <p className="text-base md:text-[36px] leading-[1.2] italic font-medium text-zinc-400 max-w-2xl">
+                                {NARRATIVE.subline}
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-[1fr,480px] gap-12 md:gap-24 items-start md:items-center">
+                            
+                            <div className="space-y-12">
+                                {/* 2. THE STRESSOR LEDGER */}
+                                <div className="space-y-6 border-l-2 border-red-500/20 pl-6 md:pl-10">
+                                    <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">WHY TEAMS STRUGGLE</p>
+                                    <div className="flex flex-col gap-4 md:gap-6">
+                                        {ANXIETY_ITEMS.map((item, i) => (
+                                            <div key={i} className="flex items-center gap-4 md:gap-5 text-white/40 font-bold italic text-sm md:text-xl group">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_15px_rgba(239,68,68,0.5)] group-hover:scale-150 transition-transform" />
+                                                <span className="uppercase tracking-tight whitespace-nowrap">{item}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <SovereignCTA className="hidden lg:block pt-4" />
+                            </div>
+
+                            {/* 3. THE SOLUTION HUD */}
+                            <div className="relative group/hud">
+                                <div className="absolute -inset-4 bg-emerald-500/10 blur-3xl opacity-0 group-hover/hud:opacity-100 transition-opacity duration-1000" />
+                                <div className="relative bg-white/5 border border-white/10 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-12 space-y-8 shadow-2xl overflow-hidden ring-1 ring-white/5">
+                                    <div className="absolute top-0 right-0 p-6 opacity-5 group-hover/hud:opacity-10 transition-opacity">
+                                        <Cpu className="w-32 h-32 text-emerald-500" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <p className="text-[9px] md:text-[11px] font-black text-emerald-500 uppercase tracking-[0.5em] italic font-headline flex items-center gap-3">
+                                            <Zap className="w-3 h-3 fill-emerald-500" /> SOVEREIGN_CORE_DEPLOYMENT
+                                        </p>
+                                        <div className="h-px w-20 bg-emerald-500/30" />
+                                    </div>
+                                    <div className="grid grid-cols-1 gap-6">
+                                        {TECH_SPECS.map((item, i) => (
+                                            <div key={i} className="flex items-center gap-5 group/spec">
+                                                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 group-hover/spec:bg-emerald-500 group-hover/spec:text-black transition-all shadow-inner">
+                                                     <item.i className="w-5 h-5" />
+                                                </div>
+                                                <span className="text-sm md:text-lg font-bold text-white/80 uppercase italic tracking-wide group-hover/spec:text-white transition-colors">{item.t}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <SovereignCTA className="lg:hidden mt-8" />
+                        </div>
+                    </div>
                 </div>
             </LabSection>
 
