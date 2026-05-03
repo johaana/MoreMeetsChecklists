@@ -16,7 +16,7 @@ import {
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
-// --- CONFIGURATION ---
+// --- PRODUCTION CONTENT CONSTANTS (Sovereign v17.0 Standard) ---
 const VIMEO_URL = "https://player.vimeo.com/video/1187795401?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0";
 
 const NARRATIVE = {
@@ -24,7 +24,7 @@ const NARRATIVE = {
     line2: "START SEEING.",
     subline: "See daily work getting done. Even when you aren't there.",
     cta: "Deploy the system",
-    meta: "ONE-TIME PAYMENT • OWN FOREVER • NO SaaS"
+    meta: "SINGLE / MULTI-UNIT READY • AUDIT-READY COMPLIANCE"
 };
 
 const TECH_SPECS = [
@@ -84,7 +84,7 @@ const RiskTag = ({ text, className, delay = "0s", variant = "tactical" }: { text
             ? "flex items-center gap-3 px-4 py-2 bg-red-950/40 border border-red-900/30 rounded-lg backdrop-blur-3xl shadow-2xl animate-in fade-in zoom-in duration-1000"
             : "flex items-center gap-3 px-4 py-1.5 bg-[#991B1B]/40 border border-red-900/10 rounded-full backdrop-blur-md animate-in fade-in slide-in-from-left-2 duration-1000",
         className
-    )} style={{ delay }}>
+    )} style={{ transitionDelay: delay }}>
         <div className={cn("w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.5)]")} />
         <span className="text-[10px] md:text-[11px] font-black text-red-100 uppercase tracking-widest italic leading-none whitespace-nowrap opacity-70">{text}</span>
     </div>
@@ -114,11 +114,6 @@ const SovereignCTA = ({ className, showExtraMeta = true }: { className?: string,
              <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic">
                 {NARRATIVE.meta}
             </p>
-            {showExtraMeta && (
-                <p className="text-[8px] text-emerald-500/40 font-black uppercase tracking-[0.3em]">
-                    SINGLE / MULTI-UNIT READY • AUDIT-READY COMPLIANCE
-                </p>
-            )}
         </div>
     </div>
 );
@@ -135,20 +130,20 @@ export default function HeroLabClient() {
                     Category <span className="text-emerald-500">Defining</span> Authority.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-base leading-tight">
-                    Optimized Cinematic Full-Screen Logic. All versioning and meta-tags sterilized.
+                    Synchronized content across all 13 archetypes. Baseline finalists (1 and 13) are strictly preserved.
                 </p>
             </div>
 
             {/* --- ARCHETYPE 1: THE HINGED DIAGNOSIS --- */}
-            <LabSection id="opt-1" title="01. The Hinged Risk Tabs" description="Original tactical layout. Borderless frame.">
+            <LabSection id="opt-1" title="01. The Hinged Risk Tabs" description="Strategic narrative with edge-anchored technical alerts.">
                 <div className="relative h-full flex items-center px-6 md:px-24 max-w-[1440px] mx-auto">
                     <BackgroundVideo opacity={0.1} grayscale />
                     <div className="grid grid-cols-1 lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-24 items-center w-full relative z-10">
                         <div className="space-y-10">
                              <div className="space-y-3">
                                 <h1 className="font-headline font-black text-[40px] md:text-[84px] leading-[0.88] tracking-tighter text-white uppercase italic">
-                                    STOP CHASING.<br/>
-                                    <span className="text-emerald-500">START SEEING.</span>
+                                    {NARRATIVE.line1}<br/>
+                                    <span className="text-emerald-500">{NARRATIVE.line2}</span>
                                 </h1>
                                 <p className="text-[18px] md:text-[26px] font-bold text-zinc-400 italic leading-tight">
                                     {NARRATIVE.subline}
@@ -192,8 +187,9 @@ export default function HeroLabClient() {
                      <div className="space-y-12">
                          <div className="space-y-4">
                             <h1 className="text-7xl md:text-[100px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white">
-                                START <br/> <span className="text-emerald-500">SEEING.</span>
+                                {NARRATIVE.line2}
                             </h1>
+                            <p className="text-2xl font-bold italic text-zinc-400">{NARRATIVE.subline}</p>
                          </div>
                          <div className="space-y-8">
                             <div className="flex flex-col gap-4">
@@ -212,28 +208,24 @@ export default function HeroLabClient() {
 
             {/* --- ARCHETYPE 17: THE REFINED CINEMATIC HUD --- */}
             <LabSection id="opt-17" title="17. Refined Cinematic HUD" description="Absolute full-screen cover logic. Layman vocabulary applied." fullScreen>
-                {/* Fixed Background Video Engine - Optimized for True Cover */}
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.5} grayscale />
-                    {/* Directional Hardware Gradient for legibility */}
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent pointer-events-none" />
                 </div>
                 
                 <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-24 lg:px-32">
                     <div className="max-w-5xl space-y-16">
-                        {/* Narrative Command */}
                         <div className="space-y-6">
                             <h1 className="text-6xl md:text-[110px] font-black font-headline leading-[0.82] uppercase italic tracking-tighter drop-shadow-2xl">
                                 {NARRATIVE.line1}<br/>
                                 <span style={{ color: BRAND_GREEN }}>{NARRATIVE.line2}</span>
                             </h1>
                             <p className="text-[20px] md:text-[32px] leading-[1.2] italic font-medium text-zinc-400 max-w-xl">
-                                See daily work getting done. <br/> Even when you aren't there.
+                                {NARRATIVE.subline}
                             </p>
                         </div>
 
                         <div className="flex flex-col md:flex-row gap-12 lg:gap-24 items-start md:items-center">
-                            {/* Diagnostic Ledger (The Layman Problems) */}
                             <div className="space-y-6 border-l-2 border-red-500/20 pl-8 md:pl-10">
                                 <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">WHY TEAMS STRUGGLE</p>
                                 <div className="flex flex-col gap-4">
@@ -246,14 +238,44 @@ export default function HeroLabClient() {
                                 </div>
                             </div>
 
-                            {/* Separator Line */}
                             <div className="h-40 w-px bg-white/10 hidden md:block" />
 
-                            {/* Sovereign Engine (The Solution) */}
                             <div className="space-y-10">
                                 <CommandGrid className="max-w-lg" textColor="text-white/60" />
                                 <SovereignCTA showExtraMeta={true} />
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </LabSection>
+
+            {/* --- ADDITIONAL OPTIONS (SYNCED TO OPT-17 CONTENT) --- */}
+            <LabSection id="opt-14" title="14. The Diagnostic Sidebar" description="Evolution of Option 1. High-gravity status gutter.">
+                 <div className="relative h-full flex items-center px-6 md:px-24 max-w-[1440px] mx-auto">
+                    <BackgroundVideo opacity={0.05} grayscale />
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr,80px,1.2fr] gap-0 items-center w-full relative z-10">
+                        <div className="space-y-10">
+                             <div className="space-y-4">
+                                <h1 className="font-headline font-black text-6xl lg:text-8xl leading-[0.85] tracking-tighter text-white uppercase italic">
+                                    {NARRATIVE.line1}<br/>
+                                    <span className="text-emerald-500">{NARRATIVE.line2}</span>
+                                </h1>
+                                <p className="text-xl font-bold text-zinc-500 italic">{NARRATIVE.subline}</p>
+                             </div>
+                             <CommandGrid className="max-w-lg" />
+                             <SovereignCTA />
+                        </div>
+                        <div className="flex flex-col gap-3 items-center justify-center py-20">
+                            <div className="w-px h-10 bg-white/10" />
+                            {ANXIETY_ITEMS.map((item, i) => (
+                                <div key={i} className="rotate-90 origin-center whitespace-nowrap py-12">
+                                    <span className="text-[10px] font-black text-red-500/40 uppercase tracking-[0.4em] italic">{item}</span>
+                                </div>
+                            ))}
+                            <div className="w-px h-10 bg-white/10" />
+                        </div>
+                        <div className="relative rounded-[2rem] overflow-hidden shadow-2xl aspect-video bg-black ring-1 ring-white/10">
+                             <BackgroundVideo opacity={1} />
                         </div>
                     </div>
                 </div>
