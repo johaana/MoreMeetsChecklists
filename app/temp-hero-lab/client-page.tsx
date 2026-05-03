@@ -82,8 +82,8 @@ const LabSection = ({ children, title, description, id, fullScreen = false }: { 
             </div>
         </div>
         <div className={cn(
-            "w-full relative overflow-hidden bg-[#050505] flex flex-col justify-center min-h-[80svh]",
-            fullScreen ? "md:h-[100svh]" : "md:h-[90svh]"
+            "w-full relative overflow-hidden bg-[#050505] flex flex-col justify-center",
+            fullScreen ? "min-h-screen" : "min-h-[80svh] md:min-h-[90svh]"
         )}>
             {children}
         </div>
@@ -146,16 +146,16 @@ export default function HeroLabClient() {
                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-emerald-500/5">
                     SOVEREIGN HERO LAB
                 </Badge>
-                <h1 className="text-3xl md:text-7xl font-black font-headline italic uppercase tracking-tighter leading-tight">
-                    Category <span className="text-emerald-500">Defining</span> Authority.
+                <h1 className="text-3xl md:text-7xl font-black font-headline italic uppercase tracking-tighter leading-tight text-white">
+                    Final Candidate <span className="text-emerald-500">Benchmark</span>.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-sm md:text-base leading-tight">
-                    Checking mobile responsiveness and cinematic gravity across archetypes.
+                    Optimized mobile placement with production-locked content logic.
                 </p>
             </div>
 
             {/* --- ARCHETYPE 1: THE HINGED DIAGNOSIS --- */}
-            <LabSection id="opt-1" title="01. The Hinged Risk Tabs" description="Strategic narrative with edge-anchored technical alerts. Fixed video frame.">
+            <LabSection id="opt-1" title="01. The Hinged Risk Tabs" description="Logical 'Problem -> Evidence' flow. Fixed responsive video frame.">
                 <div className="relative h-full flex flex-col justify-center items-center px-6 md:px-24 max-w-[1440px] mx-auto py-12 md:py-0">
                     <BackgroundVideo opacity={0.1} grayscale />
                     <div className="grid grid-cols-1 lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-24 items-center w-full relative z-10">
@@ -177,7 +177,7 @@ export default function HeroLabClient() {
                                 <SimpleVideo opacity={1} />
                                 <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-transparent pointer-events-none" />
                             </div>
-                            <div className="flex flex-row lg:flex-col flex-wrap lg:flex-nowrap justify-center gap-2 mt-4 lg:mt-0 lg:-ml-3 relative z-20 w-full">
+                            <div className="flex flex-row lg:flex-col flex-wrap lg:flex-nowrap justify-center gap-2 mt-6 lg:mt-0 lg:-ml-3 relative z-20 w-full">
                                 <div className="hidden lg:block mb-2 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-r-lg border-y border-r border-white/10 ml-3">
                                     <span className="text-[8px] font-black text-red-500 uppercase tracking-[0.4em] italic">WHY TEAMS STRUGGLE</span>
                                 </div>
@@ -191,9 +191,11 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 13: THE TACTICAL SCAN --- */}
-            <LabSection id="opt-13" title="13. The Tactical Scan" description="Full-screen industrial loop where risks appear as target markers.">
-                <BackgroundVideo opacity={0.6} grayscale />
-                <div className="absolute inset-0 bg-black/40" />
+            <LabSection id="opt-13" title="13. The Tactical Scan" description="Diagnostic pointers overlay. Resolves into high-density list on mobile.">
+                <div className="absolute inset-0 z-0">
+                    <BackgroundVideo opacity={0.6} grayscale />
+                    <div className="absolute inset-0 bg-black/40" />
+                </div>
                 
                 {/* Desktop Absolute Pointers */}
                 <div className="hidden md:block">
@@ -215,31 +217,34 @@ export default function HeroLabClient() {
                     })}
                 </div>
 
-                <div className="relative z-10 h-full grid grid-cols-1 md:grid-cols-2 items-center px-6 md:px-24 py-12 md:py-0">
+                <div className="relative z-10 h-full grid grid-cols-1 md:grid-cols-2 items-center px-6 md:px-24 py-16 md:py-0">
                      <div className="space-y-8 md:space-y-12">
                          <div className="space-y-4">
                             <h1 className="text-5xl md:text-[100px] font-black font-headline leading-[0.9] md:leading-[0.8] uppercase italic tracking-tighter text-white">
                                 {NARRATIVE.line1}<br className="hidden md:block" />
                                 <span className="text-emerald-500"> {NARRATIVE.line2}</span>
                             </h1>
-                            <p className="text-lg md:text-2xl font-bold italic text-zinc-400">{NARRATIVE.subline}</p>
+                            <p className="text-lg md:text-[32px] font-bold italic text-zinc-400 leading-tight">{NARRATIVE.subline}</p>
                          </div>
                          <div className="space-y-8">
                             <CommandGrid className="max-w-xl" />
                             <SovereignCTA />
                          </div>
                          {/* Mobile Visible Risk List */}
-                         <div className="md:hidden flex flex-wrap gap-2 pt-4">
-                             {ANXIETY_ITEMS.map((text, i) => (
-                                <RiskTag key={i} text={text} delay={`${i * 0.1}s`} />
-                             ))}
+                         <div className="md:hidden space-y-4 pt-6 border-t border-white/5">
+                             <p className="text-[9px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">WHY TEAMS STRUGGLE</p>
+                             <div className="flex flex-col gap-3">
+                                {ANXIETY_ITEMS.map((text, i) => (
+                                    <RiskTag key={i} text={text} delay={`${i * 0.1}s`} />
+                                ))}
+                             </div>
                          </div>
                      </div>
                 </div>
             </LabSection>
 
             {/* --- ARCHETYPE 17: THE WINNING CINEMATIC HUD --- */}
-            <LabSection id="opt-17" title="17. The Winning Cinematic HUD" description="Full-screen cinematic standard with deep gradient masking.">
+            <LabSection id="opt-17" title="17. The Cinematic HUD (Selection)" description="Current production finalist. Balanced institutional authority.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.5} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/60 to-transparent pointer-events-none" />
@@ -282,14 +287,14 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 18: THE RIGHT-ALIGNED STRESS STACK --- */}
-            <LabSection id="opt-18" title="18. The Right-Aligned Stress Stack" description="Clean cinematic layout with right-aligned pulsating stress points." fullScreen>
+            <LabSection id="opt-18" title="18. The Right-Aligned Stress Stack" description="Minimalist pulsating text. Aligns to center-flow on mobile.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.4} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/40 to-transparent pointer-events-none" />
                 </div>
                 
                 <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 py-16 md:py-0">
-                    <div className="grid grid-cols-1 lg:grid-cols-[1.2fr,1fr] gap-12 items-center h-full">
+                    <div className="grid grid-cols-1 lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-20 items-center">
                         <div className="space-y-10 md:space-y-12">
                             <div className="space-y-4 md:space-y-6">
                                 <h1 className="text-5xl md:text-[100px] font-black font-headline leading-[1] md:leading-[0.82] uppercase italic tracking-tighter text-white">
@@ -304,8 +309,7 @@ export default function HeroLabClient() {
                             <SovereignCTA />
                         </div>
 
-                        {/* RIGHT SIDE: CLEAN PULSATING TEXT STACK */}
-                        <div className="flex flex-col items-center lg:items-end gap-6 md:gap-12 pr-0 lg:pr-4">
+                        <div className="flex flex-col items-center lg:items-end gap-6 md:gap-12 pr-0 lg:pr-4 pt-12 lg:pt-0 border-t lg:border-t-0 border-white/5">
                              <p className="text-[9px] md:text-[10px] font-black text-red-500/40 uppercase tracking-[0.6em] italic text-center lg:text-right mb-2">WHY TEAMS STRUGGLE</p>
                              {ANXIETY_ITEMS.map((item, i) => (
                                 <PulsatingStressText key={i} text={item} delay={`${i * 0.4}s`} className="text-center lg:text-right" />
@@ -316,7 +320,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 19: THE SCATTERED STRESS CLUSTER --- */}
-            <LabSection id="opt-19" title="19. The Scattered Stress Cluster" description="Staggered diagnostic cluster on the right. Minimalist text pulse." fullScreen>
+            <LabSection id="opt-19" title="19. The Scattered Stress Cluster" description="Dynamic staggered pulsars. Resolves to vertical list on mobile.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.4} grayscale />
                     <div className="absolute inset-0 bg-black/40 md:bg-black/30" />
@@ -352,11 +356,11 @@ export default function HeroLabClient() {
                             <SovereignCTA />
                          </div>
                          {/* Mobile Stress List */}
-                         <div className="lg:hidden space-y-4 pt-6 border-t border-white/5">
-                             <p className="text-[9px] font-black text-red-500/40 uppercase tracking-[0.5em] italic">OPERATIONAL FRICTION</p>
-                             <div className="flex flex-col gap-3">
+                         <div className="lg:hidden space-y-4 pt-10 border-t border-white/5">
+                             <p className="text-[9px] font-black text-red-500/40 uppercase tracking-[0.5em] italic text-center">WHY TEAMS STRUGGLE</p>
+                             <div className="flex flex-col gap-6">
                                  {ANXIETY_ITEMS.map((text, i) => (
-                                    <PulsatingStressText key={i} text={text} delay={`${i * 0.2}s`} />
+                                    <PulsatingStressText key={i} text={text} delay={`${i * 0.2}s`} className="text-center" />
                                  ))}
                              </div>
                          </div>
