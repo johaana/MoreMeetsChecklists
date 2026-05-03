@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -24,7 +23,7 @@ import {
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
-const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
+const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 const ROTATING_OPTIONS = [
     {
@@ -175,7 +174,7 @@ export default function RotatingSovereignPage() {
                             LOOK WHAT'S IN FOR YOUR BUSINESS
                         </span>
                     </div>
-                    <span className="hidden md:block text-[9px] font-mono text-zinc-400 uppercase tracking-widest">SOVEREIGN_SYSTEM_V62.0_STABLE</span>
+                    <span className="hidden md:block text-[9px] font-mono text-zinc-400 uppercase tracking-widest">SOVEREIGN_SYSTEM_STABLE</span>
                 </div>
                 
                 <div className="max-w-7xl mx-auto">

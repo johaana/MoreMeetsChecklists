@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -116,7 +115,7 @@ function ThankYouContent() {
           <div className="space-y-4">
               <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Authenticated Deployment</Badge>
               <h1 className="text-4xl md:text-6xl font-black font-headline text-primary-text italic uppercase tracking-tighter leading-tight">
-                  Sovereign v6.2 Secured.
+                  Sovereign Master Secured.
               </h1>
               <p className="max-w-[650px] text-secondary-text text-lg italic border-l-2 border-primary/20 pl-8 mx-auto">
                   Your system for <strong>{verifiedItem.title}</strong> has been generated.

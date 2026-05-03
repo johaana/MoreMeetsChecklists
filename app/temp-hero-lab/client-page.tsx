@@ -129,7 +129,7 @@ export default function HeroLabClient() {
             
             <div className="container px-8 pt-32 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-emerald-500/5">
-                    SOVEREIGN HERO LAB V67.0
+                    SOVEREIGN HERO LAB
                 </Badge>
                 <h1 className="text-4xl md:text-7xl font-black font-headline italic uppercase tracking-tighter leading-none">
                     Category <span className="text-emerald-500">Defining</span> Authority.
@@ -140,7 +140,7 @@ export default function HeroLabClient() {
             </div>
 
             {/* --- ARCHETYPE 1: THE HINGED DIAGNOSIS (ANCHOR) --- */}
-            <LabSection id="opt-1" title="01. The Hinged Risk Tabs (Anchor)" description="Original tactical version. Borderless frame.">
+            <LabSection id="opt-1" title="01. The Hinged Risk Tabs (Anchor)" description="Original tactical layout. Borderless frame.">
                 <div className="relative h-full flex items-center px-6 md:px-24 max-w-[1440px] mx-auto">
                     <BackgroundVideo opacity={0.1} grayscale />
                     <div className="grid grid-cols-1 lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-24 items-center w-full relative z-10">
@@ -210,7 +210,7 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 17: THE REFINED CINEMATIC HUD (VERSION 67.0) --- */}
+            {/* --- ARCHETYPE 17: THE REFINED CINEMATIC HUD --- */}
             <LabSection id="opt-17" title="17. Refined Cinematic HUD" description="Absolute full-screen cover logic. Layman vocabulary applied." fullScreen>
                 {/* Fixed Background Video Engine - Optimized for True Cover */}
                 <div className="absolute inset-0 z-0">
@@ -260,7 +260,7 @@ export default function HeroLabClient() {
 
                 {/* Sub-Bezel Metadata */}
                 <div className="absolute bottom-8 left-8 md:left-24 lg:left-32 z-10 opacity-30">
-                     <p className="text-[8px] font-black uppercase tracking-[0.8em] italic">SOVEREIGN_SYSTEM_OPERATIONAL_OVERLAY_V67</p>
+                     <p className="text-[8px] font-black uppercase tracking-[0.8em] italic">SOVEREIGN_SYSTEM_OPERATIONAL_OVERLAY</p>
                 </div>
             </LabSection>
 
