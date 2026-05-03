@@ -45,9 +45,6 @@ const BRAND_GREEN = "#22C55E";
 
 // --- REUSABLE COMPONENTS ---
 
-/**
- * BackgroundVideo - Optimized for full-screen cover behavior.
- */
 const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <iframe
@@ -64,9 +61,6 @@ const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
     </div>
 );
 
-/**
- * SimpleVideo - Optimized for framed containers to show the "whole video".
- */
 const SimpleVideo = ({ opacity = 1, grayscale = false }) => (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <iframe
@@ -152,7 +146,7 @@ export default function HeroLabClient() {
                     Category <span className="text-emerald-500">Defining</span> Authority.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-base leading-tight">
-                    Testing 13+ operational archetypes for the final homepage selection.
+                    Testing operational archetypes for the final selection.
                 </p>
             </div>
 
@@ -197,7 +191,6 @@ export default function HeroLabClient() {
                 <BackgroundVideo opacity={0.6} grayscale />
                 <div className="absolute inset-0 bg-black/40" />
                 
-                {/* Tactical Point 1: Top Right */}
                 <div className="absolute top-[20%] right-[25%] group z-20">
                      <div className="flex items-center gap-4 animate-pulse">
                         <div className="w-12 h-px bg-red-500" />
@@ -205,7 +198,6 @@ export default function HeroLabClient() {
                      </div>
                 </div>
                 
-                {/* Tactical Point 2: Mid Right */}
                 <div className="absolute top-[45%] right-[15%] group z-20">
                      <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: '0.2s' }}>
                         <div className="w-16 h-px bg-red-500" />
@@ -213,7 +205,6 @@ export default function HeroLabClient() {
                      </div>
                 </div>
 
-                {/* Tactical Point 3: Bottom Right */}
                 <div className="absolute bottom-[30%] right-[30%] group z-20">
                      <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: '0.4s' }}>
                         <div className="w-10 h-px bg-red-500" />
@@ -221,7 +212,6 @@ export default function HeroLabClient() {
                      </div>
                 </div>
 
-                {/* Tactical Point 4: Bottom Right Far */}
                 <div className="absolute bottom-[15%] right-[10%] group z-20">
                      <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: '0.6s' }}>
                         <div className="w-20 h-px bg-red-500" />
@@ -247,7 +237,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 17: THE WINNING CINEMATIC HUD --- */}
-            <LabSection id="opt-17" title="17. The Winning Cinematic HUD" description="Full-screen cinematic standard with deep gradient masking. Layout untouched." fullScreen>
+            <LabSection id="opt-17" title="17. The Winning Cinematic HUD" description="Full-screen cinematic standard with deep gradient masking.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.5} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent pointer-events-none" />
@@ -289,35 +279,95 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 14: THE DIAGNOSTIC SIDEBAR --- */}
-            <LabSection id="opt-14" title="14. The Diagnostic Sidebar" description="High-gravity status gutter variation with edge-to-edge narrative.">
-                 <div className="relative h-full flex items-center px-6 md:px-24 max-w-[1440px] mx-auto">
-                    <BackgroundVideo opacity={0.05} grayscale />
-                    <div className="grid grid-cols-1 lg:grid-cols-[1fr,80px,1.2fr] gap-0 items-center w-full relative z-10">
-                        <div className="space-y-10">
-                             <div className="space-y-4">
-                                <h1 className="font-headline font-black text-6xl lg:text-8xl leading-[0.85] tracking-tighter text-white uppercase italic">
+            {/* --- ARCHETYPE 18: THE RIGHT-ALIGNED CINEMATIC (Copy of 17) --- */}
+            <LabSection id="opt-18" title="18. The Right-Aligned Cinematic" description="Copy of 17 with 'Why Teams Struggle' ledger moved to the right." fullScreen>
+                <div className="absolute inset-0 z-0">
+                    <BackgroundVideo opacity={0.5} grayscale />
+                    <div className="absolute inset-0 bg-gradient-to-l from-black via-black/20 to-black/60 pointer-events-none" />
+                </div>
+                
+                <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-24 lg:px-32">
+                    <div className="grid lg:grid-cols-[1fr,350px] gap-20 items-center">
+                        <div className="space-y-16">
+                            <div className="space-y-6">
+                                <h1 className="text-6xl md:text-[110px] font-black font-headline leading-[0.82] uppercase italic tracking-tighter drop-shadow-2xl">
                                     {NARRATIVE.line1}<br/>
-                                    <span className="text-emerald-500">{NARRATIVE.line2}</span>
+                                    <span style={{ color: BRAND_GREEN }}>{NARRATIVE.line2}</span>
                                 </h1>
-                                <p className="text-xl font-bold text-zinc-500 italic">{NARRATIVE.subline}</p>
-                             </div>
-                             <CommandGrid className="max-w-lg" />
-                             <SovereignCTA />
+                                <p className="text-[20px] md:text-[32px] leading-[1.2] italic font-medium text-zinc-400 max-w-xl">
+                                    {NARRATIVE.subline}
+                                </p>
+                            </div>
+                            <div className="flex flex-col gap-10">
+                                <CommandGrid className="max-w-lg" textColor="text-white/60" />
+                                <SovereignCTA />
+                            </div>
                         </div>
-                        <div className="flex flex-col gap-3 items-center justify-center py-20">
-                            <div className="w-px h-10 bg-white/10" />
-                            {ANXIETY_ITEMS.map((item, i) => (
-                                <div key={i} className="rotate-90 origin-center whitespace-nowrap py-12">
-                                    <span className="text-[10px] font-black text-red-500/40 uppercase tracking-[0.4em] italic">{item}</span>
-                                </div>
-                            ))}
-                            <div className="w-px h-10 bg-white/10" />
-                        </div>
-                        <div className="relative rounded-[2rem] overflow-hidden shadow-2xl aspect-video bg-black ring-1 ring-white/10">
-                             <SimpleVideo opacity={1} />
+
+                        {/* Right Aligned Risk Ledger */}
+                        <div className="space-y-8 bg-black/40 backdrop-blur-xl p-10 rounded-[2.5rem] border border-white/5 shadow-2xl">
+                            <p className="text-[10px] font-black text-red-500 uppercase tracking-[0.5em] italic">WHY TEAMS STRUGGLE</p>
+                            <div className="flex flex-col gap-6">
+                                {ANXIETY_ITEMS.map((item, i) => (
+                                    <div key={i} className="flex items-center gap-4 text-white/60 font-bold italic text-base group">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.4)] group-hover:scale-125 transition-transform" />
+                                        <span className="uppercase tracking-tight">{item}</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 19: THE REFINED TACTICAL (Copy of 13) --- */}
+            <LabSection id="opt-19" title="19. The Refined Tactical" description="Copy of 13 with all markers strategically placed on the right half.">
+                <BackgroundVideo opacity={0.6} grayscale />
+                <div className="absolute inset-0 bg-black/40" />
+                
+                {/* Specific Right-Side Marker Positioning */}
+                <div className="absolute top-[20%] right-[10%] group z-20">
+                     <div className="flex items-center gap-4 animate-pulse">
+                        <div className="w-12 h-px bg-red-500" />
+                        <RiskTag text={ANXIETY_ITEMS[0]} />
+                     </div>
+                </div>
+                
+                <div className="absolute top-[40%] right-[25%] group z-20">
+                     <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: '0.2s' }}>
+                        <div className="w-16 h-px bg-red-500" />
+                        <RiskTag text={ANXIETY_ITEMS[1]} />
+                     </div>
+                </div>
+
+                <div className="absolute bottom-[35%] right-[15%] group z-20">
+                     <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: '0.4s' }}>
+                        <div className="w-10 h-px bg-red-500" />
+                        <RiskTag text={ANXIETY_ITEMS[2]} />
+                     </div>
+                </div>
+
+                <div className="absolute bottom-[15%] right-[20%] group z-20">
+                     <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: '0.6s' }}>
+                        <div className="w-20 h-px bg-red-500" />
+                        <RiskTag text={ANXIETY_ITEMS[3]} />
+                     </div>
+                </div>
+
+                <div className="relative z-10 h-full grid grid-cols-1 lg:grid-cols-[1.2fr,1fr] items-center px-8 md:px-24">
+                     <div className="space-y-12">
+                         <div className="space-y-4">
+                            <h1 className="text-7xl md:text-[100px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white">
+                                {NARRATIVE.line1}<br/>
+                                <span className="text-emerald-500">{NARRATIVE.line2}</span>
+                            </h1>
+                            <p className="text-2xl font-bold italic text-zinc-400">{NARRATIVE.subline}</p>
+                         </div>
+                         <div className="space-y-8">
+                            <CommandGrid className="max-w-xl" />
+                            <SovereignCTA />
+                         </div>
+                     </div>
                 </div>
             </LabSection>
 
