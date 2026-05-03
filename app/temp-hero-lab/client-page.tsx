@@ -7,11 +7,8 @@ import {
     ArrowRight, 
     Lock,
     ClipboardCheck,
-    History,
-    AlertTriangle,
     Activity,
-    Check,
-    ShieldCheck as ShieldCheckIcon
+    Check
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -105,6 +102,14 @@ const RiskTag = ({ text, className, delay = "0s", variant = "tactical" }: { text
     </div>
 );
 
+const PulsatingStressText = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
+    <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
+        <span className="text-[15px] md:text-[22px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.4)] whitespace-nowrap">
+            {text}
+        </span>
+    </div>
+);
+
 const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: string, textColor?: string }) => (
     <div className={cn("grid grid-cols-2 gap-x-10 gap-y-5", className)}>
         {TECH_SPECS.map((item, i) => (
@@ -190,33 +195,22 @@ export default function HeroLabClient() {
                 <BackgroundVideo opacity={0.6} grayscale />
                 <div className="absolute inset-0 bg-black/40" />
                 
-                <div className="absolute top-[20%] right-[25%] group z-20">
-                     <div className="flex items-center gap-4 animate-pulse">
-                        <div className="w-12 h-px bg-red-500" />
-                        <RiskTag text={ANXIETY_ITEMS[0]} />
-                     </div>
-                </div>
-                
-                <div className="absolute top-[45%] right-[15%] group z-20">
-                     <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: '0.2s' }}>
-                        <div className="w-16 h-px bg-red-500" />
-                        <RiskTag text={ANXIETY_ITEMS[1]} />
-                     </div>
-                </div>
-
-                <div className="absolute bottom-[30%] right-[30%] group z-20">
-                     <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: '0.4s' }}>
-                        <div className="w-10 h-px bg-red-500" />
-                        <RiskTag text={ANXIETY_ITEMS[2]} />
-                     </div>
-                </div>
-
-                <div className="absolute bottom-[15%] right-[10%] group z-20">
-                     <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: '0.6s' }}>
-                        <div className="w-20 h-px bg-red-500" />
-                        <RiskTag text={ANXIETY_ITEMS[3]} />
-                     </div>
-                </div>
+                {ANXIETY_ITEMS.map((text, i) => {
+                    const positions = [
+                        { top: '20%', right: '25%' },
+                        { top: '45%', right: '15%' },
+                        { bottom: '30%', right: '30%' },
+                        { bottom: '15%', right: '10%' }
+                    ];
+                    return (
+                        <div key={i} className="absolute group z-20" style={positions[i]}>
+                            <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: `${i * 0.2}s` }}>
+                                <div className="w-12 h-px bg-red-500/40" />
+                                <RiskTag text={text} />
+                            </div>
+                        </div>
+                    );
+                })}
 
                 <div className="relative z-10 h-full grid grid-cols-2 items-center px-24">
                      <div className="space-y-12">
@@ -278,89 +272,72 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 18: IMPROVISED RIGHT SIDE RAIL --- */}
-            <LabSection id="opt-18" title="18. The Diagnostic Sidebar Rail" description="Copy of 17 with risks moved to a thin, non-obstructive vertical rail on the far right." fullScreen>
+            {/* --- ARCHETYPE 18: THE RIGHT-ALIGNED STRESS STACK --- */}
+            <LabSection id="opt-18" title="18. The Right-Aligned Stress Stack" description="Full-screen cinematic. No lines, no borders. Just pulsating diagnostic text on the far right." fullScreen>
                 <div className="absolute inset-0 z-0">
-                    <BackgroundVideo opacity={0.5} grayscale />
+                    <BackgroundVideo opacity={0.4} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent pointer-events-none" />
                 </div>
                 
                 <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-24">
-                    <div className="max-w-4xl space-y-12">
-                        <div className="space-y-6">
-                            <h1 className="text-6xl md:text-[110px] font-black font-headline leading-[0.82] uppercase italic tracking-tighter drop-shadow-2xl">
-                                {NARRATIVE.line1}<br/>
-                                <span style={{ color: BRAND_GREEN }}>{NARRATIVE.line2}</span>
-                            </h1>
-                            <p className="text-[20px] md:text-[32px] leading-[1.2] italic font-medium text-zinc-400 max-w-xl">
-                                {NARRATIVE.subline}
-                            </p>
-                        </div>
-                        <div className="flex flex-col gap-10">
-                            <CommandGrid className="max-w-lg" textColor="text-white/60" />
+                    <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 items-center h-full">
+                        <div className="space-y-12">
+                            <div className="space-y-6">
+                                <h1 className="text-6xl md:text-[100px] font-black font-headline leading-[0.82] uppercase italic tracking-tighter text-white">
+                                    {NARRATIVE.line1}<br/>
+                                    <span style={{ color: BRAND_GREEN }}>{NARRATIVE.line2}</span>
+                                </h1>
+                                <p className="text-[20px] md:text-[30px] leading-[1.2] italic font-medium text-zinc-400 max-w-xl">
+                                    {NARRATIVE.subline}
+                                </p>
+                            </div>
+                            <CommandGrid className="max-w-lg" textColor="text-white/40" />
                             <SovereignCTA />
                         </div>
-                    </div>
-                </div>
 
-                {/* Improvisation: Unobstructive Vertical Status Rail */}
-                <div className="absolute top-0 right-0 h-full w-[20%] md:w-[15%] bg-gradient-to-l from-black via-black/20 to-transparent z-20 flex flex-col justify-center px-4 md:px-8 border-l border-white/5 backdrop-blur-[2px]">
-                    <div className="space-y-12">
-                         <div className="space-y-1">
-                            <p className="text-[8px] font-black text-red-500 uppercase tracking-[0.4em] italic text-right">ALERT_LEDGER</p>
-                            <div className="h-px w-full bg-red-500/20" />
-                         </div>
-                         <div className="flex flex-col gap-16">
-                            {ANXIETY_ITEMS.map((item, i) => (
-                                <div key={i} className="flex flex-col items-end gap-2 group">
-                                    <div className="flex items-center gap-3">
-                                        <span className="text-[10px] font-black text-white/20 uppercase font-mono">0{i+1}</span>
-                                        <div className="w-1 h-1 rounded-full bg-red-500 group-hover:scale-150 transition-transform duration-500" />
-                                    </div>
-                                    <span className="text-[11px] md:text-[13px] font-black text-red-100/50 uppercase tracking-widest italic text-right leading-none max-w-[120px]">
-                                        {item}
-                                    </span>
-                                </div>
-                            ))}
-                         </div>
+                        {/* RIGHT SIDE: CLEAN PULSATING TEXT STACK */}
+                        <div className="flex flex-col items-end gap-12 pr-4">
+                             <p className="text-[10px] font-black text-red-500/40 uppercase tracking-[0.6em] italic text-right mb-4">WHY TEAMS STRUGGLE</p>
+                             {ANXIETY_ITEMS.map((item, i) => (
+                                <PulsatingStressText key={i} text={item} delay={`${i * 0.4}s`} className="text-right" />
+                             ))}
+                        </div>
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 19: IMPROVISED EDGE CLUSTER --- */}
-            <LabSection id="opt-19" title="19. The Refined Edge Cluster" description="Copy of 13 with all markers clustered on the right third, connected to the edge to clear the center.">
-                <BackgroundVideo opacity={0.6} grayscale />
-                <div className="absolute inset-0 bg-black/40" />
-                
-                {/* Cluster on the Right Edge only */}
+            {/* --- ARCHETYPE 19: THE SCATTERED STRESS CLUSTER --- */}
+            <LabSection id="opt-19" title="19. The Scattered Stress Cluster" description="Full-screen cinematic. Diagnostic points scattered on the right side. Only text pulsating." fullScreen>
+                <div className="absolute inset-0 z-0">
+                    <BackgroundVideo opacity={0.4} grayscale />
+                    <div className="absolute inset-0 bg-black/30" />
+                </div>
+
+                {/* SCATTERED PULSATING TEXT ON THE RIGHT THIRD */}
                 {[
-                    { t: ANXIETY_ITEMS[0], top: '25%', right: '5%' },
-                    { t: ANXIETY_ITEMS[1], top: '40%', right: '8%' },
-                    { t: ANXIETY_ITEMS[2], top: '55%', right: '4%' },
-                    { t: ANXIETY_ITEMS[3], top: '70%', right: '7%' }
+                    { t: ANXIETY_ITEMS[0], top: '22%', right: '8%' },
+                    { t: ANXIETY_ITEMS[1], top: '42%', right: '15%' },
+                    { t: ANXIETY_ITEMS[2], top: '62%', right: '10%' },
+                    { t: ANXIETY_ITEMS[3], top: '82%', right: '18%' }
                 ].map((item, i) => (
-                    <div key={i} className="absolute group z-20" style={{ top: item.top, right: item.right }}>
-                         <div className="flex items-center gap-4 animate-in slide-in-from-right duration-1000" style={{ animationDelay: `${i * 0.15}s` }}>
-                            <RiskTag text={item.t} className="shadow-red-500/10 border-red-500/10" />
-                            <div className="w-6 h-px bg-red-500/20" />
-                            <div className="w-2 h-2 rounded-full border border-red-500/40 flex items-center justify-center">
-                                <div className="w-0.5 h-0.5 rounded-full bg-red-500 animate-ping" />
-                            </div>
-                         </div>
+                    <div key={i} className="absolute z-20" style={{ top: item.top, right: item.right }}>
+                        <PulsatingStressText text={item.t} delay={`${i * 0.3}s`} />
                     </div>
                 ))}
-
-                <div className="relative z-10 h-full grid grid-cols-1 lg:grid-cols-[1.2fr,1fr] items-center px-8 md:px-24">
-                     <div className="space-y-12">
-                         <div className="space-y-4">
-                            <h1 className="text-7xl md:text-[100px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white">
+                
+                <div className="relative z-10 h-full flex flex-col justify-center px-8 md:px-24">
+                     <div className="max-w-4xl space-y-12">
+                         <div className="space-y-6">
+                            <h1 className="text-6xl md:text-[100px] font-black font-headline leading-[0.82] uppercase italic tracking-tighter text-white">
                                 {NARRATIVE.line1}<br/>
-                                <span className="text-emerald-500">{NARRATIVE.line2}</span>
+                                <span style={{ color: BRAND_GREEN }}>{NARRATIVE.line2}</span>
                             </h1>
-                            <p className="text-2xl font-bold italic text-zinc-400">{NARRATIVE.subline}</p>
+                            <p className="text-[20px] md:text-[30px] leading-[1.2] italic font-medium text-zinc-400 max-w-xl">
+                                {NARRATIVE.subline}
+                            </p>
                          </div>
-                         <div className="space-y-8">
-                            <CommandGrid className="max-w-xl" />
+                         <div className="space-y-10">
+                            <CommandGrid className="max-w-lg" textColor="text-white/40" />
                             <SovereignCTA />
                          </div>
                      </div>
