@@ -16,7 +16,7 @@ import {
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
-// --- PRODUCTION CONTENT CONSTANTS (Sovereign v17.0 Standard) ---
+// --- PRODUCTION CONTENT CONSTANTS ---
 const VIMEO_URL = "https://player.vimeo.com/video/1187795401?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0";
 
 const NARRATIVE = {
@@ -45,6 +45,9 @@ const BRAND_GREEN = "#22C55E";
 
 // --- REUSABLE COMPONENTS ---
 
+/**
+ * BackgroundVideo - Optimized for full-screen cover behavior.
+ */
 const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <iframe
@@ -57,6 +60,25 @@ const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
             )}
             style={{ opacity, border: 'none' }}
             title="Sovereign Background"
+        />
+    </div>
+);
+
+/**
+ * SimpleVideo - Optimized for framed containers to show the "whole video".
+ */
+const SimpleVideo = ({ opacity = 1, grayscale = false }) => (
+    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <iframe
+            src={VIMEO_URL}
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            className={cn(
+                "absolute top-0 left-0 w-full h-full scale-[1.01]",
+                grayscale && "saturate-0 brightness-75 contrast-110"
+            )}
+            style={{ opacity, border: 'none' }}
+            title="Framed Video"
         />
     </div>
 );
@@ -105,7 +127,7 @@ const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: s
     </div>
 );
 
-const SovereignCTA = ({ className, showExtraMeta = true }: { className?: string, showExtraMeta?: boolean }) => (
+const SovereignCTA = ({ className }: { className?: string }) => (
     <div className={cn("space-y-6", className)}>
         <button className="h-16 px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
             {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-[#FACC15] transition-transform group-hover:translate-x-1" />
@@ -130,12 +152,12 @@ export default function HeroLabClient() {
                     Category <span className="text-emerald-500">Defining</span> Authority.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-base leading-tight">
-                    Synchronized content across all 13 archetypes. Baseline finalists (1 and 13) are strictly preserved.
+                    Testing 13+ operational archetypes for the final homepage selection.
                 </p>
             </div>
 
             {/* --- ARCHETYPE 1: THE HINGED DIAGNOSIS --- */}
-            <LabSection id="opt-1" title="01. The Hinged Risk Tabs" description="Strategic narrative with edge-anchored technical alerts.">
+            <LabSection id="opt-1" title="01. The Hinged Risk Tabs" description="Strategic narrative with edge-anchored technical alerts. Fixed video frame.">
                 <div className="relative h-full flex items-center px-6 md:px-24 max-w-[1440px] mx-auto">
                     <BackgroundVideo opacity={0.1} grayscale />
                     <div className="grid grid-cols-1 lg:grid-cols-[1.1fr,1fr] gap-12 lg:gap-24 items-center w-full relative z-10">
@@ -153,11 +175,14 @@ export default function HeroLabClient() {
                              <SovereignCTA />
                         </div>
                         <div className="relative flex items-center group">
-                            <div className="relative flex-1 rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[16/11] bg-black ring-1 ring-white/5">
-                                <BackgroundVideo opacity={1} />
+                            <div className="relative flex-1 rounded-[2.5rem] overflow-hidden shadow-2xl aspect-video bg-black ring-1 ring-white/5">
+                                <SimpleVideo opacity={1} />
                                 <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-transparent pointer-events-none" />
                             </div>
                             <div className="flex flex-col gap-2 -ml-3 relative z-20">
+                                <div className="mb-2 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-r-lg border-y border-r border-white/10 ml-3">
+                                    <span className="text-[8px] font-black text-red-500 uppercase tracking-[0.4em] italic">WHY TEAMS STRUGGLE</span>
+                                </div>
                                 {ANXIETY_ITEMS.map((item, i) => (
                                     <RiskTag key={i} text={item} delay={`${i * 0.1}s`} className="rounded-l-none border-l-0" />
                                 ))}
@@ -168,46 +193,61 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 13: THE TACTICAL SCAN --- */}
-            <LabSection id="opt-13" title="13. The Tactical Scan" description="Full-screen industrial loop where risks appear as target markers.">
+            <LabSection id="opt-13" title="13. The Tactical Scan" description="Full-screen industrial loop where all four risks appear as target markers.">
                 <BackgroundVideo opacity={0.6} grayscale />
                 <div className="absolute inset-0 bg-black/40" />
-                <div className="absolute top-[25%] right-[20%] group">
+                
+                {/* Tactical Point 1: Top Right */}
+                <div className="absolute top-[20%] right-[25%] group z-20">
                      <div className="flex items-center gap-4 animate-pulse">
-                        <div className="w-10 h-px bg-red-500" />
+                        <div className="w-12 h-px bg-red-500" />
                         <RiskTag text={ANXIETY_ITEMS[0]} />
                      </div>
                 </div>
-                <div className="absolute bottom-[35%] right-[15%]">
-                     <div className="flex items-center gap-4">
-                        <div className="w-20 h-px bg-red-500" />
+                
+                {/* Tactical Point 2: Mid Right */}
+                <div className="absolute top-[45%] right-[15%] group z-20">
+                     <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: '0.2s' }}>
+                        <div className="w-16 h-px bg-red-500" />
                         <RiskTag text={ANXIETY_ITEMS[1]} />
                      </div>
                 </div>
+
+                {/* Tactical Point 3: Bottom Right */}
+                <div className="absolute bottom-[30%] right-[30%] group z-20">
+                     <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: '0.4s' }}>
+                        <div className="w-10 h-px bg-red-500" />
+                        <RiskTag text={ANXIETY_ITEMS[2]} />
+                     </div>
+                </div>
+
+                {/* Tactical Point 4: Bottom Right Far */}
+                <div className="absolute bottom-[15%] right-[10%] group z-20">
+                     <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: '0.6s' }}>
+                        <div className="w-20 h-px bg-red-500" />
+                        <RiskTag text={ANXIETY_ITEMS[3]} />
+                     </div>
+                </div>
+
                 <div className="relative z-10 h-full grid grid-cols-2 items-center px-24">
                      <div className="space-y-12">
                          <div className="space-y-4">
                             <h1 className="text-7xl md:text-[100px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white">
-                                {NARRATIVE.line2}
+                                {NARRATIVE.line1}<br/>
+                                <span className="text-emerald-500">{NARRATIVE.line2}</span>
                             </h1>
                             <p className="text-2xl font-bold italic text-zinc-400">{NARRATIVE.subline}</p>
                          </div>
                          <div className="space-y-8">
-                            <div className="flex flex-col gap-4">
-                                {TECH_SPECS.slice(0,3).map((item, i) => (
-                                    <div key={i} className="flex items-center gap-4 text-white/40 group cursor-default">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                                        <span className="text-sm font-black uppercase tracking-[0.2em] group-hover:text-emerald-500 transition-colors">{item.t}</span>
-                                    </div>
-                                ))}
-                            </div>
+                            <CommandGrid className="max-w-xl" />
                             <SovereignCTA />
                          </div>
                      </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 17: THE REFINED CINEMATIC HUD --- */}
-            <LabSection id="opt-17" title="17. Refined Cinematic HUD" description="Absolute full-screen cover logic. Layman vocabulary applied." fullScreen>
+            {/* --- ARCHETYPE 17: THE WINNING CINEMATIC HUD --- */}
+            <LabSection id="opt-17" title="17. The Winning Cinematic HUD" description="Full-screen cinematic standard with deep gradient masking. Layout untouched." fullScreen>
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.5} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent pointer-events-none" />
@@ -242,15 +282,15 @@ export default function HeroLabClient() {
 
                             <div className="space-y-10">
                                 <CommandGrid className="max-w-lg" textColor="text-white/60" />
-                                <SovereignCTA showExtraMeta={true} />
+                                <SovereignCTA />
                             </div>
                         </div>
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- ADDITIONAL OPTIONS (SYNCED TO OPT-17 CONTENT) --- */}
-            <LabSection id="opt-14" title="14. The Diagnostic Sidebar" description="Evolution of Option 1. High-gravity status gutter.">
+            {/* --- ARCHETYPE 14: THE DIAGNOSTIC SIDEBAR --- */}
+            <LabSection id="opt-14" title="14. The Diagnostic Sidebar" description="High-gravity status gutter variation with edge-to-edge narrative.">
                  <div className="relative h-full flex items-center px-6 md:px-24 max-w-[1440px] mx-auto">
                     <BackgroundVideo opacity={0.05} grayscale />
                     <div className="grid grid-cols-1 lg:grid-cols-[1fr,80px,1.2fr] gap-0 items-center w-full relative z-10">
@@ -275,7 +315,7 @@ export default function HeroLabClient() {
                             <div className="w-px h-10 bg-white/10" />
                         </div>
                         <div className="relative rounded-[2rem] overflow-hidden shadow-2xl aspect-video bg-black ring-1 ring-white/10">
-                             <BackgroundVideo opacity={1} />
+                             <SimpleVideo opacity={1} />
                         </div>
                     </div>
                 </div>
