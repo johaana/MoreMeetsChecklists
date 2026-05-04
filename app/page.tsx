@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -129,9 +130,11 @@ const HeroSection = () => {
             <div className="absolute inset-0 z-0">
                 <BackgroundVideo opacity={0.3} grayscale />
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
+                {/* Fade-to-Light Transition */}
+                <div className="absolute inset-x-0 bottom-0 h-[30vh] bg-gradient-to-t from-[#F7F8FA] to-transparent z-10" />
             </div>
 
-            <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-12 md:py-0 md:pt-16">
+            <div className="relative z-20 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 pt-24 pb-12 md:py-0 md:pt-16">
                 <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 items-center">
                     
                     {/* Phase 01: The Hook */}
@@ -457,3 +460,4 @@ export default function Home() {
         </div>
     );
 }
+

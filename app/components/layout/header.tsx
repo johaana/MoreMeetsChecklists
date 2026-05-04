@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -91,13 +92,13 @@ export function SiteHeader() {
     }, [pathname]);
 
     const navLinkClass = cn(
-        "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-all drop-shadow-sm text-white/80 hover:text-white"
+        "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-all text-white/80 hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
     );
 
     return (
         <header className={cn(
             "px-6 lg:px-12 h-16 flex items-center fixed top-0 w-full z-50 transition-all duration-500",
-            isScrolled ? "bg-black/80 backdrop-blur-xl border-b border-white/5" : "bg-transparent border-b border-transparent"
+            isScrolled ? "bg-black/90 backdrop-blur-2xl border-b border-white/10" : "bg-transparent border-b border-transparent"
         )}>
             <div className="flex items-center">
                 <BrandLogo />
@@ -204,3 +205,4 @@ export function SiteHeader() {
         </header>
     );
 }
+
