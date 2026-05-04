@@ -9,11 +9,6 @@ import {
     ClipboardCheck,
     Activity,
     Check,
-    Cpu,
-    Target,
-    ShieldCheck,
-    Zap,
-    History
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -331,8 +326,8 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 19: THE SCATTERED STRESS CLUSTER (REFINED) --- */}
-            <LabSection id="opt-19" title="19. The Scattered Stress Cluster" description="Refined: Added 'Why Teams Struggle' narrative anchor. Organic pulsars.">
+            {/* --- ARCHETYPE 19: THE SCATTERED STRESS CLUSTER (REFINED HEADLINE) --- */}
+            <LabSection id="opt-19" title="19. The Scattered Stress Cluster" description="Refined: Stacked Headline + Raw stressors. Organic pulsars.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.4} grayscale />
                     <div className="absolute inset-0 bg-black/40 md:bg-black/30" />
@@ -359,7 +354,7 @@ export default function HeroLabClient() {
                      <div className="max-w-4xl space-y-8 md:space-y-12">
                          <div className="space-y-4 md:space-y-6">
                             <h1 className="text-4xl md:text-[100px] font-black font-headline leading-[1.1] md:leading-[0.82] uppercase italic tracking-tighter text-white">
-                                {NARRATIVE.line1}<br className="hidden md:block" />
+                                {NARRATIVE.line1}<br />
                                 <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
                             </h1>
                             <p className="text-base md:text-[30px] leading-[1.2] italic font-medium text-zinc-400 max-w-xl">
@@ -384,59 +379,59 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 20: THE HIGH-GRAVITY HUD (FINALIST PROPOSAL) --- */}
-            <LabSection id="opt-20" title="20. The High-Gravity HUD" description="Refined Finalist: Raw Stress Text + Compact Glass HUD (Small/No IDs).">
+            {/* --- ARCHETYPE 20: THE ONE-GLANCE HUD (REFINED DENSITY) --- */}
+            <LabSection id="opt-20" title="20. The One-Glance HUD" description="Optimized: High-density mobile scan. Fits headline, risks, specs, and CTA in one screen.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.5} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/60 to-transparent pointer-events-none" />
                 </div>
 
-                <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-16 md:py-0">
-                    <div className="max-w-6xl space-y-12 md:space-y-20">
+                <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-8 md:py-0">
+                    <div className="max-w-6xl space-y-6 md:space-y-16">
                         
-                        <div className="space-y-6 md:space-y-8">
-                            <h1 className="text-4xl md:text-[110px] font-black font-headline leading-[1] md:leading-[0.82] uppercase italic tracking-tighter drop-shadow-2xl">
+                        <div className="space-y-3 md:space-y-8">
+                            <h1 className="text-[34px] md:text-[110px] font-black font-headline leading-[1] md:leading-[0.82] uppercase italic tracking-tighter drop-shadow-2xl">
                                 {NARRATIVE.line1} <br />
                                 <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
                             </h1>
-                            <p className="text-base md:text-[36px] leading-[1.2] italic font-medium text-zinc-400 max-w-2xl">
+                            <p className="text-sm md:text-[36px] leading-[1.2] italic font-medium text-zinc-400 max-w-2xl">
                                 {NARRATIVE.subline}
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-[1fr,420px] gap-12 md:gap-24 items-start md:items-center">
+                        <div className="grid grid-cols-1 lg:grid-cols-[1fr,380px] gap-6 md:gap-24 items-start md:items-center">
                             
-                            <div className="space-y-12">
-                                {/* DNA: Raw Stress Text (Matches 18/19) */}
-                                <div className="space-y-6 border-l-2 border-red-500/20 pl-6 md:pl-10">
-                                    <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">WHY TEAMS STRUGGLE</p>
-                                    <div className="flex flex-col gap-6 md:gap-8">
+                            <div className="space-y-6 md:space-y-12">
+                                {/* DNA: Raw Stress Text */}
+                                <div className="space-y-3 md:space-y-6 border-l-2 border-red-500/20 pl-5 md:pl-10">
+                                    <p className="text-[8px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">WHY TEAMS STRUGGLE</p>
+                                    <div className="flex flex-col gap-3 md:gap-8">
                                         {ANXIETY_ITEMS.map((item, i) => (
-                                            <PulsatingStressText key={i} text={item} delay={`${i * 0.2}s`} />
+                                            <PulsatingStressText key={i} text={item} delay={`${i * 0.2}s`} className="!text-[12px] md:!text-[22px]" />
                                         ))}
                                     </div>
                                 </div>
                                 <SovereignCTA className="hidden lg:block pt-4" />
                             </div>
 
-                            {/* REFINED COMPACT HUD: Smaller things, no versions/IDs */}
+                            {/* REFINED COMPACT HUD: Optimized for Mobile Glance */}
                             <div className="relative group/hud">
                                 <div className="absolute -inset-4 bg-emerald-500/10 blur-3xl opacity-0 group-hover/hud:opacity-100 transition-opacity duration-1000" />
-                                <div className="relative bg-white/5 border border-white/10 backdrop-blur-xl rounded-[2rem] p-6 md:p-8 space-y-6 shadow-2xl overflow-hidden ring-1 ring-white/5">
-                                    <div className="grid grid-cols-1 gap-4">
+                                <div className="relative bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl md:rounded-[2rem] p-4 md:p-8 space-y-3 md:space-y-6 shadow-2xl overflow-hidden ring-1 ring-white/5">
+                                    <div className="grid grid-cols-1 gap-2.5 md:gap-4">
                                         {TECH_SPECS.map((item, i) => (
-                                            <div key={i} className="flex items-center gap-4 group/spec">
-                                                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 group-hover/spec:bg-emerald-500 group-hover/spec:text-black transition-all shadow-inner">
-                                                     <item.i className="w-4 h-4" />
+                                            <div key={i} className="flex items-center gap-3 md:gap-4 group/spec">
+                                                <div className="w-6 h-6 md:w-8 md:h-8 rounded md:rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 group-hover/spec:bg-emerald-500 group-hover/spec:text-black transition-all shadow-inner">
+                                                     <item.i className="w-3 h-3 md:w-4 md:h-4" />
                                                 </div>
-                                                <span className="text-[12px] md:text-base font-bold text-white/70 uppercase italic tracking-wide group-hover/spec:text-white transition-colors leading-tight">{item.t}</span>
+                                                <span className="text-[10px] md:text-base font-bold text-white/70 uppercase italic tracking-wide group-hover/spec:text-white transition-colors leading-tight">{item.t}</span>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
                             </div>
 
-                            <SovereignCTA className="lg:hidden mt-8" />
+                            <SovereignCTA className="lg:hidden mt-4" />
                         </div>
                     </div>
                 </div>
