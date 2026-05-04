@@ -109,13 +109,13 @@ const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: s
 );
 
 const SovereignCTA = ({ className }: { className?: string }) => (
-    <div className={cn("space-y-4 md:space-y-6 flex flex-col items-center sm:items-start", className)}>
+    <div className={cn("space-y-4 md:space-y-5 flex flex-col items-center sm:items-start", className)}>
         <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
             <Link href="/library">
                 {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
             </Link>
         </Button>
-        <div className="w-full text-center sm:text-center md:pl-0">
+        <div className="w-full text-center">
              <p className="text-[8px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic">
                 {NARRATIVE.meta}
             </p>
@@ -131,7 +131,7 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
             </div>
 
-            <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-12 md:py-0 md:pt-40">
+            <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-12 md:py-0 md:pt-48">
                 <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-20 items-center">
                     
                     {/* Phase 01: The Hook */}
@@ -158,7 +158,7 @@ const HeroSection = () => {
                     </div>
 
                     {/* Phase 03: The New Standard Bridge */}
-                    <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-6 md:space-y-8 mt-10 lg:mt-6">
+                    <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-6 md:space-y-8 mt-10 lg:mt-2">
                         <div className="space-y-3">
                             <div className="flex items-center gap-3">
                                 <div className="w-1 h-6 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
@@ -169,7 +169,7 @@ const HeroSection = () => {
                     </div>
 
                     {/* Phase 04: The Command */}
-                    <div className="order-4 w-full lg:col-start-1 lg:row-start-3 mt-8 md:mt-6">
+                    <div className="order-4 w-full lg:col-start-1 lg:row-start-3 mt-8 md:mt-4">
                         <SovereignCTA />
                     </div>
                 </div>
