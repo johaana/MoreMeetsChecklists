@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -135,11 +134,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             <div className="space-y-1">
                                 <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.4em] text-zinc-400 mb-0.5 block">{pack.category.toUpperCase()}</span>
                                 <h1 className="text-[30px] md:text-[56px] lg:text-[68px] font-black text-[#0B0F14] leading-[1.1] md:leading-[0.85] tracking-tighter uppercase italic">
-                                    {pack.title.replace('Operating System', '')} <br/>
-                                    <span className="text-[#0F3D2E]">Operating System</span>
+                                    {pack.title.replace('Operations System', '')} <br/>
+                                    <span className="text-[#0F3D2E]">Operations System</span>
                                 </h1>
                                 <p className="text-base md:text-xl text-[#5B6670] italic font-medium leading-tight pt-1">
-                                    Run {pack.title.toLowerCase().replace(' operating system', '')} daily without chasing staff.
+                                    Run {pack.title.toLowerCase().replace(' operations system', '')} daily without chasing staff.
                                 </p>
                             </div>
 
@@ -174,7 +173,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-8">
                                     <button className="h-12 md:h-[56px] px-10 rounded-[12px] bg-[#F4A261] text-white font-black uppercase italic text-sm md:text-base shadow-[0_15px_35px_-5px_rgba(244,162,97,0.4)] hover:scale-[1.02] active:scale-95 transition-all border-none group w-full sm:w-auto">
                                         <Link href="#pricing" className="flex items-center gap-3">
-                                            Deploy system → ₹{pack.priceINR}
+                                            Deploy system → Professional Access
                                         </Link>
                                     </button>
                                     <div className="flex flex-col text-center sm:text-left space-y-0.5">
@@ -245,7 +244,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 <div className="max-w-4xl mx-auto space-y-12 md:space-y-16">
                     <div className="space-y-4">
                         <h2 className="text-[32px] md:text-[80px] font-black tracking-tighter uppercase italic leading-[0.9]">
-                            Run your <br/> {pack.title.toLowerCase().replace(' operating system', '')} <br/> properly.
+                            Run your <br/> {pack.title.toLowerCase().replace(' operations system', '')} <br/> properly.
                         </h2>
                         <p className="text-base md:text-2xl text-white/60 font-bold italic">Deploy the Sovereign Master Engine in under 10 minutes.</p>
                     </div>

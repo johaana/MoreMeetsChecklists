@@ -71,34 +71,27 @@ const shortDescriptions: Record<string, string> = {
     'animal_shelter_pack': "NGO-grade welfare and disease prevention. Comprehensive intake, medical, and adoption protocols."
 };
 
+/**
+ * --- SOVEREIGN PRICING MANDATE v2.0 ---
+ * All standard paid packs are intentionally priced at ₹999 / $12.
+ * This signals "Strategic Access" rather than "Discounted Value".
+ */
 export const premiumPacks: PremiumPack[] = [
     ...allPacks.map(p => {
         // Standardized Nomenclature to "Operations System"
         let processedPack = { ...p };
         processedPack.title = processedPack.title.replace('Operating System', 'Operations System');
         
-        const eliteIds = [
-            'restaurants', 'hotels_and_resorts', 'healthcare_and_hospital_operations', 
-            'school_operations_pack', 'franchise_operations_pack', 
-            'facility_management_blueprint', 'cinema_operations_pack', 'retail_operations_system'
-        ];
-        
-        if (eliteIds.includes(p.id)) {
+        // Apply Global Professional Access Rates
+        if (processedPack.priceINR > 0 || processedPack.priceUSD > 0) {
             processedPack = {
                 ...processedPack,
-                priceINR: 2999,
-                anchorPriceINR: 4999,
-                priceUSD: 29,
-                anchorPriceUSD: 49,
-                competitorPriceUSD: 599
+                priceINR: 999,
+                anchorPriceINR: undefined, // Abolish cross-out
+                priceUSD: 12,
+                anchorPriceUSD: undefined, // Abolish cross-out
+                competitorPriceUSD: processedPack.id.includes('hospital') || processedPack.id.includes('facility') ? 999 : 599
             }
-        } else {
-            // Default pricing for non-elite if not set
-            processedPack.priceINR = processedPack.priceINR || 1999;
-            processedPack.anchorPriceINR = processedPack.anchorPriceINR || 2999;
-            processedPack.priceUSD = processedPack.priceUSD || 19;
-            processedPack.anchorPriceUSD = processedPack.anchorPriceUSD || 29;
-            processedPack.competitorPriceUSD = processedPack.competitorPriceUSD || 299;
         }
 
         if (shortDescriptions[p.id]) {

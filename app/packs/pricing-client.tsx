@@ -75,7 +75,6 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     ];
 
     const BRAND_GREEN = "#2EB86B";
-    const CONVERSION_AMBER = "#F59E0B";
 
     if (pack.priceINR === 0 && (!pack.priceUSD || pack.priceUSD === 0)) {
         return (
@@ -113,24 +112,24 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                         <div className="space-y-2 md:space-y-4">
                             <Badge variant="outline" className="text-zinc-500 border-zinc-800 uppercase tracking-[0.3em] font-black text-[9px] md:text-[11px] rounded-none px-4 py-1">DEPLOYMENT PROTOCOL</Badge>
                             <h2 className="text-[32px] md:text-5xl font-black font-headline text-white italic tracking-tighter uppercase leading-tight">
-                                Sovereign <br />
-                                <span style={{ color: BRAND_GREEN }}>Master Engine.</span>
+                                Professional <br />
+                                <span style={{ color: BRAND_GREEN }}>Access Pricing.</span>
                             </h2>
+                            <p className="text-sm md:text-lg text-zinc-400 font-medium italic max-w-md mx-auto lg:mx-0">
+                                Institutional-grade operational systems, intentionally priced for everyday operators.
+                            </p>
                         </div>
 
                         <div className="flex flex-col md:flex-row items-center justify-center lg:justify-start gap-4 md:gap-6">
                             <div className="flex flex-col">
-                                <span className="text-sm md:text-lg font-medium text-zinc-600 line-through italic tracking-tight leading-none">
-                                    {region === 'INDIA' ? `₹${pack.anchorPriceINR}` : `$${pack.anchorPriceUSD}`}
-                                </span>
-                                <h3 className="text-[38px] md:text-6xl font-black text-white italic tracking-tighter leading-none pt-1">
-                                    {region === 'INDIA' ? `₹${pack.priceINR}` : `$${region === 'GLOBAL' && pack.priceUSD ? pack.priceUSD : '29'}`}
+                                <h3 className="text-[48px] md:text-6xl font-black text-white italic tracking-tighter leading-none pt-1">
+                                    {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
                                 </h3>
                             </div>
                             <div className="hidden md:block w-px h-16 bg-white/10" />
                             <div className="space-y-0.5">
-                                <p className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em]" style={{ color: CONVERSION_AMBER }}>LIMITED TIME OFFER</p>
-                                <p className="text-[9px] md:text-[11px] font-bold text-zinc-500 uppercase tracking-widest italic">One-time payment • Own forever</p>
+                                <p className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-primary">ONE-TIME PAYMENT</p>
+                                <p className="text-[9px] md:text-[11px] font-bold text-zinc-500 uppercase tracking-widest italic">OWN FOREVER • NO SUBSCRIPTIONS</p>
                             </div>
                         </div>
 
@@ -164,9 +163,9 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                     </Tabs>
                                 </div>
                                 <div className="pt-2">
-                                    <p className="text-[12px] md:text-sm font-medium text-zinc-400 italic">Start using your system today</p>
+                                    <p className="text-[12px] md:text-sm font-medium text-zinc-400 italic">Full system deployment</p>
                                     <p className="text-2xl md:text-3xl font-black text-white italic tracking-tighter pt-0.5">
-                                        {region === 'INDIA' ? `₹${pack.priceINR}` : `$${region === 'GLOBAL' && pack.priceUSD ? pack.priceUSD : '29'}`}
+                                        {region === 'INDIA' ? `₹${pack.priceINR}` : `$${pack.priceUSD}`}
                                     </p>
                                 </div>
                             </div>
@@ -180,7 +179,7 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                                         />
                                     </div>
                                 ) : (
-                                    <button className="w-full h-14 text-[#0B0F14] font-black text-sm rounded-xl border-none uppercase italic tracking-widest shadow-xl transition-all active:scale-[0.98] flex items-center justify-center gap-3 group max-w-[320px]" style={{ backgroundColor: CONVERSION_AMBER }}>
+                                    <button className="w-full h-14 text-[#0B0F14] font-black text-sm rounded-xl border-none uppercase italic tracking-widest shadow-xl transition-all active:scale-[0.98] flex items-center justify-center gap-3 group max-w-[320px] bg-primary">
                                         <Link href={`${pack.lemonSqueezyUrl}?checkout[custom][pack_id]=${pack.id}`} className="flex items-center gap-3">
                                             Deploy Now <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" />
                                         </Link>
@@ -203,9 +202,12 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
                     </div>
                 </div>
 
-                <div className="mt-12 pt-6 text-center border-t border-white/5">
-                    <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.4em] italic">
-                        Immediate Deployment. Institutional Grade Engineering.
+                <div className="mt-12 pt-6 text-center border-t border-white/5 space-y-2">
+                    <p className="text-[9px] font-black text-zinc-500 uppercase tracking-[0.4em] italic">
+                        Current access pricing applies to all standard packs.
+                    </p>
+                    <p className="text-[8px] font-black text-zinc-700 uppercase tracking-[0.4em] italic">
+                        Pricing subject to revision with future system upgrades.
                     </p>
                 </div>
             </div>

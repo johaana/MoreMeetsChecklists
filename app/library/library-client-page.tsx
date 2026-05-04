@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -41,7 +40,6 @@ const allPacksByCategory = (packs: PremiumPack[]) => {
 
 const PackCard = ({ pack }: { pack: PremiumPack }) => {
     const totalTasks = pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0);
-    // Standardizing task display for Elite positioning
     const displayTasks = (pack.id === 'retail_operations_system' || pack.id === 'hotels_and_resorts' || pack.id === 'healthcare_and_hospital_operations') ? 250 : totalTasks;
 
     return (
@@ -79,12 +77,11 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => {
             <CardFooter className="p-6 md:p-12 flex flex-col gap-4 md:gap-6">
                 <div className="flex items-center justify-between w-full">
                     <div className="flex flex-col">
-                        <span className="text-[7px] md:text-[8px] font-black text-white/20 uppercase tracking-widest line-through italic">₹4,999</span>
-                        <span className="text-lg md:text-xl font-black text-primary-text italic font-headline leading-none">₹2,999</span>
+                        <span className="text-lg md:text-xl font-black text-primary-text italic font-headline leading-none">₹{pack.priceINR}</span>
                     </div>
-                    <span className="text-[7px] md:text-[8px] font-black text-primary uppercase tracking-[0.3em] italic">DEPLOYMENT RATE</span>
+                    <span className="text-[7px] md:text-[8px] font-black text-primary uppercase tracking-[0.3em] italic">ACCESS RATE</span>
                 </div>
-                <button className="w-full h-14 md:h-16 rounded-xl bg-white/5 border border-white/10 text-white font-black uppercase italic text-[10px] md:text-xs tracking-widest transition-all hover:bg-primary hover:text-black hover:border-transparent active:scale-95 group/btn">
+                <button className="w-full h-14 md:h-16 rounded-xl bg-white/5 border border-white/10 text-white font-black uppercase italic text-[10px] md:text-xs tracking-widest transition-all hover:bg-primary hover:text-black hover:border-transparent active:scale-[0.98] group/btn">
                     <Link href={`/packs/${pack.id}`} className="flex items-center justify-center gap-2 md:gap-3">
                         CONFIGURE SYSTEM <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 transition-transform group-hover/btn:translate-x-1" />
                     </Link>

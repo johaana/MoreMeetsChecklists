@@ -435,8 +435,8 @@ export default function Home() {
                     <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:32px_32px]" />
                     <div className="max-w-[1000px] mx-auto space-y-16 md:space-y-24 relative z-10">
                         <div className="space-y-8">
-                            <h2 className="text-[48px] md:text-[110px] font-black leading-[0.9] tracking-tighter uppercase italic font-headline text-[#0E1420]">Start running properly today</h2>
-                            <p className="text-xl md:text-[36px] text-[#0E1420]/70 font-bold italic">Deployment takes less than 10 minutes.</p>
+                            <h2 className="text-[48px] md:text-[110px] font-black leading-[0.9] tracking-tighter uppercase italic font-headline text-[#0E1420]">Professional Access Pricing</h2>
+                            <p className="text-xl md:text-[36px] text-[#0E1420]/70 font-bold italic">Institutional systems. Intentionally priced for everyday operators.</p>
                         </div>
                         <div className="flex flex-col items-center gap-10 md:gap-14">
                             <button className="h-[90px] md:h-[120px] px-16 md:px-24 rounded-[30px] bg-[#C88A4A] text-white font-black uppercase italic text-2xl md:text-5xl shadow-[0_30px_60px_-15px_rgba(200,138,74,0.6)] hover:scale-[1.05] active:scale-95 transition-all border-none group w-full max-w-2xl mx-auto flex items-center justify-center">
@@ -444,8 +444,8 @@ export default function Home() {
                             </button>
                             <div className="flex flex-col items-center gap-3">
                                 <div className="flex items-baseline gap-5">
-                                    <p className="text-[56px] md:text-[84px] font-black italic text-[#0E1420]">₹2,999</p>
-                                    <span className="text-2xl md:text-4xl font-bold text-[#0E1420]/40 italic">/ $29</span>
+                                    <p className="text-[56px] md:text-[84px] font-black italic text-[#0E1420]">₹999</p>
+                                    <span className="text-2xl md:text-4xl font-bold text-[#0E1420]/40 italic">/ $12</span>
                                 </div>
                                 <p className="text-[14px] font-black uppercase tracking-[0.5em] text-[#0E1420]/60">One-time payment • Own forever</p>
                             </div>
@@ -457,4 +457,3 @@ export default function Home() {
         </div>
     );
 }
-
