@@ -15,7 +15,8 @@ import {
     Smartphone,
     AlertTriangle,
     Zap,
-    Scale
+    Scale,
+    CheckCircle2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -284,17 +285,18 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 19: THE CONVERSION GRID --- */}
-            <LabSection id="opt-19" title="19. The Conversion Grid" description="Refined sequence: Hook -> Pain -> Bridge -> Solution -> Action.">
+            {/* --- ARCHETYPE 19: THE INDUSTRY STANDARD (WINNING HYBRID) --- */}
+            <LabSection id="opt-19" title="19. The Industry Standard" description="Sequential Mobile Narrative: Hook → Pain → Bridge → Solution.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.3} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
                 </div>
                 <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-12 md:py-0">
                     <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,1fr] gap-8 md:gap-12 lg:gap-24 items-center">
-                        {/* Hook Narrative: Order 1 */}
+                        
+                        {/* Phase 01: The Hook */}
                         <div className="order-1 space-y-4 md:space-y-6 w-full">
-                            <h1 className="text-4xl md:text-[100px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter">
+                            <h1 className="text-[34px] md:text-[100px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter">
                                 STOP CHASING. <br />
                                 <span style={{ color: BRAND_GREEN }}> START SEEING.</span>
                             </h1>
@@ -303,8 +305,8 @@ export default function HeroLabClient() {
                             </p>
                         </div>
                         
-                        {/* Problems: Order 2 on Mobile, Desktop Right */}
-                        <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-2 space-y-4 md:space-y-8 lg:border-r-2 border-red-500/20 lg:pr-10 text-right">
+                        {/* Phase 02: The Operational Pain (MOBILE LEFT, DESKTOP RIGHT) */}
+                        <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-2 space-y-4 md:space-y-8 text-left border-l-2 lg:text-right lg:border-l-0 lg:border-r-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10">
                              <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">WHY TEAMS STRUGGLE</p>
                              <div className="flex flex-col gap-2 md:gap-6">
                                  {ANXIETY_ITEMS.map((text, i) => (
@@ -313,15 +315,43 @@ export default function HeroLabClient() {
                              </div>
                         </div>
 
-                        {/* Specs & Bridge: Order 3 on Mobile */}
+                        {/* Phase 03: The New Standard Bridge */}
                         <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-8 md:space-y-10">
                             <div className="space-y-3">
-                                <p className="text-[10px] font-black text-emerald-500/60 uppercase tracking-[0.4em] italic font-mono">THE NEW STANDARD</p>
-                                <CommandGrid className="max-w-xl" textColor="text-white/80" />
+                                <div className="flex items-center gap-3">
+                                    <div className="w-1 h-6 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
+                                    <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em] italic font-headline">THE NEW STANDARD</p>
+                                </div>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 md:gap-y-5">
+                                    <div className="flex items-center gap-3 group">
+                                        <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                            <Check className="w-2.5 h-2.5 text-[#22C55E]" />
+                                        </div>
+                                        <span className="text-[13px] md:text-[14px] font-bold uppercase tracking-[0.05em] italic leading-tight text-white/80">120+ Industry Specific SOPs</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 group">
+                                        <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                            <Check className="w-2.5 h-2.5 text-[#22C55E]" />
+                                        </div>
+                                        <span className="text-[13px] md:text-[14px] font-bold uppercase tracking-[0.05em] italic leading-tight text-white/80">Live Dashboard Visibility</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 group">
+                                        <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                            <Check className="w-2.5 h-2.5 text-[#22C55E]" />
+                                        </div>
+                                        <span className="text-[13px] md:text-[14px] font-bold uppercase tracking-[0.05em] italic leading-tight text-white/80">No SaaS. Own your data.</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 group">
+                                        <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                            <Check className="w-2.5 h-2.5 text-[#22C55E]" />
+                                        </div>
+                                        <span className="text-[13px] md:text-[14px] font-bold uppercase tracking-[0.05em] italic leading-tight text-white/80">Built-in Trainer Notes</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        {/* CTA: Order 4 on Mobile */}
+                        {/* Phase 04: The Command */}
                         <div className="order-4 w-full lg:col-start-1 lg:row-start-3">
                             <SovereignCTA />
                         </div>
