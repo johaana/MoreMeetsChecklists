@@ -283,33 +283,38 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 19: THE CONVERSION GRID --- */}
-            <LabSection id="opt-19" title="19. The Conversion Grid" description="Problem stack with technical solution grid.">
+            <LabSection id="opt-19" title="19. The Conversion Grid" description="Problem stack with technical solution grid. Optimized sequence.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.3} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
                 </div>
                 <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-12 md:py-0">
-                    <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 lg:gap-24 items-center">
-                        <div className="space-y-8 md:space-y-12">
-                            <div className="space-y-6">
-                                <h1 className="text-4xl md:text-[100px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter">
-                                    {NARRATIVE.line1}<br />
-                                    <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
-                                </h1>
-                                <p className="text-base md:text-[30px] italic font-medium text-zinc-400 max-w-none whitespace-nowrap leading-tight">{NARRATIVE.subline}</p>
-                            </div>
-                            <div className="space-y-10">
-                                <CommandGrid className="max-w-xl" textColor="text-white/80" />
-                                <SovereignCTA />
-                            </div>
+                    <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,1fr] gap-8 md:gap-12 lg:gap-24 items-center">
+                        {/* Hook Narrative: Order 1 */}
+                        <div className="order-1 space-y-4 md:space-y-6 w-full">
+                            <h1 className="text-4xl md:text-[100px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter">
+                                {NARRATIVE.line1}<br />
+                                <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
+                            </h1>
+                            <p className="text-base md:text-[30px] italic font-medium text-zinc-400 max-w-none lg:whitespace-nowrap leading-tight">
+                                {NARRATIVE.subline}
+                            </p>
                         </div>
-                        <div className="space-y-8 border-r-2 border-red-500/20 pr-10 text-right">
+                        
+                        {/* Problems: Order 2 on Mobile, Desktop Right */}
+                        <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-2 space-y-4 md:space-y-8 lg:border-r-2 border-red-500/20 lg:pr-10 text-right">
                              <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">WHY TEAMS STRUGGLE</p>
-                             <div className="flex flex-col gap-6">
+                             <div className="flex flex-col gap-2 md:gap-6">
                                  {ANXIETY_ITEMS.map((text, i) => (
                                     <PulsatingStressText key={i} text={text} delay={`${i * 0.2}s`} />
                                  ))}
                              </div>
+                        </div>
+
+                        {/* Specs & CTA: Order 3 on Mobile, Desktop Left Bottom */}
+                        <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-8 md:space-y-10">
+                            <CommandGrid className="max-w-xl" textColor="text-white/80" />
+                            <SovereignCTA />
                         </div>
                     </div>
                 </div>
@@ -330,8 +335,8 @@ export default function HeroLabClient() {
                             </h1>
                             <p className="text-sm md:text-[24px] leading-[1.2] italic font-medium text-zinc-400 max-w-2xl">{NARRATIVE.subline}</p>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-[1fr,380px] gap-6 md:gap-12 items-start md:items-center">
-                            <div className="space-y-3 md:space-y-6 border-l-2 border-red-500/20 pl-4 md:pl-8">
+                        <div className="flex flex-col md:grid md:grid-cols-[1fr,380px] gap-6 md:gap-12 items-start md:items-center">
+                            <div className="order-1 md:order-none space-y-3 md:space-y-6 border-l-2 border-red-500/20 pl-4 md:pl-8">
                                 <p className="text-[8px] md:text-[9px] font-black text-red-500/60 uppercase tracking-[0.4em] italic">WHY TEAMS STRUGGLE</p>
                                 <div className="flex flex-col gap-2 md:gap-4">
                                     {ANXIETY_ITEMS.map((item, i) => (
@@ -339,18 +344,18 @@ export default function HeroLabClient() {
                                     ))}
                                 </div>
                             </div>
-                            <div className="bg-white/[0.02] border border-white/10 backdrop-blur-3xl rounded-2xl md:rounded-[2rem] p-6 md:p-8 space-y-4 shadow-2xl">
+                            <div className="order-2 md:order-none bg-white/[0.02] border border-white/10 backdrop-blur-3xl rounded-2xl md:rounded-[2rem] p-6 md:p-8 space-y-4 shadow-2xl">
                                 <div className="flex flex-col gap-4">
                                     {TECH_SPECS.map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 md:gap-4">
                                             <item.i className="w-3 md:w-5 h-3 md:h-5 text-emerald-500" />
-                                            <span className="text-[9px] md:text-[14px] font-bold text-white/50 uppercase italic tracking-wide leading-tight">{item.t}</span>
+                                            <span className="text-[11px] md:text-[14px] font-bold text-white/50 uppercase italic tracking-wide leading-tight">{item.t}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
                         </div>
-                        <SovereignCTA />
+                        <SovereignCTA className="order-3" />
                     </div>
                 </div>
             </LabSection>
