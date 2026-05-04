@@ -29,7 +29,6 @@ import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
-import Script from 'next/script';
 import { TestimonialsSection } from '@/components/layout/testimonials-section';
 import { FaqSection } from '@/components/layout/faq-section';
 import { Button } from '@/components/ui/button';
@@ -50,7 +49,7 @@ const TECH_SPECS = [
     { t: "120+ Industry Specific SOPs", i: ClipboardCheck },
     { t: "Live Dashboard Visibility", i: Activity },
     { t: "No SaaS. Own your data.", i: Lock },
-    { t: "Built-in Trainer Notes", i: Smartphone }
+    { t: "Trainer Notes for staff", i: Smartphone }
 ];
 
 const ANXIETY_ITEMS = [
@@ -77,6 +76,14 @@ const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
             title="Sovereign Background"
         />
     </div>
+);
+
+const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
+    <section id={id} className={cn("w-full py-12 md:py-24", className)}>
+        <div className="container mx-auto max-w-[1200px] px-6">
+            {children}
+        </div>
+    </section>
 );
 
 const PulsatingStressText = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
@@ -122,7 +129,6 @@ const HeroSection = () => {
         <section className="relative w-full min-h-[90svh] md:h-screen flex flex-col justify-center overflow-hidden bg-black">
             <div className="absolute inset-0 z-0">
                 <BackgroundVideo opacity={0.3} grayscale />
-                {/* Asymmetric Gradient Mask */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
             </div>
 
@@ -142,7 +148,7 @@ const HeroSection = () => {
                         </p>
                     </div>
                     
-                    {/* Phase 02: The Operational Pain (LEFT-ALIGNED MOBILE, RIGHT-ALIGNED DESKTOP) */}
+                    {/* Phase 02: The Operational Pain */}
                     <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-3 space-y-4 md:space-y-8 text-left lg:text-right lg:border-r-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:border-l border-white/5 mt-10 lg:mt-0">
                          <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">WHY TEAMS STRUGGLE</p>
                          <div className="flex flex-col gap-2 md:gap-6">
@@ -458,4 +464,3 @@ export default function Home() {
         </div>
     );
 }
-
