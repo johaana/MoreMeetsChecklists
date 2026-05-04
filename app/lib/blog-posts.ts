@@ -412,37 +412,5 @@ export const blogPosts: BlogPost[] = [
           <p>Excel-based SOPs provide what WhatsApp cannot: <strong>Permanent, Searchable, and Auditable Structure.</strong> They create a fixed record of what was supposed to happen versus what actually happened. This is the difference between 'guessing' if a task was done and 'knowing' it was.</p>
         </section>
       `
-    },
-    {
-      slug: 'kfc-chicken-shortage-supply-chain-risk',
-      title: "KFC Logistics Collapse: A Forensic Analysis of Supply Chain SPOFs",
-      publishedDate: "2026-02-20",
-      updatedAt: "2025-02-24",
-      author: "MoreMeets Editorial",
-      tags: ["Industrial & Transport"],
-      protocol: "Supply Chain Risk",
-      relatedPackId: "facility_management_blueprint",
-      description: "Deconstructing the 2018 KFC logistics failure. How a single point of failure (SPOF) paralyzed 900 restaurants.",
-      imageUrl: "https://i.postimg.cc/tgjWqj8Y/Back-of-House-BOH-Operations-restaurant.png",
-      content: `
-        <p>In February 2018, 900 KFC outlets closed. Not because of a lack of customers, but because of a failure in logistics architecture.</p>
-        <p>The \"Great Chicken Crisis\" was a failure of <strong>Centralized Risk</strong>. KFC switched distribution to a single, automated hub. When the software glitched, there was no redundant infrastructure. No Plan B.</p>
-      `
-    },
-    {
-      slug: 'hidden-roi-of-sops',
-      title: "The Financial ROI of SOPs: Asset Valuation & Operational Efficiency",
-      publishedDate: "2026-02-19",
-      updatedAt: "2025-02-24",
-      author: "MoreMeets Editorial",
-      tags: ["Corporate & Tech"],
-      protocol: "Asset Valuation",
-      relatedPackId: "franchise_operations_pack",
-      description: "Why structured operations are revenue multipliers. A financial study on how SOPs increase enterprise value.",
-      imageUrl: "https://i.postimg.cc/FK43r4w5/franchise-2.jpg",
-      content: `
-        <p>Most founders see SOPs as compliance. CFOs see them as overhead. But structured operations are <strong>Revenue Multipliers</strong>. Chaos has a measurable, compounding cost.</p>
-        <p>Investors value predictable systems, not heroic individuals. When you sell a business, you aren't selling people: you are selling a recurring profit engine that works regardless of who is in the room.</p>
-      `
     }
 ];
