@@ -74,7 +74,16 @@ const BrandLogo = () => (
 export function SiteHeader() {
     const [isSheetOpen, setIsSheetOpen] = React.useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+    const [isScrolled, setIsScrolled] = React.useState(false);
     const pathname = usePathname();
+
+    React.useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     React.useEffect(() => {
         setIsSheetOpen(false);
@@ -88,7 +97,7 @@ export function SiteHeader() {
     return (
         <header className={cn(
             "px-6 lg:px-12 h-16 flex items-center fixed top-0 w-full z-50 transition-all duration-500",
-            "bg-transparent border-b border-transparent"
+            isScrolled ? "bg-black/80 backdrop-blur-xl border-b border-white/5" : "bg-transparent border-b border-transparent"
         )}>
             <div className="flex items-center">
                 <BrandLogo />

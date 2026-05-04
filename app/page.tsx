@@ -47,7 +47,7 @@ const NARRATIVE = {
 
 const TECH_SPECS = [
     { t: "120+ Industry Specific SOPs", i: ClipboardCheck },
-    { t: "Live Dashboard Visibility", i: Activity },
+    { t: "Live Dashboard", i: Activity },
     { t: "No SaaS. Own your data.", i: Lock },
     { t: "Trainer Notes for staff", i: Smartphone }
 ];
@@ -131,7 +131,7 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
             </div>
 
-            <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-12 md:py-0 md:pt-28">
+            <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-12 md:py-0 md:pt-16">
                 <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 items-center">
                     
                     {/* Phase 01: The Hook */}
@@ -148,7 +148,7 @@ const HeroSection = () => {
                     </div>
                     
                     {/* Phase 02: The Operational Pain */}
-                    <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-3 space-y-4 md:space-y-6 text-left border-l-2 lg:text-right lg:border-l-0 lg:border-r-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:border-l border-white/5 mt-8 lg:mt-0">
+                    <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-3 space-y-4 md:space-y-6 text-left border-l-2 lg:text-right lg:border-l-0 lg:border-r-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:border-l border-white/5 mt-8 lg:mt-16">
                          <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">WHY TEAMS STRUGGLE</p>
                          <div className="flex flex-col gap-2 md:gap-4 lg:gap-5">
                              {ANXIETY_ITEMS.map((text, i) => (
