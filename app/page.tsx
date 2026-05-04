@@ -53,11 +53,10 @@ const TECH_SPECS = [
 ];
 
 const ANXIETY_ITEMS = [
-    "Work depends on the memory of key people?",
-    "Tasks get skipped during busy shifts?",
-    "Staff executes steps differently every time?",
-    "Managers waste hours manually following up?",
-    "Institutional memory leaves when staff resign?"
+    "Always chasing staff?",
+    "Work gets missed?",
+    "The team is confused?",
+    "Memories fade?"
 ];
 
 // --- HELPER COMPONENTS ---
@@ -95,7 +94,7 @@ const PulsatingStressText = ({ text, className, delay = "0s" }: { text: string, 
 );
 
 const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: string, textColor?: string }) => (
-    <div className={cn("grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 md:gap-y-5", className)}>
+    <div className={cn("grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-3 md:gap-y-5", className)}>
         {TECH_SPECS.map((item, i) => (
             <div key={i} className="flex items-center gap-3 group">
                 <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
@@ -132,13 +131,13 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
             </div>
 
-            <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-16 md:py-0">
-                <div className="flex flex-col lg:grid lg:grid-cols-[1.1fr,0.9fr] lg:gap-20 items-center">
+            <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-12 md:py-0">
+                <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-20 items-center">
                     
                     {/* Phase 01: The Hook */}
-                    <div className="order-1 space-y-4 md:space-y-6 w-full">
+                    <div className="order-1 space-y-3 md:space-y-6 w-full">
                         <div className="space-y-1 md:space-y-2">
-                             <h1 className="text-[40px] md:text-[100px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white">
+                             <h1 className="text-[34px] md:text-[100px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white">
                                 {NARRATIVE.line1} <br />
                                 <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
                             </h1>
@@ -149,7 +148,7 @@ const HeroSection = () => {
                     </div>
                     
                     {/* Phase 02: The Operational Pain */}
-                    <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-3 space-y-4 md:space-y-8 text-left lg:text-right lg:border-r-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:border-l border-white/5 mt-10 lg:mt-0">
+                    <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-3 space-y-4 md:space-y-8 text-left border-l-2 lg:text-right lg:border-l-0 lg:border-r-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:border-l border-white/5 mt-8 lg:mt-0">
                          <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">WHY TEAMS STRUGGLE</p>
                          <div className="flex flex-col gap-2 md:gap-6">
                              {ANXIETY_ITEMS.map((text, i) => (
@@ -159,7 +158,7 @@ const HeroSection = () => {
                     </div>
 
                     {/* Phase 03: The New Standard Bridge */}
-                    <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-8 md:space-y-10 mt-12 lg:mt-16">
+                    <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-6 md:space-y-10 mt-10 lg:mt-12">
                         <div className="space-y-3">
                             <div className="flex items-center gap-3">
                                 <div className="w-1 h-6 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
@@ -170,7 +169,7 @@ const HeroSection = () => {
                     </div>
 
                     {/* Phase 04: The Command */}
-                    <div className="order-4 w-full lg:col-start-1 lg:row-start-3 mt-10 md:mt-12">
+                    <div className="order-4 w-full lg:col-start-1 lg:row-start-3 mt-8 md:mt-10">
                         <SovereignCTA />
                     </div>
                 </div>
@@ -464,4 +463,3 @@ export default function Home() {
         </div>
     );
 }
-
