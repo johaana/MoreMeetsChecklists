@@ -30,6 +30,13 @@ const TECH_SPECS = [
     { t: "No SaaS. Own your data.", i: Lock }
 ];
 
+const OUTCOME_SPECS = [
+    "Daily work gets captured",
+    "Every task has an owner",
+    "SOPs train the next person",
+    "Live dashboard shows what’s done"
+];
+
 const ANXIETY_ITEMS = [
     "Always chasing staff?",
     "Work gets missed?",
@@ -125,6 +132,21 @@ const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: s
     </div>
 );
 
+const OutcomeGrid = ({ className, textColor = "text-white/70" }: { className?: string, textColor?: string }) => (
+    <div className={cn("flex flex-col gap-3 md:gap-4", className)}>
+        {OUTCOME_SPECS.map((text, i) => (
+            <div key={i} className="flex items-center gap-3 group">
+                <div className="w-3.5 h-3.5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 border border-emerald-500/30">
+                    <Check className="w-2 h-2 text-emerald-500" />
+                </div>
+                <span className={cn("text-[11px] md:text-[13px] font-bold uppercase tracking-wide italic leading-tight transition-colors", textColor)}>
+                    {text}
+                </span>
+            </div>
+        ))}
+    </div>
+);
+
 const SovereignCTA = ({ className }: { className?: string }) => (
     <div className={cn("space-y-4 md:space-y-6", className)}>
         <button className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
@@ -147,15 +169,15 @@ export default function HeroLabClient() {
                     SOVEREIGN HERO LAB
                 </Badge>
                 <h1 className="text-3xl md:text-7xl font-black font-headline italic uppercase tracking-tighter leading-tight text-white">
-                    Final Candidate <span className="text-emerald-500">Benchmark</span>.
+                    Candidate <span className="text-emerald-500">Benchmarks</span>.
                 </h1>
                 <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-sm md:text-base leading-tight">
-                    Synchronized content logic across all archetypes.
+                    Strictly maintaining finalists while adding new strategic Copys.
                 </p>
             </div>
 
             {/* --- ARCHETYPE 1: THE HINGED DIAGNOSIS --- */}
-            <LabSection id="opt-1" title="01. The Hinged Risk Tabs" description="Original finalist strictly preserved. Frames entire video.">
+            <LabSection id="opt-1" title="01. The Hinged Risk Tabs" description="Baseline preserved. Frames video.">
                 <div className="relative h-full flex flex-col justify-center items-center px-6 md:px-24 max-w-[1440px] mx-auto py-12 md:py-0">
                     <BackgroundVideo opacity={0.1} grayscale />
                     
@@ -210,7 +232,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 13: THE TACTICAL SCAN --- */}
-            <LabSection id="opt-13" title="13. The Tactical Scan" description="Original finalist strictly preserved. Pulsing target markers.">
+            <LabSection id="opt-13" title="13. The Tactical Scan" description="Baseline preserved. Pulsing target markers.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.6} grayscale />
                     <div className="absolute inset-0 bg-black/40" />
@@ -263,7 +285,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 17: THE CINEMATIC WINNER --- */}
-            <LabSection id="opt-17" title="17. The Cinematic Winner" description="Original finalist strictly preserved. Ledger style risks.">
+            <LabSection id="opt-17" title="17. The Cinematic Winner" description="Baseline preserved. Ledger style risks.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.5} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/60 to-transparent pointer-events-none" />
@@ -326,8 +348,43 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
+            {/* --- ARCHETYPE 18: THE RIGHT-ALIGNED STRESS STACK --- */}
+            <LabSection id="opt-18" title="18. The Stress Stack (Right)" description="Finalist preserved. Raw pulsating text aligned right.">
+                <div className="absolute inset-0 z-0">
+                    <BackgroundVideo opacity={0.4} grayscale />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
+                </div>
+                
+                <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-16 md:py-0">
+                    <div className="grid grid-cols-1 md:grid-cols-[1fr,400px] gap-12 md:gap-24 items-center">
+                        <div className="space-y-8 md:space-y-12">
+                            <div className="space-y-4 md:space-y-6">
+                                <h1 className="text-4xl md:text-[100px] font-black font-headline leading-[1.1] md:leading-[0.82] uppercase italic tracking-tighter">
+                                    {NARRATIVE.line1}<br />
+                                    <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
+                                </h1>
+                                <p className="text-base md:text-[30px] italic font-medium text-zinc-400 max-w-xl">
+                                    {NARRATIVE.subline}
+                                </p>
+                            </div>
+                            <CommandGrid className="max-w-xl" textColor="text-white/40" />
+                            <SovereignCTA />
+                        </div>
+
+                        <div className="space-y-6 md:space-y-10 text-right md:border-r-2 md:border-red-500/20 md:pr-10">
+                            <p className="text-[8px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.4em] italic">WHY TEAMS STRUGGLE</p>
+                            <div className="flex flex-col gap-4 md:gap-8">
+                                {ANXIETY_ITEMS.map((item, i) => (
+                                    <PulsatingStressText key={i} text={item} delay={`${i * 0.2}s`} className="md:!text-[24px]" />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </LabSection>
+
             {/* --- ARCHETYPE 19: THE SCATTERED STRESS CLUSTER --- */}
-            <LabSection id="opt-19" title="19. The Scattered Stress Cluster" description="Stacked Headline + Raw stressors. Organic pulsars.">
+            <LabSection id="opt-19" title="19. The Scattered Stress Cluster" description="Finalist preserved. Organic pulsars over video.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.4} grayscale />
                     <div className="absolute inset-0 bg-black/40 md:bg-black/30" />
@@ -379,7 +436,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 20: THE ONE-GLANCE HUD (ULTRA COMPACT) --- */}
-            <LabSection id="opt-20" title="20. The One-Glance HUD" description="Refined Finalist: Ultra-compact, fits everything in one scroll-free view." fullScreen>
+            <LabSection id="opt-20" title="20. The One-Glance HUD" description="Finalist preserved. Tight vertical rhythm." fullScreen>
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.5} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
@@ -388,7 +445,6 @@ export default function HeroLabClient() {
                 <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-4 md:py-0">
                     <div className="max-w-6xl space-y-4 md:space-y-8">
                         
-                        {/* 1. THE STACKED HOOK */}
                         <div className="space-y-2 md:space-y-4">
                             <h1 className="text-[34px] md:text-[84px] font-black font-headline leading-[1] md:leading-[0.85] uppercase italic tracking-tighter drop-shadow-2xl">
                                 {NARRATIVE.line1} <br />
@@ -399,10 +455,8 @@ export default function HeroLabClient() {
                             </p>
                         </div>
 
-                        {/* 2. THE DUAL-ZONE COMMAND */}
                         <div className="grid grid-cols-1 md:grid-cols-[1fr,380px] gap-6 md:gap-12 items-start md:items-center">
                             
-                            {/* DNA: Stress Stack with Vertical Line */}
                             <div className="space-y-3 md:space-y-6 border-l-2 border-red-500/20 pl-4 md:pl-8">
                                 <p className="text-[8px] md:text-[9px] font-black text-red-500/60 uppercase tracking-[0.4em] italic">WHY TEAMS STRUGGLE</p>
                                 <div className="flex flex-col gap-2 md:gap-4">
@@ -412,7 +466,6 @@ export default function HeroLabClient() {
                                 </div>
                             </div>
 
-                            {/* COMPACT GLASS HUD */}
                             <div className="relative group/hud">
                                 <div className="relative bg-white/[0.02] border border-white/10 backdrop-blur-xl rounded-2xl md:rounded-[2rem] p-4 md:p-8 space-y-4 shadow-2xl overflow-hidden ring-1 ring-white/5">
                                     <div className="flex flex-col gap-3 md:gap-5">
@@ -429,7 +482,6 @@ export default function HeroLabClient() {
                             </div>
                         </div>
 
-                        {/* 3. THE ACTION */}
                         <div className="pt-2">
                              <div className="space-y-4">
                                 <button className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-xs md:text-sm shadow-[0_15px_35px_-5px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
@@ -441,6 +493,62 @@ export default function HeroLabClient() {
                             </div>
                         </div>
 
+                    </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 21: THE OPERATIONAL BRIDGE --- */}
+            <LabSection id="opt-21" title="21. The Operational Bridge" description="Strategic Copy Refinement: Outcome-driven bridge below pain points." fullScreen>
+                <div className="absolute inset-0 z-0">
+                    <BackgroundVideo opacity={0.4} grayscale />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
+                </div>
+
+                <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-4 md:py-0">
+                    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr,450px] gap-12 lg:gap-24 items-center w-full">
+                        
+                        {/* 1. THE HOOK (LEFT) */}
+                        <div className="space-y-12">
+                            <div className="space-y-6">
+                                <h1 className="text-[40px] md:text-[96px] font-black font-headline leading-[0.95] md:leading-[0.88] uppercase italic tracking-tighter drop-shadow-2xl">
+                                    {NARRATIVE.line1} <br />
+                                    <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
+                                </h1>
+                                <p className="text-base md:text-[28px] leading-[1.2] italic font-medium text-zinc-400 max-w-2xl border-l-2 border-emerald-500/20 pl-8">
+                                    {NARRATIVE.subline}
+                                </p>
+                            </div>
+                            
+                            {/* CTA Positioned Left as per Brief */}
+                            <SovereignCTA className="md:!space-y-8" />
+                        </div>
+
+                        {/* 2. THE BRIDGE (RIGHT) */}
+                        <div className="space-y-10 md:space-y-16">
+                            
+                            {/* A. WHY TEAMS STRUGGLE (PAIN) */}
+                            <div className="space-y-6 text-right lg:border-r-2 lg:border-red-500/20 lg:pr-10">
+                                <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">WHY TEAMS STRUGGLE</p>
+                                <div className="flex flex-col gap-4 md:gap-6">
+                                    {ANXIETY_ITEMS.map((item, i) => (
+                                        <PulsatingStressText key={i} text={item} delay={`${i * 0.2}s`} className="!text-[15px] md:!text-[22px]" />
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* B. WHAT REPLACES IT (OUTCOME BRIDGE) */}
+                            <div className="relative group/outcome">
+                                <div className="absolute -inset-2 bg-emerald-500/10 blur-xl opacity-0 group-hover/outcome:opacity-100 transition-opacity duration-1000" />
+                                <div className="relative bg-white/[0.03] border border-white/10 backdrop-blur-2xl rounded-3xl p-6 md:p-10 space-y-6 shadow-2xl ring-1 ring-white/5">
+                                    <div className="space-y-1">
+                                        <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em] italic">WHAT REPLACES IT</p>
+                                        <div className="w-12 h-0.5 bg-emerald-500/40" />
+                                    </div>
+                                    <OutcomeGrid textColor="text-white/80" />
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </LabSection>
