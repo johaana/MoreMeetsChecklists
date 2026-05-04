@@ -61,7 +61,7 @@ const SolutionsList = () => (
     </div>
 );
 
-const BrandLogo = ({ isDarkText }: { isDarkText?: boolean }) => (
+const BrandLogo = () => (
      <Link href="/" className="flex items-center justify-center gap-2 group" prefetch={false}>
         <Logo className={cn("h-5 w-5 md:h-6 md:w-6 text-[#22C55E]")} />
         <div className="flex flex-col">
@@ -71,29 +71,15 @@ const BrandLogo = ({ isDarkText }: { isDarkText?: boolean }) => (
     </Link>
 );
 
-export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
+export function SiteHeader() {
     const [isSheetOpen, setIsSheetOpen] = React.useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
     const pathname = usePathname();
-    const [isScrolled, setIsScrolled] = React.useState(false);
-
-    // Theme logic: The user wants header text white/light and ALWAYS transparent
-    const shouldShowWhite = true;
 
     React.useEffect(() => {
         setIsSheetOpen(false);
         setIsDropdownOpen(false);
     }, [pathname]);
-
-    React.useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        handleScroll(); 
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     const navLinkClass = cn(
         "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-all drop-shadow-sm text-white/80 hover:text-white"
@@ -102,8 +88,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
     return (
         <header className={cn(
             "px-6 lg:px-12 h-16 flex items-center fixed top-0 w-full z-50 transition-all duration-500",
-            "bg-transparent border-b border-transparent",
-            isScrolled && "backdrop-blur-sm bg-black/5" // Subtle hint of depth on scroll, but remains transparent
+            "bg-transparent border-b border-transparent"
         )}>
             <div className="flex items-center">
                 <BrandLogo />

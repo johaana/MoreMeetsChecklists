@@ -78,7 +78,7 @@ const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
 );
 
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
-    <section id={id} className={cn("w-full py-12 md:py-24", className)}>
+    <section id={id} className={cn("w-full py-12 md:py-20", className)}>
         <div className="container mx-auto max-w-[1200px] px-6">
             {children}
         </div>
@@ -109,7 +109,7 @@ const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: s
 );
 
 const SovereignCTA = ({ className }: { className?: string }) => (
-    <div className={cn("space-y-3 md:space-y-4 flex flex-col items-center sm:items-start", className)}>
+    <div className={cn("space-y-4 md:space-y-5 flex flex-col items-center sm:items-start", className)}>
         <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
             <Link href="/library">
                 {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
@@ -131,8 +131,8 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
             </div>
 
-            <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-12 md:py-0 md:pt-36">
-                <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-20 items-center">
+            <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-12 md:py-0 md:pt-28">
+                <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 items-center">
                     
                     {/* Phase 01: The Hook */}
                     <div className="order-1 space-y-2 md:space-y-3 w-full">
@@ -142,7 +142,7 @@ const HeroSection = () => {
                                 <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
                              </h1>
                         </div>
-                        <p className="text-base md:text-[24px] lg:text-[28px] italic font-medium text-zinc-400 max-w-none lg:whitespace-nowrap leading-tight">
+                        <p className="text-base md:text-[22px] lg:text-[26px] italic font-medium text-zinc-400 max-w-none lg:whitespace-nowrap leading-tight">
                             {NARRATIVE.subline}
                         </p>
                     </div>
@@ -158,7 +158,7 @@ const HeroSection = () => {
                     </div>
 
                     {/* Phase 03: The New Standard Bridge */}
-                    <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-4 md:space-y-6 mt-8 lg:mt-4 lg:pt-2">
+                    <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-4 md:space-y-6 mt-8 lg:mt-2">
                         <div className="space-y-2 md:space-y-3">
                             <div className="flex items-center gap-3">
                                 <div className="w-1 h-5 md:h-6 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
@@ -169,7 +169,7 @@ const HeroSection = () => {
                     </div>
 
                     {/* Phase 04: The Command */}
-                    <div className="order-4 w-full lg:col-start-1 lg:row-start-3 mt-8 md:mt-6">
+                    <div className="order-4 w-full lg:col-start-1 lg:row-start-3 mt-8 md:mt-4">
                         <SovereignCTA />
                     </div>
                 </div>
