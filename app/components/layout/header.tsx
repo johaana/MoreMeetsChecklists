@@ -100,7 +100,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
 
     const navLinkClass = cn(
         "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-colors",
-        shouldShowDark ? "text-[#0F172A]/60 hover:text-[#0F172A]" : "text-white/60 hover:text-white"
+        shouldShowDark ? "text-[#0F172A]/80 hover:text-[#0F172A]" : "text-white/80 hover:text-white"
     );
 
     return (
