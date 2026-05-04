@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -92,7 +91,7 @@ export function SiteHeader() {
     }, [pathname]);
 
     const navLinkClass = cn(
-        "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-all text-white/80 hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
+        "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-all text-white/90 hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
     );
 
     return (
