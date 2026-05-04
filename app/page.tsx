@@ -87,7 +87,7 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
 
 const PulsatingStressText = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
     <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-        <span className="text-[14px] md:text-[20px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.4)] whitespace-nowrap">
+        <span className="text-[14px] md:text-[22px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.4)] whitespace-nowrap">
             {text}
         </span>
     </div>
@@ -109,14 +109,14 @@ const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: s
 );
 
 const SovereignCTA = ({ className }: { className?: string }) => (
-    <div className={cn("space-y-2 md:space-y-4 flex flex-col items-center sm:items-start", className)}>
+    <div className={cn("space-y-3 md:space-y-4 flex flex-col items-center sm:items-start", className)}>
         <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
             <Link href="/library">
                 {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
             </Link>
         </Button>
-        <div className="w-full flex justify-center sm:justify-start">
-             <p className="text-[8px] md:text-[9px] text-zinc-600 font-black uppercase tracking-[0.4em] italic sm:pl-2">
+        <div className="w-full flex justify-center lg:justify-start">
+             <p className="text-[9px] md:text-[11px] text-zinc-500 font-black uppercase tracking-[0.4em] italic lg:pl-1 text-center">
                 {NARRATIVE.meta}
             </p>
         </div>
@@ -131,8 +131,8 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
             </div>
 
-            <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-12 md:py-0 md:pt-48">
-                <div className="flex flex-col lg:grid lg:grid-cols-[1.1fr,0.9fr] lg:gap-20 items-center">
+            <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-12 md:py-0 md:pt-36">
+                <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-20 items-center">
                     
                     {/* Phase 01: The Hook */}
                     <div className="order-1 space-y-2 md:space-y-3 w-full">
@@ -158,7 +158,7 @@ const HeroSection = () => {
                     </div>
 
                     {/* Phase 03: The New Standard Bridge */}
-                    <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-4 md:space-y-6 mt-8 lg:mt-4">
+                    <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-4 md:space-y-6 mt-8 lg:mt-4 lg:pt-2">
                         <div className="space-y-2 md:space-y-3">
                             <div className="flex items-center gap-3">
                                 <div className="w-1 h-5 md:h-6 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
@@ -169,7 +169,7 @@ const HeroSection = () => {
                     </div>
 
                     {/* Phase 04: The Command */}
-                    <div className="order-4 w-full lg:col-start-1 lg:row-start-3 mt-8 md:mt-4">
+                    <div className="order-4 w-full lg:col-start-1 lg:row-start-3 mt-8 md:mt-6">
                         <SovereignCTA />
                     </div>
                 </div>
@@ -189,7 +189,7 @@ export default function Home() {
 
     return (
         <div className="flex flex-col min-h-screen bg-[#F7F8FA] text-[#0B0F14] font-sans antialiased selection:bg-[#F4A261]/30">
-            <SiteHeader forceTheme="dark" />
+            <SiteHeader />
 
             <main className="flex-1">
                 

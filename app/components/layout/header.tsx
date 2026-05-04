@@ -61,12 +61,12 @@ const SolutionsList = () => (
     </div>
 );
 
-const BrandLogo = ({ isScrolled, isDarkText }: { isScrolled: boolean, isDarkText?: boolean }) => (
+const BrandLogo = ({ isDarkText }: { isDarkText?: boolean }) => (
      <Link href="/" className="flex items-center justify-center gap-2 group" prefetch={false}>
         <Logo className={cn("h-5 w-5 md:h-6 md:w-6 text-[#22C55E]")} />
         <div className="flex flex-col">
-            <span className={cn("font-headline text-base md:text-lg font-bold leading-[1] tracking-tight", (isScrolled || isDarkText) ? "text-[#0F172A]" : "text-white")}>MoreMeets™</span>
-            <span className={cn("text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] leading-none mt-0.5", (isScrolled || isDarkText) ? "text-[#0F172A]/40" : "text-white/40")}>LESS MISSES.</span>
+            <span className={cn("font-headline text-base md:text-lg font-bold leading-[1] tracking-tight text-white drop-shadow-sm")}>MoreMeets™</span>
+            <span className={cn("text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] leading-none mt-0.5 text-white/40")}>LESS MISSES.</span>
         </div>
     </Link>
 );
@@ -77,11 +77,8 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
     const pathname = usePathname();
     const [isScrolled, setIsScrolled] = React.useState(false);
 
-    // Visibility logic for Design Lab
-    const isDesignLab = pathname === '/design-lab' || pathname === '/';
-    
-    // Theme logic: prioritize forceTheme, then isDesignLab (dark), then isScrolled (dark)
-    const shouldShowDark = forceTheme ? (forceTheme === 'dark') : (isDesignLab || isScrolled);
+    // Theme logic: The user wants header text white/light and ALWAYS transparent
+    const shouldShowWhite = true;
 
     React.useEffect(() => {
         setIsSheetOpen(false);
@@ -99,19 +96,17 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
     }, []);
 
     const navLinkClass = cn(
-        "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-colors",
-        shouldShowDark ? "text-[#0F172A] hover:text-[#0F172A]/70" : "text-white hover:text-white/70"
+        "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-all drop-shadow-sm text-white/80 hover:text-white"
     );
 
     return (
         <header className={cn(
             "px-6 lg:px-12 h-16 flex items-center fixed top-0 w-full z-50 transition-all duration-500",
-            isScrolled 
-                ? "bg-white/95 backdrop-blur-md border-b border-black/5 shadow-sm" 
-                : "bg-transparent border-b border-transparent"
+            "bg-transparent border-b border-transparent",
+            isScrolled && "backdrop-blur-sm bg-black/5" // Subtle hint of depth on scroll, but remains transparent
         )}>
             <div className="flex items-center">
-                <BrandLogo isScrolled={isScrolled} isDarkText={shouldShowDark} />
+                <BrandLogo />
             </div>
 
             <nav className="ml-auto hidden md:flex gap-10 items-center">
@@ -152,7 +147,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
             <div className="md:hidden ml-auto flex items-center">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", shouldShowDark ? "text-[#0F172A]" : "text-white/80 hover:bg-white/10")}>
+                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", "text-white/80 hover:bg-white/10")}>
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>
@@ -160,7 +155,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                     <SheetContent side="right" className="w-full max-w-sm flex flex-col p-0 bg-white border-l-black/5 shadow-2xl">
                          <SheetHeader className="p-4 border-b border-black/5">
                             <SheetTitle>
-                                <BrandLogo isScrolled={true} />
+                                <BrandLogo />
                             </SheetTitle>
                         </SheetHeader>
                         <ScrollArea className="flex-1">
