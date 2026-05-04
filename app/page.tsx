@@ -21,7 +21,9 @@ import {
     Lock,
     Target,
     ShoppingBag,
-    History
+    History,
+    ClipboardCheck,
+    Smartphone
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -30,71 +32,86 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { TestimonialsSection } from '@/components/layout/testimonials-section';
 import { FaqSection } from '@/components/layout/faq-section';
+import { Button } from '@/components/ui/button';
 
-const DASHBOARD_IMAGE = "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png";
+// --- PRODUCTION CONSTANTS ---
+const VIMEO_URL = "https://player.vimeo.com/video/1187795401?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0";
+const BRAND_GREEN = "#22C55E";
 
-const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
-    <section id={id} className={cn("w-full py-16 md:py-32", className)}>
-        <div className="container mx-auto max-w-[1200px] px-6">
-            {children}
-        </div>
-    </section>
-);
-
-const AnimatedAnnotation = ({ children, className, delay = "0s", color = "green" }: { children: React.ReactNode, className?: string, delay?: string, color?: "green" | "red" | "blue" }) => {
-    const pingColors = {
-        green: "bg-emerald-500",
-        red: "bg-red-500",
-        blue: "bg-blue-500"
-    };
-
-    return (
-        <div className={cn(
-            "absolute z-30 bg-white/95 backdrop-blur-md px-1.5 py-0.5 md:px-2 md:py-1 rounded md:rounded-lg shadow-xl flex items-center gap-1.5 border border-[#E6E8EC] animate-in fade-in zoom-in duration-700 whitespace-nowrap",
-            className
-        )} style={{ animationDelay: delay }}>
-            <span className="relative flex h-1 w-1">
-                <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-100 scale-[4]", pingColors[color as keyof typeof pingColors])}></span>
-                <span className={cn("relative inline-block rounded-full h-1 w-1", pingColors[color as keyof typeof pingColors])}></span>
-            </span>
-            <span className="text-[6px] md:text-[9px] font-black text-[#0B0F14] uppercase tracking-widest leading-none">{children}</span>
-        </div>
-    );
+const NARRATIVE = {
+    line1: "STOP CHASING.",
+    line2: "START SEEING.",
+    subline: "See daily work getting done. Even when you aren't there.",
+    cta: "Deploy the system",
+    meta: "SINGLE / MULTI-UNIT READY • AUDIT-READY COMPLIANCE"
 };
 
-const TechnicalProof = ({ className }: { className?: string }) => (
-    <div className={cn("relative group w-full", className)}>
-        <AnimatedAnnotation className="top-[25%] left-[5%]" color="red" delay="0.5s">Missed tasks</AnimatedAnnotation>
-        <AnimatedAnnotation className="top-[10%] right-[5%]" color="green" delay="1s">Completed</AnimatedAnnotation>
-        <AnimatedAnnotation className="bottom-[20%] left-[10%]" color="blue" delay="1.5s">Live Console</AnimatedAnnotation>
-        
-        <div className="bg-[#111] h-6 md:h-10 w-full rounded-t-lg md:rounded-t-[20px] flex items-center px-4 md:px-6 gap-1.5 border border-white/10">
-            <div className="flex gap-1 md:gap-1.5">
-                <div className="w-1 h-1 md:w-2 md:h-2 rounded-full bg-red-500/30" />
-                <div className="w-1 h-1 md:w-2 md:h-2 rounded-full bg-amber-500/30" />
-                <div className="w-1 h-1 md:w-2 md:h-2 rounded-full bg-green-500/30" />
-            </div>
-            <div className="flex-1 flex justify-center">
-                <div className="bg-black/40 border border-white/5 rounded-md px-4 md:px-12 py-1 text-[6px] md:text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner">
-                    MASTER_CONSOLE
-                </div>
-            </div>
-        </div>
+const TECH_SPECS = [
+    { t: "120+ Industry Specific SOPs", i: ClipboardCheck },
+    { t: "Live Dashboard Visibility", i: Activity },
+    { t: "No SaaS. Own your data.", i: Lock },
+    { t: "Built-in Trainer Notes", i: Smartphone }
+];
 
-        <div className="rounded-b-lg md:rounded-b-[20px] overflow-hidden shadow-[0_40px_100px_-15px_rgba(0,0,0,0.25)] bg-white border border-[#E6E8EC] border-t-0 relative">
-            <img 
-                src={DASHBOARD_IMAGE} 
-                alt="Sovereign Dashboard" 
-                className="w-full h-auto object-contain grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
-            />
-        </div>
-        
-        <div className="mt-8 text-center space-y-2">
-            <p className="text-[8px] md:text-[11px] font-black text-[#5B6670] uppercase tracking-[0.5em] italic opacity-60">
-                Sample of restaurant operations system dashboard
-            </p>
-            <p className="text-[10px] md:text-[14px] font-bold text-primary uppercase tracking-[0.3em] italic">
-                One glance shows what's done across your entire group.
+const ANXIETY_ITEMS = [
+    "Work depends on the memory of key people?",
+    "Tasks get skipped during busy shifts?",
+    "Staff executes steps differently every time?",
+    "Managers waste hours manually following up?",
+    "Institutional memory leaves when staff resign?"
+];
+
+// --- HELPER COMPONENTS ---
+
+const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
+    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <iframe
+            src={VIMEO_URL}
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            className={cn(
+                "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.77vh] min-w-full h-full min-h-[56.25vw] scale-[1.05]",
+                grayscale && "saturate-0 brightness-75 contrast-110"
+            )}
+            style={{ opacity, border: 'none' }}
+            title="Sovereign Background"
+        />
+    </div>
+);
+
+const PulsatingStressText = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
+    <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
+        <span className="text-[14px] md:text-[20px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.4)] whitespace-nowrap">
+            {text}
+        </span>
+    </div>
+);
+
+const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: string, textColor?: string }) => (
+    <div className={cn("grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 md:gap-y-5", className)}>
+        {TECH_SPECS.map((item, i) => (
+            <div key={i} className="flex items-center gap-3 group">
+                <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                    <Check className="w-2.5 h-2.5 text-[#22C55E]" />
+                </div>
+                <span className={cn("text-[12px] md:text-[14px] font-bold uppercase tracking-[0.05em] italic leading-tight group-hover:text-[#22C55E] transition-colors", textColor)}>
+                    {item.t}
+                </span>
+            </div>
+        ))}
+    </div>
+);
+
+const SovereignCTA = ({ className }: { className?: string }) => (
+    <div className={cn("space-y-4 md:space-y-6", className)}>
+        <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
+            <Link href="/library">
+                {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
+            </Link>
+        </Button>
+        <div className="space-y-1 pl-1 text-center sm:text-left">
+             <p className="text-[8px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic">
+                {NARRATIVE.meta}
             </p>
         </div>
     </div>
@@ -102,132 +119,65 @@ const TechnicalProof = ({ className }: { className?: string }) => (
 
 const HeroSection = () => {
     return (
-      <>
-        <section className="relative w-full bg-[#F7F7F4] overflow-hidden border-b border-[#E8E7E2]">
-          <div className="mx-auto max-w-[1440px] px-[20px] md:px-[72px] pt-[80px] md:pt-[60px] pb-[60px]">
-            <div className="flex flex-col lg:grid lg:grid-cols-12 gap-12 min-h-[780px] items-center">
-              {/* LEFT: NARRATIVE COMMAND */}
-              <div className="lg:col-span-7">
-                <div className="max-w-[740px]">
-                  <h1 className="font-headline text-[44px] md:text-[92px] leading-[0.92] font-black tracking-[-0.04em] italic text-[#0E1420] uppercase">
-                    STOP CHASING YOUR
-                    <br />
-                    TEAM.
-                  </h1>
-  
-                  <h1 className="mt-4 font-headline text-[44px] md:text-[92px] leading-[0.92] font-black tracking-[-0.04em] italic text-[#1E8E5A] uppercase">
-                    SEE DAILY WORK
-                    <br />
-                    GETTING DONE.
-                  </h1>
-                </div>
-  
-                <p className="mt-10 text-[22px] md:text-[32px] leading-[1.2] italic font-medium text-[#5F6672] max-w-xl">
-                  Even when you’re not there.
-                </p>
-  
-                <div className="mt-12 flex items-center gap-6">
-                  <div className="h-[44px] w-[5px] bg-[#1E8E5A]" />
-                  <p className="font-headline text-[18px] md:text-[24px] font-bold italic text-[#0E1420] tracking-[-0.02em]">
-                    No follow-ups • No confusion • No memory gaps
-                  </p>
-                </div>
-  
-                <div className="mt-16 flex flex-col md:flex-row items-center gap-8">
-                  <Link
-                    href="/library"
-                    className="group inline-flex h-[84px] w-full md:w-[440px] items-center justify-center rounded-[20px] bg-[#C88A4A] px-10 shadow-[0_15px_30px_rgba(200,138,74,0.2)] transition-all duration-300 hover:bg-[#B97A39] hover:scale-[1.02] active:scale-95"
-                  >
-                    <span className="font-headline text-[22px] md:text-[30px] font-black italic text-white uppercase tracking-tight">
-                      DEPLOY SYSTEM → ₹2,999
-                    </span>
-                  </Link>
-  
-                  <div className="leading-[1.3] text-center md:text-left">
-                    <p className="text-[12px] font-black uppercase tracking-[0.2em] text-[#0E1420]">
-                      One-time Payment
-                    </p>
-                    <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#5F6672]">
-                      Own the Engine Forever
-                    </p>
-                  </div>
-                </div>
-  
-                <div className="mt-12 border-t border-[#E8E7E2] pt-8">
-                  <p className="text-[14px] font-bold uppercase tracking-[0.15em] text-[#5F6672] leading-[1.8] italic">
-                    Built on Excel • Runs on Google Sheets
-                    <br />
-                    No Software Required • Universal Accessibility
-                  </p>
-                </div>
-              </div>
-  
-              {/* RIGHT: CINEMATIC PROOF */}
-              <div className="lg:col-span-5 flex justify-center lg:justify-end w-full">
-                <div className="relative h-[340px] w-[340px] md:h-[680px] md:w-[680px] overflow-hidden rounded-[40px] bg-[#111827] shadow-[0_32px_80px_rgba(17,24,39,0.25)] border-8 border-white">
-                  <div className="absolute inset-0 scale-[1.15] saturate-0 brightness-[0.75] contrast-110">
-                    <div className="relative w-full h-full">
-                      <iframe
-                        src="https://player.vimeo.com/video/1187795401?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0"
-                        frameBorder="0"
-                        allow="autoplay; fullscreen; picture-in-picture"
-                        className="absolute inset-0 h-full w-full object-cover"
-                        title="Operations Hero Video"
-                      />
-                    </div>
-                  </div>
-  
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[#0E1420]/40 to-transparent" />
-  
-                  {/* Floating Status Cards */}
-                  <div className="absolute left-6 top-6 md:left-10 md:top-10 rounded-[18px] bg-white/95 px-5 py-3.5 shadow-2xl backdrop-blur-xl border border-white/20">
-                    <div className="flex items-center gap-3">
-                      <span className="relative flex h-3 w-3">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#1E8E5A] opacity-75" />
-                        <span className="relative inline-flex h-3 w-3 rounded-full bg-[#1E8E5A]" />
-                      </span>
-                      <p className="text-[11px] md:text-[13px] font-black uppercase tracking-[0.25em] text-[#0E1420]">
-                        SHIFT LIVE
-                      </p>
-                    </div>
-                  </div>
-  
-                  <div className="absolute right-6 top-[180px] md:right-10 md:top-[280px] rounded-[18px] bg-white/95 px-6 py-4 shadow-2xl backdrop-blur-xl border border-white/20">
-                    <p className="font-headline text-[13px] md:text-[16px] font-black text-[#0E1420] tracking-tighter italic">
-                      126 TASKS CLOSED
-                    </p>
-                  </div>
-  
-                  <div className="absolute bottom-6 left-6 md:bottom-12 md:left-10 rounded-[18px] bg-white/95 px-5 py-3.5 shadow-2xl backdrop-blur-xl border border-white/20">
-                    <p className="font-headline text-[13px] md:text-[16px] font-black text-[#B45309] tracking-tighter italic">
-                      3 RISKS FLAGGED
-                    </p>
-                  </div>
-                </div>
-              </div>
+        <section className="relative w-full min-h-[90svh] md:h-screen flex flex-col justify-center overflow-hidden bg-black">
+            <div className="absolute inset-0 z-0">
+                <BackgroundVideo opacity={0.3} grayscale />
+                {/* Asymmetric Gradient Mask */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
             </div>
-          </div>
-        </section>
-  
-        <section className="w-full border-b border-[#E8E7E2] bg-[#F7F7F4]">
-          <div className="mx-auto flex h-[84px] max-w-[1440px] items-center justify-center px-[20px] md:px-[72px]">
-            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14 text-center">
-              {["ISO 9001", "HACCP", "FSSAI", "OSHA", "NABH", "JCI", "AUDIT-READY"].map((item) => (
-                <span
-                  key={item}
-                  className="text-[11px] md:text-[14px] font-black uppercase tracking-[0.35em] text-[#B0B4BC]"
-                >
-                  {item}
-                </span>
-              ))}
+
+            <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-16 md:py-0">
+                <div className="flex flex-col lg:grid lg:grid-cols-[1.1fr,0.9fr] lg:gap-20 items-center">
+                    
+                    {/* Phase 01: The Hook */}
+                    <div className="order-1 space-y-4 md:space-y-6 w-full">
+                        <div className="space-y-1 md:space-y-2">
+                             <h1 className="text-[40px] md:text-[100px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white">
+                                {NARRATIVE.line1} <br />
+                                <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
+                            </h1>
+                        </div>
+                        <p className="text-base md:text-[30px] italic font-medium text-zinc-400 max-w-none lg:whitespace-nowrap leading-tight">
+                            {NARRATIVE.subline}
+                        </p>
+                    </div>
+                    
+                    {/* Phase 02: The Operational Pain (LEFT-ALIGNED MOBILE, RIGHT-ALIGNED DESKTOP) */}
+                    <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-3 space-y-4 md:space-y-8 text-left lg:text-right lg:border-r-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:border-l border-white/5 mt-10 lg:mt-0">
+                         <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">WHY TEAMS STRUGGLE</p>
+                         <div className="flex flex-col gap-2 md:gap-6">
+                             {ANXIETY_ITEMS.map((text, i) => (
+                                <PulsatingStressText key={i} text={text} delay={`${i * 0.2}s`} />
+                             ))}
+                         </div>
+                    </div>
+
+                    {/* Phase 03: The New Standard Bridge */}
+                    <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-8 md:space-y-10 mt-12 lg:mt-16">
+                        <div className="space-y-3">
+                            <div className="flex items-center gap-3">
+                                <div className="w-1 h-6 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
+                                <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em] italic font-headline">THE NEW STANDARD</p>
+                            </div>
+                            <CommandGrid className="max-w-xl" textColor="text-white/80" />
+                        </div>
+                    </div>
+
+                    {/* Phase 04: The Command */}
+                    <div className="order-4 w-full lg:col-start-1 lg:row-start-3 mt-10 md:mt-12">
+                        <SovereignCTA />
+                    </div>
+                </div>
             </div>
-          </div>
         </section>
-  
-        <Script src="https://player.vimeo.com/api/player.js" strategy="lazyOnload" />
-      </>
     );
 };
+
+const SectionHeadline = ({ children, className }: { children: React.ReactNode, className?: string }) => (
+    <h2 className={cn("text-[32px] md:text-[64px] font-black font-headline text-[#0E1420] leading-[0.95] tracking-tight uppercase italic", className)}>
+        {children}
+    </h2>
+);
 
 export default function Home() {
     const [mounted, setMounted] = useState(false);
@@ -297,7 +247,7 @@ export default function Home() {
                 <Section className="bg-[#F7F8FA] border-y border-[#E8E7E2]">
                     <div className="max-w-[1000px] mx-auto text-center space-y-16">
                         <div className="space-y-6">
-                            <h2 className="text-[36px] md:text-[64px] font-black text-[#0E1420] leading-[0.95] tracking-tight uppercase italic font-headline">Why operations break</h2>
+                            <SectionHeadline>Why operations break</SectionHeadline>
                             <p className="text-xl md:text-2xl text-[#5F6672] italic font-medium">Systems fail slowly before they fail catastrophically.</p>
                         </div>
                         
@@ -351,7 +301,7 @@ export default function Home() {
                 <Section className="bg-white">
                     <div className="max-w-[1200px] mx-auto space-y-24">
                         <div className="text-center space-y-4">
-                            <h2 className="text-[36px] md:text-[64px] font-black text-[#0B0F14] uppercase italic tracking-tight font-headline">Start in minutes</h2>
+                            <SectionHeadline>Start in minutes</SectionHeadline>
                         </div>
                         
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
@@ -375,7 +325,37 @@ export default function Home() {
 
                         {/* TECHNICAL PROOF: FULL DASHBOARD VISIBILITY */}
                         <div className="space-y-16">
-                            <TechnicalProof className="max-w-6xl mx-auto" />
+                            <div className="relative group w-full max-w-6xl mx-auto">
+                                <div className="bg-[#111] h-6 md:h-10 w-full rounded-t-lg md:rounded-t-[20px] flex items-center px-4 md:px-6 gap-1.5 border border-white/10">
+                                    <div className="flex gap-1 md:gap-1.5">
+                                        <div className="w-1 h-1 md:w-2 md:h-2 rounded-full bg-red-500/30" />
+                                        <div className="w-1 h-1 md:w-2 md:h-2 rounded-full bg-amber-500/30" />
+                                        <div className="w-1 h-1 md:w-2 md:h-2 rounded-full bg-green-500/30" />
+                                    </div>
+                                    <div className="flex-1 flex justify-center">
+                                        <div className="bg-black/40 border border-white/5 rounded-md px-4 md:px-12 py-1 text-[6px] md:text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner">
+                                            MASTER_CONSOLE
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="rounded-b-lg md:rounded-b-[20px] overflow-hidden shadow-[0_40px_100px_-15px_rgba(0,0,0,0.25)] bg-white border border-[#E6E8EC] border-t-0 relative">
+                                    <img 
+                                        src="https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png" 
+                                        alt="Sovereign Dashboard" 
+                                        className="w-full h-auto object-contain grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
+                                    />
+                                </div>
+                                
+                                <div className="mt-8 text-center space-y-2">
+                                    <p className="text-[8px] md:text-[11px] font-black text-[#5B6670] uppercase tracking-[0.5em] italic opacity-60">
+                                        Sample of restaurant operations system dashboard
+                                    </p>
+                                    <p className="text-[10px] md:text-[14px] font-bold text-primary uppercase tracking-[0.3em] italic">
+                                        One glance shows what's done across your entire group.
+                                    </p>
+                                </div>
+                            </div>
                             
                             <div className="text-center pt-8">
                                 <p className="text-2xl md:text-[40px] font-black text-[#0B0F14] uppercase italic tracking-tighter font-headline">
@@ -478,3 +458,4 @@ export default function Home() {
         </div>
     );
 }
+
