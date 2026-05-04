@@ -32,7 +32,7 @@ const NARRATIVE = {
 };
 
 const TECH_SPECS = [
-    { t: "120+ Pre-built Industry SOPs", i: ClipboardCheck },
+    { t: "120+ Industry Specific SOPs", i: ClipboardCheck },
     { t: "Live Dashboard", i: Activity },
     { t: "No SaaS. Own your data.", i: Lock },
     { t: "Trainer Notes for staff", i: Smartphone }
@@ -117,9 +117,11 @@ const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: s
 
 const SovereignCTA = ({ className }: { className?: string }) => (
     <div className={cn("space-y-4 md:space-y-6", className)}>
-        <button className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
-            {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
-        </button>
+        <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
+            <Link href="/library">
+                {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
+            </Link>
+        </Button>
         <div className="space-y-1 pl-1 text-center sm:text-left">
              <p className="text-[8px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic">
                 {NARRATIVE.meta}
@@ -283,7 +285,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 19: THE CONVERSION GRID --- */}
-            <LabSection id="opt-19" title="19. The Conversion Grid" description="Problem stack with technical solution grid. Optimized sequence.">
+            <LabSection id="opt-19" title="19. The Conversion Grid" description="Refined sequence: Hook -> Pain -> Bridge -> Solution -> Action.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.3} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
@@ -293,8 +295,8 @@ export default function HeroLabClient() {
                         {/* Hook Narrative: Order 1 */}
                         <div className="order-1 space-y-4 md:space-y-6 w-full">
                             <h1 className="text-4xl md:text-[100px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter">
-                                {NARRATIVE.line1}<br />
-                                <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
+                                STOP CHASING. <br />
+                                <span style={{ color: BRAND_GREEN }}> START SEEING.</span>
                             </h1>
                             <p className="text-base md:text-[30px] italic font-medium text-zinc-400 max-w-none lg:whitespace-nowrap leading-tight">
                                 {NARRATIVE.subline}
@@ -311,9 +313,16 @@ export default function HeroLabClient() {
                              </div>
                         </div>
 
-                        {/* Specs & CTA: Order 3 on Mobile, Desktop Left Bottom */}
+                        {/* Specs & Bridge: Order 3 on Mobile */}
                         <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-8 md:space-y-10">
-                            <CommandGrid className="max-w-xl" textColor="text-white/80" />
+                            <div className="space-y-3">
+                                <p className="text-[10px] font-black text-emerald-500/60 uppercase tracking-[0.4em] italic font-mono">THE NEW STANDARD</p>
+                                <CommandGrid className="max-w-xl" textColor="text-white/80" />
+                            </div>
+                        </div>
+
+                        {/* CTA: Order 4 on Mobile */}
+                        <div className="order-4 w-full lg:col-start-1 lg:row-start-3">
                             <SovereignCTA />
                         </div>
                     </div>
@@ -321,7 +330,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 20: THE ULTRA-COMPACT HUD --- */}
-            <LabSection id="opt-20" title="20. The Ultra-Compact HUD" description="Maximum technical density. One-glance standard." fullScreen>
+            <LabSection id="opt-20" title="20. The Ultra-Compact HUD" description="Maximum technical density. High-legibility mobile specs." fullScreen>
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.5} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
@@ -335,8 +344,10 @@ export default function HeroLabClient() {
                             </h1>
                             <p className="text-sm md:text-[24px] leading-[1.2] italic font-medium text-zinc-400 max-w-2xl">{NARRATIVE.subline}</p>
                         </div>
-                        <div className="flex flex-col md:grid md:grid-cols-[1fr,380px] gap-6 md:gap-12 items-start md:items-center">
-                            <div className="order-1 md:order-none space-y-3 md:space-y-6 border-l-2 border-red-500/20 pl-4 md:pl-8">
+                        
+                        <div className="flex flex-col md:flex-row gap-6 md:gap-16 items-start md:items-center">
+                            {/* Problems Pane */}
+                            <div className="order-1 space-y-3 md:space-y-6 border-l-2 border-red-500/20 pl-4 md:pl-8">
                                 <p className="text-[8px] md:text-[9px] font-black text-red-500/60 uppercase tracking-[0.4em] italic">WHY TEAMS STRUGGLE</p>
                                 <div className="flex flex-col gap-2 md:gap-4">
                                     {ANXIETY_ITEMS.map((item, i) => (
@@ -344,17 +355,20 @@ export default function HeroLabClient() {
                                     ))}
                                 </div>
                             </div>
-                            <div className="order-2 md:order-none bg-white/[0.02] border border-white/10 backdrop-blur-3xl rounded-2xl md:rounded-[2rem] p-6 md:p-8 space-y-4 shadow-2xl">
+
+                            {/* Solution HUD Pane - Moved lefter closer to problems */}
+                            <div className="order-2 bg-white/[0.02] border border-white/10 backdrop-blur-3xl rounded-2xl md:rounded-[2rem] p-6 md:p-8 space-y-4 shadow-2xl md:max-w-md">
                                 <div className="flex flex-col gap-4">
                                     {TECH_SPECS.map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 md:gap-4">
-                                            <item.i className="w-3 md:w-5 h-3 md:h-5 text-emerald-500" />
-                                            <span className="text-[11px] md:text-[14px] font-bold text-white/50 uppercase italic tracking-wide leading-tight">{item.t}</span>
+                                            <item.i className="w-4 md:w-5 h-4 md:h-5 text-emerald-500" />
+                                            <span className="text-[13px] md:text-[14px] font-bold text-white/50 uppercase italic tracking-wide leading-tight">{item.t}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
                         </div>
+                        
                         <SovereignCTA className="order-3" />
                     </div>
                 </div>
