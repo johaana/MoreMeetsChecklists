@@ -83,7 +83,7 @@ const LabSection = ({ children, title, description, id, fullScreen = false }: { 
         </div>
         <div className={cn(
             "w-full relative overflow-hidden bg-[#050505] flex flex-col justify-center",
-            fullScreen ? "min-h-screen" : "min-h-[80svh] md:min-h-[90svh]"
+            fullScreen ? "h-screen" : "min-h-[80svh] md:min-h-[90svh]"
         )}>
             {children}
         </div>
@@ -378,51 +378,50 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 20: THE ONE-GLANCE HUD (WEB & MOBILE OPTIMIZED) --- */}
-            <LabSection id="opt-20" title="20. The One-Glance HUD" description="Refined Finalist: Fits everything above the fold. Raw stress + Compact Glass HUD.">
+            {/* --- ARCHETYPE 20: THE ONE-GLANCE HUD (ULTRA COMPACT) --- */}
+            <LabSection id="opt-20" title="20. The One-Glance HUD" description="Refined Finalist: Ultra-compact, fits everything in one scroll-free view." fullScreen>
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.5} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
                 </div>
 
-                <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-8 md:py-0">
-                    <div className="max-w-6xl space-y-6 md:space-y-10">
+                <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-4 md:py-0">
+                    <div className="max-w-6xl space-y-4 md:space-y-8">
                         
                         {/* 1. THE STACKED HOOK */}
-                        <div className="space-y-3 md:space-y-5">
+                        <div className="space-y-2 md:space-y-4">
                             <h1 className="text-[34px] md:text-[84px] font-black font-headline leading-[1] md:leading-[0.85] uppercase italic tracking-tighter drop-shadow-2xl">
                                 {NARRATIVE.line1} <br />
                                 <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
                             </h1>
-                            <p className="text-sm md:text-[28px] leading-[1.2] italic font-medium text-zinc-400 max-w-2xl">
+                            <p className="text-sm md:text-[24px] leading-[1.2] italic font-medium text-zinc-400 max-w-2xl">
                                 {NARRATIVE.subline}
                             </p>
                         </div>
 
-                        {/* 2. THE DUAL-ZONE COMMAND (Problem vs Solution) */}
-                        <div className="grid grid-cols-1 md:grid-cols-[1fr,420px] gap-6 md:gap-16 items-start md:items-center">
+                        {/* 2. THE DUAL-ZONE COMMAND */}
+                        <div className="grid grid-cols-1 md:grid-cols-[1fr,380px] gap-6 md:gap-12 items-start md:items-center">
                             
-                            {/* DNA: Raw Pulsating Stressors (Matching 19) */}
-                            <div className="space-y-4 md:space-y-8 border-l-2 border-red-500/20 pl-5 md:pl-10">
-                                <p className="text-[8px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">WHY TEAMS STRUGGLE</p>
-                                <div className="flex flex-col gap-3 md:gap-6">
+                            {/* DNA: Stress Stack with Vertical Line */}
+                            <div className="space-y-3 md:space-y-6 border-l-2 border-red-500/20 pl-4 md:pl-8">
+                                <p className="text-[8px] md:text-[9px] font-black text-red-500/60 uppercase tracking-[0.4em] italic">WHY TEAMS STRUGGLE</p>
+                                <div className="flex flex-col gap-2 md:gap-4">
                                     {ANXIETY_ITEMS.map((item, i) => (
-                                        <PulsatingStressText key={i} text={item} delay={`${i * 0.2}s`} className="!text-[12px] md:!text-[20px]" />
+                                        <PulsatingStressText key={i} text={item} delay={`${i * 0.2}s`} className="!text-[11px] md:!text-[18px]" />
                                     ))}
                                 </div>
                             </div>
 
-                            {/* COMPACT GLASS HUD: The Technical Resolution */}
+                            {/* COMPACT GLASS HUD */}
                             <div className="relative group/hud">
-                                <div className="absolute -inset-4 bg-emerald-500/5 blur-3xl opacity-0 group-hover/hud:opacity-100 transition-opacity duration-1000" />
-                                <div className="relative bg-white/[0.03] border border-white/10 backdrop-blur-xl rounded-2xl md:rounded-[2rem] p-5 md:p-10 space-y-4 md:space-y-8 shadow-2xl overflow-hidden ring-1 ring-white/5">
-                                    <div className="grid grid-cols-1 gap-3 md:gap-5">
+                                <div className="relative bg-white/[0.02] border border-white/10 backdrop-blur-xl rounded-2xl md:rounded-[2rem] p-4 md:p-8 space-y-4 shadow-2xl overflow-hidden ring-1 ring-white/5">
+                                    <div className="flex flex-col gap-3 md:gap-5">
                                         {TECH_SPECS.map((item, i) => (
-                                            <div key={i} className="flex items-center gap-3 md:gap-5 group/spec">
-                                                <div className="w-6 h-6 md:w-10 md:h-10 rounded md:rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 group-hover/spec:bg-emerald-500 group-hover/spec:text-black transition-all shadow-inner">
-                                                     <item.i className="w-3 h-3 md:w-5 md:h-5" />
+                                            <div key={i} className="flex items-center gap-3 md:gap-4 group/spec">
+                                                <div className="w-5 h-5 md:w-8 md:h-8 rounded md:rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 shadow-inner">
+                                                     <item.i className="w-2.5 h-2.5 md:w-4 md:h-4 text-emerald-500" />
                                                 </div>
-                                                <span className="text-[10px] md:text-[15px] font-bold text-white/60 uppercase italic tracking-wide group-hover/spec:text-white transition-colors leading-tight">{item.t}</span>
+                                                <span className="text-[9px] md:text-[13px] font-bold text-white/50 uppercase italic tracking-wide group-hover/spec:text-white transition-colors leading-tight">{item.t}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -431,8 +430,15 @@ export default function HeroLabClient() {
                         </div>
 
                         {/* 3. THE ACTION */}
-                        <div className="pt-4">
-                            <SovereignCTA />
+                        <div className="pt-2">
+                             <div className="space-y-4">
+                                <button className="w-full sm:w-auto h-12 md:h-14 px-10 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-xs md:text-sm shadow-[0_15px_35px_-5px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
+                                    {NARRATIVE.cta} <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-zinc-900 transition-transform group-hover:translate-x-1" />
+                                </button>
+                                <p className="text-[7px] md:text-[8px] text-zinc-600 font-black uppercase tracking-[0.4em] italic text-center sm:text-left">
+                                    {NARRATIVE.meta}
+                                </p>
+                            </div>
                         </div>
 
                     </div>
