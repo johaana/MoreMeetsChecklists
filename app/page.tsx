@@ -94,7 +94,7 @@ const PulsatingStressText = ({ text, className, delay = "0s" }: { text: string, 
 );
 
 const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: string, textColor?: string }) => (
-    <div className={cn("grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-3 md:gap-y-5", className)}>
+    <div className={cn("grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-3 md:gap-y-4", className)}>
         {TECH_SPECS.map((item, i) => (
             <div key={i} className="flex items-center gap-3 group">
                 <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
@@ -109,14 +109,14 @@ const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: s
 );
 
 const SovereignCTA = ({ className }: { className?: string }) => (
-    <div className={cn("space-y-3 md:space-y-4 flex flex-col items-center sm:items-start", className)}>
+    <div className={cn("space-y-2 md:space-y-4 flex flex-col items-center sm:items-start", className)}>
         <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
             <Link href="/library">
                 {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
             </Link>
         </Button>
-        <div className="w-full text-center sm:text-left">
-             <p className="text-[8px] md:text-[9px] text-zinc-600 font-black uppercase tracking-[0.4em] italic mx-auto sm:mx-0">
+        <div className="w-full flex justify-center sm:justify-start">
+             <p className="text-[8px] md:text-[9px] text-zinc-600 font-black uppercase tracking-[0.4em] italic sm:pl-2">
                 {NARRATIVE.meta}
             </p>
         </div>
@@ -131,18 +131,18 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
             </div>
 
-            <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-12 md:py-0 md:pt-32 lg:pt-36">
-                <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 items-center">
+            <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-12 md:py-0 md:pt-48">
+                <div className="flex flex-col lg:grid lg:grid-cols-[1.1fr,0.9fr] lg:gap-20 items-center">
                     
                     {/* Phase 01: The Hook */}
-                    <div className="order-1 space-y-2 md:space-y-4 w-full">
+                    <div className="order-1 space-y-2 md:space-y-3 w-full">
                         <div className="space-y-1 md:space-y-2">
                              <h1 className="text-[34px] md:text-[84px] lg:text-[100px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white">
                                 {NARRATIVE.line1} <br />
                                 <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
                              </h1>
                         </div>
-                        <p className="text-base md:text-[24px] lg:text-[30px] italic font-medium text-zinc-400 max-w-none lg:whitespace-nowrap leading-tight">
+                        <p className="text-base md:text-[24px] lg:text-[28px] italic font-medium text-zinc-400 max-w-none lg:whitespace-nowrap leading-tight">
                             {NARRATIVE.subline}
                         </p>
                     </div>
@@ -150,7 +150,7 @@ const HeroSection = () => {
                     {/* Phase 02: The Operational Pain */}
                     <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-3 space-y-4 md:space-y-6 text-left border-l-2 lg:text-right lg:border-l-0 lg:border-r-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:border-l border-white/5 mt-8 lg:mt-0">
                          <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">WHY TEAMS STRUGGLE</p>
-                         <div className="flex flex-col gap-2 md:gap-4 lg:gap-6">
+                         <div className="flex flex-col gap-2 md:gap-4 lg:gap-5">
                              {ANXIETY_ITEMS.map((text, i) => (
                                 <PulsatingStressText key={i} text={text} delay={`${i * 0.2}s`} />
                              ))}
@@ -158,7 +158,7 @@ const HeroSection = () => {
                     </div>
 
                     {/* Phase 03: The New Standard Bridge */}
-                    <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-4 md:space-y-6 mt-8 lg:mt-1">
+                    <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-4 md:space-y-6 mt-8 lg:mt-4">
                         <div className="space-y-2 md:space-y-3">
                             <div className="flex items-center gap-3">
                                 <div className="w-1 h-5 md:h-6 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
@@ -169,7 +169,7 @@ const HeroSection = () => {
                     </div>
 
                     {/* Phase 04: The Command */}
-                    <div className="order-4 w-full lg:col-start-1 lg:row-start-3 mt-8 md:mt-3">
+                    <div className="order-4 w-full lg:col-start-1 lg:row-start-3 mt-8 md:mt-4">
                         <SovereignCTA />
                     </div>
                 </div>
@@ -177,12 +177,6 @@ const HeroSection = () => {
         </section>
     );
 };
-
-const PageHeadline = ({ children, className }: { children: React.ReactNode, className?: string }) => (
-    <h2 className={cn("text-[32px] md:text-[64px] font-black font-headline text-[#0E1420] leading-[0.95] tracking-tight uppercase italic", className)}>
-        {children}
-    </h2>
-);
 
 export default function Home() {
     const [mounted, setMounted] = useState(false);
@@ -252,7 +246,7 @@ export default function Home() {
                 <Section className="bg-[#F7F8FA] border-y border-[#E8E7E2]">
                     <div className="max-w-[1000px] mx-auto text-center space-y-16">
                         <div className="space-y-6">
-                            <PageHeadline>Why operations break</PageHeadline>
+                            <h2 className="text-[32px] md:text-[64px] font-black font-headline text-[#0E1420] leading-[0.95] tracking-tight uppercase italic">Why operations break</h2>
                             <p className="text-xl md:text-2xl text-[#5F6672] italic font-medium">Systems fail slowly before they fail catastrophically.</p>
                         </div>
                         
@@ -306,7 +300,7 @@ export default function Home() {
                 <Section className="bg-white">
                     <div className="max-w-[1200px] mx-auto space-y-24">
                         <div className="text-center space-y-4">
-                            <PageHeadline>Start in minutes</PageHeadline>
+                            <h2 className="text-[32px] md:text-[64px] font-black font-headline text-[#0E1420] leading-[0.95] tracking-tight uppercase italic">Start in minutes</h2>
                         </div>
                         
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
@@ -383,7 +377,7 @@ export default function Home() {
                                 { name: "Hotels", id: "hotels_and_resorts", icon: Building },
                                 { name: "Healthcare", id: "healthcare_and_hospital_operations", icon: Hospital },
                                 { name: "Schools", id: "school_operations_pack", icon: School },
-                                { name: "Franchise", id: "franchise_operations_pack", icon: Store },
+                                { name: "Franchise", id: "franchise_operations_pack", id_tag: "FRAN", icon: Store },
                                 { name: "Facilities", id: "facility_management_blueprint", icon: Building2 },
                                 { name: "Cinemas", id: "cinema_operations_pack", icon: Popcorn }
                             ].map((sector) => (

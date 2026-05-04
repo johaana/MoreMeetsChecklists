@@ -100,7 +100,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
 
     const navLinkClass = cn(
         "text-[10px] font-headline font-black uppercase tracking-[0.3em] transition-colors",
-        shouldShowDark ? "text-[#0F172A]/80 hover:text-[#0F172A]" : "text-white/80 hover:text-white"
+        shouldShowDark ? "text-[#0F172A] hover:text-[#0F172A]/70" : "text-white hover:text-white/70"
     );
 
     return (
@@ -152,7 +152,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
             <div className="md:hidden ml-auto flex items-center">
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                     <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", shouldShowDark ? "text-[#0F172A]" : "text-white/60 hover:bg-white/10")}>
+                        <Button variant="ghost" size="icon" className={cn("mr-[-12px]", shouldShowDark ? "text-[#0F172A]" : "text-white/80 hover:bg-white/10")}>
                             <Menu className="h-6 w-6" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>
