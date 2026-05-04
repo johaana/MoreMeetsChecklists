@@ -305,7 +305,7 @@ export default function HeroLabClient() {
                             <div className="flex flex-col gap-4">
                                 {ANXIETY_ITEMS.map((item, i) => (
                                     <div key={i} className="flex items-center gap-3 text-white/40 font-bold italic text-sm">
-                                        <div className="w-1 h-1 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+                                        <div className="w-1 h-1 rounded-full bg-red-500 shadow-[0_0_100px_rgba(239,68,68,0.5)]" />
                                         <span className="uppercase tracking-tight">{item}</span>
                                     </div>
                                 ))}
@@ -349,7 +349,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 18: THE RIGHT-ALIGNED STRESS STACK --- */}
-            <LabSection id="opt-18" title="18. The Stress Stack (Right)" description="Finalist preserved. Raw pulsating text aligned right.">
+            <LabSection id="opt-18" title="18. The Stress Stack (Right)" description="Only text pulsating. No extra lines.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.4} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
@@ -371,7 +371,7 @@ export default function HeroLabClient() {
                             <SovereignCTA />
                         </div>
 
-                        <div className="space-y-6 md:space-y-10 text-right md:border-r-2 md:border-red-500/20 md:pr-10">
+                        <div className="space-y-6 md:space-y-10 text-right">
                             <p className="text-[8px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.4em] italic">WHY TEAMS STRUGGLE</p>
                             <div className="flex flex-col gap-4 md:gap-8">
                                 {ANXIETY_ITEMS.map((item, i) => (
@@ -384,7 +384,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 19: THE SCATTERED STRESS CLUSTER --- */}
-            <LabSection id="opt-19" title="19. The Scattered Stress Cluster" description="Finalist preserved. Organic pulsars over video.">
+            <LabSection id="opt-19" title="19. The Scattered Stress Cluster" description="Organic pulsars over video. Minimalist DNA.">
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.4} grayscale />
                     <div className="absolute inset-0 bg-black/40 md:bg-black/30" />
@@ -435,8 +435,8 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 20: THE ONE-GLANCE HUD (ULTRA COMPACT) --- */}
-            <LabSection id="opt-20" title="20. The One-Glance HUD" description="Finalist preserved. Tight vertical rhythm." fullScreen>
+            {/* --- ARCHETYPE 20: THE ONE-GLANCE HUD --- */}
+            <LabSection id="opt-20" title="20. The One-Glance HUD" description="Optimized for zero-friction vertical scan." fullScreen>
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.5} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
@@ -497,8 +497,8 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 21: THE OPERATIONAL BRIDGE --- */}
-            <LabSection id="opt-21" title="21. The Operational Bridge" description="Strategic Copy Refinement: Outcome-driven bridge below pain points." fullScreen>
+            {/* --- ARCHETYPE 21: THE OUTCOME BRIDGE --- */}
+            <LabSection id="opt-21" title="21. The Outcome Bridge" description="New Variant: Strategic outcome pivot for Option 19 DNA." fullScreen>
                 <div className="absolute inset-0 z-0">
                     <BackgroundVideo opacity={0.4} grayscale />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
@@ -506,8 +506,6 @@ export default function HeroLabClient() {
 
                 <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-4 md:py-0">
                     <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr,450px] gap-12 lg:gap-24 items-center w-full">
-                        
-                        {/* 1. THE HOOK (LEFT) */}
                         <div className="space-y-12">
                             <div className="space-y-6">
                                 <h1 className="text-[40px] md:text-[96px] font-black font-headline leading-[0.95] md:leading-[0.88] uppercase italic tracking-tighter drop-shadow-2xl">
@@ -518,15 +516,10 @@ export default function HeroLabClient() {
                                     {NARRATIVE.subline}
                                 </p>
                             </div>
-                            
-                            {/* CTA Positioned Left as per Brief */}
                             <SovereignCTA className="md:!space-y-8" />
                         </div>
 
-                        {/* 2. THE BRIDGE (RIGHT) */}
                         <div className="space-y-10 md:space-y-16">
-                            
-                            {/* A. WHY TEAMS STRUGGLE (PAIN) */}
                             <div className="space-y-6 text-right lg:border-r-2 lg:border-red-500/20 lg:pr-10">
                                 <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">WHY TEAMS STRUGGLE</p>
                                 <div className="flex flex-col gap-4 md:gap-6">
@@ -536,9 +529,7 @@ export default function HeroLabClient() {
                                 </div>
                             </div>
 
-                            {/* B. WHAT REPLACES IT (OUTCOME BRIDGE) */}
                             <div className="relative group/outcome">
-                                <div className="absolute -inset-2 bg-emerald-500/10 blur-xl opacity-0 group-hover/outcome:opacity-100 transition-opacity duration-1000" />
                                 <div className="relative bg-white/[0.03] border border-white/10 backdrop-blur-2xl rounded-3xl p-6 md:p-10 space-y-6 shadow-2xl ring-1 ring-white/5">
                                     <div className="space-y-1">
                                         <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em] italic">WHAT REPLACES IT</p>
@@ -547,7 +538,104 @@ export default function HeroLabClient() {
                                     <OutcomeGrid textColor="text-white/80" />
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </LabSection>
 
+            {/* --- ARCHETYPE 22: THE FORENSIC HUD --- */}
+            <LabSection id="opt-22" title="22. The Forensic HUD" description="New Variant: High-density technical link for Option 20 DNA." fullScreen>
+                <div className="absolute inset-0 z-0">
+                    <BackgroundVideo opacity={0.5} grayscale />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
+                </div>
+
+                <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-4 md:py-0">
+                    <div className="max-w-6xl mx-auto space-y-8">
+                        <div className="space-y-4">
+                            <h1 className="text-[36px] md:text-[100px] font-black font-headline leading-[1] md:leading-[0.82] uppercase italic tracking-tighter">
+                                {NARRATIVE.line1} <br />
+                                <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
+                            </h1>
+                            <p className="text-base md:text-[28px] italic font-medium text-zinc-400 max-w-xl">
+                                {NARRATIVE.subline}
+                            </p>
+                        </div>
+
+                        <div className="flex flex-col md:flex-row gap-8 items-start md:items-end">
+                            <div className="space-y-6 border-l-2 border-red-500/20 pl-8">
+                                <p className="text-[9px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">WHY TEAMS STRUGGLE</p>
+                                <div className="flex flex-col gap-4">
+                                    {ANXIETY_ITEMS.map((item, i) => (
+                                        <PulsatingStressText key={i} text={item} delay={`${i * 0.2}s`} className="!text-[14px] md:!text-[20px]" />
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="bg-white/[0.02] border border-white/10 backdrop-blur-3xl rounded-[2rem] p-8 md:p-10 flex-1 max-w-md shadow-2xl relative overflow-hidden group/hud">
+                                <div className="absolute top-0 right-0 p-4 opacity-5">
+                                    <Activity className="w-24 h-24 text-emerald-500" />
+                                </div>
+                                <div className="space-y-6 relative z-10">
+                                    <div className="space-y-1">
+                                        <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em] italic">TECHNICAL SOLUTION</p>
+                                        <div className="w-12 h-0.5 bg-emerald-500/40" />
+                                    </div>
+                                    <div className="space-y-4">
+                                        {TECH_SPECS.map((item, i) => (
+                                            <div key={i} className="flex items-center gap-4">
+                                                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
+                                                    <item.i className="w-4 h-4 text-emerald-500" />
+                                                </div>
+                                                <span className="text-[13px] font-bold text-white/60 uppercase italic tracking-wide">{item.t}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <SovereignCTA />
+                    </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 23: THE EXECUTIVE SYNTHESIS --- */}
+            <LabSection id="opt-23" title="23. The Executive Synthesis" description="New Variant: Balanced centered authority layout." fullScreen>
+                <div className="absolute inset-0 z-0">
+                    <BackgroundVideo opacity={0.3} grayscale />
+                    <div className="absolute inset-0 bg-black/60" />
+                </div>
+
+                <div className="relative z-10 h-full flex flex-col justify-center items-center px-6 py-4 md:py-0 text-center">
+                    <div className="max-w-5xl space-y-12 md:space-y-20">
+                        <div className="space-y-6">
+                            <h1 className="text-[36px] md:text-[110px] font-black font-headline leading-[1] md:leading-[0.82] uppercase italic tracking-tighter drop-shadow-2xl">
+                                {NARRATIVE.line1} <br className="hidden md:block" />
+                                <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
+                            </h1>
+                            <p className="text-base md:text-[32px] italic font-medium text-zinc-400 mx-auto max-w-2xl">
+                                {NARRATIVE.subline}
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
+                            <div className="space-y-8 text-right md:border-r border-white/10 md:pr-12">
+                                <p className="text-[10px] font-black text-red-500 uppercase tracking-[0.6em] italic">WHY TEAMS STRUGGLE</p>
+                                <div className="flex flex-col gap-6">
+                                    {ANXIETY_ITEMS.map((item, i) => (
+                                        <PulsatingStressText key={i} text={item} delay={`${i * 0.2}s`} className="!text-[18px] md:!text-[24px]" />
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="space-y-8 text-left md:pl-12">
+                                <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.6em] italic">WHAT REPLACES IT</p>
+                                <OutcomeGrid textColor="text-white/80" className="md:!gap-6" />
+                            </div>
+                        </div>
+
+                        <div className="flex justify-center pt-8">
+                            <SovereignCTA />
                         </div>
                     </div>
                 </div>
@@ -562,3 +650,4 @@ export default function HeroLabClient() {
         </div>
     );
 }
+
