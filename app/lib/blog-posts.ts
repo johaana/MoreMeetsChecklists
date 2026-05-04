@@ -18,11 +18,11 @@ export const blogPosts: BlogPost[] = [
       title: "What Monsoon Really Breaks First",
       publishedDate: "2025-03-01",
       author: "MoreMeets Editorial",
-      tags: ["Facilities & MEP"],
+      tags: ["Facilities & Infrastructure"],
       protocol: "Preventative Maintenance",
       relatedPackId: "facility_management_blueprint",
       description: "A forensic reconstruction of operational failure in heavy rain. Discover why monsoon breaks assumptions, not infrastructure.",
-      imageUrl: "https://i.postimg.cc/CKgkhg9S/facilities-management1.png",
+      imageUrl: "https://i.postimg.cc/SNqtPnBm/facilities-management-2.jpg",
       content: `
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
@@ -37,19 +37,27 @@ export const blogPosts: BlogPost[] = [
             "Monsoon doesn’t usually break buildings. It breaks assumptions."
           </blockquote>
 
-          <h2>1. The Assumption Trap</h2>
           <p>The assumption that drains are clear. That the pump will start. That waterproofing still holds. That someone checked. That someone remembered.</p>
           
-          <p>Hotels didn’t lose control because of rain. They lost it because basement checks weren’t done two days earlier. Restaurants didn’t struggle because deliveries stopped. They struggled because no one planned what happens <em>when</em> they stop.</p>
+          <p>In July 2024, Mumbai saw over 300 mm of rain in a single stretch. Roads flooded. Flights stalled. Schools shut. The city slowed, visibly. But inside buildings, the failure pattern was quieter — and more predictable.</p>
           
-          <h2>2. Operational Audit</h2>
+          <h2>1. The Failure Pattern</h2>
+          <p>Hotels didn’t lose control because of rain. They lost it because basement checks weren’t done two days earlier. Restaurants didn’t struggle because deliveries stopped. They struggled because no one planned what happens <em>when</em> they stop. Facilities teams weren’t overwhelmed by water. They were overwhelmed by everything that should have been handled before the water arrived.</p>
+
+          <blockquote>
+            "Monsoon doesn’t create chaos. It removes the time you thought you had."
+          </blockquote>
+
+          <p>The difference between a stressful day and a failed one is rarely infrastructure. It is whether the team already knew what to do — without asking.</p>
+          
+          <h2>2. The Operational Audit</h2>
           <p>The best-run operations look almost boring in heavy rain. Drains cleared in advance. Backup tested under load. Stock moved early. Roles defined by shift. Escalations already assigned. No urgency. Just readiness.</p>
 
           <blockquote>
             "Monsoon is not a weather event. It is an operational audit."
           </blockquote>
           
-          <p>Because when water starts entering the building, you are no longer preparing. You are already late. Did your team prepare — or just hope they’d remember?</p>
+          <p>And every year, it asks the same question: Did your team prepare — or just hope they’d remember?</p>
         </section>
       `
     },
@@ -58,11 +66,11 @@ export const blogPosts: BlogPost[] = [
       title: "The Real Cost of One Person Calling in Sick",
       publishedDate: "2025-02-28",
       author: "MoreMeets Editorial",
-      tags: ["Franchise & Leadership"],
+      tags: ["Hospitality & Service"],
       protocol: "Institutional Memory",
-      relatedPackId: "franchise_operations_pack",
+      relatedPackId: "hotels_and_resorts",
       description: "Exposing the hidden liability of memory-heavy operations. Why flu season breaks businesses that rely on heroes.",
-      imageUrl: "https://i.postimg.cc/FK43r4w5/franchise-2.jpg",
+      imageUrl: "https://i.postimg.cc/KvNshZ2C/hotel-ops.webp",
       content: `
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
@@ -75,11 +83,25 @@ export const blogPosts: BlogPost[] = [
             "They are not roles. They are memory carriers."
           </blockquote>
 
-          <h2>1. Second-Order Failures</h2>
-          <p>The supervisor who catches small misses. The chef who knows what gets skipped under pressure. These are memory carriers. When they vanish, sanitisation checks get rushed. Handoffs get thinner. Decisions slow down. Errors go unnoticed longer.</p>
+          <p>The nurse who knows the escalation path. The supervisor who catches small misses. The chef who knows what gets skipped under pressure. The teacher who remembers which parent needs a second call. These are not roles. They are memory carriers.</p>
           
+          <p>And most businesses don’t realise how much of their operation lives inside them until one of them is not there. That is when the second-order failures begin.</p>
+          
+          <h2>1. Second-Order Failures</h2>
+          <ul class="space-y-4 my-8">
+            <li class="border-l-2 border-primary pl-4">Sanitisation checks get rushed.</li>
+            <li class="border-l-2 border-primary pl-4">Handoffs get thinner.</li>
+            <li class="border-l-2 border-primary pl-4">Decisions slow down.</li>
+            <li class="border-l-2 border-primary pl-4">Errors go unnoticed longer.</li>
+            <li class="border-l-2 border-primary pl-4">The strongest people take on more — until they become the next absence.</li>
+          </ul>
+
           <p>Flu season doesn’t break teams. It exposes how much of the business was never systemised. Because a stable team can hide weak structure. Until it loses one person. And then another.</p>
           
+          <blockquote>
+            "The question is no longer: Do we have enough people? It becomes: How much of our operation depends on specific people?"
+          </blockquote>
+
           <h2>2. Operational Maturity</h2>
           <p>The teams that hold quality through illness are not the healthiest. They are the least dependent. Tasks are visible. Ownership is clear. Handoffs are defined. Substitutions are possible. Nothing critical disappears with one person. That is operational maturity.</p>
         </section>
@@ -90,11 +112,11 @@ export const blogPosts: BlogPost[] = [
       title: "Why Busy Nights Break Good Businesses",
       publishedDate: "2025-02-27",
       author: "MoreMeets Editorial",
-      tags: ["Restaurant & F&B"],
+      tags: ["Restaurant Operations"],
       protocol: "Peak Performance",
       relatedPackId: "restaurants",
       description: "An immersive story on the pressure of peak season. Why coordination fails first and how systems remove variability.",
-      imageUrl: "https://i.postimg.cc/cJSwxSPg/Restaurant-Standard-Operating-Procedures.png",
+      imageUrl: "https://i.postimg.cc/3JBbQKTs/restaurant-chaos.jpg",
       content: `
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
@@ -107,11 +129,19 @@ export const blogPosts: BlogPost[] = [
             "Peak performance is not about speed. It is about removing variability."
           </blockquote>
 
-          <h2>1. The Compression Trap</h2>
-          <p>On a normal night, small mistakes are invisible. A delay gets absorbed. On a busy night, the same mistake multiplies. A missed step becomes a visible failure. You just ran out of time to fix it. The pressure is not volume. It is compression.</p>
+          <p>On a normal night, small mistakes are invisible. A delay gets absorbed. A miss gets corrected. A guest doesn’t notice. On a busy night, the same mistake multiplies. A delay becomes a complaint. A re-fire becomes a backlog. A missed step becomes a visible failure.</p>
           
-          <h2>2. Removing Variability</h2>
-          <p>The best-run operations don’t “handle” peak season. They reduce what can go wrong before it starts. Menus get tighter. Prep gets simpler. Roles get clearer. Decisions get faster. Because in peak season, coordination breaks first.</p>
+          <h2>1. The Compression Trap</h2>
+          <p>Nothing new went wrong. You just ran out of time to fix it. That is what operators misunderstand about peak demand. The pressure is not volume. It is compression. More orders. More decisions. More movement. Less space between errors. And once that space disappears, everything becomes visible.</p>
+          
+          <h2>2. Systems Over Coordination</h2>
+          <p>The best-run operations don’t “handle” peak season. They reduce what can go wrong before it starts. Menus get tighter. Prep gets simpler. Roles get clearer. Exceptions get fewer. Decisions get faster.</p>
+
+          <blockquote>
+            "In peak season, coordination breaks first."
+          </blockquote>
+
+          <p>The businesses that struggle are not the weakest. They are the ones still relying on coordination instead of systems.</p>
         </section>
       `
     },
@@ -120,28 +150,34 @@ export const blogPosts: BlogPost[] = [
       title: "The First School-Day Mistake Usually Happens at the Gate",
       publishedDate: "2025-02-26",
       author: "MoreMeets Editorial",
-      tags: ["School Operations"],
+      tags: ["School Safety"],
       protocol: "Perimeter Trust",
       relatedPackId: "school_operations_pack",
       description: "A deconstruction of trust and perimeter safety. Why arrival and dispersal shape parent perception.",
-      imageUrl: "https://i.postimg.cc/GthjcC8T/school-safety.webp",
+      imageUrl: "https://i.postimg.cc/hPg3YXkg/Schools-school-safety.jpg",
       content: `
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
             The first mistake of the school year rarely happens in a classroom. It happens outside. At the gate where two buses arrive too close together.
           </p>
           
-          <p>Nothing dramatic. Just small misses in places most people don’t think of as “critical.” Until they are. Underneath the normalcy of the first week, everything is slightly unstable. Routes change. New students adjust. Parents are anxious.</p>
+          <p>Nothing dramatic. Just small misses in places most people don’t think of as “critical.” Until they are. Underneath the normalcy of the first week, everything is slightly unstable. Routes change. New students adjust. Parents are anxious. Staff are not fully in rhythm yet.</p>
 
           <blockquote>
             "Schools are often judged not by teaching in the first week. But by how smoothly everything else works."
           </blockquote>
 
           <h2>1. The Fragility of Trust</h2>
-          <p>A missed handoff becomes a worried parent. A delay becomes frustration. In this environment, small operational gaps become visible faster. Not because the school failed. Because trust is fragile early.</p>
+          <p>A missed handoff becomes a worried parent. A delay becomes frustration. A confusion becomes escalation. Not because the school failed. Because trust is fragile early. Arrival. Movement. Communication. Dispersal. These are not academic systems. They are operational ones.</p>
           
           <h2>2. Operational Academic Systems</h2>
-          <p>Arrival. Movement. Communication. Dispersal. These are not academic systems. They are operational ones. The schools that feel “in control” early are not doing anything dramatic. They are just reducing uncertainty. Clear processes. Visible ownership. Less dependence on memory.</p>
+          <p>The schools that feel “in control” early are not doing anything dramatic. They are just reducing uncertainty. Clear processes. Visible ownership. Fewer assumptions. Less dependence on memory.</p>
+
+          <blockquote>
+            "Children adapt quickly. Parents don’t."
+          </blockquote>
+
+          <p>What they notice in the first week stays longer than most schools expect. It shapes the perception of safety for the entire academic cycle.</p>
         </section>
       `
     },
@@ -150,28 +186,34 @@ export const blogPosts: BlogPost[] = [
       title: "What Patients Notice Before a Doctor Walks In",
       publishedDate: "2025-02-25",
       author: "MoreMeets Editorial",
-      tags: ["Hospital & Clinical"],
+      tags: ["Healthcare Governance"],
       protocol: "Operational Confidence",
       relatedPackId: "healthcare_and_hospital_operations",
       description: "Healthcare editorial on building trust through operations. Why patient confidence is won or lost at the entrance.",
-      imageUrl: "https://i.postimg.cc/rpkxVk7c/Hospital-Levels-of-Care.jpg",
+      imageUrl: "https://i.postimg.cc/ZKcDzTS2/patient-safety-2.webp",
       content: `
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
-            Patients don’t begin judging a hospital when they meet the doctor. They begin much earlier. At the entrance. At the desk. In the way things move — or don’t.
+            Patients don’t begin judging a hospital when they meet the doctor. They begin much earlier. At the entrance. At the desk. In the waiting area.
           </p>
           
-          <p>A slow registration. A missing file. A confused instruction. None of this is clinical. But it shapes everything that follows. Because before patients evaluate care, they evaluate control.</p>
+          <p>A slow registration. A missing file. A confused instruction. A nurse asking twice for the same detail. None of this is clinical. But it shapes everything that follows. Because before patients evaluate care, they evaluate control.</p>
 
           <blockquote>
             "To a patient, uncertainty is the real risk. And operations is what removes it."
           </blockquote>
 
           <h2>1. The Evaluation of Control</h2>
-          <p>Does this place feel organised? Does it feel like someone is in charge? Healthcare systems often focus heavily on clinical excellence. But patient confidence is built operationally. In flow. In clarity. In coordination.</p>
+          <p>Does this place feel organised? Does it feel predictable? Does it feel like someone is in charge? Most of that judgment happens before a single diagnosis. Healthcare systems often focus heavily on clinical excellence. But patient confidence is built operationally.</p>
           
           <h2>2. The Consistent Environment</h2>
-          <p>A delayed consultation feels longer. A small error feels bigger. Not because the care is poor. Because the system around it feels unstable. The most trusted healthcare environments are not the most advanced. They are the most consistent. Processes are smooth. Handoffs are invisible.</p>
+          <p>A delayed consultation feels longer. A small error feels bigger. A routine visit feels uncertain. Not because the care is poor. Because the system around it feels unstable. The most trusted healthcare environments are not the most advanced. They are the most consistent.</p>
+
+          <blockquote>
+            "Before the doctor walks in, the system has already spoken."
+          </blockquote>
+
+          <p>Processes are smooth. Handoffs are invisible. Communication is clear. And nothing feels accidental. Patients are very good at listening to the system.</p>
         </section>
       `
     },
