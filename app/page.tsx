@@ -35,7 +35,7 @@ import { FaqSection } from '@/components/layout/faq-section';
 import { Button } from '@/components/ui/button';
 
 // --- PRODUCTION CONSTANTS ---
-const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
+const VIMEO_URL = "https://player.vimeo.com/video/1187795401?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0";
 const FALLBACK_IMAGE = "https://i.postimg.cc/rsHq85yn/Screenshot-2026-04-09-091611.png";
 const BRAND_GREEN = "#22C55E";
 
@@ -65,7 +65,7 @@ const ANXIETY_ITEMS = [
 
 const BackgroundVideo = ({ opacity = 0.4, grayscale = true }) => (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-black">
-        {/* Fallback image is now the primary background layer */}
+        {/* Fallback image is the immediate background layer */}
         <img 
             src={FALLBACK_IMAGE}
             alt=""
@@ -73,19 +73,19 @@ const BackgroundVideo = ({ opacity = 0.4, grayscale = true }) => (
                 "absolute inset-0 w-full h-full object-cover scale-[1.05]",
                 grayscale && "grayscale brightness-50 contrast-125"
             )}
-            style={{ opacity }}
+            style={{ opacity: 0.3 }}
         />
-        <video 
-            src={VIDEO_URL} 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
+        {/* Vimeo Iframe implementation for background */}
+        <iframe
+            src={VIMEO_URL}
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
             className={cn(
-                "absolute inset-0 w-full h-full object-cover scale-[1.05]",
+                "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.77vh] min-w-full h-full min-h-[56.25vw] scale-[1.05]",
                 grayscale && "grayscale brightness-50 contrast-125"
             )}
             style={{ opacity }}
+            title="Sovereign Background"
         />
     </div>
 );
@@ -347,7 +347,7 @@ export default function Home() {
                                         <div className="w-2 h-2 rounded-full bg-green-500/30" />
                                     </div>
                                     <div className="flex-1 flex justify-center">
-                                        <div className="bg-black/40 border border-white/5 rounded-md px-12 py-1 text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic">
+                                        <div className="bg-black/40 border border-white/5 rounded-md px-12 py-1 text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner">
                                             MASTER_OPERATIONAL_CONSONLE.XLSX
                                         </div>
                                     </div>
