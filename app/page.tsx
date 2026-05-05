@@ -36,6 +36,7 @@ import { Button } from '@/components/ui/button';
 
 // --- PRODUCTION CONSTANTS ---
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
+const FALLBACK_IMAGE = "https://i.postimg.cc/rsHq85yn/Screenshot-2026-04-09-091611.png";
 const BRAND_GREEN = "#22C55E";
 
 const NARRATIVE = {
@@ -63,7 +64,7 @@ const ANXIETY_ITEMS = [
 // --- HELPER COMPONENTS ---
 
 const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
-    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-black">
         <video 
             src={VIDEO_URL} 
             autoPlay 
@@ -72,6 +73,16 @@ const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
             playsInline 
             className={cn(
                 "absolute inset-0 w-full h-full object-cover scale-[1.05]",
+                grayscale && "grayscale brightness-75 contrast-110"
+            )}
+            style={{ opacity }}
+        />
+        {/* Fallback image if video fails or for performance */}
+        <img 
+            src={FALLBACK_IMAGE}
+            alt=""
+            className={cn(
+                "absolute inset-0 w-full h-full object-cover scale-[1.05] -z-10",
                 grayscale && "grayscale brightness-75 contrast-110"
             )}
             style={{ opacity }}
