@@ -37,13 +37,8 @@ import { Button } from '@/components/ui/button';
 // --- PRODUCTION CONSTANTS ---
 const BRAND_GREEN = "#22C55E";
 
-const INDUSTRY_IMAGES = [
-    { url: "https://i.postimg.cc/rpkxVk7c/Hospital-Levels-of-Care.jpg", label: "HEALTHCARE" },
-    { url: "https://i.postimg.cc/YSHYrHTr/hotel-ops.webp", label: "HOSPITALITY" },
-    { url: "https://i.postimg.cc/GthjcC8T/school-safety.webp", label: "EDUCATION" },
-    { url: "https://i.postimg.cc/cJSwxSPg/Restaurant-Standard-Operating-Procedures.png", label: "RESTAURANTS" },
-    { url: "https://i.postimg.cc/43gVfgjd/multiplex2.avif", label: "CINEMA" }
-];
+// Selected Premium Operational Image
+const HERO_IMAGE = "https://images.unsplash.com/photo-1541336032412-2434026366f9?auto=format&fit=crop&q=80&w=2000";
 
 const NARRATIVE = {
     line1: "STOP CHASING.",
@@ -70,38 +65,24 @@ const ANXIETY_ITEMS = [
 // --- HELPER COMPONENTS ---
 
 const HeroBackground = () => {
-    const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setIndex((prev) => (prev + 1) % INDUSTRY_IMAGES.length);
-        }, 5000);
-        return () => clearInterval(interval);
-    }, []);
-
     return (
         <div className="absolute inset-0 z-0 bg-black overflow-hidden">
-            {INDUSTRY_IMAGES.map((img, i) => (
-                <div
-                    key={i}
-                    className={cn(
-                        "absolute inset-0 transition-opacity duration-[1500ms] ease-in-out",
-                        i === index ? "opacity-100" : "opacity-0"
-                    )}
-                >
-                    <img 
-                        src={img.url}
-                        alt=""
-                        className="w-full h-full object-cover grayscale brightness-[0.15] contrast-[1.2] scale-105 transition-transform duration-[5000ms] ease-out"
-                        style={{ transform: i === index ? 'scale(1.1) translateZ(0)' : 'scale(1.05) translateZ(0)' }}
-                    />
-                </div>
-            ))}
-            {/* The Tactical Status Pulse */}
+            {/* Dark Overlay Layers */}
+            <div className="absolute inset-0 bg-black/75 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent pointer-events-none z-10" />
+            
+            {/* Single Fixed Image with Subtle Zoom Animation */}
+            <img 
+                src={HERO_IMAGE}
+                alt="Professional operational environment"
+                className="w-full h-full object-cover grayscale brightness-[0.2] contrast-[1.2] animate-hero-breath"
+            />
+            
+            {/* Tactical Status Pulse */}
             <div className="absolute bottom-10 left-10 z-20 flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.8)]" />
                 <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em] italic font-headline">
-                    SCANNING: {INDUSTRY_IMAGES[index].label}_OPERATIONS
+                    SYSTEM_STATUS: STABLE_INFRASTRUCTURE
                 </span>
             </div>
         </div>
@@ -159,8 +140,7 @@ const HeroSectionComp = () => {
     return (
         <section className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden bg-black">
             <HeroBackground />
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none z-10" />
-
+            
             <div className="relative z-20 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 pt-24 pb-12 md:py-0 md:pt-16">
                 <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 items-center">
                     
@@ -323,7 +303,7 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                </Section>
+                </Section>Section
 
                 {/* START IN MINUTES: HIGH-GRAVITY LINE ART */}
                 <Section className="bg-white">

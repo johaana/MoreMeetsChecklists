@@ -133,3 +133,12 @@ html {
 .animate-border-rotate {
   animation: border-rotate 4s linear infinite;
 }
+
+@keyframes heroBreath {
+  from { transform: scale(1.02); }
+  to { transform: scale(1.06); }
+}
+
+.animate-hero-breath {
+  animation: heroBreath 18s ease-in-out infinite alternate;
+}
