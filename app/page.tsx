@@ -35,8 +35,14 @@ import { FaqSection } from '@/components/layout/faq-section';
 import { Button } from '@/components/ui/button';
 
 // --- PRODUCTION CONSTANTS ---
-const FALLBACK_IMAGE = "https://i.postimg.cc/rsHq85yn/Screenshot-2026-04-09-091611.png";
 const BRAND_GREEN = "#22C55E";
+
+const INDUSTRY_IMAGES = [
+    { url: "https://i.postimg.cc/rpkxVk7c/Hospital-Levels-of-Care.jpg", label: "HEALTHCARE" },
+    { url: "https://i.postimg.cc/YSHYrHTr/hotel-ops.webp", label: "HOSPITALITY" },
+    { url: "https://i.postimg.cc/GthjcC8T/school-safety.webp", label: "EDUCATION" },
+    { url: "https://i.postimg.cc/cJSwxSPg/Restaurant-Standard-Operating-Procedures.png", label: "RESTAURANTS" }
+];
 
 const NARRATIVE = {
     line1: "STOP CHASING.",
@@ -62,23 +68,46 @@ const ANXIETY_ITEMS = [
 
 // --- HELPER COMPONENTS ---
 
-const HeroBackground = ({ grayscale = true }) => (
-    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-black">
-        <img 
-            src={FALLBACK_IMAGE}
-            alt=""
-            className={cn(
-                "absolute inset-0 w-full h-full object-cover scale-[1.05]",
-                grayscale && "grayscale brightness-[0.25] contrast-[1.2]"
-            )}
-            style={{ opacity: 0.9 }}
-        />
-    </div>
-);
+const HeroBackground = () => {
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIndex((prev) => (prev + 1) % INDUSTRY_IMAGES.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div className="absolute inset-0 z-0 bg-black overflow-hidden">
+            {INDUSTRY_IMAGES.map((img, i) => (
+                <div
+                    key={i}
+                    className={cn(
+                        "absolute inset-0 transition-opacity duration-1000 ease-in-out",
+                        i === index ? "opacity-100" : "opacity-0"
+                    )}
+                >
+                    <img 
+                        src={img.url}
+                        alt=""
+                        className="w-full h-full object-cover grayscale brightness-[0.25] contrast-[1.1] scale-105"
+                    />
+                </div>
+            ))}
+            {/* The Tactical Status Pulse */}
+            <div className="absolute bottom-10 left-10 z-20 flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.8)]" />
+                <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em] italic font-headline">
+                    SCANNING: {INDUSTRY_IMAGES[index].label}_OPERATIONS
+                </span>
+            </div>
+        </div>
+    );
+};
 
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
     <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
-        {/* The Technical Spine */}
         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />
         <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
             {children}
@@ -127,10 +156,8 @@ const SovereignCTA = ({ className }: { className?: string }) => (
 const HeroSectionComp = () => {
     return (
         <section className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden bg-black">
-            <div className="absolute inset-0 z-0">
-                <HeroBackground grayscale />
-                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
-            </div>
+            <HeroBackground />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none z-10" />
 
             <div className="relative z-20 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 pt-24 pb-12 md:py-0 md:pt-16">
                 <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 items-center">
@@ -245,7 +272,7 @@ export default function Home() {
 
                 {/* AUDIT REPORT: WHY OPERATIONS BREAK */}
                 <Section className="bg-white border-y border-zinc-100">
-                    <div className="max-w-[1000px] mx-auto text-center space-y-16 md:space-y-24">
+                    <div className="max-[1000px] mx-auto text-center space-y-16 md:space-y-24">
                         <div className="space-y-6">
                             <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px]">Forensic Finding</Badge>
                             <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">Why operations break</h2>
