@@ -77,14 +77,6 @@ const HeroBackground = () => {
                 alt="Professional operational environment"
                 className="w-full h-full object-cover grayscale brightness-[0.2] contrast-[1.2] animate-hero-breath"
             />
-            
-            {/* Tactical Status Pulse */}
-            <div className="absolute bottom-10 left-10 z-20 flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.8)]" />
-                <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em] italic font-headline">
-                    SYSTEM_STATUS: STABLE_INFRASTRUCTURE
-                </span>
-            </div>
         </div>
     );
 };
@@ -303,7 +295,7 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                </Section>Section
+                </Section>
 
                 {/* START IN MINUTES: HIGH-GRAVITY LINE ART */}
                 <Section className="bg-white">
