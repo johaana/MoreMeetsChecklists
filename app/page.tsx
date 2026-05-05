@@ -41,7 +41,8 @@ const INDUSTRY_IMAGES = [
     { url: "https://i.postimg.cc/rpkxVk7c/Hospital-Levels-of-Care.jpg", label: "HEALTHCARE" },
     { url: "https://i.postimg.cc/YSHYrHTr/hotel-ops.webp", label: "HOSPITALITY" },
     { url: "https://i.postimg.cc/GthjcC8T/school-safety.webp", label: "EDUCATION" },
-    { url: "https://i.postimg.cc/cJSwxSPg/Restaurant-Standard-Operating-Procedures.png", label: "RESTAURANTS" }
+    { url: "https://i.postimg.cc/cJSwxSPg/Restaurant-Standard-Operating-Procedures.png", label: "RESTAURANTS" },
+    { url: "https://i.postimg.cc/43gVfgjd/multiplex2.avif", label: "CINEMA" }
 ];
 
 const NARRATIVE = {
@@ -84,21 +85,22 @@ const HeroBackground = () => {
                 <div
                     key={i}
                     className={cn(
-                        "absolute inset-0 transition-opacity duration-1000 ease-in-out",
+                        "absolute inset-0 transition-opacity duration-[1500ms] ease-in-out",
                         i === index ? "opacity-100" : "opacity-0"
                     )}
                 >
                     <img 
                         src={img.url}
                         alt=""
-                        className="w-full h-full object-cover grayscale brightness-[0.25] contrast-[1.1] scale-105"
+                        className="w-full h-full object-cover grayscale brightness-[0.15] contrast-[1.2] scale-105 transition-transform duration-[5000ms] ease-out"
+                        style={{ transform: i === index ? 'scale(1.1) translateZ(0)' : 'scale(1.05) translateZ(0)' }}
                     />
                 </div>
             ))}
             {/* The Tactical Status Pulse */}
             <div className="absolute bottom-10 left-10 z-20 flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.8)]" />
-                <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em] italic font-headline">
+                <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em] italic font-headline">
                     SCANNING: {INDUSTRY_IMAGES[index].label}_OPERATIONS
                 </span>
             </div>
@@ -452,7 +454,7 @@ export default function Home() {
 
                 <Section className="bg-primary text-white text-center py-32 md:py-64 relative overflow-hidden">
                     <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:32px_32px]" />
-                    <div className="max-w-[1000px] mx-auto space-y-16 md:space-y-24 relative z-10">
+                    <div className="max-[1000px] mx-auto space-y-16 md:space-y-24 relative z-10">
                         <div className="space-y-8">
                             <h2 className="text-[48px] md:text-[110px] font-black leading-[0.9] tracking-tighter uppercase italic font-headline text-black">Professional Access Pricing</h2>
                             <p className="text-xl md:text-[36px] text-black/60 font-bold italic">Institutional systems. Intentionally priced for everyday operators.</p>
