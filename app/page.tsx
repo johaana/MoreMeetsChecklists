@@ -138,20 +138,18 @@ const HeroSectionComp = () => {
                 <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 items-center">
                     
                     {/* Phase 01: The Hook */}
-                    <div className="order-1 space-y-2 md:space-y-3 w-full">
-                        <div className="space-y-1 md:space-y-2">
-                             <h1 className="text-[34px] md:text-[84px] lg:text-[100px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white">
-                                {NARRATIVE.line1} <br />
-                                <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
-                             </h1>
-                        </div>
+                    <div className="order-1 space-y-1 md:space-y-2 w-full">
+                        <h1 className="text-[34px] md:text-[84px] lg:text-[100px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white">
+                            {NARRATIVE.line1} <br />
+                            <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
+                        </h1>
                         <p className="text-base md:text-[22px] lg:text-[26px] italic font-medium text-zinc-400 max-w-none lg:whitespace-nowrap leading-tight">
                             {NARRATIVE.subline}
                         </p>
                     </div>
                     
                     {/* Phase 02: The Operational Pain */}
-                    <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-3 space-y-4 md:space-y-6 text-left border-l-2 lg:text-right lg:border-l-0 lg:border-r-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:border-l border-white/5 mt-8 lg:mt-16">
+                    <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-3 space-y-4 md:space-y-6 text-left border-l-2 lg:text-right lg:border-l-0 lg:border-r-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 mt-8 lg:mt-16">
                          <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">WHY TEAMS STRUGGLE</p>
                          <div className="flex flex-col gap-2 md:gap-4 lg:gap-5">
                              {ANXIETY_ITEMS.map((text, i) => (
@@ -442,7 +440,6 @@ export default function Home() {
                                 <div className="flex items-baseline gap-5">
                                     <p className="text-[56px] md:text-[84px] font-black italic text-black">₹999</p>
                                     <span className="text-2xl md:text-4xl font-bold text-black/40 italic">/ $12</span>
-                                end
                                 </div>
                                 <p className="text-[14px] font-black uppercase tracking-[0.5em] text-black/60">One-time payment • Own forever</p>
                             </div>

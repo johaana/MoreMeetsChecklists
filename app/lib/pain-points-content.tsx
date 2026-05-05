@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
     Bug, 
@@ -103,7 +102,8 @@ import {
     Scale, 
     Projector, 
     ShoppingBag,
-    Pill
+    Pill,
+    AlertTriangle
 } from 'lucide-react';
 
 export const painPointsContent = {

@@ -316,7 +316,7 @@ export const blogPosts: BlogPost[] = [
       content: `
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
-            When the fire alarm rings at 3 AM or a guest collapses in the lobby, your staff’s IQ effectively drops by 30 points. This is the physiological reality of Cognitive Overload.
+            When the fire alarm rings at 3 AM or a guest collapses in the lobby, your staff’s IQ effectively drops by 30 points. This isn't a performance issue: it's an infrastructure failure.
           </p>
           
           <p>Human working memory is designed to hold 4-7 items at a time. In a crisis, the <strong>Amygdala Hijack</strong> occurs: the brain's logical pre-frontal cortex shuts down to prioritize survival. In this state, "common sense" and "previous training" become inaccessible. The brain enters a loop of confusion unless it is provided with an external, binary guide.</p>

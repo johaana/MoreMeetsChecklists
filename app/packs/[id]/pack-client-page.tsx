@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import type { PremiumPack } from "@/lib/premium-packs";
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { 
     LayoutGrid,
     Target,
@@ -33,7 +34,7 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
 
 const PulsatingStressText = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
     <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-        <span className="text-[12px] md:text-[18px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.3)] leading-tight block">
+        <span className="text-[12px] md:text-[18px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.3)] leading-tight block text-left lg:text-right">
             {text}
         </span>
     </div>
@@ -70,7 +71,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     SOVEREIGN ENGINE V11.9
                                 </Badge>
                                 <h1 className="text-[36px] md:text-[80px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white">
-                                    {pack.title.replace('Operations System', '')} <br />
+                                    {pack.title.replace('Operations System', '').replace('Operations Pack', '')} <br />
                                     <span style={{ color: BRAND_GREEN }}>OPERATIONS SYSTEM</span>
                                 </h1>
                                 <p className="text-lg md:text-[24px] italic font-medium text-zinc-400 max-w-xl leading-tight">
@@ -115,13 +116,13 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         </div>
                         
                         {/* RIGHT: THE OPERATIONAL PAIN */}
-                        <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-12 mt-16 lg:mt-0 space-y-6">
+                        <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-16 lg:mt-0 space-y-6">
                              <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">ANATOMY OF FAILURE</p>
                              <div className="flex flex-col gap-6 md:gap-10">
                                  {findings.slice(0, 4).map((item: any, i: number) => (
                                     <div key={i} className="space-y-1">
                                         <PulsatingStressText text={item.title} delay={`${i * 0.2}s`} />
-                                        <p className="text-[10px] md:text-[11px] text-zinc-500 font-bold uppercase tracking-tight leading-tight max-w-xs">{item.description.substring(0, 100)}...</p>
+                                        <p className="text-[10px] md:text-[11px] text-zinc-500 font-bold uppercase tracking-tight leading-tight max-w-xs lg:ml-auto">{item.description.substring(0, 100)}...</p>
                                     </div>
                                  ))}
                              </div>
