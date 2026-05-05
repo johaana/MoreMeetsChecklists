@@ -92,13 +92,7 @@ export const blogPosts: BlogPost[] = [
           <p>And most businesses don’t realise how much of their operation lives inside them until one of them is not there. That is when the second-order failures begin.</p>
           
           <h2>Second-Order Failures</h2>
-          <ul class="space-y-4 my-8">
-            <li class="border-l-2 border-primary pl-4">Sanitisation checks get rushed.</li>
-            <li class="border-l-2 border-primary pl-4">Handoffs get thinner.</li>
-            <li class="border-l-2 border-primary pl-4">Decisions slow down.</li>
-            <li class="border-l-2 border-primary pl-4">Errors go unnoticed longer.</li>
-            <li class="border-l-2 border-primary pl-4">The strongest people take on more — until they become the next absence.</li>
-          </ul>
+          <p>Sanitisation checks get rushed. Handoffs get thinner. Decisions slow down. Errors go unnoticed longer. The strongest people take on more — until they become the next absence.</p>
 
           <p>Flu season doesn’t break teams. It exposes how much of the business was never systemised. Because a stable team can hide weak structure. Until it loses one person. And then another.</p>
           

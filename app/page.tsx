@@ -23,7 +23,8 @@ import {
     ShoppingBag,
     History,
     ClipboardCheck,
-    Smartphone
+    Smartphone,
+    AlertTriangle
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -125,7 +126,7 @@ const SovereignCTA = ({ className }: { className?: string }) => (
     </div>
 );
 
-const HeroSection = () => {
+const HeroSectionComp = () => {
     return (
         <section className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden bg-black">
             <div className="absolute inset-0 z-0">
@@ -195,7 +196,7 @@ export default function Home() {
 
             <main className="flex-1">
                 
-                <HeroSection />
+                <HeroSectionComp />
 
                 {/* THE MANDATE: SPLIT COLUMN FORENSIC SCAN */}
                 <Section className="bg-white">
