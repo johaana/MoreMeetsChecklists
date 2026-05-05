@@ -35,7 +35,6 @@ import { FaqSection } from '@/components/layout/faq-section';
 import { Button } from '@/components/ui/button';
 
 // --- PRODUCTION CONSTANTS ---
-const VIMEO_URL = "https://player.vimeo.com/video/1187795401?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0";
 const FALLBACK_IMAGE = "https://i.postimg.cc/rsHq85yn/Screenshot-2026-04-09-091611.png";
 const BRAND_GREEN = "#22C55E";
 
@@ -63,29 +62,16 @@ const ANXIETY_ITEMS = [
 
 // --- HELPER COMPONENTS ---
 
-const BackgroundVideo = ({ opacity = 0.4, grayscale = true }) => (
+const HeroBackground = ({ grayscale = true }) => (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-black">
-        {/* Fallback image is the immediate background layer */}
         <img 
             src={FALLBACK_IMAGE}
             alt=""
             className={cn(
                 "absolute inset-0 w-full h-full object-cover scale-[1.05]",
-                grayscale && "grayscale brightness-50 contrast-125"
+                grayscale && "grayscale brightness-[0.25] contrast-[1.2]"
             )}
-            style={{ opacity: 0.3 }}
-        />
-        {/* Vimeo Iframe implementation for background */}
-        <iframe
-            src={VIMEO_URL}
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            className={cn(
-                "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.77vh] min-w-full h-full min-h-[56.25vw] scale-[1.05]",
-                grayscale && "grayscale brightness-50 contrast-125"
-            )}
-            style={{ opacity }}
-            title="Sovereign Background"
+            style={{ opacity: 0.8 }}
         />
     </div>
 );
@@ -142,7 +128,7 @@ const HeroSectionComp = () => {
     return (
         <section className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden bg-black">
             <div className="absolute inset-0 z-0">
-                <BackgroundVideo opacity={0.4} grayscale />
+                <HeroBackground grayscale />
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
             </div>
 
