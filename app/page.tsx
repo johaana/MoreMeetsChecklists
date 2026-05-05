@@ -63,8 +63,18 @@ const ANXIETY_ITEMS = [
 
 // --- HELPER COMPONENTS ---
 
-const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
+const BackgroundVideo = ({ opacity = 0.4, grayscale = true }) => (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-black">
+        {/* Fallback image is now the primary background layer */}
+        <img 
+            src={FALLBACK_IMAGE}
+            alt=""
+            className={cn(
+                "absolute inset-0 w-full h-full object-cover scale-[1.05]",
+                grayscale && "grayscale brightness-50 contrast-125"
+            )}
+            style={{ opacity }}
+        />
         <video 
             src={VIDEO_URL} 
             autoPlay 
@@ -73,17 +83,7 @@ const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
             playsInline 
             className={cn(
                 "absolute inset-0 w-full h-full object-cover scale-[1.05]",
-                grayscale && "grayscale brightness-75 contrast-110"
-            )}
-            style={{ opacity }}
-        />
-        {/* Fallback image if video fails or for performance */}
-        <img 
-            src={FALLBACK_IMAGE}
-            alt=""
-            className={cn(
-                "absolute inset-0 w-full h-full object-cover scale-[1.05] -z-10",
-                grayscale && "grayscale brightness-75 contrast-110"
+                grayscale && "grayscale brightness-50 contrast-125"
             )}
             style={{ opacity }}
         />
@@ -142,7 +142,7 @@ const HeroSectionComp = () => {
     return (
         <section className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden bg-black">
             <div className="absolute inset-0 z-0">
-                <BackgroundVideo opacity={0.3} grayscale />
+                <BackgroundVideo opacity={0.4} grayscale />
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
             </div>
 
