@@ -39,12 +39,12 @@ export const packResolutions: Record<string, PackResolution> = {
     'restaurants': {
         prevents: [
             "Revenue leakage is identified at the source",
-            "HACCP compliance becomes a daily record, not an audit scramble",
+            "HACCP compliance becomes a daily record",
             "Manager handovers become zero-gap data transfers",
-            "Prep waste is tracked and reduced through par-level logic",
+            "Prep waste is tracked and reduced",
             "Cleaning schedules are verified, not just requested",
             "Staff dependence on 'tribal knowledge' is eliminated",
-            "Ambiance standards (music, light, temp) are enforced hourly",
+            "Ambiance standards are enforced hourly",
             "Closing safety (gas/power) becomes a mandatory digital seal"
         ],
         teamUses: [
@@ -68,10 +68,10 @@ export const packResolutions: Record<string, PackResolution> = {
     },
     'hotels_and_resorts': {
         prevents: [
-            "Room readiness disputes between FO and HK are eliminated",
-            "Guest ID compliance (C-Form) becomes a zero-fail process",
+            "Room readiness disputes are eliminated",
+            "Guest ID compliance becomes a zero-fail process",
             "Preventive maintenance for high-value assets is automated",
-            "Safety incidents at high-risk zones (Pool, Gym) are mitigated",
+            "Safety incidents at high-risk zones are mitigated",
             "VIP setups are verified before the guest arrives",
             "Operational standards stay when a key HOD resigns",
             "Reputation damage from unaddressed feedback is stopped",
@@ -98,13 +98,13 @@ export const packResolutions: Record<string, PackResolution> = {
     },
     'healthcare_and_hospital_operations': {
         prevents: [
-            "Clinical 'Never-Events' are targeted with WHO-aligned logic",
-            "Medication errors are reduced via dual-verification protocols",
+            "Clinical 'Never-Events' are targeted via WHO logic",
+            "Medication errors are reduced via dual-verification",
             "Bio-medical waste non-compliance risk is mitigated",
             "Wait-time inflation is identified through TAT monitoring",
             "Inventory expiry leakage in the Pharmacy is stopped",
             "Nursing bedside handovers become structured data streams",
-            "Statutory license lapses (Fire/O2) are tracked and alert-ready",
+            "Statutory license lapses are tracked and alert-ready",
             "Operational chaos during emergency codes is eliminated"
         ],
         teamUses: [
@@ -122,20 +122,20 @@ export const packResolutions: Record<string, PackResolution> = {
             "Nursing superintendents see ward vitals instantly",
             "Patient grievances are captured and resolved",
             "Infrastructure (O2/DG) is at 100% readiness",
-            "Audit-readiness (NABH/JCI) becomes a permanent state",
+            "Audit-readiness becomes a permanent state",
             "Patient trust is built through observable control"
         ]
     },
     'facility_management_blueprint': {
         prevents: [
-            "Catastrophic utility failures via disciplined MEP checks",
-            "Vendor SLA neglect is identified through parity audits",
-            "Hidden energy wastage is caught through daily KWH tracking",
-            "Safety hazards turn into incidents through lack of reporting",
-            "Water quality issues are caught before occupant complaints",
-            "Asset life is shortened by missed preventive maintenance",
+            "Catastrophic utility failures via MEP checks",
+            "Vendor SLA neglect is identified",
+            "Hidden energy wastage is caught via KWH tracking",
+            "Safety hazards turn into incidents via reporting",
+            "Water quality issues are caught early",
+            "Asset life is shortened by missed maintenance",
             "Security perimeter gaps are identified daily",
-            "Compliance fines from statutory license lapses are eliminated"
+            "Compliance fines from license lapses are eliminated"
         ],
         teamUses: [
             "Hard FM mechanical vital logs",
@@ -146,8 +146,8 @@ export const packResolutions: Record<string, PackResolution> = {
             "Incident root-cause mapping"
         ],
         mondayMorning: [
-            "Every chiller and DG unit has a verified daily vitals log",
-            "Vendor staff presence is reconciled against the SLA",
+            "Every chiller and DG unit has a verified daily log",
+            "Vendor staff presence is reconciled against SLA",
             "Washroom hygiene is auditable hourly",
             "Energy spikes are identified within 24 hours",
             "Fire exit paths are physically confirmed clear",
@@ -158,14 +158,14 @@ export const packResolutions: Record<string, PackResolution> = {
     },
     'franchise_operations_pack': {
         prevents: [
-            "Royalty leakage through daily sales reconciliations",
-            "Brand dilution from inconsistent unit-level standards",
+            "Royalty leakage through daily reconciliations",
+            "Brand dilution from inconsistent standards",
             "Supply chain violations from unvetted sourcing",
-            "Regulatory fines from displayed license lapses",
-            "Hidden franchisee distress through performance analytics",
+            "Regulatory fines from license lapses",
+            "Hidden franchisee distress via analytics",
             "High-risk behavior from unchecked unit managers",
-            "Delayed unit launches through CAPEX milestone tracking",
-            "Reputation damage from unmonitored local unit ORM"
+            "Delayed unit launches through CAPEX tracking",
+            "Reputation damage from unmonitored local ORM"
         ],
         teamUses: [
             "Multi-unit mood dashboard",
@@ -179,7 +179,7 @@ export const packResolutions: Record<string, PackResolution> = {
             "The CEO sees a unified mood score for all outlets",
             "Unit manager attendance is verified by 9:30 AM",
             "Brand signage and ambiance are photo-verified",
-            "High-risk inventory is reconciled against the POS",
+            "High-risk inventory is reconciled against POS",
             "Local marketing campaigns are auditable",
             "Unit-level hygiene scores are observable",
             "Franchisee grievances are captured",
@@ -188,14 +188,14 @@ export const packResolutions: Record<string, PackResolution> = {
     },
     'cinema_operations_pack': {
         prevents: [
-            "Black-screen events through rigorous DCP/KDM audits",
-            "Concession profit leakage through yield logic",
-            "Guest complaints via thermal and hygiene monitoring",
-            "Life-safety tragedies through daily exit/PA checks",
-            "Asset decay of expensive projection equipment",
-            "Reputation damage from unmonitored ticket feedback",
+            "Black-screen events through DCP/KDM audits",
+            "Concession profit leakage via yield logic",
+            "Guest complaints via thermal monitoring",
+            "Life-safety tragedies via daily exit checks",
+            "Asset decay of projection equipment",
+            "Reputation damage from unmonitored feedback",
             "Staff grooming and brand standard drift",
-            "Statutory fines from Entertainment Tax or Fire lapses"
+            "Statutory fines from Entertainment Tax lapses"
         ],
         teamUses: [
             "Projection sound/media QC logs",
@@ -218,14 +218,14 @@ export const packResolutions: Record<string, PackResolution> = {
     },
     'retail_operations_system': {
         prevents: [
-            "Inventory shrinkage through disciplined cycle counts",
+            "Inventory shrinkage through disciplined counts",
             "Brand dilution from inconsistent VM standards",
-            "Loss of high-value assets through vault protocols",
-            "Safety incidents in fitting rooms or high-load zones",
+            "Loss of high-value assets via vault protocols",
+            "Safety incidents in fitting rooms",
             "Legal Metrology fines from uncalibrated scales",
-            "Revenue loss from dead stock through expiry logic",
-            "Security breaches through perimeter lock-down audits",
-            "Service collapse during peak hours via roster parity"
+            "Revenue loss through expiry logic",
+            "Security breaches through perimeter audits",
+            "Service collapse during peak hours"
         ],
         teamUses: [
             "Visual merchandising planogram audits",
@@ -256,7 +256,7 @@ export const defaultResolution: PackResolution = {
         "Operational memory stays when staff resign",
         "Daily execution becomes visible across the group",
         "Assumptions are replaced by operational proof",
-        "Compliance becomes a permanent state, not an event",
+        "Compliance becomes a permanent state",
         "Brand standards are protected from local drift"
     ],
     teamUses: [

@@ -15,10 +15,8 @@ import {
     Activity,
     ShieldCheck,
     Lock,
-    Smartphone,
     CheckCircle2,
     Zap,
-    TrendingUp,
     ShieldAlert
 } from 'lucide-react';
 import Link from 'next/link';
@@ -60,7 +58,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-primary/20">
             
-            {/* --- HERO SECTION: NARRATIVE HOOK --- */}
+            {/* --- HERO SECTION --- */}
             <section className="relative w-full min-h-[90svh] flex flex-col justify-center overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 z-0">
                     <img src={heroImageUrl} alt="" className="w-full h-full object-cover opacity-20 grayscale brightness-50" />
@@ -69,7 +67,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                 <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-32 pb-16 md:py-0">
                     <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 items-center">
-                        
                         <div className="space-y-10 w-full">
                             <div className="space-y-4">
                                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-6 py-2 rounded-none bg-primary/5">
@@ -131,7 +128,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                  ))}
                              </div>
                         </div>
-
                     </div>
                 </div>
             </section>
@@ -143,17 +139,16 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50/50 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">Forensic Findings</Badge>
                         <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">Why operations break</h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
-                            Routine responsibilities become informal, unverified, and dependent on memory. In serious environments, assumptions become risk.
+                            Schools rarely fail because of one catastrophic event. They fail because routine responsibilities become informal, unverified, and dependent on memory. In serious environments, assumptions become risk.
                         </p>
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 relative">
                         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />
-                        
                         {findings.map((point: any, index: number) => (
                             <div key={index} className="flex flex-col gap-6 p-10 border border-zinc-100 bg-zinc-50/30 rounded-[2rem] hover:bg-white hover:shadow-xl transition-all duration-500 relative group">
                                 <div className="absolute top-4 right-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                                    <AlertTriangle className="w-24 h-24 text-red-600" />
+                                    <ShieldAlert className="w-24 h-24 text-red-600" />
                                 </div>
                                 <div className="flex items-center gap-4">
                                     <div className="relative flex h-3 w-3 shrink-0">
@@ -176,13 +171,12 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">Resolution Protocol</Badge>
                         <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">How Sovereign prevents this</h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
-                            Every critical function is converted into assigned execution, logged accountability, and repeatable operational discipline.
+                            MoreMeets™ converts operational dependence on memory into daily institutional control. Every critical function is converted into assigned execution, logged accountability, and repeatable operational discipline.
                         </p>
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 relative">
                         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />
-                        
                         <div className="space-y-8 p-10 border-l-4 border-primary bg-white shadow-sm rounded-r-[2rem]">
                             <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">THE OPERATIONAL SHIFT</p>
                             <div className="space-y-6">
@@ -198,7 +192,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <div className="space-y-10">
                             <div className="space-y-6">
                                 <h4 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-zinc-950 font-headline">What your team uses daily</h4>
-                                <p className="text-zinc-500 italic font-medium">No new software. No app adoption. Just a clear, assigned ledger.</p>
+                                <p className="text-zinc-500 italic font-medium">Your team does not need new software. They open the system, update assigned tasks, and continue working.</p>
                                 <div className="grid grid-cols-1 gap-4">
                                     {resolution.teamUses.map((item, i) => (
                                         <div key={i} className="flex items-center gap-4 p-4 rounded-xl border border-zinc-100 bg-white group hover:border-primary/20 transition-all">
@@ -253,7 +247,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         {pack.checklists.map((checklist, index) => (
                             <div key={index} className="border border-zinc-200 p-8 md:p-12 space-y-6 hover:border-primary hover:shadow-2xl transition-all duration-700 bg-white group flex flex-col relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 -mr-12 -mt-12 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                                
                                 <div className="flex justify-between items-center border-b border-zinc-100 pb-4">
                                     <span className="text-[10px] font-black text-zinc-400 tracking-[0.3em]">MODULE_ID: 0{index + 1}</span>
                                     <div className="flex items-center gap-2">
@@ -261,18 +254,15 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         <span className="text-[10px] font-black text-primary uppercase tracking-widest">{checklist.tasks.length} POINTS</span>
                                     </div>
                                 </div>
-
                                 <div className="space-y-2">
                                     <p className="text-[9px] font-black uppercase text-zinc-400 tracking-[0.4em] font-headline italic">{checklist.role}</p>
                                     <h4 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-[#0B0F14] group-hover:text-primary transition-colors leading-tight">
                                         {checklist.title.replace('System', '').replace('Command', '').replace('Operations', '').replace('Protocol', '')}
                                     </h4>
                                 </div>
-
                                 <p className="text-sm md:text-base text-zinc-500 italic font-medium leading-relaxed flex-1">
                                     {checklist.summary}
                                 </p>
-                                
                                 <div className="pt-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-300 group-hover:text-primary transition-colors">
                                     <ShieldCheck className="w-4 h-4" /> AUDIT-READY PROTOCOL
                                 </div>
@@ -302,7 +292,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     </button>
                 </div>
             </Section>
-
         </div>
     );
 }
