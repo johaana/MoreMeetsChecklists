@@ -329,7 +329,7 @@ export const blogPosts: BlogPost[] = [
         <ul class="space-y-4 my-8">
           <li class="border-l-2 border-red-500 pl-4"><strong>Minute 01:</strong> Panic sets in. Adrenaline floods the system. The staff member tries to remember the emergency number.</li>
           <li class="border-l-2 border-red-500 pl-4"><strong>Minute 03:</strong> Conflicting priorities. Should they call the GM or the paramedics first? Should they clear the lobby or stay with the guest?</li>
-          <li class="border-l-2 border-red-500 pl-4"><strong>Minute 05:</strong> Total saturation. No documentation is being kept. Evidence is lost. Liability is increasing.</li>
+          <li class="border-l-2 border-red-500 pl-4"><strong>Minute 05:</strong> Total saturation. No documentation is being kept. Evidence is lost. liability is increasing.</li>
         </ul>
 
         <blockquote class="my-16">
