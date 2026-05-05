@@ -71,7 +71,7 @@ const HeroBackground = ({ grayscale = true }) => (
                 "absolute inset-0 w-full h-full object-cover scale-[1.05]",
                 grayscale && "grayscale brightness-[0.25] contrast-[1.2]"
             )}
-            style={{ opacity: 0.8 }}
+            style={{ opacity: 0.9 }}
         />
     </div>
 );
@@ -439,7 +439,7 @@ export default function Home() {
                                     <p className="text-[56px] md:text-[84px] font-black italic text-black">₹999</p>
                                     <span className="text-2xl md:text-4xl font-bold text-black/40 italic">/ $12</span>
                                 </div>
-                                <p className="text-[14px] font-black uppercase tracking-[0.5em] text-black/60">One-time payment • Own forever</p>
+                                <p className="text-sm font-black uppercase tracking-[0.5em] text-black/60">One-time payment • Own forever</p>
                             </div>
                         </div>
                     </div>
