@@ -35,7 +35,7 @@ import { FaqSection } from '@/components/layout/faq-section';
 import { Button } from '@/components/ui/button';
 
 // --- PRODUCTION CONSTANTS ---
-const VIMEO_URL = "https://player.vimeo.com/video/1187795401?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0";
+const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 const BRAND_GREEN = "#22C55E";
 
 const NARRATIVE = {
@@ -64,16 +64,17 @@ const ANXIETY_ITEMS = [
 
 const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <iframe
-            src={VIMEO_URL}
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
+        <video 
+            src={VIDEO_URL} 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
             className={cn(
-                "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.77vh] min-w-full h-full min-h-[56.25vw] scale-[1.05]",
-                grayscale && "saturate-0 brightness-75 contrast-110"
+                "absolute inset-0 w-full h-full object-cover scale-[1.05]",
+                grayscale && "grayscale brightness-75 contrast-110"
             )}
-            style={{ opacity, border: 'none' }}
-            title="Sovereign Background"
+            style={{ opacity }}
         />
     </div>
 );
