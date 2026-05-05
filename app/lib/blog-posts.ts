@@ -39,9 +39,11 @@ export const blogPosts: BlogPost[] = [
 
           <p>The assumption that drains are clear. That the pump will start. That waterproofing still holds. That someone checked. That someone remembered.</p>
           
-          <p>In July 2024, Mumbai saw over 300 mm of rain in a single stretch. Roads flooded. Flights stalled. Schools shut. The city slowed, visibly. But inside buildings, the failure pattern was quieter — and more predictable.</p>
+          <p>In July 2024, Mumbai saw over 300 mm of rain in a single stretch. Roads flooded. Flights stalled. Schools shut. The city slowed, visibly.</p>
           
-          <h2>1. The Failure Pattern</h2>
+          <p>But inside buildings, the failure pattern was quieter — and more predictable.</p>
+          
+          <h2>The Failure Pattern</h2>
           <p>Hotels didn’t lose control because of rain. They lost it because basement checks weren’t done two days earlier. Restaurants didn’t struggle because deliveries stopped. They struggled because no one planned what happens <em>when</em> they stop. Facilities teams weren’t overwhelmed by water. They were overwhelmed by everything that should have been handled before the water arrived.</p>
 
           <blockquote>
@@ -50,8 +52,10 @@ export const blogPosts: BlogPost[] = [
 
           <p>The difference between a stressful day and a failed one is rarely infrastructure. It is whether the team already knew what to do — without asking.</p>
           
-          <h2>2. The Operational Audit</h2>
+          <h2>The Operational Audit</h2>
           <p>The best-run operations look almost boring in heavy rain. Drains cleared in advance. Backup tested under load. Stock moved early. Roles defined by shift. Escalations already assigned. No urgency. Just readiness.</p>
+
+          <p>Because when water starts entering the building, you are no longer preparing. You are already late.</p>
 
           <blockquote>
             "Monsoon is not a weather event. It is an operational audit."
@@ -87,7 +91,7 @@ export const blogPosts: BlogPost[] = [
           
           <p>And most businesses don’t realise how much of their operation lives inside them until one of them is not there. That is when the second-order failures begin.</p>
           
-          <h2>1. Second-Order Failures</h2>
+          <h2>Second-Order Failures</h2>
           <ul class="space-y-4 my-8">
             <li class="border-l-2 border-primary pl-4">Sanitisation checks get rushed.</li>
             <li class="border-l-2 border-primary pl-4">Handoffs get thinner.</li>
@@ -102,8 +106,8 @@ export const blogPosts: BlogPost[] = [
             "The question is no longer: Do we have enough people? It becomes: How much of our operation depends on specific people?"
           </blockquote>
 
-          <h2>2. Operational Maturity</h2>
-          <p>The teams that hold quality through illness are not the healthiest. They are the least dependent. Tasks are visible. Ownership is clear. Handoffs are defined. Substitutions are possible. Nothing critical disappears with one person. That is operational maturity.</p>
+          <h2>Operational Maturity</h2>
+          <p>The teams that hold quality through illness are not the healthiest. They are the least dependent. Tasks are visible. Ownership is clear. Handoffs are defined. Substitutions are possible. Nothing critical disappears with one person. That is operational maturity. Because illness is predictable. What fails is not.</p>
         </section>
       `
     },
@@ -120,10 +124,10 @@ export const blogPosts: BlogPost[] = [
       content: `
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
-            By 8:17 p.m., table 14 had been waiting 26 minutes. The bar had run out of clean glassware. One ticket had vanished somewhere between the POS and the pass.
+            By 8:17 p.m., table 14 had been waiting 26 minutes. The bar had run out of clean glassware. A dessert had been fired twice. One ticket had vanished somewhere between the POS and the pass.
           </p>
           
-          <p>From the outside, it looked like a great night. Full house. Waitlist. Energy high. Inside, the margin for error was gone. This is what peak season actually does. It doesn’t create chaos. It removes recovery time.</p>
+          <p>From the outside, it looked like a great night. Full house. Waitlist. Energy high. Music right. Inside, the margin for error was gone. This is what peak season actually does. It doesn’t create chaos. It removes recovery time.</p>
 
           <blockquote>
             "Peak performance is not about speed. It is about removing variability."
@@ -131,10 +135,10 @@ export const blogPosts: BlogPost[] = [
 
           <p>On a normal night, small mistakes are invisible. A delay gets absorbed. A miss gets corrected. A guest doesn’t notice. On a busy night, the same mistake multiplies. A delay becomes a complaint. A re-fire becomes a backlog. A missed step becomes a visible failure.</p>
           
-          <h2>1. The Compression Trap</h2>
+          <h2>The Compression Trap</h2>
           <p>Nothing new went wrong. You just ran out of time to fix it. That is what operators misunderstand about peak demand. The pressure is not volume. It is compression. More orders. More decisions. More movement. Less space between errors. And once that space disappears, everything becomes visible.</p>
           
-          <h2>2. Systems Over Coordination</h2>
+          <h2>Systems Over Coordination</h2>
           <p>The best-run operations don’t “handle” peak season. They reduce what can go wrong before it starts. Menus get tighter. Prep gets simpler. Roles get clearer. Exceptions get fewer. Decisions get faster.</p>
 
           <blockquote>
@@ -161,23 +165,22 @@ export const blogPosts: BlogPost[] = [
             The first mistake of the school year rarely happens in a classroom. It happens outside. At the gate where two buses arrive too close together.
           </p>
           
-          <p>Nothing dramatic. Just small misses in places most people don’t think of as “critical.” Until they are. Underneath the normalcy of the first week, everything is slightly unstable. Routes change. New students adjust. Parents are anxious. Staff are not fully in rhythm yet.</p>
+          <p>At the desk where a parent hands over medication without proper logging. At dispersal when a last-minute change reaches one adult but not another. Nothing dramatic. Just small misses in places most people don’t think of as “critical.” Until they are.</p>
 
           <blockquote>
             "Schools are often judged not by teaching in the first week. But by how smoothly everything else works."
           </blockquote>
 
-          <h2>1. The Fragility of Trust</h2>
-          <p>A missed handoff becomes a worried parent. A delay becomes frustration. A confusion becomes escalation. Not because the school failed. Because trust is fragile early. Arrival. Movement. Communication. Dispersal. These are not academic systems. They are operational ones.</p>
+          <h2>The Fragility of Trust</h2>
+          <p>The first week of school feels routine. Children return. Staff return. Buildings open. Schedules restart. But underneath that normalcy, everything is slightly unstable. Routes change. Timings shift. New students adjust. Parents are anxious. Staff are not fully in rhythm yet.</p>
           
-          <h2>2. Operational Academic Systems</h2>
-          <p>The schools that feel “in control” early are not doing anything dramatic. They are just reducing uncertainty. Clear processes. Visible ownership. Fewer assumptions. Less dependence on memory.</p>
+          <p>A missed handoff becomes a worried parent. A delay becomes frustration. A confusion becomes escalation. Not because the school failed. Because trust is fragile early. Arrival. Movement. Communication. Dispersal. These are not academic systems. They are operational ones.</p>
 
           <blockquote>
             "Children adapt quickly. Parents don’t."
           </blockquote>
 
-          <p>What they notice in the first week stays longer than most schools expect. It shapes the perception of safety for the entire academic cycle.</p>
+          <p>The schools that feel “in control” early are not doing anything dramatic. They are just reducing uncertainty. Clear processes. Visible ownership. Fewer assumptions. Less dependence on memory. What they notice in the first week stays longer than most schools expect.</p>
         </section>
       `
     },
@@ -197,23 +200,23 @@ export const blogPosts: BlogPost[] = [
             Patients don’t begin judging a hospital when they meet the doctor. They begin much earlier. At the entrance. At the desk. In the waiting area.
           </p>
           
-          <p>A slow registration. A missing file. A confused instruction. A nurse asking twice for the same detail. None of this is clinical. But it shapes everything that follows. Because before patients evaluate care, they evaluate control.</p>
+          <p>A slow registration. A missing file. A confused instruction. A nurse asking twice for the same detail. A delay no one explains. None of this is clinical. But it shapes everything that follows. Because before patients evaluate care, they evaluate control.</p>
 
           <blockquote>
             "To a patient, uncertainty is the real risk. And operations is what removes it."
           </blockquote>
 
-          <h2>1. The Evaluation of Control</h2>
-          <p>Does this place feel organised? Does it feel predictable? Does it feel like someone is in charge? Most of that judgment happens before a single diagnosis. Healthcare systems often focus heavily on clinical excellence. But patient confidence is built operationally.</p>
+          <h2>The Evaluation of Control</h2>
+          <p>Does this place feel organised? Does it feel predictable? Does it feel like someone is in charge? Most of that judgment happens before a single diagnosis. Healthcare systems often focus heavily on clinical excellence. But patient confidence is built operationally. In flow. In clarity. In coordination.</p>
           
-          <h2>2. The Consistent Environment</h2>
-          <p>A delayed consultation feels longer. A small error feels bigger. A routine visit feels uncertain. Not because the care is poor. Because the system around it feels unstable. The most trusted healthcare environments are not the most advanced. They are the most consistent.</p>
+          <h2>The Consistent Environment</h2>
+          <p>A delayed consultation feels longer. A small error feels bigger. A routine visit feels uncertain. Not because the care is poor. Because the system around it feels unstable. The most trusted healthcare environments are not the most advanced. They are the most consistent. Processes are smooth. Handoffs are invisible. Communication is clear. And nothing feels accidental.</p>
 
           <blockquote>
             "Before the doctor walks in, the system has already spoken."
           </blockquote>
 
-          <p>Processes are smooth. Handoffs are invisible. Communication is clear. And nothing feels accidental. Patients are very good at listening to the system.</p>
+          <p>To a patient, uncertainty is the real risk. And operations is what removes it. Before the doctor walks in, the system has already spoken. And patients are very good at listening to the system.</p>
         </section>
       `
     },
