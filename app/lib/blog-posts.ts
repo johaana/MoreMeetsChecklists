@@ -361,59 +361,5 @@ export const blogPosts: BlogPost[] = [
           <p>Your team isn't incompetent: they are human. Protect your guests and your legal standing by removing the variable of 'Memory' from your emergency response. Build systems that work when the brain doesn't.</p>
         </section>
       `
-    },
-    {
-      slug: 'dangers-of-running-hotels-on-whatsapp',
-      title: "Hotels Running on WhatsApp: The Dangers of Chat-Based Operations",
-      publishedDate: "2026-02-23",
-      updatedAt: "2025-02-24",
-      author: "MoreMeets Editorial",
-      tags: ["Hotel & Resort Operations"],
-      protocol: "Audit Readiness",
-      relatedPackId: "hotels_and_resorts",
-      description: "WhatsApp is a communication tool, not an operating system. Discover why relying on chat for hotel operations creates massive hidden liabilities.",
-      imageUrl: "https://i.postimg.cc/cJSwxSP4/housekeeping-hotel-1.avif",
-      content: `
-        <section>
-          <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
-            WhatsApp is the world’s most popular hotel operating system. It is also the most dangerous.
-          </p>
-          
-          <p>While chat is efficient for quick updates, it is a graveyard for <strong>Operational Memory</strong>. Instructions are buried in hundreds of messages, there is no verifiable audit trail for compliance, and when a manager leaves, your 'system' leaves with their phone.</p>
-        </section>
-
-        <h2>1. The "Seen Receipt" Liability</h2>
-        <p>Just because an employee 'saw' a message doesn't mean they've followed the standard. WhatsApp lacks the <strong>binary accountability</strong> of a structured checklist. You cannot audit a group chat for ISO or HACCP compliance. You cannot prove to an inspector that a fridge temperature was checked because 'it's somewhere in the chat history.'</p>
-        
-        <h3>Communication vs. Documentation</h3>
-        <p>In a professional audit, "I told them on WhatsApp" is zero defense. Inspectors require <strong>timestamped, role-based logs</strong> that prove a specific control point was verified. WhatsApp is a stream of consciousness: a professional operation requires a structure of record.</p>
-
-        <blockquote class="my-16">
-          "Chat is for noise. SOPs are for signal. If your business depends on a scrolling feed to maintain standards, you aren't running a system: you're running a conversation."
-        </blockquote>
-
-        <section class="bg-white/[0.02] border border-white/5 p-8 md:p-12 rounded-[2rem] my-16">
-          <h2 class="text-red-500 !mt-0">Operational Debt Categories</h2>
-          <ul class="space-y-6 mt-8">
-            <li class="flex items-start gap-4">
-              <div class="h-6 w-6 rounded-full bg-red-500/20 flex items-center justify-center shrink-0 mt-1"><span class="text-red-500 text-xs font-black">!</span></div>
-              <div><strong>Legal Risk:</strong> Inability to produce a time-stamped log of safety checks during a liability claim.</div>
-            </li>
-            <li class="flex items-start gap-4">
-              <div class="h-6 w-6 rounded-full bg-red-500/20 flex items-center justify-center shrink-0 mt-1"><span class="text-red-500 text-xs font-black">!</span></div>
-              <div><strong>Information Entropy:</strong> Critical instructions are lost as they get pushed "up" the feed by casual conversation.</div>
-            </li>
-            <li class="flex items-start gap-4">
-              <div class="h-6 w-6 rounded-full bg-red-500/20 flex items-center justify-center shrink-0 mt-1"><span class="text-red-500 text-xs font-black">!</span></div>
-              <div><strong>Resignation Shock:</strong> When a key person leaves, the "how-to" history of the operation vanishes with their personal device.</div>
-            </li>
-          </ul>
-        </section>
-
-        <h2>2. The Excel Backbone</h2>
-        <section>
-          <p>Excel-based SOPs provide what WhatsApp cannot: <strong>Permanent, Searchable, and Auditable Structure.</strong> They create a fixed record of what was supposed to happen versus what actually happened. This is the difference between 'guessing' if a task was done and 'knowing' it was.</p>
-        </section>
-      `
     }
 ];
