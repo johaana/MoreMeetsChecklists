@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -15,11 +16,15 @@ import {
     ShieldCheck,
     Lock,
     Smartphone,
-    CheckCircle2
+    CheckCircle2,
+    Zap,
+    TrendingUp,
+    ShieldAlert
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
 import { painPointsContent } from '@/lib/pain-points-content';
+import { packResolutions, defaultResolution } from '@/lib/pack-resolutions';
 
 const BRAND_GREEN = "#22C55E";
 
@@ -50,11 +55,12 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     const totalTasks = (pack.id === 'retail_operations_system' || pack.id === 'hotels_and_resorts' || pack.id === 'healthcare_and_hospital_operations') ? 250 : pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0);
     
     const findings = painPointsContent[pack.id as keyof typeof painPointsContent]?.points || [];
+    const resolution = packResolutions[pack.id] || defaultResolution;
 
     return (
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-primary/20">
             
-            {/* --- HERO SECTION: OPTION 19 STAGGERED --- */}
+            {/* --- HERO SECTION: NARRATIVE HOOK --- */}
             <section className="relative w-full min-h-[90svh] flex flex-col justify-center overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 z-0">
                     <img src={heroImageUrl} alt="" className="w-full h-full object-cover opacity-20 grayscale brightness-50" />
@@ -64,7 +70,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-32 pb-16 md:py-0">
                     <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 items-center">
                         
-                        {/* LEFT: THE HOOK & BRIDGE */}
                         <div className="space-y-10 w-full">
                             <div className="space-y-4">
                                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-6 py-2 rounded-none bg-primary/5">
@@ -86,7 +91,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
                                     {[
-                                        { t: `${totalChecklists} Technical Modules`, i: LayoutGrid },
+                                        { t: `${totalChecklists} Operations Systems`, i: LayoutGrid },
                                         { t: `${totalTasks}+ Control Points`, i: Target },
                                         { t: "Live Dashboard Included", i: Activity },
                                         { t: "No SaaS. Own your data.", i: Lock }
@@ -115,14 +120,13 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
                         </div>
                         
-                        {/* RIGHT: THE OPERATIONAL PAIN */}
                         <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-16 lg:mt-0 space-y-6">
                              <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">ANATOMY OF FAILURE</p>
                              <div className="flex flex-col gap-6 md:gap-10">
                                  {findings.slice(0, 4).map((item: any, i: number) => (
                                     <div key={i} className="space-y-1">
                                         <PulsatingStressText text={item.title} delay={`${i * 0.2}s`} />
-                                        <p className="text-[10px] md:text-[11px] text-zinc-500 font-bold uppercase tracking-tight leading-tight max-w-xs lg:ml-auto">{item.description.substring(0, 100)}...</p>
+                                        <p className="text-[10px] md:text-[11px] text-zinc-500 font-bold uppercase tracking-tight leading-tight max-w-xs lg:ml-auto">Sovereign v11.9 Technical Finding</p>
                                     </div>
                                  ))}
                              </div>
@@ -132,12 +136,15 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </section>
 
-            {/* --- THE FORENSIC REPORT --- */}
+            {/* --- PHASE 01: FORENSIC DISCOVERY (RED) --- */}
             <Section className="bg-white border-b border-zinc-100">
                 <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
                     <div className="text-center space-y-6">
-                        <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50/50 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">Deficiency Analysis</Badge>
+                        <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50/50 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">Forensic Findings</Badge>
                         <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">Why operations break</h2>
+                        <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
+                            Routine responsibilities become informal, unverified, and dependent on memory. In serious environments, assumptions become risk.
+                        </p>
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 relative">
@@ -162,12 +169,84 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- SYSTEM MODULE DIRECTORY --- */}
-            <Section className="bg-white">
+            {/* --- PHASE 02: SOVEREIGN RESOLUTION (GREEN) --- */}
+            <Section className="bg-zinc-50/50">
+                <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
+                    <div className="text-center space-y-6">
+                        <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">Resolution Protocol</Badge>
+                        <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">How Sovereign prevents this</h2>
+                        <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
+                            Every critical function is converted into assigned execution, logged accountability, and repeatable operational discipline.
+                        </p>
+                    </div>
+
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 relative">
+                        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />
+                        
+                        <div className="space-y-8 p-10 border-l-4 border-primary bg-white shadow-sm rounded-r-[2rem]">
+                            <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">THE OPERATIONAL SHIFT</p>
+                            <div className="space-y-6">
+                                {resolution.prevents.map((item, i) => (
+                                    <div key={i} className="flex items-start gap-4 group">
+                                        <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+                                        <span className="text-zinc-950 font-black text-lg md:text-xl leading-tight italic uppercase">{item}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="space-y-10">
+                            <div className="space-y-6">
+                                <h4 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-zinc-950 font-headline">What your team uses daily</h4>
+                                <p className="text-zinc-500 italic font-medium">No new software. No app adoption. Just a clear, assigned ledger.</p>
+                                <div className="grid grid-cols-1 gap-4">
+                                    {resolution.teamUses.map((item, i) => (
+                                        <div key={i} className="flex items-center gap-4 p-4 rounded-xl border border-zinc-100 bg-white group hover:border-primary/20 transition-all">
+                                            <div className="w-2 h-2 rounded-full bg-primary/20 group-hover:bg-primary transition-all" />
+                                            <span className="text-zinc-600 font-bold italic uppercase text-sm tracking-wide">{item}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Section>
+
+            {/* --- PHASE 03: THE MONDAY MORNING REALITY --- */}
+            <Section className="bg-white border-y border-zinc-100">
+                <div className="max-w-4xl mx-auto space-y-16">
+                    <div className="text-center space-y-6">
+                        <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.4em] font-black text-[10px] px-6 py-2 rounded-none">OPERATIONAL IMPACT</Badge>
+                        <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter">What changes on Monday</h2>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-6 md:gap-10">
+                        {resolution.mondayMorning.map((item, i) => (
+                            <div key={i} className="flex items-center gap-5 p-6 rounded-2xl bg-zinc-50 border border-zinc-100 group hover:bg-zinc-950 hover:text-white transition-all duration-500">
+                                <span className="text-4xl font-black italic text-zinc-200 group-hover:text-primary/20 transition-colors leading-none">0{i+1}</span>
+                                <span className="text-zinc-600 group-hover:text-zinc-100 font-black italic uppercase text-sm md:text-base leading-tight tracking-tight">{item}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="text-center pt-10">
+                         <p className="text-xl md:text-2xl font-black text-zinc-950 uppercase italic tracking-tighter font-headline">
+                            👉 The difference is immediate.
+                        </p>
+                    </div>
+                </div>
+            </Section>
+
+            {/* --- PHASE 04: SYSTEM MODULE DIRECTORY --- */}
+            <Section className="bg-zinc-50/30">
                 <div className="space-y-20">
                     <div className="text-center space-y-6">
-                        <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2.5 rounded-none bg-primary/5">System Architecture</Badge>
+                        <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2.5 rounded-none">System Architecture</Badge>
                         <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">Module directory</h2>
+                        <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
+                            Institutional coverage across safety, compliance, administration, infrastructure, and daily execution.
+                        </p>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
@@ -214,7 +293,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <h2 className="text-[40px] md:text-[90px] font-black tracking-tighter uppercase italic leading-[0.85]">
                             Run your <br/> {pack.title.toLowerCase().replace(' operations system', '').replace(' pack', '')} <br/> <span className="text-emerald-500">properly.</span>
                         </h2>
-                        <p className="text-lg md:text-[32px] text-white/40 font-bold italic leading-tight">Zero improvisation. 100% infrastructure.</p>
+                        <p className="text-lg md:text-[32px] text-white/40 font-bold italic leading-tight">Zero improvisation. 100% operational control.</p>
                     </div>
                     <button className="h-16 md:h-24 px-10 md:px-20 rounded-2xl bg-[#F4A261] text-white font-black uppercase italic text-base md:text-2xl shadow-2xl hover:bg-white hover:text-black hover:scale-[1.05] active:scale-95 transition-all border-none group w-full max-w-lg mx-auto flex items-center justify-center">
                         <Link href="#pricing" className="flex items-center gap-4">
