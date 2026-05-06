@@ -157,7 +157,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     </div>
                                     <h3 className="text-xl md:text-2xl font-black font-headline uppercase italic tracking-tighter text-zinc-950">{point.title}</h3>
                                 </div>
-                                <p className="text-zinc-500 text-base md:text-lg font-bold italic leading-relaxed">{point.description}</p>
+                                <p className="text-zinc-500 text-base md:text-lg font-bold italic leading-relaxed text-left">{point.description}</p>
                             </div>
                         ))}
                     </div>
@@ -177,7 +177,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 relative">
                         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />
-                        <div className="space-y-8 p-10 border-l-4 border-primary bg-white shadow-sm rounded-r-[2rem]">
+                        <div className="space-y-8 p-10 border-l-4 border-primary bg-white shadow-sm rounded-r-[2rem] text-left">
                             <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">THE OPERATIONAL SHIFT</p>
                             <div className="space-y-6">
                                 {resolution.prevents.map((item, i) => (
@@ -189,7 +189,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
                         </div>
 
-                        <div className="space-y-10">
+                        <div className="space-y-10 text-left">
                             <div className="space-y-6">
                                 <h4 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-zinc-950 font-headline">What your team uses daily</h4>
                                 <p className="text-zinc-500 italic font-medium">Your team does not need new software. They open the system, update assigned tasks, and continue working.</p>
@@ -217,7 +217,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                     <div className="grid sm:grid-cols-2 gap-6 md:gap-10">
                         {resolution.mondayMorning.map((item, i) => (
-                            <div key={i} className="flex items-center gap-5 p-6 rounded-2xl bg-zinc-50 border border-zinc-100 group hover:bg-zinc-950 hover:text-white transition-all duration-500">
+                            <div key={i} className="flex items-center gap-5 p-6 rounded-2xl bg-zinc-50 border border-zinc-100 group hover:bg-zinc-950 hover:text-white transition-all duration-500 text-left">
                                 <span className="text-4xl font-black italic text-zinc-200 group-hover:text-primary/20 transition-colors leading-none">0{i+1}</span>
                                 <span className="text-zinc-600 group-hover:text-zinc-100 font-black italic uppercase text-sm md:text-base leading-tight tracking-tight">{item}</span>
                             </div>
@@ -245,7 +245,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
                         {pack.checklists.map((checklist, index) => (
-                            <div key={index} className="border border-zinc-200 p-8 md:p-12 space-y-6 hover:border-primary hover:shadow-2xl transition-all duration-700 bg-white group flex flex-col relative overflow-hidden">
+                            <div key={index} className="border border-zinc-200 p-8 md:p-12 space-y-6 hover:border-primary hover:shadow-2xl transition-all duration-700 bg-white group flex flex-col relative overflow-hidden text-left">
                                 <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 -mr-12 -mt-12 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                                 <div className="flex justify-between items-center border-b border-zinc-100 pb-4">
                                     <span className="text-[10px] font-black text-zinc-400 tracking-[0.3em]">MODULE_ID: 0{index + 1}</span>
@@ -254,16 +254,16 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         <span className="text-[10px] font-black text-primary uppercase tracking-widest">{checklist.tasks.length} POINTS</span>
                                     </div>
                                 </div>
-                                <div className="space-y-2">
-                                    <p className="text-[9px] font-black uppercase text-zinc-400 tracking-[0.4em] font-headline italic">{checklist.role}</p>
-                                    <h4 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-[#0B0F14] group-hover:text-primary transition-colors leading-tight">
+                                <div className="space-y-2 text-left">
+                                    <p className="text-[9px] font-black uppercase text-zinc-400 tracking-[0.4em] font-headline italic text-left">{checklist.role}</p>
+                                    <h4 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-[#0B0F14] group-hover:text-primary transition-colors leading-tight text-left">
                                         {checklist.title.replace('System', '').replace('Command', '').replace('Operations', '').replace('Protocol', '')}
                                     </h4>
                                 </div>
-                                <p className="text-sm md:text-base text-zinc-500 italic font-medium leading-relaxed flex-1">
+                                <p className="text-sm md:text-base text-zinc-500 italic font-medium leading-relaxed flex-1 text-left">
                                     {checklist.summary}
                                 </p>
-                                <div className="pt-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-300 group-hover:text-primary transition-colors">
+                                <div className="pt-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-300 group-hover:text-primary transition-colors text-left">
                                     <ShieldCheck className="w-4 h-4" /> AUDIT-READY PROTOCOL
                                 </div>
                             </div>

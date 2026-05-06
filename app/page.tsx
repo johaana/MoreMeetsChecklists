@@ -176,11 +176,11 @@ export default function Home() {
                 <HeroSectionComp />
                 <Section className="bg-white">
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-0 border border-zinc-200 rounded-[3rem] overflow-hidden shadow-2xl">
-                        <div className="p-10 md:p-20 bg-zinc-50 border-r border-zinc-200 relative">
+                        <div className="p-10 md:p-20 bg-zinc-50 border-r border-zinc-200 relative text-left">
                             <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-500" />
                             <div className="space-y-8">
                                 <Badge variant="outline" className="text-red-500 border-red-200 uppercase tracking-[0.4em] font-black text-[10px]">THE FRICTION</Badge>
-                                <h2 className="text-4xl md:text-6xl font-black font-headline italic uppercase tracking-tighter leading-tight">Instead of...</h2>
+                                <h2 className="text-4xl md:text-6xl font-black font-headline italic uppercase tracking-tighter leading-tight text-left">Instead of...</h2>
                                 <ul className="space-y-6">
                                     {[
                                         "Hiring consultants at ₹50,000+ per unit.",
@@ -196,12 +196,12 @@ export default function Home() {
                                 </ul>
                             </div>
                         </div>
-                        <div className="p-10 md:p-20 bg-emerald-50/30 relative">
+                        <div className="p-10 md:p-20 bg-emerald-50/30 relative text-left">
                             <div className="absolute right-0 top-0 bottom-0 w-1 bg-primary" />
                             <div className="space-y-8">
                                 <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[10px]">THE SOLUTION</Badge>
-                                <h2 className="text-4xl md:text-6xl font-black font-headline italic uppercase tracking-tighter leading-tight">You deploy...</h2>
-                                <p className="text-xl md:text-2xl text-primary font-black italic leading-tight uppercase">
+                                <h2 className="text-4xl md:text-6xl font-black font-headline italic uppercase tracking-tighter leading-tight text-left">You deploy...</h2>
+                                <p className="text-xl md:text-2xl text-primary font-black italic leading-tight uppercase text-left">
                                     A complete institutional data engine. <br/> Live in 10 minutes.
                                 </p>
                                 <ul className="space-y-6 pt-4">
@@ -244,12 +244,12 @@ export default function Home() {
                                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                                                 <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
                                             </div>
-                                            <span className="text-zinc-500 text-lg md:text-xl font-bold italic leading-tight">{p}</span>
+                                            <span className="text-zinc-500 text-lg md:text-xl font-bold italic leading-tight text-left">{p}</span>
                                         </div>
                                     ))}
                                 </ul>
                             </div>
-                            <div className="space-y-10 p-10 md:p-14 rounded-[3rem] bg-red-50/50 border border-red-100 shadow-xl relative">
+                            <div className="space-y-10 p-10 md:p-14 rounded-[3rem] bg-red-50/50 border border-red-100 shadow-xl relative text-left">
                                 <div className="absolute top-6 right-10 opacity-10">
                                     <AlertTriangle className="w-24 h-24 text-red-600" />
                                 </div>
@@ -264,7 +264,7 @@ export default function Home() {
                                     ].map((p, i) => (
                                         <div key={i} className="flex items-start gap-5">
                                             <X className="w-6 h-6 text-red-600 shrink-0 mt-0.5" />
-                                            <span className="text-red-950 font-black text-lg md:text-xl leading-tight italic uppercase">{p}</span>
+                                            <span className="text-red-950 font-black text-lg md:text-xl leading-tight italic uppercase text-left">{p}</span>
                                         </div>
                                     ))}
                                 </ul>
@@ -286,13 +286,13 @@ export default function Home() {
                                 { t: "Assign", d: "Add your business details, map staff names to roles, and lock formulas in Admin Controls.", i: Lock },
                                 { t: "Run", d: "Daily tasks begin populating automatically by role, date, and frequency — live across your team.", i: Activity }
                             ].map((step, i) => (
-                                <div className="space-y-8 group" key={i}>
-                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-900 group-hover:text-primary transition-colors leading-none">
+                                <div className="space-y-8 group text-left" key={i}>
+                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-950 group-hover:text-primary transition-colors leading-none">
                                         {i+1}
                                     </div>
                                     <div className="space-y-3">
-                                        <h4 className="font-black text-xl md:text-2xl uppercase italic leading-tight font-headline text-zinc-950">{step.t}</h4>
-                                        <p className="text-base text-zinc-500 font-bold italic leading-relaxed">{step.d}</p>
+                                        <h4 className="font-black text-xl md:text-2xl uppercase italic leading-tight font-headline text-zinc-950 text-left">{step.t}</h4>
+                                        <p className="text-base text-zinc-500 font-bold italic leading-relaxed text-left">{step.d}</p>
                                     </div>
                                 </div>
                             ))}
