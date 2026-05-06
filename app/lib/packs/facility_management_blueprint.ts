@@ -3,17 +3,17 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 export const facility_management_blueprint: PremiumPack = {
     id: 'facility_management_blueprint',
-    title: "Facility Operating System",
-    priceINR: 5999,
-    priceUSD: 79,
-    competitorPriceUSD: 599,
-    updatedAt: "2025-02-24",
+    title: "Facility Operations System",
+    priceINR: 999,
+    priceUSD: 12,
+    competitorPriceUSD: 999,
+    updatedAt: "2025-03-01",
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d6d4dd85-3fb9-4c26-8ec3-cb021ddebfdc',
     category: "Corporate & Tech",
-    description: "The definitive Sovereign v11.9 technical engine for Hard and Soft FM. Hardening 200+ technical control points from MEP to Perimeter Security.",
-    heroHeadline: "Stop Catastrophic Facility Failures and Vendor Neglect",
-    heroSubheadline: "Track 200+ control points across Hard FM, Soft FM, Groundskeeping, and Compliance—even when you’re not on property.",
+    description: "The definitive Sovereign v11.9 technical engine for infrastructure command. Hardening 120 technical control points from MEP and Contractor Liability to Utility Economics.",
+    heroHeadline: "Prevent Downtime, Liability, and Infrastructure Failure.",
+    heroSubheadline: "Track building uptime, monitor contractor risks, and protect institutional assets—across 12 specialized governance modules.",
     pricingUrgency: "A single major utility failure or one safety breach costs 100x more than this system.",
     consultingAnchor: 10000,
     icon: "building-2",
@@ -21,13 +21,12 @@ export const facility_management_blueprint: PremiumPack = {
     badgeVariant: "accent",
     whoIsItFor: ["COOs", "Heads of Real Estate", "Facility Directors", "Admin VPs", "Property Managers"],
     sampleItems: [
-        { text: "<strong>2-Minute Command Pulse</strong>: Technicians and supervisors update MEP and safety status in seconds. Zero-friction reporting.", icon: "timer" },
-        { text: "<strong>Hard FM (MEP) Engine</strong>: Zero-fail protocols for HVAC chillers, backup generators, and elevator auto-rescue systems.", icon: "wrench" },
-        { text: "<strong>Utility Economics</strong>: Daily KWH and water consumption tracking against baselines to stop unmonitored cost blowouts.", icon: "zap" },
-        { text: "<strong>Vendor SLA Command</strong>: Verify 100% of third-party service delivery vs. contract obligations to stop paying for neglect.", icon: "file-check" },
-        { text: "<strong>Institutional Memory</strong>: Built-in instructions ensure that even when your best engineer leaves, the standard stays.", icon: "history" },
-        { text: "<strong>High-Risk Verification</strong>: Highlighted 'Yellow Targets' show managers exactly what needs sign-off—from LOTO to fire exits.", icon: "target" },
-        { text: "<strong>Sovereign Infrastructure</strong>: No recurring SaaS fees. You own your facility data and the control system forever.", icon: "lock" }
+        { text: "<strong>Building Uptime Grid</strong>: Zero-fail protocols for HVAC chillers, backup generators, and elevator auto-rescue systems.", icon: "zap" },
+        { text: "<strong>Contractor Permit Control</strong>: Verifiable Permit-to-Work (PTW) logs for hot-work, height-work, and vendor entry.", icon: "file-check" },
+        { text: "<strong>Utility Economics</strong>: Daily KWH and water consumption tracking against baselines to stop unmonitored cost blowouts.", icon: "trending-up" },
+        { text: "<strong>Compliance Command</strong>: Verification for Fire NOCs, AMC validity, and statutory licenses to eliminate penalty risk.", icon: "shield-check" },
+        { text: "<strong>MEP Asset Watch</strong>: Critical panel scans, pump room vitals, and UPS health logs to prevent catastrophic shutdowns.", icon: "wrench" },
+        { text: "<strong>Institutional Memory</strong>: Built-in instructions ensure that even when your best engineer leaves, the standard stays.", icon: "history" }
     ],
     checklists: [
         {
@@ -54,7 +53,7 @@ export const facility_management_blueprint: PremiumPack = {
             title: "Site Command & CX",
             department: "Operations",
             frequency: "Daily",
-            role: "Facility General Manager",
+            role: "Facility Manager",
             summary: "Site-level readiness, ambiance standard, and tenant grievance command.",
             icon: "concierge-bell",
             tasks: [
@@ -67,7 +66,7 @@ export const facility_management_blueprint: PremiumPack = {
                 { id: "FM-GMC-07", technicalProtocol: "Wi-Fi Portal Performance", floorAction: "Test visitor network login speed (Target < 10s).", priority: "Low", riskLevel: "Low", consequence: "Immediate visitor complaints.", proof: "Phone Test" },
                 { id: "FM-GMC-08", technicalProtocol: "Valet/Driver Discipline", floorAction: "Brief valet team on parking etiquette and speed.", priority: "Medium", riskLevel: "Medium", consequence: "Vehicle damage liability.", proof: "Briefing Sheet" },
                 { id: "FM-GMC-09", technicalProtocol: "Helpdesk Stationery Audit", floorAction: "Check par levels of guest registers and entry forms.", priority: "Low", riskLevel: "Low", consequence: "Admin friction on arrival.", proof: "Stock Check" },
-                { id: "FM-GMC-10", technicalProtocol: "Final Daily GM sign-off", floorAction: "Daily operational sign-off initials.", priority: "High", riskLevel: "Low", consequence: "Loss of duty control.", proof: "Signed Summary" }
+                { id: "FM-GMC-10", technicalProtocol: "Final Daily FM sign-off", floorAction: "Daily operational sign-off initials.", priority: "High", riskLevel: "Low", consequence: "Loss of duty control.", proof: "Signed Summary" }
             ]
         },
         {
@@ -104,7 +103,7 @@ export const facility_management_blueprint: PremiumPack = {
                 { id: "FM-SFM-04", technicalProtocol: "Facade Stone Buffing", floorAction: "Inspect porch and stone floors for debris/dullness.", priority: "Low", riskLevel: "Low", consequence: "Luxury brand dilution.", proof: "Visual Audit" },
                 { id: "FM-SFM-05", technicalProtocol: "Waste Bay Sanitation", floorAction: "Audit bin covers and odor control at main waste bay.", priority: "Medium", riskLevel: "Medium", consequence: "Pests and health citations.", proof: "Walkthrough" },
                 { id: "FM-SFM-06", technicalProtocol: "Upholstery & Carpet Audit", floorAction: "Spot check 5 lobby chairs for stains or dust.", priority: "Low", riskLevel: "Low", consequence: "Poor occupant comfort perception.", proof: "Sample Check" },
-                { id: "FM-SFM-07", technicalProtocol: "Deep Clean Milestone", floorAction: "Verify completion of today's scheduled floor deep-clean.", priority: "Medium", riskLevel: "Low", consequence: "Long-term grime buildup.", proof: "Photo" },
+                { id: "FM-SFM-07", technicalProtocol: "Deep Clean Milestone", floorAction: "Verify completion of today's scheduled floor deep-clean.", priority: "Medium", riskLevel: "Low", consequence: "Long-term asset decay.", proof: "Photo" },
                 { id: "FM-SFM-08", technicalProtocol: "Janitorial Roster Sync", floorAction: "Confirm 100% presence of night-shift cleaners.", priority: "High", riskLevel: "Low", consequence: "Grimy facility at opening.", proof: "Attendance Log" },
                 { id: "FM-SFM-09", technicalProtocol: "Chemical Mixing Safety", floorAction: "Verify correct dilution ratios for R1-R6 dispensers.", priority: "High", riskLevel: "Medium", consequence: "Surface damage / Staff lung risk.", proof: "Titration Check" },
                 { id: "FM-SFM-10", technicalProtocol: "Final Soft FM Sign-off", floorAction: "Final hygiene walkthrough initials.", priority: "High", riskLevel: "Low", consequence: "Loss of custodial control.", proof: "Signed Summary" }
@@ -142,7 +141,12 @@ export const facility_management_blueprint: PremiumPack = {
                 { id: "FM-SEC-02", technicalProtocol: "Visitor ID Capture", floorAction: "Audit register for 100% ID verification at gate.", priority: "High", riskLevel: "High", consequence: "Unauthorized intruder access.", proof: "Registry Audit" },
                 { id: "FM-SEC-03", technicalProtocol: "Perimeter Electric Fence", floorAction: "Test alarm trigger on main fence line.", priority: "High", riskLevel: "High", consequence: "Security breach.", proof: "Test Log" },
                 { id: "FM-SEC-04", technicalProtocol: "Guard Sobriety Pulse", floorAction: "Random breathalyzer test for night shift.", priority: "High", riskLevel: "High", consequence: "Vulnerable campus perimeter.", proof: "Test Note" },
-                { id: "FM-SEC-05", technicalProtocol: "Loading Bay Lock-down", floorAction: "Physically confirm all bay shutters locked at 8 PM.", priority: "High", riskLevel: "High", consequence: "Overnight stock theft.", proof: "Visual Check" }
+                { id: "FM-SEC-05", technicalProtocol: "Loading Bay Lock-down", floorAction: "Physically confirm all bay shutters locked at 8 PM.", priority: "High", riskLevel: "High", consequence: "Overnight stock theft.", proof: "Visual Check" },
+                { id: "FM-SEC-06", technicalProtocol: "Key Cabinet Audit", floorAction: "Match 100% of keys against master register.", priority: "High", riskLevel: "High", consequence: "Unauthorized vault access.", proof: "Inventory Check" },
+                { id: "FM-SEC-07", technicalProtocol: "Bollard & Gate Motor", floorAction: "Verify speed and sensor safety for main gate.", priority: "Medium", riskLevel: "Low", consequence: "Vehicle damage or slow entry.", proof: "Visual Check" },
+                { id: "FM-SEC-08", technicalProtocol: "Security Lighting Audit", floorAction: "Verify alley and roof lighting status.", priority: "Medium", riskLevel: "Medium", consequence: "Theft-prone blind spots.", proof: "Walkthrough" },
+                { id: "FM-SEC-09", technicalProtocol: "Staff Bag-Check Execution", floorAction: "Perform random exit checks for support staff.", priority: "High", riskLevel: "Medium", consequence: "Internal shrinkage.", proof: "Registry Note" },
+                { id: "FM-SEC-10", technicalProtocol: "Final Perimeter Seal", floorAction: "EOD security deployment sign-off.", priority: "High", riskLevel: "Low", consequence: "Unsecured property.", proof: "Signed Summary" }
             ]
         },
         {
@@ -229,5 +233,3 @@ export const facility_management_blueprint: PremiumPack = {
         }
     ]
 };
-
-    
