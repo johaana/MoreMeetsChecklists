@@ -277,13 +277,13 @@ export default function Home() {
                     <div className="max-w-[1200px] mx-auto space-y-24">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px]">Rapid Deployment</Badge>
-                            <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">Deploy in 10 minutes</h2>
+                            <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">DEPLOY IN 10 MINUTES</h2>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
                             {[
                                 { t: "Download", d: "Get your pre-built, industry-specific operations system instantly after payment.", i: Download },
                                 { t: "Open", d: "Open in Excel, save your master copy, then upload to Google Sheets for live team access.", i: FileSpreadsheet },
-                                { t: "Assign", d: "Add your business details, map staff names to roles, and lock formulas in Admin Controls.", i: Lock },
+                                { t: "Assign", d: "Add your business details, map staff names to roles, and set your controls once.", i: Lock },
                                 { t: "Run", d: "Daily tasks begin populating automatically by role, date, and frequency — live across your team.", i: Activity }
                             ].map((step, i) => (
                                 <div className="space-y-8 group text-left" key={i}>
@@ -390,7 +390,7 @@ export default function Home() {
                     <div className="max-[1000px] mx-auto space-y-16 md:space-y-24 relative z-10">
                         <div className="space-y-8">
                             <h2 className="text-[48px] md:text-[110px] font-black leading-[0.9] tracking-tighter uppercase italic font-headline text-black">Professional Access Pricing</h2>
-                            <p className="text-xl md:text-[36px] text-black/60 font-bold italic">Institutional systems. Intentionally priced for everyday operators.</p>
+                            <h3 className="text-xl md:text-[36px] text-black/60 font-bold italic">Institutional systems. Intentionally priced for everyday operators.</h3>
                         </div>
                         <div className="flex flex-col items-center gap-10 md:gap-14">
                             <button className="h-[90px] md:h-[120px] px-16 md:px-24 rounded-[30px] bg-black text-white font-black uppercase italic text-2xl md:text-5xl shadow-2xl hover:scale-[1.05] active:scale-95 transition-all border-none group w-full max-w-2xl mx-auto flex items-center justify-center">
