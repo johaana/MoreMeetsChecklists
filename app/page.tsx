@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -333,7 +332,7 @@ export default function Home() {
                                     </div>
                                     <div className="flex-1 flex justify-center">
                                         <div className="bg-black/40 border border-white/5 rounded-md px-12 py-1 text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner">
-                                            MASTER_OPERATIONAL_CONSONLE.XLSX
+                                            master_v11.9_operational_console.xlsx
                                         </div>
                                     </div>
                                 </div>
@@ -427,7 +426,7 @@ export default function Home() {
                     <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:32px_32px]" />
                     <div className="max-[1000px] mx-auto space-y-16 md:space-y-24 relative z-10">
                         <div className="space-y-8">
-                            <h2 className="text-[48px] md:text-110px font-black leading-[0.9] tracking-tighter uppercase italic font-headline text-black">Professional Access Pricing</h2>
+                            <h2 className="text-[48px] md:text-[110px] font-black leading-[0.9] tracking-tighter uppercase italic font-headline text-black">Professional Access Pricing</h2>
                             <p className="text-xl md:text-[36px] text-black/60 font-bold italic">Institutional systems. Intentionally priced for everyday operators.</p>
                         </div>
                         <div className="flex flex-col items-center gap-10 md:gap-14">
