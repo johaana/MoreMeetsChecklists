@@ -63,17 +63,17 @@ const ANXIETY_ITEMS = [
 
 const HeroBackground = () => {
     return (
-        <div className="absolute inset-0 z-0 bg-black">
-          {/* Layer 1: The Image (Tense operational environment) */}
+        <div className="absolute inset-0 z-0 bg-black pointer-events-none">
+          {/* Layer 1: The Image (Provided CEO Briefing Asset) */}
           <img
             src="https://i.postimg.cc/BvKyg8vX/ceo-engages-phone-call-briefing-with-investor-sharing-insight.jpg"
             alt="Operational leadership under pressure"
-            className="h-full w-full object-cover object-center opacity-20 grayscale"
+            className="h-full w-full object-cover object-center opacity-30 md:opacity-40"
           />
-          {/* Layer 2: Black Overlay */}
-          <div className="absolute inset-0 bg-black/75" />
-          {/* Layer 3: Strategic Gradient (Protects text and right-side content) */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/65" />
+          {/* Layer 2: Deep Neutralizing Overlay */}
+          <div className="absolute inset-0 bg-black/40" />
+          {/* Layer 3: Strategic Gradient (Protects Left-Aligned Text) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
         </div>
     );
 };
