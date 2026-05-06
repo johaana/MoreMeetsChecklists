@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -64,15 +65,12 @@ const ANXIETY_ITEMS = [
 const HeroBackground = () => {
     return (
         <div className="absolute inset-0 z-0 bg-black pointer-events-none">
-          {/* Layer 1: The Image (Provided CEO Briefing Asset) */}
           <img
             src="https://i.postimg.cc/BvKyg8vX/ceo-engages-phone-call-briefing-with-investor-sharing-insight.jpg"
             alt="Operational leadership under pressure"
             className="h-full w-full object-cover object-center opacity-30 md:opacity-40"
           />
-          {/* Layer 2: Deep Neutralizing Overlay */}
           <div className="absolute inset-0 bg-black/40" />
-          {/* Layer 3: Strategic Gradient (Protects Left-Aligned Text) */}
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
         </div>
     );
@@ -80,7 +78,6 @@ const HeroBackground = () => {
 
 const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => (
     <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
-        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />
         <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
             {children}
         </div>
@@ -132,8 +129,6 @@ const HeroSectionComp = () => {
             
             <div className="relative z-20 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 pt-24 pb-12 md:py-0 md:pt-16">
                 <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 items-center">
-                    
-                    {/* Phase 01: The Hook */}
                     <div className="order-1 space-y-1 md:space-y-2 w-full">
                         <h1 className="text-[34px] md:text-[84px] lg:text-[100px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white">
                             {NARRATIVE.line1} <br />
@@ -143,8 +138,6 @@ const HeroSectionComp = () => {
                             {NARRATIVE.subline}
                         </p>
                     </div>
-                    
-                    {/* Phase 02: The Operational Pain */}
                     <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-3 space-y-4 md:space-y-6 text-left border-l-2 lg:text-right lg:border-l-0 lg:border-r-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 mt-8 lg:mt-16">
                          <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">WHY TEAMS STRUGGLE</p>
                          <div className="flex flex-col gap-2 md:gap-4 lg:gap-5">
@@ -153,8 +146,6 @@ const HeroSectionComp = () => {
                              ))}
                          </div>
                     </div>
-
-                    {/* Phase 03: The New Standard Bridge */}
                     <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-4 md:space-y-6 mt-8 lg:mt-2">
                         <div className="space-y-2 md:space-y-3">
                             <div className="flex items-center gap-3">
@@ -164,8 +155,6 @@ const HeroSectionComp = () => {
                             <CommandGrid className="max-w-xl" textColor="text-white/80" />
                         </div>
                     </div>
-
-                    {/* Phase 04: The Command */}
                     <div className="order-4 w-full lg:col-start-1 lg:row-start-3 mt-8 md:mt-4">
                         <SovereignCTA />
                     </div>
@@ -177,22 +166,14 @@ const HeroSectionComp = () => {
 
 export default function Home() {
     const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
+    useEffect(() => { setMounted(true); }, []);
     if (!mounted) return null;
 
     return (
         <div className="flex flex-col min-h-screen bg-white text-[#0B0F14] font-sans antialiased selection:bg-primary/20">
             <SiteHeader />
-
             <main className="flex-1">
-                
                 <HeroSectionComp />
-
-                {/* THE MANDATE: SPLIT COLUMN FORENSIC SCAN */}
                 <Section className="bg-white">
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-0 border border-zinc-200 rounded-[3rem] overflow-hidden shadow-2xl">
                         <div className="p-10 md:p-20 bg-zinc-50 border-r border-zinc-200 relative">
@@ -241,14 +222,12 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* AUDIT REPORT: WHY OPERATIONS BREAK */}
                 <Section className="bg-white border-y border-zinc-100">
-                    <div className="max-[1000px] mx-auto text-center space-y-16 md:space-y-24">
+                    <div className="max-w-5xl mx-auto text-center space-y-16 md:space-y-24">
                         <div className="space-y-6">
                             <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px]">Forensic Finding</Badge>
                             <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">Why operations break</h2>
                         </div>
-                        
                         <div className="grid md:grid-cols-2 gap-16 md:gap-24 text-left">
                             <div className="space-y-10">
                                 <h4 className="text-[11px] font-black text-zinc-400 uppercase tracking-[0.4em] italic border-b border-zinc-100 pb-4">Audit Pitfalls</h4>
@@ -294,14 +273,12 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* DEPLOY IN 10 MINUTES: HIGH-GRAVITY LINE ART */}
                 <Section className="bg-white">
                     <div className="max-w-[1200px] mx-auto space-y-24">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px]">Rapid Deployment</Badge>
                             <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">Deploy in 10 minutes</h2>
                         </div>
-                        
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
                             {[
                                 { t: "Download", d: "Get your pre-built, industry-specific operations system instantly after payment.", i: Download },
@@ -310,7 +287,7 @@ export default function Home() {
                                 { t: "Run", d: "Daily tasks begin populating automatically by role, date, and frequency — live across your team.", i: Activity }
                             ].map((step, i) => (
                                 <div className="space-y-8 group" key={i}>
-                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-400/20 group-hover:text-primary/10 transition-colors leading-none">
+                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-900 group-hover:text-primary transition-colors leading-none">
                                         {i+1}
                                     </div>
                                     <div className="space-y-3">
@@ -320,8 +297,6 @@ export default function Home() {
                                 </div>
                             ))}
                         </div>
-
-                        {/* TECHNICAL PROOF: MASTER CONSOLE */}
                         <div className="space-y-16">
                             <div className="relative group w-full max-w-6xl mx-auto">
                                 <div className="bg-[#111] h-10 w-full rounded-t-[20px] flex items-center px-6 gap-2 border border-white/10">
@@ -336,20 +311,12 @@ export default function Home() {
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="rounded-b-[20px] overflow-hidden shadow-2xl bg-white border border-zinc-200 border-t-0">
-                                    <img 
-                                        src="https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png" 
-                                        alt="Sovereign Dashboard" 
-                                        className="w-full h-auto grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" 
-                                    />
+                                    <img src="https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png" alt="Sovereign Dashboard" className="w-full h-auto grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" />
                                 </div>
                             </div>
-                            
                             <div className="text-center">
-                                <p className="text-2xl md:text-[44px] font-black text-zinc-950 uppercase italic tracking-tighter font-headline">
-                                    👉 Your operations. Now structured.
-                                </p>
+                                <p className="text-2xl md:text-[44px] font-black text-zinc-950 uppercase italic tracking-tighter font-headline">👉 Your operations. Now structured.</p>
                             </div>
                         </div>
                     </div>
@@ -382,8 +349,6 @@ export default function Home() {
                         </div>
                     </div>
                 </Section>
-
-                {/* COMPARISON TABLE: HARDENED CONTRAST */}
                 <Section className="bg-white">
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-6">
@@ -418,10 +383,8 @@ export default function Home() {
                         </div>
                     </div>
                 </Section>
-
                 <TestimonialsSection />
                 <FaqSection />
-
                 <Section className="bg-primary text-white text-center py-32 md:py-64 relative overflow-hidden">
                     <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:32px_32px]" />
                     <div className="max-[1000px] mx-auto space-y-16 md:space-y-24 relative z-10">
