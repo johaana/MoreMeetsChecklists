@@ -37,9 +37,6 @@ import { Button } from '@/components/ui/button';
 // --- PRODUCTION CONSTANTS ---
 const BRAND_GREEN = "#22C55E";
 
-// Selected Premium Operational Image
-const HERO_IMAGE = "https://i.postimg.cc/BvKyg8vX/ceo-engages-phone-call-briefing-with-investor-sharing-insight.jpg";
-
 const NARRATIVE = {
     line1: "STOP CHASING.",
     line2: "START SEEING.",
@@ -66,17 +63,17 @@ const ANXIETY_ITEMS = [
 
 const HeroBackground = () => {
     return (
-        <div className="absolute inset-0 z-0 bg-black overflow-hidden">
-            {/* Dark Overlay Layers */}
-            <div className="absolute inset-0 bg-black/75 z-10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent pointer-events-none z-10" />
-            
-            {/* Single Fixed Image with Subtle Zoom Animation */}
-            <img 
-                src={HERO_IMAGE}
-                alt="Professional operational environment"
-                className="w-full h-full object-cover grayscale brightness-[0.2] contrast-[1.2] animate-hero-breath"
-            />
+        <div className="absolute inset-0 z-0 bg-black">
+          {/* Layer 1: The Image (Tense operational environment) */}
+          <img
+            src="https://i.postimg.cc/BvKyg8vX/ceo-engages-phone-call-briefing-with-investor-sharing-insight.jpg"
+            alt="Operational leadership under pressure"
+            className="h-full w-full object-cover object-center opacity-20 grayscale"
+          />
+          {/* Layer 2: Black Overlay */}
+          <div className="absolute inset-0 bg-black/75" />
+          {/* Layer 3: Strategic Gradient (Protects text and right-side content) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/65" />
         </div>
     );
 };
