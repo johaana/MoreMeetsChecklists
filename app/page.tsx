@@ -294,23 +294,23 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* START IN MINUTES: HIGH-GRAVITY LINE ART */}
+                {/* DEPLOY IN 10 MINUTES: HIGH-GRAVITY LINE ART */}
                 <Section className="bg-white">
                     <div className="max-w-[1200px] mx-auto space-y-24">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px]">Rapid Deployment</Badge>
-                            <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">Start in minutes</h2>
+                            <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">Deploy in 10 minutes</h2>
                         </div>
                         
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
                             {[
-                                { t: "Download system", d: "Get your industry-specific file with 120+ pre-built protocols.", i: Download },
-                                { t: "Open in Sheets", d: "Upload once. Access from phone or desktop instantly.", i: FileSpreadsheet },
-                                { t: "Share with team", d: "Assign roles. Lock formulas so nothing breaks.", i: Lock },
-                                { t: "See everything live", d: "Track tasks as they get done. Know what’s missed instantly.", i: Activity }
+                                { t: "Download", d: "Get your pre-built, industry-specific operations system instantly after payment.", i: Download },
+                                { t: "Open", d: "Open in Excel, save your master copy, then upload to Google Sheets for live team access.", i: FileSpreadsheet },
+                                { t: "Assign", d: "Add your business details, map staff names to roles, and lock formulas in Admin Controls.", i: Lock },
+                                { t: "Run", d: "Daily tasks begin populating automatically by role, date, and frequency — live across your team.", i: Activity }
                             ].map((step, i) => (
                                 <div className="space-y-8 group" key={i}>
-                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-100 group-hover:text-primary/10 transition-colors leading-none">
+                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-200 group-hover:text-primary/10 transition-colors leading-none">
                                         {i+1}
                                     </div>
                                     <div className="space-y-3">
@@ -425,7 +425,7 @@ export default function Home() {
                     <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:32px_32px]" />
                     <div className="max-[1000px] mx-auto space-y-16 md:space-y-24 relative z-10">
                         <div className="space-y-8">
-                            <h2 className="text-[48px] md:text-[110px] font-black leading-[0.9] tracking-tighter uppercase italic font-headline text-black">Professional Access Pricing</h2>
+                            <h2 className="text-[48px] md:text-110px font-black leading-[0.9] tracking-tighter uppercase italic font-headline text-black">Professional Access Pricing</h2>
                             <p className="text-xl md:text-[36px] text-black/60 font-bold italic">Institutional systems. Intentionally priced for everyday operators.</p>
                         </div>
                         <div className="flex flex-col items-center gap-10 md:gap-14">
