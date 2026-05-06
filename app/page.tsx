@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -284,13 +283,13 @@ export default function Home() {
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
                             {[
-                                { t: "Download", d: "Get your pre-built, industry-specific operations system instantly after payment.", i: Download },
-                                { t: "Open", d: "Open in Excel, save your master copy, then upload to Google Sheets for live team access.", i: FileSpreadsheet },
-                                { t: "Assign", d: "Add your business details, map staff names to roles, and set your controls once.", i: Lock },
-                                { t: "Run", d: "Daily tasks begin populating automatically by role, date, and frequency — live across your team.", i: Activity }
+                                { t: "Download", d: "Get your pre-built, industry-specific operations system instantly after payment." },
+                                { t: "Open", d: "Open in Excel, save your master copy, then upload to Google Sheets for live team access." },
+                                { t: "Assign", d: "Add your business details, map staff names to roles, and set your controls once." },
+                                { t: "Run", d: "Daily tasks begin populating automatically by role, date, and frequency — live across your team." }
                             ].map((step, i) => (
                                 <div className="space-y-8 group text-left" key={i}>
-                                    <div className="text-6xl md:text-8xl font-black italic text-black group-hover:text-primary transition-colors leading-none">
+                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-950 group-hover:text-primary transition-colors leading-none">
                                         {i+1}
                                     </div>
                                     <div className="space-y-3">
@@ -331,49 +330,39 @@ export default function Home() {
                         <div className="text-center space-y-6">
                             <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Operational Reassurance</Badge>
                             <h2 className="text-[32px] md:text-[60px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.95]">Built for Real Teams. <br/> <span className="text-primary">Engineered for Real Control.</span></h2>
-                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">More than just templates—MoreMeets is a hardened operational framework designed for daily adoption and institutional growth.</p>
+                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">This was designed for real teams, real shifts, and real operational pressure — not just consultants.</p>
                         </div>
 
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12">
                             {[
                                 {
-                                    t: "Fully Editable Engine",
-                                    d: "Add, delete, or modify any task to fit your brand's unique needs. Unlike locked SaaS apps, you own the technical logic forever.",
-                                    i: FileSpreadsheet
+                                    t: "EASY TO FOLLOW",
+                                    d: "Tasks are written in simple, direct language so staff know exactly what to do without second-guessing or policy jargon.",
+                                    i: ClipboardCheck
                                 },
                                 {
-                                    t: "Lock formulas after setup",
-                                    d: "Setup once, then lock core formulas in Admin Controls. This ensures the technical engine remains bulletproof while staff log completion daily.",
-                                    i: Lock
-                                },
-                                {
-                                    t: "Consequences of Failure",
-                                    d: "Every protocol includes a built-in consequence. Staff understand *why* a step matters, turning mechanical ticking into intentional compliance.",
+                                    t: "HARD TO IGNORE",
+                                    d: "Every task shows what failure causes — so critical work is taken seriously before it becomes a safety or profit problem.",
                                     i: AlertTriangle
                                 },
                                 {
-                                    t: "Faster Staff Training",
-                                    d: "Every task includes 'Trainer Notes' (action steps). New hires reach peak performance in days, not weeks, with built-in expert coaching.",
+                                    t: "FASTER TO TRAIN",
+                                    d: "When staff changes, standards don't. New staff do not learn from memory or shortcuts; they follow the same system from day one.",
                                     i: GraduationCap
                                 },
                                 {
-                                    t: "Audit-Ready Language",
-                                    d: "Tasks are written in professional, auditable language. Every log entry creates a verifiable digital footprint for insurers and inspectors.",
+                                    t: "EASY TO AUDIT",
+                                    d: "Teams see simple instructions. Management sees 100% visibility into completion, misses, and operational proof in one place.",
                                     i: ShieldCheck
-                                },
-                                {
-                                    t: "Zero app friction",
-                                    d: "No new software to learn or passwords to manage. Team only opens one shared Google Sheet daily. Total adoption from day one.",
-                                    i: Smartphone
                                 }
                             ].map((item, i) => (
                                 <div key={i} className="flex flex-col gap-6 p-10 bg-white rounded-[2.5rem] border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-500 group text-left">
                                     <div className="w-14 h-14 rounded-2xl bg-zinc-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-inner">
                                         <item.i className="w-7 h-7" />
                                     </div>
-                                    <div className="space-y-3">
-                                        <h4 className="text-2xl font-black uppercase italic tracking-tighter text-zinc-950 leading-none">{item.t}</h4>
-                                        <p className="text-zinc-500 text-base italic font-medium leading-relaxed">{item.d}</p>
+                                    <div className="space-y-3 text-left">
+                                        <h4 className="text-2xl font-black uppercase italic tracking-tighter text-zinc-950 leading-none text-left">{item.t}</h4>
+                                        <p className="text-zinc-500 text-base md:text-lg italic font-medium leading-relaxed text-left">{item.d}</p>
                                     </div>
                                 </div>
                             ))}
