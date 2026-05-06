@@ -25,7 +25,9 @@ import {
     History,
     ClipboardCheck,
     Smartphone,
-    AlertTriangle
+    AlertTriangle,
+    GraduationCap,
+    ShieldCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -174,6 +176,7 @@ export default function Home() {
             <SiteHeader />
             <main className="flex-1">
                 <HeroSectionComp />
+                
                 <Section className="bg-white">
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-0 border border-zinc-200 rounded-[3rem] overflow-hidden shadow-2xl">
                         <div className="p-10 md:p-20 bg-zinc-50 border-r border-zinc-200 relative text-left">
@@ -287,7 +290,7 @@ export default function Home() {
                                 { t: "Run", d: "Daily tasks begin populating automatically by role, date, and frequency — live across your team.", i: Activity }
                             ].map((step, i) => (
                                 <div className="space-y-8 group text-left" key={i}>
-                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-950 group-hover:text-primary transition-colors leading-none">
+                                    <div className="text-6xl md:text-8xl font-black italic text-black group-hover:text-primary transition-colors leading-none">
                                         {i+1}
                                     </div>
                                     <div className="space-y-3">
@@ -318,6 +321,62 @@ export default function Home() {
                             <div className="text-center">
                                 <p className="text-2xl md:text-[44px] font-black text-zinc-950 uppercase italic tracking-tighter font-headline">👉 Your operations. Now structured.</p>
                             </div>
+                        </div>
+                    </div>
+                </Section>
+
+                {/* BUILT FOR REAL TEAMS SECTION */}
+                <Section className="bg-zinc-50 border-y border-zinc-100">
+                    <div className="max-w-6xl mx-auto space-y-16 md:space-y-24">
+                        <div className="text-center space-y-6">
+                            <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Operational Reassurance</Badge>
+                            <h2 className="text-[32px] md:text-[60px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.95]">Built for Real Teams. <br/> <span className="text-primary">Engineered for Real Control.</span></h2>
+                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">More than just templates—MoreMeets is a hardened operational framework designed for daily adoption and institutional growth.</p>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                            {[
+                                {
+                                    t: "Fully Editable Engine",
+                                    d: "Add, delete, or modify any task to fit your brand's unique needs. Unlike locked SaaS apps, you own the technical logic forever.",
+                                    i: FileSpreadsheet
+                                },
+                                {
+                                    t: "Lock formulas after setup",
+                                    d: "Setup once, then lock core formulas in Admin Controls. This ensures the technical engine remains bulletproof while staff log completion daily.",
+                                    i: Lock
+                                },
+                                {
+                                    t: "Consequences of Failure",
+                                    d: "Every protocol includes a built-in consequence. Staff understand *why* a step matters, turning mechanical ticking into intentional compliance.",
+                                    i: AlertTriangle
+                                },
+                                {
+                                    t: "Faster Staff Training",
+                                    d: "Every task includes 'Trainer Notes' (action steps). New hires reach peak performance in days, not weeks, with built-in expert coaching.",
+                                    i: GraduationCap
+                                },
+                                {
+                                    t: "Audit-Ready Language",
+                                    d: "Tasks are written in professional, auditable language. Every log entry creates a verifiable digital footprint for insurers and inspectors.",
+                                    i: ShieldCheck
+                                },
+                                {
+                                    t: "Zero app friction",
+                                    d: "No new software to learn or passwords to manage. Team only opens one shared Google Sheet daily. Total adoption from day one.",
+                                    i: Smartphone
+                                }
+                            ].map((item, i) => (
+                                <div key={i} className="flex flex-col gap-6 p-10 bg-white rounded-[2.5rem] border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-500 group text-left">
+                                    <div className="w-14 h-14 rounded-2xl bg-zinc-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-inner">
+                                        <item.i className="w-7 h-7" />
+                                    </div>
+                                    <div className="space-y-3">
+                                        <h4 className="text-2xl font-black uppercase italic tracking-tighter text-zinc-950 leading-none">{item.t}</h4>
+                                        <p className="text-zinc-500 text-base italic font-medium leading-relaxed">{item.d}</p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </Section>
