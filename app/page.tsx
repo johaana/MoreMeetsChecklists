@@ -310,7 +310,7 @@ export default function Home() {
                                 { t: "Run", d: "Daily tasks begin populating automatically by role, date, and frequency — live across your team.", i: Activity }
                             ].map((step, i) => (
                                 <div className="space-y-8 group" key={i}>
-                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-200 group-hover:text-primary/10 transition-colors leading-none">
+                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-400/20 group-hover:text-primary/10 transition-colors leading-none">
                                         {i+1}
                                     </div>
                                     <div className="space-y-3">
@@ -361,10 +361,11 @@ export default function Home() {
                             <h2 className="text-[36px] md:text-[64px] font-black text-white uppercase italic tracking-tight font-headline">Select Your Vertical</h2>
                             <p className="text-white/40 text-xl md:text-2xl font-bold italic">Engineered for single units and multi-unit groups.</p>
                         </div>
-                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6">
+                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
                             {[
                                 { name: "Restaurants", id: "restaurants", icon: Utensils },
                                 { name: "Hotels", id: "hotels_and_resorts", icon: Building },
+                                { name: "Retail", id: "retail_operations_system", icon: ShoppingBag },
                                 { name: "Healthcare", id: "healthcare_and_hospital_operations", icon: Hospital },
                                 { name: "Schools", id: "school_operations_pack", icon: School },
                                 { name: "Franchise", id: "franchise_operations_pack", icon: Store },
