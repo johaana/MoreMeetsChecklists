@@ -38,7 +38,7 @@ import { Button } from '@/components/ui/button';
 const BRAND_GREEN = "#22C55E";
 
 // Selected Premium Operational Image
-const HERO_IMAGE = "https://images.unsplash.com/photo-1541336032412-2434026366f9?auto=format&fit=crop&q=80&w=2000";
+const HERO_IMAGE = "https://i.postimg.cc/BvKyg8vX/ceo-engages-phone-call-briefing-with-investor-sharing-insight.jpg";
 
 const NARRATIVE = {
     line1: "STOP CHASING.",
