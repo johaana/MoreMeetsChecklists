@@ -13,7 +13,6 @@ import {
     Check,
     Activity,
     ShieldCheck,
-    Lock,
     CheckCircle2,
     Zap,
     ShieldAlert,
@@ -21,17 +20,12 @@ import {
     Users,
     History,
     GraduationCap,
-    ClipboardCheck,
     FileSpreadsheet,
-    Scale,
     AlertTriangle,
-    ArrowDownRight
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
 import { packResolutions, defaultResolution } from '@/lib/pack-resolutions';
-
-const BRAND_GREEN = "#22C55E";
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
     <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
@@ -71,25 +65,30 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-primary/20">
             
             {/* --- HERO SECTION --- */}
-            <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black text-white md:pt-16">
+            <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 z-0">
                     <img src={heroImageUrl} alt="" className="w-full h-full object-cover opacity-20 grayscale brightness-50" />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent" />
                 </div>
 
-                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-20 pb-12 md:py-0">
+                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-24 pb-12">
                     <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 items-center">
-                        <div className="space-y-10 w-full">
+                        <div className="space-y-12 w-full">
                             <div className="space-y-8">
-                                <h1 className="font-black font-headline text-[32px] md:text-[64px] leading-[0.95] uppercase italic tracking-tighter text-white whitespace-nowrap">
+                                <h1 className="font-black font-headline text-[32px] md:text-[64px] leading-[0.95] uppercase italic tracking-tighter text-white">
                                     {res.heroTitle || pack.title.toUpperCase()}
                                 </h1>
                                 <div className="space-y-8">
                                     <p className="text-lg md:text-[24px] font-medium text-zinc-300 max-w-2xl leading-tight">
-                                        {res.heroSubline}
+                                        {res.heroSubline.split('responsibilities schools cannot afford to miss').map((part, i, arr) => (
+                                            <React.Fragment key={i}>
+                                                {part}
+                                                {i < arr.length - 1 && <span className="italic">responsibilities schools cannot afford to miss</span>}
+                                            </React.Fragment>
+                                        ))}
                                     </p>
-                                    <div className="space-y-1.5 border-l-2 border-primary/40 pl-6">
-                                        <p className="text-sm md:text-base text-zinc-300 font-bold max-w-lg">
+                                    <div className="space-y-3 border-l-2 border-primary/40 pl-6">
+                                        <p className="text-sm md:text-base text-zinc-300 font-bold max-w-lg leading-relaxed">
                                             {res.strategicParagraph}
                                         </p>
                                         <p className="text-[10px] md:text-[12px] text-emerald-500/50 font-black uppercase tracking-[0.2em] italic">
@@ -99,7 +98,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                             </div>
 
-                            {/* Built For Matrix (New) */}
+                            {/* Built For Matrix */}
                             {res.builtFor && (
                                 <div className="space-y-4">
                                     <p className="text-[9px] font-black text-white/20 uppercase tracking-[0.5em] italic">IDEAL DEPLOYMENT SITES</p>
@@ -119,9 +118,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
                                     {[
                                         { t: `${pack.checklists.length} Operational Divisions`, i: LayoutGrid },
-                                        { t: `${totalTasks}+ Execution Checkpoints`, i: Target },
+                                        { t: `${totalTasks}+ Technical Points`, i: Target },
                                         { t: "Live Dashboard Included", i: Activity },
-                                        { t: "Editable Operational Infrastructure", i: FileSpreadsheet }
+                                        { t: "Editable .XLSX Infrastructure", i: FileSpreadsheet }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 group">
                                             <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
@@ -197,7 +196,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         ))}
                     </div>
 
-                    {/* Failure Consequences Strip (New) */}
+                    {/* Failure Consequences Strip */}
                     {res.consequences && (
                         <div className="mt-32 pt-16 border-t border-zinc-100">
                              <div className="flex items-center gap-3 justify-center mb-12">
@@ -359,26 +358,25 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             Built for real teams
                         </h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
-                            Facility teams manage problems nobody notices — until something fails. MoreMeets™ converts invisible operational work into visible institutional control.
+                            Institutional maturity is when daily responsibilities move from individual memory to visible institutional execution.
                         </p>
-                        <p className="text-zinc-950 font-black uppercase italic text-xl">MoreMeets™ converts daily responsibilities into visible operational execution.</p>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
                         {[
                             {
                                 t: "FASTER STAFF TRAINING",
-                                d: "New technicians understand responsibilities faster using built-in instructions and operational guidance.",
+                                d: "New staff understand responsibilities faster using built-in instructions and operational guidance.",
                                 i: GraduationCap
                             },
                             {
                                 t: "REDUCED DEPENDENCY",
-                                d: "Infrastructure stops collapsing when one experienced engineer is absent. Memory becomes infrastructure.",
+                                d: "Operations stop collapsing when one experienced person is absent. Memory becomes infrastructure.",
                                 i: History
                             },
                             {
-                                t: res.reassuranceTrustTitle || "BRAND REPUTATION",
-                                d: res.reassuranceTrustDescription || "Consistency guests feel from lobby arrival to room checkout.",
+                                t: res.reassuranceTrustTitle || "PATIENT TRUST",
+                                d: res.reassuranceTrustDescription || "Operational consistency customers notice and trust.",
                                 i: Users
                             },
                             {

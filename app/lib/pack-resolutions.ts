@@ -96,7 +96,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroTitle: "HOTEL OPERATING SYSTEM",
         heroSubline: "Zero-drift operational governance for hotels, resorts, and hospitality groups.",
         strategicParagraph: "Brand standards collapse quietly when execution becomes verbal, informal, and impossible to verify.",
-        whyExecutionBreaksParagraph: "Brand standards collapse quietly when execution becomes verbal, informal, and impossible to verify.",
+        whyExecutionBreaksParagraph: "Luxury standards decay when execution depends on memory instead of verification.",
         risks: [
             { title: "Reputation Drift", description: "Unaddressed OTA reviews and unverified room setup standards lead to a slow, visible slide in property ratings." },
             { title: "Privacy Exposure", description: "Weak master-keycard governance and lack of hidden camera sweeps create critical guest security windows." },
@@ -135,7 +135,7 @@ export const packResolutions: Record<string, PackResolution> = {
         heroTitle: "FRANCHISE OPERATING SYSTEM",
         heroSubline: "Protect brand parity, royalty integrity, and operational control across every franchise unit.",
         strategicParagraph: "Built for franchisors where one weak unit damages the entire network.",
-        whyExecutionBreaksParagraph: "Networks collapse when local franchisees begin to 'improvise' on the standard. This Network Drift starts small—a pricing tweak here, a skipped cleaning there—and ends in total brand dilution.",
+        whyExecutionBreaksParagraph: "Networks collapse when local franchisees begin to 'improvise' on the standard. This Network Drift starts small and ends in total brand dilution.",
         risks: [
             { title: "Royalty Leakage", description: "Voided bills, aggregator mismatches, and off-book sales silently erode royalty visibility and franchisor revenue." },
             { title: "Brand Adulteration", description: "Local improvisation slowly destroys the consistency customers expect from the brand standard." },
@@ -166,7 +166,7 @@ export const packResolutions: Record<string, PackResolution> = {
             "Unit health observable"
         ],
         reassuranceTrustTitle: "NETWORK INTEGRITY",
-        reassuranceTrustDescription: "Operational consistency customers notice across every location. Consistency customers feel across the entire network.",
+        reassuranceTrustDescription: "Consistency customers feel across the entire network.",
         ctaTitle: "Scale without losing \n operational discipline.",
         ctaSubline: "Bring the network back under operational control."
     },
@@ -205,7 +205,7 @@ export const packResolutions: Record<string, PackResolution> = {
             "Patient safety observable"
         ],
         reassuranceTrustTitle: "CLINICAL CONFIDENCE",
-        reassuranceTrustDescription: "Clinical discipline patients experience. Institutional consistency families notice and communities trust."
+        reassuranceTrustDescription: "Clinical discipline patients experience. Institutional consistency families trust."
     },
     'facility_management_blueprint': {
         heroTitle: "FACILITY OPERATING SYSTEM",
@@ -254,7 +254,7 @@ export const packResolutions: Record<string, PackResolution> = {
             "Infrastructure dependency on memory disappears"
         ],
         reassuranceTrustTitle: "INSTITUTIONAL MEMORY",
-        reassuranceTrustDescription: "Operational history remains visible even when teams change, vendors rotate, or supervisors resign."
+        reassuranceTrustDescription: "Operational history remains visible even when teams change or vendors rotate."
     },
     'cinema_operations_pack': {
         heroTitle: "CINEMA OPERATING SYSTEM",
@@ -295,8 +295,8 @@ export const packResolutions: Record<string, PackResolution> = {
     },
     'retail_operations_system': {
         heroTitle: "RETAIL OPERATING SYSTEM",
-        heroSubline: "Unified governance for inventory integrity, loss prevention, and brand standards.",
-        strategicParagraph: "Built for physical retail leaders where shrinkage, standard drift, and service collapse are daily threats.",
+        heroSubline: "Margin Protection Infrastructure. Not Store Management.",
+        strategicParagraph: "Protect your margin, stock, and store control daily with forensic protocols for Loss Prevention, Compliance, and Duty of Care.",
         whyExecutionBreaksParagraph: "Stores fail when visual standards become suggestions and inventory control depends on trust instead of verifiable logic.",
         risks: [
             { title: "Inventory Shrinkage", description: "Weak cycle-count discipline and unverified POS deletions enable systemic internal and external theft." },
@@ -326,7 +326,9 @@ export const packResolutions: Record<string, PackResolution> = {
             "Shrinkage identified early",
             "Compliance risk mitigated",
             "Service standards verified"
-        ]
+        ],
+        reassuranceTrustTitle: "STATION DISCIPLINE",
+        reassuranceTrustDescription: "Operational consistency customers notice across every zone."
     }
 };
 
