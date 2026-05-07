@@ -101,7 +101,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         </>
                                     )}
                                 </h1>
-                                <div className="space-y-4">
+                                <div className="space-y-8">
                                     <p className="text-lg md:text-[24px] font-medium text-zinc-300 max-w-2xl leading-tight">
                                         Bring structure, visibility, and accountability to the <span className="italic">responsibilities schools cannot afford to miss.</span>
                                     </p>
@@ -124,9 +124,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
                                     {[
                                         { t: `12 OPERATIONAL DIVISIONS`, i: LayoutGrid },
-                                        { t: `114+ EXECUTION CHECKPOINTS`, i: Target },
-                                        { t: "LIVE DASHBOARD INCLUDED", i: Activity },
-                                        { t: "EDITABLE OPERATIONAL INFRASTRUCTURE", i: FileSpreadsheet }
+                                        { t: `${totalTasks}+ Execution Checkpoints`, i: Target },
+                                        { t: "Live Dashboard Included", i: Activity },
+                                        { t: "Editable Operational Infrastructure", i: FileSpreadsheet }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 group">
                                             <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
@@ -138,9 +138,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         </div>
                                     ))}
                                 </div>
-                                <p className="text-[9px] md:text-[11px] text-zinc-500 font-bold italic leading-tight max-w-md pt-2">
-                                    Designed for schools, campuses, pre-primary institutions, and multi-unit educational groups.
-                                </p>
                             </div>
 
                             <div className="space-y-6 pt-4">
