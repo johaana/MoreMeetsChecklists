@@ -52,11 +52,11 @@ export const packResolutions: Record<string, PackResolution> = {
     },
     'restaurants': {
         heroTitle: "RESTAURANT OPERATING SYSTEM",
-        heroSubline: "Stop margin leakage and safety drift across your kitchen and floor stations.",
+        heroSubline: "Stop operational drift before it reaches the guest experience.",
         strategicParagraph: "Built for high-volume groups where consistency and food safety cannot be left to shift-lead coordination alone.",
         whyExecutionBreaksParagraph: "Service standards rarely collapse during slow hours. They break when high compression removes the time to verify critical steps.",
         risks: [
-            { title: "Revenue Leakage", description: "Unmonitored void bills and unverified ingredient yields create a silent daily drain on net margins." },
+            { title: "Revenue Leakage", description: "Void bills, uncontrolled portioning, and unverified ingredient yields silently erode net margins every shift." },
             { title: "HACCP Lapses", description: "Critical temperature logs are often back-filled at the end of shifts instead of being recorded during active receiving." },
             { title: "Shift Drift", description: "Opening and closing protocols vary wildly between Shift leads, creating inconsistent guest experiences and utility wastage." },
             { title: "Untracked Waste", description: "Prep waste and spoilage stay hidden in bin bags instead of being data-anchored for procurement optimization." }
@@ -67,14 +67,14 @@ export const packResolutions: Record<string, PackResolution> = {
             "Prep yields are reconciled at 11:00 AM",
             "Shift handovers become zero-gap data transfers",
             "Managers see station execution from their phones",
-            "Cleaning standards are verified, not assumed"
+            "Cold-chain failures become visible before stock loss occurs"
         ],
         mondayMorning: [
             "Opening protocols are verified by 9:00 AM",
             "Kitchen hygiene is observable from your office",
             "Inventory waste for Sunday is already logged",
             "Prep levels match today's forecast exactly",
-            "Ambiance vitals match the brand standard",
+            "Music, lighting, scent, and temperature match brand standard",
             "Managers stop waiting for verbal status reports"
         ],
         outcomes: [
@@ -83,7 +83,11 @@ export const packResolutions: Record<string, PackResolution> = {
             "Station consistency verified",
             "Managers stop chasing",
             "Shift handovers secured"
-        ]
+        ],
+        reassuranceTrustTitle: "STATION DISCIPLINE",
+        reassuranceTrustDescription: "The brand standard becomes visible across every station and shift.",
+        ctaTitle: "High-volume service requires \n operational discipline, not verbal coordination.",
+        ctaSubline: "The standard should survive the rush."
     },
     'hotels_and_resorts': {
         heroTitle: "HOTEL OPERATING SYSTEM",

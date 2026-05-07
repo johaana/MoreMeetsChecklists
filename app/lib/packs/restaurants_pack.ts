@@ -7,7 +7,7 @@ export const restaurants: PremiumPack = {
     category: "Hospitality",
     description: "The definitive Sovereign v11.9 engine for multi-unit food and beverage groups. Standardizing 150+ technical control points across 12 distinct floor roles including Shift A/B parity.",
     heroHeadline: "Standardize Your Kitchen. Protect Your Margins.",
-    heroSubheadline: "The professional plug for revenue leakage and food safety risks—across every branch in your group.",
+    heroSubheadline: "Stop operational drift before it reaches the guest experience.",
     pricingUrgency: "Preventing a single foodborne illness lawsuit or one major theft saves 100x the cost of this system.",
     consultingAnchor: 5000,
     priceINR: 5999,
@@ -262,7 +262,7 @@ export const restaurants: PremiumPack = {
                 { id: "RES-FIN-05", technicalProtocol: "Invoice Entry TAT", floorAction: "Verify all store receipts entered in < 24h.", priority: "Medium", riskLevel: "Low", consequence: "Inaccurate real-time stock.", proof: "Ledger Audit" },
                 { id: "RES-FIN-06", technicalProtocol: "Bill Seriality Audit", floorAction: "Verify zero gaps in invoice serial numbers.", priority: "High", riskLevel: "High", consequence: "Tax evasion risk and legal penalties.", proof: "Ledger Scan" },
                 { id: "RES-FIN-07", technicalProtocol: "Settlement Sync Check", floorAction: "Confirm 100% upload of POS data to server.", priority: "Medium", riskLevel: "Low", consequence: "Loss of historical records.", proof: "System Receipt" },
-                { id: "RES-FIN-08", technicalProtocol: "Refund Authorization Audit", floorAction: "Verify 100% cash refunds match manager signature.", priority: "High", riskLevel: "High", consequence: "Direct theft via fake returns.", proof: "Refund Vouchers" },
+                { id: "RES-FIN-08", technicalProtocol: "Refund Authorization Audit", floorAction: "Verify 100% cash refunds match original invoice.", priority: "High", riskLevel: "High", consequence: "Direct theft via fake returns.", proof: "Refund Vouchers" },
                 { id: "RES-FIN-09", technicalProtocol: "Service Charge / Tips Log", floorAction: "Check accuracy of daily staff gratuity records.", priority: "Low", riskLevel: "Low", consequence: "Staff disputes.", proof: "Tips Registry" },
                 { id: "RES-FIN-10", technicalProtocol: "Bank Deposit Bag Seal", floorAction: "Witness witnessed seal of cash bags for transit.", priority: "High", riskLevel: "High", consequence: "Theft during bank transit.", proof: "Deposit Slip" }
             ]
