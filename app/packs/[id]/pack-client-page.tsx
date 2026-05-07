@@ -10,7 +10,6 @@ import {
     Target,
     ArrowRight,
     Check,
-    AlertTriangle,
     Activity,
     ShieldCheck,
     Lock,
@@ -42,7 +41,7 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
 
 const PulsatingStressText = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
     <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-        <span className="text-[12px] md:text-[18px] font-black text-red-600/80 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.2)] leading-tight block text-left lg:text-right">
+        <span className="text-[11px] md:text-[16px] font-black text-red-600/60 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.1)] leading-tight block text-left lg:text-right">
             {text}
         </span>
     </div>
@@ -57,7 +56,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     const isSchool = pack.id === 'school_operations_pack';
     
     const totalChecklists = pack.checklists.length;
-    const totalTasks = (pack.id === 'retail_operations_system' || pack.id === 'hotels_and_resorts' || pack.id === 'healthcare_and_hospital_operations') ? 250 : pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0);
+    const totalTasks = (pack.id === 'retail_operations_system' || pack.id === 'hotels_and_resorts' || pack.id === 'healthcare_and_hospital_operations') ? 250 : pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
     
     const findings = painPointsContent[pack.id as keyof typeof painPointsContent]?.points || [];
     const resolution = packResolutions[pack.id] || defaultResolution;
@@ -79,19 +78,19 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-primary/20">
             
             {/* --- HERO SECTION: COMPACT SOVEREIGN HUB --- */}
-            <section className="relative w-full min-h-[90svh] flex flex-col justify-center overflow-hidden bg-black text-white md:pt-16">
+            <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black text-white md:pt-16">
                 <div className="absolute inset-0 z-0">
                     <img src={heroImageUrl} alt="" className="w-full h-full object-cover opacity-20 grayscale brightness-50" />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent" />
                 </div>
 
-                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-20 pb-8 md:py-0">
+                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-20 pb-12 md:py-0">
                     <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 items-center">
-                        <div className="space-y-6 w-full">
-                            <div className="space-y-4">
+                        <div className="space-y-10 w-full">
+                            <div className="space-y-6">
                                 <h1 className={cn(
                                     "font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white whitespace-nowrap",
-                                    isSchool ? "text-[32px] md:text-[58px]" : "text-[36px] md:text-[72px]"
+                                    isSchool ? "text-[32px] md:text-[54px]" : "text-[36px] md:text-[72px]"
                                 )}>
                                     {isSchool ? (
                                         <>SCHOOL <span style={{ color: BRAND_GREEN }}>OPERATING SYSTEM</span></>
@@ -102,20 +101,22 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         </>
                                     )}
                                 </h1>
-                                <div className="space-y-2">
-                                    <p className="text-lg md:text-[22px] italic font-medium text-zinc-300 max-w-2xl leading-tight">
+                                <div className="space-y-4">
+                                    <p className="text-lg md:text-[24px] italic font-medium text-zinc-300 max-w-2xl leading-tight">
                                         Bring structure, visibility, and accountability to the responsibilities schools cannot afford to miss.
                                     </p>
-                                    <p className="text-sm md:text-base text-zinc-400 italic font-bold max-w-lg border-l-2 border-primary/40 pl-6">
-                                        Built for schools where student safety, operational discipline, and duty of care cannot depend on verbal follow-ups.
-                                    </p>
-                                    <p className="text-[11px] md:text-sm text-emerald-500/90 font-black uppercase tracking-[0.2em] italic pl-6">
-                                        Built in Excel. Shared through Google Sheets. No app rollout required.
-                                    </p>
+                                    <div className="space-y-1.5 border-l-2 border-primary/40 pl-6">
+                                        <p className="text-sm md:text-base text-zinc-400 italic font-bold max-w-lg">
+                                            Built for schools where student safety, operational discipline, and duty of care cannot depend on verbal follow-ups.
+                                        </p>
+                                        <p className="text-[10px] md:text-[12px] text-emerald-500/50 font-black uppercase tracking-[0.2em] italic">
+                                            Built in Excel. Shared through Google Sheets. No app rollout required.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="space-y-4">
+                            <div className="space-y-5">
                                 <div className="flex items-center gap-3">
                                     <div className="w-1 h-5 bg-emerald-500 shadow-[0_0:10px_rgba(16,124,16,0.5)]" />
                                     <p className="text-[9px] font-black text-emerald-500 uppercase tracking-[0.4em] italic font-headline">SYSTEM SPECIFICATIONS</p>
@@ -139,26 +140,26 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                             </div>
 
-                            <div className="space-y-6 pt-2">
+                            <div className="space-y-6 pt-4">
                                 <div className="space-y-3">
                                     <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-16 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-lg shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white transition-all border-none group flex items-center justify-center gap-3">
                                         <Link href="#pricing">
                                             DEPLOY SYSTEM — ₹999 <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
                                         </Link>
                                     </Button>
-                                    <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic pl-1">
+                                    <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic pl-1 text-center sm:text-left">
                                         ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
                                     </p>
                                 </div>
-                                <p className="text-[9px] md:text-[11px] text-zinc-500 font-bold italic leading-tight max-w-sm">
+                                <p className="text-[9px] md:text-[11px] text-zinc-500 font-bold italic leading-tight max-w-sm text-center sm:text-left">
                                     Used by schools, campuses, pre-primary institutions, and operational teams managing daily execution at scale.
                                 </p>
                             </div>
                         </div>
                         
-                        <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-6">
-                             <p className="text-[9px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">DAILY OPERATIONAL RISKS</p>
-                             <div className="flex flex-col gap-5 md:gap-7 lg:gap-9">
+                        <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-16 lg:mt-0 space-y-8">
+                             <p className="text-[9px] font-black text-red-500/40 uppercase tracking-[0.6em] italic">DAILY OPERATIONAL RISKS</p>
+                             <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
                                  {[
                                     "Child handovers becoming informal",
                                     "Visitor verification skipped during rush hours",
@@ -243,7 +244,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     "Hygiene checks become documented",
                                     "Responsibilities become assigned by role",
                                     "Managers gain live visibility without chasing teams.",
-                                    "Daily execution becomes observable across the institution."
+                                    "Daily execution becomes visible across teams."
                                 ].map((item, i) => (
                                     <div key={i} className="flex items-start gap-4 group">
                                         <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
@@ -368,7 +369,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             Built for real school teams
                         </h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
-                            Most institutions already have SOPs. The problem is that execution slowly becomes verbal and inconsistent during busy days.
+                            Most institutions already have SOPs. The problem is that execution slowly becomes verbal, informal, and dependent on people remembering things during busy days.
                         </p>
                         <p className="text-zinc-950 font-black uppercase italic text-xl">MoreMeets™ converts daily responsibilities into visible execution parents can feel.</p>
                     </div>
@@ -392,7 +393,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             },
                             {
                                 t: "EASY FOR TEAMS",
-                                d: "No apps. No software rollout. They simply open the system, complete assigned tasks, and continue working.",
+                                d: "No apps. No software rollout. Teams simply update one shared operational system daily.",
                                 i: CheckCircle2
                             },
                             {
