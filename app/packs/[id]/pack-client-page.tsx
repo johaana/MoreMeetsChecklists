@@ -58,7 +58,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     // BELIEVABILITY OVERRIDES: Adjust display counts for sector authority
     const getDisplayTasks = () => {
         if (pack.id === 'cinema_operations_pack') return 125;
-        if (pack.id === 'retail_operations_system' || pack.id === 'hotels_and_resorts' || pack.id === 'healthcare_and_hospital_operations') return 250;
+        if (pack.id === 'healthcare_and_hospital_operations') return 200;
+        if (pack.id === 'retail_operations_system' || pack.id === 'hotels_and_resorts') return 250;
         return pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0);
     };
 
@@ -339,8 +340,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 i: History
                             },
                             {
-                                t: "BRAND REPUTATION",
-                                d: "Operational discipline customers can feel. Consistency families notice across the entire group.",
+                                t: res.reassuranceTrustTitle || "BRAND REPUTATION",
+                                d: res.reassuranceTrustDescription || "Operational discipline customers can feel. Consistency families notice across the entire group.",
                                 i: Users
                             },
                             {

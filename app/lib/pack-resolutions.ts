@@ -10,12 +10,14 @@ export type PackResolution = {
     outcomes: string[];
     ctaTitle?: string;
     ctaSubline?: string;
+    reassuranceTrustTitle?: string;
+    reassuranceTrustDescription?: string;
 };
 
 export const packResolutions: Record<string, PackResolution> = {
     'school_operations_pack': {
         heroTitle: "SCHOOL OPERATING SYSTEM",
-        heroSubline: "Stop depending on memory for transport safety, visitor control, hygiene, and daily school operations.",
+        heroSubline: "Bring structure, visibility, and accountability to the responsibilities schools cannot afford to miss.",
         strategicParagraph: "Built for schools where student safety, operational discipline, and duty of care cannot depend on verbal follow-ups.",
         whyExecutionBreaksParagraph: "Schools rarely fail because of one catastrophic event. They fail when routine responsibilities slowly become informal, verbal, and dependent on memory.",
         risks: [
@@ -156,10 +158,10 @@ export const packResolutions: Record<string, PackResolution> = {
     'healthcare_and_hospital_operations': {
         heroTitle: "HOSPITAL OPERATING SYSTEM",
         heroSubline: "Zero-fail governance for surgical safety, medication control, and clinical risk.",
-        strategicParagraph: "Built for medical leadership where 'never-events' and audit failures are not an option.",
+        strategicParagraph: "Built for medical leadership where student safety, operational discipline, and duty of care cannot depend on verbal follow-ups.",
         whyExecutionBreaksParagraph: "Clinical environments fail when verbal handovers become thin and critical control points are assumed rather than verified.",
         risks: [
-            { title: "Clinical Never-Events", description: "Lack of pre-incision 'Time Outs' and dual-verification for high-alert drugs creates fatal windows of error." },
+            { title: "Clinical Never-Events", description: "Lack of pre-incision 'Time Outs' and dual-verification for high-alert drugs creates fatal windows of clinical error." },
             { title: "Infection Outbreaks", description: "Hygiene frequency drift in ICUs and poor CSSD indicator tracking lead to hospital-acquired infection spikes." },
             { title: "Narcotic Diversion", description: "Weak vault access governance and lack of blind-counts enable internal drug theft and criminal liability." },
             { title: "Billing Leakage", description: "Unlogged ward consumables and delayed TPA pre-auths result in significant unrecoverable financial loss." }
@@ -186,7 +188,9 @@ export const packResolutions: Record<string, PackResolution> = {
             "Narcotics control secured",
             "Audit-readiness permanent",
             "Patient safety observable"
-        ]
+        ],
+        reassuranceTrustTitle: "CLINICAL CONFIDENCE",
+        reassuranceTrustDescription: "Operational discipline families notice. Clinical consistency that secures community confidence and secures community trust."
     },
     'facility_management_blueprint': {
         heroTitle: "FACILITY OPERATING SYSTEM",

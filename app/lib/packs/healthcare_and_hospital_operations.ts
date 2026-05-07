@@ -63,7 +63,7 @@ export const healthcare_and_hospital_operations: PremiumPack = {
             department: "Operations",
             frequency: "Daily",
             role: "Hospital COO",
-            summary: "Property uptime, utility economics, and logistics command.",
+            summary: "Clinical infrastructure, oxygen continuity, and life-support resilience.",
             icon: "building-2",
             tasks: [
                 { id: "H-OPS-01", technicalProtocol: "Emergency Utility Readiness", floorAction: "Check O2 plant pressure and log DG fuel level.", priority: "High", riskLevel: "High", consequence: "Total facility life-support failure.", proof: "Gauge Log" },
