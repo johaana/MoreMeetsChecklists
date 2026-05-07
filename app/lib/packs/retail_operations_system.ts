@@ -11,7 +11,7 @@ export const retail_operations_system: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f4e6b12a-4422-48a0-a198-154332822a27',
     category: "Retail",
-    description: "The definitive Sovereign v11.9 technical engine for physical retail. A unified system for Fashion, Jewelry, Electronics, and Grocery—standardizing 115+ technical control points across 10 distinct roles.",
+    description: "The definitive Sovereign v11.9 technical engine for physical retail. A unified system for Fashion, Jewelry, Electronics, and Grocery—standardizing 125+ technical control points across 11 distinct modules.",
     heroHeadline: "Margin Protection Infrastructure. Not Store Management.",
     heroSubheadline: "Protect your margin, stock, and store control daily with forensic protocols for Loss Prevention, Compliance, and Duty of Care.",
     pricingUrgency: "Preventing a single major theft or one brand-damaging customer incident saves 100x the cost of this system.",
@@ -87,7 +87,12 @@ export const retail_operations_system: PremiumPack = {
                 { id: "RET-TEC-02", technicalProtocol: "EAS Tether Test", floorAction: "Tug on security wires to ensure alarms trigger.", priority: "High", riskLevel: "High", consequence: "Theft of display assets.", proof: "Test Log" },
                 { id: "RET-TEC-03", technicalProtocol: "Firmware Reset", floorAction: "Wipe user photos/data from demo units.", priority: "Medium", riskLevel: "Low", consequence: "Privacy violations.", proof: "Reset Confirmation" },
                 { id: "RET-TEC-04", technicalProtocol: "Display Charging Sync", floorAction: "Verify 100% of demo units are connected to power.", priority: "Medium", riskLevel: "Low", consequence: "Dead units reducing sales.", proof: "Walkthrough" },
-                { id: "RET-TEC-05", technicalProtocol: "Serialized Inventory Check", floorAction: "Count high-value SKUs (CPUs, GPUs) in the locker.", priority: "High", riskLevel: "High", consequence: "Internal serialized theft.", proof: "Count Sheet" }
+                { id: "RET-TEC-05", technicalProtocol: "Serialized Inventory Check", floorAction: "Count high-value SKUs (CPUs, GPUs) in the locker.", priority: "High", riskLevel: "High", consequence: "Internal serialized theft.", proof: "Count Sheet" },
+                { id: "RET-TEC-06", technicalProtocol: "Accessory Pairing Audit", floorAction: "Verify 100% demo units have paired peripherals (mics, buds).", priority: "Low", riskLevel: "Low", consequence: "Incomplete tech demo experience.", proof: "Visual Audit" },
+                { id: "RET-TEC-07", technicalProtocol: "Device Sanitization", floorAction: "Deep clean screens and keyboards of demo units.", priority: "Medium", riskLevel: "Low", consequence: "Hygiene issues and negative brand perception.", proof: "Cleaning Log" },
+                { id: "RET-TEC-08", technicalProtocol: "OS Update Pulse", floorAction: "Verify latest security patches installed on floor units.", priority: "High", riskLevel: "High", consequence: "Vulnerability to malware or 'jailbreak' exploits.", proof: "Firmware Report" },
+                { id: "RET-TEC-09", technicalProtocol: "Cable Fraying Scan", floorAction: "Inspect charging cables for exposed wires.", priority: "High", riskLevel: "Medium", consequence: "Short circuit and shock hazard.", proof: "Walkthrough" },
+                { id: "RET-TEC-10", technicalProtocol: "E-Waste Secure Lock", floorAction: "Verify secure storage of trade-in units and old batteries.", priority: "High", riskLevel: "High", consequence: "Environmental fire and data theft risk.", proof: "Storage Check" }
             ]
         },
         {
@@ -102,7 +107,12 @@ export const retail_operations_system: PremiumPack = {
                 { id: "RET-GRO-02", technicalProtocol: "Expiry Sweep", floorAction: "Identify and markdown items with < 48h shelf life.", priority: "High", riskLevel: "High", consequence: "Selling expired perishables.", proof: "Sweep Report" },
                 { id: "RET-GRO-03", technicalProtocol: "Mist System Check", floorAction: "Verify produce mists are functional to prevent wilting.", priority: "Low", riskLevel: "Low", consequence: "Poor produce conversion.", proof: "Visual Check" },
                 { id: "RET-GRO-04", technicalProtocol: "Raw/Cooked Segregation", floorAction: "Audit poultry storage to ensure zero contact with veggies.", priority: "High", riskLevel: "High", consequence: "Cross-contamination.", proof: "Visual Audit" },
-                { id: "RET-GRO-05", technicalProtocol: "Scale Zero-Calibration", floorAction: "Zero-out all customer weighing scales at 8 AM.", priority: "High", riskLevel: "Medium", consequence: "Billing errors.", proof: "Calibration Log" }
+                { id: "RET-GRO-05", technicalProtocol: "Scale Zero-Calibration", floorAction: "Zero-out all customer weighing scales at 8 AM.", priority: "High", riskLevel: "Medium", consequence: "Billing errors.", proof: "Calibration Log" },
+                { id: "RET-GRO-06", technicalProtocol: "Produce Misting Frequency", floorAction: "Log hydration cycles for leafy greens (Every 2h).", priority: "Medium", riskLevel: "Low", consequence: "Reduced shelf-life and aesthetic decay.", proof: "Timer Log" },
+                { id: "RET-GRO-07", technicalProtocol: "Spill Kit Readiness", floorAction: "Verify availability of kits in milk and detergent zones.", priority: "High", riskLevel: "High", consequence: "Slip and fall litigation.", proof: "Stock Check" },
+                { id: "RET-GRO-08", technicalProtocol: "Frozen Gasket Scan", floorAction: "Check freezer door seals for frost or air leaks.", priority: "Medium", riskLevel: "Low", consequence: "Energy wastage and unit failure.", proof: "Visual Check" },
+                { id: "RET-GRO-09", technicalProtocol: "Handwashing Compliance", floorAction: "Observe staff sanitization in meat/deli zones.", priority: "High", riskLevel: "Medium", consequence: "Foodborne illness transmission.", proof: "Daily Audit" },
+                { id: "RET-GRO-10", technicalProtocol: "Waste Bag Seal", floorAction: "Verify wet waste is bagged and removed to prevent odors.", priority: "Low", riskLevel: "Medium", consequence: "Pests and customer complaints.", proof: "Visual Audit" }
             ]
         },
         {
@@ -117,7 +127,12 @@ export const retail_operations_system: PremiumPack = {
                 { id: "RET-SEC-02", technicalProtocol: "Loading Bay Lockdown", floorAction: "Physically confirm all bay shutters are locked at EOD.", priority: "High", riskLevel: "High", consequence: "Vulnerable after-hours perimeter.", proof: "Visual Check" },
                 { id: "RET-SEC-03", technicalProtocol: "Staff Bag-Check Protocol", floorAction: "Execute random exit checks for on-duty personnel.", priority: "High", riskLevel: "High", consequence: "Internal shrinkage leakage.", proof: "Registry Note" },
                 { id: "RET-SEC-04", technicalProtocol: "High-Risk Bin Search", floorAction: "Audit trash bags before removal for concealed goods.", priority: "High", riskLevel: "Medium", consequence: "Theft via waste channel.", proof: "Search Note" },
-                { id: "RET-SEC-05", technicalProtocol: "Anti-Swap Luxury Logic", floorAction: "Independent SKU verification after high-value customer viewings.", priority: "High", riskLevel: "High", consequence: "substitution theft (Jewelry/Luxury).", proof: "Registry Audit" }
+                { id: "RET-SEC-05", technicalProtocol: "Anti-Swap Luxury Logic", floorAction: "Independent SKU verification after high-value customer viewings.", priority: "High", riskLevel: "High", consequence: "substitution theft (Jewelry/Luxury).", proof: "Registry Audit" },
+                { id: "RET-SEC-06", technicalProtocol: "Fitting Room Tag Audit", floorAction: "Inspect fitting room trash for discarded security pins.", priority: "High", riskLevel: "High", consequence: "Undetected shoplifting by tag removal.", proof: "Hourly Sheet" },
+                { id: "RET-SEC-07", technicalProtocol: "Telemetry Retention Seal", floorAction: "Confirm 100% daily backup of security footage.", priority: "High", riskLevel: "High", consequence: "Legal inability to prove theft in court.", proof: "System Log" },
+                { id: "RET-SEC-08", technicalProtocol: "Guard Sobriety Watch", floorAction: "Random alcohol check for night shift security team.", priority: "High", riskLevel: "High", consequence: "Vulnerable venue perimeter.", proof: "Test Note" },
+                { id: "RET-SEC-09", technicalProtocol: "Roof & Alley Patrol", floorAction: "Verify lock status of all external secondary gates.", priority: "High", riskLevel: "High", consequence: "After-hours unauthorized entry.", proof: "Visual Audit" },
+                { id: "RET-SEC-10", technicalProtocol: "Final Perimeter Seal", floorAction: "Daily security deployment sign-off.", priority: "High", riskLevel: "Low", consequence: "Unsecured property.", proof: "Signed Summary" }
             ]
         },
         {
@@ -132,7 +147,12 @@ export const retail_operations_system: PremiumPack = {
                 { id: "RET-INV-02", technicalProtocol: "Price Label Parity", floorAction: "Spot check 20 shelf-edge labels against POS price.", priority: "High", riskLevel: "Medium", consequence: "Legal Metrology fines and guest disputes.", proof: "Audit Sheet" },
                 { id: "RET-INV-03", technicalProtocol: "Bin Location Integrity", floorAction: "Verify 10 random SKUs match their system bin.", priority: "Medium", riskLevel: "Low", consequence: "Picker inefficiency.", proof: "Audit Sheet" },
                 { id: "RET-INV-04", technicalProtocol: "Damaged Stock Triage", floorAction: "Move all 'Yellow-Tag' items to the repair zone.", priority: "Low", riskLevel: "Low", consequence: "Damaged goods on shelves.", proof: "Transfer Log" },
-                { id: "RET-INV-05", technicalProtocol: "Receiving Variance Pulse", floorAction: "Reconcile daily GRN against physical invoices.", priority: "High", riskLevel: "Medium", consequence: "Paying for missing weight/units.", proof: "Match Note" }
+                { id: "RET-INV-05", technicalProtocol: "Receiving Variance Pulse", floorAction: "Reconcile daily GRN against physical invoices.", priority: "High", riskLevel: "Medium", consequence: "Paying for missing weight/units.", proof: "Match Note" },
+                { id: "RET-INV-06", technicalProtocol: "Markdown Label Audit", floorAction: "Verify 'Clearance' items have current correct barcode.", priority: "Medium", riskLevel: "Low", consequence: "Loss of margin at checkout.", proof: "Visual Audit" },
+                { id: "RET-INV-07", technicalProtocol: "Stockout Alert Sync", floorAction: "Vouch 'Critical Low' list with physical shelf levels.", priority: "High", riskLevel: "Low", consequence: "Missed sales opportunities.", proof: "System Report" },
+                { id: "RET-INV-08", technicalProtocol: "Backstock Safety Stack", floorAction: "Inspect warehouse racks for leaning or unstable pallets.", priority: "High", riskLevel: "High", consequence: "Crushing injury and inventory loss.", proof: "Structural Walkthrough" },
+                { id: "RET-INV-09", technicalProtocol: "Barcode Readability Test", floorAction: "Test scan 10 random units for print clarity.", priority: "Low", riskLevel: "Low", consequence: "Checkout gridlock.", proof: "Sample Scan" },
+                { id: "RET-INV-10", technicalProtocol: "Final EOD Stock Seal", floorAction: "Physically confirm store room padlock.", priority: "High", riskLevel: "High", consequence: "Internal theft.", proof: "Visual Check" }
             ]
         },
         {
@@ -147,7 +167,12 @@ export const retail_operations_system: PremiumPack = {
                 { id: "RET-VM-02", technicalProtocol: "Focal Point Lighting", floorAction: "Verify 100% of spotlights are focused and functional.", priority: "Low", riskLevel: "Low", consequence: "Dull product presentation.", proof: "Visual Audit" },
                 { id: "RET-VM-03", technicalProtocol: "Window Glass Integrity", floorAction: "Check for fingerprints or smudges on facade.", priority: "Low", riskLevel: "Low", consequence: "Low-end brand image.", proof: "Cleaning Log" },
                 { id: "RET-VM-04", technicalProtocol: "Seasonal POS Prop Scan", floorAction: "Ensure all promo banners are straight and clean.", priority: "Low", riskLevel: "Low", consequence: "Amateur marketing.", proof: "Visual Check" },
-                { id: "RET-VM-05", technicalProtocol: "Entrance Greeting Path", floorAction: "Verify clear path and symmetry at the entry.", priority: "Medium", riskLevel: "Low", consequence: "Guest friction.", proof: "Photo" }
+                { id: "RET-VM-05", technicalProtocol: "Entrance Greeting Path", floorAction: "Verify clear path and symmetry at the entry.", priority: "Medium", riskLevel: "Low", consequence: "Guest friction.", proof: "Photo" },
+                { id: "RET-VM-06", technicalProtocol: "Mannequin Grooming", floorAction: "Check for loose threads or dust on display garments.", priority: "Low", riskLevel: "Low", consequence: "Poor visual brand authority.", proof: "Photo" },
+                { id: "RET-VM-07", technicalProtocol: "Two-Finger Rule Check", floorAction: "Verify uniform spacing between hangers on rails.", priority: "Low", riskLevel: "Low", consequence: "Cluttered presentation.", proof: "Walkthrough" },
+                { id: "RET-VM-08", technicalProtocol: "Hanger Symmetry", floorAction: "Ensure all hooks face the same direction (Inward).", priority: "Low", riskLevel: "Low", consequence: "Aesthetic drift.", proof: "Visual Audit" },
+                { id: "RET-VM-09", technicalProtocol: "Seasonal Promo Decay", floorAction: "Remove all expired offer signs from floor.", priority: "High", riskLevel: "Low", consequence: "Customer disputes at billing.", proof: "Visual Check" },
+                { id: "RET-VM-10", technicalProtocol: "Signage Horizontal Sync", floorAction: "Verify aisle headers are level and untampered.", priority: "Low", riskLevel: "Low", consequence: "Sloppy shelf appearance.", proof: "Visual Audit" }
             ]
         },
         {
@@ -162,7 +187,12 @@ export const retail_operations_system: PremiumPack = {
                 { id: "RET-CX-02", technicalProtocol: "Queue Wait-Time Pulse", floorAction: "Monitor billing queue for > 3 customers; deploy backup.", priority: "High", riskLevel: "Low", consequence: "Basket abandonment.", proof: "Wait Log" },
                 { id: "RET-CX-03", technicalProtocol: "Complaint Resolution TAT", floorAction: "Verify 100% of floor grievances resolved in < 15 mins.", priority: "High", riskLevel: "High", consequence: "Viral viral reputation damage.", proof: "Issue Log" },
                 { id: "RET-CX-04", technicalProtocol: "Staff Floor Allocation", floorAction: "Confirm 100% coverage of high-traffic zones.", priority: "High", riskLevel: "Medium", consequence: "Unassisted customers and lost sales.", proof: "Roster Check" },
-                { id: "RET-CX-05", technicalProtocol: "Digital Feedback Pulse", floorAction: "Review Google Maps reviews from last 24h.", priority: "Medium", riskLevel: "Low", consequence: "Damaged brand ranking.", proof: "Dashboard" }
+                { id: "RET-CX-05", technicalProtocol: "Digital Feedback Pulse", floorAction: "Review Google Maps reviews from last 24h.", priority: "Medium", riskLevel: "Low", consequence: "Damaged brand ranking.", proof: "Dashboard" },
+                { id: "RET-CX-06", technicalProtocol: "Greeting TAT Observation", floorAction: "Log sample of staff interaction speed (Target < 10s).", priority: "Medium", riskLevel: "Low", consequence: "Customer feels ignored.", proof: "Daily Log" },
+                { id: "RET-CX-07", technicalProtocol: "Gift Wrap Par Levels", floorAction: "Verify stock of paper, tape, and ribbons at service desk.", priority: "Low", riskLevel: "Low", consequence: "Service failure during holiday peaks.", proof: "Stock Check" },
+                { id: "RET-CX-08", technicalProtocol: "Return Authorization Check", floorAction: "Audit reason codes for today's returned items.", priority: "Medium", riskLevel: "Medium", consequence: "Fraudulent returns leakage.", proof: "System Report" },
+                { id: "RET-CX-09", technicalProtocol: "Staff Mobile Compliance", floorAction: "Walkthrough to ensure no unauthorized phone use in zones.", priority: "Low", riskLevel: "Low", consequence: "Poor brand authority and unassisted sales.", proof: "Patrol Log" },
+                { id: "RET-CX-10", technicalProtocol: "CX Closure Sign-off", floorAction: "Clear all pending DMs/WhatsApp inquiries.", priority: "Medium", riskLevel: "Low", consequence: "Lost booking revenue.", proof: "Inbox Clear" }
             ]
         },
         {
@@ -177,7 +207,12 @@ export const retail_operations_system: PremiumPack = {
                 { id: "RET-FIN-02", technicalProtocol: "Void Bill Authorization", floorAction: "Manager sign-off on 100% of cancelled/deleted bills.", priority: "High", riskLevel: "High", consequence: "Theft masked as 'errors'.", proof: "POS Audit" },
                 { id: "RET-FIN-03", technicalProtocol: "Counter Skimmer Search", floorAction: "Inspect card terminals for any unauthorized overlays.", priority: "High", riskLevel: "High", consequence: "Massive customer data breach.", proof: "Visual Check" },
                 { id: "RET-FIN-04", technicalProtocol: "Discount Code Review", floorAction: "Verify reason codes for all employee discounts used.", priority: "Medium", riskLevel: "Medium", consequence: "Margin erosion.", proof: "System Log" },
-                { id: "RET-FIN-05", technicalProtocol: "Cash-to-Bank Bag Seal", floorAction: "Witness witnessed seal of cash bags for deposit.", priority: "High", riskLevel: "High", consequence: "Internal transit theft.", proof: "Bank Slip" }
+                { id: "RET-FIN-05", technicalProtocol: "Cash-to-Bank Bag Seal", floorAction: "Witness witnessed seal of cash bags for deposit.", priority: "High", riskLevel: "High", consequence: "Internal transit theft.", proof: "Bank Slip" },
+                { id: "RET-FIN-06", technicalProtocol: "Till Blind Count", floorAction: "Manager witness of nightly cash bag seal.", priority: "High", riskLevel: "High", consequence: "Cash misappropriation.", proof: "Signed Note" },
+                { id: "RET-FIN-07", technicalProtocol: "Refund Audit", floorAction: "Verify 100% of cash refunds match original invoice.", priority: "High", riskLevel: "High", consequence: "Direct theft via fake returns.", proof: "Bill Audit" },
+                { id: "RET-FIN-08", technicalProtocol: "Loyalty Redemption Check", floorAction: "Vouch today's top 5 loyalty point redemptions.", priority: "Medium", riskLevel: "Medium", consequence: "Internal point theft fraud.", proof: "Registry Audit" },
+                { id: "RET-FIN-09", technicalProtocol: "Petty Cash Reconcile", floorAction: "Audit coin count vs. voucher register.", priority: "Medium", riskLevel: "High", consequence: "Small-scale profit leakage.", proof: "Audit Note" },
+                { id: "RET-FIN-10", technicalProtocol: "Shift Settlement Sync", floorAction: "Confirm 100% upload of POS data to cloud server.", priority: "High", riskLevel: "Low", consequence: "Inaccurate real-time sales reporting.", proof: "System Receipt" }
             ]
         },
         {
@@ -192,7 +227,12 @@ export const retail_operations_system: PremiumPack = {
                 { id: "RET-MNT-02", technicalProtocol: "Emergency Power Readiness", floorAction: "Inspect DG fuel and UPS battery status.", priority: "High", riskLevel: "High", consequence: "Total blackout and billing halt.", proof: "Test Log" },
                 { id: "RET-MNT-03", technicalProtocol: "POS Printer Test", floorAction: "Verify connectivity to all receipt printers.", priority: "Medium", riskLevel: "Low", consequence: "Service friction during peak.", proof: "Print Test" },
                 { id: "RET-MNT-04", technicalProtocol: "Escalator/Lift Vitals", floorAction: "Verify functionality of auto-stop/rescue systems.", priority: "High", riskLevel: "High", consequence: "Fatal injury risk.", proof: "Daily Test" },
-                { id: "RET-MNT-05", technicalProtocol: "Technical Closure", floorAction: "Log all P1 breakdowns for morning alert.", priority: "High", riskLevel: "Low", consequence: "Asset decay.", proof: "Signed Log" }
+                { id: "RET-MNT-05", technicalProtocol: "Technical Closure", floorAction: "Log all P1 breakdowns for morning alert.", priority: "High", riskLevel: "Low", consequence: "Asset decay.", proof: "Signed Log" },
+                { id: "RET-MNT-06", technicalProtocol: "Entrance Barrier Motor", floorAction: "Verify sensor functionality at main gate.", priority: "Medium", riskLevel: "Low", consequence: "Vehicle damage or slow entry.", proof: "Visual Check" },
+                { id: "RET-MNT-07", technicalProtocol: "Sub-meter KWH Log", floorAction: "Record reading to identify unmonitored energy leaks.", priority: "Low", riskLevel: "Low", consequence: "Inflated overhead costs.", proof: "Meter Log" },
+                { id: "RET-MNT-08", technicalProtocol: "CCTV Node Check", floorAction: "Confirm 100% camera visibility on admin monitor.", priority: "High", riskLevel: "High", consequence: "Security blind spots.", proof: "System Screen" },
+                { id: "RET-MNT-09", technicalProtocol: "Internet Failover Run", floorAction: "Confirm backup ISP is active and reachable.", priority: "High", riskLevel: "Medium", consequence: "Operational halt during billing.", proof: "Ping Test" },
+                { id: "RET-MNT-10", technicalProtocol: "Fire Extinguisher Gauge", floorAction: "Confirm needle in GREEN zone for 10 random units.", priority: "High", riskLevel: "High", consequence: "No firefighting capability.", proof: "Gauge Log" }
             ]
         },
         {
@@ -217,5 +257,4 @@ export const retail_operations_system: PremiumPack = {
         }
     ]
 };
-
     
