@@ -17,7 +17,12 @@ import {
     Lock,
     CheckCircle2,
     Zap,
-    ShieldAlert
+    ShieldAlert,
+    Smartphone,
+    Users,
+    History,
+    GraduationCap,
+    ClipboardCheck
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
@@ -49,6 +54,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
     if (!mounted) return null;
 
+    const isSchool = pack.id === 'school_operations_pack';
+    
     const totalChecklists = pack.checklists.length;
     const totalTasks = (pack.id === 'retail_operations_system' || pack.id === 'hotels_and_resorts' || pack.id === 'healthcare_and_hospital_operations') ? 250 : pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0);
     
@@ -73,12 +80,19 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     SOVEREIGN ENGINE V11.9
                                 </Badge>
                                 <h1 className="text-[36px] md:text-[80px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white">
-                                    {pack.title.replace('Operations System', '').replace('Operations Pack', '')} <br />
-                                    <span style={{ color: BRAND_GREEN }}>OPERATIONS SYSTEM</span>
+                                    {isSchool ? "School" : pack.title.replace('Operations System', '').replace('Operations Pack', '')} <br />
+                                    <span style={{ color: BRAND_GREEN }}>OPERATING SYSTEM</span>
                                 </h1>
                                 <p className="text-lg md:text-[24px] italic font-medium text-zinc-400 max-w-xl leading-tight">
-                                    {pack.description}
+                                    {isSchool 
+                                        ? "Stop depending on memory for transport safety, visitor control, hygiene, and daily school operations." 
+                                        : pack.description}
                                 </p>
+                                {isSchool && (
+                                    <p className="text-sm md:text-base text-zinc-500 italic font-medium max-w-md border-l border-primary/20 pl-4 mt-4">
+                                        Pre-built operational infrastructure for schools, pre-primary institutions, and educational campuses. Built to bring structure, accountability, and visibility to everyday execution.
+                                    </p>
+                                )}
                             </div>
 
                             <div className="space-y-6">
@@ -88,10 +102,10 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
                                     {[
-                                        { t: `${totalChecklists} Operations Systems`, i: LayoutGrid },
-                                        { t: `${totalTasks}+ Control Points`, i: Target },
+                                        { t: `${totalChecklists} Operational Areas`, i: LayoutGrid },
+                                        { t: `${totalTasks}+ Operational Checkpoints`, i: Target },
                                         { t: "Live Dashboard Included", i: Activity },
-                                        { t: "No SaaS. Own your data.", i: Lock }
+                                        { t: "Editable .XLSX System", i: FileSpreadsheet }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 group">
                                             <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
@@ -108,22 +122,32 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             <div className="space-y-4">
                                 <Button asChild size="lg" className="w-full sm:w-auto h-16 px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white transition-all border-none group flex items-center justify-center gap-3">
                                     <Link href="#pricing">
-                                        DEPLOY THE SYSTEM <ArrowRight className="w-6 h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
+                                        DEPLOY SYSTEM — ₹999 <ArrowRight className="w-6 h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
                                     </Link>
                                 </Button>
                                 <p className="text-[9px] md:text-[11px] text-zinc-500 font-black uppercase tracking-[0.4em] italic pl-1">
-                                    SINGLE / MULTI-UNIT READY • AUDIT-READY COMPLIANCE
+                                    ONE-TIME PURCHASE • NO SUBSCRIPTIONS
                                 </p>
                             </div>
                         </div>
                         
                         <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-16 lg:mt-0 space-y-6">
-                             <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">ANATOMY OF FAILURE</p>
+                             <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">
+                                {isSchool ? "DAILY OPERATIONAL RISKS" : "ANATOMY OF FAILURE"}
+                             </p>
                              <div className="flex flex-col gap-6 md:gap-10">
-                                 {findings.slice(0, 4).map((item: any, i: number) => (
+                                 {(isSchool ? [
+                                    "Visitor access becoming informal during rush hours",
+                                    "Transport checks being verbally assumed",
+                                    "Kitchen hygiene logs skipped during busy mornings",
+                                    "Emergency readiness becoming inconsistent",
+                                    "Student welfare concerns going unnoticed"
+                                 ] : findings.slice(0, 5).map((f: any) => f.title)).map((text: string, i: number) => (
                                     <div key={i} className="space-y-1">
-                                        <PulsatingStressText text={item.title} delay={`${i * 0.2}s`} />
-                                        <p className="text-[10px] md:text-[11px] text-zinc-500 font-bold uppercase tracking-tight leading-tight max-w-xs lg:ml-auto">Sovereign v11.9 Technical Finding</p>
+                                        <PulsatingStressText text={text} delay={`${i * 0.2}s`} />
+                                        <p className="text-[10px] md:text-[11px] text-zinc-500 font-bold uppercase tracking-tight leading-tight max-w-xs lg:ml-auto">
+                                            {isSchool ? "Common Institutional Risk" : "Sovereign Technical Finding"}
+                                        </p>
                                     </div>
                                  ))}
                              </div>
@@ -132,20 +156,31 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </section>
 
-            {/* --- PHASE 01: FORENSIC DISCOVERY (RED) --- */}
+            {/* --- PHASE 01: RISKS --- */}
             <Section className="bg-white border-b border-zinc-100">
                 <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
                     <div className="text-center space-y-6">
-                        <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50/50 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">Forensic Findings</Badge>
-                        <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">Why operations break</h2>
+                        <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50/50 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">
+                            {isSchool ? "Operational Reality" : "Forensic Findings"}
+                        </Badge>
+                        <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                            {isSchool ? "Why daily execution breaks" : "Why operations break"}
+                        </h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
-                            Schools rarely fail because of one catastrophic event. They fail because routine responsibilities become informal, unverified, and dependent on memory. In serious environments, assumptions become risk.
+                            {isSchool 
+                                ? "Schools rarely fail because of one catastrophic event. They fail when routine responsibilities slowly become informal, verbal, and dependent on memory."
+                                : pack.description}
                         </p>
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 relative">
                         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />
-                        {findings.map((point: any, index: number) => (
+                        {(isSchool ? [
+                            { t: "Missed Transport Checks", d: "Rushed mornings lead to verbal assumptions instead of physical 'child-left-behind' sweeps." },
+                            { t: "Unverified Visitor Access", d: "Entry points become informal during drop-off and pickup surges, creating perimeter gaps." },
+                            { t: "Delayed Infrastructure Maintenance", d: "Playground and electrical checks drift into the background until an incident occurs." },
+                            { t: "Hygiene Standard Drift", d: "Canteen and washroom protocols collapse during peak hours without logged accountability." }
+                        ] : findings).map((point: any, index: number) => (
                             <div key={index} className="flex flex-col gap-6 p-10 border border-zinc-100 bg-zinc-50/30 rounded-[2rem] hover:bg-white hover:shadow-xl transition-all duration-500 relative group">
                                 <div className="absolute top-4 right-4 opacity-5 group-hover:opacity-10 transition-opacity">
                                     <ShieldAlert className="w-24 h-24 text-red-600" />
@@ -155,30 +190,40 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                                         <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
                                     </div>
-                                    <h3 className="text-xl md:text-2xl font-black font-headline uppercase italic tracking-tighter text-zinc-950">{point.title}</h3>
+                                    <h3 className="text-xl md:text-2xl font-black font-headline uppercase italic tracking-tighter text-zinc-950">
+                                        {isSchool ? point.t : point.title}
+                                    </h3>
                                 </div>
-                                <p className="text-zinc-500 text-base md:text-lg font-bold italic leading-relaxed text-left">{point.description}</p>
+                                <p className="text-zinc-500 text-base md:text-lg font-bold italic leading-relaxed text-left">
+                                    {isSchool ? point.d : point.description}
+                                </p>
                             </div>
                         ))}
                     </div>
                 </div>
             </Section>
 
-            {/* --- PHASE 02: SOVEREIGN RESOLUTION (GREEN) --- */}
+            {/* --- PHASE 02: RESOLUTION --- */}
             <Section className="bg-zinc-50/50">
                 <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
                     <div className="text-center space-y-6">
                         <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">Resolution Protocol</Badge>
-                        <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">How Sovereign prevents this</h2>
+                        <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                            {isSchool ? "How the system restores control" : "How Sovereign prevents this"}
+                        </h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
-                            MoreMeets™ converts operational dependence on memory into daily institutional control. Every critical function is converted into assigned execution, logged accountability, and repeatable operational discipline.
+                            {isSchool 
+                                ? "MoreMeets™ converts operational dependence on memory into daily institutional control. Every critical function is converted into assigned execution, logged accountability, and repeatable operational discipline."
+                                : "MoreMeets™ converts operational dependence on memory into daily institutional control."}
                         </p>
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 relative">
                         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />
                         <div className="space-y-8 p-10 border-l-4 border-primary bg-white shadow-sm rounded-r-[2rem] text-left">
-                            <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">THE OPERATIONAL SHIFT</p>
+                            <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">
+                                {isSchool ? "WHAT CHANGES DAILY" : "THE OPERATIONAL SHIFT"}
+                            </p>
                             <div className="space-y-6">
                                 {resolution.prevents.map((item, i) => (
                                     <div key={i} className="flex items-start gap-4 group">
@@ -191,10 +236,19 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                         <div className="space-y-10 text-left">
                             <div className="space-y-6">
-                                <h4 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-zinc-950 font-headline">What your team uses daily</h4>
-                                <p className="text-zinc-500 italic font-medium">Your team does not need new software. They open the system, update assigned tasks, and continue working.</p>
+                                <h4 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-zinc-950 font-headline">
+                                    {isSchool ? "What your team actually uses" : "What your team uses daily"}
+                                </h4>
+                                <div className="p-6 bg-zinc-950 rounded-2xl border-l-4 border-emerald-500 shadow-2xl">
+                                    <p className="text-white text-base md:text-lg font-bold italic leading-relaxed">
+                                        Your team does not need new software, logins, or technical training. <br/><br/>
+                                        <span className="text-emerald-500">Open the system in Excel or Google Sheets, assign responsibilities once, and begin running operations daily.</span>
+                                    </p>
+                                </div>
                                 <div className="grid grid-cols-1 gap-4">
-                                    {resolution.teamUses.map((item, i) => (
+                                    {(isSchool ? [
+                                        "Daily task checklists", "Role-based responsibilities", "Trainer notes for staff", "Consequences for missed tasks", "Live task updates", "Editable operational structure", "Multi-branch visibility", "Audit-ready records"
+                                    ] : resolution.teamUses).map((item, i) => (
                                         <div key={i} className="flex items-center gap-4 p-4 rounded-xl border border-zinc-100 bg-white group hover:border-primary/20 transition-all">
                                             <div className="w-2 h-2 rounded-full bg-primary/20 group-hover:bg-primary transition-all" />
                                             <span className="text-zinc-600 font-bold italic uppercase text-sm tracking-wide">{item}</span>
@@ -207,12 +261,15 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- PHASE 03: THE MONDAY MORNING REALITY --- */}
+            {/* --- PHASE 03: MONDAY MORNING --- */}
             <Section className="bg-white border-y border-zinc-100">
                 <div className="max-w-4xl mx-auto space-y-16">
                     <div className="text-center space-y-6">
                         <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.4em] font-black text-[10px] px-6 py-2 rounded-none">OPERATIONAL IMPACT</Badge>
-                        <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter">What changes on Monday</h2>
+                        <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter">
+                            {isSchool ? "Monday Morning" : "What changes on Monday"}
+                        </h2>
+                        {isSchool && <p className="text-zinc-500 italic font-bold text-lg">The school day starts differently.</p>}
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-6 md:gap-10">
@@ -226,29 +283,35 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                     <div className="text-center pt-10">
                          <p className="text-xl md:text-2xl font-black text-zinc-950 uppercase italic tracking-tighter font-headline">
-                            👉 The difference is immediate.
+                            {isSchool ? "👉 Daily operations become structured before the first bell rings." : "👉 The difference is immediate."}
                         </p>
                     </div>
                 </div>
             </Section>
 
-            {/* --- PHASE 04: SYSTEM MODULE DIRECTORY --- */}
+            {/* --- PHASE 04: COVERAGE --- */}
             <Section className="bg-zinc-50/30">
                 <div className="space-y-20">
                     <div className="text-center space-y-6">
                         <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2.5 rounded-none">System Architecture</Badge>
-                        <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">Module directory</h2>
+                        <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                            {isSchool ? "Operational Coverage" : "Module directory"}
+                        </h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
-                            Institutional coverage across safety, compliance, administration, infrastructure, and daily execution.
+                            {isSchool 
+                                ? "Institutional coverage across safety, compliance, administration, and student welfare."
+                                : "Institutional coverage across safety, compliance, administration, infrastructure, and daily execution."}
                         </p>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
                         {pack.checklists.map((checklist, index) => (
                             <div key={index} className="border border-zinc-200 p-8 md:p-12 space-y-6 hover:border-primary hover:shadow-2xl transition-all duration-700 bg-white group flex flex-col relative overflow-hidden text-left">
-                                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 -mr-12 -mt-12 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 -mr-12 -mt-12 rounded-full blur-2xl opacity-0 group-hover:opacity-10 transition-opacity" />
                                 <div className="flex justify-between items-center border-b border-zinc-100 pb-4">
-                                    <span className="text-[10px] font-black text-zinc-400 tracking-[0.3em]">MODULE_ID: 0{index + 1}</span>
+                                    <span className="text-[10px] font-black text-zinc-400 tracking-[0.3em]">
+                                        {isSchool ? `FUNCTION_0${index + 1}` : `MODULE_ID: 0${index + 1}`}
+                                    </span>
                                     <div className="flex items-center gap-2">
                                         <Target className="w-3.5 h-3.5 text-primary/40" />
                                         <span className="text-[10px] font-black text-primary uppercase tracking-widest">{checklist.tasks.length} POINTS</span>
@@ -265,6 +328,69 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </p>
                                 <div className="pt-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-300 group-hover:text-primary transition-colors text-left">
                                     <ShieldCheck className="w-4 h-4" /> AUDIT-READY PROTOCOL
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </Section>
+
+            {/* --- BUILT FOR REAL TEAMS --- */}
+            <Section className="bg-white border-y border-zinc-100">
+                <div className="max-w-6xl mx-auto space-y-16 md:space-y-24">
+                    <div className="text-center space-y-6">
+                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Operational Reassurance</Badge>
+                        <h2 className="text-[32px] md:text-[60px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.95]">
+                            {isSchool ? "Built for real school teams" : "Built for Real Teams. Engineered for Real Control."}
+                        </h2>
+                        <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
+                            {isSchool 
+                                ? "Schools already have SOPs. The problem is that execution slowly becomes verbal, informal, and dependent on people remembering things during busy days."
+                                : "This was designed for real teams, real shifts, and real operational pressure — not just consultants."}
+                        </p>
+                        {isSchool && <p className="text-zinc-950 font-black uppercase italic text-xl">MoreMeets™ converts daily responsibilities into visible operational execution.</p>}
+                    </div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                        {[
+                            {
+                                t: "FASTER STAFF TRAINING",
+                                d: "New staff understand responsibilities faster using built-in instructions and operational guidance.",
+                                i: GraduationCap
+                            },
+                            {
+                                t: "REDUCED DEPENDENCY",
+                                d: "Operations stop collapsing when one experienced administrator is absent. Memory becomes infrastructure.",
+                                i: History
+                            },
+                            {
+                                t: "CLEAR ACCOUNTABILITY",
+                                d: "Assigned responsibilities become visible across teams and branches without manual chasing.",
+                                i: Users
+                            },
+                            {
+                                t: "EASY FOR TEAMS",
+                                d: "No apps. No software rollout. Teams simply update one shared operational system they already understand.",
+                                i: CheckCircle2
+                            },
+                            {
+                                t: "EDITABLE INFRASTRUCTURE",
+                                d: "Add, remove, or customize operational tasks anytime to fit your unique brand protocols.",
+                                i: Zap
+                            },
+                            {
+                                t: "AUDIT-READY RECORDS",
+                                d: "Institutional proof for inspectors, insurers, and board members is generated automatically.",
+                                i: ShieldCheck
+                            }
+                        ].map((item, i) => (
+                            <div key={i} className="flex flex-col gap-6 p-10 bg-zinc-50 rounded-[2.5rem] border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-500 group text-left">
+                                <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-inner">
+                                    <item.i className="w-7 h-7" />
+                                </div>
+                                <div className="space-y-3 text-left">
+                                    <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950 leading-none text-left">{item.t}</h4>
+                                    <p className="text-zinc-500 text-sm md:text-base italic font-medium leading-relaxed text-left">{item.d}</p>
                                 </div>
                             </div>
                         ))}
