@@ -349,6 +349,56 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
+            {/* --- SECTION: OPERATIONAL CONTINUITY --- */}
+            <Section className="bg-white border-t border-zinc-100">
+                <div className="max-w-6xl mx-auto">
+                    <div className="grid lg:grid-cols-[1fr,450px] gap-12 md:gap-24 items-center">
+                        <div className="space-y-8 text-left">
+                            <div className="space-y-4">
+                                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">
+                                    Operational Continuity
+                                </Badge>
+
+                                <h2 className="text-[32px] md:text-[60px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.95]">
+                                    Standards Stay. <br/> Even When People Leave.
+                                </h2>
+                            </div>
+
+                            <div className="space-y-6">
+                                <p className="text-zinc-500 text-lg md:text-2xl font-bold italic leading-tight">
+                                    Most operations silently depend on a few experienced people remembering everything.
+                                </p>
+
+                                <p className="text-zinc-600 text-base md:text-lg font-medium leading-relaxed border-l-2 border-primary/20 pl-6 max-w-xl">
+                                    MoreMeets™ converts institutional knowledge into visible daily execution — so operational standards survive resignations, rapid hiring, shift changes, and multi-location expansion.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="space-y-3 w-full">
+                            {[
+                                "New managers onboard faster",
+                                "Critical routines stop living in memory",
+                                "Operational standards remain consistent",
+                                "Teams follow one shared system",
+                                "Execution becomes independent of individuals"
+                            ].map((item, i) => (
+                                <div
+                                    key={i}
+                                    className="flex items-center gap-4 p-5 md:p-6 bg-zinc-50 border border-zinc-100 rounded-[1.5rem] group hover:border-primary/30 hover:bg-white hover:shadow-xl transition-all duration-500"
+                                >
+                                    <div className="w-2 h-2 rounded-full bg-primary/30 group-hover:bg-primary group-hover:scale-125 transition-all" />
+
+                                    <span className="text-[11px] md:text-[14px] font-black uppercase tracking-widest text-zinc-400 group-hover:text-zinc-950 transition-colors">
+                                        {item}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </Section>
+
             {/* --- SECTION 7: BUILT FOR REAL TEAMS --- */}
             <Section className="bg-white border-y border-zinc-100">
                 <div className="max-w-6xl mx-auto space-y-16 md:space-y-24">
