@@ -92,9 +92,18 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-6 py-2 rounded-none bg-primary/5">
                                     SOVEREIGN ENGINE V11.9
                                 </Badge>
-                                <h1 className="text-[36px] md:text-[80px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white">
-                                    {isSchool ? "School" : pack.title.replace('Operations System', '').replace('Operations Pack', '')} <br />
-                                    <span style={{ color: BRAND_GREEN }}>OPERATING SYSTEM</span>
+                                <h1 className={cn(
+                                    "font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white",
+                                    isSchool ? "text-[32px] md:text-[64px]" : "text-[36px] md:text-[80px]"
+                                )}>
+                                    {isSchool ? (
+                                        <>SCHOOL <span style={{ color: BRAND_GREEN }}>OPERATING SYSTEM</span></>
+                                    ) : (
+                                        <>
+                                            {pack.title.replace('Operations System', '').replace('Operations Pack', '')} <br />
+                                            <span style={{ color: BRAND_GREEN }}>OPERATING SYSTEM</span>
+                                        </>
+                                    )}
                                 </h1>
                                 <p className="text-lg md:text-[24px] italic font-medium text-zinc-400 max-w-xl leading-tight">
                                     {isSchool 
