@@ -3,17 +3,17 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 export const hotels_and_resorts: PremiumPack = {
     id: 'hotels_and_resorts',
-    title: "Hotel Operating System",
+    title: "Hotel Operations System",
     priceINR: 5999,
     priceUSD: 79,
     competitorPriceUSD: 599,
-    updatedAt: "2025-02-24",
+    updatedAt: "2025-03-01",
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/2f377557-d41f-4571-83d3-a52e24ac27dd',
     category: "Hospitality",
-    description: "The definitive Sovereign v11.9 engine for luxury hotels and resorts. Standardizing 200+ technical control points across 12 distinct roles from Front Office to Engineering.",
+    description: "The definitive Sovereign v11.9 engine for luxury hotels and resorts. Hardening 120+ technical control points across 12 distinct roles from Front Office to Engineering.",
     heroHeadline: "Eliminate Guest Safety Gaps and Viral Reputation Damage",
-    heroSubheadline: "Track 200+ technical control points across 12 specialized roles—even when you’re not on property.",
+    heroSubheadline: "Track 120+ technical control points across 12 specialized roles—even when you’re not on property.",
     pricingUrgency: "One safety incident or a single negative viral review costs 100x more than this entire system.",
     consultingAnchor: 15000,
     icon: "building",
@@ -24,8 +24,8 @@ export const hotels_and_resorts: PremiumPack = {
     sampleItems: [
         { text: "<strong>2-Minute Pulse Reporting</strong>: Team updates tasks in seconds. Zero-friction supervision without being present.", icon: "timer" },
         { text: "<strong>Reputation Shield</strong>: Daily pulse for review response and social media signals to protect your ratings.", icon: "star" },
-        { text: "<strong>Event & Venue Command</strong>: Pre-event AV and floor safety audits for Weddings and Conferences.", icon: "calendar-heart" },
-        { text: "<strong>Manager Verification</strong>: Highlighted 'Yellow Targets' show leadership exactly what needs sign-off—no shortcuts.", icon: "shield-check" },
+        { text: "<strong>Privacy Infrastructure</strong>: Hidden camera sweeps and master keycard audit logs to prevent scandals.", icon: "eye-off" },
+        { text: "<strong>MEP Asset Watch</strong>: Critical logs for boilers, chillers, and STP to prevent infrastructure collapse.", icon: "wrench" },
         { text: "<strong>Built-in Training</strong>: Every task includes instructions and consequences of failure. Knowledge stays if staff resign.", icon: "history" },
         { text: "<strong>Sovereign Infrastructure</strong>: No recurring SaaS fees. You own your operational data and the engine forever.", icon: "lock" }
     ],
@@ -47,7 +47,12 @@ export const hotels_and_resorts: PremiumPack = {
                 { id: "HR-GM-07", technicalProtocol: "License Validity Pulse", floorAction: "Confirm Fire NOC and Liquor licenses are current.", priority: "High", riskLevel: "High", consequence: "Authorities sealing the hotel.", proof: "License Repository" },
                 { id: "HR-GM-08", technicalProtocol: "Fixed Asset Tagging Audit", floorAction: "Spot check tags on new Lobby/Gym equipment.", priority: "Low", riskLevel: "Low", consequence: "Loss of property.", proof: "Asset Register" },
                 { id: "HR-GM-09", technicalProtocol: "Vendor SLA Verification", floorAction: "Verify laundry turnaround time against contract.", priority: "Medium", riskLevel: "Low", consequence: "Linen stockouts.", proof: "SLA Tracker" },
-                { id: "HR-GM-10", technicalProtocol: "Final Daily GM sign-off", floorAction: "Execute daily strategic closure.", priority: "High", riskLevel: "Low", consequence: "Loss of duty control.", proof: "Signed Summary" }
+                { id: "HR-GM-10", technicalProtocol: "Final Daily GM sign-off", floorAction: "Execute daily strategic closure.", priority: "High", riskLevel: "Low", consequence: "Loss of duty control.", proof: "Signed Summary" },
+                { id: "HR-GM-11", technicalProtocol: "Statutory Audit Trail Retention", floorAction: "Verify previous month's daily logs are archived in the cloud.", priority: "High", riskLevel: "Low", consequence: "No legal defense during future lawsuits.", proof: "Cloud Folder" },
+                { id: "HR-GM-12", technicalProtocol: "Fixed Asset Integrity Tracking", floorAction: "Audit tags on high-value kitchen equipment.", priority: "Low", riskLevel: "Low", consequence: "Loss or theft of property.", proof: "Asset Register" },
+                { id: "HR-GM-13", technicalProtocol: "Management Peak-Hour Presence", floorAction: "Audit HOD attendance during peak wedding/event slots.", priority: "Medium", riskLevel: "Low", consequence: "Management disconnect during high-risk hours.", proof: "Roster Review" },
+                { id: "HR-GM-14", technicalProtocol: "Shareholder Report Synthesis", floorAction: "Generate summary of critical risk vs. occupancy milestones.", priority: "High", riskLevel: "Low", consequence: "Loss of ownership trust.", proof: "Signed Report" },
+                { id: "HR-GM-15", technicalProtocol: "Final Weekly Board Sign-off", floorAction: "Execute weekly strategic closure initials.", priority: "High", riskLevel: "Low", consequence: "Loss of executive oversight.", proof: "Signed Summary" }
             ]
         },
         {
@@ -67,7 +72,12 @@ export const hotels_and_resorts: PremiumPack = {
                 { id: "HR-FO-07", technicalProtocol: "VIP Amenities Verification", floorAction: "Physically check 100% of today's VIP room setup.", priority: "Medium", riskLevel: "Low", consequence: "Loss of high-LTV loyalty.", proof: "Photo" },
                 { id: "HR-FO-08", technicalProtocol: "Stationery Backup Audit", floorAction: "Verify stock of keys, envelopes, and registration cards.", priority: "Low", riskLevel: "Low", consequence: "Front desk friction.", proof: "Stock Check" },
                 { id: "HR-FO-09", technicalProtocol: "Valet Key Reconcile", floorAction: "Match valet key box against parked vehicle log.", priority: "High", riskLevel: "High", consequence: "Unauthorized vehicle use/Theft.", proof: "Key Registry" },
-                { id: "HR-FO-10", technicalProtocol: "Float Integrity Check", floorAction: "Verify denominations in all front-desk drawers.", priority: "High", riskLevel: "High", consequence: "Revenue leakage.", proof: "Float Sheet" }
+                { id: "HR-FO-10", technicalProtocol: "Float Integrity Check", floorAction: "Verify denominations in all front-desk drawers.", priority: "High", riskLevel: "High", consequence: "Revenue leakage.", proof: "Float Sheet" },
+                { id: "HR-FO-11", technicalProtocol: "Reservation Pre-call Protocol", floorAction: "Confirm all VIP arrivals via phone 24h prior.", priority: "Medium", riskLevel: "Low", consequence: "Unchecked no-shows.", proof: "Call Log" },
+                { id: "HR-FO-12", technicalProtocol: "Scent & Ambiance Audit", floorAction: "Adjust lobby lighting and scent levels for evening mood.", priority: "Low", riskLevel: "Low", consequence: "Poor guest first-impression.", proof: "Visual Check" },
+                { id: "HR-FO-13", technicalProtocol: "Late Check-out Governance", floorAction: "Audit complimentary late check-out logs for manager approval.", priority: "Low", riskLevel: "Low", consequence: "Inventory gridlock for new arrivals.", proof: "PMS Report" },
+                { id: "HR-FO-14", technicalProtocol: "C-Form Sync Check", floorAction: "Verify all entries transmitted to authorities by 11 PM.", priority: "High", riskLevel: "High", consequence: "Police fines and legal citations.", proof: "System Receipt" },
+                { id: "HR-FO-15", technicalProtocol: "Final Desk Closure", floorAction: "Execute shift handover bridge initials.", priority: "High", riskLevel: "Low", consequence: "Loss of continuity.", proof: "Signed Summary" }
             ]
         },
         {
@@ -75,10 +85,10 @@ export const hotels_and_resorts: PremiumPack = {
             department: "Housekeeping",
             frequency: "Daily",
             role: "Executive Housekeeper",
-            summary: "Room readiness, deep-cleaning cycles, and minibar reconcile.",
+            summary: "Room readiness, deep-cleaning cycles, and privacy protection.",
             icon: "bed",
             tasks: [
-                { id: "HR-HK-01", technicalProtocol: "Arrival Room Inspection", floorAction: "Supervisor check of 100% of rooms assigned for today's arrivals.", priority: "High", riskLevel: "High", consequence: "Immediate refund risk.", proof: "Inspection Log" },
+                { id: "HR-HK-01", technicalProtocol: "Arrival Room Inspection", floorAction: "Supervisor check of 100% of rooms assigned for today's arrivals.", priority: "High", riskLevel: "High", consequence: "Immediate guest refund risk.", proof: "Inspection Log" },
                 { id: "HR-HK-02", technicalProtocol: "Linen Grey-Scale Audit", floorAction: "Inspect 5 towels for stains or graying (Discard sub-par).", priority: "High", riskLevel: "Medium", consequence: "Luxury brand dilution.", proof: "Visual Audit" },
                 { id: "HR-HK-03", technicalProtocol: "Bathroom Hygiene Pulse", floorAction: "Check 5 drains for hair and shower-heads for scale.", priority: "High", riskLevel: "High", consequence: "Major negative review driver.", proof: "Sample Check" },
                 { id: "HR-HK-04", technicalProtocol: "Minibar Reconciliation", floorAction: "Match minibar consumption to billing system entries.", priority: "Medium", riskLevel: "Medium", consequence: "Unbilled revenue loss.", proof: "Bill Match" },
@@ -87,37 +97,62 @@ export const hotels_and_resorts: PremiumPack = {
                 { id: "HR-HK-07", technicalProtocol: "Pest Bait Integrity", floorAction: "Check placement of bait stations in floor pantries.", priority: "High", riskLevel: "High", consequence: "Infestation PR disaster.", proof: "Pest Log" },
                 { id: "HR-HK-08", technicalProtocol: "Stock Level Governance", floorAction: "Verify par stock of shampoo and toiletries.", priority: "Low", riskLevel: "Low", consequence: "Incomplete guest kits.", proof: "Stock Sheet" },
                 { id: "HR-HK-09", technicalProtocol: "Chemical Safety Audit", floorAction: "Verify labeling on R1-R6 cleaning dispensers.", priority: "High", riskLevel: "Medium", consequence: "Surface damage/Staff injury.", proof: "Visual Check" },
-                { id: "HR-HK-10", technicalProtocol: "Morning Briefing - Grooming", floorAction: "Audit staff uniforms, nails, and ID badges.", priority: "Low", riskLevel: "Low", consequence: "Professional image drop.", proof: "Briefing Log" }
+                { id: "HR-HK-10", technicalProtocol: "Morning Briefing - Grooming", floorAction: "Audit staff uniforms, nails, and ID badges.", priority: "Low", riskLevel: "Low", consequence: "Professional image drop.", proof: "Briefing Log" },
+                { id: "HR-HK-11", technicalProtocol: "Hidden Camera Privacy Scan", floorAction: "Scan mirrors and vents in 3 random check-out rooms.", priority: "High", riskLevel: "High", consequence: "Business-ending privacy scandal.", proof: "Scan Log" },
+                { id: "HR-HK-12", technicalProtocol: "Mattress Integrity Pulse", floorAction: "Check 5 mattresses for stains or sagging.", priority: "Medium", riskLevel: "Low", consequence: "Poor guest sleep scores.", proof: "Sample Audit" },
+                { id: "HR-HK-13", technicalProtocol: "Biohazard Linen Segregation", floorAction: "Verify use of yellow bags for blood-stained linens.", priority: "High", riskLevel: "High", consequence: "Staff infection and health department fines.", proof: "Visual Audit" },
+                { id: "HR-HK-14", technicalProtocol: "Minibar Expiry Sweep", floorAction: "Check 10 minibars for snack expiry dates.", priority: "Medium", riskLevel: "Medium", consequence: "Serving expired food to guests.", proof: "Expiry Register" },
+                { id: "HR-HK-15", technicalProtocol: "Final Floor Closure", floorAction: "Execute nightly deep-mop sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of custodial control.", proof: "Signed Summary" }
             ]
         },
         {
-            title: "F&B & Dining Logic",
-            department: "F&B",
+            title: "F&B & HACCP Command",
+            department: "Kitchen",
             frequency: "Daily",
-            role: "F&B Director",
-            summary: "Dining ambiance, buffet hygiene, and liquor governance.",
+            role: "F&B Director / Chef",
+            summary: "Zero-fail food safety, buffet hygiene, and liquor governance.",
             icon: "utensils",
             tasks: [
-                { id: "HR-FNB-01", technicalProtocol: "Buffet Thermal Audit", floorAction: "Log food temps: Hot (>65°C) and Cold (<5°C).", priority: "High", riskLevel: "High", consequence: "Mass food poisoning event.", proof: "Temperature Log" },
+                { id: "HR-FNB-01", technicalProtocol: "Buffet Thermal Audit (CCP)", floorAction: "Log food temps: Hot (>65°C) and Cold (<5°C).", priority: "High", riskLevel: "High", consequence: "Mass food poisoning event.", proof: "Temperature Log" },
                 { id: "HR-FNB-02", technicalProtocol: "Plate & Glass Integrity", floorAction: "Discard all items with chips or visible cracks.", priority: "High", riskLevel: "High", consequence: "Physical injury to guests.", proof: "Visual Audit" },
                 { id: "HR-FNB-03", technicalProtocol: "Bar License Display", floorAction: "Verify valid Liquor License is posted at main bar.", priority: "High", riskLevel: "High", consequence: "Police raid and sealing.", proof: "Photo" },
                 { id: "HR-FNB-04", technicalProtocol: "Side-Station Stock Pulse", floorAction: "Check cutlery and napkin par levels before Lunch.", priority: "Medium", riskLevel: "Low", consequence: "Service delays during rush.", proof: "Visual Check" },
-                { id: "HR-FNB-05", technicalProtocol: "Aggregator Price Match", floorAction: "Verify prices on Zomato match the restaurant menu.", priority: "High", riskLevel: "Medium", consequence: "Customer disputes/Legal fines.", proof: "App Check" }
+                { id: "HR-FNB-05", technicalProtocol: "Aggregator Price Match", floorAction: "Verify prices on Zomato match the restaurant menu.", priority: "High", riskLevel: "Medium", consequence: "Customer disputes/Legal fines.", proof: "App Check" },
+                { id: "HR-FNB-06", technicalProtocol: "Dishwasher Thermal Seal", floorAction: "Verify final rinse temperature reaches 82°C.", priority: "High", riskLevel: "High", consequence: "Bacteria on guest plates.", proof: "Temp Reading" },
+                { id: "HR-FNB-07", technicalProtocol: "Allergen Labeling Sync", floorAction: "Verify allergen markers on 100% of buffet dishes.", priority: "High", riskLevel: "High", consequence: "Fatal allergic shock and PR collapse.", proof: "Menu Audit" },
+                { id: "HR-FNB-08", technicalProtocol: "Cold-Chain Receiving", floorAction: "Log temp of incoming meat/dairy at arrival bay (< 5°C).", priority: "High", riskLevel: "High", consequence: "Accepting spoiled stock.", proof: "Receiving Log" },
+                { id: "HR-FNB-09", technicalProtocol: "Grease Trap Maintenance", floorAction: "Inspect traps for overflow risk.", priority: "High", riskLevel: "High", consequence: "Kitchen flood and odor closure.", proof: "Visual Check" },
+                { id: "HR-FNB-10", technicalProtocol: "Bar Inventory Parity", floorAction: "Blind count Top 5 Malts against POS sales.", priority: "High", riskLevel: "High", consequence: "Internal theft and revenue loss.", proof: "Count Sheet" },
+                { id: "HR-FNB-11", technicalProtocol: "Thawing Discipline", floorAction: "Verify zero counter-thawing; use reach-ins only.", priority: "High", riskLevel: "High", consequence: "Bacterial bloom.", proof: "Visual Audit" },
+                { id: "HR-FNB-12", technicalProtocol: "Ice Bin Sanitation", floorAction: "Deep clean ice machine and check for mold/slime.", priority: "High", riskLevel: "High", consequence: "Guest illness.", proof: "Cleaning Log" },
+                { id: "HR-FNB-13", technicalProtocol: "Bottle Breakage Pulse", floorAction: "Verify all broken liquor units recorded with photo.", priority: "Medium", riskLevel: "High", consequence: "Theft masked as breakage.", proof: "Breakage Log" },
+                { id: "HR-FNB-14", technicalProtocol: "Catering BEO Signature", floorAction: "Verify banquet setup matches Banquet Event Order.", priority: "Medium", riskLevel: "Low", consequence: "Billing disputes.", proof: "Signed BEO" },
+                { id: "HR-FNB-15", technicalProtocol: "Kitchen Shutdown Seal", floorAction: "Witness witnessed seal of all gas valves.", priority: "High", riskLevel: "High", consequence: "Overnight fire risk.", proof: "Signed Log" }
             ]
         },
         {
-            title: "Engineering & Life Safety",
+            title: "Engineering & Resort Vitals",
             department: "Engineering",
             frequency: "Daily",
             role: "Chief Engineer",
-            summary: "Asset uptime, MEP vitals, and fire safety systems.",
+            summary: "Infrastructure uptime, MEP vitals, and property backbone.",
             icon: "wrench",
             tasks: [
                 { id: "HR-ENG-01", technicalProtocol: "Backup Generator (DG) Vitals", floorAction: "Inspect DG fuel level and test battery voltage.", priority: "High", riskLevel: "High", consequence: "Total property blackout.", proof: "Fuel Log" },
                 { id: "HR-ENG-02", technicalProtocol: "Chiller Plant Monitor", floorAction: "Log HVAC discharge temp and monitor Lobby setting.", priority: "High", riskLevel: "Medium", consequence: "Guest heat discomfort.", proof: "BMS Reading" },
                 { id: "HR-ENG-03", technicalProtocol: "Water Quality (TDS) Pulse", floorAction: "Verify RO water output TDS (Target < 150).", priority: "High", riskLevel: "High", consequence: "Waterborne illness outbreak.", proof: "TDS Reading" },
                 { id: "HR-ENG-04", technicalProtocol: "Fire Pump Auto-Trigger", floorAction: "Verify fire pumps are in 'Auto' mode.", priority: "High", riskLevel: "High", consequence: "Zero fire fighting capability.", proof: "Gauge Log" },
-                { id: "HR-ENG-05", technicalProtocol: "Lift ARD Battery Test", floorAction: "Verify automatic rescue device battery charge.", priority: "High", riskLevel: "High", consequence: "Guest trapped in lift.", proof: "Start-test Log" }
+                { id: "HR-ENG-05", technicalProtocol: "Lift ARD Battery Test", floorAction: "Verify automatic rescue device battery charge.", priority: "High", riskLevel: "High", consequence: "Guest trapped in lift.", proof: "Start-test Log" },
+                { id: "HR-ENG-06", technicalProtocol: "Boiler Pressure Log", floorAction: "Confirm hot water manifold pressure (Target 2 bar).", priority: "High", riskLevel: "High", consequence: "Boiler explosion or ice-cold showers.", proof: "Manifold Log" },
+                { id: "HR-ENG-07", technicalProtocol: "STP/WTP Effluent Pulse", floorAction: "Test pH and clarity of treated water.", priority: "Medium", riskLevel: "High", consequence: "Environmental fines and odors.", proof: "Plant Log" },
+                { id: "HR-ENG-08", technicalProtocol: "Panel Thermography", floorAction: "Check main distribution panels for hotspots.", priority: "High", riskLevel: "High", consequence: "Electrical fire.", proof: "Heat-scan Log" },
+                { id: "HR-ENG-09", technicalProtocol: "LOTO Enforcement", floorAction: "Verify 100% lock-out on all active repairs.", priority: "High", riskLevel: "High", consequence: "Fatal accidents.", proof: "Permit Register" },
+                { id: "HR-ENG-10", technicalProtocol: "Emergency Comms Test", floorAction: "Test lift and lobby intercoms to security.", priority: "High", riskLevel: "Medium", consequence: "Comms failure in crisis.", proof: "Sound Test" },
+                { id: "HR-ENG-11", technicalProtocol: "UPS Load Resilience", floorAction: "Verify server-room UPS battery run-time.", priority: "High", riskLevel: "High", consequence: "Data loss during power flip.", proof: "Voltage Log" },
+                { id: "HR-ENG-12", technicalProtocol: "Pool Heater Vitals", floorAction: "Log pool water temp (Target exactly 28°C).", priority: "Low", riskLevel: "Low", consequence: "Guest complaints.", proof: "Temp Reading" },
+                { id: "HR-ENG-13", technicalProtocol: "Grease Trap Scan", floorAction: "Inspect external traps for overflow risk.", priority: "High", riskLevel: "High", consequence: "Blockage and shutdown.", proof: "Visual Check" },
+                { id: "HR-ENG-14", technicalProtocol: "Landscape Lighting Audit", floorAction: "Verify 100% of facade lights active.", priority: "Low", riskLevel: "Low", consequence: "Poor night brand image.", proof: "Walkthrough" },
+                { id: "HR-ENG-15", technicalProtocol: "Final Technical Closure", floorAction: "Log all P1 failures for GM alert.", priority: "High", riskLevel: "Low", consequence: "Unmonitored asset decay.", proof: "Signed Log" }
             ]
         },
         {
@@ -125,92 +160,39 @@ export const hotels_and_resorts: PremiumPack = {
             department: "Security",
             frequency: "Daily",
             role: "Security Chief",
-            summary: "Perimeter hardening, CCTV sync, and guard discipline.",
+            summary: "Perimeter hardening, privacy audits, and guard discipline.",
             icon: "shield-check",
             tasks: [
                 { id: "HR-SEC-01", technicalProtocol: "CCTV Recording Validation", floorAction: "Verify 30-day recording backup and time sync.", priority: "High", riskLevel: "High", consequence: "Loss of evidence for theft.", proof: "System Screen" },
                 { id: "HR-SEC-02", technicalProtocol: "Fire Exit Corridor Clear", floorAction: "Verify all fire exits are unlocked and clear of laundry.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment (Never-event).", proof: "Patrol Log" },
                 { id: "HR-SEC-03", technicalProtocol: "Visitor Register Audit", floorAction: "Verify 100% ID capture for all external contractors.", priority: "High", riskLevel: "High", consequence: "Unauthorized intruder risk.", proof: "Registry Audit" },
                 { id: "HR-SEC-04", technicalProtocol: "Guard Sobriety Check", floorAction: "Breathalyzer test for night shift security team.", priority: "High", riskLevel: "High", consequence: "Vulnerable property perimeter.", proof: "Test Note" },
-                { id: "HR-SEC-05", technicalProtocol: "Perimeter Lock-up", floorAction: "Physically confirm all back-alley and roof gates locked.", priority: "High", riskLevel: "High", consequence: "Theft and security breach.", proof: "Visual Check" }
+                { id: "HR-SEC-05", technicalProtocol: "Perimeter Lock-up", floorAction: "Physically confirm all back-alley and roof gates locked.", priority: "High", riskLevel: "High", consequence: "Theft and security breach.", proof: "Visual Check" },
+                { id: "HR-SEC-06", technicalProtocol: "Staff Keycard Audit", floorAction: "Review audit log for unauthorized room entry by staff.", priority: "High", riskLevel: "High", consequence: "Theft and guest privacy lawsuits.", proof: "System Log" },
+                { id: "HR-SEC-07", technicalProtocol: "Night Corridor Patrol", floorAction: "Execute 2-hourly walkthrough of all guest floors.", priority: "High", riskLevel: "High", consequence: "Unmonitored security risk.", proof: "Patrol Log" },
+                { id: "HR-SEC-08", technicalProtocol: "Loading Bay Seal", floorAction: "Verify bay shutters locked at 8 PM.", priority: "High", riskLevel: "High", consequence: "Internal shrinkage.", proof: "Visual Audit" },
+                { id: "HR-SEC-09", technicalProtocol: "Bag-Check Execution", floorAction: "Perform random exit checks for support staff.", priority: "High", riskLevel: "Medium", consequence: "Theft of hotel assets.", proof: "Registry Note" },
+                { id: "HR-SEC-10", technicalProtocol: "Final Perimeter Seal", floorAction: "EOD security deployment sign-off.", priority: "High", riskLevel: "Low", consequence: "Unsecured property.", proof: "Signed Summary" },
+                { id: "HR-SEC-11", technicalProtocol: "Panic Button Test", floorAction: "Test panic buttons at Front Desk and Bar.", priority: "High", riskLevel: "High", consequence: "Failure during robbery.", proof: "Alarm Log" },
+                { id: "HR-SEC-12", technicalProtocol: "Unattended Luggage Pulse", floorAction: "Audit lobby for bags > 15 mins unattended.", priority: "High", riskLevel: "High", consequence: "Terror risk/PR crisis.", proof: "Walkthrough" },
+                { id: "HR-SEC-13", technicalProtocol: "Staff ID Compliance", floorAction: "Confirm 100% badge compliance for external vendors.", priority: "Medium", riskLevel: "Low", consequence: "Unknown persons in back-areas.", proof: "Visual Check" },
+                { id: "HR-SEC-14", technicalProtocol: "Fire Extinguisher Gauge", floorAction: "Confirm needle in GREEN zone for 10 units.", priority: "High", riskLevel: "High", consequence: "No firefighting capability.", proof: "Gauge Log" },
+                { id: "HR-SEC-15", technicalProtocol: "Night Guard Sobriety", floorAction: "Random test of night-shift guard team.", priority: "High", riskLevel: "High", consequence: "Facility perimeter lapse.", proof: "Test Note" }
             ]
         },
         {
-            title: "Digital & ORM Hub",
-            department: "Sales",
+            title: "Leisure, Pool & Pet-Friendly",
+            department: "Leisure",
             frequency: "Daily",
-            role: "Sales & Digital Manager",
-            summary: "OTA reputation response and rate parity governance.",
-            icon: "globe",
+            role: "Leisure Manager",
+            summary: "Governs high-risk leisure zones and niche guest services.",
+            icon: "waves",
             tasks: [
-                { id: "HR-ORM-01", technicalProtocol: "Reputation Response Pulse", floorAction: "Reply to all Google/TripAdvisor reviews < 24h.", priority: "High", riskLevel: "Medium", consequence: "Damaged brand ranking.", proof: "Dashboard" },
-                { id: "HR-ORM-02", technicalProtocol: "Social Media DM TAT", floorAction: "Answer all Instagram/WhatsApp inquiries < 30m.", priority: "Medium", riskLevel: "Low", consequence: "Lost booking leads.", proof: "Inbox Status" },
-                { id: "HR-ORM-03", technicalProtocol: "OTA Content Audit", floorAction: "Verify 'Sold Out' status matches actual hotel rooms.", priority: "High", riskLevel: "Medium", consequence: "Overbooking disputes.", proof: "System Check" }
-            ]
-        },
-        {
-            title: "Banquets & Venue Safety",
-            department: "Events",
-            frequency: "Daily",
-            role: "Banqueting Lead",
-            summary: "AV readiness, floor safety, and BEO compliance.",
-            icon: "calendar-heart",
-            tasks: [
-                { id: "HR-BNQ-01", technicalProtocol: "Pre-Event AV Recce", floorAction: "Test mics, projector, and Wi-Fi in the hall.", priority: "High", riskLevel: "Medium", consequence: "Event failure during conference.", proof: "Tech Log" },
-                { id: "HR-BNQ-02", technicalProtocol: "Trip Hazard Walkthrough", floorAction: "Tape down all floor cables and check carpet edges.", priority: "High", riskLevel: "High", consequence: "Guest fall and legal liability.", proof: "Visual Audit" },
-                { id: "HR-BNQ-03", technicalProtocol: "BEO Signature Match", floorAction: "Verify food service matches the Banquet Event Order.", priority: "Medium", riskLevel: "Low", consequence: "Guest disputes on billing.", proof: "Signed BEO" }
-            ]
-        },
-        {
-            title: "Guest Logistics & Travel",
-            department: "Logistics",
-            frequency: "Daily",
-            role: "Travel Desk Lead",
-            summary: "Vehicle hygiene, driver sobriety, and flight tracking.",
-            icon: "plane",
-            tasks: [
-                { id: "HR-LOG-01", technicalProtocol: "Fleet Hygiene Pulse", floorAction: "Check AC, water, and Scent in airport cars.", priority: "Medium", riskLevel: "Low", consequence: "Poor guest first touch.", proof: "Vehicle Log" },
-                { id: "HR-LOG-02", technicalProtocol: "Flight Tracking Sync", floorAction: "Verify arrival time 1h before car dispatch.", priority: "High", riskLevel: "Low", consequence: "Guests waiting at airport.", proof: "Tracking Log" },
-                { id: "HR-LOG-03", technicalProtocol: "Driver Sobriety Test", floorAction: "Verify sobriety of all on-duty chauffeurs.", priority: "High", riskLevel: "High", consequence: "Catastrophic crash liability.", proof: "Test Note" }
-            ]
-        },
-        {
-            title: "Supply Chain & Procurement",
-            department: "Stores",
-            frequency: "Weekly",
-            role: "Procurement Lead",
-            summary: "Supplier vetting and metrology governance.",
-            icon: "truck",
-            tasks: [
-                { id: "HR-SUP-01", technicalProtocol: "Metrology Calibration Test", floorAction: "Test store scales with 1kg standard weight.", priority: "High", riskLevel: "Medium", consequence: "Paying for missing stock weight.", proof: "Calibration Log" },
-                { id: "HR-SUP-02", technicalProtocol: "Incoming Meat Thermal Audit", floorAction: "Check chicken/meat temp on arrival (< 5°C).", priority: "High", riskLevel: "High", consequence: "Accepting compromised food.", proof: "Receiving Log" },
-                { id: "HR-SUP-03", technicalProtocol: "Supplier FSSAI Verify", floorAction: "Verify FSSAI license of 3 random local vendors.", priority: "High", riskLevel: "High", consequence: "Unsafe sourcing liability.", proof: "Cert File" }
-            ]
-        },
-        {
-            title: "Personnel & Certs",
-            department: "HR",
-            frequency: "Monthly",
-            role: "HR & Training Lead",
-            summary: "Staff competency and mandatory health certs.",
-            icon: "graduation-cap",
-            tasks: [
-                { id: "HR-PER-01", technicalProtocol: "Staff Health Matrix", floorAction: "Verify valid health certs for 100% of F&B handlers.", priority: "High", riskLevel: "Medium", consequence: "Regulatory fines.", proof: "Med File" },
-                { id: "HR-PER-02", technicalProtocol: "Sexual Harassment Policy Display", floorAction: "Visually confirm policy is posted in staff room.", priority: "High", riskLevel: "High", consequence: "Severe legal liability.", proof: "Photo" },
-                { id: "HR-PER-03", technicalProtocol: "Training Hour Tracking", floorAction: "Audit staff matrix: target 4h training/month.", priority: "Low", riskLevel: "Low", consequence: "Service decay.", proof: "Matrix File" }
-            ]
-        },
-        {
-            title: "Revenue & Finance Shield",
-            department: "Finance",
-            frequency: "Daily",
-            role: "Finance Manager",
-            summary: "Profit protection and transactional integrity.",
-            icon: "banknote",
-            tasks: [
-                { id: "HR-FIN-01", technicalProtocol: "Cash-to-Bank Reconciliation", floorAction: "Witness witnessed seal of cash bags for deposit.", priority: "High", riskLevel: "High", consequence: "Internal revenue theft.", proof: "Bank Slip" },
-                { id: "HR-FIN-02", technicalProtocol: "Discount Code Audit", floorAction: "Verify reason codes for all employee discounts used.", priority: "Medium", riskLevel: "Medium", consequence: "Margin leakage.", proof: "System Log" },
-                { id: "HR-FIN-03", technicalProtocol: "Voided Bill Review", floorAction: "Sign-off on all cancelled room or F&B bills.", priority: "High", riskLevel: "High", consequence: "Theft masked as errors.", proof: "POS Audit" }
+                { id: "HR-LSR-01", technicalProtocol: "Pool Vitals: pH & Chlorine", floorAction: "Log water levels every 4 hours (Target pH 7.2-7.8).", priority: "High", riskLevel: "High", consequence: "Pool infection risk and health closure.", proof: "Vitals Log" },
+                { id: "HR-LSR-02", technicalProtocol: "Lifeguard Readiness", floorAction: "Verify lifeguard presence and first-aid kit status.", priority: "High", riskLevel: "High", consequence: "Fatal drowning liability.", proof: "Lifeguard Log" },
+                { id: "HR-LSR-03", technicalProtocol: "Gym Equipment Audit", floorAction: "Check for worn cables or loose bolts on all machines.", priority: "High", riskLevel: "High", consequence: "Serious mechanical injury.", proof: "Inspection Log" },
+                { id: "HR-LSR-04", technicalProtocol: "Pet-Friendly Audit", floorAction: "Check availability of pet-kits and sanitized bowls.", priority: "Medium", riskLevel: "Low", consequence: "Service failure for premium niche.", proof: "Stock Check" },
+                { id: "HR-LSR-05", technicalProtocol: "Pool Deck Slip-Guard", floorAction: "Verify anti-slip mats in place and debris-free.", priority: "High", riskLevel: "High", consequence: "Slip and fall litigation.", proof: "Visual Check" }
             ]
         }
     ]
