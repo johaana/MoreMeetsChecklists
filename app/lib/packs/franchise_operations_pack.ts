@@ -11,9 +11,9 @@ export const franchise_operations_pack: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f4e6b12a-4422-48a0-a198-154332822a27',
     category: "Franchise",
-    description: "The definitive Sovereign v11.9 technical engine for multi-unit groups. Hardening 115 technical control points from Royalty protection and Brand Parity to Franchisee Drift Detection.",
+    description: "The definitive Sovereign v11.9 technical engine for multi-unit groups. Hardening 130 technical control points from Royalty protection and Brand Parity to Franchisee Drift Detection.",
     heroHeadline: "Protect Brand Consistency and Revenue Across Every Outlet.",
-    heroSubheadline: "Track 115+ technical control points to eliminate royalty leakage and brand dilution—without constant manual supervision.",
+    heroSubheadline: "Track 130+ technical control points to eliminate royalty leakage and brand dilution—without constant manual supervision.",
     pricingUrgency: "A single failed outlet or one brand-damaging legal incident costs 100x more than this system.",
     consultingAnchor: 15000,
     icon: "store",
@@ -97,6 +97,66 @@ export const franchise_operations_pack: PremiumPack = {
                 { id: "FR-REG-08", technicalProtocol: "Cash-to-Bank Verification", floorAction: "Audit deposit slips for 2 random units.", priority: "High", riskLevel: "High", consequence: "Direct theft.", proof: "Bank Slip" },
                 { id: "FR-REG-09", technicalProtocol: "Local Promo Compliance", floorAction: "Check for unauthorized discounting in units.", priority: "Medium", riskLevel: "Medium", consequence: "Margin leakage.", proof: "Audit Sheet" },
                 { id: "FR-REG-10", technicalProtocol: "Regional Summary sign-off", floorAction: "Final daily regional command initials.", priority: "High", riskLevel: "Low", consequence: "Loss of oversight.", proof: "Signed Summary" }
+            ]
+        },
+        {
+            title: "Territory Expansion Readiness",
+            department: "Expansion",
+            frequency: "Pre-opening",
+            role: "Brand Expansion Director",
+            summary: "Governance for new unit launches and territory integrity.",
+            icon: "map-pin",
+            tasks: [
+                { id: "FR-EXP-01", technicalProtocol: "Franchise Launch Readiness Audit", floorAction: "Execute final 100-point pre-opening physical audit.", priority: "High", riskLevel: "High", consequence: "Sub-par launch and immediate brand damage.", proof: "Audit Score" },
+                { id: "FR-EXP-02", technicalProtocol: "Vendor Onboarding Validation", floorAction: "Verify all local vendors are approved by HQ Procurement.", priority: "High", riskLevel: "Medium", consequence: "Unvetted supply chain risks.", proof: "Vendor List" },
+                { id: "FR-EXP-03", technicalProtocol: "Brand Signage Approval", floorAction: "Photo-verify correct placement and lighting of main storefront sign.", priority: "High", riskLevel: "Low", consequence: "Trademark misuse and visual inconsistency.", proof: "Photo" },
+                { id: "FR-EXP-04", technicalProtocol: "Staff Certification Completion", floorAction: "Verify 100% of launch staff have completed HQ training.", priority: "High", riskLevel: "High", consequence: "Operational collapse on Day 1.", proof: "Training Matrix" },
+                { id: "FR-EXP-05", technicalProtocol: "Launch Inventory Verification", floorAction: "Audit opening stock levels for core ingredients and packaging.", priority: "High", riskLevel: "Medium", consequence: "Stockouts during grand opening.", proof: "Count Sheet" },
+                { id: "FR-EXP-06", technicalProtocol: "Local Compliance Clearance", floorAction: "Confirm all municipal and fire NOCs are active for the site.", priority: "High", riskLevel: "High", consequence: "Immediate government closure.", proof: "Cert File" },
+                { id: "FR-EXP-07", technicalProtocol: "Soft-Launch Rehearsal Audit", floorAction: "Simulate peak-hour orders and log kitchen/service TAT.", priority: "Medium", riskLevel: "Low", consequence: "Slow service during real launch.", proof: "Drill Log" },
+                { id: "FR-EXP-08", technicalProtocol: "Territory Cannibalization Review", floorAction: "Audit delivery zone overlap with existing units.", priority: "Medium", riskLevel: "Low", consequence: "Franchisee disputes and split revenue.", proof: "Map Sync" },
+                { id: "FR-EXP-09", technicalProtocol: "IT Infrastructure Dry-Run", floorAction: "Test POS, KDS, and Wi-Fi load stability.", priority: "High", riskLevel: "Medium", consequence: "Billing failure during first rush.", proof: "System Test" },
+                { id: "FR-EXP-10", technicalProtocol: "Final Launch Sign-off", floorAction: "Executive authorization to open to public.", priority: "High", riskLevel: "Low", consequence: "Unauthorized launch.", proof: "Signed Form" }
+            ]
+        },
+        {
+            title: "Brand Parity Intelligence",
+            department: "Brand",
+            frequency: "Weekly",
+            role: "Brand Auditor",
+            summary: "Monitors visual and sensory consistency across the network.",
+            icon: "eye",
+            tasks: [
+                { id: "FR-BPI-01", technicalProtocol: "Menu Parity Audit", floorAction: "Verify zero unauthorized menu items or price deviations.", priority: "High", riskLevel: "Medium", consequence: "Brand dilution and royalty confusion.", proof: "Menu Scan" },
+                { id: "FR-BPI-02", technicalProtocol: "Uniform Compliance Pulse", floorAction: "Audit 5 staff photos for correct uniform and grooming.", priority: "Low", riskLevel: "Low", consequence: "Loss of professional brand image.", proof: "Photo Audit" },
+                { id: "FR-BPI-03", technicalProtocol: "Packaging Consistency Check", floorAction: "Verify current version of branded boxes/bags in use.", priority: "Medium", riskLevel: "Low", consequence: "Stale or incorrect branding.", proof: "Visual Check" },
+                { id: "FR-BPI-04", technicalProtocol: "Local Promo Approval Triage", floorAction: "Audit store-specific offers for HQ alignment.", priority: "High", riskLevel: "Medium", consequence: "Margin-eroding unauthorized discounts.", proof: "Registry" },
+                { id: "FR-BPI-05", technicalProtocol: "Brand Music & Scent Sync", floorAction: "Confirm playlist and diffuser match current season.", priority: "Low", riskLevel: "Low", consequence: "Inconsistent sensory experience.", proof: "Visual Audit" },
+                { id: "FR-BPI-06", technicalProtocol: "Storefront Visual Parity", floorAction: "Audit VM displays vs. national planogram.", priority: "Medium", riskLevel: "Low", consequence: "Poor visual consistency.", proof: "Photo" },
+                { id: "FR-BPI-07", technicalProtocol: "Social Media Violation Scan", floorAction: "Check local unit social handles for unauthorized content.", priority: "High", riskLevel: "Medium", consequence: "PR damage and brand misuse.", proof: "Dashboard" },
+                { id: "FR-BPI-08", technicalProtocol: "Pricing Deviation Watch", floorAction: "Match system prices against printed menu and aggregators.", priority: "High", riskLevel: "High", consequence: "Customer disputes and legal risk.", proof: "Audit Sheet" },
+                { id: "FR-BPI-09", technicalProtocol: "In-Store Photography Audit", floorAction: "Random check of store cleanliness via live video/photos.", priority: "Medium", riskLevel: "Low", consequence: "Slipping hygiene standards.", proof: "Photo Log" },
+                { id: "FR-BPI-10", technicalProtocol: "Final Parity Sign-off", floorAction: "Weekly brand integrity initials.", priority: "High", riskLevel: "Low", consequence: "Loss of brand control.", proof: "Signed Summary" }
+            ]
+        },
+        {
+            title: "Franchisee Financial Risk",
+            department: "Finance",
+            frequency: "Weekly",
+            role: "Group Financial Controller",
+            summary: "Advanced detection of financial stress and royalty anomalies.",
+            icon: "trending-down",
+            tasks: [
+                { id: "FR-FFR-01", technicalProtocol: "Royalty Delay Tracker", floorAction: "Identify units with > 48h payment lag.", priority: "High", riskLevel: "High", consequence: "Network-wide cash flow strain.", proof: "Aging Report" },
+                { id: "FR-FFR-02", technicalProtocol: "Sales Suppression Anomaly", floorAction: "Audit units with high 'No-Sale' or 'Drawer-Open' counts.", priority: "High", riskLevel: "High", consequence: "Systemic royalty theft.", proof: "System Log" },
+                { id: "FR-FFR-03", technicalProtocol: "Cash Deposit Compliance", floorAction: "Match bank deposit slips against EOD cash logs.", priority: "High", riskLevel: "High", consequence: "Internal theft and risk of robbery.", proof: "Bank Slip" },
+                { id: "FR-FFR-04", technicalProtocol: "Sudden Sales-Drop Detection", floorAction: "Review units with > 20% WoW drop in revenue.", priority: "High", riskLevel: "Medium", consequence: "Hidden unit distress or local competition.", proof: "Variance Report" },
+                { id: "FR-FFR-05", technicalProtocol: "Vendor Debt Escalation", floorAction: "Check for unpaid vendor invoices at the unit level.", priority: "High", riskLevel: "High", consequence: "Supply chain cut-off for the unit.", proof: "Statement" },
+                { id: "FR-FFR-06", technicalProtocol: "Inventory Shrinkage Pattern", floorAction: "Analyze units with high raw-material vs sales variance.", priority: "High", riskLevel: "High", consequence: "Unmonitored internal theft.", proof: "Yield Sheet" },
+                { id: "FR-FFR-07", technicalProtocol: "Refund Spike Analysis", floorAction: "Audit reason codes for units with high refund volume.", priority: "High", riskLevel: "Medium", consequence: "Theft masked as customer returns.", proof: "System Report" },
+                { id: "FR-FFR-08", technicalProtocol: "Labor-Cost Variance Review", floorAction: "Audit units with labor cost > 25% of gross sales.", priority: "Medium", riskLevel: "Low", consequence: "Unit unprofitability.", proof: "Payroll Log" },
+                { id: "FR-FFR-09", technicalProtocol: "High-Discount Transaction Check", floorAction: "Audit bills with > 50% discount applied.", priority: "High", riskLevel: "Medium", consequence: "Royalty leakage via fake discounts.", proof: "Audit Sheet" },
+                { id: "FR-FFR-10", technicalProtocol: "Final Risk Sign-off", floorAction: "Weekly financial risk summary initials.", priority: "High", riskLevel: "Low", consequence: "Loss of financial oversight.", proof: "Signed Summary" }
             ]
         },
         {
