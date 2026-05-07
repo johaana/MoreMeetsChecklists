@@ -252,7 +252,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     "Bus closeouts become mandatory and traceable",
                                     "Hygiene checks become a recorded standard",
                                     "Responsibilities are assigned to specific roles",
-                                    "Managers stop waiting for verbal updates",
+                                    "Managers stop depending on verbal updates",
                                     "Execution becomes observable across teams"
                                 ] : resolution.prevents).map((item, i) => (
                                     <div key={i} className="flex items-start gap-4 group">
@@ -276,7 +276,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                                 <div className="grid grid-cols-1 gap-4">
                                     {(isSchool ? [
-                                        "Daily task checklists", "Role-based responsibilities", "Trainer notes for execution", "Consequences for missed tasks", "Live task updates", "Editable operational structure", "Multi-division visibility", "Audit-ready records"
+                                        "Daily task checklists", "Role-based responsibilities", "Trainer notes for staff", "Consequences for missed tasks", "Live task updates", "Editable operational structure", "Multi-division visibility", "Audit-ready records"
                                     ] : resolution.teamUses).map((item, i) => (
                                         <div key={i} className="flex items-center gap-4 p-4 rounded-xl border border-zinc-100 bg-white group hover:border-primary/20 transition-all">
                                             <div className="w-2 h-2 rounded-full bg-primary/20 group-hover:bg-primary transition-all" />
@@ -439,19 +439,57 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
             <PricingClient pack={pack} />
 
             {/* --- FINAL MANDATE --- */}
-            <Section className="bg-[#0F3D2E] text-white text-center py-24 md:py-48" noSpine>
-                <div className="max-w-4xl mx-auto space-y-12 md:space-y-16">
-                    <div className="space-y-6">
-                        <h2 className="text-[40px] md:text-[90px] font-black tracking-tighter uppercase italic leading-[0.85]">
-                            Run your <br/> {pack.title.toLowerCase().replace(' operations system', '').replace(' pack', '')} <br/> <span className="text-emerald-500">properly.</span>
-                        </h2>
-                        <p className="text-lg md:text-[32px] text-white/40 font-bold italic leading-tight">Zero improvisation. 100% operational control.</p>
+            <Section className="bg-[#0F3D2E] text-white py-24 md:py-48" noSpine>
+                <div className="max-w-6xl mx-auto">
+                    <div className="grid lg:grid-cols-[1.2fr,1fr] gap-12 md:gap-24 items-center">
+                        <div className="space-y-8 md:space-y-12 text-center lg:text-left">
+                            <div className="space-y-6">
+                                <h2 className="text-[40px] md:text-[80px] font-black tracking-tighter uppercase italic leading-[0.9]">
+                                    {isSchool ? (
+                                        <>Bring structure <br/> back to <br/> <span className="text-emerald-500">operations.</span></>
+                                    ) : (
+                                        <>Run your <br/> {pack.title.toLowerCase().replace(' operations system', '').replace(' pack', '')} <br/> <span className="text-emerald-500">properly.</span></>
+                                    )}
+                                </h2>
+                                <p className="text-lg md:text-[32px] text-white/40 font-bold italic leading-tight">
+                                    {isSchool ? "Less chasing. More visibility. Calmer mornings." : "Zero improvisation. 100% operational control."}
+                                </p>
+                            </div>
+                            
+                            <button className="h-16 md:h-24 px-10 md:px-20 rounded-2xl bg-[#F4A261] text-white font-black uppercase italic text-base md:text-2xl shadow-2xl hover:bg-white hover:text-black hover:scale-[1.05] active:scale-95 transition-all border-none group w-full lg:w-fit flex items-center justify-center">
+                                <Link href="#pricing" className="flex items-center gap-4">
+                                    DEPLOY SYSTEM NOW <ArrowRight className="w-8 h-8 transition-transform group-hover:translate-x-3" />
+                                </Link>
+                            </button>
+                        </div>
+
+                        {/* Outcomes Stack */}
+                        <div className="bg-white/[0.03] border border-white/10 backdrop-blur-xl p-8 md:p-12 rounded-[2.5rem] space-y-8 shadow-2xl">
+                             <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em] italic font-headline">OPERATIONAL OUTCOMES</p>
+                             <div className="space-y-4">
+                                {(isSchool ? [
+                                    "Visitor access visible",
+                                    "Bus checks verified",
+                                    "Teams aligned daily",
+                                    "Managers stop chasing",
+                                    "Daily execution tracked"
+                                ] : [
+                                    "Execution visible",
+                                    "Inventory protected",
+                                    "Gaps identified",
+                                    "Compliance secured",
+                                    "Teams accountable"
+                                ]).map((outcome, i) => (
+                                    <div key={i} className="flex items-center gap-4 group">
+                                        <div className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                            <Check className="w-3 h-3 text-[#22C55E]" />
+                                        </div>
+                                        <span className="text-lg md:text-xl font-black text-white/80 uppercase italic tracking-tight">{outcome}</span>
+                                    </div>
+                                ))}
+                             </div>
+                        </div>
                     </div>
-                    <button className="h-16 md:h-24 px-10 md:px-20 rounded-2xl bg-[#F4A261] text-white font-black uppercase italic text-base md:text-2xl shadow-2xl hover:bg-white hover:text-black hover:scale-[1.05] active:scale-95 transition-all border-none group w-full max-w-lg mx-auto flex items-center justify-center">
-                        <Link href="#pricing" className="flex items-center gap-4">
-                            DEPLOY SYSTEM NOW <ArrowRight className="w-8 h-8 transition-transform group-hover:translate-x-3" />
-                        </Link>
-                    </button>
                 </div>
             </Section>
         </div>
