@@ -42,7 +42,7 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
 
 const PulsatingStressText = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
     <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-        <span className="text-[12px] md:text-[18px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.3)] leading-tight block text-left lg:text-right">
+        <span className="text-[12px] md:text-[18px] font-black text-red-600/80 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.2)] leading-tight block text-left lg:text-right">
             {text}
         </span>
     </div>
@@ -107,12 +107,12 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </h1>
                                 <p className="text-lg md:text-[24px] italic font-medium text-zinc-400 max-w-xl leading-tight">
                                     {isSchool 
-                                        ? "Structure daily execution, student safety, and campus oversight. Operational discipline parents can feel." 
+                                        ? "Structure daily execution, student safety, and campus oversight. Bring visibility to the responsibilities schools cannot afford to miss." 
                                         : pack.description}
                                 </p>
                                 {isSchool && (
                                     <p className="text-sm md:text-base text-zinc-500 italic font-medium max-w-md border-l border-primary/20 pl-4 mt-4">
-                                        Pre-built operational infrastructure to bring structure, accountability, and visibility to every division of your institution.
+                                        Pre-built Excel + Google Sheets operating infrastructure for real school teams. No app rollout required.
                                     </p>
                                 )}
                             </div>
@@ -127,7 +127,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         { t: `${totalChecklists} Operational Divisions`, i: LayoutGrid },
                                         { t: `${totalTasks}+ Execution Checkpoints`, i: Target },
                                         { t: "Live Dashboard Included", i: Activity },
-                                        { t: "Editable .XLSX System", i: FileSpreadsheet }
+                                        { t: "Editable Operational Infrastructure", i: FileSpreadsheet }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 group">
                                             <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
@@ -141,14 +141,19 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                             </div>
 
-                            <div className="space-y-4">
-                                <Button asChild size="lg" className="w-full sm:w-auto h-16 px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white transition-all border-none group flex items-center justify-center gap-3">
-                                    <Link href="#pricing">
-                                        DEPLOY SYSTEM — ₹999 <ArrowRight className="w-6 h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
-                                    </Link>
-                                </Button>
-                                <p className="text-[9px] md:text-[11px] text-zinc-500 font-black uppercase tracking-[0.4em] italic pl-1">
-                                    ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
+                            <div className="space-y-6">
+                                <div className="space-y-4">
+                                    <Button asChild size="lg" className="w-full sm:w-auto h-16 px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white transition-all border-none group flex items-center justify-center gap-3">
+                                        <Link href="#pricing">
+                                            DEPLOY SYSTEM — ₹999 <ArrowRight className="w-6 h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
+                                        </Link>
+                                    </Button>
+                                    <p className="text-[9px] md:text-[11px] text-zinc-500 font-black uppercase tracking-[0.4em] italic pl-1">
+                                        ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
+                                    </p>
+                                </div>
+                                <p className="text-[10px] md:text-[11px] text-zinc-600 font-bold italic leading-snug max-w-sm">
+                                    Used by schools, campuses, pre-primary institutions, and operational teams managing daily execution at scale.
                                 </p>
                             </div>
                         </div>
@@ -159,9 +164,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                              </p>
                              <div className="flex flex-col gap-6 md:gap-10">
                                  {(isSchool ? [
-                                    "Child handovers becoming informal during rush hours",
-                                    "Visitor verification skipped during pickup hours",
-                                    "Playground checks being assumed, not verified",
+                                    "Child handovers becoming informal",
+                                    "Visitor verification skipped during pickup",
+                                    "Playground checks becoming verbal",
                                     "Bullying concerns staying undocumented",
                                     "Emergency readiness depending on memory"
                                  ] : findings.slice(0, 5).map((f: any) => f.title)).map((text: string, i: number) => (
@@ -381,7 +386,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         </h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
                             {isSchool 
-                                ? "Most institutions already have SOPs. The problem is execution slowly becoming verbal and inconsistent during busy days."
+                                ? "Most institutions already have SOPs. The problem is that execution slowly becomes verbal and inconsistent during busy days."
                                 : "This was designed for real teams, real shifts, and real operational pressure — not just consultants."}
                         </p>
                         {isSchool && <p className="text-zinc-950 font-black uppercase italic text-xl">MoreMeets™ converts daily responsibilities into visible execution parents can feel.</p>}
