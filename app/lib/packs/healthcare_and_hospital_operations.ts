@@ -101,7 +101,7 @@ export const healthcare_and_hospital_operations: PremiumPack = {
         {
             title: "Surgical Safety (WHO)",
             department: "Surgery",
-            frequency: "Per Show",
+            frequency: "Per Procedure",
             role: "OT In-charge",
             summary: "Zero-fail operating theater protocols.",
             icon: "shield-check",
@@ -110,7 +110,12 @@ export const healthcare_and_hospital_operations: PremiumPack = {
                 { id: "H-SUR-02", technicalProtocol: "Swab & Needle Count", floorAction: "Dual-person count of all surgical items pre and post-op.", priority: "High", riskLevel: "High", consequence: "Retained foreign object in patient.", proof: "Count Sheet" },
                 { id: "H-SUR-03", technicalProtocol: "Sterility Tape Audit", floorAction: "Confirm black-strip indication on all instrument sets.", priority: "High", riskLevel: "High", consequence: "Post-op sepsis outbreak.", proof: "Visual Check" },
                 { id: "H-SUR-04", technicalProtocol: "Anesthesia Machine QC", floorAction: "Verify leak-test and alarm function on machine.", priority: "High", riskLevel: "High", consequence: "Anesthesia failure/death.", proof: "System Log" },
-                { id: "H-SUR-05", technicalProtocol: "OT Temperature/Humidity", floorAction: "Log OT temp (20°C) and Humidity (50%).", priority: "Medium", riskLevel: "Low", consequence: "Infection risk/Wound issues.", proof: "BMS Reading" }
+                { id: "H-SUR-05", technicalProtocol: "OT Temperature/Humidity", floorAction: "Log OT temp (20°C) and Humidity (50%).", priority: "Medium", riskLevel: "Low", consequence: "Infection risk/Wound issues.", proof: "BMS Reading" },
+                { id: "H-SUR-06", technicalProtocol: "Surgical Site Marking", floorAction: "Verify surgical site is marked by the consultant.", priority: "High", riskLevel: "High", consequence: "Wrong-site surgery.", proof: "Visual Check" },
+                { id: "H-SUR-07", technicalProtocol: "OT Door Discipline", floorAction: "Monitor and minimize traffic in and out of OT.", priority: "Low", riskLevel: "Medium", consequence: "Break in sterility and infection risk.", proof: "Patrol Log" },
+                { id: "H-SUR-08", technicalProtocol: "Cautery Pad Placement", floorAction: "Verify correct placement of grounding pad.", priority: "High", riskLevel: "High", consequence: "Surgical site burns.", proof: "Visual Check" },
+                { id: "H-SUR-09", technicalProtocol: "Specimen Labeling Pulse", floorAction: "Dual-verify patient name on pathology jars.", priority: "High", riskLevel: "Medium", consequence: "Mismatched biopsy results.", proof: "Label Audit" },
+                { id: "H-SUR-10", technicalProtocol: "OT Deep-Clean Cycle", floorAction: "Log weekly carbolic/fogging completion.", priority: "High", riskLevel: "High", consequence: "Systemic OT infection.", proof: "Cleaning Log" }
             ]
         },
         {
@@ -125,7 +130,12 @@ export const healthcare_and_hospital_operations: PremiumPack = {
                 { id: "H-PHM-02", technicalProtocol: "Cold Chain Validation", floorAction: "Log fridge temp twice daily (Target 2°C - 8°C).", priority: "High", riskLevel: "High", consequence: "Vaccine/Insulin failure.", proof: "Temp Log" },
                 { id: "H-PHM-03", technicalProtocol: "LASA Drug Segregation", floorAction: "Verify 'Look-Alike' drugs are stored separately.", priority: "High", riskLevel: "High", consequence: "Fatal medication mix-up.", proof: "Visual Audit" },
                 { id: "H-PHM-04", technicalProtocol: "Expiry Sweep Protocol", floorAction: "Remove all items with < 3 months shelf life.", priority: "High", riskLevel: "Medium", consequence: "Dispensing expired drugs.", proof: "Expiry Register" },
-                { id: "H-PHM-05", technicalProtocol: "High-Alert Labeling", floorAction: "Ensure red labels are on all concentrated electrolytes.", priority: "High", riskLevel: "High", consequence: "Accidental infusion (Fatal).", proof: "Audit Check" }
+                { id: "H-PHM-05", technicalProtocol: "High-Alert Labeling", floorAction: "Ensure red labels are on all concentrated electrolytes.", priority: "High", riskLevel: "High", consequence: "Accidental infusion (Fatal).", proof: "Audit Check" },
+                { id: "H-PHM-06", technicalProtocol: "Stock Level Integrity", floorAction: "Check par levels of life-saving emergency drugs.", priority: "High", riskLevel: "Medium", consequence: "Drug out-of-stock during crisis.", proof: "Stock Sheet" },
+                { id: "H-PHM-07", technicalProtocol: "Dispensing Accuracy Audit", floorAction: "Spot check 10 prescriptions for dispensing errors.", priority: "High", riskLevel: "High", consequence: "Patient poisoning.", proof: "Audit Sheet" },
+                { id: "H-PHM-08", technicalProtocol: "Antibiotic Stewardship", floorAction: "Verify authorization for restricted antibiotics.", priority: "Medium", riskLevel: "Medium", consequence: "Antimicrobial resistance.", proof: "Prescription Audit" },
+                { id: "H-PHM-09", technicalProtocol: "Pharmacy Air Quality", floorAction: "Check humidity levels in bulk store.", priority: "Low", riskLevel: "Low", consequence: "Drug degradation.", proof: "Hygrometer Log" },
+                { id: "H-PHM-10", technicalProtocol: "Pharmacy Secure Lockdown", floorAction: "Physically confirm vault and store-room locks.", priority: "High", riskLevel: "High", consequence: "Unauthorized drug access.", proof: "Visual Audit" }
             ]
         },
         {
@@ -140,7 +150,12 @@ export const healthcare_and_hospital_operations: PremiumPack = {
                 { id: "H-WST-02", technicalProtocol: "Sharps Container Integrity", floorAction: "Check sharps bins for 75% fill and secure lids.", priority: "High", riskLevel: "High", consequence: "Needle-stick injuries to staff.", proof: "Visual Check" },
                 { id: "H-WST-03", technicalProtocol: "Spillage Kit Readiness", floorAction: "Check contents of chemical and blood spill kits.", priority: "High", riskLevel: "High", consequence: "Toxic exposure during spill.", proof: "Stock Check" },
                 { id: "H-WST-04", technicalProtocol: "ETP/STP Vitals Check", floorAction: "Monitor Effluent Plant pH and flow meters.", priority: "Medium", riskLevel: "Medium", consequence: "Environmental law violation.", proof: "Plant Log" },
-                { id: "H-WST-05", technicalProtocol: "Pest Bait Mapping", floorAction: "Verify rodent bait stations in back-alley.", priority: "Medium", riskLevel: "Low", consequence: "Infestation.", proof: "Pest Log" }
+                { id: "H-WST-05", technicalProtocol: "Pest Bait Mapping", floorAction: "Verify rodent bait stations in back-alley.", priority: "Medium", riskLevel: "Low", consequence: "Infestation.", proof: "Pest Log" },
+                { id: "H-WST-06", technicalProtocol: "Hazardous Chemical Labeling", floorAction: "Check MSDS availability for OT cleaning chemicals.", priority: "Low", riskLevel: "Medium", consequence: "Staff health risk.", proof: "Visual Audit" },
+                { id: "H-WST-07", technicalProtocol: "Airborne Isolation Pressure", floorAction: "Test negative pressure in TB/Infection isolation rooms.", priority: "High", riskLevel: "High", consequence: "Cross-infection of ward.", proof: "Meter Reading" },
+                { id: "H-WST-08", technicalProtocol: "Water Filter Backwash", floorAction: "Log backwash cycle for main hospital filtration.", priority: "Medium", riskLevel: "Low", consequence: "Waterborne bacteria spread.", proof: "Wrench Log" },
+                { id: "H-WST-09", technicalProtocol: "Noise Pollution Patrol", floorAction: "Monitor dB levels in 'Silent Zones' (Target < 45dB).", priority: "Low", riskLevel: "Low", consequence: "Patient stress and slow recovery.", proof: "Sound Meter" },
+                { id: "H-WST-10", technicalProtocol: "BMW Handover Signature", floorAction: "Verify manifest for municipal waste pickup.", priority: "High", riskLevel: "High", consequence: "Legal liability for illegal dumping.", proof: "Manifest Slip" }
             ]
         },
         {
@@ -155,7 +170,12 @@ export const healthcare_and_hospital_operations: PremiumPack = {
                 { id: "H-QLT-02", technicalProtocol: "Staff Health Pulse", floorAction: "Verify medical certs for 100% of F&B handlers.", priority: "Medium", riskLevel: "Medium", consequence: "Infection risk to patients.", proof: "Med File" },
                 { id: "H-QLT-03", technicalProtocol: "Hand-Hygiene Compliance Audit", floorAction: "Observe staff sanitization frequency in ICU.", priority: "High", riskLevel: "High", consequence: "High-HAI (Infection) rates.", proof: "Audit Sheet" },
                 { id: "H-QLT-04", technicalProtocol: "Patient Feedback Sentiment", floorAction: "Analyze Google/BMS keywords for recurring issues.", priority: "Medium", riskLevel: "Low", consequence: "Reputational damage.", proof: "CSAT Report" },
-                { id: "H-QLT-05", technicalProtocol: "Safety Policy Display", floorAction: "Confirm POSH and Safety charts are posted in staff zones.", priority: "Low", riskLevel: "Low", consequence: "Legal liability.", proof: "Photo" }
+                { id: "H-QLT-05", technicalProtocol: "Safety Policy Display", floorAction: "Confirm POSH and Safety charts are posted in staff zones.", priority: "Low", riskLevel: "Low", consequence: "Legal liability.", proof: "Photo" },
+                { id: "H-QLT-06", technicalProtocol: "Nursing Competency Audit", floorAction: "Random quiz of 5 nurses on 'High-Alert' drugs.", priority: "Medium", riskLevel: "High", consequence: "Slipping clinical standards.", proof: "Quiz Log" },
+                { id: "H-QLT-07", technicalProtocol: "Emergency Exit Lighting", floorAction: "Test 100% of battery-run exit signs.", priority: "High", riskLevel: "High", consequence: "Panic during power flip.", proof: "Test Log" },
+                { id: "H-QLT-08", technicalProtocol: "Policy Review Milestone", floorAction: "Check for any SOPs with >12 months since review.", priority: "Low", riskLevel: "Low", consequence: "Working with outdated standards.", proof: "Document Matrix" },
+                { id: "H-QLT-09", technicalProtocol: "Uniform Laundry Turnaround", floorAction: "Audit vendor turnaround time (Target < 24h).", priority: "Low", riskLevel: "Low", consequence: "Dirty staff appearance.", proof: "Laundry Log" },
+                { id: "H-QLT-10", technicalProtocol: "Final Board Quality Sign-off", floorAction: "Strategic summary initials.", priority: "High", riskLevel: "Low", consequence: "Loss of oversight.", proof: "Signed Summary" }
             ]
         },
         {
@@ -170,7 +190,12 @@ export const healthcare_and_hospital_operations: PremiumPack = {
                 { id: "H-OPD-02", technicalProtocol: "Wait-Time Pulse", floorAction: "Monitor OPD token system for > 45m delays.", priority: "Medium", riskLevel: "Low", consequence: "Patient walk-outs.", proof: "Token Report" },
                 { id: "H-OPD-03", technicalProtocol: "Diagnostic TAT Tracking", floorAction: "Spot-check 5 lab reports for on-time delivery.", priority: "Medium", riskLevel: "Medium", consequence: "Delayed treatment decisions.", proof: "Lab Dashboard" },
                 { id: "H-OPD-04", technicalProtocol: "OPD Hygiene Audit", floorAction: "Hourly check of OPD restrooms and drinking water.", priority: "High", riskLevel: "Low", consequence: "Negative reviews.", proof: "Hourly Sheet" },
-                { id: "H-OPD-05", technicalProtocol: "Reception Grooming", floorAction: "Audit front-desk uniforms and name-tags.", priority: "Low", riskLevel: "Low", consequence: "Brand dilution.", proof: "Briefing Log" }
+                { id: "H-OPD-05", technicalProtocol: "Reception Grooming", floorAction: "Audit front-desk uniforms and name-tags.", priority: "Low", riskLevel: "Low", consequence: "Brand dilution.", proof: "Briefing Log" },
+                { id: "H-OPD-06", technicalProtocol: "OPD Ambiance Check", floorAction: "Verify scent and music in consultation corridors.", priority: "Low", riskLevel: "Low", consequence: "Unprofessional environment.", proof: "Daily Log" },
+                { id: "H-OPD-07", technicalProtocol: "Appointment Channel Sync", floorAction: "Reconcile web appointments against physical diary.", priority: "High", riskLevel: "Low", consequence: "Double-booking conflicts.", proof: "System Match" },
+                { id: "H-OPD-08", technicalProtocol: "Diagnostic Equipment Reset", floorAction: "Verify calibration of BP monitors in 100% of rooms.", priority: "High", riskLevel: "Medium", consequence: "False vitals readings.", proof: "Calibration Note" },
+                { id: "H-OPD-09", technicalProtocol: "Stationery Par-Levels", floorAction: "Check stock of prescriptions and lab forms.", priority: "Low", riskLevel: "Low", consequence: "Admin friction during service.", proof: "Stock Check" },
+                { id: "H-OPD-10", technicalProtocol: "OPD Shift Closure", floorAction: "EOD cleanup and log-file sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of duty control.", proof: "Signed Summary" }
             ]
         },
         {
@@ -185,7 +210,12 @@ export const healthcare_and_hospital_operations: PremiumPack = {
                 { id: "H-ENG-02", technicalProtocol: "UPS Load Testing", floorAction: "Test ICU/OT UPS bank for 10-min battery run.", priority: "High", riskLevel: "High", consequence: "Blackout during critical care.", proof: "Voltage Log" },
                 { id: "H-ENG-03", technicalProtocol: "Medical Vacuum Pressure", floorAction: "Verify suction pressure at ward delivery points.", priority: "High", riskLevel: "High", consequence: "Patient choking hazard.", proof: "Gauge Log" },
                 { id: "H-ENG-04", technicalProtocol: "Dialysis RO Quality", floorAction: "Verify RO output TDS for Dialysis (Target < 50).", priority: "High", riskLevel: "High", consequence: "Blood contamination crisis.", proof: "TDS Reading" },
-                { id: "H-ENG-05", technicalProtocol: "Chiller Panel Scan", floorAction: "Heat-scan electrical panels for MRI/CT suites.", priority: "High", riskLevel: "High", consequence: "Machine failure/Fire.", proof: "IR Log" }
+                { id: "H-ENG-05", technicalProtocol: "Chiller Panel Scan", floorAction: "Heat-scan electrical panels for MRI/CT suites.", priority: "High", riskLevel: "High", consequence: "Machine failure/Fire.", proof: "IR Log" },
+                { id: "H-ENG-06", technicalProtocol: "Fuel Inventory Audit", floorAction: "Verify 48-hour fuel backup for DG sets.", priority: "High", riskLevel: "High", consequence: "Total infrastructure collapse.", proof: "Dip-stick Log" },
+                { id: "H-ENG-07", technicalProtocol: "Air Compressor Vitals", floorAction: "Log pressure of medical air for ventilators.", priority: "High", riskLevel: "High", consequence: "Patient respiratory support failure.", proof: "System Screen" },
+                { id: "H-ENG-08", technicalProtocol: "Plumbing Leak Patrol", floorAction: "Inspect ceiling voids for plumbing leaks.", priority: "Medium", riskLevel: "Medium", consequence: "Mould and structural damage.", proof: "Walkthrough" },
+                { id: "H-ENG-09", technicalProtocol: "LOTO Enforcement", floorAction: "Verify 100% lockout on high-voltage repairs.", priority: "High", riskLevel: "High", consequence: "Fatal maintenance accident.", proof: "Permit Register" },
+                { id: "H-ENG-10", technicalProtocol: "Technical Closure", floorAction: "Log all P1 breakdowns for morning alert.", priority: "High", riskLevel: "Low", consequence: "Unmonitored asset decay.", proof: "Signed Log" }
             ]
         },
         {
@@ -200,7 +230,12 @@ export const healthcare_and_hospital_operations: PremiumPack = {
                 { id: "H-SEC-02", technicalProtocol: "Visitor ID Governance", floorAction: "Audit visitor register for 100% ID capture.", priority: "High", riskLevel: "High", consequence: "Unauthorized person access.", proof: "Registry Audit" },
                 { id: "H-SEC-03", technicalProtocol: "Fire Exit Path Clear", floorAction: "Verify all fire escapes are unlocked and clear.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment.", proof: "Patrol Log" },
                 { id: "H-SEC-04", technicalProtocol: "Guard Sobriety Check", floorAction: "Random alcohol check for night shift security.", priority: "High", riskLevel: "High", consequence: "Vulnerable campus perimeter.", proof: "Test Note" },
-                { id: "H-SEC-05", technicalProtocol: "Morgue Access Log", floorAction: "Verify dual-log entry for mortuary access.", priority: "High", riskLevel: "High", consequence: "Legal/Dignity disaster.", proof: "Register Audit" }
+                { id: "H-SEC-05", technicalProtocol: "Morgue Access Log", floorAction: "Verify dual-log entry for mortuary access.", priority: "High", riskLevel: "High", consequence: "Legal/Dignity disaster.", proof: "Register Audit" },
+                { id: "H-SEC-06", technicalProtocol: "Ambulance Landing Zone", floorAction: "Ensure Helipad/Porch is clear of vehicles.", priority: "High", riskLevel: "High", consequence: "Delayed critical patient intake.", proof: "Visual Check" },
+                { id: "H-SEC-07", technicalProtocol: "Asset Bag-Check", floorAction: "Random search of staff bags at exit.", priority: "Low", riskLevel: "Medium", consequence: "Internal shrinkage.", proof: "Registry Note" },
+                { id: "H-SEC-08", technicalProtocol: "Perimeter Lighting Audit", floorAction: "Verify 100% of night security lighting.", priority: "Medium", riskLevel: "Low", consequence: "Theft-prone blind spots.", proof: "Visual Audit" },
+                { id: "H-SEC-09", technicalProtocol: "Panic Button Test", floorAction: "Test buttons at ER and Pharmacy counters.", priority: "High", riskLevel: "High", consequence: "Security failure during aggression.", proof: "Test Log" },
+                { id: "H-SEC-10", technicalProtocol: "Final Perimeter Seal", floorAction: "EOD deployment sign-off.", priority: "High", riskLevel: "Low", consequence: "Unsecured property.", proof: "Signed Summary" }
             ]
         },
         {
@@ -215,7 +250,12 @@ export const healthcare_and_hospital_operations: PremiumPack = {
                 { id: "H-FIN-02", technicalProtocol: "Consumable Audit", floorAction: "Match ward usage list against final bill.", priority: "Medium", riskLevel: "Low", consequence: "Silent profit leakage.", proof: "Bill Audit" },
                 { id: "H-FIN-03", technicalProtocol: "Revenue Reconcile", floorAction: "Match cash in hand to HIS daily report.", priority: "High", riskLevel: "High", consequence: "Internal cashier theft.", proof: "Settlement Log" },
                 { id: "H-FIN-04", technicalProtocol: "Discount Code Audit", floorAction: "Review reason codes for all manual overrides.", priority: "Medium", riskLevel: "Medium", consequence: "Margin erosion.", proof: "System Log" },
-                { id: "H-FIN-05", technicalProtocol: "Voided Bill Review", floorAction: "Manager sign-off on 100% of cancelled bills.", priority: "High", riskLevel: "High", consequence: "Theft masked as errors.", proof: "POS Audit" }
+                { id: "H-FIN-05", technicalProtocol: "Voided Bill Review", floorAction: "Manager sign-off on 100% of cancelled bills.", priority: "High", riskLevel: "High", consequence: "Theft masked as errors.", proof: "POS Audit" },
+                { id: "H-FIN-06", technicalProtocol: "Billing TAT Triage", floorAction: "Monitor time from discharge to bill generation.", priority: "Medium", riskLevel: "Low", consequence: "Bed turnaround gridlock.", proof: "TAT Dashboard" },
+                { id: "H-FIN-07", technicalProtocol: "Corporate Bill Submission", floorAction: "Verify 100% of credit bills dispatched in < 24h.", priority: "Medium", riskLevel: "Low", consequence: "Delayed cash flow.", proof: "Registry Audit" },
+                { id: "H-FIN-08", technicalProtocol: "Petty Cash Blind Count", floorAction: "Witness witnessed seal of cash bags.", priority: "High", riskLevel: "High", consequence: "Loss of profit.", proof: "Signed Note" },
+                { id: "H-FIN-09", technicalProtocol: "Unbilled Pharmacy Dues", floorAction: "Review 'Open' pharmacy bills for admitted patients.", priority: "High", riskLevel: "Medium", consequence: "Revenue leakage at discharge.", proof: "System Scan" },
+                { id: "H-FIN-10", technicalProtocol: "Final Daily Settlement", floorAction: "EOD financial стратегик initials.", priority: "High", riskLevel: "Low", consequence: "Loss of financial control.", proof: "Signed Summary" }
             ]
         },
         {
@@ -230,10 +270,13 @@ export const healthcare_and_hospital_operations: PremiumPack = {
                 { id: "H-HR-02", technicalProtocol: "BLS/ACLS Training", floorAction: "Audit staff matrix: target 100% ACLS for ICU.", priority: "High", riskLevel: "High", consequence: "Rescue failure.", proof: "Matrix File" },
                 { id: "H-HR-03", technicalProtocol: "POSH Policy Display", floorAction: "Confirm policy is posted in staff change-rooms.", priority: "High", riskLevel: "High", consequence: "Legal liability.", proof: "Photo" },
                 { id: "H-HR-04", technicalProtocol: "Uniform Laundry Cycle", floorAction: "Inspect staff laundry turnaround (Target < 24h).", priority: "Low", riskLevel: "Low", consequence: "Dirty staff appearance.", proof: "Laundry Log" },
-                { id: "H-HR-05", technicalProtocol: "Final Monthly HR Matrix", floorAction: "Execute monthly competency sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of admin control.", proof: "Signed Matrix" }
+                { id: "H-HR-05", technicalProtocol: "Staff Health Matrix", floorAction: "Verify annual medical checkups for critical handlers.", priority: "Medium", riskLevel: "Medium", consequence: "Infection risk.", proof: "Health Records" },
+                { id: "H-HR-06", technicalProtocol: "Overtime (OT) Guard", floorAction: "Review nursing shifts > 12 hours.", priority: "Medium", riskLevel: "High", consequence: "Fatigue-driven clinical errors.", proof: "Roster Audit" },
+                { id: "H-HR-07", technicalProtocol: "Training Feed-back Pulse", floorAction: "Audit effectiveness score of today's clinical CME.", priority: "Low", riskLevel: "Low", consequence: "Wasted training spend.", proof: "Feed-back Log" },
+                { id: "H-HR-08", technicalProtocol: "Staff Grievance Cycle", floorAction: "Hold random 1-on-1 with nursing assistants.", priority: "Low", riskLevel: "Low", consequence: "High staff churn.", proof: "Meeting Note" },
+                { id: "H-HR-09", technicalProtocol: "Vaccination Matrix", floorAction: "Check Hep-B coverage for 100% of waste handlers.", priority: "High", riskLevel: "High", consequence: "Occupational disease suit.", proof: "Vaccine File" },
+                { id: "H-HR-10", technicalProtocol: "Final Monthly HR Matrix", floorAction: "Execute monthly competency sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of admin control.", proof: "Signed Matrix" }
             ]
         }
     ]
 };
-
-    
