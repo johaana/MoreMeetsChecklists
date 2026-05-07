@@ -63,16 +63,16 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     const resolution = packResolutions[pack.id] || defaultResolution;
 
     const displayChecklists = isSchool ? [
-        { title: "Principal Governance & Child Safety", summary: "POCSO awareness, escalation visibility, institutional oversight" },
-        { title: "Early Years & Pre-Primary Welfare", summary: "Pick-up control, hygiene discipline, toddler safety routines" },
-        { title: "Student Welfare & Counseling", summary: "Bullying visibility, emotional wellbeing, escalation awareness" },
-        { title: "Transport & Bus Safety", summary: "Daily route readiness and child handover accountability" },
-        { title: "Visitor & Campus Security", summary: "Gate control, blind-spot monitoring, emergency preparedness" },
-        { title: "Canteen & Food Safety", summary: "Hygiene verification, allergen awareness, FSSAI discipline" },
-        { title: "Science Labs & Digital Safety", summary: "Lab readiness, hazardous storage, IT oversight" },
-        { title: "Janitorial & Infrastructure Readiness", summary: "Daily sanitation and infrastructure uptime visibility" },
-        { title: "Medical Readiness", summary: "Emergency medication and infirmary preparedness" },
-        { title: "Admissions & Administrative Operations", summary: "Parent coordination, records, and operational continuity" }
+        { title: "Principal Governance & Child Safety", summary: "POCSO awareness, escalation visibility, and high-level institutional oversight.", role: "Principal" },
+        { title: "Early Years & Pre-Primary Welfare", summary: "Pick-up control, hygiene discipline, and toddler safety routines.", role: "Head of Pre-Primary" },
+        { title: "Student Welfare & Counseling", summary: "Bullying visibility, emotional wellbeing, and escalation awareness.", role: "School Counselor" },
+        { title: "Transport & Bus Safety", summary: "Daily route readiness and student handover accountability.", role: "Transport Manager" },
+        { title: "Visitor & Campus Security", summary: "Gate control, blind-spot monitoring, and emergency preparedness.", role: "Security Supervisor" },
+        { title: "Canteen & Food Safety", summary: "Hygiene verification, allergen awareness, and FSSAI discipline.", role: "Canteen Manager" },
+        { title: "Science Labs & Digital Safety", summary: "Lab readiness, hazardous storage, and IT oversight.", role: "Lab Coordinator" },
+        { title: "Janitorial & Infrastructure Readiness", summary: "Daily sanitation standards and infrastructure uptime visibility.", role: "Facility Supervisor" },
+        { title: "Medical Readiness", summary: "Emergency medication management and infirmary preparedness.", role: "School Nurse" },
+        { title: "Admissions & Administrative Operations", summary: "Parent coordination, records integrity, and operational continuity.", role: "Registrar" }
     ] : pack.checklists;
 
     return (
@@ -90,11 +90,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <div className="space-y-10 w-full">
                             <div className="space-y-4">
                                 <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-6 py-2 rounded-none bg-primary/5">
-                                    SOVEREIGN ENGINE V11.9
+                                    {isSchool ? "INSTITUTIONAL INFRASTRUCTURE" : "SOVEREIGN OPERATING ENGINE"}
                                 </Badge>
                                 <h1 className={cn(
                                     "font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white",
-                                    isSchool ? "text-[32px] md:text-[64px]" : "text-[36px] md:text-[80px]"
+                                    isSchool ? "text-[36px] md:text-[64px]" : "text-[36px] md:text-[80px]"
                                 )}>
                                     {isSchool ? (
                                         <>SCHOOL <span style={{ color: BRAND_GREEN }}>OPERATING SYSTEM</span></>
@@ -107,12 +107,12 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </h1>
                                 <p className="text-lg md:text-[24px] italic font-medium text-zinc-400 max-w-xl leading-tight">
                                     {isSchool 
-                                        ? "Stop depending on memory for transport safety, visitor control, hygiene, and daily school operations." 
+                                        ? "Structure daily execution, student safety, and campus oversight. Operational discipline parents can feel." 
                                         : pack.description}
                                 </p>
                                 {isSchool && (
                                     <p className="text-sm md:text-base text-zinc-500 italic font-medium max-w-md border-l border-primary/20 pl-4 mt-4">
-                                        Pre-built operational infrastructure for schools, pre-primary institutions, and educational campuses. Built to bring structure, accountability, and visibility to everyday execution.
+                                        Pre-built operational infrastructure to bring structure, accountability, and visibility to every division of your institution.
                                     </p>
                                 )}
                             </div>
@@ -124,8 +124,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
                                     {[
-                                        { t: `${totalChecklists} Operational Areas`, i: LayoutGrid },
-                                        { t: `${totalTasks}+ Operational Checkpoints`, i: Target },
+                                        { t: `${totalChecklists} Operational Divisions`, i: LayoutGrid },
+                                        { t: `${totalTasks}+ Execution Checkpoints`, i: Target },
                                         { t: "Live Dashboard Included", i: Activity },
                                         { t: "Editable .XLSX System", i: FileSpreadsheet }
                                     ].map((item, i) => (
@@ -148,7 +148,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     </Link>
                                 </Button>
                                 <p className="text-[9px] md:text-[11px] text-zinc-500 font-black uppercase tracking-[0.4em] italic pl-1">
-                                    ONE-TIME PURCHASE • NO SUBSCRIPTIONS
+                                    ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
                                 </p>
                             </div>
                         </div>
@@ -159,16 +159,16 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                              </p>
                              <div className="flex flex-col gap-6 md:gap-10">
                                  {(isSchool ? [
-                                    "Visitor access becoming informal during rush hours",
-                                    "Transport checks being verbally assumed",
-                                    "Kitchen hygiene logs skipped during busy mornings",
-                                    "Emergency readiness becoming inconsistent",
-                                    "Student welfare concerns going unnoticed"
+                                    "Child handovers becoming informal during rush hours",
+                                    "Visitor verification skipped during pickup hours",
+                                    "Playground checks being assumed, not verified",
+                                    "Bullying concerns staying undocumented",
+                                    "Emergency readiness depending on memory"
                                  ] : findings.slice(0, 5).map((f: any) => f.title)).map((text: string, i: number) => (
                                     <div key={i} className="space-y-1">
                                         <PulsatingStressText text={text} delay={`${i * 0.2}s`} />
                                         <p className="text-[10px] md:text-[11px] text-zinc-500 font-bold uppercase tracking-tight leading-tight max-w-xs lg:ml-auto">
-                                            {isSchool ? "Common Institutional Risk" : "Sovereign Technical Finding"}
+                                            {isSchool ? "Risk to Student Welfare" : "Forensic Technical Finding"}
                                         </p>
                                     </div>
                                  ))}
@@ -190,7 +190,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         </h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
                             {isSchool 
-                                ? "Schools rarely fail because of one catastrophic event. They fail when routine responsibilities slowly become informal, verbal, and dependent on memory."
+                                ? "Schools rarely fail because of one catastrophic event. They fail when routine responsibilities slowly become informal, verbal, and dependent on individual memory."
                                 : pack.description}
                         </p>
                     </div>
@@ -198,10 +198,10 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 relative">
                         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />
                         {(isSchool ? [
-                            { title: "Missed Transport Checks", description: "Rushed mornings lead to verbal assumptions instead of physical 'child-left-behind' sweeps." },
-                            { title: "Unverified Visitor Access", description: "Entry points become informal during drop-off and pickup surges, creating perimeter gaps." },
-                            { title: "Delayed Infrastructure Maintenance", description: "Playground and electrical checks drift into the background until an incident occurs." },
-                            { title: "Hygiene Standard Drift", description: "Canteen and washroom protocols collapse during peak hours without logged accountability." }
+                            { title: "Verbal Assumptions", description: "Rushed mornings lead to verbal check-ins instead of physical 'child-left-behind' sweeps and route verification." },
+                            { title: "Perimeter Gaps", description: "Visitor verification becomes inconsistent during peak arrival and dispersal surges, creating unmonitored entry windows." },
+                            { title: "Maintenance Drift", description: "Playground structural checks and electrical thermal scans often drift into the background until an incident triggers an audit." },
+                            { title: "Undocumented Concerns", description: "Welfare signals or subtle markers of student distress often stay as hallway conversations instead of being structured for intervention." }
                         ] : findings).map((point: any, index: number) => (
                             <div key={index} className="flex flex-col gap-6 p-10 border border-zinc-100 bg-zinc-50/30 rounded-[2rem] hover:bg-white hover:shadow-xl transition-all duration-500 relative group">
                                 <div className="absolute top-4 right-4 opacity-5 group-hover:opacity-10 transition-opacity">
@@ -235,7 +235,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         </h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
                             {isSchool 
-                                ? "MoreMeets™ converts operational dependence on memory into daily institutional control. Every critical function is converted into assigned execution, logged accountability, and repeatable operational discipline."
+                                ? "MoreMeets™ converts operational dependence on memory into daily institutional control. Every critical function is converted into assigned execution, logged accountability, and repeatable discipline."
                                 : "MoreMeets™ converts operational dependence on memory into daily institutional control."}
                         </p>
                     </div>
@@ -244,16 +244,16 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />
                         <div className="space-y-8 p-10 border-l-4 border-primary bg-white shadow-sm rounded-r-[2rem] text-left">
                             <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">
-                                {isSchool ? "WHAT CHANGES DAILY" : "THE OPERATIONAL SHIFT"}
+                                {isSchool ? "DAILY OPERATIONAL SHIFTS" : "THE OPERATIONAL SHIFT"}
                             </p>
                             <div className="space-y-6">
                                 {(isSchool ? [
-                                    "Visitor access becomes logged and visible",
+                                    "Visitor access becomes logged and verifiable",
                                     "Bus closeouts become mandatory and traceable",
-                                    "Hygiene checks become documented",
-                                    "Responsibilities become assigned by role",
-                                    "Managers stop depending on verbal updates",
-                                    "Daily execution becomes visible across teams"
+                                    "Hygiene checks become a recorded standard",
+                                    "Responsibilities are assigned to specific roles",
+                                    "Managers stop waiting for verbal updates",
+                                    "Execution becomes observable across teams"
                                 ] : resolution.prevents).map((item, i) => (
                                     <div key={i} className="flex items-start gap-4 group">
                                         <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
@@ -276,7 +276,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                                 <div className="grid grid-cols-1 gap-4">
                                     {(isSchool ? [
-                                        "Daily task checklists", "Role-based responsibilities", "Trainer notes for staff", "Consequences for missed tasks", "Live task updates", "Editable operational structure", "Multi-branch visibility", "Audit-ready records"
+                                        "Daily task checklists", "Role-based responsibilities", "Trainer notes for execution", "Consequences for missed tasks", "Live task updates", "Editable operational structure", "Multi-division visibility", "Audit-ready records"
                                     ] : resolution.teamUses).map((item, i) => (
                                         <div key={i} className="flex items-center gap-4 p-4 rounded-xl border border-zinc-100 bg-white group hover:border-primary/20 transition-all">
                                             <div className="w-2 h-2 rounded-full bg-primary/20 group-hover:bg-primary transition-all" />
@@ -298,7 +298,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter">
                             {isSchool ? "Monday Morning" : "What changes on Monday"}
                         </h2>
-                        {isSchool && <p className="text-zinc-500 italic font-bold text-lg">The school day starts differently.</p>}
+                        {isSchool && <p className="text-zinc-500 italic font-bold text-lg">The school day starts with institutional order.</p>}
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-6 md:gap-10">
@@ -329,13 +329,13 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
             <Section className="bg-zinc-50/30">
                 <div className="space-y-20">
                     <div className="text-center space-y-6">
-                        <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2.5 rounded-none">System Architecture</Badge>
+                        <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2.5 rounded-none">Institutional coverage</Badge>
                         <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
-                            {isSchool ? "Operational Coverage" : "Module directory"}
+                            {isSchool ? "Operational framework" : "Module directory"}
                         </h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
                             {isSchool 
-                                ? "Institutional coverage across safety, compliance, administration, and student welfare."
+                                ? "Comprehensive oversight across safety, compliance, administration, and student welfare."
                                 : "Institutional coverage across safety, compliance, administration, infrastructure, and daily execution."}
                         </p>
                     </div>
@@ -346,15 +346,15 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 -mr-12 -mt-12 rounded-full blur-2xl opacity-0 group-hover:opacity-10 transition-opacity" />
                                 <div className="flex justify-between items-center border-b border-zinc-100 pb-4">
                                     <span className="text-[10px] font-black text-zinc-400 tracking-[0.3em]">
-                                        {isSchool ? `FUNCTION_0${index + 1}` : `MODULE_ID: 0${index + 1}`}
+                                        {isSchool ? `FUNCTION_0${index + 1}` : `DIVISION_0${index + 1}`}
                                     </span>
                                     <div className="flex items-center gap-2">
-                                        <Target className="w-3.5 h-3.5 text-primary/40" />
-                                        <span className="text-[10px] font-black text-primary uppercase tracking-widest">{(checklist as any).tasks?.length || 10} POINTS</span>
+                                        <ShieldCheck className="w-3.5 h-3.5 text-primary/40" />
+                                        <span className="text-[10px] font-black text-primary uppercase tracking-widest">AUDIT READY</span>
                                     </div>
                                 </div>
                                 <div className="space-y-2 text-left">
-                                    <p className="text-[9px] font-black uppercase text-zinc-400 tracking-[0.4em] font-headline italic text-left">{checklist.role || "Administrator"}</p>
+                                    <p className="text-[9px] font-black uppercase text-zinc-400 tracking-[0.4em] font-headline italic text-left">ROLE: {checklist.role || "Administrator"}</p>
                                     <h4 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-[#0B0F14] group-hover:text-primary transition-colors leading-tight text-left">
                                         {checklist.title.replace('System', '').replace('Command', '').replace('Operations', '').replace('Protocol', '')}
                                     </h4>
@@ -363,7 +363,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     {checklist.summary}
                                 </p>
                                 <div className="pt-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-300 group-hover:text-primary transition-colors text-left">
-                                    <ShieldCheck className="w-4 h-4" /> AUDIT-READY PROTOCOL
+                                    <Target className="w-4 h-4" /> PERFORMANCE TRACKED
                                 </div>
                             </div>
                         ))}
@@ -381,10 +381,10 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         </h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
                             {isSchool 
-                                ? "Schools already have SOPs. The problem is that execution slowly becomes verbal, informal, and dependent on people remembering things during busy days."
+                                ? "Most institutions already have SOPs. The problem is execution slowly becoming verbal and inconsistent during busy days."
                                 : "This was designed for real teams, real shifts, and real operational pressure — not just consultants."}
                         </p>
-                        {isSchool && <p className="text-zinc-950 font-black uppercase italic text-xl">MoreMeets™ converts daily responsibilities into visible operational execution.</p>}
+                        {isSchool && <p className="text-zinc-950 font-black uppercase italic text-xl">MoreMeets™ converts daily responsibilities into visible execution parents can feel.</p>}
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
@@ -400,8 +400,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 i: History
                             },
                             {
-                                t: "CLEAR ACCOUNTABILITY",
-                                d: "Assigned responsibilities become visible across teams and branches without manual chasing.",
+                                t: "PARENT CONFIDENCE",
+                                d: "Structure is visible across the campus. Families notice the consistency and discipline in daily execution.",
                                 i: Users
                             },
                             {
@@ -411,7 +411,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             },
                             {
                                 t: "EDITABLE INFRASTRUCTURE",
-                                d: "Add, remove, or customize operational tasks anytime to fit your unique brand protocols.",
+                                d: "Add, remove, or customize operational tasks anytime to fit your unique campus protocols.",
                                 i: Zap
                             },
                             {
