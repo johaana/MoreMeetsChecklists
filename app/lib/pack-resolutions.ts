@@ -21,10 +21,10 @@ export const packResolutions: Record<string, PackResolution> = {
         strategicParagraph: "Built for schools where student safety, operational discipline, and duty of care cannot depend on verbal follow-ups.",
         whyExecutionBreaksParagraph: "Schools rarely fail because of one catastrophic event. They fail when routine responsibilities slowly become informal, verbal, and dependent on memory.",
         risks: [
-            { title: "Verbal Assumptions", description: "Rushed mornings lead to verbal check-ins instead of physical 'child-left-behind' sweeps and route verification." },
-            { title: "Perimeter Gaps", description: "Visitor verification becomes inconsistent during peak arrival and dispersal surges, creating unmonitored entry windows." },
-            { title: "Maintenance Drift", description: "Playground structural checks and electrical thermal scans often drift into the background until an incident triggers an audit." },
-            { title: "Undocumented Concerns", description: "Welfare signals or subtle markers of student distress often stay as hallway conversations instead of being structured for intervention." }
+            { title: "Playground safety checks becoming assumed", description: "Rushed mornings lead to verbal check-ins instead of physical 'child-left-behind' sweeps and route verification." },
+            { title: "Visitor verification skipped during rush hours", description: "Visitor verification becomes inconsistent during peak arrival and dispersal surges, creating unmonitored entry windows." },
+            { title: "Maintenance drift in critical zones", description: "Playground structural checks and electrical thermal scans often drift into the background until an incident triggers an audit." },
+            { title: "Student welfare concerns staying undocumented", description: "Welfare signals or subtle markers of student distress often stay as hallway conversations instead of being structured for intervention." }
         ],
         whatChangesDaily: [
             "Visitor access becomes logged and visible",
@@ -122,29 +122,29 @@ export const packResolutions: Record<string, PackResolution> = {
     },
     'franchise_operations_pack': {
         heroTitle: "FRANCHISE OPERATING SYSTEM",
-        heroSubline: "Protect royalty integrity and brand parity across your entire multi-unit network.",
-        strategicParagraph: "Built for franchisors who need to see operational performance without walking every unit floor every day.",
-        whyExecutionBreaksParagraph: "Networks collapse when local franchisees begin to 'improvise' on the standard. Drift starts small and ends in brand dilution.",
+        heroSubline: "Protect brand parity, royalty integrity, and operational control across every franchise unit.",
+        strategicParagraph: "Built for franchisors where one weak unit damages the entire network.",
+        whyExecutionBreaksParagraph: "Networks collapse when local franchisees begin to 'improvise' on the standard. This Network Drift starts small—a pricing tweak here, a skipped cleaning there—and ends in total brand dilution.",
         risks: [
-            { title: "Royalty Leakage", description: "Unverified bill deletions and aggregator mismatches lead to significant untracked revenue theft at the unit level." },
-            { title: "Brand Adulteration", description: "Unauthorized local ingredient sourcing and unvetted promos destroy the uniformity of the brand promise." },
-            { title: "Compliance Liability", description: "Local unit manager negligence regarding FSSAI or fire licenses puts the entire network's reputation at risk." },
-            { title: "Unit Distress", description: "Operational failure signals are often hidden until a unit is on the brink of closure, making intervention impossible." }
+            { title: "Royalty Leakage", description: "Voided bills, aggregator mismatches, and off-book sales silently erode royalty visibility and franchisor revenue." },
+            { title: "Brand Adulteration", description: "Local improvisation slowly destroys the consistency customers expect from the brand standard." },
+            { title: "Compliance Liability", description: "Local partner negligence regarding FSSAI, fire licenses, or labor laws puts the entire network at risk." },
+            { title: "Unit Distress", description: "Weak units usually show warning signals weeks before collapse — but nobody sees them in time without data infrastructure." }
         ],
         whatChangesDaily: [
             "Unit managers report to the Sovereign Dashboard",
             "Royalty protection reconciles daily bills",
             "Visual standard parity is photo-verified",
             "Supply chain integrity is auditable remotely",
-            "Drift in local pricing is identified in minutes",
-            "Managers gain live network visibility without travel"
+            "Network Drift in local pricing is identified in minutes",
+            "Critical compliance expiries become visible before they become liabilities"
         ],
         mondayMorning: [
-            "CEO sees a unified mood score for all units",
-            "Unit manager attendance is verified by 9:30 AM",
+            "CEO sees network readiness before stores open",
+            "High-risk units are visible before the first rush",
+            "Weekend performance drift is already identified",
+            "Operational exceptions are escalated before noon",
             "Sunday revenue is reconciled and verified",
-            "Critical stock levels for the network are visible",
-            "High-risk incidents from the weekend are triaged",
             "The network runs on one institutional standard"
         ],
         outcomes: [
@@ -153,12 +153,16 @@ export const packResolutions: Record<string, PackResolution> = {
             "Network risk triaged",
             "Managers stop chasing",
             "Unit health observable"
-        ]
+        ],
+        reassuranceTrustTitle: "NETWORK INTEGRITY",
+        reassuranceTrustDescription: "Operational consistency customers notice across every location. Consistency customers feel across the entire network.",
+        ctaTitle: "Scale without losing \n operational discipline.",
+        ctaSubline: "Bring the network back under operational control."
     },
     'healthcare_and_hospital_operations': {
         heroTitle: "HOSPITAL OPERATING SYSTEM",
         heroSubline: "Zero-fail governance for surgical safety, medication control, and clinical risk.",
-        strategicParagraph: "Built for medical leadership where patient safety, clinical discipline, and duty of care cannot depend on memory.",
+        strategicParagraph: "Built for hospitals where patient safety, surgical discipline, and clinical accountability cannot depend on memory.",
         whyExecutionBreaksParagraph: "Clinical environments fail when verbal handovers become thin and critical control points are assumed rather than verified.",
         risks: [
             { title: "Clinical Never-Events", description: "Lack of pre-incision 'Time Outs' and dual-verification for high-alert drugs creates fatal windows of clinical error." },
@@ -194,7 +198,7 @@ export const packResolutions: Record<string, PackResolution> = {
     },
     'facility_management_blueprint': {
         heroTitle: "FACILITY OPERATING SYSTEM",
-        heroSubheadline: "Sovereign technical command for MEP assets, vendor SLAs, and life safety.",
+        heroSubline: "Sovereign technical command for MEP assets, vendor SLAs, and life safety.",
         strategicParagraph: "Built for infrastructure leads where downtime, liability, and energy wastage are the primary risks.",
         whyExecutionBreaksParagraph: "Buildings fail when routine maintenance moves from scheduled execution into 'firefighting' once a fault occurs.",
         risks: [

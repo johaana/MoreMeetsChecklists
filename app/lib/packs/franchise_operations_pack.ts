@@ -100,10 +100,10 @@ export const franchise_operations_pack: PremiumPack = {
             ]
         },
         {
-            title: "Franchisee Site Command",
+            title: "Franchise Partner Site Command",
             department: "Local Ops",
             frequency: "Daily",
-            role: "Local Franchisee / Owner",
+            role: "Franchise Partner",
             summary: "Local business ownership and asset protection.",
             icon: "store",
             tasks: [
@@ -160,16 +160,16 @@ export const franchise_operations_pack: PremiumPack = {
             ]
         },
         {
-            title: "Service & Sales Pulse",
+            title: "Customer Experience & CX",
             department: "Service",
             frequency: "Daily",
-            role: "Service / Sales Lead",
+            role: "Customer Experience Lead",
             summary: "Customer experience and upsell governance.",
             icon: "hand-platter",
             tasks: [
                 { id: "FR-SRV-01", technicalProtocol: "Upsell Briefing", floorAction: "Set target for 'Combo of the Day' during briefing.", priority: "Low", riskLevel: "Low", consequence: "Lost revenue opportunity.", proof: "Briefing Note" },
                 { id: "FR-SRV-02", technicalProtocol: "Cutlery Polish Audit", floorAction: "Spot check 10 forks for smudges or spots.", priority: "Medium", riskLevel: "Low", consequence: "Luxury brand dilution.", proof: "Sample Check" },
-                { id: "FR-SRV-03", technicalProtocol: "Guest Wi-Fi Speed Test", floorAction: "Verify speed in dining area (Target > 20mbps).", priority: "Low", riskLevel: "Low", consequence: "Negative reviews.", proof: "Speed Test" },
+                { id: "FR-SV-03", technicalProtocol: "Guest Wi-Fi Speed Test", floorAction: "Verify speed in dining area (Target > 20mbps).", priority: "Low", riskLevel: "Low", consequence: "Negative reviews.", proof: "Speed Test" },
                 { id: "FR-SRV-04", technicalProtocol: "Side-Station Par Level", floorAction: "Verify stock of napkins and sugar sachets.", priority: "Medium", riskLevel: "Low", consequence: "Service delay.", proof: "Stock Check" },
                 { id: "FR-SRV-05", technicalProtocol: "Table Turning TAT", floorAction: "Monitor time from guest exit to 'Table Ready'.", priority: "Medium", riskLevel: "Low", consequence: "Revenue bottleneck.", proof: "TAT Log" }
             ]
