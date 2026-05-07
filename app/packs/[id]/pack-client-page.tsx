@@ -102,11 +102,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     )}
                                 </h1>
                                 <div className="space-y-4">
-                                    <p className="text-lg md:text-[24px] italic font-medium text-zinc-300 max-w-2xl leading-tight">
-                                        Bring structure, visibility, and accountability to the responsibilities schools cannot afford to miss.
+                                    <p className="text-lg md:text-[24px] font-medium text-zinc-300 max-w-2xl leading-tight">
+                                        Bring structure, visibility, and accountability to the <span className="italic">responsibilities schools cannot afford to miss.</span>
                                     </p>
                                     <div className="space-y-1.5 border-l-2 border-primary/40 pl-6">
-                                        <p className="text-sm md:text-base text-zinc-400 italic font-bold max-w-lg">
+                                        <p className="text-sm md:text-base text-zinc-300 font-bold max-w-lg">
                                             Built for schools where student safety, operational discipline, and duty of care cannot depend on verbal follow-ups.
                                         </p>
                                         <p className="text-[10px] md:text-[12px] text-emerald-500/50 font-black uppercase tracking-[0.2em] italic">
@@ -118,7 +118,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                             <div className="space-y-5">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-1 h-5 bg-emerald-500 shadow-[0_0:10px_rgba(16,124,16,0.5)]" />
+                                    <div className="w-1 h-5 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
                                     <p className="text-[9px] font-black text-emerald-500 uppercase tracking-[0.4em] italic font-headline">SYSTEM SPECIFICATIONS</p>
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
@@ -138,6 +138,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         </div>
                                     ))}
                                 </div>
+                                <p className="text-[9px] md:text-[11px] text-zinc-500 font-bold italic leading-tight max-w-md pt-2">
+                                    Designed for schools, campuses, pre-primary institutions, and multi-unit educational groups.
+                                </p>
                             </div>
 
                             <div className="space-y-6 pt-4">
@@ -151,9 +154,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
                                     </p>
                                 </div>
-                                <p className="text-[9px] md:text-[11px] text-zinc-500 font-bold italic leading-tight max-w-sm text-center sm:text-left">
-                                    Used by schools, campuses, pre-primary institutions, and operational teams managing daily execution at scale.
-                                </p>
                             </div>
                         </div>
                         
@@ -289,7 +289,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter">
                             Monday Morning
                         </h2>
-                        <p className="text-zinc-500 italic font-bold text-lg">The school day starts with institutional order.</p>
+                        <p className="text-zinc-500 italic font-bold text-lg">The school day starts differently.</p>
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-6 md:gap-10">
@@ -371,7 +371,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
                             Most institutions already have SOPs. The problem is that execution slowly becomes verbal, informal, and dependent on people remembering things during busy days.
                         </p>
-                        <p className="text-zinc-950 font-black uppercase italic text-xl">MoreMeets™ converts daily responsibilities into visible execution parents can feel.</p>
+                        <p className="text-zinc-950 font-black uppercase italic text-xl">MoreMeets™ converts daily responsibilities into visible operational execution.</p>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
