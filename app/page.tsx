@@ -48,14 +48,14 @@ const NARRATIVE = {
 };
 
 const TECH_SPECS = [
-    { t: "120+ Industry Specific SOPs", i: ClipboardCheck },
-    { t: "Live Dashboard", i: Activity },
+    { t: "100+ Industry-Specific SOPs", i: ClipboardCheck },
+    { t: "Live Operational Dashboard", i: Activity },
     { t: "No SaaS. Own your data.", i: Lock },
-    { t: "Trainer Notes for staff", i: Smartphone }
+    { t: "Trainer Notes for teams", i: Smartphone }
 ];
 
 const ANXIETY_ITEMS = [
-    "Always chasing staff?",
+    "Always chasing teams?",
     "Work gets missed?",
     "The team is confused?",
     "Memories fade?"
@@ -110,11 +110,16 @@ const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: s
 
 const SovereignCTA = ({ className }: { className?: string }) => (
     <div className={cn("space-y-4 md:space-y-5 flex flex-col items-center sm:items-start", className)}>
-        <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
-            <Link href="/library">
-                {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
-            </Link>
-        </Button>
+        <div className="space-y-3 w-full flex flex-col items-center sm:items-start">
+            <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
+                <Link href="/library">
+                    {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
+                </Link>
+            </Button>
+            <p className="text-[10px] md:text-xs text-zinc-400 font-bold italic text-center sm:text-left">
+                Built in Excel. Shared through Google Sheets. No app rollout required.
+            </p>
+        </div>
         <div className="w-full flex justify-center lg:justify-start">
              <p className="text-[7px] min-[360px]:text-[8px] min-[400px]:text-[9px] md:text-[11px] text-zinc-500 font-black uppercase tracking-[0.2em] md:tracking-[0.4em] italic lg:pl-1 text-center whitespace-nowrap">
                 {NARRATIVE.meta}
@@ -140,7 +145,7 @@ const HeroSectionComp = () => {
                         </p>
                     </div>
                     <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-3 space-y-4 md:space-y-6 text-left border-l-2 lg:text-right lg:border-l-0 lg:border-r-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 mt-8 lg:mt-16">
-                         <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">WHY TEAMS STRUGGLE</p>
+                         <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">WHY OPERATIONS BREAK</p>
                          <div className="flex flex-col gap-2 md:gap-4 lg:gap-5">
                              {ANXIETY_ITEMS.map((text, i) => (
                                 <PulsatingStressText key={i} text={text} delay={`${i * 0.2}s`} />
@@ -188,7 +193,7 @@ export default function Home() {
                                         "Hiring consultants at ₹50,000+ per unit.",
                                         "Spending 100+ hours building SOPs from scratch.",
                                         "Managing through unsearchable chat groups.",
-                                        "Chasing staff manually for basic daily tasks."
+                                        "Chasing teams manually for basic daily tasks."
                                     ].map((text, i) => (
                                         <li key={i} className="flex items-start gap-5 text-zinc-500 text-lg md:text-xl font-bold italic leading-snug">
                                             <X className="w-6 h-6 text-red-400 shrink-0 mt-0.5" />
@@ -208,9 +213,9 @@ export default function Home() {
                                 </p>
                                 <ul className="space-y-6 pt-4">
                                     {[
-                                        "120+ Pre-built technical protocols.",
-                                        "Live dashboard for one-glance visibility.",
-                                        "Built-in Trainer's Notes for staff.",
+                                        "100+ Pre-built technical protocols (SOPs).",
+                                        "Live Operational Dashboard for visibility.",
+                                        "Built-in Trainer's Notes for teams.",
                                         "Binary 'Done/Missed' verification."
                                     ].map((text, i) => (
                                         <li key={i} className="flex items-start gap-5 text-zinc-950 text-lg md:text-xl font-black italic leading-snug uppercase">
@@ -337,7 +342,7 @@ export default function Home() {
                             {[
                                 {
                                     t: "EASY TO FOLLOW",
-                                    d: "Tasks are written in simple, direct language so staff know exactly what to do without second-guessing or policy jargon.",
+                                    d: "Tasks are written in simple, direct language so teams know exactly what to do without second-guessing or policy jargon.",
                                     i: ClipboardCheck
                                 },
                                 {
@@ -347,7 +352,7 @@ export default function Home() {
                                 },
                                 {
                                     t: "FASTER TO TRAIN",
-                                    d: "When staff changes, standards don't. New staff do not learn from memory or shortcuts; they follow the same system from day one.",
+                                    d: "When staff changes, standards don't. New teams do not learn from memory or shortcuts; they follow the same system from day one.",
                                     i: GraduationCap
                                 },
                                 {
