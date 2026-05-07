@@ -1,280 +1,328 @@
 
 export type PackResolution = {
-    prevents: string[];
-    teamUses: string[];
+    heroTitle?: string;
+    heroSubline: string;
+    strategicParagraph: string;
+    whyExecutionBreaksParagraph: string;
+    risks: { title: string; description: string; }[];
+    whatChangesDaily: string[];
     mondayMorning: string[];
+    outcomes: string[];
 };
 
 export const packResolutions: Record<string, PackResolution> = {
     'school_operations_pack': {
-        prevents: [
-            "Visitor access becomes logged and controlled",
-            "Emergency readiness becomes scheduled and enforceable",
-            "Bus closeouts become mandatory, not assumed",
-            "Kitchen hygiene becomes documented, not verbal",
-            "Daily execution becomes visible across teams",
-            "Managers stop chasing",
-            "Work stops depending on memory",
-            "Compliance becomes observable"
+        heroTitle: "SCHOOL OPERATING SYSTEM",
+        heroSubline: "Stop depending on memory for transport safety, visitor control, hygiene, and daily school operations.",
+        strategicParagraph: "Built for schools where student safety, operational discipline, and duty of care cannot depend on verbal follow-ups.",
+        whyExecutionBreaksParagraph: "Schools rarely fail because of one catastrophic event. They fail when routine responsibilities slowly become informal, verbal, and dependent on memory.",
+        risks: [
+            { title: "Verbal Assumptions", description: "Rushed mornings lead to verbal check-ins instead of physical 'child-left-behind' sweeps and route verification." },
+            { title: "Perimeter Gaps", description: "Visitor verification becomes inconsistent during peak arrival and dispersal surges, creating unmonitored entry windows." },
+            { title: "Maintenance Drift", description: "Playground structural checks and electrical thermal scans often drift into the background until an incident triggers an audit." },
+            { title: "Undocumented Concerns", description: "Welfare signals or subtle markers of student distress often stay as hallway conversations instead of being structured for intervention." }
         ],
-        teamUses: [
-            "Daily task checklists",
-            "Assigned responsibilities",
-            "Trainer notes for execution",
-            "Consequences for missed tasks",
-            "Real-time task updates",
-            "Role-based accountability"
+        whatChangesDaily: [
+            "Visitor access becomes logged and visible",
+            "Bus closeouts become mandatory and traceable",
+            "Hygiene checks become documented",
+            "Responsibilities become assigned by role",
+            "Managers gain live visibility without chasing teams.",
+            "Daily execution becomes visible across teams."
         ],
         mondayMorning: [
-            "Front office checks are completed and visible",
-            "Visitor access is controlled",
-            "Safety drills become routine",
-            "Bus handovers become verifiable",
-            "Kitchen checks become traceable",
-            "Teams update execution live",
-            "Managers stop chasing for updates",
-            "Daily work becomes observable"
+            "Transport checks are already completed",
+            "Visitor access is verified at the gate",
+            "Nurse confirms emergency supplies",
+            "Kitchen hygiene logs are updated before breakfast",
+            "Daily responsibilities are already visible to teams",
+            "Managers stop chasing for updates"
+        ],
+        outcomes: [
+            "Visitor access visible",
+            "Bus checks verified",
+            "Teams aligned daily",
+            "Managers stop chasing",
+            "Daily execution tracked"
         ]
     },
     'restaurants': {
-        prevents: [
-            "Revenue leakage is identified at the source",
-            "HACCP compliance becomes a daily record",
-            "Manager handovers become zero-gap data transfers",
-            "Prep waste is tracked and reduced",
-            "Cleaning schedules are verified, not just requested",
-            "Staff dependence on 'tribal knowledge' is eliminated",
-            "Ambiance standards are enforced hourly",
-            "Closing safety (gas/power) becomes a mandatory digital seal"
+        heroTitle: "RESTAURANT OPERATING SYSTEM",
+        heroSubline: "Stop margin leakage and safety drift across your kitchen and floor stations.",
+        strategicParagraph: "Built for high-volume groups where consistency and food safety cannot be left to shift-lead coordination alone.",
+        whyExecutionBreaksParagraph: "Service standards rarely collapse during slow hours. They break when high compression removes the time to verify critical steps.",
+        risks: [
+            { title: "Revenue Leakage", description: "Unmonitored void bills and unverified ingredient yields create a silent daily drain on net margins." },
+            { title: "HACCP Lapses", description: "Critical temperature logs are often back-filled at the end of shifts instead of being recorded during active receiving." },
+            { title: "Shift Drift", description: "Opening and closing protocols vary wildly between Shift leads, creating inconsistent guest experiences and utility wastage." },
+            { title: "Untracked Waste", description: "Prep waste and spoilage stay hidden in bin bags instead of being data-anchored for procurement optimization." }
         ],
-        teamUses: [
-            "Role-specific digital ledgers",
-            "HACCP thermal log integration",
-            "Shift A/B parity checkpoints",
-            "Built-in Trainer's Notes per station",
-            "Binary 'Done/Missed' reporting",
-            "Direct accountability for high-risk zones"
+        whatChangesDaily: [
+            "HACCP thermal logs become real-time data",
+            "Void authorizations require technical proof",
+            "Prep yields are reconciled at 11:00 AM",
+            "Shift handovers become zero-gap data transfers",
+            "Managers see station execution from their phones",
+            "Cleaning standards are verified, not assumed"
         ],
         mondayMorning: [
             "Opening protocols are verified by 9:00 AM",
-            "Revenue reconciliations are completed without chasing",
-            "Kitchen hygiene is observable from your phone",
-            "Staff knows exactly why every task matters",
-            "Near-miss incidents are logged and triaged",
-            "The floor runs on proof, not promises",
-            "Service standards become predictable",
-            "Closure is secured and verifiable"
+            "Kitchen hygiene is observable from your office",
+            "Inventory waste for Sunday is already logged",
+            "Prep levels match today's forecast exactly",
+            "Ambiance vitals are uniform across all branches",
+            "Managers stop waiting for verbal status reports"
+        ],
+        outcomes: [
+            "HACCP compliance logged",
+            "Margin leakage plugged",
+            "Station consistency verified",
+            "Managers stop chasing",
+            "Shift handovers secured"
         ]
     },
     'hotels_and_resorts': {
-        prevents: [
-            "Room readiness disputes are eliminated",
-            "Guest ID compliance becomes a zero-fail process",
-            "Preventive maintenance for high-value assets is automated",
-            "Safety incidents at high-risk zones are mitigated",
-            "VIP setups are verified before the guest arrives",
-            "Operational standards stay when a key HOD resigns",
-            "Reputation damage from unaddressed feedback is stopped",
-            "Supply chain leakage at the receiving bay is plugged"
+        heroTitle: "HOTEL OPERATING SYSTEM",
+        heroSubline: "Sovereign governance for Front Office, Housekeeping, and Engineering infrastructure.",
+        strategicParagraph: "Built for luxury properties where brand standard drift and privacy gaps represent business-ending liability.",
+        whyExecutionBreaksParagraph: "Hospitality standards don't fail because staff don't care; they fail because verbal orientation is asuggestion that expires within 48 hours.",
+        risks: [
+            { title: "Reputation Drift", description: "Unaddressed OTA reviews and unverified room setup standards lead to a slow, visible slide in property ratings." },
+            { title: "Privacy Exposure", description: "Weak master-keycard governance and lack of hidden camera sweeps create critical guest security windows." },
+            { title: "Infrastructure Decay", description: "MEP vitals for boilers and chillers go unlogged until a catastrophic failure forces guest relocations." },
+            { title: "Linen Greying", description: "Poor vendor SLA command and lack of grey-scale audits lead to a visible drop in luxury touchpoints." }
         ],
-        teamUses: [
-            "12-department technical modules",
-            "Audit-ready evidence fields",
-            "High-alert verification targets",
-            "Institutional memory capture",
-            "Real-time visibility for the GM",
-            "Mobile-optimized reporting"
-        ],
-        mondayMorning: [
-            "Every arrival room has a verified digital sign-off",
-            "C-Form compliance is 100% auditable",
+        whatChangesDaily: [
+            "Room readiness has a verified digital sign-off",
+            "C-Form compliance is 100% auditable hourly",
             "MEP vitals (DG/Chiller) are logged and monitored",
-            "Linen and supply quality is spot-checked systematically",
             "Guest escalations are triaged in under 15 minutes",
-            "The shift handover is a clean data transfer",
-            "Asset decay is identified before breakdown",
-            "The brand standard becomes a physical reality"
-        ]
-    },
-    'healthcare_and_hospital_operations': {
-        prevents: [
-            "Clinical 'Never-Events' are targeted via WHO logic",
-            "Medication errors are reduced via dual-verification",
-            "Bio-medical waste non-compliance risk is mitigated",
-            "Wait-time inflation is identified through TAT monitoring",
-            "Inventory expiry leakage in the Pharmacy is stopped",
-            "Nursing bedside handovers become structured data streams",
-            "Statutory license lapses are tracked and alert-ready",
-            "Operational chaos during emergency codes is eliminated"
-        ],
-        teamUses: [
-            "Critical Control Point (CCP) logs",
-            "High-alert drug dual-verification",
-            "WHO surgical safety integration",
-            "Biomedical waste segregation audits",
-            "Clinical TAT tracking engines",
-            "Institutional safety memory"
+            "Privacy sweeps become part of the checkout cycle",
+            "The brand standard becomes a physical, logged reality"
         ],
         mondayMorning: [
-            "The Crash Cart seal is verified and verifiable",
-            "The OT 'Time-Out' is a mandatory system step",
-            "Pharmacy cold-chain logs are 100% compliant",
-            "Nursing superintendents see ward vitals instantly",
-            "Patient grievances are captured and resolved",
-            "Infrastructure (O2/DG) is at 100% readiness",
-            "Audit-readiness becomes a permanent state",
-            "Patient trust is built through observable control"
-        ]
-    },
-    'facility_management_blueprint': {
-        prevents: [
-            "Catastrophic utility failures via MEP checks",
-            "Vendor SLA neglect is identified",
-            "Hidden energy wastage is caught via KWH tracking",
-            "Safety hazards turn into incidents via reporting",
-            "Water quality issues are caught early",
-            "Asset life is shortened by missed maintenance",
-            "Security perimeter gaps are identified daily",
-            "Compliance fines from license lapses are eliminated"
+            "Arrival rooms have been physically verified",
+            "Night audit reconciles to the bank by 8:00 AM",
+            "Boiler and pump room vitals are within green zones",
+            "VIP amenities are already placed and photographed",
+            "Staff grooming is uniform across all departments",
+            "The GM sees property health without a walkthrough"
         ],
-        teamUses: [
-            "Hard FM mechanical vital logs",
-            "Soft FM hygiene frequency tracking",
-            "Vendor performance scorecards",
-            "Utility economics engine",
-            "Life-safety infrastructure audits",
-            "Incident root-cause mapping"
-        ],
-        mondayMorning: [
-            "Every chiller and DG unit has a verified daily log",
-            "Vendor staff presence is reconciled against SLA",
-            "Washroom hygiene is auditable hourly",
-            "Energy spikes are identified within 24 hours",
-            "Fire exit paths are physically confirmed clear",
-            "Elevator auto-rescue systems are tested",
-            "Occupant grievances are logged to resolution",
-            "Infrastructure risk is mapped and visible"
+        outcomes: [
+            "Guest privacy secured",
+            "Room standards verified",
+            "MEP uptime monitored",
+            "Rating drift prevented",
+            "Statutory logs audit-ready"
         ]
     },
     'franchise_operations_pack': {
-        prevents: [
-            "Royalty leakage through daily reconciliations",
-            "Brand dilution from inconsistent standards",
-            "Supply chain violations from unvetted sourcing",
-            "Regulatory fines from license lapses",
-            "Hidden franchisee distress via analytics",
-            "High-risk behavior from unchecked unit managers",
-            "Delayed unit launches through CAPEX tracking",
-            "Reputation damage from unmonitored local ORM"
+        heroTitle: "FRANCHISE OPERATING SYSTEM",
+        heroSubline: "Protect royalty integrity and brand parity across your entire multi-unit network.",
+        strategicParagraph: "Built for franchisors who need to see operational performance without walking every unit floor every day.",
+        whyExecutionBreaksParagraph: "Networks collapse when local franchisees begin to 'improvise' on the standard. Drift starts small and ends in brand dilution.",
+        risks: [
+            { title: "Royalty Leakage", description: "Unverified bill deletions and aggregator mismatches lead to significant untracked revenue theft at the unit level." },
+            { title: "Brand Adulteration", description: "Unauthorized local ingredient sourcing and unvetted promos destroy the uniformity of the brand promise." },
+            { title: "Compliance Liability", description: "Local unit manager negligence regarding FSSAI or fire licenses puts the entire network's reputation at risk." },
+            { title: "Unit Distress", description: "Operational failure signals are often hidden until a unit is on the brink of closure, making intervention impossible." }
         ],
-        teamUses: [
-            "Multi-unit mood dashboard",
-            "Royalty protection reconcilers",
-            "Visual standard parity audits",
-            "Supply chain integrity trackers",
-            "Unit performance leaderboards",
-            "Global risk triage maps"
+        whatChangesDaily: [
+            "Unit managers report to the Sovereign Dashboard",
+            "Royalty protection reconciles daily bills",
+            "Visual standard parity is photo-verified",
+            "Supply chain integrity is auditable remotely",
+            "Drift in local pricing is identified in minutes",
+            "Managers gain live network visibility without travel"
         ],
         mondayMorning: [
-            "The CEO sees a unified mood score for all outlets",
+            "CEO sees a unified mood score for all units",
             "Unit manager attendance is verified by 9:30 AM",
-            "Brand signage and ambiance are photo-verified",
-            "High-risk inventory is reconciled against POS",
-            "Local marketing campaigns are auditable",
-            "Unit-level hygiene scores are observable",
-            "Franchisee grievances are captured",
-            "The entire network runs on one standard"
+            "Sunday revenue is reconciled and verified",
+            "Critical stock levels for the network are visible",
+            "High-risk incidents from the weekend are triaged",
+            "The network runs on one institutional standard"
+        ],
+        outcomes: [
+            "Royalty stream secured",
+            "Brand parity enforced",
+            "Network risk triaged",
+            "Managers stop chasing",
+            "Unit health observable"
+        ]
+    },
+    'healthcare_and_hospital_operations': {
+        heroTitle: "HOSPITAL OPERATING SYSTEM",
+        heroSubline: "Zero-fail governance for surgical safety, medication control, and clinical risk.",
+        strategicParagraph: "Built for medical leadership where 'never-events' and audit failures are not an option.",
+        whyExecutionBreaksParagraph: "Clinical environments fail when verbal handovers become thin and critical control points are assumed rather than verified.",
+        risks: [
+            { title: "Clinical Never-Events", description: "Lack of pre-incision 'Time Outs' and dual-verification for high-alert drugs creates fatal windows of error." },
+            { title: "Infection Outbreaks", description: "Hygiene frequency drift in ICUs and poor CSSD indicator tracking lead to hospital-acquired infection spikes." },
+            { title: "Narcotic Diversion", description: "Weak vault access governance and lack of blind-counts enable internal drug theft and criminal liability." },
+            { title: "Billing Leakage", description: "Unlogged ward consumables and delayed TPA pre-auths result in significant unrecoverable financial loss." }
+        ],
+        whatChangesDaily: [
+            "WHO surgical checklists become mandatory logs",
+            "Narcotics safe is double-blind counted daily",
+            "Bedside handovers become structured data streams",
+            "Waste segregation is verified at the source",
+            "Pharmacy cold-chain is 100% auditable",
+            "Medical directors see ward vitals instantly"
+        ],
+        mondayMorning: [
+            "The Crash Cart seal is physically verified",
+            "High-alert medication dual-check is active",
+            "OT sterility indicators are logged and valid",
+            "Bio-medical waste manifests are updated",
+            "ER wait-time TAT is within green thresholds",
+            "Institutional safety memory is secured"
+        ],
+        outcomes: [
+            "Never-events targeted",
+            "Infection risk mitigated",
+            "Narcotics control secured",
+            "Audit-readiness permanent",
+            "Patient safety observable"
+        ]
+    },
+    'facility_management_blueprint': {
+        heroTitle: "FACILITY OPERATING SYSTEM",
+        heroSubheadline: "Sovereign technical command for MEP assets, vendor SLAs, and life safety.",
+        strategicParagraph: "Built for infrastructure leads where downtime, liability, and energy wastage are the primary risks.",
+        whyExecutionBreaksParagraph: "Buildings fail when routine maintenance moves from scheduled execution into 'firefighting' once a fault occurs.",
+        risks: [
+            { title: "Utility Blackouts", description: "Untested DG fuel levels and ignored ARD battery vitals lead to elevator entrapment and total power collapse." },
+            { title: "Contractor Liability", description: "Unverified Permits-to-Work for high-risk jobs (Hot-work/Height) create massive fire and safety exposure." },
+            { title: "Energy Spikes", description: "Lack of sub-meter KWH tracking hides equipment inefficiency and creates unmonitored cost blowouts." },
+            { title: "HVAC Decay", description: "Ignored discharge temperatures and filter cleaning cycles lead to guest discomfort and asset shortened-life." }
+        ],
+        whatChangesDaily: [
+            "MEP asset vitals become a daily data stream",
+            "Vendor staff presence is verified against SLA",
+            "Fire exit paths are physically confirmed clear",
+            "High-load panel heat scans become routine",
+            "Permit-to-work logs become 100% auditable",
+            "Facility directors gain live infrastructure visibility"
+        ],
+        mondayMorning: [
+            "DG and Chiller health logs are already signed",
+            "Vendor teams are checked-in and briefed",
+            "Washroom hygiene cycle is already active",
+            "Utility meters are logged for Sunday's usage",
+            "Emergency light batteries are tested and green",
+            "Managers stop waiting for technician reports"
+        ],
+        outcomes: [
+            "Critical uptime secured",
+            "Vendor SLAs verified",
+            "Energy wastage identified",
+            "Safety liability mitigated",
+            "Asset life protected"
         ]
     },
     'cinema_operations_pack': {
-        prevents: [
-            "Black-screen events through DCP/KDM audits",
-            "Concession profit leakage via yield logic",
-            "Guest complaints via thermal monitoring",
-            "Life-safety tragedies via daily exit checks",
-            "Asset decay of projection equipment",
-            "Reputation damage from unmonitored feedback",
-            "Staff grooming and brand standard drift",
-            "Statutory fines from Entertainment Tax lapses"
+        heroTitle: "CINEMA OPERATING SYSTEM",
+        heroSubline: "Technical command for show readiness, crowd flow, and concession yield.",
+        strategicParagraph: "Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.",
+        whyExecutionBreaksParagraph: "Cinemas fail when technical readiness is assumed and interval rushes become disorganized coordination exercises.",
+        risks: [
+            { title: "Black-Screen Events", description: "Unverified DCP ingests and expired KDM digital keys lead to show cancellations during blockbuster openings." },
+            { title: "Concession Leakage", description: "Lack of raw-corn-to-bucket yield logic and unverified bill voids create massive internal profit theft." },
+            { title: "Crowd Safety Gaps", description: "Blocked fire exit paths and weak guard deployment during egress surges create fatal public safety windows." },
+            { title: "Projection Decay", description: "Unlogged lamp hours and ignored server room temps lead to dull visuals and hardware crashes." }
         ],
-        teamUses: [
-            "Projection sound/media QC logs",
-            "Concession yield reconciliation engines",
-            "Auditorium hygiene pulse audits",
-            "Technical asset uptime trackers",
-            "Guest service TAT monitors",
-            "Life-safety exit protocols"
+        whatChangesDaily: [
+            "Show readiness has a mandatory technical seal",
+            "Concession yields are reconciled shift-wise",
+            "Auditorium temperatures are logged during peak",
+            "Egress safety patrols are verified pre-credits",
+            "DCP/KDM status is confirmed 24h prior",
+            "Operations heads see group readiness instantly"
         ],
         mondayMorning: [
-            "Every screen has a technical readiness sign-off",
+            "Every screen has a technical sign-off by 9 AM",
             "Concession opening stock is 100% verified",
-            "Auditorium temperatures are logged during peak",
-            "Housekeeping sweeps are verified between shows",
-            "Box office floats are reconciled",
-            "Digital reputation signals are answered",
-            "Projection rooms are at optimal thermal vitals",
-            "Operational risk is visible to the head office"
+            "Projection room thermals are within green zones",
+            "Box office floats are reconciled and secured",
+            "Digital reviews from the weekend are answered",
+            "The group standard is visible to the head office"
+        ],
+        outcomes: [
+            "Black-screens prevented",
+            "Concession yields protected",
+            "Crowd safety secured",
+            "Technical uptime tracked",
+            "Guest scores protected"
         ]
     },
     'retail_operations_system': {
-        prevents: [
-            "Inventory shrinkage through disciplined counts",
-            "Brand dilution from inconsistent VM standards",
-            "Loss of high-value assets via vault protocols",
-            "Safety incidents in fitting rooms",
-            "Legal Metrology fines from uncalibrated scales",
-            "Revenue loss through expiry logic",
-            "Security breaches through perimeter audits",
-            "Service collapse during peak hours"
+        heroTitle: "RETAIL OPERATING SYSTEM",
+        heroSubline: "Unified governance for inventory integrity, loss prevention, and brand standards.",
+        strategicParagraph: "Built for physical retail leaders where shrinkage, standard drift, and service collapse are daily threats.",
+        whyExecutionBreaksParagraph: "Stores fail when visual standards become suggestions and inventory control depends on trust instead of verifiable logic.",
+        risks: [
+            { title: "Inventory Shrinkage", description: "Weak cycle-count discipline and unverified POS deletions enable systemic internal and external theft." },
+            { title: "Visual Standards Drift", description: "Planogram non-compliance and poor lighting maintenance lead to a slow decline in premium brand authority." },
+            { title: "Metrology Fines", description: "Uncalibrated weighing scales and unverified shelf-edge pricing lead to severe consumer court penalties." },
+            { title: "Duty of Care Gaps", description: "Blocked fire exits and unlogged floor-spill responses create significant legal and safety exposure." }
         ],
-        teamUses: [
-            "Visual merchandising planogram audits",
-            "High-value asset shield protocols",
-            "Inventory integrity cycle counts",
-            "Metrology calibration logs",
-            "POS and connectivity vitals",
-            "Closure thermal/security seals"
+        whatChangesDaily: [
+            "High-value cycle counts become mandatory logs",
+            "Store opening readiness has a verified seal",
+            "Metrology calibration is checked weekly",
+            "Fitting room patrols become auditable pulses",
+            "Staff grooming is checked against brand SOPs",
+            "Store managers gain live visibility into execution"
         ],
         mondayMorning: [
-            "Store opening readiness has a verified sign-off",
-            "High-value items are reconciled in under 10 minutes",
-            "Store signage and pricing are 100% accurate",
-            "Staff grooming represents the brand standard",
-            "Safety exits are confirmed clear",
-            "Customer grievances are logged and triaged",
-            "The daily sales target is briefed and understood",
+            "Opening readiness has been physically signed",
+            "High-value assets are reconciled by 10 AM",
+            "Shelf-edge pricing matches the POS system",
+            "Safety exits are confirmed clear and functional",
+            "Staff targets for the week are briefed and set",
             "Operational proof replaces manual follow-ups"
+        ],
+        outcomes: [
+            "Inventory theft prevented",
+            "Brand parity enforced",
+            "Shrinkage identified early",
+            "Compliance risk mitigated",
+            "Service standards verified"
         ]
     }
 };
 
 export const defaultResolution: PackResolution = {
-    prevents: [
-        "Operational dependence on memory is eliminated",
-        "Routine responsibilities become verifiable data",
-        "Managerial chasing for updates is stopped",
-        "Operational memory stays when staff resign",
-        "Daily execution becomes visible across the group",
-        "Assumptions are replaced by operational proof",
-        "Compliance becomes a permanent state",
-        "Brand standards are protected from local drift"
+    heroSubline: "Reduce operational dependence on memory. Bring structure to daily execution.",
+    strategicParagraph: "Built for elite leadership where operational discipline and duty of care cannot depend on verbal follow-ups.",
+    whyExecutionBreaksParagraph: "Operations rarely fail because of one catastrophic event. They fail when routine responsibilities slowly become informal and dependent on memory.",
+    risks: [
+        { title: "Verbal Assumptions", description: "Critical tasks lead to verbal check-ins instead of physical verification and route mapping." },
+        { title: "Perimeter Gaps", description: "Verification becomes inconsistent during peak arrival and dispersal surges." },
+        { title: "Maintenance Drift", description: "Structural checks and electrical scans often drift into the background until an incident occurs." },
+        { title: "Undocumented Concerns", description: "Critical signals stay as hallway conversations instead of being structured for intervention." }
     ],
-    teamUses: [
-        "Daily task execution ledgers",
-        "Assigned role-based responsibilities",
-        "Built-in Trainer's Notes for every station",
-        "Binary 'Done/Missed' verification status",
-        "High-risk checkpoint targets",
-        "Real-time operational updates"
+    whatChangesDaily: [
+        "Responsibilities become assigned by role",
+        "Execution becomes logged and visible",
+        "Managers gain live visibility without chasing teams",
+        "Accountability becomes mandatory and traceable",
+        "Daily execution becomes visible across teams."
     ],
     mondayMorning: [
-        "Managers stop chasing for basic task updates",
-        "Teams start their shift with a clear, assigned list",
-        "Operational gaps become visible in minutes",
-        "Training time for new staff is reduced significantly",
-        "Work stops depending on the memory of key people",
-        "Institutional knowledge is captured and protected",
-        "Audit-readiness becomes an effortless daily reality",
-        "The difference in control is immediate"
+        "Critical checks are already completed",
+        "Teams start with a clear assigned list",
+        "Managers stop chasing for basic updates",
+        "Daily responsibilities are already visible to teams",
+        "Training time for new staff is reduced",
+        "Work stops depending on the memory of key people"
+    ],
+    outcomes: [
+        "Visibility secured",
+        "Teams aligned daily",
+        "Managers stop chasing",
+        "Execution tracked",
+        "Compliance verified"
     ]
 };
