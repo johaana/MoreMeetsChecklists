@@ -11,7 +11,7 @@ export const school_operations_pack: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/a5c12368-2c26-4e58-b1de-149b80b292e7',
     category: "Education",
-    description: "The definitive Sovereign v11.9 safety safeguard for educational institutions. Moving beyond admin into Child Safety Infrastructure with 115+ technical control points.",
+    description: "The definitive Sovereign v11.9 safety safeguard for educational institutions. Moving beyond admin into Child Safety Infrastructure with 125+ technical control points.",
     heroHeadline: "Child Safety Infrastructure. Zero-Risk Education.",
     heroSubheadline: "Protect students and mitigate institutional liability with forensic protocols for POCSO, Transport, Early Years, and Exam Integrity.",
     pricingUrgency: "In education, a single safety 'never event' isn't just expensive—it's an institutional catastrophe. This system is the safeguard.",
@@ -86,6 +86,7 @@ export const school_operations_pack: PremiumPack = {
                 { id: "SC-WEL-06", technicalProtocol: "Cyber-Bullying Signal", floorAction: "Check student councils for rumors of online harassment.", priority: "Medium", riskLevel: "High", consequence: "Viral peer-to-peer digital abuse.", proof: "Safe Report" },
                 { id: "SC-WEL-07", technicalProtocol: "Safe reporting Access", floorAction: "Check if 'Helpline' numbers are posted in senior washrooms.", priority: "Low", riskLevel: "Low", consequence: "Students don't know where to seek help.", proof: "Photo" },
                 { id: "SC-WEL-08", technicalProtocol: "Exam Stress Triage", floorAction: "Check in with board-year students for visible burnout.", priority: "Medium", riskLevel: "Low", consequence: "Student panic/collapse during tests.", proof: "Welfare Diary" },
+                { id: "SC-WEL-09", technicalProtocol: "Digital Welfare Monitoring", floorAction: "Audit anonymous reporting channels for peer-to-peer digital abuse.", priority: "High", riskLevel: "High", consequence: "Severe psychological harm and institutional negligence.", proof: "Safe Report Log" },
                 { id: "SC-WEL-10", technicalProtocol: "Welfare Closure sign-off", floorAction: "Daily handover of critical mood alerts.", priority: "High", riskLevel: "Low", consequence: "Loss of continuity in student care.", proof: "Signed Summary" }
             ]
         },
@@ -105,7 +106,7 @@ export const school_operations_pack: PremiumPack = {
                 { id: "SC-EXM-06", technicalProtocol: "Toilet Sweep (Pre-Exam)", floorAction: "Inspect cisterns and vents for concealed cheat-sheets.", priority: "High", riskLevel: "Medium", consequence: "Organized cheating.", proof: "Patrol Log" },
                 { id: "SC-EXM-07", technicalProtocol: "UPS Load Resilience", floorAction: "Test power backup for hall lighting/fans.", priority: "High", riskLevel: "Low", consequence: "Student panic during power flip.", proof: "Voltage Log" },
                 { id: "SC-EXM-08", technicalProtocol: "Invigilator Punctuality", floorAction: "Confirm 100% presence 60 min pre-start.", priority: "Medium", riskLevel: "Low", consequence: "Chaos at the hall gates.", proof: "Attendance Log" },
-                { id: "SC-EXM-09", technicalProtocol: "Answer Sheet Sealing", floorAction: "Witness witnessed sealing of bundles for transit.", priority: "High", riskLevel: "High", consequence: "Tampering or loss of sheets.", proof: "Seal Witness Log" },
+                { id: "SC-EXM-09", technicalProtocol: "Answer Sheet Sealing", floorAction: "Witness witnessed seal of bundles for transit.", priority: "High", riskLevel: "High", consequence: "Tampering or loss of sheets.", proof: "Seal Witness Log" },
                 { id: "SC-EXM-10", technicalProtocol: "Final Integrity Sign-off", floorAction: "Daily exam command summary initials.", priority: "High", riskLevel: "Low", consequence: "Center-head liability.", proof: "Signed Summary" }
             ]
         },
@@ -122,7 +123,7 @@ export const school_operations_pack: PremiumPack = {
                 { id: "SC-LOG-03", technicalProtocol: "GPS/CCTV Connectivity", floorAction: "Verify all buses are online on the tracking dash.", priority: "High", riskLevel: "High", consequence: "Inability to find bus during emergency.", proof: "System Screen" },
                 { id: "SC-LOG-04", technicalProtocol: "Driver Sobriety Test", floorAction: "Execute random breathalyzer checks at 7:00 AM.", priority: "High", riskLevel: "High", consequence: "Catastrophic mass-casualty crash.", proof: "Test Note" },
                 { id: "SC-LOG-05", technicalProtocol: "Attendant Presence Pulse", floorAction: "Verify female attendant is on-board for all junior routes.", priority: "High", riskLevel: "High", consequence: "Safety breach and legal negligence.", proof: "Roster Check" },
-                { id: "SC-LOG-06", technicalProtocol: "Guardian ID Verification", floorAction: "Verify pickup card matches guardian at drop-off.", priority: "High", riskLevel: "High", consequence: "Kidnapping/Unauthorized pickup.", proof: "Handover Log" },
+                { id: "SC-LOG-06", technicalProtocol: "Identity Mismatch Escalation", floorAction: "Execute 'Lockdown-at-Gate' protocol if guardian ID does not match card.", priority: "High", riskLevel: "High", consequence: "Kidnapping or unauthorized removal of child.", proof: "Incident Log" },
                 { id: "SC-LOG-07", technicalProtocol: "First Aid Kit Seal", floorAction: "Verify seals on bus medical and fire gear.", priority: "Medium", riskLevel: "Medium", consequence: "Inability to treat route injuries.", proof: "Seal Log" },
                 { id: "SC-LOG-08", technicalProtocol: "Speed Limit Adherence", floorAction: "Audit GPS reports for any bus > 40km/h.", priority: "Medium", riskLevel: "Medium", consequence: "Increased accident risk.", proof: "Speed Report" },
                 { id: "SC-LOG-09", technicalProtocol: "Bus Interior Hygiene", floorAction: "Inspect for dust, sharp metal, or trash in cabins.", priority: "Low", riskLevel: "Low", consequence: "Poor brand image.", proof: "Visual Check" },
@@ -205,7 +206,7 @@ export const school_operations_pack: PremiumPack = {
                 { id: "SC-TEC-06", technicalProtocol: "Fume Hood Airflow", floorAction: "Test suction velocity in Chemistry lab.", priority: "High", riskLevel: "High", consequence: "Toxic vapor inhalation.", proof: "Meter Reading" },
                 { id: "SC-TEC-07", technicalProtocol: "Gas Valve Integrity", floorAction: "Check Bunsen burner valves for leaks.", priority: "High", riskLevel: "High", consequence: "Lab fire/explosion.", proof: "Sniffer Test" },
                 { id: "SC-TEC-08", technicalProtocol: "Cyber-Security Patch Scan", floorAction: "Confirm 100% update on admin server.", priority: "High", riskLevel: "High", consequence: "Student data ransom risk.", proof: "System Screen" },
-                { id: "SC-TEC-09", technicalProtocol: "Classroom Smartboard QC", floorAction: "Reset and calibrate 5 random units.", priority: "Low", riskLevel: "Low", consequence: "Teaching friction.", proof: "Test Note" },
+                { id: "SC-TEC-09", technicalProtocol: "Indoor Air Quality (IAQ) Monitor", floorAction: "Log CO2 levels in classrooms with >30 students during peak hours.", priority: "Medium", riskLevel: "Low", consequence: "Reduced cognitive function and student lethargy.", proof: "Sensor Data" },
                 { id: "SC-TEC-10", technicalProtocol: "Hardware Asset Tagging", floorAction: "Verify tags on new lab laptops/tablets.", priority: "Low", riskLevel: "Low", consequence: "Inventory theft.", proof: "Registry Match" }
             ]
         },
@@ -219,7 +220,7 @@ export const school_operations_pack: PremiumPack = {
             tasks: [
                 { id: "SC-JAN-01", technicalProtocol: "Restroom Standard Audit", floorAction: "Verify 100% cleanliness scores for all blocks.", priority: "High", riskLevel: "Low", consequence: "Major driver of parent dissatisfaction.", proof: "Audit Sheet" },
                 { id: "SC-JAN-02", technicalProtocol: "Soap & Sanitizer Pulse", floorAction: "Refill 100% of corridor dispensers.", priority: "Medium", riskLevel: "Low", consequence: "Infection risk.", proof: "Stock Check" },
-                { id: "SC-JAN-03", technicalProtocol: "Drinking Point Drainage", floorAction: "Clear fountain drains and polish mirrors.", priority: "Low", riskLevel: "Low", consequence: "Unhygienic student perception.", proof: "Visual Check" },
+                { id: "SC-JAN-03", technicalProtocol: "Potable Water Hygiene", floorAction: "Log UV-lamp function and deep-clean water dispensing nozzles.", priority: "High", riskLevel: "Medium", consequence: "Water-borne disease spread.", proof: "Maintenance Log" },
                 { id: "SC-JAN-04", technicalProtocol: "Stairwell Dust Sweep", floorAction: "Check for spiderwebs or dust in fire-stairs.", priority: "Low", riskLevel: "Low", consequence: "Poor brand image.", proof: "Walkthrough" },
                 { id: "SC-JAN-05", technicalProtocol: "Water Tank Health (Monthly)", floorAction: "Audit chlorine levels and tank-lid locks.", priority: "High", riskLevel: "High", consequence: "Waterborne illness outbreak.", proof: "Lab Report", frequency: "Monthly" },
                 { id: "SC-JAN-06", technicalProtocol: "Facade Window Cleaning", floorAction: "Verify status of scheduled exterior washing.", priority: "Low", riskLevel: "Low", consequence: "Grungy campus appearance.", proof: "Photo" },
@@ -237,11 +238,11 @@ export const school_operations_pack: PremiumPack = {
             summary: "Medical readiness and emergency drug governance.",
             icon: "heart-pulse",
             tasks: [
-                { id: "SC-MED-01", technicalProtocol: "Emergency Drug Inventory", floorAction: "Verify Epi-pens and inhalers are in-date and stocked.", priority: "High", riskLevel: "High", consequence: "Fatal delay in allergic shock response.", proof: "Drug Register" },
+                { id: "SC-MED-01", technicalProtocol: "Anaphylaxis Response Readiness", floorAction: "Conduct monthly mock-drill for Epi-pen administration with class teachers.", priority: "High", riskLevel: "High", consequence: "Fatal delay in allergic reaction response.", proof: "Drill Log" },
                 { id: "SC-MED-02", technicalProtocol: "Student Allergy Matrix (Monthly)", floorAction: "Update red-flag list for current month.", priority: "High", riskLevel: "High", consequence: "Mismatched clinical care.", proof: "Matrix File", frequency: "Monthly" },
                 { id: "SC-MED-03", technicalProtocol: "AED Battery Validation", floorAction: "Test AED status light (must be Green).", priority: "High", riskLevel: "High", consequence: "Rescue failure during cardiac event.", proof: "Test Log" },
                 { id: "SC-MED-04", technicalProtocol: "Medical Stock Expiry (Weekly)", floorAction: "Remove items with < 60 days shelf life.", priority: "Medium", riskLevel: "Medium", consequence: "Ineffective medicine.", proof: "Expiry Audit", frequency: "Weekly" },
-                { id: "SC-MED-05", technicalProtocol: "Infirmary Hygiene Scan", floorAction: "Sanitize bed and check for sterile dressings.", priority: "Medium", riskLevel: "Medium", consequence: "Cross-infection.", proof: "Cleaning Log" },
+                { id: "SC-MED-05", technicalProtocol: "Female Student Welfare Readiness", floorAction: "Verify stock of sanitary napkins and disposal units in secondary wing restrooms.", priority: "High", riskLevel: "Low", consequence: "Student distress and loss of dignity.", proof: "Stock Check" },
                 { id: "SC-MED-06", technicalProtocol: "Nebulizer Function Test", floorAction: "Verify suction and steam output.", priority: "Medium", riskLevel: "Low", consequence: "Respiratory aid failure.", proof: "Test Log" },
                 { id: "SC-MED-07", technicalProtocol: "Cold Chain Pulse", floorAction: "Log medical fridge temp for insulin/vaccines.", priority: "High", riskLevel: "High", consequence: "Spoiled biologicals.", proof: "Temp Log" },
                 { id: "SC-MED-08", technicalProtocol: "Biomedical Waste Seal", floorAction: "Verify sharps containers are sealed for pickup.", priority: "High", riskLevel: "High", consequence: "Needle-stick injury risk.", proof: "Visual Check" },
@@ -259,8 +260,8 @@ export const school_operations_pack: PremiumPack = {
             tasks: [
                 { id: "SC-FIN-01", technicalProtocol: "Fee-to-Bank Integrity", floorAction: "Match cash/checks in hand to system report.", priority: "High", riskLevel: "High", consequence: "Internal revenue theft.", proof: "Settlement Log" },
                 { id: "SC-FIN-02", technicalProtocol: "Cancelled Receipt Audit", floorAction: "Manager sign-off on 100% of deleted receipts.", priority: "High", riskLevel: "Medium", consequence: "Fee fraud.", proof: "POS Audit" },
-                { id: "SC-FIN-03", technicalProtocol: "Digital ORM Response", floorAction: "Reply to all Google reviews received in last 24h.", priority: "High", riskLevel: "Low", consequence: "Brand ranking drop.", proof: "Dashboard" },
-                { id: "SC-FIN-04", technicalProtocol: "Parent WhatsApp TAT", floorAction: "Answer all admission inquiries < 2h.", priority: "Medium", riskLevel: "Low", consequence: "Lost admissions revenue.", proof: "Inbox Clear" },
+                { id: "SC-FIN-03", technicalProtocol: "Digital Incident Triage", floorAction: "Escalate social media mentions of campus incidents to Principal in < 15m.", priority: "High", riskLevel: "High", consequence: "Uncontrolled viral PR disaster.", proof: "Dashboard Screenshot" },
+                { id: "SC-FIN-04", technicalProtocol: "Parent Grievance Resolution TAT", floorAction: "Verify all queries acknowledged in < 2h and resolved in < 24h.", priority: "Medium", riskLevel: "Low", consequence: "Parent attrition and reputational damage.", proof: "Comms Log" },
                 { id: "SC-FIN-05", technicalProtocol: "Petty Cash Blind Count (Weekly)", floorAction: "Physical count of coins vs voucher.", priority: "Medium", riskLevel: "High", consequence: "Small-scale theft.", proof: "Audit Note", frequency: "Weekly" }
             ]
         }
