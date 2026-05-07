@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const cinema_operations_pack: PremiumPack = {
@@ -11,7 +10,7 @@ export const cinema_operations_pack: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
     category: "Entertainment & Events",
-    description: "The definitive Sovereign v11.9 engine for cinema groups and multiplexes. Hardening 135 technical control points to protect crowd safety, experience quality, and revenue integrity.",
+    description: "The definitive Sovereign v11.9 engine for cinema groups and multiplexes. Hardening 144 technical control points to protect crowd safety, experience quality, and revenue integrity.",
     heroHeadline: "Protect Crowd Safety, Experience Quality, and Revenue Integrity.",
     heroSubheadline: "Track technical readiness, auditorium standards, and concession yields across every screen in your group.",
     pricingUrgency: "A single projection failure during a blockbuster opening or one crowd incident costs 100x more than this system.",
@@ -21,11 +20,11 @@ export const cinema_operations_pack: PremiumPack = {
     badgeVariant: "accent",
     whoIsItFor: ["Multiplex Owners", "Operations Heads", "Cinema GMs", "Technical Directors", "Concession Managers"],
     sampleItems: [
-        { text: "<strong>Show Readiness Protocol</strong>: Zero-fail checks for DCP ingest, KDM validity, and sound balance before every show.", icon: "projector" },
-        { text: "<strong>Revenue Leakage Shield</strong>: Corn-to-bucket yield logic, void-bill audits, and free-pass misuse tracking.", icon: "banknote" },
-        { text: "<strong>Crowd Surge Control</strong>: Peak-hour deployment plans and emergency exit physical tests to prevent public safety failures.", icon: "users" },
-        { text: "<strong>Projection Uptime Check</strong>: Critical monitoring of lamp hours, server sync, and playback fallback systems.", icon: "activity" },
-        { text: "<strong>Auditorium Comfort (AC)</strong>: Hourly thermal logs to ensure optimal guest comfort during high-occupancy shows.", icon: "thermometer" },
+        { text: "<strong>Show Readiness Protocol</strong>: Zero-fail checks for DCP ingest, sound balance, and recliner motors pre-show.", icon: "projector" },
+        { text: "<strong>Revenue Leakage Shield</strong>: Corn-to-bucket yield logic, void-bill audits, and QR ticket fraud monitoring.", icon: "banknote" },
+        { text: "<strong>Crowd Surge Control</strong>: Heat-mapping congestion and interval throughput TAT monitoring.", icon: "users" },
+        { text: "<strong>Projection Uptime Check</strong>: Critical monitoring of lamp hours, Dolby calibration, and server sync.", icon: "activity" },
+        { text: "<strong>Auditorium Comfort (AC)</strong>: Air quality (CO2) monitoring and hourly thermal logs for guest comfort.", icon: "thermometer" },
         { text: "<strong>Institutional Memory</strong>: Built-in instructions ensure safety standards stay if key technical staff resign.", icon: "history" }
     ],
     checklists: [
@@ -76,7 +75,8 @@ export const cinema_operations_pack: PremiumPack = {
                 { id: "C-GMC-12", technicalProtocol: "Manager Shift Handover", floorAction: "Log critical issues for the evening shift lead.", priority: "High", riskLevel: "Low", consequence: "Loss of operational continuity.", proof: "Signed Log" },
                 { id: "C-GMC-13", technicalProtocol: "BMS Connectivity Check", floorAction: "Confirm 100% cloud-sync for all ticketing terminals.", priority: "High", riskLevel: "Medium", consequence: "Offline billing and sales lag.", proof: "System Screen" },
                 { id: "C-GMC-14", technicalProtocol: "VIP Guest Greeting", floorAction: "Greet identified Tier-1 guests arriving for VIP screenings.", priority: "Low", riskLevel: "Low", consequence: "Loss of high-LTV loyalty.", proof: "Feedback Log" },
-                { id: "C-GMC-15", technicalProtocol: "Final Daily Command Sign-off", floorAction: "Execute daily operational sign-off initials.", priority: "High", riskLevel: "Low", consequence: "Loss of duty control.", proof: "Signed Log" }
+                { id: "C-GMC-15", technicalProtocol: "Final Daily Command Sign-off", floorAction: "Execute daily operational sign-off initials.", priority: "High", riskLevel: "Low", consequence: "Loss of duty control.", proof: "Signed Log" },
+                { id: "C-GMC-16", technicalProtocol: "Trailer Playlist Sync", floorAction: "Verify trailers match target audience and distributor schedule.", priority: "Medium", riskLevel: "Low", consequence: "Misaligned marketing and audience confusion.", proof: "Playlist Audit" }
             ]
         },
         {
@@ -126,7 +126,9 @@ export const cinema_operations_pack: PremiumPack = {
                 { id: "C-PRO-12", technicalProtocol: "Server Storage Headroom", floorAction: "Clear old DCP files to maintain > 20% free space.", priority: "Low", riskLevel: "Low", consequence: "System lag during ingest.", proof: "System Note" },
                 { id: "C-PRO-13", technicalProtocol: "Speaker Driver Audit", floorAction: "Listen for 'crackling' in sub-bass units.", priority: "Medium", riskLevel: "Low", consequence: "Distorted guest experience.", proof: "Walkthrough" },
                 { id: "C-PRO-14", technicalProtocol: "TMS Cloud Sync", floorAction: "Verify centralized show-manager sync is intact.", priority: "High", riskLevel: "Medium", consequence: "Inability to push content remotely.", proof: "Dashboard" },
-                { id: "C-PRO-15", technicalProtocol: "Technical Shift Seal", floorAction: "Execute power-off for non-critical racks.", priority: "Low", riskLevel: "Low", consequence: "Energy waste.", proof: "Signed Log" }
+                { id: "C-PRO-15", technicalProtocol: "Technical Shift Seal", floorAction: "Execute power-off for non-critical racks.", priority: "Low", riskLevel: "Low", consequence: "Energy waste.", proof: "Signed Log" },
+                { id: "C-PRO-16", technicalProtocol: "Dolby Audio Calibration", floorAction: "Execute dB level check in screen center (Target 85dB reference).", priority: "High", riskLevel: "Medium", consequence: "Audio fatigue or lack of impact.", proof: "Sound Meter" },
+                { id: "C-PRO-17", technicalProtocol: "Emergency Subtitle Accessibility", floorAction: "Verify HOH captions load for accessible screenings.", priority: "Medium", riskLevel: "Low", consequence: "ADA/Disability non-compliance.", proof: "Visual Check" }
             ]
         },
         {
@@ -146,7 +148,9 @@ export const cinema_operations_pack: PremiumPack = {
                 { id: "C-RDY-07", technicalProtocol: "Screen Surface Scan", floorAction: "Check for any new stains or marks on screen cloth.", priority: "Low", riskLevel: "Low", consequence: "Poor visual experience.", proof: "Visual Audit" },
                 { id: "C-RDY-08", technicalProtocol: "Door Closure Buffer", floorAction: "Ensure main doors shut tight to block lobby light/noise.", priority: "Low", riskLevel: "Low", consequence: "Guest irritation.", proof: "Walkthrough" },
                 { id: "C-RDY-09", technicalProtocol: "Emergency Exit Path", floorAction: "Verify 100% clearance of the corridor for current show.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment.", proof: "Patrol Log" },
-                { id: "C-RDY-10", technicalProtocol: "Final Row-ID Accuracy", floorAction: "Verify seat-number stickers are legible and intact.", priority: "Low", riskLevel: "Low", consequence: "Seating confusion and delays.", proof: "Visual Check" }
+                { id: "C-RDY-10", technicalProtocol: "Final Row-ID Accuracy", floorAction: "Verify seat-number stickers are legible and intact.", priority: "Low", riskLevel: "Low", consequence: "Seating confusion and delays.", proof: "Visual Check" },
+                { id: "C-RDY-11", technicalProtocol: "Recliner Motor Lifecycle", floorAction: "Test recliners in 2 random rows for smooth motor operation.", priority: "Medium", riskLevel: "Low", consequence: "VIP seat failure during show.", proof: "Mechanical Log" },
+                { id: "C-RDY-12", technicalProtocol: "CO2 & Air Quality Watch", floorAction: "Monitor air quality sensors during peak 90% occupancy.", priority: "Medium", riskLevel: "Low", consequence: "Stuffy auditorium and guest lethargy.", proof: "Sensor Data" }
             ]
         },
         {
@@ -166,7 +170,9 @@ export const cinema_operations_pack: PremiumPack = {
                 { id: "C-FLO-07", technicalProtocol: "Wait-Time Pulse", floorAction: "Monitor concession queues: target < 5 mins TAT.", priority: "Medium", riskLevel: "Low", consequence: "Lost interval revenue.", proof: "TAT Log" },
                 { id: "C-FLO-08", technicalProtocol: "Security Frisking Sync", floorAction: "Verify 100% of bags checked at main lobby entry.", priority: "High", riskLevel: "High", consequence: "Unauthorized object entry.", proof: "Registry Log" },
                 { id: "C-FLO-09", technicalProtocol: "Lobby Music Sync", floorAction: "Confirm playlist matches current time-of-day energy.", priority: "Low", riskLevel: "Low", consequence: "Wrong guest energy.", proof: "Visual Check" },
-                { id: "C-FLO-10", technicalProtocol: "Final Lobby Closure", floorAction: "Lock down all shutters post-last show entry.", priority: "High", riskLevel: "High", consequence: "Theft.", proof: "Signed Log" }
+                { id: "C-FLO-10", technicalProtocol: "Final Lobby Closure", floorAction: "Lock down all shutters post-last show entry.", priority: "High", riskLevel: "High", consequence: "Theft.", proof: "Signed Log" },
+                { id: "C-FLO-11", technicalProtocol: "Crowd Surge Heat-Mapping", floorAction: "Identify congestion points at Concession vs Washrooms during interval.", priority: "Medium", riskLevel: "Low", consequence: "Dangerous lobby gridlock.", proof: "Patrol Report" },
+                { id: "C-FLO-12", technicalProtocol: "Interval Throughput TAT", floorAction: "Log total time taken to clear 100% of concession queue.", priority: "High", riskLevel: "Low", consequence: "Lost revenue during interval bottleneck.", proof: "Timer Log" }
             ]
         },
         {
@@ -198,7 +204,7 @@ export const cinema_operations_pack: PremiumPack = {
             icon: "banknote",
             tasks: [
                 { id: "C-FIN-01", technicalProtocol: "Revenue Reconcile Pulse", floorAction: "Match cash in hand to POS daily report.", priority: "High", riskLevel: "High", consequence: "Internal cashier theft.", proof: "Settlement Log" },
-                { id: "C-FIN-02", technicalProtocol: "Void Bill Authorization", floorAction: "Manager sign-off on 100% of cancelled tickets.", priority: "High", riskLevel: "Medium", consequence: "Theft masked as errors.", proof: "POS Audit" },
+                { id: "C-FIN-02", technicalProtocol: "Void Bill Authorization", floorAction: "Audit 100% of cancelled tickets.", priority: "High", riskLevel: "Medium", consequence: "Theft masked as errors.", proof: "POS Audit" },
                 { id: "C-FIN-03", technicalProtocol: "Free-Pass Misuse Audit", floorAction: "Audit 'Comp-Ticket' register for authorized signatures.", priority: "High", riskLevel: "High", consequence: "Revenue leakage through fraud.", proof: "Registry Audit" },
                 { id: "C-FIN-04", technicalProtocol: "Ticket Override Abuse", floorAction: "Review daily logs for unauthorized price overrides.", priority: "High", riskLevel: "Medium", consequence: "Untracked discount leakage.", proof: "System Log" },
                 { id: "C-FIN-05", technicalProtocol: "Refund Fraud Shield", floorAction: "Verify 100% of 'Cash Refunds' match a manager-signed form.", priority: "High", riskLevel: "High", consequence: "Direct financial embezzlement.", proof: "Refund Forms" },
@@ -206,7 +212,8 @@ export const cinema_operations_pack: PremiumPack = {
                 { id: "C-FIN-07", technicalProtocol: "Vending Machine Float", floorAction: "Reconcile cash in game-zone units.", priority: "Low", riskLevel: "Low", consequence: "Small-scale theft.", proof: "Float Sheet" },
                 { id: "C-FIN-08", technicalProtocol: "Unbilled Inventory Sweep", floorAction: "Audit back-store for items not entered in GRN.", priority: "High", riskLevel: "High", consequence: "Inaccurate margin data.", proof: "Stock Audit" },
                 { id: "C-FIN-09", technicalProtocol: "Tax Invoice Seriality", floorAction: "Verify zero gaps in bill serial numbers.", priority: "High", riskLevel: "High", consequence: "Tax department fines.", proof: "Ledger Scan" },
-                { id: "C-FIN-10", technicalProtocol: "Final Financial Settlement", floorAction: "EOD strategic closure initials.", priority: "High", riskLevel: "Low", consequence: "Loss of control.", proof: "Signed Summary" }
+                { id: "C-FIN-10", technicalProtocol: "Final Financial Settlement", floorAction: "EOD strategic closure initials.", priority: "High", riskLevel: "Low", consequence: "Loss of control.", proof: "Signed Summary" },
+                { id: "C-FIN-11", technicalProtocol: "QR Ticket Fraud Shield", floorAction: "Audit unique scan codes vs manual POS entries.", priority: "High", riskLevel: "High", consequence: "Revenue loss through ticket duplication.", proof: "Audit Report" }
             ]
         },
         {
@@ -226,7 +233,8 @@ export const cinema_operations_pack: PremiumPack = {
                 { id: "C-HK-07", technicalProtocol: "Upholstery Damage Scan", floorAction: "Report any tears or gum on seats.", priority: "Medium", riskLevel: "Low", consequence: "Luxury brand decay.", proof: "Visual Audit" },
                 { id: "C-HK-08", technicalProtocol: "Chemical Storage LOTO", floorAction: "Lock cleaning chemical cabinet at EOD.", priority: "High", riskLevel: "High", consequence: "Theft / misuse.", proof: "Visual Check" },
                 { id: "C-HK-09", technicalProtocol: "Entrance Mat Polish", floorAction: "Deep clean lobby walk-off mats.", priority: "Low", riskLevel: "Low", consequence: "Grungy first touch.", proof: "Photo" },
-                { id: "C-HK-10", technicalProtocol: "EOD Janitorial Summary", floorAction: "Daily hygiene command sign-off.", priority: "High", riskLevel: "Low", consequence: "Slipping standards.", proof: "Signed Note" }
+                { id: "C-HK-10", technicalProtocol: "EOD Janitorial Summary", floorAction: "Daily hygiene command sign-off.", priority: "High", riskLevel: "Low", consequence: "Slipping standards.", proof: "Signed Note" },
+                { id: "C-HK-11", technicalProtocol: "Child Booster Sanitization", floorAction: "Wipe and sanitize booster seats between shows.", priority: "Medium", riskLevel: "Low", consequence: "Hygiene risk for young guests.", proof: "Cleaning Sheet" }
             ]
         },
         {
@@ -237,7 +245,7 @@ export const cinema_operations_pack: PremiumPack = {
             summary: "Infrastructure uptime and backbone protection.",
             icon: "wrench",
             tasks: [
-                { id: "C-MNT-01", technicalProtocol: "Emergency Power Readiness", floorAction: "Inspect DG fuel level and battery charge status.", priority: "High", riskLevel: "High", consequence: "Total blackout and refund crisis.", proof: "Fuel Log" },
+                { id: "C-MNT-01", technicalProtocol: "Emergency Power Readiness", floorAction: "Inspect DG fuel level and battery status.", priority: "High", riskLevel: "High", consequence: "Total blackout and refund crisis.", proof: "Fuel Log" },
                 { id: "C-MNT-02", technicalProtocol: "Plumbing Leak Patrol", floorAction: "Inspect bathroom traps and kitchen drains for leaks.", priority: "Medium", riskLevel: "Medium", consequence: "Water damage and bad smells.", proof: "Walkthrough" },
                 { id: "C-MNT-03", technicalProtocol: "Lobby AC Performance", floorAction: "Check discharge temp at main vents (Target 21°C).", priority: "Medium", riskLevel: "Low", consequence: "Hot lobby and irritable guests.", proof: "Temp Reading" },
                 { id: "C-MNT-04", technicalProtocol: "Escalator Auto-Stop Test", floorAction: "Verify functionality of safety sensors.", priority: "High", riskLevel: "High", consequence: "Serious passenger injury.", proof: "Test Note" },
@@ -264,7 +272,7 @@ export const cinema_operations_pack: PremiumPack = {
                 { id: "C-SEC-05", technicalProtocol: "Guard Sobriety Pulse", floorAction: "Random alcohol check for night shift security.", priority: "High", riskLevel: "High", consequence: "Vulnerable venue perimeter.", proof: "Test Note" },
                 { id: "C-SEC-06", technicalProtocol: "Bag Check Discipline", floorAction: "Verify 100% of guest food/drink items intercepted at gate.", priority: "Medium", riskLevel: "Low", consequence: "Lost concession revenue.", proof: "Visual Audit" },
                 { id: "C-SEC-07", technicalProtocol: "Staff Exit Bag-Check", floorAction: "Execute random exit checks for on-duty staff.", priority: "High", riskLevel: "Medium", consequence: "Internal shrinkage.", proof: "Registry Note" },
-                { id: "C-SEC-08", technicalProtocol: "Panic Button Vitals", floorAction: "Test buttons at Box Office and Manager Cabin.", priority: "High", riskLevel: "High", consequence: "Failure during aggression.", proof: "Alarm Log" },
+                { id: "C-SEC-08", technicalProtocol: "Panic Button Vitals", floorAction: "Test buttons at Box Office and Manager Cabin.", priority: "High", riskLevel: "High", consequence: "Security failure during aggression.", proof: "Alarm Log" },
                 { id: "C-SEC-09", technicalProtocol: "Perimeter Lighting Scan", floorAction: "Verify 100% of night-security lighting is ON.", priority: "Medium", riskLevel: "Low", consequence: "Theft hotspots.", proof: "Walkthrough" },
                 { id: "C-SEC-10", technicalProtocol: "Final Perimeter Seal", floorAction: "Daily security deployment sign-off.", priority: "High", riskLevel: "Low", consequence: "Unsecured property.", proof: "Signed Summary" }
             ]
@@ -286,4 +294,3 @@ export const cinema_operations_pack: PremiumPack = {
         }
     ]
 };
-    

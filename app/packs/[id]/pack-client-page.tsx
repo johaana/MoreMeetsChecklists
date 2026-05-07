@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -52,14 +51,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
     const res = packResolutions[pack.id] || defaultResolution;
     
-    const getDisplayTasks = () => {
-        if (pack.id === 'cinema_operations_pack') return 125;
-        if (pack.id === 'healthcare_and_hospital_operations') return 200;
-        if (pack.id === 'retail_operations_system' || pack.id === 'hotels_and_resorts') return 250;
-        return pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
-    };
-
-    const totalTasks = getDisplayTasks();
+    // Authentic Density (e.g., 144 -> 140+)
+    const rawCount = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
+    const totalTasks = Math.floor(rawCount / 10) * 10;
 
     return (
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-primary/20">
@@ -80,12 +74,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </h1>
                                 <div className="space-y-8">
                                     <p className="text-lg md:text-[24px] font-medium text-zinc-300 max-w-2xl leading-tight">
-                                        {res.heroSubline.split('responsibilities schools cannot afford to miss').map((part, i, arr) => (
-                                            <React.Fragment key={i}>
-                                                {part}
-                                                {i < arr.length - 1 && <span className="italic">responsibilities schools cannot afford to miss</span>}
-                                            </React.Fragment>
-                                        ))}
+                                        {res.heroSubline}
                                     </p>
                                     <div className="space-y-3 border-l-2 border-primary/40 pl-6">
                                         <p className="text-sm md:text-base text-zinc-300 font-bold max-w-lg leading-relaxed">
@@ -118,7 +107,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
                                     {[
                                         { t: `${pack.checklists.length} Operational Divisions`, i: LayoutGrid },
-                                        { t: `${totalTasks}+ Technical Points`, i: Target },
+                                        { t: `${totalTasks}+ Technical SOPs`, i: Target },
                                         { t: "Live Dashboard Included", i: Activity },
                                         { t: "Editable .XLSX Infrastructure", i: FileSpreadsheet }
                                     ].map((item, i) => (
@@ -273,78 +262,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 )}
                             </div>
                         </div>
-                    </div>
-                </div>
-            </Section>
-
-            {/* --- SECTION 5: MONDAY MORNING --- */}
-            <Section className="bg-white border-y border-zinc-100">
-                <div className="max-w-4xl mx-auto space-y-16">
-                    <div className="text-center space-y-6">
-                        <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.4em] font-black text-[10px] px-6 py-2 rounded-none">OPERATIONAL IMPACT</Badge>
-                        <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter">
-                            Monday Morning
-                        </h2>
-                        <p className="text-zinc-500 italic font-bold text-lg">The day starts differently.</p>
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 gap-6 md:gap-10">
-                        {res.mondayMorning.map((item, i) => (
-                            <div key={i} className="flex items-center gap-5 p-6 rounded-2xl bg-zinc-50 border border-zinc-100 group hover:bg-zinc-950 hover:text-white transition-all duration-500 text-left">
-                                <span className="text-4xl font-black italic text-zinc-200 group-hover:text-primary/20 transition-colors leading-none">0{i+1}</span>
-                                <span className="text-zinc-600 group-hover:text-zinc-100 font-black italic uppercase text-sm md:text-base leading-tight tracking-tight">{item}</span>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="text-center pt-10">
-                         <p className="text-xl md:text-2xl font-black text-zinc-950 uppercase italic tracking-tighter font-headline">
-                            👉 Daily operations become structured before the first rush begins.
-                        </p>
-                    </div>
-                </div>
-            </Section>
-
-            {/* --- SECTION 6: OPERATIONAL COVERAGE --- */}
-            <Section className="bg-zinc-50/30">
-                <div className="space-y-20">
-                    <div className="text-center space-y-6">
-                        <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2.5 rounded-none">Institutional coverage</Badge>
-                        <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
-                            Operational Divisions
-                        </h2>
-                        <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
-                            Comprehensive oversight across safety, compliance, and infrastructure execution.
-                        </p>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-                        {pack.checklists.map((checklist, index) => (
-                            <div key={index} className="border border-zinc-200 p-8 md:p-12 space-y-6 hover:border-primary hover:shadow-2xl transition-all duration-700 bg-white group flex flex-col relative overflow-hidden text-left">
-                                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 -mr-12 -mt-12 rounded-full blur-2xl opacity-0 group-hover:opacity-10 transition-opacity" />
-                                <div className="flex justify-between items-center border-b border-zinc-100 pb-4">
-                                    <span className="text-[10px] font-black text-zinc-400 tracking-[0.3em]">
-                                        OPERATIONAL DIVISION
-                                    </span>
-                                    <div className="flex items-center gap-2">
-                                        <ShieldCheck className="w-3.5 h-3.5 text-primary/40" />
-                                        <span className="text-[10px] font-black text-primary uppercase tracking-widest">AUDIT READY</span>
-                                    </div>
-                                </div>
-                                <div className="space-y-2 text-left">
-                                    <p className="text-[9px] font-black uppercase text-zinc-400 tracking-[0.4em] font-headline italic text-left">ROLE: {checklist.role || "Manager"}</p>
-                                    <h4 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-[#0B0F14] group-hover:text-primary transition-colors leading-tight text-left">
-                                        {checklist.title.replace('System', '').replace('Command', '').replace('Operations', '').replace('Protocol', '')}
-                                    </h4>
-                                </div>
-                                <p className="text-sm md:text-base text-zinc-500 italic font-medium leading-relaxed flex-1 text-left">
-                                    {checklist.summary}
-                                </p>
-                                <div className="pt-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-300 group-hover:text-primary transition-colors text-left">
-                                    <Target className="w-4 h-4" /> PERFORMANCE TRACKED
-                                </div>
-                            </div>
-                        ))}
                     </div>
                 </div>
             </Section>
