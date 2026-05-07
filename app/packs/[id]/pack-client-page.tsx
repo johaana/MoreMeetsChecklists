@@ -42,7 +42,7 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
 
 const PulsatingStressText = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
     <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-        <span className="text-[12px] md:text-[16px] font-black text-red-600/80 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.2)] leading-tight block text-left lg:text-right">
+        <span className="text-[12px] md:text-[18px] font-black text-red-600/80 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.2)] leading-tight block text-left lg:text-right">
             {text}
         </span>
     </div>
@@ -79,22 +79,24 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-primary/20">
             
             {/* --- HERO SECTION --- */}
-            <section className="relative w-full min-h-[90svh] flex flex-col justify-center overflow-hidden bg-black text-white">
+            <section className="relative w-full min-h-[85svh] flex flex-col justify-center overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 z-0">
                     <img src={heroImageUrl} alt="" className="w-full h-full object-cover opacity-20 grayscale brightness-50" />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/60 to-transparent" />
                 </div>
 
-                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-32 pb-16 md:py-0">
+                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-24 pb-12 md:py-0">
                     <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 items-center">
-                        <div className="space-y-10 w-full">
+                        <div className="space-y-8 w-full">
                             <div className="space-y-4">
-                                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-6 py-2 rounded-none bg-primary/5">
-                                    {isSchool ? "INSTITUTIONAL INFRASTRUCTURE" : "SOVEREIGN OPERATING ENGINE"}
-                                </Badge>
+                                {!isSchool && (
+                                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px] px-6 py-2 rounded-none bg-primary/5">
+                                        SOVEREIGN OPERATING ENGINE
+                                    </Badge>
+                                )}
                                 <h1 className={cn(
-                                    "font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white",
-                                    isSchool ? "text-[32px] md:text-[60px]" : "text-[36px] md:text-[80px]"
+                                    "font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white whitespace-nowrap",
+                                    isSchool ? "text-[30px] md:text-[54px]" : "text-[36px] md:text-[80px]"
                                 )}>
                                     {isSchool ? (
                                         <>SCHOOL <span style={{ color: BRAND_GREEN }}>OPERATING SYSTEM</span></>
@@ -139,9 +141,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         </div>
                                     ))}
                                 </div>
-                                <p className="text-[10px] md:text-[11px] text-zinc-500 font-black uppercase tracking-[0.3em] italic">
-                                    Built in Excel. Shared through Google Sheets. No app rollout required.
-                                </p>
                             </div>
 
                             <div className="space-y-6">
@@ -155,9 +154,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         <p className="text-[9px] md:text-[11px] text-zinc-500 font-black uppercase tracking-[0.4em] italic">
                                             ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
                                         </p>
-                                        <p className="text-[8px] md:text-[10px] text-zinc-600 font-bold uppercase tracking-[0.2em] italic">
-                                            Used through Excel & Google Sheets your team already understands.
-                                        </p>
                                     </div>
                                 </div>
                                 <p className="text-[10px] md:text-[11px] text-zinc-600 font-bold italic leading-snug max-w-sm">
@@ -168,9 +164,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         
                         <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-16 lg:mt-0 space-y-6">
                              <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">
-                                {isSchool ? "DAILY EXECUTION RISKS" : "ANATOMY OF FAILURE"}
+                                {isSchool ? "DAILY OPERATIONAL RISKS" : "ANATOMY OF FAILURE"}
                              </p>
-                             <div className="flex flex-col gap-6 md:gap-10">
+                             <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
                                  {(isSchool ? [
                                     "Child handovers becoming informal",
                                     "Visitor verification skipped during rush hours",
@@ -180,9 +176,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                  ] : findings.slice(0, 5).map((f: any) => f.title)).map((text: string, i: number) => (
                                     <div key={i} className="space-y-1">
                                         <PulsatingStressText text={text} delay={`${i * 0.2}s`} />
-                                        <p className="text-[10px] md:text-[11px] text-zinc-600 font-bold uppercase tracking-tight leading-tight max-w-xs lg:ml-auto">
-                                            {isSchool ? "Risk to Student Welfare" : "Forensic Technical Finding"}
-                                        </p>
+                                        {!isSchool && (
+                                            <p className="text-[10px] md:text-[11px] text-zinc-600 font-bold uppercase tracking-tight leading-tight max-w-xs lg:ml-auto">
+                                                Forensic Technical Finding
+                                            </p>
+                                        )}
                                     </div>
                                  ))}
                              </div>
@@ -203,7 +201,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         </h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
                             {isSchool 
-                                ? "Schools rarely fail because of one catastrophic event. They fail when routine responsibilities slowly become informal, verbal, and dependent on people remembering things."
+                                ? "Schools rarely fail because of one catastrophic event. They fail when routine responsibilities slowly become informal, verbal, and dependent on memory."
                                 : pack.description}
                         </p>
                     </div>
@@ -284,12 +282,12 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <div className="p-6 bg-zinc-950 rounded-2xl border-l-4 border-emerald-500 shadow-2xl">
                                     <p className="text-white text-base md:text-lg font-bold italic leading-relaxed">
                                         Your team does not need new software, logins, or technical training. <br/><br/>
-                                        <span className="text-emerald-500">They simply open the system in Excel or Google Sheets, complete assigned tasks, and continue working.</span>
+                                        <span className="text-emerald-500">They simply open the system, complete assigned tasks, and continue working.</span>
                                     </p>
                                 </div>
                                 <div className="grid grid-cols-1 gap-4">
                                     {(isSchool ? [
-                                        "Daily task checklists", "Role-based responsibilities", "Trainer notes for staff", "Consequences for missed tasks", "Live task updates", "Editable operational infrastructure", "Multi-branch visibility", "Audit-ready records"
+                                        "Daily task checklists", "Role-based responsibilities", "Trainer notes for staff", "Consequences for missed tasks", "Live task updates", "Editable operational structure", "Multi-branch visibility", "Audit-ready records"
                                     ] : resolution.teamUses).map((item, i) => (
                                         <div key={i} className="flex items-center gap-4 p-4 rounded-xl border border-zinc-100 bg-white group hover:border-primary/20 transition-all">
                                             <div className="w-2 h-2 rounded-full bg-primary/20 group-hover:bg-primary transition-all" />
@@ -321,7 +319,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             "Nurse confirms emergency supplies",
                             "Kitchen hygiene logs are updated before breakfast",
                             "Daily responsibilities are already visible to teams",
-                            "Managers gain live visibility without chasing."
+                            "Managers stop chasing for updates"
                         ] : resolution.mondayMorning).map((item, i) => (
                             <div key={i} className="flex items-center gap-5 p-6 rounded-2xl bg-zinc-50 border border-zinc-100 group hover:bg-zinc-950 hover:text-white transition-all duration-500 text-left">
                                 <span className="text-4xl font-black italic text-zinc-200 group-hover:text-primary/20 transition-colors leading-none">0{i+1}</span>
