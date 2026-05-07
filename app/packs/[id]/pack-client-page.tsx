@@ -22,7 +22,10 @@ import {
     History,
     GraduationCap,
     ClipboardCheck,
-    FileSpreadsheet
+    FileSpreadsheet,
+    Scale,
+    AlertTriangle,
+    ArrowDownRight
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
@@ -55,12 +58,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
     const res = packResolutions[pack.id] || defaultResolution;
     
-    // BELIEVABILITY OVERRIDES: Adjust display counts for sector authority
     const getDisplayTasks = () => {
         if (pack.id === 'cinema_operations_pack') return 125;
         if (pack.id === 'healthcare_and_hospital_operations') return 200;
         if (pack.id === 'retail_operations_system' || pack.id === 'hotels_and_resorts') return 250;
-        return pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0);
+        return pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
     };
 
     const totalTasks = getDisplayTasks();
@@ -96,6 +98,18 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Built For Matrix (New) */}
+                            {res.builtFor && (
+                                <div className="space-y-4">
+                                    <p className="text-[9px] font-black text-white/20 uppercase tracking-[0.5em] italic">IDEAL DEPLOYMENT SITES</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {res.builtFor.map((site, i) => (
+                                            <span key={i} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-bold text-zinc-400 uppercase tracking-widest">{site}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
 
                             <div className="space-y-5">
                                 <div className="flex items-center gap-3">
@@ -182,6 +196,25 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
                         ))}
                     </div>
+
+                    {/* Failure Consequences Strip (New) */}
+                    {res.consequences && (
+                        <div className="mt-32 pt-16 border-t border-zinc-100">
+                             <div className="flex items-center gap-3 justify-center mb-12">
+                                <div className="w-1 h-5 bg-red-500" />
+                                <p className="text-[10px] font-black text-red-500 uppercase tracking-[0.5em] italic font-headline">FAILURE CONSEQUENCES</p>
+                            </div>
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                {res.consequences.map((c, i) => (
+                                    <div key={i} className="p-8 rounded-2xl bg-zinc-950 text-white space-y-3 relative overflow-hidden group">
+                                        <div className="absolute top-0 right-0 w-2 h-full bg-red-600/20 group-hover:bg-red-600 transition-colors" />
+                                        <p className="text-[11px] font-black uppercase text-red-500 tracking-widest">{c.title}</p>
+                                        <p className="text-sm font-bold italic text-zinc-400 leading-tight">→ {c.fallout}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </Section>
 
@@ -225,16 +258,20 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         <span className="text-emerald-500">They simply open the system in Excel or Google Sheets and begin running operations daily.</span>
                                     </p>
                                 </div>
-                                <div className="grid grid-cols-1 gap-4">
-                                    {[
-                                        "Daily task checklists", "Role-based responsibilities", "Trainer notes for staff", "Consequences for missed tasks", "Live task updates", "Editable operational structure", "Multi-branch visibility", "Audit-ready records"
-                                    ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-4 p-4 rounded-xl border border-zinc-100 bg-white group hover:border-primary/20 transition-all">
-                                            <div className="w-2 h-2 rounded-full bg-primary/20 group-hover:bg-primary transition-all" />
-                                            <span className="text-zinc-600 font-bold italic uppercase text-sm tracking-wide">{item}</span>
+                                
+                                {res.compliance && (
+                                    <div className="space-y-4 pt-4">
+                                        <p className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.4em]">COMPLIANCE COVERAGE</p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {res.compliance.map((item, i) => (
+                                                <div key={i} className="flex items-center gap-2 px-4 py-2 bg-white border border-zinc-100 rounded-lg shadow-sm">
+                                                    <ShieldCheck className="w-3.5 h-3.5 text-primary" />
+                                                    <span className="text-[10px] font-black uppercase text-zinc-600 tracking-wider">{item}</span>
+                                                </div>
+                                            ))}
                                         </div>
-                                    ))}
-                                </div>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -275,10 +312,10 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     <div className="text-center space-y-6">
                         <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2.5 rounded-none">Institutional coverage</Badge>
                         <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
-                            Operational Framework
+                            Operational Divisions
                         </h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
-                            Comprehensive oversight across safety, compliance, and department-level execution.
+                            Comprehensive oversight across safety, compliance, and infrastructure execution.
                         </p>
                     </div>
 
@@ -322,7 +359,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             Built for real teams
                         </h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
-                            Most businesses already have SOPs. The problem is that execution slowly becomes verbal, informal, and dependent on people remembering things during busy days.
+                            Facility teams manage problems nobody notices — until something fails. MoreMeets™ converts invisible operational work into visible institutional control.
                         </p>
                         <p className="text-zinc-950 font-black uppercase italic text-xl">MoreMeets™ converts daily responsibilities into visible operational execution.</p>
                     </div>
@@ -331,17 +368,17 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         {[
                             {
                                 t: "FASTER STAFF TRAINING",
-                                d: "New staff understand responsibilities faster using built-in instructions and operational guidance.",
+                                d: "New technicians understand responsibilities faster using built-in instructions and operational guidance.",
                                 i: GraduationCap
                             },
                             {
                                 t: "REDUCED DEPENDENCY",
-                                d: "Operations stop collapsing when one experienced manager is absent. Memory becomes infrastructure.",
+                                d: "Infrastructure stops collapsing when one experienced engineer is absent. Memory becomes infrastructure.",
                                 i: History
                             },
                             {
                                 t: res.reassuranceTrustTitle || "BRAND REPUTATION",
-                                d: res.reassuranceTrustDescription || "Operational discipline customers can feel. Consistency families notice across the entire group.",
+                                d: res.reassuranceTrustDescription || "Consistency guests feel from lobby arrival to room checkout.",
                                 i: Users
                             },
                             {
@@ -351,7 +388,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             },
                             {
                                 t: "EDITABLE INFRASTRUCTURE",
-                                d: "Add, remove, or customize operational tasks anytime to fit your unique brand protocols.",
+                                d: "Add, remove, or customize technical tasks anytime to fit your unique property protocols.",
                                 i: Zap
                             },
                             {

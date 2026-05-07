@@ -5,6 +5,9 @@ export type PackResolution = {
     strategicParagraph: string;
     whyExecutionBreaksParagraph: string;
     risks: { title: string; description: string; }[];
+    consequences?: { title: string; fallout: string; }[];
+    compliance?: string[];
+    builtFor?: string[];
     whatChangesDaily: string[];
     mondayMorning: string[];
     outcomes: string[];
@@ -92,7 +95,7 @@ export const packResolutions: Record<string, PackResolution> = {
     'hotels_and_resorts': {
         heroTitle: "HOTEL OPERATING SYSTEM",
         heroSubline: "Zero-drift operational governance for hotels, resorts, and hospitality groups.",
-        strategicParagraph: "Built for luxury properties where brand standard drift and privacy gaps represent business-ending liability.",
+        strategicParagraph: "Brand standards collapse quietly when execution becomes verbal, informal, and impossible to verify.",
         whyExecutionBreaksParagraph: "Brand standards collapse quietly when execution becomes verbal, informal, and impossible to verify.",
         risks: [
             { title: "Reputation Drift", description: "Unaddressed OTA reviews and unverified room setup standards lead to a slow, visible slide in property ratings." },
@@ -137,7 +140,7 @@ export const packResolutions: Record<string, PackResolution> = {
             { title: "Royalty Leakage", description: "Voided bills, aggregator mismatches, and off-book sales silently erode royalty visibility and franchisor revenue." },
             { title: "Brand Adulteration", description: "Local improvisation slowly destroys the consistency customers expect from the brand standard." },
             { title: "Compliance Liability", description: "Local partner negligence regarding FSSAI, fire licenses, or labor laws puts the entire network at risk." },
-            { title: "Unit Distress", description: "Weak units usually show warning signals weeks before collapse — but nobody sees them in time without data infrastructure." }
+            { title: "Unit Distress", description: "Weak units usually show warning signals weeks before collapse — but nobody sees them in time without data architecture." }
         ],
         whatChangesDaily: [
             "Unit managers report to the Sovereign Dashboard",
@@ -207,13 +210,25 @@ export const packResolutions: Record<string, PackResolution> = {
     'facility_management_blueprint': {
         heroTitle: "FACILITY OPERATING SYSTEM",
         heroSubline: "Sovereign technical command for MEP assets, vendor SLAs, and life safety.",
-        strategicParagraph: "Built for infrastructure leads where downtime, liability, and energy wastage are the primary risks.",
+        strategicParagraph: "Buildings don’t fail suddenly. They fail after weeks of invisible neglect. When maintenance becomes verbal, infrastructure becomes unstable.",
         whyExecutionBreaksParagraph: "Buildings fail when routine maintenance moves from scheduled execution into 'firefighting' once a fault occurs.",
+        builtFor: [
+            "Commercial Towers", "Malls & Retail", "Hospitals", "Schools & Universities", "Hotels & Resorts", "Industrial Sites", "Corporate Campuses"
+        ],
         risks: [
             { title: "Utility Blackouts", description: "Untested DG fuel levels and ignored ARD battery vitals lead to elevator entrapment and total power collapse." },
             { title: "Contractor Liability", description: "Unverified Permits-to-Work for high-risk jobs (Hot-work/Height) create massive fire and safety exposure." },
             { title: "Energy Spikes", description: "Lack of sub-meter KWH tracking hides equipment inefficiency and creates unmonitored cost blowouts." },
             { title: "HVAC Decay", description: "Ignored discharge temperatures and filter cleaning cycles lead to guest discomfort and asset shortened-life." }
+        ],
+        consequences: [
+            { title: "Power failure during occupancy", fallout: "Tenant escalation + DG emergency dependency" },
+            { title: "Unapproved hot-work", fallout: "Fire liability exposure + insurance complications" },
+            { title: "Untracked HVAC inefficiency", fallout: "Utility cost inflation + asset life reduction" },
+            { title: "Missed pump-room inspections", fallout: "Flooding risk + infrastructure downtime" }
+        ],
+        compliance: [
+            "Fire & Life Safety Readiness", "Permit-To-Work Governance", "Contractor Safety Discipline", "Emergency Exit Compliance", "Electrical Panel Safety Checks", "Lift & DG Audit Preparedness", "Vendor SLA Documentation", "Duty-of-Care Visibility"
         ],
         whatChangesDaily: [
             "MEP asset vitals become a daily data stream",
@@ -229,15 +244,17 @@ export const packResolutions: Record<string, PackResolution> = {
             "Washroom hygiene cycle is already active",
             "Utility meters are logged for Sunday's usage",
             "Emergency light batteries are tested and green",
-            "Managers stop waiting for technician reports"
+            "The building feels calm because systems are already under control."
         ],
         outcomes: [
-            "Critical uptime secured",
-            "Vendor SLAs verified",
-            "Energy wastage identified",
-            "Safety liability mitigated",
-            "Asset life protected"
-        ]
+            "DG readiness becomes observable",
+            "Permit-to-work violations become visible",
+            "Vendor accountability becomes enforceable",
+            "Energy spikes become traceable",
+            "Infrastructure dependency on memory disappears"
+        ],
+        reassuranceTrustTitle: "INSTITUTIONAL MEMORY",
+        reassuranceTrustDescription: "Operational history remains visible even when teams change, vendors rotate, or supervisors resign."
     },
     'cinema_operations_pack': {
         heroTitle: "CINEMA OPERATING SYSTEM",
