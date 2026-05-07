@@ -11,9 +11,9 @@ export const facility_management_blueprint: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d6d4dd85-3fb9-4c26-8ec3-cb021ddebfdc',
     category: "Corporate & Tech",
-    description: "The definitive Sovereign v11.9 technical engine for infrastructure command. Hardening 120 technical control points from MEP and Contractor Liability to Utility Economics.",
+    description: "The definitive Sovereign v11.9 technical engine for infrastructure command. Hardening 120+ technical control points from MEP and Contractor Liability to Utility Economics.",
     heroHeadline: "Prevent Downtime, Liability, and Infrastructure Failure.",
-    heroSubheadline: "Track building uptime, monitor contractor risks, and protect institutional assets—across 12 specialized governance modules.",
+    heroSubheadline: "Track building uptime, monitor contractor risks, and protect institutional assets—across 16 specialized governance modules.",
     pricingUrgency: "A single major utility failure or one safety breach costs 100x more than this system.",
     consultingAnchor: 10000,
     icon: "building-2",
@@ -90,6 +90,26 @@ export const facility_management_blueprint: PremiumPack = {
             ]
         },
         {
+            title: "BMS & Infrastructure Governance",
+            department: "Engineering",
+            frequency: "Daily",
+            role: "BMS Operator",
+            summary: "Advanced digital monitoring of critical facility backbone.",
+            icon: "cpu",
+            tasks: [
+                { id: "FM-BMS-01", technicalProtocol: "BMS Node Connectivity", floorAction: "Verify all AHU and VAV controllers are online on the head-end.", priority: "High", riskLevel: "Medium", consequence: "Loss of control over building climate zones.", proof: "System Dashboard" },
+                { id: "FM-BMS-02", technicalProtocol: "Filter Pressure Watch", floorAction: "Log differential pressure across main AHU filters.", priority: "Medium", riskLevel: "Low", consequence: "Reduced airflow and motor strain.", proof: "BMS Reading" },
+                { id: "FM-BMS-03", technicalProtocol: "Chiller Delta-T Monitor", floorAction: "Verify inlet/outlet temp variance matches efficiency target.", priority: "High", riskLevel: "Medium", consequence: "High energy cost and poor cooling performance.", proof: "Log Sheet" },
+                { id: "FM-BMS-04", technicalProtocol: "Generator Weekly Auto-Start", floorAction: "Execute and log the no-load auto-start simulation.", priority: "High", riskLevel: "High", consequence: "DG failure during real power outage.", proof: "Test Record" },
+                { id: "FM-BMS-05", technicalProtocol: "UPS Thermal Pulse", floorAction: "Physically check battery room for heat or electrolyte odors.", priority: "High", riskLevel: "High", consequence: "Battery explosion and fire.", proof: "Walkthrough Note" },
+                { id: "FM-BMS-06", technicalProtocol: "Server Humidity Governance", floorAction: "Verify humidity levels are between 45% - 55%.", priority: "High", riskLevel: "High", consequence: "Static discharge damage to IT hardware.", proof: "Hygrometer Reading" },
+                { id: "FM-BMS-07", technicalProtocol: "Elevator ARD Logic Test", floorAction: "Simulate power flip to ensure Auto-Rescue brings car to floor.", priority: "High", riskLevel: "High", consequence: "Guest entrapment liability.", proof: "Drill Log" },
+                { id: "FM-BMS-08", technicalProtocol: "Fire Panel Isolation Review", floorAction: "Ensure zero zones are manually bypassed without a PTW.", priority: "High", riskLevel: "High", consequence: "Undetected fire in isolated zone.", proof: "Panel Status Photo" },
+                { id: "FM-BMS-09", technicalProtocol: "Water Tank Logic", floorAction: "Verify high/low level sensors trigger correct pump start.", priority: "Medium", riskLevel: "Medium", consequence: "Tank overflow and facility flooding.", proof: "Visual Check" },
+                { id: "FM-BMS-10", technicalProtocol: "STP Dosing Calibration", floorAction: "Log chemical dosing pump flow-rate for chlorine.", priority: "High", riskLevel: "Medium", consequence: "Untreated discharge and health fines.", proof: "Titration Log" }
+            ]
+        },
+        {
             title: "Soft FM & Janitorial",
             department: "Housekeeping",
             frequency: "Hourly",
@@ -110,6 +130,46 @@ export const facility_management_blueprint: PremiumPack = {
             ]
         },
         {
+            title: "Asset Lifecycle & Warranty",
+            department: "Engineering",
+            frequency: "Monthly",
+            role: "Maintenance Lead",
+            summary: "Oversight of long-term asset health and vendor obligations.",
+            icon: "history",
+            tasks: [
+                { id: "FM-AST-01", technicalProtocol: "AMC Expiry Governance", floorAction: "Update tracker for all Annual Maintenance Contracts expiring < 60 days.", priority: "High", riskLevel: "Medium", consequence: "Breakdown during contract lapse.", proof: "Updated Calendar" },
+                { id: "FM-AST-02", technicalProtocol: "Warranty Integrity Audit", floorAction: "Verify warranty cards and invoices for equipment installed in last 12 months.", priority: "Medium", riskLevel: "Low", consequence: "Paying for repairs that should be free.", proof: "Folder Audit" },
+                { id: "FM-AST-03", technicalProtocol: "Critical Spare Par-Levels", floorAction: "Physically count spare bearings, belts, and MCBs.", priority: "High", riskLevel: "Medium", consequence: "Extended downtime waiting for parts.", proof: "Stock Sheet" },
+                { id: "FM-AST-04", technicalProtocol: "Pump Vibration Anomaly", floorAction: "Touch-test and listen to main water pumps for bearing noise.", priority: "Medium", riskLevel: "High", consequence: "Sudden motor seizure.", proof: "Observation Log" },
+                { id: "FM-AST-05", technicalProtocol: "PPM Overdue Triage", floorAction: "Identify any machine that missed its monthly service.", priority: "High", riskLevel: "Medium", consequence: "Asset life reduction.", proof: "Overdue Report" },
+                { id: "FM-AST-06", technicalProtocol: "Asset Downtime Analysis", floorAction: "Log total hours each critical asset was offline this month.", priority: "Low", riskLevel: "Low", consequence: "Inability to identify 'lemon' equipment.", proof: "Downtime Log" },
+                { id: "FM-AST-07", technicalProtocol: "Vendor Callback Tracking", floorAction: "Log cases where a vendor had to return for same fault.", priority: "Medium", riskLevel: "Low", consequence: "Paying for poor workmanship.", proof: "Callback Log" },
+                { id: "FM-AST-08", technicalProtocol: "CAPEX Forecast", floorAction: "Identify assets reaching end-of-life for next year's budget.", priority: "Low", riskLevel: "Low", consequence: "Budget shocks.", proof: "Forecast Doc" },
+                { id: "FM-AST-09", technicalProtocol: "HVAC Gas Leak Pulse", floorAction: "Check indoor/outdoor unit joints for oil/gas leaks.", priority: "High", riskLevel: "Medium", consequence: "System inefficiency and eco-damage.", proof: "Visual Check" },
+                { id: "FM-AST-10", technicalProtocol: "Lift Rope Wear Audit", floorAction: "Inspect ropes for fraying or reduction in diameter.", priority: "High", riskLevel: "High", consequence: "Catastrophic cable failure.", proof: "Technical Report" }
+            ]
+        },
+        {
+            title: "Contractor Control System",
+            department: "Safety",
+            frequency: "Daily",
+            role: "Safety Officer",
+            summary: "Governance for third-party manpower and high-risk work.",
+            icon: "user-plus",
+            tasks: [
+                { id: "FM-CON-01", technicalProtocol: "Contractor Induction", floorAction: "Verify 100% of external workers have signed safety policy.", priority: "High", riskLevel: "High", consequence: "Liability during contractor accident.", proof: "Signed Induction" },
+                { id: "FM-CON-02", technicalProtocol: "Hot-Work Spark Watch", floorAction: "Deploy mandatory fire-watch guard for welding jobs.", priority: "High", riskLevel: "High", consequence: "Catastrophic fire.", proof: "Permit Sign-off" },
+                { id: "FM-CON-03", technicalProtocol: "Height-Work Certification", floorAction: "Verify valid harness and rope-access certs for facade cleaners.", priority: "High", riskLevel: "High", consequence: "Fatal fall from height.", proof: "Cert Photo" },
+                { id: "FM-CON-04", technicalProtocol: "Contractor LOTO Verify", floorAction: "Verify third-party has applied their own lock to electrical panels.", priority: "High", riskLevel: "High", consequence: "Accidental energization.", proof: "Visual Check" },
+                { id: "FM-CON-05", technicalProtocol: "Insurance (CAR) Validity", floorAction: "Confirm contractor Public Liability insurance is active.", priority: "High", riskLevel: "High", consequence: "Facility pays for contractor errors.", proof: "Policy Registry" },
+                { id: "FM-CON-06", technicalProtocol: "Manpower PPE Audit", floorAction: "Spot check helmet and boot usage by contractors.", priority: "High", riskLevel: "Medium", consequence: "OSHA non-compliance.", proof: "Audit Photo" },
+                { id: "FM-CON-07", technicalProtocol: "Work-Zone Barricade", floorAction: "Ensure hard barricades and 'Men at Work' signs are in place.", priority: "Medium", riskLevel: "Medium", consequence: "Visitor entry into danger zone.", proof: "Visual Check" },
+                { id: "FM-CON-08", technicalProtocol: "Contractor Waste Audit", floorAction: "Confirm 100% debris removed from site at EOD.", priority: "Low", riskLevel: "Low", consequence: "Fire hazard and poor housekeeping.", proof: "Visual Sign-off" },
+                { id: "FM-CON-09", technicalProtocol: "Attendance Reconcile", floorAction: "Match contractor biometric log vs. claimed billing hours.", priority: "High", riskLevel: "Low", consequence: "Billing fraud.", proof: "Match Note" },
+                { id: "FM-CON-10", technicalProtocol: "Post-Work Handover", floorAction: "Supervisor inspection to ensure system is restored post-repair.", priority: "High", riskLevel: "Medium", consequence: "System failure after vendor leaves.", proof: "Signed Job-card" }
+            ]
+        },
+        {
             title: "EHS & Life Safety",
             department: "Safety",
             frequency: "Daily",
@@ -127,6 +187,26 @@ export const facility_management_blueprint: PremiumPack = {
                 { id: "FM-SAF-08", technicalProtocol: "Emergency Light Run", floorAction: "Verify battery run for stairwell exit signs.", priority: "Medium", riskLevel: "High", consequence: "Panic during darkness.", proof: "Test Log" },
                 { id: "FM-SAF-09", technicalProtocol: "Safety Policy Briefing", floorAction: "Conduct 2-min 'Toolbox Talk' with technical team.", priority: "Low", riskLevel: "Low", consequence: "Slipping safety culture.", proof: "Briefing Log" },
                 { id: "FM-SAF-10", technicalProtocol: "Final Nightly Safety Sign-off", floorAction: "Physical perimeter touch-point initials.", priority: "High", riskLevel: "Low", consequence: "Systemic risk gap.", proof: "Signed Summary" }
+            ]
+        },
+        {
+            title: "Energy & Sustainability",
+            department: "Engineering",
+            frequency: "Daily",
+            role: "Energy Auditor",
+            summary: "Oversight of energy intensity and environmental metrics.",
+            icon: "zap",
+            tasks: [
+                { id: "FM-SUS-01", technicalProtocol: "KWH Anomaly Review", floorAction: "Compare daily consumption vs baseline; investigate >10% variance.", priority: "High", riskLevel: "Medium", consequence: "Unmonitored energy wastage.", proof: "Meter Match" },
+                { id: "FM-SUS-02", technicalProtocol: "Water Meter Pulse", floorAction: "Log consumption at 8 AM to detect overnight leaks.", priority: "High", riskLevel: "Medium", consequence: "Hidden pipe burst and resource waste.", proof: "Water Log" },
+                { id: "FM-SUS-03", technicalProtocol: "Diesel Reconcile", floorAction: "Match dip-stick level vs flow-meter and generator runtime.", priority: "High", riskLevel: "High", consequence: "Internal fuel theft.", proof: "Variance Report" },
+                { id: "FM-SUS-04", technicalProtocol: "Automation Sensor Uptime", floorAction: "Verify logic for corridor dimming is active.", priority: "Low", riskLevel: "Low", consequence: "Lights burning in empty zones.", proof: "Walkthrough" },
+                { id: "FM-SUS-05", technicalProtocol: "HVAC Optimization", floorAction: "Confirm night setback set-points for unoccupied zones.", priority: "Medium", riskLevel: "Low", consequence: "Wasted cooling capacity.", proof: "BMS Screenshot" },
+                { id: "FM-SUS-06", technicalProtocol: "Solar Health Pulse", floorAction: "Check inverter dashboard for active faults.", priority: "Medium", riskLevel: "Medium", consequence: "Loss of renewable savings.", proof: "Dashboard" },
+                { id: "FM-SUS-07", technicalProtocol: "Utility Bill Collation", floorAction: "Organize data for monthly carbon reporting.", priority: "Low", riskLevel: "Low", consequence: "Compliance lag.", proof: "Folder Update" },
+                { id: "FM-SUS-08", technicalProtocol: "APFC Bank Status", floorAction: "Verify power factor is maintained > 0.99.", priority: "High", riskLevel: "Medium", consequence: "Surcharge penalties from grid.", proof: "Capacitor Log" },
+                { id: "FM-SUS-09", technicalProtocol: "Landfill Diversion Audit", floorAction: "Log weight of dry-waste sent for recycling.", priority: "Low", riskLevel: "Low", consequence: "Environmental score drop.", proof: "Weight Slip" },
+                { id: "FM-SUS-10", technicalProtocol: "Sustainability Sign-off", floorAction: "Execute daily green-metric initials.", priority: "Low", riskLevel: "Low", consequence: "Loss of ESG data integrity.", proof: "Signed Sheet" }
             ]
         },
         {
