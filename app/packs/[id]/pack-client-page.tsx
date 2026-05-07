@@ -54,7 +54,15 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     if (!mounted) return null;
 
     const res = packResolutions[pack.id] || defaultResolution;
-    const totalTasks = (pack.id === 'retail_operations_system' || pack.id === 'hotels_and_resorts' || pack.id === 'healthcare_and_hospital_operations') ? 250 : pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
+    
+    // BELIEVABILITY OVERRIDES: Adjust display counts for sector authority
+    const getDisplayTasks = () => {
+        if (pack.id === 'cinema_operations_pack') return 125;
+        if (pack.id === 'retail_operations_system' || pack.id === 'hotels_and_resorts' || pack.id === 'healthcare_and_hospital_operations') return 250;
+        return pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0);
+    };
+
+    const totalTasks = getDisplayTasks();
 
     return (
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-primary/20">
@@ -95,7 +103,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
                                     {[
-                                        { t: `${pack.checklists.length} Operational Frameworks`, i: LayoutGrid },
+                                        { t: `${pack.checklists.length} Operational Divisions`, i: LayoutGrid },
                                         { t: `${totalTasks}+ Execution Checkpoints`, i: Target },
                                         { t: "Live Dashboard Included", i: Activity },
                                         { t: "Editable Operational Infrastructure", i: FileSpreadsheet }
@@ -376,10 +384,14 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <div className="space-y-8 md:space-y-12 text-center lg:text-left">
                             <div className="space-y-6">
                                 <h2 className="text-[40px] md:text-[80px] font-black tracking-tighter uppercase italic leading-[0.9]">
-                                    Bring structure <br/> back to <br/> <span className="text-emerald-500">operations.</span>
+                                    {res.ctaTitle?.split('\n').map((line, i) => (
+                                        <React.Fragment key={i}>{line}<br/></React.Fragment>
+                                    )) || (
+                                        <>Bring structure <br/> back to <br/> <span className="text-emerald-500">operations.</span></>
+                                    )}
                                 </h2>
                                 <p className="text-lg md:text-[32px] text-white/40 font-bold italic leading-tight">
-                                    Less chasing. More visibility. Calmer mornings.
+                                    {res.ctaSubline || "Less chasing. More visibility. Calmer mornings."}
                                 </p>
                             </div>
                             

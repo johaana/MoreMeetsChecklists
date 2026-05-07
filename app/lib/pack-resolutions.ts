@@ -8,6 +8,8 @@ export type PackResolution = {
     whatChangesDaily: string[];
     mondayMorning: string[];
     outcomes: string[];
+    ctaTitle?: string;
+    ctaSubline?: string;
 };
 
 export const packResolutions: Record<string, PackResolution> = {
@@ -227,10 +229,10 @@ export const packResolutions: Record<string, PackResolution> = {
         strategicParagraph: "Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.",
         whyExecutionBreaksParagraph: "Cinemas fail when technical readiness is assumed and interval rushes become disorganized coordination exercises.",
         risks: [
-            { title: "Black-Screen Events", description: "Unverified DCP ingests and expired KDM digital keys lead to show cancellations during blockbuster openings." },
-            { title: "Concession Leakage", description: "Lack of raw-corn-to-bucket yield logic and unverified bill voids create massive internal profit theft." },
-            { title: "Crowd Safety Gaps", description: "Blocked fire exit paths and weak guard deployment during egress surges create fatal public safety windows." },
-            { title: "Projection Decay", description: "Unlogged lamp hours and ignored server room temps lead to dull visuals and hardware crashes." }
+            { title: "Expired KDM Keys", description: "Unverified digital decryption keys lead to show cancellations during blockbuster openings." },
+            { title: "Concession Yield Leakage", description: "Lack of raw-corn-to-bucket yield logic creates massive internal profit theft at the counter." },
+            { title: "Interval Surge Congestion", description: "Washroom congestion and concession queue overload damaging guest satisfaction scores." },
+            { title: "Emergency Comms Failure", description: "Emergency announcement systems or fire doors failing unnoticed until a crisis occurs." }
         ],
         whatChangesDaily: [
             "Show readiness has a mandatory technical seal",
@@ -254,7 +256,9 @@ export const packResolutions: Record<string, PackResolution> = {
             "Crowd safety secured",
             "Technical uptime tracked",
             "Guest scores protected"
-        ]
+        ],
+        ctaTitle: "The audience never sees the chaos behind the curtain.",
+        ctaSubline: "Calm operations before the lights go down."
     },
     'retail_operations_system': {
         heroTitle: "RETAIL OPERATING SYSTEM",
