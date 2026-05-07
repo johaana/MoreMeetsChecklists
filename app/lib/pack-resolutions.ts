@@ -74,7 +74,7 @@ export const packResolutions: Record<string, PackResolution> = {
             "Kitchen hygiene is observable from your office",
             "Inventory waste for Sunday is already logged",
             "Prep levels match today's forecast exactly",
-            "Ambiance vitals are uniform across all branches",
+            "Ambiance vitals match the brand standard",
             "Managers stop waiting for verbal status reports"
         ],
         outcomes: [
@@ -158,7 +158,7 @@ export const packResolutions: Record<string, PackResolution> = {
     'healthcare_and_hospital_operations': {
         heroTitle: "HOSPITAL OPERATING SYSTEM",
         heroSubline: "Zero-fail governance for surgical safety, medication control, and clinical risk.",
-        strategicParagraph: "Built for medical leadership where student safety, operational discipline, and duty of care cannot depend on verbal follow-ups.",
+        strategicParagraph: "Built for medical leadership where patient safety, clinical discipline, and duty of care cannot depend on memory.",
         whyExecutionBreaksParagraph: "Clinical environments fail when verbal handovers become thin and critical control points are assumed rather than verified.",
         risks: [
             { title: "Clinical Never-Events", description: "Lack of pre-incision 'Time Outs' and dual-verification for high-alert drugs creates fatal windows of clinical error." },
@@ -190,7 +190,7 @@ export const packResolutions: Record<string, PackResolution> = {
             "Patient safety observable"
         ],
         reassuranceTrustTitle: "CLINICAL CONFIDENCE",
-        reassuranceTrustDescription: "Operational discipline families notice. Clinical consistency that secures community confidence and secures community trust."
+        reassuranceTrustDescription: "Clinical discipline patients experience. Institutional consistency families notice and communities trust."
     },
     'facility_management_blueprint': {
         heroTitle: "FACILITY OPERATING SYSTEM",
@@ -275,7 +275,7 @@ export const packResolutions: Record<string, PackResolution> = {
             { title: "Metrology Fines", description: "Uncalibrated weighing scales and unverified shelf-edge pricing lead to severe consumer court penalties." },
             { title: "Duty of Care Gaps", description: "Blocked fire exits and unlogged floor-spill responses create significant legal and safety exposure." }
         ],
-        whatChangesDaily: [
+         whatChangesDaily: [
             "High-value cycle counts become mandatory logs",
             "Store opening readiness has a verified seal",
             "Metrology calibration is checked weekly",
