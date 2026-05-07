@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -22,7 +21,8 @@ import {
     Users,
     History,
     GraduationCap,
-    ClipboardCheck
+    ClipboardCheck,
+    FileSpreadsheet
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
@@ -61,6 +61,19 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     
     const findings = painPointsContent[pack.id as keyof typeof painPointsContent]?.points || [];
     const resolution = packResolutions[pack.id] || defaultResolution;
+
+    const displayChecklists = isSchool ? [
+        { title: "Principal Governance & Child Safety", summary: "POCSO awareness, escalation visibility, institutional oversight" },
+        { title: "Early Years & Pre-Primary Welfare", summary: "Pick-up control, hygiene discipline, toddler safety routines" },
+        { title: "Student Welfare & Counseling", summary: "Bullying visibility, emotional wellbeing, escalation awareness" },
+        { title: "Transport & Bus Safety", summary: "Daily route readiness and child handover accountability" },
+        { title: "Visitor & Campus Security", summary: "Gate control, blind-spot monitoring, emergency preparedness" },
+        { title: "Canteen & Food Safety", summary: "Hygiene verification, allergen awareness, FSSAI discipline" },
+        { title: "Science Labs & Digital Safety", summary: "Lab readiness, hazardous storage, IT oversight" },
+        { title: "Janitorial & Infrastructure Readiness", summary: "Daily sanitation and infrastructure uptime visibility" },
+        { title: "Medical Readiness", summary: "Emergency medication and infirmary preparedness" },
+        { title: "Admissions & Administrative Operations", summary: "Parent coordination, records, and operational continuity" }
+    ] : pack.checklists;
 
     return (
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-primary/20">
@@ -176,10 +189,10 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 relative">
                         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />
                         {(isSchool ? [
-                            { t: "Missed Transport Checks", d: "Rushed mornings lead to verbal assumptions instead of physical 'child-left-behind' sweeps." },
-                            { t: "Unverified Visitor Access", d: "Entry points become informal during drop-off and pickup surges, creating perimeter gaps." },
-                            { t: "Delayed Infrastructure Maintenance", d: "Playground and electrical checks drift into the background until an incident occurs." },
-                            { t: "Hygiene Standard Drift", d: "Canteen and washroom protocols collapse during peak hours without logged accountability." }
+                            { title: "Missed Transport Checks", description: "Rushed mornings lead to verbal assumptions instead of physical 'child-left-behind' sweeps." },
+                            { title: "Unverified Visitor Access", description: "Entry points become informal during drop-off and pickup surges, creating perimeter gaps." },
+                            { title: "Delayed Infrastructure Maintenance", description: "Playground and electrical checks drift into the background until an incident occurs." },
+                            { title: "Hygiene Standard Drift", description: "Canteen and washroom protocols collapse during peak hours without logged accountability." }
                         ] : findings).map((point: any, index: number) => (
                             <div key={index} className="flex flex-col gap-6 p-10 border border-zinc-100 bg-zinc-50/30 rounded-[2rem] hover:bg-white hover:shadow-xl transition-all duration-500 relative group">
                                 <div className="absolute top-4 right-4 opacity-5 group-hover:opacity-10 transition-opacity">
@@ -191,11 +204,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
                                     </div>
                                     <h3 className="text-xl md:text-2xl font-black font-headline uppercase italic tracking-tighter text-zinc-950">
-                                        {isSchool ? point.t : point.title}
+                                        {point.title}
                                     </h3>
                                 </div>
                                 <p className="text-zinc-500 text-base md:text-lg font-bold italic leading-relaxed text-left">
-                                    {isSchool ? point.d : point.description}
+                                    {point.description}
                                 </p>
                             </div>
                         ))}
@@ -225,7 +238,14 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 {isSchool ? "WHAT CHANGES DAILY" : "THE OPERATIONAL SHIFT"}
                             </p>
                             <div className="space-y-6">
-                                {resolution.prevents.map((item, i) => (
+                                {(isSchool ? [
+                                    "Visitor access becomes logged and visible",
+                                    "Bus closeouts become mandatory and traceable",
+                                    "Hygiene checks become documented",
+                                    "Responsibilities become assigned by role",
+                                    "Managers stop depending on verbal updates",
+                                    "Daily execution becomes visible across teams"
+                                ] : resolution.prevents).map((item, i) => (
                                     <div key={i} className="flex items-start gap-4 group">
                                         <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
                                         <span className="text-zinc-950 font-black text-lg md:text-xl leading-tight italic uppercase">{item}</span>
@@ -273,7 +293,14 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-6 md:gap-10">
-                        {resolution.mondayMorning.map((item, i) => (
+                        {(isSchool ? [
+                            "Transport checks are already completed",
+                            "Visitor access is verified at the gate",
+                            "Nurse confirms emergency supplies",
+                            "Kitchen hygiene logs are updated before breakfast",
+                            "Daily responsibilities are already visible to teams",
+                            "Managers stop chasing for updates"
+                        ] : resolution.mondayMorning).map((item, i) => (
                             <div key={i} className="flex items-center gap-5 p-6 rounded-2xl bg-zinc-50 border border-zinc-100 group hover:bg-zinc-950 hover:text-white transition-all duration-500 text-left">
                                 <span className="text-4xl font-black italic text-zinc-200 group-hover:text-primary/20 transition-colors leading-none">0{i+1}</span>
                                 <span className="text-zinc-600 group-hover:text-zinc-100 font-black italic uppercase text-sm md:text-base leading-tight tracking-tight">{item}</span>
@@ -305,7 +332,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-                        {pack.checklists.map((checklist, index) => (
+                        {displayChecklists.map((checklist, index) => (
                             <div key={index} className="border border-zinc-200 p-8 md:p-12 space-y-6 hover:border-primary hover:shadow-2xl transition-all duration-700 bg-white group flex flex-col relative overflow-hidden text-left">
                                 <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 -mr-12 -mt-12 rounded-full blur-2xl opacity-0 group-hover:opacity-10 transition-opacity" />
                                 <div className="flex justify-between items-center border-b border-zinc-100 pb-4">
@@ -314,11 +341,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     </span>
                                     <div className="flex items-center gap-2">
                                         <Target className="w-3.5 h-3.5 text-primary/40" />
-                                        <span className="text-[10px] font-black text-primary uppercase tracking-widest">{checklist.tasks.length} POINTS</span>
+                                        <span className="text-[10px] font-black text-primary uppercase tracking-widest">{(checklist as any).tasks?.length || 10} POINTS</span>
                                     </div>
                                 </div>
                                 <div className="space-y-2 text-left">
-                                    <p className="text-[9px] font-black uppercase text-zinc-400 tracking-[0.4em] font-headline italic text-left">{checklist.role}</p>
+                                    <p className="text-[9px] font-black uppercase text-zinc-400 tracking-[0.4em] font-headline italic text-left">{checklist.role || "Administrator"}</p>
                                     <h4 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-[#0B0F14] group-hover:text-primary transition-colors leading-tight text-left">
                                         {checklist.title.replace('System', '').replace('Command', '').replace('Operations', '').replace('Protocol', '')}
                                     </h4>
