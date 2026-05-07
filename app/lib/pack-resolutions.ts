@@ -87,9 +87,9 @@ export const packResolutions: Record<string, PackResolution> = {
     },
     'hotels_and_resorts': {
         heroTitle: "HOTEL OPERATING SYSTEM",
-        heroSubline: "Sovereign governance for Front Office, Housekeeping, and Engineering infrastructure.",
+        heroSubline: "Zero-drift operational governance for hotels, resorts, and hospitality groups.",
         strategicParagraph: "Built for luxury properties where brand standard drift and privacy gaps represent business-ending liability.",
-        whyExecutionBreaksParagraph: "Hospitality standards don't fail because staff don't care; they fail because verbal orientation is asuggestion that expires within 48 hours.",
+        whyExecutionBreaksParagraph: "Brand standards collapse quietly when execution becomes verbal, informal, and impossible to verify.",
         risks: [
             { title: "Reputation Drift", description: "Unaddressed OTA reviews and unverified room setup standards lead to a slow, visible slide in property ratings." },
             { title: "Privacy Exposure", description: "Weak master-keycard governance and lack of hidden camera sweeps create critical guest security windows." },
@@ -109,7 +109,7 @@ export const packResolutions: Record<string, PackResolution> = {
             "Night audit reconciles to the bank by 8:00 AM",
             "Boiler and pump room vitals are within green zones",
             "VIP amenities are already placed and photographed",
-            "Staff grooming is uniform across all departments",
+            "Grooming compliance is verified across all guest-facing teams",
             "The GM sees property health without a walkthrough"
         ],
         outcomes: [
@@ -118,7 +118,11 @@ export const packResolutions: Record<string, PackResolution> = {
             "MEP uptime monitored",
             "Rating drift prevented",
             "Statutory logs audit-ready"
-        ]
+        ],
+        reassuranceTrustTitle: "LUXURY CONSISTENCY",
+        reassuranceTrustDescription: "Consistency guests feel from lobby arrival to room checkout.",
+        ctaTitle: "The property standard should \n not depend on who is on shift.",
+        ctaSubline: "Protect the standard guests are paying for."
     },
     'franchise_operations_pack': {
         heroTitle: "FRANCHISE OPERATING SYSTEM",
