@@ -1,4 +1,3 @@
-
 import { allPacks } from "./packs/all_packs";
 
 export type Checklist = {
@@ -84,7 +83,8 @@ export const premiumPacks: PremiumPack[] = [
         processedPack.title = processedPack.title.replace('Operating System', 'Operations System');
         
         // Apply Global Professional Access Rates
-        if (processedPack.priceINR > 0 || processedPack.priceUSD > 0) {
+        // SAFELY check for optional priceUSD to prevent TS error
+        if (processedPack.priceINR > 0 || (processedPack.priceUSD !== undefined && processedPack.priceUSD > 0)) {
             processedPack = {
                 ...processedPack,
                 priceINR: 999,
