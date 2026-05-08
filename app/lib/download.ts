@@ -317,7 +317,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         facilityHeaders,
         ...branchNames.map((name, i) => [
             { v: (i + 1).toString(), s: dataStyleCenter },
-            { v: name, s: inputStyle },
+            { v: name, s: inputStyleLeft },
             ...packChecklists.map(() => ({ v: "YES", s: inputStyle })),
             { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED", 'TODAYS_TASKS'!$B$5:$B$5000, B${5+i})`, s: dataStyleCenter },
             { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, B${5+i}, 'TODAYS_TASKS'!$L$5:$L$5000, "High", 'TODAYS_TASKS'!$J$5:$J$5000, "<>COMPLETED")`, s: dataStyleCenter }
@@ -352,7 +352,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { v: role, s: dataStyleLeft },
                 { v: "", s: inputStyleLeft }, 
                 { v: "", s: inputStyleLeft }, 
-                { v: "ACTIVE", s: inputStyle }, 
+                { v: "ACTIVE", s: inputStyleLeft }, 
                 { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$H$5:$H$500, D${rowIdx}, 'TODAYS_TASKS'!$J$5:$J$500, "COMPLETED")`, s: dataStyleCenter }
             ]);
         });
@@ -401,13 +401,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     mData.push([
                         { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
                         { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode}), "")`, s: dataStyleCenter },
-                        { v: c.role, s: dataStyleCenter },
-                        { t: 'f', f: personFormula, s: dataStyleCenter },
+                        { v: c.role, s: dataStyleLeft },
+                        { t: 'f', f: personFormula, s: dataStyleLeft },
                         { v: t.id, s: dataStyleCenter },
                         { v: technicalVal, s: dataStyleLeft },
                         { v: trainerVal, s: coachingStyle },
-                        { v: "", s: inputStyle }, 
-                        { v: t.priority === 'High' ? "" : "N/A", s: t.priority === 'High' ? inputStyle : dataStyleCenter },
+                        { v: "", s: inputStyleLeft }, 
+                        { v: t.priority === 'High' ? "" : "N/A", s: t.priority === 'High' ? inputStyleLeft : dataStyleLeft },
                         { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } },
                         { v: c.frequency, s: dataStyleCenter },
                         { v: t.priority, s: dataStyleCenter },
@@ -431,8 +431,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const handoverRows = [];
     for(let i=0; i<2; i++) {
         handoverRows.push([
-            { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, 1), "")`, s: inputStyle },
-            { v: "", s: inputStyle }, { v: "", s: inputStyle }, { v: "", s: inputStyleLeft }, { v: "YES", s: inputStyle }, { v: "", s: inputStyle }
+            { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, 1), "")`, s: inputStyleLeft },
+            { v: "", s: inputStyleLeft }, { v: "", s: inputStyleLeft }, { v: "", s: inputStyleLeft }, { v: "YES", s: inputStyleLeft }, { v: "", s: inputStyleLeft }
         ]);
     }
     const handoverWs = utils.aoa_to_sheet([[], [], [], handoverHeaders, ...handoverRows]);
@@ -454,13 +454,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const incidentRows = [];
     for (let i = 0; i < 2; i++) {
         incidentRows.push([
-            { v: "", s: inputStyle },
-            { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, 1), "")`, s: inputStyle },
-            { v: "", s: inputStyle },
+            { v: "", s: inputStyleLeft },
+            { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, 1), "")`, s: inputStyleLeft },
             { v: "", s: inputStyleLeft },
             { v: "", s: inputStyleLeft },
             { v: "", s: inputStyleLeft },
-            { v: "NO", s: inputStyle }
+            { v: "", s: inputStyleLeft },
+            { v: "NO", s: inputStyleLeft }
         ]);
     }
     const incidentWs = utils.aoa_to_sheet([[], [], [], incidentHeaders, ...incidentRows]);
@@ -511,7 +511,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             const technicalVal = t.technicalProtocol || t.description || "";
             const trainerVal = t.floorAction || "";
             sopData.push([
-                { v: c.title, s: dataStyleCenter },
+                { v: c.title, s: dataStyleLeft },
                 { v: t.id, s: dataStyleCenter },
                 { v: technicalVal, s: dataStyleLeft },
                 { v: trainerVal, s: coachingStyle },
@@ -540,8 +540,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             const marginFormula = `IFERROR(G${rowIdx}/C${rowIdx}, 0)`;
             fsData.push([
                 { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
-                { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`, s: inputStyle },
-                { v: 0, s: inputStyle }, { v: 0, s: inputStyle }, { v: 0.25, s: { ...inputStyle, numFmt: '0%' } }, { v: 0, s: inputStyle },
+                { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`, s: dataStyleCenter },
+                { v: 0, s: inputStyleLeft }, { v: 0, s: inputStyleLeft }, { v: 0.25, s: { ...inputStyleLeft, numFmt: '0%' } }, { v: 0, s: inputStyleLeft },
                 { t: 'f', f: contribFormula, s: { ...dataStyleCenter, font: { bold: true } } },
                 { t: 'f', f: marginFormula, s: { ...dataStyleCenter, numFmt: '0.0%' } }
             ]);
@@ -560,21 +560,21 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [null, { v: "COMMAND MANUAL: HOW TO DEPLOY YOUR SOVEREIGN OS", s: { font: { sz: 12, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [],
         [null, { v: "5-STEP DEPLOYMENT ROADMAP", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [null, { v: "STEP 1: CLOUD SYNC", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Upload this .xlsx to Google Drive and 'Open with Google Sheets'. Share the live link with Managers." }],
-        [null, { v: "STEP 2: REGISTER BRANCHES", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Go to 'BRANCH_MASTER'. Enter names in 'Branch Name' column. Everything updates automatically." }],
-        [null, { v: "STEP 3: MAP THE TEAM", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Go to 'TEAM_HUB'. Assign real names to roles. The 'Assigned To' column in the Ledger will update instantly." }],
-        [null, { v: "STEP 4: COMMAND DAILY", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Staff members type their name in 'Done By' in 'TODAYS_TASKS'. Status turns GREEN instantly." }],
-        [null, { v: "STEP 5: SYSTEM LOCKDOWN", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "To prevent accidental edits: Highlight reporting columns (e.g. 'Done By'), right-click > Format Cells > Protection > Uncheck 'Locked'. Then go to Review > Protect Sheet." }],
+        [null, { v: "STEP 1: CLOUD SYNC", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Upload this .xlsx to Google Drive and 'Open with Google Sheets'. Share the live link with Managers.", s: dataStyleLeft }],
+        [null, { v: "STEP 2: REGISTER BRANCHES", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Go to 'BRANCH_MASTER'. Enter names in 'Branch Name' column. Everything updates automatically.", s: dataStyleLeft }],
+        [null, { v: "STEP 3: MAP THE TEAM", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Go to 'TEAM_HUB'. Assign real names to roles. The 'Assigned To' column in the Ledger will update instantly.", s: dataStyleLeft }],
+        [null, { v: "STEP 4: COMMAND DAILY", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Staff members type their name in 'Done By' in 'TODAYS_TASKS'. Status turns GREEN instantly.", s: dataStyleLeft }],
+        [null, { v: "STEP 5: SYSTEM LOCKDOWN", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "To prevent accidental edits: Highlight reporting columns (e.g. 'Done By'), right-click > Format Cells > Protection > Uncheck 'Locked'. Then go to Review > Protect Sheet.", s: dataStyleLeft }],
         [],
         [null, { v: "GLOSSARY OF SOVEREIGN TERMINOLOGY", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
-        [null, { v: "EMPIRE MOOD", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "The overall health score of your group based on total mission completion." }],
-        [null, { v: "OPERATIONAL PULSE", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Shows if your team is 'awake' and reporting. Based on % of staff logging activity." }],
-        [null, { v: "UNIT LOAD", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "The number of pending 'High Priority' missions. A high load means dangerous unmitigated risk." }],
-        [null, { v: "RISK STATUS", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Displays 'RISK DETECTED' if there are unresolved entries in the Incident Tracker." }],
-        [null, { v: "CoGS", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Cost of Goods Sold. Your raw material cost as a percentage of total sales." }],
-        [null, { v: "TECHNICAL PROTOCOL", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "The formal audit-standard description of the task for inspectors." }],
-        [null, { v: "TRAINER'S NOTES", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Simplified, action-oriented instructions for the staff member on the floor." }],
-        [null, { v: "CONSEQUENCE", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "The specific risk the business faces (safety or profit) if this step is missed." }]
+        [null, { v: "EMPIRE MOOD", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "The overall health score of your group based on total mission completion.", s: dataStyleLeft }],
+        [null, { v: "OPERATIONAL PULSE", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Shows if your team is 'awake' and reporting. Based on % of staff logging activity.", s: dataStyleLeft }],
+        [null, { v: "UNIT LOAD", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "The number of pending 'High Priority' missions. A high load means dangerous unmitigated risk.", s: dataStyleLeft }],
+        [null, { v: "RISK STATUS", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Displays 'RISK DETECTED' if there are unresolved entries in the Incident Tracker.", s: dataStyleLeft }],
+        [null, { v: "CoGS", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Cost of Goods Sold. Your raw material cost as a percentage of total sales.", s: dataStyleLeft }],
+        [null, { v: "TECHNICAL PROTOCOL", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "The formal audit-standard description of the task for inspectors.", s: dataStyleLeft }],
+        [null, { v: "TRAINER'S NOTES", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "Simplified, action-oriented instructions for the staff member on the floor.", s: dataStyleLeft }],
+        [null, { v: "CONSEQUENCE", s: { font: { bold: true }, alignment: { horizontal: 'right' } } }, { v: "The specific risk the business faces (safety or profit) if this step is missed.", s: dataStyleLeft }]
     ];
     const guideWs = utils.aoa_to_sheet(guideData);
     addSovereignRibbon(guideWs, "System Command Manual", 'K');
