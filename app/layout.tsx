@@ -9,7 +9,7 @@ import Script from 'next/script';
 const siteUrl = 'https://www.moremeets.com';
 const siteTitle = 'MoreMeets™ | Sovereign Operational Infrastructure';
 const siteDescription = 'Stop managing manually. MoreMeets™ converts SOPs into live operating infrastructure for restaurants, hotels, hospitals, retail stores, facilities and franchises. Own your data. Works on Excel & Google Sheets.';
-const socialImage = 'https://i.postimg.cc/rsHq85yn/Screenshot-2026-04-09-091611.png';
+const socialImage = 'https://i.postimg.cc/qRkj0Z4R/Screenshot-2026-05-08-055107.png';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

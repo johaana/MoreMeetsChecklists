@@ -1,4 +1,3 @@
-
 import PackClientPage from "./pack-client-page";
 import { premiumPacks } from '@/lib/premium-packs';
 import { notFound } from 'next/navigation';
@@ -30,7 +29,7 @@ export async function generateMetadata(
   let description = `Deploy the Sovereign v11.9 engine for ${pack.category}. Professional, audit-ready SOPs for elite leaders. Own your data forever.`;
   
   const imageData = images.find(img => img.id === `pack-${id}`);
-  const fallbackImage = 'https://i.postimg.cc/rsHq85yn/Screenshot-2026-04-09-091611.png';
+  const fallbackImage = 'https://i.postimg.cc/qRkj0Z4R/Screenshot-2026-05-08-055107.png';
   const ogImage = imageData?.imageUrl || fallbackImage;
 
   return {
