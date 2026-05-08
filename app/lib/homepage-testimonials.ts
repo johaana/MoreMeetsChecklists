@@ -16,13 +16,13 @@ export const homepageTestimonials: HomepageTestimonial[] = [
   {
     name: "Dr. Anjali Rao",
     title: "Director of Nursing, Multi-specialty Hospital",
-    quote: "Clinical audit-readiness used to take weeks of prep. With MoreMeets, we are in a state of permanent compliance. The technical protocols for medication safety are absolute essential infrastructure.",
+    quote: "Clinical audit-readiness used to take weeks of prep. With MoreMeets, we are in a state of permanent compliance. Our nursing teams now have total clarity on daily safety checks.",
     stars: 5,
   },
   {
-    name: "Rajesh Kumar",
-    title: "Plant Head, Industrial Manufacturing Unit",
-    quote: "We replaced our paper logs with the operational Excel engine. The visibility into shift readiness is now surgical. It has drastically reduced our near-miss incidents and manual chasing.",
+    name: "Vikram Mehra",
+    title: "CEO, Multi-Unit Franchise Group",
+    quote: "Standardizing 12 branches used to be a constant cycle of manual follow-ups. Now we have one shared system that protects our brand standards and revenue daily without the chaos.",
     stars: 5,
   },
 ];

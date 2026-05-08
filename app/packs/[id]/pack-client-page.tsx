@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -139,7 +140,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <div className="space-y-3">
                                     <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-16 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-lg shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white transition-all border-none group flex items-center justify-center gap-3">
                                         <Link href="#pricing">
-                                            LIVE IN 10 MINUTES — ₹999 <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
+                                            LIVE IN 10 MINUTES <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
                                         </Link>
                                     </Button>
                                     <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic pl-1 text-center sm:text-left">

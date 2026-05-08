@@ -1,3 +1,4 @@
+
 import { allPacks } from "./packs/all_packs";
 
 export type Checklist = {
@@ -83,14 +84,13 @@ export const premiumPacks: PremiumPack[] = [
         processedPack.title = processedPack.title.replace('Operating System', 'Operations System');
         
         // Apply Global Professional Access Rates
-        // SAFELY check for optional priceUSD to prevent TS error
-        if (processedPack.priceINR > 0 || (processedPack.priceUSD !== undefined && processedPack.priceUSD > 0)) {
+        if ((processedPack.priceINR ?? 0) > 0 || (processedPack.priceUSD ?? 0) > 0) {
             processedPack = {
                 ...processedPack,
                 priceINR: 999,
-                anchorPriceINR: undefined, // Abolish cross-out
+                anchorPriceINR: undefined,
                 priceUSD: 12,
-                anchorPriceUSD: undefined, // Abolish cross-out
+                anchorPriceUSD: undefined,
                 competitorPriceUSD: processedPack.id.includes('hospital') || processedPack.id.includes('facility') ? 999 : 599
             }
         }
