@@ -28,7 +28,14 @@ import PricingClient from '../pricing-client';
 import { packResolutions, defaultResolution } from '@/lib/pack-resolutions';
 import { IconComponent } from '@/components/icons';
 
-function Section({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) {
+interface SectionProps {
+    children: React.ReactNode;
+    className?: string;
+    id?: string;
+    noSpine?: boolean;
+}
+
+function Section({ children, className, id, noSpine = false }: SectionProps) {
     return (
         <section id={id} className={cn("w-full py-12 md:py-24 relative overflow-hidden", className)}>
             {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />}
@@ -77,19 +84,23 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
             {/* --- HERO SECTION: ONE GLANCE COMMAND --- */}
             <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 z-0">
-                    <img src={heroImageUrl} alt="" className="w-full h-full object-cover opacity-30 grayscale brightness-[0.4]" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/60 to-transparent" />
+                    <img 
+                        src={heroImageUrl} 
+                        alt="" 
+                        className="w-full h-full object-cover opacity-40 grayscale brightness-[0.35]" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent" />
                 </div>
 
                 <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-20 pb-12">
                     <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-16 items-center">
-                        <div className="space-y-8 w-full">
-                            <div className="space-y-4">
-                                <h1 className="font-black font-headline text-[32px] md:text-[44px] lg:text-[54px] xl:text-[64px] leading-none uppercase italic tracking-tighter text-white lg:whitespace-nowrap">
+                        <div className="space-y-6 md:space-y-8 w-full">
+                            <div className="space-y-3">
+                                <h1 className="font-headline font-black text-[32px] md:text-[44px] lg:text-[54px] xl:text-[60px] leading-none uppercase italic tracking-tighter text-white lg:whitespace-nowrap">
                                     {res.heroTitle || pack.title.toUpperCase()}
                                 </h1>
-                                <div className="space-y-4">
-                                    <p className="text-lg md:text-[26px] font-medium text-zinc-300 max-w-3xl leading-tight">
+                                <div className="space-y-3">
+                                    <p className="text-lg md:text-[24px] font-medium text-zinc-300 max-w-3xl leading-tight">
                                         {res.heroSubline}
                                     </p>
                                     <div className="border-l-2 border-primary/40 pl-6">
@@ -105,14 +116,14 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     <div className="w-1 h-5 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
                                     <p className="text-[9px] font-black text-emerald-500 uppercase tracking-[0.4em] italic font-headline">SYSTEM SPECIFICATIONS</p>
                                 </div>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-3">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-2 md:gap-y-3">
                                     {[
                                         { t: `PRE-BUILT OPERATIONAL SOPS FOR ${verticalName}`, i: Target },
                                         { t: "LIVE OPERATIONAL DASHBOARD", i: Activity },
                                         { t: "TRAINER NOTES INCLUDED", i: GraduationCap },
                                         { t: "EDITABLE OPERATIONAL INFRASTRUCTURE", i: FileSpreadsheet }
                                     ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-4 group">
+                                        <div key={i} className="flex items-center gap-3 md:gap-4 group">
                                             <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
                                                 <Check className="w-2.5 h-2.5 text-[#22C55E]" />
                                             </div>
@@ -124,15 +135,15 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                             </div>
 
-                            <div className="space-y-5 pt-2">
-                                <div className="space-y-4">
+                            <div className="space-y-4 md:space-y-5 pt-2">
+                                <div className="space-y-3">
                                     <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group flex items-center justify-center gap-4">
                                         <Link href="#pricing">
                                             LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
                                         </Link>
                                     </Button>
                                     <div className="space-y-1.5 pl-1">
-                                        <p className="text-[10px] md:text-[12px] text-emerald-500/80 font-black uppercase tracking-[0.2em] italic leading-tight">
+                                        <p className="text-[10px] md:text-[12px] text-emerald-500/90 font-black uppercase tracking-[0.2em] italic leading-tight">
                                             BUILT IN EXCEL. SHARED THROUGH GOOGLE SHEETS. NO APP ROLLOUT REQUIRED.
                                         </p>
                                         <p className="text-[10px] md:text-[11px] text-zinc-600 font-black uppercase tracking-[0.4em] italic leading-tight">
@@ -143,9 +154,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
                         </div>
                         
-                        <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-16 lg:mt-0 space-y-8">
+                        <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-6 md:space-y-8">
                              <p className="text-[9px] font-black text-red-500/40 uppercase tracking-[0.7em] italic">DAILY OPERATIONAL RISKS</p>
-                             <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
+                             <div className="flex flex-col gap-3 md:gap-5 lg:gap-6">
                                  {res.risks.map((risk, i) => (
                                     <PulsatingStressText key={i} text={risk.title} delay={`${i * 0.2}s`} />
                                  ))}
@@ -168,7 +179,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         </p>
                     </div>
 
-                    <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 relative">
+                    <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 relative">
                         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />
                         {res.risks.map((point, index) => (
                             <div key={index} className="flex flex-col gap-5 p-8 border border-zinc-100 bg-zinc-50/30 rounded-[1.5rem] hover:bg-white hover:shadow-xl transition-all duration-500 relative group">
@@ -303,7 +314,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     <div className="grid lg:grid-cols-[1fr,450px] gap-10 md:gap-20 items-center">
                         <div className="space-y-6 text-left">
                             <div className="space-y-3">
-                                Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">
+                                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">
                                     OPERATIONAL CONTINUITY
                                 </Badge>
 
@@ -460,11 +471,16 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </p>
                             </div>
                             
-                            <button className="h-14 md:h-20 px-8 md:px-16 rounded-xl bg-[#F4A261] text-white font-black uppercase italic text-sm md:text-xl shadow-2xl hover:bg-white hover:text-black hover:scale-[1.05] active:scale-95 transition-all border-none group w-full lg:w-fit flex items-center justify-center">
-                                <Link href="#pricing" className="flex items-center gap-3">
-                                    LIVE IN 10 MINUTES NOW <ArrowRight className="w-6 h-6 md:w-7 md:h-7 transition-transform group-hover:translate-x-3" />
-                                </Link>
-                            </button>
+                            <div className="flex flex-col items-center lg:items-start gap-4">
+                                <button className="h-14 md:h-20 px-8 md:px-16 rounded-xl bg-[#F4A261] text-black font-black uppercase italic text-sm md:text-xl shadow-2xl hover:bg-white hover:scale-[1.05] active:scale-95 transition-all border-none group w-full lg:w-fit flex items-center justify-center">
+                                    <Link href="#pricing" className="flex items-center gap-3">
+                                        LIVE IN 10 MINUTES NOW <ArrowRight className="w-6 h-6 md:w-7 md:h-7 transition-transform group-hover:translate-x-3" />
+                                    </Link>
+                                </button>
+                                <p className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.2em] text-emerald-500/60 italic">
+                                    BUILT IN EXCEL • NO APP ROLLOUT • ONE-TIME BUY
+                                </p>
+                            </div>
                         </div>
 
                         {/* Outcomes Stack */}
