@@ -10,19 +10,19 @@ export const homepageTestimonials: HomepageTestimonial[] = [
   {
     name: "Sameer Verma",
     title: "General Manager, Boutique Hotel Group",
-    quote: "Our housekeeping operations stopped depending on verbal follow-ups. When my HOD resigned, the system stayed. It's the ultimate operational insurance.",
+    quote: "Our housekeeping standards stopped depending on verbal follow-ups. When our HOD resigned, the operational routines stayed intact.",
     stars: 5,
   },
   {
     name: "Dr. Anjali Rao",
     title: "Director of Nursing, Multi-specialty Hospital",
-    quote: "Clinical audit-readiness used to take weeks of prep. With MoreMeets, we are in a state of permanent compliance. Our nursing teams now have total clarity on daily safety checks.",
+    quote: "Audit preparation used to take days of manual checking. Now our nursing teams follow one clear system for daily safety and compliance routines.",
     stars: 5,
   },
   {
     name: "Vikram Mehra",
     title: "CEO, Multi-Unit Franchise Group",
-    quote: "Standardizing 12 branches used to be a constant cycle of manual follow-ups. Now we have one shared system that protects our brand standards and revenue daily without the chaos.",
+    quote: "Before MoreMeets, maintaining the same standards across 12 branches meant constant follow-ups. Now every location runs on one shared operational system.",
     stars: 5,
   },
 ];
