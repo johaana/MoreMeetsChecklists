@@ -71,7 +71,7 @@ const BrandLogo = () => (
     </Link>
 );
 
-export function SiteHeader() {
+export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
     const [isSheetOpen, setIsSheetOpen] = React.useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
     const [isScrolled, setIsScrolled] = React.useState(false);
@@ -97,7 +97,7 @@ export function SiteHeader() {
     return (
         <header className={cn(
             "px-6 lg:px-12 h-16 flex items-center fixed top-0 w-full z-50 transition-all duration-500",
-            isScrolled ? "bg-black/90 backdrop-blur-2xl border-b border-white/10" : "bg-transparent border-b border-transparent"
+            (isScrolled || forceTheme === 'dark') ? "bg-black/90 backdrop-blur-2xl border-b border-white/10" : "bg-transparent border-b border-transparent"
         )}>
             <div className="flex items-center">
                 <BrandLogo />
@@ -204,4 +204,3 @@ export function SiteHeader() {
         </header>
     );
 }
-
