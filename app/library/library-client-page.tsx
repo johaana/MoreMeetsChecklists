@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -70,8 +71,8 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => {
             
             <CardContent className="px-6 md:px-12 py-0 flex-1">
                 <div className="grid grid-cols-2 gap-4 text-[7px] md:text-[9px] font-black text-white/20 uppercase tracking-[0.2em] border-y border-white/5 py-4 md:py-6">
-                    <span className="flex items-center gap-2"><LayoutGrid className="w-3 md:w-3.5 h-3 md:h-3.5 text-primary/40" /> {pack.checklists.length} MODULES</span>
-                    <span className="flex items-center gap-2"><Target className="w-3 md:w-3.5 h-3 md:h-3.5 text-primary/40" /> {displayTasks}+ POINTS</span>
+                    <span className="flex items-center gap-2"><LayoutGrid className="w-3 md:w-3.5 h-3 md:h-3.5 text-primary/40" /> {pack.checklists.length} DIVISIONS</span>
+                    <span className="flex items-center gap-2"><Target className="w-3 md:w-3.5 h-3 md:h-3.5 text-primary/40" /> {displayTasks}+ SOPs</span>
                 </div>
             </CardContent>
 

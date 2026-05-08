@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -65,13 +66,17 @@ export default function PricingClient({ pack }: { pack: PremiumPack }) {
     const hasUSD = !!(pack.lemonSqueezyUrl && pack.lemonSqueezyUrl.length > 0 && pack.priceUSD !== undefined && pack.priceUSD >= 0);
     const [region, setRegion] = React.useState<'INDIA' | 'GLOBAL'>(hasINR ? 'INDIA' : 'GLOBAL');
     
+    // Authentic Density Rounding for Pricing Section
+    const rawCount = pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0);
+    const displayTasks = Math.floor(rawCount / 10) * 10;
+
     const VALUE_ITEMS = [
-        { t: "120+ Pre-built SOPs", i: ClipboardCheck },
-        { t: "Live Dashboard", i: Activity },
-        { t: "Trainer notes", i: GraduationCap },
-        { t: "Admin controls", i: Lock },
-        { t: "Multi-unit view", i: LayoutGrid },
-        { t: "Editable .XLSX", i: FileSpreadsheet }
+        { t: `${displayTasks}+ Pre-built SOPs`, i: ClipboardCheck },
+        { t: "Live Operational Dashboard", i: Activity },
+        { t: "Trainer notes for teams", i: GraduationCap },
+        { t: "Admin security controls", i: Lock },
+        { t: "Multi-branch architecture", i: LayoutGrid },
+        { t: "Editable .XLSX format", i: FileSpreadsheet }
     ];
 
     const BRAND_GREEN = "#2EB86B";

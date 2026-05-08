@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -108,7 +109,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     {[
                                         { t: `${pack.checklists.length} Operational Divisions`, i: LayoutGrid },
                                         { t: `${totalTasks}+ Technical SOPs`, i: Target },
-                                        { t: "Live Dashboard Included", i: Activity },
+                                        { t: "Live Operational Dashboard", i: Activity },
                                         { t: "Editable .XLSX Infrastructure", i: FileSpreadsheet }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 group">
@@ -332,8 +333,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
                         {[
                             {
-                                t: "FASTER STAFF TRAINING",
-                                d: "New staff understand responsibilities faster using built-in instructions and operational guidance.",
+                                t: "FASTER TEAM TRAINING",
+                                d: "New teams understand responsibilities faster using built-in instructions and operational guidance.",
                                 i: GraduationCap
                             },
                             {
@@ -342,7 +343,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 i: History
                             },
                             {
-                                t: res.reassuranceTrustTitle || "PATIENT TRUST",
+                                t: res.reassuranceTrustTitle || "STAKEHOLDER TRUST",
                                 d: res.reassuranceTrustDescription || "Operational consistency customers notice and trust.",
                                 i: Users
                             },
