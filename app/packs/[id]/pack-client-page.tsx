@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -22,6 +21,7 @@ import {
     GraduationCap,
     FileSpreadsheet,
     AlertTriangle,
+    Sparkles
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
@@ -268,6 +268,32 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
+            {/* --- CUSTOMIZATION BRIDGE --- */}
+            <Section className="bg-zinc-950 text-white" noSpine>
+                <div className="max-w-4xl mx-auto p-12 md:p-20 rounded-[3rem] border border-white/10 bg-white/[0.02] relative overflow-hidden text-center space-y-10">
+                    <div className="absolute top-0 right-0 p-10 opacity-5">
+                        <Sparkles className="w-64 h-64 text-primary" />
+                    </div>
+                    <div className="relative z-10 space-y-4">
+                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Optional Customization Support</Badge>
+                        <h2 className="text-3xl md:text-5xl font-black font-headline italic uppercase tracking-tighter leading-tight">
+                            Need this system tailored <br/> to your specific brand?
+                        </h2>
+                        <p className="text-zinc-400 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
+                            If our standard framework requires professional adaptation to your unique department hierarchy or multi-unit reporting structure, we offer 1-on-1 discovery calls.
+                        </p>
+                    </div>
+                    <div className="relative z-10 flex flex-col items-center gap-4">
+                        <Button asChild size="lg" className="h-16 px-10 rounded-xl bg-primary text-black font-black uppercase italic text-sm shadow-2xl hover:scale-105 transition-all border-none">
+                            <Link href="https://calendly.com/more-moremeets/30min" target="_blank">
+                                Book Customization Discovery <ArrowRight className="ml-2 w-5 h-5" />
+                            </Link>
+                        </Button>
+                        <p className="text-[9px] font-black uppercase tracking-[0.4em] text-white/20">Tailored implementation starts at ₹9,999</p>
+                    </div>
+                </div>
+            </Section>
+
             {/* --- SECTION: OPERATIONAL CONTINUITY --- */}
             <Section className="bg-white border-t border-zinc-100">
                 <div className="max-w-6xl mx-auto">
@@ -458,4 +484,3 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         </div>
     );
 }
-

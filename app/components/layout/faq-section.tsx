@@ -20,6 +20,15 @@ export const FaqSection = () => (
                         </AccordionContent>
                     </AccordionItem>
 
+                    <AccordionItem value="item-custom" className="border-white/10">
+                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Do you offer professional customization support?</AccordionTrigger>
+                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic space-y-4">
+                          <p>Yes. If you require the framework to be surgically adapted to your unique brand protocols, we offer <strong>Forensic Customization.</strong></p>
+                          <p>Our team handles department mapping, task-weighting, and multi-branch synchronization for you. Customization builds start at <strong>₹9,999 / $125</strong> per project.</p>
+                          <p className="pt-2"><a href="https://calendly.com/more-moremeets/30min" target="_blank" className="text-primary underline font-black uppercase tracking-widest text-[10px]">Book a Customization Discovery Session &rarr;</a></p>
+                        </AccordionContent>
+                    </AccordionItem>
+
                     <AccordionItem value="item-2" className="border-white/10">
                         <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">How does this work without being an app?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic space-y-4">
@@ -49,27 +58,10 @@ export const FaqSection = () => (
                         </AccordionContent>
                     </AccordionItem>
 
-                    <AccordionItem value="item-custom" className="border-white/10">
-                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">What if I need professional customization or a custom build?</AccordionTrigger>
-                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic space-y-4">
-                          <p>If your organization has complex multi-branch requirements or you operate in a specialized sector not found in our library, we offer <strong>Bespoke Forensic Engineering.</strong></p>
-                          <p>We can build a ground-up institutional engine or customize an existing pack to your brand's specific protocols. <a href="https://calendly.com/more-moremeets/30min" target="_blank" className="text-primary underline">Book a Discovery Session</a> to discuss your unique operational requirements.</p>
-                        </AccordionContent>
-                    </AccordionItem>
-
                     <AccordionItem value="item-lock" className="border-white/10">
                         <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Is the system locked? Can I prevent staff from changing my SOPs?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
                           No, the system is <strong>100% unlocked</strong> and yours to own. To prevent accidental edits by staff, we recommend using the "Protect Sheet" feature in Excel or Google Sheets. You can lock everything except the "Done By" and "Verified By" columns, ensuring your core protocols and formulas remain bulletproof while allowing daily reporting.
-                        </AccordionContent>
-                    </AccordionItem>
-
-                    <AccordionItem value="item-modify" className="border-white/10">
-                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">What if I accidentally break a formula or task?</AccordionTrigger>
-                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic space-y-4">
-                          <p>The system is fully unlocked, which is its greatest power. We recommend keeping an original <strong>Master Copy</strong> untouched.</p>
-                          <p>If you accidentally modify or break the logic, reach out to us with your order ID—we can provide a fresh copy of the latest master format. Additionally, step-by-step instructions on how to "Lock" your final protocols are included within the file itself.</p>
-                          <p className="text-primary-text/40 pt-2 border-t border-white/5">MoreMeets is not responsible for operational failures or compliance lapses resulting from post-download edits or misuse of the file logic.</p>
                         </AccordionContent>
                     </AccordionItem>
 
