@@ -74,7 +74,7 @@ export const blogPosts: BlogPost[] = [
       protocol: "Institutional Memory",
       relatedPackId: "hotels_and_resorts",
       description: "Exposing the hidden liability of memory-heavy operations. Why flu season breaks businesses that rely on heroes.",
-      imageUrl: "https://i.postimg.cc/KvNshZ2C/hotel-ops.webp",
+      imageUrl: "https://i.postimg.cc/mrSydNMq/portrait-young-office-worker-woman-sitting-office-desk-with-documents-talking-mobile-phone-nervous-s.jpg",
       content: `
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
@@ -114,7 +114,7 @@ export const blogPosts: BlogPost[] = [
       protocol: "Peak Performance",
       relatedPackId: "restaurants",
       description: "An immersive story on the pressure of peak season. Why coordination fails first and how systems remove variability.",
-      imageUrl: "https://i.postimg.cc/3JBbQKTs/restaurant-chaos.jpg",
+      imageUrl: "https://i.postimg.cc/SK4G7tXq/chef-preparing-recipe.jpg",
       content: `
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
@@ -187,7 +187,7 @@ export const blogPosts: BlogPost[] = [
       protocol: "Operational Confidence",
       relatedPackId: "healthcare_and_hospital_operations",
       description: "Healthcare editorial on building trust through operations. Why patient confidence is won or lost at the entrance.",
-      imageUrl: "https://i.postimg.cc/ZKcDzTS2/patient-safety-2.webp",
+      imageUrl: "https://i.postimg.cc/TPxcqHym/doctors-pushing-emergency-stretcher-bed-corridor.jpg",
       content: `
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
@@ -201,7 +201,7 @@ export const blogPosts: BlogPost[] = [
           </blockquote>
 
           <h2>The Evaluation of Control</h2>
-          <p>Does this place feel organised? Does it feel predictable? Does it feel like someone is in charge? Most of that judgment happens before a single diagnosis. Healthcare systems often focus heavily on clinical excellence. But patient confidence is built operationally. In flow. In clarity. In coordination.</p>
+          <p>Does this place feel organised? Does it feel carpeted? Does it feel like someone is in charge? Most of that judgment happens before a single diagnosis. Healthcare systems often focus heavily on clinical excellence. But patient confidence is built operationally. In flow. In clarity. In coordination.</p>
           
           <h2>The Consistent Environment</h2>
           <p>A delayed consultation feels longer. A small error feels bigger. A routine visit feels uncertain. Not because the care is poor. Because the system around it feels unstable. The most trusted healthcare environments are not the most advanced. They are the most consistent. Processes are smooth. Handoffs are invisible. Communication is clear. And nothing feels accidental.</p>
@@ -224,7 +224,7 @@ export const blogPosts: BlogPost[] = [
       protocol: "Institutional Memory",
       relatedPackId: "hotels_and_resorts",
       description: "A technical debrief on the Ebbinghaus Forgetting Curve in hospitality. Why verbal training leads to 70% knowledge loss. Discover how Excel SOPs prevent operational drift.",
-      imageUrl: "https://i.postimg.cc/cJSwxSP4/housekeeping-hotel-1.avif",
+      imageUrl: "https://i.postimg.cc/HkX2MCLY/Whats-App-Image-2026-05-06-at-14-19-42.jpg",
       content: `
         <section>
           <div class="bg-primary/10 border-l-4 border-primary p-6 mb-12 rounded-r-xl">
@@ -312,7 +312,7 @@ export const blogPosts: BlogPost[] = [
       protocol: "Life Safety",
       relatedPackId: "hotels_and_resorts",
       description: "Forensic analysis of the 'Amygdala Hijack' in hospitality. Why even high-performing staff fail during crises. Why physical systems are the only cure.",
-      imageUrl: "https://i.postimg.cc/ZqSpbSXJ/Create-SOP-for-hotel-maintenance.webp",
+      imageUrl: "https://i.postimg.cc/wBzkcbtq/customer-service-handsome-curly-man-office-suit-with-computer-headset-tired-annoyed.jpg",
       content: `
         <section>
           <p class="lead font-black text-xl md:text-2xl text-primary mb-12 italic leading-relaxed">
