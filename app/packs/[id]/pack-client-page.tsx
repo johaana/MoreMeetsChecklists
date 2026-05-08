@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -29,22 +28,26 @@ import PricingClient from '../pricing-client';
 import { packResolutions, defaultResolution } from '@/lib/pack-resolutions';
 import { IconComponent } from '@/components/icons';
 
-const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
-    <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
-        {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />}
-        <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
-            {children}
-        </div>
- section>
-);
+function Section({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) {
+    return (
+        <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
+            {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />}
+            <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
+                {children}
+            </div>
+        </section>
+    );
+}
 
-const PulsatingStressText = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
-    <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-        <span className="text-[11px] md:text-[14px] font-black text-red-600/60 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.1)] leading-tight block text-left lg:text-right">
-            {text}
-        </span>
-    </div>
-);
+function PulsatingStressText({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) {
+    return (
+        <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
+            <span className="text-[11px] md:text-[14px] font-black text-red-600/60 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.1)] leading-tight block text-left lg:text-right">
+                {text}
+            </span>
+        </div>
+    );
+}
 
 export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPack, heroImageUrl: string }) {
     const [mounted, setMounted] = useState(false);
@@ -54,8 +57,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
     const res = packResolutions[pack.id] || defaultResolution;
     
-    const getVerticalName = (pack: PremiumPack) => {
-        const title = pack.title.toLowerCase();
+    const getVerticalName = (p: PremiumPack) => {
+        const title = p.title.toLowerCase();
         if (title.includes('restaurant')) return 'restaurants';
         if (title.includes('hotel')) return 'hotels';
         if (title.includes('hospital')) return 'hospitals';
@@ -64,7 +67,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         if (title.includes('retail')) return 'retail stores';
         if (title.includes('franchise')) return 'franchises';
         if (title.includes('facility')) return 'facilities';
-        return pack.category.toLowerCase() + 's';
+        return p.category.toLowerCase() + 's';
     };
     const verticalName = getVerticalName(pack);
 
@@ -126,7 +129,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                             <div className="space-y-8 pt-6">
                                 <div className="space-y-4">
-                                    <Button asChild size="lg" className="w-full sm:w-auto h-16 md:h-20 px-12 md:px-20 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-xl shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group flex items-center justify-center gap-4">
+                                    <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group flex items-center justify-center gap-4">
                                         <Link href="#pricing">
                                             LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
                                         </Link>
@@ -198,7 +201,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     <div key={i} className="p-4 md:p-8 rounded-xl md:rounded-2xl bg-zinc-950 text-white space-y-2 md:space-y-3 relative overflow-hidden group">
                                         <div className="absolute top-0 right-0 w-1 md:w-2 h-full bg-red-600/20 group-hover:bg-red-600 transition-colors" />
                                         <p className="text-[9px] md:text-[11px] font-black uppercase text-red-500 tracking-widest leading-tight">{c.title}</p>
-                                        <p className="text :[10px] md:text-sm font-bold italic text-zinc-400 leading-tight">→ {c.fallout}</p>
+                                        <p className="text-[10px] md:text-sm font-bold italic text-zinc-400 leading-tight">→ {c.fallout}</p>
                                     </div>
                                 ))}
                             </div>
