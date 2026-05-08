@@ -109,7 +109,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
                                     {[
                                         { t: `${pack.checklists.length} Operational Divisions`, i: LayoutGrid },
-                                        { t: `${totalTasks}+ Technical SOPs`, i: Target },
+                                        { t: `${totalTasks}+ Pre-Built SOPs`, i: Target },
                                         { t: "Live Operational Dashboard", i: Activity },
                                         { t: "Editable .XLSX Infrastructure", i: FileSpreadsheet }
                                     ].map((item, i) => (
