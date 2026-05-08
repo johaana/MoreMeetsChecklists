@@ -43,7 +43,7 @@ const NARRATIVE = {
     line1: "STOP CHASING.",
     line2: "START SEEING.",
     subline: "See daily work getting done. Even when you aren't there.",
-    cta: "Deploy the system",
+    cta: "Live in 10 minutes",
     meta: "SINGLE / MULTI-UNIT READY • AUDIT-READY COMPLIANCE"
 };
 
@@ -116,7 +116,7 @@ const SovereignCTA = ({ className }: { className?: string }) => (
                     {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
                 </Link>
             </Button>
-            <p className="text-[10px] md:text-xs text-zinc-400 font-bold italic text-center sm:text-left">
+            <p className="text-10px] md:text-xs text-zinc-400 font-bold italic text-center sm:text-left">
                 Built in Excel. Shared through Google Sheets. No app rollout required.
             </p>
         </div>
@@ -447,7 +447,7 @@ export default function Home() {
                         </div>
                         <div className="flex flex-col items-center gap-10 md:gap-14">
                             <button className="h-[90px] md:h-[120px] px-16 md:px-24 rounded-[30px] bg-black text-white font-black uppercase italic text-2xl md:text-5xl shadow-2xl hover:scale-[1.05] active:scale-95 transition-all border-none group w-full max-w-2xl mx-auto flex items-center justify-center">
-                                <Link href="/library" className="flex items-center gap-8 justify-center">Get Your System <ArrowRight className="w-10 h-10 md:w-16 md:h-16 transition-transform group-hover:translate-x-4" /></Link>
+                                <Link href="/library" className="flex items-center gap-8 justify-center">Live in 10 minutes <ArrowRight className="w-10 h-10 md:w-16 md:h-16 transition-transform group-hover:translate-x-4" /></Link>
                             </button>
                             <div className="flex flex-col items-center gap-3">
                                 <div className="flex items-baseline gap-5">

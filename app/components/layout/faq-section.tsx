@@ -24,7 +24,7 @@ export const FaqSection = () => (
                         <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Do you offer professional customization support?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic space-y-4">
                           <p>Yes. If you require the framework to be surgically adapted to your unique brand protocols, we offer <strong>Forensic Customization.</strong></p>
-                          <p>Our team handles department mapping, task-weighting, and multi-branch synchronization for you. Customization builds start at <strong>₹9,999 / $125</strong> per project.</p>
+                          <p>Our team handles department mapping, task-weighting, and multi-branch synchronization for you. Customization builds start at <strong>₹9,999 / $125 USD</strong> per project.</p>
                           <p className="pt-2"><a href="https://calendly.com/more-moremeets/30min" target="_blank" className="text-primary underline font-black uppercase tracking-widest text-[10px]">Book a Customization Discovery Session &rarr;</a></p>
                         </AccordionContent>
                     </AccordionItem>

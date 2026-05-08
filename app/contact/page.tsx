@@ -65,7 +65,7 @@ export default function ContactUsPage() {
                                             Book Discovery Session <ArrowRight className="ml-2 w-5 h-5" />
                                         </a>
                                     </Button>
-                                    <p className="text-[8px] text-white/20 text-center uppercase tracking-widest font-black">TAILORED BUILDS START AT ₹9,999</p>
+                                    <p className="text-[8px] text-white/20 text-center uppercase tracking-widest font-black">TAILORED BUILDS START AT ₹9,999 / $125 USD</p>
                                 </div>
                             </div>
                         </Card>

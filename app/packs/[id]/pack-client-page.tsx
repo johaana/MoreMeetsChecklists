@@ -53,9 +53,19 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
     const res = packResolutions[pack.id] || defaultResolution;
     
-    // Authentic Density (e.g., 144 -> 140+)
-    const rawCount = pack.checklists.reduce((sum, checklist) => sum + checklist.tasks.length, 0);
-    const totalTasks = Math.floor(rawCount / 10) * 10;
+    const getVerticalName = (pack: PremiumPack) => {
+        const title = pack.title.toLowerCase();
+        if (title.includes('restaurant')) return 'restaurants';
+        if (title.includes('hotel')) return 'hotels';
+        if (title.includes('hospital')) return 'hospitals';
+        if (title.includes('cinema')) return 'cinemas';
+        if (title.includes('school')) return 'schools';
+        if (title.includes('retail')) return 'retail stores';
+        if (title.includes('franchise')) return 'franchises';
+        if (title.includes('facility')) return 'facilities';
+        return pack.category.toLowerCase() + 's';
+    };
+    const verticalName = getVerticalName(pack);
 
     return (
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-primary/20">
@@ -108,10 +118,10 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
                                     {[
-                                        { t: `${pack.checklists.length} Operational Divisions`, i: LayoutGrid },
-                                        { t: `${totalTasks}+ Pre-Built SOPs`, i: Target },
+                                        { t: `Pre-built operational SOPs for ${verticalName}`, i: Target },
                                         { t: "Live Operational Dashboard", i: Activity },
-                                        { t: "Editable .XLSX Infrastructure", i: FileSpreadsheet }
+                                        { t: "Trainer Notes Included", i: GraduationCap },
+                                        { t: "Editable Operational Infrastructure", i: FileSpreadsheet }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 group">
                                             <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
@@ -129,7 +139,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <div className="space-y-3">
                                     <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-16 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-lg shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white transition-all border-none group flex items-center justify-center gap-3">
                                         <Link href="#pricing">
-                                            DEPLOY SYSTEM — ₹999 <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
+                                            LIVE IN 10 MINUTES — ₹999 <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
                                         </Link>
                                     </Button>
                                     <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic pl-1 text-center sm:text-left">
@@ -289,7 +299,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 Book Customization Discovery <ArrowRight className="ml-2 w-5 h-5" />
                             </Link>
                         </Button>
-                        <p className="text-[9px] font-black uppercase tracking-[0.4em] text-white/20">Tailored implementation starts at ₹9,999</p>
+                        <p className="text-[9px] font-black uppercase tracking-[0.4em] text-white/20">Tailored implementation starts at ₹9,999 / $125 USD</p>
                     </div>
                 </div>
             </Section>
@@ -459,7 +469,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             
                             <button className="h-16 md:h-24 px-10 md:px-20 rounded-2xl bg-[#F4A261] text-white font-black uppercase italic text-base md:text-2xl shadow-2xl hover:bg-white hover:text-black hover:scale-[1.05] active:scale-95 transition-all border-none group w-full lg:w-fit flex items-center justify-center">
                                 <Link href="#pricing" className="flex items-center gap-4">
-                                    DEPLOY SYSTEM NOW <ArrowRight className="w-8 h-8 transition-transform group-hover:translate-x-3" />
+                                    LIVE IN 10 MINUTES NOW <ArrowRight className="w-8 h-8 transition-transform group-hover:translate-x-3" />
                                 </Link>
                             </button>
                         </div>
