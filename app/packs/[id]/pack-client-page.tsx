@@ -26,6 +26,7 @@ import {
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
 import { packResolutions, defaultResolution } from '@/lib/pack-resolutions';
+import { IconComponent } from '@/components/icons';
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
     <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
@@ -186,19 +187,19 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         ))}
                     </div>
 
-                    {/* Failure Consequences Strip */}
+                    {/* Failure Consequences Strip - Compact Mobile HUD */}
                     {res.consequences && (
                         <div className="mt-32 pt-16 border-t border-zinc-100">
                              <div className="flex items-center gap-3 justify-center mb-12">
                                 <div className="w-1 h-5 bg-red-500" />
                                 <p className="text-[10px] font-black text-red-500 uppercase tracking-[0.5em] italic font-headline">FAILURE CONSEQUENCES</p>
                             </div>
-                            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
                                 {res.consequences.map((c, i) => (
-                                    <div key={i} className="p-8 rounded-2xl bg-zinc-950 text-white space-y-3 relative overflow-hidden group">
-                                        <div className="absolute top-0 right-0 w-2 h-full bg-red-600/20 group-hover:bg-red-600 transition-colors" />
-                                        <p className="text-[11px] font-black uppercase text-red-500 tracking-widest">{c.title}</p>
-                                        <p className="text-sm font-bold italic text-zinc-400 leading-tight">→ {c.fallout}</p>
+                                    <div key={i} className="p-4 md:p-8 rounded-xl md:rounded-2xl bg-zinc-950 text-white space-y-2 md:space-y-3 relative overflow-hidden group">
+                                        <div className="absolute top-0 right-0 w-1 md:w-2 h-full bg-red-600/20 group-hover:bg-red-600 transition-colors" />
+                                        <p className="text-[9px] md:text-[11px] font-black uppercase text-red-500 tracking-widest leading-tight">{c.title}</p>
+                                        <p className="text-[10px] md:text-sm font-bold italic text-zinc-400 leading-tight">→ {c.fallout}</p>
                                     </div>
                                 ))}
                             </div>
@@ -317,8 +318,39 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
+            {/* --- SECTION: OPERATIONAL DIVISIONS (2-Column Grid on Mobile) --- */}
+            <Section className="bg-zinc-50 border-y border-zinc-100">
+                <div className="max-w-6xl mx-auto space-y-16 md:space-y-24">
+                    <div className="text-center space-y-6">
+                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Technical Density</Badge>
+                        <h2 className="text-[32px] md:text-[60px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.95]">
+                            Operational <br className="md:hidden" /> Divisions
+                        </h2>
+                        <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
+                            The full architecture of the Sovereign Engine. Optimized for one-glance control.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8 max-w-5xl mx-auto">
+                        {pack.checklists.map((checklist, index) => (
+                            <div key={index} className="flex flex-col gap-3 p-4 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] border border-zinc-200 bg-white shadow-sm hover:shadow-xl transition-all duration-500 group text-left">
+                                <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-zinc-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-inner">
+                                    <IconComponent name={checklist.icon} className="w-5 h-5 md:w-8 md:h-8" />
+                                </div>
+                                <div className="space-y-1 md:space-y-2">
+                                    <h4 className="text-[11px] md:text-xl font-black uppercase italic tracking-tighter text-zinc-950 leading-tight">
+                                        {checklist.title}
+                                    </h4>
+                                    <p className="text-[8px] md:text-[10px] text-primary font-black uppercase tracking-[0.2em]">{checklist.tasks.length} SOPs</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </Section>
+
             {/* --- SECTION 7: BUILT FOR REAL TEAMS --- */}
-            <Section className="bg-white border-y border-zinc-100">
+            <Section className="bg-white">
                 <div className="max-w-6xl mx-auto space-y-16 md:space-y-24">
                     <div className="text-center space-y-6">
                         <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Operational Reassurance</Badge>
@@ -426,3 +458,4 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         </div>
     );
 }
+
