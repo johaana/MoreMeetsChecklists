@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -26,7 +25,8 @@ import {
     Scale,
     Cpu,
     SearchCheck,
-    Monitor
+    Monitor,
+    Users
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -106,7 +106,9 @@ const DiagnosticScan = () => (
 );
 
 export default function TempDesignLab() {
-    const pack = cinema_operations_pack;
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => { setMounted(true); }, []);
+    if (!mounted) return null;
 
     return (
         <div className="flex flex-col min-h-screen bg-white text-[#0B0F14] font-sans antialiased selection:bg-emerald-500/20">
@@ -388,4 +390,3 @@ export default function TempDesignLab() {
         </div>
     );
 }
-
