@@ -37,9 +37,16 @@ import { Footer } from '@/components/layout/footer';
 import { FaqSection } from "@/components/layout/faq-section";
 import Link from 'next/link';
 
-// --- PRODUCTION ASSETS ---
-const DASHBOARD_IMAGE = "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png";
-const TASKS_IMAGE = "https://i.postimg.cc/G278vKh8/Screenshot-2026-04-18-004329.png";
+// --- PRODUCTION ASSETS (Actual Cinema Screenshots) ---
+const IMG_DASHBOARD = "https://i.postimg.cc/B6YtmpVn/Screenshot-2026-05-10-150332.png";
+const IMG_BRANCH_SETUP = "https://i.postimg.cc/HxZj6zht/Screenshot-2026-05-10-150441.png";
+const IMG_TEAM_HUB = "https://i.postimg.cc/nzRM32PD/Screenshot-2026-05-10-150505.png";
+const IMG_TODAYS_TASKS = "https://i.postimg.cc/63jTMcm0/Screenshot-2026-05-10-150522.png";
+const IMG_INCIDENT_LOG = "https://i.postimg.cc/fL2k8CrC/Screenshot-2026-05-10-150620.png";
+const IMG_HEALTH_ANALYTICS = "https://i.postimg.cc/63jTMcmz/Screenshot-2026-05-10-150704.png";
+const IMG_COST_TRACKER = "https://i.postimg.cc/G279XK5M/Screenshot-2026-05-10-150732.png";
+const IMG_SYSTEM_GUIDE = "https://i.postimg.cc/wvf3w2Gf/Screenshot-2026-05-10-150755.png";
+
 const CINEMA_HERO = "https://i.postimg.cc/43gVfgjd/multiplex2.avif";
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
@@ -49,7 +56,7 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
         <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
             {children}
         </div>
-    </section>
+    </section> section>
 );
 
 const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
@@ -72,14 +79,15 @@ const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
     </div>
 );
 
-const OperationalAlert = ({ title, sub, delay = "0s" }: { title: string, sub: string, delay?: string }) => (
+const OperationalAlert = ({ title, sub, time, delay = "0s" }: { title: string, sub: string, time: string, delay?: string }) => (
     <div className="flex flex-col items-start lg:items-end gap-1 animate-in fade-in slide-in-from-right-4 duration-1000" style={{ animationDelay: delay }}>
         <div className="flex items-center gap-3">
-            <span className="text-[12px] md:text-[18px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_15px_rgba(239,68,68,0.5)]">
+            <span className="text-[12px] md:text-[16px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2">
                 <span className="animate-pulse">[!]</span> {title}
             </span>
+            <span className="text-[9px] font-mono text-zinc-600 bg-white/5 px-2 py-0.5 rounded">{time}</span>
         </div>
-        <p className="text-[10px] md:text-[12px] font-bold text-white/70 uppercase tracking-widest italic">{sub}</p>
+        <p className="text-[10px] md:text-[11px] font-bold text-white/50 uppercase tracking-widest italic">{sub}</p>
     </div>
 );
 
@@ -101,22 +109,25 @@ export default function DesignLabPage() {
                         <img 
                             src={CINEMA_HERO} 
                             alt="Operational Environment" 
-                            className="w-full h-full object-cover opacity-60 grayscale-[0.2]" 
+                            className="w-full h-full object-cover opacity-50 grayscale-[0.1]" 
                         />
-                        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent" />
                     </div>
 
                     <div className="relative z-10 container mx-auto max-w-[1200px] px-6 py-20">
                         <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-16 items-center">
-                            <div className="space-y-12">
+                            <div className="space-y-10">
                                 <div className="space-y-5">
-                                    <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[11px] px-8 py-2 rounded-none italic bg-emerald-500/5">CINEMA OPERATIONS SYSTEM</Badge>
-                                    <h1 className="text-[34px] md:text-8xl font-black font-headline tracking-tighter uppercase italic leading-[0.9]">
+                                    <div className="flex items-center gap-4">
+                                        <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-6 py-1.5 rounded-none italic bg-emerald-500/5">CINEMA OPERATIONS SYSTEM</Badge>
+                                        <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest hidden md:block">SYS_REF: V11.9_STABLE</span>
+                                    </div>
+                                    <h1 className="text-[36px] md:text-8xl font-black font-headline tracking-tighter uppercase italic leading-[0.9]">
                                         STOP CHASING TEAMS. <br/> <span className="text-emerald-500">START SEEING EVERY SCREEN.</span>
                                     </h1>
                                     <div className="space-y-3">
                                         <p className="text-xl md:text-[34px] text-zinc-300 font-medium italic max-w-2xl leading-tight">
-                                            Live operational visibility for show readiness, concession control, crowd flow, and daily execution across your multiplex.
+                                            Live operational visibility for show readiness, concession control, crowd flow, and daily execution.
                                         </p>
                                         <p className="text-sm md:text-xl text-zinc-400 font-bold border-l-2 border-emerald-500/40 pl-6 max-w-xl">
                                             Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events. Real-time oversight for professional cinema groups.
@@ -124,7 +135,7 @@ export default function DesignLabPage() {
                                     </div>
                                 </div>
 
-                                <div className="grid sm:grid-cols-2 gap-x-12 gap-y-5 max-w-2xl border-l-2 border-white/10 pl-8 py-2">
+                                <div className="grid sm:grid-cols-2 gap-x-12 gap-y-4 border-l-2 border-white/10 pl-8 py-2">
                                     {[
                                         { t: "140+ PRE-BUILT CINEMA SOPs", i: Target },
                                         { t: "REAL-TIME OPERATIONS DASHBOARD", i: Activity },
@@ -145,12 +156,9 @@ export default function DesignLabPage() {
                                                 START RUNNING EVERY SCREEN <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-2" />
                                             </Link>
                                         </Button>
-                                        <div className="space-y-1">
+                                        <div className="space-y-1 text-center sm:text-left">
                                             <p className="text-[10px] md:text-[11px] text-zinc-500 font-black uppercase tracking-[0.3em] italic">
                                                 BUILT IN EXCEL • SHARED ON GOOGLE SHEETS • NO APP ROLLOUT
-                                            </p>
-                                            <p className="text-[9px] text-zinc-600 font-black uppercase tracking-[0.4em] italic">
-                                                ONE-TIME PURCHASE • OWN YOUR DATA FOREVER
                                             </p>
                                         </div>
                                     </div>
@@ -167,161 +175,74 @@ export default function DesignLabPage() {
                                      <OperationalAlert 
                                         title="EXPIRED KDM KEY" 
                                         sub="Screen 04 unavailable for evening show" 
+                                        time="10:42 AM"
                                         delay="0.2s" 
                                      />
                                      <OperationalAlert 
                                         title="INTERVAL CONGESTION" 
                                         sub="Concession queue exceeding threshold" 
+                                        time="01:15 PM"
                                         delay="0.4s" 
                                      />
                                      <OperationalAlert 
                                         title="EMERGENCY COMMS FAILURE" 
                                         sub="Security response verification overdue" 
+                                        time="02:30 PM"
                                         delay="0.6s" 
                                      />
                                      <OperationalAlert 
                                         title="COLD CHAIN BREACH" 
                                         sub="Concession fridge temp recorded > 8°C" 
+                                        time="04:05 PM"
                                         delay="0.8s" 
                                      />
                                  </div>
                             </div>
                         </div>
                     </div>
-                </section>
 
-                {/* --- 2. BEFORE / AFTER REALITY --- */}
-                <Section className="bg-white border-b border-zinc-100">
-                    <div className="max-w-5xl mx-auto space-y-20">
-                        <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-red-500 border-red-100 uppercase tracking-[0.4em] font-black text-[10px] px-8 py-2 rounded-none italic">OPERATIONAL AUDIT</Badge>
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tight">The difference is visibility</h2>
-                        </div>
-
-                        <div className="grid md:grid-cols-2 gap-8 relative">
-                            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden md:block" />
-                            
-                            <div className="p-10 space-y-8 bg-red-50/30 rounded-3xl border border-red-50 relative">
-                                <h3 className="text-xl font-black uppercase italic text-red-600">Managing Manually</h3>
-                                <ul className="space-y-6">
-                                    {[
-                                        "WhatsApp groups buried in unsearchable status updates.",
-                                        "KDM keys expiring because tracking lives in one person's memory.",
-                                        "Concession leakage through unrecorded waste and voided bills.",
-                                        "Hygiene standards drifting during peak interval surges.",
-                                        "Managers spending 40% of their day following up on basic tasks."
-                                    ].map((text, i) => (
-                                        <li key={i} className="flex items-start gap-4 text-zinc-500 font-bold italic text-sm md:text-base">
-                                            <X className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
-                                            <span>{text}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            <div className="p-10 space-y-8 bg-emerald-50/30 rounded-3xl border border-emerald-50 relative">
-                                <h3 className="text-xl font-black uppercase italic text-emerald-600">Running a System</h3>
-                                <ul className="space-y-6">
-                                    {[
-                                        "Live visibility into technical readiness across all screens.",
-                                        "Assigned accountability with binary 'Done/Missed' verification.",
-                                        "Automated audit trails for safety and life-protection.",
-                                        "Trainer notes that preserve standards during staff turnover.",
-                                        "Real-time concession yield monitoring to protect margins."
-                                    ].map((text, i) => (
-                                        <li key={i} className="flex items-start gap-4 text-zinc-950 font-black uppercase italic text-sm md:text-base">
-                                            <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-                                            <span>{text}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </Section>
-
-                {/* --- 3. INSIDE THE SYSTEM (EVIDENCE FIRST) --- */}
-                <Section className="bg-zinc-50/50">
-                    <div className="max-w-6xl mx-auto space-y-20">
-                        <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[10px] px-8 py-2 rounded-none italic">OPERATIONAL PROOF</Badge>
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Inside the System</h2>
-                            <p className="text-zinc-500 text-lg font-medium italic uppercase">The actual data engine running your daily operations.</p>
-                        </div>
-
-                        <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
-                            <div className="space-y-12">
+                    {/* --- SYSTEM VITALS BAR --- */}
+                    <div className="absolute bottom-0 left-0 right-0 h-14 bg-zinc-950/80 backdrop-blur-xl border-t border-white/5 z-30 hidden md:block">
+                        <div className="container mx-auto h-full flex items-center justify-between px-10">
+                            <div className="flex items-center gap-12">
                                 {[
-                                    { t: "Executive Operations Dashboard", d: "One screen to see performance, risk, and technical uptime across all multiplex units.", i: Monitor },
-                                    { t: "Revenue Variance Tracking", d: "Corn-to-bucket yield reconciliation and POS void-bill auditing to stop profit leakage.", i: Zap },
-                                    { t: "Technical Readiness Workflow", d: "Zero-fail daily checks for projection, 3D assets, and subtitle sync before every show.", i: Clapperboard }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex items-start gap-6 group text-left">
-                                        <div className="w-12 h-12 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-primary shrink-0 shadow-sm group-hover:bg-primary group-hover:text-white transition-all">
-                                            <item.i className="w-6 h-6" />
-                                        </div>
-                                        <div className="space-y-1">
-                                            <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">{item.t}</h4>
-                                            <p className="text-zinc-500 font-bold italic leading-relaxed">{item.d}</p>
-                                        </div>
+                                    { l: "TECH_UPTIME", v: "100.0%" },
+                                    { l: "SAFETY_INDEX", v: "STABLE" },
+                                    { l: "UNIT_LOAD", v: "NORMAL" }
+                                ].map((stat, i) => (
+                                    <div key={i} className="flex items-center gap-4">
+                                        <span className="text-[9px] font-mono text-zinc-500 tracking-widest">{stat.l}</span>
+                                        <span className="text-[11px] font-black text-emerald-500 italic">{stat.v}</span>
                                     </div>
                                 ))}
                             </div>
-                            <div className="relative">
-                                <BrowserFrame src={DASHBOARD_IMAGE} label="EXECUTIVE_OPERATIONS_DASHBOARD_V11.9" />
+                            <div className="flex items-center gap-4">
+                                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                                <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">ENCRYPTED_SOVEREIGN_NODE_ACTIVE</span>
                             </div>
                         </div>
                     </div>
-                </Section>
+                </section>
 
-                {/* --- 4. INCLUDED MODULES (MANIFEST) --- */}
-                <Section className="bg-white">
-                    <div className="max-w-5xl mx-auto space-y-16">
-                        <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px]">INCLUDED MODULES</Badge>
-                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">System Components</h2>
-                            <p className="text-zinc-500 text-lg font-medium italic uppercase">The complete infrastructure included in your deployment.</p>
-                        </div>
-
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            {[
-                                { t: "Executive Dashboard", i: Monitor },
-                                { t: "Projection Tech Logs", i: Projector },
-                                { t: "Concession Yield Tracker", i: Popcorn },
-                                { t: "Show Readiness Checks", i: CheckCircle2 },
-                                { t: "Shift Handover Bridge", i: History },
-                                { t: "Box Office Cash Audits", i: Ticket },
-                                { t: "Safety & EHS Tracker", i: ShieldCheck },
-                                { t: "Role-Based Assignment", i: Users }
-                            ].map((item, i) => (
-                                <div key={i} className="p-8 rounded-[2rem] border border-zinc-100 bg-zinc-50 flex flex-col items-center gap-4 hover:border-emerald-500/30 transition-all group h-full">
-                                    <item.i className="w-8 h-8 text-zinc-300 group-hover:text-emerald-500 transition-all" />
-                                    <span className="text-[10px] font-black uppercase tracking-widest text-center text-zinc-600 leading-tight">{item.t}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </Section>
-
-                {/* --- 5. THE MACHINE (FLOW) --- */}
-                <Section className="bg-zinc-50 border-b border-zinc-100" noSpine>
+                {/* --- 2. THE OPERATIONAL LOOP (MACHINE FLOW) --- */}
+                <Section className="bg-white border-b border-zinc-100" noSpine>
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
                             <Badge className="bg-zinc-950 text-white rounded-full font-black uppercase tracking-widest text-[9px] px-6 py-2">THE OPERATIONAL LOOP</Badge>
                             <h2 className="text-[28px] md:text-5xl font-black font-headline text-zinc-950 italic uppercase tracking-tight leading-none">How the machine works</h2>
-                            <p className="text-zinc-500 text-sm md:text-base font-medium italic max-w-2xl mx-auto uppercase">A simple flow architecture that ensures zero-gap execution.</p>
+                            <p className="text-zinc-500 text-sm md:text-base font-medium italic max-w-2xl mx-auto uppercase">A zero-gap flow architecture that ensures technical and concession discipline.</p>
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
                             {[
-                                { t: "Daily Task Assignment", d: "SOPs assigned to roles across the theater", i: Projector },
+                                { t: "Technical Setup", d: "SOPs assigned to roles across the theater", i: Projector },
                                 { t: "Team Completion", d: "Staff log tasks via mobile in seconds", i: Users },
                                 { t: "Deviation Detection", d: "Lapses flagged RED on dashboard instantly", i: AlertTriangle },
-                                { t: "Real-time Visibility", d: "Leadership sees total group health daily", i: Monitor }
+                                { t: "Executive Oversight", d: "Leadership sees total group health daily", i: Monitor }
                             ].map((step, i) => (
                                 <div key={i} className="relative group">
-                                    <div className="p-8 rounded-[2rem] bg-white border border-zinc-200 shadow-sm flex flex-col items-center text-center gap-4 group-hover:border-emerald-500/30 transition-all z-10 relative h-full">
-                                        <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center text-emerald-600 shadow-inner group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                                    <div className="p-8 rounded-[2rem] bg-zinc-50 border border-zinc-200 shadow-sm flex flex-col items-center text-center gap-4 group-hover:border-emerald-500/30 transition-all z-10 relative h-full">
+                                        <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-emerald-600 shadow-inner group-hover:bg-emerald-500 group-hover:text-white transition-all">
                                             <step.i className="w-6 h-6" />
                                         </div>
                                         <div className="space-y-1">
@@ -340,7 +261,41 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 6. WHAT TEAMS ACTUALLY SEE --- */}
+                {/* --- 3. INSIDE THE SYSTEM (EVIDENCE) --- */}
+                <Section className="bg-zinc-50/50">
+                    <div className="max-w-6xl mx-auto space-y-20">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[10px] px-8 py-2 rounded-none italic">OPERATIONAL PROOF</Badge>
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Inside the System</h2>
+                            <p className="text-zinc-500 text-lg font-medium italic uppercase">The actual data engine running your daily operations.</p>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
+                            <div className="space-y-12">
+                                {[
+                                    { t: "Multiplex Executive Console", d: "One screen to see performance, risk, and technical uptime across all multiplex units.", i: Monitor },
+                                    { t: "Revenue Variance Tracking", d: "Corn-to-bucket yield reconciliation and POS void-bill auditing to stop profit leakage.", i: Zap },
+                                    { t: "Show Readiness Validation", d: "Zero-fail daily checks for projection, 3D assets, and subtitle sync before every show.", i: Clapperboard }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex items-start gap-6 group text-left">
+                                        <div className="w-12 h-12 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-primary shrink-0 shadow-sm group-hover:bg-primary group-hover:text-white transition-all">
+                                            <item.i className="w-6 h-6" />
+                                        </div>
+                                        <div className="space-y-1">
+                                            <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">{item.t}</h4>
+                                            <p className="text-zinc-500 font-bold italic leading-relaxed">{item.d}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="relative">
+                                <BrowserFrame src={IMG_DASHBOARD} label="CINEMA_EXECUTIVE_DASHBOARD_V11.9" />
+                            </div>
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- 4. STAFF VIEW (USABILITY PROOF) --- */}
                 <Section className="bg-zinc-950 text-white" noSpine>
                     <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center max-w-6xl mx-auto">
                         <div className="space-y-10">
@@ -368,7 +323,7 @@ export default function DesignLabPage() {
                             </div>
                         </div>
                         <div className="relative p-2 bg-white/5 border border-white/10 rounded-[2.5rem] shadow-2xl">
-                             <img src={TASKS_IMAGE} alt="Cinema Tasks Mobile View" className="w-full h-auto rounded-[2rem]" />
+                             <img src={IMG_TODAYS_TASKS} alt="Cinema Tasks Mobile View" className="w-full h-auto rounded-[2rem]" />
                              <div className="absolute bottom-6 left-6 right-6 p-4 bg-black/80 backdrop-blur-xl border border-white/10 rounded-xl flex items-center justify-between">
                                  <p className="text-[9px] font-mono text-emerald-500/80 uppercase tracking-widest leading-none">VIEW: CINEMA_DAILY_LEDGER_MOBILE</p>
                                  <Smartphone className="w-4 h-4 text-emerald-500/40" />
@@ -377,8 +332,36 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 7. WHO THIS IS FOR --- */}
+                {/* --- 5. SYSTEM MANIFEST (WHAT'S INCLUDED) --- */}
                 <Section className="bg-white">
+                    <div className="max-w-5xl mx-auto space-y-16">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px]">SYSTEM MANIFEST</Badge>
+                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Included Cinema Modules</h2>
+                        </div>
+                        
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            {[
+                                { t: "Executive Console", i: Monitor },
+                                { t: "Projection Tech Logs", i: Projector },
+                                { t: "Concession Yield Engine", i: Popcorn },
+                                { t: "Show Readiness Vault", i: CheckCircle2 },
+                                { t: "Shift Handover Bridge", i: History },
+                                { t: "Box Office Cash Audits", i: Ticket },
+                                { t: "Safety & EHS Tracker", i: ShieldCheck },
+                                { t: "Role-Based Assignment", i: Users }
+                            ].map((item, i) => (
+                                <div key={i} className="p-8 rounded-[2rem] border border-zinc-100 bg-zinc-50 flex flex-col items-center gap-4 hover:border-emerald-500/30 transition-all group h-full">
+                                    <item.i className="w-8 h-8 text-zinc-300 group-hover:text-emerald-500 transition-all" />
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-center text-zinc-600 leading-tight italic">{item.t}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- 6. WHO THIS IS FOR --- */}
+                <Section className="bg-zinc-50">
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px]">IDENTIFICATION</Badge>
@@ -391,8 +374,8 @@ export default function DesignLabPage() {
                                 { role: "Unit General Managers", d: "To standardize interval shifts and remove dependency on the memory of key personnel.", i: LayoutGrid },
                                 { role: "Technical Directors", d: "To ensure show readiness and zero-fail equipment uptime audits before every showtime.", i: Wrench }
                             ].map((item, i) => (
-                                <div key={i} className="p-10 rounded-[2.5rem] border border-zinc-100 bg-zinc-50 text-center space-y-6 hover:shadow-xl transition-all group h-full">
-                                    <div className="w-16 h-16 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center mx-auto text-primary group-hover:scale-110 transition-transform shadow-inner">
+                                <div key={i} className="p-10 rounded-[2.5rem] border border-zinc-200 bg-white text-center space-y-6 hover:shadow-xl transition-all group h-full shadow-sm">
+                                    <div className="w-16 h-16 rounded-2xl bg-zinc-50 border border-zinc-200 flex items-center justify-center mx-auto text-primary group-hover:scale-110 transition-transform shadow-inner">
                                         <item.i className="w-8 h-8" />
                                     </div>
                                     <div className="space-y-2">
@@ -405,16 +388,16 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 8. TAILORING BRIDGE --- */}
-                <Section className="bg-zinc-50" noSpine>
-                    <div className="max-w-4xl mx-auto p-12 md:p-20 rounded-[3rem] border border-zinc-200 bg-white shadow-2xl relative overflow-hidden text-center space-y-10">
+                {/* --- 7. TAILORING BRIDGE --- */}
+                <Section className="bg-white" noSpine>
+                    <div className="max-w-4xl mx-auto p-12 md:p-20 rounded-[3rem] border border-zinc-200 bg-zinc-50 shadow-2xl relative overflow-hidden text-center space-y-10">
                         <div className="absolute top-0 right-0 p-10 opacity-5">
                             <Sparkles className="w-64 h-64 text-primary" />
                         </div>
                         <div className="relative z-10 space-y-4">
                             <Badge className="bg-primary/10 text-primary border-primary/20 rounded-full font-black tracking-widest text-[9px] uppercase px-6">TAILORING SUPPORT</Badge>
                             <h2 className="text-2xl md:text-5xl font-black font-headline italic uppercase tracking-tighter leading-tight">
-                                Need help tailoring <br className="hidden md:block" /> the system to your business?
+                                Need help tailoring the <br className="hidden md:block" /> system to your business?
                             </h2>
                             <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
                                 If our standard framework requires professional adaptation to your unique screen hierarchy or specialized concession model, we offer 1-on-1 discovery sessions.
@@ -433,7 +416,7 @@ export default function DesignLabPage() {
 
                 <FaqSection />
 
-                {/* --- 9. FINAL CTA --- */}
+                {/* --- 8. FINAL CTA --- */}
                 <section className="bg-emerald-600 text-white py-32 text-center relative overflow-hidden">
                     <div className="absolute inset-0 z-0">
                         <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20 grayscale brightness-50" />
