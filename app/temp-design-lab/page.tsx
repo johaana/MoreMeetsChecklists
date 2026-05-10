@@ -26,7 +26,9 @@ import {
     Clapperboard,
     Sparkles,
     Crown,
-    ChevronRight
+    ChevronRight,
+    SearchCheck,
+    ArrowDown
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -53,14 +55,14 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
 const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
     <div className="group space-y-4">
         <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-zinc-200 bg-white">
-            <div className="bg-zinc-100 border-b border-zinc-200 px-4 py-2.5 flex items-center gap-2">
+            <div className="bg-[#111] border-b border-white/10 px-6 py-3 flex items-center gap-2">
                 <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-300" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-300" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-300" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/30" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500/30" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/30" />
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <div className="bg-white border border-zinc-200 rounded px-6 py-0.5 text-[8px] font-black text-zinc-400 uppercase tracking-widest italic">
+                    <div className="bg-white/5 border border-white/5 rounded px-8 py-0.5 text-[8px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner">
                         {label}
                     </div>
                 </div>
@@ -70,11 +72,14 @@ const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
     </div>
 );
 
-const PulsatingStressText = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
-    <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-        <span className="text-[14px] md:text-[22px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.4)] whitespace-nowrap">
-            {text}
-        </span>
+const OperationalAlert = ({ title, sub, delay = "0s" }: { title: string, sub: string, delay?: string }) => (
+    <div className="flex flex-col items-start lg:items-end gap-1 animate-in fade-in slide-in-from-right-4 duration-1000" style={{ animationDelay: delay }}>
+        <div className="flex items-center gap-3">
+            <span className="text-[12px] md:text-[18px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_10px_rgba(239,68,68,0.3)]">
+                <span className="animate-pulse">[!]</span> {title}
+            </span>
+        </div>
+        <p className="text-[10px] md:text-[12px] font-bold text-white/40 uppercase tracking-widest italic">{sub}</p>
     </div>
 );
 
@@ -106,7 +111,7 @@ export default function DesignLabPage() {
                             <div className="space-y-10">
                                 <div className="space-y-4">
                                     <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic bg-emerald-500/5">OPERATIONAL INFRASTRUCTURE</Badge>
-                                    <h1 className="text-4xl md:text-8xl font-black font-headline tracking-tighter uppercase italic leading-[0.9]">
+                                    <h1 className="text-[34px] md:text-8xl font-black font-headline tracking-tighter uppercase italic leading-[0.9]">
                                         STOP CHASING. <br/> <span className="text-emerald-500">START SEEING.</span>
                                     </h1>
                                     <p className="text-xl md:text-[32px] text-zinc-300 font-medium italic max-w-2xl leading-tight">
@@ -142,24 +147,76 @@ export default function DesignLabPage() {
                                 </div>
                             </div>
                             
-                            <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-6">
-                                 <p className="text-[9px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">WHY OPERATIONS BREAK</p>
-                                 <div className="flex flex-col gap-3 md:gap-5">
-                                     {[
-                                         "Always chasing staff?",
-                                         "Work gets missed?",
-                                         "The team is confused?",
-                                         "Memories fade?"
-                                     ].map((text, i) => (
-                                        <PulsatingStressText key={i} text={text} delay={`${i * 0.2}s`} />
-                                     ))}
+                            <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-8 md:space-y-12">
+                                 <div className="space-y-2">
+                                    <p className="text-[9px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">OPERATIONAL RISK MONITORING</p>
+                                    <div className="w-20 h-px bg-red-500/20 ml-auto hidden lg:block" />
+                                 </div>
+                                 
+                                 <div className="flex flex-col gap-6 md:gap-10">
+                                     <OperationalAlert 
+                                        title="EXPIRED KDM KEY" 
+                                        sub="Screen 04 unavailable for evening show" 
+                                        delay="0.2s" 
+                                     />
+                                     <OperationalAlert 
+                                        title="INTERVAL CONGESTION" 
+                                        sub="Concession queue exceeding threshold" 
+                                        delay="0.4s" 
+                                     />
+                                     <OperationalAlert 
+                                        title="EMERGENCY COMMS FAILURE" 
+                                        sub="Security response verification overdue" 
+                                        delay="0.6s" 
+                                     />
+                                     <OperationalAlert 
+                                        title="COLD CHAIN BREACH" 
+                                        sub="Concession fridge temp recorded > 8°C" 
+                                        delay="0.8s" 
+                                     />
                                  </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* --- 2. BEFORE / AFTER REALITY --- */}
+                {/* --- 2. THE MACHINE (FLOW DIAGRAM) --- */}
+                <Section className="bg-zinc-50 border-b border-zinc-100" noSpine>
+                    <div className="max-w-5xl mx-auto space-y-16">
+                        <div className="text-center space-y-4">
+                            <Badge className="bg-zinc-950 text-white rounded-full font-black uppercase tracking-widest text-[9px] px-6 py-2">THE OPERATIONAL LOOP</Badge>
+                            <h2 className="text-[28px] md:text-5xl font-black font-headline text-zinc-950 italic uppercase tracking-tight">How the machine works</h2>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+                            {[
+                                { t: "Daily Tasks", d: "SOPs assigned by role", i: ClipboardCheck },
+                                { t: "Team Completion", d: "Staff log status in seconds", i: Users },
+                                { t: "Risk Visibility", d: "Missed work flagged RED", i: AlertTriangle },
+                                { t: "Command Center", d: "Execs see group health", i: Monitor }
+                            ].map((step, i) => (
+                                <div key={i} className="relative group">
+                                    <div className="p-8 rounded-[2rem] bg-white border border-zinc-200 shadow-sm flex flex-col items-center text-center gap-4 group-hover:border-emerald-500/30 transition-all z-10 relative">
+                                        <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center text-emerald-600 shadow-inner group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                                            <step.i className="w-6 h-6" />
+                                        </div>
+                                        <div className="space-y-1">
+                                            <h4 className="font-black uppercase italic text-sm tracking-tight">{step.t}</h4>
+                                            <p className="text-[10px] font-bold text-zinc-400 uppercase italic leading-none">{step.d}</p>
+                                        </div>
+                                    </div>
+                                    {i < 3 && (
+                                        <div className="hidden md:flex absolute top-1/2 -right-4 -translate-y-1/2 z-20 items-center justify-center">
+                                            <ChevronRight className="w-8 h-8 text-zinc-200" />
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- 3. BEFORE / AFTER REALITY --- */}
                 <Section className="bg-white border-b border-zinc-100">
                     <div className="max-w-5xl mx-auto space-y-20">
                         <div className="text-center space-y-4">
@@ -207,12 +264,12 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 3. INSIDE THE SYSTEM (EVIDENCE) --- */}
+                {/* --- 4. INSIDE THE SYSTEM (EVIDENCE) --- */}
                 <Section className="bg-zinc-50/50">
                     <div className="max-w-6xl mx-auto space-y-20">
                         <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[10px] px-8 py-2 rounded-none italic">RESOLUTION PROTOCOL</Badge>
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tight">Inside the system</h2>
+                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[10px] px-8 py-2 rounded-none italic">INSIDE THE SYSTEM</Badge>
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tight">Operational Proof</h2>
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
@@ -240,7 +297,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 4. WHAT'S INSIDE (MANIFEST) --- */}
+                {/* --- 5. WHAT'S INSIDE (MANIFEST) --- */}
                 <Section className="bg-white">
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
@@ -269,7 +326,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 5. WHAT TEAMS ACTUALLY USE --- */}
+                {/* --- 6. WHAT TEAMS ACTUALLY USE --- */}
                 <Section className="bg-zinc-950 text-white" noSpine>
                     <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center max-w-6xl mx-auto">
                         <div className="space-y-8">
@@ -306,7 +363,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 6. WHO THIS IS FOR --- */}
+                {/* --- 7. WHO THIS IS FOR --- */}
                 <Section className="bg-white">
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
@@ -334,7 +391,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 7. TAILORING BRIDGE --- */}
+                {/* --- 8. TAILORING BRIDGE --- */}
                 <Section className="bg-zinc-50" noSpine>
                     <div className="max-w-4xl mx-auto p-12 md:p-20 rounded-[3rem] border border-zinc-200 bg-white shadow-2xl relative overflow-hidden text-center space-y-10">
                         <div className="absolute top-0 right-0 p-10 opacity-5">
@@ -360,7 +417,9 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 8. FINAL CALL TO COMMAND --- */}
+                <FaqSection />
+
+                {/* --- 9. FINAL CALL TO COMMAND --- */}
                 <section className="bg-emerald-600 text-white py-32 text-center relative overflow-hidden">
                     <div className="absolute inset-0 z-0">
                         <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20 grayscale brightness-50" />
@@ -390,8 +449,6 @@ export default function DesignLabPage() {
                         </div>
                     </div>
                 </section>
-
-                <FaqSection />
 
             </main>
             <Footer />
