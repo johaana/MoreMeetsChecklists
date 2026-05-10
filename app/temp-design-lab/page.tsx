@@ -28,7 +28,10 @@ import {
     Crown,
     ChevronRight,
     SearchCheck,
-    ClipboardCheck
+    ClipboardCheck,
+    Projector,
+    Ticket,
+    Popcorn
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -114,12 +117,17 @@ export default function DesignLabPage() {
                                     <h1 className="text-[34px] md:text-8xl font-black font-headline tracking-tighter uppercase italic leading-[0.9]">
                                         STOP CHASING. <br/> <span className="text-emerald-500">START SEEING.</span>
                                     </h1>
-                                    <p className="text-xl md:text-[32px] text-zinc-300 font-medium italic max-w-2xl leading-tight">
-                                        See show-readiness getting done. <br/> Even when you aren't there.
-                                    </p>
+                                    <div className="space-y-2">
+                                        <p className="text-xl md:text-[32px] text-zinc-300 font-medium italic max-w-2xl leading-tight">
+                                            See show-readiness getting done. <br className="hidden md:block" /> Even when you aren't there.
+                                        </p>
+                                        <p className="text-sm md:text-xl text-zinc-400 font-bold border-l-2 border-emerald-500/40 pl-6 max-w-xl">
+                                            Technical command for show readiness, crowd flow, and concession yield. Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.
+                                        </p>
+                                    </div>
                                 </div>
 
-                                <div className="grid sm:grid-cols-2 gap-x-12 gap-y-4 max-w-2xl border-l-2 border-emerald-500/20 pl-8 py-2">
+                                <div className="grid sm:grid-cols-2 gap-x-12 gap-y-4 max-w-2xl border-l-2 border-white/10 pl-8 py-2">
                                     {[
                                         { t: "140+ PRE-BUILT CINEMA SOPs", i: Target },
                                         { t: "LIVE OPERATIONAL DASHBOARD", i: Activity },
@@ -185,24 +193,25 @@ export default function DesignLabPage() {
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
                             <Badge className="bg-zinc-950 text-white rounded-full font-black uppercase tracking-widest text-[9px] px-6 py-2">THE OPERATIONAL LOOP</Badge>
-                            <h2 className="text-[28px] md:text-5xl font-black font-headline text-zinc-950 italic uppercase tracking-tight">How the machine works</h2>
+                            <h2 className="text-[28px] md:text-5xl font-black font-headline text-zinc-950 italic uppercase tracking-tight leading-none">How the machine works</h2>
+                            <p className="text-zinc-500 text-sm md:text-base font-medium italic max-w-2xl mx-auto uppercase">A zero-gap data flow from the technical booth to the head office.</p>
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
                             {[
-                                { t: "Daily Tasks", d: "SOPs assigned by role", i: ClipboardCheck },
-                                { t: "Team Completion", d: "Staff log status in seconds", i: Users },
-                                { t: "Risk Visibility", d: "Missed work flagged RED", i: AlertTriangle },
-                                { t: "Command Center", d: "Execs see group health", i: Monitor }
+                                { t: "Technical Setup", d: "Projection & Prep SOPs assigned", i: Projector },
+                                { t: "Team Execution", d: "Staff log status in seconds", i: Users },
+                                { t: "Risk Visibility", d: "Lapses flagged RED instantly", i: AlertTriangle },
+                                { t: "Group Health", d: "Execs see total screen uptime", i: Monitor }
                             ].map((step, i) => (
                                 <div key={i} className="relative group">
-                                    <div className="p-8 rounded-[2rem] bg-white border border-zinc-200 shadow-sm flex flex-col items-center text-center gap-4 group-hover:border-emerald-500/30 transition-all z-10 relative">
+                                    <div className="p-8 rounded-[2rem] bg-white border border-zinc-200 shadow-sm flex flex-col items-center text-center gap-4 group-hover:border-emerald-500/30 transition-all z-10 relative h-full">
                                         <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center text-emerald-600 shadow-inner group-hover:bg-emerald-500 group-hover:text-white transition-all">
                                             <step.i className="w-6 h-6" />
                                         </div>
                                         <div className="space-y-1">
                                             <h4 className="font-black uppercase italic text-sm tracking-tight">{step.t}</h4>
-                                            <p className="text-[10px] font-bold text-zinc-400 uppercase italic leading-none">{step.d}</p>
+                                            <p className="text-[10px] font-bold text-zinc-400 uppercase italic leading-tight">{step.d}</p>
                                         </div>
                                     </div>
                                     {i < 3 && (
@@ -231,10 +240,10 @@ export default function DesignLabPage() {
                                 <h3 className="text-xl font-black uppercase italic text-red-600">The Friction (Before)</h3>
                                 <ul className="space-y-6">
                                     {[
-                                        "Constant manual follow-ups on basic tasks.",
-                                        "Work depends on the memory of key people.",
-                                        "SOPs sit in folders, disconnected from the floor.",
-                                        "Unrecorded near-misses creating hidden liability."
+                                        "Black-screens due to expired KDM keys or ingest errors.",
+                                        "Concession yield leakage through unrecorded sales.",
+                                        "Auditorium hygiene standards drifting during busy sets.",
+                                        "Unverified emergency exit safety and fire-drills."
                                     ].map((text, i) => (
                                         <li key={i} className="flex items-start gap-4 text-zinc-500 font-bold italic">
                                             <X className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
@@ -248,10 +257,10 @@ export default function DesignLabPage() {
                                 <h3 className="text-xl font-black uppercase italic text-emerald-600">The System (After)</h3>
                                 <ul className="space-y-6">
                                     {[
-                                        "Live dashboard visibility into all completion.",
-                                        "Accountability assigned by role, not individual.",
-                                        "Standards stay even when managers leave.",
-                                        "Audit-ready logs generated automatically."
+                                        "Technical seal on every screen 60 mins pre-show.",
+                                        "Real-time concession yield and void-bill tracking.",
+                                        "Sovereign visibility into group-wide auditorium health.",
+                                        "Audit-ready logs for public safety and life protection."
                                     ].map((text, i) => (
                                         <li key={i} className="flex items-start gap-4 text-zinc-950 font-black uppercase italic">
                                             <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
@@ -269,15 +278,16 @@ export default function DesignLabPage() {
                     <div className="max-w-6xl mx-auto space-y-20">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[10px] px-8 py-2 rounded-none italic">INSIDE THE SYSTEM</Badge>
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tight">Operational Proof</h2>
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Cinema Operational Proof</h2>
+                            <p className="text-zinc-500 text-lg font-medium italic uppercase">The actual data engine used by high-performance multiplexes.</p>
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
                             <div className="space-y-12">
                                 {[
-                                    { t: "Show Readiness Protocol", d: "Zero-fail technical checks for projection, sound, and egress safety.", i: Clapperboard },
-                                    { t: "Revenue Leakage Shield", d: "Concession yield reconciliation and void-bill audit tracking.", i: Zap },
-                                    { t: "Interval Rush Command", d: "Assigned crowd-control zones and hygiene frequency monitoring.", i: Users }
+                                    { t: "Show Readiness Seal", d: "Zero-fail technical checks for projection, 3D assets, and subtitle sync.", i: Clapperboard },
+                                    { t: "Revenue Leakage Engine", d: "Corn-to-bucket yield reconciliation and POS void-bill auditing.", i: Zap },
+                                    { t: "Crowd Surge Protocol", d: "Assigned interval zones and hygiene frequency monitoring.", i: Users }
                                 ].map((item, i) => (
                                     <div key={i} className="flex items-start gap-6 group text-left">
                                         <div className="w-12 h-12 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-primary shrink-0 shadow-sm group-hover:bg-primary group-hover:text-white transition-all">
@@ -291,7 +301,7 @@ export default function DesignLabPage() {
                                 ))}
                             </div>
                             <div className="relative">
-                                <BrowserFrame src={DASHBOARD_IMAGE} label="EXECUTIVE_CONCESSION_DASHBOARD" />
+                                <BrowserFrame src={DASHBOARD_IMAGE} label="CINEMA_EXECUTIVE_DASHBOARD" />
                             </div>
                         </div>
                     </div>
@@ -302,24 +312,24 @@ export default function DesignLabPage() {
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px]">TECHNICAL PAYLOAD</Badge>
-                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">System Manifest</h2>
-                            <p className="text-zinc-500 text-lg font-medium italic">The complete architecture of the Sovereign Engine.</p>
+                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Cinema Manifest</h2>
+                            <p className="text-zinc-500 text-lg font-medium italic uppercase">The complete infrastructure of the Sovereign Cinema Engine.</p>
                         </div>
 
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             {[
                                 { t: "Executive Dashboard", i: Monitor },
-                                { t: "Projection Tech Log", i: Wrench },
-                                { t: "Concession Yields", i: Zap },
+                                { t: "Projection Tech Logs", i: Projector },
+                                { t: "Concession Yields", i: Popcorn },
                                 { t: "Show Readiness", i: CheckCircle2 },
                                 { t: "Shift Handover", i: History },
-                                { t: "Incident Tracker", i: AlertTriangle },
-                                { t: "Audit Registry", i: ShieldCheck },
+                                { t: "Box Office Cash Audit", i: Ticket },
+                                { t: "Safety & EHS Tracker", i: ShieldCheck },
                                 { t: "Trainer Notes", i: GraduationCap }
                             ].map((item, i) => (
-                                <div key={i} className="p-8 rounded-[2rem] border border-zinc-100 bg-zinc-50 flex flex-col items-center gap-4 hover:border-emerald-500/30 transition-all group">
+                                <div key={i} className="p-8 rounded-[2rem] border border-zinc-100 bg-zinc-50 flex flex-col items-center gap-4 hover:border-emerald-500/30 transition-all group h-full">
                                     <item.i className="w-8 h-8 text-zinc-300 group-hover:text-emerald-500 transition-all" />
-                                    <span className="text-[10px] font-black uppercase tracking-widest text-center text-zinc-600">{item.t}</span>
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-center text-zinc-600 leading-tight">{item.t}</span>
                                 </div>
                             ))}
                         </div>
@@ -334,15 +344,15 @@ export default function DesignLabPage() {
                                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] italic">ZERO FRICTION</Badge>
                                 <h2 className="text-3xl md:text-6xl font-black font-headline uppercase italic leading-[0.95] text-left">What your team <br/> actually sees</h2>
                                 <p className="text-zinc-400 text-lg md:text-xl font-medium italic leading-relaxed text-left">
-                                    Implementation anxiety kills most systems. We designed MoreMeets to be **simple to adopt** and **impossible to ignore**.
+                                    Complexity kills adoption. We designed MoreMeets to be **simple enough for the floor** and **deep enough for an audit**.
                                 </p>
                             </div>
                             
                             <div className="space-y-6">
                                 {[
-                                    { t: "SIMPLE INPUT", d: "Staff enter their name to log completion. No complex forms." },
-                                    { t: "CLEAR INSTRUCTION", d: "Every task includes 'Trainer Notes' on how to do it right." },
-                                    { t: "BUILT-IN URGENCY", d: "Consequences of failure are visible, building an intentional culture." }
+                                    { t: "BINARY COMPLETION", d: "Technical staff enter their name to sign-off. Status turns GREEN instantly." },
+                                    { t: "TRAINER NOTES", d: "Every task includes action-oriented instructions on HOW to perform the check." },
+                                    { t: "VISIBLE CONSEQUENCES", d: "Staff see why the task matters, turning mechanical ticking into intentional compliance." }
                                 ].map((item, i) => (
                                     <div key={i} className="flex gap-6 border-l border-emerald-500/20 pl-6 group">
                                         <div className="space-y-1 text-left">
@@ -354,9 +364,9 @@ export default function DesignLabPage() {
                             </div>
                         </div>
                         <div className="relative p-2 bg-white/5 border border-white/10 rounded-[2.5rem] shadow-2xl">
-                             <img src={TASKS_IMAGE} alt="Technical Tasks" className="w-full h-auto rounded-[2rem]" />
+                             <img src={TASKS_IMAGE} alt="Cinema Tasks" className="w-full h-auto rounded-[2rem]" />
                              <div className="absolute bottom-6 left-6 right-6 p-4 bg-black/80 backdrop-blur-xl border border-white/10 rounded-xl flex items-center justify-between">
-                                 <p className="text-[9px] font-mono text-emerald-500/80 uppercase tracking-widest leading-none">VIEW: DAILY_EXECUTION_LEDGER</p>
+                                 <p className="text-[9px] font-mono text-emerald-500/80 uppercase tracking-widest leading-none">VIEW: CINEMA_DAILY_TASKS_PRO</p>
                                  <Smartphone className="w-4 h-4 text-emerald-500/40" />
                              </div>
                         </div>
@@ -368,21 +378,21 @@ export default function DesignLabPage() {
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px]">TARGET VERTICAL</Badge>
-                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight">Built for leadership</h2>
+                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Built for Cinema Leadership</h2>
                         </div>
                         
                         <div className="grid md:grid-cols-3 gap-8">
                             {[
-                                { role: "Owners & COOs", d: "For high-level visibility into group-wide compliance and profit protection.", i: Crown },
-                                { role: "Operations Managers", d: "To standardize multi-unit shifts and remove dependency on individual memory.", i: LayoutGrid },
+                                { role: "Group Owners & COOs", d: "For group-wide visibility into technical compliance and concession margins.", i: Crown },
+                                { role: "Unit GMs", d: "To standardize interval shifts and remove dependency on tribal memory.", i: LayoutGrid },
                                 { role: "Technical Directors", d: "To ensure show readiness and zero-fail equipment uptime audits.", i: Wrench }
                             ].map((item, i) => (
-                                <div key={i} className="p-10 rounded-[2.5rem] border border-zinc-100 bg-zinc-50 text-center space-y-6 hover:shadow-xl transition-all group">
+                                <div key={i} className="p-10 rounded-[2.5rem] border border-zinc-100 bg-zinc-50 text-center space-y-6 hover:shadow-xl transition-all group h-full">
                                     <div className="w-16 h-16 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center mx-auto text-primary group-hover:scale-110 transition-transform shadow-inner">
                                         <item.i className="w-8 h-8" />
                                     </div>
                                     <div className="space-y-2">
-                                        <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950 font-headline">{item.role}</h4>
+                                        <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950 font-headline leading-tight">{item.role}</h4>
                                         <p className="text-sm font-bold text-zinc-500 italic leading-relaxed uppercase">{item.d}</p>
                                     </div>
                                 </div>
@@ -400,10 +410,10 @@ export default function DesignLabPage() {
                         <div className="relative z-10 space-y-4">
                             <Badge className="bg-primary/10 text-primary border-primary/20 rounded-full font-black tracking-widest text-[9px] uppercase px-6">OPTIONAL CUSTOMIZATION</Badge>
                             <h2 className="text-2xl md:text-5xl font-black font-headline italic uppercase tracking-tighter leading-tight">
-                                Need help tailoring <br className="hidden md:block" /> the system to your business?
+                                Need help tailoring <br className="hidden md:block" /> the system to your group?
                             </h2>
                             <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
-                                If our standard framework requires surgical adaptation to your specific brand protocols, we offer 1-on-1 discovery calls with our operations engineers.
+                                If our standard framework requires surgical adaptation to your unique screen hierarchy or concession model, we offer 1-on-1 discovery calls with our engineers.
                             </p>
                         </div>
                         <div className="relative z-10 flex flex-col items-center gap-6">
