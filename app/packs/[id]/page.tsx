@@ -11,6 +11,17 @@ type Props = {
   params: Promise<{ id: string }>
 }
 
+const descriptions: Record<string, string> = {
+  'restaurants': "Stop margin leakage, HACCP misses, and shift inconsistency with pre-built restaurant operational SOPs, live dashboards, trainer notes, and audit-ready daily execution tracking.",
+  'hotels_and_resorts': "Pre-built hotel operational SOPs for housekeeping, front office, engineering, guest experience, and operational continuity. Built for real-time visibility and audit-ready execution.",
+  'healthcare_and_hospital_operations': "Operational SOPs for hospitals and clinics covering nursing workflows, safety checks, compliance readiness, medication handling, and departmental accountability.",
+  'retail_operations_system': "Retail operational SOPs for floor readiness, inventory discipline, visual merchandising, opening/closing checks, and multi-store operational consistency.",
+  'school_operations_pack': "Operational SOPs for schools covering transport safety, campus readiness, hygiene checks, staff accountability, emergency preparedness, and daily operational visibility.",
+  'franchise_operations_pack': "Standardize multi-location operations with franchise operational SOPs for audit readiness, brand consistency, onboarding, reporting discipline, and operational continuity.",
+  'facility_management_blueprint': "Operational SOPs for facilities management covering MEP systems, vendor SLAs, energy tracking, life safety, preventive maintenance, and infrastructure visibility.",
+  'cinema_operations_pack': "Cinema operational SOPs for show readiness, concession control, crowd flow, projection checks, emergency readiness, and multi-screen operational consistency.",
+};
+
 export async function generateMetadata(
   { params }: Props
 ): Promise<Metadata> {
@@ -25,8 +36,8 @@ export async function generateMetadata(
   }
   
   const siteUrl = 'https://www.moremeets.com';
-  let title = `${pack.title} - Operational System | MoreMeets™`;
-  let description = `Deploy the Sovereign v11.9 engine for ${pack.category}. Professional, audit-ready SOPs for elite leaders. Own your data forever.`;
+  const title = `MoreMeets™ | ${pack.title}`;
+  const description = descriptions[id] || `Pre-built ${pack.category} operational SOPs with live dashboard visibility and audit-ready daily execution tracking. Own your data forever.`;
   
   const imageData = images.find(img => img.id === `pack-${id}`);
   const fallbackImage = 'https://i.postimg.cc/qRkj0Z4R/Screenshot-2026-05-08-055107.png';

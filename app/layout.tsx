@@ -7,8 +7,8 @@ import { LayoutScript } from '@/components/layout/layout-script';
 import Script from 'next/script';
 
 const siteUrl = 'https://www.moremeets.com';
-const siteTitle = 'MoreMeets™ | Sovereign Operational Infrastructure';
-const siteDescription = 'Stop managing manually. MoreMeets™ converts SOPs into live operating infrastructure for restaurants, hotels, hospitals, retail stores, facilities and franchises. Own your data. Works on Excel & Google Sheets.';
+const siteTitle = 'MoreMeets™ | Operational SOP Systems';
+const siteDescription = 'MoreMeets™ helps businesses stop chasing teams and start seeing daily operations clearly. Pre-built industry-specific operational SOPs with live dashboards, trainer notes, audit-ready tracking, and no SaaS subscriptions. Built in Excel. Shared through Google Sheets.';
 const socialImage = 'https://i.postimg.cc/qRkj0Z4R/Screenshot-2026-05-08-055107.png';
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
         url: socialImage,
         width: 1200,
         height: 630,
-        alt: 'MoreMeets™ Sovereign Master Engine Dashboard',
+        alt: 'MoreMeets™ Operational SOP Systems',
       },
     ],
   },

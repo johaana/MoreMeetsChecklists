@@ -98,7 +98,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             <div className="space-y-3">
                                 <h1 className="font-headline font-black text-[32px] md:text-[44px] lg:text-[54px] xl:text-[60px] leading-none uppercase italic tracking-tighter text-white lg:whitespace-nowrap">
                                     {res.heroTitle || pack.title.toUpperCase()}
-                                </h1>
+                                </h1 >
                                 <div className="space-y-3">
                                     <p className="text-lg md:text-[24px] font-medium text-zinc-300 max-w-3xl leading-tight">
                                         {res.heroSubline}
@@ -118,10 +118,10 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-2 md:gap-y-3">
                                     {[
-                                        { t: `PRE-BUILT OPERATIONAL SOPS FOR ${verticalName}`, i: Target },
+                                        { t: `PRE-BUILT OPERATIONAL SOPs FOR ${verticalName}`, i: Target },
                                         { t: "LIVE OPERATIONAL DASHBOARD", i: Activity },
                                         { t: "TRAINER NOTES INCLUDED", i: GraduationCap },
-                                        { t: "EDITABLE OPERATIONAL INFRASTRUCTURE", i: FileSpreadsheet }
+                                        { t: "AUDIT-READY OPERATIONAL INFRASTRUCTURE", i: FileSpreadsheet }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 md:gap-4 group">
                                             <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
@@ -231,7 +231,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             How the system restores control
                         </h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
-                            MoreMeets™ converts operational dependence on memory into daily institutional visibility. Every critical function is converted into assigned execution and logged accountability.
+                            MoreMeets™ converts operational dependence on memory into daily institutional visibility. Our <strong>operational SOPs</strong> convert critical functions into assigned execution and <strong>compliance tracking</strong>.
                         </p>
                     </div>
 
@@ -259,7 +259,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 <div className="p-6 bg-zinc-950 rounded-xl border-l-4 border-emerald-500 shadow-2xl">
                                     <p className="text-white text-sm md:text-base font-bold italic leading-relaxed">
                                         Your team does not need new software, logins, or technical training. <br/><br/>
-                                        <span className="text-emerald-500 uppercase">They simply open the system in Excel or Google Sheets and begin running operations daily.</span>
+                                        <span className="text-emerald-500 uppercase">They simply open our <strong>operational checklists</strong> in Excel or Google Sheets and begin running operations daily.</span>
                                     </p>
                                 </div>
                                 
@@ -329,7 +329,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </p>
 
                                 <p className="text-zinc-600 text-sm md:text-base font-medium leading-relaxed border-l-2 border-primary/20 pl-6 max-w-xl">
-                                    MoreMeets™ converts institutional knowledge into visible daily execution — so operational standards survive resignations, rapid hiring, shift changes, and multi-location expansion.
+                                    MoreMeets™ converts institutional knowledge into visible daily execution — so <strong>daily operations management</strong> survives resignations, rapid hiring, shift changes, and multi-location expansion.
                                 </p>
                             </div>
                         </div>
@@ -367,7 +367,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             Operational <br className="md:hidden" /> Divisions
                         </h2>
                         <p className="text-zinc-500 text-base md:text-lg font-medium italic max-w-2xl mx-auto">
-                            The full architecture of the Sovereign Engine. Optimized for one-glance control.
+                            The full architecture of the Sovereign Engine. Optimized for <strong>audit-ready systems</strong> and one-glance control.
                         </p>
                     </div>
 
@@ -421,7 +421,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             },
                             {
                                 t: "EASY FOR TEAMS",
-                                d: "No apps. No software rollout. Teams simply update one shared operational system daily.",
+                                d: "No apps. No software rollout. Teams simply update one shared <strong>operations dashboard</strong> daily.",
                                 i: CheckCircle2
                             },
                             {
@@ -441,7 +441,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                                 <div className="space-y-2 text-left">
                                     <h4 className="text-lg font-black uppercase italic tracking-tighter text-zinc-950 leading-none text-left">{item.t}</h4>
-                                    <p className="text-zinc-500 text-sm md:text-base italic font-medium leading-relaxed text-left">{item.d}</p>
+                                    <p className="text-zinc-500 text-sm md:text-base italic font-medium leading-relaxed text-left" dangerouslySetInnerHTML={{ __html: item.d }} />
                                 </div>
                             </div>
                         ))}
