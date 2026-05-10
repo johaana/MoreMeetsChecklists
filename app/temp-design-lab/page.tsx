@@ -43,7 +43,7 @@ const CINEMA_HERO = "https://i.postimg.cc/43gVfgjd/multiplex2.avif";
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
-    <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
+    <section id={id} className={cn("w-full py-16 md:py-24 relative overflow-hidden", className)}>
         {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />}
         <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
             {children}
@@ -74,12 +74,12 @@ const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
 const OperationalAlert = ({ title, sub, time, delay = "0s" }: { title: string, sub: string, time: string, delay?: string }) => (
     <div className="flex flex-col items-start lg:items-end gap-1 animate-in fade-in slide-in-from-right-4 duration-1000" style={{ animationDelay: delay }}>
         <div className="flex items-center gap-3">
-            <span className="text-[11px] md:text-[14px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2">
+            <span className="text-[10px] md:text-[13px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2">
                 <span className="animate-pulse text-[8px] md:text-[10px]">[!]</span> {title}
             </span>
             <span className="text-[8px] font-mono text-zinc-500 bg-white/5 px-2 py-0.5 rounded">{time}</span>
         </div>
-        <p className="text-[9px] md:text-[10px] font-bold text-white/30 uppercase tracking-widest italic">{sub}</p>
+        <p className="text-[9px] md:text-[10px] font-bold text-white/20 uppercase tracking-widest italic">{sub}</p>
     </div>
 );
 
@@ -95,8 +95,8 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* --- 1. CALM AUTHORITY HERO (TIGHTER) --- */}
-                <section className="relative w-full min-h-[90svh] flex flex-col justify-center overflow-hidden bg-black text-white">
+                {/* --- 1. CALM AUTHORITY HERO (TIGHTER & SMALLER TEXT) --- */}
+                <section className="relative w-full min-h-[85svh] flex flex-col justify-center overflow-hidden bg-black text-white">
                     <div className="absolute inset-0 z-0">
                         <img 
                             src={CINEMA_HERO} 
@@ -106,28 +106,28 @@ export default function DesignLabPage() {
                         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 md:via-black/75 to-transparent" />
                     </div>
 
-                    <div className="relative z-10 container mx-auto max-w-[1200px] px-6 py-12 md:py-20">
+                    <div className="relative z-10 container mx-auto max-w-[1200px] px-6 py-12 md:py-16">
                         <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-16 items-center">
-                            <div className="space-y-8">
-                                <div className="space-y-4">
+                            <div className="space-y-6 md:space-y-7">
+                                <div className="space-y-3">
                                     <div className="flex items-center gap-3">
-                                        <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.4em] font-black text-[9px] px-5 py-1 rounded-none italic bg-emerald-500/5">CINEMA OPERATIONS SYSTEM</Badge>
+                                        <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.4em] font-black text-[9px] px-4 py-1 rounded-none italic bg-emerald-500/5">CINEMA OPERATIONS SYSTEM</Badge>
                                         <span className="text-[8px] font-mono text-zinc-600 uppercase tracking-widest hidden md:block">SYS_REF: V11.9_STABLE</span>
                                     </div>
-                                    <h1 className="text-[32px] md:text-8xl font-black font-headline tracking-tighter uppercase italic leading-[0.95]">
+                                    <h1 className="text-[28px] md:text-5xl lg:text-7xl font-black font-headline tracking-tighter uppercase italic leading-[0.95]">
                                         STOP CHASING TEAMS. <br/> <span className="text-emerald-500">START SEEING OPERATIONS.</span>
                                     </h1>
-                                    <div className="space-y-2">
-                                        <p className="text-lg md:text-[30px] text-zinc-300 font-medium italic max-w-2xl leading-[1.1]">
+                                    <div className="space-y-4">
+                                        <p className="text-base md:text-[22px] lg:text-[24px] text-zinc-300 font-medium italic max-w-2xl leading-tight">
                                             See show-readiness, crowd flow, and concession yield getting done.
                                         </p>
-                                        <p className="text-sm md:text-lg text-zinc-500 font-bold border-l-2 border-emerald-500/40 pl-6 max-w-lg leading-relaxed">
+                                        <p className="text-xs md:text-base text-zinc-500 font-bold border-l-2 border-emerald-500/40 pl-6 max-w-lg leading-relaxed">
                                             Reduce dependency on individual memory. See every critical shift responsibility verified in real-time.
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-3 border-l-2 border-white/10 pl-6 py-1">
+                                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2.5 border-l-2 border-white/10 pl-6 py-1">
                                     {[
                                         { t: "140+ PRE-BUILT CINEMA SOPs", i: Target },
                                         { t: "LIVE OPERATIONS DASHBOARD", i: Activity },
@@ -141,24 +141,24 @@ export default function DesignLabPage() {
                                     ))}
                                 </div>
 
-                                <div className="space-y-5">
+                                <div className="space-y-4 pt-2">
                                     <div className="space-y-4">
-                                        <Button asChild size="lg" className="h-16 md:h-18 px-10 rounded-xl bg-emerald-500 text-black font-black uppercase italic text-base shadow-[0_20px_40px_-10px_rgba(34,197,94,0.3)] hover:bg-white transition-all border-none group flex items-center justify-center gap-3 w-full sm:w-auto">
+                                        <Button asChild size="lg" className="h-14 md:h-16 px-10 rounded-xl bg-emerald-500 text-black font-black uppercase italic text-base shadow-[0_20px_40px_-10px_rgba(34,197,94,0.3)] hover:bg-white transition-all border-none group flex items-center justify-center gap-3 w-full sm:w-auto">
                                             <Link href="/library">
                                                 START RUNNING EVERY SCREEN <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                                             </Link>
                                         </Button>
-                                        <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.3em] italic text-center sm:text-left">
+                                        <p className="text-[9px] text-zinc-600 font-black uppercase tracking-[0.3em] italic text-center sm:text-left">
                                             BUILT IN EXCEL • SHARED ON GOOGLE SHEETS • NO APP ROLLOUT
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div className="w-full lg:border-l border-white/5 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-10 lg:mt-0 space-y-6 md:space-y-10">
+                            <div className="w-full lg:border-l border-white/5 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-6 md:space-y-8">
                                  <p className="text-[8px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">RISK MONITORING FEED</p>
                                  
-                                 <div className="flex flex-col gap-5 md:gap-8">
+                                 <div className="flex flex-col gap-4 md:gap-6">
                                      <OperationalAlert 
                                         title="ERR_KDM_EXPIRED" 
                                         sub="Screen 04 unavailable for evening show" 
@@ -189,7 +189,7 @@ export default function DesignLabPage() {
                     </div>
 
                     {/* --- SYSTEM VITALS BAR --- */}
-                    <div className="absolute bottom-0 left-0 right-0 h-12 bg-zinc-950/90 backdrop-blur-xl border-t border-white/5 z-30 hidden md:block">
+                    <div className="absolute bottom-0 left-0 right-0 h-10 bg-zinc-950/90 backdrop-blur-xl border-t border-white/5 z-30 hidden md:block">
                         <div className="container mx-auto h-full flex items-center justify-between px-10">
                             <div className="flex items-center gap-10">
                                 {[
@@ -197,14 +197,14 @@ export default function DesignLabPage() {
                                     { l: "SAFETY_INDEX", v: "STABLE" },
                                     { l: "UNIT_LOAD", v: "NORMAL" }
                                 ].map((stat, i) => (
-                                    <div key={i} className="flex items-center gap-3">
+                                    <div key={i} className="flex items-center gap-2">
                                         <span className="text-[8px] font-mono text-zinc-600 tracking-widest">{stat.l}</span>
                                         <span className="text-[10px] font-black text-emerald-500 italic">{stat.v}</span>
                                     </div>
                                 ))}
                             </div>
                             <div className="flex items-center gap-3">
-                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                <div className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
                                 <span className="text-[8px] font-mono text-zinc-600 uppercase tracking-widest">SOVEREIGN_NODE_ACTIVE</span>
                             </div>
                         </div>
@@ -213,11 +213,11 @@ export default function DesignLabPage() {
 
                 {/* --- 2. THE OPERATIONAL LOOP (TIGHTER) --- */}
                 <Section className="bg-white border-b border-zinc-100" noSpine>
-                    <div className="max-w-5xl mx-auto space-y-12">
+                    <div className="max-w-5xl mx-auto space-y-10">
                         <div className="text-center space-y-3">
-                            <Badge className="bg-zinc-950 text-white rounded-none font-black uppercase tracking-widest text-[8px] px-5 py-1.5">THE OPERATIONAL LOOP</Badge>
-                            <h2 className="text-[26px] md:text-5xl font-black font-headline text-zinc-950 italic uppercase tracking-tight leading-none">How the machine works</h2>
-                            <p className="text-zinc-400 text-xs md:text-sm font-bold italic max-w-2xl mx-auto uppercase tracking-wide">A zero-gap flow architecture that ensures technical and concession discipline.</p>
+                            <Badge className="bg-zinc-950 text-white rounded-none font-black uppercase tracking-widest text-[8px] px-4 py-1">THE OPERATIONAL LOOP</Badge>
+                            <h2 className="text-[24px] md:text-4xl font-black font-headline text-zinc-950 italic uppercase tracking-tight leading-none">How the machine works</h2>
+                            <p className="text-zinc-400 text-[10px] md:text-xs font-bold italic max-w-2xl mx-auto uppercase tracking-wide">A zero-gap flow architecture that ensures technical and concession discipline.</p>
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-3 relative">
@@ -228,7 +228,7 @@ export default function DesignLabPage() {
                                 { t: "Executive Oversight", d: "Leadership sees total group health daily", i: Monitor }
                             ].map((step, i) => (
                                 <div key={i} className="relative group h-full">
-                                    <div className="p-8 rounded-2xl bg-zinc-50 border border-zinc-200 flex flex-col items-center text-center gap-4 group-hover:border-emerald-500/30 transition-all relative h-full">
+                                    <div className="p-6 md:p-8 rounded-2xl bg-zinc-50 border border-zinc-200 flex flex-col items-center text-center gap-4 group-hover:border-emerald-500/30 transition-all relative h-full">
                                         <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-emerald-600 shadow-sm group-hover:bg-emerald-500 group-hover:text-white transition-all">
                                             <step.i className="w-5 h-5" />
                                         </div>
@@ -239,7 +239,7 @@ export default function DesignLabPage() {
                                     </div>
                                     {i < 3 && (
                                         <div className="hidden md:flex absolute top-1/2 -right-2 -translate-y-1/2 z-20 items-center justify-center">
-                                            <ChevronRight className="w-5 h-5 text-zinc-300" />
+                                            <ChevronRight className="w-4 h-4 text-zinc-300" />
                                         </div>
                                     )}
                                 </div>
@@ -252,13 +252,13 @@ export default function DesignLabPage() {
                 <Section className="bg-zinc-50/50">
                     <div className="max-w-6xl mx-auto space-y-16">
                         <div className="text-center space-y-3">
-                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[9px] px-6 py-1.5 rounded-none italic">OPERATIONAL EVIDENCE</Badge>
-                            <h2 className="text-[28px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Inside the System</h2>
-                            <p className="text-zinc-400 text-base font-bold italic uppercase">The actual data engine running your daily operations.</p>
+                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[9px] px-5 py-1 rounded-none italic">OPERATIONAL EVIDENCE</Badge>
+                            <h2 className="text-[28px] md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Inside the System</h2>
+                            <p className="text-zinc-400 text-sm font-bold italic uppercase">The actual data engine running your daily operations.</p>
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
-                            <div className="space-y-10">
+                            <div className="space-y-8">
                                 {[
                                     { t: "Executive Operations Dashboard", d: "One screen to see performance, risk, and technical uptime across all multiplex units.", i: Monitor },
                                     { t: "Revenue Variance Tracking", d: "Corn-to-bucket yield reconciliation and POS void-bill auditing to stop profit leakage.", i: Zap },
@@ -426,7 +426,7 @@ export default function DesignLabPage() {
                                     <p className="text-[36px] md:text-[54px] font-black italic">₹999</p>
                                     <span className="text-lg md:text-2xl font-bold text-white/30 italic">/ $12</span>
                                 </div>
-                                <p className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.5em] text-white/40 pt-2 italic">
+                                <p className="text-[9px] font-black uppercase tracking-[0.5em] text-white/40 pt-2 italic">
                                     ONE-TIME PAYMENT • OWN FOREVER
                                 </p>
                             </div>
