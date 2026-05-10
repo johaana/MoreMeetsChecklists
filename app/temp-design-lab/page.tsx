@@ -25,11 +25,13 @@ import {
     Wrench,
     Clapperboard,
     Sparkles,
-    Crown
+    Crown,
+    ChevronRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { FaqSection } from "@/components/layout/faq-section";
 import Link from 'next/link';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
@@ -129,7 +131,7 @@ export default function DesignLabPage() {
                                 <div className="space-y-6">
                                     <div className="space-y-3">
                                         <Button asChild size="lg" className="h-16 md:h-20 px-12 rounded-xl bg-emerald-500 text-black font-black uppercase italic text-lg shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group flex items-center justify-center gap-4 w-full sm:w-auto">
-                                            <Link href="#">
+                                            <Link href="#pricing">
                                                 LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-2" />
                                             </Link>
                                         </Button>
@@ -396,4 +398,3 @@ export default function DesignLabPage() {
         </div>
     );
 }
-
