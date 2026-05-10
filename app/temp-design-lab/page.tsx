@@ -38,6 +38,7 @@ import { cinema_operations_pack } from '@/lib/packs/cinema_operations_pack';
 const BRAND_GREEN = "#22C55E";
 const DASHBOARD_IMAGE = "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png";
 const TASKS_IMAGE = "https://i.postimg.cc/G278vKh8/Screenshot-2026-04-18-004329.png";
+const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 // --- HELPER COMPONENTS ---
 
