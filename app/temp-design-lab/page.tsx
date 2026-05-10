@@ -7,7 +7,6 @@ import {
     Check, 
     X,
     ArrowRight, 
-    Download,
     LayoutGrid,
     Activity,
     FileSpreadsheet,
@@ -15,7 +14,6 @@ import {
     Lock,
     Target,
     History,
-    ClipboardCheck,
     Smartphone,
     AlertTriangle,
     GraduationCap,
@@ -24,13 +22,10 @@ import {
     Zap,
     Monitor,
     Users,
-    SearchCheck,
-    Cpu,
     Wrench,
     Clapperboard,
-    ArrowDown,
-    Handshake,
-    Sparkles
+    Sparkles,
+    Crown
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -42,6 +37,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const DASHBOARD_IMAGE = "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png";
 const TASKS_IMAGE = "https://i.postimg.cc/G278vKh8/Screenshot-2026-04-18-004329.png";
 const HERO_IMAGE = "https://i.postimg.cc/BvKyg8vX/ceo-engages-phone-call-briefing-with-investor-sharing-insight.jpg";
+const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
     <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
@@ -72,6 +68,14 @@ const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
     </div>
 );
 
+const PulsatingStressText = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
+    <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
+        <span className="text-[14px] md:text-[22px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.4)] whitespace-nowrap">
+            {text}
+        </span>
+    </div>
+);
+
 export default function DesignLabPage() {
     const [mounted, setMounted] = useState(false);
     useEffect(() => { setMounted(true); }, []);
@@ -90,46 +94,64 @@ export default function DesignLabPage() {
                         <img 
                             src={HERO_IMAGE} 
                             alt="Operational Pressure" 
-                            className="w-full h-full object-cover opacity-50 grayscale-[0.2]" 
+                            className="w-full h-full object-cover opacity-60 grayscale-[0.2]" 
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
                     </div>
 
                     <div className="relative z-10 container mx-auto max-w-[1200px] px-6 py-20">
-                        <div className="max-w-4xl space-y-10">
-                            <div className="space-y-4">
-                                <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic bg-emerald-500/5">OPERATIONAL INFRASTRUCTURE</Badge>
-                                <h1 className="text-4xl md:text-8xl font-black font-headline tracking-tighter uppercase italic leading-[0.9]">
-                                    STOP CHASING. <br/> <span className="text-emerald-500">START SEEING.</span>
-                                </h1>
-                                <p className="text-xl md:text-[32px] text-zinc-300 font-medium italic max-w-2xl leading-tight">
-                                    See daily work getting done. <br/> Even when you aren't there.
-                                </p>
-                            </div>
+                        <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-16 items-center">
+                            <div className="space-y-10">
+                                <div className="space-y-4">
+                                    <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic bg-emerald-500/5">OPERATIONAL INFRASTRUCTURE</Badge>
+                                    <h1 className="text-4xl md:text-8xl font-black font-headline tracking-tighter uppercase italic leading-[0.9]">
+                                        STOP CHASING. <br/> <span className="text-emerald-500">START SEEING.</span>
+                                    </h1>
+                                    <p className="text-xl md:text-[32px] text-zinc-300 font-medium italic max-w-2xl leading-tight">
+                                        See show-readiness getting done. <br/> Even when you aren't there.
+                                    </p>
+                                </div>
 
-                            <div className="grid sm:grid-cols-2 gap-x-12 gap-y-4 max-w-2xl border-l-2 border-emerald-500/20 pl-8 py-2">
-                                {[
-                                    { t: "140+ PRE-BUILT CINEMA SOPs", i: Target },
-                                    { t: "LIVE OPERATIONAL DASHBOARD", i: Activity },
-                                    { t: "BUILT-IN TRAINER NOTES", i: GraduationCap },
-                                    { t: "AUDIT-READY COMPLIANCE", i: ShieldCheck }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex items-center gap-3">
-                                        <div className="w-1 h-1 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
-                                        <span className="text-[11px] font-black uppercase tracking-widest text-zinc-400 italic">{item.t}</span>
+                                <div className="grid sm:grid-cols-2 gap-x-12 gap-y-4 max-w-2xl border-l-2 border-emerald-500/20 pl-8 py-2">
+                                    {[
+                                        { t: "140+ PRE-BUILT CINEMA SOPs", i: Target },
+                                        { t: "LIVE OPERATIONAL DASHBOARD", i: Activity },
+                                        { t: "BUILT-IN TRAINER NOTES", i: GraduationCap },
+                                        { t: "AUDIT-READY COMPLIANCE", i: FileSpreadsheet }
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-center gap-3">
+                                            <div className="w-1 h-1 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
+                                            <span className="text-[11px] font-black uppercase tracking-widest text-zinc-400 italic">{item.t}</span>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="space-y-6">
+                                    <div className="space-y-3">
+                                        <Button asChild size="lg" className="h-16 md:h-20 px-12 rounded-xl bg-emerald-500 text-black font-black uppercase italic text-lg shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group flex items-center justify-center gap-4 w-full sm:w-auto">
+                                            <Link href="#">
+                                                LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-2" />
+                                            </Link>
+                                        </Button>
+                                        <p className="text-[11px] text-zinc-500 font-black uppercase tracking-[0.3em] italic">
+                                            BUILT IN EXCEL • NO APP ROLLOUT REQUIRED • ONE-TIME BUY
+                                        </p>
                                     </div>
-                                ))}
+                                </div>
                             </div>
-
-                            <div className="space-y-6">
-                                <Button asChild size="lg" className="h-16 md:h-20 px-12 rounded-xl bg-emerald-500 text-black font-black uppercase italic text-lg shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group flex items-center justify-center gap-4 w-full sm:w-auto">
-                                    <Link href="#">
-                                        LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-2" />
-                                    </Link>
-                                </Button>
-                                <p className="text-[11px] text-zinc-500 font-black uppercase tracking-[0.3em] italic">
-                                    BUILT IN EXCEL • NO APP ROLLOUT REQUIRED • ONE-TIME BUY
-                                </p>
+                            
+                            <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-6">
+                                 <p className="text-[9px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">WHY OPERATIONS BREAK</p>
+                                 <div className="flex flex-col gap-3 md:gap-5">
+                                     {[
+                                         "Always chasing staff?",
+                                         "Work gets missed?",
+                                         "The team is confused?",
+                                         "Memories fade?"
+                                     ].map((text, i) => (
+                                        <PulsatingStressText key={i} text={text} delay={`${i * 0.2}s`} />
+                                     ))}
+                                 </div>
                             </div>
                         </div>
                     </div>
@@ -187,7 +209,7 @@ export default function DesignLabPage() {
                 <Section className="bg-zinc-50/50">
                     <div className="max-w-6xl mx-auto space-y-20">
                         <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.4em] font-black text-[10px] px-8 py-2 rounded-none italic">SYSTEM ARTIFACTS</Badge>
+                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[10px] px-8 py-2 rounded-none italic">RESOLUTION PROTOCOL</Badge>
                             <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tight">Inside the system</h2>
                         </div>
 
@@ -220,8 +242,9 @@ export default function DesignLabPage() {
                 <Section className="bg-white">
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px]">TECHNICAL PAYLOAD</Badge>
                             <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">System Manifest</h2>
-                            <p className="text-zinc-500 text-lg font-medium italic">Included modules in the Cinema Operations System.</p>
+                            <p className="text-zinc-500 text-lg font-medium italic">The complete architecture of the Sovereign Engine.</p>
                         </div>
 
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -235,8 +258,8 @@ export default function DesignLabPage() {
                                 { t: "Audit Registry", i: ShieldCheck },
                                 { t: "Trainer Notes", i: GraduationCap }
                             ].map((item, i) => (
-                                <div key={i} className="p-6 rounded-2xl border border-zinc-100 bg-zinc-50 flex flex-col items-center gap-4 hover:border-emerald-500/30 transition-colors group">
-                                    <item.i className="w-8 h-8 text-zinc-300 group-hover:text-emerald-500 transition-colors" />
+                                <div key={i} className="p-8 rounded-[2rem] border border-zinc-100 bg-zinc-50 flex flex-col items-center gap-4 hover:border-emerald-500/30 transition-all group">
+                                    <item.i className="w-8 h-8 text-zinc-300 group-hover:text-emerald-500 transition-all" />
                                     <span className="text-[10px] font-black uppercase tracking-widest text-center text-zinc-600">{item.t}</span>
                                 </div>
                             ))}
@@ -244,7 +267,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 5. WHAT TEAMS ACTUALLY SEE --- */}
+                {/* --- 5. WHAT TEAMS ACTUALLY USE --- */}
                 <Section className="bg-zinc-950 text-white" noSpine>
                     <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center max-w-6xl mx-auto">
                         <div className="space-y-8">
@@ -252,7 +275,7 @@ export default function DesignLabPage() {
                                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] italic">ZERO FRICTION</Badge>
                                 <h2 className="text-3xl md:text-6xl font-black font-headline uppercase italic leading-[0.95] text-left">What your team <br/> actually sees</h2>
                                 <p className="text-zinc-400 text-lg md:text-xl font-medium italic leading-relaxed text-left">
-                                    Implementation anxiety kills most systems. We designed MoreMeets to be **impossible to ignore** and **easy to adopt**.
+                                    Implementation anxiety kills most systems. We designed MoreMeets to be **simple to adopt** and **impossible to ignore**.
                                 </p>
                             </div>
                             
@@ -260,7 +283,7 @@ export default function DesignLabPage() {
                                 {[
                                     { t: "SIMPLE INPUT", d: "Staff enter their name to log completion. No complex forms." },
                                     { t: "CLEAR INSTRUCTION", d: "Every task includes 'Trainer Notes' on how to do it right." },
-                                    { t: "BUILT-IN URGENCY", d: "Consequences of failure are visible, building a culture of safety." }
+                                    { t: "BUILT-IN URGENCY", d: "Consequences of failure are visible, building an intentional culture." }
                                 ].map((item, i) => (
                                     <div key={i} className="flex gap-6 border-l border-emerald-500/20 pl-6 group">
                                         <div className="space-y-1 text-left">
@@ -285,28 +308,26 @@ export default function DesignLabPage() {
                 <Section className="bg-white">
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px]">TARGET VERTICAL</Badge>
                             <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight">Built for leadership</h2>
                         </div>
                         
                         <div className="grid md:grid-cols-3 gap-8">
                             {[
-                                { role: "Owners & COOs", d: "For high-level visibility into group-wide compliance and profit protection.", i: crown },
+                                { role: "Owners & COOs", d: "For high-level visibility into group-wide compliance and profit protection.", i: Crown },
                                 { role: "Operations Managers", d: "To standardize multi-unit shifts and remove dependency on individual memory.", i: LayoutGrid },
                                 { role: "Technical Directors", d: "To ensure show readiness and zero-fail equipment uptime audits.", i: Wrench }
-                            ].map((item, i) => {
-                                const Icon = item.i as any;
-                                return (
+                            ].map((item, i) => (
                                 <div key={i} className="p-10 rounded-[2.5rem] border border-zinc-100 bg-zinc-50 text-center space-y-6 hover:shadow-xl transition-all group">
-                                    <div className="w-16 h-16 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center mx-auto text-primary group-hover:scale-110 transition-transform">
-                                        {/* Fallback to simple circle if Icon fails, but here we use Lucide icons */}
-                                        {i === 0 ? <Crown className="w-8 h-8" /> : i === 1 ? <LayoutGrid className="w-8 h-8" /> : <Wrench className="w-8 h-8" />}
+                                    <div className="w-16 h-16 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center mx-auto text-primary group-hover:scale-110 transition-transform shadow-inner">
+                                        <item.i className="w-8 h-8" />
                                     </div>
                                     <div className="space-y-2">
-                                        <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950">{item.role}</h4>
+                                        <h4 className="text-xl font-black uppercase italic tracking-tighter text-zinc-950 font-headline">{item.role}</h4>
                                         <p className="text-sm font-bold text-zinc-500 italic leading-relaxed uppercase">{item.d}</p>
                                     </div>
                                 </div>
-                            )})}
+                            ))}
                         </div>
                     </div>
                 </Section>
@@ -315,7 +336,7 @@ export default function DesignLabPage() {
                 <Section className="bg-zinc-50" noSpine>
                     <div className="max-w-4xl mx-auto p-12 md:p-20 rounded-[3rem] border border-zinc-200 bg-white shadow-2xl relative overflow-hidden text-center space-y-10">
                         <div className="absolute top-0 right-0 p-10 opacity-5">
-                            <Handshake className="w-64 h-64 text-primary" />
+                            <Sparkles className="w-64 h-64 text-primary" />
                         </div>
                         <div className="relative z-10 space-y-4">
                             <Badge className="bg-primary/10 text-primary border-primary/20 rounded-full font-black tracking-widest text-[9px] uppercase px-6">OPTIONAL CUSTOMIZATION</Badge>
@@ -339,10 +360,14 @@ export default function DesignLabPage() {
 
                 {/* --- 8. FINAL CALL TO COMMAND --- */}
                 <section className="bg-emerald-600 text-white py-32 text-center relative overflow-hidden">
+                    <div className="absolute inset-0 z-0">
+                        <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20 grayscale brightness-50" />
+                        <div className="absolute inset-0 bg-emerald-600/60" />
+                    </div>
                     <div className="max-w-4xl mx-auto space-y-12 relative z-10 px-6">
                         <div className="space-y-6">
                             <h2 className="text-[44px] md:text-[90px] font-black leading-[0.9] tracking-tighter uppercase italic drop-shadow-2xl">Ready to run <br/> your system?</h2>
-                            <p className="text-xl md:text-3xl text-white/60 font-bold italic">Setup takes less than 10 minutes.</p>
+                            <p className="text-xl md:text-3xl text-white/80 font-bold italic">Setup takes less than 10 minutes.</p>
                         </div>
                         
                         <div className="flex flex-col items-center gap-10">
@@ -364,20 +389,11 @@ export default function DesignLabPage() {
                     </div>
                 </section>
 
+                <FaqSection />
+
             </main>
             <Footer />
-
-            <style jsx global>{`
-                @keyframes shimmer {
-                    0% { transform: translateX(-100%); }
-                    100% { transform: translateX(100%); }
-                }
-            `}</style>
         </div>
     );
 }
 
-const crown = () => <Crown className="w-8 h-8" />;
-const Crown = ({ className }: { className?: string }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
-);
