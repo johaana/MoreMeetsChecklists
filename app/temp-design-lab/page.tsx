@@ -7,6 +7,7 @@ import {
     Check, 
     X,
     ArrowRight, 
+    Download,
     LayoutGrid,
     Activity,
     FileSpreadsheet,
@@ -29,7 +30,8 @@ import {
     ChevronRight,
     Projector,
     Ticket,
-    Popcorn
+    Popcorn,
+    ClipboardCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -56,7 +58,7 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
         <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
             {children}
         </div>
-    </section> section>
+    </section>
 );
 
 const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
@@ -123,11 +125,11 @@ export default function DesignLabPage() {
                                         <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest hidden md:block">SYS_REF: V11.9_STABLE</span>
                                     </div>
                                     <h1 className="text-[36px] md:text-8xl font-black font-headline tracking-tighter uppercase italic leading-[0.9]">
-                                        STOP CHASING TEAMS. <br/> <span className="text-emerald-500">START SEEING EVERY SCREEN.</span>
+                                        STOP CHASING SHIFTS. <br/> <span className="text-emerald-500">START SEEING OPERATIONS.</span>
                                     </h1>
                                     <div className="space-y-3">
                                         <p className="text-xl md:text-[34px] text-zinc-300 font-medium italic max-w-2xl leading-tight">
-                                            Live operational visibility for show readiness, concession control, crowd flow, and daily execution.
+                                            Technical command for show readiness, crowd flow, and concession yield.
                                         </p>
                                         <p className="text-sm md:text-xl text-zinc-400 font-bold border-l-2 border-emerald-500/40 pl-6 max-w-xl">
                                             Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events. Real-time oversight for professional cinema groups.
@@ -218,7 +220,7 @@ export default function DesignLabPage() {
                             </div>
                             <div className="flex items-center gap-4">
                                 <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                                <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">ENCRYPTED_SOVEREIGN_NODE_ACTIVE</span>
+                                <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">SOVEREIGN_NODE_ACTIVE</span>
                             </div>
                         </div>
                     </div>
@@ -235,9 +237,9 @@ export default function DesignLabPage() {
                         
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
                             {[
-                                { t: "Technical Setup", d: "SOPs assigned to roles across the theater", i: Projector },
+                                { t: "Daily Tasks", d: "SOPs assigned to roles across the theater", i: Projector },
                                 { t: "Team Completion", d: "Staff log tasks via mobile in seconds", i: Users },
-                                { t: "Deviation Detection", d: "Lapses flagged RED on dashboard instantly", i: AlertTriangle },
+                                { t: "Risk Visibility", d: "Lapses flagged RED on dashboard instantly", i: AlertTriangle },
                                 { t: "Executive Oversight", d: "Leadership sees total group health daily", i: Monitor }
                             ].map((step, i) => (
                                 <div key={i} className="relative group">
@@ -265,7 +267,7 @@ export default function DesignLabPage() {
                 <Section className="bg-zinc-50/50">
                     <div className="max-w-6xl mx-auto space-y-20">
                         <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[10px] px-8 py-2 rounded-none italic">OPERATIONAL PROOF</Badge>
+                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[10px] px-8 py-2 rounded-none italic">OPERATIONAL EVIDENCE</Badge>
                             <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Inside the System</h2>
                             <p className="text-zinc-500 text-lg font-medium italic uppercase">The actual data engine running your daily operations.</p>
                         </div>
@@ -273,7 +275,7 @@ export default function DesignLabPage() {
                         <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
                             <div className="space-y-12">
                                 {[
-                                    { t: "Multiplex Executive Console", d: "One screen to see performance, risk, and technical uptime across all multiplex units.", i: Monitor },
+                                    { t: "Executive Operations Dashboard", d: "One screen to see performance, risk, and technical uptime across all multiplex units.", i: Monitor },
                                     { t: "Revenue Variance Tracking", d: "Corn-to-bucket yield reconciliation and POS void-bill auditing to stop profit leakage.", i: Zap },
                                     { t: "Show Readiness Validation", d: "Zero-fail daily checks for projection, 3D assets, and subtitle sync before every show.", i: Clapperboard }
                                 ].map((item, i) => (
@@ -289,7 +291,7 @@ export default function DesignLabPage() {
                                 ))}
                             </div>
                             <div className="relative">
-                                <BrowserFrame src={IMG_DASHBOARD} label="CINEMA_EXECUTIVE_DASHBOARD_V11.9" />
+                                <BrowserFrame src={IMG_DASHBOARD} label="CINEMA_OPERATIONS_DASHBOARD_V11.9" />
                             </div>
                         </div>
                     </div>
@@ -337,19 +339,19 @@ export default function DesignLabPage() {
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px]">SYSTEM MANIFEST</Badge>
-                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Included Cinema Modules</h2>
+                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Included Cinema Systems</h2>
                         </div>
                         
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             {[
-                                { t: "Executive Console", i: Monitor },
-                                { t: "Projection Tech Logs", i: Projector },
-                                { t: "Concession Yield Engine", i: Popcorn },
-                                { t: "Show Readiness Vault", i: CheckCircle2 },
-                                { t: "Shift Handover Bridge", i: History },
-                                { t: "Box Office Cash Audits", i: Ticket },
-                                { t: "Safety & EHS Tracker", i: ShieldCheck },
-                                { t: "Role-Based Assignment", i: Users }
+                                { t: "01_EXECUTIVE_DASHBOARD.XLSX", i: Monitor },
+                                { t: "04_PROJECTION_TECH_LOGS.XLSX", i: Projector },
+                                { t: "06_CONCESSION_YIELD_SHIELD.XLSX", i: Popcorn },
+                                { t: "02_SHOW_READINESS_LEDGER.XLSX", i: CheckCircle2 },
+                                { t: "08_SHIFT_HANDOVER_BRIDGE.XLSX", i: History },
+                                { t: "07_BOX_OFFICE_CASH_AUDIT.XLSX", i: Ticket },
+                                { t: "09_SAFETY_EHS_TRACKER.XLSX", i: ShieldCheck },
+                                { t: "03_TEAM_HUB_DIRECTORY.XLSX", i: Users }
                             ].map((item, i) => (
                                 <div key={i} className="p-8 rounded-[2rem] border border-zinc-100 bg-zinc-50 flex flex-col items-center gap-4 hover:border-emerald-500/30 transition-all group h-full">
                                     <item.i className="w-8 h-8 text-zinc-300 group-hover:text-emerald-500 transition-all" />
