@@ -74,12 +74,12 @@ const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
 const OperationalAlert = ({ title, sub, time, delay = "0s" }: { title: string, sub: string, time: string, delay?: string }) => (
     <div className="flex flex-col items-start lg:items-end gap-1 animate-in fade-in slide-in-from-right-4 duration-1000" style={{ animationDelay: delay }}>
         <div className="flex items-center gap-3">
-            <span className="text-[10px] md:text-[13px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2">
-                <span className="animate-pulse text-[8px] md:text-[10px]">[!]</span> {title}
+            <span className="text-[12px] md:text-[18px] font-black text-[#FF3131] uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_15px_rgba(255,49,49,0.4)]">
+                <span className="animate-pulse text-[10px] md:text-[12px]">[!]</span> {title}
             </span>
-            <span className="text-[8px] font-mono text-zinc-500 bg-white/5 px-2 py-0.5 rounded">{time}</span>
+            <span className="text-[9px] font-mono text-zinc-400 bg-white/10 px-2 py-0.5 rounded border border-white/5">{time}</span>
         </div>
-        <p className="text-[9px] md:text-[10px] font-bold text-white/20 uppercase tracking-widest italic">{sub}</p>
+        <p className="text-[10px] md:text-[12px] font-bold text-white/40 uppercase tracking-widest italic">{sub}</p>
     </div>
 );
 
@@ -95,39 +95,39 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* --- 1. CALM AUTHORITY HERO (TIGHTER & SMALLER TEXT) --- */}
+                {/* --- 1. CALM AUTHORITY HERO (CINEMA SPECIFIC REFINEMENT) --- */}
                 <section className="relative w-full min-h-[85svh] flex flex-col justify-center overflow-hidden bg-black text-white">
                     <div className="absolute inset-0 z-0">
                         <img 
                             src={CINEMA_HERO} 
                             alt="Operational Environment" 
-                            className="w-full h-full object-cover opacity-50 grayscale-[0.1]" 
+                            className="w-full h-full object-cover opacity-60 grayscale-[0.1]" 
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 md:via-black/75 to-transparent" />
                     </div>
 
                     <div className="relative z-10 container mx-auto max-w-[1200px] px-6 py-12 md:py-16">
                         <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-16 items-center">
-                            <div className="space-y-6 md:space-y-7">
-                                <div className="space-y-3">
+                            <div className="space-y-6 md:space-y-8">
+                                <div className="space-y-4">
                                     <div className="flex items-center gap-3">
                                         <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.4em] font-black text-[9px] px-4 py-1 rounded-none italic bg-emerald-500/5">CINEMA OPERATIONS SYSTEM</Badge>
                                         <span className="text-[8px] font-mono text-zinc-600 uppercase tracking-widest hidden md:block">SYS_REF: V11.9_STABLE</span>
                                     </div>
-                                    <h1 className="text-[28px] md:text-5xl lg:text-7xl font-black font-headline tracking-tighter uppercase italic leading-[0.95]">
-                                        STOP CHASING TEAMS. <br/> <span className="text-emerald-500">START SEEING OPERATIONS.</span>
+                                    <h1 className="text-[34px] md:text-5xl lg:text-[5.5rem] font-black font-headline tracking-tighter uppercase italic leading-[0.9] text-white">
+                                        STOP CHASING TEAMS. <br/> <span className="text-emerald-500">START SEEING EVERY SCREEN.</span>
                                     </h1>
-                                    <div className="space-y-4">
-                                        <p className="text-base md:text-[22px] lg:text-[24px] text-zinc-300 font-medium italic max-w-2xl leading-tight">
-                                            See show-readiness, crowd flow, and concession yield getting done.
+                                    <div className="space-y-5">
+                                        <p className="text-lg md:text-[22px] lg:text-[26px] text-zinc-300 font-medium italic max-w-2xl leading-tight">
+                                            Live operational visibility for show readiness, concession control, and crowd flow across your multiplex.
                                         </p>
-                                        <p className="text-xs md:text-base text-zinc-500 font-bold border-l-2 border-emerald-500/40 pl-6 max-w-lg leading-relaxed">
-                                            Reduce dependency on individual memory. See every critical shift responsibility verified in real-time.
+                                        <p className="text-xs md:text-base text-zinc-500 font-bold border-l-2 border-emerald-500/40 pl-6 max-w-lg leading-relaxed uppercase">
+                                            Reduce dependency on individual memory. <br/>See every critical shift responsibility verified in real-time.
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2.5 border-l-2 border-white/10 pl-6 py-1">
+                                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-3 border-l-2 border-white/10 pl-6 py-1">
                                     {[
                                         { t: "140+ PRE-BUILT CINEMA SOPs", i: Target },
                                         { t: "LIVE OPERATIONS DASHBOARD", i: Activity },
@@ -135,15 +135,15 @@ export default function DesignLabPage() {
                                         { t: "AUDIT-READY DOCUMENTATION", i: FileSpreadsheet }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-2.5">
-                                            <div className="w-1 h-1 rounded-full bg-emerald-500/60 shadow-[0_0_8px_rgba(34,197,94,0.4)]" />
-                                            <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400 italic">{item.t}</span>
+                                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
+                                            <span className="text-[11px] font-black uppercase tracking-widest text-zinc-300 italic">{item.t}</span>
                                         </div>
                                     ))}
                                 </div>
 
                                 <div className="space-y-4 pt-2">
                                     <div className="space-y-4">
-                                        <Button asChild size="lg" className="h-14 md:h-16 px-10 rounded-xl bg-emerald-500 text-black font-black uppercase italic text-base shadow-[0_20px_40px_-10px_rgba(34,197,94,0.3)] hover:bg-white transition-all border-none group flex items-center justify-center gap-3 w-full sm:w-auto">
+                                        <Button asChild size="lg" className="h-14 md:h-16 px-10 rounded-xl bg-emerald-500 text-black font-black uppercase italic text-base shadow-[0_20px_40px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group flex items-center justify-center gap-3 w-full sm:w-auto">
                                             <Link href="/library">
                                                 START RUNNING EVERY SCREEN <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                                             </Link>
@@ -155,10 +155,10 @@ export default function DesignLabPage() {
                                 </div>
                             </div>
                             
-                            <div className="w-full lg:border-l border-white/5 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-6 md:space-y-8">
+                            <div className="w-full lg:border-l border-white/5 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-6 md:space-y-10">
                                  <p className="text-[8px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">RISK MONITORING FEED</p>
                                  
-                                 <div className="flex flex-col gap-4 md:gap-6">
+                                 <div className="flex flex-col gap-5 md:gap-8 lg:gap-10">
                                      <OperationalAlert 
                                         title="ERR_KDM_EXPIRED" 
                                         sub="Screen 04 unavailable for evening show" 
@@ -211,7 +211,7 @@ export default function DesignLabPage() {
                     </div>
                 </section>
 
-                {/* --- 2. THE OPERATIONAL LOOP (TIGHTER) --- */}
+                {/* --- 2. THE OPERATIONAL LOOP (THE MACHINE) --- */}
                 <Section className="bg-white border-b border-zinc-100" noSpine>
                     <div className="max-w-5xl mx-auto space-y-10">
                         <div className="text-center space-y-3">
@@ -248,21 +248,21 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 3. INSIDE THE SYSTEM (EVIDENCE) --- */}
+                {/* --- 3. INSIDE THE SYSTEM (ACTUAL PRODUCT EVIDENCE) --- */}
                 <Section className="bg-zinc-50/50">
                     <div className="max-w-6xl mx-auto space-y-16">
                         <div className="text-center space-y-3">
                             <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[9px] px-5 py-1 rounded-none italic">OPERATIONAL EVIDENCE</Badge>
                             <h2 className="text-[28px] md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Inside the System</h2>
-                            <p className="text-zinc-400 text-sm font-bold italic uppercase">The actual data engine running your daily operations.</p>
+                            <p className="text-zinc-400 text-sm font-bold italic uppercase">Technical command for show readiness, crowd flow, and concession yield.</p>
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
                             <div className="space-y-8">
                                 {[
-                                    { t: "Executive Operations Dashboard", d: "One screen to see performance, risk, and technical uptime across all multiplex units.", i: Monitor },
+                                    { t: "Multiplex Operations Dashboard", d: "One screen to see performance, risk, and technical uptime across all cinema units.", i: Monitor },
                                     { t: "Revenue Variance Tracking", d: "Corn-to-bucket yield reconciliation and POS void-bill auditing to stop profit leakage.", i: Zap },
-                                    { t: "Show Readiness Validation", d: "Zero-fail daily checks for projection, 3D assets, and subtitle sync before every show.", i: Clapperboard }
+                                    { t: "Show Readiness Validation", d: "Zero-fail daily checks for projection, 3D assets, and subtitle sync before every showtime.", i: Clapperboard }
                                 ].map((item, i) => (
                                     <div key={i} className="flex items-start gap-5 group text-left">
                                         <div className="w-10 h-10 rounded-lg bg-white border border-zinc-200 flex items-center justify-center text-primary shrink-0 shadow-sm group-hover:bg-primary group-hover:text-white transition-all">
@@ -274,6 +274,11 @@ export default function DesignLabPage() {
                                         </div>
                                     </div>
                                 ))}
+                                <div className="p-6 bg-red-50/50 border border-red-100 rounded-2xl">
+                                    <p className="text-xs text-red-950 font-bold italic uppercase leading-relaxed">
+                                        Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.
+                                    </p>
+                                </div>
                             </div>
                             <div className="relative">
                                 <BrowserFrame src={IMG_DASHBOARD} label="CINEMA_OPERATIONS_DASHBOARD_V11.9" />
@@ -282,7 +287,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 4. STAFF VIEW (TIGHTER ADOPTION) --- */}
+                {/* --- 4. STAFF VIEW (USABILITY PROOF) --- */}
                 <Section className="bg-zinc-950 text-white" noSpine>
                     <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center max-w-6xl mx-auto">
                         <div className="space-y-8">
@@ -319,24 +324,24 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 5. SYSTEM MANIFEST (COMPACT) --- */}
+                {/* --- 5. SYSTEM MANIFEST (WHAT YOU GET) --- */}
                 <Section className="bg-white">
                     <div className="max-w-5xl mx-auto space-y-12">
                         <div className="text-center space-y-3">
                             <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[8px]">SYSTEM MANIFEST</Badge>
-                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Included Cinema Systems</h2>
+                            <h2 className="text-3xl md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Included Cinema Modules</h2>
                         </div>
                         
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                             {[
-                                { t: "01_EXECUTIVE_DASHBOARD.XLSX", i: Monitor },
-                                { t: "04_PROJECTION_TECH_LOGS.XLSX", i: Projector },
-                                { t: "06_CONCESSION_YIELD_SHIELD.XLSX", i: Popcorn },
-                                { t: "02_SHOW_READINESS_LEDGER.XLSX", i: CheckCircle2 },
-                                { t: "08_SHIFT_HANDOVER_BRIDGE.XLSX", i: History },
-                                { t: "07_BOX_OFFICE_CASH_AUDIT.XLSX", i: Ticket },
-                                { t: "09_SAFETY_EHS_TRACKER.XLSX", i: ShieldCheck },
-                                { t: "03_TEAM_HUB_DIRECTORY.XLSX", i: Users }
+                                { t: "EXECUTIVE_DASHBOARD.XLSX", i: Monitor },
+                                { t: "PROJECTION_TECH_LOGS.XLSX", i: Projector },
+                                { t: "CONCESSION_YIELD_SHIELD.XLSX", i: Popcorn },
+                                { t: "SHOW_READINESS_LEDGER.XLSX", i: CheckCircle2 },
+                                { t: "SHIFT_HANDOVER_BRIDGE.XLSX", i: History },
+                                { t: "BOX_OFFICE_CASH_AUDIT.XLSX", i: Ticket },
+                                { t: "SAFETY_EHS_TRACKER.XLSX", i: ShieldCheck },
+                                { t: "TEAM_HUB_DIRECTORY.XLSX", i: Users }
                             ].map((item, i) => (
                                 <div key={i} className="p-6 rounded-2xl border border-zinc-100 bg-zinc-50 flex flex-col items-center gap-3 hover:border-emerald-500/30 transition-all group h-full">
                                     <item.i className="w-6 h-6 text-zinc-300 group-hover:text-emerald-500 transition-all" />
@@ -347,7 +352,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 6. WHO THIS IS FOR (TIGHTER) --- */}
+                {/* --- 6. WHO THIS IS FOR --- */}
                 <Section className="bg-zinc-50">
                     <div className="max-w-5xl mx-auto space-y-12">
                         <div className="text-center space-y-3">
@@ -361,11 +366,11 @@ export default function DesignLabPage() {
                                 { role: "Unit General Managers", d: "To standardize interval shifts and remove dependency on the memory of key personnel.", i: LayoutGrid },
                                 { role: "Technical Directors", d: "To ensure show readiness and zero-fail equipment uptime audits before every showtime.", i: Wrench }
                             ].map((item, i) => (
-                                <div key={i} className="p-8 rounded-3xl border border-zinc-200 bg-white text-center space-y-4 hover:shadow-xl transition-all group h-full shadow-sm">
+                                <div key={i} className="p-8 rounded-3xl border border-zinc-200 bg-white text-center space-y-4 hover:shadow-xl transition-all group h-full shadow-sm text-left">
                                     <div className="w-12 h-12 rounded-xl bg-zinc-50 border border-zinc-100 flex items-center justify-center mx-auto text-primary group-hover:scale-105 transition-transform shadow-inner">
                                         <item.i className="w-6 h-6" />
                                     </div>
-                                    <div className="space-y-1">
+                                    <div className="space-y-1 text-center">
                                         <h4 className="text-lg font-black uppercase italic tracking-tighter text-zinc-950 font-headline leading-tight">{item.role}</h4>
                                         <p className="text-[10px] font-bold text-zinc-400 italic leading-relaxed uppercase">{item.d}</p>
                                     </div>
