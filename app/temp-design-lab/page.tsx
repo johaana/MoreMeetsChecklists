@@ -27,7 +27,6 @@ import {
     Sparkles,
     Crown,
     ChevronRight,
-    ClipboardCheck,
     Projector,
     Ticket,
     Popcorn
@@ -37,7 +36,6 @@ import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { FaqSection } from "@/components/layout/faq-section";
 import Link from 'next/link';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // --- PRODUCTION ASSETS ---
 const DASHBOARD_IMAGE = "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png";
@@ -77,11 +75,11 @@ const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
 const OperationalAlert = ({ title, sub, delay = "0s" }: { title: string, sub: string, delay?: string }) => (
     <div className="flex flex-col items-start lg:items-end gap-1 animate-in fade-in slide-in-from-right-4 duration-1000" style={{ animationDelay: delay }}>
         <div className="flex items-center gap-3">
-            <span className="text-[12px] md:text-[18px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_15px_rgba(239,68,68,0.4)]">
+            <span className="text-[12px] md:text-[18px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_15px_rgba(239,68,68,0.5)]">
                 <span className="animate-pulse">[!]</span> {title}
             </span>
         </div>
-        <p className="text-[10px] md:text-[12px] font-bold text-white/50 uppercase tracking-widest italic">{sub}</p>
+        <p className="text-[10px] md:text-[12px] font-bold text-white/70 uppercase tracking-widest italic">{sub}</p>
     </div>
 );
 
@@ -97,7 +95,7 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* --- 1. THE CALM AUTHORITY HERO --- */}
+                {/* --- 1. THE CALM AUTHORITY HERO (CINEMA SPECIFIC) --- */}
                 <section className="relative w-full min-h-[95svh] flex flex-col justify-center overflow-hidden bg-black text-white">
                     <div className="absolute inset-0 z-0">
                         <img 
@@ -114,14 +112,14 @@ export default function DesignLabPage() {
                                 <div className="space-y-5">
                                     <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[11px] px-8 py-2 rounded-none italic bg-emerald-500/5">OPERATIONAL INFRASTRUCTURE</Badge>
                                     <h1 className="text-[34px] md:text-8xl font-black font-headline tracking-tighter uppercase italic leading-[0.9]">
-                                        STOP CHASING. <br/> <span className="text-emerald-500">START SEEING.</span>
+                                        STOP BLACK-SCREENS. <br/> <span className="text-emerald-500">START SEEING.</span>
                                     </h1>
                                     <div className="space-y-3">
                                         <p className="text-xl md:text-[34px] text-zinc-300 font-medium italic max-w-2xl leading-tight">
-                                            See show-readiness getting done. <br className="hidden md:block" /> Even when you aren't there.
+                                            See technical readiness and interval throughput. <br className="hidden md:block" /> Even when you aren't there.
                                         </p>
                                         <p className="text-sm md:text-xl text-zinc-400 font-bold border-l-2 border-emerald-500/40 pl-6 max-w-xl">
-                                            Technical command for show readiness, crowd flow, and concession yield. Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.
+                                            Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events. Technical command for show readiness, crowd flow, and concession yield.
                                         </p>
                                     </div>
                                 </div>
@@ -161,7 +159,7 @@ export default function DesignLabPage() {
                             
                             <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-8 md:space-y-12">
                                  <div className="space-y-2">
-                                    <p className="text-[9px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">OPERATIONAL RISK MONITORING</p>
+                                    <p className="text-[9px] font-black text-red-500 uppercase tracking-[0.6em] italic">OPERATIONAL RISK MONITORING</p>
                                     <div className="w-20 h-px bg-red-500/20 ml-auto hidden lg:block" />
                                  </div>
                                  
@@ -469,4 +467,3 @@ export default function DesignLabPage() {
         </div>
     );
 }
-
