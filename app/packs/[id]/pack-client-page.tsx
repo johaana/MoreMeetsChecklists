@@ -6,7 +6,6 @@ import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
-    LayoutGrid,
     Target,
     ArrowRight,
     Check,
@@ -21,33 +20,24 @@ import {
     GraduationCap,
     FileSpreadsheet,
     AlertTriangle,
-    Sparkles,
     Leaf,
     Recycle,
     Wrench,
     FileSignature,
     Monitor,
+    Clapperboard,
     Popcorn,
     Projector,
     Ticket,
     ChevronRight,
-    SearchCheck,
     Thermometer,
-    Pill,
-    Bus,
-    Scale,
-    Building2,
-    Utensils,
-    Building,
-    Hospital,
-    School,
-    Store,
-    ShoppingBag
+    Stethoscope,
+    LayoutGrid,
+    Eye
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
 import { packResolutions, defaultResolution } from '@/lib/pack-resolutions';
-import { IconComponent } from '@/components/icons';
 
 // --- SECTOR METADATA: THE SOVEREIGN TELEMETRY ---
 const SECTOR_METADATA: Record<string, {
@@ -68,7 +58,7 @@ const SECTOR_METADATA: Record<string, {
             "ROI_ENGINE_ACTIVE"
         ],
         sustainability: [
-            { t: "ENERGY DISCIPLINE", d: "Daily AC and lighting shutdown logs for unoccupied dining zones stop unmonitored power waste.", i: Zap },
+            { t: "ENERGY DISCIPLINE", d: "Daily AC and lighting shutdown logs for unoccupied zones stop unmonitored power waste.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Water vitals logging and faucet aerator audits reduce utility consumption by 15%.", i: Leaf },
             { t: "WASTE MITIGATION", d: "Prep waste tracking and food-cost variance monitoring identify overproduction before the bin.", i: Recycle },
             { t: "ASSET LONGEVITY", d: "Scheduled kitchen equipment deep-cleaning extends the lifespan of reach-ins and fryers.", i: Wrench }
@@ -108,8 +98,8 @@ const SECTOR_METADATA: Record<string, {
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Medical equipment idle-power checks and lighting shutdown logs in non-clinical zones.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Water TDS monitoring and RO system backwash cycles ensure resource purity and efficiency.", i: Leaf },
-            { t: "WASTE MITIGATION", d: "Bio-medical waste segregation at source reduces hazardous disposal costs and environmental footprint.", i: Recycle },
-            { t: "ASSET LONGEVITY", d: "Technical uptime audits for MRI/CT suites and UPS banks extend the life of life-saving hardware.", i: Wrench }
+            { t: "WASTE MITIGATION", d: "Bio-medical waste segregation at source reduces hazardous disposal costs.", i: Recycle },
+            { t: "ASSET LONGEVITY", d: "Technical uptime audits for MRI/CT suites and UPS banks extend the life of clinical hardware.", i: Wrench }
         ]
     },
     'school_operations_pack': {
@@ -126,7 +116,7 @@ const SECTOR_METADATA: Record<string, {
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Classroom and library shutdown compliance logs stop unmonitored lighting and AC waste.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Potable water point hygiene and plumbing leak patrols reduce campus utility wastage.", i: Leaf },
-            { t: "WASTE MITIGATION", d: "Canteen yield monitoring and zero-junk zone patrolling reduce food waste and packaging litter.", i: Recycle },
+            { t: "WASTE MITIGATION", d: "Canteen yield monitoring and zero-junk zone patrolling reduce food waste.", i: Recycle },
             { t: "ASSET LONGEVITY", d: "Playground and mechanical structural audits extend equipment life and reduce e-waste.", i: Wrench }
         ]
     },
@@ -144,8 +134,8 @@ const SECTOR_METADATA: Record<string, {
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Multi-unit AC shutdown logs and energy-benchmark monitoring across all franchise locations.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Water meter logging and leak detection protocols enforced across the entire network.", i: Leaf },
-            { t: "WASTE MITIGATION", d: "Centralized supply chain yield audits reduce inventory waste and packaging environmental footprint.", i: Recycle },
-            { t: "ASSET LONGEVITY", d: "Preventive maintenance audits for standardized equipment extend fleet and store-asset lifespan.", i: Wrench }
+            { t: "WASTE MITIGATION", d: "Centralized supply chain yield audits reduce inventory waste and environmental footprint.", i: Recycle },
+            { t: "ASSET LONGEVITY", d: "Preventive maintenance audits for standardized equipment extend store-asset lifespan.", i: Wrench }
         ]
     },
     'facility_management_blueprint': {
@@ -161,9 +151,9 @@ const SECTOR_METADATA: Record<string, {
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "BMS panel health monitoring and KWH meter variance tracking eliminate unmonitored energy spikes.", i: Zap },
-            { t: "RESOURCE CONSERVATION", d: "STP/WTP effluent pulse monitoring and tank overflow logic prevent water resource wastage.", i: Leaf },
-            { t: "WASTE MITIGATION", d: "Hazardous waste disposal manifests and recycling weights logged for 100% environmental compliance.", i: Recycle },
-            { t: "ASSET LONGEVITY", d: "Detailed panel thermography and pump bearing audits extend the life of heavy MEP infrastructure.", i: Wrench }
+            { t: "RESOURCE CONSERVATION", d: "STP/WTP effluent pulse monitoring and tank overflow logic prevent water wastage.", i: Leaf },
+            { t: "WASTE MITIGATION", d: "Hazardous waste disposal manifests and recycling weights logged for 100% compliance.", i: Recycle },
+            { t: "ASSET LONGEVITY", d: "Detailed panel thermography and pump bearing audits extend the life of MEP infrastructure.", i: Wrench }
         ]
     },
     'retail_operations_system': {
@@ -179,9 +169,9 @@ const SECTOR_METADATA: Record<string, {
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Storefront and showroom lighting shutdown compliance logs for after-hours energy savings.", i: Zap },
-            { t: "RESOURCE CONSERVATION", d: "Cleaning chemical dilution calibration and spill kit readiness reduce chemical and water waste.", i: Leaf },
+            { t: "RESOURCE CONSERVATION", d: "Cleaning chemical dilution calibration and spill kit readiness reduce chemical waste.", i: Leaf },
             { t: "WASTE MITIGATION", d: "Markdown logic and expiry sweep protocols identify perishable waste before it becomes total loss.", i: Recycle },
-            { t: "ASSET LONGEVITY", d: "Thermal battery logs and serialized asset audits extend the life of demo tech and floor hardware.", i: Wrench }
+            { t: "ASSET LONGEVITY", d: "Thermal battery logs and serialized asset audits extend the life of demo tech.", i: Wrench }
         ]
     },
     'cinema_operations_pack': {
@@ -198,7 +188,7 @@ const SECTOR_METADATA: Record<string, {
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Daily AC shutdown compliance logs for empty auditoriums stop unmonitored power waste.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Water vitals logging and overnight leak detection through digital meter-parity checks.", i: Leaf },
-            { t: "WASTE MITIGATION", d: "Concession yield logic (corn-to-bucket) identifies production waste before it reaches the bin.", i: Recycle },
+            { t: "WASTE MITIGATION", d: "Concession yield logic (corn-to-bucket) identifies production waste.", i: Recycle },
             { t: "ASSET LONGEVITY", d: "Preventive uptime audits extend technical hardware life by 30%, reducing e-waste footprint.", i: Wrench }
         ]
     }
@@ -241,7 +231,7 @@ function Section({ children, className, id, noSpine = false }: SectionProps) {
 function BrowserFrame({ src, viewLabel }: { src: string, viewLabel: string }) {
     return (
         <div className="group space-y-3 w-full max-w-lg mx-auto">
-            <div className="relative rounded-[1rem] overflow-hidden shadow-2xl border border-zinc-200 bg-[#0A0F19] transition-all duration-1000">
+            <div className="relative rounded-[1rem] overflow-hidden shadow-2xl border border-white/10 bg-[#0A0F19] transition-all duration-1000">
                 <div className="bg-[#0D121F] border-b border-white/5 px-4 py-2 flex items-center gap-3">
                     <div className="flex gap-1">
                         <div className="w-1 h-1 rounded-full bg-red-500/20" />
@@ -306,7 +296,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     return (
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-primary/20">
             
-            {/* --- HERO SECTION: ONE GLANCE COMMAND --- */}
+            {/* --- HERO SECTION --- */}
             <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 z-0">
                     <img 
@@ -370,9 +360,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         </Button>
                                         <div className="space-y-1.5 pl-1">
                                             <p className="text-[10px] md:text-[12px] text-emerald-500/90 font-black uppercase tracking-[0.2em] italic leading-tight text-center sm:text-left">
-                                                BUILT IN EXCEL. SHARED THROUGH GOOGLE SHEETS. NO APP ROLLOUT REQUIRED.
+                                                BUILT IN EXCEL • SHARED THROUGH GOOGLE SHEETS
                                             </p>
-                                            <p className="text-[10px] md:text-[11px] text-zinc-600 font-black uppercase tracking-[0.4em] italic leading-tight text-center sm:text-left">
+                                            <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic leading-tight text-center sm:text-left">
                                                 ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
                                             </p>
                                         </div>
@@ -393,11 +383,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </section>
 
-            {/* --- OPERATIONAL TELEMETRY: HARDENED OXBLOOD MARQUEE --- */}
-            <div className="w-full bg-[#1a0505] h-9 overflow-hidden border-y border-black/10 relative z-30 flex items-center shadow-2xl">
+            {/* --- OPERATIONAL TELEMETRY MARQUEE --- */}
+            <div className="w-full bg-[#1a0505] h-10 overflow-hidden border-y border-black/10 relative z-30 flex items-center shadow-2xl">
                 <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
                     {sectorData.marquee.map((signal, i) => {
-                        const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('FLAGGED') || signal.includes('DELAY') || signal.includes('EXCEPTION');
+                        const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('FLAGGED') || signal.includes('DELAY') || signal.includes('EXCEPTION') || signal.includes('PENDING');
                         return (
                             <span key={i} className={cn(
                                 "text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
@@ -408,9 +398,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </span>
                         );
                     })}
-                    {/* Duplicate for seamless loop */}
+                    {/* Duplicate for loop */}
                     {sectorData.marquee.map((signal, i) => {
-                        const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('FLAGGED') || signal.includes('DELAY') || signal.includes('EXCEPTION');
+                        const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('FLAGGED') || signal.includes('DELAY') || signal.includes('EXCEPTION') || signal.includes('PENDING');
                         return (
                             <span key={`dup-${i}`} className={cn(
                                 "text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
@@ -424,7 +414,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </div>
 
-            {/* --- SECTION 2: WHY EXECUTION BREAKS --- */}
+            {/* --- WHY EXECUTION BREAKS --- */}
             <Section className="bg-white border-b border-zinc-100">
                 <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
@@ -462,7 +452,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- SECTION 3: RESTORING CONTROL --- */}
+            {/* --- RESTORES CONTROL --- */}
             <Section className="bg-zinc-50/50">
                 <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
@@ -499,27 +489,24 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         <span className="text-emerald-500 uppercase">They simply open our <strong>operational checklists</strong> in Excel or Google Sheets and begin running operations daily.</span>
                                     </p>
                                 </div>
-                                
-                                {res.compliance && (
-                                    <div className="space-y-3 pt-2">
-                                        <p className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.4em]">COMPLIANCE COVERAGE</p>
-                                        <div className="flex flex-wrap gap-2">
-                                            {res.compliance.map((item, i) => (
-                                                <div key={i} className="flex items-center gap-2 px-3 py-1.5 bg-white border border-zinc-100 rounded-lg shadow-sm">
-                                                    <ShieldCheck className="w-3 h-3 text-primary" />
-                                                    <span className="text-[9px] font-black uppercase text-zinc-600 tracking-wider">{item}</span>
-                                                </div>
-                                            ))}
-                                        </div>
+                                <div className="space-y-3 pt-2">
+                                    <p className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.4em]">COMPLIANCE COVERAGE</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {["Audit Standards", "Fire Safety", "FSSAI/HACCP", "LOTO", "Personnel Certs"].map((item, i) => (
+                                            <div key={i} className="flex items-center gap-2 px-3 py-1.5 bg-white border border-zinc-100 rounded-lg shadow-sm">
+                                                <ShieldCheck className="w-3 h-3 text-primary" />
+                                                <span className="text-[9px] font-black uppercase text-zinc-600 tracking-wider">{item}</span>
+                                            </div>
+                                        ))}
                                     </div>
-                                )}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </Section>
 
-            {/* --- SECTION: TECHNICAL PROOF (HUD ARTIFACTS) --- */}
+            {/* --- TECHNICAL PROOF (HUD) --- */}
             <Section className="bg-white" id="evidence">
                 <div className="max-w-6xl mx-auto space-y-16 md:space-y-32">
                     <div className="grid lg:grid-cols-[0.8fr,1.2fr] gap-12 lg:gap-24 items-center">
@@ -557,7 +544,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- SECTION: OPERATIONAL SUSTAINABILITY --- */}
+            {/* --- OPERATIONAL SUSTAINABILITY --- */}
             <Section className="bg-white border-t border-zinc-100" id="esg">
                 <div className="max-w-4xl mx-auto space-y-16">
                     <div className="space-y-6 text-center">
@@ -584,7 +571,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- SECTION: BUILT FOR REAL TEAMS --- */}
+            {/* --- BUILT FOR REAL TEAMS --- */}
             <Section className="bg-zinc-50 border-y border-zinc-100">
                 <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
@@ -596,36 +583,12 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
                         {[
-                            {
-                                t: "FASTER TEAM TRAINING",
-                                d: "New teams understand responsibilities faster using built-in instructions and operational guidance.",
-                                i: GraduationCap
-                            },
-                            {
-                                t: "REDUCED DEPENDENCY",
-                                d: "Operations stop collapsing when one experienced person is absent. Memory becomes infrastructure.",
-                                i: History
-                            },
-                            {
-                                t: res.reassuranceTrustTitle || "STAKEHOLDER TRUST",
-                                d: res.reassuranceTrustDescription || "Operational consistency customers notice and trust.",
-                                i: Users
-                            },
-                            {
-                                t: "EASY FOR TEAMS",
-                                d: "No apps. No software rollout. Teams simply update one shared <strong>operations dashboard</strong> daily.",
-                                i: CheckCircle2
-                            },
-                            {
-                                t: "EDITABLE INFRASTRUCTURE",
-                                d: "Add, remove, or customize technical tasks anytime to fit your unique property protocols.",
-                                i: Zap
-                            },
-                            {
-                                t: "AUDIT-READY RECORDS",
-                                d: "Institutional proof for inspectors, insurers, and owners is generated automatically.",
-                                i: ShieldCheck
-                            }
+                            { t: "FASTER TEAM TRAINING", d: "New teams understand responsibilities faster using built-in instructions.", i: GraduationCap },
+                            { t: "REDUCED DEPENDENCY", d: "Operations stop collapsing when key staff leave. Memory becomes infrastructure.", i: History },
+                            { t: res.reassuranceTrustTitle || "STAKEHOLDER TRUST", d: res.reassuranceTrustDescription || "Operational consistency customers notice.", i: Users },
+                            { t: "EASY FOR TEAMS", d: "No apps. No software rollout. Teams simply update one shared <strong>dashboard</strong> daily.", i: CheckCircle2 },
+                            { t: "EDITABLE INFRASTRUCTURE", d: "Add, remove, or customize tasks anytime to fit your unique property protocols.", i: Zap },
+                            { t: "AUDIT-READY RECORDS", d: "Institutional proof for inspectors and insurers is generated automatically.", i: ShieldCheck }
                         ].map((item, i) => (
                             <div key={i} className="flex flex-col gap-5 p-8 bg-white rounded-[2rem] border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-500 group text-left">
                                 <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-inner">
@@ -645,7 +608,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
             <div id="pricing" className="scroll-mt-20" />
             <PricingClient pack={pack} />
 
-            {/* --- CUSTOMIZATION BRIDGE: MOVED BELOW PRICING --- */}
+            {/* --- CUSTOMIZATION BRIDGE (BELOW PRICING) --- */}
             <Section className="bg-zinc-950 text-white" noSpine>
                 <div className="max-w-4xl mx-auto p-10 md:p-16 rounded-[2rem] border border-white/10 bg-white/[0.02] relative overflow-hidden text-center space-y-8">
                     <div className="absolute top-0 right-0 p-8 opacity-5">
@@ -657,7 +620,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             Need this system tailored <br/> to your specific brand?
                         </h2>
                         <p className="text-zinc-400 text-base md:text-lg font-medium italic max-w-2xl mx-auto">
-                            If our standard framework requires professional adaptation to your unique department hierarchy or multi-unit reporting structure, we offer 1-on-1 discovery calls.
+                            If our standard framework requires professional adaptation to your unique department hierarchy, we offer 1-on-1 discovery calls.
                         </p>
                     </div>
                     <div className="relative z-10 flex flex-col items-center gap-4">
@@ -721,3 +684,18 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         </div>
     );
 }
+
+const Sparkles = ({ className }: { className?: string }) => (
+    <svg 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        className={className}
+    >
+        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+        <path d="M5 3v4" /><path d="M19 17v4" /><path d="M3 5h4" /><path d="M17 19h4" />
+    </svg>
+);
