@@ -17,10 +17,7 @@ import {
     ShieldCheck,
     Monitor,
     Users,
-    Wrench,
     Clapperboard,
-    Sparkles,
-    Crown,
     ChevronRight,
     Projector,
     Ticket,
@@ -74,12 +71,12 @@ const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
 const OperationalAlert = ({ title, sub, time, delay = "0s" }: { title: string, sub: string, time: string, delay?: string }) => (
     <div className="flex flex-col items-start lg:items-end gap-1 animate-in fade-in slide-in-from-right-4 duration-1000" style={{ animationDelay: delay }}>
         <div className="flex items-center gap-3">
-            <span className="text-[14px] md:text-[18px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_20px_rgba(239,68,68,0.3)]">
+            <span className="text-[14px] md:text-[20px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_25px_rgba(239,68,68,0.5)]">
                 <span className="animate-pulse">●</span> {title}
             </span>
             <span className="text-[9px] font-mono text-zinc-500 bg-white/5 px-2 py-0.5 rounded border border-white/5">{time}</span>
         </div>
-        <p className="text-[10px] md:text-[11px] font-bold text-white/40 uppercase tracking-widest italic leading-tight">{sub}</p>
+        <p className="text-[10px] md:text-[12px] font-bold text-white/40 uppercase tracking-widest italic leading-tight">{sub}</p>
     </div>
 );
 
@@ -95,115 +92,104 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* --- 1. HERO: CALM OPERATIONAL AUTHORITY --- */}
-                <section className="relative w-full min-h-[90svh] flex flex-col justify-center overflow-hidden bg-black text-white">
+                {/* --- 1. HERO: TIGHTER, BIGGER, AUTHORITATIVE --- */}
+                <section className="relative w-full min-h-[95svh] flex flex-col justify-center overflow-hidden bg-black text-white">
                     <div className="absolute inset-0 z-0">
                         <img 
                             src={CINEMA_HERO} 
                             alt="Multiplex Operations" 
-                            className="w-full h-full object-cover opacity-50 grayscale-[0.2]" 
+                            className="w-full h-full object-cover opacity-60 grayscale-[0.1]" 
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 md:via-black/75 to-transparent" />
                     </div>
 
                     <div className="relative z-10 container mx-auto max-w-[1200px] px-6 py-12 md:py-20">
-                        <div className="flex flex-col lg:grid lg:grid-cols-[1.3fr,0.7fr] lg:gap-20 items-center">
-                            <div className="space-y-8 md:space-y-10">
+                        <div className="flex flex-col lg:grid lg:grid-cols-[1.3fr,0.7fr] lg:gap-24 items-center">
+                            <div className="space-y-6 md:space-y-8">
                                 <div className="space-y-4">
                                     <div className="flex flex-wrap items-center gap-3">
-                                        <Badge variant="outline" className="text-zinc-500 border-zinc-800 uppercase tracking-[0.4em] font-black text-[9px] px-4 py-1.5 rounded-none bg-white/5">MULTIPLEX OPERATIONAL CORE</Badge>
+                                        <Badge variant="outline" className="text-zinc-500 border-zinc-800 uppercase tracking-[0.4em] font-black text-[9px] px-4 py-1.5 rounded-none bg-white/5">SYS_REF: V11.9_STABLE</Badge>
                                         <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.4em] font-black text-[9px] px-4 py-1.5 rounded-none bg-emerald-500/5">CINEMA OPERATIONS SYSTEM</Badge>
                                     </div>
-                                    <h1 className="text-[40px] md:text-6xl lg:text-[5.5rem] font-black font-headline tracking-tighter uppercase italic leading-[0.9] text-white">
-                                        STOP CHASING TEAMS. <br/> <span className="text-emerald-500">SEE EVERY SCREEN.</span>
+                                    <h1 className="text-[44px] md:text-7xl lg:text-[6.5rem] font-black font-headline tracking-tighter uppercase italic leading-[0.85] text-white">
+                                        STOP CHASING.<br/> <span className="text-emerald-500">START SEEING.</span>
                                     </h1>
-                                    <div className="space-y-4 pt-2">
-                                        <p className="text-base md:text-xl lg:text-2xl text-zinc-300 font-medium italic max-w-2xl leading-tight">
-                                            Live operational visibility for show readiness, concession control, crowd flow, and daily execution across your multiplex.
+                                    <div className="space-y-4 pt-1">
+                                        <p className="text-lg md:text-2xl lg:text-3xl font-black italic text-zinc-200 max-w-2xl leading-[1.1] uppercase tracking-tight">
+                                            Technical command for show readiness, <br className="hidden md:block" /> crowd flow, and concession yield.
                                         </p>
-                                        <div className="flex flex-col gap-1.5 border-l-2 border-emerald-500/40 pl-6">
-                                            <p className="text-xs md:text-sm text-zinc-500 font-bold uppercase tracking-wide">Reduce dependency on individual memory</p>
-                                            <p className="text-xs md:text-sm text-zinc-500 font-bold uppercase tracking-wide text-white/80">Verify critical responsibilities in real time</p>
+                                        <div className="flex flex-col gap-2 border-l-2 border-emerald-500/40 pl-6 max-w-xl">
+                                            <p className="text-sm md:text-base text-zinc-400 font-bold leading-relaxed italic">
+                                                Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.
+                                            </p>
+                                            <p className="text-xs md:text-sm text-zinc-500 font-black uppercase tracking-widest text-emerald-500/80">Verify critical responsibilities in real time</p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-3">
-                                    {[
-                                        "140+ PRE-BUILT CINEMA SOPs",
-                                        "LIVE OPERATIONS DASHBOARD",
-                                        "BUILT-IN TRAINER NOTES",
-                                        "AUDIT-READY DOCUMENTATION",
-                                        "LIVE IN 10 MINUTES"
-                                    ].map((text, i) => (
-                                        <div key={i} className="flex items-center gap-2.5">
-                                            <div className="w-1 h-1 rounded-full bg-emerald-500" />
-                                            <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-zinc-400 italic">{text}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="space-y-6 pt-4">
-                                    <div className="flex flex-col sm:flex-row items-center gap-8">
+                                <div className="space-y-8 pt-2">
+                                    <div className="flex flex-col sm:flex-row items-center gap-6">
                                         <Button asChild size="lg" className="h-16 md:h-20 px-10 md:px-14 rounded-xl bg-emerald-500 text-black font-black uppercase italic text-base md:text-lg shadow-[0_20px_40px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group flex items-center justify-center gap-3 w-full sm:w-auto">
                                             <Link href="/library">
-                                                GET THE SYSTEM <ArrowRight className="w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-1" />
+                                                DEPLOY SYSTEM <ArrowRight className="w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-1" />
                                             </Link>
                                         </Button>
-                                        <Button asChild variant="outline" className="h-16 px-10 rounded-xl border-white/10 text-white font-black uppercase italic text-xs tracking-widest hover:bg-white/5 w-full sm:w-auto">
-                                            <Link href="#modules">VIEW SYSTEM MODULES</Link>
-                                        </Button>
+                                        <div className="flex flex-col items-center sm:items-start">
+                                            <div className="flex items-baseline gap-2">
+                                                <span className="text-2xl md:text-4xl font-black text-white italic tracking-tighter leading-none">₹999</span>
+                                                <span className="text-sm font-bold text-zinc-600 line-through">₹5,999</span>
+                                            </div>
+                                            <p className="text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic">ONE-TIME • NO SaaS</p>
+                                        </div>
                                     </div>
-                                    <p className="text-[8px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic text-center sm:text-left">
-                                        BUILT IN EXCEL • SHARED THROUGH GOOGLE SHEETS • NO APP ROLLOUT • ONE-TIME PURCHASE
-                                    </p>
                                 </div>
                             </div>
                             
-                            <div className="w-full lg:border-l border-white/5 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-10">
-                                 <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">OPERATIONAL RISK MONITORING</p>
+                            <div className="w-full lg:border-l border-white/5 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-12">
+                                 <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">REAL-TIME RISK MONITORING</p>
                                  
-                                 <div className="flex flex-col gap-8 md:gap-12">
+                                 <div className="flex flex-col gap-6 md:gap-10">
                                      <OperationalAlert 
-                                        title="EXPIRED KDM KEY" 
-                                        sub="Screen 04 unavailable for evening show" 
-                                        time="10:42 AM"
+                                        title="[!] ERR_KDM_EXPIRED" 
+                                        sub="Screen 04: show blackout imminent" 
+                                        time="10:42:01"
                                         delay="0.2s" 
                                      />
                                      <OperationalAlert 
-                                        title="INTERVAL CONGESTION" 
-                                        sub="Concession queue exceeding threshold" 
-                                        time="01:15 PM"
+                                        title="[!] LVL_CONGESTION_HI" 
+                                        sub="Interval interval rush bottleneck" 
+                                        time="01:15:44"
                                         delay="0.4s" 
                                      />
                                      <OperationalAlert 
-                                        title="EMERGENCY COMMS FAILURE" 
-                                        sub="Security response verification overdue" 
-                                        time="02:30 PM"
+                                        title="[!] COMMS_TIMEOUT" 
+                                        sub="Emergency response check overdue" 
+                                        time="02:30:12"
                                         delay="0.6s" 
                                      />
                                      <OperationalAlert 
-                                        title="COLD CHAIN BREACH" 
-                                        sub="Fridge temperature exceeded threshold" 
-                                        time="04:05 PM"
+                                        title="[!] CCP_COLD_BREACH" 
+                                        sub="Concession Dairy: Threshold Exceeded" 
+                                        time="04:05:09"
                                         delay="0.8s" 
                                      />
                                  </div>
-
-                                 <div className="pt-10 grid grid-cols-2 gap-4 lg:justify-end text-left lg:text-right">
-                                     {[
-                                         { l: "TECH_UPTIME", v: "100%", c: "text-emerald-500" },
-                                         { l: "AUDIT_STATUS", v: "STABLE", c: "text-emerald-500" },
-                                         { l: "SCREEN_LOAD", v: "NORMAL", c: "text-zinc-500" },
-                                         { l: "SYSTEM_ACTIVE", v: "YES", c: "text-emerald-500" }
-                                     ].map((stat, i) => (
-                                         <div key={i} className="flex flex-col gap-0.5">
-                                             <span className="text-[7px] font-mono text-zinc-600 tracking-widest">{stat.l}</span>
-                                             <span className={cn("text-[10px] font-black italic", stat.c)}>{stat.v}</span>
-                                         </div>
-                                     ))}
-                                 </div>
                             </div>
+                        </div>
+
+                        {/* --- HUD VITALS --- */}
+                        <div className="mt-20 pt-8 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 max-w-5xl mx-auto md:mx-0">
+                             {[
+                                 { l: "TECH_UPTIME", v: "100%", c: "text-emerald-500" },
+                                 { l: "AUDIT_STATUS", v: "STABLE", c: "text-emerald-500" },
+                                 { l: "SCREEN_LOAD", v: "NORMAL", c: "text-zinc-500" },
+                                 { l: "SYSTEM_ACTIVE", v: "YES", c: "text-emerald-500" }
+                             ].map((stat, i) => (
+                                 <div key={i} className="flex flex-col gap-1 first:pl-0 lg:border-l lg:border-white/5 lg:pl-10">
+                                     <span className="text-[9px] md:text-[10px] font-mono text-zinc-600 tracking-[0.3em] uppercase">{stat.l}</span>
+                                     <span className={cn("text-xl md:text-2xl font-black italic tracking-tighter", stat.c)}>{stat.v}</span>
+                                 </div>
+                             ))}
                         </div>
                     </div>
                 </section>
@@ -219,7 +205,7 @@ export default function DesignLabPage() {
                         
                         <div className="flex flex-col md:flex-row items-stretch gap-6 relative">
                             {[
-                                { t: "MISSION ASSIGNMENT", d: "Projection, concession, and safety SOPs assigned automatically by role.", i: LayoutGrid },
+                                { t: "DAILY ASSIGNMENT", d: "Projection, concession, and safety SOPs assigned automatically by role.", i: LayoutGrid },
                                 { t: "TEAM EXECUTION", d: "Staff complete checks from mobile in seconds. Zero friction.", i: Users },
                                 { t: "DEVIATION FLAGGING", d: "Missed checks instantly visible on dashboard for intervention.", i: ShieldAlert },
                                 { t: "EXECUTIVE VISIBILITY", d: "Leadership sees total operational health across all screens.", i: Monitor }
@@ -245,11 +231,51 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 3. INSIDE THE SYSTEM: EVIDENCE --- */}
-                <Section className="bg-white" id="evidence">
+                {/* --- 3. SYSTEM MODULES: INFRASTRUCTURE (IMAGE MATCH) --- */}
+                <Section className="bg-white border-b border-zinc-100" id="modules">
+                    <div className="max-w-[1200px] mx-auto space-y-20">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px]">OPERATIONAL INFRASTRUCTURE</Badge>
+                            <h2 className="text-[32px] md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">System Components</h2>
+                            <p className="text-zinc-500 text-sm font-bold italic uppercase">A full technical ecosystem delivered as one master institutional asset</p>
+                        </div>
+                        
+                        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                            {[
+                                { t: "EXECUTIVE DASHBOARD", i: Monitor, active: true },
+                                { t: "SHOW READINESS ENGINE", i: Clapperboard },
+                                { t: "CONCESSION YIELD TRACKER", i: Popcorn },
+                                { t: "PROJECTION TECH LOGS", i: Projector },
+                                { t: "SHIFT HANDOVER BRIDGE", i: History },
+                                { t: "BOX OFFICE CASH AUDIT", i: Ticket },
+                                { t: "SAFETY & EHS TRACKER", i: ShieldCheck },
+                                { t: "TEAM DIRECTORY", i: Users },
+                                { t: "DAILY EXECUTION LEDGER", i: FileSignature },
+                                { t: "INCIDENT REGISTRY", i: ShieldAlert }
+                            ].map((item, i) => (
+                                <div key={i} className={cn(
+                                    "p-10 rounded-[1.5rem] border border-zinc-100 bg-zinc-50/30 flex flex-col items-center justify-center gap-8 transition-all group h-[220px] shadow-sm text-center relative",
+                                    item.active && "ring-2 ring-emerald-500/20 border-emerald-500/20"
+                                )}>
+                                    <item.i className={cn(
+                                        "w-12 h-12 transition-all duration-500",
+                                        item.active ? "text-emerald-500" : "text-zinc-300 group-hover:text-emerald-500/60"
+                                    )} />
+                                    <span className={cn(
+                                        "text-[10px] font-black uppercase tracking-widest leading-tight italic",
+                                        item.active ? "text-zinc-700" : "text-zinc-400 group-hover:text-zinc-600"
+                                    )}>{item.t}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- 4. INSIDE THE SYSTEM: EVIDENCE --- */}
+                <Section className="bg-zinc-50/50" id="evidence">
                     <div className="max-w-6xl mx-auto space-y-24 md:space-y-32">
                         <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[9px] px-8 py-2 rounded-none italic">OPERATIONAL EVIDENCE</Badge>
+                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[9px] px-8 py-2 rounded-none italic">PHYSICAL PROOF</Badge>
                             <h2 className="text-[32px] md:text-6xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Inside the System</h2>
                             <p className="text-zinc-500 text-base md:text-xl font-bold italic uppercase max-w-2xl mx-auto">Actual operational components for high-gravity multiplex management</p>
                         </div>
@@ -295,31 +321,10 @@ export default function DesignLabPage() {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Artifact 3 */}
-                        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-                            <div className="space-y-8 text-left order-2 lg:order-1">
-                                <div className="space-y-2">
-                                    <h4 className="text-2xl md:text-4xl font-black uppercase italic tracking-tighter text-zinc-950">Incident & Audit Registry</h4>
-                                    <p className="text-zinc-500 text-sm md:text-lg font-bold italic uppercase leading-relaxed">Verifiable proof for projection checks, sound calibration, and pre-show safety clearance.</p>
-                                </div>
-                                <div className="flex flex-col gap-3">
-                                    {["Legal defense logs", "NOC expiry tracking", "Root-cause mapping"].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-3">
-                                            <Check className="w-4 h-4 text-emerald-500" />
-                                            <span className="text-xs font-black uppercase tracking-widest text-zinc-400">{item}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className="order-1 lg:order-2">
-                                <BrowserFrame src={IMG_INCIDENTS} label="LIABILITY_INCIDENT_REGISTRY" />
-                            </div>
-                        </div>
                     </div>
                 </Section>
 
-                {/* --- 4. USABILITY: COMPLEXITY KILLS ADOPTION --- */}
+                {/* --- 5. USABILITY: COMPLEXITY KILLS ADOPTION --- */}
                 <Section className="bg-zinc-950 text-white" noSpine id="usability">
                     <div className="grid lg:grid-cols-2 gap-16 md:gap-24 items-center max-w-6xl mx-auto">
                         <div className="space-y-12">
@@ -356,37 +361,6 @@ export default function DesignLabPage() {
                                  <p className="text-[10px] font-mono text-emerald-500/80 uppercase tracking-widest leading-none">VIEW: DAILY_LEDGER_MOBILE</p>
                                  <Smartphone className="w-5 h-5 text-emerald-500/30" />
                              </div>
-                        </div>
-                    </div>
-                </Section>
-
-                {/* --- 5. SYSTEM MODULES: COMPONENTS --- */}
-                <Section className="bg-white border-b border-zinc-100" id="modules">
-                    <div className="max-w-5xl mx-auto space-y-20">
-                        <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px]">SYSTEM COMPONENTS</Badge>
-                            <h2 className="text-[32px] md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Operational Infrastructure</h2>
-                            <p className="text-zinc-500 text-sm font-bold italic uppercase">A full technical ecosystem delivered as one master institutional asset</p>
-                        </div>
-                        
-                        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-4">
-                            {[
-                                { t: "EXECUTIVE DASHBOARD", i: Monitor },
-                                { t: "SHOW READINESS ENGINE", i: Clapperboard },
-                                { t: "CONCESSION YIELD TRACKER", i: Popcorn },
-                                { t: "PROJECTION TECH LOGS", i: Projector },
-                                { t: "SHIFT HANDOVER BRIDGE", i: History },
-                                { t: "BOX OFFICE CASH AUDIT", i: Ticket },
-                                { t: "SAFETY & EHS TRACKER", i: ShieldCheck },
-                                { t: "TEAM DIRECTORY", i: Users },
-                                { t: "DAILY EXECUTION LEDGER", i: FileSignature },
-                                { t: "INCIDENT REGISTRY", i: ShieldAlert }
-                            ].map((item, i) => (
-                                <div key={i} className="p-8 rounded-2xl border border-zinc-100 bg-zinc-50 flex flex-col items-center gap-5 hover:border-emerald-500/30 transition-all group h-full shadow-sm">
-                                    <item.i className="w-8 h-8 text-zinc-300 group-hover:text-emerald-500 transition-all" />
-                                    <span className="text-[9px] font-black uppercase tracking-widest text-center text-zinc-500 leading-tight italic font-mono">{item.t}</span>
-                                </div>
-                            ))}
                         </div>
                     </div>
                 </Section>
@@ -478,4 +452,3 @@ export default function DesignLabPage() {
         </div>
     );
 }
-
