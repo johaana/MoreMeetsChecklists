@@ -71,7 +71,7 @@ const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
 const OperationalAlert = ({ title, sub, time, delay = "0s" }: { title: string, sub: string, time: string, delay?: string }) => (
     <div className="flex flex-col items-start lg:items-end gap-1 animate-in fade-in slide-in-from-right-4 duration-1000" style={{ animationDelay: delay }}>
         <div className="flex items-center gap-3">
-            <span className="text-[16px] md:text-[24px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_30px_rgba(239,68,68,0.7)]">
+            <span className="text-[20px] md:text-[28px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_30px_rgba(239,68,68,0.8)]">
                 <span className="animate-pulse">●</span> {title}
             </span>
             <span className="text-[10px] font-mono text-zinc-500 bg-white/5 px-2 py-0.5 rounded border border-white/5">{time}</span>
@@ -92,34 +92,34 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* --- 1. HERO: TIGHT, AGGRESSIVE TYPOGRAPHY --- */}
-                <section className="relative w-full min-h-[85svh] flex flex-col justify-center overflow-hidden bg-black text-white">
+                {/* --- 1. HERO: MASSIVE ONE-GLANCE AUTHORITY --- */}
+                <section className="relative w-full min-h-[90svh] flex flex-col justify-center overflow-hidden bg-black text-white">
                     <div className="absolute inset-0 z-0">
                         <img 
                             src={CINEMA_HERO} 
                             alt="Multiplex Operations" 
-                            className="w-full h-full object-cover opacity-60 grayscale-[0.1]" 
+                            className="w-full h-full object-cover opacity-50 grayscale-[0.1]" 
                         />
-                        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 md:via-black/80 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 md:via-black/70 to-transparent" />
                     </div>
 
-                    <div className="relative z-10 container mx-auto max-w-[1200px] px-6 py-12 md:py-16">
+                    <div className="relative z-10 container mx-auto max-w-[1200px] px-6 py-12 md:py-20">
                         <div className="flex flex-col lg:grid lg:grid-cols-[1.3fr,0.7fr] lg:gap-24 items-center">
-                            <div className="space-y-6 md:space-y-8">
+                            <div className="space-y-8 md:space-y-12">
                                 <div className="space-y-4">
                                     <div className="flex flex-wrap items-center gap-3">
-                                        <Badge variant="outline" className="text-zinc-500 border-zinc-800 uppercase tracking-[0.4em] font-black text-[9px] px-4 py-1.5 rounded-none bg-white/5">SYS_ID: CINEMA_SOVEREIGN</Badge>
+                                        <Badge variant="outline" className="text-zinc-500 border-zinc-800 uppercase tracking-[0.4em] font-black text-[9px] px-4 py-1.5 rounded-none bg-white/5 italic">SYS_ID: CINEMA_SOVEREIGN</Badge>
                                         <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.4em] font-black text-[9px] px-4 py-1.5 rounded-none bg-emerald-500/5 italic">OPERATIONAL_INFRASTRUCTURE</Badge>
                                     </div>
-                                    <h1 className="text-[48px] md:text-8xl lg:text-[7.5rem] font-black font-headline tracking-tighter uppercase italic leading-[0.82] text-white">
+                                    <h1 className="text-[54px] md:text-8xl lg:text-[8.5rem] font-black font-headline tracking-tighter uppercase italic leading-[0.82] text-white">
                                         STOP CHASING.<br/> <span className="text-emerald-500">START SEEING.</span>
                                     </h1>
-                                    <div className="space-y-6 pt-2">
-                                        <p className="text-xl md:text-3xl lg:text-4xl font-black italic text-zinc-100 max-w-2xl leading-[1.05] uppercase tracking-tight">
+                                    <div className="space-y-8 pt-2">
+                                        <p className="text-2xl md:text-4xl lg:text-[2.8rem] font-black italic text-zinc-100 max-w-2xl leading-[1.02] uppercase tracking-tight">
                                             Technical command for show readiness, <br className="hidden md:block" /> crowd flow, and concession yield.
                                         </p>
                                         <div className="flex flex-col gap-2 border-l-4 border-emerald-500/60 pl-8 max-w-xl">
-                                            <p className="text-base md:text-lg text-zinc-400 font-bold leading-relaxed italic">
+                                            <p className="text-lg md:text-xl text-zinc-400 font-bold leading-relaxed italic">
                                                 Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.
                                             </p>
                                         </div>
@@ -127,27 +127,27 @@ export default function DesignLabPage() {
                                 </div>
 
                                 <div className="space-y-8 pt-4">
-                                    <div className="flex flex-col sm:flex-row items-center gap-8">
-                                        <Button asChild size="lg" className="h-16 md:h-20 px-12 md:px-16 rounded-xl bg-emerald-500 text-black font-black uppercase italic text-base md:text-xl shadow-[0_20px_50px_-10px_rgba(34,197,94,0.5)] hover:bg-white transition-all border-none group flex items-center justify-center gap-3 w-full sm:w-auto">
+                                    <div className="flex flex-col sm:flex-row items-center gap-10">
+                                        <Button asChild size="lg" className="h-16 md:h-24 px-12 md:px-20 rounded-xl bg-emerald-500 text-black font-black uppercase italic text-lg md:text-2xl shadow-[0_20px_60px_-10px_rgba(34,197,94,0.6)] hover:bg-white transition-all border-none group flex items-center justify-center gap-4 w-full sm:w-auto">
                                             <Link href="/library">
-                                                DEPLOY SYSTEM <ArrowRight className="w-6 h-6 md:w-8 md:h-8 transition-transform group-hover:translate-x-1" />
+                                                DEPLOY NOW <ArrowRight className="w-8 h-8 md:w-10 md:h-10 text-zinc-950 transition-transform group-hover:translate-x-1" />
                                             </Link>
                                         </Button>
                                         <div className="flex flex-col items-center sm:items-start">
-                                            <div className="flex items-baseline gap-2">
-                                                <span className="text-2xl md:text-4xl font-black text-white italic tracking-tighter leading-none">₹999</span>
-                                                <span className="text-sm font-bold text-zinc-600 line-through">₹5,999</span>
+                                            <div className="flex items-baseline gap-3">
+                                                <span className="text-3xl md:text-5xl font-black text-white italic tracking-tighter leading-none">₹999</span>
+                                                <span className="text-lg font-bold text-zinc-700 line-through">₹5,999</span>
                                             </div>
-                                            <p className="text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic">ONE-TIME • OWN FOREVER</p>
+                                            <p className="text-[11px] text-zinc-600 font-black uppercase tracking-[0.4em] italic">ONE-TIME • OWN FOREVER</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div className="w-full lg:border-l border-white/5 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-16">
-                                 <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">ACTIVE_RISK_FEED</p>
+                            <div className="w-full lg:border-l border-white/5 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-16 lg:mt-0 space-y-16">
+                                 <p className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">ACTIVE_RISK_MONITOR</p>
                                  
-                                 <div className="flex flex-col gap-10 md:gap-14">
+                                 <div className="flex flex-col gap-12 md:gap-16">
                                      <OperationalAlert 
                                         title="[!] ERR_KDM_EXPIRED" 
                                         sub="Screen 04: show blackout imminent" 
@@ -314,7 +314,7 @@ export default function DesignLabPage() {
                         <div className="space-y-16">
                             <div className="space-y-6">
                                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[11px] italic">USABILITY STANDARD</Badge>
-                                <h2 className="text-5xl md:text-[6rem] font-black font-headline uppercase italic leading-[0.85] text-left tracking-tighter">Complexity <br className="hidden md:block"/> kills adoption.</h2>
+                                <h2 className="text-5xl md:text-[6.5rem] font-black font-headline uppercase italic leading-[0.85] text-left tracking-tighter">Complexity <br className="hidden md:block"/> kills adoption.</h2>
                                 <p className="text-zinc-400 text-lg md:text-2xl font-bold italic leading-relaxed text-left uppercase">
                                     Simple enough for the floor. <br/> Deep enough for leadership.
                                 </p>
@@ -408,7 +408,7 @@ export default function DesignLabPage() {
                     </div>
                     <div className="max-w-5xl mx-auto space-y-16 relative z-10 px-6">
                         <div className="space-y-8">
-                            <h2 className="text-[50px] md:text-[100px] font-black font-headline leading-[0.82] tracking-tighter uppercase italic drop-shadow-2xl">Ready to run <br/> your multiplex?</h2>
+                            <h2 className="text-[50px] md:text-[110px] font-black font-headline leading-[0.82] tracking-tighter uppercase italic drop-shadow-2xl">Ready to run <br/> your multiplex?</h2>
                             <p className="text-xl md:text-4xl text-zinc-500 font-bold italic uppercase tracking-[0.2em]">Full deployment in under 10 minutes</p>
                         </div>
                         
