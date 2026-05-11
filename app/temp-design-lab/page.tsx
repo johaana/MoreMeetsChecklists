@@ -21,20 +21,20 @@ import {
     GraduationCap,
     AlertTriangle,
     FileSignature,
-    Users
+    Users,
+    CheckCircle2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import images from '@/lib/placeholder-images.json';
 
 // --- AUTHENTIC SOVEREIGN ASSETS ---
-const DASHBOARD_IMAGE = "https://i.postimg.cc/VkkdrySK/Screenshot-2026-05-11-170211.png";
-const MOBILE_LEDGER_IMAGE = "https://i.postimg.cc/y88kgqJb/Screenshot-2026-05-11-170353.png";
-const VITALS_IMAGE = "https://i.postimg.cc/W1Yt09r8/Screenshot-2026-05-11-170634.png";
-const LEDGER_IMAGE = "https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png";
-const FINANCE_IMAGE = "https://i.postimg.cc/g2tr3MRD/Screenshot-2026-05-11-170957.png";
+const DASHBOARD_IMAGE = images.find(i => i.id === 'sovereign-dashboard')?.imageUrl!;
+const MOBILE_LEDGER_IMAGE = images.find(i => i.id === 'sovereign-mobile')?.imageUrl!;
+const VITALS_IMAGE = images.find(i => i.id === 'sovereign-vitals')?.imageUrl!;
+const FINANCE_IMAGE = images.find(i => i.id === 'sovereign-finance')?.imageUrl!;
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
     <section id={id} className={cn("w-full py-10 md:py-16 relative overflow-hidden", className)}>
@@ -49,7 +49,7 @@ const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
     <div className="group space-y-4">
         <div className="relative rounded-xl overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.1)] border border-zinc-200 bg-white">
             <div className="bg-[#111] border-b border-white/10 px-5 py-2 flex items-center gap-2">
-                <div className="flex gap-1">
+                <div className="flex gap-1.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-red-500/40" />
                     <div className="w-1.5 h-1.5 rounded-full bg-amber-500/40" />
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/40" />
@@ -93,7 +93,7 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 
                 {/* --- 1. HERO: THE ONE-GLANCE COMMAND --- */}
-                <section className="relative w-full h-[75svh] flex flex-col justify-center overflow-hidden bg-black text-white">
+                <section className="relative w-full h-[85svh] flex flex-col justify-center overflow-hidden bg-black text-white">
                     <div className="absolute inset-0 z-0">
                         <img 
                             src="https://i.postimg.cc/43gVfgjd/multiplex2.avif" 
@@ -120,7 +120,7 @@ export default function DesignLabPage() {
                                         </p>
                                         <div className="flex flex-col gap-2 border-l-2 border-emerald-500/60 pl-6 max-w-lg">
                                             <p className="text-xs md:text-[13px] text-zinc-400 font-bold leading-relaxed italic">
-                                                Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.
+                                                Built for multiplex leadership where black-screens and concession profit-theft are daily variables you must control.
                                             </p>
                                         </div>
                                     </div>
@@ -177,16 +177,10 @@ export default function DesignLabPage() {
                                         delay="0.4s" 
                                      />
                                      <OperationalAlert 
-                                        title="[!] RISK: FIRE_EXIT_BLOCKAGE" 
-                                        sub="Security Sweep: Sector A-4" 
-                                        time="02:30:12"
-                                        delay="0.6s" 
-                                     />
-                                     <OperationalAlert 
                                         title="[!] ALERT: HVAC_EFFICIENCY" 
                                         sub="High-load thermal spike detected" 
                                         time="04:05:09"
-                                        delay="0.8s" 
+                                        delay="0.6s" 
                                      />
                                  </div>
                             </div>

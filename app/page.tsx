@@ -31,10 +31,11 @@ import Link from 'next/link';
 import { TestimonialsSection } from '@/components/layout/testimonials-section';
 import { FaqSection } from '@/components/layout/faq-section';
 import { Button } from '@/components/ui/button';
+import images from '@/lib/placeholder-images.json';
 
 // --- PRODUCTION CONSTANTS ---
 const BRAND_GREEN = "#22C55E";
-const DASHBOARD_PREVIEW = "https://i.postimg.cc/VkkdrySK/Screenshot-2026-05-11-170211.png";
+const DASHBOARD_PREVIEW = images.find(i => i.id === 'sovereign-dashboard')?.imageUrl!;
 
 const NARRATIVE = {
     line1: "STOP CHASING.",
