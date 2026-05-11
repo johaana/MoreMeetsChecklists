@@ -1,4 +1,3 @@
-
 import PackClientPage from "./pack-client-page";
 import { premiumPacks } from '@/lib/premium-packs';
 import { notFound } from 'next/navigation';
@@ -6,7 +5,6 @@ import type { Metadata } from 'next';
 import { FaqSection } from "@/components/layout/faq-section";
 import { SiteHeader } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import images from '@/lib/placeholder-images.json';
 
 type Props = {
   params: Promise<{ id: string }>
@@ -76,19 +74,19 @@ export default async function Page({ params }: Props) {
     notFound();
   }
 
-  // Map packs to specific technical assets to keep the UI sharp and consistent
+  // Map packs to general sector images to replace technical dashboard backgrounds
   const assetMap: Record<string, string> = {
-      'restaurants': images.find(i => i.id === 'sovereign-dashboard')?.imageUrl!,
-      'hotels_and_resorts': images.find(i => i.id === 'sovereign-ledger')?.imageUrl!,
-      'healthcare_and_hospital_operations': images.find(i => i.id === 'sovereign-vitals')?.imageUrl!,
-      'school_operations_pack': images.find(i => i.id === 'sovereign-dashboard')?.imageUrl!,
-      'franchise_operations_pack': images.find(i => i.id === 'sovereign-finance')?.imageUrl!,
-      'facility_management_blueprint': images.find(i => i.id === 'sovereign-ledger')?.imageUrl!,
-      'cinema_operations_pack': images.find(i => i.id === 'sovereign-vitals')?.imageUrl!,
-      'retail_operations_system': images.find(i => i.id === 'sovereign-dashboard')?.imageUrl!,
+      'restaurants': "https://i.postimg.cc/SK4G7tXq/chef-preparing-recipe.jpg",
+      'hotels_and_resorts': "https://i.postimg.cc/HkX2MCLY/Whats-App-Image-2026-05-06-at-14-19-42.jpg",
+      'healthcare_and_hospital_operations': "https://i.postimg.cc/TPxcqHym/doctors-pushing-emergency-stretcher-bed-corridor.jpg",
+      'school_operations_pack': "https://i.postimg.cc/hPg3YXkg/Schools-school-safety.jpg",
+      'franchise_operations_pack': "https://i.postimg.cc/mrSydNMq/portrait-young-office-worker-woman-sitting-office-desk-with-documents-talking-mobile-phone-nervous-s.jpg",
+      'facility_management_blueprint': "https://i.postimg.cc/SNqtPnBm/facilities-management-2.jpg",
+      'cinema_operations_pack': "https://i.postimg.cc/43gVfgjd/multiplex2.avif",
+      'retail_operations_system': "https://i.postimg.cc/mrSydNMq/portrait-young-office-worker-woman-sitting-office-desk-with-documents-talking-mobile-phone-nervous-s.jpg",
   };
 
-  const heroImageUrl = assetMap[id] || "https://i.postimg.cc/VkkdrySK/Screenshot-2026-05-11-170211.png";
+  const heroImageUrl = assetMap[id] || "https://i.postimg.cc/BvKyg8vX/ceo-engages-phone-call-briefing-with-investor-sharing-insight.jpg";
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F7F8FA]">

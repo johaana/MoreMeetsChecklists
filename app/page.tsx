@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -22,7 +21,12 @@ import {
     School,
     Store,
     Building2,
-    Popcorn
+    Popcorn,
+    Zap,
+    Leaf,
+    Recycle,
+    Wrench,
+    FileSpreadsheet
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -356,6 +360,62 @@ export default function Home() {
                     </div>
                 </Section>
 
+                {/* OPERATIONAL SUSTAINABILITY SECTION */}
+                <Section className="bg-white border-b border-zinc-100">
+                    <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-emerald-600 border-emerald-100 bg-emerald-50 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">OPERATIONAL SUSTAINABILITY</Badge>
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                                Sustainable Operations Through Visibility
+                            </h2>
+                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
+                                Operational discipline reduces waste, extends asset life, improves energy accountability, and creates measurable operational sustainability across teams and facilities.
+                            </p>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {[
+                                { 
+                                    t: "Energy Discipline", 
+                                    d: "Verified shutdown compliance for lighting, HVAC, and idle infrastructure.", 
+                                    i: Zap 
+                                },
+                                { 
+                                    t: "Waste Mitigation", 
+                                    d: "Yield monitoring and operational controls reduce preventable waste and leakage.", 
+                                    i: Recycle 
+                                },
+                                { 
+                                    t: "Asset Longevity", 
+                                    d: "Preventive maintenance rigor extends equipment lifespan and reduces replacement cycles.", 
+                                    i: Wrench 
+                                },
+                                { 
+                                    t: "Paperless Governance", 
+                                    d: "Live operational logs reduce fragmented reporting and paper dependency.", 
+                                    i: FileSpreadsheet 
+                                }
+                            ].map((card, i) => (
+                                <div key={i} className="bg-zinc-50 border border-zinc-100 p-8 rounded-[1.5rem] space-y-6 group hover:bg-white hover:shadow-2xl hover:border-emerald-500/20 transition-all duration-700 text-left">
+                                    <div className="w-12 h-12 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-zinc-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-sm">
+                                        <card.i className="w-6 h-6" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <h4 className="text-lg font-black uppercase italic text-zinc-950 leading-tight">{card.t}</h4>
+                                        <p className="text-[11px] font-bold text-zinc-400 italic uppercase leading-relaxed">{card.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="text-center pt-8">
+                            <p className="text-[13px] text-zinc-400 font-bold uppercase tracking-[0.2em] italic">
+                                Institutional governance is built on measurable resource discipline.
+                            </p>
+                        </div>
+                    </div>
+                </Section>
+
                 <TestimonialsSection />
                 <FaqSection />
                 
@@ -367,8 +427,8 @@ export default function Home() {
                             <h3 className="text-xl md:text-[36px] text-black/60 font-bold italic">Institutional systems. Intentionally priced for everyday operators.</h3>
                         </div>
                         <div className="flex flex-col items-center gap-10 md:gap-14">
-                            <button className="h-[90px] md:h-[120px] px-16 md:px-24 rounded-[30px] bg-black text-white font-black uppercase italic text-2xl md:text-5xl shadow-2xl hover:scale-[1.05] active:scale-95 transition-all border-none group w-full max-w-2xl mx-auto flex items-center justify-center">
-                                <Link href="/library" className="flex items-center gap-8 justify-center">Live in 10 minutes <ArrowRight className="w-10 h-10 md:w-16 md:h-16 transition-transform group-hover:translate-x-4" /></Link>
+                            <button className="h-14 min-[400px]:h-[90px] md:h-[120px] px-8 min-[400px]:px-16 md:px-24 rounded-[20px] min-[400px]:rounded-[30px] bg-black text-white font-black uppercase italic text-lg min-[400px]:text-2xl md:text-5xl shadow-2xl hover:scale-[1.05] active:scale-95 transition-all border-none group w-full max-w-2xl mx-auto flex items-center justify-center">
+                                <Link href="/library" className="flex items-center gap-4 min-[400px]:gap-8 justify-center">Live in 10 minutes <ArrowRight className="w-6 h-6 min-[400px]:w-10 min-[400px]:h-10 md:w-16 md:h-16 transition-transform group-hover:translate-x-4" /></Link>
                             </button>
                             <div className="flex flex-col items-center gap-3">
                                 <div className="flex items-baseline gap-5">
