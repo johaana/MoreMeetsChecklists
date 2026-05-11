@@ -115,12 +115,12 @@ export default function DesignLabPage() {
                                         <Badge variant="outline" className="text-zinc-600 border-zinc-800 uppercase tracking-[0.4em] font-black text-[7px] px-2.5 py-1 rounded-none bg-white/5 italic">SYS_REF: CINEMA_SOVEREIGN</Badge>
                                         <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.4em] font-black text-[7px] px-2.5 py-1 rounded-none bg-emerald-500/5 italic leading-none">OPERATIONAL_INFRASTRUCTURE</Badge>
                                     </div>
-                                    <h1 className="text-[30px] md:text-5xl lg:text-6xl font-black font-headline tracking-tighter uppercase italic leading-[0.82] text-white">
+                                    <h1 className="text-[30px] md:text-5xl lg:text-5xl font-black font-headline tracking-tighter uppercase italic leading-[0.82] text-white">
                                         STOP OPERATIONAL DRIFT. <br/> <span className="text-emerald-500">START SEEING EVERY SCREEN.</span>
                                     </h1>
                                     <div className="space-y-4 pt-1">
                                         <p className="text-sm md:text-lg font-black italic text-zinc-300 max-w-2xl leading-tight uppercase tracking-tight">
-                                            TECHNICAL COMMAND FOR SHOW READINESS, <br className="hidden md:block" /> CONCESSION YIELDS, AND DAILY EXECUTION.
+                                            TECHNICAL COMMAND FOR SHOW READINESS, <br className="hidden md:block" /> CROWD FLOW, AND CONCESSION YIELD.
                                         </p>
                                         <div className="flex flex-col gap-2 border-l-2 border-emerald-500/60 pl-6 max-w-lg">
                                             <p className="text-xs md:text-[13px] text-zinc-400 font-bold leading-relaxed italic">
@@ -198,13 +198,13 @@ export default function DesignLabPage() {
                     </div>
                 </section>
 
-                {/* --- 2. SYSTEM MODULES: INFRASTRUCTURE GRID --- */}
+                {/* --- 2. SYSTEM MODULES: INFRASTRUCTURE GRID (REFRESHED) --- */}
                 <Section className="bg-white border-b border-zinc-100" id="modules">
                     <div className="max-w-[1100px] mx-auto space-y-10 md:space-y-14">
                         <div className="text-center space-y-2">
                             <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[8px]">INFRASTRUCTURE COMPONENTS</Badge>
                             <h2 className="text-[26px] md:text-4xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">The Engine Core</h2>
-                            <p className="text-zinc-500 text-[9px] md:text-[10px] font-bold italic uppercase tracking-widest">A complete technical ecosystem delivered as one integrated master engine</p>
+                            <p className="text-zinc-500 text-[9px] md:text-[10px] font-bold italic uppercase tracking-widest">A COMPLETE TECHNICAL ECOSYSTEM DELIVERED AS ONE INTEGRATED MASTER ENGINE</p>
                         </div>
                         
                         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
@@ -221,16 +221,16 @@ export default function DesignLabPage() {
                                 { t: "INCIDENT REGISTRY", i: ShieldAlert }
                             ].map((item, i) => (
                                 <div key={i} className={cn(
-                                    "p-5 md:p-6 rounded-xl border border-zinc-100 bg-zinc-50/20 flex flex-col items-center justify-center gap-4 transition-all group h-[160px] md:h-[180px] shadow-sm text-center relative",
-                                    item.active && "ring-1 ring-emerald-500/20 border-emerald-500/20 bg-white"
+                                    "p-5 md:p-6 rounded-2xl border flex flex-col items-center justify-center gap-4 transition-all group h-[160px] md:h-[180px] shadow-sm text-center relative bg-white",
+                                    item.active ? "ring-2 ring-emerald-500 border-emerald-500 shadow-emerald-500/10" : "border-zinc-200 hover:border-emerald-500/40"
                                 )}>
                                     <item.i className={cn(
                                         "w-8 h-8 md:w-10 md:h-10 transition-all duration-500",
-                                        item.active ? "text-emerald-500" : "text-zinc-300 group-hover:text-emerald-500/60"
+                                        item.active ? "text-emerald-500" : "text-zinc-400 group-hover:text-emerald-500"
                                     )} />
                                     <span className={cn(
                                         "text-[8px] font-black uppercase tracking-widest leading-tight italic",
-                                        item.active ? "text-zinc-800" : "text-zinc-400 group-hover:text-zinc-600"
+                                        item.active ? "text-zinc-900" : "text-zinc-900 group-hover:text-emerald-600"
                                     )}>{item.t}</span>
                                 </div>
                             ))}
