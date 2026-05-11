@@ -24,12 +24,170 @@ import {
     Sparkles,
     Leaf,
     Recycle,
-    Wrench
+    Wrench,
+    FileSignature,
+    Monitor,
+    Popcorn,
+    Projector,
+    Ticket,
+    ChevronRight,
+    SearchCheck
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
 import { packResolutions, defaultResolution } from '@/lib/pack-resolutions';
 import { IconComponent } from '@/components/icons';
+
+// --- SECTOR METADATA: THE SOVEREIGN MANDATE ---
+const SECTOR_METADATA: Record<string, {
+    marquee: string[];
+    sustainability: { t: string; d: string; i: any }[];
+}> = {
+    'restaurants': {
+        marquee: [
+            "HACCP COMPLIANCE SECURED",
+            "MARGIN LEAKAGE PLUGGED",
+            "STATION CONSISTENCY VERIFIED",
+            "WASTE AT SOURCE TRACKED",
+            "COLD-CHAIN FAILURE PREVENTED",
+            "VOID-BILL FRAUD STOPPED"
+        ],
+        sustainability: [
+            { t: "ENERGY DISCIPLINE", d: "Daily AC and lighting shutdown logs for unoccupied dining zones stop unmonitored power waste.", i: Zap },
+            { t: "RESOURCE CONSERVATION", d: "Water vitals logging and faucet aerator audits reduce utility consumption by 15%.", i: Leaf },
+            { t: "WASTE MITIGATION", d: "Prep waste tracking and food-cost variance monitoring identify overproduction before the bin.", i: Recycle },
+            { t: "ASSET LONGEVITY", d: "Scheduled kitchen equipment deep-cleaning extends the lifespan of reach-ins and fryers.", i: Wrench }
+        ]
+    },
+    'hotels_and_resorts': {
+        marquee: [
+            "GUEST PRIVACY SECURED",
+            "ROOM STANDARDS VERIFIED",
+            "MEP UPTIME MONITORED",
+            "RATING DRIFT PREVENTED",
+            "STATUTORY LOGS AUDIT-READY",
+            "MASTER-KEY FRAUD STOPPED"
+        ],
+        sustainability: [
+            { t: "ENERGY DISCIPLINE", d: "Automated HVAC setback protocols for vacant rooms reduce energy overheads significantly.", i: Zap },
+            { t: "RESOURCE CONSERVATION", d: "Daily water meter parity checks detect underground plumbing leaks before they damage infrastructure.", i: Leaf },
+            { t: "WASTE MITIGATION", d: "Linen grey-scale audits and chemical dosing calibration reduce water and detergent waste.", i: Recycle },
+            { t: "ASSET LONGEVITY", d: "Preventive maintenance for boilers and chillers extends asset life and prevents emergency CAPEX.", i: Wrench }
+        ]
+    },
+    'healthcare_and_hospital_operations': {
+        marquee: [
+            "NEVER-EVENTS PREVENTED",
+            "INFECTION RISK MITIGATED",
+            "NARCOTICS CONTROL SECURED",
+            "AUDIT-READINESS PERMANENT",
+            "PATIENT SAFETY OBSERVABLE",
+            "STERILITY DRIFT STOPPED"
+        ],
+        sustainability: [
+            { t: "ENERGY DISCIPLINE", d: "Medical equipment idle-power checks and lighting shutdown logs in non-clinical zones.", i: Zap },
+            { t: "RESOURCE CONSERVATION", d: "Water TDS monitoring and RO system backwash cycles ensure resource purity and efficiency.", i: Leaf },
+            { t: "WASTE MITIGATION", d: "Bio-medical waste segregation at source reduces hazardous disposal costs and environmental footprint.", i: Recycle },
+            { t: "ASSET LONGEVITY", d: "Technical uptime audits for MRI/CT suites and UPS banks extend the life of life-saving hardware.", i: Wrench }
+        ]
+    },
+    'school_operations_pack': {
+        marquee: [
+            "CHILD SAFETY SECURED",
+            "TRANSPORT RISK MITIGATED",
+            "CAMPUS READINESS VERIFIED",
+            "POCSO COMPLIANCE AUDIT-READY",
+            "EMERGENCY PREPAREDNESS LOGGED",
+            "STAFF VETTING TRACKED"
+        ],
+        sustainability: [
+            { t: "ENERGY DISCIPLINE", d: "Classroom and library shutdown compliance logs stop unmonitored lighting and AC waste.", i: Zap },
+            { t: "RESOURCE CONSERVATION", d: "Potable water point hygiene and plumbing leak patrols reduce campus utility wastage.", i: Leaf },
+            { t: "WASTE MITIGATION", d: "Canteen yield monitoring and zero-junk zone patrolling reduce food waste and packaging litter.", i: Recycle },
+            { t: "ASSET LONGEVITY", d: "Playground and mechanical structural audits extend equipment life and reduce e-waste.", i: Wrench }
+        ]
+    },
+    'franchise_operations_pack': {
+        marquee: [
+            "ROYALTY LEAKAGE PLUGGED",
+            "BRAND PARITY ENFORCED",
+            "NETWORK RISK TRIAGED",
+            "MANAGERS STOP CHASING",
+            "UNIT HEALTH OBSERVABLE",
+            "NETWORK DRIFT STOPPED"
+        ],
+        sustainability: [
+            { t: "ENERGY DISCIPLINE", d: "Multi-unit AC shutdown logs and energy-benchmark monitoring across all franchise locations.", i: Zap },
+            { t: "RESOURCE CONSERVATION", d: "Water meter logging and leak detection protocols enforced across the entire network.", i: Leaf },
+            { t: "WASTE MITIGATION", d: "Centralized supply chain yield audits reduce inventory waste and packaging environmental footprint.", i: Recycle },
+            { t: "ASSET LONGEVITY", d: "Preventive maintenance audits for standardized equipment extend fleet and store-asset lifespan.", i: Wrench }
+        ]
+    },
+    'facility_management_blueprint': {
+        marquee: [
+            "UTILITY BLACKOUTS PREVENTED",
+            "CONTRACTOR LIABILITY MITIGATED",
+            "ENERGY SPIKES TRACED",
+            "INFRASTRUCTURE DECAY STOPPED",
+            "FIRE NOC AUDIT-READY",
+            "MEP UPTIME SECURED"
+        ],
+        sustainability: [
+            { t: "ENERGY DISCIPLINE", d: "BMS panel health monitoring and KWH meter variance tracking eliminate unmonitored energy spikes.", i: Zap },
+            { t: "RESOURCE CONSERVATION", d: "STP/WTP effluent pulse monitoring and tank overflow logic prevent water resource wastage.", i: Leaf },
+            { t: "WASTE MITIGATION", d: "Hazardous waste disposal manifests and recycling weights logged for 100% environmental compliance.", i: Recycle },
+            { t: "ASSET LONGEVITY", d: "Detailed panel thermography and pump bearing audits extend the life of heavy MEP infrastructure.", i: Wrench }
+        ]
+    },
+    'retail_operations_system': {
+        marquee: [
+            "INVENTORY THEFT PREVENTED",
+            "BRAND PARITY ENFORCED",
+            "SHRINKAGE IDENTIFIED EARLY",
+            "COMPLIANCE RISK MITIGATED",
+            "SERVICE STANDARDS VERIFIED",
+            "VOID-BILL FRAUD STOPPED"
+        ],
+        sustainability: [
+            { t: "ENERGY DISCIPLINE", d: "Storefront and showroom lighting shutdown compliance logs for after-hours energy savings.", i: Zap },
+            { t: "RESOURCE CONSERVATION", d: "Cleaning chemical dilution calibration and spill kit readiness reduce chemical and water waste.", i: Leaf },
+            { t: "WASTE MITIGATION", d: "Markdown logic and expiry sweep protocols identify perishable waste before it becomes total loss.", i: Recycle },
+            { t: "ASSET LONGEVITY", d: "Thermal battery logs and serialized asset audits extend the life of demo tech and floor hardware.", i: Wrench }
+        ]
+    },
+    'cinema_operations_pack': {
+        marquee: [
+            "BLACK-SCREEN INCIDENTS PREVENTED",
+            "CONCESSION LEAKAGE PLUGGED",
+            "MISSED FIRE SAFETY CHECKS ELIMINATED",
+            "UNVERIFIED SHOW READINESS STOPPED",
+            "LOST INTERVAL REVENUE RECLAIMED",
+            "EXPIRED KDM BLACKOUTS AVOIDED"
+        ],
+        sustainability: [
+            { t: "ENERGY DISCIPLINE", d: "Daily AC shutdown compliance logs for empty auditoriums stop unmonitored power waste.", i: Zap },
+            { t: "RESOURCE CONSERVATION", d: "Water vitals logging and overnight leak detection through digital meter-parity checks.", i: Leaf },
+            { t: "WASTE MITIGATION", d: "Concession yield logic (corn-to-bucket) identifies production waste before it reaches the bin.", i: Recycle },
+            { t: "ASSET LONGEVITY", d: "Preventive uptime audits extend technical hardware life by 30%, reducing e-waste footprint.", i: Wrench }
+        ]
+    }
+};
+
+const DEFAULT_MARQUEE = [
+    "OPERATIONAL DRIFT PREVENTED",
+    "REVENUE LEAKAGE PLUGGED",
+    "MISSED SAFETY CHECKS ELIMINATED",
+    "UNVERIFIED READINESS STOPPED",
+    "INSTITUTIONAL MEMORY SECURED",
+    "AUDIT FAILURE AVOIDED"
+];
+
+const DEFAULT_SUSTAINABILITY = [
+    { t: "ENERGY DISCIPLINE", d: "Verified shutdown compliance for lighting, HVAC, and idle infrastructure.", i: Zap },
+    { t: "RESOURCE CONSERVATION", d: "Resource vitals logging and overnight leak detection through digital checks.", i: Leaf },
+    { t: "WASTE MITIGATION", d: "Yield monitoring and operational controls reduce preventable waste and leakage.", i: Recycle },
+    { t: "ASSET LONGEVITY", d: "Preventive maintenance rigor extends equipment lifespan and reduces replacement cycles.", i: Wrench }
+];
 
 interface SectionProps {
     children: React.ReactNode;
@@ -46,6 +204,38 @@ function Section({ children, className, id, noSpine = false }: SectionProps) {
                 {children}
             </div>
         </section>
+    );
+}
+
+function BrowserFrame({ src, viewLabel }: { src: string, viewLabel: string }) {
+    return (
+        <div className="group space-y-3 w-full max-w-lg mx-auto">
+            <div className="relative rounded-[1rem] overflow-hidden shadow-2xl border border-zinc-200 bg-[#0A0F19] transition-all duration-1000">
+                <div className="bg-[#0D121F] border-b border-white/5 px-4 py-2 flex items-center gap-3">
+                    <div className="flex gap-1">
+                        <div className="w-1 h-1 rounded-full bg-red-500/20" />
+                        <div className="w-1 h-1 rounded-full bg-amber-500/20" />
+                        <div className="w-1 h-1 rounded-full bg-emerald-500/20" />
+                    </div>
+                    <div className="flex-1 flex justify-center">
+                        <div className="bg-black/40 border border-white/5 rounded px-6 py-0.5 text-[7px] font-black text-white/20 uppercase tracking-[0.4em] italic leading-none">
+                            moremeets-master-engine.xlsx
+                        </div>
+                    </div>
+                </div>
+                <div className="relative w-full h-[120px] md:h-[160px] overflow-hidden bg-zinc-900">
+                    <img 
+                        src={src} 
+                        alt={viewLabel} 
+                        className="w-full h-auto object-cover object-top grayscale-[0.6] group-hover:grayscale-[0.3] transition-all duration-1000 opacity-30 group-hover:opacity-60 blur-[2px] group-hover:blur-[1px]" 
+                    />
+                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0A0F19] via-transparent to-transparent pointer-events-none" />
+                </div>
+            </div>
+            <div className="flex flex-col items-center">
+                <span className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.3em] italic leading-none">{viewLabel}</span>
+            </div>
+        </div>
     );
 }
 
@@ -66,7 +256,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     if (!mounted) return null;
 
     const res = packResolutions[pack.id] || defaultResolution;
-    const isCinema = pack.id === 'cinema_operations_pack';
+    const sectorData = SECTOR_METADATA[pack.id] || { marquee: DEFAULT_MARQUEE, sustainability: DEFAULT_SUSTAINABILITY };
     
     const getVerticalName = (p: PremiumPack) => {
         const title = p.title.toLowerCase();
@@ -170,35 +360,32 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </section>
 
-            {/* --- CINEMA EXCLUSIVE: RED MARQUEE --- */}
-            {isCinema && (
-                <div className="w-full bg-[#E11D48] py-4 md:py-6 overflow-hidden border-y border-black/10 relative z-30">
-                    <div className="flex flex-nowrap items-center gap-20 animate-marquee whitespace-nowrap px-10">
-                        {[
-                            "BLACK-SCREEN INCIDENTS PREVENTED",
-                            "CONCESSION LEAKAGE PLUGGED",
-                            "MISSED FIRE SAFETY CHECKS ELIMINATED",
-                            "UNVERIFIED SHOW READINESS STOPPED",
-                            "LOST INTERVAL REVENUE RECLAIMED",
-                            "EXPIRED KDM BLACKOUTS AVOIDED"
-                        ].map((text, i) => (
-                            <span key={i} className="text-[11px] md:text-[14px] font-black text-white uppercase tracking-[0.3em] italic flex items-center gap-5">
-                                <ShieldAlert className="w-5 h-5" /> {text}
-                            </span>
-                        ))}
-                    </div>
+            {/* --- SECTOR EXCLUSIVE: RED MARQUEE --- */}
+            <div className="w-full bg-[#E11D48] py-4 md:py-6 overflow-hidden border-y border-black/10 relative z-30">
+                <div className="flex flex-nowrap items-center gap-20 animate-marquee whitespace-nowrap px-10">
+                    {sectorData.marquee.map((text, i) => (
+                        <span key={i} className="text-[11px] md:text-[14px] font-black text-white uppercase tracking-[0.3em] italic flex items-center gap-5">
+                            <ShieldAlert className="w-5 h-5" /> {text}
+                        </span>
+                    ))}
+                    {/* Duplicate for seamless loop */}
+                    {sectorData.marquee.map((text, i) => (
+                        <span key={`dup-${i}`} className="text-[11px] md:text-[14px] font-black text-white uppercase tracking-[0.3em] italic flex items-center gap-5">
+                            <ShieldAlert className="w-5 h-5" /> {text}
+                        </span>
+                    ))}
                 </div>
-            )}
+            </div>
 
             {/* --- SECTION 2: WHY EXECUTION BREAKS --- */}
             <Section className="bg-white border-b border-zinc-100">
                 <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
                         <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50/50 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">OPERATIONAL REALITY</Badge>
-                        <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                        <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
                             Why daily execution breaks
                         </h2>
-                        <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
+                        <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto text-center">
                             {res.whyExecutionBreaksParagraph}
                         </p>
                     </div>
@@ -225,24 +412,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
                         ))}
                     </div>
-
-                    {res.consequences && (
-                        <div className="mt-24 pt-12 border-t border-zinc-100">
-                             <div className="flex items-center gap-3 justify-center mb-8">
-                                <div className="w-1 h-4 bg-red-500" />
-                                <p className="text-[9px] font-black text-red-500 uppercase tracking-[0.5em] italic font-headline">FAILURE CONSEQUENCES</p>
-                            </div>
-                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-                                {res.consequences.map((c, i) => (
-                                    <div key={i} className="p-4 md:p-6 rounded-xl bg-zinc-950 text-white space-y-2 relative overflow-hidden group">
-                                        <div className="absolute top-0 right-0 w-1 h-full bg-red-600/20 group-hover:bg-red-600 transition-colors" />
-                                        <p className="text-[8px] md:text-[10px] font-black uppercase text-red-500 tracking-widest leading-tight">{c.title}</p>
-                                        <p className="text-[9px] md:text-[12px] font-bold italic text-zinc-400 leading-tight">→ {c.fallout}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
                 </div>
             </Section>
 
@@ -251,12 +420,9 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
                         <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">RESOLUTION PROTOCOL</Badge>
-                        <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                        <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
                             How the system restores control
                         </h2>
-                        <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
-                            MoreMeets™ converts operational dependence on memory into daily institutional visibility. Our <strong>operational SOPs</strong> convert critical functions into assigned execution and <strong>compliance tracking</strong>.
-                        </p>
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 relative">
@@ -306,80 +472,64 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- SECTION: OPERATIONAL CONTINUITY --- */}
-            <Section className="bg-white border-t border-zinc-100">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid lg:grid-cols-[1fr,450px] gap-10 md:gap-20 items-center">
-                        <div className="space-y-6 text-left">
-                            <div className="space-y-3">
-                                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">
-                                    OPERATIONAL CONTINUITY
-                                </Badge>
-
-                                <h2 className="text-[28px] md:text-[50px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.95]">
-                                    Standards Stay. <br/> Even When People Leave.
-                                </h2>
-                            </div>
-
+            {/* --- SECTION: TECHNICAL PROOF (HUD ARTIFACTS) --- */}
+            <Section className="bg-white" id="evidence">
+                <div className="max-w-6xl mx-auto space-y-16 md:space-y-32">
+                    <div className="grid lg:grid-cols-[0.8fr,1.2fr] gap-12 lg:gap-24 items-center">
+                        <div className="space-y-8 text-left">
                             <div className="space-y-4">
-                                <p className="text-zinc-500 text-lg md:text-xl font-bold italic leading-tight">
-                                    Most operations silently depend on a few experienced people remembering everything.
-                                </p>
-
-                                <p className="text-zinc-600 text-sm md:text-base font-medium leading-relaxed border-l-2 border-primary/20 pl-6 max-w-xl">
-                                    MoreMeets™ converts institutional knowledge into visible daily execution — so <strong>daily operations management</strong> survives resignations, rapid hiring, shift changes, and multi-location expansion.
+                                <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[9px] px-6 py-1.5 rounded-none italic bg-zinc-50">TECHNICAL PROOF</Badge>
+                                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-left">
+                                    Executive <br/> Operations View
+                                </h2>
+                                <p className="text-zinc-500 text-sm md:text-base font-bold italic uppercase leading-relaxed border-l-2 border-primary/20 pl-8 text-left">
+                                    Know what's done and what's missed without attending a single meeting. Real-time visibility into multi-unit health.
                                 </p>
                             </div>
                         </div>
+                        <div className="w-full">
+                            <BrowserFrame src="https://i.postimg.cc/W1Yt09r8/Screenshot-2026-05-11-170634.png" viewLabel="EXECUTIVE COMMAND PULSE" />
+                        </div>
+                    </div>
 
-                        <div className="space-y-2 w-full">
-                            {[
-                                "New managers onboard faster",
-                                "Critical routines stop living in memory",
-                                "Operational standards remain consistent",
-                                "Teams follow one shared system",
-                                "Execution becomes independent of individuals"
-                            ].map((item, i) => (
-                                <div
-                                    key={i}
-                                    className="flex items-center gap-4 p-4 md:p-5 bg-zinc-50 border border-zinc-100 rounded-[1.2rem] group hover:border-primary/30 hover:bg-white hover:shadow-xl transition-all duration-500"
-                                >
-                                    <div className="w-1.5 h-1.5 rounded-full bg-primary/30 group-hover:bg-primary group-hover:scale-125 transition-all" />
-
-                                    <span className="text-[10px] md:text-[12px] font-black uppercase tracking-widest text-zinc-400 group-hover:text-zinc-950 transition-colors">
-                                        {item}
-                                    </span>
-                                </div>
-                            ))}
+                    <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-24 items-center">
+                        <div className="order-2 lg:order-1 w-full">
+                            <BrowserFrame src="https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png" viewLabel="DAILY EXECUTION LEDGER" />
+                        </div>
+                        <div className="space-y-8 text-left order-1 lg:order-2">
+                            <div className="space-y-4">
+                                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-left lg:text-right">
+                                    Staff Mobile <br/> Execution
+                                </h2>
+                                <p className="text-zinc-500 text-sm md:text-base font-bold italic uppercase leading-relaxed border-r-2 border-primary/20 pr-8 text-left lg:text-right">
+                                    No app training required. Staff log completion in seconds. If it's not logged, it's not done.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </Section>
 
-            {/* --- SECTION: OPERATIONAL DIVISIONS --- */}
-            <Section className="bg-zinc-50 border-y border-zinc-100">
-                <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
-                    <div className="text-center space-y-4">
-                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">TECHNICAL DENSITY</Badge>
-                        <h2 className="text-[28px] md:text-[50px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.95]">
-                            Operational <br className="md:hidden" /> Divisions
-                        </h2>
-                        <p className="text-zinc-500 text-base md:text-lg font-medium italic max-w-2xl mx-auto">
-                            The full architecture of the Sovereign Engine. Optimized for <strong>audit-ready systems</strong> and one-glance control.
+            {/* --- SECTION: OPERATIONAL SUSTAINABILITY --- */}
+            <Section className="bg-white border-t border-zinc-100" id="esg">
+                <div className="max-w-4xl mx-auto space-y-16">
+                    <div className="space-y-6 text-center">
+                        <Badge variant="outline" className="text-emerald-600 border-emerald-100 bg-emerald-50 uppercase tracking-[0.5em] font-black text-[10px] italic px-10 py-3 rounded-none">OPERATIONAL SUSTAINABILITY</Badge>
+                        <h2 className="text-[34px] md:text-[64px] font-black font-headline uppercase italic leading-[0.9] tracking-tighter text-center">Sustainability through Rigor.</h2>
+                        <p className="text-zinc-500 text-lg md:text-xl font-bold italic leading-tight uppercase border-l-2 border-emerald-500/20 pl-8 mx-auto max-w-xl text-center">
+                            Environmental sustainability isn't a report. It's the byproduct of daily operational discipline and visibility.
                         </p>
                     </div>
-
-                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 max-w-5xl mx-auto">
-                        {pack.checklists.map((checklist, index) => (
-                            <div key={index} className="flex flex-col gap-3 p-5 md:p-8 rounded-[1.2rem] md:rounded-[2rem] border border-zinc-200 bg-white shadow-sm hover:shadow-xl transition-all duration-500 group text-left">
-                                <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-zinc-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-inner">
-                                    <IconComponent name={checklist.icon} className="w-4 h-4 md:w-6 md:h-6" />
+                    
+                    <div className="grid sm:grid-cols-2 gap-8 md:gap-12 text-left">
+                        {sectorData.sustainability.map((item, i) => (
+                            <div key={i} className="flex flex-col gap-4 items-start group">
+                                <div className="w-12 h-12 rounded-2xl bg-zinc-50 border border-zinc-100 flex items-center justify-center text-zinc-400 shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-inner">
+                                    <item.i className="w-6 h-6" />
                                 </div>
-                                <div className="space-y-1">
-                                    <h4 className="text-[11px] md:text-lg font-black uppercase italic tracking-tighter text-zinc-950 leading-tight">
-                                        {checklist.title}
-                                    </h4>
-                                    <p className="text-[8px] md:text-[9px] text-primary font-black uppercase tracking-[0.2em]">{checklist.tasks.length} SOPS</p>
+                                <div className="space-y-2">
+                                    <h4 className="text-lg font-black uppercase italic text-zinc-950 leading-tight text-left">{item.t}</h4>
+                                    <p className="text-[11px] font-bold text-zinc-400 italic uppercase leading-relaxed text-left">{item.d}</p>
                                 </div>
                             </div>
                         ))}
@@ -387,17 +537,14 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- SECTION 7: BUILT FOR REAL TEAMS --- */}
-            <Section className="bg-white">
+            {/* --- SECTION: BUILT FOR REAL TEAMS --- */}
+            <Section className="bg-zinc-50 border-y border-zinc-100">
                 <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
                         <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">OPERATIONAL REASSURANCE</Badge>
                         <h2 className="text-[28px] md:text-[50px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.95]">
                             Built for real teams
                         </h2>
-                        <p className="text-zinc-500 text-base md:text-lg font-medium italic max-w-2xl mx-auto">
-                            Institutional maturity is when daily responsibilities move from individual memory to visible institutional execution.
-                        </p>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
@@ -433,8 +580,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 i: ShieldCheck
                             }
                         ].map((item, i) => (
-                            <div key={i} className="flex flex-col gap-5 p-8 bg-zinc-50 rounded-[2rem] border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-500 group text-left">
-                                <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-inner">
+                            <div key={i} className="flex flex-col gap-5 p-8 bg-white rounded-[2rem] border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-500 group text-left">
+                                <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-inner">
                                     <item.i className="w-6 h-6" />
                                 </div>
                                 <div className="space-y-2 text-left">
@@ -447,45 +594,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- CINEMA EXCLUSIVE: OPERATIONAL SUSTAINABILITY --- */}
-            {isCinema && (
-                <Section className="bg-white border-t border-zinc-100" id="esg">
-                    <div className="max-w-4xl mx-auto space-y-16">
-                        <div className="space-y-6 text-center">
-                            <Badge variant="outline" className="text-emerald-600 border-emerald-100 bg-emerald-50 uppercase tracking-[0.5em] font-black text-[10px] italic px-10 py-3 rounded-none">OPERATIONAL SUSTAINABILITY</Badge>
-                            <h2 className="text-[34px] md:text-[64px] font-black font-headline uppercase italic leading-[0.9] tracking-tighter text-center">Sustainability through Rigor.</h2>
-                            <p className="text-zinc-500 text-lg md:text-xl font-bold italic leading-tight uppercase border-l-2 border-emerald-500/20 pl-8 mx-auto max-w-xl text-center">
-                                Environmental sustainability isn't a report. It's the byproduct of daily operational discipline and visibility.
-                            </p>
-                        </div>
-                        
-                        <div className="grid sm:grid-cols-2 gap-8 md:gap-12 text-left">
-                            {[
-                                { t: "ENERGY DISCIPLINE", d: "Daily AC shutdown compliance logs for empty auditoriums stop unmonitored power waste.", i: Zap },
-                                { t: "RESOURCE CONSERVATION", d: "Water vitals logging and overnight leak detection through digital meter-parity checks.", i: Leaf },
-                                { t: "WASTE MITIGATION", d: "Concession yield logic (corn-to-bucket) identifies production waste before it reaches the bin.", i: Recycle },
-                                { t: "ASSET LONGEVITY", d: "Preventive uptime audits extend technical hardware life by 30%, reducing e-waste footprint.", i: Wrench }
-                            ].map((item, i) => (
-                                <div key={i} className="flex flex-col gap-4 items-start group">
-                                    <div className="w-12 h-12 rounded-2xl bg-zinc-50 border border-zinc-100 flex items-center justify-center text-zinc-400 shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-inner">
-                                        <item.i className="w-6 h-6" />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <h4 className="text-lg font-black uppercase italic text-zinc-950 leading-tight text-left">{item.t}</h4>
-                                        <p className="text-[11px] font-bold text-zinc-400 italic uppercase leading-relaxed text-left">{item.d}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </Section>
-            )}
-
-            {/* --- PRICING BRIDGE --- */}
+            {/* --- PRICING SECTION --- */}
             <div id="pricing" className="scroll-mt-20" />
             <PricingClient pack={pack} />
 
-            {/* --- CUSTOMIZATION BRIDGE (MOVED BELOW PRICING) --- */}
+            {/* --- CUSTOMIZATION BRIDGE --- */}
             <Section className="bg-zinc-950 text-white" noSpine>
                 <div className="max-w-4xl mx-auto p-10 md:p-16 rounded-[2rem] border border-white/10 bg-white/[0.02] relative overflow-hidden text-center space-y-8">
                     <div className="absolute top-0 right-0 p-8 opacity-5">
@@ -561,3 +674,4 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         </div>
     );
 }
+
