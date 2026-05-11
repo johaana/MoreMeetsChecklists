@@ -1,3 +1,4 @@
+
 import PackClientPage from "./pack-client-page";
 import { premiumPacks } from '@/lib/premium-packs';
 import { notFound } from 'next/navigation';
@@ -38,7 +39,6 @@ export async function generateMetadata(
   const title = `MoreMeets™ | ${pack.title}`;
   const description = descriptions[id] || `Pre-built ${pack.category} operational SOPs with live dashboard visibility and audit-ready daily execution tracking. Own your data forever.`;
   
-  // Use the high-gravity master dashboard as the OG image
   const ogImage = "https://i.postimg.cc/VkkdrySK/Screenshot-2026-05-11-170211.png";
 
   return {
@@ -74,25 +74,55 @@ export default async function Page({ params }: Props) {
     notFound();
   }
 
-  // Map packs to general sector images to replace technical dashboard backgrounds
-  const assetMap: Record<string, string> = {
-      'restaurants': "https://i.postimg.cc/SK4G7tXq/chef-preparing-recipe.jpg",
-      'hotels_and_resorts': "https://i.postimg.cc/HkX2MCLY/Whats-App-Image-2026-05-06-at-14-19-42.jpg",
-      'healthcare_and_hospital_operations': "https://i.postimg.cc/TPxcqHym/doctors-pushing-emergency-stretcher-bed-corridor.jpg",
-      'school_operations_pack': "https://i.postimg.cc/hPg3YXkg/Schools-school-safety.jpg",
-      'franchise_operations_pack': "https://i.postimg.cc/mrSydNMq/portrait-young-office-worker-woman-sitting-office-desk-with-documents-talking-mobile-phone-nervous-s.jpg",
-      'facility_management_blueprint': "https://i.postimg.cc/SNqtPnBm/facilities-management-2.jpg",
-      'cinema_operations_pack': "https://i.postimg.cc/43gVfgjd/multiplex2.avif",
-      'retail_operations_system': "https://i.postimg.cc/mrSydNMq/portrait-young-office-worker-woman-sitting-office-desk-with-documents-talking-mobile-phone-nervous-s.jpg",
+  /**
+   * SOVEREIGN ASSET MAPPING v11.9
+   * Strategy: Background (Atmospheric/Architectural) + Squircle (Operational Evidence)
+   */
+  const assetMap: Record<string, { bg: string, squircle: string }> = {
+      'restaurants': {
+          bg: "https://i.postimg.cc/SK4G7tXq/chef-preparing-recipe.jpg",
+          squircle: "https://i.postimg.cc/NFNPhCzy/concession-area-cinema.jpg" // Placeholder for restaurant ops
+      },
+      'hotels_and_resorts': {
+          bg: "https://i.postimg.cc/HkX2MCLY/Whats-App-Image-2026-05-06-at-14-19-42.jpg",
+          squircle: "https://i.postimg.cc/SNqtPnBm/facilities-management-2.jpg"
+      },
+      'healthcare_and_hospital_operations': {
+          bg: "https://i.postimg.cc/TPxcqHym/doctors-pushing-emergency-stretcher-bed-corridor.jpg",
+          squircle: "https://i.postimg.cc/TPxcqHym/doctors-pushing-emergency-stretcher-bed-corridor.jpg"
+      },
+      'school_operations_pack': {
+          bg: "https://i.postimg.cc/hPg3YXkg/Schools-school-safety.jpg",
+          squircle: "https://i.postimg.cc/hPg3YXkg/Schools-school-safety.jpg"
+      },
+      'franchise_operations_pack': {
+          bg: "https://i.postimg.cc/mrSydNMq/portrait-young-office-worker-woman-sitting-office-desk-with-documents-talking-mobile-phone-nervous-s.jpg",
+          squircle: "https://i.postimg.cc/mrSydNMq/portrait-young-office-worker-woman-sitting-office-desk-with-documents-talking-mobile-phone-nervous-s.jpg"
+      },
+      'facility_management_blueprint': {
+          bg: "https://i.postimg.cc/SNqtPnBm/facilities-management-2.jpg",
+          squircle: "https://i.postimg.cc/SNqtPnBm/facilities-management-2.jpg"
+      },
+      'cinema_operations_pack': {
+          bg: "https://i.postimg.cc/SsfvdxLv/view-3d-cinema-theatre-room.jpg",
+          squircle: "https://i.postimg.cc/NFNPhCzy/concession-area-cinema.jpg"
+      },
+      'retail_operations_system': {
+          bg: "https://i.postimg.cc/mrSydNMq/portrait-young-office-worker-woman-sitting-office-desk-with-documents-talking-mobile-phone-nervous-s.jpg",
+          squircle: "https://i.postimg.cc/mrSydNMq/portrait-young-office-worker-woman-sitting-office-desk-with-documents-talking-mobile-phone-nervous-s.jpg"
+      },
   };
 
-  const heroImageUrl = assetMap[id] || "https://i.postimg.cc/BvKyg8vX/ceo-engages-phone-call-briefing-with-investor-sharing-insight.jpg";
+  const assets = assetMap[id] || { 
+      bg: "https://i.postimg.cc/BvKyg8vX/ceo-engages-phone-call-briefing-with-investor-sharing-insight.jpg",
+      squircle: "https://i.postimg.cc/BvKyg8vX/ceo-engages-phone-call-briefing-with-investor-sharing-insight.jpg"
+  };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F7F8FA]">
+    <div className="min-h-screen flex flex-col bg-white">
       <SiteHeader forceTheme="dark" />
       <main className="flex-1">
-        <PackClientPage pack={pack} heroImageUrl={heroImageUrl} />
+        <PackClientPage pack={pack} backgroundUrl={assets.bg} squircleUrl={assets.squircle} />
         <FaqSection />
       </main>
       <Footer />

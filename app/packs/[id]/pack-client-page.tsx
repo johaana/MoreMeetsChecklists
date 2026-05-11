@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -37,18 +38,7 @@ const SECTOR_METADATA: Record<string, {
     sustainability: { t: string; d: string; i: any }[];
 }> = {
     'restaurants': {
-        marquee: [
-            "HACCP_SWEEP_COMPLETE",
-            "FRYER_TEMP_VARIANCE_STABLE",
-            "COLD_STORAGE_ALERT",
-            "OPENING_LINE_CHECK_ACTIVE",
-            "EXPIRY_LOG_VALIDATED",
-            "WASTE_YIELD_MONITORING",
-            "GAS_SHUTDOWN_CONFIRMATION",
-            "ALLERGEN_STATION_VERIFIED",
-            "SHIFT_COMPLIANCE_100%",
-            "ROI_ENGINE_ACTIVE"
-        ],
+        marquee: ["HACCP_SWEEP_COMPLETE", "FRYER_TEMP_VARIANCE_STABLE", "COLD_STORAGE_ALERT", "OPENING_LINE_CHECK_ACTIVE", "EXPIRY_LOG_VALIDATED", "WASTE_YIELD_MONITORING", "GAS_SHUTDOWN_CONFIRMATION", "ALLERGEN_STATION_VERIFIED", "SHIFT_COMPLIANCE_100%", "ROI_ENGINE_ACTIVE"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Daily AC and lighting shutdown logs for unoccupied zones stop unmonitored power waste.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Water vitals logging and overnight leak detection through digital meter-parity checks.", i: Leaf },
@@ -57,17 +47,7 @@ const SECTOR_METADATA: Record<string, {
         ]
     },
     'hotels_and_resorts': {
-        marquee: [
-            "ROOM_RELEASE_VERIFIED",
-            "LINEN_CYCLE_TRACKING",
-            "HVAC_RESPONSE_PENDING",
-            "POOL_CHEMISTRY_LOG_ACTIVE",
-            "GUEST_COMPLAINT_ESCALATION",
-            "FIRE_PANEL_HEALTH_STABLE",
-            "NIGHT_AUDIT_COMPLETE",
-            "PRIVACY_SWEEP_100%",
-            "MASTER_KEY_AUDIT_STABLE"
-        ],
+        marquee: ["ROOM_RELEASE_VERIFIED", "LINEN_CYCLE_TRACKING", "HVAC_RESPONSE_PENDING", "POOL_CHEMISTRY_LOG_ACTIVE", "GUEST_COMPLAINT_ESCALATION", "FIRE_PANEL_HEALTH_STABLE", "NIGHT_AUDIT_COMPLETE", "PRIVACY_SWEEP_100%", "MASTER_KEY_AUDIT_STABLE"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Automated HVAC setback protocols for vacant rooms reduce energy overheads significantly.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Daily water meter parity checks detect underground plumbing leaks before they damage infrastructure.", i: Leaf },
@@ -76,17 +56,7 @@ const SECTOR_METADATA: Record<string, {
         ]
     },
     'healthcare_and_hospital_operations': {
-        marquee: [
-            "CRASH_CART_SEAL_VERIFIED",
-            "MEDICATION_SIGNOFF_PENDING",
-            "SHARPS_DISPOSAL_TRACKING",
-            "OXYGEN_LINE_STATUS_STABLE",
-            "INFECTION_CONTROL_SWEEP",
-            "ICU_HANDOVER_COMPLETE",
-            "SANITIZATION_AUDIT_ACTIVE",
-            "NABH_INDICATOR_SYNC_100%",
-            "AIR_AMBULANCE_READY"
-        ],
+        marquee: ["CRASH_CART_SEAL_VERIFIED", "MEDICATION_SIGNOFF_PENDING", "SHARPS_DISPOSAL_TRACKING", "OXYGEN_LINE_STATUS_STABLE", "INFECTION_CONTROL_SWEEP", "ICU_HANDOVER_COMPLETE", "SANITIZATION_AUDIT_ACTIVE", "NABH_INDICATOR_SYNC_100%", "AIR_AMBULANCE_READY"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Medical equipment idle-power checks and lighting shutdown logs in non-clinical zones.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Water TDS monitoring and RO system backwash cycles ensure resource purity and efficiency.", i: Leaf },
@@ -95,16 +65,7 @@ const SECTOR_METADATA: Record<string, {
         ]
     },
     'school_operations_pack': {
-        marquee: [
-            "BUS_DISPATCH_VERIFIED",
-            "POCSO_LOG_CONFIRMATION",
-            "CAMPUS_SWEEP_COMPLETE",
-            "ATTENDANCE_VARIANCE_FLAGGED",
-            "CAFETERIA_TEMP_CHECK_CHECK",
-            "VISITOR_GATE_VALIDATION",
-            "PLAYGROUND_STRUCTURE_AUDIT",
-            "NO_CHILD_LEFT_BEHIND_SWEEP"
-        ],
+        marquee: ["BUS_DISPATCH_VERIFIED", "POCSO_LOG_CONFIRMATION", "CAMPUS_SWEEP_COMPLETE", "ATTENDANCE_VARIANCE_FLAGGED", "CAFETERIA_TEMP_CHECK_CHECK", "VISITOR_GATE_VALIDATION", "PLAYGROUND_STRUCTURE_AUDIT", "NO_CHILD_LEFT_BEHIND_SWEEP"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Classroom and library shutdown compliance logs stop unmonitored lighting and AC waste.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Potable water point hygiene and plumbing leak patrols reduce campus utility wastage.", i: Leaf },
@@ -113,16 +74,7 @@ const SECTOR_METADATA: Record<string, {
         ]
     },
     'franchise_operations_pack': {
-        marquee: [
-            "UNIT_COMPLIANCE_SYNC",
-            "BRAND_STANDARD_AUDIT",
-            "MULTI_SITE_VARIANCE_ALERT",
-            "SOP_VERSION_VALIDATED",
-            "TRAINING_COMPLETION_PENDING",
-            "DAILY_REPORTING_GAP",
-            "ROYALTY_SHIELD_ACTIVE",
-            "NETWORK_DRIFT_MONITORING"
-        ],
+        marquee: ["UNIT_COMPLIANCE_SYNC", "BRAND_STANDARD_AUDIT", "MULTI_SITE_VARIANCE_ALERT", "SOP_VERSION_VALIDATED", "TRAINING_COMPLETION_PENDING", "DAILY_REPORTING_GAP", "ROYALTY_SHIELD_ACTIVE", "NETWORK_DRIFT_MONITORING"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Multi-unit AC shutdown logs and energy-benchmark monitoring across all franchise locations.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Water meter logging and leak detection protocols enforced across the entire network.", i: Leaf },
@@ -131,16 +83,7 @@ const SECTOR_METADATA: Record<string, {
         ]
     },
     'facility_management_blueprint': {
-        marquee: [
-            "DG_RUNTIME_MONITORING",
-            "BMS_PANEL_ALERT",
-            "WATER_TANK_LEVEL_STABLE",
-            "CHILLER_RESPONSE_DELAY",
-            "AMC_COMPLIANCE_TRACKING",
-            "PREVENTIVE_MAINTENANCE_DUE",
-            "UPTIME_99.9%",
-            "ELECTRICAL_HOTSPOT_SCAN"
-        ],
+        marquee: ["DG_RUNTIME_MONITORING", "BMS_PANEL_ALERT", "WATER_TANK_LEVEL_STABLE", "CHILLER_RESPONSE_DELAY", "AMC_COMPLIANCE_TRACKING", "PREVENTIVE_MAINTENANCE_DUE", "UPTIME_99.9%", "ELECTRICAL_HOTSPOT_SCAN"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "BMS panel health monitoring and KWH meter variance tracking eliminate unmonitored energy spikes.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "STP/WTP effluent pulse monitoring and tank overflow logic prevent water wastage.", i: Leaf },
@@ -149,16 +92,7 @@ const SECTOR_METADATA: Record<string, {
         ]
     },
     'retail_operations_system': {
-        marquee: [
-            "OPENING_AUDIT_COMPLETE",
-            "CASH_VARIANCE_REVIEW",
-            "VISUAL_MERCH_SWEEP",
-            "SHRINKAGE_MONITORING_ACTIVE",
-            "FLOOR_READINESS_CONFIRMED",
-            "STOCK_ROOM_ACCESS_PENDING",
-            "LEGAL_METROLOGY_SYNC",
-            "FITTING_ROOM_SWEEP_ACTIVE"
-        ],
+        marquee: ["OPENING_AUDIT_COMPLETE", "CASH_VARIANCE_REVIEW", "VISUAL_MERCH_SWEEP", "SHRINKAGE_MONITORING_ACTIVE", "FLOOR_READINESS_CONFIRMED", "STOCK_ROOM_ACCESS_PENDING", "LEGAL_METROLOGY_SYNC", "FITTING_ROOM_SWEEP_ACTIVE"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Storefront and showroom lighting shutdown compliance logs for after-hours energy savings.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Cleaning chemical dilution calibration and pill kit readiness reduce chemical waste.", i: Leaf },
@@ -167,16 +101,7 @@ const SECTOR_METADATA: Record<string, {
         ]
     },
     'cinema_operations_pack': {
-        marquee: [
-            "DCP_SYNC_CONFIRMED",
-            "SUBTITLE_TRACK_VALIDATED",
-            "PROJECTOR_LAMP_HOURS_MONITORED",
-            "AUDIO_CHANNEL_CALIBRATION_ACTIVE",
-            "SCREEN_TEMP_RANGE_STABLE",
-            "KDM_EXPIRY_WARNING",
-            "VOID_BILL_AUDIT_ACTIVE",
-            "POPCORN_YIELD_1:40_STABLE"
-        ],
+        marquee: ["DCP_SYNC_CONFIRMED", "SUBTITLE_TRACK_VALIDATED", "PROJECTOR_LAMP_HOURS_MONITORED", "AUDIO_CHANNEL_CALIBRATION_ACTIVE", "SCREEN_TEMP_RANGE_STABLE", "KDM_EXPIRY_WARNING", "VOID_BILL_AUDIT_ACTIVE", "POPCORN_YIELD_1:40_STABLE"],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Daily AC shutdown compliance logs for empty auditoriums stop unmonitored power waste.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Water vitals logging and overnight leak detection through digital meter-parity checks.", i: Leaf },
@@ -186,15 +111,7 @@ const SECTOR_METADATA: Record<string, {
     }
 };
 
-const DEFAULT_MARQUEE = [
-    "OPERATIONAL_DRIFT_PREVENTED",
-    "REVENUE_LEAKAGE_PLUGGED",
-    "MISSED_SAFETY_CHECKS_ELIMINATED",
-    "UNVERIFIED_READINESS_STOPPED",
-    "INSTITUTIONAL_MEMORY_SECURED",
-    "AUDIT_FAILURE_AVOIDED"
-];
-
+const DEFAULT_MARQUEE = ["OPERATIONAL_DRIFT_PREVENTED", "REVENUE_LEAKAGE_PLUGGED", "MISSED_SAFETY_CHECKS_ELIMINATED", "UNVERIFIED_READINESS_STOPPED", "INSTITUTIONAL_MEMORY_SECURED", "AUDIT_FAILURE_AVOIDED"];
 const DEFAULT_SUSTAINABILITY = [
     { t: "ENERGY DISCIPLINE", d: "Verified shutdown compliance for lighting, HVAC, and idle infrastructure.", i: Zap },
     { t: "RESOURCE CONSERVATION", d: "Resource vitals logging and overnight leak detection through digital checks.", i: Leaf },
@@ -232,7 +149,7 @@ function PulsatingStressText({ text, className, delay = "0s" }: { text: string, 
     );
 }
 
-export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPack, heroImageUrl: string }) {
+export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { pack: PremiumPack, backgroundUrl: string, squircleUrl: string }) {
     const [mounted, setMounted] = useState(false);
     useEffect(() => { setMounted(true); }, []);
 
@@ -242,7 +159,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     const sectorData = SECTOR_METADATA[pack.id] || { marquee: DEFAULT_MARQUEE, sustainability: DEFAULT_SUSTAINABILITY };
     
     const getVerticalParts = (p: PremiumPack) => {
-        const title = p.title.replace(' Operations System', '').toUpperCase();
+        const title = p.title.replace(' Operations System', '').replace(' Pack', '').toUpperCase();
         return [title, "OPERATIONS", "SYSTEM."];
     };
     const titleParts = getVerticalParts(pack);
@@ -254,7 +171,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
             <section className="relative w-full h-[100svh] flex flex-col justify-center overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src={heroImageUrl} 
+                        src={backgroundUrl} 
                         alt="" 
                         className="w-full h-full object-cover opacity-30 grayscale-[0.2] brightness-[0.35]" 
                     />
@@ -262,7 +179,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
 
                 <div className="relative z-20 container mx-auto max-w-[1200px] px-6 h-full flex flex-col justify-center py-6 md:py-16">
-                    <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-12 items-center lg:items-center">
+                    <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-12 items-center">
                         <div className="space-y-4 md:space-y-8 w-full relative">
                             {/* Mobile Spine Guide */}
                             <div className="absolute -left-4 top-2 bottom-2 w-px bg-emerald-500/20 lg:hidden" />
@@ -324,12 +241,13 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         <div className="w-full flex flex-col items-center lg:items-end gap-4 md:gap-6 mt-6 lg:mt-0">
                             <div className="relative group w-full max-w-[280px] md:max-w-[480px]">
                                 <div className="absolute -inset-1 bg-gradient-to-b from-primary/30 to-transparent rounded-[2.5rem] md:rounded-[3.5rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                                <div className="relative overflow-hidden rounded-[2rem] md:rounded-[3rem] border border-white/10 aspect-[2/1] lg:aspect-[1.5/1] shadow-2xl bg-zinc-900">
+                                <div className="relative overflow-hidden rounded-[2rem] md:rounded-[3rem] border border-white/10 aspect-[1.5/1] shadow-2xl bg-zinc-900">
                                     <img 
-                                        src={heroImageUrl} 
+                                        src={squircleUrl} 
                                         alt="" 
-                                        className="w-full h-full object-cover grayscale-[0.1] brightness-[0.8] hover:scale-105 transition-transform duration-1000" 
+                                        className="w-full h-full object-cover grayscale-[0.3] brightness-[0.7] hover:scale-105 transition-transform duration-1000" 
                                     />
+                                    <div className="absolute inset-0 bg-black/10 pointer-events-none" />
                                 </div>
                             </div>
 
@@ -345,7 +263,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                  </div>
                             </div>
 
-                            {/* Mobile Integrated CTA HUD */}
                             <div className="flex lg:hidden flex-col items-center gap-4 w-full pt-4">
                                 <div className="flex items-baseline gap-3">
                                     <span className="text-[32px] font-black text-white italic tracking-tighter leading-none">₹{pack.priceINR}</span>
@@ -369,20 +286,19 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             return (
                                 <span key={i} className={cn(
                                     "text-[10px] md:text-[12px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
-                                    isAlert ? "text-red-400 drop-shadow-[0_0_8px_rgba(248,113,113,0.3)]" : "text-zinc-500"
+                                    isAlert ? "text-red-400 drop-shadow-[0_0_8px_rgba(248,113,113,0.3)]" : "text-zinc-400"
                                 )}>
                                     <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
                                     {signal}
                                 </span>
                             );
                         })}
-                        {/* Loop Replication */}
                         {sectorData.marquee.map((signal, i) => {
                             const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
                             return (
                                 <span key={`dup-${i}`} className={cn(
                                     "text-[10px] md:text-[12px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
-                                    isAlert ? "text-red-400 drop-shadow-[0_0_8px_rgba(248,113,113,0.3)]" : "text-zinc-500"
+                                    isAlert ? "text-red-400 drop-shadow-[0_0_8px_rgba(248,113,113,0.3)]" : "text-zinc-400"
                                 )}>
                                     <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
                                     {signal}
