@@ -36,7 +36,7 @@ import { Footer } from '@/components/layout/footer';
 import { FaqSection } from "@/components/layout/faq-section";
 import Link from 'next/link';
 
-// --- PRODUCTION ASSETS (Authentic Cinema Product Screenshots) ---
+// --- CINEMA PRODUCT EVIDENCE (AUTHENTIC SCREENSHOTS) ---
 const IMG_DASHBOARD = "https://i.postimg.cc/B6YtmpVn/Screenshot-2026-05-10-150332.png";
 const IMG_CONCESSION = "https://i.postimg.cc/HxZj6zht/Screenshot-2026-05-10-150441.png";
 const IMG_SETUP = "https://i.postimg.cc/nzRM32PD/Screenshot-2026-05-10-150505.png";
@@ -60,7 +60,7 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
 
 const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
     <div className="group space-y-4">
-        <div className="relative rounded-2xl overflow-hidden shadow-[0_40px_100px_-15px_rgba(0,0,0,0.3)] border border-zinc-200 bg-white">
+        <div className="relative rounded-2xl overflow-hidden shadow-[0_40px_100px_-15px_rgba(0,0,0,0.25)] border border-zinc-200 bg-white">
             <div className="bg-[#111] border-b border-white/10 px-6 py-3 flex items-center gap-2">
                 <div className="flex gap-1.5">
                     <div className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
@@ -81,12 +81,12 @@ const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
 const OperationalAlert = ({ title, sub, time, delay = "0s" }: { title: string, sub: string, time: string, delay?: string }) => (
     <div className="flex flex-col items-start lg:items-end gap-1 animate-in fade-in slide-in-from-right-4 duration-1000" style={{ animationDelay: delay }}>
         <div className="flex items-center gap-3">
-            <span className="text-[16px] md:text-[24px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_20px_rgba(239,68,68,0.6)]">
+            <span className="text-[16px] md:text-[24px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_25px_rgba(239,68,68,0.7)]">
                 <span className="animate-pulse text-[12px] md:text-[16px]">[!]</span> {title}
             </span>
             <span className="text-[10px] font-mono text-zinc-500 bg-white/5 px-2 py-0.5 rounded border border-white/5">{time}</span>
         </div>
-        <p className="text-[11px] md:text-[13px] font-bold text-white/30 uppercase tracking-widest italic leading-tight">{sub}</p>
+        <p className="text-[11px] md:text-[13px] font-bold text-white/40 uppercase tracking-widest italic leading-tight">{sub}</p>
     </div>
 );
 
@@ -107,7 +107,7 @@ export default function DesignLabPage() {
                     <div className="absolute inset-0 z-0">
                         <img 
                             src={CINEMA_HERO} 
-                            alt="Operational Environment" 
+                            alt="Multiplex Environment" 
                             className="w-full h-full object-cover opacity-60 grayscale-[0.1]" 
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 md:via-black/75 to-transparent" />
@@ -121,15 +121,15 @@ export default function DesignLabPage() {
                                         <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.4em] font-black text-[9px] px-4 py-1 rounded-none italic bg-emerald-500/5">CINEMA OPERATIONS SYSTEM</Badge>
                                         <span className="text-[8px] font-mono text-zinc-600 uppercase tracking-widest hidden md:block">REF: V11.9_STABLE</span>
                                     </div>
-                                    <h1 className="text-[32px] md:text-5xl lg:text-[4.2rem] font-black font-headline tracking-tighter uppercase italic leading-[0.95] text-white">
-                                        STOP CHASING TEAMS. <br/> <span className="text-emerald-500">START SEEING EVERY SCREEN.</span>
+                                    <h1 className="text-[34px] md:text-5xl lg:text-[4.5rem] font-black font-headline tracking-tighter uppercase italic leading-[0.95] text-white">
+                                        STOP CHASING TEAMS. <br/> <span className="text-emerald-500">SEE EVERY SCREEN.</span>
                                     </h1>
-                                    <div className="space-y-4">
-                                        <p className="text-base md:text-xl lg:text-2xl text-zinc-400 font-medium italic max-w-2xl leading-tight">
-                                            Live operational visibility for show readiness, concession control, and daily execution across your multiplex.
+                                    <div className="space-y-4 pt-2">
+                                        <p className="text-base md:text-xl lg:text-2xl text-zinc-300 font-medium italic max-w-2xl leading-tight">
+                                            Live visibility for show readiness, concession control, crowd flow, and daily execution.
                                         </p>
                                         <p className="text-[10px] md:text-sm text-zinc-500 font-bold border-l border-emerald-500/40 pl-6 max-w-lg leading-relaxed uppercase tracking-wide">
-                                            Reduce dependency on individual memory. <br/>See every critical shift responsibility verified in real-time.
+                                            Reduce dependency on individual memory. <br/>See critical responsibilities verified in real-time.
                                         </p>
                                     </div>
                                 </div>
@@ -156,36 +156,36 @@ export default function DesignLabPage() {
                                             </Link>
                                         </Button>
                                         <p className="text-[9px] text-zinc-600 font-black uppercase tracking-[0.3em] italic text-center sm:text-left">
-                                            BUILT IN EXCEL • SHARED ON GOOGLE SHEETS • NO APP ROLLOUT
+                                            BUILT IN EXCEL • NO APP ROLLOUT REQUIRED
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             
                             <div className="w-full lg:border-l border-white/5 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-6 md:space-y-8">
-                                 <p className="text-[8px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">REAL-TIME RISK FEED</p>
+                                 <p className="text-[8px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">REAL-TIME RISK MONITORING</p>
                                  
                                  <div className="flex flex-col gap-6 md:gap-10 lg:gap-12">
                                      <OperationalAlert 
-                                        title="ERR_KDM_EXPIRED" 
+                                        title="EXPIRED KDM KEY" 
                                         sub="Screen 04 unavailable for evening show" 
                                         time="10:42 AM"
                                         delay="0.2s" 
                                      />
                                      <OperationalAlert 
-                                        title="EVT_INTERVAL_SURGE" 
+                                        title="INTERVAL CONGESTION" 
                                         sub="Concession queue exceeding threshold" 
                                         time="01:15 PM"
                                         delay="0.4s" 
                                      />
                                      <OperationalAlert 
-                                        title="COMMS_SYS_FAIL" 
+                                        title="EMERGENCY COMMS FAIL" 
                                         sub="Security response verification overdue" 
                                         time="02:30 PM"
                                         delay="0.6s" 
                                      />
                                      <OperationalAlert 
-                                        title="HACCP_THERMAL_BREACH" 
+                                        title="COLD CHAIN BREACH" 
                                         sub="Concession fridge temp recorded > 8°C" 
                                         time="04:05 PM"
                                         delay="0.8s" 
@@ -195,13 +195,12 @@ export default function DesignLabPage() {
                         </div>
                     </div>
 
-                    {/* --- SYSTEM VITALS HUD --- */}
                     <div className="absolute bottom-0 left-0 right-0 h-10 bg-zinc-950/90 backdrop-blur-xl border-t border-white/5 z-30 hidden md:block">
                         <div className="container mx-auto h-full flex items-center justify-between px-10">
                             <div className="flex items-center gap-10">
                                 {[
                                     { l: "TECH_UPTIME", v: "100.0%" },
-                                    { l: "SAFETY_INDEX", v: "STABLE" },
+                                    { l: "SAFETY_STATUS", v: "STABLE" },
                                     { l: "UNIT_LOAD", v: "NORMAL" }
                                 ].map((stat, i) => (
                                     <div key={i} className="flex items-center gap-2">
@@ -212,7 +211,7 @@ export default function DesignLabPage() {
                             </div>
                             <div className="flex items-center gap-3">
                                 <div className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
-                                <span className="text-[8px] font-mono text-zinc-600 uppercase tracking-widest">SOVEREIGN_NODE_ACTIVE</span>
+                                <span className="text-[8px] font-mono text-zinc-600 uppercase tracking-widest">SYSTEM_STABLE</span>
                             </div>
                         </div>
                     </div>
@@ -222,7 +221,7 @@ export default function DesignLabPage() {
                 <Section className="bg-white border-b border-zinc-100" noSpine>
                     <div className="max-w-[1000px] mx-auto space-y-12">
                         <div className="text-center space-y-2">
-                            <Badge className="bg-zinc-950 text-white rounded-none font-black uppercase tracking-widest text-[8px] px-6 py-1.5">SYSTEM LOGIC</Badge>
+                            <Badge className="bg-zinc-950 text-white rounded-none font-black uppercase tracking-widest text-[8px] px-6 py-1.5">HOW IT WORKS</Badge>
                             <h2 className="text-2xl md:text-4xl font-black font-headline text-zinc-950 italic uppercase tracking-tight">The Operational Loop</h2>
                         </div>
                         
@@ -230,8 +229,8 @@ export default function DesignLabPage() {
                             {[
                                 { t: "Daily Tasks", d: "SOPs assigned to roles", i: Projector },
                                 { t: "Team Completion", d: "Staff log tasks in seconds", i: Users },
-                                { t: "Risk Visibility", d: "Lapses flagged on dashboard", i: AlertTriangle },
-                                { t: "Executive Oversight", d: "One screen for total health", i: Monitor }
+                                { t: "Missed Visibility", d: "Lapses flagged instantly", i: AlertTriangle },
+                                { t: "Executive Dashboard", d: "One screen for total health", i: Monitor }
                             ].map((step, i) => (
                                 <div key={i} className="flex-1 relative group">
                                     <div className="p-8 rounded-2xl bg-zinc-50 border border-zinc-200 flex flex-col items-center text-center gap-4 group-hover:border-emerald-500/30 transition-all h-full">
@@ -266,7 +265,7 @@ export default function DesignLabPage() {
                         <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
                             <div className="space-y-10">
                                 {[
-                                    { t: "Multiplex Operations Dashboard", d: "One screen to see performance, risk, and technical uptime across all cinema units.", i: Monitor },
+                                    { t: "Multiplex Operations Dashboard", d: "See technical uptime, concession margins, and risk levels across every screen in one glance.", i: Monitor },
                                     { t: "Revenue Variance Tracking", d: "Corn-to-bucket yield reconciliation and POS void-bill auditing to stop profit leakage.", i: Zap },
                                     { t: "Show Readiness Validation", d: "Zero-fail daily checks for projection, 3D assets, and subtitle sync before every showtime.", i: Clapperboard }
                                 ].map((item, i) => (
@@ -290,7 +289,7 @@ export default function DesignLabPage() {
                                 </div>
                             </div>
                             <div className="relative">
-                                <BrowserFrame src={IMG_DASHBOARD} label="CINEMA_EXECUTIVE_DASHBOARD_V11.9" />
+                                <BrowserFrame src={IMG_DASHBOARD} label="CINEMA_OPERATIONS_DASHBOARD_V11.9" />
                             </div>
                         </div>
                     </div>
@@ -303,16 +302,16 @@ export default function DesignLabPage() {
                             <div className="space-y-4">
                                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[9px] italic">USABILITY PROOF</Badge>
                                 <h2 className="text-3xl md:text-6xl font-black font-headline uppercase italic leading-[1] text-left">Complexity <br className="hidden lg:block"/> kills adoption.</h2>
-                                <p className="text-zinc-500 text-base md:text-xl font-bold italic leading-relaxed text-left uppercase">
-                                    Your staff does not need technical training. We designed the interface to be simple, binary, and mobile-ready.
+                                <p className="text-zinc-400 text-base md:text-xl font-bold italic leading-relaxed text-left uppercase">
+                                    Your staff does not need technical training. We designed the system to be simple, binary, and mobile-ready.
                                 </p>
                             </div>
                             
                             <div className="space-y-8">
                                 {[
                                     { t: "BINARY VERIFICATION", d: "Staff enter their name to confirm tasks. Status turns GREEN instantly." },
-                                    { t: "BUILT-IN TRAINER NOTES", d: "Every check includes action-oriented instructions on HOW to perform the step." },
-                                    { t: "VISIBLE CONSEQUENCES", d: "Staff see why the task matters, turning ticking into intentional compliance." }
+                                    { t: "BUILT-IN TRAINER NOTES", d: "Every check includes instructions on HOW to perform the step on the floor." },
+                                    { t: "VISIBLE CONSEQUENCES", d: "Staff see why the task matters, turning 'ticking' into intentional compliance." }
                                 ].map((item, i) => (
                                     <div key={i} className="flex gap-8 border-l border-emerald-500/20 pl-10 group">
                                         <div className="space-y-1.5 text-left">
@@ -324,7 +323,7 @@ export default function DesignLabPage() {
                             </div>
                         </div>
                         <div className="relative p-2.5 bg-white/5 border border-white/10 rounded-[2.5rem] shadow-2xl">
-                             <img src={IMG_TASKS} alt="Cinema Tasks Mobile View" className="w-full h-auto rounded-[2rem]" />
+                             <img src={IMG_TASKS} alt="Daily Execution Ledger Mobile" className="w-full h-auto rounded-[2rem]" />
                              <div className="absolute bottom-10 left-10 right-10 p-4 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center justify-between">
                                  <p className="text-[10px] font-mono text-emerald-500/80 uppercase tracking-widest leading-none">VIEW: DAILY_LEDGER_MOBILE</p>
                                  <Smartphone className="w-5 h-5 text-emerald-500/40" />
@@ -333,13 +332,13 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 5. SYSTEM COMPONENTS (WHAT'S INCLUDED) --- */}
+                {/* --- 5. SYSTEM MODULES --- */}
                 <Section className="bg-white">
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[9px]">SYSTEM COMPONENTS</Badge>
-                            <h2 className="text-[28px] md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Included Cinema Modules</h2>
-                            <p className="text-zinc-500 text-sm font-bold italic uppercase">A full technical ecosystem delivered as institutional-grade Excel assets.</p>
+                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[9px]">SYSTEM MODULES</Badge>
+                            <h2 className="text-[28px] md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">Included Cinema Components</h2>
+                            <p className="text-zinc-500 text-sm font-bold italic uppercase">A full technical ecosystem delivered as institutional Excel assets.</p>
                         </div>
                         
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -372,9 +371,9 @@ export default function DesignLabPage() {
                         
                         <div className="grid md:grid-cols-3 gap-8">
                             {[
-                                { role: "Group Owners & COOs", d: "For real-time visibility into technical compliance and concession margins across the group.", i: Crown },
-                                { role: "Unit General Managers", d: "To standardize interval shifts and remove dependency on the memory of key personnel.", i: LayoutGrid },
-                                { role: "Technical Directors", d: "To ensure show readiness and zero-fail equipment uptime audits before every showtime.", i: Wrench }
+                                { role: "Group Owners & COOs", d: "For real-time visibility into technical compliance and margins across all cinema units.", i: Crown },
+                                { role: "Unit General Managers", d: "To standardize interval shifts and remove dependency on individual memory.", i: LayoutGrid },
+                                { role: "Technical Directors", d: "To ensure show readiness and zero-fail equipment uptime audits.", i: Wrench }
                             ].map((item, i) => (
                                 <div key={i} className="p-10 rounded-[2.5rem] border border-zinc-200 bg-white shadow-sm hover:shadow-2xl transition-all group h-full text-center space-y-6">
                                     <div className="w-14 h-14 rounded-2xl bg-zinc-50 border border-zinc-100 flex items-center justify-center mx-auto text-primary group-hover:scale-110 transition-transform shadow-inner">
@@ -399,7 +398,7 @@ export default function DesignLabPage() {
                         <div className="relative z-10 space-y-4">
                             <Badge className="bg-primary/10 text-primary border-primary/20 rounded-none font-black tracking-widest text-[9px] uppercase px-8 py-2">TAILORING SUPPORT</Badge>
                             <h2 className="text-3xl md:text-5xl font-black font-headline italic uppercase tracking-tighter leading-tight">
-                                Need help tailoring the <br className="hidden md:block" /> system to your business?
+                                Need help tailoring the <br className="hidden md:block" /> system to your multiplex?
                             </h2>
                             <p className="text-zinc-500 text-base md:text-xl font-bold italic max-w-2xl mx-auto uppercase leading-relaxed">
                                 Professional adaptation for unique screen hierarchies or specialized concession models.
