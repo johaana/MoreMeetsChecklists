@@ -36,14 +36,14 @@ import {
     Wrench,
     FileSignature,
     Zap,
-    Scale
+    Scale,
+    Users
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { IconComponent } from '@/components/icons';
 
 // --- AUTHENTIC CINEMA ASSETS ---
 const DASHBOARD_IMAGE = "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png";
@@ -127,7 +127,7 @@ export default function DesignLabPage() {
                                         <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.4em] font-black text-[9px] px-4 py-1.5 rounded-none bg-emerald-500/5 italic leading-none">OPERATIONAL_INFRASTRUCTURE</Badge>
                                     </div>
                                     <h1 className="text-[34px] md:text-8xl font-black font-headline tracking-tighter uppercase italic leading-[0.82] text-white">
-                                        PROTECT SAFETY.<br/> <span className="text-emerald-500">SECURE REVENUE.</span>
+                                        PROTECT CROWD SAFETY. <br/> <span className="text-emerald-500">SECURE REVENUE.</span>
                                     </h1>
                                     <div className="space-y-6 pt-2">
                                         <p className="text-xl md:text-3xl font-black italic text-zinc-100 max-w-2xl leading-[1.05] uppercase tracking-tight">
