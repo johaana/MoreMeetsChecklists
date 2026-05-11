@@ -31,7 +31,18 @@ import {
     Projector,
     Ticket,
     ChevronRight,
-    SearchCheck
+    SearchCheck,
+    Thermometer,
+    Pill,
+    Bus,
+    Scale,
+    Building2,
+    Utensils,
+    Building,
+    Hospital,
+    School,
+    Store,
+    ShoppingBag
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
@@ -45,12 +56,15 @@ const SECTOR_METADATA: Record<string, {
 }> = {
     'restaurants': {
         marquee: [
-            "HACCP COMPLIANCE SECURED",
-            "MARGIN LEAKAGE PLUGGED",
-            "STATION CONSISTENCY VERIFIED",
-            "WASTE AT SOURCE TRACKED",
-            "COLD-CHAIN FAILURE PREVENTED",
-            "VOID-BILL FRAUD STOPPED"
+            "HACCP_SWEEP_COMPLETE",
+            "FRYER_TEMP_VARIANCE",
+            "COLD_STORAGE_ALERT",
+            "OPENING_LINE_CHECK_ACTIVE",
+            "EXPIRY_LOG_VALIDATED",
+            "WASTE_YIELD_MONITORING",
+            "GAS_SHUTDOWN_CONFIRMATION",
+            "ALLERGEN_STATION_VERIFIED",
+            "SHIFT_COMPLIANCE_100%"
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Daily AC and lighting shutdown logs for unoccupied dining zones stop unmonitored power waste.", i: Zap },
@@ -61,12 +75,14 @@ const SECTOR_METADATA: Record<string, {
     },
     'hotels_and_resorts': {
         marquee: [
-            "GUEST PRIVACY SECURED",
-            "ROOM STANDARDS VERIFIED",
-            "MEP UPTIME MONITORED",
-            "RATING DRIFT PREVENTED",
-            "STATUTORY LOGS AUDIT-READY",
-            "MASTER-KEY FRAUD STOPPED"
+            "ROOM_RELEASE_VERIFIED",
+            "LINEN_CYCLE_TRACKING",
+            "HVAC_RESPONSE_PENDING",
+            "POOL_CHEMISTRY_LOG_ACTIVE",
+            "GUEST_COMPLAINT_ESCALATION",
+            "FIRE_PANEL_HEALTH_STABLE",
+            "NIGHT_AUDIT_COMPLETE",
+            "PRIVACY_SWEEP_100%"
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Automated HVAC setback protocols for vacant rooms reduce energy overheads significantly.", i: Zap },
@@ -77,12 +93,14 @@ const SECTOR_METADATA: Record<string, {
     },
     'healthcare_and_hospital_operations': {
         marquee: [
-            "NEVER-EVENTS PREVENTED",
-            "INFECTION RISK MITIGATED",
-            "NARCOTICS CONTROL SECURED",
-            "AUDIT-READINESS PERMANENT",
-            "PATIENT SAFETY OBSERVABLE",
-            "STERILITY DRIFT STOPPED"
+            "CRASH_CART_SEAL_VERIFIED",
+            "MEDICATION_SIGNOFF_PENDING",
+            "SHARPS_DISPOSAL_TRACKING",
+            "OXYGEN_LINE_STATUS_STABLE",
+            "INFECTION_CONTROL_SWEEP",
+            "ICU_HANDOVER_COMPLETE",
+            "SANITIZATION_AUDIT_ACTIVE",
+            "NABH_INDICATOR_SYNC_100%"
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Medical equipment idle-power checks and lighting shutdown logs in non-clinical zones.", i: Zap },
@@ -93,12 +111,13 @@ const SECTOR_METADATA: Record<string, {
     },
     'school_operations_pack': {
         marquee: [
-            "CHILD SAFETY SECURED",
-            "TRANSPORT RISK MITIGATED",
-            "CAMPUS READINESS VERIFIED",
-            "POCSO COMPLIANCE AUDIT-READY",
-            "EMERGENCY PREPAREDNESS LOGGED",
-            "STAFF VETTING TRACKED"
+            "BUS_DISPATCH_VERIFIED",
+            "POCSO_LOG_CONFIRMATION",
+            "CAMPUS_SWEEP_COMPLETE",
+            "ATTENDANCE_VARIANCE_FLAGGED",
+            "CAFETERIA_TEMP_CHECK_ACTIVE",
+            "VISITOR_GATE_VALIDATION",
+            "PLAYGROUND_STRUCTURE_AUDIT"
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Classroom and library shutdown compliance logs stop unmonitored lighting and AC waste.", i: Zap },
@@ -109,12 +128,13 @@ const SECTOR_METADATA: Record<string, {
     },
     'franchise_operations_pack': {
         marquee: [
-            "ROYALTY LEAKAGE PLUGGED",
-            "BRAND PARITY ENFORCED",
-            "NETWORK RISK TRIAGED",
-            "MANAGERS STOP CHASING",
-            "UNIT HEALTH OBSERVABLE",
-            "NETWORK DRIFT STOPPED"
+            "UNIT_COMPLIANCE_SYNC",
+            "BRAND_STANDARD_AUDIT",
+            "MULTI_SITE_VARIANCE_ALERT",
+            "SOP_VERSION_VALIDATED",
+            "TRAINING_COMPLETION_PENDING",
+            "DAILY_REPORTING_GAP",
+            "ROYALTY_SHIELD_ACTIVE"
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Multi-unit AC shutdown logs and energy-benchmark monitoring across all franchise locations.", i: Zap },
@@ -125,12 +145,13 @@ const SECTOR_METADATA: Record<string, {
     },
     'facility_management_blueprint': {
         marquee: [
-            "UTILITY BLACKOUTS PREVENTED",
-            "CONTRACTOR LIABILITY MITIGATED",
-            "ENERGY SPIKES TRACED",
-            "INFRASTRUCTURE DECAY STOPPED",
-            "FIRE NOC AUDIT-READY",
-            "MEP UPTIME SECURED"
+            "DG_RUNTIME_MONITORING",
+            "BMS_PANEL_ALERT",
+            "WATER_TANK_LEVEL_STABLE",
+            "CHILLER_RESPONSE_DELAY",
+            "AMC_COMPLIANCE_TRACKING",
+            "PREVENTIVE_MAINTENANCE_DUE",
+            "UPTIME_99.9%"
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "BMS panel health monitoring and KWH meter variance tracking eliminate unmonitored energy spikes.", i: Zap },
@@ -141,12 +162,13 @@ const SECTOR_METADATA: Record<string, {
     },
     'retail_operations_system': {
         marquee: [
-            "INVENTORY THEFT PREVENTED",
-            "BRAND PARITY ENFORCED",
-            "SHRINKAGE IDENTIFIED EARLY",
-            "COMPLIANCE RISK MITIGATED",
-            "SERVICE STANDARDS VERIFIED",
-            "VOID-BILL FRAUD STOPPED"
+            "OPENING_AUDIT_COMPLETE",
+            "CASH_VARIANCE_REVIEW",
+            "VISUAL_MERCH_SWEEP",
+            "SHRINKAGE_MONITORING_ACTIVE",
+            "FLOOR_READINESS_CONFIRMED",
+            "STOCK_ROOM_ACCESS_PENDING",
+            "LEGAL_METROLOGY_SYNC"
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Storefront and showroom lighting shutdown compliance logs for after-hours energy savings.", i: Zap },
@@ -157,12 +179,14 @@ const SECTOR_METADATA: Record<string, {
     },
     'cinema_operations_pack': {
         marquee: [
-            "BLACK-SCREEN INCIDENTS PREVENTED",
-            "CONCESSION LEAKAGE PLUGGED",
-            "MISSED FIRE SAFETY CHECKS ELIMINATED",
-            "UNVERIFIED SHOW READINESS STOPPED",
-            "LOST INTERVAL REVENUE RECLAIMED",
-            "EXPIRED KDM BLACKOUTS AVOIDED"
+            "DCP_SYNC_CONFIRMED",
+            "SUBTITLE_TRACK_VALIDATED",
+            "PROJECTOR_LAMP_HOURS_MONITORED",
+            "AUDIO_CHANNEL_CALIBRATION_ACTIVE",
+            "SCREEN_TEMP_RANGE_STABLE",
+            "KDM_EXPIRY_WARNING",
+            "VOID_BILL_AUDIT_ACTIVE",
+            "POPCORN_YIELD_1:40_STABLE"
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Daily AC shutdown compliance logs for empty auditoriums stop unmonitored power waste.", i: Zap },
@@ -174,12 +198,12 @@ const SECTOR_METADATA: Record<string, {
 };
 
 const DEFAULT_MARQUEE = [
-    "OPERATIONAL DRIFT PREVENTED",
-    "REVENUE LEAKAGE PLUGGED",
-    "MISSED SAFETY CHECKS ELIMINATED",
-    "UNVERIFIED READINESS STOPPED",
-    "INSTITUTIONAL MEMORY SECURED",
-    "AUDIT FAILURE AVOIDED"
+    "OPERATIONAL_DRIFT_PREVENTED",
+    "REVENUE_LEAKAGE_PLUGGED",
+    "MISSED_SAFETY_CHECKS_ELIMINATED",
+    "UNVERIFIED_READINESS_STOPPED",
+    "INSTITUTIONAL_MEMORY_SECURED",
+    "AUDIT_FAILURE_AVOIDED"
 ];
 
 const DEFAULT_SUSTAINABILITY = [
@@ -331,18 +355,20 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
 
                             <div className="space-y-4 md:space-y-5 pt-2">
                                 <div className="space-y-3">
-                                    <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group flex items-center justify-center gap-4">
-                                        <Link href="#pricing">
-                                            LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
-                                        </Link>
-                                    </Button>
-                                    <div className="space-y-1.5 pl-1">
-                                        <p className="text-[10px] md:text-[12px] text-emerald-500/90 font-black uppercase tracking-[0.2em] italic leading-tight">
-                                            BUILT IN EXCEL. SHARED THROUGH GOOGLE SHEETS. NO APP ROLLOUT REQUIRED.
-                                        </p>
-                                        <p className="text-[10px] md:text-[11px] text-zinc-600 font-black uppercase tracking-[0.4em] italic leading-tight">
-                                            ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
-                                        </p>
+                                    <div className="space-y-3">
+                                        <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group flex items-center justify-center gap-4">
+                                            <Link href="#pricing">
+                                                LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
+                                            </Link>
+                                        </Button>
+                                        <div className="space-y-1.5 pl-1">
+                                            <p className="text-[10px] md:text-[12px] text-emerald-500/90 font-black uppercase tracking-[0.2em] italic leading-tight text-center sm:text-left">
+                                                BUILT IN EXCEL. SHARED THROUGH GOOGLE SHEETS. NO APP ROLLOUT REQUIRED.
+                                            </p>
+                                            <p className="text-[10px] md:text-[11px] text-zinc-600 font-black uppercase tracking-[0.4em] italic leading-tight text-center sm:text-left">
+                                                ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -360,20 +386,34 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </section>
 
-            {/* --- SECTOR EXCLUSIVE: RED MARQUEE --- */}
-            <div className="w-full bg-[#E11D48] py-4 md:py-6 overflow-hidden border-y border-black/10 relative z-30">
-                <div className="flex flex-nowrap items-center gap-20 animate-marquee whitespace-nowrap px-10">
-                    {sectorData.marquee.map((text, i) => (
-                        <span key={i} className="text-[11px] md:text-[14px] font-black text-white uppercase tracking-[0.3em] italic flex items-center gap-5">
-                            <ShieldAlert className="w-5 h-5" /> {text}
-                        </span>
-                    ))}
+            {/* --- OPERATIONAL TELEMETRY: OXBLOOD MARQUEE --- */}
+            <div className="w-full bg-[#450a0a] h-10 overflow-hidden border-y border-black/20 relative z-30 flex items-center shadow-2xl">
+                <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
+                    {sectorData.marquee.map((signal, i) => {
+                        const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('FLAGGED') || signal.includes('DELAY');
+                        return (
+                            <span key={i} className={cn(
+                                "text-[10px] font-mono font-black uppercase tracking-[0.25em] flex items-center gap-3",
+                                isAlert ? "text-red-400" : "text-zinc-500/80"
+                            )}>
+                                <span className="text-[8px] opacity-40">[{isAlert ? '!' : '✓'}]</span>
+                                {signal}
+                            </span>
+                        );
+                    })}
                     {/* Duplicate for seamless loop */}
-                    {sectorData.marquee.map((text, i) => (
-                        <span key={`dup-${i}`} className="text-[11px] md:text-[14px] font-black text-white uppercase tracking-[0.3em] italic flex items-center gap-5">
-                            <ShieldAlert className="w-5 h-5" /> {text}
-                        </span>
-                    ))}
+                    {sectorData.marquee.map((signal, i) => {
+                        const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('FLAGGED') || signal.includes('DELAY');
+                        return (
+                            <span key={`dup-${i}`} className={cn(
+                                "text-[10px] font-mono font-black uppercase tracking-[0.25em] flex items-center gap-3",
+                                isAlert ? "text-red-400" : "text-zinc-500/80"
+                            )}>
+                                <span className="text-[8px] opacity-40">[{isAlert ? '!' : '✓'}]</span>
+                                {signal}
+                            </span>
+                        );
+                    })}
                 </div>
             </div>
 
@@ -674,4 +714,3 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         </div>
     );
 }
-

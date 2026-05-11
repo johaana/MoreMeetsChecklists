@@ -89,7 +89,7 @@
   body {
     @apply bg-background text-foreground;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    -moz-osx-smoothing: grayscale;
   }
 }
 
@@ -115,7 +115,7 @@ html {
 .animate-marquee {
   display: flex;
   width: fit-content;
-  animation: marquee 40s linear infinite;
+  animation: marquee 60s linear infinite; /* Slower, institutional speed */
 }
 
 @keyframes shimmer {
