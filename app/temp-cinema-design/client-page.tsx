@@ -102,18 +102,15 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent" />
                 </div>
 
-                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-20 pb-12">
+                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-12 pb-12">
                     <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-16 items-center">
                         <div className="space-y-8 md:space-y-12 w-full">
-                            <div className="space-y-4">
-                                <Badge variant="outline" className="text-emerald-400 border-emerald-500/40 py-1.5 px-6 uppercase tracking-[0.4em] font-black text-[10px] rounded-none bg-emerald-500/10">
-                                    SOVEREIGN INFRASTRUCTURE
-                                </Badge>
-                                <h1 className="font-headline font-black text-[36px] md:text-[54px] lg:text-[72px] leading-[0.9] uppercase italic tracking-tighter text-white">
+                            <div className="space-y-6">
+                                <h1 className="font-headline font-black text-[40px] md:text-[64px] lg:text-[84px] leading-[0.9] uppercase italic tracking-tighter text-white">
                                     CINEMA <br/> <span className="text-primary" style={{ color: BRAND_GREEN }}>OPERATIONS SYSTEM.</span>
                                 </h1 >
                                 <div className="space-y-4">
-                                    <p className="text-lg md:text-[28px] font-medium text-white max-w-2xl leading-tight">
+                                    <p className="text-xl md:text-[28px] font-medium text-white max-w-2xl leading-tight">
                                         Technical command for show readiness, crowd flow, and concession yield.
                                     </p>
                                     <div className="border-l-[3px] border-emerald-500/50 pl-8">
@@ -127,7 +124,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                             <div className="space-y-4">
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-3">
                                     {[
-                                        { t: "144+ PRE-BUILT OPERATIONAL SOPs", i: Target },
+                                        { t: "144+ PRE-BUILT OPERATIONAL SOPS", i: Target },
                                         { t: "LIVE OPERATIONAL DASHBOARD", i: Activity },
                                         { t: "EXCEL MASTER • OPERATED LIVE VIA SHEETS", i: GraduationCap },
                                         { t: "AUDIT-READY DOCUMENTATION", i: FileSpreadsheet }
@@ -145,18 +142,18 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                             </div>
 
                             <div className="space-y-6 pt-4">
-                                <div className="flex flex-col sm:flex-row items-center gap-8">
+                                <div className="flex flex-col sm:flex-row items-center gap-8 md:gap-12">
                                     <Button asChild size="lg" className="w-full sm:w-auto h-16 md:h-20 px-12 md:px-16 rounded-xl text-black font-black uppercase italic text-sm md:text-xl shadow-[0_20px_50px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-4" style={{ backgroundColor: BRAND_GREEN }}>
                                         <Link href="#pricing">
                                             LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
                                         </Link>
                                     </Button>
                                     <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-                                         <div className="flex items-baseline gap-2">
-                                            <p className="text-[32px] md:text-[40px] font-black text-white italic tracking-tighter">₹999</p>
-                                            <span className="text-xs font-bold text-zinc-500 line-through">₹4,999</span>
+                                         <div className="flex items-baseline gap-3">
+                                            <p className="text-[40px] md:text-[48px] font-black text-white italic tracking-tighter">₹999</p>
+                                            <span className="text-sm font-bold text-zinc-500 line-through">₹4,999</span>
                                         </div>
-                                        <p className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">ONE-TIME • OWN FOREVER</p>
+                                        <p className="text-[11px] font-black text-zinc-400 uppercase tracking-[0.4em] italic">ONE-TIME • OWN FOREVER</p>
                                     </div>
                                 </div>
                                 <p className="text-[10px] md:text-[11px] text-emerald-500 font-black uppercase tracking-[0.4em] italic leading-tight text-center sm:text-left">
@@ -167,19 +164,19 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                         
                         {/* --- RIGHT COLUMN: FRAMED IMAGE NORTH + RISKS SOUTH --- */}
                         <div className="w-full flex flex-col gap-10 mt-16 lg:mt-0">
-                            {/* Sleek North Frame */}
+                            {/* Sleek Vertical Frame */}
                             <div className="relative group">
-                                <div className="absolute -inset-0.5 bg-gradient-to-b from-primary/20 to-transparent rounded-[2rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                                <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 aspect-square shadow-2xl bg-zinc-900">
+                                <div className="absolute -inset-0.5 bg-gradient-to-b from-primary/30 to-transparent rounded-[2.5rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                                <div className="relative overflow-hidden rounded-[2rem] border border-white/10 aspect-[4/5] shadow-2xl bg-zinc-900">
                                     <img 
                                         src={heroImageUrl} 
                                         alt="Cinema Sector" 
-                                        className="w-full h-full object-cover grayscale-[0.1] brightness-[0.8] hover:scale-105 transition-transform duration-700" 
+                                        className="w-full h-full object-cover grayscale-[0.1] brightness-[0.8] hover:scale-105 transition-transform duration-1000" 
                                     />
                                 </div>
                             </div>
 
-                            {/* South Risks */}
+                            {/* South Risks - Right Aligned Vertical */}
                             <div className="lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right space-y-6">
                                  <p className="text-[9px] font-black text-red-500/60 uppercase tracking-[0.7em] italic">DAILY OPERATIONAL RISKS</p>
                                  <div className="flex flex-col gap-4 md:gap-6">
