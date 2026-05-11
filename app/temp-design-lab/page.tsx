@@ -72,7 +72,7 @@ const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
 const OperationalAlert = ({ title, sub, time, delay = "0s" }: { title: string, sub: string, time: string, delay?: string }) => (
     <div className="flex flex-col items-start lg:items-end gap-0.5 animate-in fade-in slide-in-from-right-4 duration-1000" style={{ animationDelay: delay }}>
         <div className="flex items-center gap-2.5">
-            <span className="text-[16px] md:text-[20px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_20px_rgba(239,68,68,0.6)]">
+            <span className="text-[16px] md:text-[20px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]">
                 <span className="animate-pulse">●</span> {title}
             </span>
             <span className="text-[8px] font-mono text-zinc-600 bg-white/5 px-1.5 py-0.5 rounded border border-white/5">{time}</span>
@@ -97,7 +97,7 @@ export default function DesignLabPage() {
             <main className="flex-1">
                 
                 {/* --- 1. HERO: THE CINEMA MASTER ENGINE --- */}
-                <section className="relative w-full h-[80svh] flex flex-col justify-center overflow-hidden bg-black text-white">
+                <section className="relative w-full h-[75svh] flex flex-col justify-center overflow-hidden bg-black text-white">
                     <div className="absolute inset-0 z-0">
                         <img 
                             src="https://i.postimg.cc/43gVfgjd/multiplex2.avif" 
@@ -115,7 +115,7 @@ export default function DesignLabPage() {
                                         <Badge variant="outline" className="text-zinc-600 border-zinc-800 uppercase tracking-[0.4em] font-black text-[7px] px-2.5 py-1 rounded-none bg-white/5 italic">SYS_REF: CINEMA_SOVEREIGN</Badge>
                                         <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.4em] font-black text-[7px] px-2.5 py-1 rounded-none bg-emerald-500/5 italic leading-none">OPERATIONAL_INFRASTRUCTURE</Badge>
                                     </div>
-                                    <h1 className="text-[30px] md:text-5xl lg:text-5xl font-black font-headline tracking-tighter uppercase italic leading-[0.82] text-white">
+                                    <h1 className="text-[28px] md:text-5xl lg:text-5xl font-black font-headline tracking-tighter uppercase italic leading-[0.85] text-white">
                                         STOP OPERATIONAL DRIFT. <br/> <span className="text-emerald-500">START SEEING EVERY SCREEN.</span>
                                     </h1>
                                     <div className="space-y-4 pt-1">
@@ -139,10 +139,10 @@ export default function DesignLabPage() {
                                             { t: "AUDIT-READY DOCUMENTATION", i: FileSpreadsheet }
                                         ].map((item, i) => (
                                             <div key={i} className="flex items-center gap-3 group">
-                                                <div className="w-3 h-3 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-                                                    <Check className="w-2.5 h-2.5 text-emerald-500" />
+                                                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                                    <Check className="w-2 h-2 text-emerald-500" />
                                                 </div>
-                                                <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.1em] italic text-white/50 group-hover:text-white transition-colors">
+                                                <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.1em] italic text-white/50 group-hover:text-white transition-colors">
                                                     {item.t}
                                                 </span>
                                             </div>
@@ -164,10 +164,10 @@ export default function DesignLabPage() {
                                 </div>
                             </div>
                             
-                            <div className="w-full lg:border-l border-white/5 pl-6 lg:pl-0 lg:pr-6 lg:text-right mt-12 lg:mt-0 space-y-10">
+                            <div className="w-full lg:border-l border-white/5 pl-6 lg:pl-0 lg:pr-6 lg:text-right mt-12 lg:mt-0 space-y-8">
                                  <p className="text-[8px] font-black text-zinc-700 uppercase tracking-[0.6em] italic">ACTIVE_RISK_MONITOR</p>
                                  
-                                 <div className="flex flex-col gap-6 md:gap-8">
+                                 <div className="flex flex-col gap-6 md:gap-7">
                                      <OperationalAlert 
                                         title="[!] RISK: EXPIRED_KDM_KEYS" 
                                         sub="Screen 04: show blackout imminent" 
@@ -181,8 +181,8 @@ export default function DesignLabPage() {
                                         delay="0.4s" 
                                      />
                                      <OperationalAlert 
-                                        title="[!] RISK: PROJECTION_DRIFT" 
-                                        sub="Calibration fault: Screen 01" 
+                                        title="[!] RISK: FIRE_EXIT_BLOCKAGE" 
+                                        sub="Security Sweep: Sector A-4" 
                                         time="02:30:12"
                                         delay="0.6s" 
                                      />
@@ -209,7 +209,7 @@ export default function DesignLabPage() {
                         
                         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
                             {[
-                                { t: "EXECUTIVE DASHBOARD", i: Monitor, active: true },
+                                { t: "EXECUTIVE DASHBOARD", i: Monitor },
                                 { t: "SHOW READINESS ENGINE", i: Clapperboard },
                                 { t: "CONCESSION YIELD TRACKER", i: Popcorn },
                                 { t: "PROJECTION TECH LOGS", i: Projector },
@@ -220,18 +220,9 @@ export default function DesignLabPage() {
                                 { t: "DAILY EXECUTION LEDGER", i: FileSignature },
                                 { t: "INCIDENT REGISTRY", i: ShieldAlert }
                             ].map((item, i) => (
-                                <div key={i} className={cn(
-                                    "p-5 md:p-6 rounded-2xl border flex flex-col items-center justify-center gap-4 transition-all group h-[160px] md:h-[180px] shadow-sm text-center relative bg-white",
-                                    item.active ? "ring-2 ring-emerald-500 border-emerald-500 shadow-emerald-500/10" : "border-zinc-200 hover:border-emerald-500/40"
-                                )}>
-                                    <item.i className={cn(
-                                        "w-8 h-8 md:w-10 md:h-10 transition-all duration-500",
-                                        item.active ? "text-emerald-500" : "text-zinc-400 group-hover:text-emerald-500"
-                                    )} />
-                                    <span className={cn(
-                                        "text-[8px] font-black uppercase tracking-widest leading-tight italic",
-                                        item.active ? "text-zinc-900" : "text-zinc-900 group-hover:text-emerald-600"
-                                    )}>{item.t}</span>
+                                <div key={i} className="p-5 md:p-6 rounded-2xl border border-zinc-200 flex flex-col items-center justify-center gap-4 transition-all group h-[160px] md:h-[180px] shadow-sm text-center bg-white hover:border-emerald-500/40 hover:shadow-lg">
+                                    <item.i className="w-8 h-8 md:w-10 md:h-10 text-slate-400 transition-all duration-500 group-hover:text-emerald-500" />
+                                    <span className="text-[9px] font-black uppercase tracking-widest leading-tight italic text-slate-900 group-hover:text-emerald-600">{item.t}</span>
                                 </div>
                             ))}
                         </div>
