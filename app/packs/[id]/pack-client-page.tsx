@@ -98,7 +98,7 @@ const SECTOR_METADATA: Record<string, {
             "POCSO_LOG_CONFIRMATION",
             "CAMPUS_SWEEP_COMPLETE",
             "ATTENDANCE_VARIANCE_FLAGGED",
-            "CAFETERIA_TEMP_CHECK_ACTIVE",
+            "CAFETERIA_TEMP_CHECK_CHECK",
             "VISITOR_GATE_VALIDATION",
             "PLAYGROUND_STRUCTURE_AUDIT",
             "NO_CHILD_LEFT_BEHIND_SWEEP"
@@ -200,6 +200,8 @@ const DEFAULT_SUSTAINABILITY = [
     { t: "ASSET LONGEVITY", d: "Preventive maintenance rigor extends equipment lifespan and reduces replacement cycles.", i: Wrench }
 ];
 
+const BRAND_GREEN = "#22C55E";
+
 interface SectionProps {
     children: React.ReactNode;
     className?: string;
@@ -209,7 +211,7 @@ interface SectionProps {
 
 function Section({ children, className, id, noSpine = false }: SectionProps) {
     return (
-        <section id={id} className={cn("w-full py-12 md:py-24 relative overflow-hidden", className)}>
+        <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
             {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />}
             <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
                 {children}
@@ -221,7 +223,7 @@ function Section({ children, className, id, noSpine = false }: SectionProps) {
 function PulsatingStressText({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) {
     return (
         <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-            <span className="text-[11px] md:text-[14px] font-black text-red-600/60 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.1)] leading-tight block text-left lg:text-right whitespace-nowrap">
+            <span className="text-[12px] md:text-[15px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(239,68,68,0.3)] leading-none block text-left lg:text-right whitespace-nowrap">
                 {text}
             </span>
         </div>
@@ -237,47 +239,41 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     const res = packResolutions[pack.id] || defaultResolution;
     const sectorData = SECTOR_METADATA[pack.id] || { marquee: DEFAULT_MARQUEE, sustainability: DEFAULT_SUSTAINABILITY };
     
-    const getVerticalName = (p: PremiumPack) => {
-        const title = p.title.toLowerCase();
-        if (title.includes('restaurant')) return 'RESTAURANTS';
-        if (title.includes('hotel')) return 'HOTELS';
-        if (title.includes('hospital')) return 'HOSPITALS';
-        if (title.includes('cinema')) return 'CINEMAS';
-        if (title.includes('school')) return 'SCHOOLS';
-        if (title.includes('retail')) return 'RETAIL STORES';
-        if (title.includes('franchise')) return 'FRANCHISES';
-        if (title.includes('facility')) return 'FACILITIES';
-        return p.category.toUpperCase() + 's';
+    const getVerticalParts = (p: PremiumPack) => {
+        const title = p.title.replace(' Operations System', '').toUpperCase();
+        return [title, "OPERATIONS", "SYSTEM."];
     };
-    const verticalName = getVerticalName(pack);
+    const titleParts = getVerticalParts(pack);
 
     return (
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-primary/20">
             
-            {/* --- HERO SECTION --- */}
-            <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black text-white">
+            {/* --- HERO SECTION: THE ONE-GLANCE COMMAND --- */}
+            <section className="relative w-full h-screen min-h-[700px] flex flex-col justify-center overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 z-0">
                     <img 
                         src={heroImageUrl} 
                         alt="" 
-                        className="w-full h-full object-cover opacity-40 grayscale brightness-[0.35]" 
+                        className="w-full h-full object-cover opacity-30 grayscale-[0.2] brightness-[0.35]" 
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent" />
                 </div>
 
-                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-20 pb-12">
-                    <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-16 items-center">
-                        <div className="space-y-6 md:space-y-8 w-full">
-                            <div className="space-y-3">
-                                <h1 className="font-headline font-black text-[32px] md:text-[44px] lg:text-[54px] xl:text-[60px] leading-none uppercase italic tracking-tighter text-white lg:whitespace-nowrap">
-                                    {res.heroTitle || pack.title.toUpperCase()}
+                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-16 pb-20">
+                    <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-12 items-center">
+                        <div className="space-y-4 md:space-y-5 w-full">
+                            <div className="space-y-2 md:space-y-3">
+                                <h1 className="font-headline font-black text-[40px] md:text-[54px] lg:text-[68px] leading-[0.9] uppercase italic tracking-tighter text-white">
+                                    {titleParts[0]} <br/> 
+                                    <span style={{ color: BRAND_GREEN }}>{titleParts[1]}</span> <br/>
+                                    <span style={{ color: BRAND_GREEN }}>{titleParts[2]}</span>
                                 </h1 >
                                 <div className="space-y-3">
-                                    <p className="text-lg md:text-[24px] font-medium text-zinc-300 max-w-3xl leading-tight">
+                                    <p className="text-lg md:text-[22px] font-medium text-white max-w-2xl leading-tight">
                                         {res.heroSubline}
                                     </p>
-                                    <div className="border-l-2 border-primary/40 pl-6">
-                                        <p className="text-sm md:text-base text-zinc-400 font-bold max-w-xl leading-relaxed italic">
+                                    <div className="border-l-[3px] border-emerald-500/40 pl-8 py-0.5">
+                                        <p className="text-xs md:text-sm text-zinc-400 font-bold max-w-lg leading-relaxed italic">
                                             {res.strategicParagraph}
                                         </p>
                                     </div>
@@ -285,22 +281,18 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
 
                             <div className="space-y-4">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-1 h-5 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
-                                    <p className="text-[9px] font-black text-emerald-500 uppercase tracking-[0.4em] italic font-headline">SYSTEM SPECIFICATIONS</p>
-                                </div>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-2 md:gap-y-3">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2">
                                     {[
-                                        { t: `PRE-BUILT OPERATIONAL SOPs FOR ${verticalName}`, i: Target },
+                                        { t: `${pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0)}+ PRE-BUILT OPERATIONAL SOPs`, i: Target },
                                         { t: "LIVE OPERATIONAL DASHBOARD", i: Activity },
                                         { t: "EXCEL MASTER • OPERATED LIVE VIA SHEETS", i: GraduationCap },
-                                        { t: "AUDIT-READY OPERATIONAL INFRASTRUCTURE", i: FileSpreadsheet }
+                                        { t: "AUDIT-READY DOCUMENTATION", i: FileSpreadsheet }
                                     ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-3 md:gap-4 group">
-                                            <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-                                                <Check className="w-2.5 h-2.5 text-[#22C55E]" />
+                                        <div key={i} className="flex items-center gap-4 group">
+                                            <div className="w-3.5 h-3.5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 border border-emerald-500/30">
+                                                <Check className="w-2.5 h-2.5 text-emerald-400" />
                                             </div>
-                                            <span className="text-[11px] md:text-[13px] font-bold uppercase tracking-[0.05em] italic leading-tight text-white/70 group-hover:text-white transition-colors">
+                                            <span className="text-[9px] md:text-[11px] font-black uppercase tracking-[0.05em] italic leading-tight text-white/70 group-hover:text-emerald-400 transition-colors">
                                                 {item.t}
                                             </span>
                                         </div>
@@ -308,71 +300,82 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                             </div>
 
-                            <div className="space-y-4 md:space-y-5 pt-2">
-                                <div className="space-y-3">
-                                    <div className="space-y-3">
-                                        <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group flex items-center justify-center gap-4">
-                                            <Link href="#pricing">
-                                                LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
-                                            </Link>
-                                        </Button>
-                                        <div className="space-y-1.5 pl-1">
-                                            <p className="text-[10px] md:text-[12px] text-emerald-500/90 font-black uppercase tracking-[0.2em] italic leading-tight text-center sm:text-left">
-                                                EXCEL MASTER • OPERATED LIVE VIA GOOGLE SHEETS
-                                            </p>
-                                            <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic leading-tight text-center sm:text-left">
-                                                ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
-                                            </p>
-                                        </div>
+                            <div className="flex flex-col sm:flex-row items-center gap-6 md:gap-10 pt-2">
+                                <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-4" style={{ backgroundColor: BRAND_GREEN }}>
+                                    <Link href="#pricing">
+                                        LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
+                                    </Link>
+                                </Button>
+                                <div className="flex items-baseline gap-3">
+                                    <span className="text-[38px] md:text-[50px] font-black text-white italic tracking-tighter leading-none">₹{pack.priceINR}</span>
+                                    <div className="flex flex-col">
+                                        <span className="text-[10px] font-bold text-zinc-500 line-through leading-none">₹4,999</span>
+                                        <span className="text-[8px] font-black text-zinc-400 uppercase tracking-widest italic mt-0.5">ACCESS</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-6 md:space-y-8">
-                             <p className="text-[9px] font-black text-red-500/40 uppercase tracking-[0.7em] italic">DAILY OPERATIONAL RISKS</p>
-                             <div className="flex flex-col gap-3 md:gap-5 lg:gap-6">
-                                 {res.risks.map((risk, i) => (
-                                    <PulsatingStressText key={i} text={risk.title} delay={`${i * 0.2}s`} />
-                                 ))}
-                             </div>
+                        <div className="w-full flex flex-col items-end gap-6 mt-10 lg:mt-0">
+                            <div className="relative group w-full max-w-[480px]">
+                                <div className="absolute -inset-1 bg-gradient-to-b from-primary/30 to-transparent rounded-[3.5rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                                <div className="relative overflow-hidden rounded-[3rem] border border-white/10 aspect-[1.5/1] shadow-2xl bg-zinc-900">
+                                    <img 
+                                        src={heroImageUrl} 
+                                        alt="" 
+                                        className="w-full h-full object-cover grayscale-[0.1] brightness-[0.8] hover:scale-105 transition-transform duration-1000" 
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="w-full max-w-[480px] space-y-4 pr-4">
+                                 <div className="flex items-center gap-4 justify-end">
+                                     <div className="h-px flex-1 bg-gradient-to-r from-transparent to-red-500/20" />
+                                     <p className="text-[9px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">DAILY OPERATIONAL RISKS</p>
+                                 </div>
+                                 <div className="flex flex-col gap-3 md:gap-5 text-right items-end">
+                                     {res.risks.slice(0, 4).map((risk, i) => (
+                                        <PulsatingStressText key={i} text={risk.title} delay={`${i * 0.2}s`} />
+                                     ))}
+                                 </div>
+                            </div>
                         </div>
+                    </div>
+                </div>
+
+                {/* --- TELEMETRY MARQUEE: INTEGRATED --- */}
+                <div className="absolute bottom-0 w-full bg-[#1a0505] h-10 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
+                    <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
+                        {sectorData.marquee.map((signal, i) => {
+                            const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
+                            return (
+                                <span key={i} className={cn(
+                                    "text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
+                                    isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
+                                )}>
+                                    <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
+                                    {signal}
+                                </span>
+                            );
+                        })}
+                        {/* Loop Replication */}
+                        {sectorData.marquee.map((signal, i) => {
+                            const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
+                            return (
+                                <span key={`dup-${i}`} className={cn(
+                                    "text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
+                                    isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
+                                )}>
+                                    <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
+                                    {signal}
+                                </span>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
 
-            {/* --- OPERATIONAL TELEMETRY MARQUEE --- */}
-            <div className="w-full bg-[#1a0505] h-10 overflow-hidden border-y border-black/10 relative z-30 flex items-center shadow-2xl">
-                <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
-                    {sectorData.marquee.map((signal, i) => {
-                        const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('FLAGGED') || signal.includes('DELAY') || signal.includes('EXCEPTION') || signal.includes('PENDING');
-                        return (
-                            <span key={i} className={cn(
-                                "text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
-                                isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
-                            )}>
-                                <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
-                                {signal}
-                            </span>
-                        );
-                    })}
-                    {/* Duplicate for loop */}
-                    {sectorData.marquee.map((signal, i) => {
-                        const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('FLAGGED') || signal.includes('DELAY') || signal.includes('EXCEPTION') || signal.includes('PENDING');
-                        return (
-                            <span key={`dup-${i}`} className={cn(
-                                "text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
-                                isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
-                            )}>
-                                <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
-                                {signal}
-                            </span>
-                        );
-                    })}
-                </div>
-            </div>
-
-            {/* --- WHY EXECUTION BREAKS --- */}
+            {/* --- 2. WHY EXECUTION BREAKS --- */}
             <Section className="bg-white border-b border-zinc-100">
                 <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
@@ -410,7 +413,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- RESOLUTION PROTOCOL --- */}
+            {/* --- 3. RESOLUTION PROTOCOL (The Logic) --- */}
             <Section className="bg-zinc-50/50">
                 <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
@@ -464,7 +467,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- BUILT FOR REAL TEAMS --- */}
+            {/* --- 4. BUILT FOR REAL TEAMS (The Practicality) --- */}
             <Section className="bg-white">
                 <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
@@ -497,7 +500,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- DEPLOYMENT GUIDE --- */}
+            {/* --- 5. GO LIVE IN 10 MINUTES (The Ease) --- */}
             <Section className="bg-zinc-50 border-y border-zinc-100" id="guide">
                  <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
                         <div className="text-center space-y-4">
@@ -506,10 +509,10 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
                             {[
-                                { t: "Download", d: "Get your industry-specific Excel Master instantly after payment." },
+                                { t: "Download", d: "Get your pre-built, industry-specific Excel Master instantly after payment." },
                                 { t: "Upload Master", d: "Upload your Excel Master to Google Drive for live team access via Google Sheets." },
-                                { t: "Assign", d: "Add your business details and map staff names to roles in the central hub." },
-                                { t: "Run", d: "Daily tasks begin populating automatically — live across your team on any device." }
+                                { t: "Assign", d: "Add your business details, map staff names to roles, and set your controls once." },
+                                { t: "Run", d: "Daily tasks begin populating automatically by role, date, and frequency — live across your team." }
                             ].map((step, i) => (
                                 <div className="space-y-8 group text-left" key={i}>
                                     <div className="text-6xl md:text-8xl font-black italic text-zinc-200 group-hover:text-primary transition-colors leading-none">
@@ -525,7 +528,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     </div>
             </Section>
 
-            {/* --- OPERATIONAL SUSTAINABILITY --- */}
+            {/* --- 6. OPERATIONAL SUSTAINABILITY (The Bridge) --- */}
             <Section className="bg-white" id="esg">
                 <div className="max-w-4xl mx-auto space-y-16">
                     <div className="space-y-6 text-center">
@@ -552,11 +555,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- PRICING SECTION --- */}
+            {/* --- 7. PRICING SECTION (The Decision) --- */}
             <div id="pricing" className="scroll-mt-20" />
             <PricingClient pack={pack} />
 
-            {/* --- CUSTOMIZATION BRIDGE --- */}
+            {/* --- 8. CUSTOMIZATION BRIDGE --- */}
             <Section className="bg-zinc-950 text-white" noSpine>
                 <div className="max-w-4xl mx-auto p-10 md:p-16 rounded-[2rem] border border-white/10 bg-white/[0.02] relative overflow-hidden text-center space-y-8">
                     <div className="absolute top-0 right-0 p-8 opacity-5">
@@ -582,7 +585,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- FINAL MANDATE --- */}
+            {/* --- 9. FINAL MANDATE (The Close) --- */}
             <Section className="bg-[#0F3D2E] text-white py-20 md:py-32" noSpine>
                 <div className="max-w-6xl mx-auto">
                     <div className="grid lg:grid-cols-[1.2fr,1fr] gap-10 md:gap-20 items-center">
