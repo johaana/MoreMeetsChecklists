@@ -21,7 +21,9 @@ import {
     GraduationCap,
     FileSpreadsheet,
     AlertTriangle,
-    Sparkles
+    Sparkles,
+    Leaf,
+    Recycle
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
@@ -63,6 +65,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
     if (!mounted) return null;
 
     const res = packResolutions[pack.id] || defaultResolution;
+    const isCinema = pack.id === 'cinema_operations_pack';
     
     const getVerticalName = (p: PremiumPack) => {
         const title = p.title.toLowerCase();
@@ -165,6 +168,26 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     </div>
                 </div>
             </section>
+
+            {/* --- CINEMA EXCLUSIVE: RED MARQUEE --- */}
+            {isCinema && (
+                <div className="w-full bg-[#E11D48] py-4 md:py-6 overflow-hidden border-y border-black/10 relative z-30">
+                    <div className="flex flex-nowrap items-center gap-20 animate-marquee whitespace-nowrap px-10">
+                        {[
+                            "BLACK-SCREEN INCIDENTS PREVENTED",
+                            "CONCESSION LEAKAGE PLUGGED",
+                            "MISSED FIRE SAFETY CHECKS ELIMINATED",
+                            "UNVERIFIED SHOW READINESS STOPPED",
+                            "LOST INTERVAL REVENUE RECLAIMED",
+                            "EXPIRED KDM BLACKOUTS AVOIDED"
+                        ].map((text, i) => (
+                            <span key={i} className="text-[11px] md:text-[14px] font-black text-white uppercase tracking-[0.3em] italic flex items-center gap-5">
+                                <ShieldAlert className="w-5 h-5" /> {text}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            )}
 
             {/* --- SECTION 2: WHY EXECUTION BREAKS --- */}
             <Section className="bg-white border-b border-zinc-100">
@@ -278,32 +301,6 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 )}
                             </div>
                         </div>
-                    </div>
-                </div>
-            </Section>
-
-            {/* --- CUSTOMIZATION BRIDGE --- */}
-            <Section className="bg-zinc-950 text-white" noSpine>
-                <div className="max-w-4xl mx-auto p-10 md:p-16 rounded-[2rem] border border-white/10 bg-white/[0.02] relative overflow-hidden text-center space-y-8">
-                    <div className="absolute top-0 right-0 p-8 opacity-5">
-                        <Sparkles className="w-48 h-48 text-primary" />
-                    </div>
-                    <div className="relative z-10 space-y-3">
-                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[9px]">OPTIONAL CUSTOMIZATION SUPPORT</Badge>
-                        <h2 className="text-2xl md:text-4xl font-black font-headline italic uppercase tracking-tighter leading-tight">
-                            Need this system tailored <br/> to your specific brand?
-                        </h2>
-                        <p className="text-zinc-400 text-base md:text-lg font-medium italic max-w-2xl mx-auto">
-                            If our standard framework requires professional adaptation to your unique department hierarchy or multi-unit reporting structure, we offer 1-on-1 discovery calls.
-                        </p>
-                    </div>
-                    <div className="relative z-10 flex flex-col items-center gap-4">
-                        <Button asChild size="lg" className="h-14 px-8 rounded-xl bg-primary text-black font-black uppercase italic text-xs shadow-2xl hover:scale-105 transition-all border-none">
-                            <Link href="https://calendly.com/more-moremeets/30min" target="_blank">
-                                BOOK CUSTOMIZATION DISCOVERY <ArrowRight className="ml-2 w-4 h-4" />
-                            </Link>
-                        </Button>
-                        <p className="text-[8px] font-black uppercase tracking-[0.4em] text-white/20">TAILORED IMPLEMENTATION STARTS AT ₹9,999 / $125 USD</p>
                     </div>
                 </div>
             </Section>
@@ -449,9 +446,69 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
+            {/* --- CINEMA EXCLUSIVE: OPERATIONAL SUSTAINABILITY --- */}
+            {isCinema && (
+                <Section className="bg-white border-t border-zinc-100" id="esg">
+                    <div className="max-w-4xl mx-auto space-y-16">
+                        <div className="space-y-6 text-center">
+                            <Badge variant="outline" className="text-emerald-600 border-emerald-100 bg-emerald-50 uppercase tracking-[0.5em] font-black text-[10px] italic px-10 py-3 rounded-none">OPERATIONAL SUSTAINABILITY</Badge>
+                            <h2 className="text-[34px] md:text-[64px] font-black font-headline uppercase italic leading-[0.9] tracking-tighter text-center">Sustainability through Rigor.</h2>
+                            <p className="text-zinc-500 text-lg md:text-xl font-bold italic leading-tight uppercase border-l-2 border-emerald-500/20 pl-8 mx-auto max-w-xl text-center">
+                                Environmental sustainability isn't a report. It's the byproduct of daily operational discipline and visibility.
+                            </p>
+                        </div>
+                        
+                        <div className="grid sm:grid-cols-2 gap-8 md:gap-12 text-left">
+                            {[
+                                { t: "ENERGY DISCIPLINE", d: "Daily AC shutdown compliance logs for empty auditoriums stop unmonitored power waste.", i: Zap },
+                                { t: "RESOURCE CONSERVATION", d: "Water vitals logging and overnight leak detection through digital meter-parity checks.", i: Leaf },
+                                { t: "WASTE MITIGATION", d: "Concession yield logic (corn-to-bucket) identifies production waste before it reaches the bin.", i: Recycle },
+                                { t: "ASSET LONGEVITY", d: "Preventive uptime audits extend technical hardware life by 30%, reducing e-waste footprint.", i: Wrench }
+                            ].map((item, i) => (
+                                <div key={i} className="flex flex-col gap-4 items-start group">
+                                    <div className="w-12 h-12 rounded-2xl bg-zinc-50 border border-zinc-100 flex items-center justify-center text-zinc-400 shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-inner">
+                                        <item.i className="w-6 h-6" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <h4 className="text-lg font-black uppercase italic text-zinc-950 leading-tight text-left">{item.t}</h4>
+                                        <p className="text-[11px] font-bold text-zinc-400 italic uppercase leading-relaxed text-left">{item.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+            )}
+
             {/* --- PRICING BRIDGE --- */}
             <div id="pricing" className="scroll-mt-20" />
             <PricingClient pack={pack} />
+
+            {/* --- CUSTOMIZATION BRIDGE (MOVED BELOW PRICING) --- */}
+            <Section className="bg-zinc-950 text-white" noSpine>
+                <div className="max-w-4xl mx-auto p-10 md:p-16 rounded-[2rem] border border-white/10 bg-white/[0.02] relative overflow-hidden text-center space-y-8">
+                    <div className="absolute top-0 right-0 p-8 opacity-5">
+                        <Sparkles className="w-48 h-48 text-primary" />
+                    </div>
+                    <div className="relative z-10 space-y-3">
+                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[9px]">OPTIONAL CUSTOMIZATION SUPPORT</Badge>
+                        <h2 className="text-2xl md:text-4xl font-black font-headline italic uppercase tracking-tighter leading-tight">
+                            Need this system tailored <br/> to your specific brand?
+                        </h2>
+                        <p className="text-zinc-400 text-base md:text-lg font-medium italic max-w-2xl mx-auto">
+                            If our standard framework requires professional adaptation to your unique department hierarchy or multi-unit reporting structure, we offer 1-on-1 discovery calls.
+                        </p>
+                    </div>
+                    <div className="relative z-10 flex flex-col items-center gap-4">
+                        <Button asChild size="lg" className="h-14 px-8 rounded-xl bg-primary text-black font-black uppercase italic text-xs shadow-2xl hover:scale-105 transition-all border-none">
+                            <Link href="https://calendly.com/more-moremeets/30min" target="_blank">
+                                BOOK CUSTOMIZATION DISCOVERY <ArrowRight className="ml-2 w-4 h-4" />
+                            </Link>
+                        </Button>
+                        <p className="text-[8px] font-black uppercase tracking-[0.4em] text-white/20">TAILORED IMPLEMENTATION STARTS AT ₹9,999 / $125 USD</p>
+                    </div>
+                </div>
+            </Section>
 
             {/* --- FINAL MANDATE --- */}
             <Section className="bg-[#0F3D2E] text-white py-20 md:py-32" noSpine>
