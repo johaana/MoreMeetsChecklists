@@ -23,17 +23,7 @@ import {
     Leaf,
     Recycle,
     Wrench,
-    FileSignature,
-    Monitor,
-    Clapperboard,
-    Popcorn,
-    Projector,
-    Ticket,
-    ChevronRight,
-    Thermometer,
-    Stethoscope,
-    LayoutGrid,
-    Eye
+    LayoutGrid
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
@@ -188,7 +178,7 @@ const SECTOR_METADATA: Record<string, {
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Daily AC shutdown compliance logs for empty auditoriums stop unmonitored power waste.", i: Zap },
             { t: "RESOURCE CONSERVATION", d: "Water vitals logging and overnight leak detection through digital meter-parity checks.", i: Leaf },
-            { t: "WASTE MITIGATION", d: "Concession yield logic (corn-to-bucket) identifies production waste.", i: Recycle },
+            { t: "WASTE MITIGATION", d: "Concession yield logic (corn-to-bucket) identifies production waste before it reaches the bin.", i: Recycle },
             { t: "ASSET LONGEVITY", d: "Preventive uptime audits extend technical hardware life by 30%, reducing e-waste footprint.", i: Wrench }
         ]
     }
@@ -228,42 +218,10 @@ function Section({ children, className, id, noSpine = false }: SectionProps) {
     );
 }
 
-function BrowserFrame({ src, viewLabel }: { src: string, viewLabel: string }) {
-    return (
-        <div className="group space-y-3 w-full max-w-lg mx-auto">
-            <div className="relative rounded-[1rem] overflow-hidden shadow-2xl border border-white/10 bg-[#0A0F19] transition-all duration-1000">
-                <div className="bg-[#0D121F] border-b border-white/5 px-4 py-2 flex items-center gap-3">
-                    <div className="flex gap-1">
-                        <div className="w-1 h-1 rounded-full bg-red-500/20" />
-                        <div className="w-1 h-1 rounded-full bg-amber-500/20" />
-                        <div className="w-1 h-1 rounded-full bg-emerald-500/20" />
-                    </div>
-                    <div className="flex-1 flex justify-center">
-                        <div className="bg-black/40 border border-white/5 rounded px-6 py-0.5 text-[7px] font-black text-white/20 uppercase tracking-[0.4em] italic leading-none">
-                            moremeets-master-engine.xlsx
-                        </div>
-                    </div>
-                </div>
-                <div className="relative w-full h-[120px] md:h-[160px] overflow-hidden bg-zinc-900">
-                    <img 
-                        src={src} 
-                        alt={viewLabel} 
-                        className="w-full h-auto object-cover object-top grayscale-[0.6] group-hover:grayscale-[0.3] transition-all duration-1000 opacity-30 group-hover:opacity-60 blur-[2px] group-hover:blur-[1px]" 
-                    />
-                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0A0F19] via-transparent to-transparent pointer-events-none" />
-                </div>
-            </div>
-            <div className="flex flex-col items-center">
-                <span className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.3em] italic leading-none">{viewLabel}</span>
-            </div>
-        </div>
-    );
-}
-
 function PulsatingStressText({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) {
     return (
         <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-            <span className="text-[11px] md:text-[14px] font-black text-red-600/60 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.1)] leading-tight block text-left lg:text-right">
+            <span className="text-[11px] md:text-[14px] font-black text-red-600/60 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.1)] leading-tight block text-left lg:text-right whitespace-nowrap">
                 {text}
             </span>
         </div>
@@ -452,7 +410,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- RESTORES CONTROL --- */}
+            {/* --- RESOLUTION PROTOCOL --- */}
             <Section className="bg-zinc-50/50">
                 <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
@@ -506,46 +464,69 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- TECHNICAL PROOF (HUD) --- */}
-            <Section className="bg-white" id="evidence">
-                <div className="max-w-6xl mx-auto space-y-16 md:space-y-32">
-                    <div className="grid lg:grid-cols-[0.8fr,1.2fr] gap-12 lg:gap-24 items-center">
-                        <div className="space-y-8 text-left">
-                            <div className="space-y-4">
-                                <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[9px] px-6 py-1.5 rounded-none italic bg-zinc-50">TECHNICAL PROOF</Badge>
-                                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-left">
-                                    Executive <br/> Operations View
-                                </h2>
-                                <p className="text-zinc-500 text-sm md:text-base font-bold italic uppercase leading-relaxed border-l-2 border-primary/20 pl-8 text-left">
-                                    Know what's done and what's missed without attending a single meeting. Real-time visibility into multi-unit health.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="w-full">
-                            <BrowserFrame src="https://i.postimg.cc/W1Yt09r8/Screenshot-2026-05-11-170634.png" viewLabel="EXECUTIVE COMMAND PULSE" />
-                        </div>
+            {/* --- BUILT FOR REAL TEAMS --- */}
+            <Section className="bg-white">
+                <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
+                    <div className="text-center space-y-4">
+                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">OPERATIONAL REASSURANCE</Badge>
+                        <h2 className="text-[28px] md:text-[50px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.95] text-center">
+                            Built for real teams
+                        </h2>
                     </div>
 
-                    <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-24 items-center">
-                        <div className="order-2 lg:order-1 w-full">
-                            <BrowserFrame src="https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png" viewLabel="DAILY EXECUTION LEDGER" />
-                        </div>
-                        <div className="space-y-8 text-left order-1 lg:order-2">
-                            <div className="space-y-4">
-                                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-left lg:text-right">
-                                    Staff Mobile <br/> Execution
-                                </h2>
-                                <p className="text-zinc-500 text-sm md:text-base font-bold italic uppercase leading-relaxed border-r-2 border-primary/20 pr-8 text-left lg:text-right">
-                                    No app training required. Staff log completion in seconds. If it's not logged, it's not done.
-                                </p>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
+                        {[
+                            { t: "FASTER TEAM TRAINING", d: "New teams understand responsibilities faster using built-in instructions.", i: GraduationCap },
+                            { t: "REDUCED DEPENDENCY", d: "Operations stop collapsing when key staff leave. Memory becomes infrastructure.", i: History },
+                            { t: res.reassuranceTrustTitle || "STAKEHOLDER TRUST", d: res.reassuranceTrustDescription || "Operational consistency customers notice.", i: Users },
+                            { t: "EASY FOR TEAMS", d: "No apps. No software rollout. Teams simply update one shared dashboard daily.", i: CheckCircle2 },
+                            { t: "EDITABLE INFRASTRUCTURE", d: "Add, remove, or customize tasks anytime to fit your unique property protocols.", i: Zap },
+                            { t: "AUDIT-READY RECORDS", d: "Institutional proof for inspectors and insurers is generated automatically.", i: ShieldCheck }
+                        ].map((item, i) => (
+                            <div key={i} className="flex flex-col gap-5 p-8 bg-white rounded-[2rem] border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-500 group text-left">
+                                <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-inner">
+                                    <item.i className="w-6 h-6" />
+                                </div>
+                                <div className="space-y-2 text-left">
+                                    <h4 className="text-lg font-black uppercase italic tracking-tighter text-zinc-950 leading-none text-left">{item.t}</h4>
+                                    <p className="text-zinc-500 text-sm md:text-base italic font-medium leading-relaxed text-left" dangerouslySetInnerHTML={{ __html: item.d }} />
+                                </div>
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </Section>
 
+            {/* --- DEPLOYMENT GUIDE --- */}
+            <Section className="bg-zinc-50 border-y border-zinc-100" id="guide">
+                 <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px]">DEPLOYMENT PROTOCOL</Badge>
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">Go live in 10 minutes</h2>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
+                            {[
+                                { t: "Download", d: "Get your industry-specific Excel Master instantly after payment." },
+                                { t: "Upload Master", d: "Upload your Excel Master to Google Drive for live team access via Google Sheets." },
+                                { t: "Assign", d: "Add your business details and map staff names to roles in the central hub." },
+                                { t: "Run", d: "Daily tasks begin populating automatically — live across your team on any device." }
+                            ].map((step, i) => (
+                                <div className="space-y-8 group text-left" key={i}>
+                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-200 group-hover:text-primary transition-colors leading-none">
+                                        {i+1}
+                                    </div>
+                                    <div className="space-y-3">
+                                        <h4 className="font-black text-xl md:text-2xl uppercase italic leading-tight font-headline text-zinc-950 text-left">{step.t}</h4>
+                                        <p className="text-base text-zinc-500 font-bold italic leading-relaxed text-left">{step.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+            </Section>
+
             {/* --- OPERATIONAL SUSTAINABILITY --- */}
-            <Section className="bg-white border-t border-zinc-100" id="esg">
+            <Section className="bg-white" id="esg">
                 <div className="max-w-4xl mx-auto space-y-16">
                     <div className="space-y-6 text-center">
                         <Badge variant="outline" className="text-emerald-600 border-emerald-100 bg-emerald-50 uppercase tracking-[0.5em] font-black text-[10px] italic px-10 py-3 rounded-none">OPERATIONAL SUSTAINABILITY</Badge>
@@ -571,72 +552,11 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- DEPLOYMENT GUIDE --- */}
-            <Section className="bg-zinc-50 border-y border-zinc-100" id="guide">
-                 <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
-                        <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px]">DEPLOYMENT PROTOCOL</Badge>
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">Go live in 10 minutes</h2>
-                        </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
-                            {[
-                                { t: "Download", d: "Get your industry-specific Excel Master instantly after payment." },
-                                { t: "Upload Master", d: "Upload your Excel Master to Google Drive for live team access via Google Sheets." },
-                                { t: "Assign", d: "Add your business details and map staff names to roles in the central hub." },
-                                { t: "Run", d: "Daily tasks begin populating automatically — live across your team on any device." }
-                            ].map((step, i) => (
-                                <div className="space-y-8 group text-left" key={i}>
-                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-200 group-hover:text-primary transition-colors leading-none">
-                                        {i+1}
-                                    </div>
-                                    <div className="space-y-3">
-                                        <h4 className="font-black text-xl md:text-2xl uppercase italic leading-tight font-headline text-zinc-950 text-left">{step.t}</h4>
-                                        <p className="text-base text-zinc-500 font-bold italic leading-relaxed text-left">{step.d}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-            </Section>
-
-            {/* --- BUILT FOR REAL TEAMS --- */}
-            <Section className="bg-white">
-                <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
-                    <div className="text-center space-y-4">
-                        <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">OPERATIONAL REASSURANCE</Badge>
-                        <h2 className="text-[28px] md:text-[50px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.95]">
-                            Built for real teams
-                        </h2>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
-                        {[
-                            { t: "FASTER TEAM TRAINING", d: "New teams understand responsibilities faster using built-in instructions.", i: GraduationCap },
-                            { t: "REDUCED DEPENDENCY", d: "Operations stop collapsing when key staff leave. Memory becomes infrastructure.", i: History },
-                            { t: res.reassuranceTrustTitle || "STAKEHOLDER TRUST", d: res.reassuranceTrustDescription || "Operational consistency customers notice.", i: Users },
-                            { t: "EASY FOR TEAMS", d: "No apps. No software rollout. Teams simply update one shared <strong>dashboard</strong> daily.", i: CheckCircle2 },
-                            { t: "EDITABLE INFRASTRUCTURE", d: "Add, remove, or customize tasks anytime to fit your unique property protocols.", i: Zap },
-                            { t: "AUDIT-READY RECORDS", d: "Institutional proof for inspectors and insurers is generated automatically.", i: ShieldCheck }
-                        ].map((item, i) => (
-                            <div key={i} className="flex flex-col gap-5 p-8 bg-white rounded-[2rem] border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-500 group text-left">
-                                <div className="w-12 h-12 rounded-xl bg-zinc-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-inner">
-                                    <item.i className="w-6 h-6" />
-                                </div>
-                                <div className="space-y-2 text-left">
-                                    <h4 className="text-lg font-black uppercase italic tracking-tighter text-zinc-950 leading-none text-left">{item.t}</h4>
-                                    <p className="text-zinc-500 text-sm md:text-base italic font-medium leading-relaxed text-left" dangerouslySetInnerHTML={{ __html: item.d }} />
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </Section>
-
             {/* --- PRICING SECTION --- */}
             <div id="pricing" className="scroll-mt-20" />
             <PricingClient pack={pack} />
 
-            {/* --- CUSTOMIZATION BRIDGE (BELOW PRICING) --- */}
+            {/* --- CUSTOMIZATION BRIDGE --- */}
             <Section className="bg-zinc-950 text-white" noSpine>
                 <div className="max-w-4xl mx-auto p-10 md:p-16 rounded-[2rem] border border-white/10 bg-white/[0.02] relative overflow-hidden text-center space-y-8">
                     <div className="absolute top-0 right-0 p-8 opacity-5">
@@ -723,7 +643,7 @@ const Sparkles = ({ className }: { className?: string }) => (
         strokeLinejoin="round" 
         className={className}
     >
-        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L12 3Z" />
         <path d="M5 3v4" /><path d="M19 17v4" /><path d="M3 5h4" /><path d="M17 19h4" />
     </svg>
 );
