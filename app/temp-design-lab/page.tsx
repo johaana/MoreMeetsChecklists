@@ -51,23 +51,33 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
 );
 
 const BrowserFrame = ({ src, label, sub }: { src: string, label: string, sub?: string }) => (
-    <div className="group space-y-2 w-full">
-        <div className="relative rounded-lg overflow-hidden shadow-[0_15px_40px_-15px_rgba(0,0,0,0.1)] border border-zinc-200 bg-white transition-all duration-700 hover:shadow-[0_20px_50px_-10px_rgba(34,197,94,0.1)]">
-            <div className="bg-[#0A0F19] border-b border-white/5 px-3 py-1.5 flex items-center gap-2">
-                <div className="flex gap-1">
-                    <div className="w-1 h-1 rounded-full bg-red-500/30" />
-                    <div className="w-1 h-1 rounded-full bg-amber-500/30" />
-                    <div className="w-1 h-1 rounded-full bg-emerald-500/30" />
+    <div className="group space-y-2 w-full max-w-lg mx-auto">
+        <div className="relative rounded-xl overflow-hidden shadow-[0_15px_40px_-20px_rgba(0,0,0,0.15)] border border-zinc-200 bg-white transition-all duration-700 hover:shadow-[0_25px_60px_-15px_rgba(34,197,94,0.1)]">
+            {/* Browser Top Chrome */}
+            <div className="bg-[#0D121F] border-b border-white/5 px-4 py-2 flex items-center gap-2">
+                <div className="flex gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-red-500/20" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500/20" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/20" />
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <div className="bg-white/5 border border-white/5 rounded-sm px-4 py-0.5 text-[6px] font-black text-white/30 uppercase tracking-[0.3em] italic">
-                        {label.toLowerCase()}.xlsx
+                    <div className="bg-white/5 border border-white/5 rounded-md px-6 py-0.5 text-[7px] font-black text-white/20 uppercase tracking-[0.4em] italic">
+                        {label.replace(/_/g, ' ')}.xlsx
                     </div>
                 </div>
             </div>
-            <img src={src} alt={label} className="w-full h-auto grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" />
+            {/* Shorter, less readable image container */}
+            <div className="relative w-full h-[160px] md:h-[200px] overflow-hidden bg-zinc-50">
+                <img 
+                    src={src} 
+                    alt={label} 
+                    className="w-full h-auto object-cover object-top grayscale-[0.4] group-hover:grayscale-0 group-hover:scale-[1.01] transition-all duration-1000 opacity-50 group-hover:opacity-100 blur-[0.6px] group-hover:blur-0" 
+                />
+                {/* Fade out bottom to make it feel like a crop */}
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white via-white/30 to-transparent pointer-events-none" />
+            </div>
         </div>
-        {sub && <p className="text-[8px] font-black text-zinc-400 uppercase tracking-widest italic text-center">{sub}</p>}
+        {sub && <p className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.5em] italic text-center">{sub.replace(/_/g, ' ')}</p>}
     </div>
 );
 
@@ -94,30 +104,30 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* --- 1. HERO: MIRRORED AUTHORITY --- */}
-                <section className="relative w-full min-h-[90svh] flex flex-col justify-start overflow-hidden bg-black text-white">
+                {/* --- 1. HERO: COMPACT COMMAND --- */}
+                <section className="relative w-full min-h-[85svh] flex flex-col justify-center overflow-hidden bg-black text-white">
                     <div className="absolute inset-0 z-0">
                         <img 
                             src="https://i.postimg.cc/43gVfgjd/multiplex2.avif" 
                             alt="" 
-                            className="w-full h-full object-cover opacity-40 grayscale-[0.2] brightness-[0.3]" 
+                            className="w-full h-full object-cover opacity-30 grayscale-[0.3] brightness-[0.25]" 
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent" />
                     </div>
 
-                    <div className="relative z-10 container mx-auto max-w-[1200px] px-6 pt-24 md:pt-32 pb-16">
+                    <div className="relative z-10 container mx-auto max-w-[1200px] px-6 pt-20 md:pt-32 pb-12">
                         <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-12 items-center">
                             <div className="space-y-6 md:space-y-10">
                                 <div className="space-y-4">
-                                    <h1 className="text-[34px] md:text-[64px] lg:text-[72px] font-black font-headline tracking-tighter uppercase italic leading-[0.9] text-white">
+                                    <h1 className="text-[34px] md:text-[64px] lg:text-[72px] font-black font-headline tracking-tighter uppercase italic leading-[0.88] text-white">
                                         STOP OPERATIONAL DRIFT. <br/> <span className="text-emerald-500">SEE EVERY SCREEN.</span>
                                     </h1>
                                     <div className="space-y-4">
-                                        <p className="text-base md:text-[24px] font-black italic text-zinc-300 max-w-2xl leading-tight uppercase tracking-tight">
+                                        <p className="text-base md:text-[22px] font-black italic text-zinc-400 max-w-2xl leading-tight uppercase tracking-tight">
                                             Know what's done. What's missed. What's delayed. <br className="hidden md:block" /> Across your entire operation.
                                         </p>
                                         <div className="flex flex-col gap-2 border-l-2 border-emerald-500/60 pl-6 max-w-xl">
-                                            <p className="text-sm md:text-base text-zinc-400 font-bold leading-relaxed italic">
+                                            <p className="text-sm md:text-base text-zinc-500 font-bold leading-relaxed italic">
                                                 Built for multiplex leadership where black-screens and concession profit-leakage are daily variables you must control.
                                             </p>
                                         </div>
@@ -136,7 +146,7 @@ export default function DesignLabPage() {
                                                 <div className="w-3 h-3 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
                                                     <Check className="w-2 h-2 text-emerald-500" />
                                                 </div>
-                                                <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.1em] italic text-white/40 group-hover:text-white transition-colors">
+                                                <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.1em] italic text-white/30 group-hover:text-white transition-colors">
                                                     {item.t}
                                                 </span>
                                             </div>
@@ -148,8 +158,8 @@ export default function DesignLabPage() {
                                                 LIVE IN 10 MINUTES <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-2" />
                                             </Link>
                                         </Button>
-                                        <div className="flex flex-col items-center sm:items-start opacity-30">
-                                            <p className="text-[9px] md:text-[11px] text-zinc-400 font-black uppercase tracking-[0.25em] italic">BUILT IN EXCEL • NO APP REQUIRED</p>
+                                        <div className="flex flex-col items-center sm:items-start opacity-20">
+                                            <p className="text-[9px] md:text-[11px] text-zinc-400 font-black uppercase tracking-[0.3em] italic">ONE-TIME PURCHASE • NO SUBSCRIPTIONS</p>
                                         </div>
                                     </div>
                                 </div>
@@ -213,7 +223,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 3. EVIDENCE: RESTRAINED ARTIFACTS --- */}
+                {/* --- 3. EVIDENCE: ARTIFACT SCALE --- */}
                 <Section className="bg-zinc-50/50" id="evidence">
                     <div className="max-w-6xl mx-auto space-y-16 md:space-y-24">
                         <div className="text-center space-y-4">
@@ -234,14 +244,14 @@ export default function DesignLabPage() {
                                     <p className="text-sm md:text-base font-bold italic text-emerald-900 leading-tight">"Current status: 87% Completion. 3 Critical missions pending verification."</p>
                                 </div>
                             </div>
-                            <div className="max-w-2xl mx-auto w-full">
+                            <div className="w-full">
                                 <BrowserFrame src={VITALS_IMAGE} label="EXECUTIVE DASHBOARD" sub="VIEW: GROUP COMMAND PULSE" />
                             </div>
                         </div>
 
                         {/* Artifact 2: The Ledger */}
                         <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-10 lg:gap-20 items-center">
-                            <div className="order-2 lg:order-1 max-w-2xl mx-auto w-full">
+                            <div className="order-2 lg:order-1 w-full">
                                 <BrowserFrame src={LEDGER_IMAGE} label="DAILY EXECUTION LEDGER" sub="VIEW: DAILY TASK LOG" />
                             </div>
                             <div className="space-y-10 text-left order-1 lg:order-2">
@@ -360,7 +370,7 @@ export default function DesignLabPage() {
                 <section className="bg-zinc-950 text-white py-24 md:py-32 text-center relative overflow-hidden border-t border-white/5">
                     <div className="max-w-5xl mx-auto space-y-12 relative z-10 px-6">
                         <div className="space-y-4">
-                            <h2 className="text-[40px] md:text-8xl font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-2xl">Own the system. <br/> Deploy for life.</h2>
+                            <h2 className="text-[40px] md:text-[8xl] font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-2xl">Own the system. <br/> Deploy for life.</h2>
                             <p className="text-base md:text-xl text-zinc-500 font-bold italic uppercase tracking-[0.3em]">ONE-TIME INVESTMENT. PERMANENT VISIBILITY.</p>
                         </div>
                         
@@ -400,4 +410,3 @@ export default function DesignLabPage() {
         </div>
     );
 }
-
