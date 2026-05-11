@@ -15,7 +15,9 @@ import {
     Zap,
     Monitor,
     Clapperboard,
+    Popcorn,
     Projector,
+    History,
     Ticket,
     Wrench,
     FileSignature,
@@ -24,7 +26,8 @@ import {
     AlertTriangle,
     GraduationCap,
     ShieldCheck,
-    ShieldAlert
+    ShieldAlert,
+    Target
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -36,7 +39,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const DASHBOARD_IMAGE = "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png";
 const CINEMA_TASKS_IMAGE = "https://i.postimg.cc/G278vKh8/Screenshot-2026-04-18-004329.png";
 const CONCESSION_IMAGE = "https://i.postimg.cc/HxZj6zht/Screenshot-2026-05-10-150441.png";
-const INCIDENT_IMAGE = "https://i.postimg.cc/G279XK5M/Screenshot-2026-05-10-150732.png";
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
     <section id={id} className={cn("w-full py-10 md:py-16 relative overflow-hidden", className)}>
@@ -70,7 +72,7 @@ const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
 const OperationalAlert = ({ title, sub, time, delay = "0s" }: { title: string, sub: string, time: string, delay?: string }) => (
     <div className="flex flex-col items-start lg:items-end gap-0.5 animate-in fade-in slide-in-from-right-4 duration-1000" style={{ animationDelay: delay }}>
         <div className="flex items-center gap-2.5">
-            <span className="text-[16px] md:text-[22px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_20px_rgba(239,68,68,0.6)]">
+            <span className="text-[16px] md:text-[20px] font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_20px_rgba(239,68,68,0.6)]">
                 <span className="animate-pulse">●</span> {title}
             </span>
             <span className="text-[8px] font-mono text-zinc-600 bg-white/5 px-1.5 py-0.5 rounded border border-white/5">{time}</span>
@@ -107,8 +109,8 @@ export default function DesignLabPage() {
 
                     <div className="relative z-10 container mx-auto max-w-[1200px] px-6 py-8">
                         <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-12 items-center">
-                            <div className="space-y-6 md:space-y-8">
-                                <div className="space-y-3">
+                            <div className="space-y-5 md:space-y-7">
+                                <div className="space-y-2">
                                     <div className="flex flex-wrap items-center gap-2">
                                         <Badge variant="outline" className="text-zinc-600 border-zinc-800 uppercase tracking-[0.4em] font-black text-[7px] px-2.5 py-1 rounded-none bg-white/5 italic">SYS_REF: CINEMA_SOVEREIGN</Badge>
                                         <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.4em] font-black text-[7px] px-2.5 py-1 rounded-none bg-emerald-500/5 italic leading-none">OPERATIONAL_INFRASTRUCTURE</Badge>
@@ -117,12 +119,12 @@ export default function DesignLabPage() {
                                         STOP OPERATIONAL DRIFT. <br/> <span className="text-emerald-500">START SEEING EVERY SCREEN.</span>
                                     </h1>
                                     <div className="space-y-4 pt-1">
-                                        <p className="text-base md:text-xl font-black italic text-zinc-200 max-w-2xl leading-tight uppercase tracking-tight">
+                                        <p className="text-sm md:text-lg font-black italic text-zinc-300 max-w-2xl leading-tight uppercase tracking-tight">
                                             TECHNICAL COMMAND FOR SHOW READINESS, <br className="hidden md:block" /> CONCESSION YIELDS, AND DAILY EXECUTION.
                                         </p>
                                         <div className="flex flex-col gap-2 border-l-2 border-emerald-500/60 pl-6 max-w-lg">
-                                            <p className="text-xs md:text-sm text-zinc-400 font-bold leading-relaxed italic">
-                                                Built for multiplex leadership who demand visibility into the operational grind, every shift, every screen.
+                                            <p className="text-xs md:text-[13px] text-zinc-400 font-bold leading-relaxed italic">
+                                                Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.
                                             </p>
                                         </div>
                                     </div>
@@ -138,7 +140,7 @@ export default function DesignLabPage() {
                                         ].map((item, i) => (
                                             <div key={i} className="flex items-center gap-3 group">
                                                 <div className="w-3 h-3 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-                                                    <Check className="w-2 h-2 text-emerald-500" />
+                                                    <Check className="w-2.5 h-2.5 text-emerald-500" />
                                                 </div>
                                                 <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.1em] italic text-white/50 group-hover:text-white transition-colors">
                                                     {item.t}
