@@ -72,7 +72,7 @@ function Section({ children, className, id, noSpine = false }: SectionProps) {
 function PulsatingStressText({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) {
     return (
         <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-            <span className="text-[12px] md:text-[16px] font-black text-red-500 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(239,68,68,0.3)] leading-none block text-left lg:text-right whitespace-nowrap">
+            <span className="text-[12px] md:text-[18px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(239,68,68,0.3)] leading-none block text-left lg:text-right whitespace-nowrap">
                 {text}
             </span>
         </div>
@@ -91,7 +91,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
     return (
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-emerald-500/20">
             
-            {/* --- REFINED IMAGE HERO WITH BRIGHTER COLORS --- */}
+            {/* --- REFINED ONE-GLANCE HERO --- */}
             <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 z-0">
                     <img 
@@ -102,19 +102,21 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent" />
                 </div>
 
-                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-12 pb-12">
-                    <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-16 items-center">
-                        <div className="space-y-8 md:space-y-12 w-full">
+                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-16 pb-12">
+                    <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 items-start">
+                        <div className="space-y-8 md:space-y-10 w-full">
                             <div className="space-y-6">
-                                <h1 className="font-headline font-black text-[40px] md:text-[64px] lg:text-[84px] leading-[0.9] uppercase italic tracking-tighter text-white">
-                                    CINEMA <br/> <span className="text-primary" style={{ color: BRAND_GREEN }}>OPERATIONS SYSTEM.</span>
+                                <h1 className="font-headline font-black text-[50px] md:text-[84px] lg:text-[100px] xl:text-[110px] leading-[0.85] uppercase italic tracking-tighter text-white">
+                                    CINEMA <br/> 
+                                    <span style={{ color: BRAND_GREEN }}>OPERATIONS</span> <br/>
+                                    <span style={{ color: BRAND_GREEN }}>SYSTEM.</span>
                                 </h1 >
                                 <div className="space-y-4">
-                                    <p className="text-xl md:text-[28px] font-medium text-white max-w-2xl leading-tight">
+                                    <p className="text-xl md:text-[32px] font-medium text-white max-w-2xl leading-tight">
                                         Technical command for show readiness, crowd flow, and concession yield.
                                     </p>
                                     <div className="border-l-[3px] border-emerald-500/50 pl-8">
-                                        <p className="text-sm md:text-lg text-zinc-300 font-bold max-w-xl leading-relaxed italic">
+                                        <p className="text-sm md:text-lg text-zinc-400 font-bold max-w-xl leading-relaxed italic">
                                             Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.
                                         </p>
                                     </div>
@@ -124,7 +126,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                             <div className="space-y-4">
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-3">
                                     {[
-                                        { t: "144+ PRE-BUILT OPERATIONAL SOPS", i: Target },
+                                        { t: "144+ PRE-BUILT OPERATIONAL SOPs", i: Target },
                                         { t: "LIVE OPERATIONAL DASHBOARD", i: Activity },
                                         { t: "EXCEL MASTER • OPERATED LIVE VIA SHEETS", i: GraduationCap },
                                         { t: "AUDIT-READY DOCUMENTATION", i: FileSpreadsheet }
@@ -133,7 +135,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                             <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 border border-emerald-500/30">
                                                 <Check className="w-3 h-3 text-emerald-400" />
                                             </div>
-                                            <span className="text-[12px] md:text-[14px] font-black uppercase tracking-[0.05em] italic leading-tight text-white group-hover:text-emerald-400 transition-colors">
+                                            <span className="text-[11px] md:text-[13px] font-black uppercase tracking-[0.05em] italic leading-tight text-white/80 group-hover:text-emerald-400 transition-colors">
                                                 {item.t}
                                             </span>
                                         </div>
@@ -141,33 +143,28 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                 </div>
                             </div>
 
-                            <div className="space-y-6 pt-4">
-                                <div className="flex flex-col sm:flex-row items-center gap-8 md:gap-12">
-                                    <Button asChild size="lg" className="w-full sm:w-auto h-16 md:h-20 px-12 md:px-16 rounded-xl text-black font-black uppercase italic text-sm md:text-xl shadow-[0_20px_50px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-4" style={{ backgroundColor: BRAND_GREEN }}>
-                                        <Link href="#pricing">
-                                            LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
-                                        </Link>
-                                    </Button>
-                                    <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-                                         <div className="flex items-baseline gap-3">
-                                            <p className="text-[40px] md:text-[48px] font-black text-white italic tracking-tighter">₹999</p>
-                                            <span className="text-sm font-bold text-zinc-500 line-through">₹4,999</span>
-                                        </div>
-                                        <p className="text-[11px] font-black text-zinc-400 uppercase tracking-[0.4em] italic">ONE-TIME • OWN FOREVER</p>
+                            <div className="flex flex-col sm:flex-row items-center gap-10 md:gap-16 pt-4">
+                                <Button asChild size="lg" className="w-full sm:w-auto h-16 md:h-20 px-12 md:px-16 rounded-xl text-black font-black uppercase italic text-sm md:text-xl shadow-[0_20px_50px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-4" style={{ backgroundColor: BRAND_GREEN }}>
+                                    <Link href="#pricing">
+                                        LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
+                                    </Link>
+                                </Button>
+                                <div className="flex items-baseline gap-4">
+                                    <span className="text-[44px] md:text-[64px] font-black text-white italic tracking-tighter leading-none">₹999</span>
+                                    <div className="flex flex-col">
+                                        <span className="text-sm font-bold text-zinc-500 line-through leading-none">₹4,999</span>
+                                        <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest italic mt-1">ACCESS</span>
                                     </div>
                                 </div>
-                                <p className="text-[10px] md:text-[11px] text-emerald-500 font-black uppercase tracking-[0.4em] italic leading-tight text-center sm:text-left">
-                                    EXCEL MASTER • OPERATED LIVE VIA GOOGLE SHEETS
-                                </p>
                             </div>
                         </div>
                         
-                        {/* --- RIGHT COLUMN: FRAMED IMAGE NORTH + RISKS SOUTH --- */}
-                        <div className="w-full flex flex-col gap-10 mt-16 lg:mt-0">
-                            {/* Sleek Vertical Frame */}
-                            <div className="relative group">
-                                <div className="absolute -inset-0.5 bg-gradient-to-b from-primary/30 to-transparent rounded-[2.5rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                                <div className="relative overflow-hidden rounded-[2rem] border border-white/10 aspect-[4/5] shadow-2xl bg-zinc-900">
+                        {/* --- RIGHT COLUMN: SQUIRCLE FRAME + RISKS SOUTH --- */}
+                        <div className="w-full flex flex-col items-end gap-10 mt-16 lg:mt-0">
+                            {/* The Squircle Frame */}
+                            <div className="relative group w-full max-w-[480px]">
+                                <div className="absolute -inset-0.5 bg-gradient-to-b from-primary/30 to-transparent rounded-[3.5rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                                <div className="relative overflow-hidden rounded-[3rem] border border-white/10 aspect-square shadow-2xl bg-zinc-900">
                                     <img 
                                         src={heroImageUrl} 
                                         alt="Cinema Sector" 
@@ -176,13 +173,16 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                 </div>
                             </div>
 
-                            {/* South Risks - Right Aligned Vertical */}
-                            <div className="lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right space-y-6">
-                                 <p className="text-[9px] font-black text-red-500/60 uppercase tracking-[0.7em] italic">DAILY OPERATIONAL RISKS</p>
-                                 <div className="flex flex-col gap-4 md:gap-6">
-                                     {["EXPIRED KDM KEYS", "CONCESSION YIELD LEAKAGE", "INTERVAL SURGE CONGESTION", "EMERGENCY COMMS FAILURE"].map((text, i) => (
-                                        <PulsatingStressText key={i} text={text} delay={`${i * 0.2}s`} />
-                                     ))}
+                            {/* Risk Feed - Explicit Right Alignment */}
+                            <div className="w-full max-w-[480px] space-y-8 pr-4">
+                                 <div className="flex items-center gap-4 justify-end">
+                                     <div className="h-px flex-1 bg-gradient-to-r from-transparent to-red-500/20" />
+                                     <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">DAILY OPERATIONAL RISKS</p>
+                                 </div>
+                                 <div className="flex flex-col gap-5 md:gap-8 text-right items-end">
+                                     <PulsatingStressText text="EXPIRED KDM KEYS" delay="0s" />
+                                     <PulsatingStressText text="CONCESSION YIELD LEAKAGE" delay="0.2s" />
+                                     <PulsatingStressText text="INTERVAL SURGE CONGESTION" delay="0.4s" />
                                  </div>
                             </div>
                         </div>
