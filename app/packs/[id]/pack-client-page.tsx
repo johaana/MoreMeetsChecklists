@@ -23,7 +23,8 @@ import {
     AlertTriangle,
     Sparkles,
     Leaf,
-    Recycle
+    Recycle,
+    Wrench
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
