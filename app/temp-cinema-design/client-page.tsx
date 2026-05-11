@@ -30,7 +30,6 @@ import Link from 'next/link';
 import PricingClient from '../packs/pricing-client';
 import { packResolutions } from '@/lib/pack-resolutions';
 
-const ACTION_AMBER = "#F4A261";
 const BRAND_GREEN = "#22C55E";
 
 const MARQUEE_SIGNALS = [
@@ -133,7 +132,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-4 group">
                                             <div className="w-3.5 h-3.5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 border border-emerald-500/30">
-                                                <Check className="w-2 h-2 text-emerald-400" />
+                                                <Check className="w-2.5 h-2.5 text-emerald-400" />
                                             </div>
                                             <span className="text-[9px] md:text-[11px] font-black uppercase tracking-[0.05em] italic leading-tight text-white/70 group-hover:text-emerald-400 transition-colors">
                                                 {item.t}
@@ -181,6 +180,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                      <PulsatingStressText text="EXPIRED KDM KEYS" delay="0s" />
                                      <PulsatingStressText text="CONCESSION YIELD LEAKAGE" delay="0.2s" />
                                      <PulsatingStressText text="INTERVAL SURGE CONGESTION" delay="0.4s" />
+                                     <PulsatingStressText text="EMERGENCY COMMS FAILURE" delay="0.6s" />
                                  </div>
                             </div>
                         </div>
