@@ -120,7 +120,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                         Technical command for show readiness, crowd flow, and concession yield.
                                     </p>
                                     <div className="border-l-[2px] md:border-l-[3px] border-emerald-500/40 pl-4 md:pl-8 py-0.5">
-                                        <p className="text-[11px] md:text-sm text-zinc-400 font-bold max-lg:max-w-[300px] leading-tight italic">
+                                        <p className="text-[13px] md:text-sm text-zinc-400 font-bold max-lg:max-w-[300px] leading-tight italic">
                                             Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.
                                         </p>
                                     </div>
@@ -205,14 +205,14 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                 </div>
 
                 {/* --- TELEMETRY MARQUEE --- */}
-                <div className="absolute bottom-0 w-full bg-[#1a0505] h-10 md:h-12 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
+                <div className="absolute bottom-0 w-full bg-black h-10 md:h-12 overflow-hidden border-t border-emerald-500/30 flex items-center shadow-2xl">
                     <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
                         {MARQUEE_SIGNALS.map((signal, i) => {
                             const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
                             return (
                                 <span key={i} className={cn(
                                     "text-[10px] md:text-[12px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
-                                    isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-zinc-500"
+                                    isAlert ? "text-red-400 drop-shadow-[0_0_8px_rgba(248,113,113,0.3)]" : "text-zinc-500"
                                 )}>
                                     <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
                                     {signal}
@@ -225,7 +225,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                             return (
                                 <span key={`dup-${i}`} className={cn(
                                     "text-[10px] md:text-[12px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
-                                    isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-zinc-500"
+                                    isAlert ? "text-red-400 drop-shadow-[0_0_8px_rgba(248,113,113,0.3)]" : "text-zinc-500"
                                 )}>
                                     <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
                                     {signal}
