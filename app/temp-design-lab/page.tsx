@@ -24,9 +24,6 @@ import {
     CheckCircle2,
     Wrench,
     Zap,
-    Scale,
-    TrendingUp,
-    Lock,
     Leaf,
     Recycle,
     Banknote,
@@ -43,7 +40,6 @@ import images from '@/lib/placeholder-images.json';
 // --- TECHNICAL ARTIFACTS ---
 const VITALS_IMAGE = images.find(i => i.id === 'sovereign-vitals')?.imageUrl!;
 const LEDGER_IMAGE = images.find(i => i.id === 'sovereign-ledger')?.imageUrl!;
-const FINANCE_IMAGE = images.find(i => i.id === 'sovereign-finance')?.imageUrl!;
 const HERO_IMAGE = "https://i.postimg.cc/43gVfgjd/multiplex2.avif";
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
@@ -56,31 +52,31 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
 );
 
 const BrowserFrame = ({ src, viewLabel }: { src: string, viewLabel: string }) => (
-    <div className="group space-y-3 w-full max-w-md mx-auto">
-        <div className="relative rounded-[1rem] overflow-hidden shadow-[0_15px_45px_-15px_rgba(0,0,0,0.4)] border border-white/10 bg-[#0A0F19] transition-all duration-1000 hover:shadow-[0_20px_60px_-10px_rgba(34,197,94,0.1)]">
-            <div className="bg-[#0D121F] border-b border-white/5 px-4 py-2.5 flex items-center gap-3">
+    <div className="group space-y-3 w-full max-w-lg mx-auto">
+        <div className="relative rounded-[1rem] overflow-hidden shadow-2xl border border-white/10 bg-[#0A0F19] transition-all duration-1000">
+            <div className="bg-[#0D121F] border-b border-white/5 px-4 py-2 flex items-center gap-3">
                 <div className="flex gap-1">
-                    <div className="w-1.5 h-1.5 rounded-full bg-red-500/20" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500/20" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/20" />
+                    <div className="w-1 h-1 rounded-full bg-red-500/20" />
+                    <div className="w-1 h-1 rounded-full bg-amber-500/20" />
+                    <div className="w-1 h-1 rounded-full bg-emerald-500/20" />
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <div className="bg-white/5 border border-white/5 rounded px-6 py-0.5 text-[7.5px] font-black text-white/20 uppercase tracking-[0.4em] italic leading-none">
+                    <div className="bg-black/40 border border-white/5 rounded px-6 py-0.5 text-[7px] font-black text-white/20 uppercase tracking-[0.4em] italic leading-none">
                         moremeets-master-engine.xlsx
                     </div>
                 </div>
             </div>
-            <div className="relative w-full h-[140px] md:h-[180px] overflow-hidden bg-zinc-900">
+            <div className="relative w-full h-[120px] md:h-[160px] overflow-hidden bg-zinc-900">
                 <img 
                     src={src} 
                     alt={viewLabel} 
-                    className="w-full h-auto object-cover object-top grayscale-[0.4] group-hover:grayscale-0 transition-all duration-1000 opacity-50 group-hover:opacity-100 blur-[1.5px] group-hover:blur-0" 
+                    className="w-full h-auto object-cover object-top grayscale-[0.6] group-hover:grayscale-[0.3] transition-all duration-1000 opacity-30 group-hover:opacity-60 blur-[2px] group-hover:blur-[1px]" 
                 />
                 <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0A0F19] via-transparent to-transparent pointer-events-none" />
             </div>
         </div>
         <div className="flex flex-col items-center">
-            <span className="text-[9px] font-black text-zinc-500 uppercase tracking-[0.3em] italic leading-none">{viewLabel}</span>
+            <span className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.3em] italic leading-none">{viewLabel}</span>
         </div>
     </div>
 );
@@ -104,6 +100,7 @@ export default function CinemaDesignLab() {
 
             <main className="flex-1">
                 
+                {/* --- SOVEREIGN HERO: PRODUCTION FIDELITY --- */}
                 <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black text-white">
                     <div className="absolute inset-0 z-0">
                         <img 
@@ -166,7 +163,7 @@ export default function CinemaDesignLab() {
                                         </Button>
                                         <div className="space-y-1.5 pl-1">
                                             <p className="text-[10px] md:text-[12px] text-emerald-500/90 font-black uppercase tracking-[0.2em] italic leading-tight text-center sm:text-left">
-                                                BUILT IN EXCEL • SHARED THROUGH GOOGLE SHEETS • NO APP ROLLOUT REQUIRED
+                                                BUILT IN EXCEL • NO APP ROLLOUT REQUIRED
                                             </p>
                                             <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic leading-tight text-center sm:text-left">
                                                 ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
@@ -248,6 +245,7 @@ export default function CinemaDesignLab() {
                     </div>
                 </Section>
 
+                {/* --- RESTORES CONTROL: CLARITY OVERHAUL --- */}
                 <Section className="bg-zinc-50/50">
                     <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
                         <div className="text-center space-y-4">
@@ -395,39 +393,34 @@ export default function CinemaDesignLab() {
                     </div>
                 </Section>
 
+                {/* --- OPERATIONAL ESG: RESTRAINED TECHNICAL --- */}
                 <Section className="bg-white" id="esg">
-                    <div className="grid lg:grid-cols-[1fr,450px] gap-12 lg:gap-24 items-center max-w-6xl mx-auto">
-                        <div className="space-y-12 text-left">
-                            <div className="space-y-6">
-                                <Badge variant="outline" className="text-emerald-600 border-emerald-100 bg-emerald-50 uppercase tracking-[0.5em] font-black text-[10px] italic px-10 py-3 rounded-none">OPERATIONAL ESG</Badge>
-                                <h2 className="text-[34px] md:text-[64px] font-black font-headline uppercase italic leading-[0.9] tracking-tighter text-left">Operational <br/> Sustainability.</h2>
-                                <p className="text-zinc-500 text-lg md:text-xl font-bold italic leading-tight uppercase border-l-2 border-emerald-500/20 pl-8 max-w-xl text-left">
-                                    Environmental sustainability isn't a report. It's the byproduct of daily operational discipline and visibility.
-                                </p>
-                            </div>
-                            
-                            <div className="grid sm:grid-cols-2 gap-8 md:gap-12 text-left">
-                                {[
-                                    { t: "ENERGY DISCIPLINE", d: "Daily AC shutdown compliance logs for empty auditoriums stop unmonitored power waste.", i: Zap },
-                                    { t: "RESOURCE CONSERVATION", d: "Water vitals logging and overnight leak detection through digital meter-parity checks.", i: Leaf },
-                                    { t: "WASTE MITIGATION", d: "Concession yield logic (corn-to-bucket) identifies production waste before it reaches the bin.", i: Recycle },
-                                    { t: "ASSET LONGEVITY", d: "Preventive uptime audits extend technical hardware life by 30%, reducing e-waste footprint.", i: Wrench }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex flex-col gap-4 items-start group">
-                                        <div className="w-12 h-12 rounded-2xl bg-zinc-50 border border-zinc-100 flex items-center justify-center text-zinc-400 shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-inner">
-                                            <item.i className="w-6 h-6" />
-                                        </div>
-                                        <div className="space-y-2">
-                                            <h4 className="text-lg font-black uppercase italic text-zinc-950 leading-tight text-left">{item.t}</h4>
-                                            <p className="text-[11px] font-bold text-zinc-400 italic uppercase leading-relaxed text-left">{item.d}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+                    <div className="max-w-4xl mx-auto space-y-16">
+                        <div className="space-y-6 text-center">
+                            <Badge variant="outline" className="text-emerald-600 border-emerald-100 bg-emerald-50 uppercase tracking-[0.5em] font-black text-[10px] italic px-10 py-3 rounded-none">OPERATIONAL SUSTAINABILITY</Badge>
+                            <h2 className="text-[34px] md:text-[64px] font-black font-headline uppercase italic leading-[0.9] tracking-tighter text-center">Operational <br/> Sustainability.</h2>
+                            <p className="text-zinc-500 text-lg md:text-xl font-bold italic leading-tight uppercase border-l-2 border-emerald-500/20 pl-8 mx-auto max-w-xl text-center">
+                                Environmental sustainability isn't a report. It's the byproduct of daily operational discipline and visibility.
+                            </p>
                         </div>
-                        <div className="relative p-8 bg-zinc-950 rounded-[3rem] shadow-2xl overflow-hidden group">
-                             <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                             <BrowserFrame src={FINANCE_IMAGE} viewLabel="MARGIN & RESOURCE PROTECTION" />
+                        
+                        <div className="grid sm:grid-cols-2 gap-8 md:gap-12 text-left">
+                            {[
+                                { t: "ENERGY DISCIPLINE", d: "Daily AC shutdown compliance logs for empty auditoriums stop unmonitored power waste.", i: Zap },
+                                { t: "RESOURCE CONSERVATION", d: "Water vitals logging and overnight leak detection through digital meter-parity checks.", i: Leaf },
+                                { t: "WASTE MITIGATION", d: "Concession yield logic (corn-to-bucket) identifies production waste before it reaches the bin.", i: Recycle },
+                                { t: "ASSET LONGEVITY", d: "Preventive uptime audits extend technical hardware life by 30%, reducing e-waste footprint.", i: Wrench }
+                            ].map((item, i) => (
+                                <div key={i} className="flex flex-col gap-4 items-start group">
+                                    <div className="w-12 h-12 rounded-2xl bg-zinc-50 border border-zinc-100 flex items-center justify-center text-zinc-400 shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-inner">
+                                        <item.i className="w-6 h-6" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <h4 className="text-lg font-black uppercase italic text-zinc-950 leading-tight text-left">{item.t}</h4>
+                                        <p className="text-[11px] font-bold text-zinc-400 italic uppercase leading-relaxed text-left">{item.d}</p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </Section>
