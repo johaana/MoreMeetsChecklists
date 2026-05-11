@@ -15,7 +15,7 @@ export function Footer() {
                         </div>
                     </Link>
                     <p className="text-xs md:text-sm text-muted-text max-w-xs pt-2">
-                        Audit-Ready Operational Standards for modern teams.
+                        Audit-Ready Operational Standards for modern teams. Built in Excel. Shared through Google Sheets for live operations.
                     </p>
                 </div>
                 <div className="flex flex-col gap-2 items-center text-sm md:items-start md:mx-auto">

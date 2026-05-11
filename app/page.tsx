@@ -46,13 +46,13 @@ const NARRATIVE = {
     line2: "START SEEING.",
     subline: "See daily work getting done. Even when you aren't there.",
     cta: "Live in 10 minutes",
-    meta: "SINGLE / MULTI-UNIT READY • AUDIT-READY COMPLIANCE"
+    meta: "EXCEL MASTER • LIVE VIA GOOGLE SHEETS • AUDIT-READY"
 };
 
 const TECH_SPECS = [
     { t: "100+ Industry-Specific SOPs", i: ClipboardCheck },
     { t: "Live Operational Dashboard", i: Activity },
-    { t: "No SaaS. Own your data.", i: Lock },
+    { t: "Excel Master • Shared via Sheets", i: FileSpreadsheet },
     { t: "Trainer Notes for teams", i: Smartphone }
 ];
 
@@ -119,7 +119,7 @@ const SovereignCTA = ({ className }: { className?: string }) => (
                 </Link>
             </Button>
             <p className="text-[10px] md:text-xs text-zinc-400 font-bold italic text-center sm:text-left">
-                Built in Excel. Shared through Google Sheets. No app rollout required.
+                Built in Excel. Shared through Google Sheets for live operations. No app rollout required.
             </p>
         </div>
         <div className="w-full flex justify-center lg:justify-start">
@@ -217,7 +217,7 @@ export default function Home() {
                                     {[
                                         "100+ Pre-built technical protocols (SOPs).",
                                         "Live Operational Dashboard for visibility.",
-                                        "Built-in Trainer's Notes for teams.",
+                                        "Excel Master file for sovereign ownership.",
                                         "Binary 'Done/Missed' verification."
                                     ].map((text, i) => (
                                         <li key={i} className="flex items-start gap-5 text-zinc-950 text-lg md:text-xl font-black italic leading-snug uppercase">
@@ -290,8 +290,8 @@ export default function Home() {
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
                             {[
-                                { t: "Download", d: "Get your pre-built, industry-specific operations system instantly after payment." },
-                                { t: "Open", d: "Open in Excel, save your master copy, then upload to Google Sheets for live team access." },
+                                { t: "Download", d: "Get your pre-built, industry-specific Excel Master instantly after payment." },
+                                { t: "Upload Master", d: "Upload your Excel Master to Google Drive for live team access via Google Sheets." },
                                 { t: "Assign", d: "Add your business details, map staff names to roles, and set your controls once." },
                                 { t: "Run", d: "Daily tasks begin populating automatically by role, date, and frequency — live across your team." }
                             ].map((step, i) => (

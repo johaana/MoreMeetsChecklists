@@ -335,7 +335,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     {[
                                         { t: `PRE-BUILT OPERATIONAL SOPs FOR ${verticalName}`, i: Target },
                                         { t: "LIVE OPERATIONAL DASHBOARD", i: Activity },
-                                        { t: "TRAINER NOTES INCLUDED", i: GraduationCap },
+                                        { t: "EXCEL MASTER • OPERATED LIVE VIA SHEETS", i: GraduationCap },
                                         { t: "AUDIT-READY OPERATIONAL INFRASTRUCTURE", i: FileSpreadsheet }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 md:gap-4 group">
@@ -360,7 +360,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                         </Button>
                                         <div className="space-y-1.5 pl-1">
                                             <p className="text-[10px] md:text-[12px] text-emerald-500/90 font-black uppercase tracking-[0.2em] italic leading-tight text-center sm:text-left">
-                                                BUILT IN EXCEL • SHARED THROUGH GOOGLE SHEETS
+                                                EXCEL MASTER • OPERATED LIVE VIA GOOGLE SHEETS
                                             </p>
                                             <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic leading-tight text-center sm:text-left">
                                                 ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
@@ -571,8 +571,36 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
+            {/* --- DEPLOYMENT GUIDE --- */}
+            <Section className="bg-zinc-50 border-y border-zinc-100" id="guide">
+                 <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px]">DEPLOYMENT PROTOCOL</Badge>
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">Go live in 10 minutes</h2>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
+                            {[
+                                { t: "Download", d: "Get your industry-specific Excel Master instantly after payment." },
+                                { t: "Upload Master", d: "Upload your Excel Master to Google Drive for live team access via Google Sheets." },
+                                { t: "Assign", d: "Add your business details and map staff names to roles in the central hub." },
+                                { t: "Run", d: "Daily tasks begin populating automatically — live across your team on any device." }
+                            ].map((step, i) => (
+                                <div className="space-y-8 group text-left" key={i}>
+                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-200 group-hover:text-primary transition-colors leading-none">
+                                        {i+1}
+                                    </div>
+                                    <div className="space-y-3">
+                                        <h4 className="font-black text-xl md:text-2xl uppercase italic leading-tight font-headline text-zinc-950 text-left">{step.t}</h4>
+                                        <p className="text-base text-zinc-500 font-bold italic leading-relaxed text-left">{step.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+            </Section>
+
             {/* --- BUILT FOR REAL TEAMS --- */}
-            <Section className="bg-zinc-50 border-y border-zinc-100">
+            <Section className="bg-white">
                 <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
                         <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">OPERATIONAL REASSURANCE</Badge>
@@ -659,7 +687,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                     </Link>
                                 </button>
                                 <p className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.2em] text-emerald-500/60 italic">
-                                    BUILT IN EXCEL • NO APP ROLLOUT • ONE-TIME BUY
+                                    EXCEL MASTER • NO APP ROLLOUT • ONE-TIME BUY
                                 </p>
                             </div>
                         </div>

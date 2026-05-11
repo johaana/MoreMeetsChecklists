@@ -68,8 +68,8 @@ export const FaqSection = () => (
                     <AccordionItem value="item-2" className="border-white/10">
                         <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">How does this work without being an app?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic space-y-4">
-                          <p>It runs on tools your team already understands (Excel / Google Sheets), meaning <strong>nothing new needs to be installed or learned.</strong></p>
-                          <p>The system structures activity into clear operational data. You open one dashboard and see what's done, missed, or delayed across all branches without ever having to ask for a report.</p>
+                          <p>It runs on tools your team already understands (Excel / Google Sheets). You own the Excel Master file.</p>
+                          <p>For daily operations, you simply upload it once to Google Drive and 'Open with Google Sheets'. This gives your team a live, mobile-friendly dashboard without requiring them to install new software or manage separate logins.</p>
                         </AccordionContent>
                     </AccordionItem>
 
