@@ -331,7 +331,6 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* Select Vertical Section */}
                 <Section className="bg-[#0E1420] border-y border-white/5">
                     <div className="space-y-20">
                         <div className="text-center space-y-6">
