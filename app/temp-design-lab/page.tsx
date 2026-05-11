@@ -28,21 +28,23 @@ import {
     TrendingUp,
     Lock,
     Leaf,
-    Banknote
+    Banknote,
+    Thermometer,
+    LayoutGrid,
+    Eye
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
 
-// --- AUTHENTIC SOVEREIGN ASSETS ---
+// --- TECHNICAL ARTIFACTS ---
 const VITALS_IMAGE = "https://i.postimg.cc/W1Yt09r8/Screenshot-2026-05-11-170634.png";
 const LEDGER_IMAGE = "https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png";
 const FINANCE_IMAGE = "https://i.postimg.cc/g2tr3MRD/Screenshot-2026-05-11-170957.png";
-const TEAM_IMAGE = "https://i.postimg.cc/t4v7FrP2/Screenshot-2026-05-11-171200.png";
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
-    <section id={id} className={cn("w-full py-10 md:py-16 relative overflow-hidden", className)}>
+    <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
         {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />}
         <div className="container mx-auto max-w-[1200px] px-6 relative z-10">
             {children}
@@ -51,157 +53,314 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
 );
 
 const BrowserFrame = ({ src, label, sub }: { src: string, label: string, sub?: string }) => (
-    <div className="group space-y-2 w-full max-w-lg mx-auto">
-        <div className="relative rounded-xl overflow-hidden shadow-[0_15px_40px_-20px_rgba(0,0,0,0.15)] border border-zinc-200 bg-white transition-all duration-700 hover:shadow-[0_25px_60px_-15px_rgba(34,197,94,0.1)]">
+    <div className="group space-y-3 w-full max-w-lg mx-auto">
+        <div className="relative rounded-[2rem] overflow-hidden shadow-[0_20px_50px_-20px_rgba(0,0,0,0.3)] border border-zinc-200 bg-white transition-all duration-1000 hover:shadow-[0_30px_70px_-10px_rgba(34,197,94,0.15)]">
             {/* Browser Top Chrome */}
-            <div className="bg-[#0D121F] border-b border-white/5 px-4 py-2 flex items-center gap-2">
+            <div className="bg-[#0D121F] border-b border-white/5 px-6 py-3 flex items-center gap-2">
                 <div className="flex gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-red-500/20" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500/20" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/20" />
+                    <div className="w-2 h-2 rounded-full bg-red-500/20" />
+                    <div className="w-2 h-2 rounded-full bg-amber-500/20" />
+                    <div className="w-2 h-2 rounded-full bg-emerald-500/20" />
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <div className="bg-white/5 border border-white/5 rounded-md px-6 py-0.5 text-[7px] font-black text-white/20 uppercase tracking-[0.4em] italic">
-                        {label.replace(/_/g, ' ')}.xlsx
+                    <div className="bg-white/5 border border-white/5 rounded-md px-12 py-1 text-[8px] font-black text-white/30 uppercase tracking-[0.4em] italic">
+                        {label}.xlsx
                     </div>
                 </div>
             </div>
-            {/* Shorter, less readable image container */}
-            <div className="relative w-full h-[160px] md:h-[200px] overflow-hidden bg-zinc-50">
+            {/* Shortened, non-readable artifact */}
+            <div className="relative w-full h-[220px] overflow-hidden bg-zinc-50">
                 <img 
                     src={src} 
                     alt={label} 
-                    className="w-full h-auto object-cover object-top grayscale-[0.4] group-hover:grayscale-0 group-hover:scale-[1.01] transition-all duration-1000 opacity-50 group-hover:opacity-100 blur-[0.6px] group-hover:blur-0" 
+                    className="w-full h-auto object-cover object-top grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000 opacity-60 group-hover:opacity-100 blur-[0.8px] group-hover:blur-0" 
                 />
-                {/* Fade out bottom to make it feel like a crop */}
-                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white via-white/30 to-transparent pointer-events-none" />
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white via-white/40 to-transparent pointer-events-none" />
             </div>
         </div>
-        {sub && <p className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.5em] italic text-center">{sub.replace(/_/g, ' ')}</p>}
+        {sub && <p className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.5em] italic text-center">{sub}</p>}
     </div>
 );
 
-const OperationalAlert = ({ title, sub, time, delay = "0s" }: { title: string, sub: string, time: string, delay?: string }) => (
-    <div className="flex flex-col items-start lg:items-end gap-1 animate-in fade-in slide-in-from-right-4 duration-1000" style={{ animationDelay: delay }}>
-        <div className="flex items-center gap-3">
-            <span className="text-[14px] md:text-[16px] font-mono font-black text-red-500 uppercase tracking-tighter italic flex items-center gap-2 drop-shadow-[0_0_20px_rgba(239,68,68,0.4)]">
-                <span className="animate-pulse">●</span> {title}
-            </span>
-            <span className="text-[8px] font-mono text-zinc-600 bg-white/5 px-1.5 py-0.5 rounded border border-white/5">{time}</span>
-        </div>
-        <p className="text-[9px] font-bold text-white/20 uppercase tracking-widest italic leading-none">{sub}</p>
+const PulsatingStressText = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
+    <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
+        <span className="text-[14px] md:text-[20px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(220,38,38,0.3)] leading-tight block text-left lg:text-right">
+            {text}
+        </span>
     </div>
 );
 
-export default function DesignLabPage() {
+export default function CinemaDesignLab() {
     const [mounted, setMounted] = useState(false);
     useEffect(() => { setMounted(true); }, []);
     if (!mounted) return null;
 
     return (
-        <div className="flex flex-col min-h-screen bg-white text-[#0B0F14] font-sans antialiased selection:bg-emerald-500/20">
+        <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-emerald-500/20">
             <SiteHeader forceTheme="dark" />
 
             <main className="flex-1">
                 
-                {/* --- 1. HERO: COMPACT COMMAND --- */}
-                <section className="relative w-full min-h-[85svh] flex flex-col justify-center overflow-hidden bg-black text-white">
+                {/* --- 1. HERO: MAIN PACK STYLE --- */}
+                <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black text-white">
                     <div className="absolute inset-0 z-0">
                         <img 
                             src="https://i.postimg.cc/43gVfgjd/multiplex2.avif" 
                             alt="" 
-                            className="w-full h-full object-cover opacity-30 grayscale-[0.3] brightness-[0.25]" 
+                            className="w-full h-full object-cover opacity-40 grayscale brightness-[0.35]" 
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent" />
                     </div>
 
-                    <div className="relative z-10 container mx-auto max-w-[1200px] px-6 pt-20 md:pt-32 pb-12">
-                        <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-12 items-center">
-                            <div className="space-y-6 md:space-y-10">
+                    <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-20 pb-12">
+                        <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-16 items-center">
+                            <div className="space-y-6 md:space-y-10 w-full">
                                 <div className="space-y-4">
-                                    <h1 className="text-[34px] md:text-[64px] lg:text-[72px] font-black font-headline tracking-tighter uppercase italic leading-[0.88] text-white">
-                                        STOP OPERATIONAL DRIFT. <br/> <span className="text-emerald-500">SEE EVERY SCREEN.</span>
+                                    <h1 className="font-headline font-black text-[36px] md:text-[64px] lg:text-[72px] xl:text-[80px] leading-[0.95] uppercase italic tracking-tighter text-white">
+                                        CINEMA <br/> <span className="text-emerald-500">OPERATIONS SYSTEM.</span>
                                     </h1>
                                     <div className="space-y-4">
-                                        <p className="text-base md:text-[22px] font-black italic text-zinc-400 max-w-2xl leading-tight uppercase tracking-tight">
-                                            Know what's done. What's missed. What's delayed. <br className="hidden md:block" /> Across your entire operation.
+                                        <p className="text-lg md:text-[28px] font-medium text-zinc-300 max-w-3xl leading-tight">
+                                            Technical command for show readiness, crowd flow, and concession yield.
                                         </p>
-                                        <div className="flex flex-col gap-2 border-l-2 border-emerald-500/60 pl-6 max-w-xl">
-                                            <p className="text-sm md:text-base text-zinc-500 font-bold leading-relaxed italic">
+                                        <div className="border-l-2 border-emerald-500/40 pl-6">
+                                            <p className="text-sm md:text-base text-zinc-400 font-bold max-w-xl leading-relaxed italic">
                                                 Built for multiplex leadership where black-screens and concession profit-leakage are daily variables you must control.
                                             </p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="space-y-8 pt-2">
+                                <div className="space-y-5">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-1 h-5 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
+                                        <p className="text-[9px] font-black text-emerald-500 uppercase tracking-[0.4em] italic font-headline">SYSTEM SPECIFICATIONS</p>
+                                    </div>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-3">
                                         {[
-                                            { t: "PRE-BUILT OPERATIONAL SOPs", i: Target },
+                                            { t: "144+ PRE-BUILT OPERATIONAL SOPs", i: Target },
                                             { t: "LIVE OPERATIONAL DASHBOARD", i: Activity },
                                             { t: "EXECUTION GUIDANCE INCLUDED", i: GraduationCap },
                                             { t: "AUDIT-READY DOCUMENTATION", i: FileSignature }
                                         ].map((item, i) => (
                                             <div key={i} className="flex items-center gap-3 group">
-                                                <div className="w-3 h-3 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-                                                    <Check className="w-2 h-2 text-emerald-500" />
+                                                <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                                    <Check className="w-2.5 h-2.5 text-[#22C55E]" />
                                                 </div>
-                                                <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.1em] italic text-white/30 group-hover:text-white transition-colors">
+                                                <span className="text-[11px] md:text-[13px] font-bold uppercase tracking-[0.05em] italic leading-tight text-white/70 group-hover:text-white transition-colors">
                                                     {item.t}
                                                 </span>
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="flex flex-col sm:flex-row items-center gap-8">
-                                        <Button asChild size="lg" className="h-12 md:h-16 px-8 md:px-12 rounded-xl bg-emerald-500 text-black font-black uppercase italic text-sm md:text-base shadow-[0_15px_40px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group flex items-center justify-center gap-3 w-full sm:w-auto">
-                                            <Link href="/library">
-                                                LIVE IN 10 MINUTES <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-2" />
-                                            </Link>
-                                        </Button>
-                                        <div className="flex flex-col items-center sm:items-start opacity-20">
-                                            <p className="text-[9px] md:text-[11px] text-zinc-400 font-black uppercase tracking-[0.3em] italic">ONE-TIME PURCHASE • NO SUBSCRIPTIONS</p>
-                                        </div>
+                                </div>
+
+                                <div className="space-y-5 pt-4">
+                                    <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-20 px-10 md:px-16 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-xl shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group flex items-center justify-center gap-4">
+                                        <Link href="#pricing">
+                                            LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
+                                        </Link>
+                                    </Button>
+                                    <div className="space-y-1.5 pl-1">
+                                        <p className="text-[10px] md:text-[12px] text-emerald-500/90 font-black uppercase tracking-[0.2em] italic leading-tight">
+                                            BUILT IN EXCEL • SHARED THROUGH GOOGLE SHEETS • NO APP ROLLOUT
+                                        </p>
+                                        <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic leading-tight">
+                                            ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div className="w-full lg:border-l border-white/5 pl-6 lg:pl-0 lg:pr-6 lg:text-right mt-12 lg:mt-0 space-y-8">
-                                 <p className="text-[8px] font-black text-zinc-700 uppercase tracking-[0.7em] italic">ACTIVE RISK MONITOR</p>
-                                 
-                                 <div className="flex flex-col gap-8 md:gap-10">
-                                     <OperationalAlert 
-                                        title="EXPIRED KDM KEYS" 
-                                        sub="Screen 04: Blackout risk" 
-                                        time="10:42:01"
-                                        delay="0.2s" 
-                                     />
-                                     <OperationalAlert 
-                                        title="CONCESSION LEAKAGE" 
-                                        sub="Yield variance detected: -14%" 
-                                        time="01:15:44"
-                                        delay="0.4s" 
-                                     />
-                                     <OperationalAlert 
-                                        title="HVAC EFFICIENCY ALERT" 
-                                        sub="Off-peak thermal spike" 
-                                        time="04:05:09"
-                                        delay="0.6s" 
-                                     />
+                            <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-6 md:space-y-10">
+                                 <p className="text-[9px] font-black text-red-500/40 uppercase tracking-[0.7em] italic">DAILY OPERATIONAL RISKS</p>
+                                 <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
+                                     <PulsatingStressText text="EXPIRED KDM KEYS" delay="0s" />
+                                     <PulsatingStressText text="CONCESSION YIELD LEAKAGE" delay="0.2s" />
+                                     <PulsatingStressText text="INTERVAL SURGE CONGESTION" delay="0.4s" />
+                                     <PulsatingStressText text="EMERGENCY COMMS FAILURE" delay="0.6s" />
                                  </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* --- 2. ENGINE CORE: HIGH-CONTRAST GRID --- */}
-                <Section className="bg-white border-b border-zinc-100" id="modules">
-                    <div className="max-w-[1000px] mx-auto space-y-10">
-                        <div className="text-center space-y-2">
-                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[8px] italic">SYSTEM COMPONENTS</Badge>
-                            <h2 className="text-2xl md:text-4xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">The Engine Core</h2>
+                {/* --- 2. WHY IT BREAKS: INDUSTRIAL REALISM --- */}
+                <Section className="bg-white border-b border-zinc-100">
+                    <div className="max-w-5xl mx-auto space-y-12 md:space-y-24">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50/50 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">OPERATIONAL REALITY</Badge>
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                                Why Cinema operations break
+                            </h2>
+                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
+                                Cinemas fail when technical readiness is assumed and interval rushes become disorganized coordination exercises.
+                            </p>
+                        </div>
+
+                        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 relative">
+                            <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />
+                            {[
+                                { t: "Technical Readiness Gaps", d: "Show readiness is often verbally confirmed rather than technically verified, leading to black-screens during blockbuster openings." },
+                                { t: "Invisible Profit Theft", d: "Lack of raw-corn-to-bucket yield logic creates massive internal profit leakage at the concession counter that owners never see." },
+                                { t: "Interval Rush Gridlock", d: "Washroom congestion and concession queue overload damage guest satisfaction scores and reduce interval spending." },
+                                { t: "Emergency Maintenance Decay", d: "Critical life-safety systems or fire doors often fail unnoticed until a crisis occurs due to lack of daily operational audits." }
+                            ].map((point, index) => (
+                                <div key={index} className="flex flex-col gap-5 p-10 border border-zinc-100 bg-zinc-50/30 rounded-[2rem] hover:bg-white hover:shadow-2xl transition-all duration-700 relative group overflow-hidden">
+                                    <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-5 transition-opacity duration-700">
+                                        <ShieldAlert className="w-32 h-32 text-red-600" />
+                                    </div>
+                                    <div className="flex items-center gap-5">
+                                        <div className="relative flex h-3 w-3 shrink-0">
+                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                            <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+                                        </div>
+                                        <h3 className="text-xl md:text-2xl font-black font-headline uppercase italic tracking-tighter text-zinc-950">
+                                            {point.t}
+                                        </h3>
+                                    </div>
+                                    <p className="text-zinc-500 text-sm md:text-base font-bold italic leading-relaxed text-left">
+                                        {point.d}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- 3. THE RED MARQUEE --- */}
+                <div className="w-full bg-[#E11D48] py-5 overflow-hidden border-y border-black/10 relative z-30">
+                    <div className="flex flex-nowrap items-center gap-20 animate-marquee whitespace-nowrap px-10">
+                        {[
+                            "BLACK-SCREEN INCIDENTS PREVENTED",
+                            "CONCESSION LEAKAGE PLUGGED",
+                            "MISSED FIRE SAFETY CHECKS ELIMINATED",
+                            "UNVERIFIED SHOW READINESS STOPPED",
+                            "LOST INTERVAL REVENUE RECLAIMED",
+                            "EXPIRED KDM BLACKOUTS AVOIDED"
+                        ].map((text, i) => (
+                            <span key={i} className="text-[12px] md:text-[14px] font-black text-white uppercase tracking-[0.3em] italic flex items-center gap-5">
+                                <ShieldAlert className="w-5 h-5" /> {text}
+                            </span>
+                        ))}
+                        {/* Duplicate for seamless loop */}
+                        {[
+                            "BLACK-SCREEN INCIDENTS PREVENTED",
+                            "CONCESSION LEAKAGE PLUGGED",
+                            "MISSED FIRE SAFETY CHECKS ELIMINATED",
+                            "UNVERIFIED SHOW READINESS STOPPED",
+                            "LOST INTERVAL REVENUE RECLAIMED",
+                            "EXPIRED KDM BLACKOUTS AVOIDED"
+                        ].map((text, i) => (
+                            <span key={`dup-${i}`} className="text-[12px] md:text-[14px] font-black text-white uppercase tracking-[0.3em] italic flex items-center gap-5">
+                                <ShieldAlert className="w-5 h-5" /> {text}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+
+                {/* --- 4. OPERATIONAL LOOP: HOW IT WORKS --- */}
+                <Section className="bg-zinc-50/50" id="loop">
+                    <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">THE SYSTEM ARCHITECTURE</Badge>
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                                The Operational Loop
+                            </h2>
+                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto uppercase tracking-tighter">
+                                From floor execution to boardroom visibility.
+                            </p>
+                        </div>
+
+                        <div className="grid md:grid-cols-4 gap-4">
+                            {[
+                                { t: "01 INPUT", d: "Staff log technical tasks on the floor via mobile Sheets.", i: Smartphone },
+                                { t: "02 VERIFY", d: "Managers sign off on high-priority readiness points.", i: ShieldCheck },
+                                { t: "03 ESCALATE", d: "Any missed work is auto-logged as an operational risk.", i: AlertTriangle },
+                                { t: "04 VISIBILITY", d: "One dashboard shows group health across every screen.", i: TrendingUp }
+                            ].map((step, i) => (
+                                <div key={i} className="bg-white border border-zinc-100 p-10 rounded-[2rem] space-y-8 group hover:shadow-2xl transition-all duration-700 hover:-translate-y-2">
+                                    <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500">
+                                        <step.i className="w-6 h-6" />
+                                    </div>
+                                    <div className="space-y-3">
+                                        <h4 className="text-xl font-black uppercase italic tracking-widest text-zinc-950 leading-tight">{step.t}</h4>
+                                        <p className="text-xs font-bold text-zinc-400 italic uppercase leading-relaxed">{step.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- 5. THE EVIDENCE: ARTIFACT TRIPTCH --- */}
+                <Section className="bg-white" id="evidence">
+                    <div className="max-w-6xl mx-auto space-y-16 md:space-y-32">
+                        <div className="grid lg:grid-cols-[0.8fr,1.2fr] gap-12 lg:gap-24 items-center">
+                            <div className="space-y-10 text-left">
+                                <div className="space-y-5">
+                                    <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[9px] px-6 py-1.5 rounded-none italic bg-zinc-50">TECHNICAL PROOF</Badge>
+                                    <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                                        Executive <br/> Operations View
+                                    </h2>
+                                    <p className="text-zinc-500 text-sm md:text-base font-bold italic uppercase leading-relaxed border-l-2 border-primary/20 pl-8">
+                                        Know what's done and what's missed without attending a single meeting. Real-time visibility into multi-screen health.
+                                    </p>
+                                </div>
+                                <div className="p-8 bg-[#F0FDF4] border border-emerald-100 rounded-[1.5rem] space-y-3 shadow-sm">
+                                    <p className="text-[10px] font-black text-emerald-700 uppercase tracking-widest">LIVE SYSTEM DATA:</p>
+                                    <p className="text-base md:text-lg font-black italic text-emerald-900 leading-tight uppercase">"87% Completion Across Region North. 3 High-Priority Tasks Overdue."</p>
+                                </div>
+                            </div>
+                            <div className="w-full">
+                                <BrowserFrame src={VITALS_IMAGE} label="EXECUTIVE DASHBOARD" sub="VIEW: GROUP COMMAND PULSE" />
+                            </div>
+                        </div>
+
+                        <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-24 items-center">
+                            <div className="order-2 lg:order-1 w-full">
+                                <BrowserFrame src={LEDGER_IMAGE} label="DAILY EXECUTION LEDGER" sub="VIEW: DAILY STAFF LOG" />
+                            </div>
+                            <div className="space-y-10 text-left order-1 lg:order-2">
+                                <div className="space-y-5">
+                                    <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-left lg:text-right">
+                                        Staff Mobile <br/> Ledger
+                                    </h2>
+                                    <p className="text-zinc-500 text-sm md:text-base font-bold italic uppercase leading-relaxed border-r-2 border-primary/20 pr-8 text-left lg:text-right">
+                                        No app training required. Staff log completion in seconds. If it's not logged, it's not done.
+                                    </p>
+                                </div>
+                                <div className="flex flex-col gap-6 items-start lg:items-end">
+                                    {[
+                                        { t: "EXECUTION GUIDANCE", d: "Step-by-step instructions embedded in every task.", i: GraduationCap },
+                                        { t: "BINARY VERIFICATION", d: "Staff enters name -> status turns green instantly.", i: CheckCircle2 }
+                                    ].map((feat, i) => (
+                                        <div key={i} className="flex gap-5 items-center">
+                                            <div className="order-2 w-12 h-12 rounded-xl bg-zinc-950 flex items-center justify-center shrink-0 shadow-xl">
+                                                <feat.i className="w-6 h-6 text-emerald-500" />
+                                            </div>
+                                            <div className="order-1 text-left lg:text-right">
+                                                <p className="text-lg font-black uppercase italic text-zinc-950 leading-none">{feat.t}</p>
+                                                <p className="text-[10px] font-bold text-zinc-400 italic uppercase leading-snug pt-1">{feat.d}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- 6. THE ENGINE CORE: COMPONENT GRID --- */}
+                <Section className="bg-zinc-50 border-y border-zinc-100" id="modules">
+                    <div className="max-w-[1100px] mx-auto space-y-16 md:space-y-24">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[9px] italic bg-white shadow-sm">SYSTEM MODULES</Badge>
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none text-center">The Engine Core</h2>
+                            <p className="text-zinc-500 text-[10px] font-bold italic uppercase tracking-widest text-center">FULL TECHNICAL DENSITY FOR MULTIPLEX COMMAND</p>
                         </div>
                         
-                        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+                        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-6">
                             {[
                                 { t: "OPERATIONS DASHBOARD", i: Monitor },
                                 { t: "READINESS CONSOLE", i: Clapperboard },
@@ -214,178 +373,76 @@ export default function DesignLabPage() {
                                 { t: "EXECUTION LEDGER", i: FileSignature },
                                 { t: "INCIDENT REGISTRY", i: ShieldAlert }
                             ].map((item, i) => (
-                                <div key={i} className="p-4 md:p-6 rounded-xl border border-zinc-200 flex flex-col items-center justify-center gap-3 transition-all group h-[130px] shadow-sm text-center bg-white hover:border-emerald-500/40 hover:shadow-xl hover:-translate-y-0.5">
-                                    <item.i className="w-6 h-6 text-slate-400 transition-all duration-500 group-hover:text-emerald-500" />
-                                    <span className="text-[9px] font-black uppercase tracking-widest leading-tight italic text-slate-900 group-hover:text-emerald-600">{item.t}</span>
+                                <div key={i} className="p-8 md:p-12 rounded-[2rem] border border-zinc-200 flex flex-col items-center justify-center gap-6 transition-all group h-[200px] shadow-sm text-center bg-white hover:border-emerald-500/40 hover:shadow-2xl hover:-translate-y-2 duration-500">
+                                    <item.i className="w-10 h-10 text-slate-300 transition-all duration-700 group-hover:text-emerald-500 group-hover:scale-110" />
+                                    <span className="text-[11px] font-black uppercase tracking-[0.15em] leading-tight italic text-slate-900 group-hover:text-emerald-600">{item.t}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </Section>
 
-                {/* --- 3. EVIDENCE: ARTIFACT SCALE --- */}
-                <Section className="bg-zinc-50/50" id="evidence">
-                    <div className="max-w-6xl mx-auto space-y-16 md:space-y-24">
-                        <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[9px] px-8 py-2 rounded-none italic bg-white shadow-sm">TECHNICAL EVIDENCE</Badge>
-                            <h2 className="text-[32px] md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none text-center">Inside the Machine</h2>
-                            <p className="text-zinc-500 text-[10px] font-bold italic uppercase tracking-widest text-center">SYSTEMS BUILT FOR ACCURACY, NOT JUST DOCUMENTATION</p>
-                        </div>
-
-                        {/* Artifact 1: Dashboard */}
-                        <div className="grid lg:grid-cols-[0.8fr,1.2fr] gap-10 lg:gap-20 items-center">
-                            <div className="space-y-8 text-left">
-                                <div className="space-y-4">
-                                    <h4 className="text-2xl md:text-4xl font-black uppercase italic tracking-tighter text-zinc-950 leading-[0.95]">EXECUTIVE OPERATIONS VIEW</h4>
-                                    <p className="text-zinc-500 text-xs md:text-sm font-bold italic uppercase leading-relaxed">High-level visibility into site-wise velocity. Proves drift detection through real-world variables.</p>
-                                </div>
-                                <div className="p-6 md:p-8 bg-[#ECFDF5] border-l-4 border-[#10B981] rounded-r-xl shadow-sm space-y-2">
-                                    <p className="text-[9px] font-black text-emerald-700 uppercase tracking-widest">LIVE DATA STATUS:</p>
-                                    <p className="text-sm md:text-base font-bold italic text-emerald-900 leading-tight">"Current status: 87% Completion. 3 Critical missions pending verification."</p>
-                                </div>
-                            </div>
-                            <div className="w-full">
-                                <BrowserFrame src={VITALS_IMAGE} label="EXECUTIVE DASHBOARD" sub="VIEW: GROUP COMMAND PULSE" />
-                            </div>
-                        </div>
-
-                        {/* Artifact 2: The Ledger */}
-                        <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-10 lg:gap-20 items-center">
-                            <div className="order-2 lg:order-1 w-full">
-                                <BrowserFrame src={LEDGER_IMAGE} label="DAILY EXECUTION LEDGER" sub="VIEW: DAILY TASK LOG" />
-                            </div>
-                            <div className="space-y-10 text-left order-1 lg:order-2">
-                                <div className="space-y-4">
-                                    <h4 className="text-2xl md:text-4xl font-black uppercase italic tracking-tighter text-zinc-950 leading-[0.95]">DAILY EXECUTION LEDGER</h4>
-                                    <p className="text-zinc-500 text-xs md:text-sm font-bold italic uppercase leading-relaxed">No separate app training required. Staff log completion in seconds, using tools they already understand.</p>
-                                </div>
-                                <div className="flex flex-col gap-6">
-                                    {[
-                                        { t: "Execution Guidance", d: "Step-by-step technical instructions embedded in every task.", i: GraduationCap },
-                                        { t: "Binary Completion", d: "Staff enters name -> status turns green. Zero ambiguity.", i: CheckCircle2 }
-                                    ].map((feat, i) => (
-                                        <div key={i} className="flex gap-5 items-start">
-                                            <div className="w-10 h-10 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0 shadow-sm">
-                                                <feat.i className="w-5 h-5 text-emerald-500" />
-                                            </div>
-                                            <div>
-                                                <p className="text-base font-black uppercase italic text-zinc-950 leading-none">{feat.t}</p>
-                                                <p className="text-[11px] font-bold text-zinc-500 italic uppercase leading-snug pt-1">{feat.d}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Section>
-
-                {/* --- 4. THE OPERATIONAL LOOP --- */}
-                <Section className="bg-zinc-950 text-white" noSpine id="loop">
-                    <div className="max-w-6xl mx-auto space-y-12">
-                        <div className="text-center space-y-3">
-                            <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[8px] italic">SYSTEM ARCHITECTURE</Badge>
-                            <h2 className="text-3xl md:text-5xl font-black font-headline uppercase italic leading-[0.85] tracking-tighter text-center">The Operational Loop</h2>
-                            <p className="text-zinc-500 text-[9px] font-bold italic uppercase tracking-widest text-center">FROM FLOOR EXECUTION TO BOARDROOM INTELLIGENCE</p>
-                        </div>
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                            {[
-                                { t: "01 INPUT", d: "Staff log tasks on the floor via mobile Sheets.", i: Smartphone },
-                                { t: "02 VERIFY", d: "Managers sign off on high-priority mission points.", i: ShieldCheck },
-                                { t: "03 ESCALATE", d: "Deviations are auto-logged in the Incident Registry.", i: AlertTriangle },
-                                { t: "04 VISIBILITY", d: "Executive dashboard reflects live group health.", i: TrendingUp }
-                            ].map((step, i) => (
-                                <div key={i} className="bg-white/[0.02] border border-white/5 p-8 rounded-2xl space-y-6 group hover:bg-white/[0.04] transition-all">
-                                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover:scale-110 transition-transform">
-                                        <step.i className="w-5 h-5" />
-                                    </div>
-                                    <div className="space-y-1.5">
-                                        <h4 className="text-lg font-black uppercase italic tracking-widest text-white leading-tight">{step.t}</h4>
-                                        <p className="text-[10px] font-bold text-zinc-500 italic uppercase leading-relaxed">{step.d}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </Section>
-
-                {/* --- 5. SUSTAINABILITY: STRUCTURAL ENDURANCE --- */}
-                <Section className="bg-white" id="sustainability">
-                    <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-center max-w-6xl mx-auto">
-                        <div className="space-y-10 text-left">
-                            <div className="space-y-4">
-                                <Badge variant="outline" className="text-emerald-600 border-emerald-100 bg-emerald-50 uppercase tracking-[0.5em] font-black text-[8px] italic px-8 py-2 rounded-none">STRUCTURAL ENDURANCE</Badge>
-                                <h2 className="text-3xl md:text-6xl font-black font-headline uppercase italic leading-[0.88] tracking-tighter">Sustainability <br/> Through Rigor.</h2>
-                                <p className="text-zinc-500 text-base md:text-lg font-bold italic leading-tight uppercase">
-                                    Reduce operational waste through daily execution visibility.
+                {/* --- 7. OPERATIONAL ESG: SUSTAINABILITY THROUGH RIGOR --- */}
+                <Section className="bg-white" id="esg">
+                    <div className="grid lg:grid-cols-[1fr,450px] gap-12 lg:gap-24 items-center max-w-6xl mx-auto">
+                        <div className="space-y-12 text-left">
+                            <div className="space-y-6">
+                                <Badge variant="outline" className="text-emerald-600 border-emerald-100 bg-emerald-50 uppercase tracking-[0.5em] font-black text-[9px] italic px-10 py-3 rounded-none">OPERATIONAL ESG</Badge>
+                                <h2 className="text-[34px] md:text-[64px] font-black font-headline uppercase italic leading-[0.9] tracking-tighter">Sustainability <br/> Through Rigor.</h2>
+                                <p className="text-zinc-500 text-lg md:text-xl font-bold italic leading-tight uppercase border-l-2 border-emerald-500/20 pl-8 max-w-xl">
+                                    Environmental sustainability isn't theater. It's the byproduct of daily resource discipline and visibility.
                                 </p>
                             </div>
                             
-                            <div className="space-y-6">
+                            <div className="grid sm:grid-cols-2 gap-8 md:gap-12">
                                 {[
-                                    { t: "Financial Sustainability", d: "Plugging concession profit leaks and removing recurring SaaS debt.", i: Banknote },
-                                    { t: "Asset Sustainability", d: "Extending technical hardware life through preventive uptime audits.", i: Wrench },
-                                    { t: "Knowledge Sustainability", d: "Institutional memory stays with the brand even when managers resign.", i: History },
-                                    { t: "Resource Sustainability", d: "Daily energy-shutdown compliance to stop unmonitored utility waste.", i: Leaf }
+                                    { t: "ENERGY DISCIPLINE", d: "Daily AC shutdown compliance logs for empty auditoriums stop unmonitored power waste.", i: Zap },
+                                    { t: "RESOURCE CONSERVATION", d: "Water vitals logging and overnight leak detection through digital meter-parity checks.", i: Leaf },
+                                    { t: "WASTE MITIGATION", d: "Concession yield logic (corn-to-bucket) identifies production waste before it reaches the bin.", i: Recycle },
+                                    { t: "ASPECT LONGEVITY", d: "Preventive uptime audits extend technical hardware life by 30%, reducing e-waste footprint.", i: Wrench }
                                 ].map((item, i) => (
-                                    <div key={i} className="flex gap-6 items-start group">
-                                        <div className="w-10 h-10 rounded-lg bg-zinc-50 border border-zinc-100 flex items-center justify-center text-zinc-400 shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-all">
-                                            <item.i className="w-5 h-5" />
+                                    <div key={i} className="flex flex-col gap-4 items-start group">
+                                        <div className="w-12 h-12 rounded-2xl bg-zinc-50 border border-zinc-100 flex items-center justify-center text-zinc-400 shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-inner">
+                                            <item.i className="w-6 h-6" />
                                         </div>
-                                        <div className="space-y-0.5">
-                                            <h4 className="text-base font-black uppercase italic text-zinc-950 leading-tight">{item.t}</h4>
-                                            <p className="text-[11px] font-bold text-zinc-500 italic uppercase leading-tight">{item.d}</p>
+                                        <div className="space-y-2">
+                                            <h4 className="text-lg font-black uppercase italic text-zinc-950 leading-tight">{item.t}</h4>
+                                            <p className="text-[11px] font-bold text-zinc-400 italic uppercase leading-relaxed">{item.d}</p>
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
-                        <div className="relative p-6 bg-zinc-950 rounded-[3rem] shadow-2xl overflow-hidden group">
+                        <div className="relative p-8 bg-zinc-950 rounded-[3rem] shadow-2xl overflow-hidden group">
                              <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                             <BrowserFrame src={FINANCE_IMAGE} label="FINANCIAL SHIELD" sub="VIEW: MARGIN PROTECTION MODULE" />
+                             <BrowserFrame src={FINANCE_IMAGE} label="FINANCIAL SHIELD" sub="VIEW: MARGIN & RESOURCE PROTECTION" />
                         </div>
                     </div>
                 </Section>
 
-                {/* --- 6. PREVENTED INCIDENTS STRIP --- */}
-                <div className="w-full bg-[#E11D48] py-4 overflow-hidden border-y border-black/10">
-                    <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
-                        {[
-                            "BLACK-SCREEN INCIDENTS PREVENTED",
-                            "CONCESSION LEAKAGE PLUGGED",
-                            "MISSED FIRE SAFETY CHECKS ELIMINATED",
-                            "UNVERIFIED SHOW READINESS STOPPED",
-                            "LOST INTERVAL REVENUE RECLAIMED",
-                            "EXPIRED KDM BLACKOUTS AVOIDED"
-                        ].map((text, i) => (
-                            <span key={i} className="text-[11px] md:text-[13px] font-black text-white uppercase tracking-[0.25em] italic flex items-center gap-4">
-                                <ShieldAlert className="w-4 h-4" /> {text}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-
-                {/* --- 7. FINAL COMMAND --- */}
-                <section className="bg-zinc-950 text-white py-24 md:py-32 text-center relative overflow-hidden border-t border-white/5">
-                    <div className="max-w-5xl mx-auto space-y-12 relative z-10 px-6">
-                        <div className="space-y-4">
-                            <h2 className="text-[40px] md:text-[8xl] font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-2xl">Own the system. <br/> Deploy for life.</h2>
-                            <p className="text-base md:text-xl text-zinc-500 font-bold italic uppercase tracking-[0.3em]">ONE-TIME INVESTMENT. PERMANENT VISIBILITY.</p>
+                {/* --- 8. FINAL COMMAND: PRICING MANDATE --- */}
+                <section className="bg-zinc-950 text-white py-32 md:py-48 text-center relative overflow-hidden border-t border-white/5" id="pricing">
+                    <div className="absolute inset-0 z-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:40px_40px]" />
+                    
+                    <div className="max-w-5xl mx-auto space-y-16 relative z-10 px-6">
+                        <div className="space-y-6">
+                            <Badge variant="outline" className="text-emerald-500 border-emerald-500/20 bg-emerald-500/5 uppercase tracking-[0.6em] font-black text-[10px] px-12 py-3 rounded-none italic">INSTITUTIONAL ACCESS</Badge>
+                            <h2 className="text-[42px] md:text-[90px] font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-2xl text-white">Own the system. <br/> Deploy for life.</h2>
+                            <p className="text-lg md:text-2xl text-zinc-500 font-bold italic uppercase tracking-[0.3em] max-w-2xl mx-auto">ONE-TIME INVESTMENT. PERMANENT VISIBILITY.</p>
                         </div>
                         
-                        <div className="flex flex-col items-center gap-10">
-                            <button className="h-16 md:h-24 px-12 md:px-20 rounded-xl md:rounded-2xl bg-emerald-500 text-black font-black uppercase italic text-sm md:text-2xl shadow-[0_20px_60px_-10px_rgba(34,197,94,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-6">
-                                <Link href="/library" className="flex items-center gap-6">
-                                    GET SOVEREIGN PRO <ArrowRight className="w-8 h-8 md:w-12 md:h-12 transition-transform group-hover:translate-x-3" />
+                        <div className="flex flex-col items-center gap-14">
+                            <button className="h-16 md:h-24 px-12 md:px-20 rounded-xl md:rounded-[2.5rem] bg-emerald-500 text-black font-black uppercase italic text-sm md:text-2xl shadow-[0_20px_80px_-10px_rgba(34,197,94,0.6)] hover:bg-white hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-8">
+                                <Link href="/library" className="flex items-center gap-8">
+                                    GET SOVEREIGN PRO <ArrowRight className="w-8 h-8 md:w-12 md:h-12 transition-transform group-hover:translate-x-4" />
                                 </Link>
                             </button>
-                            <div className="flex flex-col items-center gap-2">
-                                <div className="flex items-baseline gap-4">
-                                    <p className="text-[48px] md:text-[90px] font-black italic">₹999</p>
+                            <div className="flex flex-col items-center gap-3">
+                                <div className="flex items-baseline gap-5">
+                                    <p className="text-[56px] md:text-[110px] font-black italic tracking-tighter">₹999</p>
                                     <span className="text-2xl md:text-4xl font-bold text-zinc-700 italic">/ $12</span>
                                 </div>
-                                <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-zinc-600 italic">
+                                <p className="text-[11px] md:text-sm font-black uppercase tracking-[0.5em] text-zinc-600 italic">
                                     NO MONTHLY FEES • NO SaaS TAX • NO DATA LOCK-IN
                                 </p>
                             </div>
@@ -404,9 +461,10 @@ export default function DesignLabPage() {
                 .animate-marquee {
                     display: flex;
                     width: fit-content;
-                    animation: marquee 35s linear infinite;
+                    animation: marquee 40s linear infinite;
                 }
             `}</style>
         </div>
     );
 }
+
