@@ -30,8 +30,8 @@ import Link from 'next/link';
 import PricingClient from '../packs/pricing-client';
 import { packResolutions } from '@/lib/pack-resolutions';
 
-const CHAMBER_GREEN = "#0F3D2E";
 const ACTION_AMBER = "#F4A261";
+const BRAND_GREEN = "#22C55E";
 
 const MARQUEE_SIGNALS = [
     "DCP_SYNC_CONFIRMED",
@@ -72,7 +72,7 @@ function Section({ children, className, id, noSpine = false }: SectionProps) {
 function PulsatingStressText({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) {
     return (
         <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-            <span className="text-[12px] md:text-[16px] font-black text-red-500 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(239,68,68,0.2)] leading-none block text-left lg:text-right whitespace-nowrap">
+            <span className="text-[12px] md:text-[16px] font-black text-red-500 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(239,68,68,0.3)] leading-none block text-left lg:text-right whitespace-nowrap">
                 {text}
             </span>
         </div>
@@ -86,31 +86,38 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
     if (!mounted) return null;
 
     const res = packResolutions[pack.id];
+    const heroImageUrl = "https://i.postimg.cc/43gVfgjd/multiplex2.avif";
 
     return (
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-emerald-500/20">
             
-            {/* --- REFINED CHAMBER GREEN HERO --- */}
-            <section className="relative w-full min-h-[90svh] flex flex-col justify-center overflow-hidden text-white" style={{ backgroundColor: CHAMBER_GREEN }}>
-                {/* Subtle Grain Overlay */}
-                <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-                
+            {/* --- REFINED IMAGE HERO WITH BRIGHTER COLORS --- */}
+            <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black text-white">
+                <div className="absolute inset-0 z-0">
+                    <img 
+                        src={heroImageUrl} 
+                        alt="" 
+                        className="w-full h-full object-cover opacity-40 grayscale-[0.2] brightness-[0.4]" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent" />
+                </div>
+
                 <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-20 pb-12">
                     <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-16 items-center">
                         <div className="space-y-8 md:space-y-12 w-full">
                             <div className="space-y-4">
-                                <Badge variant="outline" className="text-emerald-400 border-emerald-500/30 py-1.5 px-6 uppercase tracking-[0.4em] font-black text-[10px] rounded-none bg-emerald-500/5">
+                                <Badge variant="outline" className="text-emerald-400 border-emerald-500/40 py-1.5 px-6 uppercase tracking-[0.4em] font-black text-[10px] rounded-none bg-emerald-500/10">
                                     SOVEREIGN INFRASTRUCTURE
                                 </Badge>
                                 <h1 className="font-headline font-black text-[36px] md:text-[54px] lg:text-[72px] leading-[0.9] uppercase italic tracking-tighter text-white">
-                                    CINEMA <br/> <span className="text-emerald-400">OPERATIONS SYSTEM.</span>
+                                    CINEMA <br/> <span className="text-primary" style={{ color: BRAND_GREEN }}>OPERATIONS SYSTEM.</span>
                                 </h1 >
                                 <div className="space-y-4">
-                                    <p className="text-lg md:text-[26px] font-medium text-zinc-300 max-w-2xl leading-tight">
+                                    <p className="text-lg md:text-[28px] font-medium text-white max-w-2xl leading-tight">
                                         Technical command for show readiness, crowd flow, and concession yield.
                                     </p>
-                                    <div className="border-l-[3px] border-emerald-500/30 pl-8">
-                                        <p className="text-sm md:text-lg text-zinc-400 font-bold max-w-xl leading-relaxed italic">
+                                    <div className="border-l-[3px] border-emerald-500/50 pl-8">
+                                        <p className="text-sm md:text-lg text-zinc-300 font-bold max-w-xl leading-relaxed italic">
                                             Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.
                                         </p>
                                     </div>
@@ -126,10 +133,10 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                         { t: "AUDIT-READY DOCUMENTATION", i: FileSpreadsheet }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-4 group">
-                                            <div className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                            <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 border border-emerald-500/30">
                                                 <Check className="w-3 h-3 text-emerald-400" />
                                             </div>
-                                            <span className="text-[12px] md:text-[14px] font-black uppercase tracking-[0.05em] italic leading-tight text-white/80 group-hover:text-white transition-colors">
+                                            <span className="text-[12px] md:text-[14px] font-black uppercase tracking-[0.05em] italic leading-tight text-white group-hover:text-emerald-400 transition-colors">
                                                 {item.t}
                                             </span>
                                         </div>
@@ -139,9 +146,9 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
 
                             <div className="space-y-6 pt-4">
                                 <div className="flex flex-col sm:flex-row items-center gap-8">
-                                    <Button asChild size="lg" className="w-full sm:w-auto h-16 md:h-20 px-12 md:px-16 rounded-xl text-black font-black uppercase italic text-sm md:text-xl shadow-[0_20px_50px_-10px_rgba(244,162,97,0.4)] hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-4" style={{ backgroundColor: ACTION_AMBER }}>
+                                    <Button asChild size="lg" className="w-full sm:w-auto h-16 md:h-20 px-12 md:px-16 rounded-xl text-black font-black uppercase italic text-sm md:text-xl shadow-[0_20px_50px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-4" style={{ backgroundColor: BRAND_GREEN }}>
                                         <Link href="#pricing">
-                                            LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 transition-transform group-hover:translate-x-2" />
+                                            LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
                                         </Link>
                                     </Button>
                                     <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
@@ -149,22 +156,38 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                             <p className="text-[32px] md:text-[40px] font-black text-white italic tracking-tighter">₹999</p>
                                             <span className="text-xs font-bold text-zinc-500 line-through">₹4,999</span>
                                         </div>
-                                        <p className="text-[10px] font-black text-zinc-500 uppercase tracking-widest">ONE-TIME • OWN FOREVER</p>
+                                        <p className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">ONE-TIME • OWN FOREVER</p>
                                     </div>
                                 </div>
-                                <p className="text-[10px] md:text-[11px] text-emerald-500/60 font-black uppercase tracking-[0.4em] italic leading-tight text-center sm:text-left">
-                                    NO APP ROLLOUT REQUIRED • NO SaaS LOCK-IN
+                                <p className="text-[10px] md:text-[11px] text-emerald-500 font-black uppercase tracking-[0.4em] italic leading-tight text-center sm:text-left">
+                                    EXCEL MASTER • OPERATED LIVE VIA GOOGLE SHEETS
                                 </p>
                             </div>
                         </div>
                         
-                        <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-16 lg:mt-0 space-y-8">
-                             <p className="text-[9px] font-black text-red-500/40 uppercase tracking-[0.7em] italic">DAILY OPERATIONAL RISKS</p>
-                             <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
-                                 {["EXPIRED KDM KEYS", "CONCESSION YIELD LEAKAGE", "INTERVAL SURGE CONGESTION", "EMERGENCY COMMS FAILURE"].map((text, i) => (
-                                    <PulsatingStressText key={i} text={text} delay={`${i * 0.2}s`} />
-                                 ))}
-                             </div>
+                        {/* --- RIGHT COLUMN: FRAMED IMAGE NORTH + RISKS SOUTH --- */}
+                        <div className="w-full flex flex-col gap-10 mt-16 lg:mt-0">
+                            {/* Sleek North Frame */}
+                            <div className="relative group">
+                                <div className="absolute -inset-0.5 bg-gradient-to-b from-primary/20 to-transparent rounded-[2rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                                <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 aspect-square shadow-2xl bg-zinc-900">
+                                    <img 
+                                        src={heroImageUrl} 
+                                        alt="Cinema Sector" 
+                                        className="w-full h-full object-cover grayscale-[0.1] brightness-[0.8] hover:scale-105 transition-transform duration-700" 
+                                    />
+                                </div>
+                            </div>
+
+                            {/* South Risks */}
+                            <div className="lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right space-y-6">
+                                 <p className="text-[9px] font-black text-red-500/60 uppercase tracking-[0.7em] italic">DAILY OPERATIONAL RISKS</p>
+                                 <div className="flex flex-col gap-4 md:gap-6">
+                                     {["EXPIRED KDM KEYS", "CONCESSION YIELD LEAKAGE", "INTERVAL SURGE CONGESTION", "EMERGENCY COMMS FAILURE"].map((text, i) => (
+                                        <PulsatingStressText key={i} text={text} delay={`${i * 0.2}s`} />
+                                     ))}
+                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -285,7 +308,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                 <div className="space-y-3 pt-2">
                                     <p className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.4em]">COMPLIANCE COVERAGE</p>
                                     <div className="flex flex-wrap gap-2">
-                                        {["Show Readiness", "Fire Safety", "FSSAI", "LOTO", "Tax Seriality", "C-Form Sync"].map((item, i) => (
+                                        {["Show Readiness", "Fire Safety", "FSSAI", "LOTO", "Tax seriality", "C-Form Sync"].map((item, i) => (
                                             <div key={i} className="flex items-center gap-2 px-3 py-1.5 bg-white border border-zinc-100 rounded-lg shadow-sm">
                                                 <ShieldCheck className="w-3 h-3 text-primary" />
                                                 <span className="text-[9px] font-black uppercase text-zinc-600 tracking-wider">{item}</span>
@@ -395,7 +418,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
             <Section className="bg-zinc-950 text-white" noSpine>
                 <div className="max-w-4xl mx-auto p-10 md:p-16 rounded-[2rem] border border-white/10 bg-white/[0.02] relative overflow-hidden text-center space-y-8">
                     <div className="absolute top-0 right-0 p-8 opacity-5">
-                        <ShieldCheck className="w-48 h-48 text-primary" />
+                        <Sparkles className="w-48 h-48 text-primary" />
                     </div>
                     <div className="relative z-10 space-y-3">
                         <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[9px]">OPTIONAL CUSTOMIZATION SUPPORT</Badge>
@@ -431,7 +454,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                             </div>
                             
                             <div className="flex flex-col items-center lg:items-start gap-4">
-                                <button className="h-14 md:h-20 px-8 md:px-16 rounded-xl text-black font-black uppercase italic text-sm md:text-xl shadow-2xl hover:bg-white hover:scale-[1.05] active:scale-95 transition-all border-none group w-full lg:w-fit flex items-center justify-center" style={{ backgroundColor: ACTION_AMBER }}>
+                                <button className="h-14 md:h-20 px-8 md:px-16 rounded-xl text-black font-black uppercase italic text-sm md:text-xl shadow-2xl hover:bg-white hover:scale-[1.05] active:scale-95 transition-all border-none group w-full lg:w-fit flex items-center justify-center" style={{ backgroundColor: BRAND_GREEN }}>
                                     <Link href="#pricing" className="flex items-center gap-3">
                                         LIVE IN 10 MINUTES NOW <ArrowRight className="w-6 h-6 md:w-7 md:h-7 transition-transform group-hover:translate-x-3" />
                                     </Link>
@@ -468,3 +491,17 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
     );
 }
 
+const Sparkles = ({ className }: { className?: string }) => (
+    <svg 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        className={className}
+    >
+        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L12 3Z" />
+        <path d="M5 3v4" /><path d="M19 17v4" /><path d="M3 5h4" /><path d="M17 19h4" />
+    </svg>
+);
