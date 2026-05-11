@@ -20,6 +20,42 @@ export const FaqSection = () => (
                         </AccordionContent>
                     </AccordionItem>
 
+                    <AccordionItem value="item-platforms" className="border-white/10">
+                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">We already use an SOP or workflow platform. Will this still work?</AccordionTrigger>
+                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic space-y-4">
+                            <p>Absolutely.</p>
+                            <p>Most operational platforms provide the <strong>software infrastructure</strong> (workflow automation, approvals, and user permissions). MoreMeets™ provides the <strong>operational logic and technical content.</strong></p>
+                            
+                            <div className="grid md:grid-cols-2 gap-8 py-4 border-y border-white/5 my-4">
+                                <div className="space-y-3">
+                                    <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">Your Existing Platform</p>
+                                    <ul className="text-xs space-y-1 opacity-60">
+                                        <li>• Workflow automation</li>
+                                        <li>• Approvals & notifications</li>
+                                        <li>• Task assignment</li>
+                                        <li>• User permissions</li>
+                                        <li>• Reporting dashboards</li>
+                                    </ul>
+                                </div>
+                                <div className="space-y-3">
+                                    <p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">MoreMeets™</p>
+                                    <ul className="text-xs space-y-1 text-primary/80">
+                                        <li>• Pre-built industry-specific SOPs</li>
+                                        <li>• Daily execution logic</li>
+                                        <li>• Trainer notes for teams</li>
+                                        <li>• Audit-ready structures</li>
+                                        <li>• Accountability & compliance systems</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <p>MoreMeets™ can be used <strong>directly in Excel or Google Sheets</strong> or seamlessly <strong>adapted into your existing platform</strong> to give it technical depth.</p>
+                            <p className="text-primary-text font-black pt-2 uppercase tracking-tighter">
+                                Your platform manages workflows. <br/> MoreMeets™ defines what needs to happen every day.
+                            </p>
+                        </AccordionContent>
+                    </AccordionItem>
+
                     <AccordionItem value="item-custom" className="border-white/10">
                         <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Do you offer professional customization support?</AccordionTrigger>
                         <AccordionContent className="text-secondary-text leading-relaxed font-medium italic space-y-4">
