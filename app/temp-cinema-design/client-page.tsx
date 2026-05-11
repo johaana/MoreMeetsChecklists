@@ -72,7 +72,7 @@ function Section({ children, className, id, noSpine = false }: SectionProps) {
 function PulsatingStressText({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) {
     return (
         <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-            <span className="text-[10px] md:text-[15px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(239,68,68,0.3)] leading-none block text-left lg:text-right whitespace-nowrap">
+            <span className="text-[11px] md:text-[15px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(239,68,68,0.3)] leading-none block text-left lg:text-right whitespace-nowrap">
                 {text}
             </span>
         </div>
@@ -182,7 +182,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                  </div>
                                  <div className="grid grid-cols-2 lg:flex lg:flex-col gap-3 md:gap-5 text-center lg:text-right items-center lg:items-end">
                                      <PulsatingStressText text="EXPIRED KDM KEYS" delay="0s" />
-                                     <PulsatingStressText text="CONCESSION LEAKAGE" delay="0.2s" />
+                                     <PulsatingStressText text="CONCESSION YIELD LEAKAGE" delay="0.2s" />
                                      <PulsatingStressText text="INTERVAL GRIDLOCK" delay="0.4s" />
                                      <PulsatingStressText text="EMERGENCY FAILURE" delay="0.6s" />
                                  </div>
@@ -211,8 +211,8 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                             const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
                             return (
                                 <span key={i} className={cn(
-                                    "text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
-                                    isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
+                                    "text-[10px] md:text-[12px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
+                                    isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-zinc-500"
                                 )}>
                                     <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
                                     {signal}
@@ -224,8 +224,8 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                             const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
                             return (
                                 <span key={`dup-${i}`} className={cn(
-                                    "text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
-                                    isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
+                                    "text-[10px] md:text-[12px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
+                                    isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-zinc-500"
                                 )}>
                                     <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
                                     {signal}
@@ -242,16 +242,21 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                     <div className="text-center space-y-4">
                         <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50/50 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">OPERATIONAL REALITY</Badge>
                         <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
-                            Why daily execution breaks
+                            Why Cinema operations break
                         </h2>
                         <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto text-center">
-                            {res.whyExecutionBreaksParagraph}
+                            Cinemas fail when technical readiness is assumed and interval rushes become disorganized coordination exercises.
                         </p>
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 relative">
                         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />
-                        {res.risks.map((point, index) => (
+                        {[
+                            { t: "Technical Readiness Gaps", d: "Show readiness is often verbally confirmed rather than technically verified, leading to black-screens during blockbuster openings." },
+                            { t: "Invisible Profit Theft", d: "Lack of raw-corn-to-bucket yield logic creates massive internal profit leakage at the concession counter that owners never see." },
+                            { t: "Interval Rush Gridlock", d: "Washroom congestion and concession queue overload damage guest satisfaction scores and reduce interval spending." },
+                            { t: "Emergency Maintenance Decay", d: "Critical life-safety systems or fire doors often fail unnoticed until a crisis occurs due to lack of daily operational audits." }
+                        ].map((point, index) => (
                             <div key={index} className="flex flex-col gap-5 p-8 border border-zinc-100 bg-zinc-50/30 rounded-[1.5rem] hover:bg-white hover:shadow-xl transition-all duration-500 relative group">
                                 <div className="absolute top-4 right-4 opacity-5 group-hover:opacity-10 transition-opacity">
                                     <ShieldAlert className="w-20 h-20 text-red-600" />
@@ -262,11 +267,11 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                         <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600"></span>
                                     </div>
                                     <h3 className="text-lg md:text-xl font-black font-headline uppercase italic tracking-tighter text-zinc-950">
-                                        {point.title}
+                                        {point.t}
                                     </h3>
                                 </div>
                                 <p className="text-zinc-500 text-sm md:text-base font-bold italic leading-relaxed text-left">
-                                    {point.description}
+                                    {point.d}
                                 </p>
                             </div>
                         ))}
@@ -291,7 +296,14 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                 WHAT CHANGES DAILY
                             </p>
                             <div className="space-y-4">
-                                {res.whatChangesDaily.map((item, i) => (
+                                {[
+                                    "Show readiness has a mandatory technical seal",
+                                    "Concession yields are reconciled shift-wise",
+                                    "Auditorium temperatures are logged during peak",
+                                    "Egress safety patrols are verified pre-credits",
+                                    "DCP/KDM status is confirmed 24h prior",
+                                    "Operations heads see group readiness instantly"
+                                ].map((item, i) => (
                                     <div key={i} className="flex items-start gap-4 group">
                                         <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                                         <span className="text-zinc-950 font-black text-base md:text-lg leading-tight italic uppercase">{item}</span>
@@ -314,7 +326,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                 <div className="space-y-3 pt-2">
                                     <p className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.4em]">COMPLIANCE COVERAGE</p>
                                     <div className="flex flex-wrap gap-2">
-                                        {["Show Readiness", "Fire Safety", "FSSAI/HACCP", "LOTO", "Personnel Certs"].map((item, i) => (
+                                        {["Show Readiness", "Fire Safety", "FSSAI", "LOTO", "Tax seriality", "C-Form Sync"].map((item, i) => (
                                             <div key={i} className="flex items-center gap-2 px-3 py-1.5 bg-white border border-zinc-100 rounded-lg shadow-sm">
                                                 <ShieldCheck className="w-3 h-3 text-primary" />
                                                 <span className="text-[9px] font-black uppercase text-zinc-600 tracking-wider">{item}</span>
@@ -342,7 +354,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                         {[
                             { t: "FASTER TEAM TRAINING", d: "New teams understand responsibilities faster using built-in instructions.", i: GraduationCap },
                             { t: "REDUCED DEPENDENCY", d: "Operations stop collapsing when key staff leave. Memory becomes infrastructure.", i: History },
-                            { t: res.reassuranceTrustTitle || "STAKEHOLDER TRUST", d: res.reassuranceTrustDescription || "Operational consistency customers notice.", i: Users },
+                            { t: "TECHNICAL DISCIPLINE", d: "Consistency guests notice from lobby arrival to end-credits.", i: Users },
                             { t: "EASY FOR TEAMS", d: "No apps. No software rollout. Teams simply update one shared dashboard daily.", i: CheckCircle2 },
                             { t: "EDITABLE INFRASTRUCTURE", d: "Add, remove, or customize tasks anytime to fit your unique property protocols.", i: Zap },
                             { t: "AUDIT-READY RECORDS", d: "Institutional proof for inspectors and insurers is generated automatically.", i: ShieldCheck }

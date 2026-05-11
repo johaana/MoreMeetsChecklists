@@ -51,7 +51,7 @@ const SECTOR_METADATA: Record<string, {
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Daily AC and lighting shutdown logs for unoccupied zones stop unmonitored power waste.", i: Zap },
-            { t: "RESOURCE CONSERVATION", d: "Water vitals logging and faucet aerator audits reduce utility consumption by 15%.", i: Leaf },
+            { t: "RESOURCE CONSERVATION", d: "Water vitals logging and overnight leak detection through digital meter-parity checks.", i: Leaf },
             { t: "WASTE MITIGATION", d: "Prep waste tracking and food-cost variance monitoring identify overproduction before the bin.", i: Recycle },
             { t: "ASSET LONGEVITY", d: "Scheduled kitchen equipment deep-cleaning extends the lifespan of reach-ins and fryers.", i: Wrench }
         ]
@@ -161,7 +161,7 @@ const SECTOR_METADATA: Record<string, {
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Storefront and showroom lighting shutdown compliance logs for after-hours energy savings.", i: Zap },
-            { t: "RESOURCE CONSERVATION", d: "Cleaning chemical dilution calibration and spill kit readiness reduce chemical waste.", i: Leaf },
+            { t: "RESOURCE CONSERVATION", d: "Cleaning chemical dilution calibration and pill kit readiness reduce chemical waste.", i: Leaf },
             { t: "WASTE MITIGATION", d: "Markdown logic and expiry sweep protocols identify perishable waste before it becomes total loss.", i: Recycle },
             { t: "ASSET LONGEVITY", d: "Thermal battery logs and serialized asset audits extend the life of demo tech.", i: Wrench }
         ]
@@ -225,7 +225,7 @@ function Section({ children, className, id, noSpine = false }: SectionProps) {
 function PulsatingStressText({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) {
     return (
         <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-            <span className="text-[10px] md:text-[15px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(239,68,68,0.3)] leading-none block text-left lg:text-right whitespace-nowrap">
+            <span className="text-[11px] md:text-[15px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(239,68,68,0.3)] leading-none block text-left lg:text-right whitespace-nowrap">
                 {text}
             </span>
         </div>
@@ -368,8 +368,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
                             return (
                                 <span key={i} className={cn(
-                                    "text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
-                                    isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
+                                    "text-[10px] md:text-[12px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
+                                    isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-zinc-500"
                                 )}>
                                     <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
                                     {signal}
@@ -381,8 +381,8 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
                             return (
                                 <span key={`dup-${i}`} className={cn(
-                                    "text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
-                                    isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
+                                    "text-[10px] md:text-[12px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
+                                    isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-zinc-500"
                                 )}>
                                     <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
                                     {signal}
