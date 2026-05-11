@@ -23,7 +23,9 @@ import {
     Leaf,
     Recycle,
     Wrench,
-    LayoutGrid
+    LayoutGrid,
+    Eye,
+    ChevronRight
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
@@ -223,7 +225,7 @@ function Section({ children, className, id, noSpine = false }: SectionProps) {
 function PulsatingStressText({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) {
     return (
         <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-            <span className="text-[12px] md:text-[15px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(239,68,68,0.3)] leading-none block text-left lg:text-right whitespace-nowrap">
+            <span className="text-[10px] md:text-[15px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(239,68,68,0.3)] leading-none block text-left lg:text-right whitespace-nowrap">
                 {text}
             </span>
         </div>
@@ -249,7 +251,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-primary/20">
             
             {/* --- HERO SECTION: THE ONE-GLANCE COMMAND --- */}
-            <section className="relative w-full h-screen min-h-[700px] flex flex-col justify-center overflow-hidden bg-black text-white">
+            <section className="relative w-full h-[100svh] flex flex-col justify-center overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 z-0">
                     <img 
                         src={heroImageUrl} 
@@ -259,38 +261,41 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent" />
                 </div>
 
-                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-16 pb-20">
-                    <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-12 items-center">
-                        <div className="space-y-4 md:space-y-5 w-full">
-                            <div className="space-y-2 md:space-y-3">
-                                <h1 className="font-headline font-black text-[40px] md:text-[54px] lg:text-[68px] leading-[0.9] uppercase italic tracking-tighter text-white">
+                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 h-full flex flex-col justify-center py-6 md:py-16">
+                    <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-12 items-center lg:items-center">
+                        <div className="space-y-4 md:space-y-8 w-full relative">
+                            {/* Mobile Spine Guide */}
+                            <div className="absolute -left-4 top-2 bottom-2 w-px bg-emerald-500/20 lg:hidden" />
+
+                            <div className="space-y-3 md:space-y-5">
+                                <h1 className="font-headline font-black text-[2.2rem] md:text-[54px] lg:text-[72px] leading-[0.9] uppercase italic tracking-tighter text-white">
                                     {titleParts[0]} <br/> 
                                     <span style={{ color: BRAND_GREEN }}>{titleParts[1]}</span> <br/>
                                     <span style={{ color: BRAND_GREEN }}>{titleParts[2]}</span>
                                 </h1 >
-                                <div className="space-y-3">
-                                    <p className="text-lg md:text-[22px] font-medium text-white max-w-2xl leading-tight">
+                                <div className="space-y-2 md:space-y-4">
+                                    <p className="text-[13px] md:text-[22px] font-medium text-white max-w-2xl leading-tight">
                                         {res.heroSubline}
                                     </p>
-                                    <div className="border-l-[3px] border-emerald-500/40 pl-8 py-0.5">
-                                        <p className="text-xs md:text-sm text-zinc-400 font-bold max-w-lg leading-relaxed italic">
+                                    <div className="border-l-[2px] md:border-l-[3px] border-emerald-500/40 pl-4 md:pl-8 py-0.5">
+                                        <p className="text-[11px] md:text-sm text-zinc-400 font-bold max-lg:max-w-[300px] leading-tight italic">
                                             {res.strategicParagraph}
                                         </p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="space-y-4">
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2">
+                            <div className="space-y-4 md:space-y-5">
+                                <div className="grid grid-cols-2 lg:grid-cols-2 gap-x-6 md:gap-x-10 gap-y-3 md:gap-y-4">
                                     {[
                                         { t: `${pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0)}+ PRE-BUILT OPERATIONAL SOPs`, i: Target },
                                         { t: "LIVE OPERATIONAL DASHBOARD", i: Activity },
                                         { t: "EXCEL MASTER • OPERATED LIVE VIA SHEETS", i: GraduationCap },
                                         { t: "AUDIT-READY DOCUMENTATION", i: FileSpreadsheet }
                                     ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-4 group">
-                                            <div className="w-3.5 h-3.5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 border border-emerald-500/30">
-                                                <Check className="w-2.5 h-2.5 text-emerald-400" />
+                                        <div key={i} className="flex items-center gap-2 md:gap-4 group">
+                                            <div className="w-3.5 h-3.5 md:w-4 md:h-4 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 border border-emerald-500/30">
+                                                <Check className="w-2.5 md:w-3 h-2.5 md:h-3 text-emerald-400" />
                                             </div>
                                             <span className="text-[9px] md:text-[11px] font-black uppercase tracking-[0.05em] italic leading-tight text-white/70 group-hover:text-emerald-400 transition-colors">
                                                 {item.t}
@@ -300,7 +305,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                             </div>
 
-                            <div className="flex flex-col sm:flex-row items-center gap-6 md:gap-10 pt-2">
+                            <div className="hidden lg:flex flex-row items-center gap-6 md:gap-10 pt-2">
                                 <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(46,184,107,0.5)] hover:scale-[1.05] active:scale-95 transition-all border-none group flex items-center justify-center gap-4" style={{ backgroundColor: BRAND_GREEN }}>
                                     <Link href="#pricing">
                                         LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
@@ -316,10 +321,10 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             </div>
                         </div>
                         
-                        <div className="w-full flex flex-col items-end gap-6 mt-10 lg:mt-0">
-                            <div className="relative group w-full max-w-[480px]">
-                                <div className="absolute -inset-1 bg-gradient-to-b from-primary/30 to-transparent rounded-[3.5rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                                <div className="relative overflow-hidden rounded-[3rem] border border-white/10 aspect-[1.5/1] shadow-2xl bg-zinc-900">
+                        <div className="w-full flex flex-col items-center lg:items-end gap-4 md:gap-6 mt-6 lg:mt-0">
+                            <div className="relative group w-full max-w-[280px] md:max-w-[480px]">
+                                <div className="absolute -inset-1 bg-gradient-to-b from-primary/30 to-transparent rounded-[2.5rem] md:rounded-[3.5rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                                <div className="relative overflow-hidden rounded-[2rem] md:rounded-[3rem] border border-white/10 aspect-[2/1] lg:aspect-[1.5/1] shadow-2xl bg-zinc-900">
                                     <img 
                                         src={heroImageUrl} 
                                         alt="" 
@@ -328,29 +333,42 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                                 </div>
                             </div>
 
-                            <div className="w-full max-w-[480px] space-y-4 pr-4">
-                                 <div className="flex items-center gap-4 justify-end">
+                            <div className="w-full max-w-[480px] space-y-3 md:space-y-4 lg:pr-4">
+                                 <div className="flex items-center gap-4 justify-center lg:justify-end">
                                      <div className="h-px flex-1 bg-gradient-to-r from-transparent to-red-500/20" />
-                                     <p className="text-[9px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">DAILY OPERATIONAL RISKS</p>
+                                     <p className="text-[8px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.4em] italic">DAILY OPERATIONAL RISKS</p>
                                  </div>
-                                 <div className="flex flex-col gap-3 md:gap-5 text-right items-end">
+                                 <div className="grid grid-cols-2 lg:flex lg:flex-col gap-3 md:gap-5 text-center lg:text-right items-center lg:items-end">
                                      {res.risks.slice(0, 4).map((risk, i) => (
                                         <PulsatingStressText key={i} text={risk.title} delay={`${i * 0.2}s`} />
                                      ))}
                                  </div>
                             </div>
+
+                            {/* Mobile Integrated CTA HUD */}
+                            <div className="flex lg:hidden flex-col items-center gap-4 w-full pt-4">
+                                <div className="flex items-baseline gap-3">
+                                    <span className="text-[32px] font-black text-white italic tracking-tighter leading-none">₹{pack.priceINR}</span>
+                                    <span className="text-[9px] font-black text-zinc-500 uppercase tracking-widest italic">ONE-TIME</span>
+                                </div>
+                                <Button asChild size="lg" className="w-full h-14 rounded-xl text-black font-black uppercase italic text-sm shadow-2xl border-none" style={{ backgroundColor: BRAND_GREEN }}>
+                                    <Link href="#pricing">
+                                        LIVE IN 10 MINUTES <ArrowRight className="w-4 h-4 ml-3" />
+                                    </Link>
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                {/* --- TELEMETRY MARQUEE: INTEGRATED --- */}
-                <div className="absolute bottom-0 w-full bg-[#1a0505] h-10 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
+                {/* --- TELEMETRY MARQUEE --- */}
+                <div className="absolute bottom-0 w-full bg-[#1a0505] h-10 md:h-12 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
                     <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
                         {sectorData.marquee.map((signal, i) => {
                             const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
                             return (
                                 <span key={i} className={cn(
-                                    "text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
+                                    "text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
                                     isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
                                 )}>
                                     <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
@@ -363,7 +381,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                             const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
                             return (
                                 <span key={`dup-${i}`} className={cn(
-                                    "text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
+                                    "text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
                                     isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
                                 )}>
                                     <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
@@ -413,7 +431,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- 3. RESOLUTION PROTOCOL (The Logic) --- */}
+            {/* --- 3. RESOLUTION PROTOCOL --- */}
             <Section className="bg-zinc-50/50">
                 <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
@@ -467,7 +485,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- 4. BUILT FOR REAL TEAMS (The Practicality) --- */}
+            {/* --- 4. BUILT FOR REAL TEAMS --- */}
             <Section className="bg-white">
                 <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
@@ -500,7 +518,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- 5. GO LIVE IN 10 MINUTES (The Ease) --- */}
+            {/* --- 5. GO LIVE IN 10 MINUTES --- */}
             <Section className="bg-zinc-50 border-y border-zinc-100" id="guide">
                  <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
                         <div className="text-center space-y-4">
@@ -528,7 +546,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                     </div>
             </Section>
 
-            {/* --- 6. OPERATIONAL SUSTAINABILITY (The Bridge) --- */}
+            {/* --- 6. OPERATIONAL SUSTAINABILITY --- */}
             <Section className="bg-white" id="esg">
                 <div className="max-w-4xl mx-auto space-y-16">
                     <div className="space-y-6 text-center">
@@ -555,7 +573,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- 7. PRICING SECTION (The Decision) --- */}
+            {/* --- 7. PRICING SECTION --- */}
             <div id="pricing" className="scroll-mt-20" />
             <PricingClient pack={pack} />
 
@@ -585,7 +603,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </Section>
 
-            {/* --- 9. FINAL MANDATE (The Close) --- */}
+            {/* --- 9. FINAL MANDATE --- */}
             <Section className="bg-[#0F3D2E] text-white py-20 md:py-32" noSpine>
                 <div className="max-w-6xl mx-auto">
                     <div className="grid lg:grid-cols-[1.2fr,1fr] gap-10 md:gap-20 items-center">

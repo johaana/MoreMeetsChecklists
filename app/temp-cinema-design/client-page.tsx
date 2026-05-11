@@ -24,7 +24,8 @@ import {
     Recycle,
     Wrench,
     LayoutGrid,
-    Eye
+    Eye,
+    ChevronRight
 } from 'lucide-react';
 import Link from 'next/link';
 import PricingClient from '../packs/pricing-client';
@@ -71,7 +72,7 @@ function Section({ children, className, id, noSpine = false }: SectionProps) {
 function PulsatingStressText({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) {
     return (
         <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-            <span className="text-[9px] md:text-[15px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(239,68,68,0.3)] leading-none block text-left lg:text-right whitespace-nowrap">
+            <span className="text-[10px] md:text-[15px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0_15px_rgba(239,68,68,0.3)] leading-none block text-left lg:text-right whitespace-nowrap">
                 {text}
             </span>
         </div>
@@ -90,8 +91,8 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
     return (
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-emerald-500/20">
             
-            {/* --- ONE-GLANCE HERO --- */}
-            <section className="relative w-full h-[100dvh] flex flex-col justify-center overflow-hidden bg-black text-white">
+            {/* --- HERO SECTION: THE ONE-GLANCE COMMAND --- */}
+            <section className="relative w-full h-[100svh] flex flex-col justify-center overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 z-0">
                     <img 
                         src={heroImageUrl} 
@@ -101,33 +102,33 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent" />
                 </div>
 
-                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 h-full flex flex-col justify-center py-10 md:py-16">
+                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 h-full flex flex-col justify-center py-6 md:py-16">
                     <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-12 items-center lg:items-center">
                         
-                        <div className="space-y-3 md:space-y-6 w-full relative">
+                        <div className="space-y-4 md:space-y-8 w-full relative">
                             {/* Mobile Spine Guide */}
                             <div className="absolute -left-4 top-2 bottom-2 w-px bg-emerald-500/20 lg:hidden" />
 
-                            <div className="space-y-2 md:space-y-3">
-                                <h1 className="font-headline font-black text-[1.8rem] md:text-[54px] lg:text-[68px] leading-[0.9] uppercase italic tracking-tighter text-white">
+                            <div className="space-y-3 md:space-y-5">
+                                <h1 className="font-headline font-black text-[2.2rem] md:text-[54px] lg:text-[72px] leading-[0.9] uppercase italic tracking-tighter text-white">
                                     CINEMA <br/> 
                                     <span style={{ color: BRAND_GREEN }}>OPERATIONS</span> <br/>
                                     <span style={{ color: BRAND_GREEN }}>SYSTEM.</span>
                                 </h1 >
-                                <div className="space-y-1.5 md:space-y-3">
-                                    <p className="text-[10px] md:text-[22px] font-medium text-white max-w-2xl leading-tight">
+                                <div className="space-y-2 md:space-y-4">
+                                    <p className="text-[13px] md:text-[22px] font-medium text-white max-w-2xl leading-tight">
                                         Technical command for show readiness, crowd flow, and concession yield.
                                     </p>
-                                    <div className="border-l-[2px] md:border-l-[3px] border-emerald-500/40 pl-3 md:pl-8 py-0.5">
-                                        <p className="text-[8px] md:text-sm text-zinc-400 font-bold max-lg:max-w-[240px] leading-tight italic">
+                                    <div className="border-l-[2px] md:border-l-[3px] border-emerald-500/40 pl-4 md:pl-8 py-0.5">
+                                        <p className="text-[11px] md:text-sm text-zinc-400 font-bold max-lg:max-w-[300px] leading-tight italic">
                                             Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.
                                         </p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="space-y-3 md:space-y-4">
-                                <div className="grid grid-cols-2 lg:grid-cols-2 gap-x-4 md:gap-x-10 gap-y-2">
+                            <div className="space-y-4 md:space-y-5">
+                                <div className="grid grid-cols-2 lg:grid-cols-2 gap-x-6 md:gap-x-10 gap-y-3 md:gap-y-4">
                                     {[
                                         { t: "144+ PRE-BUILT OPERATIONAL SOPs", i: Target },
                                         { t: "LIVE OPERATIONAL DASHBOARD", i: Activity },
@@ -135,10 +136,10 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                         { t: "AUDIT-READY DOCUMENTATION", i: FileSpreadsheet }
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-2 md:gap-4 group">
-                                            <div className="w-3 h-3 md:w-3.5 md:h-3.5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 border border-emerald-500/30">
-                                                <Check className="w-2 md:w-2.5 h-2 md:h-2.5 text-emerald-400" />
+                                            <div className="w-3.5 h-3.5 md:w-4 md:h-4 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 border border-emerald-500/30">
+                                                <Check className="w-2.5 md:w-3 h-2.5 md:h-3 text-emerald-400" />
                                             </div>
-                                            <span className="text-[7px] md:text-[11px] font-black uppercase tracking-[0.05em] italic leading-tight text-white/70 group-hover:text-emerald-400 transition-colors">
+                                            <span className="text-[9px] md:text-[11px] font-black uppercase tracking-[0.05em] italic leading-tight text-white/70 group-hover:text-emerald-400 transition-colors">
                                                 {item.t}
                                             </span>
                                         </div>
@@ -162,10 +163,10 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                             </div>
                         </div>
                         
-                        <div className="w-full flex flex-col items-center lg:items-end gap-3 md:gap-6 mt-4 md:mt-6 lg:mt-0">
-                            <div className="relative group w-full max-w-[240px] md:max-w-[480px]">
-                                <div className="absolute -inset-1 bg-gradient-to-b from-primary/30 to-transparent rounded-[2rem] md:rounded-[3.5rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                                <div className="relative overflow-hidden rounded-[1.5rem] md:rounded-[3rem] border border-white/10 aspect-[2/1] lg:aspect-[1.5/1] shadow-2xl bg-zinc-900">
+                        <div className="w-full flex flex-col items-center lg:items-end gap-4 md:gap-6 mt-6 lg:mt-0">
+                            <div className="relative group w-full max-w-[280px] md:max-w-[480px]">
+                                <div className="absolute -inset-1 bg-gradient-to-b from-primary/30 to-transparent rounded-[2.5rem] md:rounded-[3.5rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                                <div className="relative overflow-hidden rounded-[2rem] md:rounded-[3rem] border border-white/10 aspect-[2/1] lg:aspect-[1.5/1] shadow-2xl bg-zinc-900">
                                     <img 
                                         src={heroImageUrl} 
                                         alt="" 
@@ -174,12 +175,12 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                 </div>
                             </div>
 
-                            <div className="w-full max-w-[480px] space-y-2 md:space-y-4 lg:pr-4">
+                            <div className="w-full max-w-[480px] space-y-3 md:space-y-4 lg:pr-4">
                                  <div className="flex items-center gap-4 justify-center lg:justify-end">
                                      <div className="h-px flex-1 bg-gradient-to-r from-transparent to-red-500/20" />
-                                     <p className="text-[7px] md:text-[9px] font-black text-red-500/60 uppercase tracking-[0.4em] italic">DAILY OPERATIONAL RISKS</p>
+                                     <p className="text-[8px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.4em] italic">DAILY OPERATIONAL RISKS</p>
                                  </div>
-                                 <div className="grid grid-cols-2 lg:flex lg:flex-col gap-2 md:gap-5 text-center lg:text-right items-center lg:items-end">
+                                 <div className="grid grid-cols-2 lg:flex lg:flex-col gap-3 md:gap-5 text-center lg:text-right items-center lg:items-end">
                                      <PulsatingStressText text="EXPIRED KDM KEYS" delay="0s" />
                                      <PulsatingStressText text="CONCESSION LEAKAGE" delay="0.2s" />
                                      <PulsatingStressText text="INTERVAL GRIDLOCK" delay="0.4s" />
@@ -188,14 +189,14 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                             </div>
 
                             {/* Mobile Integrated CTA HUD */}
-                            <div className="flex lg:hidden flex-col items-center gap-3 w-full pt-2">
-                                <div className="flex items-baseline gap-2">
-                                    <span className="text-[24px] font-black text-white italic tracking-tighter leading-none">₹999</span>
-                                    <span className="text-[7px] font-black text-zinc-500 uppercase tracking-widest italic">ONE-TIME</span>
+                            <div className="flex lg:hidden flex-col items-center gap-4 w-full pt-4">
+                                <div className="flex items-baseline gap-3">
+                                    <span className="text-[32px] font-black text-white italic tracking-tighter leading-none">₹999</span>
+                                    <span className="text-[9px] font-black text-zinc-500 uppercase tracking-widest italic">ONE-TIME</span>
                                 </div>
-                                <Button asChild size="lg" className="w-full h-12 rounded-xl text-black font-black uppercase italic text-[10px] shadow-2xl border-none" style={{ backgroundColor: BRAND_GREEN }}>
+                                <Button asChild size="lg" className="w-full h-14 rounded-xl text-black font-black uppercase italic text-sm shadow-2xl border-none" style={{ backgroundColor: BRAND_GREEN }}>
                                     <Link href="#pricing">
-                                        LIVE IN 10 MINUTES <ArrowRight className="w-3 h-3 ml-2" />
+                                        LIVE IN 10 MINUTES <ArrowRight className="w-4 h-4 ml-3" />
                                     </Link>
                                 </Button>
                             </div>
@@ -375,7 +376,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                                 { t: "Run", d: "Daily tasks begin populating automatically by role, date, and frequency — live across your team." }
                             ].map((step, i) => (
                                 <div className="space-y-8 group text-left" key={i}>
-                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-950 group-hover:text-primary transition-colors leading-none">
+                                    <div className="text-6xl md:text-8xl font-black italic text-zinc-200 group-hover:text-primary transition-colors leading-none">
                                         {i+1}
                                     </div>
                                     <div className="space-y-3">
