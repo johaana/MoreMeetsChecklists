@@ -91,7 +91,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
         <div className="bg-white text-[#0B0F14] font-sans antialiased selection:bg-emerald-500/20">
             
             {/* --- ONE-GLANCE HERO --- */}
-            <section className="relative w-full min-h-[90vh] flex flex-col justify-center overflow-hidden bg-black text-white">
+            <section className="relative w-full h-screen min-h-[700px] flex flex-col justify-center overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 z-0">
                     <img 
                         src={heroImageUrl} 
@@ -101,7 +101,7 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent" />
                 </div>
 
-                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-12 pb-10">
+                <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-16 pb-20">
                     <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-12 items-center">
                         <div className="space-y-4 md:space-y-5 w-full">
                             <div className="space-y-2 md:space-y-3">
@@ -186,38 +186,38 @@ export default function TempCinemaDesignClient({ pack }: { pack: PremiumPack }) 
                         </div>
                     </div>
                 </div>
-            </section>
 
-            {/* --- TELEMETRY MARQUEE --- */}
-            <div className="w-full bg-[#1a0505] h-10 overflow-hidden border-y border-black/10 relative z-30 flex items-center shadow-2xl">
-                <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
-                    {MARQUEE_SIGNALS.map((signal, i) => {
-                        const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
-                        return (
-                            <span key={i} className={cn(
-                                "text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
-                                isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
-                            )}>
-                                <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
-                                {signal}
-                            </span>
-                        );
-                    })}
-                    {/* Duplicate for infinite loop */}
-                    {MARQUEE_SIGNALS.map((signal, i) => {
-                        const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
-                        return (
-                            <span key={`dup-${i}`} className={cn(
-                                "text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
-                                isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
-                            )}>
-                                <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
-                                {signal}
-                            </span>
-                        );
-                    })}
+                {/* --- TELEMETRY MARQUEE (Inside Hero Bottom) --- */}
+                <div className="absolute bottom-0 w-full bg-[#1a0505] h-10 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
+                    <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
+                        {MARQUEE_SIGNALS.map((signal, i) => {
+                            const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
+                            return (
+                                <span key={i} className={cn(
+                                    "text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
+                                    isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
+                                )}>
+                                    <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
+                                    {signal}
+                                </span>
+                            );
+                        })}
+                        {/* Duplicate for infinite loop */}
+                        {MARQUEE_SIGNALS.map((signal, i) => {
+                            const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
+                            return (
+                                <span key={`dup-${i}`} className={cn(
+                                    "text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
+                                    isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
+                                )}>
+                                    <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
+                                    {signal}
+                                </span>
+                            );
+                        })}
+                    </div>
                 </div>
-            </div>
+            </section>
 
             {/* --- WHY EXECUTION BREAKS --- */}
             <Section className="bg-white border-b border-zinc-100">
