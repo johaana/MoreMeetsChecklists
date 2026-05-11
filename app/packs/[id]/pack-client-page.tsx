@@ -195,7 +195,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                         {res.heroSubline}
                                     </p>
                                     <div className="border-l-[2px] md:border-l-[3px] border-emerald-500/40 pl-4 md:pl-8 py-0.5">
-                                        <p className="text-[13px] md:text-sm text-zinc-400 font-bold max-lg:max-w-[300px] leading-tight italic">
+                                        <p className="text-sm md:text-lg text-zinc-400 font-bold max-lg:max-w-[300px] leading-tight italic">
                                             {res.strategicParagraph}
                                         </p>
                                     </div>
@@ -278,30 +278,31 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                     </div>
                 </div>
 
-                {/* --- TELEMETRY MARQUEE --- */}
-                <div className="absolute bottom-0 w-full bg-black h-10 md:h-12 overflow-hidden border-t border-emerald-500/30 flex items-center shadow-2xl">
+                {/* --- TELEMETRY MARQUEE: INSTITUTIONAL TERMINAL --- */}
+                <div className="absolute bottom-0 w-full bg-[#2A0508] h-10 md:h-12 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
                     <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
                         {sectorData.marquee.map((signal, i) => {
-                            const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
+                            const isAlert = /ALERT|WARNING|VARIANCE|PENDING|FAILURE|GAP|DRIFT|LOAD|INCIDENT/.test(signal);
+                            const isVerified = /VERIFIED|COMPLETE|STABLE|100%|HEALTHY|SYNCED|ACTIVE|VALIDATED|SUCCESS|PASS/.test(signal);
                             return (
-                                <span key={i} className={cn(
-                                    "text-[10px] md:text-[12px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
-                                    isAlert ? "text-red-400 drop-shadow-[0_0_8px_rgba(248,113,113,0.3)]" : "text-zinc-400"
-                                )}>
-                                    <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
-                                    {signal}
+                                <span key={i} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-[#D6C7C7]">
+                                    {isAlert && <span className="text-[#C86565]">[!]</span>}
+                                    {isVerified && <span className="text-[#5FAF7A]">[✓]</span>}
+                                    {!isAlert && !isVerified && <span className="text-[#F5A623]">[~]</span>}
+                                    <span className="opacity-90">{signal}</span>
                                 </span>
                             );
                         })}
+                        {/* Loop Replication */}
                         {sectorData.marquee.map((signal, i) => {
-                            const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('VARIANCE') || signal.includes('PENDING');
+                            const isAlert = /ALERT|WARNING|VARIANCE|PENDING|FAILURE|GAP|DRIFT|LOAD|INCIDENT/.test(signal);
+                            const isVerified = /VERIFIED|COMPLETE|STABLE|100%|HEALTHY|SYNCED|ACTIVE|VALIDATED|SUCCESS|PASS/.test(signal);
                             return (
-                                <span key={`dup-${i}`} className={cn(
-                                    "text-[10px] md:text-[12px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
-                                    isAlert ? "text-red-400 drop-shadow-[0_0_8px_rgba(248,113,113,0.3)]" : "text-zinc-400"
-                                )}>
-                                    <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
-                                    {signal}
+                                <span key={`dup-${i}`} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-[#D6C7C7]">
+                                    {isAlert && <span className="text-[#C86565]">[!]</span>}
+                                    {isVerified && <span className="text-[#5FAF7A]">[✓]</span>}
+                                    {!isAlert && !isVerified && <span className="text-[#F5A623]">[~]</span>}
+                                    <span className="opacity-90">{signal}</span>
                                 </span>
                             );
                         })}

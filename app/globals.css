@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -115,7 +116,7 @@ html {
 .animate-marquee {
   display: flex;
   width: fit-content;
-  animation: marquee 60s linear infinite; /* Slower, institutional speed */
+  animation: marquee 80s linear infinite; /* Slower, institutional monitoring speed */
 }
 
 @keyframes shimmer {
