@@ -31,7 +31,8 @@ import {
     Banknote,
     Thermometer,
     LayoutGrid,
-    Eye
+    Eye,
+    Recycle
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -42,6 +43,7 @@ import Link from 'next/link';
 const VITALS_IMAGE = "https://i.postimg.cc/W1Yt09r8/Screenshot-2026-05-11-170634.png";
 const LEDGER_IMAGE = "https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png";
 const FINANCE_IMAGE = "https://i.postimg.cc/g2tr3MRD/Screenshot-2026-05-11-170957.png";
+const HERO_IMAGE = "https://i.postimg.cc/43gVfgjd/multiplex2.avif";
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
     <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
@@ -63,17 +65,17 @@ const BrowserFrame = ({ src, label, sub }: { src: string, label: string, sub?: s
                     <div className="w-2 h-2 rounded-full bg-emerald-500/20" />
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <div className="bg-white/5 border border-white/5 rounded-md px-12 py-1 text-[8px] font-black text-white/30 uppercase tracking-[0.4em] italic">
+                    <div className="bg-white/5 border border-white/5 rounded-md px-12 py-1 text-[8px] font-black text-white/30 uppercase tracking-[0.4em] italic leading-none">
                         {label}.xlsx
                     </div>
                 </div>
             </div>
             {/* Shortened, non-readable artifact */}
-            <div className="relative w-full h-[220px] overflow-hidden bg-zinc-50">
+            <div className="relative w-full h-[180px] md:h-[220px] overflow-hidden bg-zinc-50">
                 <img 
                     src={src} 
                     alt={label} 
-                    className="w-full h-auto object-cover object-top grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000 opacity-60 group-hover:opacity-100 blur-[0.8px] group-hover:blur-0" 
+                    className="w-full h-auto object-cover object-top grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000 opacity-60 group-hover:opacity-100 blur-[1px] group-hover:blur-0" 
                 />
                 <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white via-white/40 to-transparent pointer-events-none" />
             </div>
@@ -105,7 +107,7 @@ export default function CinemaDesignLab() {
                 <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black text-white">
                     <div className="absolute inset-0 z-0">
                         <img 
-                            src="https://i.postimg.cc/43gVfgjd/multiplex2.avif" 
+                            src={HERO_IMAGE} 
                             alt="" 
                             className="w-full h-full object-cover opacity-40 grayscale brightness-[0.35]" 
                         />
@@ -114,13 +116,13 @@ export default function CinemaDesignLab() {
 
                     <div className="relative z-20 container mx-auto max-w-[1200px] px-6 pt-20 pb-12">
                         <div className="flex flex-col lg:grid lg:grid-cols-[1.4fr,0.6fr] lg:gap-16 items-center">
-                            <div className="space-y-6 md:space-y-10 w-full">
-                                <div className="space-y-4">
-                                    <h1 className="font-headline font-black text-[36px] md:text-[64px] lg:text-[72px] xl:text-[80px] leading-[0.95] uppercase italic tracking-tighter text-white">
-                                        CINEMA <br/> <span className="text-emerald-500">OPERATIONS SYSTEM.</span>
-                                    </h1>
-                                    <div className="space-y-4">
-                                        <p className="text-lg md:text-[28px] font-medium text-zinc-300 max-w-3xl leading-tight">
+                            <div className="space-y-6 md:space-y-8 w-full">
+                                <div className="space-y-3">
+                                    <h1 className="font-headline font-black text-[32px] md:text-[44px] lg:text-[54px] xl:text-[60px] leading-none uppercase italic tracking-tighter text-white lg:whitespace-nowrap">
+                                        CINEMA OPERATIONS SYSTEM
+                                    </h1 >
+                                    <div className="space-y-3">
+                                        <p className="text-lg md:text-[24px] font-medium text-zinc-300 max-w-3xl leading-tight">
                                             Technical command for show readiness, crowd flow, and concession yield.
                                         </p>
                                         <div className="border-l-2 border-emerald-500/40 pl-6">
@@ -131,19 +133,19 @@ export default function CinemaDesignLab() {
                                     </div>
                                 </div>
 
-                                <div className="space-y-5">
+                                <div className="space-y-4">
                                     <div className="flex items-center gap-3">
                                         <div className="w-1 h-5 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
                                         <p className="text-[9px] font-black text-emerald-500 uppercase tracking-[0.4em] italic font-headline">SYSTEM SPECIFICATIONS</p>
                                     </div>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-3">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-2 md:gap-y-3">
                                         {[
                                             { t: "144+ PRE-BUILT OPERATIONAL SOPs", i: Target },
                                             { t: "LIVE OPERATIONAL DASHBOARD", i: Activity },
                                             { t: "EXECUTION GUIDANCE INCLUDED", i: GraduationCap },
                                             { t: "AUDIT-READY DOCUMENTATION", i: FileSignature }
                                         ].map((item, i) => (
-                                            <div key={i} className="flex items-center gap-3 group">
+                                            <div key={i} className="flex items-center gap-3 md:gap-4 group">
                                                 <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
                                                     <Check className="w-2.5 h-2.5 text-[#22C55E]" />
                                                 </div>
@@ -155,26 +157,28 @@ export default function CinemaDesignLab() {
                                     </div>
                                 </div>
 
-                                <div className="space-y-5 pt-4">
-                                    <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-20 px-10 md:px-16 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-xl shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group flex items-center justify-center gap-4">
-                                        <Link href="#pricing">
-                                            LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
-                                        </Link>
-                                    </Button>
-                                    <div className="space-y-1.5 pl-1">
-                                        <p className="text-[10px] md:text-[12px] text-emerald-500/90 font-black uppercase tracking-[0.2em] italic leading-tight">
-                                            BUILT IN EXCEL • SHARED THROUGH GOOGLE SHEETS • NO APP ROLLOUT
-                                        </p>
-                                        <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic leading-tight">
-                                            ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
-                                        </p>
+                                <div className="space-y-4 md:space-y-5 pt-2">
+                                    <div className="space-y-3">
+                                        <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group flex items-center justify-center gap-4">
+                                            <Link href="#pricing">
+                                                LIVE IN 10 MINUTES <ArrowRight className="w-6 h-6 md:w-8 md:h-8 text-zinc-950 transition-transform group-hover:translate-x-2" />
+                                            </Link>
+                                        </Button>
+                                        <div className="space-y-1.5 pl-1">
+                                            <p className="text-[10px] md:text-[12px] text-emerald-500/90 font-black uppercase tracking-[0.2em] italic leading-tight">
+                                                BUILT IN EXCEL • SHARED THROUGH GOOGLE SHEETS • NO APP ROLLOUT
+                                            </p>
+                                            <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic leading-tight">
+                                                ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-6 md:space-y-10">
+                            <div className="w-full lg:border-l-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 lg:text-right mt-12 lg:mt-0 space-y-6 md:space-y-8">
                                  <p className="text-[9px] font-black text-red-500/40 uppercase tracking-[0.7em] italic">DAILY OPERATIONAL RISKS</p>
-                                 <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
+                                 <div className="flex flex-col gap-3 md:gap-5 lg:gap-6">
                                      <PulsatingStressText text="EXPIRED KDM KEYS" delay="0s" />
                                      <PulsatingStressText text="CONCESSION YIELD LEAKAGE" delay="0.2s" />
                                      <PulsatingStressText text="INTERVAL SURGE CONGESTION" delay="0.4s" />
@@ -185,9 +189,40 @@ export default function CinemaDesignLab() {
                     </div>
                 </section>
 
-                {/* --- 2. WHY IT BREAKS: INDUSTRIAL REALISM --- */}
+                {/* --- 2. THE RED MARQUEE --- */}
+                <div className="w-full bg-[#E11D48] py-4 md:py-6 overflow-hidden border-y border-black/10 relative z-30">
+                    <div className="flex flex-nowrap items-center gap-20 animate-marquee whitespace-nowrap px-10">
+                        {[
+                            "BLACK-SCREEN INCIDENTS PREVENTED",
+                            "CONCESSION LEAKAGE PLUGGED",
+                            "MISSED FIRE SAFETY CHECKS ELIMINATED",
+                            "UNVERIFIED SHOW READINESS STOPPED",
+                            "LOST INTERVAL REVENUE RECLAIMED",
+                            "EXPIRED KDM BLACKOUTS AVOIDED"
+                        ].map((text, i) => (
+                            <span key={i} className="text-[11px] md:text-[14px] font-black text-white uppercase tracking-[0.3em] italic flex items-center gap-5">
+                                <ShieldAlert className="w-5 h-5" /> {text}
+                            </span>
+                        ))}
+                        {/* Duplicate for seamless loop */}
+                        {[
+                            "BLACK-SCREEN INCIDENTS PREVENTED",
+                            "CONCESSION LEAKAGE PLUGGED",
+                            "MISSED FIRE SAFETY CHECKS ELIMINATED",
+                            "UNVERIFIED SHOW READINESS STOPPED",
+                            "LOST INTERVAL REVENUE RECLAIMED",
+                            "EXPIRED KDM BLACKOUTS AVOIDED"
+                        ].map((text, i) => (
+                            <span key={`dup-${i}`} className="text-[11px] md:text-[14px] font-black text-white uppercase tracking-[0.3em] italic flex items-center gap-5">
+                                <ShieldAlert className="w-5 h-5" /> {text}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+
+                {/* --- 3. WHY IT BREAKS: INDUSTRIAL REALISM --- */}
                 <Section className="bg-white border-b border-zinc-100">
-                    <div className="max-w-5xl mx-auto space-y-12 md:space-y-24">
+                    <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50/50 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">OPERATIONAL REALITY</Badge>
                             <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
@@ -206,16 +241,16 @@ export default function CinemaDesignLab() {
                                 { t: "Interval Rush Gridlock", d: "Washroom congestion and concession queue overload damage guest satisfaction scores and reduce interval spending." },
                                 { t: "Emergency Maintenance Decay", d: "Critical life-safety systems or fire doors often fail unnoticed until a crisis occurs due to lack of daily operational audits." }
                             ].map((point, index) => (
-                                <div key={index} className="flex flex-col gap-5 p-10 border border-zinc-100 bg-zinc-50/30 rounded-[2rem] hover:bg-white hover:shadow-2xl transition-all duration-700 relative group overflow-hidden">
-                                    <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-5 transition-opacity duration-700">
-                                        <ShieldAlert className="w-32 h-32 text-red-600" />
+                                <div key={index} className="flex flex-col gap-5 p-8 border border-zinc-100 bg-zinc-50/30 rounded-[1.5rem] hover:bg-white hover:shadow-xl transition-all duration-500 relative group">
+                                    <div className="absolute top-4 right-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                                        <ShieldAlert className="w-20 h-20 text-red-600" />
                                     </div>
-                                    <div className="flex items-center gap-5">
-                                        <div className="relative flex h-3 w-3 shrink-0">
+                                    <div className="flex items-center gap-4">
+                                        <div className="relative flex h-2.5 w-2.5 shrink-0">
                                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                                            <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+                                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600"></span>
                                         </div>
-                                        <h3 className="text-xl md:text-2xl font-black font-headline uppercase italic tracking-tighter text-zinc-950">
+                                        <h3 className="text-lg md:text-xl font-black font-headline uppercase italic tracking-tighter text-zinc-950">
                                             {point.t}
                                         </h3>
                                     </div>
@@ -228,44 +263,13 @@ export default function CinemaDesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 3. THE RED MARQUEE --- */}
-                <div className="w-full bg-[#E11D48] py-5 overflow-hidden border-y border-black/10 relative z-30">
-                    <div className="flex flex-nowrap items-center gap-20 animate-marquee whitespace-nowrap px-10">
-                        {[
-                            "BLACK-SCREEN INCIDENTS PREVENTED",
-                            "CONCESSION LEAKAGE PLUGGED",
-                            "MISSED FIRE SAFETY CHECKS ELIMINATED",
-                            "UNVERIFIED SHOW READINESS STOPPED",
-                            "LOST INTERVAL REVENUE RECLAIMED",
-                            "EXPIRED KDM BLACKOUTS AVOIDED"
-                        ].map((text, i) => (
-                            <span key={i} className="text-[12px] md:text-[14px] font-black text-white uppercase tracking-[0.3em] italic flex items-center gap-5">
-                                <ShieldAlert className="w-5 h-5" /> {text}
-                            </span>
-                        ))}
-                        {/* Duplicate for seamless loop */}
-                        {[
-                            "BLACK-SCREEN INCIDENTS PREVENTED",
-                            "CONCESSION LEAKAGE PLUGGED",
-                            "MISSED FIRE SAFETY CHECKS ELIMINATED",
-                            "UNVERIFIED SHOW READINESS STOPPED",
-                            "LOST INTERVAL REVENUE RECLAIMED",
-                            "EXPIRED KDM BLACKOUTS AVOIDED"
-                        ].map((text, i) => (
-                            <span key={`dup-${i}`} className="text-[12px] md:text-[14px] font-black text-white uppercase tracking-[0.3em] italic flex items-center gap-5">
-                                <ShieldAlert className="w-5 h-5" /> {text}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-
                 {/* --- 4. OPERATIONAL LOOP: HOW IT WORKS --- */}
                 <Section className="bg-zinc-50/50" id="loop">
-                    <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
+                    <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
                         <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">THE SYSTEM ARCHITECTURE</Badge>
+                            <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">RESOLUTION PROTOCOL</Badge>
                             <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
-                                The Operational Loop
+                                How the system restores control
                             </h2>
                             <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto uppercase tracking-tighter">
                                 From floor execution to boardroom visibility.
@@ -279,13 +283,13 @@ export default function CinemaDesignLab() {
                                 { t: "03 ESCALATE", d: "Any missed work is auto-logged as an operational risk.", i: AlertTriangle },
                                 { t: "04 VISIBILITY", d: "One dashboard shows group health across every screen.", i: TrendingUp }
                             ].map((step, i) => (
-                                <div key={i} className="bg-white border border-zinc-100 p-10 rounded-[2rem] space-y-8 group hover:shadow-2xl transition-all duration-700 hover:-translate-y-2">
-                                    <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500">
-                                        <step.i className="w-6 h-6" />
+                                <div key={i} className="bg-white border border-zinc-100 p-8 rounded-[1.5rem] space-y-6 group hover:shadow-2xl transition-all duration-700">
+                                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                                        <step.i className="w-5 h-5" />
                                     </div>
-                                    <div className="space-y-3">
-                                        <h4 className="text-xl font-black uppercase italic tracking-widest text-zinc-950 leading-tight">{step.t}</h4>
-                                        <p className="text-xs font-bold text-zinc-400 italic uppercase leading-relaxed">{step.d}</p>
+                                    <div className="space-y-2">
+                                        <h4 className="text-lg font-black uppercase italic tracking-widest text-zinc-950 leading-tight">{step.t}</h4>
+                                        <p className="text-[10px] font-bold text-zinc-400 italic uppercase leading-relaxed">{step.d}</p>
                                     </div>
                                 </div>
                             ))}
@@ -293,12 +297,12 @@ export default function CinemaDesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 5. THE EVIDENCE: ARTIFACT TRIPTCH --- */}
+                {/* --- 5. THE EVIDENCE: ARTIFACT TRIPTYCH --- */}
                 <Section className="bg-white" id="evidence">
                     <div className="max-w-6xl mx-auto space-y-16 md:space-y-32">
                         <div className="grid lg:grid-cols-[0.8fr,1.2fr] gap-12 lg:gap-24 items-center">
-                            <div className="space-y-10 text-left">
-                                <div className="space-y-5">
+                            <div className="space-y-8 text-left">
+                                <div className="space-y-4">
                                     <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[9px] px-6 py-1.5 rounded-none italic bg-zinc-50">TECHNICAL PROOF</Badge>
                                     <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
                                         Executive <br/> Operations View
@@ -307,9 +311,9 @@ export default function CinemaDesignLab() {
                                         Know what's done and what's missed without attending a single meeting. Real-time visibility into multi-screen health.
                                     </p>
                                 </div>
-                                <div className="p-8 bg-[#F0FDF4] border border-emerald-100 rounded-[1.5rem] space-y-3 shadow-sm">
-                                    <p className="text-[10px] font-black text-emerald-700 uppercase tracking-widest">LIVE SYSTEM DATA:</p>
-                                    <p className="text-base md:text-lg font-black italic text-emerald-900 leading-tight uppercase">"87% Completion Across Region North. 3 High-Priority Tasks Overdue."</p>
+                                <div className="p-6 bg-[#F0FDF4] border border-emerald-100 rounded-xl space-y-2 shadow-sm">
+                                    <p className="text-[9px] font-black text-emerald-700 uppercase tracking-widest">LIVE SYSTEM DATA:</p>
+                                    <p className="text-base font-black italic text-emerald-900 leading-tight uppercase">"87% Completion Across Region North. 3 High-Priority Tasks Overdue."</p>
                                 </div>
                             </div>
                             <div className="w-full">
@@ -321,8 +325,8 @@ export default function CinemaDesignLab() {
                             <div className="order-2 lg:order-1 w-full">
                                 <BrowserFrame src={LEDGER_IMAGE} label="DAILY EXECUTION LEDGER" sub="VIEW: DAILY STAFF LOG" />
                             </div>
-                            <div className="space-y-10 text-left order-1 lg:order-2">
-                                <div className="space-y-5">
+                            <div className="space-y-8 text-left order-1 lg:order-2">
+                                <div className="space-y-4">
                                     <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-left lg:text-right">
                                         Staff Mobile <br/> Ledger
                                     </h2>
@@ -353,7 +357,7 @@ export default function CinemaDesignLab() {
 
                 {/* --- 6. THE ENGINE CORE: COMPONENT GRID --- */}
                 <Section className="bg-zinc-50 border-y border-zinc-100" id="modules">
-                    <div className="max-w-[1100px] mx-auto space-y-16 md:space-y-24">
+                    <div className="max-w-[1100px] mx-auto space-y-12 md:space-y-20">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[9px] italic bg-white shadow-sm">SYSTEM MODULES</Badge>
                             <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none text-center">The Engine Core</h2>
@@ -373,9 +377,9 @@ export default function CinemaDesignLab() {
                                 { t: "EXECUTION LEDGER", i: FileSignature },
                                 { t: "INCIDENT REGISTRY", i: ShieldAlert }
                             ].map((item, i) => (
-                                <div key={i} className="p-8 md:p-12 rounded-[2rem] border border-zinc-200 flex flex-col items-center justify-center gap-6 transition-all group h-[200px] shadow-sm text-center bg-white hover:border-emerald-500/40 hover:shadow-2xl hover:-translate-y-2 duration-500">
-                                    <item.i className="w-10 h-10 text-slate-300 transition-all duration-700 group-hover:text-emerald-500 group-hover:scale-110" />
-                                    <span className="text-[11px] font-black uppercase tracking-[0.15em] leading-tight italic text-slate-900 group-hover:text-emerald-600">{item.t}</span>
+                                <div key={i} className="p-6 md:p-8 rounded-[1.5rem] border border-zinc-200 flex flex-col items-center justify-center gap-4 transition-all group h-[180px] shadow-sm text-center bg-white hover:border-emerald-500/40 hover:shadow-2xl duration-500">
+                                    <item.i className="w-8 h-8 text-slate-300 transition-all duration-700 group-hover:text-emerald-500 group-hover:scale-110" />
+                                    <span className="text-[10px] font-black uppercase tracking-[0.15em] leading-tight italic text-slate-900 group-hover:text-emerald-600">{item.t}</span>
                                 </div>
                             ))}
                         </div>
@@ -399,7 +403,7 @@ export default function CinemaDesignLab() {
                                     { t: "ENERGY DISCIPLINE", d: "Daily AC shutdown compliance logs for empty auditoriums stop unmonitored power waste.", i: Zap },
                                     { t: "RESOURCE CONSERVATION", d: "Water vitals logging and overnight leak detection through digital meter-parity checks.", i: Leaf },
                                     { t: "WASTE MITIGATION", d: "Concession yield logic (corn-to-bucket) identifies production waste before it reaches the bin.", i: Recycle },
-                                    { t: "ASPECT LONGEVITY", d: "Preventive uptime audits extend technical hardware life by 30%, reducing e-waste footprint.", i: Wrench }
+                                    { t: "ASSET LONGEVITY", d: "Preventive uptime audits extend technical hardware life by 30%, reducing e-waste footprint.", i: Wrench }
                                 ].map((item, i) => (
                                     <div key={i} className="flex flex-col gap-4 items-start group">
                                         <div className="w-12 h-12 rounded-2xl bg-zinc-50 border border-zinc-100 flex items-center justify-center text-zinc-400 shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-inner">
@@ -420,7 +424,7 @@ export default function CinemaDesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 8. FINAL COMMAND: PRICING MANDATE --- */}
+                {/* --- 8. FINAL MANDATE --- */}
                 <section className="bg-zinc-950 text-white py-32 md:py-48 text-center relative overflow-hidden border-t border-white/5" id="pricing">
                     <div className="absolute inset-0 z-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:40px_40px]" />
                     
