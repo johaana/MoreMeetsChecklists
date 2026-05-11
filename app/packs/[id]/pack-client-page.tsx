@@ -49,7 +49,7 @@ import PricingClient from '../pricing-client';
 import { packResolutions, defaultResolution } from '@/lib/pack-resolutions';
 import { IconComponent } from '@/components/icons';
 
-// --- SECTOR METADATA: THE SOVEREIGN MANDATE ---
+// --- SECTOR METADATA: THE SOVEREIGN TELEMETRY ---
 const SECTOR_METADATA: Record<string, {
     marquee: string[];
     sustainability: { t: string; d: string; i: any }[];
@@ -57,14 +57,15 @@ const SECTOR_METADATA: Record<string, {
     'restaurants': {
         marquee: [
             "HACCP_SWEEP_COMPLETE",
-            "FRYER_TEMP_VARIANCE",
+            "FRYER_TEMP_VARIANCE_STABLE",
             "COLD_STORAGE_ALERT",
             "OPENING_LINE_CHECK_ACTIVE",
             "EXPIRY_LOG_VALIDATED",
             "WASTE_YIELD_MONITORING",
             "GAS_SHUTDOWN_CONFIRMATION",
             "ALLERGEN_STATION_VERIFIED",
-            "SHIFT_COMPLIANCE_100%"
+            "SHIFT_COMPLIANCE_100%",
+            "ROI_ENGINE_ACTIVE"
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Daily AC and lighting shutdown logs for unoccupied dining zones stop unmonitored power waste.", i: Zap },
@@ -82,7 +83,8 @@ const SECTOR_METADATA: Record<string, {
             "GUEST_COMPLAINT_ESCALATION",
             "FIRE_PANEL_HEALTH_STABLE",
             "NIGHT_AUDIT_COMPLETE",
-            "PRIVACY_SWEEP_100%"
+            "PRIVACY_SWEEP_100%",
+            "MASTER_KEY_AUDIT_STABLE"
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Automated HVAC setback protocols for vacant rooms reduce energy overheads significantly.", i: Zap },
@@ -100,7 +102,8 @@ const SECTOR_METADATA: Record<string, {
             "INFECTION_CONTROL_SWEEP",
             "ICU_HANDOVER_COMPLETE",
             "SANITIZATION_AUDIT_ACTIVE",
-            "NABH_INDICATOR_SYNC_100%"
+            "NABH_INDICATOR_SYNC_100%",
+            "AIR_AMBULANCE_READY"
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Medical equipment idle-power checks and lighting shutdown logs in non-clinical zones.", i: Zap },
@@ -117,7 +120,8 @@ const SECTOR_METADATA: Record<string, {
             "ATTENDANCE_VARIANCE_FLAGGED",
             "CAFETERIA_TEMP_CHECK_ACTIVE",
             "VISITOR_GATE_VALIDATION",
-            "PLAYGROUND_STRUCTURE_AUDIT"
+            "PLAYGROUND_STRUCTURE_AUDIT",
+            "NO_CHILD_LEFT_BEHIND_SWEEP"
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Classroom and library shutdown compliance logs stop unmonitored lighting and AC waste.", i: Zap },
@@ -134,7 +138,8 @@ const SECTOR_METADATA: Record<string, {
             "SOP_VERSION_VALIDATED",
             "TRAINING_COMPLETION_PENDING",
             "DAILY_REPORTING_GAP",
-            "ROYALTY_SHIELD_ACTIVE"
+            "ROYALTY_SHIELD_ACTIVE",
+            "NETWORK_DRIFT_MONITORING"
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Multi-unit AC shutdown logs and energy-benchmark monitoring across all franchise locations.", i: Zap },
@@ -151,7 +156,8 @@ const SECTOR_METADATA: Record<string, {
             "CHILLER_RESPONSE_DELAY",
             "AMC_COMPLIANCE_TRACKING",
             "PREVENTIVE_MAINTENANCE_DUE",
-            "UPTIME_99.9%"
+            "UPTIME_99.9%",
+            "ELECTRICAL_HOTSPOT_SCAN"
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "BMS panel health monitoring and KWH meter variance tracking eliminate unmonitored energy spikes.", i: Zap },
@@ -168,7 +174,8 @@ const SECTOR_METADATA: Record<string, {
             "SHRINKAGE_MONITORING_ACTIVE",
             "FLOOR_READINESS_CONFIRMED",
             "STOCK_ROOM_ACCESS_PENDING",
-            "LEGAL_METROLOGY_SYNC"
+            "LEGAL_METROLOGY_SYNC",
+            "FITTING_ROOM_SWEEP_ACTIVE"
         ],
         sustainability: [
             { t: "ENERGY DISCIPLINE", d: "Storefront and showroom lighting shutdown compliance logs for after-hours energy savings.", i: Zap },
@@ -386,30 +393,30 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
                 </div>
             </section>
 
-            {/* --- OPERATIONAL TELEMETRY: OXBLOOD MARQUEE --- */}
-            <div className="w-full bg-[#450a0a] h-10 overflow-hidden border-y border-black/20 relative z-30 flex items-center shadow-2xl">
+            {/* --- OPERATIONAL TELEMETRY: HARDENED OXBLOOD MARQUEE --- */}
+            <div className="w-full bg-[#1a0505] h-9 overflow-hidden border-y border-black/10 relative z-30 flex items-center shadow-2xl">
                 <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
                     {sectorData.marquee.map((signal, i) => {
-                        const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('FLAGGED') || signal.includes('DELAY');
+                        const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('FLAGGED') || signal.includes('DELAY') || signal.includes('EXCEPTION');
                         return (
                             <span key={i} className={cn(
-                                "text-[10px] font-mono font-black uppercase tracking-[0.25em] flex items-center gap-3",
-                                isAlert ? "text-red-400" : "text-zinc-500/80"
+                                "text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
+                                isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
                             )}>
-                                <span className="text-[8px] opacity-40">[{isAlert ? '!' : '✓'}]</span>
+                                <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
                                 {signal}
                             </span>
                         );
                     })}
                     {/* Duplicate for seamless loop */}
                     {sectorData.marquee.map((signal, i) => {
-                        const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('FLAGGED') || signal.includes('DELAY');
+                        const isAlert = signal.includes('ALERT') || signal.includes('WARNING') || signal.includes('FLAGGED') || signal.includes('DELAY') || signal.includes('EXCEPTION');
                         return (
                             <span key={`dup-${i}`} className={cn(
-                                "text-[10px] font-mono font-black uppercase tracking-[0.25em] flex items-center gap-3",
-                                isAlert ? "text-red-400" : "text-zinc-500/80"
+                                "text-[10px] font-mono font-bold uppercase tracking-[0.2em] flex items-center gap-2",
+                                isAlert ? "text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.3)]" : "text-white/10"
                             )}>
-                                <span className="text-[8px] opacity-40">[{isAlert ? '!' : '✓'}]</span>
+                                <span className="opacity-40">{isAlert ? '[!]' : '[/]'}</span>
                                 {signal}
                             </span>
                         );
@@ -638,7 +645,7 @@ export default function PackClientPage({ pack, heroImageUrl }: { pack: PremiumPa
             <div id="pricing" className="scroll-mt-20" />
             <PricingClient pack={pack} />
 
-            {/* --- CUSTOMIZATION BRIDGE --- */}
+            {/* --- CUSTOMIZATION BRIDGE: MOVED BELOW PRICING --- */}
             <Section className="bg-zinc-950 text-white" noSpine>
                 <div className="max-w-4xl mx-auto p-10 md:p-16 rounded-[2rem] border border-white/10 bg-white/[0.02] relative overflow-hidden text-center space-y-8">
                     <div className="absolute top-0 right-0 p-8 opacity-5">
