@@ -38,11 +38,12 @@ import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
+import images from '@/lib/placeholder-images.json';
 
 // --- TECHNICAL ARTIFACTS ---
-const VITALS_IMAGE = "https://i.postimg.cc/W1Yt09r8/Screenshot-2026-05-11-170634.png";
-const LEDGER_IMAGE = "https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png";
-const FINANCE_IMAGE = "https://i.postimg.cc/g2tr3MRD/Screenshot-2026-05-11-170957.png";
+const VITALS_IMAGE = images.find(i => i.id === 'sovereign-vitals')?.imageUrl!;
+const LEDGER_IMAGE = images.find(i => i.id === 'sovereign-ledger')?.imageUrl!;
+const FINANCE_IMAGE = images.find(i => i.id === 'sovereign-finance')?.imageUrl!;
 const HERO_IMAGE = "https://i.postimg.cc/43gVfgjd/multiplex2.avif";
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
@@ -54,10 +55,14 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
     </section>
 );
 
-const BrowserFrame = ({ src, label, sub }: { src: string, label: string, sub?: string }) => (
-    <div className="group space-y-3 w-full max-w-lg mx-auto">
-        <div className="relative rounded-[2rem] overflow-hidden shadow-[0_20px_50px_-20px_rgba(0,0,0,0.3)] border border-zinc-200 bg-white transition-all duration-1000 hover:shadow-[0_30px_70px_-10px_rgba(34,197,94,0.15)]">
-            {/* Browser Top Chrome */}
+/**
+ * RESTRAINED BROWSER FRAME
+ * All modules now belong to the SAME master file.
+ */
+const BrowserFrame = ({ src, viewLabel }: { src: string, viewLabel: string }) => (
+    <div className="group space-y-4 w-full max-w-lg mx-auto">
+        <div className="relative rounded-[1.5rem] overflow-hidden shadow-[0_20px_50px_-20px_rgba(0,0,0,0.3)] border border-zinc-200 bg-white transition-all duration-1000 hover:shadow-[0_30px_70px_-10px_rgba(34,197,94,0.15)]">
+            {/* Browser Top Chrome - Constant Filename */}
             <div className="bg-[#0D121F] border-b border-white/5 px-6 py-3 flex items-center gap-2">
                 <div className="flex gap-1.5">
                     <div className="w-2 h-2 rounded-full bg-red-500/20" />
@@ -66,21 +71,25 @@ const BrowserFrame = ({ src, label, sub }: { src: string, label: string, sub?: s
                 </div>
                 <div className="flex-1 flex justify-center">
                     <div className="bg-white/5 border border-white/5 rounded-md px-12 py-1 text-[8px] font-black text-white/30 uppercase tracking-[0.4em] italic leading-none">
-                        {label}.xlsx
+                        moremeets-master-engine.xlsx
                     </div>
                 </div>
             </div>
-            {/* Shortened, non-readable artifact */}
+            {/* Shortened, non-readable technical artifact */}
             <div className="relative w-full h-[180px] md:h-[220px] overflow-hidden bg-zinc-50">
                 <img 
                     src={src} 
-                    alt={label} 
-                    className="w-full h-auto object-cover object-top grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000 opacity-60 group-hover:opacity-100 blur-[1px] group-hover:blur-0" 
+                    alt={viewLabel} 
+                    className="w-full h-auto object-cover object-top grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000 opacity-50 group-hover:opacity-100 blur-[2px] group-hover:blur-0" 
                 />
                 <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white via-white/40 to-transparent pointer-events-none" />
             </div>
         </div>
-        {sub && <p className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.5em] italic text-center">{sub}</p>}
+        {/* Module View Label */}
+        <div className="flex flex-col items-center">
+            <span className="text-[10px] font-black text-zinc-950 uppercase tracking-[0.3em] italic leading-none">{viewLabel}</span>
+            <div className="w-8 h-0.5 bg-emerald-500 mt-2 opacity-20 group-hover:opacity-100 transition-opacity" />
+        </div>
     </div>
 );
 
@@ -103,7 +112,7 @@ export default function CinemaDesignLab() {
 
             <main className="flex-1">
                 
-                {/* --- 1. HERO: MAIN PACK STYLE --- */}
+                {/* --- 1. HERO: PRODUCTION FIDELITY --- */}
                 <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black text-white">
                     <div className="absolute inset-0 z-0">
                         <img 
@@ -127,7 +136,7 @@ export default function CinemaDesignLab() {
                                         </p>
                                         <div className="border-l-2 border-emerald-500/40 pl-6">
                                             <p className="text-sm md:text-base text-zinc-400 font-bold max-w-xl leading-relaxed italic">
-                                                Built for multiplex leadership where black-screens and concession profit-leakage are daily variables you must control.
+                                                Built for multiplex leadership where black-screens and crowd-safety incidents are business-ending events.
                                             </p>
                                         </div>
                                     </div>
@@ -165,10 +174,10 @@ export default function CinemaDesignLab() {
                                             </Link>
                                         </Button>
                                         <div className="space-y-1.5 pl-1">
-                                            <p className="text-[10px] md:text-[12px] text-emerald-500/90 font-black uppercase tracking-[0.2em] italic leading-tight">
-                                                BUILT IN EXCEL • SHARED THROUGH GOOGLE SHEETS • NO APP ROLLOUT
+                                            <p className="text-[10px] md:text-[12px] text-emerald-500/90 font-black uppercase tracking-[0.2em] italic leading-tight text-center sm:text-left">
+                                                BUILT IN EXCEL • NO APP ROLLOUT REQUIRED • SHARED THROUGH GOOGLE SHEETS
                                             </p>
-                                            <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic leading-tight">
+                                            <p className="text-[9px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic leading-tight text-center sm:text-left">
                                                 ONE-TIME PURCHASE • OWN FOREVER • NO SUBSCRIPTIONS
                                             </p>
                                         </div>
@@ -220,15 +229,15 @@ export default function CinemaDesignLab() {
                     </div>
                 </div>
 
-                {/* --- 3. WHY IT BREAKS: INDUSTRIAL REALISM --- */}
+                {/* --- 3. WHY IT BREAKS --- */}
                 <Section className="bg-white border-b border-zinc-100">
                     <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-red-500 border-red-100 bg-red-50/50 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">OPERATIONAL REALITY</Badge>
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
                                 Why Cinema operations break
                             </h2>
-                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
+                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto text-center">
                                 Cinemas fail when technical readiness is assumed and interval rushes become disorganized coordination exercises.
                             </p>
                         </div>
@@ -263,15 +272,15 @@ export default function CinemaDesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 4. OPERATIONAL LOOP: HOW IT WORKS --- */}
+                {/* --- 4. OPERATIONAL LOOP --- */}
                 <Section className="bg-zinc-50/50" id="loop">
                     <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">RESOLUTION PROTOCOL</Badge>
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
                                 How the system restores control
                             </h2>
-                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto uppercase tracking-tighter">
+                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto uppercase tracking-tighter text-center">
                                 From floor execution to boardroom visibility.
                             </p>
                         </div>
@@ -304,31 +313,31 @@ export default function CinemaDesignLab() {
                             <div className="space-y-8 text-left">
                                 <div className="space-y-4">
                                     <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[9px] px-6 py-1.5 rounded-none italic bg-zinc-50">TECHNICAL PROOF</Badge>
-                                    <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                                    <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-left">
                                         Executive <br/> Operations View
                                     </h2>
-                                    <p className="text-zinc-500 text-sm md:text-base font-bold italic uppercase leading-relaxed border-l-2 border-primary/20 pl-8">
+                                    <p className="text-zinc-500 text-sm md:text-base font-bold italic uppercase leading-relaxed border-l-2 border-primary/20 pl-8 text-left">
                                         Know what's done and what's missed without attending a single meeting. Real-time visibility into multi-screen health.
                                     </p>
                                 </div>
                                 <div className="p-6 bg-[#F0FDF4] border border-emerald-100 rounded-xl space-y-2 shadow-sm">
-                                    <p className="text-[9px] font-black text-emerald-700 uppercase tracking-widest">LIVE SYSTEM DATA:</p>
+                                    <p className="text-[9px] font-black text-emerald-700 uppercase tracking-widest">SYSTEM DATA REALISM:</p>
                                     <p className="text-base font-black italic text-emerald-900 leading-tight uppercase">"87% Completion Across Region North. 3 High-Priority Tasks Overdue."</p>
                                 </div>
                             </div>
                             <div className="w-full">
-                                <BrowserFrame src={VITALS_IMAGE} label="EXECUTIVE DASHBOARD" sub="VIEW: GROUP COMMAND PULSE" />
+                                <BrowserFrame src={VITALS_IMAGE} viewLabel="EXECUTIVE COMMAND PULSE" />
                             </div>
                         </div>
 
                         <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-24 items-center">
                             <div className="order-2 lg:order-1 w-full">
-                                <BrowserFrame src={LEDGER_IMAGE} label="DAILY EXECUTION LEDGER" sub="VIEW: DAILY STAFF LOG" />
+                                <BrowserFrame src={LEDGER_IMAGE} viewLabel="DAILY EXECUTION LEDGER" />
                             </div>
                             <div className="space-y-8 text-left order-1 lg:order-2">
                                 <div className="space-y-4">
                                     <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-left lg:text-right">
-                                        Staff Mobile <br/> Ledger
+                                        Staff Mobile <br/> Execution
                                     </h2>
                                     <p className="text-zinc-500 text-sm md:text-base font-bold italic uppercase leading-relaxed border-r-2 border-primary/20 pr-8 text-left lg:text-right">
                                         No app training required. Staff log completion in seconds. If it's not logged, it's not done.
@@ -336,7 +345,7 @@ export default function CinemaDesignLab() {
                                 </div>
                                 <div className="flex flex-col gap-6 items-start lg:items-end">
                                     {[
-                                        { t: "EXECUTION GUIDANCE", d: "Step-by-step instructions embedded in every task.", i: GraduationCap },
+                                        { t: "EXECUTION GUIDANCE", d: "Actionable instructions embedded in every task.", i: GraduationCap },
                                         { t: "BINARY VERIFICATION", d: "Staff enters name -> status turns green instantly.", i: CheckCircle2 }
                                     ].map((feat, i) => (
                                         <div key={i} className="flex gap-5 items-center">
@@ -355,7 +364,7 @@ export default function CinemaDesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 6. THE ENGINE CORE: COMPONENT GRID --- */}
+                {/* --- 6. THE ENGINE CORE --- */}
                 <Section className="bg-zinc-50 border-y border-zinc-100" id="modules">
                     <div className="max-w-[1100px] mx-auto space-y-12 md:space-y-20">
                         <div className="text-center space-y-4">
@@ -386,19 +395,19 @@ export default function CinemaDesignLab() {
                     </div>
                 </Section>
 
-                {/* --- 7. OPERATIONAL ESG: SUSTAINABILITY THROUGH RIGOR --- */}
+                {/* --- 7. OPERATIONAL ESG --- */}
                 <Section className="bg-white" id="esg">
                     <div className="grid lg:grid-cols-[1fr,450px] gap-12 lg:gap-24 items-center max-w-6xl mx-auto">
                         <div className="space-y-12 text-left">
                             <div className="space-y-6">
                                 <Badge variant="outline" className="text-emerald-600 border-emerald-100 bg-emerald-50 uppercase tracking-[0.5em] font-black text-[9px] italic px-10 py-3 rounded-none">OPERATIONAL ESG</Badge>
-                                <h2 className="text-[34px] md:text-[64px] font-black font-headline uppercase italic leading-[0.9] tracking-tighter">Sustainability <br/> Through Rigor.</h2>
-                                <p className="text-zinc-500 text-lg md:text-xl font-bold italic leading-tight uppercase border-l-2 border-emerald-500/20 pl-8 max-w-xl">
-                                    Environmental sustainability isn't theater. It's the byproduct of daily resource discipline and visibility.
+                                <h2 className="text-[34px] md:text-[64px] font-black font-headline uppercase italic leading-[0.9] tracking-tighter text-left">Operational <br/> Sustainability.</h2>
+                                <p className="text-zinc-500 text-lg md:text-xl font-bold italic leading-tight uppercase border-l-2 border-emerald-500/20 pl-8 max-w-xl text-left">
+                                    Environmental sustainability isn't a report. It's the byproduct of daily operational discipline and visibility.
                                 </p>
                             </div>
                             
-                            <div className="grid sm:grid-cols-2 gap-8 md:gap-12">
+                            <div className="grid sm:grid-cols-2 gap-8 md:gap-12 text-left">
                                 {[
                                     { t: "ENERGY DISCIPLINE", d: "Daily AC shutdown compliance logs for empty auditoriums stop unmonitored power waste.", i: Zap },
                                     { t: "RESOURCE CONSERVATION", d: "Water vitals logging and overnight leak detection through digital meter-parity checks.", i: Leaf },
@@ -410,8 +419,8 @@ export default function CinemaDesignLab() {
                                             <item.i className="w-6 h-6" />
                                         </div>
                                         <div className="space-y-2">
-                                            <h4 className="text-lg font-black uppercase italic text-zinc-950 leading-tight">{item.t}</h4>
-                                            <p className="text-[11px] font-bold text-zinc-400 italic uppercase leading-relaxed">{item.d}</p>
+                                            <h4 className="text-lg font-black uppercase italic text-zinc-950 leading-tight text-left">{item.t}</h4>
+                                            <p className="text-[11px] font-bold text-zinc-400 italic uppercase leading-relaxed text-left">{item.d}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -419,7 +428,7 @@ export default function CinemaDesignLab() {
                         </div>
                         <div className="relative p-8 bg-zinc-950 rounded-[3rem] shadow-2xl overflow-hidden group">
                              <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                             <BrowserFrame src={FINANCE_IMAGE} label="FINANCIAL SHIELD" sub="VIEW: MARGIN & RESOURCE PROTECTION" />
+                             <BrowserFrame src={FINANCE_IMAGE} viewLabel="MARGIN & RESOURCE PROTECTION" />
                         </div>
                     </div>
                 </Section>
@@ -430,9 +439,9 @@ export default function CinemaDesignLab() {
                     
                     <div className="max-w-5xl mx-auto space-y-16 relative z-10 px-6">
                         <div className="space-y-6">
-                            <Badge variant="outline" className="text-emerald-500 border-emerald-500/20 bg-emerald-500/5 uppercase tracking-[0.6em] font-black text-[10px] px-12 py-3 rounded-none italic">INSTITUTIONAL ACCESS</Badge>
-                            <h2 className="text-[42px] md:text-[90px] font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-2xl text-white">Own the system. <br/> Deploy for life.</h2>
-                            <p className="text-lg md:text-2xl text-zinc-500 font-bold italic uppercase tracking-[0.3em] max-w-2xl mx-auto">ONE-TIME INVESTMENT. PERMANENT VISIBILITY.</p>
+                            <Badge variant="outline" className="text-emerald-500 border-emerald-500/20 bg-emerald-500/5 uppercase tracking-[0.6em] font-black text-[10px] px-12 py-3 rounded-none italic text-center">INSTITUTIONAL ACCESS</Badge>
+                            <h2 className="text-[42px] md:text-[90px] font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-2xl text-white text-center">Own the system. <br/> Deploy for life.</h2>
+                            <p className="text-lg md:text-2xl text-zinc-500 font-bold italic uppercase tracking-[0.3em] max-w-2xl mx-auto text-center">ONE-TIME INVESTMENT. PERMANENT VISIBILITY.</p>
                         </div>
                         
                         <div className="flex flex-col items-center gap-14">
@@ -446,7 +455,7 @@ export default function CinemaDesignLab() {
                                     <p className="text-[56px] md:text-[110px] font-black italic tracking-tighter">₹999</p>
                                     <span className="text-2xl md:text-4xl font-bold text-zinc-700 italic">/ $12</span>
                                 </div>
-                                <p className="text-[11px] md:text-sm font-black uppercase tracking-[0.5em] text-zinc-600 italic">
+                                <p className="text-[11px] md:text-sm font-black uppercase tracking-[0.5em] text-zinc-600 italic text-center">
                                     NO MONTHLY FEES • NO SaaS TAX • NO DATA LOCK-IN
                                 </p>
                             </div>
