@@ -1,11 +1,12 @@
+
 import PackClientPage from "./pack-client-page";
 import { premiumPacks } from '@/lib/premium-packs';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { FaqSection } from "@/components/layout/faq-section";
-import images from '@/lib/placeholder-images.json';
 import { SiteHeader } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import images from '@/lib/placeholder-images.json';
 
 type Props = {
   params: Promise<{ id: string }>
@@ -39,9 +40,8 @@ export async function generateMetadata(
   const title = `MoreMeets™ | ${pack.title}`;
   const description = descriptions[id] || `Pre-built ${pack.category} operational SOPs with live dashboard visibility and audit-ready daily execution tracking. Own your data forever.`;
   
-  const imageData = images.find(img => img.id === `pack-${id}`);
-  const fallbackImage = 'https://i.postimg.cc/qRkj0Z4R/Screenshot-2026-05-08-055107.png';
-  const ogImage = imageData?.imageUrl || fallbackImage;
+  // Use the high-gravity master dashboard as the OG image
+  const ogImage = "https://i.postimg.cc/VkkdrySK/Screenshot-2026-05-11-170211.png";
 
   return {
     metadataBase: new URL(siteUrl),
@@ -76,9 +76,19 @@ export default async function Page({ params }: Props) {
     notFound();
   }
 
-  // Find the specific technical asset for this pack
-  const imageData = images.find(img => img.id === `pack-${id}`);
-  const heroImageUrl = imageData?.imageUrl || "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png";
+  // Map packs to specific technical assets to keep the UI sharp and consistent
+  const assetMap: Record<string, string> = {
+      'restaurants': images.find(i => i.id === 'sovereign-dashboard')?.imageUrl!,
+      'hotels_and_resorts': images.find(i => i.id === 'sovereign-ledger')?.imageUrl!,
+      'healthcare_and_hospital_operations': images.find(i => i.id === 'sovereign-vitals')?.imageUrl!,
+      'school_operations_pack': images.find(i => i.id === 'sovereign-dashboard')?.imageUrl!,
+      'franchise_operations_pack': images.find(i => i.id === 'sovereign-finance')?.imageUrl!,
+      'facility_management_blueprint': images.find(i => i.id === 'sovereign-ledger')?.imageUrl!,
+      'cinema_operations_pack': images.find(i => i.id === 'sovereign-vitals')?.imageUrl!,
+      'retail_operations_system': images.find(i => i.id === 'sovereign-dashboard')?.imageUrl!,
+  };
+
+  const heroImageUrl = assetMap[id] || "https://i.postimg.cc/VkkdrySK/Screenshot-2026-05-11-170211.png";
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F7F8FA]">

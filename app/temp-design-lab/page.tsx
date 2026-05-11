@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -5,29 +6,22 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
     Check, 
-    X,
     ArrowRight, 
-    Download,
-    LayoutGrid,
-    Activity,
-    FileSpreadsheet,
-    CheckCircle2,
-    Zap,
     Monitor,
     Clapperboard,
     Popcorn,
     Projector,
     History,
     Ticket,
-    Wrench,
-    FileSignature,
-    Users,
-    Smartphone,
-    AlertTriangle,
-    GraduationCap,
     ShieldCheck,
     ShieldAlert,
-    Target
+    Target,
+    Activity,
+    Smartphone,
+    GraduationCap,
+    AlertTriangle,
+    FileSignature,
+    Users
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -35,10 +29,12 @@ import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-// --- AUTHENTIC CINEMA ASSETS ---
-const DASHBOARD_IMAGE = "https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png";
-const CINEMA_TASKS_IMAGE = "https://i.postimg.cc/G278vKh8/Screenshot-2026-04-18-004329.png";
-const CONCESSION_IMAGE = "https://i.postimg.cc/HxZj6zht/Screenshot-2026-05-10-150441.png";
+// --- AUTHENTIC SOVEREIGN ASSETS ---
+const DASHBOARD_IMAGE = "https://i.postimg.cc/VkkdrySK/Screenshot-2026-05-11-170211.png";
+const MOBILE_LEDGER_IMAGE = "https://i.postimg.cc/y88kgqJb/Screenshot-2026-05-11-170353.png";
+const VITALS_IMAGE = "https://i.postimg.cc/W1Yt09r8/Screenshot-2026-05-11-170634.png";
+const LEDGER_IMAGE = "https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png";
+const FINANCE_IMAGE = "https://i.postimg.cc/g2tr3MRD/Screenshot-2026-05-11-170957.png";
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
     <section id={id} className={cn("w-full py-10 md:py-16 relative overflow-hidden", className)}>
@@ -60,7 +56,7 @@ const BrowserFrame = ({ src, label }: { src: string, label: string }) => (
                 </div>
                 <div className="flex-1 flex justify-center">
                     <div className="bg-white/5 border border-white/5 rounded px-6 py-0.5 text-[7px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner">
-                        sovereign_master_engine_console
+                        sovereign_master_engine_v11.9
                     </div>
                 </div>
             </div>
@@ -96,12 +92,12 @@ export default function DesignLabPage() {
 
             <main className="flex-1">
                 
-                {/* --- 1. HERO: THE CINEMA MASTER ENGINE --- */}
+                {/* --- 1. HERO: THE ONE-GLANCE COMMAND --- */}
                 <section className="relative w-full h-[75svh] flex flex-col justify-center overflow-hidden bg-black text-white">
                     <div className="absolute inset-0 z-0">
                         <img 
                             src="https://i.postimg.cc/43gVfgjd/multiplex2.avif" 
-                            alt="Multiplex Terminal" 
+                            alt="" 
                             className="w-full h-full object-cover opacity-50 grayscale-[0.1]" 
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 md:via-black/70 to-transparent" />
@@ -136,7 +132,7 @@ export default function DesignLabPage() {
                                             { t: "120+ PRE-BUILT CINEMA SOPs", i: Target },
                                             { t: "LIVE OPERATIONAL DASHBOARD", i: Activity },
                                             { t: "TRAINER NOTES FOR TEAMS", i: GraduationCap },
-                                            { t: "AUDIT-READY DOCUMENTATION", i: FileSpreadsheet }
+                                            { t: "AUDIT-READY DOCUMENTATION", i: FileSignature }
                                         ].map((item, i) => (
                                             <div key={i} className="flex items-center gap-3 group">
                                                 <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
@@ -198,13 +194,13 @@ export default function DesignLabPage() {
                     </div>
                 </section>
 
-                {/* --- 2. SYSTEM MODULES: INFRASTRUCTURE GRID (REFRESHED) --- */}
+                {/* --- 2. ENGINE CORE: MODULE GRID --- */}
                 <Section className="bg-white border-b border-zinc-100" id="modules">
                     <div className="max-w-[1100px] mx-auto space-y-10 md:space-y-14">
                         <div className="text-center space-y-2">
                             <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[8px]">INFRASTRUCTURE COMPONENTS</Badge>
                             <h2 className="text-[26px] md:text-4xl font-black font-headline text-zinc-950 uppercase italic tracking-tight leading-none">The Engine Core</h2>
-                            <p className="text-zinc-500 text-[9px] md:text-[10px] font-bold italic uppercase tracking-widest">A COMPLETE TECHNICAL ECOSYSTEM DELIVERED AS ONE INTEGRATED MASTER ENGINE</p>
+                            <p className="text-zinc-500 text-[9px] md:text-[10px] font-bold italic uppercase tracking-widest text-center">A COMPLETE TECHNICAL ECOSYSTEM DELIVERED AS ONE INTEGRATED MASTER ENGINE</p>
                         </div>
                         
                         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
@@ -229,7 +225,7 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 3. INSIDE THE SYSTEM: EVIDENCE --- */}
+                {/* --- 3. EVIDENCE: TECHNICAL ARTIFACTS --- */}
                 <Section className="bg-zinc-50/50" id="evidence">
                     <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
                         <div className="text-center space-y-2">
@@ -238,15 +234,15 @@ export default function DesignLabPage() {
                             <p className="text-zinc-500 text-[10px] md:text-xs font-bold italic uppercase max-w-2xl mx-auto text-center">Physical evidence from the Cinema Operations Engine</p>
                         </div>
 
-                        {/* Artifact 1 */}
+                        {/* Executive View */}
                         <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
                             <div className="space-y-6 text-left order-2 lg:order-1">
                                 <div className="space-y-2">
-                                    <h4 className="text-xl md:text-3xl font-black uppercase italic tracking-tighter text-zinc-950 leading-none text-left">Executive Dashboard</h4>
-                                    <p className="text-zinc-500 text-[11px] md:text-sm font-bold italic uppercase leading-relaxed text-left">Centralized visibility into technical uptime, concession margins, and unresolved incidents across every unit.</p>
+                                    <h4 className="text-xl md:text-3xl font-black uppercase italic tracking-tighter text-zinc-950 leading-none text-left">Executive Vitals</h4>
+                                    <p className="text-zinc-500 text-[11px] md:text-sm font-bold italic uppercase leading-relaxed text-left">Centralized visibility into site-wise execution velocity, high-load pending missions, and workforce availability pulse.</p>
                                 </div>
                                 <div className="flex flex-col gap-2.5">
-                                    {["Multi-screen health synthesis", "Site-wise risk mapping", "Unresolved P1 tracking"].map((item, i) => (
+                                    {["Site-wise risk mapping", "Execution velocity scoring", "Unresolved incident alerting"].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3">
                                             <Check className="w-3.5 h-3.5 text-emerald-500" />
                                             <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-zinc-400">{item}</span>
@@ -255,22 +251,22 @@ export default function DesignLabPage() {
                                 </div>
                             </div>
                             <div className="order-1 lg:order-2">
-                                <BrowserFrame src={DASHBOARD_IMAGE} label="EXECUTIVE_DASHBOARD" />
+                                <BrowserFrame src={VITALS_IMAGE} label="EXECUTIVE_VITALS" />
                             </div>
                         </div>
 
-                        {/* Artifact 2 */}
+                        {/* Financial Shield */}
                         <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
                             <div className="relative">
-                                <BrowserFrame src={CONCESSION_IMAGE} label="CONCESSION_YIELD_ENGINE" />
+                                <BrowserFrame src={FINANCE_IMAGE} label="FINANCIAL_SHIELD" />
                             </div>
                             <div className="space-y-6 text-left">
                                 <div className="space-y-2">
-                                    <h4 className="text-xl md:text-3xl font-black uppercase italic tracking-tighter text-zinc-950 leading-none text-left">Concession Shield</h4>
-                                    <p className="text-zinc-500 text-[11px] md:text-sm font-bold italic uppercase leading-relaxed text-left">Reconcile raw-corn usage to actual bucket sales. Stop unrecorded profit leakage during interval rushes.</p>
+                                    <h4 className="text-xl md:text-3xl font-black uppercase italic tracking-tighter text-zinc-950 leading-none text-left">Financial Shield</h4>
+                                    <p className="text-zinc-500 text-[11px] md:text-sm font-bold italic uppercase leading-relaxed text-left">Reconcile unit contribution (GP) by tracking sales vs. CoGS, labor costs, and logged waste for zero-leakage profit protection.</p>
                                 </div>
                                 <div className="flex flex-col gap-2.5">
-                                    {["Yield variance detection", "Aggregator parity audits", "Wastage reconciliation"].map((item, i) => (
+                                    {["Real-time margin calculation", "Labor-cost intensity monitoring", "Waste cost attribution"].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3">
                                             <Check className="w-3.5 h-3.5 text-emerald-500" />
                                             <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-zinc-400">{item}</span>
@@ -314,7 +310,7 @@ export default function DesignLabPage() {
                             </div>
                         </div>
                         <div className="relative p-3 bg-white/5 border border-white/10 rounded-[2.5rem] shadow-2xl">
-                             <img src={CINEMA_TASKS_IMAGE} alt="Staff View" className="w-full h-auto rounded-[2.2rem]" />
+                             <img src={MOBILE_LEDGER_IMAGE} alt="Staff View" className="w-full h-auto rounded-[2.2rem]" />
                              <div className="absolute bottom-10 left-8 right-8 p-3 bg-black/80 backdrop-blur-2xl border border-white/10 rounded-xl flex items-center justify-between shadow-2xl">
                                  <p className="text-[8px] font-mono text-emerald-500/90 uppercase tracking-[0.2em] leading-none">VIEW: DAILY_LEDGER_MOBILE</p>
                                  <Smartphone className="w-4 h-4 text-emerald-500/30" />
@@ -323,97 +319,11 @@ export default function DesignLabPage() {
                     </div>
                 </Section>
 
-                {/* --- 5. THE LOOP: HOW IT RUNS --- */}
-                <Section className="bg-white" noSpine id="loop">
-                    <div className="max-w-[1000px] mx-auto space-y-12 md:space-y-16">
-                        <div className="text-center space-y-2">
-                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[8px]">OPERATIONAL LOOP</Badge>
-                            <h2 className="text-[26px] md:text-4xl font-black font-headline text-zinc-950 uppercase italic tracking-tight text-center leading-none">The Machine Logic</h2>
-                        </div>
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 relative">
-                            <div className="absolute top-10 left-0 right-0 h-px bg-zinc-100 z-0 hidden md:block" />
-                            
-                            {[
-                                { t: "ASSIGNMENT", d: "Map staff names to cinema roles once in the Team Hub.", i: Users },
-                                { t: "EXECUTION", d: "Staff log completion on their phones throughout the shift.", i: Activity },
-                                { t: "AUTO-SYNTHESIS", d: "Ledger status and yields update the dashboard in real-time.", i: Zap },
-                                { t: "OVERSIGHT", d: "Management reviews site-wise health from a single screen.", i: Monitor }
-                            ].map((step, i) => (
-                                <div className="space-y-5 relative z-10 text-center md:text-left" key={i}>
-                                    <div className="w-16 h-16 rounded-full bg-white border border-zinc-100 flex items-center justify-center text-zinc-950 shadow-md mx-auto md:mx-0 group hover:border-emerald-500 transition-all duration-500">
-                                        <step.i className="w-7 h-7 text-zinc-300 group-hover:text-emerald-500 transition-colors" />
-                                    </div>
-                                    <div className="space-y-1">
-                                        <h4 className="font-black text-sm md:text-base uppercase italic leading-tight text-zinc-950 text-center md:text-left">{step.t}</h4>
-                                        <p className="text-[9px] text-zinc-500 font-bold italic leading-relaxed uppercase text-center md:text-left">{step.d}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </Section>
-
-                {/* --- 6. CONTINUITY: THE SYSTEM STAYS --- */}
-                <Section className="bg-zinc-50">
-                    <div className="max-w-5xl mx-auto">
-                        <div className="grid lg:grid-cols-[1fr,400px] gap-10 md:gap-16 items-center">
-                            <div className="space-y-8 text-left">
-                                <div className="space-y-2">
-                                    <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[9px] italic">OPERATIONAL CONTINUITY</Badge>
-                                    <h2 className="text-[26px] md:text-5xl font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.92] text-left">
-                                        When Managers Leave, <br/> The System Stays.
-                                    </h2>
-                                </div>
-
-                                <div className="space-y-6">
-                                    <p className="text-zinc-500 text-base md:text-lg font-bold italic leading-tight uppercase text-left">
-                                        Remove the risk of tribal knowledge and undocumented standards
-                                    </p>
-                                    <div className="p-6 bg-white border border-zinc-200 rounded-xl shadow-sm space-y-3">
-                                        <p className="text-zinc-400 text-[9px] font-black uppercase tracking-[0.4em] italic leading-relaxed">
-                                            PROTECTION DURING:
-                                        </p>
-                                        <div className="grid grid-cols-2 gap-3">
-                                            {["Resignations", "Rapid expansion", "Rushes", "Night shifts"].map((item, i) => (
-                                                <div key={i} className="flex items-center gap-3 text-[9px] font-black uppercase text-zinc-700">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-red-400" /> {item}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="space-y-2.5 w-full">
-                                {[
-                                    "Standards remain visible daily",
-                                    "Teams follow one shared system",
-                                    "New managers onboard in hours",
-                                    "Daily execution is measurable",
-                                    "Continuity becomes infrastructure"
-                                ].map((item, i) => (
-                                    <div key={i} className="flex items-center gap-4 p-5 bg-white border border-zinc-200 rounded-xl group hover:border-emerald-500/40 transition-all shadow-sm">
-                                        <CheckCircle2 className="w-4.5 h-4.5 text-emerald-500 shrink-0" />
-                                        <span className="text-[10px] md:text-[11px] font-black uppercase tracking-widest text-zinc-950 italic">
-                                            {item}
-                                        </span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </Section>
-
-                {/* --- 7. FINAL CTA: READY TO RUN --- */}
-                <section className="bg-zinc-950 text-white py-20 md:py-32 text-center relative overflow-hidden">
-                    <div className="absolute inset-0 z-0">
-                        <img src="https://i.postimg.cc/43gVfgjd/multiplex2.avif" className="w-full h-full object-cover opacity-20 grayscale brightness-50" alt="" />
-                        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-transparent to-zinc-950" />
-                    </div>
+                {/* --- 5. FINAL CTA --- */}
+                <section className="bg-zinc-950 text-white py-20 md:py-32 text-center relative overflow-hidden border-t border-white/5">
                     <div className="max-w-5xl mx-auto space-y-10 relative z-10 px-6">
                         <div className="space-y-4">
-                            <h2 className="text-[38px] md:text-7xl font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-2xl">Ready to run <br/> your multiplex?</h2>
+                            <h2 className="text-[38px] md:text-7xl font-black font-headline leading-[0.85] tracking-tighter uppercase italic drop-shadow-2xl">Ready to run <br/> your operations?</h2>
                             <p className="text-base md:text-xl text-zinc-500 font-bold italic uppercase tracking-[0.2em]">Full deployment in under 10 minutes</p>
                         </div>
                         
@@ -435,37 +345,6 @@ export default function DesignLabPage() {
                         </div>
                     </div>
                 </section>
-
-                {/* FAQ */}
-                <Section className="bg-white" noSpine>
-                    <div className="max-w-[700px] mx-auto space-y-10">
-                        <h2 className="text-2xl md:text-3xl font-bold text-[#0B0F14] text-center uppercase italic tracking-tight">Questions & Answers</h2>
-                        
-                        <Accordion type="single" collapsible className="w-full space-y-2.5">
-                            <AccordionItem value="item-1" className="bg-zinc-50 px-6 md:px-8 rounded-xl border-none">
-                                <AccordionTrigger className="text-sm md:text-[16px] font-black uppercase italic hover:no-underline py-5 md:py-6">Can my team break the system?</AccordionTrigger>
-                                <AccordionContent className="text-[#5B6670] text-xs md:text-sm pb-5 md:pb-6 italic font-medium leading-relaxed">
-                                    No. You can lock technical formulas and master data so only the daily task columns can be edited by staff. This ensures the engine remains bulletproof while allowing daily reporting.
-                                </AccordionContent>
-                            </AccordionItem>
-                            
-                            <AccordionItem value="item-2" className="bg-zinc-50 px-6 md:px-8 rounded-xl border-none">
-                                <AccordionTrigger className="text-sm md:text-[16px] font-black uppercase italic hover:no-underline py-5 md:py-6">Is this difficult to roll out?</AccordionTrigger>
-                                <AccordionContent className="text-[#5B6670] text-xs md:text-sm pb-5 md:pb-6 italic font-medium leading-relaxed">
-                                    No. Your team already knows Excel and Google Sheets. There are no new passwords to manage and no complex training required. You can go live across a multiplex in under an hour.
-                                </AccordionContent>
-                            </AccordionItem>
-
-                            <AccordionItem value="item-3" className="bg-zinc-50 px-6 md:px-8 rounded-xl border-none">
-                                <AccordionTrigger className="text-sm md:text-[16px] font-black uppercase italic hover:no-underline py-5 md:py-6">Can I customize the SOPs?</AccordionTrigger>
-                                <AccordionContent className="text-[#5B6670] text-xs md:text-sm pb-5 md:pb-6 italic font-medium leading-relaxed">
-                                    Yes. The system is 100% unlocked for the owner. You can add, delete, or modify any technical task to fit your specific brand standards or local regulations.
-                                </AccordionContent>
-                            </AccordionItem>
-                        </Accordion>
-                    </div>
-                </Section>
-
             </main>
             
             <Footer />

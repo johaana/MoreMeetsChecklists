@@ -1,81 +1,39 @@
 
 [
   {
-    "id": "pack-enterprise_risk_cybersecurity_pack",
-    "description": "Enterprise Risk & Cybersecurity Pack",
-    "imageUrl": "https://i.postimg.cc/9MyScQY9/Enterprise-Risk-and-Cybersecurity-Pack.png",
-    "imageHint": "cybersecurity product"
+    "id": "sovereign-dashboard",
+    "description": "Master Operational Console Dashboard",
+    "imageUrl": "https://i.postimg.cc/VkkdrySK/Screenshot-2026-05-11-170211.png",
+    "imageHint": "operational dashboard"
   },
   {
-    "id": "pack-hotels_and_resorts",
-    "description": "Hotels & Resorts Operations Pack",
-    "imageUrl": "https://i.postimg.cc/YSHYrHTr/hotel-ops.webp",
-    "imageHint": "hotel operations"
+    "id": "sovereign-mobile",
+    "description": "Staff Mobile Execution Ledger",
+    "imageUrl": "https://i.postimg.cc/y88kgqJb/Screenshot-2026-05-11-170353.png",
+    "imageHint": "mobile execution"
   },
   {
-    "id": "pack-restaurants",
-    "description": "Restaurant Operations Pack",
-    "imageUrl": "https://i.postimg.cc/cJSwxSPg/Restaurant-Standard-Operating-Procedures.png",
-    "imageHint": "restaurant operations"
+    "id": "sovereign-vitals",
+    "description": "Executive Command Vitals & Analytics",
+    "imageUrl": "https://i.postimg.cc/W1Yt09r8/Screenshot-2026-05-11-170634.png",
+    "imageHint": "command vitals"
   },
   {
-    "id": "pack-retail_operations_system",
-    "description": "Retail Operations System",
-    "imageUrl": "https://i.postimg.cc/7ZqSwYT2/fashion-retail.webp",
-    "imageHint": "retail operations store"
+    "id": "sovereign-ledger",
+    "description": "Daily Mission Execution Ledger",
+    "imageUrl": "https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png",
+    "imageHint": "daily ledger"
   },
   {
-    "id": "pack-facility_management_blueprint",
-    "description": "Facility Operating System",
-    "imageUrl": "https://i.postimg.cc/CKgkhg9S/facilities-management1.png",
-    "imageHint": "facility management"
+    "id": "sovereign-finance",
+    "description": "Financial Shield & Unit Contribution Tracker",
+    "imageUrl": "https://i.postimg.cc/g2tr3MRD/Screenshot-2026-05-11-170957.png",
+    "imageHint": "financial shield"
   },
   {
-    "id": "pack-corporate_legal_compliance_starter_kit",
-    "description": "Corporate Legal & Compliance Starter Kit",
-    "imageUrl": "https://i.postimg.cc/g0W8zW1L/Q13.jpg",
-    "imageHint": "corporate legal"
-  },
-  {
-    "id": "pack-healthcare_and_hospital_operations",
-    "description": "Healthcare & Hospital Operations Pack",
-    "imageUrl": "https://i.postimg.cc/rpkxVk7c/Hospital-Levels-of-Care.jpg",
-    "imageHint": "hospital operations"
-  },
-  {
-    "id": "pack-school_operations_pack",
-    "description": "School Operations Pack",
-    "imageUrl": "https://i.postimg.cc/GthjcC8T/school-safety.webp",
-    "imageHint": "school operations"
-  },
-  {
-    "id": "pack-franchise_operations_pack",
-    "description": "Franchise Operations Pack",
-    "imageUrl": "https://i.postimg.cc/FK43r4w5/franchise-2.jpg",
-    "imageHint": "franchise operations"
-  },
-  {
-    "id": "pack-cinema_operations_pack",
-    "description": "Cinema & Multiplex Operations Pack",
-    "imageUrl": "https://i.postimg.cc/43gVfgjd/multiplex2.avif",
-    "imageHint": "cinema operations"
-  },
-  {
-    "id": "pack-food_manufacturing_ops",
-    "description": "Food Manufacturing Operations Pack",
-    "imageUrl": "https://i.postimg.cc/R0BKSB2n/Q16.jpg",
-    "imageHint": "food production quality"
-  },
-  {
-    "id": "pack-bakery_confectionery_pack",
-    "description": "Bakery & Confectionery Pack",
-    "imageUrl": "https://i.postimg.cc/DzTLvTRS/food-cooking.avif",
-    "imageHint": "bakery production"
-  },
-  {
-    "id": "pack-manufacturing_operations_ehs_pack",
-    "description": "Manufacturing Operations & EHS Pack",
-    "imageUrl": "https://i.postimg.cc/R0BKSB2n/Q16.jpg",
-    "imageHint": "manufacturing safety"
+    "id": "sovereign-team",
+    "description": "Team Hub & Personnel Mapping",
+    "imageUrl": "https://i.postimg.cc/t4v7FrP2/Screenshot-2026-05-11-171200.png",
+    "imageHint": "team hub"
   }
 ]

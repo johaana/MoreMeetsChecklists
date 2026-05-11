@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -6,27 +7,22 @@ import {
     Check, 
     X,
     ArrowRight, 
-    Download,
-    LayoutGrid,
     Activity,
-    FileSpreadsheet,
+    Lock,
+    ShoppingBag,
+    ClipboardCheck,
+    Smartphone,
+    AlertTriangle,
+    GraduationCap,
+    ShieldCheck,
     CheckCircle2,
-    Building2,
     Utensils,
     Building,
     Hospital,
     School,
     Store,
-    Popcorn,
-    Lock,
-    Target,
-    ShoppingBag,
-    History,
-    ClipboardCheck,
-    Smartphone,
-    AlertTriangle,
-    GraduationCap,
-    ShieldCheck
+    Building2,
+    Popcorn
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -38,6 +34,7 @@ import { Button } from '@/components/ui/button';
 
 // --- PRODUCTION CONSTANTS ---
 const BRAND_GREEN = "#22C55E";
+const DASHBOARD_PREVIEW = "https://i.postimg.cc/VkkdrySK/Screenshot-2026-05-11-170211.png";
 
 const NARRATIVE = {
     line1: "STOP CHASING.",
@@ -116,7 +113,7 @@ const SovereignCTA = ({ className }: { className?: string }) => (
                     {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
                 </Link>
             </Button>
-            <p className="text-10px] md:text-xs text-zinc-400 font-bold italic text-center sm:text-left">
+            <p className="text-[10px] md:text-xs text-zinc-400 font-bold italic text-center sm:text-left">
                 Built in Excel. Shared through Google Sheets. No app rollout required.
             </p>
         </div>
@@ -314,12 +311,12 @@ export default function Home() {
                                     </div>
                                     <div className="flex-1 flex justify-center">
                                         <div className="bg-black/40 border border-white/5 rounded-md px-12 py-1 text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner">
-                                            master_v11.9_operational_console.xlsx
+                                            sovereign_v11.9_master_engine.xlsx
                                         </div>
                                     </div>
                                 </div>
                                 <div className="rounded-b-[20px] overflow-hidden shadow-2xl bg-white border border-zinc-200 border-t-0">
-                                    <img src="https://i.postimg.cc/g2xq1Xz8/Screenshot-2026-04-08-015852.png" alt="Sovereign Dashboard" className="w-full h-auto grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" />
+                                    <img src={DASHBOARD_PREVIEW} alt="Sovereign Dashboard" className="w-full h-auto grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" />
                                 </div>
                             </div>
                             <div className="text-center">
@@ -329,52 +326,7 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* BUILT FOR REAL TEAMS SECTION */}
-                <Section className="bg-zinc-50 border-y border-zinc-100">
-                    <div className="max-w-6xl mx-auto space-y-16 md:space-y-24">
-                        <div className="text-center space-y-6">
-                            <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">Operational Reassurance</Badge>
-                            <h2 className="text-[32px] md:text-[60px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.95]">Built for Real Teams. <br/> <span className="text-primary">Engineered for Real Control.</span></h2>
-                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">This was designed for real teams, real shifts, and real operational pressure — not just consultants.</p>
-                        </div>
-
-                        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12">
-                            {[
-                                {
-                                    t: "EASY TO FOLLOW",
-                                    d: "Tasks are written in simple, direct language so teams know exactly what to do without second-guessing or policy jargon.",
-                                    i: ClipboardCheck
-                                },
-                                {
-                                    t: "HARD TO IGNORE",
-                                    d: "Every task shows what failure causes — so critical work is taken seriously before it becomes a safety or profit problem.",
-                                    i: AlertTriangle
-                                },
-                                {
-                                    t: "FASTER TO TRAIN",
-                                    d: "When staff changes, standards don't. New teams do not learn from memory or shortcuts; they follow the same system from day one.",
-                                    i: GraduationCap
-                                },
-                                {
-                                    t: "EASY TO AUDIT",
-                                    d: "Teams see simple instructions. Management sees 100% visibility into completion, misses, and operational proof in one place.",
-                                    i: ShieldCheck
-                                }
-                            ].map((item, i) => (
-                                <div key={i} className="flex flex-col gap-6 p-10 bg-white rounded-[2.5rem] border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-500 group text-left">
-                                    <div className="w-14 h-14 rounded-2xl bg-zinc-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-inner">
-                                        <item.i className="w-7 h-7" />
-                                    </div>
-                                    <div className="space-y-3 text-left">
-                                        <h4 className="text-2xl font-black uppercase italic tracking-tighter text-zinc-950 leading-none text-left">{item.t}</h4>
-                                        <p className="text-zinc-500 text-base md:text-lg italic font-medium leading-relaxed text-left">{item.d}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </Section>
-
+                {/* Select Vertical Section */}
                 <Section className="bg-[#0E1420] border-y border-white/5">
                     <div className="space-y-20">
                         <div className="text-center space-y-6">
@@ -402,42 +354,10 @@ export default function Home() {
                         </div>
                     </div>
                 </Section>
-                <Section className="bg-white">
-                    <div className="max-w-5xl mx-auto space-y-16">
-                        <div className="text-center space-y-6">
-                            <h2 className="text-3xl md:text-5xl font-black text-zinc-950 uppercase italic tracking-tight font-headline leading-none">System Sovereignty</h2>
-                            <p className="text-zinc-400 text-xl font-bold italic">Why elite groups choose MoreMeets over standard SaaS.</p>
-                        </div>
-                        <div className="overflow-x-auto no-scrollbar rounded-[3rem] border border-zinc-200 shadow-2xl">
-                            <table className="w-full text-left min-w-[600px]">
-                                <thead className="bg-zinc-950 text-white">
-                                    <tr>
-                                        <th className="p-8 md:p-12 text-[12px] font-black uppercase tracking-[0.5em]">ENGINE PARAMETER</th>
-                                        <th className="p-8 md:p-12 text-[12px] font-black uppercase tracking-[0.5em] bg-primary/10">MOREMEETS™ OS</th>
-                                        <th className="p-8 md:p-12 text-[12px] font-black uppercase tracking-[0.5em]">TYPICAL SaaS</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="divide-y divide-zinc-100 text-base md:text-lg font-bold italic text-zinc-600">
-                                    {[
-                                        { f: "Data Ownership", mm: "One-time buy. Own it forever.", app: "Monthly lease. Pay forever." },
-                                        { f: "Customization", mm: "100% Unlocked Excel logic.", app: "Locked features. Requests needed." },
-                                        { f: "Onboarding", mm: "Zero training. Uses existing skills.", app: "Weeks of learning a new app." },
-                                        { f: "Infrastructure", mm: "Sovereign. Stays in your local Drive.", app: "Stored on third-party servers." },
-                                        { f: "Deployment", mm: "Instant. Live in 10 minutes.", app: "Weeks of setup & integration." }
-                                    ].map((row, i) => (
-                                        <tr key={i} className="hover:bg-zinc-50 transition-colors">
-                                            <td className="p-8 md:p-10 font-black uppercase text-zinc-400 text-[12px] tracking-[0.3em]">{row.f}</td>
-                                            <td className="p-8 md:p-10 text-primary bg-primary/5">{row.mm}</td>
-                                            <td className="p-8 md:p-10">{row.app}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </Section>
+
                 <TestimonialsSection />
                 <FaqSection />
+                
                 <Section className="bg-primary text-white text-center py-32 md:py-64 relative overflow-hidden">
                     <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:32px_32px]" />
                     <div className="max-[1000px] mx-auto space-y-16 md:space-y-24 relative z-10">
