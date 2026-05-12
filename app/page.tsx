@@ -40,7 +40,6 @@ import { TestimonialsSection } from '@/components/layout/testimonials-section';
 import { FaqSection } from '@/components/layout/faq-section';
 import { Button } from '@/components/ui/button';
 
-// --- PRODUCTION CONSTANTS ---
 const BRAND_GREEN = "#22C55E";
 
 const NARRATIVE = {
@@ -65,15 +64,13 @@ const SIGNALS = [
     "NO LIVE WORK STATUS"
 ];
 
-// --- HELPER COMPONENTS ---
-
 const HeroBackground = () => {
     return (
         <div className="absolute inset-0 z-0 bg-black pointer-events-none">
           <img
             src="https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg"
             alt="Executive Operational Oversight"
-            className="h-full w-full object-cover object-center opacity-20 md:opacity-30"
+            className="h-full w-full object-cover object-center opacity-20"
           />
           <div className="absolute inset-0 bg-black/60" />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 md:via-black/90 to-black/20" />
@@ -113,19 +110,19 @@ const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: s
 );
 
 const SovereignCTA = ({ className }: { className?: string }) => (
-    <div className={cn("space-y-4 md:space-y-5 flex flex-col items-center sm:items-start", className)}>
-        <div className="space-y-3 w-full flex flex-col items-center sm:text-left">
+    <div className={cn("space-y-4 md:space-y-5", className)}>
+        <div className="space-y-3">
             <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
                 <Link href="/library">
                     {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
                 </Link>
             </Button>
-            <p className="text-[10px] md:xs text-zinc-400 font-bold italic text-center sm:text-left">
+            <p className="text-[10px] md:xs text-zinc-400 font-bold italic">
                 Built in Excel. Shared through Google Sheets for live operations. No app rollout required.
             </p>
         </div>
-        <div className="w-full flex justify-center lg:justify-start">
-             <p className="text-[7px] min-[360px]:text-[8px] min-[400px]:text-[9px] md:text-[11px] text-zinc-500 font-black uppercase tracking-[0.2em] md:tracking-[0.4em] italic lg:pl-1 text-center whitespace-nowrap">
+        <div className="w-full">
+             <p className="text-[7px] min-[360px]:text-[8px] min-[400px]:text-[9px] md:text-[11px] text-zinc-500 font-black uppercase tracking-[0.2em] md:tracking-[0.4em] italic leading-none whitespace-nowrap">
                 {NARRATIVE.meta}
             </p>
         </div>
@@ -139,34 +136,37 @@ const HeroSectionComp = () => {
             
             <div className="relative z-20 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 pt-24 pb-12 md:py-0 md:pt-16">
                 <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] lg:gap-16 items-center">
-                    <div className="order-1 space-y-1 md:space-y-2 w-full">
-                        <h1 className="text-[34px] md:text-[84px] lg:text-[100px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white">
-                            {NARRATIVE.line1} <br />
-                            <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
-                        </h1>
-                        <p className="text-base md:text-[22px] lg:text-[26px] italic font-medium text-zinc-400 max-w-none lg:whitespace-nowrap leading-tight">
-                            {NARRATIVE.subline}
-                        </p>
+                    <div className="order-1 space-y-8 md:space-y-12 w-full">
+                        <div className="space-y-1 md:space-y-2">
+                            <h1 className="text-[34px] md:text-[84px] lg:text-[100px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter text-white">
+                                {NARRATIVE.line1} <br />
+                                <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
+                            </h1>
+                            <p className="text-base md:text-[22px] lg:text-[26px] italic font-medium text-zinc-400 max-w-none lg:whitespace-nowrap leading-tight">
+                                {NARRATIVE.subline}
+                            </p>
+                        </div>
+
+                        <div className="space-y-8 md:space-y-10">
+                            <div className="space-y-2 md:space-y-3">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-1 h-5 md:h-6 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
+                                    <p className="text-[9px] font-black text-emerald-500 uppercase tracking-[0.4em] italic font-headline">THE NEW STANDARD</p>
+                                </div>
+                                <CommandGrid className="max-w-xl" textColor="text-white/80" />
+                            </div>
+                            
+                            <SovereignCTA />
+                        </div>
                     </div>
-                    <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-3 space-y-4 md:space-y-6 text-left border-l-2 lg:text-right lg:border-l-0 lg:border-r-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 mt-8 lg:mt-16">
+
+                    <div className="order-2 w-full lg:text-right lg:border-r-2 border-red-500/20 lg:pr-10 mt-12 lg:mt-16 border-l-2 pl-6 lg:border-l-0">
                          <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">INSTITUTIONAL SIGNALS</p>
-                         <div className="flex flex-col gap-2 md:gap-4 lg:gap-5">
+                         <div className="flex flex-col gap-2 md:gap-4 lg:gap-5 mt-4 md:mt-6">
                              {SIGNALS.map((text, i) => (
                                 <PulsatingStressText key={i} text={text} delay={`${i * 0.2}s`} />
                              ))}
                          </div>
-                    </div>
-                    <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-4 md:space-y-6 mt-8 lg:mt-2">
-                        <div className="space-y-2 md:space-y-3">
-                            <div className="flex items-center gap-3">
-                                <div className="w-1 h-5 md:h-6 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
-                                <p className="text-[9px] font-black text-emerald-500 uppercase tracking-[0.4em] italic font-headline">THE NEW STANDARD</p>
-                            </div>
-                            <CommandGrid className="max-w-xl" textColor="text-white/80" />
-                        </div>
-                    </div>
-                    <div className="order-4 w-full lg:col-start-1 lg:row-start-3 mt-8 md:mt-4">
-                        <SovereignCTA />
                     </div>
                 </div>
             </div>
@@ -190,7 +190,7 @@ export default function Home() {
                     <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
                         <div className="space-y-4 text-center lg:text-left">
                             <Badge variant="outline" className="text-zinc-500 border-zinc-800 uppercase tracking-[0.4em] font-black text-[10px]">OPERATIONAL FRICTION</Badge>
-                            <h2 className="text-[28px] md:text-[44px] font-black font-headline uppercase italic tracking-tighter leading-none">
+                            <h2 className="text-[28px] md:text-[44px] font-black font-headline uppercase italic tracking-tighter leading-none text-center lg:text-left">
                                 When execution depends on memory.
                             </h2>
                         </div>
@@ -212,6 +212,58 @@ export default function Home() {
                                     </div>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- ANATOMY OF A FAILURE SECTION --- */}
+                <Section className="bg-white border-y border-zinc-100">
+                    <div className="max-w-5xl mx-auto text-center space-y-16 md:space-y-24">
+                        <div className="space-y-6">
+                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px]">Forensic Finding</Badge>
+                            <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">WHEN EXECUTION DEPENDS ON MEMORY</h2>
+                        </div>
+                        <div className="grid md:grid-cols-2 gap-16 md:gap-24 text-left">
+                            <div className="space-y-10">
+                                <h4 className="text-[11px] font-black text-zinc-400 uppercase tracking-[0.4em] italic border-b border-zinc-100 pb-4 uppercase">BEFORE VISIBILITY</h4>
+                                <ul className="space-y-10">
+                                    {[
+                                        "Managers chasing confirmations manually.",
+                                        "Shift handovers missed or undocumented.",
+                                        "Technical checks assumed, not verified.",
+                                        "SOPs existing only as static folders.",
+                                        "Work stops when a key person resigns."
+                                    ].map((p, i) => (
+                                        <div key={i} className="flex items-center gap-6 group">
+                                            <div className="relative flex h-3 w-3">
+                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                                            </div>
+                                            <span className="text-zinc-500 text-lg md:text-xl font-bold italic leading-tight text-left">{p}</span>
+                                        </div>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="space-y-10 p-10 md:p-14 rounded-[3rem] bg-red-50/50 border border-red-100 shadow-xl relative text-left">
+                                <div className="absolute top-6 right-10 opacity-10">
+                                    <AlertTriangle className="w-24 h-24 text-red-600" />
+                                </div>
+                                <h4 className="text-[11px] font-black text-red-600 uppercase tracking-[0.4em] italic border-b border-red-200 pb-4">OPERATIONAL FRICTION</h4>
+                                <ul className="space-y-10">
+                                    {[
+                                        "Managers trapped in follow-up loops.",
+                                        "Zero auditable trail for insurance/audits.",
+                                        "Knowledge vanishes during team rotations.",
+                                        "Critical safety lapses during busy hours.",
+                                        "Total dependency on tribal knowledge."
+                                    ].map((p, i) => (
+                                        <div key={i} className="flex items-start gap-5">
+                                            <X className="w-6 h-6 text-red-600 shrink-0 mt-0.5" />
+                                            <span className="text-red-950 font-black text-lg md:text-xl leading-tight italic uppercase text-left">{p}</span>
+                                        </div>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </Section>
@@ -302,57 +354,6 @@ export default function Home() {
                                     alt="Executive Leadership Control" 
                                     className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700" 
                                 />
-                            </div>
-                        </div>
-                    </div>
-                </Section>
-
-                <Section className="bg-white border-y border-zinc-100">
-                    <div className="max-w-5xl mx-auto text-center space-y-16 md:space-y-24">
-                        <div className="space-y-6">
-                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px]">Forensic Finding</Badge>
-                            <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">Why operations break</h2>
-                        </div>
-                        <div className="grid md:grid-cols-2 gap-16 md:gap-24 text-left">
-                            <div className="space-y-10">
-                                <h4 className="text-[11px] font-black text-zinc-400 uppercase tracking-[0.4em] italic border-b border-zinc-100 pb-4">Audit Pitfalls</h4>
-                                <ul className="space-y-10">
-                                    {[
-                                        "Work depends on the memory of key individuals.",
-                                        "Standard steps become 'suggestions' during busy shifts.",
-                                        "New staff require weeks of learning tribal knowledge.",
-                                        "Minor near-misses go unrecorded, creating hidden liability.",
-                                        "Managers spend 40% of their day following up basic work."
-                                    ].map((p, i) => (
-                                        <div key={i} className="flex items-center gap-6 group">
-                                            <div className="relative flex h-3 w-3">
-                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                                                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                                            </div>
-                                            <span className="text-zinc-500 text-lg md:text-xl font-bold italic leading-tight text-left">{p}</span>
-                                        </div>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="space-y-10 p-10 md:p-14 rounded-[3rem] bg-red-50/50 border border-red-100 shadow-xl relative text-left">
-                                <div className="absolute top-6 right-10 opacity-10">
-                                    <AlertTriangle className="w-24 h-24 text-red-600" />
-                                </div>
-                                <h4 className="text-[11px] font-black text-red-600 uppercase tracking-[0.4em] italic border-b border-red-200 pb-4">The Consequence</h4>
-                                <ul className="space-y-10">
-                                    {[
-                                        "Managers trapped in constant manual checking.",
-                                        "SOPs sit in dusty folders while chaos runs the floor.",
-                                        "Zero auditable trail for insurance or legal defense.",
-                                        "Standards leave the building when a key person resigns.",
-                                        "Inconsistency destroys brand trust and guest loyalty."
-                                    ].map((p, i) => (
-                                        <div key={i} className="flex items-start gap-5">
-                                            <X className="w-6 h-6 text-red-600 shrink-0 mt-0.5" />
-                                            <span className="text-red-950 font-black text-lg md:text-xl leading-tight italic uppercase text-left">{p}</span>
-                                        </div>
-                                    ))}
-                                </ul>
                             </div>
                         </div>
                     </div>
