@@ -7,16 +7,16 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 
 /**
  * ============================================================================
- * GOOGLE SHEETS COMPATIBILITY CHECKLIST (STABILIZATION MANDATE v15.5)
+ * GOOGLE SHEETS COMPATIBILITY CHECKLIST (STABILIZATION MANDATE v15.6)
  * ============================================================================
  * 1. NAVIGATION: Use HYPERLINK formulas only. Native link objects break in Sheets.
- * 2. FORMULAS: Wrap VLOOKUP/INDEX in IFERROR and absolute references ($A$1).
+ * 2. FORMULAS: Wrap VLOOKUP/INDEX in IFERROR and use absolute references ($A$1).
  * 3. ZERO-GHOSTING: Use IF(LEN(TRIM(X))=0, "", X) to prevent "0" in empty lookups.
  * 4. FILTERS: Row 4 must be unmerged to allow native mobile filter detection.
- * 5. ROW HEIGHTS: 35pt for data, 45pt for SOPs, max 80pt for HUDs.
- * 6. COLUMN WIDTHS: 75 units for Protocol, 65 for Action. Zero-Clipping Mandate.
- * 7. FREEZE PANES: Lock top 4 rows and first 2 columns for mobile ergonomics.
- * 8. DATA INTEGRITY: Preserve Audit/Simple Language, Trainer Notes, and Risks.
+ * 5. SELECTION: !dataValidation rules reference hidden SYSTEM_CONFIG list.
+ * 6. FORMATTING: !conditionalFormatting rules for status-color transitions.
+ * 7. ERGONOMICS: Freeze Top 4 rows and First 2 columns for mobile context.
+ * 8. DATA: Preserve Audit/Simple Language, Trainer Notes, and Risks exactly.
  * ============================================================================
  */
 
@@ -28,7 +28,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     const wb = utils.book_new();
     const startDate = new Date(); 
-    const ORDER_ID = "MM-SOVEREIGN-STABLE-V15.5";
+    const ORDER_ID = "MM-SOVEREIGN-HARDENED-V15.6";
 
     // --- INSTITUTIONAL COLOR PALETTE ---
     const COLORS = {
@@ -132,7 +132,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
         ws['!merges'].push({ s: { r: 1, c: 0 }, e: { r: 1, c: endCIdx } }); 
 
-        // STABILIZATION: Freeze Top HUD + First 2 Columns
+        // STABILIZATION: Freeze Top HUD (4 rows) + First 2 Columns (Task Metadata)
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 4, xSplit: 2 }];
         
         if(!ws['!rows']) ws['!rows'] = [];
@@ -170,7 +170,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeWsData: any[][] = [
         [], [],
         [{ v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { alignment: { horizontal: 'center' }, font: { sz: 20, bold: true } } }],
-        [{ v: `OPERATIONAL DATA ENGINE v15.5 | SOVEREIGN STABLE`, s: { alignment: { horizontal: 'center' }, font: { color: { rgb: COLORS.PRIMARY_GREEN }, bold: true } } }],
+        [{ v: `OPERATIONAL DATA ENGINE v15.6 | SOVEREIGN STABLE`, s: { alignment: { horizontal: 'center' }, font: { color: { rgb: COLORS.PRIMARY_GREEN }, bold: true } } }],
         [{ v: `SECURITY AUTH: ${ORDER_ID}`, s: { alignment: { horizontal: 'center' }, font: { sz: 8, color: { rgb: COLORS.METADATA_GREY } } } }],
         [],
         [
@@ -249,6 +249,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     pWs['!cols'] = [0, 25, 25, 35, 15].map((w, i) => ({ wch: w, hidden: i === 0 }));
     addSovereignRibbon(pWs, "Responsibility & Team Hub", 'E');
     addLiabilityFooter(pWs, pData.length, 'E');
+    
+    // Add Duty Dropdown
+    pWs['!dataValidation'] = [{
+        range: `E5:E${pData.length}`,
+        type: 'list',
+        formula1: "'SYSTEM_CONFIG'!$B$3:$B$6"
+    }];
+
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
     // --- 04. TASK REGISTER (MAIN EXECUTION LEDGER) ---
@@ -292,6 +300,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(mWs, "Daily Operational Register", 'K');
     mWs['!autofilter'] = { ref: `A4:K${mData.length}` };
     addLiabilityFooter(mWs, mData.length, 'K');
+    
+    // Selection Layer Patch: Dropdowns & Conditional Formatting
+    mWs['!dataValidation'] = [{
+        range: `J5:J${mData.length}`,
+        type: 'list',
+        formula1: "'SYSTEM_CONFIG'!$A$3:$A$7"
+    }];
+
     utils.book_append_sheet(wb, mWs, "TASK_REGISTER");
 
     // --- 05. SOP LIBRARY ---
@@ -335,16 +351,25 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     iWs['!cols'] = [15, 25, 15, 55, 40, 55].map(w => ({ wch: w }));
     addSovereignRibbon(iWs, "Liability & Incident Ledger", 'F');
     addLiabilityFooter(iWs, iData.length, 'F');
+    
+    // Severity Dropdown
+    iWs['!dataValidation'] = [{
+        range: `C5:C${iData.length}`,
+        type: 'list',
+        formula1: "'SYSTEM_CONFIG'!$C$3:$C$6"
+    }];
+
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
-    // --- 07. SYSTEM CONFIG (HIDDEN INFRASTRUCTURE) ---
+    // --- 07. SYSTEM_CONFIG (HIDDEN INFRASTRUCTURE) ---
     const configData = [
         [{ v: "SYSTEM_CONFIGURATION_DATA", s: headerStyle }],
         [{ v: "DROPDOWN_STATUS", s: headerStyle }, { v: "DROPDOWN_DUTY", s: headerStyle }, { v: "DROPDOWN_SEVERITY", s: headerStyle }],
         [{ v: "PENDING" }, { v: "ACTIVE" }, { v: "P1 - CRITICAL" }],
         [{ v: "AWAITING MGR" }, { v: "LEAVE" }, { v: "P2 - HIGH" }],
         [{ v: "VERIFIED" }, { v: "OFF" }, { v: "P3 - MEDIUM" }],
-        [{ v: "OFF CYCLE" }, { v: "TRAINING" }, { v: "P4 - LOW" }]
+        [{ v: "OVERDUE" }, { v: "TRAINING" }, { v: "P4 - LOW" }],
+        [{ v: "OFF CYCLE" }]
     ];
     const configWs = utils.aoa_to_sheet(configData);
     utils.book_append_sheet(wb, configWs, "SYSTEM_CONFIG");
