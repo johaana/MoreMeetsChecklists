@@ -73,10 +73,10 @@ const HeroBackground = () => {
           <img
             src="https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg"
             alt="Executive Operational Oversight"
-            className="h-full w-full object-cover object-center opacity-30 md:opacity-40"
+            className="h-full w-full object-cover object-center opacity-20 md:opacity-30"
           />
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent" />
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 md:via-black/90 to-black/20" />
         </div>
     );
 };
