@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -37,7 +36,6 @@ import Link from 'next/link';
 import { TestimonialsSection } from '@/components/layout/testimonials-section';
 import { FaqSection } from '@/components/layout/faq-section';
 import { Button } from '@/components/ui/button';
-import images from '@/lib/placeholder-images.json';
 
 // --- PRODUCTION CONSTANTS ---
 const BRAND_GREEN = "#22C55E";
@@ -113,7 +111,7 @@ const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: s
 
 const SovereignCTA = ({ className }: { className?: string }) => (
     <div className={cn("space-y-4 md:space-y-5 flex flex-col items-center sm:items-start", className)}>
-        <div className="space-y-3 w-full flex flex-col items-center sm:items-start">
+        <div className="space-y-3 w-full flex flex-col items-center sm:text-left">
             <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
                 <Link href="/library">
                     {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
@@ -167,29 +165,6 @@ const HeroSectionComp = () => {
                     <div className="order-4 w-full lg:col-start-1 lg:row-start-3 mt-8 md:mt-4">
                         <SovereignCTA />
                     </div>
-                </div>
-            </div>
-            
-            {/* Telemetry Marquee */}
-            <div className="absolute bottom-0 w-full bg-[#2A0508] h-10 md:h-12 overflow-hidden border-t border-emerald-500/30 flex items-center shadow-2xl">
-                <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
-                    {[
-                        "OPERATIONAL_DRIFT_PREVENTED", "REVENUE_LEAKAGE_PLUGGED", "MISSED_SAFETY_CHECKS_ELIMINATED", "UNVERIFIED_READINESS_STOPPED", "INSTITUTIONAL_MEMORY_SECURED", "AUDIT_FAILURE_AVOIDED"
-                    ].map((signal, i) => (
-                        <span key={i} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-[#D6C7C7]">
-                            <span className="text-[#5FAF7A]">[✓]</span>
-                            <span className="opacity-90">{signal}</span>
-                        </span>
-                    ))}
-                    {/* Loop Replication */}
-                    {[
-                        "OPERATIONAL_DRIFT_PREVENTED", "REVENUE_LEAKAGE_PLUGGED", "MISSED_SAFETY_CHECKS_ELIMINATED", "UNVERIFIED_READINESS_STOPPED", "INSTITUTIONAL_MEMORY_SECURED", "AUDIT_FAILURE_AVOIDED"
-                    ].map((signal, i) => (
-                        <span key={`dup-${i}`} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-[#D6C7C7]">
-                            <span className="text-[#5FAF7A]">[✓]</span>
-                            <span className="opacity-90">{signal}</span>
-                        </span>
-                    ))}
                 </div>
             </div>
         </section>
