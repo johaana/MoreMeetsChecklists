@@ -41,14 +41,13 @@ import images from '@/lib/placeholder-images.json';
 
 // --- PRODUCTION CONSTANTS ---
 const BRAND_GREEN = "#22C55E";
-const DASHBOARD_PREVIEW = images.find(i => i.id === 'sovereign-dashboard')?.imageUrl!;
 
 const NARRATIVE = {
     line1: "STOP CHASING.",
     line2: "START SEEING.",
     subline: "See daily work getting done. Even when you aren't there.",
-    cta: "Live in 10 minutes",
-    meta: "EXCEL MASTER • LIVE VIA GOOGLE SHEETS • AUDIT-READY"
+    cta: "Deploy the system",
+    meta: "SINGLE / MULTI-UNIT READY • AUDIT-READY COMPLIANCE"
 };
 
 const TECH_SPECS = [
@@ -58,11 +57,11 @@ const TECH_SPECS = [
     { t: "Trainer Notes for teams", i: Smartphone }
 ];
 
-const ANXIETY_ITEMS = [
-    "Always chasing teams?",
-    "Work gets missed?",
-    "The team is confused?",
-    "Memories fade?"
+const SIGNALS = [
+    "WORK GETTING MISSED",
+    "MANAGERS CHASING TEAMS",
+    "IMPORTANT TASKS FORGOTTEN",
+    "NO LIVE WORK STATUS"
 ];
 
 // --- HELPER COMPONENTS ---
@@ -71,8 +70,8 @@ const HeroBackground = () => {
     return (
         <div className="absolute inset-0 z-0 bg-black pointer-events-none">
           <img
-            src="https://i.postimg.cc/NM2zhxcs/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg"
-            alt="Executive Command and Operational Intelligence"
+            src="https://i.postimg.cc/nr8wnQFf/portrait-adult-male-working-from-home-night.jpg"
+            alt="Operational Stress Awareness"
             className="h-full w-full object-cover object-center opacity-30 md:opacity-40"
           />
           <div className="absolute inset-0 bg-black/40" />
@@ -149,9 +148,9 @@ const HeroSectionComp = () => {
                         </p>
                     </div>
                     <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-3 space-y-4 md:space-y-6 text-left border-l-2 lg:text-right lg:border-l-0 lg:border-r-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10 mt-8 lg:mt-16">
-                         <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">WHY OPERATIONS BREAK</p>
+                         <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">INSTITUTIONAL SIGNALS</p>
                          <div className="flex flex-col gap-2 md:gap-4 lg:gap-5">
-                             {ANXIETY_ITEMS.map((text, i) => (
+                             {SIGNALS.map((text, i) => (
                                 <PulsatingStressText key={i} text={text} delay={`${i * 0.2}s`} />
                              ))}
                          </div>
@@ -168,6 +167,29 @@ const HeroSectionComp = () => {
                     <div className="order-4 w-full lg:col-start-1 lg:row-start-3 mt-8 md:mt-4">
                         <SovereignCTA />
                     </div>
+                </div>
+            </div>
+            
+            {/* Telemetry Marquee */}
+            <div className="absolute bottom-0 w-full bg-[#2A0508] h-10 md:h-12 overflow-hidden border-t border-emerald-500/30 flex items-center shadow-2xl">
+                <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
+                    {[
+                        "OPERATIONAL_DRIFT_PREVENTED", "REVENUE_LEAKAGE_PLUGGED", "MISSED_SAFETY_CHECKS_ELIMINATED", "UNVERIFIED_READINESS_STOPPED", "INSTITUTIONAL_MEMORY_SECURED", "AUDIT_FAILURE_AVOIDED"
+                    ].map((signal, i) => (
+                        <span key={i} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-[#D6C7C7]">
+                            <span className="text-[#5FAF7A]">[✓]</span>
+                            <span className="opacity-90">{signal}</span>
+                        </span>
+                    ))}
+                    {/* Loop Replication */}
+                    {[
+                        "OPERATIONAL_DRIFT_PREVENTED", "REVENUE_LEAKAGE_PLUGGED", "MISSED_SAFETY_CHECKS_ELIMINATED", "UNVERIFIED_READINESS_STOPPED", "INSTITUTIONAL_MEMORY_SECURED", "AUDIT_FAILURE_AVOIDED"
+                    ].map((signal, i) => (
+                        <span key={`dup-${i}`} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-[#D6C7C7]">
+                            <span className="text-[#5FAF7A]">[✓]</span>
+                            <span className="opacity-90">{signal}</span>
+                        </span>
+                    ))}
                 </div>
             </div>
         </section>
@@ -308,28 +330,6 @@ export default function Home() {
                                 </div>
                             ))}
                         </div>
-                        <div className="space-y-16">
-                            <div className="relative group w-full max-w-6xl mx-auto">
-                                <div className="bg-[#111] h-10 w-full rounded-t-[20px] flex items-center px-6 gap-2 border border-white/10">
-                                    <div className="flex gap-1.5">
-                                        <div className="w-2 h-2 rounded-full bg-red-500/30" />
-                                        <div className="w-2 h-2 rounded-full bg-amber-500/30" />
-                                        <div className="w-2 h-2 rounded-full bg-green-500/30" />
-                                    </div>
-                                    <div className="flex-1 flex justify-center">
-                                        <div className="bg-black/40 border border-white/5 rounded-md px-12 py-1 text-[9px] font-black text-white/30 uppercase tracking-[0.4em] italic shadow-inner">
-                                            sovereign_v11.9_master_engine.xlsx
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="rounded-b-[20px] overflow-hidden shadow-2xl bg-white border border-zinc-200 border-t-0">
-                                    <img src={DASHBOARD_PREVIEW} alt="Sovereign Dashboard" className="w-full h-auto grayscale-[0.05] group-hover:grayscale-0 transition-all duration-1000" />
-                                </div>
-                            </div>
-                            <div className="text-center">
-                                <p className="text-2xl md:text-[44px] font-black text-zinc-950 uppercase italic tracking-tighter font-headline">👉 Your operations. Now structured.</p>
-                            </div>
-                        </div>
                     </div>
                 </Section>
 
@@ -392,7 +392,6 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* OPERATIONAL SUSTAINABILITY SECTION */}
                 <Section className="bg-white border-b border-zinc-100">
                     <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
                         <div className="text-center space-y-4">
@@ -438,12 +437,6 @@ export default function Home() {
                                     </div>
                                 </div>
                             ))}
-                        </div>
-
-                        <div className="text-center pt-8">
-                            <p className="text-[13px] text-zinc-400 font-bold uppercase tracking-[0.2em] italic">
-                                Institutional governance is built on measurable resource discipline.
-                            </p>
                         </div>
                     </div>
                 </Section>
