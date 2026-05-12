@@ -76,45 +76,46 @@ export default async function Page({ params }: Props) {
   /**
    * SOVEREIGN ASSET MAPPING v11.9
    * Strategy: Background (Atmospheric/Architectural) + Squircle (Operational Battlefield)
+   * Refined per "Institutional Infrastructure" mandate.
    */
   const assetMap: Record<string, { bg: string, squircle: string }> = {
       'restaurants': {
-          bg: "https://i.postimg.cc/wTqQLkG7/restaurant.webp",
-          squircle: "https://i.postimg.cc/8PpmMb0G/restaurant-backoffice.jpg"
+          bg: "https://i.postimg.cc/wxF6Cpdx/restaurant-backoffice.jpg",
+          squircle: "https://i.postimg.cc/66z9kXNJ/Back-of-House-BOH-Operations-restaurant.png"
       },
       'hotels_and_resorts': {
-          bg: "https://i.postimg.cc/ryC9DHgv/hotel-ops.webp",
-          squircle: "https://i.postimg.cc/dQm9hf4M/hotel-manager-operation.webp"
+          bg: "https://i.postimg.cc/7hPq5BSy/hotel-ops.webp",
+          squircle: "https://i.postimg.cc/2yjC1Hnm/hotel-manager-operation.webp"
       },
       'healthcare_and_hospital_operations': {
-          bg: "https://i.postimg.cc/fWjvVP5q/healthcare.jpg",
-          squircle: "https://i.postimg.cc/6qs1BGW6/doctors-pushing-emergency-stretcher-bed-corridor.jpg"
+          bg: "https://i.postimg.cc/zvDqydKt/healthcare.jpg",
+          squircle: "https://i.postimg.cc/2885y5xp/doctors-pushing-emergency-stretcher-bed-corridor.jpg"
       },
       'school_operations_pack': {
-          bg: "https://i.postimg.cc/BZcCjzNT/school-safety.webp",
-          squircle: "https://i.postimg.cc/y6XTDGnj/Schools-school-safety.jpg"
+          bg: "https://i.postimg.cc/pXGLFt00/school-safety.webp",
+          squircle: "https://i.postimg.cc/g2xkyBQY/Schools-school-safety.jpg"
       },
       'franchise_operations_pack': {
-          bg: "https://i.postimg.cc/mZNSPnVS/franchise-2.jpg",
-          squircle: "https://i.postimg.cc/VsBFJh4W/Franchise-operations.jpg"
+          bg: "https://i.postimg.cc/pd8W45PK/franchise-2.jpg",
+          squircle: "https://i.postimg.cc/vBsYs8mS/Franchise-operations.jpg"
       },
       'facility_management_blueprint': {
-          bg: "https://i.postimg.cc/MZbYnLtP/facilities-management1.png",
-          squircle: "https://i.postimg.cc/9XtBDk11/facilities-management-2.jpg"
+          bg: "https://i.postimg.cc/9MhmhXMR/facilities-management1.png",
+          squircle: "https://i.postimg.cc/gjy6WBdD/mid-adult-engineer-male-worker-wearing-face-masks-while-examining-paperwork-woodworking-factory.jpg"
       },
       'cinema_operations_pack': {
-          bg: "https://i.postimg.cc/SsfvdxLv/view-3d-cinema-theatre-room.jpg",
+          bg: "https://i.postimg.cc/VsXtn5MJ/view-3d-cinema-theatre-room.jpg",
           squircle: "https://i.postimg.cc/NFNPhCzy/concession-area-cinema.jpg"
       },
       'retail_operations_system': {
-          bg: "https://i.postimg.cc/3JtCBDs1/office-2.jpg",
+          bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
           squircle: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp"
       },
   };
 
   const assets = assetMap[id] || { 
-      bg: "https://i.postimg.cc/NM2zhxcs/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg",
-      squircle: "https://i.postimg.cc/W4HHfHxk/people-stands-looks-documents.jpg"
+      bg: "https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg",
+      squircle: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg"
   };
 
   return (

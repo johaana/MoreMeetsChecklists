@@ -27,7 +27,9 @@ import {
     Recycle,
     Wrench,
     FileSpreadsheet,
-    History
+    History,
+    ShieldAlert,
+    Target
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -68,8 +70,8 @@ const HeroBackground = () => {
     return (
         <div className="absolute inset-0 z-0 bg-black pointer-events-none">
           <img
-            src="https://i.postimg.cc/R0T17F2p/ceo-engages-phone-call-briefing-with-investor-sharing-insight.jpg"
-            alt="Executive Operational Intelligence"
+            src="https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg"
+            alt="Executive Operational Oversight"
             className="h-full w-full object-cover object-center opacity-30 md:opacity-40"
           />
           <div className="absolute inset-0 bg-black/40" />
@@ -117,7 +119,7 @@ const SovereignCTA = ({ className }: { className?: string }) => (
                     {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
                 </Link>
             </Button>
-            <p className="text-[10px] md:text-xs text-zinc-400 font-bold italic text-center sm:text-left">
+            <p className="text-[10px] md:xs text-zinc-400 font-bold italic text-center sm:text-left">
                 Built in Excel. Shared through Google Sheets for live operations. No app rollout required.
             </p>
         </div>
@@ -181,6 +183,37 @@ export default function Home() {
             <SiteHeader />
             <main className="flex-1">
                 <HeroSectionComp />
+
+                {/* --- FRICTION STRIP: THE INVISIBLE COST --- */}
+                <Section className="bg-zinc-950 text-white py-12 md:py-24" noSpine>
+                    <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
+                        <div className="space-y-4 text-center lg:text-left">
+                            <Badge variant="outline" className="text-zinc-500 border-zinc-800 uppercase tracking-[0.4em] font-black text-[10px]">OPERATIONAL FRICTION</Badge>
+                            <h2 className="text-[28px] md:text-[44px] font-black font-headline uppercase italic tracking-tighter leading-none">
+                                When execution depends on memory.
+                            </h2>
+                        </div>
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {[
+                                { t: "Managers chasing confirmations", d: "Time wasted in unsearchable chat follow-ups.", img: "https://i.postimg.cc/X77vqvg6/confused-business-woman-using-laptop-computer-phone.jpg" },
+                                { t: "Shift handovers missed", d: "Critical instructions vanishing during team rotations.", img: "https://i.postimg.cc/280FwBsB/businessman-having-headache.jpg" },
+                                { t: "Assumed, not verified", d: "Technical safety checks being skipped during the rush.", img: "https://i.postimg.cc/Gt3b4Mvc/portrait-young-office-worker-woman-sitting-office-desk-with-documents-talking-mobile-phone-nervous-s.jpg" },
+                                { t: "Knowledge in folders", d: "SOPs existing as static PDFs, not daily live actions.", img: "https://i.postimg.cc/zXxSjRsW/businesspeople-having-problems-office.jpg" }
+                            ].map((item, i) => (
+                                <div key={i} className="group space-y-4">
+                                    <div className="aspect-[4/3] rounded-2xl overflow-hidden grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700 border border-white/5 relative">
+                                        <img src={item.img} alt="" className="w-full h-full object-cover" />
+                                        <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors" />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <h4 className="text-sm font-black uppercase italic tracking-tight text-white/90">{item.t}</h4>
+                                        <p className="text-[11px] font-bold text-zinc-500 italic leading-snug">{item.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
                 
                 <Section className="bg-white">
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-0 border border-zinc-200 rounded-[3rem] overflow-hidden shadow-2xl">
@@ -225,6 +258,49 @@ export default function Home() {
                                         </li>
                                     ))}
                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- BUILT FOR LEADERSHIP SECTION --- */}
+                <Section className="bg-white border-t border-zinc-100">
+                    <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.2fr,0.8fr] gap-12 md:gap-24 items-center">
+                        <div className="space-y-8 text-left">
+                            <div className="space-y-6">
+                                <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">EXECUTIVE OVERSIGHT</Badge>
+                                <h2 className="text-[34px] md:text-[54px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.95]">
+                                    One master console. <br/> Total multi-unit grip.
+                                </h2>
+                                <p className="text-zinc-500 text-lg md:text-xl font-bold italic leading-relaxed border-l-2 border-primary/20 pl-8">
+                                    Stop the daily stress. Make your business run itself. MoreMeets™ provides the high-gravity visibility required for Founders and COOs to scale without losing operational discipline.
+                                </p>
+                            </div>
+                            <div className="grid sm:grid-cols-2 gap-6">
+                                {[
+                                    { t: "Unified Group View", d: "See performance across all branches in one dashboard.", i: LayoutGrid },
+                                    { t: "Compliance Shield", d: "Automatic alerts for missed regulatory or safety tasks.", i: ShieldCheck }
+                                ].map((feat, i) => (
+                                    <div key={i} className="flex gap-4">
+                                        <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center shrink-0 border border-zinc-100">
+                                            <feat.i className="w-5 h-5 text-primary" />
+                                        </div>
+                                        <div className="space-y-1">
+                                            <p className="font-black text-xs uppercase italic text-zinc-950 leading-none">{feat.t}</p>
+                                            <p className="text-[11px] font-bold text-zinc-400 italic leading-snug">{feat.d}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="relative group">
+                            <div className="absolute -inset-2 bg-primary/20 rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                            <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden border border-zinc-200 shadow-2xl bg-zinc-950">
+                                <img 
+                                    src="https://i.postimg.cc/R0T17F2p/ceo-engages-phone-call-briefing-with-investor-sharing-insight.jpg" 
+                                    alt="Executive Leadership Control" 
+                                    className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700" 
+                                />
                             </div>
                         </div>
                     </div>
@@ -372,46 +448,42 @@ export default function Home() {
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-emerald-600 border-emerald-100 bg-emerald-50 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">OPERATIONAL SUSTAINABILITY</Badge>
                             <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
-                                Sustainable Operations Through Visibility
+                                Sustainability Through Rigor
                             </h2>
                             <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
-                                Operational discipline reduces waste, extends asset life, improves energy accountability, and creates measurable operational sustainability across teams and facilities.
+                                Environmental sustainability isn't a report. It's the byproduct of daily operational discipline, technical maintenance, and visibility.
                             </p>
                         </div>
 
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {[
-                                { 
-                                    t: "Energy Discipline", 
-                                    d: "Verified shutdown compliance for lighting, HVAC, and idle infrastructure.", 
-                                    i: Zap 
-                                },
-                                { 
-                                    t: "Waste Mitigation", 
-                                    d: "Yield monitoring and operational controls reduce preventable waste and leakage.", 
-                                    i: Recycle 
-                                },
-                                { 
-                                    t: "Asset Longevity", 
-                                    d: "Preventive maintenance rigor extends equipment lifespan and reduces replacement cycles.", 
-                                    i: Wrench 
-                                },
-                                { 
-                                    t: "Paperless Governance", 
-                                    d: "Live operational logs reduce fragmented reporting and paper dependency.", 
-                                    i: FileSpreadsheet 
-                                }
-                            ].map((card, i) => (
-                                <div key={i} className="bg-zinc-50 border border-zinc-100 p-8 rounded-[1.5rem] space-y-6 group hover:bg-white hover:shadow-2xl hover:border-emerald-500/20 transition-all duration-700 text-left">
-                                    <div className="w-12 h-12 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-zinc-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-sm">
-                                        <card.i className="w-6 h-6" />
+                        <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 items-center">
+                            <div className="grid sm:grid-cols-2 gap-6">
+                                {[
+                                    { t: "Energy Discipline", d: "Verified shutdown compliance for lighting, HVAC, and idle infrastructure.", i: Zap },
+                                    { t: "Resource Conservation", d: "Resource vitals logging and overnight leak detection through digital checks.", i: Leaf },
+                                    { t: "Waste Mitigation", d: "Yield monitoring and operational controls reduce preventable waste and leakage.", i: Recycle },
+                                    { t: "Asset Longevity", d: "Preventive maintenance rigor extends equipment lifespan and reduces replacement cycles.", i: Wrench }
+                                ].map((card, i) => (
+                                    <div key={i} className="bg-zinc-50 border border-zinc-100 p-8 rounded-[1.5rem] space-y-6 group hover:bg-white hover:shadow-2xl hover:border-emerald-500/20 transition-all duration-700 text-left">
+                                        <div className="w-12 h-12 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-zinc-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-sm">
+                                            <card.i className="w-6 h-6" />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <h4 className="text-lg font-black uppercase italic text-zinc-950 leading-tight">{card.t}</h4>
+                                            <p className="text-[11px] font-bold text-zinc-400 italic uppercase leading-relaxed">{card.d}</p>
+                                        </div>
                                     </div>
-                                    <div className="space-y-2">
-                                        <h4 className="text-lg font-black uppercase italic text-zinc-950 leading-tight">{card.t}</h4>
-                                        <p className="text-[11px] font-bold text-zinc-400 italic uppercase leading-relaxed">{card.d}</p>
-                                    </div>
+                                ))}
+                            </div>
+                            <div className="relative group">
+                                <div className="absolute -inset-4 bg-emerald-500/10 rounded-[3rem] blur-2xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                                <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden border border-zinc-200 shadow-2xl bg-zinc-950">
+                                    <img 
+                                        src="https://i.postimg.cc/Kz2G2czv/facilities-management-2.jpg" 
+                                        alt="Operational Sustainability via Engineering" 
+                                        className="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-700" 
+                                    />
                                 </div>
-                            ))}
+                            </div>
                         </div>
                     </div>
                 </Section>
