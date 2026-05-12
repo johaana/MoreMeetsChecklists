@@ -68,12 +68,12 @@ const HeroBackground = () => {
     return (
         <div className="absolute inset-0 z-0 bg-black pointer-events-none">
           <img
-            src="https://i.postimg.cc/nr8wnQFf/portrait-adult-male-working-from-home-night.jpg"
-            alt="Operational Stress Awareness"
+            src="https://i.postimg.cc/R0T17F2p/ceo-engages-phone-call-briefing-with-investor-sharing-insight.jpg"
+            alt="Executive Operational Intelligence"
             className="h-full w-full object-cover object-center opacity-30 md:opacity-40"
           />
           <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent" />
         </div>
     );
 };
