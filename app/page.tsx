@@ -29,7 +29,8 @@ import {
     FileSpreadsheet,
     History,
     ShieldAlert,
-    Target
+    Target,
+    LayoutGrid
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
