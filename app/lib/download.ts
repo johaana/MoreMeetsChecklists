@@ -240,7 +240,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                 { t: 'f', f: `IF(LEN(${branchRef})>0, ${branchRef} & "|" & B${rowIdx}, "")`, s: dataStyleCenter },
                 { v: role, s: dataStyleLeft },
                 { t: 'f', f: branchRef, s: dataStyleCenter },
-                { v: "", s: inputStyle },
+                { v: i < 2 ? ["Sameer V.", "Anjali R.", "Vikram M."][i] : "", s: inputStyle },
                 { v: "ACTIVE", s: inputStyle }
             ]);
         });
@@ -271,24 +271,34 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const mData: any[][] = [[], [], [], lHeaders];
     
+    // --- INJECT SAMPLE DATA FOR PRODUCTION FEEL ---
+    const sampleInitials = ["SV", "AR", "VM", "IK"];
+    
     [1, 2].forEach(bId => {
         packChecklists.forEach(c => {
-            c.tasks.forEach(t => {
+            c.tasks.forEach((t, tIdx) => {
                 const rIdx = mData.length + 1;
                 const branchRef = `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`;
                 const keyRef = `B${rIdx} & "|" & C${rIdx}`;
                 
+                // Sample Logic: Make first 3 tasks "Verified", next 2 "Overdue" (by date), rest "Pending"
+                const isSampleVerified = tIdx < 3;
+                const isSampleOverdue = tIdx >= 3 && tIdx < 5;
+                
+                const sampleDate = new Date();
+                if (isSampleOverdue) sampleDate.setDate(sampleDate.getDate() - 2);
+
                 mData.push([
-                    { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
+                    { v: sampleDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
                     { t: 'f', f: branchRef, s: dataStyleCenter },
                     { v: c.role, s: dataStyleLeft },
                     { t: 'f', f: `IFERROR(VLOOKUP(${keyRef}, 'TEAM_HUB'!$A$5:$D$500, 4, FALSE), "UNASSIGNED")`, s: dataStyleLeft },
                     { v: t.id, s: dataStyleCenter },
                     { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, border: t.priority === 'High' ? { ...borderStyle, left: { style: 'thick', color: { rgb: COLORS.STATUS_RED } } } : borderStyle } },
                     { v: t.floorAction || t.trainerNotes || "", s: instructionStyle },
-                    { v: "", s: inputStyle },
-                    { v: "", s: inputStyle },
-                    { t: 'f', f: `IF(LEN(TRIM(H${rIdx}))>0, "VERIFIED", "PENDING")`, s: { ...dataStyleCenter, font: { bold: true } } },
+                    { v: isSampleVerified ? sampleInitials[tIdx % 4] : "", s: inputStyle },
+                    { v: isSampleVerified ? "MGR" : "", s: inputStyle },
+                    { t: 'f', f: `IF(LEN(TRIM(H${rIdx}))>0, "VERIFIED", IF(A${rIdx}<TODAY()-1, "OVERDUE", "PENDING"))`, s: { ...dataStyleCenter, font: { bold: true } } },
                     { v: t.consequence || "Operational Risk Applied.", s: riskStyle }
                 ]);
             });
@@ -301,13 +311,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     mWs['!autofilter'] = { ref: `A4:K${mData.length}` };
     addLiabilityFooter(mWs, mData.length, 'K');
     
-    // Selection Layer Patch: Dropdowns & Conditional Formatting
-    mWs['!dataValidation'] = [{
-        range: `J5:J${mData.length}`,
-        type: 'list',
-        formula1: "'SYSTEM_CONFIG'!$A$3:$A$7"
-    }];
-
     utils.book_append_sheet(wb, mWs, "TASK_REGISTER");
 
     // --- 05. SOP LIBRARY ---
@@ -334,32 +337,25 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addLiabilityFooter(sWs, sData.length, 'E');
     utils.book_append_sheet(wb, sWs, "SOP_LIBRARY");
 
-    // --- 06. INCIDENT LOG ---
-    const iHeaders = [
-        { v: "Date", s: headerStyle }, { v: "Branch", s: headerStyle }, 
-        { v: "Severity", s: headerStyle }, { v: "Description", s: headerStyle },
-        { v: "Root Cause", s: headerStyle }, { v: "Corrective Action", s: headerStyle }
+    // --- 06. SYSTEM GUIDE (DEPLOYMENT & USAGE) ---
+    const guideData = [
+        [], [], [],
+        [{ v: "DEPLOYMENT FLOW (LIVE IN 10 MINUTES)", s: headerStyle }, { v: "DESCRIPTION", s: headerStyle }],
+        [{ v: "1. DOWNLOAD", s: dataStyleCenter }, { v: "Download this Excel file from MoreMeets™ instantly.", s: dataStyleLeft }],
+        [{ v: "2. UPLOAD", s: dataStyleCenter }, { v: "Upload to your company Google Drive. Click 'Open with Google Sheets'.", s: dataStyleLeft }],
+        [{ v: "3. REGISTER BRANCHES", s: dataStyleCenter }, { v: "Go to 'BRANCH_MASTER' and enter your site names once.", s: dataStyleLeft }],
+        [{ v: "4. ASSIGN ROLES", s: dataStyleCenter }, { v: "Go to 'TEAM_HUB' and map staff names to roles for each branch.", s: dataStyleLeft }],
+        [{ v: "5. EXECUTE", s: dataStyleCenter }, { v: "Ground staff open the 'TASK_REGISTER' on their phones and log work.", s: dataStyleLeft }],
+        [],
+        [{ v: "RUNTIME CONTROLS", s: headerStyle }, { v: "DESCRIPTION", s: headerStyle }],
+        [{ v: "MOBILE FILTERING", s: dataStyleCenter }, { v: "Ground staff: Tap Row 4 -> Filter -> Choose your Role. See ONLY your tasks.", s: dataStyleLeft }],
+        [{ v: "STATUS COLOR", s: dataStyleCenter }, { v: "PENDING = Gray | VERIFIED = Green | OVERDUE = Red. Managed by logic.", s: dataStyleLeft }],
+        [{ v: "ADMIN SECURITY", s: dataStyleCenter }, { v: "Right-click Tab -> Protect Sheet. Allow users to edit ONLY initials columns.", s: dataStyleLeft }]
     ];
-    const iData: any[][] = [[], [], [], iHeaders];
-    for(let i=0; i<10; i++) {
-        iData.push([
-            { v: "", s: inputStyle }, { v: "", s: inputStyle }, { v: "P1 - HIGH", s: inputStyle },
-            { v: "", s: inputStyle }, { v: "", s: inputStyle }, { v: "", s: inputStyle }
-        ]);
-    }
-    const iWs = utils.aoa_to_sheet(iData);
-    iWs['!cols'] = [15, 25, 15, 55, 40, 55].map(w => ({ wch: w }));
-    addSovereignRibbon(iWs, "Liability & Incident Ledger", 'F');
-    addLiabilityFooter(iWs, iData.length, 'F');
-    
-    // Severity Dropdown
-    iWs['!dataValidation'] = [{
-        range: `C5:C${iData.length}`,
-        type: 'list',
-        formula1: "'SYSTEM_CONFIG'!$C$3:$C$6"
-    }];
-
-    utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
+    const gWs = utils.aoa_to_sheet(guideData);
+    gWs['!cols'] = [35, 85].map(w => ({ wch: w }));
+    addSovereignRibbon(gWs, "System Deployment & Command Manual", 'B');
+    utils.book_append_sheet(wb, gWs, "SYSTEM_GUIDE");
 
     // --- 07. SYSTEM_CONFIG (HIDDEN INFRASTRUCTURE) ---
     const configData = [
@@ -380,7 +376,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { n: "SHIFT_HANDOVER", t: "Shift Handover Protocol", c: 'F' },
         { n: "BUSINESS_HEALTH", t: "Executive Vitals & Analytics", c: 'E' },
         { n: "FINANCIAL_SHIELD", t: "Revenue & Margin Integrity", c: 'G' },
-        { n: "SYSTEM_GUIDE", t: "System Command Manual", c: 'D' }
+        { n: "INCIDENT_LOG", t: "Liability & Incident Ledger", c: 'F' }
     ];
     bridgeSheets.forEach(s => {
         const ws = utils.aoa_to_sheet([[],[],[]]);
