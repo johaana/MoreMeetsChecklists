@@ -6,9 +6,8 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v15.2 - INSTITUTIONAL DATA INTEGRITY
- * Stage 2 Patch: Formula Hardening & Blank-Sheet Prevention
- * Preserves 100% of operational data, language, and workflows.
+ * Sovereign Engine v15.3 - STABILITY HARDENING
+ * Optimized for Google Sheets Runtime while preserving 100% of Excel Infrastructure.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -18,7 +17,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     const wb = utils.book_new();
     const startDate = new Date(); 
-    const ORDER_ID = "MM-SOVEREIGN-15.2-STABLE";
+    const ORDER_ID = "MM-SOVEREIGN-15.3-STABLE";
 
     const COLORS = {
         NAVY_DEEP: "0A0F19",      
@@ -39,8 +38,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         MGR_TARGET: "FDE68A", 
         SOFT_RED: "FEF2F2",
         SOFT_GREEN: "ECFDF5",
-        RISK_RED: "E11D48",
-        LINK_BLUE: "0000FF"
+        RISK_RED: "E11D48"
     };
 
     const baseFont = { name: 'Segoe UI', sz: 10 };
@@ -141,14 +139,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     const coachingStyle = {
         ...dataStyleLeft,
-        font: { ...baseFont, color: { rgb: "065F46" }, italic: true },
+        font: { ...baseFont, color: { rgb: "065F46" }, italic: false }, // Removed italic per user mandate for Sheets
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_GREEN } },
         alignment: { ...verticalCenter, wrapText: true }
     };
 
     const warningStyle = {
         ...dataStyleLeft,
-        font: { ...baseFont, color: { rgb: "991B1B" }, italic: true },
+        font: { ...baseFont, color: { rgb: "991B1B" }, italic: false },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.SOFT_RED } },
         alignment: { ...verticalCenter, wrapText: true }
     };
@@ -160,7 +158,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     /**
      * SOVEREIGN MIGRATION LAYER: HYPERLINK FORMULAS
-     * Replaces Excel native links with Sheets-safe formulas.
+     * Strictly uses HYPERLINK formulas for cross-browser navigation stability.
      */
     const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'M') => {
         const ribbonData = [
@@ -182,13 +180,15 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             if(!ws[cell1]) ws[cell1] = { v: "", s: navStyle };
             if(!ws[cell2]) ws[cell2] = { v: "", s: ribbonHeaderStyle };
         }
-        ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 2 }];
+        
+        // STABILITY: Row 4 is completely unmerged for filtering
+        ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 4, xSplit: 4 }];
         
         if(!ws['!rows']) ws['!rows'] = [];
         ws['!rows'][0] = { hpt: 40 };
         ws['!rows'][1] = { hpt: 100 };
         ws['!rows'][2] = { hpt: 40 };
-        ws['!rows'][3] = { hpt: 55 }; 
+        ws['!rows'][3] = { hpt: 55 }; // Header Row
         
         for(let r = 4; r < 5000; r++) {
             if(!ws['!rows'][r]) ws['!rows'][r] = { hpt: 35 };
@@ -228,7 +228,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeWsData: any[][] = [
         [], [],
         [null, { v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 22, bold: true, color: { rgb: COLORS.WHITE } } } }],
-        [null, { v: `Institutional Operating System v15.2 | Sovereign Master`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
+        [null, { v: `Institutional Operating System v15.3 | Sovereign Master`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { bold: true, sz: 12, color: { rgb: COLORS.PRIMARY_GREEN } } } }],
         [null, { v: `SECURE AUTHENTICATION: ${ORDER_ID}`, s: { fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_DEEP } }, alignment: { horizontal: 'center', ...verticalCenter }, font: { sz: 8, color: { rgb: COLORS.INTEL_GREY } } } }],
         [],
         [
@@ -256,7 +256,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { t: 'f', f: `HYPERLINK("#'INCIDENT_TRACKER'!A1", "▶ INCIDENT LOG")`, s: tileStyle }
         ],
         [],
-        [null, { t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(G15>=0.9, "HOT - PERFECT EXECUTION!", IF(G15>=0.75, "WARM - MINOR GAPS DETECTED", IF(G15>=0.6, "STABLE - PUSH HARDER", IF(G15>0, "COLD - TURN UP THE HEAT!", "AWAITING DATA")))), "EMPIRE MOOD: LOADING...")`, s: { font: { sz: 16, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null, null, null, null, null],
+        // EMPIRE MOOD: Refined formula referencing Shift Progress E17
+        [null, { t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(E17>=0.9, "HOT - PERFECT EXECUTION!", IF(E17>=0.75, "WARM - MINOR GAPS DETECTED", IF(E17>=0.6, "STABLE - PUSH HARDER", IF(E17>0, "COLD - TURN UP THE HEAT!", "AWAITING DATA")))), "EMPIRE MOOD: LOADING...")`, s: { font: { sz: 16, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null, null, null, null, null],
         [
             null,
             { v: "MOMENTUM", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null, 
@@ -266,7 +267,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [
             null,
             { v: "TOP BRANCH:", s: labelStyle },
-            { t: 'f', f: `IF(MAX('BRANCH_MASTER'!$${scoreColLetter}$5:$${scoreColLetter}$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$${scoreColLetter}$5:$${scoreColLetter}$15), 'BRANCH_MASTER'!$${scoreColLetter}$5:$${scoreColLetter}$15, 0)), "AWAITING DATA")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', ...verticalCenter } } },
+            { t: 'f', f: `IFERROR(IF(MAX('BRANCH_MASTER'!$${scoreColLetter}$5:$${scoreColLetter}$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$${scoreColLetter}$5:$${scoreColLetter}$15), 'BRANCH_MASTER'!$${scoreColLetter}$5:$${scoreColLetter}$15, 0)), "AWAITING DATA"), "AWAITING DATA")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "TASKS LOGGED:", s: labelStyle },
             { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED")`, s: vitalsBlueDarkStyle },
             { v: "RISK STATUS:", s: labelStyle },
@@ -275,7 +276,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         [
             null,
             { v: "OPERATIONAL PULSE:", s: labelStyle },
-            { t: 'f', f: `IF(COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$500, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")), "0%") & " PULSE")`, s: pulseAmberStyle }, 
+            { t: 'f', f: `IFERROR(IF(COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$500, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")), "0%") & " PULSE"), "AWAITING DATA")`, s: pulseAmberStyle }, 
             { v: "SHIFT PROGRESS:", s: labelStyle },
             { t: 'f', f: `IFERROR(COUNTIF('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$5000, "?*")), 0)`, s: { ...progressBlueLightStyle, numFmt: '0%' } },
             { v: "UNIT LOAD:", s: labelStyle },
@@ -353,12 +354,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             const rowIdx = pData.length + 1;
             pData.push([
                 { t: 'f', f: `B${rowIdx} & "|" & C${rowIdx}`, s: dataStyleLeft }, 
-                { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`, s: dataStyleCenter },
+                { t: 'f', f: `IFERROR(IF(LEN(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}))=0, "", INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId})), "")`, s: dataStyleCenter },
                 { v: role, s: dataStyleLeft },
                 { v: "", s: inputStyleLeft }, 
                 { v: "", s: inputStyleLeft }, 
                 { v: "ACTIVE", s: inputStyleLeft }, 
-                { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$H$5:$H$500, D${rowIdx}, 'TODAYS_TASKS'!$J$5:$J$500, "COMPLETED")`, s: dataStyleCenter }
+                { t:'f', f: `COUNTIFS('TODAYS_TASKS'!$H$5:$H$5000, D${rowIdx}, 'TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED")`, s: dataStyleCenter }
             ]);
         });
     });
@@ -399,14 +400,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     
                     const keyRef = `B${rowIdx} & "|" & C${rowIdx}`;
                     // ABSOLUTE RANGE HARDENING FOR SHEETS
-                    const personFormula = `IF(COUNTIFS('TEAM_HUB'!$A$5:$A$500, ${keyRef}, 'TEAM_HUB'!$D$5:$D$500, "?*")=0, HYPERLINK("#'TEAM_HUB'!A1", "ASSIGN IN TEAM HUB"), VLOOKUP(${keyRef}, 'TEAM_HUB'!$A$5:$D$500, 4, FALSE) & IF(VLOOKUP(${keyRef}, 'TEAM_HUB'!$A$5:$F$500, 6, FALSE)<>"ACTIVE", " [" & VLOOKUP(${keyRef}, 'TEAM_HUB'!$A$5:$F$500, 6, FALSE) & "]", ""))`;
+                    const personFormula = `IFERROR(IF(COUNTIFS('TEAM_HUB'!$A$5:$A$5000, ${keyRef}, 'TEAM_HUB'!$D$5:$D$5000, "?*")=0, HYPERLINK("#'TEAM_HUB'!A1", "ASSIGN IN TEAM HUB"), VLOOKUP(${keyRef}, 'TEAM_HUB'!$A$5:$D$5000, 4, FALSE)), "ASSIGN IN TEAM HUB")`;
                     
                     const technicalVal = t.technicalProtocol || t.description || "";
                     const actionVal = t.floorAction || "";
 
                     mData.push([
                         { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
-                        { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode}), "")`, s: dataStyleCenter },
+                        { t: 'f', f: `IFERROR(IF(LEN(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode}))=0, "", INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bCode})), "")`, s: dataStyleCenter },
                         { v: c.role, s: dataStyleLeft },
                         { t: 'f', f: personFormula, s: dataStyleLeft },
                         { v: t.id, s: dataStyleCenter },
@@ -425,7 +426,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     });
 
     const mWs = utils.aoa_to_sheet(mData);
-    mWs['!cols'] = [12, 20, 20, 22, 10, 40, 50, 18, 18, 15, 10, 10, 40].map(w => ({ wch: w }));
+    // HARDENED WIDTHS: Protocol = 75, Action = 65
+    mWs['!cols'] = [12, 20, 20, 22, 10, 75, 65, 18, 18, 15, 10, 10, 40].map(w => ({ wch: w }));
     addSovereignRibbon(mWs, "Daily Task Register");
     mWs['!autofilter'] = { ref: `A4:M${mData.length}` };
     addLiabilityFooter(mWs, mData.length);
@@ -436,7 +438,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const handoverRows = [];
     for(let i=0; i<5; i++) {
         handoverRows.push([
-            { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, 1), "")`, s: inputStyleLeft },
+            { t: 'f', f: `IFERROR(IF(LEN(INDEX('BRANCH_MASTER'!$B$5:$B$15, 1))=0, "", INDEX('BRANCH_MASTER'!$B$5:$B$15, 1)), "")`, s: inputStyleLeft },
             { v: "", s: inputStyleLeft }, { v: "", s: inputStyleLeft }, { v: "", s: inputStyleLeft }, { v: "YES", s: inputStyleLeft }, { v: "", s: inputStyleLeft }
         ]);
     }
@@ -460,7 +462,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     for (let i = 0; i < 10; i++) {
         incidentRows.push([
             { v: "", s: inputStyleLeft },
-            { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, 1), "")`, s: inputStyleLeft },
+            { t: 'f', f: `IFERROR(IF(LEN(INDEX('BRANCH_MASTER'!$B$5:$B$15, 1))=0, "", INDEX('BRANCH_MASTER'!$B$5:$B$15, 1)), "")`, s: inputStyleLeft },
             { v: "", s: inputStyleLeft },
             { v: "", s: inputStyleLeft },
             { v: "", s: inputStyleLeft },
@@ -486,13 +488,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     [1, 2].forEach(bId => {
         const branchRef = `INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId})`;
         healthData.push([
-            { v: "Task Execution Velocity", s: dataStyleLeft }, { t: 'f', f: branchRef, s: dataStyleCenter }, { v: "MONITORING", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$F$5:$F$5000, "?*"))`, s: { ...dataStyleCenter, numFmt: '0%' } }, { v: "NORMAL", s: dataStyleCenter }
+            { v: "Task Execution Velocity", s: dataStyleLeft }, { t: 'f', f: `IFERROR(IF(LEN(${branchRef})=0, "", ${branchRef}), "")`, s: dataStyleCenter }, { v: "MONITORING", s: dataStyleCenter }, { t: 'f', f: `IFERROR(COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$F$5:$F$5000, "?*")), 0)`, s: { ...dataStyleCenter, numFmt: '0%' } }, { v: "NORMAL", s: dataStyleCenter }
         ]);
         healthData.push([
-            { v: "Critical Risk Load", s: dataStyleLeft }, { t: 'f', f: branchRef, s: dataStyleCenter }, { v: "MONITORING", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$L$5:$L$5000, "High", 'TODAYS_TASKS'!$J$5:$J$5000, "<>COMPLETED")`, s: dataStyleCenter }, { v: "CHECK PENDING", s: dataStyleCenter }
+            { v: "Critical Risk Load", s: dataStyleLeft }, { t: 'f', f: `IFERROR(IF(LEN(${branchRef})=0, "", ${branchRef}), "")`, s: dataStyleCenter }, { v: "MONITORING", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$B$5:$B$5000, ${branchRef}, 'TODAYS_TASKS'!$L$5:$L$5000, "High", 'TODAYS_TASKS'!$J$5:$J$5000, "<>COMPLETED")`, s: dataStyleCenter }, { v: "CHECK PENDING", s: dataStyleCenter }
         ]);
         healthData.push([
-            { v: "Workforce Availability", s: dataStyleLeft }, { t: 'f', f: branchRef, s: dataStyleCenter }, { v: "LIVE PULSE", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('TEAM_HUB'!$B$5:$B$500, ${branchRef}, 'TEAM_HUB'!$F$5:$F$500, "ACTIVE")`, s: dataStyleCenter }, { v: "STABLE", s: dataStyleCenter }
+            { v: "Workforce Availability", s: dataStyleLeft }, { t: 'f', f: `IFERROR(IF(LEN(${branchRef})=0, "", ${branchRef}), "")`, s: dataStyleCenter }, { v: "LIVE PULSE", s: dataStyleCenter }, { t: 'f', f: `COUNTIFS('TEAM_HUB'!$B$5:$B$5000, ${branchRef}, 'TEAM_HUB'!$F$5:$F$5000, "ACTIVE")`, s: dataStyleCenter }, { v: "STABLE", s: dataStyleCenter }
         ]);
         healthData.push([]); 
     });
@@ -525,7 +527,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         });
     });
     const sopWs = utils.aoa_to_sheet(sopData);
-    sopWs['!cols'] = [20, 12, 45, 55, 55].map(w => ({ wch: w }));
+    // HARDENED WIDTHS: Protocol = 75, Action = 65
+    sopWs['!cols'] = [20, 12, 75, 65, 55].map(w => ({ wch: w }));
     addSovereignRibbon(sopWs, "Master SOP Database");
     addLiabilityFooter(sopWs, sopData.length, 'E');
     utils.book_append_sheet(wb, sopWs, "SOP_LIBRARY");
@@ -545,7 +548,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             const marginFormula = `IFERROR(G${rowIdx}/C${rowIdx}, 0)`;
             fsData.push([
                 { v: startDate, t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
-                { t: 'f', f: `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`, s: dataStyleCenter },
+                { t: 'f', f: `IFERROR(IF(LEN(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}))=0, "", INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId})), "")`, s: dataStyleCenter },
                 { v: 0, s: inputStyleLeft }, { v: 0, s: inputStyleLeft }, { v: 0.25, s: { ...inputStyleLeft, numFmt: '0%' } }, { v: 0, s: inputStyleLeft },
                 { t: 'f', f: contribFormula, s: { ...dataStyleCenter, font: { bold: true } } },
                 { t: 'f', f: marginFormula, s: { ...dataStyleCenter, numFmt: '0.0%' } }
