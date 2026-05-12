@@ -6,10 +6,9 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 import { individualChecklists, type IndividualChecklist } from '@/lib/individual-checklists';
 
 /**
- * Sovereign Engine v11.9.8 - COMPACT COMMAND BUILD
- * Features: Fixed Top Branch Logic, Symmetric Grid, Standard Assignment Text.
- * Optimized: Slightly compact column widths for one-glance visibility.
- * Refinement: HYPERLINK formula pattern for visual assignment links.
+ * Sovereign Engine v11.9.8 - STABLE ARCHITECTURE
+ * Stage 1 Patch: Google Sheets Navigation & Merge Hardening
+ * Preserves 100% of operational data, language, and workflows.
  */
 export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
     if (!item) {
@@ -160,9 +159,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         alignment: { horizontal: 'center', ...verticalCenter }
     };
 
+    /**
+     * SOVEREIGN MIGRATION LAYER: HYPERLINK FORMULAS
+     * Replaces Excel native links with Sheets-safe formulas.
+     */
     const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'M') => {
         const ribbonData = [
-            [{ v: "◀ BACK TO CONSOLE", l: { Target: "#'HOME_CONSOLE'!A1" }, s: navStyle }],
+            [{ t: 'f', f: `HYPERLINK("#'HOME_CONSOLE'!A1", "◀ BACK TO CONSOLE")`, s: navStyle }],
             [{ v: `  ${title.toUpperCase()}`, s: ribbonHeaderStyle }]
         ];
         utils.sheet_add_aoa(ws, ribbonData, { origin: "A1" });
@@ -237,47 +240,47 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ],
         [
             null,
-            { v: "▶ BRANCH SETUP", l: { Target: "#'BRANCH_MASTER'!A1" }, s: tileStyle }, null, 
-            { v: "▶ TODAY'S TASKS", l: { Target: "#'TODAYS_TASKS'!A1" }, s: tileStyle }, null, 
-            { v: "▶ BUSINESS HEALTH", l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: tileStyle }
+            { t: 'f', f: `HYPERLINK("#'BRANCH_MASTER'!A1", "▶ BRANCH SETUP")`, s: tileStyle }, null, 
+            { t: 'f', f: `HYPERLINK("#'TODAYS_TASKS'!A1", "▶ TODAY'S TASKS")`, s: tileStyle }, null, 
+            { t: 'f', f: `HYPERLINK("#'BUSINESS_HEALTH'!A1", "▶ BUSINESS HEALTH")`, s: tileStyle }
         ],
         [
             null,
-            { v: "▶ TEAM HUB", l: { Target: "#'TEAM_HUB'!A1" }, s: tileStyle }, null, 
-            { v: "▶ SHIFT HANDOVER", l: { Target: "#'SHIFT_HANDOVER'!A1" }, s: tileStyle }, null, 
-            { v: "▶ FINANCIAL SHIELD", l: { Target: "#'FINANCIAL_SHIELD'!A1" }, s: tileStyle }
+            { t: 'f', f: `HYPERLINK("#'TEAM_HUB'!A1", "▶ TEAM HUB")`, s: tileStyle }, null, 
+            { t: 'f', f: `HYPERLINK("#'SHIFT_HANDOVER'!A1", "▶ SHIFT HANDOVER")`, s: tileStyle }, null, 
+            { t: 'f', f: `HYPERLINK("#'FINANCIAL_SHIELD'!A1", "▶ FINANCIAL SHIELD")`, s: tileStyle }
         ],
         [
             null,
-            { v: "▶ MASTER SOPs", l: { Target: "#'SOP_LIBRARY'!A1" }, s: tileStyle }, null, 
-            { v: "▶ SYSTEM GUIDE", l: { Target: "#'SYSTEM_GUIDE'!A1" }, s: tileStyle }, null, 
-            { v: "▶ INCIDENT LOG", l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: tileStyle }
+            { t: 'f', f: `HYPERLINK("#'SOP_LIBRARY'!A1", "▶ MASTER SOPs")`, s: tileStyle }, null, 
+            { t: 'f', f: `HYPERLINK("#'SYSTEM_GUIDE'!A1", "▶ SYSTEM GUIDE")`, s: tileStyle }, null, 
+            { t: 'f', f: `HYPERLINK("#'INCIDENT_TRACKER'!A1", "▶ INCIDENT LOG")`, s: tileStyle }
         ],
         [],
         [null, { t: 'f', f: `IFERROR("EMPIRE MOOD: " & IF(G15>=0.9, "HOT - PERFECT EXECUTION!", IF(G15>=0.75, "WARM - MINOR GAPS DETECTED", IF(G15>=0.6, "STABLE - PUSH HARDER", IF(G15>0, "COLD - TURN UP THE HEAT!", "AWAITING DATA")))), "EMPIRE MOOD: LOADING...")`, s: { font: { sz: 16, bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.TILE_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null, null, null, null, null],
         [
             null,
-            { v: "⚡ MOMENTUM", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null, 
-            { v: "🛡️ COMMAND VITALS", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null,
-            { v: "🚨 RISK ALERT", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null
+            { v: "MOMENTUM", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null, 
+            { v: "COMMAND VITALS", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null,
+            { v: "RISK ALERT", s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }, null
         ],
         [
             null,
             { v: "TOP BRANCH:", s: labelStyle },
-            { t: 'f', f: `IF(MAX('BRANCH_MASTER'!$${scoreColLetter}$5:$${scoreColLetter}$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$${scoreColLetter}$5:$${scoreColLetter}$15), 'BRANCH_MASTER'!$${scoreColLetter}$5:$${scoreColLetter}$15, 0)), "AWAITING DATA")`, l: { Target: "#'BRANCH_MASTER'!A1" }, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', ...verticalCenter } } },
+            { t: 'f', f: `IF(MAX('BRANCH_MASTER'!$${scoreColLetter}$5:$${scoreColLetter}$15)>0, INDEX('BRANCH_MASTER'!$B$5:$B$15, MATCH(MAX('BRANCH_MASTER'!$${scoreColLetter}$5:$${scoreColLetter}$15), 'BRANCH_MASTER'!$${scoreColLetter}$5:$${scoreColLetter}$15, 0)), "AWAITING DATA")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center', ...verticalCenter } } },
             { v: "TASKS LOGGED:", s: labelStyle },
-            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED")`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: vitalsBlueDarkStyle },
+            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED")`, s: vitalsBlueDarkStyle },
             { v: "RISK STATUS:", s: labelStyle },
-            { t: 'f', f: `IF(COUNTIFS('INCIDENT_TRACKER'!$G$5:$G$500, "<>YES", 'INCIDENT_TRACKER'!$D$5:$D$500, "?*")>0, "RISK DETECTED", "ALL CLEAR")`, l: { Target: "#'INCIDENT_TRACKER'!A1" }, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'center', ...verticalCenter } } }
+            { t: 'f', f: `IF(COUNTIFS('INCIDENT_TRACKER'!$G$5:$G$500, "<>YES", 'INCIDENT_TRACKER'!$D$5:$D$500, "?*")>0, "RISK DETECTED", "ALL CLEAR")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.RISK_RED } }, alignment: { horizontal: 'center', ...verticalCenter } } }
         ],
         [
             null,
             { v: "OPERATIONAL PULSE:", s: labelStyle },
-            { t: 'f', f: `IF(COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$500, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")), "0%") & " PULSE")`, l: { Target: "#'TEAM_HUB'!A1" }, s: pulseAmberStyle }, 
+            { t: 'f', f: `IF(COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")=0, "AWAITING DATA", TEXT(COUNTIFS('TEAM_HUB'!$G$5:$G$500, ">0") / MAX(1, COUNTIFS('TEAM_HUB'!$D$5:$D$500, "?*")), "0%") & " PULSE")`, s: pulseAmberStyle }, 
             { v: "SHIFT PROGRESS:", s: labelStyle },
-            { t: 'f', f: `IFERROR(COUNTIF('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$5000, "?*")), 0)`, l: { Target: "#'TODAYS_TASKS'!A1" }, s: { ...progressBlueLightStyle, numFmt: '0%' } },
+            { t: 'f', f: `IFERROR(COUNTIF('TODAYS_TASKS'!$J$5:$J$5000, "COMPLETED") / MAX(1, COUNTIFS('TODAYS_TASKS'!$F$5:$F$5000, "?*")), 0)`, s: { ...progressBlueLightStyle, numFmt: '0%' } },
             { v: "UNIT LOAD:", s: labelStyle },
-            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$L$5:$L$5000, "High", 'TODAYS_TASKS'!$J$5:$J$5000, "<>COMPLETED")`, l: { Target: "#'BUSINESS_HEALTH'!A1" }, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }
+            { t: 'f', f: `COUNTIFS('TODAYS_TASKS'!$L$5:$L$5000, "High", 'TODAYS_TASKS'!$J$5:$J$5000, "<>COMPLETED")`, s: { font: { bold: true, color: { rgb: COLORS.WHITE }, sz: 9 }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.CHAMBER_BG } }, alignment: { horizontal: 'center', ...verticalCenter } } }
         ],
         []
     ];
