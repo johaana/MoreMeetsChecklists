@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -26,7 +27,8 @@ import {
     Leaf,
     Recycle,
     Wrench,
-    FileSpreadsheet
+    FileSpreadsheet,
+    History
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -158,7 +160,7 @@ const HeroSectionComp = () => {
                         <div className="space-y-2 md:space-y-3">
                             <div className="flex items-center gap-3">
                                 <div className="w-1 h-5 md:h-6 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
-                                <p className="text-[9px] md:text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em] italic font-headline">THE NEW STANDARD</p>
+                                <p className="text-[9px] font-black text-emerald-500 uppercase tracking-[0.4em] italic font-headline">THE NEW STANDARD</p>
                             </div>
                             <CommandGrid className="max-w-xl" textColor="text-white/80" />
                         </div>
@@ -326,6 +328,37 @@ export default function Home() {
                             </div>
                             <div className="text-center">
                                 <p className="text-2xl md:text-[44px] font-black text-zinc-950 uppercase italic tracking-tighter font-headline">👉 Your operations. Now structured.</p>
+                            </div>
+                        </div>
+                    </div>
+                </Section>
+
+                {/* --- OPERATIONAL CONTINUITY: THE ANXIETY ANCHOR --- */}
+                <Section className="bg-zinc-50 border-y border-zinc-100">
+                    <div className="max-w-5xl mx-auto p-10 md:p-20 rounded-[3rem] border border-zinc-200 bg-white relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-12 opacity-5 hidden md:block">
+                            <History className="w-64 h-64 text-zinc-950" />
+                        </div>
+                        <div className="flex flex-col md:flex-row gap-12 items-center relative z-10 text-left">
+                            <div className="space-y-6 flex-1">
+                                <Badge variant="outline" className="text-zinc-500 border-zinc-300 uppercase tracking-[0.4em] font-black text-[10px]">INSTITUTIONAL CONTINUITY</Badge>
+                                <h2 className="text-[32px] md:text-[50px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.95]">
+                                    When someone resigns, <br/> the system stays.
+                                </h2>
+                                <p className="text-zinc-500 text-lg md:text-xl font-bold italic leading-relaxed">
+                                    One of the biggest silent risks in operations is the loss of tribal knowledge. When experienced staff leave, unwritten shortcuts disappear and undocumented practices break. 
+                                    <br/><br/>
+                                    MoreMeets™ ensures your standards are owned by the business, not the individual. Knowledge becomes permanent infrastructure.
+                                </p>
+                            </div>
+                            <div className="w-full md:w-[350px] shrink-0">
+                                 <div className="rounded-[2rem] overflow-hidden border border-zinc-200 shadow-2xl aspect-[4/5]">
+                                    <img 
+                                        src="https://i.postimg.cc/ncFGB1PQ/resignation2.webp" 
+                                        alt="Resignation Risk" 
+                                        className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700" 
+                                    />
+                                 </div>
                             </div>
                         </div>
                     </div>

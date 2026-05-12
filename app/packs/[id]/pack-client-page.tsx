@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -184,17 +185,17 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                             <div className="absolute -left-4 top-2 bottom-2 w-px bg-emerald-500/20 lg:hidden" />
 
                             <div className="space-y-3 md:space-y-5">
-                                <h1 className="font-headline font-black text-[2.2rem] md:text-[54px] lg:text-[72px] leading-[0.9] uppercase italic tracking-tighter text-white">
+                                <h1 className="font-headline font-black text-[2.2rem] md:text-[54px] lg:text-[68px] leading-[0.9] uppercase italic tracking-tighter text-white">
                                     {titleParts[0]} <br/> 
                                     <span style={{ color: BRAND_GREEN }}>{titleParts[1]}</span> <br/>
                                     <span style={{ color: BRAND_GREEN }}>{titleParts[2]}</span>
                                 </h1 >
                                 <div className="space-y-2 md:space-y-4">
-                                    <p className="text-[13px] md:text-[22px] font-medium text-white max-w-2xl leading-tight">
+                                    <p className="text-[13px] md:text-[20px] font-medium text-white max-w-2xl leading-tight">
                                         {res.heroSubline}
                                     </p>
                                     <div className="border-l-[2px] md:border-l-[3px] border-emerald-500/40 pl-4 md:pl-8 py-0.5">
-                                        <p className="text-sm md:text-lg text-zinc-400 font-bold max-lg:max-w-[300px] leading-tight italic">
+                                        <p className="text-[11px] md:text-sm lg:text-lg text-zinc-400 font-bold max-lg:max-w-[300px] leading-tight italic">
                                             {res.strategicParagraph}
                                         </p>
                                     </div>
@@ -240,13 +241,13 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                         <div className="w-full flex flex-col items-center lg:items-end gap-4 md:gap-6 mt-6 lg:mt-0">
                             <div className="relative group w-full max-w-[280px] md:max-w-[480px]">
                                 <div className="absolute -inset-1 bg-gradient-to-b from-primary/30 to-transparent rounded-[2.5rem] md:rounded-[3.5rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                                <div className="relative overflow-hidden rounded-[2rem] md:rounded-[3rem] border border-white/10 aspect-[1.5/1] shadow-2xl bg-zinc-900">
+                                <div className="relative overflow-hidden rounded-[2rem] md:rounded-[3rem] border border-white/10 aspect-[1.8/1] shadow-2xl bg-zinc-950 p-2 md:p-4">
                                     <img 
                                         src={squircleUrl} 
                                         alt="" 
-                                        className="w-full h-full object-cover grayscale-[0.5] brightness-[0.6] contrast-[1.2] hover:scale-105 transition-transform duration-1000" 
+                                        className="w-full h-full object-contain grayscale-[0.3] brightness-[0.8] hover:scale-105 transition-transform duration-1000" 
                                     />
-                                    <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+                                    <div className="absolute inset-0 bg-black/5 pointer-events-none" />
                                 </div>
                             </div>
 
@@ -278,14 +279,14 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                 </div>
 
                 {/* --- TELEMETRY MARQUEE: INSTITUTIONAL TERMINAL --- */}
-                <div className="absolute bottom-0 w-full bg-[#2A0508] h-10 md:h-12 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
+                <div className="absolute bottom-0 w-full bg-black h-10 md:h-12 overflow-hidden border-t border-emerald-500/30 flex items-center shadow-2xl">
                     <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
                         {sectorData.marquee.map((signal, i) => {
                             const isAlert = /ALERT|WARNING|VARIANCE|PENDING|FAILURE|GAP|DRIFT|LOAD|INCIDENT/.test(signal);
                             const isVerified = /VERIFIED|COMPLETE|STABLE|100%|HEALTHY|SYNCED|ACTIVE|VALIDATED|SUCCESS|PASS/.test(signal);
                             return (
-                                <span key={i} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-[#D6C7C7]">
-                                    {isAlert && <span className="text-[#C86565]">[!]</span>}
+                                <span key={i} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-zinc-400">
+                                    {isAlert && <span className="text-red-400">[!]</span>}
                                     {isVerified && <span className="text-[#5FAF7A]">[✓]</span>}
                                     {!isAlert && !isVerified && <span className="text-[#F5A623]">[~]</span>}
                                     <span className="opacity-90">{signal}</span>
@@ -297,8 +298,8 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                             const isAlert = /ALERT|WARNING|VARIANCE|PENDING|FAILURE|GAP|DRIFT|LOAD|INCIDENT/.test(signal);
                             const isVerified = /VERIFIED|COMPLETE|STABLE|100%|HEALTHY|SYNCED|ACTIVE|VALIDATED|SUCCESS|PASS/.test(signal);
                             return (
-                                <span key={`dup-${i}`} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-[#D6C7C7]">
-                                    {isAlert && <span className="text-[#C86565]">[!]</span>}
+                                <span key={`dup-${i}`} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-zinc-400">
+                                    {isAlert && <span className="text-red-400">[!]</span>}
                                     {isVerified && <span className="text-[#5FAF7A]">[✓]</span>}
                                     {!isAlert && !isVerified && <span className="text-[#F5A623]">[~]</span>}
                                     <span className="opacity-90">{signal}</span>
@@ -401,8 +402,39 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                 </div>
             </Section>
 
-            {/* --- 4. BUILT FOR REAL TEAMS --- */}
-            <Section className="bg-white">
+            {/* --- 4. OPERATIONAL CONTINUITY: THE ANXIETY ANCHOR --- */}
+            <Section className="bg-white border-t border-zinc-100" noSpine>
+                <div className="max-w-5xl mx-auto p-8 md:p-16 rounded-[2.5rem] border border-zinc-200 bg-zinc-50/50 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-12 opacity-5 hidden md:block">
+                        <History className="w-64 h-64 text-zinc-950" />
+                    </div>
+                    <div className="flex flex-col md:flex-row gap-12 items-center relative z-10 text-left">
+                        <div className="space-y-6 flex-1">
+                            <Badge variant="outline" className="text-zinc-500 border-zinc-300 uppercase tracking-[0.4em] font-black text-[10px]">INSTITUTIONAL CONTINUITY</Badge>
+                            <h2 className="text-[30px] md:text-[44px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-tight">
+                                When someone resigns, <br/> the system stays.
+                            </h2>
+                            <p className="text-zinc-500 text-base md:text-lg font-bold italic leading-relaxed">
+                                One of the biggest silent risks in operations is the loss of tribal knowledge. When experienced staff leave, unwritten shortcuts disappear and undocumented practices break. 
+                                <br/><br/>
+                                MoreMeets™ ensures your standards are owned by the business, not the individual. Knowledge becomes permanent infrastructure.
+                            </p>
+                        </div>
+                        <div className="w-full md:w-[320px] shrink-0">
+                             <div className="rounded-[2rem] overflow-hidden border border-zinc-200 shadow-2xl aspect-[4/5]">
+                                <img 
+                                    src="https://i.postimg.cc/jdMQXJpq/resignation1.jpg" 
+                                    alt="Operational Risk" 
+                                    className="w-full h-full object-cover grayscale-[0.2]" 
+                                />
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </Section>
+
+            {/* --- 5. BUILT FOR REAL TEAMS --- */}
+            <Section className="bg-zinc-50/50">
                 <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
                     <div className="text-center space-y-4">
                         <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.3em] font-black text-[10px]">OPERATIONAL REASSURANCE</Badge>
@@ -434,8 +466,8 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                 </div>
             </Section>
 
-            {/* --- 5. GO LIVE IN 10 MINUTES --- */}
-            <Section className="bg-zinc-50 border-y border-zinc-100" id="guide">
+            {/* --- 6. GO LIVE IN 10 MINUTES --- */}
+            <Section className="bg-white border-y border-zinc-100" id="guide">
                  <div className="max-w-5xl mx-auto space-y-16 md:space-y-24">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px]">DEPLOYMENT PROTOCOL</Badge>
@@ -462,8 +494,8 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                     </div>
             </Section>
 
-            {/* --- 6. OPERATIONAL SUSTAINABILITY --- */}
-            <Section className="bg-white" id="esg">
+            {/* --- 7. OPERATIONAL SUSTAINABILITY --- */}
+            <Section className="bg-zinc-50/50" id="esg">
                 <div className="max-w-4xl mx-auto space-y-16">
                     <div className="space-y-6 text-center">
                         <Badge variant="outline" className="text-emerald-600 border-emerald-100 bg-emerald-50 uppercase tracking-[0.5em] font-black text-[10px] italic px-10 py-3 rounded-none">OPERATIONAL SUSTAINABILITY</Badge>
@@ -489,11 +521,11 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                 </div>
             </Section>
 
-            {/* --- 7. PRICING SECTION --- */}
+            {/* --- 8. PRICING SECTION --- */}
             <div id="pricing" className="scroll-mt-20" />
             <PricingClient pack={pack} />
 
-            {/* --- 8. CUSTOMIZATION BRIDGE --- */}
+            {/* --- 9. CUSTOMIZATION BRIDGE --- */}
             <Section className="bg-zinc-950 text-white" noSpine>
                 <div className="max-w-4xl mx-auto p-10 md:p-16 rounded-[2rem] border border-white/10 bg-white/[0.02] relative overflow-hidden text-center space-y-8">
                     <div className="absolute top-0 right-0 p-8 opacity-5">
@@ -519,7 +551,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                 </div>
             </Section>
 
-            {/* --- 9. FINAL MANDATE --- */}
+            {/* --- 10. FINAL MANDATE --- */}
             <Section className="bg-[#0F3D2E] text-white py-20 md:py-32" noSpine>
                 <div className="max-w-6xl mx-auto">
                     <div className="grid lg:grid-cols-[1.2fr,1fr] gap-10 md:gap-20 items-center">
