@@ -7,15 +7,16 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 
 /**
  * ============================================================================
- * GOOGLE SHEETS COMPATIBILITY CHECKLIST (MAINTENANCE MANDATE)
+ * GOOGLE SHEETS COMPATIBILITY CHECKLIST (STABILIZATION MANDATE v15.5)
  * ============================================================================
  * 1. NAVIGATION: Use HYPERLINK formulas only. Native link objects break in Sheets.
- * 2. FORMULAS: Wrap VLOOKUP/INDEX in IFERROR and use absolute references ($A$1).
+ * 2. FORMULAS: Wrap VLOOKUP/INDEX in IFERROR and absolute references ($A$1).
  * 3. ZERO-GHOSTING: Use IF(LEN(TRIM(X))=0, "", X) to prevent "0" in empty lookups.
- * 4. FILTERS: Row 4 must be unmerged to allow native mobile filtering identification.
- * 5. RENDERING: No massive dark fills. White body = 100% visibility & low lag.
- * 6. ROW HEIGHTS: 35pt for data, 55pt for headers. Ensures tap-accuracy on mobile.
- * 7. COLUMN WIDTHS: 75 units for Protocol, 65 for Action. No clipping allowed.
+ * 4. FILTERS: Row 4 must be unmerged to allow native mobile filter detection.
+ * 5. ROW HEIGHTS: 35pt for data, 45pt for SOPs, max 80pt for HUDs.
+ * 6. COLUMN WIDTHS: 75 units for Protocol, 65 for Action. Zero-Clipping Mandate.
+ * 7. FREEZE PANES: Lock top 4 rows and first 2 columns for mobile ergonomics.
+ * 8. DATA INTEGRITY: Preserve Audit/Simple Language, Trainer Notes, and Risks.
  * ============================================================================
  */
 
@@ -27,22 +28,24 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
 
     const wb = utils.book_new();
     const startDate = new Date(); 
-    const ORDER_ID = "MM-SOVEREIGN-15.4-STABLE";
+    const ORDER_ID = "MM-SOVEREIGN-STABLE-V15.5";
 
     // --- INSTITUTIONAL COLOR PALETTE ---
     const COLORS = {
-        NAVY_HUD: "020617",       // Deep Command Blue
-        PRIMARY_GREEN: "22C55E",  // Standard Status Green
-        STATUS_AMBER: "F5A623",   // Warning Level
-        STATUS_RED: "E11D48",     // Risk Level
-        WHITE_BODY: "FFFFFF",     // High-Contrast Surface
-        BORDER_SOFT: "E2E8F0",    // Standard Grid Border
-        INPUT_YELLOW: "FEFCE8",   // Pale Yellow Affordance
-        HEADER_SLATE: "0F172A",   // Standard Data Header
-        TILE_BG: "111827",        // Console Card Background
-        METADATA_GREY: "64748B",  // Secondary Info
-        COACHING_GREEN: "065F46", // Instructional Text
-        CONSEQUENCE_RED: "991B1B"  // Risk Narrative Text
+        NAVY_HUD: "020617",       
+        PRIMARY_GREEN: "22C55E",  
+        STATUS_AMBER: "F5A623",   
+        STATUS_RED: "E11D48",     
+        WHITE_BODY: "FFFFFF",     
+        BORDER_SOFT: "E2E8F0",    
+        INPUT_YELLOW: "FEFCE8",   
+        HEADER_SLATE: "0F172A",   
+        TILE_BG: "111827",        
+        METADATA_GREY: "64748B",  
+        COACHING_GREEN: "065F46", 
+        CONSEQUENCE_RED: "991B1B",
+        STATUS_BLUE: "2563EB",
+        STATUS_MUTED: "94A3B8"
     };
 
     const baseFont = { name: 'Segoe UI', sz: 10 };
@@ -124,21 +127,19 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ];
         utils.sheet_add_aoa(ws, ribbonData, { origin: "A1" });
         
-        const range = utils.decode_range(`A1:${endCol}1`);
-        const titleRange = utils.decode_range(`A2:${endCol}2`);
-        
+        const endCIdx = utils.decode_col(endCol);
         if (!ws['!merges']) ws['!merges'] = [];
-        ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: range.e.c } }); 
-        ws['!merges'].push({ s: { r: 1, c: 0 }, e: { r: 1, c: titleRange.e.c } }); 
+        ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
+        ws['!merges'].push({ s: { r: 1, c: 0 }, e: { r: 1, c: endCIdx } }); 
 
-        // STABILITY: Row 4 is explicitly unmerged for native filtering identification
-        ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 4, xSplit: 5 }];
+        // STABILIZATION: Freeze Top HUD + First 2 Columns
+        ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 4, xSplit: 2 }];
         
         if(!ws['!rows']) ws['!rows'] = [];
         ws['!rows'][0] = { hpt: 30 };
         ws['!rows'][1] = { hpt: 50 };
         ws['!rows'][2] = { hpt: 20 };
-        ws['!rows'][3] = { hpt: 45 }; // Data Header Row
+        ws['!rows'][3] = { hpt: 45 }; 
     };
 
     const addLiabilityFooter = (ws: WorkSheet, lastRow: number, endCol: string = 'M') => {
@@ -169,7 +170,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeWsData: any[][] = [
         [], [],
         [{ v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { alignment: { horizontal: 'center' }, font: { sz: 20, bold: true } } }],
-        [{ v: `OPERATIONAL DATA ENGINE v15.4 | SOVEREIGN STABLE BUILD`, s: { alignment: { horizontal: 'center' }, font: { color: { rgb: COLORS.PRIMARY_GREEN }, bold: true } } }],
+        [{ v: `OPERATIONAL DATA ENGINE v15.5 | SOVEREIGN STABLE`, s: { alignment: { horizontal: 'center' }, font: { color: { rgb: COLORS.PRIMARY_GREEN }, bold: true } } }],
         [{ v: `SECURITY AUTH: ${ORDER_ID}`, s: { alignment: { horizontal: 'center' }, font: { sz: 8, color: { rgb: COLORS.METADATA_GREY } } } }],
         [],
         [
@@ -179,7 +180,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         ],
         [
             { t: 'f', f: `HYPERLINK("#'BRANCH_MASTER'!A1", "▶ BRANCH SETUP")`, s: tileStyle }, null, 
-            { t: 'f', f: `HYPERLINK("#'DAILY_LOG'!A1", "▶ TODAY'S TASKS")`, s: tileStyle }, null, 
+            { t: 'f', f: `HYPERLINK("#'TASK_REGISTER'!A1", "▶ TODAY'S TASKS")`, s: tileStyle }, null, 
             { t: 'f', f: `HYPERLINK("#'BUSINESS_HEALTH'!A1", "▶ BUSINESS HEALTH")`, s: tileStyle }
         ],
         [
@@ -231,7 +232,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     const roles = Array.from(new Set(packChecklists.map(c => c.role)));
     const pData: any[][] = [[], [], [], tHeaders];
-    [1, 2].forEach(bId => {
+    [1, 2, 3, 4, 5].forEach(bId => {
         roles.forEach(role => {
             const rowIdx = pData.length + 1;
             const branchRef = `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`;
@@ -250,14 +251,14 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addLiabilityFooter(pWs, pData.length, 'E');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- 04. DAILY LOG (TODAYS_TASKS) ---
+    // --- 04. TASK REGISTER (MAIN EXECUTION LEDGER) ---
     const lHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, 
         { v: "Role", s: headerStyle }, { v: "Assigned To (Auto)", s: headerStyle },
         { v: "Task ID", s: headerStyle }, 
-        { v: "Technical Protocol (Audit Standard)", s: headerStyle }, 
-        { v: "Action (Floor Instruction)", s: headerStyle }, 
-        { v: "Done By (Staff Initials)", s: headerStyle }, { v: "Verified By (Mgr)", s: headerStyle },
+        { v: "Technical Protocol (Audit)", s: headerStyle }, 
+        { v: "Action (Trainer Notes)", s: headerStyle }, 
+        { v: "Done By (Initials)", s: headerStyle }, { v: "Verified By (Mgr)", s: headerStyle },
         { v: "Status", s: headerStyle }, { v: "Consequence of Failure", s: { ...headerStyle, fill: { patternType: 'solid', fgColor: { rgb: "450a0a" } } } }
     ];
     const mData: any[][] = [[], [], [], lHeaders];
@@ -278,7 +279,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
                     { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, border: t.priority === 'High' ? { ...borderStyle, left: { style: 'thick', color: { rgb: COLORS.STATUS_RED } } } : borderStyle } },
                     { v: t.floorAction || t.trainerNotes || "", s: instructionStyle },
                     { v: "", s: inputStyle },
-                    { v: t.priority === 'High' ? "" : "N/A", s: inputStyle },
+                    { v: "", s: inputStyle },
                     { t: 'f', f: `IF(LEN(TRIM(H${rIdx}))>0, "VERIFIED", "PENDING")`, s: { ...dataStyleCenter, font: { bold: true } } },
                     { v: t.consequence || "Operational Risk Applied.", s: riskStyle }
                 ]);
@@ -287,12 +288,11 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     });
 
     const mWs = utils.aoa_to_sheet(mData);
-    // ZERO-CLIPPING MANDATE: Wide columns for complex text
     mWs['!cols'] = [12, 20, 20, 22, 10, 75, 65, 18, 18, 15, 45].map(w => ({ wch: w }));
-    addSovereignRibbon(mWs, "Daily Operational Logbook", 'K');
+    addSovereignRibbon(mWs, "Daily Operational Register", 'K');
     mWs['!autofilter'] = { ref: `A4:K${mData.length}` };
     addLiabilityFooter(mWs, mData.length, 'K');
-    utils.book_append_sheet(wb, mWs, "DAILY_LOG");
+    utils.book_append_sheet(wb, mWs, "TASK_REGISTER");
 
     // --- 05. SOP LIBRARY ---
     const sHeaders = [
@@ -313,13 +313,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     });
     const sWs = utils.aoa_to_sheet(sData);
     sWs['!cols'] = [25, 10, 75, 65, 55].map(w => ({ wch: w }));
-    // Hard-set row height to 45pt to ensure text wrapping is visible on mobile
     sWs['!rows'] = sData.map((_, i) => ({ hpt: i < 4 ? 50 : 45 }));
     addSovereignRibbon(sWs, "Master SOP Database", 'E');
     addLiabilityFooter(sWs, sData.length, 'E');
     utils.book_append_sheet(wb, sWs, "SOP_LIBRARY");
 
-    // --- 06. INCIDENT TRACKER ---
+    // --- 06. INCIDENT LOG ---
     const iHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch", s: headerStyle }, 
         { v: "Severity", s: headerStyle }, { v: "Description", s: headerStyle },
@@ -338,7 +337,20 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addLiabilityFooter(iWs, iData.length, 'F');
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
-    // --- 07-10. SECONDARY INFRASTRUCTURE (Stubs) ---
+    // --- 07. SYSTEM CONFIG (HIDDEN INFRASTRUCTURE) ---
+    const configData = [
+        [{ v: "SYSTEM_CONFIGURATION_DATA", s: headerStyle }],
+        [{ v: "DROPDOWN_STATUS", s: headerStyle }, { v: "DROPDOWN_DUTY", s: headerStyle }, { v: "DROPDOWN_SEVERITY", s: headerStyle }],
+        [{ v: "PENDING" }, { v: "ACTIVE" }, { v: "P1 - CRITICAL" }],
+        [{ v: "AWAITING MGR" }, { v: "LEAVE" }, { v: "P2 - HIGH" }],
+        [{ v: "VERIFIED" }, { v: "OFF" }, { v: "P3 - MEDIUM" }],
+        [{ v: "OFF CYCLE" }, { v: "TRAINING" }, { v: "P4 - LOW" }]
+    ];
+    const configWs = utils.aoa_to_sheet(configData);
+    utils.book_append_sheet(wb, configWs, "SYSTEM_CONFIG");
+    wb.Workbook = { Sheets: [{ name: "SYSTEM_CONFIG", Hidden: 1 }] };
+
+    // --- SECONDARY INFRASTRUCTURE ---
     const bridgeSheets = [
         { n: "SHIFT_HANDOVER", t: "Shift Handover Protocol", c: 'F' },
         { n: "BUSINESS_HEALTH", t: "Executive Vitals & Analytics", c: 'E' },
@@ -352,6 +364,5 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         utils.book_append_sheet(wb, ws, s.n);
     });
 
-    // FINAL SHIP
     writeFile(wb, `${item.title.replace(/ /g, '_')}_MoreMeets_Sovereign.xlsx`);
 }
