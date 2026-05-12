@@ -185,17 +185,17 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                             <div className="absolute -left-4 top-2 bottom-2 w-px bg-emerald-500/20 lg:hidden" />
 
                             <div className="space-y-3 md:space-y-5">
-                                <h1 className="font-headline font-black text-[2.2rem] md:text-[54px] lg:text-[68px] leading-[0.9] uppercase italic tracking-tighter text-white">
+                                <h1 className="font-headline font-black text-[2.2rem] md:text-[54px] lg:text-[64px] leading-[0.9] uppercase italic tracking-tighter text-white">
                                     {titleParts[0]} <br/> 
                                     <span style={{ color: BRAND_GREEN }}>{titleParts[1]}</span> <br/>
                                     <span style={{ color: BRAND_GREEN }}>{titleParts[2]}</span>
                                 </h1 >
                                 <div className="space-y-2 md:space-y-4">
-                                    <p className="text-[13px] md:text-[20px] font-medium text-white max-w-2xl leading-tight">
+                                    <p className="text-[13px] md:text-[18px] font-medium text-white max-w-2xl leading-tight">
                                         {res.heroSubline}
                                     </p>
                                     <div className="border-l-[2px] md:border-l-[3px] border-emerald-500/40 pl-4 md:pl-8 py-0.5">
-                                        <p className="text-[11px] md:text-sm lg:text-lg text-zinc-400 font-bold max-lg:max-w-[300px] leading-tight italic">
+                                        <p className="text-[13px] md:text-sm lg:text-lg text-zinc-400 font-bold max-lg:max-w-[300px] leading-tight italic">
                                             {res.strategicParagraph}
                                         </p>
                                     </div>
@@ -241,11 +241,11 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                         <div className="w-full flex flex-col items-center lg:items-end gap-4 md:gap-6 mt-6 lg:mt-0">
                             <div className="relative group w-full max-w-[280px] md:max-w-[480px]">
                                 <div className="absolute -inset-1 bg-gradient-to-b from-primary/30 to-transparent rounded-[2.5rem] md:rounded-[3.5rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                                <div className="relative overflow-hidden rounded-[2rem] md:rounded-[3rem] border border-white/10 aspect-[1.8/1] shadow-2xl bg-zinc-950 p-2 md:p-4">
+                                <div className="relative overflow-hidden rounded-[2rem] md:rounded-[3rem] border border-white/10 aspect-[1.8/1] shadow-2xl bg-zinc-950">
                                     <img 
                                         src={squircleUrl} 
                                         alt="" 
-                                        className="w-full h-full object-contain grayscale-[0.3] brightness-[0.8] hover:scale-105 transition-transform duration-1000" 
+                                        className="w-full h-full object-cover grayscale-[0.3] brightness-[0.8] hover:scale-105 transition-transform duration-1000" 
                                     />
                                     <div className="absolute inset-0 bg-black/5 pointer-events-none" />
                                 </div>
@@ -279,14 +279,14 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                 </div>
 
                 {/* --- TELEMETRY MARQUEE: INSTITUTIONAL TERMINAL --- */}
-                <div className="absolute bottom-0 w-full bg-black h-10 md:h-12 overflow-hidden border-t border-emerald-500/30 flex items-center shadow-2xl">
+                <div className="absolute bottom-0 w-full bg-[#2A0508] h-10 md:h-12 overflow-hidden border-t border-emerald-500/30 flex items-center shadow-2xl">
                     <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
                         {sectorData.marquee.map((signal, i) => {
                             const isAlert = /ALERT|WARNING|VARIANCE|PENDING|FAILURE|GAP|DRIFT|LOAD|INCIDENT/.test(signal);
                             const isVerified = /VERIFIED|COMPLETE|STABLE|100%|HEALTHY|SYNCED|ACTIVE|VALIDATED|SUCCESS|PASS/.test(signal);
                             return (
-                                <span key={i} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-zinc-400">
-                                    {isAlert && <span className="text-red-400">[!]</span>}
+                                <span key={i} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-[#D6C7C7]">
+                                    {isAlert && <span className="text-[#C86565]">[!]</span>}
                                     {isVerified && <span className="text-[#5FAF7A]">[✓]</span>}
                                     {!isAlert && !isVerified && <span className="text-[#F5A623]">[~]</span>}
                                     <span className="opacity-90">{signal}</span>
@@ -298,8 +298,8 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                             const isAlert = /ALERT|WARNING|VARIANCE|PENDING|FAILURE|GAP|DRIFT|LOAD|INCIDENT/.test(signal);
                             const isVerified = /VERIFIED|COMPLETE|STABLE|100%|HEALTHY|SYNCED|ACTIVE|VALIDATED|SUCCESS|PASS/.test(signal);
                             return (
-                                <span key={`dup-${i}`} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-zinc-400">
-                                    {isAlert && <span className="text-red-400">[!]</span>}
+                                <span key={`dup-${i}`} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2 text-[#D6C7C7]">
+                                    {isAlert && <span className="text-[#C86565]">[!]</span>}
                                     {isVerified && <span className="text-[#5FAF7A]">[✓]</span>}
                                     {!isAlert && !isVerified && <span className="text-[#F5A623]">[~]</span>}
                                     <span className="opacity-90">{signal}</span>
