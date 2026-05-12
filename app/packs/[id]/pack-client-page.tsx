@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -245,7 +244,7 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
                                     <img 
                                         src={squircleUrl} 
                                         alt="" 
-                                        className="w-full h-full object-cover grayscale-[0.3] brightness-[0.7] hover:scale-105 transition-transform duration-1000" 
+                                        className="w-full h-full object-cover grayscale-[0.5] brightness-[0.6] contrast-[1.2] hover:scale-105 transition-transform duration-1000" 
                                     />
                                     <div className="absolute inset-0 bg-black/10 pointer-events-none" />
                                 </div>

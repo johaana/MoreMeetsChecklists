@@ -195,7 +195,11 @@ export default function AboutPage() {
                 <Section>
                     <div className="max-w-4xl mx-auto p-8 md:p-16 rounded-[2rem] border border-white/5 bg-white/[0.02] space-y-8 relative overflow-hidden">
                         <div className="absolute top-0 right-0 p-10 opacity-5">
-                            <Fingerprint className="w-64 h-64" />
+                            <img 
+                                src="https://i.postimg.cc/jdMQXJpq/resignation1.jpg" 
+                                alt="Institutional Memory Protection" 
+                                className="w-full h-full object-cover opacity-20"
+                            />
                         </div>
                         <div className="flex flex-col md:flex-row gap-8 items-center relative z-10">
                             <div className="space-y-4 flex-1">

@@ -69,8 +69,8 @@ const HeroBackground = () => {
     return (
         <div className="absolute inset-0 z-0 bg-black pointer-events-none">
           <img
-            src="https://i.postimg.cc/BvKyg8vX/ceo-engages-phone-call-briefing-with-investor-sharing-insight.jpg"
-            alt="Operational leadership under pressure"
+            src="https://i.postimg.cc/NM2zhxcs/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg"
+            alt="Executive Command and Operational Intelligence"
             className="h-full w-full object-cover object-center opacity-30 md:opacity-40"
           />
           <div className="absolute inset-0 bg-black/40" />
