@@ -332,10 +332,12 @@ export default function Home() {
                             <div className="grid sm:grid-cols-2 gap-6">
                                 {[
                                     { t: "Unified Group View", d: "See performance across all branches in one dashboard.", i: LayoutGrid },
-                                    { t: "Compliance Shield", d: "Automatic alerts for missed regulatory or safety tasks.", i: ShieldCheck }
+                                    { t: "Compliance Shield", d: "Automatic alerts for missed regulatory or safety tasks.", i: ShieldCheck },
+                                    { t: "Institutional Memory", d: "Knowledge stays with the business when key staff resign.", i: History },
+                                    { t: "Zero Training Lag", d: "New staff follow built-in instructions from day one.", i: GraduationCap }
                                 ].map((feat, i) => (
                                     <div key={i} className="flex gap-4">
-                                        <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center shrink-0 border border-zinc-100">
+                                        <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center shrink-0 border border-zinc-100 shadow-sm group-hover:bg-primary group-hover:text-black transition-all">
                                             <feat.i className="w-5 h-5 text-primary" />
                                         </div>
                                         <div className="space-y-1">
