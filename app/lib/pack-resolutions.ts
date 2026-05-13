@@ -1,4 +1,3 @@
-
 export type PackResolution = {
     heroTitle?: string;
     heroSubline: string;
