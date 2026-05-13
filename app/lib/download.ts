@@ -311,6 +311,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     mWs['!cols'] = [12, 20, 20, 22, 10, 75, 65, 18, 18, 15, 45, 1, 1, 1, 1].map(w => ({ wch: w }));
     addSovereignRibbon(mWs, "Daily Operational Register", 'K');
     addLiabilityFooter(mWs, mData.length, 'K');
+
+    // MOBILE ERGONOMICS: Set task row heights to 35pt
+    if(!mWs['!rows']) mWs['!rows'] = [];
+    for(let i=4; i<mData.length; i++) {
+        mWs['!rows'][i] = { hpt: 35 };
+    }
+
     // Dropdown for Status (Col J)
     (mWs as any)['!dataValidation'] = [{ sqref: "J5:J1000", type: "list", formula1: "SYSTEM_CONFIG!$B$2:$B$6" }];
     // Conditional Formatting for Status
@@ -342,6 +349,13 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     sWs['!cols'] = [25, 10, 75, 65, 55].map(w => ({ wch: w }));
     addSovereignRibbon(sWs, "Master SOP Database", 'E');
     addLiabilityFooter(sWs, sData.length, 'E');
+
+    // MOBILE ERGONOMICS: Set SOP row heights to 45pt for deep reading
+    if(!sWs['!rows']) sWs['!rows'] = [];
+    for(let i=4; i<sData.length; i++) {
+        sWs['!rows'][i] = { hpt: 45 };
+    }
+
     utils.book_append_sheet(wb, sWs, "SOP_LIBRARY");
 
     // --- 06. INCIDENT LOG ---
