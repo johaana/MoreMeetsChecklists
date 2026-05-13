@@ -45,9 +45,9 @@ const BRAND_GREEN = "#22C55E";
 const NARRATIVE = {
     line1: "STOP CHASING.",
     line2: "START SEEING.",
-    subline: "See daily work getting done. Even when you aren't there.",
+    subline: "Capture operational memory. See daily work getting done. Even when you aren't there.",
     cta: "Deploy the system",
-    meta: "WORKS ON PHONES • NO INSTALLATION • BUILT IN EXCEL • OPERATED VIA SHEETS"
+    meta: "WORKS ON PHONES • NO INSTALLATION • NO TRAINING DEPENDENCY • BUILT IN EXCEL • OPERATED VIA SHEETS"
 };
 
 const TECH_SPECS = [
@@ -216,108 +216,61 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* --- ANATOMY OF A FAILURE SECTION --- */}
+                {/* --- WITHOUT VS WITH SECTION --- */}
                 <Section className="bg-white border-y border-zinc-100">
-                    <div className="max-w-5xl mx-auto text-center space-y-16 md:space-y-24">
-                        <div className="space-y-6">
-                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px]">Forensic Finding</Badge>
-                            <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">WHEN EXECUTION DEPENDS ON MEMORY</h2>
+                    <div className="max-w-6xl mx-auto space-y-16 md:space-y-24">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px]">OPERATIONAL UPGRADE</Badge>
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">NOT SOFTWARE. INFRASTRUCTURE.</h2>
                         </div>
-                        <div className="grid md:grid-cols-2 gap-16 md:gap-24 text-left">
-                            <div className="space-y-10">
-                                <h4 className="text-[11px] font-black text-zinc-400 uppercase tracking-[0.4em] italic border-b border-zinc-100 pb-4 uppercase">BEFORE VISIBILITY</h4>
-                                <ul className="space-y-10">
-                                    {[
-                                        "Managers chasing confirmations manually.",
-                                        "Shift handovers missed or undocumented.",
-                                        "Technical checks assumed, not verified.",
-                                        "SOPs existing only as static folders.",
-                                        "Work stops when a key person resigns."
-                                    ].map((p, i) => (
-                                        <div key={i} className="flex items-center gap-6 group">
-                                            <div className="relative flex h-3 w-3">
-                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                                                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                                            </div>
-                                            <span className="text-zinc-500 text-lg md:text-xl font-bold italic leading-tight text-left">{p}</span>
-                                        </div>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="space-y-10 p-10 md:p-14 rounded-[3rem] bg-red-50/50 border border-red-100 shadow-xl relative text-left">
-                                <div className="absolute top-6 right-10 opacity-10">
-                                    <AlertTriangle className="w-24 h-24 text-red-600" />
+
+                        <div className="grid lg:grid-cols-2 gap-12 lg:gap-0 border border-zinc-200 rounded-[3rem] overflow-hidden shadow-2xl">
+                            <div className="p-10 md:p-20 bg-zinc-50 border-r border-zinc-200 relative text-left">
+                                <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-500" />
+                                <div className="space-y-8">
+                                    <h3 className="text-2xl md:text-4xl font-black font-headline text-red-600 uppercase italic tracking-tighter">Without MoreMeets</h3>
+                                    <ul className="space-y-6">
+                                        {[
+                                            "SOPs ignored in static folders",
+                                            "Managers chase updates via WhatsApp",
+                                            "Training depends on manager memory",
+                                            "Audit panic during inspections",
+                                            "Operational memory loss when staff leave"
+                                        ].map((text, i) => (
+                                            <li key={i} className="flex items-start gap-5 text-zinc-500 text-lg md:text-xl font-bold italic leading-snug">
+                                                <X className="w-6 h-6 text-red-400 shrink-0 mt-0.5" />
+                                                <span>{text}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
-                                <h4 className="text-[11px] font-black text-red-600 uppercase tracking-[0.4em] italic border-b border-red-200 pb-4">OPERATIONAL FRICTION</h4>
-                                <ul className="space-y-10">
-                                    {[
-                                        "Managers trapped in follow-up loops.",
-                                        "Zero auditable trail for insurance/audits.",
-                                        "Knowledge vanishes during team rotations.",
-                                        "Critical safety lapses during busy hours.",
-                                        "Total dependency on tribal knowledge."
-                                    ].map((p, i) => (
-                                        <div key={i} className="flex items-start gap-5">
-                                            <X className="w-6 h-6 text-red-600 shrink-0 mt-0.5" />
-                                            <span className="text-red-950 font-black text-lg md:text-xl leading-tight italic uppercase text-left">{p}</span>
-                                        </div>
-                                    ))}
-                                </ul>
                             </div>
-                        </div>
-                    </div>
-                </Section>
-                
-                <Section className="bg-white">
-                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-0 border border-zinc-200 rounded-[3rem] overflow-hidden shadow-2xl">
-                        <div className="p-10 md:p-20 bg-zinc-50 border-r border-zinc-200 relative text-left">
-                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-500" />
-                            <div className="space-y-8">
-                                <Badge variant="outline" className="text-red-500 border-red-200 uppercase tracking-[0.4em] font-black text-[10px]">THE FRICTION</Badge>
-                                <h2 className="text-4xl md:text-6xl font-black font-headline italic uppercase tracking-tighter leading-tight text-left">Instead of...</h2>
-                                <ul className="space-y-6">
-                                    {[
-                                        "Hiring consultants at ₹50,000+ per unit.",
-                                        "Spending 100+ hours building SOPs from scratch.",
-                                        "Managing through unsearchable chat groups.",
-                                        "Chasing teams manually for basic daily tasks."
-                                    ].map((text, i) => (
-                                        <li key={i} className="flex items-start gap-5 text-zinc-500 text-lg md:text-xl font-bold italic leading-snug">
-                                            <X className="w-6 h-6 text-red-400 shrink-0 mt-0.5" />
-                                            <span>{text}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="p-10 md:p-20 bg-emerald-50/30 relative text-left">
-                            <div className="absolute right-0 top-0 bottom-0 w-1 bg-primary" />
-                            <div className="space-y-8">
-                                <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.4em] font-black text-[10px]">THE SOLUTION</Badge>
-                                <h2 className="text-4xl md:text-6xl font-black font-headline italic uppercase tracking-tighter leading-tight text-left">You deploy...</h2>
-                                <p className="text-xl md:text-2xl text-primary font-black italic leading-tight uppercase text-left">
-                                    A complete institutional data engine. <br/> Live in 10 minutes.
-                                </p>
-                                <ul className="space-y-6 pt-4">
-                                    {[
-                                        "120+ Pre-built technical protocols (SOPs).",
-                                        "Live Operational Dashboard for visibility.",
-                                        "Excel Master file for sovereign ownership.",
-                                        "Binary 'Done/Missed' verification."
-                                    ].map((text, i) => (
-                                        <li key={i} className="flex items-start gap-5 text-zinc-950 text-lg md:text-xl font-black italic leading-snug uppercase">
-                                            <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
-                                            <span>{text}</span>
-                                        </li>
-                                    ))}
-                                </ul>
+                            <div className="p-10 md:p-20 bg-emerald-50/30 relative text-left">
+                                <div className="absolute right-0 top-0 bottom-0 w-1 bg-primary" />
+                                <div className="space-y-8">
+                                    <h3 className="text-2xl md:text-4xl font-black font-headline text-primary uppercase italic tracking-tighter">With MoreMeets</h3>
+                                    <ul className="space-y-6">
+                                        {[
+                                            "Live execution tracking on mobile",
+                                            "Accountability visibility for leadership",
+                                            "Structured, instructional handovers",
+                                            "Permanent audit-readiness",
+                                            "Institutional continuity secured"
+                                        ].map((text, i) => (
+                                            <li key={i} className="flex items-start gap-5 text-zinc-950 text-lg md:text-xl font-black italic leading-snug uppercase">
+                                                <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+                                                <span>{text}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </Section>
 
                 {/* --- BUILT FOR LEADERSHIP SECTION --- */}
-                <Section className="bg-white border-t border-zinc-100">
+                <Section className="bg-white">
                     <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.2fr,0.8fr] gap-12 md:gap-24 items-center">
                         <div className="space-y-8 text-left">
                             <div className="space-y-6">
@@ -361,7 +314,8 @@ export default function Home() {
                     </div>
                 </Section>
 
-                <Section className="bg-white">
+                {/* --- DEPLOYMENT HUB --- */}
+                <Section className="bg-zinc-50 border-y border-zinc-100">
                     <div className="max-w-[1200px] mx-auto space-y-24">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px]">Rapid Deployment</Badge>
@@ -388,42 +342,12 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* --- OPERATIONAL CONTINUITY: THE ANXIETY ANCHOR --- */}
-                <Section className="bg-zinc-50 border-y border-zinc-100">
-                    <div className="max-w-5xl mx-auto p-10 md:p-20 rounded-[3rem] border border-zinc-200 bg-white relative overflow-hidden">
-                        <div className="absolute top-0 right-0 p-12 opacity-5 hidden md:block">
-                            <History className="w-64 h-64 text-zinc-950" />
-                        </div>
-                        <div className="flex flex-col md:flex-row gap-12 items-center relative z-10 text-left">
-                            <div className="space-y-6 flex-1">
-                                <Badge variant="outline" className="text-zinc-500 border-zinc-300 uppercase tracking-[0.4em] font-black text-[10px]">INSTITUTIONAL CONTINUITY</Badge>
-                                <h2 className="text-[32px] md:text-[50px] font-black font-headline text-zinc-950 uppercase italic tracking-tighter leading-[0.95]">
-                                    When someone resigns, <br/> the system stays.
-                                </h2>
-                                <p className="text-zinc-500 text-lg md:text-xl font-bold italic leading-relaxed">
-                                    One of the biggest silent risks in operations is the loss of tribal knowledge. When experienced staff leave, unwritten shortcuts disappear and undocumented practices break. 
-                                    <br/><br/>
-                                    MoreMeets™ ensures your standards are owned by the business, not the individual. Knowledge becomes permanent infrastructure.
-                                </p>
-                            </div>
-                            <div className="w-full md:w-[350px] shrink-0">
-                                 <div className="rounded-[2rem] overflow-hidden border border-zinc-200 shadow-2xl aspect-[4/5]">
-                                    <img 
-                                        src="https://i.postimg.cc/ncFGB1PQ/resignation2.webp" 
-                                        alt="Resignation Risk" 
-                                        className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700" 
-                                    />
-                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </Section>
-
+                {/* --- SECTOR NAVIGATOR --- */}
                 <Section className="bg-[#0E1420] border-y border-white/5">
                     <div className="space-y-20">
                         <div className="text-center space-y-6">
                             <h2 className="text-[36px] md:text-[64px] font-black text-white uppercase italic tracking-tight font-headline">Select Your Vertical</h2>
-                            <p className="text-white/40 text-xl md:text-2xl font-bold italic">Engineered for single units and multi-unit groups.</p>
+                            <p className="text-white/40 text-xl md:text-2xl font-bold italic">Operational Infrastructure engineered for single units and multi-unit groups.</p>
                         </div>
                         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
                             {[
@@ -443,51 +367,6 @@ export default function Home() {
                                     <span className="text-[11px] md:text-[12px] font-black uppercase tracking-[0.25em] text-white/40 group-hover:text-white leading-tight italic">{sector.name}</span>
                                 </Link>
                             ))}
-                        </div>
-                    </div>
-                </Section>
-
-                <Section className="bg-white border-b border-zinc-100">
-                    <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
-                        <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-emerald-600 border-emerald-100 bg-emerald-50 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic">OPERATIONAL SUSTAINABILITY</Badge>
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
-                                Sustainability Through Rigor
-                            </h2>
-                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto">
-                                Environmental sustainability isn't a report. It's the byproduct of daily operational discipline, technical maintenance, and visibility.
-                            </p>
-                        </div>
-
-                        <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 items-center">
-                            <div className="grid sm:grid-cols-2 gap-6">
-                                {[
-                                    { t: "Energy Discipline", d: "Verified shutdown compliance for lighting, HVAC, and idle infrastructure.", i: Zap },
-                                    { t: "Resource Conservation", d: "Resource vitals logging and overnight leak detection through digital checks.", i: Leaf },
-                                    { t: "Waste Mitigation", d: "Yield monitoring and operational controls reduce preventable waste and leakage.", i: Recycle },
-                                    { t: "Asset Longevity", d: "Preventive maintenance rigor extends equipment lifespan and reduces replacement cycles.", i: Wrench }
-                                ].map((card, i) => (
-                                    <div key={i} className="bg-zinc-50 border border-zinc-100 p-8 rounded-[1.5rem] space-y-6 group hover:bg-white hover:shadow-2xl hover:border-emerald-500/20 transition-all duration-700 text-left">
-                                        <div className="w-12 h-12 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-zinc-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-sm">
-                                            <card.i className="w-6 h-6" />
-                                        </div>
-                                        <div className="space-y-2">
-                                            <h4 className="text-lg font-black uppercase italic text-zinc-950 leading-tight">{card.t}</h4>
-                                            <p className="text-[11px] font-bold text-zinc-400 italic uppercase leading-relaxed">{card.d}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="relative group">
-                                <div className="absolute -inset-4 bg-emerald-500/10 rounded-[3rem] blur-2xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                                <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden border border-zinc-200 shadow-2xl bg-zinc-950">
-                                    <img 
-                                        src="https://i.postimg.cc/Kz2G2czv/facilities-management-2.jpg" 
-                                        alt="Operational Sustainability via Engineering" 
-                                        className="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-700" 
-                                    />
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </Section>
