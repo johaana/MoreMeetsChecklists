@@ -355,7 +355,7 @@ export default function Home() {
                                 { name: "Hotels", id: "hotels_and_resorts", icon: Building },
                                 { name: "Retail", id: "retail_operations_system", icon: ShoppingBag },
                                 { name: "Healthcare", id: "healthcare_and_hospital_operations", icon: Hospital },
-                                { name: "Schools", id: "school_operations_pack", icon: School },
+                                { name: "Schools", id: "school_operations_pack", id_tag: "SCHL", icon: School },
                                 { name: "Franchise", id: "franchise_operations_pack", icon: Store },
                                 { name: "Facilities", id: "facility_management_blueprint", icon: Building2 },
                                 { name: "Cinemas", id: "cinema_operations_pack", icon: Popcorn }
