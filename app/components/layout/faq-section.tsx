@@ -3,108 +3,66 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const FaqSection = () => (
-    <section id="faq" className="w-full py-16 md:py-24 bg-[#0B0F14]">
+    <section id="faq" className="w-full py-16 md:py-24 bg-white border-t border-zinc-100">
         <div className="container px-4 md:px-6">
             <div className="text-center max-w-3xl mx-auto mb-12">
-                <h2 className="text-3xl md:text-4xl font-black font-headline uppercase italic text-primary-text tracking-tighter">BEFORE YOU DEPLOY</h2>
+                <h2 className="text-3xl md:text-4xl font-black font-headline uppercase italic text-zinc-950 tracking-tighter">OPERATIONAL OBJECTIONS</h2>
             </div>
             <div className="max-w-3xl mx-auto">
                 <Accordion type="single" collapsible className="w-full" defaultValue="item-1">
-                    <AccordionItem value="item-1" className="border-white/10">
-                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">We already have SOPs. Why do we need this?</AccordionTrigger>
-                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic space-y-4">
+                    <AccordionItem value="item-1" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">We already have SOPs. Why do we need this?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
                            <p>Most businesses already have SOPs. <strong>The problem is execution.</strong></p>
-                           <p>SOPs sit in folders. They depend on memory. They are not followed daily.</p>
-                           <p>MoreMeets converts SOPs into a <strong>Live Operating System</strong> where responsibility is assigned and execution is recorded in real time.</p>
-                           <p className="text-primary-text font-black border-t border-white/5 pt-2">SOPs = Documentation. <br/> MoreMeets = Execution.</p>
+                           <p>SOPs sit in folders or PDFs. They depend on memory. They are not followed daily.</p>
+                           <p>MoreMeets converts static SOPs into a <strong>Live Operating System</strong> where work is assigned and execution is recorded in real time.</p>
                         </AccordionContent>
                     </AccordionItem>
 
-                    <AccordionItem value="item-platforms" className="border-white/10">
-                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">We already use an SOP or workflow platform. Will this still work?</AccordionTrigger>
-                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic space-y-4">
-                            <p>Absolutely.</p>
-                            <p>Most operational platforms provide the <strong>software infrastructure</strong> (workflow automation, approvals, and user permissions). MoreMeets™ provides the <strong>operational logic and technical content.</strong></p>
-                            
-                            <div className="grid md:grid-cols-2 gap-8 py-4 border-y border-white/5 my-4">
-                                <div className="space-y-3">
-                                    <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">Your Existing Platform</p>
-                                    <ul className="text-xs space-y-1 opacity-60">
-                                        <li>• Workflow automation</li>
-                                        <li>• Approvals & notifications</li>
-                                        <li>• Task assignment</li>
-                                        <li>• User permissions</li>
-                                        <li>• Reporting dashboards</li>
-                                    </ul>
-                                </div>
-                                <div className="space-y-3">
-                                    <p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">MoreMeets™</p>
-                                    <ul className="text-xs space-y-1 text-primary/80">
-                                        <li>• Pre-built industry-specific SOPs</li>
-                                        <li>• Daily execution logic</li>
-                                        <li>• Trainer notes for teams</li>
-                                        <li>• Audit-ready structures</li>
-                                        <li>• Accountability & compliance systems</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <p>MoreMeets™ can be used <strong>directly in Excel or Google Sheets</strong> or seamlessly <strong>adapted into your existing platform</strong> to give it technical depth.</p>
-                            <p className="text-primary-text font-black pt-2 uppercase tracking-tighter">
-                                Your platform manages workflows. <br/> MoreMeets™ defines what needs to happen every day.
-                            </p>
+                    <AccordionItem value="item-whatsapp" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Why not just use WhatsApp for tracking?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
+                            <p>WhatsApp is great for chat, but terrible for infrastructure.</p>
+                            <p>Instructions get buried. Handovers are unsearchable. There is zero verifiable audit trail for compliance. MoreMeets™ provides a <strong>single source of truth</strong> that WhatsApp cannot offer.</p>
                         </AccordionContent>
                     </AccordionItem>
 
-                    <AccordionItem value="item-custom" className="border-white/10">
-                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Do you offer professional customization support?</AccordionTrigger>
-                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic space-y-4">
-                          <p>Yes. If you require the framework to be surgically adapted to your unique brand protocols, we offer <strong>Forensic Customization.</strong></p>
-                          <p>Our team handles department mapping, task-weighting, and multi-branch synchronization for you. Customization builds start at <strong>₹9,999 / $125 USD</strong> per project.</p>
-                          <p className="pt-2"><a href="https://calendly.com/more-moremeets/30min" target="_blank" className="text-primary underline font-black uppercase tracking-widest text-[10px]">Book a Customization Discovery Session &rarr;</a></p>
+                    <AccordionItem value="item-difficulty" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Is this difficult for non-technical staff?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
+                          <p>No. Your team already knows how to use a phone and a spreadsheet.</p>
+                          <p>There is no new software to install, no passwords to manage, and no complex retraining. They simply enter their initials when a task is done.</p>
                         </AccordionContent>
                     </AccordionItem>
 
-                    <AccordionItem value="item-2" className="border-white/10">
-                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">How does this work without being an app?</AccordionTrigger>
-                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic space-y-4">
-                          <p>It runs on tools your team already understands (Excel / Google Sheets). You own the Excel Master file.</p>
-                          <p>For daily operations, you simply upload it once to Google Drive and 'Open with Google Sheets'. This gives your team a live, mobile-friendly dashboard without requiring them to install new software or manage separate logins.</p>
+                    <AccordionItem value="item-edit" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Can we edit or add our own tasks?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
+                          <p>Yes. Unlike a locked SaaS app, <strong>you own the engine.</strong></p>
+                          <p>You can add, delete, or modify any task to fit your brand's unique protocols. It is 100% customizable and yours forever.</p>
                         </AccordionContent>
                     </AccordionItem>
 
-                    <AccordionItem value="item-3" className="border-white/10">
-                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Will our team actually use this?</AccordionTrigger>
-                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
-                           Yes, because it’s <strong>Simple.</strong> They don't have to report separately. They simply open their role-specific view, see exactly what needs to be done, and enter their name when it's completed. The system automatically handles the status and time-logging.
+                    <AccordionItem value="item-phones" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Does this actually work on phones?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
+                          <p>Yes. By using Google Sheets, your team gets a native mobile app experience.</p>
+                          <p>We have engineered the column widths and row heights specifically for high-speed mobile task execution.</p>
                         </AccordionContent>
                     </AccordionItem>
 
-                    <AccordionItem value="item-4" className="border-white/10">
-                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">What happens when a manager resigns?</AccordionTrigger>
-                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
-                          The <strong>System continues.</strong> MoreMeets converts tribal knowledge into permanent institutional memory. When someone resigns, your standards don't leave with them. The new hire simply follows the built-in Trainer’s Notes.
+                    <AccordionItem value="item-smallbiz" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">Is this for small businesses too?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
+                           <p><strong>Yes.</strong> Most single-location businesses are actually the biggest beneficiaries.</p>
+                           <p>Why? Because in a small business, execution usually depends on the owner personally following up every day. This system automates that visibility, giving you your time back.</p>
                         </AccordionContent>
                     </AccordionItem>
 
-                    <AccordionItem value="item-5" className="border-white/10">
-                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Can I edit tasks or add my own?</AccordionTrigger>
-                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
-                          Yes. Unlike a locked SaaS app, <strong>you own the engine.</strong> You can add, delete, or modify any task to fit your brand's unique needs. It is 100% customizable and yours forever.
-                        </AccordionContent>
-                    </AccordionItem>
-
-                    <AccordionItem value="item-lock" className="border-white/10">
-                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Is the system locked? Can I prevent staff from changing my SOPs?</AccordionTrigger>
-                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
-                          No, the system is <strong>100% unlocked</strong> and yours to own. To prevent accidental edits by staff, we recommend using the "Protect Sheet" feature in Excel or Google Sheets. You can lock everything except the "Done By" and "Verified By" columns, ensuring your core protocols and formulas remain bulletproof while allowing daily reporting.
-                        </AccordionContent>
-                    </AccordionItem>
-
-                    <AccordionItem value="item-6" className="border-white/10">
-                        <AccordionTrigger className="text-primary-text font-bold hover:no-underline uppercase tracking-tighter italic text-left">Is this system audit-ready?</AccordionTrigger>
-                        <AccordionContent className="text-secondary-text leading-relaxed font-medium italic">
-                           Absolutely. Every system is built using <strong>real compliance standards</strong> (ISO, HACCP, OSHA). The logs generated provide the exact "Proof of Evidence" and auditable trail required by inspectors and regulatory bodies.
+                    <AccordionItem value="item-staffleave" className="border-zinc-200">
+                        <AccordionTrigger className="text-zinc-950 font-black hover:no-underline uppercase tracking-tighter italic text-left py-6">What happens when key staff leave?</AccordionTrigger>
+                        <AccordionContent className="text-zinc-500 leading-relaxed font-bold italic space-y-4 pb-6">
+                          <p>The <strong>System stays.</strong> MoreMeets™ converts tribal knowledge into permanent institutional memory. When someone resigns, your standards don't leave with them.</p>
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>

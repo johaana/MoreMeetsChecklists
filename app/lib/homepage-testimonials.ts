@@ -1,4 +1,3 @@
-
 export type HomepageTestimonial = {
   name: string;
   title: string;
@@ -8,21 +7,21 @@ export type HomepageTestimonial = {
 
 export const homepageTestimonials: HomepageTestimonial[] = [
   {
-    name: "Sameer Verma",
-    title: "General Manager, Boutique Hotel Group",
-    quote: "Our housekeeping standards stopped depending on verbal follow-ups. When our HOD resigned, the operational routines stayed intact.",
+    name: "Vikram S.",
+    title: "Owner, Boutique Restaurant Group",
+    quote: "We stopped depending on verbal follow-ups. Every station finally had visibility, and I could see opening checks were done from my phone before I even arrived.",
     stars: 5,
   },
   {
-    name: "Dr. Anjali Rao",
-    title: "Director of Nursing, Multi-specialty Hospital",
-    quote: "Audit preparation used to take days of manual checking. Now our nursing teams follow one clear system for daily safety and compliance routines.",
+    name: "Sarah M.",
+    title: "Operations Manager, Multi-Unit Retail",
+    quote: "Standardizing execution across 12 branches seemed impossible until we deployed this. New staff followed the system from Day 1 without retraining.",
     stars: 5,
   },
   {
-    name: "Vikram Mehra",
-    title: "CEO, Multi-Unit Franchise Group",
-    quote: "Before MoreMeets, maintaining the same standards across 12 branches meant constant follow-ups. Now every location runs on one shared operational system.",
+    name: "Anil K.",
+    title: "Facility Director",
+    quote: "Audit preparation used to be a week of panic. Now it's just a download of our daily logs. The accountability trail is finally permanent.",
     stars: 5,
   },
 ];

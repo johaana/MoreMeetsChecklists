@@ -4,57 +4,51 @@ import { Mail } from "lucide-react";
 
 export function Footer() {
     return (
-        <footer className="w-full border-t border-border bg-alternate-background text-secondary-text pb-24 md:pb-12">
-            <div className="container grid items-start justify-center gap-8 px-4 py-12 text-center md:grid-cols-3 md:text-left">
+        <footer className="w-full border-t border-zinc-100 bg-zinc-50 text-zinc-500 pb-24 md:pb-12">
+            <div className="container grid items-start justify-center gap-12 px-4 py-12 text-center md:grid-cols-3 md:text-left mx-auto max-w-6xl">
                 <div className="flex flex-col items-center md:items-start gap-2">
                     <Link href="/" className="flex items-center justify-center gap-2" prefetch={false}>
                         <Logo className="h-6 w-6 text-primary" />
                         <div className="flex flex-col">
-                            <span className="font-headline text-lg font-bold text-primary-text leading-none tracking-tight">MoreMeets™</span>
-                            <span className="text-[8px] font-black uppercase tracking-[0.3em] text-white/40 leading-none mt-1">LESS MISSES.</span>
+                            <span className="font-headline text-lg font-bold text-zinc-950 leading-none tracking-tight">MoreMeets™</span>
+                            <span className="text-[8px] font-black uppercase tracking-[0.3em] text-zinc-400 leading-none mt-1">OPERATIONAL INFRASTRUCTURE</span>
                         </div>
                     </Link>
-                    <p className="text-xs md:text-sm text-muted-text max-w-xs pt-2">
-                        Audit-Ready Operational Standards for modern teams. Built in Excel. Shared through Google Sheets for live operations.
+                    <p className="text-xs text-zinc-400 max-w-xs pt-4 font-bold italic leading-relaxed">
+                        The professional standard for operational execution and institutional memory. Built in Excel. Operated via Google Sheets.
                     </p>
                 </div>
-                <div className="flex flex-col gap-2 items-center text-sm md:items-start md:mx-auto">
-                    <h3 className="font-semibold mb-2 text-primary-text">Navigation</h3>
-                    <Link href="/about" className="text-secondary-text hover:text-primary-text" prefetch={false}>About Us</Link>
-                    <Link href="/library" className="text-secondary-text hover:text-primary-text" prefetch={false}>Operational Systems</Link>
-                    <Link href="/blog" className="text-secondary-text hover:text-primary-text" prefetch={false}>Intelligence Hub</Link>
-                    <Link href="/contact" className="text-secondary-text hover:text-primary-text" prefetch={false}>Contact</Link>
-                    <a href="https://calendly.com/more-moremeets/30min" target="_blank" className="text-secondary-text hover:text-primary-text">Book a Consultation</a>
+                <div className="flex flex-col gap-3 items-center text-xs md:items-start md:mx-auto font-black uppercase tracking-widest">
+                    <h3 className="font-black mb-2 text-zinc-950 text-[10px] tracking-[0.3em]">RESOURCES</h3>
+                    <Link href="/#how-it-works" className="hover:text-primary transition-colors" prefetch={false}>How It Works</Link>
+                    <Link href="/library" className="hover:text-primary transition-colors" prefetch={false}>Operational Packs</Link>
+                    <Link href="/#pricing" className="hover:text-primary transition-colors" prefetch={false}>Pricing</Link>
+                    <Link href="/contact" className="hover:text-primary transition-colors" prefetch={false}>Contact</Link>
+                    <a href="https://calendly.com/more-moremeets/30min" target="_blank" className="text-primary">Book Discovery Session</a>
                 </div>
-                <div className="flex flex-col gap-2 items-center md:items-start text-sm">
-                    <h3 className="font-semibold mb-2 text-primary-text">Contact & Legal</h3>
-                    <div className="flex items-center gap-2 text-secondary-text hover:text-primary-text">
+                <div className="flex flex-col gap-3 items-center md:items-start text-xs font-black uppercase tracking-widest">
+                    <h3 className="font-black mb-2 text-zinc-950 text-[10px] tracking-[0.3em]">CONTACT & LEGAL</h3>
+                    <div className="flex items-center gap-2 hover:text-primary transition-colors">
                         <WhatsAppIcon className="w-4 h-4" />
                         <a href="https://wa.me/919860997711" target="_blank" rel="noopener noreferrer">
                             Chat on WhatsApp
                         </a>
                     </div>
-                    <div className="flex items-center gap-2 text-secondary-text hover:text-primary-text">
+                    <div className="flex items-center gap-2 hover:text-primary transition-colors">
                         <Mail className="w-4 h-4" />
                         <a href="mailto:more@moremeets.com">
                             more@moremeets.com
                         </a>
                     </div>
-                     <div className="mt-4 flex flex-col gap-2 items-center md:items-start">
-                        <Link href="/terms" className="text-secondary-text hover:text-primary-text" prefetch={false}>
-                            Terms of Service
-                        </Link>
-                        <Link href="/privacy" className="text-secondary-text hover:text-primary-text" prefetch={false}>
-                            Privacy Policy
-                        </Link>
-                         <Link href="/sitemap.xml" className="text-secondary-text hover:text-primary-text" prefetch={false}>
-                            Sitemap
-                        </Link>
+                     <div className="mt-6 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 text-[9px] text-zinc-300">
+                        <Link href="/terms" className="hover:text-zinc-500">Terms</Link>
+                        <Link href="/privacy" className="hover:text-zinc-500">Privacy</Link>
+                        <Link href="/refund" className="hover:text-zinc-500">Refund Policy</Link>
                     </div>
                 </div>
             </div>
-             <div className="border-t border-white/5 py-4">
-                <p className="text-xs text-white/20 text-center uppercase tracking-widest font-black">&copy; 2025 MoreMeets™. All rights reserved.</p>
+             <div className="border-t border-zinc-100 py-6">
+                <p className="text-[9px] text-zinc-300 text-center uppercase tracking-[0.5em] font-black">&copy; 2025 MoreMeets™. All rights reserved.</p>
             </div>
         </footer>
     );

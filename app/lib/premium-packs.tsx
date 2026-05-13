@@ -1,4 +1,3 @@
-
 import { allPacks } from "./packs/all_packs";
 
 export type Checklist = {
@@ -62,7 +61,7 @@ const shortDescriptions: Record<string, string> = {
     'hotels_and_resorts': "Eliminate guest safety gaps and reputation damage. 250+ control points across Front Office, Housekeeping, and Engineering.",
     'healthcare_and_hospital_operations': "Zero-risk clinical governance. 200+ NABH/JCI aligned control points from surgical safety to narcotics control.",
     'school_operations_pack': "Prevent campus tragedies and admin chaos. Transport safety, playground risk, and student welfare protocols.",
-    'franchise_operations_pack': "Scale your brand without losing control. Standardize every outlet with royalty protection and brand parity audits.",
+    'franchise_operations_pack': "Standardize multi-location operations with franchise operational SOPs for audit readiness, brand consistency, onboarding, reporting discipline, and operational continuity.",
     'facility_management_blueprint': "Stop catastrophic utility failures. Hard and Soft FM engine for MEP, fire safety, and vendor SLA command.",
     'cinema_operations_pack': "Technical excellence for cinema groups. Projection QC, concession yield logic, and auditorium hygiene standards.",
     'logistics_warehouse_pack': "Stop inventory shrinkage and fatal safety gaps. 120+ protocols for MHE safety and stock integrity.",
@@ -73,25 +72,24 @@ const shortDescriptions: Record<string, string> = {
 };
 
 /**
- * --- SOVEREIGN PRICING MANDATE v2.0 ---
- * All standard paid packs are intentionally priced at ₹999 / $12.
- * This signals "Strategic Access" rather than "Discounted Value".
+ * --- SOVEREIGN PRICING MANDATE v3.0 ---
+ * India: ₹3,499 | Global: $49
+ * "One-time purchase • Own forever"
  */
 export const premiumPacks: PremiumPack[] = [
     ...allPacks.map(p => {
-        // Standardized Nomenclature to "Operations System"
         let processedPack = { ...p };
         processedPack.title = processedPack.title.replace('Operating System', 'Operations System');
         
-        // Apply Global Professional Access Rates
+        // Standardized Operational Infrastructure Pricing
         if ((processedPack.priceINR ?? 0) > 0 || (processedPack.priceUSD ?? 0) > 0) {
             processedPack = {
                 ...processedPack,
-                priceINR: 999,
+                priceINR: 3499,
                 anchorPriceINR: undefined,
-                priceUSD: 12,
+                priceUSD: 49,
                 anchorPriceUSD: undefined,
-                competitorPriceUSD: processedPack.id.includes('hospital') || processedPack.id.includes('facility') ? 999 : 599
+                competitorPriceUSD: 599
             }
         }
 

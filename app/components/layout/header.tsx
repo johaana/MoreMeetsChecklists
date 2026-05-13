@@ -12,7 +12,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 
-// --- CONFIGURATION: THE SOVEREIGN ELITE ---
 const ELITE_PACK_IDS = [
     'restaurants',
     'hotels_and_resorts',
@@ -66,7 +65,7 @@ const BrandLogo = () => (
         <Logo className={cn("h-5 w-5 md:h-6 md:w-6 text-[#22C55E]")} />
         <div className="flex flex-col">
             <span className={cn("font-headline text-base md:text-lg font-bold leading-[1] tracking-tight text-white drop-shadow-sm")}>MoreMeets™</span>
-            <span className={cn("text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] leading-none mt-0.5 text-white/40")}>LESS MISSES.</span>
+            <span className={cn("text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] leading-none mt-0.5 text-white/40")}>OPERATIONAL INFRASTRUCTURE</span>
         </div>
     </Link>
 );
@@ -104,14 +103,14 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
             </div>
 
             <nav className="ml-auto hidden md:flex gap-10 items-center">
-                <Link href="/about" className={navLinkClass} prefetch={false}>About Us</Link>
+                <Link href="/#how-it-works" className={navLinkClass} prefetch={false}>How It Works</Link>
                 <div 
                     className="group static"
                     onMouseEnter={() => setIsDropdownOpen(true)}
                     onMouseLeave={() => setIsDropdownOpen(false)}
                 >
                     <button className={cn(navLinkClass, "flex items-center gap-1.5 py-6")}>
-                        Systems <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+                        Operational Packs <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
                     </button>
                     {isDropdownOpen && (
                         <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[90vw] max-w-7xl opacity-100 visible transition-all duration-300 pt-2 z-20">
@@ -123,7 +122,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                                 </ScrollArea>
                                 <div className="bg-black/[0.02] p-4 border-t border-black/5 flex items-center justify-between px-10">
                                     <Link href="/library" className="text-[10px] font-black uppercase tracking-[0.3em] text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-black/5">
-                                        View Systems Hub &rarr;
+                                        View All Systems &rarr;
                                     </Link>
                                     <Link href="/packs/animal_shelter_pack" className="text-[9px] font-black text-primary hover:text-primary/80 transition-colors p-2 rounded-md hover:bg-black/5 flex items-center gap-2 uppercase tracking-[0.3em]">
                                         <PawPrint className="w-3.5 h-3.5" /> Social Impact (Free)
@@ -133,7 +132,8 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                         </div>
                     )}
                 </div>
-                <Link href="/blog" className={navLinkClass} prefetch={false}>Intelligence</Link>
+                <Link href="/#who-it-is-for" className={navLinkClass} prefetch={false}>Who It's For</Link>
+                <Link href="/#pricing" className={navLinkClass} prefetch={false}>Pricing</Link>
                 <Link href="/contact" className={navLinkClass} prefetch={false}>Contact</Link>
             </nav>
 
@@ -156,18 +156,13 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                             <div className="flex flex-col p-4">
                                 <Accordion type="multiple" className="w-full">
                                     <div className="border-b border-black/5">
-                                        <Link href="/about" className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 transition-colors py-5 flex" prefetch={false}>
-                                            About Us
-                                        </Link>
-                                    </div>
-                                    <div className="border-b border-black/5">
-                                        <Link href="/library" className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 transition-colors py-5 flex" prefetch={false}>
-                                            Systems Hub
+                                        <Link href="/#how-it-works" className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 transition-colors py-5 flex" prefetch={false}>
+                                            How It Works
                                         </Link>
                                     </div>
                                     <AccordionItem value="packs" className="border-b border-black/5">
                                         <AccordionTrigger className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 hover:no-underline py-5">
-                                            Elite Industry Systems
+                                            Operational Packs
                                         </AccordionTrigger>
                                         <AccordionContent className="pb-4">
                                             {Object.entries(allPacksByCategory).sort(([a], [b]) => a.localeCompare(b)).map(([category, packs]) => (
@@ -186,8 +181,13 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                                         </AccordionContent>
                                     </AccordionItem>
                                     <div className="border-b border-black/5">
-                                        <Link href="/blog" className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 transition-colors py-5 flex" prefetch={false}>
-                                            Intelligence Hub
+                                        <Link href="/#who-it-is-for" className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 transition-colors py-5 flex" prefetch={false}>
+                                            Who It's For
+                                        </Link>
+                                    </div>
+                                    <div className="border-b border-black/5">
+                                        <Link href="/#pricing" className="text-xs font-black uppercase tracking-[0.3em] text-slate-600 hover:text-slate-900 transition-colors py-5 flex" prefetch={false}>
+                                            Pricing
                                         </Link>
                                     </div>
                                     <div>
