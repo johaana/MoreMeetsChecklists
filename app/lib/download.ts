@@ -8,7 +8,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
  * ============================================================================
  * GOOGLE SHEETS COMPATIBILITY CHECKLIST (STABILIZATION MANDATE v15.6)
  * ============================================================================
- * 1. NAVIGATION: Use HYPERLINK formulas only. Native link objects break in Sheets.
+ * 1. NAVIGATION: Use Native Link Objects ({ l: { Target: "Sheet!A1" } }). Formulas are unstable.
  * 2. FORMULAS: Wrap VLOOKUP/INDEX in IFERROR and use absolute references ($A$1).
  * 3. ZERO-GHOSTING: Use IF(LEN(TRIM(X))=0, "", X) to prevent "0" in empty lookups.
  * 4. FILTERS: Row 4 must be unmerged to allow native mobile filter detection.
@@ -118,9 +118,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     };
 
     // --- HELPER: SYSTEM RIBBON (HUD) ---
+    // Uses Alternative 4: Native Link Objects for single-click navigation after XLSX import.
     const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'M') => {
         const ribbonData = [
-            [{ t: 'f', f: `HYPERLINK("#'HOME_CONSOLE'!A1", "◀ BACK TO CONSOLE")`, s: navStyle }],
+            [{ v: "◀ BACK TO CONSOLE", l: { Target: "HOME_CONSOLE!A1" }, s: navStyle }],
             [{ v: `  ${title.toUpperCase()}`, s: { ...navStyle, font: { ...navStyle.font, sz: 18, color: { rgb: "FFFFFF" } } } }]
         ];
         utils.sheet_add_aoa(ws, ribbonData, { origin: "A1" });
@@ -189,19 +190,19 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             { v: "EXECUTIVE INTEL", s: { font: { bold: true, color: { rgb: COLORS.HEADER_SLATE } } } }
         ],
         [
-            { t: 'f', f: `HYPERLINK("#'BRANCH_MASTER'!A1", "▶ BRANCH SETUP")`, s: tileStyle }, null, 
-            { t: 'f', f: `HYPERLINK("#'TASK_REGISTER'!A1", "▶ TODAY'S TASKS")`, s: tileStyle }, null, 
-            { t: 'f', f: `HYPERLINK("#'BUSINESS_HEALTH'!A1", "▶ BUSINESS HEALTH")`, s: tileStyle }
+            { v: "▶ BRANCH SETUP", l: { Target: "BRANCH_MASTER!A1" }, s: tileStyle }, null, 
+            { v: "▶ TODAY'S TASKS", l: { Target: "TASK_REGISTER!A1" }, s: tileStyle }, null, 
+            { v: "▶ BUSINESS HEALTH", l: { Target: "BUSINESS_HEALTH!A1" }, s: tileStyle }
         ],
         [
-            { t: 'f', f: `HYPERLINK("#'TEAM_HUB'!A1", "▶ TEAM HUB")`, s: tileStyle }, null, 
-            { t: 'f', f: `HYPERLINK("#'SHIFT_HANDOVER'!A1", "▶ SHIFT HANDOVER")`, s: tileStyle }, null, 
-            { t: 'f', f: `HYPERLINK("#'FINANCIAL_SHIELD'!A1", "▶ FINANCIAL SHIELD")`, s: tileStyle }
+            { v: "▶ TEAM HUB", l: { Target: "TEAM_HUB!A1" }, s: tileStyle }, null, 
+            { v: "▶ SHIFT HANDOVER", l: { Target: "SHIFT_HANDOVER!A1" }, s: tileStyle }, null, 
+            { v: "▶ FINANCIAL SHIELD", l: { Target: "FINANCIAL_SHIELD!A1" }, s: tileStyle }
         ],
         [
-            { t: 'f', f: `HYPERLINK("#'SOP_LIBRARY'!A1", "▶ MASTER SOPs")`, s: tileStyle }, null, 
-            { t: 'f', f: `HYPERLINK("#'SYSTEM_GUIDE'!A1", "▶ SYSTEM GUIDE")`, s: tileStyle }, null, 
-            { t: 'f', f: `HYPERLINK("#'INCIDENT_LOG'!A1", "▶ INCIDENT LOG")`, s: tileStyle }
+            { v: "▶ MASTER SOPs", l: { Target: "SOP_LIBRARY!A1" }, s: tileStyle }, null, 
+            { v: "▶ SYSTEM GUIDE", l: { Target: "SYSTEM_GUIDE!A1" }, s: tileStyle }, null, 
+            { v: "▶ INCIDENT LOG", l: { Target: "INCIDENT_LOG!A1" }, s: tileStyle }
         ]
     ];
 
