@@ -8,7 +8,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
  * ============================================================================
  * GOOGLE SHEETS COMPATIBILITY CHECKLIST (STABILIZATION MANDATE v15.6)
  * ============================================================================
- * 1. NAVIGATION: Use Native Link Objects ({ l: { Target: "Sheet!A1" } }). Formulas are unstable.
+ * 1. NAVIGATION: Use Native Link Objects ({ l: { Target: "Sheet!A1" } }). Jumps directly.
  * 2. FORMULAS: Wrap VLOOKUP/INDEX in IFERROR and use absolute references ($A$1).
  * 3. ZERO-GHOSTING: Use IF(LEN(TRIM(X))=0, "", X) to prevent "0" in empty lookups.
  * 4. FILTERS: Row 4 must be unmerged to allow native mobile filter detection.
@@ -19,7 +19,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
  * ============================================================================
  */
 
-export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual') => {
+export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'pack' | 'individual', DEMO_MODE = false) => {
     if (!item) {
         alert("System error: operational data not found.");
         return;
@@ -118,7 +118,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     };
 
     // --- HELPER: SYSTEM RIBBON (HUD) ---
-    // Uses Alternative 4: Native Link Objects for single-click navigation after XLSX import.
     const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'M') => {
         const ribbonData = [
             [{ v: "◀ BACK TO CONSOLE", l: { Target: "HOME_CONSOLE!A1" }, s: navStyle }],
@@ -246,13 +245,12 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     [1, 2, 3, 4, 5].forEach(bId => {
         rolesList.forEach(role => {
             const rowIdx = pData.length + 1;
-            const branchRef = `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`;
-            const ghostGuard = `IF(LEN(TRIM(${branchRef}))=0, "", ${branchRef})`;
+            const branchRef = `IFERROR(IF(LEN(TRIM(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId})))=0, "", INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId})), "")`;
             pData.push([
-                { t: 'f', f: `IF(LEN(${ghostGuard})>0, ${ghostGuard} & "|" & B${rowIdx}, "")`, s: dataStyleCenter },
+                { t: 'f', f: `IF(LEN(${branchRef})>0, ${branchRef} & "|" & B${rowIdx}, "")`, s: dataStyleCenter },
                 { v: role, s: dataStyleLeft },
-                { t: 'f', f: ghostGuard, s: dataStyleCenter },
-                { v: "", s: inputStyle },
+                { t: 'f', f: branchRef, s: dataStyleCenter },
+                { v: DEMO_MODE ? "John Doe" : "", s: inputStyle },
                 { v: "ACTIVE", s: inputStyle }
             ]);
         });
@@ -261,7 +259,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     pWs['!cols'] = [0, 25, 25, 35, 15].map((w, i) => ({ wch: w, hidden: i === 0 }));
     addSovereignRibbon(pWs, "Responsibility & Team Hub", 'E');
     addLiabilityFooter(pWs, pData.length, 'E');
-    // Dropdown for Duty Status (Col E)
     (pWs as any)['!dataValidation'] = [{ sqref: "E5:E500", type: "list", formula1: "SYSTEM_CONFIG!$A$2:$A$5" }];
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
@@ -278,26 +275,28 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const mData: any[][] = [[], [], [], lHeaders];
     [1, 2].forEach(bId => {
         packChecklists.forEach(c => {
-            c.tasks.forEach((t) => {
+            c.tasks.forEach((t, tIdx) => {
                 const rIdx = mData.length + 1;
-                const branchRef = `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`;
-                const branchGhostGuard = `IF(LEN(TRIM(${branchRef}))=0, "", ${branchRef})`;
+                const branchRef = `IFERROR(IF(LEN(TRIM(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId})))=0, "", INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId})), "")`;
                 const keyRef = `B${rIdx} & "|" & C${rIdx}`;
-                const assignedVlookup = `VLOOKUP(${keyRef}, 'TEAM_HUB'!$A$5:$D$500, 4, FALSE)`;
-                const staffFormula = `IFERROR(IF(LEN(TRIM(${assignedVlookup}))=0, "UNASSIGNED", ${assignedVlookup}), "UNASSIGNED")`;
-                // Status Logic: IF(Verified) -> VERIFIED, IF(Done) -> AWAITING MGR, ELSE PENDING
+                const staffVlookup = `VLOOKUP(${keyRef}, 'TEAM_HUB'!$A$5:$D$500, 4, FALSE)`;
+                const staffFormula = `IFERROR(IF(LEN(TRIM(${staffVlookup}))=0, "UNASSIGNED", ${staffVlookup}), "UNASSIGNED")`;
                 const statusFormula = `IF(LEN(TRIM(I${rIdx}))>0, "VERIFIED", IF(LEN(TRIM(H${rIdx}))>0, "AWAITING MGR", "PENDING"))`;
+
+                // Demo Data Logic
+                const doneBy = (DEMO_MODE && tIdx < 2) ? "JD" : "";
+                const verifiedBy = (DEMO_MODE && tIdx === 0) ? "MM" : "";
 
                 mData.push([
                     { v: new Date(), t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
-                    { t: 'f', f: branchGhostGuard, s: dataStyleCenter },
+                    { t: 'f', f: branchRef, s: dataStyleCenter },
                     { v: c.role, s: dataStyleLeft },
                     { t: 'f', f: staffFormula, s: dataStyleLeft },
                     { v: t.id, s: dataStyleCenter },
                     { v: t.technicalProtocol || t.description, s: dataStyleLeft },
                     { v: t.floorAction || t.trainerNotes || "", s: instructionStyle },
-                    { v: "", s: inputStyle },
-                    { v: "", s: inputStyle },
+                    { v: doneBy, s: inputStyle },
+                    { v: verifiedBy, s: inputStyle },
                     { t: 'f', f: statusFormula, s: dataStyleCenter },
                     { v: t.consequence || "Operational Risk Applied.", s: riskStyle },
                     { v: new Date(), t: 'd', s: { hidden: true } }, // L: Created At
@@ -313,15 +312,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     addSovereignRibbon(mWs, "Daily Operational Register", 'K');
     addLiabilityFooter(mWs, mData.length, 'K');
 
-    // MOBILE ERGONOMICS: Set task row heights to 35pt
     if(!mWs['!rows']) mWs['!rows'] = [];
-    for(let i=4; i<mData.length; i++) {
-        mWs['!rows'][i] = { hpt: 35 };
-    }
+    for(let i=4; i<mData.length; i++) { mWs['!rows'][i] = { hpt: 35 }; }
 
-    // Dropdown for Status (Col J)
     (mWs as any)['!dataValidation'] = [{ sqref: "J5:J1000", type: "list", formula1: "SYSTEM_CONFIG!$B$2:$B$6" }];
-    // Conditional Formatting for Status
     (mWs as any)['!conditionalFormatting'] = [
         { type: "expression", formula: `SEARCH("VERIFIED", J5)`, style: { fill: { fgColor: { rgb: "C6EFCE" } }, font: { color: { rgb: "006100" } } }, sqref: "J5:J1000" },
         { type: "expression", formula: `SEARCH("OVERDUE", J5)`, style: { fill: { fgColor: { rgb: "FFC7CE" } }, font: { color: { rgb: "9C0006" } } }, sqref: "J5:J1000" },
@@ -350,13 +344,8 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     sWs['!cols'] = [25, 10, 75, 65, 55].map(w => ({ wch: w }));
     addSovereignRibbon(sWs, "Master SOP Database", 'E');
     addLiabilityFooter(sWs, sData.length, 'E');
-
-    // MOBILE ERGONOMICS: Set SOP row heights to 45pt for deep reading
     if(!sWs['!rows']) sWs['!rows'] = [];
-    for(let i=4; i<sData.length; i++) {
-        sWs['!rows'][i] = { hpt: 45 };
-    }
-
+    for(let i=4; i<sData.length; i++) { sWs['!rows'][i] = { hpt: 45 }; }
     utils.book_append_sheet(wb, sWs, "SOP_LIBRARY");
 
     // --- 06. INCIDENT LOG ---
@@ -366,9 +355,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { v: "Reported By", s: headerStyle }, { v: "Action Taken", s: headerStyle }, { v: "Status", s: headerStyle }
     ];
     const iData: any[][] = [[], [], [], iHeaders];
-    for(let i=0; i<15; i++) {
-        iData.push([null, null, null, null, null, null, "OPEN"]);
+    if (DEMO_MODE) {
+        iData.push([{ v: new Date(), t: 'd', s: dataStyleCenter }, { v: "Unit 1", s: dataStyleCenter }, { v: "Minor leakage in cold storage shelf B.", s: dataStyleLeft }, { v: "P3 - MEDIUM", s: dataStyleCenter }, { v: "John Doe", s: dataStyleCenter }, { v: "Cleaned spill and flagged for repair.", s: dataStyleLeft }, { v: "RESOLVED", s: dataStyleCenter }]);
     }
+    for(let i=0; i<10; i++) { iData.push([null, null, null, null, null, null, "OPEN"]); }
     const iWs = utils.aoa_to_sheet(iData);
     addSovereignRibbon(iWs, "Liability & Incident Ledger", 'G');
     addLiabilityFooter(iWs, iData.length, 'G');
@@ -378,12 +368,28 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     ];
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
+    // --- 07. SYSTEM GUIDE ---
+    const guideData = [
+        [], [],
+        [{ v: "SOVEREIGN SYSTEM DEPLOYMENT MANUAL", s: { font: { sz: 16, bold: true } } }],
+        [],
+        [{ v: "STEP 1: DOWNLOAD & UPLOAD", s: { font: { bold: true } } }, { v: "Upload this file to your corporate Google Drive. Select 'Open with Google Sheets'." }],
+        [{ v: "STEP 2: BRANCH MASTER", s: { font: { bold: true } } }, { v: "Enter your branch names in the BRANCH_MASTER tab." }],
+        [{ v: "STEP 3: TEAM HUB", s: { font: { bold: true } } }, { v: "Map staff members to their operational roles in the TEAM_HUB tab." }],
+        [{ v: "STEP 4: DAILY RUNTIME", s: { font: { bold: true } } }, { v: "Staff open the TASK_REGISTER on their phones, filter by 'Role', and initials when done." }],
+        [],
+        [{ v: "MANAGER COMMAND:", s: { font: { bold: true, color: { rgb: COLORS.RISK_RED } } } }, { v: "Check 'AWAITING MGR' statuses daily and initials the 'Verified By' column to turn tasks GREEN." }]
+    ];
+    const gWs = utils.aoa_to_sheet(guideData);
+    addSovereignRibbon(gWs, "Instructional Protocol", 'B');
+    gWs['!cols'] = [{ wch: 30 }, { wch: 80 }];
+    utils.book_append_sheet(wb, gWs, "SYSTEM_GUIDE");
+
     // --- SECONDARY INFRASTRUCTURE ---
     const bridgeSheets = [
         { n: "SHIFT_HANDOVER", t: "Shift Handover Protocol", c: 'F' },
         { n: "BUSINESS_HEALTH", t: "Executive Vitals & Analytics", c: 'E' },
-        { n: "FINANCIAL_SHIELD", t: "Revenue & Margin Integrity", c: 'G' },
-        { n: "SYSTEM_GUIDE", t: "Deployment & Command Manual", c: 'B' }
+        { n: "FINANCIAL_SHIELD", t: "Revenue & Margin Integrity", c: 'G' }
     ];
     bridgeSheets.forEach(s => {
         const ws = utils.aoa_to_sheet([[],[],[]]);
@@ -392,7 +398,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         utils.book_append_sheet(wb, ws, s.n);
     });
 
-    // Hide SYSTEM_CONFIG Sheet
     if (!wb.Workbook) wb.Workbook = { Sheets: [] };
     const configIdx = wb.SheetNames.indexOf("SYSTEM_CONFIG");
     wb.Workbook.Sheets[configIdx] = { Hidden: 1 };

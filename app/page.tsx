@@ -47,14 +47,14 @@ const NARRATIVE = {
     line2: "START SEEING.",
     subline: "See daily work getting done. Even when you aren't there.",
     cta: "Deploy the system",
-    meta: "SINGLE / MULTI-UNIT READY • AUDIT-READY COMPLIANCE"
+    meta: "WORKS ON PHONES • NO INSTALLATION • BUILT IN EXCEL • OPERATED VIA SHEETS"
 };
 
 const TECH_SPECS = [
-    { t: "100+ Industry-Specific SOPs", i: ClipboardCheck },
+    { t: "120+ Pre-built technical SOPs", i: ClipboardCheck },
     { t: "Live Operational Dashboard", i: Activity },
-    { t: "Excel Master • Shared via Sheets", i: FileSpreadsheet },
-    { t: "Trainer Notes for teams", i: Smartphone }
+    { t: "Excel Master • Operated via Sheets", i: FileSpreadsheet },
+    { t: "Built-in Trainer Notes for staff", i: Smartphone }
 ];
 
 const SIGNALS = [
@@ -118,7 +118,7 @@ const SovereignCTA = ({ className }: { className?: string }) => (
                 </Link>
             </Button>
             <p className="text-[10px] md:xs text-zinc-400 font-bold italic">
-                Built in Excel. Shared through Google Sheets for live operations. No app rollout required.
+                Operated via Google Sheets for live team access. No software rollout required.
             </p>
         </div>
         <div className="w-full">
@@ -300,7 +300,7 @@ export default function Home() {
                                 </p>
                                 <ul className="space-y-6 pt-4">
                                     {[
-                                        "100+ Pre-built technical protocols (SOPs).",
+                                        "120+ Pre-built technical protocols (SOPs).",
                                         "Live Operational Dashboard for visibility.",
                                         "Excel Master file for sovereign ownership.",
                                         "Binary 'Done/Missed' verification."
@@ -331,10 +331,10 @@ export default function Home() {
                             </div>
                             <div className="grid sm:grid-cols-2 gap-6">
                                 {[
-                                    { t: "Unified Group View", d: "See performance across all branches in one dashboard.", i: LayoutGrid },
-                                    { t: "Compliance Shield", d: "Automatic alerts for missed regulatory or safety tasks.", i: ShieldCheck },
                                     { t: "Institutional Memory", d: "Knowledge stays with the business when key staff resign.", i: History },
-                                    { t: "Zero Training Lag", d: "New staff follow built-in instructions from day one.", i: GraduationCap }
+                                    { t: "Live Visibility", d: "See what's done across all branches without being there.", i: Activity },
+                                    { t: "Zero Training Lag", d: "New staff follow built-in instructions from day one.", i: GraduationCap },
+                                    { t: "Audit-Ready Records", d: "Verifiable logs for insurers, inspectors, and regulators.", i: ShieldCheck }
                                 ].map((feat, i) => (
                                     <div key={i} className="flex gap-4">
                                         <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center shrink-0 border border-zinc-100 shadow-sm group-hover:bg-primary group-hover:text-black transition-all">
@@ -365,7 +365,7 @@ export default function Home() {
                     <div className="max-w-[1200px] mx-auto space-y-24">
                         <div className="text-center space-y-4">
                             <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.5em] font-black text-[10px]">Rapid Deployment</Badge>
-                            <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">DEPLOY IN 10 MINUTES</h2>
+                            <h2 className="text-[36px] md:text-[64px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">DEPLOY IN 10 MINUTES</h2>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
                             {[
@@ -499,8 +499,8 @@ export default function Home() {
                     <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:32px_32px]" />
                     <div className="max-[1000px] mx-auto space-y-16 md:space-y-24 relative z-10">
                         <div className="space-y-8">
-                            <h2 className="text-[48px] md:text-[110px] font-black leading-[0.9] tracking-tighter uppercase italic font-headline text-black">Professional Access Pricing</h2>
-                            <h3 className="text-xl md:text-[36px] text-black/60 font-bold italic">Institutional systems. Intentionally priced for everyday operators.</h3>
+                            <h2 className="text-[48px] md:text-[110px] font-black leading-[0.9] tracking-tighter uppercase italic font-headline text-black text-center">Professional Access Pricing</h2>
+                            <h3 className="text-xl md:text-[36px] text-black/60 font-bold italic text-center">Institutional systems. Intentionally priced for everyday operators.</h3>
                         </div>
                         <div className="flex flex-col items-center gap-10 md:gap-14">
                             <button className="h-14 min-[400px]:h-[90px] md:h-[120px] px-8 min-[400px]:px-16 md:px-24 rounded-[20px] min-[400px]:rounded-[30px] bg-black text-white font-black uppercase italic text-lg min-[400px]:text-2xl md:text-5xl shadow-2xl hover:scale-[1.05] active:scale-95 transition-all border-none group w-full max-w-2xl mx-auto flex items-center justify-center">
