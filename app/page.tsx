@@ -233,7 +233,7 @@ export default function Home() {
                                         {[
                                             "SOPs ignored in static folders",
                                             "Managers chase updates via WhatsApp",
-                                            "Training depends on manager memory",
+                                            "Training inconsistency",
                                             "Audit panic during inspections",
                                             "Operational memory loss when staff leave"
                                         ].map((text, i) => (
@@ -290,8 +290,8 @@ export default function Home() {
                                     { t: "Audit-Ready Records", d: "Verifiable logs for insurers, inspectors, and regulators.", i: ShieldCheck }
                                 ].map((feat, i) => (
                                     <div key={i} className="flex gap-4">
-                                        <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center shrink-0 border border-zinc-100 shadow-sm group-hover:bg-primary group-hover:text-black transition-all">
-                                            <feat.i className="w-5 h-5 text-primary" />
+                                        <div className="w-10 h-10 rounded-xl bg-zinc-50 flex items-center justify-center shrink-0 border border-zinc-100 shadow-sm transition-all group">
+                                            <feat.i className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
                                         </div>
                                         <div className="space-y-1">
                                             <p className="font-black text-xs uppercase italic text-zinc-950 leading-none">{feat.t}</p>
@@ -355,7 +355,7 @@ export default function Home() {
                                 { name: "Hotels", id: "hotels_and_resorts", icon: Building },
                                 { name: "Retail", id: "retail_operations_system", icon: ShoppingBag },
                                 { name: "Healthcare", id: "healthcare_and_hospital_operations", icon: Hospital },
-                                { name: "Schools", id: "school_operations_pack", id_tag: "SCHL", icon: School },
+                                { name: "Schools", id: "school_operations_pack", icon: School },
                                 { name: "Franchise", id: "franchise_operations_pack", icon: Store },
                                 { name: "Facilities", id: "facility_management_blueprint", icon: Building2 },
                                 { name: "Cinemas", id: "cinema_operations_pack", icon: Popcorn }
