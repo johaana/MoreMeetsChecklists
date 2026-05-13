@@ -6,7 +6,7 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 
 /**
  * ============================================================================
- * GOOGLE SHEETS COMPATIBILITY CHECKLIST (STABILIZATION MANDATE v15.7)
+ * GOOGLE SHEETS COMPATIBILITY CHECKLIST (STABILIZATION MANDATE v15.8)
  * ============================================================================
  * 1. NAVIGATION: Use HYPERLINK formulas only. Native link objects break in Sheets.
  * 2. FORMULAS: Wrap VLOOKUP/INDEX in IFERROR and use absolute references ($A$1).
@@ -26,7 +26,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     }
 
     const wb = utils.book_new();
-    const ORDER_ID = "MM-SOVEREIGN-STABILIZED-V15.7";
+    const ORDER_ID = "MM-SOVEREIGN-STABILIZED-V15.8";
 
     // --- INSTITUTIONAL COLOR PALETTE ---
     const COLORS = {
@@ -127,7 +127,6 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         
         const endCIdx = utils.decode_col(endCol);
         if (!ws['!merges']) ws['!merges'] = [];
-        // STABILIZATION: Row 1-2 only for title merges. Row 3 left unmerged as buffer.
         ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
         ws['!merges'].push({ s: { r: 1, c: 0 }, e: { r: 1, c: endCIdx } }); 
 
@@ -169,7 +168,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     const homeWsData: any[][] = [
         [], [],
         [{ v: `MOREMEETS™ ${item.title.toUpperCase()} CONSOLE`, s: { alignment: { horizontal: 'center' }, font: { sz: 20, bold: true } } }],
-        [{ v: `OPERATIONAL DATA ENGINE v15.7 | SOVEREIGN STABLE`, s: { alignment: { horizontal: 'center' }, font: { color: { rgb: COLORS.PRIMARY_GREEN }, bold: true } } }],
+        [{ v: `OPERATIONAL DATA ENGINE v15.8 | SOVEREIGN STABLE`, s: { alignment: { horizontal: 'center' }, font: { color: { rgb: COLORS.PRIMARY_GREEN }, bold: true } } }],
         [{ v: `SECURITY AUTH: ${ORDER_ID}`, s: { alignment: { horizontal: 'center' }, font: { sz: 8, color: { rgb: COLORS.METADATA_GREY } } } }],
         [],
         [
@@ -235,10 +234,11 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         roles.forEach(role => {
             const rowIdx = pData.length + 1;
             const branchRef = `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`;
+            const ghostGuard = `IF(LEN(TRIM(${branchRef}))=0, "", ${branchRef})`;
             pData.push([
-                { t: 'f', f: `IF(LEN(${branchRef})>0, ${branchRef} & "|" & B${rowIdx}, "")`, s: dataStyleCenter },
+                { t: 'f', f: `IF(LEN(${ghostGuard})>0, ${ghostGuard} & "|" & B${rowIdx}, "")`, s: dataStyleCenter },
                 { v: role, s: dataStyleLeft },
-                { t: 'f', f: branchRef, s: dataStyleCenter },
+                { t: 'f', f: ghostGuard, s: dataStyleCenter },
                 { v: "", s: inputStyle },
                 { v: "ACTIVE", s: inputStyle }
             ]);
@@ -266,12 +266,18 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             c.tasks.forEach((t) => {
                 const rIdx = mData.length + 1;
                 const branchRef = `IFERROR(INDEX('BRANCH_MASTER'!$B$5:$B$15, ${bId}), "")`;
+                const branchGhostGuard = `IF(LEN(TRIM(${branchRef}))=0, "", ${branchRef})`;
                 const keyRef = `B${rIdx} & "|" & C${rIdx}`;
+                
+                // Hardened VLOOKUP for Staff Assignment
+                const assignedVlookup = `VLOOKUP(${keyRef}, 'TEAM_HUB'!$A$5:$D$500, 4, FALSE)`;
+                const staffFormula = `IFERROR(IF(LEN(TRIM(${assignedVlookup}))=0, "UNASSIGNED", ${assignedVlookup}), "UNASSIGNED")`;
+
                 mData.push([
                     { v: new Date(), t: 'd', s: { ...dataStyleCenter, numFmt: 'dd-mm-yyyy' } },
-                    { t: 'f', f: branchRef, s: dataStyleCenter },
+                    { t: 'f', f: branchGhostGuard, s: dataStyleCenter },
                     { v: c.role, s: dataStyleLeft },
-                    { t: 'f', f: `IFERROR(VLOOKUP(${keyRef}, 'TEAM_HUB'!$A$5:$D$500, 4, FALSE), "UNASSIGNED")`, s: dataStyleLeft },
+                    { t: 'f', f: staffFormula, s: dataStyleLeft },
                     { v: t.id, s: dataStyleCenter },
                     { v: t.technicalProtocol || t.description, s: dataStyleLeft },
                     { v: t.floorAction || t.trainerNotes || "", s: instructionStyle },
