@@ -28,7 +28,8 @@ import {
     LayoutGrid,
     FileSignature,
     SearchCheck,
-    Briefcase
+    Briefcase,
+    Users
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -100,7 +101,7 @@ const HeroSection = () => {
                         <div className="absolute -inset-4 bg-primary/20 rounded-[3rem] blur-2xl opacity-20"></div>
                         <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl bg-zinc-950 aspect-[4/5]">
                              <img 
-                                src={PlaceHolderImages.find(i => i.id === 'sovereign-ledger')?.imageUrl} 
+                                src="https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png" 
                                 alt="Live Execution Ledger" 
                                 className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
                              />
@@ -140,7 +141,7 @@ export default function Home() {
                             {[
                                 { t: "Managers chasing confirmations", d: "“Done?” messages across WhatsApp all day because work isn't visible.", i: Smartphone },
                                 { t: "Shift handovers getting lost", d: "Critical instructions disappearing between teams during rotations.", i: History },
-                                { t: "SOPs existing only in folders", d: "Documentation exists in a PDF somewhere. Daily execution does not.", i: ClipboardCheck },
+                                { t: "SOPs existing only in folders", d: "Documentation exists. Execution does not.", i: ClipboardCheck },
                                 { t: "Operations depend on specific people", d: "When key staff resign, the standard leaves with them. Systems collapse.", i: Users }
                             ].map((item, i) => (
                                 <div key={i} className="space-y-6 p-10 bg-white border border-zinc-200 rounded-[2rem] hover:shadow-xl transition-all group">
@@ -268,9 +269,9 @@ export default function Home() {
                                 { t: "Trainer Notes", i: GraduationCap },
                                 { t: "Consequences Of Failure", i: AlertTriangle },
                                 { t: "Audit Language Tasks", i: ShieldCheck },
-                                { t: "Mobile Execution", i: Smartphone },
-                                { t: "Role-Based Control", i: FileSignature },
-                                { t: "Deployment Guide", i: Target }
+                                { t: "Mobile-Friendly Execution", i: Smartphone },
+                                { t: "Role-Based Accountability", i: FileSignature },
+                                { t: "Google Sheets Deployment Guide", i: Target }
                             ].map((item, i) => (
                                 <div key={i} className="flex flex-col items-center text-center p-8 bg-zinc-50 border border-zinc-100 rounded-2xl space-y-4 hover:border-primary transition-colors group">
                                     <item.i className="w-8 h-8 text-zinc-300 group-hover:text-primary transition-colors" />
@@ -324,7 +325,7 @@ export default function Home() {
                 {/* --- FINAL CTA --- */}
                 <Section className="bg-primary text-white text-center py-32 md:py-48 relative overflow-hidden" noSpine id="pricing">
                     <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:32px_32px]" />
-                    <div className="max-w-5xl mx-auto space-y-16 relative z-10">
+                    <div className="max-w-5xl mx-auto space-y-16 relative z-10 px-6">
                         <div className="space-y-8">
                             <h2 className="text-[48px] md:text-[90px] font-black leading-[0.9] tracking-tighter uppercase italic font-headline text-black text-center">STOP RUNNING OPERATIONS <br/> FROM MEMORY.</h2>
                             <p className="text-xl md:text-[32px] text-black/60 font-bold italic text-center leading-tight">Deploy a live operational system your team can actually follow.</p>
