@@ -7,11 +7,13 @@ export type Checklist = {
     role: string;
     summary: string;
     icon: string;
+    moduleId?: string; // AGA Layer
+    moduleType?: 'CORE' | 'OPTIONAL'; // AGA Layer
     tasks: {
         id: string;
-        description?: string;      // Legacy support
-        technicalProtocol?: string; // The "Audit" Language
-        floorAction?: string;       // The "Trainer's Notes" Language
+        description?: string;      
+        technicalProtocol?: string; 
+        floorAction?: string;       
         priority: 'High' | 'Medium' | 'Low';
         riskLevel: 'High' | 'Medium' | 'Low';
         consequence: string;
@@ -56,32 +58,14 @@ export type PremiumPack = {
     bestseller?: boolean;
 }
 
-const shortDescriptions: Record<string, string> = {
-    'restaurants': "Stop revenue leakage and food safety risks. 150+ technical control points for single units or multi-unit groups.",
-    'hotels_and_resorts': "Eliminate guest safety gaps and reputation damage. 250+ control points across Front Office, Housekeeping, and Engineering.",
-    'healthcare_and_hospital_operations': "Zero-risk clinical governance. 200+ NABH/JCI aligned control points from surgical safety to narcotics control.",
-    'school_operations_pack': "Prevent campus tragedies and admin chaos. Transport safety, playground risk, and student welfare protocols.",
-    'franchise_operations_pack': "Standardize multi-location operations with franchise operational SOPs for audit readiness, brand consistency, onboarding, reporting discipline, and operational continuity.",
-    'facility_management_blueprint': "Stop catastrophic utility failures. Hard and Soft FM engine for MEP, fire safety, and vendor SLA command.",
-    'cinema_operations_pack': "Technical excellence for cinema groups. Projection QC, concession yield logic, and auditorium hygiene standards.",
-    'logistics_warehouse_pack': "Stop inventory shrinkage and fatal safety gaps. 120+ protocols for MHE safety and stock integrity.",
-    'corporate_legal_compliance_starter_kit': "Stop boardroom liability and statutory leaks. Track mandatory filings without SaaS dependency.",
-    'retail_operations_system': "Stop inventory shrinkage and brand standards drift. A unified master engine for High-Value, Perishable, and Technical retail.",
-    'food_manufacturing_ops': "Prevent mass recalls. HACCP/FSSAI engine for production integrity and traceability.",
-    'animal_shelter_pack': "NGO-grade welfare and disease prevention. Comprehensive intake, medical, and adoption protocols."
-};
-
 /**
- * --- SOVEREIGN PRICING MANDATE v3.0 ---
- * India: ₹3,499 | Global: $49
- * "One-time purchase • Own forever"
+ * Standardized Operational Pricing
  */
 export const premiumPacks: PremiumPack[] = [
     ...allPacks.map(p => {
         let processedPack = { ...p };
         processedPack.title = processedPack.title.replace('Operating System', 'Operations System');
         
-        // Standardized Operational Infrastructure Pricing
         if ((processedPack.priceINR ?? 0) > 0 || (processedPack.priceUSD ?? 0) > 0) {
             processedPack = {
                 ...processedPack,
@@ -92,11 +76,6 @@ export const premiumPacks: PremiumPack[] = [
                 competitorPriceUSD: 599
             }
         }
-
-        if (shortDescriptions[p.id]) {
-            processedPack.shortDescription = shortDescriptions[p.id];
-        }
-
         return processedPack;
     }),
 ];
