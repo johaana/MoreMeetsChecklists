@@ -6,9 +6,9 @@ import { individualChecklists, type IndividualChecklist } from '@/lib/individual
 
 /**
  * ============================================================================
- * SOVEREIGN ENGINE v1.0 - OPERATIONAL RELIABILITY STANDARD
+ * MOREMEETS™ OPERATIONAL INSTRUMENT - PHASE 1: INTEGRITY PROTECTION
  * ============================================================================
- * ARCHITECTURE: 7-Sheet Core (Console, Guide, Hub, Register, Incidents, Handovers, Library)
+ * ARCHITECTURE: 8-Sheet Core (Console, Guide, Hub, Register, Incidents, Handovers, Library, Audit)
  * RUNTIME: Google Sheets Optimized (Web/Mobile)
  * MANDATE: Zero-Clipping, Absolute Locking, Zero-Ghosting.
  * ============================================================================
@@ -100,7 +100,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     // --- HELPER: SYSTEM RIBBON (Static Branding) ---
     const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K') => {
         const ribbonData = [
-            [{ v: "◀ MOREMEETS™ SOVEREIGN ENGINE V1.0", s: navStyle }],
+            [{ v: "◀ MOREMEETS™ OPERATIONS SYSTEM V1.0", s: navStyle }],
             [{ v: `  ${title.toUpperCase()}`, s: { ...navStyle, font: { ...navStyle.font, sz: 18, color: { rgb: "FFFFFF" } } } }]
         ];
         utils.sheet_add_aoa(ws, ribbonData, { origin: "A1" });
@@ -179,7 +179,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     // --- 02. SYSTEM_GUIDE ---
     const guideData = [
         [], [],
-        [{ v: "SOVEREIGN SYSTEM DEPLOYMENT MANUAL", s: { font: { sz: 16, bold: true } } }],
+        [{ v: "OPERATIONS SYSTEM DEPLOYMENT MANUAL", s: { font: { sz: 16, bold: true } } }],
         [],
         [{ v: "STEP 1: UPLOAD", s: { font: { bold: true } } }, { v: "Upload this Excel Master to your company Google Drive and select 'Open with Google Sheets'." }],
         [{ v: "STEP 2: CONFIGURE", s: { font: { bold: true } } }, { v: "Go to TEAM_HUB. Type your unit names and personnel. This maps the entire engine." }],
@@ -221,7 +221,7 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     (pWs as any)['!dataValidation'] = [{ sqref: "E5:E500", type: "list", formula1: "SYSTEM_CONFIG!$A$2:$A$5" }];
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- 04. TASK_REGISTER (The Hero Surface) ---
+    // --- 04. TASK_REGISTER (The Execution Surface) ---
     const lHeaders = [
         { v: "Date", s: headerStyle }, { v: "Branch Name", s: headerStyle }, 
         { v: "Role", s: headerStyle }, { v: "Assigned To (Auto)", s: headerStyle },
@@ -232,6 +232,10 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
         { v: "Status", s: headerStyle }, { v: "Consequence of Failure", s: headerStyle }
     ];
     const mData: any[][] = [[], [], [], lHeaders];
+    
+    // --- INTEGRITY VALDIATOR: PHASE 1 START ---
+    const expectedCount = packChecklists.reduce((acc, cl) => acc + cl.tasks.length, 0);
+
     [1].forEach(bId => {
         packChecklists.forEach(c => {
             c.tasks.forEach((t, tIdx) => {
@@ -258,6 +262,15 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
             });
         });
     });
+
+    const renderedCount = mData.length - 4; // Headers are 4 rows
+
+    if (expectedCount !== renderedCount) {
+        alert(`CRITICAL_DATA_LOSS_PREVENTED: Export Mismatch. Expected ${expectedCount}, Rendered ${renderedCount}.`);
+        throw new Error("CRITICAL_DATA_LOSS_PREVENTED");
+    }
+    // --- INTEGRITY VALDIATOR: PHASE 1 END ---
+
     const mWs = utils.aoa_to_sheet(mData);
     mWs['!cols'] = [12, 20, 20, 22, 10, 75, 65, 20, 20, 15, 45].map(w => ({ wch: w }));
     addSovereignRibbon(mWs, "Daily Operational Register", 'K');
@@ -320,9 +333,19 @@ export const handleDownload = (item: PremiumPack | IndividualChecklist, type: 'p
     for(let r=4; r<sData.length; r++) { sWs['!rows'][r] = { hpt: 45 }; }
     utils.book_append_sheet(wb, sWs, "SOP_LIBRARY");
 
+    // --- 08. EXPORT_AUDIT (HIDDEN) ---
+    const auditData = [
+        ["TIMESTAMP", "PACK_NAME", "EXPECTED_TASKS", "RENDERED_TASKS", "STATUS"],
+        [new Date().toISOString(), item.title, expectedCount, renderedCount, "VERIFIED"]
+    ];
+    const auditWs = utils.aoa_to_sheet(auditData);
+    utils.book_append_sheet(wb, auditWs, "EXPORT_AUDIT");
+
     if (!wb.Workbook) wb.Workbook = { Sheets: [] };
     const configIdx = wb.SheetNames.indexOf("SYSTEM_CONFIG");
     wb.Workbook.Sheets[configIdx] = { Hidden: 1 };
+    const auditIdx = wb.SheetNames.indexOf("EXPORT_AUDIT");
+    wb.Workbook.Sheets[auditIdx] = { Hidden: 1 };
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Sovereign_v1.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v1.xlsx`);
 }
