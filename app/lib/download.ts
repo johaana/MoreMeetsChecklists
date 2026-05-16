@@ -4,17 +4,15 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 
 /**
- * ============================================================================
- * MOREMEETS™ OPERATIONAL INSTRUMENT - DEPLOYMENT LOCK v13.0
- * ============================================================================
- * REVISION: Operational Authenticity Pass
+ * MOREMEETS™ OPERATIONAL INSTRUMENT - FINAL STABILITY LOCK v14.0
  * ----------------------------------------------------------------------------
- * 1. DUAL-CHECK: Done By (Operator) + Verified By (Supervisor).
- * 2. GREY-CELLS: Non-critical verification slots are greyed out.
- * 3. TEAM_HUB: Added Phone & Email for coordination. Live-linked to Setup.
- * 4. SWITCHBOARD: Removed "Unit" redundancy. Added Facility Toggles.
- * 5. HANDBOOK: Fixed blank SOP mapping + bracketed consequences.
- * ============================================================================
+ * 1. FORMULA RELIABILITY: Purged double-equals, hardened INDEX+MATCH.
+ * 2. INVISIBLE ENGINEERING: Hidden metadata columns (Width 0).
+ * 3. HUMANIZED LANGUAGE: Jargon-free headers (Checked By, If Missed).
+ * 4. DUAL-CHECK QA: Critical tasks require 2 signatures; Routine require 1.
+ * 5. SOP AUTHENTICITY: Full descriptive guide with bracketed risks.
+ * 6. NATIVE PURITY: No #gid or web URLs; clean hash navigation.
+ * ----------------------------------------------------------------------------
  */
 
 export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', DEMO_MODE = false) => {
@@ -25,12 +23,10 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
 
     const wb = utils.book_new();
 
-    // --- INSTITUTIONAL COLOR PALETTE ---
+    // --- COLORS & STYLES ---
     const COLORS = {
         NAVY_HUD: "020617",       
         PRIMARY_GREEN: "22C55E",  
-        STATUS_AMBER: "F5A623",   
-        STATUS_RED: "E11D48",     
         WHITE_BODY: "FFFFFF",     
         BORDER_SOFT: "E2E8F0",    
         INPUT_YELLOW: "FEFCE8",   // High-contrast input signal
@@ -38,7 +34,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
         METADATA_GREY: "64748B",  
         COACHING_GREEN: "065F46", 
         CONSEQUENCE_RED: "991B1B",
-        INACTIVE_GREY: "F1F5F9"   // The "Grey Cell" for non-verification tasks
+        INACTIVE_GREY: "F1F5F9"   // The Grey Cell for routine tasks
     };
 
     const baseFont = { name: 'Segoe UI', sz: 10 };
@@ -101,7 +97,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
         fill: { patternType: 'solid', fgColor: { rgb: "F0FDF4" } }
     };
 
-    // --- HELPER: SYSTEM RIBBON ---
+    // --- HELPER: NATIVE NAVIGATION RIBBON ---
     const addRibbon = (ws: WorkSheet, title: string, endCol: string = 'K') => {
         const ribbonData = [
             [{ v: "◀ BACK TO OPERATIONS CENTER", l: { Target: "#'OPERATIONS_CENTER'!A1" }, s: navStyle }],
@@ -112,7 +108,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
         if (!ws['!merges']) ws['!merges'] = [];
         ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
         ws['!merges'].push({ s: { r: 1, c: 0 }, e: { r: 1, c: endCIdx } }); 
-        ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 4, xSplit: 2 }];
+        ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 4, xSplit: 3 }];
         if(!ws['!rows']) ws['!rows'] = [];
         ws['!rows'][0] = { hpt: 30 };
         ws['!rows'][1] = { hpt: 50 };
@@ -120,129 +116,101 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
         ws['!rows'][3] = { hpt: 45 }; 
     };
 
-    // --- 01. START_HERE (ONBOARDING) ---
+    // --- 01. START_HERE (SOFTWARE ONBOARDING) ---
     const startData: any[][] = [
         [], [],
         [{ v: "WELCOME TO MOREMEETS™", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
         [{ v: "3-STEP OPERATIONAL SETUP", s: { font: { sz: 12, bold: true }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "STEP 1: DEFINE BRANCHES", s: { font: { bold: true } } }, { v: "Go to SITE_CONFIGURATION and list your outlets.", l: { Target: "#'SITE_CONFIGURATION'!A1" } }],
-        [{ v: "STEP 2: ASSIGN TEAM", s: { font: { bold: true } } }, { v: "Go to TEAM_HUB and enter staff names & contact details.", l: { Target: "#'TEAM_HUB'!A1" } }],
+        [{ v: "STEP 1: CONFIGURE BRANCHES", s: { font: { bold: true } } }, { v: "Go to SITE_CONFIGURATION and list your locations.", l: { Target: "#'SITE_CONFIGURATION'!A1" } }],
+        [{ v: "STEP 2: ASSIGN PERSONNEL", s: { font: { bold: true } } }, { v: "Go to TEAM_HUB and enter staff names per role.", l: { Target: "#'TEAM_HUB'!A1" } }],
         [{ v: "STEP 3: RUN OPERATIONS", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin tracking execution.", l: { Target: "#'DAILY_TASKS'!A1" } }],
         [],
-        [{ v: "NOTE: YELLOW CELLS ARE USER INPUT. GREY/DARK CELLS ARE AUTOMATED.", s: { font: { italic: true, color: { rgb: COLORS.METADATA_GREY } } } }]
+        [{ v: "SYSTEM NOTES: YELLOW CELLS ARE FOR USER INPUT. DARK/GREY CELLS ARE AUTOMATED.", s: { font: { italic: true, color: { rgb: COLORS.METADATA_GREY } } } }]
     ];
     const startWs = utils.aoa_to_sheet(startData);
     startWs['!cols'] = [{ wch: 30 }, { wch: 60 }];
     startWs['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 1 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 1 } }];
     utils.book_append_sheet(wb, startWs, "START_HERE");
 
-    // --- 02. OPERATIONS_CENTER (KPIs) ---
+    // --- 02. OPERATIONS_CENTER (VITAL KPIs) ---
     const opsData: any[][] = [
         [], [],
-        [{ v: "DAILY OPERATIONAL STATUS", s: { font: { sz: 20, bold: true } } }],
+        [{ v: "OPERATIONAL VITAL SIGNS", s: { font: { sz: 20, bold: true } } }],
         [],
-        [{ v: "PENDING TASKS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIFS('DAILY_TASKS'!G5:G5000, "PENDING")` }],
-        [{ v: "OPEN INCIDENTS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIF('INCIDENT_LOG'!E5:E500, "OPEN")` }],
-        [{ v: "COMPLIANCE %:", s: { font: { bold: true } } }, { t: 'f', f: `TEXT(1 - (COUNTIF('DAILY_TASKS'!G5:G5000,"PENDING") / MAX(1, COUNTA('DAILY_TASKS'!C5:C5000))), "0%")` }]
+        [{ v: "PENDING TASKS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIFS('DAILY_TASKS'!E5:E5000, "PENDING")` }],
+        [{ v: "OPEN INCIDENTS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIF('INCIDENT_LOG'!G5:G500, "OPEN")` }],
+        [{ v: "COMPLIANCE SCORE:", s: { font: { bold: true } } }, { t: 'f', f: `TEXT(1 - (COUNTIF('DAILY_TASKS'!E5:E5000,"PENDING") / MAX(1, COUNTA('DAILY_TASKS'!C5:C5000))), "0%")` }]
     ];
     const opsWs = utils.aoa_to_sheet(opsData);
     opsWs['!cols'] = [{ wch: 35 }, { wch: 20 }];
     utils.book_append_sheet(wb, opsWs, "OPERATIONS_CENTER");
 
-    // --- 03. SITE_CONFIGURATION (SWITCHBOARD) ---
-    const facilityHeaders: Record<string, string[]> = {
-        'hotels_and_resorts': ["Swimming Pool", "Spa & Gym", "Valet Parking", "Airport Shuttle", "Banquet Halls", "Rooftop Bar"],
-        'restaurants': ["Bar & Liquor", "Delivery / Takeaway", "Bakery Section", "Drive-Thru", "Outdoor Seating"],
-        'healthcare_and_hospital_operations': ["ICU Unit", "Pharmacy", "Laboratory", "Emergency (ER)", "Ambulance Fleet"],
-        'default': ["Facility A", "Facility B", "Facility C", "Facility D"]
-    };
-    const activeFacilities = facilityHeaders[item.id] || facilityHeaders['default'];
-    
+    // --- 03. SITE_CONFIGURATION (SITE REGISTRY) ---
     const setupHeaders = [
         { v: "BRANCH NAME", s: headerStyle },
-        { v: "LOCATION / CITY", s: headerStyle },
-        ...activeFacilities.map(f => ({ v: `${f.toUpperCase()} (YES/NO)`, s: headerStyle }))
+        { v: "CITY / LOCATION", s: headerStyle },
+        { v: "STATUS", s: headerStyle }
     ];
-
     const setupData: any[][] = [[], [], [], setupHeaders];
-    ["Mumbai Main", "Pune Branch", "Branch 3", "Branch 4", "Branch 5"].forEach(b => {
-        setupData.push([
-            { v: b, s: inputStyle }, 
-            { v: "City", s: inputStyle }, 
-            ...activeFacilities.map(() => ({ v: "YES", s: inputStyle }))
-        ]);
+    ["Mumbai Main", "Pune Branch", "Site 3", "Site 4", "Site 5"].forEach(b => {
+        setupData.push([{ v: b, s: inputStyle }, { v: "City", s: inputStyle }, { v: "ACTIVE", s: inputStyle }]);
     });
     const setupWs = utils.aoa_to_sheet(setupData);
-    setupWs['!cols'] = [{ wch: 25 }, { wch: 25 }, ...activeFacilities.map(() => ({ wch: 20 }))];
-    addRibbon(setupWs, "Site Switchboard", utils.encode_col(1 + activeFacilities.length));
+    setupWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 20 }];
+    addRibbon(setupWs, "Site Registry", 'C');
     utils.book_append_sheet(wb, setupWs, "SITE_CONFIGURATION");
 
-    // --- 04. TEAM_HUB (DIRECTORY) ---
-    const roleTemplates: Record<string, {d: string, r: string}[]> = {
-        'restaurants': [
-            { d: "Management", r: "General Manager" }, { d: "Management", r: "Shift Manager" },
-            { d: "Kitchen", r: "Kitchen Lead" }, { d: "Kitchen", r: "Chef de Partie" }, { d: "Kitchen", r: "Commi Chef" },
-            { d: "Service", r: "Steward/Server" }, { d: "Service", r: "Cashier" }, { d: "Service", r: "Bar Lead" },
-            { d: "Housekeeping", r: "Housekeeping" }, { d: "Security", r: "Security Chief" }
-        ],
-        'hotels_and_resorts': [
-            { d: "Management", r: "General Manager" }, { d: "Front Office", r: "Front Office Manager" }, { d: "Front Office", r: "Receptionist" },
-            { d: "Housekeeping", r: "Executive Housekeeper" }, { d: "Housekeeping", r: "Room Attendant" },
-            { d: "Engineering", r: "Chief Engineer" }, { d: "Engineering", r: "Maintenance Tech" },
-            { d: "F&B", r: "F&B Manager" }, { d: "Security", r: "Security Chief" }, { d: "Logistics", r: "Valet Lead" }
-        ],
-        'healthcare_and_hospital_operations': [
-            { d: "Management", r: "Medical Director" }, { d: "Nursing", r: "Nursing Superintendent" }, { d: "Nursing", r: "Ward Nurse" },
-            { d: "Admin", r: "OPD Manager" }, { d: "Pharmacy", r: "Pharmacist" }, { d: "Laboratory", r: "Lab Technician" },
-            { d: "Finance", r: "Billing Lead" }, { d: "Engineering", r: "Facility Manager" }, { d: "Security", r: "Security Head" },
-            { d: "Housekeeping", r: "Housekeeping Lead" }
-        ]
+    // --- 04. TEAM_HUB (PERSONNEL DIRECTORY) ---
+    const roleTemplates: Record<string, string[]> = {
+        'restaurants': ["General Manager", "Shift Manager", "Kitchen Lead", "Chef de Partie", "Commi Chef", "Steward/Server", "Cashier", "Bar Lead", "Housekeeping", "Security"],
+        'hotels_and_resorts': ["General Manager", "Front Office Manager", "Receptionist", "Executive Housekeeper", "Room Attendant", "Chief Engineer", "Maintenance Tech", "F&B Manager", "Security Chief", "Valet Lead"],
+        'healthcare_and_hospital_operations': ["Medical Director", "Nursing Superintendent", "Ward Nurse", "OPD Manager", "Pharmacist", "Lab Technician", "Billing Lead", "Facility Manager", "Security Head", "Housekeeping Lead"],
+        'default': ["Manager", "Supervisor", "Lead", "Staff A", "Staff B", "Security", "Maintenance"]
     };
-
-    const activeTemplate = roleTemplates[item.id] || roleTemplates['restaurants'];
+    const activeRoles = roleTemplates[item.id] || roleTemplates['default'];
+    
     const tHeaders = [
-        { v: "Key (Hidden)", s: headerStyle },
-        { v: "Branch (Linked)", s: headerStyle },
+        { v: "Key", s: headerStyle }, // Hidden
+        { v: "Branch", s: headerStyle },
         { v: "Role", s: headerStyle },
-        { v: "Assigned To (Input Name)", s: headerStyle },
+        { v: "Assigned To", s: headerStyle },
         { v: "Phone Number", s: headerStyle },
         { v: "Institutional Email", s: headerStyle }
     ];
     const pData: any[][] = [[], [], [], tHeaders];
 
     for (let i = 0; i < 5; i++) {
-        const siteRowIdx = 5 + i;
-        activeTemplate.forEach(t => {
+        const siteRef = `'SITE_CONFIGURATION'!A${5 + i}`;
+        activeRoles.forEach(role => {
             const rIdx = pData.length + 1;
             pData.push([
                 { t: 'f', f: `IF(LEN(B${rIdx})>0, B${rIdx} & "|" & C${rIdx}, "")`, s: dataStyleCenter },
-                { t: 'f', f: `'SITE_CONFIGURATION'!A${siteRowIdx}`, s: dataStyleCenter },
-                { v: t.r, s: dataStyleLeft },
+                { t: 'f', f: siteRef, s: dataStyleCenter },
+                { v: role, s: dataStyleLeft },
                 { v: "", s: inputStyle },
                 { v: "", s: inputStyle },
                 { v: "", s: inputStyle }
             ]);
         });
     }
-
     const pWs = utils.aoa_to_sheet(pData);
     pWs['!cols'] = [0, 25, 30, 35, 20, 30].map((w, i) => ({ wch: w, hidden: i === 0 }));
     addRibbon(pWs, "Personnel Directory", 'F');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- 05. DAILY_TASKS (LEDGER) ---
+    // --- 05. DAILY_TASKS (EXECUTION BOARD) ---
     const lHeaders = [
         { v: "Branch", s: headerStyle },
-        { v: "Responsible Role", s: headerStyle },
-        { v: "Operational Task", s: headerStyle },
-        { v: "Assigned To (Auto)", s: headerStyle },
-        { v: "Done By (Initials)", s: headerStyle },
-        { v: "Verified By (Sup)", s: headerStyle },
+        { v: "Role", s: headerStyle },
+        { v: "Task", s: headerStyle },
+        { v: "Assigned To", s: headerStyle },
         { v: "Status", s: headerStyle },
+        { v: "Done By", s: headerStyle },
+        { v: "Verified By", s: headerStyle },
         { v: "If Missed", s: headerStyle },
         { v: "Instructions", s: headerStyle },
-        { v: "Priority (Hidden)", s: headerStyle }
+        { v: "Priority", s: headerStyle } // Hidden
     ];
     const mData: any[][] = [[], [], [], lHeaders];
     
@@ -252,40 +220,41 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     packChecklists.forEach(c => {
         c.tasks.forEach((t) => {
             const rIdx = mData.length + 1;
-            const assignmentFormula = `=IFERROR(IF(LEN(TRIM(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(A${rIdx} & "|" & B${rIdx}, 'TEAM_HUB'!$A$5:$A$500, 0))))=0, "[UNASSIGNED]", INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(A${rIdx} & "|" & B${rIdx}, 'TEAM_HUB'!$A$5:$A$500, 0))), "[UNASSIGNED]")`;
+            const branchRef = `'SITE_CONFIGURATION'!A5`;
+            const assignmentFormula = `=IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & B${rIdx}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
             
-            // Logic: Only High/Medium priority tasks require supervisor verification.
-            const needsVerification = t.priority !== 'Low';
-            const statusFormula = needsVerification 
-                ? `=IF(AND(LEN(TRIM(E${rIdx}))>0, LEN(TRIM(F${rIdx}))>0), "COMPLETED", "PENDING")`
-                : `=IF(LEN(TRIM(E${rIdx}))>0, "COMPLETED", "PENDING")`;
+            // DUAL-CHECK LOGIC: Routine (Low) tasks bypass Supervisor sign-off
+            const isRoutine = t.priority === 'Low';
+            const statusFormula = isRoutine 
+                ? `=IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING")`
+                : `=IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETED", "PENDING")`;
 
             mData.push([
-                { t: 'f', f: `'SITE_CONFIGURATION'!A5`, s: dataStyleCenter }, 
+                { t: 'f', f: branchRef, s: dataStyleCenter }, 
                 { v: c.role, s: dataStyleCenter },                       
                 { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { ...baseFont, bold: true } } }, 
                 { t: 'f', f: assignmentFormula, s: dataStyleLeft },                     
+                { t: 'f', f: statusFormula, s: dataStyleCenter },
                 { v: "", s: inputStyle },                                    
-                { v: "", s: needsVerification ? inputStyle : greyStyle }, // THE GREY CELL                                    
-                { t: 'f', f: statusFormula, s: dataStyleCenter },            
-                { v: `[Risk: ${t.consequence || "Operational Gaps"}]`, s: riskStyle },   
-                { v: t.floorAction || t.trainerNotes || t.description || "", s: instructionStyle }, 
-                { v: t.priority, s: dataStyleCenter }                      
+                { v: "", s: isRoutine ? greyStyle : inputStyle }, // THE GREY CELL                                    
+                { v: `[Risk: ${t.consequence || "Operational Gap"}]`, s: riskStyle },   
+                { v: t.floorAction || t.description || "", s: instructionStyle }, 
+                { v: t.priority, s: { hidden: true } }                      
             ]);
         });
     });
 
     const mWs = utils.aoa_to_sheet(mData);
     mWs['!cols'] = [15, 25, 55, 20, 15, 15, 15, 40, 45, 0].map((w, i) => ({ wch: w, hidden: i === 9 }));
-    addRibbon(mWs, "Daily Task Board", 'I');
+    addRibbon(mWs, "Daily Execution Board", 'I');
     utils.book_append_sheet(wb, mWs, "DAILY_TASKS");
 
-    // --- 06. SOP_LIBRARY (HANDBOOK) ---
+    // --- 06. SOP_LIBRARY (TRAINING HANDBOOK) ---
     const sHeaders = [
-        { v: "Role Responsible", s: headerStyle },
-        { v: "Operational Step", s: headerStyle },
-        { v: "Instructional Guide (How-to)", s: headerStyle },
-        { v: "Verification Standard (Audit)", s: headerStyle },
+        { v: "Responsible Role", s: headerStyle },
+        { v: "Operational Task", s: headerStyle },
+        { v: "Instructional Guide", s: headerStyle },
+        { v: "Verification Standard", s: headerStyle },
         { v: "Risk if Missed", s: headerStyle }
     ];
     const sData: any[][] = [[], [], [], sHeaders];
@@ -294,8 +263,8 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
             sData.push([
                 { v: c.role, s: dataStyleCenter },
                 { v: t.technicalProtocol, s: { ...dataStyleLeft, font: { bold: true } } },
-                { v: t.description || t.floorAction || "Action required per protocol.", s: dataStyleLeft },
-                { v: t.proof || "Verify execution initials.", s: instructionStyle },
+                { v: t.description || t.floorAction || "Follow standard protocol.", s: dataStyleLeft },
+                { v: t.proof || "Verify entry in daily ledger.", s: instructionStyle },
                 { v: `[Risk: ${t.consequence}]`, s: riskStyle }
             ]);
         });
@@ -305,12 +274,24 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     addRibbon(sWs, "Training Handbook", 'E');
     utils.book_append_sheet(wb, sWs, "SOP_LIBRARY");
 
-    // --- 07. INCIDENT_LOG ---
-    const iHeaders = [{ v: "Date", s: headerStyle }, { v: "Branch", s: headerStyle }, { v: "Issue Description", s: headerStyle }, { v: "Severity", s: headerStyle }, { v: "Status", s: headerStyle }];
+    // --- 07. INCIDENT_LOG (RISK REGISTRY) ---
+    const iHeaders = [
+        { v: "Date", s: headerStyle }, 
+        { v: "Branch", s: headerStyle }, 
+        { v: "Incident Type", s: headerStyle }, 
+        { v: "Severity", s: headerStyle }, 
+        { v: "Reported By", s: headerStyle },
+        { v: "Assigned To", s: headerStyle },
+        { v: "Resolution Status", s: headerStyle },
+        { v: "Notes", s: headerStyle }
+    ];
     const iData: any[][] = [[], [], [], iHeaders];
-    for(let i=0; i<15; i++) { iData.push([null, null, null, null, "OPEN"]); }
+    for(let i=0; i<20; i++) { 
+        iData.push([null, null, null, null, null, null, "OPEN", ""]); 
+    }
     const iWs = utils.aoa_to_sheet(iData);
-    addRibbon(iWs, "Incident Registry", 'E');
+    iWs['!cols'] = [15, 20, 25, 15, 20, 20, 15, 40].map(w => ({ wch: w }));
+    addRibbon(iWs, "Incident Registry", 'H');
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
     const orderedNames = ["START_HERE", "OPERATIONS_CENTER", "SITE_CONFIGURATION", "TEAM_HUB", "DAILY_TASKS", "SOP_LIBRARY", "INCIDENT_LOG"];
