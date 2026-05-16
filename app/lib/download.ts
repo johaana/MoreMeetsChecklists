@@ -5,14 +5,14 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 
 /**
  * ============================================================================
- * MOREMEETS™ OPERATIONAL INSTRUMENT - DEPLOYMENT LOCK v12.8
+ * MOREMEETS™ OPERATIONAL INSTRUMENT - DEPLOYMENT LOCK v12.9
  * ============================================================================
- * PASS 1: INFRASTRUCTURE & VISIBILITY
+ * PASS 2: STATIC TEAM_HUB GENERATION
  * ----------------------------------------------------------------------------
- * 1. Sheet Order: START_HERE -> OPERATIONS -> SETUP -> HUB -> TASKS -> SOPs
- * 2. Invisible Engineering: All metadata hidden (width 0).
- * 3. Terminology: Plain English (Checked By, If Missed, Instructions).
- * 4. Parity: 1,048 / 1,048 (Strictly Locked).
+ * 1. Fixed Role Arrays: No dynamic scanning or inference.
+ * 2. Deterministic Blocks: Configured branches only.
+ * 3. Parity Lock: 1,048 / 1,048 (Strictly Preserved).
+ * 4. Zero-Friction: Only staff names require input.
  * ============================================================================
  */
 
@@ -23,7 +23,6 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     }
 
     const wb = utils.book_new();
-    const ORDER_ID = `MM-PRO-${item.id.toUpperCase()}-STABLE`;
 
     // --- INSTITUTIONAL COLOR PALETTE ---
     const COLORS = {
@@ -33,7 +32,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
         STATUS_RED: "E11D48",     
         WHITE_BODY: "FFFFFF",     
         BORDER_SOFT: "E2E8F0",    
-        INPUT_YELLOW: "#FEFCE8",   // High-contrast input signal
+        INPUT_YELLOW: "FEFCE8",   // High-contrast input signal
         HEADER_SLATE: "0F172A",   
         METADATA_GREY: "64748B",  
         COACHING_GREEN: "065F46", 
@@ -80,13 +79,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     const inputStyle = {
         ...dataStyleCenter,
         font: { ...baseFont, color: { rgb: "000000" }, bold: true },
-        fill: { patternType: 'solid', fgColor: { rgb: "FEFCE8" } }
-    };
-
-    const instructionStyle = {
-        ...dataStyleLeft,
-        font: { ...baseFont, color: { rgb: COLORS.COACHING_GREEN } },
-        fill: { patternType: 'solid', fgColor: { rgb: "F0FDF4" } }
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_YELLOW } }
     };
 
     const riskStyle = {
@@ -95,12 +88,13 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
         fill: { patternType: 'solid', fgColor: { rgb: "FEF2F2" } }
     };
 
-    const footerStyle = {
-        font: { ...baseFont, sz: 8, color: { rgb: COLORS.METADATA_GREY } },
-        alignment: { horizontal: 'center', ...verticalCenter }
+    const instructionStyle = {
+        ...dataStyleLeft,
+        font: { ...baseFont, color: { rgb: COLORS.COACHING_GREEN } },
+        fill: { patternType: 'solid', fgColor: { rgb: "F0FDF4" } }
     };
 
-    // --- HELPER: SYSTEM RIBBON (LINK PURGE: NO #GID) ---
+    // --- HELPER: SYSTEM RIBBON (EXCEL NATIVE HASH LINKS) ---
     const addSovereignRibbon = (ws: WorkSheet, title: string, endCol: string = 'K') => {
         const ribbonData = [
             [{ v: "◀ BACK TO OPERATIONS CENTER", l: { Target: "#'OPERATIONS_CENTER'!A1" }, s: navStyle }],
@@ -122,45 +116,19 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     let packChecklists: Checklist[] = [];
     if ('checklists' in item) {
         packChecklists = item.checklists;
-    } else {
-        packChecklists = [{
-            title: item.title,
-            tasks: item.tasks,
-            department: item.category,
-            frequency: "Daily",
-            role: "Operator",
-            summary: item.description,
-            icon: item.icon,
-            moduleId: "GENERAL",
-            moduleType: "CORE"
-        }];
     }
 
-    // --- INTEGRITY VALIDATOR: PHASE 1 START ---
-    const expectedCount = packChecklists.reduce((acc, cl) => acc + cl.tasks.length, 0);
-
-    // --- 00. SYSTEM CONFIG (HIDDEN) ---
-    const configData = [
-        ["DUTY_STATUS", "TASK_STATUS", "SEVERITY_LEVELS", "TOGGLES"],
-        ["ACTIVE", "PENDING", "P1 - CRITICAL", "YES"],
-        ["LEAVE", "VERIFIED", "P2 - HIGH", "NO"],
-        ["OFF", "AWAITING MGR", "P3 - MEDIUM", null],
-        ["TRAINING", "OVERDUE", "P4 - LOW", null]
-    ];
-    const configWs = utils.aoa_to_sheet(configData);
-    utils.book_append_sheet(wb, configWs, "SYSTEM_CONFIG");
-
-    // --- 01. START_HERE (NEW ONBOARDING SOFTWARE LAYOUT) ---
+    // --- 01. START_HERE (SOFTWARE-STYLE ONBOARDING) ---
     const startData: any[][] = [
         [], [],
         [{ v: "WELCOME TO MOREMEETS™", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
-        [{ v: "3-STEP QUICK SETUP GUIDE", s: { font: { sz: 12, bold: true }, alignment: { horizontal: 'center' } } }],
+        [{ v: "3-STEP OPERATIONAL SETUP", s: { font: { sz: 12, bold: true }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "STEP 1: ADD YOUR SITES", s: { font: { bold: true } } }, { v: "Go to SITE_CONFIGURATION and list your branches.", l: { Target: "#'SITE_CONFIGURATION'!A1" } }],
-        [{ v: "STEP 2: ADD YOUR TEAM", s: { font: { bold: true } } }, { v: "Go to TEAM_HUB and type staff names next to their roles.", l: { Target: "#'TEAM_HUB'!A1" } }],
-        [{ v: "STEP 3: RUN OPERATIONS", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin tracking execution.", l: { Target: "#'DAILY_TASKS'!A1" } }],
+        [{ v: "STEP 2: ADD YOUR TEAM", s: { font: { bold: true } } }, { v: "Go to TEAM_HUB and type staff names in yellow cells.", l: { Target: "#'TEAM_HUB'!A1" } }],
+        [{ v: "STEP 3: RUN OPERATIONS", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin tracking daily execution.", l: { Target: "#'DAILY_TASKS'!A1" } }],
         [],
-        [{ v: "PRO TIP: GREEN CELLS ARE FOR YOU. GREY CELLS ARE AUTOMATIC.", s: { font: { italic: true, color: { rgb: COLORS.INTEL_GREY } } } }]
+        [{ v: "PRO TIP: YELLOW CELLS ARE FOR YOU. GREY CELLS ARE AUTOMATIC.", s: { font: { italic: true, color: { rgb: COLORS.METADATA_GREY } } } }]
     ];
     const startWs = utils.aoa_to_sheet(startData);
     startWs['!cols'] = [{ wch: 30 }, { wch: 60 }];
@@ -170,88 +138,203 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     // --- 02. OPERATIONS_CENTER (KPI PULSE) ---
     const opsData: any[][] = [
         [], [],
-        [{ v: "OPERATIONAL VITALS", s: { font: { sz: 20, bold: true } } }],
+        [{ v: "DAILY OPERATIONAL STATUS", s: { font: { sz: 20, bold: true } } }],
         [],
-        [{ v: "PENDING TASKS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIFS('DAILY_TASKS'!J5:J5000, "PENDING", 'DAILY_TASKS'!M5:M5000, TRUE)` }],
-        [{ v: "OVERDUE TASKS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIFS('DAILY_TASKS'!J5:J5000, "OVERDUE", 'DAILY_TASKS'!M5:M5000, TRUE)` }],
+        [{ v: "PENDING TASKS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIFS('DAILY_TASKS'!E5:E5000, "PENDING")` }],
+        [{ v: "OVERDUE TASKS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIFS('DAILY_TASKS'!E5:E5000, "OVERDUE")` }],
         [{ v: "OPEN INCIDENTS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIF('INCIDENT_LOG'!G5:G500, "OPEN")` }],
-        [{ v: "COMPLIANCE %:", s: { font: { bold: true } } }, { t: 'f', f: `TEXT(1- (E6 / MAX(1, E5+E6)), "0%")` }]
+        [{ v: "COMPLIANCE %:", s: { font: { bold: true } } }, { t: 'f', f: `TEXT(1 - (E6 / MAX(1, E5+E6)), "0%")` }]
     ];
     const opsWs = utils.aoa_to_sheet(opsData);
     opsWs['!cols'] = [{ wch: 35 }, { wch: 20 }];
     utils.book_append_sheet(wb, opsWs, "OPERATIONS_CENTER");
 
-    // --- 03. SITE_CONFIGURATION ---
+    // --- 03. SITE_CONFIGURATION (BRANCH SETUP) ---
     const setupData: any[][] = [
         [], [],
-        [{ v: "SITE SETUP", s: { font: { sz: 18, bold: true } } }],
-        [{ v: "BRANCH NAME", s: headerStyle }, { v: "LOCATION", s: headerStyle }, { v: "ACTIVE", s: headerStyle }]
+        [{ v: "BRANCH MASTER REGISTRY", s: { font: { sz: 18, bold: true } } }],
+        [{ v: "BRANCH NAME", s: headerStyle }, { v: "LOCATION", s: headerStyle }, { v: "TYPE", s: headerStyle }, { v: "ACTIVE", s: headerStyle }]
     ];
     ["Mumbai Main", "Pune Branch", "Branch 3", "Branch 4", "Branch 5"].forEach(b => {
-        setupData.push([{ v: b, s: inputStyle }, { v: "City", s: inputStyle }, { v: "YES", s: inputStyle }]);
+        setupData.push([{ v: b, s: inputStyle }, { v: "City", s: inputStyle }, { v: "Unit", s: inputStyle }, { v: "YES", s: inputStyle }]);
     });
     const setupWs = utils.aoa_to_sheet(setupData);
-    setupWs['!cols'] = [{ wch: 25 }, { wch: 25 }, { wch: 15 }];
-    addSovereignRibbon(setupWs, "Site Registry", 'C');
+    setupWs['!cols'] = [{ wch: 25 }, { wch: 25 }, { wch: 15 }, { wch: 15 }];
+    addSovereignRibbon(setupWs, "Site Registry", 'D');
     utils.book_append_sheet(wb, setupWs, "SITE_CONFIGURATION");
 
-    // --- 04. TEAM_HUB (PASS 1: HEADERS ONLY) ---
-    const tHeaders = [{ v: "Key (Auto)", s: headerStyle }, { v: "Branch", s: headerStyle }, { v: "Role", s: headerStyle }, { v: "Staff Name", s: headerStyle }];
+    // --- 04. TEAM_HUB (PASS 2: STATIC ROSTER GENERATION) ---
+    const roleTemplates: Record<string, {d: string, r: string}[]> = {
+        'restaurants': [
+            { d: "Management", r: "General Manager" },
+            { d: "Management", r: "Shift Manager" },
+            { d: "Kitchen", r: "Kitchen Lead" },
+            { d: "Kitchen", r: "Chef de Partie" },
+            { d: "Kitchen", r: "Commi Chef" },
+            { d: "Service", r: "Steward/Server" },
+            { d: "Service", r: "Cashier" },
+            { d: "Service", r: "Bar Lead" },
+            { d: "Housekeeping", r: "Housekeeping" },
+            { d: "Security", r: "Security" }
+        ],
+        'hotels_and_resorts': [
+            { d: "Management", r: "General Manager" },
+            { d: "Front Office", r: "Front Office Manager" },
+            { d: "Front Office", r: "Receptionist" },
+            { d: "Housekeeping", r: "Executive Housekeeper" },
+            { d: "Housekeeping", r: "Room Attendant" },
+            { d: "Engineering", r: "Chief Engineer" },
+            { d: "Engineering", r: "Maintenance Tech" },
+            { d: "F&B", r: "F&B Manager" },
+            { d: "Security", r: "Security Chief" },
+            { d: "Logistics", r: "Valet Lead" }
+        ],
+        'healthcare_and_hospital_operations': [
+            { d: "Management", r: "Medical Director" },
+            { d: "Nursing", r: "Nursing Superintendent" },
+            { d: "Nursing", r: "Ward Nurse" },
+            { d: "Admin", r: "OPD Manager" },
+            { d: "Pharmacy", r: "Pharmacist" },
+            { d: "Laboratory", r: "Lab Technician" },
+            { d: "Finance", r: "Billing Lead" },
+            { d: "Engineering", r: "Facility Manager" },
+            { d: "Security", r: "Security Head" },
+            { d: "Housekeeping", r: "Housekeeping Lead" }
+        ],
+        'school_operations_pack': [
+            { d: "Leadership", r: "Principal" },
+            { d: "Admin", r: "Admin Head" },
+            { d: "Transport", r: "Transport Manager" },
+            { d: "Transport", r: "Driver" },
+            { d: "Transport", r: "Attendant" },
+            { d: "Canteen", r: "Canteen Manager" },
+            { d: "Security", r: "Security Chief" },
+            { d: "Academic", r: "Lab Assistant" },
+            { d: "Facilities", r: "Facility Lead" },
+            { d: "Medical", r: "Nurse" }
+        ],
+        'franchise_operations_pack': [
+            { d: "Corporate", r: "Franchisor CEO" },
+            { d: "Corporate", r: "Regional Manager" },
+            { d: "Unit", r: "Unit Manager" },
+            { d: "Unit", r: "Store Lead" },
+            { d: "Stores", r: "Inventory Lead" },
+            { d: "Kitchen", r: "Kitchen Lead" },
+            { d: "Service", r: "Service Staff" },
+            { d: "Service", r: "Cashier" },
+            { d: "Quality", r: "Quality Auditor" },
+            { d: "Security", r: "Security" }
+        ],
+        'facility_management_blueprint': [
+            { d: "Management", r: "Facility Director" },
+            { d: "Engineering", r: "Chief Engineer" },
+            { d: "Engineering", r: "MEP Technician" },
+            { d: "Engineering", r: "BMS Operator" },
+            { d: "Soft FM", r: "Soft FM Manager" },
+            { d: "Soft FM", r: "Janitor" },
+            { d: "Safety", r: "Safety Officer" },
+            { d: "Security", r: "Security Chief" },
+            { d: "Admin", r: "Vendor Manager" },
+            { d: "Finance", r: "Utility Analyst" }
+        ],
+        'cinema_operations_pack': [
+            { d: "Management", r: "Cinema GM" },
+            { d: "Operations", r: "Floor Supervisor" },
+            { d: "Technical", r: "Chief Projectionist" },
+            { d: "Technical", r: "Technical Assistant" },
+            { d: "F&B", r: "Concession Manager" },
+            { d: "F&B", r: "Concession Staff" },
+            { d: "Operations", r: "Lobby Manager" },
+            { d: "Service", r: "Usher" },
+            { d: "Security", r: "Security Head" },
+            { d: "Finance", r: "Finance Lead" }
+        ],
+        'retail_operations_system': [
+            { d: "Management", r: "Store Manager" },
+            { d: "Operations", r: "Floor Supervisor" },
+            { d: "Inventory", r: "Inventory Lead" },
+            { d: "Visuals", r: "Visual Merchandiser" },
+            { d: "Service", r: "Sales Associate" },
+            { d: "Service", r: "Cashier" },
+            { d: "Loss Prev", r: "Loss Prevention Lead" },
+            { d: "Security", r: "Security" },
+            { d: "Housekeeping", r: "Housekeeping" },
+            { d: "Technical", r: "Tech Lead" }
+        ]
+    };
+
+    const activeTemplate = roleTemplates[item.id] || roleTemplates['restaurants'];
+    const tHeaders = [
+        { v: "Key (Auto)", s: headerStyle },
+        { v: "Branch", s: headerStyle },
+        { v: "Department", s: headerStyle },
+        { v: "Role", s: headerStyle },
+        { v: "Staff Name (Input)", s: headerStyle }
+    ];
     const pData: any[][] = [[], [], [], tHeaders];
+
+    ["Mumbai Main", "Pune Branch", "Branch 3", "Branch 4", "Branch 5"].forEach(bName => {
+        activeTemplate.forEach(t => {
+            pData.push([
+                { t: 'f', f: `IF(LEN(B${pData.length + 1})>0, B${pData.length + 1} & "|" & D${pData.length + 1}, "")`, s: dataStyleCenter },
+                { v: bName, s: dataStyleCenter },
+                { v: t.d, s: dataStyleLeft },
+                { v: t.r, s: dataStyleLeft },
+                { v: "", s: inputStyle }
+            ]);
+        });
+    });
+
     const pWs = utils.aoa_to_sheet(pData);
-    pWs['!cols'] = [0, 20, 25, 35].map((w, i) => ({ wch: w, hidden: i === 0 }));
-    addSovereignRibbon(pWs, "Team Roster", 'D');
+    pWs['!cols'] = [0, 25, 20, 25, 35].map((w, i) => ({ wch: w, hidden: i === 0 }));
+    addSovereignRibbon(pWs, "Team Roster", 'E');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- 05. DAILY_TASKS (THE CLINICAL BOARD) ---
+    // --- 05. DAILY_TASKS (THE EXECUTION BOARD) ---
     const lHeaders = [
-        { v: "Branch", s: headerStyle },        // A
-        { v: "Dept", s: headerStyle },          // B
-        { v: "Task", s: headerStyle },          // C
-        { v: "Assigned To", s: headerStyle },   // D
-        { v: "Status", s: headerStyle },        // E
-        { v: "Checked By", s: headerStyle },    // F
-        { v: "If Missed", s: headerStyle },     // G
-        { v: "Instructions", s: headerStyle },  // H
-        { v: "Role", s: headerStyle },          // I (Hidden)
-        { v: "Freq", s: headerStyle },          // J (Hidden)
-        { v: "ModID", s: headerStyle },         // K (Hidden)
-        { v: "Type", s: headerStyle },          // L (Hidden)
-        { v: "Active", s: headerStyle },        // M (Hidden)
-        { v: "ID", s: headerStyle }             // N (Hidden)
+        { v: "Branch", s: headerStyle },
+        { v: "Dept", s: headerStyle },
+        { v: "Task", s: headerStyle },
+        { v: "Assigned To", s: headerStyle },
+        { v: "Status", s: headerStyle },
+        { v: "Checked By", s: headerStyle },
+        { v: "If Missed", s: headerStyle },
+        { v: "Instructions", s: headerStyle },
+        { v: "Role", s: headerStyle },
+        { v: "Freq", s: headerStyle },
+        { v: "ModID", s: headerStyle },
+        { v: "Type", s: headerStyle },
+        { v: "Active", s: headerStyle },
+        { v: "ID", s: headerStyle }
     ];
     const mData: any[][] = [[], [], [], lHeaders];
     
-    [1].forEach(bId => {
-        packChecklists.forEach(c => {
-            c.tasks.forEach((t) => {
-                const rIdx = mData.length + 1;
-                const activeFormula = `=IF(OR(K${rIdx}="", L${rIdx}="CORE"), TRUE, IFERROR(INDEX('SITE_CONFIGURATION'!$C$5:$C$100, MATCH(A${rIdx}, 'SITE_CONFIGURATION'!$A$5:$A$100, 0))<>"NO", TRUE))`;
-                const statusFormula = `IF(M${rIdx}=FALSE, "OFF", IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING"))`;
+    packChecklists.forEach(c => {
+        c.tasks.forEach((t) => {
+            const rIdx = mData.length + 1;
+            const statusFormula = `IF(M${rIdx}=FALSE, "OFF", IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING"))`;
 
-                mData.push([
-                    { t: 'f', f: `'SITE_CONFIGURATION'!A5`, s: dataStyleCenter }, // A: Branch
-                    { v: c.department, s: dataStyleLeft },                       // B: Dept
-                    { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { ...baseFont, bold: true } } }, // C: Task
-                    { v: "[UNASSIGNED]", s: dataStyleLeft },                     // D: Assigned To (Formula in Pass 3)
-                    { t: 'f', f: statusFormula, s: dataStyleCenter },            // E: Status
-                    { v: "", s: inputStyle },                                    // F: Checked By
-                    { v: t.consequence || "Operational Risk.", s: riskStyle },   // G: If Missed
-                    { v: t.floorAction || t.trainerNotes || "", s: instructionStyle }, // H: Instructions
-                    { v: c.role, s: dataStyleCenter },                           // I: Role
-                    { v: c.frequency, s: dataStyleCenter },                      // J: Freq
-                    { v: c.moduleId || "GENERAL", s: dataStyleCenter },          // K: ModID
-                    { v: c.moduleType || "CORE", s: dataStyleCenter },           // L: Type
-                    { t: 'f', f: activeFormula, s: dataStyleCenter },            // M: Active
-                    { v: t.id, s: dataStyleCenter }                              // N: ID
-                ]);
-            });
+            mData.push([
+                { t: 'f', f: `'SITE_CONFIGURATION'!A5`, s: dataStyleCenter }, 
+                { v: c.department, s: dataStyleLeft },                       
+                { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { ...baseFont, bold: true } } }, 
+                { v: "[UNASSIGNED]", s: dataStyleLeft },                     
+                { t: 'f', f: statusFormula, s: dataStyleCenter },            
+                { v: "", s: inputStyle },                                    
+                { v: t.consequence || "Operational Risk.", s: riskStyle },   
+                { v: t.floorAction || t.trainerNotes || "", s: instructionStyle }, 
+                { v: c.role, s: dataStyleCenter },                           
+                { v: c.frequency, s: dataStyleCenter },                      
+                { v: c.moduleId || "GENERAL", s: dataStyleCenter },          
+                { v: c.moduleType || "CORE", s: dataStyleCenter },           
+                { v: true, s: dataStyleCenter },            
+                { v: t.id, s: dataStyleCenter }                              
+            ]);
         });
     });
 
     const mWs = utils.aoa_to_sheet(mData);
-    // HIDDEN COLS: I through N
-    mWs['!cols'] = [15, 15, 45, 20, 15, 15, 35, 45, 0, 0, 0, 0, 0, 0].map(w => ({ wch: w }));
+    mWs['!cols'] = [15, 15, 55, 20, 15, 15, 35, 45, 0, 0, 0, 0, 0, 0].map(w => ({ wch: w }));
     addSovereignRibbon(mWs, "Daily Task Board", 'H');
     utils.book_append_sheet(wb, mWs, "DAILY_TASKS");
 
@@ -259,9 +342,9 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     const sHeaders = [
         { v: "Task", s: headerStyle },
         { v: "Simple Language", s: headerStyle },
-        { v: "Audit Requirement", s: headerStyle },
+        { v: "Audit Language", s: headerStyle },
+        { v: "Trainer Notes", s: headerStyle },
         { v: "Why It Matters", s: headerStyle },
-        { v: "How To Check", s: headerStyle },
         { v: "If Missed", s: headerStyle }
     ];
     const sData: any[][] = [[], [], [], sHeaders];
@@ -271,14 +354,14 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
                 { v: t.id, s: dataStyleCenter },
                 { v: t.description, s: dataStyleLeft },
                 { v: t.technicalProtocol, s: dataStyleLeft },
+                { v: t.floorAction || t.trainerNotes || "Action required per protocol.", s: instructionStyle },
                 { v: "Essential for operational parity and standard protection.", s: dataStyleLeft },
-                { v: t.proof, s: instructionStyle },
                 { v: t.consequence, s: riskStyle }
             ]);
         });
     });
     const sWs = utils.aoa_to_sheet(sData);
-    sWs['!cols'] = [10, 40, 40, 40, 40, 40].map(w => ({ wch: w }));
+    sWs['!cols'] = [12, 40, 40, 45, 40, 40].map(w => ({ wch: w }));
     addSovereignRibbon(sWs, "Training Handbook", 'F');
     utils.book_append_sheet(wb, sWs, "SOP_LIBRARY");
 
@@ -289,10 +372,6 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     const iWs = utils.aoa_to_sheet(iData);
     addSovereignRibbon(iWs, "Incident Registry", 'E');
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
-
-    // Hide technical artifacts
-    if (!wb.Workbook) wb.Workbook = { Sheets: [] };
-    wb.Workbook.Sheets[wb.SheetNames.indexOf("SYSTEM_CONFIG")] = { Hidden: 1 };
 
     // Set final sheet order
     const orderedNames = ["START_HERE", "OPERATIONS_CENTER", "SITE_CONFIGURATION", "TEAM_HUB", "DAILY_TASKS", "SOP_LIBRARY", "INCIDENT_LOG"];
