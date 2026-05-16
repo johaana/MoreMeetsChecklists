@@ -7,12 +7,12 @@ import type { PremiumPack, Checklist } from "@/lib/premium-packs";
  * ============================================================================
  * MOREMEETS™ OPERATIONAL INSTRUMENT - DEPLOYMENT LOCK v12.9
  * ============================================================================
- * PASS 3: INDEX+MATCH RELATIONAL INTEGRATION
+ * PASS 1-4: INTEGRATED RELATIONAL ARCHITECTURE
  * ----------------------------------------------------------------------------
- * 1. Fixed Role Mapping: Branch-aware roster generation.
- * 2. Relational Flow: DAILY_TASKS -> TEAM_HUB via INDEX+MATCH.
- * 3. Parity Lock: 1,048 / 1,048 (Strictly Preserved).
- * 4. Invisible Engineering: Metadata columns hidden (Width 0).
+ * 1. FIXED ROSTER: Deterministic role mapping per branch.
+ * 2. RELATIONAL FLOW: DAILY_TASKS -> TEAM_HUB via INDEX+MATCH.
+ * 3. INVISIBLE ENGINEERING: Metadata hidden (Width 0) to user.
+ * 4. TRAINING HANDBOOK: SOP_LIBRARY purged of technical jargon.
  * ============================================================================
  */
 
@@ -79,7 +79,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     const inputStyle = {
         ...dataStyleCenter,
         font: { ...baseFont, color: { rgb: "000000" }, bold: true },
-        fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_ZONE } }
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_YELLOW } }
     };
 
     const riskStyle = {
@@ -163,7 +163,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     addSovereignRibbon(setupWs, "Site Registry", 'D');
     utils.book_append_sheet(wb, setupWs, "SITE_CONFIGURATION");
 
-    // --- 04. TEAM_HUB (PASS 2: STATIC ROSTER) ---
+    // --- 04. TEAM_HUB (STATIC ROSTER ARRAYS) ---
     const roleTemplates: Record<string, {d: string, r: string}[]> = {
         'restaurants': [
             { d: "Management", r: "General Manager" },
@@ -200,13 +200,24 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
             { d: "Engineering", r: "Facility Manager" },
             { d: "Security", r: "Security Head" },
             { d: "Housekeeping", r: "Housekeeping Lead" }
+        ],
+        'school_operations_pack': [
+            { d: "Management", r: "Principal" },
+            { d: "Admin", r: "Admin Head" },
+            { d: "Transport", r: "Transport Manager" },
+            { d: "Transport", r: "Driver" },
+            { d: "Transport", r: "Attendant" },
+            { d: "Canteen", r: "Canteen Manager" },
+            { d: "Security", r: "Security Chief" },
+            { d: "Lab", r: "Lab Assistant" },
+            { d: "Facilities", r: "Facility Lead" },
+            { d: "Infirmary", r: "Nurse" }
         ]
-        // ... Additional templates truncated for brevity, but all elites follow this pattern.
     };
 
     const activeTemplate = roleTemplates[item.id] || roleTemplates['restaurants'];
     const tHeaders = [
-        { v: "Key (Auto)", s: headerStyle },
+        { v: "Key (Hidden)", s: headerStyle },
         { v: "Branch", s: headerStyle },
         { v: "Department", s: headerStyle },
         { v: "Role", s: headerStyle },
@@ -216,8 +227,9 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
 
     ["Mumbai Main", "Pune Branch", "Branch 3", "Branch 4", "Branch 5"].forEach(bName => {
         activeTemplate.forEach(t => {
+            const rIdx = pData.length + 1;
             pData.push([
-                { t: 'f', f: `IF(LEN(B${pData.length + 1})>0, B${pData.length + 1} & "|" & D${pData.length + 1}, "")`, s: dataStyleCenter },
+                { t: 'f', f: `IF(LEN(B${rIdx})>0, B${rIdx} & "|" & D${rIdx}, "")`, s: dataStyleCenter },
                 { v: bName, s: dataStyleCenter },
                 { v: t.d, s: dataStyleLeft },
                 { v: t.r, s: dataStyleLeft },
@@ -231,7 +243,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     addSovereignRibbon(pWs, "Team Roster", 'E');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- 05. DAILY_TASKS (PASS 3: INDEX+MATCH) ---
+    // --- 05. DAILY_TASKS (INDEX+MATCH RELATIONAL LEDGER) ---
     const lHeaders = [
         { v: "Branch", s: headerStyle },
         { v: "Dept", s: headerStyle },
@@ -241,12 +253,9 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
         { v: "Checked By", s: headerStyle },
         { v: "If Missed", s: headerStyle },
         { v: "Instructions", s: headerStyle },
-        { v: "Role", s: headerStyle },
-        { v: "Freq", s: headerStyle },
-        { v: "ModID", s: headerStyle },
-        { v: "Type", s: headerStyle },
-        { v: "Active", s: headerStyle },
-        { v: "ID", s: headerStyle }
+        { v: "Role (Metadata)", s: headerStyle },
+        { v: "Freq (Metadata)", s: headerStyle },
+        { v: "ID (Metadata)", s: headerStyle }
     ];
     const mData: any[][] = [[], [], [], lHeaders];
     
@@ -254,11 +263,10 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
         c.tasks.forEach((t) => {
             const rIdx = mData.length + 1;
             
-            // RELATIONAL ASSIGNMENT (Pass 3)
-            // Column D (Index 3) matches Branch (A) and Role (I) against TEAM_HUB A:E
+            // RELATIONAL ASSIGNMENT
             const assignmentFormula = `=IFERROR(IF(LEN(TRIM(INDEX('TEAM_HUB'!$E$5:$E$500, MATCH(A${rIdx} & "|" & I${rIdx}, 'TEAM_HUB'!$A$5:$A$500, 0))))=0, "[UNASSIGNED]", INDEX('TEAM_HUB'!$E$5:$E$500, MATCH(A${rIdx} & "|" & I${rIdx}, 'TEAM_HUB'!$A$5:$A$500, 0))), "[UNASSIGNED]")`;
             
-            const statusFormula = `IF(M${rIdx}=FALSE, "OFF", IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING"))`;
+            const statusFormula = `IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING")`;
 
             mData.push([
                 { t: 'f', f: `'SITE_CONFIGURATION'!A5`, s: dataStyleCenter }, 
@@ -271,25 +279,22 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
                 { v: t.floorAction || t.trainerNotes || "", s: instructionStyle }, 
                 { v: c.role, s: dataStyleCenter },                           
                 { v: c.frequency, s: dataStyleCenter },                      
-                { v: c.moduleId || "GENERAL", s: dataStyleCenter },          
-                { v: c.moduleType || "CORE", s: dataStyleCenter },           
-                { v: true, s: dataStyleCenter },            
                 { v: t.id, s: dataStyleCenter }                              
             ]);
         });
     });
 
     const mWs = utils.aoa_to_sheet(mData);
-    // Hiding governance columns I-N (Index 8-13)
-    mWs['!cols'] = [15, 15, 55, 20, 15, 15, 35, 45, 0, 0, 0, 0, 0, 0].map((w, i) => ({ wch: w, hidden: i >= 8 }));
+    // Hiding metadata columns I-K
+    mWs['!cols'] = [15, 15, 55, 20, 15, 15, 35, 45, 0, 0, 0].map((w, i) => ({ wch: w, hidden: i >= 8 }));
     addSovereignRibbon(mWs, "Daily Task Board", 'H');
     utils.book_append_sheet(wb, mWs, "DAILY_TASKS");
 
     // --- 06. SOP_LIBRARY (TRAINING HANDBOOK) ---
     const sHeaders = [
         { v: "Task", s: headerStyle },
-        { v: "Simple Language", s: headerStyle },
-        { v: "Audit Language", s: headerStyle },
+        { v: "What To Do", s: headerStyle },
+        { v: "Audit Requirement", s: headerStyle },
         { v: "Trainer Notes", s: headerStyle },
         { v: "Why It Matters", s: headerStyle },
         { v: "If Missed", s: headerStyle }
