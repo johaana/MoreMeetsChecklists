@@ -169,7 +169,7 @@ export const handleDownload = (item: PremiumPack) => {
         'restaurants': ["Bar", "Delivery", "Bakery", "DriveThru", "Outdoor"],
         'school_operations_pack': ["Science Labs", "Student Transport", "Canteen", "Hostels", "Sports Facilities"],
         'facility_management_blueprint': ["MEP Systems", "Soft-FM", "Energy", "Safety", "Vendor Management"],
-        'cinema_operations_pack': ["Concession", "Projection", "VIP Area", "Sound Systems", "Security"],
+        'cinema_operations_pack': ["Projection", "Concession", "VIP Lounge", "Dolby/Audio", "Arcade", "Parking"],
         'franchise_operations_pack': ["Logistics", "Marketing", "QA", "IT", "Training"]
     };
 
@@ -194,7 +194,7 @@ export const handleDownload = (item: PremiumPack) => {
         'retail_operations_system': ["Store Manager", "Floor Supervisor", "Cashier", "Inventory Lead", "Visual Merchandiser", "Loss Prevention Lead", "Maintenance Lead"],
         'school_operations_pack': ["Principal", "Head of Pre-Primary", "School Counselor", "Examination In-charge", "Transport Manager", "Security Chief", "Canteen Manager", "Grounds Lead", "Lab Assistant", "Facility Manager", "School Nurse", "Registrar"],
         'facility_management_blueprint': ["COO / Portfolio Head", "Facility Manager", "Chief Engineer", "BMS Operator", "Soft FM Manager", "Safety Officer", "Energy Auditor", "Security Chief", "Utility Analyst", "Vendor Manager", "IT Specialist"],
-        'cinema_operations_pack': ["Cinema GM", "Floor Supervisor", "Concession Manager", "Chief Projectionist", "Lobby Manager", "Safety Officer", "Finance Lead", "Housekeeping Lead", "Maintenance Lead", "Security Chief", "HR Assistant"],
+        'cinema_operations_pack': ["Managing Director", "General Manager", "Projectionist", "Concession Lead", "Floor Supervisor", "Lobby Host", "Safety Officer", "Finance Lead", "Housekeeping", "Maintenance Lead", "Security Chief", "HR Assistant"],
         'franchise_operations_pack': ["Franchisor CEO", "Head of Operations", "Regional Manager", "Brand Expansion Director", "Brand Auditor", "Financial Controller", "Franchise Partner", "Store Manager", "Kitchen Lead", "Customer Experience Lead", "Digital Lead", "IT Specialist", "Procurement Specialist", "Finance Lead", "Safety Officer"]
     };
     
@@ -251,7 +251,8 @@ export const handleDownload = (item: PremiumPack) => {
                     'OT': 4, 'ICU': 5, 'PHM': 6, 'LAB': 7, 'WST': 8, 'GAS': 9, 'AMB': 10,
                     'ROOM': 4, 'WHSE': 5, 'SVC': 7, 'ALT': 8, 'FITTING': 4,
                     'LABS': 4, 'BUS': 5, 'CAN': 6, 'HST': 7, 'SPORT': 8,
-                    'DEL': 5, 'BAKE': 6, 'DT': 7, 'OUT': 8
+                    'DEL': 5, 'BAKE': 6, 'DT': 7, 'OUT': 8,
+                    'PRO': 4, 'CON': 5, 'VIP': 6, 'AUD': 7, 'ARC': 8, 'PARK': 9
                 };
                 const colIdx = modColMap[modTag] || -1;
                 const matchBranch = `MATCH(${branchRef}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
