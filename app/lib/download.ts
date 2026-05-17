@@ -5,13 +5,13 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v14.6 STABILIZATION LOCK
+ * MOREMEETS™ SOVEREIGN ENGINE - v14.7 FINAL STABILIZATION
  * ----------------------------------------------------------------------------
- * 1. LIVE SWITCHBOARD: Status logic now INDEX+MATCHES against SITE_CONFIGURATION.
- * 2. HIDDEN ENGINEERING: Columns J:P (9-15) strictly hidden: true, width: 0.
- * 3. SORT-PROOF ROSTER: Assigned To uses absolute anchors ($A5 & "|" & $B5).
- * 4. TERMINOLOGY FREEZE: "Task / Technical SOP" standardized.
- * 5. ROSTER SYNC: Zero fallback roles; 100% vertical role mapping.
+ * 1. LIVE SWITCHBOARD: Status logic now pulls live toggles from SITE_CONFIGURATION.
+ * 2. SORT-PROOF ROSTER: Assigned To uses absolute anchors ($A5 & "|" & $B5).
+ * 3. HIDDEN ENGINEERING: Columns J:P (9-15) strictly hidden: true, width: 0.
+ * 4. DUAL-CHECK: High/Med requires 2 signatures; Low requires 1.
+ * 5. ROSTER SYNC: Zero fallback roles; 100% vertical role mapping for Elite 8.
  * ----------------------------------------------------------------------------
  */
 
@@ -115,7 +115,6 @@ export const handleDownload = (item: PremiumPack) => {
         ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
         ws['!merges'].push({ s: { r: 1, c: 0 }, e: { r: 1, c: endCIdx } }); 
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 4, xSplit: 2 }];
-        if(!ws['!rows']) ws['rows'] = [];
         ws['!rows'] = [
             { hpt: 30 },
             { hpt: 50 },
@@ -245,6 +244,7 @@ export const handleDownload = (item: PremiumPack) => {
         { v: "ModuleID", s: headerStyle },
         { v: "TaskType", s: headerStyle },
         { v: "ActiveFlag", s: headerStyle },
+        { v: "ModuleStatus", s: headerStyle },
         { v: "Score", s: headerStyle }
     ];
     const mData: any[][] = [[], [], [], lHeaders];
@@ -264,10 +264,10 @@ export const handleDownload = (item: PremiumPack) => {
             };
             const colOffset = modMap[modTag] || -1;
             const siteRowMatch = `MATCH(${branchRef}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
-            const moduleFormula = colOffset > 0 ? `INDEX('SITE_CONFIGURATION'!$A$5:$M$500, ${siteRowMatch}, ${colOffset})` : "\"YES\"";
+            const moduleFormula = colOffset > 0 ? `IFERROR(INDEX('SITE_CONFIGURATION'!$A$5:$M$500, ${siteRowMatch}, ${colOffset}), "YES")` : "\"YES\"";
 
             const isRoutine = t.priority === 'Low';
-            const statusFormula = `IF(${moduleFormula}="NO", "N/A", IF($J${rIdx}="Low", IF(LEN(TRIM($F${rIdx}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM($F${rIdx}))>0, LEN(TRIM($G${rIdx}))>0), "COMPLETED", "PENDING")))`;
+            const statusFormula = `IF($O${rIdx}="NO", "N/A", IF($J${rIdx}="Low", IF(LEN(TRIM($F${rIdx}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM($F${rIdx}))>0, LEN(TRIM($G${rIdx}))>0), "COMPLETED", "PENDING")))`;
 
             mData.push([
                 { t: 'f', f: "SITE_CONFIGURATION!$A$5", s: dataStyleCenter }, 
@@ -284,6 +284,7 @@ export const handleDownload = (item: PremiumPack) => {
                 { v: t.id, s: { hidden: true } },
                 { v: "CORE", s: { hidden: true } },
                 { v: "ACTIVE", s: { hidden: true } },
+                { t: 'f', f: moduleFormula, s: { hidden: true } },
                 { v: "10", s: { hidden: true } }
             ]);
         });
@@ -292,7 +293,7 @@ export const handleDownload = (item: PremiumPack) => {
     const mWs = utils.aoa_to_sheet(mData);
     mWs['!cols'] = [
         { wch: 15 }, { wch: 25 }, { wch: 55 }, { wch: 20 }, { wch: 15 }, { wch: 15 }, { wch: 15 }, { wch: 40 }, { wch: 45 },
-        { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }
+        { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }
     ];
     addRibbon(mWs, "Daily Task Logbook", 'I');
     utils.book_append_sheet(wb, mWs, "DAILY_TASKS");
@@ -312,7 +313,7 @@ export const handleDownload = (item: PremiumPack) => {
             sData.push([
                 { v: c.role, s: dataStyleCenter },
                 { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
-                { v: `Ensures consistency and prevents unmonitored ${t.consequence || "operational gaps"}.`, s: dataStyleLeft },
+                { v: `Prevents unmonitored ${t.consequence || "operational gaps"}.`, s: dataStyleLeft },
                 { v: t.description || t.floorAction || "Follow established procedure.", s: dataStyleLeft },
                 { v: t.proof || "Verify entry in shift log.", s: instructionStyle },
                 { v: `[Risk: ${t.consequence}]`, s: riskStyle }

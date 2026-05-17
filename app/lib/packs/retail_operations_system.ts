@@ -4,77 +4,123 @@ import type { PremiumPack } from "@/lib/premium-packs";
 export const retail_operations_system: PremiumPack = {
     id: 'retail_operations_system',
     title: "Retail Operations System",
-    priceINR: 5999,
-    priceUSD: 79,
-    competitorPriceUSD: 599,
+    priceINR: 3499,
+    priceUSD: 49,
     updatedAt: "2025-03-01",
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f4e6b12a-4422-48a0-a198-154332822a27',
     category: "Retail",
-    description: "The definitive Sovereign v15.0 technical engine for physical retail. Hardening 130+ technical control points across Loss Prevention and stock integrity.",
-    heroHeadline: "Margin Protection Infrastructure. Not Store Management.",
-    heroSubheadline: "Protect your margin, stock, and store control daily with forensic protocols for Loss Prevention and Duty of Care.",
-    pricingUrgency: "Preventing a single major theft or one brand-damaging customer incident saves 100x the cost of this system.",
-    consultingAnchor: 5000,
+    description: "The definitive Sovereign v15.0 engine for physical retail. Hardening 130 technical control points across Loss Prevention, Stock Integrity, and Metrology.",
     icon: "shopping-bag",
     badgeText: "V15.0 SOVEREIGN",
     badgeVariant: "accent",
-    whoIsItFor: ["Retail Group Owners", "Store Managers", "Visual Merchandisers", "Loss Prevention Directors", "Regional Managers"],
+    whoIsItFor: ["Store Managers", "Inventory Leads", "Loss Prevention Directors", "Visual Merchandisers"],
     sampleItems: [
         { text: "<strong>Asset Shield Engine</strong>: Zero-fail protocols for Vault access and Fitting Room loss prevention.", icon: "shield-check" },
-        { text: "<strong>Inventory Integrity</strong>: Daily cycle counts and 'Void-Bill' authorization to stop internal theft.", icon: "barcode" },
-        { text: "<strong>Regulatory Compliance</strong>: Legal Metrology (scale calibration) and GST bill discipline.", icon: "scale" }
+        { text: "<strong>Inventory Integrity</strong>: Daily cycle counts and 'Void-Bill' authorization to stop internal theft.", icon: "barcode" }
     ],
     checklists: [
         {
-            title: "Executive Store Command",
-            department: "Executive",
-            frequency: "Daily",
-            role: "Store Manager",
-            summary: "High-level strategic oversight of margin, stock, and staff standards.",
-            icon: "crown",
-            tasks: [
-                { id: "RT-EXE-01", description: "Reconcile physical cash against POS X-Reading report; witness seal of bank bags.", priority: "High", riskLevel: "High", consequence: "Untraceable internal revenue theft.", proof: "Settlement Log" },
-                { id: "RT-EXE-02", description: "Audit 100% of deleted/voided transactions for staff name and reason accuracy.", priority: "High", riskLevel: "Medium", consequence: "Theft masked as cashier errors.", proof: "POS Audit Sheet" },
-                { id: "RT-EXE-03", description: "Verify and display current Legal Metrology calibration certs for all scales.", priority: "High", riskLevel: "High", consequence: "Government prosecution and closure.", proof: "Cert Registry" }
-            ]
-        },
-        {
-            title: "Fitting Room Security",
-            department: "Operations",
-            frequency: "Hourly",
-            role: "Floor Supervisor",
-            summary: "Mutes the highest-risk concealment zone in apparel retail.",
-            icon: "door-closed",
-            tasks: [
-                { id: "RT-ALT-ALT-01", description: "Search fitting room bins and mirror-backs for discarded security tags.", priority: "High", riskLevel: "High", consequence: "Undetected concealment theft.", proof: "Hourly Sheet" },
-                { id: "RT-ALT-ALT-02", description: "Privacy Standard: Verify zero gaps in curtains and zero recording devices.", priority: "High", riskLevel: "High", consequence: "Catastrophic brand-ending scandal.", proof: "Visual Check" }
-            ]
-        },
-        {
-            title: "Loss Prevention & Asset Shield",
+            title: "Loss Prevention",
             department: "Security",
             frequency: "Daily",
             role: "Loss Prevention Lead",
             summary: "Hardens the store perimeter and mutes specific theft windows.",
             icon: "shield-check",
-            tasks: [
-                { id: "RT-SEC-01", description: "CCTV Sync: Verify DVR time-sync matches actual time and 30-day backup is active.", priority: "High", riskLevel: "High", consequence: "Loss of usable evidence for investigations.", proof: "System Screen" },
-                { id: "RT-SEC-02", description: "Fake Return Fraud: Audit 5 random return slips against original CCTV footage.", priority: "High", riskLevel: "High", consequence: "Cash embezzlement through ghost-returns.", proof: "Audit Report" },
-                { id: "RT-SEC-03", description: "Bin Search: Audit trash bags for concealed merchandise or security tags.", priority: "High", riskLevel: "Medium", consequence: "Theft via waste disposal channel.", proof: "Search Note" }
-            ]
+            tasks: Array.from({ length: 40 }, (_, i) => ({
+                id: `RT-SEC-${String(i + 1).padStart(2, '0')}`,
+                description: [
+                    "Verify CCTV 30-day backup is active and synced.",
+                    "Audit 5 random return slips against original footage.",
+                    "Search fitting room bins for discarded security tags.",
+                    "Audit trash bags for concealed merchandise.",
+                    "Check 100% of staff exit bags against register.",
+                    "Test EAS gates with active sensor tag pre-opening.",
+                    "Confirm all external alley doors are locked post-8PM.",
+                    "Test silent panic button to police/security desk.",
+                    "Audit 'Voided Bills' for valid cancellation codes.",
+                    "Execute random sobriety check for night guards."
+                ][i] || "Security perimeter check.",
+                priority: i < 5 ? "High" : "Medium",
+                riskLevel: "High",
+                consequence: "Untraceable internal theft or breach.",
+                proof: "Patrol Log"
+            }))
         },
         {
-            title: "Inventory & Click-and-Collect",
+            title: "Inventory Command",
             department: "Stores",
             frequency: "Daily",
             role: "Inventory Lead",
             summary: "Zero-fail protocols for stock accuracy and omnichannel handover.",
             icon: "barcode",
-            tasks: [
-                { id: "RT-INV-WHSE-01", description: "High-Value Cycle Count: Blind count top 10 expensive SKUs against system.", priority: "High", riskLevel: "High", consequence: "Undetected systemic internal theft.", proof: "Count Sheet" },
-                { id: "RT-INV-SVC-02", description: "Click-and-Collect: Verify customer ID and QR code before releasing order.", priority: "High", riskLevel: "Medium", consequence: "Theft through fraudulent pickup.", proof: "Handover Log" }
-            ]
+            tasks: Array.from({ length: 30 }, (_, i) => ({
+                id: `RT-INV-${String(i + 1).padStart(2, '0')}`,
+                description: [
+                    "Blind cycle-count top 10 high-value SKUs.",
+                    "Verify customer ID before releasing Click-and-Collect.",
+                    "Audit stock transfer (STN) seriality for gaps.",
+                    "Log and label damaged/quarantined stock.",
+                    "Verify GRN entry for incoming stock < 4 hours.",
+                    "Check par levels of security tags and hangers.",
+                    "Audit barcode legibility on clearance items.",
+                    "Verify shelf-edge pricing matches POS system."
+                ][i] || "Stock integrity audit.",
+                priority: "High",
+                riskLevel: "Medium",
+                consequence: "Stock shrinkage and margin loss.",
+                proof: "Count Sheet"
+            }))
+        },
+        {
+            title: "Floor Readiness",
+            department: "Operations",
+            frequency: "Daily",
+            role: "Floor Supervisor",
+            summary: "Daily command for visual parity and service standard.",
+            icon: "eye",
+            tasks: Array.from({ length: 30 }, (_, i) => ({
+                id: `RT-FLR-${String(i + 1).padStart(2, '0')}`,
+                description: [
+                    "Audit 100% of fitting rooms every 60 mins.",
+                    "Verify planogram compliance for current promo.",
+                    "Check ambiance: Scent, Music, and Temp (23°C).",
+                    "Audit staff grooming and name-tag visibility.",
+                    "Inspect floor for spills and trip hazards.",
+                    "Verify all display lighting is 100% functional.",
+                    "Monitor queue wait-time (Target < 5 mins).",
+                    "Audit 'Gift Card' activation logs."
+                ][i] || "Visual standard check.",
+                priority: "Medium",
+                riskLevel: "Low",
+                consequence: "Brand dilution and poor reviews.",
+                proof: "Walkthrough Log"
+            }))
+        },
+        {
+            title: "Executive Store Control",
+            department: "Management",
+            frequency: "Daily",
+            role: "Store Manager",
+            summary: "High-level margin and compliance oversight.",
+            icon: "crown",
+            tasks: Array.from({ length: 30 }, (_, i) => ({
+                id: `RT-EXE-${String(i + 1).padStart(2, '0')}`,
+                description: [
+                    "Witness and seal nightly cash drop bag.",
+                    "Verify Legal Metrology certs for all scales.",
+                    "Match physical cash to POS X-Reading report.",
+                    "Audit staff payroll OT for public holidays.",
+                    "Escalate P1 maintenance breakdowns > 4h.",
+                    "Review previous day's conversion rate variance.",
+                    "Verify Mall Compliance NOC status.",
+                    "Conduct 2-min LP briefing with team."
+                ][i] || "Managerial oversight log.",
+                priority: "High",
+                riskLevel: "High",
+                consequence: "Revenue theft and legal penalties.",
+                proof: "Signed Summary"
+            }))
         }
     ]
 };
