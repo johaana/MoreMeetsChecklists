@@ -2,15 +2,15 @@
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
-import type { PremiumPack, Checklist } from "@/lib/premium-packs";
+import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ OPERATIONAL INSTRUMENT - v14.3 STABILITY LOCK
+ * MOREMEETS™ OPERATIONAL INSTRUMENT - v14.5 STABILITY LOCK
  * ----------------------------------------------------------------------------
- * 1. DESTRUCTIVE RESILIENCE: Absolute range locking ($) for cross-sheet parity.
- * 2. MULTI-BRANCH SYNC: DAILY_TASKS loops through all sites defined in Setup.
- * 3. MODULE SWITCHBOARD: INDEX+MATCH logic mutes tasks for disabled facilities.
- * 4. PERFORMANCE LOCK: Sub-1000 row density for instant mobile recalculation.
+ * 1. VERTICAL-AWARE ROSTER: Dedicated templates for all 8 Elite verticals.
+ * 2. DYNAMIC TOGGLE HEADERS: SITE_CONFIGURATION maps to vertical facilities.
+ * 3. LANGUAGE PURGE: Replaced synthetic jargon with operational directives.
+ * 4. PERFORMANCE LOCK: Sub-1000 row density for instant mobile stability.
  * ----------------------------------------------------------------------------
  */
 
@@ -119,9 +119,9 @@ export const handleDownload = (item: PremiumPack) => {
         [{ v: "WELCOME TO MOREMEETS™", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
         [{ v: "3-STEP OPERATIONAL SETUP", s: { font: { sz: 12, bold: true }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "STEP 1: CONFIGURE SITES", s: { font: { bold: true } } }, { v: "Open SITE_CONFIGURATION to name branches and set active modules.", l: { Target: "#'SITE_CONFIGURATION'!A1" } }],
-        [{ v: "STEP 2: ASSIGN STAFF", s: { font: { bold: true } } }, { v: "Open TEAM_HUB to enter names for each role.", l: { Target: "#'TEAM_HUB'!A1" } }],
-        [{ v: "STEP 3: RUN OPERATIONS", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin logging execution.", l: { Target: "#'DAILY_TASKS'!A1" } }],
+        [{ v: "STEP 1: CONFIGURE BRANCHES", s: { font: { bold: true } } }, { v: "Open SITE_CONFIGURATION to name branches and set active facilities.", l: { Target: "#'SITE_CONFIGURATION'!A1" } }],
+        [{ v: "STEP 2: ASSIGN PERSONNEL", s: { font: { bold: true } } }, { v: "Open TEAM_HUB to enter names for each role.", l: { Target: "#'TEAM_HUB'!A1" } }],
+        [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin tracking execution.", l: { Target: "#'DAILY_TASKS'!A1" } }],
         [],
         [{ v: "LEGEND: YELLOW CELLS ARE INPUTS. GREY CELLS ARE AUTOMATED.", s: { font: { italic: true, color: { rgb: COLORS.METADATA_GREY } } } }]
     ];
@@ -143,14 +143,19 @@ export const handleDownload = (item: PremiumPack) => {
     opsWs['!cols'] = [{ wch: 35 }, { wch: 20 }];
     utils.book_append_sheet(wb, opsWs, "OPERATIONS_CENTER");
 
-    // --- 03. SITE_CONFIGURATION ---
-    const facilityHeaders = item.id === 'hotels_and_resorts' 
-        ? ["Swimming Pool", "Gym & Spa", "Valet Parking", "Airport Shuttle", "Executive Lounge", "Banquet Hall", "Rooftop Bar", "Pet Friendly"]
-        : item.id === 'healthcare_and_hospital_operations'
-        ? ["OT", "ICU", "Pharmacy", "Diagnostics", "Biomedical Waste", "Medical Gas", "Ambulance"]
-        : item.category === 'Retail'
-        ? ["Fitting Room", "Warehouse", "Valet", "Customer Service", "Alterations"]
-        : ["Bar", "Delivery", "Bakery", "DriveThru", "Outdoor"];
+    // --- 03. SITE_CONFIGURATION (Dynamic Headers) ---
+    const facilityHeadersMap: Record<string, string[]> = {
+        'hotels_and_resorts': ["Swimming Pool", "Gym & Spa", "Valet Parking", "Airport Shuttle", "Executive Lounge", "Banquet Hall", "Rooftop Bar", "Pet Friendly"],
+        'healthcare_and_hospital_operations': ["OT", "ICU", "Pharmacy", "Diagnostics", "Biomedical Waste", "Medical Gas", "Ambulance"],
+        'retail_operations_system': ["Fitting Room", "Warehouse", "Valet", "Customer Service", "Alterations"],
+        'restaurants': ["Bar", "Delivery", "Bakery", "DriveThru", "Outdoor"],
+        'school_operations_pack': ["Science Labs", "Student Transport", "Canteen", "Hostels", "Sports Facilities"],
+        'facility_management_blueprint': ["MEP Systems", "Soft-FM", "Energy", "Safety", "Vendor Management"],
+        'cinema_operations_pack': ["Concession", "Projection", "VIP Area", "Sound Systems", "Security"],
+        'franchise_operations_pack': ["Logistics", "Marketing", "QA", "IT", "Training"]
+    };
+
+    const facilityHeaders = facilityHeadersMap[item.id] || ["Module 1", "Module 2", "Module 3", "Module 4", "Module 5"];
 
     const setupHeaders = [
         { v: "BRANCH NAME", s: headerStyle },
@@ -159,7 +164,7 @@ export const handleDownload = (item: PremiumPack) => {
         ...facilityHeaders.map(h => ({ v: h.toUpperCase(), s: headerStyle }))
     ];
     const setupData: any[][] = [[], [], [], setupHeaders];
-    ["Mumbai Main", "Pune Branch", "Site 3", "Site 4", "Site 5"].forEach(b => {
+    ["Branch 1", "Branch 2", "Branch 3", "Branch 4", "Branch 5"].forEach(b => {
         const row = [{ v: b, s: inputStyle }, { v: "City", s: inputStyle }, { v: "ACTIVE", s: inputStyle }];
         facilityHeaders.forEach(() => row.push({ v: "YES", s: inputStyle }));
         setupData.push(row);
@@ -169,15 +174,19 @@ export const handleDownload = (item: PremiumPack) => {
     addRibbon(setupWs, "Site Configuration", utils.encode_col(setupHeaders.length - 1));
     utils.book_append_sheet(wb, setupWs, "SITE_CONFIGURATION");
 
-    // --- 04. TEAM_HUB ---
+    // --- 04. TEAM_HUB (Vertical Specific) ---
     const roleTemplates: Record<string, string[]> = {
         'restaurants': ["General Manager", "Shift Manager", "Kitchen Lead", "Chef de Partie", "Commi Chef", "Steward/Server", "Cashier", "Bar Lead", "Housekeeping", "Security"],
         'hotels_and_resorts': ["General Manager", "Front Office Manager", "Receptionist", "Executive Housekeeper", "Room Attendant", "Chief Engineer", "Maintenance Tech", "F&B Manager", "Security Chief"],
         'healthcare_and_hospital_operations': ["Medical Director", "Nursing Superintendent", "Ward Nurse", "OT In-charge", "Pharmacy Lead", "EHS Officer", "Quality Head", "OPD Manager", "Chief Engineer", "Security Chief", "Billing Manager", "HR Manager"],
         'retail_operations_system': ["Store Manager", "Floor Supervisor", "Cashier", "Inventory Lead", "Visual Merchandiser", "Loss Prevention Lead", "Maintenance Lead"],
-        'default': ["Manager", "Supervisor", "Lead", "Staff A", "Staff B", "Security", "Maintenance"]
+        'school_operations_pack': ["Principal", "Admin Head", "Transport Manager", "Lab Assistant", "School Nurse", "Canteen Manager", "Security Head"],
+        'facility_management_blueprint': ["COO / Portfolio Head", "Facility Manager", "Chief Engineer", "BMS Operator", "Soft FM Manager", "Safety Officer", "Energy Auditor", "Security Chief", "Utility Analyst", "Vendor Manager", "IT Specialist"],
+        'cinema_operations_pack': ["Cinema GM", "Floor Supervisor", "Concession Manager", "Chief Projectionist", "Lobby Manager", "Safety Officer", "Finance Lead", "Housekeeping Lead", "Security Chief"],
+        'franchise_operations_pack': ["Franchisor CEO", "Head of Operations", "Regional Manager", "Expansion Director", "Brand Auditor", "Financial Controller", "Franchise Partner", "Store Manager"]
     };
-    const activeRoles = roleTemplates[item.id] || roleTemplates['default'];
+    
+    const activeRoles = roleTemplates[item.id] || ["Manager", "Supervisor", "Lead", "Staff A", "Staff B"];
     
     const tHeaders = [
         { v: "Lookup Key", s: headerStyle }, 
@@ -228,27 +237,21 @@ export const handleDownload = (item: PremiumPack) => {
     ];
     const mData: any[][] = [[], [], [], lHeaders];
     
-    // Repeat tasks for Branch 1 for active management
     item.checklists.forEach(c => {
         c.tasks.forEach((t) => {
             const rIdx = mData.length + 1;
-            const branchRef = `A${rIdx}`; // Relative to current row to survive sorting
-            
-            // Absolute ranges for cross-sheet lookups, relative cells for current row
+            const branchRef = `A${rIdx}`; 
             const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & B${rIdx}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
             
-            // Module Switchboard Logic - Vertical Aware
             const modTag = t.id.split('-')[1]; 
             const modMap: Record<string, number> = {
-                'POOL': 4, 'GYM': 5, 'VALET': 6, 'SHUT': 7, 'LOUNGE': 8, 'BANQ': 9, 'BAR': 10, 'PET': 11,
-                'OT': 4, 'ICU': 5, 'PHM': 6, 'LAB': 7, 'WST': 8, 'GAS': 9, 'AMB': 10,
-                'ROOM': 4, 'WHSE': 5, 'VAL': 6, 'SVC': 7, 'ALT': 8
+                'POOL': 3, 'GYM': 4, 'VALET': 5, 'SHUT': 6, 'LOUNGE': 7, 'BANQ': 8, 'BAR': 9, 'PET': 10,
+                'OT': 3, 'ICU': 4, 'PHM': 5, 'LAB': 6, 'WST': 7, 'GAS': 8, 'AMB': 9,
+                'ROOM': 3, 'WHSE': 4, 'VAL': 5, 'SVC': 6, 'ALT': 7
             };
-            const colIdx = modMap[modTag] || -1;
-            
-            // Relative match to find correct site row in configuration
+            const colOffset = modMap[modTag] || -1;
             const siteRowMatch = `MATCH(A${rIdx}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
-            const moduleFormula = colIdx > 0 ? `INDEX('SITE_CONFIGURATION'!$D$5:$K$500, ${siteRowMatch}, ${colIdx-3})` : `"YES"`;
+            const moduleFormula = colOffset > 0 ? `INDEX('SITE_CONFIGURATION'!$D$5:$K$500, ${siteRowMatch}, ${colOffset})` : `"YES"`;
 
             const isRoutine = t.priority === 'Low';
             const statusFormula = `IF(${moduleFormula}="NO", "N/A", IF(J${rIdx}="Low", IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETED", "PENDING")))`;
@@ -278,7 +281,7 @@ export const handleDownload = (item: PremiumPack) => {
         { wch: 15 }, { wch: 25 }, { wch: 55 }, { wch: 20 }, { wch: 15 }, { wch: 15 }, { wch: 15 }, { wch: 40 }, { wch: 45 },
         { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }
     ];
-    addRibbon(mWs, "Daily Execution Ledger", 'I');
+    addRibbon(mWs, "Daily Task Logbook", 'I');
     utils.book_append_sheet(wb, mWs, "DAILY_TASKS");
 
     // --- 06. SOP_LIBRARY ---
@@ -296,7 +299,7 @@ export const handleDownload = (item: PremiumPack) => {
             sData.push([
                 { v: c.role, s: dataStyleCenter },
                 { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
-                { v: `Prevents operational drift and maintains institutional standard.`, s: dataStyleLeft },
+                { v: `Maintains operational standards and prevents audit failure.`, s: dataStyleLeft },
                 { v: t.description || t.floorAction || "Follow standard procedure.", s: dataStyleLeft },
                 { v: t.proof || "Verify entry in the daily shift ledger.", s: instructionStyle },
                 { v: `[Risk: ${t.consequence}]`, s: riskStyle }
@@ -305,7 +308,7 @@ export const handleDownload = (item: PremiumPack) => {
     });
     const sWs = utils.aoa_to_sheet(sData);
     sWs['!cols'] = [{ wch: 25 }, { wch: 40 }, { wch: 45 }, { wch: 50 }, { wch: 45 }, { wch: 45 }];
-    addRibbon(sWs, "Training Handbook", 'F');
+    addRibbon(sWs, "Operational Handbook", 'F');
     utils.book_append_sheet(wb, sWs, "SOP_LIBRARY");
 
     // --- 07. INCIDENT_LOG ---
