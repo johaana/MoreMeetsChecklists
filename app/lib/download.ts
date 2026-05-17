@@ -5,13 +5,13 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v14.8 PILOT FREEZE
+ * MOREMEETS™ SOVEREIGN ENGINE - v14.9 PILOT FREEZE
  * ----------------------------------------------------------------------------
- * 1. LIVE SWITCHBOARD: Dynamic vertical-aware module mapping via INDEX+MATCH.
+ * 1. MULTI-BRANCH REPLICATION: Repeats task-set for 5 branches by default.
  * 2. SORT-PROOF ROSTER: Assigned To uses absolute anchors ($A5 & "|" & $B5).
  * 3. HIDDEN ENGINEERING: Columns J:P (9-15) strictly hidden: true, width: 0.
  * 4. PROTECTION LAYER: Locks formula cells, unlocks Input Yellow cells.
- * 5. ROSTER SYNC: Zero fallback roles; 100% vertical role mapping for Elite 8.
+ * 5. DYNAMIC SWITCHBOARD: INDEX+MATCH links Status to SITE_CONFIGURATION.
  * ----------------------------------------------------------------------------
  */
 
@@ -121,7 +121,6 @@ export const handleDownload = (item: PremiumPack) => {
             { hpt: 20 },
             { hpt: 45 }
         ];
-        // Lock the sheet to enable cell protections
         ws['!protect'] = {
             selectLockedCells: true,
             selectUnlockedCells: true
@@ -163,7 +162,7 @@ export const handleDownload = (item: PremiumPack) => {
     utils.book_append_sheet(wb, opsWs, "OPERATIONS_CENTER");
 
     // --- 03. SITE_CONFIGURATION ---
-    const facilityHeadersMap: Record<string, string[]> = {
+    const verticalModules: Record<string, string[]> = {
         'hotels_and_resorts': ["Swimming Pool", "Gym & Spa", "Valet Parking", "Airport Shuttle", "Executive Lounge", "Banquet Hall", "Rooftop Bar", "Pet Friendly"],
         'healthcare_and_hospital_operations': ["OT", "ICU", "Pharmacy", "Diagnostics", "Biomedical Waste", "Medical Gas", "Ambulance"],
         'retail_operations_system': ["Fitting Room", "Warehouse", "Valet", "Customer Service", "Alterations"],
@@ -174,22 +173,16 @@ export const handleDownload = (item: PremiumPack) => {
         'franchise_operations_pack': ["Logistics", "Marketing", "QA", "IT", "Training"]
     };
 
-    const facilityHeaders = facilityHeadersMap[item.id] || ["Module 1", "Module 2", "Module 3", "Module 4", "Module 5"];
-
-    const setupHeaders = [
-        { v: "BRANCH NAME", s: headerStyle },
-        { v: "CITY / LOCATION", s: headerStyle },
-        { v: "STATUS", s: headerStyle },
-        ...facilityHeaders.map(h => ({ v: h.toUpperCase(), s: headerStyle }))
-    ];
+    const modules = verticalModules[item.id] || ["Module 1", "Module 2", "Module 3", "Module 4", "Module 5"];
+    const setupHeaders = [{ v: "BRANCH NAME", s: headerStyle }, { v: "CITY / LOCATION", s: headerStyle }, { v: "STATUS", s: headerStyle }, ...modules.map(m => ({ v: m.toUpperCase(), s: headerStyle }))];
     const setupData: any[][] = [[], [], [], setupHeaders];
-    ["Branch 1", "Branch 2", "Branch 3", "Branch 4", "Branch 5"].forEach(b => {
-        const row = [{ v: b, s: inputStyle }, { v: "City", s: inputStyle }, { v: "ACTIVE", s: inputStyle }];
-        facilityHeaders.forEach(() => row.push({ v: "YES", s: inputStyle }));
+    for (let i = 1; i <= 10; i++) {
+        const row = [{ v: `Branch ${i}`, s: inputStyle }, { v: "City", s: inputStyle }, { v: "ACTIVE", s: inputStyle }];
+        modules.forEach(() => row.push({ v: "YES", s: inputStyle }));
         setupData.push(row);
-    });
+    }
     const setupWs = utils.aoa_to_sheet(setupData);
-    setupWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 15 }, ...facilityHeaders.map(() => ({ wch: 15 }))];
+    setupWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 15 }, ...modules.map(() => ({ wch: 15 }))];
     addRibbon(setupWs, "Site Configuration", utils.encode_col(setupHeaders.length - 1));
     utils.book_append_sheet(wb, setupWs, "SITE_CONFIGURATION");
 
@@ -206,15 +199,7 @@ export const handleDownload = (item: PremiumPack) => {
     };
     
     const activeRoles = roleTemplates[item.id] || ["Manager", "Supervisor", "Lead", "Staff A", "Staff B"];
-    
-    const tHeaders = [
-        { v: "Lookup Key", s: headerStyle }, 
-        { v: "Branch", s: headerStyle },
-        { v: "Role", s: headerStyle },
-        { v: "Assigned Personnel", s: headerStyle },
-        { v: "Phone Number", s: headerStyle },
-        { v: "Institutional Email", s: headerStyle }
-    ];
+    const tHeaders = [{ v: "Helper Key", s: headerStyle }, { v: "Branch", s: headerStyle }, { v: "Role", s: headerStyle }, { v: "Assigned Personnel", s: headerStyle }, { v: "Phone Number", s: headerStyle }, { v: "Institutional Email", s: headerStyle }];
     const pData: any[][] = [[], [], [], tHeaders];
 
     for (let i = 0; i < 5; i++) {
@@ -236,67 +221,65 @@ export const handleDownload = (item: PremiumPack) => {
     addRibbon(pWs, "Personnel Directory", 'F');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- 05. DAILY_TASKS ---
+    // --- 05. DAILY_TASKS (THE MISSION LEDGER) ---
     const lHeaders = [
-        { v: "Branch", s: headerStyle },
-        { v: "Role", s: headerStyle },
-        { v: "Task / Technical SOP", s: headerStyle },
-        { v: "Assigned To", s: headerStyle },
-        { v: "Status", s: headerStyle },
-        { v: "Done By (Initial)", s: headerStyle },
-        { v: "Verified By (Initial)", s: headerStyle },
-        { v: "Consequence / Risk", s: headerStyle },
-        { v: "Daily Instructions", s: headerStyle },
-        { v: "Priority", s: headerStyle },
-        { v: "Freq", s: headerStyle },
-        { v: "ModuleID", s: headerStyle },
-        { v: "TaskType", s: headerStyle },
-        { v: "ActiveFlag", s: headerStyle },
-        { v: "ModuleStatus", s: headerStyle },
-        { v: "Score", s: headerStyle }
+        { v: "Branch", s: headerStyle }, { v: "Role", s: headerStyle }, { v: "Task / Technical SOP", s: headerStyle },
+        { v: "Assigned To", s: headerStyle }, { v: "Status", s: headerStyle }, { v: "Done By (Initial)", s: headerStyle },
+        { v: "Verified By (Initial)", s: headerStyle }, { v: "Consequence / Risk", s: headerStyle }, { v: "Daily Instructions", s: headerStyle },
+        { v: "Priority", s: headerStyle }, { v: "Freq", s: headerStyle }, { v: "ModuleID", s: headerStyle },
+        { v: "TaskType", s: headerStyle }, { v: "ActiveFlag", s: headerStyle }, { v: "ModuleStatus", s: headerStyle }, { v: "Score", s: headerStyle }
     ];
     const mData: any[][] = [[], [], [], lHeaders];
     
-    item.checklists.forEach(c => {
-        c.tasks.forEach((t) => {
-            const rIdx = mData.length + 1;
-            const branchRef = `$A${rIdx}`; 
-            const roleRef = `$B${rIdx}`;   
-            const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & ${roleRef}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
-            
-            const modTag = (t.id || t.moduleId || "").split('-')[1]; 
-            const modMap: Record<string, number> = {
-                'POOL': 4, 'GYM': 5, 'VALET': 6, 'SHUT': 7, 'LOUNGE': 8, 'BANQ': 9, 'BAR': 10, 'PET': 11,
-                'OT': 4, 'ICU': 5, 'PHM': 6, 'LAB': 7, 'WST': 8, 'GAS': 9, 'AMB': 10,
-                'ROOM': 4, 'WHSE': 5, 'VAL': 6, 'SVC': 7, 'ALT': 8
-            };
-            const colOffset = modMap[modTag] || -1;
-            const siteRowMatch = `MATCH(${branchRef}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
-            const moduleFormula = colOffset > 0 ? `IFERROR(INDEX('SITE_CONFIGURATION'!$A$5:$M$500, ${siteRowMatch}, ${colOffset}), "YES")` : "\"YES\"";
+    // REPLICATION LOOP: Repeat task list for 5 branches
+    for (let b = 0; b < 5; b++) {
+        const branchCell = `SITE_CONFIGURATION!$A$${5 + b}`;
+        item.checklists.forEach(c => {
+            c.tasks.forEach(t => {
+                const rIdx = mData.length + 1;
+                const branchRef = `$A${rIdx}`;
+                const roleRef = `$B${rIdx}`;
+                const lastDateRef = `$F${rIdx}`;
+                const verifyRef = `$G${rIdx}`;
+                const prioRef = `$J${rIdx}`;
+                const modStatusRef = `$O${rIdx}`;
 
-            const isRoutine = t.priority === 'Low';
-            const statusFormula = `IF($O${rIdx}="NO", "N/A", IF($J${rIdx}="Low", IF(LEN(TRIM($F${rIdx}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM($F${rIdx}))>0, LEN(TRIM($G${rIdx}))>0), "COMPLETED", "PENDING")))`;
+                const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & ${roleRef}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
+                
+                // Switchboard mapping
+                const modTag = (t.id || "").split('-')[1] || "CORE";
+                const modColMap: Record<string, number> = {
+                    'POOL': 4, 'GYM': 5, 'VALET': 6, 'SHUT': 7, 'LOUNGE': 8, 'BANQ': 9, 'BAR': 10, 'PET': 11,
+                    'OT': 4, 'ICU': 5, 'PHM': 6, 'LAB': 7, 'WST': 8, 'GAS': 9, 'AMB': 10,
+                    'ROOM': 4, 'WHSE': 5, 'SVC': 7, 'ALT': 8, 'FITTING': 4
+                };
+                const colIdx = modColMap[modTag] || -1;
+                const matchBranch = `MATCH(${branchRef}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
+                const toggleFormula = colIdx > 0 ? `IFERROR(INDEX('SITE_CONFIGURATION'!$A$5:$M$500, ${matchBranch}, ${colIdx}), "YES")` : "\"YES\"";
 
-            mData.push([
-                { t: 'f', f: "SITE_CONFIGURATION!$A$5", s: dataStyleCenter }, 
-                { v: c.role, s: dataStyleCenter },                       
-                { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { ...baseFont, bold: true } } }, 
-                { t: 'f', f: assignmentFormula, s: dataStyleLeft },                     
-                { t: 'f', f: statusFormula, s: dataStyleCenter },
-                { v: "", s: inputStyle },                                    
-                { v: "", s: isRoutine ? greyStyle : inputStyle },                                    
-                { v: `[Risk: ${t.consequence || t.riskLevel || "Operational Gap"}]`, s: riskStyle },   
-                { v: t.floorAction || t.description || "", s: instructionStyle }, 
-                { v: t.priority, s: { hidden: true } },
-                { v: t.frequency || c.frequency, s: { hidden: true } },
-                { v: t.id, s: { hidden: true } },
-                { v: "CORE", s: { hidden: true } },
-                { v: "ACTIVE", s: { hidden: true } },
-                { t: 'f', f: moduleFormula, s: { hidden: true } },
-                { v: "10", s: { hidden: true } }
-            ]);
+                const statusFormula = `IF(${modStatusRef}="NO", "N/A", IF(${prioRef}="Low", IF(LEN(TRIM(${lastDateRef}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM(${lastDateRef}))>0, LEN(TRIM(${verifyRef}))>0), "COMPLETED", "PENDING")))`;
+
+                mData.push([
+                    { t: 'f', f: branchCell, s: dataStyleCenter },
+                    { v: c.role, s: dataStyleCenter },
+                    { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
+                    { t: 'f', f: assignmentFormula, s: dataStyleLeft },
+                    { t: 'f', f: statusFormula, s: dataStyleCenter },
+                    { v: "", s: inputStyle },
+                    { v: "", s: t.priority === 'Low' ? greyStyle : inputStyle },
+                    { v: `[Risk: ${t.consequence || "Operational Gap"}]`, s: riskStyle },
+                    { v: t.floorAction || t.description || "", s: instructionStyle },
+                    { v: t.priority, s: { hidden: true } },
+                    { v: t.frequency || c.frequency, s: { hidden: true } },
+                    { v: t.id, s: { hidden: true } },
+                    { v: "CORE", s: { hidden: true } },
+                    { v: "ACTIVE", s: { hidden: true } },
+                    { t: 'f', f: toggleFormula, s: { hidden: true } },
+                    { v: "10", s: { hidden: true } }
+                ]);
+            });
         });
-    });
+    }
 
     const mWs = utils.aoa_to_sheet(mData);
     mWs['!cols'] = [
@@ -307,24 +290,17 @@ export const handleDownload = (item: PremiumPack) => {
     utils.book_append_sheet(wb, mWs, "DAILY_TASKS");
 
     // --- 06. SOP_LIBRARY ---
-    const sHeaders = [
-        { v: "Role", s: headerStyle },
-        { v: "Technical SOP", s: headerStyle },
-        { v: "Why this matters", s: headerStyle },
-        { v: "Action Steps (How to do it)", s: headerStyle },
-        { v: "Proof Required (How to verify)", s: headerStyle },
-        { v: "Consequence / Risk", s: headerStyle }
-    ];
+    const sHeaders = [{ v: "Role", s: headerStyle }, { v: "Technical SOP", s: headerStyle }, { v: "Why this matters", s: headerStyle }, { v: "Action Steps", s: headerStyle }, { v: "Proof Required", s: headerStyle }, { v: "Risk", s: headerStyle }];
     const sData: any[][] = [[], [], [], sHeaders];
     item.checklists.forEach(c => {
         c.tasks.forEach(t => {
             sData.push([
                 { v: c.role, s: dataStyleCenter },
                 { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
-                { v: `Prevents unmonitored ${t.consequence || "operational gaps"}.`, s: dataStyleLeft },
-                { v: t.description || t.floorAction || "Follow established procedure.", s: dataStyleLeft },
-                { v: t.proof || "Verify entry in shift log.", s: instructionStyle },
-                { v: `[Risk: ${t.consequence || t.riskLevel}]`, s: riskStyle }
+                { v: `Prevents unmonitored ${t.consequence || "gaps"}.`, s: dataStyleLeft },
+                { v: t.description || t.floorAction || "", s: dataStyleLeft },
+                { v: t.proof || "Verify in log.", s: instructionStyle },
+                { v: t.consequence || t.riskLevel, s: riskStyle }
             ]);
         });
     });
@@ -334,24 +310,13 @@ export const handleDownload = (item: PremiumPack) => {
     utils.book_append_sheet(wb, sWs, "SOP_LIBRARY");
 
     // --- 07. INCIDENT_LOG ---
-    const iHeaders = [
-        { v: "Date", s: headerStyle }, 
-        { v: "Branch", s: headerStyle }, 
-        { v: "Incident Type", s: headerStyle }, 
-        { v: "Severity", s: headerStyle }, 
-        { v: "Reported By", s: headerStyle },
-        { v: "Assigned To", s: headerStyle },
-        { v: "Resolution Status", s: headerStyle },
-        { v: "Operational Notes", s: headerStyle }
-    ];
+    const iHeaders = [{ v: "Date", s: headerStyle }, { v: "Branch", s: headerStyle }, { v: "Type", s: headerStyle }, { v: "Severity", s: headerStyle }, { v: "Reported By", s: headerStyle }, { v: "Assigned To", s: headerStyle }, { v: "Status", s: headerStyle }, { v: "Notes", s: headerStyle }];
     const iData: any[][] = [[], [], [], iHeaders];
-    for(let i=0; i<20; i++) { 
-        iData.push([null, null, null, null, null, null, "OPEN", ""]); 
-    }
+    for(let i=0; i<30; i++) { iData.push([null, null, null, null, null, null, "OPEN", ""]); }
     const iWs = utils.aoa_to_sheet(iData);
     iWs['!cols'] = [{ wch: 15 }, { wch: 20 }, { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 20 }, { wch: 15 }, { wch: 40 }];
     addRibbon(iWs, "Incident Registry", 'H');
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Master.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v14.xlsx`);
 }
