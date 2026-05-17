@@ -231,7 +231,6 @@ export const handleDownload = (item: PremiumPack) => {
     ];
     const mData: any[][] = [[], [], [], lHeaders];
     
-    // REPLICATION LOOP: Repeat task list for 5 branches
     for (let b = 0; b < 5; b++) {
         const branchCell = `SITE_CONFIGURATION!$A$${5 + b}`;
         item.checklists.forEach(c => {
@@ -246,7 +245,6 @@ export const handleDownload = (item: PremiumPack) => {
 
                 const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & ${roleRef}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
                 
-                // Switchboard mapping
                 const modTag = (t.id || "").split('-')[1] || "CORE";
                 const modColMap: Record<string, number> = {
                     'POOL': 4, 'GYM': 5, 'VALET': 6, 'SHUT': 7, 'LOUNGE': 8, 'BANQ': 9, 'BAR': 10, 'PET': 11,
@@ -290,7 +288,6 @@ export const handleDownload = (item: PremiumPack) => {
     addRibbon(mWs, "Daily Task Logbook", 'I');
     utils.book_append_sheet(wb, mWs, "DAILY_TASKS");
 
-    // --- 06. SOP_LIBRARY ---
     const sHeaders = [{ v: "Role", s: headerStyle }, { v: "Technical SOP", s: headerStyle }, { v: "Why this matters", s: headerStyle }, { v: "Action Steps", s: headerStyle }, { v: "Proof Required", s: headerStyle }, { v: "Risk", s: headerStyle }];
     const sData: any[][] = [[], [], [], sHeaders];
     item.checklists.forEach(c => {
@@ -310,7 +307,6 @@ export const handleDownload = (item: PremiumPack) => {
     addRibbon(sWs, "Operational Handbook", 'F');
     utils.book_append_sheet(wb, sWs, "SOP_LIBRARY");
 
-    // --- 07. INCIDENT_LOG ---
     const iHeaders = [{ v: "Date", s: headerStyle }, { v: "Branch", s: headerStyle }, { v: "Type", s: headerStyle }, { v: "Severity", s: headerStyle }, { v: "Reported By", s: headerStyle }, { v: "Assigned To", s: headerStyle }, { v: "Status", s: headerStyle }, { v: "Notes", s: headerStyle }];
     const iData: any[][] = [[], [], [], iHeaders];
     for(let i=0; i<30; i++) { iData.push([null, null, null, null, null, null, "OPEN", ""]); }
