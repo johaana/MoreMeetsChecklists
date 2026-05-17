@@ -39,7 +39,12 @@ export const school_operations_pack: PremiumPack = {
                 { id: "SC-EXE-07", technicalProtocol: "Teacher-Student Ratio Match", floorAction: "Audit class rosters vs presence for early years.", priority: "Medium", riskLevel: "Low", consequence: "Supervision gaps in primary wings.", proof: "Roster Audit" },
                 { id: "SC-EXE-08", technicalProtocol: "Health & Hygiene Summary", floorAction: "Review weekly clinic visit keywords for outbreaks.", priority: "High", riskLevel: "Medium", consequence: "Unmonitored spread of infection.", proof: "Medical Report" },
                 { id: "SC-EXE-09", technicalProtocol: "CCTV Retention Check", floorAction: "Confirm 30-day recording backup is operational.", priority: "High", riskLevel: "High", consequence: "Loss of evidence for bullying claims.", proof: "System Check" },
-                { id: "SC-EXE-10", technicalProtocol: "Final Board Sign-off", floorAction: "Execute weekly governance summary initials.", priority: "High", riskLevel: "Low", consequence: "Loss of administrative control.", proof: "Signed Summary" }
+                { id: "SC-EXE-10", technicalProtocol: "Grievance Redressal Audit", floorAction: "Verify all student complaints are logged and triaged < 24h.", priority: "High", riskLevel: "Medium", consequence: "Escalated student distress.", proof: "Grievance Log" },
+                { id: "SC-EXE-11", technicalProtocol: "POSH Policy Visibility", floorAction: "Confirm internal POSH committee details are posted in staff room.", priority: "High", riskLevel: "High", consequence: "Legal non-compliance and liability.", proof: "Photo" },
+                { id: "SC-EXE-12", technicalProtocol: "Scholarship & Fee Reconciliation", floorAction: "Audit weekend fee collections against bank deposits.", priority: "Medium", riskLevel: "Medium", consequence: "Internal revenue leakage.", proof: "Deposit Slip" },
+                { id: "SC-EXE-13", technicalProtocol: "Library Resource Audit", floorAction: "Spot check 5 books for age-appropriateness labels.", priority: "Low", riskLevel: "Low", consequence: "Parental complaints on content.", proof: "Visual Audit" },
+                { id: "SC-EXE-14", technicalProtocol: "Board Meeting Prep", floorAction: "Collate safety and finance reports for quarterly board.", priority: "Medium", riskLevel: "Low", consequence: "Loss of trustee confidence.", proof: "Report Pack" },
+                { id: "SC-EXE-15", technicalProtocol: "Final Board Sign-off", floorAction: "Execute weekly governance summary initials.", priority: "High", riskLevel: "Low", consequence: "Loss of administrative control.", proof: "Signed Summary" }
             ]
         },
         {
@@ -49,7 +54,7 @@ export const school_operations_pack: PremiumPack = {
             role: "Transport Manager",
             summary: "Zero-fail student transportation safety and vehicle tracking.",
             icon: "bus",
-            tasks: Array.from({ length: 20 }, (_, i) => ({
+            tasks: Array.from({ length: 25 }, (_, i) => ({
                 id: `SC-BUS-${String(i + 1).padStart(2, '0')}`,
                 technicalProtocol: [
                     "Brake & Tire Safety Audit",
@@ -61,7 +66,22 @@ export const school_operations_pack: PremiumPack = {
                     "Seat-belt Tension Check",
                     "First-aid Kit Stock Audit",
                     "Fire Extinguisher Gauge Pulse",
-                    "Route Timing Variance Audit"
+                    "Route Timing Variance Audit",
+                    "Speed Governor Calibration",
+                    "Window Grill Stability",
+                    "Door Lock Mechanism Pulse",
+                    "Panic Button Functionality",
+                    "Reflective Tape Visibility",
+                    "Step-light Illumination",
+                    "Driver Uniform/ID Audit",
+                    "Student Attendance Matching",
+                    "Late-Drop Notification Test",
+                    "Bus Hygiene (Internal Smell)",
+                    "Backup Driver Readiness",
+                    "Emergency Contact Sticker",
+                    "Vehicle License Validity",
+                    "Insurance Renewal Alert",
+                    "Final Fleet Dispatch Sign-off"
                 ][i] || "Transport safety protocol.",
                 floorAction: [
                     "Inspect 100% of fleet mechanical vitals pre-dispatch.",
@@ -73,11 +93,26 @@ export const school_operations_pack: PremiumPack = {
                     "Inspect 5 random rows for buckle functionality.",
                     "Check expiry dates and par levels of bandages.",
                     "Verify needle is in the green zone.",
-                    "Investigate any route delay > 15 minutes."
+                    "Investigate any route delay > 15 minutes.",
+                    "Audit log for speed-cap violations (>40km/h).",
+                    "Check for rust or loose welds on bus grills.",
+                    "Verify manual override for emergency exit doors.",
+                    "Test trigger from bus to main school command.",
+                    "Clean exterior markers for night visibility.",
+                    "Inspect footwell lights for morning routes.",
+                    "Confirm valid ID and clean uniform for all drivers.",
+                    "Match boarders against the master route roster.",
+                    "Verify SMS alerts sent for delays > 10 mins.",
+                    "Audit floor/seat cleaning quality daily.",
+                    "Confirm standby driver available for peak routes.",
+                    "Check stickers inside bus are legible.",
+                    "Audit RTO fitness certificate validity.",
+                    "Verify commercial insurance is active.",
+                    "Sign-off daily fleet mission log."
                 ][i] || "Standard transport check.",
-                priority: "High",
+                priority: i < 10 ? "High" : "Medium",
                 riskLevel: "High",
-                consequence: "Fatal crash or child left behind.",
+                consequence: i === 2 ? "[Never-Event: Child Left Behind]" : "Fatal crash or safety breach.",
                 proof: "Transport Log"
             }))
         },
@@ -88,7 +123,7 @@ export const school_operations_pack: PremiumPack = {
             role: "Security Chief",
             summary: "Hardening the perimeter and managing visitor access.",
             icon: "shield-check",
-            tasks: Array.from({ length: 20 }, (_, i) => ({
+            tasks: Array.from({ length: 25 }, (_, i) => ({
                 id: `SC-SEC-${String(i + 1).padStart(2, '0')}`,
                 technicalProtocol: [
                     "Visitor ID Capture Audit",
@@ -100,7 +135,22 @@ export const school_operations_pack: PremiumPack = {
                     "Forbidden Item Search (Random)",
                     "Alley & Roof Gate Lockdown",
                     "Emergency Panic Button Test",
-                    "Staff ID Badge Enforcement"
+                    "Staff ID Badge Enforcement",
+                    "Night Guard Sobriety Test",
+                    "Perimeter Wall Integrity",
+                    "Intruder Alarm Loop Test",
+                    "Key Cabinet Reconciliation",
+                    "Security Lighting Hotspots",
+                    "CCTV Timestamp Validation",
+                    "Guard Handover Consistency",
+                    "Bag Check (Secondary Gate)",
+                    "Staff Exit Search Registry",
+                    "Gate Motor Speed Audit",
+                    "Mall-Access Link Security",
+                    "Parking Zone Patrol",
+                    "Restricted Area Access Log",
+                    "Bollard Readiness Pulse",
+                    "Final Perimeter Seal"
                 ][i] || "Security governance check.",
                 floorAction: [
                     "Verify 100% ID logging at the main gate.",
@@ -112,7 +162,22 @@ export const school_operations_pack: PremiumPack = {
                     "Execute 5 random bag checks for senior students.",
                     "Physically confirm all restricted gates are locked.",
                     "Test trigger to main response booth.",
-                    "Challenge any individual without a visible badge."
+                    "Challenge any individual without a visible badge.",
+                    "Random breathalyzer for 2 AM shift change.",
+                    "Check for cracks or scaling spots on boundary.",
+                    "Trigger test for door-contact sensors.",
+                    "Audit master keys against registry.",
+                    "Replace 2 failed bulbs in the back-alley.",
+                    "Confirm DVR time matches Indian Standard Time.",
+                    "Review shift handover quality in logbook.",
+                    "Verify metal-detector sensitivity at side-gate.",
+                    "Audit 10% of support staff bags at EOD.",
+                    "Test emergency gate closure speed (<15s).",
+                    "Check lock on pedestrian bridge if applicable.",
+                    "Wander-patrol check for student congregating.",
+                    "Audit 'Authorized Only' entry logs.",
+                    "Verify manual handle presence for auto-bollards.",
+                    "EOD security deployment sign-off."
                 ][i] || "Perimeter security task.",
                 priority: "High",
                 riskLevel: "High",
@@ -137,7 +202,14 @@ export const school_operations_pack: PremiumPack = {
                     "Infirmary Hygiene Scan",
                     "First-aid Field Kit Refill",
                     "Emergency Contact Update",
-                    "Oxygen Cylinder Pressure"
+                    "Oxygen Cylinder Pressure",
+                    "Nebulizer Functionality",
+                    "Cold Chain Vaccine Fridge",
+                    "Bio-Waste Sharp Seal",
+                    "Stretcher Wheel Lubing",
+                    "Nurse Staffing Ratio",
+                    "Student Health Cert Audit",
+                    "Final Clinic Closure"
                 ][i] || "Clinical governance check.",
                 floorAction: [
                     "Confirm 'Green' status light on AED machine.",
@@ -147,7 +219,14 @@ export const school_operations_pack: PremiumPack = {
                     "Verify sanitation of beds and sink areas.",
                     "Restock kits for today's PE/Sports sessions.",
                     "Audit 5 files for valid mobile numbers.",
-                    "Verify gauge pressure at medical manifold."
+                    "Verify gauge pressure at medical manifold.",
+                    "Test device air-flow and filter clarity.",
+                    "Log fridge temp (Target < 5°C).",
+                    "Verify yellow bin seal is untampered.",
+                    "Confirm smooth deployment for ER dispatch.",
+                    "Match daily nurse presence to roster.",
+                    "Audit 10 random files for fitness certs.",
+                    "Secure clinical drugs and log closure."
                 ][i] || "Medical readiness task.",
                 priority: "High",
                 riskLevel: "High",
@@ -172,7 +251,14 @@ export const school_operations_pack: PremiumPack = {
                     "Fire Exit Path Clearance",
                     "Lift Auto-Rescue Test",
                     "Roof Water Tank Level",
-                    "Building Crack Monitoring"
+                    "Building Crack Monitoring",
+                    "AC Filter Cleaning Cycle",
+                    "Pump Room Auto-Logic",
+                    "BMS Node Connectivity",
+                    "Storm Drain Clearance",
+                    "Transformer Oil Level",
+                    "Solar Inverter Pulse",
+                    "Final Facility Shutdown"
                 ][i] || "Infrastructure safety check.",
                 floorAction: [
                     "Log TDS from main drinking points (Target < 150).",
@@ -182,7 +268,14 @@ export const school_operations_pack: PremiumPack = {
                     "Verify 100% of exits are unlocked and clear.",
                     "Simulate power flip for lift rescue logic.",
                     "Log levels at 8 AM to detect overnight leaks.",
-                    "Inspect facade markers for settlement drift."
+                    "Inspect facade markers for settlement drift.",
+                    "Audit monthly cleaning log for classroom units.",
+                    "Confirm fire pumps are in 'AUTO' mode.",
+                    "Verify 100% nodes online on dashboard.",
+                    "Check for debris pre-monsoon/heavy rain.",
+                    "Visual check of main yard unit.",
+                    "Log daily KWH yield on master file.",
+                    "Verify all non-essential lights OFF at 8 PM."
                 ][i] || "Facility maintenance task.",
                 priority: "High",
                 riskLevel: "High",
@@ -197,21 +290,41 @@ export const school_operations_pack: PremiumPack = {
             role: "Canteen Manager",
             summary: "HACCP-aligned protocols for school kitchens and dining halls.",
             icon: "utensils",
-            tasks: Array.from({ length: 10 }, (_, i) => ({
+            tasks: Array.from({ length: 15 }, (_, i) => ({
                 id: `SC-CAN-${String(i + 1).padStart(2, '0')}`,
                 technicalProtocol: [
                     "Cold Chain Pulse",
                     "Allergen Station Verify",
                     "Cooking Oil TPM Quality",
                     "Staff Hygiene Audit",
-                    "Waste Segregation Sync"
+                    "Waste Segregation Sync",
+                    "Dishwasher Temp Pulse",
+                    "Prep Board Cross-Audit",
+                    "Raw Material GRN Scan",
+                    "Fly-Catcher Glue Board",
+                    "Pest Evidence Sweep",
+                    "Drinking Water TDS",
+                    "UTP Cutlery Sanitize",
+                    "Menu Allergen Display",
+                    "Dry Store FIFO Check",
+                    "Canteen Closure Seal"
                 ][i] || "Food safety protocol.",
                 floorAction: [
                     "Log morning fridge temps (Target < 5°C).",
                     "Verify isolation of GF and nut-free prep zones.",
                     "Test oil quality; discard if TPM > 25%.",
                     "Audit hairnet and handwashing compliance.",
-                    "Verify 100% wet/dry waste separation."
+                    "Verify 100% wet/dry waste separation.",
+                    "Confirm rinse cycle reaches 82°C.",
+                    "Verify color-coded boards for veg/meat.",
+                    "Log receiving temp for high-risk proteins.",
+                    "Count and replace full insect pads.",
+                    "Check back-of-fridge for rodent signs.",
+                    "Log purity at student tap point.",
+                    "Audit steam-sterilization of spoons.",
+                    "Confirm today's menu allergy signs.",
+                    "Verify oldest stock used first.",
+                    "Witness gas shutdown and nightly seal."
                 ][i] || "Canteen manager check.",
                 priority: "High",
                 riskLevel: "High",
@@ -233,14 +346,24 @@ export const school_operations_pack: PremiumPack = {
                     "Eye-wash Station Test",
                     "Fume Hood Airflow Pulse",
                     "PPE Stock Audit",
-                    "Hazardous Waste Seal"
+                    "Hazardous Waste Seal",
+                    "Acid Cabinet Lockup",
+                    "Gas Manifold Leak Test",
+                    "Lab Glassware Integrity",
+                    "Chemical Spillage Kit",
+                    "EOD Lab Lockdown"
                 ][i] || "Lab safety protocol.",
                 floorAction: [
                     "Verify Acid/Base separation in locked cabinets.",
                     "Execute 10-second flush test for station.",
                     "Verify negative pressure using tissue test.",
                     "Check par levels of goggles and gloves.",
-                    "Witness burial of neutralised chemical waste."
+                    "Witness burial of neutralised chemical waste.",
+                    "Confirm 100% restricted items locked at 4 PM.",
+                    "Execute soap-bubble test on Bunsen joints.",
+                    "Reject and discard chipped test tubes.",
+                    "Verify absorbent sand and pads are stocked.",
+                    "Final chemical vault verification sign-off."
                 ][i] || "Lab assistant check.",
                 priority: "High",
                 riskLevel: "High",
