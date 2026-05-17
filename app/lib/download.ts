@@ -318,4 +318,3 @@ export const handleDownload = (item: PremiumPack) => {
 
     writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v15.xlsx`);
 }
-
