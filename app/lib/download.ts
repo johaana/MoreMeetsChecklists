@@ -5,12 +5,12 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ OPERATIONAL INSTRUMENT - v14.5 STABILITY LOCK
+ * MOREMEETS™ OPERATIONAL INSTRUMENT - v15.0 FINAL STABILITY LOCK
  * ----------------------------------------------------------------------------
- * 1. VERTICAL-AWARE ROSTER: Dedicated templates for all 8 Elite verticals.
- * 2. DYNAMIC TOGGLE HEADERS: SITE_CONFIGURATION maps to vertical facilities.
- * 3. LANGUAGE PURGE: Replaced synthetic jargon with operational directives.
- * 4. PERFORMANCE LOCK: Sub-1000 row density for instant mobile stability.
+ * 1. FORMULA PURITY: Removed redundant '=' to stop double-equals corruption.
+ * 2. VERTICAL ALIGNMENT: SITE_CONFIGURATION headers map to specific verticals.
+ * 3. DUAL-CHECK LOGIC: Status formula aware of priority hidden in Column J.
+ * 4. INVISIBLE ENGINEERING: J:P columns strictly hidden from user view.
  * ----------------------------------------------------------------------------
  */
 
@@ -143,7 +143,7 @@ export const handleDownload = (item: PremiumPack) => {
     opsWs['!cols'] = [{ wch: 35 }, { wch: 20 }];
     utils.book_append_sheet(wb, opsWs, "OPERATIONS_CENTER");
 
-    // --- 03. SITE_CONFIGURATION (Dynamic Headers) ---
+    // --- 03. SITE_CONFIGURATION (Dynamic Vertical Headers) ---
     const facilityHeadersMap: Record<string, string[]> = {
         'hotels_and_resorts': ["Swimming Pool", "Gym & Spa", "Valet Parking", "Airport Shuttle", "Executive Lounge", "Banquet Hall", "Rooftop Bar", "Pet Friendly"],
         'healthcare_and_hospital_operations': ["OT", "ICU", "Pharmacy", "Diagnostics", "Biomedical Waste", "Medical Gas", "Ambulance"],
@@ -217,7 +217,7 @@ export const handleDownload = (item: PremiumPack) => {
     addRibbon(pWs, "Personnel Directory", 'F');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- 05. DAILY_TASKS ---
+    // --- 05. DAILY_TASKS (The Daily Mission Board) ---
     const lHeaders = [
         { v: "Branch", s: headerStyle },
         { v: "Role", s: headerStyle },
@@ -230,9 +230,9 @@ export const handleDownload = (item: PremiumPack) => {
         { v: "Instructions", s: headerStyle },
         { v: "Priority", s: headerStyle },
         { v: "Freq", s: headerStyle },
-        { v: "Module", s: headerStyle },
-        { v: "Type", s: headerStyle },
-        { v: "Flag", s: headerStyle },
+        { v: "ModuleID", s: headerStyle },
+        { v: "TaskType", s: headerStyle },
+        { v: "ActiveFlag", s: headerStyle },
         { v: "Score", s: headerStyle }
     ];
     const mData: any[][] = [[], [], [], lHeaders];
@@ -243,6 +243,7 @@ export const handleDownload = (item: PremiumPack) => {
             const branchRef = `A${rIdx}`; 
             const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & B${rIdx}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
             
+            // Facility Switchboard Logic
             const modTag = t.id.split('-')[1]; 
             const modMap: Record<string, number> = {
                 'POOL': 3, 'GYM': 4, 'VALET': 5, 'SHUT': 6, 'LOUNGE': 7, 'BANQ': 8, 'BAR': 9, 'PET': 10,
@@ -253,6 +254,7 @@ export const handleDownload = (item: PremiumPack) => {
             const siteRowMatch = `MATCH(A${rIdx}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
             const moduleFormula = colOffset > 0 ? `INDEX('SITE_CONFIGURATION'!$D$5:$K$500, ${siteRowMatch}, ${colOffset})` : `"YES"`;
 
+            // Hardened Dual-Check Status Logic
             const isRoutine = t.priority === 'Low';
             const statusFormula = `IF(${moduleFormula}="NO", "N/A", IF(J${rIdx}="Low", IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETED", "PENDING")))`;
 
@@ -284,7 +286,7 @@ export const handleDownload = (item: PremiumPack) => {
     addRibbon(mWs, "Daily Task Logbook", 'I');
     utils.book_append_sheet(wb, mWs, "DAILY_TASKS");
 
-    // --- 06. SOP_LIBRARY ---
+    // --- 06. SOP_LIBRARY (Training Handbook) ---
     const sHeaders = [
         { v: "Role", s: headerStyle },
         { v: "Task", s: headerStyle },
@@ -299,7 +301,7 @@ export const handleDownload = (item: PremiumPack) => {
             sData.push([
                 { v: c.role, s: dataStyleCenter },
                 { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
-                { v: `Maintains operational standards and prevents audit failure.`, s: dataStyleLeft },
+                { v: `Maintains operational standards and avoids downtime.`, s: dataStyleLeft },
                 { v: t.description || t.floorAction || "Follow standard procedure.", s: dataStyleLeft },
                 { v: t.proof || "Verify entry in the daily shift ledger.", s: instructionStyle },
                 { v: `[Risk: ${t.consequence}]`, s: riskStyle }
