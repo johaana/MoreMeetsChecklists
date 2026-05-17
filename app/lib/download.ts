@@ -4,13 +4,13 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ OPERATIONAL INSTRUMENT - PRODUCTION LOCK v13.5
+ * MOREMEETS™ OPERATIONAL INSTRUMENT - STABILITY LOCK v14.0
  * ----------------------------------------------------------------------------
- * 1. FORMULA STABILITY: Purged all leading '=' in strings to prevent '==' error.
- * 2. INVISIBLE ENGINEERING: Strictly enforced hidden metadata columns (J-P).
- * 3. DUAL-CHECK LOGIC: Condition-based status (Routine vs. Critical).
- * 4. AUTHENTIC CONTENT: Real-world operational "Why" and "Verify" descriptions.
- * 5. NATIVE NAVIGATION: Strictly hash-based anchors, no #gid or browser artifacts.
+ * 1. FORMULA PURITY: Purged all leading '=' in strings. f: "IF..." is required.
+ * 2. ACCOUNTABILITY: Restored Done/Verified split with Grey-Cell bypass.
+ * 3. LIVE LINKING: Branch names propagate via formulas, not static strings.
+ * 4. INVISIBLE ENGINEERING: Hardened columns J:P to width 0 and hidden: true.
+ * 5. SOP PARITY: 1:1 row mapping between Tasks and Library.
  * ----------------------------------------------------------------------------
  */
 
@@ -115,14 +115,14 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
         ws['!rows'][3] = { hpt: 45 }; 
     };
 
-    // --- 01. START_HERE (SOFTWARE ONBOARDING) ---
+    // --- 01. START_HERE ---
     const startData: any[][] = [
         [], [],
         [{ v: "WELCOME TO MOREMEETS™", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
         [{ v: "3-STEP OPERATIONAL SETUP", s: { font: { sz: 12, bold: true }, alignment: { horizontal: 'center' } } }],
         [],
         [{ v: "STEP 1: CONFIGURE SITES", s: { font: { bold: true } } }, { v: "Open SITE_CONFIGURATION to name your branches.", l: { Target: "#'SITE_CONFIGURATION'!A1" } }],
-        [{ v: "STEP 2: ASSIGN STAFF", s: { font: { bold: true } } }, { v: "Open TEAM_HUB to enter names for each operational role.", l: { Target: "#'TEAM_HUB'!A1" } }],
+        [{ v: "STEP 2: ASSIGN STAFF", s: { font: { bold: true } } }, { v: "Open TEAM_HUB to enter names for each role.", l: { Target: "#'TEAM_HUB'!A1" } }],
         [{ v: "STEP 3: RUN OPERATIONS", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin logging execution.", l: { Target: "#'DAILY_TASKS'!A1" } }],
         [],
         [{ v: "LEGEND: YELLOW CELLS ARE INPUTS. GREY CELLS ARE AUTOMATED.", s: { font: { italic: true, color: { rgb: COLORS.METADATA_GREY } } } }]
@@ -132,7 +132,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
     startWs['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 1 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 1 } }];
     utils.book_append_sheet(wb, startWs, "START_HERE");
 
-    // --- 02. OPERATIONS_CENTER (KPI VITALS) ---
+    // --- 02. OPERATIONS_CENTER ---
     const opsData: any[][] = [
         [], [],
         [{ v: "OPERATIONAL VITAL SIGNS", s: { font: { sz: 20, bold: true } } }],
@@ -145,7 +145,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
     opsWs['!cols'] = [{ wch: 35 }, { wch: 20 }];
     utils.book_append_sheet(wb, opsWs, "OPERATIONS_CENTER");
 
-    // --- 03. SITE_CONFIGURATION (REGISTRY) ---
+    // --- 03. SITE_CONFIGURATION ---
     const setupHeaders = [
         { v: "BRANCH NAME", s: headerStyle },
         { v: "CITY / LOCATION", s: headerStyle },
@@ -160,9 +160,9 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
     addRibbon(setupWs, "Site Configuration", 'C');
     utils.book_append_sheet(wb, setupWs, "SITE_CONFIGURATION");
 
-    // --- 04. TEAM_HUB (DIRECTORY) ---
+    // --- 04. TEAM_HUB ---
     const roleTemplates: Record<string, string[]> = {
-        'restaurants': ["General Manager", "Shift Manager", "Kitchen Lead", "Chef de Partie", "Commi Chef", "Steward", "Cashier", "Bar Lead", "Housekeeping", "Security"],
+        'restaurants': ["General Manager", "Shift Manager", "Kitchen Lead", "Chef de Partie", "Commi Chef", "Steward/Server", "Cashier", "Bar Lead", "Housekeeping", "Security"],
         'hotels_and_resorts': ["General Manager", "Front Office Manager", "Receptionist", "Executive Housekeeper", "Room Attendant", "Chief Engineer", "Maintenance Tech", "F&B Manager", "Security Chief", "Valet Lead"],
         'healthcare_and_hospital_operations': ["Medical Director", "Nursing Superintendent", "Ward Nurse", "OPD Manager", "Pharmacist", "Lab Technician", "Billing Lead", "Facility Manager", "Security Head", "Housekeeping Lead"],
         'default': ["Manager", "Supervisor", "Lead", "Staff A", "Staff B", "Security", "Maintenance"]
@@ -205,7 +205,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
     addRibbon(pWs, "Personnel Directory", 'F');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- 05. DAILY_TASKS (EXECUTION BOARD) ---
+    // --- 05. DAILY_TASKS ---
     const lHeaders = [
         { v: "Branch", s: headerStyle },
         { v: "Role", s: headerStyle },
@@ -235,7 +235,6 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
             const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & B${rIdx}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
             
             const isRoutine = t.priority === 'Low';
-            // DUAL-CHECK LOGIC: Condition-based requirements
             const statusFormula = isRoutine 
                 ? `IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING")`
                 : `IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETED", "PENDING")`;
@@ -261,7 +260,6 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
     });
 
     const mWs = utils.aoa_to_sheet(mData);
-    // Hardened Column Hiding (J-P range strictly width 0)
     mWs['!cols'] = [
         { wch: 15 }, // Branch
         { wch: 25 }, // Role
@@ -282,7 +280,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
     addRibbon(mWs, "Daily Execution Ledger", 'I');
     utils.book_append_sheet(wb, mWs, "DAILY_TASKS");
 
-    // --- 06. SOP_LIBRARY (TRAINING HANDBOOK) ---
+    // --- 06. SOP_LIBRARY ---
     const sHeaders = [
         { v: "Role", s: headerStyle },
         { v: "Task", s: headerStyle },
@@ -309,7 +307,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
     addRibbon(sWs, "Training Handbook", 'F');
     utils.book_append_sheet(wb, sWs, "SOP_LIBRARY");
 
-    // --- 07. INCIDENT_LOG (RISK REGISTRY) ---
+    // --- 07. INCIDENT_LOG ---
     const iHeaders = [
         { v: "Date", s: headerStyle }, 
         { v: "Branch", s: headerStyle }, 
