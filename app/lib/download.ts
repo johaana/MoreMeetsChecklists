@@ -5,12 +5,12 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ OPERATIONAL INSTRUMENT - v16.0 FINAL INTEGRITY LOCK
+ * MOREMEETS™ OPERATIONAL INSTRUMENT - v17.0 STABILITY LOCK
  * ----------------------------------------------------------------------------
- * 1. FORMULA PURITY: Redundant '=' removed from 'f' property to prevent ==IF corruption.
+ * 1. SORT-PROOF LOOKUPS: Assigned To now uses Branch|Role index for absolute sorting stability.
  * 2. MODULE SWITCHBOARD: Live link between SITE_CONFIGURATION and DAILY_TASKS Status.
  * 3. DUAL-CHECK LOGIC: Completion aware of hidden Priority column (J).
- * 4. ROLE-FIRST SORTING: Roster mapping strictly follows vertical templates.
+ * 4. ROSTER HARDENING: Removed all fallback roles; enforced vertical-specific templates.
  * ----------------------------------------------------------------------------
  */
 
@@ -240,8 +240,9 @@ export const handleDownload = (item: PremiumPack) => {
     item.checklists.forEach(c => {
         c.tasks.forEach((t) => {
             const rIdx = mData.length + 1;
-            const branchRef = `A${rIdx}`; 
-            const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & B${rIdx}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
+            const branchRef = `$A${rIdx}`; // Sort-Locked Branch Reference
+            const roleRef = `$B${rIdx}`;   // Sort-Locked Role Reference
+            const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & ${roleRef}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
             
             // Facility Switchboard Logic - Maps vertical modules to Site Configuration columns
             const modTag = (t.id || "").split('-')[1]; 
@@ -251,12 +252,12 @@ export const handleDownload = (item: PremiumPack) => {
                 'ROOM': 3, 'WHSE': 4, 'VAL': 5, 'SVC': 6, 'ALT': 7
             };
             const colOffset = modMap[modTag] || -1;
-            const siteRowMatch = `MATCH(A${rIdx}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
+            const siteRowMatch = `MATCH(${branchRef}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
             const moduleFormula = colOffset > 0 ? `INDEX('SITE_CONFIGURATION'!$D$5:$K$500, ${siteRowMatch}, ${colOffset})` : "\"YES\"";
 
             // Hardened Priority-Aware Status Formula (No leading =)
             const isRoutine = t.priority === 'Low';
-            const statusFormula = `IF(${moduleFormula}="NO", "N/A", IF(J${rIdx}="Low", IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETED", "PENDING")))`;
+            const statusFormula = `IF(${moduleFormula}="NO", "N/A", IF($J${rIdx}="Low", IF(LEN(TRIM($F${rIdx}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM($F${rIdx}))>0, LEN(TRIM($G${rIdx}))>0), "COMPLETED", "PENDING")))`;
 
             mData.push([
                 { t: 'f', f: "SITE_CONFIGURATION!$A$5", s: dataStyleCenter }, 
@@ -301,7 +302,7 @@ export const handleDownload = (item: PremiumPack) => {
             sData.push([
                 { v: c.role, s: dataStyleCenter },
                 { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
-                { v: "Ensures daily consistency and prevents unmonitored operational failures.", s: dataStyleLeft },
+                { v: `Ensures daily consistency and prevents unmonitored ${t.consequence || "operational failure"}.`, s: dataStyleLeft },
                 { v: t.description || t.floorAction || "Follow standard established procedure.", s: dataStyleLeft },
                 { v: t.proof || "Verify entry in the daily shift ledger.", s: instructionStyle },
                 { v: `[Risk: ${t.consequence}]`, s: riskStyle }
