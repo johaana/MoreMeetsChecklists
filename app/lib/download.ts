@@ -1,16 +1,17 @@
+
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ OPERATIONAL INSTRUMENT - STABILITY LOCK v14.0
+ * MOREMEETS™ OPERATIONAL INSTRUMENT - STABILITY LOCK v15.0
  * ----------------------------------------------------------------------------
- * 1. FORMULA PURITY: Purged all leading '=' in strings. f: "IF..." is required.
- * 2. ACCOUNTABILITY: Restored Done/Verified split with Grey-Cell bypass.
- * 3. LIVE LINKING: Branch names propagate via formulas, not static strings.
- * 4. INVISIBLE ENGINEERING: Hardened columns J:P to width 0 and hidden: true.
- * 5. SOP PARITY: 1:1 row mapping between Tasks and Library.
+ * 1. PARITY FIX: Full iteration of all checklists and tasks (No truncation).
+ * 2. DUAL-CHECK LOGIC: Priority-aware Status formula (Low = Done only).
+ * 3. GREY-CELL BYPASS: Routine verification cells shaded and ignored by Status.
+ * 4. HUMANIZED SOPs: Purged synthetic jargon for real-world clarity.
+ * 5. NO EQUALS BUG: Fixed leading '=' bug causing double-equals corruption.
  * ----------------------------------------------------------------------------
  */
 
@@ -22,7 +23,6 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
 
     const wb = utils.book_new();
 
-    // --- COLORS & STYLES ---
     const COLORS = {
         NAVY_HUD: "020617",       
         PRIMARY_GREEN: "22C55E",  
@@ -96,7 +96,6 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
         fill: { patternType: 'solid', fgColor: { rgb: "F0FDF4" } }
     };
 
-    // --- HELPER: NATIVE NAVIGATION ---
     const addRibbon = (ws: WorkSheet, title: string, endCol: string = 'I') => {
         const ribbonData = [
             [{ v: "◀ BACK TO OPERATIONS CENTER", l: { Target: "#'OPERATIONS_CENTER'!A1" }, s: navStyle }],
@@ -194,14 +193,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
         });
     }
     const pWs = utils.aoa_to_sheet(pData);
-    pWs['!cols'] = [
-        { wch: 0, hidden: true }, // Key
-        { wch: 25 }, // Branch
-        { wch: 30 }, // Role
-        { wch: 35 }, // Assigned To
-        { wch: 20 }, // Phone
-        { wch: 30 }  // Email
-    ];
+    pWs['!cols'] = [{ wch: 0, hidden: true }, { wch: 25 }, { wch: 30 }, { wch: 35 }, { wch: 20 }, { wch: 30 }];
     addRibbon(pWs, "Personnel Directory", 'F');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
@@ -235,9 +227,8 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
             const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & B${rIdx}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
             
             const isRoutine = t.priority === 'Low';
-            const statusFormula = isRoutine 
-                ? `IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING")`
-                : `IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETED", "PENDING")`;
+            // Hardened Priority-Aware Status Logic
+            const statusFormula = `IF(J${rIdx}="Low", IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETED", "PENDING"))`;
 
             mData.push([
                 { t: 'f', f: branchRef, s: dataStyleCenter }, 
@@ -295,7 +286,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
             sData.push([
                 { v: c.role, s: dataStyleCenter },
                 { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
-                { v: `Prevents unmonitored ${t.consequence.toLowerCase()} and maintains brand standard.`, s: dataStyleLeft },
+                { v: `Prevents loss of control and inconsistent standards across shifts.`, s: dataStyleLeft },
                 { v: t.description || t.floorAction || "Follow floor-level protocol.", s: dataStyleLeft },
                 { v: t.proof || "Verify entry in the daily shift ledger.", s: instructionStyle },
                 { v: `[Risk: ${t.consequence}]`, s: riskStyle }
