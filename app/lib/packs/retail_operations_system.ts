@@ -98,13 +98,33 @@ export const retail_operations_system: PremiumPack = {
             }))
         },
         {
+            title: "Maintenance & Facility",
+            department: "Maintenance",
+            frequency: "Daily",
+            role: "Maintenance Lead",
+            summary: "Infrastructure and safety asset protection.",
+            icon: "wrench",
+            tasks: [
+                { id: "RT-MNT-01", description: "Audit lighting LUX levels in trial rooms and aisles.", priority: "Low", riskLevel: "Low", consequence: "Poor visual merchandising impact.", proof: "Meter Log" },
+                { id: "RT-MNT-02", description: "Verify emergency exit shutter motor functionality.", priority: "High", riskLevel: "High", consequence: "Entrapment during fire emergency.", proof: "Test Log" },
+                { id: "RT-MNT-03", description: "Inspect HVAC vents for dust and airflow blockages.", priority: "Medium", riskLevel: "Low", consequence: "Poor air quality and guest discomfort.", proof: "Visual Check" },
+                { id: "RT-MNT-04", description: "Monitor water TDS levels from main drinking point.", priority: "High", riskLevel: "Medium", consequence: "Staff/Customer health risk.", proof: "TDS Reading" },
+                { id: "RT-MNT-05", description: "Audit floor tiles for cracks or trip hazards.", priority: "High", riskLevel: "High", consequence: "Slip-and-fall litigation.", proof: "Walkthrough" },
+                { id: "RT-MNT-06", description: "Test store-front sign timer and bulbs.", priority: "Low", riskLevel: "Low", consequence: "Brand image decay.", proof: "Visual Check" },
+                { id: "RT-MNT-07", description: "Log daily energy KWH meter reading.", priority: "Medium", riskLevel: "Low", consequence: "Unmonitored energy spikes.", proof: "Meter Log" },
+                { id: "RT-MNT-08", description: "Check fire extinguisher gauge pressure.", priority: "High", riskLevel: "High", consequence: "Fire suppression failure.", proof: "Gauge Check" },
+                { id: "RT-MNT-09", description: "Verify sanitization of staff change-rooms.", priority: "Medium", riskLevel: "Low", consequence: "Staff turnover and morale drop.", proof: "Cleaning Note" },
+                { id: "RT-MNT-10", description: "Final closure walkthrough of utility banks.", priority: "High", riskLevel: "High", consequence: "Fire and overnight disaster.", proof: "Signed Log" }
+            ]
+        },
+        {
             title: "Executive Store Control",
             department: "Management",
             frequency: "Daily",
             role: "Store Manager",
             summary: "High-level margin and compliance oversight.",
             icon: "crown",
-            tasks: Array.from({ length: 30 }, (_, i) => ({
+            tasks: Array.from({ length: 20 }, (_, i) => ({
                 id: `RT-EXE-${String(i + 1).padStart(2, '0')}`,
                 description: [
                     "Witness and seal nightly cash drop bag.",

@@ -5,12 +5,12 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v14.7 FINAL STABILIZATION
+ * MOREMEETS™ SOVEREIGN ENGINE - v14.8 PILOT FREEZE
  * ----------------------------------------------------------------------------
- * 1. LIVE SWITCHBOARD: Status logic now pulls live toggles from SITE_CONFIGURATION.
+ * 1. LIVE SWITCHBOARD: Dynamic vertical-aware module mapping via INDEX+MATCH.
  * 2. SORT-PROOF ROSTER: Assigned To uses absolute anchors ($A5 & "|" & $B5).
  * 3. HIDDEN ENGINEERING: Columns J:P (9-15) strictly hidden: true, width: 0.
- * 4. DUAL-CHECK: High/Med requires 2 signatures; Low requires 1.
+ * 4. PROTECTION LAYER: Locks formula cells, unlocks Input Yellow cells.
  * 5. ROSTER SYNC: Zero fallback roles; 100% vertical role mapping for Elite 8.
  * ----------------------------------------------------------------------------
  */
@@ -121,6 +121,11 @@ export const handleDownload = (item: PremiumPack) => {
             { hpt: 20 },
             { hpt: 45 }
         ];
+        // Lock the sheet to enable cell protections
+        ws['!protect'] = {
+            selectLockedCells: true,
+            selectUnlockedCells: true
+        };
     };
 
     // --- 01. START_HERE ---
@@ -133,8 +138,11 @@ export const handleDownload = (item: PremiumPack) => {
         [{ v: "STEP 2: ASSIGN PERSONNEL", s: { font: { bold: true } } }, { v: "Open TEAM_HUB to enter names for each role.", l: { Target: "#'TEAM_HUB'!A1" } }],
         [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin tracking execution.", l: { Target: "#'DAILY_TASKS'!A1" } }],
         [],
-        [{ v: "WARNING: DO NOT RENAME SHEETS. This will break internal formula logic.", s: { font: { color: { rgb: COLORS.CONSEQUENCE_RED }, bold: true } } }],
-        [{ v: "LEGEND: YELLOW CELLS ARE INPUTS. GREY CELLS ARE AUTOMATED.", s: { font: { italic: true, color: { rgb: COLORS.METADATA_GREY } } } }]
+        [{ v: "CRITICAL PILOT INSTRUCTIONS", s: { font: { bold: true, color: { rgb: COLORS.CONSEQUENCE_RED } } } }],
+        [{ v: "• DATE STANDARD: Use 'dd-mm-yyyy' for all completion logs.", s: { font: { italic: true } } }],
+        [{ v: "• NO RENAMING: Do not rename tabs. This breaks internal formula logic.", s: { font: { italic: true } } }],
+        [{ v: "• FORMULA LOCK: Most columns are locked to protect the system engine.", s: { font: { italic: true } } }],
+        [{ v: "• LEGEND: YELLOW CELLS ARE USER INPUTS. GREY CELLS ARE AUTOMATED.", s: { font: { italic: true, color: { rgb: COLORS.METADATA_GREY } } } }]
     ];
     const startWs = utils.aoa_to_sheet(startData);
     startWs['!cols'] = [{ wch: 30 }, { wch: 60 }];
@@ -277,7 +285,7 @@ export const handleDownload = (item: PremiumPack) => {
                 { t: 'f', f: statusFormula, s: dataStyleCenter },
                 { v: "", s: inputStyle },                                    
                 { v: "", s: isRoutine ? greyStyle : inputStyle },                                    
-                { v: `[Risk: ${t.consequence || "Operational Gap"}]`, s: riskStyle },   
+                { v: `[Risk: ${t.consequence || t.riskLevel || "Operational Gap"}]`, s: riskStyle },   
                 { v: t.floorAction || t.description || "", s: instructionStyle }, 
                 { v: t.priority, s: { hidden: true } },
                 { v: t.frequency || c.frequency, s: { hidden: true } },
@@ -301,7 +309,7 @@ export const handleDownload = (item: PremiumPack) => {
     // --- 06. SOP_LIBRARY ---
     const sHeaders = [
         { v: "Role", s: headerStyle },
-        { v: "Technical Task", s: headerStyle },
+        { v: "Technical SOP", s: headerStyle },
         { v: "Why this matters", s: headerStyle },
         { v: "Action Steps (How to do it)", s: headerStyle },
         { v: "Proof Required (How to verify)", s: headerStyle },
@@ -316,7 +324,7 @@ export const handleDownload = (item: PremiumPack) => {
                 { v: `Prevents unmonitored ${t.consequence || "operational gaps"}.`, s: dataStyleLeft },
                 { v: t.description || t.floorAction || "Follow established procedure.", s: dataStyleLeft },
                 { v: t.proof || "Verify entry in shift log.", s: instructionStyle },
-                { v: `[Risk: ${t.consequence}]`, s: riskStyle }
+                { v: `[Risk: ${t.consequence || t.riskLevel}]`, s: riskStyle }
             ]);
         });
     });
