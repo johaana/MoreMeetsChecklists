@@ -4,16 +4,14 @@ import type { PremiumPack } from "@/lib/premium-packs";
 export const healthcare_and_hospital_operations: PremiumPack = {
     id: 'healthcare_and_hospital_operations',
     title: "Hospital Operations System",
-    priceINR: 3499,
-    priceUSD: 49,
-    competitorPriceUSD: 599,
-    updatedAt: "2025-03-01",
+    priceINR: 5999,
+    priceUSD: 79,
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/129cb25a-b177-4a6d-a1bf-d8fafc24a09d',
     category: "Healthcare",
-    description: "The definitive Sovereign v15.0 technical engine for clinical governance. Hardening 200+ control points from WHO Surgical Safety to Oxygen Infrastructure. Zero medical advice—100% operational rigor.",
+    description: "The Sovereign v4.4 clinical engine for hospitals and specialized medical centers. Hardening 200+ control points from surgical safety to biomedical waste.",
     heroHeadline: "Zero-Risk Medical Operations. Audit-Ready.",
-    heroSubheadline: "Track 200+ technical control points across 12 clinical and operational roles—even when you’re not on property.",
+    heroSubheadline: "Standardize clinical and operational governance across every department in your facility.",
     pricingUrgency: "A single clinical error or one NABH/JCI audit failure costs 1000x more than this system.",
     consultingAnchor: 15000,
     icon: "hospital",
@@ -21,68 +19,84 @@ export const healthcare_and_hospital_operations: PremiumPack = {
     badgeVariant: "destructive",
     whoIsItFor: ["Medical Directors", "Hospital COOs", "Nursing Superintendents", "Quality Heads", "Admin Directors"],
     sampleItems: [
-        { text: "<strong>Surgical Readiness</strong>: WHO pre-incision time-outs and CSSD sterility indicator verification.", icon: "shield-check" },
-        { text: "<strong>Nursing Command</strong>: Bedside handover audits, patient ID band checks, and crash-cart seals.", icon: "heart-pulse" },
-        { text: "<strong>Infrastructure Vitals</strong>: Oxygen manifold pressure monitoring and generator auto-start logs.", icon: "zap" },
-        { text: "<strong>Pharmacy Shield</strong>: Narcotics vault dual-sign access and blood bank cold-chain monitoring.", icon: "pill" },
-        { text: "<strong>Biomedical Compliance</strong>: Sharps container fill-level audits and equipment calibration stickers.", icon: "microscope" }
+        { text: "<strong>Clinical Safety (WHO)</strong>: Pre-incision time-outs and dual-verification for high-alert drugs.", icon: "shield-check" },
+        { text: "<strong>Nursing & Ward Command</strong>: Bedside handover audits and crash-cart integrity tracking.", icon: "heart-pulse" },
+        { text: "<strong>Pharmacy & Narcotics</strong>: Strict access logs and double-blind stock counts for controlled drugs.", icon: "pill" },
+        { text: "<strong>Biomedical Waste (EHS)</strong>: Legal compliance for waste segregation and spillage kit readiness.", icon: "recycle" }
     ],
     checklists: [
         {
-            title: "Surgical Safety & CSSD",
+            title: "Medical Director Governance",
+            department: "Clinical",
+            frequency: "Daily",
+            role: "Medical Director",
+            summary: "Protects the clinical standard of the institution.",
+            icon: "crown",
+            tasks: [
+                { id: "H-EXE-01", description: "Review Sentinel Event Log for near-miss clinical errors.", priority: "High", riskLevel: "High", consequence: "Fatal patient harm and total loss of license.", proof: "Log Audit" },
+                { id: "H-EXE-02", description: "Audit doctor attendance parity against surgery schedules.", priority: "High", riskLevel: "Medium", consequence: "Delayed critical procedures.", proof: "Roster Check" }
+            ]
+        },
+        {
+            title: "Surgical Safety (WHO)",
             department: "Surgery",
             frequency: "Per Procedure",
             role: "OT In-charge",
-            summary: "Zero-fail protocols for operating theater safety and sterility.",
+            summary: "Zero-fail protocols for the operating theater.",
             icon: "shield-check",
             tasks: [
-                { id: "H-SUR-01", technicalProtocol: "WHO Surgical Time-Out", floorAction: "Execute verbal pre-incision check: confirm Patient, Site, and Procedure.", priority: "High", riskLevel: "High", consequence: "Wrong-site surgery (Fatal never-event).", proof: "Checklist Sign-off" },
-                { id: "H-SUR-02", technicalProtocol: "CSSD Sterility Indicators", floorAction: "Verify chemical indicator tape has changed color on 100% of instrument sets.", priority: "High", riskLevel: "High", consequence: "Post-operative infection and sepsis risk.", proof: "Visual Check" },
-                { id: "H-SUR-03", technicalProtocol: "Swab & Needle Count", floorAction: "Perform independent dual-verification of count before wound closure.", priority: "High", riskLevel: "High", consequence: "Retained foreign object in patient body.", proof: "Count Sheet" },
-                { id: "H-SUR-04", technicalProtocol: "Anesthesia Leak Test", floorAction: "Verify pressure-hold and alarm function on the workstation.", priority: "High", riskLevel: "High", consequence: "Intra-operative respiratory failure.", proof: "System Log" },
-                { id: "H-SUR-05", technicalProtocol: "Pathology Specimen Handover", floorAction: "Witness witnessed seal of specimen jars with two patient identifiers.", priority: "High", riskLevel: "Medium", consequence: "Diagnostic mismatch leading to wrong treatment.", proof: "Handover Log" }
+                { id: "H-OT-SUR-01", description: "Execute WHO 'Time Out' before every incision.", priority: "High", riskLevel: "High", consequence: "Wrong-site surgery (Fatal never-event).", proof: "Sign-off" },
+                { id: "H-OT-SUR-02", description: "Verify sterility indicators on all instrument sets.", priority: "High", riskLevel: "High", consequence: "Post-operative infection outbreak.", proof: "Indicator Tape" },
+                { id: "H-OT-SUR-03", description: "Perform pre-opening leak-test for anesthesia workstations.", priority: "High", riskLevel: "High", consequence: "Intra-operative system failure.", proof: "System Log" }
             ]
         },
         {
-            title: "Ward & Patient Handover",
+            title: "Ward & Bedside Command",
             department: "Nursing",
             frequency: "Daily",
             role: "Nursing Superintendent",
-            summary: "Institutional rigor for bedside care and medication safety.",
+            summary: "Manages the invisible infrastructure of patient care.",
             icon: "heart-pulse",
             tasks: [
-                { id: "H-NUR-01", technicalProtocol: "Patient ID Wristband Audit", floorAction: "Confirm 100% of ward patients possess a legible, correct ID wristband.", priority: "High", riskLevel: "High", consequence: "Wrong-patient medication or procedure errors.", proof: "Audit Sheet" },
-                { id: "H-NUR-02", technicalProtocol: "Crash Cart Seal Integrity", floorAction: "Verify physical seal number matches the previous shift log; check O2 levels.", priority: "High", riskLevel: "High", consequence: "Resuscitation failure during cardiac arrest.", proof: "Seal Verification" },
-                { id: "H-NUR-03", technicalProtocol: "Hand Hygiene Compliance", floorAction: "Observe staff sanitization frequency between patient contacts.", priority: "Medium", riskLevel: "Medium", consequence: "Spread of hospital-acquired infections (HAI).", proof: "Briefing Log" },
-                { id: "H-NUR-04", technicalProtocol: "High-Alert Drug Verify", floorAction: "Perform dual-signature verification for Heparin/Insulin administration.", priority: "High", riskLevel: "High", consequence: "Fatal medication double-dosing.", proof: "MAR Audit" },
-                { id: "H-NUR-05", technicalProtocol: "Bedside Handover Bridge", floorAction: "Execute 2-minute clinical handover at patient bedside; verify IV sites.", priority: "High", riskLevel: "High", consequence: "Loss of critical patient vitals data between shifts.", proof: "Handover Log" }
+                { id: "H-NUR-01", description: "Bedside Handover: Verify IV sites and clinical charts.", priority: "High", riskLevel: "High", consequence: "Loss of critical patient vitals data.", proof: "Handover Log" },
+                { id: "H-NUR-02", description: "Crash Cart Integrity: Verify AED battery and drug seals.", priority: "High", riskLevel: "High", consequence: "Resuscitation failure.", proof: "Seal Check" },
+                { id: "H-NUR-03", description: "Patient ID Audit: Confirm wristband accuracy for 100% of ward.", priority: "High", riskLevel: "High", consequence: "Medication or procedure mix-up.", proof: "Audit Sheet" }
             ]
         },
         {
-            title: "Pharmacy & Blood Bank",
+            title: "Pharmacy & Narcotics Logic",
             department: "Pharmacy",
             frequency: "Daily",
             role: "Pharmacy Lead",
-            summary: "Governance for controlled drugs and temperature-sensitive biologicals.",
+            summary: "Governance for controlled substances.",
             icon: "pill",
             tasks: [
-                { id: "H-PHM-01", technicalProtocol: "Narcotics Vault Count", floorAction: "Independent double-blind count of all Schedule X and controlled units.", priority: "High", riskLevel: "High", consequence: "Drug diversion and criminal legal liability.", proof: "Dual-Sign Register" },
-                { id: "H-PHM-02", technicalProtocol: "Blood Bank Cold-Chain", floorAction: "Log fridge temp for blood and plasma (Target 2°C to 8°C).", priority: "High", riskLevel: "High", consequence: "Biological degradation leading to transfusion reaction.", proof: "Temp Log" },
-                { id: "H-PHM-03", technicalProtocol: "Look-Alike (LASA) Segregation", floorAction: "Verify physical separation of drugs with similar packaging or names.", priority: "High", riskLevel: "High", consequence: "Fatal medication mix-up.", proof: "Visual Audit" }
+                { id: "H-PHM-PHM-01", description: "Narcotics Vault: Independent double-count of all units.", priority: "High", riskLevel: "High", consequence: "Theft and criminal legal liability.", proof: "Dual-Sign Log" },
+                { id: "H-PHM-PHM-02", description: "Cold Chain: Log fridge temps for biologics twice daily.", priority: "High", riskLevel: "High", consequence: "Ineffective vaccine administration.", proof: "Temp Log" }
             ]
         },
         {
-            title: "MEP & Infrastructure Readiness",
+            title: "Biomedical Waste (EHS)",
+            department: "Safety",
+            frequency: "Daily",
+            role: "EHS Officer",
+            summary: "Regulatory compliance for bio-hazards.",
+            icon: "recycle",
+            tasks: [
+                { id: "H-WST-WST-01", description: "Verify color-coded segregation at ward source.", priority: "High", riskLevel: "High", consequence: "Fines and disease transmission.", proof: "Visual Audit" },
+                { id: "H-WST-WST-02", description: "Audit sharps-container fill levels (Target 75% max).", priority: "High", riskLevel: "Medium", consequence: "Needle-stick injuries to staff.", proof: "Visual Check" }
+            ]
+        },
+        {
+            title: "Engineering & Life Safety",
             department: "Engineering",
             frequency: "Daily",
             role: "Chief Engineer",
             summary: "Infrastructure uptime and life-support protection.",
             icon: "zap",
             tasks: [
-                { id: "H-ENG-01", technicalProtocol: "Oxygen Manifold Pressure", floorAction: "Log main O2 line pressure and purity (Target > 93%).", priority: "High", riskLevel: "High", consequence: "Patient hypoxia and system failure.", proof: "Purity Log" },
-                { id: "H-ENG-02", technicalProtocol: "Generator Auto-Start Simulation", floorAction: "Execute weekly simulation of grid failure; verify start in < 10 seconds.", priority: "High", riskLevel: "High", consequence: "Total infrastructure blackout during critical care.", proof: "Drill Log" },
-                { id: "H-ENG-03", technicalProtocol: "Biomedical Calibration Audit", floorAction: "Audit 5 random ventilators/monitors for valid calibration stickers.", priority: "High", riskLevel: "High", consequence: "Inaccurate clinical data leading to wrong decisions.", proof: "Registry Match" },
-                { id: "H-ENG-04", technicalProtocol: "Ambulance Readiness Seal", floorAction: "Verify fuel levels and siren/medical equipment status of BLS/ALS fleet.", priority: "High", riskLevel: "High", consequence: "Delayed emergency response and fatality.", proof: "Patrol Log" }
+                { id: "H-ENG-GAS-01", description: "Log main O2 manifold line pressure and purity.", priority: "High", riskLevel: "High", consequence: "Patient hypoxia and system failure.", proof: "Pressure Log" },
+                { id: "H-ENG-AMB-02", description: "Generator Auto-Start Test: Verify power flip in <10s.", priority: "High", riskLevel: "High", consequence: "Blackout during critical care.", proof: "Drill Log" }
             ]
         }
     ]

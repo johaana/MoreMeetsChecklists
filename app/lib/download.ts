@@ -5,12 +5,12 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ OPERATIONAL INSTRUMENT - v15.0 FINAL STABILITY LOCK
+ * MOREMEETS™ OPERATIONAL INSTRUMENT - v16.0 FINAL INTEGRITY LOCK
  * ----------------------------------------------------------------------------
- * 1. FORMULA PURITY: Removed redundant '=' to stop double-equals corruption.
- * 2. VERTICAL ALIGNMENT: SITE_CONFIGURATION headers map to specific verticals.
- * 3. DUAL-CHECK LOGIC: Status formula aware of priority hidden in Column J.
- * 4. INVISIBLE ENGINEERING: J:P columns strictly hidden from user view.
+ * 1. FORMULA PURITY: Redundant '=' removed from 'f' property to prevent ==IF corruption.
+ * 2. MODULE SWITCHBOARD: Live link between SITE_CONFIGURATION and DAILY_TASKS Status.
+ * 3. DUAL-CHECK LOGIC: Completion aware of hidden Priority column (J).
+ * 4. ROLE-FIRST SORTING: Roster mapping strictly follows vertical templates.
  * ----------------------------------------------------------------------------
  */
 
@@ -73,8 +73,8 @@ export const handleDownload = (item: PremiumPack) => {
 
     const inputStyle = {
         ...dataStyleCenter,
-        font: { ...baseFont, color: { rgb: "000000" }, bold: true },
-        fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_ZONE || COLORS.INPUT_YELLOW } }
+        font: { ...baseFont, color: "000000", bold: true },
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_YELLOW } }
     };
 
     const greyStyle = {
@@ -135,9 +135,9 @@ export const handleDownload = (item: PremiumPack) => {
         [], [],
         [{ v: "OPERATIONAL VITAL SIGNS", s: { font: { sz: 20, bold: true } } }],
         [],
-        [{ v: "PENDING TASKS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIFS('DAILY_TASKS'!$E$5:$E$5000, "PENDING")` }],
-        [{ v: "OPEN INCIDENTS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIF('INCIDENT_LOG'!$G$5:$G$500, "OPEN")` }],
-        [{ v: "COMPLIANCE SCORE:", s: { font: { bold: true } } }, { t: 'f', f: `TEXT(1 - (COUNTIFS('DAILY_TASKS'!$E$5:$E$5000, "PENDING", 'DAILY_TASKS'!$C$5:$C$5000, "<>") / MAX(1, COUNTIFS('DAILY_TASKS'!$E$5:$E$5000, "<>N/A", 'DAILY_TASKS'!$C$5:$C$5000, "<>"))), "0%")` }]
+        [{ v: "PENDING TASKS:", s: { font: { bold: true } } }, { t: 'f', f: "COUNTIFS('DAILY_TASKS'!$E$5:$E$5000, \"PENDING\")" }],
+        [{ v: "OPEN INCIDENTS:", s: { font: { bold: true } } }, { t: 'f', f: "COUNTIF('INCIDENT_LOG'!$G$5:$G$500, \"OPEN\")" }],
+        [{ v: "COMPLIANCE SCORE:", s: { font: { bold: true } } }, { t: 'f', f: "TEXT(1 - (COUNTIFS('DAILY_TASKS'!$E$5:$E$5000, \"PENDING\", 'DAILY_TASKS'!$C$5:$C$5000, \"<>\") / MAX(1, COUNTIFS('DAILY_TASKS'!$E$5:$E$5000, \"<>N/A\", 'DAILY_TASKS'!$C$5:$C$5000, \"<>\"))), \"0%\")" }]
     ];
     const opsWs = utils.aoa_to_sheet(opsData);
     opsWs['!cols'] = [{ wch: 35 }, { wch: 20 }];
@@ -243,8 +243,8 @@ export const handleDownload = (item: PremiumPack) => {
             const branchRef = `A${rIdx}`; 
             const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & B${rIdx}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
             
-            // Facility Switchboard Logic
-            const modTag = t.id.split('-')[1]; 
+            // Facility Switchboard Logic - Maps vertical modules to Site Configuration columns
+            const modTag = (t.id || "").split('-')[1]; 
             const modMap: Record<string, number> = {
                 'POOL': 3, 'GYM': 4, 'VALET': 5, 'SHUT': 6, 'LOUNGE': 7, 'BANQ': 8, 'BAR': 9, 'PET': 10,
                 'OT': 3, 'ICU': 4, 'PHM': 5, 'LAB': 6, 'WST': 7, 'GAS': 8, 'AMB': 9,
@@ -252,14 +252,14 @@ export const handleDownload = (item: PremiumPack) => {
             };
             const colOffset = modMap[modTag] || -1;
             const siteRowMatch = `MATCH(A${rIdx}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
-            const moduleFormula = colOffset > 0 ? `INDEX('SITE_CONFIGURATION'!$D$5:$K$500, ${siteRowMatch}, ${colOffset})` : `"YES"`;
+            const moduleFormula = colOffset > 0 ? `INDEX('SITE_CONFIGURATION'!$D$5:$K$500, ${siteRowMatch}, ${colOffset})` : "\"YES\"";
 
-            // Hardened Dual-Check Status Logic
+            // Hardened Priority-Aware Status Formula (No leading =)
             const isRoutine = t.priority === 'Low';
             const statusFormula = `IF(${moduleFormula}="NO", "N/A", IF(J${rIdx}="Low", IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETED", "PENDING")))`;
 
             mData.push([
-                { t: 'f', f: `SITE_CONFIGURATION!$A$5`, s: dataStyleCenter }, 
+                { t: 'f', f: "SITE_CONFIGURATION!$A$5", s: dataStyleCenter }, 
                 { v: c.role, s: dataStyleCenter },                       
                 { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { ...baseFont, bold: true } } }, 
                 { t: 'f', f: assignmentFormula, s: dataStyleLeft },                     
@@ -301,8 +301,8 @@ export const handleDownload = (item: PremiumPack) => {
             sData.push([
                 { v: c.role, s: dataStyleCenter },
                 { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
-                { v: `Maintains operational standards and avoids downtime.`, s: dataStyleLeft },
-                { v: t.description || t.floorAction || "Follow standard procedure.", s: dataStyleLeft },
+                { v: "Ensures daily consistency and prevents unmonitored operational failures.", s: dataStyleLeft },
+                { v: t.description || t.floorAction || "Follow standard established procedure.", s: dataStyleLeft },
                 { v: t.proof || "Verify entry in the daily shift ledger.", s: instructionStyle },
                 { v: `[Risk: ${t.consequence}]`, s: riskStyle }
             ]);
