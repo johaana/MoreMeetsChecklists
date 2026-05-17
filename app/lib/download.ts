@@ -251,7 +251,8 @@ export const handleDownload = (item: PremiumPack) => {
                 const modColMap: Record<string, number> = {
                     'POOL': 4, 'GYM': 5, 'VALET': 6, 'SHUT': 7, 'LOUNGE': 8, 'BANQ': 9, 'BAR': 10, 'PET': 11,
                     'OT': 4, 'ICU': 5, 'PHM': 6, 'LAB': 7, 'WST': 8, 'GAS': 9, 'AMB': 10,
-                    'ROOM': 4, 'WHSE': 5, 'SVC': 7, 'ALT': 8, 'FITTING': 4
+                    'ROOM': 4, 'WHSE': 5, 'SVC': 7, 'ALT': 8, 'FITTING': 4,
+                    'LABS': 4, 'BUS': 5, 'CAN': 6, 'HST': 7, 'SPORT': 8
                 };
                 const colIdx = modColMap[modTag] || -1;
                 const matchBranch = `MATCH(${branchRef}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
