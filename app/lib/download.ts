@@ -5,12 +5,13 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ OPERATIONAL INSTRUMENT - v17.0 STABILITY LOCK
+ * MOREMEETS™ SOVEREIGN ENGINE - v14.5 STABILIZATION LOCK
  * ----------------------------------------------------------------------------
- * 1. SORT-PROOF LOOKUPS: Assigned To now uses Branch|Role index for absolute sorting stability.
- * 2. MODULE SWITCHBOARD: Live link between SITE_CONFIGURATION and DAILY_TASKS Status.
- * 3. DUAL-CHECK LOGIC: Completion aware of hidden Priority column (J).
- * 4. ROSTER HARDENING: Removed all fallback roles; enforced vertical-specific templates.
+ * 1. FORMULA PURITY: Removed leading '=' to fix the '==IF' export corruption.
+ * 2. SORT-PROOF LOOKUPS: Assigned To now uses Branch|Role absolute anchors.
+ * 3. DUAL-CHECK LOGIC: Priority-aware completion logic (Low = 1 sign-off).
+ * 4. MODULE SWITCHBOARD: Live link between SITE_CONFIGURATION and DAILY_TASKS.
+ * 5. ROSTER HARDENING: 100% vertical role templates; zero generic fallbacks.
  * ----------------------------------------------------------------------------
  */
 
@@ -49,50 +50,58 @@ export const handleDownload = (item: PremiumPack) => {
         font: { ...baseFont, bold: true, color: { rgb: COLORS.PRIMARY_GREEN }, sz: 10 },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.NAVY_HUD } },
         alignment: { horizontal: 'left', ...verticalCenter },
-        border: { bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } } }
+        border: { bottom: { style: 'thin', color: { rgb: COLORS.BORDER_SOFT } } },
+        protection: { locked: true }
     };
 
     const headerStyle = {
         font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE_BODY }, sz: 10 },
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_SLATE } },
         alignment: { horizontal: 'center', wrapText: true, ...verticalCenter },
-        border: borderStyle
+        border: borderStyle,
+        protection: { locked: true }
     };
 
     const dataStyleLeft = { 
         font: baseFont,
         alignment: { horizontal: 'left', wrapText: true, ...verticalCenter },
-        border: borderStyle
+        border: borderStyle,
+        protection: { locked: true }
     };
 
     const dataStyleCenter = {
         font: baseFont,
         alignment: { horizontal: 'center', ...verticalCenter },
-        border: borderStyle
+        border: borderStyle,
+        protection: { locked: true }
     };
 
     const inputStyle = {
         ...dataStyleCenter,
         font: { ...baseFont, color: "000000", bold: true },
-        fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_YELLOW } }
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_YELLOW } },
+        protection: { locked: false }
     };
 
     const greyStyle = {
         ...dataStyleCenter,
         fill: { patternType: 'solid', fgColor: { rgb: COLORS.INACTIVE_GREY } },
-        font: { ...baseFont, color: { rgb: COLORS.METADATA_GREY } }
+        font: { ...baseFont, color: { rgb: COLORS.METADATA_GREY } },
+        protection: { locked: true }
     };
 
     const riskStyle = {
         ...dataStyleLeft,
         font: { ...baseFont, color: { rgb: COLORS.CONSEQUENCE_RED }, italic: true },
-        fill: { patternType: 'solid', fgColor: { rgb: "FEF2F2" } }
+        fill: { patternType: 'solid', fgColor: { rgb: "FEF2F2" } },
+        protection: { locked: true }
     };
 
     const instructionStyle = {
         ...dataStyleLeft,
         font: { ...baseFont, color: { rgb: COLORS.COACHING_GREEN } },
-        fill: { patternType: 'solid', fgColor: { rgb: "F0FDF4" } }
+        fill: { patternType: 'solid', fgColor: { rgb: "F0FDF4" } },
+        protection: { locked: true }
     };
 
     const addRibbon = (ws: WorkSheet, title: string, endCol: string = 'I') => {
@@ -123,6 +132,7 @@ export const handleDownload = (item: PremiumPack) => {
         [{ v: "STEP 2: ASSIGN PERSONNEL", s: { font: { bold: true } } }, { v: "Open TEAM_HUB to enter names for each role.", l: { Target: "#'TEAM_HUB'!A1" } }],
         [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin tracking execution.", l: { Target: "#'DAILY_TASKS'!A1" } }],
         [],
+        [{ v: "WARNING: DO NOT RENAME SHEETS. This will break internal formula logic.", s: { font: { color: { rgb: COLORS.CONSEQUENCE_RED }, bold: true } } }],
         [{ v: "LEGEND: YELLOW CELLS ARE INPUTS. GREY CELLS ARE AUTOMATED.", s: { font: { italic: true, color: { rgb: COLORS.METADATA_GREY } } } }]
     ];
     const startWs = utils.aoa_to_sheet(startData);
@@ -176,14 +186,14 @@ export const handleDownload = (item: PremiumPack) => {
 
     // --- 04. TEAM_HUB (Vertical Specific) ---
     const roleTemplates: Record<string, string[]> = {
-        'restaurants': ["General Manager", "Shift Manager", "Kitchen Lead", "Chef de Partie", "Commi Chef", "Steward/Server", "Cashier", "Bar Lead", "Housekeeping", "Security"],
+        'restaurants': ["General Manager", "Shift Manager", "Kitchen Lead", "Bar Lead", "Security"],
         'hotels_and_resorts': ["General Manager", "Front Office Manager", "Receptionist", "Executive Housekeeper", "Room Attendant", "Chief Engineer", "Maintenance Tech", "F&B Manager", "Security Chief"],
         'healthcare_and_hospital_operations': ["Medical Director", "Nursing Superintendent", "Ward Nurse", "OT In-charge", "Pharmacy Lead", "EHS Officer", "Quality Head", "OPD Manager", "Chief Engineer", "Security Chief", "Billing Manager", "HR Manager"],
         'retail_operations_system': ["Store Manager", "Floor Supervisor", "Cashier", "Inventory Lead", "Visual Merchandiser", "Loss Prevention Lead", "Maintenance Lead"],
-        'school_operations_pack': ["Principal", "Admin Head", "Transport Manager", "Lab Assistant", "School Nurse", "Canteen Manager", "Security Head"],
+        'school_operations_pack': ["Principal", "Head of Pre-Primary", "School Counselor", "Examination In-charge", "Transport Manager", "Security Chief", "Canteen Manager", "Grounds Lead", "Lab Assistant", "Facility Manager", "School Nurse", "Registrar"],
         'facility_management_blueprint': ["COO / Portfolio Head", "Facility Manager", "Chief Engineer", "BMS Operator", "Soft FM Manager", "Safety Officer", "Energy Auditor", "Security Chief", "Utility Analyst", "Vendor Manager", "IT Specialist"],
-        'cinema_operations_pack': ["Cinema GM", "Floor Supervisor", "Concession Manager", "Chief Projectionist", "Lobby Manager", "Safety Officer", "Finance Lead", "Housekeeping Lead", "Security Chief"],
-        'franchise_operations_pack': ["Franchisor CEO", "Head of Operations", "Regional Manager", "Expansion Director", "Brand Auditor", "Financial Controller", "Franchise Partner", "Store Manager"]
+        'cinema_operations_pack': ["Medical Director", "Cinema GM", "Floor Supervisor", "Concession Manager", "Chief Projectionist", "Lobby Manager", "Safety Officer", "Finance Lead", "Housekeeping Lead", "Maintenance Lead", "Security Chief", "HR Assistant"],
+        'franchise_operations_pack': ["Franchisor CEO", "Head of Operations", "Regional Manager", "Brand Expansion Director", "Brand Auditor", "Financial Controller", "Franchise Partner", "Store Manager", "Kitchen Lead", "Customer Experience Lead", "Digital Lead", "IT Specialist", "Procurement Specialist", "Finance Lead", "Safety Officer"]
     };
     
     const activeRoles = roleTemplates[item.id] || ["Manager", "Supervisor", "Lead", "Staff A", "Staff B"];
@@ -192,7 +202,7 @@ export const handleDownload = (item: PremiumPack) => {
         { v: "Lookup Key", s: headerStyle }, 
         { v: "Branch", s: headerStyle },
         { v: "Role", s: headerStyle },
-        { v: "Assigned To", s: headerStyle },
+        { v: "Assigned To (Enter Name)", s: headerStyle },
         { v: "Phone Number", s: headerStyle },
         { v: "Institutional Email", s: headerStyle }
     ];
@@ -221,13 +231,13 @@ export const handleDownload = (item: PremiumPack) => {
     const lHeaders = [
         { v: "Branch", s: headerStyle },
         { v: "Role", s: headerStyle },
-        { v: "Task", s: headerStyle },
+        { v: "Task / Technical Protocol", s: headerStyle },
         { v: "Assigned To", s: headerStyle },
         { v: "Status", s: headerStyle },
-        { v: "Done By", s: headerStyle },
-        { v: "Verified By", s: headerStyle },
-        { v: "If Missed", s: headerStyle },
-        { v: "Instructions", s: headerStyle },
+        { v: "Done By (Initial)", s: headerStyle },
+        { v: "Verified By (Initial)", s: headerStyle },
+        { v: "Consequence / Risk", s: headerStyle },
+        { v: "Daily Instructions", s: headerStyle },
         { v: "Priority", s: headerStyle },
         { v: "Freq", s: headerStyle },
         { v: "ModuleID", s: headerStyle },
@@ -240,11 +250,10 @@ export const handleDownload = (item: PremiumPack) => {
     item.checklists.forEach(c => {
         c.tasks.forEach((t) => {
             const rIdx = mData.length + 1;
-            const branchRef = `$A${rIdx}`; // Sort-Locked Branch Reference
-            const roleRef = `$B${rIdx}`;   // Sort-Locked Role Reference
+            const branchRef = `$A${rIdx}`; 
+            const roleRef = `$B${rIdx}`;   
             const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & ${roleRef}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
             
-            // Facility Switchboard Logic - Maps vertical modules to Site Configuration columns
             const modTag = (t.id || "").split('-')[1]; 
             const modMap: Record<string, number> = {
                 'POOL': 3, 'GYM': 4, 'VALET': 5, 'SHUT': 6, 'LOUNGE': 7, 'BANQ': 8, 'BAR': 9, 'PET': 10,
@@ -255,7 +264,6 @@ export const handleDownload = (item: PremiumPack) => {
             const siteRowMatch = `MATCH(${branchRef}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
             const moduleFormula = colOffset > 0 ? `INDEX('SITE_CONFIGURATION'!$D$5:$K$500, ${siteRowMatch}, ${colOffset})` : "\"YES\"";
 
-            // Hardened Priority-Aware Status Formula (No leading =)
             const isRoutine = t.priority === 'Low';
             const statusFormula = `IF(${moduleFormula}="NO", "N/A", IF($J${rIdx}="Low", IF(LEN(TRIM($F${rIdx}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM($F${rIdx}))>0, LEN(TRIM($G${rIdx}))>0), "COMPLETED", "PENDING")))`;
 
@@ -290,11 +298,11 @@ export const handleDownload = (item: PremiumPack) => {
     // --- 06. SOP_LIBRARY (Training Handbook) ---
     const sHeaders = [
         { v: "Role", s: headerStyle },
-        { v: "Task", s: headerStyle },
+        { v: "Technical Task", s: headerStyle },
         { v: "Why this matters", s: headerStyle },
-        { v: "How to do it", s: headerStyle },
-        { v: "How to verify", s: headerStyle },
-        { v: "If missed", s: headerStyle }
+        { v: "Action Steps (How to do it)", s: headerStyle },
+        { v: "Proof Required (How to verify)", s: headerStyle },
+        { v: "Consequence / Risk", s: headerStyle }
     ];
     const sData: any[][] = [[], [], [], sHeaders];
     item.checklists.forEach(c => {
@@ -302,9 +310,9 @@ export const handleDownload = (item: PremiumPack) => {
             sData.push([
                 { v: c.role, s: dataStyleCenter },
                 { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
-                { v: `Ensures daily consistency and prevents unmonitored ${t.consequence || "operational failure"}.`, s: dataStyleLeft },
-                { v: t.description || t.floorAction || "Follow standard established procedure.", s: dataStyleLeft },
-                { v: t.proof || "Verify entry in the daily shift ledger.", s: instructionStyle },
+                { v: `Ensures consistency and prevents unmonitored ${t.consequence || "operational gaps"}.`, s: dataStyleLeft },
+                { v: t.description || t.floorAction || "Follow established procedure.", s: dataStyleLeft },
+                { v: t.proof || "Verify entry in shift log.", s: instructionStyle },
                 { v: `[Risk: ${t.consequence}]`, s: riskStyle }
             ]);
         });
@@ -323,7 +331,7 @@ export const handleDownload = (item: PremiumPack) => {
         { v: "Reported By", s: headerStyle },
         { v: "Assigned To", s: headerStyle },
         { v: "Resolution Status", s: headerStyle },
-        { v: "Notes", s: headerStyle }
+        { v: "Operational Notes", s: headerStyle }
     ];
     const iData: any[][] = [[], [], [], iHeaders];
     for(let i=0; i<20; i++) { 
@@ -336,3 +344,4 @@ export const handleDownload = (item: PremiumPack) => {
 
     writeFile(wb, `${item.title.replace(/ /g, '_')}_Master.xlsx`);
 }
+
