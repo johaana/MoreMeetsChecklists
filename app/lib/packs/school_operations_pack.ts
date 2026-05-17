@@ -27,96 +27,38 @@ export const school_operations_pack: PremiumPack = {
             role: "Transport Manager",
             summary: "Zero-fail student transportation safety.",
             icon: "bus",
-            tasks: Array.from({ length: 40 }, (_, i) => ({
-                id: `SC-TRA-${String(i + 1).padStart(2, '0')}`,
-                description: [
-                    "Check brakes, tires, and lights on 100% of fleet.",
-                    "Walk to the back row of every bus after student drop-off.",
-                    "Verify all bus GPS units are online on dashboard.",
-                    "Random breathalyzer checks for all route drivers.",
-                    "Confirm presence of female attendant on all junior routes.",
-                    "Verify first-aid kit seal and O2 levels in bus.",
-                    "Audit bus speed alerts: log any unit >40km/h.",
-                    "Verify driver license validity: 30-day pre-expiry alert.",
-                    "Inspect bus interior for sharp metal or trash.",
-                    "Final pre-trip mechanical sign-off."
-                ][i] || "Route safety audit.",
-                priority: i < 5 ? "High" : "Medium",
-                riskLevel: "High",
-                consequence: "Fatal mechanical or child-safety failure.",
-                proof: "Driver Log"
-            }))
+            tasks: [
+                { id: "SC-TRA-01", technicalProtocol: "Brake & Tire Audit", floorAction: "Inspect 100% of fleet mechanical vitals.", priority: "High", riskLevel: "High", consequence: "Fatal crash risk.", proof: "Driver Log" },
+                { id: "SC-TRA-02", technicalProtocol: "Sobriety Challenge", floorAction: "Random breathalyzer for route drivers.", priority: "High", riskLevel: "High", consequence: "Catastrophic crash.", proof: "Test Note" },
+                { id: "SC-TRA-03", technicalProtocol: "Empty Bus Walkthrough", floorAction: "Touch the back-row seat after drop-off.", priority: "High", riskLevel: "High", consequence: "Child left behind (Never-event).", proof: "Check-off" },
+                { id: "SC-TRA-04", technicalProtocol: "GPS System Pulse", floorAction: "Verify all units are online and tracking.", priority: "Medium", riskLevel: "Medium", consequence: "Inability to track during crisis.", proof: "System Sync" }
+            ]
         },
         {
             title: "Campus Security",
             department: "Security",
             frequency: "Daily",
             role: "Security Chief",
-            summary: "Visitor ID governance and blind-spot monitoring.",
+            summary: "Visitor ID governance and perimeter monitoring.",
             icon: "shield-check",
-            tasks: Array.from({ length: 30 }, (_, i) => ({
-                id: `SC-SEC-${String(i + 1).padStart(2, '0')}`,
-                description: [
-                    "Verify 100% ID verification and log entry at gate.",
-                    "Adjust cameras to cover classroom corridors and lockers.",
-                    "Verify attendant presence at entry to student washrooms.",
-                    "Confirm all roof and back-alley gates are locked.",
-                    "Verify 100% badge compliance for external vendors.",
-                    "Breathalyzer test for night shift security team.",
-                    "Verify all fire-stairs are clear of debris.",
-                    "Final campus strategic closure initials."
-                ][i] || "Perimeter security sweep.",
-                priority: "High",
-                riskLevel: "High",
-                consequence: "Unauthorized campus access.",
-                proof: "Patrol Log"
-            }))
+            tasks: [
+                { id: "SC-SEC-01", technicalProtocol: "Visitor ID Capture", floorAction: "Verify 100% entry logging at gate.", priority: "High", riskLevel: "High", consequence: "Unauthorized intruder access.", proof: "Registry" },
+                { id: "SC-SEC-02", technicalProtocol: "Blind-Spot Audit", floorAction: "Check CCTV focal points for corridors.", priority: "High", riskLevel: "Medium", consequence: "Loss of incident evidence.", proof: "Monitor Scan" },
+                { id: "SC-SEC-03", technicalProtocol: "Roof & Alley Lockdown", floorAction: "Physically confirm all restricted gates locked.", priority: "High", riskLevel: "High", consequence: "Fall hazard / security breach.", proof: "Patrol Log" }
+            ]
         },
         {
-            title: "Medical & Nurse Hub",
+            title: "Medical Room",
             department: "Medical",
             frequency: "Daily",
             role: "School Nurse",
             summary: "Student welfare and emergency readiness.",
             icon: "heart-pulse",
-            tasks: Array.from({ length: 25 }, (_, i) => ({
-                id: `SC-MED-${String(i + 1).padStart(2, '0')}`,
-                description: [
-                    "Test AED status light (must be Green).",
-                    "Verify inventory of critical medications (Epi-pens).",
-                    "Remove medical items with <60 days shelf life.",
-                    "Log medical fridge temp for insulin/vaccines.",
-                    "Verify sharps containers are sealed for pickup.",
-                    "Update student allergy red-flag matrix.",
-                    "Replenish 10 random campus first aid kits."
-                ][i] || "Infirmary inventory check.",
-                priority: "High",
-                riskLevel: "Medium",
-                consequence: "Ineffective emergency response.",
-                proof: "Registry"
-            }))
-        },
-        {
-            title: "Academic Integrity",
-            department: "Management",
-            frequency: "Daily",
-            role: "Principal",
-            summary: "Institutional risk and academic oversight.",
-            icon: "crown",
-            tasks: Array.from({ length: 30 }, (_, i) => ({
-                id: `SC-EXE-${String(i + 1).padStart(2, '0')}`,
-                description: [
-                    "Audit 5 staff files for valid police verification certs.",
-                    "Verify CBSE/ICSE board recognition validity.",
-                    "Review keywords in parent complaints (7-day cycle).",
-                    "Audit cloud-sync status for student performance data.",
-                    "Verify syllabus timeline against annual calendar."
-                ][i] || "Executive governance check.",
-                priority: "High",
-                riskLevel: "Medium",
-                consequence: "Legal and reputation damage.",
-                proof: "Dashboard"
-            }))
+            tasks: [
+                { id: "SC-MED-01", technicalProtocol: "AED Vitals", floorAction: "Confirm Green status light on machine.", priority: "High", riskLevel: "High", consequence: "Resuscitation failure.", proof: "Daily Log" },
+                { id: "SC-MED-02", technicalProtocol: "Epi-pen Inventory", floorAction: "Verify count and expiry of critical allergy meds.", priority: "High", riskLevel: "High", consequence: "Fatal shock response failure.", proof: "Drug Registry" },
+                { id: "SC-MED-03", technicalProtocol: "Allergy Matrix Sync", floorAction: "Update red-flag list for today's admissions.", priority: "High", riskLevel: "High", consequence: "Mismatched medical response.", proof: "Matrix File" }
+            ]
         }
     ]
 };

@@ -256,7 +256,7 @@ export const handleDownload = (item: PremiumPack) => {
             const roleRef = `$B${rIdx}`;   
             const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & ${roleRef}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
             
-            const modTag = (t.id || "").split('-')[1]; 
+            const modTag = (t.id || t.moduleId || "").split('-')[1]; 
             const modMap: Record<string, number> = {
                 'POOL': 4, 'GYM': 5, 'VALET': 6, 'SHUT': 7, 'LOUNGE': 8, 'BANQ': 9, 'BAR': 10, 'PET': 11,
                 'OT': 4, 'ICU': 5, 'PHM': 6, 'LAB': 7, 'WST': 8, 'GAS': 9, 'AMB': 10,
@@ -280,7 +280,7 @@ export const handleDownload = (item: PremiumPack) => {
                 { v: `[Risk: ${t.consequence || "Operational Gap"}]`, s: riskStyle },   
                 { v: t.floorAction || t.description || "", s: instructionStyle }, 
                 { v: t.priority, s: { hidden: true } },
-                { v: t.frequency, s: { hidden: true } },
+                { v: t.frequency || c.frequency, s: { hidden: true } },
                 { v: t.id, s: { hidden: true } },
                 { v: "CORE", s: { hidden: true } },
                 { v: "ACTIVE", s: { hidden: true } },
