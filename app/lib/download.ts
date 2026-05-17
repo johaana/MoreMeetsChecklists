@@ -5,13 +5,13 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v14.5 STABILIZATION LOCK
+ * MOREMEETS™ SOVEREIGN ENGINE - v14.6 STABILIZATION LOCK
  * ----------------------------------------------------------------------------
- * 1. FORMULA PURITY: Removed leading '=' to fix the '==IF' export corruption.
- * 2. SORT-PROOF LOOKUPS: Assigned To now uses Branch|Role absolute anchors.
- * 3. DUAL-CHECK LOGIC: Priority-aware completion logic (Low = 1 sign-off).
- * 4. MODULE SWITCHBOARD: Live link between SITE_CONFIGURATION and DAILY_TASKS.
- * 5. ROSTER HARDENING: 100% vertical role templates; zero generic fallbacks.
+ * 1. LIVE SWITCHBOARD: Status logic now INDEX+MATCHES against SITE_CONFIGURATION.
+ * 2. HIDDEN ENGINEERING: Columns J:P (9-15) strictly hidden: true, width: 0.
+ * 3. SORT-PROOF ROSTER: Assigned To uses absolute anchors ($A5 & "|" & $B5).
+ * 4. TERMINOLOGY FREEZE: "Task / Technical SOP" standardized.
+ * 5. ROSTER SYNC: Zero fallback roles; 100% vertical role mapping.
  * ----------------------------------------------------------------------------
  */
 
@@ -115,11 +115,13 @@ export const handleDownload = (item: PremiumPack) => {
         ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
         ws['!merges'].push({ s: { r: 1, c: 0 }, e: { r: 1, c: endCIdx } }); 
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 4, xSplit: 2 }];
-        if(!ws['!rows']) ws['!rows'] = [];
-        ws['!rows'][0] = { hpt: 30 };
-        ws['!rows'][1] = { hpt: 50 };
-        ws['!rows'][2] = { hpt: 20 };
-        ws['!rows'][3] = { hpt: 45 }; 
+        if(!ws['!rows']) ws['rows'] = [];
+        ws['!rows'] = [
+            { hpt: 30 },
+            { hpt: 50 },
+            { hpt: 20 },
+            { hpt: 45 }
+        ];
     };
 
     // --- 01. START_HERE ---
@@ -153,7 +155,7 @@ export const handleDownload = (item: PremiumPack) => {
     opsWs['!cols'] = [{ wch: 35 }, { wch: 20 }];
     utils.book_append_sheet(wb, opsWs, "OPERATIONS_CENTER");
 
-    // --- 03. SITE_CONFIGURATION (Dynamic Vertical Headers) ---
+    // --- 03. SITE_CONFIGURATION ---
     const facilityHeadersMap: Record<string, string[]> = {
         'hotels_and_resorts': ["Swimming Pool", "Gym & Spa", "Valet Parking", "Airport Shuttle", "Executive Lounge", "Banquet Hall", "Rooftop Bar", "Pet Friendly"],
         'healthcare_and_hospital_operations': ["OT", "ICU", "Pharmacy", "Diagnostics", "Biomedical Waste", "Medical Gas", "Ambulance"],
@@ -184,7 +186,7 @@ export const handleDownload = (item: PremiumPack) => {
     addRibbon(setupWs, "Site Configuration", utils.encode_col(setupHeaders.length - 1));
     utils.book_append_sheet(wb, setupWs, "SITE_CONFIGURATION");
 
-    // --- 04. TEAM_HUB (Vertical Specific) ---
+    // --- 04. TEAM_HUB ---
     const roleTemplates: Record<string, string[]> = {
         'restaurants': ["General Manager", "Shift Manager", "Kitchen Lead", "Bar Lead", "Security"],
         'hotels_and_resorts': ["General Manager", "Front Office Manager", "Receptionist", "Executive Housekeeper", "Room Attendant", "Chief Engineer", "Maintenance Tech", "F&B Manager", "Security Chief"],
@@ -192,7 +194,7 @@ export const handleDownload = (item: PremiumPack) => {
         'retail_operations_system': ["Store Manager", "Floor Supervisor", "Cashier", "Inventory Lead", "Visual Merchandiser", "Loss Prevention Lead", "Maintenance Lead"],
         'school_operations_pack': ["Principal", "Head of Pre-Primary", "School Counselor", "Examination In-charge", "Transport Manager", "Security Chief", "Canteen Manager", "Grounds Lead", "Lab Assistant", "Facility Manager", "School Nurse", "Registrar"],
         'facility_management_blueprint': ["COO / Portfolio Head", "Facility Manager", "Chief Engineer", "BMS Operator", "Soft FM Manager", "Safety Officer", "Energy Auditor", "Security Chief", "Utility Analyst", "Vendor Manager", "IT Specialist"],
-        'cinema_operations_pack': ["Medical Director", "Cinema GM", "Floor Supervisor", "Concession Manager", "Chief Projectionist", "Lobby Manager", "Safety Officer", "Finance Lead", "Housekeeping Lead", "Maintenance Lead", "Security Chief", "HR Assistant"],
+        'cinema_operations_pack': ["Cinema GM", "Floor Supervisor", "Concession Manager", "Chief Projectionist", "Lobby Manager", "Safety Officer", "Finance Lead", "Housekeeping Lead", "Maintenance Lead", "Security Chief", "HR Assistant"],
         'franchise_operations_pack': ["Franchisor CEO", "Head of Operations", "Regional Manager", "Brand Expansion Director", "Brand Auditor", "Financial Controller", "Franchise Partner", "Store Manager", "Kitchen Lead", "Customer Experience Lead", "Digital Lead", "IT Specialist", "Procurement Specialist", "Finance Lead", "Safety Officer"]
     };
     
@@ -202,7 +204,7 @@ export const handleDownload = (item: PremiumPack) => {
         { v: "Lookup Key", s: headerStyle }, 
         { v: "Branch", s: headerStyle },
         { v: "Role", s: headerStyle },
-        { v: "Assigned To (Enter Name)", s: headerStyle },
+        { v: "Assigned Personnel", s: headerStyle },
         { v: "Phone Number", s: headerStyle },
         { v: "Institutional Email", s: headerStyle }
     ];
@@ -227,11 +229,11 @@ export const handleDownload = (item: PremiumPack) => {
     addRibbon(pWs, "Personnel Directory", 'F');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- 05. DAILY_TASKS (The Daily Mission Board) ---
+    // --- 05. DAILY_TASKS ---
     const lHeaders = [
         { v: "Branch", s: headerStyle },
         { v: "Role", s: headerStyle },
-        { v: "Task / Technical Protocol", s: headerStyle },
+        { v: "Task / Technical SOP", s: headerStyle },
         { v: "Assigned To", s: headerStyle },
         { v: "Status", s: headerStyle },
         { v: "Done By (Initial)", s: headerStyle },
@@ -256,13 +258,13 @@ export const handleDownload = (item: PremiumPack) => {
             
             const modTag = (t.id || "").split('-')[1]; 
             const modMap: Record<string, number> = {
-                'POOL': 3, 'GYM': 4, 'VALET': 5, 'SHUT': 6, 'LOUNGE': 7, 'BANQ': 8, 'BAR': 9, 'PET': 10,
-                'OT': 3, 'ICU': 4, 'PHM': 5, 'LAB': 6, 'WST': 7, 'GAS': 8, 'AMB': 9,
-                'ROOM': 3, 'WHSE': 4, 'VAL': 5, 'SVC': 6, 'ALT': 7
+                'POOL': 4, 'GYM': 5, 'VALET': 6, 'SHUT': 7, 'LOUNGE': 8, 'BANQ': 9, 'BAR': 10, 'PET': 11,
+                'OT': 4, 'ICU': 5, 'PHM': 6, 'LAB': 7, 'WST': 8, 'GAS': 9, 'AMB': 10,
+                'ROOM': 4, 'WHSE': 5, 'VAL': 6, 'SVC': 7, 'ALT': 8
             };
             const colOffset = modMap[modTag] || -1;
             const siteRowMatch = `MATCH(${branchRef}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
-            const moduleFormula = colOffset > 0 ? `INDEX('SITE_CONFIGURATION'!$D$5:$K$500, ${siteRowMatch}, ${colOffset})` : "\"YES\"";
+            const moduleFormula = colOffset > 0 ? `INDEX('SITE_CONFIGURATION'!$A$5:$M$500, ${siteRowMatch}, ${colOffset})` : "\"YES\"";
 
             const isRoutine = t.priority === 'Low';
             const statusFormula = `IF(${moduleFormula}="NO", "N/A", IF($J${rIdx}="Low", IF(LEN(TRIM($F${rIdx}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM($F${rIdx}))>0, LEN(TRIM($G${rIdx}))>0), "COMPLETED", "PENDING")))`;
@@ -295,7 +297,7 @@ export const handleDownload = (item: PremiumPack) => {
     addRibbon(mWs, "Daily Task Logbook", 'I');
     utils.book_append_sheet(wb, mWs, "DAILY_TASKS");
 
-    // --- 06. SOP_LIBRARY (Training Handbook) ---
+    // --- 06. SOP_LIBRARY ---
     const sHeaders = [
         { v: "Role", s: headerStyle },
         { v: "Technical Task", s: headerStyle },
@@ -344,4 +346,3 @@ export const handleDownload = (item: PremiumPack) => {
 
     writeFile(wb, `${item.title.replace(/ /g, '_')}_Master.xlsx`);
 }
-
