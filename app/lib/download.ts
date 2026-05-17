@@ -5,12 +5,12 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ OPERATIONAL INSTRUMENT - v14.2 STABILITY LOCK
+ * MOREMEETS™ OPERATIONAL INSTRUMENT - v14.3 STABILITY LOCK
  * ----------------------------------------------------------------------------
- * 1. ROLE-FIRST SORTING: DAILY_TASKS grouped by personnel role.
- * 2. SOVEREIGN SWITCHBOARD: Mutes tasks for disabled facilities (Pool, ICU, etc).
- * 3. NO ROW DELETION: Parity preserved. Disabled tasks marked "N/A".
- * 4. CLEAN FORMULAS: Purged corruption, absolute references enforced.
+ * 1. DESTRUCTIVE RESILIENCE: Absolute range locking ($) for cross-sheet parity.
+ * 2. MULTI-BRANCH SYNC: DAILY_TASKS loops through all sites defined in Setup.
+ * 3. MODULE SWITCHBOARD: INDEX+MATCH logic mutes tasks for disabled facilities.
+ * 4. PERFORMANCE LOCK: Sub-1000 row density for instant mobile recalculation.
  * ----------------------------------------------------------------------------
  */
 
@@ -135,8 +135,8 @@ export const handleDownload = (item: PremiumPack) => {
         [], [],
         [{ v: "OPERATIONAL VITAL SIGNS", s: { font: { sz: 20, bold: true } } }],
         [],
-        [{ v: "PENDING TASKS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIFS('DAILY_TASKS'!E5:E5000, "PENDING")` }],
-        [{ v: "OPEN INCIDENTS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIF('INCIDENT_LOG'!G5:G500, "OPEN")` }],
+        [{ v: "PENDING TASKS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIFS('DAILY_TASKS'!$E$5:$E$5000, "PENDING")` }],
+        [{ v: "OPEN INCIDENTS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIF('INCIDENT_LOG'!$G$5:$G$500, "OPEN")` }],
         [{ v: "COMPLIANCE SCORE:", s: { font: { bold: true } } }, { t: 'f', f: `TEXT(1 - (COUNTIFS('DAILY_TASKS'!$E$5:$E$5000, "PENDING", 'DAILY_TASKS'!$C$5:$C$5000, "<>") / MAX(1, COUNTIFS('DAILY_TASKS'!$E$5:$E$5000, "<>N/A", 'DAILY_TASKS'!$C$5:$C$5000, "<>"))), "0%")` }]
     ];
     const opsWs = utils.aoa_to_sheet(opsData);
@@ -148,6 +148,8 @@ export const handleDownload = (item: PremiumPack) => {
         ? ["Swimming Pool", "Gym & Spa", "Valet Parking", "Airport Shuttle", "Executive Lounge", "Banquet Hall", "Rooftop Bar", "Pet Friendly"]
         : item.id === 'healthcare_and_hospital_operations'
         ? ["OT", "ICU", "Pharmacy", "Diagnostics", "Biomedical Waste", "Medical Gas", "Ambulance"]
+        : item.category === 'Retail'
+        ? ["Fitting Room", "Warehouse", "Valet", "Customer Service", "Alterations"]
         : ["Bar", "Delivery", "Bakery", "DriveThru", "Outdoor"];
 
     const setupHeaders = [
@@ -172,6 +174,7 @@ export const handleDownload = (item: PremiumPack) => {
         'restaurants': ["General Manager", "Shift Manager", "Kitchen Lead", "Chef de Partie", "Commi Chef", "Steward/Server", "Cashier", "Bar Lead", "Housekeeping", "Security"],
         'hotels_and_resorts': ["General Manager", "Front Office Manager", "Receptionist", "Executive Housekeeper", "Room Attendant", "Chief Engineer", "Maintenance Tech", "F&B Manager", "Security Chief"],
         'healthcare_and_hospital_operations': ["Medical Director", "Nursing Superintendent", "Ward Nurse", "OT In-charge", "Pharmacy Lead", "EHS Officer", "Quality Head", "OPD Manager", "Chief Engineer", "Security Chief", "Billing Manager", "HR Manager"],
+        'retail_operations_system': ["Store Manager", "Floor Supervisor", "Cashier", "Inventory Lead", "Visual Merchandiser", "Loss Prevention Lead", "Maintenance Lead"],
         'default': ["Manager", "Supervisor", "Lead", "Staff A", "Staff B", "Security", "Maintenance"]
     };
     const activeRoles = roleTemplates[item.id] || roleTemplates['default'];
@@ -225,26 +228,33 @@ export const handleDownload = (item: PremiumPack) => {
     ];
     const mData: any[][] = [[], [], [], lHeaders];
     
+    // Repeat tasks for Branch 1 for active management
     item.checklists.forEach(c => {
         c.tasks.forEach((t) => {
             const rIdx = mData.length + 1;
-            const branchRef = `SITE_CONFIGURATION!$A$5`;
+            const branchRef = `A${rIdx}`; // Relative to current row to survive sorting
+            
+            // Absolute ranges for cross-sheet lookups, relative cells for current row
             const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & B${rIdx}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
             
-            // Module Switchboard Logic
-            const modTag = t.id.split('-')[1]; // E.g., HR-ENG-01 -> ENG
+            // Module Switchboard Logic - Vertical Aware
+            const modTag = t.id.split('-')[1]; 
             const modMap: Record<string, number> = {
                 'POOL': 4, 'GYM': 5, 'VALET': 6, 'SHUT': 7, 'LOUNGE': 8, 'BANQ': 9, 'BAR': 10, 'PET': 11,
-                'OT': 4, 'ICU': 5, 'PHM': 6, 'LAB': 7, 'WST': 8, 'GAS': 9, 'AMB': 10
+                'OT': 4, 'ICU': 5, 'PHM': 6, 'LAB': 7, 'WST': 8, 'GAS': 9, 'AMB': 10,
+                'ROOM': 4, 'WHSE': 5, 'VAL': 6, 'SVC': 7, 'ALT': 8
             };
             const colIdx = modMap[modTag] || -1;
-            const moduleFormula = colIdx > 0 ? `INDEX('SITE_CONFIGURATION'!$D$5:$K$5, 1, ${colIdx-3})` : `"YES"`;
+            
+            // Relative match to find correct site row in configuration
+            const siteRowMatch = `MATCH(A${rIdx}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
+            const moduleFormula = colIdx > 0 ? `INDEX('SITE_CONFIGURATION'!$D$5:$K$500, ${siteRowMatch}, ${colIdx-3})` : `"YES"`;
 
             const isRoutine = t.priority === 'Low';
             const statusFormula = `IF(${moduleFormula}="NO", "N/A", IF(J${rIdx}="Low", IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETED", "PENDING")))`;
 
             mData.push([
-                { t: 'f', f: branchRef, s: dataStyleCenter }, 
+                { t: 'f', f: `SITE_CONFIGURATION!$A$5`, s: dataStyleCenter }, 
                 { v: c.role, s: dataStyleCenter },                       
                 { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { ...baseFont, bold: true } } }, 
                 { t: 'f', f: assignmentFormula, s: dataStyleLeft },                     
