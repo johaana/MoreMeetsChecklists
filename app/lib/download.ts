@@ -4,18 +4,17 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ OPERATIONAL INSTRUMENT - STABILITY LOCK v15.0
+ * MOREMEETS™ OPERATIONAL INSTRUMENT - PRODUCTION LOCK v13.5
  * ----------------------------------------------------------------------------
- * 1. FORMULA RELIABILITY: Purged leading '=' from formula strings to prevent '==' errors.
- * 2. INVISIBLE ENGINEERING: Strictly hidden technical columns (J and beyond).
- * 3. HUMANIZED LANGUAGE: Replaced "Synthesis/Protocol/Command" with floor-level terms.
- * 4. DUAL-CHECK QA: Hardened logic for Done/Verified signatures.
- * 5. SOP AUTHENTICITY: Rebuilt handbook with Why/How/Verify context.
- * 6. NATIVE PURITY: No web URLs or browser fragments.
+ * 1. FORMULA STABILITY: Purged all leading '=' in strings to prevent '==' error.
+ * 2. INVISIBLE ENGINEERING: Strictly enforced hidden metadata columns (J-P).
+ * 3. DUAL-CHECK LOGIC: Condition-based status (Routine vs. Critical).
+ * 4. AUTHENTIC CONTENT: Real-world operational "Why" and "Verify" descriptions.
+ * 5. NATIVE NAVIGATION: Strictly hash-based anchors, no #gid or browser artifacts.
  * ----------------------------------------------------------------------------
  */
 
-export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', DEMO_MODE = false) => {
+export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') => {
     if (!item) {
         alert("System error: operational data not found.");
         return;
@@ -29,7 +28,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
         PRIMARY_GREEN: "22C55E",  
         WHITE_BODY: "FFFFFF",     
         BORDER_SOFT: "E2E8F0",    
-        INPUT_YELLOW: "#FEFCE8",   
+        INPUT_YELLOW: "FEFCE8",   
         HEADER_SLATE: "0F172A",   
         METADATA_GREY: "64748B",  
         COACHING_GREEN: "065F46", 
@@ -76,7 +75,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     const inputStyle = {
         ...dataStyleCenter,
         font: { ...baseFont, color: { rgb: "000000" }, bold: true },
-        fill: { patternType: 'solid', fgColor: { rgb: "FEFCE8" } }
+        fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_YELLOW } }
     };
 
     const greyStyle = {
@@ -98,7 +97,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     };
 
     // --- HELPER: NATIVE NAVIGATION ---
-    const addRibbon = (ws: WorkSheet, title: string, endCol: string = 'K') => {
+    const addRibbon = (ws: WorkSheet, title: string, endCol: string = 'I') => {
         const ribbonData = [
             [{ v: "◀ BACK TO OPERATIONS CENTER", l: { Target: "#'OPERATIONS_CENTER'!A1" }, s: navStyle }],
             [{ v: `  ${title.toUpperCase()}`, s: { ...navStyle, font: { ...navStyle.font, sz: 18, color: { rgb: "FFFFFF" } } } }]
@@ -108,7 +107,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
         if (!ws['!merges']) ws['!merges'] = [];
         ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
         ws['!merges'].push({ s: { r: 1, c: 0 }, e: { r: 1, c: endCIdx } }); 
-        ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 4, xSplit: 3 }];
+        ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 4, xSplit: 2 }];
         if(!ws['!rows']) ws['!rows'] = [];
         ws['!rows'][0] = { hpt: 30 };
         ws['!rows'][1] = { hpt: 50 };
@@ -122,18 +121,18 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
         [{ v: "WELCOME TO MOREMEETS™", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
         [{ v: "3-STEP OPERATIONAL SETUP", s: { font: { sz: 12, bold: true }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "STEP 1: DEFINE BRANCHES", s: { font: { bold: true } } }, { v: "Go to SITE_CONFIGURATION and list your locations.", l: { Target: "#'SITE_CONFIGURATION'!A1" } }],
-        [{ v: "STEP 2: ASSIGN STAFF", s: { font: { bold: true } } }, { v: "Go to TEAM_HUB and enter staff names for each role.", l: { Target: "#'TEAM_HUB'!A1" } }],
-        [{ v: "STEP 3: RUN OPERATIONS", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin tracking daily execution.", l: { Target: "#'DAILY_TASKS'!A1" } }],
+        [{ v: "STEP 1: CONFIGURE SITES", s: { font: { bold: true } } }, { v: "Open SITE_CONFIGURATION to name your branches.", l: { Target: "#'SITE_CONFIGURATION'!A1" } }],
+        [{ v: "STEP 2: ASSIGN STAFF", s: { font: { bold: true } } }, { v: "Open TEAM_HUB to enter names for each operational role.", l: { Target: "#'TEAM_HUB'!A1" } }],
+        [{ v: "STEP 3: RUN OPERATIONS", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin logging execution.", l: { Target: "#'DAILY_TASKS'!A1" } }],
         [],
-        [{ v: "SYSTEM NOTES: YELLOW CELLS ARE FOR USER INPUT. GREY CELLS ARE AUTOMATED.", s: { font: { italic: true, color: { rgb: COLORS.METADATA_GREY } } } }]
+        [{ v: "LEGEND: YELLOW CELLS ARE INPUTS. GREY CELLS ARE AUTOMATED.", s: { font: { italic: true, color: { rgb: COLORS.METADATA_GREY } } } }]
     ];
     const startWs = utils.aoa_to_sheet(startData);
     startWs['!cols'] = [{ wch: 30 }, { wch: 60 }];
     startWs['!merges'] = [{ s: { r: 2, c: 0 }, e: { r: 2, c: 1 } }, { s: { r: 3, c: 0 }, e: { r: 3, c: 1 } }];
     utils.book_append_sheet(wb, startWs, "START_HERE");
 
-    // --- 02. OPERATIONS_CENTER (VITAL KPIs) ---
+    // --- 02. OPERATIONS_CENTER (KPI VITALS) ---
     const opsData: any[][] = [
         [], [],
         [{ v: "OPERATIONAL VITAL SIGNS", s: { font: { sz: 20, bold: true } } }],
@@ -146,7 +145,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     opsWs['!cols'] = [{ wch: 35 }, { wch: 20 }];
     utils.book_append_sheet(wb, opsWs, "OPERATIONS_CENTER");
 
-    // --- 03. SITE_CONFIGURATION (SITE REGISTRY) ---
+    // --- 03. SITE_CONFIGURATION (REGISTRY) ---
     const setupHeaders = [
         { v: "BRANCH NAME", s: headerStyle },
         { v: "CITY / LOCATION", s: headerStyle },
@@ -158,12 +157,12 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     });
     const setupWs = utils.aoa_to_sheet(setupData);
     setupWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 20 }];
-    addRibbon(setupWs, "Branch Registry", 'C');
+    addRibbon(setupWs, "Site Configuration", 'C');
     utils.book_append_sheet(wb, setupWs, "SITE_CONFIGURATION");
 
-    // --- 04. TEAM_HUB (PERSONNEL DIRECTORY) ---
+    // --- 04. TEAM_HUB (DIRECTORY) ---
     const roleTemplates: Record<string, string[]> = {
-        'restaurants': ["General Manager", "Shift Manager", "Kitchen Lead", "Chef de Partie", "Commi Chef", "Steward/Server", "Cashier", "Bar Lead", "Housekeeping", "Security"],
+        'restaurants': ["General Manager", "Shift Manager", "Kitchen Lead", "Chef de Partie", "Commi Chef", "Steward", "Cashier", "Bar Lead", "Housekeeping", "Security"],
         'hotels_and_resorts': ["General Manager", "Front Office Manager", "Receptionist", "Executive Housekeeper", "Room Attendant", "Chief Engineer", "Maintenance Tech", "F&B Manager", "Security Chief", "Valet Lead"],
         'healthcare_and_hospital_operations': ["Medical Director", "Nursing Superintendent", "Ward Nurse", "OPD Manager", "Pharmacist", "Lab Technician", "Billing Lead", "Facility Manager", "Security Head", "Housekeeping Lead"],
         'default': ["Manager", "Supervisor", "Lead", "Staff A", "Staff B", "Security", "Maintenance"]
@@ -171,7 +170,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
     const activeRoles = roleTemplates[item.id] || roleTemplates['default'];
     
     const tHeaders = [
-        { v: "Key", s: headerStyle }, 
+        { v: "Lookup Key", s: headerStyle }, 
         { v: "Branch", s: headerStyle },
         { v: "Role", s: headerStyle },
         { v: "Assigned To", s: headerStyle },
@@ -195,7 +194,14 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
         });
     }
     const pWs = utils.aoa_to_sheet(pData);
-    pWs['!cols'] = [0, 25, 30, 35, 20, 30].map((w, i) => ({ wch: w, hidden: i === 0 }));
+    pWs['!cols'] = [
+        { wch: 0, hidden: true }, // Key
+        { wch: 25 }, // Branch
+        { wch: 30 }, // Role
+        { wch: 35 }, // Assigned To
+        { wch: 20 }, // Phone
+        { wch: 30 }  // Email
+    ];
     addRibbon(pWs, "Personnel Directory", 'F');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
@@ -210,7 +216,12 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
         { v: "Verified By", s: headerStyle },
         { v: "If Missed", s: headerStyle },
         { v: "Instructions", s: headerStyle },
-        { v: "Priority", s: headerStyle } 
+        { v: "Priority", s: headerStyle },
+        { v: "Freq", s: headerStyle },
+        { v: "Module", s: headerStyle },
+        { v: "Type", s: headerStyle },
+        { v: "Flag", s: headerStyle },
+        { v: "Score", s: headerStyle }
     ];
     const mData: any[][] = [[], [], [], lHeaders];
     
@@ -224,6 +235,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
             const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & B${rIdx}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
             
             const isRoutine = t.priority === 'Low';
+            // DUAL-CHECK LOGIC: Condition-based requirements
             const statusFormula = isRoutine 
                 ? `IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING")`
                 : `IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETED", "PENDING")`;
@@ -238,14 +250,36 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
                 { v: "", s: isRoutine ? greyStyle : inputStyle },                                    
                 { v: `[Risk: ${t.consequence || "Operational Gap"}]`, s: riskStyle },   
                 { v: t.floorAction || t.description || "", s: instructionStyle }, 
-                { v: t.priority, s: { hidden: true } }                      
+                { v: t.priority, s: { hidden: true } },
+                { v: t.frequency, s: { hidden: true } },
+                { v: t.id, s: { hidden: true } },
+                { v: "CORE", s: { hidden: true } },
+                { v: "ACTIVE", s: { hidden: true } },
+                { v: "10", s: { hidden: true } }
             ]);
         });
     });
 
     const mWs = utils.aoa_to_sheet(mData);
-    mWs['!cols'] = [15, 25, 55, 20, 15, 15, 15, 40, 45, 0].map((w, i) => ({ wch: w, hidden: i === 9 }));
-    addRibbon(mWs, "Daily Execution Board", 'I');
+    // Hardened Column Hiding (J-P range strictly width 0)
+    mWs['!cols'] = [
+        { wch: 15 }, // Branch
+        { wch: 25 }, // Role
+        { wch: 55 }, // Task
+        { wch: 20 }, // Assigned To
+        { wch: 15 }, // Status
+        { wch: 15 }, // Done By
+        { wch: 15 }, // Verified By
+        { wch: 40 }, // If Missed
+        { wch: 45 }, // Instructions
+        { wch: 0, hidden: true }, // Priority
+        { wch: 0, hidden: true }, // Freq
+        { wch: 0, hidden: true }, // Module
+        { wch: 0, hidden: true }, // Type
+        { wch: 0, hidden: true }, // Flag
+        { wch: 0, hidden: true }  // Score
+    ];
+    addRibbon(mWs, "Daily Execution Ledger", 'I');
     utils.book_append_sheet(wb, mWs, "DAILY_TASKS");
 
     // --- 06. SOP_LIBRARY (TRAINING HANDBOOK) ---
@@ -263,15 +297,15 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
             sData.push([
                 { v: c.role, s: dataStyleCenter },
                 { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
-                { v: `Ensures compliance with ${t.technicalProtocol || "operational standard"}.`, s: dataStyleLeft },
-                { v: t.description || t.floorAction || "Follow standard floor protocol.", s: dataStyleLeft },
-                { v: t.proof || "Verify entry in daily ledger.", s: instructionStyle },
+                { v: `Prevents unmonitored ${t.consequence.toLowerCase()} and maintains brand standard.`, s: dataStyleLeft },
+                { v: t.description || t.floorAction || "Follow floor-level protocol.", s: dataStyleLeft },
+                { v: t.proof || "Verify entry in the daily shift ledger.", s: instructionStyle },
                 { v: `[Risk: ${t.consequence}]`, s: riskStyle }
             ]);
         });
     });
     const sWs = utils.aoa_to_sheet(sData);
-    sWs['!cols'] = [25, 40, 45, 50, 45, 45].map(w => ({ wch: w }));
+    sWs['!cols'] = [{ wch: 25 }, { wch: 40 }, { wch: 45 }, { wch: 50 }, { wch: 45 }, { wch: 45 }];
     addRibbon(sWs, "Training Handbook", 'F');
     utils.book_append_sheet(wb, sWs, "SOP_LIBRARY");
 
@@ -291,7 +325,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual', D
         iData.push([null, null, null, null, null, null, "OPEN", ""]); 
     }
     const iWs = utils.aoa_to_sheet(iData);
-    iWs['!cols'] = [15, 20, 25, 15, 20, 20, 15, 40].map(w => ({ wch: w }));
+    iWs['!cols'] = [{ wch: 15 }, { wch: 20 }, { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 20 }, { wch: 15 }, { wch: 40 }];
     addRibbon(iWs, "Incident Registry", 'H');
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
