@@ -5,7 +5,7 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v14.9.1 PILOT FREEZE
+ * MOREMEETS™ SOVEREIGN ENGINE - v15.0 PILOT FREEZE
  * ----------------------------------------------------------------------------
  * 1. MULTI-BRANCH REPLICATION: Repeats task-set for 5 branches by default.
  * 2. SORT-PROOF ROSTER: Assigned To uses absolute anchors ($A5 & "|" & $B5).
@@ -188,7 +188,7 @@ export const handleDownload = (item: PremiumPack) => {
 
     // --- 04. TEAM_HUB ---
     const roleTemplates: Record<string, string[]> = {
-        'restaurants': ["General Manager", "Shift Manager", "Kitchen Lead", "Bar Lead", "Security"],
+        'restaurants': ["General Manager", "Shift Manager", "Kitchen Lead", "Bar Lead", "Security Chief"],
         'hotels_and_resorts': ["General Manager", "Front Office Manager", "Receptionist", "Executive Housekeeper", "Room Attendant", "Chief Engineer", "Maintenance Tech", "F&B Manager", "Security Chief"],
         'healthcare_and_hospital_operations': ["Medical Director", "Nursing Superintendent", "Ward Nurse", "OT In-charge", "Pharmacy Lead", "EHS Officer", "Quality Head", "OPD Manager", "Chief Engineer", "Security Chief", "Billing Manager", "HR Manager"],
         'retail_operations_system': ["Store Manager", "Floor Supervisor", "Cashier", "Inventory Lead", "Visual Merchandiser", "Loss Prevention Lead", "Maintenance Lead"],
@@ -250,7 +250,8 @@ export const handleDownload = (item: PremiumPack) => {
                     'POOL': 4, 'GYM': 5, 'VALET': 6, 'SHUT': 7, 'LOUNGE': 8, 'BANQ': 9, 'BAR': 10, 'PET': 11,
                     'OT': 4, 'ICU': 5, 'PHM': 6, 'LAB': 7, 'WST': 8, 'GAS': 9, 'AMB': 10,
                     'ROOM': 4, 'WHSE': 5, 'SVC': 7, 'ALT': 8, 'FITTING': 4,
-                    'LABS': 4, 'BUS': 5, 'CAN': 6, 'HST': 7, 'SPORT': 8
+                    'LABS': 4, 'BUS': 5, 'CAN': 6, 'HST': 7, 'SPORT': 8,
+                    'DEL': 5, 'BAKE': 6, 'DT': 7, 'OUT': 8
                 };
                 const colIdx = modColMap[modTag] || -1;
                 const matchBranch = `MATCH(${branchRef}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
@@ -303,7 +304,7 @@ export const handleDownload = (item: PremiumPack) => {
         });
     });
     const sWs = utils.aoa_to_sheet(sData);
-    sWs['!cols'] = [{ wch: 25 }, { wch: 40 }, { wch: 45 }, { wch: 50 }, { wch: 45 }, { wch: 45 }];
+    sWs['!cols'] = [{ wch: 25 }, { wch: 40 }, { wch: 45 }, { hpt: 50, wch: 50 }, { wch: 45 }, { wch: 45 }];
     addRibbon(sWs, "Operational Handbook", 'F');
     utils.book_append_sheet(wb, sWs, "SOP_LIBRARY");
 
@@ -315,5 +316,6 @@ export const handleDownload = (item: PremiumPack) => {
     addRibbon(iWs, "Incident Registry", 'H');
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v14.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v15.xlsx`);
 }
+
