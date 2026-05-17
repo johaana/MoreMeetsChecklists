@@ -5,17 +5,16 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack, Checklist } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ OPERATIONAL INSTRUMENT - STABILITY LOCK v15.0
+ * MOREMEETS™ OPERATIONAL INSTRUMENT - v14.2 STABILITY LOCK
  * ----------------------------------------------------------------------------
- * 1. PARITY FIX: Full iteration of all checklists and tasks (No truncation).
- * 2. DUAL-CHECK LOGIC: Priority-aware Status formula (Low = Done only).
- * 3. GREY-CELL BYPASS: Routine verification cells shaded and ignored by Status.
- * 4. HUMANIZED SOPs: Purged synthetic jargon for real-world clarity.
- * 5. NO EQUALS BUG: Fixed leading '=' bug causing double-equals corruption.
+ * 1. ROLE-FIRST SORTING: DAILY_TASKS grouped by personnel role.
+ * 2. SOVEREIGN SWITCHBOARD: Mutes tasks for disabled facilities (Pool, ICU, etc).
+ * 3. NO ROW DELETION: Parity preserved. Disabled tasks marked "N/A".
+ * 4. CLEAN FORMULAS: Purged corruption, absolute references enforced.
  * ----------------------------------------------------------------------------
  */
 
-export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') => {
+export const handleDownload = (item: PremiumPack) => {
     if (!item) {
         alert("System error: operational data not found.");
         return;
@@ -120,7 +119,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
         [{ v: "WELCOME TO MOREMEETS™", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
         [{ v: "3-STEP OPERATIONAL SETUP", s: { font: { sz: 12, bold: true }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "STEP 1: CONFIGURE SITES", s: { font: { bold: true } } }, { v: "Open SITE_CONFIGURATION to name your branches.", l: { Target: "#'SITE_CONFIGURATION'!A1" } }],
+        [{ v: "STEP 1: CONFIGURE SITES", s: { font: { bold: true } } }, { v: "Open SITE_CONFIGURATION to name branches and set active modules.", l: { Target: "#'SITE_CONFIGURATION'!A1" } }],
         [{ v: "STEP 2: ASSIGN STAFF", s: { font: { bold: true } } }, { v: "Open TEAM_HUB to enter names for each role.", l: { Target: "#'TEAM_HUB'!A1" } }],
         [{ v: "STEP 3: RUN OPERATIONS", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin logging execution.", l: { Target: "#'DAILY_TASKS'!A1" } }],
         [],
@@ -138,32 +137,41 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
         [],
         [{ v: "PENDING TASKS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIFS('DAILY_TASKS'!E5:E5000, "PENDING")` }],
         [{ v: "OPEN INCIDENTS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIF('INCIDENT_LOG'!G5:G500, "OPEN")` }],
-        [{ v: "COMPLIANCE SCORE:", s: { font: { bold: true } } }, { t: 'f', f: `TEXT(1 - (COUNTIF('DAILY_TASKS'!E5:E5000,"PENDING") / MAX(1, COUNTA('DAILY_TASKS'!C5:C5000))), "0%")` }]
+        [{ v: "COMPLIANCE SCORE:", s: { font: { bold: true } } }, { t: 'f', f: `TEXT(1 - (COUNTIF('DAILY_TASKS'!E5:E5000,"PENDING") / MAX(1, COUNTIFS('DAILY_TASKS'!E5:E5000, "<>N/A"))), "0%")` }]
     ];
     const opsWs = utils.aoa_to_sheet(opsData);
     opsWs['!cols'] = [{ wch: 35 }, { wch: 20 }];
     utils.book_append_sheet(wb, opsWs, "OPERATIONS_CENTER");
 
     // --- 03. SITE_CONFIGURATION ---
+    const facilityHeaders = item.id === 'hotels_and_resorts' 
+        ? ["Swimming Pool", "Gym & Spa", "Valet Parking", "Airport Shuttle", "Executive Lounge", "Banquet Hall", "Rooftop Bar", "Pet Friendly"]
+        : item.id === 'healthcare_and_hospital_operations'
+        ? ["OT", "ICU", "Pharmacy", "Diagnostics", "Biomedical Waste", "Medical Gas", "Ambulance"]
+        : ["Bar", "Delivery", "Bakery", "DriveThru", "Outdoor"];
+
     const setupHeaders = [
         { v: "BRANCH NAME", s: headerStyle },
         { v: "CITY / LOCATION", s: headerStyle },
-        { v: "STATUS", s: headerStyle }
+        { v: "STATUS", s: headerStyle },
+        ...facilityHeaders.map(h => ({ v: h.toUpperCase(), s: headerStyle }))
     ];
     const setupData: any[][] = [[], [], [], setupHeaders];
     ["Mumbai Main", "Pune Branch", "Site 3", "Site 4", "Site 5"].forEach(b => {
-        setupData.push([{ v: b, s: inputStyle }, { v: "City", s: inputStyle }, { v: "ACTIVE", s: inputStyle }]);
+        const row = [{ v: b, s: inputStyle }, { v: "City", s: inputStyle }, { v: "ACTIVE", s: inputStyle }];
+        facilityHeaders.forEach(() => row.push({ v: "YES", s: inputStyle }));
+        setupData.push(row);
     });
     const setupWs = utils.aoa_to_sheet(setupData);
-    setupWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 20 }];
-    addRibbon(setupWs, "Site Configuration", 'C');
+    setupWs['!cols'] = [{ wch: 30 }, { wch: 30 }, { wch: 15 }, ...facilityHeaders.map(() => ({ wch: 15 }))];
+    addRibbon(setupWs, "Site Configuration", utils.encode_col(setupHeaders.length - 1));
     utils.book_append_sheet(wb, setupWs, "SITE_CONFIGURATION");
 
     // --- 04. TEAM_HUB ---
     const roleTemplates: Record<string, string[]> = {
         'restaurants': ["General Manager", "Shift Manager", "Kitchen Lead", "Chef de Partie", "Commi Chef", "Steward/Server", "Cashier", "Bar Lead", "Housekeeping", "Security"],
         'hotels_and_resorts': ["General Manager", "Front Office Manager", "Receptionist", "Executive Housekeeper", "Room Attendant", "Chief Engineer", "Maintenance Tech", "F&B Manager", "Security Chief"],
-        'healthcare_and_hospital_operations': ["Medical Director", "Nursing Superintendent", "Ward Nurse", "OPD Manager", "Pharmacist", "Lab Technician", "Billing Lead", "Facility Manager", "Security Head", "Housekeeping Lead"],
+        'healthcare_and_hospital_operations': ["Medical Director", "Nursing Superintendent", "Ward Nurse", "OT In-charge", "Pharmacy Lead", "EHS Officer", "Quality Head", "OPD Manager", "Chief Engineer", "Security Chief", "Billing Manager", "HR Manager"],
         'school_operations_pack': ["Principal", "Admin Head", "Transport Lead", "School Nurse", "Lab Assistant", "Canteen Manager", "Security Chief"],
         'retail_operations_system': ["Store Manager", "Inventory Lead", "Visual Merch Lead", "Cashier Lead", "Security / LP", "Floor Supervisor"],
         'facility_management_blueprint': ["Facility Director", "Chief Engineer", "Soft FM Manager", "BMS Operator", "Safety Officer", "Accountant"],
@@ -184,7 +192,7 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
     const pData: any[][] = [[], [], [], tHeaders];
 
     for (let i = 0; i < 5; i++) {
-        const siteRef = `'SITE_CONFIGURATION'!A${5 + i}`;
+        const siteRef = `SITE_CONFIGURATION!A${5 + i}`;
         activeRoles.forEach(role => {
             const rIdx = pData.length + 1;
             pData.push([
@@ -222,17 +230,23 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
     ];
     const mData: any[][] = [[], [], [], lHeaders];
     
-    let packChecklists: Checklist[] = [];
-    if ('checklists' in item) { packChecklists = item.checklists; }
-
-    packChecklists.forEach(c => {
+    item.checklists.forEach(c => {
         c.tasks.forEach((t) => {
             const rIdx = mData.length + 1;
-            const branchRef = `'SITE_CONFIGURATION'!A5`;
+            const branchRef = `SITE_CONFIGURATION!A5`;
             const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & B${rIdx}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
             
+            // Module Switchboard Logic
+            const modTag = t.id.split('-')[1]; // E.g., HR-ENG-01 -> ENG
+            const modMap: Record<string, number> = {
+                'POOL': 4, 'GYM': 5, 'VALET': 6, 'SHUT': 7, 'LOUNGE': 8, 'BANQ': 9, 'BAR': 10, 'PET': 11,
+                'OT': 4, 'ICU': 5, 'PHM': 6, 'LAB': 7, 'WST': 8, 'GAS': 9, 'AMB': 10
+            };
+            const colIdx = modMap[modTag] || -1;
+            const moduleFormula = colIdx > 0 ? `INDEX('SITE_CONFIGURATION'!$D$5:$K$5, 1, ${colIdx-3})` : `"YES"`;
+
             const isRoutine = t.priority === 'Low';
-            const statusFormula = `IF(J${rIdx}="Low", IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETED", "PENDING"))`;
+            const statusFormula = `IF(${moduleFormula}="NO", "N/A", IF(J${rIdx}="Low", IF(LEN(TRIM(F${rIdx}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM(F${rIdx}))>0, LEN(TRIM(G${rIdx}))>0), "COMPLETED", "PENDING")))`;
 
             mData.push([
                 { t: 'f', f: branchRef, s: dataStyleCenter }, 
@@ -256,21 +270,8 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
 
     const mWs = utils.aoa_to_sheet(mData);
     mWs['!cols'] = [
-        { wch: 15 }, // Branch
-        { wch: 25 }, // Role
-        { wch: 55 }, // Task
-        { wch: 20 }, // Assigned To
-        { wch: 15 }, // Status
-        { wch: 15 }, // Done By
-        { wch: 15 }, // Verified By
-        { wch: 40 }, // If Missed
-        { wch: 45 }, // Instructions
-        { wch: 0, hidden: true }, // Priority
-        { wch: 0, hidden: true }, // Freq
-        { wch: 0, hidden: true }, // Module
-        { wch: 0, hidden: true }, // Type
-        { wch: 0, hidden: true }, // Flag
-        { wch: 0, hidden: true }  // Score
+        { wch: 15 }, { wch: 25 }, { wch: 55 }, { wch: 20 }, { wch: 15 }, { wch: 15 }, { wch: 15 }, { wch: 40 }, { wch: 45 },
+        { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }
     ];
     addRibbon(mWs, "Daily Execution Ledger", 'I');
     utils.book_append_sheet(wb, mWs, "DAILY_TASKS");
@@ -285,13 +286,13 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
         { v: "If missed", s: headerStyle }
     ];
     const sData: any[][] = [[], [], [], sHeaders];
-    packChecklists.forEach(c => {
+    item.checklists.forEach(c => {
         c.tasks.forEach(t => {
             sData.push([
                 { v: c.role, s: dataStyleCenter },
                 { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
-                { v: `Prevents loss of control and inconsistent standards across shifts.`, s: dataStyleLeft },
-                { v: t.description || t.floorAction || "Follow floor-level protocol.", s: dataStyleLeft },
+                { v: `Prevents operational drift and maintains institutional standard.`, s: dataStyleLeft },
+                { v: t.description || t.floorAction || "Follow standard procedure.", s: dataStyleLeft },
                 { v: t.proof || "Verify entry in the daily shift ledger.", s: instructionStyle },
                 { v: `[Risk: ${t.consequence}]`, s: riskStyle }
             ]);
@@ -321,9 +322,6 @@ export const handleDownload = (item: PremiumPack, type: 'pack' | 'individual') =
     iWs['!cols'] = [{ wch: 15 }, { wch: 20 }, { wch: 25 }, { wch: 15 }, { wch: 20 }, { wch: 20 }, { wch: 15 }, { wch: 40 }];
     addRibbon(iWs, "Incident Registry", 'H');
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
-
-    const orderedNames = ["START_HERE", "OPERATIONS_CENTER", "SITE_CONFIGURATION", "TEAM_HUB", "DAILY_TASKS", "SOP_LIBRARY", "INCIDENT_LOG"];
-    wb.SheetNames = orderedNames.filter(name => wb.SheetNames.includes(name));
 
     writeFile(wb, `${item.title.replace(/ /g, '_')}_Master.xlsx`);
 }

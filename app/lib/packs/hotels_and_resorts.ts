@@ -37,8 +37,8 @@ export const hotels_and_resorts: PremiumPack = {
             summary: "High-level property command, financial reconciliation, and risk oversight.",
             icon: "crown",
             tasks: [
-                { id: "HR-GM-01", description: "Verify previous day's revenue against bank deposit slips.", priority: "High", riskLevel: "High", consequence: "Undetected internal theft and revenue leakage.", proof: "Bank Reconcile Note" },
-                { id: "HR-GM-02", description: "Review all 'Red' flags in the incident tracker from the night shift.", priority: "High", riskLevel: "High", consequence: "Escalated legal liability and unresolved safety risks.", proof: "Incident Log Audit" },
+                { id: "HR-GM-01", description: "Match previous day's revenue against bank deposit slips.", priority: "High", riskLevel: "High", consequence: "Undetected internal theft and revenue leakage.", proof: "Bank Reconcile Note" },
+                { id: "HR-GM-02", description: "Review all high-priority alerts from the night shift incident log.", priority: "High", riskLevel: "High", consequence: "Escalated legal liability and unresolved safety risks.", proof: "Incident Log Audit" },
                 { id: "HR-GM-03", description: "Hold morning team huddle to align on VIP arrivals and group events.", priority: "High", riskLevel: "Low", consequence: "Disconnected service delivery and VIP neglect.", proof: "Briefing Log" },
                 { id: "HR-GM-04", description: "Verify Fire NOC and Liquor licenses are current and displayed.", priority: "High", riskLevel: "High", consequence: "Government shutdown of premises.", proof: "License Registry" },
                 { id: "HR-GM-05", description: "Audit night audit variance report for unauthorized discounts.", priority: "Medium", riskLevel: "Medium", consequence: "Margin erosion through staff fraud.", proof: "Audit Report" },
@@ -55,11 +55,11 @@ export const hotels_and_resorts: PremiumPack = {
             ]
         },
         {
-            title: "Lobby & Front Office Command",
+            title: "Front Office Command",
             department: "Front Office",
             frequency: "Daily",
             role: "Front Office Manager",
-            summary: "Command for the arrival infrastructure and guest legal compliance.",
+            summary: "Command for arrival infrastructure and guest compliance.",
             icon: "concierge-bell",
             tasks: [
                 { id: "HR-FOM-01", description: "Verify all arrivals against booking system (PMS vs Channel Manager).", priority: "High", riskLevel: "Medium", consequence: "Overbooking and forced guest relocation.", proof: "System Reconcile" },
@@ -80,7 +80,7 @@ export const hotels_and_resorts: PremiumPack = {
             ]
         },
         {
-            title: "Guest Arrivals & Registration",
+            title: "Guest Registration",
             department: "Front Office",
             frequency: "Daily",
             role: "Receptionist",
@@ -105,7 +105,7 @@ export const hotels_and_resorts: PremiumPack = {
             ]
         },
         {
-            title: "Sanitation & Quality Standards",
+            title: "Quality Standards",
             department: "Housekeeping",
             frequency: "Daily",
             role: "Executive Housekeeper",
@@ -130,11 +130,11 @@ export const hotels_and_resorts: PremiumPack = {
             ]
         },
         {
-            title: "Room Readiness & Maintenance",
+            title: "Room Readiness",
             department: "Housekeeping",
             frequency: "Daily",
             role: "Room Attendant",
-            summary: "Tactical floor execution for the guest's private zone.",
+            summary: "Tactical floor execution for the guest zone.",
             icon: "bed",
             tasks: [
                 { id: "HR-RA-01", description: "Check all lights and bulbs in the guest room.", priority: "Medium", riskLevel: "Low", consequence: "Guest discomfort.", proof: "Visual Check" },
@@ -155,103 +155,68 @@ export const hotels_and_resorts: PremiumPack = {
             ]
         },
         {
-            title: "Infrastructure Uptime (MEP)",
+            title: "Infrastructure Uptime",
             department: "Engineering",
             frequency: "Daily",
             role: "Chief Engineer",
-            summary: "Governance for the property backbone and energy assets.",
+            summary: "Governance for the property backbone.",
             icon: "wrench",
             tasks: [
-                { id: "HR-ENG-01", description: "Emergency Power Readiness: Check DG fuel and ARD battery.", priority: "High", riskLevel: "High", consequence: "Total facility blackout.", proof: "Fuel Log" },
-                { id: "HR-ENG-02", description: "Chiller Vitals: Log discharge temp and monitor BMS setpoints.", priority: "High", riskLevel: "Medium", consequence: "Guest heat discomfort.", proof: "BMS Reading" },
-                { id: "HR-ENG-03", description: "Water Purity: Verify output TDS from RO/STP (Target < 150).", priority: "High", riskLevel: "High", consequence: "Health risk and plumbing damage.", proof: "TDS Reading" },
-                { id: "HR-ENG-04", description: "Fire Pump Logic: Confirm main fire pumps in 'AUTO' mode.", priority: "High", riskLevel: "High", consequence: "Zero firefighting capability.", proof: "Gauge Log" },
-                { id: "HR-ENG-05", description: "Utility Vitals Sync: Log main KWH meter reading at 12 AM.", priority: "Medium", riskLevel: "Low", consequence: "Unmonitored energy spikes.", proof: "Meter Log" },
-                { id: "HR-ENG-06", description: "Electrical Panel Heat Scan: Infrared scan of high-load server panels.", priority: "High", riskLevel: "High", consequence: "Electrical fire and system crash.", proof: "Panel Log" },
-                { id: "HR-ENG-07", description: "Boiler Safety: Check pressure-relief valves and gas supply.", priority: "High", riskLevel: "High", consequence: "Explosion / Hot water failure.", proof: "Safety Log" },
-                { id: "HR-ENG-08", description: "Lift Emergency Comms: Test intercom from car to Security.", priority: "High", riskLevel: "High", consequence: "Guest trapped without help.", proof: "Dial Test" },
-                { id: "HR-ENG-09", description: "LOTO Enforcement: Verify lockout for all active repairs.", priority: "High", riskLevel: "High", consequence: "Fatal maintenance accidents.", proof: "Permit Registry" },
-                { id: "HR-ENG-10", description: "PPM Overdue Triage: Identify machines missing monthly service.", priority: "Medium", riskLevel: "Medium", consequence: "Asset life reduction.", proof: "Overdue Report" },
-                { id: "HR-ENG-11", description: "Kitchen Gas Sniffer Test: Inspect joints for leaks.", priority: "High", riskLevel: "High", consequence: "Fire hazard.", proof: "Visual Audit" },
-                { id: "HR-ENG-12", description: "Plumbing Leak Patrol: Ceiling void inspection for leaks.", priority: "Medium", riskLevel: "Medium", consequence: "Mould and structural damage.", proof: "Walkthrough" },
-                { id: "HR-ENG-13", description: "UPS Load Testing: Verify server-room battery run-time.", priority: "High", riskLevel: "High", consequence: "Data loss during power flip.", proof: "Voltage Log" },
-                { id: "HR-ENG-14", description: "BMS Panel Health: Check for active alarms/faults.", priority: "High", riskLevel: "Medium", consequence: "Unit failure.", proof: "System Screen" },
-                { id: "HR-ENG-15", description: "Final Engineering closure sign-off.", priority: "High", riskLevel: "Low", consequence: "Unmonitored asset decay.", proof: "Signed Log" }
+                { id: "HR-ENG-01", description: "Inspect backup generator (DG) fuel and ARD battery levels.", priority: "High", riskLevel: "High", consequence: "Total facility blackout.", proof: "Fuel Log" },
+                { id: "HR-ENG-02", description: "Log HVAC chiller discharge temp and monitor BMS setpoints.", priority: "High", riskLevel: "Medium", consequence: "Guest heat discomfort.", proof: "BMS Reading" },
+                { id: "HR-ENG-03", description: "Verify output TDS from RO/STP plants (Target < 150).", priority: "High", riskLevel: "High", consequence: "Health risk and plumbing damage.", proof: "TDS Reading" },
+                { id: "HR-ENG-04", description: "Confirm main fire pumps are in 'AUTO' mode.", priority: "High", riskLevel: "High", consequence: "Zero firefighting capability.", proof: "Gauge Log" },
+                { id: "HR-ENG-05", description: "Log main KWH meter reading at 12 AM.", priority: "Medium", riskLevel: "Low", consequence: "Unmonitored energy spikes.", proof: "Meter Log" },
+                { id: "HR-ENG-06", description: "Infrared scan of high-load electrical server panels.", priority: "High", riskLevel: "High", consequence: "Electrical fire and system crash.", proof: "Panel Log" },
+                { id: "HR-ENG-07", description: "Check boiler safety valves and gas supply integrity.", priority: "High", riskLevel: "High", consequence: "Explosion / Hot water failure.", proof: "Safety Log" },
+                { id: "HR-ENG-08", description: "Test lift intercom buttons from car to Security desk.", priority: "High", riskLevel: "High", consequence: "Guest trapped without help.", proof: "Dial Test" },
+                { id: "HR-ENG-09", description: "Verify LOTO (Lock-out Tag-out) for all active repairs.", priority: "High", riskLevel: "High", consequence: "Fatal maintenance accidents.", proof: "Permit Registry" },
+                { id: "HR-ENG-10", description: "Identify machines missing monthly PPM service.", priority: "Medium", riskLevel: "Medium", consequence: "Asset life reduction.", proof: "Overdue Report" }
             ]
         },
         {
-            title: "Equipment & Technical Vitals",
+            title: "Equipment Vitals",
             department: "Engineering",
             frequency: "Daily",
             role: "Maintenance Tech",
-            summary: "Floor-level maintenance and breakdown response.",
+            summary: "Tactical Response and breakdown support.",
             icon: "settings",
             tasks: [
-                { id: "HR-TEC-01", description: "Pool Vitals: Log pH and Chlorine (Target pH 7.4).", priority: "High", riskLevel: "High", consequence: "Pool infection risk and closure.", proof: "Water Log" },
-                { id: "HR-TEC-02", description: "Lighting Scan: Replace bulbs in 5 lobby/porch nodes.", priority: "Low", riskLevel: "Low", consequence: "Poor ambiance.", proof: "Visual Check" },
-                { id: "HR-TEC-03", description: "Escalator Auto-Stop: Test safety sensor functionality.", priority: "High", riskLevel: "High", consequence: "Serious passenger injury.", proof: "Test Note" },
-                { id: "HR-TEC-04", description: "Sewer Line Trace: Check for signs of backup or odor.", priority: "High", riskLevel: "Medium", consequence: "Ground floor flood and odors.", proof: "Walkthrough" },
-                { id: "HR-TEC-05", description: "Filter Cleaning: Deep clean 2 AC filters on rotation.", priority: "Medium", riskLevel: "Low", consequence: "Reduced unit efficiency.", proof: "Rotation Log" },
-                { id: "HR-TEC-06", description: "Grease Trap: Verify kitchen grease trap cleared.", priority: "High", riskLevel: "High", consequence: "Clogging and health violation.", proof: "Cleaning Note" },
-                { id: "HR-TEC-07", description: "Door-Lock Battery: Check low-battery alerts in PMS.", priority: "Medium", riskLevel: "Low", consequence: "Guest lockout at night.", proof: "System Report" },
-                { id: "HR-TEC-08", description: "Safe Reset: Verify master-key availability for safes.", priority: "Medium", riskLevel: "Low", consequence: "Service delay for guest belongings.", proof: "Locker Audit" },
-                { id: "HR-TEC-09", description: "Pump Noise: Check for bearing vibration in main pump.", priority: "Medium", riskLevel: "High", consequence: "Sudden motor seizure.", proof: "Audit Note" },
-                { id: "HR-TEC-10", description: "Gym Cable Wear: Inspect 5 random weight machines.", priority: "High", riskLevel: "High", consequence: "Injury to guests.", proof: "Checklist Sign-off" },
-                { id: "HR-TEC-11", description: "O2 Cylinder: Check backup O2 level in Medical Room.", priority: "High", riskLevel: "High", consequence: "Rescue failure.", proof: "Gauge Log" },
-                { id: "HR-TEC-12", description: "Roof Drain: Clear leaves from rain-water drains.", priority: "High", riskLevel: "Medium", consequence: "Flooding / Ceiling leaks.", proof: "Visual Audit" },
-                { id: "HR-TEC-13", description: "Water Meter: Reconcile tanker delivery notes.", priority: "High", riskLevel: "Low", consequence: "Paying for missing water.", proof: "Invoice Match" },
-                { id: "HR-TEC-14", description: "Toolbox Integrity: Inventory count of assigned tools.", priority: "Low", riskLevel: "Low", consequence: "Tool loss and job delays.", proof: "Stock Sheet" },
-                { id: "HR-TEC-15", description: "Final Tech Handover initials.", priority: "High", riskLevel: "Low", consequence: "Unattended repairs.", proof: "Signed Note" }
+                { id: "HR-TEC-01", description: "Log pool pH and Chlorine levels every 4 hours.", priority: "High", riskLevel: "High", consequence: "Pool infection risk and closure.", proof: "Water Log" },
+                { id: "HR-TEC-02", description: "Replace burnt-out bulbs in lobby and porch nodes.", priority: "Low", riskLevel: "Low", consequence: "Poor ambiance.", proof: "Visual Check" },
+                { id: "HR-TEC-03", description: "Test escalator auto-stop safety sensors.", priority: "High", riskLevel: "High", consequence: "Passenger injury.", proof: "Test Note" },
+                { id: "HR-TEC-04", description: "Check sewer lines for signs of backup or odor.", priority: "High", riskLevel: "Medium", consequence: "Ground floor flooding.", proof: "Walkthrough" },
+                { id: "HR-TEC-05", description: "Deep clean AC filters on the rotating monthly schedule.", priority: "Medium", riskLevel: "Low", consequence: "Reduced cooling efficiency.", proof: "Rotation Log" }
             ]
         },
         {
-            title: "Dining, Room Service & Bar",
+            title: "Dining & Bar Standards",
             department: "F&B",
             frequency: "Daily",
             role: "F&B Manager",
-            summary: "Governance for food quality, margin protection, and hygiene.",
+            summary: "Product quality and margin protection.",
             icon: "hand-platter",
             tasks: [
-                { id: "HR-FBM-01", description: "HACCP Vitals: Log temperatures for 100% of fridges.", priority: "High", riskLevel: "High", consequence: "Mass food poisoning and reputation loss.", proof: "Temp Log" },
-                { id: "HR-FBM-02", description: "Bar Inventory: Physically count top-shelf spirits.", priority: "High", riskLevel: "High", consequence: "Internal revenue theft.", proof: "Count Sheet" },
-                { id: "HR-FBM-03", description: "Void Authorization: Sign off on 100% of deleted bills.", priority: "High", riskLevel: "High", consequence: "Cashier-driven fraud.", proof: "POS Audit" },
-                { id: "HR-FBM-04", description: "Cutlery Polish: Spot check 10 forks for smudges.", priority: "Low", riskLevel: "Low", consequence: "Luxury brand dilution.", proof: "Sample Check" },
-                { id: "HR-FBM-05", description: "Room Service TAT: Monitor time from order to delivery.", priority: "Medium", riskLevel: "Low", consequence: "Guest hunger and cold food reviews.", proof: "TAT Dashboard" },
-                { id: "HR-FBM-06", description: "Allergen Training: Quiz 2 staff on 'Nut-Free' protocols.", priority: "High", riskLevel: "High", consequence: "Fatal guest allergic reaction.", proof: "Quiz Note" },
-                { id: "HR-FBM-07", description: "Dining Music/Scent: Verify ambiance matches brand.", priority: "Medium", riskLevel: "Low", consequence: "Inconsistent atmosphere.", proof: "Daily Log" },
-                { id: "HR-FBM-08", description: "C Form Compliance: Verify FSSAI license is visible.", priority: "High", riskLevel: "High", consequence: "Regulatory shutdown.", proof: "Photo" },
-                { id: "HR-FBM-09", description: "Staff Grooming: Inspect F&B uniforms and ID badges.", priority: "Low", riskLevel: "Low", consequence: "Professional image drop.", proof: "Briefing Log" },
-                { id: "HR-FBM-10", description: "Stockout Alert: Check for '86' items on menu.", priority: "High", riskLevel: "Low", consequence: "Guest disappointment.", proof: "Menu Check" },
-                { id: "HR-FBM-11", description: "Alcohol License: Verify daily excise log is current.", priority: "High", riskLevel: "High", consequence: "Liquor license cancellation.", proof: "Excise Log" },
-                { id: "HR-FBM-12", description: "Guest Wi-Fi: Test speed in restaurant area.", priority: "Low", riskLevel: "Low", consequence: "Negative reviews.", proof: "Speed Test" },
-                { id: "HR-FBM-13", description: "Closing Gas Check: Witness witnessed seal of valves.", priority: "High", riskLevel: "High", consequence: "Fire.", proof: "Signed Log" },
-                { id: "HR-FBM-14", description: "Uniform Laundry: Verify par levels of clean aprons.", priority: "Low", riskLevel: "Low", consequence: "Dirty staff appearance.", proof: "Stock Sheet" },
-                { id: "HR-FBM-15", description: "Final F&B command sign-off.", priority: "High", riskLevel: "Low", consequence: "Loss of control.", proof: "Signed Summary" }
+                { id: "HR-FBM-01", description: "Log temperatures for all food storage refrigerators.", priority: "High", riskLevel: "High", consequence: "Mass food poisoning outbreak.", proof: "Temp Log" },
+                { id: "HR-FBM-02", description: "Physically count top-shelf spirits in the bar safe.", priority: "High", riskLevel: "High", consequence: "Internal revenue theft.", proof: "Count Sheet" },
+                { id: "HR-FBM-03", description: "Sign off on 100% of voided/deleted bills for the shift.", priority: "High", riskLevel: "High", consequence: "Cashier fraud.", proof: "POS Audit" },
+                { id: "HR-FBM-04", description: "Spot check 10 forks for smudges or water spots.", priority: "Low", riskLevel: "Low", consequence: "Luxury brand dilution.", proof: "Sample Check" },
+                { id: "HR-FBM-05", description: "Monitor room service TAT from order to door.", priority: "Medium", riskLevel: "Low", consequence: "Cold food complaints.", proof: "TAT Dashboard" }
             ]
         },
         {
-            title: "Perimeter & Public Safety",
+            title: "Perimeter Safety",
             department: "Security",
             frequency: "Daily",
             role: "Security Chief",
-            summary: "Hardens the property perimeter and life-safety protocols.",
+            summary: "Hardens the perimeter and protects life safety.",
             icon: "shield-check",
             tasks: [
-                { id: "HR-SEC-01", description: "CCTV Sync: Verify 30-day backup and time-sync.", priority: "High", riskLevel: "High", consequence: "Loss of evidence for theft or lawsuits.", proof: "System Screen" },
-                { id: "HR-SEC-02", description: "Visitor ID: Audit register for 100% ID verification.", priority: "High", riskLevel: "High", consequence: "Unauthorized person access.", proof: "Registry Audit" },
-                { id: "HR-SEC-03", description: "Fire Exit: Verify all escapes are unlocked and clear.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment (Never-event).", proof: "Patrol Log" },
-                { id: "HR-SEC-04", description: "Guard Sobriety: Random alcohol check for night shift.", priority: "High", riskLevel: "High", consequence: "Vulnerable venue perimeter.", proof: "Test Note" },
-                { id: "HR-SEC-05", description: "Panic Button: Test desk and vault alarm buttons.", priority: "High", riskLevel: "High", consequence: "No response during crisis.", proof: "Test Log" },
-                { id: "HR-SEC-06", description: "Parking Perimeter: Inspect all external alley doors.", priority: "High", riskLevel: "High", consequence: "Unauthorized entry.", proof: "Visual Audit" },
-                { id: "HR-SEC-07", description: "Staff Bag-Check: Execute random exit checks.", priority: "High", riskLevel: "High", consequence: "Internal shrinkage leakage.", proof: "Registry Note" },
-                { id: "HR-SEC-08", description: "Perimeter Lighting: Verify all night lighting is ON.", priority: "Medium", riskLevel: "Low", consequence: "Theft-prone blind spots.", proof: "Walkthrough" },
-                { id: "HR-SEC-09", description: "POSH Policy: Confirm policy is posted in staff room.", priority: "High", riskLevel: "High", consequence: "Legal liability.", proof: "Photo" },
-                { id: "HR-SEC-10", description: "Fire Gauge: Confirm needle is in GREEN zone.", priority: "High", riskLevel: "High", consequence: "No firefighting capability.", proof: "Gauge Log" },
-                { id: "HR-SEC-11", description: "Valet Log: Verify keys match parking tickets.", priority: "Medium", riskLevel: "Medium", consequence: "Lost guest vehicle keys.", proof: "Key Count" },
-                { id: "HR-SEC-12", description: "Patrol Frequency: Audit logs for 2-hour cycles.", priority: "Low", riskLevel: "Low", consequence: "Undetected intrusion.", proof: "Audit Sheet" },
-                { id: "HR-SEC-13", description: "Staff Entry ID: Verify 100% badge compliance.", priority: "Medium", riskLevel: "Low", consequence: "Unknown persons on property.", proof: "Briefing Log" },
-                { id: "HR-SEC-14", description: "Wet-Floor Signage: Confirm signage use during rain.", priority: "High", riskLevel: "High", consequence: "Liability lawsuit.", proof: "Visual Check" },
-                { id: "HR-SEC-15", description: "Final Perimeter Seal initials.", priority: "High", riskLevel: "Low", consequence: "Unsecured property.", proof: "Signed Summary" }
+                { id: "HR-SEC-01", description: "Verify 30-day CCTV backup and time-sync status.", priority: "High", riskLevel: "High", consequence: "Loss of evidence for lawsuits.", proof: "System Screen" },
+                { id: "HR-SEC-02", description: "Audit visitor register for 100% ID capture.", priority: "High", riskLevel: "High", consequence: "Unauthorized intruder access.", proof: "Registry Audit" },
+                { id: "HR-SEC-03", description: "Verify all fire exits are unlocked and path is clear.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment (Never-event).", proof: "Patrol Log" },
+                { id: "HR-SEC-04", description: "Random alcohol breathalyzer check for night shift.", priority: "High", riskLevel: "High", consequence: "Vulnerable perimeter.", proof: "Test Note" },
+                { id: "HR-SEC-05", description: "Test panic buttons in the vault and reception.", priority: "High", riskLevel: "High", consequence: "Rescue failure.", proof: "Test Log" }
             ]
         }
     ]
