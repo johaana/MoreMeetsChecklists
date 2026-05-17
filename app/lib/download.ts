@@ -137,7 +137,7 @@ export const handleDownload = (item: PremiumPack) => {
         [],
         [{ v: "PENDING TASKS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIFS('DAILY_TASKS'!E5:E5000, "PENDING")` }],
         [{ v: "OPEN INCIDENTS:", s: { font: { bold: true } } }, { t: 'f', f: `COUNTIF('INCIDENT_LOG'!G5:G500, "OPEN")` }],
-        [{ v: "COMPLIANCE SCORE:", s: { font: { bold: true } } }, { t: 'f', f: `TEXT(1 - (COUNTIF('DAILY_TASKS'!E5:E5000,"PENDING") / MAX(1, COUNTIFS('DAILY_TASKS'!E5:E5000, "<>N/A"))), "0%")` }]
+        [{ v: "COMPLIANCE SCORE:", s: { font: { bold: true } } }, { t: 'f', f: `TEXT(1 - (COUNTIFS('DAILY_TASKS'!$E$5:$E$5000, "PENDING", 'DAILY_TASKS'!$C$5:$C$5000, "<>") / MAX(1, COUNTIFS('DAILY_TASKS'!$E$5:$E$5000, "<>N/A", 'DAILY_TASKS'!$C$5:$C$5000, "<>"))), "0%")` }]
     ];
     const opsWs = utils.aoa_to_sheet(opsData);
     opsWs['!cols'] = [{ wch: 35 }, { wch: 20 }];
@@ -172,11 +172,6 @@ export const handleDownload = (item: PremiumPack) => {
         'restaurants': ["General Manager", "Shift Manager", "Kitchen Lead", "Chef de Partie", "Commi Chef", "Steward/Server", "Cashier", "Bar Lead", "Housekeeping", "Security"],
         'hotels_and_resorts': ["General Manager", "Front Office Manager", "Receptionist", "Executive Housekeeper", "Room Attendant", "Chief Engineer", "Maintenance Tech", "F&B Manager", "Security Chief"],
         'healthcare_and_hospital_operations': ["Medical Director", "Nursing Superintendent", "Ward Nurse", "OT In-charge", "Pharmacy Lead", "EHS Officer", "Quality Head", "OPD Manager", "Chief Engineer", "Security Chief", "Billing Manager", "HR Manager"],
-        'school_operations_pack': ["Principal", "Admin Head", "Transport Lead", "School Nurse", "Lab Assistant", "Canteen Manager", "Security Chief"],
-        'retail_operations_system': ["Store Manager", "Inventory Lead", "Visual Merch Lead", "Cashier Lead", "Security / LP", "Floor Supervisor"],
-        'facility_management_blueprint': ["Facility Director", "Chief Engineer", "Soft FM Manager", "BMS Operator", "Safety Officer", "Accountant"],
-        'cinema_operations_pack': ["General Manager", "Projection Head", "Concession Lead", "Lobby Manager", "Floor Supervisor", "Safety Officer"],
-        'franchise_operations_pack': ["CEO / Franchisor", "Operations Head", "Regional Manager", "Expansion Lead", "Audit Manager", "Finance Controller"],
         'default': ["Manager", "Supervisor", "Lead", "Staff A", "Staff B", "Security", "Maintenance"]
     };
     const activeRoles = roleTemplates[item.id] || roleTemplates['default'];
@@ -192,7 +187,7 @@ export const handleDownload = (item: PremiumPack) => {
     const pData: any[][] = [[], [], [], tHeaders];
 
     for (let i = 0; i < 5; i++) {
-        const siteRef = `SITE_CONFIGURATION!A${5 + i}`;
+        const siteRef = `SITE_CONFIGURATION!$A$${5 + i}`;
         activeRoles.forEach(role => {
             const rIdx = pData.length + 1;
             pData.push([
@@ -233,7 +228,7 @@ export const handleDownload = (item: PremiumPack) => {
     item.checklists.forEach(c => {
         c.tasks.forEach((t) => {
             const rIdx = mData.length + 1;
-            const branchRef = `SITE_CONFIGURATION!A5`;
+            const branchRef = `SITE_CONFIGURATION!$A$5`;
             const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & B${rIdx}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
             
             // Module Switchboard Logic
