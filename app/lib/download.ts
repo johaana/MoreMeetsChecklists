@@ -7,9 +7,9 @@ import type { PremiumPack } from "@/lib/premium-packs";
 /**
  * MOREMEETS™ SOVEREIGN ENGINE - v17.3 PRODUCTION FREEZE
  * ----------------------------------------------------------------------------
- * 1. ROLE GROUPING: Injected 'Role Ribbons' into DAILY_TASKS for sectioning.
- * 2. ACTIONABLE UX: Left-aligned content, centered execution cells.
- * 3. REALISM: Balanced task density for human daily execution.
+ * 1. PURE TABULAR LEDGER: Removed synthetic 'Role Ribbons' for filter safety.
+ * 2. ALTERNATING BLOCKS: Visual grouping via role-based background tints.
+ * 3. ATOMIC DENSITY: Expanded task logic for deep industrial realism.
  * 4. HYGIENE: Normalized roles and zero-clipping dynamic heights.
  * ----------------------------------------------------------------------------
  */
@@ -55,7 +55,7 @@ export const handleDownload = (item: PremiumPack) => {
             TEXT_ACTION: "065F46", 
             TEXT_RISK: "991B1B",
             LOCKED_GREY: "F1F5F9",
-            RIBBON_BG: "F8FAFC"
+            BLOCK_ALT: "F8FAFC" // Soft grey for alternating role blocks
         };
 
         const baseFont = { name: 'Segoe UI', sz: 10 };
@@ -75,13 +75,6 @@ export const handleDownload = (item: PremiumPack) => {
             border: borderStyle
         };
 
-        const ribbonStyle = {
-            font: { ...baseFont, bold: true, color: { rgb: COLORS.HEADER_SLATE }, sz: 10, italic: true },
-            fill: { patternType: 'solid', fgColor: { rgb: COLORS.RIBBON_BG } },
-            alignment: { horizontal: 'left', ...vCenter },
-            border: borderStyle
-        };
-
         const headerStyle = {
             font: { ...baseFont, bold: true, color: { rgb: COLORS.WHITE }, sz: 9 },
             fill: { patternType: 'solid', fgColor: { rgb: COLORS.HEADER_SLATE } },
@@ -89,28 +82,14 @@ export const handleDownload = (item: PremiumPack) => {
             border: borderStyle
         };
 
-        const dataStyleLeft = { 
-            font: baseFont,
-            alignment: { horizontal: 'left', wrapText: true, ...vCenter },
-            border: borderStyle
-        };
-
-        const dataStyleCenter = {
-            font: baseFont,
-            alignment: { horizontal: 'center', ...vCenter },
-            border: borderStyle
-        };
-
-        const inputStyle = {
-            ...dataStyleCenter,
-            font: { ...baseFont, color: "000000", bold: true },
-            fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_YELLOW } }
-        };
-
-        const lockedStyle = {
-            ...dataStyleCenter,
-            fill: { patternType: 'solid', fgColor: { rgb: COLORS.LOCKED_GREY } },
-            font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED } }
+        const getStyles = (isAlt: boolean) => {
+            const fill = isAlt ? { patternType: 'solid', fgColor: { rgb: COLORS.BLOCK_ALT } } : undefined;
+            return {
+                left: { font: baseFont, fill, alignment: { horizontal: 'left', wrapText: true, ...vCenter }, border: borderStyle },
+                center: { font: baseFont, fill, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle },
+                input: { font: { ...baseFont, color: "000000", bold: true }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.INPUT_YELLOW } }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle },
+                locked: { font: { ...baseFont, color: { rgb: COLORS.TEXT_MUTED } }, fill: { patternType: 'solid', fgColor: { rgb: COLORS.LOCKED_GREY } }, alignment: { horizontal: 'center', ...vCenter }, border: borderStyle }
+            };
         };
 
         const addSheetHeader = (ws: WorkSheet, title: string, instruction: string, endCol: string = 'I') => {
@@ -136,7 +115,7 @@ export const handleDownload = (item: PremiumPack) => {
             [{ v: "STEP 2: ASSIGN TEAM", s: { font: { bold: true } } }, { v: "Open the [TEAM_HUB] tab to assign personnel names, phone numbers, and emails." }],
             [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open the [DAILY_TASKS] tab. Staff enter their initials when work is complete." }],
             [],
-            [{ v: "⚠️ SAMPLE DATA NOTICE", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
+            [{ v: "⚠️ SAMPLE DATA NOTICE", s: { font: { bold: true, color: { rgb: COLORS.TEXT_MUTED } } } }],
             [{ v: "Replace all YELLOW cells with your own local details to begin." }],
             [],
             [{ v: "NAVIGATION NOTICE:", s: { font: { bold: true } } }],
@@ -145,7 +124,6 @@ export const handleDownload = (item: PremiumPack) => {
         const startWs = utils.aoa_to_sheet(startData);
         startWs['!cols'] = [{ wch: 30 }, { wch: 80 }];
         startWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
-        startWs['!ref'] = utils.encode_range({ s: { c: 0, r: 0 }, e: { c: 1, r: 14 } });
         validateSheetName(TABS.START);
         utils.book_append_sheet(wb, startWs, TABS.START);
 
@@ -161,7 +139,6 @@ export const handleDownload = (item: PremiumPack) => {
         const dashWs = utils.aoa_to_sheet(dashData);
         dashWs['!cols'] = [{ wch: 30 }, { wch: 20 }];
         dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
-        dashWs['!ref'] = utils.encode_range({ s: { c: 0, r: 0 }, e: { c: 1, r: 10 } });
         validateSheetName(TABS.CONSOLE);
         utils.book_append_sheet(wb, dashWs, TABS.CONSOLE);
 
@@ -170,44 +147,37 @@ export const handleDownload = (item: PremiumPack) => {
         const branchData: any[][] = [[], [], branchHeaders];
         for (let i = 1; i <= 2; i++) {
             branchData.push([
-                { v: `Branch ${i} [REPLACE ME]`, s: inputStyle },
-                { v: "Location", s: inputStyle },
-                { v: "ACTIVE", s: inputStyle }
+                { v: `Branch ${i} [REPLACE ME]`, s: getStyles(false).input },
+                { v: "Location", s: getStyles(false).input },
+                { v: "ACTIVE", s: getStyles(false).input }
             ]);
         }
         const branchWs = utils.aoa_to_sheet(branchData);
         branchWs['!cols'] = [{ wch: 35 }, { wch: 25 }, { wch: 15 }];
         addSheetHeader(branchWs, TABS.SITE_CONFIG, "Define your locations. ⚠️ Replace yellow cells.", 'C');
-        branchWs['!ref'] = utils.encode_range({ s: { c: 0, r: 0 }, e: { c: 2, r: branchData.length - 1 } });
         validateSheetName(TABS.SITE_CONFIG);
         utils.book_append_sheet(wb, branchWs, TABS.SITE_CONFIG);
 
         // --- 04. TEAM_HUB ---
         const activeRoles = Array.from(new Set(item.checklists.map(c => c.role)));
-        const teamHeaders = [
-            { v: "BRANCH", s: headerStyle }, 
-            { v: "ROLE", s: headerStyle }, 
-            { v: "PERSONNEL NAME", s: headerStyle },
-            { v: "PHONE", s: headerStyle },
-            { v: "EMAIL", s: headerStyle }
-        ];
+        const teamHeaders = [{ v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "PERSONNEL NAME", s: headerStyle }, { v: "PHONE", s: headerStyle }, { v: "EMAIL", s: headerStyle }];
         const teamData: any[][] = [[], [], teamHeaders];
         for (let i = 0; i < 2; i++) {
             const bRef = `${TABS.SITE_CONFIG}!$A$${4 + i}`;
-            activeRoles.forEach(role => {
+            activeRoles.forEach((role, idx) => {
+                const styles = getStyles(idx % 2 === 1);
                 teamData.push([
-                    { t: 'f', f: `IFERROR(${bRef}, "")`, s: lockedStyle },
-                    { v: role, s: dataStyleLeft },
-                    { v: "[ENTER NAME]", s: inputStyle },
-                    { v: "[PHONE]", s: inputStyle },
-                    { v: "[EMAIL]", s: inputStyle }
+                    { t: 'f', f: `IFERROR(${bRef}, "")`, s: styles.center },
+                    { v: role, s: { ...styles.left, font: { ...baseFont, bold: true } } },
+                    { v: "[ENTER NAME]", s: styles.input },
+                    { v: "[PHONE]", s: styles.input },
+                    { v: "[EMAIL]", s: styles.input }
                 ]);
             });
         }
         const teamWs = utils.aoa_to_sheet(teamData);
         teamWs['!cols'] = [{ wch: 20 }, { wch: 30 }, { wch: 35 }, { wch: 20 }, { wch: 40 }];
         addSheetHeader(teamWs, TABS.TEAM_HUB, "Assign personnel to specific roles.", 'E');
-        teamWs['!ref'] = utils.encode_range({ s: { c: 0, r: 0 }, e: { c: 4, r: teamData.length - 1 } });
         validateSheetName(TABS.TEAM_HUB);
         utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
 
@@ -221,40 +191,29 @@ export const handleDownload = (item: PremiumPack) => {
         
         for (let b = 0; b < 2; b++) {
             const bRef = `${TABS.SITE_CONFIG}!$A$${4 + b}`;
-            activeRoles.forEach(role => {
-                // Injected Role Ribbon for UX Sectioning
-                taskData.push([
-                    { v: `BRANCH ${b+1} ▶ ${role.toUpperCase()}`, s: ribbonStyle },
-                    null, null, null, null, null, null, null, null
-                ]);
-                if (!taskData[taskData.length-1][0].v) return;
-                const mergeIdx = taskData.length - 1;
-                if (!wb.Workbook) wb.Workbook = { Sheets: [] };
-                
+            activeRoles.forEach((role, roleIdx) => {
                 const roleChecklist = item.checklists.find(c => c.role === role);
                 if (roleChecklist) {
                     roleChecklist.tasks.forEach(t => {
                         const rIdx = taskData.length + 1;
-                        const dBy = `$E${rIdx}`;
-                        const vBy = `$F${rIdx}`;
+                        const styles = getStyles(roleIdx % 2 === 1);
+                        const isV = t.verificationRequired === true;
 
                         const assignedFormula = `IFERROR(INDEX(${TABS.SYS_ENGINE}!$D$1:$D$500, MATCH(IFERROR(${bRef}, "") & "|" & "${role}", ${TABS.SYS_ENGINE}!$C$1:$C$500, 0)), "[UNASSIGNED]")`;
-                        
-                        const isV = t.verificationRequired === true;
                         const statusFormula = isV 
-                            ? `IF(AND(LEN(TRIM(${dBy}))>0, LEN(TRIM(${vBy}))>0), "COMPLETE", IF(LEN(TRIM(${dBy}))>0, "IN PROGRESS", "OPEN"))`
-                            : `IF(LEN(TRIM(${dBy}))>0, "COMPLETE", "OPEN")`;
+                            ? `IF(AND(LEN(TRIM($E${rIdx}))>0, LEN(TRIM($F${rIdx}))>0), "COMPLETE", IF(LEN(TRIM($E${rIdx}))>0, "IN PROGRESS", "OPEN"))`
+                            : `IF(LEN(TRIM($E${rIdx}))>0, "COMPLETE", "OPEN")`;
 
                         taskData.push([
-                            { t: 'f', f: `IFERROR(${bRef}, "")`, s: dataStyleLeft },
-                            { v: role, s: dataStyleLeft },
-                            { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
-                            { t: 'f', f: assignedFormula, s: dataStyleLeft },
-                            { v: "", s: inputStyle },
-                            { v: "", s: isV ? inputStyle : lockedStyle }, 
-                            { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true } } },
-                            { v: sanitizeRisk(t.consequence || "Compliance Gap"), s: { ...dataStyleLeft, font: { italic: true, color: { rgb: COLORS.TEXT_RISK } } } },
-                            { v: t.floorAction || t.description || "", s: { ...dataStyleLeft, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
+                            { t: 'f', f: `IFERROR(${bRef}, "")`, s: styles.left },
+                            { v: role, s: { ...styles.left, font: { ...baseFont, bold: true } } },
+                            { v: t.technicalProtocol || t.description, s: { ...styles.left, font: { bold: true } } },
+                            { t: 'f', f: assignedFormula, s: styles.left },
+                            { v: "", s: styles.input },
+                            { v: "", s: isV ? styles.input : styles.locked }, 
+                            { t: 'f', f: statusFormula, s: { ...styles.center, font: { bold: true } } },
+                            { v: sanitizeRisk(t.consequence || "Compliance Gap"), s: { ...styles.left, font: { italic: true, color: { rgb: COLORS.TEXT_RISK } } } },
+                            { v: t.floorAction || t.description || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
                         ]);
                     });
                 }
@@ -263,7 +222,6 @@ export const handleDownload = (item: PremiumPack) => {
         const taskWs = utils.aoa_to_sheet(taskData);
         taskWs['!cols'] = [20, 25, 45, 25, 15, 15, 15, 45, 65].map(w => ({ wch: w }));
         addSheetHeader(taskWs, TABS.DAILY_TASKS, "Update 'Done By' to complete daily work.", 'I');
-        taskWs['!ref'] = utils.encode_range({ s: { c: 0, r: 0 }, e: { c: 8, r: taskData.length - 1 } });
         validateSheetName(TABS.DAILY_TASKS);
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
@@ -272,17 +230,18 @@ export const handleDownload = (item: PremiumPack) => {
         const libData: any[][] = [[], [], libHeaders];
         const libRows: any[] = [{ hpt: 30 }, { hpt: 20 }, { hpt: 30 }];
 
-        item.checklists.forEach(c => {
+        item.checklists.forEach((c, cIdx) => {
             c.tasks.forEach(t => {
+                const styles = getStyles(cIdx % 2 === 1);
                 const txt = (t.technicalProtocol || "") + (t.floorAction || t.description || "");
                 const lines = Math.ceil(txt.length / 60);
                 libRows.push({ hpt: Math.max(35, lines * 18), customHeight: 1 });
 
                 libData.push([
-                    { v: c.role, s: dataStyleLeft },
-                    { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
-                    { v: sanitizeRisk(t.consequence || "Risk Mitigation"), s: dataStyleLeft },
-                    { v: t.floorAction || t.description || "", s: { ...dataStyleLeft, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
+                    { v: c.role, s: { ...styles.left, font: { ...baseFont, bold: true } } },
+                    { v: t.technicalProtocol || t.description, s: { ...styles.left, font: { bold: true } } },
+                    { v: sanitizeRisk(t.consequence || "Risk Mitigation"), s: styles.left },
+                    { v: t.floorAction || t.description || "", s: { ...styles.left, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
                 ]);
             });
         });
@@ -290,7 +249,6 @@ export const handleDownload = (item: PremiumPack) => {
         libWs['!cols'] = [{ wch: 30 }, { wch: 45 }, { wch: 45 }, { wch: 65 }];
         libWs['!rows'] = libRows;
         addSheetHeader(libWs, TABS.SOP_LIB, "Reference library for training and audits.", 'D');
-        libWs['!ref'] = utils.encode_range({ s: { c: 0, r: 0 }, e: { c: 3, r: libData.length - 1 } });
         validateSheetName(TABS.SOP_LIB);
         utils.book_append_sheet(wb, libWs, TABS.SOP_LIB);
 
@@ -309,11 +267,18 @@ export const handleDownload = (item: PremiumPack) => {
             });
         }
         const sysWs = utils.aoa_to_sheet(sysData);
-        sysWs['!ref'] = utils.encode_range({ s: { c: 0, r: 0 }, e: { c: 3, r: sysData.length - 1 } });
         validateSheetName(TABS.SYS_ENGINE);
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
         
-        // Hide SYS_ENGINE from tab bar
+        // Final Range Lock to prevent Row-60 truncation
+        [startWs, dashWs, branchWs, teamWs, taskWs, libWs, sysWs].forEach(ws => {
+            const range = utils.decode_range(ws['!ref'] || "A1:A1");
+            const dataRows = (ws as any)['!data'] ? (ws as any)['!data'].length : 100;
+            range.e.r = Math.max(range.e.r, dataRows + 10);
+            ws['!ref'] = utils.encode_range(range);
+        });
+
+        // Hide SYS_ENGINE
         const sIdx = wb.SheetNames.indexOf(TABS.SYS_ENGINE);
         if (!wb.Workbook) wb.Workbook = { Sheets: [] };
         wb.Workbook.Sheets[sIdx] = { Hidden: 1 };
