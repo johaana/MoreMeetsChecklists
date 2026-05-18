@@ -315,5 +315,13 @@ export const handleDownload = (item: PremiumPack) => {
     addRibbon(iWs, "Incident Registry", 'H');
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
+    // --- INTERNAL INFRASTRUCTURE (_SYS_ENGINE_) ---
+    const sysData: any[][] = [[{ v: "SOVEREIGN SYSTEM ENGINE - DO NOT MODIFY", s: headerStyle }]];
+    const sysWs = utils.aoa_to_sheet(sysData);
+    utils.book_append_sheet(wb, sysWs, "_SYS_ENGINE_");
+    const sysIdx = wb.SheetNames.indexOf("_SYS_ENGINE_");
+    if (!wb.Workbook.Sheets) wb.Workbook.Sheets = [];
+    wb.Workbook.Sheets[sysIdx] = { Hidden: 1 };
+
     writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v16.xlsx`);
 }
