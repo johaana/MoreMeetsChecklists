@@ -4,10 +4,11 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v16.1 HARDENED
+ * MOREMEETS™ SOVEREIGN ENGINE - v16.2 HARDENED
  * ----------------------------------------------------------------------------
- * 1. NAMED RANGE NAVIGATION: Normalized with '#' prefixes for Google Sheets.
- * 2. ROW-HEIGHT METADATA: Explicit !rows for SOP_LIBRARY to prevent clipping.
+ * 1. HYPERLINK ANCHORS: Converted to Direct Sheet Anchors (#'SHEET'!A1)
+ *    Reason: Google Sheets Mobile fails to resolve Named Range Relationships.
+ * 2. ROW-HEIGHT METADATA: Explicit !rows for SOP_LIBRARY (hpt: 65) to prevent clipping.
  * 3. VERIFICATION LOGIC: Handles single-signoff vs dual-signoff tasks.
  * 4. _SYS_ENGINE_ TAB: All helper keys and toggles moved to a hidden infrastructure sheet.
  * ----------------------------------------------------------------------------
@@ -16,8 +17,8 @@ import type { PremiumPack } from "@/lib/premium-packs";
 const sanitizeRisk = (text: string) => {
     if (!text) return "";
     return text
-        .replace(/\[?Risk:\s?\[?/gi, "") // Remove "[Risk: ", "Risk:", "[Risk:["
-        .replace(/\]/g, "")             // Remove all "]"
+        .replace(/\[?Risk:\s?\[?/gi, "") // Strip brackets and prefixes
+        .replace(/\]/g, "")             // Remove trailing brackets
         .trim();
 };
 
@@ -29,7 +30,7 @@ export const handleDownload = (item: PremiumPack) => {
 
     const wb = utils.book_new();
 
-    // v16.1 Named Range Registry
+    // Registry for Reference (Internal Use Only)
     wb.Workbook = {
         Names: [
             { Name: "NAV_HOME", Ref: "START_HERE!$A$1" },
@@ -126,7 +127,7 @@ export const handleDownload = (item: PremiumPack) => {
 
     const addRibbon = (ws: WorkSheet, title: string, endCol: string = 'I') => {
         const ribbonData = [
-            [{ v: "◀ BACK TO OPERATIONS CENTER", l: { Target: "#NAV_CONSOLE" }, s: navStyle }],
+            [{ v: "◀ BACK TO OPERATIONS CENTER", l: { Target: "#'OPERATIONS_CENTER'!A1" }, s: navStyle }],
             [{ v: `  ${title.toUpperCase()}`, s: { ...navStyle, font: { ...navStyle.font, sz: 18, color: { rgb: "FFFFFF" } } } }]
         ];
         utils.sheet_add_aoa(ws, ribbonData, { origin: "A1" });
@@ -144,14 +145,14 @@ export const handleDownload = (item: PremiumPack) => {
         [{ v: "WELCOME TO MOREMEETS™", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
         [{ v: "3-STEP OPERATIONAL SETUP", s: { font: { sz: 12, bold: true }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "STEP 1: CONFIGURE BRANCHES", s: { font: { bold: true } } }, { v: "Open SITE_CONFIGURATION to name branches and set active facilities.", l: { Target: "#NAV_CONFIG" } }],
-        [{ v: "STEP 2: ASSIGN PERSONNEL", s: { font: { bold: true } } }, { v: "Open TEAM_HUB to enter names for each role.", l: { Target: "#NAV_TEAM" } }],
-        [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin tracking execution.", l: { Target: "#NAV_TASKS" } }],
+        [{ v: "STEP 1: CONFIGURE BRANCHES", s: { font: { bold: true } } }, { v: "Open SITE_CONFIGURATION to name branches and set active facilities.", l: { Target: "#'SITE_CONFIGURATION'!A1" } }],
+        [{ v: "STEP 2: ASSIGN PERSONNEL", s: { font: { bold: true } } }, { v: "Open TEAM_HUB to enter names for each role.", l: { Target: "#'TEAM_HUB'!A1" } }],
+        [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin tracking execution.", l: { Target: "#'DAILY_TASKS'!A1" } }],
         [],
         [{ v: "CRITICAL PILOT INSTRUCTIONS", s: { font: { bold: true, color: { rgb: COLORS.CONSEQUENCE_RED } } } }],
         [{ v: "• DATE STANDARD: Use 'dd-mm-yyyy' for all completion logs.", s: { font: { italic: true } } }],
         [{ v: "• NO RENAMING: Do not rename tabs. This breaks internal formula logic.", s: { font: { italic: true } } }],
-        [{ v: "• NAMED RANGES: This system uses NAV_ ranges for robust import stability.", s: { font: { italic: true } } }],
+        [{ v: "• RELIABLE LINKS: Navigation uses hard sheet anchors for Google Sheets stability.", s: { font: { italic: true } } }],
         [{ v: "• LEGEND: YELLOW CELLS ARE USER INPUTS. GREY CELLS ARE AUTOMATED.", s: { font: { italic: true, color: { rgb: COLORS.METADATA_GREY } } } }]
     ];
     const startWs = utils.aoa_to_sheet(startData);
@@ -266,7 +267,7 @@ export const handleDownload = (item: PremiumPack) => {
                 const matchBranch = `MATCH(${branchRef}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
                 const toggleFormula = colIdx > 0 ? `IFERROR(INDEX('SITE_CONFIGURATION'!$A$5:$M$500, ${matchBranch}, ${colIdx}), "YES")` : "\"YES\"";
 
-                // Fix 2: Handle Single vs Dual sign-off
+                // Verification logic check
                 const needsVerification = t.priority === 'High' || t.riskLevel === 'High' || t.verificationRequired === true;
                 const statusFormula = needsVerification 
                     ? `IF(${toggleFormula}="NO", "N/A", IF(AND(LEN(TRIM(${lastDateRef}))>0, LEN(TRIM(${verifyRef}))>0), "COMPLETED", "PENDING"))`
@@ -279,7 +280,7 @@ export const handleDownload = (item: PremiumPack) => {
                     { t: 'f', f: assignmentFormula, s: dataStyleLeft },
                     { t: 'f', f: statusFormula, s: dataStyleCenter },
                     { v: "", s: inputStyle },
-                    { v: "", s: needsVerification ? inputStyle : greyStyle }, // Fix 2: Disable Verified By if not required
+                    { v: "", s: needsVerification ? inputStyle : greyStyle }, 
                     { v: sanitizeRisk(t.consequence || "Operational Gap"), s: riskStyle },
                     { v: t.floorAction || t.description || "", s: instructionStyle }
                 ]);
@@ -313,10 +314,10 @@ export const handleDownload = (item: PremiumPack) => {
     sWs['!cols'] = [{ wch: 25 }, { wch: 40 }, { wch: 45 }, { wch: 50 }, { wch: 45 }, { wch: 45 }];
     addRibbon(sWs, "Operational Handbook", 'F');
     
-    // Fix 1: Explicit Row Heights for SOP_LIBRARY to prevent Google Sheets clipping
+    // Explicit Row Heights for SOP_LIBRARY (v16.2 Hardened)
     const sRows = [{ hpt: 30 }, { hpt: 50 }, { hpt: 20 }, { hpt: 45 }];
     for(let i=0; i < sTaskCount; i++) {
-        sRows.push({ hpt: 65 }); // Data rows - high point for wrapped content
+        sRows.push({ hpt: 65 }); 
     }
     sWs['!rows'] = sRows;
     
@@ -339,5 +340,5 @@ export const handleDownload = (item: PremiumPack) => {
     if (!wb.Workbook.Sheets) wb.Workbook.Sheets = [];
     wb.Workbook.Sheets[sysIdx] = { Hidden: 1 };
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v16.1.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v16.2.xlsx`);
 }
