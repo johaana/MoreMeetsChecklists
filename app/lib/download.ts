@@ -5,7 +5,7 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v17.5 PRODUCTION BASELINE
+ * MOREMEETS™ SOVEREIGN ENGINE - v17.5.1 PRODUCTION LOCK
  * ----------------------------------------------------------------------------
  * 1. PURE TABULAR LEDGER: Minimalist, filterable high-density structure.
  * 2. ALTERNATING BLOCKS: Visual grouping via role-based background tints.
@@ -145,7 +145,8 @@ export const handleDownload = (item: PremiumPack) => {
         ];
         const dashWs = utils.aoa_to_sheet(dashData);
         dashWs['!cols'] = [{ wch: 30 }, { wch: 25 }, { wch: 20 }, { wch: 20 }];
-        dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
+        dashWs['!rows'] = [{ hpt: 30 }]; // Increased header height for vertical balance
+        dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }]; // Expanded merge for horizontal clearance
         validateSheetName(TABS.DASHBOARD);
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
