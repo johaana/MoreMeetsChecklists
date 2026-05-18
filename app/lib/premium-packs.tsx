@@ -23,6 +23,7 @@ export type Checklist = {
         department?: string;
         role?: string;
         frequency?: string;
+        verificationRequired?: boolean; // New v16.1 field
     }[];
 };
 
