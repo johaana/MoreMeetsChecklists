@@ -144,8 +144,8 @@ export const handleDownload = (item: PremiumPack) => {
             [{ v: "OPEN TASKS:", s: getStyles(false).left }, { t: 'f', f: `IFERROR(COUNTIF(${TABS.DAILY_TASKS}!$G$4:$G$5000, "OPEN"), 0)`, s: { ...baseFont, bold: true, alignment: { horizontal: 'right' } } }]
         ];
         const dashWs = utils.aoa_to_sheet(dashData);
-        dashWs['!cols'] = [{ wch: 30 }, { wch: 20 }];
-        dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
+        dashWs['!cols'] = [{ wch: 30 }, { wch: 25 }, { wch: 20 }, { wch: 20 }];
+        dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
         validateSheetName(TABS.DASHBOARD);
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
