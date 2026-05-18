@@ -7,7 +7,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
  * MOREMEETS™ SOVEREIGN ENGINE - v16.4 HARDENED
  * ----------------------------------------------------------------------------
  * 1. ZERO-GID NAVIGATION: Removed quotes from anchors (#SHEET!A1).
- * 2. DIMENSION RECALCULATION: Explicit !ref update for 60+ row survival.
+ * 2. DIMENSION RECALCULATION: Explicit !ref update for 1000+ row survival.
  * 3. DYNAMIC SOP HEIGHTS: Text-length based hpt estimation.
  * 4. WORKFLOW REORDER: inputs (E,F) -> output Status (G).
  * 5. METADATA SECURITY: Helper keys moved to SYS_ENGINE.
