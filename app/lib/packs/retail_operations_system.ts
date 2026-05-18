@@ -1,4 +1,3 @@
-
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const retail_operations_system: PremiumPack = {
@@ -10,9 +9,9 @@ export const retail_operations_system: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f4e6b12a-4422-48a0-a198-154332822a27',
     category: "Retail",
-    description: "The definitive Sovereign v15.0 engine for physical retail. Hardening 130 technical control points across Loss Prevention, Stock Integrity, and Metrology.",
+    description: "The definitive Sovereign v16.0 engine for physical retail. Hardening 130 technical control points across Loss Prevention, Stock Integrity, and Metrology.",
     icon: "shopping-bag",
-    badgeText: "V15.0 SOVEREIGN",
+    badgeText: "V16.0 SOVEREIGN",
     badgeVariant: "accent",
     whoIsItFor: ["Store Managers", "Inventory Leads", "Loss Prevention Directors", "Visual Merchandisers", "Regional Retail Managers"],
     sampleItems: [
@@ -29,84 +28,41 @@ export const retail_operations_system: PremiumPack = {
             summary: "High-level margin and compliance oversight.",
             icon: "crown",
             tasks: [
-                { id: "RT-EXE-01", description: "Witness and seal nightly cash drop bag for secure bank transit.", priority: "High", riskLevel: "High", consequence: "Untraceable internal revenue theft.", proof: "Seal Number Log" },
-                { id: "RT-EXE-02", description: "Audit 100% of 'Voided Bills' for valid reason codes and manager initials.", priority: "High", riskLevel: "High", consequence: "Theft masked as cashier mistakes.", proof: "Void Registry" },
-                { id: "RT-EXE-03", description: "Verify Legal Metrology certificates are valid for all weighing scales.", priority: "High", riskLevel: "Medium", consequence: "Store sealing and heavy government penalties.", proof: "Certificate File" },
-                { id: "RT-EXE-04", description: "Match physical cash-on-hand to POS X-Reading report at shift end.", priority: "High", riskLevel: "High", consequence: "Unidentified shortages and financial fraud.", proof: "Settlement Log" },
-                { id: "RT-EXE-05", description: "Audit staff payroll biometric logs against manual OT claims.", priority: "Medium", riskLevel: "Low", consequence: "Payroll leakage and fraudulent hours.", proof: "Match Note" },
-                { id: "RT-EXE-06", description: "Triage P1 facility breakdowns (AC/Shutter) not resolved in < 4h.", priority: "High", riskLevel: "Low", consequence: "Operational halt and guest attrition.", proof: "Incident Log" },
-                { id: "RT-EXE-07", description: "Review Mystery Shopper report and assign corrective actions.", priority: "Medium", riskLevel: "Low", consequence: "Slipping brand standards and poor ratings.", proof: "Action Plan" },
-                { id: "RT-EXE-08", description: "Verify 100% ID capture for high-value credit card transactions.", priority: "High", riskLevel: "High", consequence: "Chargeback losses and fraud liability.", proof: "Transaction Audit" },
-                { id: "RT-EXE-09", description: "Audit 'Store Credit' issuance against returned item condition.", priority: "Medium", riskLevel: "Low", consequence: "Revenue loss from processed 'junk' returns.", proof: "Return Log" },
-                { id: "RT-EXE-10", description: "Monitor 'Queue TAT' at billing; escalate if wait > 5 minutes.", priority: "Low", riskLevel: "Low", consequence: "Basket abandonment and guest rage.", proof: "Queue Log" },
-                { id: "RT-EXE-11", description: "Verify valid fire insurance and public liability policies.", priority: "High", riskLevel: "High", consequence: "Total financial ruin during catastrophic event.", proof: "Policy Registry" },
-                { id: "RT-EXE-12", description: "Review daily conversion rate variance vs footfall sensors.", priority: "Medium", riskLevel: "Low", consequence: "Poor store performance diagnostics.", proof: "KPI Dashboard" },
-                { id: "RT-EXE-13", description: "Verify availability of 'Store-Use' consumables inventory.", priority: "Low", riskLevel: "Low", consequence: "Operational friction on sales floor.", proof: "Stock Sheet" },
-                { id: "RT-EXE-14", description: "Audit vendor payment deadlines for high-LTV stockists.", priority: "Low", riskLevel: "Medium", consequence: "Stock supply halt.", proof: "Aging Report" },
-                { id: "RT-EXE-15", description: "Witness 'Manager Override' log for 5 random POS deletions.", priority: "High", riskLevel: "High", consequence: "Admin-level financial fraud.", proof: "Override Book" },
-                { id: "RT-EXE-16", description: "Check availability of mandatory labor-law posters in locker rooms.", priority: "Low", riskLevel: "Low", consequence: "Statutory non-compliance fines.", proof: "Photo" },
-                { id: "RT-EXE-17", description: "Conduct weekly briefing with HODs on margin protection.", priority: "Low", riskLevel: "Low", consequence: "Leadership disconnect from profit goals.", proof: "Briefing Log" },
-                { id: "RT-EXE-18", description: "Final management daily shift sign-off initials.", priority: "High", riskLevel: "Low", consequence: "Loss of administrative control.", proof: "Signed Summary" }
+                { id: "RT-EXE-01", description: "Witness cash drop; physically seal nightly collection bag and log unique seal number in ledger.", priority: "High", riskLevel: "High", consequence: "Untraceable internal revenue theft.", proof: "Seal Number Log" },
+                { id: "RT-EXE-02", description: "Void Bill Authorization: Audit 100% of deletions; verify manager ID login for each POS override.", priority: "High", riskLevel: "High", consequence: "Theft masked as cashier mistakes.", proof: "Void Registry" },
+                { id: "RT-EXE-03", description: "Verify statutory display; confirm 100% visibility of Legal Metrology certs and Fire NOC in lobby.", priority: "High", riskLevel: "Medium", consequence: "Store sealing and heavy government penalties.", proof: "Certificate File" },
+                { id: "RT-EXE-04", description: "Match physical cash-on-hand to POS X-Reading report at shift end; witness cashier reconciliation.", priority: "High", riskLevel: "High", consequence: "Unidentified shortages and financial fraud.", proof: "Settlement Log" },
+                { id: "RT-EXE-08", description: "Transaction Audit: Verify original ID capture for 100% of high-value (>₹20k) card payments.", priority: "High", riskLevel: "High", consequence: "Chargeback losses and fraud liability.", proof: "Transaction Audit" }
             ]
         },
         {
-            title: "Loss Prevention & Assets",
+            title: "Loss Prevention",
             department: "Security",
             frequency: "Daily",
             role: "Loss Prevention Lead",
             summary: "Hardens the store perimeter and prevents shrinkage.",
             icon: "shield-check",
             tasks: [
-                { id: "RT-SEC-01", description: "Test EAS gate sensitivity with an active security tag pre-opening.", priority: "High", riskLevel: "High", consequence: "Undetected tagged items leaving the premises.", proof: "Test Log" },
-                { id: "RT-SEC-02", description: "Conduct 'Fitting-Room Sweep' for discarded tags or concealment.", priority: "High", riskLevel: "High", consequence: "High-frequency boutique theft.", proof: "Patrol Log" },
-                { id: "RT-SEC-03", description: "Verify CCTV 30-day backup is active and recording correctly.", priority: "High", riskLevel: "High", consequence: "Loss of evidence for insurance or police claims.", proof: "System Screen" },
-                { id: "RT-SEC-04", description: "Perform random bag-checks for departing staff and vendors.", priority: "High", riskLevel: "Medium", consequence: "Systemic internal inventory shrinkage.", proof: "Registry Note" },
-                { id: "RT-SEC-05", description: "Audit 'Fake Return' patterns: check 5 random refund footages.", priority: "High", riskLevel: "High", consequence: "Internal collusion fraud at the till.", proof: "Footage Audit" },
-                { id: "RT-SEC-06", description: "Verify all external service/alley doors are locked post-8 PM.", priority: "High", riskLevel: "High", consequence: "Unauthorized intruder access to stockroom.", proof: "Visual Check" },
-                { id: "RT-SEC-07", description: "Test silent panic buttons to police or main security booth.", priority: "High", riskLevel: "High", consequence: "Zero response during armed robbery.", proof: "Signal Test" },
-                { id: "RT-SEC-08", description: "Audit 'Voided Bills' for valid cancellation codes and patterns.", priority: "High", riskLevel: "High", consequence: "Revenue theft at point-of-sale.", proof: "POS Report" },
-                { id: "RT-SEC-09", description: "Check status of 'Anti-Grab' tethers on high-value tech/demo.", priority: "High", riskLevel: "High", consequence: "Theft of premium merchandise.", proof: "Visual Check" },
-                { id: "RT-SEC-10", description: "Execute random guard sobriety check for night shift.", priority: "High", riskLevel: "High", consequence: "Vulnerable premises during night.", proof: "Test Note" },
-                { id: "RT-SEC-11", description: "Verify lock integrity on high-value jewelry/watch cases.", priority: "High", riskLevel: "High", consequence: "Smash-and-grab vulnerability.", proof: "Visual Check" },
-                { id: "RT-SEC-12", description: "Audit CCTV focal points: ensure zero 'blind spots' in trial areas.", priority: "High", riskLevel: "High", consequence: "Unmonitored concealment zones.", proof: "Monitor Check" },
-                { id: "RT-SEC-13", description: "Monitor 'Loading Bay' during stock arrival: witness seal breaks.", priority: "Medium", riskLevel: "High", consequence: "Bulk stock theft from transit.", proof: "Seal Registry" },
-                { id: "RT-SEC-14", description: "Check fire-exit path for cardboard box blockages.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment during crisis.", proof: "Patrol Log" },
-                { id: "RT-SEC-15", description: "Verify functional perimeter lighting in alleyways.", priority: "Medium", riskLevel: "Medium", consequence: "Theft-prone dark spots.", proof: "Walkthrough" },
-                { id: "RT-SEC-16", description: "Audit key cabinet: verify all master keys against register.", priority: "High", riskLevel: "High", consequence: "Unauthorized access to vault/office.", proof: "Inventory Check" },
-                { id: "RT-SEC-17", description: "Inspect 'Staff Locker' zone for unrecorded merchandise.", priority: "Medium", riskLevel: "Low", consequence: "Internal theft concealment.", proof: "Visual Audit" },
-                { id: "RT-SEC-18", description: "Verify functionality of convex mirrors in high-risk aisles.", priority: "Low", riskLevel: "Low", consequence: "Reduced detection of shoplifting.", proof: "Visual Check" },
-                { id: "RT-SEC-19", description: "Execute 2-min LP briefing with morning floor team.", priority: "Low", riskLevel: "Low", consequence: "Erosion of vigilance culture.", proof: "Briefing Log" },
-                { id: "RT-SEC-20", description: "Final nightly perimeter seal and alarm arming.", priority: "High", riskLevel: "Low", consequence: "Unsecured property.", proof: "Signed Summary" }
+                { id: "RT-SEC-01", description: "Test EAS gate sensitivity using active security tag; verify alarm sync and visual blinkers pre-opening.", priority: "High", riskLevel: "High", consequence: "Undetected tagged items leaving the premises.", proof: "Test Log" },
+                { id: "RT-FLR-01", description: "Fitting-Room Sweep: Check mirrors and vents for discarded tags or concealment signs every 60 mins.", priority: "High", riskLevel: "High", consequence: "High-frequency boutique theft.", proof: "Patrol Log" },
+                { id: "RT-SEC-03", description: "Verify CCTV 30-day backup is active and recording correctly; check timestamp sync.", priority: "High", riskLevel: "High", consequence: "Loss of evidence for insurance claims.", proof: "System Screen" },
+                { id: "RT-SEC-04", description: "Perform random bag-checks for departing staff and vendors; document 5 random checks at shift exit.", priority: "High", riskLevel: "Medium", consequence: "Systemic internal inventory shrinkage.", proof: "Registry Note" },
+                { id: "RT-SEC-05", description: "Fake Return Pattern: Audit 5 random refunds; cross-match customer ID signature with CCTV footage.", priority: "High", riskLevel: "High", consequence: "Internal collusion fraud at the till.", proof: "Footage Audit" },
+                { id: "RT-SEC-07", description: "Panic Button Test: Execute silent alarm trigger to control booth; verify response signal < 30s.", priority: "High", riskLevel: "High", consequence: "Zero response during armed robbery.", proof: "Signal Test" }
             ]
         },
         {
-            title: "Inventory & Warehouse",
+            title: "Inventory Integrity",
             department: "Stores",
             frequency: "Daily",
             role: "Inventory Lead",
             summary: "Zero-fail stock accuracy and omnichannel parity.",
             icon: "barcode",
             tasks: [
-                { id: "RT-INV-01", description: "Blind cycle-count of top 10 high-value/high-shrinkage SKUs.", priority: "High", riskLevel: "High", consequence: "Unidentified stock shrinkage.", proof: "Count Sheet" },
-                { id: "RT-INV-02", description: "Verify GRN entry for incoming stock is completed < 4 hours.", priority: "High", riskLevel: "Medium", consequence: "Omnichannel inventory mismatch (ghost stock).", proof: "System Sync" },
-                { id: "RT-INV-03", description: "RFID Variance Check: Scan 1 rack and match vs system data.", priority: "High", riskLevel: "Medium", consequence: "Stock-out during high demand.", proof: "RFID Report" },
-                { id: "RT-INV-04", description: "Label and quarantine damaged/return-to-vendor stock.", priority: "Medium", riskLevel: "Low", consequence: "Reselling faulty goods to customers.", proof: "Log & Photo" },
-                { id: "RT-INV-05", description: "Verify stock transfer (STN) seriality for gaps in transit.", priority: "High", riskLevel: "High", consequence: "Theft during inter-store movements.", proof: "Transfer Log" },
-                { id: "RT-INV-06", description: "Check par levels of security tags and hangers.", priority: "Low", riskLevel: "Low", consequence: "Service delay on floor.", proof: "Stock Sheet" },
-                { id: "RT-INV-07", description: "Audit 'Click-and-Collect' bin for aged uncollected items.", priority: "Low", riskLevel: "Low", consequence: "Wasted storage space and tied-up stock.", proof: "System Audit" },
-                { id: "RT-INV-08", description: "Verify bar-code legibility on clearance/markdown stock.", priority: "Low", riskLevel: "Low", consequence: "Friction at checkout.", proof: "Sample Scan" },
-                { id: "RT-INV-09", description: "Audit 'Price-Change' labels against master POS price.", priority: "High", riskLevel: "Medium", consequence: "Legal Metrology fines.", proof: "Price Check" },
-                { id: "RT-INV-10", description: "Monitor 'Stock Room' access: ensure locked when unoccupied.", priority: "High", riskLevel: "High", consequence: "Internal theft window.", proof: "Visual Check" },
-                { id: "RT-INV-11", description: "Verify disposal of hazardous waste (broken glass/perfume).", priority: "Medium", riskLevel: "Medium", consequence: "Environmental non-compliance.", proof: "Manifest" },
-                { id: "RT-INV-12", description: "Audit warehouse shelving for structural stability.", priority: "High", riskLevel: "High", consequence: "Fatal racking collapse.", proof: "Walkthrough" },
-                { id: "RT-INV-13", description: "Inspect back-office safe-room motion sensors.", priority: "High", riskLevel: "High", consequence: "Burglary risk.", proof: "Test Log" },
-                { id: "RT-INV-14", description: "Confirm 100% of arrivals are tagged with hard-tags.", priority: "High", riskLevel: "High", consequence: "Theft of new arrivals.", proof: "Audit Sample" },
-                { id: "RT-INV-15", description: "Check pallet-jack hydraulic seals for oil leaks.", priority: "Low", riskLevel: "Low", consequence: "MHE failure and floor spills.", proof: "Visual Check" },
-                { id: "RT-INV-16", description: "Audit 5 inventory adjustments for valid manager login.", priority: "High", riskLevel: "High", consequence: "Theft masked by admin edits.", proof: "IT Audit" },
-                { id: "RT-INV-17", description: "Reconcile 'Gift Card' stock against activation logs.", priority: "Medium", riskLevel: "High", consequence: "Financial fraud.", proof: "Stock Reconcile" },
-                { id: "RT-INV-18", description: "Log temperature of warehouse stock room (Target < 25°C).", priority: "Low", riskLevel: "Low", consequence: "Product decay (Cosmetics/Adhesives).", proof: "Temp Log" },
-                { id: "RT-INV-19", description: "Verify return-to-vendor (RTV) carrier identity.", priority: "High", riskLevel: "Medium", consequence: "Fake pickup theft.", proof: "ID Log" },
-                { id: "RT-INV-20", description: "Final warehouse lockdown and nightly seal.", priority: "High", riskLevel: "Low", consequence: "Unsecured stock.", proof: "Signed Summary" }
+                { id: "RT-INV-01", description: "Blind cycle-count of top 10 high-value/high-shrinkage SKUs; match physical stock vs system ledger.", priority: "High", riskLevel: "High", consequence: "Unidentified stock shrinkage.", proof: "Count Sheet" },
+                { id: "RT-INV-02", description: "Verify GRN entry; match incoming vendor invoices to physical piece count within 4-hour window.", priority: "High", riskLevel: "Medium", consequence: "Omnichannel inventory mismatch.", proof: "System Sync" },
+                { id: "RT-INV-03", description: "RFID Variance Check: Scan 1 promotional rack; verify 100% parity with digital inventory count.", priority: "High", riskLevel: "Medium", consequence: "Stock-out during high demand.", proof: "RFID Report" },
+                { id: "RT-INV-10", description: "Stock-Room Lockdown: Physically confirm internal vault is double-locked at shift rotation.", priority: "High", riskLevel: "High", consequence: "Internal theft window.", proof: "Visual Check" }
             ]
         },
         {
@@ -117,24 +73,9 @@ export const retail_operations_system: PremiumPack = {
             summary: "Protects the revenue point and handles digital security.",
             icon: "banknote",
             tasks: [
-                { id: "RT-CSH-01", description: "Inspect till point for credit card skimmers or overlays.", priority: "High", riskLevel: "High", consequence: "Customer data theft and massive reputation loss.", proof: "Visual Check" },
-                { id: "RT-CSH-02", description: "Verify cashier float blind-count at start of shift.", priority: "High", riskLevel: "Medium", consequence: "Untraceable cash shortages.", proof: "Cash Log" },
-                { id: "RT-CSH-03", description: "Reconcile POS 'X-Reading' against physical cash drop.", priority: "High", riskLevel: "High", consequence: "Revenue theft.", proof: "Settlement Slip" },
-                { id: "RT-CSH-04", description: "Audit POS workstation for unauthorized USB devices.", priority: "High", riskLevel: "High", consequence: "Malware injection or data exfiltration.", proof: "Visual Audit" },
-                { id: "RT-CSH-05", description: "Check printer paper par levels for the shift.", priority: "Low", riskLevel: "Low", consequence: "Queue delays.", proof: "Stock Check" },
-                { id: "RT-CSH-06", description: "Verify functioning of counterfeit detection lamps.", priority: "High", riskLevel: "Medium", consequence: "Accepting fake currency.", proof: "Test Log" },
-                { id: "RT-CSH-07", description: "Audit till-point hygiene: sanitize credit card machines.", priority: "Low", riskLevel: "Low", consequence: "Poor brand perception.", proof: "Cleaning Note" },
-                { id: "RT-CSH-08", description: "Confirm 100% of 'Manual Overrides' are logged by ID.", priority: "High", riskLevel: "High", consequence: "Fraudulent price changes.", proof: "System Report" },
-                { id: "RT-CSH-09", description: "Check POS screen for 'No-Bill' transaction patterns.", priority: "Medium", riskLevel: "Medium", consequence: "Revenue leakage.", proof: "IT Audit" },
-                { id: "RT-CSH-10", description: "Verify staff purchase IDs match active employees.", priority: "Medium", riskLevel: "Low", consequence: "Unauthorized discount usage.", proof: "ID Match" },
-                { id: "RT-CSH-11", description: "Audit cash-drawer lock integrity.", priority: "High", riskLevel: "High", consequence: "Opportunistic cash theft.", proof: "Visual Check" },
-                { id: "RT-CSH-12", description: "Inspect 'Loyalty Point' redemption logic for 3 randoms.", priority: "Low", riskLevel: "Medium", consequence: "Fraudulent point drain.", proof: "Sample Check" },
-                { id: "RT-CSH-13", description: "Verify billing display board matches current price list.", priority: "High", riskLevel: "Medium", consequence: "Customer disputes.", proof: "Photo" },
-                { id: "RT-CSH-14", description: "Test dial-tone of card machine (ISP backup).", priority: "Medium", riskLevel: "Low", consequence: "Operational halt during peak.", proof: "Connection Test" },
-                { id: "RT-CSH-15", description: "Audit 'Tax Invoice' seriality for any missing numbers.", priority: "High", riskLevel: "High", consequence: "Off-book sales and GST audit failure.", proof: "Registry Match" },
-                { id: "RT-CSH-16", description: "Witness 'Change-Bag' handover between supervisors.", priority: "Medium", riskLevel: "Medium", consequence: "Float discrepancies.", proof: "Dual Sign-off" },
-                { id: "RT-CSH-17", description: "Confirm batch settlement on all UPI/Card machines.", priority: "High", riskLevel: "Low", consequence: "Delayed funds settlement.", proof: "Printout" },
-                { id: "RT-CSH-18", description: "Final nightly vault drop witness and sign-off.", priority: "High", riskLevel: "High", consequence: "Internal theft.", proof: "Signed Log" }
+                { id: "RT-CSH-01", description: "Inspect till point for credit card skimmers or overlays; physically check pin-pad integrity.", priority: "High", riskLevel: "High", consequence: "Customer data theft and reputation loss.", proof: "Visual Check" },
+                { id: "RT-CSH-02", description: "Verify cashier float; physically witness blind-count of notes and coins at start of shift.", priority: "High", riskLevel: "Medium", consequence: "Untraceable cash shortages.", proof: "Cash Log" },
+                { id: "RT-CSH-04", description: "Audit POS workstation for unauthorized USB devices or data exfiltration hardware.", priority: "High", riskLevel: "High", consequence: "Malware injection or data theft.", proof: "Visual Audit" }
             ]
         },
         {
@@ -145,52 +86,21 @@ export const retail_operations_system: PremiumPack = {
             summary: "Protects the brand aesthetic and pricing accuracy.",
             icon: "eye",
             tasks: [
-                { id: "RT-VM-01", description: "Audit shelf-edge pricing against POS database (100% match).", priority: "High", riskLevel: "Medium", consequence: "Customer disputes and Legal Metrology fines.", proof: "Price Report" },
-                { id: "RT-VM-02", description: "Verify planogram compliance for current promotional rack.", priority: "Medium", riskLevel: "Low", consequence: "Inconsistent brand presentation.", proof: "Photo" },
-                { id: "RT-VM-03", description: "Audit lighting LUX levels in window and trial zones.", priority: "Low", riskLevel: "Low", consequence: "Reduced visual merchandising impact.", proof: "Meter Log" },
-                { id: "RT-VM-04", description: "Inspect mannequin grooming: clean, accessorized, and straight.", priority: "Low", riskLevel: "Low", consequence: "Luxury brand dilution.", proof: "Walkthrough" },
-                { id: "RT-VM-05", description: "Confirm correct signage for current markdown percentage.", priority: "High", riskLevel: "Medium", consequence: "Consumer court penalties.", proof: "Visual Audit" },
-                { id: "RT-VM-06", description: "Verify all display TV/monitors are online and synced.", priority: "Medium", riskLevel: "Low", consequence: "Broken digital experience.", proof: "Visual Check" },
-                { id: "RT-VM-07", description: "Spot-check 5 random hangers for uniform brand alignment.", priority: "Low", riskLevel: "Low", consequence: "Messy floor perception.", proof: "Sample Audit" },
-                { id: "RT-VM-08", description: "Audit 'New Arrival' placement against launch guide.", priority: "Medium", riskLevel: "Low", consequence: "Missed initial sales pulse.", proof: "Photo" },
-                { id: "RT-VM-09", description: "Inspect price tags for manual overwrites or stains.", priority: "Low", riskLevel: "Low", consequence: "Unprofessional brand image.", proof: "Visual Check" },
-                { id: "RT-VM-10", description: "Check par levels of signage holders and frames.", priority: "Low", riskLevel: "Low", consequence: "Inability to launch new promos.", proof: "Stock Check" },
-                { id: "RT-VM-11", description: "Verify sensory vitals: scent diffuser and music volume.", priority: "Medium", riskLevel: "Low", consequence: "Lower dwelling time.", proof: "Daily Log" },
-                { id: "RT-VM-12", description: "Audit clearance rack for 'hidden gems' (high-value misplaced).", priority: "Medium", riskLevel: "Medium", consequence: "Lost revenue on full-price items.", proof: "Search Note" },
-                { id: "RT-VM-13", description: "Inspect entrance mat for debris or positioning.", priority: "Low", riskLevel: "Low", consequence: "Poor first-touch perception.", proof: "Visual Check" },
-                { id: "RT-VM-14", description: "Verify signage translation for local language compliance.", priority: "High", riskLevel: "Medium", consequence: "Regulatory notices.", proof: "Visual Audit" },
-                { id: "RT-VM-15", description: "Check functionality of shelf-edge digital screens.", priority: "Low", riskLevel: "Low", consequence: "Static display fail.", proof: "Visual Check" },
-                { id: "RT-VM-16", description: "Audit shelf-talker messaging for accuracy.", priority: "Medium", riskLevel: "Low", consequence: "Misleading claims.", proof: "Walkthrough" },
-                { id: "RT-VM-17", description: "Final floor-merchandising readiness sign-off.", priority: "Low", riskLevel: "Low", consequence: "Operational drift.", proof: "Signed Sheet" },
-                { id: "RT-VM-18", description: "Submit weekly VM execution photo gallery.", priority: "Medium", riskLevel: "Low", consequence: "Loss of headquarters visibility.", proof: "Photo Upload" }
+                { id: "RT-VM-01", description: "Audit shelf-edge pricing; scan 20 random items to verify 100% match with POS database price.", priority: "High", riskLevel: "Medium", consequence: "Customer disputes and Legal Metrology fines.", proof: "Price Report" },
+                { id: "RT-VM-03", description: "Audit lighting LUX levels; measure brightness in window display and trial zones using meter.", priority: "Low", riskLevel: "Low", consequence: "Reduced visual merchandising impact.", proof: "Meter Log" },
+                { id: "RT-VM-05", description: "Confirm markdown signage; verify 'Discount %' on tags matches active promotion in system.", priority: "High", riskLevel: "Medium", consequence: "Consumer court penalties.", proof: "Visual Audit" }
             ]
         },
         {
-            title: "Floor Readiness & CX",
+            title: "Floor Readiness",
             department: "Operations",
             frequency: "Daily",
             role: "Floor Supervisor",
             summary: "Daily command for visual parity and service standard.",
-            icon: "eye",
+            icon: "clipboard-check",
             tasks: [
-                { id: "RT-FLR-01", description: "Audit 100% of fitting rooms every 60 mins for hygiene.", priority: "High", riskLevel: "Low", consequence: "Primary driver of negative reviews.", proof: "Hourly Sheet" },
-                { id: "RT-FLR-02", description: "Inspect floor for spills, hangers, or trip hazards.", priority: "High", riskLevel: "High", consequence: "Slip-and-fall litigation.", proof: "Walkthrough Log" },
-                { id: "RT-FLR-03", description: "Check ambiance vitals: Scent, Music, and Temp (23°C).", priority: "Medium", riskLevel: "Low", consequence: "Guest discomfort and attrition.", proof: "Daily Log" },
-                { id: "RT-FLR-04", description: "Audit staff grooming and name-tag visibility.", priority: "Low", riskLevel: "Low", consequence: "Professional brand dilution.", proof: "Briefing Log" },
-                { id: "RT-FLR-05", description: "Verify availability of first-aid kits and AED readiness.", priority: "High", riskLevel: "High", consequence: "Failure during medical crisis.", proof: "Stock Check" },
-                { id: "RT-FLR-06", description: "Monitor billing queue: goal < 3 people per cashier.", priority: "Medium", riskLevel: "Low", consequence: "High abandonment rates.", proof: "Queue Pulse" },
-                { id: "RT-FLR-07", description: "Audit staff knowledge of current product promotions.", priority: "Medium", riskLevel: "Low", consequence: "Missed upsell opportunities.", proof: "Briefing Note" },
-                { id: "RT-FLR-08", description: "Verify 100% of display lighting is functional.", priority: "Low", riskLevel: "Low", consequence: "Dull brand image.", proof: "Visual Audit" },
-                { id: "RT-FLR-09", description: "Inspect glass facades and mirrors for fingerprints.", priority: "Low", riskLevel: "Low", consequence: "Grimy perception.", proof: "Visual Check" },
-                { id: "RT-FLR-10", description: "Check par levels of shopping bags and gift wrap.", priority: "Low", riskLevel: "Low", consequence: "Service friction at checkout.", proof: "Stock Sheet" },
-                { id: "RT-FLR-11", description: "Verify staff breaks are staggered to maintain floor cover.", priority: "Medium", riskLevel: "Low", consequence: "Customer neglect zones.", proof: "Roster Audit" },
-                { id: "RT-FLR-12", description: "Audit return-desk TAT for pending customer refunds.", priority: "Medium", riskLevel: "Low", consequence: "Escalated disputes.", proof: "TAT Log" },
-                { id: "RT-FLR-13", description: "Inspect water-station purity and drainage.", priority: "High", riskLevel: "Medium", consequence: "Staff/Customer health risk.", proof: "TDS Reading" },
-                { id: "RT-FLR-14", description: "Verify guest Wi-Fi login portal functionality.", priority: "Low", riskLevel: "Low", consequence: "Customer frustration.", proof: "Phone Test" },
-                { id: "RT-FLR-15", description: "Audit staff 'Sales Language' parity against brand guide.", priority: "Low", riskLevel: "Low", consequence: "Inconsistent service standards.", proof: "Observation Note" },
-                { id: "RT-FLR-16", description: "Check par levels of staff uniform inventory.", priority: "Low", riskLevel: "Low", consequence: "Grooming failure.", proof: "Stock Sheet" },
-                { id: "RT-FLR-17", description: "Confirm all POS systems have batch-settled at EOD.", priority: "High", riskLevel: "Low", consequence: "Financial settlement delay.", proof: "Printout" },
-                { id: "RT-FLR-18", description: "Final floor mission sign-off and closure initials.", priority: "High", riskLevel: "Low", consequence: "Governance gap.", proof: "Signed Summary" }
+                { id: "RT-FLR-02", description: "Queue TAT Pulse: Measure billing wait time during peak; target goal < 3 guests per cashier.", priority: "Medium", riskLevel: "Low", consequence: "Basket abandonment.", proof: "Queue Log" },
+                { id: "RT-FLR-03", description: "Ambiance Vitals: Log store temp (Target 23°C) and verify music playlist matches brand standard.", priority: "Medium", riskLevel: "Low", consequence: "Guest discomfort.", proof: "Daily Log" }
             ]
         },
         {
@@ -201,24 +111,10 @@ export const retail_operations_system: PremiumPack = {
             summary: "Infrastructure and safety asset protection.",
             icon: "wrench",
             tasks: [
-                { id: "RT-MNT-01", description: "Inspect all demo units for lithium battery swelling or heat.", priority: "High", riskLevel: "High", consequence: "Overnight fire in customer zone.", proof: "Visual Audit" },
-                { id: "RT-MNT-02", description: "Test emergency exit shutter motor functionality.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment during emergency.", proof: "Test Log" },
-                { id: "RT-MNT-03", description: "Perform IR heat scan of main electrical panel bank.", priority: "High", riskLevel: "High", consequence: "Electrical short-circuit fire.", proof: "Scan Log" },
-                { id: "RT-MNT-04", description: "Check HVAC filter dust accumulation on main vents.", priority: "Medium", riskLevel: "Low", consequence: "Reduced airflow and motor strain.", proof: "Visual Check" },
-                { id: "RT-MNT-05", description: "Test backup generator (DG) fuel and auto-start logic.", priority: "High", riskLevel: "High", consequence: "Total facility blackout.", proof: "Start-test Log" },
-                { id: "RT-MNT-06", description: "Verify LOTO (Lock-out Tag-out) on all active repairs.", priority: "High", riskLevel: "High", consequence: "Fatal maintenance accident.", proof: "Permit Registry" },
-                { id: "RT-MNT-07", description: "Inspect floor tiles for cracks or dangerous trip spots.", priority: "High", riskLevel: "High", consequence: "Slip-and-fall litigation.", proof: "Walkthrough" },
-                { id: "RT-MNT-08", description: "Test storefront signage timer: set to exactly 6 PM.", priority: "Low", riskLevel: "Low", consequence: "Loss of street visibility.", proof: "Visual Check" },
-                { id: "RT-MNT-09", description: "Monitor water TDS levels from main drinking point.", priority: "High", riskLevel: "Medium", consequence: "Health risk and fines.", proof: "TDS Reading" },
-                { id: "RT-MNT-10", description: "Check fire extinguisher gauge pressure in Warehouse.", priority: "High", riskLevel: "High", consequence: "Zero firefighting capability.", proof: "Gauge Log" },
-                { id: "RT-MNT-11", description: "Inspect loading-bay shutter sensors for tailgating.", priority: "Medium", riskLevel: "Low", consequence: "Vehicle damage liability.", proof: "Visual Check" },
-                { id: "RT-MNT-12", description: "Verify AMC dates for Lifts and Escalators.", priority: "High", riskLevel: "High", consequence: "Service lapse causing injury.", proof: "Contract File" },
-                { id: "RT-MNT-13", description: "Audit cleaning frequency of HVAC drain trays.", priority: "Low", riskLevel: "Low", consequence: "Water leakage onto merchandise.", proof: "Log Book" },
-                { id: "RT-MNT-14", description: "Test lift emergency intercom to Security Desk.", priority: "High", riskLevel: "High", consequence: "Guest trapped without help.", proof: "Sound Test" },
-                { id: "RT-MNT-15", description: "Check rooftop unit lock integrity.", priority: "High", riskLevel: "High", consequence: "Unauthorized intruder access.", proof: "Visual Check" },
-                { id: "RT-MNT-16", description: "Execute nightly power-bank shutdown for non-essentials.", priority: "High", riskLevel: "High", consequence: "Energy waste and fire risk.", proof: "Signed Sheet" },
-                { id: "RT-MNT-17", description: "Audit plumbing log for leaks in trial areas.", priority: "Medium", riskLevel: "Low", consequence: "Asset damage.", proof: "Log Match" },
-                { id: "RT-MNT-18", description: "Final facility safety sign-off initials.", priority: "High", riskLevel: "Low", consequence: "Governance gap.", proof: "Signed Summary" }
+                { id: "RT-MNT-01", description: "Inspect demo units; physically check mobile/tablet batteries for swelling or charging-port heat.", priority: "High", riskLevel: "High", consequence: "Overnight fire in customer zone.", proof: "Visual Audit" },
+                { id: "RT-MNT-02", description: "Test shutter motor; execute full open/close cycle for main entrance and loading bay gates.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment during crisis.", proof: "Test Log" },
+                { id: "RT-MNT-03", description: "Perform IR heat scan; check main electrical panel bank for hotspots exceeding 60°C.", priority: "High", riskLevel: "High", consequence: "Electrical short-circuit fire.", proof: "Scan Log" },
+                { id: "RT-MNT-18", description: "Final facility safety sign-off; witness nightly power-bank shutdown for all non-essential systems.", priority: "High", riskLevel: "Low", consequence: "Governance gap.", proof: "Signed Summary" }
             ]
         }
     ]

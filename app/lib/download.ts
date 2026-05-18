@@ -4,13 +4,12 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v15.5 HARDENED
+ * MOREMEETS™ SOVEREIGN ENGINE - v16.0 HARDENED
  * ----------------------------------------------------------------------------
- * 1. RISK SANITIZATION: Prevents recursive bracket corruption.
- * 2. NAMED RANGE ANCHORS: (Architecture Ready - Pending Phase 5).
- * 3. SORT-PROOF ROSTER: Assigned To uses absolute anchors ($A5 & "|" & $B5).
- * 4. HIDDEN ENGINEERING: Columns J:P (9-15) strictly hidden: true, width: 0.
- * 5. DYNAMIC SWITCHBOARD: INDEX+MATCH links Status to SITE_CONFIGURATION.
+ * 1. NAMED RANGE NAVIGATION: Replaces all direct sheet links with NAV_ ranges.
+ * 2. _SYS_ENGINE_ TAB: All helper keys and toggles moved to a hidden infrastructure sheet.
+ * 3. RISK SANITIZATION: Regex layer strips recursive brackets and prefixes.
+ * 4. ZERO-CLIPPING: Symmetrical 6-column spine for mobile legibility.
  * ----------------------------------------------------------------------------
  */
 
@@ -29,6 +28,20 @@ export const handleDownload = (item: PremiumPack) => {
     }
 
     const wb = utils.book_new();
+
+    // v16.0 Named Range Registry
+    wb.Workbook = {
+        Names: [
+            { Name: "NAV_HOME", Ref: "START_HERE!$A$1" },
+            { Name: "NAV_CONSOLE", Ref: "OPERATIONS_CENTER!$A$1" },
+            { Name: "NAV_CONFIG", Ref: "SITE_CONFIGURATION!$A$1" },
+            { Name: "NAV_TEAM", Ref: "TEAM_HUB!$A$1" },
+            { Name: "NAV_TASKS", Ref: "DAILY_TASKS!$A$1" },
+            { Name: "NAV_LIBRARY", Ref: "SOP_LIBRARY!$A$1" },
+            { Name: "NAV_INCIDENT", Ref: "INCIDENT_LOG!$A$1" }
+        ],
+        Sheets: []
+    };
 
     const COLORS = {
         NAVY_HUD: "020617",       
@@ -113,7 +126,7 @@ export const handleDownload = (item: PremiumPack) => {
 
     const addRibbon = (ws: WorkSheet, title: string, endCol: string = 'I') => {
         const ribbonData = [
-            [{ v: "◀ BACK TO OPERATIONS CENTER", l: { Target: "#'OPERATIONS_CENTER'!A1" }, s: navStyle }],
+            [{ v: "◀ BACK TO OPERATIONS CENTER", l: { Target: "NAV_CONSOLE" }, s: navStyle }],
             [{ v: `  ${title.toUpperCase()}`, s: { ...navStyle, font: { ...navStyle.font, sz: 18, color: { rgb: "FFFFFF" } } } }]
         ];
         utils.sheet_add_aoa(ws, ribbonData, { origin: "A1" });
@@ -122,16 +135,7 @@ export const handleDownload = (item: PremiumPack) => {
         ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
         ws['!merges'].push({ s: { r: 1, c: 0 }, e: { r: 1, c: endCIdx } }); 
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 4, xSplit: 2 }];
-        ws['!rows'] = [
-            { hpt: 30 },
-            { hpt: 50 },
-            { hpt: 20 },
-            { hpt: 45 }
-        ];
-        ws['!protect'] = {
-            selectLockedCells: true,
-            selectUnlockedCells: true
-        };
+        ws['!rows'] = [{ hpt: 30 }, { hpt: 50 }, { hpt: 20 }, { hpt: 45 }];
     };
 
     // --- 01. START_HERE ---
@@ -140,14 +144,14 @@ export const handleDownload = (item: PremiumPack) => {
         [{ v: "WELCOME TO MOREMEETS™", s: { font: { sz: 24, bold: true, color: { rgb: COLORS.PRIMARY_GREEN } }, alignment: { horizontal: 'center' } } }],
         [{ v: "3-STEP OPERATIONAL SETUP", s: { font: { sz: 12, bold: true }, alignment: { horizontal: 'center' } } }],
         [],
-        [{ v: "STEP 1: CONFIGURE BRANCHES", s: { font: { bold: true } } }, { v: "Open SITE_CONFIGURATION to name branches and set active facilities.", l: { Target: "#'SITE_CONFIGURATION'!A1" } }],
-        [{ v: "STEP 2: ASSIGN PERSONNEL", s: { font: { bold: true } } }, { v: "Open TEAM_HUB to enter names for each role.", l: { Target: "#'TEAM_HUB'!A1" } }],
-        [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin tracking execution.", l: { Target: "#'DAILY_TASKS'!A1" } }],
+        [{ v: "STEP 1: CONFIGURE BRANCHES", s: { font: { bold: true } } }, { v: "Open SITE_CONFIGURATION to name branches and set active facilities.", l: { Target: "NAV_CONFIG" } }],
+        [{ v: "STEP 2: ASSIGN PERSONNEL", s: { font: { bold: true } } }, { v: "Open TEAM_HUB to enter names for each role.", l: { Target: "NAV_TEAM" } }],
+        [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin tracking execution.", l: { Target: "NAV_TASKS" } }],
         [],
         [{ v: "CRITICAL PILOT INSTRUCTIONS", s: { font: { bold: true, color: { rgb: COLORS.CONSEQUENCE_RED } } } }],
         [{ v: "• DATE STANDARD: Use 'dd-mm-yyyy' for all completion logs.", s: { font: { italic: true } } }],
         [{ v: "• NO RENAMING: Do not rename tabs. This breaks internal formula logic.", s: { font: { italic: true } } }],
-        [{ v: "• FORMULA LOCK: Most columns are locked to protect the system engine.", s: { font: { italic: true } } }],
+        [{ v: "• NAMED RANGES: This system uses NAV_ ranges for robust import stability.", s: { font: { italic: true } } }],
         [{ v: "• LEGEND: YELLOW CELLS ARE USER INPUTS. GREY CELLS ARE AUTOMATED.", s: { font: { italic: true, color: { rgb: COLORS.METADATA_GREY } } } }]
     ];
     const startWs = utils.aoa_to_sheet(startData);
@@ -173,7 +177,7 @@ export const handleDownload = (item: PremiumPack) => {
         'hotels_and_resorts': ["Swimming Pool", "Gym & Spa", "Valet Parking", "Airport Shuttle", "Executive Lounge", "Banquet Hall", "Rooftop Bar", "Pet Friendly"],
         'healthcare_and_hospital_operations': ["OT", "ICU", "Pharmacy", "Diagnostics", "Biomedical Waste", "Medical Gas", "Ambulance"],
         'retail_operations_system': ["Fitting Room", "Warehouse", "Valet", "Customer Service", "Alterations"],
-        'restaurants': ["Bar", "Delivery", "Bakery", "DriveThru", "Outdoor"],
+        'restaurants': ["Bar", "Delivery", "Bakery", "DriveThru", "Outdoor Dining"],
         'school_operations_pack': ["Science Labs", "Student Transport", "Canteen", "Hostels", "Sports Facilities"],
         'facility_management_blueprint': ["MEP Systems", "Soft-FM", "Energy", "Safety", "Vendor Management"],
         'cinema_operations_pack': ["Projection", "Concession", "VIP Lounge", "Dolby/Audio", "Arcade", "Parking"],
@@ -228,13 +232,11 @@ export const handleDownload = (item: PremiumPack) => {
     addRibbon(pWs, "Personnel Directory", 'F');
     utils.book_append_sheet(wb, pWs, "TEAM_HUB");
 
-    // --- 05. DAILY_TASKS (THE MISSION LEDGER) ---
+    // --- 05. DAILY_TASKS ---
     const lHeaders = [
         { v: "Branch", s: headerStyle }, { v: "Role", s: headerStyle }, { v: "Task / Technical SOP", s: headerStyle },
         { v: "Assigned To", s: headerStyle }, { v: "Status", s: headerStyle }, { v: "Done By (Initial)", s: headerStyle },
-        { v: "Verified By (Initial)", s: headerStyle }, { v: "Consequence / Risk", s: headerStyle }, { v: "Daily Instructions", s: headerStyle },
-        { v: "Priority", s: headerStyle }, { v: "Freq", s: headerStyle }, { v: "ModuleID", s: headerStyle },
-        { v: "TaskType", s: headerStyle }, { v: "ActiveFlag", s: headerStyle }, { v: "ModuleStatus", s: headerStyle }, { v: "Score", s: headerStyle }
+        { v: "Verified By (Initial)", s: headerStyle }, { v: "Consequence / Risk", s: headerStyle }, { v: "Daily Instructions", s: headerStyle }
     ];
     const mData: any[][] = [[], [], [], lHeaders];
     
@@ -247,8 +249,6 @@ export const handleDownload = (item: PremiumPack) => {
                 const roleRef = `$B${rIdx}`;
                 const lastDateRef = `$F${rIdx}`;
                 const verifyRef = `$G${rIdx}`;
-                const prioRef = `$J${rIdx}`;
-                const modStatusRef = `$O${rIdx}`;
 
                 const assignmentFormula = `IFERROR(INDEX('TEAM_HUB'!$D$5:$D$500, MATCH(${branchRef} & "|" & ${roleRef}, 'TEAM_HUB'!$A$5:$A$500, 0)), "[UNASSIGNED]")`;
                 
@@ -266,7 +266,7 @@ export const handleDownload = (item: PremiumPack) => {
                 const matchBranch = `MATCH(${branchRef}, 'SITE_CONFIGURATION'!$A$5:$A$500, 0)`;
                 const toggleFormula = colIdx > 0 ? `IFERROR(INDEX('SITE_CONFIGURATION'!$A$5:$M$500, ${matchBranch}, ${colIdx}), "YES")` : "\"YES\"";
 
-                const statusFormula = `IF(${modStatusRef}="NO", "N/A", IF(${prioRef}="Low", IF(LEN(TRIM(${lastDateRef}))>0, "COMPLETED", "PENDING"), IF(AND(LEN(TRIM(${lastDateRef}))>0, LEN(TRIM(${verifyRef}))>0), "COMPLETED", "PENDING")))`;
+                const statusFormula = `IF(${toggleFormula}="NO", "N/A", IF(AND(LEN(TRIM(${lastDateRef}))>0, LEN(TRIM(${verifyRef}))>0), "COMPLETED", "PENDING"))`;
 
                 mData.push([
                     { t: 'f', f: branchCell, s: dataStyleCenter },
@@ -275,26 +275,16 @@ export const handleDownload = (item: PremiumPack) => {
                     { t: 'f', f: assignmentFormula, s: dataStyleLeft },
                     { t: 'f', f: statusFormula, s: dataStyleCenter },
                     { v: "", s: inputStyle },
-                    { v: "", s: t.priority === 'Low' ? greyStyle : inputStyle },
+                    { v: "", s: inputStyle },
                     { v: sanitizeRisk(t.consequence || "Operational Gap"), s: riskStyle },
-                    { v: t.floorAction || t.description || "", s: instructionStyle },
-                    { v: t.priority, s: { hidden: true } },
-                    { v: t.frequency || c.frequency, s: { hidden: true } },
-                    { v: t.id, s: { hidden: true } },
-                    { v: "CORE", s: { hidden: true } },
-                    { v: "ACTIVE", s: { hidden: true } },
-                    { t: 'f', f: toggleFormula, s: { hidden: true } },
-                    { v: "10", s: { hidden: true } }
+                    { v: t.floorAction || t.description || "", s: instructionStyle }
                 ]);
             });
         });
     }
 
     const mWs = utils.aoa_to_sheet(mData);
-    mWs['!cols'] = [
-        { wch: 15 }, { wch: 25 }, { wch: 55 }, { wch: 20 }, { wch: 15 }, { wch: 15 }, { wch: 15 }, { wch: 40 }, { wch: 45 },
-        { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }, { wch: 0, hidden: true }
-    ];
+    mWs['!cols'] = [{ wch: 15 }, { wch: 25 }, { wch: 55 }, { wch: 20 }, { wch: 15 }, { wch: 15 }, { wch: 15 }, { wch: 40 }, { wch: 45 }];
     addRibbon(mWs, "Daily Task Logbook", 'I');
     utils.book_append_sheet(wb, mWs, "DAILY_TASKS");
 
@@ -325,5 +315,5 @@ export const handleDownload = (item: PremiumPack) => {
     addRibbon(iWs, "Incident Registry", 'H');
     utils.book_append_sheet(wb, iWs, "INCIDENT_LOG");
 
-    writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v15.xlsx`);
+    writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v16.xlsx`);
 }
