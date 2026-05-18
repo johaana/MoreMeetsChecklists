@@ -1,15 +1,17 @@
+
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v17.4 PRODUCTION BASELINE
+ * MOREMEETS™ SOVEREIGN ENGINE - v17.5 PRODUCTION BASELINE
  * ----------------------------------------------------------------------------
  * 1. PURE TABULAR LEDGER: Minimalist, filterable high-density structure.
  * 2. ALTERNATING BLOCKS: Visual grouping via role-based background tints.
  * 3. TIERED VERIFICATION: yellow cells + status logic for high-risk points.
  * 4. CUSTOMIZATION GUIDE: Anti-breakage layer and onboarding logic.
+ * 5. UX FLOW: START -> DASHBOARD -> DAILY_TASKS -> SOP_LIB -> SETUP -> HUB -> GUIDE
  * ----------------------------------------------------------------------------
  */
 
@@ -18,11 +20,11 @@ const SAFE_SHEET_NAME = /^[A-Z][A-Z0-9_]*$/;
 const TABS = {
     START: "START",
     DASHBOARD: "DASHBOARD",
-    GUIDE: "CUSTOMIZATION_GUIDE",
-    BRANCH_SETUP: "BRANCH_SETUP",
-    TEAM_HUB: "TEAM_HUB",
     DAILY_TASKS: "DAILY_TASKS",
     SOP_LIB: "SOP_LIB",
+    BRANCH_SETUP: "BRANCH_SETUP",
+    TEAM_HUB: "TEAM_HUB",
+    CUSTOMIZATION_GUIDE: "CUSTOMIZATION_GUIDE",
     SYS_ENGINE: "SYS_ENGINE"
 };
 
@@ -105,6 +107,10 @@ export const handleDownload = (item: PremiumPack) => {
             ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 3 }];
         };
 
+        /**
+         * APPEND WORKBOOK SHEETS IN STRATEGIC UX ORDER
+         */
+
         // --- 01. START ---
         const startData: any[][] = [
             [{ v: "🚀 SOVEREIGN START GUIDE — SETUP YOUR SYSTEM", s: bannerStyle }],
@@ -143,84 +149,8 @@ export const handleDownload = (item: PremiumPack) => {
         validateSheetName(TABS.DASHBOARD);
         utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
 
-        // --- 03. CUSTOMIZATION_GUIDE ---
-        const guideData: any[][] = [
-            [{ v: "🛠️ CUSTOMIZATION GUIDE — HOW TO TAILOR YOUR SYSTEM", s: bannerStyle }],
-            [],
-            [{ v: "SECTION A: WHAT YOU CAN SAFELY EDIT", s: { font: { bold: true, sz: 12 } } }],
-            [{ v: "✅ Branch names & locations" }],
-            [{ v: "✅ Team member names, phone numbers & emails" }],
-            [{ v: "✅ SOP wording & technical descriptions" }],
-            [{ v: "✅ Adding or removing tasks within role blocks" }],
-            [{ v: "✅ Adding new roles to the TEAM_HUB and DAILY_TASKS" }],
-            [],
-            [{ v: "SECTION B: WHAT YOU SHOULD NOT EDIT", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.TEXT_RISK } } } }],
-            [{ v: "❌ Do not rename the core tab names (e.g. DAILY_TASKS, DASHBOARD)" }],
-            [{ v: "❌ Do not delete hidden sheets or modified formula logic" }],
-            [{ v: "❌ Do not insert columns inside the middle of the DAILY_TASKS ledger" }],
-            [{ v: "❌ Do not unhide or modify the [SYS_ENGINE] metadata tab" }],
-            [],
-            [{ v: "SECTION C: HOW TO ADD NEW TASKS", s: { font: { bold: true, sz: 12 } } }],
-            [{ v: "To add a task, simply insert a row under the relevant ROLE block in [DAILY_TASKS]." }],
-            [{ v: "Note: High-risk tasks should have the 'Verified By' cell enabled in the formula logic." }],
-            [],
-            [{ v: "SECTION D: TASK FREQUENCY MODEL", s: { font: { bold: true, sz: 12 } } }],
-            [{ v: "The system is built to handle: DAILY | WEEKLY | MONTHLY | INCIDENT-BASED." }],
-            [],
-            [{ v: "SECTION E: MOBILE USAGE (GOOGLE SHEETS APP)", s: { font: { bold: true, sz: 12 } } }],
-            [{ v: "• Swipe the bottom tab bar to move between divisions." }],
-            [{ v: "• Use Filters in column headers to see only your own role's tasks." }],
-            [{ v: "• Zoom the sheet to 80-90% for maximum visibility." }],
-            [],
-            [{ v: "SYSTEM FLOW:", s: { font: { bold: true } } }],
-            [{ v: "BRANCH_SETUP → TEAM_HUB → SOP_LIB → DAILY_TASKS → DASHBOARD" }]
-        ];
-        const guideWs = utils.aoa_to_sheet(guideData);
-        guideWs['!cols'] = [{ wch: 100 }];
-        guideWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 0 } }];
-        validateSheetName(TABS.GUIDE);
-        utils.book_append_sheet(wb, guideWs, TABS.GUIDE);
-
-        // --- 04. BRANCH_SETUP ---
-        const branchHeaders = [{ v: "BRANCH NAME", s: headerStyle }, { v: "CITY", s: headerStyle }, { v: "STATUS", s: headerStyle }];
-        const branchData: any[][] = [[], [], branchHeaders];
-        for (let i = 1; i <= 2; i++) {
-            branchData.push([
-                { v: `Branch ${i} [REPLACE ME]`, s: getStyles(false).input },
-                { v: "Location", s: getStyles(false).input },
-                { v: "ACTIVE", s: getStyles(false).input }
-            ]);
-        }
-        const branchWs = utils.aoa_to_sheet(branchData);
-        branchWs['!cols'] = [{ wch: 35 }, { wch: 25 }, { wch: 15 }];
-        addSheetHeader(branchWs, TABS.BRANCH_SETUP, "Define your locations. ⚠️ Replace yellow cells.", 'C');
-        validateSheetName(TABS.BRANCH_SETUP);
-        utils.book_append_sheet(wb, branchWs, TABS.BRANCH_SETUP);
-
-        // --- 05. TEAM_HUB ---
+        // --- 03. DAILY_TASKS ---
         const activeRoles = Array.from(new Set(item.checklists.map(c => c.role)));
-        const teamHeaders = [{ v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "PERSONNEL NAME", s: headerStyle }, { v: "PHONE", s: headerStyle }, { v: "EMAIL", s: headerStyle }];
-        const teamData: any[][] = [[], [], teamHeaders];
-        for (let i = 0; i < 2; i++) {
-            const bRef = `${TABS.BRANCH_SETUP}!$A$${4 + i}`;
-            activeRoles.forEach((role, idx) => {
-                const styles = getStyles(idx % 2 === 1);
-                teamData.push([
-                    { t: 'f', f: `IFERROR(${bRef}, "")`, s: styles.center },
-                    { v: role, s: { ...styles.left, font: { ...baseFont, bold: true } } },
-                    { v: "[ENTER NAME]", s: styles.input },
-                    { v: "[PHONE]", s: styles.input },
-                    { v: "[EMAIL]", s: styles.input }
-                ]);
-            });
-        }
-        const teamWs = utils.aoa_to_sheet(teamData);
-        teamWs['!cols'] = [{ wch: 20 }, { wch: 30 }, { wch: 35 }, { wch: 20 }, { wch: 40 }];
-        addSheetHeader(teamWs, TABS.TEAM_HUB, "Assign personnel to specific roles.", 'E');
-        validateSheetName(TABS.TEAM_HUB);
-        utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
-
-        // --- 06. DAILY_TASKS ---
         const taskHeaders = [
             { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
             { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
@@ -264,7 +194,7 @@ export const handleDownload = (item: PremiumPack) => {
         validateSheetName(TABS.DAILY_TASKS);
         utils.book_append_sheet(wb, taskWs, TABS.DAILY_TASKS);
 
-        // --- 07. SOP_LIB ---
+        // --- 04. SOP_LIB ---
         const libHeaders = [{ v: "ROLE", s: headerStyle }, { v: "TECHNICAL SOP", s: headerStyle }, { v: "OPERATIONAL PURPOSE", s: headerStyle }, { v: "STEP-BY-STEP ACTION", s: headerStyle }];
         const libData: any[][] = [[], [], libHeaders];
         const libRows: any[] = [{ hpt: 30 }, { hpt: 20 }, { hpt: 30 }];
@@ -291,6 +221,82 @@ export const handleDownload = (item: PremiumPack) => {
         validateSheetName(TABS.SOP_LIB);
         utils.book_append_sheet(wb, libWs, TABS.SOP_LIB);
 
+        // --- 05. BRANCH_SETUP ---
+        const branchHeaders = [{ v: "BRANCH NAME", s: headerStyle }, { v: "CITY", s: headerStyle }, { v: "STATUS", s: headerStyle }];
+        const branchData: any[][] = [[], [], branchHeaders];
+        for (let i = 1; i <= 2; i++) {
+            branchData.push([
+                { v: `Branch ${i} [REPLACE ME]`, s: getStyles(false).input },
+                { v: "Location", s: getStyles(false).input },
+                { v: "ACTIVE", s: getStyles(false).input }
+            ]);
+        }
+        const branchWs = utils.aoa_to_sheet(branchData);
+        branchWs['!cols'] = [{ wch: 35 }, { wch: 25 }, { wch: 15 }];
+        addSheetHeader(branchWs, TABS.BRANCH_SETUP, "Define your locations. ⚠️ Replace yellow cells.", 'C');
+        validateSheetName(TABS.BRANCH_SETUP);
+        utils.book_append_sheet(wb, branchWs, TABS.BRANCH_SETUP);
+
+        // --- 06. TEAM_HUB ---
+        const teamHeaders = [{ v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "PERSONNEL NAME", s: headerStyle }, { v: "PHONE", s: headerStyle }, { v: "EMAIL", s: headerStyle }];
+        const teamData: any[][] = [[], [], teamHeaders];
+        for (let i = 0; i < 2; i++) {
+            const bRef = `${TABS.BRANCH_SETUP}!$A$${4 + i}`;
+            activeRoles.forEach((role, idx) => {
+                const styles = getStyles(idx % 2 === 1);
+                teamData.push([
+                    { t: 'f', f: `IFERROR(${bRef}, "")`, s: styles.center },
+                    { v: role, s: { ...styles.left, font: { ...baseFont, bold: true } } },
+                    { v: "[ENTER NAME]", s: styles.input },
+                    { v: "[PHONE]", s: styles.input },
+                    { v: "[EMAIL]", s: styles.input }
+                ]);
+            });
+        }
+        const teamWs = utils.aoa_to_sheet(teamData);
+        teamWs['!cols'] = [{ wch: 20 }, { wch: 30 }, { wch: 35 }, { wch: 20 }, { wch: 40 }];
+        addSheetHeader(teamWs, TABS.TEAM_HUB, "Assign personnel to specific roles.", 'E');
+        validateSheetName(TABS.TEAM_HUB);
+        utils.book_append_sheet(wb, teamWs, TABS.TEAM_HUB);
+
+        // --- 07. CUSTOMIZATION_GUIDE ---
+        const guideData: any[][] = [
+            [{ v: "🛠️ CUSTOMIZATION GUIDE — HOW TO TAILOR YOUR SYSTEM", s: bannerStyle }],
+            [],
+            [{ v: "SECTION A: WHAT YOU CAN SAFELY EDIT", s: { font: { bold: true, sz: 12 } } }],
+            [{ v: "✅ Branch names & locations" }],
+            [{ v: "✅ Team member names, phone numbers & emails" }],
+            [{ v: "✅ SOP wording & technical descriptions" }],
+            [{ v: "✅ Adding or removing tasks within role blocks" }],
+            [{ v: "✅ Adding new roles to the TEAM_HUB and DAILY_TASKS" }],
+            [],
+            [{ v: "SECTION B: WHAT YOU SHOULD NOT EDIT", s: { font: { bold: true, sz: 12, color: { rgb: COLORS.TEXT_RISK } } } }],
+            [{ v: "❌ Do not rename the core tab names (e.g. DAILY_TASKS, DASHBOARD)" }],
+            [{ v: "❌ Do not delete hidden sheets or modified formula logic" }],
+            [{ v: "❌ Do not insert columns inside the middle of the DAILY_TASKS ledger" }],
+            [{ v: "❌ Do not unhide or modify the [SYS_ENGINE] metadata tab" }],
+            [],
+            [{ v: "SECTION C: HOW TO ADD NEW TASKS", s: { font: { bold: true, sz: 12 } } }],
+            [{ v: "To add a task, simply insert a row under the relevant ROLE block in [DAILY_TASKS]." }],
+            [{ v: "Note: High-risk tasks should have the 'Verified By' cell enabled in the formula logic." }],
+            [],
+            [{ v: "SECTION D: TASK FREQUENCY MODEL", s: { font: { bold: true, sz: 12 } } }],
+            [{ v: "The system is built to handle: DAILY | WEEKLY | MONTHLY | INCIDENT-BASED." }],
+            [],
+            [{ v: "SECTION E: MOBILE USAGE (GOOGLE SHEETS APP)", s: { font: { bold: true, sz: 12 } } }],
+            [{ v: "• Swipe the bottom tab bar to move between divisions." }],
+            [{ v: "• Use Filters in column headers to see only your own role's tasks." }],
+            [{ v: "• Zoom the sheet to 80-90% for maximum visibility." }],
+            [],
+            [{ v: "SYSTEM FLOW:", s: { font: { bold: true } } }],
+            [{ v: "BRANCH_SETUP → TEAM_HUB → SOP_LIB → DAILY_TASKS → DASHBOARD" }]
+        ];
+        const guideWs = utils.aoa_to_sheet(guideData);
+        guideWs['!cols'] = [{ wch: 100 }];
+        guideWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 0 } }];
+        validateSheetName(TABS.CUSTOMIZATION_GUIDE);
+        utils.book_append_sheet(wb, guideWs, TABS.CUSTOMIZATION_GUIDE);
+
         // --- 08. SYS_ENGINE ---
         const sysData: any[][] = [];
         for (let i = 0; i < 2; i++) {
@@ -310,7 +316,7 @@ export const handleDownload = (item: PremiumPack) => {
         utils.book_append_sheet(wb, sysWs, TABS.SYS_ENGINE);
         
         // Final Range Lock to prevent Row-60 truncation
-        [startWs, dashWs, guideWs, branchWs, teamWs, taskWs, libWs, sysWs].forEach(ws => {
+        [startWs, dashWs, taskWs, libWs, branchWs, teamWs, guideWs, sysWs].forEach(ws => {
             const range = utils.decode_range(ws['!ref'] || "A1:A1");
             const dataRows = (ws as any)['!data'] ? (ws as any)['!data'].length : 100;
             range.e.r = Math.max(range.e.r, dataRows + 10);
