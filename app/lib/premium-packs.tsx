@@ -7,8 +7,8 @@ export type Checklist = {
     role: string;
     summary: string;
     icon: string;
-    moduleId?: string; // AGA Layer
-    moduleType?: 'CORE' | 'OPTIONAL'; // AGA Layer
+    moduleId?: string;
+    moduleType?: 'CORE' | 'OPTIONAL';
     tasks: {
         id: string;
         description?: string;      
@@ -23,7 +23,7 @@ export type Checklist = {
         department?: string;
         role?: string;
         frequency?: string;
-        verificationRequired?: boolean; // New v16.1 field
+        verificationRequired?: boolean; 
     }[];
 };
 
@@ -59,9 +59,6 @@ export type PremiumPack = {
     bestseller?: boolean;
 }
 
-/**
- * Standardized Operational Pricing
- */
 export const premiumPacks: PremiumPack[] = [
     ...allPacks.map(p => {
         let processedPack = { ...p };
