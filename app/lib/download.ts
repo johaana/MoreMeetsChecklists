@@ -4,13 +4,13 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v16.4 HARDENED
+ * MOREMEETS™ SOVEREIGN ENGINE - v16.4 PRODUCTION HARDENED
  * ----------------------------------------------------------------------------
- * 1. ZERO-GID NAVIGATION: Removed quotes from anchors (#SHEET!A1).
+ * 1. ZERO-GID NAVIGATION: Unquoted anchors (#SHEET!A1) for mobile resolution.
  * 2. DIMENSION RECALCULATION: Explicit !ref update for 1000+ row survival.
  * 3. DYNAMIC SOP HEIGHTS: Text-length based hpt estimation.
- * 4. WORKFLOW REORDER: inputs (E,F) -> output Status (G).
- * 5. METADATA SECURITY: Helper keys moved to SYS_ENGINE.
+ * 4. WORKFLOW ORDER: Inputs (E,F) -> Output Status (G).
+ * 5. METADATA SECURITY: Helper keys isolated in hidden SYS_ENGINE.
  * ----------------------------------------------------------------------------
  */
 
@@ -114,7 +114,6 @@ export const handleDownload = (item: PremiumPack) => {
         ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: endCIdx } }); 
         ws['!merges'].push({ s: { r: 1, c: 0 }, e: { r: 1, c: endCIdx } }); 
         ws['!views'] = [{ showGridLines: false, state: 'frozen', ySplit: 4, xSplit: 2 }];
-        ws['!rows'] = [{ hpt: 30 }, { hpt: 50 }, { hpt: 20 }, { hpt: 45 }];
     };
 
     // --- 01. START_HERE ---
@@ -128,8 +127,8 @@ export const handleDownload = (item: PremiumPack) => {
         [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open DAILY_TASKS to begin tracking execution.", l: { Target: "#DAILY_TASKS!A1" } }],
         [],
         [{ v: "CRITICAL PILOT INSTRUCTIONS", s: { font: { bold: true, color: { rgb: COLORS.CONSEQUENCE_RED } } } }],
-        [{ v: "• RELIABLE LINKS: Navigation uses direct sheet anchors (#SHEET!A1) for mobile resolution.", s: { font: { italic: true } } }],
-        [{ v: "• DATA ORDER: Log 'Done By' then 'Verified By' (if required). Status updates automatically.", s: { font: { italic: true } } }]
+        [{ v: "• RELIABLE NAVIGATION: Direct anchors (#SHEET!A1) resolve locally on mobile.", s: { font: { italic: true } } }],
+        [{ v: "• WORKFLOW ORDER: Log 'Done By' then 'Verified By' (if yellow). Status updates automatically.", s: { font: { italic: true } } }]
     ];
     const startWs = utils.aoa_to_sheet(startData);
     startWs['!cols'] = [{ wch: 30 }, { wch: 60 }];
@@ -177,13 +176,7 @@ export const handleDownload = (item: PremiumPack) => {
     utils.book_append_sheet(wb, setupWs, "SITE_CONFIGURATION");
 
     // --- 04. TEAM_HUB ---
-    const roleTemplates: Record<string, string[]> = {
-        'restaurants': ["General Manager", "Shift Manager", "Kitchen Lead", "Bar Lead", "Security Chief"],
-        'hotels_and_resorts': ["General Manager", "Front Office Manager", "Receptionist", "Executive Housekeeper", "Room Attendant", "Chief Engineer", "Maintenance Tech", "F&B Manager", "Security Chief"],
-        'healthcare_and_hospital_operations': ["Medical Director", "Nursing Superintendent", "Ward Nurse", "OT In-charge", "Pharmacy Lead", "EHS Officer", "Quality Head", "OPD Manager", "Chief Engineer", "Security Chief", "Billing Manager", "HR Manager"],
-        'retail_operations_system': ["Store Manager", "Floor Supervisor", "Cashier", "Inventory Lead", "Visual Merchandiser", "Loss Prevention Lead", "Maintenance Lead"]
-    };
-    const activeRoles = roleTemplates[item.id] || ["Manager", "Supervisor", "Lead", "Staff A", "Staff B"];
+    const activeRoles = Array.from(new Set(item.checklists.map(c => c.role)));
     const tHeaders = [{ v: "Branch", s: headerStyle }, { v: "Role", s: headerStyle }, { v: "Assigned Personnel", s: headerStyle }, { v: "Phone Number", s: headerStyle }, { v: "Institutional Email", s: headerStyle }];
     const pData: any[][] = [[], [], [], tHeaders];
 
@@ -212,8 +205,7 @@ export const handleDownload = (item: PremiumPack) => {
         { v: "Status", s: headerStyle }, { v: "Consequence / Risk", s: headerStyle }, { v: "Daily Instructions", s: headerStyle }
     ];
     const mData: any[][] = [[], [], [], lHeaders];
-    let mRowIdx = 5;
-
+    
     for (let b = 0; b < 5; b++) {
         const branchCell = `SITE_CONFIGURATION!$A$${5 + b}`;
         item.checklists.forEach(c => {
@@ -248,7 +240,6 @@ export const handleDownload = (item: PremiumPack) => {
                     { v: sanitizeRisk(t.consequence || "Operational Gap"), s: riskStyle },
                     { v: t.floorAction || t.description || "", s: instructionStyle }
                 ]);
-                mRowIdx++;
             });
         });
     }
@@ -267,7 +258,7 @@ export const handleDownload = (item: PremiumPack) => {
         c.tasks.forEach(t => {
             const text = (t.technicalProtocol || "") + (t.floorAction || t.description || "");
             const lines = Math.ceil(text.length / 60);
-            sRows.push({ hpt: Math.max(30, lines * 18) });
+            sRows.push({ hpt: Math.max(30, lines * 18), customHeight: 1 });
 
             sData.push([
                 { v: c.role, s: dataStyleCenter },
@@ -288,17 +279,16 @@ export const handleDownload = (item: PremiumPack) => {
 
     // --- 07. SYS_ENGINE (HIDDEN) ---
     const sysData: any[][] = [];
-    let sysRow = 1;
     for (let i = 0; i < 5; i++) {
         activeRoles.forEach((role, rIdx) => {
             const teamRow = 5 + (i * activeRoles.length) + rIdx;
+            const sysRowIdx = sysData.length + 1;
             sysData.push([
-                { t: 'f', f: `SITE_CONFIGURATION!$A$${5 + i}` }, // A: Branch Name
-                { v: role },                                   // B: Role
-                { t: 'f', f: `A${sysRow}&"|"&B${sysRow}` },    // C: Key
-                { t: 'f', f: `TEAM_HUB!$C$${teamRow}` }        // D: Staff Name
+                { t: 'f', f: `SITE_CONFIGURATION!$A$${5 + i}` }, 
+                { v: role },                                   
+                { t: 'f', f: `A${sysRowIdx}&"|"&B${sysRowIdx}` },    
+                { t: 'f', f: `TEAM_HUB!$C$${teamRow}` }        
             ]);
-            sysRow++;
         });
     }
     const sysWs = utils.aoa_to_sheet(sysData);
