@@ -5,14 +5,12 @@ import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v17.1 POLISHED EDITION
+ * MOREMEETS™ SOVEREIGN ENGINE - v17.2 PRODUCTION FREEZE
  * ----------------------------------------------------------------------------
- * 1. TAB OPTIMIZATION: Shortened names for mobile (START, DASHBOARD, BRANCHES, etc).
- * 2. ORIENTATION HEADERS: Row 1 instructional banners for clarity.
- * 3. FROZEN PANES: Top 2 rows locked for high-speed mobile scrolling.
- * 4. SAMPLE REDUCTION: 2 branches, 5 roles (High-density, low-clutter).
- * 5. VALIDATION: Inline static lists for status and configuration toggles.
- * 6. CONDITIONALS: Row-level status coloring (COMPLETE/IN_PROGRESS/OPEN).
+ * 1. DYNAMIC ROLES: All roles from the pack are included (no slice).
+ * 2. EXPANDED HUB: Personnel, Phone, and Email columns restored.
+ * 3. ALIGNMENT: Left-aligned content for technical scannability.
+ * 4. HYGIENE: Orphan-task exclusion through role-matched filtering.
  * ----------------------------------------------------------------------------
  */
 
@@ -20,7 +18,7 @@ const SAFE_SHEET_NAME = /^[A-Z][A-Z0-9_]*$/;
 
 const TABS = {
     START: "START",
-    DASHBOARD: "DASHBOARD",
+    CONSOLE: "CONSOLE",
     BRANCHES: "BRANCHES",
     TEAM: "TEAM",
     TASKS: "TASKS",
@@ -48,13 +46,11 @@ export const handleDownload = (item: PremiumPack) => {
         const wb = utils.book_new();
 
         const COLORS = {
-            NAVY_HUD: "020617",       
             PRIMARY_GREEN: "22C55E",  
-            ACCENT_GOLD: "FACC15",
+            HEADER_SLATE: "0F172A",   
             WHITE: "FFFFFF",     
             BORDER: "E2E8F0",    
             INPUT_YELLOW: "FEFCE8",   
-            HEADER_SLATE: "0F172A",   
             TEXT_MUTED: "64748B",  
             TEXT_ACTION: "065F46", 
             TEXT_RISK: "991B1B",
@@ -112,7 +108,7 @@ export const handleDownload = (item: PremiumPack) => {
         const addSheetHeader = (ws: WorkSheet, title: string, instruction: string, endCol: string = 'I') => {
             const headerData = [
                 [{ v: `📋 ${title.toUpperCase()} — ${instruction}`, s: bannerStyle }],
-                [] // Spacer
+                [] 
             ];
             utils.sheet_add_aoa(ws, headerData, { origin: "A1" });
             const endCIdx = utils.decode_col(endCol);
@@ -129,14 +125,14 @@ export const handleDownload = (item: PremiumPack) => {
             [{ v: "Follow the steps below to activate your operational infrastructure.", s: { font: { italic: true } } }],
             [],
             [{ v: "STEP 1: DEFINE BRANCHES", s: { font: { bold: true } } }, { v: "Open the [BRANCHES] tab and name your locations in the yellow cells." }],
-            [{ v: "STEP 2: ASSIGN TEAM", s: { font: { bold: true } } }, { v: "Open the [TEAM] tab to assign staff names to specific roles." }],
+            [{ v: "STEP 2: ASSIGN TEAM", s: { font: { bold: true } } }, { v: "Open the [TEAM] tab to assign personnel names, phone numbers, and emails." }],
             [{ v: "STEP 3: LOG DAILY WORK", s: { font: { bold: true } } }, { v: "Open the [TASKS] tab. Staff enter their initials when work is complete." }],
             [],
             [{ v: "⚠️ SAMPLE DATA NOTICE", s: { font: { bold: true, color: { rgb: COLORS.TEXT_RISK } } } }],
-            [{ v: "Replace all YELLOW cells with your own branch and personnel details to begin." }],
+            [{ v: "Replace all YELLOW cells with your own local details to begin." }],
             [],
-            [{ v: "TAB WORKFLOW:", s: { font: { bold: true } } }],
-            [{ v: "Use the color-coded tabs at the bottom of your screen to navigate." }]
+            [{ v: "NAVIGATION NOTICE:", s: { font: { bold: true } } }],
+            [{ v: "Use the tab bar at the bottom of your screen to move between divisions." }]
         ];
         const startWs = utils.aoa_to_sheet(startData);
         startWs['!cols'] = [{ wch: 30 }, { wch: 80 }];
@@ -145,9 +141,9 @@ export const handleDownload = (item: PremiumPack) => {
         validateSheetName(TABS.START);
         utils.book_append_sheet(wb, startWs, TABS.START);
 
-        // --- 02. DASHBOARD ---
+        // --- 02. CONSOLE ---
         const dashData: any[][] = [
-            [{ v: "📊 DASHBOARD — REAL-TIME OPERATIONAL VITAL SIGNS", s: bannerStyle }],
+            [{ v: "📊 OPS CONSOLE — REAL-TIME OPERATIONAL VITAL SIGNS", s: bannerStyle }],
             [],
             [{ v: "SYSTEM STATUS:", s: { font: { bold: true } } }, { v: "ONLINE", s: { font: { color: { rgb: COLORS.PRIMARY_GREEN }, bold: true } } }],
             [],
@@ -159,8 +155,8 @@ export const handleDownload = (item: PremiumPack) => {
         dashWs['!cols'] = [{ wch: 30 }, { wch: 20 }];
         dashWs['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 1 } }];
         dashWs['!ref'] = utils.encode_range({ s: { c: 0, r: 0 }, e: { c: 1, r: 10 } });
-        validateSheetName(TABS.DASHBOARD);
-        utils.book_append_sheet(wb, dashWs, TABS.DASHBOARD);
+        validateSheetName(TABS.CONSOLE);
+        utils.book_append_sheet(wb, dashWs, TABS.CONSOLE);
 
         // --- 03. BRANCHES ---
         const branchHeaders = [{ v: "BRANCH NAME", s: headerStyle }, { v: "CITY", s: headerStyle }, { v: "STATUS", s: headerStyle }];
@@ -180,38 +176,45 @@ export const handleDownload = (item: PremiumPack) => {
         utils.book_append_sheet(wb, branchWs, TABS.BRANCHES);
 
         // --- 04. TEAM ---
-        const activeRoles = Array.from(new Set(item.checklists.map(c => c.role))).slice(0, 5);
-        const teamHeaders = [{ v: "Branch", s: headerStyle }, { v: "Role", s: headerStyle }, { v: "Assigned Personnel", s: headerStyle }];
+        const activeRoles = Array.from(new Set(item.checklists.map(c => c.role)));
+        const teamHeaders = [
+            { v: "BRANCH", s: headerStyle }, 
+            { v: "ROLE", s: headerStyle }, 
+            { v: "PERSONNEL NAME", s: headerStyle },
+            { v: "PHONE", s: headerStyle },
+            { v: "EMAIL", s: headerStyle }
+        ];
         const teamData: any[][] = [[], [], teamHeaders];
         for (let i = 0; i < 2; i++) {
             const bRef = `${TABS.BRANCHES}!$A$${4 + i}`;
             activeRoles.forEach(role => {
                 teamData.push([
                     { t: 'f', f: `IFERROR(${bRef}, "")`, s: lockedStyle },
-                    { v: role, s: dataStyleCenter },
-                    { v: "[ENTER NAME]", s: inputStyle }
+                    { v: role, s: dataStyleLeft },
+                    { v: "[ENTER NAME]", s: inputStyle },
+                    { v: "[PHONE]", s: inputStyle },
+                    { v: "[EMAIL]", s: inputStyle }
                 ]);
             });
         }
         const teamWs = utils.aoa_to_sheet(teamData);
-        teamWs['!cols'] = [{ wch: 25 }, { wch: 30 }, { wch: 40 }];
-        addSheetHeader(teamWs, TABS.TEAM, "Assign personnel to specific roles.", 'C');
-        teamWs['!ref'] = utils.encode_range({ s: { c: 0, r: 0 }, e: { c: 2, r: teamData.length - 1 } });
+        teamWs['!cols'] = [{ wch: 20 }, { wch: 30 }, { wch: 35 }, { wch: 20 }, { wch: 40 }];
+        addSheetHeader(teamWs, TABS.TEAM, "Assign personnel to specific roles.", 'E');
+        teamWs['!ref'] = utils.encode_range({ s: { c: 0, r: 0 }, e: { c: 4, r: teamData.length - 1 } });
         validateSheetName(TABS.TEAM);
         utils.book_append_sheet(wb, teamWs, TABS.TEAM);
 
         // --- 05. TASKS ---
         const taskHeaders = [
-            { v: "Branch", s: headerStyle }, { v: "Role", s: headerStyle }, { v: "Task Description", s: headerStyle },
-            { v: "Assigned To", s: headerStyle }, { v: "Done By", s: headerStyle }, { v: "Verified By", s: headerStyle }, 
-            { v: "Status", s: headerStyle }, { v: "Risk", s: headerStyle }, { v: "Instructions", s: headerStyle }
+            { v: "BRANCH", s: headerStyle }, { v: "ROLE", s: headerStyle }, { v: "TECHNICAL TASK", s: headerStyle },
+            { v: "ASSIGNED TO", s: headerStyle }, { v: "DONE BY", s: headerStyle }, { v: "VERIFIED BY", s: headerStyle }, 
+            { v: "STATUS", s: headerStyle }, { v: "CONSEQUENCE / RISK", s: headerStyle }, { v: "FLOOR INSTRUCTIONS", s: headerStyle }
         ];
         const taskData: any[][] = [[], [], taskHeaders];
         
         for (let b = 0; b < 2; b++) {
             const bRef = `${TABS.BRANCHES}!$A$${4 + b}`;
             item.checklists.forEach(c => {
-                if (!activeRoles.includes(c.role)) return;
                 c.tasks.forEach(t => {
                     const rIdx = taskData.length + 1;
                     const bVal = `$A${rIdx}`;
@@ -227,10 +230,10 @@ export const handleDownload = (item: PremiumPack) => {
                         : `IF(LEN(TRIM(${dBy}))>0, "COMPLETE", "OPEN")`;
 
                     taskData.push([
-                        { t: 'f', f: `IFERROR(${bRef}, "")`, s: dataStyleCenter },
-                        { v: c.role, s: dataStyleCenter },
+                        { t: 'f', f: `IFERROR(${bRef}, "")`, s: dataStyleLeft },
+                        { v: c.role, s: dataStyleLeft },
                         { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
-                        { t: 'f', f: assignedFormula, s: dataStyleCenter },
+                        { t: 'f', f: assignedFormula, s: dataStyleLeft },
                         { v: "", s: inputStyle },
                         { v: "", s: isV ? inputStyle : lockedStyle }, 
                         { t: 'f', f: statusFormula, s: { ...dataStyleCenter, font: { bold: true } } },
@@ -241,26 +244,25 @@ export const handleDownload = (item: PremiumPack) => {
             });
         }
         const taskWs = utils.aoa_to_sheet(taskData);
-        taskWs['!cols'] = [15, 25, 45, 20, 15, 15, 15, 40, 45].map(w => ({ wch: w }));
+        taskWs['!cols'] = [20, 25, 45, 25, 15, 15, 15, 45, 55].map(w => ({ wch: w }));
         addSheetHeader(taskWs, TABS.TASKS, "Update 'Done By' to complete daily work.", 'I');
         taskWs['!ref'] = utils.encode_range({ s: { c: 0, r: 0 }, e: { c: 8, r: taskData.length - 1 } });
         validateSheetName(TABS.TASKS);
         utils.book_append_sheet(wb, taskWs, TABS.TASKS);
 
         // --- 06. SOP_LIB ---
-        const libHeaders = [{ v: "Role", s: headerStyle }, { v: "Technical SOP", s: headerStyle }, { v: "Purpose", s: headerStyle }, { v: "Step-by-Step Action", s: headerStyle }];
+        const libHeaders = [{ v: "ROLE", s: headerStyle }, { v: "TECHNICAL SOP", s: headerStyle }, { v: "OPERATIONAL PURPOSE", s: headerStyle }, { v: "STEP-BY-STEP ACTION", s: headerStyle }];
         const libData: any[][] = [[], [], libHeaders];
         const libRows: any[] = [{ hpt: 30 }, { hpt: 20 }, { hpt: 30 }];
 
         item.checklists.forEach(c => {
-            if (!activeRoles.includes(c.role)) return;
             c.tasks.forEach(t => {
                 const txt = (t.technicalProtocol || "") + (t.floorAction || t.description || "");
                 const lines = Math.ceil(txt.length / 60);
                 libRows.push({ hpt: Math.max(35, lines * 18), customHeight: 1 });
 
                 libData.push([
-                    { v: c.role, s: dataStyleCenter },
+                    { v: c.role, s: dataStyleLeft },
                     { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
                     { v: sanitizeRisk(t.consequence || "Risk Mitigation"), s: dataStyleLeft },
                     { v: t.floorAction || t.description || "", s: { ...dataStyleLeft, font: { color: { rgb: COLORS.TEXT_ACTION } } } }
@@ -268,7 +270,7 @@ export const handleDownload = (item: PremiumPack) => {
             });
         });
         const libWs = utils.aoa_to_sheet(libData);
-        libWs['!cols'] = [{ wch: 25 }, { wch: 45 }, { wch: 45 }, { wch: 60 }];
+        libWs['!cols'] = [{ wch: 30 }, { wch: 45 }, { wch: 45 }, { wch: 65 }];
         libWs['!rows'] = libRows;
         addSheetHeader(libWs, TABS.SOP_LIB, "Reference library for training and audits.", 'D');
         libWs['!ref'] = utils.encode_range({ s: { c: 0, r: 0 }, e: { c: 3, r: libData.length - 1 } });
@@ -300,7 +302,7 @@ export const handleDownload = (item: PremiumPack) => {
 
         writeFile(wb, `${item.title.replace(/ /g, '_')}_Master_v17.xlsx`);
     } catch (error: any) {
-        console.error("Sovereign Polish Failure:", error);
+        console.error("Sovereign Infrastructure Failure:", error);
         alert(`Engine Error: ${error.message}`);
     }
 }
