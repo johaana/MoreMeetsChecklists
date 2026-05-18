@@ -1,15 +1,14 @@
-
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v17.3 PRODUCTION FREEZE
+ * MOREMEETS™ SOVEREIGN ENGINE - v17.4 PRODUCTION FREEZE
  * ----------------------------------------------------------------------------
- * 1. PURE TABULAR LEDGER: Removed synthetic 'Role Ribbons' for filter safety.
+ * 1. PURE TABULAR LEDGER: Minimalist, filterable high-density structure.
  * 2. ALTERNATING BLOCKS: Visual grouping via role-based background tints.
- * 3. ATOMIC DENSITY: Expanded task logic for deep industrial realism.
+ * 3. TIERED VERIFICATION: yellow cells + status logic for high-risk points.
  * 4. HYGIENE: Normalized roles and zero-clipping dynamic heights.
  * ----------------------------------------------------------------------------
  */
