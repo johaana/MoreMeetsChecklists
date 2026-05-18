@@ -1,19 +1,26 @@
-
 'use client';
 
 import { writeFile, utils, type WorkSheet } from 'xlsx-js-style';
 import type { PremiumPack } from "@/lib/premium-packs";
 
 /**
- * MOREMEETS™ SOVEREIGN ENGINE - v15.0 PILOT FREEZE
+ * MOREMEETS™ SOVEREIGN ENGINE - v15.5 HARDENED
  * ----------------------------------------------------------------------------
- * 1. MULTI-BRANCH REPLICATION: Repeats task-set for 5 branches by default.
- * 2. SORT-PROOF ROSTER: Assigned To uses absolute anchors ($A5 & "|" & $B5).
- * 3. HIDDEN ENGINEERING: Columns J:P (9-15) strictly hidden: true, width: 0.
- * 4. PROTECTION LAYER: Locks formula cells, unlocks Input Yellow cells.
+ * 1. RISK SANITIZATION: Prevents recursive bracket corruption.
+ * 2. NAMED RANGE ANCHORS: (Architecture Ready - Pending Phase 5).
+ * 3. SORT-PROOF ROSTER: Assigned To uses absolute anchors ($A5 & "|" & $B5).
+ * 4. HIDDEN ENGINEERING: Columns J:P (9-15) strictly hidden: true, width: 0.
  * 5. DYNAMIC SWITCHBOARD: INDEX+MATCH links Status to SITE_CONFIGURATION.
  * ----------------------------------------------------------------------------
  */
+
+const sanitizeRisk = (text: string) => {
+    if (!text) return "";
+    return text
+        .replace(/\[?Risk:\s?\[?/gi, "") // Remove "[Risk: ", "Risk:", "[Risk:["
+        .replace(/\]/g, "")             // Remove all "]"
+        .trim();
+};
 
 export const handleDownload = (item: PremiumPack) => {
     if (!item) {
@@ -269,7 +276,7 @@ export const handleDownload = (item: PremiumPack) => {
                     { t: 'f', f: statusFormula, s: dataStyleCenter },
                     { v: "", s: inputStyle },
                     { v: "", s: t.priority === 'Low' ? greyStyle : inputStyle },
-                    { v: `[Risk: ${t.consequence || "Operational Gap"}]`, s: riskStyle },
+                    { v: sanitizeRisk(t.consequence || "Operational Gap"), s: riskStyle },
                     { v: t.floorAction || t.description || "", s: instructionStyle },
                     { v: t.priority, s: { hidden: true } },
                     { v: t.frequency || c.frequency, s: { hidden: true } },
@@ -298,10 +305,10 @@ export const handleDownload = (item: PremiumPack) => {
             sData.push([
                 { v: c.role, s: dataStyleCenter },
                 { v: t.technicalProtocol || t.description, s: { ...dataStyleLeft, font: { bold: true } } },
-                { v: `Prevents unmonitored ${t.consequence || "gaps"}.`, s: dataStyleLeft },
+                { v: `Prevents unmonitored ${sanitizeRisk(t.consequence || "gaps")}.`, s: dataStyleLeft },
                 { v: t.description || t.floorAction || "", s: dataStyleLeft },
                 { v: t.proof || "Verify in log.", s: instructionStyle },
-                { v: t.consequence || t.riskLevel, s: riskStyle }
+                { v: sanitizeRisk(t.consequence || t.riskLevel), s: riskStyle }
             ]);
         });
     });
