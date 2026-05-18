@@ -41,7 +41,6 @@ const allPacksByCategory = (packs: PremiumPack[]) => {
 
 const PackCard = ({ pack }: { pack: PremiumPack }) => {
     const totalTasks = pack.checklists.reduce((sum, cl) => sum + cl.tasks.length, 0);
-    // Authentic Density Rounding (e.g., 144 -> 140+)
     const displayTasks = Math.floor(totalTasks / 10) * 10;
 
     return (
@@ -99,7 +98,7 @@ export default function LibraryClientPage({ packs }: { packs: PremiumPack[] }) {
 
     const elitePacks = React.useMemo(() => packs.filter(p => ELITE_PACK_IDS.includes(p.id)), [packs]);
     const packsByCategory = React.useMemo(() => allPacksByCategory(elitePacks), [elitePacks]);
-    const categories = Object.keys(packsByCategory).sort();
+    const categories = React.useMemo(() => Object.keys(packsByCategory).sort(), [packsByCategory]);
 
     const [searchTerm, setSearchTerm] = React.useState('');
     const [activeCategory, setActiveCategory] = React.useState('All');
