@@ -20,6 +20,7 @@ import { bakery_confectionery_pack } from "./bakery_confectionery_pack";
 import { animal_shelter_pack } from "./animal_shelter_pack";
 import { pharmacy_ops_pack } from "./pharmacy_ops_pack";
 import { retail_operations_system } from "./retail_operations_system";
+import { retail_jewellery_operations_pack } from "./retail_jewellery_operations_pack";
 import type { PremiumPack } from "../premium-packs";
 
 export const allPacks: PremiumPack[] = [
@@ -43,5 +44,8 @@ export const allPacks: PremiumPack[] = [
     bakery_confectionery_pack,
     animal_shelter_pack,
     pharmacy_ops_pack,
-    retail_operations_system
+    retail_operations_system,
+    retail_jewellery_operations_pack
 ];
+
+    
