@@ -11,7 +11,7 @@ export const franchise_operations_pack: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f4e6b12a-4422-48a0-a198-154332822a27',
     category: "Franchise",
-    description: "The definitive Sovereign v18.0 multi-unit governance engine. Hardening 198 technical control points across Brand Consistency, Royalty Integrity, and Regional Compliance.",
+    description: "The definitive Sovereign v18.0 multi-unit governance engine. Hardening 181 technical control points across Brand Consistency, Royalty Integrity, and Regional Compliance.",
     heroHeadline: "Scale Without Losing Control. Standardize Every Unit.",
     heroSubheadline: "Track brand parity, monitor royalty leakage, and manage supply chain synchronization—across 22 specialized governance roles.",
     pricingUrgency: "A single rogue unit damaging the brand or one major royalty leak costs 100x more than this entire system.",
