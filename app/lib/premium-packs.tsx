@@ -1,5 +1,23 @@
 import { allPacks } from "./packs/all_packs";
 
+export type ChecklistTask = {
+    id: string;
+    description?: string;      
+    technicalProtocol?: string; 
+    floorAction?: string;       
+    priority: 'High' | 'Medium' | 'Low';
+    riskLevel: 'High' | 'Medium' | 'Low';
+    consequence: string;
+    proof: string;
+    trainerNotes?: string; 
+    location?: string;
+    department?: string;
+    role?: string;
+    frequency?: string;
+    verificationRequired?: boolean; 
+    cadence?: 'daily' | 'weekly' | 'monthly' | 'quarterly' | 'incident-based';
+};
+
 export type Checklist = {
     title: string;
     department: string;
@@ -9,22 +27,7 @@ export type Checklist = {
     icon: string;
     moduleId?: string;
     moduleType?: 'CORE' | 'OPTIONAL';
-    tasks: {
-        id: string;
-        description?: string;      
-        technicalProtocol?: string; 
-        floorAction?: string;       
-        priority: 'High' | 'Medium' | 'Low';
-        riskLevel: 'High' | 'Medium' | 'Low';
-        consequence: string;
-        proof: string;
-        trainerNotes?: string; 
-        location?: string;
-        department?: string;
-        role?: string;
-        frequency?: string;
-        verificationRequired?: boolean; 
-    }[];
+    tasks: ChecklistTask[];
 };
 
 export type PremiumPack = {
