@@ -3,193 +3,203 @@ import type { PremiumPack } from "@/lib/premium-packs";
 export const franchise_operations_pack: PremiumPack = {
     id: 'franchise_operations_pack',
     title: "Franchise Operations System",
-    priceINR: 5999,
-    priceUSD: 79,
+    priceINR: 3499,
+    priceUSD: 49,
     competitorPriceUSD: 599,
     updatedAt: "2025-03-01",
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/f4e6b12a-4422-48a0-a198-154332822a27',
     category: "Franchise",
-    description: "The definitive Sovereign v16.0 engine for multi-unit groups. Hardening 130 technical control points across Royalty and Network Drift.",
+    description: "The definitive Sovereign v18.0 multi-unit governance engine. Hardening 165+ technical control points across Brand Consistency, Royalty Integrity, and Regional Compliance.",
+    heroHeadline: "Scale Without Losing Control. Standardize Every Unit.",
+    heroSubheadline: "Track brand parity, monitor royalty leakage, and manage supply chain synchronization—across 22 specialized governance roles.",
+    pricingUrgency: "A single rogue unit damaging the brand or one major royalty leak costs 100x more than this entire system.",
+    consultingAnchor: 12000,
     icon: "store",
-    badgeText: "V16.0 SOVEREIGN",
+    badgeText: "V18.0 SOVEREIGN",
     badgeVariant: "accent",
-    whoIsItFor: ["Franchisors", "Heads of Operations", "Regional Managers", "Brand Expansion Directors", "Franchisees"],
+    whoIsItFor: ["Franchisors", "Heads of Operations", "Regional Managers", "Brand Expansion Directors", "Multi-Unit Franchisees"],
     sampleItems: [
-        { text: "<strong>Royalty Shield</strong>: Daily void-bill audits and aggregator payout mismatch logs to protect revenue.", icon: "banknote" },
-        { text: "<strong>Network Drift Detection</strong>: Audit protocols for recipe deviation and menu photo mismatches across branches.", icon: "eye" },
-        { text: "<strong>Expansion Command</strong>: Site vetting, fit-out timelines, and fit-for-trade handover checklists.", icon: "layout-grid" }
+        { text: "<strong>Multi-Unit Governance</strong>: Regional performance benchmarking and cross-outlet deviation detection.", icon: "layout-grid" },
+        { text: "<strong>Royalty Shield Engine</strong>: Daily bill-sequence audits and aggregator payout reconciliation to stop revenue theft.", icon: "banknote" },
+        { text: "<strong>Brand Parity Hub</strong>: Visual VM audits, menu photo matches, and standardized service execution scoring.", icon: "eye" },
+        { text: "<strong>Supply Chain Sync</strong>: Real-time vendor SLA monitoring and stock redistribution protocols.", icon: "truck" },
+        { text: "<strong>Training Equity</strong>: Onboarding completion tracking and SOP adherence mapping per employee.", icon: "graduation-cap" },
+        { text: "<strong>Compliance Command</strong>: Centralized tracking for FSSAI, Fire, and Labor licenses across the network.", icon: "shield-check" }
     ],
     checklists: [
         {
-            title: "Network Governance",
+            title: "Network Governance & Strategy",
             department: "Executive",
-            frequency: "Weekly",
-            role: "CEO",
-            summary: "High-level strategic oversight of brand equity.",
+            frequency: "Daily",
+            role: "Franchise Owner",
+            summary: "High-level strategic oversight of network health and royalty integrity.",
             icon: "crown",
             tasks: [
-                { id: "FR-CEO-01", description: "Equity Protection: Review global P&L dashboard for units with > 3 days of pending royalties.", priority: "High", riskLevel: "High", consequence: "Significant royalty leakage.", proof: "Dashboard Review" },
-                { id: "FR-CEO-08", description: "Final Weekly Sign-off: Execute board governance summary; witness network risk triage.", priority: "High", riskLevel: "Low", consequence: "Loss of oversight.", proof: "Signed Summary" }
+                { id: "FR-EXE-01", technicalProtocol: "Royalty Variance Review", floorAction: "Review group-level P&L for units with >3% variance in reported sales.", priority: "High", riskLevel: "High", consequence: "Significant royalty leakage and internal revenue fraud.", proof: "Dashboard Match", verificationRequired: true },
+                { id: "FR-EXE-02", technicalProtocol: "Network Risk Triage", floorAction: "Analyze 'Red Flag' alerts from Area Managers regarding unit distress.", priority: "High", riskLevel: "Medium", consequence: "Unmonitored unit collapse damaging the network.", proof: "Incident Log", verificationRequired: true },
+                { id: "FR-EXE-03", technicalProtocol: "Brand Equity Guard", floorAction: "Review weekly ORM trends and guest score parity across clusters.", priority: "Medium", riskLevel: "Low", consequence: "Slow brand dilution and rating drop.", proof: "Sentiment Report" },
+                { id: "FR-EXE-04", technicalProtocol: "Statutory Affiliation Sync", floorAction: "Verify validity of master franchise licenses and insurance covers.", priority: "High", riskLevel: "High", consequence: "Global legal injunction and business halt.", proof: "Registry File", verificationRequired: true }
             ]
         },
         {
-            title: "Strategic Operations",
-            department: "Management",
-            frequency: "Weekly",
-            role: "Operations Director",
-            summary: "Command for network drift and tech infrastructure.",
-            icon: "cpu",
-            tasks: [
-                { id: "FR-OPS-01", description: "Network Drift Audit: Analyze unit-level pricing reports; verify zero deviations from brand master.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent brand perception.", proof: "Drift Report" }
-            ]
-        },
-        {
-            title: "Regional Control",
-            department: "Operations",
+            title: "Regional Operations Control",
+            department: "Executive",
             frequency: "Daily",
-            role: "Regional Manager",
-            summary: "Unit-level readiness and standard parity.",
+            role: "Franchise Operations Manager",
+            summary: "Management of regional clusters and operational parity.",
             icon: "map",
             tasks: [
-                { id: "FR-REG-01", description: "Unit MOD Presence: Remote CCTV verification of Manager-on-Duty at 1:00 PM peak rush.", priority: "High", riskLevel: "Low", consequence: "Service gridlock.", proof: "Attendance Log" },
-                { id: "FR-REG-02", description: "Regional Escalation Ladder: Verify HOD contact list is active and displayed in unit office.", priority: "Medium", riskLevel: "Low", consequence: "Delayed recovery.", proof: "Visual Check" }
+                { id: "FR-ROM-01", technicalProtocol: "Cluster Pulse Audit", floorAction: "Verify zero-gap reporting compliance from 100% of Area Managers.", priority: "High", riskLevel: "Low", consequence: "Loss of regional operational visibility.", proof: "Reporting Dashboard" },
+                { id: "FR-ROM-02", technicalProtocol: "New Site Launch Readiness", floorAction: "Review fit-out milestones for upcoming unit openings.", priority: "Medium", riskLevel: "Medium", consequence: "Delayed launches and wasted rent overheads.", proof: "Project Log" },
+                { id: "FR-ROM-03", technicalProtocol: "Regional Training Matrix", floorAction: "Confirm 100% certification for new hires in the northern cluster.", priority: "Medium", riskLevel: "Low", consequence: "Slipping service standards.", proof: "Matrix Match" }
             ]
         },
         {
-            title: "Expansion Command",
-            department: "Projects",
-            frequency: "Ongoing",
-            role: "Expansion Lead",
-            summary: "Governance for new site launches.",
-            icon: "rocket",
-            tasks: [
-                { id: "FR-EXP-01", description: "Site Vetting: Verify electrical load capacity and footfall sensors for new location approval.", priority: "High", riskLevel: "Medium", consequence: "Failed ROI on launch.", proof: "Vetting Report" }
-            ]
-        },
-        {
-            title: "Field Audit Engine",
-            department: "Audit",
+            title: "Cluster Management (Field)",
+            department: "Executive",
             frequency: "Daily",
-            role: "Audit Controller",
-            summary: "Strict field audits for standard integrity.",
-            icon: "search-check",
+            role: "Area Operations Head",
+            summary: "Field-level governance of store groups (clusters).",
+            icon: "layout-grid",
             tasks: [
-                { id: "FR-AUD-01", description: "Surprise Unit Audit: Conduct unannounced site inspection; score visual parity vs brand guide.", priority: "High", riskLevel: "High", consequence: "Slipping standards.", proof: "Audit Scorecard" },
-                { id: "FR-AUD-02", description: "Blind Stock Count: Count top 5 SKUs (e.g., Syrup/Meat); match physical vs system par-levels.", priority: "High", riskLevel: "High", consequence: "Internal theft.", proof: "Count Log" },
-                { id: "FR-AUD-03", description: "CCTV Retention Pulse: Verify 30-day recording logs are available and synced at branch level.", priority: "High", riskLevel: "High", consequence: "Loss of evidence.", proof: "System Log" },
-                { id: "FR-AUD-04", description: "Weighing Scale Metrology: Verify 100% of unit scales possess valid government stamps.", priority: "High", riskLevel: "Medium", consequence: "Regulatory fines.", proof: "Visual Audit" },
-                { id: "FR-AUD-05", description: "Hygiene ATP Swab: Conduct random surface test in high-care prep zone; verify RLU < 100.", priority: "High", riskLevel: "High", consequence: "Infection risk.", proof: "Test Result" }
+                { id: "FR-AOH-01", technicalProtocol: "Surprise Field Audit", floorAction: "Conduct unannounced visit to 1 random unit; score visual parity.", priority: "High", riskLevel: "High", consequence: "Local 'improvisation' on brand standards.", proof: "Audit Photo", verificationRequired: true },
+                { id: "FR-AOH-02", technicalProtocol: "Local Metrology Stamp", floorAction: "Verify weighing scale calibration stamps at unit level.", priority: "High", riskLevel: "Medium", consequence: "Regulatory fines and consumer court cases.", proof: "Visual Check", verificationRequired: true },
+                { id: "FR-AOH-03", technicalProtocol: "Unit MOD Verification", floorAction: "Remote CCTV check for Manager-on-Duty presence at 1 PM.", priority: "High", riskLevel: "Low", consequence: "Service gridlock during peaks.", proof: "CCTV Log" }
             ]
         },
         {
-            title: "Partner Bridge",
-            department: "Partners",
-            frequency: "Monthly",
-            role: "Franchise Partner Manager",
-            summary: "Governance for partner relations.",
-            icon: "handshake",
-            tasks: [
-                { id: "FR-PTN-01", description: "Partner Satisfaction Pulse: Conduct 15-min performance coaching call with Unit Franchisee.", priority: "Medium", riskLevel: "Low", consequence: "Partner attrition.", proof: "Meeting Note" }
-            ]
-        },
-        {
-            title: "Kitchen Lead (HACCP)",
-            department: "Kitchen",
+            title: "Store Command (Outlet)",
+            department: "Outlet Ops",
             frequency: "Daily",
-            role: "Kitchen Lead",
-            summary: "Food safety and yield governance.",
-            icon: "utensils",
+            role: "Store Manager (Outlet Level)",
+            summary: "Unit-level execution and local compliance command.",
+            icon: "store",
             tasks: [
-                { id: "FR-KIT-01", description: "Recipe Deviation Pulse: Physically weigh 3 random signature dishes; match prep-manual spec.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent taste.", proof: "Weight Sheet" },
-                { id: "FR-KIT-02", description: "Allergen Board Verify: Inspect 100% segregation of Prep Zone-A vs Zone-B.", priority: "High", riskLevel: "High", consequence: "Fatal reaction.", proof: "Visual Audit" },
-                { id: "FR-KIT-03", description: "Cold-Chain Audit: Log receiving temp for bulk stock; reject if > 5°C.", priority: "High", riskLevel: "High", consequence: "Compromised stock.", proof: "Receiving Note" },
-                { id: "FR-KIT-04", description: "TPM Oil Quality: Measure cooking oil polar compounds; discard if reading > 25%.", priority: "High", riskLevel: "Medium", consequence: "Toxin buildup.", proof: "TPM Log" }
+                { id: "FR-SM-01", technicalProtocol: "Opening Readiness Seal", floorAction: "Physically sign-off on 100% of station readiness protocols.", priority: "High", riskLevel: "Medium", consequence: "Delayed opening and lost sales.", proof: "Signed Summary", verificationRequired: true },
+                { id: "FR-SM-02", technicalProtocol: "Bill Seriality Reconcile", floorAction: "Check POS bill sequence for any missing/skipped invoice numbers.", priority: "High", riskLevel: "High", consequence: "Revenue manipulation and GST non-compliance.", proof: "Registry Audit", verificationRequired: true },
+                { id: "FR-SM-03", technicalProtocol: "Local Stock Triage", floorAction: "Verify critical ingredient availability for today's forecast.", priority: "High", riskLevel: "Medium", consequence: "High-LTV customer disappointment.", proof: "Prep Sheet" }
             ]
         },
         {
-            title: "CX Command",
-            department: "Service",
+            title: "Shift Execution",
+            department: "Outlet Ops",
             frequency: "Daily",
-            role: "CX Lead",
-            summary: "Protects the guest score and brand parity.",
-            icon: "smile",
+            role: "Shift Supervisor",
+            summary: "Intra-day flow and handover management.",
+            icon: "timer",
             tasks: [
-                { id: "FR-CX-01", description: "Review Triage: Reply to 100% of unit Google reviews < 12 hours.", priority: "High", riskLevel: "Low", consequence: "Rating drop.", proof: "ORM Dashboard" }
+                { id: "FR-SH-01", technicalProtocol: "Zero-Gap Handover", floorAction: "Verify data transfer in the shift handover digital registry.", priority: "High", riskLevel: "Medium", consequence: "Lost instructions between teams.", proof: "Handover Log", verificationRequired: true },
+                { id: "FR-SH-02", technicalProtocol: "BOH Hygiene Sweep", floorAction: "Audit restroom cleaning frequency (Target: 30 mins).", priority: "High", riskLevel: "Low", consequence: "Negative review driver.", proof: "Hourly Sheet" }
             ]
         },
         {
-            title: "Digital Shield",
-            department: "Digital",
+            title: "Brand Standard Pulse",
+            department: "Compliance",
             frequency: "Daily",
-            role: "Digital Lead",
-            summary: "Governance for off-premise revenue.",
-            icon: "smartphone",
+            role: "Brand Compliance Officer",
+            summary: "Protects the visual and procedural brand promise.",
+            icon: "eye",
             tasks: [
-                { id: "FR-DIG-01", description: "Aggregator Sync: Verify 100% menu item availability matches physical stock-outs.", priority: "High", riskLevel: "Medium", consequence: "Cancellations.", proof: "App Check" },
-                { id: "FR-DIG-02", description: "Payout Mismatch: Reconcile aggregator daily payout vs POS delivery report; flag > ₹500 gap.", priority: "High", riskLevel: "High", consequence: "Financial loss.", proof: "System Sync" },
-                { id: "FR-DIG-03", description: "Geo-fence Verification: Test delivery radius limits on aggregator apps for 2 units.", priority: "Medium", riskLevel: "Low", consequence: "Rider overlap.", proof: "Map Audit" },
-                { id: "FR-DIG-04", description: "Bag-Seal Audit: Verify 100% of orders leave with intact high-security brand seals.", priority: "High", riskLevel: "Low", consequence: "Tampering.", proof: "Visual Check" }
+                { id: "FR-BCO-01", technicalProtocol: "Visual VM Audit", floorAction: "Match storefront lighting and signage to brand book specs.", priority: "Medium", riskLevel: "Low", consequence: "Brand dilution.", proof: "Photo" },
+                { id: "FR-BCO-02", technicalProtocol: "Recipe Parity Check", floorAction: "Physically weigh 3 random items; match corporate spec manual.", priority: "High", riskLevel: "Medium", consequence: "Inconsistent taste and margin loss.", proof: "Weight Sheet", verificationRequired: true }
             ]
         },
         {
-            title: "IT Support Hub",
-            department: "Technical",
-            frequency: "Daily",
-            role: "IT Support",
-            summary: "Digital backbone and data security.",
-            icon: "server",
-            tasks: [
-                { id: "FR-IT-01", description: "Firewall Uptime: Verify unit-level POS firewalls are active and firmware is current.", priority: "High", riskLevel: "High", consequence: "Cyber attack.", proof: "Dashboard" }
-            ]
-        },
-        {
-            title: "Sourcing Integrity",
+            title: "Procurement & Shrinkage",
             department: "Stores",
             frequency: "Daily",
-            role: "Sourcing Lead",
-            summary: "Vendor governance.",
+            role: "Inventory & Procurement Controller",
+            summary: "Profit protection at the supply chain entry point.",
             icon: "package",
             tasks: [
-                { id: "FR-SRC-01", description: "Vendor Lead-time Breach: Document any delivery exceeding contract SLA by > 4 hours.", priority: "High", riskLevel: "Medium", consequence: "Network stockouts.", proof: "Vendor Log" }
+                { id: "FR-IPC-01", technicalProtocol: "Blind Stock Count", floorAction: "Count top 10 SKUs; match physical vs POS levels.", priority: "High", riskLevel: "High", consequence: "Internal theft and shrinkage.", proof: "Count Sheet", verificationRequired: true },
+                { id: "FR-IPC-02", technicalProtocol: "Vendor SLA Breach Log", floorAction: "Document any delivery exceeding lead-time by >2 hours.", priority: "Medium", riskLevel: "Low", consequence: "Network stockouts.", proof: "Variance Report" }
             ]
         },
         {
-            title: "Financial Controller",
+            title: "Revenue & Finance Shield",
             department: "Finance",
             frequency: "Daily",
-            role: "Finance Controller",
-            summary: "Protects the revenue stream.",
+            role: "Finance & Cash Reconciliation Officer",
+            summary: "Governance for cash handling and digital settlements.",
             icon: "banknote",
             tasks: [
-                { id: "FR-FIN-01", description: "Royalty Variance: Match aggregator settlements vs physical bank credit; flag gaps > 1%.", priority: "High", riskLevel: "High", consequence: "Partner revenue theft.", proof: "Bank Reconcile" },
-                { id: "FR-FIN-02", description: "Tax Seriality Audit: Check POS bill sequence for any missing invoice numbers in the last 24h.", priority: "High", riskLevel: "High", consequence: "GST audit failure.", proof: "Registry Match" },
-                { id: "FR-FIN-03", description: "Promo Leakage: Audit 10 random coupon redemptions for valid customer ID/phone mapping.", priority: "Medium", riskLevel: "Low", consequence: "Financial loss.", proof: "IT Report" },
-                { id: "FR-FIN-04", description: "Unauthorized Discounting: Review POS logs for high-frequency usage of 'Manager Comp' keys.", priority: "High", riskLevel: "High", consequence: "Till fraud.", proof: "Audit Report" },
-                { id: "FR-FIN-05", description: "Vault Drop Witness: Physically observe shift-end cash-bag sealing for Regional HQ transit.", priority: "High", riskLevel: "High", consequence: "Theft.", proof: "Signed Log" }
+                { id: "FR-FIN-01", technicalProtocol: "Cash Drop Witness", floorAction: "Physically witness seal of shift-end bank transit bag.", priority: "High", riskLevel: "High", consequence: "Untraceable transit theft.", proof: "Seal Number Log", verificationRequired: true },
+                { id: "FR-FIN-02", technicalProtocol: "Aggregator Payout Pulse", floorAction: "Reconcile daily Swiggy/Zomato payout vs unit delivery report.", priority: "High", riskLevel: "High", consequence: "Platform revenue leakage.", proof: "System Sync", verificationRequired: true }
             ]
         },
         {
-            title: "Life Safety Pulse",
-            department: "Safety",
+            title: "Customer Experience (CX)",
+            department: "Service",
             frequency: "Daily",
-            role: "Safety Officer",
-            summary: "Infrastructure safety.",
-            icon: "shield-alert",
+            role: "Customer Experience Manager",
+            summary: "Protects the guest score and brand reputation.",
+            icon: "smile",
             tasks: [
-                { id: "FR-SAF-01", description: "Extinguisher Gauge Pulse: Physically verify all unit suppression units are in the GREEN zone.", priority: "High", riskLevel: "High", consequence: "Suppression failure.", proof: "Gauge Log" }
+                { id: "FR-CXM-01", technicalProtocol: "Review Triage Loop", floorAction: "Reply to 100% of unit Google/FB reviews <12 hours.", priority: "Medium", riskLevel: "Low", consequence: "Viral reputation damage.", proof: "ORM Dashboard" },
+                { id: "FR-CXM-02", technicalProtocol: "Mystery Shopper Analysis", floorAction: "Disseminate scorecards from last undercover audit to unit staff.", priority: "Medium", riskLevel: "Low", consequence: "Lack of performance awareness.", proof: "Email Log" }
             ]
         },
         {
-            title: "HR & Training",
+            title: "Digital & Delivery Command",
+            department: "Operations",
+            frequency: "Daily",
+            role: "Delivery Aggregator / Platform Manager",
+            summary: "Governance for off-premise revenue channels.",
+            icon: "smartphone",
+            tasks: [
+                { id: "FR-DIG-01", technicalProtocol: "Live Item Availability", floorAction: "Verify 100% menu match on apps vs physical unit stock-outs.", priority: "High", riskLevel: "Medium", consequence: "High cancellation penalties.", proof: "App Screen" },
+                { id: "FR-DIG-02", technicalProtocol: "Bag-Seal Integrity Audit", floorAction: "Verify 100% of orders possess intact brand security seals.", priority: "High", riskLevel: "Low", consequence: "Rider tampering incidents.", proof: "Visual Check", verificationRequired: true }
+            ]
+        },
+        {
+            title: "HR, Staffing & Training",
             department: "HR",
             frequency: "Monthly",
-            role: "HR Coordinator",
-            summary: "Staff health and vetting.",
-            icon: "graduation-cap",
+            role: "HR & Staffing Coordinator",
+            summary: "Personnel health and vetting compliance.",
+            icon: "user-plus",
             tasks: [
-                { id: "FR-HR-01", description: "Training Completion Matrix: Verify 100% certification for all newly onboarded unit staff.", priority: "High", riskLevel: "Low", consequence: "Incompetent care.", proof: "Matrix Log" },
-                { id: "FR-HR-10", description: "Biometric Audit: Reconcile shift attendance logs vs payroll OT claims.", priority: "Medium", riskLevel: "Low", consequence: "Payroll fraud.", proof: "Match Note" }
+                { id: "FR-HR-01", technicalProtocol: "Background Check Pulse", floorAction: "Verify 100% police clearance for new delivery/unit staff.", priority: "High", riskLevel: "High", consequence: "Criminal liability for the brand.", proof: "Vetting Registry", verificationRequired: true },
+                { id: "FR-HR-02", technicalProtocol: "POSH Awareness Log", floorAction: "Verify training completion on workplace safety for all outlets.", priority: "High", riskLevel: "High", consequence: "Legal liability and toxic culture.", proof: "Training Log", verificationRequired: true }
+            ]
+        },
+        {
+            title: "Sustainability & ESG",
+            department: "ESG",
+            frequency: "Daily",
+            role: "Legal & Compliance Officer",
+            summary: "Environmental discipline and resource tracking.",
+            icon: "leaf",
+            tasks: [
+                { id: "FR-ESG-01", technicalProtocol: "Energy Intensity Benchmark", floorAction: "Compare unit KWH consumption vs regional cluster average.", priority: "High", riskLevel: "Low", consequence: "Unmonitored energy wastage.", proof: "Meter Match" },
+                { id: "FR-ESG-02", technicalProtocol: "Plastic-Free Audit", floorAction: "Verify zero prohibited plastics in use at packaging stations.", priority: "High", riskLevel: "High", consequence: "Hefty environmental fines.", proof: "Visual Audit", verificationRequired: true },
+                { id: "FR-ESG-03", technicalProtocol: "Water Leakage Patrol", floorAction: "Check main unit meters at 2 AM (Target: Zero usage).", priority: "High", riskLevel: "Medium", consequence: "Resource waste / structural damage.", proof: "Leak Log", verificationRequired: true }
+            ]
+        },
+        {
+            title: "Security & Loss Prevention",
+            department: "Security",
+            frequency: "Daily",
+            role: "Security & Loss Prevention Officer",
+            summary: "Hardens the perimeter and protects stock assets.",
+            icon: "shield-alert",
+            tasks: [
+                { id: "FR-SEC-01", technicalProtocol: "CCTV Sync Validation", floorAction: "Verify 30-day recording backup is online for all units.", priority: "High", riskLevel: "High", consequence: "Loss of evidence for insurance.", proof: "System Check", verificationRequired: true },
+                { id: "FR-SEC-02", technicalProtocol: "Panic Button Pulse", floorAction: "Test silent alarms in high-cash units.", priority: "High", riskLevel: "High", consequence: "Zero response during emergency.", proof: "Signal Test", verificationRequired: true }
+            ]
+        },
+        {
+            title: "IT & POS Infrastructure",
+            department: "Technical",
+            frequency: "Daily",
+            role: "IT / POS Systems Administrator",
+            summary: "Digital backbone and data security governance.",
+            icon: "server",
+            tasks: [
+                { id: "FR-IT-01", technicalProtocol: "Firewall Firmware Sync", floorAction: "Confirm 100% of unit routers have latest security patches.", priority: "High", riskLevel: "High", consequence: "Data breach of customer PII.", proof: "Dashboard Log", verificationRequired: true },
+                { id: "FR-IT-02", technicalProtocol: "Offline Bill Sync", floorAction: "Verify zero pending local bills waiting for cloud upload.", priority: "High", riskLevel: "Medium", consequence: "Data loss during system reset.", proof: "System Screen" }
             ]
         }
     ]
