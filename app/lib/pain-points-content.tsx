@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { 
     Bug, 
@@ -103,7 +104,11 @@ import {
     Projector, 
     ShoppingBag,
     Pill,
-    AlertTriangle
+    AlertTriangle,
+    Banknote,
+    Smile,
+    Smartphone,
+    TrendingUp as RevenueIcon
 } from 'lucide-react';
 
 export const painPointsContent = {
@@ -117,6 +122,16 @@ export const painPointsContent = {
             { icon: <Shield />, title: "The Luxury 'Swap' Heist (Generic Jewelry)", description: "High-value items are often swapped with fakes during customer viewings. Our 'Dual-Verification Protocol' and 'One-Item-Only' viewing policy eliminate substitution theft at the point of sale." }
         ]
     },
+    franchise_operations_pack: {
+        title: "Anatomy of a Franchise Failure",
+        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
+        points: [
+            { icon: <RevenueIcon />, title: "The Royalty Leakage Crisis (Generic QSR)", description: "Franchisees using off-book sales and aggregator bill-cancellation hacks can silently erode 20% of franchisor royalty streams. Our 'Royalty Shield' SOP uses mandatory bill seriality checks to plug these holes." },
+            { icon: <Eye />, title: "The Brand Dilution Disaster (Subway's 'Footlong' Scandal)", description: "Local 'improvisation' on portion sizes destroyed global brand trust. Our 'Brand Parity' audits use physical weight checks and photo-matching to ensure the standard never drifts between outlets." },
+            { icon: <ShieldAlert />, title: "The Local Liability Trap (Generic Retail)", description: "A single outlet with an expired fire license puts the entire franchise network under regulatory scrutiny. Our 'Compliance Command' tracks statutory licenses for every unit in one master view." },
+            { icon: <Users />, title: "The Training Decay (Generic Service)", description: "When a trained Unit Manager resigns, the entire outlet's service quality often collapses. Our 'Institutional Memory' layer ensures built-in trainer notes keep the system running regardless of individual turnover." }
+        ]
+    },
     bakery_confectionery_pack: {
         title: "Anatomy of a Bakery Failure",
         disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
@@ -125,16 +140,6 @@ export const painPointsContent = {
             { icon: <Siren />, title: "The Viral Contamination (Dominique Ansel Bakery, USA, 2014)", description: "The world-famous creator of the 'Cronut' was shut down by the health department after a video of a mouse in the kitchen went viral. Our 'Pest Control' and 'Daily Cleaning' SOPs provide a documented defense against the single lapse that can cause a PR disaster." },
             { icon: <Wrench />, title: "The Inconsistent Quality Crisis (Starbucks, Global)", description: "Early in its growth, Starbucks' quality varied wildly between stores. They solved it by rigorously standardizing every step. Our checklists for 'Oven Calibration' and 'Recipe Scaling' ensure every product has the same high quality, protecting your brand's reputation." },
             { icon: <Recycle />, title: "End-of-Day Waste & Lost Profit (All Bakeries)", description: "Thousands in profit are lost annually to stale, unsold goods. Our 'Display & Freshness Management' SOP provides a clear process for stock rotation and markdown strategy to minimize waste." }
-        ]
-    },
-     franchise_operations_pack: {
-        title: "Anatomy of a Franchise Failure",
-        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
-        points: [
-            { icon: <Eye />, title: "The Brand Dilution Disaster (Subway's 'Footlong' Scandal, USA)", description: "Multiple Subway franchisees were caught using bread shorter than 11 inches, leading to class-action lawsuits and a PR crisis that damaged the brand's core promise. Our 'Brand Audit' and 'Supply Chain SOPs' enforce portion control and supplier compliance, protecting your brand integrity." },
-            { icon: <Siren />, title: "The Unchecked Employee (Domino's Pizza, USA, 2009)", description: "Two employees posted a viral video of themselves contaminating food, causing a catastrophic brand crisis. Our 'Customer Service Standards Audit' and 'Daily Operations Checklist' enforce manager presence and accountability, preventing the rogue behavior that can destroy a reputation overnight." },
-            { icon: <TrendingUp />, title: "The Franchisee Failure Cascade (Quiznos, USA, 2010s)", description: "Thousands of franchisees went bankrupt from a flawed model and lack of support. Our 'Financial Audit' and 'Monthly Performance Review' checklists help you proactively coach franchisees to ensure their profitability and your royalty stream." },
-            { icon: <KeyRound />, title: "The Chaotic Grand Opening (Generic Example)", description: "A new store launch is a disaster with IT issues and untrained staff. Our 'New Franchisee Onboarding' checklist is a master guide to ensure every new unit opens flawlessly and starts generating revenue from day one." }
         ]
     },
     hotels_and_resorts: {

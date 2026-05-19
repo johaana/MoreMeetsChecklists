@@ -1,3 +1,4 @@
+
 export type PackResolution = {
     heroTitle?: string;
     heroSubline: string;
@@ -362,5 +363,5 @@ export const defaultResolution: PackResolution = {
         "Managers stop chasing",
         "Execution tracked",
         "Compliance verified"
-    ]
+  ]
 };
