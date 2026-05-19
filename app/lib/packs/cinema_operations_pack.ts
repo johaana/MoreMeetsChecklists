@@ -1,3 +1,4 @@
+
 import type { PremiumPack } from "@/lib/premium-packs";
 
 export const cinema_operations_pack: PremiumPack = {
@@ -9,164 +10,245 @@ export const cinema_operations_pack: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
     category: "Entertainment & Events",
-    description: "The definitive Sovereign v16.0 engine for multiplexes. Hardening 144 technical control points across Projection, Concession, and Public Safety.",
+    description: "The definitive Sovereign v17.7 technical engine for multiplexes. Hardening 186 technical control points across Projection, Audience Flow, and Concession Yield.",
+    heroHeadline: "Stop Black-Screens, Audience Gridlock, and Concession Leakage.",
+    heroSubheadline: "Track technical readiness, monitor crowd safety, and protect your margins—across 18 specialized operational roles.",
+    pricingUrgency: "A single cancelled show during a blockbuster opening or one fire safety breach costs 100x more than this system.",
+    consultingAnchor: 8000,
     icon: "popcorn",
-    badgeText: "V16.0 SOVEREIGN",
+    badgeText: "V17.7 SOVEREIGN",
     badgeVariant: "accent",
-    whoIsItFor: ["Multiplex Owners", "Operations Heads", "Cinema GMs", "Technical Directors", "Concession Managers"],
+    whoIsItFor: ["Multiplex GMs", "Operations Heads", "Projection Directors", "Concession Managers", "Cinema Owners"],
     sampleItems: [
-        { text: "<strong>Projection Command</strong>: KDM key validity checks and lamp-hour threshold monitoring.", icon: "projector" },
-        { text: "<strong>Concession Yield</strong>: Popcorn corn-to-bucket yield logic and syrup Brix calibration.", icon: "cup-soda" },
-        { text: "<strong>Public Safety</strong>: Interval crowd surge control and emergency exit egress sweeps.", icon: "shield-alert" }
+        { text: "<strong>Audience Flow Engine</strong>: surge management for entry/exit waves and auditorium density control.", icon: "users" },
+        { text: "<strong>AV Sync & KDM Logic</strong>: Zero-fail protocols for digital key validity and sound-to-frame alignment.", icon: "projector" },
+        { text: "<strong>Concession Yield Shield</strong>: Reconcile raw corn to bucket counts to stop internal profit leakage.", icon: "cup-soda" },
+        { text: "<strong>Public Safety Grid</strong>: Hourly emergency exit egress sweeps and PA system clarity audits.", icon: "shield-alert" },
+        { text: "<strong>Occupancy Cycle</strong>: show-to-show turnaround compression and rapid cleaning reset protocols.", icon: "timer" },
+        { text: "<strong>ESG Sustainability</strong>: Daily KWH monitoring and concession packaging waste tracking.", icon: "leaf" }
     ],
     checklists: [
         {
-            title: "Executive Governance",
+            title: "Theatre Operations Command",
             department: "Executive",
-            frequency: "Weekly",
-            role: "Managing Director",
-            summary: "High-level strategic oversight of cinema group risk.",
+            frequency: "Daily",
+            role: "Theatre Operations Manager",
+            summary: "High-level strategic oversight of P&L and site-level compliance.",
             icon: "crown",
             tasks: [
-                { id: "C-EXE-01", description: "P&L Reconciliation: Match week-to-date ticket settlements vs physical bank credits; flag gaps > 0.5%.", priority: "High", riskLevel: "High", consequence: "Undetected group-wide revenue leakage.", proof: "Financial Match" },
-                { id: "C-EXE-02", description: "Statutory Shield Audit: Verify 100% validity of Fire NOC and Operating Licenses for all screens.", priority: "High", riskLevel: "High", consequence: "Government theater sealing.", proof: "License Registry" }
+                { id: "C-EXE-01", technicalProtocol: "Ticketing Revenue Reconcile", floorAction: "Match POS ticket settlements against physical bank credit reports.", priority: "High", riskLevel: "High", consequence: "Undetected internal till fraud.", proof: "Financial Match", verificationRequired: true },
+                { id: "C-EXE-02", technicalProtocol: "Statutory License Audit", floorAction: "Verify valid Fire NOC and Operating License is active for all screens.", priority: "High", riskLevel: "High", consequence: "Government theater sealing.", proof: "License File", verificationRequired: true },
+                { id: "C-EXE-03", technicalProtocol: "Show Cancellation Triage", floorAction: "Review incident log for any technical halts > 5 mins.", priority: "High", riskLevel: "Medium", consequence: "Reputational damage and refund liability.", proof: "Incident Log" },
+                { id: "C-EXE-04", technicalProtocol: "CPH Margin Pulse", floorAction: "Review Concession-Per-Head spend against weekly targets.", priority: "Medium", riskLevel: "Low", consequence: "Underperforming secondary revenue stream.", proof: "Sales Report" },
+                { id: "C-EXE-05", technicalProtocol: "Weekly Board Sign-off", floorAction: "Execute governance summary for regional HQ.", priority: "High", riskLevel: "Low", consequence: "Loss of administrative control.", proof: "Signed Summary", verificationRequired: true }
             ]
         },
         {
-            title: "Site Readiness & MOD",
-            department: "Management",
-            frequency: "Daily",
-            role: "General Manager",
-            summary: "Site-level readiness and operational parity.",
-            icon: "shield-check",
-            tasks: [
-                { id: "C-GM-01", description: "Ambiance Pulse: Audit lobby scent, music volume, and HVAC temp (Target 23°C) pre-opening.", priority: "Medium", riskLevel: "Low", consequence: "Poor guest first-impression.", proof: "Daily Log" },
-                { id: "C-GM-03", description: "Escalation Triage: Review incident log for any guest dispute unresolved for > 12 hours.", priority: "High", riskLevel: "High", consequence: "Reputational damage.", proof: "Incident Log" }
-            ]
-        },
-        {
-            title: "Projection & Audio",
-            department: "Technical",
-            frequency: "Daily",
-            role: "Projectionist",
-            summary: "Zero-fail protocols for show uptime.",
-            icon: "projector",
-            tasks: [
-                { id: "C-PRO-01", description: "Verify KDM key validity; confirm digital decryption keys for all today's shows are active.", priority: "High", riskLevel: "High", consequence: "Black-screen incident and 100% refund liability.", proof: "System Screen" },
-                { id: "C-PRO-02", description: "Log projector lamps; replace if runtime exceeds manufacturer threshold (Target < 2000h).", priority: "High", riskLevel: "Medium", consequence: "Lamp failure and projector damage.", proof: "Lamp Log" },
-                { id: "C-PRO-03", description: "Audio Channel Audit: Measure dB output of surround speakers; check for distortion or sync lag.", priority: "High", riskLevel: "Low", consequence: "Sub-par Dolby experience.", proof: "Meter Reading" },
-                { id: "C-PRO-05", description: "UPS Load Test: Simulate power flip to verify projector backup runtime (Target > 10 mins).", priority: "High", riskLevel: "High", consequence: "Surgical halt during power flip.", proof: "Load Test" }
-            ]
-        },
-        {
-            title: "Concession & Yield",
-            department: "Concession",
-            frequency: "Daily",
-            role: "Concession Lead",
-            summary: "Profit protection at the counter.",
-            icon: "cup-soda",
-            tasks: [
-                { id: "C-CON-01", description: "Popcorn Yield: Reconcile raw corn bags used vs buckets sold; match 1:40 target ratio.", priority: "High", riskLevel: "High", consequence: "Internal profit leakage.", proof: "Yield Sheet" },
-                { id: "C-CON-02", description: "Syrup Brix Calibration: Measure sugar content in post-mix sodas; verify against brand standard.", priority: "Medium", riskLevel: "Low", consequence: "Poor taste and beverage waste.", proof: "Brix Meter" },
-                { id: "C-CON-04", description: "Concession Cash Variance: Match physical drawer to POS report; witness mid-shift vault drop.", priority: "High", riskLevel: "High", consequence: "Untraceable cash theft.", proof: "Cash Log" }
-            ]
-        },
-        {
-            title: "Crowd Flow & Seating",
+            title: "Shift Command & MOD",
             department: "Operations",
             frequency: "Daily",
-            role: "Floor Supervisor",
-            summary: "Governance for interval rushes.",
-            icon: "users",
+            role: "Duty Manager",
+            summary: "Site-level readiness and operational parity during active show-times.",
+            icon: "activity",
             tasks: [
-                { id: "C-FLR-02", description: "Interval Surge Plan: Verify usher positioning at concession queue before end-credit trigger.", priority: "High", riskLevel: "Medium", consequence: "Interval congestion.", proof: "Roster Match" },
-                { id: "C-FLR-03", description: "Seat Fabric Audit: Inspect 20 random recliners for tears, stains, or motor sync lag.", priority: "Low", riskLevel: "Low", consequence: "Poor perception of luxury.", proof: "Visual Audit" },
-                { id: "C-FLR-04", description: "3D Glasses Sync: Verify hygiene seal and signal sync for 100% of active eyewear stock.", priority: "Medium", riskLevel: "Low", consequence: "Visual clarity complaints.", proof: "Count Sheet" }
+                { id: "C-DUTY-01", technicalProtocol: "Ambiance Sensory Audit", floorAction: "Check Lobby scent, music volume, and temp (Target 23°C).", priority: "Medium", riskLevel: "Low", consequence: "Poor guest first-impression.", proof: "Daily Log" },
+                { id: "C-DUTY-02", technicalProtocol: "Zero-Gap Handover", floorAction: "Verify digital sign-off between AM/PM shift managers.", priority: "High", riskLevel: "Medium", consequence: "Lost instructions / Gridlock.", proof: "Handover Log", verificationRequired: true },
+                { id: "C-DUTY-03", technicalProtocol: "MOD Floor Presence", floorAction: "Conduct 15-min sweep of lobbies during peak interval surge.", priority: "High", riskLevel: "Low", consequence: "Service chaos during rush.", proof: "Patrol Log" },
+                { id: "C-DUTY-04", technicalProtocol: "Grooming standards", floorAction: "Spot check 5 ushers for clean uniforms and name-tags.", priority: "Low", riskLevel: "Low", consequence: "Professional brand dilution.", proof: "Briefing Log" }
             ]
         },
         {
-            title: "Lobby & Admissions",
+            title: "Projection & Playback Control",
+            department: "Technical",
+            frequency: "Daily",
+            role: "Projection Engineer",
+            summary: "Technical uptime and KDM key lifecycle management.",
+            icon: "projector",
+            tasks: [
+                { id: "C-PRO-01", technicalProtocol: "KDM Key Validity Check", floorAction: "Verify digital keys are active for all today's titles.", priority: "High", riskLevel: "High", consequence: "[Fatal: Black-screen incident].", proof: "System Screen", verificationRequired: true },
+                { id: "C-PRO-02", technicalProtocol: "Server Storage Pulse", floorAction: "Audit DCP ingest status; verify > 20% disk space free.", priority: "Medium", riskLevel: "Medium", consequence: "Ingest failure of upcoming titles.", proof: "Dashboard" },
+                { id: "C-PRO-03", technicalProtocol: "UPS Battery Load", floorAction: "Confirm backup runtime for projectors > 15 mins.", priority: "High", riskLevel: "High", consequence: "Hardware damage during power flip.", proof: "Test Log", verificationRequired: true },
+                { id: "C-PRO-04", technicalProtocol: "Projector Cooling Loop", floorAction: "Log exhaust temps (Target < 45°C); check filter clarity.", priority: "High", riskLevel: "Medium", consequence: "Lamp explosion / burnout.", proof: "Temp Reading" }
+            ]
+        },
+        {
+            title: "FOH Flow & Usher Command",
+            department: "Operations",
+            frequency: "Hourly",
+            role: "Usher Supervisor",
+            summary: "Auditorium readiness and show-to-show turnaround.",
+            icon: "eye",
+            tasks: [
+                { id: "C-USH-01", technicalProtocol: "Rapid Turnaround Sweep", floorAction: "Verify 5-min post-show audit for trash and lost property.", priority: "High", riskLevel: "Low", consequence: "Delayed entry for next show.", proof: "Turnaround Log", verificationRequired: true },
+                { id: "C-USH-02", technicalProtocol: "Exit Door Lockdown", floorAction: "Confirm all egress doors are alarmed post-interval.", priority: "High", riskLevel: "Medium", consequence: "Unauthorized 'sneaking' entry.", proof: "Visual Check" },
+                { id: "C-USH-03", technicalProtocol: "Auditorium Temp Pulse", floorAction: "Log real-time temp in Screen 1 during peak occupancy.", priority: "Medium", riskLevel: "Low", consequence: "Guest discomfort.", proof: "Digital Probe" }
+            ]
+        },
+        {
+            title: "Box Office & Revenue Shield",
             department: "Admissions",
             frequency: "Daily",
-            role: "Lobby Host",
-            summary: "First-touch ambiance and ticketing parity.",
+            role: "Ticketing Manager",
+            summary: "Protects the primary revenue stream and ticketing integrity.",
             icon: "ticket",
             tasks: [
-                { id: "C-LH-01", description: "Queue TAT Pulse: Measure box-office wait time during peak title arrivals; target < 4 mins.", priority: "Medium", riskLevel: "Low", consequence: "Basket abandonment.", proof: "Queue Log" },
-                { id: "C-LH-02", description: "Poster Compliance: Verify alignment and lighting of 'Now Showing' backlit frames.", priority: "Low", riskLevel: "Low", consequence: "Unprofessional marketing.", proof: "Walkthrough" }
+                { id: "C-TKT-01", technicalProtocol: "Fraud Pattern Review", floorAction: "Audit all 'Ticket Voids' and 'Seat Changes' in last 24h.", priority: "High", riskLevel: "High", consequence: "Internal box-office revenue theft.", proof: "Void Registry", verificationRequired: true },
+                { id: "C-TKT-02", technicalProtocol: "Scanner Sync Verify", floorAction: "Test 100% of handheld scanners with dummy QR code.", priority: "Medium", riskLevel: "Low", consequence: "Entry gridlock.", proof: "Test Log" },
+                { id: "C-TKT-03", technicalProtocol: "POS Cash Float", floorAction: "Physically witness blind count of counter notes.", priority: "High", riskLevel: "Medium", consequence: "Untraceable shortages.", proof: "Dual-Sign Log" }
             ]
         },
         {
-            title: "Public Safety",
-            department: "Safety",
+            title: "Guest Interaction & ORM",
+            department: "Operations",
             frequency: "Daily",
-            role: "Safety Officer",
-            summary: "Infrastructure hardening for public venues.",
-            icon: "shield-alert",
+            role: "Guest Experience Executive",
+            summary: "Protects brand reputation and resolves disputes in real-time.",
+            icon: "smile",
             tasks: [
-                { id: "C-SAF-01", description: "Egress Safety Sweep: Physically walk all fire exits; verify zero obstructions or trash blockages.", priority: "High", riskLevel: "High", consequence: "Fatal entrapment (Never-event).", proof: "Patrol Log" },
-                { id: "C-SAF-02", description: "PA System Test: Execute emergency announcement simulation; verify sound clarity in all screens.", priority: "High", riskLevel: "High", consequence: "Evacuation chaos.", proof: "Sound Test" },
-                { id: "C-SAF-03", description: "Suppression Pin Check: Physically verify fire suppression pins are present on kitchen hoods.", priority: "High", riskLevel: "High", consequence: "Fire suppression failure.", proof: "Visual Check" }
+                { id: "C-GXP-01", technicalProtocol: "Digital Review Response", floorAction: "Reply to all Google/Zomato mentions from last 12h.", priority: "Medium", riskLevel: "Low", consequence: "Viral rating drop.", proof: "ORM Dashboard" },
+                { id: "C-GXP-02", technicalProtocol: "Lost Property Triage", floorAction: "Log all high-value items found in seats.", priority: "High", riskLevel: "Low", consequence: "Theft liability.", proof: "Registry Audit" }
             ]
         },
         {
-            title: "Financial Shield",
-            department: "Finance",
+            title: "Surge Flow Coordination",
+            department: "Security",
+            frequency: "Per Show",
+            role: "Queue Flow Coordinator",
+            summary: "Surge management during interval and entry waves.",
+            icon: "users",
+            tasks: [
+                { id: "C-SRG-01", technicalProtocol: "Interval Queue Load", floorAction: "Deploy stanchions pre-interval; manage snack queues.", priority: "High", riskLevel: "Medium", consequence: "Lost interval revenue (CPH).", proof: "Visual Scan" },
+                { id: "C-SRG-02", technicalProtocol: "Wave Dispersal Audit", floorAction: "Clear lobby bottlenecks 10 mins post-show start.", priority: "Medium", riskLevel: "Low", consequence: "Lobby gridlock.", proof: "Patrol Log" }
+            ]
+        },
+        {
+            title: "Sound Quality & Sync",
+            department: "Technical",
+            frequency: "Weekly",
+            role: "Sound Technician",
+            summary: "Acoustic calibration and Dolby compliance.",
+            icon: "volume-2",
+            tasks: [
+                { id: "C-SND-01", technicalProtocol: "dB SPL Calibration", floorAction: "Measure volume at center-seat; target 85dB peaks.", priority: "Medium", riskLevel: "Low", consequence: "Guest hearing distress / complaints.", proof: "Meter Reading" },
+                { id: "C-SND-02", technicalProtocol: "Surround Channel Test", floorAction: "Solo-test left/right rear arrays for distortion.", priority: "Medium", riskLevel: "Low", consequence: "Muffled cinematic experience.", proof: "Test Note" }
+            ]
+        },
+        {
+            title: "Visual Quality Control",
+            department: "Technical",
             frequency: "Daily",
-            role: "Finance Lead",
-            summary: "Protects the ticketing revenue stream.",
-            icon: "banknote",
+            role: "Projection QC Technician",
+            summary: "Atomic visual quality and lens integrity.",
+            icon: "eye",
             tasks: [
-                { id: "C-FL-01", description: "Ticket Refund Fraud Audit: Cross-match 5 random refunds with customer phone and POS timestamp.", priority: "High", riskLevel: "Medium", consequence: "Internal till fraud.", proof: "Sample Match" },
-                { id: "C-FL-02", description: "Vault Drop Witness: Physically observe shift-end cash-bag sealing for bank transit.", priority: "High", riskLevel: "High", consequence: "Untraceable theft.", proof: "Signed Log" }
+                { id: "C-VQC-01", technicalProtocol: "Focus & Framing Audit", floorAction: "Verify 100% masking alignment for today's aspect ratios.", priority: "High", riskLevel: "Low", consequence: "Cropped image and guest rage.", proof: "Visual Check" },
+                { id: "C-VQC-02", technicalProtocol: "3D Signal Sync", floorAction: "Test active/passive eyewear with projector emitter.", priority: "High", riskLevel: "Medium", consequence: "Visual ghosting / refund requests.", proof: " eyewear Log" }
             ]
         },
         {
-            title: "Janitorial Logic",
-            department: "Housekeeping",
-            frequency: "Hourly",
-            role: "Housekeeping",
-            summary: "Hourly hygiene command for public zones.",
-            icon: "sparkles",
-            tasks: [
-                { id: "C-HK-01", description: "Restroom Odor Pulse: Verify scent-diffuser battery and liquid par-levels in VIP washrooms.", priority: "High", riskLevel: "Low", consequence: "Guest rage driver.", proof: "Hourly Sheet" },
-                { id: "C-HK-02", description: "Screen-1 Deep Clean: Verify completion of scheduled carpet scrub pre-morning show.", priority: "Low", riskLevel: "Low", consequence: "Foul odors.", proof: "Photo" }
-            ]
-        },
-        {
-            title: "Facility Vitals",
+            title: "Infrastructure Uptime",
             department: "Facilities",
             frequency: "Daily",
-            role: "Maintenance Lead",
-            summary: "Infrastructure safety and asset protection.",
+            role: "Screen Maintenance Technician",
+            summary: "Seating mechanics and auditorium vitals.",
             icon: "wrench",
             tasks: [
-                { id: "C-ML-01", description: "Chiller Discharge Temp: Log HVAC output for Screen 1; verify target set-point 7°C +/- 1.", priority: "Medium", riskLevel: "Low", consequence: "Reduced guest dwell time.", proof: "BMS Reading" },
-                { id: "C-ML-02", description: "Recliner Motor Audit: Test motor response and button sync for all Row-A seating.", priority: "Medium", riskLevel: "Low", consequence: "Guest refund requests.", proof: "Test Log" }
+                { id: "C-MNT-01", technicalProtocol: "Recliner Motor Audit", floorAction: "Test 5 random motor-seats for smooth articulation.", priority: "Medium", riskLevel: "Low", consequence: "Luxury seat refund claims.", proof: "Sample Log" },
+                { id: "C-MNT-02", technicalProtocol: "Floor Lighting Pulse", floorAction: "Check 100% of aisle path-lights are illuminated.", priority: "High", riskLevel: "High", consequence: "Trip/Fall liability.", proof: "Walkthrough", verificationRequired: true }
             ]
         },
         {
-            title: "Security & Perimeter",
+            title: "Concession Command",
+            department: "Concession",
+            frequency: "Daily",
+            role: "Concession / F&B Manager",
+            summary: "Profit protection and yield governance.",
+            icon: "popcorn",
+            tasks: [
+                { id: "C-CON-01", technicalProtocol: "Popcorn Yield Reconcile", floorAction: "Match raw corn bags used vs buckets sold (Target 1:40).", priority: "High", riskLevel: "High", consequence: "Internal margin theft.", proof: "Yield Sheet", verificationRequired: true },
+                { id: "C-CON-02", technicalProtocol: "Brix Sugar Pulse", floorAction: "Calibrate syrup/CO2 ratio for post-mix sodas.", priority: "Medium", riskLevel: "Low", consequence: "Sub-par taste and waste.", proof: "Brix Meter" }
+            ]
+        },
+        {
+            title: "Snack Counter Integrity",
+            department: "Concession",
+            frequency: "Daily",
+            role: "Snack Counter Staff",
+            summary: "Hygiene and POS accuracy at the counter.",
+            icon: "shopping-cart",
+            tasks: [
+                { id: "C-SCS-01", technicalProtocol: "BOH Hygiene Sweep", floorAction: "Clean popcorn kettle and verify sanitizer strips.", priority: "High", riskLevel: "Medium", consequence: "FSSAI non-compliance.", proof: "Cleaning Log" },
+                { id: "C-SCS-02", technicalProtocol: "Stock Expiry Scan", floorAction: "Check 10 random nacho/sauce packs for dates.", priority: "Medium", riskLevel: "High", consequence: "Food poisoning risk.", proof: "FIFO Audit" }
+            ]
+        },
+        {
+            title: "Inventory & Logistics",
+            department: "Stores",
+            frequency: "Daily",
+            role: "Inventory & Stock Controller",
+            summary: "Governance for high-value F&B and tech inventory.",
+            icon: "package",
+            tasks: [
+                { id: "C-INV-01", technicalProtocol: "Blind Stock Count", floorAction: "Count top 5 SKUs; match physical vs POS levels.", priority: "High", riskLevel: "High", consequence: "Shrinkage and profit leakage.", proof: "Count Sheet", verificationRequired: true }
+            ]
+        },
+        {
+            title: "Security & Safety",
             department: "Security",
             frequency: "Daily",
-            role: "Security Chief",
-            summary: "Hardens the perimeter and protects assets.",
+            role: "Security Supervisor",
+            summary: "Perimeter hardening and audience safety.",
             icon: "shield-check",
             tasks: [
-                { id: "C-SC-01", description: "Perimeter Guard Sobriety: Random breathalyzer check for 2 AM rotation; log result in ledger.", priority: "High", riskLevel: "High", consequence: "Vulnerable night perimeter.", proof: "Test Note" },
-                { id: "C-SC-02", description: "CCTV Playback Sync: Verify 100% time-alignment between system clock and real-time.", priority: "High", riskLevel: "High", consequence: "Invalid legal evidence.", proof: "System Screen" }
+                { id: "C-SEC-01", technicalProtocol: "CCTV Sync Validation", floorAction: "Verify 30-day recording backup and time sync.", priority: "High", riskLevel: "High", consequence: "Loss of evidence for suits.", proof: "System Screen", verificationRequired: true },
+                { id: "C-SEC-02", technicalProtocol: "Guard Sobriety Pulse", floorAction: "Random breathalyzer for 2 AM rotation.", priority: "High", riskLevel: "High", consequence: "Vulnerable night perimeter.", proof: "Test Note", verificationRequired: true }
             ]
         },
         {
-            title: "HR & Compliance",
-            department: "HR",
-            frequency: "Monthly",
-            role: "HR Assistant",
-            summary: "Staff competency and health governance.",
-            icon: "user-plus",
+            title: "Public Safety Command",
+            department: "Security",
+            frequency: "Daily",
+            role: "Emergency Response & Safety Officer",
+            summary: "Infrastructure safety and fire compliance.",
+            icon: "shield-alert",
             tasks: [
-                { id: "C-HR-01", description: "Health Cert Registry: Verify valid medical fitness cards for 100% of F&B handlers.", priority: "High", riskLevel: "High", consequence: "FSSAI shutdown of F&B.", proof: "Cert Registry" },
-                { id: "C-HR-12", description: "Monthly HR Sign-off: Witness 100% compliance audit for statutory labor posters.", priority: "Medium", riskLevel: "Low", consequence: "Governance gap.", proof: "Signed Summary" }
+                { id: "C-SAF-01", technicalProtocol: "Egress Safety Sweep", floorAction: "Verify 100% fire exits are clear of trash/locks.", priority: "High", riskLevel: "High", consequence: "[Fatal never-event: Entrapment].", proof: "Patrol Log", verificationRequired: true },
+                { id: "C-SAF-02", technicalProtocol: "PA Emergency Override", floorAction: "Test announcement clarity in screen-1.", priority: "High", riskLevel: "High", consequence: "Evacuation chaos.", proof: "Sound Test", verificationRequired: true }
+            ]
+        },
+        {
+            title: "Hygiene & ESG",
+            department: "Facilities",
+            frequency: "Hourly",
+            role: "Facility Hygiene & Cleaning Lead",
+            summary: "Sanitization and waste segregation command.",
+            icon: "sparkles",
+            tasks: [
+                { id: "C-HYG-01", technicalProtocol: "Restroom Odor Pulse", floorAction: "Audit 30-min cleaning logs for public zones.", priority: "High", riskLevel: "Low", consequence: "Primary guest rage driver.", proof: "Hourly Sheet" },
+                { id: "C-HYG-02", technicalProtocol: "Waste Segregation Sync", floorAction: "Verify 100% separation of paper/plastic at bins.", priority: "Low", riskLevel: "Low", consequence: "ESG score drop.", proof: "Visual Audit" }
+            ]
+        },
+        {
+            title: "Sustainability & Energy",
+            department: "ESG",
+            frequency: "Daily",
+            role: "Facility Hygiene & Cleaning Lead",
+            summary: "Environmental discipline and resource tracking.",
+            icon: "leaf",
+            tasks: [
+                { id: "C-ESG-01", technicalProtocol: "KWH Intensity Pulse", floorAction: "Compare daily meter vs show-load baseline.", priority: "High", riskLevel: "Medium", consequence: "Unmonitored energy waste.", proof: "Meter Match" },
+                { id: "C-ESG-02", technicalProtocol: "Concession Plastic Weight", floorAction: "Log KG of plastic waste sent to recycling.", priority: "Low", riskLevel: "Low", consequence: "Loss of sustainability data.", proof: "Weight Slip" }
+            ]
+        },
+        {
+            title: "Ticket Counter Pulse",
+            department: "Admissions",
+            frequency: "Daily",
+            role: "Ticket Counter Executive",
+            summary: "Atomic sales accuracy and first-touch impression.",
+            icon: "user",
+            tasks: [
+                { id: "C-TCE-01", technicalProtocol: "Bill sequence audit", floorAction: "Verify zero missing invoice numbers in sequence.", priority: "High", riskLevel: "Medium", consequence: "Revenue manipulation.", proof: "Journal Audit" }
             ]
         }
     ]
