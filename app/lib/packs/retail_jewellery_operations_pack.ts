@@ -3,7 +3,7 @@ import type { PremiumPack } from "@/lib/premium-packs";
 
 export const retail_jewellery_operations_pack: PremiumPack = {
     id: 'retail_jewellery_operations_pack',
-    title: "Jewellery Operations System",
+    title: "Jewellery Operations System v19.2 (Sovereign Pro)",
     priceINR: 3499,
     priceUSD: 49,
     competitorPriceUSD: 1500,
@@ -11,13 +11,13 @@ export const retail_jewellery_operations_pack: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
     category: "Retail",
-    description: "The definitive Sovereign v18.0 custody-chain engine for high-value retail. Hardening 198 technical control points across Vault Governance, Transaction Integrity, and Hallmark Compliance.",
+    description: "The definitive Sovereign v19.2 custody-chain engine for high-value retail. Hardening 198 technical control points across Vault Governance, Transaction Integrity, and Hallmark Compliance.",
     heroHeadline: "Protect Your Inventory. Secure Your Custody Chain.",
     heroSubheadline: "Track every gram, monitor vault dual-auth, and protect high-value transactions—across 18 specialized governance roles.",
     pricingUrgency: "A single 'swap' theft or one hallmark compliance failure costs 1000x more than this entire system.",
     consultingAnchor: 15000,
     icon: "gem",
-    badgeText: "V18.0 SOVEREIGN",
+    badgeText: "V19.2 SOVEREIGN",
     badgeVariant: "destructive",
     whoIsItFor: ["Store Directors", "Vault Custodians", "Compliance Officers", "Loss Prevention Heads", "Jewellery Owners"],
     sampleItems: [
@@ -105,7 +105,7 @@ export const retail_jewellery_operations_pack: PremiumPack = {
                 { id: "J-VLT-03", technicalProtocol: "Custody Transfer", floorAction: "Log 100% of pieces issued to floor staff by ID and weight.", priority: "High", riskLevel: "High", consequence: "Untraceable internal shortage.", proof: "Issue Slip", verificationRequired: true, cadence: "daily" },
                 { id: "J-VLT-04", technicalProtocol: "Bulk Stock Reconcile", floorAction: "Match morning vault-count to previous night's closing registry.", priority: "High", riskLevel: "High", consequence: "Unidentified overnight theft.", proof: "Audit Sheet", verificationRequired: true, cadence: "daily" },
                 { id: "J-VLT-05", technicalProtocol: "Gram-Weight Audit", floorAction: "Randomly weigh 5 stock-packets; verify against system label.", priority: "High", riskLevel: "Medium", consequence: "Systemic gram leakage.", proof: "Scale Record", verificationRequired: true, cadence: "daily" },
-                { id: "J-VLT-06", technicalProtocol: "Overnight Holding", floorAction: "Verify lock of high-value individual guest repair bins.", priority: "High", riskLevel: "High", consequence: "Loss of client property.", proof: "Visual Confirm", verificationRequired: true, cadence: "daily" },
+                { id: "J-VLT-06", technicalProtocol: "Overnight Holding", floorAction: "Verify lock of high-security repair bins.", priority: "High", riskLevel: "High", consequence: "Loss of client property.", proof: "Visual Confirm", verificationRequired: true, cadence: "daily" },
                 { id: "J-VLT-07", technicalProtocol: "Unscheduled Access", floorAction: "Escalate any off-schedule vault entry to Store Director.", priority: "High", riskLevel: "High", consequence: "Unauthorized theft window.", proof: "Incident Log", verificationRequired: true, cadence: "incident-based" },
                 { id: "J-VLT-08", technicalProtocol: "Vault Vitals Check", floorAction: "Confirm zero humidity signs and functional fire-suppression.", priority: "High", riskLevel: "Medium", consequence: "Asset decay or fire loss.", proof: "Gauge Log", verificationRequired: true, cadence: "daily" },
                 { id: "J-VLT-09", technicalProtocol: "Inward Seal Verify", floorAction: "Check 100% of incoming stock bags for intact vendor seals.", priority: "Medium", riskLevel: "Medium", consequence: "Supply chain pilferage.", proof: "Seal Registry", verificationRequired: true, cadence: "daily" },
@@ -142,7 +142,7 @@ export const retail_jewellery_operations_pack: PremiumPack = {
             summary: "Protects piece-level integrity in showroom showcases.",
             icon: "eye",
             tasks: [
-                { id: "J-DSP-01", technicalProtocol: "Opening Piece Count", floorAction: "Verify 100% display fill against morningSafe release ledger.", priority: "High", riskLevel: "High", consequence: "Opening shortage.", proof: "Count Sheet", verificationRequired: true, cadence: "daily" },
+                { id: "J-DSP-01", technicalProtocol: "Opening Piece Count", floorAction: "Verify 100% display fill against morning Safe release ledger.", priority: "High", riskLevel: "High", consequence: "Opening shortage.", proof: "Count Sheet", verificationRequired: true, cadence: "daily" },
                 { id: "J-DSP-02", technicalProtocol: "Integrity Sweep", floorAction: "Execute 60-min walk to verify piece-to-holder match.", priority: "High", riskLevel: "High", consequence: "Undetected tag-theft.", proof: "Patrol Log", cadence: "hourly" },
                 { id: "J-DSP-03", technicalProtocol: "Empty-Holder Logic", floorAction: "Confirm 100% of empty slots have 'Item Being Tried' cards.", priority: "High", riskLevel: "Medium", consequence: "Blind theft window.", proof: "Visual Audit", cadence: "hourly" },
                 { id: "J-DSP-04", technicalProtocol: "Displacement Verify", floorAction: "Correct any pieces moved from high-security center-view.", priority: "Medium", riskLevel: "Low", consequence: "Lower VM impact.", proof: "Visual Check", cadence: "daily" },
@@ -338,7 +338,7 @@ export const retail_jewellery_operations_pack: PremiumPack = {
                 { id: "J-SEC-05", technicalProtocol: "Parking Clearance", floorAction: "Ensure 100% of fire-lanes are clear of idle vehicles.", priority: "High", riskLevel: "High", consequence: "Blocked emergency access.", proof: "Visual Audit", cadence: "hourly" },
                 { id: "J-SEC-06", technicalProtocol: "Suspicious Package", floorAction: "Inspect foyers and planters for unattended items.", priority: "High", riskLevel: "High", consequence: "Explosive/Security threat.", proof: "Walkthrough", cadence: "hourly" },
                 { id: "J-SEC-07", technicalProtocol: "Crowd Density", floorAction: "Monitor foyer waves; redirect to side-waiting if > 10 pax.", priority: "Low", riskLevel: "Low", consequence: "Lobby congestion.", proof: "Visual Count", cadence: "hourly" },
-                { id: "J-SEC-08", technicalProtocol: "Guard Sobriety", floorAction: "Random breathalyzer for 2 PM guard rotation.", priority: "High", riskLevel: "High", consequence: "Vulnerable night perimeter.", proof: "Test Note", verificationRequired: true, cadence: "daily" },
+                { id: "J-SEC-08", technicalProtocol: "Guard Sobriety", floorAction: "Random breathalyzer for 2 AM guard rotation.", priority: "High", riskLevel: "High", consequence: "Vulnerable night perimeter.", proof: "Test Note", verificationRequired: true, cadence: "daily" },
                 { id: "J-SEC-09", technicalProtocol: "Hand-over Briefing", floorAction: "Update incoming shift on current 'Suspicious' profiles.", priority: "Medium", riskLevel: "Low", consequence: "Information gap.", proof: "Briefing Log", cadence: "daily" },
                 { id: "J-SEC-10", technicalProtocol: "Staff Gate Watch", floorAction: "Verify badge scan for 100% of back-alley entries.", priority: "High", riskLevel: "High", consequence: "Unauthorized intruder access.", proof: "Registry Audit", cadence: "daily" },
                 { id: "J-SEC-11", technicalProtocol: "Fire Extinguisher Clear", floorAction: "Confirm zero obstructions in front of floor units.", priority: "Medium", riskLevel: "High", consequence: "Blocked firefighting.", proof: "Visual Check", cadence: "daily" }
@@ -409,5 +409,3 @@ export const retail_jewellery_operations_pack: PremiumPack = {
         }
     ]
 };
-
-    
