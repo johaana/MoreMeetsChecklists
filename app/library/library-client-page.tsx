@@ -25,7 +25,10 @@ const ELITE_PACK_IDS = [
     'franchise_operations_pack',
     'facility_management_blueprint',
     'cinema_operations_pack',
-    'retail_operations_system'
+    'retail_operations_system',
+    'fashion_and_apparel_retail',
+    'electronics_showroom_pack',
+    'supermarket_grocery_retail_pack'
 ];
 
 const allPacksByCategory = (packs: PremiumPack[]) => {
@@ -59,7 +62,7 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => {
                 </div>
                 <div className="space-y-1 md:space-y-2">
                     <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.4em] text-primary/60">{pack.category.toUpperCase()}</p>
-                    <CardTitle className="text-xl md:text-3xl font-black font-headline italic uppercase tracking-tighter text-primary-text leading-[0.9] group-hover:text-primary transition-colors">
+                    <CardTitle className="text-xl md:text-3xl font-black font-headline italic uppercase tracking-tighter text-primary-text leading-[0.9) group-hover:text-primary transition-colors">
                         <Link href={`/packs/${pack.id}`}>{pack.title}</Link>
                     </CardTitle>
                 </div>

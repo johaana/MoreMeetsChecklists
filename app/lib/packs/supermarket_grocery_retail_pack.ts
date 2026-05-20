@@ -11,7 +11,7 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/d863f69b-8919-4115-b778-831d17d120fb',
     category: "Retail",
-    description: "The definitive Sovereign v18.0 engine for high-volume grocery, supermarkets, and FMCG retail. Hardening 200 technical control points across Cold Chain, Spoilage Prevention, and Shrinkage Governance.",
+    description: "The definitive Sovereign v18.0 engine for high-volume grocery, supermarkets, and FMCG retail. Hardening 200 technical control points across Cold Chain, Spoilage Prevention, and Shrinkage Governance. [Frozen Verification Candidate]",
     heroHeadline: "Command Your Freshness. Protect Your Margins.",
     heroSubheadline: "Track cold chain integrity, monitor expiry sweeps, and stop checkout variance—across 20 specialized grocery roles.",
     pricingUrgency: "A single refrigeration breach or one major health department fine costs 100x more than this entire system.",
@@ -126,7 +126,7 @@ export const supermarket_grocery_retail_pack: PremiumPack = {
                 { id: "GR-IRL-07", technicalProtocol: "Private Label Push", floorAction: "Verify 100% shelf-depth for store-brand hero items.", priority: "Low", riskLevel: "Low", consequence: "Lower net margin capture.", proof: "Visual Audit", cadence: "daily" },
                 { id: "GR-IRL-08", technicalProtocol: "OOS Alert Loop", floorAction: "Update 'Out-of-Stock' tags for confirmed supplier gaps.", priority: "Low", riskLevel: "Low", consequence: "Customer frustration.", proof: "Tag Audit", cadence: "daily" },
                 { id: "GR-IRL-09", technicalProtocol: "Price Label Check", floorAction: "Replace all torn or illegible shelf-edge labels.", priority: "Low", riskLevel: "Low", consequence: "Price ambiguity.", proof: "Visual Check", cadence: "daily" },
-                { id: "GR-IRL-10", technicalProtocol: "EOD Aisle Sweep", floorAction: "Final squaring of all facing stock pre-closing.", priority: "Low", riskLevel: "Low", consequence: "Disorganized opening.", proof: "Signed Sheet", cadence: "daily" }
+                { id: "GR-IRL-10", technicalProtocol: "EOD Aisle Sweep", floorAction: "Final squaring of all facing stock pre-closing.", priority: "Low", riskLevel: "Low", consequence: "Disorganized morning opening.", proof: "Signed Sheet", cadence: "daily" }
             ]
         },
         {
