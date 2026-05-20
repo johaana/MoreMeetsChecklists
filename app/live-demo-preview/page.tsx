@@ -18,7 +18,9 @@ import {
     Check,
     Clock,
     UserCheck,
-    Target
+    Target,
+    ChevronRight,
+    Search
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -26,7 +28,7 @@ export default function LiveDemoPreview() {
     const d = demoMasterData;
 
     return (
-        <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] p-4 md:p-12 space-y-24">
+        <div className="min-h-screen bg-[#F1F5F9] text-[#0F172A] p-4 md:p-12 space-y-32 pb-40">
             
             {/* 1. DASHBOARD VIEW */}
             <section className="max-w-6xl mx-auto space-y-8">
@@ -50,57 +52,87 @@ export default function LiveDemoPreview() {
                 </div>
             </section>
 
-            {/* 2. LEDGER VIEW (DESKTOP) */}
-            <section className="max-w-6xl mx-auto space-y-8">
+            {/* 2. THE SOVEREIGN LEDGER (SCREENSHOT REPLICA) */}
+            <section className="max-w-[1400px] mx-auto space-y-8">
                 <div className="flex items-center gap-3">
                     <div className="w-1.5 h-6 bg-primary" />
-                    <h2 className="text-xl font-black uppercase italic tracking-tighter">02. MISSION EXECUTION LEDGER</h2>
+                    <h2 className="text-xl font-black uppercase italic tracking-tighter">02. THE SOVEREIGN LEDGER (SYMMETRIC GRID)</h2>
                 </div>
-                <Card className="overflow-hidden border-zinc-200 shadow-xl bg-white">
-                    <div className="bg-zinc-950 px-6 py-3 flex items-center justify-between">
-                        <span className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.4em]">SOVEREIGN_V11.9_MASTER</span>
-                        <div className="flex gap-4">
-                            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                            <span className="text-[9px] font-bold text-emerald-500 uppercase tracking-widest">SYSTEM LIVE</span>
-                        </div>
+                
+                <div className="rounded-xl overflow-hidden border border-zinc-300 shadow-2xl bg-[#f8f9fa] font-sans">
+                    {/* Mission Header */}
+                    <div className="bg-[#22C55E] text-white py-2 px-4 flex items-center justify-center gap-2 text-[11px] font-bold">
+                        <span>📋</span>
+                        <span>DAILY TASKS – Update 'Done By' to complete daily work.</span>
                     </div>
+
+                    {/* Ledger Body */}
                     <div className="overflow-x-auto">
-                        <table className="w-full text-left border-collapse">
+                        <table className="w-full text-left border-collapse min-w-[1200px]">
                             <thead>
-                                <tr className="bg-zinc-50 border-b border-zinc-100">
-                                    {["ID", "ROLE", "TECHNICAL TASK", "DONE BY", "VERIFIED", "STATUS"].map((h) => (
-                                        <th key={h} className="px-6 py-4 text-[10px] font-black text-zinc-400 uppercase tracking-widest">{h}</th>
+                                <tr className="bg-[#0F172A] text-white">
+                                    {["BRANCH", "ROLE", "TECHNICAL TASK", "ASSIGNED TO", "DONE BY", "VERIFIED BY", "STATUS", "CONSEQUENCE / RISK", "FLOOR INSTRUCTIONS"].map((h, i) => (
+                                        <th key={i} className="px-3 py-2 text-[10px] font-black uppercase tracking-tight border-r border-white/10 last:border-0">{h}</th>
                                     ))}
                                 </tr>
                             </thead>
                             <tbody>
-                                {d.tasks.map((t, i) => (
-                                    <tr key={i} className="border-b border-zinc-50 hover:bg-zinc-50/50 transition-colors">
-                                        <td className="px-6 py-4 text-[11px] font-bold font-mono text-zinc-400">{t.id}</td>
-                                        <td className="px-6 py-4 text-[12px] font-black uppercase italic text-zinc-900">{t.role}</td>
-                                        <td className="px-6 py-4 text-[12px] font-bold text-zinc-600">{t.task}</td>
-                                        <td className="px-6 py-4 text-[12px] font-black text-emerald-700">{t.doneBy || "---"}</td>
-                                        <td className="px-6 py-4 text-[12px] font-black text-blue-700">{t.verifiedBy || "---"}</td>
-                                        <td className="px-6 py-4">
-                                            <Badge className={cn(
-                                                "uppercase font-black tracking-widest text-[8px] rounded-none",
-                                                t.status === 'COMPLETE' ? "bg-emerald-500" : 
-                                                t.status === 'ESCALATED' ? "bg-red-600" : "bg-zinc-100 text-zinc-400"
-                                            )}>{t.status}</Badge>
-                                        </td>
+                                {[
+                                    { b: "Bandra", r: "Theatre Operations Manager", t: "Ticketing Revenue Reconcile", a: "[ENTER NAME]", s: "OPEN", c: "Undetected internal till fraud.", i: "Match POS ticket settlements against physical bank credit reports.", isV: true },
+                                    { b: "Bandra", r: "Theatre Operations Manager", t: "Statutory License Audit", a: "[ENTER NAME]", s: "OPEN", c: "Government theater sealing.", i: "Verify valid Fire NOC and Operating License is active for all screens." },
+                                    { b: "Bandra", r: "Theatre Operations Manager", t: "Show Cancellation Triage", a: "[ENTER NAME]", s: "OPEN", c: "Reputational damage and refund liability.", i: "Review incident log for any technical halts > 5 mins." },
+                                    { b: "Bandra", r: "Theatre Operations Manager", t: "CPH Margin Pulse", a: "[ENTER NAME]", s: "OPEN", c: "Underperforming secondary revenue stream.", i: "Review Concession-Per-Head spend against weekly targets." },
+                                    { b: "Bandra", r: "Duty Manager", t: "Ambiance Sensory Audit", a: "[ENTER NAME]", s: "OPEN", c: "Poor guest first-impression.", i: "Check Lobby scent, music volume, and temp (Target 23°C).", isAlt: true },
+                                    { b: "Bandra", r: "Duty Manager", t: "Zero-Gap Handover", a: "[ENTER NAME]", s: "OPEN", c: "Lost instructions / Gridlock.", i: "Verify digital sign-off between AM/PM shift managers.", isAlt: true, isV: true },
+                                    { b: "Bandra", r: "Duty Manager", t: "MOD Floor Presence", a: "[ENTER NAME]", s: "OPEN", c: "Service chaos during rush.", i: "Conduct 15-min sweep of lobbies during peak interval surge.", isAlt: true }
+                                ].map((row, idx) => (
+                                    <tr key={idx} className={cn("border-b border-zinc-200 text-[11px]", row.isAlt ? "bg-[#f8f9fa]" : "bg-white")}>
+                                        <td className="px-3 py-3 border-r border-zinc-200 text-zinc-500">{row.b}</td>
+                                        <td className="px-3 py-3 border-r border-zinc-200 font-bold text-zinc-900">{row.r}</td>
+                                        <td className="px-3 py-3 border-r border-zinc-200 font-black text-zinc-950">{row.t}</td>
+                                        <td className="px-3 py-3 border-r border-zinc-200 text-zinc-400">{row.a}</td>
+                                        <td className="px-3 py-3 border-r border-zinc-200 bg-[#FEFCE8]"></td>
+                                        <td className={cn("px-3 py-3 border-r border-zinc-200", row.isV ? "bg-[#EFF6FF]" : "bg-[#f1f5f9]")}></td>
+                                        <td className="px-3 py-3 border-r border-zinc-200 font-black text-center">{row.s}</td>
+                                        <td className="px-3 py-3 border-r border-zinc-200 italic text-red-700 font-medium leading-tight max-w-[180px]">{row.c}</td>
+                                        <td className="px-3 py-3 text-emerald-700 font-medium leading-tight max-w-[300px]">{row.i}</td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
                     </div>
-                </Card>
+
+                    {/* Tab Navigation Footer (Sheet Style) */}
+                    <div className="bg-white border-t border-zinc-200 px-4 py-1.5 flex items-center gap-1 overflow-hidden">
+                        <div className="flex items-center gap-1 pr-4 border-r border-zinc-200">
+                             <div className="w-5 h-5 rounded hover:bg-zinc-100 flex items-center justify-center text-zinc-400">＋</div>
+                             <div className="w-5 h-5 rounded hover:bg-zinc-100 flex items-center justify-center text-zinc-400 text-xs">≡</div>
+                        </div>
+                        {[
+                            { n: "START", active: false },
+                            { n: "DASHBOARD", active: false },
+                            { n: "DAILY_TASKS", active: true },
+                            { n: "SOP_LIB", active: false },
+                            { n: "BRANCH_SETUP", active: false },
+                            { n: "TEAM_HUB", active: false },
+                            { n: "CUSTOMIZATION_GUIDE", active: false }
+                        ].map((tab, i) => (
+                            <div key={i} className={cn(
+                                "px-4 py-1.5 text-[10px] font-bold uppercase tracking-wide whitespace-nowrap rounded-t-lg transition-colors cursor-pointer",
+                                tab.active ? "bg-white border-x border-t border-zinc-200 text-blue-600 -mb-[7px] pb-[8px] z-10" : "text-zinc-500 hover:bg-zinc-100"
+                            )}>
+                                {tab.n}
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </section>
 
             {/* 3. DEEP TASK EXPLORATION (THE HOOK) */}
             <section className="max-w-4xl mx-auto space-y-8">
                 <div className="flex items-center gap-3">
                     <div className="w-1.5 h-6 bg-primary" />
-                    <h2 className="text-xl font-black uppercase italic tracking-tighter">03. EXPANDED TASK PROTOCOL</h2>
+                    <h2 className="text-xl font-black uppercase italic tracking-tighter">03. EXPANDED TASK PROTOCOL (THE HOOK)</h2>
                 </div>
                 <Card className="p-10 border-zinc-200 shadow-2xl bg-white space-y-10 relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-8 opacity-5">
@@ -143,7 +175,7 @@ export default function LiveDemoPreview() {
             <section className="max-w-2xl mx-auto space-y-8 flex flex-col items-center">
                 <div className="flex items-center gap-3 w-full">
                     <div className="w-1.5 h-6 bg-primary" />
-                    <h2 className="text-xl font-black uppercase italic tracking-tighter">04. MOBILE EXECUTION HUB</h2>
+                    <h2 className="text-xl font-black uppercase italic tracking-tighter">04. MOBILE EXECUTION HUB (RESTRAINED)</h2>
                 </div>
                 <div className="w-[375px] h-[750px] border-[12px] border-zinc-900 rounded-[3rem] bg-white overflow-hidden shadow-2xl relative flex flex-col">
                     <div className="bg-zinc-950 text-white p-6 pt-12 space-y-1">
@@ -152,8 +184,11 @@ export default function LiveDemoPreview() {
                     </div>
                     <div className="flex-1 overflow-y-auto p-4 space-y-3">
                         {d.tasks.slice(0, 6).map((t, i) => (
-                            <div key={i} className="p-5 rounded-2xl border border-zinc-100 bg-zinc-50/50 flex items-center justify-between group">
-                                <div className="space-y-1">
+                            <div key={i} className="p-5 rounded-2xl border border-zinc-100 bg-zinc-50/50 flex items-center justify-center group relative overflow-hidden">
+                                <div className="absolute inset-0 bg-white/50 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <p className="text-[10px] font-black text-primary uppercase tracking-widest">TAP_TO_LOG</p>
+                                </div>
+                                <div className="flex-1 space-y-1">
                                     <p className="text-[8px] font-black text-zinc-400 uppercase tracking-widest">{t.role}</p>
                                     <p className="text-xs font-black text-zinc-900 italic uppercase leading-tight">{t.task}</p>
                                 </div>
