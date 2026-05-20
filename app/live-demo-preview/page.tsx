@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -67,7 +66,7 @@ export default function LiveDemoPreview() {
                     </div>
 
                     {/* Ledger Body */}
-                    <div className="overflow-x-auto">
+                    <div className="overflow-x-auto no-scrollbar">
                         <table className="w-full text-left border-collapse min-w-[1200px]">
                             <thead>
                                 <tr className="bg-[#0F172A] text-white">

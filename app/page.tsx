@@ -198,7 +198,7 @@ const HeroSection = () => {
 
 const SovereignLedgerSection = () => (
     <Section className="bg-zinc-50/50" noSpine>
-        <div className="max-w-6xl mx-auto space-y-12">
+        <div className="max-w-[1400px] mx-auto space-y-12">
             <div className="flex flex-col items-center text-center space-y-4">
                 <Badge variant="outline" className="text-primary border-primary/20 bg-white uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic shadow-sm">SYSTEM INTERFACE</Badge>
                 <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
@@ -215,7 +215,7 @@ const SovereignLedgerSection = () => (
                     <span className="uppercase tracking-widest">DAILY TASKS – Update 'Done By' to complete daily work.</span>
                 </div>
 
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto no-scrollbar">
                     <table className="w-full text-left border-collapse min-w-[1200px]">
                         <thead>
                             <tr className="bg-[#0F172A] text-white">
