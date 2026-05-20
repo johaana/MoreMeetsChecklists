@@ -624,7 +624,7 @@ export default function Home() {
                                 <span className="text-2xl md:text-4xl font-bold text-white/30 italic">/ $49</span>
                             </div>
                             
-                            <Button asChild size="lg" className="h-20 px-16 rounded-[20px] bg-primary text-black font-black uppercase italic text-xl shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white hover:scale-[1.05] transition-all border-none group">
+                            <Button asChild size="lg" className="h-20 px-16 rounded-[20px] bg-primary text-black font-black uppercase italic text-xl shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group">
                                 <Link href="/library" className="flex items-center gap-6">Get Your Operational Pack <ArrowRight className="w-8 h-8 md:w-10 md:h-10" /></Link>
                             </Button>
                             
