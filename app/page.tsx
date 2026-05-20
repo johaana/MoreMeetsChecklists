@@ -65,13 +65,17 @@ const MARQUEE_SIGNALS = [
 ];
 
 const ELITE_INDUSTRIES = [
-    { name: "Hotel Operations", id: "hotels_and_resorts" },
-    { name: "Restaurant Operations", id: "restaurants" },
-    { name: "Hospital Operations", id: "healthcare_and_hospital_operations" },
-    { name: "School Operations", id: "school_operations_pack" },
-    { name: "Franchise Operations", id: "franchise_operations_pack" },
-    { name: "Facilities Operations", id: "facility_management_blueprint" },
-    { name: "Multiplex Operations", id: "cinema_operations_pack" }
+    { name: "Hotel Operations", id: "hotels_and_resorts", sub: "Housekeeping • Front Desk • Engineering • Audit" },
+    { name: "Restaurant Operations", id: "restaurants", sub: "Kitchen • HACCP • Handover • Inventory" },
+    { name: "Jewellery Store Operations", id: "retail_jewellery_operations_pack", sub: "Vault • Verification • Custody • CCTV" },
+    { name: "Grocery Store Operations", id: "supermarket_grocery_retail_pack", sub: "Cold Chain • Expiry • Shrinkage • Replenishment" },
+    { name: "Hospital Operations", id: "healthcare_and_hospital_operations", sub: "Clinical • Nursing • Narcotics • Billing" },
+    { name: "School Operations", id: "school_operations_pack", sub: "Transport • Safety • Hygiene • Admin" },
+    { name: "Franchise Operations", id: "franchise_operations_pack", sub: "Brand • Royalty • Network • Compliance" },
+    { name: "Facilities Operations", id: "facility_management_blueprint", sub: "MEP • Safety • Energy • Vendor" },
+    { name: "Multiplex Operations", id: "cinema_operations_pack", sub: "Projection • Concession • Crowd • Safety" },
+    { name: "Fashion Store Operations", id: "fashion_and_apparel_retail", sub: "VM • Velocity • Trial Room • Returns" },
+    { name: "Electronics Store Operations", id: "electronics_showroom_pack", sub: "Serial • Demo • Warranty • E-Waste" }
 ];
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
@@ -100,22 +104,22 @@ const HeroSection = () => {
             </div>
             
             <div className="relative z-20 container mx-auto max-w-[1200px] px-6 py-12">
-                <div className="grid lg:grid-cols-[1fr,450px] gap-12 md:gap-20 items-center">
+                <div className="grid lg:grid-cols-[1fr,480px] gap-12 md:gap-20 items-center">
                     <div className="space-y-8 md:space-y-12">
                         <div className="space-y-4 md:space-y-5">
-                            <h1 className="text-[28px] md:text-[56px] lg:text-[64px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
+                            <h1 className="text-[28px] md:text-[54px] lg:text-[60px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
                                 YOUR BUSINESS <br />
                                 <span style={{ color: BRAND_GREEN }}>SHOULD NOT RUN</span> <br/>
                                 <span style={{ color: BRAND_GREEN }}>ON MEMORY.</span>
                             </h1>
-                            <div className="space-y-3 max-w-xl">
+                            <div className="space-y-4 max-w-xl">
                                 <p className="text-base md:text-lg italic font-medium text-zinc-400 leading-tight">
-                                    Pre-built operational systems for hotels, restaurants, hospitals, schools, retail stores, facilities, cinemas, and franchise groups.
+                                    Pre-built operational systems that turn SOPs into live daily execution.
                                 </p>
                                 <div className="border-l-2 border-primary/40 pl-4 py-0.5">
                                     <p className="text-[11px] md:text-sm text-zinc-500 font-bold italic uppercase tracking-wider">
                                         BUILT IN EXCEL • OPERATED THROUGH GOOGLE SHEETS <br/>
-                                        THE SYSTEM YOUR TEAM ALREADY KNOWS.
+                                        READY TO DEPLOY IN 10 MINUTES.
                                     </p>
                                 </div>
                             </div>
@@ -136,10 +140,10 @@ const HeroSection = () => {
                              
                              <div className="grid grid-cols-2 gap-x-6 gap-y-3 max-w-md">
                                 {[
-                                    { t: "120+ PRE-BUILT SOPs", i: Target },
-                                    { t: "LIVE DASHBOARDS", i: Activity },
-                                    { t: "NO SaaS LOCK-IN", i: Lock },
-                                    { t: "TRAINER NOTES", i: GraduationCap }
+                                    { t: "AUDIT-READY LOGS", i: ShieldCheck },
+                                    { t: "ROLE-BASED ACCOUNTABILITY", i: Users },
+                                    { t: "CONSEQUENCE-AWARE TASKS", i: AlertTriangle },
+                                    { t: "MOBILE SHEETS EXECUTION", i: Smartphone }
                                 ].map((spec, i) => (
                                     <div key={i} className="flex items-center gap-2">
                                         <spec.i className="w-3.5 h-3.5 text-primary/40" />
@@ -150,19 +154,24 @@ const HeroSection = () => {
                         </div>
                     </div>
 
-                    <div className="relative group lg:border-l border-white/5 lg:pl-12 space-y-8">
+                    <div className="relative group lg:border-l border-white/5 lg:pl-10 space-y-8">
                         <div className="space-y-1">
                             <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.5em] italic">SELECT VERTICAL</p>
                             <div className="h-px w-16 bg-primary/30" />
                         </div>
                         
-                        <div className="flex flex-col space-y-3 md:space-y-4">
+                        <div className="flex flex-col space-y-5">
                             {ELITE_INDUSTRIES.map((ind) => (
-                                <Link key={ind.id} href={`/packs/${ind.id}`} className="group flex items-center justify-between py-0.5 transition-all">
-                                    <span className="text-lg md:text-xl lg:text-[22px] font-black font-headline uppercase italic tracking-tighter text-white/20 group-hover:text-primary group-hover:translate-x-2 transition-all duration-500">
-                                        {ind.name}
+                                <Link key={ind.id} href={`/packs/${ind.id}`} className="group flex flex-col items-start transition-all">
+                                    <div className="flex items-center justify-between w-full">
+                                        <span className="text-lg md:text-[20px] font-black font-headline uppercase italic tracking-tighter text-white/20 group-hover:text-primary transition-all duration-300">
+                                            {ind.name}
+                                        </span>
+                                        <ChevronRight className="w-3 h-3 text-white/5 group-hover:text-primary transition-all" />
+                                    </div>
+                                    <span className="text-[8px] font-black text-zinc-800 uppercase tracking-[0.2em] group-hover:text-zinc-600 transition-colors mt-0.5">
+                                        {ind.sub}
                                     </span>
-                                    <ChevronRight className="w-4 h-4 text-white/5 group-hover:text-primary transition-all" />
                                 </Link>
                             ))}
                         </div>
@@ -204,9 +213,14 @@ const SovereignLedgerSection = () => (
                 <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
                     THE SOVEREIGN LEDGER
                 </h2>
-                <p className="text-zinc-500 text-lg italic font-medium max-w-2xl">
-                    High-density operational command. Clear roles. Verifiable results. Built in Excel for your team's immediate adoption.
-                </p>
+                <div className="space-y-2">
+                    <p className="text-zinc-950 font-black text-lg md:text-xl italic uppercase tracking-tighter">
+                        Every task is assigned, timestamped, verifiable, and visible live across the team.
+                    </p>
+                    <p className="text-zinc-400 text-sm italic font-medium">
+                        High-density operational command. Built in Excel for your team's immediate adoption.
+                    </p>
+                </div>
             </div>
 
             <div className="rounded-xl overflow-hidden border border-zinc-300 shadow-[0_30px_100px_-20px_rgba(0,0,0,0.15)] bg-[#f8f9fa] font-sans">
@@ -295,8 +309,49 @@ export default function Home() {
             <main className="flex-1">
                 <HeroSection />
 
-                {/* THE ULTIMATE PROOF SECTION */}
                 <SovereignLedgerSection />
+
+                <Section className="bg-white" id="pedigree">
+                    <div className="max-w-5xl mx-auto space-y-16">
+                        <div className="text-center space-y-4">
+                            <Badge variant="outline" className="text-zinc-500 border-zinc-200 uppercase tracking-[0.4em] font-black text-[10px]">THE FORENSIC MOAT</Badge>
+                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
+                                EVERY TASK IS <br/> EXPLAINED CLEARLY.
+                            </h2>
+                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto text-center">
+                                We establish the forensic pedigree behind every action, turning mechanical clicking into intentional execution.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                            {[
+                                { t: "WHAT TO DO", i: Target },
+                                { t: "HOW TO DO IT", i: GraduationCap },
+                                { t: "WHY IT MATTERS", i: History },
+                                { t: "RISKS IF MISSED", i: AlertTriangle },
+                                { t: "ESCALATIONS", i: ShieldAlert },
+                                { t: "VERIFICATION", i: SearchCheck }
+                            ].map((item, i) => (
+                                <div key={i} className="p-8 rounded-[2rem] bg-zinc-50 border border-zinc-100 flex flex-col items-center text-center gap-4 group hover:border-primary transition-all">
+                                    <item.i className="w-6 h-6 text-zinc-300 group-hover:text-primary transition-colors" />
+                                    <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.3em] italic text-zinc-950">{item.t}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="bg-zinc-950 rounded-[2.5rem] p-10 md:p-16 text-center text-white space-y-8 shadow-2xl">
+                             <h3 className="text-2xl md:text-4xl font-black font-headline uppercase italic tracking-tighter">Built for frontline teams</h3>
+                             <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+                                {[
+                                    "Managers", "Supervisors", "Housekeeping", "Kitchen staff", "Retail floor staff", "Technicians", "Front desk", "Security", "Operations heads"
+                                ].map((role, i) => (
+                                    <Badge key={i} variant="outline" className="text-white/40 border-white/10 py-2 px-6 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest italic">{role}</Badge>
+                                ))}
+                             </div>
+                             <p className="text-zinc-400 font-bold italic text-base md:text-xl">If someone can use Google Sheets on a phone, they can operate MoreMeets™.</p>
+                        </div>
+                    </div>
+                </Section>
 
                 <Section className="bg-white" id="not-saas" noSpine>
                     <div className="max-w-5xl mx-auto">
@@ -307,17 +362,16 @@ export default function Home() {
                                     <h2 className="text-[34px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.9] uppercase italic tracking-tighter">
                                         NOT ANOTHER <br/> <span className="text-red-600">SaaS TOOL.</span>
                                     </h2>
-                                    <p className="text-xl text-zinc-500 italic font-medium leading-tight">
-                                        Most operational software fails because frontline teams never fully adopt it.
+                                    <p className="text-xl text-zinc-950 font-black italic uppercase tracking-tighter">
+                                        Most operational software fails on the floor.
                                     </p>
                                 </div>
                                 
                                 <div className="space-y-4 border-l-2 border-zinc-100 pl-8">
                                     {[
-                                        "Too complex",
-                                        "Too many logins",
-                                        "Too much training",
-                                        "Too much resistance"
+                                        "Too many logins.",
+                                        "Too much training.",
+                                        "Too much resistance."
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-4 text-zinc-400 font-bold italic uppercase tracking-tight">
                                             <X className="w-5 h-5 text-red-300" />
@@ -326,9 +380,9 @@ export default function Home() {
                                     ))}
                                 </div>
 
-                                <div className="p-8 bg-zinc-50 rounded-[2rem] border border-zinc-100 space-y-4">
+                                <div className="p-8 bg-emerald-500/5 rounded-[2rem] border border-emerald-500/10 space-y-4">
                                     <p className="text-zinc-950 font-black italic uppercase text-lg">MoreMeets™ works differently.</p>
-                                    <p className="text-zinc-500 font-medium italic">Your operational system is delivered as a pre-built Excel master file optimized for Google Sheets.</p>
+                                    <p className="text-zinc-500 font-medium italic">We use the tools your team already understands. Your operational system is a pre-built Excel master file optimized for live Google Sheets execution.</p>
                                 </div>
                             </div>
 
@@ -388,12 +442,12 @@ export default function Home() {
                 <Section className="bg-white">
                     <div className="max-w-6xl mx-auto space-y-20 md:space-y-32">
                         <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic bg-white shadow-sm">FORENSIC ENGINEERING</Badge>
+                            <Badge variant="outline" className="text-zinc-400 border-zinc-200 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic bg-white shadow-sm">OPERATIONAL INTELLIGENCE</Badge>
                             <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
-                                BUILT USING REAL <br/> OPERATIONAL INTELLIGENCE
+                                BUILT USING REAL <br/> INDUSTRY EXPERTISE
                             </h2>
                             <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto text-center pt-4">
-                                This is not generic checklist software. Each system is built around how industries actually fail in real life.
+                                This is not generic checklist software. Each system is built around how industries actually fail in high-stakes environments.
                             </p>
                         </div>
 
@@ -440,105 +494,6 @@ export default function Home() {
                                     </ul>
                                 </div>
                             ))}
-                        </div>
-                    </div>
-                </Section>
-
-                <Section className="bg-zinc-950 text-white" id="problem" noSpine>
-                    <div className="max-w-6xl mx-auto space-y-20">
-                         <div className="text-center space-y-4">
-                            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic bg-primary/5">THE EXECUTION GAP</Badge>
-                            <h2 className="text-[34px] md:text-[54px] font-black font-headline uppercase italic tracking-tighter leading-[0.95]">
-                                YOUR SOPs ARE PROBABLY <br/> <span className="text-red-500">NOT THE REAL PROBLEM.</span>
-                            </h2>
-                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto text-center pt-4">
-                                Most businesses already have SOP documents. But SOPs sitting in folders do not create execution.
-                            </p>
-                        </div>
-
-                        <div className="grid lg:grid-cols-2 rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
-                            <div className="p-10 md:p-20 bg-white/5 border-r border-white/10 relative text-left">
-                                <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-600" />
-                                <div className="space-y-8">
-                                    <h3 className="text-2xl font-black font-headline text-red-500 uppercase italic tracking-tighter">Instead of:</h3>
-                                    <ul className="space-y-6">
-                                        {[
-                                            "PDFs nobody opens",
-                                            "WhatsApp reminders",
-                                            "Verbal follow-ups",
-                                            "Manual checking",
-                                            "Dependency on “experienced staff”"
-                                        ].map((text, i) => (
-                                            <li key={i} className="flex items-start gap-5 text-zinc-500 text-lg md:text-xl font-bold italic leading-snug">
-                                                <X className="w-6 h-6 text-red-500/30 shrink-0 mt-0.5" />
-                                                <span>{text}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="p-10 md:p-20 bg-emerald-500/5 relative text-left">
-                                <div className="absolute right-0 top-0 bottom-0 w-1 bg-primary" />
-                                <div className="space-y-8">
-                                    <h3 className="text-2xl font-black font-headline text-primary uppercase italic tracking-tighter">You Get:</h3>
-                                    <ul className="space-y-6">
-                                        {[
-                                            "Daily execution visibility",
-                                            "Structured accountability",
-                                            "Permanent operational memory",
-                                            "Faster onboarding",
-                                            "Consistent branch standards",
-                                            "Audit-ready records"
-                                        ].map((text, i) => (
-                                            <li key={i} className="flex items-start gap-5 text-white text-lg md:text-xl font-black italic leading-snug uppercase">
-                                                <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
-                                                <span>{text}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Section>
-
-                <Section className="bg-white">
-                    <div className="max-w-5xl mx-auto space-y-16">
-                        <div className="text-center space-y-4">
-                            <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-center">
-                                EVERY TASK IS EXPLAINED CLEARLY
-                            </h2>
-                            <p className="text-zinc-500 text-lg md:text-xl font-medium italic max-w-2xl mx-auto text-center">
-                                Your team does not need operational expertise to follow the system.
-                            </p>
-                        </div>
-
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                            {[
-                                { t: "WHAT TO DO", i: Target },
-                                { t: "HOW TO DO IT", i: GraduationCap },
-                                { t: "WHY IT MATTERS", i: History },
-                                { t: "RISKS IF MISSED", i: AlertTriangle },
-                                { t: "ESCALATIONS", i: ShieldAlert },
-                                { t: "VERIFICATION", i: SearchCheck }
-                            ].map((item, i) => (
-                                <div key={i} className="p-8 rounded-[2rem] bg-zinc-50 border border-zinc-100 flex flex-col items-center text-center gap-4 group hover:border-primary transition-all">
-                                    <item.i className="w-6 h-6 text-zinc-300 group-hover:text-primary transition-colors" />
-                                    <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.3em] italic text-zinc-950">{item.t}</span>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="bg-zinc-950 rounded-[2.5rem] p-10 md:p-16 text-center text-white space-y-8 shadow-2xl">
-                             <h3 className="text-2xl md:text-4xl font-black font-headline uppercase italic tracking-tighter">Built for frontline teams</h3>
-                             <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-                                {[
-                                    "Managers", "Supervisors", "Housekeeping", "Kitchen staff", "Retail floor staff", "Technicians", "Front desk", "Security", "Operations heads"
-                                ].map((role, i) => (
-                                    <Badge key={i} variant="outline" className="text-white/40 border-white/10 py-2 px-6 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest italic">{role}</Badge>
-                                ))}
-                             </div>
-                             <p className="text-zinc-400 font-bold italic text-base md:text-xl">If someone can use Google Sheets on a phone, they can operate MoreMeets™.</p>
                         </div>
                     </div>
                 </Section>
