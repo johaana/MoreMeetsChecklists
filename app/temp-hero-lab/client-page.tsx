@@ -102,8 +102,8 @@ export default function HeroLabClient() {
                 </h1>
             </div>
 
-            {/* --- ARCHETYPE 01: THE SYMMETRIC DOCK (KEPT) --- */}
-            <LabSection id="opt-1" title="01. The Symmetric Dock" description="Right-aligned 2-column technical grid for sectors. Cuts vertical height by 50% while projecting 'switchboard' authority.">
+            {/* --- ARCHETYPE 01: THE SYMMETRIC DOCK (KEEP) --- */}
+            <LabSection id="opt-1" title="01. The Symmetric Dock" description="Right-aligned 2-column grid for sectors. Projects 'switchboard' authority.">
                 <div className="absolute inset-0 z-0">
                     <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20 grayscale" />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-transparent" />
@@ -124,7 +124,7 @@ export default function HeroLabClient() {
                                 <Button asChild size="lg" className="h-16 px-12 rounded-xl bg-primary text-black font-black uppercase italic text-base">
                                     <Link href="#">{NARRATIVE.cta} <ArrowRight className="ml-2 w-5 h-5" /></Link>
                                 </Button>
-                                <div className="flex flex-col">
+                                <div className="flex flex-col pl-1">
                                     <span className="text-3xl font-black italic">{NARRATIVE.price}</span>
                                     <span className="text-[8px] font-black text-zinc-600 uppercase tracking-widest italic">ONE-TIME</span>
                                 </div>
@@ -144,7 +144,7 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 02: THE MONOLITH (KEPT) --- */}
+            {/* --- ARCHETYPE 02: THE MONOLITH (KEEP) --- */}
             <LabSection id="opt-2" title="02. The Monolith" description="Centered high-gravity mandate. Best for absolute brand authority.">
                 <div className="absolute inset-0 z-0">
                     <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-10" />
@@ -179,73 +179,86 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 03: THE MONOLITH (GLASS ELEVATION) --- */}
-            <LabSection id="opt-3" title="03. The Monolith: Glass Elevation" description="Option 2 variant with a high-gravity glass enclosure for the primary decision block.">
+            {/* --- ARCHETYPE 03: THE ATMOSPHERIC FLOAT (NEW CREATIVE) --- */}
+            <LabSection id="opt-3" title="03. The Atmospheric Float" description="Creative variant of 02. Technical payload floats in a blurred glass pill.">
                 <div className="absolute inset-0 z-0">
-                    <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-30 grayscale" />
+                    <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20 grayscale" />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black" />
                 </div>
                 <div className="relative z-10 container mx-auto max-w-[1000px] text-center space-y-12">
                     <div className="space-y-6">
-                        <Badge variant="outline" className="text-emerald-500 border-emerald-500/20 bg-emerald-500/5 px-6 py-2 uppercase font-black tracking-widest text-[10px]">SOVEREIGN INFRASTRUCTURE</Badge>
-                        <h1 className="text-[64px] md:text-[84px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white">
+                        <div className="absolute -inset-20 blur-[120px] opacity-10 bg-emerald-500 rounded-full pointer-events-none" />
+                        <h1 className="text-[64px] md:text-[84px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white relative z-10">
                             SYSTEMS <br/> OVER <span style={{ color: BRAND_GREEN }}>LUCK.</span>
                         </h1>
                     </div>
-                    <div className="max-w-2xl mx-auto p-10 rounded-[3rem] bg-white/[0.03] border border-white/10 backdrop-blur-2xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] space-y-8">
-                        <p className="text-lg text-zinc-300 italic font-medium leading-relaxed">Stop the daily anxiety of management gaps. Deploy a live operational system that works on the floor.</p>
-                        <div className="flex flex-col items-center gap-6">
-                             <Button asChild size="lg" className="h-16 px-12 rounded-xl bg-primary text-black font-black uppercase italic text-base w-full max-w-sm">
-                                <Link href="#">DEPLOY ENGINE: {NARRATIVE.price}</Link>
-                             </Button>
-                             <p className="text-[9px] font-black text-zinc-500 uppercase tracking-[0.4em] italic">{NARRATIVE.meta}</p>
+                    
+                    <div className="max-w-2xl mx-auto space-y-10 relative z-10">
+                        <div className="inline-flex flex-wrap items-center justify-center gap-x-8 gap-y-4 px-10 py-5 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-2xl">
+                            {[
+                                "NON-RETRACTABLE ASSET",
+                                "UNIVERSAL SHEET STANDARDS",
+                                "ELIMINATE MANAGEMENT GAPS"
+                            ].map((item, i) => (
+                                <span key={i} className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 italic">{item}</span>
+                            ))}
+                        </div>
+
+                        <p className="text-xl text-zinc-400 italic font-medium leading-relaxed">
+                            Stop the daily anxiety of management gaps. Deploy a live operational system that works on the floor.
+                        </p>
+                        
+                        <div className="pt-4">
+                            <SovereignCTA className="flex flex-col items-center" />
                         </div>
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 04: THE MONOLITH (TACTICAL TELEMETRY) --- */}
-            <LabSection id="opt-4" title="04. The Monolith: Tactical Telemetry" description="Option 2 variant with monospaced metadata and tactical labeling to project technical density.">
+            {/* --- ARCHETYPE 04: THE COMMAND TERMINAL (NEW CREATIVE) --- */}
+            <LabSection id="opt-4" title="04. The Command Terminal" description="High-density tactical telemetry placed above the mandate.">
                 <div className="relative z-10 container mx-auto max-w-[1100px] text-center space-y-16">
-                    <div className="space-y-6">
-                        <div className="flex items-center justify-center gap-3">
-                            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_#10b981]" />
-                            <span className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest">SYSTEM_DEPLOYS_IN_600S</span>
+                    <div className="space-y-12">
+                        <div className="grid grid-cols-3 gap-1px bg-white/5 border border-white/5 rounded-xl overflow-hidden max-w-2xl mx-auto">
+                            {[
+                                { l: "FORMAT", v: "EXCEL MASTER" },
+                                { l: "PLATFORM", v: "GOOGLE SHEETS" },
+                                { l: "LOGS", v: "AUDIT-READY" }
+                            ].map((item, i) => (
+                                <div key={i} className="p-5 bg-black/40 backdrop-blur-md space-y-1">
+                                    <p className="text-[8px] font-mono text-zinc-600 uppercase tracking-widest">{item.l}</p>
+                                    <p className="text-xs font-black uppercase text-emerald-500 italic">{item.v}</p>
+                                </div>
+                            ))}
                         </div>
-                        <h1 className="text-[70px] md:text-[100px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white">
-                            CAPTURE <br/> <span style={{ color: BRAND_GREEN }}>MEMORY.</span>
-                        </h1>
+
+                        <div className="space-y-4">
+                            <div className="flex items-center justify-center gap-3">
+                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_#10b981]" />
+                                <span className="text-[10px] font-mono text-emerald-500/60 uppercase tracking-[0.4em]">SYSTEM_DEPLOYS_IN_600S</span>
+                            </div>
+                            <h1 className="text-[70px] md:text-[100px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white">
+                                CAPTURE <br/> <span style={{ color: BRAND_GREEN }}>MEMORY.</span>
+                            </h1>
+                        </div>
                     </div>
                     
-                    <div className="grid grid-cols-3 gap-4 max-w-3xl mx-auto">
-                        {[
-                            { l: "FORMAT", v: "EXCEL MASTER" },
-                            { l: "PLATFORM", v: "GOOGLE SHEETS" },
-                            { l: "LOGS", v: "AUDIT-READY" }
-                        ].map((item, i) => (
-                            <div key={i} className="p-4 border border-white/5 bg-white/[0.02] rounded-xl space-y-1">
-                                <p className="text-[8px] font-black text-zinc-600 uppercase tracking-widest">{item.l}</p>
-                                <p className="text-xs font-black uppercase text-white italic">{item.v}</p>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="space-y-8">
-                        <p className="text-xl text-zinc-400 italic font-medium max-w-xl mx-auto">Institutional memory is an asset. Anything else is just luck.</p>
+                    <div className="space-y-10 max-w-xl mx-auto">
+                        <p className="text-xl text-zinc-400 italic font-medium leading-relaxed">Institutional memory is an asset. Anything else is just luck.</p>
                         <SovereignCTA className="flex flex-col items-center" />
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 05: THE MONOLITH (PRESTIGIOUS MINIMAL) --- */}
-            <LabSection id="opt-5" title="05. The Monolith: Prestigious Minimal" description="Option 2 variant with a high-contrast layout, oversized typography, and maximum negative space.">
+            {/* --- ARCHETYPE 05: THE MONOLITH (PRESTIGIOUS MINIMAL) (KEEP) --- */}
+            <LabSection id="opt-5" title="05. The Monolith: Prestigious Minimal" description="Variant of 02 with high-contrast, oversized typography and line-art elements.">
                 <div className="relative z-10 container mx-auto max-w-[1200px] text-center space-y-24">
                     <div className="space-y-10">
                         <h1 className="text-[100px] md:text-[140px] font-black font-headline leading-[0.75] uppercase italic tracking-tighter text-white">
                             SOVEREIGN <br/> <span className="text-zinc-800">OPERATIONS.</span>
                         </h1>
                         <div className="h-1 w-24 bg-primary mx-auto" />
-                        <p className="text-2xl md:text-3xl text-zinc-400 font-bold italic uppercase tracking-widest max-w-4xl mx-auto">
+                        <p className="text-2xl md:text-3xl text-zinc-400 font-bold italic uppercase tracking-widest max-w-4xl mx-auto leading-tight">
                             The Professional Standard for Operational Infrastructure.
                         </p>
                     </div>
@@ -263,55 +276,53 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 06: THE ACTION-FIRST HUD (KEPT) --- */}
-            <LabSection id="opt-6" title="06. The Action-First HUD" description="Consolidates price, speed, and platform into one decision block.">
-                <div className="relative h-full flex flex-col justify-center items-center text-center px-6">
-                    <div className="max-w-4xl space-y-12">
-                        <div className="space-y-4">
-                            <h1 className="text-7xl md:text-[94px] font-black font-headline leading-none uppercase italic tracking-tighter">
-                                STOP THE <span className="text-red-600">CHAOS.</span> <br/>
-                                <span style={{ color: BRAND_GREEN }}>START THE ENGINE.</span>
-                            </h1>
-                            <p className="text-xl md:text-2xl text-zinc-400 italic font-medium max-w-2xl mx-auto">{NARRATIVE.subline}</p>
-                        </div>
+            {/* --- ARCHETYPE 06: THE HIGH-CONTRAST MANDATE (NEW CREATIVE) --- */}
+            <LabSection id="opt-6" title="06. The High-Contrast Mandate" description="Creative variant of 02. Technical payload presented in a bold, cutting horizontal bar.">
+                <div className="absolute inset-0 z-0">
+                    <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-30 grayscale-[0.5]" />
+                </div>
+                <div className="relative z-10 container mx-auto max-w-[1100px] text-center space-y-16">
+                    <div className="space-y-6">
+                        <h1 className="text-[64px] md:text-[94px] font-black font-headline leading-none uppercase italic tracking-tighter text-white">
+                            STOP THE <span className="text-red-600">CHAOS.</span> <br/>
+                            <span style={{ color: BRAND_GREEN }}>START THE ENGINE.</span>
+                        </h1>
+                    </div>
 
-                        <div className="inline-flex flex-col md:flex-row items-center gap-2 p-3 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-2xl">
-                             <div className="flex items-center gap-3 px-8 py-4 border-r border-white/5">
-                                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                                    <Smartphone className="w-5 h-5" />
+                    <div className="w-full bg-white text-black py-8 px-6 shadow-2xl relative overflow-hidden">
+                        {/* Static Marquee Decoration */}
+                        <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
+                        
+                        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+                            <div className="flex flex-col items-start gap-1">
+                                <p className="text-[8px] font-black text-zinc-400 uppercase tracking-[0.4em] italic">DEPLOYMENT PARAMETERS</p>
+                                <div className="flex gap-8 text-[11px] font-black uppercase italic tracking-wider">
+                                    <span>ONE-TIME PAYMENT</span>
+                                    <span>OWN FOREVER</span>
+                                    <span>NO SUBSCRIPTIONS</span>
                                 </div>
-                                <div className="text-left">
-                                    <p className="text-[8px] font-black text-zinc-500 uppercase tracking-widest">WORKS ON</p>
-                                    <p className="text-[10px] font-black uppercase text-white italic">IPHONE & ANDROID</p>
-                                </div>
-                             </div>
-                             <div className="flex items-center gap-3 px-8 py-4 border-r border-white/5">
-                                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                                    <Zap className="w-5 h-5" />
-                                </div>
-                                <div className="text-left">
-                                    <p className="text-[8px] font-black text-zinc-500 uppercase tracking-widest">DEPLOYMENT</p>
-                                    <p className="text-[10px] font-black uppercase text-white italic">10 MINUTES</p>
-                                </div>
-                             </div>
-                             <div className="px-4 pr-1">
-                                 <Button asChild size="lg" className="h-16 px-12 rounded-full bg-primary text-black font-black uppercase italic text-base shadow-xl">
-                                    <Link href="#">DEPLOY FOR {NARRATIVE.price}</Link>
-                                 </Button>
-                             </div>
-                        </div>
+                            </div>
 
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto opacity-40">
-                             {ELITE_INDUSTRIES.slice(0, 4).map((ind) => (
-                                <div key={ind.id} className="text-[9px] font-black uppercase tracking-widest border border-white/10 py-2 rounded-full italic">{ind.name}</div>
-                             ))}
+                            <div className="flex items-center gap-10">
+                                <div className="flex flex-col items-end">
+                                    <span className="text-[42px] font-black italic tracking-tighter leading-none">{NARRATIVE.price}</span>
+                                    <span className="text-[8px] font-black text-zinc-400 uppercase tracking-widest mt-1">Sovereign Pro Access</span>
+                                </div>
+                                <Button asChild className="h-16 px-12 rounded-xl bg-black text-white font-black uppercase italic text-base hover:bg-emerald-600 transition-all">
+                                    <Link href="#">DEPLOY ENGINE <ArrowRight className="ml-3 h-6 w-6" /></Link>
+                                </Button>
+                            </div>
                         </div>
                     </div>
+
+                    <p className="text-xl text-zinc-500 italic font-medium max-w-2xl mx-auto">
+                        Systems are not suggestions. They are institutional infrastructure.
+                    </p>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 07: THE CATEGORY CHAMBERS (KEPT) --- */}
-            <LabSection id="opt-7" title="07. The Category Chambers" description="Grouping sectors into technical modules to project massive organizational breadth in one glance.">
+            {/* --- ARCHETYPE 07: THE CATEGORY CHAMBERS (KEEP) --- */}
+            <LabSection id="opt-7" title="07. The Category Chambers" description="Grouping sectors into technical modules to project massive breadth.">
                  <div className="relative h-full container mx-auto max-w-[1200px] px-6 py-12 flex flex-col justify-center gap-12">
                     <div className="grid lg:grid-cols-[1fr,350px] gap-12 items-end">
                         <div className="space-y-6 text-left">
@@ -358,4 +369,3 @@ export default function HeroLabClient() {
         </div>
     );
 }
-
