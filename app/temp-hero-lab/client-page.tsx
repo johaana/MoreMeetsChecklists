@@ -96,7 +96,7 @@ const AtmosphericHero = ({ children, id, label }: { children: React.ReactNode, i
                 </div>
             </div>
         </div>
-        <div className="w-full relative overflow-hidden h-[100svh] md:h-auto md:min-h-[90svh] flex flex-col justify-center border-y border-white/5 bg-black pb-24 md:pb-32 pt-2 md:pt-20">
+        <div className="w-full relative overflow-hidden h-[100svh] md:h-auto md:min-h-[90svh] flex flex-col justify-center border-y border-white/5 bg-black pb-16 md:pb-32 pt-2 md:pt-20">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.12)_0%,transparent_70%)]" />
             <div className="relative z-10 container mx-auto max-w-[1200px] px-6 h-full flex flex-col justify-center">
                 {children}
@@ -125,7 +125,7 @@ export default function HeroLabClient() {
             
             <div className="container px-6 pt-24 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-emerald-500/5">
-                    SOVEREIGN HERO LAB v20.0
+                    SOVEREIGN HERO LAB v21.0
                 </Badge>
                 <h1 className="text-4xl md:text-5xl font-black font-headline italic uppercase tracking-tighter text-white">
                     Operational <span className="text-emerald-500">Design Selection</span>
@@ -152,11 +152,11 @@ export default function HeroLabClient() {
             <AtmosphericHero id="07" label="The Reporting Chase (Winner)">
                 <div className="relative">
                     <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,0.8fr] gap-4 lg:gap-16 items-start lg:items-center h-full">
-                        <div className="space-y-3 md:space-y-6">
-                            <h1 className="text-[36px] md:text-[60px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter">
+                        <div className="space-y-2 md:space-y-6">
+                            <h1 className="text-[32px] md:text-[60px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter">
                                 STOP THE <br/> REPORTING <br/> <span className="text-red-500">CHASE.</span>
                             </h1>
-                            <p className="text-zinc-400 text-sm md:text-xl font-medium italic border-l-2 border-primary/20 pl-6 max-w-xl">
+                            <p className="text-zinc-400 text-[12px] md:text-xl font-medium italic border-l-2 border-primary/20 pl-6 max-w-xl">
                                 Stop chasing staff on calls or WhatsApp and start seeing real-time reporting from your phone. Even when you aren't there.
                             </p>
                         </div>
@@ -164,9 +164,9 @@ export default function HeroLabClient() {
                         {/* Mandate & Proof Panel - Optimized for "One Glance" Mobile */}
                         <div className="order-2 lg:order-none relative w-full lg:col-start-2 lg:row-start-1 lg:row-span-2">
                              <div className="absolute inset-0 bg-primary/5 rounded-2xl md:rounded-3xl lg:-rotate-1" />
-                             <div className="relative p-4 md:p-10 rounded-2xl md:rounded-[2rem] border border-white/10 bg-zinc-950/40 lg:bg-zinc-950/80 backdrop-blur-xl space-y-3 md:space-y-8 overflow-hidden">
+                             <div className="relative p-4 md:p-10 rounded-2xl md:rounded-[2rem] border border-white/10 bg-zinc-950/40 lg:bg-zinc-950/80 backdrop-blur-xl space-y-2 md:space-y-8 overflow-hidden">
                                 <div className="space-y-1 md:space-y-2">
-                                    <p className="text-[9px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">THE MANDATE</p>
+                                    <p className="text-[8px] md:text-[9px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">THE MANDATE</p>
                                     <p className="text-[10px] md:text-sm font-black italic uppercase text-white/90 leading-tight">YOUR BUSINESS SHOULD NOT RUN ON MEMORY.</p>
                                 </div>
                                 
@@ -182,12 +182,12 @@ export default function HeroLabClient() {
                                     ))}
                                 </div>
 
-                                {/* MOBILE ONE-ROW STRIP (NEW) */}
-                                <div className="lg:hidden flex flex-nowrap gap-4 overflow-x-auto no-scrollbar pb-2 pt-1">
+                                {/* MOBILE ONE-COLUMN LIST (NEW) */}
+                                <div className="lg:hidden flex flex-col gap-1 pt-1">
                                     {proofPoints.map((item, i) => (
-                                        <div key={i} className="flex items-center gap-2 shrink-0 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
-                                            <Check className="w-2.5 h-2.5 text-primary shrink-0" />
-                                            <span className="text-[9px] font-black uppercase tracking-wider italic text-zinc-400 whitespace-nowrap">{item}</span>
+                                        <div key={i} className="flex items-center gap-2 bg-white/5 px-3 py-1 rounded-lg border border-white/5">
+                                            <Check className="w-2 h-2 text-primary shrink-0" />
+                                            <span className="text-[8px] font-black uppercase tracking-wider italic text-zinc-400 leading-none">{item}</span>
                                         </div>
                                     ))}
                                 </div>
