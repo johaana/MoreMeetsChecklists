@@ -110,7 +110,6 @@ const HeroSection = () => {
                     {/* Left: The Mandate */}
                     <div className="space-y-8 md:space-y-12">
                         <div className="space-y-4 md:space-y-5">
-                            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-4 uppercase tracking-[0.3em] font-black text-[9px] bg-primary/5 rounded-none backdrop-blur-md">Institutional Architecture</Badge>
                             <h1 className="text-[28px] md:text-[56px] lg:text-[64px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
                                 YOUR BUSINESS <br />
                                 <span style={{ color: BRAND_GREEN }}>SHOULD NOT RUN</span> <br/>
@@ -118,7 +117,7 @@ const HeroSection = () => {
                             </h1>
                             <div className="space-y-3 max-w-xl">
                                 <p className="text-base md:text-lg italic font-medium text-zinc-400 leading-tight">
-                                    Pre-built operational systems for hotels, restaurants, hospitals, schools, retail, facilities, and franchise groups.
+                                    Pre-built operational systems for hotels, restaurants, hospitals, schools, retail stores, facilities, cinemas, and franchise groups.
                                 </p>
                                 <div className="border-l-2 border-primary/40 pl-4 py-0.5">
                                     <p className="text-[11px] md:text-sm text-zinc-500 font-bold italic uppercase tracking-wider">
@@ -391,7 +390,7 @@ export default function Home() {
                                             "WhatsApp reminders",
                                             "Verbal follow-ups",
                                             "Manual checking",
-                                            "Dependency on individuals"
+                                            "Dependency on “experienced staff”"
                                         ].map((text, i) => (
                                             <li key={i} className="flex items-start gap-5 text-zinc-500 text-lg md:text-xl font-bold italic leading-snug">
                                                 <X className="w-6 h-6 text-red-500/30 shrink-0 mt-0.5" />
