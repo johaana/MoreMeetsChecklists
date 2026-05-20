@@ -28,13 +28,15 @@ import {
     Command,
     Home,
     MessageSquare,
-    ClipboardCheck
+    ClipboardCheck,
+    ShieldAlert
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
 const BRAND_GREEN = "#22C55E";
 const CALENDLY_URL = "https://calendly.com/more-moremeets/30min";
+const PRICING_STRIP = "ONE-TIME PURCHASE • OWN FOREVER • NO MONTHLY FEES";
 
 const ELITE_INDUSTRIES = [
     { name: "Hotel Operations", id: "hotels_and_resorts" },
@@ -48,15 +50,6 @@ const ELITE_INDUSTRIES = [
     { name: "Multiplex Operations", id: "cinema_operations_pack" },
     { name: "Fashion Store Operations", id: "fashion_and_apparel_retail" },
     { name: "Electronics Store Operations", id: "electronics_showroom_pack" }
-];
-
-const PROOF_POINTS = [
-    "Daily tasks assigned automatically",
-    "Staff know exactly what to do",
-    "Managers can track completion live",
-    "Works on phones via Google Sheets",
-    "Ready in 10 minutes",
-    "No app installation required"
 ];
 
 // --- COMPONENT: LOGO DESIGN LAB ---
@@ -85,7 +78,7 @@ const LogoLab = () => {
 };
 
 // --- COMPONENT: ACTION BLOCK ---
-const ActionBlock = ({ centered = false, secondaryText = "" }: { centered?: boolean, secondaryText?: string }) => (
+const ActionBlock = ({ centered = false }: { centered?: boolean }) => (
     <div className={cn("flex flex-col gap-6", centered ? "items-center" : "items-start")}>
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <Button asChild size="lg" className="w-full sm:w-auto h-14 px-10 rounded-xl bg-primary text-black font-black uppercase italic text-[11px] tracking-widest shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:scale-[1.02] transition-all border-none">
@@ -96,9 +89,6 @@ const ActionBlock = ({ centered = false, secondaryText = "" }: { centered?: bool
             </Button>
         </div>
         <div className="space-y-2 text-center lg:text-left">
-            {secondaryText && (
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 italic mb-2">{secondaryText}</p>
-            )}
             <Link href={CALENDLY_URL} target="_blank" className="group flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.15em] text-white/20 hover:text-primary transition-colors">
                 <span>Need help setting up multiple branches? Book Operational Walkthrough</span>
                 <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
@@ -109,21 +99,26 @@ const ActionBlock = ({ centered = false, secondaryText = "" }: { centered?: bool
 
 // --- COMPONENT: MOVING STRIP ---
 const MovingStrip = () => (
-    <div className="absolute bottom-0 w-full overflow-hidden flex items-center h-12 bg-black/80 backdrop-blur-md border-t border-white/5 z-40">
-         <div className="flex flex-nowrap gap-12 animate-marquee whitespace-nowrap px-10">
-            {ELITE_INDUSTRIES.map((ind) => (
-                <Link key={ind.id} href={`/packs/${ind.id}`} className="group/link flex items-center gap-3">
-                    <span className="text-[9px] font-black uppercase italic tracking-[0.4em] text-zinc-700 group-hover/link:text-primary transition-colors">{ind.name}</span>
-                    <ChevronRight className="w-3 h-3 text-zinc-900 group-hover/link:text-primary" />
-                </Link>
-            ))}
-            {/* Duplicate for loop */}
-            {ELITE_INDUSTRIES.map((ind) => (
-                <Link key={`${ind.id}-dup`} href={`/packs/${ind.id}`} className="group/link flex items-center gap-3">
-                    <span className="text-[9px] font-black uppercase italic tracking-[0.4em] text-zinc-700 group-hover/link:text-primary transition-colors">{ind.name}</span>
-                    <ChevronRight className="w-3 h-3 text-zinc-900 group-hover/link:text-primary" />
-                </Link>
-            ))}
+    <div className="absolute bottom-0 w-full overflow-hidden flex flex-col items-center bg-black/80 backdrop-blur-md border-t border-white/5 z-40">
+         <div className="w-full py-2 bg-white/[0.02] border-b border-white/5 text-center">
+            <p className="text-[8px] md:text-[10px] font-black text-zinc-500 uppercase tracking-[0.4em] italic">{PRICING_STRIP}</p>
+         </div>
+         <div className="w-full h-12 flex items-center">
+            <div className="flex flex-nowrap gap-12 animate-marquee whitespace-nowrap px-10">
+                {ELITE_INDUSTRIES.map((ind) => (
+                    <Link key={ind.id} href={`/packs/${ind.id}`} className="group/link flex items-center gap-3">
+                        <span className="text-[9px] font-black uppercase italic tracking-[0.4em] text-zinc-700 group-hover/link:text-primary transition-colors">{ind.name}</span>
+                        <ChevronRight className="w-3 h-3 text-zinc-900 group-hover/link:text-primary" />
+                    </Link>
+                ))}
+                {/* Duplicate for loop */}
+                {ELITE_INDUSTRIES.map((ind) => (
+                    <Link key={`${ind.id}-dup`} href={`/packs/${ind.id}`} className="group/link flex items-center gap-3">
+                        <span className="text-[9px] font-black uppercase italic tracking-[0.4em] text-zinc-700 group-hover/link:text-primary transition-colors">{ind.name}</span>
+                        <ChevronRight className="w-3 h-3 text-zinc-900 group-hover/link:text-primary" />
+                    </Link>
+                ))}
+            </div>
          </div>
     </div>
 );
@@ -131,11 +126,20 @@ const MovingStrip = () => (
 // --- COMPONENT: ATMOSPHERIC WRAPPER ---
 const AtmosphericHero = ({ children, id, label }: { children: React.ReactNode, id: string, label: string }) => (
     <div className="w-full py-12 border-b border-white/5 bg-[#050505]">
-        <div className="container px-6 mx-auto mb-8">
+        <div className="container px-6 mx-auto mb-8 flex justify-between items-center">
             <h2 className="text-sm font-black uppercase italic tracking-tighter font-headline text-emerald-500">Variation {id}: {label}</h2>
+             <div className="flex items-center gap-3">
+                <CheckSquare className="h-5 w-5 text-primary" />
+                <div className="flex flex-col">
+                    <span className="font-headline text-xs font-bold leading-none tracking-tight text-white">MoreMeets™</span>
+                    <span className="text-[7px] font-black uppercase tracking-[0.2em] text-white/40 leading-none mt-1">WHERE SOPs MEET EXECUTION</span>
+                </div>
+            </div>
         </div>
         <div className="w-full relative overflow-hidden min-h-[85vh] flex flex-col justify-center border-y border-white/5 bg-black">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.15)_0%,transparent_60%)]" />
+            {/* The Atmospheric Bloom */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.12)_0%,transparent_70%)]" />
+            
             <div className="relative z-10 container mx-auto max-w-[1200px] px-6">
                 {children}
             </div>
@@ -154,14 +158,14 @@ export default function HeroLabClient() {
             
             <div className="container px-6 pt-24 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-emerald-500/5">
-                    SOVEREIGN HERO LAB v13.0
+                    SOVEREIGN HERO LAB v14.0
                 </Badge>
                 <h1 className="text-4xl md:text-5xl font-black font-headline italic uppercase tracking-tighter text-white">
                     Operational <span className="text-emerald-500">Design Selection</span>
                 </h1>
             </div>
 
-            {/* --- VAR 1: THE MONOLITH (Standard) --- */}
+            {/* --- VAR 1: THE MONOLITH (Cleaned) --- */}
             <AtmosphericHero id="01" label="The Centered Monolith">
                 <div className="max-w-4xl mx-auto text-center space-y-10">
                     <div className="space-y-4">
@@ -173,18 +177,15 @@ export default function HeroLabClient() {
                             Daily operations your staff will actually follow.
                         </p>
                     </div>
-                    <ActionBlock centered secondaryText="ONE-TIME PURCHASE • OWN FOREVER • NO MONTHLY FEES" />
+                    <ActionBlock centered />
                 </div>
             </AtmosphericHero>
 
-            {/* --- VAR 2: THE COMMAND SPLIT (Current Winner) --- */}
+            {/* --- VAR 2: THE COMMAND SPLIT --- */}
             <AtmosphericHero id="02" label="The Command Split">
                 <div className="grid lg:grid-cols-[1.3fr,0.7fr] gap-12 lg:gap-20 items-center">
                     <div className="space-y-10 text-left">
                         <div className="space-y-5">
-                            <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase tracking-[0.3em] font-black text-[9px] rounded-none py-1.5 px-4 mb-2">
-                                ONE-TIME PURCHASE • OWN FOREVER • NO MONTHLY FEES
-                            </Badge>
                             <h1 className="text-[42px] md:text-[64px] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-white">
                                 YOUR BUSINESS <br/> SHOULD NOT RUN <br/> <span style={{ color: BRAND_GREEN }}>ON MEMORY.</span>
                             </h1>
@@ -203,7 +204,14 @@ export default function HeroLabClient() {
                                 <h3 className="text-xl font-black italic uppercase text-white/90">Institutional Grade.</h3>
                             </div>
                             <div className="space-y-4">
-                                {PROOF_POINTS.map((item, i) => (
+                                {[
+                                    "Daily tasks assigned automatically",
+                                    "Staff know exactly what to do",
+                                    "Managers track completion live",
+                                    "Works on phones through Sheets",
+                                    "Ready in 10 minutes",
+                                    "No app installation required"
+                                ].map((item, i) => (
                                     <div key={i} className="flex items-center gap-4">
                                         <div className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                                             <Check className="w-2.5 h-2.5 text-primary" />
@@ -217,63 +225,38 @@ export default function HeroLabClient() {
                 </div>
             </AtmosphericHero>
 
-            {/* --- VAR 3: THE PRESTIGIOUS MINIMALIST (With Points) --- */}
-            <AtmosphericHero id="03" label="The Prestigious Minimalist">
-                <div className="max-w-6xl mx-auto space-y-16">
-                    <div className="grid lg:grid-cols-[1.1fr,0.9fr] gap-12 items-center">
-                        <div className="space-y-8">
-                            <div className="space-y-6">
-                                <h1 className="text-[60px] md:text-[100px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white">
-                                    DEPLOY <br/> <span style={{ color: BRAND_GREEN }}>SYSTEMS.</span>
-                                </h1>
-                                <p className="text-xl md:text-3xl text-zinc-500 font-bold italic uppercase tracking-widest leading-none">
-                                    Memory is not a system.
-                                </p>
-                            </div>
-                            <ActionBlock secondaryText="NO SaaS TAX • NO MONTHLY FEES" />
-                        </div>
-                        <div className="space-y-6 border-l border-white/10 pl-12">
-                            {PROOF_POINTS.map((item, i) => (
-                                <div key={i} className="flex items-center gap-4">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                                    <span className="text-[10px] md:text-[12px] font-black uppercase tracking-[0.2em] italic text-zinc-500">{item}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </AtmosphericHero>
-
-            {/* --- VAR 7: THE REPORTING CHASE --- */}
+            {/* --- VAR 7: THE REPORTING CHASE (Updated) --- */}
             <AtmosphericHero id="07" label="The Reporting Chase">
                 <div className="relative">
-                    <div className="absolute -top-20 -left-20 w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                    <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-16 items-center">
                         <div className="space-y-8 relative z-10">
                             <div className="space-y-4">
                                 <h1 className="text-[42px] md:text-[60px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter">
                                     STOP THE <br/> REPORTING <br/> <span className="text-red-500">CHASE.</span>
                                 </h1>
-                                <p className="text-zinc-500 text-lg md:text-xl font-medium italic border-l-2 border-primary/20 pl-6">
+                                <p className="text-zinc-400 text-lg md:text-xl font-medium italic border-l-2 border-primary/20 pl-6 max-w-xl">
                                     Stop chasing staff on calls or WhatsApp and start seeing real-time reporting from your phone. Even when you aren't there.
                                 </p>
                             </div>
                             <ActionBlock />
                         </div>
                         <div className="relative">
-                             <div className="absolute inset-0 bg-primary/5 rounded-3xl -rotate-2" />
-                             <div className="relative p-12 rounded-3xl border border-white/10 bg-zinc-950/80 backdrop-blur-xl space-y-6">
-                                <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">SYSTEM CAPABILITIES</p>
+                             <div className="absolute inset-0 bg-primary/5 rounded-3xl -rotate-1" />
+                             <div className="relative p-10 rounded-[2rem] border border-white/10 bg-zinc-950/80 backdrop-blur-xl space-y-6">
+                                <p className="text-[9px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">SYSTEM CAPABILITIES</p>
                                 <div className="space-y-4">
                                     {[
-                                        "Shift handovers stop getting missed",
-                                        "Compliance audits generated daily",
-                                        "No app installation required",
-                                        "Works on all smartphones",
-                                        "Deployed in 10 minutes"
+                                        "Daily tasks assigned automatically",
+                                        "Staff know exactly what to do",
+                                        "Managers can track completion live",
+                                        "Works on phones via Google Sheets",
+                                        "Ready in 10 minutes",
+                                        "No app installation required"
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-4">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                            <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
+                                                <Check className="w-2.5 h-2.5 text-primary" />
+                                            </div>
                                             <span className="text-[11px] font-bold text-zinc-300 uppercase tracking-widest italic">{item}</span>
                                         </div>
                                     ))}
