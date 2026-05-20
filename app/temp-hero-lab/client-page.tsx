@@ -37,7 +37,7 @@ const BRAND_GREEN = "#22C55E";
 const CALENDLY_URL = "https://calendly.com/more-moremeets/30min";
 
 const LabBranding = () => (
-    <div className="absolute top-8 left-8 z-50 flex flex-col items-start gap-0.5">
+    <div className="absolute top-4 left-8 z-50 flex flex-col items-start gap-0.5">
         <div className="flex items-center gap-2">
             <div className="w-5 h-5 bg-primary rounded-sm flex items-center justify-center">
                 <Check className="text-black w-3.5 h-3.5" />
@@ -62,7 +62,7 @@ const ActionUnit = ({ centered = true }: { centered?: boolean }) => (
             <Button asChild size="lg" className="w-full sm:w-auto h-12 px-8 rounded-xl bg-primary text-black font-black uppercase italic text-[10px] tracking-widest shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:scale-[1.02] transition-all border-none">
                 <Link href="/library">SEE YOUR INDUSTRY SYSTEM</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto h-12 px-8 rounded-xl border-white/10 text-white font-black uppercase italic text-[10px] tracking-widest hover:bg-white/5 transition-all">
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto h-12 px-8 rounded-xl border-white/30 text-white/90 font-black uppercase italic text-[10px] tracking-widest hover:bg-white/10 transition-all">
                 <Link href="#sovereign-ledger">SEE HOW IT WORKS</Link>
             </Button>
         </div>
@@ -144,7 +144,7 @@ export default function HeroLabClient() {
                 </div>
             </div>
 
-            {/* --- ARCHETYPE 02: THE COMMAND SPLIT (TIGHTENED) --- */}
+            {/* --- ARCHETYPE 02: THE COMMAND SPLIT (STANDARDIZED) --- */}
             <div className="w-full py-12 border-b border-white/5 bg-[#050505]">
                 <div className="container px-6 mx-auto mb-8">
                     <h2 className="text-sm font-black uppercase italic tracking-tighter font-headline text-emerald-500">02. The Command Split (Standardized)</h2>
@@ -245,4 +245,3 @@ export default function HeroLabClient() {
         </div>
     );
 }
-
