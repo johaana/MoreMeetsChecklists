@@ -25,7 +25,9 @@ import {
     GraduationCap,
     FileSignature,
     Users,
-    Globe
+    Globe,
+    SearchCheck,
+    ShieldAlert
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -61,7 +63,7 @@ const BRAND_GREEN = "#22C55E";
 const LabSection = ({ children, title, description, id }: { children: React.ReactNode, title: string, description: string, id: string }) => (
     <div id={id} className="w-full py-24 border-b border-white/5 space-y-12 bg-zinc-950">
         <div className="container px-6 mx-auto">
-            <div className="space-y-1 border-l-2 border-emerald-500 pl-6">
+            <div className="space-y-1 border-l-2 border-emerald-500 pl-6 text-left">
                 <h2 className="text-xl font-black uppercase italic tracking-tighter font-headline text-white">{title}</h2>
                 <p className="text-zinc-500 italic font-medium text-[10px] uppercase tracking-widest">{description}</p>
             </div>
@@ -93,14 +95,14 @@ export default function HeroLabClient() {
             
             <div className="container px-6 pt-32 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-emerald-500/5">
-                    SOVEREIGN HERO LAB v1.0
+                    SOVEREIGN HERO LAB v2.0
                 </Badge>
                 <h1 className="text-7xl font-black font-headline italic uppercase tracking-tighter leading-tight text-white">
                     One Glance <span className="text-emerald-500">Archetypes</span>.
                 </h1>
             </div>
 
-            {/* --- ARCHETYPE 01: THE SYMMETRIC DOCK (RECOMMENDED) --- */}
+            {/* --- ARCHETYPE 01: THE SYMMETRIC DOCK (KEPT) --- */}
             <LabSection id="opt-1" title="01. The Symmetric Dock" description="Right-aligned 2-column technical grid for sectors. Cuts vertical height by 50% while projecting 'switchboard' authority.">
                 <div className="absolute inset-0 z-0">
                     <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20 grayscale" />
@@ -108,7 +110,7 @@ export default function HeroLabClient() {
                 </div>
                 <div className="relative z-10 container mx-auto max-w-[1200px] px-6">
                     <div className="grid lg:grid-cols-[1fr,550px] gap-20 items-center">
-                        <div className="space-y-10">
+                        <div className="space-y-10 text-left">
                             <div className="space-y-5">
                                 <h1 className="text-[64px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
                                     {NARRATIVE.line1} <br/> <span style={{ color: BRAND_GREEN }}>{NARRATIVE.line2}</span> <br/> <span style={{ color: BRAND_GREEN }}>{NARRATIVE.line3}</span>
@@ -129,10 +131,10 @@ export default function HeroLabClient() {
                             </div>
                         </div>
                         <div className="bg-white/[0.02] border border-white/5 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-2xl">
-                            <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.5em] italic mb-6">SELECT OPERATIONAL VERTICAL</p>
+                            <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.5em] italic mb-6 text-left">SELECT OPERATIONAL VERTICAL</p>
                             <div className="grid grid-cols-2 gap-3">
                                 {ELITE_INDUSTRIES.map((ind) => (
-                                    <Link key={ind.id} href="#" className="p-3 rounded-lg border border-white/5 bg-white/[0.01] hover:bg-primary/10 hover:border-primary/30 transition-all group">
+                                    <Link key={ind.id} href="#" className="p-3 rounded-lg border border-white/5 bg-white/[0.01] hover:bg-primary/10 hover:border-primary/30 transition-all group text-left">
                                         <span className="text-[10px] font-black uppercase italic text-zinc-500 group-hover:text-primary transition-colors">{ind.name}</span>
                                     </Link>
                                 ))}
@@ -142,7 +144,7 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 02: THE MONOLITH (CENTERED) --- */}
+            {/* --- ARCHETYPE 02: THE MONOLITH (KEPT) --- */}
             <LabSection id="opt-2" title="02. The Monolith" description="Centered high-gravity mandate. Best for absolute brand authority.">
                 <div className="absolute inset-0 z-0">
                     <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-10" />
@@ -177,135 +179,91 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 03: THE TACTICAL HUD --- */}
-            <LabSection id="opt-3" title="03. The Tactical HUD" description="Using technical borders and monospaced telemetry to project 'Engine' status.">
-                <div className="relative h-full flex flex-col justify-center px-24">
-                     <div className="border border-white/10 rounded-[3rem] p-16 grid grid-cols-[1fr,450px] gap-20 items-center bg-black/40 backdrop-blur-md">
-                        <div className="space-y-12">
-                             <div className="space-y-4">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                                    <span className="text-[10px] font-mono text-primary uppercase tracking-widest">SYSTEM_STATUS: ONLINE</span>
-                                </div>
-                                <h1 className="text-7xl font-black font-headline leading-[0.9] uppercase italic tracking-tighter">
-                                    DEPLOY <br/> <span style={{ color: BRAND_GREEN }}>OPERATIONAL</span> <br/> INFRASTRUCTURE.
-                                </h1>
-                             </div>
-                             <div className="grid grid-cols-2 gap-8 border-y border-white/5 py-8">
-                                {[
-                                    { l: "LOG TYPE", v: "AUDIT-READY" },
-                                    { l: "FORMAT", v: "EXCEL / SHEETS" },
-                                    { l: "SOP COUNT", v: "120+ PRE-BUILT" },
-                                    { l: "DEPLOY TAT", v: "10 MINUTES" }
-                                ].map((item, i) => (
-                                    <div key={i} className="space-y-1">
-                                        <p className="text-[8px] font-black text-zinc-600 uppercase tracking-widest">{item.l}</p>
-                                        <p className="text-sm font-black italic uppercase text-white">{item.v}</p>
-                                    </div>
-                                ))}
-                             </div>
-                             <SovereignCTA />
-                        </div>
-                        <div className="space-y-6">
-                            <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.5em] italic">SELECT COMMAND SECTOR</p>
-                            <div className="flex flex-col gap-2">
-                                {ELITE_INDUSTRIES.slice(0, 7).map((ind) => (
-                                    <div key={ind.id} className="flex items-center justify-between p-4 border border-white/5 bg-white/[0.02] rounded-xl group hover:border-primary/40 transition-all cursor-pointer">
-                                        <span className="text-sm font-bold uppercase italic text-zinc-500 group-hover:text-white transition-colors">{ind.name}</span>
-                                        <ArrowRight className="w-4 h-4 text-zinc-800 group-hover:text-primary transition-all" />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                     </div>
+            {/* --- ARCHETYPE 03: THE MONOLITH (GLASS ELEVATION) --- */}
+            <LabSection id="opt-3" title="03. The Monolith: Glass Elevation" description="Option 2 variant with a high-gravity glass enclosure for the primary decision block.">
+                <div className="absolute inset-0 z-0">
+                    <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-30 grayscale" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black" />
                 </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 04: THE TENSION SPLIT --- */}
-            <LabSection id="opt-4" title="04. The Tension Split" description="Hard contrast between Problem (Left) and Solution (Right).">
-                <div className="flex h-full">
-                    <div className="w-1/2 bg-zinc-950 flex flex-col justify-center px-24 space-y-10 border-r border-white/5">
-                        <div className="space-y-4">
-                            <Badge className="bg-red-500/10 text-red-500 border-red-500/20 uppercase font-black tracking-widest text-[10px]">THE ANXIETY</Badge>
-                            <h2 className="text-5xl font-black font-headline text-white leading-tight uppercase italic tracking-tighter">
-                                ALWAYS CHASING <br/> YOUR TEAM?
-                            </h2>
-                            <p className="text-lg text-zinc-500 italic font-medium leading-relaxed">
-                                Most businesses run on memory and luck. When the hero resigns, the system breaks.
-                            </p>
-                        </div>
-                        <ul className="space-y-4">
-                            {["Work gets missed.", "Confusion on the floor.", "Audit anxiety."].map((item, i) => (
-                                <li key={i} className="flex items-center gap-4 text-zinc-600 font-bold italic uppercase text-sm">
-                                    <X className="w-5 h-5 text-red-500" /> {item}
-                                </li>
-                            ))}
-                        </ul>
+                <div className="relative z-10 container mx-auto max-w-[1000px] text-center space-y-12">
+                    <div className="space-y-6">
+                        <Badge variant="outline" className="text-emerald-500 border-emerald-500/20 bg-emerald-500/5 px-6 py-2 uppercase font-black tracking-widest text-[10px]">SOVEREIGN INFRASTRUCTURE</Badge>
+                        <h1 className="text-[64px] md:text-[84px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white">
+                            SYSTEMS <br/> OVER <span style={{ color: BRAND_GREEN }}>LUCK.</span>
+                        </h1>
                     </div>
-                    <div className="w-1/2 bg-black flex flex-col justify-center px-24 space-y-10 relative">
-                         <div className="absolute inset-0 z-0 opacity-20">
-                            <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-                         </div>
-                         <div className="relative z-10 space-y-10">
-                            <div className="space-y-4">
-                                <Badge className="bg-primary/10 text-primary border-primary/20 uppercase font-black tracking-widest text-[10px]">THE ANTIDOTE</Badge>
-                                <h2 className="text-5xl font-black font-headline text-white leading-tight uppercase italic tracking-tighter">
-                                    DEPLOY THE <br/> <span style={{ color: BRAND_GREEN }}>SOVEREIGN ENGINE.</span>
-                                </h2>
-                                <p className="text-lg text-zinc-400 italic font-medium leading-relaxed">
-                                    Turn SOPs into live daily execution using the tools your team already understands.
-                                </p>
-                            </div>
-                            <Button asChild size="lg" className="h-16 px-12 rounded-xl bg-primary text-black font-black uppercase italic text-base shadow-2xl">
-                                <Link href="#">START DEPLOYMENT: {NARRATIVE.price}</Link>
-                            </Button>
-                         </div>
+                    <div className="max-w-2xl mx-auto p-10 rounded-[3rem] bg-white/[0.03] border border-white/10 backdrop-blur-2xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] space-y-8">
+                        <p className="text-lg text-zinc-300 italic font-medium leading-relaxed">Stop the daily anxiety of management gaps. Deploy a live operational system that works on the floor.</p>
+                        <div className="flex flex-col items-center gap-6">
+                             <Button asChild size="lg" className="h-16 px-12 rounded-xl bg-primary text-black font-black uppercase italic text-base w-full max-w-sm">
+                                <Link href="#">DEPLOY ENGINE: {NARRATIVE.price}</Link>
+                             </Button>
+                             <p className="text-[9px] font-black text-zinc-500 uppercase tracking-[0.4em] italic">{NARRATIVE.meta}</p>
+                        </div>
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 05: THE ARCHITECTURAL MINIMALIST --- */}
-            <LabSection id="opt-5" title="05. The Architectural Minimalist" description="Prestigious line-art style. Focus on technical clarity and whitespace.">
-                <div className="relative h-full container mx-auto max-w-[1200px] px-6 grid grid-cols-[1fr,400px] gap-20 items-center">
-                    <div className="space-y-16">
-                        <div className="space-y-8">
-                             <h1 className="text-[100px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white">
-                                CAPTURE <br/> <span style={{ color: BRAND_GREEN }}>MEMORY.</span>
-                             </h1>
-                             <p className="text-2xl text-zinc-500 italic font-medium max-sm border-l border-zinc-800 pl-10 leading-relaxed">
-                                Institutional memory is an asset. <br/> Anything else is just luck.
-                             </p>
+            {/* --- ARCHETYPE 04: THE MONOLITH (TACTICAL TELEMETRY) --- */}
+            <LabSection id="opt-4" title="04. The Monolith: Tactical Telemetry" description="Option 2 variant with monospaced metadata and tactical labeling to project technical density.">
+                <div className="relative z-10 container mx-auto max-w-[1100px] text-center space-y-16">
+                    <div className="space-y-6">
+                        <div className="flex items-center justify-center gap-3">
+                            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_#10b981]" />
+                            <span className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest">SYSTEM_DEPLOYS_IN_600S</span>
                         </div>
-                        <div className="flex flex-col gap-6">
-                            {[
-                                { t: "120+ PRE-BUILT SOPs", i: LayoutGrid },
-                                { t: "AUDIT-READY COMPLIANCE", i: ShieldCheck },
-                                { t: "LIVE DASHBOARD PULSE", i: Activity }
-                            ].map((item, i) => (
-                                <div key={i} className="flex items-center gap-6">
-                                    <item.i className="w-5 h-5 text-zinc-700" />
-                                    <span className="text-[11px] font-black text-zinc-500 uppercase tracking-[0.4em] italic">{item.t}</span>
-                                </div>
-                            ))}
-                        </div>
-                        <Button asChild size="lg" className="bg-transparent border border-primary/40 text-primary hover:bg-primary hover:text-black shadow-none w-fit px-12 h-16 rounded-xl font-black uppercase italic">
-                            <Link href="#">DEPLOY NOW: {NARRATIVE.price}</Link>
+                        <h1 className="text-[70px] md:text-[100px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white">
+                            CAPTURE <br/> <span style={{ color: BRAND_GREEN }}>MEMORY.</span>
+                        </h1>
+                    </div>
+                    
+                    <div className="grid grid-cols-3 gap-4 max-w-3xl mx-auto">
+                        {[
+                            { l: "FORMAT", v: "EXCEL MASTER" },
+                            { l: "PLATFORM", v: "GOOGLE SHEETS" },
+                            { l: "LOGS", v: "AUDIT-READY" }
+                        ].map((item, i) => (
+                            <div key={i} className="p-4 border border-white/5 bg-white/[0.02] rounded-xl space-y-1">
+                                <p className="text-[8px] font-black text-zinc-600 uppercase tracking-widest">{item.l}</p>
+                                <p className="text-xs font-black uppercase text-white italic">{item.v}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="space-y-8">
+                        <p className="text-xl text-zinc-400 italic font-medium max-w-xl mx-auto">Institutional memory is an asset. Anything else is just luck.</p>
+                        <SovereignCTA className="flex flex-col items-center" />
+                    </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 05: THE MONOLITH (PRESTIGIOUS MINIMAL) --- */}
+            <LabSection id="opt-5" title="05. The Monolith: Prestigious Minimal" description="Option 2 variant with a high-contrast layout, oversized typography, and maximum negative space.">
+                <div className="relative z-10 container mx-auto max-w-[1200px] text-center space-y-24">
+                    <div className="space-y-10">
+                        <h1 className="text-[100px] md:text-[140px] font-black font-headline leading-[0.75] uppercase italic tracking-tighter text-white">
+                            SOVEREIGN <br/> <span className="text-zinc-800">OPERATIONS.</span>
+                        </h1>
+                        <div className="h-1 w-24 bg-primary mx-auto" />
+                        <p className="text-2xl md:text-3xl text-zinc-400 font-bold italic uppercase tracking-widest max-w-4xl mx-auto">
+                            The Professional Standard for Operational Infrastructure.
+                        </p>
+                    </div>
+
+                    <div className="flex flex-col items-center gap-10">
+                        <Button asChild size="lg" className="h-24 px-20 rounded-none bg-white text-black font-black uppercase italic text-2xl hover:bg-primary transition-all">
+                            <Link href="#">DEPLOY FOR {NARRATIVE.price}</Link>
                         </Button>
-                    </div>
-                    <div className="border-l border-white/5 p-1 space-y-12 pl-20">
-                        <span className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.6em]">SELECT VERTICAL</span>
-                        <div className="space-y-6">
-                             {ELITE_INDUSTRIES.slice(0, 6).map((ind) => (
-                                <Link key={ind.id} href="#" className="block text-2xl font-bold uppercase italic text-zinc-800 hover:text-primary transition-all hover:translate-x-3">
-                                    {ind.name}
-                                </Link>
-                             ))}
+                        <div className="flex gap-16 text-[10px] font-black text-zinc-600 uppercase tracking-[0.5em] italic">
+                            <span>NO SaaS LOCK-IN</span>
+                            <span>AUDIT COMPLIANT</span>
+                            <span>READY NOW</span>
                         </div>
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 06: THE ACTION-FIRST HUD --- */}
+            {/* --- ARCHETYPE 06: THE ACTION-FIRST HUD (KEPT) --- */}
             <LabSection id="opt-6" title="06. The Action-First HUD" description="Consolidates price, speed, and platform into one decision block.">
                 <div className="relative h-full flex flex-col justify-center items-center text-center px-6">
                     <div className="max-w-4xl space-y-12">
@@ -352,11 +310,11 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 07: THE CATEGORY CHAMBERS --- */}
+            {/* --- ARCHETYPE 07: THE CATEGORY CHAMBERS (KEPT) --- */}
             <LabSection id="opt-7" title="07. The Category Chambers" description="Grouping sectors into technical modules to project massive organizational breadth in one glance.">
                  <div className="relative h-full container mx-auto max-w-[1200px] px-6 py-12 flex flex-col justify-center gap-12">
                     <div className="grid lg:grid-cols-[1fr,350px] gap-12 items-end">
-                        <div className="space-y-6">
+                        <div className="space-y-6 text-left">
                             <h1 className="text-6xl md:text-8xl font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
                                 OPERATIONAL <br/> <span style={{ color: BRAND_GREEN }}>SYSTEMS</span> <br/> <span style={{ color: BRAND_GREEN }}>HUB.</span>
                             </h1>
@@ -373,7 +331,7 @@ export default function HeroLabClient() {
                             { c: "Education", i: ["Schools", "Universities"] },
                             { c: "Infrastructure", i: ["Facilities", "Logistics"] }
                         ].map((chamber, i) => (
-                            <div key={i} className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 space-y-4 hover:border-primary transition-all group">
+                            <div key={i} className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 space-y-4 hover:border-primary transition-all group text-left">
                                 <p className="text-[9px] font-black text-primary uppercase tracking-[0.3em] italic">{chamber.c}</p>
                                 <ul className="space-y-1">
                                     {chamber.i.map((item, j) => (
@@ -386,6 +344,18 @@ export default function HeroLabClient() {
                  </div>
             </LabSection>
 
+            <style jsx global>{`
+                @keyframes marquee {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+                .animate-marquee {
+                    display: flex;
+                    width: fit-content;
+                    animation: marquee 40s linear infinite;
+                }
+            `}</style>
         </div>
     );
 }
+
