@@ -26,23 +26,16 @@ import {
     History,
     ShieldAlert,
     Target,
-    LayoutGrid,
     FileSignature,
     SearchCheck,
-    Briefcase,
     Users,
     FileSpreadsheet,
     Globe,
-    CheckSquare,
     ChevronRight,
-    TrendingUp,
-    Scale,
-    Gem,
-    Cpu,
     ShoppingBasket,
-    Clapperboard,
     Download,
-    ShoppingBag
+    ShoppingBag,
+    Clock
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -90,7 +83,6 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
 const HeroSection = () => {
     return (
         <section className="relative w-full min-h-[90vh] lg:min-h-screen flex flex-col justify-center overflow-hidden bg-black pt-16">
-             {/* Background Architecture */}
              <div className="absolute inset-0 z-0">
                 <video 
                     src={VIDEO_URL} 
@@ -106,8 +98,6 @@ const HeroSection = () => {
             
             <div className="relative z-20 container mx-auto max-w-[1200px] px-6 py-12">
                 <div className="grid lg:grid-cols-[1fr,450px] gap-12 md:gap-20 items-center">
-                    
-                    {/* Left: The Mandate */}
                     <div className="space-y-8 md:space-y-12">
                         <div className="space-y-4 md:space-y-5">
                             <h1 className="text-[28px] md:text-[56px] lg:text-[64px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
@@ -157,7 +147,6 @@ const HeroSection = () => {
                         </div>
                     </div>
 
-                    {/* Right: The Sector Command */}
                     <div className="relative group lg:border-l border-white/5 lg:pl-12 space-y-8">
                         <div className="space-y-1">
                             <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.5em] italic">SELECT VERTICAL</p>
@@ -184,7 +173,6 @@ const HeroSection = () => {
                 </div>
             </div>
 
-            {/* --- TELEMETRY MARQUEE --- */}
             <div className="absolute bottom-0 w-full bg-zinc-950/90 backdrop-blur-xl h-10 md:h-12 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
                 <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
                     {MARQUEE_SIGNALS.map((signal, i) => (
@@ -193,7 +181,6 @@ const HeroSection = () => {
                             <span className="opacity-70">{signal}</span>
                         </span>
                     ))}
-                    {/* Loop replication */}
                     {MARQUEE_SIGNALS.map((signal, i) => (
                         <span key={`dup-${i}`} className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2.5 text-zinc-600">
                             <span className="text-primary">[✓]</span>
@@ -206,6 +193,94 @@ const HeroSection = () => {
     );
 };
 
+const SovereignLedgerSection = () => (
+    <Section className="bg-zinc-50/50" noSpine>
+        <div className="max-w-6xl mx-auto space-y-12">
+            <div className="flex flex-col items-center text-center space-y-4">
+                <Badge variant="outline" className="text-primary border-primary/20 bg-white uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none italic shadow-sm">SYSTEM INTERFACE</Badge>
+                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
+                    THE SOVEREIGN LEDGER
+                </h2>
+                <p className="text-zinc-500 text-lg italic font-medium max-w-2xl">
+                    High-density operational command. Clear roles. Verifiable results. Built in Excel for your team's immediate adoption.
+                </p>
+            </div>
+
+            <div className="rounded-xl overflow-hidden border border-zinc-300 shadow-[0_30px_100px_-20px_rgba(0,0,0,0.15)] bg-[#f8f9fa] font-sans">
+                <div className="bg-[#22C55E] text-white py-2.5 px-4 flex items-center justify-center gap-2 text-[10px] md:text-[11px] font-bold">
+                    <span>📋</span>
+                    <span className="uppercase tracking-widest">DAILY TASKS – Update 'Done By' to complete daily work.</span>
+                </div>
+
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse min-w-[1200px]">
+                        <thead>
+                            <tr className="bg-[#0F172A] text-white">
+                                {["BRANCH", "ROLE", "TECHNICAL TASK", "ASSIGNED TO", "DONE BY", "VERIFIED BY", "STATUS", "CONSEQUENCE / RISK", "FLOOR INSTRUCTIONS"].map((h, i) => (
+                                    <th key={i} className="px-3 py-3 text-[9px] font-black uppercase tracking-tight border-r border-white/10 last:border-0">{h}</th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {[
+                                { b: "Pune Central", r: "Vault Custodian", t: "Vault Opening Verification", a: "Vikram S.", db: "VS", vb: "AM", s: "COMPLETE", c: "Unauthorized lone-person access leads to untraceable inventory exfiltration.", i: "Execute 2-key entry sequence with Secondary Custodian. Inspect safe handle for tamper-signs.", isV: true },
+                                { b: "Mumbai Phoenix", r: "Store Manager", t: "Gold Rate Sync (8 AM)", a: "Anjali M.", db: "AM", vb: "", s: "COMPLETE", c: "Selling at incorrect daily rates leading to significant margin loss.", i: "Verify POS rate matches physical board rate accurately." },
+                                { b: "Pune Central", r: "Display Manager", t: "Empty-Holder Anomaly Scan", a: "Rohan D.", db: "", vb: "", s: "OPEN", c: "Unauthorized piece removal gone unnoticed during peak waves.", i: "Identify and fill any empty display slots to prevent theft suspicion.", isAlt: true },
+                                { b: "Mumbai Phoenix", r: "Compliance", t: "BIS Hallmark Audit", a: "Suresh P.", db: "", vb: "", s: "OPEN", c: "Legal Metrology violation resulting in store sealing and heavy fines.", i: "Use loupe to verify 100% visibility of hallmark on all new stock items.", isAlt: true },
+                                { b: "Bangalore UB City", r: "Security", t: "Panic Button Pulse Test", a: "Karan I.", db: "KI", vb: "", s: "VERIFICATION PENDING", c: "Zero response from authorities during an active robbery event.", i: "Execute silent alarm trigger; verify 30s response from central monitoring.", isV: true },
+                                { b: "Hyderabad Jubilee", r: "Store Manager", t: "Shift Handover Sign-off", a: "Sarah K.", db: "SK", vb: "AM", s: "COMPLETE", c: "Communication gap resulting in service gridlock and lost instructions.", i: "Witness digital handover sign-off between morning and evening supervisors.", isV: true, isAlt: true }
+                            ].map((row, idx) => (
+                                <tr key={idx} className={cn("border-b border-zinc-200 text-[10px] md:text-[11px]", row.isAlt ? "bg-[#f8f9fa]" : "bg-white")}>
+                                    <td className="px-3 py-4 border-r border-zinc-200 text-zinc-500 font-bold">{row.b}</td>
+                                    <td className="px-3 py-4 border-r border-zinc-200 font-bold text-zinc-900">{row.r}</td>
+                                    <td className="px-3 py-4 border-r border-zinc-200 font-black text-zinc-950 uppercase">{row.t}</td>
+                                    <td className="px-3 py-4 border-r border-zinc-200 text-zinc-400 italic">{row.a}</td>
+                                    <td className="px-3 py-4 border-r border-zinc-200 bg-[#FEFCE8] font-black text-center text-zinc-900">{row.db}</td>
+                                    <td className={cn("px-3 py-4 border-r border-zinc-200 font-black text-center", row.isV ? "bg-[#EFF6FF] text-blue-700" : "bg-[#f1f5f9] text-zinc-300")}>{row.vb || "—"}</td>
+                                    <td className={cn(
+                                        "px-3 py-4 border-r border-zinc-200 font-black text-center",
+                                        row.s === "COMPLETE" ? "text-emerald-600" : row.s === "VERIFICATION PENDING" ? "text-amber-600" : "text-zinc-400"
+                                    )}>{row.s}</td>
+                                    <td className="px-3 py-4 border-r border-zinc-200 italic text-red-700 font-bold leading-tight max-w-[200px]">{row.c}</td>
+                                    <td className="px-3 py-4 text-emerald-800 font-medium leading-tight max-w-[300px]">{row.i}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div className="bg-white border-t border-zinc-200 px-4 py-1.5 flex items-center gap-1 overflow-hidden">
+                    <div className="flex items-center gap-1 pr-4 border-r border-zinc-200">
+                         <div className="w-5 h-5 rounded hover:bg-zinc-100 flex items-center justify-center text-zinc-400">＋</div>
+                         <div className="w-5 h-5 rounded hover:bg-zinc-100 flex items-center justify-center text-zinc-400 text-xs">≡</div>
+                    </div>
+                    {[
+                        { n: "START", active: false },
+                        { n: "DASHBOARD", active: false },
+                        { n: "DAILY_TASKS", active: true },
+                        { n: "SOP_LIB", active: false },
+                        { n: "BRANCH_SETUP", active: false },
+                        { n: "TEAM_HUB", active: false },
+                        { n: "INCIDENT_LOG", active: false }
+                    ].map((tab, i) => (
+                        <div key={i} className={cn(
+                            "px-4 py-1.5 text-[9px] font-bold uppercase tracking-widest whitespace-nowrap rounded-t-lg transition-colors cursor-pointer",
+                            tab.active ? "bg-white border-x border-t border-zinc-200 text-blue-600 -mb-[7px] pb-[8px] z-10" : "text-zinc-400 hover:bg-zinc-100"
+                        )}>
+                            {tab.n}
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <div className="text-center">
+                 <p className="text-[10px] text-zinc-400 font-black uppercase tracking-[0.4em] italic">
+                    TECHNICAL FIDELITY PREVIEW • REPLICA OF GOOGLE SHEETS INTERFACE
+                </p>
+            </div>
+        </div>
+    </Section>
+);
+
 export default function Home() {
     const [mounted, setMounted] = useState(false);
     useEffect(() => { setMounted(true); }, []);
@@ -217,7 +292,9 @@ export default function Home() {
             <main className="flex-1">
                 <HeroSection />
 
-                {/* --- NOT ANOTHER SaaS TOOL --- */}
+                {/* THE ULTIMATE PROOF SECTION */}
+                <SovereignLedgerSection />
+
                 <Section className="bg-white" id="not-saas" noSpine>
                     <div className="max-w-5xl mx-auto">
                         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -273,7 +350,6 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* --- WHAT YOU ACTUALLY GET --- */}
                 <Section className="bg-zinc-50 border-y border-zinc-100" id="inclusions">
                     <div className="max-w-6xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
@@ -306,7 +382,6 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* --- REAL OPERATIONAL INTELLIGENCE --- */}
                 <Section className="bg-white">
                     <div className="max-w-6xl mx-auto space-y-20 md:space-y-32">
                         <div className="text-center space-y-4">
@@ -366,7 +441,6 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* --- NOT THE REAL PROBLEM --- */}
                 <Section className="bg-zinc-950 text-white" id="problem" noSpine>
                     <div className="max-w-6xl mx-auto space-y-20">
                          <div className="text-center space-y-4">
@@ -425,7 +499,6 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* --- EVERY TASK EXPLAINED --- */}
                 <Section className="bg-white">
                     <div className="max-w-5xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
@@ -467,7 +540,6 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* --- HOW DEPLOYMENT WORKS --- */}
                 <Section className="bg-zinc-50 border-y border-zinc-100" id="how-it-works">
                     <div className="max-w-[1200px] mx-auto space-y-24">
                         <div className="text-center space-y-4">
@@ -494,7 +566,6 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* --- WHY EXCEL + SHEETS --- */}
                 <Section className="bg-white">
                     <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
                         <div className="space-y-8">
@@ -537,7 +608,6 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* --- SINGLE VS MULTI --- */}
                 <Section className="bg-zinc-50 border-y border-zinc-100" id="who-it-is-for" noSpine>
                     <div className="max-w-6xl mx-auto space-y-20">
                          <div className="text-center space-y-4">
@@ -572,7 +642,6 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* --- OPERATIONAL PACKS --- */}
                 <Section className="bg-white">
                     <div className="max-w-6xl mx-auto space-y-16">
                         <div className="text-center space-y-4">
@@ -607,7 +676,6 @@ export default function Home() {
 
                 <FaqSection />
 
-                {/* --- ONE-TIME PURCHASE --- */}
                 <Section className="bg-zinc-950 text-white py-32" noSpine id="pricing">
                     <div className="max-w-4xl mx-auto text-center space-y-12">
                         <div className="space-y-4">
@@ -632,7 +700,6 @@ export default function Home() {
                     </div>
                 </Section>
 
-                {/* --- FINAL MANDATE --- */}
                 <Section className="bg-primary text-white text-center py-32 md:py-48 relative overflow-hidden" noSpine>
                     <div className="max-w-5xl mx-auto space-y-12 relative z-10 px-6">
                         <h2 className="text-[42px] md:text-[90px] font-black leading-[0.9] tracking-tighter uppercase italic font-headline text-black text-center">
