@@ -1,4 +1,4 @@
-
+'use server';
 'use client';
 
 import React from 'react';
@@ -10,6 +10,7 @@ import {
     ClipboardCheck,
     Activity,
     Check,
+    X,
     ShieldCheck,
     Target,
     Cpu,
@@ -82,7 +83,7 @@ export default function HeroLabClient() {
             </div>
 
             {/* --- ARCHETYPE 01: THE SYMMETRIC DOCK (RECOMMENDED) --- */}
-            <LabSection id="opt-1" title="01. The Symmetric Dock" description="Right-aligned 2-column technical switchboard. Reduces vertical eye-travel by 50%.">
+            <LabSection id="opt-1" title="01. The Symmetric Dock" description="Right-aligned 2-column technical grid for sectors. Cuts vertical height by 50% while projecting 'switchboard' authority.">
                 <div className="absolute inset-0 z-0">
                     <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20 grayscale" />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-transparent" />
@@ -253,7 +254,7 @@ export default function HeroLabClient() {
                              <h1 className="text-[100px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white">
                                 CAPTURE <br/> <span style={{ color: BRAND_GREEN }}>MEMORY.</span>
                              </h1>
-                             <p className="text-2xl text-zinc-500 italic font-medium max-w-sm border-l border-zinc-800 pl-10 leading-relaxed">
+                             <p className="text-2xl text-zinc-500 italic font-medium max-sm border-l border-zinc-800 pl-10 leading-relaxed">
                                 Institutional memory is an asset. <br/> Anything else is just luck.
                              </p>
                         </div>
@@ -334,7 +335,7 @@ export default function HeroLabClient() {
             </LabSection>
 
             {/* --- ARCHETYPE 07: THE CATEGORY CHAMBERS --- */}
-            <LabSection id="opt-7" title="07. The Category Chambers" description="Grouping sectors into technical modules to project massive breadth.">
+            <LabSection id="opt-7" title="07. The Category Chambers" description="Grouping sectors into technical modules to project massive organizational breadth in one glance.">
                  <div className="relative h-full container mx-auto max-w-[1200px] px-6 py-12 flex flex-col justify-center gap-12">
                     <div className="grid lg:grid-cols-[1fr,350px] gap-12 items-end">
                         <div className="space-y-6">
