@@ -6,29 +6,17 @@ import { Button } from '@/components/ui/button';
 import { 
     Check, 
     ArrowRight, 
-    CheckCircle2,
-    Smartphone,
-    Lock,
-    Target,
-    Activity,
-    GraduationCap,
-    ChevronRight,
-    ShieldCheck,
-    AlertTriangle,
-    Users,
-    FileSignature,
-    SearchCheck,
-    Clock,
-    LayoutGrid,
     CheckSquare,
     Shield,
     Infinity,
-    Maximize,
     Grid3X3,
     Command,
-    Home,
-    MessageSquare,
-    ClipboardCheck,
+    Smartphone,
+    ChevronRight,
+    Target,
+    Activity,
+    GraduationCap,
+    FileSignature,
     ShieldAlert
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -52,32 +40,6 @@ const ELITE_INDUSTRIES = [
     { name: "Electronics Store Operations", id: "electronics_showroom_pack" }
 ];
 
-// --- COMPONENT: LOGO DESIGN LAB ---
-const LogoLab = () => {
-    const options = [
-        { label: "Option A", desc: "The Current Standard", icon: CheckSquare },
-        { label: "Option B", desc: "Geometric Pivot", icon: Command },
-        { label: "Option C", desc: "Institutional Shield", icon: Shield },
-        { label: "Option D", desc: "Operational Continuity", icon: Infinity },
-        { label: "Option E", desc: "Precision Grid", icon: Grid3X3 }
-    ];
-
-    return (
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {options.map((opt, i) => (
-                <div key={i} className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] flex flex-col items-center text-center gap-3 group hover:border-primary/30 transition-all">
-                    <opt.icon className="w-8 h-8 text-primary/40 group-hover:text-primary group-hover:scale-110 transition-all" />
-                    <div className="space-y-1">
-                        <p className="text-[10px] font-black uppercase text-primary">{opt.label}</p>
-                        <p className="text-[9px] font-bold text-zinc-500 uppercase tracking-widest">{opt.desc}</p>
-                    </div>
-                </div>
-            ))}
-        </div>
-    );
-};
-
-// --- COMPONENT: ACTION BLOCK ---
 const ActionBlock = ({ centered = false }: { centered?: boolean }) => (
     <div className={cn("flex flex-col gap-6", centered ? "items-center" : "items-start")}>
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
@@ -97,7 +59,6 @@ const ActionBlock = ({ centered = false }: { centered?: boolean }) => (
     </div>
 );
 
-// --- COMPONENT: MOVING STRIP ---
 const MovingStrip = () => (
     <div className="absolute bottom-0 w-full overflow-hidden flex flex-col items-center bg-black/80 backdrop-blur-md border-t border-white/5 z-40">
          <div className="w-full py-2 bg-white/[0.02] border-b border-white/5 text-center">
@@ -111,7 +72,7 @@ const MovingStrip = () => (
                         <ChevronRight className="w-3 h-3 text-zinc-900 group-hover/link:text-primary" />
                     </Link>
                 ))}
-                {/* Duplicate for loop */}
+                {/* Loop Replication */}
                 {ELITE_INDUSTRIES.map((ind) => (
                     <Link key={`${ind.id}-dup`} href={`/packs/${ind.id}`} className="group/link flex items-center gap-3">
                         <span className="text-[9px] font-black uppercase italic tracking-[0.4em] text-zinc-700 group-hover/link:text-primary transition-colors">{ind.name}</span>
@@ -123,7 +84,6 @@ const MovingStrip = () => (
     </div>
 );
 
-// --- COMPONENT: ATMOSPHERIC WRAPPER ---
 const AtmosphericHero = ({ children, id, label }: { children: React.ReactNode, id: string, label: string }) => (
     <div className="w-full py-12 border-b border-white/5 bg-[#050505]">
         <div className="container px-6 mx-auto mb-8 flex justify-between items-center">
@@ -136,10 +96,8 @@ const AtmosphericHero = ({ children, id, label }: { children: React.ReactNode, i
                 </div>
             </div>
         </div>
-        <div className="w-full relative overflow-hidden min-h-[85vh] flex flex-col justify-center border-y border-white/5 bg-black">
-            {/* The Atmospheric Bloom */}
+        <div className="w-full relative overflow-hidden min-h-[85vh] flex flex-col justify-center border-y border-white/5 bg-black pb-32 pt-20">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.12)_0%,transparent_70%)]" />
-            
             <div className="relative z-10 container mx-auto max-w-[1200px] px-6">
                 {children}
             </div>
@@ -158,7 +116,7 @@ export default function HeroLabClient() {
             
             <div className="container px-6 pt-24 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-emerald-500/5">
-                    SOVEREIGN HERO LAB v15.0
+                    SOVEREIGN HERO LAB v16.0
                 </Badge>
                 <h1 className="text-4xl md:text-5xl font-black font-headline italic uppercase tracking-tighter text-white">
                     Operational <span className="text-emerald-500">Design Selection</span>
@@ -181,7 +139,7 @@ export default function HeroLabClient() {
                 </div>
             </AtmosphericHero>
 
-            {/* --- VAR 2: THE COMMAND SPLIT (PREVIOUS WINNER) --- */}
+            {/* --- VAR 2: THE COMMAND SPLIT --- */}
             <AtmosphericHero id="02" label="The Command Split">
                 <div className="grid lg:grid-cols-[1.3fr,0.7fr] gap-12 lg:gap-20 items-center">
                     <div className="space-y-10 text-left">
@@ -225,15 +183,12 @@ export default function HeroLabClient() {
                 </div>
             </AtmosphericHero>
 
-            {/* --- VAR 7: THE REPORTING CHASE (CONVERSION WINNER - HYBRID) --- */}
-            <AtmosphericHero id="07" label="The Reporting Chase (Hybrid)">
+            {/* --- VAR 7: THE REPORTING CHASE (HYBRID MASTER) --- */}
+            <AtmosphericHero id="07" label="The Reporting Chase (Winner)">
                 <div className="relative">
                     <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-16 items-center">
                         <div className="space-y-8 relative z-10">
                             <div className="space-y-4">
-                                <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase font-black tracking-widest text-[9px] px-6 py-1 rounded-none italic mb-4">
-                                    MANDATE: YOUR BUSINESS SHOULD NOT RUN ON MEMORY.
-                                </Badge>
                                 <h1 className="text-[42px] md:text-[60px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter">
                                     STOP THE <br/> REPORTING <br/> <span className="text-red-500">CHASE.</span>
                                 </h1>
@@ -245,9 +200,12 @@ export default function HeroLabClient() {
                         </div>
                         <div className="relative">
                              <div className="absolute inset-0 bg-primary/5 rounded-3xl -rotate-1" />
-                             <div className="relative p-10 rounded-[2rem] border border-white/10 bg-zinc-950/80 backdrop-blur-xl space-y-6">
-                                <p className="text-[9px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">SYSTEM CAPABILITIES</p>
-                                <div className="space-y-4">
+                             <div className="relative p-10 rounded-[2rem] border border-white/10 bg-zinc-950/80 backdrop-blur-xl space-y-8">
+                                <div className="space-y-2">
+                                    <p className="text-[9px] font-black text-primary uppercase tracking-[0.4em] italic font-headline">THE MANDATE</p>
+                                    <p className="text-sm font-black italic uppercase text-white/90 leading-tight">YOUR BUSINESS SHOULD NOT RUN ON MEMORY.</p>
+                                </div>
+                                <div className="space-y-4 pt-2">
                                     {[
                                         "Daily tasks assigned automatically",
                                         "Staff know exactly what to do",
@@ -276,7 +234,23 @@ export default function HeroLabClient() {
                     <Badge variant="outline" className="text-primary border-primary/30 uppercase tracking-[0.4em] font-black text-[10px]">BRAND IDENTITY LAB</Badge>
                     <h2 className="text-3xl font-black font-headline italic uppercase tracking-tighter text-white">Choose Your Vision</h2>
                 </div>
-                <LogoLab />
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    {[
+                        { label: "Option A", desc: "Reliable Standard", icon: CheckSquare },
+                        { label: "Option B", desc: "Geometric Pivot", icon: Command },
+                        { label: "Option C", desc: "Command Shield", icon: Shield },
+                        { label: "Option D", desc: "Operational Continuity", icon: Infinity },
+                        { label: "Option E", desc: "Precision Grid", icon: Grid3X3 }
+                    ].map((opt, i) => (
+                        <div key={i} className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] flex flex-col items-center text-center gap-3 group hover:border-primary/30 transition-all">
+                            <opt.icon className="w-8 h-8 text-primary/40 group-hover:text-primary group-hover:scale-110 transition-all" />
+                            <div className="space-y-1">
+                                <p className="text-[10px] font-black uppercase text-primary">{opt.label}</p>
+                                <p className="text-[9px] font-bold text-zinc-500 uppercase tracking-widest">{opt.desc}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
 
             <style jsx global>{`
