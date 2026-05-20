@@ -15,7 +15,7 @@ export function Footer() {
                         </div>
                     </Link>
                     <p className="text-xs text-zinc-400 max-w-xs pt-4 font-bold italic leading-relaxed">
-                        The professional standard for operational execution and institutional memory. Built in Excel. Operated via Google Sheets.
+                        Daily operational systems your team can actually use. Built in Excel. Operated via Google Sheets.
                     </p>
                 </div>
                 <div className="flex flex-col gap-3 items-center text-xs md:items-start md:mx-auto font-black uppercase tracking-widest">
