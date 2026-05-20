@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Logo, WhatsAppIcon } from "@/components/icons";
 import { Mail } from "lucide-react";
@@ -11,11 +12,11 @@ export function Footer() {
                         <Logo className="h-6 w-6 text-primary" />
                         <div className="flex flex-col">
                             <span className="font-headline text-lg font-bold text-zinc-950 leading-none tracking-tight">MoreMeets™</span>
-                            <span className="text-[8px] font-black uppercase tracking-[0.3em] text-zinc-400 leading-none mt-1">OPERATIONAL INFRASTRUCTURE</span>
+                            <span className="text-[8px] font-black uppercase tracking-[0.2em] text-zinc-400 leading-none mt-1">WHERE SOPs MEET EXECUTION</span>
                         </div>
                     </Link>
                     <p className="text-xs text-zinc-400 max-w-xs pt-4 font-bold italic leading-relaxed">
-                        Daily operational systems your team can actually use. Built in Excel. Operated via Google Sheets.
+                        Pre-built operational systems for real businesses. Turn SOPs into daily execution. Built in Excel. Runs on Google Sheets.
                     </p>
                 </div>
                 <div className="flex flex-col gap-3 items-center text-xs md:items-start md:mx-auto font-black uppercase tracking-widest">
@@ -46,6 +47,11 @@ export function Footer() {
                         <Link href="/refund" className="hover:text-zinc-500">Refund Policy</Link>
                     </div>
                 </div>
+            </div>
+            <div className="container max-w-6xl mx-auto px-4 py-8 border-t border-zinc-100 text-center">
+                <p className="text-[10px] font-black text-zinc-300 uppercase tracking-[0.5em] italic">
+                    Daily operational systems your team can actually use.
+                </p>
             </div>
              <div className="border-t border-zinc-100 py-6">
                 <p className="text-[9px] text-zinc-300 text-center uppercase tracking-[0.5em] font-black">&copy; 2025 MoreMeets™. All rights reserved.</p>

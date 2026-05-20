@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -69,7 +70,7 @@ const BrandLogo = () => (
         <Logo className={cn("h-5 w-5 md:h-6 md:w-6 text-[#22C55E]")} />
         <div className="flex flex-col">
             <span className={cn("font-headline text-base md:text-lg font-bold leading-[1] tracking-tight text-white drop-shadow-sm")}>MoreMeets™</span>
-            <span className={cn("text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] leading-none mt-0.5 text-white/40")}>OPERATIONAL INFRASTRUCTURE</span>
+            <span className={cn("text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] leading-none mt-0.5 text-white/40")}>WHERE SOPs MEET EXECUTION</span>
         </div>
     </Link>
 );
