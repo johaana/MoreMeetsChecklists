@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -32,7 +33,6 @@ import {
     Users,
     FileSpreadsheet,
     Globe,
-    SmartphoneNfc,
     CheckSquare,
     ChevronRight,
     TrendingUp,
@@ -54,6 +54,20 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const BRAND_GREEN = "#22C55E";
 const TRUST_STRIP = "WORKS ON PHONES • NO APP INSTALL • ONE-TIME PURCHASE • DEPLOY IN 10 MINUTES • BUILT IN EXCEL • RUNS ON GOOGLE SHEETS";
+const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
+
+const MARQUEE_SIGNALS = [
+    "HACCP_SWEEP_COMPLETE", 
+    "REVENUE_LEAKAGE_PLUGGED", 
+    "COLD_STORAGE_STABLE", 
+    "OPENING_AUDIT_VERIFIED", 
+    "EXPIRY_LOG_VALIDATED", 
+    "VOID_BILL_MONITORING", 
+    "GAS_SHUTDOWN_CONFIRMED", 
+    "SOP_VERSION_V18.1", 
+    "SHIFT_COMPLIANCE_100%", 
+    "ROI_ENGINE_ACTIVE"
+];
 
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
     <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
@@ -68,46 +82,55 @@ const HeroSection = () => {
     return (
         <section className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden bg-black pt-16">
              <div className="absolute inset-0 z-0">
-                <img
-                    src="https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg"
-                    alt="Institutional Oversight"
+                <video 
+                    src={VIDEO_URL} 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
                     className="h-full w-full object-cover opacity-20 grayscale"
-                    data-ai-hint="corporate office"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
             </div>
             
             <div className="relative z-20 container mx-auto max-w-[1200px] px-6 py-12 md:py-24">
-                <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 md:gap-20 items-center">
-                    <div className="space-y-8 md:space-y-12">
-                        <div className="space-y-6">
-                            <Badge variant="outline" className="text-primary border-primary/30 py-1.5 px-6 uppercase tracking-[0.4em] font-black text-[10px] bg-primary/5 rounded-none">OPERATIONAL INFRASTRUCTURE</Badge>
-                            <h1 className="text-[34px] md:text-[74px] lg:text-[84px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
+                <div className="grid lg:grid-cols-[1.3fr,0.7fr] gap-12 md:gap-20 items-center">
+                    <div className="space-y-10 md:space-y-14">
+                        <div className="space-y-6 md:space-y-8">
+                            <Badge variant="outline" className="text-primary border-primary/30 py-1.5 px-6 uppercase tracking-[0.4em] font-black text-[10px] bg-primary/5 rounded-none backdrop-blur-md">Operational Infrastructure</Badge>
+                            <h1 className="text-[38px] md:text-[84px] lg:text-[94px] font-black font-headline leading-[0.88] uppercase italic tracking-tighter text-white">
                                 YOUR BUSINESS <br />
                                 <span style={{ color: BRAND_GREEN }}>SHOULD NOT RUN</span> <br/>
                                 <span style={{ color: BRAND_GREEN }}>ON MEMORY.</span>
                             </h1>
-                            <p className="text-lg md:text-[22px] italic font-medium text-zinc-400 max-w-2xl leading-tight">
-                                Pre-built operational systems for hotels, restaurants, hospitals, schools, retail stores, facilities, cinemas, and franchise groups.
-                            </p>
-                            <p className="text-base md:text-lg text-zinc-500 font-bold italic">
-                                Built in Excel. Operated through Google Sheets. <br/>
-                                Your team already knows how to use it.
-                            </p>
+                            <div className="space-y-4 max-w-2xl">
+                                <p className="text-xl md:text-[24px] italic font-medium text-zinc-300 leading-tight">
+                                    Pre-built operational systems for hotels, restaurants, hospitals, schools, retail stores, facilities, cinemas, and franchise groups.
+                                </p>
+                                <div className="border-l-2 border-primary/40 pl-6 py-1">
+                                    <p className="text-sm md:text-lg text-zinc-500 font-bold italic uppercase tracking-wide">
+                                        Built in Excel. Operated through Google Sheets. <br/>
+                                        Your team already knows how to use it.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
-                        <div className="space-y-8">
-                             <div className="flex flex-col sm:flex-row gap-4">
-                                <Button asChild size="lg" className="h-16 px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none">
-                                    <Link href="/library">Deploy Your System <ArrowRight className="ml-2 w-6 h-6" /></Link>
+                        <div className="space-y-10">
+                             <div className="flex flex-col sm:flex-row gap-5">
+                                <Button asChild size="lg" className="h-16 md:h-20 px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-base md:text-lg shadow-[0_20px_60px_-10px_rgba(34,197,94,0.5)] hover:bg-white transition-all border-none group">
+                                    <Link href="/library" className="flex items-center gap-3">
+                                        Deploy Your System <ArrowRight className="w-6 h-6 md:w-8 md:h-8 transition-transform group-hover:translate-x-2" />
+                                    </Link>
                                 </Button>
-                                <Button asChild variant="outline" size="lg" className="h-16 px-10 rounded-xl border-white/20 text-white font-black uppercase italic hover:bg-white/5">
+                                <Button asChild variant="outline" size="lg" className="h-16 md:h-20 px-10 rounded-xl border-white/20 text-white font-black uppercase italic hover:bg-white/5 text-sm md:text-base">
                                     <Link href="/library">View Operational Packs</Link>
                                 </Button>
                              </div>
                              
-                             <div className="bg-white/5 border border-white/10 backdrop-blur-md py-4 px-6 rounded-xl inline-block">
-                                 <p className="text-[8px] md:text-[11px] text-zinc-300 font-black uppercase tracking-[0.3em] md:tracking-[0.4em] italic leading-none">
+                             <div className="bg-white/5 border border-white/10 backdrop-blur-xl py-5 px-8 rounded-2xl inline-block shadow-2xl">
+                                 <p className="text-[9px] md:text-[11px] text-zinc-400 font-black uppercase tracking-[0.3em] md:tracking-[0.45em] italic leading-none">
                                     {TRUST_STRIP}
                                 </p>
                              </div>
@@ -115,20 +138,39 @@ const HeroSection = () => {
                     </div>
 
                     <div className="relative group hidden lg:block">
-                        <div className="absolute -inset-4 bg-primary/20 rounded-[3rem] blur-2xl opacity-20"></div>
-                        <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl bg-zinc-950 aspect-[4/5]">
+                        <div className="absolute -inset-10 bg-primary/20 rounded-[3rem] blur-[100px] opacity-10"></div>
+                        <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-zinc-950 aspect-[4/5] group-hover:border-primary/20 transition-all duration-700">
                              <img 
                                 src="https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png" 
                                 alt="Live Execution Ledger" 
-                                className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
-                                data-ai-hint="operational spreadsheet"
+                                className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000 scale-[1.02] group-hover:scale-100"
                              />
-                             <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black to-transparent">
-                                 <Badge className="bg-primary/20 text-primary border-primary/30 uppercase font-black tracking-widest text-[9px] mb-2">LIVE RUNTIME</Badge>
-                                 <p className="text-white font-headline font-black italic uppercase text-xl">Mission Execution Ledger</p>
+                             <div className="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-black via-black/80 to-transparent">
+                                 <Badge className="bg-primary/20 text-primary border-primary/30 uppercase font-black tracking-widest text-[9px] mb-3 px-3 py-1 rounded-none">LIVE RUNTIME</Badge>
+                                 <p className="text-white font-headline font-black italic uppercase text-2xl tracking-tighter">Mission Execution Ledger</p>
+                                 <p className="text-zinc-500 text-xs font-bold italic mt-1">Sovereign v18.1 Master Data Engine</p>
                              </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            {/* --- TELEMETRY MARQUEE base --- */}
+            <div className="absolute bottom-0 w-full bg-zinc-950/80 backdrop-blur-md h-12 md:h-14 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
+                <div className="flex flex-nowrap items-center gap-20 animate-marquee whitespace-nowrap px-10">
+                    {MARQUEE_SIGNALS.map((signal, i) => (
+                        <span key={i} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.4em] flex items-center gap-3 text-zinc-500">
+                            <span className="text-primary">[✓]</span>
+                            <span className="opacity-80">{signal}</span>
+                        </span>
+                    ))}
+                    {/* Loop replication */}
+                    {MARQUEE_SIGNALS.map((signal, i) => (
+                        <span key={`dup-${i}`} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.4em] flex items-center gap-3 text-zinc-500">
+                            <span className="text-primary">[✓]</span>
+                            <span className="opacity-80">{signal}</span>
+                        </span>
+                    ))}
                 </div>
             </div>
         </section>
@@ -580,6 +622,18 @@ export default function Home() {
                 </Section>
             </main>
             <Footer />
+
+            <style jsx global>{`
+                @keyframes marquee {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+                .animate-marquee {
+                    display: flex;
+                    width: fit-content;
+                    animation: marquee 80s linear infinite;
+                }
+            `}</style>
         </div>
     );
 }
