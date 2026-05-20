@@ -40,7 +40,8 @@ import {
     Gem,
     Cpu,
     ShoppingBasket,
-    Clapperboard
+    Clapperboard,
+    Download
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
@@ -251,7 +252,7 @@ export default function Home() {
                                 {
                                     title: "Hotel Operations",
                                     icon: Building,
-                                    points: ["Room readiness failures", "Housekeeping coordination gaps", "Front desk ↔ housekeeping dependencies", "Multi-department breakdowns"]
+                                    points: ["Room readiness failures", "Housekeeping coordination gaps", "Front desk ↔ housekeeping dependencies", "Multi-department execution breakdowns"]
                                 },
                                 {
                                     title: "Restaurant Operations",
@@ -405,7 +406,7 @@ export default function Home() {
                                 { t: "DOWNLOAD", d: "Purchase and instantly download your operational system." },
                                 { t: "UPLOAD", d: "Upload the Excel master file to Google Drive." },
                                 { t: "SHARE", d: "Assign roles and share access with your team." },
-                                { t: "OPERATE", d: "Daily tasks begin updating live through Google Sheets." }
+                                { t: "OPERATE", d: "Daily tasks begin populating automatically by role, date, and frequency — live across your team." }
                             ].map((step, i) => (
                                 <div className="space-y-8 group text-left" key={i}>
                                     <div className="text-6xl md:text-8xl font-black italic text-zinc-200 group-hover:text-primary transition-colors leading-none">
@@ -443,15 +444,15 @@ export default function Home() {
                                         <ul className="text-[11px] font-black text-zinc-950 uppercase italic space-y-2">
                                             <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Live visibility</li>
                                             <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Execution records</li>
-                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Continuity</li>
+                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Operational continuity</li>
                                         </ul>
                                     </div>
                                     <div className="space-y-3">
                                         <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">FOR TEAMS</p>
                                         <ul className="text-[11px] font-black text-zinc-950 uppercase italic space-y-2">
-                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Clear Priorities</li>
-                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Simpler Ops</li>
-                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Handovers</li>
+                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Clear instructions</li>
+                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Daily priorities</li>
+                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Structured handovers</li>
                                         </ul>
                                     </div>
                                 </div>
