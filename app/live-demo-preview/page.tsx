@@ -173,42 +173,6 @@ export default function LiveDemoPreview() {
                 </Card>
             </section>
 
-            {/* 4. MOBILE VIEW STAGING */}
-            <section className="max-w-2xl mx-auto space-y-8 flex flex-col items-center">
-                <div className="flex items-center gap-3 w-full">
-                    <div className="w-1.5 h-6 bg-primary" />
-                    <h2 className="text-xl font-black uppercase italic tracking-tighter">04. MOBILE EXECUTION HUB (RESTRAINED)</h2>
-                </div>
-                <div className="w-[375px] h-[750px] border-[12px] border-zinc-900 rounded-[3rem] bg-black overflow-hidden shadow-2xl relative flex flex-col">
-                    <div className="bg-zinc-950 text-white p-6 pt-12 space-y-1">
-                        <p className="text-[10px] font-black text-primary uppercase tracking-[0.3em]">MUMBAI_PHOENIX</p>
-                        <h3 className="text-2xl font-black font-headline italic uppercase tracking-tighter">DAILY MISSIONS</h3>
-                    </div>
-                    <div className="flex-1 overflow-y-auto p-4 space-y-3">
-                        {d.tasks.slice(0, 6).map((t, i) => (
-                            <div key={i} className="p-5 rounded-2xl border border-zinc-100 bg-zinc-50/50 flex items-center justify-center group relative overflow-hidden">
-                                <div className="absolute inset-0 bg-white/50 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <p className="text-[10px] font-black text-primary uppercase tracking-widest">TAP_TO_LOG</p>
-                                </div>
-                                <div className="flex-1 space-y-1">
-                                    <p className="text-[8px] font-black text-zinc-400 uppercase tracking-widest">{t.role}</p>
-                                    <p className="text-xs font-black text-zinc-900 italic uppercase leading-tight">{t.task}</p>
-                                </div>
-                                <div className={cn(
-                                    "w-10 h-10 rounded-xl flex items-center justify-center transition-all",
-                                    t.doneBy ? "bg-emerald-500 text-white" : "bg-white border-2 border-zinc-100 text-zinc-200"
-                                )}>
-                                    {t.doneBy ? <Check className="w-5 h-5 stroke-[4]" /> : <div className="w-1.5 h-1.5 rounded-full bg-zinc-100" />}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="p-6 bg-white border-t border-zinc-100">
-                        <div className="h-1 w-20 bg-zinc-200 rounded-full mx-auto" />
-                    </div>
-                </div>
-            </section>
-
         </div>
     );
 }

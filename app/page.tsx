@@ -570,43 +570,39 @@ export default function Home() {
                 </Section>
 
                 <Section className="bg-white">
-                    <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                    <div className="max-w-3xl mx-auto space-y-12 text-center">
                         <div className="space-y-8">
                             <div className="space-y-4">
                                 <Badge variant="outline" className="text-zinc-500 border-zinc-200 uppercase tracking-[0.4em] font-black text-[10px]">THE ADOPTION ENGINE</Badge>
-                                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic text-left">
+                                <h2 className="text-[32px] md:text-[54px] font-black font-headline text-zinc-950 leading-[0.95] tracking-tight uppercase italic">
                                     WHY EXCEL + <br/> GOOGLE SHEETS?
                                 </h2>
-                                <p className="text-lg text-zinc-500 font-bold italic">Because operational teams already understand it.</p>
+                                <p className="text-lg md:text-xl text-zinc-500 font-bold italic">Because operational teams already understand it.</p>
                             </div>
-                            <div className="space-y-6">
-                                <div className="flex gap-4">
-                                    <CheckCircle2 className="w-6 h-6 text-primary shrink-0" />
-                                    <p className="text-zinc-500 text-sm md:text-base font-medium leading-relaxed italic">No behavioral resistance. No learning curve. No complicated software adoption cycle. Your team opens the sheet and starts working immediately.</p>
+                            <div className="space-y-10">
+                                <div className="flex flex-col items-center gap-5 max-w-2xl mx-auto">
+                                    <CheckCircle2 className="w-10 h-10 text-primary shrink-0" />
+                                    <p className="text-zinc-500 text-sm md:text-lg font-medium leading-relaxed italic">No behavioral resistance. No learning curve. No complicated software adoption cycle. Your team opens the sheet and starts working immediately.</p>
                                 </div>
-                                <div className="grid grid-cols-2 gap-8 pt-4">
-                                    <div className="space-y-3">
+                                <div className="grid grid-cols-2 gap-8 md:gap-16 pt-4 border-t border-zinc-100">
+                                    <div className="space-y-4 text-left">
                                         <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">FOR MANAGERS</p>
-                                        <ul className="text-[11px] font-black text-zinc-950 uppercase italic space-y-2">
-                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Live visibility</li>
-                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Execution records</li>
-                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Operational continuity</li>
+                                        <ul className="text-[11px] md:text-sm font-black text-zinc-950 uppercase italic space-y-3">
+                                            <li className="flex items-center gap-3"><ArrowRight className="w-4 h-4 text-primary/40" /> Live visibility</li>
+                                            <li className="flex items-center gap-3"><ArrowRight className="w-4 h-4 text-primary/40" /> Execution records</li>
+                                            <li className="flex items-center gap-3"><ArrowRight className="w-4 h-4 text-primary/40" /> Operational continuity</li>
                                         </ul>
                                     </div>
-                                    <div className="space-y-3">
+                                    <div className="space-y-4 text-left border-l border-zinc-100 pl-8 md:pl-16">
                                         <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">FOR TEAMS</p>
-                                        <ul className="text-[11px] font-black text-zinc-950 uppercase italic space-y-2">
-                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Clear instructions</li>
-                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Daily priorities</li>
-                                            <li className="flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Structured handovers</li>
+                                        <ul className="text-[11px] md:text-sm font-black text-zinc-950 uppercase italic space-y-3">
+                                            <li className="flex items-center gap-3"><ArrowRight className="w-4 h-4 text-primary/40" /> Clear instructions</li>
+                                            <li className="flex items-center gap-3"><ArrowRight className="w-4 h-4 text-primary/40" /> Daily priorities</li>
+                                            <li className="flex items-center gap-3"><ArrowRight className="w-4 h-4 text-primary/40" /> Structured handovers</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="relative group">
-                            <div className="absolute -inset-2 bg-primary/20 rounded-[2.5rem] blur-xl opacity-20"></div>
-                            <img src="https://i.postimg.cc/y88kgqJb/Screenshot-2026-05-11-170353.png" className="rounded-[2.5rem] shadow-2xl border border-zinc-100 relative z-10" alt="Mobile Spreadsheet Execution" />
                         </div>
                     </div>
                 </Section>
