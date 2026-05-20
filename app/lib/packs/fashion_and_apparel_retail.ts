@@ -11,7 +11,7 @@ export const fashion_and_apparel_retail: PremiumPack = {
     paymentId: 'pl_RaWEBHhFLQENxC',
     lemonSqueezyUrl: 'https://moremeets.lemonsqueezy.com/buy/35c743f7-333a-4fe6-9866-3334172e144b',
     category: "Retail",
-    description: "The definitive Sovereign v18.0 engine for apparel and fashion retail. Hardening 182 technical control points across Inventory Velocity, VM Discipline, and Return-Fraud Prevention.",
+    description: "The definitive Sovereign v18.0 engine for apparel and fashion retail. Hardening 180 technical control points across Inventory Velocity, VM Discipline, and Return-Fraud Prevention.",
     heroHeadline: "Command Your Inventory. Protect Your Brand Standards.",
     heroSubheadline: "Track size-curve health, monitor trial-room conversion, and stop return-fraud—across 18 specialized fashion roles.",
     pricingUrgency: "A single season of dead-stock or one major return-fraud ring costs 100x more than this entire system.",
@@ -182,10 +182,10 @@ export const fashion_and_apparel_retail: PremiumPack = {
                 { id: "F-CS-03", technicalProtocol: "Credit Card Overlay", floorAction: "Physically check pin-pads for skimmers/tampering.", priority: "High", riskLevel: "High", consequence: "Guest data theft liability.", proof: "Visual Check", verificationRequired: true, cadence: "daily" },
                 { id: "F-CS-04", technicalProtocol: "Offline Bill Sync", floorAction: "Confirm zero pending bills waiting for cloud upload.", priority: "High", riskLevel: "Medium", consequence: "Data loss during system reset.", proof: "System Screen", cadence: "daily" },
                 { id: "F-CS-05", technicalProtocol: "Fraudulent Coupon Scan", floorAction: "Identify logins using > 10% discount in 1 shift.", priority: "High", riskLevel: "High", consequence: "Discount abuse theft.", proof: "Audit Log", verificationRequired: true, cadence: "weekly" },
-                { id: "F-CS-06", technicalProtocol: "Chargeback Recovery", floorAction: "Respond to bank credit disputes < 24h.", priority: "Medium", riskLevel: "Low", consequence: "Financial bad debt.", proof: "System Log", cadence: "daily" },
+                { id: "F-CS-06", technicalProtocol: "Chargeback Recovery", floorAction: "Respond to bank credit card disputes < 24h.", priority: "Medium", riskLevel: "Low", consequence: "Financial bad debt.", proof: "System Log", cadence: "daily" },
                 { id: "F-CS-07", technicalProtocol: "POS Touch Hygiene", floorAction: "Sanitize screen and pin-pad between shift rotations.", priority: "Low", riskLevel: "Medium", consequence: "Staff disease spread.", proof: "Cleaning Note", cadence: "daily" },
                 { id: "F-CS-08", technicalProtocol: "Bill sequence Re-match", floorAction: "Audit 10 random bills against CCTV timestamps.", priority: "High", riskLevel: "High", consequence: "Unrecorded sales.", proof: "Audit Report", verificationRequired: true, cadence: "daily" },
-                { id: "F-CS-09", technicalProtocol: "Tax Compliance Scan", floorAction: "Verify GST percentage per item category.", priority: "High", riskLevel: "Medium", consequence: "Statutory penalties.", proof: "Sample Check", cadence: "daily" },
+                { id: "F-CS-09", technicalProtocol: "Tax Compliance Scan", floorAction: "Verify GST percentage per item category.", priority: "High", riskLevel: "Medium", consequence: "Statutory penalties.", proof: "Sample Check", verificationRequired: true, cadence: "daily" },
                 { id: "F-CS-10", technicalProtocol: "EOD Cash-Drop Seal", floorAction: "Physically witness seal of bank transit bag.", priority: "High", riskLevel: "High", consequence: "Untraceable transit theft.", proof: "Seal Number", verificationRequired: true, cadence: "daily" }
             ]
         },
@@ -197,14 +197,16 @@ export const fashion_and_apparel_retail: PremiumPack = {
             summary: "Milestone tracking for collection launches.",
             icon: "calendar-days",
             tasks: [
-                { id: "F-SRC-01", technicalProtocol: "Launch Readiness Milestone", floorAction: "Verify 100% inventory arrival 48h pre-launch.", priority: "High", riskLevel: "Low", consequence: "Failed marketing promise.", proof: "System Sync", verificationRequired: true, cadence: "monthly" },
-                { id: "F-SRC-02", technicalProtocol: "Markdown Tag Integrity", floorAction: "Sample 50 sale tags for original vs sale price parity.", priority: "High", riskLevel: "Medium", consequence: "Consumer court claims.", proof: "Audit Note", verificationRequired: true, cadence: "daily" },
-                { id: "F-SRC-03", technicalProtocol: "Old Season Clearance", floorAction: "Confirm 100% pull of past-season stock from prime racks.", priority: "Medium", riskLevel: "Low", consequence: "Visual clutter and brand decay.", proof: "Visual Audit", cadence: "weekly" },
-                { id: "F-SRC-04", technicalProtocol: "Promo Signage Switch", floorAction: "Remove all expired signage < 8 AM on expiry day.", priority: "High", riskLevel: "Low", consequence: "False trade practices penalty.", proof: "Visual Check", cadence: "daily" },
-                { id: "F-SRC-05", technicalProtocol: "Regional Campaign Sync", floorAction: "Verify local store marketing matches national ads.", priority: "Medium", riskLevel: "Low", consequence: "Inconsistent brand message.", proof: "Photo", cadence: "weekly" },
-                { id: "F-SRC-06", technicalProtocol: "Staff Training - New Collection", floorAction: "Verify 100% completion of 'Fabrics & Features' brief.", priority: "Low", riskLevel: "Low", consequence: "Ineffective floor sales.", proof: "Briefing Log", cadence: "monthly" },
-                { id: "F-SRC-07", technicalProtocol: "Capsule Placement Audit", floorAction: "Verify hero collections occupy 'Zone 1' sightlines.", priority: "Medium", riskLevel: "Low", consequence: "Lower launch revenue.", proof: "VM Scan", cadence: "daily" },
-                { id: "F-SRC-08", technicalProtocol: "Launch Mood Scoring", floorAction: "Assign 1-10 rating to branch rollout quality.", priority: "Low", riskLevel: "Low", consequence: "Loss of soft governance intel.", proof: "Scorecard", cadence: "monthly" }
+                { id: "F-SRO-01", technicalProtocol: "Launch Readiness Milestone", floorAction: "Verify 100% inventory arrival 48h pre-launch.", priority: "High", riskLevel: "Low", consequence: "Failed marketing promise.", proof: "System Sync", verificationRequired: true, cadence: "monthly" },
+                { id: "F-SRO-02", technicalProtocol: "Markdown Tag Integrity", floorAction: "Sample 50 sale tags for original vs sale price parity.", priority: "High", riskLevel: "Medium", consequence: "Consumer court claims.", proof: "Audit Note", verificationRequired: true, cadence: "daily" },
+                { id: "F-SRO-03", technicalProtocol: "Old Season Clearance", floorAction: "Confirm 100% pull of past-season stock from prime racks.", priority: "Medium", riskLevel: "Low", consequence: "Visual clutter and brand decay.", proof: "Visual Audit", cadence: "weekly" },
+                { id: "F-SRO-04", technicalProtocol: "Promo Signage Switch", floorAction: "Remove all expired signage < 8 AM on expiry day.", priority: "High", riskLevel: "Low", consequence: "False trade practices penalty.", proof: "Visual Check", cadence: "daily" },
+                { id: "F-SRO-05", technicalProtocol: "Regional Campaign Sync", floorAction: "Verify local store marketing matches national ads.", priority: "Medium", riskLevel: "Low", consequence: "Inconsistent brand message.", proof: "Photo", cadence: "weekly" },
+                { id: "F-SRO-06", technicalProtocol: "Staff Training - New Collection", floorAction: "Verify 100% completion of 'Fabrics & Features' brief.", priority: "Low", riskLevel: "Low", consequence: "Ineffective floor sales.", proof: "Briefing Log", cadence: "monthly" },
+                { id: "F-SRO-07", technicalProtocol: "Capsule Placement Audit", floorAction: "Verify hero collections occupy 'Zone 1' sightlines.", priority: "Medium", riskLevel: "Low", consequence: "Lower launch revenue.", proof: "VM Scan", cadence: "daily" },
+                { id: "F-SRO-08", technicalProtocol: "Launch Mood Scoring", floorAction: "Assign 1-10 rating to branch rollout quality.", priority: "Low", riskLevel: "Low", consequence: "Loss of soft governance intel.", proof: "Scorecard", cadence: "monthly" },
+                { id: "F-SRO-09", technicalProtocol: "Hanger Type Sync", floorAction: "Confirm use of approved wooden/velvet hangers for premium line.", priority: "Low", riskLevel: "Low", consequence: "Inconsistent premium feel.", proof: "Visual Audit", cadence: "daily" },
+                { id: "F-SRO-10", technicalProtocol: "Launch Post-Mortem", floorAction: "Identify top 3 best and worst sellers of first weekend.", priority: "Medium", riskLevel: "Low", consequence: "Missed replenishment data.", proof: "Sales Summary", cadence: "weekly" }
             ]
         },
         {
@@ -222,7 +224,9 @@ export const fashion_and_apparel_retail: PremiumPack = {
                 { id: "F-ESG-05", technicalProtocol: "Energy Intensity Pulse", floorAction: "Compare daily KWH meter vs occupancy load.", priority: "High", riskLevel: "Low", consequence: "Unmonitored energy waste.", proof: "Meter Match", cadence: "daily" },
                 { id: "F-ESG-06", technicalProtocol: "Vendor Sourcing Vetting", floorAction: "Audit 5 random tags for 'Sustainable Material' proof.", priority: "Low", riskLevel: "Medium", consequence: "Greenwashing liability.", proof: "Cert Audit", cadence: "monthly" },
                 { id: "F-ESG-07", technicalProtocol: "Hanger Recycling Log", floorAction: "Verify 100% return of broken plastic to recycling unit.", priority: "Low", riskLevel: "Low", consequence: "Inefficient waste.", proof: "Log Entry", cadence: "weekly" },
-                { id: "F-ESG-08", technicalProtocol: "EOD Safety Walk", floorAction: "Witness shutdown of all non-essential lighting.", priority: "High", riskLevel: "Low", consequence: "Massive energy overhead.", proof: "Closure Log", verificationRequired: true, cadence: "daily" }
+                { id: "F-ESG-08", technicalProtocol: "EOD Safety Walk", floorAction: "Witness shutdown of all non-essential lighting.", priority: "High", riskLevel: "Low", consequence: "Massive energy overhead.", proof: "Closure Log", verificationRequired: true, cadence: "daily" },
+                { id: "F-ESG-09", technicalProtocol: "Eco-Label Display", floorAction: "Confirm visibility of 'Sustainability' signage in window.", priority: "Low", riskLevel: "Low", consequence: "Failed marketing promise.", proof: "Photo", cadence: "daily" },
+                { id: "F-ESG-10", technicalProtocol: "Water leakage patrol", floorAction: "Check 3 AM meter for zero-usage baseline.", priority: "Medium", riskLevel: "Medium", consequence: "Structural damage and resource waste.", proof: "Leak Log", cadence: "daily" }
             ]
         },
         {
@@ -258,9 +262,11 @@ export const fashion_and_apparel_retail: PremiumPack = {
                 { id: "F-IRC-03", technicalProtocol: "Damaged Stock Segregation", floorAction: "Remove stained or torn pieces from hangers < 1h.", priority: "Medium", riskLevel: "Low", consequence: "Slipping brand standards.", proof: "Visual Audit", cadence: "daily" },
                 { id: "F-IRC-04", technicalProtocol: "Auto-Replenish Verify", floorAction: "Confirm system 'Pull-Order' matches physical empty shelf.", priority: "Medium", riskLevel: "Low", consequence: "Stockout during peaks.", proof: "System Sync", cadence: "daily" },
                 { id: "F-IRC-05", technicalProtocol: "Hanger Orientation", floorAction: "Check 100% of hangers face same direction (C-hook).", priority: "Low", riskLevel: "Low", consequence: "Visual chaos.", proof: "Walkthrough", cadence: "daily" },
-                { id: "F-IRC-06", technicalProtocol: "Gift-Box Inventory", floorAction: "Confirm 50+ medium boxes available for premium line.", priority: "Low", riskLevel: "Low", consequence: "Service friction.", proof: "Stock Count", cadence: "weekly" },
+                { id: "F-IRC-06", technicalProtocol: "Gift-Box Inventory", floorAction: "Confirm 50+ medium boxes available for premium line.", priority: "Low", riskLevel: "Low", consequence: "Delayed impulse checkout.", proof: "Stock Count", cadence: "weekly" },
                 { id: "F-IRC-07", technicalProtocol: "Rider Pickup Lane", floorAction: "Verify clear access for e-com dispatch couriers.", priority: "Medium", riskLevel: "Low", consequence: "E-com delivery lag.", proof: "Visual Check", cadence: "daily" },
-                { id: "F-IRC-08", technicalProtocol: "Inventory Access", floorAction: "Witness lock of high-value accessory safe.", priority: "High", riskLevel: "High", consequence: "Internal theft window.", proof: "Visual Confirm", verificationRequired: true, cadence: "daily" }
+                { id: "F-IRC-08", technicalProtocol: "Inventory Access", floorAction: "Witness lock of high-value accessory safe.", priority: "High", riskLevel: "High", consequence: "Internal theft window.", proof: "Visual Confirm", verificationRequired: true, cadence: "daily" },
+                { id: "F-IRC-09", technicalProtocol: "Size Cubing Pulse", floorAction: "Confirm correct size-cube attached to 100% of hangers.", priority: "Low", riskLevel: "Low", consequence: "Guest browsing friction.", proof: "Sample Check", cadence: "daily" },
+                { id: "F-IRC-10", technicalProtocol: "Markdown tagging", floorAction: "Execute re-pricing for clearance rack.", priority: "Medium", riskLevel: "Medium", consequence: "Revenue mis-reporting.", proof: "Registry Match", cadence: "weekly" }
             ]
         },
         {
@@ -271,14 +277,16 @@ export const fashion_and_apparel_retail: PremiumPack = {
             summary: "Conversion tracking and sentiment governance.",
             icon: "smile",
             tasks: [
-                { id: "F-CX-01", technicalProtocol: "Detractor Recovery Loop", floorAction: "Call 3 guests who left negative kiosk feedback.", priority: "Medium", riskLevel: "Low", consequence: "Viral rating drop.", proof: "Call Log", cadence: "daily" },
-                { id: "F-CX-02", technicalProtocol: "Conversion Funnel Pulse", floorAction: "Match footfall sensor vs bill count every 4 hours.", priority: "High", riskLevel: "Low", consequence: "Undetected conversion drop.", proof: "System Log", cadence: "daily" },
-                { id: "F-CX-03", technicalProtocol: "Feedback Kiosk Charge", floorAction: "Ensure tablets are charged and app is active.", priority: "Low", riskLevel: "Low", consequence: "Loss of survey data.", proof: "Device Check", cadence: "daily" },
-                { id: "F-CX-04", technicalProtocol: "Mystery Shopper Action", floorAction: "Disseminate scorecards to relevant floor section leads.", priority: "Medium", riskLevel: "Low", consequence: "Repeated service fails.", proof: "Briefing Note", cadence: "weekly" },
-                { id: "F-CX-05", technicalProtocol: "VIP Loyalty Flag", floorAction: "Notify Store Manager of 'Top 10' customer arrival.", priority: "Low", riskLevel: "Low", consequence: "Generic treatment of high-LTV guest.", proof: "System Alert", cadence: "daily" },
-                { id: "F-CX-06", technicalProtocol: "Personal Shopper Ready", floorAction: "Verify setup of premium lounge and water stock.", priority: "Low", riskLevel: "Low", consequence: "Luxury brand failure.", proof: "Visual Check", cadence: "daily" },
-                { id: "F-CX-07", technicalProtocol: "Escalated Dispute Loop", floorAction: "Resolve all refund claims < 1 hour.", priority: "High", riskLevel: "Medium", consequence: "Viral complaints.", proof: "Incident Log", verificationRequired: true, cadence: "daily" },
-                { id: "F-CX-08", technicalProtocol: "ORM Dashboard Review", floorAction: "Audit response quality to Google mentions.", priority: "Medium", riskLevel: "Low", consequence: "Inconsistent brand voice.", proof: "Review Audit", cadence: "daily" }
+                { id: "F-CXL-01", technicalProtocol: "Detractor Recovery Loop", floorAction: "Call 3 guests who left negative kiosk feedback.", priority: "Medium", riskLevel: "Low", consequence: "Viral rating damage.", proof: "Call Log", cadence: "daily" },
+                { id: "F-CXL-02", technicalProtocol: "Conversion Funnel Pulse", floorAction: "Match footfall sensor vs bill count every 4 hours.", priority: "High", riskLevel: "Low", consequence: "Undetected conversion drop.", proof: "System Log", cadence: "daily" },
+                { id: "F-CXL-03", technicalProtocol: "Feedback Kiosk Charge", floorAction: "Ensure tablets are charged and app is active.", priority: "Low", riskLevel: "Low", consequence: "Loss of survey data.", proof: "Device Check", cadence: "daily" },
+                { id: "F-CXL-04", technicalProtocol: "Mystery Shopper Action", floorAction: "Disseminate scorecards to relevant floor section leads.", priority: "Medium", riskLevel: "Low", consequence: "Repeated service fails.", proof: "Briefing Note", cadence: "weekly" },
+                { id: "F-CXL-05", technicalProtocol: "VIP Loyalty Flag", floorAction: "Notify Store Manager of 'Top 10' customer arrival.", priority: "Low", riskLevel: "Low", consequence: "Generic treatment of high-LTV guest.", proof: "System Alert", cadence: "daily" },
+                { id: "F-CXL-06", technicalProtocol: "Personal Shopper Ready", floorAction: "Verify setup of premium lounge and water stock.", priority: "Low", riskLevel: "Low", consequence: "Luxury brand failure.", proof: "Visual Check", cadence: "daily" },
+                { id: "F-CXL-07", technicalProtocol: "Escalated Dispute Loop", floorAction: "Resolve all refund claims < 1 hour.", priority: "High", riskLevel: "Medium", consequence: "Viral complaints.", proof: "Incident Log", verificationRequired: true, cadence: "daily" },
+                { id: "F-CXL-08", technicalProtocol: "ORM Dashboard Review", floorAction: "Audit response quality to Google mentions.", priority: "Medium", riskLevel: "Low", consequence: "Inconsistent brand voice.", proof: "Review Audit", cadence: "daily" },
+                { id: "F-CXL-09", technicalProtocol: "Gift-Card Balance Check", floorAction: "Verify system connectivity for redemption.", priority: "Low", riskLevel: "Low", consequence: "Checkout friction.", proof: "Test Note", cadence: "daily" },
+                { id: "F-CXL-10", technicalProtocol: "Staff Empathy Brief", floorAction: "Coach team on 'Body Language' standards for premium wing.", priority: "Low", riskLevel: "Low", consequence: "Cold customer atmosphere.", proof: "Training Log", cadence: "weekly" }
             ]
         },
         {
@@ -289,14 +297,16 @@ export const fashion_and_apparel_retail: PremiumPack = {
             summary: "Ambiance parity and sanitization command.",
             icon: "sparkles",
             tasks: [
-                { id: "F-HK-01", technicalProtocol: "Steam Ironing Pulse", floorAction: "Verify 100% display garments are crease-free.", priority: "Low", riskLevel: "Low", consequence: "Cheap brand perception.", proof: "Visual Audit", cadence: "daily" },
-                { id: "F-HK-02", technicalProtocol: "Floor Spot Removal", floorAction: "Execute 2-min scrub of detected FOH spills.", priority: "High", riskLevel: "High", consequence: "Slip hazard / grimy feel.", proof: "Patrol Log", cadence: "hourly" },
-                { id: "F-HK-03", technicalProtocol: "Hanger Re-alignment", floorAction: "Verify 2-finger spacing between all prime-wall items.", priority: "Low", riskLevel: "Low", consequence: "Cramped visual feel.", proof: "Visual Check", cadence: "hourly" },
-                { id: "F-HK-04", technicalProtocol: "Air Quality / Scent", floorAction: "Refill 100% of brand-spec fragrance diffusers.", priority: "Low", riskLevel: "Low", consequence: "Lack of sensory branding.", proof: "Visual Check", cadence: "daily" },
-                { id: "F-HK-05", technicalProtocol: "Dust Clearance Scan", floorAction: "Wipe high-gloss acrylic shelves in accessory zone.", priority: "Low", riskLevel: "Low", consequence: "Dust buildup.", proof: "Visual Check", cadence: "daily" },
-                { id: "F-HK-06", technicalProtocol: "Trash Compaction", floorAction: "Remove lobby bins every 2 hours during peak surge.", priority: "Low", riskLevel: "Low", consequence: "Overflowing bins.", proof: "Log Entry", cadence: "hourly" },
-                { id: "F-HK-07", technicalProtocol: "FOH Mirror Shine", floorAction: "Polish 100% of large column mirrors.", priority: "Low", riskLevel: "Low", consequence: "Dirty trial experience.", proof: "Visual Check", cadence: "daily" },
-                { id: "F-HK-08", technicalProtocol: "Carpet Extraction", floorAction: "Verify weekly steam-clean of premium dressing areas.", priority: "Low", riskLevel: "Low", consequence: "Odor buildup.", proof: "Work Log", cadence: "weekly" }
+                { id: "F-HPL-01", technicalProtocol: "Steam Ironing Pulse", floorAction: "Verify 100% display garments are crease-free.", priority: "Low", riskLevel: "Low", consequence: "Cheap brand perception.", proof: "Visual Audit", cadence: "daily" },
+                { id: "F-HPL-02", technicalProtocol: "Floor Spot Removal", floorAction: "Execute 2-min scrub of detected FOH spills.", priority: "High", riskLevel: "High", consequence: "Slip hazard / grimy feel.", proof: "Patrol Log", cadence: "hourly" },
+                { id: "F-HPL-03", technicalProtocol: "Hanger Re-alignment", floorAction: "Verify 2-finger spacing between all prime-wall items.", priority: "Low", riskLevel: "Low", consequence: "Cramped visual feel.", proof: "Visual Check", cadence: "hourly" },
+                { id: "F-HPL-04", technicalProtocol: "Air Quality / Scent", floorAction: "Refill 100% of brand-spec fragrance diffusers.", priority: "Low", riskLevel: "Low", consequence: "Lack of sensory branding.", proof: "Visual Check", cadence: "daily" },
+                { id: "F-HPL-05", technicalProtocol: "Dust Clearance Scan", floorAction: "Wipe high-gloss acrylic shelves in accessory zone.", priority: "Low", riskLevel: "Low", consequence: "Dust buildup.", proof: "Visual Check", cadence: "daily" },
+                { id: "F-HPL-06", technicalProtocol: "Trash Compaction", floorAction: "Remove lobby bins every 2 hours during peak surge.", priority: "Low", riskLevel: "Low", consequence: "Overflowing bins.", proof: "Log Entry", cadence: "hourly" },
+                { id: "F-HPL-07", technicalProtocol: "FOH Mirror Shine", floorAction: "Polish 100% of large column mirrors.", priority: "Low", riskLevel: "Low", consequence: "Dirty trial experience.", proof: "Visual Check", cadence: "daily" },
+                { id: "F-HPL-08", technicalProtocol: "Carpet Extraction", floorAction: "Verify weekly steam-clean of premium dressing areas.", priority: "Low", riskLevel: "Low", consequence: "Odor buildup.", proof: "Work Log", cadence: "weekly" },
+                { id: "F-HPL-09", technicalProtocol: "Restroom Odor Log", floorAction: "Execute 15-min sweep for zero-odor baseline.", priority: "High", riskLevel: "Low", consequence: "Primary brand rage driver.", proof: "Hourly Sheet", cadence: "hourly" },
+                { id: "F-HPL-10", technicalProtocol: "Entryway Shine", floorAction: "Polish main door-handles and threshold plates.", priority: "Low", riskLevel: "Low", consequence: "Poor first-impression.", proof: "Visual Audit", cadence: "daily" }
             ]
         },
         {
@@ -314,7 +324,9 @@ export const fashion_and_apparel_retail: PremiumPack = {
                 { id: "F-BCO-05", technicalProtocol: "Regional Promo Audit", floorAction: "Verify 100% execution of the 'End-of-Season' launch.", priority: "High", riskLevel: "Low", consequence: "Marketing waste.", proof: "Signed List", verificationRequired: true, cadence: "weekly" },
                 { id: "F-BCO-06", technicalProtocol: "Packaging Parity", floorAction: "Confirm zero use of non-branded wrapping paper.", priority: "Low", riskLevel: "Low", consequence: "Luxury brand failure.", proof: "Visual Check", cadence: "daily" },
                 { id: "F-BCO-07", technicalProtocol: "Social Media Tag", floorAction: "Review store-tagged photos for VM fails or dirty stalls.", priority: "Medium", riskLevel: "Low", consequence: "Viral reputation damage.", proof: "ORM Pulse", cadence: "weekly" },
-                { id: "F-BCO-08", technicalProtocol: "Policy Awareness Quiz", floorAction: "Test 2 staff for knowledge of 'Incident Protocol'.", priority: "Medium", riskLevel: "Low", consequence: "Gaps in institutional memory.", proof: "Quiz Log", cadence: "weekly" }
+                { id: "F-BCO-08", technicalProtocol: "Policy Awareness Quiz", floorAction: "Test 2 staff for knowledge of 'Incident Protocol'.", priority: "Medium", riskLevel: "Low", consequence: "Gaps in institutional memory.", proof: "Quiz Log", cadence: "weekly" },
+                { id: "F-BCO-09", technicalProtocol: "Ethics Policy Display", floorAction: "Confirm visibility of staff whistleblower hotline signage.", priority: "Medium", riskLevel: "High", consequence: "Undetected systemic corruption.", proof: "Photo", cadence: "monthly" },
+                { id: "F-BCO-10", technicalProtocol: "Brand Standard Sign-off", floorAction: "Final weekly summary of outlet compliance score.", priority: "High", riskLevel: "Low", consequence: "Loss of soft governance visibility.", proof: "Scorecard", cadence: "weekly" }
             ]
         },
         {
@@ -332,7 +344,9 @@ export const fashion_and_apparel_retail: PremiumPack = {
                 { id: "F-MSL-05", technicalProtocol: "Size Depth Denim", floorAction: "Verify 32/34/36 waist availability on prime shelf.", priority: "High", riskLevel: "Low", consequence: "Lost sales on top SKUs.", proof: "Shelf Count", cadence: "daily" },
                 { id: "F-MSL-06", technicalProtocol: "Cuff-link Pairing", floorAction: "Audit accessory cases for correct pair-matching.", priority: "Low", riskLevel: "Low", consequence: "Incomplete products.", proof: "Visual Scan", cadence: "weekly" },
                 { id: "F-MSL-07", technicalProtocol: "Fragrance Sampling", floorAction: "Confirm availability of testers for 5 'Hero' scents.", priority: "Low", riskLevel: "Low", consequence: "Reduced impulse buy.", proof: "Stock Check", cadence: "daily" },
-                { id: "F-MSL-08", technicalProtocol: "Closing Fold", floorAction: "Verify 100% of table-top stock is squared.", priority: "Low", riskLevel: "Low", consequence: "Disorganized opening.", proof: "Signed Log", cadence: "daily" }
+                { id: "F-MSL-08", technicalProtocol: "Closing Fold", floorAction: "Verify 100% of table-top stock is squared.", priority: "Low", riskLevel: "Low", consequence: "Disorganized opening.", proof: "Signed Log", cadence: "daily" },
+                { id: "F-MSL-09", technicalProtocol: "Tie-Knot presentation", floorAction: "Verify 100% of display ties match Windsor-knot standard.", priority: "Low", riskLevel: "Low", consequence: "Sloppy visual feel.", proof: "Visual Check", cadence: "daily" },
+                { id: "F-MSL-10", technicalProtocol: "Tailor measurement log", floorAction: "Verify 100% accuracy of pins in work-in-progress suits.", priority: "High", riskLevel: "Low", consequence: "Ruined luxury garments.", proof: "Sample Audit", cadence: "daily" }
             ]
         },
         {
@@ -350,7 +364,9 @@ export const fashion_and_apparel_retail: PremiumPack = {
                 { id: "F-WSL-05", technicalProtocol: "Size-Curve Dresses", floorAction: "Verify availability of size 8/10/12 in current hero SKU.", priority: "High", riskLevel: "Low", consequence: "Missed peak sales.", proof: "System Sync", cadence: "daily" },
                 { id: "F-WSL-06", technicalProtocol: "Jewelry Accessory Sync", floorAction: "Confirm 100% presence of security strings on display items.", priority: "High", riskLevel: "High", consequence: "Small item theft window.", proof: "Walk Log", verificationRequired: true, cadence: "hourly" },
                 { id: "F-WSL-07", technicalProtocol: "Boutique Fragrance", floorAction: "Confirm active scent-diffuser in premium wing.", priority: "Low", riskLevel: "Low", consequence: "Generic experience.", proof: "Visual Check", cadence: "daily" },
-                { id: "F-WSL-08", technicalProtocol: "Alteration Tracking", floorAction: "Update 100% of hem-ready clients via SMS.", priority: "Medium", riskLevel: "Low", consequence: "Delayed collection.", proof: "Comms Log", cadence: "daily" }
+                { id: "F-WSL-08", technicalProtocol: "Alteration Tracking", floorAction: "Update 100% of hem-ready clients via SMS.", priority: "Medium", riskLevel: "Low", consequence: "Delayed collection.", proof: "Comms Log", cadence: "daily" },
+                { id: "F-WSL-09", technicalProtocol: "Steaming Sweep", floorAction: "Wipe condensed-water drips from the floor near the steamer.", priority: "High", riskLevel: "High", consequence: "Slip hazard.", proof: "Visual Check", cadence: "hourly" },
+                { id: "F-WSL-10", technicalProtocol: "Premium Hanger Check", floorAction: "Confirm no plastic hangers are used in the Occasion Wear wing.", priority: "Low", riskLevel: "Low", consequence: "Luxury brand mismatch.", proof: "Visual Audit", cadence: "daily" }
             ]
         },
         {
@@ -368,7 +384,9 @@ export const fashion_and_apparel_retail: PremiumPack = {
                 { id: "F-KSL-05", technicalProtocol: "Battery Toy Pulse", floorAction: "Verify 100% removal of dead batteries from demo units.", priority: "Low", riskLevel: "Medium", consequence: "Battery acid leakage damage.", proof: "Visual Audit", cadence: "weekly" },
                 { id: "F-KSL-06", technicalProtocol: "Shelf-Edge Buffer", floorAction: "Confirm zero sharp corners at child eye-level.", priority: "High", riskLevel: "High", consequence: "Laceration never-event.", proof: "Walkthrough", verificationRequired: true, cadence: "daily" },
                 { id: "F-KSL-07", technicalProtocol: "Small-Item Reconcile", floorAction: "Blind count top 3 earring/accessory SKUs.", priority: "High", riskLevel: "High", consequence: "Undetected shrinkage.", proof: "Count Sheet", verificationRequired: true, cadence: "weekly" },
-                { id: "F-KSL-08", technicalProtocol: "Promo Bundle Sync", floorAction: "Verify 'Buy 2 Get 1' tags match current SKU list.", priority: "Medium", riskLevel: "Low", consequence: "Billing disputes.", proof: "POS Match", cadence: "daily" }
+                { id: "F-KSL-08", technicalProtocol: "Promo Bundle Sync", floorAction: "Verify 'Buy 2 Get 1' tags match current SKU list.", priority: "Medium", riskLevel: "Low", consequence: "Billing disputes.", proof: "POS Match", cadence: "daily" },
+                { id: "F-KSL-09", technicalProtocol: "Height Chart Clean", floorAction: "Sanitize interactive measuring stations every shift.", priority: "Low", riskLevel: "Low", consequence: "Hygiene perception drop.", proof: "Cleaning Log", cadence: "daily" },
+                { id: "F-KSL-10", technicalProtocol: "Stationery stock", floorAction: "Confirm 50+ spare coloring sheets in waiting zone.", priority: "Low", riskLevel: "Low", consequence: "Unmanaged children; floor chaos.", proof: "Visual Check", cadence: "daily" }
             ]
         }
     ]
