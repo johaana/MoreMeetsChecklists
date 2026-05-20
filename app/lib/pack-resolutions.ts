@@ -18,6 +18,41 @@ export type PackResolution = {
 };
 
 export const packResolutions: Record<string, PackResolution> = {
+    'fashion_and_apparel_retail': {
+        heroTitle: "FASHION OPERATIONS SYSTEM",
+        heroSubline: "Command Your Inventory Velocity. Protect Your Brand Standards.",
+        strategicParagraph: "The definitive Sovereign v18.0 engine for apparel and fashion retail. Hardening 182 technical control points across Inventory Velocity, VM Discipline, and Return-Fraud Prevention.",
+        whyExecutionBreaksParagraph: "Fashion retail fails when visual standards become suggestions, size-curves are ignored, and return-fraud goes unmonitored by the management tier.",
+        risks: [
+            { title: "Inventory Shrinkage", description: "Internal pilferage and shoplifting masked by poor cycle-count discipline and trial-room gaps." },
+            { title: "Visual Standards Drift", description: "Mannequin non-compliance and poor lighting maintenance destroying premium brand authority." },
+            { title: "Size-Curve Gaps", description: "Lost sales through unmonitored stock-outs of core sizes (M/L) while over-stocking slow movers." },
+            { title: "Return & Swap Fraud", description: "Accepting counterfeit swaps or 'wardrobed' garments due to weak receipt and tag verification." }
+        ],
+        whatChangesDaily: [
+            "Mannequin compliance becomes verified",
+            "Size-curve audits become daily logs",
+            "Trial room sweeps become mandatory pulses",
+            "Returns require manager co-sign logic",
+            "Markdown tagging has a secondary seal",
+            "Inventory velocity is tracked by section"
+        ],
+        mondayMorning: [
+            "Opening visual readiness is physically signed",
+            "Size-curve gaps for the week are identified",
+            "Trial room hygiene cycle is already active",
+            "Weekend return volume is reconciled",
+            "Launch readiness for new collections is verified",
+            "Managers stop chasing for basic visual checks"
+        ],
+        outcomes: [
+            "Inventory velocity tracked",
+            "Brand parity enforced",
+            "Fraud risk mitigated",
+            "Markdown losses reduced",
+            "Trial room conversion optimized"
+        ]
+    },
     'school_operations_pack': {
         heroTitle: "SCHOOL OPERATING SYSTEM",
         heroSubline: "Bring structure, visibility, and accountability to the responsibilities schools cannot afford to miss.",

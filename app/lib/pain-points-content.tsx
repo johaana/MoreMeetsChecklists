@@ -112,6 +112,16 @@ import {
 } from 'lucide-react';
 
 export const painPointsContent = {
+    fashion_and_apparel_retail: {
+        title: "Anatomy of a Fashion Failure",
+        disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",
+        points: [
+            { icon: <Factory />, title: "The Ethical Supply Chain Breach (Generic Example)", description: "Brands facing association with unsafe manufacturing hubs due to weak vendor compliance logs. Our 'ESG Sourcing' sub-module mandates vendor certification verification." },
+            { icon: <Recycle />, title: "The $100M Dead-Stock Crisis (Generic Example)", description: "Unsold inventory piles leading to forced incineration backlashes. Our 'Inventory Velocity' protocol identifies slow-movers for markdown triggers before they become liability waste." },
+            { icon: <ShieldAlert />, title: "The Boutique 'Swap' Fraud (Multiple Incidents)", description: "High-value garments swapped with counterfeits during trial room visits. Our 'Trial Room Command' enforces piece-count verification and tag-tamper sweeps." },
+            { icon: <Shirt />, title: "Brand Standard Decay (Generic Example)", description: "Mannequins with mismatched sizes or dusty displays destroying luxury authority. Our 'VM Governance' audits enforce visual parity daily." }
+        ]
+    },
     retail_operations_system: {
         title: "Anatomy of a Retail Failure",
         disclaimer: "*The following real-world incidents are cited based on publicly available news reports and investigation findings for educational and illustrative purposes only.*",

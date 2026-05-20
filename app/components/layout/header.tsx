@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -20,7 +21,8 @@ const ELITE_PACK_IDS = [
     'franchise_operations_pack',
     'facility_management_blueprint',
     'cinema_operations_pack',
-    'retail_operations_system'
+    'retail_operations_system',
+    'fashion_and_apparel_retail'
 ];
 
 const packs = Array.isArray(premiumPacks) ? premiumPacks : [];

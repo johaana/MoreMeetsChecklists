@@ -1,3 +1,4 @@
+
 import PackClientPage from "./pack-client-page";
 import { premiumPacks } from '@/lib/premium-packs';
 import { notFound } from 'next/navigation';
@@ -19,6 +20,7 @@ const descriptions: Record<string, string> = {
   'franchise_operations_pack': "Standardize multi-location operations with franchise operational SOPs for audit readiness, brand consistency, onboarding, reporting discipline, and operational continuity.",
   'facility_management_blueprint': "Operational SOPs for facilities management covering MEP systems, vendor SLAs, energy tracking, life safety, preventive maintenance, and infrastructure visibility.",
   'cinema_operations_pack': "Cinema operational SOPs for show readiness, concession control, crowd flow, projection checks, emergency readiness, and multi-screen operational consistency.",
+  'fashion_and_apparel_retail': "Specialized operational system for fashion retail. Control inventory velocity, size-curve balancing, trial-room conversion, and return-fraud prevention with forensic SOPs.",
 };
 
 export async function generateMetadata(
@@ -108,6 +110,10 @@ export default async function Page({ params }: Props) {
           squircle: "https://i.postimg.cc/NFNPhCzy/concession-area-cinema.jpg"
       },
       'retail_operations_system': {
+          bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
+          squircle: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp"
+      },
+      'fashion_and_apparel_retail': {
           bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
           squircle: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp"
       },
