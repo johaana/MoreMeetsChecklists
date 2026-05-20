@@ -21,8 +21,8 @@ export function Footer() {
                 </div>
                 <div className="flex flex-col gap-3 items-center text-xs md:items-start md:mx-auto font-black uppercase tracking-widest">
                     <h3 className="font-black mb-2 text-zinc-950 text-[10px] tracking-[0.3em]">RESOURCES</h3>
-                    <Link href="/#how-it-works" className="hover:text-primary transition-colors" prefetch={false}>How It Works</Link>
                     <Link href="/library" className="hover:text-primary transition-colors" prefetch={false}>Operational Packs</Link>
+                    <Link href="/blog" className="hover:text-primary transition-colors" prefetch={false}>Intelligence Hub</Link>
                     <Link href="/#pricing" className="hover:text-primary transition-colors" prefetch={false}>Pricing</Link>
                     <Link href="/contact" className="hover:text-primary transition-colors" prefetch={false}>Contact</Link>
                     <a href="https://calendly.com/more-moremeets/30min" target="_blank" className="text-primary">Book Discovery Session</a>

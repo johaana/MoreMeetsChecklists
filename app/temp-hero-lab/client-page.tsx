@@ -84,7 +84,7 @@ const ActionBlock = ({ centered = false }: { centered?: boolean }) => (
             <Button asChild size="lg" className="w-full sm:w-auto h-14 px-10 rounded-xl bg-primary text-black font-black uppercase italic text-[11px] tracking-widest shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:scale-[1.02] transition-all border-none">
                 <Link href="/library">SEE YOUR INDUSTRY SYSTEM</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto h-14 px-10 rounded-xl border-white/20 text-white/90 font-black uppercase italic text-[11px] tracking-widest hover:bg-zinc-800 hover:text-white transition-all bg-transparent">
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto h-14 px-10 rounded-xl border-white/10 text-white/90 font-black uppercase italic text-[11px] tracking-widest hover:bg-zinc-800 hover:text-white transition-all bg-transparent">
                 <Link href="#sovereign-ledger">SEE HOW IT WORKS</Link>
             </Button>
         </div>
@@ -158,14 +158,14 @@ export default function HeroLabClient() {
             
             <div className="container px-6 pt-24 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-emerald-500/5">
-                    SOVEREIGN HERO LAB v14.0
+                    SOVEREIGN HERO LAB v15.0
                 </Badge>
                 <h1 className="text-4xl md:text-5xl font-black font-headline italic uppercase tracking-tighter text-white">
                     Operational <span className="text-emerald-500">Design Selection</span>
                 </h1>
             </div>
 
-            {/* --- VAR 1: THE MONOLITH (Cleaned) --- */}
+            {/* --- VAR 1: THE MONOLITH --- */}
             <AtmosphericHero id="01" label="The Centered Monolith">
                 <div className="max-w-4xl mx-auto text-center space-y-10">
                     <div className="space-y-4">
@@ -181,7 +181,7 @@ export default function HeroLabClient() {
                 </div>
             </AtmosphericHero>
 
-            {/* --- VAR 2: THE COMMAND SPLIT --- */}
+            {/* --- VAR 2: THE COMMAND SPLIT (PREVIOUS WINNER) --- */}
             <AtmosphericHero id="02" label="The Command Split">
                 <div className="grid lg:grid-cols-[1.3fr,0.7fr] gap-12 lg:gap-20 items-center">
                     <div className="space-y-10 text-left">
@@ -225,12 +225,15 @@ export default function HeroLabClient() {
                 </div>
             </AtmosphericHero>
 
-            {/* --- VAR 7: THE REPORTING CHASE (Updated) --- */}
-            <AtmosphericHero id="07" label="The Reporting Chase">
+            {/* --- VAR 7: THE REPORTING CHASE (CONVERSION WINNER - HYBRID) --- */}
+            <AtmosphericHero id="07" label="The Reporting Chase (Hybrid)">
                 <div className="relative">
                     <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-16 items-center">
                         <div className="space-y-8 relative z-10">
                             <div className="space-y-4">
+                                <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 uppercase font-black tracking-widest text-[9px] px-6 py-1 rounded-none italic mb-4">
+                                    MANDATE: YOUR BUSINESS SHOULD NOT RUN ON MEMORY.
+                                </Badge>
                                 <h1 className="text-[42px] md:text-[60px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter">
                                     STOP THE <br/> REPORTING <br/> <span className="text-red-500">CHASE.</span>
                                 </h1>
