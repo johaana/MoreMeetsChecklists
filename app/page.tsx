@@ -41,7 +41,8 @@ import {
     Cpu,
     ShoppingBasket,
     Clapperboard,
-    Download
+    Download,
+    ShoppingBag
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
