@@ -78,22 +78,25 @@ export default function LiveDemoPreview() {
                             </thead>
                             <tbody>
                                 {[
-                                    { b: "Bandra", r: "Theatre Operations Manager", t: "Ticketing Revenue Reconcile", a: "[ENTER NAME]", s: "OPEN", c: "Undetected internal till fraud.", i: "Match POS ticket settlements against physical bank credit reports.", isV: true },
-                                    { b: "Bandra", r: "Theatre Operations Manager", t: "Statutory License Audit", a: "[ENTER NAME]", s: "OPEN", c: "Government theater sealing.", i: "Verify valid Fire NOC and Operating License is active for all screens." },
-                                    { b: "Bandra", r: "Theatre Operations Manager", t: "Show Cancellation Triage", a: "[ENTER NAME]", s: "OPEN", c: "Reputational damage and refund liability.", i: "Review incident log for any technical halts > 5 mins." },
-                                    { b: "Bandra", r: "Theatre Operations Manager", t: "CPH Margin Pulse", a: "[ENTER NAME]", s: "OPEN", c: "Underperforming secondary revenue stream.", i: "Review Concession-Per-Head spend against weekly targets." },
-                                    { b: "Bandra", r: "Duty Manager", t: "Ambiance Sensory Audit", a: "[ENTER NAME]", s: "OPEN", c: "Poor guest first-impression.", i: "Check Lobby scent, music volume, and temp (Target 23°C).", isAlt: true },
-                                    { b: "Bandra", r: "Duty Manager", t: "Zero-Gap Handover", a: "[ENTER NAME]", s: "OPEN", c: "Lost instructions / Gridlock.", i: "Verify digital sign-off between AM/PM shift managers.", isAlt: true, isV: true },
-                                    { b: "Bandra", r: "Duty Manager", t: "MOD Floor Presence", a: "[ENTER NAME]", s: "OPEN", c: "Service chaos during rush.", i: "Conduct 15-min sweep of lobbies during peak interval surge.", isAlt: true }
+                                    { b: "Bandra", r: "Theatre Operations Manager", t: "Ticketing Revenue Reconcile", a: "Anil K.", db: "AK", vb: "SM", s: "COMPLETE", c: "Undetected internal till fraud.", i: "Match POS ticket settlements against physical bank credit reports.", isV: true },
+                                    { b: "Bandra", r: "Theatre Operations Manager", t: "Statutory License Audit", a: "Anil K.", db: "AK", vb: "", s: "COMPLETE", c: "Government theater sealing.", i: "Verify valid Fire NOC and Operating License is active for all screens." },
+                                    { b: "Bandra", r: "Theatre Operations Manager", t: "Show Cancellation Triage", a: "Anil K.", db: "", vb: "", s: "OPEN", c: "Reputational damage and refund liability.", i: "Review incident log for any technical halts > 5 mins." },
+                                    { b: "Bandra", r: "Theatre Operations Manager", t: "CPH Margin Pulse", a: "Anil K.", db: "", vb: "", s: "OPEN", c: "Underperforming secondary revenue stream.", i: "Review Concession-Per-Head spend against weekly targets." },
+                                    { b: "Bandra", r: "Duty Manager", t: "Ambiance Sensory Audit", a: "Sarah M.", db: "SM", vb: "", s: "COMPLETE", c: "Poor guest first-impression.", i: "Check Lobby scent, music volume, and temp (Target 23°C).", isAlt: true },
+                                    { b: "Bandra", r: "Duty Manager", t: "Zero-Gap Handover", a: "Sarah M.", db: "SM", vb: "", s: "VERIFICATION PENDING", c: "Lost instructions / Gridlock.", i: "Verify digital sign-off between AM/PM shift managers.", isAlt: true, isV: true },
+                                    { b: "Bandra", r: "Duty Manager", t: "MOD Floor Presence", a: "Sarah M.", db: "", vb: "", s: "OPEN", c: "Service chaos during rush.", i: "Conduct 15-min sweep of lobbies during peak interval surge.", isAlt: true }
                                 ].map((row, idx) => (
                                     <tr key={idx} className={cn("border-b border-zinc-200 text-[11px]", row.isAlt ? "bg-[#f8f9fa]" : "bg-white")}>
                                         <td className="px-3 py-3 border-r border-zinc-200 text-zinc-500">{row.b}</td>
                                         <td className="px-3 py-3 border-r border-zinc-200 font-bold text-zinc-900">{row.r}</td>
                                         <td className="px-3 py-3 border-r border-zinc-200 font-black text-zinc-950">{row.t}</td>
                                         <td className="px-3 py-3 border-r border-zinc-200 text-zinc-400">{row.a}</td>
-                                        <td className="px-3 py-3 border-r border-zinc-200 bg-[#FEFCE8]"></td>
-                                        <td className={cn("px-3 py-3 border-r border-zinc-200", row.isV ? "bg-[#EFF6FF]" : "bg-[#f1f5f9]")}></td>
-                                        <td className="px-3 py-3 border-r border-zinc-200 font-black text-center">{row.s}</td>
+                                        <td className="px-3 py-3 border-r border-zinc-200 bg-[#FEFCE8] font-black text-center">{row.db}</td>
+                                        <td className={cn("px-3 py-3 border-r border-zinc-200 font-black text-center", row.isV ? "bg-[#EFF6FF]" : "bg-[#f1f5f9]")}>{row.vb}</td>
+                                        <td className={cn(
+                                            "px-3 py-3 border-r border-zinc-200 font-black text-center",
+                                            row.s === "COMPLETE" ? "text-emerald-600" : row.s === "VERIFICATION PENDING" ? "text-amber-600" : "text-zinc-400"
+                                        )}>{row.s}</td>
                                         <td className="px-3 py-3 border-r border-zinc-200 italic text-red-700 font-medium leading-tight max-w-[180px]">{row.c}</td>
                                         <td className="px-3 py-3 text-emerald-700 font-medium leading-tight max-w-[300px]">{row.i}</td>
                                     </tr>
@@ -177,7 +180,7 @@ export default function LiveDemoPreview() {
                     <div className="w-1.5 h-6 bg-primary" />
                     <h2 className="text-xl font-black uppercase italic tracking-tighter">04. MOBILE EXECUTION HUB (RESTRAINED)</h2>
                 </div>
-                <div className="w-[375px] h-[750px] border-[12px] border-zinc-900 rounded-[3rem] bg-white overflow-hidden shadow-2xl relative flex flex-col">
+                <div className="w-[375px] h-[750px] border-[12px] border-zinc-900 rounded-[3rem] bg-black overflow-hidden shadow-2xl relative flex flex-col">
                     <div className="bg-zinc-950 text-white p-6 pt-12 space-y-1">
                         <p className="text-[10px] font-black text-primary uppercase tracking-[0.3em]">MUMBAI_PHOENIX</p>
                         <h3 className="text-2xl font-black font-headline italic uppercase tracking-tighter">DAILY MISSIONS</h3>
