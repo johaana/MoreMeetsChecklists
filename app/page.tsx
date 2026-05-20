@@ -50,7 +50,6 @@ import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
 import { FaqSection } from '@/components/layout/faq-section';
 import { Button } from '@/components/ui/button';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const BRAND_GREEN = "#22C55E";
 const TRUST_STRIP = "WORKS ON PHONES • NO APP INSTALL • ONE-TIME PURCHASE • DEPLOY IN 10 MINUTES • BUILT IN EXCEL • RUNS ON GOOGLE SHEETS";
@@ -69,6 +68,16 @@ const MARQUEE_SIGNALS = [
     "ROI_ENGINE_ACTIVE"
 ];
 
+const ELITE_INDUSTRIES = [
+    { name: "Hotel Operations", id: "hotels_and_resorts" },
+    { name: "Restaurant Operations", id: "restaurants" },
+    { name: "Hospital Operations", id: "healthcare_and_hospital_operations" },
+    { name: "School Operations", id: "school_operations_pack" },
+    { name: "Franchise Operations", id: "franchise_operations_pack" },
+    { name: "Facilities Operations", id: "facility_management_blueprint" },
+    { name: "Multiplex Operations", id: "cinema_operations_pack" }
+];
+
 const Section = ({ children, className, id, noSpine = false }: { children: React.ReactNode, className?: string, id?: string, noSpine?: boolean }) => (
     <section id={id} className={cn("w-full py-16 md:py-32 relative overflow-hidden", className)}>
         {!noSpine && <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-zinc-100 z-0 hidden lg:block" />}
@@ -80,7 +89,8 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
 
 const HeroSection = () => {
     return (
-        <section className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden bg-black pt-16">
+        <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black pt-16">
+             {/* Background Architecture */}
              <div className="absolute inset-0 z-0">
                 <video 
                     src={VIDEO_URL} 
@@ -88,85 +98,105 @@ const HeroSection = () => {
                     loop 
                     muted 
                     playsInline 
-                    className="h-full w-full object-cover opacity-20 grayscale"
+                    className="h-full w-full object-cover opacity-25 grayscale"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 md:via-black/80 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
             </div>
             
-            <div className="relative z-20 container mx-auto max-w-[1200px] px-6 py-12 md:py-24">
-                <div className="grid lg:grid-cols-[1.3fr,0.7fr] gap-12 md:gap-20 items-center">
-                    <div className="space-y-10 md:space-y-14">
-                        <div className="space-y-6 md:space-y-8">
-                            <Badge variant="outline" className="text-primary border-primary/30 py-1.5 px-6 uppercase tracking-[0.4em] font-black text-[10px] bg-primary/5 rounded-none backdrop-blur-md">Operational Infrastructure</Badge>
-                            <h1 className="text-[38px] md:text-[84px] lg:text-[94px] font-black font-headline leading-[0.88] uppercase italic tracking-tighter text-white">
+            <div className="relative z-20 container mx-auto max-w-[1200px] px-6 py-12 md:py-20">
+                <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 md:gap-24 items-center">
+                    
+                    {/* Left: The Mandate */}
+                    <div className="space-y-12 md:space-y-16">
+                        <div className="space-y-6">
+                            <Badge variant="outline" className="text-primary border-primary/30 py-1.5 px-6 uppercase tracking-[0.4em] font-black text-[10px] bg-primary/5 rounded-none backdrop-blur-md">Institutional Architecture</Badge>
+                            <h1 className="text-[34px] md:text-[80px] lg:text-[90px] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-white">
                                 YOUR BUSINESS <br />
                                 <span style={{ color: BRAND_GREEN }}>SHOULD NOT RUN</span> <br/>
                                 <span style={{ color: BRAND_GREEN }}>ON MEMORY.</span>
                             </h1>
                             <div className="space-y-4 max-w-2xl">
-                                <p className="text-xl md:text-[24px] italic font-medium text-zinc-300 leading-tight">
-                                    Pre-built operational systems for hotels, restaurants, hospitals, schools, retail stores, facilities, cinemas, and franchise groups.
+                                <p className="text-lg md:text-[22px] italic font-medium text-zinc-400 leading-tight">
+                                    Pre-built operational systems for hotels, restaurants, hospitals, schools, retail, facilities, cinemas, and franchise groups.
                                 </p>
                                 <div className="border-l-2 border-primary/40 pl-6 py-1">
-                                    <p className="text-sm md:text-lg text-zinc-500 font-bold italic uppercase tracking-wide">
-                                        Built in Excel. Operated through Google Sheets. <br/>
-                                        Your team already knows how to use it.
+                                    <p className="text-sm md:text-base text-zinc-500 font-bold italic uppercase tracking-wider">
+                                        BUILT IN EXCEL. OPERATED THROUGH GOOGLE SHEETS. <br/>
+                                        YOUR TEAM ALREADY KNOWS HOW TO USE IT.
                                     </p>
                                 </div>
                             </div>
                         </div>
 
                         <div className="space-y-10">
-                             <div className="flex flex-col sm:flex-row gap-5">
-                                <Button asChild size="lg" className="h-16 md:h-20 px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-base md:text-lg shadow-[0_20px_60px_-10px_rgba(34,197,94,0.5)] hover:bg-white transition-all border-none group">
-                                    <Link href="/library" className="flex items-center gap-3">
+                             <div className="flex flex-col sm:flex-row gap-5 items-start md:items-center">
+                                <Button asChild size="lg" className="h-16 md:h-20 px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-base md:text-lg shadow-[0_20px_60px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group">
+                                    <Link href="/library" className="flex items-center gap-4">
                                         Deploy Your System <ArrowRight className="w-6 h-6 md:w-8 md:h-8 transition-transform group-hover:translate-x-2" />
                                     </Link>
                                 </Button>
-                                <Button asChild variant="outline" size="lg" className="h-16 md:h-20 px-10 rounded-xl border-white/20 text-white font-black uppercase italic hover:bg-white/5 text-sm md:text-base">
-                                    <Link href="/library">View Operational Packs</Link>
-                                </Button>
+                                <div className="flex flex-col pl-2">
+                                    <span className="text-[32px] md:text-4xl font-black text-white italic tracking-tighter leading-none">₹3,499</span>
+                                    <span className="text-[10px] font-black text-zinc-600 uppercase tracking-widest italic">ONE-TIME ACCESS</span>
+                                </div>
                              </div>
                              
-                             <div className="bg-white/5 border border-white/10 backdrop-blur-xl py-5 px-8 rounded-2xl inline-block shadow-2xl">
-                                 <p className="text-[9px] md:text-[11px] text-zinc-400 font-black uppercase tracking-[0.3em] md:tracking-[0.45em] italic leading-none">
-                                    {TRUST_STRIP}
-                                </p>
+                             <div className="grid grid-cols-2 md:grid-cols-2 gap-x-8 gap-y-4 max-w-xl">
+                                {[
+                                    { t: "120+ PRE-BUILT SOPs", i: Target },
+                                    { t: "LIVE DASHBOARDS", i: Activity },
+                                    { t: "NO SaaS LOCK-IN", i: Lock },
+                                    { t: "TRAINER NOTES INCLUDED", i: GraduationCap }
+                                ].map((spec, i) => (
+                                    <div key={i} className="flex items-center gap-3">
+                                        <spec.i className="w-4 h-4 text-primary/40" />
+                                        <span className="text-[10px] font-black text-zinc-500 uppercase tracking-widest italic">{spec.t}</span>
+                                    </div>
+                                ))}
                              </div>
                         </div>
                     </div>
 
-                    <div className="relative group hidden lg:block">
-                        <div className="absolute -inset-10 bg-primary/20 rounded-[3rem] blur-[100px] opacity-10"></div>
-                        <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-zinc-950 aspect-[4/5] group-hover:border-primary/20 transition-all duration-700">
-                             <img 
-                                src="https://i.postimg.cc/kggB6rVZ/Screenshot-2026-05-11-170916.png" 
-                                alt="Live Execution Ledger" 
-                                className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000 scale-[1.02] group-hover:scale-100"
-                             />
-                             <div className="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-black via-black/80 to-transparent">
-                                 <Badge className="bg-primary/20 text-primary border-primary/30 uppercase font-black tracking-widest text-[9px] mb-3 px-3 py-1 rounded-none">LIVE RUNTIME</Badge>
-                                 <p className="text-white font-headline font-black italic uppercase text-2xl tracking-tighter">Mission Execution Ledger</p>
-                                 <p className="text-zinc-500 text-xs font-bold italic mt-1">Sovereign v18.1 Master Data Engine</p>
-                             </div>
+                    {/* Right: The Sector Command */}
+                    <div className="relative group lg:border-l border-white/10 lg:pl-16 space-y-10">
+                        <div className="space-y-2">
+                            <p className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">SELECT VERTICAL</p>
+                            <div className="h-px w-20 bg-primary/40" />
+                        </div>
+                        
+                        <div className="flex flex-col space-y-4 md:space-y-6">
+                            {ELITE_INDUSTRIES.map((ind) => (
+                                <Link key={ind.id} href={`/packs/${ind.id}`} className="group flex items-center justify-between py-1 transition-all">
+                                    <span className="text-xl md:text-2xl lg:text-3xl font-black font-headline uppercase italic tracking-tighter text-white/20 group-hover:text-primary group-hover:translate-x-3 transition-all duration-500">
+                                        {ind.name}
+                                    </span>
+                                    <ChevronRight className="w-5 h-5 text-white/5 group-hover:text-primary transition-all" />
+                                </Link>
+                            ))}
+                        </div>
+
+                        <div className="pt-10 border-t border-white/5">
+                             <p className="text-[9px] md:text-[11px] text-zinc-700 font-black uppercase tracking-[0.3em] md:tracking-[0.45em] italic leading-tight">
+                                {TRUST_STRIP}
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* --- TELEMETRY MARQUEE base --- */}
-            <div className="absolute bottom-0 w-full bg-zinc-950/80 backdrop-blur-md h-12 md:h-14 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
+            {/* --- TELEMETRY MARQUEE --- */}
+            <div className="absolute bottom-0 w-full bg-zinc-950/90 backdrop-blur-xl h-12 md:h-14 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
                 <div className="flex flex-nowrap items-center gap-20 animate-marquee whitespace-nowrap px-10">
                     {MARQUEE_SIGNALS.map((signal, i) => (
-                        <span key={i} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.4em] flex items-center gap-3 text-zinc-500">
+                        <span key={i} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.4em] flex items-center gap-3 text-zinc-600">
                             <span className="text-primary">[✓]</span>
                             <span className="opacity-80">{signal}</span>
                         </span>
                     ))}
                     {/* Loop replication */}
                     {MARQUEE_SIGNALS.map((signal, i) => (
-                        <span key={`dup-${i}`} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.4em] flex items-center gap-3 text-zinc-500">
+                        <span key={`dup-${i}`} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.4em] flex items-center gap-3 text-zinc-600">
                             <span className="text-primary">[✓]</span>
                             <span className="opacity-80">{signal}</span>
                         </span>
@@ -503,7 +533,7 @@ export default function Home() {
                         </div>
                         <div className="relative group">
                             <div className="absolute -inset-2 bg-primary/20 rounded-[2.5rem] blur-xl opacity-20"></div>
-                            <img src={PlaceHolderImages.find(i => i.id === 'sovereign-mobile')?.imageUrl} className="rounded-[2.5rem] shadow-2xl border border-zinc-100 relative z-10" data-ai-hint="mobile spreadsheet" />
+                            <img src="https://i.postimg.cc/y88kgqJb/Screenshot-2026-05-11-170353.png" className="rounded-[2.5rem] shadow-2xl border border-zinc-100 relative z-10" alt="Mobile Spreadsheet Execution" />
                         </div>
                     </div>
                 </Section>
