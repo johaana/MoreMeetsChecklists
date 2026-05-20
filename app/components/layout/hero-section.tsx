@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -18,14 +17,13 @@ import {
 import React from 'react';
 
 const ELITE_INDUSTRIES = [
-    { name: "Restaurants", id: "restaurants", icon: Utensils },
-    { name: "Hotels & Resorts", id: "hotels_and_resorts", icon: Building },
-    { name: "Retail Stores", id: "retail_operations_system", icon: ShoppingBag },
-    { name: "Healthcare", id: "healthcare_and_hospital_operations", icon: Hospital },
-    { name: "Schools", id: "school_operations_pack", icon: School },
-    { name: "Franchise Networks", id: "franchise_operations_pack", icon: Store },
-    { name: "Facilities", id: "facility_management_blueprint", icon: Building2 },
-    { name: "Cinemas", id: "cinema_operations_pack", icon: Popcorn }
+    { name: "Restaurant Operations", id: "restaurants", icon: Utensils },
+    { name: "Hotel Operations", id: "hotels_and_resorts", icon: Building },
+    { name: "Hospital Operations", id: "healthcare_and_hospital_operations", icon: Hospital },
+    { name: "School Operations", id: "school_operations_pack", icon: School },
+    { name: "Multi-Unit Operations", id: "franchise_operations_pack", icon: Store },
+    { name: "Building Operations", id: "facility_management_blueprint", icon: Building2 },
+    { name: "Multiplex Operations", id: "cinema_operations_pack", icon: Popcorn }
 ];
 
 const SYSTEM_SPECS = [
@@ -89,7 +87,7 @@ export const HeroSection = () => (
                             <div className="flex flex-col space-y-2 items-end">
                                 {ELITE_INDUSTRIES.map((ind) => (
                                     <Link key={ind.id} href={`/packs/${ind.id}`} className="group flex items-center gap-2">
-                                        <span className="text-base font-black font-headline uppercase italic tracking-tighter text-white/20 group-hover:text-primary transition-all">{ind.name}</span>
+                                        <span className="text-base font-black font-headline uppercase italic tracking-tighter text-white/20 group-hover:text-primary transition-all text-right">{ind.name}</span>
                                         <ChevronRight className="w-3 h-3 text-white/5" />
                                     </Link>
                                 ))}
@@ -144,7 +142,7 @@ export const HeroSection = () => (
                         ))}
                     </div>
                     <div className="space-y-4">
-                        <Button asChild size="lg" className="bg-transparent border border-primary/40 text-primary hover:bg-primary hover:text-black shadow-none w-fit px-12 h-16 rounded-xl font-black uppercase italic text-sm tracking-widest transition-all active:scale-95">
+                        <Button asChild size="lg" className="bg-transparent border border-primary/40 text-primary hover:bg-primary hover:text-black shadow-none w-fit px-12 h-16 rounded-xl font-black uppercase italic text-sm tracking-widest transition-all active:scale-[0.98]">
                             <Link href="/library" className="flex items-center justify-center gap-2">GO LIVE IN 10 MINUTES: ₹999 <ArrowRight className="h-5 w-5" /></Link>
                         </Button>
                         <p className="text-[10px] text-white/20 font-black uppercase tracking-[0.4em] pl-2">{PROOF_STRIP} • NO SaaS</p>

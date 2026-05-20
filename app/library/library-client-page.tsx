@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -13,6 +12,7 @@ import { Search, ArrowRight, X, ChevronDown, LayoutGrid, Target } from 'lucide-r
 import { useSearchParams, useRouter } from 'next/navigation';
 import { IconComponent } from '@/components/icons';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { getDisplayTitle } from '@/lib/ui-mappings';
 
 const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
@@ -25,10 +25,10 @@ const ELITE_PACK_IDS = [
     'franchise_operations_pack',
     'facility_management_blueprint',
     'cinema_operations_pack',
-    'retail_operations_system',
     'fashion_and_apparel_retail',
     'electronics_showroom_pack',
-    'supermarket_grocery_retail_pack'
+    'supermarket_grocery_retail_pack',
+    'retail_jewellery_operations_pack'
 ];
 
 const allPacksByCategory = (packs: PremiumPack[]) => {
@@ -62,8 +62,8 @@ const PackCard = ({ pack }: { pack: PremiumPack }) => {
                 </div>
                 <div className="space-y-1 md:space-y-2">
                     <p className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.4em] text-primary/60">{pack.category.toUpperCase()}</p>
-                    <CardTitle className="text-xl md:text-3xl font-black font-headline italic uppercase tracking-tighter text-primary-text leading-[0.9) group-hover:text-primary transition-colors">
-                        <Link href={`/packs/${pack.id}`}>{pack.title}</Link>
+                    <CardTitle className="text-xl md:text-3xl font-black font-headline italic uppercase tracking-tighter text-primary-text leading-[0.9] group-hover:text-primary transition-colors">
+                        <Link href={`/packs/${pack.id}`}>{getDisplayTitle(pack.id, pack.title)}</Link>
                     </CardTitle>
                 </div>
                 <CardDescription className="text-xs md:text-base text-secondary-text leading-relaxed font-medium italic line-clamp-3 opacity-60 group-hover:opacity-100 transition-opacity">

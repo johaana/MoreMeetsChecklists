@@ -30,6 +30,7 @@ import {
 import Link from 'next/link';
 import PricingClient from '../pricing-client';
 import { packResolutions, defaultResolution } from '@/lib/pack-resolutions';
+import { getDisplayTitle } from '@/lib/ui-mappings';
 
 // --- SECTOR METADATA: THE SOVEREIGN TELEMETRY ---
 const SECTOR_METADATA: Record<string, {
@@ -158,8 +159,12 @@ export default function PackClientPage({ pack, backgroundUrl, squircleUrl }: { p
     const sectorData = SECTOR_METADATA[pack.id] || { marquee: DEFAULT_MARQUEE, sustainability: DEFAULT_SUSTAINABILITY };
     
     const getVerticalParts = (p: PremiumPack) => {
-        const title = p.title.replace(' Operations System', '').replace(' Pack', '').toUpperCase();
-        return [title, "OPERATIONS", "SYSTEM."];
+        const displayTitle = getDisplayTitle(p.id, p.title);
+        const parts = displayTitle.toUpperCase().split(' ');
+        // We ensure at least 2 parts for the UI layout
+        if (parts.length === 1) return [parts[0], "OPERATIONS", "SYSTEM."];
+        if (parts.length === 2) return [parts[0], parts[1], ""];
+        return [parts[0], parts.slice(1).join(' '), ""];
     };
     const titleParts = getVerticalParts(pack);
 

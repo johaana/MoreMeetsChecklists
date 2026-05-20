@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -12,6 +11,7 @@ import { premiumPacks } from "@/lib/premium-packs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
+import { getDisplayTitle } from "@/lib/ui-mappings";
 
 const ELITE_PACK_IDS = [
     'restaurants',
@@ -21,10 +21,10 @@ const ELITE_PACK_IDS = [
     'franchise_operations_pack',
     'facility_management_blueprint',
     'cinema_operations_pack',
-    'retail_operations_system',
     'fashion_and_apparel_retail',
     'electronics_showroom_pack',
-    'supermarket_grocery_retail_pack'
+    'supermarket_grocery_retail_pack',
+    'retail_jewellery_operations_pack'
 ];
 
 const packs = Array.isArray(premiumPacks) ? premiumPacks : [];
@@ -53,7 +53,7 @@ const SolutionsList = () => (
                                 <span className="shrink-0 w-4 h-4 flex items-center justify-center">
                                     <IconComponent name={pack.icon} className="w-3.5 h-3.5" />
                                 </span>
-                                <span className="flex-1 leading-snug">{pack.title}</span>
+                                <span className="flex-1 leading-snug">{getDisplayTitle(pack.id, pack.title)}</span>
                             </Link>
                         </li>
                     ))}
@@ -176,7 +176,7 @@ export function SiteHeader({ forceTheme }: { forceTheme?: 'light' | 'dark' }) {
                                                         {packs.map(pack => (
                                                             <Link key={pack.id} href={`/packs/${pack.id}`} className="text-[11px] font-bold uppercase tracking-tight text-slate-600 hover:text-slate-900 transition-colors py-2 px-2 rounded-md hover:bg-black/5 flex items-center gap-2">
                                                                 <IconComponent name={pack.icon} className="w-3.5 h-3.5 shrink-0" />
-                                                                <span>{pack.title}</span>
+                                                                <span>{getDisplayTitle(pack.id, pack.title)}</span>
                                                             </Link>
                                                         ))}
                                                     </div>
