@@ -89,7 +89,7 @@ const Section = ({ children, className, id, noSpine = false }: { children: React
 
 const HeroSection = () => {
     return (
-        <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black pt-16">
+        <section className="relative w-full min-h-[90vh] lg:min-h-screen flex flex-col justify-center overflow-hidden bg-black pt-16">
              {/* Background Architecture */}
              <div className="absolute inset-0 z-0">
                 <video 
@@ -98,60 +98,60 @@ const HeroSection = () => {
                     loop 
                     muted 
                     playsInline 
-                    className="h-full w-full object-cover opacity-25 grayscale"
+                    className="h-full w-full object-cover opacity-20 grayscale"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 md:via-black/80 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 md:via-black/90 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" />
             </div>
             
-            <div className="relative z-20 container mx-auto max-w-[1200px] px-6 py-12 md:py-20">
-                <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 md:gap-24 items-center">
+            <div className="relative z-20 container mx-auto max-w-[1200px] px-6 py-12">
+                <div className="grid lg:grid-cols-[1fr,450px] gap-12 md:gap-20 items-center">
                     
                     {/* Left: The Mandate */}
-                    <div className="space-y-12 md:space-y-16">
-                        <div className="space-y-6">
-                            <Badge variant="outline" className="text-primary border-primary/30 py-1.5 px-6 uppercase tracking-[0.4em] font-black text-[10px] bg-primary/5 rounded-none backdrop-blur-md">Institutional Architecture</Badge>
-                            <h1 className="text-[34px] md:text-[80px] lg:text-[90px] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-white">
+                    <div className="space-y-8 md:space-y-12">
+                        <div className="space-y-4 md:space-y-5">
+                            <Badge variant="outline" className="text-primary border-primary/30 py-1 px-4 uppercase tracking-[0.3em] font-black text-[9px] bg-primary/5 rounded-none backdrop-blur-md">Institutional Architecture</Badge>
+                            <h1 className="text-[28px] md:text-[56px] lg:text-[64px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
                                 YOUR BUSINESS <br />
                                 <span style={{ color: BRAND_GREEN }}>SHOULD NOT RUN</span> <br/>
                                 <span style={{ color: BRAND_GREEN }}>ON MEMORY.</span>
                             </h1>
-                            <div className="space-y-4 max-w-2xl">
-                                <p className="text-lg md:text-[22px] italic font-medium text-zinc-400 leading-tight">
-                                    Pre-built operational systems for hotels, restaurants, hospitals, schools, retail, facilities, cinemas, and franchise groups.
+                            <div className="space-y-3 max-w-xl">
+                                <p className="text-base md:text-lg italic font-medium text-zinc-400 leading-tight">
+                                    Pre-built operational systems for hotels, restaurants, hospitals, schools, retail, facilities, and franchise groups.
                                 </p>
-                                <div className="border-l-2 border-primary/40 pl-6 py-1">
-                                    <p className="text-sm md:text-base text-zinc-500 font-bold italic uppercase tracking-wider">
-                                        BUILT IN EXCEL. OPERATED THROUGH GOOGLE SHEETS. <br/>
-                                        YOUR TEAM ALREADY KNOWS HOW TO USE IT.
+                                <div className="border-l-2 border-primary/40 pl-4 py-0.5">
+                                    <p className="text-[11px] md:text-sm text-zinc-500 font-bold italic uppercase tracking-wider">
+                                        BUILT IN EXCEL • OPERATED THROUGH GOOGLE SHEETS <br/>
+                                        THE SYSTEM YOUR TEAM ALREADY KNOWS.
                                     </p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="space-y-10">
+                        <div className="space-y-8">
                              <div className="flex flex-col sm:flex-row gap-5 items-start md:items-center">
-                                <Button asChild size="lg" className="h-16 md:h-20 px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-base md:text-lg shadow-[0_20px_60px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group">
-                                    <Link href="/library" className="flex items-center gap-4">
-                                        Deploy Your System <ArrowRight className="w-6 h-6 md:w-8 md:h-8 transition-transform group-hover:translate-x-2" />
+                                <Button asChild size="lg" className="h-14 md:h-16 px-10 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_60px_-10px_rgba(34,197,94,0.4)] hover:bg-white transition-all border-none group">
+                                    <Link href="/library" className="flex items-center gap-3">
+                                        Deploy System <ArrowRight className="w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-1" />
                                     </Link>
                                 </Button>
-                                <div className="flex flex-col pl-2">
-                                    <span className="text-[32px] md:text-4xl font-black text-white italic tracking-tighter leading-none">₹3,499</span>
-                                    <span className="text-[10px] font-black text-zinc-600 uppercase tracking-widest italic">ONE-TIME ACCESS</span>
+                                <div className="flex flex-col pl-1">
+                                    <span className="text-[28px] md:text-3xl font-black text-white italic tracking-tighter leading-none">₹3,499</span>
+                                    <span className="text-[9px] font-black text-zinc-600 uppercase tracking-widest italic">ONE-TIME ACCESS</span>
                                 </div>
                              </div>
                              
-                             <div className="grid grid-cols-2 md:grid-cols-2 gap-x-8 gap-y-4 max-w-xl">
+                             <div className="grid grid-cols-2 gap-x-6 gap-y-3 max-w-md">
                                 {[
                                     { t: "120+ PRE-BUILT SOPs", i: Target },
                                     { t: "LIVE DASHBOARDS", i: Activity },
                                     { t: "NO SaaS LOCK-IN", i: Lock },
-                                    { t: "TRAINER NOTES INCLUDED", i: GraduationCap }
+                                    { t: "TRAINER NOTES", i: GraduationCap }
                                 ].map((spec, i) => (
-                                    <div key={i} className="flex items-center gap-3">
-                                        <spec.i className="w-4 h-4 text-primary/40" />
-                                        <span className="text-[10px] font-black text-zinc-500 uppercase tracking-widest italic">{spec.t}</span>
+                                    <div key={i} className="flex items-center gap-2">
+                                        <spec.i className="w-3.5 h-3.5 text-primary/40" />
+                                        <span className="text-[9px] font-black text-zinc-500 uppercase tracking-widest italic">{spec.t}</span>
                                     </div>
                                 ))}
                              </div>
@@ -159,25 +159,25 @@ const HeroSection = () => {
                     </div>
 
                     {/* Right: The Sector Command */}
-                    <div className="relative group lg:border-l border-white/10 lg:pl-16 space-y-10">
-                        <div className="space-y-2">
-                            <p className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.6em] italic">SELECT VERTICAL</p>
-                            <div className="h-px w-20 bg-primary/40" />
+                    <div className="relative group lg:border-l border-white/5 lg:pl-12 space-y-8">
+                        <div className="space-y-1">
+                            <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.5em] italic">SELECT VERTICAL</p>
+                            <div className="h-px w-16 bg-primary/30" />
                         </div>
                         
-                        <div className="flex flex-col space-y-4 md:space-y-6">
+                        <div className="flex flex-col space-y-3 md:space-y-4">
                             {ELITE_INDUSTRIES.map((ind) => (
-                                <Link key={ind.id} href={`/packs/${ind.id}`} className="group flex items-center justify-between py-1 transition-all">
-                                    <span className="text-xl md:text-2xl lg:text-3xl font-black font-headline uppercase italic tracking-tighter text-white/20 group-hover:text-primary group-hover:translate-x-3 transition-all duration-500">
+                                <Link key={ind.id} href={`/packs/${ind.id}`} className="group flex items-center justify-between py-0.5 transition-all">
+                                    <span className="text-lg md:text-xl lg:text-[22px] font-black font-headline uppercase italic tracking-tighter text-white/20 group-hover:text-primary group-hover:translate-x-2 transition-all duration-500">
                                         {ind.name}
                                     </span>
-                                    <ChevronRight className="w-5 h-5 text-white/5 group-hover:text-primary transition-all" />
+                                    <ChevronRight className="w-4 h-4 text-white/5 group-hover:text-primary transition-all" />
                                 </Link>
                             ))}
                         </div>
 
-                        <div className="pt-10 border-t border-white/5">
-                             <p className="text-[9px] md:text-[11px] text-zinc-700 font-black uppercase tracking-[0.3em] md:tracking-[0.45em] italic leading-tight">
+                        <div className="pt-8 border-t border-white/5">
+                             <p className="text-[8px] md:text-[10px] text-zinc-700 font-black uppercase tracking-[0.3em] md:tracking-[0.4em] italic leading-tight">
                                 {TRUST_STRIP}
                             </p>
                         </div>
@@ -186,19 +186,19 @@ const HeroSection = () => {
             </div>
 
             {/* --- TELEMETRY MARQUEE --- */}
-            <div className="absolute bottom-0 w-full bg-zinc-950/90 backdrop-blur-xl h-12 md:h-14 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
-                <div className="flex flex-nowrap items-center gap-20 animate-marquee whitespace-nowrap px-10">
+            <div className="absolute bottom-0 w-full bg-zinc-950/90 backdrop-blur-xl h-10 md:h-12 overflow-hidden border-t border-white/5 flex items-center shadow-2xl">
+                <div className="flex flex-nowrap items-center gap-16 animate-marquee whitespace-nowrap px-10">
                     {MARQUEE_SIGNALS.map((signal, i) => (
-                        <span key={i} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.4em] flex items-center gap-3 text-zinc-600">
+                        <span key={i} className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2.5 text-zinc-600">
                             <span className="text-primary">[✓]</span>
-                            <span className="opacity-80">{signal}</span>
+                            <span className="opacity-70">{signal}</span>
                         </span>
                     ))}
                     {/* Loop replication */}
                     {MARQUEE_SIGNALS.map((signal, i) => (
-                        <span key={`dup-${i}`} className="text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-[0.4em] flex items-center gap-3 text-zinc-600">
+                        <span key={`dup-${i}`} className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.3em] flex items-center gap-2.5 text-zinc-600">
                             <span className="text-primary">[✓]</span>
-                            <span className="opacity-80">{signal}</span>
+                            <span className="opacity-70">{signal}</span>
                         </span>
                     ))}
                 </div>
