@@ -1,31 +1,19 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
     ArrowRight, 
-    Lock,
-    ClipboardCheck,
-    Activity,
     Check,
-    ShieldCheck,
-    Target,
-    Smartphone,
-    AlertTriangle,
-    Zap,
     CheckCircle2,
-    ChevronRight,
+    Smartphone,
+    Lock,
+    Target,
+    Activity,
     GraduationCap,
     FileSignature,
-    Users,
-    Globe,
-    SearchCheck,
-    ShieldAlert,
-    Download,
-    Upload,
-    UserPlus,
-    Play
+    ChevronRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -46,8 +34,8 @@ const ELITE_INDUSTRIES = [
 
 const BRAND_GREEN = "#22C55E";
 
-const LabHeader = () => (
-    <div className="flex flex-col items-center gap-1 mb-8">
+const LabHeader = ({ className }: { className?: string }) => (
+    <div className={cn("flex flex-col items-start gap-1", className)}>
         <div className="flex items-center gap-2">
             <div className="w-6 h-6 bg-primary rounded flex items-center justify-center">
                 <Check className="text-black w-4 h-4" />
@@ -59,7 +47,7 @@ const LabHeader = () => (
 );
 
 const TechnicalPayload = () => (
-    <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic">
+    <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 italic">
         <span className="flex items-center gap-2"><CheckCircle2 className="w-3 h-3 text-primary/60" /> Ready in 10 Minutes</span>
         <span className="flex items-center gap-2"><Smartphone className="w-3 h-3 text-primary/60" /> Works on Phones</span>
         <span className="flex items-center gap-2"><Lock className="w-3 h-3 text-primary/60" /> No SaaS Fees</span>
@@ -76,7 +64,7 @@ const ActionUnit = ({ className, centered = true }: { className?: string, center
                 <Link href="#sovereign-ledger">SEE HOW IT WORKS</Link>
             </Button>
         </div>
-        <Link href="https://calendly.com" target="_blank" className="group flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-white/30 hover:text-primary transition-colors">
+        <Link href="https://calendly.com/more-moremeets/30min" target="_blank" className="group flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-white/30 hover:text-primary transition-colors">
             <span>Need help setting up multiple branches? Book Operational Walkthrough</span>
             <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
         </Link>
@@ -84,9 +72,9 @@ const ActionUnit = ({ className, centered = true }: { className?: string, center
 );
 
 const AtmosphericBg = () => (
-    <div className="absolute inset-0 z-0 pointer-events-none">
+    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute inset-0 bg-[#050505]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.12)_0%,transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.15)_0%,transparent_70%)]" />
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#888_1px,transparent_1px),linear-gradient(to_bottom,#888_1px,transparent_1px)] bg-[size:40px_40px]" />
     </div>
 );
@@ -99,9 +87,11 @@ const LabSection = ({ children, title, description, id }: { children: React.Reac
                 <p className="text-zinc-500 italic font-medium text-[10px] uppercase tracking-widest">{description}</p>
             </div>
         </div>
-        <div className="w-full relative overflow-hidden min-h-[95vh] flex flex-col justify-center border-y border-white/5">
+        <div className="w-full relative overflow-hidden min-h-[95vh] flex flex-col justify-center border-y border-white/5 bg-black">
             <AtmosphericBg />
-            <div className="relative z-10 w-full">
+            <LabHeader className="absolute top-10 left-10 z-30" />
+            
+            <div className="relative z-10 w-full py-20">
                 {children}
             </div>
             
@@ -128,11 +118,11 @@ const LabSection = ({ children, title, description, id }: { children: React.Reac
 
 export default function HeroLabClient() {
     return (
-        <div className="bg-[#050505] text-white font-sans selection:bg-emerald-500/30">
+        <div className="bg-[#050505] text-white font-sans selection:bg-emerald-500/30 pb-40">
             
             <div className="container px-6 pt-32 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-emerald-500/5">
-                    SOVEREIGN HERO LAB v5.0 (ATMOSPHERIC)
+                    SOVEREIGN HERO LAB v6.0 (FINAL CANDIDATES)
                 </Badge>
                 <h1 className="text-4xl md:text-7xl font-black font-headline italic uppercase tracking-tighter leading-tight text-white">
                     Operational <span className="text-emerald-500">Clarity</span>.
@@ -140,36 +130,36 @@ export default function HeroLabClient() {
             </div>
 
             {/* --- ARCHETYPE 01: THE SOVEREIGN MONOLITH --- */}
-            <LabSection id="opt-1" title="01. The Sovereign Monolith" description="Centered mandate. High whitespace. Maximum brand authority.">
-                <div className="container mx-auto max-w-[900px] text-center space-y-12">
-                    <LabHeader />
+            <LabSection id="opt-1" title="01. The Sovereign Monolith" description="Centered mandate. Symmetrical command feel. Perfect for high-gravity first impressions.">
+                <div className="container mx-auto max-w-[1000px] text-center space-y-12">
                     <div className="space-y-6 flex flex-col items-center">
-                        <h1 className="text-[44px] md:text-[84px] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-white">
-                            YOUR BUSINESS <br/> SHOULD NOT RUN <br/> <span style={{ color: BRAND_GREEN }}>ON MEMORY.</span>
-                        </h1>
-                        <p className="text-lg md:text-2xl italic font-medium text-zinc-400 mx-auto max-w-2xl">
-                            Stop chasing staff on WhatsApp. Turn SOPs into daily execution.
-                        </p>
-                    </div>
-                    <div className="space-y-10">
-                        <TechnicalPayload />
-                        <ActionUnit />
+                        <div className="p-10 rounded-[3rem] border border-white/10 bg-white/[0.02] backdrop-blur-xl shadow-2xl space-y-8 w-full">
+                            <h1 className="text-[44px] md:text-[84px] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-white">
+                                YOUR BUSINESS <br/> SHOULD NOT RUN <br/> <span style={{ color: BRAND_GREEN }}>ON MEMORY.</span>
+                            </h1>
+                            <p className="text-lg md:text-2xl italic font-medium text-zinc-400 mx-auto max-w-2xl leading-tight">
+                                Stop chasing staff on WhatsApp. <br/> Turn SOPs into daily execution.
+                            </p>
+                            <div className="pt-4 flex flex-col items-center gap-8">
+                                <TechnicalPayload />
+                                <ActionUnit />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </LabSection>
 
             {/* --- ARCHETYPE 02: THE COMMAND SPLIT --- */}
-            <LabSection id="opt-2" title="02. The Command Split" description="Narrative left, focus on 'System' feel. Uses technical framing.">
+            <LabSection id="opt-2" title="02. The Command Split" description="Narrative left, focused on 'System' depth. Clear visual path for the user's eye.">
                 <div className="container mx-auto max-w-[1200px] px-6">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-16 items-center">
                         <div className="space-y-10 text-left">
-                            <LabHeader />
                             <div className="space-y-6">
                                 <h1 className="text-[44px] md:text-[72px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
                                     CAPTURE <br/> <span style={{ color: BRAND_GREEN }}>MEMORY.</span>
                                 </h1>
                                 <p className="text-xl italic font-medium text-zinc-400 max-w-lg leading-tight">
-                                    Stop the stress of management gaps. Turn your SOPs into a shared operational system.
+                                    Stop the stress of management gaps. Turn your SOPs into a shared operational system your team can actually use.
                                 </p>
                             </div>
                             <div className="space-y-8">
@@ -182,7 +172,7 @@ export default function HeroLabClient() {
                             <div className="relative p-10 rounded-[3rem] border border-white/10 bg-white/[0.02] backdrop-blur-xl shadow-2xl space-y-8">
                                 <div className="space-y-2">
                                     <p className="text-[10px] font-black text-primary uppercase tracking-[0.4em]">SYSTEM CORE</p>
-                                    <h3 className="text-2xl font-black italic uppercase tracking-tighter">Ready Operational System</h3>
+                                    <h3 className="text-2xl font-black italic uppercase tracking-tighter">A ready operational system for your business.</h3>
                                 </div>
                                 <div className="space-y-4">
                                     {[
@@ -203,70 +193,11 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 03: THE ATMOSPHERIC HUD --- */}
-            <LabSection id="opt-3" title="03. The Atmospheric HUD" description="The fan favorite: Glass pill narrative + Monospaced telemetry.">
-                <div className="container mx-auto max-w-[1000px] text-center space-y-12">
-                    <div className="space-y-6">
-                        <div className="flex items-center justify-center gap-3 mb-4">
-                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_#10b981]" />
-                            <span className="text-[10px] font-mono text-emerald-500/60 uppercase tracking-[0.4em]">SYSTEM_STABLE_V18.1</span>
-                        </div>
-                        <h1 className="text-[54px] md:text-[90px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white relative z-10">
-                             MEMORY IS NOT <br/> <span style={{ color: BRAND_GREEN }}>A SYSTEM.</span>
-                        </h1>
-                    </div>
-                    
-                    <div className="max-w-2xl mx-auto space-y-10 relative z-10 p-10 rounded-[3rem] bg-white/[0.02] border border-white/10 backdrop-blur-xl shadow-2xl">
-                        <p className="text-xl text-zinc-400 italic font-medium leading-relaxed">
-                            Turn your expert knowledge into daily execution. Ready in 10 minutes. No monthly fees.
-                        </p>
-                        
-                        <div className="pt-4">
-                            <ActionUnit />
-                        </div>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 04: THE PROCESS HERO --- */}
-            <LabSection id="opt-4" title="04. The Process Hero" description="Emphasizing the simple 4-step deployment flow.">
-                <div className="container mx-auto max-w-[1100px] text-center space-y-16">
-                    <div className="space-y-12">
-                        <LabHeader />
-                        <h1 className="text-[44px] md:text-[80px] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-white">
-                            SOP EXECUTION, <br/> <span style={{ color: BRAND_GREEN }}>MADE SIMPLE.</span>
-                        </h1>
-                    </div>
-
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto">
-                        {[
-                            { t: "DOWNLOAD", d: "Ready System", i: Download },
-                            { t: "UPLOAD", d: "To Sheets", i: Upload },
-                            { t: "ASSIGN", d: "Your Team", i: UserPlus },
-                            { t: "RUN", d: "Daily Ops", i: Play }
-                        ].map((item, i) => (
-                            <div key={i} className="p-6 md:p-8 rounded-[2rem] bg-white/[0.03] border border-white/5 backdrop-blur-sm space-y-3">
-                                <item.i className="w-6 h-6 text-primary/60 mx-auto" />
-                                <div className="space-y-1">
-                                    <p className="text-[10px] font-black text-white italic uppercase tracking-tighter leading-none">{item.t}</p>
-                                    <p className="text-[8px] text-zinc-600 font-bold uppercase tracking-widest">{item.d}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    
-                    <div className="space-y-10 max-w-xl mx-auto">
-                        <ActionUnit />
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 05: PRESTIGIOUS MINIMAL --- */}
-            <LabSection id="opt-5" title="05. Prestigious Minimal" description="Cleanest implementation. Focuses on the core business mandate.">
+            {/* --- ARCHETYPE 03: PRESTIGIOUS MINIMALIST --- */}
+            <LabSection id="opt-3" title="03. Prestigious Minimalist" description="Maximum whitespace. Typographic authority. Focuses on the core business mandate.">
                 <div className="container mx-auto max-w-[1200px] text-center space-y-16">
                     <div className="space-y-6">
-                        <LabHeader />
-                        <h1 className="text-[64px] md:text-[120px] font-black font-headline leading-[0.75] uppercase italic tracking-tighter text-white">
+                        <h1 className="text-[54px] md:text-[110px] font-black font-headline leading-[0.75] uppercase italic tracking-tighter text-white">
                             SOVEREIGN <br/> <span className="text-zinc-800">OPERATIONS.</span>
                         </h1>
                         <div className="h-1 w-24 bg-primary mx-auto" />
@@ -274,10 +205,12 @@ export default function HeroLabClient() {
 
                     <div className="space-y-12">
                         <p className="text-xl md:text-3xl text-zinc-400 font-bold italic uppercase tracking-widest max-w-4xl mx-auto leading-tight">
-                            A ready operational system <br/> for your business.
+                            "Your business should not <br/> depend on memory."
                         </p>
-                        <ActionUnit />
-                        <TechnicalPayload />
+                        <div className="flex flex-col items-center gap-10">
+                            <ActionUnit />
+                            <TechnicalPayload />
+                        </div>
                     </div>
                 </div>
             </LabSection>
