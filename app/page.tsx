@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -38,7 +37,8 @@ import {
     Clock,
     Scale,
     Cpu,
-    Gem
+    Gem,
+    LayoutGrid
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
