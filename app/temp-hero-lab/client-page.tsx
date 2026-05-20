@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -16,162 +17,105 @@ import {
     AlertTriangle,
     Zap,
     Scale,
-    CheckCircle2
+    CheckCircle2,
+    LayoutGrid,
+    ChevronRight,
+    Terminal,
+    Monitor
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
-// --- PRODUCTION CONTENT CONSTANTS ---
-const VIMEO_URL = "https://player.vimeo.com/video/1187795401?background=1&autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0";
+const VIDEO_URL = "https://res.cloudinary.com/dxqe8xdea/video/upload/q_auto,vc_h264,w_1920/v1766838730/8572189-uhd_4096_2160_25fps_rjv4wg.mp4";
 
 const NARRATIVE = {
-    line1: "STOP CHASING.",
-    line2: "START SEEING.",
-    subline: "See daily work getting done. Even when you aren't there.",
-    cta: "Deploy the system",
-    meta: "SINGLE / MULTI-UNIT READY • AUDIT-READY COMPLIANCE"
+    line1: "YOUR BUSINESS",
+    line2: "SHOULD NOT RUN",
+    line3: "ON MEMORY.",
+    subline: "Pre-built operational systems that turn SOPs into live daily execution.",
+    meta: "BUILT IN EXCEL • OPERATED THROUGH GOOGLE SHEETS • READY IN 10 MINUTES.",
+    cta: "Deploy System",
+    price: "₹3,499"
 };
 
-const TECH_SPECS = [
-    { t: "120+ Industry Specific SOPs", i: ClipboardCheck },
-    { t: "Live Dashboard", i: Activity },
-    { t: "No SaaS. Own your data.", i: Lock },
-    { t: "Trainer Notes for staff", i: Smartphone }
-];
-
-const ANXIETY_ITEMS = [
-    "Always chasing staff?",
-    "Work gets missed?",
-    "The team is confused?",
-    "Memories fade?"
+const ELITE_INDUSTRIES = [
+    { name: "Hotel Operations", id: "hotels_and_resorts" },
+    { name: "Restaurant Operations", id: "restaurants" },
+    { name: "Jewellery Store Operations", id: "retail_jewellery_operations_pack" },
+    { name: "Grocery Store Operations", id: "supermarket_grocery_retail_pack" },
+    { name: "Hospital Operations", id: "healthcare_and_hospital_operations" },
+    { name: "School Operations", id: "school_operations_pack" },
+    { name: "Franchise Operations", id: "franchise_operations_pack" },
+    { name: "Facilities Operations", id: "facility_management_blueprint" },
+    { name: "Multiplex Operations", id: "cinema_operations_pack" },
+    { name: "Fashion Store Operations", id: "fashion_and_apparel_retail" },
+    { name: "Electronics Store Operations", id: "electronics_showroom_pack" }
 ];
 
 const BRAND_GREEN = "#22C55E";
 
-// --- REUSABLE COMPONENTS ---
-
-const BackgroundVideo = ({ opacity = 0.3, grayscale = false }) => (
-    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <iframe
-            src={VIMEO_URL}
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            className={cn(
-                "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.77vh] min-w-full h-full min-h-[56.25vw] scale-[1.05]",
-                grayscale && "saturate-0 brightness-75 contrast-110"
-            )}
-            style={{ opacity, border: 'none' }}
-            title="Sovereign Background"
-        />
-    </div>
-);
-
-const LabSection = ({ children, title, description, id, fullScreen = false }: { children: React.ReactNode, title: string, description: string, id: string, fullScreen?: boolean }) => (
-    <div id={id} className="w-full py-16 md:py-24 border-b border-white/5 space-y-12 bg-black">
-        <div className="container px-4 md:px-8 mx-auto">
-            <div className="space-y-1 border-l-2 border-emerald-500 pl-4 md:pl-6">
-                <h2 className="text-lg md:text-xl font-black uppercase italic tracking-tighter font-headline text-white">{title}</h2>
+const LabSection = ({ children, title, description, id }: { children: React.ReactNode, title: string, description: string, id: string }) => (
+    <div id={id} className="w-full py-24 border-b border-white/5 space-y-12 bg-zinc-950">
+        <div className="container px-6 mx-auto">
+            <div className="space-y-1 border-l-2 border-emerald-500 pl-6">
+                <h2 className="text-xl font-black uppercase italic tracking-tighter font-headline text-white">{title}</h2>
                 <p className="text-zinc-500 italic font-medium text-[10px] uppercase tracking-widest">{description}</p>
             </div>
         </div>
-        <div className={cn(
-            "w-full relative overflow-hidden bg-[#050505] flex flex-col justify-center",
-            fullScreen ? "h-screen" : "min-h-[80svh] md:min-h-[90svh]"
-        )}>
+        <div className="w-full relative overflow-hidden bg-black min-h-screen flex flex-col justify-center border-y border-white/5">
             {children}
-        </div>
-    </div>
-);
-
-const RiskTag = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
-    <div className={cn(
-        "flex items-center gap-3 px-3 py-1.5 md:px-4 md:py-2 bg-red-950/40 border border-red-900/30 rounded-lg backdrop-blur-3xl shadow-2xl animate-in fade-in zoom-in duration-1000",
-        className
-    )} style={{ transitionDelay: delay }}>
-        <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
-        <span className="text-[9px] md:text-[11px] font-black text-red-100 uppercase tracking-widest italic leading-none whitespace-nowrap opacity-70">{text}</span>
-    </div>
-);
-
-const PulsatingStressText = ({ text, className, delay = "0s" }: { text: string, className?: string, delay?: string }) => (
-    <div className={cn("animate-pulse duration-[2000ms] transition-all", className)} style={{ animationDelay: delay }}>
-        <span className="text-[14px] md:text-[22px] font-black text-red-600 uppercase tracking-tighter italic drop-shadow-[0_0:15px_rgba(220,38,38,0.4)] whitespace-nowrap">
-            {text}
-        </span>
-    </div>
-);
-
-const CommandGrid = ({ className, textColor = "text-white/50" }: { className?: string, textColor?: string }) => (
-    <div className={cn("grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 md:gap-y-5", className)}>
-        {TECH_SPECS.map((item, i) => (
-            <div key={i} className="flex items-center gap-3 group">
-                <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-                    <Check className="w-2.5 h-2.5 text-[#22C55E]" />
-                </div>
-                <span className={cn("text-[12px] md:text-[14px] font-bold uppercase tracking-[0.05em] italic leading-tight group-hover:text-[#22C55E] transition-colors", textColor)}>
-                    {item.t}
-                </span>
-            </div>
-        ))}
-    </div>
-);
-
-const SovereignCTA = ({ className }: { className?: string }) => (
-    <div className={cn("space-y-4 md:space-y-6", className)}>
-        <Button asChild size="lg" className="w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-sm md:text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white hover:scale-[1.02] transition-all border-none group flex items-center justify-center gap-3">
-            <Link href="/library">
-                {NARRATIVE.cta} <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-zinc-950 transition-transform group-hover:translate-x-1" />
-            </Link>
-        </Button>
-        <div className="space-y-1 pl-1 text-center sm:text-left">
-             <p className="text-[8px] md:text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic">
-                {NARRATIVE.meta}
-            </p>
         </div>
     </div>
 );
 
 export default function HeroLabClient() {
     return (
-        <div className="bg-black text-white font-sans selection:bg-emerald-500/30 pb-40">
+        <div className="bg-black text-white font-sans selection:bg-emerald-500/30">
             
-            <div className="container px-6 pt-24 md:pt-32 pb-8 mx-auto text-center space-y-4">
+            <div className="container px-6 pt-32 pb-8 mx-auto text-center space-y-4">
                 <Badge variant="outline" className="text-emerald-500 border-emerald-500/30 uppercase tracking-[0.5em] font-black text-[10px] px-8 py-2 rounded-none bg-emerald-500/5">
-                    SOVEREIGN HERO LAB
+                    SOVEREIGN HERO LAB v1.0
                 </Badge>
-                <h1 className="text-3xl md:text-7xl font-black font-headline italic uppercase tracking-tighter leading-tight text-white">
-                    Institutional <span className="text-emerald-500">Candidates</span>.
+                <h1 className="text-7xl font-black font-headline italic uppercase tracking-tighter leading-tight text-white">
+                    One Glance <span className="text-emerald-500">Archetypes</span>.
                 </h1>
-                <p className="text-zinc-600 italic font-medium max-w-lg mx-auto text-sm md:text-base leading-tight">
-                    Strict benchmarks for high-gravity operational authority.
-                </p>
             </div>
 
-            {/* --- ARCHETYPE 01: THE HINGED BEZEL --- */}
-            <LabSection id="opt-1" title="01. The Hinged Bezel" description="Technical framing of the operational proof.">
-                <div className="relative h-full flex flex-col justify-center items-center px-6 md:px-24 max-w-[1440px] mx-auto py-12 md:py-0">
-                    <BackgroundVideo opacity={0.1} grayscale />
-                    <div className="grid md:grid-cols-[1.1fr,1fr] gap-12 md:gap-24 items-center w-full relative z-10">
+            {/* --- ARCHETYPE 01: THE SYMMETRIC DOCK (RECOMMENDED) --- */}
+            <LabSection id="opt-1" title="01. The Symmetric Dock" description="Right-aligned 2-column technical switchboard. Reduces vertical eye-travel by 50%.">
+                <div className="absolute inset-0 z-0">
+                    <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20 grayscale" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-transparent" />
+                </div>
+                <div className="relative z-10 container mx-auto max-w-[1200px] px-6">
+                    <div className="grid lg:grid-cols-[1fr,550px] gap-20 items-center">
                         <div className="space-y-10">
-                             <div className="space-y-3">
-                                <h1 className="font-headline font-black text-4xl md:text-[84px] leading-[1.1] md:leading-[0.88] tracking-tighter text-white uppercase italic">
-                                    {NARRATIVE.line1}<br />
-                                    <span className="text-emerald-500">{NARRATIVE.line2}</span>
+                            <div className="space-y-5">
+                                <h1 className="text-[64px] font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
+                                    {NARRATIVE.line1} <br/> <span style={{ color: BRAND_GREEN }}>{NARRATIVE.line2}</span> <br/> <span style={{ color: BRAND_GREEN }}>{NARRATIVE.line3}</span>
                                 </h1>
-                                <p className="text-base md:text-[26px] font-bold text-zinc-400 italic leading-tight">
-                                    {NARRATIVE.subline}
-                                </p>
-                             </div>
-                             <CommandGrid className="max-w-xl" />
-                             <SovereignCTA />
-                        </div>
-                        <div className="relative flex items-center group">
-                            <div className="relative w-full rounded-[2.5rem] overflow-hidden shadow-2xl aspect-video bg-black ring-1 ring-white/5">
-                                <iframe src={VIMEO_URL} className="absolute inset-0 w-full h-full object-cover saturate-0 brightness-75" />
+                                <p className="text-lg italic font-medium text-zinc-400 max-w-lg leading-tight">{NARRATIVE.subline}</p>
+                                <div className="border-l-2 border-primary/40 pl-6 py-0.5">
+                                    <p className="text-[11px] font-black text-zinc-600 uppercase tracking-widest italic">{NARRATIVE.meta}</p>
+                                </div>
                             </div>
-                            <div className="flex flex-col gap-2 relative z-20 -ml-3">
-                                {ANXIETY_ITEMS.map((item, i) => (
-                                    <RiskTag key={i} text={item} delay={`${i * 0.1}s`} className="rounded-l-none border-l-0" />
+                            <div className="flex items-center gap-8">
+                                <Button asChild size="lg" className="h-16 px-12 rounded-xl bg-primary text-black font-black uppercase italic text-base">
+                                    <Link href="#">{NARRATIVE.cta} <ArrowRight className="ml-2 w-5 h-5" /></Link>
+                                </Button>
+                                <div className="flex flex-col">
+                                    <span className="text-3xl font-black italic">{NARRATIVE.price}</span>
+                                    <span className="text-[8px] font-black text-zinc-600 uppercase tracking-widest italic">ONE-TIME</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-white/[0.02] border border-white/5 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-2xl">
+                            <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.5em] italic mb-6">SELECT OPERATIONAL VERTICAL</p>
+                            <div className="grid grid-cols-2 gap-3">
+                                {ELITE_INDUSTRIES.map((ind) => (
+                                    <Link key={ind.id} href="#" className="p-3 rounded-lg border border-white/5 bg-white/[0.01] hover:bg-primary/10 hover:border-primary/30 transition-all group">
+                                        <span className="text-[10px] font-black uppercase italic text-zinc-500 group-hover:text-primary transition-colors">{ind.name}</span>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
@@ -179,237 +123,265 @@ export default function HeroLabClient() {
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 13: THE TACTICAL SCAN --- */}
-            <LabSection id="opt-13" title="13. The Tactical Scan" description="Diagnostic focus with active targeting markers.">
+            {/* --- ARCHETYPE 02: THE MONOLITH (CENTERED) --- */}
+            <LabSection id="opt-2" title="02. The Monolith" description="Centered high-gravity mandate. Best for absolute brand authority.">
                 <div className="absolute inset-0 z-0">
-                    <BackgroundVideo opacity={0.6} grayscale />
-                    <div className="absolute inset-0 bg-black/40" />
+                    <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-10" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/80 to-black" />
                 </div>
-                <div className="hidden md:block">
-                    {ANXIETY_ITEMS.map((text, i) => {
-                        const positions = [{ top: '20%', right: '25%' }, { top: '45%', right: '15%' }, { bottom: '30%', right: '30%' }, { bottom: '15%', right: '10%' }];
-                        return (
-                            <div key={i} className="absolute group z-20" style={positions[i]}>
-                                <div className="flex items-center gap-4 animate-pulse" style={{ animationDelay: `${i * 0.2}s` }}>
-                                    <div className="w-12 h-px bg-red-500/40" />
-                                    <RiskTag text={text} />
-                                </div>
-                            </div>
-                        );
-                    })}
+                <div className="relative z-10 container mx-auto max-w-[900px] text-center space-y-12">
+                    <div className="space-y-6">
+                        <h1 className="text-[80px] font-black font-headline leading-[0.85] uppercase italic tracking-tighter text-white">
+                            YOUR BUSINESS <br/> SHOULD NOT RUN <br/> <span style={{ color: BRAND_GREEN }}>ON MEMORY.</span>
+                        </h1>
+                        <p className="text-xl italic font-medium text-zinc-400 mx-auto max-w-2xl">{NARRATIVE.subline}</p>
+                    </div>
+                    <div className="flex flex-col items-center gap-6">
+                         <div className="flex items-center gap-10 text-[10px] font-black text-zinc-600 uppercase tracking-[0.3em] italic">
+                            <span>BUILT IN EXCEL</span>
+                            <div className="w-1 h-1 rounded-full bg-primary" />
+                            <span>GOOGLE SHEETS NATIVE</span>
+                            <div className="w-1 h-1 rounded-full bg-primary" />
+                            <span>10 MINUTE DEPLOY</span>
+                        </div>
+                        <Button asChild size="lg" className="h-20 px-16 rounded-2xl bg-primary text-black font-black uppercase italic text-xl shadow-2xl">
+                            <Link href="#">START DEPLOYMENT: {NARRATIVE.price}</Link>
+                        </Button>
+                    </div>
                 </div>
-                <div className="relative z-10 h-full flex flex-col justify-center items-start px-6 md:px-24 py-16 md:py-0">
-                     <div className="max-w-4xl space-y-8 md:space-y-12">
-                         <div className="space-y-4">
-                            <h1 className="text-4xl md:text-[100px] font-black font-headline leading-[1.1] md:leading-[0.8] uppercase italic tracking-tighter text-white">
-                                {NARRATIVE.line1}<br />
-                                <span className="text-emerald-500"> {NARRATIVE.line2}</span>
-                            </h1>
-                            <p className="text-base md:text-[32px] font-bold italic text-zinc-400 leading-tight">{NARRATIVE.subline}</p>
-                         </div>
-                         <div className="space-y-8">
-                            <CommandGrid className="max-w-xl" />
-                            <SovereignCTA />
-                         </div>
+                <div className="absolute bottom-10 w-full overflow-hidden flex items-center h-12 bg-white/[0.02] border-y border-white/5">
+                     <div className="flex flex-nowrap gap-12 animate-marquee whitespace-nowrap px-10">
+                        {ELITE_INDUSTRIES.map((ind) => (
+                            <span key={ind.id} className="text-[10px] font-black uppercase italic tracking-[0.4em] text-zinc-500">{ind.name}</span>
+                        ))}
                      </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 17: THE CINEMATIC LEDGER --- */}
-            <LabSection id="opt-17" title="17. The Cinematic Ledger" description="Authority-led transition from pain to resolution.">
-                <div className="absolute inset-0 z-0">
-                    <BackgroundVideo opacity={0.5} grayscale />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/60 to-transparent pointer-events-none" />
-                </div>
-                <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-16 md:py-0">
-                    <div className="max-w-5xl space-y-10 md:space-y-16">
-                        <div className="space-y-4 md:space-y-6">
-                            <h1 className="text-4xl md:text-[110px] font-black font-headline leading-[1.1] md:leading-[0.82] uppercase italic tracking-tighter drop-shadow-2xl">
-                                {NARRATIVE.line1}<br />
-                                <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
-                            </h1>
-                            <p className="text-base md:text-[32px] leading-[1.2] italic font-medium text-zinc-400 max-w-xl">
-                                {NARRATIVE.subline}
-                            </p>
-                        </div>
-                        <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-24 items-start md:items-center">
-                            <div className="space-y-6 border-l-2 border-red-500/20 pl-6 md:pl-10">
-                                <p className="text-[9px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.5em] italic">WHY TEAMS STRUGGLE</p>
-                                <div className="flex flex-col gap-3 md:gap-4">
-                                    {ANXIETY_ITEMS.map((item, i) => (
-                                        <div key={i} className="flex items-center gap-3 md:gap-4 text-white/40 font-bold italic text-sm md:text-base group">
-                                            <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)] group-hover:scale-150 transition-transform" />
-                                            <span className="uppercase tracking-tight whitespace-nowrap">{item}</span>
-                                        </div>
-                                    ))}
+            {/* --- ARCHETYPE 03: THE TACTICAL HUD --- */}
+            <LabSection id="opt-3" title="03. The Tactical HUD" description="Using technical borders and monospaced telemetry to project 'Engine' status.">
+                <div className="relative h-full flex flex-col justify-center px-24">
+                     <div className="border border-white/10 rounded-[3rem] p-16 grid grid-cols-[1fr,450px] gap-20 items-center bg-black/40 backdrop-blur-md">
+                        <div className="space-y-12">
+                             <div className="space-y-4">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                                    <span className="text-[10px] font-mono text-primary uppercase tracking-widest">SYSTEM_STATUS: ONLINE</span>
                                 </div>
-                            </div>
-                            <div className="h-32 md:h-40 w-px bg-white/10 hidden md:block" />
-                            <div className="space-y-8 md:space-y-10 w-full sm:w-auto">
-                                <CommandGrid className="max-w-lg" textColor="text-white/60" />
-                                <SovereignCTA />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </LabSection>
-
-            {/* --- ARCHETYPE 18: THE STRESS STACK --- */}
-            <LabSection id="opt-18" title="18. The Stress Stack" description="Minimalist psychological stressor DNA.">
-                <div className="absolute inset-0 z-0">
-                    <BackgroundVideo opacity={0.4} grayscale />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
-                </div>
-                <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-16 md:py-0">
-                    <div className="grid grid-cols-1 md:grid-cols-[1fr,400px] gap-12 md:gap-24 items-center">
-                        <div className="space-y-8 md:space-y-12">
-                            <div className="space-y-4 md:space-y-6">
-                                <h1 className="text-4xl md:text-[100px] font-black font-headline leading-[1.1] md:leading-[0.82] uppercase italic tracking-tighter">
-                                    {NARRATIVE.line1}<br />
-                                    <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
+                                <h1 className="text-7xl font-black font-headline leading-[0.9] uppercase italic tracking-tighter">
+                                    DEPLOY <br/> <span style={{ color: BRAND_GREEN }}>OPERATIONAL</span> <br/> INFRASTRUCTURE.
                                 </h1>
-                                <p className="text-base md:text-[30px] italic font-medium text-zinc-400 max-w-xl">{NARRATIVE.subline}</p>
-                            </div>
-                            <CommandGrid className="max-w-xl" textColor="text-white/40" />
-                            <SovereignCTA />
+                             </div>
+                             <div className="grid grid-cols-2 gap-8 border-y border-white/5 py-8">
+                                {[
+                                    { l: "LOG TYPE", v: "AUDIT-READY" },
+                                    { l: "FORMAT", v: "EXCEL / SHEETS" },
+                                    { l: "SOP COUNT", v: "120+ PRE-BUILT" },
+                                    { l: "DEPLOY TAT", v: "10 MINUTES" }
+                                ].map((item, i) => (
+                                    <div key={i} className="space-y-1">
+                                        <p className="text-[8px] font-black text-zinc-600 uppercase tracking-widest">{item.l}</p>
+                                        <p className="text-sm font-black italic uppercase text-white">{item.v}</p>
+                                    </div>
+                                ))}
+                             </div>
+                             <SovereignCTA />
                         </div>
-                        <div className="space-y-6 md:space-y-10 text-right">
-                            <p className="text-[8px] md:text-[10px] font-black text-red-500/60 uppercase tracking-[0.4em] italic">WHY TEAMS STRUGGLE</p>
-                            <div className="flex flex-col gap-4 md:gap-8">
-                                {ANXIETY_ITEMS.map((item, i) => (
-                                    <PulsatingStressText key={i} text={item} delay={`${i * 0.2}s`} />
+                        <div className="space-y-6">
+                            <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.5em] italic">SELECT COMMAND SECTOR</p>
+                            <div className="flex flex-col gap-2">
+                                {ELITE_INDUSTRIES.slice(0, 7).map((ind) => (
+                                    <div key={ind.id} className="flex items-center justify-between p-4 border border-white/5 bg-white/[0.02] rounded-xl group hover:border-primary/40 transition-all cursor-pointer">
+                                        <span className="text-sm font-bold uppercase italic text-zinc-500 group-hover:text-white transition-colors">{ind.name}</span>
+                                        <ArrowRight className="w-4 h-4 text-zinc-800 group-hover:text-primary transition-all" />
+                                    </div>
                                 ))}
                             </div>
                         </div>
+                     </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 04: THE TENSION SPLIT --- */}
+            <LabSection id="opt-4" title="04. The Tension Split" description="Hard contrast between Problem (Left) and Solution (Right).">
+                <div className="flex h-full">
+                    <div className="w-1/2 bg-zinc-950 flex flex-col justify-center px-24 space-y-10 border-r border-white/5">
+                        <div className="space-y-4">
+                            <Badge className="bg-red-500/10 text-red-500 border-red-500/20 uppercase font-black tracking-widest text-[10px]">THE ANXIETY</Badge>
+                            <h2 className="text-5xl font-black font-headline text-white leading-tight uppercase italic tracking-tighter">
+                                ALWAYS CHASING <br/> YOUR TEAM?
+                            </h2>
+                            <p className="text-lg text-zinc-500 italic font-medium leading-relaxed">
+                                Most businesses run on memory and luck. When the hero resigns, the system breaks.
+                            </p>
+                        </div>
+                        <ul className="space-y-4">
+                            {["Work gets missed.", "Confusion on the floor.", "Audit anxiety."].map((item, i) => (
+                                <li key={i} className="flex items-center gap-4 text-zinc-600 font-bold italic uppercase text-sm">
+                                    <X className="w-5 h-5 text-red-500" /> {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="w-1/2 bg-black flex flex-col justify-center px-24 space-y-10 relative">
+                         <div className="absolute inset-0 z-0 opacity-20">
+                            <video src={VIDEO_URL} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                         </div>
+                         <div className="relative z-10 space-y-10">
+                            <div className="space-y-4">
+                                <Badge className="bg-primary/10 text-primary border-primary/20 uppercase font-black tracking-widest text-[10px]">THE ANTIDOTE</Badge>
+                                <h2 className="text-5xl font-black font-headline text-white leading-tight uppercase italic tracking-tighter">
+                                    DEPLOY THE <br/> <span style={{ color: BRAND_GREEN }}>SOVEREIGN ENGINE.</span>
+                                </h2>
+                                <p className="text-lg text-zinc-400 italic font-medium leading-relaxed">
+                                    Turn SOPs into live daily execution using the tools your team already understands.
+                                </p>
+                            </div>
+                            <Button asChild size="lg" className="h-16 px-12 rounded-xl bg-primary text-black font-black uppercase italic text-base shadow-2xl">
+                                <Link href="#">START DEPLOYMENT: {NARRATIVE.price}</Link>
+                            </Button>
+                         </div>
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 19: THE INDUSTRY STANDARD (WINNING HYBRID) --- */}
-            <LabSection id="opt-19" title="19. The Industry Standard" description="Sequential Mobile Narrative: Hook → Pain → Bridge → Solution.">
-                <div className="absolute inset-0 z-0">
-                    <BackgroundVideo opacity={0.3} grayscale />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
-                </div>
-                <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-12 md:py-0">
-                    <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr,1fr] gap-8 md:gap-12 lg:gap-24 items-center">
-                        
-                        {/* Phase 01: The Hook */}
-                        <div className="order-1 space-y-4 md:space-y-6 w-full">
-                            <h1 className="text-[34px] md:text-[100px] font-black font-headline leading-[0.95] uppercase italic tracking-tighter">
-                                STOP CHASING. <br />
-                                <span style={{ color: BRAND_GREEN }}> START SEEING.</span>
-                            </h1>
-                            <p className="text-base md:text-[30px] italic font-medium text-zinc-400 max-w-none lg:whitespace-nowrap leading-tight">
-                                {NARRATIVE.subline}
-                            </p>
+            {/* --- ARCHETYPE 05: THE ARCHITECTURAL MINIMALIST --- */}
+            <LabSection id="opt-5" title="05. The Architectural Minimalist" description="Prestigious line-art style. Focus on technical clarity and whitespace.">
+                <div className="relative h-full container mx-auto max-w-[1200px] px-6 grid grid-cols-[1fr,400px] gap-20 items-center">
+                    <div className="space-y-16">
+                        <div className="space-y-8">
+                             <h1 className="text-[100px] font-black font-headline leading-[0.8] uppercase italic tracking-tighter text-white">
+                                CAPTURE <br/> <span style={{ color: BRAND_GREEN }}>MEMORY.</span>
+                             </h1>
+                             <p className="text-2xl text-zinc-500 italic font-medium max-w-sm border-l border-zinc-800 pl-10 leading-relaxed">
+                                Institutional memory is an asset. <br/> Anything else is just luck.
+                             </p>
                         </div>
-                        
-                        {/* Phase 02: The Operational Pain (MOBILE LEFT, DESKTOP RIGHT) */}
-                        <div className="order-2 w-full lg:col-start-2 lg:row-start-1 lg:row-span-2 space-y-4 md:space-y-8 text-left border-l-2 lg:text-right lg:border-l-0 lg:border-r-2 border-red-500/20 pl-6 lg:pl-0 lg:pr-10">
-                             <p className="text-[10px] font-black text-red-500/60 uppercase tracking-[0.6em] italic">WHY TEAMS STRUGGLE</p>
-                             <div className="flex flex-col gap-2 md:gap-6">
-                                 {ANXIETY_ITEMS.map((text, i) => (
-                                    <PulsatingStressText key={i} text={text} delay={`${i * 0.2}s`} />
-                                 ))}
+                        <div className="flex flex-col gap-6">
+                            {[
+                                { t: "120+ PRE-BUILT SOPs", i: LayoutGrid },
+                                { t: "AUDIT-READY COMPLIANCE", i: ShieldCheck },
+                                { t: "LIVE DASHBOARD PULSE", i: Activity }
+                            ].map((item, i) => (
+                                <div key={i} className="flex items-center gap-6">
+                                    <item.i className="w-5 h-5 text-zinc-700" />
+                                    <span className="text-[11px] font-black text-zinc-500 uppercase tracking-[0.4em] italic">{item.t}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <Button asChild size="lg" className="bg-transparent border border-primary/40 text-primary hover:bg-primary hover:text-black shadow-none w-fit px-12 h-16 rounded-xl font-black uppercase italic">
+                            <Link href="#">DEPLOY NOW: {NARRATIVE.price}</Link>
+                        </Button>
+                    </div>
+                    <div className="border-l border-white/5 p-1 space-y-12 pl-20">
+                        <span className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.6em]">SELECT VERTICAL</span>
+                        <div className="space-y-6">
+                             {ELITE_INDUSTRIES.slice(0, 6).map((ind) => (
+                                <Link key={ind.id} href="#" className="block text-2xl font-bold uppercase italic text-zinc-800 hover:text-primary transition-all hover:translate-x-3">
+                                    {ind.name}
+                                </Link>
+                             ))}
+                        </div>
+                    </div>
+                </div>
+            </LabSection>
+
+            {/* --- ARCHETYPE 06: THE ACTION-FIRST HUD --- */}
+            <LabSection id="opt-6" title="06. The Action-First HUD" description="Consolidates price, speed, and platform into one decision block.">
+                <div className="relative h-full flex flex-col justify-center items-center text-center px-6">
+                    <div className="max-w-4xl space-y-12">
+                        <div className="space-y-4">
+                            <h1 className="text-7xl md:text-[94px] font-black font-headline leading-none uppercase italic tracking-tighter">
+                                STOP THE <span className="text-red-600">CHAOS.</span> <br/>
+                                <span style={{ color: BRAND_GREEN }}>START THE ENGINE.</span>
+                            </h1>
+                            <p className="text-xl md:text-2xl text-zinc-400 italic font-medium max-w-2xl mx-auto">{NARRATIVE.subline}</p>
+                        </div>
+
+                        <div className="inline-flex flex-col md:flex-row items-center gap-2 p-3 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl shadow-2xl">
+                             <div className="flex items-center gap-3 px-8 py-4 border-r border-white/5">
+                                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                    <Smartphone className="w-5 h-5" />
+                                </div>
+                                <div className="text-left">
+                                    <p className="text-[8px] font-black text-zinc-500 uppercase tracking-widest">WORKS ON</p>
+                                    <p className="text-[10px] font-black uppercase text-white italic">IPHONE & ANDROID</p>
+                                </div>
+                             </div>
+                             <div className="flex items-center gap-3 px-8 py-4 border-r border-white/5">
+                                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                    <Zap className="w-5 h-5" />
+                                </div>
+                                <div className="text-left">
+                                    <p className="text-[8px] font-black text-zinc-500 uppercase tracking-widest">DEPLOYMENT</p>
+                                    <p className="text-[10px] font-black uppercase text-white italic">10 MINUTES</p>
+                                </div>
+                             </div>
+                             <div className="px-4 pr-1">
+                                 <Button asChild size="lg" className="h-16 px-12 rounded-full bg-primary text-black font-black uppercase italic text-base shadow-xl">
+                                    <Link href="#">DEPLOY FOR {NARRATIVE.price}</Link>
+                                 </Button>
                              </div>
                         </div>
 
-                        {/* Phase 03: The New Standard Bridge */}
-                        <div className="order-3 w-full lg:col-start-1 lg:row-start-2 space-y-8 md:space-y-10">
-                            <div className="space-y-3">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-1 h-6 bg-emerald-500 shadow-[0_0_10px_rgba(16,124,16,0.5)]" />
-                                    <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em] italic font-headline">THE NEW STANDARD</p>
-                                </div>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4 md:gap-y-5">
-                                    <div className="flex items-center gap-3 group">
-                                        <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-                                            <Check className="w-2.5 h-2.5 text-[#22C55E]" />
-                                        </div>
-                                        <span className="text-[13px] md:text-[14px] font-bold uppercase tracking-[0.05em] italic leading-tight text-white/80">120+ Industry Specific SOPs</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 group">
-                                        <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-                                            <Check className="w-2.5 h-2.5 text-[#22C55E]" />
-                                        </div>
-                                        <span className="text-[13px] md:text-[14px] font-bold uppercase tracking-[0.05em] italic leading-tight text-white/80">Live Dashboard Visibility</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 group">
-                                        <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-                                            <Check className="w-2.5 h-2.5 text-[#22C55E]" />
-                                        </div>
-                                        <span className="text-[13px] md:text-[14px] font-bold uppercase tracking-[0.05em] italic leading-tight text-white/80">No SaaS. Own your data.</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 group">
-                                        <div className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
-                                            <Check className="w-2.5 h-2.5 text-[#22C55E]" />
-                                        </div>
-                                        <span className="text-[13px] md:text-[14px] font-bold uppercase tracking-[0.05em] italic leading-tight text-white/80">Built-in Trainer Notes</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Phase 04: The Command */}
-                        <div className="order-4 w-full lg:col-start-1 lg:row-start-3">
-                            <SovereignCTA />
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto opacity-40">
+                             {ELITE_INDUSTRIES.slice(0, 4).map((ind) => (
+                                <div key={ind.id} className="text-[9px] font-black uppercase tracking-widest border border-white/10 py-2 rounded-full italic">{ind.name}</div>
+                             ))}
                         </div>
                     </div>
                 </div>
             </LabSection>
 
-            {/* --- ARCHETYPE 20: THE ULTRA-COMPACT HUD --- */}
-            <LabSection id="opt-20" title="20. The Ultra-Compact HUD" description="Maximum technical density. High-legibility mobile specs." fullScreen>
-                <div className="absolute inset-0 z-0">
-                    <BackgroundVideo opacity={0.5} grayscale />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/70 to-transparent pointer-events-none" />
-                </div>
-                <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-24 lg:px-32 py-4 md:py-0">
-                    <div className="max-w-6xl space-y-4 md:space-y-8">
-                        <div className="space-y-2 md:space-y-4">
-                            <h1 className="text-[34px] md:text-[84px] font-black font-headline leading-[1] md:leading-[0.85] uppercase italic tracking-tighter">
-                                {NARRATIVE.line1} <br />
-                                <span style={{ color: BRAND_GREEN }}> {NARRATIVE.line2}</span>
+            {/* --- ARCHETYPE 07: THE CATEGORY CHAMBERS --- */}
+            <LabSection id="opt-7" title="07. The Category Chambers" description="Grouping sectors into technical modules to project massive breadth.">
+                 <div className="relative h-full container mx-auto max-w-[1200px] px-6 py-12 flex flex-col justify-center gap-12">
+                    <div className="grid lg:grid-cols-[1fr,350px] gap-12 items-end">
+                        <div className="space-y-6">
+                            <h1 className="text-6xl md:text-8xl font-black font-headline leading-[0.9] uppercase italic tracking-tighter text-white">
+                                OPERATIONAL <br/> <span style={{ color: BRAND_GREEN }}>SYSTEMS</span> <br/> <span style={{ color: BRAND_GREEN }}>HUB.</span>
                             </h1>
-                            <p className="text-sm md:text-[24px] leading-[1.2] italic font-medium text-zinc-400 max-w-2xl">{NARRATIVE.subline}</p>
+                            <p className="text-xl text-zinc-400 italic font-medium max-w-xl">{NARRATIVE.subline}</p>
                         </div>
-                        
-                        <div className="flex flex-col md:flex-row gap-6 md:gap-16 items-start md:items-center">
-                            {/* Problems Pane */}
-                            <div className="order-1 space-y-3 md:space-y-6 border-l-2 border-red-500/20 pl-4 md:pl-8">
-                                <p className="text-[8px] md:text-[9px] font-black text-red-500/60 uppercase tracking-[0.4em] italic">WHY TEAMS STRUGGLE</p>
-                                <div className="flex flex-col gap-2 md:gap-4">
-                                    {ANXIETY_ITEMS.map((item, i) => (
-                                        <PulsatingStressText key={i} text={item} delay={`${i * 0.2}s`} className="!text-[11px] md:!text-[18px]" />
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Solution HUD Pane - Moved lefter closer to problems */}
-                            <div className="order-2 bg-white/[0.02] border border-white/10 backdrop-blur-3xl rounded-2xl md:rounded-[2rem] p-6 md:p-8 space-y-4 shadow-2xl md:max-w-md">
-                                <div className="flex flex-col gap-4">
-                                    {TECH_SPECS.map((item, i) => (
-                                        <div key={i} className="flex items-center gap-3 md:gap-4">
-                                            <item.i className="w-4 md:w-5 h-4 md:h-5 text-emerald-500" />
-                                            <span className="text-[13px] md:text-[14px] font-bold text-white/50 uppercase italic tracking-wide leading-tight">{item.t}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <SovereignCTA className="order-3" />
+                        <SovereignCTA className="text-right" />
                     </div>
-                </div>
-            </LabSection>
 
-            <div className="py-24 md:py-32 text-center bg-zinc-950 border-t border-white/5">
-                 <Button asChild variant="link" className="text-emerald-500 font-black uppercase tracking-widest text-sm hover:text-white transition-colors">
-                    <Link href="/">RETURN TO PRODUCTION SITE</Link>
-                 </Button>
-            </div>
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                        {[
+                            { c: "Hospitality", i: ["Hotels", "Restaurants"] },
+                            { c: "Retail", i: ["Jewellery", "Grocery", "Fashion", "Electronics"] },
+                            { c: "Healthcare", i: ["Hospitals", "Clinics"] },
+                            { c: "Education", i: ["Schools", "Universities"] },
+                            { c: "Infrastructure", i: ["Facilities", "Logistics"] }
+                        ].map((chamber, i) => (
+                            <div key={i} className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 space-y-4 hover:border-primary transition-all group">
+                                <p className="text-[9px] font-black text-primary uppercase tracking-[0.3em] italic">{chamber.c}</p>
+                                <ul className="space-y-1">
+                                    {chamber.i.map((item, j) => (
+                                        <li key={j} className="text-xs font-bold uppercase italic text-zinc-600 group-hover:text-white transition-colors">{item}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                 </div>
+            </LabSection>
 
         </div>
     );
 }
+
+const SovereignCTA = ({ className }: { className?: string }) => (
+    <div className={cn("space-y-5", className)}>
+        <Button asChild size="lg" className="h-16 px-12 rounded-xl bg-[#22C55E] text-black font-black uppercase italic text-base shadow-[0_20px_50px_-10px_rgba(34,197,94,0.3)] hover:bg-white transition-all border-none group">
+            <Link href="/library">
+                DEPLOY THE SYSTEM <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </Link>
+        </Button>
+        <div className="space-y-1 pl-1">
+             <p className="text-[10px] text-zinc-600 font-black uppercase tracking-[0.4em] italic">
+                {NARRATIVE.meta}
+            </p>
+        </div>
+    </div>
+);
