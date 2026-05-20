@@ -18,6 +18,41 @@ export type PackResolution = {
 };
 
 export const packResolutions: Record<string, PackResolution> = {
+    'electronics_showroom_pack': {
+        heroTitle: "ELECTRONICS OPERATIONS SYSTEM",
+        heroSubline: "Command Your Device Integrity. Protect Your Inventory.",
+        strategicParagraph: "The definitive Sovereign v18.0 engine for electronics retail. Hardening 180 technical control points across Serial Governance, Demo Asset Safety, and Warranty Fraud Prevention.",
+        whyExecutionBreaksParagraph: "Electronics retail fails when unique serial IDs are unmonitored, demo units become fire hazards, and warranty fraud goes undetected at the return counter.",
+        risks: [
+            { title: "Serial Mismatch", description: "Inaccurate IMEI/Serial tracking leading to voided manufacturer warranties and untraceable stock loss." },
+            { title: "Demo Battery Fire", description: "Overheating lithium-ion batteries in bloated demo units causing catastrophic showroom fire incidents." },
+            { title: "Warranty Swap Fraud", description: "Accepting tampered or swapped high-value devices during 'Dead on Arrival' return claims." },
+            { title: "Data Privacy Breach", description: "Failure to perform certified data wipes on repair intake or demo resets, exposing customer PII." }
+        ],
+        whatChangesDaily: [
+            "Serial IDs have a verified technical seal",
+            "Demo battery thermals are logged shift-wise",
+            "DOA returns require manager co-sign logic",
+            "Customer data wipes are certified daily",
+            "IMEI activation parity is confirmed 24h prior",
+            "Operations directors see group readiness instantly"
+        ],
+        mondayMorning: [
+            "Every flagship has a serial sign-off by 9 AM",
+            "Demo wall vitals are within green thermal zones",
+            "Vault inventory matches the IMEI billed-list",
+            "Service-center data logs are secured and audited",
+            "Old battery e-waste is manifested for recycling",
+            "The group standard is visible to the head office"
+        ],
+        outcomes: [
+            "IMEI mismatches prevented",
+            "Lithium fire risk mitigated",
+            "Warranty fraud protected",
+            "Technical uptime tracked",
+            "Guest data secured"
+        ]
+    },
     'fashion_and_apparel_retail': {
         heroTitle: "FASHION OPERATIONS SYSTEM",
         heroSubline: "Command Your Inventory Velocity. Protect Your Brand Standards.",
@@ -61,7 +96,7 @@ export const packResolutions: Record<string, PackResolution> = {
         risks: [
             { title: "Playground safety checks becoming assumed", description: "Rushed mornings lead to verbal check-ins instead of physical 'child-left-behind' sweeps and route verification." },
             { title: "Visitor verification skipped during rush hours", description: "Visitor verification becomes inconsistent during peak arrival and dispersal surges, creating unmonitored entry windows." },
-            { title: "Maintenance drift in critical zones", description: "Playground structural checks and electrical thermal scans often drift into the background until an incident triggers an audit." },
+            { title: "Maintenance drift in critical zones", description: "Playground structural checks and electrical thermal scans often drift into the background until an incident trigger an audit." },
             { title: "Student welfare concerns staying undocumented", description: "Welfare signals or subtle markers of student distress often stay as hallway conversations instead of being structured for intervention." }
         ],
         whatChangesDaily: [
@@ -265,7 +300,7 @@ export const packResolutions: Record<string, PackResolution> = {
         compliance: [
             "Fire & Life Safety Readiness", "Permit-To-Work Governance", "Contractor Safety Discipline", "Emergency Exit Compliance", "Electrical Panel Safety Checks", "Lift & DG Audit Preparedness", "Vendor SLA Documentation", "Duty-of-Care Visibility"
         ],
-        whatChangesDaily: [
+         whatChangesDaily: [
             "MEP asset vitals become a daily data stream",
             "Vendor staff presence is verified against SLA",
             "Fire exit paths are physically confirmed clear",

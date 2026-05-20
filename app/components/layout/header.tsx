@@ -22,7 +22,8 @@ const ELITE_PACK_IDS = [
     'facility_management_blueprint',
     'cinema_operations_pack',
     'retail_operations_system',
-    'fashion_and_apparel_retail'
+    'fashion_and_apparel_retail',
+    'electronics_showroom_pack'
 ];
 
 const packs = Array.isArray(premiumPacks) ? premiumPacks : [];

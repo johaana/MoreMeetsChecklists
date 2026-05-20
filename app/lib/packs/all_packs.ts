@@ -22,6 +22,7 @@ import { pharmacy_ops_pack } from "./pharmacy_ops_pack";
 import { retail_operations_system } from "./retail_operations_system";
 import { retail_jewellery_operations_pack } from "./retail_jewellery_operations_pack";
 import { fashion_and_apparel_retail } from "./fashion_and_apparel_retail";
+import { electronics_showroom_pack } from "./electronics_showroom_pack";
 import type { PremiumPack } from "../premium-packs";
 
 export const allPacks: PremiumPack[] = [
@@ -47,5 +48,6 @@ export const allPacks: PremiumPack[] = [
     pharmacy_ops_pack,
     retail_operations_system,
     retail_jewellery_operations_pack,
-    fashion_and_apparel_retail
+    fashion_and_apparel_retail,
+    electronics_showroom_pack
 ];

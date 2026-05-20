@@ -21,6 +21,7 @@ const descriptions: Record<string, string> = {
   'facility_management_blueprint': "Operational SOPs for facilities management covering MEP systems, vendor SLAs, energy tracking, life safety, preventive maintenance, and infrastructure visibility.",
   'cinema_operations_pack': "Cinema operational SOPs for show readiness, concession control, crowd flow, projection checks, emergency readiness, and multi-screen operational consistency.",
   'fashion_and_apparel_retail': "Specialized operational system for fashion retail. Control inventory velocity, size-curve balancing, trial-room conversion, and return-fraud prevention with forensic SOPs.",
+  'electronics_showroom_pack': "Sovereign electronics operations system. Control unique ID (IMEI/Serial) integrity, monitor demo asset safety, stop warranty fraud, and manage e-waste compliance.",
 };
 
 export async function generateMetadata(
@@ -117,6 +118,10 @@ export default async function Page({ params }: Props) {
           bg: "https://i.postimg.cc/DyFXgFdj/people-stands-looks-documents.jpg",
           squircle: "https://i.postimg.cc/J4pcqBfQ/fashion-retail.webp"
       },
+      'electronics_showroom_pack': {
+          bg: "https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg",
+          squircle: "https://i.postimg.cc/kXX5G5yS/top-view-businessman-using-tablet-pc-analyzing-financial-charts-documents-sitting-desk-corporate-off.jpg"
+      }
   };
 
   const assets = assetMap[id] || { 
