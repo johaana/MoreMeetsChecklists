@@ -35,7 +35,9 @@ import {
     ShoppingBasket,
     Download,
     ShoppingBag,
-    Clock
+    Clock,
+    Scale,
+    Cpu
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteHeader } from '@/components/layout/header';
